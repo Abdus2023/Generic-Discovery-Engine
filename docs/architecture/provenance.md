@@ -1,6 +1,9 @@
 # Provenance
 
-Status: **CURRENT (partial)**; DESIGNED extensions are labelled.
+Claim state: `CURRENT` for recorded provenance, `SPECIFIED` for the evidence
+layer. Evidence state: `CORROBORATED` (code + chain reconstruction).
+Verification state: `VERIFIED` for candidate/observation/discovery linkage;
+`CONTRADICTED` for content identity via fingerprints (D8).
 
 ## The four questions
 

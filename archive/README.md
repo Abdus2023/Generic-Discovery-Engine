@@ -30,6 +30,8 @@ code does. The transcripts contain:
 | DVB analogy and its boundary | `docs/research/dvb-blind-scan-inspiration.md` |
 | Designed future layers | `docs/roadmap/future-architecture.md` |
 | Terminology | `docs/glossary.md` |
+| What was verified, and how | `docs/analysis/evidence-register.md`, `docs/analysis/claims.md` |
+| What was changed under which authorization | `docs/analysis/change-register-2026-09-10.md`, `docs/analysis/scope-and-authorization.md` |
 
 ## Why keep them
 

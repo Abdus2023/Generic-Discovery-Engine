@@ -12,6 +12,9 @@ documentation cleanup. Output order follows the review brief (Phases 0–21).
 | Resolved commit (analysis target) | `cc8df7357c2dbfe9d149747743e2f5e9ac9c0178` (`main`) |
 | Access classification | **FULL ACCESS** — complete tree, no submodules, no external artifacts to inspect |
 | Evidence standard | every non-trivial finding cites `[EVID:…]` from the [evidence register](evidence-register.md) |
+| Status model | three independent dimensions — **evidence state** (DIRECT/CORROBORATED/INDIRECT/ABSENT/INACCESSIBLE), **claim state** (CURRENT/SPECIFIED/PLANNED/HISTORICAL/HYPOTHESIS/NON-GOAL), **verification state** (VERIFIED/PARTIALLY_VERIFIED/UNVERIFIED/CONTRADICTED/NOT_APPLICABLE); verdicts live in [claims.md](claims.md) |
+| Scope boundary | repository / artifact / verification / execution — recorded in [scope-and-authorization.md](scope-and-authorization.md) |
+| Authorization level | A1 (analysis artifacts) + A2 (documentation refactor) + A6/A7 (commit, push to work branch); **A3/A4/A5 not granted** |
 | Phase A — verification | **read-only**; no repository file was created, edited or moved while establishing truth |
 | Phase B — refactoring | plan and execution recorded separately in the [change register](change-register-2026-09-10.md) |
 | Code changes | **none** — the artifact is byte-identical to its extraction; all code findings are PLAN ONLY |
@@ -134,27 +137,38 @@ were available locally, and no substituted fork or mirror was used.
 
 ## 3. Architecture Truth Table
 
-| Area | Implemented | Designed | Future | Problem |
-| --- | --- | --- | --- | --- |
-| Candidate representation | yes (`Candidate`, `identityKey`, `effectivePriority`) | fingerprints, requirements | — | priority formula is heuristic, not the documented value/cost model |
-| Candidate lifecycle | yes (11 states) | work-item lifecycle | — | `failed` is claimable, no terminal state |
-| Candidate claiming | yes (synchronous) | leases, fencing (v0.33) | — | violated end-to-end by the re-queue path (D1) |
-| Scheduler | yes (scan + sort, budget, origin limits) | aging, fairness, arbitration | admission scheduling | O(n log n) per claim; no fairness; worker pool not refilled (D2) |
-| HTTP acquisition | yes (GM XHR / fetch, 8 s timeout, truncation) | acquisition runtime, capability lattice | replay provider, cache provider | transport is hard-wired; no cancellation |
-| Response recognition | yes (7 providers, `matches`/`recognize`) | response router, provider priority, recognition evidence | — | multiple providers may match; confidence not comparable |
-| Candidate sources | yes (page, DOM, network bridge, performance) | `CandidateSource` interface, discovery controller | non-HTTP sources | engine-internal; performance entries are evidence-only by design |
-| Candidate expansion | yes (engine-owned, depth-bounded) | frontier/arbitration | — | re-queues in-flight candidates (D1) |
-| Deduplication | yes (type:target; resource URL guard) | reconciliation, identity resolution | artifact/revision identity | guard is non-atomic across the in-flight window (D6) |
-| Persistence | yes (GM storage, caps, debounced) | transactional persistence, crash recovery | cross-context replication | no transactions; `running` latch survives restore |
-| Provenance | partial (parent, mechanism, depth, ledger, edges) | evidence graph, claims, conflicts | causal ordering | no evidence layer; observations are mutable |
-| Content fingerprinting | computed and indexed (fnv1a32) | identity resolution (v0.17) | revision detection | index is never read (**D8**) |
-| Discovery accounting | one record per recognition | corroboration model | evidence-based resolution | duplicates not merged (**D9**) |
-| Concurrency | single-context claim | multi-worker coordination | distributed consensus | invariant violation (D1); not a lock |
-| Coverage / absence / completeness | no | v0.22, v0.23 | goal-constrained coverage | none of it exists; must not be claimed |
-| Adaptive strategy | counters only | v0.21 learning | — | no effect on the live pool (D5) |
-| DVB/physical layer | no | — | — | non-goal; enforced by a static check |
+Status is expressed in the canonical three dimensions. `CURRENT` describes the
+claim; evidence and verification describe what the analysis established. Claim
+IDs resolve in [claims.md](claims.md).
 
----
+| Area | Claim state | Evidence state | Verification state | Claim ID / defect | Problem |
+| --- | --- | --- | --- | --- | --- |
+| Candidate representation and identity | CURRENT | CORROBORATED | VERIFIED | `CAND-CLAIM-001` | priority formula is heuristic, not the documented value/cost model |
+| Candidate lifecycle | CURRENT | DIRECT | VERIFIED | `CAND-CLAIM-003` | `failed` is claimable; no terminal state |
+| Candidate claiming (atomicity at the claim site) | CURRENT | CORROBORATED | VERIFIED | `SCHED-CLAIM-001` | — |
+| Single-owner invariant (end to end) | CURRENT | CORROBORATED | **CONTRADICTED** | `SCHED-CLAIM-002` / D1 | re-queue path defeats ownership |
+| Scheduler | CURRENT | DIRECT | PARTIALLY_VERIFIED | `SCHED-CLAIM-003` | no fairness; pool not refilled (D2); O(n log n) per claim |
+| Retry semantics | CURRENT | DIRECT | PARTIALLY_VERIFIED | `SCHED-CLAIM-003`, `SCHED-CLAIM-004` | `failed` bypasses backoff (D3) |
+| Adaptive concurrency | CURRENT | DIRECT | **CONTRADICTED** | `SCHED-CLAIM-006` / D5 | counter changes; pool does not |
+| HTTP acquisition | CURRENT | CORROBORATED | VERIFIED | `ACQ-CLAIM-001` | transport hard-wired; no cancellation (`ACQ-CLAIM-003`) |
+| Observation on failure | CURRENT | CORROBORATED | VERIFIED | `ACQ-CLAIM-002` | — |
+| Recognition providers | CURRENT | CORROBORATED | VERIFIED | `ARCH-CLAIM-001` | multiple matches; confidences incomparable (`ARCH-CLAIM-009`) |
+| Protocol independence of providers | CURRENT (documented) | DIRECT | **CONTRADICTED** | `ARCH-CLAIM-002` | only recognition is an interface |
+| Candidate sources | CURRENT | DIRECT | VERIFIED | `CODE-027` | engine-internal, not an interface |
+| Candidate expansion | CURRENT | CORROBORATED | VERIFIED | `ARCH-CLAIM-003` | — |
+| Deduplication (candidates) | CURRENT | CORROBORATED | VERIFIED | `CAND-CLAIM-001` | in-flight window broken by D1 |
+| Deduplication (discoveries) | CURRENT | CORROBORATED | **CONTRADICTED** | `ARCH-CLAIM-004` / D9 | duplicates not merged |
+| Persistence | CURRENT | CORROBORATED | VERIFIED | `ARCH-CLAIM-005` | no transaction or reconciliation (`ARCH-CLAIM-006`) |
+| Provenance chain | CURRENT | CORROBORATED | VERIFIED | `PROV-CLAIM-002` | observations mutable (`PROV-CLAIM-006`) |
+| Content identity via fingerprints | SPECIFIED | DIRECT | **CONTRADICTED** | `PROV-CLAIM-003` / D8 | index never read |
+| Evidence graph, claims, conflicts | SPECIFIED | ABSENT | UNVERIFIED | `PROV-CLAIM-005` | designed in v0.16/v0.34 |
+| Coverage / absence / completeness | SPECIFIED | ABSENT | VERIFIED (as absent) | `SCOPE-CLAIM-003` | must never be claimed today |
+| Cross-context coordination | SPECIFIED | DIRECT | **CONTRADICTED** | `ARCH-CLAIM-008` / SCOPE-004 | per-instance ownership |
+| DVB / physical layer | NON-GOAL | ABSENT | VERIFIED (as absent) | `SCOPE-CLAIM-001` | analogy only; mechanically enforced |
+| v0.8–v0.35 design layers | PLANNED | INDIRECT | VERIFIED (as planned) | `PLAN-CLAIM-001` | planned ≠ implemented |
+
+Reading rule: `PLANNED + VERIFIED` means *the fact that it is planned is
+verified*; it never implies implementation.
 
 ## 4. Terminology Audit
 
@@ -318,7 +332,8 @@ Scope is now expressed in three tiers — Implemented, Partially implemented,
 Not implemented (designed and non-goal) — owned by
 [../prototype/scope.md](../prototype/scope.md). Summary:
 
-**Implemented** (verified against the artifact): seed generation; candidate
+Claim state `CURRENT`, evidence state `CORROBORATED`, verification state
+`VERIFIED` — i.e. present and demonstrated (see [claims.md](claims.md)): seed generation; candidate
 normalization; identity deduplication; resource-level acquisition guard;
 synchronous candidate claiming; worker pool; HTTP GET acquisition with timeout;
 content-type handling and sniffing; HTML/JSON/XML/CSS/JS/text/binary
@@ -328,14 +343,16 @@ error isolation; request budget; origin rate limiting; retry with backoff;
 decision ledger; graph edges; policy gating (GET-only, depth, disabled classes,
 scope).
 
-**Partially implemented** (real function, meaningful limitation): concurrency
+Claim state `CURRENT`, verification state `PARTIALLY_VERIFIED` — real function
+with a named limitation: concurrency
 (pool not refilled, D2), adaptive concurrency (no effect, D5), persistence (no
 transaction or reconciliation), retry (`failed` bypasses backoff, D3),
 termination (no completion criterion, D4), cancellation (cooperative only),
 content identity (fingerprints unused, D8), discovery accounting (duplicates
 not merged, D9), statistics (`acquired` dead, D7).
 
-**DESIGNED**: capability lattice, acquisition runtime, recognition runtime,
+Claim state `SPECIFIED` / `PLANNED`, evidence state `INDIRECT` — documented, not
+implemented: capability lattice, acquisition runtime, recognition runtime,
 candidate sources and controller, discovery domain and sessions, work items and
 frontier arbitration, evidence graph, resource identity resolution,
 classification axes, representations/artifacts/revisions, partitioning,
@@ -343,10 +360,10 @@ adaptive strategies, coverage, absence, goal-constrained discovery, query
 planner, tactics, enumeration, reconciliation, cost ledger, transactional
 persistence, multi-worker coordination, conflict resolution, replication.
 
-**FUTURE**: learned priority, cross-domain discovery, non-HTTP transports,
+Claim state `HYPOTHESIS`: learned priority, cross-domain discovery, non-HTTP transports,
 completeness claims.
 
-**NON-GOAL**: RF spectrum scanning; SDR and tuner control; DVB-S/S2, DVB-T/T2,
+Claim state `NON-GOAL`, evidence state `ABSENT` (inspected scope covered): RF spectrum scanning; SDR and tuner control; DVB-S/S2, DVB-T/T2,
 DVB-C demodulation; carrier synchronization; symbol-rate estimation; FEC
 decoding; MPEG-TS decoding; PSI/SI parsing; NIT-based discovery; general-purpose
 or unrestricted crawling; browser automation; replacing DVB tooling; claiming
@@ -369,7 +386,7 @@ Required invariant: **a candidate may have at most one active owner.**
 
 | Property | Verdict | Evidence |
 | --- | --- | --- |
-| `claimNextCandidate()` performs the ownership transition synchronously | PROVED [EVID:CODE-009, TEST-001] | no `await` in the method; sets `status='claimed'` before returning |
+| `claimNextCandidate()` performs the ownership transition synchronously | evidence CORROBORATED, verification VERIFIED — `SCHED-CLAIM-001` [EVID:CODE-009, TEST-001] | no `await` in the method; sets `status='claimed'` before returning |
 | Worker claims before its first suspension point | PROVED | `worker()` calls the claim, then `plan()`, then `markAcquiring()` synchronously before `await executePlan()` |
 | Two workers can obtain the same candidate via the claim function | no (single context) | eligibility filter excludes `claimed`/`planned`/`acquiring`/`observed` |
 | Two workers can obtain the same candidate at all | **yes — defect D1** [EVID:CONC-002, TEST-009] | `addCandidate()` returns the existing candidate on re-discovery; `queueCandidate()` re-queues it for any non-terminal state; measured 2–4 concurrent owners |
@@ -425,7 +442,7 @@ This is the first of the two mechanisms behind D9.
   diagnostics; they cannot fail the scan.
 * No provider references network, storage, scheduler or policy APIs.
 
-Violations found: none in the provider layer [EVID:CODE-014, CODE-015, TEST-002]. The acquisition plane is *not*
+Violations found: none in the provider layer — `ARCH-CLAIM-001`, evidence CORROBORATED, verification VERIFIED [EVID:CODE-014, CODE-015, TEST-002]. The acquisition plane is *not*
 pluggable (single hard-wired HTTP path), and candidate sources are engine methods
 rather than an interface — both are scope reductions relative to the design
 series and are labelled DESIGNED.
@@ -482,25 +499,26 @@ No protection is claimed that is not implemented.
 ## 12. Search-Space Analysis
 
 Canonical owner: [../architecture/search-space.md](../architecture/search-space.md).
-Summary of the verified position:
+Status in the three dimensions: claim state · evidence state · verification state.
 
-| Question | Answer (v0.7.1) | Status |
-| --- | --- | --- |
-| Finite space? | Not enumerable; bounded in practice by `maxCandidates` (750), `maxDepth` (5), scope (same origin) and budget (150 requests) | CURRENT |
-| Dynamically expanding? | Yes: recognition emits discoveries that emit candidates while workers run | CURRENT |
-| Growth control | Hard cap with silent drops; no rate control or throttle | CURRENT |
-| Duplicate suppression | Candidate identity `type:target`, resource guard, `visited` | CURRENT, defeated in flight (D1) and at discovery level (D9) |
-| Priority | Static heuristic over type, confidence, depth, attempts; no aging | CURRENT |
-| Termination | Empty eligible set, budget exhaustion, or `stop()`; no completion criterion | CURRENT (D4) |
-| Negative evidence | Not modelled; a failed acquisition is an observation | NOT IMPLEMENTED (v0.23) |
-| Coverage | Not measured; "exhausted" means "nothing eligible right now" | NOT IMPLEMENTED (v0.22) |
-| Revisiting | Yes while `queued`; yes after `failed` without bound (D3); no after `completed`/`skipped` | CURRENT |
-| Staleness | No TTL, expiry or revalidation | NOT IMPLEMENTED |
-| Historical knowledge | Persisted across reloads but never used for scoring | PARTIAL |
-| Exhaustive or opportunistic? | Opportunistic within bounds | CURRENT |
+| Question | Answer (v0.7.1) | Claim state | Evidence state | Verification state |
+| --- | --- | --- | --- | --- |
+| Finite space? | Not enumerable; bounded by caps (750 candidates, depth 5, same origin) and budget (150 requests) | CURRENT | DIRECT | VERIFIED |
+| Dynamically expanding? | Yes — recognition emits discoveries that emit candidates while workers run | CURRENT | DIRECT | VERIFIED |
+| Growth control | Hard cap with silent drops; no rate control or throttle | CURRENT | DIRECT | VERIFIED |
+| Duplicate suppression | Candidate identity `type:target`, resource guard, `visited` | CURRENT | CORROBORATED | PARTIALLY_VERIFIED — defeated in flight (D1) and at discovery level (D9) |
+| Priority | Static heuristic over type, confidence, depth, attempts; no aging | CURRENT | DIRECT | VERIFIED |
+| Termination | Empty eligible set, budget exhaustion or `stop()`; no completion criterion | CURRENT | CORROBORATED | PARTIALLY_VERIFIED — work can be stranded (D4) |
+| Negative evidence | Not modelled; a failed acquisition is an observation | SPECIFIED | ABSENT | VERIFIED (as absent) — designed v0.23 |
+| Coverage | Not measured; "exhausted" means "nothing eligible right now" | SPECIFIED | ABSENT | VERIFIED (as absent) — designed v0.22 |
+| Revisiting | While `queued`; after `failed` without bound (D3); never after `completed`/`skipped` | CURRENT | DIRECT | VERIFIED |
+| Staleness | No TTL, expiry or revalidation | SPECIFIED | ABSENT | VERIFIED (as absent) |
+| Historical knowledge | Persisted across reloads, never used for scoring | CURRENT | CORROBORATED | VERIFIED (persistence) / UNVERIFIED (influence) |
+| Exhaustive or opportunistic? | Opportunistic within bounds | CURRENT | INDIRECT | VERIFIED (as characterisation) |
 
 The prototype must never claim coverage, absence or completeness. The strongest
-accurate statements are those listed in §7 and in the search-space document.
+accurate statements remain those in [claims.md](claims.md), "Claims deliberately
+not made".
 
 ## 13. Proposed Repository Structure
 
@@ -749,6 +767,21 @@ and a persistence-failure path test.
 
 ---
 
+## Governance Record
+
+| Requirement | Where |
+| --- | --- |
+| Scope boundary (repository / artifact / verification / execution) | [scope-and-authorization.md](scope-and-authorization.md) §1 |
+| Scope escalations (two, both OPEN, neither silently expanded) | same, §2 |
+| Ownership and authorization matrix | same, §3, §7 |
+| Decision ownership (fact / interpretation / design / execution) | same, §4 |
+| Execution authorization contract (level, allowed, forbidden, rollback) | same, §5 |
+| Change-set boundary and discovered-change rule | same, §5 |
+| Pre-execution and post-execution checks, execution result | same, §6 |
+| Canonical status vocabulary and claim records | [claims.md](claims.md) |
+| Evidence items, access contract, negative evidence | [evidence-register.md](evidence-register.md) |
+| Executed and proposed changes | [change-register-2026-09-10.md](change-register-2026-09-10.md) |
+
 ## Final Audit Question
 
 > Can another engineer trace every important architectural conclusion back to
@@ -760,4 +793,5 @@ and a persistence-failure path test.
 | traceable to repository evidence | yes | every finding cites `[EVID:…]`; the register gives path, locator, source type, quality and status; `tools/verify.mjs` fails on a citation that does not resolve |
 | current reality vs proposed future state | yes | `VERIFIED CURRENT STATE` and `PROPOSED TARGET STATE` are recorded side by side in the change register and never merged without labels; every roadmap item is labelled DESIGNED / CONJECTURE / OPEN |
 | which changes were verified vs recommended | yes | executed documentation changes `R-001 … R-013` with post-refactor verification results; code changes `R-101 … R-112` marked **PLAN ONLY** with risk classes and priorities |
-| which conclusions are limited by access | yes | access classification FULL; the three residual verification limitations (DOM stub, representative ordering, harness-not-browser) are listed in the change register |
+| which conclusions are limited by access | yes | access classification FULL; two scope escalations and three residual verification limitations are recorded and marked OPEN in the governance record |
+| who authorized the changes | yes | authorization contract with level (A1/A2/A6/A7), allowed and forbidden operations, rollback strategy, and the explicit statement that A3/A4/A5 were not granted |

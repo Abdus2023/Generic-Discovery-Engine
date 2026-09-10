@@ -1,8 +1,10 @@
 # Prototype Limitations and Failure Modes
 
-Status: **CURRENT**. Every entry is either verified against the shipped artifact
-or marked ARGUMENT / OPEN. Nothing here describes a protection that does not
-exist.
+Claim state: `CURRENT`. Evidence state: `CORROBORATED` — static analysis plus
+executed checks. Verification state: `VERIFIED` for D1, D2, D3, D7, D8 (reproduced
+or statically proven); `PARTIALLY_VERIFIED` for D5, D6, D9 and for entries marked
+ARGUMENT; `UNVERIFIED` for entries marked OPEN. Nothing here describes a
+protection that does not exist.
 
 Evidence tools:
 

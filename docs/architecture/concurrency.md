@@ -1,8 +1,9 @@
 # Concurrency
 
-Status: **CURRENT**, with one proven violation of the stated invariant.
-Evidence: `tools/verify.mjs` (static) and `tools/simulate.mjs` (executes the
-shipped artifact under a browser shim).
+Claim state: `CURRENT`. Evidence state: `CORROBORATED` — `tools/verify.mjs`
+(static) and `tools/simulate.mjs` (executed under a browser shim). Verification
+state: `VERIFIED` for the claim operation, **`CONTRADICTED`** for the end-to-end
+single-owner invariant (D1), `UNVERIFIED` for any cross-context claim.
 
 ## The invariant
 

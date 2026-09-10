@@ -1,7 +1,11 @@
 # Discovery Model
 
-Status: **normative for the canonical loop**; each stage is labelled CURRENT
-(implemented in v0.7.1) or DESIGNED (prose only).
+Claim state: `CURRENT` for the stages marked CURRENT below, `SPECIFIED` for the
+stages marked DESIGNED. Evidence state: `DIRECT` (code) and `CORROBORATED`
+(executed checks). Verification state: `VERIFIED` for stage contracts and
+expansion ownership; `PARTIALLY_VERIFIED` for scheduler and acquisition stages,
+where defects D1–D4 are recorded in
+[../prototype/limitations.md](../prototype/limitations.md).
 
 ## The loop
 

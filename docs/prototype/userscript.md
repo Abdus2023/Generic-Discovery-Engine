@@ -1,7 +1,10 @@
 # Prototype: the userscript
 
-Status: **CURRENT**. This document describes the artifact as it exists, not as
-the design series intends it to become.
+Claim state: `CURRENT`. Evidence state: `DIRECT` — the artifact itself, plus the
+executed checks in `tools/verify.mjs`, `tools/checks.mjs` and
+`tools/simulate.mjs`. Verification state: `VERIFIED` for structure, version,
+configuration, components and export schema. This document describes the
+artifact as it exists, not as the design series intends it to become.
 
 ## Artifact
 

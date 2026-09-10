@@ -2,7 +2,19 @@
 
 Status boundary for the shipped userscript (v0.7.1). Statements here are
 verifiable against `prototype/generic-discovery-engine.user.js` with
-`tools/verify.mjs`.
+`tools/verify.mjs` and `tools/checks.mjs`.
+
+The tiers used below map onto the canonical status dimensions as follows; the
+tiers are shorthand for readers, and the claim records in
+[../analysis/claims.md](../analysis/claims.md) carry the full status.
+
+| Tier | Claim state | Evidence state | Verification state |
+| --- | --- | --- | --- |
+| Implemented | `CURRENT` | `DIRECT` or `CORROBORATED` | `VERIFIED` |
+| Partially implemented | `CURRENT` | `DIRECT` or `CORROBORATED` | `PARTIALLY_VERIFIED` or `CONTRADICTED` for the named limitation |
+| Not implemented (designed) | `SPECIFIED` / `PLANNED` | `INDIRECT` | `VERIFIED` as planned, `UNVERIFIED` as behaviour |
+| Not implemented (non-goal) | `NON-GOAL` | `ABSENT` | `VERIFIED` as absent |
+| Future | `HYPOTHESIS` | `INDIRECT` | `UNVERIFIED` |
 
 ## Implemented
 

@@ -1,6 +1,9 @@
 # Scheduler
 
-Status: **CURRENT**; DESIGNED improvements are labelled.
+Claim state: `CURRENT`; improvements are labelled DESIGNED (`SPECIFIED`).
+Evidence state: `DIRECT` (code). Verification state: `PARTIALLY_VERIFIED` —
+claiming is verified, while pool behaviour (D2), failure semantics (D3),
+termination (D4) and adaptive control (D5) are contradicted or partial.
 
 ## Responsibility
 

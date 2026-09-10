@@ -211,7 +211,8 @@ docs/
   prototype/                  artifact guide, strict scope, limitations + failure modes
   research/                   DVB blind-scan inspiration and analogy boundary
   roadmap/                    DESIGNED / CONJECTURE layers (v0.8 … v0.35)
-  analysis/                   repository review, evidence register, change register
+  analysis/                   repository review: evidence register, claim records,
+                              scope & authorization, change register
 archive/
   Userscript Discovery Prototype.md   raw design conversation (non-normative)
   Continue Architecture Planning.md   raw design conversation (non-normative)
@@ -238,10 +239,19 @@ node tools/simulate.mjs    # dynamic: runs the artifact under a browser shim
 or when a register row points at a path that does not exist. Known prototype
 defects are reported separately as `[DEFECT]` entries and do not fail the run.
 
-Results, evidence IDs and the change record:
-[docs/analysis/repository-analysis-2026-09-10.md](docs/analysis/repository-analysis-2026-09-10.md) ·
-[docs/analysis/evidence-register.md](docs/analysis/evidence-register.md) ·
-[docs/analysis/change-register-2026-09-10.md](docs/analysis/change-register-2026-09-10.md).
+Results and the audit trail:
+
+| Document | Content |
+| --- | --- |
+| [repository-analysis-2026-09-10.md](docs/analysis/repository-analysis-2026-09-10.md) | full review (18 sections) |
+| [evidence-register.md](docs/analysis/evidence-register.md) | 66 evidence items with locators, evidence states, frozen artifact digest |
+| [claims.md](docs/analysis/claims.md) | 40 canonical claim records: evidence state · claim state · verification state |
+| [scope-and-authorization.md](docs/analysis/scope-and-authorization.md) | scope boundary, ownership, authorization contract, pre/post-execution checks |
+| [change-register-2026-09-10.md](docs/analysis/change-register-2026-09-10.md) | executed changes R-001…R-015; code changes R-101…R-112 (PLAN ONLY) |
+
+Status in this repository is never a single word: evidence state (what we
+possess), claim state (what kind of statement it is) and verification state (what
+was established) are reported separately.
 
 ## Roadmap
 

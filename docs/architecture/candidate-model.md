@@ -1,6 +1,9 @@
 # Candidate Model
 
-Status: **CURRENT** (implemented in v0.7.1) unless marked otherwise.
+Claim state: `CURRENT` unless marked otherwise. Evidence state: `CORROBORATED`
+(code + executed checks). Verification state: `VERIFIED` for identity,
+lifecycle vocabulary and bounds; `CONTRADICTED` for the in-flight ownership
+window (D1) and for terminal failure semantics (D3).
 
 ## Definition
 

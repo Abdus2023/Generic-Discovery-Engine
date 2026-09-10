@@ -1,7 +1,10 @@
 # Provider Model
 
-Status: **CURRENT** for recognition providers; **DESIGNED** for acquisition and
-candidate-source providers.
+Claim state: `CURRENT` for recognition providers; `SPECIFIED` for acquisition
+and candidate-source providers. Evidence state: `CORROBORATED` (code + executed
+matching checks). Verification state: `VERIFIED` for the provider boundary and
+matching rules; `CONTRADICTED` for the claim that providers are
+protocol-independent (acquisition is one HTTP path).
 
 ## Three planes
 

@@ -1,8 +1,11 @@
 # Search Space
 
-Status: **CURRENT** for everything in "What the prototype does today";
-**DESIGNED** where marked. This document owns the question *"what is being
-searched, and what bounds it?"* — no other document redefines it.
+Claim state: `CURRENT` for the sections describing today's behaviour,
+`SPECIFIED`/`PLANNED` where marked. Evidence state: `DIRECT` (code) and
+`CORROBORATED` (executed checks). Verification state: `VERIFIED` for bounds and
+termination triggers, `PARTIALLY_VERIFIED` for duplicate suppression.
+This document owns the question *"what is being searched, and what bounds
+it?"* — no other document redefines it.
 
 ## Model
 
