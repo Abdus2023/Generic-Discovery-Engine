@@ -171,8 +171,7 @@ execution_verification:             # whether the resulting state conforms
 **EXECUTED + EXECUTION-VERIFIED**: documentation, analysis and tooling artifacts
 `R-001 … R-022`.
 
-Commit history of the change set (the commit that carries this line is the one
-whose tree these digests describe):
+Commit history of the change set, through the commit preceding this line:
 
 ```text
 754683e 2026-09-10 Brief 11 (R-022): separate the structural schema from the policy registries
