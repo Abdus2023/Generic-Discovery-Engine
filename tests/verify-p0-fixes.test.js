@@ -15,7 +15,7 @@ describe('static patch presence (dist/generic-discovery-engine.user.js)', () => 
     const file = fs.readFileSync(path.join(import.meta.dirname, '../dist/generic-discovery-engine.user.js'), 'utf8');
 
     it('version bumped to 0.7.2+', () => {
-        assert.match(file, /@version\s+0\.7\.[23]/);
+        assert.match(file, /@version\s+0\.7\.[234]/);
         assert.match(file, /version:\s*8/);
     });
     it('P0-1 liveCount fix present', () => {
@@ -37,6 +37,17 @@ describe('static patch presence (dist/generic-discovery-engine.user.js)', () => 
     it('P1-2 batch dedup present', () => {
         assert.match(file, /tryDiscover/);
         assert.match(file, /seen\.has\(key\)/);
+    });
+    it('P2-3 coverage metrics present', () => {
+        assert.match(file, /getCoverageMetrics/);
+        assert.match(file, /frontierSize/);
+        assert.match(file, /queuedByType/);
+    });
+    it('P2-6 hardening present', () => {
+        assert.match(file, /@connect\s+self/);
+        assert.match(file, /stripSensitiveParams/);
+        assert.match(file, /csp-blocks-bridge/);
+        assert.match(file, /config-cross-origin-requires-connect-star/);
     });
     it('node syntax still valid', async () => {
         const { execSync } = await import('node:child_process');

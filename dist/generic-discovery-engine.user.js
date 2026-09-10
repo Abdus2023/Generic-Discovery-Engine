@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Generic Discovery Engine
 // @namespace    generic-discovery
-// @version      0.7.3
+// @version      0.7.4
 // @description  Generic web-resource discovery engine inspired by the architecture of DVB blind scanning.
 // @match        *://*/*
 // @run-at       document-start
@@ -9,7 +9,8 @@
 // @grant        GM_getValue
 // @grant        GM_setValue
 // @grant        GM_xmlhttpRequest
-// @connect      *
+// @connect      self
+// @connect      *  — uncomment if CONFIG.sameOriginOnly=false (cross-origin); default same-origin keeps self
 // ==/UserScript==
 
 (function () {
@@ -18,6 +19,15 @@
     /*
      * ============================================================
      * Generic Discovery Engine
+     * v0.7.4 — Hardening & Hygiene (P2-6 privacy/CSP/header + ADR split)
+     *
+     * Patch notes vs v0.7.3:
+     * - P2-6: @connect self (with * commented for cross-origin opt-in)
+     *         + CONFIG.privacy.stripSensitiveParams (opt-in token/
+     *           session/auth scrub in canonicalizeUrl) + explicit
+     *           csp-blocks-bridge diagnostic + cross-origin-config
+     *           warning at init when sameOriginOnly=false
+     *
      * v0.7.3 — Coverage Frontier + E2E Verified (P0/P1/P2-3)
      *
      * Patch notes vs v0.7.2:
@@ -80,6 +90,20 @@
 
         sameOriginOnly: true,
         stripTrackingParams: true,
+
+        privacy: {
+            stripSensitiveParams: false,
+            sensitiveKeys: [
+                /^token$/i,
+                /^session$/i,
+                /^auth$/i,
+                /^sid$/i,
+                /^access_token$/i,
+                /^api_key$/i,
+                /^apikey$/i,
+                /^secret$/i
+            ]
+        },
 
         maxDepth: 5,
 
@@ -234,6 +258,20 @@
 
                 for (const key of [...url.searchParams.keys()]) {
                     if (tracking.some(rx => rx.test(key))) {
+                        url.searchParams.delete(key);
+                    }
+                }
+            }
+
+            if (CONFIG.privacy?.stripSensitiveParams) {
+                const sensitive =
+                    CONFIG.privacy.sensitiveKeys || [];
+                for (const key of [...url.searchParams.keys()]) {
+                    if (
+                        sensitive.some(rx =>
+                            rx.test(key)
+                        )
+                    ) {
                         url.searchParams.delete(key);
                     }
                 }
@@ -3608,14 +3646,27 @@
                     }
                 );
             } catch (error) {
+                const msg = String(error);
                 this.engine.ledger
                     .recordDiagnostic(
                         'network-bridge-error',
                         {
-                            error:
-                                String(error)
+                            error: msg
                         }
                     );
+                if (
+                    /Content[- ]Security[- ]Policy|CSP|Refused to execute/i.test(
+                        msg
+                    )
+                ) {
+                    this.engine.ledger.recordDiagnostic(
+                        'csp-blocks-bridge',
+                        {
+                            error: msg,
+                            hint: 'page CSP blocks inline script; network bridge disabled, PerformanceObserver remains'
+                        }
+                    );
+                }
             }
         }
 
@@ -3857,6 +3908,19 @@
                         CONFIG.version
                 }
             );
+
+            if (!CONFIG.sameOriginOnly) {
+                this.ledger.recordDiagnostic(
+                    'config-cross-origin-requires-connect-star',
+                    {
+                        sameOriginOnly: false,
+                        hint: 'set @connect * for cross-origin fetch'
+                    }
+                );
+                warn(
+                    'sameOriginOnly=false — ensure @connect * is enabled'
+                );
+            }
 
             this.installUI();
 
