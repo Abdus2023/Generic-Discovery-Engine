@@ -1,396 +1,230 @@
 # Generic Discovery Engine
- 
-A browser-based discovery engine inspired by the architecture of **DVB blind scanning**.
- 
-The project explores whether the fundamental pattern behind blind discovery in digital broadcasting can be generalized to other information-acquisition domains.
- 
-The prototype applies that pattern to web resources:
- `Candidate     ↓ Probe / Acquisition     ↓ Observation     ↓ Recognition     ↓ Discovery     ↓ Candidate Expansion     ↓ Scheduler     ↺ ` 
-## Core Idea
- 
-A DVB blind scanner does not begin with complete knowledge of the available services.
- 
-It searches a parameter space, detects potentially interesting signals, attempts acquisition, validates what it receives, extracts metadata, and uses that metadata to discover additional resources.
- 
-This project generalizes that control pattern:
- `DVB Blind Scan              Generic Discovery  Frequency                   Candidate     ↓                           ↓ Signal detection             Probe     ↓                           ↓ Demodulator acquisition      Observation     ↓                           ↓ Transport validation         Recognition     ↓                           ↓ PSI/SI metadata              Metadata     ↓                           ↓ Network discovery            Candidate expansion ` 
-The goal is **not** to implement a DVB receiver in JavaScript.
- 
-The goal is to investigate the **generic discovery algorithm underlying blind scanning**.
-  
+
+A browser userscript that explores a web origin as an *unknown search space*:
+it proposes candidates, acquires them, recognizes what came back, and uses the
+result to propose more candidates.
+
+The architecture is inspired by **DVB blind scanning** — a receiver searching an
+unknown spectrum, locking onto carriers, reading metadata, and using that
+metadata to discover further services. The inspiration is structural only.
+**This project contains no DVB, RF, tuner, or demodulation code and is not
+DVB-compatible.** See [docs/research/dvb-blind-scan-inspiration.md](docs/research/dvb-blind-scan-inspiration.md).
+
+## Concept
+
+Blind discovery is a control loop over incomplete knowledge:
+
+```
+Candidate → Acquisition → Observation → Recognition → Discovery → Candidate Expansion → Scheduler ↺
+```
+
+A *candidate* is a hypothesis ("this is worth investigating"), not a fact. An
+*observation* is what acquisition actually produced, including failures. A
+*discovery* is an interpretation of an observation. Discoveries generate new
+candidates, which is what makes the search space grow while it is being searched.
+
+## Current Status
+
+| Item | State |
+| --- | --- |
+| Working prototype | **Yes** — one userscript, `prototype/generic-discovery-engine.user.js` (v0.7.1) |
+| Verified behaviour | claiming, acquisition, recognition, expansion, persistence, export (see [docs/prototype/userscript.md](docs/prototype/userscript.md)) |
+| Known defects | 7 documented defects (D1–D7) in the prototype — see [docs/prototype/limitations.md](docs/prototype/limitations.md) |
+| Architecture beyond v0.7.1 | **Design only** — v0.8 … v0.35 exist as prose, with no implementation |
+| Tests | `tools/verify.mjs` (static) and `tools/simulate.mjs` (headless behavioural harness) |
+
+Nothing in this repository is a production crawler, and no version after
+v0.7.1 exists as code.
+
 ## Current Prototype
- 
-The current implementation is a Tampermonkey/Greasemonkey userscript.
- 
-It can:
- 
- 
-- generate URL candidates
- 
-- maintain a priority queue
- 
-- concurrently acquire candidates
- 
-- prevent concurrent workers from claiming the same candidate
- 
-- record observations
- 
-- recognize different response types
- 
-- extract new candidates
- 
-- preserve candidate provenance
- 
-- deduplicate candidates
- 
-- persist discovery state
- 
-- export discovery results
- 
-- recursively expand the search space
- 
 
- 
-Current response providers:
- `HTTP Response      │      ├── HTML Provider      │      ├── links      │      └── resources      │      ├── JSON Provider      │      └── URL-like values      │      └── Text Provider             └── HTTP(S) URLs `  
+`prototype/generic-discovery-engine.user.js` is a single Tampermonkey /
+Greasemonkey userscript (v0.7.1, ~4.3k lines) that:
+
+- seeds the frontier with the current page URL and with DOM links/scripts/frames
+- observes page network activity (fetch/XHR bridge + PerformanceObserver)
+- canonicalizes and deduplicates candidate URLs
+- schedules candidates by weighted priority
+- claims a candidate atomically *before* any `await`
+- acquires candidates over HTTP with timeouts, per-origin limits and a global request budget
+- recognizes responses with seven providers: HTML, JSON, XML, CSS, JavaScript, text, binary
+- converts recognized URLs into new candidates (bounded by depth and candidate caps)
+- records candidates, observations, discoveries, resources and an append-only decision ledger
+- persists state through `GM_setValue`/`GM_getValue` (or `localStorage`) with size caps
+- exports a JSON snapshot and shows a small on-page control panel
+
 ## Architecture
- `                     ┌─────────────────────┐                      │   Discovery Engine  │                      └──────────┬──────────┘                                 │                      ┌──────────▼──────────┐                      │      Scheduler      │                      └──────────┬──────────┘                                 │                      ┌──────────▼──────────┐                      │      Candidate      │                      └──────────┬──────────┘                                 │                      ┌──────────▼──────────┐                      │    Acquisition      │                      │       Adapter       │                      └──────────┬──────────┘                                 │                      ┌──────────▼──────────┐                      │     Observation     │                      └──────────┬──────────┘                                 │                      ┌──────────▼──────────┐                      │  Provider Registry  │                      └──────────┬──────────┘                                 │                  ┌──────────────┼──────────────┐                  ▼              ▼              ▼              HTML           JSON            Text              Provider       Provider        Provider                  │              │              │                  └──────────────┼──────────────┘                                 ▼                          ┌─────────────┐                          │ Discovery   │                          └──────┬──────┘                                 │                          New Candidates                                 │                                 └──────────► Scheduler `  
-## Candidate Lifecycle
- 
-Candidates move through explicit ownership states:
- `QUEUED    │    ▼ CLAIMED    │    ├───────────────┐    ▼               ▼ COMPLETED        FAILED ` 
-The critical invariant is:
- `A candidate may have at most one active owner. ` 
-Candidate claiming is performed synchronously before asynchronous network acquisition:
- `worker   │   ├── claim candidate   │   └── await HTTP request ` 
-This prevents multiple concurrent workers from selecting the same candidate.
-  
-## Discovery Model
- 
-The system distinguishes several concepts that are often incorrectly collapsed into one object.
- 
-### Candidate
- 
-Something the engine intends to investigate.
- `Candidate {     target     type     priority     origin     parent } ` 
-### Observation
- 
-What acquisition actually produced.
- `Observation {     candidate     HTTP status     content type     body     errors } ` 
-### Discovery
- 
-A validated interpretation of an observation.
- `Discovery {     kind     confidence     data     provenance } ` 
-This separation allows the same candidate to have different observations over time and allows discoveries to retain evidence about how they were obtained.
-  
-## Provenance
- 
-Candidate generation is recorded.
- 
-For example:
- `initial page      │      ▼ HTML document      │      ├── link A      ├── link B      └── resource C              │              ▼         JSON response              │              └── URL D ` 
-The resulting discovery graph can therefore answer:
- 
- 
-Why did the engine investigate this resource?
- 
- 
-rather than merely reporting:
- 
- 
-This resource was found.
- 
-  
-## Search Strategy
- 
-The prototype currently uses priority-based scheduling.
- 
-Conceptually:
- `priority(candidate) =     estimated_value     × estimated_probability     ÷ acquisition_cost ` 
-The current implementation uses simpler heuristic priorities, but the architecture leaves room for more sophisticated search strategies.
- 
-Potential future strategies include:
- `Exhaustive Energy/Signal-inspired Priority-first Historical Metadata-guided Breadth-first Depth-first Adaptive Hybrid `  
-## Generic Discovery Loop
- 
-The fundamental algorithm is:
- `initialize search space  while candidates remain:      candidate ← scheduler.claim()      observation ← acquire(candidate)      provider ← recognize(observation)      if provider accepts observation:          discovery ← provider.discover(observation)          store discovery          candidates ← provider.expand(discovery)          enqueue candidates      mark candidate complete ` 
-The important operation is the feedback loop:
- `Observation     ↓ Discovery     ↓ New knowledge     ↓ New candidates ` 
-This transforms discovery from a static list traversal into an **adaptive search process**.
-  
+
+Three planes exist in the prototype. Only the first two are implemented as
+interfaces; candidate sources are currently methods on the engine.
+
+```
+                     ┌─────────────────────┐
+                     │  Discovery Engine   │
+                     └──────────┬──────────┘
+                                │
+                     ┌──────────▼──────────┐
+                     │      Scheduler      │
+                     └──────────┬──────────┘
+                                │
+                     ┌──────────▼──────────┐
+                     │      Candidate      │
+                     └──────────┬──────────┘
+                                │
+                     ┌──────────▼──────────┐
+                     │  Acquisition (HTTP) │
+                     └──────────┬──────────┘
+                                │
+                     ┌──────────▼──────────┐
+                     │     Observation     │
+                     └──────────┬──────────┘
+                                │
+                     ┌──────────▼──────────┐
+                     │  Provider Registry  │
+                     └──────────┬──────────┘
+                                │
+          ┌──────────┬──────────┼──────────┬──────────┐
+          ▼          ▼          ▼          ▼          ▼
+        HTML       JSON       XML/CSS      JS        Text
+          │          │          │          │          │
+          └──────────┴──────────┼──────────┴──────────┘
+                                ▼
+                           Discovery
+                                │
+                        Candidate Expansion
+                                │
+                                └────────────► Scheduler
+```
+
+Responsibilities, boundaries and failure modes are specified in
+[docs/architecture/](docs/architecture/discovery-model.md).
+
+## Discovery Loop
+
+```
+initialize search space
+while a candidate is claimable:
+    candidate   ← scheduler.claim()          synchronous ownership transition
+    plan        ← policy.plan(candidate)     may deny (non-GET, depth, type)
+    observation ← acquisition.execute(plan)  network, non-deterministic
+    discovery[] ← provider.recognize(...)    interpretation, deterministic
+    enqueue candidates derived from discovery
+    mark candidate completed / retried / failed
+```
+
+The loop is real but bounded: the prototype stops when no candidate is
+*currently* eligible, when the request budget is exhausted, or when stopped
+manually. Design-only material about coverage, completeness, and adaptive
+strategy lives in [docs/roadmap/future-architecture.md](docs/roadmap/future-architecture.md).
+
+## Concurrency Invariant
+
+> A candidate may have at most one active owner.
+
+The claim operation is synchronous — it marks a candidate `claimed` before the
+worker performs any `await` — so the browser event loop cannot interleave two
+claims for the same candidate. This is *not* a distributed lock; it is safe only
+because JavaScript runs to completion between awaits, and only within one
+execution context.
+
+**The end-to-end invariant does not hold in v0.7.1.** Re-discovering a URL that
+is still in flight re-queues the existing candidate, so the same candidate can be
+acquired twice. This is reproduced deterministically by `tools/simulate.mjs`.
+Details: [docs/architecture/concurrency.md](docs/architecture/concurrency.md),
+evidence and severity: [docs/prototype/limitations.md](docs/prototype/limitations.md).
+
+## Provider Model
+
+Providers interpret an observation; they do not perform I/O, schedule work, or
+enqueue candidates.
+
+| Provider | Recognizes | Emits candidate kinds |
+| --- | --- | --- |
+| `HtmlProvider` | HTML documents | links, frames, scripts, media, form actions, metadata URLs |
+| `JsonProvider` | JSON bodies | URL-like string values |
+| `XmlProvider` | XML bodies | `loc`/location values |
+| `CssProvider` | CSS bodies | `url(...)` references |
+| `JavaScriptProvider` | script bodies | string-literal URLs |
+| `TextProvider` | plain text | HTTP(S) URLs |
+| `BinaryProvider` | binary content types | nothing (recognizes, emits no candidates) |
+
+Contract: `matches(observation)` and `recognize(candidate, observation) → Discovery[]`.
+Candidate expansion is performed by the engine from `Discovery.data.url`, which is
+why providers stay replaceable. See [docs/architecture/provider-model.md](docs/architecture/provider-model.md).
+
 ## Scope
- 
-### This repository currently implements
- 
- 
-- browser-side discovery
- 
-- URL candidate generation
- 
-- concurrent HTTP acquisition
- 
-- candidate ownership
- 
-- response recognition
- 
-- HTML discovery
- 
-- JSON discovery
- 
-- text discovery
- 
-- recursive candidate expansion
- 
-- provenance
- 
-- deduplication
- 
-- persistent state
- 
-- JSON export
- 
 
- 
-### This repository does not currently implement
- 
- 
-- RF spectrum scanning
- 
-- SDR hardware access
- 
-- DVB tuner control
- 
-- DVB-S/S2 demodulation
- 
-- DVB-T/T2 demodulation
- 
-- DVB-C demodulation
- 
-- carrier synchronization
- 
-- symbol-rate estimation
- 
-- FEC decoding
- 
-- MPEG transport-stream decoding
- 
-- DVB PSI/SI parsing
- 
-- NIT-based DVB discovery
- 
+**Implemented** — URL candidate generation, deduplication, priority scheduling,
+single-context candidate claiming, HTTP GET acquisition, timeouts, response
+recognition (HTML/JSON/XML/CSS/JS/text/binary), candidate expansion, depth and
+budget limits, provenance records, persistence, JSON export, control panel.
 
- 
-Therefore:
- 
- 
-**This is DVB-inspired, not DVB-compatible.**
- 
- 
-The analogy concerns the **discovery architecture**, not the physical-layer implementation.
-  
-## Why DVB Blind Scan?
- 
-DVB blind scanning provides a useful model because the receiver begins with incomplete information.
- 
-It must:
- 
- 
-1. search an unknown space
- 
-2. detect candidates
- 
-3. test hypotheses
- 
-4. validate observations
- 
-5. extract structured information
- 
-6. discover additional candidates
- 
-7. avoid duplicate work
- 
-8. continue until the search space is sufficiently covered
- 
+**Not implemented** — RF spectrum scanning, SDR or tuner control, DVB-S/S2,
+DVB-T/T2 or DVB-C demodulation, carrier synchronization, symbol-rate estimation,
+FEC decoding, MPEG transport-stream decoding, DVB PSI/SI parsing, NIT-based
+discovery.
 
- 
-That pattern appears in many other domains.
- 
-Possible applications include:
- `Web discovery Document discovery Repository discovery API discovery Service discovery Network resource discovery Device discovery Knowledge-base acquisition Digital archive discovery ` 
-The project investigates whether these can share a common discovery substrate.
-  
-## Design Principles
- 
-### 1. Discovery is not acquisition
- `Acquisition → produces observations  Recognition → interprets observations  Discovery → creates knowledge ` 
-### 2. Candidates are hypotheses
- 
-A candidate means:
- 
- 
-"This is worth investigating."
- 
- 
-It does not mean:
- 
- 
-"This resource exists."
- 
- 
-### 3. Observations are evidence
- 
-A failed acquisition is still an observation.
- 
-### 4. Metadata expands the search space
- 
-Discovery is recursive.
- 
-### 5. Provenance matters
- 
-Every discovery should retain its origin.
- 
-### 6. Concurrency requires explicit ownership
- 
-Workers must claim work before performing asynchronous operations.
- 
-### 7. Providers should be replaceable
- 
-HTML, JSON, text, APIs, documents, and other protocols should not require rewriting the scheduler.
- 
-### 8. The search engine should remain protocol-independent
- 
-Protocol-specific knowledge belongs in providers/adapters.
-  
-## Roadmap
- 
-### Phase 0 — Prototype
- 
- 
-- [x] candidate model
- 
-- [x] scheduler
- 
-- [x] concurrent acquisition
- 
-- [x] atomic candidate claiming
- 
-- [x] observation model
- 
-- [x] discovery model
- 
-- [x] provenance
- 
-- [x] HTML provider
- 
-- [x] JSON provider
- 
-- [x] text provider
- 
-- [x] persistent state
- 
-- [x] export
- 
+**Designed but not implemented** — capability-aware acquisition, work items and
+frontier arbitration, evidence graph, resource identity resolution, coverage and
+completeness claims, negative evidence, adaptive strategy learning, leases and
+fencing, multi-context coordination, transactional persistence.
 
- 
-### Phase 1 — Discovery Core
- 
- 
-- [ ] formal provider interface
- 
-- [ ] candidate fingerprints
- 
-- [ ] observation fingerprints
- 
-- [ ] configurable retry policy
- 
-- [ ] candidate expiration
- 
-- [ ] discovery confidence model
- 
-- [ ] search-space coverage metrics
- 
-- [ ] event stream
- 
-- [ ] structured logging
- 
-
- 
-### Phase 2 — Web Intelligence
- 
- 
-- [ ] HTTP headers provider
- 
-- [ ] XML provider
- 
-- [ ] RSS/Atom provider
- 
-- [ ] JavaScript resource provider
- 
-- [ ] sitemap provider
- 
-- [ ] robots.txt provider
- 
-- [ ] API/JSON-LD provider
- 
-- [ ] document-link provider
- 
-- [ ] URL pattern inference
- 
-
- 
-### Phase 3 — Adaptive Search
- `Blind discovery       ↓ Observation       ↓ Inference       ↓ Candidate ranking       ↓ Guided discovery       ↓ New observations ` 
-Potential additions:
- 
- 
-- adaptive priority
- 
-- search-space partitioning
- 
-- negative evidence
- 
-- candidate clustering
- 
-- historical knowledge
- 
-- change detection
- 
-- active exploration
- 
-
- 
-### Phase 4 — Generic Acquisition Framework
- 
-Separate the browser implementation into:
- `Discovery Core      │      ├── Candidate Store      ├── Scheduler      ├── Evidence Store      ├── Provenance Graph      └── Discovery Graph  Acquisition Adapters      │      ├── HTTP      ├── Browser DOM      ├── Browser APIs      └── External sources  Recognition Providers      │      ├── HTML      ├── JSON      ├── XML      ├── Documents      └── Domain-specific protocols `  
 ## Non-Goals
- 
-This project is not intended to become:
- 
- 
-- a general-purpose web crawler clone
- 
-- a browser automation framework
- 
-- an RF scanner implemented in JavaScript
- 
-- an unrestricted Internet crawler
- 
-- a replacement for specialized DVB software
- 
 
- 
-The purpose is to investigate a **general discovery architecture**.
-  
-## Conceptual Formula
- 
-The project can be summarized as:
- 
-[ \boxed{ Candidate \rightarrow Observation \rightarrow Evidence \rightarrow Discovery \rightarrow Candidate\ Expansion } ]
- 
-Or more compactly:
- `SEARCH   ↓ PROBE   ↓ OBSERVE   ↓ RECOGNIZE   ↓ DISCOVER   ↓ EXPAND   ↺ ` 
-DVB blind scanning is the motivating example.
- 
-The intended destination is a **generic, adaptive discovery engine**.
+- a general-purpose web crawler clone, or an unrestricted Internet crawler
+- a browser automation framework
+- an RF/DVB scanner implemented in JavaScript
+- a replacement for specialized DVB software
+- a system that claims completeness of the open web
+
+## Repository Structure
+
+```
+README.md                     ← you are here (concept, status, scope, index)
+prototype/
+  generic-discovery-engine.user.js   the only implementation artifact (v0.7.1)
+docs/
+  glossary.md                 canonical terminology
+  architecture/               stable design: discovery model, candidates, scheduler,
+                              providers, provenance, concurrency
+  prototype/                  artifact guide, strict scope, limitations + failure modes
+  research/                   DVB blind-scan inspiration and analogy boundary
+  roadmap/                    DESIGNED / CONJECTURE layers (v0.8 … v0.35)
+  analysis/                   repository review: contradictions, duplication, decisions
+archive/
+  Userscript Discovery Prototype.md   raw design conversation (non-normative)
+  Continue Architecture Planning.md   raw design conversation (non-normative)
+tools/
+  verify.mjs                  static checks: code vs documentation claims
+  simulate.mjs                headless harness that executes the shipped artifact
+```
+
+The two files in `archive/` are the unedited source conversations. They are
+**historical evidence, not specifications**; everything normative lives in
+`docs/` and `prototype/`.
+
+## Verification
+
+```bash
+node tools/verify.mjs      # static: claims vs artifact, scope, doc links
+node tools/simulate.mjs    # dynamic: runs the artifact under a browser shim
+```
+
+`tools/verify.mjs` exits non-zero when documentation and code disagree.
+Known prototype defects are reported separately as `[DEFECT]` entries and do not
+fail the run. Current results are recorded in
+[docs/analysis/repository-analysis-2026-09-10.md](docs/analysis/repository-analysis-2026-09-10.md).
+
+## Roadmap
+
+| Stage | Content | Status |
+| --- | --- | --- |
+| v0.7.1 | acquisition planning, decision ledger, seven providers, persistence | implemented |
+| v0.8 – v0.13 | capabilities, acquisition runtime, recognition runtime, candidate sources, discovery controller | design only |
+| v0.14 – v0.19 | search domain, sessions, work items, evidence graph, resource identity, classification | design only |
+| v0.20 – v0.27 | partitioning, strategy learning, coverage, absence, query planning, tactics, enumeration | design only |
+| v0.28 – v0.35 | reconciliation, frontier arbitration, cost ledger, crash recovery, multi-context coordination | design only |
+
+Do not read the roadmap as a description of the current system. Each stage is
+labelled DESIGNED, CONJECTURE or OPEN in
+[docs/roadmap/future-architecture.md](docs/roadmap/future-architecture.md).
