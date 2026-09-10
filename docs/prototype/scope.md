@@ -58,9 +58,10 @@ gap that limits it.
 
 ### Explicitly absent (non-goals)
 
-These capabilities are absent by design, not by omission. They are asserted
-mechanically: `tools/verify.mjs` fails if such a symbol ever appears in the
-artifact.
+These capabilities are absent by design, not by omission. No implementation of
+them was found in the inspected scope (ABSENCE_VERIFIED, [EVID:SCOPE-001]: the
+entire implementation is one file, read in full and scanned mechanically), and
+`tools/verify.mjs` fails if such a symbol ever appears in the artifact.
 
 ```
 RF spectrum scanning        NO      carrier synchronization      NO
@@ -126,5 +127,5 @@ never demodulation or transport decoding. See
 | --- | --- |
 | Implemented | `tools/verify.mjs` (static: methods, providers, contracts) and `tools/checks.mjs` (behaviour: dedup, providers, provenance, persistence) |
 | Partially implemented | `tools/simulate.mjs` reproduces D1/D2/D4/D9; `tools/verify.mjs` reports D3/D7/D8 |
-| Not implemented (designed) | `tools/verify.mjs` symbol scan for design-only layers |
+| Not implemented (designed) | `tools/verify.mjs` symbol scan for design-only layers (ABSENCE_VERIFIED, [EVID:SCOPE-002]) |
 | Not implemented (non-goal) | `tools/verify.mjs` symbol scan for DVB/RF terms |

@@ -211,7 +211,7 @@ docs/
   prototype/                  artifact guide, strict scope, limitations + failure modes
   research/                   DVB blind-scan inspiration and analogy boundary
   roadmap/                    DESIGNED / CONJECTURE layers (v0.8 … v0.35)
-  analysis/                   repository review: contradictions, duplication, decisions
+  analysis/                   repository review, evidence register, change register
 archive/
   Userscript Discovery Prototype.md   raw design conversation (non-normative)
   Continue Architecture Planning.md   raw design conversation (non-normative)
@@ -233,10 +233,15 @@ node tools/checks.mjs      # behaviour: dedup, provider selection, provenance, p
 node tools/simulate.mjs    # dynamic: runs the artifact under a browser shim
 ```
 
-`tools/verify.mjs` exits non-zero when documentation and code disagree.
-Known prototype defects are reported separately as `[DEFECT]` entries and do not
-fail the run. Current results are recorded in
-[docs/analysis/repository-analysis-2026-09-10.md](docs/analysis/repository-analysis-2026-09-10.md).
+`tools/verify.mjs` exits non-zero when documentation and code disagree, when a
+`[EVID:…]` citation does not resolve to the [evidence register](docs/analysis/evidence-register.md),
+or when a register row points at a path that does not exist. Known prototype
+defects are reported separately as `[DEFECT]` entries and do not fail the run.
+
+Results, evidence IDs and the change record:
+[docs/analysis/repository-analysis-2026-09-10.md](docs/analysis/repository-analysis-2026-09-10.md) ·
+[docs/analysis/evidence-register.md](docs/analysis/evidence-register.md) ·
+[docs/analysis/change-register-2026-09-10.md](docs/analysis/change-register-2026-09-10.md).
 
 ## Roadmap
 
@@ -259,6 +264,8 @@ acquire, validate, read metadata, discover more — not the physical layer. The
 analogy matrix and its limits are owned by
 [docs/research/dvb-blind-scan-inspiration.md](docs/research/dvb-blind-scan-inspiration.md).
 
-**DVB-inspired, not DVB-compatible.** There is no RF, tuner, demodulator, FEC,
-transport-stream or PSI/SI code; `tools/verify.mjs` fails if any such symbol
-appears.
+**DVB-inspired, not DVB-compatible.** No RF, tuner, demodulator, FEC,
+transport-stream or PSI/SI implementation was found in the inspected repository
+scope (ABSENCE_VERIFIED — the entire implementation is one 4,290-line file, read
+in full and scanned mechanically; [EVID:SCOPE-001]). `tools/verify.mjs` fails if
+such a symbol is ever introduced.

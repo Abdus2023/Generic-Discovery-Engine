@@ -281,11 +281,85 @@ if (futureHits.length === 0) pass('no later-design layers present', 'v0.8+ archi
 else fail('no later-design layers present', futureHits.join(', '));
 
 /* -------------------------------------------------------------------------- */
+/* 7b. Evidence traceability                                                  */
+/* -------------------------------------------------------------------------- */
+
+{
+  const registerPath = path.join(ROOT, 'docs', 'analysis', 'evidence-register.md');
+  if (!fs.existsSync(registerPath)) {
+    fail('evidence register exists', 'docs/analysis/evidence-register.md missing');
+  } else {
+    const register = fs.readFileSync(registerPath, 'utf8');
+
+    // every "| ID |" row in the register tables
+    const defined = new Set(
+      [...register.matchAll(/^\|\s*((?:CODE|TEST|DOC|CFG|HIST|ARCH|SCOPE|CONC|PROV|FAIL)-\d{3})\s*\|/gm)]
+        .map(m => m[1])
+    );
+
+    if (defined.size === 0) fail('evidence register defines IDs', 'no ID rows found');
+    else info('evidence IDs defined', `${defined.size} ids`);
+
+    // every citation in every markdown document
+    const cited = new Map();
+    const mdFiles = [];
+    const walk = (dir) => {
+      for (const entry of fs.readdirSync(dir, { withFileTypes: true })) {
+        const full = path.join(dir, entry.name);
+        if (entry.isDirectory()) {
+          if (entry.name !== '.git') walk(full);
+        } else if (entry.name.endsWith('.md')) mdFiles.push(full);
+      }
+    };
+    walk(ROOT);
+
+    for (const file of mdFiles) {
+      const text = fs.readFileSync(file, 'utf8');
+      for (const m of text.matchAll(/\[EVID:([A-Z0-9-]+)\]/g)) {
+        if (!cited.has(m[1])) cited.set(m[1], path.relative(ROOT, file));
+      }
+    }
+
+    const dangling = [...cited.keys()].filter(id => !defined.has(id));
+    if (dangling.length === 0) {
+      pass('every [EVID:…] citation resolves to the register',
+        `${cited.size} distinct ids cited across ${mdFiles.length} documents`);
+    } else {
+      fail('every [EVID:…] citation resolves to the register', dangling.join(', '));
+    }
+
+    // register rows that point at repository paths must point at real files
+    const missingPaths = [];
+    for (const m of register.matchAll(/^\|\s*(?:CODE|CFG|TEST|DOC)-\d{3}\s*\|\s*`([^`]+)`/gm)) {
+      const target = m[1];
+      if (/^[a-z-]+(\.md)?$/.test(target) && target.endsWith('.md')) {
+        if (!fs.existsSync(path.join(ROOT, target))) missingPaths.push(target);
+      }
+      if (target.includes('/') && !fs.existsSync(path.join(ROOT, target))) missingPaths.push(target);
+    }
+    if (missingPaths.length === 0) pass('evidence register paths exist');
+    else fail('evidence register paths exist', [...new Set(missingPaths)].join(', '));
+
+    // the register must state the access classification
+    if (/Access classification\s*\|[^|]*FULL ACCESS/.test(register)) {
+      pass('repository access is recorded in the register');
+    } else {
+      fail('repository access is recorded in the register');
+    }
+
+    // negative-evidence claims must be labelled
+    const absenceLines = register.split('\n').filter(l => /ABSENCE_VERIFIED|NOT_FOUND/.test(l));
+    if (absenceLines.length > 0) info('negative-evidence claims recorded', `${absenceLines.length} row(s)`);
+    else fail('negative-evidence claims recorded');
+  }
+}
+
+/* -------------------------------------------------------------------------- */
 /* 8. Documentation integrity                                                 */
 /* -------------------------------------------------------------------------- */
 
 const docs = [];
-for (const dir of ['docs', 'tools', 'prototype']) {
+for (const dir of ['docs', 'tools', 'prototype', 'archive']) {
   const walk = (d) => {
     for (const entry of fs.readdirSync(d, { withFileTypes: true })) {
       const full = path.join(d, entry.name);

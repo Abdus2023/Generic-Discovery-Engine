@@ -117,8 +117,9 @@ they are the part of the prototype that most closely matches the design series.
 
 `Acquisition` performs one HTTP GET through `GM_xmlhttpRequest` when available and
 `fetch` otherwise, with an 8 s timeout, origin gating, and body truncation.
-There is no acquisition-provider interface, no cache provider, no replay
-provider, and no capability negotiation; those are DESIGNED (v0.9, v0.8).
+No acquisition-provider interface, cache provider, replay provider or capability
+negotiation was found in the inspected artifact (ABSENCE_VERIFIED,
+[EVID:SCOPE-003]); those are DESIGNED (v0.9, v0.8).
 
 ## Candidate-source plane (CURRENT, engine-internal)
 

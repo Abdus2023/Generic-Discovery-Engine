@@ -49,9 +49,14 @@ equivalences.
 
 | DVB | Generic | Evidence |
 | --- | --- | --- |
-| RF front end, tuner, demodulator, FEC, transport stream, PSI/SI | not modelled at all | `tools/verify.mjs` scans the artifact for DVB symbols and fails if any appear |
+| RF front end, tuner, demodulator, FEC, transport stream, PSI/SI | no corresponding implementation was found in the inspected scope (ABSENCE_VERIFIED, [EVID:SCOPE-001]) | `tools/verify.mjs` scans the artifact for DVB symbols and fails if any appear |
 | carrier lock as a physical condition | a provider matching a content type is **not** a lock | provider code has no notion of physical validity |
 | exhaustive spectrum coverage as a physical guarantee | no equivalent guarantee exists for the web | coverage is DESIGNED, not implemented |
+
+Absence discipline: because the implementation is a single file that was read in
+full and scanned mechanically, absence claims about it are marked
+ABSENCE_VERIFIED rather than assumed from a partial search. Absence claims about
+artifacts that were never present in the repository are recorded as NOT_FOUND.
 
 Two claims must never be made:
 
