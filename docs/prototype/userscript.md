@@ -45,7 +45,7 @@ Verification of the extraction:
 
 ```bash
 node --check prototype/generic-discovery-engine.user.js
-node tools/verify.mjs    # parse check plus static assertions (19 passed, 4 known defects)
+node tools/verify.mjs    # parse check plus static assertions (47 passed, 4 known defects)
 node tools/checks.mjs    # behavioural invariants in fresh contexts (4 passed)
 node tools/simulate.mjs  # end-to-end scenario; reproduces D1/D2/D4/D9
 ```

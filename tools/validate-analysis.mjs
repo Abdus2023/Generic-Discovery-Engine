@@ -110,6 +110,26 @@ function validate(instance, node, at, errors) {
   else fail('STRUCTURAL', 'no generic "status" or unqualified "verification" field', banned.slice(0, 4).join(', '));
   if (onEvidence.length === 0) pass('STRUCTURAL', 'no status field is permitted on evidence', 'section 189');
   else fail('STRUCTURAL', 'no status field is permitted on evidence', onEvidence.join(', '));
+
+  /* section 176: a capability is an operation set bound to exactly one resource class */
+  const OPERATIONS = schema.$defs.operation.properties.operation.enum;
+  const RESOURCES = schema.$defs.capability.properties.resource_class.enum;
+  const CAP_STATE = schema.$defs.capability.properties.state.enum;
+  const malformed = [];
+  for (const cap of record.capabilities || []) {
+    const named = cap.id.replace(/^CAP-/, '').replace(/-(CREATE|MODIFY|RENAME|MOVE|DELETE|READ|ANALYZE|PROPOSE|COMMIT|PUSH)$/, '');
+    if (!RESOURCES.includes(cap.resource_class)) malformed.push(`${cap.id}: unknown resource class`);
+    if (!(cap.operations || []).length) malformed.push(`${cap.id}: no operation — an unconstrained capability`);
+    if ((cap.operations || []).some(op => !OPERATIONS.includes(op))) malformed.push(`${cap.id}: non-canonical operation`);
+    if (!CAP_STATE.includes(cap.state)) malformed.push(`${cap.id}: unknown state`);
+    if (named && named !== cap.resource_class) malformed.push(`${cap.id}: id says ${named}, resource_class says ${cap.resource_class}`);
+  }
+  if (malformed.length === 0) {
+    pass('STRUCTURAL', 'every catalogue capability is an operation set bound to one resource class',
+      `${(record.capabilities || []).length} capabilities, ${new Set((record.capabilities || []).map(c => c.resource_class)).size} resource classes, all DECLARED (section 176)`);
+  } else {
+    fail('STRUCTURAL', 'every catalogue capability is an operation set bound to one resource class', malformed.slice(0, 4).join(' | '));
+  }
 }
 
 /* ========================================================================== */
