@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Generic Discovery Engine
 // @namespace    generic-discovery
-// @version      0.7.2
+// @version      0.7.1
 // @description  Generic web-resource discovery engine inspired by the architecture of DVB blind scanning.
 // @match        *://*/*
 // @run-at       document-start
@@ -18,20 +18,8 @@
     /*
      * ============================================================
      * Generic Discovery Engine
-     * v0.7.2 — Verified Patch (P0 fixes)
-     *
-     * Patch notes vs v0.7.1:
-     * - P0-1: maxCandidates now counts live (queued/claimed/planned/
-     *         acquiring/observed/recognized/failed) not completed/skipped
-     * - P0-2: visited now identityKey-scoped (type:target) and consulted
-     *         in addCandidate; prevents cross-type duplicate acquisition
-     * - P0-3: KnowledgeBase.serialize persists observations without bodies
-     *         (already via Observation.serialize) + caps in-memory observations
-     *         at 800 entries (FIFO) to avoid unbounded heap on link-dense SPA
-     * - P1-1: per-observation discovery deduplication across providers
-     * - P1-2: mutation observer batch dedup (Set per flush)
-     *
      * v0.7.1
+     *
      * Main pipeline:
      *
      * DISCOVERY
@@ -62,10 +50,9 @@
      */
 
     const CONFIG = {
-        version: 8,
+        version: 7,
 
         maxCandidates: 750,
-        maxObservationsInMemory: 800,
         maxRequests: 150,
         concurrency: 4,
         requestTimeout: 8000,
@@ -165,7 +152,7 @@
         }
     };
 
-    const STORAGE_KEY = 'generic-discovery-engine-v8';
+    const STORAGE_KEY = 'generic-discovery-engine-v7';
 
     function log(...args) {
         if (CONFIG.debug) {
@@ -1290,35 +1277,14 @@
                 }
             }
 
-            if (this.visited.has(key)) {
-                this.recordDiagnostic(
-                    'candidate-visited',
-                    {
-                        key,
-                        target: candidate.target
-                    }
-                );
-
-                return null;
-            }
-
-            // P0-1 FIX: count live only (exclude completed/skipped)
-            const liveCount = [...this.candidates.values()].filter(
-                c =>
-                    !['completed', 'skipped'].includes(
-                        c.status
-                    )
-            ).length;
-
             if (
-                liveCount >= CONFIG.maxCandidates
+                this.candidates.size >=
+                CONFIG.maxCandidates
             ) {
                 this.recordDiagnostic(
                     'candidate-cap-reached',
                     {
-                        target: candidate.target,
-                        liveCount,
-                        cap: CONFIG.maxCandidates
+                        target: candidate.target
                     }
                 );
 
@@ -1439,14 +1405,13 @@
         markCompleted(candidate) {
             candidate.status = 'completed';
             candidate.completedAt = now();
-            this.visited.add(candidate.identityKey());
+            this.visited.add(candidate.target);
             this.stats.completed++;
         }
 
         markSkipped(candidate, reason) {
             candidate.status = 'skipped';
             candidate.skippedAt = now();
-            this.visited.add(candidate.identityKey());
 
             const resource =
                 this.ensureResource(candidate.target);
@@ -1497,18 +1462,6 @@
         }
 
         recordObservation(observation) {
-            // P0-3: cap in-memory observations (FIFO) to avoid unbounded heap
-            if (
-                this.observations.size >=
-                CONFIG.maxObservationsInMemory
-            ) {
-                const firstKey = this.observations.keys().next().value;
-                if (firstKey) this.observations.delete(firstKey);
-                this.recordDiagnostic('observation-evicted', {
-                    max: CONFIG.maxObservationsInMemory
-                });
-            }
-
             this.observations.set(
                 observation.id,
                 observation
@@ -4258,10 +4211,6 @@
                 candidate
             );
 
-            // P1-1: per-observation cross-provider dedup
-            const emittedForObservation =
-                new Set();
-
             for (const provider of providers) {
                 this.ledger.recordRecognition(
                     candidate,
@@ -4298,30 +4247,6 @@
                     const discovery of
                     discoveries
                 ) {
-                    const dedupKey =
-                        discovery.targetUrl();
-
-                    if (
-                        dedupKey &&
-                        emittedForObservation.has(
-                            dedupKey
-                        )
-                    ) {
-                        this.ledger.recordDiagnostic(
-                            'discovery-deduped',
-                            {
-                                url: dedupKey,
-                                provider: provider.name
-                            }
-                        );
-                        continue;
-                    }
-
-                    if (dedupKey)
-                        emittedForObservation.add(
-                            dedupKey
-                        );
-
                     this.emitDiscovery(
                         discovery
                     );
@@ -4771,44 +4696,24 @@
         }
 
         observeCurrentDom() {
-            // P1-2: batch dedup within single mutation flush
-            const seen = new Set();
-
-            const tryDiscover = (
-                target,
-                type,
-                priority,
-                mechanism
-            ) => {
-                try {
-                    const key = `${type}:${canonicalizeUrl(
-                        target
-                    )}`;
-                    if (!key || seen.has(key)) return;
-                    seen.add(key);
-                } catch {
-                    return;
-                }
-
-                this.discover(target, type, {
-                    priority,
-                    depth: 1,
-                    hints: { method: 'GET' },
-                    mechanism
-                });
-            };
-
             for (
                 const element of
                 document.querySelectorAll(
                     'a[href], area[href]'
                 )
             ) {
-                tryDiscover(
+                this.discover(
                     element.href,
                     'url',
-                    0.50,
-                    'dom-observer-link'
+                    {
+                        priority: 0.50,
+                        depth: 1,
+                        hints: {
+                            method: 'GET'
+                        },
+                        mechanism:
+                            'dom-observer-link'
+                    }
                 );
             }
 
@@ -4818,11 +4723,18 @@
                     'script[src]'
                 )
             ) {
-                tryDiscover(
+                this.discover(
                     element.src,
                     'script',
-                    0.45,
-                    'dom-observer-script'
+                    {
+                        priority: 0.45,
+                        depth: 1,
+                        hints: {
+                            method: 'GET'
+                        },
+                        mechanism:
+                            'dom-observer-script'
+                    }
                 );
             }
 
@@ -4832,11 +4744,18 @@
                     'link[href]'
                 )
             ) {
-                tryDiscover(
+                this.discover(
                     element.href,
                     'resource',
-                    0.40,
-                    'dom-observer-link'
+                    {
+                        priority: 0.40,
+                        depth: 1,
+                        hints: {
+                            method: 'GET'
+                        },
+                        mechanism:
+                            'dom-observer-link'
+                    }
                 );
             }
         }
@@ -4974,7 +4893,7 @@
 
         exportData() {
             return {
-                schema: 'gde-export-v8.0',
+                schema: 'gde-export-v7.1',
 
                 exportedAt:
                     new Date().toISOString(),

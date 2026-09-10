@@ -1,4 +1,6 @@
 # Generic Discovery Engine
+
+> **Current release:** `v0.7.2` — verified patch (see [`VERIFICATION_REPORT.md`](VERIFICATION_REPORT.md), [`CHANGELOG.md`](CHANGELOG.md), [`dist/generic-discovery-engine.user.js`](dist/generic-discovery-engine.user.js)). `node --check` PASS · `npm test` 34/34 PASS · `v0.7.1` archived as `dist/generic-discovery-engine.v0.7.1.user.js`.
  
 A browser-based discovery engine inspired by the architecture of **DVB blind scanning**.
  
@@ -51,10 +53,13 @@ It can:
  
 
  
-Current response providers:
- `HTTP Response      │      ├── HTML Provider      │      ├── links      │      └── resources      │      ├── JSON Provider      │      └── URL-like values      │      └── Text Provider             └── HTTP(S) URLs `  
-## Architecture
- `                     ┌─────────────────────┐                      │   Discovery Engine  │                      └──────────┬──────────┘                                 │                      ┌──────────▼──────────┐                      │      Scheduler      │                      └──────────┬──────────┘                                 │                      ┌──────────▼──────────┐                      │      Candidate      │                      └──────────┬──────────┘                                 │                      ┌──────────▼──────────┐                      │    Acquisition      │                      │       Adapter       │                      └──────────┬──────────┘                                 │                      ┌──────────▼──────────┐                      │     Observation     │                      └──────────┬──────────┘                                 │                      ┌──────────▼──────────┐                      │  Provider Registry  │                      └──────────┬──────────┘                                 │                  ┌──────────────┼──────────────┐                  ▼              ▼              ▼              HTML           JSON            Text              Provider       Provider        Provider                  │              │              │                  └──────────────┼──────────────┘                                 ▼                          ┌─────────────┐                          │ Discovery   │                          └──────┬──────┘                                 │                          New Candidates                                 │                                 └──────────► Scheduler `  
+Current response providers (v0.7.2 — 7 providers, ordered pipeline):
+ `HTTP Response      │      ├── HTML Provider (links, scripts, stylesheets, frames, media, forms, meta, embedded URLs)      │      ├── JSON Provider (recursive URL-like string walk)      │      ├── XML Provider (sitemap <loc> via DOMParser + regex fallback)      │      ├── CSS Provider (url() extraction)      │      ├── JavaScript Provider (regex URL extraction)      │      ├── Binary Provider (observed-only: image/audio/video/pdf/zip)      │      └── Text Provider (fallback HTTP(S) URL regex) `  
+## Architecture (v0.7.2 — control-plane layered)
+
+ `                     ┌─────────────────────┐                      │   Discovery Engine  │                      └──────────┬──────────┘                                 │                      ┌──────────▼──────────┐                      │      Scheduler      │                      └──────────┬──────────┘                                 │                      ┌──────────▼──────────┐                      │      Candidate      │  (type, target, depth, priority, hints, alternate*)                      └──────────┬──────────┘                                 │                      ┌──────────▼──────────┐                      │  AcquisitionPolicy│  (method, depth, type, binary, origin guards)                      └──────────┬──────────┘                                 │                      ┌──────────▼──────────┐                      │  AcquisitionPlan  │  (allowed + reason, replayable)                      └──────────┬──────────┘                                 │                      ┌──────────▼──────────┐                      │   OriginController│  (per-origin throttle 2 concurrent, 150ms)                      └──────────┬──────────┘                                 │                      ┌──────────▼──────────┐                      │    Acquisition    │  (GM_xhr + fetch fallback, 2M truncate)                      └──────────┬──────────┘                                 │                      ┌──────────▼──────────┐                      │     Observation   │  (status, http, fingerprint fnv1a32)                      └──────────┬──────────┘                                 │                      ┌──────────▼──────────┐                      │  Provider Registry│  (ordered matching → recognition)                      └──────────┬──────────┘                                 │           ┌─────────┼──────────┬──────────┼──────────┐                  ▼         ▼         ▼          ▼          ▼          ▼              HTML      JSON      XML        CSS       JS      Binary      Text                  │         │         │          │          │          │          │                  └─────────┴─────────┴──────────┴──────────┴──────────┴──────────┘                                 ▼                          ┌─────────────┐                          │  Discovery  │  (kind, confidence, mechanism, provenance)                          └──────┬──────┘                                 │                          New Candidates (depth+1, provenance→graphEdges)                                 │                                 └──────────► Scheduler                                 │                                  └────► ResourceRecord / DecisionLedger / Knowledge Graph`
+
+> **v0.7.2 delta:** `AcquisitionPolicy → AcquisitionPlan → OriginController` layered before acquisition; `DecisionLedger` (12 typed events, replayable) and `ResourceRecord`/`fingerprintIndex`/`graphEdges` added for explainability. Provider count 3 → 7. See `VERIFICATION_REPORT.md` §2.2 and `CHANGELOG.md`.  
 ## Candidate Lifecycle
  
 Candidates move through explicit ownership states:
@@ -295,45 +300,45 @@ Protocol-specific knowledge belongs in providers/adapters.
  
 ### Phase 1 — Discovery Core
  
+> **Status in v0.7.2:** 5/9 shipped, verified; remaining items noted as P1. See `VERIFICATION_REPORT.md` §8 and `CHANGELOG.md`.
  
-- [ ] formal provider interface
+- [x] formal provider interface (`Provider` base class + `ProviderRegistry` + 7 providers, ordered pipeline)
  
-- [ ] candidate fingerprints
+- [x] candidate fingerprints (`fnv1a32`, `makeFingerprint`, `fingerprintIndex` Map<hash,Set<url>>)
  
-- [ ] observation fingerprints
+- [x] observation fingerprints (same, attached to `Observation.fingerprint`, indexed per `ResourceRecord`)
  
-- [ ] configurable retry policy
+- [x] configurable retry policy (`CONFIG.retry {maxRetries:2, baseDelay:500, maxDelay:8000}` + exponential backoff, `nextAttemptAt`)
  
-- [ ] candidate expiration
+- [ ] candidate expiration (TTL beyond retry delay — not yet)
  
-- [ ] discovery confidence model
+- [x] discovery confidence model (`Discovery.confidence` 0.40–0.95 per provider/mechanism + `effectivePriority` boost `confidence*0.08`)
  
-- [ ] search-space coverage metrics
+- [ ] search-space coverage metrics (frontier size / coverage ratio not yet exposed)
  
-- [ ] event stream
+- [x] event stream (`DecisionLedger` — 12 typed events, seq, FIFO 5,000, export/restore, replayable decisions)
  
-- [ ] structured logging
+- [x] structured logging (`ledger.recordDiagnostic`, `db.diagnostics` 500 cap, `network-observed`/`policy-denied`/`adaptive-*`)
  
 
  
 ### Phase 2 — Web Intelligence
  
- 
 - [ ] HTTP headers provider
  
-- [ ] XML provider
+- [x] XML provider (`XmlProvider` — `extractXmlLocs` DOMParser + regex fallback, sitemap-aware confidence 0.90)
  
-- [ ] RSS/Atom provider
+- [x] RSS/Atom provider (covered via `XmlProvider` + `feed` type heuristic; `rel=alternate` → `feed`)
  
-- [ ] JavaScript resource provider
+- [x] JavaScript resource provider (`JavaScriptProvider` — regex URL extraction)
  
-- [ ] sitemap provider
+- [x] sitemap provider (`XmlProvider` + `sitemap` type, `rel=sitemap` detection)
  
 - [ ] robots.txt provider
  
-- [ ] API/JSON-LD provider
+- [x] API/JSON-LD provider (`JsonProvider` + `looksLikeApiUrl` → `kind:api` priority 1.00)
  
-- [ ] document-link provider
+- [x] document-link provider (HTML `link[rel=canonical|manifest]` + `meta og:url` → `metadata-url` 0.90)
  
 - [ ] URL pattern inference
  
@@ -341,22 +346,21 @@ Protocol-specific knowledge belongs in providers/adapters.
  
 ### Phase 3 — Adaptive Search
  `Blind discovery       ↓ Observation       ↓ Inference       ↓ Candidate ranking       ↓ Guided discovery       ↓ New observations ` 
-Potential additions:
+Status in v0.7.2 — partial:
  
+- [x] adaptive priority (`effectivePriority = priority + typeWeight*0.20 + confidence*0.08 − depth*0.045 − attempts*0.05` + typePriority map + adaptive concurrency on success/failure thresholds)
  
-- adaptive priority
+- [ ] search-space partitioning
  
-- search-space partitioning
+- [x] negative evidence (`Observation.status !== 'success'` → `retryCandidate` → `markFailed`, `markSkipped` with reason `resource-already-acquired`/`global-request-budget`)
  
-- negative evidence
+- [ ] candidate clustering
  
-- candidate clustering
+- [x] historical knowledge (persistence `GM_setValue` v8, `visited` identityKey set, `fingerprintIndex`, `ResourceRecord` status)
  
-- historical knowledge
+- [ ] change detection
  
-- change detection
- 
-- active exploration
+- [x] active exploration (`observeNetworkGet` + `PerformanceObserver` GET-like guard + DOM mutation observer with batch dedup)
  
 
  

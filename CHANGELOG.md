@@ -1,0 +1,55 @@
+# Changelog
+
+All notable changes to the Generic Discovery Engine.
+
+## [0.7.2] — 2026-09-10 — Verified Patch
+
+**Source:** `dist/generic-discovery-engine.user.js` (5,245 lines) — patched from `v0.7.1` (5,164 lines). `node --check` PASS. `node --test` 34/34 PASS.
+
+### P0 — Capacity & Correctness Fixes
+
+- **P0-1 — `maxCandidates` live-count:** `KnowledgeBase.addCandidate()` now counts only live candidates (`∉ {completed,skipped}`) via `liveCount` filter, not `candidates.size`. Prevents frontier freeze after 750 total URLs when many are completed. Verified by `tests/verify-p0-fixes.test.js` (liveCount excludes completed/skipped).
+- **P0-2 — `visited` identityKey-scoped:** `visited` is now `Set<identityKey>` (`type:target`) instead of `Set<url>`. `addCandidate()` consults `visited.has(key)` before allocation; `markCompleted()`/`markSkipped()` add `identityKey`. Prevents cross-type duplicate suppression loss and same-type replay after completion. Type-scoped identity documented (`api:https://x` ≠ `url:https://x`).
+- **P0-3 — Observation memory cap:** `KnowledgeBase.recordObservation()` caps `observations Map` at `CONFIG.maxObservationsInMemory = 800` with FIFO eviction and `observation-evicted` diagnostic. `Observation.serialize()` already strips `body` for persistence (verified), so this caps heap only. Prevents unbounded heap on link-dense SPA + mutation observer bursts.
+
+### P1 — Robustness Improvements
+
+- **P1-1 — Per-observation cross-provider dedup:** `GenericDiscoveryEngine.executePlan()` now maintains `emittedForObservation Set<targetUrl>` across providers. Duplicate `targetUrl` discovered by `html` then `text` in same observation is suppressed with `discovery-deduped` diagnostic. Prevents double-discovery of same URL from single payload.
+- **P1-2 — Mutation observer batch dedup:** `observeCurrentDom()` now batches via `seen Set<type:canonical>` per flush, avoiding allocation of duplicate `Candidate` objects when SPA mutates hundreds of identical nodes. Uses `canonicalizeUrl` per element, skips already-seen keys within batch.
+
+### Config & Storage
+
+- `CONFIG.version` 7 → 8, `STORAGE_KEY` `generic-discovery-engine-v7` → `v8` (additive migration: v7 state restored if `engine.version >=6`, ledger restored if present, `requestsReserved` resets to 0, concurrency clamped).
+- `exportData().schema` `gde-export-v7.1` → `gde-export-v8.0`.
+- New config: `maxObservationsInMemory: 800`.
+
+### Tests & Verification
+
+- Added `tests/verify-p0-fixes.test.js` (static patch presence + behavioral invariants) and `tests/canonicalize-and-policy.test.js` (URL, content-type, policy denials, fingerprint stability). `npm test` 34 passing, 0 failing.
+- Static checks: `node --check` passes for both `v0.7.1` archive and `v0.7.2` patched.
+
+### Archived
+
+- `dist/generic-discovery-engine.v0.7.1.user.js` retained verbatim (138 kB, 5,164 lines) for diffability. Git history `8902856` contains original.
+
+---
+
+## [0.7.1] — prior — Replayable Acquisition Decisions + Deterministic Ledger
+
+Source: `Continue Architecture Planning.md` fence (lines 1,355,214–1,495,770). See `VERIFICATION_REPORT.md` §§2–4 for full audit.
+
+- `AcquisitionPlan` (method, allowed, reason, priority, origin, expectedType, policyInputs)
+- `DecisionLedger` (12 typed `record*`, FIFO 5,000, `export`/`restore`)
+- `ResourceRecord` + `fingerprintIndex` + `graphEdges` (5,000 cap)
+- `AcquisitionPolicy` (method, depth, type, binary, origin guards)
+- `OriginController` (per-origin `maxRequestsPerOrigin:50`, `maxConcurrentPerOrigin:2`, `minRequestInterval:150ms`)
+- 7 providers: Html, Json, Xml, Css, JavaScript, Binary, Text
+- `NetworkObserver` bridge (fetch/XHR monkey-patch) + `PerformanceObserver` with GET-like guard
+- Adaptive concurrency, retry with exponential backoff, persistence debounce 400 ms.
+
+---
+
+## [0.2.0] and earlier — see planning docs
+
+- `v0.1.0` baseline, `v0.2.0` with explicit claim, provider registry, scope disclaimer. See `VERIFICATION_REPORT.md` §3 matrix.
+

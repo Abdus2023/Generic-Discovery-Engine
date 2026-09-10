@@ -1,0 +1,22 @@
+{
+  "name": "generic-discovery-engine",
+  "version": "0.7.2",
+  "description": "Browser-based discovery engine inspired by DVB blind scanning — verified patch",
+  "type": "module",
+  "scripts": {
+    "test": "node --test tests/*.test.js",
+    "check": "node --check dist/generic-discovery-engine.user.js && node --check dist/generic-discovery-engine.v0.7.1.user.js",
+    "verify": "npm run check && npm test"
+  },
+  "keywords": [
+    "discovery",
+    "dvb",
+    "blind-scan",
+    "userscript",
+    "tampermonkey"
+  ],
+  "license": "MIT",
+  "engines": {
+    "node": ">=18"
+  }
+}
