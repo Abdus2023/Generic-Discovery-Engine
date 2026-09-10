@@ -22,10 +22,26 @@ node tools/simulate.mjs    # dynamic: runs the artifact and measures the outcome
 | **D5** | Adaptive concurrency updates `currentConcurrency` but never resizes the live pool | static: pool created once in `start()`; `start()` early-returns while running | the adaptive subsystem has no runtime effect; UI shows the adjusted value |
 | **D6** | The per-URL acquisition guard is not atomic across the in-flight window | consequence of D1: both owners check `shouldAcquireResource()` before either resource reaches `acquired` | duplicate acquisition |
 | **D7** | `stats.acquired` is never incremented | static: no writer for that counter | exported statistics and the UI report a permanently zero value |
+| **D8** | Content fingerprints are collected and indexed but never read | static: 4 write/probe sites, 0 read sites for `fingerprintIndex` | content identity cannot influence any decision; the platform for v0.17 identity resolution exists but is dead code |
+| **D9** | Every recognition stores a new `Discovery`, even for a URL already discovered | dynamic: 74 discoveries for 27 unique URLs in one harness run | discovery counts overstate the frontier; combined with D1 the same expansion runs repeatedly |
 
 D1, D2, D3 differ in severity: D1 breaks a stated architectural invariant, D2/D4
 break scan termination semantics, D3 wastes budget, D5/D7 are reporting and
-control-plane errors.
+control-plane errors, D8 is dead capability, D9 inflates discovery counts.
+
+### Why D9 happens
+
+Two independent mechanisms add discovery records for the same URL:
+
+1. `text/html` matches `HtmlProvider` **and** `TextProvider`, so one body is
+   interpreted twice — structural extraction plus raw URL extraction (see
+   [../architecture/provider-model.md](../architecture/provider-model.md));
+2. `emitDiscovery()` always stores a `Discovery` and only *then* deduplicates the
+   derived candidate through `addCandidate()`. A URL rediscovered from a page
+   that is acquired twice (D1) or from two different pages produces a second,
+   third … discovery record.
+
+The candidate store stays deduplicated; the discovery store does not.
 
 ## Failure-mode matrix
 
@@ -33,7 +49,7 @@ control-plane errors.
 | --- | --- | --- | --- | --- |
 | Duplicate candidate proposed | `identityKey()` lookup | merged into the existing candidate (`alternateTypes`, `alternateParents`, max priority) | unchanged | handled |
 | Duplicate candidate *in flight* | none | re-queued, second owner, duplicate acquisition (D1) | refuse re-queue for any non-terminal state | **defect** |
-| Duplicate discovery of the same URL | none | a second `Discovery` record is stored for the same URL | deduplicate or count as corroboration | OPEN |
+| Duplicate discovery of the same URL | none | a second `Discovery` record is stored for the same URL (two mechanisms: provider double-match, repeated expansion) — **D9** | deduplicate, or count as corroboration with provenance | **defect** |
 | Candidate starvation (low priority) | none | possible; no aging, no fairness term | aging or fairness policy | OPEN (DESIGNED v0.15) |
 | Unbounded candidate growth | `maxCandidates` | new candidates dropped silently; diagnostic recorded | unchanged, but surface the drop to the user | handled (silent) |
 | Provider misclassification | multiple providers may match | all matching providers run; text provider acts as a fallback and can emit URL-shaped noise | provider priority / arbitration | OPEN (DESIGNED v0.11) |

@@ -65,18 +65,39 @@ class Provider {
 
 ## Providers
 
-| Class | Match signal | Emits | Mechanism tags |
-| --- | --- | --- | --- |
-| `HtmlProvider` | HTML content type or body sniff | links, frames, scripts, media, form actions, metadata URLs (og/twitter, meta-refresh) | `html-link`, `html-frame`, `html-script`, `html-media`, `html-form-action`, `metadata-url` |
-| `JsonProvider` | JSON content type or body sniff | URL-like string values found by recursive walk | `json-url` |
-| `XmlProvider` | XML content type or body sniff | `loc`/location values | `xml-loc` |
-| `CssProvider` | CSS content type | `url(...)` references | `css-url` |
-| `JavaScriptProvider` | script content type | string literals that parse as HTTP(S) URLs | `javascript-url` |
-| `TextProvider` | anything not matching the above | HTTP(S) URLs in the text | `text-url` |
-| `BinaryProvider` | binary content types | nothing (recognizes, deliberately emits no candidates) | — |
+Matching combines a content-type test with a body sniff where the format allows
+it, so a mislabelled response can still be recognized.
 
-The registry order matters only for `TextProvider`/`BinaryProvider`, which act as
-fallbacks; all matching providers run.
+| Class | Match rule (as implemented) | Emits |
+| --- | --- | --- |
+| `HtmlProvider` | `text/html`, `application/xhtml+xml`, **or** body starting with `<!doctype html` / `<html` | links, frames, scripts, media, form actions, metadata URLs (`og:`, `twitter:`, meta-refresh) |
+| `JsonProvider` | `application/json`, `*+json`, **or** body starting with `[` or `{` | URL-like string values found by a recursive walk |
+| `XmlProvider` | `application/xml`, `text/xml`, `*+xml`, **or** body starting with `<?xml` | `loc` values |
+| `CssProvider` | `text/css` only | `url(...)` references |
+| `JavaScriptProvider` | `application/javascript`, `text/javascript`, `application/x-javascript`, `text/ecmascript`, `application/ecmascript` | string literals that parse as HTTP(S) URLs |
+| `TextProvider` | **`text/*` or an empty content type** | HTTP(S) URLs and **relative** URL-shaped paths in the text |
+| `BinaryProvider` | `image/*`, `audio/*`, `video/*`, `application/pdf`, `application/zip`, `application/octet-stream` | nothing (recognizes; deliberately emits no candidates) |
+
+Two consequences of this design are worth stating explicitly, because they are
+easy to misread:
+
+1. **`TextProvider` is not a universal fallback.** It matches `text/*` and
+   unknown/absent content types only. A `application/octet-stream` or
+   `application/javascript` response is not passed to it.
+2. **Several providers may match one observation.** `text/html` matches both
+   `HtmlProvider` and `TextProvider`; `text/css` matches `CssProvider` and
+   `TextProvider`; `text/xml` matches `XmlProvider` and `TextProvider`. All
+   matching providers run, so one body can be interpreted twice by design —
+   structural extraction plus raw URL extraction. There is no router, priority or
+   arbitration in v0.7.1 (DESIGNED: v0.11).
+
+Extraction helpers used by the providers:
+
+| Helper | Behaviour |
+| --- | --- |
+| `extractUrlsFromText(text)` | absolute `http(s)://…` matches **and** relative paths beginning `/`, `./`, `../` |
+| `extractCssUrls(text)` | `url(...)`, quoted or unquoted |
+| `extractXmlLocs(text)` | `<loc>` values via `DOMParser`, with a regex fallback |
 
 ## Boundary rules
 
@@ -124,3 +145,30 @@ entries as proof of a GET request.
 | Classification layer separate from recognition | v0.18 | recognition ≠ semantic classification |
 
 See [../roadmap/future-architecture.md](../roadmap/future-architecture.md).
+
+## Decisions
+
+### D-07 — Providers return discoveries; the engine expands them
+
+* **Decision:** the provider contract is `matches()` + `recognize()`; there is no
+  `candidates()` method.
+* **Rationale:** expansion is where scope, depth, deduplication and budget policy
+  live; letting providers enqueue would give each provider a private crawler.
+* **Alternatives considered:** the design brief's `candidates()` shape, and
+  providers that fetch their own resources (both rejected: they would make the
+  provider layer a scheduler).
+* **Consequence:** a new provider cannot bypass dedup or depth limits, and can be
+  tested with no network.
+* **Status:** IMPLEMENTED, verified by `tools/verify.mjs`.
+
+### D-08 — Multiple providers may match one observation
+
+* **Decision:** every matching provider runs; there is no router or priority.
+* **Rationale:** recognition is cheap and deterministic; running all matches
+  maximizes recall for a prototype.
+* **Alternatives considered:** content-type routing with a single winner
+  (deferred to v0.11, which introduces a response router and provider priority).
+* **Consequence:** a `text/html` body is interpreted twice (HTML structure plus
+  text URL extraction), and confidence values from different providers are not
+  comparable.
+* **Status:** IMPLEMENTED (D9 is the accounting consequence).

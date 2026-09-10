@@ -4,7 +4,10 @@ Status boundary for the shipped userscript (v0.7.1). Statements here are
 verifiable against `prototype/generic-discovery-engine.user.js` with
 `tools/verify.mjs`.
 
-## CURRENT — implemented and verifiable
+## Implemented
+
+Confirmed by reading the artifact and by executing it (`tools/checks.mjs`,
+`tools/simulate.mjs`).
 
 | Capability | Evidence in the artifact |
 | --- | --- |
@@ -13,29 +16,64 @@ verifiable against `prototype/generic-discovery-engine.user.js` with
 | Candidate deduplication | `KnowledgeBase.addCandidate()` via `identityKey() = type:target` |
 | Resource-level acquisition guard | `shouldAcquireResource()` on canonical URL + resource status |
 | Candidate claiming | `KnowledgeBase.claimNextCandidate()` — synchronous ownership transition |
-| Concurrency | worker pool created by `start()`; default 4 workers; cooperative pause/stop |
 | HTTP acquisition | `Acquisition.request()` via `GM_xmlhttpRequest`, `fetch` fallback |
-| Timeout behaviour | 8 s timer races the request; timeout produces an `Observation` with `status: 'timeout'` |
-| Content-type handling | `contentTypeBase()`, `looksLike*()` sniffing helpers |
+| Timeout behaviour | 8 s timer races the request; a timeout produces an `Observation` with `status: 'timeout'` |
+| Content-type handling | `contentTypeBase()` plus body sniffing for HTML/JSON/XML |
 | HTML recognition | `HtmlProvider`: links, frames, scripts, media, form actions, metadata (`og:`, `twitter:`, meta-refresh) |
 | JSON recognition | `JsonProvider`: recursive walk for URL-like values |
-| Text recognition | `TextProvider`: HTTP(S) URLs in free text |
+| Text recognition | `TextProvider`: absolute and relative URLs in `text/*` bodies |
 | Additional recognition | `XmlProvider`, `CssProvider`, `JavaScriptProvider`, `BinaryProvider` |
-| Resource extraction | DOM observer also proposes scripts, frames, images and form actions |
-| URL extraction | per-provider `extractUrlsFromText` / `extractCssUrls` / `extractXmlLocs` |
+| Resource extraction | DOM observer also proposes scripts, link resources and form actions |
 | Candidate expansion | `emitDiscovery()` → `discover()` with `parent`, `depth + 1`, confidence-derived priority |
-| Persistence | `persist()` / `restore()` with caps; `GM_setValue` or `localStorage` |
 | Reporting / export | `exportData()` (`gde-export-v7.1`) and the on-page stats block |
 | UI | panel with Scan / Pause / Stop / Clear / Export |
-| Error handling | per-provider `try/catch`, acquisition failures become observations, diagnostics recorded |
+| Error handling | per-provider `try/catch`; acquisition failures become observations; diagnostics recorded |
 | Request budgeting | `reserveRequestSlot()` against `maxRequests` |
 | Origin rate limiting | `OriginController`: cap, interval, per-origin concurrency |
 | Retry with backoff | `KnowledgeBase.retryCandidate()`, 2 retries, 500 ms → 8 s |
-| Decision ledger | `DecisionLedger`: append-only sequenced events, capped at 5000 |
+| Decision ledger | `DecisionLedger`: append-only sequenced events, capped at 5000, persisted and restored |
+| Content fingerprinting | `makeFingerprint()` (fnv1a32 over a normalized sample), stored per observation and resource |
 | Graph edges | `KnowledgeBase.addEdge()` — parent/child relations, capped at 5000 |
 | Policy gating | `AcquisitionPolicy.plan()`: GET-only, depth, forms/media/binary classes |
+| Persistence | `persist()` / `restore()` with caps; `GM_setValue` or `localStorage` |
 
-## DESIGNED — specified in the design series, NOT implemented
+## Partially implemented
+
+Real functionality with meaningful limitations. Each entry names the defect or
+gap that limits it.
+
+| Area | What works | Limitation |
+| --- | --- | --- |
+| Concurrency | worker pool of `currentConcurrency` workers; runs genuinely in parallel when the frontier is populated | pool is never refilled (D2); effective concurrency often 1; ownership invariant broken by re-queue (D1) |
+| Adaptive concurrency | counters, thresholds and ledger diagnostics exist | the pool never resizes (D5) |
+| Persistence | state and ledger round-trip across reload | no transaction, no validation, no in-flight reconciliation; `running` is not restored (CONFLICT 4) |
+| Retry | exponential backoff before retry | `failed` bypasses backoff and stays claimable (D3) |
+| Termination | stops on empty eligible set, budget exhaustion or `stop()` | no completion criterion; a scan can look "running" while idle (D4) |
+| Cancellation | cooperative `stopRequested` / `paused` | in-flight requests are not aborted; budget already reserved is not reclaimed |
+| Content identity | fingerprints computed and indexed | index is never read (D8) |
+| Discovery accounting | each recognition stores a discovery record | duplicates are not merged; counts overstate the frontier (D9) |
+| Statistics | most counters are maintained | `stats.acquired` is never incremented (D7) |
+
+## Not implemented
+
+### Explicitly absent (non-goals)
+
+These capabilities are absent by design, not by omission. They are asserted
+mechanically: `tools/verify.mjs` fails if such a symbol ever appears in the
+artifact.
+
+```
+RF spectrum scanning        NO      carrier synchronization      NO
+SDR control                 NO      symbol-rate estimation       NO
+DVB tuner control           NO      FEC decoding                 NO
+DVB-S/S2 demodulation       NO      MPEG-TS decoding             NO
+DVB-T/T2 demodulation       NO      DVB PSI/SI parsing           NO
+DVB-C demodulation          NO      NIT-based discovery          NO
+```
+
+### Designed but not implemented
+
+Specified in the design series (v0.8 … v0.35) in prose only. No code exists for any row.
 
 | Area | Design reference | Missing artifact |
 | --- | --- | --- |
@@ -57,14 +95,14 @@ verifiable against `prototype/generic-discovery-engine.user.js` with
 | Durable, crash-safe state | v0.32 | transactions, checkpoints, recovery |
 | Multi-worker coordination | v0.33–v0.35 | leases, fencing, conflicts, replication |
 
-## FUTURE — exploratory, not specified
+## Future — exploratory, not specified
 
 Adaptive priority learned from observed yield; cross-domain discovery;
 non-HTTP transports (filesystem, browser APIs, device services); completeness
 claims of any kind. The design series discusses these, but not at specification
 level, and none of them has design-reviewed contracts.
 
-## NON-GOAL — deliberately out of scope
+## Non-goals — deliberately out of scope
 
 * RF spectrum scanning, SDR control, tuner control
 * DVB-S/S2, DVB-T/T2, DVB-C demodulation
@@ -81,16 +119,12 @@ candidate generation, acquisition, observation, recognition and expansion —
 never demodulation or transport decoding. See
 [../research/dvb-blind-scan-inspiration.md](../research/dvb-blind-scan-inspiration.md).
 
-## Explicit non-implementations to check before writing documentation
 
-```
-RF spectrum scanning        NO      carrier synchronization      NO
-SDR control                 NO      symbol-rate estimation       NO
-DVB tuner control           NO      FEC decoding                 NO
-DVB-S/S2 demodulation       NO      MPEG-TS decoding             NO
-DVB-T/T2 demodulation       NO      DVB PSI/SI parsing           NO
-DVB-C demodulation          NO      NIT-based discovery          NO
-```
+## How these lists are verified
 
-These are asserted mechanically by `tools/verify.mjs` (symbol scan over the
-artifact), so a future edit that introduces such code fails the check.
+| List | Verification |
+| --- | --- |
+| Implemented | `tools/verify.mjs` (static: methods, providers, contracts) and `tools/checks.mjs` (behaviour: dedup, providers, provenance, persistence) |
+| Partially implemented | `tools/simulate.mjs` reproduces D1/D2/D4/D9; `tools/verify.mjs` reports D3/D7/D8 |
+| Not implemented (designed) | `tools/verify.mjs` symbol scan for design-only layers |
+| Not implemented (non-goal) | `tools/verify.mjs` symbol scan for DVB/RF terms |

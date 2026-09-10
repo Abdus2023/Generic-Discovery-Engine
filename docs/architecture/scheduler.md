@@ -102,3 +102,32 @@ The following scheduling capabilities are specified in
 
 Until those exist, priority remains a static heuristic and fairness between
 resource types is an emergent property of the priority table.
+
+## Decisions
+
+### D-05 — Priority is a static heuristic
+
+* **Decision:** scheduling weight is computed from a type table, a confidence
+  hint, depth and attempt count.
+* **Rationale:** the prototype needs a deterministic, inspectable ordering, not a
+  learning system; the design material's `value × probability ÷ cost` expression
+  has no measured inputs yet.
+* **Alternatives considered:** a full cost/benefit scheduler (deferred to
+  v0.15/v0.31); FIFO (rejected: ignores that a sitemap is worth more than an
+  image); BFS/DFS (rejected: the frontier is heterogeneous).
+* **Consequence:** no aging and no fairness, so starvation is possible; priority
+  values are not comparable to any real-world value.
+* **Status:** IMPLEMENTED (CONJECTURE for the value model).
+
+### D-06 — Admission control is budget-based, not capability-based
+
+* **Decision:** a worker reserves a request slot from a global counter and is
+  gated per origin, before executing.
+* **Rationale:** the scarce resource in a browser userscript is requests, not
+  CPU.
+* **Alternatives considered:** unlimited concurrency with reactive backoff
+  (rejected: the page the user is browsing is affected by our traffic).
+* **Consequence:** budget exhaustion ends a scan; the counter is deliberately
+  reset per execution context on restore. Slot reservation happens before
+  execution, but the slot is never released, so the budget counts *attempts*.
+* **Status:** IMPLEMENTED; capability negotiation is DESIGNED (v0.8).

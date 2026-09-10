@@ -47,7 +47,8 @@ documentation cleanup. Output order follows the review brief (Phases 0–21).
 * the v0.7.1 block was extracted verbatim and re-parsed (`vm.Script`) — see
   `tools/verify.mjs`;
 * the artifact was executed under a browser shim to observe runtime behaviour —
-  see `tools/simulate.mjs`;
+  see `tools/simulate.mjs` (one long scenario) and `tools/checks.mjs` (isolated
+  invariants in fresh contexts);
 * README claims were checked one by one against the artifact; results appear in
   sections 3, 5 and 7.
 
@@ -64,38 +65,43 @@ documentation cleanup. Output order follows the review brief (Phases 0–21).
    recognition providers, knowledge base, decision ledger, persistence, export.
 4. The provider boundary is **clean and verified**: providers perform no I/O,
    never enqueue candidates, never touch scheduling — the strongest part of the
-   design.
+   design. The engine (not the provider) owns expansion.
 5. The claim operation is synchronous and marks ownership before any `await`;
    within one execution context two workers cannot claim the same candidate *via
    the claim function*.
 6. However, the stated invariant "a candidate may have at most one active owner"
-   is **violated end to end**: re-discovery re-queues an in-flight candidate
-   (`queueCandidate()` refuses only `completed`/`skipped`), producing 2–4
-   concurrent owners and 12–18 duplicate acquisitions per harness run (**D1**).
-7. Workers exit permanently when no candidate is eligible at that instant, so
-   effective concurrency collapses toward 1 and work waiting on retry backoff is
-   abandoned while `running` stays true and the Scan button becomes a no-op
-   (**D2**, **D4**).
-8. `failed` is a claimable state with no backoff, so a permanently broken target
-   can consume the request budget (**D3**).
-9. Adaptive concurrency updates a variable that the already-created worker pool
-   never reads, and `stats.acquired` is never incremented (**D5**, **D7**).
-10. Terminology drifted badly: *probe*, *acquisition*, *lock*, *validation*,
-    *evidence*, *visited*, *database*, *graph*, *coverage* were used
-    inconsistently; the canonical glossary now fixes one term per concept.
-11. The README mixed implemented, designed and aspirational statements with no
-    labels, and its roadmap marked the whole prototype phase as complete.
-12. The DVB analogy is legitimate as an explanation of control structure and was
-    at risk of being read as a compatibility claim; it is now bounded explicitly.
-13. Provenance exists in a usable but partial form (parent, mechanism, depth,
-    ledger, graph edges); the design series' evidence/claim layer does not exist.
-14. Failure modes were undocumented; 26 are now recorded with detection, current
-    behaviour, desired behaviour and status, alongside 7 named defects (D1–D7).
-15. The repository now holds the code, the documents, the archive and two
-    executable verification tools; static verification exits non-zero when
-    documentation and code disagree.
-
----
+   is **violated end to end** (**D1**): `queueCandidate()` refuses only
+   `completed`/`skipped`, so re-discovery re-queues in-flight candidates —
+   measured at 2–4 concurrent owners and 12–18 duplicate acquisitions per run.
+7. Workers exit permanently when no candidate is eligible at that instant (**D2**),
+   so effective concurrency collapses toward 1; work waiting on retry backoff is
+   abandoned while `running` stays true and the Scan button becomes a no-op (**D4**).
+8. `failed` is a claimable state with no backoff (**D3**), so a permanently broken
+   target can consume the request budget.
+9. Adaptive concurrency updates a variable the already-created worker pool never
+   reads (**D5**), `stats.acquired` is never incremented (**D7**), and content
+   fingerprints are indexed but never consulted (**D8**).
+10. Recognition is broader than the documentation implied: HTML, JSON and XML
+    match by **content type or body sniff**, `TextProvider` matches `text/*` (not
+    a universal fallback), and several providers match one observation — so a
+    `text/html` body is interpreted twice and discovery records are duplicated
+    (**D9**).
+11. Provenance is partly implemented but partial in a precise sense: candidate,
+    observation and discovery records link correctly and the chain is
+    reconstructible (verified), while evidence, competing interpretations and
+    conflict handling do not exist.
+12. Persistence is stronger than assumed and weaker than needed: candidates,
+    observations, discoveries, resources, edges **and the ledger** survive a
+    reload (verified), but there is no transaction, no validation, and the run
+    state is not restored.
+13. Terminology had drifted badly; one canonical term per concept is now fixed in
+    a glossary with an explicit conflict table.
+14. The DVB analogy is legitimate as control-structure inspiration and was at risk
+    of being read as a compatibility claim; it is now bounded, matrixed, and
+    enforced by a static symbol check.
+15. The repository now holds the code, the normative documents, the non-normative
+    archive, and three executable verification tools whose results are recorded
+    in this document.
 
 ## 3. Architecture Truth Table
 
@@ -112,6 +118,8 @@ documentation cleanup. Output order follows the review brief (Phases 0–21).
 | Deduplication | yes (type:target; resource URL guard) | reconciliation, identity resolution | artifact/revision identity | guard is non-atomic across the in-flight window (D6) |
 | Persistence | yes (GM storage, caps, debounced) | transactional persistence, crash recovery | cross-context replication | no transactions; `running` latch survives restore |
 | Provenance | partial (parent, mechanism, depth, ledger, edges) | evidence graph, claims, conflicts | causal ordering | no evidence layer; observations are mutable |
+| Content fingerprinting | computed and indexed (fnv1a32) | identity resolution (v0.17) | revision detection | index is never read (**D8**) |
+| Discovery accounting | one record per recognition | corroboration model | evidence-based resolution | duplicates not merged (**D9**) |
 | Concurrency | single-context claim | multi-worker coordination | distributed consensus | invariant violation (D1); not a lock |
 | Coverage / absence / completeness | no | v0.22, v0.23 | goal-constrained coverage | none of it exists; must not be claimed |
 | Adaptive strategy | counters only | v0.21 learning | — | no effect on the live pool (D5) |
@@ -120,6 +128,10 @@ documentation cleanup. Output order follows the review brief (Phases 0–21).
 ---
 
 ## 4. Terminology Audit
+
+The canonical table — definition, current usage, conflicting usages, canonical
+usage and the documents corrected — is owned by
+[../glossary.md](../glossary.md). Summary:
 
 | Current term(s) | Canonical term | Problem | Action |
 | --- | --- | --- | --- |
@@ -226,6 +238,31 @@ non-claim statements.
 *Documents changed:* `docs/research/dvb-blind-scan-inspiration.md`,
 `README.md`, `docs/prototype/scope.md`.
 
+**CONFLICT 9 — "deduplicated discovery"**
+*Statement A:* the architecture presents the engine as deduplicating what it
+finds (one candidate per identity, one resource per URL).
+*Statement B:* the discovery store is not deduplicated: `emitDiscovery()` always
+stores a `Discovery` before the derived candidate is deduplicated, and
+`text/html` bodies are interpreted by two providers, so the same URL is recorded
+as several discoveries (74 discoveries for 27 unique URLs in one harness run).
+*Evidence:* dynamic (`tools/simulate.mjs`), static (`emitDiscovery()` ordering,
+provider matching rules).
+*Resolution:* candidate identity is deduplicated; discovery identity is not.
+Tracked as D9, with the two mechanisms documented.
+*Documents changed:* `docs/prototype/limitations.md`,
+`docs/architecture/provider-model.md`, `docs/architecture/provenance.md`.
+
+**CONFLICT 10 — content identity exists but is unused**
+*Statement A:* the prototype computes content fingerprints and maintains a
+hash → URL index, which reads like content-identity resolution.
+*Statement B:* no code reads that index; identical bytes behind different URLs are
+never related.
+*Evidence:* static (4 write/probe sites, 0 read sites).
+*Resolution:* fingerprinting is an observation feature, not an identity feature.
+Tracked as D8.
+*Documents changed:* `docs/architecture/provenance.md`,
+`docs/prototype/limitations.md`.
+
 ---
 
 ## 6. Duplication Map
@@ -248,7 +285,11 @@ Rule applied: each concept is explained once; other documents link to it.
 
 ## 7. Scope Verification
 
-**CURRENT** (verified against the artifact): seed generation; candidate
+Scope is now expressed in three tiers — Implemented, Partially implemented,
+Not implemented (designed and non-goal) — owned by
+[../prototype/scope.md](../prototype/scope.md). Summary:
+
+**Implemented** (verified against the artifact): seed generation; candidate
 normalization; identity deduplication; resource-level acquisition guard;
 synchronous candidate claiming; worker pool; HTTP GET acquisition with timeout;
 content-type handling and sniffing; HTML/JSON/XML/CSS/JS/text/binary
@@ -257,6 +298,13 @@ candidate caps; persistence with caps; JSON export; control panel; per-provider
 error isolation; request budget; origin rate limiting; retry with backoff;
 decision ledger; graph edges; policy gating (GET-only, depth, disabled classes,
 scope).
+
+**Partially implemented** (real function, meaningful limitation): concurrency
+(pool not refilled, D2), adaptive concurrency (no effect, D5), persistence (no
+transaction or reconciliation), retry (`failed` bypasses backoff, D3),
+termination (no completion criterion, D4), cancellation (cooperative only),
+content identity (fingerprints unused, D8), discovery accounting (duplicates
+not merged, D9), statistics (`acquired` dead, D7).
 
 **DESIGNED**: capability lattice, acquisition runtime, recognition runtime,
 candidate sources and controller, discovery domain and sessions, work items and
@@ -322,13 +370,18 @@ Candidate Expansion`. Verified in code:
 
 | Provider | `matches()` | `recognize()` | Performs I/O | Enqueues candidates |
 | --- | --- | --- | --- | --- |
-| `HtmlProvider` | content type / body sniff | links, frames, scripts, media, forms, metadata | no | no |
-| `JsonProvider` | content type / body sniff | URL-like values (recursive walk) | no | no |
-| `XmlProvider` | content type / body sniff | `loc` values | no | no |
-| `CssProvider` | CSS content type | `url(...)` references | no | no |
-| `JavaScriptProvider` | script content type | URL-shaped string literals | no | no |
-| `TextProvider` | fallback | HTTP(S) URLs in text | no | no |
-| `BinaryProvider` | binary content type | none, by design | no | no |
+| `HtmlProvider` | `text/html`, `application/xhtml+xml`, or body starting with `<!doctype html`/`<html` | links, frames, scripts, media, forms, metadata | no | no |
+| `JsonProvider` | `application/json`, `*+json`, or body starting with `[`/`{` | URL-like values (recursive walk) | no | no |
+| `XmlProvider` | `application/xml`, `text/xml`, `*+xml`, or body starting with `<?xml` | `loc` values | no | no |
+| `CssProvider` | `text/css` (content type only) | `url(...)` references | no | no |
+| `JavaScriptProvider` | javascript/ecmascript media types | URL-shaped string literals | no | no |
+| `TextProvider` | **`text/*` or empty content type** — not a fallback | absolute and relative URLs in text | no | no |
+| `BinaryProvider` | image/audio/video/pdf/zip/octet-stream | none, by design | no | no |
+
+*Several providers may match one observation:* `text/html` matches HTML **and**
+text, `text/css` matches CSS **and** text, `text/xml` matches XML **and** text.
+All matches run; there is no router or priority in v0.7.1 (DESIGNED: v0.11).
+This is the first of the two mechanisms behind D9.
 
 * `Provider` declares only `matches()` and `recognize()` — there is **no**
   `candidates()` method, and none is needed: expansion belongs to the engine.
@@ -356,6 +409,8 @@ series and are labelled DESIGNED.
 | Causal trace of decisions | yes | append-only ledger with `seq`, capped at 5000 |
 | Evidence, competing interpretations, conflicts | no | DESIGNED (v0.16, v0.34) |
 | Immutability of observations | no | stored in a mutable map, serialized on persistence |
+| Content fingerprint per observation/resource | yes (fnv1a32 over a normalized sample) | stored as `{ algorithm, hash, length, sampledLength }` |
+| Content-identity index (`hash → URLs`) | populated, **never read** | D8 — dead evidence |
 
 Collapse risk identified and documented: the phrase "evidence" was used for plain
 observations; the glossary now separates observation (CURRENT) from evidence
@@ -382,12 +437,37 @@ behaviour, desired behaviour and status for 26 failure modes, plus the seven def
 | malformed body | provider aborts, diagnostic recorded, scan continues | handled |
 | persistence corruption | restore skipped, scan continues | handled |
 | worker crash (unexpected throw) | worker dies; `start()` may reject (ARGUMENT) | OPEN |
+| content fingersprints collected but unused | index written, never read | **defect D8** |
+| duplicate discovery of one URL | separate records from provider double-match and repeated expansion | **defect D9** |
 
 No protection is claimed that is not implemented.
 
 ---
 
-## 12. Proposed Repository Structure
+## 12. Search-Space Analysis
+
+Canonical owner: [../architecture/search-space.md](../architecture/search-space.md).
+Summary of the verified position:
+
+| Question | Answer (v0.7.1) | Status |
+| --- | --- | --- |
+| Finite space? | Not enumerable; bounded in practice by `maxCandidates` (750), `maxDepth` (5), scope (same origin) and budget (150 requests) | CURRENT |
+| Dynamically expanding? | Yes: recognition emits discoveries that emit candidates while workers run | CURRENT |
+| Growth control | Hard cap with silent drops; no rate control or throttle | CURRENT |
+| Duplicate suppression | Candidate identity `type:target`, resource guard, `visited` | CURRENT, defeated in flight (D1) and at discovery level (D9) |
+| Priority | Static heuristic over type, confidence, depth, attempts; no aging | CURRENT |
+| Termination | Empty eligible set, budget exhaustion, or `stop()`; no completion criterion | CURRENT (D4) |
+| Negative evidence | Not modelled; a failed acquisition is an observation | NOT IMPLEMENTED (v0.23) |
+| Coverage | Not measured; "exhausted" means "nothing eligible right now" | NOT IMPLEMENTED (v0.22) |
+| Revisiting | Yes while `queued`; yes after `failed` without bound (D3); no after `completed`/`skipped` | CURRENT |
+| Staleness | No TTL, expiry or revalidation | NOT IMPLEMENTED |
+| Historical knowledge | Persisted across reloads but never used for scoring | PARTIAL |
+| Exhaustive or opportunistic? | Opportunistic within bounds | CURRENT |
+
+The prototype must never claim coverage, absence or completeness. The strongest
+accurate statements are those listed in §7 and in the search-space document.
+
+## 13. Proposed Repository Structure
 
 Smallest structure that separates responsibilities (implemented):
 
@@ -401,6 +481,7 @@ docs/architecture/scheduler.md              claiming, budget, retry, termination
 docs/architecture/provider-model.md         three planes, provider contract
 docs/architecture/provenance.md             what is recorded, what is missing
 docs/architecture/concurrency.md            ownership invariant and its violation
+docs/architecture/search-space.md           what is searched, bounds, termination
 docs/prototype/userscript.md                artifact guide, versions, config, UI
 docs/prototype/scope.md                     CURRENT / DESIGNED / FUTURE / NON-GOAL
 docs/prototype/limitations.md               defects and failure-mode matrix
@@ -410,6 +491,7 @@ docs/analysis/repository-analysis-2026-09-10.md  this review
 archive/*.md                                unedited transcripts (non-normative)
 archive/README.md                           why the archive exists
 tools/verify.mjs                            static verification
+tools/checks.mjs                            behavioural invariants (dedup, providers, provenance, persistence)
 tools/simulate.mjs                          dynamic harness
 ```
 
@@ -418,7 +500,7 @@ duplicates another's canonical explanation.
 
 ---
 
-## 13. Document-by-Document Rewrite Plan
+## 14. Document-by-Document Rewrite Plan
 
 | Document | Action | Reason |
 | --- | --- | --- |
@@ -439,7 +521,7 @@ conversational filler.
 
 ---
 
-## 14. Clean Canonical Architecture
+## 15. Clean Canonical Architecture
 
 ```
                        ┌──────────────────────────────┐
@@ -489,35 +571,37 @@ drawn because they do not exist.
 
 ---
 
-## 15. Implementation Gaps
+## 16. Implementation Gaps
 
-Only gaps that matter for the next implementation step:
+Classified as required: BUG, MISSING TEST, DOCUMENTATION GAP, ARCHITECTURAL GAP,
+FUTURE FEATURE, RESEARCH QUESTION. A missing future feature is never a bug.
 
-1. **Ownership transition vs re-discovery (D1).** Decide whether re-discovery may
-   re-queue at all; if work must be re-proposed, model it as work, not as
-   candidate state.
-2. **Terminal failure (D3).** Give `failed` a terminal or backoff-gated meaning.
-3. **Worker lifecycle (D2, D4).** A pool that never refills and a `running` flag
-   that never clears make scan control dishonest; fix the control plane before
-   adding features.
-4. **Atomic acquisition guard (D6).** The resource guard must be decided at the
-   same instant as ownership, or derived from it.
-5. **Cancellation (v0.10 design).** `stop()` cannot abort in-flight work; without
-   it, budget accounting is approximate.
-6. **Termination semantics (v0.14 design).** "Idle", "budget-exhausted" and
-   "stop-requested" need distinct, persisted meanings before any coverage claim
-   is meaningful.
-7. **Reporting truth (D5, D7).** Statistics that are structurally wrong (adaptive
-   concurrency, `acquired`) must be corrected or removed before they are used in
-   design review.
+| # | Gap | Class | Architectural importance | Current state | Required work | Priority |
+| --- | --- | --- | --- | --- | --- | --- |
+| 1 | Re-discovery re-queues in-flight candidates (D1) | BUG | **critical** — breaks the stated ownership invariant and causes duplicate acquisition | reproduced in `tools/simulate.mjs` (2–4 owners, 12–18 duplicate URLs) | refuse re-queue for any non-terminal state, or model re-proposed work as work | P0 |
+| 2 | `failed` stays claimable with no backoff (D3) | BUG | high — budget is consumed by dead targets | `claimNextCandidate()` includes `failed`; `markFailed()` sets no `nextAttemptAt` | give `failed` terminal or backoff-gated semantics | P0 |
+| 3 | Worker pool is never refilled; workers exit on an empty frontier (D2) | BUG | high — a scan silently degrades to single-threaded and can strand work | measured peak workers 1 (empty start) vs 4 (pre-seeded) | keep workers alive until a scan-level stop condition, or respawn on new work | P0 |
+| 4 | Retry backoff can leave work stranded and `running` stuck true (D4) | BUG | high — control plane lies about state | candidate observed `queued` with pending backoff at quiescence | explicit scan states: running / quiescent / exhausted / stopped | P1 |
+| 5 | Per-URL acquisition guard is not atomic with ownership (D6) | BUG | high — duplicate acquisition | consequence of D1 | tie the guard to the ownership transition | P0 (with #1) |
+| 6 | Discovery records are never deduplicated (D9) | BUG | medium — inflated counts, repeated expansion | 74 discoveries / 27 URLs measured | deduplicate, or store corroboration as provenance | P1 |
+| 7 | Content fingerprint index is written but never read (D8) | BUG (dead capability) | medium — blocks any identity work | 4 write sites, 0 read sites | either consult it (identity) or remove it | P1 |
+| 8 | `stats.acquired` never incremented (D7) | BUG | low — reporting | static | maintain or remove the counter | P2 |
+| 9 | Adaptive concurrency has no effect (D5) | BUG (control plane) | low today, high if relied upon | counters update, pool fixed | drive the pool from the counter, or delete the feature | P2 |
+| 10 | No test for the single-owner invariant after its fix | MISSING TEST | high — regression risk | the harness detects the violation but is not a pass/fail gate | add an assertion that fails on any concurrent owner | P0 |
+| 11 | No deterministic replay fixture | MISSING TEST | medium | harness responses are randomized in delay only | fixed responses + fake clock for reproducible runs | P1 |
+| 12 | No persistence-failure path test | MISSING TEST | medium | only the happy path is exercised | corrupt payload, quota exceeded, schema mismatch | P2 |
+| 13 | Coverage/absence semantics | DOCUMENTATION GAP (resolved) + ARCHITECTURAL GAP | medium | now documented as absent; no object exists | design review of v0.22/v0.23 before implementation | P2 |
+| 14 | Cancellation does not abort in-flight requests | ARCHITECTURAL GAP | medium | `stop()` sets a flag; the request continues | runtime-owned cancellation (v0.10 design) | P2 |
+| 15 | No scan-level termination evaluator | ARCHITECTURAL GAP | high for any future coverage work | "idle" and "finished" are indistinguishable | define states and persist them | P1 |
+| 16 | Acquisition transport is not an interface | ARCHITECTURAL GAP | medium | HTTP GET hard-wired | acquisition provider boundary (v0.9/v0.10 design) | P3 |
+| 17 | Capabilities, work items, evidence graph, leases, coverage | FUTURE FEATURE | high long-term | DESIGNED only | do not start before P0 items are fixed | P3 |
+| 18 | Is the search space finite in any useful sense? | RESEARCH QUESTION | high | unanswerable today | define what could be enumerated and what cannot | P2 |
+| 19 | How should confidence be produced and compared? | RESEARCH QUESTION | medium | provider-local constants | calibration study across providers | P3 |
+| 20 | How much coordination is safe inside one browser profile? | RESEARCH QUESTION | medium | unaddressed | storage-atomicity study before v0.33 work | P3 |
 
-Not in scope for the next step: capabilities, evidence graphs, leases, coverage
-claims — implementing them on top of an unsound ownership baseline would
-reproduce the defect at a larger scale.
+Anything not listed here was either not found or is already correct.
 
----
-
-## 16. Verification Plan
+## 17. Verification Plan
 
 | Claim | Current status | Test that changes it | Result |
 | --- | --- | --- | --- |
@@ -532,21 +616,37 @@ reproduce the defect at a larger scale.
 | Timeout and retry semantics | ARGUMENT → PROVED (dynamic, partial) | harness returns 5xx/timeouts and asserts backoff and terminal behaviour | retry observable; terminal behaviour is D3 |
 | Worker-pool behaviour | ARGUMENT → PROVED (dynamic) | measure peak live workers with empty vs pre-populated frontier | D2 confirmed |
 
+### Executed procedures
+
+| # | Procedure | Tool | Covers |
+| --- | --- | --- | --- |
+| 1 | static claim atomicity and ordering | `tools/verify.mjs` | claim before await, no suspension in the claim |
+| 2 | provider contract and registry completeness | `tools/verify.mjs` | methods, registration, no I/O in providers |
+| 3 | scope enforcement | `tools/verify.mjs` | DVB symbols, design-only symbols, doc links, README claims |
+| 4 | candidate uniqueness | `tools/checks.mjs` | same `type:target` inserted twice → one logical candidate |
+| 5 | type disambiguation | `tools/checks.mjs` | same URL, different type → two candidates |
+| 6 | provider selection | `tools/checks.mjs` | 11 content-type/body cases, exact matching sets |
+| 7 | provenance chain | `tools/checks.mjs` | seed → candidate → observation → discovery → child candidate |
+| 8 | persistence round-trip | `tools/checks.mjs` | candidates, discoveries, resources and ledger survive reload; budget resets |
+| 9 | ownership under load | `tools/simulate.mjs` | concurrent owners, duplicate acquisitions (D1) |
+| 10 | scheduler sensitivity | `tools/simulate.mjs --unsafe-control` | proves the harness detects an ownership violation |
+
 Reproduction:
 
 ```bash
 node tools/verify.mjs               # static; exits non-zero on documentation drift
+node tools/checks.mjs               # behavioural invariants; exits non-zero on drift
 node tools/simulate.mjs             # dynamics; reports the defects it observes
 node tools/simulate.mjs --unsafe-control   # negative control
 ```
 
-Not yet implemented and required before feature work: a deterministic replay
-harness (fixed responses, fixed delays), persistence round-trip test, and a
-regression test that asserts the single-owner invariant after D1 is fixed.
+Still missing and required before feature work: a pass/fail regression gate for
+the single-owner invariant (after D1 is fixed), a deterministic replay fixture,
+and a persistence-failure path test.
 
 ---
 
-## 17. Recommended Execution Order
+## 18. Recommended Execution Order
 
 1. **Freeze terminology** — `docs/glossary.md` is the reference for all further
    writing. *(done)*
@@ -569,7 +669,13 @@ regression test that asserts the single-owner invariant after D1 is fixed.
     `tools/simulate.mjs`. *(done; defects D1–D7 recorded)*
 11. **Fix the ownership and control-plane defects (D1, D2, D3, D4, D6)** before
     adding any designed layer.
-12. **Only then** consider the v0.10/v0.11 runtime boundaries, which are the
+12. **Fix the accounting defects (D7, D9)** — counters and discovery records that
+    misstate what happened will corrupt any later coverage reasoning.
+13. **Decide the fate of the fingerprint index (D8)** — consult it or delete it;
+    leaving dead evidence invites false assumptions about identity resolution.
+14. **Add the missing regression gate** — a pass/fail assertion for the
+    single-owner invariant, plus a deterministic replay fixture.
+15. **Only then** consider the v0.10/v0.11 runtime boundaries, which are the
     smallest useful next architectural step.
 
 ---
@@ -581,7 +687,15 @@ regression test that asserts the single-owner invariant after D1 is fixed.
 | Current implementation distinguishable from planned architecture | yes — labels throughout |
 | DVB analogy bounded | yes — matrix + explicit non-claims + static enforcement |
 | Candidate lifecycle unambiguous | yes — one state list, one diagram |
-| Candidate claiming race-safe | **no — D1 documented and reproduced**; claim function itself is atomic |
+| Candidate claiming race-safe | **no — D1 documented and reproduced**; claim function itself is atomic within one execution context |
+| Candidate identity distinct from lifecycle | yes — `type:target` vs the state machine |
+| Acquisition distinct from recognition | yes — enforced by the no-I/O provider rule |
+| Retry behaviour documented | yes — backoff, and the `failed` exception (D3) |
+| Candidate growth bounded or marked open | yes — caps, depth, budget, silent drops |
+| Duplicate discoveries addressed | yes — measured, mechanism explained, tracked as D9 |
+| Persistence semantics documented | yes — what round-trips (verified), what deliberately resets, what is missing |
+| Diagrams canonicalized | yes — one loop, one provider graph, one concurrency model |
+| No contradiction silently resolved | yes — 10 conflicts recorded with evidence and resolution |
 | Provider/acquisition boundary explicit | yes — verified rule table |
 | Observation and discovery distinct | yes — separate records, separate documents |
 | Provenance explicit | yes — recorded fields, limits and missing layers |

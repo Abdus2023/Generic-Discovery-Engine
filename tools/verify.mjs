@@ -163,6 +163,43 @@ if (markFailed && !/nextAttemptAt/.test(markFailed)) {
 }
 
 /* -------------------------------------------------------------------------- */
+/* 4b. Evidence collected but unused, and reporting gaps                      */
+/* -------------------------------------------------------------------------- */
+
+{
+  const writes = (source.match(/fingerprintIndex\.(has|set|get)/g) || []);
+  const reads = (source.match(/fingerprintIndex\.get\(/g) || []);
+  if (writes.length > 0 && reads.length === 0) {
+    defect('content fingerprints are indexed but never used',
+      `${writes.length} write/probe sites, 0 read sites -> content identity cannot affect any decision (D8)`);
+  } else if (reads.length > 0) {
+    pass('content fingerprint index is consulted', `${reads.length} read site(s)`);
+  } else {
+    info('content fingerprint index', 'not present');
+  }
+}
+
+{
+  const writtenAcquired = /stats\.acquired\s*(\+\+|\+=|=)/.test(source)
+    || /\.acquired\s*\+\+/.test(source);
+  if (!writtenAcquired) {
+    defect('stats.acquired is never incremented', 'the counter stays 0 in the UI and in exports (D7)');
+  } else {
+    pass('stats.acquired is maintained');
+  }
+}
+
+{
+  const restoreBody = methodBody('GenericDiscoveryEngine', 'restore') || '';
+  if (/this\.ledger\.restore\(/.test(restoreBody)) pass('the decision ledger survives a restore');
+  else fail('the decision ledger survives a restore', 'restore() does not call ledger.restore()');
+
+  if (/this\.requestsReserved\s*=\s*0/.test(restoreBody)) {
+    info('request budget semantics on restore', 'a new execution context gets a fresh budget (by design)');
+  }
+}
+
+/* -------------------------------------------------------------------------- */
 /* 5. Provider boundary                                                       */
 /* -------------------------------------------------------------------------- */
 
@@ -182,6 +219,15 @@ const registry = classBody('ProviderRegistry') || '';
 const notRegistered = providerNames.filter(n => !registry.includes(`new ${n}(`));
 if (notRegistered.length === 0) pass('every provider is registered', providerNames.length + ' providers');
 else fail('every provider is registered', notRegistered.join(', '));
+
+{
+  const textBody = classBody('TextProvider') || '';
+  if (/type\.startsWith\(.text\/.\)/.test(textBody) && /type === ''/.test(textBody)) {
+    pass('TextProvider scope is documented', "matches text/* or an empty content type; not a universal fallback");
+  } else {
+    fail('TextProvider scope is documented', 'matching rule changed; update docs/architecture/provider-model.md');
+  }
+}
 
 const ioInProviders = providerNames.filter(n => /GM_xmlhttpRequest|\bfetch\s*\(|XMLHttpRequest/.test(classBody(n) || ''));
 if (ioInProviders.length === 0) pass('providers perform no network I/O');
@@ -269,22 +315,31 @@ else fail('every relative documentation link resolves', broken.join('; '));
 
 const readme = fs.readFileSync(path.join(ROOT, 'README.md'), 'utf8');
 
-function section(md, startHeading, endHeadings) {
-  const start = md.indexOf(startHeading);
+/**
+ * Return the text of one '## ' section, stopping at the next '## ' heading.
+ * Robust to heading renames: it never swallows the rest of the document.
+ */
+function section(md, startHeading) {
+  const lines = md.split('\n');
+  const start = lines.findIndex(l => l.trim() === startHeading);
   if (start < 0) return '';
-  let end = md.length;
-  for (const h of endHeadings) {
-    const i = md.indexOf(h, start + startHeading.length);
-    if (i > -1 && i < end) end = i;
+  let end = lines.length;
+  for (let i = start + 1; i < lines.length; i++) {
+    if (/^## \S/.test(lines[i])) { end = i; break; }
   }
-  return md.slice(start, end);
+  return lines.slice(start, end).join('\n');
 }
 
 const implementedText = [
-  section(readme, '## Current Prototype', ['## Architecture']),
-  // the "Implemented" paragraph in the Scope section
-  (readme.match(/\*\*Implemented\*\*[\s\S]*?\n\n/) || [''])[0],
-  section(readme, '## Provider Model', ['## Scope'])
+  section(readme, '## Current Prototype'),
+  section(readme, '## Core Architecture'),
+  section(readme, '## Discovery Loop'),
+  section(readme, '## Candidate Lifecycle'),
+  section(readme, '## Concurrency Invariant'),
+  section(readme, '## Provider Model'),
+  section(readme, '## Provenance'),
+  // the "Implemented" paragraph inside Scope
+  (readme.match(/\*\*Implemented\*\*[\s\S]*?\n\n/) || [''])[0]
 ].join('\n');
 
 const DESIGN_ONLY_TERMS = ['lease', 'fencing', 'evidence graph', 'coverage claim',

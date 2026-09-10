@@ -152,3 +152,33 @@ documentation decisions; see
 The design series states its own boundary explicitly: a browser profile may offer
 shared storage and claim records, but that is *profile coordination*, **not**
 distributed consensus. Keep that distinction if those layers are ever built.
+
+## Decisions
+
+### D-03 — Ownership is established synchronously before any suspension
+
+* **Decision:** `claimNextCandidate()` mutates candidate state before the worker
+  performs its first `await`.
+* **Rationale:** JavaScript runs to completion between suspension points, so a
+  synchronous transition is sufficient to exclude other workers in the same
+  context, without locks.
+* **Alternatives considered:** "inspect, then acquire" with a re-check after the
+  network call (rejected: two workers can pass the check and both acquire, as the
+  `--unsafe-control` harness mode demonstrates).
+* **Constraint:** safety depends on a single execution context and on every path
+  from selection to suspension preserving the transition.
+* **Consequence:** the guard is correct but *local*; it says nothing about tabs,
+  workers or devices, and it is defeated elsewhere by the re-queue path (D1).
+* **Status:** IMPLEMENTED at the claim site; **CONTRADICTED end to end** by D1.
+
+### D-04 — No distributed coordination in the prototype
+
+* **Decision:** the prototype does not attempt cross-context ownership.
+* **Rationale:** the browser offers shared storage, not atomic claims; a
+  half-implemented lease protocol would be worse than none.
+* **Alternatives considered:** `localStorage`-based claim records (rejected for
+  the prototype; DESIGNED properly in v0.33 with leases, heartbeats and fencing).
+* **Consequence:** two tabs scanning the same site duplicate each other's work by
+  construction. The design series keeps the boundary explicit: profile
+  coordination ≠ distributed consensus.
+* **Status:** DESIGNED (v0.33/v0.34), not implemented.

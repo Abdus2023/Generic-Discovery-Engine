@@ -32,6 +32,8 @@ Discovery {
 ```
 
 ```
+Observation.fingerprint    { algorithm: 'fnv1a32', hash, length, sampledLength }
+                          whitespace-normalized sample, first 1,000,000 chars
 Candidate.parent          id of the candidate whose discovery produced this one
 Candidate.alternateParents / alternateOrigins / alternateTypes   merge history
 KnowledgeBase.graphEdges  { from, to, relation }, capped at 5000
@@ -76,6 +78,8 @@ back to a root whose `mechanism` is `current-page`, `dom-observer-link`,
 | Ledger and edge lists are capped (5000 / 5000) and truncated from the front | long scans lose the earliest causal history |
 | No claim/evidence objects, no independent-evidence tracking, no conflict records | competing interpretations of one observation cannot be reconciled (DESIGNED: v0.16, v0.34) |
 | `Discovery.confidence` is provider-specific | cross-provider comparison of confidences is meaningless |
+| Content fingerprints are **indexed but never consulted** | `KnowledgeBase.fingerprintIndex` (hash → URLs) is written on observation and restore, but no code reads it, so identical bytes behind different URLs are never recognized as the same content (**D8**) |
+| The ledger is persisted but is not a query interface | events can be read back in order; there is no lookup by candidate, target or time |
 
 ## DESIGNED
 

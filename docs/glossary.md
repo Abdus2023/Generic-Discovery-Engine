@@ -10,6 +10,27 @@ canonical choice is fixed here. Terms are marked:
 | **DESIGNED** | specified in the design series v0.8 … v0.35, no code |
 | **FUTURE** | exploratory; not specified in detail |
 
+## Canonical definitions, usage and conflicts
+
+| Term | Definition | Current usage in the repo | Conflicting usages found | Canonical usage | Documents corrected |
+| --- | --- | --- | --- | --- | --- |
+| **Candidate** | Hypothesis that a target is worth acquiring | `class Candidate`, `discover()` | "target", "URL", "work item" used loosely | a candidate is a hypothesis, keyed `type:target` | README, architecture/candidate-model |
+| **Observation** | Record of what acquisition produced, including failure | `class Observation` | "evidence", "result", "validation" | observation only; never "proof" | provenance, limitations |
+| **Recognition** | Interpretation of an observation by a provider | `Provider.recognize()` | "lock", "validation", "detection", "parsing" | recognition (deterministic given the observation) | provider-model, research/DVB |
+| **Discovery** | One interpreted result with kind, confidence, data, provenance | `class Discovery`, `emitDiscovery()` | "finding", "resource", "knowledge" | discovery is an interpretation, not a resource | provenance, provider-model |
+| **Evidence** | (DESIGNED) support for an assertion, with independence and strength | absent from code | used for observations throughout the old README | reserve for v0.16; today say *observation* | README, glossary |
+| **Provenance** | Why a candidate/discovery exists: parent, mechanism, depth, hints | `parent`, `provenance{}`, `graphEdges`, ledger | "lineage", "history" | provenance records derivation; it is not evidence of truth | provenance |
+| **Provider** | Recognition unit with `matches()` / `recognize()` | 7 classes + registry | "adapter", "recognizer", "parser", "crawler" | provider = recognition only | provider-model |
+| **Acquisition** | Obtaining a candidate's target over a transport | `Acquisition`, `GM_xmlhttpRequest`/`fetch` | "probe", "fetch", "request", "download" | acquisition; *probe* is reserved for DESIGNED capability-aware attempts | README, scheduler |
+| **Scheduler** | Decides which candidate is claimed next, under policy and budget | `claimNextCandidate()`, `AcquisitionPolicy` | "queue", "dispatcher", "crawler loop" | scheduler | scheduler |
+| **Knowledge Base** | In-memory store of candidates, observations, discoveries, resources, edges, diagnostics | `class KnowledgeBase`, persisted via `serialize()` | "database", "graph", "store" | knowledge base | candidate-model, provenance |
+| **Probe** | (DESIGNED) a capability-aware acquisition attempt | absent from code | used as a synonym for acquisition | do not use for current behaviour | README |
+| **Expansion** | Turning a discovery into new candidates | `emitDiscovery()` → `discover()` | "generation", "extraction", "crawl" | candidate expansion, engine-owned | discovery-model |
+| **Seed** | Initial candidate(s) that start a scan | `observeCurrentPage()`, DOM/network sources | "start URL", "root" | seed is a starting point, not a category of candidate | search-space |
+| **Scope** | Boundary of allowed targets | `isAllowedUrl()`, `CONFIG.sameOriginOnly` | "domain" (DESIGNED concept) | scope = current origin today | candidate-model, scope |
+| **Coverage** | (DESIGNED) what part of the search space was explored | absent from code | "exhausted", "complete" used for "no eligible candidate" | never claimed today | search-space |
+| **Confidence** | Provider-supplied belief in an interpretation (0–1) | `Discovery.confidence`, `hints.confidence` | "score", "strength", "accuracy", "priority" | confidence = belief; priority = scheduling weight | candidate-model, scheduler |
+
 ## Core loop terms
 
 | Canonical term | Definition | Status |
@@ -27,7 +48,7 @@ canonical choice is fixed here. Terms are marked:
 | **Claim** | The ownership transition that makes exactly one worker responsible for a candidate. | CURRENT |
 | **Provider** | A recognition unit with `matches(observation)` and `recognize(candidate, observation)`. | CURRENT |
 | **Seed** | The initial candidate(s) that start a scan: the current page URL, plus DOM/network-observed URLs. | CURRENT |
-| **Search space** | The set of candidates reachable from the seeds through expansion. Implicit in the prototype; explicit in the design series. | CURRENT (implicit) / DESIGNED (explicit) |
+| **Search space** | The set of candidates reachable from the seeds through expansion. Implicit in the prototype; explicit in the design series. Owned today by [architecture/search-space.md](architecture/search-space.md). | CURRENT (implicit) / DESIGNED (explicit) |
 
 ## Terms that formerly overlapped
 

@@ -86,3 +86,33 @@ The v0.8 … v0.35 series keeps this loop and inserts boundaries around it
 the prototype; see [../roadmap/future-architecture.md](../roadmap/future-architecture.md).
 Any statement that the engine "produces evidence", "measures coverage" or
 "claims completeness" is a description of that design series, not of this code.
+
+## Decisions
+
+### D-01 — Discovery is separated from acquisition
+
+* **Decision:** acquisition obtains bytes; recognition interprets them; neither
+  performs the other's job.
+* **Rationale:** the DVB analogue separates tuning/lock from metadata decoding;
+  in the web case the separation is what makes a transport replaceable without
+  touching interpretation.
+* **Alternatives considered:** a single "fetch and parse" component per resource
+  type (rejected: it hard-wires transport into every recognizer).
+* **Constraint:** providers must stay pure, which forces all I/O through
+  `Acquisition`.
+* **Consequence:** the provider layer is the most replaceable part of the system;
+  the acquisition plane, by contrast, is still hard-wired to HTTP GET (v0.9/v0.10
+  are the designs that would fix that).
+* **Status:** IMPLEMENTED, verified by `tools/verify.mjs`.
+
+### D-02 — Observation is produced for failures too
+
+* **Decision:** a timeout, transport error or HTTP error yields an `Observation`
+  rather than an exception or a silent skip.
+* **Rationale:** negative results are information; the loop must not lose the
+  fact that an acquisition was attempted.
+* **Alternatives considered:** throw and let the worker retry (rejected: loses
+  provenance and makes budget accounting incomplete).
+* **Consequence:** retry decisions can be recorded as ledger events, and the
+  `Observation` record is the unit of evidence for everything downstream.
+* **Status:** IMPLEMENTED.

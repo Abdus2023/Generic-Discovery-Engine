@@ -16,7 +16,7 @@ the design series intends it to become.
 | `@noframes` | set |
 | Grants | `GM_getValue`, `GM_setValue`, `GM_xmlhttpRequest`, `@connect *` |
 | Public handle | `window.GenericDiscoveryEngine` |
-| Verified | parses and executes; `node tools/verify.mjs`, `node tools/simulate.mjs` |
+| Verified | parses and executes; `node tools/verify.mjs`, `node tools/checks.mjs`, `node tools/simulate.mjs` |
 
 It runs under Tampermonkey/Violentmonkey by installing the file as a userscript.
 The engine initializes itself (`engine.init()`), renders a small panel in the
@@ -34,8 +34,16 @@ Verification of the extraction:
 
 ```bash
 node --check prototype/generic-discovery-engine.user.js
-node tools/verify.mjs          # includes a parse check plus static assertions
+node tools/verify.mjs    # parse check plus static assertions (19 passed, 4 known defects)
+node tools/checks.mjs    # behavioural invariants in fresh contexts (4 passed)
+node tools/simulate.mjs  # end-to-end scenario; reproduces D1/D2/D4/D9
 ```
+
+Behaviour confirmed by executing the artifact: candidate deduplication by
+`type:target`; provider selection sets for 11 content-type/body combinations;
+provenance chain reconstruction (seed → candidate → observation → discovery →
+child candidate); persistence round-trip of candidates, discoveries, resources
+**and the ledger**, with the request budget deliberately reset per execution.
 
 ## Version history in the archive
 

@@ -10,7 +10,7 @@ metadata to discover further services. The inspiration is structural only.
 **This project contains no DVB, RF, tuner, or demodulation code and is not
 DVB-compatible.** See [docs/research/dvb-blind-scan-inspiration.md](docs/research/dvb-blind-scan-inspiration.md).
 
-## Concept
+## What It Is
 
 Blind discovery is a control loop over incomplete knowledge:
 
@@ -29,9 +29,9 @@ candidates, which is what makes the search space grow while it is being searched
 | --- | --- |
 | Working prototype | **Yes** — one userscript, `prototype/generic-discovery-engine.user.js` (v0.7.1) |
 | Verified behaviour | claiming, acquisition, recognition, expansion, persistence, export (see [docs/prototype/userscript.md](docs/prototype/userscript.md)) |
-| Known defects | 7 documented defects (D1–D7) in the prototype — see [docs/prototype/limitations.md](docs/prototype/limitations.md) |
+| Known defects | 9 documented defects (D1–D9) in the prototype — see [docs/prototype/limitations.md](docs/prototype/limitations.md) |
 | Architecture beyond v0.7.1 | **Design only** — v0.8 … v0.35 exist as prose, with no implementation |
-| Tests | `tools/verify.mjs` (static) and `tools/simulate.mjs` (headless behavioural harness) |
+| Verification | `tools/verify.mjs` (static), `tools/checks.mjs` (behavioural invariants), `tools/simulate.mjs` (headless harness) |
 
 Nothing in this repository is a production crawler, and no version after
 v0.7.1 exists as code.
@@ -53,7 +53,7 @@ Greasemonkey userscript (v0.7.1, ~4.3k lines) that:
 - persists state through `GM_setValue`/`GM_getValue` (or `localStorage`) with size caps
 - exports a JSON snapshot and shows a small on-page control panel
 
-## Architecture
+## Core Architecture
 
 Three planes exist in the prototype. Only the first two are implemented as
 interfaces; candidate sources are currently methods on the engine.
@@ -117,6 +117,18 @@ The loop is real but bounded: the prototype stops when no candidate is
 manually. Design-only material about coverage, completeness, and adaptive
 strategy lives in [docs/roadmap/future-architecture.md](docs/roadmap/future-architecture.md).
 
+## Candidate Lifecycle
+
+```
+discovered → queued → claimed → planned → acquiring → observed
+                                                       │
+                          recognized → expanded → completed
+                          (otherwise)  skipped | failed → (retry) → queued
+```
+
+`claimed` is an ownership transition, not a claim about the resource. Full
+state table and bounds: [docs/architecture/candidate-model.md](docs/architecture/candidate-model.md).
+
 ## Concurrency Invariant
 
 > A candidate may have at most one active owner.
@@ -145,12 +157,21 @@ enqueue candidates.
 | `XmlProvider` | XML bodies | `loc`/location values |
 | `CssProvider` | CSS bodies | `url(...)` references |
 | `JavaScriptProvider` | script bodies | string-literal URLs |
-| `TextProvider` | plain text | HTTP(S) URLs |
+| `TextProvider` | `text/*` or an empty content type | HTTP(S) and relative URLs |
 | `BinaryProvider` | binary content types | nothing (recognizes, emits no candidates) |
 
-Contract: `matches(observation)` and `recognize(candidate, observation) → Discovery[]`.
+Several providers can match one observation (`text/html` matches both HTML and text), so one body may be interpreted twice by design. Contract: `matches(observation)` and `recognize(candidate, observation) → Discovery[]`.
 Candidate expansion is performed by the engine from `Discovery.data.url`, which is
 why providers stay replaceable. See [docs/architecture/provider-model.md](docs/architecture/provider-model.md).
+
+## Provenance
+
+Every candidate records why it exists (`parent`, `mechanism`, `depth`, `hints`),
+every discovery records the candidate and observation it came from, and the
+decision ledger keeps a sequenced trace of intake, planning, budget decisions,
+requests, observations, recognition and completion. Content fingerprints are
+computed but not yet used (**D8**). Details and limits:
+[docs/architecture/provenance.md](docs/architecture/provenance.md).
 
 ## Scope
 
@@ -186,7 +207,7 @@ prototype/
 docs/
   glossary.md                 canonical terminology
   architecture/               stable design: discovery model, candidates, scheduler,
-                              providers, provenance, concurrency
+                              providers, provenance, concurrency, search space
   prototype/                  artifact guide, strict scope, limitations + failure modes
   research/                   DVB blind-scan inspiration and analogy boundary
   roadmap/                    DESIGNED / CONJECTURE layers (v0.8 … v0.35)
@@ -196,6 +217,7 @@ archive/
   Continue Architecture Planning.md   raw design conversation (non-normative)
 tools/
   verify.mjs                  static checks: code vs documentation claims
+  checks.mjs                  behaviour checks: dedup, providers, provenance, persistence
   simulate.mjs                headless harness that executes the shipped artifact
 ```
 
@@ -207,6 +229,7 @@ The two files in `archive/` are the unedited source conversations. They are
 
 ```bash
 node tools/verify.mjs      # static: claims vs artifact, scope, doc links
+node tools/checks.mjs      # behaviour: dedup, provider selection, provenance, persistence
 node tools/simulate.mjs    # dynamic: runs the artifact under a browser shim
 ```
 
@@ -228,3 +251,14 @@ fail the run. Current results are recorded in
 Do not read the roadmap as a description of the current system. Each stage is
 labelled DESIGNED, CONJECTURE or OPEN in
 [docs/roadmap/future-architecture.md](docs/roadmap/future-architecture.md).
+
+## DVB Inspiration
+
+Blind scanning supplies the control pattern — search unknown space, detect,
+acquire, validate, read metadata, discover more — not the physical layer. The
+analogy matrix and its limits are owned by
+[docs/research/dvb-blind-scan-inspiration.md](docs/research/dvb-blind-scan-inspiration.md).
+
+**DVB-inspired, not DVB-compatible.** There is no RF, tuner, demodulator, FEC,
+transport-stream or PSI/SI code; `tools/verify.mjs` fails if any such symbol
+appears.
