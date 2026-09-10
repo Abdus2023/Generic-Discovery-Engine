@@ -15,19 +15,28 @@ import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 
-const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
+const REPO_ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
+const rootArg = process.argv.indexOf('--root');
+const ROOT = rootArg > -1 && process.argv[rootArg + 1] ? path.resolve(process.argv[rootArg + 1]) : REPO_ROOT;
 const JSON_PATH = path.join(ROOT, 'docs', 'analysis', 'analysis.json');
 const MD_PATH = path.join(ROOT, 'docs', 'analysis', 'claims.md');
 
 const BEGIN = '<!-- CLAIMS:BEGIN (generated from analysis.json — do not edit by hand) -->';
 const END = '<!-- CLAIMS:END -->';
 
-/* Section headings come from docs/analysis/claim-domains.json: the closed record
-   schema of brief 10 cannot carry a presentation-only family field, so the
-   taxonomy has exactly one owner outside the record. */
-const DOMAINS_PATH = path.join(ROOT, 'docs', 'analysis', 'claim-domains.json');
-const domainDoc = JSON.parse(fs.readFileSync(DOMAINS_PATH, 'utf8'));
-const GROUPS = domainDoc.groups.map(g => [g.key, g.title, new Set(g.claims)]);
+/* Section headings come from the claim registry (brief 11 section 218.2): the
+   registry owns the identifier-to-domain mapping, while grouping domains into
+   presentation sections is a rendering concern and lives here. */
+const REGISTRY_PATH = path.join(ROOT, 'docs', 'analysis', 'registries', 'claim-registry.json');
+const domainDoc = JSON.parse(fs.readFileSync(REGISTRY_PATH, 'utf8'));
+const SECTIONS = [
+  ['current-system', 'Current-system claims', ['candidate', 'scheduler', 'acquisition', 'provenance']],
+  ['architecture-boundary', 'Architecture-boundary claims', ['architecture']],
+  ['scope-and-absence', 'Scope and absence claims', ['scope']],
+  ['plan-history-hypothesis', 'Plan, history and hypothesis claims', ['plan', 'history', 'hypothesis']],
+];
+const GROUPS = SECTIONS.map(([key, title, domains]) => [key, title,
+  new Set(domainDoc.entries.filter(e => domains.includes(e.domain)).map(e => e.id))]);
 const groupOf = claim => {
   const group = GROUPS.find(([, , ids]) => ids.has(claim.id));
   return group ? group[0] : null;
@@ -44,7 +53,7 @@ function renderGroups() {
   const out = [];
   const missing = claims.filter(c => groupOf(c) === null).map(c => c.id);
   if (missing.length) {
-    console.error(`FAIL: claims absent from claim-domains.json: ${missing.join(', ')}`);
+    console.error(`FAIL: claims absent from the claim registry: ${missing.join(', ')}`);
     process.exit(2);
   }
   for (const [key, title] of GROUPS) {

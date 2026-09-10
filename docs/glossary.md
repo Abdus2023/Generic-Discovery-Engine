@@ -73,6 +73,22 @@ canonical choice is fixed here. Terms are marked:
 | "PASS", "FAIL", "clean", "successful" (as a verification verdict) | **`claim_verification.result`** | Claim verification concludes `VERIFIED`, `PARTIALLY_VERIFIED`, `UNVERIFIED`, `CONTRADICTED` or `NOT_APPLICABLE`. `SUCCEEDED` belongs to `execution.state` and to `execution.operations[].result`, and `PASSED` to `execution_verification.state`; none of them is a claim verdict. |
 | "implemented" (as a verdict about a claim) | **`implementation_state`** | `IMPLEMENTED` describes the behaviour named in the claim; it is not a verification conclusion and not a test result. |
 
+## Schema, registry and validator
+
+| Layer | Question | Where |
+| --- | --- | --- |
+| structural schema | is this the legal shape, and is this value part of the protocol vocabulary? | [analysis/analysis.schema.json](analysis/analysis.schema.json) |
+| semantic registry | what does this identifier *mean*? | [analysis/registries/](analysis/registries/) |
+| semantic validator | do the references and relationships hold? | `tools/validate-analysis.mjs` |
+| run ledger | what did the last validation runs conclude, and did they change anything? | [analysis/validation-runs.json](analysis/validation-runs.json) |
+
+A capability id, a profile name, an operation and a resource class are **strings to
+the schema** and **meaningful only through a registry entry**; a capability that a
+registry declares is **`DECLARED`**, authorizes nothing, and becomes authority only
+through a grant state in an authorization. The words are not interchangeable:
+*declared* is not *granted*, *granted* is not *effective*, and the model that keeps
+them apart is specified in [analysis/validation-model.md](analysis/validation-model.md).
+
 ## State and authority vocabulary
 
 Canonical model, enforced by `tools/validate-analysis.mjs` against
@@ -88,7 +104,7 @@ Canonical model, enforced by `tools/validate-analysis.mjs` against
 | `claim_verification.result` | What did verification of *this claim* conclude? | `VERIFIED`, `PARTIALLY_VERIFIED`, `UNVERIFIED`, `CONTRADICTED`, `NOT_APPLICABLE` |
 | `confidence` | How strong is the evidential basis, graded? (never a verdict) | `VERY_LOW`, `LOW`, `MEDIUM`, `HIGH`, `VERY_HIGH` |
 | `authorization.state` | Has mutation authority been granted? | `NOT_REQUESTED`, `REQUESTED`, `DENIED`, `GRANTED`, `REVOKED`, `EXPIRED` |
-| `authorization.level.profile` | Which named policy ceiling applies? (not an authority) | `READ_ONLY`, `ANALYSIS_ONLY`, `DOC_REFACTOR`, `TEST_REFACTOR`, `CODE_REFACTOR`, `ARCHITECTURE_CHANGE`, `COMMIT`, `PUSH` |
+| `authorization.level.profile` | Which named policy ceiling applies? (not an authority; the profile inventory lives in the level-profile registry) | `READ_ONLY`, `ANALYSIS_ONLY`, `DOC_REFACTOR`, `TEST_REFACTOR`, `CODE_REFACTOR`, `ARCHITECTURE_CHANGE`, `COMMIT`, `PUSH` |
 | `authorization.capability_grants[]` | Which atomic permissions survive that ceiling, with what state and scope? | capability grant objects — each names a capability from [capability-registry.json](analysis/capability-registry.json) by id, with `state` `ENABLED` · `RESTRICTED` · `DENIED` · `REVOKED` · `EXPIRED` and, when `RESTRICTED`, a `scope` (the registry itself declares, and its word is `DECLARED`) |
 | `authorization.operations` | Which execution-level operations do they imply here? | `READ`, `ANALYZE`, `PROPOSE`, `CREATE`, `MODIFY`, `RENAME`, `MOVE`, `DELETE`, `COMMIT`, `PUSH` inside `allow` / `deny` |
 | `authorization.scope` | Which paths are in play? | `scope.paths.include` / `scope.paths.exclude` |

@@ -2338,6 +2338,28 @@
         }
       },
       "risk": "MEDIUM"
+    },
+    {
+      "id": "R-022",
+      "category": "DOC_REWRITE",
+      "description": "Separate the structural schema from the policy registries and add the semantic validator: five versioned registries (capability, level_profile, operation, resource_class, claim) under docs/analysis/registries/, schema fields for capability ids, profiles, operations and resource classes reduced to identifier syntax, the cross-object rule set X-001…X-020, the timestamp contract TS-001…TS-007, the nullability model of section 226-228, an append-only verification-run ledger, and a fixture suite that executes every rule. Reason: an inventory embedded in the schema cannot evolve independently of it, and a reference that no rule resolves is a claim rather than an enforcement (brief 11 sections 218-243).",
+      "evidence": [
+        "DOC-013",
+        "DOC-016",
+        "TEST-014",
+        "TEST-016",
+        "TEST-017"
+      ],
+      "scope": {
+        "paths": {
+          "include": [
+            "docs/",
+            "tools/"
+          ],
+          "exclude": []
+        }
+      },
+      "risk": "MEDIUM"
     }
   ],
   "authorization": {
@@ -2512,7 +2534,8 @@
       "R-018",
       "R-019",
       "R-020",
-      "R-021"
+      "R-021",
+      "R-022"
     ],
     "authority": {
       "type": "USER",
@@ -2538,6 +2561,7 @@
     "expires_at": null
   },
   "execution": {
+    "id": "EXEC-001",
     "state": "SUCCEEDED",
     "operations": [
       {
@@ -2792,6 +2816,116 @@
         },
         "authorization_decision": "ALLOWED",
         "result": "SUCCEEDED"
+      },
+      {
+        "id": "OP-024",
+        "change_id": "R-022",
+        "operation": "CREATE",
+        "target": {
+          "resource_class": "DOCUMENT",
+          "path": "docs/analysis/registries/ (five registries + registry.schema.json)"
+        },
+        "authorization_decision": "ALLOWED",
+        "result": "SUCCEEDED"
+      },
+      {
+        "id": "OP-025",
+        "change_id": "R-022",
+        "operation": "MODIFY",
+        "target": {
+          "resource_class": "DOCUMENT",
+          "path": "docs/analysis/analysis.schema.json"
+        },
+        "authorization_decision": "ALLOWED",
+        "result": "SUCCEEDED"
+      },
+      {
+        "id": "OP-026",
+        "change_id": "R-022",
+        "operation": "MODIFY",
+        "target": {
+          "resource_class": "DOCUMENT",
+          "path": "docs/analysis/analysis.json"
+        },
+        "authorization_decision": "ALLOWED",
+        "result": "SUCCEEDED"
+      },
+      {
+        "id": "OP-027",
+        "change_id": "R-022",
+        "operation": "CREATE",
+        "target": {
+          "resource_class": "DOCUMENT",
+          "path": "tools/validation-fixtures.mjs and tools/validation-run.mjs"
+        },
+        "authorization_decision": "ALLOWED",
+        "result": "SUCCEEDED"
+      },
+      {
+        "id": "OP-028",
+        "change_id": "R-022",
+        "operation": "COMMIT",
+        "target": {
+          "resource_class": "COMMIT",
+          "path": "repository (change set R-001 … R-022)"
+        },
+        "authorization_decision": "ALLOWED",
+        "result": "SUCCEEDED"
+      },
+      {
+        "id": "OP-029",
+        "change_id": "R-022",
+        "operation": "PUSH",
+        "target": {
+          "resource_class": "REMOTE",
+          "path": "origin/arena/01a08d14-generic-discovery-engine"
+        },
+        "authorization_decision": "ALLOWED",
+        "result": "SUCCEEDED"
+      },
+      {
+        "id": "OP-030",
+        "change_id": "R-022",
+        "operation": "CREATE",
+        "target": {
+          "resource_class": "DOCUMENT",
+          "path": "docs/analysis/validation-model.md"
+        },
+        "authorization_decision": "ALLOWED",
+        "result": "SUCCEEDED"
+      },
+      {
+        "id": "OP-031",
+        "change_id": "R-022",
+        "operation": "CREATE",
+        "target": {
+          "resource_class": "DOCUMENT",
+          "path": "docs/analysis/validation-runs.json"
+        },
+        "authorization_decision": "ALLOWED",
+        "result": "SUCCEEDED"
+      },
+      {
+        "id": "OP-032",
+        "change_id": "R-022",
+        "operation": "MODIFY",
+        "target": {
+          "resource_class": "DOCUMENT",
+          "path": "README.md"
+        },
+        "authorization_decision": "ALLOWED",
+        "result": "SUCCEEDED"
+      },
+      {
+        "id": "OP-033",
+        "change_id": "R-022",
+        "operation": "MODIFY",
+        "target": {
+          "resource_class": "DOCUMENT",
+          "path": "docs/ (analysis corpus sweep)"
+        },
+        "authorization_decision": "ALLOWED",
+        "result": "SUCCEEDED"
       }
     ],
     "executed_changes": [
@@ -2815,13 +2949,15 @@
       "R-018",
       "R-019",
       "R-020",
-      "R-021"
+      "R-021",
+      "R-022"
     ],
     "unauthorized_changes": [],
-    "started_at": "2026-09-10T00:00:00Z",
-    "completed_at": "2026-09-10T00:00:00Z"
+    "started_at": "2026-09-10T22:27:15Z",
+    "completed_at": "2026-09-10T22:34:01Z"
   },
   "execution_verification": {
+    "execution_id": "EXEC-001",
     "state": "PASSED",
     "result": "CONFORMING",
     "scope": {
@@ -2840,49 +2976,52 @@
     "checks": [
       {
         "id": "VERIFY-001",
-        "description": "The canonical record passes the validation pipeline (schema, claim rules, authorization rules).",
+        "description": "the record passes the semantic validator in all six phases",
         "result": "PASSED",
         "evidence": [
           "TEST-014",
-          "TEST-015"
+          "DOC-013"
         ]
       },
       {
         "id": "VERIFY-002",
-        "description": "claims.md matches the record (render-claims --check, no drift).",
+        "description": "every X, TS and RG rule is exercised by a fixture the validator rejects",
         "result": "PASSED",
         "evidence": [
-          "TEST-015"
+          "TEST-016",
+          "TEST-014"
         ]
       },
       {
         "id": "VERIFY-003",
-        "description": "Restated claim fields in repository-analysis section 3 match the record.",
+        "description": "no repository inventory remains in the schema (capability, profile, operation, resource class)",
         "result": "PASSED",
         "evidence": [
-          "TEST-015"
+          "DOC-016",
+          "DOC-013"
         ]
       },
       {
         "id": "VERIFY-004",
-        "description": "authorization.yaml and analysis.json deserialize to the same authorization object.",
+        "description": "registry references resolve: profile to capability, grant to capability, capability to operation and resource class",
         "result": "PASSED",
         "evidence": [
-          "TEST-014",
-          "TEST-015"
+          "DOC-016",
+          "TEST-014"
         ]
       },
       {
         "id": "VERIFY-005",
-        "description": "The source artifact is unchanged (sha256 8f5fc5c5...c474).",
+        "description": "the extracted source artifact is unchanged (digest frozen in the evidence register)",
         "result": "PASSED",
         "evidence": [
+          "CODE-001",
           "TEST-015"
         ]
       },
       {
         "id": "VERIFY-006",
-        "description": "Executable checks pass (verify.mjs, checks.mjs).",
+        "description": "no path outside the declared scope changed",
         "result": "PASSED",
         "evidence": [
           "TEST-015"
@@ -2890,18 +3029,29 @@
       },
       {
         "id": "VERIFY-007",
-        "description": "No path outside the declared scope paths changed.",
+        "description": "the run ledger records a VALID run bound to the current record digest",
         "result": "PASSED",
         "evidence": [
-          "TEST-015"
+          "DOC-017",
+          "TEST-017"
         ]
       },
       {
         "id": "VERIFY-008",
-        "description": "Documentation-versus-implementation contradictions are retained, not normalized away.",
+        "description": "no recorded run changed the working tree (digest before = after)",
         "result": "PASSED",
         "evidence": [
-          "TEST-015"
+          "TEST-017",
+          "DOC-017"
+        ]
+      },
+      {
+        "id": "VERIFY-009",
+        "description": "registry revisions are independent of the analysis schema version and of one another",
+        "result": "PASSED",
+        "evidence": [
+          "DOC-015",
+          "TEST-014"
         ]
       }
     ],

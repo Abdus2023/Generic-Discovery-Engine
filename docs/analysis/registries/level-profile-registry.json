@@ -1,0 +1,93 @@
+{
+  "schema_version": "1.0",
+  "registry_id": "level_profile",
+  "registry_version": "2026.09.1",
+  "$comment": "Level profiles (brief 11 section 222; brief 9 section 192). A profile is a reusable declaration, never an authorization: the analysis schema types profile.id as a string and this registry decides whether the identifier means anything.",
+  "entries": [
+    {
+      "id": "READ_ONLY",
+      "inherits": [],
+      "capabilities": [
+        "CAP-REPOSITORY-READ"
+      ]
+    },
+    {
+      "id": "ANALYSIS_ONLY",
+      "inherits": [
+        "READ_ONLY"
+      ],
+      "capabilities": [
+        "CAP-REPOSITORY-ANALYZE",
+        "CAP-REPOSITORY-PROPOSE"
+      ]
+    },
+    {
+      "id": "DOC_REFACTOR",
+      "inherits": [
+        "ANALYSIS_ONLY"
+      ],
+      "capabilities": [
+        "CAP-DOCUMENT-CREATE",
+        "CAP-DOCUMENT-MODIFY",
+        "CAP-DOCUMENT-RENAME",
+        "CAP-DOCUMENT-MOVE",
+        "CAP-DOCUMENT-DELETE"
+      ]
+    },
+    {
+      "id": "TEST_REFACTOR",
+      "inherits": [
+        "ANALYSIS_ONLY"
+      ],
+      "capabilities": [
+        "CAP-TEST-CREATE",
+        "CAP-TEST-MODIFY",
+        "CAP-TEST-RENAME",
+        "CAP-TEST-MOVE",
+        "CAP-TEST-DELETE"
+      ]
+    },
+    {
+      "id": "CODE_REFACTOR",
+      "inherits": [
+        "ANALYSIS_ONLY"
+      ],
+      "capabilities": [
+        "CAP-SOURCE-CREATE",
+        "CAP-SOURCE-MODIFY",
+        "CAP-SOURCE-RENAME",
+        "CAP-SOURCE-MOVE",
+        "CAP-SOURCE-DELETE"
+      ]
+    },
+    {
+      "id": "ARCHITECTURE_CHANGE",
+      "inherits": [
+        "CODE_REFACTOR",
+        "DOC_REFACTOR",
+        "TEST_REFACTOR"
+      ],
+      "capabilities": [
+        "CAP-ARCHITECTURE-MODIFY"
+      ]
+    },
+    {
+      "id": "COMMIT",
+      "inherits": [
+        "ARCHITECTURE_CHANGE"
+      ],
+      "capabilities": [
+        "CAP-COMMIT-CREATE"
+      ]
+    },
+    {
+      "id": "PUSH",
+      "inherits": [
+        "COMMIT"
+      ],
+      "capabilities": [
+        "CAP-REMOTE-PUSH"
+      ]
+    }
+  ]
+}

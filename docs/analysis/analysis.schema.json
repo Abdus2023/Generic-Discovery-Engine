@@ -18,42 +18,34 @@
     "schema_version": {
       "const": "1.0"
     },
-
     "repository": {
       "$ref": "#/$defs/repository"
     },
-
     "scope": {
       "$ref": "#/$defs/scope"
     },
-
     "claims": {
       "type": "array",
       "items": {
         "$ref": "#/$defs/claim"
       }
     },
-
     "changes": {
       "type": "array",
       "items": {
         "$ref": "#/$defs/change"
       }
     },
-
     "authorization": {
       "$ref": "#/$defs/authorization"
     },
-
     "execution": {
       "$ref": "#/$defs/execution"
     },
-
     "execution_verification": {
       "$ref": "#/$defs/executionVerification"
     }
   },
-
   "$defs": {
     "claimKind": {
       "enum": [
@@ -65,7 +57,6 @@
         "NON_GOAL"
       ]
     },
-
     "implementationState": {
       "enum": [
         "IMPLEMENTED",
@@ -75,7 +66,6 @@
         "UNKNOWN"
       ]
     },
-
     "testState": {
       "enum": [
         "TESTED",
@@ -85,7 +75,6 @@
         "UNKNOWN"
       ]
     },
-
     "evidenceLevel": {
       "enum": [
         "DIRECT",
@@ -95,7 +84,6 @@
         "INACCESSIBLE"
       ]
     },
-
     "claimVerificationResult": {
       "enum": [
         "VERIFIED",
@@ -105,7 +93,6 @@
         "NOT_APPLICABLE"
       ]
     },
-
     "confidence": {
       "enum": [
         "VERY_LOW",
@@ -115,7 +102,6 @@
         "VERY_HIGH"
       ]
     },
-
     "claim": {
       "type": "object",
       "additionalProperties": false,
@@ -134,28 +120,22 @@
           "type": "string",
           "pattern": "^CLAIM-[0-9]{3,}$"
         },
-
         "statement": {
           "type": "string",
           "minLength": 1
         },
-
         "claim_kind": {
           "$ref": "#/$defs/claimKind"
         },
-
         "implementation_state": {
           "$ref": "#/$defs/implementationState"
         },
-
         "test_state": {
           "$ref": "#/$defs/testState"
         },
-
         "evidence_level": {
           "$ref": "#/$defs/evidenceLevel"
         },
-
         "claim_verification": {
           "type": "object",
           "additionalProperties": false,
@@ -168,18 +148,15 @@
             }
           }
         },
-
         "confidence": {
           "$ref": "#/$defs/confidence"
         },
-
         "evidence": {
           "type": "array",
           "items": {
             "$ref": "#/$defs/evidence"
           }
         },
-
         "interpretation": {
           "type": "object",
           "additionalProperties": false,
@@ -201,7 +178,6 @@
         }
       }
     },
-
     "evidence": {
       "type": "object",
       "additionalProperties": false,
@@ -216,7 +192,6 @@
           "type": "string",
           "pattern": "^(CODE|TEST|DOC|CFG|HIST|ARCH|SCOPE|CONC|PROV|FAIL|EXT)-[0-9]{3,}$"
         },
-
         "kind": {
           "enum": [
             "CODE",
@@ -228,12 +203,10 @@
             "EXTERNAL_REFERENCE"
           ]
         },
-
         "path": {
           "type": "string",
           "minLength": 1
         },
-
         "locator": {
           "type": "object",
           "additionalProperties": false,
@@ -262,7 +235,6 @@
         }
       }
     },
-
     "repository": {
       "type": "object",
       "additionalProperties": false,
@@ -315,7 +287,6 @@
         }
       }
     },
-
     "scope": {
       "type": "object",
       "additionalProperties": false,
@@ -379,7 +350,6 @@
         }
       }
     },
-
     "change": {
       "type": "object",
       "additionalProperties": false,
@@ -396,7 +366,6 @@
           "type": "string",
           "pattern": "^R-[0-9]{3,}$"
         },
-
         "category": {
           "enum": [
             "DOC_CLEANUP",
@@ -413,23 +382,19 @@
             "RENAME"
           ]
         },
-
         "description": {
           "type": "string",
           "minLength": 1
         },
-
         "evidence": {
           "type": "array",
           "items": {
             "type": "string"
           }
         },
-
         "scope": {
           "$ref": "#/$defs/changeScope"
         },
-
         "risk": {
           "enum": [
             "LOW",
@@ -440,7 +405,6 @@
         }
       }
     },
-
     "changeScope": {
       "type": "object",
       "additionalProperties": false,
@@ -472,7 +436,6 @@
         }
       }
     },
-
     "authorizationState": {
       "enum": [
         "NOT_REQUESTED",
@@ -483,7 +446,6 @@
         "EXPIRED"
       ]
     },
-
     "capabilityState": {
       "enum": [
         "DECLARED",
@@ -494,48 +456,6 @@
         "EXPIRED"
       ]
     },
-
-    "levelProfile": {
-      "type": "object",
-      "additionalProperties": false,
-      "required": [
-        "id",
-        "inherits",
-        "capabilities"
-      ],
-      "properties": {
-        "id": {
-          "type": "string",
-          "enum": [
-            "READ_ONLY",
-            "ANALYSIS_ONLY",
-            "DOC_REFACTOR",
-            "TEST_REFACTOR",
-            "CODE_REFACTOR",
-            "ARCHITECTURE_CHANGE",
-            "COMMIT",
-            "PUSH"
-          ]
-        },
-
-        "inherits": {
-          "type": "array",
-          "uniqueItems": true,
-          "items": {
-            "type": "string"
-          }
-        },
-
-        "capabilities": {
-          "type": "array",
-          "uniqueItems": true,
-          "items": {
-            "type": "string"
-          }
-        }
-      }
-    },
-
     "capabilityGrant": {
       "type": "object",
       "additionalProperties": false,
@@ -545,20 +465,19 @@
       ],
       "properties": {
         "capability_id": {
+          "description": "Capability identifier syntax only; the capability inventory lives in the capability registry (sections 219, 221).",
           "type": "string",
+          "minLength": 1,
           "pattern": "^CAP-[A-Z0-9_-]+$"
         },
-
         "state": {
           "$ref": "#/$defs/capabilityState"
         },
-
         "scope": {
           "$ref": "#/$defs/changeScope"
         }
       }
     },
-
     "authorization": {
       "type": "object",
       "additionalProperties": false,
@@ -570,13 +489,13 @@
         "change_ids",
         "authority",
         "target",
-        "scope"
+        "scope",
+        "expires_at"
       ],
       "properties": {
         "state": {
           "$ref": "#/$defs/authorizationState"
         },
-
         "level": {
           "type": "object",
           "additionalProperties": false,
@@ -585,11 +504,13 @@
           ],
           "properties": {
             "profile": {
-              "type": "string"
+              "description": "Profile identifier syntax only; the profile inventory lives in the level-profile registry (section 222).",
+              "type": "string",
+              "minLength": 1,
+              "pattern": "^[A-Z][A-Z0-9_]*$"
             }
           }
         },
-
         "capability_grants": {
           "type": "array",
           "uniqueItems": true,
@@ -597,7 +518,6 @@
             "$ref": "#/$defs/capabilityGrant"
           }
         },
-
         "operations": {
           "type": "object",
           "additionalProperties": false,
@@ -622,7 +542,6 @@
             }
           }
         },
-
         "change_ids": {
           "type": "array",
           "uniqueItems": true,
@@ -631,7 +550,6 @@
             "pattern": "^R-[0-9]{3,}$"
           }
         },
-
         "authority": {
           "type": "object",
           "additionalProperties": false,
@@ -653,7 +571,6 @@
             }
           }
         },
-
         "target": {
           "type": "object",
           "additionalProperties": false,
@@ -672,16 +589,14 @@
             }
           }
         },
-
         "scope": {
           "$ref": "#/$defs/changeScope"
         },
-
         "granted_at": {
           "type": "string",
-          "format": "date-time"
+          "format": "date-time",
+          "$comment": "Conditional: REQUIRED and non-null when state is GRANTED (section 229); the schema cannot express a cross-field requirement."
         },
-
         "expires_at": {
           "type": [
             "string",
@@ -691,22 +606,12 @@
         }
       }
     },
-
     "operationName": {
-      "enum": [
-        "READ",
-        "ANALYZE",
-        "PROPOSE",
-        "CREATE",
-        "MODIFY",
-        "RENAME",
-        "MOVE",
-        "DELETE",
-        "COMMIT",
-        "PUSH"
-      ]
+      "description": "Operation identifier syntax only. Whether the identifier is a recognized operation, and whether it mutates, is a registry question (sections 219, 223) — the schema does not own an operation inventory.",
+      "type": "string",
+      "minLength": 1,
+      "pattern": "^[A-Z][A-Z0-9_]*$"
     },
-
     "operation": {
       "type": "object",
       "additionalProperties": false,
@@ -723,16 +628,13 @@
           "type": "string",
           "pattern": "^OP-[0-9]{3,}$"
         },
-
         "change_id": {
           "type": "string",
           "pattern": "^R-[0-9]{3,}$"
         },
-
         "operation": {
           "$ref": "#/$defs/operationName"
         },
-
         "target": {
           "type": "object",
           "additionalProperties": false,
@@ -742,30 +644,22 @@
           ],
           "properties": {
             "resource_class": {
-              "enum": [
-                "REPOSITORY",
-                "DOCUMENT",
-                "TEST",
-                "SOURCE",
-                "CONFIGURATION",
-                "ARCHITECTURE",
-                "COMMIT",
-                "REMOTE"
-              ]
+              "description": "Resource-class identifier syntax only; the class inventory lives in the resource-class registry (section 224).",
+              "type": "string",
+              "minLength": 1,
+              "pattern": "^[A-Z][A-Z0-9_]*$"
             },
             "path": {
               "type": "string"
             }
           }
         },
-
         "authorization_decision": {
           "enum": [
             "ALLOWED",
             "DENIED"
           ]
         },
-
         "result": {
           "enum": [
             "NOT_ATTEMPTED",
@@ -779,17 +673,22 @@
         }
       }
     },
-
     "execution": {
       "type": "object",
       "additionalProperties": false,
       "required": [
+        "id",
         "state",
         "operations",
         "executed_changes",
         "unauthorized_changes"
       ],
       "properties": {
+        "id": {
+          "description": "Identifier of this execution record; execution_verification.execution_id must name it (X-019).",
+          "type": "string",
+          "pattern": "^EXEC-[0-9]{3,}$"
+        },
         "state": {
           "enum": [
             "NOT_STARTED",
@@ -803,14 +702,12 @@
             "STOPPED"
           ]
         },
-
         "operations": {
           "type": "array",
           "items": {
             "$ref": "#/$defs/operation"
           }
         },
-
         "executed_changes": {
           "type": "array",
           "uniqueItems": true,
@@ -819,7 +716,6 @@
             "pattern": "^R-[0-9]{3,}$"
           }
         },
-
         "unauthorized_changes": {
           "type": "array",
           "uniqueItems": true,
@@ -828,7 +724,6 @@
             "pattern": "^R-[0-9]{3,}$"
           }
         },
-
         "started_at": {
           "type": [
             "string",
@@ -836,7 +731,6 @@
           ],
           "format": "date-time"
         },
-
         "completed_at": {
           "type": [
             "string",
@@ -846,7 +740,6 @@
         }
       }
     },
-
     "check": {
       "type": "object",
       "additionalProperties": false,
@@ -860,12 +753,10 @@
           "type": "string",
           "pattern": "^VERIFY-[0-9]{3,}$"
         },
-
         "description": {
           "type": "string",
           "minLength": 1
         },
-
         "result": {
           "enum": [
             "NOT_RUN",
@@ -875,7 +766,6 @@
             "INCONCLUSIVE"
           ]
         },
-
         "evidence": {
           "type": "array",
           "items": {
@@ -884,7 +774,6 @@
         }
       }
     },
-
     "executionVerification": {
       "type": "object",
       "additionalProperties": false,
@@ -894,9 +783,15 @@
         "scope",
         "checks",
         "findings",
-        "remediation_required"
+        "remediation_required",
+        "execution_id"
       ],
       "properties": {
+        "execution_id": {
+          "description": "The execution this verification refers to (X-019); it must resolve to execution.id in the same document.",
+          "type": "string",
+          "pattern": "^EXEC-[0-9]{3,}$"
+        },
         "state": {
           "enum": [
             "NOT_REQUIRED",
@@ -910,7 +805,6 @@
             "INCONCLUSIVE"
           ]
         },
-
         "result": {
           "enum": [
             "CONFORMING",
@@ -920,29 +814,26 @@
             "NOT_APPLICABLE"
           ]
         },
-
         "scope": {
           "$ref": "#/$defs/changeScope"
         },
-
         "checks": {
           "type": "array",
           "items": {
             "$ref": "#/$defs/check"
           }
         },
-
         "findings": {
           "type": "array",
           "items": {
             "type": "string"
           }
         },
-
         "remediation_required": {
           "type": "boolean"
         }
       }
     }
-  }
+  },
+  "$comment": "Structural contract only (brief 11 sections 218.1, 219, 225). Enums here are intrinsic to the protocol: claim dimensions, authorization/execution/verification lifecycles, decision and result vocabularies, change category, risk class, access classification, evidence kind. Repository-specific inventories — capabilities, level profiles, operations, resource classes, claim identifiers — are typed as strings with identifier syntax and resolved against the semantic registries in docs/analysis/registries/."
 }

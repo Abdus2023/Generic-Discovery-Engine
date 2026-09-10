@@ -1,0 +1,146 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/Abdus2023/Generic-Discovery-Engine/docs/analysis/registries/registry.schema.json",
+  "title": "Registry envelope and entry shapes",
+  "description": "Structural contract for the semantic registries of brief 11 sections 218-224. A registry carries a versioned envelope and a typed entry list; which registry_id selects which entry shape is decided by the discriminator below. References between entries (capability to resource class, profile to capability, grant to capability) are deliberately NOT resolved here: they are cross-object rules and belong to the semantic validator (section 218.3).",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "registry_id", "registry_version", "entries"],
+  "properties": {
+    "schema_version": {
+      "description": "Version of this envelope format. Independent of the analysis document schema version (section 220).",
+      "const": "1.0"
+    },
+    "registry_id": {
+      "description": "Which vocabulary this registry owns.",
+      "enum": ["capability", "level_profile", "operation", "resource_class", "claim"]
+    },
+    "registry_version": {
+      "description": "Revision of this registry's content, independent of the envelope version and of the analysis schema version. Bumped whenever an entry is added, removed or redefined.",
+      "type": "string",
+      "pattern": "^[0-9]{4}\\.[0-9]{2}\\.[0-9]+$"
+    },
+    "$comment": {
+      "type": "string"
+    },
+    "entries": {
+      "type": "array",
+      "minItems": 1
+    }
+  },
+  "allOf": [
+    {
+      "if": { "properties": { "registry_id": { "const": "capability" } }, "required": ["registry_id"] },
+      "then": { "properties": { "entries": { "type": "array", "items": { "$ref": "#/$defs/capabilityEntry" } } } }
+    },
+    {
+      "if": { "properties": { "registry_id": { "const": "level_profile" } }, "required": ["registry_id"] },
+      "then": { "properties": { "entries": { "type": "array", "items": { "$ref": "#/$defs/levelProfileEntry" } } } }
+    },
+    {
+      "if": { "properties": { "registry_id": { "const": "operation" } }, "required": ["registry_id"] },
+      "then": { "properties": { "entries": { "type": "array", "items": { "$ref": "#/$defs/operationEntry" } } } }
+    },
+    {
+      "if": { "properties": { "registry_id": { "const": "resource_class" } }, "required": ["registry_id"] },
+      "then": { "properties": { "entries": { "type": "array", "items": { "$ref": "#/$defs/resourceClassEntry" } } } }
+    },
+    {
+      "if": { "properties": { "registry_id": { "const": "claim" } }, "required": ["registry_id"] },
+      "then": { "properties": { "entries": { "type": "array", "items": { "$ref": "#/$defs/claimEntry" } } } }
+    }
+  ],
+  "$defs": {
+    "identifier": {
+      "type": "string",
+      "minLength": 1,
+      "pattern": "^[A-Z][A-Z0-9_-]*$"
+    },
+    "capabilityEntry": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "resource_class", "operations", "constraints", "lifecycle"],
+      "properties": {
+        "id": {
+          "description": "Identifier syntax only; the identifier's meaning is established by this entry (section 219).",
+          "type": "string",
+          "pattern": "^CAP-[A-Z0-9_-]+$"
+        },
+        "resource_class": { "$ref": "#/$defs/identifier" },
+        "operations": {
+          "type": "array",
+          "minItems": 1,
+          "uniqueItems": true,
+          "items": { "$ref": "#/$defs/identifier" }
+        },
+        "constraints": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["scope_model"],
+          "properties": {
+            "scope_model": {
+              "description": "PATH: the capability's target is a path and a grant may restrict it by path. NONE: the capability's target is not a path, so a path restriction would be meaningless.",
+              "enum": ["PATH", "NONE"]
+            }
+          }
+        },
+        "lifecycle": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["grantable"],
+          "properties": {
+            "grantable": { "type": "boolean" }
+          }
+        },
+        "description": { "type": "string", "minLength": 1 }
+      }
+    },
+    "levelProfileEntry": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "inherits", "capabilities"],
+      "properties": {
+        "id": { "$ref": "#/$defs/identifier" },
+        "inherits": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": { "$ref": "#/$defs/identifier" }
+        },
+        "capabilities": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": { "type": "string", "pattern": "^CAP-[A-Z0-9_-]+$" }
+        }
+      }
+    },
+    "operationEntry": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "mutating"],
+      "properties": {
+        "id": { "$ref": "#/$defs/identifier" },
+        "mutating": { "type": "boolean" }
+      }
+    },
+    "resourceClassEntry": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "description"],
+      "properties": {
+        "id": { "$ref": "#/$defs/identifier" },
+        "description": { "type": "string", "minLength": 1 }
+      }
+    },
+    "claimEntry": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "domain"],
+      "properties": {
+        "id": { "type": "string", "pattern": "^CLAIM-[0-9]{3,}$" },
+        "domain": {
+          "enum": ["candidate", "scheduler", "acquisition", "provenance", "architecture", "scope", "plan", "history", "hypothesis"]
+        }
+      }
+    }
+  }
+}

@@ -8,23 +8,26 @@ the root — section 209). The tables in this document are rendered from it by
 validated independently:
 
 ```
-SCHEMA VALIDITY            section 209 (draft 2020-12, additionalProperties: false)
+STRUCTURAL      schema validity, forbidden field names, REQ-001…REQ-014
       ↓
-OBJECT VALIDITY            REQ-001…REQ-015 (required and conditional fields)
+REGISTRY        five registries validated and resolved: X-009…X-015, RG-001…RG-007
       ↓
-CROSS-OBJECT SEMANTIC      CV-001…CV-020, C-001…C-043, C-030…C-034,
-                           CAP-001…CAP-016, CG-001…CG-015, register resolution
+SEMANTIC        cross-object rules X-001…X-020, timestamps TS-001…TS-007,
+                claim rules CV-001…CV-020, invariants I-001…I-016,
+                serialization, restated fields
       ↓
-AUTHORIZATION DECISION     section 216 evaluation over effective capabilities
+AUTHORIZATION   CAP-001…CAP-016, CG-001…CG-015, the section 216 function
       ↓
-EXECUTION                  EV-001…EV-012, section 200 transitions
+EXECUTION       EV-001…EV-012, section 200 transitions
       ↓
-EXECUTION VERIFICATION     EVV-001…EVV-009
-      ↓
-SERIALIZATION              YAML ≡ JSON, field by field
-      ↓
-INVARIANTS                 I-001…I-016, restated fields, rendered tables
+VERIFICATION    EVV-001…EVV-009
 ```
+
+The phases, the rule sets and the error model are specified in
+[validation-model.md](validation-model.md); this file reports the claim side of the
+same model. `node tools/validate-analysis.mjs --json` prints the report in the
+error shape of section 242, and every run is recorded in
+[validation-runs.json](validation-runs.json).
 
 ## Two verification domains (section 168)
 
@@ -154,7 +157,7 @@ lifecycles, and they are **not** claim fields (sections 180–184):
 | Stage | Field | Values |
 | --- | --- | --- |
 | Authorization | `authorization.state` | `NOT_REQUESTED` · `REQUESTED` · `GRANTED` · `DENIED` · `REVOKED` · `EXPIRED` |
-| Capability (declared) | `capability-registry.json` | `DECLARED` — policy declaration, authorizing nothing |
+| Capability (declared) | [registries/capability-registry.json](registries/capability-registry.json) | `DECLARED` — policy declaration, authorizing nothing |
 | Capability (granted) | `authorization.capability_grants[].state` | `ENABLED` · `RESTRICTED` · `DENIED` · `REVOKED` · `EXPIRED` — never `DECLARED` |
 | Execution lifecycle | `execution.state` | `NOT_STARTED` · `AUTHORIZATION_BLOCKED` · `READY` · `RUNNING` · `SUCCEEDED` · `PARTIALLY_SUCCEEDED` · `FAILED` · `CANCELLED` · `STOPPED` |
 | Per-operation | `execution.operations[]` | `authorization_decision` `ALLOWED`/`DENIED` + `result` `SUCCEEDED` · `FAILED` · `AUTHORIZATION_DENIED` · … |

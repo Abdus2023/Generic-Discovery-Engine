@@ -218,8 +218,10 @@ archive/
   Continue Architecture Planning.md   raw design conversation (non-normative)
 tools/
   verify.mjs                  static checks: artifact vs documentation, scope, governance
-  validate-analysis.mjs       pipeline: schema, object, cross-object, authorization, execution,
-                              execution verification, serialization checks (section 202)
+  validate-analysis.mjs       semantic validator: phases STRUCTURAL, REGISTRY, SEMANTIC,
+                              AUTHORIZATION, EXECUTION, VERIFICATION (brief 11 section 242)
+  validation-run.mjs          records each verification run, with the tree digest before/after
+  validation-fixtures.mjs     the rule fixture suite executed by --self-test
   render-claims.mjs           renders claims.md from analysis.json
   checks.mjs                  behaviour checks: dedup, providers, provenance, persistence
   simulate.mjs                headless harness that executes the shipped artifact
@@ -232,17 +234,27 @@ The two files in `archive/` are the unedited source conversations. They are
 ## Verification
 
 ```bash
-node tools/verify.mjs             # static: artifact vs documentation, scope, links, governance
-node tools/validate-analysis.mjs  # schema: typed fields, enums, authorization/execution rules
-node tools/checks.mjs             # behaviour: dedup, provider selection, provenance, persistence
-node tools/simulate.mjs           # dynamic: runs the artifact under a browser shim
-node tools/render-claims.mjs --check   # claims.md is generated from analysis.json
+node tools/verify.mjs                        # static: artifact vs documentation, scope, links, governance
+node tools/validate-analysis.mjs             # semantic validator: six phases, sections 218-243
+node tools/validate-analysis.mjs --self-test # 31 fixtures, one per cross-object rule
+node tools/validate-analysis.mjs --json      # the machine-readable report incl. input digests
+node tools/validation-run.mjs                # records a run, with the tree digest before and after
+node tools/checks.mjs                        # behaviour: dedup, provider selection, provenance, persistence
+node tools/simulate.mjs                      # dynamic: runs the artifact under a browser shim
+node tools/render-claims.mjs --check         # claims.md is generated from the record
 ```
 
 `tools/verify.mjs` exits non-zero when documentation and code disagree, when a
 `[EVID:…]` citation does not resolve to the [evidence register](docs/analysis/evidence-register.md),
 or when a register row points at a path that does not exist. Known prototype
 defects are reported separately as `[DEFECT]` entries and do not fail the run.
+
+The record is validated in three separated layers — structural schema, semantic
+registries, semantic validator — specified in
+[validation-model.md](docs/analysis/validation-model.md). Every run is appended to
+[validation-runs.json](docs/analysis/validation-runs.json) with its verdict, its
+phase, every error, and the working-tree digest before and after the run, so
+"verification modified nothing" is measured rather than asserted.
 
 Results and the audit trail:
 
@@ -251,10 +263,11 @@ Results and the audit trail:
 | [repository-analysis-2026-09-10.md](docs/analysis/repository-analysis-2026-09-10.md) | full review (18 sections) |
 | [evidence-register.md](docs/analysis/evidence-register.md) | the audit index: every `[EVID:…]` id with path and locator, `evidence_level` values, absence procedures, frozen artifact digest |
 | [claims.md](docs/analysis/claims.md) | 41 claim records rendered from [analysis.json](docs/analysis/analysis.json): `claim_kind` · `implementation_state` · `test_state` · `evidence_level` · `claim_verification.result` · `confidence` |
-| [analysis.schema.json](docs/analysis/analysis.schema.json) | the normative machine-readable schema (JSON Schema draft 2020-12, closed at the root); the capability registry it draws on is [capability-registry.json](docs/analysis/capability-registry.json) — 8 profiles, 21 capabilities, declaration only |
+| [analysis.schema.json](docs/analysis/analysis.schema.json) | the structural contract (JSON Schema draft 2020-12, closed at the root): shape, protocol enums, nullability, identifier syntax — no repository-specific inventory |
+| [registries/](docs/analysis/registries/) | the semantic registries — capability (21 entries with resource class, operations, scope model), level profile (8, declared inheritance), operation (10, with `mutating`), resource class (8), claim (41, identifier to domain), plus the registry envelope schema |
+| [validation-model.md](docs/analysis/validation-model.md) | the three-layer validation model: what the schema owns, what the registries own, what the semantic validator owns, the nullability and timestamp contracts, the X/TS/RG rule sets, the error model |
+| [validation-runs.json](docs/analysis/validation-runs.json) | the append-only ledger of verification runs: input digests, phase states, every error with its code and phase, and the tree digest before and after each run |
 | [authorization.yaml](docs/analysis/authorization.yaml) | the canonical authorization object in YAML — one object, 21 explicit capability grants; serialization identity with the record is checked field by field |
-| [capability-registry.json](docs/analysis/capability-registry.json) | the policy registry — 8 level profiles with declared `inherits`, 21 capabilities with resource class and operations; a declaration authorizes nothing by itself |
-| [claim-domains.json](docs/analysis/claim-domains.json) | the presentation taxonomy behind the section headings of [claims.md](docs/analysis/claims.md); the closed record may not carry a presentation-only field |
 | [scope-and-authorization.md](docs/analysis/scope-and-authorization.md) | scope boundary, six ownership roles, authorization contract, pre/post-execution checks |
 | [change-register-2026-09-10.md](docs/analysis/change-register-2026-09-10.md) | executed changes R-001…R-021; code changes R-101…R-112 (PLAN ONLY) |
 

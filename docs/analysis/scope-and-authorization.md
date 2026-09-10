@@ -162,7 +162,7 @@ LEVEL PROFILE   →   CAPABILITY SET   →   OPERATION   →   SCOPE   →   CHA
 | --- | --- | --- |
 | Authorization state | `authorization.state` | Has mutation authority actually been granted? |
 | Level profile | `authorization.level.profile` | Which reusable policy ceiling applies? |
-| Capability declaration | `capability-registry.json` | What may a profile declare? (`DECLARED`, authorizing nothing) |
+| Capability declaration | [registries/capability-registry.json](registries/capability-registry.json) | What may a profile declare? (`DECLARED`, authorizing nothing) |
 | Capability grant | `authorization.capability_grants[]` | Which atomic permission, in which state and scope? |
 | Operation | `authorization.operations.allow/deny` | Which actions are permitted against a resource class? |
 | Scope | `authorization.scope.paths` | Which locations are in play? |
@@ -188,7 +188,7 @@ EFFECTIVE CAPABILITY  (profile ∩ grant) − deny, computed, never persisted as
 ```
 
 The registry that carries the declarations is
-[capability-registry.json](capability-registry.json): a policy file, not a grant.
+[registries/capability-registry.json](registries/capability-registry.json): a policy file, not a grant.
 A capability there is `DECLARED`, which authorizes nothing (section 203).
 
 ```jsonc
@@ -320,6 +320,25 @@ authority here is not "no authority", it is an unauthorized operation in the
 record. The artifact digest is re-checked on every run, and it has not changed
 since extraction.
 
+### Withheld capability classes and forbidden operations
+
+Two lists that earlier lived inside the policy registry as governance metadata are
+statements about *this* authorization, so they belong with it:
+
+**Withheld capability classes** — capabilities that exist in the registry and that
+no authorizing grant may reach: `CAP-SOURCE-MODIFY|RENAME|MOVE|DELETE`, every
+`CAP-TEST-*`, and `CAP-ARCHITECTURE-MODIFY`. They are `DENIED` and absent from the
+authorizing set, so two independent rules keep them out; `tools/verify.mjs`
+re-derives the withheld set from the registry and the grants rather than reading a
+declared list.
+
+**Forbidden operations** — outcomes no authorization in this record permits:
+modifying source code, modifying tests, changing architecture, and pushing to any
+branch other than the work branch. The first three are unreachable because the
+capabilities behind them are withheld; the fourth is a scope statement, since
+`CAP-REMOTE-PUSH` carries no branch restriction and the constraint is enforced at
+execution (the work branch is the only ref the change set touches).
+
 ### The authorization function (section 216)
 
 ```
@@ -342,6 +361,12 @@ ALLOW iff
   AND the authorization is temporally valid
   AND no deny rule applies
 ```
+
+The vocabulary this function resolves against is external to the record: the
+capability, level-profile, operation and resource-class registries under
+[registries/](registries/), whose separation from the structural schema is the
+subject of [validation-model.md](validation-model.md). A profile name and a
+capability id are *strings* to the schema; the registries decide what they mean.
 
 `tools/validate-analysis.mjs` implements exactly this function and applies it to
 every recorded operation, comparing its own verdict with the record's

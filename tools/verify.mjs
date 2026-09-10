@@ -37,6 +37,24 @@ const ARTIFACT = path.join(ROOT, 'prototype', 'generic-discovery-engine.user.js'
 
 const results = [];
 
+/* Brief 11: the vocabularies live in registries, not in the schema or the record. */
+const REGISTRY_DIR = path.join(ROOT, 'docs', 'analysis', 'registries');
+function loadRegistry(id) {
+  const file = { capability: 'capability-registry.json', level_profile: 'level-profile-registry.json',
+    operation: 'operation-registry.json', resource_class: 'resource-class-registry.json',
+    claim: 'claim-registry.json' }[id];
+  return JSON.parse(fs.readFileSync(path.join(REGISTRY_DIR, file), 'utf8'));
+}
+
+/* The artifact digest is a register fact, not a registry fact (brief 11 section
+   221 keeps registries to vocabulary and policy). */
+function frozenArtifactDigest() {
+  const register = fs.readFileSync(path.join(ROOT, 'docs', 'analysis', 'evidence-register.md'), 'utf8');
+  const match = register.match(/SHA-256 `([0-9a-f]{64})`/);
+  const pathMatch = register.match(/\*\*Artifact identity \(frozen\):\*\* `([^`]+)`/);
+  return match && pathMatch ? { algorithm: 'sha256', value: match[1], path: pathMatch[1] } : null;
+}
+
 /* the frozen artifact digest, re-computed wherever the record states it */
 function verifyArtifactDigest(expected) {
   if (!expected) return true;
@@ -431,10 +449,10 @@ else fail('no later-design layers present', futureHits.join(', '));
        modify, rename, move or delete a source artifact. Creating the extracted
        artifact once (CAP-SOURCE-CREATE, restricted to prototype/, change R-001)
        is disclosed in the record; nothing else touches source. */
-    const registry = JSON.parse(fs.readFileSync(path.join(ROOT, 'docs', 'analysis', 'capability-registry.json'), 'utf8'));
+    const registry = loadRegistry('capability');
     const allowed = ['ENABLED', 'RESTRICTED'];
     const authorizing = (record.authorization.capability_grants || []).filter(g => allowed.includes(g.state));
-    const byId = new Map(registry.capabilities.map(c => [c.id, c]));
+    const byId = new Map(registry.entries.map(c => [c.id, c]));
     const codeMutation = authorizing
       .map(g => byId.get(g.capability_id))
       .filter(c => c && c.resource_class === 'SOURCE' && c.operations.some(op => op !== 'CREATE'))
@@ -462,7 +480,7 @@ else fail('no later-design layers present', futureHits.join(', '));
   }
 
   const record = JSON.parse(fs.readFileSync(path.join(ROOT, 'docs', 'analysis', 'analysis.json'), 'utf8'));
-  const registryDoc = JSON.parse(fs.readFileSync(path.join(ROOT, 'docs', 'analysis', 'capability-registry.json'), 'utf8'));
+  const registryDoc = { level_profiles: loadRegistry('level_profile').entries, capabilities: loadRegistry('capability').entries };
   const auth = record.authorization || {};
   const STATES = ['NOT_REQUESTED', 'REQUESTED', 'GRANTED', 'DENIED', 'REVOKED', 'EXPIRED'];
   const profiles = new Map(registryDoc.level_profiles.map(p => [p.id, p]));
@@ -519,16 +537,21 @@ else fail('no later-design layers present', futureHits.join(', '));
       `${(auth.capability_grants || []).filter(g => g.state === 'RESTRICTED').length} restricted grant(s)`);
     else fail('every RESTRICTED grant carries its restriction scope', restrictedWithoutScope.map(g => g.capability_id).join(', '));
 
-    const withheld = registryDoc.governance?.withheld_capabilities || [];
+    /* withheld classes are computed from the registry and the grants, not read from a list */
+    const ceiled = closure(auth.level.profile);
+    const withheld = [...capabilities.keys()].filter(id => !(auth.capability_grants || [])
+      .some(g => g.capability_id === id && AUTHORIZING.includes(g.state)) && ceiled.has(id));
     const leaked = withheld.filter(id => (auth.capability_grants || []).some(g => g.capability_id === id && AUTHORIZING.includes(g.state)));
-    if (leaked.length === 0) pass('withheld capability classes are unreachable through the authorization',
-      `${withheld.length} withheld`);
-    else fail('withheld capability classes are unreachable through the authorization', leaked.join(', '));
+    if (leaked.length === 0) pass('capability classes without an authorizing grant are unreachable',
+      `${withheld.length} capability class(es) have no ENABLED/RESTRICTED grant`);
+    else fail('capability classes without an authorizing grant are unreachable', leaked.join(', '));
 
-    const forbidden = registryDoc.governance?.forbidden_operations || [];
-    const attempted = record.execution.operations.filter(o => forbidden.includes(o.operation)).map(o => o.id);
-    if (attempted.length === 0) pass('no forbidden operation was executed', forbidden.join(', '));
-    else fail('no forbidden operation was executed', attempted.join(', '));
+    /* no successful operation may mutate a resource class whose authorizing grants are absent */
+    const mutatingOps = new Set(loadRegistry('operation').entries.filter(o => o.mutating).map(o => o.id));
+    const unauthorizedMutations = record.execution.operations.filter(o => o.result === 'SUCCEEDED' && mutatingOps.has(o.operation) &&
+      ![...effective()].some(c => c.operations.includes(o.operation) && c.resource_class === o.target.resource_class)).map(o => o.id);
+    if (unauthorizedMutations.length === 0) pass('no unauthorized mutation was executed');
+    else fail('no unauthorized mutation was executed', unauthorizedMutations.join(', '));
 
     const PATH_RESOURCES = new Set(['DOCUMENT', 'TEST', 'SOURCE', 'CONFIGURATION', 'ARCHITECTURE']);
     const inPaths = (scope, target) => {
@@ -599,7 +622,7 @@ else fail('no later-design layers present', futureHits.join(', '));
     } catch { dirty = []; }
     const include = auth.scope?.paths?.include || [];
     const outsideScope = dirty.filter(f => !include.some(prefix => f === prefix || f.startsWith(prefix)));
-    const digestOK = verifyArtifactDigest(registryDoc.record_provenance?.artifact_digest);
+    const digestOK = verifyArtifactDigest(frozenArtifactDigest());
     if (outsideScope.length === 0 && digestOK) {
       pass('execution verification modified nothing outside the authorized scope',
         `${dirty.length} uncommitted path(s), all inside the declared scope; artifact digest unchanged`);
@@ -678,6 +701,40 @@ else fail('no later-design layers present', futureHits.join(', '));
 }
 
 /* -------------------------------------------------------------------------- */
+/* -------------------------------------------------------------------------- */
+/* 7f. The current record has been validated, and the run that did it is       */
+/*     recorded with the tree digest it observed (brief 11 sections 241-242)   */
+/* -------------------------------------------------------------------------- */
+
+{
+  const storePath = path.join(ROOT, 'docs', 'analysis', 'validation-runs.json');
+  if (!fs.existsSync(storePath)) {
+    fail('the verification-run ledger exists', 'docs/analysis/validation-runs.json missing');
+  } else {
+    const store = JSON.parse(fs.readFileSync(storePath, 'utf8'));
+    const recordDigest = crypto.createHash('sha256').update(fs.readFileSync(path.join(ROOT, 'docs', 'analysis', 'analysis.json'))).digest('hex');
+    const ids = store.runs.map(r => r.id);
+    if (new Set(ids).size === ids.length) {
+      pass('the verification-run ledger is append-only by construction', `${store.runs.length} recorded run(s): ${ids.join(', ')}`);
+    } else {
+      fail('the verification-run ledger is append-only by construction', 'duplicate run id');
+    }
+
+    const current = store.runs.filter(r => r.mode === 'WORKTREE' && r.inputs?.document?.sha256 === recordDigest);
+    const invalid = current.filter(r => r.verdict !== 'VALID');
+    if (current.length > 0 && invalid.length === 0) {
+      pass('the current record has a recorded VALID run', `${current.map(r => r.id).join(', ')} @ ${recordDigest.slice(0, 12)}`);
+    } else {
+      fail('the current record has a recorded VALID run',
+        current.length === 0 ? `no WORKTREE run matches the record digest ${recordDigest.slice(0, 12)}` : `${invalid.map(r => r.id).join(', ')} is not VALID`);
+    }
+
+    const observed = store.runs.filter(r => r.repository && r.repository.unchanged === false);
+    if (observed.length === 0) pass('recorded runs changed nothing', 'every entry reports an unchanged tree digest before and after');
+    else fail('recorded runs changed nothing', `${observed.map(r => r.id).join(', ')} reported a changed tree`);
+  }
+}
+
 /* 8. Documentation integrity                                                 */
 /* -------------------------------------------------------------------------- */
 

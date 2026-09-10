@@ -39,6 +39,7 @@ Nothing in this register silently mixes "what is" with "what should be".
 | R-019 | DOC_REWRITE | the authorization object treated a level as an operation set, and execution and post-verification each carried a single ambiguous result | level profiles with declared `inherits`, capability sets with `allow`/`deny` restriction, operation resolution from capabilities, scope paths, per-operation execution results, and a post-verification lifecycle with its own state, result and check results; claim `confidence` added as a graded dimension | a profile name must not imply a capability, an inherited capability must be removable, and an execution result must not imply a verification result | DOC-013, DOC-014 | MEDIUM | `tools/validate-analysis.mjs` (19 checks); `tools/verify.mjs` (43 PASS / 0 FAIL) | PASS |
 | R-020 | DOC_REWRITE | an unqualified `verification` object did not say which object was being verified; capabilities were plain names in a list, without their own state or resource class; per-operation authorization decisions were not recorded; execution verification reused claim vocabulary | two named domains — `claim_verification` (does the evidence support this claim?) and `execution_verification` (does the repository after execution conform?) — with `VERIFIED` and `CONFORMING` reserved to their own domains; 21 capability objects with `state`, one `resource_class` and optional path constraints; `authorization_decision` on every operation, re-derived by the section 179 ALLOW function; governance rule sets `AC-001…AC-016` and `EVV-001…EVV-009` (the authorization half was itself replaced by `CAP-001`–`CAP-016`/`CG-001`–`CG-015` and the section 216 function in R-021); a risk re-assessment replacing the non-canonical `ARCHITECTURAL` value | one field can be read as answering two questions, and capability names in a list cannot be told apart from capability grants | DOC-013, DOC-014 | MEDIUM | validate 20/0, verify 47/0, checks 4/0, simulate exit 0 | EXECUTED + EXECUTION-VERIFIED |
 | R-021 | DOC_REWRITE | the record carried policy data (level profiles, capability catalogue, governance statements) in loose root fields, accepted undeclared properties, and used domain-prefixed claim ids | closed schema (section 209: `additionalProperties: false`, 8 required root fields) validated against JSON Schema draft 2020-12; policy moved to [capability-registry.json](capability-registry.json); one authorization object with 21 explicit `capability_grants`; claim ids renumbered into the `CLAIM-nnn` namespace with the former ids kept in the edit history | a record no closed schema can validate cannot be audited mechanically, and a grant that is not an explicit object cannot be told apart from a profile declaration | DOC-013, DOC-015 | MEDIUM | `tools/validate-analysis.mjs` 20 PASS / 0 FAIL; `tools/verify.mjs` 48 PASS / 0 FAIL; `tools/checks.mjs` 4/4; `tools/simulate.mjs` exit 0 | EXECUTED + EXECUTION-VERIFIED |
+| R-022 | DOC_REWRITE | policy vocabularies were embedded in the structural schema, and a rule that no fixture executes was indistinguishable from an enforced rule | five versioned registries under `docs/analysis/registries/` own the capability, level-profile, operation, resource-class and claim vocabularies; capability ids, profiles, operations and resource classes are typed as strings with identifier syntax in the schema and resolved by the validator (`X-001`…`X-020`, `TS-001`…`TS-007`, `RG-001`…`RG-008`) in six reported phases; 31 fixtures execute every rule; every run is recorded in [validation-runs.json](validation-runs.json) with its phase, its errors and the tree digest before and after | an inventory inside a schema cannot evolve independently of it, and an unexercised rule is a claim rather than an enforcement (brief 11 sections 218–243) | DOC-013, DOC-016 | MEDIUM | `tools/validate-analysis.mjs` (six phases), `--self-test` 31/31, `tools/verify.mjs`, `tools/validation-run.mjs` | EXECUTED + EXECUTION-VERIFIED |
 
 No content was deleted. Removed text was either contradicted by the
 implementation, duplicated in a canonical document, or conversational filler;
@@ -105,9 +106,9 @@ unsound ownership baseline.
 
 ## Change-set boundary and discovered changes
 
-Authorization covered `R-001 … R-020` (`change_ids` in the authorization object;
-`R-014 … R-017` extended the set within the same `DOC_REFACTOR` ceiling — all
-documentation/analysis artifacts). While executing,
+Authorization covered `R-001 … R-022` (`change_ids` in the authorization object;
+`R-014` … `R-022` extended the set within the same documentation ceiling — all
+documentation, analysis and tooling artifacts). While executing,
 twelve further problems were discovered (`R-101 … R-112`). Under the
 discovered-change rule they were recorded, classified and proposed, **not
 fixed** — including `R-109`, a two-line counter fix, because code mutation was
@@ -147,21 +148,28 @@ Known limitations of this verification:
 
 ## Refactoring result
 
+The authoritative record is [analysis.json](analysis.json); the authorization is
+mirrored in [authorization.yaml](authorization.yaml) and checked for serialization
+identity, and the model that resolves it is specified in
+[scope-and-authorization.md](scope-and-authorization.md) §5 and
+[validation-model.md](validation-model.md). Nothing is restated here that the
+record already owns.
+
 ```yaml
 execution:                          # what happened, per operation
   state: SUCCEEDED
-  operations: 21 recorded, every authorization_decision ALLOWED, every result SUCCEEDED
-  executed_changes: [R-001 .. R-020]
+  operations: 33 recorded, every authorization_decision ALLOWED, every result SUCCEEDED
+  executed_changes: [R-001 .. R-022]
   unauthorized_changes: []
 execution_verification:             # whether the resulting state conforms
   state: PASSED
   result: CONFORMING
-  checks: 8, every result PASSED
+  checks: 9, every result PASSED
   mutations: []
 ```
 
-**EXECUTED + EXECUTION-VERIFIED**: documentation and analysis artifacts
-`R-001 … R-020`.
+**EXECUTED + EXECUTION-VERIFIED**: documentation, analysis and tooling artifacts
+`R-001 … R-022`.
 
 **PLAN ONLY**: code changes `R-101 … R-112` — no authorization was given to
 change runtime behaviour (`CAP-SOURCE-MODIFY|RENAME|MOVE|DELETE`, every
@@ -169,41 +177,12 @@ change runtime behaviour (`CAP-SOURCE-MODIFY|RENAME|MOVE|DELETE`, every
 unreachable through any grant), and correctness must be established before the
 prototype is modified.
 
-```yaml
-AUTHORIZATION (as applied)  # five separate objects, each with its own field
-  content grant:
-    state: GRANTED
-    level: {profile: DOC_REFACTOR}     # policy ceiling only
-    capabilities:
-      mode: RESTRICT
-      grants:                        # capability objects, each with a state
-        - {id: CAP-REPOSITORY-READ, state: ENABLED, resource_class: REPOSITORY, operations: [READ]}
-        - {id: CAP-REPOSITORY-ANALYZE, state: ENABLED, resource_class: REPOSITORY, operations: [ANALYZE]}
-        - {id: CAP-REPOSITORY-PROPOSE, state: ENABLED, resource_class: REPOSITORY, operations: [PROPOSE]}
-        - {id: CAP-DOCUMENT-CREATE, state: RESTRICTED, constraints: {paths: {include: [docs/, tools/]}}}
-        - {id: CAP-DOCUMENT-MODIFY, state: RESTRICTED, constraints: {paths: {include: [README.md, docs/, tools/]}}}
-        - {id: CAP-DOCUMENT-RENAME, state: RESTRICTED, constraints: {paths: {include: [archive/]}}}
-        - {id: CAP-DOCUMENT-MOVE, state: RESTRICTED, constraints: {paths: {include: [docs/roadmap/, archive/]}}}
-      denies:
-        - {id: CAP-DOCUMENT-DELETE, state: DENIED, resource_class: DOCUMENT, operations: [DELETE]}
-    operations: {allow: [READ, ANALYZE, PROPOSE, CREATE, MODIFY, RENAME, MOVE], deny: [DELETE]}
-  extraction grant:                    # disclosed: OP-001 created the artifact file
-    state: GRANTED
-    level: {profile: CODE_REFACTOR}
-    capabilities: {mode: RESTRICT, grants: [{id: CAP-SOURCE-CREATE, state: RESTRICTED,
-                    constraints: {paths: {include: [prototype/]}}}], denies: []}
-    operations: {allow: [CREATE], deny: [MODIFY, RENAME, MOVE, DELETE, COMMIT, PUSH]}
-    change_ids: [R-001]
-  publication grant:
-    state: GRANTED
-    level: {profile: PUSH}
-    capabilities:
-      mode: RESTRICT
-      grants: [CAP-REPOSITORY-READ, CAP-REPOSITORY-ANALYZE, CAP-REPOSITORY-PROPOSE,
-               CAP-COMMIT-CREATE, CAP-REMOTE-PUSH]
-      denies: 16 inherited content capabilities
-    operations: {allow: [READ, ANALYZE, PROPOSE, COMMIT, PUSH], deny: [CREATE, MODIFY, RENAME, MOVE, DELETE]}
-```
+The authorization actually applied is one `state: GRANTED` object on the `PUSH`
+profile whose 21 explicit capability grants leave ten capabilities effective and
+deny eleven; the profile is a ceiling, the grants are the authority, and the
+effective set is computed on every validation run rather than stored. The one
+content-side exception (creating the extracted artifact, change `R-001`) is
+disclosed as a `RESTRICTED` grant scoped to `prototype/`.
 
 Category vocabulary: the change categories follow the canonical enum
 (`DOC_CLEANUP`, `DOC_MOVE`, `DOC_MERGE`, `DOC_SPLIT`, `DOC_REWRITE`,

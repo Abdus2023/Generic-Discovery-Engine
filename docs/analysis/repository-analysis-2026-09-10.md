@@ -13,7 +13,7 @@ documentation cleanup. Output order follows the review brief (Phases 0–21).
 | Access classification | **FULL ACCESS** — complete tree, no submodules, no external artifacts to inspect |
 | Evidence standard | every non-trivial finding cites `[EVID:…]` from the [evidence register](evidence-register.md) |
 | State model | six typed fields per claim — `claim_kind`, `implementation_state`, `test_state`, `evidence_level`, `claim_verification.result`, `confidence` — plus independent authority dimensions (`authorization.state`, `authorization.level.profile`, `capabilities`, `operations`, `scope`, `change_ids`) and independent lifecycles (`execution.state` with per-operation `authorization_decision` and `result`, `execution_verification.state` with its own `result` and per-check outcomes). Normative record: [analysis.json](analysis.json) under [analysis.schema.json](analysis.schema.json); readable tables: [claims.md](claims.md) |
-| Enforcement | [EVID:TEST-014] `tools/validate-analysis.mjs` runs the section 202 pipeline — [EVID:DOC-013] schema validity against `analysis.schema.json` (draft 2020-12, closed root), object validity `REQ-001`–`REQ-015`, cross-object semantics (`CV-001`–`CV-020` of section 144, evidence rules `C-030`–`C-034` with the recorded absence procedures, capability rules `CAP-001`–`CAP-016` and `CG-001`–`CG-015`), the section 216 authorization function re-deriving every recorded decision from the effective capability set, execution invariants `EV-001`–`EV-012` with the section 200 transition graph, execution-verification rules `EVV-001`–`EVV-009`, YAML ≡ JSON serialization and invariants `I-001`–`I-016`: no generic status field, no field substitution, executed ⊆ authorized, documentation never proves implementation, `ABSENT` ≠ `INACCESSIBLE` |
+| Enforcement | [EVID:TEST-014] `tools/validate-analysis.mjs` runs the brief-11 pipeline — [EVID:DOC-013] schema validity against `analysis.schema.json` (draft 2020-12, closed root), object validity `REQ-001`–`REQ-015`, cross-object semantics (`CV-001`–`CV-020` of section 144, evidence rules `C-030`–`C-034` with the recorded absence procedures, capability rules `CAP-001`–`CAP-016` and `CG-001`–`CG-015`), the section 216 authorization function re-deriving every recorded decision from the effective capability set, execution invariants `EV-001`–`EV-012` with the section 200 transition graph, execution-verification rules `EVV-001`–`EVV-009`, YAML ≡ JSON serialization and invariants `I-001`–`I-016`: no generic status field, no field substitution, executed ⊆ authorized, documentation never proves implementation, `ABSENT` ≠ `INACCESSIBLE`. The vocabulary layer is separate from the schema: [EVID:DOC-015] five versioned registries under `docs/analysis/registries/` own the capability, level-profile, operation, resource-class and claim vocabularies, and the model is specified in [EVID:DOC-016] [validation-model.md](validation-model.md) |
 | Scope boundary | repository / artifact / verification / execution — recorded in [scope-and-authorization.md](scope-and-authorization.md) |
 | Authorization | one `state: GRANTED` object on profile `PUSH`, 21 capability grants (5 `ENABLED`, 5 `RESTRICTED`, 11 `DENIED`); the tenant is capability-level, not profile-level: `CAP-DOCUMENT-MODIFY` is scoped to `README.md`/`docs/`/`tools/`, `CAP-SOURCE-CREATE` to `prototype/` (the disclosed extraction for `R-001`), and `CAP-SOURCE-MODIFY`, `CAP-TEST-*`, `CAP-ARCHITECTURE-MODIFY`, `CAP-DOCUMENT-DELETE` are `DENIED`; `change_ids: R-001 … R-021`; effective set computed from registry ∩ grants − denies, never stored |
 | Phase A — verification | **read-only**; no repository file was created, edited or moved while establishing truth |
@@ -24,7 +24,16 @@ documentation cleanup. Output order follows the review brief (Phases 0–21).
 
 **Record construction.** [analysis.json](analysis.json) is normative; the tables in
 [claims.md](claims.md) are rendered from it by `tools/render-claims.mjs` and never
-hand-edited, and `tools/validate-analysis.mjs` enforces the schema and the rule sets.
+hand-edited, and `tools/validate-analysis.mjs` enforces the schema, the registries
+and the rule sets. The schema owns shape; the registries under
+[registries/](registries/) own what the identifiers mean; the validator owns
+whether the references and relationships hold (brief 11 sections 218–243, specified
+in [validation-model.md](validation-model.md)). Verification is recorded: every run
+closes with an entry in [validation-runs.json](validation-runs.json) that binds the
+verdict to the digests of the document, the schema, the registries and the
+validator, carries every error with its phase, and compares the working-tree digest
+before and after the run so that "verification modified nothing" is measured rather
+than asserted.
 Values are taken from repository evidence only: no value is invented to satisfy the
 schema, and a rule that cannot be satisfied is reported as a failure rather than
 worked around. Timestamps are recorded at date granularity — the work was performed
@@ -815,6 +824,9 @@ and a persistence-failure path test.
 | Change-set boundary and discovered-change rule | same, §5 |
 | Pre-execution and post-execution checks, execution result | same, §6 |
 | Canonical status vocabulary and claim records | [claims.md](claims.md) |
+| Validation model: schema, registries, phases, error model | [validation-model.md](validation-model.md) |
+| Vocabulary registries (capability, level profile, operation, resource class, claim) | [registries/](registries/) |
+| Recorded verification runs, with phases, errors and tree digests | [validation-runs.json](validation-runs.json) |
 | Evidence items, access contract, negative evidence | [evidence-register.md](evidence-register.md) |
 | Executed and proposed changes | [change-register-2026-09-10.md](change-register-2026-09-10.md) |
 

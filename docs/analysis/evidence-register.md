@@ -18,6 +18,9 @@ should not be asserted anywhere in this repository without its ID.
 | Accessible scope | the entire repository tree at the resolved commit: all files, no submodules, no LFS, no private dependencies |
 | Unavailable scope | none — no test directory, CI configuration, issue tracker content or external artifact exists to inspect |
 | Access classification | **FULL ACCESS** (single-repository scope, no remote-only artifacts) |
+| Work revision | the analysis and change set are carried on `arena/01a08d14-generic-discovery-engine`, whose commits name the change ids they execute |
+| Artifacts analysed | `prototype/generic-discovery-engine.user.js`, `docs/**`, `tools/**`, `archive/**` |
+| External sources used as evidence | **none** — no external reference supports any finding; DVB terminology in `archive/` is context, not evidence |
 
 Access verification:
 
@@ -126,8 +129,9 @@ digest, so any accidental code modification fails verification.
 | TEST-012 | `tools/simulate.mjs` | metrics `discoveries` vs `uniqueUrls` (74 / 27) | discovery records are not deduplicated (D9) | DIRECT | DIRECT |
 | TEST-013 | `tools/simulate.mjs` | `--unsafe-control` run | the harness detects an ownership violation (detector sensitivity) | DIRECT (executed) | DIRECT |
 | TEST-014 | `tools/validate-analysis.mjs` | the validation pipeline: schema, claim rules C-001–C-043 and matrix CV-001–CV-020, evidence rules, the closed schema of sections 209–211, the required-field rules REQ-001…REQ-015, the capability-grant rules CAP-001…CAP-016 and CG-001…CG-015 with the section 212/216 resolution, the claim matrix CV-001…CV-020, execution invariants EV-001–EV-012 with the section 200 transition graph, execution-verification rules EVV-001–EVV-009 and the YAML mirror comparison | the record's typed fields, evidence shape, authorization and execution consistency | DIRECT (executed) | DIRECT |
-| DOC-015 | `docs/analysis/capability-registry.json` | the capability registry: 21 capability definitions with resource class and operations, 8 level profiles with declared `inherits` | the policy input of the authorization engine (sections 212, 216); it is not a grant | DIRECT | DIRECT |
 | TEST-015 | `tools/verify.mjs` (§7e) | the registry resolved into profiles, effective capabilities re-derived from grant states rather than trusted, withheld classes unreachable, every executed operation covered by a capability of the right resource class, declared scope paths versus `git diff`, execution/execution-verification separation, claim verification never borrowing lifecycle values, and the procedural check that execution verification modified nothing | the authorization model and the two lifecycles are enforced, not merely documented | DIRECT (executed) | DIRECT |
+| TEST-016 | `tools/validation-fixtures.mjs`, `node tools/validate-analysis.mjs --self-test` | 31 fixtures, each the minimal mutation that one cross-object rule forbids; the suite fails unless the validator rejects it in the expected phase with the expected code | the X/TS/RG/REQ/CAP/CG/EV/EVV rules are enforced, not asserted | DIRECT | DIRECT |
+| TEST-017 | `tools/validation-run.mjs` | runs the validator, hashes the working tree before and after (the run store excluded), and appends one entry to the ledger; refuses to rewrite an existing run | each verification run is recorded with its phase and errors, and the repository is provably unchanged by a run | DIRECT | DIRECT |
 
 ## Register — documentation
 
@@ -145,6 +149,9 @@ digest, so any accidental code modification fails verification.
 | DOC-012 | `docs/analysis/change-register-2026-09-10.md` | change IDs R-001… | what was changed, why, and how it was verified | DIRECT | DIRECT |
 | DOC-013 | `docs/analysis/analysis.json`, `docs/analysis/analysis.schema.json`, `docs/analysis/claims.md` | the normative record, the schema and its rendering | the typed state of every claim, the authorization object and the execution record | DIRECT | DIRECT |
 | DOC-014 | `docs/analysis/authorization.yaml` | the canonical authorization object in YAML — state, level profile, capability grants with their states and scopes, operation sets, scope paths, change ids | serialization identity with the JSON record (SER-001…SER-012) and the resolved capability closure | DIRECT | DIRECT |
+| DOC-015 | `docs/analysis/registries/` (five registries + `registry.schema.json`) | the semantic registries: capability vocabulary and scope model, level profiles with declared inheritance, operations with their mutating flag, resource classes, claim identifiers with their domain; the envelope is versioned independently of the analysis schema | the policy and vocabulary layer of brief 11 (sections 218.2, 220-224); a declaration authorizes nothing | DIRECT | DIRECT |
+| DOC-016 | `docs/analysis/validation-model.md` | the three-layer validation architecture: what the schema owns, what the registries own, what the semantic validator owns, the nullability and timestamp contracts, the X/TS/RG rule sets, the error model and the run-ledger contract | the canonical owner of the validation model (brief 11 sections 218-243) | DIRECT | DIRECT |
+| DOC-017 | `docs/analysis/validation-runs.json` | the append-only ledger of verification runs: per run the mode, the revision, the input digests (document, schema, registries, validator), the phase states, every error with its code and phase, and the tree digest before and after | evidence that verification was recorded and that it modified nothing (section 241, EVV-008) | DIRECT | DIRECT |
 
 ## Absence procedures
 
@@ -185,6 +192,17 @@ about artifacts that do not exist in the repository are `NOT_FOUND`.
 | SCOPE-005 | No tests, CI configuration or build tooling existed in the repository | tree inspection at the resolved commit | **ABSENT** | access contract above |
 | SCOPE-006 | No coverage, absence or completeness object exists | no such symbol; termination is an empty eligible set | **ABSENT** | CODE-009, DOC-010 |
 | SCOPE-007 | No non-URL candidate target is implemented | every `discover()` call passes a URL; target type list is URL-oriented | **ABSENT** | CODE-003, CODE-027 |
+
+### Openings that were not pursued (scope exclusions)
+
+These are not findings about the prototype. They are the boundaries of this
+inspection, recorded so that an unverified area is never mistaken for a verified
+one (brief 4 scope escalation: request, do not assume).
+
+| ID | Opening | Why it would be required | Proposed expansion | Authorization | Disposition |
+| --- | --- | --- | --- | --- | --- |
+| SCOPE-GAP-1 | end-to-end `HtmlProvider` behaviour under a real DOM | the headless shim stubs `DOMParser`, so HTML extraction is verified by matching rules and by code, not by execution | run the artifact in a browser or a DOM implementation | required | **OPEN** |
+| SCOPE-GAP-2 | real userscript-manager semantics (redirects, CORS, grants, storage quotas, cross-tab storage) | these decide whether the persistence and scope claims hold outside the shim | manual test protocol in Tampermonkey/Violentmonkey | required | **OPEN** |
 
 ## Register — claim relationships (contradictions)
 
