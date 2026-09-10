@@ -253,6 +253,8 @@ Results and the audit trail:
 | [claims.md](docs/analysis/claims.md) | 41 claim records rendered from [analysis.json](docs/analysis/analysis.json): `claim_kind` · `implementation_state` · `test_state` · `evidence_level` · `claim_verification.result` · `confidence` |
 | [analysis.schema.json](docs/analysis/analysis.schema.json) | the normative machine-readable schema (JSON Schema draft 2020-12, closed at the root); the capability registry it draws on is [capability-registry.json](docs/analysis/capability-registry.json) — 8 profiles, 21 capabilities, declaration only |
 | [authorization.yaml](docs/analysis/authorization.yaml) | the canonical authorization object in YAML — one object, 21 explicit capability grants; serialization identity with the record is checked field by field |
+| [capability-registry.json](docs/analysis/capability-registry.json) | the policy registry — 8 level profiles with declared `inherits`, 21 capabilities with resource class and operations; a declaration authorizes nothing by itself |
+| [claim-domains.json](docs/analysis/claim-domains.json) | the presentation taxonomy behind the section headings of [claims.md](docs/analysis/claims.md); the closed record may not carry a presentation-only field |
 | [scope-and-authorization.md](docs/analysis/scope-and-authorization.md) | scope boundary, six ownership roles, authorization contract, pre/post-execution checks |
 | [change-register-2026-09-10.md](docs/analysis/change-register-2026-09-10.md) | executed changes R-001…R-021; code changes R-101…R-112 (PLAN ONLY) |
 
