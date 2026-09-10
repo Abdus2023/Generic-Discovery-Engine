@@ -103,6 +103,7 @@
         "claim_verification",
         "evidence"
       ],
+      "$comment": "Sections 136-142. Six dimensions, never collapsed: claim_kind (what kind of statement), implementation_state (is the named behaviour implemented), test_state (is it exercised), evidence_level (how strong/available the evidence is), claim_verification.result (what verification of the claim concluded) and the advisory confidence. Confidence at most 'very high', never replaces evidence_level or claim_verification.result, and this repository additionally rejects HIGH/VERY_HIGH together with UNVERIFIED (section 141).",
       "properties": {
         "id": {
           "type": "string",
@@ -121,7 +122,8 @@
             "HISTORICAL",
             "HYPOTHESIS",
             "NON_GOAL"
-          ]
+          ],
+          "$comment": "Section 137: what the claim asserts about the repository. PLANNED does not imply IMPLEMENTED; SPECIFIED asserts nothing about implementation; NON_GOAL and HYPOTHESIS carry NOT_APPLICABLE implementation states (CV-011, CV-012, CV-013)."
         },
         "implementation_state": {
           "enum": [
@@ -130,7 +132,8 @@
             "NOT_IMPLEMENTED",
             "NOT_APPLICABLE",
             "UNKNOWN"
-          ]
+          ],
+          "$comment": "Section 138: does the repository contain the named behaviour? IMPLEMENTED requires an implementation artifact; NOT_IMPLEMENTED requires an inspected scope or negative evidence, never INACCESSIBLE (CV-009, CV-010)."
         },
         "test_state": {
           "enum": [
@@ -179,7 +182,8 @@
             "MEDIUM",
             "HIGH",
             "VERY_HIGH"
-          ]
+          ],
+          "$comment": "Section 141: advisory grading of the evidential basis, not a substitute for evidence_level or claim_verification.result."
         },
         "evidence": {
           "type": "array",
