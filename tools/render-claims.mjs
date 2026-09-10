@@ -46,7 +46,7 @@ function renderGroups() {
     out.push('| Claim ID | Statement | claim_kind | implementation_state | test_state | evidence_level | verification_result | Evidence | Interpretation |');
     out.push('| --- | --- | --- | --- | --- | --- | --- | --- | --- |');
     for (const c of rows) {
-      const evidence = c.evidence.map(id => `[EVID:${id}]`).join(' ');
+      const evidence = c.evidence.map(e => `[EVID:${typeof e === 'string' ? e : e.id}]`).join(' ');
       const marker = c.verification_result === 'CONTRADICTED' ? '**CONTRADICTED**' : c.verification_result;
       out.push(`| \`${c.id}\` | ${cell(c.statement)} | \`${c.claim_kind}\` | \`${c.implementation_state}\` | \`${c.test_state}\` | \`${c.evidence_level}\` | \`${marker}\` | ${evidence} | ${cell(c.interpretation)} |`);
     }

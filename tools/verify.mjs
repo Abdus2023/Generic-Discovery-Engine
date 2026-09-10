@@ -28,6 +28,7 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import vm from 'node:vm';
+import { execFileSync } from 'node:child_process';
 import { fileURLToPath } from 'node:url';
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
@@ -415,6 +416,59 @@ else fail('no later-design layers present', futureHits.join(', '));
     } else {
       fail('authorization forbids source mutation', 'unexpected: source mutation appears authorized');
     }
+  }
+}
+
+/* -------------------------------------------------------------------------- */
+/* 7e. State algebra: typed fields, authorization state vs level              */
+/* -------------------------------------------------------------------------- */
+
+{
+  const schemaPath = path.join(ROOT, 'docs', 'analysis', 'analysis.schema.json');
+  if (!fs.existsSync(schemaPath)) {
+    fail('the schema file exists', 'docs/analysis/analysis.schema.json missing');
+  } else {
+    const schema = JSON.parse(fs.readFileSync(schemaPath, 'utf8'));
+    if (String(schema.$schema).includes('2020-12')) pass('schema declares JSON Schema draft 2020-12');
+    else fail('schema declares JSON Schema draft 2020-12', String(schema.$schema));
+  }
+
+  const record = JSON.parse(fs.readFileSync(path.join(ROOT, 'docs', 'analysis', 'analysis.json'), 'utf8'));
+  const auth = record.authorization || {};
+  const STATES = ['NOT_REQUESTED', 'REQUESTED', 'DENIED', 'GRANTED', 'REVOKED', 'EXPIRED'];
+  const LEVELS = ['READ_ONLY', 'ANALYSIS_ONLY', 'DOC_REFACTOR', 'TEST_REFACTOR',
+    'CODE_REFACTOR', 'ARCHITECTURE_CHANGE', 'COMMIT', 'PUSH'];
+
+  if (STATES.includes(auth.state)) pass('authorization state uses the authorization enum', auth.state);
+  else fail('authorization state uses the authorization enum', String(auth.state));
+
+  if (LEVELS.includes(auth.level)) pass('authorization level uses the capability enum', auth.level);
+  else fail('authorization level uses the capability enum', String(auth.level));
+
+  /* authorization must never be reduced to a boolean, and level must never be
+     absent while a grant exists (rules V8/V9, invariants I-007/I-008) */
+  const booleanGrant = 'granted' in auth || typeof auth.authorized === 'boolean';
+  if (!booleanGrant) pass('authorization is an object, not a boolean');
+  else fail('authorization is an object, not a boolean');
+
+  if (!(auth.state === 'GRANTED' && !auth.level)) pass('a grant states its level separately from its state');
+  else fail('a grant states its level separately from its state');
+
+  const inherited = auth.hierarchical === true ? [] : (record.execution.operations || [])
+    .filter(op => ['COMMIT', 'PUSH'].includes(op) && !(auth.additional_levels_declared || []).includes(op));
+  if (inherited.length === 0) pass('no capability is assumed by inheritance', 'hierarchical: ' + String(auth.hierarchical));
+  else fail('no capability is assumed by inheritance', inherited.join(', '));
+
+  const flatEvidence = record.claims.flatMap(c => c.evidence).filter(e => typeof e === 'string');
+  if (flatEvidence.length === 0) pass('evidence entries are objects with path and locator');
+  else fail('evidence entries are objects with path and locator', `${flatEvidence.length} bare id(s)`);
+
+  try {
+    execFileSync(process.execPath, [path.join(ROOT, 'tools', 'validate-analysis.mjs')], { cwd: ROOT, stdio: 'pipe' });
+    pass('the canonical record passes its own validator', 'tools/validate-analysis.mjs');
+  } catch (error) {
+    fail('the canonical record passes its own validator',
+      String(error.stdout || error.message).trim().split('\n').pop());
   }
 }
 

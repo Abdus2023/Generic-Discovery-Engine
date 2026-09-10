@@ -26,14 +26,14 @@ Nothing in this register silently mixes "what is" with "what should be".
 | R-006 | DOC-REWRITE | "at most one active owner" stated as a property of the system | claim atomicity (PROVED) separated from the end-to-end invariant (violated, D1) | contradiction | CONC-001, CONC-002, TEST-009 | LOW | `tools/verify.mjs`, `tools/simulate.mjs` | PASS |
 | R-007 | DOC-REWRITE | README/provider notes implied `TextProvider` was a fallback | exact matching rules documented; body sniffing and double-match stated | documentation contradicted code | CODE-016, TEST-006 | LOW | `tools/checks.mjs` exact-set cases | PASS |
 | R-008 | DOC-REWRITE | provider material implied a `candidates()` method | contract documented as `matches()` + `recognize()`; expansion engine-owned | documentation implied a non-existent interface | CODE-015 | LOW | `tools/verify.mjs` provider-contract check | PASS |
-| R-009 | DOC-ADD | no terminology authority | `docs/glossary.md` with definitions, conflicting usages, canonical usage and corrected documents | inconsistent vocabulary | DOC-011 | LOW | consistency review across `docs/` | PASS |
-| R-010 | DOC-ADD | no executable verification existed | `tools/verify.mjs`, `tools/checks.mjs`, `tools/simulate.mjs` | claims were assertions | TEST-001 … TEST-013 | LOW | tools run in CI-able form; exit codes defined | PASS |
-| R-011 | DOC-ADD | extent of DVB/future material unenforced | scope document + mechanical symbol checks | analogy could drift into compatibility claims | SCOPE-001, SCOPE-002 | LOW | `tools/verify.mjs` symbol scans | PASS |
-| R-012 | DOC-ADD | verification and change history undocumented | evidence register + claims + this change register | traceability of conclusions and edits | DOC-012 | LOW | `tools/verify.mjs` evidence lint | PASS |
-| R-014 | DOC-ADD | status expressed as one collapsed word ("implemented"/"tested") | typed status fields, recorded once per claim: `claim_kind`, `implementation_state`, `test_state`, `evidence_level`, `verification_result` | the fields describe different things and must never be merged or substituted | DOC-011, DOC-012 | LOW | `tools/verify.mjs` vocabulary lint; `tools/validate-analysis.mjs` | PASS |
-| R-015 | DOC-ADD | scope, ownership and authorization implicit | [scope-and-authorization.md](scope-and-authorization.md) with the four scope dimensions, ownership matrix, decision ownership, authorization levels and pre/post-execution checks | governs who may decide and mutate | DOC-012 | LOW | `tools/verify.mjs` authorization-record lint | PASS |
-| R-016 | DOC-ADD | status existed only as prose tables; no machine-readable record, and no way to tell a stale table from a current one | [analysis.json](analysis.json) as the normative record, plus `tools/validate-analysis.mjs` (schema, enums, authorization/execution rules) and `tools/render-claims.mjs` (claims.md is generated, never hand-edited) | a canonical model that cannot be validated silently drifts | DOC-012 | LOW | `tools/validate-analysis.mjs` (21 checks); `tools/render-claims.mjs --check` | PASS |
-| R-017 | DOC-REWRITE | claim and status statements written before the canonical model, in three-dimension or collapsed form | 41 records regenerated with all five typed fields; evidence register, analysis document, scope document, README and the 11 behaviour documents updated to the same vocabulary | documents must agree with the normative record or be detected | DOC-011, DOC-012 | LOW | `tools/verify.mjs` field-substitution and declaration lints; `node tools/verify.mjs` → 30 PASS / 0 FAIL | PASS |
+| R-009 | DOC_CLEANUP | no terminology authority | `docs/glossary.md` with definitions, conflicting usages, canonical usage and corrected documents | inconsistent vocabulary | DOC-011 | LOW | consistency review across `docs/` | PASS |
+| R-010 | TEST_ADD | no executable verification existed | `tools/verify.mjs`, `tools/checks.mjs`, `tools/simulate.mjs` | claims were assertions | TEST-001 … TEST-013 | LOW | tools run in CI-able form; exit codes defined | PASS |
+| R-011 | DOC_CLEANUP | extent of DVB/future material unenforced | scope document + mechanical symbol checks | analogy could drift into compatibility claims | SCOPE-001, SCOPE-002 | LOW | `tools/verify.mjs` symbol scans | PASS |
+| R-012 | DOC_CLEANUP | verification and change history undocumented | evidence register + claims + this change register | traceability of conclusions and edits | DOC-012 | LOW | `tools/verify.mjs` evidence lint | PASS |
+| R-014 | DOC_REWRITE | status expressed as one collapsed word ("implemented"/"tested") | typed status fields, recorded once per claim: `claim_kind`, `implementation_state`, `test_state`, `evidence_level`, `verification_result` | the fields describe different things and must never be merged or substituted | DOC-011, DOC-012 | LOW | `tools/verify.mjs` vocabulary lint; `tools/validate-analysis.mjs` | PASS |
+| R-015 | DOC_CLEANUP | scope, ownership and authorization implicit | [scope-and-authorization.md](scope-and-authorization.md) with the four scope dimensions, ownership matrix, decision ownership, authorization levels and pre/post-execution checks | governs who may decide and mutate | DOC-012 | LOW | `tools/verify.mjs` authorization-record lint | PASS |
+| R-016 | DOC_CLEANUP | status existed only as prose tables; no machine-readable record, and no way to tell a stale table from a current one | [analysis.json](analysis.json) as the normative record, plus `tools/validate-analysis.mjs` (schema, enums, authorization/execution rules) and `tools/render-claims.mjs` (claims.md is generated, never hand-edited) | a canonical model that cannot be validated silently drifts | DOC-012 | LOW | `tools/validate-analysis.mjs`: JSON Schema + rules V1–V20 + invariants I-001–I-016; `tools/render-claims.mjs --check` | PASS |
+| R-017 | DOC-REWRITE | claim and status statements written before the canonical model, in three-dimension or collapsed form | 41 records regenerated with all five typed fields; evidence register, analysis document, scope document, README and the 11 behaviour documents updated to the same vocabulary | documents must agree with the normative record or be detected | DOC-011, DOC-012 | LOW | `tools/verify.mjs` field-substitution and declaration lints; `node tools/verify.mjs` → 38 PASS / 0 FAIL | PASS |
 | R-013 | RENAME | `Continue Architecture Planning.md` at root implied a normative planning document | archived under `archive/`, indexed | non-normative status unclear | DOC-003, DOC-006 | LOW | link checks | PASS |
 
 No content was deleted. Removed text was either contradicted by the
@@ -53,7 +53,7 @@ L48948–L54113. It was verified, not modified.
 CHANGE:   (none)
 Before:   artifact as extracted from archive L48948-L54113
 After:    identical
-Reason:   code changes were not authorized (authorization level A4/A5 not granted)
+Reason:   code changes were not authorized (the ceiling is DOC_REFACTOR; CODE_REFACTOR and ARCHITECTURE_CHANGE were never granted)
 Evidence: [EVID:CODE-001], frozen digest in the evidence register
 Verification: SHA-256 8f5fc5c5…e354c474 unchanged since commit 400810d,
               recomputed and enforced by tools/verify.mjs
@@ -96,8 +96,9 @@ unsound ownership baseline.
 
 ## Change-set boundary and discovered changes
 
-Authorization covered `R-001 … R-013` (later extended within the same scope by
-`R-014`, `R-015`, `R-016`, `R-017` — all documentation/analysis artifacts). While executing,
+Authorization covered `R-001 … R-017` (`change_ids` in the authorization object;
+`R-014 … R-017` extended the set within the same `DOC_REFACTOR` ceiling — all
+documentation/analysis artifacts). While executing,
 twelve further problems were discovered (`R-101 … R-112`). Under the
 discovered-change rule they were recorded, classified and proposed, **not
 fixed** — including `R-109`, a two-line counter fix, because code mutation was
@@ -150,21 +151,31 @@ post_verification:
 `R-001 … R-017`.
 
 **PLAN ONLY**: code changes `R-101 … R-112` — no authorization was given to
-change runtime behaviour (levels A4/A5 not granted), and correctness must be
-established before the prototype is modified.
+change runtime behaviour (`CODE_REFACTOR` and `ARCHITECTURE_CHANGE` are outside
+the granted ceiling and appear in `forbidden_operations`), and correctness must
+be established before the prototype is modified.
 
 ```yaml
-EXECUTION AUTHORIZATION (as applied)
-  target:     Abdus2023/Generic-Discovery-Engine
-  revision:   arena/01a08d14-generic-discovery-engine, from main @ cc8df73
-  level:      DOC_REFACTOR
+AUTHORIZATION (as applied)          # state and level are separate concepts
+  state: GRANTED
+  level: DOC_REFACTOR               # capability ceiling for content mutation
   additional_levels_declared: [ANALYSIS_ONLY, COMMIT, PUSH]   # granted explicitly
-  withheld:   [TEST_REFACTOR, CODE_REFACTOR, ARCHITECTURE_CHANGE]
-  change set: R-001 … R-017 executed; R-101 … R-112 plan only
-  rollback:   revert of the analysis commits restores prior documentation;
-              the source digest pins code state independently
-  status:     AUTHORIZED (documentation) / NOT AUTHORIZED (code)
+  hierarchical: false               # no capability is inherited from any level
+  withheld: [TEST_REFACTOR, CODE_REFACTOR, ARCHITECTURE_CHANGE]
+  change_ids: [R-001 … R-017]       # R-101 … R-112 are outside this set
+  operations: [READ, ANALYZE, PROPOSE, CREATE, MODIFY, MOVE, RENAME, COMMIT, PUSH]
+  rollback: revert of the analysis commits restores prior documentation;
+            the source digest pins code state independently
 ```
+
+Category vocabulary: the change categories follow the canonical enum
+(`DOC_CLEANUP`, `DOC_MOVE`, `DOC_MERGE`, `DOC_SPLIT`, `DOC_REWRITE`,
+`CODE_REFACTOR`, `CODE_FIX`, `TEST_ADD`, `TEST_UPDATE`, `ARCHITECTURE_CHANGE`,
+`REMOVAL`, `RENAME`). The earlier `DOC_ADD` label is not part of that enum, so
+those rows were reclassified by their effect — consolidation (`R-003`),
+terminology and governance cleanup (`R-009`, `R-011`, `R-012`, `R-015`, `R-016`),
+verification tooling (`R-010`) and status-vocabulary replacement (`R-014`,
+`R-017`) — with no change to what was actually done.
 
 ## Two-state architecture record
 

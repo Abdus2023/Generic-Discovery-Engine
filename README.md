@@ -218,7 +218,7 @@ archive/
   Continue Architecture Planning.md   raw design conversation (non-normative)
 tools/
   verify.mjs                  static checks: artifact vs documentation, scope, governance
-  validate-analysis.mjs       canonical-schema and status-model validation
+  validate-analysis.mjs       schema validation, rules V1–V20, invariants I-001–I-016
   render-claims.mjs           renders claims.md from analysis.json
   checks.mjs                  behaviour checks: dedup, providers, provenance, persistence
   simulate.mjs                headless harness that executes the shipped artifact
@@ -248,16 +248,22 @@ Results and the audit trail:
 | Document | Content |
 | --- | --- |
 | [repository-analysis-2026-09-10.md](docs/analysis/repository-analysis-2026-09-10.md) | full review (18 sections) |
-| [evidence-register.md](docs/analysis/evidence-register.md) | 66 evidence items with locators, `evidence_level` values, frozen artifact digest |
+| [evidence-register.md](docs/analysis/evidence-register.md) | the audit index: every `[EVID:…]` id with path and locator, `evidence_level` values, absence procedures, frozen artifact digest |
 | [claims.md](docs/analysis/claims.md) | 41 claim records rendered from [analysis.json](docs/analysis/analysis.json): `claim_kind` · `implementation_state` · `test_state` · `evidence_level` · `verification_result` |
+| [analysis.schema.json](docs/analysis/analysis.schema.json) | the normative machine-readable schema (JSON Schema draft 2020-12) the record is validated against |
 | [scope-and-authorization.md](docs/analysis/scope-and-authorization.md) | scope boundary, six ownership roles, authorization contract, pre/post-execution checks |
 | [change-register-2026-09-10.md](docs/analysis/change-register-2026-09-10.md) | executed changes R-001…R-017; code changes R-101…R-112 (PLAN ONLY) |
 
 Status in this repository is never a single word. Five typed fields are reported
 separately for every claim — `claim_kind`, `implementation_state`, `test_state`,
-`evidence_level`, `verification_result` — and access, authorization, execution and
-post-verification each have their own field. `tools/validate-analysis.mjs`
-enforces this, including that no field is substituted for another.
+`evidence_level`, `verification_result`. Repository mutation is a separate algebra:
+`authorization.state` (whether permission exists) is not `authorization.level`
+(what it permits), and neither is `execution.result` (what actually happened) or
+`post_verification.result` (what the independent re-run established). No field
+answers two questions, and no field is substituted for another.
+`tools/validate-analysis.mjs` enforces this — against
+[docs/analysis/analysis.schema.json](docs/analysis/analysis.schema.json), plus the
+semantic rules `V1`–`V20` and invariants `I-001`–`I-016`.
 
 ## Roadmap
 

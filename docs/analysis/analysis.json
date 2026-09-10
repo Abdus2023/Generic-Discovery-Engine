@@ -1,8 +1,8 @@
 {
   "analysis": {
-    "schema_version": "1.0",
     "generated": "2026-09-10",
-    "note": "Normative machine-readable record. docs/analysis/claims.md tables are rendered from this file by tools/render-claims.mjs; tools/validate-analysis.mjs enforces the schema and the validation rules. Values are taken from repository evidence only; no value is invented to satisfy the schema."
+    "note": "Normative machine-readable record. docs/analysis/claims.md tables are rendered from this file by tools/render-claims.mjs; tools/validate-analysis.mjs enforces the schema and the validation rules. Values are taken from repository evidence only; no value is invented to satisfy the schema.",
+    "record_version": "1.0"
   },
   "repository": {
     "owner": "Abdus2023",
@@ -72,10 +72,42 @@
         "prototype/generic-discovery-engine.user.js"
       ],
       "evidence": [
-        "CODE-003",
-        "CODE-007",
-        "TEST-004",
-        "TEST-005"
+        {
+          "id": "CODE-003",
+          "kind": "CODE",
+          "path": "prototype/generic-discovery-engine.user.js",
+          "locator": {
+            "type": "LINE_RANGE",
+            "value": "L686–L788 (Candidate)"
+          }
+        },
+        {
+          "id": "CODE-007",
+          "kind": "CODE",
+          "path": "prototype/generic-discovery-engine.user.js",
+          "locator": {
+            "type": "LINE_RANGE",
+            "value": "L1002–L1073 (KnowledgeBase.addCandidate)"
+          }
+        },
+        {
+          "id": "TEST-004",
+          "kind": "TEST",
+          "path": "tools/checks.mjs",
+          "locator": {
+            "type": "SYMBOL",
+            "value": "case 1 (duplicate insertion)"
+          }
+        },
+        {
+          "id": "TEST-005",
+          "kind": "TEST",
+          "path": "tools/checks.mjs",
+          "locator": {
+            "type": "SYMBOL",
+            "value": "case 2 (type disambiguation)"
+          }
+        }
       ],
       "interpretation": "Identity is type-scoped: the same URL discovered as a different type is deliberately a second candidate."
     },
@@ -93,8 +125,24 @@
         "docs/architecture/candidate-model.md"
       ],
       "evidence": [
-        "CODE-003",
-        "DOC-003"
+        {
+          "id": "CODE-003",
+          "kind": "CODE",
+          "path": "`prototype/generic-discovery-engine.user.js`",
+          "locator": {
+            "type": "LINE_RANGE",
+            "value": "L686–L788 (`Candidate`)"
+          }
+        },
+        {
+          "id": "DOC-003",
+          "kind": "DOCUMENTATION",
+          "path": "archive/Continue Architecture Planning.md",
+          "locator": {
+            "type": "LINE_RANGE",
+            "value": "L54117–L54580 (\"What v0.7.1 actually changes\" … \"Architecture after v0.7.1\")"
+          }
+        }
       ],
       "interpretation": "The implementation stores no existence assertion, but the hypothesis framing is design prose; the code cannot demonstrate a framing."
     },
@@ -111,9 +159,33 @@
         "prototype/generic-discovery-engine.user.js"
       ],
       "evidence": [
-        "CODE-002",
-        "CODE-007",
-        "CFG-001"
+        {
+          "id": "CODE-002",
+          "kind": "CODE",
+          "path": "prototype/generic-discovery-engine.user.js",
+          "locator": {
+            "type": "LINE_RANGE",
+            "value": "L49–L135 (CONFIG, including maxCandidates, maxRequests, maxDepth, adaptive, retry)"
+          }
+        },
+        {
+          "id": "CODE-007",
+          "kind": "CODE",
+          "path": "`prototype/generic-discovery-engine.user.js`",
+          "locator": {
+            "type": "LINE_RANGE",
+            "value": "L1002–L1073 (`KnowledgeBase.addCandidate`)"
+          }
+        },
+        {
+          "id": "CFG-001",
+          "kind": "CONFIG",
+          "path": "docs/analysis/change-register-2026-09-10.md",
+          "locator": {
+            "type": "LINE_RANGE",
+            "value": "L49–L135 (CONFIG limits and policy switches)"
+          }
+        }
       ],
       "interpretation": "Dropping is silent; only the candidate cap records a diagnostic."
     },
@@ -130,9 +202,33 @@
         "prototype/generic-discovery-engine.user.js"
       ],
       "evidence": [
-        "CODE-009",
-        "CODE-018",
-        "TEST-001"
+        {
+          "id": "CODE-009",
+          "kind": "CODE",
+          "path": "prototype/generic-discovery-engine.user.js",
+          "locator": {
+            "type": "LINE_RANGE",
+            "value": "L1088–L1119 (KnowledgeBase.claimNextCandidate)"
+          }
+        },
+        {
+          "id": "CODE-018",
+          "kind": "CODE",
+          "path": "prototype/generic-discovery-engine.user.js",
+          "locator": {
+            "type": "LINE_RANGE",
+            "value": "L3114–L4291 (GenericDiscoveryEngine), incl. worker() L3540, start() L3594"
+          }
+        },
+        {
+          "id": "TEST-001",
+          "kind": "TEST",
+          "path": "tools/verify.mjs",
+          "locator": {
+            "type": "SYMBOL",
+            "value": "checks claimNextCandidate() is synchronous, ownership is handed straight to execution"
+          }
+        }
       ],
       "interpretation": "The transition happens inside a synchronous method and the first suspension point follows it; this is valid only within one execution context."
     },
@@ -149,10 +245,42 @@
         "prototype/generic-discovery-engine.user.js"
       ],
       "evidence": [
-        "CODE-008",
-        "CODE-021",
-        "TEST-009",
-        "TEST-011"
+        {
+          "id": "CODE-008",
+          "kind": "CODE",
+          "path": "prototype/generic-discovery-engine.user.js",
+          "locator": {
+            "type": "LINE_RANGE",
+            "value": "L1074–L1087 (KnowledgeBase.queueCandidate)"
+          }
+        },
+        {
+          "id": "CODE-021",
+          "kind": "CODE",
+          "path": "prototype/generic-discovery-engine.user.js",
+          "locator": {
+            "type": "LINE_RANGE",
+            "value": "L3262–L3330 (emitDiscovery)"
+          }
+        },
+        {
+          "id": "TEST-009",
+          "kind": "TEST",
+          "path": "tools/simulate.mjs",
+          "locator": {
+            "type": "SYMBOL",
+            "value": "checks single owner per candidate, no duplicate acquisition"
+          }
+        },
+        {
+          "id": "TEST-011",
+          "kind": "TEST",
+          "path": "tools/simulate.mjs",
+          "locator": {
+            "type": "SYMBOL",
+            "value": "anomaly stream CONCURRENT_OWNER"
+          }
+        }
       ],
       "interpretation": "The claim site is safe; re-discovery re-queues in-flight candidates, so the end-to-end invariant fails (defect D1)."
     },
@@ -169,9 +297,33 @@
         "prototype/generic-discovery-engine.user.js"
       ],
       "evidence": [
-        "CODE-010",
-        "CODE-011",
-        "TEST-010"
+        {
+          "id": "CODE-010",
+          "kind": "CODE",
+          "path": "prototype/generic-discovery-engine.user.js",
+          "locator": {
+            "type": "LINE_RANGE",
+            "value": "L1143–L1148 / L1149–L1160 / L1161–L1165 (markCompleted / markSkipped / markFailed)"
+          }
+        },
+        {
+          "id": "CODE-011",
+          "kind": "CODE",
+          "path": "prototype/generic-discovery-engine.user.js",
+          "locator": {
+            "type": "LINE_RANGE",
+            "value": "L1166–L1190 (KnowledgeBase.retryCandidate)"
+          }
+        },
+        {
+          "id": "TEST-010",
+          "kind": "TEST",
+          "path": "tools/simulate.mjs",
+          "locator": {
+            "type": "SYMBOL",
+            "value": "peakActiveWorkers, pendingWorkAtQuiescence"
+          }
+        }
       ],
       "interpretation": "Backoff applies to queued retries; the failed state bypasses it and remains claimable (defect D3)."
     },
@@ -188,10 +340,36 @@
         "prototype/generic-discovery-engine.user.js"
       ],
       "evidence": [
-        "CODE-009",
-        "CODE-010"
+        {
+          "id": "CODE-009",
+          "kind": "CODE",
+          "path": "`prototype/generic-discovery-engine.user.js`",
+          "locator": {
+            "type": "LINE_RANGE",
+            "value": "L1088–L1119 (`KnowledgeBase.claimNextCandidate`)"
+          }
+        },
+        {
+          "id": "CODE-010",
+          "kind": "CODE",
+          "path": "`prototype/generic-discovery-engine.user.js`",
+          "locator": {
+            "type": "LINE_RANGE",
+            "value": "L1143–L1148 / L1149–L1160 / L1161–L1165 (`markCompleted` / `markSkipped` / `markFailed`)"
+          }
+        },
+        {
+          "id": "TEST-010",
+          "kind": "TEST",
+          "path": "tools/simulate.mjs",
+          "locator": {
+            "type": "SYMBOL",
+            "value": "stuck candidates at quiescence: status failed with attempts and nextAttemptAt"
+          }
+        }
       ],
-      "interpretation": "failed is part of the claim eligibility set with no backoff, so the target is retried indefinitely (defect D3)."
+      "interpretation": "failed is part of the claim eligibility set with no backoff, so the target is retried indefinitely (defect D3). The absence of a terminal failure state is tested, not inferred: the harness reports failed candidates still in the pool at quiescence with their attempt counts.",
+      "absence_test": "TEST-010"
     },
     {
       "id": "SCHED-CLAIM-005",
@@ -206,8 +384,24 @@
         "prototype/generic-discovery-engine.user.js"
       ],
       "evidence": [
-        "CODE-018",
-        "TEST-010"
+        {
+          "id": "CODE-018",
+          "kind": "CODE",
+          "path": "`prototype/generic-discovery-engine.user.js`",
+          "locator": {
+            "type": "LINE_RANGE",
+            "value": "L3114–L4291 (`GenericDiscoveryEngine`), incl. `worker()` L3540, `start()` L3594"
+          }
+        },
+        {
+          "id": "TEST-010",
+          "kind": "TEST",
+          "path": "`tools/simulate.mjs`",
+          "locator": {
+            "type": "SYMBOL",
+            "value": "`peakActiveWorkers`, `pendingWorkAtQuiescence`"
+          }
+        }
       ],
       "interpretation": "A worker exits permanently on an empty frontier and the pool is never refilled, so effective concurrency collapses toward one (defect D2)."
     },
@@ -224,10 +418,30 @@
         "prototype/generic-discovery-engine.user.js"
       ],
       "evidence": [
+        {
+          "id": "CODE-018",
+          "kind": "CODE",
+          "path": "`prototype/generic-discovery-engine.user.js`",
+          "locator": {
+            "type": "LINE_RANGE",
+            "value": "L3114–L4291 (`GenericDiscoveryEngine`), incl. `worker()` L3540, `start()` L3594"
+          }
+        },
+        {
+          "id": "CODE-029",
+          "kind": "CODE",
+          "path": "prototype/generic-discovery-engine.user.js",
+          "locator": {
+            "type": "LINE_RANGE",
+            "value": "L4241–L4285 (updateUI)"
+          }
+        }
+      ],
+      "interpretation": "The counter and its diagnostics change, but the pool is created once before it is read (defect D5). Conflicting evidence: the pool is created once (CODE-018) and the adaptive counter only changes diagnostics (CODE-029).",
+      "conflicting_evidence": [
         "CODE-018",
         "CODE-029"
-      ],
-      "interpretation": "The counter and its diagnostics change, but the pool is created once before it is read (defect D5)."
+      ]
     },
     {
       "id": "ACQ-CLAIM-001",
@@ -242,9 +456,33 @@
         "prototype/generic-discovery-engine.user.js"
       ],
       "evidence": [
-        "CODE-013",
-        "SCOPE-003",
-        "TEST-002"
+        {
+          "id": "CODE-013",
+          "kind": "CODE",
+          "path": "prototype/generic-discovery-engine.user.js",
+          "locator": {
+            "type": "LINE_RANGE",
+            "value": "L1621–L1968 (Acquisition), incl. execute L1626, request L1666"
+          }
+        },
+        {
+          "id": "SCOPE-003",
+          "kind": "DOCUMENTATION",
+          "path": "prototype/generic-discovery-engine.user.js",
+          "locator": {
+            "type": "SYMBOL",
+            "value": "transport surface: GM_xmlhttpRequest + fetch only; no transport interface"
+          }
+        },
+        {
+          "id": "TEST-002",
+          "kind": "TEST",
+          "path": "tools/verify.mjs",
+          "locator": {
+            "type": "SYMBOL",
+            "value": "checks providers perform no network I/O, registry completeness, TextProvider scope"
+          }
+        }
       ],
       "interpretation": "GM_xmlhttpRequest with a fetch fallback; no transport interface exists in the inspected scope."
     },
@@ -261,9 +499,33 @@
         "prototype/generic-discovery-engine.user.js"
       ],
       "evidence": [
-        "CODE-004",
-        "CODE-013",
-        "CODE-019"
+        {
+          "id": "CODE-004",
+          "kind": "CODE",
+          "path": "prototype/generic-discovery-engine.user.js",
+          "locator": {
+            "type": "LINE_RANGE",
+            "value": "L789–L853 (Observation)"
+          }
+        },
+        {
+          "id": "CODE-013",
+          "kind": "CODE",
+          "path": "`prototype/generic-discovery-engine.user.js`",
+          "locator": {
+            "type": "LINE_RANGE",
+            "value": "L1621–L1968 (`Acquisition`), incl. `execute` L1626, `request` L1666"
+          }
+        },
+        {
+          "id": "CODE-019",
+          "kind": "CODE",
+          "path": "prototype/generic-discovery-engine.user.js",
+          "locator": {
+            "type": "LINE_RANGE",
+            "value": "L3354–L3610 (executePlan L3362 onward)"
+          }
+        }
       ],
       "interpretation": "Timeout, transport error and HTTP error all yield observation records with distinct statuses."
     },
@@ -280,11 +542,39 @@
         "prototype/generic-discovery-engine.user.js"
       ],
       "evidence": [
-        "CODE-018",
-        "CODE-010",
-        "DOC-004"
+        {
+          "id": "CODE-018",
+          "kind": "CODE",
+          "path": "`prototype/generic-discovery-engine.user.js`",
+          "locator": {
+            "type": "LINE_RANGE",
+            "value": "L3114–L4291 (`GenericDiscoveryEngine`), incl. `worker()` L3540, `start()` L3594"
+          }
+        },
+        {
+          "id": "CODE-010",
+          "kind": "CODE",
+          "path": "`prototype/generic-discovery-engine.user.js`",
+          "locator": {
+            "type": "LINE_RANGE",
+            "value": "L1143–L1148 / L1149–L1160 / L1161–L1165 (`markCompleted` / `markSkipped` / `markFailed`)"
+          }
+        },
+        {
+          "id": "DOC-004",
+          "kind": "DOCUMENTATION",
+          "path": "archive/Continue Architecture Planning.md",
+          "locator": {
+            "type": "LINE_RANGE",
+            "value": "L54418–L54472 (\"6. One remaining architectural limitation\")"
+          }
+        }
       ],
-      "interpretation": "stop() sets a flag; in-flight requests continue, and runtime-owned cancellation exists only in the DESIGNED v0.10."
+      "interpretation": "stop() sets a flag; in-flight requests continue, and runtime-owned cancellation exists only in the DESIGNED v0.10. Conflicting evidence: stop() only sets a flag (CODE-018) and no request is aborted (CODE-010).",
+      "conflicting_evidence": [
+        "CODE-018",
+        "CODE-010"
+      ]
     },
     {
       "id": "PROV-CLAIM-001",
@@ -299,8 +589,24 @@
         "prototype/generic-discovery-engine.user.js"
       ],
       "evidence": [
-        "CODE-005",
-        "CODE-021"
+        {
+          "id": "CODE-005",
+          "kind": "CODE",
+          "path": "prototype/generic-discovery-engine.user.js",
+          "locator": {
+            "type": "LINE_RANGE",
+            "value": "L854–L893 (Discovery)"
+          }
+        },
+        {
+          "id": "CODE-021",
+          "kind": "CODE",
+          "path": "`prototype/generic-discovery-engine.user.js`",
+          "locator": {
+            "type": "LINE_RANGE",
+            "value": "L3262–L3330 (`emitDiscovery`)"
+          }
+        }
       ],
       "interpretation": "The linkage is stored at creation time."
     },
@@ -317,9 +623,33 @@
         "prototype/generic-discovery-engine.user.js"
       ],
       "evidence": [
-        "CODE-005",
-        "CODE-007",
-        "TEST-007"
+        {
+          "id": "CODE-005",
+          "kind": "CODE",
+          "path": "`prototype/generic-discovery-engine.user.js`",
+          "locator": {
+            "type": "LINE_RANGE",
+            "value": "L854–L893 (`Discovery`)"
+          }
+        },
+        {
+          "id": "CODE-007",
+          "kind": "CODE",
+          "path": "`prototype/generic-discovery-engine.user.js`",
+          "locator": {
+            "type": "LINE_RANGE",
+            "value": "L1002–L1073 (`KnowledgeBase.addCandidate`)"
+          }
+        },
+        {
+          "id": "TEST-007",
+          "kind": "TEST",
+          "path": "tools/checks.mjs",
+          "locator": {
+            "type": "SYMBOL",
+            "value": "case 4 (chain reconstruction)"
+          }
+        }
       ],
       "interpretation": "Reconstructed end to end in a fresh execution context, including the observations for each link."
     },
@@ -336,8 +666,24 @@
         "prototype/generic-discovery-engine.user.js"
       ],
       "evidence": [
-        "CODE-022",
-        "CODE-023"
+        {
+          "id": "CODE-022",
+          "kind": "CODE",
+          "path": "prototype/generic-discovery-engine.user.js",
+          "locator": {
+            "type": "LINE_RANGE",
+            "value": "L344–L356 (makeFingerprint), L986 (fingerprintIndex)"
+          }
+        },
+        {
+          "id": "CODE-023",
+          "kind": "CODE",
+          "path": "prototype/generic-discovery-engine.user.js",
+          "locator": {
+            "type": "LINE_RANGE",
+            "value": "L986, L1216–L1227, L1397–L1408 (fingerprintIndex sites)"
+          }
+        }
       ],
       "interpretation": "The fingerprint index is written and probed but never read; identity resolution is DESIGNED (v0.17), not current (defect D8)."
     },
@@ -354,8 +700,24 @@
         "prototype/generic-discovery-engine.user.js"
       ],
       "evidence": [
-        "CODE-004",
-        "CODE-005"
+        {
+          "id": "CODE-004",
+          "kind": "CODE",
+          "path": "`prototype/generic-discovery-engine.user.js`",
+          "locator": {
+            "type": "LINE_RANGE",
+            "value": "L789–L853 (`Observation`)"
+          }
+        },
+        {
+          "id": "CODE-005",
+          "kind": "CODE",
+          "path": "`prototype/generic-discovery-engine.user.js`",
+          "locator": {
+            "type": "LINE_RANGE",
+            "value": "L854–L893 (`Discovery`)"
+          }
+        }
       ],
       "interpretation": "Separate records, separate identifiers, separate lifetimes."
     },
@@ -372,8 +734,24 @@
         "prototype/generic-discovery-engine.user.js"
       ],
       "evidence": [
-        "SCOPE-002",
-        "DOC-006"
+        {
+          "id": "SCOPE-002",
+          "kind": "DOCUMENTATION",
+          "path": "prototype/generic-discovery-engine.user.js",
+          "locator": {
+            "type": "SYMBOL",
+            "value": "no capability/work-item/evidence-graph/lease/coverage/fencing symbols; symbol scan over the whole artifact"
+          }
+        },
+        {
+          "id": "DOC-006",
+          "kind": "DOCUMENTATION",
+          "path": "archive/Continue Architecture Planning.md",
+          "locator": {
+            "type": "SYMBOL",
+            "value": "v0.8 … v0.35 headings (L54631 onwards)"
+          }
+        }
       ],
       "interpretation": "No such objects exist; designed in v0.16 and v0.34. Evidence is ABSENT (inspected scope covered), not INACCESSIBLE."
     },
@@ -390,8 +768,24 @@
         "prototype/generic-discovery-engine.user.js"
       ],
       "evidence": [
-        "CODE-006",
-        "CODE-025"
+        {
+          "id": "CODE-006",
+          "kind": "CODE",
+          "path": "prototype/generic-discovery-engine.user.js",
+          "locator": {
+            "type": "LINE_RANGE",
+            "value": "L975–L1417 (KnowledgeBase)"
+          }
+        },
+        {
+          "id": "CODE-025",
+          "kind": "CODE",
+          "path": "prototype/generic-discovery-engine.user.js",
+          "locator": {
+            "type": "LINE_RANGE",
+            "value": "L3975–L4002 (persist), L4003–L4067 (restore)"
+          }
+        }
       ],
       "interpretation": "Observations live in a mutable map and are re-serialized on persistence; nothing enforces immutability."
     },
@@ -408,9 +802,33 @@
         "prototype/generic-discovery-engine.user.js"
       ],
       "evidence": [
-        "CODE-014",
-        "CODE-015",
-        "TEST-002"
+        {
+          "id": "CODE-014",
+          "kind": "CODE",
+          "path": "prototype/generic-discovery-engine.user.js",
+          "locator": {
+            "type": "LINE_RANGE",
+            "value": "L1969–L1984 (Provider), L1985–L2669 (seven providers), L2670–L2703 (ProviderRegistry)"
+          }
+        },
+        {
+          "id": "CODE-015",
+          "kind": "CODE",
+          "path": "prototype/generic-discovery-engine.user.js",
+          "locator": {
+            "type": "LINE_RANGE",
+            "value": "L1973–L1981 (Provider.matches/recognize stubs)"
+          }
+        },
+        {
+          "id": "TEST-002",
+          "kind": "TEST",
+          "path": "`tools/verify.mjs`",
+          "locator": {
+            "type": "SYMBOL",
+            "value": "checks `providers perform no network I/O`, registry completeness, `TextProvider scope`"
+          }
+        }
       ],
       "interpretation": "The strongest boundary in the prototype: the contract is matches() plus recognize(), with expansion owned by the engine."
     },
@@ -427,9 +845,33 @@
         "prototype/generic-discovery-engine.user.js"
       ],
       "evidence": [
-        "CODE-013",
-        "CODE-015",
-        "SCOPE-003"
+        {
+          "id": "CODE-013",
+          "kind": "CODE",
+          "path": "`prototype/generic-discovery-engine.user.js`",
+          "locator": {
+            "type": "LINE_RANGE",
+            "value": "L1621–L1968 (`Acquisition`), incl. `execute` L1626, `request` L1666"
+          }
+        },
+        {
+          "id": "CODE-015",
+          "kind": "CODE",
+          "path": "`prototype/generic-discovery-engine.user.js`",
+          "locator": {
+            "type": "LINE_RANGE",
+            "value": "L1973–L1981 (`Provider.matches`/`recognize` stubs)"
+          }
+        },
+        {
+          "id": "SCOPE-003",
+          "kind": "DOCUMENTATION",
+          "path": "prototype/generic-discovery-engine.user.js",
+          "locator": {
+            "type": "SYMBOL",
+            "value": "transport surface: GM_xmlhttpRequest + fetch only; no transport interface"
+          }
+        }
       ],
       "interpretation": "Only recognition is an interface; acquisition is one hard-wired HTTP path."
     },
@@ -446,9 +888,33 @@
         "prototype/generic-discovery-engine.user.js"
       ],
       "evidence": [
-        "CODE-015",
-        "CODE-021",
-        "TEST-002"
+        {
+          "id": "CODE-015",
+          "kind": "CODE",
+          "path": "`prototype/generic-discovery-engine.user.js`",
+          "locator": {
+            "type": "LINE_RANGE",
+            "value": "L1973–L1981 (`Provider.matches`/`recognize` stubs)"
+          }
+        },
+        {
+          "id": "CODE-021",
+          "kind": "CODE",
+          "path": "`prototype/generic-discovery-engine.user.js`",
+          "locator": {
+            "type": "LINE_RANGE",
+            "value": "L3262–L3330 (`emitDiscovery`)"
+          }
+        },
+        {
+          "id": "TEST-002",
+          "kind": "TEST",
+          "path": "`tools/verify.mjs`",
+          "locator": {
+            "type": "SYMBOL",
+            "value": "checks `providers perform no network I/O`, registry completeness, `TextProvider scope`"
+          }
+        }
       ],
       "interpretation": "Providers return Discovery objects; emitDiscovery performs expansion under engine policy."
     },
@@ -465,11 +931,36 @@
         "prototype/generic-discovery-engine.user.js"
       ],
       "evidence": [
-        "CODE-016",
-        "CODE-021",
-        "TEST-012"
+        {
+          "id": "CODE-016",
+          "kind": "CODE",
+          "path": "prototype/generic-discovery-engine.user.js",
+          "locator": {
+            "type": "LINE_RANGE",
+            "value": "L214–L281 (looksLikeHtml/looksLikeJson/looksLikeXml), L2450–L2578 (CSS/JS providers), L2579–L2645 (TextProvider.matches)"
+          }
+        },
+        {
+          "id": "CODE-021",
+          "kind": "CODE",
+          "path": "`prototype/generic-discovery-engine.user.js`",
+          "locator": {
+            "type": "LINE_RANGE",
+            "value": "L3262–L3330 (`emitDiscovery`)"
+          }
+        },
+        {
+          "id": "TEST-012",
+          "kind": "TEST",
+          "path": "tools/simulate.mjs",
+          "locator": {
+            "type": "SYMBOL",
+            "value": "metrics discoveries vs uniqueUrls (74 / 27)"
+          }
+        }
       ],
-      "interpretation": "A discovery is stored before the derived candidate is deduplicated, and text/html is interpreted twice; 74 discoveries for 27 URLs in one run (defect D9)."
+      "interpretation": "A discovery is stored before the derived candidate is deduplicated, and text/html is interpreted twice; 74 discoveries for 27 URLs in one run (defect D9). The absence of deduplication is tested, not inferred: the harness counts discoveries against unique URLs in one run.",
+      "absence_test": "TEST-012"
     },
     {
       "id": "ARCH-CLAIM-005",
@@ -484,8 +975,24 @@
         "prototype/generic-discovery-engine.user.js"
       ],
       "evidence": [
-        "CODE-025",
-        "TEST-008"
+        {
+          "id": "CODE-025",
+          "kind": "CODE",
+          "path": "`prototype/generic-discovery-engine.user.js`",
+          "locator": {
+            "type": "LINE_RANGE",
+            "value": "L3975–L4002 (`persist`), L4003–L4067 (`restore`)"
+          }
+        },
+        {
+          "id": "TEST-008",
+          "kind": "TEST",
+          "path": "tools/checks.mjs",
+          "locator": {
+            "type": "SYMBOL",
+            "value": "case 5 (round-trip)"
+          }
+        }
       ],
       "interpretation": "Candidates, observations, discoveries, resources, graph edges and the decision ledger round-trip; the request budget deliberately resets."
     },
@@ -502,9 +1009,33 @@
         "prototype/generic-discovery-engine.user.js"
       ],
       "evidence": [
-        "CODE-025",
-        "SCOPE-002",
-        "DOC-006"
+        {
+          "id": "CODE-025",
+          "kind": "CODE",
+          "path": "`prototype/generic-discovery-engine.user.js`",
+          "locator": {
+            "type": "LINE_RANGE",
+            "value": "L3975–L4002 (`persist`), L4003–L4067 (`restore`)"
+          }
+        },
+        {
+          "id": "SCOPE-002",
+          "kind": "DOCUMENTATION",
+          "path": "prototype/generic-discovery-engine.user.js",
+          "locator": {
+            "type": "SYMBOL",
+            "value": "no capability/work-item/evidence-graph/lease/coverage/fencing symbols; symbol scan over the whole artifact"
+          }
+        },
+        {
+          "id": "DOC-006",
+          "kind": "DOCUMENTATION",
+          "path": "`archive/Continue Architecture Planning.md`",
+          "locator": {
+            "type": "SYMBOL",
+            "value": "v0.8 … v0.35 headings (L54631 onwards)"
+          }
+        }
       ],
       "interpretation": "One serialized snapshot with caps; no transaction, validation or recovery. Designed in v0.32."
     },
@@ -521,9 +1052,33 @@
         "prototype/generic-discovery-engine.user.js"
       ],
       "evidence": [
-        "CODE-020",
-        "CODE-025",
-        "TEST-008"
+        {
+          "id": "CODE-020",
+          "kind": "CODE",
+          "path": "prototype/generic-discovery-engine.user.js",
+          "locator": {
+            "type": "LINE_RANGE",
+            "value": "L3347–L3353 (reserveRequestSlot)"
+          }
+        },
+        {
+          "id": "CODE-025",
+          "kind": "CODE",
+          "path": "`prototype/generic-discovery-engine.user.js`",
+          "locator": {
+            "type": "LINE_RANGE",
+            "value": "L3975–L4002 (`persist`), L4003–L4067 (`restore`)"
+          }
+        },
+        {
+          "id": "TEST-008",
+          "kind": "TEST",
+          "path": "`tools/checks.mjs`",
+          "locator": {
+            "type": "SYMBOL",
+            "value": "case 5 (round-trip)"
+          }
+        }
       ],
       "interpretation": "Restore deliberately resets requestsReserved; reserved slots are never released, so the budget counts attempts."
     },
@@ -540,9 +1095,33 @@
         "prototype/generic-discovery-engine.user.js"
       ],
       "evidence": [
-        "CODE-009",
-        "SCOPE-004",
-        "DOC-005"
+        {
+          "id": "CODE-009",
+          "kind": "CODE",
+          "path": "`prototype/generic-discovery-engine.user.js`",
+          "locator": {
+            "type": "LINE_RANGE",
+            "value": "L1088–L1119 (`KnowledgeBase.claimNextCandidate`)"
+          }
+        },
+        {
+          "id": "SCOPE-004",
+          "kind": "DOCUMENTATION",
+          "path": "prototype/generic-discovery-engine.user.js",
+          "locator": {
+            "type": "SYMBOL",
+            "value": "no lease/fence/shared-storage ownership symbols; ownership state is per engine instance"
+          }
+        },
+        {
+          "id": "DOC-005",
+          "kind": "DOCUMENTATION",
+          "path": "archive/Continue Architecture Planning.md",
+          "locator": {
+            "type": "LINE_RANGE",
+            "value": "L90113–L90153, L91859–L91906 (\"What the browser prototype can guarantee\", \"Prototype Boundary\")"
+          }
+        }
       ],
       "interpretation": "Ownership state is per engine instance; two tabs duplicate each other's work. Profile coordination is DESIGNED (v0.33) and is explicitly not distributed consensus."
     },
@@ -559,8 +1138,24 @@
         "prototype/generic-discovery-engine.user.js"
       ],
       "evidence": [
-        "CODE-005",
-        "CODE-016"
+        {
+          "id": "CODE-005",
+          "kind": "CODE",
+          "path": "`prototype/generic-discovery-engine.user.js`",
+          "locator": {
+            "type": "LINE_RANGE",
+            "value": "L854–L893 (`Discovery`)"
+          }
+        },
+        {
+          "id": "CODE-016",
+          "kind": "CODE",
+          "path": "`prototype/generic-discovery-engine.user.js`",
+          "locator": {
+            "type": "LINE_RANGE",
+            "value": "L214–L281 (`looksLikeHtml`/`looksLikeJson`/`looksLikeXml`), L2450–L2578 (CSS/JS providers), L2579–L2645 (`TextProvider.matches`)"
+          }
+        }
       ],
       "interpretation": "Confidences are provider-local constants with no calibration or aggregation rule."
     },
@@ -577,8 +1172,24 @@
         "prototype/generic-discovery-engine.user.js"
       ],
       "evidence": [
-        "CODE-016",
-        "TEST-006"
+        {
+          "id": "CODE-016",
+          "kind": "CODE",
+          "path": "`prototype/generic-discovery-engine.user.js`",
+          "locator": {
+            "type": "LINE_RANGE",
+            "value": "L214–L281 (`looksLikeHtml`/`looksLikeJson`/`looksLikeXml`), L2450–L2578 (CSS/JS providers), L2579–L2645 (`TextProvider.matches`)"
+          }
+        },
+        {
+          "id": "TEST-006",
+          "kind": "TEST",
+          "path": "tools/checks.mjs",
+          "locator": {
+            "type": "SYMBOL",
+            "value": "case 3 (11 content-type/body cases, exact sets)"
+          }
+        }
       ],
       "interpretation": "text/html matches HTML and text because TextProvider matches text/*; there is no router or priority (DESIGNED v0.11)."
     },
@@ -595,10 +1206,27 @@
         "prototype/generic-discovery-engine.user.js"
       ],
       "evidence": [
-        "SCOPE-001",
-        "TEST-003"
+        {
+          "id": "SCOPE-001",
+          "kind": "DOCUMENTATION",
+          "path": "prototype/generic-discovery-engine.user.js",
+          "locator": {
+            "type": "SYMBOL",
+            "value": "no DVB/RF symbols (spectrum, tuner, demodulator, FEC, transport stream, PSI/SI); full read + tools/verify.mjs symbol scan"
+          }
+        },
+        {
+          "id": "TEST-003",
+          "kind": "TEST",
+          "path": "tools/verify.mjs",
+          "locator": {
+            "type": "SYMBOL",
+            "value": "checks no DVB/RF implementation symbols, no later-design layers present"
+          }
+        }
       ],
-      "interpretation": "Absence is asserted over a single implementation file read in full and scanned mechanically, so it is ABSENT (inspected, not found), not INACCESSIBLE."
+      "interpretation": "Absence is asserted over a single implementation file read in full and scanned mechanically, so it is ABSENT (inspected, not found), not INACCESSIBLE.",
+      "absence_verification": "AV-001"
     },
     {
       "id": "SCOPE-CLAIM-002",
@@ -613,11 +1241,36 @@
         "prototype/generic-discovery-engine.user.js"
       ],
       "evidence": [
-        "SCOPE-002",
-        "TEST-003",
-        "DOC-006"
+        {
+          "id": "SCOPE-002",
+          "kind": "DOCUMENTATION",
+          "path": "prototype/generic-discovery-engine.user.js",
+          "locator": {
+            "type": "SYMBOL",
+            "value": "no capability/work-item/evidence-graph/lease/coverage/fencing symbols; symbol scan over the whole artifact"
+          }
+        },
+        {
+          "id": "TEST-003",
+          "kind": "TEST",
+          "path": "`tools/verify.mjs`",
+          "locator": {
+            "type": "SYMBOL",
+            "value": "checks `no DVB/RF implementation symbols`, `no later-design layers present`"
+          }
+        },
+        {
+          "id": "DOC-006",
+          "kind": "DOCUMENTATION",
+          "path": "`archive/Continue Architecture Planning.md`",
+          "locator": {
+            "type": "SYMBOL",
+            "value": "v0.8 … v0.35 headings (L54631 onwards)"
+          }
+        }
       ],
-      "interpretation": "The design series exists as prose only."
+      "interpretation": "The design series exists as prose only.",
+      "absence_verification": "AV-002"
     },
     {
       "id": "SCOPE-CLAIM-003",
@@ -632,10 +1285,27 @@
         "prototype/generic-discovery-engine.user.js"
       ],
       "evidence": [
-        "SCOPE-006",
-        "CODE-009"
+        {
+          "id": "SCOPE-006",
+          "kind": "DOCUMENTATION",
+          "path": "prototype/generic-discovery-engine.user.js",
+          "locator": {
+            "type": "SYMBOL",
+            "value": "no coverage/absence/completeness symbol; termination is an empty eligible set"
+          }
+        },
+        {
+          "id": "CODE-009",
+          "kind": "CODE",
+          "path": "`prototype/generic-discovery-engine.user.js`",
+          "locator": {
+            "type": "LINE_RANGE",
+            "value": "L1088–L1119 (`KnowledgeBase.claimNextCandidate`)"
+          }
+        }
       ],
-      "interpretation": "\"Exhausted\" in logs means no eligible candidate at that instant; coverage objects are DESIGNED (v0.22, v0.23)."
+      "interpretation": "\"Exhausted\" in logs means no eligible candidate at that instant; coverage objects are DESIGNED (v0.22, v0.23).",
+      "absence_verification": "AV-003"
     },
     {
       "id": "SCOPE-CLAIM-004",
@@ -650,10 +1320,27 @@
         "prototype/generic-discovery-engine.user.js"
       ],
       "evidence": [
-        "SCOPE-007",
-        "CODE-003"
+        {
+          "id": "SCOPE-007",
+          "kind": "DOCUMENTATION",
+          "path": "prototype/generic-discovery-engine.user.js",
+          "locator": {
+            "type": "SYMBOL",
+            "value": "candidate target types are URL-oriented; no non-URL target path"
+          }
+        },
+        {
+          "id": "CODE-003",
+          "kind": "CODE",
+          "path": "`prototype/generic-discovery-engine.user.js`",
+          "locator": {
+            "type": "LINE_RANGE",
+            "value": "L686–L788 (`Candidate`)"
+          }
+        }
       ],
-      "interpretation": "Every discover() call passes a URL; the candidate type list is URL-oriented."
+      "interpretation": "Every discover() call passes a URL; the candidate type list is URL-oriented.",
+      "absence_verification": "AV-004"
     },
     {
       "id": "SCOPE-CLAIM-005",
@@ -668,28 +1355,53 @@
         "."
       ],
       "evidence": [
-        "SCOPE-005"
+        {
+          "id": "SCOPE-005",
+          "kind": "DOCUMENTATION",
+          "path": ".",
+          "locator": {
+            "type": "SECTION",
+            "value": "repository tree at cc8df73: 3 files, no test / CI / build artifacts"
+          }
+        }
       ],
-      "interpretation": "True at cc8df73; verification tooling was added afterwards under change R-010, which is recorded as an executed documentation-scope change."
+      "interpretation": "True at cc8df73; verification tooling was added afterwards under change R-010, which is recorded as an executed documentation-scope change.",
+      "absence_verification": "AV-005"
     },
     {
       "id": "SCOPE-CLAIM-006",
       "group": "scope-and-absence",
       "statement": "DVB/RF support is an explicit non-goal of the project.",
       "claim_kind": "NON_GOAL",
-      "implementation_state": "NOT_IMPLEMENTED",
+      "implementation_state": "NOT_APPLICABLE",
       "test_state": "NOT_APPLICABLE",
-      "evidence_level": "INDIRECT",
+      "evidence_level": "DIRECT",
       "verification_result": "VERIFIED",
       "scope_paths": [
         "README.md",
         "docs/prototype/scope.md"
       ],
       "evidence": [
-        "DOC-007",
-        "SCOPE-001"
+        {
+          "id": "DOC-007",
+          "kind": "DOCUMENTATION",
+          "path": "archive/Userscript Discovery Prototype.md",
+          "locator": {
+            "type": "SYMBOL",
+            "value": "notes 1–41"
+          }
+        },
+        {
+          "id": "SCOPE-001",
+          "kind": "DOCUMENTATION",
+          "path": "prototype/generic-discovery-engine.user.js",
+          "locator": {
+            "type": "SYMBOL",
+            "value": "no DVB/RF symbols (spectrum, tuner, demodulator, FEC, transport stream, PSI/SI); full read + tools/verify.mjs symbol scan"
+          }
+        }
       ],
-      "interpretation": "Stated in the project scope and enforced mechanically by a symbol scan in tools/verify.mjs."
+      "interpretation": "Stated in the project scope and enforced mechanically by a symbol scan in tools/verify.mjs. implementation_state is NOT_APPLICABLE because a non-goal is not an implementation claim (§92); the boundary statement itself is DIRECT evidence."
     },
     {
       "id": "PLAN-CLAIM-001",
@@ -698,16 +1410,32 @@
       "claim_kind": "PLANNED",
       "implementation_state": "NOT_IMPLEMENTED",
       "test_state": "NOT_APPLICABLE",
-      "evidence_level": "INDIRECT",
+      "evidence_level": "DIRECT",
       "verification_result": "VERIFIED",
       "scope_paths": [
         "archive/Continue Architecture Planning.md"
       ],
       "evidence": [
-        "DOC-006",
-        "SCOPE-002"
+        {
+          "id": "DOC-006",
+          "kind": "DOCUMENTATION",
+          "path": "`archive/Continue Architecture Planning.md`",
+          "locator": {
+            "type": "SYMBOL",
+            "value": "v0.8 … v0.35 headings (L54631 onwards)"
+          }
+        },
+        {
+          "id": "SCOPE-002",
+          "kind": "DOCUMENTATION",
+          "path": "prototype/generic-discovery-engine.user.js",
+          "locator": {
+            "type": "SYMBOL",
+            "value": "no capability/work-item/evidence-graph/lease/coverage/fencing symbols; symbol scan over the whole artifact"
+          }
+        }
       ],
-      "interpretation": "The fact that these layers are planned is verified; their implementation is not implied."
+      "interpretation": "The fact that these layers are planned is verified; their implementation is not implied. DIRECT evidence: the design documents are repository artifacts and are directly relevant to the claim that the layers are designed and unimplemented (§89)."
     },
     {
       "id": "PLAN-CLAIM-002",
@@ -716,15 +1444,23 @@
       "claim_kind": "SPECIFIED",
       "implementation_state": "NOT_IMPLEMENTED",
       "test_state": "NOT_APPLICABLE",
-      "evidence_level": "INDIRECT",
+      "evidence_level": "DIRECT",
       "verification_result": "VERIFIED",
       "scope_paths": [
         "archive/Continue Architecture Planning.md"
       ],
       "evidence": [
-        "DOC-005"
+        {
+          "id": "DOC-005",
+          "kind": "DOCUMENTATION",
+          "path": "`archive/Continue Architecture Planning.md`",
+          "locator": {
+            "type": "LINE_RANGE",
+            "value": "L90113–L90153, L91859–L91906 (\"What the browser prototype can guarantee\", \"Prototype Boundary\")"
+          }
+        }
       ],
-      "interpretation": "Stated as a boundary by the design series itself."
+      "interpretation": "Stated as a boundary by the design series itself. DIRECT evidence: the design documents are repository artifacts and are directly relevant to the claim that the layers are designed and unimplemented (§89)."
     },
     {
       "id": "PLAN-CLAIM-003",
@@ -733,15 +1469,23 @@
       "claim_kind": "SPECIFIED",
       "implementation_state": "NOT_IMPLEMENTED",
       "test_state": "NOT_APPLICABLE",
-      "evidence_level": "INDIRECT",
+      "evidence_level": "DIRECT",
       "verification_result": "VERIFIED",
       "scope_paths": [
         "archive/Continue Architecture Planning.md"
       ],
       "evidence": [
-        "DOC-004"
+        {
+          "id": "DOC-004",
+          "kind": "DOCUMENTATION",
+          "path": "`archive/Continue Architecture Planning.md`",
+          "locator": {
+            "type": "LINE_RANGE",
+            "value": "L54418–L54472 (\"6. One remaining architectural limitation\")"
+          }
+        }
       ],
-      "interpretation": "An acquisition log is not a deterministic execution trace."
+      "interpretation": "An acquisition log is not a deterministic execution trace. DIRECT evidence: the design documents are repository artifacts and are directly relevant to the claim that the layers are designed and unimplemented (§89)."
     },
     {
       "id": "HIST-CLAIM-001",
@@ -756,8 +1500,24 @@
         "archive/Continue Architecture Planning.md"
       ],
       "evidence": [
-        "CODE-033",
-        "DOC-006"
+        {
+          "id": "CODE-033",
+          "kind": "CODE",
+          "path": "archive/Continue Architecture Planning.md",
+          "locator": {
+            "type": "SYMBOL",
+            "value": "fenced userscripts v0.3.0–v0.6.0 (L2791–L48360)"
+          }
+        },
+        {
+          "id": "DOC-006",
+          "kind": "DOCUMENTATION",
+          "path": "`archive/Continue Architecture Planning.md`",
+          "locator": {
+            "type": "SYMBOL",
+            "value": "v0.8 … v0.35 headings (L54631 onwards)"
+          }
+        }
       ],
       "interpretation": "All extracted revisions parse except the v0.5.0 paste at transcript L18378-L23093. Supersession is historical: these revisions are not maintained, and the evidence is the historical code blocks themselves, not the prose around them."
     },
@@ -774,7 +1534,15 @@
         "archive/Continue Architecture Planning.md"
       ],
       "evidence": [
-        "DOC-006"
+        {
+          "id": "DOC-006",
+          "kind": "DOCUMENTATION",
+          "path": "`archive/Continue Architecture Planning.md`",
+          "locator": {
+            "type": "SYMBOL",
+            "value": "v0.8 … v0.35 headings (L54631 onwards)"
+          }
+        }
       ],
       "interpretation": "await appears outside an async function (node --check)."
     },
@@ -791,10 +1559,42 @@
         "README.md"
       ],
       "evidence": [
-        "DOC-001",
-        "CODE-008",
-        "CODE-009",
-        "TEST-009"
+        {
+          "id": "DOC-001",
+          "kind": "DOCUMENTATION",
+          "path": "README.md (pre-cleanup, at cc8df73)",
+          "locator": {
+            "type": "HEADING",
+            "value": "\"Current Prototype\", \"Candidate Lifecycle\""
+          }
+        },
+        {
+          "id": "CODE-008",
+          "kind": "CODE",
+          "path": "`prototype/generic-discovery-engine.user.js`",
+          "locator": {
+            "type": "LINE_RANGE",
+            "value": "L1074–L1087 (`KnowledgeBase.queueCandidate`)"
+          }
+        },
+        {
+          "id": "CODE-009",
+          "kind": "CODE",
+          "path": "`prototype/generic-discovery-engine.user.js`",
+          "locator": {
+            "type": "LINE_RANGE",
+            "value": "L1088–L1119 (`KnowledgeBase.claimNextCandidate`)"
+          }
+        },
+        {
+          "id": "TEST-009",
+          "kind": "TEST",
+          "path": "`tools/simulate.mjs`",
+          "locator": {
+            "type": "SYMBOL",
+            "value": "checks `single owner per candidate`, `no duplicate acquisition`"
+          }
+        }
       ],
       "interpretation": "It claimed atomic claiming and guaranteed concurrency. Direct implementation evidence and executed behaviour override documentation evidence, and the contradiction is recorded rather than silently resolved."
     },
@@ -803,7 +1603,7 @@
       "group": "plan-history-hypothesis",
       "statement": "A value x probability / cost scheduling model would outperform the static priority heuristic.",
       "claim_kind": "HYPOTHESIS",
-      "implementation_state": "NOT_IMPLEMENTED",
+      "implementation_state": "NOT_APPLICABLE",
       "test_state": "NOT_APPLICABLE",
       "evidence_level": "INDIRECT",
       "verification_result": "UNVERIFIED",
@@ -811,9 +1611,17 @@
         "archive/Continue Architecture Planning.md"
       ],
       "evidence": [
-        "DOC-006"
+        {
+          "id": "DOC-006",
+          "kind": "DOCUMENTATION",
+          "path": "`archive/Continue Architecture Planning.md`",
+          "locator": {
+            "type": "SYMBOL",
+            "value": "v0.8 … v0.35 headings (L54631 onwards)"
+          }
+        }
       ],
-      "interpretation": "No measurement exists; the cost and probability inputs are not modelled."
+      "interpretation": "No measurement exists; the cost and probability inputs are not modelled. implementation_state is NOT_APPLICABLE because a hypothesis is not an implementation claim (§91)."
     }
   ],
   "contradictions": [
@@ -910,7 +1718,6 @@
         "DOC-006"
       ],
       "risk": "MEDIUM",
-      "authorization_required": true,
       "executed": true
     },
     {
@@ -923,19 +1730,17 @@
         "TEST-009"
       ],
       "risk": "LOW",
-      "authorization_required": true,
       "executed": true
     },
     {
       "id": "R-003",
-      "category": "DOC_SPLIT",
+      "category": "DOC_MERGE",
       "description": "One canonical owner per concept; remove duplicate explanations.",
       "evidence": [
         "DOC-007",
         "DOC-011"
       ],
       "risk": "LOW",
-      "authorization_required": true,
       "executed": true
     },
     {
@@ -946,7 +1751,6 @@
         "DOC-006"
       ],
       "risk": "LOW",
-      "authorization_required": true,
       "executed": true
     },
     {
@@ -957,7 +1761,6 @@
         "DOC-007"
       ],
       "risk": "LOW",
-      "authorization_required": true,
       "executed": true
     },
     {
@@ -969,7 +1772,6 @@
         "DOC-009"
       ],
       "risk": "LOW",
-      "authorization_required": true,
       "executed": true
     },
     {
@@ -981,7 +1783,6 @@
         "TEST-006"
       ],
       "risk": "LOW",
-      "authorization_required": true,
       "executed": true
     },
     {
@@ -992,53 +1793,48 @@
         "CODE-015"
       ],
       "risk": "LOW",
-      "authorization_required": true,
       "executed": true
     },
     {
       "id": "R-009",
-      "category": "DOC_ADD",
+      "category": "DOC_CLEANUP",
       "description": "Add the glossary with canonical definitions and the conflict table.",
       "evidence": [
         "DOC-011"
       ],
       "risk": "LOW",
-      "authorization_required": true,
       "executed": true
     },
     {
       "id": "R-010",
-      "category": "DOC_ADD",
+      "category": "TEST_ADD",
       "description": "Add the verification tooling (verify, checks, simulate).",
       "evidence": [
         "TEST-001",
         "TEST-013"
       ],
       "risk": "LOW",
-      "authorization_required": true,
       "executed": true
     },
     {
       "id": "R-011",
-      "category": "DOC_ADD",
+      "category": "DOC_CLEANUP",
       "description": "Add the scope document and mechanical non-goal enforcement.",
       "evidence": [
         "SCOPE-001",
         "SCOPE-002"
       ],
       "risk": "LOW",
-      "authorization_required": true,
       "executed": true
     },
     {
       "id": "R-012",
-      "category": "DOC_ADD",
+      "category": "DOC_CLEANUP",
       "description": "Add the evidence register and the change register.",
       "evidence": [
         "DOC-012"
       ],
       "risk": "LOW",
-      "authorization_required": true,
       "executed": true
     },
     {
@@ -1050,30 +1846,27 @@
         "DOC-006"
       ],
       "risk": "LOW",
-      "authorization_required": true,
       "executed": true
     },
     {
       "id": "R-014",
-      "category": "DOC_ADD",
+      "category": "DOC_REWRITE",
       "description": "Replace collapsed status words with the canonical typed state model.",
       "evidence": [
         "DOC-011",
         "DOC-012"
       ],
       "risk": "LOW",
-      "authorization_required": true,
       "executed": true
     },
     {
       "id": "R-015",
-      "category": "DOC_ADD",
+      "category": "DOC_CLEANUP",
       "description": "Record the scope boundary, ownership roles and the authorization contract.",
       "evidence": [
         "DOC-012"
       ],
       "risk": "LOW",
-      "authorization_required": true,
       "executed": true
     },
     {
@@ -1085,7 +1878,6 @@
         "TEST-009"
       ],
       "risk": "ARCHITECTURAL",
-      "authorization_required": true,
       "executed": false
     },
     {
@@ -1097,7 +1889,6 @@
         "TEST-011"
       ],
       "risk": "ARCHITECTURAL",
-      "authorization_required": true,
       "executed": false
     },
     {
@@ -1109,7 +1900,6 @@
         "CODE-010"
       ],
       "risk": "HIGH",
-      "authorization_required": true,
       "executed": false
     },
     {
@@ -1121,7 +1911,6 @@
         "TEST-010"
       ],
       "risk": "HIGH",
-      "authorization_required": true,
       "executed": false
     },
     {
@@ -1132,7 +1921,6 @@
         "TEST-009"
       ],
       "risk": "LOW",
-      "authorization_required": true,
       "executed": false
     },
     {
@@ -1143,7 +1931,6 @@
         "TEST-010"
       ],
       "risk": "MEDIUM",
-      "authorization_required": true,
       "executed": false
     },
     {
@@ -1155,7 +1942,6 @@
         "TEST-012"
       ],
       "risk": "MEDIUM",
-      "authorization_required": true,
       "executed": false
     },
     {
@@ -1166,7 +1952,6 @@
         "CODE-023"
       ],
       "risk": "MEDIUM",
-      "authorization_required": true,
       "executed": false
     },
     {
@@ -1177,7 +1962,6 @@
         "CODE-030"
       ],
       "risk": "LOW",
-      "authorization_required": true,
       "executed": false
     },
     {
@@ -1189,7 +1973,6 @@
         "CODE-029"
       ],
       "risk": "MEDIUM",
-      "authorization_required": true,
       "executed": false
     },
     {
@@ -1198,10 +1981,10 @@
       "description": "Introduce an acquisition-provider boundary.",
       "evidence": [
         "SCOPE-003",
-        "ARCH-CLAIM-002"
+        "CODE-013",
+        "CODE-015"
       ],
       "risk": "ARCHITECTURAL",
-      "authorization_required": true,
       "executed": false
     },
     {
@@ -1213,29 +1996,30 @@
         "SCOPE-006"
       ],
       "risk": "ARCHITECTURAL",
-      "authorization_required": true,
       "executed": false
     },
     {
       "id": "R-016",
-      "category": "DOC_ADD",
+      "category": "DOC_CLEANUP",
       "executed": true,
       "risk": "LOW",
-      "summary": "canonical machine-readable analysis record with validator and renderer",
       "files": [
         "docs/analysis/analysis.json",
         "tools/validate-analysis.mjs",
         "tools/render-claims.mjs"
       ],
-      "authorization_required": "DOC_REFACTOR",
-      "rationale": "a canonical state model that cannot be machine-validated silently drifts out of step with the documents"
+      "rationale": "a canonical state model that cannot be machine-validated silently drifts out of step with the documents",
+      "description": "Canonical machine-readable analysis record (docs/analysis/analysis.json, governed by docs/analysis/analysis.schema.json) with tools/validate-analysis.mjs and tools/render-claims.mjs. Classified DOC_CLEANUP because the primary artifact is the record; the validator and renderer are its enforcement.",
+      "evidence": [
+        "DOC-011",
+        "DOC-012"
+      ]
     },
     {
       "id": "R-017",
-      "category": "DOC_ADD",
+      "category": "DOC_REWRITE",
       "executed": true,
       "risk": "LOW",
-      "summary": "regenerate every status statement in the five typed fields",
       "files": [
         "docs/analysis/claims.md",
         "docs/analysis/evidence-register.md",
@@ -1247,11 +2031,24 @@
         "docs/research/*.md",
         "docs/roadmap/*.md"
       ],
-      "authorization_required": "DOC_REFACTOR",
-      "rationale": "claim records, evidence register and behaviour documents must use one vocabulary or the checks cannot detect substitution"
+      "rationale": "claim records, evidence register and behaviour documents must use one vocabulary or the checks cannot detect substitution",
+      "description": "regenerate every status statement in the five typed fields",
+      "evidence": [
+        "DOC-013",
+        "TEST-014"
+      ]
     }
   ],
   "authorization": {
+    "state": "GRANTED",
+    "authority": {
+      "type": "USER",
+      "identifier": "Abdus2023 (repository owner), delegating through the standing session instruction"
+    },
+    "target": {
+      "repository": "Abdus2023/Generic-Discovery-Engine",
+      "revision": "cc8df7357c2dbfe9d149747743e2f5e9ac9c0178 (work branch: arena/01a08d14-generic-discovery-engine)"
+    },
     "level": "DOC_REFACTOR",
     "additional_levels_declared": [
       "ANALYSIS_ONLY",
@@ -1259,7 +2056,7 @@
       "PUSH"
     ],
     "hierarchical": false,
-    "authorized_changes": [
+    "change_ids": [
       "R-001",
       "R-002",
       "R-003",
@@ -1278,14 +2075,14 @@
       "R-016",
       "R-017"
     ],
-    "authorized_operations": [
+    "operations": [
       "READ",
       "ANALYZE",
       "PROPOSE",
-      "CREATE_DOCUMENTATION",
-      "MODIFY_DOCUMENTATION",
-      "RENAME_DOCUMENTATION",
-      "MOVE_DOCUMENTATION",
+      "CREATE",
+      "MODIFY",
+      "MOVE",
+      "RENAME",
       "COMMIT",
       "PUSH"
     ],
@@ -1296,8 +2093,9 @@
       "ARCHITECTURE_CHANGE",
       "PUSH_TO_OTHER_BRANCH"
     ],
-    "authority": "repository owner, delegated through the user's instruction to analyze, clean and work on branch arena/01a08d14-generic-discovery-engine",
-    "expiration": null,
+    "expires_at": null,
+    "granted_at": "2026-09-10",
+    "policy_notes": "authorization.state is the \"authorization\" concept (whether mutation authority exists); authorization.level is the \"authorization_level\" concept (capability ceiling). DOC_REFACTOR is a ceiling for content mutation and does NOT imply COMMIT or PUSH: hierarchical is false and those capabilities were granted separately, which is why they appear in operations and in additional_levels_declared.",
     "roles": {
       "REPOSITORY_OWNER": "Abdus2023",
       "ANALYZER": "analysis (this document set)",
@@ -1343,7 +2141,18 @@
       "R-111",
       "R-112"
     ],
-    "notes": "Source code was out of authorized scope and is unchanged: the artifact digest matches the frozen value. Twelve changes discovered during execution were recorded and proposed, not applied, including a two-line counter fix. One proposed change was dropped after evidence contradicted its premise (the claimed stray backticks do not exist in v0.7.1)."
+    "notes": "Source code was out of authorized scope and is unchanged: the artifact digest matches the frozen value. Twelve changes discovered during execution were recorded and proposed, not applied, including a two-line counter fix. One proposed change was dropped after evidence contradicted its premise (the claimed stray backticks do not exist in v0.7.1).",
+    "operations": [
+      "READ",
+      "ANALYZE",
+      "PROPOSE",
+      "CREATE",
+      "MODIFY",
+      "MOVE",
+      "RENAME",
+      "COMMIT",
+      "PUSH"
+    ]
   },
   "post_verification": {
     "result": "VERIFIED",
@@ -1357,6 +2166,57 @@
     "not_verified": [
       "end-to-end HtmlProvider behaviour under a real DOM (SCOPE-GAP-1, OPEN)",
       "real userscript-manager semantics (SCOPE-GAP-2, OPEN)"
-    ]
-  }
+    ],
+    "independent": true,
+    "method": "re-ran the verification tools after execution and compared the result with the frozen artifact digest and the recorded change set; the verifier repaired nothing",
+    "mutations": []
+  },
+  "absence_verification": [
+    {
+      "id": "AV-001",
+      "claim": "SCOPE-CLAIM-001",
+      "scope": "declared scope: the whole artifact and all documentation at cc8df73",
+      "method": "full read of the artifact plus the symbol scan \"no DVB/RF implementation symbols\" in tools/verify.mjs",
+      "probe": "tools/verify.mjs symbol scan; manual search for spectrum/tuner/demodulator/FEC/TS/PSI-SI terms",
+      "result": "no match: the artifact and documentation contain no DVB/RF implementation",
+      "verified_by": "analysis (VERIFIER), re-run after execution"
+    },
+    {
+      "id": "AV-002",
+      "claim": "SCOPE-CLAIM-002",
+      "scope": "declared scope: the whole artifact",
+      "method": "symbol scan \"no later-design layers present\" in tools/verify.mjs against the v0.8+ vocabulary",
+      "probe": "tools/verify.mjs symbol scan for capability/work-item/evidence-graph/lease/coverage/fencing symbols",
+      "result": "no match; the only occurrences are in the design documents, which are labelled PLANNED",
+      "verified_by": "analysis (VERIFIER), re-run after execution"
+    },
+    {
+      "id": "AV-003",
+      "claim": "SCOPE-CLAIM-003",
+      "scope": "declared scope: acquisition and scheduler code paths",
+      "method": "inspection for any coverage, absence or completeness object and for a termination criterion beyond an empty eligible set",
+      "probe": "tools/verify.mjs structural checks; CODE-009, CODE-013, CODE-015",
+      "result": "no such object exists; termination is an empty eligible set",
+      "verified_by": "analysis (VERIFIER), re-run after execution"
+    },
+    {
+      "id": "AV-004",
+      "claim": "SCOPE-CLAIM-004",
+      "scope": "declared scope: candidate model and every discover() call site",
+      "method": "inspection of the candidate target types and of all discover() call sites",
+      "probe": "CODE-003 (identityKey is type:target), CODE-027",
+      "result": "every target is a URL; no non-URL target path exists",
+      "verified_by": "analysis (VERIFIER), re-run after execution"
+    },
+    {
+      "id": "AV-005",
+      "claim": "SCOPE-CLAIM-005",
+      "scope": "declared scope: the repository tree at the resolved revision cc8df73",
+      "method": "tree inspection of all three files present at the resolved revision",
+      "probe": "access contract in the evidence register; git tree listing at cc8df73",
+      "result": "no test directory, CI configuration or build tooling existed at the resolved revision",
+      "verified_by": "analysis (VERIFIER), re-run after execution"
+    }
+  ],
+  "schema_version": "1.0"
 }

@@ -1,9 +1,11 @@
 # Canonical Claim Records
 
-Normative source: **[analysis.json](analysis.json)** (schema `1.0`). The tables in
-this document are rendered from it by `tools/render-claims.mjs` — do not edit them
-by hand; edit the JSON and re-render. `tools/validate-analysis.mjs` enforces the
-schema and the validation rules.
+Normative source: **[analysis.json](analysis.json)**, governed by
+**[analysis.schema.json](analysis.schema.json)** (JSON Schema draft 2020-12). The
+tables in this document are rendered from it by `tools/render-claims.mjs` — do not
+edit them by hand; edit the JSON and re-render. `tools/validate-analysis.mjs`
+enforces the schema, the semantic rules `V1`–`V20` and the invariants
+`I-001`–`I-016`.
 
 ## Typed state model (canonical)
 
@@ -18,10 +20,22 @@ answering a different question, and none of them may substitute for another.
 | `evidence_level` | How strong is the repository evidence? | `DIRECT` · `CORROBORATED` · `INDIRECT` · `ABSENT` · `INACCESSIBLE` |
 | `verification_result` | What did verification conclude? | `VERIFIED` · `PARTIALLY_VERIFIED` · `UNVERIFIED` · `CONTRADICTED` · `NOT_APPLICABLE` |
 
-Fields that belong to other concerns and are recorded separately in
-`analysis.json`: `access_level` (repository access), `authorization.level`
-(what may be changed), `execution.result` (what happened),
-`post_verification.result` (what the re-run established).
+These five fields are the **claim** side of the model. Repository mutation is
+independent and uses its own fields — `authorization.state` (whether permission
+exists), `authorization.level` (what it permits), `execution.result` (what
+actually happened) and `post_verification.result` (what the re-run established).
+Neither side may be used to answer the other's question; the full authority model
+is in [scope-and-authorization.md](scope-and-authorization.md) §5.
+
+```
+CLAIM
+  │
+  ├── claim_kind              what kind of statement this is
+  ├── implementation_state    whether the named behaviour is implemented
+  ├── test_state              whether it is exercised
+  ├── evidence_level          how strong / available the evidence is
+  └── verification_result     what verification concluded
+```
 
 Combinations that are valid and must not be collapsed:
 
@@ -38,6 +52,36 @@ named in the claim**, not the truth of the claim. A guarantee that the evidence
 shows to fail is therefore `PARTIAL` or `NOT_IMPLEMENTED` with
 `verification_result: CONTRADICTED`.
 
+## What the rules forbid
+
+| Situation | Rule | Why it matters here |
+| --- | --- | --- |
+| `INACCESSIBLE` evidence with any verdict other than `UNVERIFIED` | V1 | "could not inspect" must never be reported as a finding |
+| `ABSENT` + `VERIFIED` without a recorded absence procedure | V2 | an absence is verified only by an inspection whose scope is declared — see the `AV-001…AV-005` procedures in [analysis.json](analysis.json) |
+| `VERIFIED` with `INDIRECT`, `ABSENT` or `INACCESSIBLE` evidence | V3 | a verified conclusion needs a directly relevant artifact |
+| `CONTRADICTED` without conflicting evidence | V4 | a contradiction is a relationship between evidence, not an adjective |
+| `PLANNED` + `IMPLEMENTED` | V5 | the design series must never be read as shipped behaviour |
+| `NON_GOAL` or `HYPOTHESIS` with an implementation state that implies an implementation claim | V6, V7 | a non-goal and a hypothesis are not implementation claims (§92, §91) |
+| `NOT_IMPLEMENTED` + `TESTED` without an absence test | §93 | testing absence is recorded explicitly (`absence_test`) |
+| `INACCESSIBLE` relabelled as `ABSENT` | §94, I-015 | converting "could not inspect" into "not found" would fabricate a finding |
+
+Rules `V8`–`V20` cover the authority side: mutation only under `GRANTED`, a grant
+must state its level, every executed change and operation must be authorized,
+`REVOKED`/`EXPIRED` forbids execution, discovered work cannot be executed, and
+verification must be independent and must not repair repository state.
+
+## Valid patterns actually used here
+
+| claim_kind | implementation_state | test_state | evidence_level | verification_result | Example |
+| --- | --- | --- | --- | --- | --- |
+| `CURRENT` | `IMPLEMENTED` | `TESTED` | `CORROBORATED` | `VERIFIED` | `CAND-CLAIM-001` |
+| `CURRENT` | `NOT_IMPLEMENTED` | `TESTED` | `DIRECT` | `CONTRADICTED` | `SCHED-CLAIM-004` (documentation/implementation contradiction — **not** normalised to `PLANNED`) |
+| `SPECIFIED` | `NOT_IMPLEMENTED` | `NOT_APPLICABLE` | `DIRECT` | `VERIFIED` | `PLAN-CLAIM-003` |
+| `PLANNED` | `NOT_IMPLEMENTED` | `NOT_APPLICABLE` | `DIRECT` | `VERIFIED` | `PLAN-CLAIM-001` — the *planned status* is verified, nothing more |
+| `HISTORICAL` | `IMPLEMENTED` | `UNTESTED` | `DIRECT` | `VERIFIED` | `HIST-CLAIM-001` |
+| `HYPOTHESIS` | `NOT_APPLICABLE` | `NOT_APPLICABLE` | `INDIRECT` | `UNVERIFIED` | `HYP-CLAIM-001` |
+| `NON_GOAL` | `NOT_APPLICABLE` | `NOT_APPLICABLE` | `DIRECT` | `VERIFIED` | `SCOPE-CLAIM-006` |
+
 
 <!-- CLAIMS:BEGIN (generated from analysis.json — do not edit by hand) -->
 
@@ -51,12 +95,12 @@ shows to fail is therefore `PARTIAL` or `NOT_IMPLEMENTED` with
 | `SCHED-CLAIM-001` | Candidate ownership is established synchronously, before the worker's first await. | `CURRENT` | `IMPLEMENTED` | `TESTED` | `CORROBORATED` | `VERIFIED` | [EVID:CODE-009] [EVID:CODE-018] [EVID:TEST-001] | The transition happens inside a synchronous method and the first suspension point follows it; this is valid only within one execution context. |
 | `SCHED-CLAIM-002` | A candidate has at most one active owner. | `CURRENT` | `PARTIAL` | `TESTED` | `CORROBORATED` | `**CONTRADICTED**` | [EVID:CODE-008] [EVID:CODE-021] [EVID:TEST-009] [EVID:TEST-011] | The claim site is safe; re-discovery re-queues in-flight candidates, so the end-to-end invariant fails (defect D1). |
 | `SCHED-CLAIM-003` | Retry is bounded by exponential backoff. | `CURRENT` | `PARTIAL` | `TESTED` | `DIRECT` | `PARTIALLY_VERIFIED` | [EVID:CODE-010] [EVID:CODE-011] [EVID:TEST-010] | Backoff applies to queued retries; the failed state bypasses it and remains claimable (defect D3). |
-| `SCHED-CLAIM-004` | A permanently failing target eventually stops consuming the request budget. | `CURRENT` | `NOT_IMPLEMENTED` | `TESTED` | `DIRECT` | `**CONTRADICTED**` | [EVID:CODE-009] [EVID:CODE-010] | failed is part of the claim eligibility set with no backoff, so the target is retried indefinitely (defect D3). |
+| `SCHED-CLAIM-004` | A permanently failing target eventually stops consuming the request budget. | `CURRENT` | `NOT_IMPLEMENTED` | `TESTED` | `DIRECT` | `**CONTRADICTED**` | [EVID:CODE-009] [EVID:CODE-010] [EVID:TEST-010] | failed is part of the claim eligibility set with no backoff, so the target is retried indefinitely (defect D3). The absence of a terminal failure state is tested, not inferred: the harness reports failed candidates still in the pool at quiescence with their attempt counts. |
 | `SCHED-CLAIM-005` | The configured worker pool provides the configured concurrency. | `CURRENT` | `PARTIAL` | `TESTED` | `CORROBORATED` | `**CONTRADICTED**` | [EVID:CODE-018] [EVID:TEST-010] | A worker exits permanently on an empty frontier and the pool is never refilled, so effective concurrency collapses toward one (defect D2). |
-| `SCHED-CLAIM-006` | Adaptive concurrency changes the number of live workers. | `CURRENT` | `NOT_IMPLEMENTED` | `UNTESTED` | `DIRECT` | `**CONTRADICTED**` | [EVID:CODE-018] [EVID:CODE-029] | The counter and its diagnostics change, but the pool is created once before it is read (defect D5). |
+| `SCHED-CLAIM-006` | Adaptive concurrency changes the number of live workers. | `CURRENT` | `NOT_IMPLEMENTED` | `UNTESTED` | `DIRECT` | `**CONTRADICTED**` | [EVID:CODE-018] [EVID:CODE-029] | The counter and its diagnostics change, but the pool is created once before it is read (defect D5). Conflicting evidence: the pool is created once (CODE-018) and the adaptive counter only changes diagnostics (CODE-029). |
 | `ACQ-CLAIM-001` | Acquisition is HTTP-GET-specific and browser/userscript-specific. | `CURRENT` | `IMPLEMENTED` | `TESTED` | `CORROBORATED` | `VERIFIED` | [EVID:CODE-013] [EVID:SCOPE-003] [EVID:TEST-002] | GM_xmlhttpRequest with a fetch fallback; no transport interface exists in the inspected scope. |
 | `ACQ-CLAIM-002` | A failed acquisition still produces an observation. | `CURRENT` | `IMPLEMENTED` | `TESTED` | `CORROBORATED` | `VERIFIED` | [EVID:CODE-004] [EVID:CODE-013] [EVID:CODE-019] | Timeout, transport error and HTTP error all yield observation records with distinct statuses. |
-| `ACQ-CLAIM-003` | Cancelling a scan aborts in-flight requests. | `CURRENT` | `NOT_IMPLEMENTED` | `UNTESTED` | `INDIRECT` | `**CONTRADICTED**` | [EVID:CODE-018] [EVID:CODE-010] [EVID:DOC-004] | stop() sets a flag; in-flight requests continue, and runtime-owned cancellation exists only in the DESIGNED v0.10. |
+| `ACQ-CLAIM-003` | Cancelling a scan aborts in-flight requests. | `CURRENT` | `NOT_IMPLEMENTED` | `UNTESTED` | `INDIRECT` | `**CONTRADICTED**` | [EVID:CODE-018] [EVID:CODE-010] [EVID:DOC-004] | stop() sets a flag; in-flight requests continue, and runtime-owned cancellation exists only in the DESIGNED v0.10. Conflicting evidence: stop() only sets a flag (CODE-018) and no request is aborted (CODE-010). |
 | `PROV-CLAIM-001` | A discovery records both its candidate and its observation. | `CURRENT` | `IMPLEMENTED` | `TESTED` | `DIRECT` | `VERIFIED` | [EVID:CODE-005] [EVID:CODE-021] | The linkage is stored at creation time. |
 | `PROV-CLAIM-002` | The derivation chain seed to candidate to observation to discovery to child candidate is reconstructible. | `CURRENT` | `IMPLEMENTED` | `TESTED` | `CORROBORATED` | `VERIFIED` | [EVID:CODE-005] [EVID:CODE-007] [EVID:TEST-007] | Reconstructed end to end in a fresh execution context, including the observations for each link. |
 | `PROV-CLAIM-003` | Content fingerprints are used to relate identical content behind different URLs. | `SPECIFIED` | `NOT_IMPLEMENTED` | `UNTESTED` | `DIRECT` | `**CONTRADICTED**` | [EVID:CODE-022] [EVID:CODE-023] | The fingerprint index is written and probed but never read; identity resolution is DESIGNED (v0.17), not current (defect D8). |
@@ -71,7 +115,7 @@ shows to fail is therefore `PARTIAL` or `NOT_IMPLEMENTED` with
 | `ARCH-CLAIM-001` | Providers perform no I/O, do not enqueue candidates and own no policy. | `CURRENT` | `IMPLEMENTED` | `TESTED` | `CORROBORATED` | `VERIFIED` | [EVID:CODE-014] [EVID:CODE-015] [EVID:TEST-002] | The strongest boundary in the prototype: the contract is matches() plus recognize(), with expansion owned by the engine. |
 | `ARCH-CLAIM-002` | Providers are protocol-independent. | `CURRENT` | `NOT_IMPLEMENTED` | `PARTIALLY_TESTED` | `DIRECT` | `**CONTRADICTED**` | [EVID:CODE-013] [EVID:CODE-015] [EVID:SCOPE-003] | Only recognition is an interface; acquisition is one hard-wired HTTP path. |
 | `ARCH-CLAIM-003` | Candidate expansion is owned by the engine, not by providers. | `CURRENT` | `IMPLEMENTED` | `TESTED` | `CORROBORATED` | `VERIFIED` | [EVID:CODE-015] [EVID:CODE-021] [EVID:TEST-002] | Providers return Discovery objects; emitDiscovery performs expansion under engine policy. |
-| `ARCH-CLAIM-004` | Discovery records are deduplicated like candidates. | `CURRENT` | `NOT_IMPLEMENTED` | `TESTED` | `CORROBORATED` | `**CONTRADICTED**` | [EVID:CODE-016] [EVID:CODE-021] [EVID:TEST-012] | A discovery is stored before the derived candidate is deduplicated, and text/html is interpreted twice; 74 discoveries for 27 URLs in one run (defect D9). |
+| `ARCH-CLAIM-004` | Discovery records are deduplicated like candidates. | `CURRENT` | `NOT_IMPLEMENTED` | `TESTED` | `CORROBORATED` | `**CONTRADICTED**` | [EVID:CODE-016] [EVID:CODE-021] [EVID:TEST-012] | A discovery is stored before the derived candidate is deduplicated, and text/html is interpreted twice; 74 discoveries for 27 URLs in one run (defect D9). The absence of deduplication is tested, not inferred: the harness counts discoveries against unique URLs in one run. |
 | `ARCH-CLAIM-005` | Persisted state survives a reload. | `CURRENT` | `IMPLEMENTED` | `TESTED` | `CORROBORATED` | `VERIFIED` | [EVID:CODE-025] [EVID:TEST-008] | Candidates, observations, discoveries, resources, graph edges and the decision ledger round-trip; the request budget deliberately resets. |
 | `ARCH-CLAIM-006` | Persistence is transactional and crash-safe. | `SPECIFIED` | `NOT_IMPLEMENTED` | `NOT_APPLICABLE` | `ABSENT` | `UNVERIFIED` | [EVID:CODE-025] [EVID:SCOPE-002] [EVID:DOC-006] | One serialized snapshot with caps; no transaction, validation or recovery. Designed in v0.32. |
 | `ARCH-CLAIM-007` | The request budget is a per-run allowance. | `CURRENT` | `IMPLEMENTED` | `TESTED` | `CORROBORATED` | `VERIFIED` | [EVID:CODE-020] [EVID:CODE-025] [EVID:TEST-008] | Restore deliberately resets requestsReserved; reserved slots are never released, so the budget counts attempts. |
@@ -88,19 +132,19 @@ shows to fail is therefore `PARTIAL` or `NOT_IMPLEMENTED` with
 | `SCOPE-CLAIM-003` | Coverage, absence and completeness are not represented. | `CURRENT` | `NOT_IMPLEMENTED` | `NOT_APPLICABLE` | `ABSENT` | `VERIFIED` | [EVID:SCOPE-006] [EVID:CODE-009] | "Exhausted" in logs means no eligible candidate at that instant; coverage objects are DESIGNED (v0.22, v0.23). |
 | `SCOPE-CLAIM-004` | Non-URL candidate targets are not implemented. | `CURRENT` | `NOT_IMPLEMENTED` | `NOT_APPLICABLE` | `ABSENT` | `VERIFIED` | [EVID:SCOPE-007] [EVID:CODE-003] | Every discover() call passes a URL; the candidate type list is URL-oriented. |
 | `SCOPE-CLAIM-005` | The repository contained no tests, CI configuration or build tooling at the analysis revision. | `HISTORICAL` | `NOT_IMPLEMENTED` | `NOT_APPLICABLE` | `ABSENT` | `VERIFIED` | [EVID:SCOPE-005] | True at cc8df73; verification tooling was added afterwards under change R-010, which is recorded as an executed documentation-scope change. |
-| `SCOPE-CLAIM-006` | DVB/RF support is an explicit non-goal of the project. | `NON_GOAL` | `NOT_IMPLEMENTED` | `NOT_APPLICABLE` | `INDIRECT` | `VERIFIED` | [EVID:DOC-007] [EVID:SCOPE-001] | Stated in the project scope and enforced mechanically by a symbol scan in tools/verify.mjs. |
+| `SCOPE-CLAIM-006` | DVB/RF support is an explicit non-goal of the project. | `NON_GOAL` | `NOT_APPLICABLE` | `NOT_APPLICABLE` | `DIRECT` | `VERIFIED` | [EVID:DOC-007] [EVID:SCOPE-001] | Stated in the project scope and enforced mechanically by a symbol scan in tools/verify.mjs. implementation_state is NOT_APPLICABLE because a non-goal is not an implementation claim (§92); the boundary statement itself is DIRECT evidence. |
 
 ### Plan, history and hypothesis claims
 
 | Claim ID | Statement | claim_kind | implementation_state | test_state | evidence_level | verification_result | Evidence | Interpretation |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| `PLAN-CLAIM-001` | Acquisition runtime, recognition runtime, candidate sources, domain/sessions, work items, evidence graph, identity, classification, coverage, absence, query planning, reconciliation, arbitration, cost ledger, transactional persistence and multi-context coordination are designed. | `PLANNED` | `NOT_IMPLEMENTED` | `NOT_APPLICABLE` | `INDIRECT` | `VERIFIED` | [EVID:DOC-006] [EVID:SCOPE-002] | The fact that these layers are planned is verified; their implementation is not implied. |
-| `PLAN-CLAIM-002` | Browser-profile coordination is not distributed consensus. | `SPECIFIED` | `NOT_IMPLEMENTED` | `NOT_APPLICABLE` | `INDIRECT` | `VERIFIED` | [EVID:DOC-005] | Stated as a boundary by the design series itself. |
-| `PLAN-CLAIM-003` | Deterministic decision replay must be separable from acquisition against a changing world. | `SPECIFIED` | `NOT_IMPLEMENTED` | `NOT_APPLICABLE` | `INDIRECT` | `VERIFIED` | [EVID:DOC-004] | An acquisition log is not a deterministic execution trace. |
+| `PLAN-CLAIM-001` | Acquisition runtime, recognition runtime, candidate sources, domain/sessions, work items, evidence graph, identity, classification, coverage, absence, query planning, reconciliation, arbitration, cost ledger, transactional persistence and multi-context coordination are designed. | `PLANNED` | `NOT_IMPLEMENTED` | `NOT_APPLICABLE` | `DIRECT` | `VERIFIED` | [EVID:DOC-006] [EVID:SCOPE-002] | The fact that these layers are planned is verified; their implementation is not implied. DIRECT evidence: the design documents are repository artifacts and are directly relevant to the claim that the layers are designed and unimplemented (§89). |
+| `PLAN-CLAIM-002` | Browser-profile coordination is not distributed consensus. | `SPECIFIED` | `NOT_IMPLEMENTED` | `NOT_APPLICABLE` | `DIRECT` | `VERIFIED` | [EVID:DOC-005] | Stated as a boundary by the design series itself. DIRECT evidence: the design documents are repository artifacts and are directly relevant to the claim that the layers are designed and unimplemented (§89). |
+| `PLAN-CLAIM-003` | Deterministic decision replay must be separable from acquisition against a changing world. | `SPECIFIED` | `NOT_IMPLEMENTED` | `NOT_APPLICABLE` | `DIRECT` | `VERIFIED` | [EVID:DOC-004] | An acquisition log is not a deterministic execution trace. DIRECT evidence: the design documents are repository artifacts and are directly relevant to the claim that the layers are designed and unimplemented (§89). |
 | `HIST-CLAIM-001` | Versions v0.3.0 to v0.6.0 existed as code and are superseded by v0.7.1. | `HISTORICAL` | `IMPLEMENTED` | `UNTESTED` | `DIRECT` | `VERIFIED` | [EVID:CODE-033] [EVID:DOC-006] | All extracted revisions parse except the v0.5.0 paste at transcript L18378-L23093. Supersession is historical: these revisions are not maintained, and the evidence is the historical code blocks themselves, not the prose around them. |
 | `HIST-CLAIM-002` | The v0.5.0 paste in the archive is not valid JavaScript. | `HISTORICAL` | `NOT_IMPLEMENTED` | `NOT_APPLICABLE` | `DIRECT` | `VERIFIED` | [EVID:DOC-006] | await appears outside an async function (node --check). |
 | `HIST-CLAIM-003` | The pre-cleanup README described the system accurately. | `HISTORICAL` | `NOT_APPLICABLE` | `NOT_APPLICABLE` | `CORROBORATED` | `**CONTRADICTED**` | [EVID:DOC-001] [EVID:CODE-008] [EVID:CODE-009] [EVID:TEST-009] | It claimed atomic claiming and guaranteed concurrency. Direct implementation evidence and executed behaviour override documentation evidence, and the contradiction is recorded rather than silently resolved. |
-| `HYP-CLAIM-001` | A value x probability / cost scheduling model would outperform the static priority heuristic. | `HYPOTHESIS` | `NOT_IMPLEMENTED` | `NOT_APPLICABLE` | `INDIRECT` | `UNVERIFIED` | [EVID:DOC-006] | No measurement exists; the cost and probability inputs are not modelled. |
+| `HYP-CLAIM-001` | A value x probability / cost scheduling model would outperform the static priority heuristic. | `HYPOTHESIS` | `NOT_APPLICABLE` | `NOT_APPLICABLE` | `INDIRECT` | `UNVERIFIED` | [EVID:DOC-006] | No measurement exists; the cost and probability inputs are not modelled. implementation_state is NOT_APPLICABLE because a hypothesis is not an implementation claim (§91). |
 
 <!-- CLAIMS:END -->
 

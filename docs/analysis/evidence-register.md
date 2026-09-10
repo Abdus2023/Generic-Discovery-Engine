@@ -125,6 +125,7 @@ digest, so any accidental code modification fails verification.
 | TEST-011 | `tools/simulate.mjs` | anomaly stream `CONCURRENT_OWNER` | two workers acquiring one candidate at the same time | DIRECT | DIRECT |
 | TEST-012 | `tools/simulate.mjs` | metrics `discoveries` vs `uniqueUrls` (74 / 27) | discovery records are not deduplicated (D9) | DIRECT | DIRECT |
 | TEST-013 | `tools/simulate.mjs` | `--unsafe-control` run | the harness detects an ownership violation (detector sensitivity) | DIRECT (executed) | DIRECT |
+| TEST-014 | `tools/validate-analysis.mjs` | schema validation plus rules V1–V20 and invariants I-001–I-016 | the record's typed fields, evidence shape, authorization and execution consistency | DIRECT (executed) | DIRECT |
 
 ## Register — documentation
 
@@ -140,6 +141,28 @@ digest, so any accidental code modification fails verification.
 | DOC-010 | `docs/architecture/search-space.md` | whole document | bounds, termination, coverage, staleness | DIRECT | DIRECT |
 | DOC-011 | `docs/glossary.md` | "Canonical definitions" | one term per concept; conflict table | DIRECT | DIRECT |
 | DOC-012 | `docs/analysis/change-register-2026-09-10.md` | change IDs R-001… | what was changed, why, and how it was verified | DIRECT | DIRECT |
+| DOC-013 | `docs/analysis/analysis.json`, `docs/analysis/analysis.schema.json`, `docs/analysis/claims.md` | the normative record, the schema and its rendering | the typed state of every claim, the authorization object and the execution record | DIRECT | DIRECT |
+
+## Absence procedures (rule V2)
+
+An `ABSENT` finding is a claim about an inspection, so each one names the
+procedure that justifies it. These procedures are recorded in
+[analysis.json](analysis.json) as `absence_verification` and referenced from the
+claim that depends on them; rules `V2` and §94 require the reference before an
+absence may be reported as `VERIFIED`.
+
+| Procedure | Claim | Inspected scope | Probe | Result |
+| --- | --- | --- | --- | --- |
+| `AV-001` | `SCOPE-CLAIM-001` | whole artifact + all documentation | full read; `tools/verify.mjs` symbol scan for DVB/RF terms | no match |
+| `AV-002` | `SCOPE-CLAIM-002` | whole artifact | symbol scan for capability/work-item/evidence-graph/lease/coverage/fencing symbols | no match; occurrences are design documents only |
+| `AV-003` | `SCOPE-CLAIM-003` | acquisition and scheduler paths | inspection for any coverage/absence/completeness object | none exists |
+| `AV-004` | `SCOPE-CLAIM-004` | candidate model and every `discover()` call site | target-type inspection | every target is a URL |
+| `AV-005` | `SCOPE-CLAIM-005` | repository tree at `cc8df73` | git tree listing | no tests, CI or build tooling existed |
+
+Negative evidence is recorded as an **evidence object** like every other row:
+`path` names the inspected artifact and `locator` names the probe
+(`{"type": "SYMBOL", "value": "no DVB/RF symbols …"}`), because what was
+inspected is the evidence and the method is the procedure above.
 
 ## Register — negative evidence
 

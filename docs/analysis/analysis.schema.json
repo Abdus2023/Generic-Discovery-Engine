@@ -1,0 +1,430 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.invalid/generic-discovery-analysis.schema.json",
+  "$comment": "The $id above is intentionally non-authoritative; replace it with the project's schema namespace if this schema is ever published. Additional properties are permitted throughout: the schema fixes the typed fields, it does not forbid extensions. Semantic rules that JSON Schema cannot express (V1-V20) are enforced by tools/validate-analysis.mjs.",
+  "title": "Generic Discovery Engine Analysis",
+  "type": "object",
+  "required": [
+    "schema_version",
+    "repository",
+    "scope",
+    "claims",
+    "changes",
+    "authorization",
+    "execution"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": "1.0"
+    },
+    "repository": {
+      "$ref": "#/$defs/repository"
+    },
+    "scope": {
+      "$ref": "#/$defs/scope"
+    },
+    "claims": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/claim"
+      }
+    },
+    "changes": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/change"
+      }
+    },
+    "authorization": {
+      "$ref": "#/$defs/authorization"
+    },
+    "execution": {
+      "$ref": "#/$defs/execution"
+    },
+    "absence_verification": {
+      "type": "array",
+      "items": {
+        "type": "object"
+      },
+      "$comment": "Declared-scope absence procedures referenced by claims (rule V2)."
+    },
+    "contradictions": {
+      "type": "array",
+      "items": {
+        "type": "object"
+      }
+    },
+    "post_verification": {
+      "type": "object"
+    }
+  },
+  "$defs": {
+    "claim": {
+      "type": "object",
+      "required": [
+        "id",
+        "statement",
+        "claim_kind",
+        "implementation_state",
+        "test_state",
+        "evidence_level",
+        "verification_result",
+        "evidence"
+      ],
+      "properties": {
+        "id": {
+          "type": "string",
+          "pattern": "^[A-Z]+-[A-Z]+-[0-9]{3,}$",
+          "$comment": "Project convention: <FAMILY>-CLAIM-<nnn> (CAND-CLAIM-001). The template pattern ^[A-Z]+-[0-9]{3,}$ would require renaming 41 identifiers that are already cited across 22 documents; identifier stability takes precedence, so the pattern is tightened to the established convention instead."
+        },
+        "statement": {
+          "type": "string",
+          "minLength": 1
+        },
+        "claim_kind": {
+          "enum": [
+            "CURRENT",
+            "SPECIFIED",
+            "PLANNED",
+            "HISTORICAL",
+            "HYPOTHESIS",
+            "NON_GOAL"
+          ]
+        },
+        "implementation_state": {
+          "enum": [
+            "IMPLEMENTED",
+            "PARTIAL",
+            "NOT_IMPLEMENTED",
+            "NOT_APPLICABLE",
+            "UNKNOWN"
+          ]
+        },
+        "test_state": {
+          "enum": [
+            "TESTED",
+            "PARTIALLY_TESTED",
+            "UNTESTED",
+            "NOT_APPLICABLE",
+            "UNKNOWN"
+          ]
+        },
+        "evidence_level": {
+          "enum": [
+            "DIRECT",
+            "CORROBORATED",
+            "INDIRECT",
+            "ABSENT",
+            "INACCESSIBLE"
+          ]
+        },
+        "verification_result": {
+          "enum": [
+            "VERIFIED",
+            "PARTIALLY_VERIFIED",
+            "UNVERIFIED",
+            "CONTRADICTED",
+            "NOT_APPLICABLE"
+          ]
+        },
+        "evidence": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/evidence"
+          }
+        },
+        "absence_verification": {
+          "type": "string",
+          "$comment": "References an absence_verification procedure; required when evidence_level is ABSENT and verification_result is VERIFIED (rule V2)."
+        },
+        "absence_test": {
+          "type": "string",
+          "$comment": "Set when implementation_state is NOT_IMPLEMENTED and test_state is TESTED: names the executed test that establishes the absence (\u00a793)."
+        },
+        "conflicting_evidence": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "$comment": "Evidence ids that conflict with the claim; required when verification_result is CONTRADICTED and the conflict is not expressed as a claim-to-claim contradiction (rule V4)."
+        }
+      }
+    },
+    "evidence": {
+      "type": "object",
+      "required": [
+        "id",
+        "kind",
+        "path",
+        "locator"
+      ],
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "kind": {
+          "enum": [
+            "CODE",
+            "TEST",
+            "CONFIG",
+            "DOCUMENTATION",
+            "HISTORY",
+            "EXTERNAL"
+          ]
+        },
+        "path": {
+          "type": "string"
+        },
+        "locator": {
+          "type": "object",
+          "required": [
+            "type",
+            "value"
+          ],
+          "properties": {
+            "type": {
+              "enum": [
+                "LINE_RANGE",
+                "SYMBOL",
+                "HEADING",
+                "SECTION",
+                "COMMIT",
+                "URL"
+              ]
+            },
+            "value": {
+              "type": "string"
+            }
+          }
+        }
+      }
+    },
+    "repository": {
+      "type": "object",
+      "required": [
+        "owner",
+        "name",
+        "requested_revision",
+        "resolved_revision",
+        "access_level"
+      ],
+      "properties": {
+        "owner": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "requested_revision": {
+          "type": "string"
+        },
+        "resolved_revision": {
+          "type": "string"
+        },
+        "access_level": {
+          "enum": [
+            "FULL",
+            "PARTIAL",
+            "DOCUMENT_ONLY",
+            "SEARCH_ONLY",
+            "NONE"
+          ]
+        }
+      }
+    },
+    "scope": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "boolean"
+      }
+    },
+    "change": {
+      "type": "object",
+      "required": [
+        "id",
+        "category",
+        "description",
+        "evidence"
+      ],
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "category": {
+          "enum": [
+            "DOC_CLEANUP",
+            "DOC_MOVE",
+            "DOC_MERGE",
+            "DOC_SPLIT",
+            "DOC_REWRITE",
+            "CODE_REFACTOR",
+            "CODE_FIX",
+            "TEST_ADD",
+            "TEST_UPDATE",
+            "ARCHITECTURE_CHANGE",
+            "REMOVAL",
+            "RENAME"
+          ]
+        },
+        "description": {
+          "type": "string"
+        },
+        "evidence": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "authorization": {
+      "type": "object",
+      "required": [
+        "state",
+        "level",
+        "change_ids"
+      ],
+      "properties": {
+        "state": {
+          "enum": [
+            "NOT_REQUESTED",
+            "REQUESTED",
+            "DENIED",
+            "GRANTED",
+            "REVOKED",
+            "EXPIRED"
+          ]
+        },
+        "level": {
+          "enum": [
+            "READ_ONLY",
+            "ANALYSIS_ONLY",
+            "DOC_REFACTOR",
+            "TEST_REFACTOR",
+            "CODE_REFACTOR",
+            "ARCHITECTURE_CHANGE",
+            "COMMIT",
+            "PUSH"
+          ]
+        },
+        "change_ids": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "operations": {
+          "type": "array",
+          "items": {
+            "enum": [
+              "READ",
+              "ANALYZE",
+              "PROPOSE",
+              "CREATE",
+              "MODIFY",
+              "MOVE",
+              "RENAME",
+              "DELETE",
+              "COMMIT",
+              "PUSH"
+            ]
+          }
+        },
+        "authority": {
+          "type": "object",
+          "required": [
+            "type",
+            "identifier"
+          ],
+          "properties": {
+            "type": {
+              "enum": [
+                "USER",
+                "ROLE",
+                "POLICY"
+              ]
+            },
+            "identifier": {
+              "type": "string"
+            }
+          }
+        },
+        "target": {
+          "type": "object",
+          "required": [
+            "repository",
+            "revision"
+          ],
+          "properties": {
+            "repository": {
+              "type": "string"
+            },
+            "revision": {
+              "type": "string"
+            }
+          }
+        },
+        "expires_at": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "granted_at": {
+          "type": [
+            "string",
+            "null"
+          ]
+        }
+      }
+    },
+    "execution": {
+      "type": "object",
+      "required": [
+        "result",
+        "executed_changes",
+        "unauthorized_changes"
+      ],
+      "properties": {
+        "result": {
+          "enum": [
+            "NOT_EXECUTED",
+            "SUCCEEDED",
+            "PARTIALLY_SUCCEEDED",
+            "FAILED",
+            "STOPPED"
+          ]
+        },
+        "executed_changes": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "unauthorized_changes": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "operations": {
+          "type": "array",
+          "items": {
+            "enum": [
+              "READ",
+              "ANALYZE",
+              "PROPOSE",
+              "CREATE",
+              "MODIFY",
+              "MOVE",
+              "RENAME",
+              "DELETE",
+              "COMMIT",
+              "PUSH"
+            ]
+          }
+        }
+      }
+    }
+  }
+}

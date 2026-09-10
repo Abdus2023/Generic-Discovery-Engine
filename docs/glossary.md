@@ -64,6 +64,35 @@ canonical choice is fixed here. Terms are marked:
 | "confidence", "score", "strength" | **Confidence** | The prototype carries a per-discovery confidence and a per-candidate hint confidence; use *priority* for scheduling weight and *confidence* for belief. Never call either "accuracy". |
 | "coverage", "completeness", "exhaustion" | **Coverage** (DESIGNED) / **Exhaustion** (OPEN) | The prototype has no coverage metric. Log lines saying "exhausted" describe an empty eligible set, not a proven complete search. |
 | "priority queue" | **Scheduler** | The prototype sorts a Map on demand; there is no heap or queue object. |
+| "status", "state" (one word for a claim) | **the five typed fields** | One word cannot say what kind of statement it is, whether it is implemented, whether it is tested, how strong the evidence is and what verification concluded. Use `claim_kind`, `implementation_state`, `test_state`, `evidence_level`, `verification_result`. |
+| "authorized: true" | **`authorization.state`** + **`authorization.level`** | Permission to mutate and the capability it grants are two different questions. `GRANTED` alone does not say what may change; a level alone does not prove anything was granted. |
+| "level A4 / A5" | **`CODE_REFACTOR` / `ARCHITECTURE_CHANGE`** | The A-numbered authorization names are retired; the canonical enum is `READ_ONLY` … `PUSH`. |
+| "PASS", "FAIL", "clean", "successful" (as a verification verdict) | **`verification_result`** | Verification concludes `VERIFIED`, `PARTIALLY_VERIFIED`, `UNVERIFIED`, `CONTRADICTED` or `NOT_APPLICABLE`. `SUCCEEDED` belongs to `execution.result` only, and never implies verification. |
+| "implemented" (as a verdict about a claim) | **`implementation_state`** | `IMPLEMENTED` describes the behaviour named in the claim; it is not a verification conclusion and not a test result. |
+
+## State and authority vocabulary
+
+Canonical model, enforced by `tools/validate-analysis.mjs` against
+[analysis/analysis.schema.json](analysis/analysis.schema.json). Record:
+[analysis/analysis.json](analysis/analysis.json).
+
+| Field | Question | Values |
+| --- | --- | --- |
+| `claim_kind` | What kind of statement is this? | `CURRENT`, `SPECIFIED`, `PLANNED`, `HISTORICAL`, `HYPOTHESIS`, `NON_GOAL` |
+| `implementation_state` | Is the named behaviour implemented? | `IMPLEMENTED`, `PARTIAL`, `NOT_IMPLEMENTED`, `NOT_APPLICABLE`, `UNKNOWN` |
+| `test_state` | Is it exercised? | `TESTED`, `PARTIALLY_TESTED`, `UNTESTED`, `NOT_APPLICABLE`, `UNKNOWN` |
+| `evidence_level` | How strong / available is the evidence? | `DIRECT`, `CORROBORATED`, `INDIRECT`, `ABSENT`, `INACCESSIBLE` |
+| `verification_result` | What did verification conclude? | `VERIFIED`, `PARTIALLY_VERIFIED`, `UNVERIFIED`, `CONTRADICTED`, `NOT_APPLICABLE` |
+| `authorization.state` | Has mutation authority been granted? | `NOT_REQUESTED`, `REQUESTED`, `DENIED`, `GRANTED`, `REVOKED`, `EXPIRED` |
+| `authorization.level` | What does the grant permit? (capability ceiling) | `READ_ONLY`, `ANALYSIS_ONLY`, `DOC_REFACTOR`, `TEST_REFACTOR`, `CODE_REFACTOR`, `ARCHITECTURE_CHANGE`, `COMMIT`, `PUSH` |
+| `execution.result` | What actually happened? | `NOT_EXECUTED`, `SUCCEEDED`, `PARTIALLY_SUCCEEDED`, `FAILED`, `STOPPED` |
+| `post_verification.result` | What did the independent re-run establish? | the `verification_result` values only |
+| `access_level` | How much of the repository could be inspected? | `FULL`, `PARTIAL`, `DOCUMENT_ONLY`, `SEARCH_ONLY`, `NONE` |
+
+Terms that must not be confused: **`ABSENT`** (inspected, not found) is not
+**`INACCESSIBLE`** (could not inspect); **`TESTED`** is not **`IMPLEMENTED`**;
+**`PLANNED`** is not **`MISSING`**; **`DOCUMENTED`** is not **`IMPLEMENTED`**;
+**`ANALOGY`** is not **`IMPLEMENTATION`**.
 
 ## Candidate lifecycle vocabulary
 
