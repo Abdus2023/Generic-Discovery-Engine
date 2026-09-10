@@ -34,7 +34,8 @@ Nothing in this register silently mixes "what is" with "what should be".
 | R-015 | DOC_CLEANUP | scope, ownership and authorization implicit | [scope-and-authorization.md](scope-and-authorization.md) with the four scope dimensions, ownership matrix, decision ownership, authorization levels and pre/post-execution checks | governs who may decide and mutate | DOC-012 | LOW | `tools/verify.mjs` authorization-record lint | PASS |
 | R-016 | DOC_CLEANUP | status existed only as prose tables; no machine-readable record, and no way to tell a stale table from a current one | [analysis.json](analysis.json) as the normative record, plus `tools/validate-analysis.mjs` (schema, enums, authorization/execution rules) and `tools/render-claims.mjs` (claims.md is generated, never hand-edited) | a canonical model that cannot be validated silently drifts | DOC-012 | LOW | `tools/validate-analysis.mjs`: JSON Schema + rules V1–V20 + invariants I-001–I-016; `tools/render-claims.mjs --check` | PASS |
 | R-017 | DOC-REWRITE | claim and status statements written before the canonical model, in three-dimension or collapsed form | 41 records regenerated with all five typed fields; evidence register, analysis document, scope document, README and the 11 behaviour documents updated to the same vocabulary | documents must agree with the normative record or be detected | DOC-011, DOC-012 | LOW | `tools/verify.mjs` field-substitution and declaration lints; `node tools/verify.mjs` → 39 PASS / 0 FAIL | PASS |
-| R-018 | DOC_CLEANUP | claim validity was structural only, the authorization object used a single level with extra capabilities beside it, and the YAML rendering had no enforced connection to the record | claim-kind and cross-dimension rules (`C-001…C-043`, `CV-001…CV-015`), canonical authorization fields with explicit operation sets and intersection semantics (`EffectiveOperations = Ops(level) ∩ operations`), no-inheritance enforcement, a second canonical grant for publication, and a YAML mirror checked by `SER-001…SER-012` | structure does not make a claim semantically valid, and a level name must not imply an operation | DOC-013, DOC-014 | LOW | `tools/validate-analysis.mjs` (14 checks); `tools/verify.mjs` (39 PASS / 0 FAIL) | PASS |
+| R-018 | DOC_CLEANUP | claim validity was structural only, the authorization object used a single level with extra capabilities beside it, and the YAML rendering had no enforced connection to the record | claim-kind and cross-dimension rules (`C-001…C-043`; renumbered to the canonical `CV-001…CV-020` matrix by R-019), canonical authorization fields with explicit operation sets and intersection semantics (`EffectiveOperations = Ops(level) ∩ operations`), no-inheritance enforcement, a second canonical grant for publication, and a YAML mirror checked by `SER-001…SER-012` | structure does not make a claim semantically valid, and a level name must not imply an operation | DOC-013, DOC-014 | LOW | `tools/validate-analysis.mjs` (14 checks); `tools/verify.mjs` (39 PASS / 0 FAIL) | PASS |
+| R-019 | DOC_REWRITE | the authorization object treated a level as an operation set, and execution and post-verification each carried a single ambiguous result | level profiles with declared `inherits`, capability sets with `allow`/`deny` restriction, operation resolution from capabilities, scope paths, per-operation execution results, and a post-verification lifecycle with its own state, result and check results; claim `confidence` added as a graded dimension | a profile name must not imply a capability, an inherited capability must be removable, and an execution result must not imply a verification result | DOC-013, DOC-014 | MEDIUM | `tools/validate-analysis.mjs` (19 checks); `tools/verify.mjs` (43 PASS / 0 FAIL) | PASS |
 | R-013 | RENAME | `Continue Architecture Planning.md` at root implied a normative planning document | archived under `archive/`, indexed | non-normative status unclear | DOC-003, DOC-006 | LOW | link checks | PASS |
 
 No content was deleted. Removed text was either contradicted by the
@@ -97,7 +98,7 @@ unsound ownership baseline.
 
 ## Change-set boundary and discovered changes
 
-Authorization covered `R-001 … R-018` (`change_ids` in the authorization object;
+Authorization covered `R-001 … R-019` (`change_ids` in the authorization object;
 `R-014 … R-017` extended the set within the same `DOC_REFACTOR` ceiling — all
 documentation/analysis artifacts). While executing,
 twelve further problems were discovered (`R-101 … R-112`). Under the
@@ -141,33 +142,46 @@ Known limitations of this verification:
 
 ```yaml
 execution:
-  result: SUCCEEDED
-  executed_changes: [R-001 .. R-018]
+  state: SUCCEEDED
+  operations: 21 recorded, every result SUCCEEDED
+  executed_changes: [R-001 .. R-019]
   unauthorized_changes: []
 post_verification:
-  result: VERIFIED
+  state: PASSED
+  result: CONFORMING
+  checks: 8, every result PASSED
+  mutations: []
 ```
 
 **EXECUTED + POST-VERIFIED**: documentation and analysis artifacts
-`R-001 … R-018`.
+`R-001 … R-019`.
 
 **PLAN ONLY**: code changes `R-101 … R-112` — no authorization was given to
-change runtime behaviour (`CODE_REFACTOR` and `ARCHITECTURE_CHANGE` are outside
-the granted ceiling and appear in `forbidden_operations`), and correctness must
-be established before the prototype is modified.
+change runtime behaviour (`CODE_*`, `TEST_*` and `ARCHITECTURE_MODIFY` are
+withheld capability classes, unreachable through either grant), and correctness
+must be established before the prototype is modified.
 
 ```yaml
-AUTHORIZATION (as applied)          # four concepts, represented separately
+AUTHORIZATION (as applied)          # six separate concepts, each with its own field
   content grant:
     state: GRANTED
-    level: DOC_REFACTOR             # or the explicit operation set below, whichever is narrower
-    operations: [READ, ANALYZE, PROPOSE, CREATE, MODIFY, RENAME, MOVE]
-    change_ids: [R-001 … R-018]     # R-101 … R-112 are outside this set
-  publication grant:                # COMMIT ∉ Ops(DOC_REFACTOR): recorded as its own grant
+    level: {profile: DOC_REFACTOR}  # ceiling only — not an authority
+    capabilities:
+      mode: RESTRICT
+      allow: [REPOSITORY_READ, ANALYSIS_EXECUTE, PROPOSAL_CREATE,
+              DOCUMENT_CREATE, DOCUMENT_MODIFY, DOCUMENT_RENAME, DOCUMENT_MOVE]
+      deny:  [DOCUMENT_DELETE]      # inside the profile, explicitly removed
+    operations: {allow: [READ, ANALYZE, PROPOSE, CREATE, MODIFY, RENAME, MOVE], deny: [DELETE]}
+  publication grant:
     state: GRANTED
-    level: PUSH
-    operations: [READ, ANALYZE, PROPOSE, COMMIT, PUSH]
-    change_ids: [R-001 … R-018]
+    level: {profile: PUSH}          # inherits ARCHITECTURE_CHANGE → code/doc/test profiles
+    capabilities:
+      mode: RESTRICT
+      allow: [REPOSITORY_READ, ANALYSIS_EXECUTE, PROPOSAL_CREATE, COMMIT_CREATE, PUSH_EXECUTE]
+      deny:  [DOCUMENT_*, TEST_*, CODE_*, ARCHITECTURE_MODIFY]   # the inherited content capabilities
+    operations: {allow: [READ, ANALYZE, PROPOSE, COMMIT, PUSH], deny: [CREATE, MODIFY, RENAME, MOVE, DELETE]}
+  scope:   {paths: {include: [README.md, docs/, tools/, prototype/, archive/], exclude: []}}
+  change_ids: [R-001 … R-019]       # R-101 … R-112 are outside this set
   authority: repository owner (USER)
   target:    Abdus2023/Generic-Discovery-Engine @ work branch from cc8df73
   rollback:  revert of the analysis commits restores prior documentation;
@@ -192,7 +206,7 @@ verification tooling (`R-010`) and status-vocabulary replacement (`R-014`,
 | Worker pool | created once, never refilled (D2) | alive until a scan-level stop condition (R-104, R-112) |
 | Run state | `running` latch, no completion criterion (D4) | explicit states incl. quiescence and exhaustion (R-106) |
 | Discovery accounting | one record per recognition (D9) | deduplicated or provenance-backed corroboration (R-107) |
-| Status vocabulary | one word per verdict ("implemented", "tested") | five typed fields per claim, recorded once in analysis.json and rendered into claims.md (R-014) |
+| Status vocabulary | one word per verdict ("implemented", "tested") | six typed claim fields, recorded once in analysis.json and rendered into claims.md (R-014) |
 | Governance | implicit scope and ownership | explicit scope boundary, authorization contract, pre/post-execution checks (R-015) |
 | Content identity | fingerprints indexed, unused (D8) | consulted or removed (R-108) |
 | Acquisition | HTTP GET hard-wired | acquisition-provider boundary (R-111) — v0.9/v0.10 design |

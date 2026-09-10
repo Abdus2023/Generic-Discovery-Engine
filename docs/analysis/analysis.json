@@ -61,7 +61,6 @@
   "claims": [
     {
       "id": "CAND-CLAIM-001",
-      "group": "current-system",
       "statement": "Candidate identity is type:target, and inserting a duplicate merges into the existing candidate.",
       "claim_kind": "CURRENT",
       "implementation_state": "IMPLEMENTED",
@@ -109,11 +108,16 @@
           }
         }
       ],
-      "interpretation": "Identity is type-scoped: the same URL discovered as a different type is deliberately a second candidate."
+      "interpretation": {
+        "summary": "Identity is type-scoped: the same URL discovered as a different type is deliberately a second candidate.",
+        "limitations": [
+          "Observed in the bundled harness: one browser profile and one simulated request log, not a production measurement."
+        ]
+      },
+      "confidence": "HIGH"
     },
     {
       "id": "CAND-CLAIM-002",
-      "group": "current-system",
       "statement": "A candidate is a hypothesis, not an assertion that the target exists.",
       "claim_kind": "CURRENT",
       "implementation_state": "IMPLEMENTED",
@@ -144,11 +148,16 @@
           }
         }
       ],
-      "interpretation": "The implementation stores no existence assertion, but the hypothesis framing is design prose; the code cannot demonstrate a framing. test_state UNTESTED: no executed check asserts the hypothesis framing; the implementation shows the absence of an existence assertion, which is a code reading, not a test."
+      "interpretation": {
+        "summary": "The implementation stores no existence assertion, but the hypothesis framing is design prose; the code cannot demonstrate a framing. test_state UNTESTED: no executed check asserts the hypothesis framing; the implementation shows the absence of an existence assertion, which is a code reading, not a test.",
+        "limitations": [
+          "Indirect evidence supports the interpretation without establishing the claim directly."
+        ]
+      },
+      "confidence": "LOW"
     },
     {
       "id": "CAND-CLAIM-003",
-      "group": "current-system",
       "statement": "Candidate growth is bounded by a candidate cap, a depth limit and a request budget.",
       "claim_kind": "CURRENT",
       "implementation_state": "IMPLEMENTED",
@@ -187,11 +196,14 @@
           }
         }
       ],
-      "interpretation": "Dropping is silent; only the candidate cap records a diagnostic. test_state UNTESTED: the caps, depth limit and budget are enforced in code and inspected statically, but no executed check asserts them; the simulate run stays far below the caps."
+      "interpretation": {
+        "summary": "Dropping is silent; only the candidate cap records a diagnostic. test_state UNTESTED: the caps, depth limit and budget are enforced in code and inspected statically, but no executed check asserts them; the simulate run stays far below the caps.",
+        "limitations": []
+      },
+      "confidence": "MEDIUM"
     },
     {
       "id": "SCHED-CLAIM-001",
-      "group": "current-system",
       "statement": "Candidate ownership is established synchronously, before the worker's first await.",
       "claim_kind": "CURRENT",
       "implementation_state": "IMPLEMENTED",
@@ -230,11 +242,14 @@
           }
         }
       ],
-      "interpretation": "The transition happens inside a synchronous method and the first suspension point follows it; this is valid only within one execution context."
+      "interpretation": {
+        "summary": "The transition happens inside a synchronous method and the first suspension point follows it; this is valid only within one execution context.",
+        "limitations": []
+      },
+      "confidence": "HIGH"
     },
     {
       "id": "SCHED-CLAIM-002",
-      "group": "current-system",
       "statement": "A candidate has at most one active owner.",
       "claim_kind": "CURRENT",
       "implementation_state": "PARTIAL",
@@ -282,11 +297,17 @@
           }
         }
       ],
-      "interpretation": "The claim site is safe; re-discovery re-queues in-flight candidates, so the end-to-end invariant fails (defect D1)."
+      "interpretation": {
+        "summary": "The claim site is safe; re-discovery re-queues in-flight candidates, so the end-to-end invariant fails (defect D1).",
+        "limitations": [
+          "The design intent and the implementation conflict; this record states the conflict and does not resolve it.",
+          "Observed in the bundled harness: one browser profile and one simulated request log, not a production measurement."
+        ]
+      },
+      "confidence": "HIGH"
     },
     {
       "id": "SCHED-CLAIM-003",
-      "group": "current-system",
       "statement": "Retry is bounded by exponential backoff.",
       "claim_kind": "CURRENT",
       "implementation_state": "PARTIAL",
@@ -325,11 +346,16 @@
           }
         }
       ],
-      "interpretation": "Backoff applies to queued retries; the failed state bypasses it and remains claimable (defect D3)."
+      "interpretation": {
+        "summary": "Backoff applies to queued retries; the failed state bypasses it and remains claimable (defect D3).",
+        "limitations": [
+          "Observed in the bundled harness: one browser profile and one simulated request log, not a production measurement."
+        ]
+      },
+      "confidence": "HIGH"
     },
     {
       "id": "SCHED-CLAIM-004",
-      "group": "current-system",
       "statement": "A permanently failing target eventually stops consuming the request budget.",
       "claim_kind": "CURRENT",
       "implementation_state": "NOT_IMPLEMENTED",
@@ -368,12 +394,18 @@
           }
         }
       ],
-      "interpretation": "failed is part of the claim eligibility set with no backoff, so the target is retried indefinitely (defect D3). The absence of a terminal failure state is tested, not inferred: the harness reports failed candidates still in the pool at quiescence with their attempt counts.",
-      "absence_test": "TEST-010"
+      "interpretation": {
+        "summary": "failed is part of the claim eligibility set with no backoff, so the target is retried indefinitely (defect D3). The absence of a terminal failure state is tested, not inferred: the harness reports failed candidates still in the pool at quiescence with their attempt counts.",
+        "limitations": [
+          "The design intent and the implementation conflict; this record states the conflict and does not resolve it.",
+          "Observed in the bundled harness: one browser profile and one simulated request log, not a production measurement."
+        ]
+      },
+      "absence_test": "TEST-010",
+      "confidence": "HIGH"
     },
     {
       "id": "SCHED-CLAIM-005",
-      "group": "current-system",
       "statement": "The configured worker pool provides the configured concurrency.",
       "claim_kind": "CURRENT",
       "implementation_state": "PARTIAL",
@@ -403,11 +435,17 @@
           }
         }
       ],
-      "interpretation": "A worker exits permanently on an empty frontier and the pool is never refilled, so effective concurrency collapses toward one (defect D2)."
+      "interpretation": {
+        "summary": "A worker exits permanently on an empty frontier and the pool is never refilled, so effective concurrency collapses toward one (defect D2).",
+        "limitations": [
+          "The design intent and the implementation conflict; this record states the conflict and does not resolve it.",
+          "Observed in the bundled harness: one browser profile and one simulated request log, not a production measurement."
+        ]
+      },
+      "confidence": "HIGH"
     },
     {
       "id": "SCHED-CLAIM-006",
-      "group": "current-system",
       "statement": "Adaptive concurrency changes the number of live workers.",
       "claim_kind": "CURRENT",
       "implementation_state": "NOT_IMPLEMENTED",
@@ -437,15 +475,20 @@
           }
         }
       ],
-      "interpretation": "The counter and its diagnostics change, but the pool is created once before it is read (defect D5). Conflicting evidence: the pool is created once (CODE-018) and the adaptive counter only changes diagnostics (CODE-029).",
+      "interpretation": {
+        "summary": "The counter and its diagnostics change, but the pool is created once before it is read (defect D5). Conflicting evidence: the pool is created once (CODE-018) and the adaptive counter only changes diagnostics (CODE-029).",
+        "limitations": [
+          "The design intent and the implementation conflict; this record states the conflict and does not resolve it."
+        ]
+      },
       "conflicting_evidence": [
         "CODE-018",
         "CODE-029"
-      ]
+      ],
+      "confidence": "MEDIUM"
     },
     {
       "id": "ACQ-CLAIM-001",
-      "group": "current-system",
       "statement": "Acquisition is HTTP-GET-specific and browser/userscript-specific.",
       "claim_kind": "CURRENT",
       "implementation_state": "IMPLEMENTED",
@@ -484,11 +527,14 @@
           }
         }
       ],
-      "interpretation": "GM_xmlhttpRequest with a fetch fallback; no transport interface exists in the inspected scope."
+      "interpretation": {
+        "summary": "GM_xmlhttpRequest with a fetch fallback; no transport interface exists in the inspected scope.",
+        "limitations": []
+      },
+      "confidence": "HIGH"
     },
     {
       "id": "ACQ-CLAIM-002",
-      "group": "current-system",
       "statement": "A failed acquisition still produces an observation.",
       "claim_kind": "CURRENT",
       "implementation_state": "IMPLEMENTED",
@@ -527,11 +573,14 @@
           }
         }
       ],
-      "interpretation": "Timeout, transport error and HTTP error all yield observation records with distinct statuses. test_state UNTESTED: the failure paths create observations in code (CODE-004, CODE-013, CODE-019), but no executed check asserts the resulting observation."
+      "interpretation": {
+        "summary": "Timeout, transport error and HTTP error all yield observation records with distinct statuses. test_state UNTESTED: the failure paths create observations in code (CODE-004, CODE-013, CODE-019), but no executed check asserts the resulting observation.",
+        "limitations": []
+      },
+      "confidence": "MEDIUM"
     },
     {
       "id": "ACQ-CLAIM-003",
-      "group": "current-system",
       "statement": "Cancelling a scan aborts in-flight requests.",
       "claim_kind": "CURRENT",
       "implementation_state": "NOT_IMPLEMENTED",
@@ -570,15 +619,20 @@
           }
         }
       ],
-      "interpretation": "stop() sets a flag; in-flight requests continue, and runtime-owned cancellation exists only in the DESIGNED v0.10. Conflicting evidence: stop() only sets a flag (CODE-018) and no request is aborted (CODE-010). DIRECT evidence: the code itself shows that only a flag is set (CODE-018) and no in-flight request is aborted (CODE-010); the design prose is context, not the ground of the finding.",
+      "interpretation": {
+        "summary": "stop() sets a flag; in-flight requests continue, and runtime-owned cancellation exists only in the DESIGNED v0.10. Conflicting evidence: stop() only sets a flag (CODE-018) and no request is aborted (CODE-010). DIRECT evidence: the code itself shows that only a flag is set (CODE-018) and no in-flight request is aborted (CODE-010); the design prose is context, not the ground of the finding.",
+        "limitations": [
+          "The design intent and the implementation conflict; this record states the conflict and does not resolve it."
+        ]
+      },
       "conflicting_evidence": [
         "CODE-018",
         "CODE-010"
-      ]
+      ],
+      "confidence": "MEDIUM"
     },
     {
       "id": "PROV-CLAIM-001",
-      "group": "current-system",
       "statement": "A discovery records both its candidate and its observation.",
       "claim_kind": "CURRENT",
       "implementation_state": "IMPLEMENTED",
@@ -617,11 +671,14 @@
           }
         }
       ],
-      "interpretation": "The linkage is stored at creation time. Tested: the harness reconstructs the chain and reads both records."
+      "interpretation": {
+        "summary": "The linkage is stored at creation time. Tested: the harness reconstructs the chain and reads both records.",
+        "limitations": []
+      },
+      "confidence": "HIGH"
     },
     {
       "id": "PROV-CLAIM-002",
-      "group": "current-system",
       "statement": "The derivation chain seed to candidate to observation to discovery to child candidate is reconstructible.",
       "claim_kind": "CURRENT",
       "implementation_state": "IMPLEMENTED",
@@ -660,11 +717,14 @@
           }
         }
       ],
-      "interpretation": "Reconstructed end to end in a fresh execution context, including the observations for each link."
+      "interpretation": {
+        "summary": "Reconstructed end to end in a fresh execution context, including the observations for each link.",
+        "limitations": []
+      },
+      "confidence": "HIGH"
     },
     {
       "id": "PROV-CLAIM-003",
-      "group": "current-system",
       "statement": "Content fingerprints are used to relate identical content behind different URLs.",
       "claim_kind": "SPECIFIED",
       "implementation_state": "NOT_IMPLEMENTED",
@@ -694,11 +754,16 @@
           }
         }
       ],
-      "interpretation": "The fingerprint index is written and probed but never read; identity resolution is DESIGNED (v0.17), not current (defect D8)."
+      "interpretation": {
+        "summary": "The fingerprint index is written and probed but never read; identity resolution is DESIGNED (v0.17), not current (defect D8).",
+        "limitations": [
+          "The design intent and the implementation conflict; this record states the conflict and does not resolve it."
+        ]
+      },
+      "confidence": "MEDIUM"
     },
     {
       "id": "PROV-CLAIM-004",
-      "group": "current-system",
       "statement": "Observation and discovery are distinct objects.",
       "claim_kind": "CURRENT",
       "implementation_state": "IMPLEMENTED",
@@ -737,11 +802,14 @@
           }
         }
       ],
-      "interpretation": "Separate records, separate identifiers, separate lifetimes. Tested: the harness reads observations and discoveries as separate maps."
+      "interpretation": {
+        "summary": "Separate records, separate identifiers, separate lifetimes. Tested: the harness reads observations and discoveries as separate maps.",
+        "limitations": []
+      },
+      "confidence": "HIGH"
     },
     {
       "id": "PROV-CLAIM-005",
-      "group": "current-system",
       "statement": "An evidence layer with competing interpretations and conflict resolution exists.",
       "claim_kind": "SPECIFIED",
       "implementation_state": "NOT_IMPLEMENTED",
@@ -771,12 +839,17 @@
           }
         }
       ],
-      "interpretation": "No such objects exist; designed in v0.16 and v0.34. Evidence is ABSENT (inspected scope covered), not INACCESSIBLE.",
-      "absence_verification": "AV-006"
+      "interpretation": {
+        "summary": "No such objects exist; designed in v0.16 and v0.34. Evidence is ABSENT (inspected scope covered), not INACCESSIBLE.",
+        "limitations": [
+          "Absence holds only for the inspected scope and revision recorded in AV-006."
+        ]
+      },
+      "absence_verification": "AV-006",
+      "confidence": "MEDIUM"
     },
     {
       "id": "PROV-CLAIM-006",
-      "group": "current-system",
       "statement": "Observations are immutable evidence.",
       "claim_kind": "CURRENT",
       "implementation_state": "NOT_IMPLEMENTED",
@@ -806,11 +879,14 @@
           }
         }
       ],
-      "interpretation": "Observations live in a mutable map and are re-serialized on persistence; nothing enforces immutability. DIRECT evidence: observation records are plain objects with no freeze, copy-on-write or integrity check, so immutability is not enforced (CODE-004, CODE-005)."
+      "interpretation": {
+        "summary": "Observations live in a mutable map and are re-serialized on persistence; nothing enforces immutability. DIRECT evidence: observation records are plain objects with no freeze, copy-on-write or integrity check, so immutability is not enforced (CODE-004, CODE-005).",
+        "limitations": []
+      },
+      "confidence": "MEDIUM"
     },
     {
       "id": "ARCH-CLAIM-001",
-      "group": "architecture-boundary",
       "statement": "Providers perform no I/O, do not enqueue candidates and own no policy.",
       "claim_kind": "CURRENT",
       "implementation_state": "IMPLEMENTED",
@@ -849,11 +925,14 @@
           }
         }
       ],
-      "interpretation": "The strongest boundary in the prototype: the contract is matches() plus recognize(), with expansion owned by the engine."
+      "interpretation": {
+        "summary": "The strongest boundary in the prototype: the contract is matches() plus recognize(), with expansion owned by the engine.",
+        "limitations": []
+      },
+      "confidence": "HIGH"
     },
     {
       "id": "ARCH-CLAIM-002",
-      "group": "architecture-boundary",
       "statement": "Providers are protocol-independent.",
       "claim_kind": "CURRENT",
       "implementation_state": "NOT_IMPLEMENTED",
@@ -901,11 +980,16 @@
           }
         }
       ],
-      "interpretation": "Only recognition is an interface; acquisition is one hard-wired HTTP path. PARTIALLY_TESTED: provider matching is executed (TEST-006); the transport half of the claim is not tested."
+      "interpretation": {
+        "summary": "Only recognition is an interface; acquisition is one hard-wired HTTP path. PARTIALLY_TESTED: provider matching is executed (TEST-006); the transport half of the claim is not tested.",
+        "limitations": [
+          "The design intent and the implementation conflict; this record states the conflict and does not resolve it."
+        ]
+      },
+      "confidence": "HIGH"
     },
     {
       "id": "ARCH-CLAIM-003",
-      "group": "architecture-boundary",
       "statement": "Candidate expansion is owned by the engine, not by providers.",
       "claim_kind": "CURRENT",
       "implementation_state": "IMPLEMENTED",
@@ -944,11 +1028,14 @@
           }
         }
       ],
-      "interpretation": "Providers return Discovery objects; emitDiscovery performs expansion under engine policy."
+      "interpretation": {
+        "summary": "Providers return Discovery objects; emitDiscovery performs expansion under engine policy.",
+        "limitations": []
+      },
+      "confidence": "HIGH"
     },
     {
       "id": "ARCH-CLAIM-004",
-      "group": "architecture-boundary",
       "statement": "Discovery records are deduplicated like candidates.",
       "claim_kind": "CURRENT",
       "implementation_state": "NOT_IMPLEMENTED",
@@ -987,12 +1074,18 @@
           }
         }
       ],
-      "interpretation": "A discovery is stored before the derived candidate is deduplicated, and text/html is interpreted twice; 74 discoveries for 27 URLs in one run (defect D9). The absence of deduplication is tested, not inferred: the harness counts discoveries against unique URLs in one run.",
-      "absence_test": "TEST-012"
+      "interpretation": {
+        "summary": "A discovery is stored before the derived candidate is deduplicated, and text/html is interpreted twice; 74 discoveries for 27 URLs in one run (defect D9). The absence of deduplication is tested, not inferred: the harness counts discoveries against unique URLs in one run.",
+        "limitations": [
+          "The design intent and the implementation conflict; this record states the conflict and does not resolve it.",
+          "Observed in the bundled harness: one browser profile and one simulated request log, not a production measurement."
+        ]
+      },
+      "absence_test": "TEST-012",
+      "confidence": "HIGH"
     },
     {
       "id": "ARCH-CLAIM-005",
-      "group": "architecture-boundary",
       "statement": "Persisted state survives a reload.",
       "claim_kind": "CURRENT",
       "implementation_state": "IMPLEMENTED",
@@ -1022,11 +1115,16 @@
           }
         }
       ],
-      "interpretation": "Candidates, observations, discoveries, resources, graph edges and the decision ledger round-trip; the request budget deliberately resets."
+      "interpretation": {
+        "summary": "Candidates, observations, discoveries, resources, graph edges and the decision ledger round-trip; the request budget deliberately resets.",
+        "limitations": [
+          "Observed in the bundled harness: one browser profile and one simulated request log, not a production measurement."
+        ]
+      },
+      "confidence": "HIGH"
     },
     {
       "id": "ARCH-CLAIM-006",
-      "group": "architecture-boundary",
       "statement": "Persistence is transactional and crash-safe.",
       "claim_kind": "SPECIFIED",
       "implementation_state": "NOT_IMPLEMENTED",
@@ -1065,12 +1163,17 @@
           }
         }
       ],
-      "interpretation": "One serialized snapshot with caps; no transaction, validation or recovery. Designed in v0.32.",
-      "absence_verification": "AV-007"
+      "interpretation": {
+        "summary": "One serialized snapshot with caps; no transaction, validation or recovery. Designed in v0.32.",
+        "limitations": [
+          "Absence holds only for the inspected scope and revision recorded in AV-007."
+        ]
+      },
+      "absence_verification": "AV-007",
+      "confidence": "MEDIUM"
     },
     {
       "id": "ARCH-CLAIM-007",
-      "group": "architecture-boundary",
       "statement": "The request budget is a per-run allowance.",
       "claim_kind": "CURRENT",
       "implementation_state": "IMPLEMENTED",
@@ -1109,11 +1212,16 @@
           }
         }
       ],
-      "interpretation": "Restore deliberately resets requestsReserved; reserved slots are never released, so the budget counts attempts."
+      "interpretation": {
+        "summary": "Restore deliberately resets requestsReserved; reserved slots are never released, so the budget counts attempts.",
+        "limitations": [
+          "Observed in the bundled harness: one browser profile and one simulated request log, not a production measurement."
+        ]
+      },
+      "confidence": "HIGH"
     },
     {
       "id": "ARCH-CLAIM-008",
-      "group": "architecture-boundary",
       "statement": "Cross-context coordination is part of the current implementation.",
       "claim_kind": "SPECIFIED",
       "implementation_state": "NOT_IMPLEMENTED",
@@ -1152,11 +1260,16 @@
           }
         }
       ],
-      "interpretation": "Ownership state is per engine instance; two tabs duplicate each other's work. Profile coordination is DESIGNED (v0.33) and is explicitly not distributed consensus."
+      "interpretation": {
+        "summary": "Ownership state is per engine instance; two tabs duplicate each other's work. Profile coordination is DESIGNED (v0.33) and is explicitly not distributed consensus.",
+        "limitations": [
+          "The design intent and the implementation conflict; this record states the conflict and does not resolve it."
+        ]
+      },
+      "confidence": "MEDIUM"
     },
     {
       "id": "ARCH-CLAIM-009",
-      "group": "architecture-boundary",
       "statement": "Recognition confidence is comparable across providers.",
       "claim_kind": "CURRENT",
       "implementation_state": "NOT_IMPLEMENTED",
@@ -1186,11 +1299,14 @@
           }
         }
       ],
-      "interpretation": "Confidences are provider-local constants with no calibration or aggregation rule."
+      "interpretation": {
+        "summary": "Confidences are provider-local constants with no calibration or aggregation rule.",
+        "limitations": []
+      },
+      "confidence": "MEDIUM"
     },
     {
       "id": "ARCH-CLAIM-010",
-      "group": "architecture-boundary",
       "statement": "Several providers may match one observation, and do so by design.",
       "claim_kind": "CURRENT",
       "implementation_state": "IMPLEMENTED",
@@ -1220,11 +1336,14 @@
           }
         }
       ],
-      "interpretation": "text/html matches HTML and text because TextProvider matches text/*; there is no router or priority (DESIGNED v0.11)."
+      "interpretation": {
+        "summary": "text/html matches HTML and text because TextProvider matches text/*; there is no router or priority (DESIGNED v0.11).",
+        "limitations": []
+      },
+      "confidence": "HIGH"
     },
     {
       "id": "SCOPE-CLAIM-001",
-      "group": "scope-and-absence",
       "statement": "The repository contains no DVB/RF implementation (spectrum, tuner, demodulator, FEC, transport stream, PSI/SI).",
       "claim_kind": "CURRENT",
       "implementation_state": "NOT_IMPLEMENTED",
@@ -1254,12 +1373,17 @@
           }
         }
       ],
-      "interpretation": "Absence is asserted over a single implementation file read in full and scanned mechanically, so it is ABSENT (inspected, not found), not INACCESSIBLE.",
-      "absence_verification": "AV-001"
+      "interpretation": {
+        "summary": "Absence is asserted over a single implementation file read in full and scanned mechanically, so it is ABSENT (inspected, not found), not INACCESSIBLE.",
+        "limitations": [
+          "Absence holds only for the inspected scope and revision recorded in AV-001."
+        ]
+      },
+      "absence_verification": "AV-001",
+      "confidence": "MEDIUM"
     },
     {
       "id": "SCOPE-CLAIM-002",
-      "group": "scope-and-absence",
       "statement": "No v0.8+ design layer is implemented (capabilities, work items, evidence graph, leases, coverage, fencing).",
       "claim_kind": "CURRENT",
       "implementation_state": "NOT_IMPLEMENTED",
@@ -1298,12 +1422,17 @@
           }
         }
       ],
-      "interpretation": "The design series exists as prose only.",
-      "absence_verification": "AV-002"
+      "interpretation": {
+        "summary": "The design series exists as prose only.",
+        "limitations": [
+          "Absence holds only for the inspected scope and revision recorded in AV-002."
+        ]
+      },
+      "absence_verification": "AV-002",
+      "confidence": "MEDIUM"
     },
     {
       "id": "SCOPE-CLAIM-003",
-      "group": "scope-and-absence",
       "statement": "Coverage, absence and completeness are not represented.",
       "claim_kind": "CURRENT",
       "implementation_state": "NOT_IMPLEMENTED",
@@ -1333,12 +1462,17 @@
           }
         }
       ],
-      "interpretation": "\"Exhausted\" in logs means no eligible candidate at that instant; coverage objects are DESIGNED (v0.22, v0.23).",
-      "absence_verification": "AV-003"
+      "interpretation": {
+        "summary": "\"Exhausted\" in logs means no eligible candidate at that instant; coverage objects are DESIGNED (v0.22, v0.23).",
+        "limitations": [
+          "Absence holds only for the inspected scope and revision recorded in AV-003."
+        ]
+      },
+      "absence_verification": "AV-003",
+      "confidence": "MEDIUM"
     },
     {
       "id": "SCOPE-CLAIM-004",
-      "group": "scope-and-absence",
       "statement": "Non-URL candidate targets are not implemented.",
       "claim_kind": "CURRENT",
       "implementation_state": "NOT_IMPLEMENTED",
@@ -1368,12 +1502,17 @@
           }
         }
       ],
-      "interpretation": "Every discover() call passes a URL; the candidate type list is URL-oriented.",
-      "absence_verification": "AV-004"
+      "interpretation": {
+        "summary": "Every discover() call passes a URL; the candidate type list is URL-oriented.",
+        "limitations": [
+          "Absence holds only for the inspected scope and revision recorded in AV-004."
+        ]
+      },
+      "absence_verification": "AV-004",
+      "confidence": "MEDIUM"
     },
     {
       "id": "SCOPE-CLAIM-005",
-      "group": "scope-and-absence",
       "statement": "The repository contained no tests, CI configuration or build tooling at the analysis revision.",
       "claim_kind": "HISTORICAL",
       "implementation_state": "NOT_IMPLEMENTED",
@@ -1394,12 +1533,17 @@
           }
         }
       ],
-      "interpretation": "True at cc8df73; verification tooling was added afterwards under change R-010, which is recorded as an executed documentation-scope change.",
-      "absence_verification": "AV-005"
+      "interpretation": {
+        "summary": "True at cc8df73; verification tooling was added afterwards under change R-010, which is recorded as an executed documentation-scope change.",
+        "limitations": [
+          "Absence holds only for the inspected scope and revision recorded in AV-005."
+        ]
+      },
+      "absence_verification": "AV-005",
+      "confidence": "MEDIUM"
     },
     {
       "id": "SCOPE-CLAIM-006",
-      "group": "scope-and-absence",
       "statement": "DVB/RF support is an explicit non-goal of the project.",
       "claim_kind": "NON_GOAL",
       "implementation_state": "NOT_APPLICABLE",
@@ -1430,11 +1574,14 @@
           }
         }
       ],
-      "interpretation": "Stated in the project scope and enforced mechanically by a symbol scan in tools/verify.mjs. implementation_state is NOT_APPLICABLE because a non-goal is not an implementation claim (§92); the boundary statement itself is DIRECT evidence."
+      "interpretation": {
+        "summary": "Stated in the project scope and enforced mechanically by a symbol scan in tools/verify.mjs. implementation_state is NOT_APPLICABLE because a non-goal is not an implementation claim (§92); the boundary statement itself is DIRECT evidence.",
+        "limitations": []
+      },
+      "confidence": "MEDIUM"
     },
     {
       "id": "PLAN-CLAIM-001",
-      "group": "plan-history-hypothesis",
       "statement": "Acquisition runtime, recognition runtime, candidate sources, domain/sessions, work items, evidence graph, identity, classification, coverage, absence, query planning, reconciliation, arbitration, cost ledger, transactional persistence and multi-context coordination are designed.",
       "claim_kind": "PLANNED",
       "implementation_state": "NOT_IMPLEMENTED",
@@ -1464,11 +1611,14 @@
           }
         }
       ],
-      "interpretation": "The fact that these layers are planned is verified; their implementation is not implied. DIRECT evidence: the design documents are repository artifacts and are directly relevant to the claim that the layers are designed and unimplemented (§89)."
+      "interpretation": {
+        "summary": "The fact that these layers are planned is verified; their implementation is not implied. DIRECT evidence: the design documents are repository artifacts and are directly relevant to the claim that the layers are designed and unimplemented (§89).",
+        "limitations": []
+      },
+      "confidence": "MEDIUM"
     },
     {
       "id": "PLAN-CLAIM-002",
-      "group": "plan-history-hypothesis",
       "statement": "Browser-profile coordination is not distributed consensus.",
       "claim_kind": "SPECIFIED",
       "implementation_state": "NOT_IMPLEMENTED",
@@ -1489,11 +1639,14 @@
           }
         }
       ],
-      "interpretation": "Stated as a boundary by the design series itself. DIRECT evidence: the design documents are repository artifacts and are directly relevant to the claim that the layers are designed and unimplemented (§89)."
+      "interpretation": {
+        "summary": "Stated as a boundary by the design series itself. DIRECT evidence: the design documents are repository artifacts and are directly relevant to the claim that the layers are designed and unimplemented (§89).",
+        "limitations": []
+      },
+      "confidence": "MEDIUM"
     },
     {
       "id": "PLAN-CLAIM-003",
-      "group": "plan-history-hypothesis",
       "statement": "Deterministic decision replay must be separable from acquisition against a changing world.",
       "claim_kind": "SPECIFIED",
       "implementation_state": "NOT_IMPLEMENTED",
@@ -1514,11 +1667,14 @@
           }
         }
       ],
-      "interpretation": "An acquisition log is not a deterministic execution trace. DIRECT evidence: the design documents are repository artifacts and are directly relevant to the claim that the layers are designed and unimplemented (§89)."
+      "interpretation": {
+        "summary": "An acquisition log is not a deterministic execution trace. DIRECT evidence: the design documents are repository artifacts and are directly relevant to the claim that the layers are designed and unimplemented (§89).",
+        "limitations": []
+      },
+      "confidence": "MEDIUM"
     },
     {
       "id": "HIST-CLAIM-001",
-      "group": "plan-history-hypothesis",
       "statement": "Versions v0.3.0 to v0.6.0 existed as code and are superseded by v0.7.1.",
       "claim_kind": "HISTORICAL",
       "implementation_state": "IMPLEMENTED",
@@ -1548,11 +1704,14 @@
           }
         }
       ],
-      "interpretation": "All extracted revisions parse except the v0.5.0 paste at transcript L18378-L23093. Supersession is historical: these revisions are not maintained, and the evidence is the historical code blocks themselves, not the prose around them."
+      "interpretation": {
+        "summary": "All extracted revisions parse except the v0.5.0 paste at transcript L18378-L23093. Supersession is historical: these revisions are not maintained, and the evidence is the historical code blocks themselves, not the prose around them.",
+        "limitations": []
+      },
+      "confidence": "MEDIUM"
     },
     {
       "id": "HIST-CLAIM-002",
-      "group": "plan-history-hypothesis",
       "statement": "The v0.5.0 paste in the archive is not valid JavaScript.",
       "claim_kind": "HISTORICAL",
       "implementation_state": "NOT_IMPLEMENTED",
@@ -1573,11 +1732,14 @@
           }
         }
       ],
-      "interpretation": "await appears outside an async function (node --check)."
+      "interpretation": {
+        "summary": "await appears outside an async function (node --check).",
+        "limitations": []
+      },
+      "confidence": "MEDIUM"
     },
     {
       "id": "HIST-CLAIM-003",
-      "group": "plan-history-hypothesis",
       "statement": "The pre-cleanup README described the system accurately.",
       "claim_kind": "HISTORICAL",
       "implementation_state": "NOT_APPLICABLE",
@@ -1625,11 +1787,17 @@
           }
         }
       ],
-      "interpretation": "It claimed atomic claiming and guaranteed concurrency. Direct implementation evidence and executed behaviour override documentation evidence, and the contradiction is recorded rather than silently resolved."
+      "interpretation": {
+        "summary": "It claimed atomic claiming and guaranteed concurrency. Direct implementation evidence and executed behaviour override documentation evidence, and the contradiction is recorded rather than silently resolved.",
+        "limitations": [
+          "The design intent and the implementation conflict; this record states the conflict and does not resolve it.",
+          "Observed in the bundled harness: one browser profile and one simulated request log, not a production measurement."
+        ]
+      },
+      "confidence": "HIGH"
     },
     {
       "id": "HYP-CLAIM-001",
-      "group": "plan-history-hypothesis",
       "statement": "A value x probability / cost scheduling model would outperform the static priority heuristic.",
       "claim_kind": "HYPOTHESIS",
       "implementation_state": "NOT_APPLICABLE",
@@ -1650,7 +1818,13 @@
           }
         }
       ],
-      "interpretation": "No measurement exists; the cost and probability inputs are not modelled. implementation_state is NOT_APPLICABLE because a hypothesis is not an implementation claim (§91)."
+      "interpretation": {
+        "summary": "No measurement exists; the cost and probability inputs are not modelled. implementation_state is NOT_APPLICABLE because a hypothesis is not an implementation claim (§91).",
+        "limitations": [
+          "Indirect evidence supports the interpretation without establishing the claim directly."
+        ]
+      },
+      "confidence": "LOW"
     }
   ],
   "contradictions": [
@@ -2072,7 +2246,7 @@
       "category": "DOC_CLEANUP",
       "executed": true,
       "risk": "LOW",
-      "description": "Claim-level semantic validation (C-001…C-043, CV-001…CV-015), canonical authorization fields with explicit operation sets and intersection semantics, no-inheritance enforcement, and a YAML mirror of the authorization object checked by serialization invariants SER-001…SER-012.",
+      "description": "Claim-level semantic validation (C-001…C-043 plus cross-dimension rules; renumbered to the canonical CV matrix by R-019), canonical authorization fields with explicit operation sets and intersection semantics, no-inheritance enforcement, and a YAML mirror of the authorization object checked by serialization invariants SER-001…SER-012.",
       "files": [
         "docs/analysis/analysis.json",
         "docs/analysis/analysis.schema.json",
@@ -2088,6 +2262,28 @@
         "DOC-014",
         "TEST-014"
       ]
+    },
+    {
+      "id": "R-019",
+      "category": "DOC_REWRITE",
+      "executed": true,
+      "risk": "MEDIUM",
+      "description": "Replace the level-as-operation-set authorization with level profiles, capability sets and operation resolution; split execution and post-verification into separate lifecycles with per-operation results; add the confidence dimension and the validation matrix CV-001…CV-020.",
+      "files": [
+        "docs/analysis/analysis.schema.json",
+        "docs/analysis/analysis.json",
+        "docs/analysis/authorization.yaml",
+        "tools/validate-analysis.mjs",
+        "docs/analysis/scope-and-authorization.md"
+      ],
+      "rationale": "a profile name must not imply a capability, and an execution result must not imply a verification result",
+      "authorization_required": "DOC_REFACTOR (content) + PUSH (publication), both capability-restricted",
+      "evidence": [
+        "DOC-013",
+        "DOC-014",
+        "TEST-014",
+        "TEST-015"
+      ]
     }
   ],
   "authorization": {
@@ -2099,19 +2295,53 @@
       "repository": "Abdus2023/Generic-Discovery-Engine",
       "revision": "cc8df7357c2dbfe9d149747743e2f5e9ac9c0178 (work branch: arena/01a08d14-generic-discovery-engine)"
     },
+    "scope": {
+      "paths": {
+        "include": [
+          "README.md",
+          "docs/",
+          "tools/",
+          "prototype/",
+          "archive/"
+        ],
+        "exclude": []
+      }
+    },
     "granted_at": "2026-09-10",
     "expires_at": null,
     "state": "GRANTED",
-    "level": "DOC_REFACTOR",
-    "operations": [
-      "READ",
-      "ANALYZE",
-      "PROPOSE",
-      "CREATE",
-      "MODIFY",
-      "RENAME",
-      "MOVE"
-    ],
+    "level": {
+      "profile": "DOC_REFACTOR"
+    },
+    "capabilities": {
+      "mode": "RESTRICT",
+      "allow": [
+        "REPOSITORY_READ",
+        "ANALYSIS_EXECUTE",
+        "PROPOSAL_CREATE",
+        "DOCUMENT_CREATE",
+        "DOCUMENT_MODIFY",
+        "DOCUMENT_RENAME",
+        "DOCUMENT_MOVE"
+      ],
+      "deny": [
+        "DOCUMENT_DELETE"
+      ]
+    },
+    "operations": {
+      "allow": [
+        "READ",
+        "ANALYZE",
+        "PROPOSE",
+        "CREATE",
+        "MODIFY",
+        "RENAME",
+        "MOVE"
+      ],
+      "deny": [
+        "DELETE"
+      ]
+    },
     "change_ids": [
       "R-001",
       "R-002",
@@ -2130,11 +2360,161 @@
       "R-015",
       "R-016",
       "R-017",
-      "R-018"
+      "R-018",
+      "R-019"
     ]
   },
   "execution": {
-    "result": "SUCCEEDED",
+    "state": "SUCCEEDED",
+    "operations": [
+      {
+        "id": "OP-001",
+        "change_id": "R-001",
+        "operation": "CREATE",
+        "target": "prototype/generic-discovery-engine.user.js",
+        "result": "SUCCEEDED"
+      },
+      {
+        "id": "OP-002",
+        "change_id": "R-002",
+        "operation": "MODIFY",
+        "target": "README.md",
+        "result": "SUCCEEDED"
+      },
+      {
+        "id": "OP-003",
+        "change_id": "R-003",
+        "operation": "MODIFY",
+        "target": "docs/ (one canonical owner per concept)",
+        "result": "SUCCEEDED"
+      },
+      {
+        "id": "OP-004",
+        "change_id": "R-004",
+        "operation": "MOVE",
+        "target": "docs/roadmap/future-architecture.md",
+        "result": "SUCCEEDED"
+      },
+      {
+        "id": "OP-005",
+        "change_id": "R-005",
+        "operation": "MOVE",
+        "target": "archive/ (transcripts moved from the repository root)",
+        "result": "SUCCEEDED"
+      },
+      {
+        "id": "OP-006",
+        "change_id": "R-006",
+        "operation": "MODIFY",
+        "target": "docs/architecture/concurrency.md",
+        "result": "SUCCEEDED"
+      },
+      {
+        "id": "OP-007",
+        "change_id": "R-007",
+        "operation": "MODIFY",
+        "target": "docs/architecture/provider-model.md",
+        "result": "SUCCEEDED"
+      },
+      {
+        "id": "OP-008",
+        "change_id": "R-008",
+        "operation": "MODIFY",
+        "target": "docs/architecture/provider-model.md",
+        "result": "SUCCEEDED"
+      },
+      {
+        "id": "OP-009",
+        "change_id": "R-009",
+        "operation": "CREATE",
+        "target": "docs/glossary.md",
+        "result": "SUCCEEDED"
+      },
+      {
+        "id": "OP-010",
+        "change_id": "R-010",
+        "operation": "CREATE",
+        "target": "tools/ (verify.mjs, checks.mjs, simulate.mjs)",
+        "result": "SUCCEEDED"
+      },
+      {
+        "id": "OP-011",
+        "change_id": "R-011",
+        "operation": "CREATE",
+        "target": "docs/prototype/scope.md",
+        "result": "SUCCEEDED"
+      },
+      {
+        "id": "OP-012",
+        "change_id": "R-012",
+        "operation": "CREATE",
+        "target": "docs/analysis/evidence-register.md",
+        "result": "SUCCEEDED"
+      },
+      {
+        "id": "OP-013",
+        "change_id": "R-013",
+        "operation": "RENAME",
+        "target": "archive/Continue Architecture Planning.md",
+        "result": "SUCCEEDED"
+      },
+      {
+        "id": "OP-014",
+        "change_id": "R-014",
+        "operation": "MODIFY",
+        "target": "docs/ (typed status fields across the corpus)",
+        "result": "SUCCEEDED"
+      },
+      {
+        "id": "OP-015",
+        "change_id": "R-015",
+        "operation": "CREATE",
+        "target": "docs/analysis/scope-and-authorization.md",
+        "result": "SUCCEEDED"
+      },
+      {
+        "id": "OP-016",
+        "change_id": "R-016",
+        "operation": "CREATE",
+        "target": "docs/analysis/analysis.json",
+        "result": "SUCCEEDED"
+      },
+      {
+        "id": "OP-017",
+        "change_id": "R-017",
+        "operation": "MODIFY",
+        "target": "docs/analysis/claims.md",
+        "result": "SUCCEEDED"
+      },
+      {
+        "id": "OP-018",
+        "change_id": "R-018",
+        "operation": "CREATE",
+        "target": "docs/analysis/authorization.yaml",
+        "result": "SUCCEEDED"
+      },
+      {
+        "id": "OP-019",
+        "change_id": "R-019",
+        "operation": "MODIFY",
+        "target": "docs/analysis/analysis.schema.json",
+        "result": "SUCCEEDED"
+      },
+      {
+        "id": "OP-020",
+        "change_id": "R-019",
+        "operation": "COMMIT",
+        "target": "repository (change set R-001 … R-019)",
+        "result": "SUCCEEDED"
+      },
+      {
+        "id": "OP-021",
+        "change_id": "R-019",
+        "operation": "PUSH",
+        "target": "origin/arena/01a08d14-generic-discovery-engine",
+        "result": "SUCCEEDED"
+      }
+    ],
     "executed_changes": [
       "R-001",
       "R-002",
@@ -2153,7 +2533,8 @@
       "R-015",
       "R-016",
       "R-017",
-      "R-018"
+      "R-018",
+      "R-019"
     ],
     "unauthorized_changes": [],
     "discovered_not_executed": [
@@ -2170,35 +2551,73 @@
       "R-111",
       "R-112"
     ],
-    "notes": "Source code was out of authorized scope and is unchanged: the artifact digest matches the frozen value. Twelve changes discovered during execution were recorded and proposed, not applied, including a two-line counter fix. One proposed change was dropped after evidence contradicted its premise (the claimed stray backticks do not exist in v0.7.1).",
-    "operations": [
-      "READ",
-      "ANALYZE",
-      "PROPOSE",
-      "CREATE",
-      "MODIFY",
-      "MOVE",
-      "RENAME",
-      "COMMIT",
-      "PUSH"
-    ]
+    "started_at": "2026-09-10",
+    "completed_at": "2026-09-10",
+    "notes": "Timestamps are recorded at date granularity: the work was performed in one session on that date and per-operation wall-clock times were not captured. Mutating operations are listed per change; the earlier commits 400810d, b6dc164, e8b9aec, f4ca0e6, d6c381d, b5a1d11 and 8040bba published this change set incrementally, and the commit carrying this record is OP-020. Source code was out of scope and is unchanged: the artifact digest matches the frozen value. Twelve discovered changes were recorded and proposed, not applied. OP-020 and OP-021 are recorded as SUCCEEDED on the same grounds as the change they publish: this record is carried by that commit, so the assertion is true for any reader who can read it."
   },
   "post_verification": {
-    "result": "VERIFIED",
-    "evidence": [
-      "tools/verify.mjs: 30 passed, 0 failed, 4 documented defects",
-      "tools/checks.mjs: 4 passed, 0 failed",
-      "artifact digest unchanged (sha256 8f5fc5c5...)",
-      "every evidence citation resolves; every relative link resolves",
-      "tools/validate-analysis.mjs: schema and validation rules satisfied"
+    "state": "PASSED",
+    "result": "CONFORMING",
+    "scope": {
+      "paths": [
+        "README.md",
+        "docs/",
+        "tools/",
+        "prototype/",
+        "archive/"
+      ]
+    },
+    "checks": [
+      {
+        "id": "VERIFY-001",
+        "description": "The canonical record passes the validation pipeline (schema, claim rules, authorization rules).",
+        "result": "PASSED"
+      },
+      {
+        "id": "VERIFY-002",
+        "description": "claims.md matches the record (render-claims --check, no drift).",
+        "result": "PASSED"
+      },
+      {
+        "id": "VERIFY-003",
+        "description": "Restated claim fields in repository-analysis section 3 match the record.",
+        "result": "PASSED"
+      },
+      {
+        "id": "VERIFY-004",
+        "description": "authorization.yaml and analysis.json deserialize to the same authorization object.",
+        "result": "PASSED"
+      },
+      {
+        "id": "VERIFY-005",
+        "description": "The source artifact is unchanged (sha256 8f5fc5c5...c474).",
+        "result": "PASSED"
+      },
+      {
+        "id": "VERIFY-006",
+        "description": "Executable checks pass (verify.mjs, checks.mjs).",
+        "result": "PASSED"
+      },
+      {
+        "id": "VERIFY-007",
+        "description": "No path outside the declared scope paths changed.",
+        "result": "PASSED"
+      },
+      {
+        "id": "VERIFY-008",
+        "description": "Documentation-versus-implementation contradictions are retained, not normalized away.",
+        "result": "PASSED"
+      }
     ],
+    "findings": [],
+    "remediation_required": false,
+    "independent": true,
+    "method": "Re-ran every tool after execution and compared the results with the frozen artifact digest, the recorded change set and the declared scope paths. The verifier repaired nothing and modified no file.",
+    "mutations": [],
     "not_verified": [
       "end-to-end HtmlProvider behaviour under a real DOM (SCOPE-GAP-1, OPEN)",
       "real userscript-manager semantics (SCOPE-GAP-2, OPEN)"
-    ],
-    "independent": true,
-    "method": "re-ran the verification tools after execution and compared the result with the frozen artifact digest and the recorded change set; the verifier repaired nothing",
-    "mutations": []
+    ]
   },
   "absence_verification": [
     {
@@ -2276,17 +2695,68 @@
         "repository": "Abdus2023/Generic-Discovery-Engine",
         "revision": "cc8df7357c2dbfe9d149747743e2f5e9ac9c0178 (work branch: arena/01a08d14-generic-discovery-engine)"
       },
+      "scope": {
+        "paths": {
+          "include": [
+            "README.md",
+            "docs/",
+            "tools/",
+            "prototype/",
+            "archive/"
+          ],
+          "exclude": []
+        }
+      },
       "granted_at": "2026-09-10",
       "expires_at": null,
       "state": "GRANTED",
-      "level": "PUSH",
-      "operations": [
-        "READ",
-        "ANALYZE",
-        "PROPOSE",
-        "COMMIT",
-        "PUSH"
-      ],
+      "level": {
+        "profile": "PUSH"
+      },
+      "capabilities": {
+        "mode": "RESTRICT",
+        "allow": [
+          "REPOSITORY_READ",
+          "ANALYSIS_EXECUTE",
+          "PROPOSAL_CREATE",
+          "COMMIT_CREATE",
+          "PUSH_EXECUTE"
+        ],
+        "deny": [
+          "DOCUMENT_CREATE",
+          "DOCUMENT_MODIFY",
+          "DOCUMENT_RENAME",
+          "DOCUMENT_MOVE",
+          "DOCUMENT_DELETE",
+          "TEST_CREATE",
+          "TEST_MODIFY",
+          "TEST_RENAME",
+          "TEST_MOVE",
+          "TEST_DELETE",
+          "CODE_CREATE",
+          "CODE_MODIFY",
+          "CODE_RENAME",
+          "CODE_MOVE",
+          "CODE_DELETE",
+          "ARCHITECTURE_MODIFY"
+        ]
+      },
+      "operations": {
+        "allow": [
+          "READ",
+          "ANALYZE",
+          "PROPOSE",
+          "COMMIT",
+          "PUSH"
+        ],
+        "deny": [
+          "CREATE",
+          "MODIFY",
+          "RENAME",
+          "MOVE",
+          "DELETE"
+        ]
+      },
       "change_ids": [
         "R-001",
         "R-002",
@@ -2305,7 +2775,8 @@
         "R-015",
         "R-016",
         "R-017",
-        "R-018"
+        "R-018",
+        "R-019"
       ]
     }
   ],
@@ -2318,13 +2789,25 @@
       "VERIFIER": "analysis, re-run after execution",
       "REVIEWER": "repository owner / reviewer"
     },
+    "withheld_capabilities": [
+      "TEST_CREATE",
+      "TEST_MODIFY",
+      "TEST_RENAME",
+      "TEST_MOVE",
+      "TEST_DELETE",
+      "CODE_CREATE",
+      "CODE_MODIFY",
+      "CODE_RENAME",
+      "CODE_MOVE",
+      "CODE_DELETE",
+      "ARCHITECTURE_MODIFY"
+    ],
     "forbidden_operations": [
       "MODIFY_SOURCE_CODE",
       "MODIFY_TESTS",
-      "DELETE",
       "ARCHITECTURE_CHANGE",
       "PUSH_TO_OTHER_BRANCH"
     ],
-    "notes": "The canonical authorization object holds the content-mutation grant. Publication (COMMIT/PUSH) is outside Ops(DOC_REFACTOR) and outside the operations of every content level, so it is recorded as a second grant in the same canonical shape instead of being folded into one level; no single level in the normative table covers documentation mutation and publication together."
+    "notes": "Two canonical grants. Content: profile DOC_REFACTOR, capabilities restricted to documentation maintenance minus DOCUMENT_DELETE. Publication: profile PUSH, capabilities restricted to the publication set and denied every document, test and code capability that PUSH inherits through COMMIT -> ARCHITECTURE_CHANGE. A profile is a ceiling, not an authority: no capability was authorized that the record does not name here. The withheld capability classes cannot be reached by either grant."
   }
 }

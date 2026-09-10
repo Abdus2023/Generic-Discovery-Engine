@@ -1,7 +1,7 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "$id": "https://example.invalid/generic-discovery-analysis.schema.json",
-  "$comment": "The $id above is intentionally non-authoritative; replace it with the project's schema namespace if this schema is ever published. Additional properties are permitted throughout: the schema fixes the typed fields, it does not forbid extensions. Semantic rules that JSON Schema cannot express (C-001…C-043, CV-001…CV-015, AUTH-001…AUTH-014, SER-001…SER-012, I-001…I-016) are enforced by tools/validate-analysis.mjs.",
+  "$comment": "The $id above is intentionally non-authoritative; replace it with the project's schema namespace if this schema is ever published. Additional properties are permitted throughout: the schema fixes the typed fields, it does not forbid extensions. Semantic rules that JSON Schema cannot express are enforced by tools/validate-analysis.mjs: claim rules C-001…C-043, validation matrix CV-001…CV-020, execution invariants EV-001…EV-012, post-verification invariants PV-001…PV-010, authorization rules AUTH-001…AUTH-020, serialization invariants SER-001…SER-012 and invariants I-001…I-016.",
   "title": "Generic Discovery Engine Analysis",
   "type": "object",
   "required": [
@@ -11,7 +11,8 @@
     "claims",
     "changes",
     "authorization",
-    "execution"
+    "execution",
+    "post_verification"
   ],
   "properties": {
     "schema_version": {
@@ -38,15 +39,25 @@
     "authorization": {
       "$ref": "#/$defs/authorization"
     },
+    "authorization_grants": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/authorization"
+      },
+      "$comment": "Additional grants, each in the canonical authorization shape. A level profile is a ceiling, not an authority: no single profile carries both documentation mutation and publication as a narrow grant, so the publication capability is recorded as its own grant, restricted by capabilities.allow/deny."
+    },
     "execution": {
       "$ref": "#/$defs/execution"
+    },
+    "post_verification": {
+      "$ref": "#/$defs/post_verification"
     },
     "absence_verification": {
       "type": "array",
       "items": {
         "type": "object"
       },
-      "$comment": "Declared-scope absence procedures referenced by claims (rule V2)."
+      "$comment": "Declared-scope absence procedures referenced by claims (CV-010)."
     },
     "contradictions": {
       "type": "array",
@@ -54,19 +65,9 @@
         "type": "object"
       }
     },
-    "post_verification": {
-      "type": "object"
-    },
-    "authorization_grants": {
-      "type": "array",
-      "items": {
-        "$ref": "#/$defs/authorization"
-      },
-      "$comment": "Additional grants, each in the canonical authorization shape. The canonical single-level grant cannot express a documentation refactor followed by publication (DOC_REFACTOR excludes COMMIT/PUSH and PUSH excludes content mutation), so the publication capability is recorded as its own grant rather than silently widened."
-    },
     "governance": {
       "type": "object",
-      "$comment": "Roles and forbidden operations, kept outside the canonical authorization object."
+      "$comment": "Roles, withheld capability classes and forbidden operations, kept outside the canonical authorization object."
     }
   },
   "$defs": {
@@ -86,7 +87,7 @@
         "id": {
           "type": "string",
           "pattern": "^[A-Z]+-[A-Z]+-[0-9]{3,}$",
-          "$comment": "Project convention: <FAMILY>-CLAIM-<nnn> (CAND-CLAIM-001). The template pattern ^[A-Z]+-[0-9]{3,}$ would require renaming 41 identifiers that are already cited across 22 documents; identifier stability takes precedence, so the pattern is tightened to the established convention instead."
+          "$comment": "Project convention: <FAMILY>-CLAIM-<nnn> (CAND-CLAIM-001). The template pattern ^[A-Z]+-[0-9]{3,}$ would require renaming 41 identifiers already cited across 22 documents; identifier stability takes precedence, so the pattern is tightened to the established convention instead."
         },
         "statement": {
           "type": "string",
@@ -138,26 +139,54 @@
             "NOT_APPLICABLE"
           ]
         },
+        "confidence": {
+          "enum": [
+            "VERY_LOW",
+            "LOW",
+            "MEDIUM",
+            "HIGH",
+            "VERY_HIGH"
+          ],
+          "$comment": "Optional graded assessment of evidential strength (section 141). It never replaces evidence_level or verification_result. This repository assigns it by rule: HIGH = DIRECT|CORROBORATED evidence joined by an executed test with a verification result other than UNVERIFIED; MEDIUM = DIRECT|CORROBORATED without execution, an ABSENT claim with a recorded procedure, or any UNVERIFIED claim; LOW = INDIRECT; VERY_LOW = INACCESSIBLE. The confusing combination HIGH/VERY_HIGH with UNVERIFIED is rejected by the validator."
+        },
         "evidence": {
           "type": "array",
           "items": {
             "$ref": "#/$defs/evidence"
           }
         },
+        "interpretation": {
+          "type": "object",
+          "required": [
+            "summary"
+          ],
+          "properties": {
+            "summary": {
+              "type": "string"
+            },
+            "limitations": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              },
+              "$comment": "What the evidence does not establish: bounded scope, harness limits, unresolved conflict."
+            }
+          }
+        },
         "absence_verification": {
           "type": "string",
-          "$comment": "References an absence_verification procedure; required when evidence_level is ABSENT and verification_result is VERIFIED (rule V2)."
+          "$comment": "References an absence_verification procedure; required when evidence_level is ABSENT and verification_result is VERIFIED (CV-010)."
         },
         "absence_test": {
           "type": "string",
-          "$comment": "Set when implementation_state is NOT_IMPLEMENTED and test_state is TESTED: names the executed test that establishes the absence (\u00a793)."
+          "$comment": "Set when implementation_state is NOT_IMPLEMENTED and test_state is TESTED: names the executed test that establishes the absence."
         },
         "conflicting_evidence": {
           "type": "array",
           "items": {
             "type": "string"
           },
-          "$comment": "Evidence ids that conflict with the claim; required when verification_result is CONTRADICTED and the conflict is not expressed as a claim-to-claim contradiction (rule V4)."
+          "$comment": "Evidence ids that conflict with the claim; required when verification_result is CONTRADICTED and the conflict is not expressed as a claim-to-claim contradiction (CV-008)."
         }
       }
     },
@@ -169,6 +198,7 @@
         "path",
         "locator"
       ],
+      "$comment": "No generic \"status\" field is permitted on evidence (section 143).",
       "properties": {
         "id": {
           "type": "string"
@@ -180,7 +210,8 @@
             "CONFIG",
             "DOCUMENTATION",
             "HISTORY",
-            "EXTERNAL"
+            "GENERATED_ARTIFACT",
+            "EXTERNAL_REFERENCE"
           ]
         },
         "path": {
@@ -200,7 +231,9 @@
                 "HEADING",
                 "SECTION",
                 "COMMIT",
-                "URL"
+                "TAG",
+                "URL",
+                "FILE"
               ]
             },
             "value": {
@@ -288,6 +321,77 @@
         }
       }
     },
+    "capabilities": {
+      "type": "object",
+      "properties": {
+        "mode": {
+          "enum": [
+            "INHERIT",
+            "RESTRICT"
+          ],
+          "$comment": "INHERIT takes the profile capability set unchanged; RESTRICT intersects it with allow and then subtracts deny."
+        },
+        "allow": {
+          "type": "array",
+          "items": {
+            "enum": [
+              "REPOSITORY_READ",
+              "ANALYSIS_EXECUTE",
+              "PROPOSAL_CREATE",
+              "DOCUMENT_CREATE",
+              "DOCUMENT_MODIFY",
+              "DOCUMENT_RENAME",
+              "DOCUMENT_MOVE",
+              "DOCUMENT_DELETE",
+              "TEST_CREATE",
+              "TEST_MODIFY",
+              "TEST_RENAME",
+              "TEST_MOVE",
+              "TEST_DELETE",
+              "CODE_CREATE",
+              "CODE_MODIFY",
+              "CODE_RENAME",
+              "CODE_MOVE",
+              "CODE_DELETE",
+              "ARCHITECTURE_MODIFY",
+              "COMMIT_CREATE",
+              "PUSH_EXECUTE"
+            ]
+          },
+          "$comment": "Section 152: allow MUST NOT introduce a capability the profile does not contain."
+        },
+        "deny": {
+          "type": "array",
+          "items": {
+            "enum": [
+              "REPOSITORY_READ",
+              "ANALYSIS_EXECUTE",
+              "PROPOSAL_CREATE",
+              "DOCUMENT_CREATE",
+              "DOCUMENT_MODIFY",
+              "DOCUMENT_RENAME",
+              "DOCUMENT_MOVE",
+              "DOCUMENT_DELETE",
+              "TEST_CREATE",
+              "TEST_MODIFY",
+              "TEST_RENAME",
+              "TEST_MOVE",
+              "TEST_DELETE",
+              "CODE_CREATE",
+              "CODE_MODIFY",
+              "CODE_RENAME",
+              "CODE_MOVE",
+              "CODE_DELETE",
+              "ARCHITECTURE_MODIFY",
+              "COMMIT_CREATE",
+              "PUSH_EXECUTE"
+            ]
+          },
+          "$comment": "Section 153: deny always wins over allow and over the profile."
+        }
+      },
+      "$comment": "EffectiveCapabilities = (Capabilities(level.profile) intersect allow) minus deny."
+    },
     "authorization": {
       "type": "object",
       "required": [
@@ -307,40 +411,99 @@
           ]
         },
         "level": {
-          "enum": [
-            "READ_ONLY",
-            "ANALYSIS_ONLY",
-            "DOC_REFACTOR",
-            "TEST_REFACTOR",
-            "CODE_REFACTOR",
-            "ARCHITECTURE_CHANGE",
-            "COMMIT",
-            "PUSH"
-          ]
+          "type": "object",
+          "required": [
+            "profile"
+          ],
+          "properties": {
+            "profile": {
+              "enum": [
+                "READ_ONLY",
+                "ANALYSIS_ONLY",
+                "DOC_REFACTOR",
+                "TEST_REFACTOR",
+                "CODE_REFACTOR",
+                "ARCHITECTURE_CHANGE",
+                "COMMIT",
+                "PUSH"
+              ]
+            }
+          },
+          "$comment": "A named policy profile, not an authority and not an operation list. Capabilities come from the profile closure."
+        },
+        "capabilities": {
+          "$ref": "#/$defs/capabilities"
+        },
+        "operations": {
+          "type": "object",
+          "properties": {
+            "allow": {
+              "type": "array",
+              "items": {
+                "enum": [
+                  "READ",
+                  "ANALYZE",
+                  "PROPOSE",
+                  "CREATE",
+                  "MODIFY",
+                  "RENAME",
+                  "MOVE",
+                  "DELETE",
+                  "COMMIT",
+                  "PUSH"
+                ]
+              }
+            },
+            "deny": {
+              "type": "array",
+              "items": {
+                "enum": [
+                  "READ",
+                  "ANALYZE",
+                  "PROPOSE",
+                  "CREATE",
+                  "MODIFY",
+                  "RENAME",
+                  "MOVE",
+                  "DELETE",
+                  "COMMIT",
+                  "PUSH"
+                ]
+              },
+              "$comment": "Operation-level deny: wins over allow."
+            }
+          },
+          "$comment": "Operations are the execution-level abstraction; a capability authorizes an operation against a resource class."
+        },
+        "scope": {
+          "type": "object",
+          "properties": {
+            "paths": {
+              "type": "object",
+              "properties": {
+                "include": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
+                },
+                "exclude": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
+                }
+              },
+              "$comment": "Path prefixes or files inside the authorized change surface."
+            }
+          },
+          "$comment": "Scope is a separate concept from level, capability and operation (section 167)."
         },
         "change_ids": {
           "type": "array",
           "items": {
             "type": "string"
           }
-        },
-        "operations": {
-          "type": "array",
-          "items": {
-            "enum": [
-              "READ",
-              "ANALYZE",
-              "PROPOSE",
-              "CREATE",
-              "MODIFY",
-              "MOVE",
-              "RENAME",
-              "DELETE",
-              "COMMIT",
-              "PUSH"
-            ]
-          },
-          "$comment": "Optional restriction. Every entry must belong to Ops(level) (level table below)."
         },
         "authority": {
           "type": "object",
@@ -376,37 +539,95 @@
             }
           }
         },
-        "expires_at": {
+        "granted_at": {
           "type": [
             "string",
             "null"
           ]
         },
-        "granted_at": {
+        "expires_at": {
           "type": [
             "string",
             "null"
           ]
         }
       },
-      "$comment": "Canonical field names (no variants): state, level, operations, change_ids, authority, target, granted_at, expires_at. Effective operations = Ops(level) \u2229 operations; explicit operations are a restriction, never an escalation."
+      "$comment": "Canonical field names (no variants): state, level, capabilities, operations, scope, change_ids, authority, target, granted_at, expires_at. Section 167: state is not level.profile, not capability, not operation, not scope, not change authorization. ALLOW = GRANTED and capability and operation and target and change in change_ids and temporal validity."
     },
     "execution": {
       "type": "object",
       "required": [
-        "result",
+        "state",
+        "operations",
         "executed_changes",
         "unauthorized_changes"
       ],
       "properties": {
-        "result": {
+        "state": {
           "enum": [
-            "NOT_EXECUTED",
+            "NOT_STARTED",
+            "AUTHORIZATION_BLOCKED",
+            "READY",
+            "RUNNING",
             "SUCCEEDED",
             "PARTIALLY_SUCCEEDED",
             "FAILED",
+            "CANCELLED",
             "STOPPED"
           ]
+        },
+        "operations": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "id",
+              "operation",
+              "target",
+              "result"
+            ],
+            "properties": {
+              "id": {
+                "type": "string"
+              },
+              "change_id": {
+                "type": "string",
+                "$comment": "The authorized change this operation belongs to (EV-011)."
+              },
+              "operation": {
+                "enum": [
+                  "READ",
+                  "ANALYZE",
+                  "PROPOSE",
+                  "CREATE",
+                  "MODIFY",
+                  "RENAME",
+                  "MOVE",
+                  "DELETE",
+                  "COMMIT",
+                  "PUSH"
+                ]
+              },
+              "target": {
+                "type": "string"
+              },
+              "result": {
+                "enum": [
+                  "NOT_ATTEMPTED",
+                  "AUTHORIZATION_DENIED",
+                  "SKIPPED",
+                  "SUCCEEDED",
+                  "FAILED",
+                  "CANCELLED",
+                  "BLOCKED"
+                ]
+              },
+              "note": {
+                "type": "string"
+              }
+            },
+            "$comment": "Per-operation result prevents execution.state = PARTIALLY_SUCCEEDED from hiding which operation failed (section 157)."
+          }
         },
         "executed_changes": {
           "type": "array",
@@ -420,88 +641,326 @@
             "type": "string"
           }
         },
-        "operations": {
+        "discovered_not_executed": {
           "type": "array",
           "items": {
-            "enum": [
-              "READ",
-              "ANALYZE",
-              "PROPOSE",
-              "CREATE",
-              "MODIFY",
-              "MOVE",
-              "RENAME",
-              "DELETE",
-              "COMMIT",
-              "PUSH"
-            ]
+            "type": "string"
+          }
+        },
+        "started_at": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "completed_at": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "notes": {
+          "type": "string"
+        }
+      },
+      "$comment": "Execution has two levels: execution.state (lifecycle) and operations[].result (per operation). Neither is post-verification."
+    },
+    "post_verification": {
+      "type": "object",
+      "required": [
+        "state",
+        "result",
+        "checks"
+      ],
+      "properties": {
+        "state": {
+          "enum": [
+            "NOT_REQUIRED",
+            "NOT_STARTED",
+            "READY",
+            "RUNNING",
+            "PASSED",
+            "PARTIALLY_PASSED",
+            "FAILED",
+            "BLOCKED",
+            "INCONCLUSIVE"
+          ]
+        },
+        "result": {
+          "enum": [
+            "CONFORMING",
+            "PARTIALLY_CONFORMING",
+            "NON_CONFORMING",
+            "INCONCLUSIVE",
+            "NOT_APPLICABLE"
+          ],
+          "$comment": "Lifecycle state and outcome are separate fields; PV-006/PV-007 attach conformity to result, never to state."
+        },
+        "scope": {
+          "type": "object"
+        },
+        "checks": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "id",
+              "description",
+              "result"
+            ],
+            "properties": {
+              "id": {
+                "type": "string"
+              },
+              "description": {
+                "type": "string"
+              },
+              "result": {
+                "enum": [
+                  "NOT_RUN",
+                  "PASSED",
+                  "FAILED",
+                  "BLOCKED",
+                  "INCONCLUSIVE"
+                ]
+              }
+            }
+          }
+        },
+        "findings": {
+          "type": "array",
+          "items": {
+            "type": "object"
+          }
+        },
+        "remediation_required": {
+          "type": "boolean"
+        },
+        "independent": {
+          "type": "boolean"
+        },
+        "method": {
+          "type": "string"
+        },
+        "mutations": {
+          "type": "array",
+          "items": {
+            "type": "object"
+          },
+          "$comment": "Must be empty: post-verification never modifies the repository (PV-009)."
+        },
+        "not_verified": {
+          "type": "array",
+          "items": {
+            "type": "string"
           }
         }
-      }
+      },
+      "$comment": "A distinct lifecycle. It does not reuse execution.state (sections 158-159)."
+    },
+    "operation_result": {
+      "enum": [
+        "NOT_ATTEMPTED",
+        "AUTHORIZATION_DENIED",
+        "SKIPPED",
+        "SUCCEEDED",
+        "FAILED",
+        "CANCELLED",
+        "BLOCKED"
+      ]
+    },
+    "capability": {
+      "enum": [
+        "REPOSITORY_READ",
+        "ANALYSIS_EXECUTE",
+        "PROPOSAL_CREATE",
+        "DOCUMENT_CREATE",
+        "DOCUMENT_MODIFY",
+        "DOCUMENT_RENAME",
+        "DOCUMENT_MOVE",
+        "DOCUMENT_DELETE",
+        "TEST_CREATE",
+        "TEST_MODIFY",
+        "TEST_RENAME",
+        "TEST_MOVE",
+        "TEST_DELETE",
+        "CODE_CREATE",
+        "CODE_MODIFY",
+        "CODE_RENAME",
+        "CODE_MOVE",
+        "CODE_DELETE",
+        "ARCHITECTURE_MODIFY",
+        "COMMIT_CREATE",
+        "PUSH_EXECUTE"
+      ],
+      "$comment": "An atomic permission. Capabilities are deliberately more granular than level profiles (section 146)."
     }
   },
-  "authorization_levels": {
-    "READ_ONLY": [
-      "READ"
-    ],
-    "ANALYSIS_ONLY": [
-      "READ",
-      "ANALYZE",
-      "PROPOSE"
-    ],
-    "DOC_REFACTOR": [
-      "READ",
-      "ANALYZE",
-      "PROPOSE",
-      "CREATE",
-      "MODIFY",
-      "RENAME",
-      "MOVE",
-      "DELETE"
-    ],
-    "TEST_REFACTOR": [
-      "READ",
-      "ANALYZE",
-      "PROPOSE",
-      "CREATE",
-      "MODIFY",
-      "RENAME",
-      "MOVE",
-      "DELETE"
-    ],
-    "CODE_REFACTOR": [
-      "READ",
-      "ANALYZE",
-      "PROPOSE",
-      "CREATE",
-      "MODIFY",
-      "RENAME",
-      "MOVE",
-      "DELETE"
-    ],
-    "ARCHITECTURE_CHANGE": [
-      "READ",
-      "ANALYZE",
-      "PROPOSE",
-      "CREATE",
-      "MODIFY",
-      "RENAME",
-      "MOVE",
-      "DELETE"
-    ],
-    "COMMIT": [
-      "READ",
-      "ANALYZE",
-      "PROPOSE",
-      "COMMIT"
-    ],
-    "PUSH": [
-      "READ",
-      "ANALYZE",
-      "PROPOSE",
-      "COMMIT",
-      "PUSH"
-    ]
+  "level_profiles": {
+    "READ_ONLY": {
+      "inherits": [],
+      "capabilities": [
+        "REPOSITORY_READ"
+      ]
+    },
+    "ANALYSIS_ONLY": {
+      "inherits": [
+        "READ_ONLY"
+      ],
+      "capabilities": [
+        "ANALYSIS_EXECUTE",
+        "PROPOSAL_CREATE"
+      ]
+    },
+    "DOC_REFACTOR": {
+      "inherits": [
+        "ANALYSIS_ONLY"
+      ],
+      "capabilities": [
+        "DOCUMENT_CREATE",
+        "DOCUMENT_MODIFY",
+        "DOCUMENT_RENAME",
+        "DOCUMENT_MOVE",
+        "DOCUMENT_DELETE"
+      ]
+    },
+    "TEST_REFACTOR": {
+      "inherits": [
+        "ANALYSIS_ONLY"
+      ],
+      "capabilities": [
+        "TEST_CREATE",
+        "TEST_MODIFY",
+        "TEST_RENAME",
+        "TEST_MOVE",
+        "TEST_DELETE"
+      ]
+    },
+    "CODE_REFACTOR": {
+      "inherits": [
+        "ANALYSIS_ONLY"
+      ],
+      "capabilities": [
+        "CODE_CREATE",
+        "CODE_MODIFY",
+        "CODE_RENAME",
+        "CODE_MOVE",
+        "CODE_DELETE"
+      ]
+    },
+    "ARCHITECTURE_CHANGE": {
+      "inherits": [
+        "CODE_REFACTOR",
+        "DOC_REFACTOR",
+        "TEST_REFACTOR"
+      ],
+      "capabilities": [
+        "ARCHITECTURE_MODIFY"
+      ]
+    },
+    "COMMIT": {
+      "inherits": [
+        "ARCHITECTURE_CHANGE"
+      ],
+      "capabilities": [
+        "COMMIT_CREATE"
+      ]
+    },
+    "PUSH": {
+      "inherits": [
+        "COMMIT"
+      ],
+      "capabilities": [
+        "PUSH_EXECUTE"
+      ]
+    }
   },
-  "authorization_levels_comment": "Ops(level) per the normative specification. There is no inheritance: an operation is authorized only if it appears in its level set and in the grant's operations."
+  "level_profiles_comment": "Capabilities(L) = OwnCapabilities(L) union Capabilities(parents), evaluated over the declared inherits edges. Inheritance is explicit and is never inferred from the textual ordering of level names (sections 148-150).",
+  "capability_operations": {
+    "REPOSITORY_READ": {
+      "operation": "READ",
+      "resource": "repository"
+    },
+    "ANALYSIS_EXECUTE": {
+      "operation": "ANALYZE",
+      "resource": "repository"
+    },
+    "PROPOSAL_CREATE": {
+      "operation": "PROPOSE",
+      "resource": "proposal"
+    },
+    "DOCUMENT_CREATE": {
+      "operation": "CREATE",
+      "resource": "documentation"
+    },
+    "DOCUMENT_MODIFY": {
+      "operation": "MODIFY",
+      "resource": "documentation"
+    },
+    "DOCUMENT_RENAME": {
+      "operation": "RENAME",
+      "resource": "documentation"
+    },
+    "DOCUMENT_MOVE": {
+      "operation": "MOVE",
+      "resource": "documentation"
+    },
+    "DOCUMENT_DELETE": {
+      "operation": "DELETE",
+      "resource": "documentation"
+    },
+    "TEST_CREATE": {
+      "operation": "CREATE",
+      "resource": "tests"
+    },
+    "TEST_MODIFY": {
+      "operation": "MODIFY",
+      "resource": "tests"
+    },
+    "TEST_RENAME": {
+      "operation": "RENAME",
+      "resource": "tests"
+    },
+    "TEST_MOVE": {
+      "operation": "MOVE",
+      "resource": "tests"
+    },
+    "TEST_DELETE": {
+      "operation": "DELETE",
+      "resource": "tests"
+    },
+    "CODE_CREATE": {
+      "operation": "CREATE",
+      "resource": "source_code"
+    },
+    "CODE_MODIFY": {
+      "operation": "MODIFY",
+      "resource": "source_code"
+    },
+    "CODE_RENAME": {
+      "operation": "RENAME",
+      "resource": "source_code"
+    },
+    "CODE_MOVE": {
+      "operation": "MOVE",
+      "resource": "source_code"
+    },
+    "CODE_DELETE": {
+      "operation": "DELETE",
+      "resource": "source_code"
+    },
+    "ARCHITECTURE_MODIFY": {
+      "operation": "MODIFY",
+      "resource": "architecture"
+    },
+    "COMMIT_CREATE": {
+      "operation": "COMMIT",
+      "resource": "repository"
+    },
+    "PUSH_EXECUTE": {
+      "operation": "PUSH",
+      "resource": "repository"
+    }
+  },
+  "capability_operations_comment": "A capability authorizes one operation against one resource class (section 147). DOCUMENT_MODIFY permits MODIFY against documentation, not against arbitrary source code."
 }

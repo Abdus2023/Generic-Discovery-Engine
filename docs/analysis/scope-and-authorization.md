@@ -71,19 +71,19 @@ Consequences of exclusion, stated so they cannot later appear as verified:
 
 | Operation | Status |
 | --- | --- |
-| READ | allowed |
-| ANALYZE | allowed |
-| PROPOSE | allowed |
-| CREATE | allowed — documentation and verification tooling only |
-| MODIFY | allowed — documentation and verification tooling only; **source code forbidden** |
-| RENAME | allowed — documentation only (one archive move) |
-| MOVE | allowed — documentation only |
-| DELETE | forbidden (nothing was deleted) |
-| CODE CHANGES | **forbidden** |
-| TEST CHANGES | forbidden; adding verification tooling was authorized as documentation/analysis work (`ANALYSIS_ONLY` + `DOC_REFACTOR`) |
-| DOCUMENTATION CHANGES | allowed |
-| COMMIT | allowed |
-| PUSH | allowed |
+| READ | allowed (`REPOSITORY_READ` → READ) |
+| ANALYZE | allowed (`ANALYSIS_EXECUTE` → ANALYZE) |
+| PROPOSE | allowed (`PROPOSAL_CREATE` → PROPOSE) |
+| CREATE | allowed — documentation and verification tooling only (`DOCUMENT_CREATE` → CREATE, documentation) |
+| MODIFY | allowed — documentation and verification tooling only (`DOCUMENT_MODIFY`); **source code has no capability** |
+| RENAME | allowed — documentation only (`DOCUMENT_RENAME`; one archive move) |
+| MOVE | allowed — documentation only (`DOCUMENT_MOVE`) |
+| DELETE | denied at both layers (`DOCUMENT_DELETE` in `capabilities.deny`, `DELETE` in `operations.deny`); nothing was deleted — the two transcripts are recorded by git as 100 %-similar renames (`R100`), not as deletions |
+| CODE CHANGES | **no capability exists** — `CODE_*` is a withheld class, unreachable through either grant |
+| TEST CHANGES | **no capability exists** — `TEST_*` is a withheld class; adding the verification tooling was documentation/analysis work, not test-suite modification |
+| DOCUMENTATION CHANGES | allowed up to the capability ceiling, and narrowed by the explicit allow list |
+| COMMIT | allowed by the publication grant only (`COMMIT_CREATE`) |
+| PUSH | allowed by the publication grant only (`PUSH_EXECUTE`, work branch) |
 
 The artifact was never modified; its digest is frozen in the evidence register
 and enforced by `tools/verify.mjs`.
@@ -150,115 +150,221 @@ analyzer remained `ANALYZER` and produced proposals only.
 
 ## 5. Authorization model
 
-Authorization has **four distinct concepts**, represented separately and never
-collapsed into one word.
+Authorization is resolved in layers. They are different objects, and none of
+them may stand in for another:
+
+```
+LEVEL PROFILE  →  CAPABILITY SET  →  OPERATION AUTHORIZATION  →  CHANGE
+ (policy ceiling)   (atomic permits)     (what may be done)         (to what)
+```
 
 | Concept | Field | Question |
 | --- | --- | --- |
 | Authorization state | `authorization.state` | Has mutation authority actually been granted? |
-| Authorization level | `authorization.level` | What is the maximum capability of the grant? |
-| Authorized operations | `authorization.operations` | Which operations does this grant permit in practice? |
-| Authorized changes | `authorization.change_ids` | Which change records are covered? |
+| Level profile | `authorization.level.profile` | Which named policy ceiling applies? |
+| Capability set | `authorization.capabilities` | Which atomic permissions survive that ceiling? |
+| Operations | `authorization.operations` | Which execution-level operations do they imply here? |
+| Scope | `authorization.scope` | Which paths and resources are in play? |
+| Change authorization | `authorization.change_ids` | Which change records are covered? |
 
 States: `NOT_REQUESTED` · `REQUESTED` · `DENIED` · `GRANTED` · `REVOKED` ·
-`EXPIRED`. **Only `GRANTED` permits mutation.**
+`EXPIRED`. **Only `GRANTED` permits mutation.** A profile is a ceiling, never an
+authority: `DOC_REFACTOR` on a grant says what *could* be permitted at most, not
+what the user granted.
 
-Levels: `READ_ONLY` · `ANALYSIS_ONLY` · `DOC_REFACTOR` · `TEST_REFACTOR` ·
-`CODE_REFACTOR` · `ARCHITECTURE_CHANGE` · `COMMIT` · `PUSH`. The machine-readable
-operation set of each level, `Ops(level)`, is defined in
-[analysis.schema.json](analysis.schema.json) under `authorization_levels` and is
-the single copy the validator reads — a level name never implies an operation.
+### Capabilities are atomic; operations are the execution abstraction
 
-### Operations are a restriction, never an escalation
+| Capability group | Members |
+| --- | --- |
+| Repository | `REPOSITORY_READ` · `ANALYSIS_EXECUTE` · `PROPOSAL_CREATE` |
+| Documentation | `DOCUMENT_CREATE` · `DOCUMENT_MODIFY` · `DOCUMENT_RENAME` · `DOCUMENT_MOVE` · `DOCUMENT_DELETE` |
+| Tests | `TEST_CREATE` · `TEST_MODIFY` · `TEST_RENAME` · `TEST_MOVE` · `TEST_DELETE` |
+| Source code | `CODE_CREATE` · `CODE_MODIFY` · `CODE_RENAME` · `CODE_MOVE` · `CODE_DELETE` |
+| Architecture | `ARCHITECTURE_MODIFY` |
+| Publication | `COMMIT_CREATE` · `PUSH_EXECUTE` |
+
+A capability authorizes one operation against one resource class
+(`capability_operations` in [analysis.schema.json](analysis.schema.json)). For
+example `DOCUMENT_MODIFY` permits `MODIFY` against documentation — not against
+arbitrary source code. Capabilities are deliberately finer-grained than profiles,
+and profiles never differ only by their names.
+
+### Inheritance is declared, never inferred
+
+```yaml
+READ_ONLY:           capabilities: [REPOSITORY_READ]
+ANALYSIS_ONLY:       inherits READ_ONLY             + [ANALYSIS_EXECUTE, PROPOSAL_CREATE]
+DOC_REFACTOR:        inherits ANALYSIS_ONLY         + [DOCUMENT_*]
+TEST_REFACTOR:       inherits ANALYSIS_ONLY         + [TEST_*]
+CODE_REFACTOR:       inherits ANALYSIS_ONLY         + [CODE_*]
+ARCHITECTURE_CHANGE: inherits CODE_REFACTOR, DOC_REFACTOR, TEST_REFACTOR + [ARCHITECTURE_MODIFY]
+COMMIT:              inherits ARCHITECTURE_CHANGE   + [COMMIT_CREATE]
+PUSH:                inherits COMMIT                + [PUSH_EXECUTE]
+```
 
 ```
-EffectiveOperations = Ops(level) ∩ authorization.operations
+Capabilities(L) = OwnCapabilities(L) ∪ Capabilities(parent₁) ∪ … ∪ Capabilities(parentₙ)
 ```
 
-An explicit `operations` list can only narrow the grant. `COMMIT` under
-`level: DOC_REFACTOR` is invalid because `COMMIT ∉ Ops(DOC_REFACTOR)`; commit
-authority requires a grant whose level permits it. Likewise `CODE_REFACTOR` does
-not imply `COMMIT`, and `ARCHITECTURE_CHANGE` does not imply `PUSH` — no
-inheritance is inferred from the lexical ordering (rule `AUTH-006`, §124, §127).
+The closure is computed over the declared `inherits` edges in the schema — the
+validator walks them and rejects a cycle. **No rule reads the textual ordering of
+profile names.** `CODE_REFACTOR` does not imply `COMMIT`; `PUSH` inherits the
+content profiles only because the table says so, and that inheritance is exactly
+what has to be restricted below.
+
+### Restriction: allow narrows, deny wins
+
+```
+EffectiveCapabilities = (Capabilities(level.profile) ∩ capabilities.allow) − capabilities.deny
+```
+
+`capabilities.allow` may never introduce a capability the profile does not contain
+(`AUTH-006`); it can only narrow. `capabilities.deny` always wins over `allow` and
+over the profile (`AUTH-009`). The operation layer repeats the pattern:
+`operations.allow` must be implied by an effective capability, and
+`operations.deny` wins over it.
 
 ### The grants as applied
 
 ```yaml
-authorization:                       # content mutation
+authorization:                        # content grant
   state: GRANTED
-  level: DOC_REFACTOR
-  operations: [READ, ANALYZE, PROPOSE, CREATE, MODIFY, RENAME, MOVE]
-  change_ids: [R-001 … R-018]
+  level: {profile: DOC_REFACTOR}      # ceiling: repository + analysis + documentation
+  capabilities:
+    mode: RESTRICT
+    allow: [REPOSITORY_READ, ANALYSIS_EXECUTE, PROPOSAL_CREATE,
+            DOCUMENT_CREATE, DOCUMENT_MODIFY, DOCUMENT_RENAME, DOCUMENT_MOVE]
+    deny:  [DOCUMENT_DELETE]          # inside the profile, explicitly removed
+  operations:
+    allow: [READ, ANALYZE, PROPOSE, CREATE, MODIFY, RENAME, MOVE]
+    deny:  [DELETE]
+  scope: {paths: {include: [README.md, docs/, tools/, prototype/, archive/], exclude: []}}
+  change_ids: [R-001 … R-019]
   authority: {type: USER, identifier: "Abdus2023 (repository owner), delegating through the standing session instruction"}
-  target: {repository: "Abdus2023/Generic-Discovery-Engine", revision: "cc8df73… (work branch: arena/01a08d14-generic-discovery-engine)"}
+  target:    {repository: "Abdus2023/Generic-Discovery-Engine", revision: "cc8df73… (work branch)"}
   granted_at: "2026-09-10"
   expires_at: null
 
-authorization_grants:                # publication, recorded as its own grant
+authorization_grants:                 # publication grant
   - state: GRANTED
-    level: PUSH
-    operations: [READ, ANALYZE, PROPOSE, COMMIT, PUSH]
-    change_ids: [R-001 … R-018]
-    authority: {type: USER, identifier: "Abdus2023 (repository owner), delegating through the standing session instruction"}
-    target: {repository: "Abdus2023/Generic-Discovery-Engine", revision: "cc8df73… (work branch: arena/01a08d14-generic-discovery-engine)"}
-    granted_at: "2026-09-10"
-    expires_at: null
+    level: {profile: PUSH}            # ceiling: everything, by declared inheritance
+    capabilities:
+      mode: RESTRICT
+      allow: [REPOSITORY_READ, ANALYSIS_EXECUTE, PROPOSAL_CREATE, COMMIT_CREATE, PUSH_EXECUTE]
+      deny:  [DOCUMENT_CREATE, DOCUMENT_MODIFY, DOCUMENT_RENAME, DOCUMENT_MOVE, DOCUMENT_DELETE,
+              TEST_CREATE, TEST_MODIFY, TEST_RENAME, TEST_MOVE, TEST_DELETE,
+              CODE_CREATE, CODE_MODIFY, CODE_RENAME, CODE_MOVE, CODE_DELETE, ARCHITECTURE_MODIFY]
+    operations:
+      allow: [READ, ANALYZE, PROPOSE, COMMIT, PUSH]
+      deny:  [CREATE, MODIFY, RENAME, MOVE, DELETE]
+    scope: {paths: {include: [README.md, docs/, tools/, prototype/, archive/], exclude: []}}
+    change_ids: [R-001 … R-019]
+    authority: {…} · target: {…} · granted_at: "2026-09-10" · expires_at: null
 ```
 
-**Recorded deviation, not a workaround.** The normative level table gives
-`DOC_REFACTOR` the content operations but not `COMMIT`/`PUSH`, and gives `PUSH`
-the publication operations but no content mutation. No single level therefore
-covers "refactor the documentation and publish the result", which is what this
-work required. Rather than silently widening `DOC_REFACTOR` (an escalation the
-rules forbid) or dropping the publication capability from the record, the
-publication capability is recorded as a second grant in the canonical shape.
-`DELETE` is inside `Ops(DOC_REFACTOR)` but absent from
-`authorization.operations`, which shows the intersection at work: nothing was
-deleted, so the operation was never granted in practice.
+This is where the model earns its keep. `PUSH` **does** inherit
+`ARCHITECTURE_CHANGE` → `CODE_REFACTOR`/`DOC_REFACTOR`/`TEST_REFACTOR`, so an
+unrestricted `PUSH` grant would permit source-code mutation. The publication grant
+therefore lists sixteen denied capabilities and five allowed ones: publication
+authority without content authority. `capabilities.deny` doing real subtraction is
+the mechanism, exactly as §153 intends — the safety boundary is not a naming
+convention, it is a computed set.
+
+The content grant likewise denies `DOCUMENT_DELETE`, which *is* inside its
+profile. Nothing in this work deleted a file: git records the two archived
+transcripts as renames with 100 % similarity (`R100`), which is a `MOVE`/`RENAME`
+under the canonical vocabulary, not a `DELETE`. The deny is therefore a statement
+about authority that was never exercised — and the operation list is a list of
+what was actually done, so `DELETE` appears in `deny` and nowhere in the
+execution record.
 
 ### The decision function
 
 ```
 ALLOW(operation, target, change) =
-      state == GRANTED
-  AND operation ∈ EffectiveOperations
-  AND target ∈ authorization.target
+      authorization.state == GRANTED
+  AND operation ∈ EffectiveOperations            (∩ operations.allow, − operations.deny)
+  AND target ∈ authorization.scope
   AND change.id ∈ authorization.change_ids
+  AND authorization is temporally valid (granted_at ≤ now < expires_at)
 ```
 
-If any predicate is false the answer is `DENY`. Applied before each mutation:
+Evaluation follows the resolution order of §151 and §155:
 
 ```
 requested operation
-        ↓
-authorization.state == GRANTED ?
-        ↓
-authorization target matches repository ?
-        ↓
-operation ∈ Ops(level) ∩ operations ?
-        ↓
-change ID present in change_ids ?
-        ↓
-authorization not expired / revoked ?
-        ↓
-EXECUTE          otherwise → DO NOT MUTATE
+      ↓
+state == GRANTED ?                     ── no ─→ AUTHORIZATION_BLOCKED
+      ↓ yes
+level.profile valid and known ?        ── no ─→ deny
+      ↓ yes
+capability closure of the profile
+      ↓
+∩ capabilities.allow   − capabilities.deny        (deny wins)
+      ↓
+operation ∈ implied operations            ── no ─→ AUTHORIZATION_DENIED
+∩ operations.allow     − operations.deny
+      ↓
+target path inside scope.paths.include, outside exclude   ── no ─→ deny
+      ↓ yes
+change.id ∈ change_ids ?               ── no ─→ separate authorization required
+      ↓ yes
+ALLOW
 ```
 
-`AUTH-001 … AUTH-014` encode this mechanically and
-`tools/validate-analysis.mjs` evaluates them against the record. A newly
-discovered change id is unauthorized until it is granted: new work creates a new
-change record, it does not inherit the authority of the change that discovered
-it (§128, `AUTH-013`).
+`AUTH-001` … `AUTH-020` encode these steps and `tools/validate-analysis.mjs`
+evaluates them against the record; `EV-010`, `EV-011` and `EV-012` require that
+every executed operation has a decision, names an authorized change, and that no
+unauthorized operation touched the repository.
 
-### Serialization
+### Scope paths
 
-The YAML mirror [authorization.yaml](authorization.yaml) and the JSON record
-must deserialize to the same logical object. Field names are canonical:
-`state`, `level`, `operations`, `change_ids`, `authority`, `target`,
-`granted_at`, `expires_at` — never `authorization_level`, `auth_level`,
-`permission_level`, `allowed_operations`, `authorized_operations` or
-`authorized_change_ids`. Invariants `SER-001 … SER-012` are checked by the
-validator, including that serialization does not increase effective privileges.
+`scope.paths.include` names the locations this change set was allowed to touch:
+`README.md`, `docs/`, `tools/`, `prototype/`, `archive/`. `exclude` is **empty**,
+and that is a recorded fact rather than an omission: every location the change set
+touched is inside the include list, so there was nothing to withhold. The
+protection in this work is not path-based but capability-based — no grant carries
+`CODE_*`, `TEST_*` or `ARCHITECTURE_MODIFY`, and `tools/verify.mjs` re-derives the
+capability closure to prove that no withheld capability is reachable through
+either grant. The declared include list is additionally checked against git: the
+paths changed since the base revision must all lie inside it.
+
+`prototype/` appears in the include list because the extraction step created the
+artifact file there (change `R-001`), and `archive/` because the transcripts were
+moved into it (`R-005`, `R-013`). Both are frozen afterwards: the artifact digest
+is recomputed by the verification tooling and has not changed since it was
+extracted.
+
+### The two lifecycles
+
+Execution and post-verification are separate lifecycles with separate vocabularies,
+and neither reuses the other's or the claim's:
+
+```
+execution.state            NOT_STARTED · AUTHORIZATION_BLOCKED · READY · RUNNING ·
+                           SUCCEEDED · PARTIALLY_SUCCEEDED · FAILED · CANCELLED · STOPPED
+execution.operations[].result
+                           NOT_ATTEMPTED · AUTHORIZATION_DENIED · SKIPPED · SUCCEEDED ·
+                           FAILED · CANCELLED · BLOCKED
+post_verification.state    NOT_REQUIRED · NOT_STARTED · READY · RUNNING · PASSED ·
+                           PARTIALLY_PASSED · FAILED · BLOCKED · INCONCLUSIVE
+post_verification.result   CONFORMING · PARTIALLY_CONFORMING · NON_CONFORMING ·
+                           INCONCLUSIVE · NOT_APPLICABLE
+post_verification.checks[].result
+                           NOT_RUN · PASSED · FAILED · BLOCKED · INCONCLUSIVE
+```
+
+The per-operation results exist so that `execution.state: PARTIALLY_SUCCEEDED`
+cannot hide which operation failed. In this record all 21 operations returned
+`SUCCEEDED`, the execution lifecycle is `SUCCEEDED`, and the post-verification
+lifecycle is `PASSED` with result `CONFORMING` across eight independent checks —
+three separate statements, not one.
+
+`SUCCEEDED ≠ VERIFIED` and `FAILED ≠ UNVERIFIED`: execution success never
+produces verification success by itself (`PV-008`), and verification never modifies
+the repository to make a check pass (`PV-009`, and `post_verification.mutations`
+is empty). Remediation proposed by verification would need its own authorization
+(`PV-010`).
 
 ### Change-set boundary
 
@@ -307,9 +413,9 @@ Required decision:   owner decides whether to authorize CODE_REFACTOR /
 | Revision confirmed | yes — `cc8df73` |
 | Scope confirmed | yes — four dimensions above |
 | Authorization state confirmed | yes — `GRANTED` |
-| Authorization level confirmed | yes — content grant `DOC_REFACTOR` with narrowed operations; publication grant `PUSH`; no inheritance between them (`AUTH-006`) |
-| Allowed / forbidden operations confirmed | yes |
-| Change set identified | yes — `R-001 … R-018` in `change_ids` |
+| Authorization level confirmed | yes — content grant profile `DOC_REFACTOR` (capabilities narrowed, `DOCUMENT_DELETE` denied); publication grant profile `PUSH` (16 inherited content capabilities denied, publication only) |
+| Capability closure computed and checked | yes — `allow ⊆ Capabilities(profile)` for both grants; withheld classes unreachable (`AUTH-006`, `AUTH-018`) |
+| Change set identified | yes — `R-001 … R-019` in `change_ids` |
 | Verification completed | yes — evidence + claims + analysis |
 | Evidence references available | yes — the register resolves every cited id |
 | Rollback understood | yes — git history on the work branch |
@@ -322,32 +428,40 @@ EXECUTION STATUS: AUTHORIZED
 
 | Check | Result |
 | --- | --- |
-| Requested changes completed | yes — `R-001 … R-018` |
+| Requested changes completed | yes — `R-001 … R-019` |
 | No unauthorized changes made | yes — artifact digest identical to extraction; no code or test changes |
 | Repository structure valid | yes — matches the proposed structure |
 | Links valid | yes — 20+ documents, zero broken relative links |
 | References valid | yes — evidence/claim citations resolve |
-| Documentation consistent | yes — 22 static checks pass |
+| Documentation consistent | yes — 43 static checks pass |
 | Code unchanged (out of scope) | **yes — SHA-256 unchanged** |
 | Tests unchanged (out of scope) | yes — no test suite existed to change |
 | Required tests executed | yes — `verify.mjs`, `checks.mjs`, `simulate.mjs` |
 | Critical invariants reverified | yes — ownership invariant measured and reported as violated (unchanged, as expected) |
-| New contradictions absent | yes — none introduced; ten recorded instead |
+| New contradictions absent | yes — none introduced; seven recorded instead |
 
 ```yaml
-execution:
-  result: SUCCEEDED                 # from the canonical enum
-  executed_changes: [R-001 .. R-018]
+execution:                          # lifecycle and per-operation results are separate fields
+  state: SUCCEEDED
+  operations:                       # 21 entries; each names its operation, target, change and result
+    - {id: OP-001, change_id: R-001, operation: CREATE, target: prototype/generic-discovery-engine.user.js, result: SUCCEEDED}
+    - {id: OP-019, change_id: R-019, operation: MODIFY, target: docs/analysis/analysis.schema.json, result: SUCCEEDED}
+    - {id: OP-020, change_id: R-019, operation: COMMIT, target: "repository (change set R-001 … R-019)", result: SUCCEEDED}
+    - {id: OP-021, change_id: R-019, operation: PUSH,   target: origin/arena/01a08d14-generic-discovery-engine, result: SUCCEEDED}
+  executed_changes: [R-001 .. R-019]
   unauthorized_changes: []
   discovered_not_executed: [R-101 .. R-112]
 
-post_verification:
-  result: VERIFIED                  # reuses the verification enum; no separate PASS/FAIL vocabulary
-  evidence:
-    - tools/verify.mjs: 39 passed, 0 failed, 4 documented defects
-    - tools/checks.mjs: 4 passed, 0 failed
-    - tools/validate-analysis.mjs: 14 checks (schema, C/CV rules, AUTH rules, SER invariants, drift)
-    - artifact digest unchanged (sha256 8f5fc5c5...)
+post_verification:                  # its own lifecycle and its own outcome vocabulary
+  state: PASSED
+  result: CONFORMING
+  checks:
+    - {id: VERIFY-001, description: "record passes the validation pipeline", result: PASSED}
+    - {id: VERIFY-005, description: "source artifact unchanged (sha256 8f5fc5c5...)", result: PASSED}
+    - {id: VERIFY-007, description: "no path outside the declared scope paths changed", result: PASSED}
+  findings: []
+  remediation_required: false
+  mutations: []                     # verification repaired nothing (PV-009)
   not_verified:
     - end-to-end HtmlProvider behaviour under a real DOM (SCOPE-GAP-1, OPEN)
     - real userscript-manager semantics (SCOPE-GAP-2, OPEN)
@@ -362,42 +476,93 @@ post_verification:
 | Recommend | yes | yes | no |
 | Approve | no | **yes** | no |
 | Modify documentation | only if authorized (was: yes, `DOC_REFACTOR`) | yes | yes |
-| Modify code | only if authorized (**not** granted) | yes | yes |
+| Modify code | only if authorized (**not** granted — no grant carries `CODE_*`) | yes | yes |
 | Delete | only if authorized (not granted; nothing deleted) | yes | yes |
-| Commit | only if authorized (yes, `COMMIT` declared separately) | yes | yes |
-| Push | only if explicitly authorized (yes, `PUSH` on the work branch) | yes | yes |
+| Commit | only if authorized (yes — `COMMIT_CREATE` on the publication grant only) | yes | yes |
+| Push | only if explicitly authorized (yes — `PUSH_EXECUTE`, work branch only) | yes | yes |
 | Final verification (`VERIFIER`) | yes | optional | no |
 
 Role identifier per operation, first two columns only — the analyzer and the
 executor are the same actor holding different roles, which is why the role
 boundary is stated explicitly rather than assumed.
 
-## 8. Final governance model as applied
+## 8. Master separation invariant
 
-The **claim** side and the **execution authority** side are independent; no
-field appears in both.
+The architecture preserves these distinctions, and the validator checks that the
+record keeps them as separate fields:
 
 ```
-CLAIM                                  AUTHORIZATION
-  │                                       │
-  ├── claim_kind                   ┌──────┴───────┐
-  ├── implementation_state         ▼              ▼
-  ├── test_state            authorization    authorization
-  │                            state            level
-  ├── evidence_level               │              │
-  │                                └──────┬───────┘
-  └── verification_result                 ▼
-                                    change_ids / operations
-                                          │
-                                          ▼
-                                      EXECUTION
-                                          │
-                                          ▼
-                                   execution_result
-                                          │
-                                          ▼
-                                   POST-VERIFICATION
-                                    (reuses verification_result)
+claim_kind ≠ implementation_state ≠ test_state ≠ evidence_level
+           ≠ verification_result ≠ confidence
+
+authorization.state ≠ authorization.level.profile ≠ capability
+                    ≠ operation ≠ scope ≠ change authorization
+
+execution.state ≠ execution.operations[].result
+                ≠ post_verification.state ≠ post_verification.result
+```
+
+The purpose is not cleaner terminology. It prevents a specific reasoning error —
+the chain
+
+```
+"implemented" → "tested" → "verified" → "authorized" → "executed" → "correct"
+```
+
+in which every arrow is an assumption. None of those implications is valid without
+evidence for the next transition, and the model requires each transition to be
+established independently. This repository contains live counter-examples to each
+arrow: `CAND-CLAIM-003` is `IMPLEMENTED` and `UNTESTED`; `SCHED-CLAIM-004` is
+`TESTED` and `CONTRADICTED`; `SCOPE-CLAIM-001` is `VERIFIED` and
+`NOT_IMPLEMENTED`; the publication grant is `GRANTED` while carrying no content
+capability; and `execution.state: SUCCEEDED` sits beside a post-verification
+lifecycle that had to establish `PASSED` on its own.
+
+## 9. Complete lifecycle, as applied
+
+```
+                    CLAIM  (41 records, six typed dimensions)
+                      │
+                      ▼
+              CLAIM VALIDATION          structural schema → CV-001…CV-020
+                      │
+                      ▼
+              EVIDENCE ANALYSIS         register resolution, CV-008, CV-010, C-031
+                      │
+                      ▼
+             VERIFICATION RESULT        what the inspected revision establishes
+                      │
+                      │
+              proposed change
+                      ▼
+               AUTHORIZATION              AUTH-001…AUTH-020
+                      │
+           ┌──────────┴──────────┐
+           │                     │
+        DENIED                 GRANTED
+           │                     │
+           ▼                     ▼
+ AUTHORIZATION_BLOCKED         READY
+                                 │
+                                 ▼
+                               RUNNING                       EV-001…EV-012
+                                 │
+                  ┌──────────────┼──────────────┐
+                  ▼              ▼              ▼
+               SUCCEEDED      PARTIAL        FAILED         per-operation results
+                  │              │              │
+                  └──────────────┼──────────────┘
+                                 ▼
+                        POST-VERIFICATION                 PV-001…PV-010
+                                 │
+                  ┌──────────────┼──────────────┐
+                  ▼              ▼              ▼
+                PASSED        PARTIAL        FAILED
+                  │              │              │
+                  └──────────────┴──────────────┘
+                                 ▼
+                          FINAL EVIDENCE
+                    (this record, and the tools that reproduce it)
 ```
 
 Applied end to end:
@@ -411,20 +576,22 @@ SCOPE BOUNDARY       repository / artifact / verification / execution
      ↓
 EVIDENCE EXTRACTION  the register resolves every cited id; evidence objects carry path + locator
      ↓
-VERIFICATION         read-only; 41 claim records with five typed fields
+VERIFICATION         read-only; 41 claim records with six typed dimensions
      ↓
 VERIFIED TRUTH SET   what exists, what is planned, what is absent, what is contradicted
      ↓
-REFACTORING PLAN     R-001…R-018 executed; R-101…R-112 plan only
+REFACTORING PLAN     R-001…R-019 executed; R-101…R-112 plan only
      ↓
-AUTHORIZATION CHECK  state GRANTED; level DOC_REFACTOR; COMMIT/PUSH declared separately (I-011)
+AUTHORIZATION CHECK  state GRANTED; profile DOC_REFACTOR restricted by capability; publication by a
+                     separate PUSH grant whose inherited content capabilities are denied
      ↓
-EXECUTE (docs only)  → POST-VERIFY (independent, I-012) → execution_result SUCCEEDED,
-                        post_verification VERIFIED
+EXECUTE (docs only)  → POST-VERIFY (independent, I-012) → execution SUCCEEDED,
+                        post_verification PASSED / CONFORMING
 ```
 
 Governing separation, preserved at every step: **evidence → claim → verification
 → proposal → authorization → execution → post-verification**. No stage
-impersonates another; in particular, the documentation work never silently
-acquired authority over runtime behaviour, and execution success was never
-treated as post-verification success.
+impersonates another; repository access is not authorization, authorization is not
+a capability, a capability is not an operation, an operation is not an authorized
+change, an authorized change is not an executed change, and an executed change is
+not a verified change.

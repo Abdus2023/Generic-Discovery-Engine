@@ -2,24 +2,53 @@
 #
 # Serialization is not allowed to change semantics: this file and the
 # `authorization` / `authorization_grants` fields of analysis.json must
-# deserialize to the same logical object (invariants SER-001…SER-012,
-# checked by tools/validate-analysis.mjs).
+# deserialize to the same logical object (invariants SER-001…SER-012, checked
+# by tools/validate-analysis.mjs). The body below is generated from the record.
 #
 # Field names are canonical. Do not introduce variants such as
 # authorization_level, auth_level, permission_level, allowed_operations,
 # authorized_operations or authorized_change_ids.
+#
+# Section 167: authorization.state ≠ authorization.level.profile ≠ capability
+# ≠ operation ≠ scope ≠ change authorization. Sections 152/153:
+# EffectiveCapabilities = (Capabilities(profile) ∩ allow) − deny, and deny wins.
 
 authorization:
   state: GRANTED
-  level: DOC_REFACTOR
+  level:
+    profile: DOC_REFACTOR
+  capabilities:
+    mode: RESTRICT
+    allow:
+      - REPOSITORY_READ
+      - ANALYSIS_EXECUTE
+      - PROPOSAL_CREATE
+      - DOCUMENT_CREATE
+      - DOCUMENT_MODIFY
+      - DOCUMENT_RENAME
+      - DOCUMENT_MOVE
+    deny:
+      - DOCUMENT_DELETE
   operations:
-    - READ
-    - ANALYZE
-    - PROPOSE
-    - CREATE
-    - MODIFY
-    - RENAME
-    - MOVE
+    allow:
+      - READ
+      - ANALYZE
+      - PROPOSE
+      - CREATE
+      - MODIFY
+      - RENAME
+      - MOVE
+    deny:
+      - DELETE
+  scope:
+    paths:
+      include:
+        - README.md
+        - docs/
+        - tools/
+        - prototype/
+        - archive/
+      exclude: []
   change_ids:
     - R-001
     - R-002
@@ -39,24 +68,66 @@ authorization:
     - R-016
     - R-017
     - R-018
+    - R-019
   authority:
     type: USER
-    identifier: "Abdus2023 (repository owner), delegating through the standing session instruction"
+    identifier: Abdus2023 (repository owner), delegating through the standing session instruction
   target:
-    repository: "Abdus2023/Generic-Discovery-Engine"
+    repository: Abdus2023/Generic-Discovery-Engine
     revision: "cc8df7357c2dbfe9d149747743e2f5e9ac9c0178 (work branch: arena/01a08d14-generic-discovery-engine)"
-  granted_at: "2026-09-10"
+  granted_at: 2026-09-10
   expires_at: null
-
 authorization_grants:
   - state: GRANTED
-    level: PUSH
+    level:
+      profile: PUSH
+    capabilities:
+      mode: RESTRICT
+      allow:
+        - REPOSITORY_READ
+        - ANALYSIS_EXECUTE
+        - PROPOSAL_CREATE
+        - COMMIT_CREATE
+        - PUSH_EXECUTE
+      deny:
+        - DOCUMENT_CREATE
+        - DOCUMENT_MODIFY
+        - DOCUMENT_RENAME
+        - DOCUMENT_MOVE
+        - DOCUMENT_DELETE
+        - TEST_CREATE
+        - TEST_MODIFY
+        - TEST_RENAME
+        - TEST_MOVE
+        - TEST_DELETE
+        - CODE_CREATE
+        - CODE_MODIFY
+        - CODE_RENAME
+        - CODE_MOVE
+        - CODE_DELETE
+        - ARCHITECTURE_MODIFY
     operations:
-      - READ
-      - ANALYZE
-      - PROPOSE
-      - COMMIT
-      - PUSH
+      allow:
+        - READ
+        - ANALYZE
+        - PROPOSE
+        - COMMIT
+        - PUSH
+      deny:
+        - CREATE
+        - MODIFY
+        - RENAME
+        - MOVE
+        - DELETE
+    scope:
+      paths:
+        include:
+          - README.md
+          - docs/
+          - tools/
+          - prototype/
+          - archive/
+        exclude: []
     change_ids:
       - R-001
       - R-002
@@ -76,11 +147,12 @@ authorization_grants:
       - R-016
       - R-017
       - R-018
+      - R-019
     authority:
       type: USER
-      identifier: "Abdus2023 (repository owner), delegating through the standing session instruction"
+      identifier: Abdus2023 (repository owner), delegating through the standing session instruction
     target:
-      repository: "Abdus2023/Generic-Discovery-Engine"
+      repository: Abdus2023/Generic-Discovery-Engine
       revision: "cc8df7357c2dbfe9d149747743e2f5e9ac9c0178 (work branch: arena/01a08d14-generic-discovery-engine)"
-    granted_at: "2026-09-10"
+    granted_at: 2026-09-10
     expires_at: null

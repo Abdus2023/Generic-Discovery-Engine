@@ -12,15 +12,15 @@ documentation cleanup. Output order follows the review brief (Phases 0–21).
 | Resolved commit (analysis target) | `cc8df7357c2dbfe9d149747743e2f5e9ac9c0178` (`main`) |
 | Access classification | **FULL ACCESS** — complete tree, no submodules, no external artifacts to inspect |
 | Evidence standard | every non-trivial finding cites `[EVID:…]` from the [evidence register](evidence-register.md) |
-| State model | five typed fields per claim — `claim_kind`, `implementation_state`, `test_state`, `evidence_level`, `verification_result` — plus independent execution dimensions: `authorization.state`, `authorization.level`, `execution.result`, `post_verification.result`. Normative record: [analysis.json](analysis.json) under [analysis.schema.json](analysis.schema.json); readable tables: [claims.md](claims.md) |
-| Enforcement | [EVID:TEST-014] `tools/validate-analysis.mjs` validates [EVID:DOC-013] the record against `analysis.schema.json`, plus claim rules C-001–C-043 / CV-001–CV-015, evidence rules C-030–C-034, authorization rules AUTH-001–AUTH-014, serialization invariants SER-001–SER-012 and invariants I-001–I-016: no generic status field, no field substitution, executed ⊆ authorized, documentation never proves implementation, `ABSENT` ≠ `INACCESSIBLE` |
+| State model | six typed fields per claim — `claim_kind`, `implementation_state`, `test_state`, `evidence_level`, `verification_result`, `confidence` — plus independent authority dimensions (`authorization.state`, `authorization.level.profile`, `capabilities`, `operations`, `scope`, `change_ids`) and independent lifecycles (`execution.state` with per-operation `result`, `post_verification.state` with its own `result`). Normative record: [analysis.json](analysis.json) under [analysis.schema.json](analysis.schema.json); readable tables: [claims.md](claims.md) |
+| Enforcement | [EVID:TEST-014] `tools/validate-analysis.mjs` validates [EVID:DOC-013] the record against `analysis.schema.json`, plus claim rules C-001–C-043 and the validation matrix CV-001–CV-020, evidence rules C-030–C-034, authorization rules AUTH-001–AUTH-020, execution invariants EV-001–EV-012, post-verification invariants PV-001–PV-010, serialization invariants SER-001–SER-012 and invariants I-001–I-016: no generic status field, no field substitution, executed ⊆ authorized, documentation never proves implementation, `ABSENT` ≠ `INACCESSIBLE` |
 | Scope boundary | repository / artifact / verification / execution — recorded in [scope-and-authorization.md](scope-and-authorization.md) |
-| Authorization | two canonical grants, both `state: GRANTED`: content (`level: DOC_REFACTOR`, operations narrowed by intersection) and publication (`level: PUSH`) — no inheritance; `change_ids: R-001 … R-018`; `MODIFY_SOURCE_CODE` forbidden |
+| Authorization | two canonical grants, both `state: GRANTED`: content (`level.profile: DOC_REFACTOR`, capabilities restricted, `DOCUMENT_DELETE` denied) and publication (`level.profile: PUSH`, 16 inherited content capabilities denied, publication only); `change_ids: R-001 … R-019`; source, test and architecture capabilities withheld at the capability layer |
 | Phase A — verification | **read-only**; no repository file was created, edited or moved while establishing truth |
 | Phase B — refactoring | plan and execution recorded separately in the [change register](change-register-2026-09-10.md) |
 | Code changes | **none** — the artifact digest is unchanged since extraction and enforced (`sha256 8f5fc5c5…`); all code findings are `PLAN ONLY` |
-| Execution / post-verification | `execution.result: SUCCEEDED` (documentation scope) · `post_verification.result: VERIFIED` · `unauthorized_changes: []` |
-| Negative evidence | absence is recorded as `ABSENT` only where the declared inspection scope justifies it, with a recorded procedure `AV-001 … AV-005` (rules V2, §94) |
+| Execution / post-verification | `execution.state: SUCCEEDED` across 21 recorded operations (documentation scope) · `post_verification.state: PASSED` / `result: CONFORMING` across eight checks · `unauthorized_changes: []` |
+| Negative evidence | absence is recorded as `ABSENT` only where the declared inspection scope justifies it, with a recorded procedure `AV-001 … AV-007` (rules CV-006, CV-010, CV-020) |
 
 **Verification result: VERIFIED** — the repository state, implementation, and
 documentation claims were assessed with full access and are reproducible from the
@@ -139,7 +139,7 @@ were available locally, and no substituted fork or mirror was used.
 
 ## 3. Architecture Truth Table
 
-The five typed fields are recorded **once**, in
+The six typed fields are recorded **once**, in
 [analysis.json](analysis.json) (machine-readable) and rendered into
 [claims.md](claims.md) (readable). This section is an index from architectural
 area to the claim that carries its status, so a second copy of the verdicts
@@ -800,7 +800,7 @@ and a persistence-failure path test.
 | Scope escalations (two, both OPEN, neither silently expanded) | same, §2 |
 | Ownership and authorization matrix | same, §3, §7 |
 | Decision ownership (fact / interpretation / design / execution) | same, §4 |
-| Execution authorization contract (level, allowed, forbidden, rollback) | same, §5 |
+| Execution authorization contract (state, profile, capabilities, operations, scope, change set, rollback) | same, §5 |
 | Change-set boundary and discovered-change rule | same, §5 |
 | Pre-execution and post-execution checks, execution result | same, §6 |
 | Canonical status vocabulary and claim records | [claims.md](claims.md) |
@@ -819,4 +819,4 @@ and a persistence-failure path test.
 | current reality vs proposed future state | yes | `VERIFIED CURRENT STATE` and `PROPOSED TARGET STATE` are recorded side by side in the change register and never merged without labels; every roadmap item is labelled DESIGNED / CONJECTURE / OPEN |
 | which changes were verified vs recommended | yes | executed documentation changes `R-001 … R-018` with post-refactor verification results; code changes `R-101 … R-112` marked **PLAN ONLY** with risk classes and priorities |
 | which conclusions are limited by access | yes | access classification FULL; two scope escalations and three residual verification limitations are recorded and marked OPEN in the governance record |
-| who authorized the changes | yes | authorization object with `state`, `level`, `change_ids`, allowed and forbidden operations, rollback strategy, and the explicit statement that `CODE_REFACTOR` / `ARCHITECTURE_CHANGE` were never granted |
+| who authorized the changes | yes | authorization object with `state`, `level.profile`, `capabilities`, `operations`, `scope`, `change_ids`, rollback strategy, and the explicit statement that `CODE_REFACTOR` / `ARCHITECTURE_CHANGE` were never granted |

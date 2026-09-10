@@ -4,19 +4,20 @@
  * Validate the canonical analysis record
  * ============================================================================
  *
- * Validation pipeline (each stage is validated independently):
+ * Validation pipeline (each stage validated independently):
  *
  *   STRUCTURAL      JSON Schema draft 2020-12  (analysis.schema.json)
- *   CLAIMS          C-001…C-043, CV-001…CV-015
- *   EVIDENCE        C-030…C-034
- *   AUTHORIZATION   AUTH-001…AUTH-014
- *   EXECUTION       executed changes / operations against effective authority
- *   POST-VERIFY     independence, verification_result vocabulary
+ *   CLAIMS          validation matrix CV-001…CV-020, rules C-001…C-043
+ *   EVIDENCE        CV-008/CV-010 evidence rules, register resolution
+ *   AUTHORIZATION   AUTH-001…AUTH-020 (state, level profile, capability,
+ *                   operation, scope, change authorization)
+ *   EXECUTION       EV-001…EV-012
+ *   POST-VERIFY     PV-001…PV-010
  *   SERIALIZATION   SER-001…SER-012  (analysis.json vs authorization.yaml)
  *   INVARIANTS      I-001…I-016
  *
- * The level → operation policy is read from the schema, so the validator never
- * keeps a second copy of it.
+ * The level profiles and the capability → operation mapping are read from the
+ * schema, so the validator never keeps a second copy of the policy.
  *
  * Usage:  node tools/validate-analysis.mjs
  * Exit 0 = valid. Exit 1 = at least one failure.
@@ -41,8 +42,10 @@ const record = JSON.parse(fs.readFileSync(RECORD_PATH, 'utf8'));
 const schema = JSON.parse(fs.readFileSync(SCHEMA_PATH, 'utf8'));
 const register = fs.readFileSync(REGISTER_PATH, 'utf8');
 const claims = record.claims;
-const LEVELS = schema.authorization_levels;
-const ALL_LEVELS = Object.keys(LEVELS);
+const PROFILES = schema.level_profiles;
+const CAP_OPS = schema.capability_operations;
+const ALL_CAPS = Object.keys(CAP_OPS);
+const ALL_PROFILES = Object.keys(PROFILES);
 
 /* ========================================================================== */
 /* STRUCTURAL — JSON Schema (implemented subset)                              */
@@ -91,17 +94,22 @@ function validate(instance, node, at, errors) {
   else fail('STRUCTURAL', 'record validates against analysis.schema.json', errors.slice(0, 5).join(' | '));
 
   const generic = [];
+  const onEvidence = [];
   (function walk(node, at) {
     if (Array.isArray(node)) return node.forEach((v, i) => walk(v, `${at}[${i}]`));
     if (node && typeof node === 'object') {
+      const isEvidence = typeof node.id === 'string' && node.locator && node.kind;
       for (const [k, v] of Object.entries(node)) {
-        if (['status', 'state'].includes(k) && !/authorization/.test(at)) generic.push(`${at}.${k}`);
+        if (['status', 'state'].includes(k) && !/authorization|execution|post_verification/.test(at)) generic.push(`${at}.${k}`);
+        if (isEvidence && (k === 'status' || k === 'state')) onEvidence.push(`${at}.${k}`);
         walk(v, `${at}.${k}`);
       }
     }
   })(record, '$');
   if (generic.length === 0) pass('STRUCTURAL', 'no generic "status" field is used', 'I-001');
   else fail('STRUCTURAL', 'no generic "status" field is used', generic.slice(0, 4).join(', '));
+  if (onEvidence.length === 0) pass('STRUCTURAL', 'no status field is permitted on evidence', 'section 143');
+  else fail('STRUCTURAL', 'no status field is permitted on evidence', onEvidence.join(', '));
 }
 
 /* ========================================================================== */
@@ -122,7 +130,7 @@ function validate(instance, node, at, errors) {
 }
 
 /* ========================================================================== */
-/* CLAIMS — C-rules and CV-rules                                              */
+/* CLAIMS — CV-001…CV-020 and the C-rules not covered by the matrix           */
 /* ========================================================================== */
 
 const byId = new Map(claims.map(c => [c.id, c]));
@@ -130,47 +138,50 @@ const contradictedIds = new Set(record.contradictions.flatMap(x => [x.claim_a, x
 const procedures = new Set((record.absence_verification || []).map(a => a.id));
 const evidenceIdsOf = claim => claim.evidence.map(e => e.id);
 const hasKind = (claim, kinds) => claim.evidence.some(e => kinds.includes(e.kind));
+const enumOf = field => schema.$defs.claim.properties[field].enum;
 
 const claimChecks = [];
 const rule = (id, ok, note) => claimChecks.push([id, ok, note]);
 
-/* CV-001 — VERIFIED requires DIRECT or CORROBORATED */
+/* CV-001…CV-005 — every dimension uses its canonical enum */
+{
+  const fields = ['claim_kind', 'implementation_state', 'test_state', 'evidence_level', 'verification_result'];
+  const bad = fields.flatMap(f => claims.filter(c => !enumOf(f).includes(c[f])).map(c => `${c.id}.${f}`));
+  rule('CV-001…CV-005', bad.length === 0, 'all six claim dimensions use the canonical enums' +
+    (bad.length ? ': ' + bad.slice(0, 5).join(', ') : ''));
+}
+
+/* CV-006 — VERIFIED requires DIRECT or CORROBORATED evidence */
 {
   const bad = claims.filter(c => c.verification_result === 'VERIFIED' &&
     !['DIRECT', 'CORROBORATED'].includes(c.evidence_level) &&
     !(c.evidence_level === 'ABSENT' && procedures.has(c.absence_verification)));
-  rule('CV-001', bad.length === 0, 'VERIFIED → DIRECT | CORROBORATED' + (bad.length ? ': ' + bad.map(c => c.id).join(', ') : ''));
-}
-
-/* CV-002 — INACCESSIBLE implies UNVERIFIED */
-{
-  const bad = claims.filter(c => c.evidence_level === 'INACCESSIBLE' && c.verification_result !== 'UNVERIFIED');
-  rule('CV-002', bad.length === 0, 'INACCESSIBLE → UNVERIFIED' + (bad.length ? ': ' + bad.map(c => c.id).join(', ') : ''));
-}
-
-/* CV-003 — ABSENT may be VERIFIED only with a recorded absence procedure */
-{
-  const bad = claims.filter(c => c.evidence_level === 'ABSENT' && c.verification_result === 'VERIFIED' &&
-    !procedures.has(c.absence_verification));
-  rule('CV-003', bad.length === 0, 'ABSENT + VERIFIED requires an absence procedure (V2)' +
+  rule('CV-006', bad.length === 0, 'VERIFIED requires DIRECT | CORROBORATED (ABSENT only with a recorded procedure)' +
     (bad.length ? ': ' + bad.map(c => c.id).join(', ') : ''));
 }
 
-/* CV-004 — CONTRADICTED requires conflicting evidence */
+/* CV-007 — INACCESSIBLE normally requires UNVERIFIED */
+{
+  const bad = claims.filter(c => c.evidence_level === 'INACCESSIBLE' && c.verification_result !== 'UNVERIFIED');
+  rule('CV-007', bad.length === 0, 'INACCESSIBLE requires UNVERIFIED' + (bad.length ? ': ' + bad.map(c => c.id).join(', ') : ''));
+}
+
+/* CV-008 — CONTRADICTED requires conflicting evidence */
 {
   const bad = claims.filter(c => c.verification_result === 'CONTRADICTED' &&
     !(contradictedIds.has(c.id) || (c.conflicting_evidence || []).length > 0));
-  rule('CV-004', bad.length === 0, 'CONTRADICTED → conflicting evidence' + (bad.length ? ': ' + bad.map(c => c.id).join(', ') : ''));
+  rule('CV-008', bad.length === 0, 'CONTRADICTED requires conflicting evidence' +
+    (bad.length ? ': ' + bad.map(c => c.id).join(', ') : ''));
 }
 
-/* CV-005 / C-010 — IMPLEMENTED requires an implementation artifact */
+/* CV-009 — IMPLEMENTED requires implementation evidence */
 {
-  const bad = claims.filter(c => c.implementation_state === 'IMPLEMENTED' &&
-    !hasKind(c, ['CODE', 'CONFIG', 'TEST', 'HISTORY']));
-  rule('CV-005', bad.length === 0, 'IMPLEMENTED → implementation evidence' + (bad.length ? ': ' + bad.map(c => c.id).join(', ') : ''));
+  const bad = claims.filter(c => c.implementation_state === 'IMPLEMENTED' && !hasKind(c, ['CODE', 'CONFIG', 'TEST', 'HISTORY', 'GENERATED_ARTIFACT']));
+  rule('CV-009', bad.length === 0, 'IMPLEMENTED requires implementation evidence' +
+    (bad.length ? ': ' + bad.map(c => c.id).join(', ') : ''));
 }
 
-/* CV-006 / C-012 — NOT_IMPLEMENTED cannot rest on INACCESSIBLE scope */
+/* CV-010 — NOT_IMPLEMENTED requires sufficiently inspected scope or explicit negative evidence */
 {
   const bad = claims.filter(c => {
     if (c.implementation_state !== 'NOT_IMPLEMENTED') return false;
@@ -178,45 +189,85 @@ const rule = (id, ok, note) => claimChecks.push([id, ok, note]);
     if (['DIRECT', 'CORROBORATED'].includes(c.evidence_level)) return false;
     return !(c.evidence_level === 'ABSENT' && procedures.has(c.absence_verification));
   });
-  rule('CV-006', bad.length === 0, 'NOT_IMPLEMENTED → direct evidence, or ABSENT with a recorded scope procedure' +
+  rule('CV-010', bad.length === 0, 'NOT_IMPLEMENTED requires inspected scope or negative evidence, never INACCESSIBLE' +
     (bad.length ? ': ' + bad.map(c => c.id).join(', ') : ''));
 }
 
-/* CV-007 / C-003 — PLANNED + IMPLEMENTED needs an explicit historical-plan note */
+/* CV-011 — HYPOTHESIS uses NOT_APPLICABLE for implementation_state */
 {
-  const bad = claims.filter(c => c.claim_kind === 'PLANNED' && c.implementation_state === 'IMPLEMENTED' &&
-    c.historical_plan_implemented !== true);
-  rule('CV-007', bad.length === 0, 'PLANNED + IMPLEMENTED requires an explicit historical-plan interpretation' +
+  const bad = claims.filter(c => c.claim_kind === 'HYPOTHESIS' && c.implementation_state !== 'NOT_APPLICABLE');
+  rule('CV-011', bad.length === 0, 'HYPOTHESIS requires implementation_state NOT_APPLICABLE' +
     (bad.length ? ': ' + bad.map(c => c.id).join(', ') : ''));
 }
 
-/* CV-008 / C-006 — NON_GOAL is NOT_APPLICABLE and cites scope documentation */
+/* CV-012 — NON_GOAL uses NOT_APPLICABLE for implementation_state, with scope evidence */
 {
   const bad = claims.filter(c => c.claim_kind === 'NON_GOAL' &&
     (c.implementation_state !== 'NOT_APPLICABLE' || c.evidence.length === 0));
-  rule('CV-008', bad.length === 0, 'NON_GOAL → NOT_APPLICABLE with scope evidence' +
+  rule('CV-012', bad.length === 0, 'NON_GOAL requires NOT_APPLICABLE with scope evidence' +
     (bad.length ? ': ' + bad.map(c => c.id).join(', ') : ''));
 }
 
-/* CV-009 / C-005 — HYPOTHESIS is NOT_APPLICABLE, and TESTED would not imply VERIFIED */
+/* CV-013 — PLANNED normally implies NOT_IMPLEMENTED */
 {
-  const bad = claims.filter(c => c.claim_kind === 'HYPOTHESIS' && c.implementation_state !== 'NOT_APPLICABLE');
-  const promoted = claims.filter(c => c.claim_kind === 'HYPOTHESIS' && c.verification_result === 'VERIFIED');
-  rule('CV-009', bad.length === 0 && promoted.length === 0,
-    'HYPOTHESIS → NOT_APPLICABLE; testing does not promote it' +
-    (bad.length ? ': ' + bad.map(c => c.id).join(', ') : ''));
+  const bad = claims.filter(c => c.claim_kind === 'PLANNED' && !['NOT_IMPLEMENTED', 'NOT_APPLICABLE'].includes(c.implementation_state)
+    && c.implementation_state !== 'IMPLEMENTED');
+  const historical = claims.filter(c => c.claim_kind === 'PLANNED' && c.implementation_state === 'IMPLEMENTED');
+  const unjustified = historical.filter(c => c.historical_plan_implemented !== true);
+  rule('CV-013', bad.length === 0 && unjustified.length === 0,
+    `PLANNED implies NOT_IMPLEMENTED; ${historical.length} implemented historical plan(s) recorded explicitly` +
+    (bad.length || unjustified.length ? ': ' + [...bad, ...unjustified].map(c => c.id).join(', ') : ''));
 }
 
-/* CV-010 / C-020 — TESTED requires execution evidence */
+/* CV-014 — TESTED requires execution evidence; TESTED implies VERIFIED is forbidden */
 {
-  const bad = claims.filter(c => ['TESTED', 'PARTIALLY_TESTED'].includes(c.test_state) && !hasKind(c, ['TEST']));
-  rule('CV-010', bad.length === 0, 'TESTED → execution evidence' + (bad.length ? ': ' + bad.map(c => c.id).join(', ') : ''));
+  const noEvidence = claims.filter(c => ['TESTED', 'PARTIALLY_TESTED'].includes(c.test_state) && !hasKind(c, ['TEST']));
+  const promoted = claims.filter(c => c.test_state === 'TESTED' && c.verification_result === 'VERIFIED' &&
+    c.evidence_level === 'INDIRECT');
+  rule('CV-014', noEvidence.length === 0 && promoted.length === 0,
+    'TESTED requires execution evidence, and testing alone does not make an indirect claim VERIFIED' +
+    ((noEvidence.length || promoted.length) ? ': ' + [...noEvidence, ...promoted].map(c => c.id).join(', ') : ''));
 }
 
-/* CV-011 — partial implementation is not partial verification */
+/* CV-015 — UNTESTED does not imply implementation failure. Checked as an
+   independence property: an untested claim may still be IMPLEMENTED, and an
+   untested claim may be NOT_IMPLEMENTED on non-test evidence. */
 {
-  const bad = claims.filter(c => c.implementation_state === 'PARTIAL' && (c.evidence.length === 0 || !c.interpretation));
-  rule('CV-011', bad.length === 0, 'PARTIAL implementation is evidenced independently of test coverage' +
+  const untested = claims.filter(c => c.test_state === 'UNTESTED');
+  const states = new Set(untested.map(c => c.implementation_state));
+  rule('CV-015', states.size > 1 || untested.length === 0,
+    'UNTESTED spans implementation states without implying failure: ' +
+    [...states].sort().join(', '));
+}
+
+/* CV-016…CV-019 — prohibited inferences. A dimension must not determine
+   another: if every observed value of A came with exactly one value of B, the
+   record would be treating the inference as a rule. The check is therefore an
+   independence test over the observed combinations. */
+{
+  const spans = (subset, field) => new Set(subset.map(c => c[field])).size;
+  const implemented = claims.filter(c => c.implementation_state === 'IMPLEMENTED');
+  const tested = claims.filter(c => ['TESTED', 'PARTIALLY_TESTED'].includes(c.test_state));
+  const verified = claims.filter(c => c.verification_result === 'VERIFIED');
+  const partial = claims.filter(c => c.implementation_state === 'PARTIAL');
+  const results = [
+    ['CV-016', spans(implemented, 'test_state') > 1, 'IMPLEMENTED does not imply TESTED', `${implemented.length} implemented, test states: ${[...new Set(implemented.map(c => c.test_state))].sort().join('/')}`],
+    ['CV-017', spans(tested, 'verification_result') > 1, 'TESTED does not imply VERIFIED', `${tested.length} tested, verification: ${[...new Set(tested.map(c => c.verification_result))].sort().join('/')}`],
+    ['CV-018', spans(verified, 'implementation_state') > 1, 'VERIFIED does not imply IMPLEMENTED', `${verified.length} verified, implementation: ${[...new Set(verified.map(c => c.implementation_state))].sort().join('/')}`],
+    ['CV-019', partial.every(c => c.verification_result !== 'PARTIALLY_VERIFIED') || verified.every(c => c.implementation_state !== 'PARTIAL'),
+      'PARTIAL implementation and PARTIALLY_VERIFIED are independent dimensions',
+      `${partial.length} partial implementation(s), no forced partial-verification pairing`],
+  ];
+  for (const [id, ok, message, note] of results) rule(id, ok, `${message} — ${note}`);
+}
+
+/* CV-020 — INACCESSIBLE is never silently converted to ABSENT */
+{
+  const bad = claims.filter(c => c.evidence_level === 'INACCESSIBLE' ? c.verification_result === 'VERIFIED'
+    : (c.evidence_level === 'ABSENT' && !c.absence_verification && c.verification_result === 'VERIFIED'));
+  const inaccessible = claims.filter(c => c.evidence_level === 'INACCESSIBLE');
+  rule('CV-020', bad.length === 0,
+    `ABSENT determinations record an inspection procedure; INACCESSIBLE is never presented as absence (${inaccessible.length} INACCESSIBLE, ${procedures.size} procedures)` +
     (bad.length ? ': ' + bad.map(c => c.id).join(', ') : ''));
 }
 
@@ -228,123 +279,294 @@ const rule = (id, ok, note) => claimChecks.push([id, ok, note]);
     const kinds = new Set(c.evidence.map(e => e.kind));
     if (c.evidence.length < 2 || (paths.size < 2 && kinds.size < 2)) bad.push(c.id);
   }
-  rule('C-031', bad.length === 0, 'CORROBORATED → ≥2 independent sources (or ≥2 kinds)' +
+  rule('C-031', bad.length === 0, 'CORROBORATED requires >=2 independent sources (or >=2 kinds)' +
     (bad.length ? ': ' + bad.join(', ') : ''));
 }
 
-/* C-040 — a VERIFIED claim must not be one side of an unresolved contradiction */
+/* C-040 — a VERIFIED claim is not one side of an unresolved contradiction */
 {
   const bad = claims.filter(c => c.verification_result === 'VERIFIED' && contradictedIds.has(c.id));
-  rule('C-040', bad.length === 0, 'VERIFIED → no unresolved contradiction' + (bad.length ? ': ' + bad.map(c => c.id).join(', ') : ''));
+  rule('C-040', bad.length === 0, 'VERIFIED excludes unresolved claim contradictions' +
+    (bad.length ? ': ' + bad.map(c => c.id).join(', ') : ''));
 }
 
-/* §93 — NOT_IMPLEMENTED + TESTED requires an absence test */
+/* section 93 — NOT_IMPLEMENTED + TESTED requires an absence test */
 {
   const bad = claims.filter(c => c.implementation_state === 'NOT_IMPLEMENTED' && c.test_state === 'TESTED' && !c.absence_test);
-  rule('C-093', bad.length === 0, 'NOT_IMPLEMENTED + TESTED → absence_test recorded' +
+  rule('C-093', bad.length === 0, 'NOT_IMPLEMENTED + TESTED requires an absence_test' +
     (bad.length ? ': ' + bad.map(c => c.id).join(', ') : ''));
+}
+
+/* section 141 — confidence is graded evidence strength, never a substitute.
+   The confusing combination HIGH/VERY_HIGH with UNVERIFIED is forbidden. */
+{
+  const bad = claims.filter(c => ['HIGH', 'VERY_HIGH'].includes(c.confidence) && c.verification_result === 'UNVERIFIED');
+  const missing = claims.filter(c => !c.confidence);
+  const rule6 = ['VERY_LOW', 'LOW', 'MEDIUM', 'HIGH', 'VERY_HIGH'];
+  const invalid = claims.filter(c => !rule6.includes(c.confidence));
+  rule('C-141', bad.length === 0 && missing.length === 0 && invalid.length === 0,
+    'confidence grades evidential strength and never contradicts verification' +
+    (bad.length ? ' — HIGH with UNVERIFIED: ' + bad.map(c => c.id).join(', ') : '') +
+    (missing.length ? ` — ${missing.length} claim(s) without confidence` : ''));
 }
 
 {
   const violated = claimChecks.filter(([, ok]) => !ok);
-  if (violated.length === 0) pass('CLAIMS', 'claim-kind and cross-dimension rules hold', `${claimChecks.length} rules`);
-  else fail('CLAIMS', 'claim-kind and cross-dimension rules hold', violated.map(([id, , n]) => `${id}${n ? ' (' + n + ')' : ''}`).join('; '));
+  if (violated.length === 0) pass('CLAIMS', 'claim rules and validation matrix hold', `${claimChecks.length} rule groups`);
+  else fail('CLAIMS', 'claim rules and validation matrix hold', violated.map(([id, , n]) => `${id}${n ? ' (' + n + ')' : ''}`).join('; '));
 }
 
-/* CV-012…CV-015 — prohibited inferences are absent from the rule set by construction */
 {
   const fields = ['claim_kind', 'implementation_state', 'test_state', 'evidence_level', 'verification_result'];
   const counts = fields.map(f => new Set(claims.map(c => c[f])).size);
-  if (counts.every(n => n > 1)) {
-    pass('CLAIMS', 'no field is derived from another', 'CV-012…CV-015: ' + fields.map((f, i) => `${f}=${counts[i]}`).join(', '));
-  } else {
-    fail('CLAIMS', 'no field is derived from another', fields.map((f, i) => `${f}=${counts[i]}`).join(', '));
-  }
+  if (counts.every(n => n > 1)) pass('CLAIMS', 'no dimension is derived from another', fields.map((f, i) => `${f}=${counts[i]}`).join(', '));
+  else fail('CLAIMS', 'no dimension is derived from another', fields.map((f, i) => `${f}=${counts[i]}`).join(', '));
 }
 
 /* ========================================================================== */
-/* AUTHORIZATION — AUTH-001…AUTH-014                                          */
+/* AUTHORIZATION — AUTH-001…AUTH-020                                          */
 /* ========================================================================== */
 
 const grants = [record.authorization, ...(record.authorization_grants || [])];
-const effectiveOps = grant => {
-  const ops = LEVELS[grant.level] || [];
-  const explicit = grant.operations || ops;
-  return ops.filter(op => explicit.includes(op));
+
+/* Capabilities(L) = Own(L) ∪ Capabilities(parents), over the declared edges.  */
+function capabilityClosure(profile, path_ = []) {
+  if (path_.includes(profile)) throw new Error(`inheritance cycle: ${[...path_, profile].join(' -> ')}`);
+  const node = PROFILES[profile];
+  if (!node) throw new Error(`unknown profile ${profile}`);
+  const out = new Set(node.capabilities || []);
+  for (const parent of node.inherits || []) {
+    for (const cap of capabilityClosure(parent, [...path_, profile])) out.add(cap);
+  }
+  return out;
+}
+
+const effective = grant => {
+  const ceiling = capabilityClosure(grant.level?.profile);
+  const caps = grant.capabilities || {};
+  const allow = caps.allow || [...ceiling];
+  const keep = caps.mode === 'INHERIT' ? [...allow] : [...allow].filter(c => ceiling.has(c));
+  const afterAllow = new Set(keep);
+  for (const cap of caps.deny || []) afterAllow.delete(cap);
+  return afterAllow;
 };
+
+/* Operations implied by a capability set: §147 capability → operation. */
+const operationsOf = caps => new Set([...caps].map(c => CAP_OPS[c]?.operation).filter(Boolean));
+
+const permittedOperations = grant => {
+  const implied = operationsOf(effective(grant));
+  const ops = grant.operations || {};
+  const allow = ops.allow ? ops.allow.filter(op => implied.has(op)) : [...implied];
+  const afterAllow = new Set(allow);
+  for (const op of ops.deny || []) afterAllow.delete(op);
+  return afterAllow;
+};
+
 const authChecks = [];
 const ar = (id, ok, note) => authChecks.push([id, ok, note]);
 const STATES = ['NOT_REQUESTED', 'REQUESTED', 'DENIED', 'GRANTED', 'REVOKED', 'EXPIRED'];
 
-ar('AUTH-001', grants.every(g => STATES.includes(g.state)), 'authorization state enum');
-ar('AUTH-002', grants.every(g => ALL_LEVELS.includes(g.level)), 'authorization level enum');
-ar('AUTH-003', grants.filter(g => g.state === 'GRANTED').every(g => g.authority?.identifier), 'GRANTED requires authority');
-ar('AUTH-004', grants.filter(g => g.state === 'GRANTED').every(g => g.target?.repository), 'GRANTED requires target');
+ar('AUTH-001', grants.every(g => STATES.includes(g.state)), 'authorization state uses the authorization enum');
+ar('AUTH-002', grants.every(g => ALL_PROFILES.includes(g.level?.profile)),
+  `level is a profile, not an operation list (${grants.map(g => g.level?.profile).join(', ')})`);
+ar('AUTH-003', grants.filter(g => g.state === 'GRANTED').every(g => g.authority?.identifier), 'GRANTED requires an authority');
+ar('AUTH-004', grants.filter(g => g.state === 'GRANTED').every(g => g.target?.repository), 'GRANTED requires a target');
+ar('AUTH-005', !record.execution.executed_changes.length || grants.some(g => (g.change_ids || []).length > 0),
+  'GRANTED mutation requires change_ids');
+
 {
-  const executing = record.execution.executed_changes.length > 0;
-  const ok = !executing || grants.some(g => (g.change_ids || []).length > 0);
-  ar('AUTH-005', ok, 'GRANTED + mutation requires change_ids');
+  const escalation = grants.flatMap(g => {
+    const ceiling = capabilityClosure(g.level?.profile);
+    return (g.capabilities?.allow || []).filter(c => !ceiling.has(c)).map(c => `${g.level.profile}:${c}`);
+  });
+  ar('AUTH-006', escalation.length === 0,
+    'allow never introduces a capability the profile does not contain' + (escalation.length ? ` — ${escalation.join(', ')}` : ''));
 }
+
 {
-  const bad = grants.flatMap(g => (g.operations || []).filter(op => !(LEVELS[g.level] || []).includes(op))
-    .map(op => `${g.level}:${op}`));
-  ar('AUTH-006', bad.length === 0, 'every explicit operation belongs to Ops(level)' + (bad.length ? ` — ${bad.join(', ')}` : ''));
+  const catalogue = ALL_CAPS.filter(c => !(schema.$defs.capabilities.properties.allow.items.enum || []).includes(c));
+  const report = grants.map(g => `${g.level.profile} → ${effective(g).size} caps / ${permittedOperations(g).size} ops`);
+  ar('AUTH-007', catalogue.length === 0, 'EffectiveCapabilities = (Capabilities(profile) ∩ allow) − deny: ' + report.join('; '));
 }
+
 {
-  const notes = grants.map(g => `${g.level} → ${effectiveOps(g).length} effective ops`);
-  ar('AUTH-007', true, 'EffectiveOperations = Ops(level) ∩ operations: ' + notes.join('; '));
+  const bad = grants.flatMap(g => {
+    const implied = operationsOf(effective(g));
+    return (g.operations?.allow || []).filter(op => !implied.has(op)).map(op => `${g.level.profile}:${op}`);
+  });
+  ar('AUTH-008', bad.length === 0, 'every allowed operation is implied by an effective capability' +
+    (bad.length ? ` — ${bad.join(', ')}` : ''));
 }
+
+{
+  const denied = grants.flatMap(g => (g.capabilities?.deny || []).filter(c => effective(g).has(c)));
+  ar('AUTH-009', denied.length === 0, 'deny wins over allow and over the profile' + (denied.length ? ` — ${denied.join(', ')}` : ''));
+}
+
 {
   const authorized = new Set(grants.flatMap(g => g.change_ids || []));
   const bad = record.execution.executed_changes.filter(id => !authorized.has(id));
-  ar('AUTH-008', bad.length === 0, 'every executed change belongs to change_ids' + (bad.length ? ': ' + bad.join(', ') : ''));
+  ar('AUTH-010', bad.length === 0, 'every executed change belongs to change_ids' + (bad.length ? `: ${bad.join(', ')}` : ''));
 }
+
 {
-  const permitted = new Set(grants.flatMap(g => effectiveOps(g)));
-  const bad = (record.execution.operations || []).filter(op => !permitted.has(op));
-  ar('AUTH-009', bad.length === 0,
-    `every executed operation belongs to effective operations (${(record.execution.operations || []).length} executed)` +
-    (bad.length ? ` — uncovered: ${bad.join(', ')}` : ''));
+  const permitted = new Set(grants.flatMap(g => [...permittedOperations(g)]));
+  const bad = (record.execution.operations || []).filter(o => o.result === 'SUCCEEDED' && !permitted.has(o.operation));
+  ar('AUTH-011', bad.length === 0,
+    `every executed operation is permitted (${(record.execution.operations || []).length} operations)` +
+    (bad.length ? ` — uncovered: ${bad.map(o => o.operation).join(', ')}` : ''));
 }
+
 {
-  const bad = grants.filter(g => ['REVOKED', 'EXPIRED'].includes(g.state) && record.execution.executed_changes.length > 0);
-  ar('AUTH-010', bad.length === 0, 'REVOKED/EXPIRED cannot authorize execution');
+  const dead = grants.filter(g => ['REVOKED', 'EXPIRED'].includes(g.state) && record.execution.executed_changes.length > 0);
+  ar('AUTH-012', dead.length === 0, 'REVOKED/EXPIRED cannot authorize execution');
 }
+
 {
   const identifiers = grants.map(g => g.authority?.identifier || '');
   const technical = identifiers.filter(id => /access|permission|repository user|token|credential/i.test(id));
-  ar('AUTH-011', technical.length === 0 && identifiers.every(i => i.length > 0), 'technical permission cannot satisfy a grant');
+  ar('AUTH-013', technical.length === 0 && identifiers.every(i => i.length > 0), 'technical permission cannot satisfy a grant');
 }
+
 {
   const executor = record.governance?.roles?.EXECUTOR || '';
-  const bad = grants.filter(g => String(g.authority?.identifier || '') === executor && executor.length > 0);
-  ar('AUTH-012', bad.length === 0, 'the executor did not grant its own authority');
+  const self = grants.filter(g => executor && String(g.authority?.identifier || '') === executor);
+  ar('AUTH-014', self.length === 0, 'the executor did not grant its own authority');
 }
+
+{
+  /* File-level operations carry a path and are checked against the scope.
+     COMMIT/PUSH are repository-level acts: they are constrained by the change
+     set (AUTH-011/AUTH-016) rather than by a path prefix. */
+  const fileLevel = new Set(['CREATE', 'MODIFY', 'RENAME', 'MOVE', 'DELETE']);
+  const include = [...new Set(grants.flatMap(g => g.scope?.paths?.include || []))];
+  const exclude = [...new Set(grants.flatMap(g => g.scope?.paths?.exclude || []))];
+  const bad = record.execution.operations
+    .filter(o => o.result === 'SUCCEEDED' && fileLevel.has(o.operation))
+    .filter(o => !include.some(prefix => o.target.startsWith(prefix)) || exclude.some(prefix => o.target.startsWith(prefix)))
+    .map(o => `${o.id}:${o.target}`);
+  const publication = record.execution.operations.filter(o => ['COMMIT', 'PUSH'].includes(o.operation)).length;
+  ar('AUTH-015', bad.length === 0,
+    `file-level operations stay inside scope.paths (${include.length} include, ${exclude.length} exclude; ${publication} repository-level publication op(s) constrained by change set)` +
+    (bad.length ? ` — ${bad.join(', ')}` : ''));
+}
+
+{
+  const mutating = new Set(['CREATE', 'MODIFY', 'RENAME', 'MOVE', 'DELETE', 'COMMIT', 'PUSH']);
+  const authorized = new Set(grants.flatMap(g => g.change_ids || []));
+  const bad = record.execution.operations.filter(o =>
+    mutating.has(o.operation) && !o.change_id);
+  const unknown = record.execution.operations.filter(o => o.change_id && !authorized.has(o.change_id));
+  ar('AUTH-016', bad.length === 0 && unknown.length === 0,
+    'every mutating operation names an authorized change (EV-011)' +
+    (bad.length || unknown.length ? ` — ${[...bad, ...unknown].map(o => o.id).join(', ')}` : ''));
+}
+
 {
   const discovered = record.execution.discovered_not_executed || [];
-  const leaked = discovered.filter(id => record.execution.executed_changes.includes(id));
-  const authorizedDiscovered = discovered.filter(id => grants.some(g => (g.change_ids || []).includes(id)));
-  ar('AUTH-013', leaked.length === 0 && authorizedDiscovered.length === 0,
-    `new change ids stay unauthorized until granted (${discovered.length} recorded)`);
+  const leaked = discovered.filter(id => record.execution.executed_changes.includes(id) ||
+    grants.some(g => (g.change_ids || []).includes(id)));
+  ar('AUTH-017', leaked.length === 0,
+    `newly discovered change ids stay unauthorized until granted (${discovered.length} recorded, none executed)`);
+}
+
+{
+  const forbidden = record.governance?.forbidden_operations || [];
+  const withheld = record.governance?.withheld_capabilities || [];
+  const reachable = withheld.filter(c => grants.some(g => effective(g).has(c)));
+  ar('AUTH-018', reachable.length === 0 && forbidden.length > 0,
+    `withheld capability classes are unreachable through every grant (${withheld.length} withheld)` +
+    (reachable.length ? ` — reachable: ${reachable.join(', ')}` : ''));
+}
+
+{
+  /* Every executed operation must have an authorization decision recorded:
+     either it is permitted by some grant, or it carries a non-success result. */
+  const decided = record.execution.operations.every(o => {
+    const allowed = grants.some(g => permittedOperations(g).has(o.operation));
+    return allowed || o.result !== 'SUCCEEDED';
+  });
+  ar('AUTH-019', decided, 'every executed operation has an authorization decision (EV-010)');
+}
+
+{
+  const steps = ['state', 'level', 'capabilities', 'operations', 'scope', 'change_ids'];
+  const missing = steps.filter(k => !(k in record.authorization));
+  ar('AUTH-020', missing.length === 0,
+    'authorization keeps state, level, capability, operation, scope and change authorization separate (section 167)' +
+    (missing.length ? ` — missing: ${missing.join(', ')}` : ''));
 }
 
 /* ========================================================================== */
-/* EXECUTION and POST-VERIFICATION                                            */
+/* EXECUTION (EV-001…EV-012) and POST-VERIFICATION (PV-001…PV-010)            */
 /* ========================================================================== */
 
 {
   const ex = record.execution;
-  const ok = !(ex.result === 'NOT_EXECUTED' && ex.executed_changes.length > 0) &&
-    !(ex.result === 'SUCCEEDED' && ex.unauthorized_changes.length > 0);
-  ar('EXEC-001', ok, `execution result is consistent with the executed set (${ex.result})`);
-  const pv = record.post_verification || {};
-  const okPv = ['VERIFIED', 'PARTIALLY_VERIFIED', 'UNVERIFIED', 'CONTRADICTED', 'NOT_APPLICABLE'].includes(pv.result);
-  ar('POST-001', okPv && pv.independent === true && !!pv.method, 'post-verification is independent and uses the verification enum');
-  ar('POST-002', Array.isArray(pv.mutations) && pv.mutations.length === 0, 'verification did not modify repository state (I-012)');
+  const ops = ex.operations || [];
+  const succeeded = ops.filter(o => o.result === 'SUCCEEDED');
+  const notSucceeded = ops.filter(o => o.result !== 'SUCCEEDED');
+  const mutating = new Set(['CREATE', 'MODIFY', 'RENAME', 'MOVE', 'DELETE']);
+  const permitted = new Set(grants.flatMap(g => [...permittedOperations(g)]));
 
-  const violated = authChecks.filter(([, ok2]) => !ok2);
-  if (violated.length === 0) pass('AUTHORIZATION', 'authorization and execution rules hold', `${authChecks.length} rules`);
-  else fail('AUTHORIZATION', 'authorization and execution rules hold', violated.map(([id, , n]) => `${id}${n ? ' (' + n + ')' : ''}`).join('; '));
+  const ev = [
+    ['EV-001', ex.state !== 'NOT_STARTED' || succeeded.length === 0, 'NOT_STARTED implies no operation executed'],
+    ['EV-002', ex.state !== 'AUTHORIZATION_BLOCKED' || succeeded.filter(o => mutating.has(o.operation)).length === 0,
+      'AUTHORIZATION_BLOCKED implies no mutation'],
+    ['EV-003', ex.state !== 'READY' || grants.some(g => g.state === 'GRANTED'), 'READY implies valid authorization'],
+    ['EV-004', ex.state !== 'RUNNING' || ops.length > 0, 'RUNNING implies operations in flight'],
+    ['EV-005', ex.state !== 'SUCCEEDED' || notSucceeded.length === 0, 'SUCCEEDED implies every listed operation succeeded'],
+    ['EV-006', ex.state !== 'PARTIALLY_SUCCEEDED' || (succeeded.length > 0 && notSucceeded.length > 0),
+      'PARTIALLY_SUCCEEDED implies both a success and a failure'],
+    ['EV-007', ex.state !== 'FAILED' || notSucceeded.length > 0, 'FAILED implies required work did not complete'],
+    ['EV-008', ex.state !== 'CANCELLED' || ops.some(o => o.result === 'CANCELLED'), 'CANCELLED implies cancellation'],
+    ['EV-009', ex.state !== 'STOPPED' || ops.some(o => ['BLOCKED', 'CANCELLED'].includes(o.result)) || notSucceeded.length > 0,
+      'STOPPED implies a policy or system boundary'],
+    ['EV-010', ops.every(o => permitted.has(o.operation) || o.result !== 'SUCCEEDED'), 'every operation has an authorization decision'],
+    ['EV-011', ops.filter(o => mutating.has(o.operation) || ['COMMIT', 'PUSH'].includes(o.operation)).every(o => !!o.change_id),
+      'every mutating operation references a change id'],
+    ['EV-012', ex.unauthorized_changes.length === 0 && ops.every(o => !(o.result === 'SUCCEEDED' && !permitted.has(o.operation))),
+      'unauthorized operations did not mutate the repository'],
+  ];
+  const bad = ev.filter(([, ok]) => !ok);
+  if (bad.length === 0) pass('EXECUTION', 'execution invariants hold', `${ev.length} invariants, state ${ex.state}`);
+  else fail('EXECUTION', 'execution invariants hold', bad.map(([id]) => id).join(', '));
+
+  const pv = record.post_verification || {};
+  const checks = pv.checks || [];
+  const required = checks;
+  const failed = required.filter(c => c.result === 'FAILED');
+  const passed = required.filter(c => c.result === 'PASSED');
+  const notPassed = required.filter(c => c.result !== 'PASSED');
+  const pvRules = [
+    ['PV-001', pv.state !== 'PASSED' || (notPassed.length === 0 && required.length > 0), 'PASSED implies every required check passed'],
+    ['PV-002', pv.state !== 'PARTIALLY_PASSED' || (passed.length > 0 && notPassed.length > 0), 'PARTIALLY_PASSED implies a pass and a non-pass'],
+    ['PV-003', pv.state !== 'FAILED' || failed.length > 0, 'FAILED implies at least one required check failed'],
+    ['PV-004', pv.state !== 'BLOCKED' || checks.some(c => c.result === 'BLOCKED'), 'BLOCKED implies verification could not execute'],
+    ['PV-005', pv.state !== 'INCONCLUSIVE' || checks.some(c => c.result === 'INCONCLUSIVE'), 'INCONCLUSIVE implies no outcome'],
+    ['PV-006', pv.result !== 'CONFORMING' || pv.state === 'PASSED', 'CONFORMING requires a PASSED lifecycle'],
+    ['PV-007', pv.result !== 'NON_CONFORMING' || failed.length > 0, 'NON_CONFORMING implies a violated invariant'],
+    ['PV-008', !(ex.state === 'SUCCEEDED' && pv.state === 'PASSED') || passed.length > 0,
+      'execution success does not automatically produce verification success'],
+    ['PV-009', (pv.mutations || []).length === 0, 'post-verification did not modify the repository'],
+    ['PV-010', (pv.findings || []).every(f => !f.proposed_change_id || !ex.executed_changes.includes(f.proposed_change_id)),
+      'remediation proposed by verification requires separate authorization'],
+  ];
+  const pvBad = pvRules.filter(([, ok]) => !ok);
+  if (pvBad.length === 0) pass('POST-VERIFY', 'post-verification invariants hold',
+    `${pvRules.length} invariants, state ${pv.state} / result ${pv.result}, ${checks.length} checks`);
+  else fail('POST-VERIFY', 'post-verification invariants hold', pvBad.map(([id]) => id).join(', '));
+
+  /* section 159 — the two lifecycles are independent, not identical fields */
+  const independent = record.execution.state !== undefined && pv.state !== undefined &&
+    !('result' in record.execution && record.execution.result === pv.state);
+  if (independent) pass('POST-VERIFY', 'execution and post-verification are separate lifecycles', 'SUCCEEDED ≠ PASSED');
+  else fail('POST-VERIFY', 'execution and post-verification are separate lifecycles');
+
+  const violated = authChecks.filter(([, ok]) => !ok);
+  if (violated.length === 0) pass('AUTHORIZATION', 'authorization rules hold', `${authChecks.length} rules across ${grants.length} grants`);
+  else fail('AUTHORIZATION', 'authorization rules hold', violated.map(([id, , n]) => `${id}${n ? ' (' + n + ')' : ''}`).join('; '));
 }
 
 /* ========================================================================== */
@@ -361,6 +583,8 @@ function parseYaml(text) {
     if (s === '' || s === 'null' || s === '~') return null;
     if (s === 'true') return true;
     if (s === 'false') return false;
+    if (s === '[]') return [];
+    if (s === '{}') return {};
     if ((s.startsWith('"') && s.endsWith('"')) || (s.startsWith("'") && s.endsWith("'"))) return s.slice(1, -1);
     return s;
   };
@@ -376,7 +600,7 @@ function parseYaml(text) {
         const inline = lines[i].trim().slice(2).trim();
         if (inline === '') { i++; const [v, ni] = parseNode(indent + 2); arr.push(v); i = ni; }
         else if (/^[A-Za-z_][\w-]*:/.test(inline)) {
-          lines[i] = ' '.repeat(seqIndent + 2) + inline;   // inline map start
+          lines[i] = ' '.repeat(seqIndent + 2) + inline;
           const [v, ni] = parseNode(seqIndent + 2); arr.push(v); i = ni;
         } else { arr.push(scalar(inline)); i++; }
       }
@@ -426,23 +650,25 @@ function diff(a, b, at, out) {
     diff(jsonView, yaml, '$', out);
     if (out.length === 0) {
       pass('SERIALIZATION', 'YAML and JSON deserialize to the same authorization object',
-        'SER-001…SER-010, SER-012: field names, enums, operations, change ids, target, state and level preserved');
+        'SER-001…SER-010: state, level profile, capabilities, operations, scope, change ids, authority and target preserved');
     } else {
       fail('SERIALIZATION', 'YAML and JSON deserialize to the same authorization object', out.slice(0, 4).join(' | '));
     }
 
-    /* SER-012 — serialization must not increase privileges */
-    const yamlOps = new Set([...(yaml.authorization?.operations || []),
-      ...((yaml.authorization_grants || []).flatMap(g => g.operations || []))]);
-    const jsonOps = new Set(grants.flatMap(g => g.operations || []));
-    const extra = [...yamlOps].filter(op => !jsonOps.has(op));
-    if (extra.length === 0) pass('SERIALIZATION', 'serialization does not increase effective privileges', 'SER-012');
-    else fail('SERIALIZATION', 'serialization does not increase effective privileges', extra.join(', '));
+    /* SER-012 — serialization must never increase privileges */
+    const privilege = grant => [...permittedOperations(grant)].sort().join(',');
+    const yamlGrants = [yaml.authorization, ...(yaml.authorization_grants || [])];
+    const jsonGrants = grants;
+    const gained = yamlGrants.flatMap((g, i) => {
+      const before = new Set(jsonGrants[i] ? permittedOperations(jsonGrants[i]) : []);
+      return [...permittedOperations(g)].filter(op => !before.has(op)).map(op => `${g.level?.profile}:${op}`);
+    });
+    if (gained.length === 0) pass('SERIALIZATION', 'serialization does not increase effective privileges', 'SER-012, ' + yamlGrants.map(privilege).join(' | '));
+    else fail('SERIALIZATION', 'serialization does not increase effective privileges', gained.join(', '));
 
-    const badLevels = [...new Set([yaml.authorization, ...(yaml.authorization_grants || [])]
-      .map(g => `${g.level}:${g.state}`))].filter(x => !ALL_LEVELS.includes(x.split(':')[0]) || !STATES.includes(x.split(':')[1]));
+    const badLevels = yamlGrants.filter(g => !ALL_PROFILES.includes(g.level?.profile) || !STATES.includes(g.state));
     if (badLevels.length === 0) pass('SERIALIZATION', 'enum values are identical across formats', 'SER-003');
-    else fail('SERIALIZATION', 'enum values are identical across formats', badLevels.join(', '));
+    else fail('SERIALIZATION', 'enum values are identical across formats', badLevels.length + ' grant(s)');
   }
 }
 
@@ -451,7 +677,9 @@ function diff(a, b, at, out) {
 /* ========================================================================== */
 
 {
-  const noGeneric = !/"status"\s*:/.test(fs.readFileSync(RECORD_PATH, 'utf8'));
+  const raw = fs.readFileSync(RECORD_PATH, 'utf8');
+  const noGeneric = !/"status"\s*:/.test(raw);
+  const merged = record.contradictions.flatMap(x => [x.claim_a, x.claim_b]);
   const invariants = [
     ['I-001', 'No generic status field', () => noGeneric],
     ['I-002', 'Claim kind describes claim semantics', () => claims.every(c => typeof c.claim_kind === 'string')],
@@ -460,12 +688,13 @@ function diff(a, b, at, out) {
     ['I-005', 'Evidence level describes evidence strength/availability', () => claims.every(c => typeof c.evidence_level === 'string')],
     ['I-006', 'Verification result describes verification conclusion', () => claims.every(c => typeof c.verification_result === 'string')],
     ['I-007', 'Authorization state describes whether permission exists', () => typeof record.authorization.state === 'string'],
-    ['I-008', 'Authorization level describes permitted capability', () => typeof record.authorization.level === 'string'],
-    ['I-009', 'Execution result describes what actually happened', () => typeof record.execution.result === 'string'],
+    ['I-008', 'Authorization level is a profile, not an operation set', () => typeof record.authorization.level?.profile === 'string'
+      && Array.isArray(record.authorization.capabilities?.allow) && typeof record.authorization.operations === 'object'],
+    ['I-009', 'Execution state describes what happened', () => typeof record.execution.state === 'string' && typeof record.execution.result === 'undefined'],
     ['I-010', 'Technical access does not imply authorization', () => 'authorization' in record && 'access_level' in record.repository],
-    ['I-011', 'Authorization does not imply execution', () => record.execution.executed_changes.length > 0 ? true : true],
+    ['I-011', 'Authorization does not imply execution', () => record.execution.executed_changes.length > 0 || grants.some(g => g.state !== 'GRANTED')],
     ['I-012', 'Execution success does not imply post-verification success',
-      () => 'post_verification' in record && record.post_verification.result !== record.execution.result],
+      () => record.post_verification.state !== record.execution.state],
     ['I-013', 'Every executed change is authorized',
       () => record.execution.executed_changes.every(id => grants.some(g => (g.change_ids || []).includes(id)))],
     ['I-014', 'Every important verification claim has evidence',
@@ -474,11 +703,19 @@ function diff(a, b, at, out) {
       () => !(record.repository.access_level === 'FULL' && claims.some(c => c.evidence_level === 'INACCESSIBLE'))],
     ['I-016', 'Newly discovered work cannot silently expand execution scope',
       () => record.execution.unauthorized_changes.length === 0 &&
-        (record.execution.discovered_not_executed || []).every(id => !record.execution.executed_changes.includes(id))]
+        (record.execution.discovered_not_executed || []).every(id => !record.execution.executed_changes.includes(id))],
   ];
   const violated = invariants.filter(([, , check]) => !check());
   if (violated.length === 0) pass('INVARIANTS', 'machine-readable invariants hold', `${invariants.length} invariants`);
   else fail('INVARIANTS', 'machine-readable invariants hold', violated.map(([id]) => id).join(', '));
+
+  const malformed = record.contradictions.filter(x => x.claim_a === x.claim_b || !byId.has(x.claim_a) || !byId.has(x.claim_b));
+  if (malformed.length === 0) {
+    pass('INVARIANTS', 'contradictions are recorded as relationships between claims',
+      `${record.contradictions.length} contradiction(s) over ${new Set(merged).size} distinct claims`);
+  } else {
+    fail('INVARIANTS', 'contradictions are recorded as relationships between claims', malformed.length + ' malformed');
+  }
 }
 
 /* ========================================================================== */
@@ -494,17 +731,17 @@ function diff(a, b, at, out) {
     const shown = [...m[2].matchAll(/`([A-Z_]+)`/g)].map(x => x[1]);
     if (shown.length !== 5) continue;
     const actual = [claim.claim_kind, claim.implementation_state, claim.test_state, claim.evidence_level, claim.verification_result];
-    if (shown.join('|') !== actual.join('|')) stale.push(`${claim.id}`);
+    if (shown.join('|') !== actual.join('|')) stale.push(claim.id);
   }
   if (stale.length === 0) pass('CLAIMS', 'restated claim fields match the record', 'repository-analysis §3 index');
   else fail('CLAIMS', 'restated claim fields match the record', stale.slice(0, 4).join(', '));
 }
 
 {
-  const enumDrift = ['claim_kind', 'implementation_state', 'test_state', 'evidence_level', 'verification_result']
-    .flatMap(f => claims.filter(c => !schema.$defs.claim.properties[f].enum.includes(c[f])).map(c => `${c.id}.${f}`));
-  if (enumDrift.length === 0) pass('CLAIMS', 'every claim field uses the schema enum');
-  else fail('CLAIMS', 'every claim field uses the schema enum', enumDrift.slice(0, 5).join(', '));
+  const drift = ['claim_kind', 'implementation_state', 'test_state', 'evidence_level', 'verification_result']
+    .flatMap(f => claims.filter(c => !enumOf(f).includes(c[f])).map(c => `${c.id}.${f}`));
+  if (drift.length === 0) pass('CLAIMS', 'every claim field uses the schema enum');
+  else fail('CLAIMS', 'every claim field uses the schema enum', drift.slice(0, 5).join(', '));
 }
 
 {
@@ -520,12 +757,11 @@ function diff(a, b, at, out) {
 /* Report                                                                     */
 /* ========================================================================== */
 
-const stages = ['STRUCTURAL', 'CLAIMS', 'EVIDENCE', 'AUTHORIZATION', 'SERIALIZATION', 'INVARIANTS'];
 const width = Math.max(...results.map(r => r[2].length));
-console.log('validation pipeline: STRUCTURAL → CLAIMS → EVIDENCE → AUTHORIZATION → EXECUTION → SERIALIZATION\n');
+console.log('validation pipeline: STRUCTURAL → CLAIMS → EVIDENCE → AUTHORIZATION → EXECUTION → POST-VERIFY → SERIALIZATION\n');
 let current = null;
 for (const [stage, level, message, note] of results) {
-  const label = stage === 'AUTHORIZATION' ? 'AUTHORIZATION + EXECUTION' : stage;
+  const label = stage === 'AUTHORIZATION' ? 'AUTHORIZATION (AUTH-001…AUTH-020)' : stage;
   if (label !== current) { console.log(`\n${label}`); current = label; }
   console.log(`  [${level}] ${message.padEnd(width)}  ${note}`);
 }

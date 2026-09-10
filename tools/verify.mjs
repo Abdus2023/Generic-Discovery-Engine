@@ -393,10 +393,10 @@ else fail('no later-design layers present', futureHits.join(', '));
       for (const field of fiveFields) if (!(field in claim)) missing.push(`${claim.id}.${field}`);
     }
     if (missing.length === 0) {
-      pass('every claim record carries all five typed fields',
+      pass('every claim record carries its typed claim fields',
         `${record.claims.length} records`);
     } else {
-      fail('every claim record carries all five typed fields', missing.slice(0, 6).join(', '));
+      fail('every claim record carries its typed claim fields', missing.slice(0, 6).join(', '));
     }
 
     const collapsed = record.claims.filter(c => ['IMPLEMENTED', 'TESTED', 'DOCUMENTED', 'MISSING', 'TRUE', 'FALSE']
@@ -404,11 +404,14 @@ else fail('no later-design layers present', futureHits.join(', '));
     if (collapsed.length === 0) pass('verification_result never carries a non-verification value');
     else fail('verification_result never carries a non-verification value', collapsed.map(c => c.id).join(', '));
 
-    const exec = record.execution.result;
-    if (['NOT_EXECUTED', 'SUCCEEDED', 'PARTIALLY_SUCCEEDED', 'FAILED', 'STOPPED'].includes(exec)) {
-      pass('execution.result uses the execution enum', `${exec}, ${record.execution.executed_changes.length} executed change(s)`);
+    const exec = record.execution.state;
+    if (['NOT_STARTED', 'AUTHORIZATION_BLOCKED', 'READY', 'RUNNING', 'SUCCEEDED', 'PARTIALLY_SUCCEEDED',
+         'FAILED', 'CANCELLED', 'STOPPED'].includes(exec)) {
+      const results = record.execution.operations.map(o => o.result);
+      pass('execution.state uses the execution lifecycle enum',
+        `${exec}, ${record.execution.executed_changes.length} executed change(s), ${results.length} operation results`);
     } else {
-      fail('execution.result uses the execution enum', String(exec));
+      fail('execution.state uses the execution lifecycle enum', String(exec));
     }
 
     const forbidden = record.governance?.forbidden_operations || [];
@@ -437,43 +440,109 @@ else fail('no later-design layers present', futureHits.join(', '));
   }
 
   const record = JSON.parse(fs.readFileSync(path.join(ROOT, 'docs', 'analysis', 'analysis.json'), 'utf8'));
+  const schema = JSON.parse(fs.readFileSync(schemaPath, 'utf8'));
   const auth = record.authorization || {};
   const STATES = ['NOT_REQUESTED', 'REQUESTED', 'DENIED', 'GRANTED', 'REVOKED', 'EXPIRED'];
-  const LEVELS = ['READ_ONLY', 'ANALYSIS_ONLY', 'DOC_REFACTOR', 'TEST_REFACTOR',
-    'CODE_REFACTOR', 'ARCHITECTURE_CHANGE', 'COMMIT', 'PUSH'];
+  const PROFILES = Object.keys(schema.level_profiles);
+  const CAP_OPS = schema.capability_operations;
+  const grants = [auth, ...(record.authorization_grants || [])];
 
   if (STATES.includes(auth.state)) pass('authorization state uses the authorization enum', auth.state);
   else fail('authorization state uses the authorization enum', String(auth.state));
 
-  if (LEVELS.includes(auth.level)) pass('authorization level uses the capability enum', auth.level);
-  else fail('authorization level uses the capability enum', String(auth.level));
+  /* a level is a named profile: it is not an operation list and not an authority */
+  if (grants.every(g => PROFILES.includes(g.level?.profile))) {
+    pass('authorization level is a named profile', grants.map(g => g.level.profile).join(', '));
+  } else {
+    fail('authorization level is a named profile', grants.map(g => String(g.level?.profile ?? g.level)).join(', '));
+  }
 
-  /* authorization must never be reduced to a boolean, and level must never be
-     absent while a grant exists (rules V8/V9, invariants I-007/I-008) */
-  const booleanGrant = 'granted' in auth || typeof auth.authorized === 'boolean';
-  if (!booleanGrant) pass('authorization is an object, not a boolean');
+  if (!('granted' in auth) && typeof auth.authorized !== 'boolean') pass('authorization is an object, not a boolean');
   else fail('authorization is an object, not a boolean');
 
-  if (!(auth.state === 'GRANTED' && !auth.level)) pass('a grant states its level separately from its state');
+  if (!(auth.state === 'GRANTED' && !auth.level?.profile)) pass('a grant states its level separately from its state');
   else fail('a grant states its level separately from its state');
 
-  /* no inheritance: AUTH-006/§124 — every explicit operation must belong to
-     Ops(level), and every executed operation must be covered by the union of
-     the declared grants' effective operations */
-  {
-    const policy = JSON.parse(fs.readFileSync(schemaPath, 'utf8')).authorization_levels;
-    const grants = [auth, ...(record.authorization_grants || [])];
-    const escalation = grants.flatMap(g => (g.operations || [])
-      .filter(op => !(policy[g.level] || []).includes(op)).map(op => `${g.level}:${op}`));
-    if (escalation.length === 0) pass('no capability is assumed by inheritance', 'operations ⊆ Ops(level) for every grant');
-    else fail('no capability is assumed by inheritance', escalation.join(', '));
+  /* Capabilities(L) = Own(L) ∪ Capabilities(parents); inheritance is declared,
+     never inferred from the textual ordering of profile names (sections 148-150). */
+  const closure = (profile, path_ = []) => {
+    if (path_.includes(profile)) throw new Error('inheritance cycle: ' + [...path_, profile].join(' -> '));
+    const node = schema.level_profiles[profile];
+    const out = new Set(node.capabilities || []);
+    for (const parent of node.inherits || []) for (const cap of closure(parent, [...path_, profile])) out.add(cap);
+    return out;
+  };
+  const effective = grant => {
+    const ceiling = closure(grant.level.profile);
+    const allow = grant.capabilities?.allow || [...ceiling];
+    const keep = new Set((grant.capabilities?.mode === 'INHERIT' ? [...allow] : allow.filter(c => ceiling.has(c))));
+    for (const cap of grant.capabilities?.deny || []) keep.delete(cap);
+    return keep;
+  };
+  const opsOf = caps => new Set([...caps].map(c => CAP_OPS[c]?.operation).filter(Boolean));
+  const permitted = grant => {
+    const implied = opsOf(effective(grant));
+    const allow = grant.operations?.allow ? grant.operations.allow.filter(op => implied.has(op)) : [...implied];
+    const kept = new Set(allow);
+    for (const op of grant.operations?.deny || []) kept.delete(op);
+    return kept;
+  };
 
-    const covered = new Set(grants.flatMap(g =>
-      (policy[g.level] || []).filter(op => (g.operations || policy[g.level]).includes(op))));
-    const uncovered = (record.execution.operations || []).filter(op => !covered.has(op));
+  {
+    const escalation = grants.flatMap(g => (g.capabilities?.allow || [])
+      .filter(c => !closure(g.level.profile).has(c)).map(c => `${g.level.profile}:${c}`));
+    if (escalation.length === 0) pass('no capability is assumed: allow never exceeds the profile', grants.map(g => g.level.profile).join(', '));
+    else fail('no capability is assumed: allow never exceeds the profile', escalation.join(', '));
+
+    const leaked = (record.governance?.withheld_capabilities || []).filter(c => grants.some(g => effective(g).has(c)));
+    if (leaked.length === 0) pass('withheld capability classes are unreachable through every grant',
+      `${(record.governance?.withheld_capabilities || []).length} withheld`);
+    else fail('withheld capability classes are unreachable through every grant', leaked.join(', '));
+
+    const uncovered = record.execution.operations
+      .filter(o => o.result === 'SUCCEEDED' && !grants.some(g => permitted(g).has(o.operation)))
+      .map(o => `${o.id}:${o.operation}`);
     if (uncovered.length === 0) pass('executed operations are covered by the declared grants',
-      `${(record.execution.operations || []).length} operations across ${grants.length} grant(s)`);
+      `${record.execution.operations.length} operations across ${grants.length} grant(s)`);
     else fail('executed operations are covered by the declared grants', uncovered.join(', '));
+  }
+
+  /* scope.paths must describe the paths the change set actually touched */
+  {
+    const include = [...new Set(grants.flatMap(g => g.scope?.paths?.include || []))];
+    let touched = [];
+    try {
+      touched = execFileSync('git', ['diff', '--name-only', record.repository.resolved_revision + '..HEAD'],
+        { cwd: ROOT, encoding: 'utf8' }).trim().split('\n').filter(Boolean);
+    } catch { touched = []; }
+    const outside = touched.filter(f => !include.some(prefix => f === prefix || f.startsWith(prefix)));
+    if (touched.length > 0 && outside.length === 0) {
+      pass('declared scope paths cover everything the change set touched',
+        `${touched.length} changed path(s) inside ${include.length} declared location(s)`);
+    } else if (touched.length === 0) {
+      pass('declared scope paths are stated', `${include.length} location(s); git comparison unavailable`);
+    } else {
+      fail('declared scope paths cover everything the change set touched', outside.slice(0, 5).join(', '));
+    }
+  }
+
+  /* execution and post-verification are separate lifecycles with their own vocabularies */
+  {
+    const EXEC = schema.$defs.execution.properties.state.enum;
+    const PV = schema.$defs.post_verification.properties.state.enum;
+    const PV_RESULT = schema.$defs.post_verification.properties.result.enum;
+    const okExec = EXEC.includes(record.execution.state) && !('result' in record.execution);
+    const okPv = PV.includes(record.post_verification.state) && PV_RESULT.includes(record.post_verification.result);
+    if (okExec && okPv) {
+      pass('execution and post-verification use separate lifecycles',
+        `execution ${record.execution.state}; post-verification ${record.post_verification.state}/${record.post_verification.result}`);
+    } else {
+      fail('execution and post-verification use separate lifecycles', `${record.execution.state} / ${record.post_verification.state}`);
+    }
+
+    const mixed = record.claims.filter(c => ['PASSED', 'CONFORMING', 'SUCCEEDED'].includes(c.verification_result));
+    if (mixed.length === 0) pass('claim verification_result never borrows execution or verification lifecycle values');
+    else fail('claim verification_result never borrows execution or verification lifecycle values', mixed.map(c => c.id).join(', '));
   }
 
   const flatEvidence = record.claims.flatMap(c => c.evidence).filter(e => typeof e === 'string');

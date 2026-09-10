@@ -22,12 +22,21 @@ const MD_PATH = path.join(ROOT, 'docs', 'analysis', 'claims.md');
 const BEGIN = '<!-- CLAIMS:BEGIN (generated from analysis.json — do not edit by hand) -->';
 const END = '<!-- CLAIMS:END -->';
 
+/* Section headings are derived from the claim-id family, so the record itself
+   stays canonical (section 142) and carries no presentation-only field. */
+const FAMILY_GROUP = {
+  CAND: 'current-system', SCHED: 'current-system', ACQ: 'current-system', PROV: 'current-system',
+  ARCH: 'architecture-boundary',
+  SCOPE: 'scope-and-absence',
+  PLAN: 'plan-history-hypothesis', HIST: 'plan-history-hypothesis', HYP: 'plan-history-hypothesis'
+};
 const GROUPS = [
   ['current-system', 'Current-system claims'],
   ['architecture-boundary', 'Architecture-boundary claims'],
   ['scope-and-absence', 'Scope and absence claims'],
   ['plan-history-hypothesis', 'Plan, history and hypothesis claims']
 ];
+const groupOf = claim => FAMILY_GROUP[String(claim.id).split('-')[0]] || 'current-system';
 
 const record = JSON.parse(fs.readFileSync(JSON_PATH, 'utf8'));
 const claims = record.claims;
@@ -39,16 +48,19 @@ function cell(text) {
 function renderGroups() {
   const out = [];
   for (const [key, title] of GROUPS) {
-    const rows = claims.filter(c => c.group === key);
+    const rows = claims.filter(c => groupOf(c) === key);
     if (rows.length === 0) continue;
     out.push(`### ${title}`);
     out.push('');
-    out.push('| Claim ID | Statement | claim_kind | implementation_state | test_state | evidence_level | verification_result | Evidence | Interpretation |');
-    out.push('| --- | --- | --- | --- | --- | --- | --- | --- | --- |');
+    out.push('| Claim ID | Statement | claim_kind | implementation_state | test_state | evidence_level | verification_result | confidence | Evidence | Interpretation |');
+    out.push('| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |');
     for (const c of rows) {
       const evidence = c.evidence.map(e => `[EVID:${typeof e === 'string' ? e : e.id}]`).join(' ');
       const marker = c.verification_result === 'CONTRADICTED' ? '**CONTRADICTED**' : c.verification_result;
-      out.push(`| \`${c.id}\` | ${cell(c.statement)} | \`${c.claim_kind}\` | \`${c.implementation_state}\` | \`${c.test_state}\` | \`${c.evidence_level}\` | \`${marker}\` | ${evidence} | ${cell(c.interpretation)} |`);
+      const interpretation = typeof c.interpretation === 'string'
+        ? c.interpretation
+        : [c.interpretation?.summary || '', ...(c.interpretation?.limitations || []).map(l => `Limitation: ${l}`)].join(' ');
+      out.push(`| \`${c.id}\` | ${cell(c.statement)} | \`${c.claim_kind}\` | \`${c.implementation_state}\` | \`${c.test_state}\` | \`${c.evidence_level}\` | \`${marker}\` | \`${c.confidence || '—'}\` | ${evidence} | ${cell(interpretation)} |`);
     }
     out.push('');
   }

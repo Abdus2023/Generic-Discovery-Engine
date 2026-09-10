@@ -125,7 +125,8 @@ digest, so any accidental code modification fails verification.
 | TEST-011 | `tools/simulate.mjs` | anomaly stream `CONCURRENT_OWNER` | two workers acquiring one candidate at the same time | DIRECT | DIRECT |
 | TEST-012 | `tools/simulate.mjs` | metrics `discoveries` vs `uniqueUrls` (74 / 27) | discovery records are not deduplicated (D9) | DIRECT | DIRECT |
 | TEST-013 | `tools/simulate.mjs` | `--unsafe-control` run | the harness detects an ownership violation (detector sensitivity) | DIRECT (executed) | DIRECT |
-| TEST-014 | `tools/validate-analysis.mjs` | the validation pipeline: schema, claim rules C/CV, evidence rules, authorization rules AUTH-001–AUTH-014, serialization invariants SER-001–SER-012, invariants I-001–I-016 | the record's typed fields, evidence shape, authorization and execution consistency | DIRECT (executed) | DIRECT |
+| TEST-014 | `tools/validate-analysis.mjs` | the validation pipeline: schema, claim rules C-001–C-043 and matrix CV-001–CV-020, evidence rules, authorization rules AUTH-001–AUTH-020, execution invariants EV-001–EV-012, post-verification invariants PV-001–PV-010, serialization invariants SER-001–SER-012, invariants I-001–I-016 | the record's typed fields, evidence shape, authorization and execution consistency | DIRECT (executed) | DIRECT |
+| TEST-015 | `tools/verify.mjs` (§7e) | capability closure re-derived from `level_profiles`, `allow ⊆ Capabilities(profile)`, withheld classes unreachable, executed operations covered, declared scope paths versus `git diff`, execution/post-verification lifecycle separation | the authorization model and the two lifecycles are enforced, not merely documented | DIRECT (executed) | DIRECT |
 
 ## Register — documentation
 
@@ -142,7 +143,7 @@ digest, so any accidental code modification fails verification.
 | DOC-011 | `docs/glossary.md` | "Canonical definitions" | one term per concept; conflict table | DIRECT | DIRECT |
 | DOC-012 | `docs/analysis/change-register-2026-09-10.md` | change IDs R-001… | what was changed, why, and how it was verified | DIRECT | DIRECT |
 | DOC-013 | `docs/analysis/analysis.json`, `docs/analysis/analysis.schema.json`, `docs/analysis/claims.md` | the normative record, the schema and its rendering | the typed state of every claim, the authorization object and the execution record | DIRECT | DIRECT |
-| DOC-014 | `docs/analysis/authorization.yaml` | the canonical authorization object in YAML | serialization identity with the JSON record (SER-001…SER-012) | DIRECT | DIRECT |
+| DOC-014 | `docs/analysis/authorization.yaml` | the canonical authorization object in YAML — level profiles, capability allow/deny sets, operation sets, scope paths, change ids | serialization identity with the JSON record (SER-001…SER-012) and the resolved capability closure | DIRECT | DIRECT |
 
 ## Absence procedures (rule V2)
 
