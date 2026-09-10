@@ -26,6 +26,8 @@ jobs:
         run: npm run verify
       - name: Coverage gate (c8 85/75/80)
         run: npm run coverage:check
+      - name: Typecheck (tsc --noEmit, informational)
+        run: npm run typecheck 2>&1 | tail -n 50 || echo "typecheck informational"
       - name: Coverage metrics (dist size + native)
         run: |
           node -e "import fs from 'fs'; console.log('dist size', fs.statSync('dist/generic-discovery-engine.user.js').size, 'lines', fs.readFileSync('dist/generic-discovery-engine.user.js','utf8').split('\n').length)"

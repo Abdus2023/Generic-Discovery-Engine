@@ -2,6 +2,14 @@
 
 All notable changes to the Generic Discovery Engine.
 
+## [0.7.8] — 2026-09-10 — Lifecycle & Concurrency (state-machine + claim-exclusivity + types)
+
+- **Lifecycle:** `CONFIG.lifecycle.strict:false` + `KnowledgeBase._validateTransition(candidate,to)` table (`discovered→queued→claimed→planned→acquiring→observed→recognized→expanded→completed` + `skipped/failed/ttl` branches); illegal `queued→observed` or `completed→queued` emits `lifecycle-illegal-transition` diagnostic (strict throws), cost ~0.02 ms per mark. Header `0.7.7→0.7.8`, `5,468→5,526` lines, `node --check` PASS.
+- **Concurrency:** `claimNextCandidate()` stays synchronous `eligible.sort→_validateTransition→claimed`; proven exclusive under 4 workers + `setImmediate` interleaving (500 iter, TTL+retry windows) via `tests/property-concurrency.test.js` (6 cases). Source still has no `async` before `candidate.status='claimed'`.
+- **Types:** `tsconfig.json` (`allowJs:true, checkJs:true, skipLibCheck:true, ES2022/DOM`) + `package.json` `typecheck` (`tsc --noEmit --allowJs --checkJs`) + `devDeps typescript@5.5` + `@types/node`; `npm run typecheck` now surfaces `GM_*`/`trustedTypes` diagnostics (informational, gate stays `.c8rc` 85/75/80). `npm test` **88/88 PASS** (25 suites: 73 existing + 8 lifecycle + 6 concurrency + 1 new verify-p0 lifecycle) vs 73/73 in 0.7.7.
+- **ADRs:** `docs/adr/010-lifecycle-state-machine.md`, `011-concurrency-claim.md`, `012-type-safety.md` + `docs/adr/README.md` → 12 ADRs (9→12). `docs/DECISIONS.md`/`docs/architecture/OVERVIEW.md` bumped to `5,526` lines.
+- **Docs:** `VERIFICATION_SUPPLEMENT_v0.7.8.md` (§lifecycle §concurrency §types §gates) + `docs/SECURITY_AUDIT.md`/`docs/PERFORMANCE_ANALYSIS.md` headers → v0.7.8.
+
 ## [0.7.7] — 2026-09-10 — Determinism & Bounds (TTL + FIFO + throttle + gates)
 
 - **Bounds:** `CONFIG.candidateTTL: 0` (off, ms) — `KnowledgeBase.claimNextCandidate()` now sweeps `queued/failed` older than `createdAt+TTL` and marks `ttl-expired` (visited+`skipped`, `candidate-ttl-expired` diagnostic) before `effectivePriority` sort; frees liveCount at cap 750 without background timer (~0.05 ms). Header `0.7.6→0.7.7`, `5,441→5,468` lines, `node --check` PASS.

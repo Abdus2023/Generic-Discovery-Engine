@@ -15,7 +15,7 @@ describe('static patch presence (dist/generic-discovery-engine.user.js)', () => 
     const file = fs.readFileSync(path.join(import.meta.dirname, '../dist/generic-discovery-engine.user.js'), 'utf8');
 
     it('version bumped to 0.7.2+', () => {
-        assert.match(file, /@version\s+0\.7\.[234567]/);
+        assert.match(file, /@version\s+0\.7\.[2345678]/);
         assert.match(file, /version:\s*8/);
     });
     it('P0-1 liveCount fix present', () => {
@@ -48,6 +48,16 @@ describe('static patch presence (dist/generic-discovery-engine.user.js)', () => 
         assert.match(file, /stripSensitiveParams/);
         assert.match(file, /csp-blocks-bridge/);
         assert.match(file, /config-cross-origin-requires-connect-star/);
+    });
+    it('v0.7.8 lifecycle & concurrency present', () => {
+        assert.match(file, /lifecycle/);
+        assert.match(file, /_validateTransition/);
+        assert.match(file, /lifecycle-illegal-transition/);
+        assert.match(file, /CONFIG\.lifecycle/);
+        const pkg2 = fs.readFileSync(path.join(import.meta.dirname, '../package.json'), 'utf8');
+        assert.match(pkg2, /typecheck/);
+        const ts = fs.readFileSync(path.join(import.meta.dirname, '../tsconfig.json'), 'utf8');
+        assert.match(ts, /checkJs/);
     });
     it('v0.7.7 bounds & gates present', () => {
         assert.match(file, /candidateTTL/);

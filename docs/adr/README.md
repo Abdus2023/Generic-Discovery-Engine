@@ -7,7 +7,7 @@ New ADRs:
 2. Number sequentially (`004-…` next).
 3. Update `docs/DECISIONS.md` index.
 
-Current ADRs (v0.7.7 — 9 ADRs):
+Current ADRs (v0.7.8 — 12 ADRs):
 
 - `001-provider-pipeline.md` — 7 providers, ordered matching, `ProviderRegistry`.
 - `002-ledger.md` — 12 typed events, 5k FIFO, replayable `DecisionLedger`.
@@ -18,5 +18,8 @@ Current ADRs (v0.7.7 — 9 ADRs):
 - `007-candidate-ttl.md` — candidateTTL 0/off, ttl-expired sweep before sort.
 - `008-origin-throttle-invariants.md` — interval / concurrency / isolation proofs.
 - `009-coverage-gates.md` — check-coverage true 85/75/80, coverage:check gate.
+- `010-lifecycle-state-machine.md` — strict guard + allowed table, lifecycle-illegal-transition.
+- `011-concurrency-claim.md` — synchronous claim, 4-worker exclusivity, TTL/retry interleaving.
+- `012-type-safety.md` — tsconfig checkJs, typecheck script, @types/node.
 
 Transcript provenance: `Continue Architecture Planning.md` (92,274 lines). Runnable artifact: `dist/generic-discovery-engine.user.js`.

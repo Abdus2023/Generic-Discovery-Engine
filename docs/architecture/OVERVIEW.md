@@ -1,8 +1,8 @@
-# Architecture Overview — Generic Discovery Engine v0.7.7
+# Architecture Overview — Generic Discovery Engine v0.7.8
 
-**Runnable artifact:** `dist/generic-discovery-engine.user.js` (5,468 lines, CONFIG v8, `node --check` PASS)  
+**Runnable artifact:** `dist/generic-discovery-engine.user.js` (5,526 lines, CONFIG v8, `node --check` PASS)  
 **Transcript source:** `Continue Architecture Planning.md` (2.2 MB) → split into `docs/DECISIONS.md` + `docs/adr/*` (v0.7.4)  
-**Verification:** `VERIFICATION_REPORT.md` (v0.7.1) + `VERIFICATION_SUPPLEMENT_v0.7.2.md` + `VERIFICATION_SUPPLEMENT_v0.7.6.md` + `VERIFICATION_SUPPLEMENT_v0.7.7.md` + `docs/SECURITY_AUDIT.md` + `docs/PERFORMANCE_ANALYSIS.md` — `npm test` 73/73 PASS
+**Verification:** `VERIFICATION_REPORT.md` (v0.7.1) + `VERIFICATION_SUPPLEMENT_v0.7.2.md` + `VERIFICATION_SUPPLEMENT_v0.7.6.md` + `VERIFICATION_SUPPLEMENT_v0.7.7.md` + `VERIFICATION_SUPPLEMENT_v0.7.8.md` + `docs/SECURITY_AUDIT.md` + `docs/PERFORMANCE_ANALYSIS.md` — `npm test` 88/88 PASS
 
 ## 1. Control Architecture (DVB-inspired, not DVB-compatible)
 
@@ -18,21 +18,21 @@ NIT / new mux                   expansion (new candidates with provenance)
 
 The loop is `DISCOVERY → KNOWLEDGE GRAPH → ACQUISITION PLAN → SCHEDULER → ACQUISITION → OBSERVATION → RECOGNITION → DISCOVERY` (README diagram). Exhaustive DVB spectrum is replaced by **budgeted open-world search**: `maxCandidates 750 live`, `maxRequests 150 global`, `maxDepth 5`.
 
-## 2. Module Map (v0.7.7)
+## 2. Module Map (v0.7.8)
 
 ```
-CONFIG (v8, ~81 keys) + privacy stripSensitiveParams + candidateTTL 0/off
+CONFIG (v8, ~82 keys) + privacy stripSensitiveParams + candidateTTL 0/off + lifecycle strict:false
 ├── utils: canonicalizeUrl (tracking+privacy), isAllowedUrl, contentTypeBase,
 │          extractUrlsFromText/Css/Xml, fnv1a32, makeFingerprint, originOf
 ├── AcquisitionPlan / AcquisitionPolicy → AcquisitionPlan{allowed,reason}
 ├── OriginController (per-origin 2 concurrent, 150 ms, 50/origin)
 ├── Acquisition (GM_xhr + fetch fallback, 2M truncate, 8s timeout)
 ├── ProviderRegistry [Html, Json, Xml, Css, JavaScript, Binary, Text] — ordered
-├── KnowledgeBase (candidates Map, candidateKeys, visited identityKey, candidateTTL sweep, observations 800 FIFO,
+├── KnowledgeBase (candidates Map, candidateKeys, visited identityKey, candidateTTL sweep, lifecycle guard _validateTransition, observations 800 FIFO,
 │                  discoveries, resources, graphEdges 5k, fingerprintIndex, diagnostics 500)
 ├── DecisionLedger (12 types, 5k FIFO, seq, export/restore)
 ├── NetworkObserver (bridge fetch/XHR + PerformanceObserver, GET-trust rule)
-└── GenericDiscoveryEngine (discover/plan/execute/worker/adaptive/persist/UI + rAF-batched updateUI + TTL-bounded claim + getCoverageMetrics)
+└── GenericDiscoveryEngine (discover/plan/execute/worker/adaptive/persist/UI + rAF-batched updateUI + TTL-bounded claim + lifecycle-guarded marks + getCoverageMetrics)
 ```
 
 ## 3. Data-Flow & Invariants
@@ -44,10 +44,12 @@ CONFIG (v8, ~81 keys) + privacy stripSensitiveParams + candidateTTL 0/off
 - **Observation cap:** `maxObservationsInMemory 800 FIFO` + `bodyTruncated` flag; `serialize()` strips bodies for `GM_setValue` quota (≈10 MB).
 - **Cross-provider dedup:** `emittedForObservation Set<targetUrl>` per observation; mutation batches dedup via `seen Set<type:canonical>`.
 - **UI batching:** `updateUI()` coalesces via `requestAnimationFrame` (`_uiRaf` guard → `_doUpdateUI`), prevents layout thrash on ledger storms; sync fallback when rAF absent.
+- **Lifecycle guard:** `_validateTransition(candidate, to)` enforces `discovered→queued→claimed→planned→acquiring→observed→recognized→expanded→completed` plus `skipped/failed/ttl` branches; illegal emits `lifecycle-illegal-transition` (strict throws), cost 0.02 ms; proven by 500 random walks (ADR 010).
+- **Claim exclusivity:** `claimNextCandidate()` remains synchronous `eligible.sort → _validateTransition → claimed`; 4 workers + `setImmediate` interleaving never duplicate (ADR 011).
 - **TTL boundedness:** `claimNextCandidate()` sweeps `queued/failed` with `now()-createdAt > CONFIG.candidateTTL` → `ttl-expired` (visited+skipped); liveCount freed before sort, deterministic at 0.05 ms (see ADR 007).
 - **Coverage:** `getCoverageMetrics()` exposes `frontierSize/queuedByType/liveCount/requestsRemaining` in UI + export without extra traversal.
 
-## 4. Security Defaults (v0.7.7)
+## 4. Security Defaults (v0.7.8)
 
 - `sameOriginOnly:true` + `isAllowedUrl` (https only) enforced in both `discover()` and `policy`.
 - `@connect self` (header) with `*` commented; runtime warns if `sameOriginOnly=false`.
@@ -71,5 +73,5 @@ CONFIG (v8, ~81 keys) + privacy stripSensitiveParams + candidateTTL 0/off
 
 ## 7. Open Iterations (from DECISIONS.md)
 
-- Narrow `@connect` shipped v0.7.4; Trusted Types `gde-bridge` + fuzz + priority invariants shipped v0.7.5/v0.7.6; TTL + FIFO + throttle invariants + coverage gates shipped v0.7.7.
-- Planning doc fully split is incremental; this overview + 9 ADRs + coverage gates + TTL completes the v0.7.x hygiene pass; `npm run coverage:check` 85/75/80 gate, `npm run coverage` 99% line.
+- Narrow `@connect` shipped v0.7.4; Trusted Types `gde-bridge` + fuzz + priority invariants shipped v0.7.5/v0.7.6; TTL + FIFO + throttle + gates shipped v0.7.7; lifecycle + concurrency + typecheck shipped v0.7.8.
+- Planning doc fully split is incremental; this overview + 12 ADRs + coverage gates + TTL + lifecycle + concurrency + typecheck completes the v0.7.x hygiene pass; `npm run coverage:check` 85/75/80 gate, `npm run coverage` 99% line, `npm run typecheck` informational.

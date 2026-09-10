@@ -7,7 +7,7 @@
 - The transcript remains the provenance; ADRs are the normative summary.
 - New decisions get a new `docs/adr/NNN-title.md` and are linked here.
 
-## Decisions extracted (v0.7.7 — 9 ADRs)
+## Decisions extracted (v0.7.8 — 12 ADRs)
 
 | ADR | Title | Status | Transcript range | Code |
 |-----|-------|--------|------------------|------|
@@ -26,6 +26,9 @@
 | [007](adr/007-candidate-ttl.md) | Candidate TTL (bounded freshness, sweep before sort) | ✅ accepted | Roadmap Phase 1 → v0.7.7 | `CONFIG.candidateTTL`, `claimNextCandidate` ttl-expired |
 | [008](adr/008-origin-throttle-invariants.md) | Origin throttle invariants (interval/concurrency/isolation) | ✅ accepted | ADR 003 → v0.7.7 invariants | `OriginController` mock, `CONFIG.origin` |
 | [009](adr/009-coverage-gates.md) | Coverage gates (85/75/80, c8 check-coverage) | ✅ accepted | VERIFICATION → v0.7.7 | `.c8rc.json`, `coverage:check` |
+| [010](adr/010-lifecycle-state-machine.md) | Lifecycle state-machine guard (strict + table) | ✅ accepted | Worker audit → v0.7.8 | `CONFIG.lifecycle`, `_validateTransition`, `lifecycle-illegal-transition` |
+| [011](adr/011-concurrency-claim.md) | Concurrency claim exclusivity (sync sort+mark) | ✅ accepted | Scheduler → v0.7.8 | `claimNextCandidate` sync, `property-concurrency` |
+| [012](adr/012-type-safety.md) | Type safety (tsconfig checkJs + typecheck) | ✅ accepted | JSDoc → v0.7.8 | `tsconfig.json`, `typecheck`, `typescript` |
 
 ## Decisions still in transcript (not yet ADR-ified)
 
@@ -37,8 +40,8 @@
 ## Process
 1. ChatGPT proposes; user selects v0.2.0 as base.
 2. Each iteration adds one control-plane concern (claim-before-await, policy-before-acquisition, ledger-for-explainability).
-3. Verification (v0.7.1 audit) files P0/P1; patches landed v0.7.2/v0.7.3/v0.7.4/v0.7.5/v0.7.6/v0.7.7.
+3. Verification (v0.7.1 audit) files P0/P1; patches landed v0.7.2/v0.7.3/v0.7.4/v0.7.5/v0.7.6/v0.7.7/v0.7.8.
 
 ## Further splits
-- The 2.2 MB file also contains 12 full code fences. The runnable artifact is now `dist/generic-discovery-engine.user.js` (v0.7.7, 5,468 lines). The fences are retained for diff archaeology but are no longer the source of truth.
-- With 9 ADRs + rAF + coverage + TTL + gates the control-plane split is considered **complete** for v0.7.x; remaining transcript is chat history, not architecture.
+- The 2.2 MB file also contains 12 full code fences. The runnable artifact is now `dist/generic-discovery-engine.user.js` (v0.7.8, 5,526 lines). The fences are retained for diff archaeology but are no longer the source of truth.
+- With 12 ADRs + rAF + coverage + TTL + gates + lifecycle + concurrency the control-plane split is considered **complete** for v0.7.x; remaining transcript is chat history, not architecture.
