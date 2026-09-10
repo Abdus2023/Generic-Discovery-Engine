@@ -217,7 +217,9 @@ archive/
   Userscript Discovery Prototype.md   raw design conversation (non-normative)
   Continue Architecture Planning.md   raw design conversation (non-normative)
 tools/
-  verify.mjs                  static checks: code vs documentation claims
+  verify.mjs                  static checks: artifact vs documentation, scope, governance
+  validate-analysis.mjs       canonical-schema and status-model validation
+  render-claims.mjs           renders claims.md from analysis.json
   checks.mjs                  behaviour checks: dedup, providers, provenance, persistence
   simulate.mjs                headless harness that executes the shipped artifact
 ```
@@ -229,9 +231,11 @@ The two files in `archive/` are the unedited source conversations. They are
 ## Verification
 
 ```bash
-node tools/verify.mjs      # static: claims vs artifact, scope, doc links
-node tools/checks.mjs      # behaviour: dedup, provider selection, provenance, persistence
-node tools/simulate.mjs    # dynamic: runs the artifact under a browser shim
+node tools/verify.mjs             # static: artifact vs documentation, scope, links, governance
+node tools/validate-analysis.mjs  # schema: typed fields, enums, authorization/execution rules
+node tools/checks.mjs             # behaviour: dedup, provider selection, provenance, persistence
+node tools/simulate.mjs           # dynamic: runs the artifact under a browser shim
+node tools/render-claims.mjs --check   # claims.md is generated from analysis.json
 ```
 
 `tools/verify.mjs` exits non-zero when documentation and code disagree, when a
@@ -244,14 +248,16 @@ Results and the audit trail:
 | Document | Content |
 | --- | --- |
 | [repository-analysis-2026-09-10.md](docs/analysis/repository-analysis-2026-09-10.md) | full review (18 sections) |
-| [evidence-register.md](docs/analysis/evidence-register.md) | 66 evidence items with locators, evidence states, frozen artifact digest |
-| [claims.md](docs/analysis/claims.md) | 40 canonical claim records: evidence state · claim state · verification state |
-| [scope-and-authorization.md](docs/analysis/scope-and-authorization.md) | scope boundary, ownership, authorization contract, pre/post-execution checks |
-| [change-register-2026-09-10.md](docs/analysis/change-register-2026-09-10.md) | executed changes R-001…R-015; code changes R-101…R-112 (PLAN ONLY) |
+| [evidence-register.md](docs/analysis/evidence-register.md) | 66 evidence items with locators, `evidence_level` values, frozen artifact digest |
+| [claims.md](docs/analysis/claims.md) | 41 claim records rendered from [analysis.json](docs/analysis/analysis.json): `claim_kind` · `implementation_state` · `test_state` · `evidence_level` · `verification_result` |
+| [scope-and-authorization.md](docs/analysis/scope-and-authorization.md) | scope boundary, six ownership roles, authorization contract, pre/post-execution checks |
+| [change-register-2026-09-10.md](docs/analysis/change-register-2026-09-10.md) | executed changes R-001…R-017; code changes R-101…R-112 (PLAN ONLY) |
 
-Status in this repository is never a single word: evidence state (what we
-possess), claim state (what kind of statement it is) and verification state (what
-was established) are reported separately.
+Status in this repository is never a single word. Five typed fields are reported
+separately for every claim — `claim_kind`, `implementation_state`, `test_state`,
+`evidence_level`, `verification_result` — and access, authorization, execution and
+post-verification each have their own field. `tools/validate-analysis.mjs`
+enforces this, including that no field is substituted for another.
 
 ## Roadmap
 

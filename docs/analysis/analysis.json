@@ -1,0 +1,1362 @@
+{
+  "analysis": {
+    "schema_version": "1.0",
+    "generated": "2026-09-10",
+    "note": "Normative machine-readable record. docs/analysis/claims.md tables are rendered from this file by tools/render-claims.mjs; tools/validate-analysis.mjs enforces the schema and the validation rules. Values are taken from repository evidence only; no value is invented to satisfy the schema."
+  },
+  "repository": {
+    "owner": "Abdus2023",
+    "name": "Generic-Discovery-Engine",
+    "requested_revision": "main",
+    "resolved_revision": "cc8df7357c2dbfe9d149747743e2f5e9ac9c0178",
+    "work_revision": "arena/01a08d14-generic-discovery-engine",
+    "access_level": "FULL",
+    "included_paths": [
+      "README.md",
+      "Userscript Discovery Prototype.md",
+      "Continue Architecture Planning.md"
+    ],
+    "analyzed_artifacts": [
+      "prototype/generic-discovery-engine.user.js",
+      "docs/**",
+      "tools/**",
+      "archive/**"
+    ],
+    "excluded_paths": [],
+    "external_sources_used": false,
+    "artifact_digest": {
+      "algorithm": "sha256",
+      "value": "8f5fc5c50e7f0886aa76fdbc7a6a633b3c4de72e7eb8b2d62525b807e354c474",
+      "path": "prototype/generic-discovery-engine.user.js"
+    }
+  },
+  "scope": {
+    "repository": true,
+    "source_code": true,
+    "tests": true,
+    "configuration": true,
+    "documentation": true,
+    "history": true,
+    "external_dependencies": false,
+    "runtime_environment": false
+  },
+  "scope_exclusions": [
+    {
+      "id": "SCOPE-GAP-1",
+      "gap": "end-to-end HtmlProvider behaviour under a real DOM",
+      "why_required": "the headless shim stubs DOMParser, so HTML extraction was verified by matching rules and by code, not by execution",
+      "proposed_expansion": "run the artifact in a browser or a DOM implementation",
+      "authorization": "required",
+      "disposition": "OPEN"
+    },
+    {
+      "id": "SCOPE-GAP-2",
+      "gap": "real userscript-manager semantics (redirects, CORS, grants, storage quotas, cross-tab storage)",
+      "why_required": "these determine whether the persistence and scope claims hold outside the shim",
+      "proposed_expansion": "manual test protocol in Tampermonkey/Violentmonkey",
+      "authorization": "required",
+      "disposition": "OPEN"
+    }
+  ],
+  "claims": [
+    {
+      "id": "CAND-CLAIM-001",
+      "group": "current-system",
+      "statement": "Candidate identity is type:target, and inserting a duplicate merges into the existing candidate.",
+      "claim_kind": "CURRENT",
+      "implementation_state": "IMPLEMENTED",
+      "test_state": "TESTED",
+      "evidence_level": "CORROBORATED",
+      "verification_result": "VERIFIED",
+      "scope_paths": [
+        "prototype/generic-discovery-engine.user.js"
+      ],
+      "evidence": [
+        "CODE-003",
+        "CODE-007",
+        "TEST-004",
+        "TEST-005"
+      ],
+      "interpretation": "Identity is type-scoped: the same URL discovered as a different type is deliberately a second candidate."
+    },
+    {
+      "id": "CAND-CLAIM-002",
+      "group": "current-system",
+      "statement": "A candidate is a hypothesis, not an assertion that the target exists.",
+      "claim_kind": "CURRENT",
+      "implementation_state": "IMPLEMENTED",
+      "test_state": "PARTIALLY_TESTED",
+      "evidence_level": "INDIRECT",
+      "verification_result": "PARTIALLY_VERIFIED",
+      "scope_paths": [
+        "prototype/generic-discovery-engine.user.js",
+        "docs/architecture/candidate-model.md"
+      ],
+      "evidence": [
+        "CODE-003",
+        "DOC-003"
+      ],
+      "interpretation": "The implementation stores no existence assertion, but the hypothesis framing is design prose; the code cannot demonstrate a framing."
+    },
+    {
+      "id": "CAND-CLAIM-003",
+      "group": "current-system",
+      "statement": "Candidate growth is bounded by a candidate cap, a depth limit and a request budget.",
+      "claim_kind": "CURRENT",
+      "implementation_state": "IMPLEMENTED",
+      "test_state": "TESTED",
+      "evidence_level": "DIRECT",
+      "verification_result": "VERIFIED",
+      "scope_paths": [
+        "prototype/generic-discovery-engine.user.js"
+      ],
+      "evidence": [
+        "CODE-002",
+        "CODE-007",
+        "CFG-001"
+      ],
+      "interpretation": "Dropping is silent; only the candidate cap records a diagnostic."
+    },
+    {
+      "id": "SCHED-CLAIM-001",
+      "group": "current-system",
+      "statement": "Candidate ownership is established synchronously, before the worker's first await.",
+      "claim_kind": "CURRENT",
+      "implementation_state": "IMPLEMENTED",
+      "test_state": "TESTED",
+      "evidence_level": "CORROBORATED",
+      "verification_result": "VERIFIED",
+      "scope_paths": [
+        "prototype/generic-discovery-engine.user.js"
+      ],
+      "evidence": [
+        "CODE-009",
+        "CODE-018",
+        "TEST-001"
+      ],
+      "interpretation": "The transition happens inside a synchronous method and the first suspension point follows it; this is valid only within one execution context."
+    },
+    {
+      "id": "SCHED-CLAIM-002",
+      "group": "current-system",
+      "statement": "A candidate has at most one active owner.",
+      "claim_kind": "CURRENT",
+      "implementation_state": "PARTIAL",
+      "test_state": "TESTED",
+      "evidence_level": "CORROBORATED",
+      "verification_result": "CONTRADICTED",
+      "scope_paths": [
+        "prototype/generic-discovery-engine.user.js"
+      ],
+      "evidence": [
+        "CODE-008",
+        "CODE-021",
+        "TEST-009",
+        "TEST-011"
+      ],
+      "interpretation": "The claim site is safe; re-discovery re-queues in-flight candidates, so the end-to-end invariant fails (defect D1)."
+    },
+    {
+      "id": "SCHED-CLAIM-003",
+      "group": "current-system",
+      "statement": "Retry is bounded by exponential backoff.",
+      "claim_kind": "CURRENT",
+      "implementation_state": "PARTIAL",
+      "test_state": "TESTED",
+      "evidence_level": "DIRECT",
+      "verification_result": "PARTIALLY_VERIFIED",
+      "scope_paths": [
+        "prototype/generic-discovery-engine.user.js"
+      ],
+      "evidence": [
+        "CODE-010",
+        "CODE-011",
+        "TEST-010"
+      ],
+      "interpretation": "Backoff applies to queued retries; the failed state bypasses it and remains claimable (defect D3)."
+    },
+    {
+      "id": "SCHED-CLAIM-004",
+      "group": "current-system",
+      "statement": "A permanently failing target eventually stops consuming the request budget.",
+      "claim_kind": "CURRENT",
+      "implementation_state": "NOT_IMPLEMENTED",
+      "test_state": "TESTED",
+      "evidence_level": "DIRECT",
+      "verification_result": "CONTRADICTED",
+      "scope_paths": [
+        "prototype/generic-discovery-engine.user.js"
+      ],
+      "evidence": [
+        "CODE-009",
+        "CODE-010"
+      ],
+      "interpretation": "failed is part of the claim eligibility set with no backoff, so the target is retried indefinitely (defect D3)."
+    },
+    {
+      "id": "SCHED-CLAIM-005",
+      "group": "current-system",
+      "statement": "The configured worker pool provides the configured concurrency.",
+      "claim_kind": "CURRENT",
+      "implementation_state": "PARTIAL",
+      "test_state": "TESTED",
+      "evidence_level": "CORROBORATED",
+      "verification_result": "CONTRADICTED",
+      "scope_paths": [
+        "prototype/generic-discovery-engine.user.js"
+      ],
+      "evidence": [
+        "CODE-018",
+        "TEST-010"
+      ],
+      "interpretation": "A worker exits permanently on an empty frontier and the pool is never refilled, so effective concurrency collapses toward one (defect D2)."
+    },
+    {
+      "id": "SCHED-CLAIM-006",
+      "group": "current-system",
+      "statement": "Adaptive concurrency changes the number of live workers.",
+      "claim_kind": "CURRENT",
+      "implementation_state": "NOT_IMPLEMENTED",
+      "test_state": "UNTESTED",
+      "evidence_level": "DIRECT",
+      "verification_result": "CONTRADICTED",
+      "scope_paths": [
+        "prototype/generic-discovery-engine.user.js"
+      ],
+      "evidence": [
+        "CODE-018",
+        "CODE-029"
+      ],
+      "interpretation": "The counter and its diagnostics change, but the pool is created once before it is read (defect D5)."
+    },
+    {
+      "id": "ACQ-CLAIM-001",
+      "group": "current-system",
+      "statement": "Acquisition is HTTP-GET-specific and browser/userscript-specific.",
+      "claim_kind": "CURRENT",
+      "implementation_state": "IMPLEMENTED",
+      "test_state": "TESTED",
+      "evidence_level": "CORROBORATED",
+      "verification_result": "VERIFIED",
+      "scope_paths": [
+        "prototype/generic-discovery-engine.user.js"
+      ],
+      "evidence": [
+        "CODE-013",
+        "SCOPE-003",
+        "TEST-002"
+      ],
+      "interpretation": "GM_xmlhttpRequest with a fetch fallback; no transport interface exists in the inspected scope."
+    },
+    {
+      "id": "ACQ-CLAIM-002",
+      "group": "current-system",
+      "statement": "A failed acquisition still produces an observation.",
+      "claim_kind": "CURRENT",
+      "implementation_state": "IMPLEMENTED",
+      "test_state": "TESTED",
+      "evidence_level": "CORROBORATED",
+      "verification_result": "VERIFIED",
+      "scope_paths": [
+        "prototype/generic-discovery-engine.user.js"
+      ],
+      "evidence": [
+        "CODE-004",
+        "CODE-013",
+        "CODE-019"
+      ],
+      "interpretation": "Timeout, transport error and HTTP error all yield observation records with distinct statuses."
+    },
+    {
+      "id": "ACQ-CLAIM-003",
+      "group": "current-system",
+      "statement": "Cancelling a scan aborts in-flight requests.",
+      "claim_kind": "CURRENT",
+      "implementation_state": "NOT_IMPLEMENTED",
+      "test_state": "UNTESTED",
+      "evidence_level": "INDIRECT",
+      "verification_result": "CONTRADICTED",
+      "scope_paths": [
+        "prototype/generic-discovery-engine.user.js"
+      ],
+      "evidence": [
+        "CODE-018",
+        "CODE-010",
+        "DOC-004"
+      ],
+      "interpretation": "stop() sets a flag; in-flight requests continue, and runtime-owned cancellation exists only in the DESIGNED v0.10."
+    },
+    {
+      "id": "PROV-CLAIM-001",
+      "group": "current-system",
+      "statement": "A discovery records both its candidate and its observation.",
+      "claim_kind": "CURRENT",
+      "implementation_state": "IMPLEMENTED",
+      "test_state": "TESTED",
+      "evidence_level": "DIRECT",
+      "verification_result": "VERIFIED",
+      "scope_paths": [
+        "prototype/generic-discovery-engine.user.js"
+      ],
+      "evidence": [
+        "CODE-005",
+        "CODE-021"
+      ],
+      "interpretation": "The linkage is stored at creation time."
+    },
+    {
+      "id": "PROV-CLAIM-002",
+      "group": "current-system",
+      "statement": "The derivation chain seed to candidate to observation to discovery to child candidate is reconstructible.",
+      "claim_kind": "CURRENT",
+      "implementation_state": "IMPLEMENTED",
+      "test_state": "TESTED",
+      "evidence_level": "CORROBORATED",
+      "verification_result": "VERIFIED",
+      "scope_paths": [
+        "prototype/generic-discovery-engine.user.js"
+      ],
+      "evidence": [
+        "CODE-005",
+        "CODE-007",
+        "TEST-007"
+      ],
+      "interpretation": "Reconstructed end to end in a fresh execution context, including the observations for each link."
+    },
+    {
+      "id": "PROV-CLAIM-003",
+      "group": "current-system",
+      "statement": "Content fingerprints are used to relate identical content behind different URLs.",
+      "claim_kind": "SPECIFIED",
+      "implementation_state": "NOT_IMPLEMENTED",
+      "test_state": "UNTESTED",
+      "evidence_level": "DIRECT",
+      "verification_result": "CONTRADICTED",
+      "scope_paths": [
+        "prototype/generic-discovery-engine.user.js"
+      ],
+      "evidence": [
+        "CODE-022",
+        "CODE-023"
+      ],
+      "interpretation": "The fingerprint index is written and probed but never read; identity resolution is DESIGNED (v0.17), not current (defect D8)."
+    },
+    {
+      "id": "PROV-CLAIM-004",
+      "group": "current-system",
+      "statement": "Observation and discovery are distinct objects.",
+      "claim_kind": "CURRENT",
+      "implementation_state": "IMPLEMENTED",
+      "test_state": "TESTED",
+      "evidence_level": "DIRECT",
+      "verification_result": "VERIFIED",
+      "scope_paths": [
+        "prototype/generic-discovery-engine.user.js"
+      ],
+      "evidence": [
+        "CODE-004",
+        "CODE-005"
+      ],
+      "interpretation": "Separate records, separate identifiers, separate lifetimes."
+    },
+    {
+      "id": "PROV-CLAIM-005",
+      "group": "current-system",
+      "statement": "An evidence layer with competing interpretations and conflict resolution exists.",
+      "claim_kind": "SPECIFIED",
+      "implementation_state": "NOT_IMPLEMENTED",
+      "test_state": "NOT_APPLICABLE",
+      "evidence_level": "ABSENT",
+      "verification_result": "UNVERIFIED",
+      "scope_paths": [
+        "prototype/generic-discovery-engine.user.js"
+      ],
+      "evidence": [
+        "SCOPE-002",
+        "DOC-006"
+      ],
+      "interpretation": "No such objects exist; designed in v0.16 and v0.34. Evidence is ABSENT (inspected scope covered), not INACCESSIBLE."
+    },
+    {
+      "id": "PROV-CLAIM-006",
+      "group": "current-system",
+      "statement": "Observations are immutable evidence.",
+      "claim_kind": "CURRENT",
+      "implementation_state": "NOT_IMPLEMENTED",
+      "test_state": "UNTESTED",
+      "evidence_level": "INDIRECT",
+      "verification_result": "UNVERIFIED",
+      "scope_paths": [
+        "prototype/generic-discovery-engine.user.js"
+      ],
+      "evidence": [
+        "CODE-006",
+        "CODE-025"
+      ],
+      "interpretation": "Observations live in a mutable map and are re-serialized on persistence; nothing enforces immutability."
+    },
+    {
+      "id": "ARCH-CLAIM-001",
+      "group": "architecture-boundary",
+      "statement": "Providers perform no I/O, do not enqueue candidates and own no policy.",
+      "claim_kind": "CURRENT",
+      "implementation_state": "IMPLEMENTED",
+      "test_state": "TESTED",
+      "evidence_level": "CORROBORATED",
+      "verification_result": "VERIFIED",
+      "scope_paths": [
+        "prototype/generic-discovery-engine.user.js"
+      ],
+      "evidence": [
+        "CODE-014",
+        "CODE-015",
+        "TEST-002"
+      ],
+      "interpretation": "The strongest boundary in the prototype: the contract is matches() plus recognize(), with expansion owned by the engine."
+    },
+    {
+      "id": "ARCH-CLAIM-002",
+      "group": "architecture-boundary",
+      "statement": "Providers are protocol-independent.",
+      "claim_kind": "CURRENT",
+      "implementation_state": "NOT_IMPLEMENTED",
+      "test_state": "PARTIALLY_TESTED",
+      "evidence_level": "DIRECT",
+      "verification_result": "CONTRADICTED",
+      "scope_paths": [
+        "prototype/generic-discovery-engine.user.js"
+      ],
+      "evidence": [
+        "CODE-013",
+        "CODE-015",
+        "SCOPE-003"
+      ],
+      "interpretation": "Only recognition is an interface; acquisition is one hard-wired HTTP path."
+    },
+    {
+      "id": "ARCH-CLAIM-003",
+      "group": "architecture-boundary",
+      "statement": "Candidate expansion is owned by the engine, not by providers.",
+      "claim_kind": "CURRENT",
+      "implementation_state": "IMPLEMENTED",
+      "test_state": "TESTED",
+      "evidence_level": "CORROBORATED",
+      "verification_result": "VERIFIED",
+      "scope_paths": [
+        "prototype/generic-discovery-engine.user.js"
+      ],
+      "evidence": [
+        "CODE-015",
+        "CODE-021",
+        "TEST-002"
+      ],
+      "interpretation": "Providers return Discovery objects; emitDiscovery performs expansion under engine policy."
+    },
+    {
+      "id": "ARCH-CLAIM-004",
+      "group": "architecture-boundary",
+      "statement": "Discovery records are deduplicated like candidates.",
+      "claim_kind": "CURRENT",
+      "implementation_state": "NOT_IMPLEMENTED",
+      "test_state": "TESTED",
+      "evidence_level": "CORROBORATED",
+      "verification_result": "CONTRADICTED",
+      "scope_paths": [
+        "prototype/generic-discovery-engine.user.js"
+      ],
+      "evidence": [
+        "CODE-016",
+        "CODE-021",
+        "TEST-012"
+      ],
+      "interpretation": "A discovery is stored before the derived candidate is deduplicated, and text/html is interpreted twice; 74 discoveries for 27 URLs in one run (defect D9)."
+    },
+    {
+      "id": "ARCH-CLAIM-005",
+      "group": "architecture-boundary",
+      "statement": "Persisted state survives a reload.",
+      "claim_kind": "CURRENT",
+      "implementation_state": "IMPLEMENTED",
+      "test_state": "TESTED",
+      "evidence_level": "CORROBORATED",
+      "verification_result": "VERIFIED",
+      "scope_paths": [
+        "prototype/generic-discovery-engine.user.js"
+      ],
+      "evidence": [
+        "CODE-025",
+        "TEST-008"
+      ],
+      "interpretation": "Candidates, observations, discoveries, resources, graph edges and the decision ledger round-trip; the request budget deliberately resets."
+    },
+    {
+      "id": "ARCH-CLAIM-006",
+      "group": "architecture-boundary",
+      "statement": "Persistence is transactional and crash-safe.",
+      "claim_kind": "SPECIFIED",
+      "implementation_state": "NOT_IMPLEMENTED",
+      "test_state": "NOT_APPLICABLE",
+      "evidence_level": "ABSENT",
+      "verification_result": "UNVERIFIED",
+      "scope_paths": [
+        "prototype/generic-discovery-engine.user.js"
+      ],
+      "evidence": [
+        "CODE-025",
+        "SCOPE-002",
+        "DOC-006"
+      ],
+      "interpretation": "One serialized snapshot with caps; no transaction, validation or recovery. Designed in v0.32."
+    },
+    {
+      "id": "ARCH-CLAIM-007",
+      "group": "architecture-boundary",
+      "statement": "The request budget is a per-run allowance.",
+      "claim_kind": "CURRENT",
+      "implementation_state": "IMPLEMENTED",
+      "test_state": "TESTED",
+      "evidence_level": "CORROBORATED",
+      "verification_result": "VERIFIED",
+      "scope_paths": [
+        "prototype/generic-discovery-engine.user.js"
+      ],
+      "evidence": [
+        "CODE-020",
+        "CODE-025",
+        "TEST-008"
+      ],
+      "interpretation": "Restore deliberately resets requestsReserved; reserved slots are never released, so the budget counts attempts."
+    },
+    {
+      "id": "ARCH-CLAIM-008",
+      "group": "architecture-boundary",
+      "statement": "Cross-context coordination is part of the current implementation.",
+      "claim_kind": "SPECIFIED",
+      "implementation_state": "NOT_IMPLEMENTED",
+      "test_state": "NOT_APPLICABLE",
+      "evidence_level": "DIRECT",
+      "verification_result": "CONTRADICTED",
+      "scope_paths": [
+        "prototype/generic-discovery-engine.user.js"
+      ],
+      "evidence": [
+        "CODE-009",
+        "SCOPE-004",
+        "DOC-005"
+      ],
+      "interpretation": "Ownership state is per engine instance; two tabs duplicate each other's work. Profile coordination is DESIGNED (v0.33) and is explicitly not distributed consensus."
+    },
+    {
+      "id": "ARCH-CLAIM-009",
+      "group": "architecture-boundary",
+      "statement": "Recognition confidence is comparable across providers.",
+      "claim_kind": "CURRENT",
+      "implementation_state": "NOT_IMPLEMENTED",
+      "test_state": "UNTESTED",
+      "evidence_level": "DIRECT",
+      "verification_result": "UNVERIFIED",
+      "scope_paths": [
+        "prototype/generic-discovery-engine.user.js"
+      ],
+      "evidence": [
+        "CODE-005",
+        "CODE-016"
+      ],
+      "interpretation": "Confidences are provider-local constants with no calibration or aggregation rule."
+    },
+    {
+      "id": "ARCH-CLAIM-010",
+      "group": "architecture-boundary",
+      "statement": "Several providers may match one observation, and do so by design.",
+      "claim_kind": "CURRENT",
+      "implementation_state": "IMPLEMENTED",
+      "test_state": "TESTED",
+      "evidence_level": "CORROBORATED",
+      "verification_result": "VERIFIED",
+      "scope_paths": [
+        "prototype/generic-discovery-engine.user.js"
+      ],
+      "evidence": [
+        "CODE-016",
+        "TEST-006"
+      ],
+      "interpretation": "text/html matches HTML and text because TextProvider matches text/*; there is no router or priority (DESIGNED v0.11)."
+    },
+    {
+      "id": "SCOPE-CLAIM-001",
+      "group": "scope-and-absence",
+      "statement": "The repository contains no DVB/RF implementation (spectrum, tuner, demodulator, FEC, transport stream, PSI/SI).",
+      "claim_kind": "CURRENT",
+      "implementation_state": "NOT_IMPLEMENTED",
+      "test_state": "NOT_APPLICABLE",
+      "evidence_level": "ABSENT",
+      "verification_result": "VERIFIED",
+      "scope_paths": [
+        "prototype/generic-discovery-engine.user.js"
+      ],
+      "evidence": [
+        "SCOPE-001",
+        "TEST-003"
+      ],
+      "interpretation": "Absence is asserted over a single implementation file read in full and scanned mechanically, so it is ABSENT (inspected, not found), not INACCESSIBLE."
+    },
+    {
+      "id": "SCOPE-CLAIM-002",
+      "group": "scope-and-absence",
+      "statement": "No v0.8+ design layer is implemented (capabilities, work items, evidence graph, leases, coverage, fencing).",
+      "claim_kind": "CURRENT",
+      "implementation_state": "NOT_IMPLEMENTED",
+      "test_state": "NOT_APPLICABLE",
+      "evidence_level": "ABSENT",
+      "verification_result": "VERIFIED",
+      "scope_paths": [
+        "prototype/generic-discovery-engine.user.js"
+      ],
+      "evidence": [
+        "SCOPE-002",
+        "TEST-003",
+        "DOC-006"
+      ],
+      "interpretation": "The design series exists as prose only."
+    },
+    {
+      "id": "SCOPE-CLAIM-003",
+      "group": "scope-and-absence",
+      "statement": "Coverage, absence and completeness are not represented.",
+      "claim_kind": "CURRENT",
+      "implementation_state": "NOT_IMPLEMENTED",
+      "test_state": "NOT_APPLICABLE",
+      "evidence_level": "ABSENT",
+      "verification_result": "VERIFIED",
+      "scope_paths": [
+        "prototype/generic-discovery-engine.user.js"
+      ],
+      "evidence": [
+        "SCOPE-006",
+        "CODE-009"
+      ],
+      "interpretation": "\"Exhausted\" in logs means no eligible candidate at that instant; coverage objects are DESIGNED (v0.22, v0.23)."
+    },
+    {
+      "id": "SCOPE-CLAIM-004",
+      "group": "scope-and-absence",
+      "statement": "Non-URL candidate targets are not implemented.",
+      "claim_kind": "CURRENT",
+      "implementation_state": "NOT_IMPLEMENTED",
+      "test_state": "NOT_APPLICABLE",
+      "evidence_level": "ABSENT",
+      "verification_result": "VERIFIED",
+      "scope_paths": [
+        "prototype/generic-discovery-engine.user.js"
+      ],
+      "evidence": [
+        "SCOPE-007",
+        "CODE-003"
+      ],
+      "interpretation": "Every discover() call passes a URL; the candidate type list is URL-oriented."
+    },
+    {
+      "id": "SCOPE-CLAIM-005",
+      "group": "scope-and-absence",
+      "statement": "The repository contained no tests, CI configuration or build tooling at the analysis revision.",
+      "claim_kind": "HISTORICAL",
+      "implementation_state": "NOT_IMPLEMENTED",
+      "test_state": "NOT_APPLICABLE",
+      "evidence_level": "ABSENT",
+      "verification_result": "VERIFIED",
+      "scope_paths": [
+        "."
+      ],
+      "evidence": [
+        "SCOPE-005"
+      ],
+      "interpretation": "True at cc8df73; verification tooling was added afterwards under change R-010, which is recorded as an executed documentation-scope change."
+    },
+    {
+      "id": "SCOPE-CLAIM-006",
+      "group": "scope-and-absence",
+      "statement": "DVB/RF support is an explicit non-goal of the project.",
+      "claim_kind": "NON_GOAL",
+      "implementation_state": "NOT_IMPLEMENTED",
+      "test_state": "NOT_APPLICABLE",
+      "evidence_level": "INDIRECT",
+      "verification_result": "VERIFIED",
+      "scope_paths": [
+        "README.md",
+        "docs/prototype/scope.md"
+      ],
+      "evidence": [
+        "DOC-007",
+        "SCOPE-001"
+      ],
+      "interpretation": "Stated in the project scope and enforced mechanically by a symbol scan in tools/verify.mjs."
+    },
+    {
+      "id": "PLAN-CLAIM-001",
+      "group": "plan-history-hypothesis",
+      "statement": "Acquisition runtime, recognition runtime, candidate sources, domain/sessions, work items, evidence graph, identity, classification, coverage, absence, query planning, reconciliation, arbitration, cost ledger, transactional persistence and multi-context coordination are designed.",
+      "claim_kind": "PLANNED",
+      "implementation_state": "NOT_IMPLEMENTED",
+      "test_state": "NOT_APPLICABLE",
+      "evidence_level": "INDIRECT",
+      "verification_result": "VERIFIED",
+      "scope_paths": [
+        "archive/Continue Architecture Planning.md"
+      ],
+      "evidence": [
+        "DOC-006",
+        "SCOPE-002"
+      ],
+      "interpretation": "The fact that these layers are planned is verified; their implementation is not implied."
+    },
+    {
+      "id": "PLAN-CLAIM-002",
+      "group": "plan-history-hypothesis",
+      "statement": "Browser-profile coordination is not distributed consensus.",
+      "claim_kind": "SPECIFIED",
+      "implementation_state": "NOT_IMPLEMENTED",
+      "test_state": "NOT_APPLICABLE",
+      "evidence_level": "INDIRECT",
+      "verification_result": "VERIFIED",
+      "scope_paths": [
+        "archive/Continue Architecture Planning.md"
+      ],
+      "evidence": [
+        "DOC-005"
+      ],
+      "interpretation": "Stated as a boundary by the design series itself."
+    },
+    {
+      "id": "PLAN-CLAIM-003",
+      "group": "plan-history-hypothesis",
+      "statement": "Deterministic decision replay must be separable from acquisition against a changing world.",
+      "claim_kind": "SPECIFIED",
+      "implementation_state": "NOT_IMPLEMENTED",
+      "test_state": "NOT_APPLICABLE",
+      "evidence_level": "INDIRECT",
+      "verification_result": "VERIFIED",
+      "scope_paths": [
+        "archive/Continue Architecture Planning.md"
+      ],
+      "evidence": [
+        "DOC-004"
+      ],
+      "interpretation": "An acquisition log is not a deterministic execution trace."
+    },
+    {
+      "id": "HIST-CLAIM-001",
+      "group": "plan-history-hypothesis",
+      "statement": "Versions v0.3.0 to v0.6.0 existed as code and are superseded by v0.7.1.",
+      "claim_kind": "HISTORICAL",
+      "implementation_state": "IMPLEMENTED",
+      "test_state": "UNTESTED",
+      "evidence_level": "DIRECT",
+      "verification_result": "VERIFIED",
+      "scope_paths": [
+        "archive/Continue Architecture Planning.md"
+      ],
+      "evidence": [
+        "CODE-033",
+        "DOC-006"
+      ],
+      "interpretation": "All extracted revisions parse except the v0.5.0 paste at transcript L18378-L23093. Supersession is historical: these revisions are not maintained, and the evidence is the historical code blocks themselves, not the prose around them."
+    },
+    {
+      "id": "HIST-CLAIM-002",
+      "group": "plan-history-hypothesis",
+      "statement": "The v0.5.0 paste in the archive is not valid JavaScript.",
+      "claim_kind": "HISTORICAL",
+      "implementation_state": "NOT_IMPLEMENTED",
+      "test_state": "NOT_APPLICABLE",
+      "evidence_level": "DIRECT",
+      "verification_result": "VERIFIED",
+      "scope_paths": [
+        "archive/Continue Architecture Planning.md"
+      ],
+      "evidence": [
+        "DOC-006"
+      ],
+      "interpretation": "await appears outside an async function (node --check)."
+    },
+    {
+      "id": "HIST-CLAIM-003",
+      "group": "plan-history-hypothesis",
+      "statement": "The pre-cleanup README described the system accurately.",
+      "claim_kind": "HISTORICAL",
+      "implementation_state": "NOT_APPLICABLE",
+      "test_state": "NOT_APPLICABLE",
+      "evidence_level": "CORROBORATED",
+      "verification_result": "CONTRADICTED",
+      "scope_paths": [
+        "README.md"
+      ],
+      "evidence": [
+        "DOC-001",
+        "CODE-008",
+        "CODE-009",
+        "TEST-009"
+      ],
+      "interpretation": "It claimed atomic claiming and guaranteed concurrency. Direct implementation evidence and executed behaviour override documentation evidence, and the contradiction is recorded rather than silently resolved."
+    },
+    {
+      "id": "HYP-CLAIM-001",
+      "group": "plan-history-hypothesis",
+      "statement": "A value x probability / cost scheduling model would outperform the static priority heuristic.",
+      "claim_kind": "HYPOTHESIS",
+      "implementation_state": "NOT_IMPLEMENTED",
+      "test_state": "NOT_APPLICABLE",
+      "evidence_level": "INDIRECT",
+      "verification_result": "UNVERIFIED",
+      "scope_paths": [
+        "archive/Continue Architecture Planning.md"
+      ],
+      "evidence": [
+        "DOC-006"
+      ],
+      "interpretation": "No measurement exists; the cost and probability inputs are not modelled."
+    }
+  ],
+  "contradictions": [
+    {
+      "id": "CONTRA-001",
+      "claim_a": "SCHED-CLAIM-002",
+      "claim_b": "HIST-CLAIM-003",
+      "evidence": [
+        "CODE-008",
+        "CODE-021",
+        "TEST-009",
+        "TEST-011"
+      ],
+      "supported": "the implementation (re-queue path)",
+      "defect": "D1"
+    },
+    {
+      "id": "CONTRA-002",
+      "claim_a": "SCHED-CLAIM-005",
+      "claim_b": "HIST-CLAIM-003",
+      "evidence": [
+        "CODE-018",
+        "TEST-010"
+      ],
+      "supported": "the implementation (permanent worker exit)",
+      "defect": "D2"
+    },
+    {
+      "id": "CONTRA-003",
+      "claim_a": "SCHED-CLAIM-004",
+      "claim_b": "HIST-CLAIM-003",
+      "evidence": [
+        "CODE-009",
+        "CODE-010"
+      ],
+      "supported": "the implementation (failed remains claimable)",
+      "defect": "D3"
+    },
+    {
+      "id": "CONTRA-004",
+      "claim_a": "ARCH-CLAIM-002",
+      "claim_b": "HIST-CLAIM-003",
+      "evidence": [
+        "CODE-013",
+        "CODE-015",
+        "SCOPE-003"
+      ],
+      "supported": "the implementation (single HTTP path)",
+      "defect": null
+    },
+    {
+      "id": "CONTRA-005",
+      "claim_a": "ARCH-CLAIM-004",
+      "claim_b": "HIST-CLAIM-003",
+      "evidence": [
+        "CODE-016",
+        "CODE-021",
+        "TEST-012"
+      ],
+      "supported": "the implementation (discovery stored before dedup)",
+      "defect": "D9"
+    },
+    {
+      "id": "CONTRA-006",
+      "claim_a": "PROV-CLAIM-003",
+      "claim_b": "HIST-CLAIM-003",
+      "evidence": [
+        "CODE-022",
+        "CODE-023"
+      ],
+      "supported": "the implementation (fingerprint index never read)",
+      "defect": "D8"
+    },
+    {
+      "id": "CONTRA-007",
+      "claim_a": "ARCH-CLAIM-008",
+      "claim_b": "HIST-CLAIM-003",
+      "evidence": [
+        "CODE-009",
+        "SCOPE-004"
+      ],
+      "supported": "the implementation (per-instance ownership)",
+      "defect": null
+    }
+  ],
+  "changes": [
+    {
+      "id": "R-001",
+      "category": "DOC_SPLIT",
+      "description": "Separate the implementation, the design series and the conversation from one transcript.",
+      "evidence": [
+        "DOC-002",
+        "DOC-003",
+        "DOC-006"
+      ],
+      "risk": "MEDIUM",
+      "authorization_required": true,
+      "executed": true
+    },
+    {
+      "id": "R-002",
+      "category": "DOC_REWRITE",
+      "description": "Rewrite the README against verified behaviour.",
+      "evidence": [
+        "DOC-001",
+        "CODE-008",
+        "TEST-009"
+      ],
+      "risk": "LOW",
+      "authorization_required": true,
+      "executed": true
+    },
+    {
+      "id": "R-003",
+      "category": "DOC_SPLIT",
+      "description": "One canonical owner per concept; remove duplicate explanations.",
+      "evidence": [
+        "DOC-007",
+        "DOC-011"
+      ],
+      "risk": "LOW",
+      "authorization_required": true,
+      "executed": true
+    },
+    {
+      "id": "R-004",
+      "category": "DOC_MOVE",
+      "description": "Move the design series into a labelled roadmap document.",
+      "evidence": [
+        "DOC-006"
+      ],
+      "risk": "LOW",
+      "authorization_required": true,
+      "executed": true
+    },
+    {
+      "id": "R-005",
+      "category": "DOC_MOVE",
+      "description": "Archive the transcripts with a non-normative index.",
+      "evidence": [
+        "DOC-007"
+      ],
+      "risk": "LOW",
+      "authorization_required": true,
+      "executed": true
+    },
+    {
+      "id": "R-006",
+      "category": "DOC_REWRITE",
+      "description": "Separate claim atomicity (verified) from the end-to-end ownership invariant (violated).",
+      "evidence": [
+        "DOC-008",
+        "DOC-009"
+      ],
+      "risk": "LOW",
+      "authorization_required": true,
+      "executed": true
+    },
+    {
+      "id": "R-007",
+      "category": "DOC_REWRITE",
+      "description": "Document exact provider matching rules, body sniffing and provider double-match.",
+      "evidence": [
+        "CODE-016",
+        "TEST-006"
+      ],
+      "risk": "LOW",
+      "authorization_required": true,
+      "executed": true
+    },
+    {
+      "id": "R-008",
+      "category": "DOC_REWRITE",
+      "description": "Remove the implied candidates() provider method; expansion is engine-owned.",
+      "evidence": [
+        "CODE-015"
+      ],
+      "risk": "LOW",
+      "authorization_required": true,
+      "executed": true
+    },
+    {
+      "id": "R-009",
+      "category": "DOC_ADD",
+      "description": "Add the glossary with canonical definitions and the conflict table.",
+      "evidence": [
+        "DOC-011"
+      ],
+      "risk": "LOW",
+      "authorization_required": true,
+      "executed": true
+    },
+    {
+      "id": "R-010",
+      "category": "DOC_ADD",
+      "description": "Add the verification tooling (verify, checks, simulate).",
+      "evidence": [
+        "TEST-001",
+        "TEST-013"
+      ],
+      "risk": "LOW",
+      "authorization_required": true,
+      "executed": true
+    },
+    {
+      "id": "R-011",
+      "category": "DOC_ADD",
+      "description": "Add the scope document and mechanical non-goal enforcement.",
+      "evidence": [
+        "SCOPE-001",
+        "SCOPE-002"
+      ],
+      "risk": "LOW",
+      "authorization_required": true,
+      "executed": true
+    },
+    {
+      "id": "R-012",
+      "category": "DOC_ADD",
+      "description": "Add the evidence register and the change register.",
+      "evidence": [
+        "DOC-012"
+      ],
+      "risk": "LOW",
+      "authorization_required": true,
+      "executed": true
+    },
+    {
+      "id": "R-013",
+      "category": "RENAME",
+      "description": "Archive the planning transcript so its non-normative status is explicit.",
+      "evidence": [
+        "DOC-003",
+        "DOC-006"
+      ],
+      "risk": "LOW",
+      "authorization_required": true,
+      "executed": true
+    },
+    {
+      "id": "R-014",
+      "category": "DOC_ADD",
+      "description": "Replace collapsed status words with the canonical typed state model.",
+      "evidence": [
+        "DOC-011",
+        "DOC-012"
+      ],
+      "risk": "LOW",
+      "authorization_required": true,
+      "executed": true
+    },
+    {
+      "id": "R-015",
+      "category": "DOC_ADD",
+      "description": "Record the scope boundary, ownership roles and the authorization contract.",
+      "evidence": [
+        "DOC-012"
+      ],
+      "risk": "LOW",
+      "authorization_required": true,
+      "executed": true
+    },
+    {
+      "id": "R-101",
+      "category": "CODE_FIX",
+      "description": "Refuse re-queueing of candidates in any non-terminal state, or model re-proposed work as work.",
+      "evidence": [
+        "CODE-008",
+        "TEST-009"
+      ],
+      "risk": "ARCHITECTURAL",
+      "authorization_required": true,
+      "executed": false
+    },
+    {
+      "id": "R-102",
+      "category": "CODE_FIX",
+      "description": "Bind the per-URL acquisition guard to the ownership transition.",
+      "evidence": [
+        "CODE-012",
+        "TEST-011"
+      ],
+      "risk": "ARCHITECTURAL",
+      "authorization_required": true,
+      "executed": false
+    },
+    {
+      "id": "R-103",
+      "category": "CODE_FIX",
+      "description": "Give the failed state terminal or backoff-gated semantics.",
+      "evidence": [
+        "CODE-009",
+        "CODE-010"
+      ],
+      "risk": "HIGH",
+      "authorization_required": true,
+      "executed": false
+    },
+    {
+      "id": "R-104",
+      "category": "CODE_FIX",
+      "description": "Keep workers alive until a scan-level stop condition, or respawn them on new work.",
+      "evidence": [
+        "CODE-018",
+        "TEST-010"
+      ],
+      "risk": "HIGH",
+      "authorization_required": true,
+      "executed": false
+    },
+    {
+      "id": "R-105",
+      "category": "TEST_ADD",
+      "description": "Add a pass/fail regression gate for the single-owner invariant.",
+      "evidence": [
+        "TEST-009"
+      ],
+      "risk": "LOW",
+      "authorization_required": true,
+      "executed": false
+    },
+    {
+      "id": "R-106",
+      "category": "CODE_FIX",
+      "description": "Introduce explicit scan states (idle, running, quiescent, exhausted, stopped).",
+      "evidence": [
+        "TEST-010"
+      ],
+      "risk": "MEDIUM",
+      "authorization_required": true,
+      "executed": false
+    },
+    {
+      "id": "R-107",
+      "category": "CODE_FIX",
+      "description": "Deduplicate discovery records or store corroboration as provenance.",
+      "evidence": [
+        "CODE-021",
+        "TEST-012"
+      ],
+      "risk": "MEDIUM",
+      "authorization_required": true,
+      "executed": false
+    },
+    {
+      "id": "R-108",
+      "category": "CODE_FIX",
+      "description": "Consult the content fingerprint index or remove it.",
+      "evidence": [
+        "CODE-023"
+      ],
+      "risk": "MEDIUM",
+      "authorization_required": true,
+      "executed": false
+    },
+    {
+      "id": "R-109",
+      "category": "CODE_FIX",
+      "description": "Maintain or remove the never-incremented acquired counter.",
+      "evidence": [
+        "CODE-030"
+      ],
+      "risk": "LOW",
+      "authorization_required": true,
+      "executed": false
+    },
+    {
+      "id": "R-110",
+      "category": "CODE_REFACTOR",
+      "description": "Drive the worker pool from the adaptive counter, or delete the feature.",
+      "evidence": [
+        "CODE-018",
+        "CODE-029"
+      ],
+      "risk": "MEDIUM",
+      "authorization_required": true,
+      "executed": false
+    },
+    {
+      "id": "R-111",
+      "category": "CODE_REFACTOR",
+      "description": "Introduce an acquisition-provider boundary.",
+      "evidence": [
+        "SCOPE-003",
+        "ARCH-CLAIM-002"
+      ],
+      "risk": "ARCHITECTURAL",
+      "authorization_required": true,
+      "executed": false
+    },
+    {
+      "id": "R-112",
+      "category": "ARCHITECTURE_CHANGE",
+      "description": "Define and persist a scan-level termination evaluator.",
+      "evidence": [
+        "DOC-006",
+        "SCOPE-006"
+      ],
+      "risk": "ARCHITECTURAL",
+      "authorization_required": true,
+      "executed": false
+    },
+    {
+      "id": "R-016",
+      "category": "DOC_ADD",
+      "executed": true,
+      "risk": "LOW",
+      "summary": "canonical machine-readable analysis record with validator and renderer",
+      "files": [
+        "docs/analysis/analysis.json",
+        "tools/validate-analysis.mjs",
+        "tools/render-claims.mjs"
+      ],
+      "authorization_required": "DOC_REFACTOR",
+      "rationale": "a canonical state model that cannot be machine-validated silently drifts out of step with the documents"
+    },
+    {
+      "id": "R-017",
+      "category": "DOC_ADD",
+      "executed": true,
+      "risk": "LOW",
+      "summary": "regenerate every status statement in the five typed fields",
+      "files": [
+        "docs/analysis/claims.md",
+        "docs/analysis/evidence-register.md",
+        "docs/analysis/repository-analysis-2026-09-10.md",
+        "docs/analysis/scope-and-authorization.md",
+        "README.md",
+        "docs/architecture/*.md",
+        "docs/prototype/*.md",
+        "docs/research/*.md",
+        "docs/roadmap/*.md"
+      ],
+      "authorization_required": "DOC_REFACTOR",
+      "rationale": "claim records, evidence register and behaviour documents must use one vocabulary or the checks cannot detect substitution"
+    }
+  ],
+  "authorization": {
+    "level": "DOC_REFACTOR",
+    "additional_levels_declared": [
+      "ANALYSIS_ONLY",
+      "COMMIT",
+      "PUSH"
+    ],
+    "hierarchical": false,
+    "authorized_changes": [
+      "R-001",
+      "R-002",
+      "R-003",
+      "R-004",
+      "R-005",
+      "R-006",
+      "R-007",
+      "R-008",
+      "R-009",
+      "R-010",
+      "R-011",
+      "R-012",
+      "R-013",
+      "R-014",
+      "R-015",
+      "R-016",
+      "R-017"
+    ],
+    "authorized_operations": [
+      "READ",
+      "ANALYZE",
+      "PROPOSE",
+      "CREATE_DOCUMENTATION",
+      "MODIFY_DOCUMENTATION",
+      "RENAME_DOCUMENTATION",
+      "MOVE_DOCUMENTATION",
+      "COMMIT",
+      "PUSH"
+    ],
+    "forbidden_operations": [
+      "MODIFY_SOURCE_CODE",
+      "MODIFY_TESTS",
+      "DELETE",
+      "ARCHITECTURE_CHANGE",
+      "PUSH_TO_OTHER_BRANCH"
+    ],
+    "authority": "repository owner, delegated through the user's instruction to analyze, clean and work on branch arena/01a08d14-generic-discovery-engine",
+    "expiration": null,
+    "roles": {
+      "REPOSITORY_OWNER": "Abdus2023",
+      "ANALYZER": "analysis (this document set)",
+      "AUTHORIZER": "repository owner (delegated)",
+      "EXECUTOR": "same agent, explicitly entering the EXECUTOR role for the authorized change set only",
+      "VERIFIER": "analysis, re-run after execution",
+      "REVIEWER": "repository owner / reviewer"
+    }
+  },
+  "execution": {
+    "result": "SUCCEEDED",
+    "executed_changes": [
+      "R-001",
+      "R-002",
+      "R-003",
+      "R-004",
+      "R-005",
+      "R-006",
+      "R-007",
+      "R-008",
+      "R-009",
+      "R-010",
+      "R-011",
+      "R-012",
+      "R-013",
+      "R-014",
+      "R-015",
+      "R-016",
+      "R-017"
+    ],
+    "unauthorized_changes": [],
+    "discovered_not_executed": [
+      "R-101",
+      "R-102",
+      "R-103",
+      "R-104",
+      "R-105",
+      "R-106",
+      "R-107",
+      "R-108",
+      "R-109",
+      "R-110",
+      "R-111",
+      "R-112"
+    ],
+    "notes": "Source code was out of authorized scope and is unchanged: the artifact digest matches the frozen value. Twelve changes discovered during execution were recorded and proposed, not applied, including a two-line counter fix. One proposed change was dropped after evidence contradicted its premise (the claimed stray backticks do not exist in v0.7.1)."
+  },
+  "post_verification": {
+    "result": "VERIFIED",
+    "evidence": [
+      "tools/verify.mjs: 30 passed, 0 failed, 4 documented defects",
+      "tools/checks.mjs: 4 passed, 0 failed",
+      "artifact digest unchanged (sha256 8f5fc5c5...)",
+      "every evidence citation resolves; every relative link resolves",
+      "tools/validate-analysis.mjs: schema and validation rules satisfied"
+    ],
+    "not_verified": [
+      "end-to-end HtmlProvider behaviour under a real DOM (SCOPE-GAP-1, OPEN)",
+      "real userscript-manager semantics (SCOPE-GAP-2, OPEN)"
+    ]
+  }
+}

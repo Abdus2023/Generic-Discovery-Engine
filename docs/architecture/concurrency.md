@@ -1,9 +1,15 @@
 # Concurrency
 
-Claim state: `CURRENT`. Evidence state: `CORROBORATED` — `tools/verify.mjs`
-(static) and `tools/simulate.mjs` (executed under a browser shim). Verification
-state: `VERIFIED` for the claim operation, **`CONTRADICTED`** for the end-to-end
-single-owner invariant (D1), `UNVERIFIED` for any cross-context claim.
+```
+claim_kind:           CURRENT · SPECIFIED for cross-context coordination
+implementation_state: IMPLEMENTED for the synchronous claim operation · PARTIAL end to end
+                      (re-queue defeats it, D1) · NOT_IMPLEMENTED across execution contexts
+test_state:           TESTED (tools/verify.mjs static checks; tools/simulate.mjs measures
+                      concurrent owners and duplicate acquisitions)
+evidence_level:       CORROBORATED (static code + executed behaviour)
+verification_result:  VERIFIED for the claim operation · CONTRADICTED for the end-to-end
+                      single-owner invariant (D1) · UNVERIFIED for cross-context claims
+```
 
 ## The invariant
 

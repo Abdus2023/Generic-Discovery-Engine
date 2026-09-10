@@ -355,7 +355,7 @@ else fail('no later-design layers present', futureHits.join(', '));
 }
 
 /* -------------------------------------------------------------------------- */
-/* 7c. Governance: frozen code, canonical vocabulary, authorization record    */
+/* 7c. Governance: frozen code, canonical record, authorization               */
 /* -------------------------------------------------------------------------- */
 
 {
@@ -378,82 +378,43 @@ else fail('no later-design layers present', futureHits.join(', '));
 }
 
 {
-  /* Claim records must carry the three independent status dimensions. */
-  const claimsPath = path.join(ROOT, 'docs', 'analysis', 'claims.md');
-  if (!fs.existsSync(claimsPath)) {
-    fail('canonical claim records exist', 'docs/analysis/claims.md missing');
+  /* The normative record exists and is machine-validatable. The full schema,
+     enum and authorization checks live in tools/validate-analysis.mjs; here we
+     assert only that it is present and internally consistent. */
+  const recordPath = path.join(ROOT, 'docs', 'analysis', 'analysis.json');
+  if (!fs.existsSync(recordPath)) {
+    fail('canonical analysis record exists', 'docs/analysis/analysis.json missing');
   } else {
-    const claims = fs.readFileSync(claimsPath, 'utf8');
-
-    const EVIDENCE_STATES = ['DIRECT', 'CORROBORATED', 'INDIRECT', 'ABSENT', 'INACCESSIBLE'];
-    const CLAIM_STATES = ['CURRENT', 'SPECIFIED', 'PLANNED', 'HISTORICAL', 'HYPOTHESIS', 'NON-GOAL'];
-    const VERIFICATION_STATES = ['VERIFIED', 'PARTIALLY_VERIFIED', 'UNVERIFIED', 'CONTRADICTED', 'NOT_APPLICABLE'];
-
-    const requirement = 'claim records declare all three dimensions';
-    if (/Evidence state/.test(claims) && /Claim state/.test(claims) && /Verification state/.test(claims)) {
-      pass(requirement, 'evidence state · claim state · verification state');
+    const record = JSON.parse(fs.readFileSync(recordPath, 'utf8'));
+    const fiveFields = ['claim_kind', 'implementation_state', 'test_state', 'evidence_level', 'verification_result'];
+    const missing = [];
+    for (const claim of record.claims) {
+      for (const field of fiveFields) if (!(field in claim)) missing.push(`${claim.id}.${field}`);
+    }
+    if (missing.length === 0) {
+      pass('every claim record carries all five typed fields',
+        `${record.claims.length} records`);
     } else {
-      fail(requirement, 'one or more dimensions missing');
+      fail('every claim record carries all five typed fields', missing.slice(0, 6).join(', '));
     }
 
-    // every status cell must use a canonical value
-    // a full claim record: id, statement, evidence, evidence state, claim state,
-    // verification state, scope, interpretation (8 cells). Rows in the
-    // "Claims in conflict" table also start with a claim id but carry fewer cells.
-    const allClaimRows = claims.split('\n').filter(l => /^\|\s*`[A-Z]+-CLAIM-\d{3}`\s*\|/.test(l));
-    const claimRows = allClaimRows.filter(l => l.split('|').map(c => c.trim()).filter(Boolean).length >= 8);
-    const bad = [];
-    for (const row of claimRows) {
-      const cells = row.split('|').map(c => c.trim()).filter(Boolean);
-      const [, , , evState, clState, verState] = cells;
-      const clean = v => v.replace(/[*`]/g, '').replace(/\s*\(.*\)$/, '').trim();
-      if (!EVIDENCE_STATES.includes(clean(evState))) bad.push(`${cells[0]} evidence=${evState}`);
-      if (!CLAIM_STATES.includes(clean(clState))) bad.push(`${cells[0]} claim=${clState}`);
-      if (!VERIFICATION_STATES.includes(clean(verState))) bad.push(`${cells[0]} verification=${verState}`);
-    }
-    if (claimRows.length === 0) fail('claim records present', 'no claim rows found');
-    else if (bad.length === 0) {
-      pass('every claim record uses the canonical status vocabulary',
-        `${claimRows.length} claim records, ${allClaimRows.length - claimRows.length} conflict-table references`);
+    const collapsed = record.claims.filter(c => ['IMPLEMENTED', 'TESTED', 'DOCUMENTED', 'MISSING', 'TRUE', 'FALSE']
+      .includes(c.verification_result));
+    if (collapsed.length === 0) pass('verification_result never carries a non-verification value');
+    else fail('verification_result never carries a non-verification value', collapsed.map(c => c.id).join(', '));
+
+    const exec = record.execution.result;
+    if (['NOT_EXECUTED', 'SUCCEEDED', 'PARTIALLY_SUCCEEDED', 'FAILED', 'STOPPED'].includes(exec)) {
+      pass('execution.result uses the execution enum', `${exec}, ${record.execution.executed_changes.length} executed change(s)`);
     } else {
-      fail('every claim record uses the canonical status vocabulary', bad.slice(0, 6).join('; '));
+      fail('execution.result uses the execution enum', String(exec));
     }
-  }
 
-  /* Collapsed single-word verdicts must not reappear in analysis/status tables. */
-  const analysis = fs.readFileSync(path.join(ROOT, 'docs', 'analysis', 'repository-analysis-2026-09-10.md'), 'utf8');
-  const collapsed = [/\bStatus:\s*IMPLEMENTED\b/, /\bStatus:\s*TESTED\b/, /\|\s*implemented\s*\|\s*$/m];
-  const hits = collapsed.filter(re => re.test(analysis));
-  if (hits.length === 0) pass('analysis does not collapse status dimensions into one word');
-  else fail('analysis does not collapse status dimensions into one word', `${hits.length} occurrence(s)`);
-}
-
-{
-  /* Authorization and scope must be recorded before any change claim. */
-  const governance = fs.readFileSync(
-    path.join(ROOT, 'docs', 'analysis', 'scope-and-authorization.md'), 'utf8');
-  const required = [
-    ['repository scope', /## 1\. Scope boundary/],
-    ['artifact classification', /### Artifact scope/],
-    ['verification scope', /### Verification scope/],
-    ['execution scope', /### Execution scope/],
-    ['scope escalation', /## 2\. Scope escalation/],
-    ['ownership matrix', /Ownership and authorization matrix/],
-    ['authorization contract', /EXECUTION AUTHORIZATION/],
-    ['authorization levels', /Authorization level:\s+A0/],
-    ['pre-execution check', /Pre-execution/],
-    ['post-execution check', /Post-execution/],
-    ['explicit non-authorization for code', /NOT AUTHORIZED for code/]
-  ];
-  const missing = required.filter(([, re]) => !re.test(governance)).map(([label]) => label);
-  if (missing.length === 0) pass('governance record is complete', `${required.length} required elements`);
-  else fail('governance record is complete', missing.join(', '));
-
-  if (/Access classification\s*\|\s*\**?FULL ACCESS/.test(
-    fs.readFileSync(path.join(ROOT, 'docs', 'analysis', 'evidence-register.md'), 'utf8'))) {
-    pass('access classification recorded before repository-wide claims');
-  } else {
-    fail('access classification recorded before repository-wide claims');
+    if (record.authorization.forbidden_operations.includes('MODIFY_SOURCE_CODE')) {
+      pass('authorization forbids source mutation', 'code changes are plan-only');
+    } else {
+      fail('authorization forbids source mutation', 'unexpected: source mutation appears authorized');
+    }
   }
 }
 
@@ -476,12 +437,12 @@ else fail('no later-design layers present', futureHits.join(', '));
     const full = path.join(ROOT, rel);
     if (!fs.existsSync(full)) { undeclared.push(`${rel} (missing)`); continue; }
     const text = fs.readFileSync(full, 'utf8');
-    if (!/Claim state/.test(text)) undeclared.push(rel);
+    if (!/claim_kind/.test(text) || !/verification_result/.test(text)) undeclared.push(rel);
   }
   if (undeclared.length === 0) {
-    pass('every behaviour document declares its status dimensions', `${behaviourDocs.length} documents`);
+    pass('every behaviour document declares its typed status fields', `${behaviourDocs.length} documents`);
   } else {
-    fail('every behaviour document declares its status dimensions', undeclared.join(', '));
+    fail('every behaviour document declares its typed status fields', undeclared.join(', '));
   }
 
   // collapsed verdicts must not appear as a bare status label
@@ -494,6 +455,22 @@ else fail('no later-design layers present', futureHits.join(', '));
   }
   if (offenders.length === 0) pass('no document uses a collapsed status label');
   else fail('no document uses a collapsed status label', offenders.join(', '));
+
+  // the five fields must not be substituted for one another
+  const substitution = [];
+  for (const rel of behaviourDocs) {
+    const full = path.join(ROOT, rel);
+    if (!fs.existsSync(full)) continue;
+    const text = fs.readFileSync(full, 'utf8');
+    if (/claim_kind:\s*(DIRECT|CORROBORATED|INDIRECT|ABSENT|INACCESSIBLE)/.test(text)) {
+      substitution.push(`${rel} (claim_kind holds an evidence level)`);
+    }
+    if (/evidence_level:\s*(IMPLEMENTED|PARTIAL|NOT_IMPLEMENTED)/.test(text)) {
+      substitution.push(`${rel} (evidence_level holds an implementation state)`);
+    }
+  }
+  if (substitution.length === 0) pass('typed status fields are not substituted for one another');
+  else fail('typed status fields are not substituted for one another', substitution.join(', '));
 }
 
 /* -------------------------------------------------------------------------- */

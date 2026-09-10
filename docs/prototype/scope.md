@@ -8,13 +8,13 @@ The tiers used below map onto the canonical status dimensions as follows; the
 tiers are shorthand for readers, and the claim records in
 [../analysis/claims.md](../analysis/claims.md) carry the full status.
 
-| Tier | Claim state | Evidence state | Verification state |
-| --- | --- | --- | --- |
-| Implemented | `CURRENT` | `DIRECT` or `CORROBORATED` | `VERIFIED` |
-| Partially implemented | `CURRENT` | `DIRECT` or `CORROBORATED` | `PARTIALLY_VERIFIED` or `CONTRADICTED` for the named limitation |
-| Not implemented (designed) | `SPECIFIED` / `PLANNED` | `INDIRECT` | `VERIFIED` as planned, `UNVERIFIED` as behaviour |
-| Not implemented (non-goal) | `NON-GOAL` | `ABSENT` | `VERIFIED` as absent |
-| Future | `HYPOTHESIS` | `INDIRECT` | `UNVERIFIED` |
+| Tier | claim_kind | implementation_state | test_state | evidence_level | verification_result |
+| --- | --- | --- | --- | --- | --- |
+| Implemented | `CURRENT` | `IMPLEMENTED` | `TESTED` | `DIRECT` or `CORROBORATED` | `VERIFIED` |
+| Partially implemented | `CURRENT` | `PARTIAL` | `TESTED` or `PARTIALLY_TESTED` | `DIRECT` or `CORROBORATED` | `PARTIALLY_VERIFIED`, or `CONTRADICTED` for the named limitation |
+| Not implemented (designed) | `SPECIFIED` / `PLANNED` | `NOT_IMPLEMENTED` | `NOT_APPLICABLE` | `INDIRECT` | `VERIFIED` as planned, `UNVERIFIED` as behaviour |
+| Not implemented (non-goal) | `NON_GOAL` | `NOT_IMPLEMENTED` | `NOT_APPLICABLE` | `ABSENT` | `VERIFIED` as absent |
+| Future | `HYPOTHESIS` | `NOT_IMPLEMENTED` | `NOT_APPLICABLE` | `INDIRECT` | `UNVERIFIED` |
 
 ## Implemented
 

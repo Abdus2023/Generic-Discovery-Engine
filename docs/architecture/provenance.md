@@ -1,9 +1,15 @@
 # Provenance
 
-Claim state: `CURRENT` for recorded provenance, `SPECIFIED` for the evidence
-layer. Evidence state: `CORROBORATED` (code + chain reconstruction).
-Verification state: `VERIFIED` for candidate/observation/discovery linkage;
-`CONTRADICTED` for content identity via fingerprints (D8).
+```
+claim_kind:           CURRENT for recorded provenance · SPECIFIED for the evidence layer
+implementation_state: IMPLEMENTED for candidate/observation/discovery linkage and the ledger ·
+                      NOT_IMPLEMENTED for content identity via fingerprints (D8) and for the
+                      evidence layer
+test_state:           TESTED (tools/checks.mjs case 4 reconstructs the chain)
+evidence_level:       CORROBORATED (code + executed reconstruction)
+verification_result:  VERIFIED for linkage · CONTRADICTED for content identity ·
+                      UNVERIFIED for observation immutability
+```
 
 ## The four questions
 

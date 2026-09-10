@@ -1,10 +1,16 @@
 # Provider Model
 
-Claim state: `CURRENT` for recognition providers; `SPECIFIED` for acquisition
-and candidate-source providers. Evidence state: `CORROBORATED` (code + executed
-matching checks). Verification state: `VERIFIED` for the provider boundary and
-matching rules; `CONTRADICTED` for the claim that providers are
-protocol-independent (acquisition is one HTTP path).
+```
+claim_kind:           CURRENT for recognition providers · SPECIFIED for acquisition and
+                      candidate-source providers
+implementation_state: IMPLEMENTED for the recognition boundary and matching rules ·
+                      NOT_IMPLEMENTED for a pluggable acquisition plane
+test_state:           TESTED (tools/verify.mjs contract checks; tools/checks.mjs case 3,
+                      11 content-type/body combinations)
+evidence_level:       CORROBORATED (code + executed checks)
+verification_result:  VERIFIED for the boundary · CONTRADICTED for the claim that providers
+                      are protocol-independent (acquisition is one HTTP path)
+```
 
 ## Three planes
 

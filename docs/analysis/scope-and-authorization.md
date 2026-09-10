@@ -119,23 +119,24 @@ STATUS:               OPEN
 Both gaps are recorded as exclusions in the verification scope and in the
 residual limitations of the change register. No claim depends on them.
 
-## 3. Ownership boundary
+## 3. Ownership roles
 
-| Responsibility | Owner |
-| --- | --- |
-| Repository contents | repository owner (`Abdus2023`) |
-| Interpretation of evidence | analysis (this document set) |
-| Verification conclusions | analysis |
-| Acceptance or rejection of conclusions | repository owner / reviewer |
-| Refactoring proposal | analysis |
-| Authorization to mutate | repository owner / authorized user |
-| Repository mutation (executed) | the agent acting under the authorization record below |
-| Post-change verification | analysis (tools rerun; results recorded) |
-| Commit and push authority | delegated by the user's instruction to work in this repository and branch |
+Exactly six roles. One actor may hold several roles, but the roles stay distinct,
+and technical access never implies authorization.
 
-The analysis does not treat technical capability as ownership. Every executed
-change is listed in the change register with its authorization basis; every code
-change is `PLAN ONLY`.
+| Role | Holder here | Responsibilities | Constraints |
+| --- | --- | --- | --- |
+| `REPOSITORY_OWNER` | `Abdus2023` | repository authority, scope authority, architectural ownership, delegation of execution authority | may delegate authorization, but ownership of the repository is never transferred by doing so |
+| `ANALYZER` | this analysis | inspection, evidence extraction, interpretation, verification analysis, contradiction and duplication detection, refactoring proposals | must not mutate the target repository merely because it has technical access; may produce analysis artifacts inside it when authorized (here: `ANALYSIS_ONLY`) |
+| `REVIEWER` | repository owner / reviewer | reviews evidence, verification conclusions, refactoring proposals, risk and scope | carries no mutation authority by virtue of reviewing |
+| `AUTHORIZER` | repository owner, delegating through the user's instruction | grants mutation permission, scoped and explicit | must hold authority delegated by the repository owner; authorization is never inferred from capability or from phrasing such as "clean this up" |
+| `EXECUTOR` | the same agent, **explicitly entering the EXECUTOR role** for the authorized change set only | performs the authorized mutations | must follow the approved change set, respect scope and forbidden operations, stop at any boundary violation, and report changes |
+| `VERIFIER` | this analysis, re-running the tools after execution | determines whether the result satisfies the requested postconditions | must not silently repair a failed verification; it reports `FAILED`/`PARTIALLY_VERIFIED` instead |
+
+Role-entry statement required by the ownership rule: the analyzer became the
+executor **only** for change set `R-001 … R-017` (documentation and analysis
+artifacts), under the authorization recorded in §5. For `R-101 … R-112` (code) the
+analyzer remained `ANALYZER` and produced proposals only.
 
 ## 4. Decision ownership
 
@@ -149,41 +150,53 @@ change is `PLAN ONLY`.
 
 ## 5. Execution authorization contract
 
-```
+Authorization levels use one canonical enum: `READ_ONLY`, `ANALYSIS_ONLY`,
+`DOC_REFACTOR`, `TEST_REFACTOR`, `CODE_REFACTOR`, `ARCHITECTURE_CHANGE`,
+`COMMIT`, `PUSH`. Hierarchy applies **only** where explicitly declared; level
+`DOC_REFACTOR` does not imply `COMMIT` or `PUSH`, so those were granted
+separately. With no explicit authorization the default level is `READ_ONLY`.
+
+```yaml
 EXECUTION AUTHORIZATION
+  target:              Abdus2023/Generic-Discovery-Engine
+  revision:            branch arena/01a08d14-generic-discovery-engine, based on main @ cc8df73
+  level:               DOC_REFACTOR
+  additional_levels_declared: [ANALYSIS_ONLY, COMMIT, PUSH]
+  hierarchical:        false            # each level was granted explicitly, not by implication
 
-Target:                 Abdus2023/Generic-Discovery-Engine
-Revision:               branch arena/01a08d14-generic-discovery-engine,
-                        based on main @ cc8df73
-Authorization level:    A0 (read/analyze)
-                        + A1 (analysis artifacts: registers, analysis, tools)
-                        + A2 (documentation refactor)
-                        + A6/A7 (commit and push to the work branch, per the
-                          user's standing instruction)
-NOT granted:            A3 (test changes to an existing suite — none exists),
-                        A4 (code refactor),
-                        A5 (architectural change)
+  authorized_changes:  [R-001 .. R-017]
 
-Allowed operations:     read · analyze · propose · create docs · create tools ·
-                        move/rename docs · commit · push (work branch only)
-Forbidden operations:   modify source code · modify behaviour · delete anything ·
-                        alter the design series · push to `main` or any branch
-                        other than the work branch
+  authorized_operations:
+    - READ
+    - ANALYZE
+    - PROPOSE
+    - CREATE_DOCUMENTATION
+    - MODIFY_DOCUMENTATION
+    - RENAME_DOCUMENTATION
+    - MOVE_DOCUMENTATION
+    - COMMIT
+    - PUSH                      # work branch only
 
-Change set (executed):  R-001 … R-013   (documentation, verification tooling)
-Change set (plan only): R-101 … R-112   (code / architecture — NOT authorized)
-Out-of-scope:           any runtime behaviour change, any test change to an
-                        existing suite, any modification of archive contents
+  forbidden_operations:
+    - MODIFY_SOURCE_CODE
+    - MODIFY_TESTS
+    - DELETE
+    - ARCHITECTURE_CHANGE
+    - PUSH_TO_OTHER_BRANCH
 
-Precondition:           verification phase completed (read-only)
-Postcondition:          post-refactor verification completed and recorded
-Rollback:               documentation changes are ordinary git history on the
-                        work branch; the artifact digest pins code state, so a
-                        revert of commits 400810d/e8b9aec restores the prior
-                        documentation without touching code
-Authorization status:   AUTHORIZED for documentation and tooling;
-                        NOT AUTHORIZED for code
+  authority:           repository owner, delegated through the user's standing instruction
+  expiration:          none
+  precondition:        verification phase completed (read-only)
+  postcondition:       post-refactor verification completed and recorded
+  rollback:            documentation changes are ordinary git history on the work branch; the
+                       artifact digest pins code state, so reverting the analysis commits
+                       restores the prior documentation without touching code
+  authorization_status: AUTHORIZED (documentation) / NOT AUTHORIZED (code)
 ```
+
+Machine-readable form: `authorization` in
+[analysis.json](analysis.json), validated by `tools/validate-analysis.mjs`
+(level enum, executed subset of authorized, forbidden operations respected).
 
 ### Change-set boundary
 
@@ -258,9 +271,23 @@ EXECUTION STATUS: AUTHORIZED
 | Critical invariants reverified | yes — ownership invariant measured and reported as violated (unchanged, as expected) |
 | New contradictions absent | yes — none introduced; ten recorded instead |
 
-```
-EXECUTION RESULT:  SUCCESS (documentation scope)
-POST-VERIFICATION: VERIFIED (documentation) / code findings UNCHANGED by design
+```yaml
+execution:
+  result: SUCCEEDED                 # from the canonical enum
+  executed_changes: [R-001 .. R-017]
+  unauthorized_changes: []
+  discovered_not_executed: [R-101 .. R-112]
+
+post_verification:
+  result: VERIFIED                  # reuses the verification enum; no separate PASS/FAIL vocabulary
+  evidence:
+    - tools/verify.mjs: 30 passed, 0 failed, 4 documented defects
+    - tools/checks.mjs: 4 passed, 0 failed
+    - tools/validate-analysis.mjs: 21 passed, 0 failed
+    - artifact digest unchanged (sha256 8f5fc5c5...)
+  not_verified:
+    - end-to-end HtmlProvider behaviour under a real DOM (SCOPE-GAP-1, OPEN)
+    - real userscript-manager semantics (SCOPE-GAP-2, OPEN)
 ```
 
 ## 7. Ownership and authorization matrix
@@ -276,7 +303,11 @@ POST-VERIFICATION: VERIFIED (documentation) / code findings UNCHANGED by design
 | Delete | only if authorized (not granted; nothing deleted) | yes | yes |
 | Commit | only if authorized (yes, A6) | yes | yes |
 | Push | only if explicitly authorized (yes, work branch) | yes | yes |
-| Final verification | yes | optional | no |
+| Final verification (`VERIFIER`) | yes | optional | no |
+
+Role identifier per operation, first two columns only — the analyzer and the
+executor are the same actor holding different roles, which is why the role
+boundary is stated explicitly rather than assumed.
 
 ## 8. Final governance model as applied
 
@@ -287,9 +318,9 @@ ACCESS BOUNDARY      FULL ACCESS; no fallback source used
      ↓
 SCOPE BOUNDARY       repository / artifact / verification / execution
      ↓
-EVIDENCE EXTRACTION  66 evidence rows with locators and evidence states
+EVIDENCE EXTRACTION  66 evidence rows with locators and evidence_level values
      ↓
-VERIFICATION         read-only; claims table with three status dimensions
+VERIFICATION         read-only; 41 claim records with five typed fields
      ↓
 VERIFIED TRUTH SET   what exists, what is planned, what is absent, what is contradicted
      ↓

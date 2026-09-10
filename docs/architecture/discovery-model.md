@@ -1,11 +1,16 @@
 # Discovery Model
 
-Claim state: `CURRENT` for the stages marked CURRENT below, `SPECIFIED` for the
-stages marked DESIGNED. Evidence state: `DIRECT` (code) and `CORROBORATED`
-(executed checks). Verification state: `VERIFIED` for stage contracts and
-expansion ownership; `PARTIALLY_VERIFIED` for scheduler and acquisition stages,
-where defects D1–D4 are recorded in
-[../prototype/limitations.md](../prototype/limitations.md).
+```
+claim_kind:           CURRENT (stages marked CURRENT) · SPECIFIED (stages marked DESIGNED)
+implementation_state: IMPLEMENTED for stage contracts and expansion ownership · PARTIAL for
+                      the scheduler and acquisition stages
+test_state:           TESTED (contracts and boundaries are covered by tools/verify.mjs and
+                      tools/checks.mjs)
+evidence_level:       CORROBORATED (code + executed checks)
+verification_result:  VERIFIED for stage contracts · PARTIALLY_VERIFIED for the scheduler and
+                      acquisition stages, where defects D1–D4 are recorded in
+                      ../prototype/limitations.md
+```
 
 ## The loop
 

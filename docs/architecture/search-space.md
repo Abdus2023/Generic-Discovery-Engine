@@ -1,11 +1,18 @@
 # Search Space
 
-Claim state: `CURRENT` for the sections describing today's behaviour,
-`SPECIFIED`/`PLANNED` where marked. Evidence state: `DIRECT` (code) and
-`CORROBORATED` (executed checks). Verification state: `VERIFIED` for bounds and
-termination triggers, `PARTIALLY_VERIFIED` for duplicate suppression.
-This document owns the question *"what is being searched, and what bounds
-it?"* — no other document redefines it.
+```
+claim_kind:           CURRENT for today's behaviour · SPECIFIED/PLANNED where marked
+implementation_state: IMPLEMENTED for bounds, growth and scheduling · PARTIAL for duplicate
+                      suppression · NOT_IMPLEMENTED for coverage, absence and staleness
+test_state:           TESTED for bounds and duplicate suppression (tools/checks.mjs,
+                      tools/simulate.mjs) · NOT_APPLICABLE for the unimplemented layers
+evidence_level:       DIRECT (code) · CORROBORATED for duplicate suppression
+verification_result:  VERIFIED for bounds and termination triggers · PARTIALLY_VERIFIED for
+                      duplicate suppression · VERIFIED as absent for coverage and absence
+```
+
+This document owns the question *"what is being searched, and what bounds it?"* —
+no other document redefines it.
 
 ## Model
 

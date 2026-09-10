@@ -1,9 +1,13 @@
 # Future Architecture (DESIGNED — no implementation)
 
-Claim state: `PLANNED` (or `HYPOTHESIS` where marked). Evidence state: `INDIRECT`
-(design prose in the archive). Verification state: `VERIFIED` **as planned** —
-the fact that these layers are designed and unimplemented is verified; their
-existence is not implied.
+```
+claim_kind:           PLANNED (HYPOTHESIS where marked)
+implementation_state: NOT_IMPLEMENTED
+test_state:           NOT_APPLICABLE
+evidence_level:       INDIRECT (design prose in the archive)
+verification_result:  VERIFIED as planned — the fact that these layers are designed and
+                      unimplemented is verified; their existence is not implied
+```
 
 Everything in this document is **design prose**. None of it exists in code.
 The prototype is v0.7.1; the design series runs from v0.8 to v0.35 and lives in

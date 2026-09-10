@@ -1,9 +1,13 @@
 # DVB Blind Scan as Inspiration
 
-Claim state: `NON-GOAL` for the physical layer, `CURRENT` for the analogy itself.
-Evidence state: `ABSENT` for any DVB implementation (inspected scope covered),
-`INDIRECT` for the analogy's origin in the archive. Verification state:
-`VERIFIED` as absent for DVB behaviour; the analogy is reasoning, not evidence.
+```
+claim_kind:           NON_GOAL for the physical layer · CURRENT for the analogy itself
+implementation_state: NOT_IMPLEMENTED (no DVB/RF code exists in the inspected scope)
+test_state:           NOT_APPLICABLE
+evidence_level:       ABSENT (inspected, not found) · INDIRECT for the analogy's origin
+verification_result:  VERIFIED as absent for DVB behaviour; the analogy itself is reasoning,
+                      not evidence
+```
 
 Status: research note. Normative only for what the analogy may and may not be
 used to claim.

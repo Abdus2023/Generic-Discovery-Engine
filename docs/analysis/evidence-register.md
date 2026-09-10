@@ -108,6 +108,7 @@ digest, so any accidental code modification fails verification.
 | CODE-030 | same | `stat = { …, acquired: 0 }` L1006–L1018 and no assignment anywhere | `stats.acquired` is never incremented → D7 | DIRECT | DIRECT |
 | CODE-031 | same | L1419–L1420 (`plan(candidate)` in `AcquisitionPolicy` and engine) | policy decides GET-only, depth, disabled classes, scope | DIRECT | DIRECT |
 | CODE-032 | same | L191–L213 (`isAllowedUrl`, `sameOriginOnly`) | scope gate is the current origin | DIRECT | DIRECT |
+| CODE-033 | `archive/Continue Architecture Planning.md` | fenced userscripts v0.3.0–v0.6.0 (L2791–L48360) | historical implementations superseded by v0.7.1 | DIRECT | historical code artifacts (9 of 10 parse) |
 
 ## Register — behaviour (executed)
 
@@ -159,7 +160,7 @@ about artifacts that do not exist in the repository are `NOT_FOUND`.
 
 ## Register — contradictions (index only)
 
-A contradiction is a relationship between claims, not an evidence state. It is
+A contradiction is a relationship between claims, not an `evidence_level`. It is
 recorded canonically in [claims.md](claims.md); this table only indexes which
 evidence items participate.
 
@@ -201,11 +202,12 @@ evidence items participate.
 ## How to use this register
 
 1. Any claim added to `docs/` must cite at least one evidence ID from this file.
-2. A fact supported only by `INDIRECT` evidence cannot be given claim state
-   `CURRENT` together with verification state `VERIFIED`.
-3. Evidence state lives here; claim state and verification state live in
-   [claims.md](claims.md). They are never collapsed into one word such as
-   "implemented" or "tested".
+2. A fact supported only by `INDIRECT` evidence cannot be given
+   `claim_kind: CURRENT` together with `verification_result: VERIFIED`.
+3. `evidence_level` lives here; `claim_kind`, `implementation_state`,
+   `test_state` and `verification_result` live in
+   [claims.md](claims.md)/[analysis.json](analysis.json). No field is ever
+   substituted for another.
 4. New evidence gets a new ID; IDs are never reused for unrelated evidence.
 5. `tools/verify.mjs` fails if a document cites an unknown ID, if a register row
    points at a missing path, if the artifact digest changes, or if the canonical

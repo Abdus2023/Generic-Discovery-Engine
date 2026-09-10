@@ -1,9 +1,17 @@
 # Scheduler
 
-Claim state: `CURRENT`; improvements are labelled DESIGNED (`SPECIFIED`).
-Evidence state: `DIRECT` (code). Verification state: `PARTIALLY_VERIFIED` —
-claiming is verified, while pool behaviour (D2), failure semantics (D3),
-termination (D4) and adaptive control (D5) are contradicted or partial.
+```
+claim_kind:           CURRENT · SPECIFIED for the improvements marked DESIGNED
+implementation_state: IMPLEMENTED for claim selection, policy and budget · PARTIAL for pool
+                      behaviour (D2), failure semantics (D3) and termination (D4) ·
+                      NOT_IMPLEMENTED for live adaptive resizing (D5)
+test_state:           TESTED (tools/simulate.mjs measures the pool, retry and quiescence
+                      behaviour)
+evidence_level:       DIRECT (code) · CORROBORATED for the pool defects
+verification_result:  VERIFIED for claiming and budgeting · CONTRADICTED for guaranteed
+                      concurrency, terminal failure and adaptive control ·
+                      PARTIALLY_VERIFIED for termination
+```
 
 ## Responsibility
 

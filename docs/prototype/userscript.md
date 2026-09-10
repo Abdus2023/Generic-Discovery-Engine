@@ -1,10 +1,18 @@
 # Prototype: the userscript
 
-Claim state: `CURRENT`. Evidence state: `DIRECT` — the artifact itself, plus the
-executed checks in `tools/verify.mjs`, `tools/checks.mjs` and
-`tools/simulate.mjs`. Verification state: `VERIFIED` for structure, version,
-configuration, components and export schema. This document describes the
-artifact as it exists, not as the design series intends it to become.
+```
+claim_kind:           CURRENT
+implementation_state: IMPLEMENTED (this document describes the artifact's structure and
+                      behaviour)
+test_state:           TESTED (structure and behaviour exercised by tools/verify.mjs,
+                      tools/checks.mjs and tools/simulate.mjs)
+evidence_level:       DIRECT (the artifact itself)
+verification_result:  VERIFIED for structure, version, configuration, components and export
+                      schema; behaviour-level verdicts live in ../analysis/claims.md
+```
+
+This document describes the artifact as it exists, not as the design series
+intends it to become.
 
 ## Artifact
 

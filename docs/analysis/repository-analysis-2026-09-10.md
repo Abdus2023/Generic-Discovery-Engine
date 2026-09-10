@@ -12,12 +12,14 @@ documentation cleanup. Output order follows the review brief (Phases 0–21).
 | Resolved commit (analysis target) | `cc8df7357c2dbfe9d149747743e2f5e9ac9c0178` (`main`) |
 | Access classification | **FULL ACCESS** — complete tree, no submodules, no external artifacts to inspect |
 | Evidence standard | every non-trivial finding cites `[EVID:…]` from the [evidence register](evidence-register.md) |
-| Status model | three independent dimensions — **evidence state** (DIRECT/CORROBORATED/INDIRECT/ABSENT/INACCESSIBLE), **claim state** (CURRENT/SPECIFIED/PLANNED/HISTORICAL/HYPOTHESIS/NON-GOAL), **verification state** (VERIFIED/PARTIALLY_VERIFIED/UNVERIFIED/CONTRADICTED/NOT_APPLICABLE); verdicts live in [claims.md](claims.md) |
+| Status model | five typed fields per claim — `claim_kind`, `implementation_state`, `test_state`, `evidence_level`, `verification_result` — plus separate typed fields for `representation_access_level`, `authorization.level`, `execution.result` and `post_verification.result`. Normative record: [analysis.json](analysis.json); readable tables: [claims.md](claims.md) |
+| Enforcement | `tools/validate-analysis.mjs` validates the schema, the enums and the validation rules (no generic status field, no field substitution, executed ⊆ authorized, documentation never proves implementation, `ABSENT` ≠ `INACCESSIBLE`) |
 | Scope boundary | repository / artifact / verification / execution — recorded in [scope-and-authorization.md](scope-and-authorization.md) |
-| Authorization level | A1 (analysis artifacts) + A2 (documentation refactor) + A6/A7 (commit, push to work branch); **A3/A4/A5 not granted** |
+| Authorization | level `DOC_REFACTOR`, with `ANALYSIS_ONLY`, `COMMIT` and `PUSH` declared separately (no hierarchy implied); authorized changes `R-001 … R-017`; `MODIFY_SOURCE_CODE` forbidden |
 | Phase A — verification | **read-only**; no repository file was created, edited or moved while establishing truth |
 | Phase B — refactoring | plan and execution recorded separately in the [change register](change-register-2026-09-10.md) |
-| Code changes | **none** — the artifact is byte-identical to its extraction; all code findings are PLAN ONLY |
+| Code changes | **none** — the artifact digest is unchanged since extraction and enforced (`sha256 8f5fc5c5…`); all code findings are `PLAN ONLY` |
+| Execution / post-verification | `execution.result: SUCCEEDED` (documentation scope) · `post_verification.result: VERIFIED` · `unauthorized_changes: []` |
 | Negative evidence | absence claims are marked ABSENCE_VERIFIED only where the inspection scope justifies it (register §negative evidence) |
 
 **Verification result: VERIFIED** — the repository state, implementation, and
@@ -137,38 +139,58 @@ were available locally, and no substituted fork or mirror was used.
 
 ## 3. Architecture Truth Table
 
-Status is expressed in the canonical three dimensions. `CURRENT` describes the
-claim; evidence and verification describe what the analysis established. Claim
-IDs resolve in [claims.md](claims.md).
+The five typed fields are recorded **once**, in
+[analysis.json](analysis.json) (machine-readable) and rendered into
+[claims.md](claims.md) (readable). This section is an index from architectural
+area to the claim that carries its status, so a second copy of the verdicts
+cannot drift out of step.
 
-| Area | Claim state | Evidence state | Verification state | Claim ID / defect | Problem |
-| --- | --- | --- | --- | --- | --- |
-| Candidate representation and identity | CURRENT | CORROBORATED | VERIFIED | `CAND-CLAIM-001` | priority formula is heuristic, not the documented value/cost model |
-| Candidate lifecycle | CURRENT | DIRECT | VERIFIED | `CAND-CLAIM-003` | `failed` is claimable; no terminal state |
-| Candidate claiming (atomicity at the claim site) | CURRENT | CORROBORATED | VERIFIED | `SCHED-CLAIM-001` | — |
-| Single-owner invariant (end to end) | CURRENT | CORROBORATED | **CONTRADICTED** | `SCHED-CLAIM-002` / D1 | re-queue path defeats ownership |
-| Scheduler | CURRENT | DIRECT | PARTIALLY_VERIFIED | `SCHED-CLAIM-003` | no fairness; pool not refilled (D2); O(n log n) per claim |
-| Retry semantics | CURRENT | DIRECT | PARTIALLY_VERIFIED | `SCHED-CLAIM-003`, `SCHED-CLAIM-004` | `failed` bypasses backoff (D3) |
-| Adaptive concurrency | CURRENT | DIRECT | **CONTRADICTED** | `SCHED-CLAIM-006` / D5 | counter changes; pool does not |
-| HTTP acquisition | CURRENT | CORROBORATED | VERIFIED | `ACQ-CLAIM-001` | transport hard-wired; no cancellation (`ACQ-CLAIM-003`) |
-| Observation on failure | CURRENT | CORROBORATED | VERIFIED | `ACQ-CLAIM-002` | — |
-| Recognition providers | CURRENT | CORROBORATED | VERIFIED | `ARCH-CLAIM-001` | multiple matches; confidences incomparable (`ARCH-CLAIM-009`) |
-| Protocol independence of providers | CURRENT (documented) | DIRECT | **CONTRADICTED** | `ARCH-CLAIM-002` | only recognition is an interface |
-| Candidate sources | CURRENT | DIRECT | VERIFIED | `CODE-027` | engine-internal, not an interface |
-| Candidate expansion | CURRENT | CORROBORATED | VERIFIED | `ARCH-CLAIM-003` | — |
-| Deduplication (candidates) | CURRENT | CORROBORATED | VERIFIED | `CAND-CLAIM-001` | in-flight window broken by D1 |
-| Deduplication (discoveries) | CURRENT | CORROBORATED | **CONTRADICTED** | `ARCH-CLAIM-004` / D9 | duplicates not merged |
-| Persistence | CURRENT | CORROBORATED | VERIFIED | `ARCH-CLAIM-005` | no transaction or reconciliation (`ARCH-CLAIM-006`) |
-| Provenance chain | CURRENT | CORROBORATED | VERIFIED | `PROV-CLAIM-002` | observations mutable (`PROV-CLAIM-006`) |
-| Content identity via fingerprints | SPECIFIED | DIRECT | **CONTRADICTED** | `PROV-CLAIM-003` / D8 | index never read |
-| Evidence graph, claims, conflicts | SPECIFIED | ABSENT | UNVERIFIED | `PROV-CLAIM-005` | designed in v0.16/v0.34 |
-| Coverage / absence / completeness | SPECIFIED | ABSENT | VERIFIED (as absent) | `SCOPE-CLAIM-003` | must never be claimed today |
-| Cross-context coordination | SPECIFIED | DIRECT | **CONTRADICTED** | `ARCH-CLAIM-008` / SCOPE-004 | per-instance ownership |
-| DVB / physical layer | NON-GOAL | ABSENT | VERIFIED (as absent) | `SCOPE-CLAIM-001` | analogy only; mechanically enforced |
-| v0.8–v0.35 design layers | PLANNED | INDIRECT | VERIFIED (as planned) | `PLAN-CLAIM-001` | planned ≠ implemented |
+| Area | Owning claim(s) | Field summary |
+| --- | --- | --- |
+| Candidate identity and dedup | `CAND-CLAIM-001` | `CURRENT` · `IMPLEMENTED` · `TESTED` · `CORROBORATED` · `VERIFIED` |
+| Candidate as hypothesis | `CAND-CLAIM-002` | `CURRENT` · `IMPLEMENTED` · `PARTIALLY_TESTED` · `INDIRECT` · `PARTIALLY_VERIFIED` |
+| Bounds (caps, depth, budget) | `CAND-CLAIM-003` | `CURRENT` · `IMPLEMENTED` · `TESTED` · `DIRECT` · `VERIFIED` |
+| Claim atomicity at the claim site | `SCHED-CLAIM-001` | `CURRENT` · `IMPLEMENTED` · `TESTED` · `CORROBORATED` · `VERIFIED` |
+| Single-owner invariant end to end | `SCHED-CLAIM-002` | `CURRENT` · `PARTIAL` · `TESTED` · `CORROBORATED` · **`CONTRADICTED`** (D1) |
+| Retry and backoff | `SCHED-CLAIM-003` | `CURRENT` · `PARTIAL` · `TESTED` · `DIRECT` · `PARTIALLY_VERIFIED` (D3) |
+| Terminal failure | `SCHED-CLAIM-004` | `CURRENT` · `NOT_IMPLEMENTED` · `TESTED` · `DIRECT` · **`CONTRADICTED`** (D3) |
+| Worker pool and concurrency | `SCHED-CLAIM-005` | `CURRENT` · `PARTIAL` · `TESTED` · `CORROBORATED` · **`CONTRADICTED`** (D2) |
+| Adaptive concurrency | `SCHED-CLAIM-006` | `CURRENT` · `NOT_IMPLEMENTED` · `UNTESTED` · `DIRECT` · **`CONTRADICTED`** (D5) |
+| Acquisition transport | `ACQ-CLAIM-001` | `CURRENT` · `IMPLEMENTED` · `TESTED` · `CORROBORATED` · `VERIFIED` |
+| Observation on failure | `ACQ-CLAIM-002` | `CURRENT` · `IMPLEMENTED` · `TESTED` · `CORROBORATED` · `VERIFIED` |
+| Cancellation | `ACQ-CLAIM-003` | `CURRENT` · `NOT_IMPLEMENTED` · `UNTESTED` · `INDIRECT` · **`CONTRADICTED`** |
+| Discovery linkage | `PROV-CLAIM-001` | `CURRENT` · `IMPLEMENTED` · `TESTED` · `DIRECT` · `VERIFIED` |
+| Derivation chain | `PROV-CLAIM-002` | `CURRENT` · `IMPLEMENTED` · `TESTED` · `CORROBORATED` · `VERIFIED` |
+| Content identity (fingerprints) | `PROV-CLAIM-003` | `SPECIFIED` · `NOT_IMPLEMENTED` · `UNTESTED` · `DIRECT` · **`CONTRADICTED`** (D8) |
+| Observation ≠ discovery | `PROV-CLAIM-004` | `CURRENT` · `IMPLEMENTED` · `TESTED` · `DIRECT` · `VERIFIED` |
+| Evidence layer | `PROV-CLAIM-005` | `SPECIFIED` · `NOT_IMPLEMENTED` · `NOT_APPLICABLE` · `ABSENT` · `UNVERIFIED` |
+| Observation immutability | `PROV-CLAIM-006` | `CURRENT` · `NOT_IMPLEMENTED` · `UNTESTED` · `INDIRECT` · `UNVERIFIED` |
+| Provider boundary | `ARCH-CLAIM-001` | `CURRENT` · `IMPLEMENTED` · `TESTED` · `CORROBORATED` · `VERIFIED` |
+| Protocol independence | `ARCH-CLAIM-002` | `CURRENT` · `NOT_IMPLEMENTED` · `PARTIALLY_TESTED` · `DIRECT` · **`CONTRADICTED`** |
+| Expansion ownership | `ARCH-CLAIM-003` | `CURRENT` · `IMPLEMENTED` · `TESTED` · `CORROBORATED` · `VERIFIED` |
+| Discovery deduplication | `ARCH-CLAIM-004` | `CURRENT` · `NOT_IMPLEMENTED` · `TESTED` · `CORROBORATED` · **`CONTRADICTED`** (D9) |
+| Persistence across reload | `ARCH-CLAIM-005` | `CURRENT` · `IMPLEMENTED` · `TESTED` · `CORROBORATED` · `VERIFIED` |
+| Transactional persistence | `ARCH-CLAIM-006` | `SPECIFIED` · `NOT_IMPLEMENTED` · `NOT_APPLICABLE` · `ABSENT` · `UNVERIFIED` |
+| Request budget | `ARCH-CLAIM-007` | `CURRENT` · `IMPLEMENTED` · `TESTED` · `CORROBORATED` · `VERIFIED` |
+| Cross-context coordination | `ARCH-CLAIM-008` | `SPECIFIED` · `NOT_IMPLEMENTED` · `NOT_APPLICABLE` · `DIRECT` · **`CONTRADICTED`** |
+| Confidence comparability | `ARCH-CLAIM-009` | `CURRENT` · `NOT_IMPLEMENTED` · `UNTESTED` · `DIRECT` · `UNVERIFIED` |
+| Multiple provider matches | `ARCH-CLAIM-010` | `CURRENT` · `IMPLEMENTED` · `TESTED` · `CORROBORATED` · `VERIFIED` |
+| No DVB/RF implementation | `SCOPE-CLAIM-001` | `CURRENT` · `NOT_IMPLEMENTED` · `NOT_APPLICABLE` · `ABSENT` · `VERIFIED` |
+| No v0.8+ layers implemented | `SCOPE-CLAIM-002` | `CURRENT` · `NOT_IMPLEMENTED` · `NOT_APPLICABLE` · `ABSENT` · `VERIFIED` |
+| Coverage / absence / completeness | `SCOPE-CLAIM-003` | `CURRENT` · `NOT_IMPLEMENTED` · `NOT_APPLICABLE` · `ABSENT` · `VERIFIED` |
+| Non-URL targets | `SCOPE-CLAIM-004` | `CURRENT` · `NOT_IMPLEMENTED` · `NOT_APPLICABLE` · `ABSENT` · `VERIFIED` |
+| Repository tooling at the analysis revision | `SCOPE-CLAIM-005` | `HISTORICAL` · `NOT_IMPLEMENTED` · `NOT_APPLICABLE` · `ABSENT` · `VERIFIED` |
+| DVB support as a non-goal | `SCOPE-CLAIM-006` | `NON_GOAL` · `NOT_IMPLEMENTED` · `NOT_APPLICABLE` · `INDIRECT` · `VERIFIED` |
+| Design series v0.8–v0.35 | `PLAN-CLAIM-001` | `PLANNED` · `NOT_IMPLEMENTED` · `NOT_APPLICABLE` · `INDIRECT` · `VERIFIED` (as planned) |
+| Profile coordination ≠ consensus | `PLAN-CLAIM-002` | `SPECIFIED` · `NOT_IMPLEMENTED` · `NOT_APPLICABLE` · `INDIRECT` · `VERIFIED` |
+| Replay separable from acquisition | `PLAN-CLAIM-003` | `SPECIFIED` · `NOT_IMPLEMENTED` · `NOT_APPLICABLE` · `INDIRECT` · `VERIFIED` |
+| Historical versions | `HIST-CLAIM-001` | `HISTORICAL` · `IMPLEMENTED` · `UNTESTED` · `DIRECT` · `VERIFIED` |
+| Invalid v0.5.0 paste | `HIST-CLAIM-002` | `HISTORICAL` · `NOT_IMPLEMENTED` · `NOT_APPLICABLE` · `DIRECT` · `VERIFIED` |
+| Pre-cleanup README accuracy | `HIST-CLAIM-003` | `HISTORICAL` · `NOT_APPLICABLE` · `NOT_APPLICABLE` · `CORROBORATED` · **`CONTRADICTED`** |
+| Value × probability ÷ cost model | `HYP-CLAIM-001` | `HYPOTHESIS` · `NOT_IMPLEMENTED` · `NOT_APPLICABLE` · `INDIRECT` · `UNVERIFIED` |
 
-Reading rule: `PLANNED + VERIFIED` means *the fact that it is planned is
-verified*; it never implies implementation.
+Reading rule: `PLANNED` + `NOT_IMPLEMENTED` + `VERIFIED` means *the fact that it
+is planned is verified*; it never implies implementation.
 
 ## 4. Terminology Audit
 
@@ -332,8 +354,9 @@ Scope is now expressed in three tiers — Implemented, Partially implemented,
 Not implemented (designed and non-goal) — owned by
 [../prototype/scope.md](../prototype/scope.md). Summary:
 
-Claim state `CURRENT`, evidence state `CORROBORATED`, verification state
-`VERIFIED` — i.e. present and demonstrated (see [claims.md](claims.md)): seed generation; candidate
+`claim_kind: CURRENT` · `implementation_state: IMPLEMENTED` · `test_state: TESTED` ·
+`evidence_level: CORROBORATED` · `verification_result: VERIFIED` — present and
+demonstrated (see [claims.md](claims.md)): seed generation; candidate
 normalization; identity deduplication; resource-level acquisition guard;
 synchronous candidate claiming; worker pool; HTTP GET acquisition with timeout;
 content-type handling and sniffing; HTML/JSON/XML/CSS/JS/text/binary
@@ -343,16 +366,16 @@ error isolation; request budget; origin rate limiting; retry with backoff;
 decision ledger; graph edges; policy gating (GET-only, depth, disabled classes,
 scope).
 
-Claim state `CURRENT`, verification state `PARTIALLY_VERIFIED` — real function
-with a named limitation: concurrency
+`claim_kind: CURRENT` with `verification_result: PARTIALLY_VERIFIED` or
+`CONTRADICTED` — real function with a named limitation: concurrency
 (pool not refilled, D2), adaptive concurrency (no effect, D5), persistence (no
 transaction or reconciliation), retry (`failed` bypasses backoff, D3),
 termination (no completion criterion, D4), cancellation (cooperative only),
 content identity (fingerprints unused, D8), discovery accounting (duplicates
 not merged, D9), statistics (`acquired` dead, D7).
 
-Claim state `SPECIFIED` / `PLANNED`, evidence state `INDIRECT` — documented, not
-implemented: capability lattice, acquisition runtime, recognition runtime,
+`claim_kind: SPECIFIED` / `PLANNED` · `implementation_state: NOT_IMPLEMENTED` ·
+`evidence_level: INDIRECT` — documented, not implemented: capability lattice, acquisition runtime, recognition runtime,
 candidate sources and controller, discovery domain and sessions, work items and
 frontier arbitration, evidence graph, resource identity resolution,
 classification axes, representations/artifacts/revisions, partitioning,
@@ -360,10 +383,11 @@ adaptive strategies, coverage, absence, goal-constrained discovery, query
 planner, tactics, enumeration, reconciliation, cost ledger, transactional
 persistence, multi-worker coordination, conflict resolution, replication.
 
-Claim state `HYPOTHESIS`: learned priority, cross-domain discovery, non-HTTP transports,
+`claim_kind: HYPOTHESIS`: learned priority, cross-domain discovery, non-HTTP transports,
 completeness claims.
 
-Claim state `NON-GOAL`, evidence state `ABSENT` (inspected scope covered): RF spectrum scanning; SDR and tuner control; DVB-S/S2, DVB-T/T2,
+`claim_kind: NON_GOAL` · `evidence_level: ABSENT` (inspected scope covered), seen in
+`SCOPE-CLAIM-001`/`SCOPE-CLAIM-006`: RF spectrum scanning; SDR and tuner control; DVB-S/S2, DVB-T/T2,
 DVB-C demodulation; carrier synchronization; symbol-rate estimation; FEC
 decoding; MPEG-TS decoding; PSI/SI parsing; NIT-based discovery; general-purpose
 or unrestricted crawling; browser automation; replacing DVB tooling; claiming
@@ -392,7 +416,7 @@ Required invariant: **a candidate may have at most one active owner.**
 | Two workers can obtain the same candidate at all | **yes — defect D1** [EVID:CONC-002, TEST-009] | `addCandidate()` returns the existing candidate on re-discovery; `queueCandidate()` re-queues it for any non-terminal state; measured 2–4 concurrent owners |
 | Duplicate acquisition of the same URL | **yes — defect D1/D6** | the resource guard is checked before the request completes, so both owners pass it |
 | Safe because JavaScript is synchronous between awaits | yes | stated explicitly; not a general lock |
-| Safe across tabs, workers or devices | **no** [EVID:SCOPE-004]** | no shared claim state, no leases, no fencing; profile coordination ≠ distributed consensus |
+| Safe across tabs, workers or devices | **no** [EVID:SCOPE-004] | no shared claim state, no leases, no fencing; profile coordination ≠ distributed consensus |
 | Retry behaviour | partial | backoff written to `nextAttemptAt`; ignored for `failed` (D3) |
 | Worker termination | defect D2 | permanent exit on an empty eligible set |
 | Queue exhaustion | defect D4 | `running` stays true; restart requires reload |
@@ -499,7 +523,8 @@ No protection is claimed that is not implemented.
 ## 12. Search-Space Analysis
 
 Canonical owner: [../architecture/search-space.md](../architecture/search-space.md).
-Status in the three dimensions: claim state · evidence state · verification state.
+Fields: `claim_kind` · `implementation_state` · `test_state` · `evidence_level` ·
+`verification_result`.
 
 | Question | Answer (v0.7.1) | Claim state | Evidence state | Verification state |
 | --- | --- | --- | --- | --- |

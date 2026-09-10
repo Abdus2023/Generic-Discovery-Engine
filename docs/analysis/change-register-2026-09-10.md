@@ -7,7 +7,7 @@ proposed, and how each change was verified afterwards.**
 | Phase | State | Boundary |
 | --- | --- | --- |
 | A — Verification (read-only) | complete | produced the [evidence register](evidence-register.md), [claims](claims.md) and the [analysis](repository-analysis-2026-09-10.md); **no repository state was modified during verification** |
-| Authorization | granted at A1 + A2 + A6/A7 | full contract, allowed/forbidden operations and rollback in [scope-and-authorization.md](scope-and-authorization.md) §5 |
+| Authorization | level `DOC_REFACTOR`, plus `ANALYSIS_ONLY`, `COMMIT` and `PUSH` declared separately (no implied hierarchy) | full contract, allowed/forbidden operations and rollback in [scope-and-authorization.md](scope-and-authorization.md) §5; machine-readable in [analysis.json](analysis.json) |
 | B — Refactoring plan | complete | every change below has an ID, evidence, category and risk |
 | B — Refactoring execution | executed for documentation; **not executed for code** | authorization covered repository documentation restructure; no authorization was given for behavioural code changes, and the review briefs explicitly forbade fixing correctness ahead of establishing it |
 | C — Post-refactor verification | complete for executed changes | see §Post-refactor verification |
@@ -30,8 +30,10 @@ Nothing in this register silently mixes "what is" with "what should be".
 | R-010 | DOC-ADD | no executable verification existed | `tools/verify.mjs`, `tools/checks.mjs`, `tools/simulate.mjs` | claims were assertions | TEST-001 … TEST-013 | LOW | tools run in CI-able form; exit codes defined | PASS |
 | R-011 | DOC-ADD | extent of DVB/future material unenforced | scope document + mechanical symbol checks | analogy could drift into compatibility claims | SCOPE-001, SCOPE-002 | LOW | `tools/verify.mjs` symbol scans | PASS |
 | R-012 | DOC-ADD | verification and change history undocumented | evidence register + claims + this change register | traceability of conclusions and edits | DOC-012 | LOW | `tools/verify.mjs` evidence lint | PASS |
-| R-014 | DOC-ADD | status expressed as one collapsed word ("implemented"/"tested") | three independent dimensions (evidence / claim / verification) with canonical claim records | dimensions describe different things and must not be merged | DOC-011, DOC-012 | LOW | `tools/verify.mjs` vocabulary lint + claim lint | PASS |
+| R-014 | DOC-ADD | status expressed as one collapsed word ("implemented"/"tested") | typed status fields, recorded once per claim: `claim_kind`, `implementation_state`, `test_state`, `evidence_level`, `verification_result` | the fields describe different things and must never be merged or substituted | DOC-011, DOC-012 | LOW | `tools/verify.mjs` vocabulary lint; `tools/validate-analysis.mjs` | PASS |
 | R-015 | DOC-ADD | scope, ownership and authorization implicit | [scope-and-authorization.md](scope-and-authorization.md) with the four scope dimensions, ownership matrix, decision ownership, authorization levels and pre/post-execution checks | governs who may decide and mutate | DOC-012 | LOW | `tools/verify.mjs` authorization-record lint | PASS |
+| R-016 | DOC-ADD | status existed only as prose tables; no machine-readable record, and no way to tell a stale table from a current one | [analysis.json](analysis.json) as the normative record, plus `tools/validate-analysis.mjs` (schema, enums, authorization/execution rules) and `tools/render-claims.mjs` (claims.md is generated, never hand-edited) | a canonical model that cannot be validated silently drifts | DOC-012 | LOW | `tools/validate-analysis.mjs` (21 checks); `tools/render-claims.mjs --check` | PASS |
+| R-017 | DOC-REWRITE | claim and status statements written before the canonical model, in three-dimension or collapsed form | 41 records regenerated with all five typed fields; evidence register, analysis document, scope document, README and the 11 behaviour documents updated to the same vocabulary | documents must agree with the normative record or be detected | DOC-011, DOC-012 | LOW | `tools/verify.mjs` field-substitution and declaration lints; `node tools/verify.mjs` → 30 PASS / 0 FAIL | PASS |
 | R-013 | RENAME | `Continue Architecture Planning.md` at root implied a normative planning document | archived under `archive/`, indexed | non-normative status unclear | DOC-003, DOC-006 | LOW | link checks | PASS |
 
 No content was deleted. Removed text was either contradicted by the
@@ -95,7 +97,7 @@ unsound ownership baseline.
 ## Change-set boundary and discovered changes
 
 Authorization covered `R-001 … R-013` (later extended within the same scope by
-`R-014`, `R-015` — both documentation/analysis artifacts). While executing,
+`R-014`, `R-015`, `R-016`, `R-017` — all documentation/analysis artifacts). While executing,
 twelve further problems were discovered (`R-101 … R-112`). Under the
 discovered-change rule they were recorded, classified and proposed, **not
 fixed** — including `R-109`, a two-line counter fix, because code mutation was
@@ -135,30 +137,33 @@ Known limitations of this verification:
 
 ## Refactoring result
 
-```
-EXECUTION RESULT:  SUCCESS   (documentation scope)
-POST-VERIFICATION: VERIFIED  (documentation)
+```yaml
+execution:
+  result: SUCCEEDED
+  executed_changes: [R-001 .. R-017]
+  unauthorized_changes: []
+post_verification:
+  result: VERIFIED
 ```
 
 **EXECUTED + POST-VERIFIED**: documentation and analysis artifacts
-`R-001 … R-015`.
+`R-001 … R-017`.
 
 **PLAN ONLY**: code changes `R-101 … R-112` — no authorization was given to
 change runtime behaviour (levels A4/A5 not granted), and correctness must be
 established before the prototype is modified.
 
-```
+```yaml
 EXECUTION AUTHORIZATION (as applied)
-Target:            Abdus2023/Generic-Discovery-Engine
-Revision:          arena/01a08d14-generic-discovery-engine, from main @ cc8df73
-Levels granted:    A1 analysis artifacts · A2 documentation refactor ·
-                   A6 commit · A7 push (work branch)
-Levels withheld:   A3 test changes to an existing suite (none exists) ·
-                   A4 code refactor · A5 architectural change
-Change set:        R-001 … R-015 executed; R-101 … R-112 plan only
-Rollback:          revert of commits 400810d/e8b9aec restores prior documentation;
-                   source digest pins code state independently
-Status:            AUTHORIZED (documentation) / NOT AUTHORIZED (code)
+  target:     Abdus2023/Generic-Discovery-Engine
+  revision:   arena/01a08d14-generic-discovery-engine, from main @ cc8df73
+  level:      DOC_REFACTOR
+  additional_levels_declared: [ANALYSIS_ONLY, COMMIT, PUSH]   # granted explicitly
+  withheld:   [TEST_REFACTOR, CODE_REFACTOR, ARCHITECTURE_CHANGE]
+  change set: R-001 … R-017 executed; R-101 … R-112 plan only
+  rollback:   revert of the analysis commits restores prior documentation;
+              the source digest pins code state independently
+  status:     AUTHORIZED (documentation) / NOT AUTHORIZED (code)
 ```
 
 ## Two-state architecture record
@@ -170,7 +175,7 @@ Status:            AUTHORIZED (documentation) / NOT AUTHORIZED (code)
 | Worker pool | created once, never refilled (D2) | alive until a scan-level stop condition (R-104, R-112) |
 | Run state | `running` latch, no completion criterion (D4) | explicit states incl. quiescence and exhaustion (R-106) |
 | Discovery accounting | one record per recognition (D9) | deduplicated or provenance-backed corroboration (R-107) |
-| Status vocabulary | one word per verdict ("implemented", "tested") | three independent dimensions, recorded per claim (R-014) |
+| Status vocabulary | one word per verdict ("implemented", "tested") | five typed fields per claim, recorded once in analysis.json and rendered into claims.md (R-014) |
 | Governance | implicit scope and ownership | explicit scope boundary, authorization contract, pre/post-execution checks (R-015) |
 | Content identity | fingerprints indexed, unused (D8) | consulted or removed (R-108) |
 | Acquisition | HTTP GET hard-wired | acquisition-provider boundary (R-111) — v0.9/v0.10 design |
