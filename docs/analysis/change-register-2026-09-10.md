@@ -171,6 +171,25 @@ execution_verification:             # whether the resulting state conforms
 **EXECUTED + EXECUTION-VERIFIED**: documentation, analysis and tooling artifacts
 `R-001 … R-022`.
 
+Commit history of the change set (the commit that carries this line is the one
+whose tree these digests describe):
+
+```text
+754683e 2026-09-10 Brief 11 (R-022): separate the structural schema from the policy registries
+27b5977 2026-09-10 List the capability registry and claim taxonomy in the README document map
+f0b17e2 2026-09-10 Adopt the brief-10 machine-validatable schema and capability-grant semantics
+4a81d2d 2026-09-10 Machine-check the capability catalogue and refresh reported gate counts
+92dc5cc 2026-09-10 Document the six claim dimensions and the confidence rule in the schema
+d413bbc 2026-09-10 Re-assess risk classes against the canonical set and repair the register table
+1a37e4b 2026-09-10 Separate claim and execution verification; capabilities as stateful objects
+737c127 2026-09-10 Authorization as profiles, capabilities and operations; lifecycle split for execution and verification
+```
+
+The record's own run ledger — one entry per verification run, each with the
+digests of the document, the schema, the registries and the validator, the phase
+states, every error and the working-tree digest before and after — is
+[validation-runs.json](validation-runs.json).
+
 **PLAN ONLY**: code changes `R-101 … R-112` — no authorization was given to
 change runtime behaviour (`CAP-SOURCE-MODIFY|RENAME|MOVE|DELETE`, every
 `CAP-TEST-*` and `CAP-ARCHITECTURE-MODIFY` are withheld capability classes,

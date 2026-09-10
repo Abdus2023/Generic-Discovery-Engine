@@ -180,6 +180,115 @@
           "docs/analysis/validation-runs.json"
         ]
       }
+    },
+    {
+      "id": "RUN-003",
+      "label": "committed R-022 state (754683e)",
+      "mode": "WORKTREE",
+      "head": "754683ec675299a9cd227a117111efa66b3d905b",
+      "started_at": "2026-09-10T22:34:59.809Z",
+      "completed_at": "2026-09-10T22:34:59.923Z",
+      "verdict": "VALID",
+      "tool": {
+        "path": "tools/validate-analysis.mjs",
+        "model": "brief 11 sections 202, 218-243",
+        "sha256": "daa9cac160df3b63036b116ff5355fc7be01cb9bfc7b24783885f9efaf78ff56"
+      },
+      "inputs": {
+        "document": {
+          "path": "docs/analysis/analysis.json",
+          "sha256": "ea9347ad54a20599bf64209421b024d2e8bffdbe71f7d4014f7902e10829577b"
+        },
+        "schema": {
+          "path": "docs/analysis/analysis.schema.json",
+          "sha256": "4a87542448198b353a38ad2e13f1beca02d1bd53d4780dc0312404c54ca00aa9"
+        },
+        "registry_schema": {
+          "path": "docs/analysis/registries/registry.schema.json",
+          "sha256": "853fd5bd507fd53899603193942deccfc2db6448c8978c3bc69ccab43cd1583b"
+        },
+        "registries": [
+          {
+            "registry_id": "capability",
+            "registry_version": "2026.09.1",
+            "path": "docs/analysis/registries/capability-registry.json",
+            "sha256": "a57e079db38eb3e6b7470e5d49b750270da46fba885304940c40781c7847d403"
+          },
+          {
+            "registry_id": "level_profile",
+            "registry_version": "2026.09.1",
+            "path": "docs/analysis/registries/level-profile-registry.json",
+            "sha256": "42eabee1043c1161e5797dcc242941397fc1eccbff6e210f52c3ab9d876e4e23"
+          },
+          {
+            "registry_id": "operation",
+            "registry_version": "2026.09.1",
+            "path": "docs/analysis/registries/operation-registry.json",
+            "sha256": "3a04d74b9398c2228de7a0cb76088b98794f200dcf810b7d463156635bf811d5"
+          },
+          {
+            "registry_id": "resource_class",
+            "registry_version": "2026.09.1",
+            "path": "docs/analysis/registries/resource-class-registry.json",
+            "sha256": "0baf650c6fea891fa8ffd275ad135bfa405d74475ed5d5108273c9483f141996"
+          },
+          {
+            "registry_id": "claim",
+            "registry_version": "2026.09.1",
+            "path": "docs/analysis/registries/claim-registry.json",
+            "sha256": "51755156a867d319ee074124455ceb94f27084e91e4364955c627931f04b6c39"
+          }
+        ]
+      },
+      "phases": [
+        {
+          "phase": "STRUCTURAL",
+          "state": "PASSED",
+          "checks": 3,
+          "errors": 0
+        },
+        {
+          "phase": "REGISTRY",
+          "state": "PASSED",
+          "checks": 11,
+          "errors": 0
+        },
+        {
+          "phase": "SEMANTIC",
+          "state": "PASSED",
+          "checks": 20,
+          "errors": 0
+        },
+        {
+          "phase": "AUTHORIZATION",
+          "state": "PASSED",
+          "checks": 1,
+          "errors": 0
+        },
+        {
+          "phase": "EXECUTION",
+          "state": "PASSED",
+          "checks": 3,
+          "errors": 0
+        },
+        {
+          "phase": "VERIFICATION",
+          "state": "PASSED",
+          "checks": 3,
+          "errors": 0
+        }
+      ],
+      "errors": [],
+      "repository": {
+        "scope": "worktree",
+        "tree_digest_before": "e11649938895817e8fe8f365f93cb4fa288fe90aa366f86b413f34ca73a1b2b8",
+        "tree_digest_after": "e11649938895817e8fe8f365f93cb4fa288fe90aa366f86b413f34ca73a1b2b8",
+        "files": 40,
+        "unchanged": true,
+        "excluded_from_digest": [
+          "docs/analysis/validation-runs.json"
+        ]
+      }
     }
   ]
 }
