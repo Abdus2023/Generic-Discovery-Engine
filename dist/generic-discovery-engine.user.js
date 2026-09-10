@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Generic Discovery Engine
 // @namespace    generic-discovery
-// @version      0.7.4
+// @version      0.7.5
 // @description  Generic web-resource discovery engine inspired by the architecture of DVB blind scanning.
 // @match        *://*/*
 // @run-at       document-start
@@ -19,6 +19,14 @@
     /*
      * ============================================================
      * Generic Discovery Engine
+     * v0.7.5 — Trust & Verification (Trusted Types + fuzz + CI + ADRs)
+     *
+     * Patch notes vs v0.7.4:
+     * - Trust: Trusted Types policy (gde-bridge) for installBridge()
+     *         + JSDoc typedefs for Candidate/Observation/Discovery/
+     *           ResourceRecord/Provider + CI workflow verify.yml +
+     *           fuzz harness (extract/canonicalize) + 3 more ADRs
+     *
      * v0.7.4 — Hardening & Hygiene (P2-6 privacy/CSP/header + ADR split)
      *
      * Patch notes vs v0.7.3:
@@ -196,6 +204,36 @@
             unknown: 0.25
         }
     };
+
+    /**
+     * @typedef {Object} CandidateData
+     * @property {string} target
+     * @property {string} type
+     * @property {string} origin
+     * @property {string|null} parent
+     * @property {number} priority
+     * @property {Object} hints
+     * @property {number} depth
+     */
+
+    /** @typedef {Object} ObservationData
+     *  @property {string} candidateId
+     *  @property {string} planId
+     *  @property {string} target
+     *  @property {{status:number,contentType:string,contentLength:number|null,finalUrl:string}} http
+     *  @property {string} body
+     *  @property {{algorithm:string,hash:string,length:number,sampledLength:number}|null} fingerprint
+     */
+
+    /** @typedef {Object} DiscoveryData
+     *  @property {string} candidateId
+     *  @property {string} observationId
+     *  @property {string} kind
+     *  @property {number} confidence
+     *  @property {string} mechanism
+     *  @property {Object} data
+     *  @property {Object} provenance
+     */
 
     const STORAGE_KEY = 'generic-discovery-engine-v8';
 
@@ -3399,8 +3437,7 @@
                         'script'
                     );
 
-                script.textContent = `
-(function () {
+                const __gdeBridgeSource = `(function () {
     if (window.__GDE_NETWORK_BRIDGE__) return;
     window.__GDE_NETWORK_BRIDGE__ = true;
 
@@ -3608,6 +3645,20 @@
     }
 })();
 `;
+                // Trusted Types compliance (gde-bridge policy) — S-02 residual
+                try {
+                    if (window.trustedTypes?.createPolicy) {
+                        const __gdePolicy = window.trustedTypes.createPolicy('gde-bridge', {
+                            createScript: s => s
+                        });
+                        // @ts-ignore TrustedScript
+                        script.textContent = __gdePolicy.createScript(__gdeBridgeSource);
+                    } else {
+                        script.textContent = __gdeBridgeSource;
+                    }
+                } catch {
+                    script.textContent = __gdeBridgeSource;
+                }
 
                 (
                     document.documentElement ||

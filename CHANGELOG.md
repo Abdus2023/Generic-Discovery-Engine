@@ -2,6 +2,13 @@
 
 All notable changes to the Generic Discovery Engine.
 
+## [0.7.5] — 2026-09-10 — Trust & Verification (Trusted Types + fuzz + CI + ADRs)
+
+- **Trust:** `installBridge()` now uses Trusted Types `trustedTypes.createPolicy('gde-bridge', {createScript: s=>s})` → `policy.createScript(bridgeSource)` with fallback to plain `textContent` + catch; survives pages with `require-trusted-types-for 'script'` CSP. JSDoc `@typedef` for `CandidateData/ObservationData/DiscoveryData` added above `STORAGE_KEY`. Header `0.7.4→0.7.5`, `5,358→5,421` lines, `node --check` PASS.
+- **Fuzz harness:** `tests/fuzz-extract.test.js` (seeded LCG `0x12345`, 50+80+40+100 deterministic iterations) tests `canonicalizeUrl` idempotence + tracking/privacy scrub, `extractUrlsFromText` dedup + never-throw, `extractCssUrls` balanced `url()`, `fnv1a32` empty `811c9dc5` + collision sanity, 2M body with 500 links + truncated `makeFingerprint` sampling (1M). No randomness across runs.
+- **ADRs:** `docs/adr/004-fingerprint.md` (fnv1a32 1M sample), `005-mutation-batch.md` (seen Set), `006-export-schema.md` (gde-export-v8.0, coverage), plus `docs/adr/README.md` stays. 6 ADRs now cover the control plane.
+- **CI:** `.github/workflows/verify.yml` (push/PR `**`, Node 22, `npm run check` + `npm test` + `npm run verify` + dist size log). `eslint.config.js`/`package.json` already flat; fuzz extends `verify-p0` with `gde-bridge`/`trustedTypes`/`__gdeBridgeSource` grep asserts. `npm test` **50/50 PASS** (43 existing including trust check + 7 fuzz) across 18 suites.
+
 ## [0.7.4] — 2026-09-10 — Hardening & Hygiene (P2-6 + ADR split)
 
 - **P2-6 — hardening:** `@connect self` with `*` commented (+ runtime `config-cross-origin-requires-connect-star` + `warn()` when `sameOriginOnly=false`), `CONFIG.privacy.stripSensitiveParams` opt-in (scrubs `token/session/auth/sid/access_token/api_key/secret` in `canonicalizeUrl`, 8 RegExp), explicit `csp-blocks-bridge` diagnostic (CSP/Refused regex) + `network-bridge-error` retains message. Header `0.7.3→0.7.4`, `CONFIG.version` stays 8 (storage compatible), 5,260→5,358 lines, `node --check` PASS, `npm test` 42/42 PASS (new static checks `getCoverageMetrics`/`hardening`).

@@ -1,6 +1,6 @@
 # Architecture Overview — Generic Discovery Engine v0.7.4
 
-**Runnable artifact:** `dist/generic-discovery-engine.user.js` (5,358 lines, CONFIG v8, `node --check` PASS)  
+**Runnable artifact:** `dist/generic-discovery-engine.user.js` (5,421 lines, CONFIG v8, `node --check` PASS)  
 **Transcript source:** `Continue Architecture Planning.md` (2.2 MB) → split into `docs/DECISIONS.md` + `docs/adr/*` (v0.7.4)  
 **Verification:** `VERIFICATION_REPORT.md` (v0.7.1) + `VERIFICATION_SUPPLEMENT_v0.7.2.md` + `docs/SECURITY_AUDIT.md` + `docs/PERFORMANCE_ANALYSIS.md` — `npm test` 40/40 PASS
 
