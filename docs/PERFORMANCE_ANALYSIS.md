@@ -1,6 +1,6 @@
-# Performance Analysis — Generic Discovery Engine v0.7.8
+# Performance Analysis — Generic Discovery Engine v0.7.9
 
-**Artifact:** `dist/generic-discovery-engine.user.js` (5,526 lines)  
+**Artifact:** `dist/generic-discovery-engine.user.js` (5,597 lines)  
 **Baseline config:** `maxCandidates 750`, `maxRequests 150`, `concurrency 4`, `maxBody 2M`, `observations 800`, `ledger 5k`, `graph 5k`  
 **Method:** static complexity + synthetic E2E measurement (`tests/e2e-discovery-loop.test.js`)  
 **Node:** v22.22.3, VM sandbox (no real network), `GM_xmlhttpRequest` mocked with 5 ms latency  

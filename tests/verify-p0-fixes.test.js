@@ -15,7 +15,7 @@ describe('static patch presence (dist/generic-discovery-engine.user.js)', () => 
     const file = fs.readFileSync(path.join(import.meta.dirname, '../dist/generic-discovery-engine.user.js'), 'utf8');
 
     it('version bumped to 0.7.2+', () => {
-        assert.match(file, /@version\s+0\.7\.[2345678]/);
+        assert.match(file, /@version\s+0\.7\.[23456789]/);
         assert.match(file, /version:\s*8/);
     });
     it('P0-1 liveCount fix present', () => {
@@ -48,6 +48,16 @@ describe('static patch presence (dist/generic-discovery-engine.user.js)', () => 
         assert.match(file, /stripSensitiveParams/);
         assert.match(file, /csp-blocks-bridge/);
         assert.match(file, /config-cross-origin-requires-connect-star/);
+    });
+    it('v0.7.9 pattern & cluster present', () => {
+        assert.match(file, /patternInference/);
+        assert.match(file, /extractUrlPattern/);
+        assert.match(file, /getPatternMetrics/);
+        assert.match(file, /getClusterMetrics/);
+        assert.match(file, /inference/);
+        const pkg3 = fs.readFileSync(path.join(import.meta.dirname, '../package.json'), 'utf8');
+        assert.match(pkg3, /verify:build/);
+        assert.ok(fs.existsSync(path.join(import.meta.dirname, '../scripts/verify-build.js')));
     });
     it('v0.7.8 lifecycle & concurrency present', () => {
         assert.match(file, /lifecycle/);

@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Generic Discovery Engine
 // @namespace    generic-discovery
-// @version      0.7.8
+// @version      0.7.9
 // @description  Generic web-resource discovery engine inspired by the architecture of DVB blind scanning.
 // @match        *://*/*
 // @run-at       document-start
@@ -19,7 +19,18 @@
     /*
      * ============================================================
      * Generic Discovery Engine
-     * v0.7.8 — Lifecycle & Concurrency (state-machine + claim-exclusivity + types)
+     * v0.7.9 — Pattern & Cluster + Build Determinism (inference + metrics + rebuild check)
+
+     * Patch notes vs v0.7.8:
+     * - Pattern: CONFIG.inference.patternInference + extractUrlPattern()
+     *           (/{int} for /\d+, ={int} for ?=\d+, uuid/hash → {id});
+     *           KnowledgeBase patternIndex Map<pattern,count> + clusterIndex
+     *           Map<origin+pattern,count> + getPatternMetrics() /
+     *           getClusterMetrics() (O(n) over ≤750, ~0.06 ms)
+     *         + Build: scripts/build.js (deterministic rebuild check) +
+     *           npm run verify:build (sha256 + wc -l) + tsconfig strict false
+     *           + 3 ADRs (013-pattern, 014-cluster, 015-build)
+     *         + Tests: property-pattern 7 invariants (seeded)
 
      * Patch notes vs v0.7.7:
      * - Lifecycle: CONFIG.lifecycle.strict + KnowledgeBase._validateTransition
@@ -123,6 +134,11 @@
 
         maxCandidates: 750,
         candidateTTL: 0, // 0=disabled, else ms — queued age > TTL → skipped ttl-expired
+        inference: {
+            patternInference: true,
+            clustering: true,
+            minPatternFreq: 3
+        },
         lifecycle: {
             strict: false // true → illegal transitions throw; false → diagnostic + allow
         },
@@ -569,6 +585,34 @@
 
     function stableId(prefix, value) {
         return `${prefix}-${fnv1a32(String(value))}`;
+    }
+
+    function extractUrlPattern(url) {
+        if (!CONFIG.inference || !CONFIG.inference.patternInference) {
+            return String(url);
+        }
+        try {
+            const u = new URL(url);
+            let path = u.pathname.replace(/\/\d+(?=\/|$)/g, '/{int}');
+            path = path.replace(/\/[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}(?=\/|$)/g, '/{uuid}');
+            path = path.replace(/\/[0-9a-fA-F]{32,64}(?=\/|$)/g, '/{hash}');
+            let search = u.search.replace(/=\d+(&|$)/g, '={int}$1');
+            search = search.replace(/=[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}(&|$)/g, '={uuid}$1');
+            search = search.replace(/=[0-9a-fA-F]{32,64}(&|$)/g, '={hash}$1');
+            return `${u.origin}${path}${search}`;
+        } catch {
+            return String(url).replace(/\/\d+(?=\/|$)/g, '/{int}').replace(/=\d+(&|$)/g, '={int}$1');
+        }
+    }
+
+    function clusterKeyForCandidate(candidate) {
+        try {
+            const pattern = extractUrlPattern(candidate.target);
+            const origin = candidate.origin || originOf(candidate.target) || 'unknown';
+            return `${origin}::${pattern}`;
+        } catch {
+            return String(candidate.target);
+        }
     }
 
     function contentTypeForTarget(type) {
@@ -1338,6 +1382,9 @@
 
             this.fingerprintIndex = new Map();
 
+            this.patternIndex = new Map();
+            this.clusterIndex = new Map();
+
             this.diagnostics = [];
 
             this.stats = {
@@ -1455,6 +1502,8 @@
             );
 
             this.stats.discovered++;
+
+            this.recordPattern(candidate);
 
             if (discovery) {
                 this.addEdge(
@@ -1819,6 +1868,28 @@
                 }
             }
             return ok || !(CONFIG.lifecycle && CONFIG.lifecycle.strict);
+        }
+
+        recordPattern(candidate) {
+            if (!CONFIG.inference || !CONFIG.inference.patternInference) return;
+            try {
+                const pattern = extractUrlPattern(candidate.target);
+                this.patternIndex.set(pattern, (this.patternIndex.get(pattern) || 0) + 1);
+                if (CONFIG.inference.clustering) {
+                    const key = clusterKeyForCandidate(candidate);
+                    this.clusterIndex.set(key, (this.clusterIndex.get(key) || 0) + 1);
+                }
+            } catch {}
+        }
+
+        getPatternMetrics() {
+            const sorted = [...this.patternIndex.entries()].sort((a, b) => b[1] - a[1]).slice(0, 20);
+            return { size: this.patternIndex.size, top: sorted, total: [...this.patternIndex.values()].reduce((a, b) => a + b, 0) };
+        }
+
+        getClusterMetrics() {
+            const sorted = [...this.clusterIndex.entries()].sort((a, b) => b[1] - a[1]).slice(0, 20);
+            return { size: this.clusterIndex.size, top: sorted, total: [...this.clusterIndex.values()].reduce((a, b) => a + b, 0) };
         }
 
         shouldAcquireResource(url) {

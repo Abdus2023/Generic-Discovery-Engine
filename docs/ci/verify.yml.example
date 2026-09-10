@@ -28,6 +28,8 @@ jobs:
         run: npm run coverage:check
       - name: Typecheck (tsc --noEmit, informational)
         run: npm run typecheck 2>&1 | tail -n 50 || echo "typecheck informational"
+      - name: Build determinism (sha256 + lines)
+        run: npm run verify:build
       - name: Coverage metrics (dist size + native)
         run: |
           node -e "import fs from 'fs'; console.log('dist size', fs.statSync('dist/generic-discovery-engine.user.js').size, 'lines', fs.readFileSync('dist/generic-discovery-engine.user.js','utf8').split('\n').length)"

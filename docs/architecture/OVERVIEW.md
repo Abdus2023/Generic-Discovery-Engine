@@ -1,8 +1,8 @@
-# Architecture Overview — Generic Discovery Engine v0.7.8
+# Architecture Overview — Generic Discovery Engine v0.7.9
 
-**Runnable artifact:** `dist/generic-discovery-engine.user.js` (5,526 lines, CONFIG v8, `node --check` PASS)  
+**Runnable artifact:** `dist/generic-discovery-engine.user.js` (5,597 lines, CONFIG v8, `node --check` PASS)  
 **Transcript source:** `Continue Architecture Planning.md` (2.2 MB) → split into `docs/DECISIONS.md` + `docs/adr/*` (v0.7.4)  
-**Verification:** `VERIFICATION_REPORT.md` (v0.7.1) + `VERIFICATION_SUPPLEMENT_v0.7.2.md` + `VERIFICATION_SUPPLEMENT_v0.7.6.md` + `VERIFICATION_SUPPLEMENT_v0.7.7.md` + `VERIFICATION_SUPPLEMENT_v0.7.8.md` + `docs/SECURITY_AUDIT.md` + `docs/PERFORMANCE_ANALYSIS.md` — `npm test` 88/88 PASS
+**Verification:** `VERIFICATION_REPORT.md` (v0.7.1) + `VERIFICATION_SUPPLEMENT_v0.7.2.md` + `VERIFICATION_SUPPLEMENT_v0.7.6.md` + `VERIFICATION_SUPPLEMENT_v0.7.7.md` + `VERIFICATION_SUPPLEMENT_v0.7.8.md` + `VERIFICATION_SUPPLEMENT_v0.7.9.md` + `docs/SECURITY_AUDIT.md` + `docs/PERFORMANCE_ANALYSIS.md` — `npm test` 96/96 PASS
 
 ## 1. Control Architecture (DVB-inspired, not DVB-compatible)
 
@@ -18,21 +18,21 @@ NIT / new mux                   expansion (new candidates with provenance)
 
 The loop is `DISCOVERY → KNOWLEDGE GRAPH → ACQUISITION PLAN → SCHEDULER → ACQUISITION → OBSERVATION → RECOGNITION → DISCOVERY` (README diagram). Exhaustive DVB spectrum is replaced by **budgeted open-world search**: `maxCandidates 750 live`, `maxRequests 150 global`, `maxDepth 5`.
 
-## 2. Module Map (v0.7.8)
+## 2. Module Map (v0.7.9)
 
 ```
-CONFIG (v8, ~82 keys) + privacy stripSensitiveParams + candidateTTL 0/off + lifecycle strict:false
+CONFIG (v8, ~83 keys) + privacy stripSensitiveParams + candidateTTL 0/off + lifecycle strict:false + inference patternInference/clustering
 ├── utils: canonicalizeUrl (tracking+privacy), isAllowedUrl, contentTypeBase,
 │          extractUrlsFromText/Css/Xml, fnv1a32, makeFingerprint, originOf
 ├── AcquisitionPlan / AcquisitionPolicy → AcquisitionPlan{allowed,reason}
 ├── OriginController (per-origin 2 concurrent, 150 ms, 50/origin)
 ├── Acquisition (GM_xhr + fetch fallback, 2M truncate, 8s timeout)
 ├── ProviderRegistry [Html, Json, Xml, Css, JavaScript, Binary, Text] — ordered
-├── KnowledgeBase (candidates Map, candidateKeys, visited identityKey, candidateTTL sweep, lifecycle guard _validateTransition, observations 800 FIFO,
+├── KnowledgeBase (candidates Map, candidateKeys, visited identityKey, candidateTTL sweep, lifecycle guard _validateTransition, patternIndex/clusterIndex, observations 800 FIFO,
 │                  discoveries, resources, graphEdges 5k, fingerprintIndex, diagnostics 500)
 ├── DecisionLedger (12 types, 5k FIFO, seq, export/restore)
 ├── NetworkObserver (bridge fetch/XHR + PerformanceObserver, GET-trust rule)
-└── GenericDiscoveryEngine (discover/plan/execute/worker/adaptive/persist/UI + rAF-batched updateUI + TTL-bounded claim + lifecycle-guarded marks + getCoverageMetrics)
+└── GenericDiscoveryEngine (discover/plan/execute/worker/adaptive/persist/UI + rAF-batched updateUI + TTL-bounded claim + lifecycle-guarded marks + pattern/cluster metrics + getCoverageMetrics)
 ```
 
 ## 3. Data-Flow & Invariants
@@ -45,11 +45,13 @@ CONFIG (v8, ~82 keys) + privacy stripSensitiveParams + candidateTTL 0/off + life
 - **Cross-provider dedup:** `emittedForObservation Set<targetUrl>` per observation; mutation batches dedup via `seen Set<type:canonical>`.
 - **UI batching:** `updateUI()` coalesces via `requestAnimationFrame` (`_uiRaf` guard → `_doUpdateUI`), prevents layout thrash on ledger storms; sync fallback when rAF absent.
 - **Lifecycle guard:** `_validateTransition(candidate, to)` enforces `discovered→queued→claimed→planned→acquiring→observed→recognized→expanded→completed` plus `skipped/failed/ttl` branches; illegal emits `lifecycle-illegal-transition` (strict throws), cost 0.02 ms; proven by 500 random walks (ADR 010).
+- **Pattern & cluster:** `extractUrlPattern` normalizes `/{int}/{uuid}/{hash}` and `clusterKeyForCandidate` groups `origin::pattern`; `recordPattern` O(1) on `addCandidate`, `getPatternMetrics`/`getClusterMetrics` O(n≤750) sorted top 20, ~0.06 ms (ADR 013/014).
+- **Build determinism:** `scripts/build.js` captures `sha256`/`lines`/`size` → `dist/.build-meta.json`; `scripts/verify-build.js` asserts no `builtAt` in dist, header version matches `package.json`, hash matches meta, `extractUrlPattern` present (ADR 015).
 - **Claim exclusivity:** `claimNextCandidate()` remains synchronous `eligible.sort → _validateTransition → claimed`; 4 workers + `setImmediate` interleaving never duplicate (ADR 011).
 - **TTL boundedness:** `claimNextCandidate()` sweeps `queued/failed` with `now()-createdAt > CONFIG.candidateTTL` → `ttl-expired` (visited+skipped); liveCount freed before sort, deterministic at 0.05 ms (see ADR 007).
 - **Coverage:** `getCoverageMetrics()` exposes `frontierSize/queuedByType/liveCount/requestsRemaining` in UI + export without extra traversal.
 
-## 4. Security Defaults (v0.7.8)
+## 4. Security Defaults (v0.7.9)
 
 - `sameOriginOnly:true` + `isAllowedUrl` (https only) enforced in both `discover()` and `policy`.
 - `@connect self` (header) with `*` commented; runtime warns if `sameOriginOnly=false`.
@@ -73,5 +75,5 @@ CONFIG (v8, ~82 keys) + privacy stripSensitiveParams + candidateTTL 0/off + life
 
 ## 7. Open Iterations (from DECISIONS.md)
 
-- Narrow `@connect` shipped v0.7.4; Trusted Types `gde-bridge` + fuzz + priority invariants shipped v0.7.5/v0.7.6; TTL + FIFO + throttle + gates shipped v0.7.7; lifecycle + concurrency + typecheck shipped v0.7.8.
-- Planning doc fully split is incremental; this overview + 12 ADRs + coverage gates + TTL + lifecycle + concurrency + typecheck completes the v0.7.x hygiene pass; `npm run coverage:check` 85/75/80 gate, `npm run coverage` 99% line, `npm run typecheck` informational.
+- Narrow `@connect` shipped v0.7.4; Trusted Types `gde-bridge` + fuzz + priority invariants shipped v0.7.5/v0.7.6; TTL + FIFO + throttle + gates shipped v0.7.7; lifecycle + concurrency + typecheck shipped v0.7.8; pattern/cluster + build determinism shipped v0.7.9.
+- Planning doc fully split is incremental; this overview + 15 ADRs + coverage gates + TTL + lifecycle + concurrency + pattern/cluster + build determinism completes the v0.7.x hygiene pass; `npm run coverage:check` 85/75/80 gate, `npm run coverage` 99% line, `npm run typecheck` informational, `npm run verify:build` deterministic.
