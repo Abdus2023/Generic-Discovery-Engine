@@ -2,6 +2,14 @@
 
 All notable changes to the Generic Discovery Engine.
 
+## [0.7.7] — 2026-09-10 — Determinism & Bounds (TTL + FIFO + throttle + gates)
+
+- **Bounds:** `CONFIG.candidateTTL: 0` (off, ms) — `KnowledgeBase.claimNextCandidate()` now sweeps `queued/failed` older than `createdAt+TTL` and marks `ttl-expired` (visited+`skipped`, `candidate-ttl-expired` diagnostic) before `effectivePriority` sort; frees liveCount at cap 750 without background timer (~0.05 ms). Header `0.7.6→0.7.7`, `5,441→5,468` lines, `node --check` PASS.
+- **Determinism:** `tests/property-determinism.test.js` (12 invariants, seeded LCG) proves TTL old→skipped / TTL 0→claimable / liveCount bounded 500 iter, Ledger FIFO 5k eviction + seq monotonic, Origin 150 ms + 2-concurrent + isolation, `fnv1a32` `811c9dc5` empty + sampling 1M truncated + collision 200. Mocked controllers run at 0 ms, no flake.
+- **Gates:** `.c8rc.json` `check-coverage:true` `85/75/80` (was 70/60/70 false), `package.json` `coverage:check` (`c8 --check-coverage`) + `devDeps c8@10.1.3`, `docs/ci/verify.yml.example` now runs `lint` + `coverage:check` + native coverage tail. `npm test` **73/73 PASS** (19→23 suites: 43 existing + 7 fuzz + 8 priority + 12 determinism + 1 new verify-p0 TTL) vs 59/59 in 0.7.6.
+- **ADRs:** `docs/adr/007-candidate-ttl.md`, `008-origin-throttle-invariants.md`, `009-coverage-gates.md` + `docs/adr/README.md` → 9 ADRs (6→9). `docs/DECISIONS.md`/`docs/architecture/OVERVIEW.md` bumped to `5,468` lines.
+- **Docs:** `VERIFICATION_SUPPLEMENT_v0.7.7.md` (§bounds §FIFO §throttle §fingerprint §gates) + `docs/SECURITY_AUDIT.md`/`docs/PERFORMANCE_ANALYSIS.md` headers → v0.7.7.
+
 ## [0.7.6] — 2026-09-10 — Performance & Coverage (rAF UI + coverage proof + invariants)
 
 - **Perf:** `GenericDiscoveryEngine.updateUI()` is now rAF-batched (`_uiRaf` guard + `_doUpdateUI`) — coalesces the 5k-ledger UI string build when 4 workers flush; falls back to sync when `requestAnimationFrame` unavailable. Header `0.7.5→0.7.6`, `5,421→5,441` lines, `node --check` PASS, layout-thrash eliminated for bursty `discovered→queued→planned→completed` storms.

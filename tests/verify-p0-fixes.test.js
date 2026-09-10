@@ -15,7 +15,7 @@ describe('static patch presence (dist/generic-discovery-engine.user.js)', () => 
     const file = fs.readFileSync(path.join(import.meta.dirname, '../dist/generic-discovery-engine.user.js'), 'utf8');
 
     it('version bumped to 0.7.2+', () => {
-        assert.match(file, /@version\s+0\.7\.[23456]/);
+        assert.match(file, /@version\s+0\.7\.[234567]/);
         assert.match(file, /version:\s*8/);
     });
     it('P0-1 liveCount fix present', () => {
@@ -48,6 +48,15 @@ describe('static patch presence (dist/generic-discovery-engine.user.js)', () => 
         assert.match(file, /stripSensitiveParams/);
         assert.match(file, /csp-blocks-bridge/);
         assert.match(file, /config-cross-origin-requires-connect-star/);
+    });
+    it('v0.7.7 bounds & gates present', () => {
+        assert.match(file, /candidateTTL/);
+        assert.match(file, /ttl-expired/);
+        assert.match(file, /candidate-ttl-expired/);
+        const pkg = fs.readFileSync(path.join(import.meta.dirname, '../package.json'), 'utf8');
+        assert.match(pkg, /coverage:check/);
+        const c8 = fs.readFileSync(path.join(import.meta.dirname, '../.c8rc.json'), 'utf8');
+        assert.match(c8, /"check-coverage":\s*true/);
     });
     it('v0.7.6 perf & coverage present', () => {
         assert.match(file, /_uiRaf/);

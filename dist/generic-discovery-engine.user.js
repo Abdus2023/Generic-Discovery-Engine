@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Generic Discovery Engine
 // @namespace    generic-discovery
-// @version      0.7.6
+// @version      0.7.7
 // @description  Generic web-resource discovery engine inspired by the architecture of DVB blind scanning.
 // @match        *://*/*
 // @run-at       document-start
@@ -19,6 +19,17 @@
     /*
      * ============================================================
      * Generic Discovery Engine
+     * v0.7.7 — Determinism & Bounds (TTL + FIFO + throttle + gates)
+     *
+     * Patch notes vs v0.7.6:
+     * - Bounds: CONFIG.candidateTTL (0=off, ms) — claimNextCandidate() now
+     *           sweeps queued/failed and marks ttl-expired (ledger + skipped)
+     *           before sort; prevents stale frontier at live cap
+     *         + Ledger FIFO 5000 + Origin throttle invariants proven via
+     *           property-determinism harness (seeded, 500 iter)
+     *         + Coverage gate: .c8rc check-coverage true (85/75) + CI lint
+     *           + 3 ADRs (007-ttl, 008-throttle, 009-coverage-gates)
+     *
      * v0.7.6 — Performance & Coverage (rAF UI + coverage proof + invariants)
      *
      * Patch notes vs v0.7.5:
@@ -27,7 +38,7 @@
      *         falls back to sync when rAF unavailable
      *         + coverage script (node --experimental-test-coverage)
      *         + property tests for effectivePriority invariants
-     *
+
      * v0.7.5 — Trust & Verification (Trusted Types + fuzz + CI + ADRs)
      *
      * Patch notes vs v0.7.4:
@@ -99,6 +110,7 @@
         version: 8,
 
         maxCandidates: 750,
+        candidateTTL: 0, // 0=disabled, else ms — queued age > TTL → skipped ttl-expired
         maxObservationsInMemory: 800,
         maxRequests: 150,
         concurrency: 4,
@@ -1473,6 +1485,21 @@
                     candidate.nextAttemptAt &&
                     candidate.nextAttemptAt > now()
                 ) {
+                    continue;
+                }
+
+                if (
+                    CONFIG.candidateTTL > 0 &&
+                    candidate.createdAt &&
+                    now() - candidate.createdAt > CONFIG.candidateTTL
+                ) {
+                    this.markSkipped(candidate, 'ttl-expired');
+                    this.recordDiagnostic('candidate-ttl-expired', {
+                        id: candidate.id,
+                        target: candidate.target,
+                        age: now() - candidate.createdAt,
+                        ttl: CONFIG.candidateTTL
+                    });
                     continue;
                 }
 

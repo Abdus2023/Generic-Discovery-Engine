@@ -7,7 +7,7 @@
 - The transcript remains the provenance; ADRs are the normative summary.
 - New decisions get a new `docs/adr/NNN-title.md` and are linked here.
 
-## Decisions extracted (v0.7.6 — 6 ADRs)
+## Decisions extracted (v0.7.7 — 9 ADRs)
 
 | ADR | Title | Status | Transcript range | Code |
 |-----|-------|--------|------------------|------|
@@ -23,6 +23,9 @@
 | — | Fuzz harness (v0.7.5) | ✅ accepted | PERFORMANCE + SECURITY → v0.7.5 | `tests/fuzz-extract.test.js` |
 | — | rAF UI batching (v0.7.6) | ✅ accepted | PERFORMANCE S-04 → v0.7.6 | `updateUI/_doUpdateUI`, `_uiRaf` |
 | — | Coverage + invariants (v0.7.6) | ✅ accepted | VERIFICATION → v0.7.6 | `tests/property-priority.test.js`, `npm run coverage` |
+| [007](adr/007-candidate-ttl.md) | Candidate TTL (bounded freshness, sweep before sort) | ✅ accepted | Roadmap Phase 1 → v0.7.7 | `CONFIG.candidateTTL`, `claimNextCandidate` ttl-expired |
+| [008](adr/008-origin-throttle-invariants.md) | Origin throttle invariants (interval/concurrency/isolation) | ✅ accepted | ADR 003 → v0.7.7 invariants | `OriginController` mock, `CONFIG.origin` |
+| [009](adr/009-coverage-gates.md) | Coverage gates (85/75/80, c8 check-coverage) | ✅ accepted | VERIFICATION → v0.7.7 | `.c8rc.json`, `coverage:check` |
 
 ## Decisions still in transcript (not yet ADR-ified)
 
@@ -34,8 +37,8 @@
 ## Process
 1. ChatGPT proposes; user selects v0.2.0 as base.
 2. Each iteration adds one control-plane concern (claim-before-await, policy-before-acquisition, ledger-for-explainability).
-3. Verification (v0.7.1 audit) files P0/P1; patches landed v0.7.2/v0.7.3/v0.7.4/v0.7.5/v0.7.6.
+3. Verification (v0.7.1 audit) files P0/P1; patches landed v0.7.2/v0.7.3/v0.7.4/v0.7.5/v0.7.6/v0.7.7.
 
 ## Further splits
-- The 2.2 MB file also contains 12 full code fences. The runnable artifact is now `dist/generic-discovery-engine.user.js` (v0.7.6, 5,441 lines). The fences are retained for diff archaeology but are no longer the source of truth.
-- With 6 ADRs + rAF + coverage the control-plane split is considered **complete** for v0.7.x; remaining transcript is chat history, not architecture.
+- The 2.2 MB file also contains 12 full code fences. The runnable artifact is now `dist/generic-discovery-engine.user.js` (v0.7.7, 5,468 lines). The fences are retained for diff archaeology but are no longer the source of truth.
+- With 9 ADRs + rAF + coverage + TTL + gates the control-plane split is considered **complete** for v0.7.x; remaining transcript is chat history, not architecture.

@@ -7,7 +7,7 @@ New ADRs:
 2. Number sequentially (`004-…` next).
 3. Update `docs/DECISIONS.md` index.
 
-Current ADRs (v0.7.5 — 6 ADRs):
+Current ADRs (v0.7.7 — 9 ADRs):
 
 - `001-provider-pipeline.md` — 7 providers, ordered matching, `ProviderRegistry`.
 - `002-ledger.md` — 12 typed events, 5k FIFO, replayable `DecisionLedger`.
@@ -15,5 +15,8 @@ Current ADRs (v0.7.5 — 6 ADRs):
 - `004-fingerprint.md` — fnv1a32 1M sample, fingerprintIndex.
 - `005-mutation-batch.md` — seen Set, batch dedup.
 - `006-export-schema.md` — gde-export-v8.0, ledger + coverage.
+- `007-candidate-ttl.md` — candidateTTL 0/off, ttl-expired sweep before sort.
+- `008-origin-throttle-invariants.md` — interval / concurrency / isolation proofs.
+- `009-coverage-gates.md` — check-coverage true 85/75/80, coverage:check gate.
 
 Transcript provenance: `Continue Architecture Planning.md` (92,274 lines). Runnable artifact: `dist/generic-discovery-engine.user.js`.

@@ -14,13 +14,19 @@ jobs:
         with:
           node-version: 22
           cache: npm
-      - name: Install (no deps, but ensure lock)
-        run: npm install --package-lock-only --ignore-scripts 2>&1 | tail -n 20 || echo "no lock needed"
+      - name: Install deps (for c8 gate; no runtime deps otherwise)
+        run: npm install 2>&1 | tail -n 20
       - name: Syntax check (node --check)
         run: npm run check
+      - name: Lint (flat config, no warn)
+        run: npm run lint
       - name: Tests (node --test)
         run: npm test
       - name: Verify (check + test)
         run: npm run verify
-      - name: Coverage metrics (from export)
-        run: node -e "import fs from 'fs'; console.log('dist size', fs.statSync('dist/generic-discovery-engine.user.js').size, 'lines', fs.readFileSync('dist/generic-discovery-engine.user.js','utf8').split('\n').length)"
+      - name: Coverage gate (c8 85/75/80)
+        run: npm run coverage:check
+      - name: Coverage metrics (dist size + native)
+        run: |
+          node -e "import fs from 'fs'; console.log('dist size', fs.statSync('dist/generic-discovery-engine.user.js').size, 'lines', fs.readFileSync('dist/generic-discovery-engine.user.js','utf8').split('\n').length)"
+          npm run coverage 2>&1 | tail -n 20
