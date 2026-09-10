@@ -1,31 +1,51 @@
 # Canonical Claim Records
 
 Normative source: **[analysis.json](analysis.json)**, governed by
-**[analysis.schema.json](analysis.schema.json)** (JSON Schema draft 2020-12). The
-tables in this document are rendered from it by `tools/render-claims.mjs` — do not
-edit them by hand; edit the JSON and re-render. `tools/validate-analysis.mjs` runs
-the validation pipeline, and each stage is validated independently:
+**[analysis.schema.json](analysis.schema.json)** (JSON Schema draft 2020-12, sections
+185–197). The tables in this document are rendered from it by
+`tools/render-claims.mjs` — do not edit them by hand; edit the JSON and re-render.
+`tools/validate-analysis.mjs` runs the validation pipeline, and each stage is
+validated independently:
 
 ```
-STRUCTURAL SCHEMA          analysis.schema.json (draft 2020-12)
+STRUCTURAL SCHEMA          sections 185-197 (draft 2020-12)
       ↓
 CLAIM VALIDATION           C-001…C-043, CV-001…CV-020
       ↓
 EVIDENCE ANALYSIS          register resolution, CV-008, CV-010, C-031
       ↓
-AUTHORIZATION              AUTH-001…AUTH-020
+AUTHORIZATION              AC-001…AC-016 (+ AUTH-017…AUTH-020)
       ↓
-EXECUTION                  EV-001…EV-012
+EXECUTION                  EV-001…EV-012, section 200 transitions
       ↓
-POST-VERIFICATION          PV-001…PV-010
+EXECUTION VERIFICATION     EVV-001…EVV-009
       ↓
 SERIALIZATION              SER-001…SER-012
 ```
 
+## Two verification domains (section 168)
+
+"Verification" on its own is ambiguous, and the schema does not allow it. There
+are two different objects to verify, and they have different fields, different
+lifecycles and different vocabularies:
+
+| Object verified | Field | Vocabulary |
+| --- | --- | --- |
+| A claim — *is the proposition supported by the available evidence?* | `claim_verification.result` | `VERIFIED` · `PARTIALLY_VERIFIED` · `UNVERIFIED` · `CONTRADICTED` · `NOT_APPLICABLE` |
+| The repository *after* execution — *does the resulting state satisfy the required invariants?* | `execution_verification.state` + `execution_verification.result` | state: `PASSED`, `FAILED`, … · result: `CONFORMING`, `NON_CONFORMING`, … |
+
+```
+VERIFIED      belongs to claims.
+CONFORMING    belongs to execution verification.
+```
+
+They are not interchangeable, and neither is a substitute for `execution.state`
+(what actually happened) or for `check.result` (one invariant's outcome).
+
 ## Typed state model (canonical)
 
 Status is never a single word. Six independent fields describe every claim, each
-answering a different question, and none of them may substitute for another.
+answering a different question:
 
 | Field | Question it answers | Canonical values |
 | --- | --- | --- |
@@ -33,35 +53,32 @@ answering a different question, and none of them may substitute for another.
 | `implementation_state` | Is the behaviour named in the claim implemented? | `IMPLEMENTED` · `PARTIAL` · `NOT_IMPLEMENTED` · `NOT_APPLICABLE` · `UNKNOWN` |
 | `test_state` | Is that behaviour exercised? | `TESTED` · `PARTIALLY_TESTED` · `UNTESTED` · `NOT_APPLICABLE` · `UNKNOWN` |
 | `evidence_level` | How strong is the repository evidence? | `DIRECT` · `CORROBORATED` · `INDIRECT` · `ABSENT` · `INACCESSIBLE` |
-| `verification_result` | What did verification conclude? | `VERIFIED` · `PARTIALLY_VERIFIED` · `UNVERIFIED` · `CONTRADICTED` · `NOT_APPLICABLE` |
+| `claim_verification.result` | What did verification of *this claim* conclude? | `VERIFIED` · `PARTIALLY_VERIFIED` · `UNVERIFIED` · `CONTRADICTED` · `NOT_APPLICABLE` |
 | `confidence` | How strong is the evidential basis, graded? | `VERY_LOW` · `LOW` · `MEDIUM` · `HIGH` · `VERY_HIGH` |
 
-`confidence` is optional and is **not** a verdict: it grades evidential strength
-and never replaces `evidence_level` or `verification_result`. This repository
-assigns it by rule — `HIGH` only when direct evidence is joined by an executed
-test and verification did not return `UNVERIFIED`; `MEDIUM` for direct or
-corroborated evidence without execution, or for an inspected absence; `LOW` for
-indirect evidence; `VERY_LOW` for inaccessible scope. The confusing combination
-`HIGH` with `UNVERIFIED` is rejected by the validator.
+`confidence` is advisory: it grades evidential strength and never overrides
+`claim_verification.result`. This repository assigns it by rule — `HIGH` only when
+direct or corroborated evidence is joined by an executed test and verification did
+not return `UNVERIFIED`; `MEDIUM` for direct evidence without execution, an
+inspected absence, or any unverified claim; `LOW` for indirect evidence;
+`VERY_LOW` for inaccessible scope. The confusing combination `HIGH` with
+`UNVERIFIED` is rejected by the validator.
 
-The claim side is separate from both mutation and lifecycle. Mutation uses
-`authorization.state` (has authority been granted), `authorization.level.profile`
-(which policy profile is the ceiling), `capabilities` (which atomic permissions
-survive that ceiling) and `operations` (which execution-level operations those
-permissions imply). Lifecycle uses `execution.state` with a per-operation
-`result`, and `post_verification.state` with its own `result`. No field on one
-side may answer another side's question; the full model is in
-[scope-and-authorization.md](scope-and-authorization.md) §5.
+Deprecated field names — do not use them: `verification_result` (superseded by
+`claim_verification.result`), `post_verification` (superseded by
+`execution_verification`), `status`, and an unqualified `verification` object.
+`tools/verify.mjs` fails the build if any of them reappears, and the validator
+rejects `status` and `verification` as field names anywhere in the record.
 
 ```
 CLAIM
   │
-  ├── claim_kind              what kind of statement this is
-  ├── implementation_state    whether the named behaviour is implemented
-  ├── test_state              whether it is exercised
-  ├── evidence_level          how strong / available the evidence is
-  ├── verification_result     what verification concluded
-  └── confidence              how strong the evidential basis is, graded
+  ├── claim_kind                 what kind of statement this is
+  ├── implementation_state       whether the named behaviour is implemented
+  ├── test_state                 whether it is exercised
+  ├── evidence_level             how strong / available the evidence is
+  ├── claim_verification.result  what verification of the claim concluded
+  └── confidence                 how strong the evidential basis is, graded
 ```
 
 Combinations that are valid and must not be collapsed:
@@ -77,7 +94,7 @@ Combinations that are valid and must not be collapsed:
 Convention used throughout: `implementation_state` describes **the behaviour
 named in the claim**, not the truth of the claim. A guarantee that the evidence
 shows to fail is therefore `PARTIAL` or `NOT_IMPLEMENTED` with
-`verification_result: CONTRADICTED`.
+`claim_verification.result: CONTRADICTED`.
 
 ## What the rules forbid
 
@@ -89,14 +106,11 @@ shows to fail is therefore `PARTIAL` or `NOT_IMPLEMENTED` with
 | `CONTRADICTED` without conflicting evidence | `CV-008` | a contradiction is a relationship between evidence, not an adjective |
 | `IMPLEMENTED` without an implementation artifact | `CV-009` | a feature is not implemented because a document says so |
 | `NOT_IMPLEMENTED` resting on unreachable scope | `CV-010` | use `UNKNOWN` + `INACCESSIBLE` + `UNVERIFIED` instead |
-| `HYPOTHESIS` with an implementation state | `CV-011` | a hypothesis is not an implementation claim |
-| `NON_GOAL` with an implementation state | `CV-012` | an excluded capability is not an implementation claim |
+| `HYPOTHESIS` or `NON_GOAL` with an implementation state | `CV-011`, `CV-012` | a hypothesis and an excluded capability are not implementation claims |
 | `PLANNED` read as `IMPLEMENTED` | `CV-013` | the design series must never be read as shipped behaviour |
 | `TESTED` without execution evidence | `CV-014` | a test file alone proves availability, not testing |
 | `UNTESTED` read as `NOT_IMPLEMENTED` | `CV-015` | untested is not missing |
-| `IMPLEMENTED` read as `TESTED` | `CV-016` | implementation is not execution |
-| `TESTED` read as `VERIFIED` | `CV-017` | exercising a behaviour is not verifying a claim |
-| `VERIFIED` read as `IMPLEMENTED` | `CV-018` | a verified absence is still an absence |
+| `IMPLEMENTED` ⇏ `TESTED`, `TESTED` ⇏ `VERIFIED`, `VERIFIED` ⇏ `IMPLEMENTED` | `CV-016`…`CV-018` | each transition needs its own evidence |
 | `PARTIAL` read as `PARTIALLY_VERIFIED` | `CV-019` | partial implementation and partial verification are different dimensions |
 | `INACCESSIBLE` relabelled as `ABSENT` | `CV-020` | converting "could not inspect" into "not found" would fabricate a finding |
 | `NOT_IMPLEMENTED` + `TESTED` without an absence test | `C-093` | testing absence is recorded explicitly (`absence_test`) |
@@ -104,21 +118,21 @@ shows to fail is therefore `PARTIAL` or `NOT_IMPLEMENTED` with
 
 `CV-015`…`CV-019` are checked as independence properties rather than as
 prohibitions: the validator verifies that the observed combinations do not
-collapse into a single mapping (for example, that `IMPLEMENTED` claims do not all
-share one test state, and that `VERIFIED` claims span more than one implementation
-state). A rule that a dimension *does not imply* another cannot be checked by
-inspecting one record; what can be checked is that the record does not encode the
-implication.
+collapse into a single mapping. A rule that one dimension *does not imply*
+another cannot be checked by inspecting one record; what can be checked is that
+the record does not encode the implication.
 
-The authority and lifecycle sides have their own rule sets: `AUTH-001`…`AUTH-020`
-(state, profile, capability restriction, operation resolution, scope, change
-authorization), `EV-001`…`EV-012` (execution lifecycle) and `PV-001`…`PV-010`
-(post-verification lifecycle). The full model is in
+The authority and lifecycle sides have their own rule sets: `AC-001`…`AC-016`
+(authorization state, profile resolution, capability states, scope, change
+authorization), `EV-001`…`EV-012` (the execution lifecycle) and `EVV-001`…`EVV-009`
+(execution verification). Section 200 additionally constrains which lifecycle
+transitions are legal, and the validator checks that every recorded state is
+reachable in that graph. The full model is in
 [scope-and-authorization.md](scope-and-authorization.md) §5.
 
 ## Valid patterns actually used here
 
-| claim_kind | implementation_state | test_state | evidence_level | verification_result | Example |
+| claim_kind | implementation_state | test_state | evidence_level | claim_verification.result | Example |
 | --- | --- | --- | --- | --- | --- |
 | `CURRENT` | `IMPLEMENTED` | `TESTED` | `CORROBORATED` | `VERIFIED` | `CAND-CLAIM-001` |
 | `CURRENT` | `NOT_IMPLEMENTED` | `TESTED` | `DIRECT` | `CONTRADICTED` | `SCHED-CLAIM-004` (documentation/implementation contradiction — **not** normalised to `PLANNED`) |
@@ -131,27 +145,30 @@ authorization), `EV-001`…`EV-012` (execution lifecycle) and `PV-001`…`PV-010
 ## Lifecycle: what was authorized, executed and verified
 
 Claims describe the repository. The work done to this repository has its own
-lifecycles, and they are **not** claim fields:
+lifecycles, and they are **not** claim fields (sections 180–184):
 
 | Stage | Field | Values |
 | --- | --- | --- |
+| Authorization | `authorization.state` | `NOT_REQUESTED` · `REQUESTED` · `GRANTED` · `DENIED` · `REVOKED` · `EXPIRED` |
+| Capability | `capabilities.grants[].state` | `DECLARED` · `ENABLED` · `RESTRICTED` · `DENIED` · `REVOKED` · `EXPIRED` |
 | Execution lifecycle | `execution.state` | `NOT_STARTED` · `AUTHORIZATION_BLOCKED` · `READY` · `RUNNING` · `SUCCEEDED` · `PARTIALLY_SUCCEEDED` · `FAILED` · `CANCELLED` · `STOPPED` |
-| Per-operation result | `execution.operations[].result` | `NOT_ATTEMPTED` · `AUTHORIZATION_DENIED` · `SKIPPED` · `SUCCEEDED` · `FAILED` · `CANCELLED` · `BLOCKED` |
-| Post-verification lifecycle | `post_verification.state` | `NOT_REQUIRED` · `NOT_STARTED` · `READY` · `RUNNING` · `PASSED` · `PARTIALLY_PASSED` · `FAILED` · `BLOCKED` · `INCONCLUSIVE` |
-| Post-verification outcome | `post_verification.result` | `CONFORMING` · `PARTIALLY_CONFORMING` · `NON_CONFORMING` · `INCONCLUSIVE` · `NOT_APPLICABLE` |
-| Individual check | `post_verification.checks[].result` | `NOT_RUN` · `PASSED` · `FAILED` · `BLOCKED` · `INCONCLUSIVE` |
+| Per-operation | `execution.operations[]` | `authorization_decision` `ALLOWED`/`DENIED` + `result` `SUCCEEDED` · `FAILED` · `AUTHORIZATION_DENIED` · … |
+| Execution verification lifecycle | `execution_verification.state` | `NOT_REQUIRED` · `NOT_STARTED` · `READY` · `RUNNING` · `PASSED` · `PARTIALLY_PASSED` · `FAILED` · `BLOCKED` · `INCONCLUSIVE` |
+| Execution verification outcome | `execution_verification.result` | `CONFORMING` · `PARTIALLY_CONFORMING` · `NON_CONFORMING` · `INCONCLUSIVE` · `NOT_APPLICABLE` |
+| Individual check | `execution_verification.checks[].result` | `NOT_RUN` · `PASSED` · `FAILED` · `BLOCKED` · `INCONCLUSIVE` |
 
-`SUCCEEDED ≠ VERIFIED` and `FAILED ≠ UNVERIFIED`: execution and post-verification
-may disagree, and in this record they are different facts — 21 operations
-succeeded and eight independent checks conformed, which is why
-`execution.state: SUCCEEDED` and `post_verification.state: PASSED` are recorded
-separately rather than as one verdict.
+`SUCCEEDED ≠ PASSED` and `FAILED ≠ UNVERIFIED`: execution and execution
+verification may disagree, and in this record they are different facts — 21
+operations succeeded, all with an `ALLOWED` decision, and eight independent checks
+conformed, which is why `execution.state: SUCCEEDED` and
+`execution_verification.state: PASSED` are recorded separately rather than as one
+verdict (EVV-001).
 
 <!-- CLAIMS:BEGIN (generated from analysis.json — do not edit by hand) -->
 
 ### Current-system claims
 
-| Claim ID | Statement | claim_kind | implementation_state | test_state | evidence_level | verification_result | confidence | Evidence | Interpretation |
+| Claim ID | Statement | claim_kind | implementation_state | test_state | evidence_level | claim_verification.result | confidence | Evidence | Interpretation |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
 | `CAND-CLAIM-001` | Candidate identity is type:target, and inserting a duplicate merges into the existing candidate. | `CURRENT` | `IMPLEMENTED` | `TESTED` | `CORROBORATED` | `VERIFIED` | `HIGH` | [EVID:CODE-003] [EVID:CODE-007] [EVID:TEST-004] [EVID:TEST-005] | Identity is type-scoped: the same URL discovered as a different type is deliberately a second candidate. Limitation: Observed in the bundled harness: one browser profile and one simulated request log, not a production measurement. |
 | `CAND-CLAIM-002` | A candidate is a hypothesis, not an assertion that the target exists. | `CURRENT` | `IMPLEMENTED` | `UNTESTED` | `INDIRECT` | `PARTIALLY_VERIFIED` | `LOW` | [EVID:CODE-003] [EVID:DOC-003] | The implementation stores no existence assertion, but the hypothesis framing is design prose; the code cannot demonstrate a framing. test_state UNTESTED: no executed check asserts the hypothesis framing; the implementation shows the absence of an existence assertion, which is a code reading, not a test. Limitation: Indirect evidence supports the interpretation without establishing the claim directly. |
@@ -174,7 +191,7 @@ separately rather than as one verdict.
 
 ### Architecture-boundary claims
 
-| Claim ID | Statement | claim_kind | implementation_state | test_state | evidence_level | verification_result | confidence | Evidence | Interpretation |
+| Claim ID | Statement | claim_kind | implementation_state | test_state | evidence_level | claim_verification.result | confidence | Evidence | Interpretation |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
 | `ARCH-CLAIM-001` | Providers perform no I/O, do not enqueue candidates and own no policy. | `CURRENT` | `IMPLEMENTED` | `TESTED` | `CORROBORATED` | `VERIFIED` | `HIGH` | [EVID:CODE-014] [EVID:CODE-015] [EVID:TEST-002] | The strongest boundary in the prototype: the contract is matches() plus recognize(), with expansion owned by the engine. |
 | `ARCH-CLAIM-002` | Providers are protocol-independent. | `CURRENT` | `NOT_IMPLEMENTED` | `PARTIALLY_TESTED` | `DIRECT` | `**CONTRADICTED**` | `HIGH` | [EVID:CODE-013] [EVID:CODE-015] [EVID:SCOPE-003] [EVID:TEST-006] | Only recognition is an interface; acquisition is one hard-wired HTTP path. PARTIALLY_TESTED: provider matching is executed (TEST-006); the transport half of the claim is not tested. Limitation: The design intent and the implementation conflict; this record states the conflict and does not resolve it. |
@@ -189,7 +206,7 @@ separately rather than as one verdict.
 
 ### Scope and absence claims
 
-| Claim ID | Statement | claim_kind | implementation_state | test_state | evidence_level | verification_result | confidence | Evidence | Interpretation |
+| Claim ID | Statement | claim_kind | implementation_state | test_state | evidence_level | claim_verification.result | confidence | Evidence | Interpretation |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
 | `SCOPE-CLAIM-001` | The repository contains no DVB/RF implementation (spectrum, tuner, demodulator, FEC, transport stream, PSI/SI). | `CURRENT` | `NOT_IMPLEMENTED` | `NOT_APPLICABLE` | `ABSENT` | `VERIFIED` | `MEDIUM` | [EVID:SCOPE-001] [EVID:TEST-003] | Absence is asserted over a single implementation file read in full and scanned mechanically, so it is ABSENT (inspected, not found), not INACCESSIBLE. Limitation: Absence holds only for the inspected scope and revision recorded in AV-001. |
 | `SCOPE-CLAIM-002` | No v0.8+ design layer is implemented (capabilities, work items, evidence graph, leases, coverage, fencing). | `CURRENT` | `NOT_IMPLEMENTED` | `NOT_APPLICABLE` | `ABSENT` | `VERIFIED` | `MEDIUM` | [EVID:SCOPE-002] [EVID:TEST-003] [EVID:DOC-006] | The design series exists as prose only. Limitation: Absence holds only for the inspected scope and revision recorded in AV-002. |
@@ -200,7 +217,7 @@ separately rather than as one verdict.
 
 ### Plan, history and hypothesis claims
 
-| Claim ID | Statement | claim_kind | implementation_state | test_state | evidence_level | verification_result | confidence | Evidence | Interpretation |
+| Claim ID | Statement | claim_kind | implementation_state | test_state | evidence_level | claim_verification.result | confidence | Evidence | Interpretation |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
 | `PLAN-CLAIM-001` | Acquisition runtime, recognition runtime, candidate sources, domain/sessions, work items, evidence graph, identity, classification, coverage, absence, query planning, reconciliation, arbitration, cost ledger, transactional persistence and multi-context coordination are designed. | `PLANNED` | `NOT_IMPLEMENTED` | `NOT_APPLICABLE` | `DIRECT` | `VERIFIED` | `MEDIUM` | [EVID:DOC-006] [EVID:SCOPE-002] | The fact that these layers are planned is verified; their implementation is not implied. DIRECT evidence: the design documents are repository artifacts and are directly relevant to the claim that the layers are designed and unimplemented (§89). |
 | `PLAN-CLAIM-002` | Browser-profile coordination is not distributed consensus. | `SPECIFIED` | `NOT_IMPLEMENTED` | `NOT_APPLICABLE` | `DIRECT` | `VERIFIED` | `MEDIUM` | [EVID:DOC-005] | Stated as a boundary by the design series itself. DIRECT evidence: the design documents are repository artifacts and are directly relevant to the claim that the layers are designed and unimplemented (§89). |

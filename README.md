@@ -218,7 +218,7 @@ archive/
   Continue Architecture Planning.md   raw design conversation (non-normative)
 tools/
   verify.mjs                  static checks: artifact vs documentation, scope, governance
-  validate-analysis.mjs       pipeline: schema, CV-001–020, AUTH-001–020, EV/PV invariants, SER
+  validate-analysis.mjs       pipeline: schema, CV-001–020, AC-001–016, EV/EVV rules, SER
   render-claims.mjs           renders claims.md from analysis.json
   checks.mjs                  behaviour checks: dedup, providers, provenance, persistence
   simulate.mjs                headless harness that executes the shipped artifact
@@ -249,41 +249,53 @@ Results and the audit trail:
 | --- | --- |
 | [repository-analysis-2026-09-10.md](docs/analysis/repository-analysis-2026-09-10.md) | full review (18 sections) |
 | [evidence-register.md](docs/analysis/evidence-register.md) | the audit index: every `[EVID:…]` id with path and locator, `evidence_level` values, absence procedures, frozen artifact digest |
-| [claims.md](docs/analysis/claims.md) | 41 claim records rendered from [analysis.json](docs/analysis/analysis.json): `claim_kind` · `implementation_state` · `test_state` · `evidence_level` · `verification_result` |
-| [analysis.schema.json](docs/analysis/analysis.schema.json) | the normative machine-readable schema (JSON Schema draft 2020-12), including the level → operation policy the validator reads |
-| [authorization.yaml](docs/analysis/authorization.yaml) | the canonical authorization object in YAML — two capability-restricted grants; serialization identity with the record is checked (`SER-001`–`SER-012`) |
+| [claims.md](docs/analysis/claims.md) | 41 claim records rendered from [analysis.json](docs/analysis/analysis.json): `claim_kind` · `implementation_state` · `test_state` · `evidence_level` · `claim_verification.result` |
+| [analysis.schema.json](docs/analysis/analysis.schema.json) | the normative machine-readable schema (JSON Schema draft 2020-12), embedded level profiles and the capability catalogue the validator reads |
+| [authorization.yaml](docs/analysis/authorization.yaml) | the canonical authorization object in YAML — three capability-restricted grants; serialization identity with the record is checked (`SER-001`–`SER-012`) |
 | [scope-and-authorization.md](docs/analysis/scope-and-authorization.md) | scope boundary, six ownership roles, authorization contract, pre/post-execution checks |
-| [change-register-2026-09-10.md](docs/analysis/change-register-2026-09-10.md) | executed changes R-001…R-018; code changes R-101…R-112 (PLAN ONLY) |
+| [change-register-2026-09-10.md](docs/analysis/change-register-2026-09-10.md) | executed changes R-001…R-020; code changes R-101…R-112 (PLAN ONLY) |
 
-Status in this repository is never a single word. Five typed fields are reported
+Status in this repository is never a single word. Six typed fields are reported
 separately for every claim — `claim_kind`, `implementation_state`, `test_state`,
-`evidence_level`, `verification_result`. Repository mutation is a separate algebra:
-`authorization.state` (whether permission exists) is not `authorization.level`
-(which profile ceiling and which capabilities it carries), and neither is `execution.state` (what actually happened) or
-`post_verification.result` (what the independent re-run established). No field
-answers two questions, and no field is substituted for another.
+`evidence_level`, `claim_verification.result` and the advisory `confidence`.
+"Verification" alone is ambiguous and is not a field name: `claim_verification`
+answers whether a *claim* is supported, `execution_verification` answers whether
+the repository *after execution* satisfies its invariants, and `VERIFIED` and
+`CONFORMING` are not interchangeable. Repository mutation is a separate algebra:
+`authorization.state` (whether permission exists) is not
+`authorization.level.profile` (the reusable policy ceiling), `capability.state`
+(an atomic permission, with its own lifecycle) or `operation`; and none of them is
+`execution.state` (what actually happened). No field answers two questions, and no
+field is substituted for another.
 `tools/validate-analysis.mjs` enforces this against
 [docs/analysis/analysis.schema.json](docs/analysis/analysis.schema.json): claim
 rules `C-001`–`C-043` and the validation matrix `CV-001`–`CV-020`, evidence rules
-`C-030`–`C-034`, authorization rules `AUTH-001`–`AUTH-020`, execution invariants
-`EV-001`–`EV-012`, post-verification invariants `PV-001`–`PV-010`, serialization
-invariants `SER-001`–`SER-012` and invariants `I-001`–`I-016`.
+`C-030`–`C-034`, authorization rules `AC-001`–`AC-016` (plus `AUTH-017`–`AUTH-020`),
+execution invariants `EV-001`–`EV-012` with the lifecycle transitions of section
+200, execution-verification rules `EVV-001`–`EVV-009`, serialization invariants
+`SER-001`–`SER-012` and invariants `I-001`–`I-016`.
 
-Authorization is not one field. A **level profile** is a named policy ceiling; a
-**capability** is an atomic permission; an **operation** is what a capability
-permits against a resource class; **scope** limits paths; **change ids** limit
-which records may be touched. Inheritance exists only where the profile table
-declares `inherits`, and every grant may restrict its profile:
+Authorization is not one field. A **level profile** is a named, reusable policy
+ceiling (it is not authorization); a **capability** is an atomic permission with
+its own state (`DECLARED` ≠ `ENABLED`) and exactly one resource class, so
+`CAP-DOCUMENT-MODIFY` never means "modify anything"; an **operation** is the
+action a capability permits against that class; **scope** limits paths; **change
+ids** limit which records may be touched. Inheritance exists only where the
+profile table declares `inherits` — never from naming or ordering — and every
+grant may restrict its profile:
 
 ```
-EffectiveCapabilities = (Capabilities(level.profile) ∩ capabilities.allow) − capabilities.deny
+EffectiveCapabilities = (Capabilities(level.profile) ∩ capabilities.grants) − capabilities.denies
 ```
 
-`deny` always wins. The publication grant here is a `PUSH` profile whose inherited
-document, test and code capabilities are all denied — publication authority
-without content authority. Execution and post-verification are likewise separate
-lifecycles: `execution.state` is not `post_verification.state`, and neither
-implies the other (`SUCCEEDED ≠ VERIFIED`).
+`deny` always wins, and a restriction can never add a capability. The publication
+grant here is a `PUSH` profile whose 16 inherited document, test, code and
+architecture capabilities are all `DENIED` — publication authority without content
+authority; the one content-side exception (creating the extracted artifact file)
+is disclosed as its own `R-001`-scoped grant. Execution and execution verification
+are likewise separate lifecycles with different vocabularies: `execution.state` is
+not `execution_verification.state`, and neither implies the other
+(`SUCCEEDED ≠ PASSED`, `FAILED ≠ UNVERIFIED`).
 
 ## Roadmap
 

@@ -8,7 +8,7 @@ implementation_state: IMPLEMENTED for the recognition boundary and matching rule
 test_state:           TESTED (tools/verify.mjs contract checks; tools/checks.mjs case 3,
                       11 content-type/body combinations)
 evidence_level:       CORROBORATED (code + executed checks)
-verification_result:  VERIFIED for the boundary · CONTRADICTED for the claim that providers
+claim_verification:   VERIFIED for the boundary · CONTRADICTED for the claim that providers
                       are protocol-independent (acquisition is one HTTP path)
 ```
 

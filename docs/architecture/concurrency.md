@@ -7,7 +7,7 @@ implementation_state: IMPLEMENTED for the synchronous claim operation · PARTIAL
 test_state:           TESTED (tools/verify.mjs static checks; tools/simulate.mjs measures
                       concurrent owners and duplicate acquisitions)
 evidence_level:       CORROBORATED (static code + executed behaviour)
-verification_result:  VERIFIED for the claim operation · CONTRADICTED for the end-to-end
+claim_verification:   VERIFIED for the claim operation · CONTRADICTED for the end-to-end
                       single-owner invariant (D1) · UNVERIFIED for cross-context claims
 ```
 

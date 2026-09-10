@@ -52,11 +52,12 @@ function renderGroups() {
     if (rows.length === 0) continue;
     out.push(`### ${title}`);
     out.push('');
-    out.push('| Claim ID | Statement | claim_kind | implementation_state | test_state | evidence_level | verification_result | confidence | Evidence | Interpretation |');
+    out.push('| Claim ID | Statement | claim_kind | implementation_state | test_state | evidence_level | claim_verification.result | confidence | Evidence | Interpretation |');
     out.push('| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |');
     for (const c of rows) {
       const evidence = c.evidence.map(e => `[EVID:${typeof e === 'string' ? e : e.id}]`).join(' ');
-      const marker = c.verification_result === 'CONTRADICTED' ? '**CONTRADICTED**' : c.verification_result;
+      const result = c.claim_verification.result;
+      const marker = result === 'CONTRADICTED' ? '**CONTRADICTED**' : result;
       const interpretation = typeof c.interpretation === 'string'
         ? c.interpretation
         : [c.interpretation?.summary || '', ...(c.interpretation?.limitations || []).map(l => `Limitation: ${l}`)].join(' ');

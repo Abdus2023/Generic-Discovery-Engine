@@ -65,12 +65,12 @@ canonical choice is fixed here. Terms are marked:
 | "coverage", "completeness", "exhaustion" | **Coverage** (DESIGNED) / **Exhaustion** (OPEN) | The prototype has no coverage metric. Log lines saying "exhausted" describe an empty eligible set, not a proven complete search. |
 | "priority queue" | **Scheduler** | The prototype sorts a Map on demand; there is no heap or queue object. |
 | "status", "state" (one word for a claim) | **the six typed claim fields** | One word cannot say what kind of statement it is, whether it is implemented, whether it is tested, how strong the evidence is and what verification concluded. Use `claim_kind`, `implementation_state`, `test_state`, `evidence_level`, `verification_result`. |
-| "authorized: true" | **`authorization.state`** + **`authorization.level.profile`** + **`capabilities`** + **`operations`** + **`change_ids`** | Six separate questions: whether authority exists, which policy ceiling applies, which atomic permissions survive it, which operations they imply, which paths are in scope, and which change records are covered. `GRANTED` alone says nothing about capability; a profile alone proves nothing was granted. |
+| "authorized: true" | **`authorization.state`** + **`authorization.level.profile`** + **`capabilities.grants/denies`** + **`operations`** + **`change_ids`** | Six separate questions: whether authority exists, which policy ceiling applies, which atomic permissions survive it, which operations they imply, which paths are in scope, and which change records are covered. `GRANTED` alone says nothing about capability; a profile alone proves nothing was granted. |
 | "authorization_level", "allowed_operations", "authorized_change_ids" | **`level`**, **`operations`**, **`change_ids`** | Field names are canonical and identical in YAML and JSON; serialization may not invent variants or gain privileges (SER-002, SER-012). |
 | "a higher level includes the lower ones" | **`Capabilities(L)`** | Inheritance exists only where the profile table declares `inherits`; it is computed as a closure over those edges and never read off the ordering of names. `PUSH` inherits the content profiles only because the table says so — which is exactly why the publication grant denies the inherited content capabilities. |
-| "PASS / FAIL / clean" as a *claim* verdict | **`verification_result`** | A claim is `VERIFIED`/`UNVERIFIED`/…, never "passing". The post-verification *lifecycle* has its own words (`PASSED`, `FAILED`, `INCONCLUSIVE`) because it is a different question about a different object. |
+| "PASS / FAIL / clean" as a *claim* verdict | **`claim_verification.result`** | A claim is `VERIFIED`/`UNVERIFIED`/…, never "passing". The execution-verification *lifecycle* has its own words (`PASSED`, `FAILED`, `INCONCLUSIVE`) because it is a different question about a different object. |
 | "level A4 / A5" | **`CODE_REFACTOR` / `ARCHITECTURE_CHANGE`** | The A-numbered authorization names are retired; the canonical enum is `READ_ONLY` … `PUSH`. |
-| "PASS", "FAIL", "clean", "successful" (as a verification verdict) | **`verification_result`** | Verification concludes `VERIFIED`, `PARTIALLY_VERIFIED`, `UNVERIFIED`, `CONTRADICTED` or `NOT_APPLICABLE`. `SUCCEEDED` belongs to `execution.result` only, and never implies verification. |
+| "PASS", "FAIL", "clean", "successful" (as a verification verdict) | **`claim_verification.result`** | Claim verification concludes `VERIFIED`, `PARTIALLY_VERIFIED`, `UNVERIFIED`, `CONTRADICTED` or `NOT_APPLICABLE`. `SUCCEEDED` belongs to `execution.result` only, and never implies verification. |
 | "implemented" (as a verdict about a claim) | **`implementation_state`** | `IMPLEMENTED` describes the behaviour named in the claim; it is not a verification conclusion and not a test result. |
 
 ## State and authority vocabulary
@@ -85,26 +85,29 @@ Canonical model, enforced by `tools/validate-analysis.mjs` against
 | `implementation_state` | Is the named behaviour implemented? | `IMPLEMENTED`, `PARTIAL`, `NOT_IMPLEMENTED`, `NOT_APPLICABLE`, `UNKNOWN` |
 | `test_state` | Is it exercised? | `TESTED`, `PARTIALLY_TESTED`, `UNTESTED`, `NOT_APPLICABLE`, `UNKNOWN` |
 | `evidence_level` | How strong / available is the evidence? | `DIRECT`, `CORROBORATED`, `INDIRECT`, `ABSENT`, `INACCESSIBLE` |
-| `verification_result` | What did verification conclude? | `VERIFIED`, `PARTIALLY_VERIFIED`, `UNVERIFIED`, `CONTRADICTED`, `NOT_APPLICABLE` |
+| `claim_verification.result` | What did verification of *this claim* conclude? | `VERIFIED`, `PARTIALLY_VERIFIED`, `UNVERIFIED`, `CONTRADICTED`, `NOT_APPLICABLE` |
 | `confidence` | How strong is the evidential basis, graded? (never a verdict) | `VERY_LOW`, `LOW`, `MEDIUM`, `HIGH`, `VERY_HIGH` |
 | `authorization.state` | Has mutation authority been granted? | `NOT_REQUESTED`, `REQUESTED`, `DENIED`, `GRANTED`, `REVOKED`, `EXPIRED` |
 | `authorization.level.profile` | Which named policy ceiling applies? (not an authority) | `READ_ONLY`, `ANALYSIS_ONLY`, `DOC_REFACTOR`, `TEST_REFACTOR`, `CODE_REFACTOR`, `ARCHITECTURE_CHANGE`, `COMMIT`, `PUSH` |
-| `authorization.capabilities` | Which atomic permissions survive that ceiling? | `REPOSITORY_READ`, `ANALYSIS_EXECUTE`, `PROPOSAL_CREATE`, `DOCUMENT_*`, `TEST_*`, `CODE_*`, `ARCHITECTURE_MODIFY`, `COMMIT_CREATE`, `PUSH_EXECUTE` |
+| `authorization.capabilities` | Which atomic permissions survive that ceiling, with what state and constraints? | capability objects — `CAP-REPOSITORY-READ|ANALYZE|PROPOSE`, `CAP-DOCUMENT-*`, `CAP-TEST-*`, `CAP-SOURCE-*`, `CAP-ARCHITECTURE-MODIFY`, `CAP-COMMIT-CREATE`, `CAP-REMOTE-PUSH` — each `DECLARED`, `ENABLED`, `RESTRICTED`, `DENIED`, `REVOKED` or `EXPIRED` | engine-defined: `capabilities` + `capability.state` |DE_*`, `ARCHITECTURE_MODIFY`, `COMMIT_CREATE`, `PUSH_EXECUTE` |
 | `authorization.operations` | Which execution-level operations do they imply here? | `READ`, `ANALYZE`, `PROPOSE`, `CREATE`, `MODIFY`, `RENAME`, `MOVE`, `DELETE`, `COMMIT`, `PUSH` inside `allow` / `deny` |
 | `authorization.scope` | Which paths are in play? | `scope.paths.include` / `scope.paths.exclude` |
 | `execution.state` | What is the lifecycle of the execution? | `NOT_STARTED`, `AUTHORIZATION_BLOCKED`, `READY`, `RUNNING`, `SUCCEEDED`, `PARTIALLY_SUCCEEDED`, `FAILED`, `CANCELLED`, `STOPPED` |
 | `execution.operations[].result` | What happened to this one operation? | `NOT_ATTEMPTED`, `AUTHORIZATION_DENIED`, `SKIPPED`, `SUCCEEDED`, `FAILED`, `CANCELLED`, `BLOCKED` |
-| `post_verification.state` | What is the lifecycle of the independent re-run? | `NOT_REQUIRED`, `NOT_STARTED`, `READY`, `RUNNING`, `PASSED`, `PARTIALLY_PASSED`, `FAILED`, `BLOCKED`, `INCONCLUSIVE` |
-| `post_verification.result` | Did the result conform to the contract? | `CONFORMING`, `PARTIALLY_CONFORMING`, `NON_CONFORMING`, `INCONCLUSIVE`, `NOT_APPLICABLE` |
-| `post_verification.checks[].result` | How did one check end? | `NOT_RUN`, `PASSED`, `FAILED`, `BLOCKED`, `INCONCLUSIVE` |
+| `execution_verification.state` | What is the lifecycle of the independent re-run? | `NOT_REQUIRED`, `NOT_STARTED`, `READY`, `RUNNING`, `PASSED`, `PARTIALLY_PASSED`, `FAILED`, `BLOCKED`, `INCONCLUSIVE` |
+| `execution_verification.result` | Did the resulting repository conform to the contract? | `CONFORMING`, `PARTIALLY_CONFORMING`, `NON_CONFORMING`, `INCONCLUSIVE`, `NOT_APPLICABLE` |
+| `execution_verification.checks[].result` | How did one invariant check end? | `NOT_RUN`, `PASSED`, `FAILED`, `BLOCKED`, `INCONCLUSIVE` |
 | `access_level` | How much of the repository could be inspected? | `FULL`, `PARTIAL`, `DOCUMENT_ONLY`, `SEARCH_ONLY`, `NONE` |
 
 Terms that must not be confused: **`ABSENT`** (inspected, not found) is not
 **`INACCESSIBLE`** (could not inspect); **`TESTED`** is not **`IMPLEMENTED`**;
 **`PLANNED`** is not **`MISSING`**; **`DOCUMENTED`** is not **`IMPLEMENTED`**;
 **`ANALOGY`** is not **`IMPLEMENTATION`**; **`GRANTED`** is not **a capability**;
+**`DECLARED`** is not **`ENABLED`**; **`VERIFIED`** (a claim) is not **`CONFORMING`**
+(an execution verification); **`REVOKED`** or **`EXPIRED`** capabilities authorize
+nothing;
 **a profile** is not **an authority**; **`SUCCEEDED`** (execution) is not
-**`PASSED`** (post-verification); **`confidence`** is not **`verification_result`**.
+**`PASSED`** (execution verification); **`confidence`** is not **`claim_verification.result`**.
 
 ## Candidate lifecycle vocabulary
 

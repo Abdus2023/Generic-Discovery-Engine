@@ -6,7 +6,7 @@ implementation_state: IMPLEMENTED for identity, lifecycle and bounds · PARTIAL 
                       in-flight ownership window (D1) and terminal failure semantics (D3)
 test_state:           TESTED (tools/checks.mjs cases 1–2 and 5; tools/simulate.mjs for D1/D3)
 evidence_level:       CORROBORATED (code + executed checks)
-verification_result:  VERIFIED for identity, lifecycle vocabulary and bounds ·
+claim_verification:   VERIFIED for identity, lifecycle vocabulary and bounds ·
                       CONTRADICTED for the end-to-end single-owner invariant (D1)
 ```
 

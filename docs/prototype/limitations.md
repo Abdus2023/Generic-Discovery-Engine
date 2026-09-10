@@ -7,7 +7,7 @@ implementation_state: NOT_IMPLEMENTED for every protection listed as absent · P
 test_state:           TESTED (tools/simulate.mjs reproduces D1, D2, D4, D9; tools/verify.mjs
                       proves D3, D7, D8 statically)
 evidence_level:       CORROBORATED (static analysis + executed checks)
-verification_result:  VERIFIED for D1, D2, D3, D7, D8 · PARTIALLY_VERIFIED for D5, D6, D9 and
+claim_verification:   VERIFIED for D1, D2, D3, D7, D8 · PARTIALLY_VERIFIED for D5, D6, D9 and
                       for ARGUMENT entries · UNVERIFIED for OPEN entries
 ```
 

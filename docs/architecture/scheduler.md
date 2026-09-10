@@ -8,7 +8,7 @@ implementation_state: IMPLEMENTED for claim selection, policy and budget · PART
 test_state:           TESTED (tools/simulate.mjs measures the pool, retry and quiescence
                       behaviour)
 evidence_level:       DIRECT (code) · CORROBORATED for the pool defects
-verification_result:  VERIFIED for claiming and budgeting · CONTRADICTED for guaranteed
+claim_verification:   VERIFIED for claiming and budgeting · CONTRADICTED for guaranteed
                       concurrency, terminal failure and adaptive control ·
                       PARTIALLY_VERIFIED for termination
 ```

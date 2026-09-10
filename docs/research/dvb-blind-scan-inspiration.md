@@ -5,7 +5,7 @@ claim_kind:           NON_GOAL for the physical layer · CURRENT for the analogy
 implementation_state: NOT_IMPLEMENTED (no DVB/RF code exists in the inspected scope)
 test_state:           NOT_APPLICABLE
 evidence_level:       ABSENT (inspected, not found) · INDIRECT for the analogy's origin
-verification_result:  VERIFIED as absent for DVB behaviour; the analogy itself is reasoning,
+claim_verification:   VERIFIED as absent for DVB behaviour; the analogy itself is reasoning,
                       not evidence
 ```
 

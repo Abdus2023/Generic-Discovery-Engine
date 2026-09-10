@@ -8,7 +8,7 @@ The tiers used below map onto the canonical status dimensions as follows; the
 tiers are shorthand for readers, and the claim records in
 [../analysis/claims.md](../analysis/claims.md) carry the full status.
 
-| Tier | claim_kind | implementation_state | test_state | evidence_level | verification_result |
+| Tier | claim_kind | implementation_state | test_state | evidence_level | claim_verification.result |
 | --- | --- | --- | --- | --- | --- |
 | Implemented | `CURRENT` | `IMPLEMENTED` | `TESTED` | `DIRECT` or `CORROBORATED` | `VERIFIED` |
 | Partially implemented | `CURRENT` | `PARTIAL` | `TESTED` or `PARTIALLY_TESTED` | `DIRECT` or `CORROBORATED` | `PARTIALLY_VERIFIED`, or `CONTRADICTED` for the named limitation |

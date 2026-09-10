@@ -7,7 +7,7 @@ implementation_state: IMPLEMENTED for stage contracts and expansion ownership ·
 test_state:           TESTED (contracts and boundaries are covered by tools/verify.mjs and
                       tools/checks.mjs)
 evidence_level:       CORROBORATED (code + executed checks)
-verification_result:  VERIFIED for stage contracts · PARTIALLY_VERIFIED for the scheduler and
+claim_verification:   VERIFIED for stage contracts · PARTIALLY_VERIFIED for the scheduler and
                       acquisition stages, where defects D1–D4 are recorded in
                       ../prototype/limitations.md
 ```

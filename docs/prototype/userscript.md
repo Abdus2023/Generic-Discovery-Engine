@@ -7,7 +7,7 @@ implementation_state: IMPLEMENTED (this document describes the artifact's struct
 test_state:           TESTED (structure and behaviour exercised by tools/verify.mjs,
                       tools/checks.mjs and tools/simulate.mjs)
 evidence_level:       DIRECT (the artifact itself)
-verification_result:  VERIFIED for structure, version, configuration, components and export
+claim_verification:   VERIFIED for structure, version, configuration, components and export
                       schema; behaviour-level verdicts live in ../analysis/claims.md
 ```
 

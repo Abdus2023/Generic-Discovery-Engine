@@ -7,7 +7,7 @@ implementation_state: IMPLEMENTED for candidate/observation/discovery linkage an
                       evidence layer
 test_state:           TESTED (tools/checks.mjs case 4 reconstructs the chain)
 evidence_level:       CORROBORATED (code + executed reconstruction)
-verification_result:  VERIFIED for linkage · CONTRADICTED for content identity ·
+claim_verification:   VERIFIED for linkage · CONTRADICTED for content identity ·
                       UNVERIFIED for observation immutability
 ```
 

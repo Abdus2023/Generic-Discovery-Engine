@@ -387,7 +387,7 @@ else fail('no later-design layers present', futureHits.join(', '));
     fail('canonical analysis record exists', 'docs/analysis/analysis.json missing');
   } else {
     const record = JSON.parse(fs.readFileSync(recordPath, 'utf8'));
-    const fiveFields = ['claim_kind', 'implementation_state', 'test_state', 'evidence_level', 'verification_result'];
+    const fiveFields = ['claim_kind', 'implementation_state', 'test_state', 'evidence_level', 'claim_verification'];
     const missing = [];
     for (const claim of record.claims) {
       for (const field of fiveFields) if (!(field in claim)) missing.push(`${claim.id}.${field}`);
@@ -400,9 +400,12 @@ else fail('no later-design layers present', futureHits.join(', '));
     }
 
     const collapsed = record.claims.filter(c => ['IMPLEMENTED', 'TESTED', 'DOCUMENTED', 'MISSING', 'TRUE', 'FALSE']
-      .includes(c.verification_result));
-    if (collapsed.length === 0) pass('verification_result never carries a non-verification value');
-    else fail('verification_result never carries a non-verification value', collapsed.map(c => c.id).join(', '));
+      .includes(c.claim_verification?.result));
+    if (collapsed.length === 0) pass('claim_verification.result never carries a non-verification value');
+    else fail('claim_verification.result never carries a non-verification value', collapsed.map(c => c.id).join(', '));
+    const legacy = record.claims.filter(c => 'verification_result' in c || 'result' === undefined && 'verification' in c);
+    if (legacy.length === 0) pass('no claim uses a legacy or unqualified verification field');
+    else fail('no claim uses a legacy or unqualified verification field', `${legacy.length} claim(s)`);
 
     const exec = record.execution.state;
     if (['NOT_STARTED', 'AUTHORIZATION_BLOCKED', 'READY', 'RUNNING', 'SUCCEEDED', 'PARTIALLY_SUCCEEDED',
@@ -442,10 +445,10 @@ else fail('no later-design layers present', futureHits.join(', '));
   const record = JSON.parse(fs.readFileSync(path.join(ROOT, 'docs', 'analysis', 'analysis.json'), 'utf8'));
   const schema = JSON.parse(fs.readFileSync(schemaPath, 'utf8'));
   const auth = record.authorization || {};
-  const STATES = ['NOT_REQUESTED', 'REQUESTED', 'DENIED', 'GRANTED', 'REVOKED', 'EXPIRED'];
+  const STATES = ['NOT_REQUESTED', 'REQUESTED', 'GRANTED', 'DENIED', 'REVOKED', 'EXPIRED'];
   const PROFILES = Object.keys(schema.level_profiles);
-  const CAP_OPS = schema.capability_operations;
   const grants = [auth, ...(record.authorization_grants || [])];
+  const registry = new Map((record.capabilities || []).map(c => [c.id, c]));
 
   if (STATES.includes(auth.state)) pass('authorization state uses the authorization enum', auth.state);
   else fail('authorization state uses the authorization enum', String(auth.state));
@@ -463,8 +466,7 @@ else fail('no later-design layers present', futureHits.join(', '));
   if (!(auth.state === 'GRANTED' && !auth.level?.profile)) pass('a grant states its level separately from its state');
   else fail('a grant states its level separately from its state');
 
-  /* Capabilities(L) = Own(L) ∪ Capabilities(parents); inheritance is declared,
-     never inferred from the textual ordering of profile names (sections 148-150). */
+  /* section 178: ProfileCapabilitySet over declared inheritance edges */
   const closure = (profile, path_ = []) => {
     if (path_.includes(profile)) throw new Error('inheritance cycle: ' + [...path_, profile].join(' -> '));
     const node = schema.level_profiles[profile];
@@ -472,16 +474,15 @@ else fail('no later-design layers present', futureHits.join(', '));
     for (const parent of node.inherits || []) for (const cap of closure(parent, [...path_, profile])) out.add(cap);
     return out;
   };
+  const AUTHORIZING = ['ENABLED', 'RESTRICTED'];
   const effective = grant => {
     const ceiling = closure(grant.level.profile);
-    const allow = grant.capabilities?.allow || [...ceiling];
-    const keep = new Set((grant.capabilities?.mode === 'INHERIT' ? [...allow] : allow.filter(c => ceiling.has(c))));
-    for (const cap of grant.capabilities?.deny || []) keep.delete(cap);
-    return keep;
+    const granted = (grant.capabilities?.grants || []).filter(c => AUTHORIZING.includes(c.state) && ceiling.has(c.id));
+    const denied = new Set((grant.capabilities?.denies || []).map(c => c.id));
+    return granted.filter(c => !denied.has(c.id));
   };
-  const opsOf = caps => new Set([...caps].map(c => CAP_OPS[c]?.operation).filter(Boolean));
   const permitted = grant => {
-    const implied = opsOf(effective(grant));
+    const implied = new Set(effective(grant).flatMap(c => c.operations || []));
     const allow = grant.operations?.allow ? grant.operations.allow.filter(op => implied.has(op)) : [...implied];
     const kept = new Set(allow);
     for (const op of grant.operations?.deny || []) kept.delete(op);
@@ -489,22 +490,37 @@ else fail('no later-design layers present', futureHits.join(', '));
   };
 
   {
-    const escalation = grants.flatMap(g => (g.capabilities?.allow || [])
-      .filter(c => !closure(g.level.profile).has(c)).map(c => `${g.level.profile}:${c}`));
-    if (escalation.length === 0) pass('no capability is assumed: allow never exceeds the profile', grants.map(g => g.level.profile).join(', '));
-    else fail('no capability is assumed: allow never exceeds the profile', escalation.join(', '));
+    const dangling = [...closure('PUSH')].concat(grants.flatMap(g => (g.capabilities?.grants || []).map(c => c.id)))
+      .filter(id => !registry.has(id));
+    if (dangling.length === 0) pass('every capability id resolves in the embedded catalogue',
+      `${registry.size} catalogue entries, ${[...closure('PUSH')].length} reachable from PUSH`);
+    else fail('every capability id resolves in the embedded catalogue', [...new Set(dangling)].join(', '));
 
-    const leaked = (record.governance?.withheld_capabilities || []).filter(c => grants.some(g => effective(g).has(c)));
+    const declaredOnly = [...registry.values()].filter(c => c.state === 'DECLARED').length;
+    const escalation = grants.flatMap(g => (g.capabilities?.grants || [])
+      .filter(c => !closure(g.level.profile).has(c.id)).map(c => `${g.level.profile}:${c.id}`));
+    if (escalation.length === 0) {
+      pass('no capability is assumed: grants never exceed the profile closure',
+        `${registry.size} declared (DECLARED), ${grants.map(g => g.level.profile + '→' + effective(g).length).join(', ')}`);
+    } else {
+      fail('no capability is assumed: grants never exceed the profile closure', escalation.join(', '));
+    }
+    if (declaredOnly === registry.size) pass('catalogue capabilities are DECLARED, not ENABLED', 'AC-005');
+    else fail('catalogue capabilities are DECLARED, not ENABLED', `${declaredOnly}/${registry.size}`);
+
+    const leaked = (record.governance?.withheld_capabilities || [])
+      .filter(id => grants.some(g => effective(g).some(c => c.id === id)));
     if (leaked.length === 0) pass('withheld capability classes are unreachable through every grant',
       `${(record.governance?.withheld_capabilities || []).length} withheld`);
     else fail('withheld capability classes are unreachable through every grant', leaked.join(', '));
 
     const uncovered = record.execution.operations
-      .filter(o => o.result === 'SUCCEEDED' && !grants.some(g => permitted(g).has(o.operation)))
-      .map(o => `${o.id}:${o.operation}`);
-    if (uncovered.length === 0) pass('executed operations are covered by the declared grants',
+      .filter(o => o.result === 'SUCCEEDED' && !grants.some(g => permitted(g).has(o.operation) &&
+        effective(g).some(c => c.resource_class === o.target.resource_class)))
+      .map(o => `${o.id}:${o.operation}/${o.target.resource_class}`);
+    if (uncovered.length === 0) pass('every executed operation is covered by a capability',
       `${record.execution.operations.length} operations across ${grants.length} grant(s)`);
-    else fail('executed operations are covered by the declared grants', uncovered.join(', '));
+    else fail('every executed operation is covered by a capability', uncovered.join(', '));
   }
 
   /* scope.paths must describe the paths the change set actually touched */
@@ -526,23 +542,26 @@ else fail('no later-design layers present', futureHits.join(', '));
     }
   }
 
-  /* execution and post-verification are separate lifecycles with their own vocabularies */
+  /* section 168: claim verification and execution verification are different domains */
   {
     const EXEC = schema.$defs.execution.properties.state.enum;
-    const PV = schema.$defs.post_verification.properties.state.enum;
-    const PV_RESULT = schema.$defs.post_verification.properties.result.enum;
+    const EV_STATE = schema.$defs.execution_verification.properties.state.enum;
+    const EV_RESULT = schema.$defs.execution_verification.properties.result.enum;
     const okExec = EXEC.includes(record.execution.state) && !('result' in record.execution);
-    const okPv = PV.includes(record.post_verification.state) && PV_RESULT.includes(record.post_verification.result);
-    if (okExec && okPv) {
-      pass('execution and post-verification use separate lifecycles',
-        `execution ${record.execution.state}; post-verification ${record.post_verification.state}/${record.post_verification.result}`);
+    const okEv = EV_STATE.includes(record.execution_verification?.state) && EV_RESULT.includes(record.execution_verification?.result);
+    if (okExec && okEv) {
+      pass('execution verification is its own lifecycle, separate from execution',
+        `execution ${record.execution.state}; execution_verification ${record.execution_verification.state}/${record.execution_verification.result}`);
     } else {
-      fail('execution and post-verification use separate lifecycles', `${record.execution.state} / ${record.post_verification.state}`);
+      fail('execution verification is its own lifecycle, separate from execution', `${record.execution.state} / ${record.execution_verification?.state}`);
     }
 
-    const mixed = record.claims.filter(c => ['PASSED', 'CONFORMING', 'SUCCEEDED'].includes(c.verification_result));
-    if (mixed.length === 0) pass('claim verification_result never borrows execution or verification lifecycle values');
-    else fail('claim verification_result never borrows execution or verification lifecycle values', mixed.map(c => c.id).join(', '));
+    const mixed = record.claims.filter(c => ['PASSED', 'CONFORMING', 'SUCCEEDED'].includes(c.claim_verification?.result));
+    if (mixed.length === 0) pass('claim verification never borrows execution or verification lifecycle values');
+    else fail('claim verification never borrows execution or verification lifecycle values', mixed.map(c => c.id).join(', '));
+
+    if (record.execution_verification?.mutations?.length === 0) pass('execution verification modified nothing', 'EVV-008');
+    else fail('execution verification modified nothing');
   }
 
   const flatEvidence = record.claims.flatMap(c => c.evidence).filter(e => typeof e === 'string');
@@ -577,7 +596,7 @@ else fail('no later-design layers present', futureHits.join(', '));
     const full = path.join(ROOT, rel);
     if (!fs.existsSync(full)) { undeclared.push(`${rel} (missing)`); continue; }
     const text = fs.readFileSync(full, 'utf8');
-    if (!/claim_kind/.test(text) || !/verification_result/.test(text)) undeclared.push(rel);
+    if (!/claim_kind/.test(text) || !/claim_verification/.test(text)) undeclared.push(rel);
   }
   if (undeclared.length === 0) {
     pass('every behaviour document declares its typed status fields', `${behaviourDocs.length} documents`);

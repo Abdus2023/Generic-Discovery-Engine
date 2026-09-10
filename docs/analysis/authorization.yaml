@@ -2,16 +2,16 @@
 #
 # Serialization is not allowed to change semantics: this file and the
 # `authorization` / `authorization_grants` fields of analysis.json must
-# deserialize to the same logical object (invariants SER-001…SER-012, checked
-# by tools/validate-analysis.mjs). The body below is generated from the record.
+# deserialize to the same logical object (invariants SER-001…SER-012, checked by
+# tools/validate-analysis.mjs). The body below is generated from the record.
 #
 # Field names are canonical. Do not introduce variants such as
 # authorization_level, auth_level, permission_level, allowed_operations,
 # authorized_operations or authorized_change_ids.
 #
-# Section 167: authorization.state ≠ authorization.level.profile ≠ capability
-# ≠ operation ≠ scope ≠ change authorization. Sections 152/153:
-# EffectiveCapabilities = (Capabilities(profile) ∩ allow) − deny, and deny wins.
+# Sections 177-179: state ≠ level.profile ≠ capability (an object with its own
+# state and resource class) ≠ operation ≠ scope ≠ change authorization.
+# EffectiveCapabilities = (ProfileCapabilities ∩ grants) − denies, deny wins.
 
 authorization:
   state: GRANTED
@@ -19,16 +19,72 @@ authorization:
     profile: DOC_REFACTOR
   capabilities:
     mode: RESTRICT
-    allow:
-      - REPOSITORY_READ
-      - ANALYSIS_EXECUTE
-      - PROPOSAL_CREATE
-      - DOCUMENT_CREATE
-      - DOCUMENT_MODIFY
-      - DOCUMENT_RENAME
-      - DOCUMENT_MOVE
-    deny:
-      - DOCUMENT_DELETE
+    grants:
+      - id: CAP-REPOSITORY-READ
+        state: ENABLED
+        resource_class: REPOSITORY
+        operations:
+          - READ
+      - id: CAP-REPOSITORY-ANALYZE
+        state: ENABLED
+        resource_class: REPOSITORY
+        operations:
+          - ANALYZE
+      - id: CAP-REPOSITORY-PROPOSE
+        state: ENABLED
+        resource_class: REPOSITORY
+        operations:
+          - PROPOSE
+      - id: CAP-DOCUMENT-CREATE
+        state: RESTRICTED
+        resource_class: DOCUMENT
+        operations:
+          - CREATE
+        constraints:
+          paths:
+            include:
+              - docs/
+              - tools/
+            exclude: []
+      - id: CAP-DOCUMENT-MODIFY
+        state: RESTRICTED
+        resource_class: DOCUMENT
+        operations:
+          - MODIFY
+        constraints:
+          paths:
+            include:
+              - README.md
+              - docs/
+              - tools/
+            exclude: []
+      - id: CAP-DOCUMENT-RENAME
+        state: RESTRICTED
+        resource_class: DOCUMENT
+        operations:
+          - RENAME
+        constraints:
+          paths:
+            include:
+              - archive/
+            exclude: []
+      - id: CAP-DOCUMENT-MOVE
+        state: RESTRICTED
+        resource_class: DOCUMENT
+        operations:
+          - MOVE
+        constraints:
+          paths:
+            include:
+              - docs/roadmap/
+              - archive/
+            exclude: []
+    denies:
+      - id: CAP-DOCUMENT-DELETE
+        state: DENIED
+        resource_class: DOCUMENT
+        operations:
+          - DELETE
   operations:
     allow:
       - READ
@@ -69,6 +125,7 @@ authorization:
     - R-017
     - R-018
     - R-019
+    - R-020
   authority:
     type: USER
     identifier: Abdus2023 (repository owner), delegating through the standing session instruction
@@ -80,32 +137,158 @@ authorization:
 authorization_grants:
   - state: GRANTED
     level:
+      profile: CODE_REFACTOR
+    capabilities:
+      mode: RESTRICT
+      grants:
+        - id: CAP-SOURCE-CREATE
+          state: RESTRICTED
+          resource_class: SOURCE
+          operations:
+            - CREATE
+          constraints:
+            paths:
+              include:
+                - prototype/
+              exclude: []
+      denies: []
+    operations:
+      allow:
+        - CREATE
+      deny:
+        - MODIFY
+        - RENAME
+        - MOVE
+        - DELETE
+        - COMMIT
+        - PUSH
+    scope:
+      paths:
+        include:
+          - prototype/
+        exclude: []
+    change_ids:
+      - R-001
+    authority:
+      type: USER
+      identifier: Abdus2023 (repository owner), delegating through the standing session instruction
+    target:
+      repository: Abdus2023/Generic-Discovery-Engine
+      revision: "cc8df7357c2dbfe9d149747743e2f5e9ac9c0178 (work branch: arena/01a08d14-generic-discovery-engine)"
+    granted_at: 2026-09-10
+    expires_at: null
+  - state: GRANTED
+    level:
       profile: PUSH
     capabilities:
       mode: RESTRICT
-      allow:
-        - REPOSITORY_READ
-        - ANALYSIS_EXECUTE
-        - PROPOSAL_CREATE
-        - COMMIT_CREATE
-        - PUSH_EXECUTE
-      deny:
-        - DOCUMENT_CREATE
-        - DOCUMENT_MODIFY
-        - DOCUMENT_RENAME
-        - DOCUMENT_MOVE
-        - DOCUMENT_DELETE
-        - TEST_CREATE
-        - TEST_MODIFY
-        - TEST_RENAME
-        - TEST_MOVE
-        - TEST_DELETE
-        - CODE_CREATE
-        - CODE_MODIFY
-        - CODE_RENAME
-        - CODE_MOVE
-        - CODE_DELETE
-        - ARCHITECTURE_MODIFY
+      grants:
+        - id: CAP-REPOSITORY-READ
+          state: ENABLED
+          resource_class: REPOSITORY
+          operations:
+            - READ
+        - id: CAP-REPOSITORY-ANALYZE
+          state: ENABLED
+          resource_class: REPOSITORY
+          operations:
+            - ANALYZE
+        - id: CAP-REPOSITORY-PROPOSE
+          state: ENABLED
+          resource_class: REPOSITORY
+          operations:
+            - PROPOSE
+        - id: CAP-COMMIT-CREATE
+          state: ENABLED
+          resource_class: COMMIT
+          operations:
+            - COMMIT
+        - id: CAP-REMOTE-PUSH
+          state: ENABLED
+          resource_class: REMOTE
+          operations:
+            - PUSH
+      denies:
+        - id: CAP-DOCUMENT-CREATE
+          state: DENIED
+          resource_class: DOCUMENT
+          operations:
+            - CREATE
+        - id: CAP-DOCUMENT-MODIFY
+          state: DENIED
+          resource_class: DOCUMENT
+          operations:
+            - MODIFY
+        - id: CAP-DOCUMENT-RENAME
+          state: DENIED
+          resource_class: DOCUMENT
+          operations:
+            - RENAME
+        - id: CAP-DOCUMENT-MOVE
+          state: DENIED
+          resource_class: DOCUMENT
+          operations:
+            - MOVE
+        - id: CAP-DOCUMENT-DELETE
+          state: DENIED
+          resource_class: DOCUMENT
+          operations:
+            - DELETE
+        - id: CAP-TEST-CREATE
+          state: DENIED
+          resource_class: TEST
+          operations:
+            - CREATE
+        - id: CAP-TEST-MODIFY
+          state: DENIED
+          resource_class: TEST
+          operations:
+            - MODIFY
+        - id: CAP-TEST-RENAME
+          state: DENIED
+          resource_class: TEST
+          operations:
+            - RENAME
+        - id: CAP-TEST-MOVE
+          state: DENIED
+          resource_class: TEST
+          operations:
+            - MOVE
+        - id: CAP-TEST-DELETE
+          state: DENIED
+          resource_class: TEST
+          operations:
+            - DELETE
+        - id: CAP-SOURCE-CREATE
+          state: DENIED
+          resource_class: SOURCE
+          operations:
+            - CREATE
+        - id: CAP-SOURCE-MODIFY
+          state: DENIED
+          resource_class: SOURCE
+          operations:
+            - MODIFY
+        - id: CAP-SOURCE-RENAME
+          state: DENIED
+          resource_class: SOURCE
+          operations:
+            - RENAME
+        - id: CAP-SOURCE-MOVE
+          state: DENIED
+          resource_class: SOURCE
+          operations:
+            - MOVE
+        - id: CAP-SOURCE-DELETE
+          state: DENIED
+          resource_class: SOURCE
+          operations:
+            - DELETE
+        - id: CAP-ARCHITECTURE-MODIFY
+          state: DENIED
+          resource_class: ARCHITECTURE
+          operations:
+            - MODIFY
     operations:
       allow:
         - READ
@@ -148,6 +331,7 @@ authorization_grants:
       - R-017
       - R-018
       - R-019
+      - R-020
     authority:
       type: USER
       identifier: Abdus2023 (repository owner), delegating through the standing session instruction

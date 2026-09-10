@@ -5,7 +5,7 @@ claim_kind:           PLANNED (HYPOTHESIS where marked)
 implementation_state: NOT_IMPLEMENTED
 test_state:           NOT_APPLICABLE
 evidence_level:       INDIRECT (design prose in the archive)
-verification_result:  VERIFIED as planned — the fact that these layers are designed and
+claim_verification:   VERIFIED as planned — the fact that these layers are designed and
                       unimplemented is verified; their existence is not implied
 ```
 

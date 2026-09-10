@@ -125,8 +125,8 @@ digest, so any accidental code modification fails verification.
 | TEST-011 | `tools/simulate.mjs` | anomaly stream `CONCURRENT_OWNER` | two workers acquiring one candidate at the same time | DIRECT | DIRECT |
 | TEST-012 | `tools/simulate.mjs` | metrics `discoveries` vs `uniqueUrls` (74 / 27) | discovery records are not deduplicated (D9) | DIRECT | DIRECT |
 | TEST-013 | `tools/simulate.mjs` | `--unsafe-control` run | the harness detects an ownership violation (detector sensitivity) | DIRECT (executed) | DIRECT |
-| TEST-014 | `tools/validate-analysis.mjs` | the validation pipeline: schema, claim rules C-001–C-043 and matrix CV-001–CV-020, evidence rules, authorization rules AUTH-001–AUTH-020, execution invariants EV-001–EV-012, post-verification invariants PV-001–PV-010, serialization invariants SER-001–SER-012, invariants I-001–I-016 | the record's typed fields, evidence shape, authorization and execution consistency | DIRECT (executed) | DIRECT |
-| TEST-015 | `tools/verify.mjs` (§7e) | capability closure re-derived from `level_profiles`, `allow ⊆ Capabilities(profile)`, withheld classes unreachable, executed operations covered, declared scope paths versus `git diff`, execution/post-verification lifecycle separation | the authorization model and the two lifecycles are enforced, not merely documented | DIRECT (executed) | DIRECT |
+| TEST-014 | `tools/validate-analysis.mjs` | the validation pipeline: schema, claim rules C-001–C-043 and matrix CV-001–CV-020, evidence rules, authorization rules AC-001–AC-016 and AUTH-017–AUTH-020, execution invariants EV-001–EV-012 with the section 200 transition graph, execution-verification rules EVV-001–EVV-009, serialization invariants SER-001–SER-012, invariants I-001–I-016 | the record's typed fields, evidence shape, authorization and execution consistency | DIRECT (executed) | DIRECT |
+| TEST-015 | `tools/verify.mjs` (§7e) | capability closure re-derived from the embedded `level_profiles`, grants ⊆ ProfileCapabilitySet, catalogue states DECLARED not ENABLED, withheld classes unreachable, every executed operation covered by a capability of the right resource class, declared scope paths versus `git diff`, execution/execution-verification separation, claim verification never borrowing lifecycle values | the authorization model and the two lifecycles are enforced, not merely documented | DIRECT (executed) | DIRECT |
 
 ## Register — documentation
 
@@ -228,9 +228,9 @@ evidence items participate.
 
 1. Any claim added to `docs/` must cite at least one evidence ID from this file.
 2. A fact supported only by `INDIRECT` evidence cannot be given
-   `claim_kind: CURRENT` together with `verification_result: VERIFIED`.
+   `claim_kind: CURRENT` together with `claim_verification.result: VERIFIED`.
 3. `evidence_level` lives here; `claim_kind`, `implementation_state`,
-   `test_state` and `verification_result` live in
+   `test_state` and `claim_verification.result` live in
    [claims.md](claims.md)/[analysis.json](analysis.json). No field is ever
    substituted for another.
 4. New evidence gets a new ID; IDs are never reused for unrelated evidence.

@@ -7,7 +7,7 @@ implementation_state: IMPLEMENTED for bounds, growth and scheduling · PARTIAL f
 test_state:           TESTED for bounds and duplicate suppression (tools/checks.mjs,
                       tools/simulate.mjs) · NOT_APPLICABLE for the unimplemented layers
 evidence_level:       DIRECT (code) · CORROBORATED for duplicate suppression
-verification_result:  VERIFIED for bounds and termination triggers · PARTIALLY_VERIFIED for
+claim_verification:   VERIFIED for bounds and termination triggers · PARTIALLY_VERIFIED for
                       duplicate suppression · VERIFIED as absent for coverage and absence
 ```
 
