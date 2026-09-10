@@ -33,7 +33,8 @@ Nothing in this register silently mixes "what is" with "what should be".
 | R-014 | DOC_REWRITE | status expressed as one collapsed word ("implemented"/"tested") | typed status fields, recorded once per claim: `claim_kind`, `implementation_state`, `test_state`, `evidence_level`, `verification_result` | the fields describe different things and must never be merged or substituted | DOC-011, DOC-012 | LOW | `tools/verify.mjs` vocabulary lint; `tools/validate-analysis.mjs` | PASS |
 | R-015 | DOC_CLEANUP | scope, ownership and authorization implicit | [scope-and-authorization.md](scope-and-authorization.md) with the four scope dimensions, ownership matrix, decision ownership, authorization levels and pre/post-execution checks | governs who may decide and mutate | DOC-012 | LOW | `tools/verify.mjs` authorization-record lint | PASS |
 | R-016 | DOC_CLEANUP | status existed only as prose tables; no machine-readable record, and no way to tell a stale table from a current one | [analysis.json](analysis.json) as the normative record, plus `tools/validate-analysis.mjs` (schema, enums, authorization/execution rules) and `tools/render-claims.mjs` (claims.md is generated, never hand-edited) | a canonical model that cannot be validated silently drifts | DOC-012 | LOW | `tools/validate-analysis.mjs`: JSON Schema + rules V1–V20 + invariants I-001–I-016; `tools/render-claims.mjs --check` | PASS |
-| R-017 | DOC-REWRITE | claim and status statements written before the canonical model, in three-dimension or collapsed form | 41 records regenerated with all five typed fields; evidence register, analysis document, scope document, README and the 11 behaviour documents updated to the same vocabulary | documents must agree with the normative record or be detected | DOC-011, DOC-012 | LOW | `tools/verify.mjs` field-substitution and declaration lints; `node tools/verify.mjs` → 38 PASS / 0 FAIL | PASS |
+| R-017 | DOC-REWRITE | claim and status statements written before the canonical model, in three-dimension or collapsed form | 41 records regenerated with all five typed fields; evidence register, analysis document, scope document, README and the 11 behaviour documents updated to the same vocabulary | documents must agree with the normative record or be detected | DOC-011, DOC-012 | LOW | `tools/verify.mjs` field-substitution and declaration lints; `node tools/verify.mjs` → 39 PASS / 0 FAIL | PASS |
+| R-018 | DOC_CLEANUP | claim validity was structural only, the authorization object used a single level with extra capabilities beside it, and the YAML rendering had no enforced connection to the record | claim-kind and cross-dimension rules (`C-001…C-043`, `CV-001…CV-015`), canonical authorization fields with explicit operation sets and intersection semantics (`EffectiveOperations = Ops(level) ∩ operations`), no-inheritance enforcement, a second canonical grant for publication, and a YAML mirror checked by `SER-001…SER-012` | structure does not make a claim semantically valid, and a level name must not imply an operation | DOC-013, DOC-014 | LOW | `tools/validate-analysis.mjs` (14 checks); `tools/verify.mjs` (39 PASS / 0 FAIL) | PASS |
 | R-013 | RENAME | `Continue Architecture Planning.md` at root implied a normative planning document | archived under `archive/`, indexed | non-normative status unclear | DOC-003, DOC-006 | LOW | link checks | PASS |
 
 No content was deleted. Removed text was either contradicted by the
@@ -96,7 +97,7 @@ unsound ownership baseline.
 
 ## Change-set boundary and discovered changes
 
-Authorization covered `R-001 … R-017` (`change_ids` in the authorization object;
+Authorization covered `R-001 … R-018` (`change_ids` in the authorization object;
 `R-014 … R-017` extended the set within the same `DOC_REFACTOR` ceiling — all
 documentation/analysis artifacts). While executing,
 twelve further problems were discovered (`R-101 … R-112`). Under the
@@ -141,14 +142,14 @@ Known limitations of this verification:
 ```yaml
 execution:
   result: SUCCEEDED
-  executed_changes: [R-001 .. R-017]
+  executed_changes: [R-001 .. R-018]
   unauthorized_changes: []
 post_verification:
   result: VERIFIED
 ```
 
 **EXECUTED + POST-VERIFIED**: documentation and analysis artifacts
-`R-001 … R-017`.
+`R-001 … R-018`.
 
 **PLAN ONLY**: code changes `R-101 … R-112` — no authorization was given to
 change runtime behaviour (`CODE_REFACTOR` and `ARCHITECTURE_CHANGE` are outside
@@ -156,16 +157,21 @@ the granted ceiling and appear in `forbidden_operations`), and correctness must
 be established before the prototype is modified.
 
 ```yaml
-AUTHORIZATION (as applied)          # state and level are separate concepts
-  state: GRANTED
-  level: DOC_REFACTOR               # capability ceiling for content mutation
-  additional_levels_declared: [ANALYSIS_ONLY, COMMIT, PUSH]   # granted explicitly
-  hierarchical: false               # no capability is inherited from any level
-  withheld: [TEST_REFACTOR, CODE_REFACTOR, ARCHITECTURE_CHANGE]
-  change_ids: [R-001 … R-017]       # R-101 … R-112 are outside this set
-  operations: [READ, ANALYZE, PROPOSE, CREATE, MODIFY, MOVE, RENAME, COMMIT, PUSH]
-  rollback: revert of the analysis commits restores prior documentation;
-            the source digest pins code state independently
+AUTHORIZATION (as applied)          # four concepts, represented separately
+  content grant:
+    state: GRANTED
+    level: DOC_REFACTOR             # or the explicit operation set below, whichever is narrower
+    operations: [READ, ANALYZE, PROPOSE, CREATE, MODIFY, RENAME, MOVE]
+    change_ids: [R-001 … R-018]     # R-101 … R-112 are outside this set
+  publication grant:                # COMMIT ∉ Ops(DOC_REFACTOR): recorded as its own grant
+    state: GRANTED
+    level: PUSH
+    operations: [READ, ANALYZE, PROPOSE, COMMIT, PUSH]
+    change_ids: [R-001 … R-018]
+  authority: repository owner (USER)
+  target:    Abdus2023/Generic-Discovery-Engine @ work branch from cc8df73
+  rollback:  revert of the analysis commits restores prior documentation;
+             the source digest pins code state independently
 ```
 
 Category vocabulary: the change categories follow the canonical enum

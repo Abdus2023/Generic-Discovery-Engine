@@ -1,0 +1,86 @@
+# Canonical authorization object — YAML mirror of `analysis.json`.
+#
+# Serialization is not allowed to change semantics: this file and the
+# `authorization` / `authorization_grants` fields of analysis.json must
+# deserialize to the same logical object (invariants SER-001…SER-012,
+# checked by tools/validate-analysis.mjs).
+#
+# Field names are canonical. Do not introduce variants such as
+# authorization_level, auth_level, permission_level, allowed_operations,
+# authorized_operations or authorized_change_ids.
+
+authorization:
+  state: GRANTED
+  level: DOC_REFACTOR
+  operations:
+    - READ
+    - ANALYZE
+    - PROPOSE
+    - CREATE
+    - MODIFY
+    - RENAME
+    - MOVE
+  change_ids:
+    - R-001
+    - R-002
+    - R-003
+    - R-004
+    - R-005
+    - R-006
+    - R-007
+    - R-008
+    - R-009
+    - R-010
+    - R-011
+    - R-012
+    - R-013
+    - R-014
+    - R-015
+    - R-016
+    - R-017
+    - R-018
+  authority:
+    type: USER
+    identifier: "Abdus2023 (repository owner), delegating through the standing session instruction"
+  target:
+    repository: "Abdus2023/Generic-Discovery-Engine"
+    revision: "cc8df7357c2dbfe9d149747743e2f5e9ac9c0178 (work branch: arena/01a08d14-generic-discovery-engine)"
+  granted_at: "2026-09-10"
+  expires_at: null
+
+authorization_grants:
+  - state: GRANTED
+    level: PUSH
+    operations:
+      - READ
+      - ANALYZE
+      - PROPOSE
+      - COMMIT
+      - PUSH
+    change_ids:
+      - R-001
+      - R-002
+      - R-003
+      - R-004
+      - R-005
+      - R-006
+      - R-007
+      - R-008
+      - R-009
+      - R-010
+      - R-011
+      - R-012
+      - R-013
+      - R-014
+      - R-015
+      - R-016
+      - R-017
+      - R-018
+    authority:
+      type: USER
+      identifier: "Abdus2023 (repository owner), delegating through the standing session instruction"
+    target:
+      repository: "Abdus2023/Generic-Discovery-Engine"
+      revision: "cc8df7357c2dbfe9d149747743e2f5e9ac9c0178 (work branch: arena/01a08d14-generic-discovery-engine)"
+    granted_at: "2026-09-10"
+    expires_at: null

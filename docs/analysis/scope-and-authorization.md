@@ -134,7 +134,7 @@ and technical access never implies authorization.
 | `VERIFIER` | this analysis, re-running the tools after execution | determines whether the result satisfies the requested postconditions | must not silently repair a failed verification; it reports `FAILED`/`PARTIALLY_VERIFIED` instead |
 
 Role-entry statement required by the ownership rule: the analyzer became the
-executor **only** for change set `R-001 … R-017` (documentation and analysis
+executor **only** for change set `R-001 … R-018` (documentation and analysis
 artifacts), under the authorization recorded in §5. For `R-101 … R-112` (code) the
 analyzer remained `ANALYZER` and produced proposals only.
 
@@ -148,64 +148,85 @@ analyzer remained `ANALYZER` and produced proposals only.
 | EXECUTION DECISION | "modify `queueCandidate()` now" | repository owner authorizes; analysis recommends, and did **not** execute (`R-101`, plan only) |
 | DOCUMENTATION DECISION | "split the archive into code + roadmap + history" | analysis executed under the authorization for documentation refactoring |
 
-## 5. Execution authorization model
+## 5. Authorization model
 
-Authorization is **two separate concepts**, never one word.
+Authorization has **four distinct concepts**, represented separately and never
+collapsed into one word.
 
-| Field | Question it answers | Canonical values |
+| Concept | Field | Question |
 | --- | --- | --- |
-| `authorization.state` | *Has mutation authority actually been granted?* | `NOT_REQUESTED` · `REQUESTED` · `DENIED` · `GRANTED` · `REVOKED` · `EXPIRED` |
-| `authorization.level` | *If authorization exists, what operations does it permit?* | `READ_ONLY` · `ANALYSIS_ONLY` · `DOC_REFACTOR` · `TEST_REFACTOR` · `CODE_REFACTOR` · `ARCHITECTURE_CHANGE` · `COMMIT` · `PUSH` |
+| Authorization state | `authorization.state` | Has mutation authority actually been granted? |
+| Authorization level | `authorization.level` | What is the maximum capability of the grant? |
+| Authorized operations | `authorization.operations` | Which operations does this grant permit in practice? |
+| Authorized changes | `authorization.change_ids` | Which change records are covered? |
 
-`state: GRANTED` does not by itself say what may be changed, and
-`level: CODE_REFACTOR` does not prove that anything was granted. The default,
-with no explicit authorization, is `state: NOT_REQUESTED` with
-`level: READ_ONLY` — inspect, search, analyze, verify and propose only.
+States: `NOT_REQUESTED` · `REQUESTED` · `DENIED` · `GRANTED` · `REVOKED` ·
+`EXPIRED`. **Only `GRANTED` permits mutation.**
 
-Valid and invalid combinations (§98):
+Levels: `READ_ONLY` · `ANALYSIS_ONLY` · `DOC_REFACTOR` · `TEST_REFACTOR` ·
+`CODE_REFACTOR` · `ARCHITECTURE_CHANGE` · `COMMIT` · `PUSH`. The machine-readable
+operation set of each level, `Ops(level)`, is defined in
+[analysis.schema.json](analysis.schema.json) under `authorization_levels` and is
+the single copy the validator reads — a level name never implies an operation.
 
-| Combination | Verdict |
-| --- | --- |
-| `NOT_REQUESTED` + `READ_ONLY` | valid |
-| `DENIED` + `READ_ONLY` | valid |
-| `GRANTED` + `DOC_REFACTOR` | valid |
-| `GRANTED` + no level | invalid — a grant must state what it permits |
-| `REVOKED` + `CODE_REFACTOR` + a later `execution.result: SUCCEEDED` | invalid — revocation prevents subsequent execution |
+### Operations are a restriction, never an escalation
 
-### The authorization object as applied
-
-```yaml
-authorization:
-  state: GRANTED
-  authority:
-    type: USER
-    identifier: "Abdus2023 (repository owner), delegating through the standing session instruction"
-  target:
-    repository: "Abdus2023/Generic-Discovery-Engine"
-    revision: "cc8df7357c2dbfe9d149747743e2f5e9ac9c0178 (work branch: arena/01a08d14-generic-discovery-engine)"
-  level: DOC_REFACTOR              # capability ceiling for content mutation
-  additional_levels_declared: [ANALYSIS_ONLY, COMMIT, PUSH]
-  hierarchical: false              # nothing is inherited
-  change_ids: [R-001 … R-017]
-  operations: [READ, ANALYZE, PROPOSE, CREATE, MODIFY, MOVE, RENAME, COMMIT, PUSH]
-  forbidden_operations: [MODIFY_SOURCE_CODE, MODIFY_TESTS, DELETE, ARCHITECTURE_CHANGE, PUSH_TO_OTHER_BRANCH]
-  expires_at: null
-  granted_at: "2026-09-10"
+```
+EffectiveOperations = Ops(level) ∩ authorization.operations
 ```
 
-This object **is** the mutation boundary: a change is permitted only if it
-appears in `change_ids` and the operation it needs appears in `operations`.
+An explicit `operations` list can only narrow the grant. `COMMIT` under
+`level: DOC_REFACTOR` is invalid because `COMMIT ∉ Ops(DOC_REFACTOR)`; commit
+authority requires a grant whose level permits it. Likewise `CODE_REFACTOR` does
+not imply `COMMIT`, and `ARCHITECTURE_CHANGE` does not imply `PUSH` — no
+inheritance is inferred from the lexical ordering (rule `AUTH-006`, §124, §127).
 
-### Capability ceiling, not inheritance (§100)
+### The grants as applied
 
-`DOC_REFACTOR` permits documentation operations only. It does **not** imply
-`TEST_REFACTOR`, `CODE_REFACTOR`, `ARCHITECTURE_CHANGE`, `COMMIT` or `PUSH`. In
-this work `COMMIT` and `PUSH` were granted explicitly and are therefore recorded
-in `operations` and in `additional_levels_declared`; because
-`hierarchical: false`, no capability is assumed from any other level. The code
-changes `R-101 … R-112` sit outside the ceiling entirely and were not executed.
+```yaml
+authorization:                       # content mutation
+  state: GRANTED
+  level: DOC_REFACTOR
+  operations: [READ, ANALYZE, PROPOSE, CREATE, MODIFY, RENAME, MOVE]
+  change_ids: [R-001 … R-018]
+  authority: {type: USER, identifier: "Abdus2023 (repository owner), delegating through the standing session instruction"}
+  target: {repository: "Abdus2023/Generic-Discovery-Engine", revision: "cc8df73… (work branch: arena/01a08d14-generic-discovery-engine)"}
+  granted_at: "2026-09-10"
+  expires_at: null
 
-### The check applied before each mutation (§101)
+authorization_grants:                # publication, recorded as its own grant
+  - state: GRANTED
+    level: PUSH
+    operations: [READ, ANALYZE, PROPOSE, COMMIT, PUSH]
+    change_ids: [R-001 … R-018]
+    authority: {type: USER, identifier: "Abdus2023 (repository owner), delegating through the standing session instruction"}
+    target: {repository: "Abdus2023/Generic-Discovery-Engine", revision: "cc8df73… (work branch: arena/01a08d14-generic-discovery-engine)"}
+    granted_at: "2026-09-10"
+    expires_at: null
+```
+
+**Recorded deviation, not a workaround.** The normative level table gives
+`DOC_REFACTOR` the content operations but not `COMMIT`/`PUSH`, and gives `PUSH`
+the publication operations but no content mutation. No single level therefore
+covers "refactor the documentation and publish the result", which is what this
+work required. Rather than silently widening `DOC_REFACTOR` (an escalation the
+rules forbid) or dropping the publication capability from the record, the
+publication capability is recorded as a second grant in the canonical shape.
+`DELETE` is inside `Ops(DOC_REFACTOR)` but absent from
+`authorization.operations`, which shows the intersection at work: nothing was
+deleted, so the operation was never granted in practice.
+
+### The decision function
+
+```
+ALLOW(operation, target, change) =
+      state == GRANTED
+  AND operation ∈ EffectiveOperations
+  AND target ∈ authorization.target
+  AND change.id ∈ authorization.change_ids
+```
+
+If any predicate is false the answer is `DENY`. Applied before each mutation:
 
 ```
 requested operation
@@ -214,23 +235,34 @@ authorization.state == GRANTED ?
         ↓
 authorization target matches repository ?
         ↓
-operation allowed by authorization.operations ?
+operation ∈ Ops(level) ∩ operations ?
         ↓
-change ID present in authorization.change_ids ?
+change ID present in change_ids ?
         ↓
 authorization not expired / revoked ?
         ↓
 EXECUTE          otherwise → DO NOT MUTATE
 ```
 
-Rules `V8`–`V15` encode this mechanically and `tools/validate-analysis.mjs`
-evaluates them against the record. Invariants `I-007`/`I-008` keep the state and
-the level distinct; `I-010`/`I-011` keep access, authorization and execution
-distinct.
+`AUTH-001 … AUTH-014` encode this mechanically and
+`tools/validate-analysis.mjs` evaluates them against the record. A newly
+discovered change id is unauthorized until it is granted: new work creates a new
+change record, it does not inherit the authority of the change that discovered
+it (§128, `AUTH-013`).
+
+### Serialization
+
+The YAML mirror [authorization.yaml](authorization.yaml) and the JSON record
+must deserialize to the same logical object. Field names are canonical:
+`state`, `level`, `operations`, `change_ids`, `authority`, `target`,
+`granted_at`, `expires_at` — never `authorization_level`, `auth_level`,
+`permission_level`, `allowed_operations`, `authorized_operations` or
+`authorized_change_ids`. Invariants `SER-001 … SER-012` are checked by the
+validator, including that serialization does not increase effective privileges.
 
 ### Change-set boundary
 
-Authorization covered `R-001 … R-017`. During execution, twelve further problems
+Authorization covered `R-001 … R-018`. During execution, twelve further problems
 were discovered (`R-101 … R-112`, including the P0 ownership defects). Per the
 change-set rule they were **recorded and proposed, not fixed** — even though one
 (`R-109`, the dead counter) would have been a two-line edit. They remain
@@ -239,7 +271,7 @@ change-set rule they were **recorded and proposed, not fixed** — even though o
 ### Discovered-change rule — worked example
 
 ```
-Approved:      documentation refactor (R-001 … R-017)
+Approved:      documentation refactor (R-001 … R-018)
 Discovered:    candidate re-queue violates the ownership invariant (D1)
 Action:        record finding (CONC-CLAIM-002) → classify (BUG, ARCHITECTURAL)
                → add proposed change R-101 → request authorization
@@ -275,9 +307,9 @@ Required decision:   owner decides whether to authorize CODE_REFACTOR /
 | Revision confirmed | yes — `cc8df73` |
 | Scope confirmed | yes — four dimensions above |
 | Authorization state confirmed | yes — `GRANTED` |
-| Authorization level confirmed | yes — `DOC_REFACTOR` ceiling, with `ANALYSIS_ONLY`, `COMMIT` and `PUSH` declared separately (`hierarchical: false`) |
+| Authorization level confirmed | yes — content grant `DOC_REFACTOR` with narrowed operations; publication grant `PUSH`; no inheritance between them (`AUTH-006`) |
 | Allowed / forbidden operations confirmed | yes |
-| Change set identified | yes — `R-001 … R-017` in `change_ids` |
+| Change set identified | yes — `R-001 … R-018` in `change_ids` |
 | Verification completed | yes — evidence + claims + analysis |
 | Evidence references available | yes — the register resolves every cited id |
 | Rollback understood | yes — git history on the work branch |
@@ -290,7 +322,7 @@ EXECUTION STATUS: AUTHORIZED
 
 | Check | Result |
 | --- | --- |
-| Requested changes completed | yes — `R-001 … R-017` |
+| Requested changes completed | yes — `R-001 … R-018` |
 | No unauthorized changes made | yes — artifact digest identical to extraction; no code or test changes |
 | Repository structure valid | yes — matches the proposed structure |
 | Links valid | yes — 20+ documents, zero broken relative links |
@@ -305,16 +337,16 @@ EXECUTION STATUS: AUTHORIZED
 ```yaml
 execution:
   result: SUCCEEDED                 # from the canonical enum
-  executed_changes: [R-001 .. R-017]
+  executed_changes: [R-001 .. R-018]
   unauthorized_changes: []
   discovered_not_executed: [R-101 .. R-112]
 
 post_verification:
   result: VERIFIED                  # reuses the verification enum; no separate PASS/FAIL vocabulary
   evidence:
-    - tools/verify.mjs: 38 passed, 0 failed, 4 documented defects
+    - tools/verify.mjs: 39 passed, 0 failed, 4 documented defects
     - tools/checks.mjs: 4 passed, 0 failed
-    - tools/validate-analysis.mjs: 10 checks (JSON Schema, rules V1-V20, invariants I-001-I-016, restated fields)
+    - tools/validate-analysis.mjs: 14 checks (schema, C/CV rules, AUTH rules, SER invariants, drift)
     - artifact digest unchanged (sha256 8f5fc5c5...)
   not_verified:
     - end-to-end HtmlProvider behaviour under a real DOM (SCOPE-GAP-1, OPEN)
@@ -383,7 +415,7 @@ VERIFICATION         read-only; 41 claim records with five typed fields
      ↓
 VERIFIED TRUTH SET   what exists, what is planned, what is absent, what is contradicted
      ↓
-REFACTORING PLAN     R-001…R-017 executed; R-101…R-112 plan only
+REFACTORING PLAN     R-001…R-018 executed; R-101…R-112 plan only
      ↓
 AUTHORIZATION CHECK  state GRANTED; level DOC_REFACTOR; COMMIT/PUSH declared separately (I-011)
      ↓

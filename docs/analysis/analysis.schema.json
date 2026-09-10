@@ -1,7 +1,7 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "$id": "https://example.invalid/generic-discovery-analysis.schema.json",
-  "$comment": "The $id above is intentionally non-authoritative; replace it with the project's schema namespace if this schema is ever published. Additional properties are permitted throughout: the schema fixes the typed fields, it does not forbid extensions. Semantic rules that JSON Schema cannot express (V1-V20) are enforced by tools/validate-analysis.mjs.",
+  "$comment": "The $id above is intentionally non-authoritative; replace it with the project's schema namespace if this schema is ever published. Additional properties are permitted throughout: the schema fixes the typed fields, it does not forbid extensions. Semantic rules that JSON Schema cannot express (C-001…C-043, CV-001…CV-015, AUTH-001…AUTH-014, SER-001…SER-012, I-001…I-016) are enforced by tools/validate-analysis.mjs.",
   "title": "Generic Discovery Engine Analysis",
   "type": "object",
   "required": [
@@ -56,6 +56,17 @@
     },
     "post_verification": {
       "type": "object"
+    },
+    "authorization_grants": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/authorization"
+      },
+      "$comment": "Additional grants, each in the canonical authorization shape. The canonical single-level grant cannot express a documentation refactor followed by publication (DOC_REFACTOR excludes COMMIT/PUSH and PUSH excludes content mutation), so the publication capability is recorded as its own grant rather than silently widened."
+    },
+    "governance": {
+      "type": "object",
+      "$comment": "Roles and forbidden operations, kept outside the canonical authorization object."
     }
   },
   "$defs": {
@@ -328,7 +339,8 @@
               "COMMIT",
               "PUSH"
             ]
-          }
+          },
+          "$comment": "Optional restriction. Every entry must belong to Ops(level) (level table below)."
         },
         "authority": {
           "type": "object",
@@ -376,7 +388,8 @@
             "null"
           ]
         }
-      }
+      },
+      "$comment": "Canonical field names (no variants): state, level, operations, change_ids, authority, target, granted_at, expires_at. Effective operations = Ops(level) \u2229 operations; explicit operations are a restriction, never an escalation."
     },
     "execution": {
       "type": "object",
@@ -426,5 +439,69 @@
         }
       }
     }
-  }
+  },
+  "authorization_levels": {
+    "READ_ONLY": [
+      "READ"
+    ],
+    "ANALYSIS_ONLY": [
+      "READ",
+      "ANALYZE",
+      "PROPOSE"
+    ],
+    "DOC_REFACTOR": [
+      "READ",
+      "ANALYZE",
+      "PROPOSE",
+      "CREATE",
+      "MODIFY",
+      "RENAME",
+      "MOVE",
+      "DELETE"
+    ],
+    "TEST_REFACTOR": [
+      "READ",
+      "ANALYZE",
+      "PROPOSE",
+      "CREATE",
+      "MODIFY",
+      "RENAME",
+      "MOVE",
+      "DELETE"
+    ],
+    "CODE_REFACTOR": [
+      "READ",
+      "ANALYZE",
+      "PROPOSE",
+      "CREATE",
+      "MODIFY",
+      "RENAME",
+      "MOVE",
+      "DELETE"
+    ],
+    "ARCHITECTURE_CHANGE": [
+      "READ",
+      "ANALYZE",
+      "PROPOSE",
+      "CREATE",
+      "MODIFY",
+      "RENAME",
+      "MOVE",
+      "DELETE"
+    ],
+    "COMMIT": [
+      "READ",
+      "ANALYZE",
+      "PROPOSE",
+      "COMMIT"
+    ],
+    "PUSH": [
+      "READ",
+      "ANALYZE",
+      "PROPOSE",
+      "COMMIT",
+      "PUSH"
+    ]
+  },
+  "authorization_levels_comment": "Ops(level) per the normative specification. There is no inheritance: an operation is authorized only if it appears in its level set and in the grant's operations."
 }

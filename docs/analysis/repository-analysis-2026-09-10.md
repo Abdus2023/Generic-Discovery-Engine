@@ -13,9 +13,9 @@ documentation cleanup. Output order follows the review brief (Phases 0–21).
 | Access classification | **FULL ACCESS** — complete tree, no submodules, no external artifacts to inspect |
 | Evidence standard | every non-trivial finding cites `[EVID:…]` from the [evidence register](evidence-register.md) |
 | State model | five typed fields per claim — `claim_kind`, `implementation_state`, `test_state`, `evidence_level`, `verification_result` — plus independent execution dimensions: `authorization.state`, `authorization.level`, `execution.result`, `post_verification.result`. Normative record: [analysis.json](analysis.json) under [analysis.schema.json](analysis.schema.json); readable tables: [claims.md](claims.md) |
-| Enforcement | [EVID:TEST-014] `tools/validate-analysis.mjs` validates [EVID:DOC-013] the record against `analysis.schema.json`, plus rules V1–V20 and invariants I-001–I-016: no generic status field, no field substitution, executed ⊆ authorized, documentation never proves implementation, `ABSENT` ≠ `INACCESSIBLE` |
+| Enforcement | [EVID:TEST-014] `tools/validate-analysis.mjs` validates [EVID:DOC-013] the record against `analysis.schema.json`, plus claim rules C-001–C-043 / CV-001–CV-015, evidence rules C-030–C-034, authorization rules AUTH-001–AUTH-014, serialization invariants SER-001–SER-012 and invariants I-001–I-016: no generic status field, no field substitution, executed ⊆ authorized, documentation never proves implementation, `ABSENT` ≠ `INACCESSIBLE` |
 | Scope boundary | repository / artifact / verification / execution — recorded in [scope-and-authorization.md](scope-and-authorization.md) |
-| Authorization | `state: GRANTED`, `level: DOC_REFACTOR` (capability ceiling), with `ANALYSIS_ONLY`, `COMMIT` and `PUSH` declared separately — no inheritance; `change_ids: R-001 … R-017`; `MODIFY_SOURCE_CODE` forbidden |
+| Authorization | two canonical grants, both `state: GRANTED`: content (`level: DOC_REFACTOR`, operations narrowed by intersection) and publication (`level: PUSH`) — no inheritance; `change_ids: R-001 … R-018`; `MODIFY_SOURCE_CODE` forbidden |
 | Phase A — verification | **read-only**; no repository file was created, edited or moved while establishing truth |
 | Phase B — refactoring | plan and execution recorded separately in the [change register](change-register-2026-09-10.md) |
 | Code changes | **none** — the artifact digest is unchanged since extraction and enforced (`sha256 8f5fc5c5…`); all code findings are `PLAN ONLY` |
@@ -27,7 +27,7 @@ documentation claims were assessed with full access and are reproducible from th
 recorded commit and tool runs.
 
 **Refactoring result: EXECUTED + POST-VERIFIED** for documentation
-(`R-001 … R-017`); **PLAN ONLY** for code (`R-101 … R-112`).
+(`R-001 … R-018`); **PLAN ONLY** for code (`R-101 … R-112`).
 
 ---
 
@@ -148,8 +148,8 @@ cannot drift out of step.
 | Area | Owning claim(s) | Field summary |
 | --- | --- | --- |
 | Candidate identity and dedup | `CAND-CLAIM-001` | `CURRENT` · `IMPLEMENTED` · `TESTED` · `CORROBORATED` · `VERIFIED` |
-| Candidate as hypothesis | `CAND-CLAIM-002` | `CURRENT` · `IMPLEMENTED` · `PARTIALLY_TESTED` · `INDIRECT` · `PARTIALLY_VERIFIED` |
-| Bounds (caps, depth, budget) | `CAND-CLAIM-003` | `CURRENT` · `IMPLEMENTED` · `TESTED` · `DIRECT` · `VERIFIED` |
+| Candidate as hypothesis | `CAND-CLAIM-002` | `CURRENT` · `IMPLEMENTED` · `UNTESTED` · `INDIRECT` · `PARTIALLY_VERIFIED` |
+| Bounds (caps, depth, budget) | `CAND-CLAIM-003` | `CURRENT` · `IMPLEMENTED` · `UNTESTED` · `DIRECT` · `VERIFIED` |
 | Claim atomicity at the claim site | `SCHED-CLAIM-001` | `CURRENT` · `IMPLEMENTED` · `TESTED` · `CORROBORATED` · `VERIFIED` |
 | Single-owner invariant end to end | `SCHED-CLAIM-002` | `CURRENT` · `PARTIAL` · `TESTED` · `CORROBORATED` · `CONTRADICTED` |
 | Retry and backoff | `SCHED-CLAIM-003` | `CURRENT` · `PARTIAL` · `TESTED` · `DIRECT` · `PARTIALLY_VERIFIED` |
@@ -157,14 +157,14 @@ cannot drift out of step.
 | Worker pool and concurrency | `SCHED-CLAIM-005` | `CURRENT` · `PARTIAL` · `TESTED` · `CORROBORATED` · `CONTRADICTED` |
 | Adaptive concurrency | `SCHED-CLAIM-006` | `CURRENT` · `NOT_IMPLEMENTED` · `UNTESTED` · `DIRECT` · `CONTRADICTED` |
 | Acquisition transport | `ACQ-CLAIM-001` | `CURRENT` · `IMPLEMENTED` · `TESTED` · `CORROBORATED` · `VERIFIED` |
-| Observation on failure | `ACQ-CLAIM-002` | `CURRENT` · `IMPLEMENTED` · `TESTED` · `CORROBORATED` · `VERIFIED` |
-| Cancellation | `ACQ-CLAIM-003` | `CURRENT` · `NOT_IMPLEMENTED` · `UNTESTED` · `INDIRECT` · `CONTRADICTED` |
+| Observation on failure | `ACQ-CLAIM-002` | `CURRENT` · `IMPLEMENTED` · `UNTESTED` · `CORROBORATED` · `VERIFIED` |
+| Cancellation | `ACQ-CLAIM-003` | `CURRENT` · `NOT_IMPLEMENTED` · `UNTESTED` · `DIRECT` · `CONTRADICTED` |
 | Discovery linkage | `PROV-CLAIM-001` | `CURRENT` · `IMPLEMENTED` · `TESTED` · `DIRECT` · `VERIFIED` |
 | Derivation chain | `PROV-CLAIM-002` | `CURRENT` · `IMPLEMENTED` · `TESTED` · `CORROBORATED` · `VERIFIED` |
 | Content identity (fingerprints) | `PROV-CLAIM-003` | `SPECIFIED` · `NOT_IMPLEMENTED` · `UNTESTED` · `DIRECT` · `CONTRADICTED` |
 | Observation ≠ discovery | `PROV-CLAIM-004` | `CURRENT` · `IMPLEMENTED` · `TESTED` · `DIRECT` · `VERIFIED` |
 | Evidence layer | `PROV-CLAIM-005` | `SPECIFIED` · `NOT_IMPLEMENTED` · `NOT_APPLICABLE` · `ABSENT` · `UNVERIFIED` |
-| Observation immutability | `PROV-CLAIM-006` | `CURRENT` · `NOT_IMPLEMENTED` · `UNTESTED` · `INDIRECT` · `UNVERIFIED` |
+| Observation immutability | `PROV-CLAIM-006` | `CURRENT` · `NOT_IMPLEMENTED` · `UNTESTED` · `DIRECT` · `UNVERIFIED` |
 | Provider boundary | `ARCH-CLAIM-001` | `CURRENT` · `IMPLEMENTED` · `TESTED` · `CORROBORATED` · `VERIFIED` |
 | Protocol independence | `ARCH-CLAIM-002` | `CURRENT` · `NOT_IMPLEMENTED` · `PARTIALLY_TESTED` · `DIRECT` · `CONTRADICTED` |
 | Expansion ownership | `ARCH-CLAIM-003` | `CURRENT` · `IMPLEMENTED` · `TESTED` · `CORROBORATED` · `VERIFIED` |
@@ -599,7 +599,7 @@ conversational filler.
 
 Executed changes and plan-only code changes, with categories, risk classes,
 before/after states and post-refactor verification results, are recorded in the
-[change register](change-register-2026-09-10.md) as `R-001 … R-013` (executed
+[change register](change-register-2026-09-10.md) as `R-001 … R-018` (executed
 documentation) and `R-101 … R-112` (code, PLAN ONLY).
 
 ---
@@ -817,6 +817,6 @@ and a persistence-failure path test.
 | --- | --- | --- |
 | traceable to repository evidence | yes | every finding cites `[EVID:…]`; the register gives path, locator, source type, quality and status; `tools/verify.mjs` fails on a citation that does not resolve |
 | current reality vs proposed future state | yes | `VERIFIED CURRENT STATE` and `PROPOSED TARGET STATE` are recorded side by side in the change register and never merged without labels; every roadmap item is labelled DESIGNED / CONJECTURE / OPEN |
-| which changes were verified vs recommended | yes | executed documentation changes `R-001 … R-013` with post-refactor verification results; code changes `R-101 … R-112` marked **PLAN ONLY** with risk classes and priorities |
+| which changes were verified vs recommended | yes | executed documentation changes `R-001 … R-018` with post-refactor verification results; code changes `R-101 … R-112` marked **PLAN ONLY** with risk classes and priorities |
 | which conclusions are limited by access | yes | access classification FULL; two scope escalations and three residual verification limitations are recorded and marked OPEN in the governance record |
 | who authorized the changes | yes | authorization object with `state`, `level`, `change_ids`, allowed and forbidden operations, rollback strategy, and the explicit statement that `CODE_REFACTOR` / `ARCHITECTURE_CHANGE` were never granted |

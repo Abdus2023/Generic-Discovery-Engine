@@ -411,7 +411,10 @@ else fail('no later-design layers present', futureHits.join(', '));
       fail('execution.result uses the execution enum', String(exec));
     }
 
-    if (record.authorization.forbidden_operations.includes('MODIFY_SOURCE_CODE')) {
+    const forbidden = record.governance?.forbidden_operations || [];
+    const grants = [record.authorization, ...(record.authorization_grants || [])];
+    const permitsCode = grants.some(g => ['CODE_REFACTOR', 'ARCHITECTURE_CHANGE'].includes(g.level));
+    if (forbidden.includes('MODIFY_SOURCE_CODE') && !permitsCode) {
       pass('authorization forbids source mutation', 'code changes are plan-only');
     } else {
       fail('authorization forbids source mutation', 'unexpected: source mutation appears authorized');
@@ -454,10 +457,24 @@ else fail('no later-design layers present', futureHits.join(', '));
   if (!(auth.state === 'GRANTED' && !auth.level)) pass('a grant states its level separately from its state');
   else fail('a grant states its level separately from its state');
 
-  const inherited = auth.hierarchical === true ? [] : (record.execution.operations || [])
-    .filter(op => ['COMMIT', 'PUSH'].includes(op) && !(auth.additional_levels_declared || []).includes(op));
-  if (inherited.length === 0) pass('no capability is assumed by inheritance', 'hierarchical: ' + String(auth.hierarchical));
-  else fail('no capability is assumed by inheritance', inherited.join(', '));
+  /* no inheritance: AUTH-006/§124 — every explicit operation must belong to
+     Ops(level), and every executed operation must be covered by the union of
+     the declared grants' effective operations */
+  {
+    const policy = JSON.parse(fs.readFileSync(schemaPath, 'utf8')).authorization_levels;
+    const grants = [auth, ...(record.authorization_grants || [])];
+    const escalation = grants.flatMap(g => (g.operations || [])
+      .filter(op => !(policy[g.level] || []).includes(op)).map(op => `${g.level}:${op}`));
+    if (escalation.length === 0) pass('no capability is assumed by inheritance', 'operations ⊆ Ops(level) for every grant');
+    else fail('no capability is assumed by inheritance', escalation.join(', '));
+
+    const covered = new Set(grants.flatMap(g =>
+      (policy[g.level] || []).filter(op => (g.operations || policy[g.level]).includes(op))));
+    const uncovered = (record.execution.operations || []).filter(op => !covered.has(op));
+    if (uncovered.length === 0) pass('executed operations are covered by the declared grants',
+      `${(record.execution.operations || []).length} operations across ${grants.length} grant(s)`);
+    else fail('executed operations are covered by the declared grants', uncovered.join(', '));
+  }
 
   const flatEvidence = record.claims.flatMap(c => c.evidence).filter(e => typeof e === 'string');
   if (flatEvidence.length === 0) pass('evidence entries are objects with path and locator');

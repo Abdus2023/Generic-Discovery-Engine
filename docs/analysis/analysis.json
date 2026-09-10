@@ -117,7 +117,7 @@
       "statement": "A candidate is a hypothesis, not an assertion that the target exists.",
       "claim_kind": "CURRENT",
       "implementation_state": "IMPLEMENTED",
-      "test_state": "PARTIALLY_TESTED",
+      "test_state": "UNTESTED",
       "evidence_level": "INDIRECT",
       "verification_result": "PARTIALLY_VERIFIED",
       "scope_paths": [
@@ -144,7 +144,7 @@
           }
         }
       ],
-      "interpretation": "The implementation stores no existence assertion, but the hypothesis framing is design prose; the code cannot demonstrate a framing."
+      "interpretation": "The implementation stores no existence assertion, but the hypothesis framing is design prose; the code cannot demonstrate a framing. test_state UNTESTED: no executed check asserts the hypothesis framing; the implementation shows the absence of an existence assertion, which is a code reading, not a test."
     },
     {
       "id": "CAND-CLAIM-003",
@@ -152,7 +152,7 @@
       "statement": "Candidate growth is bounded by a candidate cap, a depth limit and a request budget.",
       "claim_kind": "CURRENT",
       "implementation_state": "IMPLEMENTED",
-      "test_state": "TESTED",
+      "test_state": "UNTESTED",
       "evidence_level": "DIRECT",
       "verification_result": "VERIFIED",
       "scope_paths": [
@@ -187,7 +187,7 @@
           }
         }
       ],
-      "interpretation": "Dropping is silent; only the candidate cap records a diagnostic."
+      "interpretation": "Dropping is silent; only the candidate cap records a diagnostic. test_state UNTESTED: the caps, depth limit and budget are enforced in code and inspected statically, but no executed check asserts them; the simulate run stays far below the caps."
     },
     {
       "id": "SCHED-CLAIM-001",
@@ -492,7 +492,7 @@
       "statement": "A failed acquisition still produces an observation.",
       "claim_kind": "CURRENT",
       "implementation_state": "IMPLEMENTED",
-      "test_state": "TESTED",
+      "test_state": "UNTESTED",
       "evidence_level": "CORROBORATED",
       "verification_result": "VERIFIED",
       "scope_paths": [
@@ -527,7 +527,7 @@
           }
         }
       ],
-      "interpretation": "Timeout, transport error and HTTP error all yield observation records with distinct statuses."
+      "interpretation": "Timeout, transport error and HTTP error all yield observation records with distinct statuses. test_state UNTESTED: the failure paths create observations in code (CODE-004, CODE-013, CODE-019), but no executed check asserts the resulting observation."
     },
     {
       "id": "ACQ-CLAIM-003",
@@ -536,7 +536,7 @@
       "claim_kind": "CURRENT",
       "implementation_state": "NOT_IMPLEMENTED",
       "test_state": "UNTESTED",
-      "evidence_level": "INDIRECT",
+      "evidence_level": "DIRECT",
       "verification_result": "CONTRADICTED",
       "scope_paths": [
         "prototype/generic-discovery-engine.user.js"
@@ -570,7 +570,7 @@
           }
         }
       ],
-      "interpretation": "stop() sets a flag; in-flight requests continue, and runtime-owned cancellation exists only in the DESIGNED v0.10. Conflicting evidence: stop() only sets a flag (CODE-018) and no request is aborted (CODE-010).",
+      "interpretation": "stop() sets a flag; in-flight requests continue, and runtime-owned cancellation exists only in the DESIGNED v0.10. Conflicting evidence: stop() only sets a flag (CODE-018) and no request is aborted (CODE-010). DIRECT evidence: the code itself shows that only a flag is set (CODE-018) and no in-flight request is aborted (CODE-010); the design prose is context, not the ground of the finding.",
       "conflicting_evidence": [
         "CODE-018",
         "CODE-010"
@@ -606,9 +606,18 @@
             "type": "LINE_RANGE",
             "value": "L3262–L3330 (`emitDiscovery`)"
           }
+        },
+        {
+          "id": "TEST-007",
+          "kind": "TEST",
+          "path": "tools/checks.mjs",
+          "locator": {
+            "type": "SYMBOL",
+            "value": "case 4 (chain reconstruction: seed → candidate → observation → discovery → child candidate)"
+          }
         }
       ],
-      "interpretation": "The linkage is stored at creation time."
+      "interpretation": "The linkage is stored at creation time. Tested: the harness reconstructs the chain and reads both records."
     },
     {
       "id": "PROV-CLAIM-002",
@@ -717,9 +726,18 @@
             "type": "LINE_RANGE",
             "value": "L854–L893 (`Discovery`)"
           }
+        },
+        {
+          "id": "TEST-007",
+          "kind": "TEST",
+          "path": "tools/checks.mjs",
+          "locator": {
+            "type": "SYMBOL",
+            "value": "case 4 (chain reconstruction: seed → candidate → observation → discovery → child candidate)"
+          }
         }
       ],
-      "interpretation": "Separate records, separate identifiers, separate lifetimes."
+      "interpretation": "Separate records, separate identifiers, separate lifetimes. Tested: the harness reads observations and discoveries as separate maps."
     },
     {
       "id": "PROV-CLAIM-005",
@@ -753,7 +771,8 @@
           }
         }
       ],
-      "interpretation": "No such objects exist; designed in v0.16 and v0.34. Evidence is ABSENT (inspected scope covered), not INACCESSIBLE."
+      "interpretation": "No such objects exist; designed in v0.16 and v0.34. Evidence is ABSENT (inspected scope covered), not INACCESSIBLE.",
+      "absence_verification": "AV-006"
     },
     {
       "id": "PROV-CLAIM-006",
@@ -762,7 +781,7 @@
       "claim_kind": "CURRENT",
       "implementation_state": "NOT_IMPLEMENTED",
       "test_state": "UNTESTED",
-      "evidence_level": "INDIRECT",
+      "evidence_level": "DIRECT",
       "verification_result": "UNVERIFIED",
       "scope_paths": [
         "prototype/generic-discovery-engine.user.js"
@@ -787,7 +806,7 @@
           }
         }
       ],
-      "interpretation": "Observations live in a mutable map and are re-serialized on persistence; nothing enforces immutability."
+      "interpretation": "Observations live in a mutable map and are re-serialized on persistence; nothing enforces immutability. DIRECT evidence: observation records are plain objects with no freeze, copy-on-write or integrity check, so immutability is not enforced (CODE-004, CODE-005)."
     },
     {
       "id": "ARCH-CLAIM-001",
@@ -871,9 +890,18 @@
             "type": "SYMBOL",
             "value": "transport surface: GM_xmlhttpRequest + fetch only; no transport interface"
           }
+        },
+        {
+          "id": "TEST-006",
+          "kind": "TEST",
+          "path": "tools/checks.mjs",
+          "locator": {
+            "type": "SYMBOL",
+            "value": "case 3 (11 content-type/body cases, exact sets)"
+          }
         }
       ],
-      "interpretation": "Only recognition is an interface; acquisition is one hard-wired HTTP path."
+      "interpretation": "Only recognition is an interface; acquisition is one hard-wired HTTP path. PARTIALLY_TESTED: provider matching is executed (TEST-006); the transport half of the claim is not tested."
     },
     {
       "id": "ARCH-CLAIM-003",
@@ -1037,7 +1065,8 @@
           }
         }
       ],
-      "interpretation": "One serialized snapshot with caps; no transaction, validation or recovery. Designed in v0.32."
+      "interpretation": "One serialized snapshot with caps; no transaction, validation or recovery. Designed in v0.32.",
+      "absence_verification": "AV-007"
     },
     {
       "id": "ARCH-CLAIM-007",
@@ -2037,10 +2066,31 @@
         "DOC-013",
         "TEST-014"
       ]
+    },
+    {
+      "id": "R-018",
+      "category": "DOC_CLEANUP",
+      "executed": true,
+      "risk": "LOW",
+      "description": "Claim-level semantic validation (C-001…C-043, CV-001…CV-015), canonical authorization fields with explicit operation sets and intersection semantics, no-inheritance enforcement, and a YAML mirror of the authorization object checked by serialization invariants SER-001…SER-012.",
+      "files": [
+        "docs/analysis/analysis.json",
+        "docs/analysis/analysis.schema.json",
+        "docs/analysis/authorization.yaml",
+        "tools/validate-analysis.mjs",
+        "docs/analysis/scope-and-authorization.md",
+        "docs/analysis/claims.md"
+      ],
+      "rationale": "structure alone does not make a claim semantically valid, and a level name must not imply an operation",
+      "authorization_required": "DOC_REFACTOR + PUSH (publication grant)",
+      "evidence": [
+        "DOC-013",
+        "DOC-014",
+        "TEST-014"
+      ]
     }
   ],
   "authorization": {
-    "state": "GRANTED",
     "authority": {
       "type": "USER",
       "identifier": "Abdus2023 (repository owner), delegating through the standing session instruction"
@@ -2049,13 +2099,19 @@
       "repository": "Abdus2023/Generic-Discovery-Engine",
       "revision": "cc8df7357c2dbfe9d149747743e2f5e9ac9c0178 (work branch: arena/01a08d14-generic-discovery-engine)"
     },
+    "granted_at": "2026-09-10",
+    "expires_at": null,
+    "state": "GRANTED",
     "level": "DOC_REFACTOR",
-    "additional_levels_declared": [
-      "ANALYSIS_ONLY",
-      "COMMIT",
-      "PUSH"
+    "operations": [
+      "READ",
+      "ANALYZE",
+      "PROPOSE",
+      "CREATE",
+      "MODIFY",
+      "RENAME",
+      "MOVE"
     ],
-    "hierarchical": false,
     "change_ids": [
       "R-001",
       "R-002",
@@ -2073,37 +2129,9 @@
       "R-014",
       "R-015",
       "R-016",
-      "R-017"
-    ],
-    "operations": [
-      "READ",
-      "ANALYZE",
-      "PROPOSE",
-      "CREATE",
-      "MODIFY",
-      "MOVE",
-      "RENAME",
-      "COMMIT",
-      "PUSH"
-    ],
-    "forbidden_operations": [
-      "MODIFY_SOURCE_CODE",
-      "MODIFY_TESTS",
-      "DELETE",
-      "ARCHITECTURE_CHANGE",
-      "PUSH_TO_OTHER_BRANCH"
-    ],
-    "expires_at": null,
-    "granted_at": "2026-09-10",
-    "policy_notes": "authorization.state is the \"authorization\" concept (whether mutation authority exists); authorization.level is the \"authorization_level\" concept (capability ceiling). DOC_REFACTOR is a ceiling for content mutation and does NOT imply COMMIT or PUSH: hierarchical is false and those capabilities were granted separately, which is why they appear in operations and in additional_levels_declared.",
-    "roles": {
-      "REPOSITORY_OWNER": "Abdus2023",
-      "ANALYZER": "analysis (this document set)",
-      "AUTHORIZER": "repository owner (delegated)",
-      "EXECUTOR": "same agent, explicitly entering the EXECUTOR role for the authorized change set only",
-      "VERIFIER": "analysis, re-run after execution",
-      "REVIEWER": "repository owner / reviewer"
-    }
+      "R-017",
+      "R-018"
+    ]
   },
   "execution": {
     "result": "SUCCEEDED",
@@ -2124,7 +2152,8 @@
       "R-014",
       "R-015",
       "R-016",
-      "R-017"
+      "R-017",
+      "R-018"
     ],
     "unauthorized_changes": [],
     "discovered_not_executed": [
@@ -2216,7 +2245,86 @@
       "probe": "access contract in the evidence register; git tree listing at cc8df73",
       "result": "no test directory, CI configuration or build tooling existed at the resolved revision",
       "verified_by": "analysis (VERIFIER), re-run after execution"
+    },
+    {
+      "id": "AV-006",
+      "claim": "PROV-CLAIM-005",
+      "scope": "declared scope: the whole artifact and the documentation tree",
+      "method": "full read of the artifact plus inspection for any evidence/interpretation/conflict object",
+      "probe": "grep for evidence-graph, interpretation, conflict-resolution and corroboration constructs",
+      "result": "no such object exists; observations and discoveries are stored without an evidence layer",
+      "verified_by": "analysis (VERIFIER), re-run after execution"
+    },
+    {
+      "id": "AV-007",
+      "claim": "ARCH-CLAIM-006",
+      "scope": "declared scope: persistence code paths",
+      "method": "inspection of persist()/restore() and the storage writer for transactions, write-ahead logging or validation",
+      "probe": "CODE-025, SCOPE-002, tools/verify.mjs round-trip check",
+      "result": "no transaction, journal or crash-recovery mechanism exists",
+      "verified_by": "analysis (VERIFIER), re-run after execution"
     }
   ],
-  "schema_version": "1.0"
+  "schema_version": "1.0",
+  "authorization_grants": [
+    {
+      "authority": {
+        "type": "USER",
+        "identifier": "Abdus2023 (repository owner), delegating through the standing session instruction"
+      },
+      "target": {
+        "repository": "Abdus2023/Generic-Discovery-Engine",
+        "revision": "cc8df7357c2dbfe9d149747743e2f5e9ac9c0178 (work branch: arena/01a08d14-generic-discovery-engine)"
+      },
+      "granted_at": "2026-09-10",
+      "expires_at": null,
+      "state": "GRANTED",
+      "level": "PUSH",
+      "operations": [
+        "READ",
+        "ANALYZE",
+        "PROPOSE",
+        "COMMIT",
+        "PUSH"
+      ],
+      "change_ids": [
+        "R-001",
+        "R-002",
+        "R-003",
+        "R-004",
+        "R-005",
+        "R-006",
+        "R-007",
+        "R-008",
+        "R-009",
+        "R-010",
+        "R-011",
+        "R-012",
+        "R-013",
+        "R-014",
+        "R-015",
+        "R-016",
+        "R-017",
+        "R-018"
+      ]
+    }
+  ],
+  "governance": {
+    "roles": {
+      "REPOSITORY_OWNER": "Abdus2023",
+      "ANALYZER": "analysis (this document set)",
+      "AUTHORIZER": "repository owner (delegated)",
+      "EXECUTOR": "same agent, explicitly entering the EXECUTOR role for the authorized change set only",
+      "VERIFIER": "analysis, re-run after execution",
+      "REVIEWER": "repository owner / reviewer"
+    },
+    "forbidden_operations": [
+      "MODIFY_SOURCE_CODE",
+      "MODIFY_TESTS",
+      "DELETE",
+      "ARCHITECTURE_CHANGE",
+      "PUSH_TO_OTHER_BRANCH"
+    ],
+    "notes": "The canonical authorization object holds the content-mutation grant. Publication (COMMIT/PUSH) is outside Ops(DOC_REFACTOR) and outside the operations of every content level, so it is recorded as a second grant in the same canonical shape instead of being folded into one level; no single level in the normative table covers documentation mutation and publication together."
+  }
 }

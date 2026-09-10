@@ -218,7 +218,7 @@ archive/
   Continue Architecture Planning.md   raw design conversation (non-normative)
 tools/
   verify.mjs                  static checks: artifact vs documentation, scope, governance
-  validate-analysis.mjs       schema validation, rules V1–V20, invariants I-001–I-016
+  validate-analysis.mjs       validation pipeline: schema, C/CV claim rules, AUTH rules, SER invariants
   render-claims.mjs           renders claims.md from analysis.json
   checks.mjs                  behaviour checks: dedup, providers, provenance, persistence
   simulate.mjs                headless harness that executes the shipped artifact
@@ -250,9 +250,10 @@ Results and the audit trail:
 | [repository-analysis-2026-09-10.md](docs/analysis/repository-analysis-2026-09-10.md) | full review (18 sections) |
 | [evidence-register.md](docs/analysis/evidence-register.md) | the audit index: every `[EVID:…]` id with path and locator, `evidence_level` values, absence procedures, frozen artifact digest |
 | [claims.md](docs/analysis/claims.md) | 41 claim records rendered from [analysis.json](docs/analysis/analysis.json): `claim_kind` · `implementation_state` · `test_state` · `evidence_level` · `verification_result` |
-| [analysis.schema.json](docs/analysis/analysis.schema.json) | the normative machine-readable schema (JSON Schema draft 2020-12) the record is validated against |
+| [analysis.schema.json](docs/analysis/analysis.schema.json) | the normative machine-readable schema (JSON Schema draft 2020-12), including the level → operation policy the validator reads |
+| [authorization.yaml](docs/analysis/authorization.yaml) | the canonical authorization object in YAML; serialization identity with the record is checked (`SER-001`–`SER-012`) |
 | [scope-and-authorization.md](docs/analysis/scope-and-authorization.md) | scope boundary, six ownership roles, authorization contract, pre/post-execution checks |
-| [change-register-2026-09-10.md](docs/analysis/change-register-2026-09-10.md) | executed changes R-001…R-017; code changes R-101…R-112 (PLAN ONLY) |
+| [change-register-2026-09-10.md](docs/analysis/change-register-2026-09-10.md) | executed changes R-001…R-018; code changes R-101…R-112 (PLAN ONLY) |
 
 Status in this repository is never a single word. Five typed fields are reported
 separately for every claim — `claim_kind`, `implementation_state`, `test_state`,
@@ -261,9 +262,14 @@ separately for every claim — `claim_kind`, `implementation_state`, `test_state
 (what it permits), and neither is `execution.result` (what actually happened) or
 `post_verification.result` (what the independent re-run established). No field
 answers two questions, and no field is substituted for another.
-`tools/validate-analysis.mjs` enforces this — against
-[docs/analysis/analysis.schema.json](docs/analysis/analysis.schema.json), plus the
-semantic rules `V1`–`V20` and invariants `I-001`–`I-016`.
+`tools/validate-analysis.mjs` enforces this against
+[docs/analysis/analysis.schema.json](docs/analysis/analysis.schema.json): claim
+rules `C-001`–`C-043` and `CV-001`–`CV-015`, evidence rules `C-030`–`C-034`,
+authorization rules `AUTH-001`–`AUTH-014`, serialization invariants
+`SER-001`–`SER-012` and invariants `I-001`–`I-016`. Authorization is four
+concepts, not one: state, level, operations and change ids. An explicit
+operations list only narrows its level (`EffectiveOperations = Ops(level) ∩
+operations`) — no capability is inherited from a level's name.
 
 ## Roadmap
 
