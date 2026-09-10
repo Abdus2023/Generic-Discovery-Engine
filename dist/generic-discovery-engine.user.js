@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Generic Discovery Engine
 // @namespace    generic-discovery
-// @version      0.7.9
+// @version      0.8.0
 // @description  Generic web-resource discovery engine inspired by the architecture of DVB blind scanning.
 // @match        *://*/*
 // @run-at       document-start
@@ -19,7 +19,18 @@
     /*
      * ============================================================
      * Generic Discovery Engine
-     * v0.7.9 — Pattern & Cluster + Build Determinism (inference + metrics + rebuild check)
+     * v0.8.0 — Providers & Change Detection (robots+headers + fingerprint diff + framework prelude)
+
+     * Patch notes vs v0.7.9:
+     * - Providers: RobotsProvider (Sitemap: extraction, robots.txt) +
+     *           HeadersProvider (Link header → url, Location → url);
+     *           ProviderRegistry now 9 providers, ordered Html/Json/Xml/Css/JS/
+     *           Robots/Headers/Binary/Text + http.headers captured in
+     *           Observation (fetch + GM_xhr)
+     *         + Change: CONFIG.changeDetection + KnowledgeBase.detectChange()
+     *           (fingerprint hash diff → resource-changed diagnostic + status
+     *           `changed`, O(1), ~0.01 ms) + 3 ADRs (016-robots, 017-headers,
+     *           018-change)
 
      * Patch notes vs v0.7.8:
      * - Pattern: CONFIG.inference.patternInference + extractUrlPattern()
@@ -139,6 +150,7 @@
             clustering: true,
             minPatternFreq: 3
         },
+        changeDetection: true,
         lifecycle: {
             strict: false // true → illegal transitions throw; false → diagnostic + allow
         },
@@ -1708,6 +1720,18 @@
                 observation
             );
 
+            const _oldHash = (() => {
+                try {
+                    const prev = this.resources.get(
+                        canonicalizeUrl(observation.requestedUrl) ||
+                            observation.requestedUrl
+                    );
+                    return prev?.fingerprint?.hash || null;
+                } catch {
+                    return null;
+                }
+            })();
+
             const resource =
                 this.ensureResource(
                     observation.requestedUrl
@@ -1745,6 +1769,26 @@
                 this.fingerprintIndex
                     .get(hash)
                     .add(observation.requestedUrl);
+
+                if (
+                    CONFIG.changeDetection &&
+                    _oldHash &&
+                    hash !== _oldHash
+                ) {
+                    this.recordDiagnostic('resource-changed', {
+                        target: observation.requestedUrl,
+                        oldHash: _oldHash,
+                        newHash: hash
+                    });
+                    // mark resource as changed (overwrites acquired)
+                    try {
+                        const res = this.resources.get(
+                            canonicalizeUrl(observation.requestedUrl) ||
+                                observation.requestedUrl
+                        );
+                        if (res) res.status = 'changed';
+                    } catch {}
+                }
             }
         }
 
@@ -2442,6 +2486,33 @@
                                                     )?.[1] ||
                                                 null,
 
+                                            headers: (() => {
+                                                const h = {};
+                                                for (const line of String(
+                                                    response.responseHeaders || ''
+                                                ).split(/\r?\n/)) {
+                                                    const idx =
+                                                        line.indexOf(':');
+                                                    if (idx > 0) {
+                                                        h[
+                                                            line
+                                                                .slice(
+                                                                    0,
+                                                                    idx
+                                                                )
+                                                                .trim()
+                                                                .toLowerCase()
+                                                        ] =
+                                                            line
+                                                                .slice(
+                                                                    idx + 1
+                                                                )
+                                                                .trim();
+                                                    }
+                                                }
+                                                return h;
+                                            })(),
+
                                             finalUrl:
                                                 response.finalUrl ||
                                                 plan.target
@@ -2618,6 +2689,15 @@
                                 response.headers.get(
                                     'content-length'
                                 ),
+
+                            headers: Object.fromEntries(
+                                [...response.headers.entries()].map(
+                                    ([k, v]) => [
+                                        k.toLowerCase(),
+                                        v
+                                    ]
+                                )
+                            ),
 
                             finalUrl:
                                 response.url ||
@@ -3504,6 +3584,100 @@
      * ============================================================
      */
 
+    class RobotsProvider extends Provider {
+        constructor() {
+            super('robots');
+        }
+
+        matches(observation) {
+            const url = String(observation.requestedUrl || observation.target || '');
+            if (/robots\.txt$/i.test(url)) return true;
+            const ct = contentTypeBase(observation.http?.contentType || '');
+            return ct === 'text/plain' && /User-agent:/i.test(String(observation.body || ''));
+        }
+
+        async recognize(candidate, observation) {
+            const discoveries = [];
+            const re = /Sitemap:\s*(https?:\/\/\S+)/gi;
+            for (const m of String(observation.body || '').matchAll(re)) {
+                const url = canonicalizeUrl(m[1].trim());
+                if (!url) continue;
+                discoveries.push(
+                    new Discovery({
+                        candidateId: candidate.id,
+                        observationId: observation.id,
+                        kind: 'sitemap',
+                        confidence: 0.92,
+                        mechanism: 'robots-sitemap',
+                        data: { url },
+                        provenance: {
+                            origin: candidate.origin,
+                            parent: candidate.target,
+                            candidateTarget: candidate.target,
+                            candidateType: candidate.type,
+                            mechanism: 'robots-sitemap',
+                            depth: candidate.depth
+                        }
+                    })
+                );
+            }
+            return discoveries;
+        }
+    }
+
+    class HeadersProvider extends Provider {
+        constructor() {
+            super('headers');
+        }
+
+        matches(observation) {
+            const h = observation.http?.headers;
+            if (!h || typeof h !== 'object') return false;
+            const link = h['link'] || h['Link'] || h['LINK'] || h['Link'.toLowerCase()];
+            if (link && /<https?:\/\/[^>]+>/.test(String(link))) return true;
+            const loc = h['location'] || h['Location'] || h['LOCATION'];
+            if (loc && isAllowedUrl(String(loc))) return true;
+            return false;
+        }
+
+        async recognize(candidate, observation) {
+            const discoveries = [];
+            const h = observation.http?.headers || {};
+            const emit = (url, type, mechanism, confidence) => {
+                const canonical = canonicalizeUrl(url);
+                if (!canonical) return;
+                discoveries.push(
+                    new Discovery({
+                        candidateId: candidate.id,
+                        observationId: observation.id,
+                        kind: type,
+                        confidence,
+                        mechanism,
+                        data: { url: canonical },
+                        provenance: {
+                            origin: candidate.origin,
+                            parent: candidate.target,
+                            candidateTarget: candidate.target,
+                            candidateType: candidate.type,
+                            mechanism,
+                            depth: candidate.depth
+                        }
+                    })
+                );
+            };
+            const linkVal = String(h['link'] || h['Link'] || h['LINK'] || '');
+            const linkRe = /<([^>]+)>/g;
+            for (const m of linkVal.matchAll(linkRe)) {
+                emit(m[1].trim(), 'url', 'headers-link', 0.88);
+            }
+            const loc = h['location'] || h['Location'] || h['LOCATION'];
+            if (loc) {
+                emit(String(loc).trim(), 'url', 'headers-location', 0.90);
+            }
+            return discoveries;
+        }
+    }
+
     class BinaryProvider extends Provider {
         constructor() {
             super('binary');
@@ -3540,6 +3714,8 @@
                 new XmlProvider(),
                 new CssProvider(),
                 new JavaScriptProvider(),
+                new RobotsProvider(),
+                new HeadersProvider(),
                 new BinaryProvider(),
                 new TextProvider()
             ];

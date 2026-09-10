@@ -2,6 +2,14 @@
 
 All notable changes to the Generic Discovery Engine.
 
+## [0.8.0] — 2026-09-10 — Providers & Change Detection (robots+headers + fingerprint diff + framework prelude)
+
+- **Providers:** `RobotsProvider` (`Sitemap:` extraction, `kind:sitemap` 0.92, matches `robots.txt` or `text/plain`+`User-agent:`) + `HeadersProvider` (`Link: <url>; rel` → `headers-link` 0.88, `Location:` → `headers-location` 0.90, matches `http.headers`); `ProviderRegistry` now 9 ordered `Html/Json/Xml/Css/JavaScript/Robots/Headers/Binary/Text` (Text fallback last). `Acquisition` now captures `http.headers` lowercased from `fetch` (`Object.fromEntries`) + `GM_xhr` (`responseHeaders` parse) into `Observation.http.headers`. Header `0.7.9→0.8.0`, `5,597→5,773` lines, `node --check` PASS.
+- **Change:** `CONFIG.changeDetection:true` + `KnowledgeBase.recordObservation` `_oldHash` capture before `ensureResource` → after `fingerprintIndex` if `hash !== _oldHash` emits `resource-changed` diagnostic `{target, oldHash, newHash}` and sets `ResourceRecord.status='changed'` (O(1) ~0.01 ms). No auto-requeue yet, observable via `exportData`.
+- **Tests:** `tests/provider-robots-headers.test.js` 12 cases (Robots matches/extract, Headers matches/extract Link+Location, http.headers captured, change diff/same); `npm test` **109/109 PASS** (30 suites: 96 existing + 12 provider/change + 1 new verify-p0) vs 96/96 in 0.7.9; `npm run coverage` 99.26%/92.48%/94.82% (c8 99.25%/92.42%/88.33% gate PASS 85/75/80).
+- **ADRs:** `docs/adr/016-robots-provider.md`, `017-headers-provider.md`, `018-change-detection.md` + `docs/adr/README.md` → 18 ADRs (15→18). `docs/DECISIONS.md`/`docs/architecture/OVERVIEW.md` bumped to `5,773` lines.
+- **Docs:** `VERIFICATION_SUPPLEMENT_v0.8.0.md` (§robots §headers §change §providers) + `docs/SECURITY_AUDIT.md`/`docs/PERFORMANCE_ANALYSIS.md` headers → v0.8.0 + `scripts/build.js` hash `7c4952…` lines 5773.
+
 ## [0.7.9] — 2026-09-10 — Pattern & Cluster + Build Determinism (inference + metrics + rebuild check)
 
 - **Pattern:** `CONFIG.inference: { patternInference:true, clustering:true, minPatternFreq:3 }` + `extractUrlPattern(url)` (/{int} for /\d+, ={int} for ?=\d+, uuid 8-4-4-4-12 → {uuid}, hash 32/64 → {hash}) + `clusterKeyForCandidate` (origin::pattern); `KnowledgeBase` `patternIndex`/`clusterIndex` + `getPatternMetrics()`/`getClusterMetrics()` (O(n) over ≤750, ~0.06 ms, sorted top 20). `recordPattern()` called in `addCandidate` after `stats.discovered++`. Header `0.7.8→0.7.9`, `5,526→5,597` lines, `node --check` PASS, pattern collapse proven 500 iter.

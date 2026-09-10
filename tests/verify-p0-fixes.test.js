@@ -15,7 +15,7 @@ describe('static patch presence (dist/generic-discovery-engine.user.js)', () => 
     const file = fs.readFileSync(path.join(import.meta.dirname, '../dist/generic-discovery-engine.user.js'), 'utf8');
 
     it('version bumped to 0.7.2+', () => {
-        assert.match(file, /@version\s+0\.7\.[23456789]/);
+        assert.match(file, /@version\s+0\.(7\.[23456789]|8\.0)|0\.8\.0/);
         assert.match(file, /version:\s*8/);
     });
     it('P0-1 liveCount fix present', () => {
@@ -48,6 +48,15 @@ describe('static patch presence (dist/generic-discovery-engine.user.js)', () => 
         assert.match(file, /stripSensitiveParams/);
         assert.match(file, /csp-blocks-bridge/);
         assert.match(file, /config-cross-origin-requires-connect-star/);
+    });
+    it('v0.8.0 providers & change present', () => {
+        assert.match(file, /RobotsProvider/);
+        assert.match(file, /HeadersProvider/);
+        assert.match(file, /resource-changed/);
+        assert.match(file, /changeDetection/);
+        assert.match(file, /Object\.fromEntries/);
+        const pkg4 = fs.readFileSync(path.join(import.meta.dirname, '../package.json'), 'utf8');
+        assert.match(pkg4, /0\.8\.0/);
     });
     it('v0.7.9 pattern & cluster present', () => {
         assert.match(file, /patternInference/);

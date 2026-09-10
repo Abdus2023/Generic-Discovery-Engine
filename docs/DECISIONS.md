@@ -7,7 +7,7 @@
 - The transcript remains the provenance; ADRs are the normative summary.
 - New decisions get a new `docs/adr/NNN-title.md` and are linked here.
 
-## Decisions extracted (v0.7.9 — 15 ADRs)
+## Decisions extracted (v0.8.0 — 18 ADRs)
 
 | ADR | Title | Status | Transcript range | Code |
 |-----|-------|--------|------------------|------|
@@ -32,6 +32,9 @@
 | [013](adr/013-pattern-inference.md) | URL pattern inference (template extraction) | ✅ accepted | Roadmap Phase 2 → v0.7.9 | `extractUrlPattern`, `patternIndex`, `getPatternMetrics` |
 | [014](adr/014-clustering.md) | Candidate clustering (origin + pattern) | ✅ accepted | Phase 3 → v0.7.9 | `clusterKeyForCandidate`, `clusterIndex`, `getClusterMetrics` |
 | [015](adr/015-build-determinism.md) | Build determinism (hash + line count + verify) | ✅ accepted | Hygiene → v0.7.9 | `scripts/build.js`, `verify-build.js`, `dist/.build-meta.json` |
+| [016](adr/016-robots-provider.md) | Robots provider (Sitemap extraction) | ✅ accepted | Phase 2 → v0.8.0 | `RobotsProvider`, `ProviderRegistry` 9 providers |
+| [017](adr/017-headers-provider.md) | Headers provider (Link/Location) | ✅ accepted | Phase 2 → v0.8.0 | `HeadersProvider`, `Observation.http.headers` |
+| [018](adr/018-change-detection.md) | Change detection (fingerprint diff) | ✅ accepted | Phase 3 → v0.8.0 | `CONFIG.changeDetection`, `resource-changed` |
 
 ## Decisions still in transcript (not yet ADR-ified)
 
@@ -43,8 +46,8 @@
 ## Process
 1. ChatGPT proposes; user selects v0.2.0 as base.
 2. Each iteration adds one control-plane concern (claim-before-await, policy-before-acquisition, ledger-for-explainability).
-3. Verification (v0.7.1 audit) files P0/P1; patches landed v0.7.2/v0.7.3/v0.7.4/v0.7.5/v0.7.6/v0.7.7/v0.7.8/v0.7.9.
+3. Verification (v0.7.1 audit) files P0/P1; patches landed v0.7.2/v0.7.3/v0.7.4/v0.7.5/v0.7.6/v0.7.7/v0.7.8/v0.7.9/v0.8.0.
 
 ## Further splits
-- The 2.2 MB file also contains 12 full code fences. The runnable artifact is now `dist/generic-discovery-engine.user.js` (v0.7.9, 5,597 lines). The fences are retained for diff archaeology but are no longer the source of truth.
-- With 15 ADRs + rAF + coverage + TTL + gates + lifecycle + concurrency + pattern/cluster + build determinism the control-plane split is considered **complete** for v0.7.x; remaining transcript is chat history, not architecture.
+- The 2.2 MB file also contains 12 full code fences. The runnable artifact is now `dist/generic-discovery-engine.user.js` (v0.8.0, 5,773 lines). The fences are retained for diff archaeology but are no longer the source of truth.
+- With 18 ADRs + rAF + coverage + TTL + gates + lifecycle + concurrency + pattern/cluster + build determinism + robots/headers + change detection the control-plane is considered **feature-complete** for v0.8.0; remaining Phase 4 framework split (src/ modular build) is next.

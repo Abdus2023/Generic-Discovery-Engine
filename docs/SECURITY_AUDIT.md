@@ -1,6 +1,6 @@
-# Security Audit — Generic Discovery Engine v0.7.9
+# Security Audit — Generic Discovery Engine v0.8.0
 
-**Scope:** `dist/generic-discovery-engine.user.js` (5,597 lines), `dist/generic-discovery-engine.v0.7.1.user.js`, tests, configuration  
+**Scope:** `dist/generic-discovery-engine.user.js` (5,773 lines), `dist/generic-discovery-engine.v0.7.1.user.js`, tests, configuration  
 **Date:** 2026-09-10  
 **Method:** static taint review + threat modeling + policy-vs-mechanism trace  
 **Standard:** OWASP Top 10 (2021) + Greasemonkey/Tampermonkey userscript advisories  
