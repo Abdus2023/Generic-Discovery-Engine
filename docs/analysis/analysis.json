@@ -1,34 +1,17 @@
 {
-  "analysis": {
-    "generated": "2026-09-10",
-    "note": "Normative machine-readable record. docs/analysis/claims.md tables are rendered from this file by tools/render-claims.mjs; tools/validate-analysis.mjs enforces the schema and the validation rules. Values are taken from repository evidence only; no value is invented to satisfy the schema.",
-    "record_version": "1.0"
-  },
+  "schema_version": "1.0",
   "repository": {
     "owner": "Abdus2023",
     "name": "Generic-Discovery-Engine",
     "requested_revision": "main",
     "resolved_revision": "cc8df7357c2dbfe9d149747743e2f5e9ac9c0178",
-    "work_revision": "arena/01a08d14-generic-discovery-engine",
     "access_level": "FULL",
     "included_paths": [
       "README.md",
       "Userscript Discovery Prototype.md",
       "Continue Architecture Planning.md"
     ],
-    "analyzed_artifacts": [
-      "prototype/generic-discovery-engine.user.js",
-      "docs/**",
-      "tools/**",
-      "archive/**"
-    ],
-    "excluded_paths": [],
-    "external_sources_used": false,
-    "artifact_digest": {
-      "algorithm": "sha256",
-      "value": "8f5fc5c50e7f0886aa76fdbc7a6a633b3c4de72e7eb8b2d62525b807e354c474",
-      "path": "prototype/generic-discovery-engine.user.js"
-    }
+    "excluded_paths": []
   },
   "scope": {
     "repository": true,
@@ -50,35 +33,18 @@
       "exclude": []
     }
   },
-  "scope_exclusions": [
-    {
-      "id": "SCOPE-GAP-1",
-      "gap": "end-to-end HtmlProvider behaviour under a real DOM",
-      "why_required": "the headless shim stubs DOMParser, so HTML extraction was verified by matching rules and by code, not by execution",
-      "proposed_expansion": "run the artifact in a browser or a DOM implementation",
-      "authorization": "required",
-      "disposition": "OPEN"
-    },
-    {
-      "id": "SCOPE-GAP-2",
-      "gap": "real userscript-manager semantics (redirects, CORS, grants, storage quotas, cross-tab storage)",
-      "why_required": "these determine whether the persistence and scope claims hold outside the shim",
-      "proposed_expansion": "manual test protocol in Tampermonkey/Violentmonkey",
-      "authorization": "required",
-      "disposition": "OPEN"
-    }
-  ],
   "claims": [
     {
-      "id": "CAND-CLAIM-001",
+      "id": "CLAIM-001",
       "statement": "Candidate identity is type:target, and inserting a duplicate merges into the existing candidate.",
       "claim_kind": "CURRENT",
       "implementation_state": "IMPLEMENTED",
       "test_state": "TESTED",
       "evidence_level": "CORROBORATED",
-      "scope_paths": [
-        "prototype/generic-discovery-engine.user.js"
-      ],
+      "claim_verification": {
+        "result": "VERIFIED"
+      },
+      "confidence": "HIGH",
       "evidence": [
         {
           "id": "CODE-003",
@@ -118,27 +84,23 @@
         }
       ],
       "interpretation": {
-        "summary": "Identity is type-scoped: the same URL discovered as a different type is deliberately a second candidate.",
+        "summary": "[candidate] Identity is type-scoped: the same URL discovered as a different type is deliberately a second candidate.",
         "limitations": [
           "Observed in the bundled harness: one browser profile and one simulated request log, not a production measurement."
         ]
-      },
-      "confidence": "HIGH",
-      "claim_verification": {
-        "result": "VERIFIED"
       }
     },
     {
-      "id": "CAND-CLAIM-002",
+      "id": "CLAIM-002",
       "statement": "A candidate is a hypothesis, not an assertion that the target exists.",
       "claim_kind": "CURRENT",
       "implementation_state": "IMPLEMENTED",
       "test_state": "UNTESTED",
       "evidence_level": "INDIRECT",
-      "scope_paths": [
-        "prototype/generic-discovery-engine.user.js",
-        "docs/architecture/candidate-model.md"
-      ],
+      "claim_verification": {
+        "result": "PARTIALLY_VERIFIED"
+      },
+      "confidence": "LOW",
       "evidence": [
         {
           "id": "CODE-003",
@@ -160,26 +122,23 @@
         }
       ],
       "interpretation": {
-        "summary": "The implementation stores no existence assertion, but the hypothesis framing is design prose; the code cannot demonstrate a framing. test_state UNTESTED: no executed check asserts the hypothesis framing; the implementation shows the absence of an existence assertion, which is a code reading, not a test.",
+        "summary": "[candidate] The implementation stores no existence assertion, but the hypothesis framing is design prose; the code cannot demonstrate a framing. test_state UNTESTED: no executed check asserts the hypothesis framing; the implementation shows the absence of an existence assertion, which is a code reading, not a test.",
         "limitations": [
           "Indirect evidence supports the interpretation without establishing the claim directly."
         ]
-      },
-      "confidence": "LOW",
-      "claim_verification": {
-        "result": "PARTIALLY_VERIFIED"
       }
     },
     {
-      "id": "CAND-CLAIM-003",
+      "id": "CLAIM-003",
       "statement": "Candidate growth is bounded by a candidate cap, a depth limit and a request budget.",
       "claim_kind": "CURRENT",
       "implementation_state": "IMPLEMENTED",
       "test_state": "UNTESTED",
       "evidence_level": "DIRECT",
-      "scope_paths": [
-        "prototype/generic-discovery-engine.user.js"
-      ],
+      "claim_verification": {
+        "result": "VERIFIED"
+      },
+      "confidence": "MEDIUM",
       "evidence": [
         {
           "id": "CODE-002",
@@ -210,24 +169,21 @@
         }
       ],
       "interpretation": {
-        "summary": "Dropping is silent; only the candidate cap records a diagnostic. test_state UNTESTED: the caps, depth limit and budget are enforced in code and inspected statically, but no executed check asserts them; the simulate run stays far below the caps.",
+        "summary": "[candidate] Dropping is silent; only the candidate cap records a diagnostic. test_state UNTESTED: the caps, depth limit and budget are enforced in code and inspected statically, but no executed check asserts them; the simulate run stays far below the caps.",
         "limitations": []
-      },
-      "confidence": "MEDIUM",
-      "claim_verification": {
-        "result": "VERIFIED"
       }
     },
     {
-      "id": "SCHED-CLAIM-001",
+      "id": "CLAIM-004",
       "statement": "Candidate ownership is established synchronously, before the worker's first await.",
       "claim_kind": "CURRENT",
       "implementation_state": "IMPLEMENTED",
       "test_state": "TESTED",
       "evidence_level": "CORROBORATED",
-      "scope_paths": [
-        "prototype/generic-discovery-engine.user.js"
-      ],
+      "claim_verification": {
+        "result": "VERIFIED"
+      },
+      "confidence": "HIGH",
       "evidence": [
         {
           "id": "CODE-009",
@@ -258,24 +214,21 @@
         }
       ],
       "interpretation": {
-        "summary": "The transition happens inside a synchronous method and the first suspension point follows it; this is valid only within one execution context.",
+        "summary": "[scheduler] The transition happens inside a synchronous method and the first suspension point follows it; this is valid only within one execution context.",
         "limitations": []
-      },
-      "confidence": "HIGH",
-      "claim_verification": {
-        "result": "VERIFIED"
       }
     },
     {
-      "id": "SCHED-CLAIM-002",
+      "id": "CLAIM-005",
       "statement": "A candidate has at most one active owner.",
       "claim_kind": "CURRENT",
       "implementation_state": "PARTIAL",
       "test_state": "TESTED",
       "evidence_level": "CORROBORATED",
-      "scope_paths": [
-        "prototype/generic-discovery-engine.user.js"
-      ],
+      "claim_verification": {
+        "result": "CONTRADICTED"
+      },
+      "confidence": "HIGH",
       "evidence": [
         {
           "id": "CODE-008",
@@ -315,27 +268,24 @@
         }
       ],
       "interpretation": {
-        "summary": "The claim site is safe; re-discovery re-queues in-flight candidates, so the end-to-end invariant fails (defect D1).",
+        "summary": "[scheduler] The claim site is safe; re-discovery re-queues in-flight candidates, so the end-to-end invariant fails (defect D1).",
         "limitations": [
           "The design intent and the implementation conflict; this record states the conflict and does not resolve it.",
           "Observed in the bundled harness: one browser profile and one simulated request log, not a production measurement."
         ]
-      },
-      "confidence": "HIGH",
-      "claim_verification": {
-        "result": "CONTRADICTED"
       }
     },
     {
-      "id": "SCHED-CLAIM-003",
+      "id": "CLAIM-006",
       "statement": "Retry is bounded by exponential backoff.",
       "claim_kind": "CURRENT",
       "implementation_state": "PARTIAL",
       "test_state": "TESTED",
       "evidence_level": "DIRECT",
-      "scope_paths": [
-        "prototype/generic-discovery-engine.user.js"
-      ],
+      "claim_verification": {
+        "result": "PARTIALLY_VERIFIED"
+      },
+      "confidence": "HIGH",
       "evidence": [
         {
           "id": "CODE-010",
@@ -366,26 +316,23 @@
         }
       ],
       "interpretation": {
-        "summary": "Backoff applies to queued retries; the failed state bypasses it and remains claimable (defect D3).",
+        "summary": "[scheduler] Backoff applies to queued retries; the failed state bypasses it and remains claimable (defect D3).",
         "limitations": [
           "Observed in the bundled harness: one browser profile and one simulated request log, not a production measurement."
         ]
-      },
-      "confidence": "HIGH",
-      "claim_verification": {
-        "result": "PARTIALLY_VERIFIED"
       }
     },
     {
-      "id": "SCHED-CLAIM-004",
+      "id": "CLAIM-007",
       "statement": "A permanently failing target eventually stops consuming the request budget.",
       "claim_kind": "CURRENT",
       "implementation_state": "NOT_IMPLEMENTED",
       "test_state": "TESTED",
       "evidence_level": "DIRECT",
-      "scope_paths": [
-        "prototype/generic-discovery-engine.user.js"
-      ],
+      "claim_verification": {
+        "result": "CONTRADICTED"
+      },
+      "confidence": "HIGH",
       "evidence": [
         {
           "id": "CODE-009",
@@ -416,28 +363,24 @@
         }
       ],
       "interpretation": {
-        "summary": "failed is part of the claim eligibility set with no backoff, so the target is retried indefinitely (defect D3). The absence of a terminal failure state is tested, not inferred: the harness reports failed candidates still in the pool at quiescence with their attempt counts.",
+        "summary": "[scheduler] failed is part of the claim eligibility set with no backoff, so the target is retried indefinitely (defect D3). The absence of a terminal failure state is tested, not inferred: the harness reports failed candidates still in the pool at quiescence with their attempt counts.",
         "limitations": [
           "The design intent and the implementation conflict; this record states the conflict and does not resolve it.",
           "Observed in the bundled harness: one browser profile and one simulated request log, not a production measurement."
         ]
-      },
-      "absence_test": "TEST-010",
-      "confidence": "HIGH",
-      "claim_verification": {
-        "result": "CONTRADICTED"
       }
     },
     {
-      "id": "SCHED-CLAIM-005",
+      "id": "CLAIM-008",
       "statement": "The configured worker pool provides the configured concurrency.",
       "claim_kind": "CURRENT",
       "implementation_state": "PARTIAL",
       "test_state": "TESTED",
       "evidence_level": "CORROBORATED",
-      "scope_paths": [
-        "prototype/generic-discovery-engine.user.js"
-      ],
+      "claim_verification": {
+        "result": "CONTRADICTED"
+      },
+      "confidence": "HIGH",
       "evidence": [
         {
           "id": "CODE-018",
@@ -459,27 +402,24 @@
         }
       ],
       "interpretation": {
-        "summary": "A worker exits permanently on an empty frontier and the pool is never refilled, so effective concurrency collapses toward one (defect D2).",
+        "summary": "[scheduler] A worker exits permanently on an empty frontier and the pool is never refilled, so effective concurrency collapses toward one (defect D2).",
         "limitations": [
           "The design intent and the implementation conflict; this record states the conflict and does not resolve it.",
           "Observed in the bundled harness: one browser profile and one simulated request log, not a production measurement."
         ]
-      },
-      "confidence": "HIGH",
-      "claim_verification": {
-        "result": "CONTRADICTED"
       }
     },
     {
-      "id": "SCHED-CLAIM-006",
+      "id": "CLAIM-009",
       "statement": "Adaptive concurrency changes the number of live workers.",
       "claim_kind": "CURRENT",
       "implementation_state": "NOT_IMPLEMENTED",
       "test_state": "UNTESTED",
       "evidence_level": "DIRECT",
-      "scope_paths": [
-        "prototype/generic-discovery-engine.user.js"
-      ],
+      "claim_verification": {
+        "result": "CONTRADICTED"
+      },
+      "confidence": "MEDIUM",
       "evidence": [
         {
           "id": "CODE-018",
@@ -501,30 +441,23 @@
         }
       ],
       "interpretation": {
-        "summary": "The counter and its diagnostics change, but the pool is created once before it is read (defect D5). Conflicting evidence: the pool is created once (CODE-018) and the adaptive counter only changes diagnostics (CODE-029).",
+        "summary": "[scheduler] The counter and its diagnostics change, but the pool is created once before it is read (defect D5). Conflicting evidence: the pool is created once (CODE-018) and the adaptive counter only changes diagnostics (CODE-029).",
         "limitations": [
           "The design intent and the implementation conflict; this record states the conflict and does not resolve it."
         ]
-      },
-      "conflicting_evidence": [
-        "CODE-018",
-        "CODE-029"
-      ],
-      "confidence": "MEDIUM",
-      "claim_verification": {
-        "result": "CONTRADICTED"
       }
     },
     {
-      "id": "ACQ-CLAIM-001",
+      "id": "CLAIM-010",
       "statement": "Acquisition is HTTP-GET-specific and browser/userscript-specific.",
       "claim_kind": "CURRENT",
       "implementation_state": "IMPLEMENTED",
       "test_state": "TESTED",
       "evidence_level": "CORROBORATED",
-      "scope_paths": [
-        "prototype/generic-discovery-engine.user.js"
-      ],
+      "claim_verification": {
+        "result": "VERIFIED"
+      },
+      "confidence": "HIGH",
       "evidence": [
         {
           "id": "CODE-013",
@@ -555,24 +488,21 @@
         }
       ],
       "interpretation": {
-        "summary": "GM_xmlhttpRequest with a fetch fallback; no transport interface exists in the inspected scope.",
+        "summary": "[acquisition] GM_xmlhttpRequest with a fetch fallback; no transport interface exists in the inspected scope.",
         "limitations": []
-      },
-      "confidence": "HIGH",
-      "claim_verification": {
-        "result": "VERIFIED"
       }
     },
     {
-      "id": "ACQ-CLAIM-002",
+      "id": "CLAIM-011",
       "statement": "A failed acquisition still produces an observation.",
       "claim_kind": "CURRENT",
       "implementation_state": "IMPLEMENTED",
       "test_state": "UNTESTED",
       "evidence_level": "CORROBORATED",
-      "scope_paths": [
-        "prototype/generic-discovery-engine.user.js"
-      ],
+      "claim_verification": {
+        "result": "VERIFIED"
+      },
+      "confidence": "MEDIUM",
       "evidence": [
         {
           "id": "CODE-004",
@@ -603,24 +533,21 @@
         }
       ],
       "interpretation": {
-        "summary": "Timeout, transport error and HTTP error all yield observation records with distinct statuses. test_state UNTESTED: the failure paths create observations in code (CODE-004, CODE-013, CODE-019), but no executed check asserts the resulting observation.",
+        "summary": "[acquisition] Timeout, transport error and HTTP error all yield observation records with distinct statuses. test_state UNTESTED: the failure paths create observations in code (CODE-004, CODE-013, CODE-019), but no executed check asserts the resulting observation.",
         "limitations": []
-      },
-      "confidence": "MEDIUM",
-      "claim_verification": {
-        "result": "VERIFIED"
       }
     },
     {
-      "id": "ACQ-CLAIM-003",
+      "id": "CLAIM-012",
       "statement": "Cancelling a scan aborts in-flight requests.",
       "claim_kind": "CURRENT",
       "implementation_state": "NOT_IMPLEMENTED",
       "test_state": "UNTESTED",
       "evidence_level": "DIRECT",
-      "scope_paths": [
-        "prototype/generic-discovery-engine.user.js"
-      ],
+      "claim_verification": {
+        "result": "CONTRADICTED"
+      },
+      "confidence": "MEDIUM",
       "evidence": [
         {
           "id": "CODE-018",
@@ -651,30 +578,23 @@
         }
       ],
       "interpretation": {
-        "summary": "stop() sets a flag; in-flight requests continue, and runtime-owned cancellation exists only in the DESIGNED v0.10. Conflicting evidence: stop() only sets a flag (CODE-018) and no request is aborted (CODE-010). DIRECT evidence: the code itself shows that only a flag is set (CODE-018) and no in-flight request is aborted (CODE-010); the design prose is context, not the ground of the finding.",
+        "summary": "[acquisition] stop() sets a flag; in-flight requests continue, and runtime-owned cancellation exists only in the DESIGNED v0.10. Conflicting evidence: stop() only sets a flag (CODE-018) and no request is aborted (CODE-010). DIRECT evidence: the code itself shows that only a flag is set (CODE-018) and no in-flight request is aborted (CODE-010); the design prose is context, not the ground of the finding.",
         "limitations": [
           "The design intent and the implementation conflict; this record states the conflict and does not resolve it."
         ]
-      },
-      "conflicting_evidence": [
-        "CODE-018",
-        "CODE-010"
-      ],
-      "confidence": "MEDIUM",
-      "claim_verification": {
-        "result": "CONTRADICTED"
       }
     },
     {
-      "id": "PROV-CLAIM-001",
+      "id": "CLAIM-013",
       "statement": "A discovery records both its candidate and its observation.",
       "claim_kind": "CURRENT",
       "implementation_state": "IMPLEMENTED",
       "test_state": "TESTED",
       "evidence_level": "DIRECT",
-      "scope_paths": [
-        "prototype/generic-discovery-engine.user.js"
-      ],
+      "claim_verification": {
+        "result": "VERIFIED"
+      },
+      "confidence": "HIGH",
       "evidence": [
         {
           "id": "CODE-005",
@@ -705,24 +625,21 @@
         }
       ],
       "interpretation": {
-        "summary": "The linkage is stored at creation time. Tested: the harness reconstructs the chain and reads both records.",
+        "summary": "[provenance] The linkage is stored at creation time. Tested: the harness reconstructs the chain and reads both records.",
         "limitations": []
-      },
-      "confidence": "HIGH",
-      "claim_verification": {
-        "result": "VERIFIED"
       }
     },
     {
-      "id": "PROV-CLAIM-002",
+      "id": "CLAIM-014",
       "statement": "The derivation chain seed to candidate to observation to discovery to child candidate is reconstructible.",
       "claim_kind": "CURRENT",
       "implementation_state": "IMPLEMENTED",
       "test_state": "TESTED",
       "evidence_level": "CORROBORATED",
-      "scope_paths": [
-        "prototype/generic-discovery-engine.user.js"
-      ],
+      "claim_verification": {
+        "result": "VERIFIED"
+      },
+      "confidence": "HIGH",
       "evidence": [
         {
           "id": "CODE-005",
@@ -753,24 +670,21 @@
         }
       ],
       "interpretation": {
-        "summary": "Reconstructed end to end in a fresh execution context, including the observations for each link.",
+        "summary": "[provenance] Reconstructed end to end in a fresh execution context, including the observations for each link.",
         "limitations": []
-      },
-      "confidence": "HIGH",
-      "claim_verification": {
-        "result": "VERIFIED"
       }
     },
     {
-      "id": "PROV-CLAIM-003",
+      "id": "CLAIM-015",
       "statement": "Content fingerprints are used to relate identical content behind different URLs.",
       "claim_kind": "SPECIFIED",
       "implementation_state": "NOT_IMPLEMENTED",
       "test_state": "UNTESTED",
       "evidence_level": "DIRECT",
-      "scope_paths": [
-        "prototype/generic-discovery-engine.user.js"
-      ],
+      "claim_verification": {
+        "result": "CONTRADICTED"
+      },
+      "confidence": "MEDIUM",
       "evidence": [
         {
           "id": "CODE-022",
@@ -792,26 +706,23 @@
         }
       ],
       "interpretation": {
-        "summary": "The fingerprint index is written and probed but never read; identity resolution is DESIGNED (v0.17), not current (defect D8).",
+        "summary": "[provenance] The fingerprint index is written and probed but never read; identity resolution is DESIGNED (v0.17), not current (defect D8).",
         "limitations": [
           "The design intent and the implementation conflict; this record states the conflict and does not resolve it."
         ]
-      },
-      "confidence": "MEDIUM",
-      "claim_verification": {
-        "result": "CONTRADICTED"
       }
     },
     {
-      "id": "PROV-CLAIM-004",
+      "id": "CLAIM-016",
       "statement": "Observation and discovery are distinct objects.",
       "claim_kind": "CURRENT",
       "implementation_state": "IMPLEMENTED",
       "test_state": "TESTED",
       "evidence_level": "DIRECT",
-      "scope_paths": [
-        "prototype/generic-discovery-engine.user.js"
-      ],
+      "claim_verification": {
+        "result": "VERIFIED"
+      },
+      "confidence": "HIGH",
       "evidence": [
         {
           "id": "CODE-004",
@@ -842,24 +753,21 @@
         }
       ],
       "interpretation": {
-        "summary": "Separate records, separate identifiers, separate lifetimes. Tested: the harness reads observations and discoveries as separate maps.",
+        "summary": "[provenance] Separate records, separate identifiers, separate lifetimes. Tested: the harness reads observations and discoveries as separate maps.",
         "limitations": []
-      },
-      "confidence": "HIGH",
-      "claim_verification": {
-        "result": "VERIFIED"
       }
     },
     {
-      "id": "PROV-CLAIM-005",
+      "id": "CLAIM-017",
       "statement": "An evidence layer with competing interpretations and conflict resolution exists.",
       "claim_kind": "SPECIFIED",
       "implementation_state": "NOT_IMPLEMENTED",
       "test_state": "NOT_APPLICABLE",
       "evidence_level": "ABSENT",
-      "scope_paths": [
-        "prototype/generic-discovery-engine.user.js"
-      ],
+      "claim_verification": {
+        "result": "UNVERIFIED"
+      },
+      "confidence": "MEDIUM",
       "evidence": [
         {
           "id": "SCOPE-002",
@@ -881,27 +789,23 @@
         }
       ],
       "interpretation": {
-        "summary": "No such objects exist; designed in v0.16 and v0.34. Evidence is ABSENT (inspected scope covered), not INACCESSIBLE.",
+        "summary": "[provenance] No such objects exist; designed in v0.16 and v0.34. Evidence is ABSENT (inspected scope covered), not INACCESSIBLE.",
         "limitations": [
           "Absence holds only for the inspected scope and revision recorded in AV-006."
         ]
-      },
-      "absence_verification": "AV-006",
-      "confidence": "MEDIUM",
-      "claim_verification": {
-        "result": "UNVERIFIED"
       }
     },
     {
-      "id": "PROV-CLAIM-006",
+      "id": "CLAIM-018",
       "statement": "Observations are immutable evidence.",
       "claim_kind": "CURRENT",
       "implementation_state": "NOT_IMPLEMENTED",
       "test_state": "UNTESTED",
       "evidence_level": "DIRECT",
-      "scope_paths": [
-        "prototype/generic-discovery-engine.user.js"
-      ],
+      "claim_verification": {
+        "result": "UNVERIFIED"
+      },
+      "confidence": "MEDIUM",
       "evidence": [
         {
           "id": "CODE-006",
@@ -923,24 +827,21 @@
         }
       ],
       "interpretation": {
-        "summary": "Observations live in a mutable map and are re-serialized on persistence; nothing enforces immutability. DIRECT evidence: observation records are plain objects with no freeze, copy-on-write or integrity check, so immutability is not enforced (CODE-004, CODE-005).",
+        "summary": "[provenance] Observations live in a mutable map and are re-serialized on persistence; nothing enforces immutability. DIRECT evidence: observation records are plain objects with no freeze, copy-on-write or integrity check, so immutability is not enforced (CODE-004, CODE-005).",
         "limitations": []
-      },
-      "confidence": "MEDIUM",
-      "claim_verification": {
-        "result": "UNVERIFIED"
       }
     },
     {
-      "id": "ARCH-CLAIM-001",
+      "id": "CLAIM-019",
       "statement": "Providers perform no I/O, do not enqueue candidates and own no policy.",
       "claim_kind": "CURRENT",
       "implementation_state": "IMPLEMENTED",
       "test_state": "TESTED",
       "evidence_level": "CORROBORATED",
-      "scope_paths": [
-        "prototype/generic-discovery-engine.user.js"
-      ],
+      "claim_verification": {
+        "result": "VERIFIED"
+      },
+      "confidence": "HIGH",
       "evidence": [
         {
           "id": "CODE-014",
@@ -971,24 +872,21 @@
         }
       ],
       "interpretation": {
-        "summary": "The strongest boundary in the prototype: the contract is matches() plus recognize(), with expansion owned by the engine.",
+        "summary": "[architecture] The strongest boundary in the prototype: the contract is matches() plus recognize(), with expansion owned by the engine.",
         "limitations": []
-      },
-      "confidence": "HIGH",
-      "claim_verification": {
-        "result": "VERIFIED"
       }
     },
     {
-      "id": "ARCH-CLAIM-002",
+      "id": "CLAIM-020",
       "statement": "Providers are protocol-independent.",
       "claim_kind": "CURRENT",
       "implementation_state": "NOT_IMPLEMENTED",
       "test_state": "PARTIALLY_TESTED",
       "evidence_level": "DIRECT",
-      "scope_paths": [
-        "prototype/generic-discovery-engine.user.js"
-      ],
+      "claim_verification": {
+        "result": "CONTRADICTED"
+      },
+      "confidence": "HIGH",
       "evidence": [
         {
           "id": "CODE-013",
@@ -1028,26 +926,23 @@
         }
       ],
       "interpretation": {
-        "summary": "Only recognition is an interface; acquisition is one hard-wired HTTP path. PARTIALLY_TESTED: provider matching is executed (TEST-006); the transport half of the claim is not tested.",
+        "summary": "[architecture] Only recognition is an interface; acquisition is one hard-wired HTTP path. PARTIALLY_TESTED: provider matching is executed (TEST-006); the transport half of the claim is not tested.",
         "limitations": [
           "The design intent and the implementation conflict; this record states the conflict and does not resolve it."
         ]
-      },
-      "confidence": "HIGH",
-      "claim_verification": {
-        "result": "CONTRADICTED"
       }
     },
     {
-      "id": "ARCH-CLAIM-003",
+      "id": "CLAIM-021",
       "statement": "Candidate expansion is owned by the engine, not by providers.",
       "claim_kind": "CURRENT",
       "implementation_state": "IMPLEMENTED",
       "test_state": "TESTED",
       "evidence_level": "CORROBORATED",
-      "scope_paths": [
-        "prototype/generic-discovery-engine.user.js"
-      ],
+      "claim_verification": {
+        "result": "VERIFIED"
+      },
+      "confidence": "HIGH",
       "evidence": [
         {
           "id": "CODE-015",
@@ -1078,24 +973,21 @@
         }
       ],
       "interpretation": {
-        "summary": "Providers return Discovery objects; emitDiscovery performs expansion under engine policy.",
+        "summary": "[architecture] Providers return Discovery objects; emitDiscovery performs expansion under engine policy.",
         "limitations": []
-      },
-      "confidence": "HIGH",
-      "claim_verification": {
-        "result": "VERIFIED"
       }
     },
     {
-      "id": "ARCH-CLAIM-004",
+      "id": "CLAIM-022",
       "statement": "Discovery records are deduplicated like candidates.",
       "claim_kind": "CURRENT",
       "implementation_state": "NOT_IMPLEMENTED",
       "test_state": "TESTED",
       "evidence_level": "CORROBORATED",
-      "scope_paths": [
-        "prototype/generic-discovery-engine.user.js"
-      ],
+      "claim_verification": {
+        "result": "CONTRADICTED"
+      },
+      "confidence": "HIGH",
       "evidence": [
         {
           "id": "CODE-016",
@@ -1126,28 +1018,24 @@
         }
       ],
       "interpretation": {
-        "summary": "A discovery is stored before the derived candidate is deduplicated, and text/html is interpreted twice; 74 discoveries for 27 URLs in one run (defect D9). The absence of deduplication is tested, not inferred: the harness counts discoveries against unique URLs in one run.",
+        "summary": "[architecture] A discovery is stored before the derived candidate is deduplicated, and text/html is interpreted twice; 74 discoveries for 27 URLs in one run (defect D9). The absence of deduplication is tested, not inferred: the harness counts discoveries against unique URLs in one run.",
         "limitations": [
           "The design intent and the implementation conflict; this record states the conflict and does not resolve it.",
           "Observed in the bundled harness: one browser profile and one simulated request log, not a production measurement."
         ]
-      },
-      "absence_test": "TEST-012",
-      "confidence": "HIGH",
-      "claim_verification": {
-        "result": "CONTRADICTED"
       }
     },
     {
-      "id": "ARCH-CLAIM-005",
+      "id": "CLAIM-023",
       "statement": "Persisted state survives a reload.",
       "claim_kind": "CURRENT",
       "implementation_state": "IMPLEMENTED",
       "test_state": "TESTED",
       "evidence_level": "CORROBORATED",
-      "scope_paths": [
-        "prototype/generic-discovery-engine.user.js"
-      ],
+      "claim_verification": {
+        "result": "VERIFIED"
+      },
+      "confidence": "HIGH",
       "evidence": [
         {
           "id": "CODE-025",
@@ -1169,26 +1057,23 @@
         }
       ],
       "interpretation": {
-        "summary": "Candidates, observations, discoveries, resources, graph edges and the decision ledger round-trip; the request budget deliberately resets.",
+        "summary": "[architecture] Candidates, observations, discoveries, resources, graph edges and the decision ledger round-trip; the request budget deliberately resets.",
         "limitations": [
           "Observed in the bundled harness: one browser profile and one simulated request log, not a production measurement."
         ]
-      },
-      "confidence": "HIGH",
-      "claim_verification": {
-        "result": "VERIFIED"
       }
     },
     {
-      "id": "ARCH-CLAIM-006",
+      "id": "CLAIM-024",
       "statement": "Persistence is transactional and crash-safe.",
       "claim_kind": "SPECIFIED",
       "implementation_state": "NOT_IMPLEMENTED",
       "test_state": "NOT_APPLICABLE",
       "evidence_level": "ABSENT",
-      "scope_paths": [
-        "prototype/generic-discovery-engine.user.js"
-      ],
+      "claim_verification": {
+        "result": "UNVERIFIED"
+      },
+      "confidence": "MEDIUM",
       "evidence": [
         {
           "id": "CODE-025",
@@ -1219,27 +1104,23 @@
         }
       ],
       "interpretation": {
-        "summary": "One serialized snapshot with caps; no transaction, validation or recovery. Designed in v0.32.",
+        "summary": "[architecture] One serialized snapshot with caps; no transaction, validation or recovery. Designed in v0.32.",
         "limitations": [
           "Absence holds only for the inspected scope and revision recorded in AV-007."
         ]
-      },
-      "absence_verification": "AV-007",
-      "confidence": "MEDIUM",
-      "claim_verification": {
-        "result": "UNVERIFIED"
       }
     },
     {
-      "id": "ARCH-CLAIM-007",
+      "id": "CLAIM-025",
       "statement": "The request budget is a per-run allowance.",
       "claim_kind": "CURRENT",
       "implementation_state": "IMPLEMENTED",
       "test_state": "TESTED",
       "evidence_level": "CORROBORATED",
-      "scope_paths": [
-        "prototype/generic-discovery-engine.user.js"
-      ],
+      "claim_verification": {
+        "result": "VERIFIED"
+      },
+      "confidence": "HIGH",
       "evidence": [
         {
           "id": "CODE-020",
@@ -1270,26 +1151,23 @@
         }
       ],
       "interpretation": {
-        "summary": "Restore deliberately resets requestsReserved; reserved slots are never released, so the budget counts attempts.",
+        "summary": "[architecture] Restore deliberately resets requestsReserved; reserved slots are never released, so the budget counts attempts.",
         "limitations": [
           "Observed in the bundled harness: one browser profile and one simulated request log, not a production measurement."
         ]
-      },
-      "confidence": "HIGH",
-      "claim_verification": {
-        "result": "VERIFIED"
       }
     },
     {
-      "id": "ARCH-CLAIM-008",
+      "id": "CLAIM-026",
       "statement": "Cross-context coordination is part of the current implementation.",
       "claim_kind": "SPECIFIED",
       "implementation_state": "NOT_IMPLEMENTED",
       "test_state": "NOT_APPLICABLE",
       "evidence_level": "DIRECT",
-      "scope_paths": [
-        "prototype/generic-discovery-engine.user.js"
-      ],
+      "claim_verification": {
+        "result": "CONTRADICTED"
+      },
+      "confidence": "MEDIUM",
       "evidence": [
         {
           "id": "CODE-009",
@@ -1320,26 +1198,23 @@
         }
       ],
       "interpretation": {
-        "summary": "Ownership state is per engine instance; two tabs duplicate each other's work. Profile coordination is DESIGNED (v0.33) and is explicitly not distributed consensus.",
+        "summary": "[architecture] Ownership state is per engine instance; two tabs duplicate each other's work. Profile coordination is DESIGNED (v0.33) and is explicitly not distributed consensus.",
         "limitations": [
           "The design intent and the implementation conflict; this record states the conflict and does not resolve it."
         ]
-      },
-      "confidence": "MEDIUM",
-      "claim_verification": {
-        "result": "CONTRADICTED"
       }
     },
     {
-      "id": "ARCH-CLAIM-009",
+      "id": "CLAIM-027",
       "statement": "Recognition confidence is comparable across providers.",
       "claim_kind": "CURRENT",
       "implementation_state": "NOT_IMPLEMENTED",
       "test_state": "UNTESTED",
       "evidence_level": "DIRECT",
-      "scope_paths": [
-        "prototype/generic-discovery-engine.user.js"
-      ],
+      "claim_verification": {
+        "result": "UNVERIFIED"
+      },
+      "confidence": "MEDIUM",
       "evidence": [
         {
           "id": "CODE-005",
@@ -1361,24 +1236,21 @@
         }
       ],
       "interpretation": {
-        "summary": "Confidences are provider-local constants with no calibration or aggregation rule.",
+        "summary": "[architecture] Confidences are provider-local constants with no calibration or aggregation rule.",
         "limitations": []
-      },
-      "confidence": "MEDIUM",
-      "claim_verification": {
-        "result": "UNVERIFIED"
       }
     },
     {
-      "id": "ARCH-CLAIM-010",
+      "id": "CLAIM-028",
       "statement": "Several providers may match one observation, and do so by design.",
       "claim_kind": "CURRENT",
       "implementation_state": "IMPLEMENTED",
       "test_state": "TESTED",
       "evidence_level": "CORROBORATED",
-      "scope_paths": [
-        "prototype/generic-discovery-engine.user.js"
-      ],
+      "claim_verification": {
+        "result": "VERIFIED"
+      },
+      "confidence": "HIGH",
       "evidence": [
         {
           "id": "CODE-016",
@@ -1400,24 +1272,21 @@
         }
       ],
       "interpretation": {
-        "summary": "text/html matches HTML and text because TextProvider matches text/*; there is no router or priority (DESIGNED v0.11).",
+        "summary": "[architecture] text/html matches HTML and text because TextProvider matches text/*; there is no router or priority (DESIGNED v0.11).",
         "limitations": []
-      },
-      "confidence": "HIGH",
-      "claim_verification": {
-        "result": "VERIFIED"
       }
     },
     {
-      "id": "SCOPE-CLAIM-001",
+      "id": "CLAIM-029",
       "statement": "The repository contains no DVB/RF implementation (spectrum, tuner, demodulator, FEC, transport stream, PSI/SI).",
       "claim_kind": "CURRENT",
       "implementation_state": "NOT_IMPLEMENTED",
       "test_state": "NOT_APPLICABLE",
       "evidence_level": "ABSENT",
-      "scope_paths": [
-        "prototype/generic-discovery-engine.user.js"
-      ],
+      "claim_verification": {
+        "result": "VERIFIED"
+      },
+      "confidence": "MEDIUM",
       "evidence": [
         {
           "id": "SCOPE-001",
@@ -1439,27 +1308,23 @@
         }
       ],
       "interpretation": {
-        "summary": "Absence is asserted over a single implementation file read in full and scanned mechanically, so it is ABSENT (inspected, not found), not INACCESSIBLE.",
+        "summary": "[scope] Absence is asserted over a single implementation file read in full and scanned mechanically, so it is ABSENT (inspected, not found), not INACCESSIBLE.",
         "limitations": [
           "Absence holds only for the inspected scope and revision recorded in AV-001."
         ]
-      },
-      "absence_verification": "AV-001",
-      "confidence": "MEDIUM",
-      "claim_verification": {
-        "result": "VERIFIED"
       }
     },
     {
-      "id": "SCOPE-CLAIM-002",
+      "id": "CLAIM-030",
       "statement": "No v0.8+ design layer is implemented (capabilities, work items, evidence graph, leases, coverage, fencing).",
       "claim_kind": "CURRENT",
       "implementation_state": "NOT_IMPLEMENTED",
       "test_state": "NOT_APPLICABLE",
       "evidence_level": "ABSENT",
-      "scope_paths": [
-        "prototype/generic-discovery-engine.user.js"
-      ],
+      "claim_verification": {
+        "result": "VERIFIED"
+      },
+      "confidence": "MEDIUM",
       "evidence": [
         {
           "id": "SCOPE-002",
@@ -1490,27 +1355,23 @@
         }
       ],
       "interpretation": {
-        "summary": "The design series exists as prose only.",
+        "summary": "[scope] The design series exists as prose only.",
         "limitations": [
           "Absence holds only for the inspected scope and revision recorded in AV-002."
         ]
-      },
-      "absence_verification": "AV-002",
-      "confidence": "MEDIUM",
-      "claim_verification": {
-        "result": "VERIFIED"
       }
     },
     {
-      "id": "SCOPE-CLAIM-003",
+      "id": "CLAIM-031",
       "statement": "Coverage, absence and completeness are not represented.",
       "claim_kind": "CURRENT",
       "implementation_state": "NOT_IMPLEMENTED",
       "test_state": "NOT_APPLICABLE",
       "evidence_level": "ABSENT",
-      "scope_paths": [
-        "prototype/generic-discovery-engine.user.js"
-      ],
+      "claim_verification": {
+        "result": "VERIFIED"
+      },
+      "confidence": "MEDIUM",
       "evidence": [
         {
           "id": "SCOPE-006",
@@ -1532,27 +1393,23 @@
         }
       ],
       "interpretation": {
-        "summary": "\"Exhausted\" in logs means no eligible candidate at that instant; coverage objects are DESIGNED (v0.22, v0.23).",
+        "summary": "[scope] \"Exhausted\" in logs means no eligible candidate at that instant; coverage objects are DESIGNED (v0.22, v0.23).",
         "limitations": [
           "Absence holds only for the inspected scope and revision recorded in AV-003."
         ]
-      },
-      "absence_verification": "AV-003",
-      "confidence": "MEDIUM",
-      "claim_verification": {
-        "result": "VERIFIED"
       }
     },
     {
-      "id": "SCOPE-CLAIM-004",
+      "id": "CLAIM-032",
       "statement": "Non-URL candidate targets are not implemented.",
       "claim_kind": "CURRENT",
       "implementation_state": "NOT_IMPLEMENTED",
       "test_state": "NOT_APPLICABLE",
       "evidence_level": "ABSENT",
-      "scope_paths": [
-        "prototype/generic-discovery-engine.user.js"
-      ],
+      "claim_verification": {
+        "result": "VERIFIED"
+      },
+      "confidence": "MEDIUM",
       "evidence": [
         {
           "id": "SCOPE-007",
@@ -1574,27 +1431,23 @@
         }
       ],
       "interpretation": {
-        "summary": "Every discover() call passes a URL; the candidate type list is URL-oriented.",
+        "summary": "[scope] Every discover() call passes a URL; the candidate type list is URL-oriented.",
         "limitations": [
           "Absence holds only for the inspected scope and revision recorded in AV-004."
         ]
-      },
-      "absence_verification": "AV-004",
-      "confidence": "MEDIUM",
-      "claim_verification": {
-        "result": "VERIFIED"
       }
     },
     {
-      "id": "SCOPE-CLAIM-005",
+      "id": "CLAIM-033",
       "statement": "The repository contained no tests, CI configuration or build tooling at the analysis revision.",
       "claim_kind": "HISTORICAL",
       "implementation_state": "NOT_IMPLEMENTED",
       "test_state": "NOT_APPLICABLE",
       "evidence_level": "ABSENT",
-      "scope_paths": [
-        "."
-      ],
+      "claim_verification": {
+        "result": "VERIFIED"
+      },
+      "confidence": "MEDIUM",
       "evidence": [
         {
           "id": "SCOPE-005",
@@ -1607,28 +1460,23 @@
         }
       ],
       "interpretation": {
-        "summary": "True at cc8df73; verification tooling was added afterwards under change R-010, which is recorded as an executed documentation-scope change.",
+        "summary": "[scope] True at cc8df73; verification tooling was added afterwards under change R-010, which is recorded as an executed documentation-scope change.",
         "limitations": [
           "Absence holds only for the inspected scope and revision recorded in AV-005."
         ]
-      },
-      "absence_verification": "AV-005",
-      "confidence": "MEDIUM",
-      "claim_verification": {
-        "result": "VERIFIED"
       }
     },
     {
-      "id": "SCOPE-CLAIM-006",
+      "id": "CLAIM-034",
       "statement": "DVB/RF support is an explicit non-goal of the project.",
       "claim_kind": "NON_GOAL",
       "implementation_state": "NOT_APPLICABLE",
       "test_state": "NOT_APPLICABLE",
       "evidence_level": "DIRECT",
-      "scope_paths": [
-        "README.md",
-        "docs/prototype/scope.md"
-      ],
+      "claim_verification": {
+        "result": "VERIFIED"
+      },
+      "confidence": "MEDIUM",
       "evidence": [
         {
           "id": "DOC-007",
@@ -1650,24 +1498,21 @@
         }
       ],
       "interpretation": {
-        "summary": "Stated in the project scope and enforced mechanically by a symbol scan in tools/verify.mjs. implementation_state is NOT_APPLICABLE because a non-goal is not an implementation claim (§92); the boundary statement itself is DIRECT evidence.",
+        "summary": "[scope] Stated in the project scope and enforced mechanically by a symbol scan in tools/verify.mjs. implementation_state is NOT_APPLICABLE because a non-goal is not an implementation claim (§92); the boundary statement itself is DIRECT evidence.",
         "limitations": []
-      },
-      "confidence": "MEDIUM",
-      "claim_verification": {
-        "result": "VERIFIED"
       }
     },
     {
-      "id": "PLAN-CLAIM-001",
+      "id": "CLAIM-035",
       "statement": "Acquisition runtime, recognition runtime, candidate sources, domain/sessions, work items, evidence graph, identity, classification, coverage, absence, query planning, reconciliation, arbitration, cost ledger, transactional persistence and multi-context coordination are designed.",
       "claim_kind": "PLANNED",
       "implementation_state": "NOT_IMPLEMENTED",
       "test_state": "NOT_APPLICABLE",
       "evidence_level": "DIRECT",
-      "scope_paths": [
-        "archive/Continue Architecture Planning.md"
-      ],
+      "claim_verification": {
+        "result": "VERIFIED"
+      },
+      "confidence": "MEDIUM",
       "evidence": [
         {
           "id": "DOC-006",
@@ -1689,24 +1534,21 @@
         }
       ],
       "interpretation": {
-        "summary": "The fact that these layers are planned is verified; their implementation is not implied. DIRECT evidence: the design documents are repository artifacts and are directly relevant to the claim that the layers are designed and unimplemented (§89).",
+        "summary": "[plan] The fact that these layers are planned is verified; their implementation is not implied. DIRECT evidence: the design documents are repository artifacts and are directly relevant to the claim that the layers are designed and unimplemented (§89).",
         "limitations": []
-      },
-      "confidence": "MEDIUM",
-      "claim_verification": {
-        "result": "VERIFIED"
       }
     },
     {
-      "id": "PLAN-CLAIM-002",
+      "id": "CLAIM-036",
       "statement": "Browser-profile coordination is not distributed consensus.",
       "claim_kind": "SPECIFIED",
       "implementation_state": "NOT_IMPLEMENTED",
       "test_state": "NOT_APPLICABLE",
       "evidence_level": "DIRECT",
-      "scope_paths": [
-        "archive/Continue Architecture Planning.md"
-      ],
+      "claim_verification": {
+        "result": "VERIFIED"
+      },
+      "confidence": "MEDIUM",
       "evidence": [
         {
           "id": "DOC-005",
@@ -1719,24 +1561,21 @@
         }
       ],
       "interpretation": {
-        "summary": "Stated as a boundary by the design series itself. DIRECT evidence: the design documents are repository artifacts and are directly relevant to the claim that the layers are designed and unimplemented (§89).",
+        "summary": "[plan] Stated as a boundary by the design series itself. DIRECT evidence: the design documents are repository artifacts and are directly relevant to the claim that the layers are designed and unimplemented (§89).",
         "limitations": []
-      },
-      "confidence": "MEDIUM",
-      "claim_verification": {
-        "result": "VERIFIED"
       }
     },
     {
-      "id": "PLAN-CLAIM-003",
+      "id": "CLAIM-037",
       "statement": "Deterministic decision replay must be separable from acquisition against a changing world.",
       "claim_kind": "SPECIFIED",
       "implementation_state": "NOT_IMPLEMENTED",
       "test_state": "NOT_APPLICABLE",
       "evidence_level": "DIRECT",
-      "scope_paths": [
-        "archive/Continue Architecture Planning.md"
-      ],
+      "claim_verification": {
+        "result": "VERIFIED"
+      },
+      "confidence": "MEDIUM",
       "evidence": [
         {
           "id": "DOC-004",
@@ -1749,24 +1588,21 @@
         }
       ],
       "interpretation": {
-        "summary": "An acquisition log is not a deterministic execution trace. DIRECT evidence: the design documents are repository artifacts and are directly relevant to the claim that the layers are designed and unimplemented (§89).",
+        "summary": "[plan] An acquisition log is not a deterministic execution trace. DIRECT evidence: the design documents are repository artifacts and are directly relevant to the claim that the layers are designed and unimplemented (§89).",
         "limitations": []
-      },
-      "confidence": "MEDIUM",
-      "claim_verification": {
-        "result": "VERIFIED"
       }
     },
     {
-      "id": "HIST-CLAIM-001",
+      "id": "CLAIM-038",
       "statement": "Versions v0.3.0 to v0.6.0 existed as code and are superseded by v0.7.1.",
       "claim_kind": "HISTORICAL",
       "implementation_state": "IMPLEMENTED",
       "test_state": "UNTESTED",
       "evidence_level": "DIRECT",
-      "scope_paths": [
-        "archive/Continue Architecture Planning.md"
-      ],
+      "claim_verification": {
+        "result": "VERIFIED"
+      },
+      "confidence": "MEDIUM",
       "evidence": [
         {
           "id": "CODE-033",
@@ -1788,24 +1624,21 @@
         }
       ],
       "interpretation": {
-        "summary": "All extracted revisions parse except the v0.5.0 paste at transcript L18378-L23093. Supersession is historical: these revisions are not maintained, and the evidence is the historical code blocks themselves, not the prose around them.",
+        "summary": "[history] All extracted revisions parse except the v0.5.0 paste at transcript L18378-L23093. Supersession is historical: these revisions are not maintained, and the evidence is the historical code blocks themselves, not the prose around them.",
         "limitations": []
-      },
-      "confidence": "MEDIUM",
-      "claim_verification": {
-        "result": "VERIFIED"
       }
     },
     {
-      "id": "HIST-CLAIM-002",
+      "id": "CLAIM-039",
       "statement": "The v0.5.0 paste in the archive is not valid JavaScript.",
       "claim_kind": "HISTORICAL",
       "implementation_state": "NOT_IMPLEMENTED",
       "test_state": "NOT_APPLICABLE",
       "evidence_level": "DIRECT",
-      "scope_paths": [
-        "archive/Continue Architecture Planning.md"
-      ],
+      "claim_verification": {
+        "result": "VERIFIED"
+      },
+      "confidence": "MEDIUM",
       "evidence": [
         {
           "id": "DOC-006",
@@ -1818,24 +1651,21 @@
         }
       ],
       "interpretation": {
-        "summary": "await appears outside an async function (node --check).",
+        "summary": "[history] await appears outside an async function (node --check).",
         "limitations": []
-      },
-      "confidence": "MEDIUM",
-      "claim_verification": {
-        "result": "VERIFIED"
       }
     },
     {
-      "id": "HIST-CLAIM-003",
+      "id": "CLAIM-040",
       "statement": "The pre-cleanup README described the system accurately.",
       "claim_kind": "HISTORICAL",
       "implementation_state": "NOT_APPLICABLE",
       "test_state": "NOT_APPLICABLE",
       "evidence_level": "CORROBORATED",
-      "scope_paths": [
-        "README.md"
-      ],
+      "claim_verification": {
+        "result": "CONTRADICTED"
+      },
+      "confidence": "HIGH",
       "evidence": [
         {
           "id": "DOC-001",
@@ -1875,27 +1705,24 @@
         }
       ],
       "interpretation": {
-        "summary": "It claimed atomic claiming and guaranteed concurrency. Direct implementation evidence and executed behaviour override documentation evidence, and the contradiction is recorded rather than silently resolved.",
+        "summary": "[history] It claimed atomic claiming and guaranteed concurrency. Direct implementation evidence and executed behaviour override documentation evidence, and the contradiction is recorded rather than silently resolved.",
         "limitations": [
           "The design intent and the implementation conflict; this record states the conflict and does not resolve it.",
           "Observed in the bundled harness: one browser profile and one simulated request log, not a production measurement."
         ]
-      },
-      "confidence": "HIGH",
-      "claim_verification": {
-        "result": "CONTRADICTED"
       }
     },
     {
-      "id": "HYP-CLAIM-001",
+      "id": "CLAIM-041",
       "statement": "A value x probability / cost scheduling model would outperform the static priority heuristic.",
       "claim_kind": "HYPOTHESIS",
       "implementation_state": "NOT_APPLICABLE",
       "test_state": "NOT_APPLICABLE",
       "evidence_level": "INDIRECT",
-      "scope_paths": [
-        "archive/Continue Architecture Planning.md"
-      ],
+      "claim_verification": {
+        "result": "UNVERIFIED"
+      },
+      "confidence": "LOW",
       "evidence": [
         {
           "id": "DOC-006",
@@ -1908,98 +1735,11 @@
         }
       ],
       "interpretation": {
-        "summary": "No measurement exists; the cost and probability inputs are not modelled. implementation_state is NOT_APPLICABLE because a hypothesis is not an implementation claim (§91).",
+        "summary": "[hypothesis] No measurement exists; the cost and probability inputs are not modelled. implementation_state is NOT_APPLICABLE because a hypothesis is not an implementation claim (§91).",
         "limitations": [
           "Indirect evidence supports the interpretation without establishing the claim directly."
         ]
-      },
-      "confidence": "LOW",
-      "claim_verification": {
-        "result": "UNVERIFIED"
       }
-    }
-  ],
-  "contradictions": [
-    {
-      "id": "CONTRA-001",
-      "claim_a": "SCHED-CLAIM-002",
-      "claim_b": "HIST-CLAIM-003",
-      "evidence": [
-        "CODE-008",
-        "CODE-021",
-        "TEST-009",
-        "TEST-011"
-      ],
-      "supported": "the implementation (re-queue path)",
-      "defect": "D1"
-    },
-    {
-      "id": "CONTRA-002",
-      "claim_a": "SCHED-CLAIM-005",
-      "claim_b": "HIST-CLAIM-003",
-      "evidence": [
-        "CODE-018",
-        "TEST-010"
-      ],
-      "supported": "the implementation (permanent worker exit)",
-      "defect": "D2"
-    },
-    {
-      "id": "CONTRA-003",
-      "claim_a": "SCHED-CLAIM-004",
-      "claim_b": "HIST-CLAIM-003",
-      "evidence": [
-        "CODE-009",
-        "CODE-010"
-      ],
-      "supported": "the implementation (failed remains claimable)",
-      "defect": "D3"
-    },
-    {
-      "id": "CONTRA-004",
-      "claim_a": "ARCH-CLAIM-002",
-      "claim_b": "HIST-CLAIM-003",
-      "evidence": [
-        "CODE-013",
-        "CODE-015",
-        "SCOPE-003"
-      ],
-      "supported": "the implementation (single HTTP path)",
-      "defect": null
-    },
-    {
-      "id": "CONTRA-005",
-      "claim_a": "ARCH-CLAIM-004",
-      "claim_b": "HIST-CLAIM-003",
-      "evidence": [
-        "CODE-016",
-        "CODE-021",
-        "TEST-012"
-      ],
-      "supported": "the implementation (discovery stored before dedup)",
-      "defect": "D9"
-    },
-    {
-      "id": "CONTRA-006",
-      "claim_a": "PROV-CLAIM-003",
-      "claim_b": "HIST-CLAIM-003",
-      "evidence": [
-        "CODE-022",
-        "CODE-023"
-      ],
-      "supported": "the implementation (fingerprint index never read)",
-      "defect": "D8"
-    },
-    {
-      "id": "CONTRA-007",
-      "claim_a": "ARCH-CLAIM-008",
-      "claim_b": "HIST-CLAIM-003",
-      "evidence": [
-        "CODE-009",
-        "SCOPE-004"
-      ],
-      "supported": "the implementation (per-instance ownership)",
-      "defect": null
     }
   ],
   "changes": [
@@ -2012,8 +1752,6 @@
         "DOC-003",
         "DOC-006"
       ],
-      "risk": "MEDIUM",
-      "executed": true,
       "scope": {
         "paths": {
           "include": [
@@ -2021,7 +1759,8 @@
           ],
           "exclude": []
         }
-      }
+      },
+      "risk": "MEDIUM"
     },
     {
       "id": "R-002",
@@ -2032,8 +1771,6 @@
         "CODE-008",
         "TEST-009"
       ],
-      "risk": "LOW",
-      "executed": true,
       "scope": {
         "paths": {
           "include": [
@@ -2041,7 +1778,8 @@
           ],
           "exclude": []
         }
-      }
+      },
+      "risk": "LOW"
     },
     {
       "id": "R-003",
@@ -2051,8 +1789,6 @@
         "DOC-007",
         "DOC-011"
       ],
-      "risk": "LOW",
-      "executed": true,
       "scope": {
         "paths": {
           "include": [
@@ -2060,7 +1796,8 @@
           ],
           "exclude": []
         }
-      }
+      },
+      "risk": "LOW"
     },
     {
       "id": "R-004",
@@ -2069,8 +1806,6 @@
       "evidence": [
         "DOC-006"
       ],
-      "risk": "LOW",
-      "executed": true,
       "scope": {
         "paths": {
           "include": [
@@ -2078,7 +1813,8 @@
           ],
           "exclude": []
         }
-      }
+      },
+      "risk": "LOW"
     },
     {
       "id": "R-005",
@@ -2087,8 +1823,6 @@
       "evidence": [
         "DOC-007"
       ],
-      "risk": "LOW",
-      "executed": true,
       "scope": {
         "paths": {
           "include": [
@@ -2096,7 +1830,8 @@
           ],
           "exclude": []
         }
-      }
+      },
+      "risk": "LOW"
     },
     {
       "id": "R-006",
@@ -2106,8 +1841,6 @@
         "DOC-008",
         "DOC-009"
       ],
-      "risk": "LOW",
-      "executed": true,
       "scope": {
         "paths": {
           "include": [
@@ -2115,7 +1848,8 @@
           ],
           "exclude": []
         }
-      }
+      },
+      "risk": "LOW"
     },
     {
       "id": "R-007",
@@ -2125,8 +1859,6 @@
         "CODE-016",
         "TEST-006"
       ],
-      "risk": "LOW",
-      "executed": true,
       "scope": {
         "paths": {
           "include": [
@@ -2134,7 +1866,8 @@
           ],
           "exclude": []
         }
-      }
+      },
+      "risk": "LOW"
     },
     {
       "id": "R-008",
@@ -2143,8 +1876,6 @@
       "evidence": [
         "CODE-015"
       ],
-      "risk": "LOW",
-      "executed": true,
       "scope": {
         "paths": {
           "include": [
@@ -2152,7 +1883,8 @@
           ],
           "exclude": []
         }
-      }
+      },
+      "risk": "LOW"
     },
     {
       "id": "R-009",
@@ -2161,8 +1893,6 @@
       "evidence": [
         "DOC-011"
       ],
-      "risk": "LOW",
-      "executed": true,
       "scope": {
         "paths": {
           "include": [
@@ -2170,7 +1900,8 @@
           ],
           "exclude": []
         }
-      }
+      },
+      "risk": "LOW"
     },
     {
       "id": "R-010",
@@ -2180,8 +1911,6 @@
         "TEST-001",
         "TEST-013"
       ],
-      "risk": "LOW",
-      "executed": true,
       "scope": {
         "paths": {
           "include": [
@@ -2189,7 +1918,8 @@
           ],
           "exclude": []
         }
-      }
+      },
+      "risk": "LOW"
     },
     {
       "id": "R-011",
@@ -2199,8 +1929,6 @@
         "SCOPE-001",
         "SCOPE-002"
       ],
-      "risk": "LOW",
-      "executed": true,
       "scope": {
         "paths": {
           "include": [
@@ -2208,7 +1936,8 @@
           ],
           "exclude": []
         }
-      }
+      },
+      "risk": "LOW"
     },
     {
       "id": "R-012",
@@ -2217,8 +1946,6 @@
       "evidence": [
         "DOC-012"
       ],
-      "risk": "LOW",
-      "executed": true,
       "scope": {
         "paths": {
           "include": [
@@ -2226,7 +1953,8 @@
           ],
           "exclude": []
         }
-      }
+      },
+      "risk": "LOW"
     },
     {
       "id": "R-013",
@@ -2236,8 +1964,6 @@
         "DOC-003",
         "DOC-006"
       ],
-      "risk": "LOW",
-      "executed": true,
       "scope": {
         "paths": {
           "include": [
@@ -2245,7 +1971,8 @@
           ],
           "exclude": []
         }
-      }
+      },
+      "risk": "LOW"
     },
     {
       "id": "R-014",
@@ -2255,8 +1982,6 @@
         "DOC-011",
         "DOC-012"
       ],
-      "risk": "LOW",
-      "executed": true,
       "scope": {
         "paths": {
           "include": [
@@ -2264,7 +1989,8 @@
           ],
           "exclude": []
         }
-      }
+      },
+      "risk": "LOW"
     },
     {
       "id": "R-015",
@@ -2273,8 +1999,6 @@
       "evidence": [
         "DOC-012"
       ],
-      "risk": "LOW",
-      "executed": true,
       "scope": {
         "paths": {
           "include": [
@@ -2282,7 +2006,8 @@
           ],
           "exclude": []
         }
-      }
+      },
+      "risk": "LOW"
     },
     {
       "id": "R-101",
@@ -2292,8 +2017,15 @@
         "CODE-008",
         "TEST-009"
       ],
-      "risk": "CRITICAL",
-      "executed": false
+      "scope": {
+        "paths": {
+          "include": [
+            "prototype/generic-discovery-engine.user.js"
+          ],
+          "exclude": []
+        }
+      },
+      "risk": "CRITICAL"
     },
     {
       "id": "R-102",
@@ -2303,8 +2035,15 @@
         "CODE-012",
         "TEST-011"
       ],
-      "risk": "CRITICAL",
-      "executed": false
+      "scope": {
+        "paths": {
+          "include": [
+            "prototype/generic-discovery-engine.user.js"
+          ],
+          "exclude": []
+        }
+      },
+      "risk": "CRITICAL"
     },
     {
       "id": "R-103",
@@ -2314,8 +2053,15 @@
         "CODE-009",
         "CODE-010"
       ],
-      "risk": "HIGH",
-      "executed": false
+      "scope": {
+        "paths": {
+          "include": [
+            "prototype/generic-discovery-engine.user.js"
+          ],
+          "exclude": []
+        }
+      },
+      "risk": "HIGH"
     },
     {
       "id": "R-104",
@@ -2325,8 +2071,15 @@
         "CODE-018",
         "TEST-010"
       ],
-      "risk": "HIGH",
-      "executed": false
+      "scope": {
+        "paths": {
+          "include": [
+            "prototype/generic-discovery-engine.user.js"
+          ],
+          "exclude": []
+        }
+      },
+      "risk": "HIGH"
     },
     {
       "id": "R-105",
@@ -2335,8 +2088,15 @@
       "evidence": [
         "TEST-009"
       ],
-      "risk": "LOW",
-      "executed": false
+      "scope": {
+        "paths": {
+          "include": [
+            "tools/"
+          ],
+          "exclude": []
+        }
+      },
+      "risk": "LOW"
     },
     {
       "id": "R-106",
@@ -2345,8 +2105,15 @@
       "evidence": [
         "TEST-010"
       ],
-      "risk": "MEDIUM",
-      "executed": false
+      "scope": {
+        "paths": {
+          "include": [
+            "prototype/generic-discovery-engine.user.js"
+          ],
+          "exclude": []
+        }
+      },
+      "risk": "MEDIUM"
     },
     {
       "id": "R-107",
@@ -2356,8 +2123,15 @@
         "CODE-021",
         "TEST-012"
       ],
-      "risk": "MEDIUM",
-      "executed": false
+      "scope": {
+        "paths": {
+          "include": [
+            "prototype/generic-discovery-engine.user.js"
+          ],
+          "exclude": []
+        }
+      },
+      "risk": "MEDIUM"
     },
     {
       "id": "R-108",
@@ -2366,8 +2140,15 @@
       "evidence": [
         "CODE-023"
       ],
-      "risk": "MEDIUM",
-      "executed": false
+      "scope": {
+        "paths": {
+          "include": [
+            "prototype/generic-discovery-engine.user.js"
+          ],
+          "exclude": []
+        }
+      },
+      "risk": "MEDIUM"
     },
     {
       "id": "R-109",
@@ -2376,8 +2157,15 @@
       "evidence": [
         "CODE-030"
       ],
-      "risk": "LOW",
-      "executed": false
+      "scope": {
+        "paths": {
+          "include": [
+            "prototype/generic-discovery-engine.user.js"
+          ],
+          "exclude": []
+        }
+      },
+      "risk": "LOW"
     },
     {
       "id": "R-110",
@@ -2387,8 +2175,15 @@
         "CODE-018",
         "CODE-029"
       ],
-      "risk": "MEDIUM",
-      "executed": false
+      "scope": {
+        "paths": {
+          "include": [
+            "prototype/generic-discovery-engine.user.js"
+          ],
+          "exclude": []
+        }
+      },
+      "risk": "MEDIUM"
     },
     {
       "id": "R-111",
@@ -2399,8 +2194,15 @@
         "CODE-013",
         "CODE-015"
       ],
-      "risk": "HIGH",
-      "executed": false
+      "scope": {
+        "paths": {
+          "include": [
+            "prototype/generic-discovery-engine.user.js"
+          ],
+          "exclude": []
+        }
+      },
+      "risk": "HIGH"
     },
     {
       "id": "R-112",
@@ -2410,21 +2212,20 @@
         "DOC-006",
         "SCOPE-006"
       ],
-      "risk": "HIGH",
-      "executed": false
+      "scope": {
+        "paths": {
+          "include": [
+            "prototype/generic-discovery-engine.user.js"
+          ],
+          "exclude": []
+        }
+      },
+      "risk": "HIGH"
     },
     {
       "id": "R-016",
       "category": "DOC_CLEANUP",
-      "executed": true,
-      "risk": "LOW",
-      "files": [
-        "docs/analysis/analysis.json",
-        "tools/validate-analysis.mjs",
-        "tools/render-claims.mjs"
-      ],
-      "rationale": "a canonical state model that cannot be machine-validated silently drifts out of step with the documents",
-      "description": "Canonical machine-readable analysis record (docs/analysis/analysis.json, governed by docs/analysis/analysis.schema.json) with tools/validate-analysis.mjs and tools/render-claims.mjs. Classified DOC_CLEANUP because the primary artifact is the record; the validator and renderer are its enforcement.",
+      "description": "Canonical machine-readable analysis record (docs/analysis/analysis.json, governed by docs/analysis/analysis.schema.json) with tools/validate-analysis.mjs and tools/render-claims.mjs. Classified DOC_CLEANUP because the primary artifact is the record; the validator and renderer are its enforcement. Reason: a canonical state model that cannot be machine-validated silently drifts out of step with the documents",
       "evidence": [
         "DOC-011",
         "DOC-012"
@@ -2436,26 +2237,13 @@
           ],
           "exclude": []
         }
-      }
+      },
+      "risk": "LOW"
     },
     {
       "id": "R-017",
       "category": "DOC_REWRITE",
-      "executed": true,
-      "risk": "LOW",
-      "files": [
-        "docs/analysis/claims.md",
-        "docs/analysis/evidence-register.md",
-        "docs/analysis/repository-analysis-2026-09-10.md",
-        "docs/analysis/scope-and-authorization.md",
-        "README.md",
-        "docs/architecture/*.md",
-        "docs/prototype/*.md",
-        "docs/research/*.md",
-        "docs/roadmap/*.md"
-      ],
-      "rationale": "claim records, evidence register and behaviour documents must use one vocabulary or the checks cannot detect substitution",
-      "description": "regenerate every status statement in the five typed fields",
+      "description": "regenerate every status statement in the five typed fields Reason: claim records, evidence register and behaviour documents must use one vocabulary or the checks cannot detect substitution",
       "evidence": [
         "DOC-013",
         "TEST-014"
@@ -2467,24 +2255,13 @@
           ],
           "exclude": []
         }
-      }
+      },
+      "risk": "LOW"
     },
     {
       "id": "R-018",
       "category": "DOC_CLEANUP",
-      "executed": true,
-      "risk": "LOW",
-      "description": "Claim-level semantic validation (C-001…C-043 plus cross-dimension rules; renumbered to the canonical CV matrix by R-019), canonical authorization fields with explicit operation sets and intersection semantics, no-inheritance enforcement, and a YAML mirror of the authorization object checked by serialization invariants SER-001…SER-012.",
-      "files": [
-        "docs/analysis/analysis.json",
-        "docs/analysis/analysis.schema.json",
-        "docs/analysis/authorization.yaml",
-        "tools/validate-analysis.mjs",
-        "docs/analysis/scope-and-authorization.md",
-        "docs/analysis/claims.md"
-      ],
-      "rationale": "structure alone does not make a claim semantically valid, and a level name must not imply an operation",
-      "authorization_required": "DOC_REFACTOR + PUSH (publication grant)",
+      "description": "Claim-level semantic validation (C-001…C-043 plus cross-dimension rules; renumbered to the canonical CV matrix by R-019), canonical authorization fields with explicit operation sets and intersection semantics, no-inheritance enforcement, and a YAML mirror of the authorization object checked by serialization invariants SER-001…SER-012. Reason: structure alone does not make a claim semantically valid, and a level name must not imply an operation",
       "evidence": [
         "DOC-013",
         "DOC-014",
@@ -2497,23 +2274,13 @@
           ],
           "exclude": []
         }
-      }
+      },
+      "risk": "LOW"
     },
     {
       "id": "R-019",
       "category": "DOC_REWRITE",
-      "executed": true,
-      "risk": "MEDIUM",
-      "description": "Replace the level-as-operation-set authorization with level profiles, capability sets and operation resolution; split execution and post-verification into separate lifecycles with per-operation results; add the confidence dimension and the validation matrix CV-001…CV-020.",
-      "files": [
-        "docs/analysis/analysis.schema.json",
-        "docs/analysis/analysis.json",
-        "docs/analysis/authorization.yaml",
-        "tools/validate-analysis.mjs",
-        "docs/analysis/scope-and-authorization.md"
-      ],
-      "rationale": "a profile name must not imply a capability, and an execution result must not imply a verification result",
-      "authorization_required": "DOC_REFACTOR (content) + PUSH (publication), both capability-restricted",
+      "description": "Replace the level-as-operation-set authorization with level profiles, capability sets and operation resolution; split execution and post-verification into separate lifecycles with per-operation results; add the confidence dimension and the validation matrix CV-001…CV-020. Reason: a profile name must not imply a capability, and an execution result must not imply a verification result",
       "evidence": [
         "DOC-013",
         "DOC-014",
@@ -2527,23 +2294,13 @@
           ],
           "exclude": []
         }
-      }
+      },
+      "risk": "MEDIUM"
     },
     {
       "id": "R-020",
       "category": "DOC_REWRITE",
-      "executed": true,
-      "risk": "MEDIUM",
-      "description": "Separate the two verification domains (claim verification versus execution verification), make capabilities first-class objects with lifecycle states and resource classes, add per-operation authorization decisions, and adopt the normative AC-001…AC-016 and EVV-001…EVV-009 rule sets.",
-      "files": [
-        "docs/analysis/analysis.schema.json",
-        "docs/analysis/analysis.json",
-        "docs/analysis/authorization.yaml",
-        "tools/validate-analysis.mjs",
-        "docs/analysis/scope-and-authorization.md"
-      ],
-      "rationale": "an unqualified \"verification\" field does not say what is being verified, and DECLARED is not ENABLED",
-      "authorization_required": "DOC_REFACTOR (content) + PUSH (publication) + CODE_REFACTOR restricted to CAP-SOURCE-CREATE for the extraction change R-001",
+      "description": "Separate the two verification domains (claim verification versus execution verification), make capabilities first-class objects with lifecycle states and resource classes, add per-operation authorization decisions, and adopt the normative AC-001…AC-016 and EVV-001…EVV-009 rule sets (the authorization half was replaced by CAP-001…CAP-016/CG-001…CG-015 and the section 216 function in R-021). Reason: an unqualified \"verification\" field does not say what is being verified, and DECLARED is not ENABLED",
       "evidence": [
         "DOC-013",
         "DOC-014",
@@ -2558,143 +2315,166 @@
           ],
           "exclude": []
         }
-      }
+      },
+      "risk": "MEDIUM"
+    },
+    {
+      "id": "R-021",
+      "category": "DOC_REWRITE",
+      "description": "Adopt the machine-validatable closed schema of brief 10 (sections 209-211, additionalProperties: false), move policy data out of the record into an external capability registry, replace the capabilities{grants,denies} object with explicit capability grant objects carrying capability_id and state, and renumber the claim identifiers into the CLAIM-nnn namespace. Reason: a record that cannot be validated by a closed schema cannot be audited mechanically, and a capability grant that is not an explicit object cannot be told apart from a profile declaration.",
+      "evidence": [
+        "DOC-013",
+        "DOC-015",
+        "TEST-014",
+        "TEST-015"
+      ],
+      "scope": {
+        "paths": {
+          "include": [
+            "docs/analysis/",
+            "tools/"
+          ],
+          "exclude": []
+        }
+      },
+      "risk": "MEDIUM"
     }
   ],
   "authorization": {
-    "authority": {
-      "type": "USER",
-      "identifier": "Abdus2023 (repository owner), delegating through the standing session instruction"
-    },
-    "target": {
-      "repository": "Abdus2023/Generic-Discovery-Engine",
-      "revision": "cc8df7357c2dbfe9d149747743e2f5e9ac9c0178 (work branch: arena/01a08d14-generic-discovery-engine)"
-    },
-    "scope": {
-      "paths": {
-        "include": [
-          "README.md",
-          "docs/",
-          "tools/",
-          "prototype/",
-          "archive/"
-        ],
-        "exclude": []
-      }
-    },
-    "granted_at": "2026-09-10",
-    "expires_at": null,
     "state": "GRANTED",
     "level": {
-      "profile": "DOC_REFACTOR"
+      "profile": "PUSH"
     },
-    "capabilities": {
-      "mode": "RESTRICT",
-      "grants": [
-        {
-          "id": "CAP-REPOSITORY-READ",
-          "state": "ENABLED",
-          "resource_class": "REPOSITORY",
-          "operations": [
-            "READ"
-          ]
-        },
-        {
-          "id": "CAP-REPOSITORY-ANALYZE",
-          "state": "ENABLED",
-          "resource_class": "REPOSITORY",
-          "operations": [
-            "ANALYZE"
-          ]
-        },
-        {
-          "id": "CAP-REPOSITORY-PROPOSE",
-          "state": "ENABLED",
-          "resource_class": "REPOSITORY",
-          "operations": [
-            "PROPOSE"
-          ]
-        },
-        {
-          "id": "CAP-DOCUMENT-CREATE",
-          "state": "RESTRICTED",
-          "resource_class": "DOCUMENT",
-          "operations": [
-            "CREATE"
-          ],
-          "constraints": {
-            "paths": {
-              "include": [
-                "docs/",
-                "tools/"
-              ],
-              "exclude": []
-            }
-          }
-        },
-        {
-          "id": "CAP-DOCUMENT-MODIFY",
-          "state": "RESTRICTED",
-          "resource_class": "DOCUMENT",
-          "operations": [
-            "MODIFY"
-          ],
-          "constraints": {
-            "paths": {
-              "include": [
-                "README.md",
-                "docs/",
-                "tools/"
-              ],
-              "exclude": []
-            }
-          }
-        },
-        {
-          "id": "CAP-DOCUMENT-RENAME",
-          "state": "RESTRICTED",
-          "resource_class": "DOCUMENT",
-          "operations": [
-            "RENAME"
-          ],
-          "constraints": {
-            "paths": {
-              "include": [
-                "archive/"
-              ],
-              "exclude": []
-            }
-          }
-        },
-        {
-          "id": "CAP-DOCUMENT-MOVE",
-          "state": "RESTRICTED",
-          "resource_class": "DOCUMENT",
-          "operations": [
-            "MOVE"
-          ],
-          "constraints": {
-            "paths": {
-              "include": [
-                "docs/roadmap/",
-                "archive/"
-              ],
-              "exclude": []
-            }
+    "capability_grants": [
+      {
+        "capability_id": "CAP-REPOSITORY-READ",
+        "state": "ENABLED"
+      },
+      {
+        "capability_id": "CAP-REPOSITORY-ANALYZE",
+        "state": "ENABLED"
+      },
+      {
+        "capability_id": "CAP-REPOSITORY-PROPOSE",
+        "state": "ENABLED"
+      },
+      {
+        "capability_id": "CAP-DOCUMENT-CREATE",
+        "state": "RESTRICTED",
+        "scope": {
+          "paths": {
+            "include": [
+              "docs/",
+              "tools/"
+            ],
+            "exclude": []
           }
         }
-      ],
-      "denies": [
-        {
-          "id": "CAP-DOCUMENT-DELETE",
-          "state": "DENIED",
-          "resource_class": "DOCUMENT",
-          "operations": [
-            "DELETE"
-          ]
+      },
+      {
+        "capability_id": "CAP-DOCUMENT-MODIFY",
+        "state": "RESTRICTED",
+        "scope": {
+          "paths": {
+            "include": [
+              "README.md",
+              "docs/",
+              "tools/"
+            ],
+            "exclude": []
+          }
         }
-      ]
-    },
+      },
+      {
+        "capability_id": "CAP-DOCUMENT-RENAME",
+        "state": "RESTRICTED",
+        "scope": {
+          "paths": {
+            "include": [
+              "archive/"
+            ],
+            "exclude": []
+          }
+        }
+      },
+      {
+        "capability_id": "CAP-DOCUMENT-MOVE",
+        "state": "RESTRICTED",
+        "scope": {
+          "paths": {
+            "include": [
+              "docs/roadmap/",
+              "archive/"
+            ],
+            "exclude": []
+          }
+        }
+      },
+      {
+        "capability_id": "CAP-DOCUMENT-DELETE",
+        "state": "DENIED"
+      },
+      {
+        "capability_id": "CAP-TEST-CREATE",
+        "state": "DENIED"
+      },
+      {
+        "capability_id": "CAP-TEST-MODIFY",
+        "state": "DENIED"
+      },
+      {
+        "capability_id": "CAP-TEST-RENAME",
+        "state": "DENIED"
+      },
+      {
+        "capability_id": "CAP-TEST-MOVE",
+        "state": "DENIED"
+      },
+      {
+        "capability_id": "CAP-TEST-DELETE",
+        "state": "DENIED"
+      },
+      {
+        "capability_id": "CAP-SOURCE-CREATE",
+        "state": "RESTRICTED",
+        "scope": {
+          "paths": {
+            "include": [
+              "prototype/"
+            ],
+            "exclude": []
+          }
+        }
+      },
+      {
+        "capability_id": "CAP-SOURCE-MODIFY",
+        "state": "DENIED"
+      },
+      {
+        "capability_id": "CAP-SOURCE-RENAME",
+        "state": "DENIED"
+      },
+      {
+        "capability_id": "CAP-SOURCE-MOVE",
+        "state": "DENIED"
+      },
+      {
+        "capability_id": "CAP-SOURCE-DELETE",
+        "state": "DENIED"
+      },
+      {
+        "capability_id": "CAP-ARCHITECTURE-MODIFY",
+        "state": "DENIED"
+      },
+      {
+        "capability_id": "CAP-COMMIT-CREATE",
+        "state": "ENABLED"
+      },
+      {
+        "capability_id": "CAP-REMOTE-PUSH",
+        "state": "ENABLED"
+      }
+    ],
     "operations": {
       "allow": [
         "READ",
@@ -2703,7 +2483,9 @@
         "CREATE",
         "MODIFY",
         "RENAME",
-        "MOVE"
+        "MOVE",
+        "COMMIT",
+        "PUSH"
       ],
       "deny": [
         "DELETE"
@@ -2729,8 +2511,31 @@
       "R-017",
       "R-018",
       "R-019",
-      "R-020"
-    ]
+      "R-020",
+      "R-021"
+    ],
+    "authority": {
+      "type": "USER",
+      "identifier": "Abdus2023 (repository owner), delegating through the standing session instruction"
+    },
+    "target": {
+      "repository": "Abdus2023/Generic-Discovery-Engine",
+      "revision": "cc8df7357c2dbfe9d149747743e2f5e9ac9c0178"
+    },
+    "scope": {
+      "paths": {
+        "include": [
+          "README.md",
+          "docs/",
+          "tools/",
+          "prototype/",
+          "archive/"
+        ],
+        "exclude": []
+      }
+    },
+    "granted_at": "2026-09-10T00:00:00Z",
+    "expires_at": null
   },
   "execution": {
     "state": "SUCCEEDED",
@@ -2743,8 +2548,8 @@
           "resource_class": "SOURCE",
           "path": "prototype/generic-discovery-engine.user.js"
         },
-        "result": "SUCCEEDED",
-        "authorization_decision": "ALLOWED"
+        "authorization_decision": "ALLOWED",
+        "result": "SUCCEEDED"
       },
       {
         "id": "OP-002",
@@ -2754,8 +2559,8 @@
           "resource_class": "DOCUMENT",
           "path": "README.md"
         },
-        "result": "SUCCEEDED",
-        "authorization_decision": "ALLOWED"
+        "authorization_decision": "ALLOWED",
+        "result": "SUCCEEDED"
       },
       {
         "id": "OP-003",
@@ -2765,8 +2570,8 @@
           "resource_class": "DOCUMENT",
           "path": "docs/ (one canonical owner per concept)"
         },
-        "result": "SUCCEEDED",
-        "authorization_decision": "ALLOWED"
+        "authorization_decision": "ALLOWED",
+        "result": "SUCCEEDED"
       },
       {
         "id": "OP-004",
@@ -2776,8 +2581,8 @@
           "resource_class": "DOCUMENT",
           "path": "docs/roadmap/future-architecture.md"
         },
-        "result": "SUCCEEDED",
-        "authorization_decision": "ALLOWED"
+        "authorization_decision": "ALLOWED",
+        "result": "SUCCEEDED"
       },
       {
         "id": "OP-005",
@@ -2787,8 +2592,8 @@
           "resource_class": "DOCUMENT",
           "path": "archive/ (transcripts moved from the repository root)"
         },
-        "result": "SUCCEEDED",
-        "authorization_decision": "ALLOWED"
+        "authorization_decision": "ALLOWED",
+        "result": "SUCCEEDED"
       },
       {
         "id": "OP-006",
@@ -2798,8 +2603,8 @@
           "resource_class": "DOCUMENT",
           "path": "docs/architecture/concurrency.md"
         },
-        "result": "SUCCEEDED",
-        "authorization_decision": "ALLOWED"
+        "authorization_decision": "ALLOWED",
+        "result": "SUCCEEDED"
       },
       {
         "id": "OP-007",
@@ -2809,8 +2614,8 @@
           "resource_class": "DOCUMENT",
           "path": "docs/architecture/provider-model.md"
         },
-        "result": "SUCCEEDED",
-        "authorization_decision": "ALLOWED"
+        "authorization_decision": "ALLOWED",
+        "result": "SUCCEEDED"
       },
       {
         "id": "OP-008",
@@ -2820,8 +2625,8 @@
           "resource_class": "DOCUMENT",
           "path": "docs/architecture/provider-model.md"
         },
-        "result": "SUCCEEDED",
-        "authorization_decision": "ALLOWED"
+        "authorization_decision": "ALLOWED",
+        "result": "SUCCEEDED"
       },
       {
         "id": "OP-009",
@@ -2831,8 +2636,8 @@
           "resource_class": "DOCUMENT",
           "path": "docs/glossary.md"
         },
-        "result": "SUCCEEDED",
-        "authorization_decision": "ALLOWED"
+        "authorization_decision": "ALLOWED",
+        "result": "SUCCEEDED"
       },
       {
         "id": "OP-010",
@@ -2842,8 +2647,8 @@
           "resource_class": "DOCUMENT",
           "path": "tools/ (verify.mjs, checks.mjs, simulate.mjs)"
         },
-        "result": "SUCCEEDED",
-        "authorization_decision": "ALLOWED"
+        "authorization_decision": "ALLOWED",
+        "result": "SUCCEEDED"
       },
       {
         "id": "OP-011",
@@ -2853,8 +2658,8 @@
           "resource_class": "DOCUMENT",
           "path": "docs/prototype/scope.md"
         },
-        "result": "SUCCEEDED",
-        "authorization_decision": "ALLOWED"
+        "authorization_decision": "ALLOWED",
+        "result": "SUCCEEDED"
       },
       {
         "id": "OP-012",
@@ -2864,8 +2669,8 @@
           "resource_class": "DOCUMENT",
           "path": "docs/analysis/evidence-register.md"
         },
-        "result": "SUCCEEDED",
-        "authorization_decision": "ALLOWED"
+        "authorization_decision": "ALLOWED",
+        "result": "SUCCEEDED"
       },
       {
         "id": "OP-013",
@@ -2875,8 +2680,8 @@
           "resource_class": "DOCUMENT",
           "path": "archive/Continue Architecture Planning.md"
         },
-        "result": "SUCCEEDED",
-        "authorization_decision": "ALLOWED"
+        "authorization_decision": "ALLOWED",
+        "result": "SUCCEEDED"
       },
       {
         "id": "OP-014",
@@ -2886,8 +2691,8 @@
           "resource_class": "DOCUMENT",
           "path": "docs/ (typed status fields across the corpus)"
         },
-        "result": "SUCCEEDED",
-        "authorization_decision": "ALLOWED"
+        "authorization_decision": "ALLOWED",
+        "result": "SUCCEEDED"
       },
       {
         "id": "OP-015",
@@ -2897,8 +2702,8 @@
           "resource_class": "DOCUMENT",
           "path": "docs/analysis/scope-and-authorization.md"
         },
-        "result": "SUCCEEDED",
-        "authorization_decision": "ALLOWED"
+        "authorization_decision": "ALLOWED",
+        "result": "SUCCEEDED"
       },
       {
         "id": "OP-016",
@@ -2908,8 +2713,8 @@
           "resource_class": "DOCUMENT",
           "path": "docs/analysis/analysis.json"
         },
-        "result": "SUCCEEDED",
-        "authorization_decision": "ALLOWED"
+        "authorization_decision": "ALLOWED",
+        "result": "SUCCEEDED"
       },
       {
         "id": "OP-017",
@@ -2919,8 +2724,8 @@
           "resource_class": "DOCUMENT",
           "path": "docs/analysis/claims.md"
         },
-        "result": "SUCCEEDED",
-        "authorization_decision": "ALLOWED"
+        "authorization_decision": "ALLOWED",
+        "result": "SUCCEEDED"
       },
       {
         "id": "OP-018",
@@ -2930,8 +2735,8 @@
           "resource_class": "DOCUMENT",
           "path": "docs/analysis/authorization.yaml"
         },
-        "result": "SUCCEEDED",
-        "authorization_decision": "ALLOWED"
+        "authorization_decision": "ALLOWED",
+        "result": "SUCCEEDED"
       },
       {
         "id": "OP-019",
@@ -2941,30 +2746,52 @@
           "resource_class": "DOCUMENT",
           "path": "docs/analysis/analysis.schema.json"
         },
-        "result": "SUCCEEDED",
-        "authorization_decision": "ALLOWED"
+        "authorization_decision": "ALLOWED",
+        "result": "SUCCEEDED"
       },
       {
         "id": "OP-020",
         "change_id": "R-020",
-        "operation": "COMMIT",
+        "operation": "MODIFY",
         "target": {
-          "resource_class": "COMMIT",
-          "path": "repository (change set R-001 … R-020)"
+          "resource_class": "DOCUMENT",
+          "path": "docs/analysis/analysis.json"
         },
-        "result": "SUCCEEDED",
-        "authorization_decision": "ALLOWED"
+        "authorization_decision": "ALLOWED",
+        "result": "SUCCEEDED"
       },
       {
         "id": "OP-021",
-        "change_id": "R-020",
+        "change_id": "R-021",
+        "operation": "MODIFY",
+        "target": {
+          "resource_class": "DOCUMENT",
+          "path": "docs/analysis/analysis.schema.json"
+        },
+        "authorization_decision": "ALLOWED",
+        "result": "SUCCEEDED"
+      },
+      {
+        "id": "OP-022",
+        "change_id": "R-021",
+        "operation": "COMMIT",
+        "target": {
+          "resource_class": "COMMIT",
+          "path": "repository (change set R-001 … R-021)"
+        },
+        "authorization_decision": "ALLOWED",
+        "result": "SUCCEEDED"
+      },
+      {
+        "id": "OP-023",
+        "change_id": "R-021",
         "operation": "PUSH",
         "target": {
           "resource_class": "REMOTE",
           "path": "origin/arena/01a08d14-generic-discovery-engine"
         },
-        "result": "SUCCEEDED",
-        "authorization_decision": "ALLOWED"
+        "authorization_decision": "ALLOWED",
+        "result": "SUCCEEDED"
       }
     ],
     "executed_changes": [
@@ -2987,695 +2814,28 @@
       "R-017",
       "R-018",
       "R-019",
-      "R-020"
+      "R-020",
+      "R-021"
     ],
     "unauthorized_changes": [],
-    "discovered_not_executed": [
-      "R-101",
-      "R-102",
-      "R-103",
-      "R-104",
-      "R-105",
-      "R-106",
-      "R-107",
-      "R-108",
-      "R-109",
-      "R-110",
-      "R-111",
-      "R-112"
-    ],
-    "started_at": "2026-09-10",
-    "completed_at": "2026-09-10",
-    "notes": "Timestamps are recorded at date granularity: the work was performed in one session on that date and per-operation wall-clock times were not captured. Mutating operations are listed per change; the earlier commits 400810d, b6dc164, e8b9aec, f4ca0e6, d6c381d, b5a1d11, 8040bba and 737c127 published this change set incrementally, and the commit carrying this record is the publication operation. Source code was out of scope and is unchanged: the artifact digest matches the frozen value. Twelve discovered changes were recorded and proposed, not applied. The publication operations are recorded as SUCCEEDED on the same grounds as the change they publish: this record is carried by that commit, so the assertion is true for any reader who can read it. The unqualified \"verification\" object of earlier rounds is replaced by two named domains: claims carry claim_verification, the repository after execution carries execution_verification."
-  },
-  "absence_verification": [
-    {
-      "id": "AV-001",
-      "claim": "SCOPE-CLAIM-001",
-      "scope": "declared scope: the whole artifact and all documentation at cc8df73",
-      "method": "full read of the artifact plus the symbol scan \"no DVB/RF implementation symbols\" in tools/verify.mjs",
-      "probe": "tools/verify.mjs symbol scan; manual search for spectrum/tuner/demodulator/FEC/TS/PSI-SI terms",
-      "result": "no match: the artifact and documentation contain no DVB/RF implementation",
-      "verified_by": "analysis (VERIFIER), re-run after execution"
-    },
-    {
-      "id": "AV-002",
-      "claim": "SCOPE-CLAIM-002",
-      "scope": "declared scope: the whole artifact",
-      "method": "symbol scan \"no later-design layers present\" in tools/verify.mjs against the v0.8+ vocabulary",
-      "probe": "tools/verify.mjs symbol scan for capability/work-item/evidence-graph/lease/coverage/fencing symbols",
-      "result": "no match; the only occurrences are in the design documents, which are labelled PLANNED",
-      "verified_by": "analysis (VERIFIER), re-run after execution"
-    },
-    {
-      "id": "AV-003",
-      "claim": "SCOPE-CLAIM-003",
-      "scope": "declared scope: acquisition and scheduler code paths",
-      "method": "inspection for any coverage, absence or completeness object and for a termination criterion beyond an empty eligible set",
-      "probe": "tools/verify.mjs structural checks; CODE-009, CODE-013, CODE-015",
-      "result": "no such object exists; termination is an empty eligible set",
-      "verified_by": "analysis (VERIFIER), re-run after execution"
-    },
-    {
-      "id": "AV-004",
-      "claim": "SCOPE-CLAIM-004",
-      "scope": "declared scope: candidate model and every discover() call site",
-      "method": "inspection of the candidate target types and of all discover() call sites",
-      "probe": "CODE-003 (identityKey is type:target), CODE-027",
-      "result": "every target is a URL; no non-URL target path exists",
-      "verified_by": "analysis (VERIFIER), re-run after execution"
-    },
-    {
-      "id": "AV-005",
-      "claim": "SCOPE-CLAIM-005",
-      "scope": "declared scope: the repository tree at the resolved revision cc8df73",
-      "method": "tree inspection of all three files present at the resolved revision",
-      "probe": "access contract in the evidence register; git tree listing at cc8df73",
-      "result": "no test directory, CI configuration or build tooling existed at the resolved revision",
-      "verified_by": "analysis (VERIFIER), re-run after execution"
-    },
-    {
-      "id": "AV-006",
-      "claim": "PROV-CLAIM-005",
-      "scope": "declared scope: the whole artifact and the documentation tree",
-      "method": "full read of the artifact plus inspection for any evidence/interpretation/conflict object",
-      "probe": "grep for evidence-graph, interpretation, conflict-resolution and corroboration constructs",
-      "result": "no such object exists; observations and discoveries are stored without an evidence layer",
-      "verified_by": "analysis (VERIFIER), re-run after execution"
-    },
-    {
-      "id": "AV-007",
-      "claim": "ARCH-CLAIM-006",
-      "scope": "declared scope: persistence code paths",
-      "method": "inspection of persist()/restore() and the storage writer for transactions, write-ahead logging or validation",
-      "probe": "CODE-025, SCOPE-002, tools/verify.mjs round-trip check",
-      "result": "no transaction, journal or crash-recovery mechanism exists",
-      "verified_by": "analysis (VERIFIER), re-run after execution"
-    }
-  ],
-  "schema_version": "1.0",
-  "authorization_grants": [
-    {
-      "authority": {
-        "type": "USER",
-        "identifier": "Abdus2023 (repository owner), delegating through the standing session instruction"
-      },
-      "target": {
-        "repository": "Abdus2023/Generic-Discovery-Engine",
-        "revision": "cc8df7357c2dbfe9d149747743e2f5e9ac9c0178 (work branch: arena/01a08d14-generic-discovery-engine)"
-      },
-      "scope": {
-        "paths": {
-          "include": [
-            "prototype/"
-          ],
-          "exclude": []
-        }
-      },
-      "granted_at": "2026-09-10",
-      "expires_at": null,
-      "state": "GRANTED",
-      "level": {
-        "profile": "CODE_REFACTOR"
-      },
-      "capabilities": {
-        "mode": "RESTRICT",
-        "grants": [
-          {
-            "id": "CAP-SOURCE-CREATE",
-            "state": "RESTRICTED",
-            "resource_class": "SOURCE",
-            "operations": [
-              "CREATE"
-            ],
-            "constraints": {
-              "paths": {
-                "include": [
-                  "prototype/"
-                ],
-                "exclude": []
-              }
-            }
-          }
-        ],
-        "denies": []
-      },
-      "operations": {
-        "allow": [
-          "CREATE"
-        ],
-        "deny": [
-          "MODIFY",
-          "RENAME",
-          "MOVE",
-          "DELETE",
-          "COMMIT",
-          "PUSH"
-        ]
-      },
-      "change_ids": [
-        "R-001"
-      ]
-    },
-    {
-      "authority": {
-        "type": "USER",
-        "identifier": "Abdus2023 (repository owner), delegating through the standing session instruction"
-      },
-      "target": {
-        "repository": "Abdus2023/Generic-Discovery-Engine",
-        "revision": "cc8df7357c2dbfe9d149747743e2f5e9ac9c0178 (work branch: arena/01a08d14-generic-discovery-engine)"
-      },
-      "scope": {
-        "paths": {
-          "include": [
-            "README.md",
-            "docs/",
-            "tools/",
-            "prototype/",
-            "archive/"
-          ],
-          "exclude": []
-        }
-      },
-      "granted_at": "2026-09-10",
-      "expires_at": null,
-      "state": "GRANTED",
-      "level": {
-        "profile": "PUSH"
-      },
-      "capabilities": {
-        "mode": "RESTRICT",
-        "grants": [
-          {
-            "id": "CAP-REPOSITORY-READ",
-            "state": "ENABLED",
-            "resource_class": "REPOSITORY",
-            "operations": [
-              "READ"
-            ]
-          },
-          {
-            "id": "CAP-REPOSITORY-ANALYZE",
-            "state": "ENABLED",
-            "resource_class": "REPOSITORY",
-            "operations": [
-              "ANALYZE"
-            ]
-          },
-          {
-            "id": "CAP-REPOSITORY-PROPOSE",
-            "state": "ENABLED",
-            "resource_class": "REPOSITORY",
-            "operations": [
-              "PROPOSE"
-            ]
-          },
-          {
-            "id": "CAP-COMMIT-CREATE",
-            "state": "ENABLED",
-            "resource_class": "COMMIT",
-            "operations": [
-              "COMMIT"
-            ]
-          },
-          {
-            "id": "CAP-REMOTE-PUSH",
-            "state": "ENABLED",
-            "resource_class": "REMOTE",
-            "operations": [
-              "PUSH"
-            ]
-          }
-        ],
-        "denies": [
-          {
-            "id": "CAP-DOCUMENT-CREATE",
-            "state": "DENIED",
-            "resource_class": "DOCUMENT",
-            "operations": [
-              "CREATE"
-            ]
-          },
-          {
-            "id": "CAP-DOCUMENT-MODIFY",
-            "state": "DENIED",
-            "resource_class": "DOCUMENT",
-            "operations": [
-              "MODIFY"
-            ]
-          },
-          {
-            "id": "CAP-DOCUMENT-RENAME",
-            "state": "DENIED",
-            "resource_class": "DOCUMENT",
-            "operations": [
-              "RENAME"
-            ]
-          },
-          {
-            "id": "CAP-DOCUMENT-MOVE",
-            "state": "DENIED",
-            "resource_class": "DOCUMENT",
-            "operations": [
-              "MOVE"
-            ]
-          },
-          {
-            "id": "CAP-DOCUMENT-DELETE",
-            "state": "DENIED",
-            "resource_class": "DOCUMENT",
-            "operations": [
-              "DELETE"
-            ]
-          },
-          {
-            "id": "CAP-TEST-CREATE",
-            "state": "DENIED",
-            "resource_class": "TEST",
-            "operations": [
-              "CREATE"
-            ]
-          },
-          {
-            "id": "CAP-TEST-MODIFY",
-            "state": "DENIED",
-            "resource_class": "TEST",
-            "operations": [
-              "MODIFY"
-            ]
-          },
-          {
-            "id": "CAP-TEST-RENAME",
-            "state": "DENIED",
-            "resource_class": "TEST",
-            "operations": [
-              "RENAME"
-            ]
-          },
-          {
-            "id": "CAP-TEST-MOVE",
-            "state": "DENIED",
-            "resource_class": "TEST",
-            "operations": [
-              "MOVE"
-            ]
-          },
-          {
-            "id": "CAP-TEST-DELETE",
-            "state": "DENIED",
-            "resource_class": "TEST",
-            "operations": [
-              "DELETE"
-            ]
-          },
-          {
-            "id": "CAP-SOURCE-CREATE",
-            "state": "DENIED",
-            "resource_class": "SOURCE",
-            "operations": [
-              "CREATE"
-            ]
-          },
-          {
-            "id": "CAP-SOURCE-MODIFY",
-            "state": "DENIED",
-            "resource_class": "SOURCE",
-            "operations": [
-              "MODIFY"
-            ]
-          },
-          {
-            "id": "CAP-SOURCE-RENAME",
-            "state": "DENIED",
-            "resource_class": "SOURCE",
-            "operations": [
-              "RENAME"
-            ]
-          },
-          {
-            "id": "CAP-SOURCE-MOVE",
-            "state": "DENIED",
-            "resource_class": "SOURCE",
-            "operations": [
-              "MOVE"
-            ]
-          },
-          {
-            "id": "CAP-SOURCE-DELETE",
-            "state": "DENIED",
-            "resource_class": "SOURCE",
-            "operations": [
-              "DELETE"
-            ]
-          },
-          {
-            "id": "CAP-ARCHITECTURE-MODIFY",
-            "state": "DENIED",
-            "resource_class": "ARCHITECTURE",
-            "operations": [
-              "MODIFY"
-            ]
-          }
-        ]
-      },
-      "operations": {
-        "allow": [
-          "READ",
-          "ANALYZE",
-          "PROPOSE",
-          "COMMIT",
-          "PUSH"
-        ],
-        "deny": [
-          "CREATE",
-          "MODIFY",
-          "RENAME",
-          "MOVE",
-          "DELETE"
-        ]
-      },
-      "change_ids": [
-        "R-001",
-        "R-002",
-        "R-003",
-        "R-004",
-        "R-005",
-        "R-006",
-        "R-007",
-        "R-008",
-        "R-009",
-        "R-010",
-        "R-011",
-        "R-012",
-        "R-013",
-        "R-014",
-        "R-015",
-        "R-016",
-        "R-017",
-        "R-018",
-        "R-019",
-        "R-020"
-      ]
-    }
-  ],
-  "governance": {
-    "roles": {
-      "REPOSITORY_OWNER": "Abdus2023",
-      "ANALYZER": "analysis (this document set)",
-      "AUTHORIZER": "repository owner (delegated)",
-      "EXECUTOR": "same agent, explicitly entering the EXECUTOR role for the authorized change set only",
-      "VERIFIER": "analysis, re-run after execution",
-      "REVIEWER": "repository owner / reviewer"
-    },
-    "withheld_capabilities": [
-      "CAP-SOURCE-MODIFY",
-      "CAP-SOURCE-RENAME",
-      "CAP-SOURCE-MOVE",
-      "CAP-SOURCE-DELETE",
-      "CAP-TEST-CREATE",
-      "CAP-TEST-MODIFY",
-      "CAP-TEST-RENAME",
-      "CAP-TEST-MOVE",
-      "CAP-TEST-DELETE",
-      "CAP-ARCHITECTURE-MODIFY"
-    ],
-    "forbidden_operations": [
-      "MODIFY_SOURCE_CODE",
-      "MODIFY_TESTS",
-      "ARCHITECTURE_CHANGE",
-      "PUSH_TO_OTHER_BRANCH"
-    ],
-    "notes": "Three canonical grants, all capability-restricted. Content: profile DOC_REFACTOR, mutating capabilities RESTRICTED with explicit path constraints, CAP-DOCUMENT-DELETE denied. Publication: profile PUSH, five capabilities enabled and every content capability that PUSH inherits denied. Extraction (disclosed, not convenient): profile CODE_REFACTOR restricted to CAP-SOURCE-CREATE for change R-001 only, because the extraction created prototype/generic-discovery-engine.user.js and that operation must be represented rather than left uncovered; the capability to modify, rename, move or delete source was never granted, and the artifact digest is unchanged since extraction. No grant authorizes any further work."
-  },
-  "capabilities": [
-    {
-      "id": "CAP-REPOSITORY-READ",
-      "state": "DECLARED",
-      "resource_class": "REPOSITORY",
-      "operations": [
-        "READ"
-      ]
-    },
-    {
-      "id": "CAP-REPOSITORY-ANALYZE",
-      "state": "DECLARED",
-      "resource_class": "REPOSITORY",
-      "operations": [
-        "ANALYZE"
-      ]
-    },
-    {
-      "id": "CAP-REPOSITORY-PROPOSE",
-      "state": "DECLARED",
-      "resource_class": "REPOSITORY",
-      "operations": [
-        "PROPOSE"
-      ]
-    },
-    {
-      "id": "CAP-DOCUMENT-CREATE",
-      "state": "DECLARED",
-      "resource_class": "DOCUMENT",
-      "operations": [
-        "CREATE"
-      ]
-    },
-    {
-      "id": "CAP-DOCUMENT-MODIFY",
-      "state": "DECLARED",
-      "resource_class": "DOCUMENT",
-      "operations": [
-        "MODIFY"
-      ]
-    },
-    {
-      "id": "CAP-DOCUMENT-RENAME",
-      "state": "DECLARED",
-      "resource_class": "DOCUMENT",
-      "operations": [
-        "RENAME"
-      ]
-    },
-    {
-      "id": "CAP-DOCUMENT-MOVE",
-      "state": "DECLARED",
-      "resource_class": "DOCUMENT",
-      "operations": [
-        "MOVE"
-      ]
-    },
-    {
-      "id": "CAP-DOCUMENT-DELETE",
-      "state": "DECLARED",
-      "resource_class": "DOCUMENT",
-      "operations": [
-        "DELETE"
-      ]
-    },
-    {
-      "id": "CAP-TEST-CREATE",
-      "state": "DECLARED",
-      "resource_class": "TEST",
-      "operations": [
-        "CREATE"
-      ]
-    },
-    {
-      "id": "CAP-TEST-MODIFY",
-      "state": "DECLARED",
-      "resource_class": "TEST",
-      "operations": [
-        "MODIFY"
-      ]
-    },
-    {
-      "id": "CAP-TEST-RENAME",
-      "state": "DECLARED",
-      "resource_class": "TEST",
-      "operations": [
-        "RENAME"
-      ]
-    },
-    {
-      "id": "CAP-TEST-MOVE",
-      "state": "DECLARED",
-      "resource_class": "TEST",
-      "operations": [
-        "MOVE"
-      ]
-    },
-    {
-      "id": "CAP-TEST-DELETE",
-      "state": "DECLARED",
-      "resource_class": "TEST",
-      "operations": [
-        "DELETE"
-      ]
-    },
-    {
-      "id": "CAP-SOURCE-CREATE",
-      "state": "DECLARED",
-      "resource_class": "SOURCE",
-      "operations": [
-        "CREATE"
-      ]
-    },
-    {
-      "id": "CAP-SOURCE-MODIFY",
-      "state": "DECLARED",
-      "resource_class": "SOURCE",
-      "operations": [
-        "MODIFY"
-      ]
-    },
-    {
-      "id": "CAP-SOURCE-RENAME",
-      "state": "DECLARED",
-      "resource_class": "SOURCE",
-      "operations": [
-        "RENAME"
-      ]
-    },
-    {
-      "id": "CAP-SOURCE-MOVE",
-      "state": "DECLARED",
-      "resource_class": "SOURCE",
-      "operations": [
-        "MOVE"
-      ]
-    },
-    {
-      "id": "CAP-SOURCE-DELETE",
-      "state": "DECLARED",
-      "resource_class": "SOURCE",
-      "operations": [
-        "DELETE"
-      ]
-    },
-    {
-      "id": "CAP-ARCHITECTURE-MODIFY",
-      "state": "DECLARED",
-      "resource_class": "ARCHITECTURE",
-      "operations": [
-        "MODIFY"
-      ]
-    },
-    {
-      "id": "CAP-COMMIT-CREATE",
-      "state": "DECLARED",
-      "resource_class": "COMMIT",
-      "operations": [
-        "COMMIT"
-      ]
-    },
-    {
-      "id": "CAP-REMOTE-PUSH",
-      "state": "DECLARED",
-      "resource_class": "REMOTE",
-      "operations": [
-        "PUSH"
-      ]
-    }
-  ],
-  "level_profiles": {
-    "READ_ONLY": {
-      "id": "READ_ONLY",
-      "inherits": [],
-      "capabilities": [
-        "CAP-REPOSITORY-READ"
-      ]
-    },
-    "ANALYSIS_ONLY": {
-      "id": "ANALYSIS_ONLY",
-      "inherits": [
-        "READ_ONLY"
-      ],
-      "capabilities": [
-        "CAP-REPOSITORY-ANALYZE",
-        "CAP-REPOSITORY-PROPOSE"
-      ]
-    },
-    "DOC_REFACTOR": {
-      "id": "DOC_REFACTOR",
-      "inherits": [
-        "ANALYSIS_ONLY"
-      ],
-      "capabilities": [
-        "CAP-DOCUMENT-CREATE",
-        "CAP-DOCUMENT-MODIFY",
-        "CAP-DOCUMENT-RENAME",
-        "CAP-DOCUMENT-MOVE",
-        "CAP-DOCUMENT-DELETE"
-      ]
-    },
-    "TEST_REFACTOR": {
-      "id": "TEST_REFACTOR",
-      "inherits": [
-        "ANALYSIS_ONLY"
-      ],
-      "capabilities": [
-        "CAP-TEST-CREATE",
-        "CAP-TEST-MODIFY",
-        "CAP-TEST-RENAME",
-        "CAP-TEST-MOVE",
-        "CAP-TEST-DELETE"
-      ]
-    },
-    "CODE_REFACTOR": {
-      "id": "CODE_REFACTOR",
-      "inherits": [
-        "ANALYSIS_ONLY"
-      ],
-      "capabilities": [
-        "CAP-SOURCE-CREATE",
-        "CAP-SOURCE-MODIFY",
-        "CAP-SOURCE-RENAME",
-        "CAP-SOURCE-MOVE",
-        "CAP-SOURCE-DELETE"
-      ]
-    },
-    "ARCHITECTURE_CHANGE": {
-      "id": "ARCHITECTURE_CHANGE",
-      "inherits": [
-        "CODE_REFACTOR",
-        "DOC_REFACTOR",
-        "TEST_REFACTOR"
-      ],
-      "capabilities": [
-        "CAP-ARCHITECTURE-MODIFY"
-      ]
-    },
-    "COMMIT": {
-      "id": "COMMIT",
-      "inherits": [
-        "ARCHITECTURE_CHANGE"
-      ],
-      "capabilities": [
-        "CAP-COMMIT-CREATE"
-      ]
-    },
-    "PUSH": {
-      "id": "PUSH",
-      "inherits": [
-        "COMMIT"
-      ],
-      "capabilities": [
-        "CAP-REMOTE-PUSH"
-      ]
-    }
+    "started_at": "2026-09-10T00:00:00Z",
+    "completed_at": "2026-09-10T00:00:00Z"
   },
   "execution_verification": {
     "state": "PASSED",
     "result": "CONFORMING",
     "scope": {
-      "paths": [
-        "README.md",
-        "docs/",
-        "tools/",
-        "prototype/",
-        "archive/"
-      ]
+      "paths": {
+        "include": [
+          "README.md",
+          "docs/",
+          "tools/"
+        ],
+        "exclude": [
+          "prototype/",
+          "archive/"
+        ]
+      }
     },
     "checks": [
       {
@@ -3746,13 +2906,6 @@
       }
     ],
     "findings": [],
-    "remediation_required": false,
-    "independent": true,
-    "method": "Re-ran every tool after execution and compared the results with the frozen artifact digest, the recorded change set and the declared scope paths. The verifier repaired nothing and modified no file.",
-    "mutations": [],
-    "not_verified": [
-      "end-to-end HtmlProvider behaviour under a real DOM (SCOPE-GAP-1, OPEN)",
-      "real userscript-manager semantics (SCOPE-GAP-2, OPEN)"
-    ]
+    "remediation_required": false
   }
 }

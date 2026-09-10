@@ -125,8 +125,9 @@ digest, so any accidental code modification fails verification.
 | TEST-011 | `tools/simulate.mjs` | anomaly stream `CONCURRENT_OWNER` | two workers acquiring one candidate at the same time | DIRECT | DIRECT |
 | TEST-012 | `tools/simulate.mjs` | metrics `discoveries` vs `uniqueUrls` (74 / 27) | discovery records are not deduplicated (D9) | DIRECT | DIRECT |
 | TEST-013 | `tools/simulate.mjs` | `--unsafe-control` run | the harness detects an ownership violation (detector sensitivity) | DIRECT (executed) | DIRECT |
-| TEST-014 | `tools/validate-analysis.mjs` | the validation pipeline: schema, claim rules C-001–C-043 and matrix CV-001–CV-020, evidence rules, authorization rules AC-001–AC-016 and AUTH-017–AUTH-020, execution invariants EV-001–EV-012 with the section 200 transition graph, execution-verification rules EVV-001–EVV-009, serialization invariants SER-001–SER-012, invariants I-001–I-016 | the record's typed fields, evidence shape, authorization and execution consistency | DIRECT (executed) | DIRECT |
-| TEST-015 | `tools/verify.mjs` (§7e) | capability closure re-derived from the embedded `level_profiles`, grants ⊆ ProfileCapabilitySet, catalogue states DECLARED not ENABLED, withheld classes unreachable, every executed operation covered by a capability of the right resource class, declared scope paths versus `git diff`, execution/execution-verification separation, claim verification never borrowing lifecycle values | the authorization model and the two lifecycles are enforced, not merely documented | DIRECT (executed) | DIRECT |
+| TEST-014 | `tools/validate-analysis.mjs` | the validation pipeline: schema, claim rules C-001–C-043 and matrix CV-001–CV-020, evidence rules, the closed schema of sections 209–211, the required-field rules REQ-001…REQ-015, the capability-grant rules CAP-001…CAP-016 and CG-001…CG-015 with the section 212/216 resolution, the claim matrix CV-001…CV-020, execution invariants EV-001–EV-012 with the section 200 transition graph, execution-verification rules EVV-001–EVV-009 and the YAML mirror comparison | the record's typed fields, evidence shape, authorization and execution consistency | DIRECT (executed) | DIRECT |
+| DOC-015 | `docs/analysis/capability-registry.json` | the capability registry: 21 capability definitions with resource class and operations, 8 level profiles with declared `inherits` | the policy input of the authorization engine (sections 212, 216); it is not a grant | DIRECT | DIRECT |
+| TEST-015 | `tools/verify.mjs` (§7e) | the registry resolved into profiles, effective capabilities re-derived from grant states rather than trusted, withheld classes unreachable, every executed operation covered by a capability of the right resource class, declared scope paths versus `git diff`, execution/execution-verification separation, claim verification never borrowing lifecycle values, and the procedural check that execution verification modified nothing | the authorization model and the two lifecycles are enforced, not merely documented | DIRECT (executed) | DIRECT |
 
 ## Register — documentation
 
@@ -143,23 +144,25 @@ digest, so any accidental code modification fails verification.
 | DOC-011 | `docs/glossary.md` | "Canonical definitions" | one term per concept; conflict table | DIRECT | DIRECT |
 | DOC-012 | `docs/analysis/change-register-2026-09-10.md` | change IDs R-001… | what was changed, why, and how it was verified | DIRECT | DIRECT |
 | DOC-013 | `docs/analysis/analysis.json`, `docs/analysis/analysis.schema.json`, `docs/analysis/claims.md` | the normative record, the schema and its rendering | the typed state of every claim, the authorization object and the execution record | DIRECT | DIRECT |
-| DOC-014 | `docs/analysis/authorization.yaml` | the canonical authorization object in YAML — level profiles, capability allow/deny sets, operation sets, scope paths, change ids | serialization identity with the JSON record (SER-001…SER-012) and the resolved capability closure | DIRECT | DIRECT |
+| DOC-014 | `docs/analysis/authorization.yaml` | the canonical authorization object in YAML — state, level profile, capability grants with their states and scopes, operation sets, scope paths, change ids | serialization identity with the JSON record (SER-001…SER-012) and the resolved capability closure | DIRECT | DIRECT |
 
-## Absence procedures (rule V2)
+## Absence procedures
 
 An `ABSENT` finding is a claim about an inspection, so each one names the
-procedure that justifies it. These procedures are recorded in
-[analysis.json](analysis.json) as `absence_verification` and referenced from the
-claim that depends on them; rules `V2` and §94 require the reference before an
-absence may be reported as `VERIFIED`.
+procedure that justifies it. The normative record cannot carry these fields (the
+schema of brief 10 section 209 is closed), so the procedures are maintained here
+and `tools/validate-analysis.mjs` resolves the claim → procedure link from this
+table: an `ABSENT` claim without a row below fails the pipeline.
 
 | Procedure | Claim | Inspected scope | Probe | Result |
 | --- | --- | --- | --- | --- |
-| `AV-001` | `SCOPE-CLAIM-001` | whole artifact + all documentation | full read; `tools/verify.mjs` symbol scan for DVB/RF terms | no match |
-| `AV-002` | `SCOPE-CLAIM-002` | whole artifact | symbol scan for capability/work-item/evidence-graph/lease/coverage/fencing symbols | no match; occurrences are design documents only |
-| `AV-003` | `SCOPE-CLAIM-003` | acquisition and scheduler paths | inspection for any coverage/absence/completeness object | none exists |
-| `AV-004` | `SCOPE-CLAIM-004` | candidate model and every `discover()` call site | target-type inspection | every target is a URL |
-| `AV-005` | `SCOPE-CLAIM-005` | repository tree at `cc8df73` | git tree listing | no tests, CI or build tooling existed |
+| `AV-001` | `CLAIM-029` | declared scope: the whole artifact and all documentation at cc8df73 | tools/verify.mjs symbol scan; manual search for spectrum/tuner/demodulator/FEC/TS/PSI-SI terms | no match: the artifact and documentation contain no DVB/RF implementation |
+| `AV-002` | `CLAIM-030` | declared scope: the whole artifact | tools/verify.mjs symbol scan for capability/work-item/evidence-graph/lease/coverage/fencing symbols | no match; the only occurrences are in the design documents, which are labelled PLANNED |
+| `AV-003` | `CLAIM-031` | declared scope: acquisition and scheduler code paths | tools/verify.mjs structural checks; CODE-009, CODE-013, CODE-015 | no such object exists; termination is an empty eligible set |
+| `AV-004` | `CLAIM-032` | declared scope: candidate model and every discover() call site | CODE-003 (identityKey is type:target), CODE-027 | every target is a URL; no non-URL target path exists |
+| `AV-005` | `CLAIM-033` | declared scope: the repository tree at the resolved revision cc8df73 | access contract in the evidence register; git tree listing at cc8df73 | no test directory, CI configuration or build tooling existed at the resolved revision |
+| `AV-006` | `CLAIM-017` | declared scope: the whole artifact and the documentation tree | grep for evidence-graph, interpretation, conflict-resolution and corroboration constructs | no such object exists; observations and discoveries are stored without an evidence layer |
+| `AV-007` | `CLAIM-024` | declared scope: persistence code paths | CODE-025, SCOPE-002, tools/verify.mjs round-trip check | no transaction, journal or crash-recovery mechanism exists |
 
 Negative evidence is recorded as an **evidence object** like every other row:
 `path` names the inspected artifact and `locator` names the probe
@@ -183,24 +186,33 @@ about artifacts that do not exist in the repository are `NOT_FOUND`.
 | SCOPE-006 | No coverage, absence or completeness object exists | no such symbol; termination is an empty eligible set | **ABSENT** | CODE-009, DOC-010 |
 | SCOPE-007 | No non-URL candidate target is implemented | every `discover()` call passes a URL; target type list is URL-oriented | **ABSENT** | CODE-003, CODE-027 |
 
-## Register — contradictions (index only)
+## Register — claim relationships (contradictions)
 
-A contradiction is a relationship between claims, not an `evidence_level`. It is
-recorded canonically in [claims.md](claims.md); this table only indexes which
-evidence items participate.
+A contradiction is a relationship between claims, not an `evidence_level`. Brief 10
+closed the machine record, so the canonical map lives here and the affected claims
+name their counterparts in prose; `tools/validate-analysis.mjs` reads this table and
+fails when a `CONTRADICTED` claim has no row, or a row names a claim that does not
+exist.
 
-| ID | Claim A | Claim B | Evidence | Relationship |
-| --- | --- | --- | --- | --- |
-| CONC-001 | claim operation is atomic | — | CODE-009, TEST-001 | supported, no conflict |
-| CONC-002 | "a candidate may have at most one active owner" | re-discovery re-queues in-flight candidates | CODE-008, CODE-021, TEST-009, TEST-011 | **conflict — see CONC-CLAIM-002** |
-| CONC-003 | worker pool provides configured concurrency | workers exit permanently on an empty frontier | CODE-018, TEST-010 | **conflict — see CONC-CLAIM-003** |
-| CONC-004 | retry is bounded by backoff | `failed` is claimable with no backoff | CODE-009, CODE-010, CODE-011 | **conflict — see SCHED-CLAIM-002** |
-| PROV-001 | derivation chain seed → candidate → observation → discovery | — | CODE-005, TEST-007 | supported, no conflict |
-| PROV-002 | content identity is modelled by fingerprints | index is never read | CODE-022, CODE-023 | **conflict — see PROV-CLAIM-003** |
-| PROV-003 | discoveries represent distinct findings | records are not deduplicated | CODE-021, TEST-012 | **conflict — see ARCH-CLAIM-005** |
-| FAIL-001 | HTTP failure ends a candidate's life | `failed` returns to the claimable pool | CODE-010, CODE-011 | **conflict — see SCHED-CLAIM-002** |
-| ARCH-001 | "persistent state" | no transaction, validation or in-flight reconciliation | CODE-025, TEST-008 | partial support |
-| ARCH-002 | "protocol-independent providers" | only recognition is an interface | CODE-015, SCOPE-003 | partial support |
+| ID | Claim A | Claim B | Relationship | Evidence | Note |
+| --- | --- | --- | --- | --- | --- |
+| `CONTRA-001` | `CLAIM-005` | `CLAIM-040` | conflict | CODE-008, CODE-021, TEST-009, TEST-011 | implementation supports `CLAIM-040`; defect D1 |
+| `CONTRA-002` | `CLAIM-008` | `CLAIM-040` | conflict | CODE-018, TEST-010 | implementation supports `CLAIM-040`; defect D2 |
+| `CONTRA-003` | `CLAIM-007` | `CLAIM-040` | conflict | CODE-009, CODE-010 | implementation supports `CLAIM-040`; defect D3 |
+| `CONTRA-004` | `CLAIM-020` | `CLAIM-040` | conflict | CODE-013, CODE-015, SCOPE-003 | implementation supports `CLAIM-040` |
+| `CONTRA-005` | `CLAIM-022` | `CLAIM-040` | conflict | CODE-016, CODE-021, TEST-012 | implementation supports `CLAIM-040`; defect D9 |
+| `CONTRA-006` | `CLAIM-015` | `CLAIM-040` | conflict | CODE-022, CODE-023 | implementation supports `CLAIM-040`; defect D8 |
+| `CONTRA-007` | `CLAIM-026` | `CLAIM-040` | conflict | CODE-009, SCOPE-004 | implementation supports `CLAIM-040` |
+| `CONTRA-008` | `CLAIM-009` | `CLAIM-040` | conflict | CODE-018, CODE-029 | implementation supports `CLAIM-040`; defect D5 |
+| `CONTRA-009` | `CLAIM-012` | `CLAIM-040` | conflict | CODE-018, CODE-010 | implementation supports `CLAIM-040`; cancellation exists in the DESIGNED v0.10 only |
+| CONC-001 | `CLAIM-004` | — | supported | CODE-009, TEST-001 | the claim operation itself is atomic |
+| PROV-001 | `CLAIM-018` | — | supported | CODE-005, TEST-007 | derivation chain seed → candidate → observation → discovery |
+| ARCH-001 | `CLAIM-035` | — | partial | CODE-025, TEST-008 | "persistent state" holds without transactions, validation or in-flight reconciliation |
+| ARCH-002 | `CLAIM-038` | — | partial | CODE-015, SCOPE-003 | "protocol-independent providers" holds for recognition only |
+
+Rows without a `CONTRA-` id record support or partial support rather than
+contradiction; they are kept because they were established during the analysis and
+are cited from [repository-analysis-2026-09-10.md](repository-analysis-2026-09-10.md) §5.
 
 ## Register — configuration
 

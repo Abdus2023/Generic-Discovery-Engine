@@ -26,6 +26,7 @@
  */
 
 import fs from 'node:fs';
+import crypto from 'node:crypto';
 import path from 'node:path';
 import vm from 'node:vm';
 import { execFileSync } from 'node:child_process';
@@ -35,6 +36,15 @@ const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const ARTIFACT = path.join(ROOT, 'prototype', 'generic-discovery-engine.user.js');
 
 const results = [];
+
+/* the frozen artifact digest, re-computed wherever the record states it */
+function verifyArtifactDigest(expected) {
+  if (!expected) return true;
+  const target = path.join(ROOT, expected.path);
+  if (!fs.existsSync(target)) return false;
+  const value = crypto.createHash('sha256').update(fs.readFileSync(target)).digest('hex');
+  return value === expected.value;
+}
 const pass = (name, note = '') => results.push({ level: 'PASS', name, note });
 const fail = (name, note = '') => results.push({ level: 'FAIL', name, note });
 const defect = (name, note = '') => results.push({ level: 'DEFECT', name, note });
@@ -417,13 +427,22 @@ else fail('no later-design layers present', futureHits.join(', '));
       fail('execution.state uses the execution lifecycle enum', String(exec));
     }
 
-    const forbidden = record.governance?.forbidden_operations || [];
-    const grants = [record.authorization, ...(record.authorization_grants || [])];
-    const permitsCode = grants.some(g => ['CODE_REFACTOR', 'ARCHITECTURE_CHANGE'].includes(g.level));
-    if (forbidden.includes('MODIFY_SOURCE_CODE') && !permitsCode) {
-      pass('authorization forbids source mutation', 'code changes are plan-only');
+    /* the strongest form of the safety property: no effective capability can
+       modify, rename, move or delete a source artifact. Creating the extracted
+       artifact once (CAP-SOURCE-CREATE, restricted to prototype/, change R-001)
+       is disclosed in the record; nothing else touches source. */
+    const registry = JSON.parse(fs.readFileSync(path.join(ROOT, 'docs', 'analysis', 'capability-registry.json'), 'utf8'));
+    const allowed = ['ENABLED', 'RESTRICTED'];
+    const authorizing = (record.authorization.capability_grants || []).filter(g => allowed.includes(g.state));
+    const byId = new Map(registry.capabilities.map(c => [c.id, c]));
+    const codeMutation = authorizing
+      .map(g => byId.get(g.capability_id))
+      .filter(c => c && c.resource_class === 'SOURCE' && c.operations.some(op => op !== 'CREATE'))
+      .map(c => c.id);
+    if (codeMutation.length === 0) {
+      pass('authorization forbids source mutation', `${authorizing.length} authorizing grant(s); no MODIFY/RENAME/MOVE/DELETE capability against SOURCE`);
     } else {
-      fail('authorization forbids source mutation', 'unexpected: source mutation appears authorized');
+      fail('authorization forbids source mutation', `unexpected: ${codeMutation.join(', ')}`);
     }
   }
 }
@@ -443,22 +462,18 @@ else fail('no later-design layers present', futureHits.join(', '));
   }
 
   const record = JSON.parse(fs.readFileSync(path.join(ROOT, 'docs', 'analysis', 'analysis.json'), 'utf8'));
-  const schema = JSON.parse(fs.readFileSync(schemaPath, 'utf8'));
+  const registryDoc = JSON.parse(fs.readFileSync(path.join(ROOT, 'docs', 'analysis', 'capability-registry.json'), 'utf8'));
   const auth = record.authorization || {};
   const STATES = ['NOT_REQUESTED', 'REQUESTED', 'GRANTED', 'DENIED', 'REVOKED', 'EXPIRED'];
-  const PROFILES = Object.keys(schema.level_profiles);
-  const grants = [auth, ...(record.authorization_grants || [])];
-  const registry = new Map((record.capabilities || []).map(c => [c.id, c]));
+  const profiles = new Map(registryDoc.level_profiles.map(p => [p.id, p]));
+  const capabilities = new Map(registryDoc.capabilities.map(c => [c.id, c]));
+  const AUTHORIZING = ['ENABLED', 'RESTRICTED'];
 
   if (STATES.includes(auth.state)) pass('authorization state uses the authorization enum', auth.state);
   else fail('authorization state uses the authorization enum', String(auth.state));
 
-  /* a level is a named profile: it is not an operation list and not an authority */
-  if (grants.every(g => PROFILES.includes(g.level?.profile))) {
-    pass('authorization level is a named profile', grants.map(g => g.level.profile).join(', '));
-  } else {
-    fail('authorization level is a named profile', grants.map(g => String(g.level?.profile ?? g.level)).join(', '));
-  }
+  if (profiles.has(auth.level?.profile)) pass('authorization level is a named profile', auth.level.profile);
+  else fail('authorization level is a named profile', String(auth.level?.profile));
 
   if (!('granted' in auth) && typeof auth.authorized !== 'boolean') pass('authorization is an object, not a boolean');
   else fail('authorization is an object, not a boolean');
@@ -466,66 +481,79 @@ else fail('no later-design layers present', futureHits.join(', '));
   if (!(auth.state === 'GRANTED' && !auth.level?.profile)) pass('a grant states its level separately from its state');
   else fail('a grant states its level separately from its state');
 
-  /* section 178: ProfileCapabilitySet over declared inheritance edges */
+  /* section 202.3: profile capabilities ∩ grants − denies, computed here */
   const closure = (profile, path_ = []) => {
     if (path_.includes(profile)) throw new Error('inheritance cycle: ' + [...path_, profile].join(' -> '));
-    const node = schema.level_profiles[profile];
+    const node = profiles.get(profile);
     const out = new Set(node.capabilities || []);
     for (const parent of node.inherits || []) for (const cap of closure(parent, [...path_, profile])) out.add(cap);
     return out;
   };
-  const AUTHORIZING = ['ENABLED', 'RESTRICTED'];
-  const effective = grant => {
-    const ceiling = closure(grant.level.profile);
-    const granted = (grant.capabilities?.grants || []).filter(c => AUTHORIZING.includes(c.state) && ceiling.has(c.id));
-    const denied = new Set((grant.capabilities?.denies || []).map(c => c.id));
-    return granted.filter(c => !denied.has(c.id));
+  const grantOf = id => (auth.capability_grants || []).find(g => g.capability_id === id);
+  const effective = () => {
+    const ceiling = closure(auth.level.profile);
+    const granted = (auth.capability_grants || []).filter(g => AUTHORIZING.includes(g.state) && ceiling.has(g.capability_id));
+    const denied = new Set((auth.capability_grants || []).filter(g => ['DENIED', 'REVOKED', 'EXPIRED'].includes(g.state)).map(g => g.capability_id));
+    return granted.filter(g => !denied.has(g.capability_id)).map(g => ({ ...capabilities.get(g.capability_id), state: g.state, grant: g }));
   };
-  const permitted = grant => {
-    const implied = new Set(effective(grant).flatMap(c => c.operations || []));
-    const allow = grant.operations?.allow ? grant.operations.allow.filter(op => implied.has(op)) : [...implied];
-    const kept = new Set(allow);
-    for (const op of grant.operations?.deny || []) kept.delete(op);
+  const permitted = () => {
+    const implied = new Set(effective().flatMap(c => c.operations || []));
+    const kept = new Set(auth.operations?.allow ? auth.operations.allow.filter(op => implied.has(op)) : [...implied]);
+    for (const op of auth.operations?.deny || []) kept.delete(op);
     return kept;
   };
 
   {
-    const dangling = [...closure('PUSH')].concat(grants.flatMap(g => (g.capabilities?.grants || []).map(c => c.id)))
-      .filter(id => !registry.has(id));
-    if (dangling.length === 0) pass('every capability id resolves in the embedded catalogue',
-      `${registry.size} catalogue entries, ${[...closure('PUSH')].length} reachable from PUSH`);
-    else fail('every capability id resolves in the embedded catalogue', [...new Set(dangling)].join(', '));
+    const ceiling = closure(auth.level.profile);
+    const dangling = [...ceiling, ...(auth.capability_grants || []).map(g => g.capability_id)].filter(id => !capabilities.has(id));
+    if (dangling.length === 0) pass('every capability id resolves in the registry',
+      `${capabilities.size} registry entries, ${ceiling.size} reachable from ${auth.level.profile}`);
+    else fail('every capability id resolves in the registry', [...new Set(dangling)].join(', '));
 
-    const declaredOnly = [...registry.values()].filter(c => c.state === 'DECLARED').length;
-    const escalation = grants.flatMap(g => (g.capabilities?.grants || [])
-      .filter(c => !closure(g.level.profile).has(c.id)).map(c => `${g.level.profile}:${c.id}`));
-    if (escalation.length === 0) {
-      pass('no capability is assumed: grants never exceed the profile closure',
-        `${registry.size} declared (DECLARED), ${grants.map(g => g.level.profile + '→' + effective(g).length).join(', ')}`);
-    } else {
-      fail('no capability is assumed: grants never exceed the profile closure', escalation.join(', '));
-    }
-    if (declaredOnly === registry.size) pass('catalogue capabilities are DECLARED, not ENABLED', 'AC-005');
-    else fail('catalogue capabilities are DECLARED, not ENABLED', `${declaredOnly}/${registry.size}`);
+    const outside = (auth.capability_grants || []).filter(g => !ceiling.has(g.capability_id)).map(g => g.capability_id);
+    if (outside.length === 0) pass('grants never exceed the resolved profile', `${(auth.capability_grants || []).length} grant(s) ⊆ ${auth.level.profile}`);
+    else fail('grants never exceed the resolved profile', outside.join(', '));
 
-    const leaked = (record.governance?.withheld_capabilities || [])
-      .filter(id => grants.some(g => effective(g).some(c => c.id === id)));
-    if (leaked.length === 0) pass('withheld capability classes are unreachable through every grant',
-      `${(record.governance?.withheld_capabilities || []).length} withheld`);
-    else fail('withheld capability classes are unreachable through every grant', leaked.join(', '));
+    const restrictedWithoutScope = (auth.capability_grants || []).filter(g => g.state === 'RESTRICTED' && !g.scope);
+    if (restrictedWithoutScope.length === 0) pass('every RESTRICTED grant carries its restriction scope',
+      `${(auth.capability_grants || []).filter(g => g.state === 'RESTRICTED').length} restricted grant(s)`);
+    else fail('every RESTRICTED grant carries its restriction scope', restrictedWithoutScope.map(g => g.capability_id).join(', '));
 
-    const uncovered = record.execution.operations
-      .filter(o => o.result === 'SUCCEEDED' && !grants.some(g => permitted(g).has(o.operation) &&
-        effective(g).some(c => c.resource_class === o.target.resource_class)))
-      .map(o => `${o.id}:${o.operation}/${o.target.resource_class}`);
-    if (uncovered.length === 0) pass('every executed operation is covered by a capability',
-      `${record.execution.operations.length} operations across ${grants.length} grant(s)`);
-    else fail('every executed operation is covered by a capability', uncovered.join(', '));
+    const withheld = registryDoc.governance?.withheld_capabilities || [];
+    const leaked = withheld.filter(id => (auth.capability_grants || []).some(g => g.capability_id === id && AUTHORIZING.includes(g.state)));
+    if (leaked.length === 0) pass('withheld capability classes are unreachable through the authorization',
+      `${withheld.length} withheld`);
+    else fail('withheld capability classes are unreachable through the authorization', leaked.join(', '));
+
+    const forbidden = registryDoc.governance?.forbidden_operations || [];
+    const attempted = record.execution.operations.filter(o => forbidden.includes(o.operation)).map(o => o.id);
+    if (attempted.length === 0) pass('no forbidden operation was executed', forbidden.join(', '));
+    else fail('no forbidden operation was executed', attempted.join(', '));
+
+    const PATH_RESOURCES = new Set(['DOCUMENT', 'TEST', 'SOURCE', 'CONFIGURATION', 'ARCHITECTURE']);
+    const inPaths = (scope, target) => {
+      const include = scope?.paths?.include || [];
+      const exclude = scope?.paths?.exclude || [];
+      const inside = include.some(p => target.path.startsWith(p));
+      return inside && !exclude.some(p => target.path.startsWith(p));
+    };
+    const uncovered = record.execution.operations.filter(o => o.result !== 'SUCCEEDED').map(o => o.id)
+      .concat(record.execution.operations.filter(o => o.result === 'SUCCEEDED').filter(o => {
+        if (!permitted().has(o.operation)) return true;
+        if (!(auth.change_ids || []).includes(o.change_id)) return true;
+        const candidates = effective().filter(c => c.operations.includes(o.operation) && c.resource_class === o.target.resource_class);
+        if (candidates.length === 0) return true;
+        if (PATH_RESOURCES.has(o.target.resource_class) && !inPaths(auth.scope, o.target)) return true;
+        return !candidates.some(c => c.state !== 'RESTRICTED' || inPaths(c.grant.scope, o.target));
+      }).map(o => o.id));
+    if (uncovered.length === 0) pass('every executed operation is covered by an effective capability',
+      `${record.execution.operations.length} operations, ${effective().length} effective capabilities, operations ${[...permitted()].sort().join('/')}`);
+    else fail('every executed operation is covered by an effective capability', uncovered.join(', '));
   }
 
-  /* scope.paths must describe the paths the change set actually touched */
+  /* declared scope paths must describe the paths the change set actually touched */
   {
-    const include = [...new Set(grants.flatMap(g => g.scope?.paths?.include || []))];
+    const include = auth.scope?.paths?.include || [];
     let touched = [];
     try {
       touched = execFileSync('git', ['diff', '--name-only', record.repository.resolved_revision + '..HEAD'],
@@ -544,9 +572,9 @@ else fail('no later-design layers present', futureHits.join(', '));
 
   /* section 168: claim verification and execution verification are different domains */
   {
-    const EXEC = schema.$defs.execution.properties.state.enum;
-    const EV_STATE = schema.$defs.execution_verification.properties.state.enum;
-    const EV_RESULT = schema.$defs.execution_verification.properties.result.enum;
+    const EXEC = ['NOT_STARTED', 'AUTHORIZATION_BLOCKED', 'READY', 'RUNNING', 'SUCCEEDED', 'PARTIALLY_SUCCEEDED', 'FAILED', 'CANCELLED', 'STOPPED'];
+    const EV_STATE = ['NOT_REQUIRED', 'NOT_STARTED', 'READY', 'RUNNING', 'PASSED', 'PARTIALLY_PASSED', 'FAILED', 'BLOCKED', 'INCONCLUSIVE'];
+    const EV_RESULT = ['CONFORMING', 'PARTIALLY_CONFORMING', 'NON_CONFORMING', 'INCONCLUSIVE', 'NOT_APPLICABLE'];
     const okExec = EXEC.includes(record.execution.state) && !('result' in record.execution);
     const okEv = EV_STATE.includes(record.execution_verification?.state) && EV_RESULT.includes(record.execution_verification?.result);
     if (okExec && okEv) {
@@ -560,8 +588,25 @@ else fail('no later-design layers present', futureHits.join(', '));
     if (mixed.length === 0) pass('claim verification never borrows execution or verification lifecycle values');
     else fail('claim verification never borrows execution or verification lifecycle values', mixed.map(c => c.id).join(', '));
 
-    if (record.execution_verification?.mutations?.length === 0) pass('execution verification modified nothing', 'EVV-008');
-    else fail('execution verification modified nothing');
+    /* EVV-008 / PV-009 as a procedural check: verification repaired nothing.
+       A working tree may legitimately hold the change set being prepared, so the
+       check is that nothing outside the declared scope paths is modified and
+       that the frozen artifact digest still matches. */
+    let dirty = [];
+    try {
+      dirty = execFileSync('git', ['status', '--porcelain'], { cwd: ROOT, encoding: 'utf8' })
+        .split(/\r?\n/).filter(Boolean).map(l => l.slice(3).trim().replace(/^"|"$/g, ''));
+    } catch { dirty = []; }
+    const include = auth.scope?.paths?.include || [];
+    const outsideScope = dirty.filter(f => !include.some(prefix => f === prefix || f.startsWith(prefix)));
+    const digestOK = verifyArtifactDigest(registryDoc.record_provenance?.artifact_digest);
+    if (outsideScope.length === 0 && digestOK) {
+      pass('execution verification modified nothing outside the authorized scope',
+        `${dirty.length} uncommitted path(s), all inside the declared scope; artifact digest unchanged`);
+    } else {
+      fail('execution verification modified nothing outside the authorized scope',
+        outsideScope.length ? `outside scope: ${outsideScope.slice(0, 3).join(', ')}` : 'artifact digest mismatch');
+    }
   }
 
   const flatEvidence = record.claims.flatMap(c => c.evidence).filter(e => typeof e === 'string');

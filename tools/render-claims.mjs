@@ -22,21 +22,16 @@ const MD_PATH = path.join(ROOT, 'docs', 'analysis', 'claims.md');
 const BEGIN = '<!-- CLAIMS:BEGIN (generated from analysis.json — do not edit by hand) -->';
 const END = '<!-- CLAIMS:END -->';
 
-/* Section headings are derived from the claim-id family, so the record itself
-   stays canonical (section 142) and carries no presentation-only field. */
-const FAMILY_GROUP = {
-  CAND: 'current-system', SCHED: 'current-system', ACQ: 'current-system', PROV: 'current-system',
-  ARCH: 'architecture-boundary',
-  SCOPE: 'scope-and-absence',
-  PLAN: 'plan-history-hypothesis', HIST: 'plan-history-hypothesis', HYP: 'plan-history-hypothesis'
+/* Section headings come from docs/analysis/claim-domains.json: the closed record
+   schema of brief 10 cannot carry a presentation-only family field, so the
+   taxonomy has exactly one owner outside the record. */
+const DOMAINS_PATH = path.join(ROOT, 'docs', 'analysis', 'claim-domains.json');
+const domainDoc = JSON.parse(fs.readFileSync(DOMAINS_PATH, 'utf8'));
+const GROUPS = domainDoc.groups.map(g => [g.key, g.title, new Set(g.claims)]);
+const groupOf = claim => {
+  const group = GROUPS.find(([, , ids]) => ids.has(claim.id));
+  return group ? group[0] : null;
 };
-const GROUPS = [
-  ['current-system', 'Current-system claims'],
-  ['architecture-boundary', 'Architecture-boundary claims'],
-  ['scope-and-absence', 'Scope and absence claims'],
-  ['plan-history-hypothesis', 'Plan, history and hypothesis claims']
-];
-const groupOf = claim => FAMILY_GROUP[String(claim.id).split('-')[0]] || 'current-system';
 
 const record = JSON.parse(fs.readFileSync(JSON_PATH, 'utf8'));
 const claims = record.claims;
@@ -47,6 +42,11 @@ function cell(text) {
 
 function renderGroups() {
   const out = [];
+  const missing = claims.filter(c => groupOf(c) === null).map(c => c.id);
+  if (missing.length) {
+    console.error(`FAIL: claims absent from claim-domains.json: ${missing.join(', ')}`);
+    process.exit(2);
+  }
   for (const [key, title] of GROUPS) {
     const rows = claims.filter(c => groupOf(c) === key);
     if (rows.length === 0) continue;

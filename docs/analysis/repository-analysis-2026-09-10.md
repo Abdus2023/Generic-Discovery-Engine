@@ -13,21 +13,32 @@ documentation cleanup. Output order follows the review brief (Phases 0–21).
 | Access classification | **FULL ACCESS** — complete tree, no submodules, no external artifacts to inspect |
 | Evidence standard | every non-trivial finding cites `[EVID:…]` from the [evidence register](evidence-register.md) |
 | State model | six typed fields per claim — `claim_kind`, `implementation_state`, `test_state`, `evidence_level`, `claim_verification.result`, `confidence` — plus independent authority dimensions (`authorization.state`, `authorization.level.profile`, `capabilities`, `operations`, `scope`, `change_ids`) and independent lifecycles (`execution.state` with per-operation `authorization_decision` and `result`, `execution_verification.state` with its own `result` and per-check outcomes). Normative record: [analysis.json](analysis.json) under [analysis.schema.json](analysis.schema.json); readable tables: [claims.md](claims.md) |
-| Enforcement | [EVID:TEST-014] `tools/validate-analysis.mjs` validates [EVID:DOC-013] the record against `analysis.schema.json`, plus the validation matrix CV-001–CV-020 (section 144 numbering), evidence rules C-030–C-034, authorization rules AC-001–AC-016 and AUTH-017–AUTH-020, execution invariants EV-001–EV-012 with the section 200 transition graph, execution-verification rules EVV-001–EVV-009, serialization invariants SER-001–SER-012 and invariants I-001–I-016: no generic status field, no field substitution, executed ⊆ authorized, documentation never proves implementation, `ABSENT` ≠ `INACCESSIBLE` |
+| Enforcement | [EVID:TEST-014] `tools/validate-analysis.mjs` runs the section 202 pipeline — [EVID:DOC-013] schema validity against `analysis.schema.json` (draft 2020-12, closed root), object validity `REQ-001`–`REQ-015`, cross-object semantics (`CV-001`–`CV-020` of section 144, evidence rules `C-030`–`C-034` with the recorded absence procedures, capability rules `CAP-001`–`CAP-016` and `CG-001`–`CG-015`), the section 216 authorization function re-deriving every recorded decision from the effective capability set, execution invariants `EV-001`–`EV-012` with the section 200 transition graph, execution-verification rules `EVV-001`–`EVV-009`, YAML ≡ JSON serialization and invariants `I-001`–`I-016`: no generic status field, no field substitution, executed ⊆ authorized, documentation never proves implementation, `ABSENT` ≠ `INACCESSIBLE` |
 | Scope boundary | repository / artifact / verification / execution — recorded in [scope-and-authorization.md](scope-and-authorization.md) |
-| Authorization | three canonical grants, all `state: GRANTED` and capability-restricted: content (`DOC_REFACTOR`, mutating capabilities RESTRICTED with path constraints, `CAP-DOCUMENT-DELETE` DENIED), extraction (`CODE_REFACTOR`, `CAP-SOURCE-CREATE` only, change `R-001`), publication (`PUSH`, sixteen inherited content capabilities DENIED, publication only); `change_ids: R-001 … R-020`; `CAP-SOURCE-MODIFY`, `CAP-TEST-*` and `CAP-ARCHITECTURE-MODIFY` withheld at the capability layer and unreachable through every grant |
+| Authorization | one `state: GRANTED` object on profile `PUSH`, 21 capability grants (5 `ENABLED`, 5 `RESTRICTED`, 11 `DENIED`); the tenant is capability-level, not profile-level: `CAP-DOCUMENT-MODIFY` is scoped to `README.md`/`docs/`/`tools/`, `CAP-SOURCE-CREATE` to `prototype/` (the disclosed extraction for `R-001`), and `CAP-SOURCE-MODIFY`, `CAP-TEST-*`, `CAP-ARCHITECTURE-MODIFY`, `CAP-DOCUMENT-DELETE` are `DENIED`; `change_ids: R-001 … R-021`; effective set computed from registry ∩ grants − denies, never stored |
 | Phase A — verification | **read-only**; no repository file was created, edited or moved while establishing truth |
 | Phase B — refactoring | plan and execution recorded separately in the [change register](change-register-2026-09-10.md) |
 | Code changes | **none** — the artifact digest is unchanged since extraction and enforced (`sha256 8f5fc5c5…`); all code findings are `PLAN ONLY` |
-| Execution / execution verification | `execution.state: SUCCEEDED` across 21 recorded operations, every one `authorization_decision: ALLOWED` and `result: SUCCEEDED` · `execution_verification.state: PASSED` / `result: CONFORMING` across eight checks, `mutations: []` · `unauthorized_changes: []` |
+| Execution / execution verification | `execution.state: SUCCEEDED` across 23 recorded operations, every one `authorization_decision: ALLOWED` and `result: SUCCEEDED` · `execution_verification.state: PASSED` / `result: CONFORMING` across eight checks, `mutations: []` · `unauthorized_changes: []` |
 | Negative evidence | absence is recorded as `ABSENT` only where the declared inspection scope justifies it, with a recorded procedure `AV-001 … AV-007` (rules CV-006, CV-010, CV-020) |
+
+**Record construction.** [analysis.json](analysis.json) is normative; the tables in
+[claims.md](claims.md) are rendered from it by `tools/render-claims.mjs` and never
+hand-edited, and `tools/validate-analysis.mjs` enforces the schema and the rule sets.
+Values are taken from repository evidence only: no value is invented to satisfy the
+schema, and a rule that cannot be satisfied is reported as a failure rather than
+worked around. Timestamps are recorded at date granularity — the work was performed
+in one session on that date and per-operation wall-clock times were not captured —
+and the six claims-substantive fields of brief 7 are carried per claim, with a
+seventh, advisory field, `confidence`, that never replaces them (section 141).
+
 
 **Verification result: VERIFIED** — the repository state, implementation, and
 documentation claims were assessed with full access and are reproducible from the
 recorded commit and tool runs.
 
 **Refactoring result: EXECUTED + EXECUTION-VERIFIED** for documentation
-(`R-001 … R-020`); **PLAN ONLY** for code (`R-101 … R-112`).
+(`R-001 … R-021`); **PLAN ONLY** for code (`R-101 … R-112`).
 
 ---
 
@@ -147,47 +158,47 @@ cannot drift out of step.
 
 | Area | Owning claim(s) | Field summary |
 | --- | --- | --- |
-| Candidate identity and dedup | `CAND-CLAIM-001` | `CURRENT` · `IMPLEMENTED` · `TESTED` · `CORROBORATED` · `VERIFIED` |
-| Candidate as hypothesis | `CAND-CLAIM-002` | `CURRENT` · `IMPLEMENTED` · `UNTESTED` · `INDIRECT` · `PARTIALLY_VERIFIED` |
-| Bounds (caps, depth, budget) | `CAND-CLAIM-003` | `CURRENT` · `IMPLEMENTED` · `UNTESTED` · `DIRECT` · `VERIFIED` |
-| Claim atomicity at the claim site | `SCHED-CLAIM-001` | `CURRENT` · `IMPLEMENTED` · `TESTED` · `CORROBORATED` · `VERIFIED` |
-| Single-owner invariant end to end | `SCHED-CLAIM-002` | `CURRENT` · `PARTIAL` · `TESTED` · `CORROBORATED` · `CONTRADICTED` |
-| Retry and backoff | `SCHED-CLAIM-003` | `CURRENT` · `PARTIAL` · `TESTED` · `DIRECT` · `PARTIALLY_VERIFIED` |
-| Terminal failure | `SCHED-CLAIM-004` | `CURRENT` · `NOT_IMPLEMENTED` · `TESTED` · `DIRECT` · `CONTRADICTED` |
-| Worker pool and concurrency | `SCHED-CLAIM-005` | `CURRENT` · `PARTIAL` · `TESTED` · `CORROBORATED` · `CONTRADICTED` |
-| Adaptive concurrency | `SCHED-CLAIM-006` | `CURRENT` · `NOT_IMPLEMENTED` · `UNTESTED` · `DIRECT` · `CONTRADICTED` |
-| Acquisition transport | `ACQ-CLAIM-001` | `CURRENT` · `IMPLEMENTED` · `TESTED` · `CORROBORATED` · `VERIFIED` |
-| Observation on failure | `ACQ-CLAIM-002` | `CURRENT` · `IMPLEMENTED` · `UNTESTED` · `CORROBORATED` · `VERIFIED` |
-| Cancellation | `ACQ-CLAIM-003` | `CURRENT` · `NOT_IMPLEMENTED` · `UNTESTED` · `DIRECT` · `CONTRADICTED` |
-| Discovery linkage | `PROV-CLAIM-001` | `CURRENT` · `IMPLEMENTED` · `TESTED` · `DIRECT` · `VERIFIED` |
-| Derivation chain | `PROV-CLAIM-002` | `CURRENT` · `IMPLEMENTED` · `TESTED` · `CORROBORATED` · `VERIFIED` |
-| Content identity (fingerprints) | `PROV-CLAIM-003` | `SPECIFIED` · `NOT_IMPLEMENTED` · `UNTESTED` · `DIRECT` · `CONTRADICTED` |
-| Observation ≠ discovery | `PROV-CLAIM-004` | `CURRENT` · `IMPLEMENTED` · `TESTED` · `DIRECT` · `VERIFIED` |
-| Evidence layer | `PROV-CLAIM-005` | `SPECIFIED` · `NOT_IMPLEMENTED` · `NOT_APPLICABLE` · `ABSENT` · `UNVERIFIED` |
-| Observation immutability | `PROV-CLAIM-006` | `CURRENT` · `NOT_IMPLEMENTED` · `UNTESTED` · `DIRECT` · `UNVERIFIED` |
-| Provider boundary | `ARCH-CLAIM-001` | `CURRENT` · `IMPLEMENTED` · `TESTED` · `CORROBORATED` · `VERIFIED` |
-| Protocol independence | `ARCH-CLAIM-002` | `CURRENT` · `NOT_IMPLEMENTED` · `PARTIALLY_TESTED` · `DIRECT` · `CONTRADICTED` |
-| Expansion ownership | `ARCH-CLAIM-003` | `CURRENT` · `IMPLEMENTED` · `TESTED` · `CORROBORATED` · `VERIFIED` |
-| Discovery deduplication | `ARCH-CLAIM-004` | `CURRENT` · `NOT_IMPLEMENTED` · `TESTED` · `CORROBORATED` · `CONTRADICTED` |
-| Persistence across reload | `ARCH-CLAIM-005` | `CURRENT` · `IMPLEMENTED` · `TESTED` · `CORROBORATED` · `VERIFIED` |
-| Transactional persistence | `ARCH-CLAIM-006` | `SPECIFIED` · `NOT_IMPLEMENTED` · `NOT_APPLICABLE` · `ABSENT` · `UNVERIFIED` |
-| Request budget | `ARCH-CLAIM-007` | `CURRENT` · `IMPLEMENTED` · `TESTED` · `CORROBORATED` · `VERIFIED` |
-| Cross-context coordination | `ARCH-CLAIM-008` | `SPECIFIED` · `NOT_IMPLEMENTED` · `NOT_APPLICABLE` · `DIRECT` · `CONTRADICTED` |
-| Confidence comparability | `ARCH-CLAIM-009` | `CURRENT` · `NOT_IMPLEMENTED` · `UNTESTED` · `DIRECT` · `UNVERIFIED` |
-| Multiple provider matches | `ARCH-CLAIM-010` | `CURRENT` · `IMPLEMENTED` · `TESTED` · `CORROBORATED` · `VERIFIED` |
-| No DVB/RF implementation | `SCOPE-CLAIM-001` | `CURRENT` · `NOT_IMPLEMENTED` · `NOT_APPLICABLE` · `ABSENT` · `VERIFIED` |
-| No v0.8+ layers implemented | `SCOPE-CLAIM-002` | `CURRENT` · `NOT_IMPLEMENTED` · `NOT_APPLICABLE` · `ABSENT` · `VERIFIED` |
-| Coverage / absence / completeness | `SCOPE-CLAIM-003` | `CURRENT` · `NOT_IMPLEMENTED` · `NOT_APPLICABLE` · `ABSENT` · `VERIFIED` |
-| Non-URL targets | `SCOPE-CLAIM-004` | `CURRENT` · `NOT_IMPLEMENTED` · `NOT_APPLICABLE` · `ABSENT` · `VERIFIED` |
-| Repository tooling at the analysis revision | `SCOPE-CLAIM-005` | `HISTORICAL` · `NOT_IMPLEMENTED` · `NOT_APPLICABLE` · `ABSENT` · `VERIFIED` |
-| DVB support as a non-goal | `SCOPE-CLAIM-006` | `NON_GOAL` · `NOT_APPLICABLE` · `NOT_APPLICABLE` · `DIRECT` · `VERIFIED` |
-| Design series v0.8–v0.35 | `PLAN-CLAIM-001` | `PLANNED` · `NOT_IMPLEMENTED` · `NOT_APPLICABLE` · `DIRECT` · `VERIFIED` |
-| Profile coordination ≠ consensus | `PLAN-CLAIM-002` | `SPECIFIED` · `NOT_IMPLEMENTED` · `NOT_APPLICABLE` · `DIRECT` · `VERIFIED` |
-| Replay separable from acquisition | `PLAN-CLAIM-003` | `SPECIFIED` · `NOT_IMPLEMENTED` · `NOT_APPLICABLE` · `DIRECT` · `VERIFIED` |
-| Historical versions | `HIST-CLAIM-001` | `HISTORICAL` · `IMPLEMENTED` · `UNTESTED` · `DIRECT` · `VERIFIED` |
-| Invalid v0.5.0 paste | `HIST-CLAIM-002` | `HISTORICAL` · `NOT_IMPLEMENTED` · `NOT_APPLICABLE` · `DIRECT` · `VERIFIED` |
-| Pre-cleanup README accuracy | `HIST-CLAIM-003` | `HISTORICAL` · `NOT_APPLICABLE` · `NOT_APPLICABLE` · `CORROBORATED` · `CONTRADICTED` |
-| Value × probability ÷ cost model | `HYP-CLAIM-001` | `HYPOTHESIS` · `NOT_APPLICABLE` · `NOT_APPLICABLE` · `INDIRECT` · `UNVERIFIED` |
+| Candidate identity and dedup | `CLAIM-001` | `CURRENT` · `IMPLEMENTED` · `TESTED` · `CORROBORATED` · `VERIFIED` |
+| Candidate as hypothesis | `CLAIM-002` | `CURRENT` · `IMPLEMENTED` · `UNTESTED` · `INDIRECT` · `PARTIALLY_VERIFIED` |
+| Bounds (caps, depth, budget) | `CLAIM-003` | `CURRENT` · `IMPLEMENTED` · `UNTESTED` · `DIRECT` · `VERIFIED` |
+| Claim atomicity at the claim site | `CLAIM-004` | `CURRENT` · `IMPLEMENTED` · `TESTED` · `CORROBORATED` · `VERIFIED` |
+| Single-owner invariant end to end | `CLAIM-005` | `CURRENT` · `PARTIAL` · `TESTED` · `CORROBORATED` · `CONTRADICTED` |
+| Retry and backoff | `CLAIM-006` | `CURRENT` · `PARTIAL` · `TESTED` · `DIRECT` · `PARTIALLY_VERIFIED` |
+| Terminal failure | `CLAIM-007` | `CURRENT` · `NOT_IMPLEMENTED` · `TESTED` · `DIRECT` · `CONTRADICTED` |
+| Worker pool and concurrency | `CLAIM-008` | `CURRENT` · `PARTIAL` · `TESTED` · `CORROBORATED` · `CONTRADICTED` |
+| Adaptive concurrency | `CLAIM-009` | `CURRENT` · `NOT_IMPLEMENTED` · `UNTESTED` · `DIRECT` · `CONTRADICTED` |
+| Acquisition transport | `CLAIM-010` | `CURRENT` · `IMPLEMENTED` · `TESTED` · `CORROBORATED` · `VERIFIED` |
+| Observation on failure | `CLAIM-011` | `CURRENT` · `IMPLEMENTED` · `UNTESTED` · `CORROBORATED` · `VERIFIED` |
+| Cancellation | `CLAIM-012` | `CURRENT` · `NOT_IMPLEMENTED` · `UNTESTED` · `DIRECT` · `CONTRADICTED` |
+| Discovery linkage | `CLAIM-013` | `CURRENT` · `IMPLEMENTED` · `TESTED` · `DIRECT` · `VERIFIED` |
+| Derivation chain | `CLAIM-014` | `CURRENT` · `IMPLEMENTED` · `TESTED` · `CORROBORATED` · `VERIFIED` |
+| Content identity (fingerprints) | `CLAIM-015` | `SPECIFIED` · `NOT_IMPLEMENTED` · `UNTESTED` · `DIRECT` · `CONTRADICTED` |
+| Observation ≠ discovery | `CLAIM-016` | `CURRENT` · `IMPLEMENTED` · `TESTED` · `DIRECT` · `VERIFIED` |
+| Evidence layer | `CLAIM-017` | `SPECIFIED` · `NOT_IMPLEMENTED` · `NOT_APPLICABLE` · `ABSENT` · `UNVERIFIED` |
+| Observation immutability | `CLAIM-018` | `CURRENT` · `NOT_IMPLEMENTED` · `UNTESTED` · `DIRECT` · `UNVERIFIED` |
+| Provider boundary | `CLAIM-019` | `CURRENT` · `IMPLEMENTED` · `TESTED` · `CORROBORATED` · `VERIFIED` |
+| Protocol independence | `CLAIM-020` | `CURRENT` · `NOT_IMPLEMENTED` · `PARTIALLY_TESTED` · `DIRECT` · `CONTRADICTED` |
+| Expansion ownership | `CLAIM-021` | `CURRENT` · `IMPLEMENTED` · `TESTED` · `CORROBORATED` · `VERIFIED` |
+| Discovery deduplication | `CLAIM-022` | `CURRENT` · `NOT_IMPLEMENTED` · `TESTED` · `CORROBORATED` · `CONTRADICTED` |
+| Persistence across reload | `CLAIM-023` | `CURRENT` · `IMPLEMENTED` · `TESTED` · `CORROBORATED` · `VERIFIED` |
+| Transactional persistence | `CLAIM-024` | `SPECIFIED` · `NOT_IMPLEMENTED` · `NOT_APPLICABLE` · `ABSENT` · `UNVERIFIED` |
+| Request budget | `CLAIM-025` | `CURRENT` · `IMPLEMENTED` · `TESTED` · `CORROBORATED` · `VERIFIED` |
+| Cross-context coordination | `CLAIM-026` | `SPECIFIED` · `NOT_IMPLEMENTED` · `NOT_APPLICABLE` · `DIRECT` · `CONTRADICTED` |
+| Confidence comparability | `CLAIM-027` | `CURRENT` · `NOT_IMPLEMENTED` · `UNTESTED` · `DIRECT` · `UNVERIFIED` |
+| Multiple provider matches | `CLAIM-028` | `CURRENT` · `IMPLEMENTED` · `TESTED` · `CORROBORATED` · `VERIFIED` |
+| No DVB/RF implementation | `CLAIM-029` | `CURRENT` · `NOT_IMPLEMENTED` · `NOT_APPLICABLE` · `ABSENT` · `VERIFIED` |
+| No v0.8+ layers implemented | `CLAIM-030` | `CURRENT` · `NOT_IMPLEMENTED` · `NOT_APPLICABLE` · `ABSENT` · `VERIFIED` |
+| Coverage / absence / completeness | `CLAIM-031` | `CURRENT` · `NOT_IMPLEMENTED` · `NOT_APPLICABLE` · `ABSENT` · `VERIFIED` |
+| Non-URL targets | `CLAIM-032` | `CURRENT` · `NOT_IMPLEMENTED` · `NOT_APPLICABLE` · `ABSENT` · `VERIFIED` |
+| Repository tooling at the analysis revision | `CLAIM-033` | `HISTORICAL` · `NOT_IMPLEMENTED` · `NOT_APPLICABLE` · `ABSENT` · `VERIFIED` |
+| DVB support as a non-goal | `CLAIM-034` | `NON_GOAL` · `NOT_APPLICABLE` · `NOT_APPLICABLE` · `DIRECT` · `VERIFIED` |
+| Design series v0.8–v0.35 | `CLAIM-035` | `PLANNED` · `NOT_IMPLEMENTED` · `NOT_APPLICABLE` · `DIRECT` · `VERIFIED` |
+| Profile coordination ≠ consensus | `CLAIM-036` | `SPECIFIED` · `NOT_IMPLEMENTED` · `NOT_APPLICABLE` · `DIRECT` · `VERIFIED` |
+| Replay separable from acquisition | `CLAIM-037` | `SPECIFIED` · `NOT_IMPLEMENTED` · `NOT_APPLICABLE` · `DIRECT` · `VERIFIED` |
+| Historical versions | `CLAIM-038` | `HISTORICAL` · `IMPLEMENTED` · `UNTESTED` · `DIRECT` · `VERIFIED` |
+| Invalid v0.5.0 paste | `CLAIM-039` | `HISTORICAL` · `NOT_IMPLEMENTED` · `NOT_APPLICABLE` · `DIRECT` · `VERIFIED` |
+| Pre-cleanup README accuracy | `CLAIM-040` | `HISTORICAL` · `NOT_APPLICABLE` · `NOT_APPLICABLE` · `CORROBORATED` · `CONTRADICTED` |
+| Value × probability ÷ cost model | `CLAIM-041` | `HYPOTHESIS` · `NOT_APPLICABLE` · `NOT_APPLICABLE` · `INDIRECT` · `UNVERIFIED` |
 
 Reading rule: `PLANNED` + `NOT_IMPLEMENTED` + `VERIFIED` means *the fact that it
 is planned is verified*; it never implies implementation.
@@ -387,7 +398,7 @@ persistence, multi-worker coordination, conflict resolution, replication.
 completeness claims.
 
 `claim_kind: NON_GOAL` · `evidence_level: ABSENT` (inspected scope covered), seen in
-`SCOPE-CLAIM-001`/`SCOPE-CLAIM-006`: RF spectrum scanning; SDR and tuner control; DVB-S/S2, DVB-T/T2,
+`CLAIM-029`/`CLAIM-034`: RF spectrum scanning; SDR and tuner control; DVB-S/S2, DVB-T/T2,
 DVB-C demodulation; carrier synchronization; symbol-rate estimation; FEC
 decoding; MPEG-TS decoding; PSI/SI parsing; NIT-based discovery; general-purpose
 or unrestricted crawling; browser automation; replacing DVB tooling; claiming
@@ -410,7 +421,7 @@ Required invariant: **a candidate may have at most one active owner.**
 
 | Property | Verdict | Evidence |
 | --- | --- | --- |
-| `claimNextCandidate()` performs the ownership transition synchronously | evidence CORROBORATED, verification VERIFIED — `SCHED-CLAIM-001` [EVID:CODE-009, TEST-001] | no `await` in the method; sets `status='claimed'` before returning |
+| `claimNextCandidate()` performs the ownership transition synchronously | evidence CORROBORATED, verification VERIFIED — `CLAIM-004` [EVID:CODE-009, TEST-001] | no `await` in the method; sets `status='claimed'` before returning |
 | Worker claims before its first suspension point | PROVED | `worker()` calls the claim, then `plan()`, then `markAcquiring()` synchronously before `await executePlan()` |
 | Two workers can obtain the same candidate via the claim function | no (single context) | eligibility filter excludes `claimed`/`planned`/`acquiring`/`observed` |
 | Two workers can obtain the same candidate at all | **yes — defect D1** [EVID:CONC-002, TEST-009] | `addCandidate()` returns the existing candidate on re-discovery; `queueCandidate()` re-queues it for any non-terminal state; measured 2–4 concurrent owners |
@@ -466,7 +477,7 @@ This is the first of the two mechanisms behind D9.
   diagnostics; they cannot fail the scan.
 * No provider references network, storage, scheduler or policy APIs.
 
-Violations found: none in the provider layer — `ARCH-CLAIM-001`, evidence CORROBORATED, verification VERIFIED [EVID:CODE-014, CODE-015, TEST-002]. The acquisition plane is *not*
+Violations found: none in the provider layer — `CLAIM-019`, evidence CORROBORATED, verification VERIFIED [EVID:CODE-014, CODE-015, TEST-002]. The acquisition plane is *not*
 pluggable (single hard-wired HTTP path), and candidate sources are engine methods
 rather than an interface — both are scope reductions relative to the design
 series and are labelled DESIGNED.
@@ -599,7 +610,7 @@ conversational filler.
 
 Executed changes and plan-only code changes, with categories, risk classes,
 before/after states and post-refactor verification results, are recorded in the
-[change register](change-register-2026-09-10.md) as `R-001 … R-020` (executed
+[change register](change-register-2026-09-10.md) as `R-001 … R-021` (executed
 documentation) and `R-101 … R-112` (code, PLAN ONLY).
 
 ---

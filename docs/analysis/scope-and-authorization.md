@@ -127,14 +127,14 @@ and technical access never implies authorization.
 | Role | Holder here | Responsibilities | Constraints |
 | --- | --- | --- | --- |
 | `REPOSITORY_OWNER` | `Abdus2023` | repository authority, scope authority, architectural ownership, delegation of execution authority | may delegate authorization, but ownership of the repository is never transferred by doing so |
-| `ANALYZER` | this analysis | inspection, evidence extraction, interpretation, verification analysis, contradiction and duplication detection, refactoring proposals | must not mutate the target repository merely because it has technical access; may produce analysis artifacts inside it when authorized (here: `ANALYSIS_ONLY`) |
+| `ANALYZER` | this analysis | inspection, evidence extraction, interpretation, verification analysis, contradiction and duplication detection, refactoring proposals | must not mutate the target repository merely because it has technical access; may produce analysis artifacts inside it when authorized (here: `ANALYSIS_ONLY`, reached through `DOC_REFACTOR`) |
 | `REVIEWER` | repository owner / reviewer | reviews evidence, verification conclusions, refactoring proposals, risk and scope | carries no mutation authority by virtue of reviewing |
 | `AUTHORIZER` | repository owner, delegating through the user's instruction | grants mutation permission, scoped and explicit | must hold authority delegated by the repository owner; authorization is never inferred from capability or from phrasing such as "clean this up" |
 | `EXECUTOR` | the same agent, **explicitly entering the EXECUTOR role** for the authorized change set only | performs the authorized mutations | must follow the approved change set, respect scope and forbidden operations, stop at any boundary violation, and report changes |
 | `VERIFIER` | this analysis, re-running the tools after execution | determines whether the result satisfies the requested postconditions | must not silently repair a failed verification; it reports `FAILED`/`PARTIALLY_VERIFIED` instead |
 
 Role-entry statement required by the ownership rule: the analyzer became the
-executor **only** for change set `R-001 … R-018` (documentation and analysis
+executor **only** for change set `R-001 … R-021` (documentation and analysis
 artifacts), under the authorization recorded in §5. For `R-101 … R-112` (code) the
 analyzer remained `ANALYZER` and produced proposals only.
 
@@ -146,7 +146,7 @@ analyzer remained `ANALYZER` and produced proposals only.
 | INTERPRETATION | "the provider abstraction is deliberately pure, which is why it is replaceable" | analysis (labelled as interpretation) |
 | DESIGN DECISION | "introduce a protocol-neutral acquisition provider; treat re-proposed work as work rather than candidate state" | repository owner — proposed, not taken |
 | EXECUTION DECISION | "modify `queueCandidate()` now" | repository owner authorizes; analysis recommends, and did **not** execute (`R-101`, plan only) |
-| DOCUMENTATION DECISION | "split the archive into code + roadmap + history" | analysis executed under the authorization for documentation refactoring |
+| DOCUMENTATION DECISION | "split the archive into code + roadmap + history" | analysis executed under `DOC_REFACTOR` with `CAP-DOCUMENT-*` capabilities |
 
 ## 5. Authorization model
 
@@ -162,176 +162,199 @@ LEVEL PROFILE   →   CAPABILITY SET   →   OPERATION   →   SCOPE   →   CHA
 | --- | --- | --- |
 | Authorization state | `authorization.state` | Has mutation authority actually been granted? |
 | Level profile | `authorization.level.profile` | Which reusable policy ceiling applies? |
-| Capability | `authorization.capabilities.grants[]` / `denies[]` | Which atomic permission, in which state? |
+| Capability declaration | `capability-registry.json` | What may a profile declare? (`DECLARED`, authorizing nothing) |
+| Capability grant | `authorization.capability_grants[]` | Which atomic permission, in which state and scope? |
 | Operation | `authorization.operations.allow/deny` | Which actions are permitted against a resource class? |
 | Scope | `authorization.scope.paths` | Which locations are in play? |
 | Change authorization | `authorization.change_ids` | Which change records are covered? |
 
 States: `NOT_REQUESTED` · `REQUESTED` · `GRANTED` · `DENIED` · `REVOKED` ·
-`EXPIRED`. **Only `GRANTED` can authorize mutation** (AC-001). A profile is a
-reusable policy definition, not authorization — `DOC_REFACTOR` on a grant says
-what *could* be permitted at most, not what the user granted.
+`EXPIRED`. **Only `GRANTED` can authorize mutation**, and even then only through a
+capability that survives the profile ceiling (section 216). A profile is a reusable
+policy definition, not authorization — `PUSH` in `level.profile` says what *could*
+be permitted at most, not what the user granted.
 
-### Capabilities are objects, not names
+### Profile declaration ≠ grant ≠ effective capability
 
-A capability is an atomic authorization primitive with its own lifecycle
-(sections 171, 172, 191):
+Brief 10 section 202 separates three things that an earlier revision of this
+document ran together, and forbids representing them by one state field:
 
-```yaml
-- id: CAP-DOCUMENT-MODIFY        # ^CAP-[A-Z0-9_-]+$
-  state: RESTRICTED              # DECLARED · ENABLED · RESTRICTED · DENIED · REVOKED · EXPIRED
-  resource_class: DOCUMENT       # REPOSITORY · DOCUMENT · TEST · SOURCE · CONFIGURATION · ARCHITECTURE · COMMIT · REMOTE
-  operations: [MODIFY]
-  constraints: {paths: {include: [README.md, docs/, tools/], exclude: []}}
+```
+PROFILE DECLARATION   "this capability belongs to this reusable profile"
+        ↓
+AUTHORIZATION GRANT   "this authorization grants this capability for this target and scope"
+        ↓
+EFFECTIVE CAPABILITY  (profile ∩ grant) − deny, computed, never persisted as input
+```
+
+The registry that carries the declarations is
+[capability-registry.json](capability-registry.json): a policy file, not a grant.
+A capability there is `DECLARED`, which authorizes nothing (section 203).
+
+```jsonc
+{ "id": "CAP-DOCUMENT-MODIFY", "resource_class": "DOCUMENT", "operations": ["MODIFY"] }
 ```
 
 `CAP-DOCUMENT-MODIFY` means **MODIFY against DOCUMENT** — never MODIFY against an
-arbitrary repository object (section 176). The catalogue is embedded in
-[analysis.json](analysis.json) as `capabilities` with state `DECLARED`, and
-**DECLARED is not ENABLED** (AC-005): a capability existing in a policy registry
-proves nothing about a particular authorization. The states that matter for a
-decision are carried by the authorization's own `grants` and `denies` entries.
+arbitrary repository object (section 176). The grant lives in the authorization and
+names the capability by id, adding only a state and, when restricted, a scope:
 
-| State | Meaning in this record |
-| --- | --- |
-| `DECLARED` | the 21 catalogue entries: policy definitions, authorizing nothing |
-| `ENABLED` | granted without additional narrowing (`CAP-REPOSITORY-READ`, `CAP-COMMIT-CREATE`, …) |
-| `RESTRICTED` | granted but narrowed by constraints (the document and extraction capabilities) |
-| `DENIED` | explicitly prohibited (every inherited content capability of the publication grant) |
+```yaml
+capability_grants:
+  - {capability_id: CAP-DOCUMENT-MODIFY, state: RESTRICTED,
+     scope: {paths: {include: [README.md, docs/, tools/], exclude: []}}}
+```
 
-### Inheritance is declared; restriction only narrows
+**The state has a semantic owner** (section 203): a profile declares
+(`DECLARED`), an authorization decides (`ENABLED`, `RESTRICTED`, `DENIED`,
+`REVOKED`, `EXPIRED`). The same word in the wrong object is a modelling error, and
+the validator reports the registry's states and the grant states separately.
+
+When several rules bear on one capability, precedence is fixed (section 206):
 
 ```
-ProfileCapabilitySet(L) = Own(L) ∪ ProfileCapabilitySet(parents)   (AC-003, AC-004)
+DENIED > REVOKED > EXPIRED > RESTRICTED > ENABLED > DECLARED
+```
 
-EffectiveCapabilities  = (ProfileCapabilitySet(profile) ∩ grants) − denies
+`DECLARED` alone never authorizes execution, and the terminal states
+(`DENIED`, `REVOKED`, `EXPIRED`) cannot be promoted by adding an `ENABLED` grant
+(CG-007, CG-008, CG-009, CAP-009, CAP-010, CAP-011).
+
+| State | Meaning in this record | Count |
+| --- | --- | --- |
+| `DECLARED` | the registry: 21 policy declarations, authorizing nothing | 21 |
+| `ENABLED` | granted without narrowing (`CAP-REPOSITORY-READ\|ANALYZE\|PROPOSE`, `CAP-COMMIT-CREATE`, `CAP-REMOTE-PUSH`) | 5 |
+| `RESTRICTED` | granted, narrowed by a scope (`CAP-DOCUMENT-CREATE\|MODIFY\|RENAME\|MOVE`, `CAP-SOURCE-CREATE`) | 5 |
+| `DENIED` | explicitly prohibited (document deletion, every test and source mutation, architecture change) | 11 |
+
+### Inheritance is declared; restriction is intersection
+
+```
+ProfileCapabilitySet(L) = Own(L) ∪ ProfileCapabilitySet(parents)      (section 212)
+
+EffectiveCapabilities   = (ProfileCapabilitySet(level.profile) ∩ grants) − denies
+EffectiveScope          = profile scope ∩ authorization scope ∩ capability restriction   (section 207)
+EffectiveOperations     = capability operations ∩ operations.allow − operations.deny      (section 208)
 ```
 
 `Capabilities(PUSH)` contains the document, test and code capabilities by declared
-inheritance through `COMMIT → ARCHITECTURE_CHANGE`. An authorization may not add a
-capability the profile does not contain (AC-007); an explicit deny overrides an
-explicit grant (AC-008); operation allow-lists restrict and never expand (AC-009,
-AC-010). §153's "deny is preferable to profile mutation" is exactly what the
-publication grant does.
+inheritance through `COMMIT → ARCHITECTURE_CHANGE`; inheritance exists only where
+`inherits` says so, is acyclic, and is never inferred from ordering. A grant may not
+introduce a capability the resolved profile does not contain (CG-002, CG-003,
+CG-014, CAP-014) — the authorization cannot escalate itself. Every layer is an
+**intersection**: a restriction narrows authority, it never widens it, and the
+operation list is a restriction layer rather than a privilege-granting one.
 
-### The grants as applied — three, all capability-restricted
+Because restriction is intersection, the withheld classes do not need to be listed
+as denies to be unreachable: `CAP-SOURCE-MODIFY|RENAME|MOVE|DELETE`, every
+`CAP-TEST-*` and `CAP-ARCHITECTURE-MODIFY` are `DENIED` explicitly *and* absent from
+the granted set, so two independent rules keep them out.
+
+### The authorization as applied — one object, twenty-one explicit grants
+
+Brief 10 replaced the multi-object grant model: there is exactly one
+`authorization` object, and every capability it does not grant is either absent
+from the profile or explicitly denied. The profile is the **ceiling**; the grant
+states decide what is actual.
 
 ```yaml
-authorization:                                  # 1. content grant
+authorization:
   state: GRANTED
-  level: {profile: DOC_REFACTOR}
-  capabilities:
-    mode: RESTRICT
-    grants:
-      - {id: CAP-REPOSITORY-READ,    state: ENABLED,    resource_class: REPOSITORY, operations: [READ]}
-      - {id: CAP-REPOSITORY-ANALYZE, state: ENABLED,    resource_class: REPOSITORY, operations: [ANALYZE]}
-      - {id: CAP-REPOSITORY-PROPOSE, state: ENABLED,    resource_class: REPOSITORY, operations: [PROPOSE]}
-      - {id: CAP-DOCUMENT-CREATE, state: RESTRICTED, resource_class: DOCUMENT, operations: [CREATE],
-         constraints: {paths: {include: [docs/, tools/], exclude: []}}}
-      - {id: CAP-DOCUMENT-MODIFY, state: RESTRICTED, resource_class: DOCUMENT, operations: [MODIFY],
-         constraints: {paths: {include: [README.md, docs/, tools/], exclude: []}}}
-      - {id: CAP-DOCUMENT-RENAME, state: RESTRICTED, resource_class: DOCUMENT, operations: [RENAME],
-         constraints: {paths: {include: [archive/], exclude: []}}}
-      - {id: CAP-DOCUMENT-MOVE,   state: RESTRICTED, resource_class: DOCUMENT, operations: [MOVE],
-         constraints: {paths: {include: [docs/roadmap/, archive/], exclude: []}}}
-    denies:
-      - {id: CAP-DOCUMENT-DELETE, state: DENIED, resource_class: DOCUMENT, operations: [DELETE]}
-  operations: {allow: [READ, ANALYZE, PROPOSE, CREATE, MODIFY, RENAME, MOVE], deny: [DELETE]}
+  level: {profile: PUSH}          # ceiling, not authority (section 202.1)
+  capability_grants:              # section 204: an explicit grant object per capability
+    - {capability_id: CAP-REPOSITORY-READ,    state: ENABLED}
+    - {capability_id: CAP-REPOSITORY-ANALYZE, state: ENABLED}
+    - {capability_id: CAP-REPOSITORY-PROPOSE, state: ENABLED}
+    - {capability_id: CAP-COMMIT-CREATE,      state: ENABLED}
+    - {capability_id: CAP-REMOTE-PUSH,        state: ENABLED}
+    - {capability_id: CAP-DOCUMENT-CREATE, state: RESTRICTED,
+       scope: {paths: {include: [docs/, tools/], exclude: []}}}
+    - {capability_id: CAP-DOCUMENT-MODIFY, state: RESTRICTED,
+       scope: {paths: {include: [README.md, docs/, tools/], exclude: []}}}
+    - {capability_id: CAP-DOCUMENT-RENAME, state: RESTRICTED,
+       scope: {paths: {include: [archive/], exclude: []}}}
+    - {capability_id: CAP-DOCUMENT-MOVE, state: RESTRICTED,
+       scope: {paths: {include: [docs/roadmap/, archive/], exclude: []}}}
+    - {capability_id: CAP-SOURCE-CREATE, state: RESTRICTED,          # the disclosed extraction, R-001
+       scope: {paths: {include: [prototype/], exclude: []}}}
+    - {capability_id: CAP-DOCUMENT-DELETE, state: DENIED}
+    - {capability_id: CAP-TEST-CREATE,    state: DENIED}  {capability_id: CAP-TEST-MODIFY, state: DENIED}
+    - {capability_id: CAP-TEST-RENAME,    state: DENIED}  {capability_id: CAP-TEST-MOVE,   state: DENIED}
+    - {capability_id: CAP-TEST-DELETE,    state: DENIED}
+    - {capability_id: CAP-SOURCE-MODIFY,  state: DENIED}  {capability_id: CAP-SOURCE-RENAME, state: DENIED}
+    - {capability_id: CAP-SOURCE-MOVE,    state: DENIED}  {capability_id: CAP-SOURCE-DELETE, state: DENIED}
+    - {capability_id: CAP-ARCHITECTURE-MODIFY, state: DENIED}
+  operations: {allow: [READ, ANALYZE, PROPOSE, CREATE, MODIFY, RENAME, MOVE, COMMIT, PUSH], deny: [DELETE]}
   scope: {paths: {include: [README.md, docs/, tools/, prototype/, archive/], exclude: []}}
-  change_ids: [R-001 … R-020]
+  change_ids: [R-001 … R-021]
   authority: {type: USER, identifier: "Abdus2023 (repository owner), delegating through the standing session instruction"}
-  target:    {repository: "Abdus2023/Generic-Discovery-Engine", revision: "cc8df73… (work branch)"}
-  granted_at: "2026-09-10"
+  target: {repository: "Abdus2023/Generic-Discovery-Engine", revision: "cc8df735…"}
+  granted_at: "2026-09-10T00:00:00Z"
   expires_at: null
-
-authorization_grants:
-  - # 2. extraction grant — disclosed, narrow, and closed
-    state: GRANTED
-    level: {profile: CODE_REFACTOR}
-    capabilities:
-      mode: RESTRICT
-      grants:
-        - {id: CAP-SOURCE-CREATE, state: RESTRICTED, resource_class: SOURCE, operations: [CREATE],
-           constraints: {paths: {include: [prototype/], exclude: []}}}
-      denies: []
-    operations: {allow: [CREATE], deny: [MODIFY, RENAME, MOVE, DELETE, COMMIT, PUSH]}
-    scope: {paths: {include: [prototype/], exclude: []}}
-    change_ids: [R-001]
-
-  - # 3. publication grant — publication authority without content authority
-    state: GRANTED
-    level: {profile: PUSH}
-    capabilities:
-      mode: RESTRICT
-      grants:
-        - {id: CAP-REPOSITORY-READ, state: ENABLED, resource_class: REPOSITORY, operations: [READ]}
-        - {id: CAP-REPOSITORY-ANALYZE, state: ENABLED, resource_class: REPOSITORY, operations: [ANALYZE]}
-        - {id: CAP-REPOSITORY-PROPOSE, state: ENABLED, resource_class: REPOSITORY, operations: [PROPOSE]}
-        - {id: CAP-COMMIT-CREATE, state: ENABLED, resource_class: COMMIT, operations: [COMMIT]}
-        - {id: CAP-REMOTE-PUSH,   state: ENABLED, resource_class: REMOTE, operations: [PUSH]}
-      denies:                     # 16 capabilities PUSH inherits and must not carry
-        - {id: CAP-DOCUMENT-CREATE, state: DENIED} … {id: CAP-DOCUMENT-DELETE, state: DENIED}
-        - {id: CAP-TEST-CREATE,     state: DENIED} … {id: CAP-TEST-DELETE,     state: DENIED}
-        - {id: CAP-SOURCE-CREATE,   state: DENIED} … {id: CAP-SOURCE-DELETE,   state: DENIED}
-        - {id: CAP-ARCHITECTURE-MODIFY, state: DENIED}
-    operations: {allow: [READ, ANALYZE, PROPOSE, COMMIT, PUSH], deny: [CREATE, MODIFY, RENAME, MOVE, DELETE]}
-    change_ids: [R-001 … R-020]
 ```
 
-**Why three and not two.** When operations gained a resource class, one already
-executed operation became visible that the first two grants could not cover:
-`OP-001` created `prototype/generic-discovery-engine.user.js`, and creating a
-source file is `CREATE` against `SOURCE`. The extraction was part of the original
-mandate, so the honest response is to disclose it as its own grant — the narrowest
-one that covers it: profile `CODE_REFACTOR`, a single `RESTRICTED` capability
-constrained to `prototype/`, a single change (`R-001`), and `MODIFY`/`RENAME`/
-`MOVE`/`DELETE` explicitly denied. The alternative — leaving an executed operation
-that no grant covers — is precisely what AC-011 and AC-012 forbid. Nothing about
-that grant authorizes further work, and the withheld capability classes
-(`CAP-SOURCE-MODIFY|RENAME|MOVE|DELETE`, all `CAP-TEST-*`,
-`CAP-ARCHITECTURE-MODIFY`) remain unreachable through every grant, which
-`tools/verify.mjs` re-derives from the closure.
+All twenty-one registry capabilities carry an explicit state, so nothing is left
+implicit: ten are effective (five `ENABLED`, five `RESTRICTED`), eleven are
+`DENIED`, and the registry's `DECLARED` state remains what the policy says before
+any authorization exists. `tools/validate-analysis.mjs` computes the effective set
+from the registry and the grants (CG-014, CAP-012) and re-derives every recorded
+authorization decision with the section 216 function.
 
-The publication grant is the model's clearest demonstration. `PUSH` inherits
-`ARCHITECTURE_CHANGE` → `CODE_REFACTOR`/`DOC_REFACTOR`/`TEST_REFACTOR`, so an
-unrestricted `PUSH` grant would permit source-code mutation. Sixteen inherited
-content capabilities are therefore `DENIED` and only five are enabled:
-publication authority without content authority, enforced as a computed set rather
-than a naming convention.
+**Why the profile is `PUSH`.** The authority being recorded spans documentation
+and publication, and no narrower profile contains publication capabilities. The
+ceiling is therefore the widest one, and the *grant list* is what keeps it narrow —
+which is precisely the split section 202.1/202.2 requires: a profile may declare,
+only a grant may authorize. An earlier revision split this into three separate
+authorization objects; the closed schema of brief 10 section 209 admits one, so the
+restriction now lives in the grant states, where it is computed rather than named.
 
-### The decision function (section 179)
+**The one capability that needed justification.** When operations gained a resource
+class, an already executed operation became visible that no documentation
+capability could cover: `OP-001` created `prototype/generic-discovery-engine.user.js`,
+and creating a source file is `CREATE` against `SOURCE`. The extraction was part of
+the mandate, so the honest response is to disclose it: `CAP-SOURCE-CREATE` is
+granted `RESTRICTED` to `prototype/`, and `CAP-SOURCE-MODIFY|RENAME|MOVE|DELETE`
+are `DENIED`. Leaving the operation uncovered instead would violate the rule that
+every mutation needs a matching grant (section 216) — the alternative to disclosing
+authority here is not "no authority", it is an unauthorized operation in the
+record. The artifact digest is re-checked on every run, and it has not changed
+since extraction.
+
+### The authorization function (section 216)
 
 ```
-ALLOW(operation) =
+authorize(authorization, profile_registry, capability_registry, requested_operation, target, change)
+
+1. state == GRANTED                      6. apply capability restrictions
+2. resolve level profile                 7. apply operation restrictions
+3. resolve inherited capabilities        8. validate temporal constraints
+4. resolve capability grants             9. validate target scope
+5. apply capability denies              10. validate change_id
+                                        11. return ALLOW or DENY
+
+ALLOW iff
       authorization.state == GRANTED
-  AND ∃ capability in the grant:
-        capability.state ∈ {ENABLED, RESTRICTED}
-        AND capability ∈ ProfileCapabilitySet(level.profile)
-        AND capability not in denies
-        AND operation ∈ capability.operations
-        AND target.resource_class == capability.resource_class
-        AND constraints pass (for RESTRICTED capabilities)
-  AND target ∈ authorization.scope
+  AND profile resolves, capability exists, and the capability is effectively ENABLED or RESTRICTED
+  AND the requested operation is authorized by that capability's operation set
+  AND the target satisfies the capability's resource class and restriction
+  AND the target satisfies the authorization scope
   AND change_id ∈ authorization.change_ids
-  AND authorization is temporally valid (AC-013)
+  AND the authorization is temporally valid
+  AND no deny rule applies
 ```
 
-Resolution order (§201):
+`tools/validate-analysis.mjs` implements exactly this function and applies it to
+every recorded operation, comparing its own verdict with the record's
+`authorization_decision` rather than trusting it. In this record all 23 operations
+re-derive as `ALLOWED`, resolved through `CAP-SOURCE-CREATE` (1),
+`CAP-DOCUMENT-CREATE` (7), `CAP-DOCUMENT-MODIFY` (10), `CAP-DOCUMENT-MOVE` (2),
+`CAP-DOCUMENT-RENAME` (1), `CAP-COMMIT-CREATE` (1) and `CAP-REMOTE-PUSH` (1).
 
-```
-AUTHORIZATION → state == GRANTED → LEVEL PROFILE → INHERITANCE RESOLUTION
-      → PROFILE CAPABILITIES → AUTHORIZATION RESTRICTIONS → EFFECTIVE CAPABILITIES
-      → OPERATION EVALUATION → DENY | ALLOW → SCOPE → CHANGE ID → EXECUTION
-      → EXECUTION VERIFICATION
-```
-
-`AC-001` … `AC-016` encode these rules, `AUTH-017`…`AUTH-020` add what the section
-does not name (a `GRANTED` authorization must state its authority and target,
-discovered work stays unauthorized, withheld classes stay unreachable, and every
-recorded `authorization_decision` must match what the resolver computes).
-`tools/validate-analysis.mjs` evaluates all of them; the record's own decisions
-are re-derived rather than trusted. Mutating operations in this record resolve to
-`DOC_REFACTOR: 18`, `CODE_REFACTOR: 1`, `PUSH: 2`.
+The rule sets are machine-checked: `REQ-001`…`REQ-015` (required fields),
+`CAP-001`…`CAP-016` and `CG-001`…`CG-015` (capability grants), `CV-001`…`CV-020`
+(claims), `EV-001`…`EV-012` with the section 200 transition graph (execution),
+`EVV-001`…`EVV-009` (execution verification) and `I-001`…`I-016` (separation
+invariants).
 
 ### Scope paths
 
@@ -378,7 +401,7 @@ name outright.
 
 Per-operation results exist so that `execution.state: PARTIALLY_SUCCEEDED` cannot
 hide which operation failed; each operation also carries the
-`authorization_decision` that permitted it. In this record all 21 operations are
+`authorization_decision` that permitted it. In this record all 23 operations are
 `ALLOWED` and `SUCCEEDED`, and the execution verification is `PASSED` /
 `CONFORMING` across eight checks — three separate statements, not one.
 
@@ -390,7 +413,7 @@ authorize it (EVV-009).
 
 ### Change-set boundary
 
-Authorization covered `R-001 … R-018`. During execution, twelve further problems
+Authorization covered `R-001 … R-021`. During execution, twelve further problems
 were discovered (`R-101 … R-112`, including the P0 ownership defects). Per the
 change-set rule they were **recorded and proposed, not fixed** — even though one
 (`R-109`, the dead counter) would have been a two-line edit. They remain
@@ -399,9 +422,9 @@ change-set rule they were **recorded and proposed, not fixed** — even though o
 ### Discovered-change rule — worked example
 
 ```
-Approved:      documentation refactor (R-001 … R-018)
+Approved:      documentation refactor (R-001 … R-021)
 Discovered:    candidate re-queue violates the ownership invariant (D1)
-Action:        record finding (CONC-CLAIM-002) → classify (BUG, ARCHITECTURAL)
+Action:        record finding (CLAIM-005) → classify (BUG, ARCHITECTURAL)
                → add proposed change R-101 → request authorization
 Result:        NOT EXECUTED. No scope creep. (I-016)
 ```
@@ -435,9 +458,9 @@ Required decision:   owner decides whether to authorize CODE_REFACTOR /
 | Revision confirmed | yes — `cc8df73` |
 | Scope confirmed | yes — four dimensions above |
 | Authorization state confirmed | yes — `GRANTED` |
-| Authorization level confirmed | yes — three grants: content (`DOC_REFACTOR`, mutating capabilities RESTRICTED, `CAP-DOCUMENT-DELETE` DENIED), extraction (`CODE_REFACTOR`, `CAP-SOURCE-CREATE` only, change `R-001`), publication (`PUSH`, 16 inherited content capabilities DENIED) |
-| Capability closure computed and checked | yes — every grant ⊆ `ProfileCapabilitySet(profile)` (AC-007); explicit denies override grants (AC-008); withheld classes unreachable (`AUTH-019`) |
-| Change set identified | yes — `R-001 … R-020` in `change_ids` |
+| Authorization level confirmed | yes — one object, profile `PUSH`; 21 capability grants (5 `ENABLED`, 5 `RESTRICTED`, 11 `DENIED`) |
+| Capability closure computed and checked | yes — every grant names a capability the profile declares (CG-002/CG-003); `DENIED` grants override authorizing ones (CG-007…CG-009); withheld classes unreachable twice over |
+| Change set identified | yes — `R-001 … R-021` in `change_ids` |
 | Verification completed | yes — evidence + claims + analysis |
 | Evidence references available | yes — the register resolves every cited id |
 | Rollback understood | yes — git history on the work branch |
@@ -450,7 +473,7 @@ EXECUTION STATUS: AUTHORIZED
 
 | Check | Result |
 | --- | --- |
-| Requested changes completed | yes — `R-001 … R-020` |
+| Requested changes completed | yes — `R-001 … R-021` |
 | No unauthorized changes made | yes — artifact digest identical to extraction; no code or test changes |
 | Repository structure valid | yes — matches the proposed structure |
 | Links valid | yes — 20+ documents, zero broken relative links |
@@ -465,20 +488,20 @@ EXECUTION STATUS: AUTHORIZED
 ```yaml
 execution:                          # what happened; per-operation results are separate fields
   state: SUCCEEDED
-  operations:                       # 21 entries; each names its operation, resource-classed target, change, decision and result
-    - {id: OP-001, change_id: R-001, operation: CREATE,
+  operations:                       # 23 entries; each names its operation, resource-classed target, change, decision and result
+    - {id: OP-001, change_id: R-001, operation: CREATE,   # the disclosed extraction
        target: {resource_class: SOURCE, path: prototype/generic-discovery-engine.user.js},
        authorization_decision: ALLOWED, result: SUCCEEDED}
-    - {id: OP-017, change_id: R-017, operation: MODIFY,
-       target: {resource_class: DOCUMENT, path: docs/analysis/claims.md},
+    - {id: OP-020, change_id: R-020, operation: MODIFY,
+       target: {resource_class: DOCUMENT, path: docs/analysis/analysis.json},
        authorization_decision: ALLOWED, result: SUCCEEDED}
-    - {id: OP-020, change_id: R-020, operation: COMMIT,
-       target: {resource_class: COMMIT, path: "repository (change set R-001 … R-020)"},
+    - {id: OP-022, change_id: R-021, operation: COMMIT,
+       target: {resource_class: COMMIT, path: "repository (change set R-001 … R-021)"},
        authorization_decision: ALLOWED, result: SUCCEEDED}
-    - {id: OP-021, change_id: R-020, operation: PUSH,
+    - {id: OP-023, change_id: R-021, operation: PUSH,
        target: {resource_class: REMOTE, path: origin/arena/01a08d14-generic-discovery-engine},
        authorization_decision: ALLOWED, result: SUCCEEDED}
-  executed_changes: [R-001 .. R-020]
+  executed_changes: [R-001 .. R-021]
   unauthorized_changes: []
   discovered_not_executed: [R-101 .. R-112]
 
@@ -546,8 +569,8 @@ evidence for the next transition, and the model requires each transition to be
 established independently. Section 200 adds the same discipline to lifecycle
 states: a state may only be reached through a declared transition, and the
 validator checks that every recorded state is reachable in the declared graph. This repository contains live counter-examples to each
-arrow: `CAND-CLAIM-003` is `IMPLEMENTED` and `UNTESTED`; `SCHED-CLAIM-004` is
-`TESTED` and `CONTRADICTED`; `SCOPE-CLAIM-001` is `VERIFIED` and
+arrow: `CLAIM-003` is `IMPLEMENTED` and `UNTESTED`; `CLAIM-007` is
+`TESTED` and `CONTRADICTED`; `CLAIM-029` is `VERIFIED` and
 `NOT_IMPLEMENTED`; the publication grant is `GRANTED` while carrying no content
 capability; and `execution.state: SUCCEEDED` sits beside an execution-verification
 lifecycle that had to establish `PASSED` on its own.
@@ -569,7 +592,7 @@ lifecycle that had to establish `PASSED` on its own.
                       │
               proposed change
                       ▼
-               AUTHORIZATION              AC-001…AC-016 + AUTH-017…AUTH-020
+               AUTHORIZATION              REQ-001…REQ-015, CAP-001…CAP-016, CG-001…CG-015
                       │
            ┌──────────┴──────────┐
            │                     │
@@ -614,12 +637,13 @@ VERIFICATION         read-only; 41 claim records with six typed dimensions
      ↓
 VERIFIED TRUTH SET   what exists, what is planned, what is absent, what is contradicted
      ↓
-REFACTORING PLAN     R-001…R-020 executed; R-101…R-112 plan only
+REFACTORING PLAN     R-001…R-021 executed; R-101…R-112 plan only
      ↓
-AUTHORIZATION CHECK  state GRANTED; three capability-restricted grants; AC-001…AC-016 evaluated
+AUTHORIZATION CHECK  state GRANTED; profile PUSH; 21 grants, 10 effective; section 216 re-derives
+                        every decision rather than trusting the record
      ↓
 EXECUTE (docs only)  → EXECUTION VERIFICATION (independent, I-012) → execution SUCCEEDED with
-                        21 ALLOWED decisions, execution_verification PASSED / CONFORMING
+                        23 ALLOWED decisions, execution_verification PASSED / CONFORMING
 ```
 
 Governing separation, preserved at every step: **evidence → claim → claim

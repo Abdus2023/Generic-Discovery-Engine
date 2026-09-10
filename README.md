@@ -218,7 +218,8 @@ archive/
   Continue Architecture Planning.md   raw design conversation (non-normative)
 tools/
   verify.mjs                  static checks: artifact vs documentation, scope, governance
-  validate-analysis.mjs       pipeline: schema, CV-001–020, AC-001–016, EV/EVV rules, SER
+  validate-analysis.mjs       pipeline: schema, object, cross-object, authorization, execution,
+                              execution verification, serialization checks (section 202)
   render-claims.mjs           renders claims.md from analysis.json
   checks.mjs                  behaviour checks: dedup, providers, provenance, persistence
   simulate.mjs                headless harness that executes the shipped artifact
@@ -249,11 +250,11 @@ Results and the audit trail:
 | --- | --- |
 | [repository-analysis-2026-09-10.md](docs/analysis/repository-analysis-2026-09-10.md) | full review (18 sections) |
 | [evidence-register.md](docs/analysis/evidence-register.md) | the audit index: every `[EVID:…]` id with path and locator, `evidence_level` values, absence procedures, frozen artifact digest |
-| [claims.md](docs/analysis/claims.md) | 41 claim records rendered from [analysis.json](docs/analysis/analysis.json): `claim_kind` · `implementation_state` · `test_state` · `evidence_level` · `claim_verification.result` |
-| [analysis.schema.json](docs/analysis/analysis.schema.json) | the normative machine-readable schema (JSON Schema draft 2020-12), embedded level profiles and the capability catalogue the validator reads |
-| [authorization.yaml](docs/analysis/authorization.yaml) | the canonical authorization object in YAML — three capability-restricted grants; serialization identity with the record is checked (`SER-001`–`SER-012`) |
+| [claims.md](docs/analysis/claims.md) | 41 claim records rendered from [analysis.json](docs/analysis/analysis.json): `claim_kind` · `implementation_state` · `test_state` · `evidence_level` · `claim_verification.result` · `confidence` |
+| [analysis.schema.json](docs/analysis/analysis.schema.json) | the normative machine-readable schema (JSON Schema draft 2020-12, closed at the root); the capability registry it draws on is [capability-registry.json](docs/analysis/capability-registry.json) — 8 profiles, 21 capabilities, declaration only |
+| [authorization.yaml](docs/analysis/authorization.yaml) | the canonical authorization object in YAML — one object, 21 explicit capability grants; serialization identity with the record is checked field by field |
 | [scope-and-authorization.md](docs/analysis/scope-and-authorization.md) | scope boundary, six ownership roles, authorization contract, pre/post-execution checks |
-| [change-register-2026-09-10.md](docs/analysis/change-register-2026-09-10.md) | executed changes R-001…R-020; code changes R-101…R-112 (PLAN ONLY) |
+| [change-register-2026-09-10.md](docs/analysis/change-register-2026-09-10.md) | executed changes R-001…R-021; code changes R-101…R-112 (PLAN ONLY) |
 
 Status in this repository is never a single word. Six typed fields are reported
 separately for every claim — `claim_kind`, `implementation_state`, `test_state`,
@@ -270,10 +271,11 @@ field is substituted for another.
 `tools/validate-analysis.mjs` enforces this against
 [docs/analysis/analysis.schema.json](docs/analysis/analysis.schema.json): claim
 rules `C-001`–`C-043` and the validation matrix `CV-001`–`CV-020`, evidence rules
-`C-030`–`C-034`, authorization rules `AC-001`–`AC-016` (plus `AUTH-017`–`AUTH-020`),
+`C-030`–`C-034` with the recorded absence procedures, required-field rules
+`REQ-001`–`REQ-015`, capability rules `CAP-001`–`CAP-016` and `CG-001`–`CG-015`,
 execution invariants `EV-001`–`EV-012` with the lifecycle transitions of section
-200, execution-verification rules `EVV-001`–`EVV-009`, serialization invariants
-`SER-001`–`SER-012` and invariants `I-001`–`I-016`.
+200, execution-verification rules `EVV-001`–`EVV-009` and separation invariants
+`I-001`–`I-016`.
 
 Authorization is not one field. A **level profile** is a named, reusable policy
 ceiling (it is not authorization); a **capability** is an atomic permission with
@@ -285,15 +287,19 @@ profile table declares `inherits` — never from naming or ordering — and ever
 grant may restrict its profile:
 
 ```
-EffectiveCapabilities = (Capabilities(level.profile) ∩ capabilities.grants) − capabilities.denies
+EffectiveCapabilities = (Capabilities(level.profile) ∩ capability_grants) − denies
 ```
 
-`deny` always wins, and a restriction can never add a capability. The publication
-grant here is a `PUSH` profile whose 16 inherited document, test, code and
-architecture capabilities are all `DENIED` — publication authority without content
-authority; the one content-side exception (creating the extracted artifact file)
-is disclosed as its own `R-001`-scoped grant. Execution and execution verification
-are likewise separate lifecycles with different vocabularies: `execution.state` is
+`deny` always wins, and a restriction can never add a capability: a grant must name a
+capability the resolved profile already declares (the chain is registry → profile →
+grant, never the reverse), and `DECLARED` alone authorizes nothing. The authorization
+here is a single `PUSH`-profile object whose 21 grants leave ten capabilities
+effective and deny eleven — publication authority without content authority; the one
+content-side exception (creating the extracted artifact file) is disclosed as a
+`RESTRICTED` grant scoped to `prototype/`. Effective capabilities are computed, never
+stored: the record may not carry them as authoritative. Execution and execution
+verification are likewise separate lifecycles with different vocabularies:
+`execution.state` is
 not `execution_verification.state`, and neither implies the other
 (`SUCCEEDED ≠ PASSED`, `FAILED ≠ UNVERIFIED`).
 
