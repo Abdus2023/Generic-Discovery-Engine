@@ -1,8 +1,8 @@
-# Architecture Overview — Generic Discovery Engine v0.7.4
+# Architecture Overview — Generic Discovery Engine v0.7.6
 
-**Runnable artifact:** `dist/generic-discovery-engine.user.js` (5,421 lines, CONFIG v8, `node --check` PASS)  
+**Runnable artifact:** `dist/generic-discovery-engine.user.js` (5,441 lines, CONFIG v8, `node --check` PASS)  
 **Transcript source:** `Continue Architecture Planning.md` (2.2 MB) → split into `docs/DECISIONS.md` + `docs/adr/*` (v0.7.4)  
-**Verification:** `VERIFICATION_REPORT.md` (v0.7.1) + `VERIFICATION_SUPPLEMENT_v0.7.2.md` + `docs/SECURITY_AUDIT.md` + `docs/PERFORMANCE_ANALYSIS.md` — `npm test` 40/40 PASS
+**Verification:** `VERIFICATION_REPORT.md` (v0.7.1) + `VERIFICATION_SUPPLEMENT_v0.7.2.md` + `VERIFICATION_SUPPLEMENT_v0.7.6.md` + `docs/SECURITY_AUDIT.md` + `docs/PERFORMANCE_ANALYSIS.md` — `npm test` 59/59 PASS
 
 ## 1. Control Architecture (DVB-inspired, not DVB-compatible)
 
@@ -18,7 +18,7 @@ NIT / new mux                   expansion (new candidates with provenance)
 
 The loop is `DISCOVERY → KNOWLEDGE GRAPH → ACQUISITION PLAN → SCHEDULER → ACQUISITION → OBSERVATION → RECOGNITION → DISCOVERY` (README diagram). Exhaustive DVB spectrum is replaced by **budgeted open-world search**: `maxCandidates 750 live`, `maxRequests 150 global`, `maxDepth 5`.
 
-## 2. Module Map (v0.7.4)
+## 2. Module Map (v0.7.6)
 
 ```
 CONFIG (v8, ~80 keys) + privacy stripSensitiveParams opt-in
@@ -32,7 +32,7 @@ CONFIG (v8, ~80 keys) + privacy stripSensitiveParams opt-in
 │                  discoveries, resources, graphEdges 5k, fingerprintIndex, diagnostics 500)
 ├── DecisionLedger (12 types, 5k FIFO, seq, export/restore)
 ├── NetworkObserver (bridge fetch/XHR + PerformanceObserver, GET-trust rule)
-└── GenericDiscoveryEngine (discover/plan/execute/worker/adaptive/persist/UI + getCoverageMetrics)
+└── GenericDiscoveryEngine (discover/plan/execute/worker/adaptive/persist/UI + rAF-batched updateUI + getCoverageMetrics)
 ```
 
 ## 3. Data-Flow & Invariants
@@ -43,9 +43,10 @@ CONFIG (v8, ~80 keys) + privacy stripSensitiveParams opt-in
 - **Identity:** `Candidate.identityKey = type:target`. `visited` is identityKey-scoped; `candidateKeys` merges `alternateTypes`.
 - **Observation cap:** `maxObservationsInMemory 800 FIFO` + `bodyTruncated` flag; `serialize()` strips bodies for `GM_setValue` quota (≈10 MB).
 - **Cross-provider dedup:** `emittedForObservation Set<targetUrl>` per observation; mutation batches dedup via `seen Set<type:canonical>`.
+- **UI batching:** `updateUI()` coalesces via `requestAnimationFrame` (`_uiRaf` guard → `_doUpdateUI`), prevents layout thrash on ledger storms; sync fallback when rAF absent.
 - **Coverage:** `getCoverageMetrics()` exposes `frontierSize/queuedByType/liveCount/requestsRemaining` in UI + export without extra traversal.
 
-## 4. Security Defaults (v0.7.4)
+## 4. Security Defaults (v0.7.6)
 
 - `sameOriginOnly:true` + `isAllowedUrl` (https only) enforced in both `discover()` and `policy`.
 - `@connect self` (header) with `*` commented; runtime warns if `sameOriginOnly=false`.
@@ -69,5 +70,5 @@ CONFIG (v8, ~80 keys) + privacy stripSensitiveParams opt-in
 
 ## 7. Open Iterations (from DECISIONS.md)
 
-- Narrow `@connect` already shipped v0.7.4; remaining hardening: Trusted Types, fuzz harness (P2).
-- Planning doc fully split is incremental; this overview + 3 ADRs completes the first hygiene pass.
+- Narrow `@connect` shipped v0.7.4; Trusted Types `gde-bridge` + fuzz + property invariants shipped v0.7.5/v0.7.6.
+- Planning doc fully split is incremental; this overview + 6 ADRs + coverage + invariants completes the v0.7.x hygiene pass; `npm run coverage` 99% line.

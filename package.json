@@ -1,12 +1,14 @@
 {
   "name": "generic-discovery-engine",
-  "version": "0.7.5",
-  "description": "Browser-based discovery engine inspired by DVB blind scanning — trust & verification",
+  "version": "0.7.6",
+  "description": "Browser-based discovery engine inspired by DVB blind scanning — performance & coverage",
   "type": "module",
   "scripts": {
     "test": "node --test tests/*.test.js",
     "check": "node --check dist/generic-discovery-engine.user.js && node --check dist/generic-discovery-engine.v0.7.1.user.js",
     "verify": "npm run check && npm test",
+    "coverage": "node --experimental-test-coverage --test tests/*.test.js",
+    "coverage:html": "c8 --reporter=html --reporter=text node --test tests/*.test.js && echo \"html report: coverage/index.html\"",
     "lint": "node --check dist/generic-discovery-engine.user.js && echo \"lint: syntax OK (eslint optional)\"",
     "format:check": "prettier --check \"dist/*.js\" \"tests/*.js\" 2>&1 | head -n 20 || echo \"prettier not installed — skipping\""
   },

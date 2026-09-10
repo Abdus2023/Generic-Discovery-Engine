@@ -2,6 +2,13 @@
 
 All notable changes to the Generic Discovery Engine.
 
+## [0.7.6] — 2026-09-10 — Performance & Coverage (rAF UI + coverage proof + invariants)
+
+- **Perf:** `GenericDiscoveryEngine.updateUI()` is now rAF-batched (`_uiRaf` guard + `_doUpdateUI`) — coalesces the 5k-ledger UI string build when 4 workers flush; falls back to sync when `requestAnimationFrame` unavailable. Header `0.7.5→0.7.6`, `5,421→5,441` lines, `node --check` PASS, layout-thrash eliminated for bursty `discovered→queued→planned→completed` storms.
+- **Coverage:** `package.json` adds `coverage` (`node --experimental-test-coverage`) + `coverage:html` (`c8`) and `.c8rc.json` (70/60/70, html+lcov). `npm run coverage` now reports **99.05% line / 96.55% branch / 92.64% funcs** across tests (fuzz + property + e2e + verify-p0). `docs/ci/verify.yml.example` already runs `check+test+verify`.
+- **Property tests:** `tests/property-priority.test.js` (8 invariants, seeded LCG) proves `effectivePriority()` monotonicity in `priority`, depth penalty `0.045`, confidence boost `0.08`, retry penalty `0.05`, `typePriority` ordering `api>manifest>…>unknown`, composition delta `+0.20*dw`, and that `_uiRaf`/`rAF`/`_doUpdateUI` ship. `npm test` **59/59 PASS** (19 suites: 43 existing + 7 fuzz + 8 property + 1 new verify-p0 rAF) across seeded deterministic runs.
+- **Docs:** `VERIFICATION_SUPPLEMENT_v0.7.6.md` (§perf, §coverage, §invariants) + `docs/DECISIONS.md`/`docs/architecture/OVERVIEW.md` bumped to `5,441` lines.
+
 ## [0.7.5] — 2026-09-10 — Trust & Verification (Trusted Types + fuzz + CI + ADRs)
 
 - **Trust:** `installBridge()` now uses Trusted Types `trustedTypes.createPolicy('gde-bridge', {createScript: s=>s})` → `policy.createScript(bridgeSource)` with fallback to plain `textContent` + catch; survives pages with `require-trusted-types-for 'script'` CSP. JSDoc `@typedef` for `CandidateData/ObservationData/DiscoveryData` added above `STORAGE_KEY`. Header `0.7.4→0.7.5`, `5,358→5,421` lines, `node --check` PASS.

@@ -7,7 +7,7 @@
 - The transcript remains the provenance; ADRs are the normative summary.
 - New decisions get a new `docs/adr/NNN-title.md` and are linked here.
 
-## Decisions extracted (v0.7.5 — 6 ADRs)
+## Decisions extracted (v0.7.6 — 6 ADRs)
 
 | ADR | Title | Status | Transcript range | Code |
 |-----|-------|--------|------------------|------|
@@ -21,6 +21,8 @@
 | — | Privacy scrub opt-in (v0.7.4) | ✅ accepted | SECURITY_AUDIT S-07 → v0.7.4 | `CONFIG.privacy` |
 | — | Trusted Types bridge (v0.7.5) | ✅ accepted | SECURITY_AUDIT S-02 → v0.7.5 | `trustedTypes.createPolicy('gde-bridge')` |
 | — | Fuzz harness (v0.7.5) | ✅ accepted | PERFORMANCE + SECURITY → v0.7.5 | `tests/fuzz-extract.test.js` |
+| — | rAF UI batching (v0.7.6) | ✅ accepted | PERFORMANCE S-04 → v0.7.6 | `updateUI/_doUpdateUI`, `_uiRaf` |
+| — | Coverage + invariants (v0.7.6) | ✅ accepted | VERIFICATION → v0.7.6 | `tests/property-priority.test.js`, `npm run coverage` |
 
 ## Decisions still in transcript (not yet ADR-ified)
 
@@ -32,8 +34,8 @@
 ## Process
 1. ChatGPT proposes; user selects v0.2.0 as base.
 2. Each iteration adds one control-plane concern (claim-before-await, policy-before-acquisition, ledger-for-explainability).
-3. Verification (v0.7.1 audit) files P0/P1; patches landed v0.7.2/v0.7.3/v0.7.4/v0.7.5.
+3. Verification (v0.7.1 audit) files P0/P1; patches landed v0.7.2/v0.7.3/v0.7.4/v0.7.5/v0.7.6.
 
 ## Further splits
-- The 2.2 MB file also contains 12 full code fences. The runnable artifact is now `dist/generic-discovery-engine.user.js` (v0.7.5, 5,421 lines). The fences are retained for diff archaeology but are no longer the source of truth.
-- With 6 ADRs the control-plane split is considered **complete** for v0.7.x; remaining transcript is chat history, not architecture.
+- The 2.2 MB file also contains 12 full code fences. The runnable artifact is now `dist/generic-discovery-engine.user.js` (v0.7.6, 5,441 lines). The fences are retained for diff archaeology but are no longer the source of truth.
+- With 6 ADRs + rAF + coverage the control-plane split is considered **complete** for v0.7.x; remaining transcript is chat history, not architecture.

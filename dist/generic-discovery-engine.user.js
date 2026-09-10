@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Generic Discovery Engine
 // @namespace    generic-discovery
-// @version      0.7.5
+// @version      0.7.6
 // @description  Generic web-resource discovery engine inspired by the architecture of DVB blind scanning.
 // @match        *://*/*
 // @run-at       document-start
@@ -19,12 +19,20 @@
     /*
      * ============================================================
      * Generic Discovery Engine
+     * v0.7.6 — Performance & Coverage (rAF UI + coverage proof + invariants)
+     *
+     * Patch notes vs v0.7.5:
+     * - Perf: updateUI() now rAF-batched (_uiRaf + _doUpdateUI) to avoid
+     *         layout thrash when ledger hits 5k and 4 workers flush;
+     *         falls back to sync when rAF unavailable
+     *         + coverage script (node --experimental-test-coverage)
+     *         + property tests for effectivePriority invariants
+     *
      * v0.7.5 — Trust & Verification (Trusted Types + fuzz + CI + ADRs)
      *
      * Patch notes vs v0.7.4:
      * - Trust: Trusted Types policy (gde-bridge) for installBridge()
-     *         + JSDoc typedefs for Candidate/Observation/Discovery/
-     *           ResourceRecord/Provider + CI workflow verify.yml +
+     *         + JSDoc typedefs + CI workflow verify.yml +
      *           fuzz harness (extract/canonicalize) + 3 more ADRs
      *
      * v0.7.4 — Hardening & Hygiene (P2-6 privacy/CSP/header + ADR split)
@@ -3947,6 +3955,7 @@
             this.persistenceTimer = null;
 
             this.ui = null;
+            this._uiRaf = null;
         }
 
         async init() {
@@ -5369,7 +5378,18 @@
             if (!this.ui) {
                 return;
             }
+            if (typeof requestAnimationFrame === 'function') {
+                if (this._uiRaf) return;
+                this._uiRaf = requestAnimationFrame(() => {
+                    this._uiRaf = null;
+                    this._doUpdateUI();
+                });
+                return;
+            }
+            this._doUpdateUI();
+        }
 
+        _doUpdateUI() {
             const s =
                 this.db.stats;
             const cov =
