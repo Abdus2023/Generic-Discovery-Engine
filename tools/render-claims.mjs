@@ -1,0 +1,102 @@
+#!/usr/bin/env node
+/*
+ * Render the human-readable claim tables in docs/analysis/claims.md from the
+ * normative record docs/analysis/analysis.json.
+ *
+ * Usage:
+ *   node tools/render-claims.mjs          # rewrite the generated block
+ *   node tools/render-claims.mjs --check  # fail if the block is stale
+ *
+ * Only the region between the CLAIMS:BEGIN / CLAIMS:END markers is generated.
+ * Prose around it is authored by hand and is never touched.
+ */
+
+import fs from 'node:fs';
+import path from 'node:path';
+import { fileURLToPath } from 'node:url';
+
+const REPO_ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
+const rootArg = process.argv.indexOf('--root');
+const ROOT = rootArg > -1 && process.argv[rootArg + 1] ? path.resolve(process.argv[rootArg + 1]) : REPO_ROOT;
+const JSON_PATH = path.join(ROOT, 'docs', 'analysis', 'analysis.json');
+const MD_PATH = path.join(ROOT, 'docs', 'analysis', 'claims.md');
+
+const BEGIN = '<!-- CLAIMS:BEGIN (generated from analysis.json — do not edit by hand) -->';
+const END = '<!-- CLAIMS:END -->';
+
+/* Section headings come from the claim registry (brief 11 section 218.2): the
+   registry owns the identifier-to-domain mapping, while grouping domains into
+   presentation sections is a rendering concern and lives here. */
+const REGISTRY_PATH = path.join(ROOT, 'docs', 'analysis', 'registries', 'claim-registry.json');
+const domainDoc = JSON.parse(fs.readFileSync(REGISTRY_PATH, 'utf8'));
+const SECTIONS = [
+  ['current-system', 'Current-system claims', ['candidate', 'scheduler', 'acquisition', 'provenance']],
+  ['architecture-boundary', 'Architecture-boundary claims', ['architecture']],
+  ['scope-and-absence', 'Scope and absence claims', ['scope']],
+  ['plan-history-hypothesis', 'Plan, history and hypothesis claims', ['plan', 'history', 'hypothesis']],
+];
+const GROUPS = SECTIONS.map(([key, title, domains]) => [key, title,
+  new Set(domainDoc.entries.filter(e => domains.includes(e.domain)).map(e => e.id))]);
+const groupOf = claim => {
+  const group = GROUPS.find(([, , ids]) => ids.has(claim.id));
+  return group ? group[0] : null;
+};
+
+const record = JSON.parse(fs.readFileSync(JSON_PATH, 'utf8'));
+const claims = record.claims;
+
+function cell(text) {
+  return String(text).replace(/\|/g, '\\|').replace(/\n+/g, ' ');
+}
+
+function renderGroups() {
+  const out = [];
+  const missing = claims.filter(c => groupOf(c) === null).map(c => c.id);
+  if (missing.length) {
+    console.error(`FAIL: claims absent from the claim registry: ${missing.join(', ')}`);
+    process.exit(2);
+  }
+  for (const [key, title] of GROUPS) {
+    const rows = claims.filter(c => groupOf(c) === key);
+    if (rows.length === 0) continue;
+    out.push(`### ${title}`);
+    out.push('');
+    out.push('| Claim ID | Statement | claim_kind | implementation_state | test_state | evidence_level | claim_verification.result | confidence | Evidence | Interpretation |');
+    out.push('| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |');
+    for (const c of rows) {
+      const evidence = c.evidence.map(e => `[EVID:${typeof e === 'string' ? e : e.id}]`).join(' ');
+      const result = c.claim_verification.result;
+      const marker = result === 'CONTRADICTED' ? '**CONTRADICTED**' : result;
+      const interpretation = typeof c.interpretation === 'string'
+        ? c.interpretation
+        : [c.interpretation?.summary || '', ...(c.interpretation?.limitations || []).map(l => `Limitation: ${l}`)].join(' ');
+      out.push(`| \`${c.id}\` | ${cell(c.statement)} | \`${c.claim_kind}\` | \`${c.implementation_state}\` | \`${c.test_state}\` | \`${c.evidence_level}\` | \`${marker}\` | \`${c.confidence || '—'}\` | ${evidence} | ${cell(interpretation)} |`);
+    }
+    out.push('');
+  }
+  return out.join('\n').trimEnd();
+}
+
+const block = `${BEGIN}\n\n${renderGroups()}\n\n${END}`;
+const md = fs.readFileSync(MD_PATH, 'utf8');
+
+const start = md.indexOf(BEGIN);
+const end = md.indexOf(END);
+if (start < 0 || end < 0) {
+  console.error(`FAIL: markers not found in ${path.relative(ROOT, MD_PATH)}`);
+  process.exit(2);
+}
+
+const updated = md.slice(0, start) + block + md.slice(end + END.length);
+
+if (process.argv.includes('--check')) {
+  if (updated !== md) {
+    console.error('FAIL: claims.md tables are stale — run node tools/render-claims.mjs');
+    process.exit(1);
+  }
+  console.log(`claims.md is up to date (${claims.length} claim records)`);
+  process.exit(0);
+}
+
+fs.writeFileSync(MD_PATH, updated);
+console.log(`rendered ${claims.length} claim records into ${path.relative(ROOT, MD_PATH)}`);

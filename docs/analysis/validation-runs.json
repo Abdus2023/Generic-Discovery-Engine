@@ -1,0 +1,185 @@
+{
+  "schema_version": "1.0",
+  "$comment": "Append-only ledger of verification runs (brief 11 sections 241-242). tools/validation-run.mjs writes it; tools/validate-analysis.mjs never writes anything. Each entry binds a verdict to the digests of the document, the schema, the registries and the tool that produced it, so a run can be checked later without re-running it.",
+  "runs": [
+    {
+      "id": "RUN-001",
+      "label": "pre-brief-11 artifacts under the brief-11 model (before)",
+      "mode": "SNAPSHOT",
+      "revision": "27b5977447575f2696d77d66ded41c6f1954565b",
+      "started_at": "2026-09-10T22:31:26.416Z",
+      "completed_at": "2026-09-10T22:31:26.505Z",
+      "verdict": "INVALID",
+      "tool": {
+        "path": "tools/validate-analysis.mjs",
+        "model": "brief 11 sections 202, 218-243",
+        "sha256": "3dcf06b26744d32298eceab5bf6fed741749c259212c16ed673f87f8e4d6ae0e"
+      },
+      "inputs": {},
+      "phases": [
+        {
+          "phase": "STRUCTURAL",
+          "state": "NOT_RUN",
+          "checks": 0,
+          "errors": 0
+        },
+        {
+          "phase": "REGISTRY",
+          "state": "FAILED",
+          "checks": 0,
+          "errors": 1
+        },
+        {
+          "phase": "SEMANTIC",
+          "state": "NOT_RUN",
+          "checks": 0,
+          "errors": 0
+        },
+        {
+          "phase": "AUTHORIZATION",
+          "state": "NOT_RUN",
+          "checks": 0,
+          "errors": 0
+        },
+        {
+          "phase": "EXECUTION",
+          "state": "NOT_RUN",
+          "checks": 0,
+          "errors": 0
+        },
+        {
+          "phase": "VERIFICATION",
+          "state": "NOT_RUN",
+          "checks": 0,
+          "errors": 0
+        }
+      ],
+      "errors": [
+        {
+          "code": "LOAD-001",
+          "phase": "REGISTRY",
+          "object": "inputs",
+          "message": "could not load the validation inputs under /tmp/gde-run-znUsOa: ENOENT: no such file or directory, open '/tmp/gde-run-znUsOa/docs/analysis/registries/registry.schema.json'"
+        }
+      ],
+      "repository": {
+        "scope": "snapshot",
+        "tree_digest_before": "4fdf3db611fe38cb35710f52030d2607ac73f6baa35fcafef1cd26ac43657d94",
+        "tree_digest_after": "4fdf3db611fe38cb35710f52030d2607ac73f6baa35fcafef1cd26ac43657d94",
+        "files": 33,
+        "unchanged": true,
+        "excluded_from_digest": [
+          "docs/analysis/validation-runs.json"
+        ]
+      }
+    },
+    {
+      "id": "RUN-002",
+      "label": "brief 11 change set R-022 (registries + semantic validator)",
+      "mode": "WORKTREE",
+      "started_at": "2026-09-10T22:34:15.938Z",
+      "completed_at": "2026-09-10T22:34:16.055Z",
+      "verdict": "VALID",
+      "tool": {
+        "path": "tools/validate-analysis.mjs",
+        "model": "brief 11 sections 202, 218-243",
+        "sha256": "daa9cac160df3b63036b116ff5355fc7be01cb9bfc7b24783885f9efaf78ff56"
+      },
+      "inputs": {
+        "document": {
+          "path": "docs/analysis/analysis.json",
+          "sha256": "ea9347ad54a20599bf64209421b024d2e8bffdbe71f7d4014f7902e10829577b"
+        },
+        "schema": {
+          "path": "docs/analysis/analysis.schema.json",
+          "sha256": "4a87542448198b353a38ad2e13f1beca02d1bd53d4780dc0312404c54ca00aa9"
+        },
+        "registry_schema": {
+          "path": "docs/analysis/registries/registry.schema.json",
+          "sha256": "853fd5bd507fd53899603193942deccfc2db6448c8978c3bc69ccab43cd1583b"
+        },
+        "registries": [
+          {
+            "registry_id": "capability",
+            "registry_version": "2026.09.1",
+            "path": "docs/analysis/registries/capability-registry.json",
+            "sha256": "a57e079db38eb3e6b7470e5d49b750270da46fba885304940c40781c7847d403"
+          },
+          {
+            "registry_id": "level_profile",
+            "registry_version": "2026.09.1",
+            "path": "docs/analysis/registries/level-profile-registry.json",
+            "sha256": "42eabee1043c1161e5797dcc242941397fc1eccbff6e210f52c3ab9d876e4e23"
+          },
+          {
+            "registry_id": "operation",
+            "registry_version": "2026.09.1",
+            "path": "docs/analysis/registries/operation-registry.json",
+            "sha256": "3a04d74b9398c2228de7a0cb76088b98794f200dcf810b7d463156635bf811d5"
+          },
+          {
+            "registry_id": "resource_class",
+            "registry_version": "2026.09.1",
+            "path": "docs/analysis/registries/resource-class-registry.json",
+            "sha256": "0baf650c6fea891fa8ffd275ad135bfa405d74475ed5d5108273c9483f141996"
+          },
+          {
+            "registry_id": "claim",
+            "registry_version": "2026.09.1",
+            "path": "docs/analysis/registries/claim-registry.json",
+            "sha256": "51755156a867d319ee074124455ceb94f27084e91e4364955c627931f04b6c39"
+          }
+        ]
+      },
+      "phases": [
+        {
+          "phase": "STRUCTURAL",
+          "state": "PASSED",
+          "checks": 3,
+          "errors": 0
+        },
+        {
+          "phase": "REGISTRY",
+          "state": "PASSED",
+          "checks": 11,
+          "errors": 0
+        },
+        {
+          "phase": "SEMANTIC",
+          "state": "PASSED",
+          "checks": 20,
+          "errors": 0
+        },
+        {
+          "phase": "AUTHORIZATION",
+          "state": "PASSED",
+          "checks": 1,
+          "errors": 0
+        },
+        {
+          "phase": "EXECUTION",
+          "state": "PASSED",
+          "checks": 3,
+          "errors": 0
+        },
+        {
+          "phase": "VERIFICATION",
+          "state": "PASSED",
+          "checks": 3,
+          "errors": 0
+        }
+      ],
+      "errors": [],
+      "repository": {
+        "scope": "worktree",
+        "tree_digest_before": "e941b52b3f26b864ce3efedb06e32a577743442d034c9ee52b383a15014cf377",
+        "tree_digest_after": "e941b52b3f26b864ce3efedb06e32a577743442d034c9ee52b383a15014cf377",
+        "files": 40,
+        "unchanged": true,
+        "excluded_from_digest": [
+          "docs/analysis/validation-runs.json"
+        ]
+      }
+    }
+  ]
+}

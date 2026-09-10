@@ -1,0 +1,302 @@
+{
+  "schema_version": "1.0",
+  "registry_id": "capability",
+  "registry_version": "2026.09.1",
+  "$comment": "Capability vocabulary (brief 11 sections 218.2, 221). Declarations only: an entry here authorizes nothing; the authorization carries the grant state. The analysis schema validates the shape of a grant, this registry says what its capability_id means.",
+  "entries": [
+    {
+      "id": "CAP-REPOSITORY-READ",
+      "resource_class": "REPOSITORY",
+      "operations": [
+        "READ"
+      ],
+      "constraints": {
+        "scope_model": "NONE"
+      },
+      "lifecycle": {
+        "grantable": true
+      },
+      "description": "Read repository artifacts (analysis is impossible without it; carries no mutation authority)."
+    },
+    {
+      "id": "CAP-REPOSITORY-ANALYZE",
+      "resource_class": "REPOSITORY",
+      "operations": [
+        "ANALYZE"
+      ],
+      "constraints": {
+        "scope_model": "NONE"
+      },
+      "lifecycle": {
+        "grantable": true
+      },
+      "description": "Execute analysis tooling over the repository in place (tools/verify.mjs, tools/checks.mjs, tools/simulate.mjs, tools/validate-analysis.mjs)."
+    },
+    {
+      "id": "CAP-REPOSITORY-PROPOSE",
+      "resource_class": "REPOSITORY",
+      "operations": [
+        "PROPOSE"
+      ],
+      "constraints": {
+        "scope_model": "NONE"
+      },
+      "lifecycle": {
+        "grantable": true
+      },
+      "description": "Record proposed changes without applying them."
+    },
+    {
+      "id": "CAP-DOCUMENT-CREATE",
+      "resource_class": "DOCUMENT",
+      "operations": [
+        "CREATE"
+      ],
+      "constraints": {
+        "scope_model": "PATH"
+      },
+      "lifecycle": {
+        "grantable": true
+      },
+      "description": "Create documentation (analysis, registers, architecture and roadmap documents)."
+    },
+    {
+      "id": "CAP-DOCUMENT-MODIFY",
+      "resource_class": "DOCUMENT",
+      "operations": [
+        "MODIFY"
+      ],
+      "constraints": {
+        "scope_model": "PATH"
+      },
+      "lifecycle": {
+        "grantable": true
+      },
+      "description": "Modify documentation in place."
+    },
+    {
+      "id": "CAP-DOCUMENT-RENAME",
+      "resource_class": "DOCUMENT",
+      "operations": [
+        "RENAME"
+      ],
+      "constraints": {
+        "scope_model": "PATH"
+      },
+      "lifecycle": {
+        "grantable": true
+      },
+      "description": "Rename a documentation artifact without changing its content."
+    },
+    {
+      "id": "CAP-DOCUMENT-MOVE",
+      "resource_class": "DOCUMENT",
+      "operations": [
+        "MOVE"
+      ],
+      "constraints": {
+        "scope_model": "PATH"
+      },
+      "lifecycle": {
+        "grantable": true
+      },
+      "description": "Move a documentation artifact to another location without changing its content."
+    },
+    {
+      "id": "CAP-DOCUMENT-DELETE",
+      "resource_class": "DOCUMENT",
+      "operations": [
+        "DELETE"
+      ],
+      "constraints": {
+        "scope_model": "PATH"
+      },
+      "lifecycle": {
+        "grantable": true
+      },
+      "description": "Delete a documentation artifact; never granted in this repository."
+    },
+    {
+      "id": "CAP-TEST-CREATE",
+      "resource_class": "TEST",
+      "operations": [
+        "CREATE"
+      ],
+      "constraints": {
+        "scope_model": "PATH"
+      },
+      "lifecycle": {
+        "grantable": true
+      },
+      "description": "Create test or harness artifacts."
+    },
+    {
+      "id": "CAP-TEST-MODIFY",
+      "resource_class": "TEST",
+      "operations": [
+        "MODIFY"
+      ],
+      "constraints": {
+        "scope_model": "PATH"
+      },
+      "lifecycle": {
+        "grantable": true
+      },
+      "description": "Modify test or harness artifacts."
+    },
+    {
+      "id": "CAP-TEST-RENAME",
+      "resource_class": "TEST",
+      "operations": [
+        "RENAME"
+      ],
+      "constraints": {
+        "scope_model": "PATH"
+      },
+      "lifecycle": {
+        "grantable": true
+      },
+      "description": "Rename test or harness artifacts."
+    },
+    {
+      "id": "CAP-TEST-MOVE",
+      "resource_class": "TEST",
+      "operations": [
+        "MOVE"
+      ],
+      "constraints": {
+        "scope_model": "PATH"
+      },
+      "lifecycle": {
+        "grantable": true
+      },
+      "description": "Move test or harness artifacts."
+    },
+    {
+      "id": "CAP-TEST-DELETE",
+      "resource_class": "TEST",
+      "operations": [
+        "DELETE"
+      ],
+      "constraints": {
+        "scope_model": "PATH"
+      },
+      "lifecycle": {
+        "grantable": true
+      },
+      "description": "Delete test or harness artifacts."
+    },
+    {
+      "id": "CAP-SOURCE-CREATE",
+      "resource_class": "SOURCE",
+      "operations": [
+        "CREATE"
+      ],
+      "constraints": {
+        "scope_model": "PATH"
+      },
+      "lifecycle": {
+        "grantable": true
+      },
+      "description": "Create a source artifact."
+    },
+    {
+      "id": "CAP-SOURCE-MODIFY",
+      "resource_class": "SOURCE",
+      "operations": [
+        "MODIFY"
+      ],
+      "constraints": {
+        "scope_model": "PATH"
+      },
+      "lifecycle": {
+        "grantable": true
+      },
+      "description": "Modify a source artifact; never granted in this repository."
+    },
+    {
+      "id": "CAP-SOURCE-RENAME",
+      "resource_class": "SOURCE",
+      "operations": [
+        "RENAME"
+      ],
+      "constraints": {
+        "scope_model": "PATH"
+      },
+      "lifecycle": {
+        "grantable": true
+      },
+      "description": "Rename a source artifact; never granted in this repository."
+    },
+    {
+      "id": "CAP-SOURCE-MOVE",
+      "resource_class": "SOURCE",
+      "operations": [
+        "MOVE"
+      ],
+      "constraints": {
+        "scope_model": "PATH"
+      },
+      "lifecycle": {
+        "grantable": true
+      },
+      "description": "Move a source artifact; never granted in this repository."
+    },
+    {
+      "id": "CAP-SOURCE-DELETE",
+      "resource_class": "SOURCE",
+      "operations": [
+        "DELETE"
+      ],
+      "constraints": {
+        "scope_model": "PATH"
+      },
+      "lifecycle": {
+        "grantable": true
+      },
+      "description": "Delete a source artifact; never granted in this repository."
+    },
+    {
+      "id": "CAP-ARCHITECTURE-MODIFY",
+      "resource_class": "ARCHITECTURE",
+      "operations": [
+        "MODIFY"
+      ],
+      "constraints": {
+        "scope_model": "PATH"
+      },
+      "lifecycle": {
+        "grantable": true
+      },
+      "description": "Change an architectural contract rather than an artifact."
+    },
+    {
+      "id": "CAP-COMMIT-CREATE",
+      "resource_class": "COMMIT",
+      "operations": [
+        "COMMIT"
+      ],
+      "constraints": {
+        "scope_model": "NONE"
+      },
+      "lifecycle": {
+        "grantable": true
+      },
+      "description": "Create a commit from the authorized change set."
+    },
+    {
+      "id": "CAP-REMOTE-PUSH",
+      "resource_class": "REMOTE",
+      "operations": [
+        "PUSH"
+      ],
+      "constraints": {
+        "scope_model": "NONE"
+      },
+      "lifecycle": {
+        "grantable": true
+      },
+      "description": "Publish commits to the remote work branch."
+    }
+  ]
+}

@@ -1,0 +1,48 @@
+{
+  "schema_version": "1.0",
+  "registry_id": "operation",
+  "registry_version": "2026.09.1",
+  "$comment": "Operation vocabulary (brief 11 section 223). The registry owns the question \"is MODIFY a recognized operation, and is it mutating?\"; the analysis schema no longer answers it with an enum.",
+  "entries": [
+    {
+      "id": "READ",
+      "mutating": false
+    },
+    {
+      "id": "ANALYZE",
+      "mutating": false
+    },
+    {
+      "id": "PROPOSE",
+      "mutating": false
+    },
+    {
+      "id": "CREATE",
+      "mutating": true
+    },
+    {
+      "id": "MODIFY",
+      "mutating": true
+    },
+    {
+      "id": "RENAME",
+      "mutating": true
+    },
+    {
+      "id": "MOVE",
+      "mutating": true
+    },
+    {
+      "id": "DELETE",
+      "mutating": true
+    },
+    {
+      "id": "COMMIT",
+      "mutating": true
+    },
+    {
+      "id": "PUSH",
+      "mutating": true
+    }
+  ]
+}

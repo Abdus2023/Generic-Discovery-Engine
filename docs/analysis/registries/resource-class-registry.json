@@ -1,0 +1,40 @@
+{
+  "schema_version": "1.0",
+  "registry_id": "resource_class",
+  "registry_version": "2026.09.1",
+  "$comment": "Resource-class vocabulary (brief 11 section 224). The analysis schema types target.resource_class as a string so that a new class does not require a schema revision.",
+  "entries": [
+    {
+      "id": "REPOSITORY",
+      "description": "the repository as a whole (analysis and proposal surfaces carry no path)"
+    },
+    {
+      "id": "DOCUMENT",
+      "description": "a documentation artifact (README, docs/**)"
+    },
+    {
+      "id": "TEST",
+      "description": "a test artifact"
+    },
+    {
+      "id": "SOURCE",
+      "description": "a source artifact (prototype/**)"
+    },
+    {
+      "id": "CONFIGURATION",
+      "description": "a configuration artifact"
+    },
+    {
+      "id": "ARCHITECTURE",
+      "description": "an architecture-defining artifact (docs/architecture/**)"
+    },
+    {
+      "id": "COMMIT",
+      "description": "the repository history surface"
+    },
+    {
+      "id": "REMOTE",
+      "description": "a published remote ref"
+    }
+  ]
+}

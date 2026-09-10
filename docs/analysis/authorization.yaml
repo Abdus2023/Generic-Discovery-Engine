@@ -1,0 +1,143 @@
+# Canonical authorization object — YAML mirror of `analysis.json`.
+#
+# Serialization is not allowed to change semantics: this file and the
+# `authorization` field of analysis.json must deserialize to the same logical
+# object (checked by tools/validate-analysis.mjs). The body is generated.
+#
+# Field names are canonical. Do not introduce variants such as
+# authorization_level, auth_level, permission_level, allowed_operations,
+# authorized_operations or authorized_change_ids.
+#
+# Section 177: state ≠ level.profile ≠ capability (an object with its own state
+# and resource class) ≠ operation ≠ scope ≠ change authorization.
+# EffectiveCapabilities = (ProfileCapabilities ∩ grants) − denies; deny wins.
+
+authorization:
+  state: GRANTED
+  level:
+    profile: PUSH
+  capability_grants:
+    - capability_id: CAP-REPOSITORY-READ
+      state: ENABLED
+    - capability_id: CAP-REPOSITORY-ANALYZE
+      state: ENABLED
+    - capability_id: CAP-REPOSITORY-PROPOSE
+      state: ENABLED
+    - capability_id: CAP-DOCUMENT-CREATE
+      state: RESTRICTED
+      scope:
+        paths:
+          include:
+            - docs/
+            - tools/
+          exclude: []
+    - capability_id: CAP-DOCUMENT-MODIFY
+      state: RESTRICTED
+      scope:
+        paths:
+          include:
+            - README.md
+            - docs/
+            - tools/
+          exclude: []
+    - capability_id: CAP-DOCUMENT-RENAME
+      state: RESTRICTED
+      scope:
+        paths:
+          include:
+            - archive/
+          exclude: []
+    - capability_id: CAP-DOCUMENT-MOVE
+      state: RESTRICTED
+      scope:
+        paths:
+          include:
+            - docs/roadmap/
+            - archive/
+          exclude: []
+    - capability_id: CAP-DOCUMENT-DELETE
+      state: DENIED
+    - capability_id: CAP-TEST-CREATE
+      state: DENIED
+    - capability_id: CAP-TEST-MODIFY
+      state: DENIED
+    - capability_id: CAP-TEST-RENAME
+      state: DENIED
+    - capability_id: CAP-TEST-MOVE
+      state: DENIED
+    - capability_id: CAP-TEST-DELETE
+      state: DENIED
+    - capability_id: CAP-SOURCE-CREATE
+      state: RESTRICTED
+      scope:
+        paths:
+          include:
+            - prototype/
+          exclude: []
+    - capability_id: CAP-SOURCE-MODIFY
+      state: DENIED
+    - capability_id: CAP-SOURCE-RENAME
+      state: DENIED
+    - capability_id: CAP-SOURCE-MOVE
+      state: DENIED
+    - capability_id: CAP-SOURCE-DELETE
+      state: DENIED
+    - capability_id: CAP-ARCHITECTURE-MODIFY
+      state: DENIED
+    - capability_id: CAP-COMMIT-CREATE
+      state: ENABLED
+    - capability_id: CAP-REMOTE-PUSH
+      state: ENABLED
+  operations:
+    allow:
+      - READ
+      - ANALYZE
+      - PROPOSE
+      - CREATE
+      - MODIFY
+      - RENAME
+      - MOVE
+      - COMMIT
+      - PUSH
+    deny:
+      - DELETE
+  change_ids:
+    - R-001
+    - R-002
+    - R-003
+    - R-004
+    - R-005
+    - R-006
+    - R-007
+    - R-008
+    - R-009
+    - R-010
+    - R-011
+    - R-012
+    - R-013
+    - R-014
+    - R-015
+    - R-016
+    - R-017
+    - R-018
+    - R-019
+    - R-020
+    - R-021
+    - R-022
+  authority:
+    type: USER
+    identifier: Abdus2023 (repository owner), delegating through the standing session instruction
+  target:
+    repository: Abdus2023/Generic-Discovery-Engine
+    revision: cc8df7357c2dbfe9d149747743e2f5e9ac9c0178
+  scope:
+    paths:
+      include:
+        - README.md
+        - docs/
+        - tools/
+        - prototype/
+        - archive/
+      exclude: []
+  granted_at: 2026-09-10T00:00:00Z
+  expires_at: null

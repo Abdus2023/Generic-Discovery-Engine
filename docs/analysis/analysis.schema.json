@@ -1,0 +1,839 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://generic-discovery-engine.invalid/schema/analysis-1.0.json",
+  "title": "Generic Discovery Engine Analysis",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "repository",
+    "scope",
+    "claims",
+    "changes",
+    "authorization",
+    "execution",
+    "execution_verification"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": "1.0"
+    },
+    "repository": {
+      "$ref": "#/$defs/repository"
+    },
+    "scope": {
+      "$ref": "#/$defs/scope"
+    },
+    "claims": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/claim"
+      }
+    },
+    "changes": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/change"
+      }
+    },
+    "authorization": {
+      "$ref": "#/$defs/authorization"
+    },
+    "execution": {
+      "$ref": "#/$defs/execution"
+    },
+    "execution_verification": {
+      "$ref": "#/$defs/executionVerification"
+    }
+  },
+  "$defs": {
+    "claimKind": {
+      "enum": [
+        "CURRENT",
+        "SPECIFIED",
+        "PLANNED",
+        "HISTORICAL",
+        "HYPOTHESIS",
+        "NON_GOAL"
+      ]
+    },
+    "implementationState": {
+      "enum": [
+        "IMPLEMENTED",
+        "PARTIAL",
+        "NOT_IMPLEMENTED",
+        "NOT_APPLICABLE",
+        "UNKNOWN"
+      ]
+    },
+    "testState": {
+      "enum": [
+        "TESTED",
+        "PARTIALLY_TESTED",
+        "UNTESTED",
+        "NOT_APPLICABLE",
+        "UNKNOWN"
+      ]
+    },
+    "evidenceLevel": {
+      "enum": [
+        "DIRECT",
+        "CORROBORATED",
+        "INDIRECT",
+        "ABSENT",
+        "INACCESSIBLE"
+      ]
+    },
+    "claimVerificationResult": {
+      "enum": [
+        "VERIFIED",
+        "PARTIALLY_VERIFIED",
+        "UNVERIFIED",
+        "CONTRADICTED",
+        "NOT_APPLICABLE"
+      ]
+    },
+    "confidence": {
+      "enum": [
+        "VERY_LOW",
+        "LOW",
+        "MEDIUM",
+        "HIGH",
+        "VERY_HIGH"
+      ]
+    },
+    "claim": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "statement",
+        "claim_kind",
+        "implementation_state",
+        "test_state",
+        "evidence_level",
+        "claim_verification",
+        "evidence"
+      ],
+      "properties": {
+        "id": {
+          "type": "string",
+          "pattern": "^CLAIM-[0-9]{3,}$"
+        },
+        "statement": {
+          "type": "string",
+          "minLength": 1
+        },
+        "claim_kind": {
+          "$ref": "#/$defs/claimKind"
+        },
+        "implementation_state": {
+          "$ref": "#/$defs/implementationState"
+        },
+        "test_state": {
+          "$ref": "#/$defs/testState"
+        },
+        "evidence_level": {
+          "$ref": "#/$defs/evidenceLevel"
+        },
+        "claim_verification": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "result"
+          ],
+          "properties": {
+            "result": {
+              "$ref": "#/$defs/claimVerificationResult"
+            }
+          }
+        },
+        "confidence": {
+          "$ref": "#/$defs/confidence"
+        },
+        "evidence": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/evidence"
+          }
+        },
+        "interpretation": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "summary",
+            "limitations"
+          ],
+          "properties": {
+            "summary": {
+              "type": "string"
+            },
+            "limitations": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            }
+          }
+        }
+      }
+    },
+    "evidence": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "kind",
+        "path",
+        "locator"
+      ],
+      "properties": {
+        "id": {
+          "type": "string",
+          "pattern": "^(CODE|TEST|DOC|CFG|HIST|ARCH|SCOPE|CONC|PROV|FAIL|EXT)-[0-9]{3,}$"
+        },
+        "kind": {
+          "enum": [
+            "CODE",
+            "TEST",
+            "CONFIG",
+            "DOCUMENTATION",
+            "HISTORY",
+            "GENERATED_ARTIFACT",
+            "EXTERNAL_REFERENCE"
+          ]
+        },
+        "path": {
+          "type": "string",
+          "minLength": 1
+        },
+        "locator": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "type",
+            "value"
+          ],
+          "properties": {
+            "type": {
+              "enum": [
+                "LINE_RANGE",
+                "SYMBOL",
+                "HEADING",
+                "SECTION",
+                "COMMIT",
+                "TAG",
+                "URL",
+                "FILE"
+              ]
+            },
+            "value": {
+              "type": "string",
+              "minLength": 1
+            }
+          }
+        }
+      }
+    },
+    "repository": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "owner",
+        "name",
+        "requested_revision",
+        "resolved_revision",
+        "access_level",
+        "included_paths",
+        "excluded_paths"
+      ],
+      "properties": {
+        "owner": {
+          "type": "string",
+          "minLength": 1
+        },
+        "name": {
+          "type": "string",
+          "minLength": 1
+        },
+        "requested_revision": {
+          "type": "string",
+          "minLength": 1
+        },
+        "resolved_revision": {
+          "type": "string",
+          "minLength": 1
+        },
+        "access_level": {
+          "enum": [
+            "FULL",
+            "PARTIAL",
+            "DOCUMENT_ONLY",
+            "SEARCH_ONLY",
+            "NONE"
+          ]
+        },
+        "included_paths": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "excluded_paths": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "scope": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "repository",
+        "source_code",
+        "tests",
+        "configuration",
+        "documentation",
+        "history",
+        "external_dependencies",
+        "runtime_environment",
+        "paths"
+      ],
+      "properties": {
+        "repository": {
+          "type": "boolean"
+        },
+        "source_code": {
+          "type": "boolean"
+        },
+        "tests": {
+          "type": "boolean"
+        },
+        "configuration": {
+          "type": "boolean"
+        },
+        "documentation": {
+          "type": "boolean"
+        },
+        "history": {
+          "type": "boolean"
+        },
+        "external_dependencies": {
+          "type": "boolean"
+        },
+        "runtime_environment": {
+          "type": "boolean"
+        },
+        "paths": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "include",
+            "exclude"
+          ],
+          "properties": {
+            "include": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "exclude": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            }
+          }
+        }
+      }
+    },
+    "change": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "category",
+        "description",
+        "evidence",
+        "scope",
+        "risk"
+      ],
+      "properties": {
+        "id": {
+          "type": "string",
+          "pattern": "^R-[0-9]{3,}$"
+        },
+        "category": {
+          "enum": [
+            "DOC_CLEANUP",
+            "DOC_MOVE",
+            "DOC_MERGE",
+            "DOC_SPLIT",
+            "DOC_REWRITE",
+            "CODE_REFACTOR",
+            "CODE_FIX",
+            "TEST_ADD",
+            "TEST_UPDATE",
+            "ARCHITECTURE_CHANGE",
+            "REMOVAL",
+            "RENAME"
+          ]
+        },
+        "description": {
+          "type": "string",
+          "minLength": 1
+        },
+        "evidence": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "scope": {
+          "$ref": "#/$defs/changeScope"
+        },
+        "risk": {
+          "enum": [
+            "LOW",
+            "MEDIUM",
+            "HIGH",
+            "CRITICAL"
+          ]
+        }
+      }
+    },
+    "changeScope": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "paths"
+      ],
+      "properties": {
+        "paths": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "include",
+            "exclude"
+          ],
+          "properties": {
+            "include": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "exclude": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            }
+          }
+        }
+      }
+    },
+    "authorizationState": {
+      "enum": [
+        "NOT_REQUESTED",
+        "REQUESTED",
+        "GRANTED",
+        "DENIED",
+        "REVOKED",
+        "EXPIRED"
+      ]
+    },
+    "capabilityState": {
+      "enum": [
+        "DECLARED",
+        "ENABLED",
+        "RESTRICTED",
+        "DENIED",
+        "REVOKED",
+        "EXPIRED"
+      ]
+    },
+    "capabilityGrant": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "capability_id",
+        "state"
+      ],
+      "properties": {
+        "capability_id": {
+          "description": "Capability identifier syntax only; the capability inventory lives in the capability registry (sections 219, 221).",
+          "type": "string",
+          "minLength": 1,
+          "pattern": "^CAP-[A-Z0-9_-]+$"
+        },
+        "state": {
+          "$ref": "#/$defs/capabilityState"
+        },
+        "scope": {
+          "$ref": "#/$defs/changeScope"
+        }
+      }
+    },
+    "authorization": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "state",
+        "level",
+        "capability_grants",
+        "operations",
+        "change_ids",
+        "authority",
+        "target",
+        "scope",
+        "expires_at"
+      ],
+      "properties": {
+        "state": {
+          "$ref": "#/$defs/authorizationState"
+        },
+        "level": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "profile"
+          ],
+          "properties": {
+            "profile": {
+              "description": "Profile identifier syntax only; the profile inventory lives in the level-profile registry (section 222).",
+              "type": "string",
+              "minLength": 1,
+              "pattern": "^[A-Z][A-Z0-9_]*$"
+            }
+          }
+        },
+        "capability_grants": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": {
+            "$ref": "#/$defs/capabilityGrant"
+          }
+        },
+        "operations": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "allow",
+            "deny"
+          ],
+          "properties": {
+            "allow": {
+              "type": "array",
+              "uniqueItems": true,
+              "items": {
+                "$ref": "#/$defs/operationName"
+              }
+            },
+            "deny": {
+              "type": "array",
+              "uniqueItems": true,
+              "items": {
+                "$ref": "#/$defs/operationName"
+              }
+            }
+          }
+        },
+        "change_ids": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": {
+            "type": "string",
+            "pattern": "^R-[0-9]{3,}$"
+          }
+        },
+        "authority": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "type",
+            "identifier"
+          ],
+          "properties": {
+            "type": {
+              "enum": [
+                "USER",
+                "SYSTEM",
+                "DELEGATED_AUTHORITY"
+              ]
+            },
+            "identifier": {
+              "type": "string",
+              "minLength": 1
+            }
+          }
+        },
+        "target": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "repository",
+            "revision"
+          ],
+          "properties": {
+            "repository": {
+              "type": "string",
+              "minLength": 1
+            },
+            "revision": {
+              "type": "string",
+              "minLength": 1
+            }
+          }
+        },
+        "scope": {
+          "$ref": "#/$defs/changeScope"
+        },
+        "granted_at": {
+          "type": "string",
+          "format": "date-time",
+          "$comment": "Conditional: REQUIRED and non-null when state is GRANTED (section 229); the schema cannot express a cross-field requirement."
+        },
+        "expires_at": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "format": "date-time"
+        }
+      }
+    },
+    "operationName": {
+      "description": "Operation identifier syntax only. Whether the identifier is a recognized operation, and whether it mutates, is a registry question (sections 219, 223) — the schema does not own an operation inventory.",
+      "type": "string",
+      "minLength": 1,
+      "pattern": "^[A-Z][A-Z0-9_]*$"
+    },
+    "operation": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "change_id",
+        "operation",
+        "target",
+        "authorization_decision",
+        "result"
+      ],
+      "properties": {
+        "id": {
+          "type": "string",
+          "pattern": "^OP-[0-9]{3,}$"
+        },
+        "change_id": {
+          "type": "string",
+          "pattern": "^R-[0-9]{3,}$"
+        },
+        "operation": {
+          "$ref": "#/$defs/operationName"
+        },
+        "target": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "resource_class",
+            "path"
+          ],
+          "properties": {
+            "resource_class": {
+              "description": "Resource-class identifier syntax only; the class inventory lives in the resource-class registry (section 224).",
+              "type": "string",
+              "minLength": 1,
+              "pattern": "^[A-Z][A-Z0-9_]*$"
+            },
+            "path": {
+              "type": "string"
+            }
+          }
+        },
+        "authorization_decision": {
+          "enum": [
+            "ALLOWED",
+            "DENIED"
+          ]
+        },
+        "result": {
+          "enum": [
+            "NOT_ATTEMPTED",
+            "AUTHORIZATION_DENIED",
+            "SKIPPED",
+            "SUCCEEDED",
+            "FAILED",
+            "CANCELLED",
+            "BLOCKED"
+          ]
+        }
+      }
+    },
+    "execution": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "state",
+        "operations",
+        "executed_changes",
+        "unauthorized_changes"
+      ],
+      "properties": {
+        "id": {
+          "description": "Identifier of this execution record; execution_verification.execution_id must name it (X-019).",
+          "type": "string",
+          "pattern": "^EXEC-[0-9]{3,}$"
+        },
+        "state": {
+          "enum": [
+            "NOT_STARTED",
+            "AUTHORIZATION_BLOCKED",
+            "READY",
+            "RUNNING",
+            "SUCCEEDED",
+            "PARTIALLY_SUCCEEDED",
+            "FAILED",
+            "CANCELLED",
+            "STOPPED"
+          ]
+        },
+        "operations": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/operation"
+          }
+        },
+        "executed_changes": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": {
+            "type": "string",
+            "pattern": "^R-[0-9]{3,}$"
+          }
+        },
+        "unauthorized_changes": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": {
+            "type": "string",
+            "pattern": "^R-[0-9]{3,}$"
+          }
+        },
+        "started_at": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "format": "date-time"
+        },
+        "completed_at": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "format": "date-time"
+        }
+      }
+    },
+    "check": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "description",
+        "result"
+      ],
+      "properties": {
+        "id": {
+          "type": "string",
+          "pattern": "^VERIFY-[0-9]{3,}$"
+        },
+        "description": {
+          "type": "string",
+          "minLength": 1
+        },
+        "result": {
+          "enum": [
+            "NOT_RUN",
+            "PASSED",
+            "FAILED",
+            "BLOCKED",
+            "INCONCLUSIVE"
+          ]
+        },
+        "evidence": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "executionVerification": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "state",
+        "result",
+        "scope",
+        "checks",
+        "findings",
+        "remediation_required",
+        "execution_id"
+      ],
+      "properties": {
+        "execution_id": {
+          "description": "The execution this verification refers to (X-019); it must resolve to execution.id in the same document.",
+          "type": "string",
+          "pattern": "^EXEC-[0-9]{3,}$"
+        },
+        "state": {
+          "enum": [
+            "NOT_REQUIRED",
+            "NOT_STARTED",
+            "READY",
+            "RUNNING",
+            "PASSED",
+            "PARTIALLY_PASSED",
+            "FAILED",
+            "BLOCKED",
+            "INCONCLUSIVE"
+          ]
+        },
+        "result": {
+          "enum": [
+            "CONFORMING",
+            "PARTIALLY_CONFORMING",
+            "NON_CONFORMING",
+            "INCONCLUSIVE",
+            "NOT_APPLICABLE"
+          ]
+        },
+        "scope": {
+          "$ref": "#/$defs/changeScope"
+        },
+        "checks": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/check"
+          }
+        },
+        "findings": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "remediation_required": {
+          "type": "boolean"
+        }
+      }
+    }
+  },
+  "$comment": "Structural contract only (brief 11 sections 218.1, 219, 225). Enums here are intrinsic to the protocol: claim dimensions, authorization/execution/verification lifecycles, decision and result vocabularies, change category, risk class, access classification, evidence kind. Repository-specific inventories — capabilities, level profiles, operations, resource classes, claim identifiers — are typed as strings with identifier syntax and resolved against the semantic registries in docs/analysis/registries/."
+}

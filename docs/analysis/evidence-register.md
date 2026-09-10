@@ -1,0 +1,269 @@
+# Evidence Register
+
+Audit index for every non-trivial finding in
+[repository-analysis-2026-09-10.md](repository-analysis-2026-09-10.md). It is an
+index, not a bibliography: each row supports a specific claim, and the claim
+should not be asserted anywhere in this repository without its ID.
+
+## Repository access contract
+
+| | |
+| --- | --- |
+| Repository | `Abdus2023/Generic-Discovery-Engine` |
+| Owner / name | `Abdus2023` / `Generic-Discovery-Engine` |
+| Requested branch | `main` (as supplied by the user) |
+| Resolved branch | local `main` @ `cc8df73`, work branch `arena/01a08d14-generic-discovery-engine` |
+| Resolved commit at analysis start | `cc8df7357c2dbfe9d149747743e2f5e9ac9c0178` |
+| Access method | local git checkout, full read/write, `git`, `node`, `gh` |
+| Accessible scope | the entire repository tree at the resolved commit: all files, no submodules, no LFS, no private dependencies |
+| Unavailable scope | none — no test directory, CI configuration, issue tracker content or external artifact exists to inspect |
+| Access classification | **FULL ACCESS** (single-repository scope, no remote-only artifacts) |
+| Work revision | the analysis and change set are carried on `arena/01a08d14-generic-discovery-engine`, whose commits name the change ids they execute |
+| Artifacts analysed | `prototype/generic-discovery-engine.user.js`, `docs/**`, `tools/**`, `archive/**` |
+| External sources used as evidence | **none** — no external reference supports any finding; DVB terminology in `archive/` is context, not evidence |
+
+Access verification:
+
+| Check | Result |
+| --- | --- |
+| repository exists | yes |
+| requested repository is the correct repository | yes — tree contains the two named documents |
+| requested branch exists | yes (`main`) |
+| repository tree can be inspected | yes — 3 files at the resolved commit |
+| source files can be inspected | yes — one implementation artifact, extracted and read in full |
+| tests can be inspected | **no tests exist** (ABSENT, EVID:SCOPE-005) |
+| requested documentation can be inspected | yes — both named documents |
+| relevant history can be inspected | yes — single commit; no earlier history to inspect |
+
+Analysis target for every code locator below:
+`prototype/generic-discovery-engine.user.js` at the artifact extracted verbatim
+from `archive/Continue Architecture Planning.md` L48948–L54113; file identity is
+asserted by `tools/verify.mjs` (parse + version + symbol checks).
+
+## Citation format
+
+```
+[EVID:CONC-001]
+path:      prototype/generic-discovery-engine.user.js
+locator:   L1088-L1119 (KnowledgeBase.claimNextCandidate)
+type:      code
+status:    implemented
+```
+
+Locators prefer line ranges of the current artifact; semantic locators
+(`Class.method`, `"heading"`) are used where line numbers would be misleading.
+
+## Evidence state (canonical)
+
+This register records **only** the evidence dimension. Verdicts about claims
+(`CURRENT`, `CONTRADICTED`, `PLANNED`, …) live in [claims.md](claims.md); they are
+never expressed in this file.
+
+| Evidence state | Meaning used in this repository |
+| --- | --- |
+| DIRECT | the artifact itself demonstrates the fact (code, executed check, exact configuration) |
+| CORROBORATED | several independent repository artifacts support the same fact |
+| INDIRECT | the artifact suggests the fact without establishing it (documentation, design prose) |
+| ABSENT | the inspected scope was covered sufficiently and no supporting evidence was found |
+| INACCESSIBLE | evidence could not be inspected because access was incomplete — **not used here**: access was FULL |
+
+Preferred hierarchy applied when judging facts: executable behaviour → executed
+check → interface → configuration → current documentation → historical
+documentation → reasoning. No external reference is used as repository evidence;
+DVB terminology in `archive/` is context, not evidence of DVB behaviour.
+
+**Artifact identity (frozen):** `prototype/generic-discovery-engine.user.js`,
+4,290 lines, SHA-256 `8f5fc5c50e7f0886aa76fdbc7a6a633b3c4de72e7eb8b2d62525b807e354c474`,
+unchanged since extraction commit `400810d`. `tools/verify.mjs` recomputes this
+digest, so any accidental code modification fails verification.
+
+## Register — code
+
+| CODE-001 | `prototype/generic-discovery-engine.user.js` | header, L1–L17 (`@version 0.7.1`, grants) | artifact identity and version; userscript runtime surface | DIRECT | DIRECT |
+| CODE-002 | same | L49–L135 (`CONFIG`, including `maxCandidates`, `maxRequests`, `maxDepth`, `adaptive`, `retry`) | limits, budget, adaptive and retry configuration | DIRECT | DIRECT |
+| CODE-003 | same | L686–L788 (`Candidate`) | candidate fields; `identityKey()` L750; `effectivePriority()` L753 | DIRECT | DIRECT |
+| CODE-004 | same | L789–L853 (`Observation`) | observation fields incl. status, HTTP metadata, truncation | DIRECT | DIRECT |
+| CODE-005 | same | L854–L893 (`Discovery`) | discovery fields: candidateId, observationId, kind, confidence, mechanism, provenance | DIRECT | DIRECT |
+| CODE-006 | same | L975–L1417 (`KnowledgeBase`) | stores, caps, graph edges, diagnostics, statistics | DIRECT | DIRECT |
+| CODE-007 | same | L1002–L1073 (`KnowledgeBase.addCandidate`) | dedup by `identityKey`, merge of `alternate*`, max priority, candidate cap | DIRECT | DIRECT |
+| CODE-008 | same | L1074–L1087 (`KnowledgeBase.queueCandidate`) | **only `completed`/`skipped` are refused** | DIRECT | DIRECT |
+| CODE-009 | same | L1088–L1119 (`KnowledgeBase.claimNextCandidate`) | synchronous claim; marks `claimed` before returning; accepts `queued` and `failed` | DIRECT | DIRECT |
+| CODE-010 | same | L1143–L1148 / L1149–L1160 / L1161–L1165 (`markCompleted` / `markSkipped` / `markFailed`) | terminal states; `markFailed` sets no backoff | DIRECT | DIRECT |
+| CODE-011 | same | L1166–L1190 (`KnowledgeBase.retryCandidate`) | retry budget, exponential backoff into `nextAttemptAt` | DIRECT | DIRECT |
+| CODE-012 | same | L1303–L1310 (`shouldAcquireResource`) | per-URL acquisition guard keyed on canonical URL + resource status | DIRECT | DIRECT |
+| CODE-013 | same | L1621–L1968 (`Acquisition`), incl. `execute` L1626, `request` L1666 | HTTP GET via `GM_xmlhttpRequest`, `fetch` fallback, 8 s timeout, body truncation | DIRECT | DIRECT |
+| CODE-014 | same | L1969–L1984 (`Provider`), L1985–L2669 (seven providers), L2670–L2703 (`ProviderRegistry`) | provider contract `matches()`/`recognize()`; registry completeness | DIRECT | DIRECT |
+| CODE-015 | same | L1973–L1981 (`Provider.matches`/`recognize` stubs) | there is **no** `candidates()` method: expansion is engine-owned | DIRECT | DIRECT |
+| CODE-016 | same | L214–L281 (`looksLikeHtml`/`looksLikeJson`/`looksLikeXml`), L2450–L2578 (CSS/JS providers), L2579–L2645 (`TextProvider.matches`) | content-type **and body-sniff** matching; `TextProvider` = `text/*` or empty | DIRECT | DIRECT |
+| CODE-017 | same | L284–L341 (`extractUrlsFromText`, `extractCssUrls`, `extractXmlLocs`) | absolute **and relative** URL extraction rules | DIRECT | DIRECT |
+| CODE-018 | same | L3114–L4291 (`GenericDiscoveryEngine`), incl. `worker()` L3540, `start()` L3594 | worker pool creation, claim-before-await ordering, `Promise.all` | DIRECT | DIRECT |
+| CODE-019 | same | L3354–L3610 (`executePlan` L3362 onward) | policy denial, budget reservation, observation, retry, recognition, expansion, completion | DIRECT | DIRECT |
+| CODE-020 | same | L3347–L3353 (`reserveRequestSlot`) | global request budget, slot never released | DIRECT | DIRECT |
+| CODE-021 | same | L3262–L3330 (`emitDiscovery`) | a `Discovery` is stored **before** the derived candidate is deduplicated | DIRECT | DIRECT |
+| CODE-022 | same | L344–L356 (`makeFingerprint`), L986 (`fingerprintIndex`) | content fingerprints computed and indexed | DIRECT | DIRECT |
+| CODE-023 | same | L986, L1216–L1227, L1397–L1408 (`fingerprintIndex` sites) | the index is written/probed, **never read** → D8 | DIRECT | DIRECT |
+| CODE-024 | same | L441–L685 (`DecisionLedger`) incl. `append` cap, `export`/`restore` | sequenced append-only ledger, capped at 5000, persisted | DIRECT | DIRECT |
+| CODE-025 | same | L3975–L4002 (`persist`), L4003–L4067 (`restore`) | persistence payload, v6→v7 migration, ledger restore, budget reset | DIRECT | DIRECT |
+| CODE-026 | same | L4068–L4090 (`exportData`) | export schema `gde-export-v7.1` | DIRECT | DIRECT |
+| CODE-027 | same | L3838–L3893 (`observeCurrentPage`), L3895–L3950 (`observeCurrentDom`), L3792–L3836 (`observeNetworkGet`) | seed generation and its mechanisms | DIRECT | DIRECT |
+| CODE-028 | same | L2704–L3113 (`NetworkObserver`), incl. `installBridge` L2724, `installPerformanceObserver` L3016 | page fetch/XHR bridge; performance entries treated as evidence only | DIRECT | DIRECT |
+| CODE-029 | same | L4241–L4285 (`updateUI`) | UI exposes `currentConcurrency`, `activeWorkers`, dead `acquired` counter | DIRECT | DIRECT |
+| CODE-030 | same | `stat = { …, acquired: 0 }` L1006–L1018 and no assignment anywhere | `stats.acquired` is never incremented → D7 | DIRECT | DIRECT |
+| CODE-031 | same | L1419–L1420 (`plan(candidate)` in `AcquisitionPolicy` and engine) | policy decides GET-only, depth, disabled classes, scope | DIRECT | DIRECT |
+| CODE-032 | same | L191–L213 (`isAllowedUrl`, `sameOriginOnly`) | scope gate is the current origin | DIRECT | DIRECT |
+| CODE-033 | `archive/Continue Architecture Planning.md` | fenced userscripts v0.3.0–v0.6.0 (L2791–L48360) | historical implementations superseded by v0.7.1 | DIRECT | historical code artifacts (9 of 10 parse) |
+
+## Register — behaviour (executed)
+
+| TEST-001 | `tools/verify.mjs` | checks `claimNextCandidate() is synchronous`, `ownership is handed straight to execution` | claim-before-await atomicity | DIRECT (executed) | DIRECT |
+| TEST-002 | `tools/verify.mjs` | checks `providers perform no network I/O`, registry completeness, `TextProvider scope` | provider boundary and matching rules | DIRECT (executed) | DIRECT |
+| TEST-003 | `tools/verify.mjs` | checks `no DVB/RF implementation symbols`, `no later-design layers present` | non-goals and design/implementation separation | DIRECT (executed) | DIRECT |
+| TEST-004 | `tools/checks.mjs` | case 1 (duplicate insertion) | candidate identity dedup by `type:target` | DIRECT (executed) | DIRECT |
+| TEST-005 | `tools/checks.mjs` | case 2 (type disambiguation) | same URL with different type ⇒ distinct candidates | DIRECT (executed) | DIRECT |
+| TEST-006 | `tools/checks.mjs` | case 3 (11 content-type/body cases, exact sets) | provider selection incl. double-match and body sniffing | DIRECT (executed) | DIRECT |
+| TEST-007 | `tools/checks.mjs` | case 4 (chain reconstruction) | seed → candidate → observation → discovery → child candidate | DIRECT (executed) | DIRECT |
+| TEST-008 | `tools/checks.mjs` | case 5 (round-trip) | candidates, discoveries, resources **and ledger** survive restore; budget resets | DIRECT (executed) | DIRECT |
+| TEST-009 | `tools/simulate.mjs` | checks `single owner per candidate`, `no duplicate acquisition` | **violation of the single-owner invariant** (D1) | DIRECT | DIRECT |
+| TEST-010 | `tools/simulate.mjs` | `peakActiveWorkers`, `pendingWorkAtQuiescence` | pool never refilled (D2); work stranded on backoff (D4) | DIRECT | DIRECT |
+| TEST-011 | `tools/simulate.mjs` | anomaly stream `CONCURRENT_OWNER` | two workers acquiring one candidate at the same time | DIRECT | DIRECT |
+| TEST-012 | `tools/simulate.mjs` | metrics `discoveries` vs `uniqueUrls` (74 / 27) | discovery records are not deduplicated (D9) | DIRECT | DIRECT |
+| TEST-013 | `tools/simulate.mjs` | `--unsafe-control` run | the harness detects an ownership violation (detector sensitivity) | DIRECT (executed) | DIRECT |
+| TEST-014 | `tools/validate-analysis.mjs` | the validation pipeline: schema, claim rules C-001–C-043 and matrix CV-001–CV-020, evidence rules, the closed schema of sections 209–211, the required-field rules REQ-001…REQ-015, the capability-grant rules CAP-001…CAP-016 and CG-001…CG-015 with the section 212/216 resolution, the claim matrix CV-001…CV-020, execution invariants EV-001–EV-012 with the section 200 transition graph, execution-verification rules EVV-001–EVV-009 and the YAML mirror comparison | the record's typed fields, evidence shape, authorization and execution consistency | DIRECT (executed) | DIRECT |
+| TEST-015 | `tools/verify.mjs` (§7e) | the registry resolved into profiles, effective capabilities re-derived from grant states rather than trusted, withheld classes unreachable, every executed operation covered by a capability of the right resource class, declared scope paths versus `git diff`, execution/execution-verification separation, claim verification never borrowing lifecycle values, and the procedural check that execution verification modified nothing | the authorization model and the two lifecycles are enforced, not merely documented | DIRECT (executed) | DIRECT |
+| TEST-016 | `tools/validation-fixtures.mjs`, `node tools/validate-analysis.mjs --self-test` | 31 fixtures, each the minimal mutation that one cross-object rule forbids; the suite fails unless the validator rejects it in the expected phase with the expected code | the X/TS/RG/REQ/CAP/CG/EV/EVV rules are enforced, not asserted | DIRECT | DIRECT |
+| TEST-017 | `tools/validation-run.mjs` | runs the validator, hashes the working tree before and after (the run store excluded), and appends one entry to the ledger; refuses to rewrite an existing run | each verification run is recorded with its phase and errors, and the repository is provably unchanged by a run | DIRECT | DIRECT |
+
+## Register — documentation
+
+| DOC-001 | `README.md` (pre-cleanup, at `cc8df73`) | "Current Prototype", "Candidate Lifecycle" | historical README claims: atomic claiming, concurrency, persistence | DIRECT | WEAK |
+| DOC-002 | `archive/Continue Architecture Planning.md` | L48914–L48944 ("1. New invariant", "Complete v0.7.1") | design intent for the decision boundary and ledger | INDIRECT | INDIRECT |
+| DOC-003 | `archive/Continue Architecture Planning.md` | L54117–L54580 ("What v0.7.1 actually changes" … "Architecture after v0.7.1") | v0.7.1 contract: candidate ≠ acquisition plan, provider separation | INDIRECT | INDIRECT |
+| DOC-004 | `archive/Continue Architecture Planning.md` | L54418–L54472 ("6. One remaining architectural limitation") | replay vs acquisition distinction | INDIRECT | INDIRECT |
+| DOC-005 | `archive/Continue Architecture Planning.md` | L90113–L90153, L91859–L91906 ("What the browser prototype can guarantee", "Prototype Boundary") | profile coordination ≠ distributed consensus | INDIRECT | INDIRECT |
+| DOC-006 | `archive/Continue Architecture Planning.md` | v0.8 … v0.35 headings (L54631 onwards) | design-only layers with no implementation | INDIRECT | INDIRECT |
+| DOC-007 | `archive/Userscript Discovery Prototype.md` | notes 1–41 | origin of the DVB analogy and the coarse-to-fine/confidence ideas | INDIRECT | WEAK |
+| DOC-008 | `docs/prototype/limitations.md` | "Known defects" table | D1–D9 definitions with evidence pointers | DIRECT | DIRECT |
+| DOC-009 | `docs/prototype/scope.md` | "Implemented / Partially implemented / Not implemented" | scope tiers and their verification | DIRECT | DIRECT |
+| DOC-010 | `docs/architecture/search-space.md` | whole document | bounds, termination, coverage, staleness | DIRECT | DIRECT |
+| DOC-011 | `docs/glossary.md` | "Canonical definitions" | one term per concept; conflict table | DIRECT | DIRECT |
+| DOC-012 | `docs/analysis/change-register-2026-09-10.md` | change IDs R-001… | what was changed, why, and how it was verified | DIRECT | DIRECT |
+| DOC-013 | `docs/analysis/analysis.json`, `docs/analysis/analysis.schema.json`, `docs/analysis/claims.md` | the normative record, the schema and its rendering | the typed state of every claim, the authorization object and the execution record | DIRECT | DIRECT |
+| DOC-014 | `docs/analysis/authorization.yaml` | the canonical authorization object in YAML — state, level profile, capability grants with their states and scopes, operation sets, scope paths, change ids | serialization identity with the JSON record (SER-001…SER-012) and the resolved capability closure | DIRECT | DIRECT |
+| DOC-015 | `docs/analysis/registries/` (five registries + `registry.schema.json`) | the semantic registries: capability vocabulary and scope model, level profiles with declared inheritance, operations with their mutating flag, resource classes, claim identifiers with their domain; the envelope is versioned independently of the analysis schema | the policy and vocabulary layer of brief 11 (sections 218.2, 220-224); a declaration authorizes nothing | DIRECT | DIRECT |
+| DOC-016 | `docs/analysis/validation-model.md` | the three-layer validation architecture: what the schema owns, what the registries own, what the semantic validator owns, the nullability and timestamp contracts, the X/TS/RG rule sets, the error model and the run-ledger contract | the canonical owner of the validation model (brief 11 sections 218-243) | DIRECT | DIRECT |
+| DOC-017 | `docs/analysis/validation-runs.json` | the append-only ledger of verification runs: per run the mode, the revision, the input digests (document, schema, registries, validator), the phase states, every error with its code and phase, and the tree digest before and after | evidence that verification was recorded and that it modified nothing (section 241, EVV-008) | DIRECT | DIRECT |
+
+## Absence procedures
+
+An `ABSENT` finding is a claim about an inspection, so each one names the
+procedure that justifies it. The normative record cannot carry these fields (the
+schema of brief 10 section 209 is closed), so the procedures are maintained here
+and `tools/validate-analysis.mjs` resolves the claim → procedure link from this
+table: an `ABSENT` claim without a row below fails the pipeline.
+
+| Procedure | Claim | Inspected scope | Probe | Result |
+| --- | --- | --- | --- | --- |
+| `AV-001` | `CLAIM-029` | declared scope: the whole artifact and all documentation at cc8df73 | tools/verify.mjs symbol scan; manual search for spectrum/tuner/demodulator/FEC/TS/PSI-SI terms | no match: the artifact and documentation contain no DVB/RF implementation |
+| `AV-002` | `CLAIM-030` | declared scope: the whole artifact | tools/verify.mjs symbol scan for capability/work-item/evidence-graph/lease/coverage/fencing symbols | no match; the only occurrences are in the design documents, which are labelled PLANNED |
+| `AV-003` | `CLAIM-031` | declared scope: acquisition and scheduler code paths | tools/verify.mjs structural checks; CODE-009, CODE-013, CODE-015 | no such object exists; termination is an empty eligible set |
+| `AV-004` | `CLAIM-032` | declared scope: candidate model and every discover() call site | CODE-003 (identityKey is type:target), CODE-027 | every target is a URL; no non-URL target path exists |
+| `AV-005` | `CLAIM-033` | declared scope: the repository tree at the resolved revision cc8df73 | access contract in the evidence register; git tree listing at cc8df73 | no test directory, CI configuration or build tooling existed at the resolved revision |
+| `AV-006` | `CLAIM-017` | declared scope: the whole artifact and the documentation tree | grep for evidence-graph, interpretation, conflict-resolution and corroboration constructs | no such object exists; observations and discoveries are stored without an evidence layer |
+| `AV-007` | `CLAIM-024` | declared scope: persistence code paths | CODE-025, SCOPE-002, tools/verify.mjs round-trip check | no transaction, journal or crash-recovery mechanism exists |
+
+Negative evidence is recorded as an **evidence object** like every other row:
+`path` names the inspected artifact and `locator` names the probe
+(`{"type": "SYMBOL", "value": "no DVB/RF symbols …"}`), because what was
+inspected is the evidence and the method is the procedure above.
+
+## Register — negative evidence
+
+Absence is recorded only where the inspection scope justifies it. The
+implementation is a **single 4,290-line file** that was read in full and scanned
+mechanically, so absence claims inside it are `ABSENT`; absence claims
+about artifacts that do not exist in the repository are `NOT_FOUND`.
+
+| ID | Claim | Method | Evidence state | Evidence |
+| --- | --- | --- | --- | --- |
+| SCOPE-001 | No DVB/RF implementation (spectrum, tuner, demodulator, FEC, transport stream, PSI/SI) | full read + symbol scan (`tools/verify.mjs`) | **ABSENT** | TEST-003, CODE-001, CODE-002 |
+| SCOPE-002 | No v0.8+ design layer is implemented (capabilities, work items, evidence graph, leases, coverage, fencing) | symbol scan over the whole artifact | **ABSENT** | TEST-003, DOC-006 |
+| SCOPE-003 | Acquisition transport is HTTP-only | provider/transport interfaces inspected; only `GM_xmlhttpRequest` and `fetch` appear | **ABSENT** | CODE-013, CODE-015 |
+| SCOPE-004 | No cross-context claim or lease mechanism | ownership state is per-engine-instance (`KnowledgeBase.claimed`, candidate status) | **ABSENT** | CODE-009, CODE-025, DOC-005 |
+| SCOPE-005 | No tests, CI configuration or build tooling existed in the repository | tree inspection at the resolved commit | **ABSENT** | access contract above |
+| SCOPE-006 | No coverage, absence or completeness object exists | no such symbol; termination is an empty eligible set | **ABSENT** | CODE-009, DOC-010 |
+| SCOPE-007 | No non-URL candidate target is implemented | every `discover()` call passes a URL; target type list is URL-oriented | **ABSENT** | CODE-003, CODE-027 |
+
+### Openings that were not pursued (scope exclusions)
+
+These are not findings about the prototype. They are the boundaries of this
+inspection, recorded so that an unverified area is never mistaken for a verified
+one (brief 4 scope escalation: request, do not assume).
+
+| ID | Opening | Why it would be required | Proposed expansion | Authorization | Disposition |
+| --- | --- | --- | --- | --- | --- |
+| SCOPE-GAP-1 | end-to-end `HtmlProvider` behaviour under a real DOM | the headless shim stubs `DOMParser`, so HTML extraction is verified by matching rules and by code, not by execution | run the artifact in a browser or a DOM implementation | required | **OPEN** |
+| SCOPE-GAP-2 | real userscript-manager semantics (redirects, CORS, grants, storage quotas, cross-tab storage) | these decide whether the persistence and scope claims hold outside the shim | manual test protocol in Tampermonkey/Violentmonkey | required | **OPEN** |
+
+## Register — claim relationships (contradictions)
+
+A contradiction is a relationship between claims, not an `evidence_level`. Brief 10
+closed the machine record, so the canonical map lives here and the affected claims
+name their counterparts in prose; `tools/validate-analysis.mjs` reads this table and
+fails when a `CONTRADICTED` claim has no row, or a row names a claim that does not
+exist.
+
+| ID | Claim A | Claim B | Relationship | Evidence | Note |
+| --- | --- | --- | --- | --- | --- |
+| `CONTRA-001` | `CLAIM-005` | `CLAIM-040` | conflict | CODE-008, CODE-021, TEST-009, TEST-011 | implementation supports `CLAIM-040`; defect D1 |
+| `CONTRA-002` | `CLAIM-008` | `CLAIM-040` | conflict | CODE-018, TEST-010 | implementation supports `CLAIM-040`; defect D2 |
+| `CONTRA-003` | `CLAIM-007` | `CLAIM-040` | conflict | CODE-009, CODE-010 | implementation supports `CLAIM-040`; defect D3 |
+| `CONTRA-004` | `CLAIM-020` | `CLAIM-040` | conflict | CODE-013, CODE-015, SCOPE-003 | implementation supports `CLAIM-040` |
+| `CONTRA-005` | `CLAIM-022` | `CLAIM-040` | conflict | CODE-016, CODE-021, TEST-012 | implementation supports `CLAIM-040`; defect D9 |
+| `CONTRA-006` | `CLAIM-015` | `CLAIM-040` | conflict | CODE-022, CODE-023 | implementation supports `CLAIM-040`; defect D8 |
+| `CONTRA-007` | `CLAIM-026` | `CLAIM-040` | conflict | CODE-009, SCOPE-004 | implementation supports `CLAIM-040` |
+| `CONTRA-008` | `CLAIM-009` | `CLAIM-040` | conflict | CODE-018, CODE-029 | implementation supports `CLAIM-040`; defect D5 |
+| `CONTRA-009` | `CLAIM-012` | `CLAIM-040` | conflict | CODE-018, CODE-010 | implementation supports `CLAIM-040`; cancellation exists in the DESIGNED v0.10 only |
+| CONC-001 | `CLAIM-004` | — | supported | CODE-009, TEST-001 | the claim operation itself is atomic |
+| PROV-001 | `CLAIM-018` | — | supported | CODE-005, TEST-007 | derivation chain seed → candidate → observation → discovery |
+| ARCH-001 | `CLAIM-035` | — | partial | CODE-025, TEST-008 | "persistent state" holds without transactions, validation or in-flight reconciliation |
+| ARCH-002 | `CLAIM-038` | — | partial | CODE-015, SCOPE-003 | "protocol-independent providers" holds for recognition only |
+
+Rows without a `CONTRA-` id record support or partial support rather than
+contradiction; they are kept because they were established during the analysis and
+are cited from [repository-analysis-2026-09-10.md](repository-analysis-2026-09-10.md) §5.
+
+## Register — configuration
+
+| ID | Path | Locator | Fact supported | Evidence state | Source quality |
+| --- | --- | --- | --- | --- | --- |
+| CFG-001 | artifact | L49–L135 (`CONFIG` limits and policy switches) | budget, caps, depth, origin and adaptive settings | DIRECT | supported, no conflict |
+| CFG-002 | artifact | L134 (`STORAGE_KEY = 'generic-discovery-engine-v7'`) | persistence key and schema generation | DIRECT | supported, no conflict |
+
+## Multi-source evidence summary
+
+| Fact | Sources | Relationship |
+| --- | --- | --- |
+| Claiming is synchronous and precedes any `await` | CODE-009, CODE-018, TEST-001 | **CONFIRMED** |
+| Provider boundary is clean | CODE-014, CODE-015, TEST-002 | **CONFIRMED** |
+| The single-owner invariant is violated end to end | CODE-008, CODE-021, TEST-009, TEST-011 | **CORROBORATED** (static + dynamic) |
+| Content fingerprints are dead evidence | CODE-022, CODE-023 | **CONFIRMED** (static) |
+| Discovery records are not deduplicated | CODE-021, TEST-012 | **CORROBORATED** |
+| Persistence round-trips state and ledger | CODE-025, TEST-008 | **CONFIRMED** |
+| No DVB/RF implementation exists | SCOPE-001, TEST-003 | **ABSENT** |
+| Worker pool never refills | CODE-018, TEST-010 | **CORROBORATED** |
+| Adaptive concurrency has no live effect | CODE-018, CODE-029 | **CONFIRMED** (static) |
+| Retrospective documentation claims (pre-cleanup README) describe the system accurately | DOC-001 vs CODE-008, TEST-009 | **CONTRADICTED** — documentation evidence was overridden by direct implementation evidence, as required |
+
+## How to use this register
+
+1. Any claim added to `docs/` must cite at least one evidence ID from this file.
+2. A fact supported only by `INDIRECT` evidence cannot be given
+   `claim_kind: CURRENT` together with `claim_verification.result: VERIFIED`.
+3. `evidence_level` lives here; `claim_kind`, `implementation_state`,
+   `test_state` and `claim_verification.result` live in
+   [claims.md](claims.md)/[analysis.json](analysis.json). No field is ever
+   substituted for another.
+4. New evidence gets a new ID; IDs are never reused for unrelated evidence.
+5. `tools/verify.mjs` fails if a document cites an unknown ID, if a register row
+   points at a missing path, if the artifact digest changes, or if the canonical
+   status vocabulary is not used.
