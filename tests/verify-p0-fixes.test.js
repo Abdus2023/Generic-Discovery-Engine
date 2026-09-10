@@ -14,8 +14,8 @@ import path from 'node:path';
 describe('static patch presence (dist/generic-discovery-engine.user.js)', () => {
     const file = fs.readFileSync(path.join(import.meta.dirname, '../dist/generic-discovery-engine.user.js'), 'utf8');
 
-    it('version bumped to 0.7.2', () => {
-        assert.match(file, /@version\s+0\.7\.2/);
+    it('version bumped to 0.7.2+', () => {
+        assert.match(file, /@version\s+0\.7\.[23]/);
         assert.match(file, /version:\s*8/);
     });
     it('P0-1 liveCount fix present', () => {

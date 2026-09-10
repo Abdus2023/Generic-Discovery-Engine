@@ -1,6 +1,6 @@
 # Generic Discovery Engine
 
-> **Current release:** `v0.7.2` — verified patch (see [`VERIFICATION_REPORT.md`](VERIFICATION_REPORT.md), [`CHANGELOG.md`](CHANGELOG.md), [`dist/generic-discovery-engine.user.js`](dist/generic-discovery-engine.user.js)). `node --check` PASS · `npm test` 34/34 PASS · `v0.7.1` archived as `dist/generic-discovery-engine.v0.7.1.user.js`.
+> **Current release:** `v0.7.3` — coverage frontier + E2E verified (see [`VERIFICATION_REPORT.md`](VERIFICATION_REPORT.md), [`VERIFICATION_SUPPLEMENT_v0.7.2.md`](VERIFICATION_SUPPLEMENT_v0.7.2.md), [`CHANGELOG.md`](CHANGELOG.md), [`dist/generic-discovery-engine.user.js`](dist/generic-discovery-engine.user.js)). `node --check` PASS · `npm test` 40/40 PASS (incl. 6-test E2E) · `v0.7.1` archived as `dist/generic-discovery-engine.v0.7.1.user.js` · new: [`docs/SECURITY_AUDIT.md`](docs/SECURITY_AUDIT.md), [`docs/PERFORMANCE_ANALYSIS.md`](docs/PERFORMANCE_ANALYSIS.md), E2E harness `tests/e2e-discovery-loop.test.js`.
  
 A browser-based discovery engine inspired by the architecture of **DVB blind scanning**.
  
@@ -53,13 +53,13 @@ It can:
  
 
  
-Current response providers (v0.7.2 — 7 providers, ordered pipeline):
+Current response providers (v0.7.3 — 7 providers, ordered pipeline):
  `HTTP Response      │      ├── HTML Provider (links, scripts, stylesheets, frames, media, forms, meta, embedded URLs)      │      ├── JSON Provider (recursive URL-like string walk)      │      ├── XML Provider (sitemap <loc> via DOMParser + regex fallback)      │      ├── CSS Provider (url() extraction)      │      ├── JavaScript Provider (regex URL extraction)      │      ├── Binary Provider (observed-only: image/audio/video/pdf/zip)      │      └── Text Provider (fallback HTTP(S) URL regex) `  
-## Architecture (v0.7.2 — control-plane layered)
+## Architecture (v0.7.3 — control-plane layered, coverage observable)
 
  `                     ┌─────────────────────┐                      │   Discovery Engine  │                      └──────────┬──────────┘                                 │                      ┌──────────▼──────────┐                      │      Scheduler      │                      └──────────┬──────────┘                                 │                      ┌──────────▼──────────┐                      │      Candidate      │  (type, target, depth, priority, hints, alternate*)                      └──────────┬──────────┘                                 │                      ┌──────────▼──────────┐                      │  AcquisitionPolicy│  (method, depth, type, binary, origin guards)                      └──────────┬──────────┘                                 │                      ┌──────────▼──────────┐                      │  AcquisitionPlan  │  (allowed + reason, replayable)                      └──────────┬──────────┘                                 │                      ┌──────────▼──────────┐                      │   OriginController│  (per-origin throttle 2 concurrent, 150ms)                      └──────────┬──────────┘                                 │                      ┌──────────▼──────────┐                      │    Acquisition    │  (GM_xhr + fetch fallback, 2M truncate)                      └──────────┬──────────┘                                 │                      ┌──────────▼──────────┐                      │     Observation   │  (status, http, fingerprint fnv1a32)                      └──────────┬──────────┘                                 │                      ┌──────────▼──────────┐                      │  Provider Registry│  (ordered matching → recognition)                      └──────────┬──────────┘                                 │           ┌─────────┼──────────┬──────────┼──────────┐                  ▼         ▼         ▼          ▼          ▼          ▼              HTML      JSON      XML        CSS       JS      Binary      Text                  │         │         │          │          │          │          │                  └─────────┴─────────┴──────────┴──────────┴──────────┴──────────┘                                 ▼                          ┌─────────────┐                          │  Discovery  │  (kind, confidence, mechanism, provenance)                          └──────┬──────┘                                 │                          New Candidates (depth+1, provenance→graphEdges)                                 │                                 └──────────► Scheduler                                 │                                  └────► ResourceRecord / DecisionLedger / Knowledge Graph`
 
-> **v0.7.2 delta:** `AcquisitionPolicy → AcquisitionPlan → OriginController` layered before acquisition; `DecisionLedger` (12 typed events, replayable) and `ResourceRecord`/`fingerprintIndex`/`graphEdges` added for explainability. Provider count 3 → 7. See `VERIFICATION_REPORT.md` §2.2 and `CHANGELOG.md`.  
+> **v0.7.3 delta:** `getCoverageMetrics()` + `updateUI` frontier + `exportData.coverage` (frontierSize/queuedByType/liveCount/requestsRemaining). **v0.7.2 delta:** `AcquisitionPolicy → AcquisitionPlan → OriginController` layered before acquisition; `DecisionLedger` (12 typed events, replayable) and `ResourceRecord`/`fingerprintIndex`/`graphEdges` added for explainability. Provider count 3 → 7. See `VERIFICATION_REPORT.md` §2.2 and `CHANGELOG.md`.  
 ## Candidate Lifecycle
  
 Candidates move through explicit ownership states:
@@ -300,7 +300,7 @@ Protocol-specific knowledge belongs in providers/adapters.
  
 ### Phase 1 — Discovery Core
  
-> **Status in v0.7.2:** 5/9 shipped, verified; remaining items noted as P1. See `VERIFICATION_REPORT.md` §8 and `CHANGELOG.md`.
+> **Status in v0.7.3:** 5/9 shipped, verified; remaining items noted as P1. See `VERIFICATION_REPORT.md` §8 and `CHANGELOG.md`. P2-3 (coverage metrics) shipped in 0.7.3.
  
 - [x] formal provider interface (`Provider` base class + `ProviderRegistry` + 7 providers, ordered pipeline)
  
@@ -346,7 +346,7 @@ Protocol-specific knowledge belongs in providers/adapters.
  
 ### Phase 3 — Adaptive Search
  `Blind discovery       ↓ Observation       ↓ Inference       ↓ Candidate ranking       ↓ Guided discovery       ↓ New observations ` 
-Status in v0.7.2 — partial:
+Status in v0.7.3 — partial:
  
 - [x] adaptive priority (`effectivePriority = priority + typeWeight*0.20 + confidence*0.08 − depth*0.045 − attempts*0.05` + typePriority map + adaptive concurrency on success/failure thresholds)
  

@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Generic Discovery Engine
 // @namespace    generic-discovery
-// @version      0.7.2
+// @version      0.7.3
 // @description  Generic web-resource discovery engine inspired by the architecture of DVB blind scanning.
 // @match        *://*/*
 // @run-at       document-start
@@ -18,6 +18,14 @@
     /*
      * ============================================================
      * Generic Discovery Engine
+     * v0.7.3 — Coverage Frontier + E2E Verified (P0/P1/P2-3)
+     *
+     * Patch notes vs v0.7.2:
+     * - P2-3: getCoverageMetrics() + UI + export coverage (frontierSize,
+     *         queuedByType, liveCount, visitedSize, knownResources,
+     *         requestsRemaining, ledgerSize, graphEdges, observations)
+     *         makes budget/frontier observable without extra traversal
+     *
      * v0.7.2 — Verified Patch (P0 fixes)
      *
      * Patch notes vs v0.7.1:
@@ -4972,6 +4980,60 @@
          * --------------------------------------------------------
          */
 
+        // P2-3: coverage/budget frontier metrics (added v0.7.3)
+        getCoverageMetrics() {
+            const all = [
+                ...this.db.candidates.values()
+            ];
+            const queued =
+                all.filter(
+                    c =>
+                        c.status ===
+                        'queued'
+                );
+            const queuedByType = {};
+            for (const c of queued) {
+                queuedByType[c.type] =
+                    (queuedByType[c.type] ||
+                        0) + 1;
+            }
+            const live = all.filter(
+                c =>
+                    ![
+                        'completed',
+                        'skipped'
+                    ].includes(
+                        c.status
+                    )
+            ).length;
+            return {
+                frontierSize:
+                    queued.length,
+                queuedByType,
+                liveCount: live,
+                visitedSize:
+                    this.db.visited.size,
+                knownResources:
+                    this.db.resources.size,
+                totalCandidates:
+                    all.length,
+                requestsUsed:
+                    this.requestsReserved,
+                requestsRemaining:
+                    Math.max(
+                        0,
+                        CONFIG.maxRequests -
+                            this.requestsReserved
+                    ),
+                ledgerSize:
+                    this.ledger.events.length,
+                graphEdges:
+                    this.db.graphEdges.length,
+                observations:
+                    this.db.observations.size
+            };
+        }
+
         exportData() {
             return {
                 schema: 'gde-export-v8.0',
@@ -4982,6 +5044,9 @@
                 config: {
                     ...CONFIG
                 },
+
+                coverage:
+                    this.getCoverageMetrics(),
 
                 engine:
                     this.db.serialize(),
@@ -5192,6 +5257,8 @@
 
             const s =
                 this.db.stats;
+            const cov =
+                this.getCoverageMetrics();
 
             this.ui.stats.textContent =
                 [
@@ -5205,25 +5272,19 @@
                                     ? 'running'
                                     : 'idle'
                     }`,
-                    `candidates=${this.db.candidates.size}`,
-                    `queued=${
-                        [...this.db.candidates.values()]
-                            .filter(
-                                c =>
-                                    c.status ===
-                                    'queued'
-                            ).length
-                    }`,
+                    `candidates=${this.db.candidates.size} (live ${cov.liveCount})`,
+                    `queued=${cov.frontierSize} ${JSON.stringify(cov.queuedByType)}`,
                     `active=${this.activeWorkers}`,
-                    `requests=${this.requestsReserved}/${CONFIG.maxRequests}`,
+                    `requests=${this.requestsReserved}/${CONFIG.maxRequests} (remain ${cov.requestsRemaining})`,
                     `concurrency=${this.currentConcurrency}`,
+                    `visited=${cov.visitedSize} resources=${cov.knownResources}`,
                     `acquired=${s.acquired}`,
                     `recognized=${s.recognized}`,
                     `expanded=${s.expanded}`,
                     `completed=${s.completed}`,
                     `skipped=${s.skipped}`,
                     `failed=${s.failed}`,
-                    `ledger=${this.ledger.events.length}`
+                    `ledger=${this.ledger.events.length} edges=${cov.graphEdges} obs=${cov.observations}`
                 ].join('\n');
         }
     }
