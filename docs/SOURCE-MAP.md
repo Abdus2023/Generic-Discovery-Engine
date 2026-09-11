@@ -11,6 +11,8 @@ Identifiers are stable and assigned in document order:
 
 Line numbers refer to the original documents as committed before the split. The archived copies carry an 11-line `ARCHIVED SOURCE DOCUMENT` header, so add 11 to map these numbers onto [`archive/`](../archive/).
 
+The same information, plus heading paths and content hashes, is available in machine-readable form in [`SPLIT-MANIFEST.yaml`](SPLIT-MANIFEST.yaml), which is the source of truth for the generated tree.
+
 ## Accounting
 
 | Metric | Count |

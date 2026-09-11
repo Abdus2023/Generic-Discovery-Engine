@@ -239,6 +239,7 @@ Suggestions for the subsequent architecture-verification phase. **None of these 
 ## Related Documents
 
 - [Source Map](SOURCE-MAP.md)
+- [Split Manifest](SPLIT-MANIFEST.yaml)
 - [Documentation index](README.md)
 - [Prototype Overview](prototype/overview.md)
 - [Architecture Overview](architecture/overview.md)

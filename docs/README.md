@@ -90,7 +90,8 @@ Both source documents are retained verbatim under [`archive/`](../archive/) and 
 
 ## Traceability
 
-- [Source Map](SOURCE-MAP.md) — 1,244 identified sections
+- [Source Map](SOURCE-MAP.md) — 1,244 identified sections with destination, action, status and anchors
+- [Split Manifest](SPLIT-MANIFEST.yaml) — machine-readable source of truth: one record per section with heading path and content hash, the allocation list, and the conceptual diff
 - [Review Notes](REVIEW-NOTES.md) — contradictions `C-01`…`C-11`, defects `D-01`…`D-05`
 - [Archived source documents](../archive/)
 

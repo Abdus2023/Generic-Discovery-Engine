@@ -403,6 +403,7 @@ The two original planning documents have been mechanically split into a structur
 docs/
 ├── README.md               documentation index
 ├── SOURCE-MAP.md           traceability map: every source section has an id
+├── SPLIT-MANIFEST.yaml     machine-readable source of truth (records, hashes, diff)
 ├── REVIEW-NOTES.md         contradictions, defects and unverified claims
 ├── concepts/               concept overview, generic discovery, discovery loop
 ├── architecture/           system model, data models, models derived from DVB,
@@ -421,6 +422,8 @@ Every extracted section is identified as `USP-nnn`
 (`Continue Architecture Planning.md`) and listed with its destination, action and
 status in [`docs/SOURCE-MAP.md`](docs/SOURCE-MAP.md). Each section in the tree
 carries a `> **Source sections:**` attribution line pointing back to those ids.
+[`docs/SPLIT-MANIFEST.yaml`](docs/SPLIT-MANIFEST.yaml) is the machine-readable
+source of truth for the same mapping.
  
 Start at [`docs/README.md`](docs/README.md).
  
