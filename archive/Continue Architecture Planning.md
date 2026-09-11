@@ -1,4 +1,15 @@
-﻿**You:**
+﻿> **ARCHIVED SOURCE DOCUMENT**
+>
+> This document has been mechanically split into the structured
+> documentation tree. It is retained for provenance and historical
+> traceability.
+>
+> See [`docs/README.md`](../docs/README.md) and
+> [`docs/SOURCE-MAP.md`](../docs/SOURCE-MAP.md).
+
+---
+
+**You:**
 
 // ==UserScript== // @name         Generic Discovery Engine // @namespace    generic-discovery // @version      0.1.0 // @description  A DVB-blind-scan-inspired discovery engine for browser userscripts. // @match        *://*/* // @grant        GM_getValue // @grant        GM_setValue // @grant        GM_xmlhttpRequest // @connect      * // ==/UserScript==
  
