@@ -139,7 +139,7 @@ That prevents transient reception problems from being interpreted as network cha
 
 > **Source sections:** `CAP-367`
 >
-> [DOCUMENTATION REVIEW] Contradiction **C-04** ([Review Notes](../REVIEW-NOTES.md#c-04--))
+> [DOCUMENTATION REVIEW] Contradiction **C-04** ([Review Notes](../REVIEW-NOTES.md#c-04--resource-identity-canonical-url-versus-identity-resolution))
 
 The central problem will be:
 
@@ -170,7 +170,7 @@ That is where canonical URLs, redirects, content fingerprints, aliases, mirrors,
 
 > **Source sections:** `CAP-369`
 >
-> [DOCUMENTATION REVIEW] Contradiction **C-04** ([Review Notes](../REVIEW-NOTES.md#c-04--))
+> [DOCUMENTATION REVIEW] Contradiction **C-04** ([Review Notes](../REVIEW-NOTES.md#c-04--resource-identity-canonical-url-versus-identity-resolution))
 
 v0.16 established the provenance chain:
 
@@ -264,7 +264,7 @@ is strong evidence of an alias relationship, but even a redirect should not caus
 
 > **Source sections:** `CAP-371`
 >
-> [DOCUMENTATION REVIEW] Contradiction **C-04** ([Review Notes](../REVIEW-NOTES.md#c-04--))
+> [DOCUMENTATION REVIEW] Contradiction **C-04** ([Review Notes](../REVIEW-NOTES.md#c-04--resource-identity-canonical-url-versus-identity-resolution))
 
 Instead of:
 
@@ -374,7 +374,7 @@ one Resource
 
 > **Source sections:** `CAP-376`
 >
-> [DOCUMENTATION REVIEW] Contradiction **C-04** ([Review Notes](../REVIEW-NOTES.md#c-04--))
+> [DOCUMENTATION REVIEW] Contradiction **C-04** ([Review Notes](../REVIEW-NOTES.md#c-04--resource-identity-canonical-url-versus-identity-resolution))
 
 Canonicalization is useful:
 
@@ -658,7 +658,7 @@ because the acquisition history disappears if we overwrite the request.
 
 > **Source sections:** `CAP-382`
 >
-> [DOCUMENTATION REVIEW] Contradiction **C-07** ([Review Notes](../REVIEW-NOTES.md#c-07--))
+> [DOCUMENTATION REVIEW] Contradiction **C-07** ([Review Notes](../REVIEW-NOTES.md#c-07--resource--artifact-model-revised))
 
 Now integrate v0.16 fingerprint evidence.
 
@@ -748,7 +748,7 @@ same fingerprint
 
 > **Source sections:** `CAP-384`
 >
-> [DOCUMENTATION REVIEW] Contradiction **C-04** ([Review Notes](../REVIEW-NOTES.md#c-04--))
+> [DOCUMENTATION REVIEW] Contradiction **C-04** ([Review Notes](../REVIEW-NOTES.md#c-04--resource-identity-canonical-url-versus-identity-resolution))
 
 HTTP introduces another complication.
 
@@ -837,9 +837,9 @@ Unresolved
 
 > **Source sections:** `CAP-387`
 >
-> [DOCUMENTATION REVIEW] Contradiction **C-04** ([Review Notes](../REVIEW-NOTES.md#c-04--))
+> [DOCUMENTATION REVIEW] Contradiction **C-04** ([Review Notes](../REVIEW-NOTES.md#c-04--resource-identity-canonical-url-versus-identity-resolution))
 >
-> [DOCUMENTATION REVIEW] Contradiction **C-06** ([Review Notes](../REVIEW-NOTES.md#c-06--))
+> [DOCUMENTATION REVIEW] Contradiction **C-06** ([Review Notes](../REVIEW-NOTES.md#c-06--confidence-one-score-versus-no-single-global-score))
 
 Instead of:
 
@@ -870,7 +870,7 @@ This avoids one global confidence number pretending to summarize everything.
 
 > **Source sections:** `CAP-388`
 >
-> [DOCUMENTATION REVIEW] Contradiction **C-04** ([Review Notes](../REVIEW-NOTES.md#c-04--))
+> [DOCUMENTATION REVIEW] Contradiction **C-04** ([Review Notes](../REVIEW-NOTES.md#c-04--resource-identity-canonical-url-versus-identity-resolution))
 
 A useful initial classification:
 
@@ -1048,7 +1048,7 @@ session
 
 > **Source sections:** `CAP-392`
 >
-> [DOCUMENTATION REVIEW] Contradiction **C-04** ([Review Notes](../REVIEW-NOTES.md#c-04--))
+> [DOCUMENTATION REVIEW] Contradiction **C-04** ([Review Notes](../REVIEW-NOTES.md#c-04--resource-identity-canonical-url-versus-identity-resolution))
 
 The full process:
 
@@ -1092,7 +1092,7 @@ The full process:
 
 > **Source sections:** `CAP-393`
 >
-> [DOCUMENTATION REVIEW] Contradiction **C-04** ([Review Notes](../REVIEW-NOTES.md#c-04--))
+> [DOCUMENTATION REVIEW] Contradiction **C-04** ([Review Notes](../REVIEW-NOTES.md#c-04--resource-identity-canonical-url-versus-identity-resolution))
 
 None of this means canonicalization becomes unnecessary.
 
@@ -1145,7 +1145,7 @@ stripEverythingWeDon'tUnderstand
 
 > **Source sections:** `CAP-395`
 >
-> [DOCUMENTATION REVIEW] Contradiction **C-04** ([Review Notes](../REVIEW-NOTES.md#c-04--))
+> [DOCUMENTATION REVIEW] Contradiction **C-04** ([Review Notes](../REVIEW-NOTES.md#c-04--resource-identity-canonical-url-versus-identity-resolution))
 
 Suppose initially:
 
@@ -1190,7 +1190,7 @@ The graph should accumulate evidence rather than repeatedly rewriting identity.
 
 > **Source sections:** `CAP-396`
 >
-> [DOCUMENTATION REVIEW] Contradiction **C-07** ([Review Notes](../REVIEW-NOTES.md#c-07--))
+> [DOCUMENTATION REVIEW] Contradiction **C-07** ([Review Notes](../REVIEW-NOTES.md#c-07--resource--artifact-model-revised))
 
 Now the earlier revision problem becomes explicit.
 
@@ -1234,7 +1234,7 @@ is the safer default.
 
 > **Source sections:** `CAP-397`
 >
-> [DOCUMENTATION REVIEW] Contradiction **C-07** ([Review Notes](../REVIEW-NOTES.md#c-07--))
+> [DOCUMENTATION REVIEW] Contradiction **C-07** ([Review Notes](../REVIEW-NOTES.md#c-07--resource--artifact-model-revised))
 
 We can later introduce:
 
@@ -1268,7 +1268,7 @@ For v0.17, this can remain conceptual or be represented directly through graph e
 
 > **Source sections:** `CAP-398`
 >
-> [DOCUMENTATION REVIEW] Contradiction **C-10** ([Review Notes](../REVIEW-NOTES.md#c-10--))
+> [DOCUMENTATION REVIEW] Contradiction **C-10** ([Review Notes](../REVIEW-NOTES.md#c-10--knowledge-store-naming))
 
 The KnowledgeBase remains the system's storage facade.
 
@@ -1427,7 +1427,7 @@ previously recorded provenance.
 
 > **Source sections:** `CAP-411`
 >
-> [DOCUMENTATION REVIEW] Contradiction **C-07** ([Review Notes](../REVIEW-NOTES.md#c-07--))
+> [DOCUMENTATION REVIEW] Contradiction **C-07** ([Review Notes](../REVIEW-NOTES.md#c-07--resource--artifact-model-revised))
 
 ```
 Content equality does not automatically imply
@@ -1449,7 +1449,7 @@ locator replacement.
 
 > **Source sections:** `CAP-414`
 >
-> [DOCUMENTATION REVIEW] Contradiction **C-07** ([Review Notes](../REVIEW-NOTES.md#c-07--))
+> [DOCUMENTATION REVIEW] Contradiction **C-07** ([Review Notes](../REVIEW-NOTES.md#c-07--resource--artifact-model-revised))
 
 ```
 Different observations of the same locator remain
@@ -1461,7 +1461,7 @@ historically distinct.
 
 > **Source sections:** `CAP-415`
 >
-> [DOCUMENTATION REVIEW] Contradiction **C-04** ([Review Notes](../REVIEW-NOTES.md#c-04--))
+> [DOCUMENTATION REVIEW] Contradiction **C-04** ([Review Notes](../REVIEW-NOTES.md#c-04--resource-identity-canonical-url-versus-identity-resolution))
 
 ```
 Identity convergence caused by normalization
@@ -1523,7 +1523,7 @@ instead of treating all of them as variants of “a URL.”
 
 > **Source sections:** `CAP-457`
 >
-> [DOCUMENTATION REVIEW] Contradiction **C-07** ([Review Notes](../REVIEW-NOTES.md#c-07--))
+> [DOCUMENTATION REVIEW] Contradiction **C-07** ([Review Notes](../REVIEW-NOTES.md#c-07--resource--artifact-model-revised))
 
 The next boundary follows naturally.
 
@@ -1594,7 +1594,7 @@ That will be the point where the Generic Discovery Engine starts becoming a genu
 
 > **Source sections:** `CAP-459`
 >
-> [DOCUMENTATION REVIEW] Contradiction **C-07** ([Review Notes](../REVIEW-NOTES.md#c-07--))
+> [DOCUMENTATION REVIEW] Contradiction **C-07** ([Review Notes](../REVIEW-NOTES.md#c-07--resource--artifact-model-revised))
 
 At v0.18 we separated **resource identity** from **resource classification**.
 
@@ -1679,7 +1679,7 @@ JSON metadata
 
 > **Source sections:** `CAP-463`
 >
-> [DOCUMENTATION REVIEW] Contradiction **C-07** ([Review Notes](../REVIEW-NOTES.md#c-07--))
+> [DOCUMENTATION REVIEW] Contradiction **C-07** ([Review Notes](../REVIEW-NOTES.md#c-07--resource--artifact-model-revised))
 
 A concrete byte sequence.
 
@@ -1693,7 +1693,7 @@ size = 18,421,991
 
 > **Source sections:** `CAP-465`
 >
-> [DOCUMENTATION REVIEW] Contradiction **C-07** ([Review Notes](../REVIEW-NOTES.md#c-07--))
+> [DOCUMENTATION REVIEW] Contradiction **C-07** ([Review Notes](../REVIEW-NOTES.md#c-07--resource--artifact-model-revised))
 
 A tempting model is:
 
@@ -1868,7 +1868,7 @@ class ResourceRevision {
 
 > **Source sections:** `CAP-467`
 >
-> [DOCUMENTATION REVIEW] Contradiction **C-04** ([Review Notes](../REVIEW-NOTES.md#c-04--))
+> [DOCUMENTATION REVIEW] Contradiction **C-04** ([Review Notes](../REVIEW-NOTES.md#c-04--resource-identity-canonical-url-versus-identity-resolution))
 
 We now have:
 
@@ -2005,9 +2005,9 @@ This is safer than pretending all representations are identical.
 
 > **Source sections:** `CAP-470`
 >
-> [DOCUMENTATION REVIEW] Contradiction **C-04** ([Review Notes](../REVIEW-NOTES.md#c-04--))
+> [DOCUMENTATION REVIEW] Contradiction **C-04** ([Review Notes](../REVIEW-NOTES.md#c-04--resource-identity-canonical-url-versus-identity-resolution))
 >
-> [DOCUMENTATION REVIEW] Contradiction **C-07** ([Review Notes](../REVIEW-NOTES.md#c-07--))
+> [DOCUMENTATION REVIEW] Contradiction **C-07** ([Review Notes](../REVIEW-NOTES.md#c-07--resource--artifact-model-revised))
 
 Artifact identity should be byte-oriented.
 
@@ -2108,7 +2108,7 @@ because identical bytes can legitimately represent different logical entities.
 
 > **Source sections:** `CAP-472`
 >
-> [DOCUMENTATION REVIEW] Contradiction **C-07** ([Review Notes](../REVIEW-NOTES.md#c-07--))
+> [DOCUMENTATION REVIEW] Contradiction **C-07** ([Review Notes](../REVIEW-NOTES.md#c-07--resource--artifact-model-revised))
 
 Now we can model change properly.
 
@@ -2155,7 +2155,7 @@ without changing resource identity.
 
 > **Source sections:** `CAP-473`
 >
-> [DOCUMENTATION REVIEW] Contradiction **C-07** ([Review Notes](../REVIEW-NOTES.md#c-07--))
+> [DOCUMENTATION REVIEW] Contradiction **C-07** ([Review Notes](../REVIEW-NOTES.md#c-07--resource--artifact-model-revised))
 
 This is an important edge case.
 
@@ -2211,7 +2211,7 @@ Initially, the engine should only claim the first.
 
 > **Source sections:** `CAP-474`
 >
-> [DOCUMENTATION REVIEW] Contradiction **C-07** ([Review Notes](../REVIEW-NOTES.md#c-07--))
+> [DOCUMENTATION REVIEW] Contradiction **C-07** ([Review Notes](../REVIEW-NOTES.md#c-07--resource--artifact-model-revised))
 
 A revision record should therefore contain evidence:
 
@@ -2299,7 +2299,7 @@ But these remain **signals**, not identity.
 
 > **Source sections:** `CAP-478`
 >
-> [DOCUMENTATION REVIEW] Contradiction **C-07** ([Review Notes](../REVIEW-NOTES.md#c-07--))
+> [DOCUMENTATION REVIEW] Contradiction **C-07** ([Review Notes](../REVIEW-NOTES.md#c-07--resource--artifact-model-revised))
 
 Do not combine them.
 
@@ -2350,7 +2350,7 @@ archived
 
 > **Source sections:** `CAP-480`
 >
-> [DOCUMENTATION REVIEW] Contradiction **C-07** ([Review Notes](../REVIEW-NOTES.md#c-07--))
+> [DOCUMENTATION REVIEW] Contradiction **C-07** ([Review Notes](../REVIEW-NOTES.md#c-07--resource--artifact-model-revised))
 
 ```
 observed
@@ -2475,7 +2475,7 @@ class ResourceGraph {
 
 > **Source sections:** `CAP-484`
 >
-> [DOCUMENTATION REVIEW] Contradiction **C-07** ([Review Notes](../REVIEW-NOTES.md#c-07--))
+> [DOCUMENTATION REVIEW] Contradiction **C-07** ([Review Notes](../REVIEW-NOTES.md#c-07--resource--artifact-model-revised))
 
 This also fixes an earlier limitation.
 
@@ -2505,7 +2505,7 @@ same locator identity
 
 > **Source sections:** `CAP-486`
 >
-> [DOCUMENTATION REVIEW] Contradiction **C-07** ([Review Notes](../REVIEW-NOTES.md#c-07--))
+> [DOCUMENTATION REVIEW] Contradiction **C-07** ([Review Notes](../REVIEW-NOTES.md#c-07--resource--artifact-model-revised))
 
 ```
 same cryptographic digest
@@ -2653,7 +2653,7 @@ The graph should preserve provenance so independence can later be reasoned about
 
 > **Source sections:** `CAP-490`
 >
-> [DOCUMENTATION REVIEW] Contradiction **C-06** ([Review Notes](../REVIEW-NOTES.md#c-06--))
+> [DOCUMENTATION REVIEW] Contradiction **C-06** ([Review Notes](../REVIEW-NOTES.md#c-06--confidence-one-score-versus-no-single-global-score))
 
 This suggests another important separation.
 
@@ -2727,7 +2727,7 @@ Resource R1
 
 > **Source sections:** `CAP-495`
 >
-> [DOCUMENTATION REVIEW] Contradiction **C-07** ([Review Notes](../REVIEW-NOTES.md#c-07--))
+> [DOCUMENTATION REVIEW] Contradiction **C-07** ([Review Notes](../REVIEW-NOTES.md#c-07--resource--artifact-model-revised))
 
 ```
 Artifact A1
@@ -2760,7 +2760,7 @@ confidence = 0.93
 
 > **Source sections:** `CAP-498`
 >
-> [DOCUMENTATION REVIEW] Contradiction **C-07** ([Review Notes](../REVIEW-NOTES.md#c-07--))
+> [DOCUMENTATION REVIEW] Contradiction **C-07** ([Review Notes](../REVIEW-NOTES.md#c-07--resource--artifact-model-revised))
 
 ```
 Revision V1

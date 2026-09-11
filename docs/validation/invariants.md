@@ -259,7 +259,7 @@ Discovery does not imply acquisition.
 
 > **Source sections:** `CAP-098`
 >
-> [DOCUMENTATION REVIEW] Contradiction **C-11** ([Review Notes](../REVIEW-NOTES.md#c-11--))
+> [DOCUMENTATION REVIEW] Contradiction **C-11** ([Review Notes](../REVIEW-NOTES.md#c-11--same-origin-default-versus-cross-origin-capability))
 
 ```
 Provider availability does not imply authorization.
@@ -316,7 +316,7 @@ Recognition failure
 
 > **Source sections:** `CAP-103`
 >
-> [DOCUMENTATION REVIEW] Contradiction **C-08** ([Review Notes](../REVIEW-NOTES.md#c-08--))
+> [DOCUMENTATION REVIEW] Contradiction **C-08** ([Review Notes](../REVIEW-NOTES.md#c-08--replay-decisions-deterministic-network-not))
 
 ```
 Decision replay
@@ -369,7 +369,7 @@ Proposal ≠ Candidate
 
 > **Source sections:** `CAP-182`
 >
-> [DOCUMENTATION REVIEW] Contradiction **C-04** ([Review Notes](../REVIEW-NOTES.md#c-04--))
+> [DOCUMENTATION REVIEW] Contradiction **C-04** ([Review Notes](../REVIEW-NOTES.md#c-04--resource-identity-canonical-url-versus-identity-resolution))
 
 ```
 Candidate identity
@@ -487,7 +487,7 @@ Candidate merge
 
 > **Source sections:** `CAP-217`
 >
-> [DOCUMENTATION REVIEW] Contradiction **C-03** ([Review Notes](../REVIEW-NOTES.md#c-03--))
+> [DOCUMENTATION REVIEW] Contradiction **C-03** ([Review Notes](../REVIEW-NOTES.md#c-03--candidate-claiming-single-thread-assumption-versus-distributed-claiming))
 
 ```
 A DiscoveryTask
@@ -567,7 +567,7 @@ not the complete knowledge graph.
 
 > **Source sections:** `CAP-263`
 >
-> [DOCUMENTATION REVIEW] Contradiction **C-09** ([Review Notes](../REVIEW-NOTES.md#c-09--))
+> [DOCUMENTATION REVIEW] Contradiction **C-09** ([Review Notes](../REVIEW-NOTES.md#c-09--two-termination-taxonomies))
 
 ```
 Session completion requires an explicit termination reason.
@@ -680,7 +680,7 @@ A discovered candidate might be rejected by domain or acquisition policy.
 
 > **Source sections:** `CAP-448`
 >
-> [DOCUMENTATION REVIEW] Contradiction **C-04** ([Review Notes](../REVIEW-NOTES.md#c-04--))
+> [DOCUMENTATION REVIEW] Contradiction **C-04** ([Review Notes](../REVIEW-NOTES.md#c-04--resource-identity-canonical-url-versus-identity-resolution))
 
 ```
 ResourceIdentity(x)
@@ -704,7 +704,7 @@ SemanticType(x)
 
 > **Source sections:** `CAP-450`
 >
-> [DOCUMENTATION REVIEW] Contradiction **C-02** ([Review Notes](../REVIEW-NOTES.md#c-02--))
+> [DOCUMENTATION REVIEW] Contradiction **C-02** ([Review Notes](../REVIEW-NOTES.md#c-02--the-discovery-pipeline-is-described-with-two-different-step-sets))
 
 ```
 RecognizedAsPDF(x)
@@ -791,7 +791,7 @@ semantic_role(x)
 
 > **Source sections:** `CAP-501`
 >
-> [DOCUMENTATION REVIEW] Contradiction **C-07** ([Review Notes](../REVIEW-NOTES.md#c-07--))
+> [DOCUMENTATION REVIEW] Contradiction **C-07** ([Review Notes](../REVIEW-NOTES.md#c-07--resource--artifact-model-revised))
 
 ```
 Artifact identity
@@ -836,7 +836,7 @@ Resource
 
 > **Source sections:** `CAP-504`
 >
-> [DOCUMENTATION REVIEW] Contradiction **C-07** ([Review Notes](../REVIEW-NOTES.md#c-07--))
+> [DOCUMENTATION REVIEW] Contradiction **C-07** ([Review Notes](../REVIEW-NOTES.md#c-07--resource--artifact-model-revised))
 
 ```
 Revision
@@ -958,7 +958,7 @@ Candidate
 
 > **Source sections:** `CAP-554`
 >
-> [DOCUMENTATION REVIEW] Contradiction **C-05** ([Review Notes](../REVIEW-NOTES.md#c-05--))
+> [DOCUMENTATION REVIEW] Contradiction **C-05** ([Review Notes](../REVIEW-NOTES.md#c-05--coverage-preferred-metric-later-heavily-qualified))
 
 ```
 Exhausted(partition)
@@ -1049,7 +1049,7 @@ HistoricalPerformance
 
 > **Source sections:** `CAP-595`
 >
-> [DOCUMENTATION REVIEW] Contradiction **C-08** ([Review Notes](../REVIEW-NOTES.md#c-08--))
+> [DOCUMENTATION REVIEW] Contradiction **C-08** ([Review Notes](../REVIEW-NOTES.md#c-08--replay-decisions-deterministic-network-not))
 
 ```
 Same decision inputs
@@ -1577,7 +1577,7 @@ QueryPlan ≠ TacticExecution
 
 > **Source sections:** `CAP-800`
 >
-> [DOCUMENTATION REVIEW] Contradiction **C-04** ([Review Notes](../REVIEW-NOTES.md#c-04--))
+> [DOCUMENTATION REVIEW] Contradiction **C-04** ([Review Notes](../REVIEW-NOTES.md#c-04--resource-identity-canonical-url-versus-identity-resolution))
 
 ```
 TacticExecution ≠ TacticAttempt
@@ -1711,9 +1711,9 @@ Every enumeration has an explicit target/scope.
 
 > **Source sections:** `CAP-855`
 >
-> [DOCUMENTATION REVIEW] Contradiction **C-05** ([Review Notes](../REVIEW-NOTES.md#c-05--))
+> [DOCUMENTATION REVIEW] Contradiction **C-05** ([Review Notes](../REVIEW-NOTES.md#c-05--coverage-preferred-metric-later-heavily-qualified))
 >
-> [DOCUMENTATION REVIEW] Contradiction **C-09** ([Review Notes](../REVIEW-NOTES.md#c-09--))
+> [DOCUMENTATION REVIEW] Contradiction **C-09** ([Review Notes](../REVIEW-NOTES.md#c-09--two-termination-taxonomies))
 
 ```
 EnumeratorExhausted
@@ -1784,7 +1784,7 @@ Absent(x,S)
 
 > **Source sections:** `CAP-862`
 >
-> [DOCUMENTATION REVIEW] Contradiction **C-05** ([Review Notes](../REVIEW-NOTES.md#c-05--))
+> [DOCUMENTATION REVIEW] Contradiction **C-05** ([Review Notes](../REVIEW-NOTES.md#c-05--coverage-preferred-metric-later-heavily-qualified))
 
 Changing enumeration state must be reflected in coverage assurance.
 
@@ -1807,7 +1807,7 @@ All discoveries pass through the normal proposal/normalization path.
 
 > **Source sections:** `CAP-865`
 >
-> [DOCUMENTATION REVIEW] Contradiction **C-09** ([Review Notes](../REVIEW-NOTES.md#c-09--))
+> [DOCUMENTATION REVIEW] Contradiction **C-09** ([Review Notes](../REVIEW-NOTES.md#c-09--two-termination-taxonomies))
 
 A completeness-relevant termination event must identify the enumerator, version, target, execution, and supporting observation.
 
@@ -1839,7 +1839,7 @@ Candidate convergence never destroys discovery provenance.
 
 > **Source sections:** `CAP-907`
 >
-> [DOCUMENTATION REVIEW] Contradiction **C-07** ([Review Notes](../REVIEW-NOTES.md#c-07--))
+> [DOCUMENTATION REVIEW] Contradiction **C-07** ([Review Notes](../REVIEW-NOTES.md#c-07--resource--artifact-model-revised))
 
 Identical artifact hashes may converge at artifact identity without merging logical resources.
 
@@ -1895,7 +1895,7 @@ disjoint
 
 > **Source sections:** `CAP-913`
 >
-> [DOCUMENTATION REVIEW] Contradiction **C-05** ([Review Notes](../REVIEW-NOTES.md#c-05--))
+> [DOCUMENTATION REVIEW] Contradiction **C-05** ([Review Notes](../REVIEW-NOTES.md#c-05--coverage-preferred-metric-later-heavily-qualified))
 
 Coverage must account for overlap before aggregation.
 
@@ -1904,7 +1904,7 @@ Coverage must account for overlap before aggregation.
 
 > **Source sections:** `CAP-914`
 >
-> [DOCUMENTATION REVIEW] Contradiction **C-05** ([Review Notes](../REVIEW-NOTES.md#c-05--))
+> [DOCUMENTATION REVIEW] Contradiction **C-05** ([Review Notes](../REVIEW-NOTES.md#c-05--coverage-preferred-metric-later-heavily-qualified))
 
 ```
 N candidates
@@ -2017,7 +2017,7 @@ WorkStarted
 
 > **Source sections:** `CAP-964`
 >
-> [DOCUMENTATION REVIEW] Contradiction **C-11** ([Review Notes](../REVIEW-NOTES.md#c-11--))
+> [DOCUMENTATION REVIEW] Contradiction **C-11** ([Review Notes](../REVIEW-NOTES.md#c-11--same-origin-default-versus-cross-origin-capability))
 
 A highly relevant partition may still be denied.
 
@@ -2033,7 +2033,7 @@ Historical coverage remains attached to the snapshot under which it was measured
 
 > **Source sections:** `CAP-966`
 >
-> [DOCUMENTATION REVIEW] Contradiction **C-03** ([Review Notes](../REVIEW-NOTES.md#c-03--))
+> [DOCUMENTATION REVIEW] Contradiction **C-03** ([Review Notes](../REVIEW-NOTES.md#c-03--candidate-claiming-single-thread-assumption-versus-distributed-claiming))
 
 New search-space knowledge creates new assessments.
 
@@ -2372,7 +2372,7 @@ This is one of the strongest invariants in the entire architecture.
 
 > **Source sections:** `CAP-1091`
 >
-> [DOCUMENTATION REVIEW] Contradiction **C-03** ([Review Notes](../REVIEW-NOTES.md#c-03--))
+> [DOCUMENTATION REVIEW] Contradiction **C-03** ([Review Notes](../REVIEW-NOTES.md#c-03--candidate-claiming-single-thread-assumption-versus-distributed-claiming))
 
 A worker may mutate leased execution state only if:
 

@@ -61,7 +61,7 @@
 
 > **Source sections:** `CAP-1116`
 >
-> [DOCUMENTATION REVIEW] Contradiction **C-03** ([Review Notes](../REVIEW-NOTES.md#c-03--))
+> [DOCUMENTATION REVIEW] Contradiction **C-03** ([Review Notes](../REVIEW-NOTES.md#c-03--candidate-claiming-single-thread-assumption-versus-distributed-claiming))
 
 The next boundary is now visible.
 
@@ -246,7 +246,7 @@ overwrite version 8
 
 > **Source sections:** `CAP-1121`
 >
-> [DOCUMENTATION REVIEW] Contradiction **C-03** ([Review Notes](../REVIEW-NOTES.md#c-03--))
+> [DOCUMENTATION REVIEW] Contradiction **C-03** ([Review Notes](../REVIEW-NOTES.md#c-03--candidate-claiming-single-thread-assumption-versus-distributed-claiming))
 
 The primitive operation is effectively:
 
@@ -416,7 +416,7 @@ Now the engine can answer:
 
 > **Source sections:** `CAP-1124`
 >
-> [DOCUMENTATION REVIEW] Contradiction **C-03** ([Review Notes](../REVIEW-NOTES.md#c-03--))
+> [DOCUMENTATION REVIEW] Contradiction **C-03** ([Review Notes](../REVIEW-NOTES.md#c-03--candidate-claiming-single-thread-assumption-versus-distributed-claiming))
 
 v0.33 introduced fencing.
 
@@ -510,7 +510,7 @@ Examples:
 
 > **Source sections:** `CAP-1126`
 >
-> [DOCUMENTATION REVIEW] Contradiction **C-03** ([Review Notes](../REVIEW-NOTES.md#c-03--))
+> [DOCUMENTATION REVIEW] Contradiction **C-03** ([Review Notes](../REVIEW-NOTES.md#c-03--candidate-claiming-single-thread-assumption-versus-distributed-claiming))
 
 ```
 A claims work-17
@@ -548,7 +548,7 @@ This may be a **legitimate epistemic disagreement**, not a database error.
 
 > **Source sections:** `CAP-1129`
 >
-> [DOCUMENTATION REVIEW] Contradiction **C-05** ([Review Notes](../REVIEW-NOTES.md#c-05--))
+> [DOCUMENTATION REVIEW] Contradiction **C-05** ([Review Notes](../REVIEW-NOTES.md#c-05--coverage-preferred-metric-later-heavily-qualified))
 
 ```
 Partition A
@@ -1384,7 +1384,7 @@ This is important for completeness and negative evidence.
 
 > **Source sections:** `CAP-1151`
 >
-> [DOCUMENTATION REVIEW] Contradiction **C-03** ([Review Notes](../REVIEW-NOTES.md#c-03--))
+> [DOCUMENTATION REVIEW] Contradiction **C-03** ([Review Notes](../REVIEW-NOTES.md#c-03--candidate-claiming-single-thread-assumption-versus-distributed-claiming))
 
 7. Fencing prevents stale workers from mutating current state.
 8. Versioning prevents stale state from producing valid-looking mutations.

@@ -229,7 +229,7 @@ The `?` fields are important. A blind scanner often starts with incomplete infor
 
 > **Source sections:** `USP-057`
 >
-> [DOCUMENTATION REVIEW] Contradiction **C-04** ([Review Notes](../REVIEW-NOTES.md#c-04--))
+> [DOCUMENTATION REVIEW] Contradiction **C-04** ([Review Notes](../REVIEW-NOTES.md#c-04--resource-identity-canonical-url-versus-identity-resolution))
 
 This is subtle but important.
 

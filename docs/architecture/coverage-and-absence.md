@@ -73,7 +73,7 @@
 
 > **Source sections:** `USP-034`
 >
-> [DOCUMENTATION REVIEW] Contradiction **C-05** ([Review Notes](../REVIEW-NOTES.md#c-05--))
+> [DOCUMENTATION REVIEW] Contradiction **C-05** ([Review Notes](../REVIEW-NOTES.md#c-05--coverage-preferred-metric-later-heavily-qualified))
 
 You can track:
 
@@ -112,9 +112,9 @@ Scan finished.
 
 > **Source sections:** `CAP-599`
 >
-> [DOCUMENTATION REVIEW] Contradiction **C-03** ([Review Notes](../REVIEW-NOTES.md#c-03--))
+> [DOCUMENTATION REVIEW] Contradiction **C-03** ([Review Notes](../REVIEW-NOTES.md#c-03--candidate-claiming-single-thread-assumption-versus-distributed-claiming))
 >
-> [DOCUMENTATION REVIEW] Contradiction **C-05** ([Review Notes](../REVIEW-NOTES.md#c-05--))
+> [DOCUMENTATION REVIEW] Contradiction **C-05** ([Review Notes](../REVIEW-NOTES.md#c-05--coverage-preferred-metric-later-heavily-qualified))
 
 There is now one problem that becomes unavoidable.
 
@@ -178,9 +178,9 @@ That leads naturally to **v0.22 — Coverage, Exhaustion, and Completeness Proof
 
 > **Source sections:** `CAP-601`
 >
-> [DOCUMENTATION REVIEW] Contradiction **C-03** ([Review Notes](../REVIEW-NOTES.md#c-03--))
+> [DOCUMENTATION REVIEW] Contradiction **C-03** ([Review Notes](../REVIEW-NOTES.md#c-03--candidate-claiming-single-thread-assumption-versus-distributed-claiming))
 >
-> [DOCUMENTATION REVIEW] Contradiction **C-05** ([Review Notes](../REVIEW-NOTES.md#c-05--))
+> [DOCUMENTATION REVIEW] Contradiction **C-05** ([Review Notes](../REVIEW-NOTES.md#c-05--coverage-preferred-metric-later-heavily-qualified))
 
 The next architectural boundary is not “discover more.”
 
@@ -301,7 +301,7 @@ Coverage needs another dimension.
 
 > **Source sections:** `CAP-604`
 >
-> [DOCUMENTATION REVIEW] Contradiction **C-05** ([Review Notes](../REVIEW-NOTES.md#c-05--))
+> [DOCUMENTATION REVIEW] Contradiction **C-05** ([Review Notes](../REVIEW-NOTES.md#c-05--coverage-preferred-metric-later-heavily-qualified))
 
 Define:
 
@@ -343,7 +343,7 @@ is meaningful.
 
 > **Source sections:** `CAP-605`
 >
-> [DOCUMENTATION REVIEW] Contradiction **C-05** ([Review Notes](../REVIEW-NOTES.md#c-05--))
+> [DOCUMENTATION REVIEW] Contradiction **C-05** ([Review Notes](../REVIEW-NOTES.md#c-05--coverage-preferred-metric-later-heavily-qualified))
 
 Coverage should not be one scalar.
 
@@ -402,7 +402,7 @@ and:
 
 > **Source sections:** `CAP-606`
 >
-> [DOCUMENTATION REVIEW] Contradiction **C-05** ([Review Notes](../REVIEW-NOTES.md#c-05--))
+> [DOCUMENTATION REVIEW] Contradiction **C-05** ([Review Notes](../REVIEW-NOTES.md#c-05--coverage-preferred-metric-later-heavily-qualified))
 
 Introduce an explicit record.
 
@@ -481,7 +481,7 @@ assume 100%
 
 > **Source sections:** `CAP-607`
 >
-> [DOCUMENTATION REVIEW] Contradiction **C-05** ([Review Notes](../REVIEW-NOTES.md#c-05--))
+> [DOCUMENTATION REVIEW] Contradiction **C-05** ([Review Notes](../REVIEW-NOTES.md#c-05--coverage-preferred-metric-later-heavily-qualified))
 
 Use qualitative states in addition to numerical measurements.
 
@@ -526,9 +526,9 @@ provided the enumeration itself is trusted and complete.
 
 > **Source sections:** `CAP-608`
 >
-> [DOCUMENTATION REVIEW] Contradiction **C-03** ([Review Notes](../REVIEW-NOTES.md#c-03--))
+> [DOCUMENTATION REVIEW] Contradiction **C-03** ([Review Notes](../REVIEW-NOTES.md#c-03--candidate-claiming-single-thread-assumption-versus-distributed-claiming))
 >
-> [DOCUMENTATION REVIEW] Contradiction **C-05** ([Review Notes](../REVIEW-NOTES.md#c-05--))
+> [DOCUMENTATION REVIEW] Contradiction **C-05** ([Review Notes](../REVIEW-NOTES.md#c-05--coverage-preferred-metric-later-heavily-qualified))
 
 A measurement is not automatically a claim.
 
@@ -588,7 +588,7 @@ The second usually is not.
 
 > **Source sections:** `CAP-609`
 >
-> [DOCUMENTATION REVIEW] Contradiction **C-05** ([Review Notes](../REVIEW-NOTES.md#c-05--))
+> [DOCUMENTATION REVIEW] Contradiction **C-05** ([Review Notes](../REVIEW-NOTES.md#c-05--coverage-preferred-metric-later-heavily-qualified))
 
 Define:
 
@@ -934,7 +934,7 @@ which is obviously invalid.
 
 > **Source sections:** `CAP-615`
 >
-> [DOCUMENTATION REVIEW] Contradiction **C-05** ([Review Notes](../REVIEW-NOTES.md#c-05--))
+> [DOCUMENTATION REVIEW] Contradiction **C-05** ([Review Notes](../REVIEW-NOTES.md#c-05--coverage-preferred-metric-later-heavily-qualified))
 
 At first glance:
 
@@ -1048,7 +1048,7 @@ This preserves historical truth.
 
 > **Source sections:** `CAP-617`
 >
-> [DOCUMENTATION REVIEW] Contradiction **C-05** ([Review Notes](../REVIEW-NOTES.md#c-05--))
+> [DOCUMENTATION REVIEW] Contradiction **C-05** ([Review Notes](../REVIEW-NOTES.md#c-05--coverage-preferred-metric-later-heavily-qualified))
 
 The event ledger now gains explicit search-assurance events.
 
@@ -1156,7 +1156,7 @@ This is a significant architectural separation.
 
 > **Source sections:** `CAP-619`
 >
-> [DOCUMENTATION REVIEW] Contradiction **C-05** ([Review Notes](../REVIEW-NOTES.md#c-05--))
+> [DOCUMENTATION REVIEW] Contradiction **C-05** ([Review Notes](../REVIEW-NOTES.md#c-05--coverage-preferred-metric-later-heavily-qualified))
 
 Completeness should be a deterministic evaluator.
 
@@ -1217,7 +1217,7 @@ complete = true
 
 > **Source sections:** `CAP-621`
 >
-> [DOCUMENTATION REVIEW] Contradiction **C-05** ([Review Notes](../REVIEW-NOTES.md#c-05--))
+> [DOCUMENTATION REVIEW] Contradiction **C-05** ([Review Notes](../REVIEW-NOTES.md#c-05--coverage-preferred-metric-later-heavily-qualified))
 
 | Situation | Frontier | Coverage | Completeness |
 | --- | --- | --- | --- |
@@ -1238,7 +1238,7 @@ complete = true
 
 > **Source sections:** `CAP-622`
 >
-> [DOCUMENTATION REVIEW] Contradiction **C-05** ([Review Notes](../REVIEW-NOTES.md#c-05--))
+> [DOCUMENTATION REVIEW] Contradiction **C-05** ([Review Notes](../REVIEW-NOTES.md#c-05--coverage-preferred-metric-later-heavily-qualified))
 
 For partitions with known weights:
 
@@ -1291,7 +1291,7 @@ The engine should preserve the weighting method.
 
 > **Source sections:** `CAP-623`
 >
-> [DOCUMENTATION REVIEW] Contradiction **C-05** ([Review Notes](../REVIEW-NOTES.md#c-05--))
+> [DOCUMENTATION REVIEW] Contradiction **C-05** ([Review Notes](../REVIEW-NOTES.md#c-05--coverage-preferred-metric-later-heavily-qualified))
 
 This is particularly important for the eventual service-document system.
 
@@ -1832,7 +1832,7 @@ This is an important predicate-level distinction.
 
 > **Source sections:** `CAP-650`
 >
-> [DOCUMENTATION REVIEW] Contradiction **C-03** ([Review Notes](../REVIEW-NOTES.md#c-03--))
+> [DOCUMENTATION REVIEW] Contradiction **C-03** ([Review Notes](../REVIEW-NOTES.md#c-03--candidate-claiming-single-thread-assumption-versus-distributed-claiming))
 
 The engine should therefore stop thinking about presence as one universal boolean.
 
@@ -2039,7 +2039,7 @@ Never silently choose one.
 
 > **Source sections:** `CAP-654`
 >
-> [DOCUMENTATION REVIEW] Contradiction **C-06** ([Review Notes](../REVIEW-NOTES.md#c-06--))
+> [DOCUMENTATION REVIEW] Contradiction **C-06** ([Review Notes](../REVIEW-NOTES.md#c-06--confidence-one-score-versus-no-single-global-score))
 
 A dangerous implementation would do:
 
@@ -2330,7 +2330,7 @@ without corruption.
 
 > **Source sections:** `CAP-660`
 >
-> [DOCUMENTATION REVIEW] Contradiction **C-07** ([Review Notes](../REVIEW-NOTES.md#c-07--))
+> [DOCUMENTATION REVIEW] Contradiction **C-07** ([Review Notes](../REVIEW-NOTES.md#c-07--resource--artifact-model-revised))
 
 This becomes especially useful for document aggregation.
 

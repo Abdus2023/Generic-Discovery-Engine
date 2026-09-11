@@ -59,7 +59,7 @@
 
 > **Source sections:** `USP-071`
 >
-> [DOCUMENTATION REVIEW] Contradiction **C-03** ([Review Notes](../REVIEW-NOTES.md#c-03--))
+> [DOCUMENTATION REVIEW] Contradiction **C-03** ([Review Notes](../REVIEW-NOTES.md#c-03--candidate-claiming-single-thread-assumption-versus-distributed-claiming))
 >
 > **Note:** split at numbered boundary
 
@@ -109,7 +109,7 @@ That distinction becomes particularly important once acquisition is asynchronous
 
 > **Source sections:** `CAP-205`
 >
-> [DOCUMENTATION REVIEW] Contradiction **C-03** ([Review Notes](../REVIEW-NOTES.md#c-03--))
+> [DOCUMENTATION REVIEW] Contradiction **C-03** ([Review Notes](../REVIEW-NOTES.md#c-03--candidate-claiming-single-thread-assumption-versus-distributed-claiming))
 
 The same race condition from candidate claiming appears here.
 
@@ -163,7 +163,7 @@ This is the same invariant:
 
 > **Source sections:** `CAP-250`
 >
-> [DOCUMENTATION REVIEW] Contradiction **C-03** ([Review Notes](../REVIEW-NOTES.md#c-03--))
+> [DOCUMENTATION REVIEW] Contradiction **C-03** ([Review Notes](../REVIEW-NOTES.md#c-03--candidate-claiming-single-thread-assumption-versus-distributed-claiming))
 
 This leads directly to a stronger version of the v0.13 atomic-claim rule.
 
@@ -216,7 +216,7 @@ This is especially valuable if the userscript eventually supports:
 
 > **Source sections:** `CAP-280`
 >
-> [DOCUMENTATION REVIEW] Contradiction **C-03** ([Review Notes](../REVIEW-NOTES.md#c-03--))
+> [DOCUMENTATION REVIEW] Contradiction **C-03** ([Review Notes](../REVIEW-NOTES.md#c-03--candidate-claiming-single-thread-assumption-versus-distributed-claiming))
 
 This is one of the most important improvements.
 
@@ -299,7 +299,7 @@ Claim(x)
 
 > **Source sections:** `CAP-281`
 >
-> [DOCUMENTATION REVIEW] Contradiction **C-03** ([Review Notes](../REVIEW-NOTES.md#c-03--))
+> [DOCUMENTATION REVIEW] Contradiction **C-03** ([Review Notes](../REVIEW-NOTES.md#c-03--candidate-claiming-single-thread-assumption-versus-distributed-claiming))
 
 The lease is different from ownership forever.
 
@@ -337,7 +337,7 @@ A lease therefore gives us crash recovery without requiring a distributed consen
 
 > **Source sections:** `CAP-282`
 >
-> [DOCUMENTATION REVIEW] Contradiction **C-03** ([Review Notes](../REVIEW-NOTES.md#c-03--))
+> [DOCUMENTATION REVIEW] Contradiction **C-03** ([Review Notes](../REVIEW-NOTES.md#c-03--candidate-claiming-single-thread-assumption-versus-distributed-claiming))
 
 A recovery operation:
 
@@ -374,7 +374,7 @@ so recovery is observable rather than invisible mutation.
 
 > **Source sections:** `CAP-1078`
 >
-> [DOCUMENTATION REVIEW] Contradiction **C-03** ([Review Notes](../REVIEW-NOTES.md#c-03--))
+> [DOCUMENTATION REVIEW] Contradiction **C-03** ([Review Notes](../REVIEW-NOTES.md#c-03--candidate-claiming-single-thread-assumption-versus-distributed-claiming))
 
 The next problem emerges naturally.
 
@@ -447,7 +447,7 @@ This is where the userscript prototype starts approaching the coordination seman
 
 > **Source sections:** `CAP-1080`
 >
-> [DOCUMENTATION REVIEW] Contradiction **C-03** ([Review Notes](../REVIEW-NOTES.md#c-03--))
+> [DOCUMENTATION REVIEW] Contradiction **C-03** ([Review Notes](../REVIEW-NOTES.md#c-03--candidate-claiming-single-thread-assumption-versus-distributed-claiming))
 
 v0.32 made the frontier durable.
 
@@ -478,9 +478,9 @@ The central question is:
 
 > **Source sections:** `CAP-1081`
 >
-> [DOCUMENTATION REVIEW] Contradiction **C-03** ([Review Notes](../REVIEW-NOTES.md#c-03--))
+> [DOCUMENTATION REVIEW] Contradiction **C-03** ([Review Notes](../REVIEW-NOTES.md#c-03--candidate-claiming-single-thread-assumption-versus-distributed-claiming))
 >
-> [DOCUMENTATION REVIEW] Contradiction **C-04** ([Review Notes](../REVIEW-NOTES.md#c-04--))
+> [DOCUMENTATION REVIEW] Contradiction **C-04** ([Review Notes](../REVIEW-NOTES.md#c-04--resource-identity-canonical-url-versus-identity-resolution))
 
 Every execution context needs a durable identity.
 
@@ -539,7 +539,7 @@ It identifies an execution participant.
 
 > **Source sections:** `CAP-1082`
 >
-> [DOCUMENTATION REVIEW] Contradiction **C-03** ([Review Notes](../REVIEW-NOTES.md#c-03--))
+> [DOCUMENTATION REVIEW] Contradiction **C-03** ([Review Notes](../REVIEW-NOTES.md#c-03--candidate-claiming-single-thread-assumption-versus-distributed-claiming))
 
 A worker first registers:
 
@@ -595,7 +595,7 @@ but:
 
 > **Source sections:** `CAP-1083`
 >
-> [DOCUMENTATION REVIEW] Contradiction **C-03** ([Review Notes](../REVIEW-NOTES.md#c-03--))
+> [DOCUMENTATION REVIEW] Contradiction **C-03** ([Review Notes](../REVIEW-NOTES.md#c-03--candidate-claiming-single-thread-assumption-versus-distributed-claiming))
 
 v0.8 introduced capabilities at the acquisition layer.
 
@@ -651,7 +651,7 @@ Policy still applies.
 
 > **Source sections:** `CAP-1084`
 >
-> [DOCUMENTATION REVIEW] Contradiction **C-03** ([Review Notes](../REVIEW-NOTES.md#c-03--))
+> [DOCUMENTATION REVIEW] Contradiction **C-03** ([Review Notes](../REVIEW-NOTES.md#c-03--candidate-claiming-single-thread-assumption-versus-distributed-claiming))
 
 The critical race remains:
 
@@ -688,7 +688,7 @@ even if it observed the item immediately before Worker A.
 
 > **Source sections:** `CAP-1085`
 >
-> [DOCUMENTATION REVIEW] Contradiction **C-03** ([Review Notes](../REVIEW-NOTES.md#c-03--))
+> [DOCUMENTATION REVIEW] Contradiction **C-03** ([Review Notes](../REVIEW-NOTES.md#c-03--candidate-claiming-single-thread-assumption-versus-distributed-claiming))
 
 A claim needs its own identity.
 
@@ -740,7 +740,7 @@ WorkItem
 
 > **Source sections:** `CAP-1086`
 >
-> [DOCUMENTATION REVIEW] Contradiction **C-03** ([Review Notes](../REVIEW-NOTES.md#c-03--))
+> [DOCUMENTATION REVIEW] Contradiction **C-03** ([Review Notes](../REVIEW-NOTES.md#c-03--candidate-claiming-single-thread-assumption-versus-distributed-claiming))
 
 A claim says:
 
@@ -771,7 +771,7 @@ This is essential for crash recovery.
 
 > **Source sections:** `CAP-1087`
 >
-> [DOCUMENTATION REVIEW] Contradiction **C-03** ([Review Notes](../REVIEW-NOTES.md#c-03--))
+> [DOCUMENTATION REVIEW] Contradiction **C-03** ([Review Notes](../REVIEW-NOTES.md#c-03--candidate-claiming-single-thread-assumption-versus-distributed-claiming))
 
 ```
 QUEUED
@@ -798,7 +798,7 @@ The worker cannot simply retain ownership forever.
 
 > **Source sections:** `CAP-1088`
 >
-> [DOCUMENTATION REVIEW] Contradiction **C-03** ([Review Notes](../REVIEW-NOTES.md#c-03--))
+> [DOCUMENTATION REVIEW] Contradiction **C-03** ([Review Notes](../REVIEW-NOTES.md#c-03--candidate-claiming-single-thread-assumption-versus-distributed-claiming))
 
 ```JavaScript
 class LeaseManager {
@@ -865,7 +865,7 @@ That leads to **fencing**.
 
 > **Source sections:** `CAP-1090`
 >
-> [DOCUMENTATION REVIEW] Contradiction **C-03** ([Review Notes](../REVIEW-NOTES.md#c-03--))
+> [DOCUMENTATION REVIEW] Contradiction **C-03** ([Review Notes](../REVIEW-NOTES.md#c-03--candidate-claiming-single-thread-assumption-versus-distributed-claiming))
 
 Suppose:
 
@@ -909,7 +909,7 @@ Every ownership generation receives a monotonically increasing epoch.
 
 > **Source sections:** `CAP-1092`
 >
-> [DOCUMENTATION REVIEW] Contradiction **C-03** ([Review Notes](../REVIEW-NOTES.md#c-03--))
+> [DOCUMENTATION REVIEW] Contradiction **C-03** ([Review Notes](../REVIEW-NOTES.md#c-03--candidate-claiming-single-thread-assumption-versus-distributed-claiming))
 
 Suppose:
 
@@ -984,7 +984,7 @@ The current policy of GET-only acquisition reduces the danger substantially.
 
 > **Source sections:** `CAP-1094`
 >
-> [DOCUMENTATION REVIEW] Contradiction **C-04** ([Review Notes](../REVIEW-NOTES.md#c-04--))
+> [DOCUMENTATION REVIEW] Contradiction **C-04** ([Review Notes](../REVIEW-NOTES.md#c-04--resource-identity-canonical-url-versus-identity-resolution))
 
 Every execution attempt should retain:
 
@@ -1058,7 +1058,7 @@ evidence independence
 
 > **Source sections:** `CAP-1097`
 >
-> [DOCUMENTATION REVIEW] Contradiction **C-03** ([Review Notes](../REVIEW-NOTES.md#c-03--))
+> [DOCUMENTATION REVIEW] Contradiction **C-03** ([Review Notes](../REVIEW-NOTES.md#c-03--candidate-claiming-single-thread-assumption-versus-distributed-claiming))
 
 Workers should not each maintain authoritative versions of:
 
@@ -1100,7 +1100,7 @@ This prevents divergent truths.
 
 > **Source sections:** `CAP-1098`
 >
-> [DOCUMENTATION REVIEW] Contradiction **C-03** ([Review Notes](../REVIEW-NOTES.md#c-03--))
+> [DOCUMENTATION REVIEW] Contradiction **C-03** ([Review Notes](../REVIEW-NOTES.md#c-03--candidate-claiming-single-thread-assumption-versus-distributed-claiming))
 
 ```JavaScript
 class CoordinationManager {
@@ -1141,7 +1141,7 @@ It does not become a second scheduler.
 
 > **Source sections:** `CAP-1099`
 >
-> [DOCUMENTATION REVIEW] Contradiction **C-03** ([Review Notes](../REVIEW-NOTES.md#c-03--))
+> [DOCUMENTATION REVIEW] Contradiction **C-03** ([Review Notes](../REVIEW-NOTES.md#c-03--candidate-claiming-single-thread-assumption-versus-distributed-claiming))
 
 This distinction must remain explicit.
 
@@ -1172,7 +1172,7 @@ A worker can lose the race after arbitration.
 
 > **Source sections:** `CAP-1100`
 >
-> [DOCUMENTATION REVIEW] Contradiction **C-03** ([Review Notes](../REVIEW-NOTES.md#c-03--))
+> [DOCUMENTATION REVIEW] Contradiction **C-03** ([Review Notes](../REVIEW-NOTES.md#c-03--candidate-claiming-single-thread-assumption-versus-distributed-claiming))
 
 Worker suitability can become an additional eligibility dimension.
 
@@ -1219,7 +1219,7 @@ authorization
 
 > **Source sections:** `CAP-1101`
 >
-> [DOCUMENTATION REVIEW] Contradiction **C-03** ([Review Notes](../REVIEW-NOTES.md#c-03--))
+> [DOCUMENTATION REVIEW] Contradiction **C-03** ([Review Notes](../REVIEW-NOTES.md#c-03--candidate-claiming-single-thread-assumption-versus-distributed-claiming))
 
 Affinity can improve efficiency:
 
@@ -1245,7 +1245,7 @@ Otherwise an unavailable preferred worker can cause starvation.
 
 > **Source sections:** `CAP-1102`
 >
-> [DOCUMENTATION REVIEW] Contradiction **C-03** ([Review Notes](../REVIEW-NOTES.md#c-03--))
+> [DOCUMENTATION REVIEW] Contradiction **C-03** ([Review Notes](../REVIEW-NOTES.md#c-03--candidate-claiming-single-thread-assumption-versus-distributed-claiming))
 
 Workers can advertise capacity:
 
@@ -1316,7 +1316,7 @@ So reservation authority must be shared.
 
 > **Source sections:** `CAP-1104`
 >
-> [DOCUMENTATION REVIEW] Contradiction **C-03** ([Review Notes](../REVIEW-NOTES.md#c-03--))
+> [DOCUMENTATION REVIEW] Contradiction **C-03** ([Review Notes](../REVIEW-NOTES.md#c-03--candidate-claiming-single-thread-assumption-versus-distributed-claiming))
 
 Caching is allowed, but only as an optimization.
 
@@ -1345,7 +1345,7 @@ The authoritative state wins.
 
 > **Source sections:** `CAP-1105`
 >
-> [DOCUMENTATION REVIEW] Contradiction **C-03** ([Review Notes](../REVIEW-NOTES.md#c-03--))
+> [DOCUMENTATION REVIEW] Contradiction **C-03** ([Review Notes](../REVIEW-NOTES.md#c-03--candidate-claiming-single-thread-assumption-versus-distributed-claiming))
 
 Distributed workers produce events concurrently:
 
@@ -1406,7 +1406,7 @@ A worker ID adds execution provenance but does not itself establish causality.
 
 > **Source sections:** `CAP-1107`
 >
-> [DOCUMENTATION REVIEW] Contradiction **C-03** ([Review Notes](../REVIEW-NOTES.md#c-03--))
+> [DOCUMENTATION REVIEW] Contradiction **C-03** ([Review Notes](../REVIEW-NOTES.md#c-03--candidate-claiming-single-thread-assumption-versus-distributed-claiming))
 
 Add:
 
@@ -1441,7 +1441,7 @@ These become part of the event ledger.
 
 > **Source sections:** `CAP-1109`
 >
-> [DOCUMENTATION REVIEW] Contradiction **C-03** ([Review Notes](../REVIEW-NOTES.md#c-03--))
+> [DOCUMENTATION REVIEW] Contradiction **C-03** ([Review Notes](../REVIEW-NOTES.md#c-03--candidate-claiming-single-thread-assumption-versus-distributed-claiming))
 
 A particularly dangerous failure:
 
@@ -1474,7 +1474,7 @@ For the userscript prototype, IndexedDB transaction semantics can provide local 
 
 > **Source sections:** `CAP-1111`
 >
-> [DOCUMENTATION REVIEW] Contradiction **C-03** ([Review Notes](../REVIEW-NOTES.md#c-03--))
+> [DOCUMENTATION REVIEW] Contradiction **C-03** ([Review Notes](../REVIEW-NOTES.md#c-03--candidate-claiming-single-thread-assumption-versus-distributed-claiming))
 
 Therefore explicitly define:
 

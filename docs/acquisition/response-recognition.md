@@ -103,7 +103,7 @@ Each transition should have a timeout so one bad candidate cannot stall the scan
 
 > **Source sections:** `USP-053`
 >
-> [DOCUMENTATION REVIEW] Contradiction **C-02** ([Review Notes](../REVIEW-NOTES.md#c-02--))
+> [DOCUMENTATION REVIEW] Contradiction **C-02** ([Review Notes](../REVIEW-NOTES.md#c-02--the-discovery-pipeline-is-described-with-two-different-step-sets))
 
 Keep acquisition details separate:
 
@@ -127,7 +127,7 @@ This makes failure analysis much easier.
 
 > **Source sections:** `CAP-129`
 >
-> [DOCUMENTATION REVIEW] Contradiction **C-02** ([Review Notes](../REVIEW-NOTES.md#c-02--))
+> [DOCUMENTATION REVIEW] Contradiction **C-02** ([Review Notes](../REVIEW-NOTES.md#c-02--the-discovery-pipeline-is-described-with-two-different-step-sets))
 
 v0.10 established the **Acquisition Runtime** boundary.
 
@@ -145,7 +145,7 @@ The important change is that recognition should no longer be a large `if/else` c
 
 > **Source sections:** `CAP-131`
 >
-> [DOCUMENTATION REVIEW] Contradiction **C-02** ([Review Notes](../REVIEW-NOTES.md#c-02--))
+> [DOCUMENTATION REVIEW] Contradiction **C-02** ([Review Notes](../REVIEW-NOTES.md#c-02--the-discovery-pipeline-is-described-with-two-different-step-sets))
 
 The provider should remain deliberately small.
 
@@ -201,7 +201,7 @@ actual parsing
 
 > **Source sections:** `CAP-132`
 >
-> [DOCUMENTATION REVIEW] Contradiction **C-02** ([Review Notes](../REVIEW-NOTES.md#c-02--))
+> [DOCUMENTATION REVIEW] Contradiction **C-02** ([Review Notes](../REVIEW-NOTES.md#c-02--the-discovery-pipeline-is-described-with-two-different-step-sets))
 
 These concepts should remain separate.
 
@@ -361,9 +361,9 @@ The router should allow more specialized recognizers to win.
 
 > **Source sections:** `CAP-135`
 >
-> [DOCUMENTATION REVIEW] Contradiction **C-02** ([Review Notes](../REVIEW-NOTES.md#c-02--))
+> [DOCUMENTATION REVIEW] Contradiction **C-02** ([Review Notes](../REVIEW-NOTES.md#c-02--the-discovery-pipeline-is-described-with-two-different-step-sets))
 >
-> [DOCUMENTATION REVIEW] Contradiction **C-06** ([Review Notes](../REVIEW-NOTES.md#c-06--))
+> [DOCUMENTATION REVIEW] Contradiction **C-06** ([Review Notes](../REVIEW-NOTES.md#c-06--confidence-one-score-versus-no-single-global-score))
 
 Recognition itself can have confidence:
 
@@ -444,7 +444,7 @@ should still be recognized as PDF.
 
 > **Source sections:** `CAP-137`
 >
-> [DOCUMENTATION REVIEW] Contradiction **C-02** ([Review Notes](../REVIEW-NOTES.md#c-02--))
+> [DOCUMENTATION REVIEW] Contradiction **C-02** ([Review Notes](../REVIEW-NOTES.md#c-02--the-discovery-pipeline-is-described-with-two-different-step-sets))
 
 The provider should report _why_ it recognized something.
 
@@ -494,7 +494,7 @@ manual.pdf
 
 > **Source sections:** `CAP-138`
 >
-> [DOCUMENTATION REVIEW] Contradiction **C-02** ([Review Notes](../REVIEW-NOTES.md#c-02--))
+> [DOCUMENTATION REVIEW] Contradiction **C-02** ([Review Notes](../REVIEW-NOTES.md#c-02--the-discovery-pipeline-is-described-with-two-different-step-sets))
 
 A provider should return a structured result rather than directly mutating the knowledge base.
 
@@ -584,7 +584,7 @@ Scheduler
 
 > **Source sections:** `CAP-140`
 >
-> [DOCUMENTATION REVIEW] Contradiction **C-02** ([Review Notes](../REVIEW-NOTES.md#c-02--))
+> [DOCUMENTATION REVIEW] Contradiction **C-02** ([Review Notes](../REVIEW-NOTES.md#c-02--the-discovery-pipeline-is-described-with-two-different-step-sets))
 
 This suggests another explicit component:
 
@@ -671,7 +671,7 @@ parser exception
 
 > **Source sections:** `CAP-145`
 >
-> [DOCUMENTATION REVIEW] Contradiction **C-02** ([Review Notes](../REVIEW-NOTES.md#c-02--))
+> [DOCUMENTATION REVIEW] Contradiction **C-02** ([Review Notes](../REVIEW-NOTES.md#c-02--the-discovery-pipeline-is-described-with-two-different-step-sets))
 
 ```
 HTML
@@ -795,7 +795,7 @@ Choosing only one parser can unnecessarily discard evidence.
 
 > **Source sections:** `CAP-148`
 >
-> [DOCUMENTATION REVIEW] Contradiction **C-02** ([Review Notes](../REVIEW-NOTES.md#c-02--))
+> [DOCUMENTATION REVIEW] Contradiction **C-02** ([Review Notes](../REVIEW-NOTES.md#c-02--the-discovery-pipeline-is-described-with-two-different-step-sets))
 
 We therefore get:
 
@@ -1013,7 +1013,7 @@ Repeat
 
 > **Source sections:** `CAP-363`
 >
-> [DOCUMENTATION REVIEW] Contradiction **C-02** ([Review Notes](../REVIEW-NOTES.md#c-02--))
+> [DOCUMENTATION REVIEW] Contradiction **C-02** ([Review Notes](../REVIEW-NOTES.md#c-02--the-discovery-pipeline-is-described-with-two-different-step-sets))
 
 > What did we obtain?
 

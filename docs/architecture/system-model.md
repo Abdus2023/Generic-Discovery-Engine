@@ -59,7 +59,7 @@
 
 > **Source sections:** `USP-023`
 >
-> [DOCUMENTATION REVIEW] Contradiction **C-10** ([Review Notes](../REVIEW-NOTES.md#c-10--))
+> [DOCUMENTATION REVIEW] Contradiction **C-10** ([Review Notes](../REVIEW-NOTES.md#c-10--knowledge-store-naming))
 
 The final output should ideally not be "a list of frequencies."
 

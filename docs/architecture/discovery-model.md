@@ -49,7 +49,7 @@
 
 > **Source sections:** `USP-019`
 >
-> [DOCUMENTATION REVIEW] Contradiction **C-06** ([Review Notes](../REVIEW-NOTES.md#c-06--))
+> [DOCUMENTATION REVIEW] Contradiction **C-06** ([Review Notes](../REVIEW-NOTES.md#c-06--confidence-one-score-versus-no-single-global-score))
 
 Instead of immediately saying:
 
@@ -816,7 +816,7 @@ Discovery itself becomes bounded.
 
 > **Source sections:** `CAP-195`
 >
-> [DOCUMENTATION REVIEW] Contradiction **C-11** ([Review Notes](../REVIEW-NOTES.md#c-11--))
+> [DOCUMENTATION REVIEW] Contradiction **C-11** ([Review Notes](../REVIEW-NOTES.md#c-11--same-origin-default-versus-cross-origin-capability))
 
 A source needs an explicit policy boundary.
 
@@ -1232,7 +1232,7 @@ This gives us a genuine exploration process.
 
 > **Source sections:** `CAP-340`
 >
-> [DOCUMENTATION REVIEW] Contradiction **C-06** ([Review Notes](../REVIEW-NOTES.md#c-06--))
+> [DOCUMENTATION REVIEW] Contradiction **C-06** ([Review Notes](../REVIEW-NOTES.md#c-06--confidence-one-score-versus-no-single-global-score))
 
 Earlier we had:
 

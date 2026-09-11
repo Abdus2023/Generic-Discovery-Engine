@@ -169,7 +169,7 @@ A structured representation extracted from the observation.
 
 > **Source sections:** `CAP-314`
 >
-> [DOCUMENTATION REVIEW] Contradiction **C-03** ([Review Notes](../REVIEW-NOTES.md#c-03--))
+> [DOCUMENTATION REVIEW] Contradiction **C-03** ([Review Notes](../REVIEW-NOTES.md#c-03--candidate-claiming-single-thread-assumption-versus-distributed-claiming))
 
 An assertion derived from evidence.
 
@@ -198,7 +198,7 @@ The latter would overstate what the system knows.
 
 > **Source sections:** `CAP-315`
 >
-> [DOCUMENTATION REVIEW] Contradiction **C-03** ([Review Notes](../REVIEW-NOTES.md#c-03--))
+> [DOCUMENTATION REVIEW] Contradiction **C-03** ([Review Notes](../REVIEW-NOTES.md#c-03--candidate-claiming-single-thread-assumption-versus-distributed-claiming))
 
 A resource is an identity in the discovery universe.
 
@@ -404,7 +404,7 @@ This is the beginning of **reproducible extraction**.
 
 > **Source sections:** `CAP-320`
 >
-> [DOCUMENTATION REVIEW] Contradiction **C-03** ([Review Notes](../REVIEW-NOTES.md#c-03--))
+> [DOCUMENTATION REVIEW] Contradiction **C-03** ([Review Notes](../REVIEW-NOTES.md#c-03--candidate-claiming-single-thread-assumption-versus-distributed-claiming))
 
 A claim should be explicit.
 
@@ -463,7 +463,7 @@ Example:
 
 > **Source sections:** `CAP-321`
 >
-> [DOCUMENTATION REVIEW] Contradiction **C-03** ([Review Notes](../REVIEW-NOTES.md#c-03--))
+> [DOCUMENTATION REVIEW] Contradiction **C-03** ([Review Notes](../REVIEW-NOTES.md#c-03--candidate-claiming-single-thread-assumption-versus-distributed-claiming))
 
 This is an important epistemic boundary.
 
@@ -729,7 +729,7 @@ This is naturally a graph.
 
 > **Source sections:** `CAP-328`
 >
-> [DOCUMENTATION REVIEW] Contradiction **C-04** ([Review Notes](../REVIEW-NOTES.md#c-04--))
+> [DOCUMENTATION REVIEW] Contradiction **C-04** ([Review Notes](../REVIEW-NOTES.md#c-04--resource-identity-canonical-url-versus-identity-resolution))
 
 The resource remains identified independently of evidence.
 
@@ -779,7 +779,7 @@ is an **identity hypothesis**, not universal truth.
 
 > **Source sections:** `CAP-329`
 >
-> [DOCUMENTATION REVIEW] Contradiction **C-07** ([Review Notes](../REVIEW-NOTES.md#c-07--))
+> [DOCUMENTATION REVIEW] Contradiction **C-07** ([Review Notes](../REVIEW-NOTES.md#c-07--resource--artifact-model-revised))
 
 When bytes are obtained:
 
@@ -820,7 +820,7 @@ These should not be merged.
 
 > **Source sections:** `CAP-330`
 >
-> [DOCUMENTATION REVIEW] Contradiction **C-04** ([Review Notes](../REVIEW-NOTES.md#c-04--))
+> [DOCUMENTATION REVIEW] Contradiction **C-04** ([Review Notes](../REVIEW-NOTES.md#c-04--resource-identity-canonical-url-versus-identity-resolution))
 
 Example:
 
@@ -873,7 +873,7 @@ same resource identity
 
 > **Source sections:** `CAP-331`
 >
-> [DOCUMENTATION REVIEW] Contradiction **C-07** ([Review Notes](../REVIEW-NOTES.md#c-07--))
+> [DOCUMENTATION REVIEW] Contradiction **C-07** ([Review Notes](../REVIEW-NOTES.md#c-07--resource--artifact-model-revised))
 
 Now consider:
 
@@ -1098,7 +1098,7 @@ This is much better than silently overwriting the first observation.
 
 > **Source sections:** `CAP-338`
 >
-> [DOCUMENTATION REVIEW] Contradiction **C-03** ([Review Notes](../REVIEW-NOTES.md#c-03--))
+> [DOCUMENTATION REVIEW] Contradiction **C-03** ([Review Notes](../REVIEW-NOTES.md#c-03--candidate-claiming-single-thread-assumption-versus-distributed-claiming))
 
 Example:
 
@@ -1335,7 +1335,7 @@ explicitly declared evidence source.
 
 > **Source sections:** `CAP-348`
 >
-> [DOCUMENTATION REVIEW] Contradiction **C-03** ([Review Notes](../REVIEW-NOTES.md#c-03--))
+> [DOCUMENTATION REVIEW] Contradiction **C-03** ([Review Notes](../REVIEW-NOTES.md#c-03--candidate-claiming-single-thread-assumption-versus-distributed-claiming))
 
 ```
 A Claim should have explicit supporting Evidence.
@@ -1364,7 +1364,7 @@ Evidence records extraction method/version.
 
 > **Source sections:** `CAP-351`
 >
-> [DOCUMENTATION REVIEW] Contradiction **C-04** ([Review Notes](../REVIEW-NOTES.md#c-04--))
+> [DOCUMENTATION REVIEW] Contradiction **C-04** ([Review Notes](../REVIEW-NOTES.md#c-04--resource-identity-canonical-url-versus-identity-resolution))
 
 ```
 Resource identity is not determined solely
@@ -1376,7 +1376,7 @@ by content fingerprint.
 
 > **Source sections:** `CAP-352`
 >
-> [DOCUMENTATION REVIEW] Contradiction **C-04** ([Review Notes](../REVIEW-NOTES.md#c-04--))
+> [DOCUMENTATION REVIEW] Contradiction **C-04** ([Review Notes](../REVIEW-NOTES.md#c-04--resource-identity-canonical-url-versus-identity-resolution))
 
 ```
 Equal fingerprints do not imply equal resource identity.
@@ -1439,7 +1439,7 @@ That leads to the next abstraction:
 
 > **Source sections:** `CAP-385`
 >
-> [DOCUMENTATION REVIEW] Contradiction **C-04** ([Review Notes](../REVIEW-NOTES.md#c-04--))
+> [DOCUMENTATION REVIEW] Contradiction **C-04** ([Review Notes](../REVIEW-NOTES.md#c-04--resource-identity-canonical-url-versus-identity-resolution))
 
 Identity resolution must never simply say:
 
@@ -1478,7 +1478,7 @@ The relationship itself becomes a graph fact.
 
 > **Source sections:** `CAP-413`
 >
-> [DOCUMENTATION REVIEW] Contradiction **C-04** ([Review Notes](../REVIEW-NOTES.md#c-04--))
+> [DOCUMENTATION REVIEW] Contradiction **C-04** ([Review Notes](../REVIEW-NOTES.md#c-04--resource-identity-canonical-url-versus-identity-resolution))
 
 ```
 A non-trivial identity relation requires

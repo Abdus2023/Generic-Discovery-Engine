@@ -40,7 +40,7 @@
 
 > **Source sections:** `CAP-141`
 >
-> [DOCUMENTATION REVIEW] Contradiction **C-02** ([Review Notes](../REVIEW-NOTES.md#c-02--))
+> [DOCUMENTATION REVIEW] Contradiction **C-02** ([Review Notes](../REVIEW-NOTES.md#c-02--the-discovery-pipeline-is-described-with-two-different-step-sets))
 
 This becomes important for diagnostics.
 
@@ -499,7 +499,7 @@ v0.32 adds:
 
 > **Source sections:** `CAP-1108`
 >
-> [DOCUMENTATION REVIEW] Contradiction **C-03** ([Review Notes](../REVIEW-NOTES.md#c-03--))
+> [DOCUMENTATION REVIEW] Contradiction **C-03** ([Review Notes](../REVIEW-NOTES.md#c-03--candidate-claiming-single-thread-assumption-versus-distributed-claiming))
 
 | Failure | Meaning |
 | --- | --- |

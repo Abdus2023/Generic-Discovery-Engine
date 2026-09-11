@@ -493,7 +493,7 @@ is preferable.
 
 > **Source sections:** `CAP-117`
 >
-> [DOCUMENTATION REVIEW] Contradiction **C-11** ([Review Notes](../REVIEW-NOTES.md#c-11--))
+> [DOCUMENTATION REVIEW] Contradiction **C-11** ([Review Notes](../REVIEW-NOTES.md#c-11--same-origin-default-versus-cross-origin-capability))
 
 This would be wrong:
 

@@ -108,7 +108,7 @@ This matters because the cost of an RF measurement can be substantially lower th
 
 > **Source sections:** `USP-029`
 >
-> [DOCUMENTATION REVIEW] Contradiction **C-09** ([Review Notes](../REVIEW-NOTES.md#c-09--))
+> [DOCUMENTATION REVIEW] Contradiction **C-09** ([Review Notes](../REVIEW-NOTES.md#c-09--two-termination-taxonomies))
 
 A blind scan should not simply stop after finding the first multiplex.
 
@@ -134,7 +134,7 @@ This gives the strongest claim:
 
 > **Source sections:** `USP-031`
 >
-> [DOCUMENTATION REVIEW] Contradiction **C-06** ([Review Notes](../REVIEW-NOTES.md#c-06--))
+> [DOCUMENTATION REVIEW] Contradiction **C-06** ([Review Notes](../REVIEW-NOTES.md#c-06--confidence-one-score-versus-no-single-global-score))
 
 Stop when:
 

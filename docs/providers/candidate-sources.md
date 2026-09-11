@@ -700,7 +700,7 @@ The engine does not assume one discovery mechanism.
 
 > **Source sections:** `CAP-175`
 >
-> [DOCUMENTATION REVIEW] Contradiction **C-04** ([Review Notes](../REVIEW-NOTES.md#c-04--))
+> [DOCUMENTATION REVIEW] Contradiction **C-04** ([Review Notes](../REVIEW-NOTES.md#c-04--resource-identity-canonical-url-versus-identity-resolution))
 
 The identity remains:
 
@@ -743,7 +743,7 @@ This distinction is essential.
 
 > **Source sections:** `CAP-176`
 >
-> [DOCUMENTATION REVIEW] Contradiction **C-06** ([Review Notes](../REVIEW-NOTES.md#c-06--))
+> [DOCUMENTATION REVIEW] Contradiction **C-06** ([Review Notes](../REVIEW-NOTES.md#c-06--confidence-one-score-versus-no-single-global-score))
 
 Multiple independent sources can strengthen confidence.
 

@@ -204,7 +204,7 @@ The domain should answer only questions about the search space.
 
 > **Source sections:** `CAP-230`
 >
-> [DOCUMENTATION REVIEW] Contradiction **C-11** ([Review Notes](../REVIEW-NOTES.md#c-11--))
+> [DOCUMENTATION REVIEW] Contradiction **C-11** ([Review Notes](../REVIEW-NOTES.md#c-11--same-origin-default-versus-cross-origin-capability))
 
 This distinction matters.
 
@@ -558,7 +558,7 @@ This addresses one of the weaknesses in the earlier `Stop` implementation.
 
 > **Source sections:** `CAP-237`
 >
-> [DOCUMENTATION REVIEW] Contradiction **C-09** ([Review Notes](../REVIEW-NOTES.md#c-09--))
+> [DOCUMENTATION REVIEW] Contradiction **C-09** ([Review Notes](../REVIEW-NOTES.md#c-09--two-termination-taxonomies))
 
 A blind scan needs a stopping rule.
 
@@ -657,7 +657,7 @@ user → Stop
 
 > **Source sections:** `CAP-246`
 >
-> [DOCUMENTATION REVIEW] Contradiction **C-09** ([Review Notes](../REVIEW-NOTES.md#c-09--))
+> [DOCUMENTATION REVIEW] Contradiction **C-09** ([Review Notes](../REVIEW-NOTES.md#c-09--two-termination-taxonomies))
 
 Instead of scattering termination checks throughout the code:
 
@@ -918,7 +918,7 @@ rather than merely:
 
 > **Source sections:** `CAP-252`
 >
-> [DOCUMENTATION REVIEW] Contradiction **C-10** ([Review Notes](../REVIEW-NOTES.md#c-10--))
+> [DOCUMENTATION REVIEW] Contradiction **C-10** ([Review Notes](../REVIEW-NOTES.md#c-10--knowledge-store-naming))
 
 This produces another important distinction.
 
@@ -1040,7 +1040,7 @@ rather than mutating Scan A.
 
 > **Source sections:** `CAP-254`
 >
-> [DOCUMENTATION REVIEW] Contradiction **C-04** ([Review Notes](../REVIEW-NOTES.md#c-04--))
+> [DOCUMENTATION REVIEW] Contradiction **C-04** ([Review Notes](../REVIEW-NOTES.md#c-04--resource-identity-canonical-url-versus-identity-resolution))
 
 A useful next step is deterministic domain identity.
 
@@ -1096,7 +1096,7 @@ This is much stronger for reproducibility.
 
 > **Source sections:** `CAP-255`
 >
-> [DOCUMENTATION REVIEW] Contradiction **C-10** ([Review Notes](../REVIEW-NOTES.md#c-10--))
+> [DOCUMENTATION REVIEW] Contradiction **C-10** ([Review Notes](../REVIEW-NOTES.md#c-10--knowledge-store-naming))
 
 Do not confuse them.
 

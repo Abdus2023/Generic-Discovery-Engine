@@ -1074,7 +1074,7 @@ without explanation.
 
 > **Source sections:** `CAP-578`
 >
-> [DOCUMENTATION REVIEW] Contradiction **C-08** ([Review Notes](../REVIEW-NOTES.md#c-08--))
+> [DOCUMENTATION REVIEW] Contradiction **C-08** ([Review Notes](../REVIEW-NOTES.md#c-08--replay-decisions-deterministic-network-not))
 
 Given:
 
@@ -2190,7 +2190,7 @@ Checkpoint
 
 > **Source sections:** `CAP-776`
 >
-> [DOCUMENTATION REVIEW] Contradiction **C-03** ([Review Notes](../REVIEW-NOTES.md#c-03--))
+> [DOCUMENTATION REVIEW] Contradiction **C-03** ([Review Notes](../REVIEW-NOTES.md#c-03--candidate-claiming-single-thread-assumption-versus-distributed-claiming))
 
 A dangerous failure exists:
 
@@ -3475,7 +3475,7 @@ This preserves the existing architecture.
 
 > **Source sections:** `CAP-829`
 >
-> [DOCUMENTATION REVIEW] Contradiction **C-04** ([Review Notes](../REVIEW-NOTES.md#c-04--))
+> [DOCUMENTATION REVIEW] Contradiction **C-04** ([Review Notes](../REVIEW-NOTES.md#c-04--resource-identity-canonical-url-versus-identity-resolution))
 
 An enumerator can encounter duplicates:
 
@@ -3684,7 +3684,7 @@ Now completeness can refer to a concrete snapshot.
 
 > **Source sections:** `CAP-838`
 >
-> [DOCUMENTATION REVIEW] Contradiction **C-04** ([Review Notes](../REVIEW-NOTES.md#c-04--))
+> [DOCUMENTATION REVIEW] Contradiction **C-04** ([Review Notes](../REVIEW-NOTES.md#c-04--resource-identity-canonical-url-versus-identity-resolution))
 
 Suppose:
 
@@ -3842,7 +3842,7 @@ page 2
 
 > **Source sections:** `CAP-842`
 >
-> [DOCUMENTATION REVIEW] Contradiction **C-05** ([Review Notes](../REVIEW-NOTES.md#c-05--))
+> [DOCUMENTATION REVIEW] Contradiction **C-05** ([Review Notes](../REVIEW-NOTES.md#c-05--coverage-preferred-metric-later-heavily-qualified))
 
 The EnumerationRuntime should produce a **termination observation**, not directly assert global completeness.
 
@@ -3976,7 +3976,7 @@ This distinction is one of the most important properties of the system.
 
 > **Source sections:** `CAP-845`
 >
-> [DOCUMENTATION REVIEW] Contradiction **C-05** ([Review Notes](../REVIEW-NOTES.md#c-05--))
+> [DOCUMENTATION REVIEW] Contradiction **C-05** ([Review Notes](../REVIEW-NOTES.md#c-05--coverage-preferred-metric-later-heavily-qualified))
 
 Now the earlier coverage machinery becomes connected.
 
@@ -4130,7 +4130,7 @@ This is a hard semantic distinction.
 
 > **Source sections:** `CAP-848`
 >
-> [DOCUMENTATION REVIEW] Contradiction **C-09** ([Review Notes](../REVIEW-NOTES.md#c-09--))
+> [DOCUMENTATION REVIEW] Contradiction **C-09** ([Review Notes](../REVIEW-NOTES.md#c-09--two-termination-taxonomies))
 
 Use explicit states:
 
@@ -4260,7 +4260,7 @@ foundBy = "sitemap"
 
 > **Source sections:** `CAP-851`
 >
-> [DOCUMENTATION REVIEW] Contradiction **C-08** ([Review Notes](../REVIEW-NOTES.md#c-08--))
+> [DOCUMENTATION REVIEW] Contradiction **C-08** ([Review Notes](../REVIEW-NOTES.md#c-08--replay-decisions-deterministic-network-not))
 
 A deterministic enumerator can be replayed from:
 

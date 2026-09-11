@@ -881,7 +881,7 @@ Specialized runtime
 
 > **Source sections:** `CAP-296`
 >
-> [DOCUMENTATION REVIEW] Contradiction **C-04** ([Review Notes](../REVIEW-NOTES.md#c-04--))
+> [DOCUMENTATION REVIEW] Contradiction **C-04** ([Review Notes](../REVIEW-NOTES.md#c-04--resource-identity-canonical-url-versus-identity-resolution))
 
 An important rule:
 
@@ -970,7 +970,7 @@ This keeps the earlier distinction:
 
 > **Source sections:** `CAP-298`
 >
-> [DOCUMENTATION REVIEW] Contradiction **C-09** ([Review Notes](../REVIEW-NOTES.md#c-09--))
+> [DOCUMENTATION REVIEW] Contradiction **C-09** ([Review Notes](../REVIEW-NOTES.md#c-09--two-termination-taxonomies))
 
 v0.14 termination can now become much more precise.
 
@@ -1415,7 +1415,7 @@ That distinction becomes important later.
 
 > **Source sections:** `CAP-986`
 >
-> [DOCUMENTATION REVIEW] Contradiction **C-11** ([Review Notes](../REVIEW-NOTES.md#c-11--))
+> [DOCUMENTATION REVIEW] Contradiction **C-11** ([Review Notes](../REVIEW-NOTES.md#c-11--same-origin-default-versus-cross-origin-capability))
 
 Each class needs a scheduling policy.
 
@@ -2115,7 +2115,7 @@ Execution
 
 > **Source sections:** `CAP-1001`
 >
-> [DOCUMENTATION REVIEW] Contradiction **C-03** ([Review Notes](../REVIEW-NOTES.md#c-03--))
+> [DOCUMENTATION REVIEW] Contradiction **C-03** ([Review Notes](../REVIEW-NOTES.md#c-03--candidate-claiming-single-thread-assumption-versus-distributed-claiming))
 
 There is an important race:
 
@@ -2342,7 +2342,7 @@ Not merely:
 
 > **Source sections:** `CAP-1006`
 >
-> [DOCUMENTATION REVIEW] Contradiction **C-08** ([Review Notes](../REVIEW-NOTES.md#c-08--))
+> [DOCUMENTATION REVIEW] Contradiction **C-08** ([Review Notes](../REVIEW-NOTES.md#c-08--replay-decisions-deterministic-network-not))
 
 Arbitration must be replayable.
 

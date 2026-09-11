@@ -284,7 +284,7 @@ This gives us another important state distinction.
 
 > **Source sections:** `CAP-089`
 >
-> [DOCUMENTATION REVIEW] Contradiction **C-11** ([Review Notes](../REVIEW-NOTES.md#c-11--))
+> [DOCUMENTATION REVIEW] Contradiction **C-11** ([Review Notes](../REVIEW-NOTES.md#c-11--same-origin-default-versus-cross-origin-capability))
 
 ```
 candidate
@@ -414,7 +414,7 @@ No network request.
 
 > **Source sections:** `CAP-094`
 >
-> [DOCUMENTATION REVIEW] Contradiction **C-08** ([Review Notes](../REVIEW-NOTES.md#c-08--))
+> [DOCUMENTATION REVIEW] Contradiction **C-08** ([Review Notes](../REVIEW-NOTES.md#c-08--replay-decisions-deterministic-network-not))
 
 ```
 candidate

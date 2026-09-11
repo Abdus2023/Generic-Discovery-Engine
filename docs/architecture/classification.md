@@ -569,7 +569,7 @@ This is deliberately downstream from recognition.
 
 > **Source sections:** `CAP-430`
 >
-> [DOCUMENTATION REVIEW] Contradiction **C-02** ([Review Notes](../REVIEW-NOTES.md#c-02--))
+> [DOCUMENTATION REVIEW] Contradiction **C-02** ([Review Notes](../REVIEW-NOTES.md#c-02--the-discovery-pipeline-is-described-with-two-different-step-sets))
 
 These two concepts should remain separate.
 
@@ -578,7 +578,7 @@ These two concepts should remain separate.
 
 > **Source sections:** `CAP-431`
 >
-> [DOCUMENTATION REVIEW] Contradiction **C-02** ([Review Notes](../REVIEW-NOTES.md#c-02--))
+> [DOCUMENTATION REVIEW] Contradiction **C-02** ([Review Notes](../REVIEW-NOTES.md#c-02--the-discovery-pipeline-is-described-with-two-different-step-sets))
 
 Answers:
 
@@ -824,7 +824,7 @@ without losing the finer classification.
 
 > **Source sections:** `CAP-436`
 >
-> [DOCUMENTATION REVIEW] Contradiction **C-06** ([Review Notes](../REVIEW-NOTES.md#c-06--))
+> [DOCUMENTATION REVIEW] Contradiction **C-06** ([Review Notes](../REVIEW-NOTES.md#c-06--confidence-one-score-versus-no-single-global-score))
 
 Another important constraint.
 

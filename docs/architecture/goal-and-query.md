@@ -1219,7 +1219,7 @@ because the goal did not require exhaustive discovery.
 
 > **Source sections:** `CAP-702`
 >
-> [DOCUMENTATION REVIEW] Contradiction **C-09** ([Review Notes](../REVIEW-NOTES.md#c-09--))
+> [DOCUMENTATION REVIEW] Contradiction **C-09** ([Review Notes](../REVIEW-NOTES.md#c-09--two-termination-taxonomies))
 
 Introduce:
 
@@ -1267,7 +1267,7 @@ Goal:
 
 > **Source sections:** `CAP-703`
 >
-> [DOCUMENTATION REVIEW] Contradiction **C-05** ([Review Notes](../REVIEW-NOTES.md#c-05--))
+> [DOCUMENTATION REVIEW] Contradiction **C-05** ([Review Notes](../REVIEW-NOTES.md#c-05--coverage-preferred-metric-later-heavily-qualified))
 
 This distinction should be explicit:
 
@@ -1523,7 +1523,7 @@ The same resource graph can support all of them.
 
 > **Source sections:** `CAP-709`
 >
-> [DOCUMENTATION REVIEW] Contradiction **C-10** ([Review Notes](../REVIEW-NOTES.md#c-10--))
+> [DOCUMENTATION REVIEW] Contradiction **C-10** ([Review Notes](../REVIEW-NOTES.md#c-10--knowledge-store-naming))
 
 This creates an important optimization.
 
@@ -1569,7 +1569,7 @@ This is one of the major reasons the resource/evidence graph must be separated f
 
 > **Source sections:** `CAP-710`
 >
-> [DOCUMENTATION REVIEW] Contradiction **C-10** ([Review Notes](../REVIEW-NOTES.md#c-10--))
+> [DOCUMENTATION REVIEW] Contradiction **C-10** ([Review Notes](../REVIEW-NOTES.md#c-10--knowledge-store-naming))
 
 An old classification may still be useful:
 
@@ -2379,7 +2379,7 @@ The normal admission chain remains mandatory.
 
 > **Source sections:** `CAP-741`
 >
-> [DOCUMENTATION REVIEW] Contradiction **C-02** ([Review Notes](../REVIEW-NOTES.md#c-02--))
+> [DOCUMENTATION REVIEW] Contradiction **C-02** ([Review Notes](../REVIEW-NOTES.md#c-02--the-discovery-pipeline-is-described-with-two-different-step-sets))
 
 Before execution:
 
@@ -2572,7 +2572,7 @@ This is operational provenance.
 
 > **Source sections:** `CAP-746`
 >
-> [DOCUMENTATION REVIEW] Contradiction **C-04** ([Review Notes](../REVIEW-NOTES.md#c-04--))
+> [DOCUMENTATION REVIEW] Contradiction **C-04** ([Review Notes](../REVIEW-NOTES.md#c-04--resource-identity-canonical-url-versus-identity-resolution))
 
 Plans and executions must remain separate.
 
@@ -2977,7 +2977,7 @@ is perfectly valid.
 
 > **Source sections:** `CAP-757`
 >
-> [DOCUMENTATION REVIEW] Contradiction **C-09** ([Review Notes](../REVIEW-NOTES.md#c-09--))
+> [DOCUMENTATION REVIEW] Contradiction **C-09** ([Review Notes](../REVIEW-NOTES.md#c-09--two-termination-taxonomies))
 
 Goal termination must propagate through the plan.
 

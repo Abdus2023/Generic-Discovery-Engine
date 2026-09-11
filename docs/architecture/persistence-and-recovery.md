@@ -55,7 +55,7 @@
 
 > **Source sections:** `USP-035`
 >
-> [DOCUMENTATION REVIEW] Contradiction **C-10** ([Review Notes](../REVIEW-NOTES.md#c-10--))
+> [DOCUMENTATION REVIEW] Contradiction **C-10** ([Review Notes](../REVIEW-NOTES.md#c-10--knowledge-store-naming))
 
 A major optimization is to persist previous observations.
 
@@ -450,7 +450,7 @@ Materialized State = efficient current view
 
 > **Source sections:** `CAP-1049`
 >
-> [DOCUMENTATION REVIEW] Contradiction **C-04** ([Review Notes](../REVIEW-NOTES.md#c-04--))
+> [DOCUMENTATION REVIEW] Contradiction **C-04** ([Review Notes](../REVIEW-NOTES.md#c-04--resource-identity-canonical-url-versus-identity-resolution))
 
 Every durable event needs an immutable identity.
 
@@ -902,7 +902,7 @@ This is much safer than silently resetting the budget.
 
 > **Source sections:** `CAP-1062`
 >
-> [DOCUMENTATION REVIEW] Contradiction **C-07** ([Review Notes](../REVIEW-NOTES.md#c-07--))
+> [DOCUMENTATION REVIEW] Contradiction **C-07** ([Review Notes](../REVIEW-NOTES.md#c-07--resource--artifact-model-revised))
 
 The artifact lifecycle should become:
 
@@ -1131,7 +1131,7 @@ RECOVERY_FAILED
 
 > **Source sections:** `CAP-1069`
 >
-> [DOCUMENTATION REVIEW] Contradiction **C-10** ([Review Notes](../REVIEW-NOTES.md#c-10--))
+> [DOCUMENTATION REVIEW] Contradiction **C-10** ([Review Notes](../REVIEW-NOTES.md#c-10--knowledge-store-naming))
 
 This is fundamental.
 
