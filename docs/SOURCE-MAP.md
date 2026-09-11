@@ -30,8 +30,7 @@ Dispositions: `MOVE` — carried into the destination; `DUPLICATE` — retained 
 | Status | Sections |
 | --- | --- |
 | DESIGNED | 1129 |
-| UNVERIFIED | 45 |
-| CURRENT | 36 |
+| UNVERIFIED | 81 |
 | FUTURE | 19 |
 | OPEN | 15 |
 
@@ -97,24 +96,24 @@ Dispositions: `MOVE` — carried into the destination; `DUPLICATE` — retained 
 | [`concepts/discovery-loop.md`](concepts/discovery-loop.md) | 9 | 6803 |
 | [`concepts/generic-discovery.md`](concepts/generic-discovery.md) | 8 | 10437 |
 | [`concepts/overview.md`](concepts/overview.md) | 16 | 24997 |
-| [`prototype/limitations.md`](prototype/limitations.md) | 5 | 6677 |
-| [`prototype/overview.md`](prototype/overview.md) | 2 | 4800 |
-| [`prototype/userscript.md`](prototype/userscript.md) | 14 | 19970 |
-| [`prototype/versions/00-v0.1.0-and-v0.2.0-paste.md`](prototype/versions/00-v0.1.0-and-v0.2.0-paste.md) | 1 | 59164 |
-| [`prototype/versions/01-v0.1.0.md`](prototype/versions/01-v0.1.0.md) | 2 | 24582 |
-| [`prototype/versions/02-v0.2.0.md`](prototype/versions/02-v0.2.0.md) | 2 | 37415 |
-| [`prototype/versions/03-v0.3.0.md`](prototype/versions/03-v0.3.0.md) | 2 | 69377 |
+| [`prototype/limitations.md`](prototype/limitations.md) | 5 | 7106 |
+| [`prototype/overview.md`](prototype/overview.md) | 2 | 5329 |
+| [`prototype/userscript.md`](prototype/userscript.md) | 14 | 21951 |
+| [`prototype/versions/00-v0.1.0-and-v0.2.0-paste.md`](prototype/versions/00-v0.1.0-and-v0.2.0-paste.md) | 1 | 59477 |
+| [`prototype/versions/01-v0.1.0.md`](prototype/versions/01-v0.1.0.md) | 2 | 25127 |
+| [`prototype/versions/02-v0.2.0.md`](prototype/versions/02-v0.2.0.md) | 2 | 37960 |
+| [`prototype/versions/03-v0.3.0.md`](prototype/versions/03-v0.3.0.md) | 2 | 69922 |
 | [`prototype/versions/04-v0.4.0-plan.md`](prototype/versions/04-v0.4.0-plan.md) | 2 | 5068 |
-| [`prototype/versions/05-v0.4.0.md`](prototype/versions/05-v0.4.0.md) | 2 | 109431 |
-| [`prototype/versions/06-v0.5.0.md`](prototype/versions/06-v0.5.0.md) | 1 | 159805 |
-| [`prototype/versions/07-v0.4.0-second-iteration.md`](prototype/versions/07-v0.4.0-second-iteration.md) | 1 | 125923 |
+| [`prototype/versions/05-v0.4.0.md`](prototype/versions/05-v0.4.0.md) | 2 | 109976 |
+| [`prototype/versions/06-v0.5.0.md`](prototype/versions/06-v0.5.0.md) | 1 | 160242 |
+| [`prototype/versions/07-v0.4.0-second-iteration.md`](prototype/versions/07-v0.4.0-second-iteration.md) | 1 | 126360 |
 | [`prototype/versions/08-v0.5.0-plan.md`](prototype/versions/08-v0.5.0-plan.md) | 1 | 3125 |
-| [`prototype/versions/09-v0.5.0-second-iteration.md`](prototype/versions/09-v0.5.0-second-iteration.md) | 1 | 124311 |
-| [`prototype/versions/10-v0.6.0.md`](prototype/versions/10-v0.6.0.md) | 1 | 163288 |
-| [`prototype/versions/11-v0.5.0-third-iteration.md`](prototype/versions/11-v0.5.0-third-iteration.md) | 1 | 155812 |
-| [`prototype/versions/12-v0.6.0-second-iteration.md`](prototype/versions/12-v0.6.0-second-iteration.md) | 1 | 219379 |
-| [`prototype/versions/13-v0.6.0-third-iteration.md`](prototype/versions/13-v0.6.0-third-iteration.md) | 1 | 146345 |
-| [`prototype/versions/14-v0.7.1.md`](prototype/versions/14-v0.7.1.md) | 1 | 143285 |
+| [`prototype/versions/09-v0.5.0-second-iteration.md`](prototype/versions/09-v0.5.0-second-iteration.md) | 1 | 124748 |
+| [`prototype/versions/10-v0.6.0.md`](prototype/versions/10-v0.6.0.md) | 1 | 163725 |
+| [`prototype/versions/11-v0.5.0-third-iteration.md`](prototype/versions/11-v0.5.0-third-iteration.md) | 1 | 156249 |
+| [`prototype/versions/12-v0.6.0-second-iteration.md`](prototype/versions/12-v0.6.0-second-iteration.md) | 1 | 219816 |
+| [`prototype/versions/13-v0.6.0-third-iteration.md`](prototype/versions/13-v0.6.0-third-iteration.md) | 1 | 146782 |
+| [`prototype/versions/14-v0.7.1.md`](prototype/versions/14-v0.7.1.md) | 1 | 143722 |
 | [`providers/candidate-sources.md`](providers/candidate-sources.md) | 22 | 19305 |
 | [`providers/overview.md`](providers/overview.md) | 3 | 4589 |
 | [`research/dvb-blind-scan.md`](research/dvb-blind-scan.md) | 15 | 15936 |
@@ -191,49 +190,49 @@ Dispositions: `MOVE` — carried into the destination; `DUPLICATE` — retained 
 | USP-062 | `Userscript Discovery Prototype.md` | 39. A practical scheduler | `architecture/scheduler.md` | MOVE | DESIGNED |
 | USP-063 | `Userscript Discovery Prototype.md` | 40. The engine can now become event-driven | `architecture/system-model.md` | MOVE | DESIGNED |
 | USP-064 | `Userscript Discovery Prototype.md` | 41. The resulting architecture | `architecture/overview.md` | MOVE | DESIGNED |
-| USP-065 | `Userscript Discovery Prototype.md` | *turn 12 you lead-in* | `prototype/versions/01-v0.1.0.md` | MOVE | CURRENT |
-| USP-066 | `Userscript Discovery Prototype.md` | *turn 13 chatgpt lead-in* | `prototype/versions/01-v0.1.0.md` | MOVE | CURRENT |
-| USP-067 | `Userscript Discovery Prototype.md` | *turn 13 chatgpt lead-in* | `prototype/overview.md` | MOVE | CURRENT |
+| USP-065 | `Userscript Discovery Prototype.md` | *turn 12 you lead-in* | `prototype/versions/01-v0.1.0.md` | MOVE | UNVERIFIED |
+| USP-066 | `Userscript Discovery Prototype.md` | *turn 13 chatgpt lead-in* | `prototype/versions/01-v0.1.0.md` | MOVE | UNVERIFIED |
+| USP-067 | `Userscript Discovery Prototype.md` | *turn 13 chatgpt lead-in* | `prototype/overview.md` | MOVE | UNVERIFIED |
 | USP-068 | `Userscript Discovery Prototype.md` | The DVB analogy | `research/dvb-blind-scan.md` | MOVE | DESIGNED |
-| USP-069 | `Userscript Discovery Prototype.md` | *turn 14 you lead-in* | `prototype/versions/02-v0.2.0.md` | MOVE | CURRENT |
-| USP-070 | `Userscript Discovery Prototype.md` | *turn 15 chatgpt lead-in* | `prototype/versions/02-v0.2.0.md` | MOVE | CURRENT |
+| USP-069 | `Userscript Discovery Prototype.md` | *turn 14 you lead-in* | `prototype/versions/02-v0.2.0.md` | MOVE | UNVERIFIED |
+| USP-070 | `Userscript Discovery Prototype.md` | *turn 15 chatgpt lead-in* | `prototype/versions/02-v0.2.0.md` | MOVE | UNVERIFIED |
 | USP-071 | `Userscript Discovery Prototype.md` | What changed — 1. Concurrent claiming is now explicit | `architecture/concurrency.md` | MOVE | DESIGNED |
 | USP-072 | `Userscript Discovery Prototype.md` | What changed — 2. HTML is no longer special | `providers/overview.md` | MOVE | DESIGNED |
-| USP-073 | `Userscript Discovery Prototype.md` | What changed — 3. The actual scope is now explicit | `prototype/limitations.md` | MOVE | CURRENT |
+| USP-073 | `Userscript Discovery Prototype.md` | What changed — 3. The actual scope is now explicit | `prototype/limitations.md` | MOVE | UNVERIFIED |
 | CAP-001 | `Continue Architecture Planning.md` | *turn 0 you lead-in* | `prototype/versions/00-v0.1.0-and-v0.2.0-paste.md` | DUPLICATE | UNVERIFIED |
-| CAP-002 | `Continue Architecture Planning.md` | *turn 1 chatgpt lead-in* | `prototype/overview.md` | MOVE | CURRENT |
-| CAP-003 | `Continue Architecture Planning.md` | *turn 2 you lead-in* | `prototype/versions/03-v0.3.0.md` | MOVE | CURRENT |
-| CAP-004 | `Continue Architecture Planning.md` | *turn 3 chatgpt lead-in* | `prototype/versions/03-v0.3.0.md` | MOVE | CURRENT |
-| CAP-005 | `Continue Architecture Planning.md` | What changed from v0.2.0 | `prototype/userscript.md` | MOVE | CURRENT |
+| CAP-002 | `Continue Architecture Planning.md` | *turn 1 chatgpt lead-in* | `prototype/overview.md` | MOVE | UNVERIFIED |
+| CAP-003 | `Continue Architecture Planning.md` | *turn 2 you lead-in* | `prototype/versions/03-v0.3.0.md` | MOVE | UNVERIFIED |
+| CAP-004 | `Continue Architecture Planning.md` | *turn 3 chatgpt lead-in* | `prototype/versions/03-v0.3.0.md` | MOVE | UNVERIFIED |
+| CAP-005 | `Continue Architecture Planning.md` | What changed from v0.2.0 | `prototype/userscript.md` | MOVE | UNVERIFIED |
 | CAP-006 | `Continue Architecture Planning.md` | *turn 4 you lead-in* | — | ARCHIVE | UNVERIFIED |
 | CAP-007 | `Continue Architecture Planning.md` | *turn 5 chatgpt lead-in* | `prototype/versions/04-v0.4.0-plan.md` | MOVE | FUTURE |
 | CAP-008 | `Continue Architecture Planning.md` | The biggest v0.4 improvement | `prototype/versions/04-v0.4.0-plan.md` | MOVE | FUTURE |
-| CAP-009 | `Continue Architecture Planning.md` | *turn 6 you lead-in* | `prototype/versions/05-v0.4.0.md` | MOVE | CURRENT |
-| CAP-010 | `Continue Architecture Planning.md` | *turn 7 chatgpt lead-in* | `prototype/versions/05-v0.4.0.md` | MOVE | CURRENT |
-| CAP-011 | `Continue Architecture Planning.md` | Notable v0.4.0 behavior | `prototype/userscript.md` | MOVE | CURRENT |
+| CAP-009 | `Continue Architecture Planning.md` | *turn 6 you lead-in* | `prototype/versions/05-v0.4.0.md` | MOVE | UNVERIFIED |
+| CAP-010 | `Continue Architecture Planning.md` | *turn 7 chatgpt lead-in* | `prototype/versions/05-v0.4.0.md` | MOVE | UNVERIFIED |
+| CAP-011 | `Continue Architecture Planning.md` | Notable v0.4.0 behavior | `prototype/userscript.md` | MOVE | UNVERIFIED |
 | CAP-012 | `Continue Architecture Planning.md` | *turn 8 you lead-in* | — | ARCHIVE | UNVERIFIED |
-| CAP-013 | `Continue Architecture Planning.md` | *turn 9 chatgpt lead-in* | `prototype/versions/06-v0.5.0.md` | MOVE | CURRENT |
-| CAP-014 | `Continue Architecture Planning.md` | *turn 9 chatgpt lead-in* | `prototype/userscript.md` | MOVE | CURRENT |
+| CAP-013 | `Continue Architecture Planning.md` | *turn 9 chatgpt lead-in* | `prototype/versions/06-v0.5.0.md` | MOVE | UNVERIFIED |
+| CAP-014 | `Continue Architecture Planning.md` | *turn 9 chatgpt lead-in* | `prototype/userscript.md` | MOVE | UNVERIFIED |
 | CAP-015 | `Continue Architecture Planning.md` | *turn 10 you lead-in* | — | ARCHIVE | UNVERIFIED |
-| CAP-016 | `Continue Architecture Planning.md` | *turn 11 chatgpt lead-in* | `prototype/versions/07-v0.4.0-second-iteration.md` | MOVE | CURRENT |
-| CAP-017 | `Continue Architecture Planning.md` | What changed from v0.3.0 | `prototype/userscript.md` | MOVE | CURRENT |
+| CAP-016 | `Continue Architecture Planning.md` | *turn 11 chatgpt lead-in* | `prototype/versions/07-v0.4.0-second-iteration.md` | MOVE | UNVERIFIED |
+| CAP-017 | `Continue Architecture Planning.md` | What changed from v0.3.0 | `prototype/userscript.md` | MOVE | UNVERIFIED |
 | CAP-018 | `Continue Architecture Planning.md` | *turn 12 you lead-in* | — | ARCHIVE | UNVERIFIED |
 | CAP-019 | `Continue Architecture Planning.md` | *turn 13 chatgpt lead-in* | `prototype/versions/08-v0.5.0-plan.md` | MOVE | FUTURE |
 | CAP-020 | `Continue Architecture Planning.md` | *turn 14 you lead-in* | — | ARCHIVE | UNVERIFIED |
-| CAP-021 | `Continue Architecture Planning.md` | *turn 15 chatgpt lead-in* | `prototype/versions/09-v0.5.0-second-iteration.md` | MOVE | CURRENT |
-| CAP-022 | `Continue Architecture Planning.md` | v0.5 architecture | `prototype/userscript.md` | MOVE | CURRENT |
+| CAP-021 | `Continue Architecture Planning.md` | *turn 15 chatgpt lead-in* | `prototype/versions/09-v0.5.0-second-iteration.md` | MOVE | UNVERIFIED |
+| CAP-022 | `Continue Architecture Planning.md` | v0.5 architecture | `prototype/userscript.md` | MOVE | UNVERIFIED |
 | CAP-023 | `Continue Architecture Planning.md` | *turn 16 you lead-in* | — | ARCHIVE | UNVERIFIED |
-| CAP-024 | `Continue Architecture Planning.md` | *turn 17 chatgpt lead-in* | `prototype/versions/10-v0.6.0.md` | MOVE | CURRENT |
-| CAP-025 | `Continue Architecture Planning.md` | What v0.6 changes architecturally | `prototype/userscript.md` | MOVE | CURRENT |
+| CAP-024 | `Continue Architecture Planning.md` | *turn 17 chatgpt lead-in* | `prototype/versions/10-v0.6.0.md` | MOVE | UNVERIFIED |
+| CAP-025 | `Continue Architecture Planning.md` | What v0.6 changes architecturally | `prototype/userscript.md` | MOVE | UNVERIFIED |
 | CAP-026 | `Continue Architecture Planning.md` | *turn 18 you lead-in* | — | ARCHIVE | UNVERIFIED |
-| CAP-027 | `Continue Architecture Planning.md` | *turn 19 chatgpt lead-in* | `prototype/versions/11-v0.5.0-third-iteration.md` | MOVE | CURRENT |
-| CAP-028 | `Continue Architecture Planning.md` | What v0.5.0 changes architecturally | `prototype/userscript.md` | MOVE | CURRENT |
+| CAP-027 | `Continue Architecture Planning.md` | *turn 19 chatgpt lead-in* | `prototype/versions/11-v0.5.0-third-iteration.md` | MOVE | UNVERIFIED |
+| CAP-028 | `Continue Architecture Planning.md` | What v0.5.0 changes architecturally | `prototype/userscript.md` | MOVE | UNVERIFIED |
 | CAP-029 | `Continue Architecture Planning.md` | *turn 20 you lead-in* | — | ARCHIVE | UNVERIFIED |
-| CAP-030 | `Continue Architecture Planning.md` | *turn 21 chatgpt lead-in* | `prototype/versions/12-v0.6.0-second-iteration.md` | MOVE | CURRENT |
-| CAP-031 | `Continue Architecture Planning.md` | v0.6.0's main architectural additions | `prototype/userscript.md` | MOVE | CURRENT |
+| CAP-030 | `Continue Architecture Planning.md` | *turn 21 chatgpt lead-in* | `prototype/versions/12-v0.6.0-second-iteration.md` | MOVE | UNVERIFIED |
+| CAP-031 | `Continue Architecture Planning.md` | v0.6.0's main architectural additions | `prototype/userscript.md` | MOVE | UNVERIFIED |
 | CAP-032 | `Continue Architecture Planning.md` | *turn 22 you lead-in* | — | ARCHIVE | UNVERIFIED |
-| CAP-033 | `Continue Architecture Planning.md` | *turn 23 chatgpt lead-in* | `prototype/versions/13-v0.6.0-third-iteration.md` | MOVE | CURRENT |
-| CAP-034 | `Continue Architecture Planning.md` | What changed in v0.6 | `prototype/userscript.md` | MOVE | CURRENT |
+| CAP-033 | `Continue Architecture Planning.md` | *turn 23 chatgpt lead-in* | `prototype/versions/13-v0.6.0-third-iteration.md` | MOVE | UNVERIFIED |
+| CAP-034 | `Continue Architecture Planning.md` | What changed in v0.6 | `prototype/userscript.md` | MOVE | UNVERIFIED |
 | CAP-035 | `Continue Architecture Planning.md` | *turn 24 you lead-in* | — | ARCHIVE | UNVERIFIED |
 | CAP-036 | `Continue Architecture Planning.md` | v0.7.0 — Discovery Graph + Acquisition Planner | `architecture/discovery-model.md` | MOVE | DESIGNED |
 | CAP-037 | `Continue Architecture Planning.md` | v0.7 objectives | `architecture/discovery-model.md` | MOVE | DESIGNED |
@@ -242,14 +241,14 @@ Dispositions: `MOVE` — carried into the destination; `DUPLICATE` — retained 
 | CAP-040 | `Continue Architecture Planning.md` | v0.7 state machine | `architecture/discovery-model.md` | MOVE | DESIGNED |
 | CAP-041 | `Continue Architecture Planning.md` | The deeper abstraction | `concepts/overview.md` | MOVE | DESIGNED |
 | CAP-042 | `Continue Architecture Planning.md` | *turn 26 you lead-in* | — | ARCHIVE | UNVERIFIED |
-| CAP-043 | `Continue Architecture Planning.md` | *turn 27 chatgpt lead-in* | `prototype/versions/14-v0.7.1.md` | MOVE | CURRENT |
-| CAP-044 | `Continue Architecture Planning.md` | *turn 27 chatgpt lead-in* | `prototype/userscript.md` | MOVE | CURRENT |
-| CAP-045 | `Continue Architecture Planning.md` | What v0.7.1 actually changes | `prototype/userscript.md` | MOVE | CURRENT |
-| CAP-046 | `Continue Architecture Planning.md` | Before | `prototype/userscript.md` | MOVE | CURRENT |
-| CAP-047 | `Continue Architecture Planning.md` | Now | `prototype/userscript.md` | MOVE | CURRENT |
+| CAP-043 | `Continue Architecture Planning.md` | *turn 27 chatgpt lead-in* | `prototype/versions/14-v0.7.1.md` | MOVE | UNVERIFIED |
+| CAP-044 | `Continue Architecture Planning.md` | *turn 27 chatgpt lead-in* | `prototype/userscript.md` | MOVE | UNVERIFIED |
+| CAP-045 | `Continue Architecture Planning.md` | What v0.7.1 actually changes | `prototype/userscript.md` | MOVE | UNVERIFIED |
+| CAP-046 | `Continue Architecture Planning.md` | Before | `prototype/userscript.md` | MOVE | UNVERIFIED |
+| CAP-047 | `Continue Architecture Planning.md` | Now | `prototype/userscript.md` | MOVE | UNVERIFIED |
 | CAP-048 | `Continue Architecture Planning.md` | 2. The ledger becomes the scan's causal trace | `architecture/provenance.md` | MOVE | DESIGNED |
 | CAP-049 | `Continue Architecture Planning.md` | 3. PerformanceObserver correction | `architecture/observation-model.md` | MOVE | DESIGNED |
-| CAP-050 | `Continue Architecture Planning.md` | 4. Candidate state machine | `prototype/userscript.md` | MOVE | CURRENT |
+| CAP-050 | `Continue Architecture Planning.md` | 4. Candidate state machine | `prototype/userscript.md` | MOVE | UNVERIFIED |
 | CAP-051 | `Continue Architecture Planning.md` | 5. The ledger is not merely logging | `architecture/provenance.md` | MOVE | DESIGNED |
 | CAP-052 | `Continue Architecture Planning.md` | 6. One remaining architectural limitation | `prototype/limitations.md` | MOVE | OPEN |
 | CAP-053 | `Continue Architecture Planning.md` | 7. Architecture after v0.7.1 | `architecture/system-model.md` | MOVE | DESIGNED |
@@ -1179,7 +1178,7 @@ Dispositions: `MOVE` — carried into the destination; `DUPLICATE` — retained 
 | CAP-977 | `Continue Architecture Planning.md` | What the DVB analogy actually contributed | `research/dvb-blind-scan.md` | MOVE | DESIGNED |
 | CAP-978 | `Continue Architecture Planning.md` | The most important safety boundary | `architecture/work-and-frontier.md` | MOVE | DESIGNED |
 | CAP-979 | `Continue Architecture Planning.md` | Final architecture | `architecture/system-model.md` | MOVE | DESIGNED |
-| CAP-980 | `Continue Architecture Planning.md` | What the userscript should and should not become | `prototype/limitations.md` | MOVE | CURRENT |
+| CAP-980 | `Continue Architecture Planning.md` | What the userscript should and should not become | `prototype/limitations.md` | MOVE | UNVERIFIED |
 | CAP-981 | `Continue Architecture Planning.md` | Final principles | `concepts/overview.md` | MOVE | DESIGNED |
 | CAP-982 | `Continue Architecture Planning.md` | *turn 74 you lead-in* | `architecture/work-and-frontier.md` | MOVE | DESIGNED |
 | CAP-983 | `Continue Architecture Planning.md` | v0.30 — Unified Frontier Arbitration | `architecture/work-and-frontier.md` | MOVE | DESIGNED |
@@ -1309,7 +1308,7 @@ Dispositions: `MOVE` — carried into the destination; `DUPLICATE` — retained 
 | CAP-1107 | `Continue Architecture Planning.md` | 33.27 Coordination events | `architecture/concurrency.md` | MOVE | DESIGNED |
 | CAP-1108 | `Continue Architecture Planning.md` | 33.28 Multi-worker failure modes | `validation/failure-taxonomy.md` | MOVE | DESIGNED |
 | CAP-1109 | `Continue Architecture Planning.md` | 33.29 Split-brain | `architecture/concurrency.md` | MOVE | DESIGNED |
-| CAP-1110 | `Continue Architecture Planning.md` | 33.30 What the browser prototype can guarantee | `prototype/limitations.md` | MOVE | CURRENT |
+| CAP-1110 | `Continue Architecture Planning.md` | 33.30 What the browser prototype can guarantee | `prototype/limitations.md` | MOVE | UNVERIFIED |
 | CAP-1111 | `Continue Architecture Planning.md` | 33.31 Coordination scope | `architecture/concurrency.md` | MOVE | DESIGNED |
 | CAP-1112 | `Continue Architecture Planning.md` | 33.32 v0.33 architecture | `architecture/system-model.md` | MOVE | DESIGNED |
 | CAP-1113 | `Continue Architecture Planning.md` | 33.33 The complete ownership invariant | `validation/invariants.md` | MOVE | DESIGNED |
@@ -1360,7 +1359,7 @@ Dispositions: `MOVE` — carried into the destination; `DUPLICATE` — retained 
 | CAP-1158 | `Continue Architecture Planning.md` | PROVED by the architecture | `validation/verification.md` | MOVE | OPEN |
 | CAP-1159 | `Continue Architecture Planning.md` | ARGUMENT | `validation/verification.md` | MOVE | OPEN |
 | CAP-1160 | `Continue Architecture Planning.md` | OPEN | `validation/verification.md` | MOVE | OPEN |
-| CAP-1161 | `Continue Architecture Planning.md` | 34.29 Prototype Boundary | `prototype/limitations.md` | MOVE | CURRENT |
+| CAP-1161 | `Continue Architecture Planning.md` | 34.29 Prototype Boundary | `prototype/limitations.md` | MOVE | UNVERIFIED |
 | CAP-1162 | `Continue Architecture Planning.md` | 34.30 v0.34 → v0.35 | `roadmap/future-work.md` | MOVE | FUTURE |
 | CAP-1163 | `Continue Architecture Planning.md` | *turn 84 you lead-in* | — | ARCHIVE | UNVERIFIED |
 | CAP-1164 | `Continue Architecture Planning.md` | Conclusion — Generic Discovery Engine | `concepts/overview.md` | MOVE | DESIGNED |
@@ -1442,49 +1441,49 @@ Full record per specification section 4. `Level` is the original heading level; 
 | USP-062 | 62 | 2 | — | 39. A practical scheduler | SCHEDULING | — | — | — |
 | USP-063 | 63 | 2 | — | 40. The engine can now become event-driven | ARCHITECTURE | — | — | — |
 | USP-064 | 64 | 2 | — | 41. The resulting architecture | ARCHITECTURE | — | — | — |
-| USP-065 | 65 | — | — | — | IMPLEMENTATION | `CAP-001` | [D-02](REVIEW-NOTES.md#d-02--) | lead-in of the following section |
-| USP-066 | 66 | — | — | — | IMPLEMENTATION | `CAP-001` | [D-02](REVIEW-NOTES.md#d-02--) | — |
-| USP-067 | 67 | — | — | — | PROTOTYPE | — | — | prototype positioning |
+| USP-065 | 65 | — | — | — | IMPLEMENTATION | `CAP-001` | [D-02](REVIEW-NOTES.md#d-02--) | lead-in of the following section; the source presents this as the delivered prototype; no implementation file in this repository verifies it |
+| USP-066 | 66 | — | — | — | IMPLEMENTATION | `CAP-001` | [D-02](REVIEW-NOTES.md#d-02--) | the source presents this as the delivered prototype; no implementation file in this repository verifies it |
+| USP-067 | 67 | — | — | — | PROTOTYPE | — | — | prototype positioning; the source presents this as the delivered prototype; no implementation file in this repository verifies it |
 | USP-068 | 68 | 3 | — | The DVB analogy | DVB_ANALOGY | — | — | — |
-| USP-069 | 69 | — | — | — | IMPLEMENTATION | `CAP-001` | [D-02](REVIEW-NOTES.md#d-02--) | lead-in of the following section |
-| USP-070 | 70 | — | — | — | IMPLEMENTATION | `CAP-001` | [D-02](REVIEW-NOTES.md#d-02--) | — |
+| USP-069 | 69 | — | — | — | IMPLEMENTATION | `CAP-001` | [D-02](REVIEW-NOTES.md#d-02--) | lead-in of the following section; the source presents this as the delivered prototype; no implementation file in this repository verifies it |
+| USP-070 | 70 | — | — | — | IMPLEMENTATION | `CAP-001` | [D-02](REVIEW-NOTES.md#d-02--) | the source presents this as the delivered prototype; no implementation file in this repository verifies it |
 | USP-071 | 71 | 3 | — | What changed — 1. Concurrent claiming is now explicit | CONCURRENCY | — | [C-03](REVIEW-NOTES.md#c-03--candidate-claiming-single-thread-assumption-versus-distributed-claiming) | split at numbered boundary |
 | USP-072 | 72 | 3 | — | What changed — 2. HTML is no longer special | PROVIDER | — | — | split at numbered boundary |
-| USP-073 | 73 | 3 | — | What changed — 3. The actual scope is now explicit | SCOPE | — | — | split at numbered boundary |
+| USP-073 | 73 | 3 | — | What changed — 3. The actual scope is now explicit | SCOPE | — | — | split at numbered boundary; the source presents this as the delivered prototype; no implementation file in this repository verifies it |
 | CAP-001 | 1 | — | — | — | DUPLICATE | `USP-065`, `USP-066`, `USP-069`, `USP-070` | [D-01](REVIEW-NOTES.md#d-01--) | near-duplicate of prototype/versions/01-v0.1.0.md and 02-v0.2.0.md; retained because both copies are damaged differently |
-| CAP-002 | 2 | — | — | — | PROTOTYPE | — | — | assessment of the initial scripts |
-| CAP-003 | 3 | — | — | — | IMPLEMENTATION | — | — | lead-in of the following section |
-| CAP-004 | 4 | — | — | — | IMPLEMENTATION | — | — | — |
-| CAP-005 | 5 | 3 | — | v0.3 — What changed from v0.2.0 | HISTORY | — | — | — |
+| CAP-002 | 2 | — | — | — | PROTOTYPE | — | — | assessment of the initial scripts; the source presents this as the delivered prototype; no implementation file in this repository verifies it |
+| CAP-003 | 3 | — | — | — | IMPLEMENTATION | — | — | lead-in of the following section; the source presents this as the delivered prototype; no implementation file in this repository verifies it |
+| CAP-004 | 4 | — | — | — | IMPLEMENTATION | — | — | the source presents this as the delivered prototype; no implementation file in this repository verifies it |
+| CAP-005 | 5 | 3 | — | v0.3 — What changed from v0.2.0 | HISTORY | — | — | the source presents this as the delivered prototype; no implementation file in this repository verifies it |
 | CAP-006 | 6 | — | — | — | UNKNOWN | — | — | conversation continuation marker; not carried into the tree (retained in archive/) |
 | CAP-007 | 7 | — | — | — | ROADMAP | — | — | — |
 | CAP-008 | 8 | 3 | — | v0.4 — The biggest v0.4 improvement | ROADMAP | — | — | — |
-| CAP-009 | 9 | — | — | — | IMPLEMENTATION | — | — | lead-in of the following section |
-| CAP-010 | 10 | — | — | — | IMPLEMENTATION | — | — | — |
-| CAP-011 | 11 | 3 | — | v0.4 — Notable v0.4.0 behavior | HISTORY | — | — | — |
+| CAP-009 | 9 | — | — | — | IMPLEMENTATION | — | — | lead-in of the following section; the source presents this as the delivered prototype; no implementation file in this repository verifies it |
+| CAP-010 | 10 | — | — | — | IMPLEMENTATION | — | — | the source presents this as the delivered prototype; no implementation file in this repository verifies it |
+| CAP-011 | 11 | 3 | — | v0.4 — Notable v0.4.0 behavior | HISTORY | — | — | the source presents this as the delivered prototype; no implementation file in this repository verifies it |
 | CAP-012 | 12 | — | — | — | UNKNOWN | — | — | conversation continuation marker; not carried into the tree (retained in archive/) |
-| CAP-013 | 13 | — | — | — | IMPLEMENTATION | — | [C-01](REVIEW-NOTES.md#c-01--prototype-version-numbering-is-not-monotonic) | — |
-| CAP-014 | 14 | — | — | — | HISTORY | — | — | — |
+| CAP-013 | 13 | — | — | — | IMPLEMENTATION | — | [C-01](REVIEW-NOTES.md#c-01--prototype-version-numbering-is-not-monotonic) | the source presents this as the delivered prototype; no implementation file in this repository verifies it |
+| CAP-014 | 14 | — | — | — | HISTORY | — | — | the source presents this as the delivered prototype; no implementation file in this repository verifies it |
 | CAP-015 | 15 | — | — | — | UNKNOWN | — | — | conversation continuation marker; not carried into the tree (retained in archive/) |
-| CAP-016 | 16 | — | — | — | IMPLEMENTATION | — | [C-01](REVIEW-NOTES.md#c-01--prototype-version-numbering-is-not-monotonic) | — |
-| CAP-017 | 17 | 3 | — | v0.4 — What changed from v0.3.0 | HISTORY | — | — | — |
+| CAP-016 | 16 | — | — | — | IMPLEMENTATION | — | [C-01](REVIEW-NOTES.md#c-01--prototype-version-numbering-is-not-monotonic) | the source presents this as the delivered prototype; no implementation file in this repository verifies it |
+| CAP-017 | 17 | 3 | — | v0.4 — What changed from v0.3.0 | HISTORY | — | — | the source presents this as the delivered prototype; no implementation file in this repository verifies it |
 | CAP-018 | 18 | — | — | — | UNKNOWN | — | — | conversation continuation marker; not carried into the tree (retained in archive/) |
 | CAP-019 | 19 | — | — | — | ROADMAP | — | — | — |
 | CAP-020 | 20 | — | — | — | UNKNOWN | — | — | conversation continuation marker; not carried into the tree (retained in archive/) |
-| CAP-021 | 21 | — | — | — | IMPLEMENTATION | — | — | — |
-| CAP-022 | 22 | 3 | — | v0.5 architecture | HISTORY | — | — | explicit override |
+| CAP-021 | 21 | — | — | — | IMPLEMENTATION | — | — | the source presents this as the delivered prototype; no implementation file in this repository verifies it |
+| CAP-022 | 22 | 3 | — | v0.5 architecture | HISTORY | — | — | explicit override; the source presents this as the delivered prototype; no implementation file in this repository verifies it |
 | CAP-023 | 23 | — | — | — | UNKNOWN | — | — | conversation continuation marker; not carried into the tree (retained in archive/) |
-| CAP-024 | 24 | — | — | — | IMPLEMENTATION | — | [C-01](REVIEW-NOTES.md#c-01--prototype-version-numbering-is-not-monotonic) | — |
-| CAP-025 | 25 | 3 | — | v0.5 — What v0.6 changes architecturally | HISTORY | — | — | — |
+| CAP-024 | 24 | — | — | — | IMPLEMENTATION | — | [C-01](REVIEW-NOTES.md#c-01--prototype-version-numbering-is-not-monotonic) | the source presents this as the delivered prototype; no implementation file in this repository verifies it |
+| CAP-025 | 25 | 3 | — | v0.5 — What v0.6 changes architecturally | HISTORY | — | — | the source presents this as the delivered prototype; no implementation file in this repository verifies it |
 | CAP-026 | 26 | — | — | — | UNKNOWN | — | — | conversation continuation marker; not carried into the tree (retained in archive/) |
-| CAP-027 | 27 | — | — | — | IMPLEMENTATION | — | [C-01](REVIEW-NOTES.md#c-01--prototype-version-numbering-is-not-monotonic) | — |
-| CAP-028 | 28 | 3 | — | v0.5 — What v0.5.0 changes architecturally | HISTORY | — | — | — |
+| CAP-027 | 27 | — | — | — | IMPLEMENTATION | — | [C-01](REVIEW-NOTES.md#c-01--prototype-version-numbering-is-not-monotonic) | the source presents this as the delivered prototype; no implementation file in this repository verifies it |
+| CAP-028 | 28 | 3 | — | v0.5 — What v0.5.0 changes architecturally | HISTORY | — | — | the source presents this as the delivered prototype; no implementation file in this repository verifies it |
 | CAP-029 | 29 | — | — | — | UNKNOWN | — | — | conversation continuation marker; not carried into the tree (retained in archive/) |
-| CAP-030 | 30 | — | — | — | IMPLEMENTATION | — | — | — |
-| CAP-031 | 31 | 3 | — | v0.6.0's main architectural additions | HISTORY | — | — | explicit override |
+| CAP-030 | 30 | — | — | — | IMPLEMENTATION | — | — | the source presents this as the delivered prototype; no implementation file in this repository verifies it |
+| CAP-031 | 31 | 3 | — | v0.6.0's main architectural additions | HISTORY | — | — | explicit override; the source presents this as the delivered prototype; no implementation file in this repository verifies it |
 | CAP-032 | 32 | — | — | — | UNKNOWN | — | — | conversation continuation marker; not carried into the tree (retained in archive/) |
-| CAP-033 | 33 | — | — | — | IMPLEMENTATION | — | — | — |
-| CAP-034 | 34 | 3 | — | v0.6 — What changed in v0.6 | HISTORY | — | — | — |
+| CAP-033 | 33 | — | — | — | IMPLEMENTATION | — | — | the source presents this as the delivered prototype; no implementation file in this repository verifies it |
+| CAP-034 | 34 | 3 | — | v0.6 — What changed in v0.6 | HISTORY | — | — | the source presents this as the delivered prototype; no implementation file in this repository verifies it |
 | CAP-035 | 35 | — | — | — | UNKNOWN | — | — | conversation continuation marker; not carried into the tree (retained in archive/) |
 | CAP-036 | 36 | 2 | — | v0.7.0 — Discovery Graph + Acquisition Planner | DISCOVERY | — | — | — |
 | CAP-037 | 37 | 3 | v0.7.0 — Discovery Graph + Acquisition Planner | v0.7 objectives | DATA_MODEL | — | — | — |
@@ -1493,14 +1492,14 @@ Full record per specification section 4. `Level` is the original heading level; 
 | CAP-040 | 40 | 2 | — | v0.7 state machine | DATA_MODEL | — | — | — |
 | CAP-041 | 41 | 2 | — | v0.7 — The deeper abstraction | CONCEPT | — | — | — |
 | CAP-042 | 42 | — | — | — | UNKNOWN | — | — | conversation continuation marker; not carried into the tree (retained in archive/) |
-| CAP-043 | 43 | — | — | — | IMPLEMENTATION | — | — | — |
-| CAP-044 | 44 | — | — | — | HISTORY | — | — | — |
-| CAP-045 | 45 | 1 | — | v0.7 — What v0.7.1 actually changes | HISTORY | — | — | — |
-| CAP-046 | 46 | 3 | What v0.7.1 actually changes | v0.7 — Before | HISTORY | — | — | — |
-| CAP-047 | 47 | 3 | What v0.7.1 actually changes | v0.7 — Now | HISTORY | — | — | — |
+| CAP-043 | 43 | — | — | — | IMPLEMENTATION | — | — | the source presents this as the delivered prototype; no implementation file in this repository verifies it |
+| CAP-044 | 44 | — | — | — | HISTORY | — | — | the source presents this as the delivered prototype; no implementation file in this repository verifies it |
+| CAP-045 | 45 | 1 | — | v0.7 — What v0.7.1 actually changes | HISTORY | — | — | the source presents this as the delivered prototype; no implementation file in this repository verifies it |
+| CAP-046 | 46 | 3 | What v0.7.1 actually changes | v0.7 — Before | HISTORY | — | — | the source presents this as the delivered prototype; no implementation file in this repository verifies it |
+| CAP-047 | 47 | 3 | What v0.7.1 actually changes | v0.7 — Now | HISTORY | — | — | the source presents this as the delivered prototype; no implementation file in this repository verifies it |
 | CAP-048 | 48 | 1 | — | v0.7 — 2. The ledger becomes the scan's causal trace | PROVENANCE | — | — | explicit override |
 | CAP-049 | 49 | 1 | — | v0.7 — 3. PerformanceObserver correction | DATA_MODEL | — | — | explicit override |
-| CAP-050 | 50 | 1 | — | v0.7 — 4. Candidate state machine | HISTORY | — | — | — |
+| CAP-050 | 50 | 1 | — | v0.7 — 4. Candidate state machine | HISTORY | — | — | the source presents this as the delivered prototype; no implementation file in this repository verifies it |
 | CAP-051 | 51 | 1 | — | v0.7 — 5. The ledger is not merely logging | PROVENANCE | — | — | explicit override |
 | CAP-052 | 52 | 1 | — | v0.7 — 6. One remaining architectural limitation | LIMITATIONS | — | — | — |
 | CAP-053 | 53 | 1 | — | v0.7 — 7. Architecture after v0.7.1 | ARCHITECTURE | — | — | — |
@@ -2430,7 +2429,7 @@ Full record per specification section 4. `Level` is the original heading level; 
 | CAP-977 | 977 | 1 | — | v0.30 — What the DVB analogy actually contributed | DVB_ANALOGY | — | — | — |
 | CAP-978 | 978 | 1 | — | v0.30 — The most important safety boundary | SCHEDULING | — | — | — |
 | CAP-979 | 979 | 1 | — | v0.30 — Final architecture | ARCHITECTURE | — | — | — |
-| CAP-980 | 980 | 1 | — | v0.30 — What the userscript should and should not become | LIMITATIONS | — | — | explicit override |
+| CAP-980 | 980 | 1 | — | v0.30 — What the userscript should and should not become | LIMITATIONS | — | — | explicit override; the source presents this as the delivered prototype; no implementation file in this repository verifies it |
 | CAP-981 | 981 | 1 | — | v0.30 — Final principles | CONCEPT | — | — | — |
 | CAP-982 | 982 | — | — | — | SCHEDULING | — | — | lead-in of the following section |
 | CAP-983 | 983 | 1 | — | v0.30 — Unified Frontier Arbitration | SCHEDULING | — | — | — |
@@ -2560,7 +2559,7 @@ Full record per specification section 4. `Level` is the original heading level; 
 | CAP-1107 | 1107 | 1 | — | v0.33 — 33.27 Coordination events | CONCURRENCY | — | [C-03](REVIEW-NOTES.md#c-03--candidate-claiming-single-thread-assumption-versus-distributed-claiming) | — |
 | CAP-1108 | 1108 | 1 | — | v0.33 — 33.28 Multi-worker failure modes | CONCURRENCY | — | [C-03](REVIEW-NOTES.md#c-03--candidate-claiming-single-thread-assumption-versus-distributed-claiming) | — |
 | CAP-1109 | 1109 | 1 | — | v0.33 — 33.29 Split-brain | CONCURRENCY | — | [C-03](REVIEW-NOTES.md#c-03--candidate-claiming-single-thread-assumption-versus-distributed-claiming) | — |
-| CAP-1110 | 1110 | 1 | — | v0.33 — 33.30 What the browser prototype can guarantee | LIMITATIONS | — | — | explicit override |
+| CAP-1110 | 1110 | 1 | — | v0.33 — 33.30 What the browser prototype can guarantee | LIMITATIONS | — | — | explicit override; the source presents this as the delivered prototype; no implementation file in this repository verifies it |
 | CAP-1111 | 1111 | 1 | — | v0.33 — 33.31 Coordination scope | CONCURRENCY | — | [C-03](REVIEW-NOTES.md#c-03--candidate-claiming-single-thread-assumption-versus-distributed-claiming) | — |
 | CAP-1112 | 1112 | 1 | — | v0.33 — 33.32 v0.33 architecture | ARCHITECTURE | — | — | — |
 | CAP-1113 | 1113 | 1 | — | v0.33 — 33.33 The complete ownership invariant | VALIDATION | — | — | — |
@@ -2611,7 +2610,7 @@ Full record per specification section 4. `Level` is the original heading level; 
 | CAP-1158 | 1158 | 3 | 34.28 What v0.34 Actually Proves | v0.34 — PROVED by the architecture | VALIDATION | — | — | explicit override |
 | CAP-1159 | 1159 | 3 | 34.28 What v0.34 Actually Proves | v0.34 — ARGUMENT | VALIDATION | — | — | explicit override |
 | CAP-1160 | 1160 | 3 | 34.28 What v0.34 Actually Proves | v0.34 — OPEN | VALIDATION | — | — | explicit override |
-| CAP-1161 | 1161 | 1 | — | v0.34 — 34.29 Prototype Boundary | LIMITATIONS | — | — | explicit override |
+| CAP-1161 | 1161 | 1 | — | v0.34 — 34.29 Prototype Boundary | LIMITATIONS | — | — | explicit override; the source presents this as the delivered prototype; no implementation file in this repository verifies it |
 | CAP-1162 | 1162 | 1 | — | v0.34 — 34.30 v0.34 → v0.35 | ROADMAP | — | — | — |
 | CAP-1163 | 1163 | — | — | — | UNKNOWN | — | — | conversation continuation marker; not carried into the tree (retained in archive/) |
 | CAP-1164 | 1164 | 1 | — | v0.34 — Conclusion — Generic Discovery Engine | DISCOVERY | — | — | — |
@@ -2663,7 +2662,6 @@ Mechanically applied (specification section 16):
 | --- | --- | --- | --- |
 | USP-071 | What changed | What changed — 1. Concurrent claiming is now explicit | section split at its existing `**1.** / **2.** / **3.**` boundaries |
 | USP-072 | What changed | What changed — 2. HTML is no longer special | section split at its existing `**1.** / **2.** / **3.**` boundaries |
-| USP-073 | What changed | What changed — 3. The actual scope is now explicit | section split at its existing `**1.** / **2.** / **3.**` boundaries |
 
 ## Related Documents
 

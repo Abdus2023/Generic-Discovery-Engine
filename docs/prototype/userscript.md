@@ -1,10 +1,15 @@
 # Userscript Development Narrative
 
-> **Status:** CURRENT
+> **Status:** UNVERIFIED
 >
 > **Source:** `Continue Architecture Planning.md`
 >
 > **Purpose:** The change notes recorded alongside each userscript iteration, in conversation order.
+
+**Prototype declaration:** the source documents present this material as the
+delivered prototype. This repository contains no implementation file, so it is
+classified `UNVERIFIED` (specification section 8) rather than `CURRENT`. See
+[Review Notes → Unverified Claims](../REVIEW-NOTES.md#unverified-claims).
 
 ## Source Sections
 
@@ -36,6 +41,8 @@
 ### v0.3 — What changed from v0.2.0
 
 > **Source sections:** `CAP-005`
+>
+> **Note:** the source presents this as the delivered prototype; no implementation file in this repository verifies it
 
 The most important correction is **URL resolution**. In v0.2.0, parsing fetched HTML with `DOMParser` and then using `element.href` can resolve relative URLs against the parser-created document rather than reliably against the URL that was actually fetched. v0.3.0 explicitly resolves attributes against `observation.http.finalUrl`.
 
@@ -65,6 +72,8 @@ One design choice remains intentionally conservative: `sameOriginOnly: true`. Th
 ### v0.4 — Notable v0.4.0 behavior
 
 > **Source sections:** `CAP-011`
+>
+> **Note:** the source presents this as the delivered prototype; no implementation file in this repository verifies it
 
 The new **passive network observer** is deliberately different from the active scanner. When the page itself calls `fetch()` or XHR, the engine records that URL as a high-confidence candidate. It doesn't generate requests merely to create those observations.
 
@@ -92,6 +101,8 @@ One caveat with the network observer: because this is a userscript, whether it c
 
 <!-- CAP-014 | Continue Architecture Planning.md L13454–13472 | turn 9 | ChatGPT turn lead-in -->
 > **Source sections:** `CAP-014`
+>
+> **Note:** the source presents this as the delivered prototype; no implementation file in this repository verifies it
 
 One important architectural change in v0.5.0 is that **network observation is now a first-class observation source**, rather than merely another URL extractor. The resulting graph can distinguish:
 
@@ -117,6 +128,8 @@ The next logical step would be **v0.6.0**, where the engine can evolve from a UR
 ### v0.4 — What changed from v0.3.0
 
 > **Source sections:** `CAP-017`
+>
+> **Note:** the source presents this as the delivered prototype; no implementation file in this repository verifies it
 
 * **Network discovery:** observes page-context `fetch()` and `XMLHttpRequest` activity without capturing response bodies.
 * **Passive network discovery:** watches `PerformanceResourceTiming` entries as another source of URLs.
@@ -138,7 +151,7 @@ One limitation is intentional: the page-context `fetch`/XHR bridge observes **UR
 
 > **Source sections:** `CAP-022`
 >
-> **Note:** explicit override
+> **Note:** explicit override; the source presents this as the delivered prototype; no implementation file in this repository verifies it
 
 The important change is that **resource identity is now the canonical URL**, while the _way it was discovered_ is provenance:
 
@@ -175,6 +188,8 @@ One deliberate boundary remains: **observed POST/PUT/PATCH/DELETE requests are r
 ### v0.5 — What v0.6 changes architecturally
 
 > **Source sections:** `CAP-025`
+>
+> **Note:** the source presents this as the delivered prototype; no implementation file in this repository verifies it
 
 The key improvement is that **candidates are no longer the resource database**.
 
@@ -252,6 +267,8 @@ The next natural step for **v0.7** would be to turn the scheduler into a more fo
 ### v0.5 — What v0.5.0 changes architecturally
 
 > **Source sections:** `CAP-028`
+>
+> **Note:** the source presents this as the delivered prototype; no implementation file in this repository verifies it
 
 The important shift is that **URLs and resources are now separate from candidates**.
 
@@ -292,7 +309,7 @@ One deliberate safety/semantics change is that observed `POST`, `PUT`, `PATCH`, 
 
 > **Source sections:** `CAP-031`
 >
-> **Note:** explicit override
+> **Note:** explicit override; the source presents this as the delivered prototype; no implementation file in this repository verifies it
 
 The scheduler is now effectively:
 
@@ -350,6 +367,8 @@ The conceptual direction for the next version would be to move toward a true **e
 ### v0.6 — What changed in v0.6
 
 > **Source sections:** `CAP-034`
+>
+> **Note:** the source presents this as the delivered prototype; no implementation file in this repository verifies it
 
 * **Acquisition policy layer:** forms/media/binary resources are discovered but not automatically fetched by default.
 * **Per-origin budgets:** request count, minimum spacing, and concurrent requests are controlled independently for each origin.
@@ -367,6 +386,8 @@ One deliberate safety/semantic change is important: **a discovered form action i
 
 <!-- CAP-044 | Continue Architecture Planning.md L54115–54115 | turn 27 | ChatGPT turn lead-in -->
 > **Source sections:** `CAP-044`
+>
+> **Note:** the source presents this as the delivered prototype; no implementation file in this repository verifies it
 
 ---
 
@@ -374,6 +395,8 @@ One deliberate safety/semantic change is important: **a discovered form action i
 ## v0.7 — What v0.7.1 actually changes
 
 > **Source sections:** `CAP-045`
+>
+> **Note:** the source presents this as the delivered prototype; no implementation file in this repository verifies it
 
 The important change is not the provider code.
 
@@ -383,6 +406,8 @@ It is the **control-plane contract**.
 ### v0.7 — Before
 
 > **Source sections:** `CAP-046`
+>
+> **Note:** the source presents this as the delivered prototype; no implementation file in this repository verifies it
 
 ```
 Candidate
@@ -398,6 +423,8 @@ The implicit question was:
 ### v0.7 — Now
 
 > **Source sections:** `CAP-047`
+>
+> **Note:** the source presents this as the delivered prototype; no implementation file in this repository verifies it
 
 ```
 Candidate
@@ -431,6 +458,8 @@ That makes the acquisition boundary explicit.
 ## v0.7 — 4. Candidate state machine
 
 > **Source sections:** `CAP-050`
+>
+> **Note:** the source presents this as the delivered prototype; no implementation file in this repository verifies it
 
 The lifecycle is now explicit:
 

@@ -1,10 +1,15 @@
 # Prototype Overview
 
-> **Status:** CURRENT
+> **Status:** UNVERIFIED
 >
 > **Source:** `Continue Architecture Planning.md`; `Userscript Discovery Prototype.md`
 >
 > **Purpose:** What the browser userscript prototype is, where it came from and how its iterations are organised.
+
+**Prototype declaration:** the source documents present this material as the
+delivered prototype. This repository contains no implementation file, so it is
+classified `UNVERIFIED` (specification section 8) rather than `CURRENT`. See
+[Review Notes → Unverified Claims](../REVIEW-NOTES.md#unverified-claims).
 
 ## Source Sections
 
@@ -24,7 +29,7 @@
 <!-- USP-067 | Userscript Discovery Prototype.md L2967–3007 | turn 13 | ChatGPT turn lead-in -->
 > **Source sections:** `USP-067`
 >
-> **Note:** prototype positioning
+> **Note:** prototype positioning; the source presents this as the delivered prototype; no implementation file in this repository verifies it
 
 The important part is that this **isn't really a “web crawler” disguised as a DVB scanner**. Its architecture deliberately follows the model we developed:
 
@@ -71,7 +76,7 @@ The important part is that this **isn't really a “web crawler” disguised as 
 <!-- CAP-002 | Continue Architecture Planning.md L21–38 | turn 1 | ChatGPT turn lead-in -->
 > **Source sections:** `CAP-002`
 >
-> **Note:** assessment of the initial scripts
+> **Note:** assessment of the initial scripts; the source presents this as the delivered prototype; no implementation file in this repository verifies it
 
 I see you’ve provided **two versions of the same userscript**:
 

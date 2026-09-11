@@ -1,6 +1,6 @@
 # Prototype Scope and Limitations
 
-> **Status:** CURRENT
+> **Status:** OPEN
 >
 > **Source:** `Continue Architecture Planning.md`; `Userscript Discovery Prototype.md`
 >
@@ -28,7 +28,7 @@
 
 > **Source sections:** `USP-073`
 >
-> **Note:** split at numbered boundary
+> **Note:** split at numbered boundary; the source presents this as the delivered prototype; no implementation file in this repository verifies it
 
 **3. The actual scope is now explicit.**
 
@@ -117,7 +117,7 @@ That separation prevents a common mistake:
 
 > **Source sections:** `CAP-980`
 >
-> **Note:** explicit override
+> **Note:** explicit override; the source presents this as the delivered prototype; no implementation file in this repository verifies it
 
 The architecture is now considerably larger than a sensible userscript.
 
@@ -166,7 +166,7 @@ That is the natural convergence path with your broader **Rust + capability + evi
 
 > **Source sections:** `CAP-1110`
 >
-> **Note:** explicit override
+> **Note:** explicit override; the source presents this as the delivered prototype; no implementation file in this repository verifies it
 
 A single browser profile may reasonably provide:
 
@@ -212,7 +212,7 @@ That requires a real coordination service or distributed database.
 
 > **Source sections:** `CAP-1161`
 >
-> **Note:** explicit override
+> **Note:** explicit override; the source presents this as the delivered prototype; no implementation file in this repository verifies it
 
 For the userscript, a realistic implementation should initially support:
 
