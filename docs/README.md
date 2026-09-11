@@ -4,26 +4,21 @@
 >
 > **Source:** `Userscript Discovery Prototype.md`; `Continue Architecture Planning.md`
 >
-> **Purpose:** Index of the documentation tree produced by mechanically splitting the two original planning documents.
+> **Purpose:** Index of the documentation tree produced by the deterministic mechanical split of the two original planning documents.
 
-This documentation tree was produced by a **mechanical split** of two source documents:
+This tree was produced by a **mechanical split**. It answers *where the existing knowledge should live*; it does not answer *what the architecture should become*. Material was moved, grouped, given stable identifiers and cross-referenced. No architecture, algorithm, interface, requirement or example was added, removed, rewritten or resolved.
 
-- [`Userscript Discovery Prototype.md`](../archive/Userscript%20Discovery%20Prototype.md)
-- [`Continue Architecture Planning.md`](../archive/Continue%20Architecture%20Planning.md)
+Both source documents are retained verbatim under [`archive/`](../archive/) and are marked as archived source documents.
 
-The split moves, groups and cross-references existing material. It does not redesign the architecture, resolve contradictions, or add requirements. Contradictions and ambiguities found during the split are recorded in [Review Notes](REVIEW-NOTES.md) and left for a separate decision pass.
+## Reading order
 
-Both original documents are retained under [`archive/`](../archive/) for provenance.
-
-## How to navigate
-
-- Start with [Concept Overview](concepts/overview.md) for what the project is.
-- [Prototype Overview](prototype/overview.md) covers the working browser userscript.
-- [Architecture Overview](architecture/overview.md) and [System Model](architecture/system-model.md) cover the designed architecture.
-- [Invariants](validation/invariants.md) collects every invariant in one place.
-- [Future Work](roadmap/future-work.md) collects everything the sources mark as next boundary, still missing, or open.
-- [Source Map](SOURCE-MAP.md) maps every extracted section to its destination.
-- [Review Notes](REVIEW-NOTES.md) lists contradictions and defects found during the split.
+1. [Concept Overview](concepts/overview.md) — what the project is.
+2. [Prototype Overview](prototype/overview.md) — the working browser userscript.
+3. [Architecture Overview](architecture/overview.md) and [System Model](architecture/system-model.md) — the designed architecture.
+4. [Invariants](validation/invariants.md) — every invariant in one place.
+5. [Future Work](roadmap/future-work.md) — everything the sources mark as a next boundary, still missing, or open.
+6. [Source Map](SOURCE-MAP.md) — `USP-nnn` / `CAP-nnn` section identifiers and their destinations.
+7. [Review Notes](REVIEW-NOTES.md) — contradictions, defects and unverified claims.
 
 ## Concepts
 
@@ -95,7 +90,7 @@ Both original documents are retained under [`archive/`](../archive/) for provena
 
 ## Traceability
 
-- [Source Map](SOURCE-MAP.md)
-- [Review Notes](REVIEW-NOTES.md)
+- [Source Map](SOURCE-MAP.md) — 1,244 identified sections
+- [Review Notes](REVIEW-NOTES.md) — contradictions `C-01`…`C-11`, defects `D-01`…`D-05`
 - [Archived source documents](../archive/)
 

@@ -4,341 +4,237 @@
 >
 > **Source:** `Userscript Discovery Prototype.md`; `Continue Architecture Planning.md`
 >
-> **Purpose:** Contradictions, ambiguities and documentation defects found during the mechanical split, preserved without resolution.
+> **Purpose:** Unresolved issues recorded during the mechanical split. Nothing here has been resolved, reconciled or rewritten.
 
-These notes were produced by the mechanical split described in [Source Map](SOURCE-MAP.md).
-
-Nothing here has been resolved, reconciled or rewritten. Each entry records two (or more)
-statements from the source documents, why they appear inconsistent, and the decision that a
-human or a later architectural pass must make. Where a statement belongs to the working
-prototype, the current design, or a speculative future version, that is stated explicitly
-instead of being inferred from tone.
-
-Status vocabulary used below: **CURRENT** (implemented in a prototype artifact),
-**DESIGNED** (planned/designed in the conversation), **FUTURE** (explicitly marked as a next
-boundary or open problem), **UNVERIFIED** (the sources do not establish the status).
-
----
+Identifiers (`C-nn`, `D-nn`) are referenced from [Source Map](SOURCE-MAP.md) and from the generated documents.
 
 ## Contradictions
 
-### 1. Prototype version numbering is not monotonic
+### C-01 — Prototype version numbering is not monotonic
 
-**Source A** — `Continue Architecture Planning.md`, turn 9 produces a complete **v0.5.0** script,
-and turn 17 produces a complete **v0.6.0** script.
+**Source A** — turn 9 and turn 17 of `Continue Architecture Planning.md` produce complete **v0.5.0** and **v0.6.0** scripts.  
+> // @version      0.5.0 … // @version      0.6.0
 
-**Source B** — `Continue Architecture Planning.md`, turn 11 (after v0.5.0) produces "the
-complete **v0.4.0** userscript", and turn 19 (after v0.6.0) produces "the **complete v0.5.0**,
-implementing the architecture changes".
+**Source B** — turn 11 produces "the complete **v0.4.0** userscript" and turn 19 produces "the **complete v0.5.0**, implementing the architecture changes".  
+> // @version      0.4.0 … // @version      0.5.0
 
-**Why they appear inconsistent:** the conversation revisits earlier version numbers instead of
-only incrementing them. The artifacts differ, so they are not copies.
+**Why they appear inconsistent:** The conversation revisits earlier version numbers instead of only incrementing them; the artifacts differ, so they are not copies.
 
-**Decision required:** decide whether the artifacts are (a) alternative branches to keep,
-(b) abandoned drafts to archive, or (c) a single intended line with mislabelled versions.
+**Required decision:** Decide whether the artifacts are alternative branches to keep, abandoned drafts to archive, or one intended line with mislabelled versions.
 
-**Preserved as:** [prototype/versions/06-v0.5.0.md](prototype/versions/06-v0.5.0.md),
-[prototype/versions/07-v0.4.0-second-iteration.md](prototype/versions/07-v0.4.0-second-iteration.md),
-[prototype/versions/10-v0.6.0.md](prototype/versions/10-v0.6.0.md),
-[prototype/versions/11-v0.5.0-third-iteration.md](prototype/versions/11-v0.5.0-third-iteration.md).
-Status of all four artifacts: **CURRENT** (each is a delivered script); relative ordering
-**UNVERIFIED**.
+**Sections:** `CAP-013`, `CAP-016`, `CAP-024`, `CAP-027`
 
----
+### C-02 — The discovery pipeline is described with two different step sets
 
-### 2. The discovery pipeline is described with two different step sets
+**Source A** — v0.1.0 header comment  
+> candidate ↓ observation ↓ validation ↓ discovery ↓ new candidates ↓ scheduler
 
-**Source A** — `Userscript Discovery Prototype.md` L1958–1975, v0.1.0 header comment:
+**Source B** — "What changed" (v0.2.0) and every later version  
+> the acquisition layer produces an observation, and a protocol/content-specific provider decides whether that observation is meaningful
 
-```
-candidate
-    ↓
-observation
-    ↓
-validation
-    ↓
-discovery
-    ↓
-new candidates
-    ↓
-scheduler
-```
+**Why they appear inconsistent:** v0.1.0 has no acquisition object and no provider layer; it *validates* an observation. From v0.2.0 onward the step is *recognition* performed by a provider. Section 31 "Define the core objects" defines `LockResult`, which has no counterpart in the later object models.
 
-**Source B** — `Userscript Discovery Prototype.md` L4715–4805 ("What changed") and every later
-version: acquisition and *recognition* replace *validation*: "the acquisition layer produces an
-observation, and a protocol/content-specific provider decides whether that observation is
-meaningful."
+**Required decision:** Decide whether validation and recognition are the same step renamed, two different steps, or a step that changed responsibility; and whether `LockResult` is still a core object.
 
-**Why they appear inconsistent:** v0.1.0 has no acquisition object and no provider layer; it
-"validates" an observation. From v0.2.0 onward the step is "recognition" performed by a provider.
-`Userscript Discovery Prototype.md` §31 "Define the core objects" defines
-`Candidate / Observation / LockResult / Discovery` — `LockResult` has no counterpart in the later
-object models, and no acquisition object is defined at that point.
+**Sections:** `USP-053`, `USP-010`
 
-**Decision required:** decide whether "validation" and "recognition" are the same step renamed,
-two different steps, or a step that changed responsibility; and whether `LockResult` is still a
-core object.
+### C-03 — Candidate claiming: single-thread assumption versus distributed claiming
 
-**Preserved as:** [concepts/discovery-loop.md](concepts/discovery-loop.md),
-[acquisition/response-recognition.md](acquisition/response-recognition.md),
-[architecture/system-model.md](architecture/system-model.md).
+**Source A** — v0.2.0 `claimNextCandidate`  
+> JavaScript executes this synchronous section without another worker being able to interleave an `await` … This prevents two concurrent workers from claiming the same candidate.
 
----
+**Source B** — v0.33 (leases, fencing, heartbeats) and v0.34 (optimistic concurrency)  
+> The userscript still needs a concrete persistence/coordination substrate capable of providing these atomic semantics. … A Tampermonkey prototype using `GM_setValue`, `localStorage`, `IndexedDB`, `BroadcastChannel` does **not automatically become a distributed transaction system**.
 
-### 3. Candidate claiming: single-thread assumption versus distributed claiming
+**Why they appear inconsistent:** The prototype argument relies on synchronous execution in one JavaScript context; the later design requires atomicity across workers, tabs and storage.
 
-**Source A** — `Userscript Discovery Prototype.md` L3258–3300 (v0.2.0, `claimNextCandidate`):
+**Required decision:** State explicitly what the current prototype guarantees, and whether the v0.33/v0.34 contracts target the userscript or a non-browser runtime.
 
-> "JavaScript executes this synchronous section without another worker being able to interleave
-> an `await` … This prevents two concurrent workers from claiming the same candidate."
+**Sections:** `CAP-1084`, `CAP-1085`, `CAP-1121`, `CAP-1157`
 
-**Source B** — `Continue Architecture Planning.md` v0.33 (leases, fencing tokens, heartbeats,
-worker death) and v0.34 (optimistic concurrency control, conflict records, fencing). v0.34 §34.28
-states as **OPEN**:
+### C-04 — Resource identity: canonical URL versus identity resolution
 
-> "The userscript still needs a concrete persistence/coordination substrate capable of providing
-> these atomic semantics. … A Tampermonkey prototype using `GM_setValue`, `localStorage`,
-> `IndexedDB`, `BroadcastChannel` does **not automatically become a distributed transaction
-> system**. The v0.34 contracts are therefore stronger than the browser substrate currently
-> available."
+**Source A** — v0.5.0 architecture note  
+> resource identity is now the canonical URL, while the _way it was discovered_ is provenance
 
-**Why they appear inconsistent:** the prototype's atomicity argument relies on synchronous
-execution in one JavaScript context; the later design requires atomicity across workers, tabs
-and storage, which synchronous execution alone does not provide.
+**Source B** — v0.17 §4 "Why not simply canonicalize everything?"  
+> Canonicalization is deterministic string normalization. Identity resolution is an **inference problem**. … Canonicalization ≠ Identity Resolution.
 
-**Decision required:** state explicitly what the current prototype actually guarantees, and
-whether the v0.33/v0.34 contracts are requirements for the userscript or for a non-browser
-runtime.
+**Why they appear inconsistent:** v0.5.0 makes the canonical URL the resource identity; v0.17 demotes canonicalization to the first step of an inference problem.
 
-**Preserved as:** [architecture/concurrency.md](architecture/concurrency.md),
-[architecture/coordination.md](architecture/coordination.md),
-[validation/verification.md](validation/verification.md),
-[prototype/limitations.md](prototype/limitations.md).
-Status: prototype behaviour **CURRENT**; v0.33/v0.34 contracts **DESIGNED**; browser substrate
-support **OPEN** (as stated by the source).
+**Required decision:** Decide whether the canonical URL is an identity or an identity input.
 
----
+**Sections:** `CAP-022`, `CAP-376`
 
-### 4. Resource identity: canonical URL versus identity resolution
+### C-05 — Coverage: preferred metric, later heavily qualified
 
-**Source A** — `Continue Architecture Planning.md` L23097 (v0.5.0):
+**Source A** — §19 "Coverage is a better metric than elapsed time"  
+> Coverage is a better metric than elapsed time.
 
-> "The important change is that **resource identity is now the canonical URL**, while the _way it
-> was discovered_ is provenance."
+**Source B** — v0.22 §22.14 and v0.28 §28.24  
+> Coverage cannot necessarily be monotonically interpreted … unique candidates = 100 doesn't establish coverage = 100%
 
-**Source B** — `Continue Architecture Planning.md` L65431 (v0.17 §4 "Why not simply canonicalize
-everything?"):
+**Why they appear inconsistent:** The later sections qualify coverage enough that the earlier claim cannot be read unqualified.
 
-> "Canonicalization is deterministic string normalization. Identity resolution is an **inference
-> problem** … Canonicalization ≠ Identity Resolution. Canonicalization happens first. Identity
-> resolution happens afterward."
+**Required decision:** Define "coverage" before using it as the primary success metric.
 
-**Why they appear inconsistent:** v0.5.0 makes the canonical URL *the* resource identity; v0.17
-makes canonicalization only the first step of an inference problem.
+**Sections:** `USP-034`, `CAP-615`, `CAP-894`
 
-**Decision required:** decide whether canonical URL is an identity or an identity *input*, and
-which statement is current.
+### C-06 — Confidence: one score versus no single global score
 
-**Preserved as:** [architecture/resource-model.md](architecture/resource-model.md),
-[prototype/userscript.md](prototype/userscript.md).
+**Source A** — §10 and the `Discovery` object (§31)  
+> Confidence rather than binary decisions … `confidence` field on `Discovery`
 
----
+**Source B** — v0.18 §18.12  
+> Avoid `confidence: 0.93` as the sole representation of classification certainty.
 
-### 5. Coverage: metric of choice, but qualified later
+**Why they appear inconsistent:** A single numeric confidence field versus an explicit prohibition on a single global confidence score.
 
-**Source A** — `Userscript Discovery Prototype.md` §19:
+**Required decision:** Decide whether discovery confidence and classification confidence are different objects, and whether `Discovery.confidence` is superseded.
 
-> "Coverage is a better metric than elapsed time."
+**Sections:** `USP-019`, `CAP-436`
 
-**Source B** — `Continue Architecture Planning.md` v0.22 §22.14 "Coverage cannot necessarily be
-monotonically interpreted" (a later session can reduce measured coverage when the universe is
-revised), and v0.28 §28.24 "Candidate count is not coverage":
-"unique candidates = 100 doesn't establish coverage = 100%".
+### C-07 — Resource → artifact model revised
 
-**Why they appear inconsistent:** not necessarily a contradiction, but the later sections qualify
-"coverage" heavily enough that the earlier claim cannot be read unqualified.
+**Source A** — v0.17 (fingerprints and revisions on the resource)  
+> resource.fingerprint = sha256(bytes);
 
-**Decision required:** define what "coverage" means before it is used as the primary success
-metric.
+**Source B** — v0.19 §19.2  
+> Why Resource → Artifact Is Wrong
 
-**Preserved as:** [architecture/coverage-and-absence.md](architecture/coverage-and-absence.md),
-[concepts/discovery-loop.md](concepts/discovery-loop.md).
+**Why they appear inconsistent:** v0.19 explicitly rejects a modelling shortcut that v0.17 uses. An explicit revision rather than an outright contradiction.
 
----
+**Required decision:** Mark the v0.17 resource model as superseded (or not) once the target version is chosen.
 
-### 6. Confidence: one score versus no single global score
+**Sections:** `CAP-329`, `CAP-465`
 
-**Source A** — `Userscript Discovery Prototype.md` §10 "Confidence rather than binary decisions",
-and the `Discovery` object in §31 carrying a single `confidence` field.
+### C-08 — Replay: decisions deterministic, network not
 
-**Source B** — `Continue Architecture Planning.md` v0.18 §18.12 "Do Not Use One Global Confidence
-Score":
+**Source A** — v0.7.1 title and script header  
+> Decision replay is supported. Network replay is NOT guaranteed.
 
-> "Avoid `confidence: 0.93` as the sole representation of classification certainty."
+**Source B** — v0.7.1 §6  
+> treating an acquisition log as though it were a deterministic execution trace
 
-with a structured assertion (`confidence`, `evidenceIds`, `classifier`, `classifierVersion`,
-`status`, `contradictions`).
+**Why they appear inconsistent:** The word "replayable" is scoped to decisions while surrounding language can be read as full replay; the source itself flags the ambiguity.
 
-**Why they appear inconsistent:** a single numeric confidence field versus an explicit prohibition
-on a single global confidence score.
+**Required decision:** Keep the decision/network replay distinction explicit wherever "replay" is used.
 
-**Decision required:** decide whether discovery confidence and classification confidence are
-different objects, and whether `Discovery.confidence` is superseded.
+**Sections:** `CAP-052`
 
-**Preserved as:** [architecture/discovery-model.md](architecture/discovery-model.md),
-[architecture/classification.md](architecture/classification.md).
+### C-09 — Two termination taxonomies
 
----
+**Source A** — §18 "Termination"  
+> Exhaustive scan / Confidence-based scan / Time-bounded scan / Hybrid
 
-### 7. Resource → artifact model revised
+**Source B** — v0.14 §§11–13  
+> frontier exhaustion, candidate limit, acquisition limit, discovery-task limit, proposal limit, depth limit, time limit, external stop … Limit reached ≠ successful completion
 
-**Source A** — `Continue Architecture Planning.md` v0.17 models resources with content
-fingerprints and revisions (§§10, 24).
+**Why they appear inconsistent:** Different taxonomies at different layers (scan-level versus session-level).
 
-**Source B** — `Continue Architecture Planning.md` v0.19 §19.2 "Why Resource → Artifact Is Wrong":
+**Required decision:** Decide whether the four scan modes and the eight session limits are two layers of one model or competing models.
 
-> "A tempting model is `resource.fingerprint = sha256(bytes);`. That creates several problems."
+**Sections:** `USP-029`, `CAP-237`, `CAP-247`
 
-**Why they appear inconsistent:** v0.19 explicitly rejects a modelling shortcut that v0.17 uses.
-This is an explicit revision rather than an outright contradiction.
+### C-10 — Knowledge store naming
 
-**Decision required:** mark the v0.17 resource model as superseded (or not) once the intended
-target version is chosen.
+**Source A** — §14 "Discovery database" and the `KnowledgeBase` class  
+> Discovery database … class KnowledgeBase
 
-**Preserved as:** [architecture/resource-model.md](architecture/resource-model.md).
+**Source B** — v0.6 change note and v0.14 §18  
+> candidates are no longer the resource database … Scan vs engine knowledge
 
----
+**Why they appear inconsistent:** The store is variously a database, a knowledge base, a resource graph and a domain/session pair.
 
-### 8. Replay: decisions deterministic, network not
+**Required decision:** Fix the vocabulary, or state explicitly that these are different objects.
 
-**Source A** — `Continue Architecture Planning.md` v0.7.1 is titled "Replayable Acquisition
-Decisions + Deterministic Event Ledger", and the v0.7.1 script header states:
+**Sections:** `USP-023`, `CAP-252`
 
-> "Decision replay is supported. Network replay is NOT guaranteed."
+### C-11 — Same-origin default versus cross-origin capability
 
-**Source B** — v0.7.1 §6 "One remaining architectural limitation" asks for two explicit modes
-(`REPLAY MODE`, `ACQUISITION MODE`) to avoid "treating an acquisition log as though it were a
-deterministic execution trace".
+**Source A** — prototype configuration (`sameOriginOnly: true`)  
+> sameOriginOnly: true … deliberately conservative
 
-**Why they appear inconsistent:** not a contradiction, but the term "replayable" is scoped to
-decisions while the surrounding language can be read as full replay. The source itself flags the
-ambiguity.
+**Source B** — the same scripts (`@connect *`, `GM_xmlhttpRequest`) and v0.6 per-origin budgets  
+> @connect      *
 
-**Decision required:** keep the decision/network replay distinction explicit wherever "replay" is
-used.
+**Why they appear inconsistent:** The safety boundary is a default setting, not an enforced constraint.
 
-**Preserved as:** [prototype/versions/14-v0.7.1.md](prototype/versions/14-v0.7.1.md),
-[architecture/provenance.md](architecture/provenance.md),
-[prototype/limitations.md](prototype/limitations.md).
+**Required decision:** Decide whether same-origin is a policy default or an invariant.
 
----
+**Sections:** `CAP-115`, `CAP-476`
 
-### 9. Termination models
+## Ambiguous Sections
 
-**Source A** — `Userscript Discovery Prototype.md` §18 lists four termination modes: exhaustive
-scan, confidence-based scan, time-bounded scan, hybrid.
+Sections whose assignment involved judgement rather than a mechanical rule. None of them were discarded.
 
-**Source B** — `Continue Architecture Planning.md` v0.14 §11 enumerates eight termination
-conditions (frontier exhaustion, candidate limit, acquisition limit, discovery-task limit,
-proposal limit, depth limit, time limit, external stop) and §13 states "Limit reached ≠
-successful completion".
+| Sections | Ambiguity | Resolution applied |
+| --- | --- | --- |
+| all `prototype/versions/04-v0.4.0-plan.md`, `prototype/versions/08-v0.5.0-plan.md` sections | A plan is future work at the time it was written, but a later artifact implements it | status `FUTURE`, with the delivered sibling artifact linked from the version index |
+| all sections of v0.8 and later versions | One version can cover several topics; per-section routing would scatter it | kept with the version's own topic document, cross-referenced from the topic indexes |
+| `prototype/versions/01-v0.1.0.md`, `prototype/versions/02-v0.2.0.md`, `prototype/versions/00-v0.1.0-and-v0.2.0-paste.md` | near-duplicate with conflicting bytes | both kept, difference recorded (see [Duplicates](#duplicates-and-near-duplicates)) |
+| the 44 conversation-marker turns | no classifiable content | disposition `ARCHIVE`, retained in the archived source documents |
 
-**Why they appear inconsistent:** different taxonomies of termination, at different layers
-(scan-level versus session-level).
+## Unverified Claims
 
-**Decision required:** decide whether the four scan modes and the eight session limits are two
-layers of one model or competing models.
+Claims that exist in the sources but that repository evidence does not establish.
 
-**Preserved as:** [concepts/discovery-loop.md](concepts/discovery-loop.md),
-[architecture/sessions-and-domains.md](architecture/sessions-and-domains.md).
+1. **No implementation files exist in this repository.** The repository contains only the two planning documents (now under `archive/`) and the documentation tree. Every `CURRENT` status therefore means *the source documents present this as the delivered prototype*, not *verified against repository code*.
+2. **Claim-atomicity claim** (`C-03`): “JavaScript executes this synchronous section without another worker being able to interleave an `await`” is asserted by the prototype comment; no test or implementation file in this repository verifies it.
+3. **Substrate claim** (`C-03`): v0.34 §34.28 itself declares the required persistence/coordination substrate `OPEN`.
+4. **Prototype capability claims** listed in the root `README.md` (concurrent acquisition, provenance, deduplication, persistence, export) are documented as implemented by the userscript, but no userscript file is present in the repository to verify them against.
 
----
+## Orphaned Material
 
-### 10. Knowledge store naming
+None. Every extracted section has a destination, a category and a status; the accounting check reports **0 unaccounted** sections. The only content not carried into the tree is the 44 conversation continuation markers, recorded with disposition `ARCHIVE` in [Source Map](SOURCE-MAP.md) and preserved in the archived source documents.
 
-**Source A** — `Userscript Discovery Prototype.md` §14 "Discovery database", and the prototype
-class `KnowledgeBase` holding candidates, observations and discoveries.
+## Duplicates and near-duplicates
 
-**Source B** — `Continue Architecture Planning.md` v0.6: "candidates are no longer the resource
-database"; v0.14 §18 "Scan vs engine knowledge" separates domain knowledge from session
-knowledge.
+Handled per specification sections 12–13. Full record in [Source Map → Duplicates](SOURCE-MAP.md#duplicates).
 
-**Why they appear inconsistent:** the store is variously a database, a knowledge base, a
-resource graph and a domain/session pair.
+| | Sections | Content |
+| --- | --- | --- |
+| A | `USP-065`, `USP-066`, `USP-069`, `USP-070` | v0.1.0 and v0.2.0 with line breaks and indentation intact |
+| B | `CAP-001` | the same two scripts, flattened into single lines, with the undamaged `@match *://*/*` directive |
+| A ∩ B | — | the script bodies |
+| A − B | — | line breaks, indentation |
+| B − A | — | `*://*/*` versus `_://_/*` in the `@match` directive |
 
-**Decision required:** fix the vocabulary, or state explicitly that these are different objects.
+Both copies are kept because they express conflicting bytes for the same script (specification section 13: “If conflicting: KEEP BOTH + FLAG CONFLICT”). The unique information of each copy is recorded in the destination files themselves and here; nothing was deleted on the assumption that one copy is obsolete.
 
-**Preserved as:** [architecture/system-model.md](architecture/system-model.md),
-[architecture/sessions-and-domains.md](architecture/sessions-and-domains.md),
-[prototype/userscript.md](prototype/userscript.md).
+## Source Document Defects
 
----
+Defects of the source documents, preserved rather than repaired (except for Markdown fence boundaries, which are structural).
 
-### 11. Same-origin default versus cross-origin capability
+| ID | Defect | Document | Detail |
+| --- | --- | --- | --- |
+| D-01 | Flattened code paste | `Continue Architecture Planning.md` | `Continue Architecture Planning.md` L3–16 contains the v0.1.0 and v0.2.0 userscripts with all internal line breaks and backticks lost (lines of 22,001 and 34,769 characters). Preserved verbatim in `prototype/versions/00-v0.1.0-and-v0.2.0-paste.md`. |
+| D-02 | Mangled match pattern | `Userscript Discovery Prototype.md` | `Userscript Discovery Prototype.md` L1947 and L3052 read `// @match _://_/*`; the same scripts pasted into `Continue Architecture Planning.md` read `// @match *://*/*`. One export replaced `*` with `_`. This affects installability of the pasted script. |
+| D-03 | Broken code fences | `Userscript Discovery Prototype.md` | Both userscript blocks in `Userscript Discovery Prototype.md` open a fence part-way through the userscript header and close it before the final `})();`. The split moved the fence boundaries to the real start and end of each block; the code text itself is unchanged. |
+| D-04 | Export artifacts | `Userscript Discovery Prototype.md` | A stray `::` sequence follows `})();` in several script exports, and the final user prompt reads "Conclued". Both are treated as conversational/export artifacts. |
+| D-05 | Conversation markers | both | 44 turns consist only of "Continue" / "Conclude" / "Conclued". They are removed from the tree and recorded with disposition `ARCHIVE` in [Source Map](SOURCE-MAP.md). |
 
-**Source A** — prototype configuration keeps `sameOriginOnly: true`, described as "deliberately
-conservative … That prevents this generic scanner from turning every discovered third-party URL
-into an unrestricted cross-origin crawler."
+## Classification Decisions
 
-**Source B** — the same scripts request `@connect *` and `GM_xmlhttpRequest` (cross-origin
-capability), and v0.6.0 adds per-origin budgets and origin controllers, which only matter if
-multiple origins are in play.
+Decisions taken by the split that a later pass may revisit.
 
-**Why they appear inconsistent:** not a contradiction, but the safety boundary is a default
-setting rather than an enforced constraint.
+1. **Extended destination tree.** The canonical map in specification section 10 is used as the spine; every canonical file exists and owns its concept. Eleven additional topic documents were created because the source contains ~2.36 MB of design material and collapsing it into the canonical files would produce single documents of several hundred kilobytes (for example `architecture/system-model.md` would absorb 20 version architectures). The additional files are: `architecture/capability-model.md`, `resource-model.md`, `evidence-model.md`, `classification.md`, `search-space.md`, `strategy-and-planning.md`, `goal-and-query.md`, `coverage-and-absence.md`, `sessions-and-domains.md`, `work-and-frontier.md`, `resource-budget.md`, `persistence-and-recovery.md`, `coordination.md`, `acquisition/runtime.md`, `providers/candidate-sources.md`, `validation/failure-taxonomy.md`, and `prototype/versions/*` for the complete script artifacts. No canonical ownership from section 11 was moved into them.
+2. **Version-scoped grouping.** For v0.8 and later, a version's sections stay with that version's topic document; for v0.7 and v0.13–v0.17 sections are routed individually by topic. This is a navigation decision only.
+3. **Script artifacts are not split.** Each complete userscript stays in one file (`prototype/versions/`), because a code block must not be split across files (specification section 6).
+4. **Provider code extracts.** `providers/html.md`, `json.md`, `text.md` and `prototype/configuration.md` contain reference extracts of code that also appears in `prototype/versions/14-v0.7.1.md`. The extracts are labelled as extracts and link to the complete artifact.
+5. **Heading prefix.** Sections from `Continue Architecture Planning.md` carry a `v0.nn — ` prefix; recorded per section in [Source Map → Section records](SOURCE-MAP.md#section-records).
+6. **Status convention.** `CURRENT` = the sources present the material as the delivered prototype; `DESIGNED` = intentional architecture/specification; `FUTURE` = explicitly proposed next work; `OPEN` = the source itself marks the question unresolved; `UNVERIFIED` = no claim, or a claim the repository cannot verify.
 
-**Decision required:** decide whether same-origin is a policy default or an invariant.
+## Possible Future Refactoring
 
-**Preserved as:** [prototype/configuration.md](prototype/configuration.md),
-[prototype/limitations.md](prototype/limitations.md),
-[acquisition/runtime.md](acquisition/runtime.md).
+Suggestions for the subsequent architecture-verification phase. **None of these were performed by this split.**
 
----
-
-## Documentation defects in the source documents
-
-These are defects of the source documents themselves. They are preserved, not repaired, except
-where the Markdown structure was broken (see [Source Map](SOURCE-MAP.md)).
-
-1. **Flattened code paste.** `Continue Architecture Planning.md` L3–16 contains the v0.1.0 and
-   v0.2.0 userscripts with all internal line breaks and backticks lost (two lines of 22,001 and
-   34,769 characters). The same two scripts are preserved with full formatting in
-   `Userscript Discovery Prototype.md`. Both copies are retained:
-   [prototype/versions/00-v0.1.0-and-v0.2.0-paste.md](prototype/versions/00-v0.1.0-and-v0.2.0-paste.md)
-   (flattened) and
-   [prototype/versions/01-v0.1.0.md](prototype/versions/01-v0.1.0.md) /
-   [prototype/versions/02-v0.2.0.md](prototype/versions/02-v0.2.0.md) (formatted).
-2. **Mangled match pattern.** `Userscript Discovery Prototype.md` L1947 and L3052 read
-   `// @match _://_/*`, while the same scripts pasted into `Continue Architecture Planning.md`
-   read `// @match *://*/*`. One of the two exports has replaced `*` with `_`. This affects
-   installability of the pasted script and must be corrected by hand in any future code pass.
-3. **Broken code fences.** Both userscript blocks in `Userscript Discovery Prototype.md` open a
-   fence part-way through the userscript header and close it before the final `})();`. The split
-   moved the fence boundaries to the real start and end of each block; the code text itself is
-   unchanged.
-4. **Export artifacts.** A stray `::` sequence follows `})();` in several script exports, and the
-   final user prompt reads "Conclued". Both are treated as conversation/export artifacts.
-5. **Conversation markers.** 44 turns consist only of "Continue" / "Conclude" / "Conclued". They
-   are removed and recorded as `ARTIFACT` in [Source Map](SOURCE-MAP.md).
-
----
-
-## Content that could not be classified unambiguously
-
-1. **Version-scoped grouping.** From v0.8 onward, most sections of a version were kept together
-   in that version's topic document (for example all of v0.27 in
-   [architecture/strategy-and-planning.md](architecture/strategy-and-planning.md)), while for
-   v0.7, v0.13–v0.17 sections were routed individually by topic. This is a navigation decision
-   made by the split, not a statement about the architecture; the per-section mapping in
-   [Source Map](SOURCE-MAP.md) is authoritative either way.
-2. **Status of individual prototype artifacts.** Every complete script is tagged **CURRENT**
-   because each was delivered as a working script. The sources never state which artifacts were
-   abandoned, so relative status is **UNVERIFIED**.
-3. **`archive/` copies.** The two original documents are retained verbatim under
-   [`archive/`](../archive/) and are therefore the only place where the defects listed above can
-   still be inspected in their original context.
-
----
+1. Resolve `C-01`…`C-11`, starting with `C-01` (version numbering) because it determines which artifact is authoritative.
+2. Repair the source-document defects `D-01`…`D-04` in a code pass, in particular the `// @match _://_/*` mangling, which makes the pasted script uninstallable.
+3. Decide the canonical implementation target: extract one userscript into a real source file, or declare the prototype documentation-only.
+4. Normalize the vocabulary identified in `C-02` and `C-10` (validation/recognition, database/knowledge base/resource graph).
+5. Split `validation/invariants.md` by owning subsystem once the target version is chosen; today it is a chronological invariant register.
+6. Promote the version artifacts to dated, individually named files if the version numbering question (`C-01`) is resolved.
 
 ## Related Documents
 
@@ -347,3 +243,4 @@ where the Markdown structure was broken (see [Source Map](SOURCE-MAP.md)).
 - [Prototype Overview](prototype/overview.md)
 - [Architecture Overview](architecture/overview.md)
 - [Future Work](roadmap/future-work.md)
+

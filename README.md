@@ -402,22 +402,29 @@ The two original planning documents have been mechanically split into a structur
 ```
 docs/
 ├── README.md               documentation index
-├── SOURCE-MAP.md           section-by-section traceability map
-├── REVIEW-NOTES.md         contradictions and defects found during the split
-├── concepts/               core concept, generic discovery, discovery loop
-├── architecture/           system model, data models, scheduler, concurrency, providers
-├── acquisition/            acquisition model, runtime, response recognition
+├── SOURCE-MAP.md           traceability map: every source section has an id
+├── REVIEW-NOTES.md         contradictions, defects and unverified claims
+├── concepts/               concept overview, generic discovery, discovery loop
+├── architecture/           system model, data models, models derived from DVB,
+│                           scheduler, concurrency, providers, sessions, budgets
+├── acquisition/            acquisition model, response recognition, runtime
 ├── providers/              prototype response providers and candidate sources
 ├── prototype/              userscript prototype: overview, narrative, configuration,
-│                           limitations and every version artifact
+│                           limitations, and every complete version artifact
 ├── research/               DVB blind-scan material
 ├── validation/             invariants, verification, failure taxonomy
 └── roadmap/                future work
 ```
+
+Every extracted section is identified as `USP-nnn`
+(`Userscript Discovery Prototype.md`) or `CAP-nnn`
+(`Continue Architecture Planning.md`) and listed with its destination, action and
+status in [`docs/SOURCE-MAP.md`](docs/SOURCE-MAP.md). Each section in the tree
+carries a `> **Source sections:**` attribution line pointing back to those ids.
  
 Start at [`docs/README.md`](docs/README.md).
  
-The split is **mechanical**: material was moved, grouped and cross-referenced, not redesigned. No architecture, algorithm, interface or requirement was changed, added or removed. Every extracted section is recorded in [`docs/SOURCE-MAP.md`](docs/SOURCE-MAP.md), and contradictions were deliberately left unresolved in [`docs/REVIEW-NOTES.md`](docs/REVIEW-NOTES.md).
+The split is **mechanical**: material was moved, grouped and cross-referenced, not redesigned. No architecture, algorithm, interface or requirement was changed, added or removed. All 1,244 identified source sections are accounted for (0 unaccounted). Contradictions (`C-01`–`C-11`) and source-document defects (`D-01`–`D-05`) were deliberately left unresolved and recorded in [`docs/REVIEW-NOTES.md`](docs/REVIEW-NOTES.md).
  
 ## Repository Structure
  
@@ -432,7 +439,7 @@ The split is **mechanical**: material was moved, grouped and cross-referenced, n
  
 ## Current Status
  
-- **Documentation:** mechanically split and cross-referenced; contradictions preserved as open items.
+- **Documentation:** mechanically split into 61 documents, cross-referenced, with full traceability; contradictions preserved as open items.
 - **Prototype:** browser userscript; the last complete script artifact in the planning conversation is v0.7.1 ([`docs/prototype/versions/`](docs/prototype/versions/README.md)).
 - **Designed architecture:** specified through v0.35 in the planning conversation; treated as design, not implementation, in the documentation tree.
 - **Source code:** none. The split operation modified documentation only.
