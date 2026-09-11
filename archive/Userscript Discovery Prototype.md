@@ -1,4 +1,15 @@
-﻿**You:**
+﻿> **ARCHIVED SOURCE DOCUMENT**
+>
+> This document has been mechanically split into the structured
+> documentation tree. It is retained for provenance and historical
+> traceability.
+>
+> See [`docs/README.md`](../docs/README.md) and
+> [`docs/SOURCE-MAP.md`](../docs/SOURCE-MAP.md).
+
+---
+
+**You:**
 
 DVB blind scan as a generic discovery algorithm
 
