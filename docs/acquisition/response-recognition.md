@@ -6,32 +6,32 @@
 >
 > **Purpose:** Recognition of acquired responses: recognition providers, routers, confidence, evidence and failure taxonomy.
 
-## Contents
+## Source Sections
 
-- **4. Lock is not discovery** — `Userscript Discovery Prototype.md` L250–301
-- **LockResult** — `Userscript Discovery Prototype.md` L1509–1526
-- **v0.11 — Response Recognition Runtime** — `Continue Architecture Planning.md` L57355–57366
-- **v0.11 — 2. RecognitionProvider contract** — `Continue Architecture Planning.md` L57444–57493
-- **v0.11 — 3. Recognition is not discovery** — `Continue Architecture Planning.md` L57495–57542
-- **v0.11 — 4. Response Router** — `Continue Architecture Planning.md` L57544–57581
-- **v0.11 — 5. Provider priority** — `Continue Architecture Planning.md` L57583–57642
-- **v0.11 — 6. Recognition confidence** — `Continue Architecture Planning.md` L57644–57679
-- **v0.11 — 7. Content-type is only one signal** — `Continue Architecture Planning.md` L57681–57715
-- **v0.11 — 8. Recognition evidence** — `Continue Architecture Planning.md` L57717–57760
-- **v0.11 — 9. Recognition result contract** — `Continue Architecture Planning.md` L57762–57796
-- **v0.11 — 10. Why providers should not enqueue candidates** — `Continue Architecture Planning.md` L57798–57842
-- **v0.11 — 11. Recognition Runtime** — `Continue Architecture Planning.md` L57844–57891
-- **v0.11 — No recognizer** — `Continue Architecture Planning.md` L57899–57905
-- **v0.11 — Provider rejected** — `Continue Architecture Planning.md` L57907–57913
-- **v0.11 — Provider error** — `Continue Architecture Planning.md` L57915–57921
-- **v0.11 — Successful recognition, zero discoveries** — `Continue Architecture Planning.md` L57923–57935
-- **v0.11 — 13. v0.11 state progression** — `Continue Architecture Planning.md` L57937–57989
-- **v0.11 — 14. Multiple recognizers** — `Continue Architecture Planning.md` L57991–58034
-- **v0.11 — 15. Recognition graph** — `Continue Architecture Planning.md` L58036–58066
-- **v0.11 — 16. The graph is now explicitly causal** — `Continue Architecture Planning.md` L58068–58127
-- **v0.11 — 17. v0.11 event ledger** — `Continue Architecture Planning.md` L58129–58167
-- **v0.11 — 18. The emerging generic algorithm** — `Continue Architecture Planning.md` L58169–58238
-- **v0.16 — Recognition** — `Continue Architecture Planning.md` L65186–65190
+- **4. Lock is not discovery** — `USP-010` — `Userscript Discovery Prototype.md` L250–301
+- **LockResult** — `USP-053` — `Userscript Discovery Prototype.md` L1509–1526
+- **v0.11 — Response Recognition Runtime** — `CAP-129` — `Continue Architecture Planning.md` L57355–57366
+- **v0.11 — 2. RecognitionProvider contract** — `CAP-131` — `Continue Architecture Planning.md` L57444–57493
+- **v0.11 — 3. Recognition is not discovery** — `CAP-132` — `Continue Architecture Planning.md` L57495–57542
+- **v0.11 — 4. Response Router** — `CAP-133` — `Continue Architecture Planning.md` L57544–57581
+- **v0.11 — 5. Provider priority** — `CAP-134` — `Continue Architecture Planning.md` L57583–57642
+- **v0.11 — 6. Recognition confidence** — `CAP-135` — `Continue Architecture Planning.md` L57644–57679
+- **v0.11 — 7. Content-type is only one signal** — `CAP-136` — `Continue Architecture Planning.md` L57681–57715
+- **v0.11 — 8. Recognition evidence** — `CAP-137` — `Continue Architecture Planning.md` L57717–57760
+- **v0.11 — 9. Recognition result contract** — `CAP-138` — `Continue Architecture Planning.md` L57762–57796
+- **v0.11 — 10. Why providers should not enqueue candidates** — `CAP-139` — `Continue Architecture Planning.md` L57798–57842
+- **v0.11 — 11. Recognition Runtime** — `CAP-140` — `Continue Architecture Planning.md` L57844–57891
+- **v0.11 — No recognizer** — `CAP-142` — `Continue Architecture Planning.md` L57899–57905
+- **v0.11 — Provider rejected** — `CAP-143` — `Continue Architecture Planning.md` L57907–57913
+- **v0.11 — Provider error** — `CAP-144` — `Continue Architecture Planning.md` L57915–57921
+- **v0.11 — Successful recognition, zero discoveries** — `CAP-145` — `Continue Architecture Planning.md` L57923–57935
+- **v0.11 — 13. v0.11 state progression** — `CAP-146` — `Continue Architecture Planning.md` L57937–57989
+- **v0.11 — 14. Multiple recognizers** — `CAP-147` — `Continue Architecture Planning.md` L57991–58034
+- **v0.11 — 15. Recognition graph** — `CAP-148` — `Continue Architecture Planning.md` L58036–58066
+- **v0.11 — 16. The graph is now explicitly causal** — `CAP-149` — `Continue Architecture Planning.md` L58068–58127
+- **v0.11 — 17. v0.11 event ledger** — `CAP-150` — `Continue Architecture Planning.md` L58129–58167
+- **v0.11 — 18. The emerging generic algorithm** — `CAP-151` — `Continue Architecture Planning.md` L58169–58238
+- **v0.16 — Recognition** — `CAP-363` — `Continue Architecture Planning.md` L65186–65190
 
 ## Related Documents
 
@@ -42,8 +42,10 @@
 
 ---
 
-<!-- source: Userscript Discovery Prototype.md L250–301 | turn 3 | version ? -->
+<!-- USP-010 | Userscript Discovery Prototype.md L250–301 | turn 3 | version ? -->
 ## 4. Lock is not discovery
+
+> **Source sections:** `USP-010`
 
 A very important distinction is:
 
@@ -96,8 +98,12 @@ Each transition should have a timeout so one bad candidate cannot stall the scan
 
 ---
 
-<!-- source: Userscript Discovery Prototype.md L1509–1526 | turn 11 | version ? -->
+<!-- USP-053 | Userscript Discovery Prototype.md L1509–1526 | turn 11 | version ? -->
 ### LockResult
+
+> **Source sections:** `USP-053`
+>
+> [DOCUMENTATION REVIEW] Contradiction **C-02** ([Review Notes](../REVIEW-NOTES.md#c-02--))
 
 Keep acquisition details separate:
 
@@ -116,8 +122,12 @@ This makes failure analysis much easier.
 
 ---
 
-<!-- source: Continue Architecture Planning.md L57355–57366 | turn 35 | version 0.11 -->
+<!-- CAP-129 | Continue Architecture Planning.md L57355–57366 | turn 35 | version 0.11 -->
 ## v0.11 — Response Recognition Runtime
+
+> **Source sections:** `CAP-129`
+>
+> [DOCUMENTATION REVIEW] Contradiction **C-02** ([Review Notes](../REVIEW-NOTES.md#c-02--))
 
 v0.10 established the **Acquisition Runtime** boundary.
 
@@ -130,8 +140,12 @@ The important change is that recognition should no longer be a large `if/else` c
 
 ---
 
-<!-- source: Continue Architecture Planning.md L57444–57493 | turn 35 | version 0.11 -->
+<!-- CAP-131 | Continue Architecture Planning.md L57444–57493 | turn 35 | version 0.11 -->
 ## v0.11 — 2. RecognitionProvider contract
+
+> **Source sections:** `CAP-131`
+>
+> [DOCUMENTATION REVIEW] Contradiction **C-02** ([Review Notes](../REVIEW-NOTES.md#c-02--))
 
 The provider should remain deliberately small.
 
@@ -182,8 +196,12 @@ actual parsing
 
 ---
 
-<!-- source: Continue Architecture Planning.md L57495–57542 | turn 35 | version 0.11 -->
+<!-- CAP-132 | Continue Architecture Planning.md L57495–57542 | turn 35 | version 0.11 -->
 ## v0.11 — 3. Recognition is not discovery
+
+> **Source sections:** `CAP-132`
+>
+> [DOCUMENTATION REVIEW] Contradiction **C-02** ([Review Notes](../REVIEW-NOTES.md#c-02--))
 
 These concepts should remain separate.
 
@@ -232,8 +250,10 @@ recognized ≠ discovered
 
 ---
 
-<!-- source: Continue Architecture Planning.md L57544–57581 | turn 35 | version 0.11 -->
+<!-- CAP-133 | Continue Architecture Planning.md L57544–57581 | turn 35 | version 0.11 -->
 ## v0.11 — 4. Response Router
+
+> **Source sections:** `CAP-133`
 
 The router is responsible for provider selection.
 
@@ -272,8 +292,10 @@ Provider registration order should therefore either be explicitly defined or rep
 
 ---
 
-<!-- source: Continue Architecture Planning.md L57583–57642 | turn 35 | version 0.11 -->
+<!-- CAP-134 | Continue Architecture Planning.md L57583–57642 | turn 35 | version 0.11 -->
 ## v0.11 — 5. Provider priority
+
+> **Source sections:** `CAP-134`
 
 A better v0.11 contract:
 
@@ -334,8 +356,14 @@ The router should allow more specialized recognizers to win.
 
 ---
 
-<!-- source: Continue Architecture Planning.md L57644–57679 | turn 35 | version 0.11 -->
+<!-- CAP-135 | Continue Architecture Planning.md L57644–57679 | turn 35 | version 0.11 -->
 ## v0.11 — 6. Recognition confidence
+
+> **Source sections:** `CAP-135`
+>
+> [DOCUMENTATION REVIEW] Contradiction **C-02** ([Review Notes](../REVIEW-NOTES.md#c-02--))
+>
+> [DOCUMENTATION REVIEW] Contradiction **C-06** ([Review Notes](../REVIEW-NOTES.md#c-06--))
 
 Recognition itself can have confidence:
 
@@ -372,8 +400,10 @@ The evidence model should preserve that distinction.
 
 ---
 
-<!-- source: Continue Architecture Planning.md L57681–57715 | turn 35 | version 0.11 -->
+<!-- CAP-136 | Continue Architecture Planning.md L57681–57715 | turn 35 | version 0.11 -->
 ## v0.11 — 7. Content-type is only one signal
+
+> **Source sections:** `CAP-136`
 
 A robust recognizer should not blindly trust:
 
@@ -409,8 +439,12 @@ should still be recognized as PDF.
 
 ---
 
-<!-- source: Continue Architecture Planning.md L57717–57760 | turn 35 | version 0.11 -->
+<!-- CAP-137 | Continue Architecture Planning.md L57717–57760 | turn 35 | version 0.11 -->
 ## v0.11 — 8. Recognition evidence
+
+> **Source sections:** `CAP-137`
+>
+> [DOCUMENTATION REVIEW] Contradiction **C-02** ([Review Notes](../REVIEW-NOTES.md#c-02--))
 
 The provider should report _why_ it recognized something.
 
@@ -455,8 +489,12 @@ manual.pdf
 
 ---
 
-<!-- source: Continue Architecture Planning.md L57762–57796 | turn 35 | version 0.11 -->
+<!-- CAP-138 | Continue Architecture Planning.md L57762–57796 | turn 35 | version 0.11 -->
 ## v0.11 — 9. Recognition result contract
+
+> **Source sections:** `CAP-138`
+>
+> [DOCUMENTATION REVIEW] Contradiction **C-02** ([Review Notes](../REVIEW-NOTES.md#c-02--))
 
 A provider should return a structured result rather than directly mutating the knowledge base.
 
@@ -492,8 +530,10 @@ This preserves the architectural rule:
 
 ---
 
-<!-- source: Continue Architecture Planning.md L57798–57842 | turn 35 | version 0.11 -->
+<!-- CAP-139 | Continue Architecture Planning.md L57798–57842 | turn 35 | version 0.11 -->
 ## v0.11 — 10. Why providers should not enqueue candidates
+
+> **Source sections:** `CAP-139`
 
 Bad:
 
@@ -539,8 +579,12 @@ Scheduler
 
 ---
 
-<!-- source: Continue Architecture Planning.md L57844–57891 | turn 35 | version 0.11 -->
+<!-- CAP-140 | Continue Architecture Planning.md L57844–57891 | turn 35 | version 0.11 -->
 ## v0.11 — 11. Recognition Runtime
+
+> **Source sections:** `CAP-140`
+>
+> [DOCUMENTATION REVIEW] Contradiction **C-02** ([Review Notes](../REVIEW-NOTES.md#c-02--))
 
 This suggests another explicit component:
 
@@ -589,8 +633,10 @@ Recognition Runtime
 
 ---
 
-<!-- source: Continue Architecture Planning.md L57899–57905 | turn 35 | version 0.11 -->
+<!-- CAP-142 | Continue Architecture Planning.md L57899–57905 | turn 35 | version 0.11 -->
 ### v0.11 — No recognizer
+
+> **Source sections:** `CAP-142`
 
 ```
 application/x-unknown
@@ -598,8 +644,10 @@ application/x-unknown
 no provider
 ```
 
-<!-- source: Continue Architecture Planning.md L57907–57913 | turn 35 | version 0.11 -->
+<!-- CAP-143 | Continue Architecture Planning.md L57907–57913 | turn 35 | version 0.11 -->
 ### v0.11 — Provider rejected
+
+> **Source sections:** `CAP-143`
 
 ```
 HTML provider
@@ -607,8 +655,10 @@ HTML provider
 not HTML
 ```
 
-<!-- source: Continue Architecture Planning.md L57915–57921 | turn 35 | version 0.11 -->
+<!-- CAP-144 | Continue Architecture Planning.md L57915–57921 | turn 35 | version 0.11 -->
 ### v0.11 — Provider error
+
+> **Source sections:** `CAP-144`
 
 ```
 HTML provider
@@ -616,8 +666,12 @@ HTML provider
 parser exception
 ```
 
-<!-- source: Continue Architecture Planning.md L57923–57935 | turn 35 | version 0.11 -->
+<!-- CAP-145 | Continue Architecture Planning.md L57923–57935 | turn 35 | version 0.11 -->
 ### v0.11 — Successful recognition, zero discoveries
+
+> **Source sections:** `CAP-145`
+>
+> [DOCUMENTATION REVIEW] Contradiction **C-02** ([Review Notes](../REVIEW-NOTES.md#c-02--))
 
 ```
 HTML
@@ -631,8 +685,10 @@ The last one is **not a failure**.
 
 ---
 
-<!-- source: Continue Architecture Planning.md L57937–57989 | turn 35 | version 0.11 -->
+<!-- CAP-146 | Continue Architecture Planning.md L57937–57989 | turn 35 | version 0.11 -->
 ## v0.11 — 13. v0.11 state progression
+
+> **Source sections:** `CAP-146`
 
 The candidate lifecycle now becomes:
 
@@ -686,8 +742,10 @@ visited = true
 
 ---
 
-<!-- source: Continue Architecture Planning.md L57991–58034 | turn 35 | version 0.11 -->
+<!-- CAP-147 | Continue Architecture Planning.md L57991–58034 | turn 35 | version 0.11 -->
 ## v0.11 — 14. Multiple recognizers
+
+> **Source sections:** `CAP-147`
 
 There is a deeper issue.
 
@@ -732,8 +790,12 @@ Choosing only one parser can unnecessarily discard evidence.
 
 ---
 
-<!-- source: Continue Architecture Planning.md L58036–58066 | turn 35 | version 0.11 -->
+<!-- CAP-148 | Continue Architecture Planning.md L58036–58066 | turn 35 | version 0.11 -->
 ## v0.11 — 15. Recognition graph
+
+> **Source sections:** `CAP-148`
+>
+> [DOCUMENTATION REVIEW] Contradiction **C-02** ([Review Notes](../REVIEW-NOTES.md#c-02--))
 
 We therefore get:
 
@@ -765,8 +827,10 @@ This is closer to a **recognition pipeline** than a single parser.
 
 ---
 
-<!-- source: Continue Architecture Planning.md L58068–58127 | turn 35 | version 0.11 -->
+<!-- CAP-149 | Continue Architecture Planning.md L58068–58127 | turn 35 | version 0.11 -->
 ## v0.11 — 16. The graph is now explicitly causal
+
+> **Source sections:** `CAP-149`
 
 We can represent:
 
@@ -827,8 +891,10 @@ This is the beginning of a real **provenance graph**.
 
 ---
 
-<!-- source: Continue Architecture Planning.md L58129–58167 | turn 35 | version 0.11 -->
+<!-- CAP-150 | Continue Architecture Planning.md L58129–58167 | turn 35 | version 0.11 -->
 ## v0.11 — 17. v0.11 event ledger
+
+> **Source sections:** `CAP-150`
 
 Add:
 
@@ -868,8 +934,10 @@ It is a reproducible **causal record**.
 
 ---
 
-<!-- source: Continue Architecture Planning.md L58169–58238 | turn 35 | version 0.11 -->
+<!-- CAP-151 | Continue Architecture Planning.md L58169–58238 | turn 35 | version 0.11 -->
 ## v0.11 — 18. The emerging generic algorithm
+
+> **Source sections:** `CAP-151`
 
 At this point the original DVB inspiration can be expressed more abstractly.
 
@@ -940,8 +1008,12 @@ Repeat
 
 ---
 
-<!-- source: Continue Architecture Planning.md L65186–65190 | turn 45 | version 0.16 -->
+<!-- CAP-363 | Continue Architecture Planning.md L65186–65190 | turn 45 | version 0.16 -->
 ### v0.16 — Recognition
+
+> **Source sections:** `CAP-363`
+>
+> [DOCUMENTATION REVIEW] Contradiction **C-02** ([Review Notes](../REVIEW-NOTES.md#c-02--))
 
 > What did we obtain?
 

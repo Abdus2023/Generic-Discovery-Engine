@@ -6,34 +6,34 @@
 >
 > **Purpose:** What counts as a discovery: discovery graphs, discovery tasks, discovery control, confidence and evidence levels.
 
-## Contents
+## Source Sections
 
-- **10. Confidence rather than binary decisions** — `Userscript Discovery Prototype.md` L529–571
-- *Turn lead-in* — `Userscript Discovery Prototype.md` L787–787
-- **16. Discovery should have evidence levels** — `Userscript Discovery Prototype.md` L789–823
-- *Turn lead-in* — `Userscript Discovery Prototype.md` L1111–1111
-- **24. Two-dimensional discovery** — `Userscript Discovery Prototype.md` L1113–1145
-- **26. Discovery becomes a graph** — `Userscript Discovery Prototype.md` L1208–1245
-- **Discovery** — `Userscript Discovery Prototype.md` L1528–1545
-- **v0.7.0 — Discovery Graph + Acquisition Planner** — `Continue Architecture Planning.md` L48388–48457
-- **v0.7 objectives** — `Continue Architecture Planning.md` L48459–48492
-- **v0.7 — Core contract** — `Continue Architecture Planning.md` L48494–48659
-- **v0.7 — Important v0.7 distinction** — `Continue Architecture Planning.md` L48661–48720
-- **v0.7 state machine** — `Continue Architecture Planning.md` L48722–48800
-- **v0.13 — Discovery Controller** — `Continue Architecture Planning.md` L59472–59493
-- **v0.13 — 3. DiscoveryTask** — `Continue Architecture Planning.md` L59598–59653
-- **v0.13 — 4. Why a task is necessary** — `Continue Architecture Planning.md` L59655–59699
-- **v0.13 — 5. Source Policy** — `Continue Architecture Planning.md` L59701–59750
-- **v0.13 — 6. Source budgets** — `Continue Architecture Planning.md` L59752–59783
-- **v0.13 — 7. Proposal budget is different** — `Continue Architecture Planning.md` L59785–59826
-- **v0.13 — 8. Incremental sources** — `Continue Architecture Planning.md` L59828–59867
-- **v0.13 — 9. Source execution contract** — `Continue Architecture Planning.md` L59869–59912
-- **v0.13 — 16. DiscoveryController** — `Continue Architecture Planning.md` L60168–60208
-- **v0.13 — 17. Event ledger** — `Continue Architecture Planning.md` L60210–60258
-- **v0.14 — Discovery Engine** — `Continue Architecture Planning.md` L60612–60627
-- **v0.14 — 8. Discovery frontier** — `Continue Architecture Planning.md` L60974–61037
-- **v0.16 — 28. Discovery confidence changes meaning** — `Continue Architecture Planning.md` L64721–64756
-- **v0.16 — Discovery** — `Continue Architecture Planning.md` L65192–65196
+- **10. Confidence rather than binary decisions** — `USP-019` — `Userscript Discovery Prototype.md` L529–571
+- *Turn lead-in* — `USP-026` — `Userscript Discovery Prototype.md` L787–787
+- **16. Discovery should have evidence levels** — `USP-027` — `Userscript Discovery Prototype.md` L789–823
+- *Turn lead-in* — `USP-040` — `Userscript Discovery Prototype.md` L1111–1111
+- **24. Two-dimensional discovery** — `USP-041` — `Userscript Discovery Prototype.md` L1113–1145
+- **26. Discovery becomes a graph** — `USP-043` — `Userscript Discovery Prototype.md` L1208–1245
+- **Discovery** — `USP-054` — `Userscript Discovery Prototype.md` L1528–1545
+- **v0.7.0 — Discovery Graph + Acquisition Planner** — `CAP-036` — `Continue Architecture Planning.md` L48388–48457
+- **v0.7 objectives** — `CAP-037` — `Continue Architecture Planning.md` L48459–48492
+- **v0.7 — Core contract** — `CAP-038` — `Continue Architecture Planning.md` L48494–48659
+- **v0.7 — Important v0.7 distinction** — `CAP-039` — `Continue Architecture Planning.md` L48661–48720
+- **v0.7 state machine** — `CAP-040` — `Continue Architecture Planning.md` L48722–48800
+- **v0.13 — Discovery Controller** — `CAP-190` — `Continue Architecture Planning.md` L59472–59493
+- **v0.13 — 3. DiscoveryTask** — `CAP-193` — `Continue Architecture Planning.md` L59598–59653
+- **v0.13 — 4. Why a task is necessary** — `CAP-194` — `Continue Architecture Planning.md` L59655–59699
+- **v0.13 — 5. Source Policy** — `CAP-195` — `Continue Architecture Planning.md` L59701–59750
+- **v0.13 — 6. Source budgets** — `CAP-196` — `Continue Architecture Planning.md` L59752–59783
+- **v0.13 — 7. Proposal budget is different** — `CAP-197` — `Continue Architecture Planning.md` L59785–59826
+- **v0.13 — 8. Incremental sources** — `CAP-198` — `Continue Architecture Planning.md` L59828–59867
+- **v0.13 — 9. Source execution contract** — `CAP-199` — `Continue Architecture Planning.md` L59869–59912
+- **v0.13 — 16. DiscoveryController** — `CAP-206` — `Continue Architecture Planning.md` L60168–60208
+- **v0.13 — 17. Event ledger** — `CAP-207` — `Continue Architecture Planning.md` L60210–60258
+- **v0.14 — Discovery Engine** — `CAP-225` — `Continue Architecture Planning.md` L60612–60627
+- **v0.14 — 8. Discovery frontier** — `CAP-234` — `Continue Architecture Planning.md` L60974–61037
+- **v0.16 — 28. Discovery confidence changes meaning** — `CAP-340` — `Continue Architecture Planning.md` L64721–64756
+- **v0.16 — Discovery** — `CAP-364` — `Continue Architecture Planning.md` L65192–65196
 
 ## Related Documents
 
@@ -44,8 +44,12 @@
 
 ---
 
-<!-- source: Userscript Discovery Prototype.md L529–571 | turn 5 | version ? -->
+<!-- USP-019 | Userscript Discovery Prototype.md L529–571 | turn 5 | version ? -->
 ## 10. Confidence rather than binary decisions
+
+> **Source sections:** `USP-019`
+>
+> [DOCUMENTATION REVIEW] Contradiction **C-06** ([Review Notes](../REVIEW-NOTES.md#c-06--))
 
 Instead of immediately saying:
 
@@ -89,11 +93,17 @@ This is particularly useful near weak signals, where a single measurement may be
 
 ---
 
-<!-- source: Userscript Discovery Prototype.md L787–787 | turn 7 | ChatGPT turn lead-in -->
+<!-- USP-026 | Userscript Discovery Prototype.md L787–787 | turn 7 | ChatGPT turn lead-in -->
+> **Source sections:** `USP-026`
+>
+> **Note:** lead-in of the following section
+
 The natural next step is to define **what constitutes a successful discovery** and how the algorithm terminates. This is where a blind scanner becomes deterministic enough to implement.
 
-<!-- source: Userscript Discovery Prototype.md L789–823 | turn 7 | version ? -->
+<!-- USP-027 | Userscript Discovery Prototype.md L789–823 | turn 7 | version ? -->
 ### 16. Discovery should have evidence levels
+
+> **Source sections:** `USP-027`
 
 Rather than treating discovery as a single event, attach evidence to it:
 
@@ -129,11 +139,17 @@ and:
 
 ---
 
-<!-- source: Userscript Discovery Prototype.md L1111–1111 | turn 9 | ChatGPT turn lead-in -->
+<!-- USP-040 | Userscript Discovery Prototype.md L1111–1111 | turn 9 | ChatGPT turn lead-in -->
+> **Source sections:** `USP-040`
+>
+> **Note:** lead-in of the following section
+
 There is one more useful abstraction: **separate “where to look” from “how to recognize what you found.”** That lets the same discovery engine work with different tuners, demodulators, and protocols.
 
-<!-- source: Userscript Discovery Prototype.md L1113–1145 | turn 9 | version ? -->
+<!-- USP-041 | Userscript Discovery Prototype.md L1113–1145 | turn 9 | version ? -->
 ## 24. Two-dimensional discovery
+
+> **Source sections:** `USP-041`
 
 Think of the problem as:
 
@@ -167,8 +183,10 @@ That distinction makes the architecture much cleaner.
 
 ---
 
-<!-- source: Userscript Discovery Prototype.md L1208–1245 | turn 9 | version ? -->
+<!-- USP-043 | Userscript Discovery Prototype.md L1208–1245 | turn 9 | version ? -->
 ## 26. Discovery becomes a graph
+
+> **Source sections:** `USP-043`
 
 Once you preserve those relationships, the scan naturally forms a graph:
 
@@ -207,8 +225,10 @@ So the scanner is effectively constructing a **knowledge graph of the RF environ
 
 ---
 
-<!-- source: Userscript Discovery Prototype.md L1528–1545 | turn 11 | version ? -->
+<!-- USP-054 | Userscript Discovery Prototype.md L1528–1545 | turn 11 | version ? -->
 ### Discovery
+
+> **Source sections:** `USP-054`
 
 A discovery is the normalized result:
 
@@ -227,8 +247,10 @@ The discovery should be independent of the particular tuner API that produced it
 
 ---
 
-<!-- source: Continue Architecture Planning.md L48388–48457 | turn 25 | version 0.7 -->
+<!-- CAP-036 | Continue Architecture Planning.md L48388–48457 | turn 25 | version 0.7 -->
 ## v0.7.0 — Discovery Graph + Acquisition Planner
+
+> **Source sections:** `CAP-036`
 
 The next step should **not** be “add more URL extractors.”
 
@@ -299,8 +321,10 @@ A more faithful generic blind-scan architecture needs an explicit **planning bou
                                └──────► DISCOVERY
 ```
 
-<!-- source: Continue Architecture Planning.md L48459–48492 | turn 25 | version 0.7 -->
+<!-- CAP-037 | Continue Architecture Planning.md L48459–48492 | turn 25 | version 0.7 -->
 ### v0.7 objectives
+
+> **Source sections:** `CAP-037`
 
 1. **Candidate ≠ acquisition request**
 2. Introduce an explicit `AcquisitionPlan`.
@@ -335,8 +359,10 @@ AcquisitionPlan
       Scheduler
 ```
 
-<!-- source: Continue Architecture Planning.md L48494–48659 | turn 25 | version 0.7 -->
+<!-- CAP-038 | Continue Architecture Planning.md L48494–48659 | turn 25 | version 0.7 -->
 ### v0.7 — Core contract
+
+> **Source sections:** `CAP-038`
 
 ```JavaScript
 class AcquisitionPlan {
@@ -503,8 +529,10 @@ if (!this.reserveRequestSlot()) {
 await this.executePlan(plan);
 ```
 
-<!-- source: Continue Architecture Planning.md L48661–48720 | turn 25 | version 0.7 -->
+<!-- CAP-039 | Continue Architecture Planning.md L48661–48720 | turn 25 | version 0.7 -->
 ### v0.7 — Important v0.7 distinction
+
+> **Source sections:** `CAP-039`
 
 A network observation such as:
 
@@ -565,8 +593,10 @@ This is the key architectural transition.
 
 ---
 
-<!-- source: Continue Architecture Planning.md L48722–48800 | turn 25 | version 0.7 -->
+<!-- CAP-040 | Continue Architecture Planning.md L48722–48800 | turn 25 | version 0.7 -->
 ## v0.7 state machine
+
+> **Source sections:** `CAP-040`
 
 The candidate lifecycle should also become explicit:
 
@@ -646,8 +676,10 @@ SKIPPED
 
 ---
 
-<!-- source: Continue Architecture Planning.md L59472–59493 | turn 39 | version 0.13 -->
+<!-- CAP-190 | Continue Architecture Planning.md L59472–59493 | turn 39 | version 0.13 -->
 ## v0.13 — Discovery Controller
+
+> **Source sections:** `CAP-190`
 
 v0.12 separated **where candidates come from** from the rest of the pipeline.
 
@@ -670,8 +702,10 @@ v0.13 introduces the **Discovery Controller**.
 
 ---
 
-<!-- source: Continue Architecture Planning.md L59598–59653 | turn 39 | version 0.13 -->
+<!-- CAP-193 | Continue Architecture Planning.md L59598–59653 | turn 39 | version 0.13 -->
 ## v0.13 — 3. DiscoveryTask
+
+> **Source sections:** `CAP-193`
 
 We need an explicit unit of source work.
 
@@ -728,8 +762,10 @@ The source itself does not need to know when it should run.
 
 ---
 
-<!-- source: Continue Architecture Planning.md L59655–59699 | turn 39 | version 0.13 -->
+<!-- CAP-194 | Continue Architecture Planning.md L59655–59699 | turn 39 | version 0.13 -->
 ## v0.13 — 4. Why a task is necessary
+
+> **Source sections:** `CAP-194`
 
 Without a task:
 
@@ -775,8 +811,12 @@ Discovery itself becomes bounded.
 
 ---
 
-<!-- source: Continue Architecture Planning.md L59701–59750 | turn 39 | version 0.13 -->
+<!-- CAP-195 | Continue Architecture Planning.md L59701–59750 | turn 39 | version 0.13 -->
 ## v0.13 — 5. Source Policy
+
+> **Source sections:** `CAP-195`
+>
+> [DOCUMENTATION REVIEW] Contradiction **C-11** ([Review Notes](../REVIEW-NOTES.md#c-11--))
 
 A source needs an explicit policy boundary.
 
@@ -827,8 +867,10 @@ DiscoverySourcePolicy
 
 ---
 
-<!-- source: Continue Architecture Planning.md L59752–59783 | turn 39 | version 0.13 -->
+<!-- CAP-196 | Continue Architecture Planning.md L59752–59783 | turn 39 | version 0.13 -->
 ## v0.13 — 6. Source budgets
+
+> **Source sections:** `CAP-196`
 
 The controller should support both global and per-source budgets.
 
@@ -861,8 +903,10 @@ This prevents a single source from consuming the entire scan.
 
 ---
 
-<!-- source: Continue Architecture Planning.md L59785–59826 | turn 39 | version 0.13 -->
+<!-- CAP-197 | Continue Architecture Planning.md L59785–59826 | turn 39 | version 0.13 -->
 ## v0.13 — 7. Proposal budget is different
+
+> **Source sections:** `CAP-197`
 
 There are actually two separate quantities:
 
@@ -905,8 +949,10 @@ The rest are not necessarily discarded forever; the source can eventually become
 
 ---
 
-<!-- source: Continue Architecture Planning.md L59828–59867 | turn 39 | version 0.13 -->
+<!-- CAP-198 | Continue Architecture Planning.md L59828–59867 | turn 39 | version 0.13 -->
 ## v0.13 — 8. Incremental sources
+
+> **Source sections:** `CAP-198`
 
 This exposes an important future interface.
 
@@ -947,8 +993,10 @@ This is much safer than allowing a provider to dump an unbounded result set into
 
 ---
 
-<!-- source: Continue Architecture Planning.md L59869–59912 | turn 39 | version 0.13 -->
+<!-- CAP-199 | Continue Architecture Planning.md L59869–59912 | turn 39 | version 0.13 -->
 ## v0.13 — 9. Source execution contract
+
+> **Source sections:** `CAP-199`
 
 A more mature interface becomes:
 
@@ -993,8 +1041,10 @@ streaming source
 
 ---
 
-<!-- source: Continue Architecture Planning.md L60168–60208 | turn 39 | version 0.13 -->
+<!-- CAP-206 | Continue Architecture Planning.md L60168–60208 | turn 39 | version 0.13 -->
 ## v0.13 — 16. DiscoveryController
+
+> **Source sections:** `CAP-206`
 
 Conceptually:
 
@@ -1036,8 +1086,10 @@ The controller becomes the sole owner of the discovery loop.
 
 ---
 
-<!-- source: Continue Architecture Planning.md L60210–60258 | turn 39 | version 0.13 -->
+<!-- CAP-207 | Continue Architecture Planning.md L60210–60258 | turn 39 | version 0.13 -->
 ## v0.13 — 17. Event ledger
+
+> **Source sections:** `CAP-207`
 
 v0.13 adds:
 
@@ -1087,8 +1139,10 @@ That is substantially more useful than simply recording:
 
 ---
 
-<!-- source: Continue Architecture Planning.md L60612–60627 | turn 41 | version 0.14 -->
+<!-- CAP-225 | Continue Architecture Planning.md L60612–60627 | turn 41 | version 0.14 -->
 ### v0.14 — Discovery Engine
+
+> **Source sections:** `CAP-225`
 
 The engine contains mechanisms:
 
@@ -1105,8 +1159,10 @@ The engine contains mechanisms:
 
 It should be reusable across scans.
 
-<!-- source: Continue Architecture Planning.md L60974–61037 | turn 41 | version 0.14 -->
+<!-- CAP-234 | Continue Architecture Planning.md L60974–61037 | turn 41 | version 0.14 -->
 ## v0.14 — 8. Discovery frontier
+
+> **Source sections:** `CAP-234`
 
 Now we can introduce the central scan concept:
 
@@ -1171,8 +1227,12 @@ This gives us a genuine exploration process.
 
 ---
 
-<!-- source: Continue Architecture Planning.md L64721–64756 | turn 45 | version 0.16 -->
+<!-- CAP-340 | Continue Architecture Planning.md L64721–64756 | turn 45 | version 0.16 -->
 ## v0.16 — 28. Discovery confidence changes meaning
+
+> **Source sections:** `CAP-340`
+>
+> [DOCUMENTATION REVIEW] Contradiction **C-06** ([Review Notes](../REVIEW-NOTES.md#c-06--))
 
 Earlier we had:
 
@@ -1209,8 +1269,10 @@ This preserves the reasons behind the assessment.
 
 ---
 
-<!-- source: Continue Architecture Planning.md L65192–65196 | turn 45 | version 0.16 -->
+<!-- CAP-364 | Continue Architecture Planning.md L65192–65196 | turn 45 | version 0.16 -->
 ### v0.16 — Discovery
+
+> **Source sections:** `CAP-364`
 
 > What new possibilities were found?
 

@@ -6,44 +6,44 @@
 >
 > **Purpose:** Complete system-architecture snapshots, the core object model, data stores and event-driven structure.
 
-## Contents
+## Source Sections
 
-- **14. Discovery database** — `Userscript Discovery Prototype.md` L678–737
-- *Turn lead-in* — `Userscript Discovery Prototype.md` L1441–1441
-- **31. Define the core objects** — `Userscript Discovery Prototype.md` L1443–1453
-- **40. The engine can now become event-driven** — `Userscript Discovery Prototype.md` L1831–1875
-- **v0.7 — 7. Architecture after v0.7.1** — `Continue Architecture Planning.md` L54473–54580
-- **v0.9 — 0.9 architecture** — `Continue Architecture Planning.md` L55641–55697
-- **v0.10 — 1. The new architecture** — `Continue Architecture Planning.md` L56368–56432
-- **v0.10 — 17. The resulting architecture** — `Continue Architecture Planning.md` L57181–57233
-- **v0.11 — 1. v0.11 architecture** — `Continue Architecture Planning.md` L57368–57442
-- **v0.12 — 19. The complete v0.12 architecture** — `Continue Architecture Planning.md` L59267–59354
-- **v0.13 — 1. The complete v0.13 architecture** — `Continue Architecture Planning.md` L59495–59546
-- **v0.13 — 21. The architecture is now approaching a stable core** — `Continue Architecture Planning.md` L60394–60484
-- **v0.14 — 22. The complete v0.14 architecture** — `Continue Architecture Planning.md` L61697–61772
-- **v0.15 — 33. The resulting architecture** — `Continue Architecture Planning.md` L63390–63430
-- **v0.16 — 33. v0.16 architecture** — `Continue Architecture Planning.md` L64931–64989
-- **v0.17 — 31. The new architecture** — `Continue Architecture Planning.md` L66503–66560
-- **v0.18 — 18.21 End-to-End Architecture** — `Continue Architecture Planning.md` L67868–67937
-- **v0.20 — 20.30 The Architecture After v0.20** — `Continue Architecture Planning.md` L71028–71072
-- **v0.21 — 21.30 Architecture After v0.21** — `Continue Architecture Planning.md` L72513–72578
-- **v0.22 — 22.25 v0.22 architecture** — `Continue Architecture Planning.md` L73937–73996
-- **v0.23 — 23.22 Architecture after v0.23** — `Continue Architecture Planning.md` L75101–75167
-- **v0.24 — 24.30 New architecture** — `Continue Architecture Planning.md` L76763–76828
-- **v0.24 — 24.31 The architecture's semantic layers** — `Continue Architecture Planning.md` L76830–76874
-- **v0.25 — 25.31 v0.25 complete architecture** — `Continue Architecture Planning.md` L78350–78413
-- **v0.26 — 26.24 v0.26 architecture** — `Continue Architecture Planning.md` L79784–79852
-- **v0.27 — 27.29 Full v0.27 architecture** — `Continue Architecture Planning.md` L81427–81495
-- **v0.28 — 28.33 v0.28 architecture** — `Continue Architecture Planning.md` L83059–83128
-- **v0.29 — 29.30 Dynamic expansion architecture** — `Continue Architecture Planning.md` L84369–84399
-- **v0.30 — Final architecture** — `Continue Architecture Planning.md` L84950–85022
-- **v0.30 — 30.1 The new architecture** — `Continue Architecture Planning.md` L85171–85213
-- **v0.30 — 30.23 Full v0.30 architecture** — `Continue Architecture Planning.md` L86220–86280
-- **v0.31 — 31.23 Unified v0.31 architecture** — `Continue Architecture Planning.md` L87538–87598
-- **v0.32 — 32.31 v0.32 architecture** — `Continue Architecture Planning.md` L88846–88895
-- **v0.33 — 33.32 v0.33 architecture** — `Continue Architecture Planning.md` L90180–90225
-- **v0.34 — 34.1 New Architecture Boundary** — `Continue Architecture Planning.md` L90448–90498
-- **v0.34 — Final architecture by responsibility** — `Continue Architecture Planning.md` L92158–92188
+- **14. Discovery database** — `USP-023` — `Userscript Discovery Prototype.md` L678–737
+- *Turn lead-in* — `USP-049` — `Userscript Discovery Prototype.md` L1441–1441
+- **31. Define the core objects** — `USP-050` — `Userscript Discovery Prototype.md` L1443–1453
+- **40. The engine can now become event-driven** — `USP-063` — `Userscript Discovery Prototype.md` L1831–1875
+- **v0.7 — 7. Architecture after v0.7.1** — `CAP-053` — `Continue Architecture Planning.md` L54473–54580
+- **v0.9 — 0.9 architecture** — `CAP-081` — `Continue Architecture Planning.md` L55641–55697
+- **v0.10 — 1. The new architecture** — `CAP-107` — `Continue Architecture Planning.md` L56368–56432
+- **v0.10 — 17. The resulting architecture** — `CAP-125` — `Continue Architecture Planning.md` L57181–57233
+- **v0.11 — 1. v0.11 architecture** — `CAP-130` — `Continue Architecture Planning.md` L57368–57442
+- **v0.12 — 19. The complete v0.12 architecture** — `CAP-186` — `Continue Architecture Planning.md` L59267–59354
+- **v0.13 — 1. The complete v0.13 architecture** — `CAP-191` — `Continue Architecture Planning.md` L59495–59546
+- **v0.13 — 21. The architecture is now approaching a stable core** — `CAP-220` — `Continue Architecture Planning.md` L60394–60484
+- **v0.14 — 22. The complete v0.14 architecture** — `CAP-256` — `Continue Architecture Planning.md` L61697–61772
+- **v0.15 — 33. The resulting architecture** — `CAP-306` — `Continue Architecture Planning.md` L63390–63430
+- **v0.16 — 33. v0.16 architecture** — `CAP-345` — `Continue Architecture Planning.md` L64931–64989
+- **v0.17 — 31. The new architecture** — `CAP-416` — `Continue Architecture Planning.md` L66503–66560
+- **v0.18 — 18.21 End-to-End Architecture** — `CAP-445` — `Continue Architecture Planning.md` L67868–67937
+- **v0.20 — 20.30 The Architecture After v0.20** — `CAP-556` — `Continue Architecture Planning.md` L71028–71072
+- **v0.21 — 21.30 Architecture After v0.21** — `CAP-597` — `Continue Architecture Planning.md` L72513–72578
+- **v0.22 — 22.25 v0.22 architecture** — `CAP-636` — `Continue Architecture Planning.md` L73937–73996
+- **v0.23 — 23.22 Architecture after v0.23** — `CAP-662` — `Continue Architecture Planning.md` L75101–75167
+- **v0.24 — 24.30 New architecture** — `CAP-711` — `Continue Architecture Planning.md` L76763–76828
+- **v0.24 — 24.31 The architecture's semantic layers** — `CAP-712` — `Continue Architecture Planning.md` L76830–76874
+- **v0.25 — 25.31 v0.25 complete architecture** — `CAP-758` — `Continue Architecture Planning.md` L78350–78413
+- **v0.26 — 26.24 v0.26 architecture** — `CAP-793` — `Continue Architecture Planning.md` L79784–79852
+- **v0.27 — 27.29 Full v0.27 architecture** — `CAP-852` — `Continue Architecture Planning.md` L81427–81495
+- **v0.28 — 28.33 v0.28 architecture** — `CAP-917` — `Continue Architecture Planning.md` L83059–83128
+- **v0.29 — 29.30 Dynamic expansion architecture** — `CAP-951` — `Continue Architecture Planning.md` L84369–84399
+- **v0.30 — Final architecture** — `CAP-979` — `Continue Architecture Planning.md` L84950–85022
+- **v0.30 — 30.1 The new architecture** — `CAP-984` — `Continue Architecture Planning.md` L85171–85213
+- **v0.30 — 30.23 Full v0.30 architecture** — `CAP-1008` — `Continue Architecture Planning.md` L86220–86280
+- **v0.31 — 31.23 Unified v0.31 architecture** — `CAP-1037` — `Continue Architecture Planning.md` L87538–87598
+- **v0.32 — 32.31 v0.32 architecture** — `CAP-1073` — `Continue Architecture Planning.md` L88846–88895
+- **v0.33 — 33.32 v0.33 architecture** — `CAP-1112` — `Continue Architecture Planning.md` L90180–90225
+- **v0.34 — 34.1 New Architecture Boundary** — `CAP-1119` — `Continue Architecture Planning.md` L90448–90498
+- **v0.34 — Final architecture by responsibility** — `CAP-1169` — `Continue Architecture Planning.md` L92158–92188
 
 ## Related Documents
 
@@ -54,8 +54,12 @@
 
 ---
 
-<!-- source: Userscript Discovery Prototype.md L678–737 | turn 5 | version ? -->
+<!-- USP-023 | Userscript Discovery Prototype.md L678–737 | turn 5 | version ? -->
 ## 14. Discovery database
+
+> **Source sections:** `USP-023`
+>
+> [DOCUMENTATION REVIEW] Contradiction **C-10** ([Review Notes](../REVIEW-NOTES.md#c-10--))
 
 The final output should ideally not be "a list of frequencies."
 
@@ -116,11 +120,17 @@ Reception {
 
 ---
 
-<!-- source: Userscript Discovery Prototype.md L1441–1441 | turn 11 | ChatGPT turn lead-in -->
+<!-- USP-049 | Userscript Discovery Prototype.md L1441–1441 | turn 11 | ChatGPT turn lead-in -->
+> **Source sections:** `USP-049`
+>
+> **Note:** lead-in of the following section
+
 Yes. The next layer is to make the abstraction **implementable without coupling the discovery engine to DVB hardware**.
 
-<!-- source: Userscript Discovery Prototype.md L1443–1453 | turn 11 | version ? -->
+<!-- USP-050 | Userscript Discovery Prototype.md L1443–1453 | turn 11 | version ? -->
 ## 31. Define the core objects
+
+> **Source sections:** `USP-050`
 
 A clean model has five primary objects:
 
@@ -132,8 +142,10 @@ Discovery
 Evidence
 ```
 
-<!-- source: Userscript Discovery Prototype.md L1831–1875 | turn 11 | version ? -->
+<!-- USP-063 | Userscript Discovery Prototype.md L1831–1875 | turn 11 | version ? -->
 ## 40. The engine can now become event-driven
+
+> **Source sections:** `USP-063`
 
 Instead of one enormous synchronous scan:
 
@@ -179,8 +191,10 @@ This makes the system easier to parallelize, log, test, and monitor.
 
 ---
 
-<!-- source: Continue Architecture Planning.md L54473–54580 | turn 27 | version 0.7 -->
+<!-- CAP-053 | Continue Architecture Planning.md L54473–54580 | turn 27 | version 0.7 -->
 ## v0.7 — 7. Architecture after v0.7.1
+
+> **Source sections:** `CAP-053`
 
 ```
                  ┌──────────────────────┐
@@ -289,8 +303,10 @@ With the new cross-cutting layer:
        └──────────────────────────────────────────┘
 ```
 
-<!-- source: Continue Architecture Planning.md L55641–55697 | turn 31 | version 0.9 -->
+<!-- CAP-081 | Continue Architecture Planning.md L55641–55697 | turn 31 | version 0.9 -->
 ### v0.9 — 0.9 architecture
+
+> **Source sections:** `CAP-081`
 
 ```
                          ┌─────────────────────┐
@@ -348,8 +364,10 @@ With the new cross-cutting layer:
                          └─────────────────────┘
 ```
 
-<!-- source: Continue Architecture Planning.md L56368–56432 | turn 33 | version 0.10 -->
+<!-- CAP-107 | Continue Architecture Planning.md L56368–56432 | turn 33 | version 0.10 -->
 ## v0.10 — 1. The new architecture
+
+> **Source sections:** `CAP-107`
 
 ```
                          CANDIDATE
@@ -415,8 +433,10 @@ This gives five distinct responsibilities:
 
 ---
 
-<!-- source: Continue Architecture Planning.md L57181–57233 | turn 33 | version 0.10 -->
+<!-- CAP-125 | Continue Architecture Planning.md L57181–57233 | turn 33 | version 0.10 -->
 ## v0.10 — 17. The resulting architecture
+
+> **Source sections:** `CAP-125`
 
 ```
                     ┌─────────────────────┐
@@ -470,8 +490,10 @@ This gives five distinct responsibilities:
                                └──────→ KB
 ```
 
-<!-- source: Continue Architecture Planning.md L57368–57442 | turn 35 | version 0.11 -->
+<!-- CAP-130 | Continue Architecture Planning.md L57368–57442 | turn 35 | version 0.11 -->
 ## v0.11 — 1. v0.11 architecture
+
+> **Source sections:** `CAP-130`
 
 ```
                          CANDIDATE
@@ -547,8 +569,10 @@ Discovery
 
 ---
 
-<!-- source: Continue Architecture Planning.md L59267–59354 | turn 37 | version 0.12 -->
+<!-- CAP-186 | Continue Architecture Planning.md L59267–59354 | turn 37 | version 0.12 -->
 ## v0.12 — 19. The complete v0.12 architecture
+
+> **Source sections:** `CAP-186`
 
 ```
                          ┌──────────────────────┐
@@ -637,8 +661,10 @@ Discovery
 
 ---
 
-<!-- source: Continue Architecture Planning.md L59495–59546 | turn 39 | version 0.13 -->
+<!-- CAP-191 | Continue Architecture Planning.md L59495–59546 | turn 39 | version 0.13 -->
 ## v0.13 — 1. The complete v0.13 architecture
+
+> **Source sections:** `CAP-191`
 
 ```
                          DISCOVERY CONTROLLER
@@ -691,8 +717,10 @@ The controller closes the discovery loop.
 
 ---
 
-<!-- source: Continue Architecture Planning.md L60394–60484 | turn 39 | version 0.13 -->
+<!-- CAP-220 | Continue Architecture Planning.md L60394–60484 | turn 39 | version 0.13 -->
 ## v0.13 — 21. The architecture is now approaching a stable core
+
+> **Source sections:** `CAP-220`
 
 ```
                      ┌──────────────────┐
@@ -784,8 +812,10 @@ Evidence
 
 ---
 
-<!-- source: Continue Architecture Planning.md L61697–61772 | turn 41 | version 0.14 -->
+<!-- CAP-256 | Continue Architecture Planning.md L61697–61772 | turn 41 | version 0.14 -->
 ## v0.14 — 22. The complete v0.14 architecture
+
+> **Source sections:** `CAP-256`
 
 We can now assemble the system:
 
@@ -862,8 +892,10 @@ We can now assemble the system:
 
 ---
 
-<!-- source: Continue Architecture Planning.md L63390–63430 | turn 43 | version 0.15 -->
+<!-- CAP-306 | Continue Architecture Planning.md L63390–63430 | turn 43 | version 0.15 -->
 ## v0.15 — 33. The resulting architecture
+
+> **Source sections:** `CAP-306`
 
 ```
                          DISCOVERY DOMAIN
@@ -905,8 +937,10 @@ We can now assemble the system:
 
 ---
 
-<!-- source: Continue Architecture Planning.md L64931–64989 | turn 45 | version 0.16 -->
+<!-- CAP-345 | Continue Architecture Planning.md L64931–64989 | turn 45 | version 0.16 -->
 ## v0.16 — 33. v0.16 architecture
+
+> **Source sections:** `CAP-345`
 
 The full system becomes:
 
@@ -966,8 +1000,10 @@ EVENT LEDGER
 
 ---
 
-<!-- source: Continue Architecture Planning.md L66503–66560 | turn 47 | version 0.17 -->
+<!-- CAP-416 | Continue Architecture Planning.md L66503–66560 | turn 47 | version 0.17 -->
 ## v0.17 — 31. The new architecture
+
+> **Source sections:** `CAP-416`
 
 The complete system is now:
 
@@ -1026,8 +1062,10 @@ The complete system is now:
 
 ---
 
-<!-- source: Continue Architecture Planning.md L67868–67937 | turn 49 | version 0.18 -->
+<!-- CAP-445 | Continue Architecture Planning.md L67868–67937 | turn 49 | version 0.18 -->
 ## v0.18 — 18.21 End-to-End Architecture
+
+> **Source sections:** `CAP-445`
 
 At this point the engine becomes:
 
@@ -1098,8 +1136,10 @@ Updated Resource knowledge
 
 ---
 
-<!-- source: Continue Architecture Planning.md L71028–71072 | turn 53 | version 0.20 -->
+<!-- CAP-556 | Continue Architecture Planning.md L71028–71072 | turn 53 | version 0.20 -->
 ## v0.20 — 20.30 The Architecture After v0.20
+
+> **Source sections:** `CAP-556`
 
 The engine now has a much stronger separation:
 
@@ -1145,8 +1185,10 @@ The engine now has a much stronger separation:
 
 ---
 
-<!-- source: Continue Architecture Planning.md L72513–72578 | turn 55 | version 0.21 -->
+<!-- CAP-597 | Continue Architecture Planning.md L72513–72578 | turn 55 | version 0.21 -->
 ## v0.21 — 21.30 Architecture After v0.21
+
+> **Source sections:** `CAP-597`
 
 The complete control plane is becoming:
 
@@ -1213,8 +1255,10 @@ A bounded search system that can optimize **where and how it explores inside an 
 
 ---
 
-<!-- source: Continue Architecture Planning.md L73937–73996 | turn 57 | version 0.22 -->
+<!-- CAP-636 | Continue Architecture Planning.md L73937–73996 | turn 57 | version 0.22 -->
 ## v0.22 — 22.25 v0.22 architecture
+
+> **Source sections:** `CAP-636`
 
 The complete engine now looks like:
 
@@ -1275,8 +1319,10 @@ Cross-cutting:
 
 ---
 
-<!-- source: Continue Architecture Planning.md L75101–75167 | turn 59 | version 0.23 -->
+<!-- CAP-662 | Continue Architecture Planning.md L75101–75167 | turn 59 | version 0.23 -->
 ## v0.23 — 23.22 Architecture after v0.23
+
+> **Source sections:** `CAP-662`
 
 ```
                          SEARCH DOMAIN
@@ -1344,8 +1390,10 @@ EVENT LEDGER
 
 ---
 
-<!-- source: Continue Architecture Planning.md L76763–76828 | turn 61 | version 0.24 -->
+<!-- CAP-711 | Continue Architecture Planning.md L76763–76828 | turn 61 | version 0.24 -->
 ## v0.24 — 24.30 New architecture
+
+> **Source sections:** `CAP-711`
 
 The complete architecture now becomes:
 
@@ -1412,8 +1460,10 @@ The complete architecture now becomes:
 
 ---
 
-<!-- source: Continue Architecture Planning.md L76830–76874 | turn 61 | version 0.24 -->
+<!-- CAP-712 | Continue Architecture Planning.md L76830–76874 | turn 61 | version 0.24 -->
 ## v0.24 — 24.31 The architecture's semantic layers
+
+> **Source sections:** `CAP-712`
 
 At this point, the engine has four distinct reasoning layers:
 
@@ -1459,8 +1509,10 @@ This is an important architectural separation.
 
 ---
 
-<!-- source: Continue Architecture Planning.md L78350–78413 | turn 63 | version 0.25 -->
+<!-- CAP-758 | Continue Architecture Planning.md L78350–78413 | turn 63 | version 0.25 -->
 ## v0.25 — 25.31 v0.25 complete architecture
+
+> **Source sections:** `CAP-758`
 
 ```
                               GOAL
@@ -1525,8 +1577,10 @@ This is an important architectural separation.
 
 ---
 
-<!-- source: Continue Architecture Planning.md L79784–79852 | turn 65 | version 0.26 -->
+<!-- CAP-793 | Continue Architecture Planning.md L79784–79852 | turn 65 | version 0.26 -->
 ## v0.26 — 26.24 v0.26 architecture
+
+> **Source sections:** `CAP-793`
 
 The complete path now becomes:
 
@@ -1596,8 +1650,10 @@ The key architectural property is that the arrows do not imply authority transfe
 
 ---
 
-<!-- source: Continue Architecture Planning.md L81427–81495 | turn 67 | version 0.27 -->
+<!-- CAP-852 | Continue Architecture Planning.md L81427–81495 | turn 67 | version 0.27 -->
 ## v0.27 — 27.29 Full v0.27 architecture
+
+> **Source sections:** `CAP-852`
 
 ```
                               GOAL
@@ -1667,8 +1723,10 @@ CompletenessAssessment
 
 ---
 
-<!-- source: Continue Architecture Planning.md L83059–83128 | turn 69 | version 0.28 -->
+<!-- CAP-917 | Continue Architecture Planning.md L83059–83128 | turn 69 | version 0.28 -->
 ## v0.28 — 28.33 v0.28 architecture
+
+> **Source sections:** `CAP-917`
 
 The engine now looks like:
 
@@ -1739,8 +1797,10 @@ Completeness Assessment
 
 ---
 
-<!-- source: Continue Architecture Planning.md L84369–84399 | turn 71 | version 0.29 -->
+<!-- CAP-951 | Continue Architecture Planning.md L84369–84399 | turn 71 | version 0.29 -->
 ## v0.29 — 29.30 Dynamic expansion architecture
+
+> **Source sections:** `CAP-951`
 
 The complete loop becomes:
 
@@ -1772,8 +1832,10 @@ This is a major structural symmetry.
 
 ---
 
-<!-- source: Continue Architecture Planning.md L84950–85022 | turn 73 | version 0.30 -->
+<!-- CAP-979 | Continue Architecture Planning.md L84950–85022 | turn 73 | version 0.30 -->
 ## v0.30 — Final architecture
+
+> **Source sections:** `CAP-979`
 
 ```
 ┌───────────────────────────────────────────────────────────┐
@@ -1847,8 +1909,10 @@ Observability
 
 ---
 
-<!-- source: Continue Architecture Planning.md L85171–85213 | turn 75 | version 0.30 -->
+<!-- CAP-984 | Continue Architecture Planning.md L85171–85213 | turn 75 | version 0.30 -->
 ## v0.30 — 30.1 The new architecture
+
+> **Source sections:** `CAP-984`
 
 ```
                          FRONTIER
@@ -1892,8 +1956,10 @@ Never merge those concepts.
 
 ---
 
-<!-- source: Continue Architecture Planning.md L86220–86280 | turn 75 | version 0.30 -->
+<!-- CAP-1008 | Continue Architecture Planning.md L86220–86280 | turn 75 | version 0.30 -->
 ## v0.30 — 30.23 Full v0.30 architecture
+
+> **Source sections:** `CAP-1008`
 
 ```
                          ┌───────────────┐
@@ -1955,8 +2021,10 @@ Never merge those concepts.
 
 ---
 
-<!-- source: Continue Architecture Planning.md L87538–87598 | turn 77 | version 0.31 -->
+<!-- CAP-1037 | Continue Architecture Planning.md L87538–87598 | turn 77 | version 0.31 -->
 ## v0.31 — 31.23 Unified v0.31 architecture
+
+> **Source sections:** `CAP-1037`
 
 ```
                          SEARCH GOAL
@@ -2018,8 +2086,10 @@ Never merge those concepts.
 
 ---
 
-<!-- source: Continue Architecture Planning.md L88846–88895 | turn 79 | version 0.32 -->
+<!-- CAP-1073 | Continue Architecture Planning.md L88846–88895 | turn 79 | version 0.32 -->
 ## v0.32 — 32.31 v0.32 architecture
+
+> **Source sections:** `CAP-1073`
 
 ```
                        DURABLE STORAGE
@@ -2070,8 +2140,10 @@ Never merge those concepts.
 
 ---
 
-<!-- source: Continue Architecture Planning.md L90180–90225 | turn 81 | version 0.33 -->
+<!-- CAP-1112 | Continue Architecture Planning.md L90180–90225 | turn 81 | version 0.33 -->
 ## v0.33 — 33.32 v0.33 architecture
+
+> **Source sections:** `CAP-1112`
 
 ```
                        DURABLE FRONTIER
@@ -2118,8 +2190,10 @@ Never merge those concepts.
 
 ---
 
-<!-- source: Continue Architecture Planning.md L90448–90498 | turn 83 | version 0.34 -->
+<!-- CAP-1119 | Continue Architecture Planning.md L90448–90498 | turn 83 | version 0.34 -->
 ## v0.34 — 34.1 New Architecture Boundary
+
+> **Source sections:** `CAP-1119`
 
 ```
                     WORKERS
@@ -2171,8 +2245,10 @@ RESOLVE CONFLICT
 
 ---
 
-<!-- source: Continue Architecture Planning.md L92158–92188 | turn 85 | version 0.34 -->
+<!-- CAP-1169 | Continue Architecture Planning.md L92158–92188 | turn 85 | version 0.34 -->
 ## v0.34 — Final architecture by responsibility
+
+> **Source sections:** `CAP-1169`
 
 | Layer | Fundamental question |
 | --- | --- |

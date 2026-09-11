@@ -6,39 +6,39 @@
 >
 > **Purpose:** Discovery domains, scan sessions, seeds, session lifecycle and termination conditions.
 
-## Contents
+## Source Sections
 
-- **v0.14 — DiscoveryDomain + ScanSession** — `Continue Architecture Planning.md` L60556–60588
-- **v0.14 — 1. The conceptual split** — `Continue Architecture Planning.md` L60590–60610
-- **v0.14 — DiscoveryDomain** — `Continue Architecture Planning.md` L60629–60633
-- **v0.14 — ScanSession** — `Continue Architecture Planning.md` L60635–60647
-- **v0.14 — 3. DiscoveryDomain** — `Continue Architecture Planning.md` L60691–60748
-- **v0.14 — 4. Domain vs policy** — `Continue Architecture Planning.md` L60750–60798
-- **v0.14 — 5. Domain membership** — `Continue Architecture Planning.md` L60800–60878
-- **v0.14 — 6. Explicit seeds** — `Continue Architecture Planning.md` L60880–60932
-- **v0.14 — 7. Seed ≠ Candidate** — `Continue Architecture Planning.md` L60934–60972
-- **v0.14 — 9. ScanSession** — `Continue Architecture Planning.md` L61039–61102
-- **v0.14 — 10. Session lifecycle** — `Continue Architecture Planning.md` L61104–61147
-- **v0.14 — 11. Termination becomes explicit** — `Continue Architecture Planning.md` L61149–61153
-- **v0.14 — Frontier exhaustion** — `Continue Architecture Planning.md` L61155–61165
-- **v0.14 — Candidate limit** — `Continue Architecture Planning.md` L61167–61171
-- **v0.14 — Acquisition limit** — `Continue Architecture Planning.md` L61173–61177
-- **v0.14 — Discovery-task limit** — `Continue Architecture Planning.md` L61179–61183
-- **v0.14 — Proposal limit** — `Continue Architecture Planning.md` L61185–61189
-- **v0.14 — Depth limit** — `Continue Architecture Planning.md` L61191–61195
-- **v0.14 — Time limit** — `Continue Architecture Planning.md` L61197–61201
-- **v0.14 — External stop** — `Continue Architecture Planning.md` L61203–61209
-- **v0.14 — 12. Termination evaluator** — `Continue Architecture Planning.md` L61211–61265
-- **v0.14 — 13. Limit reached ≠ successful completion** — `Continue Architecture Planning.md` L61267–61306
-- **v0.14 — 14. The session snapshot** — `Continue Architecture Planning.md` L61308–61352
-- **v0.14 — 15. Resumability** — `Continue Architecture Planning.md` L61354–61413
-- **v0.14 — 17. Session ownership** — `Continue Architecture Planning.md` L61463–61501
-- **v0.14 — 18. Scan vs engine knowledge** — `Continue Architecture Planning.md` L61503–61557
-- **v0.14 — 19. Domain snapshot vs mutable domain** — `Continue Architecture Planning.md` L61559–61615
-- **v0.14 — 20. Domain identity** — `Continue Architecture Planning.md` L61617–61666
-- **v0.14 — 21. Search frontier vs knowledge graph** — `Continue Architecture Planning.md` L61668–61695
-- **v0.14 — 23. Four distinct scopes** — `Continue Architecture Planning.md` L61774–61787
-- **v0.14 — 26. What v0.14 changes conceptually** — `Continue Architecture Planning.md` L61886–61918
+- **v0.14 — DiscoveryDomain + ScanSession** — `CAP-223` — `Continue Architecture Planning.md` L60556–60588
+- **v0.14 — 1. The conceptual split** — `CAP-224` — `Continue Architecture Planning.md` L60590–60610
+- **v0.14 — DiscoveryDomain** — `CAP-226` — `Continue Architecture Planning.md` L60629–60633
+- **v0.14 — ScanSession** — `CAP-227` — `Continue Architecture Planning.md` L60635–60647
+- **v0.14 — 3. DiscoveryDomain** — `CAP-229` — `Continue Architecture Planning.md` L60691–60748
+- **v0.14 — 4. Domain vs policy** — `CAP-230` — `Continue Architecture Planning.md` L60750–60798
+- **v0.14 — 5. Domain membership** — `CAP-231` — `Continue Architecture Planning.md` L60800–60878
+- **v0.14 — 6. Explicit seeds** — `CAP-232` — `Continue Architecture Planning.md` L60880–60932
+- **v0.14 — 7. Seed ≠ Candidate** — `CAP-233` — `Continue Architecture Planning.md` L60934–60972
+- **v0.14 — 9. ScanSession** — `CAP-235` — `Continue Architecture Planning.md` L61039–61102
+- **v0.14 — 10. Session lifecycle** — `CAP-236` — `Continue Architecture Planning.md` L61104–61147
+- **v0.14 — 11. Termination becomes explicit** — `CAP-237` — `Continue Architecture Planning.md` L61149–61153
+- **v0.14 — Frontier exhaustion** — `CAP-238` — `Continue Architecture Planning.md` L61155–61165
+- **v0.14 — Candidate limit** — `CAP-239` — `Continue Architecture Planning.md` L61167–61171
+- **v0.14 — Acquisition limit** — `CAP-240` — `Continue Architecture Planning.md` L61173–61177
+- **v0.14 — Discovery-task limit** — `CAP-241` — `Continue Architecture Planning.md` L61179–61183
+- **v0.14 — Proposal limit** — `CAP-242` — `Continue Architecture Planning.md` L61185–61189
+- **v0.14 — Depth limit** — `CAP-243` — `Continue Architecture Planning.md` L61191–61195
+- **v0.14 — Time limit** — `CAP-244` — `Continue Architecture Planning.md` L61197–61201
+- **v0.14 — External stop** — `CAP-245` — `Continue Architecture Planning.md` L61203–61209
+- **v0.14 — 12. Termination evaluator** — `CAP-246` — `Continue Architecture Planning.md` L61211–61265
+- **v0.14 — 13. Limit reached ≠ successful completion** — `CAP-247` — `Continue Architecture Planning.md` L61267–61306
+- **v0.14 — 14. The session snapshot** — `CAP-248` — `Continue Architecture Planning.md` L61308–61352
+- **v0.14 — 15. Resumability** — `CAP-249` — `Continue Architecture Planning.md` L61354–61413
+- **v0.14 — 17. Session ownership** — `CAP-251` — `Continue Architecture Planning.md` L61463–61501
+- **v0.14 — 18. Scan vs engine knowledge** — `CAP-252` — `Continue Architecture Planning.md` L61503–61557
+- **v0.14 — 19. Domain snapshot vs mutable domain** — `CAP-253` — `Continue Architecture Planning.md` L61559–61615
+- **v0.14 — 20. Domain identity** — `CAP-254` — `Continue Architecture Planning.md` L61617–61666
+- **v0.14 — 21. Search frontier vs knowledge graph** — `CAP-255` — `Continue Architecture Planning.md` L61668–61695
+- **v0.14 — 23. Four distinct scopes** — `CAP-257` — `Continue Architecture Planning.md` L61774–61787
+- **v0.14 — 26. What v0.14 changes conceptually** — `CAP-269` — `Continue Architecture Planning.md` L61886–61918
 
 ## Related Documents
 
@@ -49,8 +49,10 @@
 
 ---
 
-<!-- source: Continue Architecture Planning.md L60556–60588 | turn 41 | version 0.14 -->
+<!-- CAP-223 | Continue Architecture Planning.md L60556–60588 | turn 41 | version 0.14 -->
 ## v0.14 — DiscoveryDomain + ScanSession
+
+> **Source sections:** `CAP-223`
 
 The missing abstraction is the **search space**.
 
@@ -84,8 +86,10 @@ That is what `DiscoveryDomain` and `ScanSession` establish.
 
 ---
 
-<!-- source: Continue Architecture Planning.md L60590–60610 | turn 41 | version 0.14 -->
+<!-- CAP-224 | Continue Architecture Planning.md L60590–60610 | turn 41 | version 0.14 -->
 ## v0.14 — 1. The conceptual split
+
+> **Source sections:** `CAP-224`
 
 There are now three different things:
 
@@ -107,15 +111,19 @@ RESULTS / EVIDENCE / LEDGER
 
 This distinction is important.
 
-<!-- source: Continue Architecture Planning.md L60629–60633 | turn 41 | version 0.14 -->
+<!-- CAP-226 | Continue Architecture Planning.md L60629–60633 | turn 41 | version 0.14 -->
 ### v0.14 — DiscoveryDomain
+
+> **Source sections:** `CAP-226`
 
 The domain defines:
 
 > **Where and what are we allowed to search?**
 
-<!-- source: Continue Architecture Planning.md L60635–60647 | turn 41 | version 0.14 -->
+<!-- CAP-227 | Continue Architecture Planning.md L60635–60647 | turn 41 | version 0.14 -->
 ### v0.14 — ScanSession
+
+> **Source sections:** `CAP-227`
 
 The session defines:
 
@@ -129,8 +137,10 @@ Engine ≠ Domain ≠ Session
 
 ---
 
-<!-- source: Continue Architecture Planning.md L60691–60748 | turn 41 | version 0.14 -->
+<!-- CAP-229 | Continue Architecture Planning.md L60691–60748 | turn 41 | version 0.14 -->
 ## v0.14 — 3. DiscoveryDomain
+
+> **Source sections:** `CAP-229`
 
 A first conceptual model:
 
@@ -189,8 +199,12 @@ The domain should answer only questions about the search space.
 
 ---
 
-<!-- source: Continue Architecture Planning.md L60750–60798 | turn 41 | version 0.14 -->
+<!-- CAP-230 | Continue Architecture Planning.md L60750–60798 | turn 41 | version 0.14 -->
 ## v0.14 — 4. Domain vs policy
+
+> **Source sections:** `CAP-230`
+>
+> [DOCUMENTATION REVIEW] Contradiction **C-11** ([Review Notes](../REVIEW-NOTES.md#c-11--))
 
 This distinction matters.
 
@@ -240,8 +254,10 @@ These must not collapse into one mechanism.
 
 ---
 
-<!-- source: Continue Architecture Planning.md L60800–60878 | turn 41 | version 0.14 -->
+<!-- CAP-231 | Continue Architecture Planning.md L60800–60878 | turn 41 | version 0.14 -->
 ## v0.14 — 5. Domain membership
+
+> **Source sections:** `CAP-231`
 
 A domain needs an explicit predicate:
 
@@ -321,8 +337,10 @@ without changing the engine itself.
 
 ---
 
-<!-- source: Continue Architecture Planning.md L60880–60932 | turn 41 | version 0.14 -->
+<!-- CAP-232 | Continue Architecture Planning.md L60880–60932 | turn 41 | version 0.14 -->
 ## v0.14 — 6. Explicit seeds
+
+> **Source sections:** `CAP-232`
 
 The domain should have explicit seeds.
 
@@ -376,8 +394,10 @@ rather than a hidden assumption inside the engine.
 
 ---
 
-<!-- source: Continue Architecture Planning.md L60934–60972 | turn 41 | version 0.14 -->
+<!-- CAP-233 | Continue Architecture Planning.md L60934–60972 | turn 41 | version 0.14 -->
 ## v0.14 — 7. Seed ≠ Candidate
+
+> **Source sections:** `CAP-233`
 
 This distinction should remain explicit.
 
@@ -417,8 +437,10 @@ without creating a candidate.
 
 ---
 
-<!-- source: Continue Architecture Planning.md L61039–61102 | turn 41 | version 0.14 -->
+<!-- CAP-235 | Continue Architecture Planning.md L61039–61102 | turn 41 | version 0.14 -->
 ## v0.14 — 9. ScanSession
+
+> **Source sections:** `CAP-235`
 
 A session represents one execution.
 
@@ -483,8 +505,10 @@ CANCELLED
 
 ---
 
-<!-- source: Continue Architecture Planning.md L61104–61147 | turn 41 | version 0.14 -->
+<!-- CAP-236 | Continue Architecture Planning.md L61104–61147 | turn 41 | version 0.14 -->
 ## v0.14 — 10. Session lifecycle
+
+> **Source sections:** `CAP-236`
 
 A more precise state machine:
 
@@ -529,15 +553,23 @@ This addresses one of the weaknesses in the earlier `Stop` implementation.
 
 ---
 
-<!-- source: Continue Architecture Planning.md L61149–61153 | turn 41 | version 0.14 -->
+<!-- CAP-237 | Continue Architecture Planning.md L61149–61153 | turn 41 | version 0.14 -->
 ## v0.14 — 11. Termination becomes explicit
+
+> **Source sections:** `CAP-237`
+>
+> [DOCUMENTATION REVIEW] Contradiction **C-09** ([Review Notes](../REVIEW-NOTES.md#c-09--))
 
 A blind scan needs a stopping rule.
 
 The generic engine should therefore support several termination conditions.
 
-<!-- source: Continue Architecture Planning.md L61155–61165 | turn 41 | version 0.14 -->
+<!-- CAP-238 | Continue Architecture Planning.md L61155–61165 | turn 41 | version 0.14 -->
 ### v0.14 — Frontier exhaustion
+
+> **Source sections:** `CAP-238`
+>
+> **Note:** explicit override
 
 ```
 no queued discovery tasks
@@ -549,50 +581,70 @@ no active operations
 
 This is the natural completion condition.
 
-<!-- source: Continue Architecture Planning.md L61167–61171 | turn 41 | version 0.14 -->
+<!-- CAP-239 | Continue Architecture Planning.md L61167–61171 | turn 41 | version 0.14 -->
 ### v0.14 — Candidate limit
+
+> **Source sections:** `CAP-239`
+>
+> **Note:** explicit override
 
 ```
 candidateCount >= maxCandidates
 ```
 
-<!-- source: Continue Architecture Planning.md L61173–61177 | turn 41 | version 0.14 -->
+<!-- CAP-240 | Continue Architecture Planning.md L61173–61177 | turn 41 | version 0.14 -->
 ### v0.14 — Acquisition limit
+
+> **Source sections:** `CAP-240`
+>
+> **Note:** explicit override
 
 ```
 acquisitionCount >= maxAcquisitions
 ```
 
-<!-- source: Continue Architecture Planning.md L61179–61183 | turn 41 | version 0.14 -->
+<!-- CAP-241 | Continue Architecture Planning.md L61179–61183 | turn 41 | version 0.14 -->
 ### v0.14 — Discovery-task limit
+
+> **Source sections:** `CAP-241`
+>
+> **Note:** explicit override
 
 ```
 discoveryTaskCount >= maxDiscoveryTasks
 ```
 
-<!-- source: Continue Architecture Planning.md L61185–61189 | turn 41 | version 0.14 -->
+<!-- CAP-242 | Continue Architecture Planning.md L61185–61189 | turn 41 | version 0.14 -->
 ### v0.14 — Proposal limit
+
+> **Source sections:** `CAP-242`
 
 ```
 proposalCount >= maxProposals
 ```
 
-<!-- source: Continue Architecture Planning.md L61191–61195 | turn 41 | version 0.14 -->
+<!-- CAP-243 | Continue Architecture Planning.md L61191–61195 | turn 41 | version 0.14 -->
 ### v0.14 — Depth limit
+
+> **Source sections:** `CAP-243`
 
 ```
 candidate.depth > maxDepth
 ```
 
-<!-- source: Continue Architecture Planning.md L61197–61201 | turn 41 | version 0.14 -->
+<!-- CAP-244 | Continue Architecture Planning.md L61197–61201 | turn 41 | version 0.14 -->
 ### v0.14 — Time limit
+
+> **Source sections:** `CAP-244`
 
 ```
 elapsed >= maxDuration
 ```
 
-<!-- source: Continue Architecture Planning.md L61203–61209 | turn 41 | version 0.14 -->
+<!-- CAP-245 | Continue Architecture Planning.md L61203–61209 | turn 41 | version 0.14 -->
 ### v0.14 — External stop
+
+> **Source sections:** `CAP-245`
 
 ```
 user → Stop
@@ -600,8 +652,12 @@ user → Stop
 
 ---
 
-<!-- source: Continue Architecture Planning.md L61211–61265 | turn 41 | version 0.14 -->
+<!-- CAP-246 | Continue Architecture Planning.md L61211–61265 | turn 41 | version 0.14 -->
 ## v0.14 — 12. Termination evaluator
+
+> **Source sections:** `CAP-246`
+>
+> [DOCUMENTATION REVIEW] Contradiction **C-09** ([Review Notes](../REVIEW-NOTES.md#c-09--))
 
 Instead of scattering termination checks throughout the code:
 
@@ -657,8 +713,10 @@ But there is a subtle issue.
 
 ---
 
-<!-- source: Continue Architecture Planning.md L61267–61306 | turn 41 | version 0.14 -->
+<!-- CAP-247 | Continue Architecture Planning.md L61267–61306 | turn 41 | version 0.14 -->
 ## v0.14 — 13. Limit reached ≠ successful completion
+
+> **Source sections:** `CAP-247`
 
 This distinction should be preserved.
 
@@ -699,8 +757,10 @@ rather than pretending the scan completed naturally.
 
 ---
 
-<!-- source: Continue Architecture Planning.md L61308–61352 | turn 41 | version 0.14 -->
+<!-- CAP-248 | Continue Architecture Planning.md L61308–61352 | turn 41 | version 0.14 -->
 ## v0.14 — 14. The session snapshot
+
+> **Source sections:** `CAP-248`
 
 A session should have a reproducible state snapshot.
 
@@ -746,8 +806,10 @@ This becomes the basis for resumability.
 
 ---
 
-<!-- source: Continue Architecture Planning.md L61354–61413 | turn 41 | version 0.14 -->
+<!-- CAP-249 | Continue Architecture Planning.md L61354–61413 | turn 41 | version 0.14 -->
 ## v0.14 — 15. Resumability
+
+> **Source sections:** `CAP-249`
 
 This is where `ScanSession` becomes substantially more useful than simply having a `running` boolean.
 
@@ -808,8 +870,10 @@ REQUEUE OR ABANDON
 
 ---
 
-<!-- source: Continue Architecture Planning.md L61463–61501 | turn 41 | version 0.14 -->
+<!-- CAP-251 | Continue Architecture Planning.md L61463–61501 | turn 41 | version 0.14 -->
 ## v0.14 — 17. Session ownership
+
+> **Source sections:** `CAP-251`
 
 The session becomes the top-level execution identity.
 
@@ -849,8 +913,12 @@ rather than merely:
 
 ---
 
-<!-- source: Continue Architecture Planning.md L61503–61557 | turn 41 | version 0.14 -->
+<!-- CAP-252 | Continue Architecture Planning.md L61503–61557 | turn 41 | version 0.14 -->
 ## v0.14 — 18. Scan vs engine knowledge
+
+> **Source sections:** `CAP-252`
+>
+> [DOCUMENTATION REVIEW] Contradiction **C-10** ([Review Notes](../REVIEW-NOTES.md#c-10--))
 
 This produces another important distinction.
 
@@ -906,8 +974,10 @@ That becomes extremely useful for revision detection later.
 
 ---
 
-<!-- source: Continue Architecture Planning.md L61559–61615 | turn 41 | version 0.14 -->
+<!-- CAP-253 | Continue Architecture Planning.md L61559–61615 | turn 41 | version 0.14 -->
 ## v0.14 — 19. Domain snapshot vs mutable domain
+
+> **Source sections:** `CAP-253`
 
 A subtle but important rule:
 
@@ -965,8 +1035,12 @@ rather than mutating Scan A.
 
 ---
 
-<!-- source: Continue Architecture Planning.md L61617–61666 | turn 41 | version 0.14 -->
+<!-- CAP-254 | Continue Architecture Planning.md L61617–61666 | turn 41 | version 0.14 -->
 ## v0.14 — 20. Domain identity
+
+> **Source sections:** `CAP-254`
+>
+> [DOCUMENTATION REVIEW] Contradiction **C-04** ([Review Notes](../REVIEW-NOTES.md#c-04--))
 
 A useful next step is deterministic domain identity.
 
@@ -1017,8 +1091,12 @@ This is much stronger for reproducibility.
 
 ---
 
-<!-- source: Continue Architecture Planning.md L61668–61695 | turn 41 | version 0.14 -->
+<!-- CAP-255 | Continue Architecture Planning.md L61668–61695 | turn 41 | version 0.14 -->
 ## v0.14 — 21. Search frontier vs knowledge graph
+
+> **Source sections:** `CAP-255`
+>
+> [DOCUMENTATION REVIEW] Contradiction **C-10** ([Review Notes](../REVIEW-NOTES.md#c-10--))
 
 Do not confuse them.
 
@@ -1047,8 +1125,10 @@ The frontier contains only active work.
 
 ---
 
-<!-- source: Continue Architecture Planning.md L61774–61787 | turn 41 | version 0.14 -->
+<!-- CAP-257 | Continue Architecture Planning.md L61774–61787 | turn 41 | version 0.14 -->
 ## v0.14 — 23. Four distinct scopes
+
+> **Source sections:** `CAP-257`
 
 At this point the architecture has four clean scopes:
 
@@ -1063,8 +1143,10 @@ This is a significant architectural boundary.
 
 ---
 
-<!-- source: Continue Architecture Planning.md L61886–61918 | turn 41 | version 0.14 -->
+<!-- CAP-269 | Continue Architecture Planning.md L61886–61918 | turn 41 | version 0.14 -->
 ## v0.14 — 26. What v0.14 changes conceptually
+
+> **Source sections:** `CAP-269`
 
 Before:
 

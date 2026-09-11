@@ -6,11 +6,11 @@
 >
 > **Purpose:** Why acquisition is separated from discovery, and what acquisition is and is not responsible for.
 
-## Contents
+## Source Sections
 
-- **3. Detection should precede expensive decoding** — `Userscript Discovery Prototype.md` L211–248
-- **v0.9 — The important separation** — `Continue Architecture Planning.md` L55699–55730
-- **v0.9 — 8. A deeper consequence: acquisition becomes replaceable** — `Continue Architecture Planning.md` L56071–56087
+- **3. Detection should precede expensive decoding** — `USP-009` — `Userscript Discovery Prototype.md` L211–248
+- **v0.9 — The important separation** — `CAP-082` — `Continue Architecture Planning.md` L55699–55730
+- **v0.9 — 8. A deeper consequence: acquisition becomes replaceable** — `CAP-092` — `Continue Architecture Planning.md` L56071–56087
 
 ## Related Documents
 
@@ -21,8 +21,10 @@
 
 ---
 
-<!-- source: Userscript Discovery Prototype.md L211–248 | turn 3 | version ? -->
+<!-- USP-009 | Userscript Discovery Prototype.md L211–248 | turn 3 | version ? -->
 ## 3. Detection should precede expensive decoding
+
+> **Source sections:** `USP-009`
 
 A naïve blind scanner tries every possible demodulator configuration. That can become extremely expensive.
 
@@ -61,8 +63,12 @@ Then attempt candidates in descending score order.
 
 ---
 
-<!-- source: Continue Architecture Planning.md L55699–55730 | turn 31 | version 0.9 -->
+<!-- CAP-082 | Continue Architecture Planning.md L55699–55730 | turn 31 | version 0.9 -->
 ### v0.9 — The important separation
+
+> **Source sections:** `CAP-082`
+>
+> **Note:** explicit override
 
 There are now **two different provider systems**:
 
@@ -95,8 +101,12 @@ This prevents a common architectural mistake: treating "HTTP client" and "HTML p
 
 ---
 
-<!-- source: Continue Architecture Planning.md L56071–56087 | turn 31 | version 0.9 -->
+<!-- CAP-092 | Continue Architecture Planning.md L56071–56087 | turn 31 | version 0.9 -->
 ## v0.9 — 8. A deeper consequence: acquisition becomes replaceable
+
+> **Source sections:** `CAP-092`
+>
+> **Note:** explicit override
 
 The engine can eventually run with:
 

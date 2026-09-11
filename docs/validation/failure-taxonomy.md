@@ -6,25 +6,25 @@
 >
 > **Purpose:** Every failure taxonomy recorded in the planning conversation, grouped by the version that introduced it.
 
-## Contents
+## Source Sections
 
-- **v0.11 — 12. Recognition failure taxonomy** — `Continue Architecture Planning.md` L57893–57897
-- **v0.13 — 18. Discovery failure taxonomy** — `Continue Architecture Planning.md` L60260–60288
-- **v0.14 — 25. Failure taxonomy** — `Continue Architecture Planning.md` L61852–61884
-- **v0.16 — 35. Failure taxonomy** — `Continue Architecture Planning.md` L65054–65084
-- **v0.17 — 29. Failure taxonomy** — `Continue Architecture Planning.md` L66422–66448
-- **v0.18 — 18.22 Failure Taxonomy** — `Continue Architecture Planning.md` L67939–67964
-- **v0.19 — 19.26 Failure Modes** — `Continue Architecture Planning.md` L69544–69567
-- **v0.20 — 20.28 Failure Modes** — `Continue Architecture Planning.md` L70944–70971
-- **v0.21 — 21.28 Failure Taxonomy** — `Continue Architecture Planning.md` L72430–72450
-- **v0.22 — 22.23 Failure taxonomy** — `Continue Architecture Planning.md` L73809–73854
-- **v0.23 — 23.8 Failure → evidence mapping** — `Continue Architecture Planning.md` L74449–74481
-- **v0.26 — 26.20 Failure taxonomy** — `Continue Architecture Planning.md` L79582–79584
-- **v0.28 — 28.31 Failure taxonomy** — `Continue Architecture Planning.md` L82948–82989
-- **v0.30 — 30.24 Failure taxonomy** — `Continue Architecture Planning.md` L86282–86305
-- **v0.32 — 32.33 Failure taxonomy** — `Continue Architecture Planning.md` L88935–88959
-- **v0.33 — 33.28 Multi-worker failure modes** — `Continue Architecture Planning.md` L90062–90083
-- **v0.34 — 34.25 Failure Taxonomy** — `Continue Architecture Planning.md` L91624–91666
+- **v0.11 — 12. Recognition failure taxonomy** — `CAP-141` — `Continue Architecture Planning.md` L57893–57897
+- **v0.13 — 18. Discovery failure taxonomy** — `CAP-208` — `Continue Architecture Planning.md` L60260–60288
+- **v0.14 — 25. Failure taxonomy** — `CAP-268` — `Continue Architecture Planning.md` L61852–61884
+- **v0.16 — 35. Failure taxonomy** — `CAP-356` — `Continue Architecture Planning.md` L65054–65084
+- **v0.17 — 29. Failure taxonomy** — `CAP-407` — `Continue Architecture Planning.md` L66422–66448
+- **v0.18 — 18.22 Failure Taxonomy** — `CAP-446` — `Continue Architecture Planning.md` L67939–67964
+- **v0.19 — 19.26 Failure Modes** — `CAP-509` — `Continue Architecture Planning.md` L69544–69567
+- **v0.20 — 20.28 Failure Modes** — `CAP-548` — `Continue Architecture Planning.md` L70944–70971
+- **v0.21 — 21.28 Failure Taxonomy** — `CAP-588` — `Continue Architecture Planning.md` L72430–72450
+- **v0.22 — 22.23 Failure taxonomy** — `CAP-624` — `Continue Architecture Planning.md` L73809–73854
+- **v0.23 — 23.8 Failure → evidence mapping** — `CAP-648` — `Continue Architecture Planning.md` L74449–74481
+- **v0.26 — 26.20 Failure taxonomy** — `CAP-784` — `Continue Architecture Planning.md` L79582–79584
+- **v0.28 — 28.31 Failure taxonomy** — `CAP-903` — `Continue Architecture Planning.md` L82948–82989
+- **v0.30 — 30.24 Failure taxonomy** — `CAP-1009` — `Continue Architecture Planning.md` L86282–86305
+- **v0.32 — 32.33 Failure taxonomy** — `CAP-1075` — `Continue Architecture Planning.md` L88935–88959
+- **v0.33 — 33.28 Multi-worker failure modes** — `CAP-1108` — `Continue Architecture Planning.md` L90062–90083
+- **v0.34 — 34.25 Failure Taxonomy** — `CAP-1148` — `Continue Architecture Planning.md` L91624–91666
 
 ## Related Documents
 
@@ -35,15 +35,21 @@
 
 ---
 
-<!-- source: Continue Architecture Planning.md L57893–57897 | turn 35 | version 0.11 -->
+<!-- CAP-141 | Continue Architecture Planning.md L57893–57897 | turn 35 | version 0.11 -->
 ## v0.11 — 12. Recognition failure taxonomy
+
+> **Source sections:** `CAP-141`
+>
+> [DOCUMENTATION REVIEW] Contradiction **C-02** ([Review Notes](../REVIEW-NOTES.md#c-02--))
 
 This becomes important for diagnostics.
 
 These are different:
 
-<!-- source: Continue Architecture Planning.md L60260–60288 | turn 39 | version 0.13 -->
+<!-- CAP-208 | Continue Architecture Planning.md L60260–60288 | turn 39 | version 0.13 -->
 ## v0.13 — 18. Discovery failure taxonomy
+
+> **Source sections:** `CAP-208`
 
 v0.13 should distinguish:
 
@@ -73,8 +79,10 @@ It is a normal convergence event.
 
 ---
 
-<!-- source: Continue Architecture Planning.md L61852–61884 | turn 41 | version 0.14 -->
+<!-- CAP-268 | Continue Architecture Planning.md L61852–61884 | turn 41 | version 0.14 -->
 ## v0.14 — 25. Failure taxonomy
+
+> **Source sections:** `CAP-268`
 
 v0.14 adds another layer to the failure model.
 
@@ -108,8 +116,10 @@ candidate-limit
 
 ---
 
-<!-- source: Continue Architecture Planning.md L65054–65084 | turn 45 | version 0.16 -->
+<!-- CAP-356 | Continue Architecture Planning.md L65054–65084 | turn 45 | version 0.16 -->
 ## v0.16 — 35. Failure taxonomy
+
+> **Source sections:** `CAP-356`
 
 v0.16 adds epistemic failures.
 
@@ -141,8 +151,10 @@ That is valuable information.
 
 ---
 
-<!-- source: Continue Architecture Planning.md L66422–66448 | turn 47 | version 0.17 -->
+<!-- CAP-407 | Continue Architecture Planning.md L66422–66448 | turn 47 | version 0.17 -->
 ## v0.17 — 29. Failure taxonomy
+
+> **Source sections:** `CAP-407`
 
 v0.17 introduces identity failures.
 
@@ -170,8 +182,10 @@ It is often the correct result.
 
 ---
 
-<!-- source: Continue Architecture Planning.md L67939–67964 | turn 49 | version 0.18 -->
+<!-- CAP-446 | Continue Architecture Planning.md L67939–67964 | turn 49 | version 0.18 -->
 ## v0.18 — 18.22 Failure Taxonomy
+
+> **Source sections:** `CAP-446`
 
 v0.18 should explicitly distinguish:
 
@@ -198,8 +212,10 @@ An unknown resource is still useful knowledge.
 
 ---
 
-<!-- source: Continue Architecture Planning.md L69544–69567 | turn 51 | version 0.19 -->
+<!-- CAP-509 | Continue Architecture Planning.md L69544–69567 | turn 51 | version 0.19 -->
 ## v0.19 — 19.26 Failure Modes
+
+> **Source sections:** `CAP-509`
 
 | Failure | Interpretation |
 | --- | --- |
@@ -224,8 +240,10 @@ failed acquisition
 
 ---
 
-<!-- source: Continue Architecture Planning.md L70944–70971 | turn 53 | version 0.20 -->
+<!-- CAP-548 | Continue Architecture Planning.md L70944–70971 | turn 53 | version 0.20 -->
 ## v0.20 — 20.28 Failure Modes
+
+> **Source sections:** `CAP-548`
 
 | Failure | Meaning |
 | --- | --- |
@@ -254,8 +272,10 @@ is often the correct answer.
 
 ---
 
-<!-- source: Continue Architecture Planning.md L72430–72450 | turn 55 | version 0.21 -->
+<!-- CAP-588 | Continue Architecture Planning.md L72430–72450 | turn 55 | version 0.21 -->
 ## v0.21 — 21.28 Failure Taxonomy
+
+> **Source sections:** `CAP-588`
 
 v0.21 adds:
 
@@ -277,8 +297,10 @@ v0.21 adds:
 
 ---
 
-<!-- source: Continue Architecture Planning.md L73809–73854 | turn 57 | version 0.22 -->
+<!-- CAP-624 | Continue Architecture Planning.md L73809–73854 | turn 57 | version 0.22 -->
 ## v0.22 — 22.23 Failure taxonomy
+
+> **Source sections:** `CAP-624`
 
 v0.22 introduces a new class of failures:
 
@@ -325,8 +347,10 @@ That distinction matters.
 
 ---
 
-<!-- source: Continue Architecture Planning.md L74449–74481 | turn 59 | version 0.23 -->
+<!-- CAP-648 | Continue Architecture Planning.md L74449–74481 | turn 59 | version 0.23 -->
 ## v0.23 — 23.8 Failure → evidence mapping
+
+> **Source sections:** `CAP-648`
 
 A useful mapping:
 
@@ -360,13 +384,17 @@ COULD NOT OBSERVE
 
 ---
 
-<!-- source: Continue Architecture Planning.md L79582–79584 | turn 65 | version 0.26 -->
+<!-- CAP-784 | Continue Architecture Planning.md L79582–79584 | turn 65 | version 0.26 -->
 ## v0.26 — 26.20 Failure taxonomy
+
+> **Source sections:** `CAP-784`
 
 v0.26 introduces tactic-specific failures.
 
-<!-- source: Continue Architecture Planning.md L82948–82989 | turn 69 | version 0.28 -->
+<!-- CAP-903 | Continue Architecture Planning.md L82948–82989 | turn 69 | version 0.28 -->
 ## v0.28 — 28.31 Failure taxonomy
+
+> **Source sections:** `CAP-903`
 
 v0.28 introduces:
 
@@ -409,8 +437,10 @@ when evidence is insufficient.
 
 ---
 
-<!-- source: Continue Architecture Planning.md L86282–86305 | turn 75 | version 0.30 -->
+<!-- CAP-1009 | Continue Architecture Planning.md L86282–86305 | turn 75 | version 0.30 -->
 ## v0.30 — 30.24 Failure taxonomy
+
+> **Source sections:** `CAP-1009`
 
 v0.30 adds:
 
@@ -435,8 +465,10 @@ v0.30 adds:
 
 ---
 
-<!-- source: Continue Architecture Planning.md L88935–88959 | turn 79 | version 0.32 -->
+<!-- CAP-1075 | Continue Architecture Planning.md L88935–88959 | turn 79 | version 0.32 -->
 ## v0.32 — 32.33 Failure taxonomy
+
+> **Source sections:** `CAP-1075`
 
 v0.32 adds:
 
@@ -462,8 +494,12 @@ v0.32 adds:
 
 ---
 
-<!-- source: Continue Architecture Planning.md L90062–90083 | turn 81 | version 0.33 -->
+<!-- CAP-1108 | Continue Architecture Planning.md L90062–90083 | turn 81 | version 0.33 -->
 ## v0.33 — 33.28 Multi-worker failure modes
+
+> **Source sections:** `CAP-1108`
+>
+> [DOCUMENTATION REVIEW] Contradiction **C-03** ([Review Notes](../REVIEW-NOTES.md#c-03--))
 
 | Failure | Meaning |
 | --- | --- |
@@ -486,8 +522,10 @@ v0.32 adds:
 
 ---
 
-<!-- source: Continue Architecture Planning.md L91624–91666 | turn 83 | version 0.34 -->
+<!-- CAP-1148 | Continue Architecture Planning.md L91624–91666 | turn 83 | version 0.34 -->
 ## v0.34 — 34.25 Failure Taxonomy
+
+> **Source sections:** `CAP-1148`
 
 v0.34 adds:
 

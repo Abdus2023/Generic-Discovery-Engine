@@ -6,49 +6,49 @@
 >
 > **Purpose:** Evidence: observations versus evidence versus claims, evidence graphs, strength and independence.
 
-## Contents
+## Source Sections
 
-- **v0.16 — EvidenceGraph + Provenance** — `Continue Architecture Planning.md` L63509–63552
-- **v0.16 — 1. The new abstraction** — `Continue Architecture Planning.md` L63554–63588
-- **v0.16 — Evidence** — `Continue Architecture Planning.md` L63607–63620
-- **v0.16 — Claim** — `Continue Architecture Planning.md` L63622–63644
-- **v0.16 — 3. Resource ≠ Claim** — `Continue Architecture Planning.md` L63646–63685
-- **v0.16 — 4. EvidenceGraph** — `Continue Architecture Planning.md` L63687–63720
-- **v0.16 — 6. Evidence object** — `Continue Architecture Planning.md` L63776–63817
-- **v0.16 — 7. Locator** — `Continue Architecture Planning.md` L63819–63890
-- **v0.16 — 8. Claim** — `Continue Architecture Planning.md` L63892–63944
-- **v0.16 — 9. Claims should not be confused with truth** — `Continue Architecture Planning.md` L63946–63992
-- **v0.16 — 10. Evidence strength** — `Continue Architecture Planning.md` L63994–64019
-- **v0.16 — 11. Independent evidence** — `Continue Architecture Planning.md` L64021–64056
-- **v0.16 — 12. Evidence independence** — `Continue Architecture Planning.md` L64058–64102
-- **v0.16 — 13. Evidence graph edges** — `Continue Architecture Planning.md` L64104–64157
-- **v0.16 — 14. Why graph edges matter** — `Continue Architecture Planning.md` L64159–64190
-- **v0.16 — 16. Resource identity** — `Continue Architecture Planning.md` L64242–64285
-- **v0.16 — 17. Resource fingerprint** — `Continue Architecture Planning.md` L64287–64321
-- **v0.16 — 18. URL identity vs content identity** — `Continue Architecture Planning.md` L64323–64369
-- **v0.16 — 19. Revision detection** — `Continue Architecture Planning.md` L64371–64406
-- **v0.16 — 21. Evidence immutability** — `Continue Architecture Planning.md` L64443–64481
-- **v0.16 — 22. Extraction method becomes first-class** — `Continue Architecture Planning.md` L64483–64512
-- **v0.16 — 24. Evidence lifecycle** — `Continue Architecture Planning.md` L64557–64607
-- **v0.16 — 25. Evidence states** — `Continue Architecture Planning.md` L64609–64655
-- **v0.16 — 26. Claims can conflict** — `Continue Architecture Planning.md` L64657–64687
-- **v0.16 — 27. Evidence resolution** — `Continue Architecture Planning.md` L64689–64719
-- **v0.16 — 30. The evidence ledger** — `Continue Architecture Planning.md` L64786–64816
-- **v0.16 — 31. Two complementary graphs** — `Continue Architecture Planning.md` L64818–64847
-- **v0.16 — 32. Example end-to-end trace** — `Continue Architecture Planning.md` L64849–64929
-- **v0.16 — Evidence provenance** — `Continue Architecture Planning.md` L64993–64999
-- **v0.16 — Claim support** — `Continue Architecture Planning.md` L65001–65005
-- **v0.16 — Historical integrity** — `Continue Architecture Planning.md` L65007–65011
-- **v0.16 — Extraction integrity** — `Continue Architecture Planning.md` L65013–65017
-- **v0.16 — Resource identity** — `Continue Architecture Planning.md` L65019–65024
-- **v0.16 — Content identity** — `Continue Architecture Planning.md` L65026–65030
-- **v0.16 — Conflict preservation** — `Continue Architecture Planning.md` L65032–65037
-- **v0.16 — Execution** — `Continue Architecture Planning.md` L65168–65172
-- **v0.16 — Work** — `Continue Architecture Planning.md` L65174–65178
-- **v0.16 — Evidence** — `Continue Architecture Planning.md` L65198–65202
-- **v0.16 — History** — `Continue Architecture Planning.md` L65204–65214
-- **v0.17 — 13. Identity Evidence** — `Continue Architecture Planning.md` L65816–65848
-- **v0.17 — Evidence-backed identity** — `Continue Architecture Planning.md` L66480–66485
+- **v0.16 — EvidenceGraph + Provenance** — `CAP-309` — `Continue Architecture Planning.md` L63509–63552
+- **v0.16 — 1. The new abstraction** — `CAP-310` — `Continue Architecture Planning.md` L63554–63588
+- **v0.16 — Evidence** — `CAP-313` — `Continue Architecture Planning.md` L63607–63620
+- **v0.16 — Claim** — `CAP-314` — `Continue Architecture Planning.md` L63622–63644
+- **v0.16 — 3. Resource ≠ Claim** — `CAP-315` — `Continue Architecture Planning.md` L63646–63685
+- **v0.16 — 4. EvidenceGraph** — `CAP-316` — `Continue Architecture Planning.md` L63687–63720
+- **v0.16 — 6. Evidence object** — `CAP-318` — `Continue Architecture Planning.md` L63776–63817
+- **v0.16 — 7. Locator** — `CAP-319` — `Continue Architecture Planning.md` L63819–63890
+- **v0.16 — 8. Claim** — `CAP-320` — `Continue Architecture Planning.md` L63892–63944
+- **v0.16 — 9. Claims should not be confused with truth** — `CAP-321` — `Continue Architecture Planning.md` L63946–63992
+- **v0.16 — 10. Evidence strength** — `CAP-322` — `Continue Architecture Planning.md` L63994–64019
+- **v0.16 — 11. Independent evidence** — `CAP-323` — `Continue Architecture Planning.md` L64021–64056
+- **v0.16 — 12. Evidence independence** — `CAP-324` — `Continue Architecture Planning.md` L64058–64102
+- **v0.16 — 13. Evidence graph edges** — `CAP-325` — `Continue Architecture Planning.md` L64104–64157
+- **v0.16 — 14. Why graph edges matter** — `CAP-326` — `Continue Architecture Planning.md` L64159–64190
+- **v0.16 — 16. Resource identity** — `CAP-328` — `Continue Architecture Planning.md` L64242–64285
+- **v0.16 — 17. Resource fingerprint** — `CAP-329` — `Continue Architecture Planning.md` L64287–64321
+- **v0.16 — 18. URL identity vs content identity** — `CAP-330` — `Continue Architecture Planning.md` L64323–64369
+- **v0.16 — 19. Revision detection** — `CAP-331` — `Continue Architecture Planning.md` L64371–64406
+- **v0.16 — 21. Evidence immutability** — `CAP-333` — `Continue Architecture Planning.md` L64443–64481
+- **v0.16 — 22. Extraction method becomes first-class** — `CAP-334` — `Continue Architecture Planning.md` L64483–64512
+- **v0.16 — 24. Evidence lifecycle** — `CAP-336` — `Continue Architecture Planning.md` L64557–64607
+- **v0.16 — 25. Evidence states** — `CAP-337` — `Continue Architecture Planning.md` L64609–64655
+- **v0.16 — 26. Claims can conflict** — `CAP-338` — `Continue Architecture Planning.md` L64657–64687
+- **v0.16 — 27. Evidence resolution** — `CAP-339` — `Continue Architecture Planning.md` L64689–64719
+- **v0.16 — 30. The evidence ledger** — `CAP-342` — `Continue Architecture Planning.md` L64786–64816
+- **v0.16 — 31. Two complementary graphs** — `CAP-343` — `Continue Architecture Planning.md` L64818–64847
+- **v0.16 — 32. Example end-to-end trace** — `CAP-344` — `Continue Architecture Planning.md` L64849–64929
+- **v0.16 — Evidence provenance** — `CAP-347` — `Continue Architecture Planning.md` L64993–64999
+- **v0.16 — Claim support** — `CAP-348` — `Continue Architecture Planning.md` L65001–65005
+- **v0.16 — Historical integrity** — `CAP-349` — `Continue Architecture Planning.md` L65007–65011
+- **v0.16 — Extraction integrity** — `CAP-350` — `Continue Architecture Planning.md` L65013–65017
+- **v0.16 — Resource identity** — `CAP-351` — `Continue Architecture Planning.md` L65019–65024
+- **v0.16 — Content identity** — `CAP-352` — `Continue Architecture Planning.md` L65026–65030
+- **v0.16 — Conflict preservation** — `CAP-353` — `Continue Architecture Planning.md` L65032–65037
+- **v0.16 — Execution** — `CAP-360` — `Continue Architecture Planning.md` L65168–65172
+- **v0.16 — Work** — `CAP-361` — `Continue Architecture Planning.md` L65174–65178
+- **v0.16 — Evidence** — `CAP-365` — `Continue Architecture Planning.md` L65198–65202
+- **v0.16 — History** — `CAP-366` — `Continue Architecture Planning.md` L65204–65214
+- **v0.17 — 13. Identity Evidence** — `CAP-385` — `Continue Architecture Planning.md` L65816–65848
+- **v0.17 — Evidence-backed identity** — `CAP-413` — `Continue Architecture Planning.md` L66480–66485
 
 ## Related Documents
 
@@ -59,8 +59,10 @@
 
 ---
 
-<!-- source: Continue Architecture Planning.md L63509–63552 | turn 45 | version 0.16 -->
+<!-- CAP-309 | Continue Architecture Planning.md L63509–63552 | turn 45 | version 0.16 -->
 ## v0.16 — EvidenceGraph + Provenance
+
+> **Source sections:** `CAP-309`
 
 v0.15 solved the **work problem**.
 
@@ -105,8 +107,10 @@ This is the purpose of v0.16.
 
 ---
 
-<!-- source: Continue Architecture Planning.md L63554–63588 | turn 45 | version 0.16 -->
+<!-- CAP-310 | Continue Architecture Planning.md L63554–63588 | turn 45 | version 0.16 -->
 ## v0.16 — 1. The new abstraction
+
+> **Source sections:** `CAP-310`
 
 The architecture becomes:
 
@@ -142,8 +146,10 @@ These are deliberately different entities.
 
 ---
 
-<!-- source: Continue Architecture Planning.md L63607–63620 | turn 45 | version 0.16 -->
+<!-- CAP-313 | Continue Architecture Planning.md L63607–63620 | turn 45 | version 0.16 -->
 ### v0.16 — Evidence
+
+> **Source sections:** `CAP-313`
 
 A structured representation extracted from the observation.
 
@@ -158,8 +164,12 @@ A structured representation extracted from the observation.
 }
 ```
 
-<!-- source: Continue Architecture Planning.md L63622–63644 | turn 45 | version 0.16 -->
+<!-- CAP-314 | Continue Architecture Planning.md L63622–63644 | turn 45 | version 0.16 -->
 ### v0.16 — Claim
+
+> **Source sections:** `CAP-314`
+>
+> [DOCUMENTATION REVIEW] Contradiction **C-03** ([Review Notes](../REVIEW-NOTES.md#c-03--))
 
 An assertion derived from evidence.
 
@@ -183,8 +193,12 @@ The latter would overstate what the system knows.
 
 ---
 
-<!-- source: Continue Architecture Planning.md L63646–63685 | turn 45 | version 0.16 -->
+<!-- CAP-315 | Continue Architecture Planning.md L63646–63685 | turn 45 | version 0.16 -->
 ## v0.16 — 3. Resource ≠ Claim
+
+> **Source sections:** `CAP-315`
+>
+> [DOCUMENTATION REVIEW] Contradiction **C-03** ([Review Notes](../REVIEW-NOTES.md#c-03--))
 
 A resource is an identity in the discovery universe.
 
@@ -225,8 +239,10 @@ resource.discoveryCount = 3;
 
 ---
 
-<!-- source: Continue Architecture Planning.md L63687–63720 | turn 45 | version 0.16 -->
+<!-- CAP-316 | Continue Architecture Planning.md L63687–63720 | turn 45 | version 0.16 -->
 ## v0.16 — 4. EvidenceGraph
+
+> **Source sections:** `CAP-316`
 
 The KnowledgeBase can therefore contain an explicit evidence graph.
 
@@ -261,8 +277,10 @@ But we also need provenance.
 
 ---
 
-<!-- source: Continue Architecture Planning.md L63776–63817 | turn 45 | version 0.16 -->
+<!-- CAP-318 | Continue Architecture Planning.md L63776–63817 | turn 45 | version 0.16 -->
 ## v0.16 — 6. Evidence object
+
+> **Source sections:** `CAP-318`
 
 Conceptually:
 
@@ -305,8 +323,10 @@ The important part is that evidence references the observation from which it cam
 
 ---
 
-<!-- source: Continue Architecture Planning.md L63819–63890 | turn 45 | version 0.16 -->
+<!-- CAP-319 | Continue Architecture Planning.md L63819–63890 | turn 45 | version 0.16 -->
 ## v0.16 — 7. Locator
+
+> **Source sections:** `CAP-319`
 
 For document discovery, provenance needs a locator.
 
@@ -379,8 +399,12 @@ This is the beginning of **reproducible extraction**.
 
 ---
 
-<!-- source: Continue Architecture Planning.md L63892–63944 | turn 45 | version 0.16 -->
+<!-- CAP-320 | Continue Architecture Planning.md L63892–63944 | turn 45 | version 0.16 -->
 ## v0.16 — 8. Claim
+
+> **Source sections:** `CAP-320`
+>
+> [DOCUMENTATION REVIEW] Contradiction **C-03** ([Review Notes](../REVIEW-NOTES.md#c-03--))
 
 A claim should be explicit.
 
@@ -434,8 +458,12 @@ Example:
 
 ---
 
-<!-- source: Continue Architecture Planning.md L63946–63992 | turn 45 | version 0.16 -->
+<!-- CAP-321 | Continue Architecture Planning.md L63946–63992 | turn 45 | version 0.16 -->
 ## v0.16 — 9. Claims should not be confused with truth
+
+> **Source sections:** `CAP-321`
+>
+> [DOCUMENTATION REVIEW] Contradiction **C-03** ([Review Notes](../REVIEW-NOTES.md#c-03--))
 
 This is an important epistemic boundary.
 
@@ -483,8 +511,10 @@ resource is semantically valid
 
 ---
 
-<!-- source: Continue Architecture Planning.md L63994–64019 | turn 45 | version 0.16 -->
+<!-- CAP-322 | Continue Architecture Planning.md L63994–64019 | turn 45 | version 0.16 -->
 ## v0.16 — 10. Evidence strength
+
+> **Source sections:** `CAP-322`
 
 We can classify evidence.
 
@@ -511,8 +541,10 @@ This is the same principle established earlier:
 
 ---
 
-<!-- source: Continue Architecture Planning.md L64021–64056 | turn 45 | version 0.16 -->
+<!-- CAP-323 | Continue Architecture Planning.md L64021–64056 | turn 45 | version 0.16 -->
 ## v0.16 — 11. Independent evidence
+
+> **Source sections:** `CAP-323`
 
 Suppose:
 
@@ -549,8 +581,10 @@ because the paths themselves are preserved.
 
 ---
 
-<!-- source: Continue Architecture Planning.md L64058–64102 | turn 45 | version 0.16 -->
+<!-- CAP-324 | Continue Architecture Planning.md L64058–64102 | turn 45 | version 0.16 -->
 ## v0.16 — 12. Evidence independence
+
+> **Source sections:** `CAP-324`
 
 But there is another subtle issue.
 
@@ -596,8 +630,10 @@ We should preserve the provenance graph and let later verification logic determi
 
 ---
 
-<!-- source: Continue Architecture Planning.md L64104–64157 | turn 45 | version 0.16 -->
+<!-- CAP-325 | Continue Architecture Planning.md L64104–64157 | turn 45 | version 0.16 -->
 ## v0.16 — 13. Evidence graph edges
+
+> **Source sections:** `CAP-325`
 
 Instead of only storing arrays, explicitly model relationships:
 
@@ -652,8 +688,10 @@ resource-42
 
 ---
 
-<!-- source: Continue Architecture Planning.md L64159–64190 | turn 45 | version 0.16 -->
+<!-- CAP-326 | Continue Architecture Planning.md L64159–64190 | turn 45 | version 0.16 -->
 ## v0.16 — 14. Why graph edges matter
+
+> **Source sections:** `CAP-326`
 
 Previously the engine had:
 
@@ -686,8 +724,12 @@ This is naturally a graph.
 
 ---
 
-<!-- source: Continue Architecture Planning.md L64242–64285 | turn 45 | version 0.16 -->
+<!-- CAP-328 | Continue Architecture Planning.md L64242–64285 | turn 45 | version 0.16 -->
 ## v0.16 — 16. Resource identity
+
+> **Source sections:** `CAP-328`
+>
+> [DOCUMENTATION REVIEW] Contradiction **C-04** ([Review Notes](../REVIEW-NOTES.md#c-04--))
 
 The resource remains identified independently of evidence.
 
@@ -732,8 +774,12 @@ is an **identity hypothesis**, not universal truth.
 
 ---
 
-<!-- source: Continue Architecture Planning.md L64287–64321 | turn 45 | version 0.16 -->
+<!-- CAP-329 | Continue Architecture Planning.md L64287–64321 | turn 45 | version 0.16 -->
 ## v0.16 — 17. Resource fingerprint
+
+> **Source sections:** `CAP-329`
+>
+> [DOCUMENTATION REVIEW] Contradiction **C-07** ([Review Notes](../REVIEW-NOTES.md#c-07--))
 
 When bytes are obtained:
 
@@ -769,8 +815,12 @@ These should not be merged.
 
 ---
 
-<!-- source: Continue Architecture Planning.md L64323–64369 | turn 45 | version 0.16 -->
+<!-- CAP-330 | Continue Architecture Planning.md L64323–64369 | turn 45 | version 0.16 -->
 ## v0.16 — 18. URL identity vs content identity
+
+> **Source sections:** `CAP-330`
+>
+> [DOCUMENTATION REVIEW] Contradiction **C-04** ([Review Notes](../REVIEW-NOTES.md#c-04--))
 
 Example:
 
@@ -818,8 +868,12 @@ same resource identity
 
 ---
 
-<!-- source: Continue Architecture Planning.md L64371–64406 | turn 45 | version 0.16 -->
+<!-- CAP-331 | Continue Architecture Planning.md L64371–64406 | turn 45 | version 0.16 -->
 ## v0.16 — 19. Revision detection
+
+> **Source sections:** `CAP-331`
+>
+> [DOCUMENTATION REVIEW] Contradiction **C-07** ([Review Notes](../REVIEW-NOTES.md#c-07--))
 
 Now consider:
 
@@ -856,8 +910,10 @@ A manual can remain the same logical resource while its bytes change.
 
 ---
 
-<!-- source: Continue Architecture Planning.md L64443–64481 | turn 45 | version 0.16 -->
+<!-- CAP-333 | Continue Architecture Planning.md L64443–64481 | turn 45 | version 0.16 -->
 ## v0.16 — 21. Evidence immutability
+
+> **Source sections:** `CAP-333`
 
 Likewise, once an extraction was made:
 
@@ -897,8 +953,10 @@ as reproducibility metadata.
 
 ---
 
-<!-- source: Continue Architecture Planning.md L64483–64512 | turn 45 | version 0.16 -->
+<!-- CAP-334 | Continue Architecture Planning.md L64483–64512 | turn 45 | version 0.16 -->
 ## v0.16 — 22. Extraction method becomes first-class
+
+> **Source sections:** `CAP-334`
 
 An evidence record should contain:
 
@@ -929,8 +987,10 @@ This is the foundation for parser evolution without destroying historical proven
 
 ---
 
-<!-- source: Continue Architecture Planning.md L64557–64607 | turn 45 | version 0.16 -->
+<!-- CAP-336 | Continue Architecture Planning.md L64557–64607 | turn 45 | version 0.16 -->
 ## v0.16 — 24. Evidence lifecycle
+
+> **Source sections:** `CAP-336`
 
 Conceptually:
 
@@ -982,8 +1042,10 @@ toward:
 
 ---
 
-<!-- source: Continue Architecture Planning.md L64609–64655 | turn 45 | version 0.16 -->
+<!-- CAP-337 | Continue Architecture Planning.md L64609–64655 | turn 45 | version 0.16 -->
 ## v0.16 — 25. Evidence states
+
+> **Source sections:** `CAP-337`
 
 We should avoid treating evidence as simply:
 
@@ -1031,8 +1093,12 @@ This is much better than silently overwriting the first observation.
 
 ---
 
-<!-- source: Continue Architecture Planning.md L64657–64687 | turn 45 | version 0.16 -->
+<!-- CAP-338 | Continue Architecture Planning.md L64657–64687 | turn 45 | version 0.16 -->
 ## v0.16 — 26. Claims can conflict
+
+> **Source sections:** `CAP-338`
+>
+> [DOCUMENTATION REVIEW] Contradiction **C-03** ([Review Notes](../REVIEW-NOTES.md#c-03--))
 
 Example:
 
@@ -1064,8 +1130,10 @@ But the evidence history is never destroyed.
 
 ---
 
-<!-- source: Continue Architecture Planning.md L64689–64719 | turn 45 | version 0.16 -->
+<!-- CAP-339 | Continue Architecture Planning.md L64689–64719 | turn 45 | version 0.16 -->
 ## v0.16 — 27. Evidence resolution
+
+> **Source sections:** `CAP-339`
 
 This suggests a future component:
 
@@ -1097,8 +1165,10 @@ This prevents premature confidence logic.
 
 ---
 
-<!-- source: Continue Architecture Planning.md L64786–64816 | turn 45 | version 0.16 -->
+<!-- CAP-342 | Continue Architecture Planning.md L64786–64816 | turn 45 | version 0.16 -->
 ## v0.16 — 30. The evidence ledger
+
+> **Source sections:** `CAP-342`
 
 We already have an event ledger:
 
@@ -1130,8 +1200,10 @@ This distinction is extremely important.
 
 ---
 
-<!-- source: Continue Architecture Planning.md L64818–64847 | turn 45 | version 0.16 -->
+<!-- CAP-343 | Continue Architecture Planning.md L64818–64847 | turn 45 | version 0.16 -->
 ## v0.16 — 31. Two complementary graphs
+
+> **Source sections:** `CAP-343`
 
 We now have:
 
@@ -1162,8 +1234,10 @@ But an event itself is not necessarily evidence.
 
 ---
 
-<!-- source: Continue Architecture Planning.md L64849–64929 | turn 45 | version 0.16 -->
+<!-- CAP-344 | Continue Architecture Planning.md L64849–64929 | turn 45 | version 0.16 -->
 ## v0.16 — 32. Example end-to-end trace
+
+> **Source sections:** `CAP-344`
 
 Suppose the seed is:
 
@@ -1245,8 +1319,10 @@ The resulting graph explains not just **what was found**, but **how the engine c
 
 ---
 
-<!-- source: Continue Architecture Planning.md L64993–64999 | turn 45 | version 0.16 -->
+<!-- CAP-347 | Continue Architecture Planning.md L64993–64999 | turn 45 | version 0.16 -->
 ### v0.16 — Evidence provenance
+
+> **Source sections:** `CAP-347`
 
 ```
 Every Evidence object
@@ -1254,73 +1330,99 @@ must reference an Observation or another
 explicitly declared evidence source.
 ```
 
-<!-- source: Continue Architecture Planning.md L65001–65005 | turn 45 | version 0.16 -->
+<!-- CAP-348 | Continue Architecture Planning.md L65001–65005 | turn 45 | version 0.16 -->
 ### v0.16 — Claim support
+
+> **Source sections:** `CAP-348`
+>
+> [DOCUMENTATION REVIEW] Contradiction **C-03** ([Review Notes](../REVIEW-NOTES.md#c-03--))
 
 ```
 A Claim should have explicit supporting Evidence.
 ```
 
-<!-- source: Continue Architecture Planning.md L65007–65011 | turn 45 | version 0.16 -->
+<!-- CAP-349 | Continue Architecture Planning.md L65007–65011 | turn 45 | version 0.16 -->
 ### v0.16 — Historical integrity
+
+> **Source sections:** `CAP-349`
 
 ```
 Observation is immutable historical evidence.
 ```
 
-<!-- source: Continue Architecture Planning.md L65013–65017 | turn 45 | version 0.16 -->
+<!-- CAP-350 | Continue Architecture Planning.md L65013–65017 | turn 45 | version 0.16 -->
 ### v0.16 — Extraction integrity
+
+> **Source sections:** `CAP-350`
 
 ```
 Evidence records extraction method/version.
 ```
 
-<!-- source: Continue Architecture Planning.md L65019–65024 | turn 45 | version 0.16 -->
+<!-- CAP-351 | Continue Architecture Planning.md L65019–65024 | turn 45 | version 0.16 -->
 ### v0.16 — Resource identity
+
+> **Source sections:** `CAP-351`
+>
+> [DOCUMENTATION REVIEW] Contradiction **C-04** ([Review Notes](../REVIEW-NOTES.md#c-04--))
 
 ```
 Resource identity is not determined solely
 by content fingerprint.
 ```
 
-<!-- source: Continue Architecture Planning.md L65026–65030 | turn 45 | version 0.16 -->
+<!-- CAP-352 | Continue Architecture Planning.md L65026–65030 | turn 45 | version 0.16 -->
 ### v0.16 — Content identity
+
+> **Source sections:** `CAP-352`
+>
+> [DOCUMENTATION REVIEW] Contradiction **C-04** ([Review Notes](../REVIEW-NOTES.md#c-04--))
 
 ```
 Equal fingerprints do not imply equal resource identity.
 ```
 
-<!-- source: Continue Architecture Planning.md L65032–65037 | turn 45 | version 0.16 -->
+<!-- CAP-353 | Continue Architecture Planning.md L65032–65037 | turn 45 | version 0.16 -->
 ### v0.16 — Conflict preservation
+
+> **Source sections:** `CAP-353`
 
 ```
 Contradictory evidence must not silently overwrite
 previous evidence.
 ```
 
-<!-- source: Continue Architecture Planning.md L65168–65172 | turn 45 | version 0.16 -->
+<!-- CAP-360 | Continue Architecture Planning.md L65168–65172 | turn 45 | version 0.16 -->
 ### v0.16 — Execution
+
+> **Source sections:** `CAP-360`
 
 > What scan is running?
 
 `ScanSession`
 
-<!-- source: Continue Architecture Planning.md L65174–65178 | turn 45 | version 0.16 -->
+<!-- CAP-361 | Continue Architecture Planning.md L65174–65178 | turn 45 | version 0.16 -->
 ### v0.16 — Work
+
+> **Source sections:** `CAP-361`
 
 > What remains to be done?
 
 `FrontierRuntime`
 
-<!-- source: Continue Architecture Planning.md L65198–65202 | turn 45 | version 0.16 -->
+<!-- CAP-365 | Continue Architecture Planning.md L65198–65202 | turn 45 | version 0.16 -->
 ### v0.16 — Evidence
+
+> **Source sections:** `CAP-365`
 
 > What supports that discovery?
 
 `EvidenceGraph`
 
-<!-- source: Continue Architecture Planning.md L65204–65214 | turn 45 | version 0.16 -->
+<!-- CAP-366 | Continue Architecture Planning.md L65204–65214 | turn 45 | version 0.16 -->
 ### v0.16 — History
+
+> **Source sections:** `CAP-366`
 
 > What actually happened?
 
@@ -1332,8 +1434,12 @@ There is now one major missing layer:
 
 That leads to the next abstraction:
 
-<!-- source: Continue Architecture Planning.md L65816–65848 | turn 47 | version 0.17 -->
+<!-- CAP-385 | Continue Architecture Planning.md L65816–65848 | turn 47 | version 0.17 -->
 ## v0.17 — 13. Identity Evidence
+
+> **Source sections:** `CAP-385`
+>
+> [DOCUMENTATION REVIEW] Contradiction **C-04** ([Review Notes](../REVIEW-NOTES.md#c-04--))
 
 Identity resolution must never simply say:
 
@@ -1367,8 +1473,12 @@ The relationship itself becomes a graph fact.
 
 ---
 
-<!-- source: Continue Architecture Planning.md L66480–66485 | turn 47 | version 0.17 -->
+<!-- CAP-413 | Continue Architecture Planning.md L66480–66485 | turn 47 | version 0.17 -->
 ### v0.17 — Evidence-backed identity
+
+> **Source sections:** `CAP-413`
+>
+> [DOCUMENTATION REVIEW] Contradiction **C-04** ([Review Notes](../REVIEW-NOTES.md#c-04--))
 
 ```
 A non-trivial identity relation requires

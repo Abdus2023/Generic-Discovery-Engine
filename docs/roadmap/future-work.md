@@ -6,24 +6,24 @@
 >
 > **Purpose:** Material the sources mark as the next boundary, next abstraction, open problem or still missing.
 
-## Contents
+## Source Sections
 
-- **v0.7 — Next boundary: v0.8** — `Continue Architecture Planning.md` L54582–54619
-- **v0.8 — 17. v0.8 → v0.9** — `Continue Architecture Planning.md` L55568–55621
-- **v0.9 — 11. The next problem is now visible** — `Continue Architecture Planning.md` L56255–56345
-- **v0.10 — Next boundary: v0.11** — `Continue Architecture Planning.md` L57299–57343
-- **v0.11 — 19. The next major abstraction: Candidate Sources** — `Continue Architecture Planning.md` L58240–58337
-- **v0.13 — the next boundary** — `Continue Architecture Planning.md` L59398–59460
-- **v0.14 — the next missing abstraction** — `Continue Architecture Planning.md` L60486–60544
-- **v0.14 — 27. The next abstraction** — `Continue Architecture Planning.md` L61920–61952
-- **v0.16 — 36. The deeper architectural transition** — `Continue Architecture Planning.md` L65086–65156
-- **v0.16 — 37. What is still missing** — `Continue Architecture Planning.md` L65158–65160
-- **v0.17 — 34. Next missing abstraction** — `Continue Architecture Planning.md` L66653–66694
-- **v0.19 — Next boundary: v0.20 — Search-Space Partitioning + Discovery Strategies** — `Continue Architecture Planning.md` L69659–69688
-- **v0.26 — Next boundary: v0.27** — `Continue Architecture Planning.md` L80162–80198
-- **v0.28 — Next boundary — v0.29** — `Continue Architecture Planning.md` L83167–83226
-- **v0.30 — Next boundary — v0.31** — `Continue Architecture Planning.md` L86400–86466
-- **v0.34 — 34.30 v0.34 → v0.35** — `Continue Architecture Planning.md` L91907–91970
+- **v0.7 — Next boundary: v0.8** — `CAP-054` — `Continue Architecture Planning.md` L54582–54619
+- **v0.8 — 17. v0.8 → v0.9** — `CAP-078` — `Continue Architecture Planning.md` L55568–55621
+- **v0.9 — 11. The next problem is now visible** — `CAP-104` — `Continue Architecture Planning.md` L56255–56345
+- **v0.10 — Next boundary: v0.11** — `CAP-127` — `Continue Architecture Planning.md` L57299–57343
+- **v0.11 — 19. The next major abstraction: Candidate Sources** — `CAP-152` — `Continue Architecture Planning.md` L58240–58337
+- **v0.13 — the next boundary** — `CAP-188` — `Continue Architecture Planning.md` L59398–59460
+- **v0.14 — the next missing abstraction** — `CAP-221` — `Continue Architecture Planning.md` L60486–60544
+- **v0.14 — 27. The next abstraction** — `CAP-270` — `Continue Architecture Planning.md` L61920–61952
+- **v0.16 — 36. The deeper architectural transition** — `CAP-357` — `Continue Architecture Planning.md` L65086–65156
+- **v0.16 — 37. What is still missing** — `CAP-358` — `Continue Architecture Planning.md` L65158–65160
+- **v0.17 — 34. Next missing abstraction** — `CAP-419` — `Continue Architecture Planning.md` L66653–66694
+- **v0.19 — Next boundary: v0.20 — Search-Space Partitioning + Discovery Strategies** — `CAP-511` — `Continue Architecture Planning.md` L69659–69688
+- **v0.26 — Next boundary: v0.27** — `CAP-812` — `Continue Architecture Planning.md` L80162–80198
+- **v0.28 — Next boundary — v0.29** — `CAP-919` — `Continue Architecture Planning.md` L83167–83226
+- **v0.30 — Next boundary — v0.31** — `CAP-1012` — `Continue Architecture Planning.md` L86400–86466
+- **v0.34 — 34.30 v0.34 → v0.35** — `CAP-1162` — `Continue Architecture Planning.md` L91907–91970
 
 ## Related Documents
 
@@ -34,8 +34,10 @@
 
 ---
 
-<!-- source: Continue Architecture Planning.md L54582–54619 | turn 27 | version 0.7 -->
+<!-- CAP-054 | Continue Architecture Planning.md L54582–54619 | turn 27 | version 0.7 -->
 ## v0.7 — Next boundary: v0.8
+
+> **Source sections:** `CAP-054`
 
 The natural next step is **not another provider**.
 
@@ -74,8 +76,10 @@ Acquisition Plan
 
 That is where the userscript starts becoming a **generic discovery runtime** rather than simply a sophisticated crawler.
 
-<!-- source: Continue Architecture Planning.md L55568–55621 | turn 29 | version 0.8 -->
+<!-- CAP-078 | Continue Architecture Planning.md L55568–55621 | turn 29 | version 0.8 -->
 ## v0.8 — 17. v0.8 → v0.9
+
+> **Source sections:** `CAP-078`
 
 Once capability-aware acquisition exists, the next architectural problem becomes obvious:
 
@@ -130,8 +134,10 @@ Then the engine can stop assuming that “acquisition” means `GM_xmlhttpReques
 
 That is the point where the generic discovery engine gets a genuine **runtime/plugin boundary**.
 
-<!-- source: Continue Architecture Planning.md L56255–56345 | turn 31 | version 0.9 -->
+<!-- CAP-104 | Continue Architecture Planning.md L56255–56345 | turn 31 | version 0.9 -->
 ## v0.9 — 11. The next problem is now visible
+
+> **Source sections:** `CAP-104`
 
 Once acquisition providers are pluggable, another architectural issue appears:
 
@@ -223,8 +229,10 @@ Recognizer
 
 This is the point where the DVB analogy becomes an actual systems architecture rather than merely a metaphor.
 
-<!-- source: Continue Architecture Planning.md L57299–57343 | turn 33 | version 0.10 -->
+<!-- CAP-127 | Continue Architecture Planning.md L57299–57343 | turn 33 | version 0.10 -->
 ### v0.10 — Next boundary: v0.11
+
+> **Source sections:** `CAP-127`
 
 The next major problem is **response-provider routing**.
 
@@ -270,8 +278,10 @@ Candidate
 
 which is a strong foundation for the eventual **generic discovery algorithm**, rather than a specialized crawler.
 
-<!-- source: Continue Architecture Planning.md L58240–58337 | turn 35 | version 0.11 -->
+<!-- CAP-152 | Continue Architecture Planning.md L58240–58337 | turn 35 | version 0.11 -->
 ## v0.11 — 19. The next major abstraction: Candidate Sources
+
+> **Source sections:** `CAP-152`
 
 There is still one hardcoded assumption hiding underneath the architecture:
 
@@ -370,8 +380,10 @@ and gives us the three fundamental extensibility axes:
 
 That is the natural **v0.12 boundary**.
 
-<!-- source: Continue Architecture Planning.md L59398–59460 | turn 37 | version 0.13 -->
+<!-- CAP-188 | Continue Architecture Planning.md L59398–59460 | turn 37 | version 0.13 -->
 ## v0.13 — the next boundary
+
+> **Source sections:** `CAP-188`
 
 There is now one major problem left in the loop:
 
@@ -435,8 +447,10 @@ At that point, the architecture has four independently controllable planes:
 
 That is the point where implementing the userscript becomes useful again: **the abstractions have stabilized enough that the next complete implementation can be a v0.13 vertical slice rather than another accumulation of special cases.**
 
-<!-- source: Continue Architecture Planning.md L60486–60544 | turn 39 | version 0.14 -->
+<!-- CAP-221 | Continue Architecture Planning.md L60486–60544 | turn 39 | version 0.14 -->
 ## v0.14 — the next missing abstraction
+
+> **Source sections:** `CAP-221`
 
 One problem remains before this becomes a genuinely reusable discovery engine:
 
@@ -496,8 +510,10 @@ That is a major conceptual transition:
 
 The next version should therefore define **v0.14 — DiscoveryDomain + ScanSession**, including explicit seeds, frontier state, termination conditions, resumability, and the distinction between a **scan** and the underlying **discovery engine**.
 
-<!-- source: Continue Architecture Planning.md L61920–61952 | turn 41 | version 0.14 -->
+<!-- CAP-270 | Continue Architecture Planning.md L61920–61952 | turn 41 | version 0.14 -->
 ## v0.14 — 27. The next abstraction
+
+> **Source sections:** `CAP-270`
 
 There is now another gap.
 
@@ -531,8 +547,10 @@ A real scan needs a unified notion of **work state** without collapsing discover
 
 That suggests the next boundary:
 
-<!-- source: Continue Architecture Planning.md L65086–65156 | turn 45 | version 0.16 -->
+<!-- CAP-357 | Continue Architecture Planning.md L65086–65156 | turn 45 | version 0.16 -->
 ## v0.16 — 36. The deeper architectural transition
+
+> **Source sections:** `CAP-357`
 
 The progression now looks like:
 
@@ -604,13 +622,17 @@ That separation is important enough to make explicit:
 
 ---
 
-<!-- source: Continue Architecture Planning.md L65158–65160 | turn 45 | version 0.16 -->
+<!-- CAP-358 | Continue Architecture Planning.md L65158–65160 | turn 45 | version 0.16 -->
 ## v0.16 — 37. What is still missing
+
+> **Source sections:** `CAP-358`
 
 At this point the engine can answer:
 
-<!-- source: Continue Architecture Planning.md L66653–66694 | turn 47 | version 0.17 -->
+<!-- CAP-419 | Continue Architecture Planning.md L66653–66694 | turn 47 | version 0.17 -->
 ## v0.17 — 34. Next missing abstraction
+
+> **Source sections:** `CAP-419`
 
 There is now a remaining problem at the **resource semantics** layer.
 
@@ -653,8 +675,10 @@ More importantly, one resource may have several observations with conflicting or
 
 So the next boundary is:
 
-<!-- source: Continue Architecture Planning.md L69659–69688 | turn 51 | version 0.19 -->
+<!-- CAP-511 | Continue Architecture Planning.md L69659–69688 | turn 51 | version 0.19 -->
 ## v0.19 — Next boundary: v0.20 — Search-Space Partitioning + Discovery Strategies
+
+> **Source sections:** `CAP-511`
 
 The next missing abstraction is now **how the engine chooses where to search next**.
 
@@ -685,8 +709,10 @@ DiscoveryDomain
 
 This is where the DVB analogy becomes especially useful: **blind scanning is not merely candidate generation; it is systematic partitioning and coverage of an unknown search space.**
 
-<!-- source: Continue Architecture Planning.md L80162–80198 | turn 65 | version 0.26 -->
+<!-- CAP-812 | Continue Architecture Planning.md L80162–80198 | turn 65 | version 0.26 -->
 ## v0.26 — Next boundary: v0.27
+
+> **Source sections:** `CAP-812`
 
 The next missing layer is now the **Enumeration Runtime**.
 
@@ -724,8 +750,10 @@ v0.27 — Enumeration Runtime
 
 which connects **tactic execution** to the **coverage/completeness machinery** from v0.22–v0.23 without falsely turning “enumerated” into “complete.”
 
-<!-- source: Continue Architecture Planning.md L83167–83226 | turn 69 | version 0.28 -->
+<!-- CAP-919 | Continue Architecture Planning.md L83167–83226 | turn 69 | version 0.28 -->
 ## v0.28 — Next boundary — v0.29
+
+> **Source sections:** `CAP-919`
 
 The next unresolved problem is **dynamic frontier generation**.
 
@@ -786,8 +814,10 @@ So v0.29 should formalize:
 
 The key issue will be preventing **partition explosion**: a discovery result must not automatically become an unlimited number of new search regions.
 
-<!-- source: Continue Architecture Planning.md L86400–86466 | turn 75 | version 0.30 -->
+<!-- CAP-1012 | Continue Architecture Planning.md L86400–86466 | turn 75 | version 0.30 -->
 ## v0.30 — Next boundary — v0.31
+
+> **Source sections:** `CAP-1012`
 
 The natural next problem is now:
 
@@ -855,8 +885,10 @@ ARBITRATION
 
 That is the point where the blind-scan-inspired discovery engine starts becoming a genuine **resource-bounded search runtime**, rather than merely an advanced crawler.
 
-<!-- source: Continue Architecture Planning.md L91907–91970 | turn 83 | version 0.34 -->
+<!-- CAP-1162 | Continue Architecture Planning.md L91907–91970 | turn 83 | version 0.34 -->
 ## v0.34 — 34.30 v0.34 → v0.35
+
+> **Source sections:** `CAP-1162`
 
 The next missing layer is now visible.
 

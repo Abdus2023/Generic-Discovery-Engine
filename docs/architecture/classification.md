@@ -6,31 +6,31 @@
 >
 > **Purpose:** Semantic classification of resources: type axes, classifiers, classification runtime and the type registry.
 
-## Contents
+## Source Sections
 
-- **v0.18 — Resource Type System + Semantic Classification** — `Continue Architecture Planning.md` L66696–66734
-- **v0.18 — Resource Type System + Semantic Classification** — `Continue Architecture Planning.md` L66746–66789
-- **v0.18 — 18.1 The Type Problem** — `Continue Architecture Planning.md` L66791–66853
-- **v0.18 — 18.2 Four Orthogonal Type Dimensions** — `Continue Architecture Planning.md` L66855–66915
-- **v0.18 — 18.3 ResourceType** — `Continue Architecture Planning.md` L66917–66975
-- **v0.18 — 18.4 Classification Assertion** — `Continue Architecture Planning.md` L66977–67046
-- **v0.18 — 18.5 Type Evidence** — `Continue Architecture Planning.md` L67048–67116
-- **v0.18 — 18.6 Evidence Strength Must Be Axis-Specific** — `Continue Architecture Planning.md` L67118–67166
-- **v0.18 — 18.7 Classification Pipeline** — `Continue Architecture Planning.md` L67168–67201
-- **v0.18 — 18.8 Recognition vs Classification** — `Continue Architecture Planning.md` L67203–67205
-- **v0.18 — Recognition** — `Continue Architecture Planning.md` L67207–67224
-- **v0.18 — Classification** — `Continue Architecture Planning.md` L67226–67264
-- **v0.18 — 18.9 Classification Runtime** — `Continue Architecture Planning.md` L67266–67329
-- **v0.18 — 18.10 Example Classifiers** — `Continue Architecture Planning.md` L67331–67380
-- **v0.18 — 18.11 Hierarchical Classification** — `Continue Architecture Planning.md` L67382–67434
-- **v0.18 — 18.12 Do Not Use One Global Confidence Score** — `Continue Architecture Planning.md` L67436–67483
-- **v0.18 — 18.13 Classification Is Versioned** — `Continue Architecture Planning.md` L67485–67526
-- **v0.18 — 18.14 Contradictory Classification** — `Continue Architecture Planning.md` L67528–67571
-- **v0.18 — 18.15 Classification Graph** — `Continue Architecture Planning.md` L67573–67615
-- **v0.18 — 18.16 Resource Model After v0.18** — `Continue Architecture Planning.md` L67617–67658
-- **v0.18 — 18.17 Resource Type Registry** — `Continue Architecture Planning.md` L67660–67735
-- **v0.18 — 18.19 Classification → Strategy** — `Continue Architecture Planning.md` L67796–67823
-- **v0.18 — 18.20 Classification Work as WorkItem** — `Continue Architecture Planning.md` L67825–67866
+- **v0.18 — Resource Type System + Semantic Classification** — `CAP-420` — `Continue Architecture Planning.md` L66696–66734
+- **v0.18 — Resource Type System + Semantic Classification** — `CAP-422` — `Continue Architecture Planning.md` L66746–66789
+- **v0.18 — 18.1 The Type Problem** — `CAP-423` — `Continue Architecture Planning.md` L66791–66853
+- **v0.18 — 18.2 Four Orthogonal Type Dimensions** — `CAP-424` — `Continue Architecture Planning.md` L66855–66915
+- **v0.18 — 18.3 ResourceType** — `CAP-425` — `Continue Architecture Planning.md` L66917–66975
+- **v0.18 — 18.4 Classification Assertion** — `CAP-426` — `Continue Architecture Planning.md` L66977–67046
+- **v0.18 — 18.5 Type Evidence** — `CAP-427` — `Continue Architecture Planning.md` L67048–67116
+- **v0.18 — 18.6 Evidence Strength Must Be Axis-Specific** — `CAP-428` — `Continue Architecture Planning.md` L67118–67166
+- **v0.18 — 18.7 Classification Pipeline** — `CAP-429` — `Continue Architecture Planning.md` L67168–67201
+- **v0.18 — 18.8 Recognition vs Classification** — `CAP-430` — `Continue Architecture Planning.md` L67203–67205
+- **v0.18 — Recognition** — `CAP-431` — `Continue Architecture Planning.md` L67207–67224
+- **v0.18 — Classification** — `CAP-432` — `Continue Architecture Planning.md` L67226–67264
+- **v0.18 — 18.9 Classification Runtime** — `CAP-433` — `Continue Architecture Planning.md` L67266–67329
+- **v0.18 — 18.10 Example Classifiers** — `CAP-434` — `Continue Architecture Planning.md` L67331–67380
+- **v0.18 — 18.11 Hierarchical Classification** — `CAP-435` — `Continue Architecture Planning.md` L67382–67434
+- **v0.18 — 18.12 Do Not Use One Global Confidence Score** — `CAP-436` — `Continue Architecture Planning.md` L67436–67483
+- **v0.18 — 18.13 Classification Is Versioned** — `CAP-437` — `Continue Architecture Planning.md` L67485–67526
+- **v0.18 — 18.14 Contradictory Classification** — `CAP-438` — `Continue Architecture Planning.md` L67528–67571
+- **v0.18 — 18.15 Classification Graph** — `CAP-439` — `Continue Architecture Planning.md` L67573–67615
+- **v0.18 — 18.16 Resource Model After v0.18** — `CAP-440` — `Continue Architecture Planning.md` L67617–67658
+- **v0.18 — 18.17 Resource Type Registry** — `CAP-441` — `Continue Architecture Planning.md` L67660–67735
+- **v0.18 — 18.19 Classification → Strategy** — `CAP-443` — `Continue Architecture Planning.md` L67796–67823
+- **v0.18 — 18.20 Classification Work as WorkItem** — `CAP-444` — `Continue Architecture Planning.md` L67825–67866
 
 ## Related Documents
 
@@ -40,8 +40,10 @@
 
 ---
 
-<!-- source: Continue Architecture Planning.md L66696–66734 | turn 47 | version 0.18 -->
+<!-- CAP-420 | Continue Architecture Planning.md L66696–66734 | turn 47 | version 0.18 -->
 ## v0.18 — Resource Type System + Semantic Classification
+
+> **Source sections:** `CAP-420`
 
 The progression would become:
 
@@ -81,8 +83,10 @@ semantic document classification
 
 and prevent the discovery engine from prematurely deciding that every `.pdf`, `/api/`, `/manual/`, or `download` URL means the same thing.
 
-<!-- source: Continue Architecture Planning.md L66746–66789 | turn 49 | version 0.18 -->
+<!-- CAP-422 | Continue Architecture Planning.md L66746–66789 | turn 49 | version 0.18 -->
 ## v0.18 — Resource Type System + Semantic Classification
+
+> **Source sections:** `CAP-422`
 
 The next boundary should make one distinction explicit:
 
@@ -127,8 +131,10 @@ A PDF can be a service manual, parts catalog, brochure, bulletin, or completely 
 
 ---
 
-<!-- source: Continue Architecture Planning.md L66791–66853 | turn 49 | version 0.18 -->
+<!-- CAP-423 | Continue Architecture Planning.md L66791–66853 | turn 49 | version 0.18 -->
 ## v0.18 — 18.1 The Type Problem
+
+> **Source sections:** `CAP-423`
 
 The old model tends toward:
 
@@ -192,8 +198,10 @@ type = "pdf"
 
 ---
 
-<!-- source: Continue Architecture Planning.md L66855–66915 | turn 49 | version 0.18 -->
+<!-- CAP-424 | Continue Architecture Planning.md L66855–66915 | turn 49 | version 0.18 -->
 ## v0.18 — 18.2 Four Orthogonal Type Dimensions
+
+> **Source sections:** `CAP-424`
 
 I would make the type system explicitly multidimensional.
 
@@ -255,8 +263,10 @@ answers:
 
 ---
 
-<!-- source: Continue Architecture Planning.md L66917–66975 | turn 49 | version 0.18 -->
+<!-- CAP-425 | Continue Architecture Planning.md L66917–66975 | turn 49 | version 0.18 -->
 ## v0.18 — 18.3 ResourceType
+
+> **Source sections:** `CAP-425`
 
 Instead of a single string, introduce a structured type descriptor.
 
@@ -316,8 +326,10 @@ These are different types because they live on different axes.
 
 ---
 
-<!-- source: Continue Architecture Planning.md L66977–67046 | turn 49 | version 0.18 -->
+<!-- CAP-426 | Continue Architecture Planning.md L66977–67046 | turn 49 | version 0.18 -->
 ## v0.18 — 18.4 Classification Assertion
+
+> **Source sections:** `CAP-426`
 
 The engine should not simply overwrite the resource.
 
@@ -388,8 +400,10 @@ The second assertion does not need to disappear.
 
 ---
 
-<!-- source: Continue Architecture Planning.md L67048–67116 | turn 49 | version 0.18 -->
+<!-- CAP-427 | Continue Architecture Planning.md L67048–67116 | turn 49 | version 0.18 -->
 ## v0.18 — 18.5 Type Evidence
+
+> **Source sections:** `CAP-427`
 
 Classification must be evidence-backed.
 
@@ -459,8 +473,10 @@ And semantic evidence:
 
 ---
 
-<!-- source: Continue Architecture Planning.md L67118–67166 | turn 49 | version 0.18 -->
+<!-- CAP-428 | Continue Architecture Planning.md L67118–67166 | turn 49 | version 0.18 -->
 ## v0.18 — 18.6 Evidence Strength Must Be Axis-Specific
+
+> **Source sections:** `CAP-428`
 
 A major refinement:
 
@@ -510,8 +526,10 @@ Evidence = universally strong/weak
 
 ---
 
-<!-- source: Continue Architecture Planning.md L67168–67201 | turn 49 | version 0.18 -->
+<!-- CAP-429 | Continue Architecture Planning.md L67168–67201 | turn 49 | version 0.18 -->
 ## v0.18 — 18.7 Classification Pipeline
+
+> **Source sections:** `CAP-429`
 
 The resulting architecture becomes:
 
@@ -546,13 +564,21 @@ This is deliberately downstream from recognition.
 
 ---
 
-<!-- source: Continue Architecture Planning.md L67203–67205 | turn 49 | version 0.18 -->
+<!-- CAP-430 | Continue Architecture Planning.md L67203–67205 | turn 49 | version 0.18 -->
 ## v0.18 — 18.8 Recognition vs Classification
+
+> **Source sections:** `CAP-430`
+>
+> [DOCUMENTATION REVIEW] Contradiction **C-02** ([Review Notes](../REVIEW-NOTES.md#c-02--))
 
 These two concepts should remain separate.
 
-<!-- source: Continue Architecture Planning.md L67207–67224 | turn 49 | version 0.18 -->
+<!-- CAP-431 | Continue Architecture Planning.md L67207–67224 | turn 49 | version 0.18 -->
 ### v0.18 — Recognition
+
+> **Source sections:** `CAP-431`
+>
+> [DOCUMENTATION REVIEW] Contradiction **C-02** ([Review Notes](../REVIEW-NOTES.md#c-02--))
 
 Answers:
 
@@ -571,8 +597,10 @@ unknown binary
 
 Recognition primarily operates on an **Observation**.
 
-<!-- source: Continue Architecture Planning.md L67226–67264 | turn 49 | version 0.18 -->
+<!-- CAP-432 | Continue Architecture Planning.md L67226–67264 | turn 49 | version 0.18 -->
 ### v0.18 — Classification
+
+> **Source sections:** `CAP-432`
 
 Answers:
 
@@ -612,8 +640,10 @@ Observation → "final type"
 
 ---
 
-<!-- source: Continue Architecture Planning.md L67266–67329 | turn 49 | version 0.18 -->
+<!-- CAP-433 | Continue Architecture Planning.md L67266–67329 | turn 49 | version 0.18 -->
 ## v0.18 — 18.9 Classification Runtime
+
+> **Source sections:** `CAP-433`
 
 Introduce:
 
@@ -678,8 +708,10 @@ It does **not** decide the semantic truth itself.
 
 ---
 
-<!-- source: Continue Architecture Planning.md L67331–67380 | turn 49 | version 0.18 -->
+<!-- CAP-434 | Continue Architecture Planning.md L67331–67380 | turn 49 | version 0.18 -->
 ## v0.18 — 18.10 Example Classifiers
+
+> **Source sections:** `CAP-434`
 
 A generic engine can start with technical classifiers:
 
@@ -730,8 +762,10 @@ Generic Discovery Engine
 
 ---
 
-<!-- source: Continue Architecture Planning.md L67382–67434 | turn 49 | version 0.18 -->
+<!-- CAP-435 | Continue Architecture Planning.md L67382–67434 | turn 49 | version 0.18 -->
 ## v0.18 — 18.11 Hierarchical Classification
+
+> **Source sections:** `CAP-435`
 
 Types should support hierarchy.
 
@@ -785,8 +819,12 @@ without losing the finer classification.
 
 ---
 
-<!-- source: Continue Architecture Planning.md L67436–67483 | turn 49 | version 0.18 -->
+<!-- CAP-436 | Continue Architecture Planning.md L67436–67483 | turn 49 | version 0.18 -->
 ## v0.18 — 18.12 Do Not Use One Global Confidence Score
+
+> **Source sections:** `CAP-436`
+>
+> [DOCUMENTATION REVIEW] Contradiction **C-06** ([Review Notes](../REVIEW-NOTES.md#c-06--))
 
 Another important constraint.
 
@@ -835,8 +873,10 @@ The important architectural property is:
 
 ---
 
-<!-- source: Continue Architecture Planning.md L67485–67526 | turn 49 | version 0.18 -->
+<!-- CAP-437 | Continue Architecture Planning.md L67485–67526 | turn 49 | version 0.18 -->
 ## v0.18 — 18.13 Classification Is Versioned
+
+> **Source sections:** `CAP-437`
 
 Suppose classifier v1 says:
 
@@ -879,8 +919,10 @@ This is especially important if the engine eventually becomes a research/acquisi
 
 ---
 
-<!-- source: Continue Architecture Planning.md L67528–67571 | turn 49 | version 0.18 -->
+<!-- CAP-438 | Continue Architecture Planning.md L67528–67571 | turn 49 | version 0.18 -->
 ## v0.18 — 18.14 Contradictory Classification
+
+> **Source sections:** `CAP-438`
 
 Consider:
 
@@ -925,8 +967,10 @@ This preserves epistemic history.
 
 ---
 
-<!-- source: Continue Architecture Planning.md L67573–67615 | turn 49 | version 0.18 -->
+<!-- CAP-439 | Continue Architecture Planning.md L67573–67615 | turn 49 | version 0.18 -->
 ## v0.18 — 18.15 Classification Graph
+
+> **Source sections:** `CAP-439`
 
 We now extend the ResourceGraph:
 
@@ -970,8 +1014,10 @@ This means classification becomes queryable rather than being hidden inside a fi
 
 ---
 
-<!-- source: Continue Architecture Planning.md L67617–67658 | turn 49 | version 0.18 -->
+<!-- CAP-440 | Continue Architecture Planning.md L67617–67658 | turn 49 | version 0.18 -->
 ## v0.18 — 18.16 Resource Model After v0.18
+
+> **Source sections:** `CAP-440`
 
 The resource model should now look approximately like:
 
@@ -1014,8 +1060,10 @@ Its classifications live in the graph.
 
 ---
 
-<!-- source: Continue Architecture Planning.md L67660–67735 | turn 49 | version 0.18 -->
+<!-- CAP-441 | Continue Architecture Planning.md L67660–67735 | turn 49 | version 0.18 -->
 ## v0.18 — 18.17 Resource Type Registry
+
+> **Source sections:** `CAP-441`
 
 We need a registry for known types.
 
@@ -1092,8 +1140,10 @@ semantic-role:
 
 ---
 
-<!-- source: Continue Architecture Planning.md L67796–67823 | turn 49 | version 0.18 -->
+<!-- CAP-443 | Continue Architecture Planning.md L67796–67823 | turn 49 | version 0.18 -->
 ## v0.18 — 18.19 Classification → Strategy
+
+> **Source sections:** `CAP-443`
 
 This gives us the beginning of a much more powerful architecture.
 
@@ -1122,8 +1172,10 @@ The classification therefore informs **what to do next**, rather than pretending
 
 ---
 
-<!-- source: Continue Architecture Planning.md L67825–67866 | turn 49 | version 0.18 -->
+<!-- CAP-444 | Continue Architecture Planning.md L67825–67866 | turn 49 | version 0.18 -->
 ## v0.18 — 18.20 Classification Work as WorkItem
+
+> **Source sections:** `CAP-444`
 
 The v0.15 `WorkItem` model now pays off.
 

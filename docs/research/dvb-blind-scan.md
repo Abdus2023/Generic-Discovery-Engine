@@ -6,23 +6,23 @@
 >
 > **Purpose:** The DVB blind-scan material: the originating analogy, the mapping tables, and how the analogy evolves.
 
-## Contents
+## Source Sections
 
-- *Turn lead-in* — `Userscript Discovery Prototype.md` L3–3
-- *Turn lead-in* — `Userscript Discovery Prototype.md` L9–23
-- **Generic pseudocode** — `Userscript Discovery Prototype.md` L25–64
-- **5. Use DVB metadata to escape blind mode** — `Userscript Discovery Prototype.md` L303–346
-- **The DVB analogy** — `Userscript Discovery Prototype.md` L3009–3025
-- **v0.8 — 16. The DVB analogy is now cleaner** — `Continue Architecture Planning.md` L55534–55566
-- **v0.13 — 19. The generic blind-scan analogy is now much stronger** — `Continue Architecture Planning.md` L60290–60325
-- **v0.14 — 2. DVB analogy** — `Continue Architecture Planning.md` L60649–60689
-- **v0.20 — 20.10 Blind-Scan Analogy** — `Continue Architecture Planning.md` L70129–70195
-- **v0.20 — 20.31 The DVB Analogy Is Now Structural** — `Continue Architecture Planning.md` L71074–71129
-- **v0.25 — 25.26 Query planner and DVB analogy** — `Continue Architecture Planning.md` L78152–78200
-- **v0.27 — 27.31 The emerging blind-scan analogy** — `Continue Architecture Planning.md` L81569–81606
-- **v0.29 — 29.35 Blind-scan interpretation** — `Continue Architecture Planning.md` L84578–84608
-- **v0.30 — What the DVB analogy actually contributed** — `Continue Architecture Planning.md` L84845–84908
-- **v0.34 — DVB blind scan** — `Continue Architecture Planning.md` L92089–92101
+- *Turn lead-in* — `USP-001` — `Userscript Discovery Prototype.md` L3–3
+- *Turn lead-in* — `USP-002` — `Userscript Discovery Prototype.md` L9–23
+- **Generic pseudocode** — `USP-003` — `Userscript Discovery Prototype.md` L25–64
+- **5. Use DVB metadata to escape blind mode** — `USP-011` — `Userscript Discovery Prototype.md` L303–346
+- **The DVB analogy** — `USP-068` — `Userscript Discovery Prototype.md` L3009–3025
+- **v0.8 — 16. The DVB analogy is now cleaner** — `CAP-077` — `Continue Architecture Planning.md` L55534–55566
+- **v0.13 — 19. The generic blind-scan analogy is now much stronger** — `CAP-209` — `Continue Architecture Planning.md` L60290–60325
+- **v0.14 — 2. DVB analogy** — `CAP-228` — `Continue Architecture Planning.md` L60649–60689
+- **v0.20 — 20.10 Blind-Scan Analogy** — `CAP-530` — `Continue Architecture Planning.md` L70129–70195
+- **v0.20 — 20.31 The DVB Analogy Is Now Structural** — `CAP-557` — `Continue Architecture Planning.md` L71074–71129
+- **v0.25 — 25.26 Query planner and DVB analogy** — `CAP-753` — `Continue Architecture Planning.md` L78152–78200
+- **v0.27 — 27.31 The emerging blind-scan analogy** — `CAP-866` — `Continue Architecture Planning.md` L81569–81606
+- **v0.29 — 29.35 Blind-scan interpretation** — `CAP-970` — `Continue Architecture Planning.md` L84578–84608
+- **v0.30 — What the DVB analogy actually contributed** — `CAP-977` — `Continue Architecture Planning.md` L84845–84908
+- **v0.34 — DVB blind scan** — `CAP-1166` — `Continue Architecture Planning.md` L92089–92101
 
 ## Related Documents
 
@@ -33,10 +33,18 @@
 
 ---
 
-<!-- source: Userscript Discovery Prototype.md L3–3 | turn 0 | You turn lead-in -->
+<!-- USP-001 | Userscript Discovery Prototype.md L3–3 | turn 0 | You turn lead-in -->
+> **Source sections:** `USP-001`
+>
+> **Note:** originating request
+
 DVB blind scan as a generic discovery algorithm
 
-<!-- source: Userscript Discovery Prototype.md L9–23 | turn 1 | ChatGPT turn lead-in -->
+<!-- USP-002 | Userscript Discovery Prototype.md L9–23 | turn 1 | ChatGPT turn lead-in -->
+> **Source sections:** `USP-002`
+>
+> **Note:** lead-in of the following section
+
 If you mean **DVB blind scan as a generic algorithm for discovering unknown digital TV/radio multiplexes**, the core idea is:
 
 1. **Sweep the RF spectrum** over a configured frequency range.
@@ -53,8 +61,10 @@ If you mean **DVB blind scan as a generic algorithm for discovering unknown digi
     * LCNs, where available
 7. Deduplicate discoveries and continue scanning until the entire range is covered.
 
-<!-- source: Userscript Discovery Prototype.md L25–64 | turn 1 | version ? -->
+<!-- USP-003 | Userscript Discovery Prototype.md L25–64 | turn 1 | version ? -->
 ### Generic pseudocode
+
+> **Source sections:** `USP-003`
 
 ```
 blind_scan(start_frequency, end_frequency):
@@ -95,8 +105,10 @@ blind_scan(start_frequency, end_frequency):
     return discoveries
 ```
 
-<!-- source: Userscript Discovery Prototype.md L303–346 | turn 3 | version ? -->
+<!-- USP-011 | Userscript Discovery Prototype.md L303–346 | turn 3 | version ? -->
 ## 5. Use DVB metadata to escape blind mode
+
+> **Source sections:** `USP-011`
 
 Once a multiplex is successfully decoded, the scan can become much more efficient.
 
@@ -141,8 +153,10 @@ and prioritize guided candidates because their probability of success is much hi
 
 ---
 
-<!-- source: Userscript Discovery Prototype.md L3009–3025 | turn 13 | version ? -->
+<!-- USP-068 | Userscript Discovery Prototype.md L3009–3025 | turn 13 | version ? -->
 ### The DVB analogy
+
+> **Source sections:** `USP-068`
 
 | DVB blind scan | Userscript engine |
 | --- | --- |
@@ -160,8 +174,10 @@ and prioritize guided candidates because their probability of success is much hi
 
 The **next evolution** would be to make the userscript genuinely protocol-agnostic by introducing a `DiscoveryProvider` interface, so HTML, JSON, JavaScript, GraphQL, DOM elements, and other application-specific sources can all act like different DVB demodulators while sharing the same scheduler and knowledge base.
 
-<!-- source: Continue Architecture Planning.md L55534–55566 | turn 29 | version 0.8 -->
+<!-- CAP-077 | Continue Architecture Planning.md L55534–55566 | turn 29 | version 0.8 -->
 ## v0.8 — 16. The DVB analogy is now cleaner
+
+> **Source sections:** `CAP-077`
 
 The original inspiration can be expressed without pretending the domains are identical:
 
@@ -195,8 +211,10 @@ It is:
 
 ---
 
-<!-- source: Continue Architecture Planning.md L60290–60325 | turn 39 | version 0.13 -->
+<!-- CAP-209 | Continue Architecture Planning.md L60290–60325 | turn 39 | version 0.13 -->
 ## v0.13 — 19. The generic blind-scan analogy is now much stronger
+
+> **Source sections:** `CAP-209`
 
 The mapping becomes:
 
@@ -233,8 +251,10 @@ That is the generic pattern.
 
 ---
 
-<!-- source: Continue Architecture Planning.md L60649–60689 | turn 41 | version 0.14 -->
+<!-- CAP-228 | Continue Architecture Planning.md L60649–60689 | turn 41 | version 0.14 -->
 ## v0.14 — 2. DVB analogy
+
+> **Source sections:** `CAP-228`
 
 The analogy becomes much stronger here.
 
@@ -276,8 +296,10 @@ The key principle is:
 
 ---
 
-<!-- source: Continue Architecture Planning.md L70129–70195 | turn 53 | version 0.20 -->
+<!-- CAP-530 | Continue Architecture Planning.md L70129–70195 | turn 53 | version 0.20 -->
 ## v0.20 — 20.10 Blind-Scan Analogy
+
+> **Source sections:** `CAP-530`
 
 The analogy can now be stated precisely.
 
@@ -345,8 +367,10 @@ The latter is only superficial analogy.
 
 ---
 
-<!-- source: Continue Architecture Planning.md L71074–71129 | turn 53 | version 0.20 -->
+<!-- CAP-557 | Continue Architecture Planning.md L71074–71129 | turn 53 | version 0.20 -->
 ## v0.20 — 20.31 The DVB Analogy Is Now Structural
+
+> **Source sections:** `CAP-557`
 
 We can now formulate the analogy without forcing domain-specific concepts:
 
@@ -403,8 +427,10 @@ It can discover **new regions in which additional objects may exist**.
 
 ---
 
-<!-- source: Continue Architecture Planning.md L78152–78200 | turn 63 | version 0.25 -->
+<!-- CAP-753 | Continue Architecture Planning.md L78152–78200 | turn 63 | version 0.25 -->
 ## v0.25 — 25.26 Query planner and DVB analogy
+
+> **Source sections:** `CAP-753`
 
 The analogy now becomes more precise.
 
@@ -454,8 +480,10 @@ The analogy remains architectural rather than literal.
 
 ---
 
-<!-- source: Continue Architecture Planning.md L81569–81606 | turn 67 | version 0.27 -->
+<!-- CAP-866 | Continue Architecture Planning.md L81569–81606 | turn 67 | version 0.27 -->
 ## v0.27 — 27.31 The emerging blind-scan analogy
+
+> **Source sections:** `CAP-866`
 
 At this point the analogy is becoming structurally precise.
 
@@ -494,8 +522,10 @@ provable completeness
 
 ---
 
-<!-- source: Continue Architecture Planning.md L84578–84608 | turn 71 | version 0.29 -->
+<!-- CAP-970 | Continue Architecture Planning.md L84578–84608 | turn 71 | version 0.29 -->
 ## v0.29 — 29.35 Blind-scan interpretation
+
+> **Source sections:** `CAP-970`
 
 The DVB-inspired analogy becomes even stronger:
 
@@ -527,8 +557,10 @@ but:
 
 ---
 
-<!-- source: Continue Architecture Planning.md L84845–84908 | turn 73 | version 0.30 -->
+<!-- CAP-977 | Continue Architecture Planning.md L84845–84908 | turn 73 | version 0.30 -->
 ## v0.30 — What the DVB analogy actually contributed
+
+> **Source sections:** `CAP-977`
 
 The useful abstraction from blind scanning is:
 
@@ -593,8 +625,10 @@ The **control model does not**.
 
 ---
 
-<!-- source: Continue Architecture Planning.md L92089–92101 | turn 85 | version 0.34 -->
+<!-- CAP-1166 | Continue Architecture Planning.md L92089–92101 | turn 85 | version 0.34 -->
 ### v0.34 — DVB blind scan
+
+> **Source sections:** `CAP-1166`
 
 ```
 frequency space

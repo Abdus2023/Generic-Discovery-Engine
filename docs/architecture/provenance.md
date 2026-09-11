@@ -6,20 +6,20 @@
 >
 > **Purpose:** Provenance: parameter provenance, discovery trees, ledgers, explanations and provenance graphs.
 
-## Contents
+## Source Sections
 
-- **28. Parameter provenance** — `Userscript Discovery Prototype.md` L1288–1339
-- **29. The scanner should produce an explanation** — `Userscript Discovery Prototype.md` L1341–1376
-- **37. Candidate provenance creates a discovery tree** — `Userscript Discovery Prototype.md` L1736–1773
-- **v0.7 — 2. The ledger becomes the scan's causal trace** — `Continue Architecture Planning.md` L54165–54211
-- **v0.7 — 5. The ledger is not merely logging** — `Continue Architecture Planning.md` L54330–54416
-- **v0.13 — 13. Discovery provenance** — `Continue Architecture Planning.md` L60035–60076
-- **v0.16 — 5. Provenance** — `Continue Architecture Planning.md` L63722–63774
-- **v0.16 — 15. Provenance graph** — `Continue Architecture Planning.md` L64192–64240
-- **v0.16 — 29. Candidate provenance** — `Continue Architecture Planning.md` L64758–64784
-- **v0.16 — Provenance preservation** — `Continue Architecture Planning.md` L65039–65043
-- **v0.16 — Session provenance** — `Continue Architecture Planning.md` L65045–65052
-- **v0.17 — 22. Canonicalization provenance** — `Continue Architecture Planning.md` L66169–66195
+- **28. Parameter provenance** — `USP-045` — `Userscript Discovery Prototype.md` L1288–1339
+- **29. The scanner should produce an explanation** — `USP-046` — `Userscript Discovery Prototype.md` L1341–1376
+- **37. Candidate provenance creates a discovery tree** — `USP-060` — `Userscript Discovery Prototype.md` L1736–1773
+- **v0.7 — 2. The ledger becomes the scan's causal trace** — `CAP-048` — `Continue Architecture Planning.md` L54165–54211
+- **v0.7 — 5. The ledger is not merely logging** — `CAP-051` — `Continue Architecture Planning.md` L54330–54416
+- **v0.13 — 13. Discovery provenance** — `CAP-203` — `Continue Architecture Planning.md` L60035–60076
+- **v0.16 — 5. Provenance** — `CAP-317` — `Continue Architecture Planning.md` L63722–63774
+- **v0.16 — 15. Provenance graph** — `CAP-327` — `Continue Architecture Planning.md` L64192–64240
+- **v0.16 — 29. Candidate provenance** — `CAP-341` — `Continue Architecture Planning.md` L64758–64784
+- **v0.16 — Provenance preservation** — `CAP-354` — `Continue Architecture Planning.md` L65039–65043
+- **v0.16 — Session provenance** — `CAP-355` — `Continue Architecture Planning.md` L65045–65052
+- **v0.17 — 22. Canonicalization provenance** — `CAP-394` — `Continue Architecture Planning.md` L66169–66195
 
 ## Related Documents
 
@@ -30,8 +30,10 @@
 
 ---
 
-<!-- source: Userscript Discovery Prototype.md L1288–1339 | turn 9 | version ? -->
+<!-- USP-045 | Userscript Discovery Prototype.md L1288–1339 | turn 9 | version ? -->
 ## 28. Parameter provenance
+
+> **Source sections:** `USP-045`
 
 For a serious implementation, every parameter should have provenance.
 
@@ -84,8 +86,10 @@ The engine can then decide whether this represents:
 
 ---
 
-<!-- source: Userscript Discovery Prototype.md L1341–1376 | turn 9 | version ? -->
+<!-- USP-046 | Userscript Discovery Prototype.md L1341–1376 | turn 9 | version ? -->
 ## 29. The scanner should produce an explanation
+
+> **Source sections:** `USP-046`
 
 A particularly useful design feature is an **explainable discovery result**.
 
@@ -122,8 +126,10 @@ This is invaluable when diagnosing why a receiver found—or failed to find—so
 
 ---
 
-<!-- source: Userscript Discovery Prototype.md L1736–1773 | turn 11 | version ? -->
+<!-- USP-060 | Userscript Discovery Prototype.md L1736–1773 | turn 11 | version ? -->
 ## 37. Candidate provenance creates a discovery tree
+
+> **Source sections:** `USP-060`
 
 Suppose a blind scan finds A.
 
@@ -162,8 +168,12 @@ The latter is useful corroborating evidence.
 
 ---
 
-<!-- source: Continue Architecture Planning.md L54165–54211 | turn 27 | version 0.7 -->
+<!-- CAP-048 | Continue Architecture Planning.md L54165–54211 | turn 27 | version 0.7 -->
 ## v0.7 — 2. The ledger becomes the scan's causal trace
+
+> **Source sections:** `CAP-048`
+>
+> **Note:** explicit override
 
 A typical sequence now looks like:
 
@@ -211,8 +221,12 @@ That is a major correctness improvement.
 
 ---
 
-<!-- source: Continue Architecture Planning.md L54330–54416 | turn 27 | version 0.7 -->
+<!-- CAP-051 | Continue Architecture Planning.md L54330–54416 | turn 27 | version 0.7 -->
 ## v0.7 — 5. The ledger is not merely logging
+
+> **Source sections:** `CAP-051`
+>
+> **Note:** explicit override
 
 This distinction matters.
 
@@ -300,8 +314,10 @@ That is much closer to an actual discovery system than a conventional crawler.
 
 ---
 
-<!-- source: Continue Architecture Planning.md L60035–60076 | turn 39 | version 0.13 -->
+<!-- CAP-203 | Continue Architecture Planning.md L60035–60076 | turn 39 | version 0.13 -->
 ## v0.13 — 13. Discovery provenance
+
+> **Source sections:** `CAP-203`
 
 Each candidate should retain **all contributing discovery paths**.
 
@@ -344,8 +360,10 @@ The discovery paths are multiple.
 
 ---
 
-<!-- source: Continue Architecture Planning.md L63722–63774 | turn 45 | version 0.16 -->
+<!-- CAP-317 | Continue Architecture Planning.md L63722–63774 | turn 45 | version 0.16 -->
 ## v0.16 — 5. Provenance
+
+> **Source sections:** `CAP-317`
 
 Every evidence object should answer:
 
@@ -399,8 +417,10 @@ That is a very different level of traceability.
 
 ---
 
-<!-- source: Continue Architecture Planning.md L64192–64240 | turn 45 | version 0.16 -->
+<!-- CAP-327 | Continue Architecture Planning.md L64192–64240 | turn 45 | version 0.16 -->
 ## v0.16 — 15. Provenance graph
+
+> **Source sections:** `CAP-327`
 
 The resulting structure becomes:
 
@@ -450,8 +470,10 @@ This creates the complete provenance cycle without conflating the objects.
 
 ---
 
-<!-- source: Continue Architecture Planning.md L64758–64784 | turn 45 | version 0.16 -->
+<!-- CAP-341 | Continue Architecture Planning.md L64758–64784 | turn 45 | version 0.16 -->
 ## v0.16 — 29. Candidate provenance
+
+> **Source sections:** `CAP-341`
 
 A candidate can now have:
 
@@ -479,15 +501,19 @@ The arrays can remain as indexes for performance.
 
 ---
 
-<!-- source: Continue Architecture Planning.md L65039–65043 | turn 45 | version 0.16 -->
+<!-- CAP-354 | Continue Architecture Planning.md L65039–65043 | turn 45 | version 0.16 -->
 ### v0.16 — Provenance preservation
+
+> **Source sections:** `CAP-354`
 
 ```
 Candidate convergence must preserve all discovery paths.
 ```
 
-<!-- source: Continue Architecture Planning.md L65045–65052 | turn 45 | version 0.16 -->
+<!-- CAP-355 | Continue Architecture Planning.md L65045–65052 | turn 45 | version 0.16 -->
 ### v0.16 — Session provenance
+
+> **Source sections:** `CAP-355`
 
 ```
 Every observation/evidence-producing operation
@@ -496,8 +522,12 @@ belongs to a ScanSession.
 
 ---
 
-<!-- source: Continue Architecture Planning.md L66169–66195 | turn 47 | version 0.17 -->
+<!-- CAP-394 | Continue Architecture Planning.md L66169–66195 | turn 47 | version 0.17 -->
 ## v0.17 — 22. Canonicalization provenance
+
+> **Source sections:** `CAP-394`
+>
+> [DOCUMENTATION REVIEW] Contradiction **C-04** ([Review Notes](../REVIEW-NOTES.md#c-04--))
 
 A useful addition:
 

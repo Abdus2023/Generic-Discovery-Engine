@@ -6,22 +6,22 @@
 >
 > **Purpose:** The change notes recorded alongside each userscript iteration, in conversation order.
 
-## Contents
+## Source Sections
 
-- **v0.3 — What changed from v0.2.0** — `Continue Architecture Planning.md` L2647–2671
-- **v0.4 — Notable v0.4.0 behavior** — `Continue Architecture Planning.md` L7124–7148
-- *Turn lead-in* — `Continue Architecture Planning.md` L13454–13472
-- **v0.4 — What changed from v0.3.0** — `Continue Architecture Planning.md` L18267–18282
-- **v0.5 architecture** — `Continue Architecture Planning.md` L23095–23126
-- **v0.5 — What v0.6 changes architecturally** — `Continue Architecture Planning.md` L29352–29424
-- **v0.5 — What v0.5.0 changes architecturally** — `Continue Architecture Planning.md` L34706–34740
-- **v0.6.0's main architectural additions** — `Continue Architecture Planning.md` L43129–43181
-- **v0.6 — What changed in v0.6** — `Continue Architecture Planning.md` L48362–48376
-- *Turn lead-in* — `Continue Architecture Planning.md` L54115–54115
-- **v0.7 — What v0.7.1 actually changes** — `Continue Architecture Planning.md` L54117–54121
-- **v0.7 — Before** — `Continue Architecture Planning.md` L54123–54133
-- **v0.7 — Now** — `Continue Architecture Planning.md` L54135–54163
-- **v0.7 — 4. Candidate state machine** — `Continue Architecture Planning.md` L54270–54328
+- **v0.3 — What changed from v0.2.0** — `CAP-005` — `Continue Architecture Planning.md` L2647–2671
+- **v0.4 — Notable v0.4.0 behavior** — `CAP-011` — `Continue Architecture Planning.md` L7124–7148
+- *Turn lead-in* — `CAP-014` — `Continue Architecture Planning.md` L13454–13472
+- **v0.4 — What changed from v0.3.0** — `CAP-017` — `Continue Architecture Planning.md` L18267–18282
+- **v0.5 architecture** — `CAP-022` — `Continue Architecture Planning.md` L23095–23126
+- **v0.5 — What v0.6 changes architecturally** — `CAP-025` — `Continue Architecture Planning.md` L29352–29424
+- **v0.5 — What v0.5.0 changes architecturally** — `CAP-028` — `Continue Architecture Planning.md` L34706–34740
+- **v0.6.0's main architectural additions** — `CAP-031` — `Continue Architecture Planning.md` L43129–43181
+- **v0.6 — What changed in v0.6** — `CAP-034` — `Continue Architecture Planning.md` L48362–48376
+- *Turn lead-in* — `CAP-044` — `Continue Architecture Planning.md` L54115–54115
+- **v0.7 — What v0.7.1 actually changes** — `CAP-045` — `Continue Architecture Planning.md` L54117–54121
+- **v0.7 — Before** — `CAP-046` — `Continue Architecture Planning.md` L54123–54133
+- **v0.7 — Now** — `CAP-047` — `Continue Architecture Planning.md` L54135–54163
+- **v0.7 — 4. Candidate state machine** — `CAP-050` — `Continue Architecture Planning.md` L54270–54328
 
 ## Related Documents
 
@@ -32,8 +32,10 @@
 
 ---
 
-<!-- source: Continue Architecture Planning.md L2647–2671 | turn 3 | version 0.3 -->
+<!-- CAP-005 | Continue Architecture Planning.md L2647–2671 | turn 3 | version 0.3 -->
 ### v0.3 — What changed from v0.2.0
+
+> **Source sections:** `CAP-005`
 
 The most important correction is **URL resolution**. In v0.2.0, parsing fetched HTML with `DOMParser` and then using `element.href` can resolve relative URLs against the parser-created document rather than reliably against the URL that was actually fetched. v0.3.0 explicitly resolves attributes against `observation.http.finalUrl`.
 
@@ -59,8 +61,10 @@ The state persistence deliberately **doesn't persist response bodies or observat
 
 One design choice remains intentionally conservative: `sameOriginOnly: true`. That prevents this generic scanner from turning every discovered third-party URL into an unrestricted cross-origin crawler. You can change it to `false` when you explicitly want cross-origin discovery and your userscript environment permits those requests.
 
-<!-- source: Continue Architecture Planning.md L7124–7148 | turn 7 | version 0.4 -->
+<!-- CAP-011 | Continue Architecture Planning.md L7124–7148 | turn 7 | version 0.4 -->
 ### v0.4 — Notable v0.4.0 behavior
+
+> **Source sections:** `CAP-011`
 
 The new **passive network observer** is deliberately different from the active scanner. When the page itself calls `fetch()` or XHR, the engine records that URL as a high-confidence candidate. It doesn't generate requests merely to create those observations.
 
@@ -86,7 +90,9 @@ The scheduler also now tracks **depth**, so discovery doesn't grow indefinitely 
 
 One caveat with the network observer: because this is a userscript, whether it can observe page JavaScript's `fetch`/XHR depends on the userscript manager's execution-world/isolation behavior. The active acquisition path remains independent of that observer, so the scanner still functions when passive interception isn't available.
 
-<!-- source: Continue Architecture Planning.md L13454–13472 | turn 9 | ChatGPT turn lead-in -->
+<!-- CAP-014 | Continue Architecture Planning.md L13454–13472 | turn 9 | ChatGPT turn lead-in -->
+> **Source sections:** `CAP-014`
+
 One important architectural change in v0.5.0 is that **network observation is now a first-class observation source**, rather than merely another URL extractor. The resulting graph can distinguish:
 
 ```
@@ -107,8 +113,10 @@ page
 
 The next logical step would be **v0.6.0**, where the engine can evolve from a URL crawler into a genuine **resource inference engine**: endpoint templates, parameter relationships, API schemas, authentication/session boundaries, content fingerprints, and graph-based prioritization.
 
-<!-- source: Continue Architecture Planning.md L18267–18282 | turn 11 | version 0.4 -->
+<!-- CAP-017 | Continue Architecture Planning.md L18267–18282 | turn 11 | version 0.4 -->
 ### v0.4 — What changed from v0.3.0
+
+> **Source sections:** `CAP-017`
 
 * **Network discovery:** observes page-context `fetch()` and `XMLHttpRequest` activity without capturing response bodies.
 * **Passive network discovery:** watches `PerformanceResourceTiming` entries as another source of URLs.
@@ -125,8 +133,12 @@ The next logical step would be **v0.6.0**, where the engine can evolve from a UR
 
 One limitation is intentional: the page-context `fetch`/XHR bridge observes **URLs and metadata, not response bodies**. The normal acquisition pipeline subsequently fetches discovered URLs itself, subject to the configured same-origin and request limits.
 
-<!-- source: Continue Architecture Planning.md L23095–23126 | turn 15 | version 0.5 -->
+<!-- CAP-022 | Continue Architecture Planning.md L23095–23126 | turn 15 | version 0.5 -->
 ### v0.5 architecture
+
+> **Source sections:** `CAP-022`
+>
+> **Note:** explicit override
 
 The important change is that **resource identity is now the canonical URL**, while the _way it was discovered_ is provenance:
 
@@ -159,8 +171,10 @@ root
 
 One deliberate boundary remains: **observed POST/PUT/PATCH/DELETE requests are recorded but are not replayed by default**. That prevents the discovery engine from turning page observation into unintended state-changing requests.
 
-<!-- source: Continue Architecture Planning.md L29352–29424 | turn 17 | version 0.5 -->
+<!-- CAP-025 | Continue Architecture Planning.md L29352–29424 | turn 17 | version 0.5 -->
 ### v0.5 — What v0.6 changes architecturally
+
+> **Source sections:** `CAP-025`
 
 The key improvement is that **candidates are no longer the resource database**.
 
@@ -234,8 +248,10 @@ rather than treating the request and response as unrelated observations.
 
 The next natural step for **v0.7** would be to turn the scheduler into a more formal **work-queue engine**: separate candidate queues by class, dynamic prioritization based on observed provider yield, redirect-aware depth, negative-result caching, and incremental graph streaming instead of constructing the graph only at export time.
 
-<!-- source: Continue Architecture Planning.md L34706–34740 | turn 19 | version 0.5 -->
+<!-- CAP-028 | Continue Architecture Planning.md L34706–34740 | turn 19 | version 0.5 -->
 ### v0.5 — What v0.5.0 changes architecturally
+
+> **Source sections:** `CAP-028`
 
 The important shift is that **URLs and resources are now separate from candidates**.
 
@@ -271,8 +287,12 @@ It also now records:
 
 One deliberate safety/semantics change is that observed `POST`, `PUT`, `PATCH`, `DELETE`, etc. requests are **recorded but never automatically replayed**. Only observed `GET` traffic can become an acquisition candidate.
 
-<!-- source: Continue Architecture Planning.md L43129–43181 | turn 21 | version 0.6 -->
+<!-- CAP-031 | Continue Architecture Planning.md L43129–43181 | turn 21 | version 0.6 -->
 ### v0.6.0's main architectural additions
+
+> **Source sections:** `CAP-031`
+>
+> **Note:** explicit override
 
 The scheduler is now effectively:
 
@@ -326,8 +346,10 @@ Notable changes:
 
 The conceptual direction for the next version would be to move toward a true **evidence/fusion layer**: instead of treating every provider discovery equally, multiple independent observations of the same resource could accumulate evidence and produce a single confidence score before the scheduler decides what to explore next.
 
-<!-- source: Continue Architecture Planning.md L48362–48376 | turn 23 | version 0.6 -->
+<!-- CAP-034 | Continue Architecture Planning.md L48362–48376 | turn 23 | version 0.6 -->
 ### v0.6 — What changed in v0.6
+
+> **Source sections:** `CAP-034`
 
 * **Acquisition policy layer:** forms/media/binary resources are discovered but not automatically fetched by default.
 * **Per-origin budgets:** request count, minimum spacing, and concurrent requests are controlled independently for each origin.
@@ -343,18 +365,24 @@ The conceptual direction for the next version would be to move toward a true **e
 
 One deliberate safety/semantic change is important: **a discovered form action is now represented in the knowledge graph but is not automatically requested**. That keeps discovery separate from performing potentially state-changing web actions.
 
-<!-- source: Continue Architecture Planning.md L54115–54115 | turn 27 | ChatGPT turn lead-in -->
+<!-- CAP-044 | Continue Architecture Planning.md L54115–54115 | turn 27 | ChatGPT turn lead-in -->
+> **Source sections:** `CAP-044`
+
 ---
 
-<!-- source: Continue Architecture Planning.md L54117–54121 | turn 27 | version 0.7 -->
+<!-- CAP-045 | Continue Architecture Planning.md L54117–54121 | turn 27 | version 0.7 -->
 ## v0.7 — What v0.7.1 actually changes
+
+> **Source sections:** `CAP-045`
 
 The important change is not the provider code.
 
 It is the **control-plane contract**.
 
-<!-- source: Continue Architecture Planning.md L54123–54133 | turn 27 | version 0.7 -->
+<!-- CAP-046 | Continue Architecture Planning.md L54123–54133 | turn 27 | version 0.7 -->
 ### v0.7 — Before
+
+> **Source sections:** `CAP-046`
 
 ```
 Candidate
@@ -366,8 +394,10 @@ The implicit question was:
 
 > “Can I fetch this candidate?”
 
-<!-- source: Continue Architecture Planning.md L54135–54163 | turn 27 | version 0.7 -->
+<!-- CAP-047 | Continue Architecture Planning.md L54135–54163 | turn 27 | version 0.7 -->
 ### v0.7 — Now
+
+> **Source sections:** `CAP-047`
 
 ```
 Candidate
@@ -397,8 +427,10 @@ That makes the acquisition boundary explicit.
 
 ---
 
-<!-- source: Continue Architecture Planning.md L54270–54328 | turn 27 | version 0.7 -->
+<!-- CAP-050 | Continue Architecture Planning.md L54270–54328 | turn 27 | version 0.7 -->
 ## v0.7 — 4. Candidate state machine
+
+> **Source sections:** `CAP-050`
 
 The lifecycle is now explicit:
 

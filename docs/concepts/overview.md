@@ -6,24 +6,24 @@
 >
 > **Purpose:** How the project describes itself at the conceptual level: what generic discovery is, what the DVB analogy contributed, and which principles are held invariant.
 
-## Contents
+## Source Sections
 
-- **v0.7 — The deeper abstraction** — `Continue Architecture Planning.md` L48802–48856
-- **v0.10 — What v0.10 accomplishes** — `Continue Architecture Planning.md` L57235–57297
-- **v0.12 — 20. The deeper abstraction** — `Continue Architecture Planning.md` L59356–59396
-- **v0.17 — 32. The deeper model** — `Continue Architecture Planning.md` L66562–66606
-- **v0.18 — 18.24 The Larger Concept** — `Continue Architecture Planning.md` L68044–68081
-- **v0.21 — 21.31 The Important Conceptual Shift** — `Continue Architecture Planning.md` L72580–72636
-- **v0.22 — 22.26 The conceptual jump** — `Continue Architecture Planning.md` L73998–74027
-- **v0.23 — 23.25 v0.23 conceptual result** — `Continue Architecture Planning.md` L75289–75323
-- **v0.26 — 26.30 What v0.26 actually gives us** — `Continue Architecture Planning.md` L80108–80160
-- **v0.30 — Conclusion — Generic Discovery Engine** — `Continue Architecture Planning.md` L84697–84760
-- **v0.30 — Final principles** — `Continue Architecture Planning.md` L85068–85125
-- **v0.30 — 30.26 What v0.30 actually accomplishes** — `Continue Architecture Planning.md` L86358–86398
-- **v0.34 — Conclusion — Generic Discovery Engine** — `Continue Architecture Planning.md` L91982–92057
-- **v0.34 — The decisive conceptual shift** — `Continue Architecture Planning.md` L92059–92087
-- **v0.34 — What the prototype actually becomes** — `Continue Architecture Planning.md` L92190–92237
-- **v0.34 — Final formulation** — `Continue Architecture Planning.md` L92239–92275
+- **v0.7 — The deeper abstraction** — `CAP-041` — `Continue Architecture Planning.md` L48802–48856
+- **v0.10 — What v0.10 accomplishes** — `CAP-126` — `Continue Architecture Planning.md` L57235–57297
+- **v0.12 — 20. The deeper abstraction** — `CAP-187` — `Continue Architecture Planning.md` L59356–59396
+- **v0.17 — 32. The deeper model** — `CAP-417` — `Continue Architecture Planning.md` L66562–66606
+- **v0.18 — 18.24 The Larger Concept** — `CAP-456` — `Continue Architecture Planning.md` L68044–68081
+- **v0.21 — 21.31 The Important Conceptual Shift** — `CAP-598` — `Continue Architecture Planning.md` L72580–72636
+- **v0.22 — 22.26 The conceptual jump** — `CAP-637` — `Continue Architecture Planning.md` L73998–74027
+- **v0.23 — 23.25 v0.23 conceptual result** — `CAP-678` — `Continue Architecture Planning.md` L75289–75323
+- **v0.26 — 26.30 What v0.26 actually gives us** — `CAP-811` — `Continue Architecture Planning.md` L80108–80160
+- **v0.30 — Conclusion — Generic Discovery Engine** — `CAP-974` — `Continue Architecture Planning.md` L84697–84760
+- **v0.30 — Final principles** — `CAP-981` — `Continue Architecture Planning.md` L85068–85125
+- **v0.30 — 30.26 What v0.30 actually accomplishes** — `CAP-1011` — `Continue Architecture Planning.md` L86358–86398
+- **v0.34 — Conclusion — Generic Discovery Engine** — `CAP-1164` — `Continue Architecture Planning.md` L91982–92057
+- **v0.34 — The decisive conceptual shift** — `CAP-1165` — `Continue Architecture Planning.md` L92059–92087
+- **v0.34 — What the prototype actually becomes** — `CAP-1170` — `Continue Architecture Planning.md` L92190–92237
+- **v0.34 — Final formulation** — `CAP-1171` — `Continue Architecture Planning.md` L92239–92275
 
 ## Related Documents
 
@@ -35,8 +35,10 @@
 
 ---
 
-<!-- source: Continue Architecture Planning.md L48802–48856 | turn 25 | version 0.7 -->
+<!-- CAP-041 | Continue Architecture Planning.md L48802–48856 | turn 25 | version 0.7 -->
 ## v0.7 — The deeper abstraction
+
+> **Source sections:** `CAP-041`
 
 At this point the DVB analogy becomes much clearer.
 
@@ -92,8 +94,10 @@ What new candidates did that observation produce?
 
 That is the point where the prototype starts becoming an **instrumentable discovery system**, rather than just a sophisticated userscript crawler.
 
-<!-- source: Continue Architecture Planning.md L57235–57297 | turn 33 | version 0.10 -->
+<!-- CAP-126 | Continue Architecture Planning.md L57235–57297 | turn 33 | version 0.10 -->
 ## v0.10 — What v0.10 accomplishes
+
+> **Source sections:** `CAP-126`
 
 The userscript is no longer fundamentally:
 
@@ -157,8 +161,10 @@ resource discovery
 new candidates
 ```
 
-<!-- source: Continue Architecture Planning.md L59356–59396 | turn 37 | version 0.12 -->
+<!-- CAP-187 | Continue Architecture Planning.md L59356–59396 | turn 37 | version 0.12 -->
 ## v0.12 — 20. The deeper abstraction
+
+> **Source sections:** `CAP-187`
 
 At v0.12, the system can finally be described without mentioning URLs:
 
@@ -200,8 +206,10 @@ A software-package dependency discovery system could be another.
 
 ---
 
-<!-- source: Continue Architecture Planning.md L66562–66606 | turn 47 | version 0.17 -->
+<!-- CAP-417 | Continue Architecture Planning.md L66562–66606 | turn 47 | version 0.17 -->
 ## v0.17 — 32. The deeper model
+
+> **Source sections:** `CAP-417`
 
 At this point, the generic discovery engine has three graphs:
 
@@ -247,8 +255,10 @@ This is a much more complete model of discovery than a conventional crawler queu
 
 ---
 
-<!-- source: Continue Architecture Planning.md L68044–68081 | turn 49 | version 0.18 -->
+<!-- CAP-456 | Continue Architecture Planning.md L68044–68081 | turn 49 | version 0.18 -->
 ## v0.18 — 18.24 The Larger Concept
+
+> **Source sections:** `CAP-456`
 
 We now have five increasingly distinct questions:
 
@@ -287,8 +297,10 @@ This is considerably closer to a generic discovery system than simply treating U
 
 ---
 
-<!-- source: Continue Architecture Planning.md L72580–72636 | turn 55 | version 0.21 -->
+<!-- CAP-598 | Continue Architecture Planning.md L72580–72636 | turn 55 | version 0.21 -->
 ## v0.21 — 21.31 The Important Conceptual Shift
+
+> **Source sections:** `CAP-598`
 
 The original engine looked like:
 
@@ -346,8 +358,10 @@ That recursive structure is the real payoff of the DVB blind-scan abstraction.
 
 ---
 
-<!-- source: Continue Architecture Planning.md L73998–74027 | turn 57 | version 0.22 -->
+<!-- CAP-637 | Continue Architecture Planning.md L73998–74027 | turn 57 | version 0.22 -->
 ## v0.22 — 22.26 The conceptual jump
+
+> **Source sections:** `CAP-637`
 
 At v0.21 the engine could answer:
 
@@ -378,8 +392,10 @@ Those should never be collapsed into one `scanComplete` boolean.
 
 ---
 
-<!-- source: Continue Architecture Planning.md L75289–75323 | turn 59 | version 0.23 -->
+<!-- CAP-678 | Continue Architecture Planning.md L75289–75323 | turn 59 | version 0.23 -->
 ## v0.23 — 23.25 v0.23 conceptual result
+
+> **Source sections:** `CAP-678`
 
 The engine has now evolved from:
 
@@ -415,8 +431,10 @@ That is a substantially stronger foundation for the eventual **service-document 
 
 ---
 
-<!-- source: Continue Architecture Planning.md L80108–80160 | turn 65 | version 0.26 -->
+<!-- CAP-811 | Continue Architecture Planning.md L80108–80160 | turn 65 | version 0.26 -->
 ## v0.26 — 26.30 What v0.26 actually gives us
+
+> **Source sections:** `CAP-811`
 
 The architecture now has a complete path from **search intent to bounded execution**:
 
@@ -470,8 +488,10 @@ goal
 
 That is much closer to the original blind-scan abstraction: **systematically traverse a defined search space, remember where the scan reached, distinguish discovered signal from unexplored space, and make exhaustion an explicit claim rather than an assumption.**
 
-<!-- source: Continue Architecture Planning.md L84697–84760 | turn 73 | version 0.30 -->
+<!-- CAP-974 | Continue Architecture Planning.md L84697–84760 | turn 73 | version 0.30 -->
 ## v0.30 — Conclusion — Generic Discovery Engine
+
+> **Source sections:** `CAP-974`
 
 The DVB blind-scan analogy has now produced a much more general architecture.
 
@@ -536,8 +556,10 @@ It is a general model for **bounded, evidence-producing exploration of an unknow
           COMPLETENESS CLAIM
 ```
 
-<!-- source: Continue Architecture Planning.md L85068–85125 | turn 73 | version 0.30 -->
+<!-- CAP-981 | Continue Architecture Planning.md L85068–85125 | turn 73 | version 0.30 -->
 ## v0.30 — Final principles
+
+> **Source sections:** `CAP-981`
 
 1. **Discovery is not acquisition.**
 2. **A candidate is not a resource.**
@@ -596,8 +618,10 @@ The DVB part is the inspiration.
 
 The actual abstraction is **evidence-driven, bounded, resumable search over an evolving search space**.
 
-<!-- source: Continue Architecture Planning.md L86358–86398 | turn 75 | version 0.30 -->
+<!-- CAP-1011 | Continue Architecture Planning.md L86358–86398 | turn 75 | version 0.30 -->
 ## v0.30 — 30.26 What v0.30 actually accomplishes
+
+> **Source sections:** `CAP-1011`
 
 Before v0.30:
 
@@ -639,8 +663,10 @@ v0.30 begins defining **how finite computational resources are allocated among c
 
 ---
 
-<!-- source: Continue Architecture Planning.md L91982–92057 | turn 85 | version 0.34 -->
+<!-- CAP-1164 | Continue Architecture Planning.md L91982–92057 | turn 85 | version 0.34 -->
 ## v0.34 — Conclusion — Generic Discovery Engine
+
+> **Source sections:** `CAP-1164`
 
 The DVB blind-scan analogy has now produced a much stronger abstraction than “URL crawler.”
 
@@ -717,8 +743,10 @@ Its architecture can be reduced to this:
                                     COMPLETENESS CLAIM
 ```
 
-<!-- source: Continue Architecture Planning.md L92059–92087 | turn 85 | version 0.34 -->
+<!-- CAP-1165 | Continue Architecture Planning.md L92059–92087 | turn 85 | version 0.34 -->
 ## v0.34 — The decisive conceptual shift
+
+> **Source sections:** `CAP-1165`
 
 The engine is **not** fundamentally:
 
@@ -748,8 +776,10 @@ Systematic Exploration
 
 That makes the DVB analogy precise.
 
-<!-- source: Continue Architecture Planning.md L92190–92237 | turn 85 | version 0.34 -->
+<!-- CAP-1170 | Continue Architecture Planning.md L92190–92237 | turn 85 | version 0.34 -->
 ## v0.34 — What the prototype actually becomes
+
+> **Source sections:** `CAP-1170`
 
 The original userscript idea has therefore evolved from a crawler into a prototype of a:
 
@@ -798,8 +828,10 @@ That distinction is fundamental.
 
 ---
 
-<!-- source: Continue Architecture Planning.md L92239–92275 | turn 85 | version 0.34 -->
+<!-- CAP-1171 | Continue Architecture Planning.md L92239–92275 | turn 85 | version 0.34 -->
 ## v0.34 — Final formulation
+
+> **Source sections:** `CAP-1171`
 
 The strongest concise definition is:
 

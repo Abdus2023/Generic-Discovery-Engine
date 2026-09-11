@@ -6,40 +6,40 @@
 >
 > **Purpose:** Durable state, transactions, write-ahead ledgers, checkpoints, idempotency and recovery.
 
-## Contents
+## Source Sections
 
-- **20. Cache knowledge between scans** — `Userscript Discovery Prototype.md` L951–991
-- **v0.32 boundary** — `Continue Architecture Planning.md` L87703–87765
-- **v0.32 — Transactional Persistence & Crash Recovery** — `Continue Architecture Planning.md` L87777–87789
-- **v0.32 — 32.1 The crash problem** — `Continue Architecture Planning.md` L87791–87828
-- **v0.32 — 32.2 Durable state vs runtime state** — `Continue Architecture Planning.md` L87830–87856
-- **v0.32 — 32.3 Persistence is not serialization** — `Continue Architecture Planning.md` L87858–87893
-- **v0.32 — 32.4 PersistenceAdapter** — `Continue Architecture Planning.md` L87895–87940
-- **v0.32 — 32.5 Transaction** — `Continue Architecture Planning.md` L87942–87990
-- **v0.32 — 32.6 Write-ahead event ledger** — `Continue Architecture Planning.md` L87992–88035
-- **v0.32 — 32.7 Event identity** — `Continue Architecture Planning.md` L88037–88073
-- **v0.32 — 32.8 Monotonic sequence** — `Continue Architecture Planning.md` L88075–88106
-- **v0.32 — 32.9 Commit protocol** — `Continue Architecture Planning.md` L88108–88145
-- **v0.32 — 32.10 Commit markers** — `Continue Architecture Planning.md` L88147–88170
-- **v0.32 — 32.11 Checkpoint correctness** — `Continue Architecture Planning.md` L88172–88211
-- **v0.32 — 32.12 At-least-once vs exactly-once** — `Continue Architecture Planning.md` L88213–88245
-- **v0.32 — 32.13 Idempotency** — `Continue Architecture Planning.md` L88247–88282
-- **v0.32 — 32.14 Work recovery** — `Continue Architecture Planning.md` L88284–88331
-- **v0.32 — 32.15 Recovery scan** — `Continue Architecture Planning.md` L88333–88367
-- **v0.32 — 32.16 RecoveryManager** — `Continue Architecture Planning.md` L88369–88404
-- **v0.32 — 32.17 Reservation recovery** — `Continue Architecture Planning.md` L88406–88452
-- **v0.32 — 32.20 Artifact durability** — `Continue Architecture Planning.md` L88501–88531
-- **v0.32 — 32.21 Durable checkpoint** — `Continue Architecture Planning.md` L88533–88566
-- **v0.32 — 32.23 Schema versioning** — `Continue Architecture Planning.md` L88591–88621
-- **v0.32 — 32.24 Snapshot + journal** — `Continue Architecture Planning.md` L88623–88659
-- **v0.32 — 32.25 Snapshot integrity** — `Continue Architecture Planning.md` L88661–88686
-- **v0.32 — 32.26 Recovery outcomes** — `Continue Architecture Planning.md` L88688–88731
-- **v0.32 — 32.27 Recovery must not fabricate knowledge** — `Continue Architecture Planning.md` L88733–88753
-- **v0.32 — 32.28 Crash-safe frontier** — `Continue Architecture Planning.md` L88755–88778
-- **v0.32 — 32.29 Reconciliation** — `Continue Architecture Planning.md` L88780–88822
-- **v0.32 — 32.30 Repair is itself provenance** — `Continue Architecture Planning.md` L88824–88844
-- **v0.32 — 32.32 Complete lifecycle** — `Continue Architecture Planning.md` L88897–88933
-- **v0.32 — 32.35 What v0.32 changes** — `Continue Architecture Planning.md` L89010–89040
+- **20. Cache knowledge between scans** — `USP-035` — `Userscript Discovery Prototype.md` L951–991
+- **v0.32 boundary** — `CAP-1040` — `Continue Architecture Planning.md` L87703–87765
+- **v0.32 — Transactional Persistence & Crash Recovery** — `CAP-1042` — `Continue Architecture Planning.md` L87777–87789
+- **v0.32 — 32.1 The crash problem** — `CAP-1043` — `Continue Architecture Planning.md` L87791–87828
+- **v0.32 — 32.2 Durable state vs runtime state** — `CAP-1044` — `Continue Architecture Planning.md` L87830–87856
+- **v0.32 — 32.3 Persistence is not serialization** — `CAP-1045` — `Continue Architecture Planning.md` L87858–87893
+- **v0.32 — 32.4 PersistenceAdapter** — `CAP-1046` — `Continue Architecture Planning.md` L87895–87940
+- **v0.32 — 32.5 Transaction** — `CAP-1047` — `Continue Architecture Planning.md` L87942–87990
+- **v0.32 — 32.6 Write-ahead event ledger** — `CAP-1048` — `Continue Architecture Planning.md` L87992–88035
+- **v0.32 — 32.7 Event identity** — `CAP-1049` — `Continue Architecture Planning.md` L88037–88073
+- **v0.32 — 32.8 Monotonic sequence** — `CAP-1050` — `Continue Architecture Planning.md` L88075–88106
+- **v0.32 — 32.9 Commit protocol** — `CAP-1051` — `Continue Architecture Planning.md` L88108–88145
+- **v0.32 — 32.10 Commit markers** — `CAP-1052` — `Continue Architecture Planning.md` L88147–88170
+- **v0.32 — 32.11 Checkpoint correctness** — `CAP-1053` — `Continue Architecture Planning.md` L88172–88211
+- **v0.32 — 32.12 At-least-once vs exactly-once** — `CAP-1054` — `Continue Architecture Planning.md` L88213–88245
+- **v0.32 — 32.13 Idempotency** — `CAP-1055` — `Continue Architecture Planning.md` L88247–88282
+- **v0.32 — 32.14 Work recovery** — `CAP-1056` — `Continue Architecture Planning.md` L88284–88331
+- **v0.32 — 32.15 Recovery scan** — `CAP-1057` — `Continue Architecture Planning.md` L88333–88367
+- **v0.32 — 32.16 RecoveryManager** — `CAP-1058` — `Continue Architecture Planning.md` L88369–88404
+- **v0.32 — 32.17 Reservation recovery** — `CAP-1059` — `Continue Architecture Planning.md` L88406–88452
+- **v0.32 — 32.20 Artifact durability** — `CAP-1062` — `Continue Architecture Planning.md` L88501–88531
+- **v0.32 — 32.21 Durable checkpoint** — `CAP-1063` — `Continue Architecture Planning.md` L88533–88566
+- **v0.32 — 32.23 Schema versioning** — `CAP-1065` — `Continue Architecture Planning.md` L88591–88621
+- **v0.32 — 32.24 Snapshot + journal** — `CAP-1066` — `Continue Architecture Planning.md` L88623–88659
+- **v0.32 — 32.25 Snapshot integrity** — `CAP-1067` — `Continue Architecture Planning.md` L88661–88686
+- **v0.32 — 32.26 Recovery outcomes** — `CAP-1068` — `Continue Architecture Planning.md` L88688–88731
+- **v0.32 — 32.27 Recovery must not fabricate knowledge** — `CAP-1069` — `Continue Architecture Planning.md` L88733–88753
+- **v0.32 — 32.28 Crash-safe frontier** — `CAP-1070` — `Continue Architecture Planning.md` L88755–88778
+- **v0.32 — 32.29 Reconciliation** — `CAP-1071` — `Continue Architecture Planning.md` L88780–88822
+- **v0.32 — 32.30 Repair is itself provenance** — `CAP-1072` — `Continue Architecture Planning.md` L88824–88844
+- **v0.32 — 32.32 Complete lifecycle** — `CAP-1074` — `Continue Architecture Planning.md` L88897–88933
+- **v0.32 — 32.35 What v0.32 changes** — `CAP-1077` — `Continue Architecture Planning.md` L89010–89040
 
 ## Related Documents
 
@@ -50,8 +50,12 @@
 
 ---
 
-<!-- source: Userscript Discovery Prototype.md L951–991 | turn 7 | version ? -->
+<!-- USP-035 | Userscript Discovery Prototype.md L951–991 | turn 7 | version ? -->
 ## 20. Cache knowledge between scans
+
+> **Source sections:** `USP-035`
+>
+> [DOCUMENTATION REVIEW] Contradiction **C-10** ([Review Notes](../REVIEW-NOTES.md#c-10--))
 
 A major optimization is to persist previous observations.
 
@@ -93,8 +97,10 @@ This produces a **continuous discovery system**, rather than repeatedly performi
 
 ---
 
-<!-- source: Continue Architecture Planning.md L87703–87765 | turn 77 | version 0.32 -->
+<!-- CAP-1040 | Continue Architecture Planning.md L87703–87765 | turn 77 | version 0.32 -->
 ## v0.32 boundary
+
+> **Source sections:** `CAP-1040`
 
 The next unresolved problem is now **not execution capacity**.
 
@@ -158,8 +164,10 @@ That is where the prototype begins confronting the hardest practical property of
 
 > **Never silently lose discovered knowledge, silently double-account resources, or falsely advance the search frontier after a crash.**
 
-<!-- source: Continue Architecture Planning.md L87777–87789 | turn 79 | version 0.32 -->
+<!-- CAP-1042 | Continue Architecture Planning.md L87777–87789 | turn 79 | version 0.32 -->
 ## v0.32 — Transactional Persistence & Crash Recovery
+
+> **Source sections:** `CAP-1042`
 
 v0.31 established resource accounting.
 
@@ -173,8 +181,10 @@ The central question becomes:
 
 ---
 
-<!-- source: Continue Architecture Planning.md L87791–87828 | turn 79 | version 0.32 -->
+<!-- CAP-1043 | Continue Architecture Planning.md L87791–87828 | turn 79 | version 0.32 -->
 ## v0.32 — 32.1 The crash problem
+
+> **Source sections:** `CAP-1043`
 
 Consider:
 
@@ -213,8 +223,10 @@ The engine cannot simply reconstruct the answer from the current in-memory state
 
 ---
 
-<!-- source: Continue Architecture Planning.md L87830–87856 | turn 79 | version 0.32 -->
+<!-- CAP-1044 | Continue Architecture Planning.md L87830–87856 | turn 79 | version 0.32 -->
 ## v0.32 — 32.2 Durable state vs runtime state
+
+> **Source sections:** `CAP-1044`
 
 We now explicitly divide state:
 
@@ -242,8 +254,10 @@ The rule:
 
 ---
 
-<!-- source: Continue Architecture Planning.md L87858–87893 | turn 79 | version 0.32 -->
+<!-- CAP-1045 | Continue Architecture Planning.md L87858–87893 | turn 79 | version 0.32 -->
 ## v0.32 — 32.3 Persistence is not serialization
+
+> **Source sections:** `CAP-1045`
 
 A common mistake is:
 
@@ -280,8 +294,10 @@ Storage
 
 ---
 
-<!-- source: Continue Architecture Planning.md L87895–87940 | turn 79 | version 0.32 -->
+<!-- CAP-1046 | Continue Architecture Planning.md L87895–87940 | turn 79 | version 0.32 -->
 ## v0.32 — 32.4 PersistenceAdapter
+
+> **Source sections:** `CAP-1046`
 
 ```JavaScript
 class PersistenceAdapter {
@@ -328,8 +344,10 @@ The contract is what matters.
 
 ---
 
-<!-- source: Continue Architecture Planning.md L87942–87990 | turn 79 | version 0.32 -->
+<!-- CAP-1047 | Continue Architecture Planning.md L87942–87990 | turn 79 | version 0.32 -->
 ## v0.32 — 32.5 Transaction
+
+> **Source sections:** `CAP-1047`
 
 ```JavaScript
 class PersistenceTransaction {
@@ -379,8 +397,10 @@ These changes should either become durable as one logical transition or be recov
 
 ---
 
-<!-- source: Continue Architecture Planning.md L87992–88035 | turn 79 | version 0.32 -->
+<!-- CAP-1048 | Continue Architecture Planning.md L87992–88035 | turn 79 | version 0.32 -->
 ## v0.32 — 32.6 Write-ahead event ledger
+
+> **Source sections:** `CAP-1048`
 
 The existing event ledger becomes especially important.
 
@@ -425,8 +445,12 @@ Materialized State = efficient current view
 
 ---
 
-<!-- source: Continue Architecture Planning.md L88037–88073 | turn 79 | version 0.32 -->
+<!-- CAP-1049 | Continue Architecture Planning.md L88037–88073 | turn 79 | version 0.32 -->
 ## v0.32 — 32.7 Event identity
+
+> **Source sections:** `CAP-1049`
+>
+> [DOCUMENTATION REVIEW] Contradiction **C-04** ([Review Notes](../REVIEW-NOTES.md#c-04--))
 
 Every durable event needs an immutable identity.
 
@@ -464,8 +488,10 @@ One execution may generate many events.
 
 ---
 
-<!-- source: Continue Architecture Planning.md L88075–88106 | turn 79 | version 0.32 -->
+<!-- CAP-1050 | Continue Architecture Planning.md L88075–88106 | turn 79 | version 0.32 -->
 ## v0.32 — 32.8 Monotonic sequence
+
+> **Source sections:** `CAP-1050`
 
 A durable ledger benefits from a monotonic sequence:
 
@@ -498,8 +524,10 @@ That should not silently pass.
 
 ---
 
-<!-- source: Continue Architecture Planning.md L88108–88145 | turn 79 | version 0.32 -->
+<!-- CAP-1051 | Continue Architecture Planning.md L88108–88145 | turn 79 | version 0.32 -->
 ## v0.32 — 32.9 Commit protocol
+
+> **Source sections:** `CAP-1051`
 
 A simplified durable transition:
 
@@ -538,8 +566,10 @@ The invariant is more important than the implementation.
 
 ---
 
-<!-- source: Continue Architecture Planning.md L88147–88170 | turn 79 | version 0.32 -->
+<!-- CAP-1052 | Continue Architecture Planning.md L88147–88170 | turn 79 | version 0.32 -->
 ## v0.32 — 32.10 Commit markers
+
+> **Source sections:** `CAP-1052`
 
 A transaction should have an explicit durable completion marker.
 
@@ -564,8 +594,10 @@ Without this distinction, partially written state can look valid.
 
 ---
 
-<!-- source: Continue Architecture Planning.md L88172–88211 | turn 79 | version 0.32 -->
+<!-- CAP-1053 | Continue Architecture Planning.md L88172–88211 | turn 79 | version 0.32 -->
 ## v0.32 — 32.11 Checkpoint correctness
+
+> **Source sections:** `CAP-1053`
 
 v0.26 established:
 
@@ -606,8 +638,10 @@ The engine would incorrectly believe page N had been processed.
 
 ---
 
-<!-- source: Continue Architecture Planning.md L88213–88245 | turn 79 | version 0.32 -->
+<!-- CAP-1054 | Continue Architecture Planning.md L88213–88245 | turn 79 | version 0.32 -->
 ## v0.32 — 32.12 At-least-once vs exactly-once
+
+> **Source sections:** `CAP-1054`
 
 Distributed-systems terminology is useful here.
 
@@ -641,8 +675,10 @@ Therefore:
 
 ---
 
-<!-- source: Continue Architecture Planning.md L88247–88282 | turn 79 | version 0.32 -->
+<!-- CAP-1055 | Continue Architecture Planning.md L88247–88282 | turn 79 | version 0.32 -->
 ## v0.32 — 32.13 Idempotency
+
+> **Source sections:** `CAP-1055`
 
 This requires durable idempotency keys.
 
@@ -679,8 +715,10 @@ The second observation attempt can still exist as a distinct event if it actuall
 
 ---
 
-<!-- source: Continue Architecture Planning.md L88284–88331 | turn 79 | version 0.32 -->
+<!-- CAP-1056 | Continue Architecture Planning.md L88284–88331 | turn 79 | version 0.32 -->
 ## v0.32 — 32.14 Work recovery
+
+> **Source sections:** `CAP-1056`
 
 A persisted work item might say:
 
@@ -729,8 +767,10 @@ FAILED
 
 ---
 
-<!-- source: Continue Architecture Planning.md L88333–88367 | turn 79 | version 0.32 -->
+<!-- CAP-1057 | Continue Architecture Planning.md L88333–88367 | turn 79 | version 0.32 -->
 ## v0.32 — 32.15 Recovery scan
+
+> **Source sections:** `CAP-1057`
 
 At startup:
 
@@ -766,8 +806,10 @@ The engine should not immediately resume execution before reconciliation.
 
 ---
 
-<!-- source: Continue Architecture Planning.md L88369–88404 | turn 79 | version 0.32 -->
+<!-- CAP-1058 | Continue Architecture Planning.md L88369–88404 | turn 79 | version 0.32 -->
 ## v0.32 — 32.16 RecoveryManager
+
+> **Source sections:** `CAP-1058`
 
 ```JavaScript
 class RecoveryManager {
@@ -804,8 +846,10 @@ class RecoveryManager {
 
 ---
 
-<!-- source: Continue Architecture Planning.md L88406–88452 | turn 79 | version 0.32 -->
+<!-- CAP-1059 | Continue Architecture Planning.md L88406–88452 | turn 79 | version 0.32 -->
 ## v0.32 — 32.17 Reservation recovery
+
+> **Source sections:** `CAP-1059`
 
 Reservations are particularly dangerous.
 
@@ -853,8 +897,12 @@ This is much safer than silently resetting the budget.
 
 ---
 
-<!-- source: Continue Architecture Planning.md L88501–88531 | turn 79 | version 0.32 -->
+<!-- CAP-1062 | Continue Architecture Planning.md L88501–88531 | turn 79 | version 0.32 -->
 ## v0.32 — 32.20 Artifact durability
+
+> **Source sections:** `CAP-1062`
+>
+> [DOCUMENTATION REVIEW] Contradiction **C-07** ([Review Notes](../REVIEW-NOTES.md#c-07--))
 
 The artifact lifecycle should become:
 
@@ -886,8 +934,10 @@ must remain separate.
 
 ---
 
-<!-- source: Continue Architecture Planning.md L88533–88566 | turn 79 | version 0.32 -->
+<!-- CAP-1063 | Continue Architecture Planning.md L88533–88566 | turn 79 | version 0.32 -->
 ## v0.32 — 32.21 Durable checkpoint
+
+> **Source sections:** `CAP-1063`
 
 A checkpoint should contain enough information to reconstruct execution intent:
 
@@ -922,8 +972,10 @@ durable event history
 
 ---
 
-<!-- source: Continue Architecture Planning.md L88591–88621 | turn 79 | version 0.32 -->
+<!-- CAP-1065 | Continue Architecture Planning.md L88591–88621 | turn 79 | version 0.32 -->
 ## v0.32 — 32.23 Schema versioning
+
+> **Source sections:** `CAP-1065`
 
 Persistent state will evolve.
 
@@ -955,8 +1007,10 @@ Never assume:
 
 ---
 
-<!-- source: Continue Architecture Planning.md L88623–88659 | turn 79 | version 0.32 -->
+<!-- CAP-1066 | Continue Architecture Planning.md L88623–88659 | turn 79 | version 0.32 -->
 ## v0.32 — 32.24 Snapshot + journal
+
+> **Source sections:** `CAP-1066`
 
 For a userscript, a practical persistence model is:
 
@@ -994,8 +1048,10 @@ This avoids replaying the entire history every time.
 
 ---
 
-<!-- source: Continue Architecture Planning.md L88661–88686 | turn 79 | version 0.32 -->
+<!-- CAP-1067 | Continue Architecture Planning.md L88661–88686 | turn 79 | version 0.32 -->
 ## v0.32 — 32.25 Snapshot integrity
+
+> **Source sections:** `CAP-1067`
 
 Snapshots should themselves be verifiable.
 
@@ -1022,8 +1078,10 @@ It provides integrity against accidental corruption.
 
 ---
 
-<!-- source: Continue Architecture Planning.md L88688–88731 | turn 79 | version 0.32 -->
+<!-- CAP-1068 | Continue Architecture Planning.md L88688–88731 | turn 79 | version 0.32 -->
 ## v0.32 — 32.26 Recovery outcomes
+
+> **Source sections:** `CAP-1068`
 
 Recovery should produce an explicit result:
 
@@ -1068,8 +1126,12 @@ RECOVERY_FAILED
 
 ---
 
-<!-- source: Continue Architecture Planning.md L88733–88753 | turn 79 | version 0.32 -->
+<!-- CAP-1069 | Continue Architecture Planning.md L88733–88753 | turn 79 | version 0.32 -->
 ## v0.32 — 32.27 Recovery must not fabricate knowledge
+
+> **Source sections:** `CAP-1069`
+>
+> [DOCUMENTATION REVIEW] Contradiction **C-10** ([Review Notes](../REVIEW-NOTES.md#c-10--))
 
 This is fundamental.
 
@@ -1091,8 +1153,10 @@ Crash uncertainty is another form of epistemic uncertainty.
 
 ---
 
-<!-- source: Continue Architecture Planning.md L88755–88778 | turn 79 | version 0.32 -->
+<!-- CAP-1070 | Continue Architecture Planning.md L88755–88778 | turn 79 | version 0.32 -->
 ## v0.32 — 32.28 Crash-safe frontier
+
+> **Source sections:** `CAP-1070`
 
 After recovery:
 
@@ -1117,8 +1181,10 @@ The frontier should be rebuilt from durable state rather than trusting the old i
 
 ---
 
-<!-- source: Continue Architecture Planning.md L88780–88822 | turn 79 | version 0.32 -->
+<!-- CAP-1071 | Continue Architecture Planning.md L88780–88822 | turn 79 | version 0.32 -->
 ## v0.32 — 32.29 Reconciliation
+
+> **Source sections:** `CAP-1071`
 
 v0.32 therefore introduces a dedicated reconciliation phase.
 
@@ -1162,8 +1228,10 @@ record repair event
 
 ---
 
-<!-- source: Continue Architecture Planning.md L88824–88844 | turn 79 | version 0.32 -->
+<!-- CAP-1072 | Continue Architecture Planning.md L88824–88844 | turn 79 | version 0.32 -->
 ## v0.32 — 32.30 Repair is itself provenance
+
+> **Source sections:** `CAP-1072`
 
 Suppose recovery requeues a work item.
 
@@ -1185,8 +1253,10 @@ Now the history remains explainable.
 
 ---
 
-<!-- source: Continue Architecture Planning.md L88897–88933 | turn 79 | version 0.32 -->
+<!-- CAP-1074 | Continue Architecture Planning.md L88897–88933 | turn 79 | version 0.32 -->
 ## v0.32 — 32.32 Complete lifecycle
+
+> **Source sections:** `CAP-1074`
 
 The system now has a durable lifecycle:
 
@@ -1224,8 +1294,10 @@ Failure at any point enters explicit recovery semantics.
 
 ---
 
-<!-- source: Continue Architecture Planning.md L89010–89040 | turn 79 | version 0.32 -->
+<!-- CAP-1077 | Continue Architecture Planning.md L89010–89040 | turn 79 | version 0.32 -->
 ## v0.32 — 32.35 What v0.32 changes
+
+> **Source sections:** `CAP-1077`
 
 The engine has now crossed another important boundary.
 

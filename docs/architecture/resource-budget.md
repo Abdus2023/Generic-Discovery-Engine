@@ -6,32 +6,32 @@
 >
 > **Purpose:** Resource dimensions, budgets, reservations, cost observation and settlement.
 
-## Contents
+## Source Sections
 
-- **v0.31 — Unified Resource & Cost Ledger** — `Continue Architecture Planning.md` L86478–86517
-- **v0.31 — 31.1 Resource dimensions** — `Continue Architecture Planning.md` L86519–86576
-- **v0.31 — 31.2 ResourceBudget** — `Continue Architecture Planning.md` L86578–86627
-- **v0.31 — 31.3 Three resource states** — `Continue Architecture Planning.md` L86629–86672
-- **v0.31 — 31.4 ResourceReservation** — `Continue Architecture Planning.md` L86674–86734
-- **v0.31 — 31.5 Estimated cost vs actual cost** — `Continue Architecture Planning.md` L86736–86789
-- **v0.31 — 31.6 CostObservation** — `Continue Architecture Planning.md` L86791–86844
-- **v0.31 — 31.7 ResourceLedger** — `Continue Architecture Planning.md` L86846–86879
-- **v0.31 — 31.8 Budget scopes** — `Continue Architecture Planning.md` L86881–86933
-- **v0.31 — 31.9 Hierarchical budget accounting** — `Continue Architecture Planning.md` L86935–86974
-- **v0.31 — 31.10 Resource allocation** — `Continue Architecture Planning.md` L86976–87027
-- **v0.31 — 31.11 Allocation is not execution** — `Continue Architecture Planning.md` L87029–87055
-- **v0.31 — 31.12 Partial consumption** — `Continue Architecture Planning.md` L87057–87102
-- **v0.31 — 31.13 Cost overruns** — `Continue Architecture Planning.md` L87104–87146
-- **v0.31 — 31.14 Cost model** — `Continue Architecture Planning.md` L87148–87205
-- **v0.31 — 31.15 Cost is context-dependent** — `Continue Architecture Planning.md` L87207–87242
-- **v0.31 — 31.16 Resource exhaustion** — `Continue Architecture Planning.md` L87244–87286
-- **v0.31 — 31.17 Budget exhaustion vs frontier exhaustion** — `Continue Architecture Planning.md` L87288–87323
-- **v0.31 — 31.18 Resource reservation race** — `Continue Architecture Planning.md` L87325–87363
-- **v0.31 — 31.19 Settlement** — `Continue Architecture Planning.md` L87365–87415
-- **v0.31 — 31.20 Cost feedback** — `Continue Architecture Planning.md` L87417–87459
-- **v0.31 — 31.21 ResourceLedger events** — `Continue Architecture Planning.md` L87461–87491
-- **v0.31 — 31.22 Resource accounting and provenance** — `Continue Architecture Planning.md` L87493–87536
-- **v0.31 — 31.25 What v0.31 adds** — `Continue Architecture Planning.md` L87648–87701
+- **v0.31 — Unified Resource & Cost Ledger** — `CAP-1014` — `Continue Architecture Planning.md` L86478–86517
+- **v0.31 — 31.1 Resource dimensions** — `CAP-1015` — `Continue Architecture Planning.md` L86519–86576
+- **v0.31 — 31.2 ResourceBudget** — `CAP-1016` — `Continue Architecture Planning.md` L86578–86627
+- **v0.31 — 31.3 Three resource states** — `CAP-1017` — `Continue Architecture Planning.md` L86629–86672
+- **v0.31 — 31.4 ResourceReservation** — `CAP-1018` — `Continue Architecture Planning.md` L86674–86734
+- **v0.31 — 31.5 Estimated cost vs actual cost** — `CAP-1019` — `Continue Architecture Planning.md` L86736–86789
+- **v0.31 — 31.6 CostObservation** — `CAP-1020` — `Continue Architecture Planning.md` L86791–86844
+- **v0.31 — 31.7 ResourceLedger** — `CAP-1021` — `Continue Architecture Planning.md` L86846–86879
+- **v0.31 — 31.8 Budget scopes** — `CAP-1022` — `Continue Architecture Planning.md` L86881–86933
+- **v0.31 — 31.9 Hierarchical budget accounting** — `CAP-1023` — `Continue Architecture Planning.md` L86935–86974
+- **v0.31 — 31.10 Resource allocation** — `CAP-1024` — `Continue Architecture Planning.md` L86976–87027
+- **v0.31 — 31.11 Allocation is not execution** — `CAP-1025` — `Continue Architecture Planning.md` L87029–87055
+- **v0.31 — 31.12 Partial consumption** — `CAP-1026` — `Continue Architecture Planning.md` L87057–87102
+- **v0.31 — 31.13 Cost overruns** — `CAP-1027` — `Continue Architecture Planning.md` L87104–87146
+- **v0.31 — 31.14 Cost model** — `CAP-1028` — `Continue Architecture Planning.md` L87148–87205
+- **v0.31 — 31.15 Cost is context-dependent** — `CAP-1029` — `Continue Architecture Planning.md` L87207–87242
+- **v0.31 — 31.16 Resource exhaustion** — `CAP-1030` — `Continue Architecture Planning.md` L87244–87286
+- **v0.31 — 31.17 Budget exhaustion vs frontier exhaustion** — `CAP-1031` — `Continue Architecture Planning.md` L87288–87323
+- **v0.31 — 31.18 Resource reservation race** — `CAP-1032` — `Continue Architecture Planning.md` L87325–87363
+- **v0.31 — 31.19 Settlement** — `CAP-1033` — `Continue Architecture Planning.md` L87365–87415
+- **v0.31 — 31.20 Cost feedback** — `CAP-1034` — `Continue Architecture Planning.md` L87417–87459
+- **v0.31 — 31.21 ResourceLedger events** — `CAP-1035` — `Continue Architecture Planning.md` L87461–87491
+- **v0.31 — 31.22 Resource accounting and provenance** — `CAP-1036` — `Continue Architecture Planning.md` L87493–87536
+- **v0.31 — 31.25 What v0.31 adds** — `CAP-1039` — `Continue Architecture Planning.md` L87648–87701
 
 ## Related Documents
 
@@ -42,8 +42,10 @@
 
 ---
 
-<!-- source: Continue Architecture Planning.md L86478–86517 | turn 77 | version 0.31 -->
+<!-- CAP-1014 | Continue Architecture Planning.md L86478–86517 | turn 77 | version 0.31 -->
 ## v0.31 — Unified Resource & Cost Ledger
+
+> **Source sections:** `CAP-1014`
 
 v0.30 solved:
 
@@ -84,8 +86,10 @@ They must not be conflated.
 
 ---
 
-<!-- source: Continue Architecture Planning.md L86519–86576 | turn 77 | version 0.31 -->
+<!-- CAP-1015 | Continue Architecture Planning.md L86519–86576 | turn 77 | version 0.31 -->
 ## v0.31 — 31.1 Resource dimensions
+
+> **Source sections:** `CAP-1015`
 
 The engine should stop treating "request count" as its universal budget.
 
@@ -144,8 +148,10 @@ This produces a general resource vector:
 
 ---
 
-<!-- source: Continue Architecture Planning.md L86578–86627 | turn 77 | version 0.31 -->
+<!-- CAP-1016 | Continue Architecture Planning.md L86578–86627 | turn 77 | version 0.31 -->
 ## v0.31 — 31.2 ResourceBudget
+
+> **Source sections:** `CAP-1016`
 
 A budget is an upper bound.
 
@@ -196,8 +202,10 @@ consumed
 
 ---
 
-<!-- source: Continue Architecture Planning.md L86629–86672 | turn 77 | version 0.31 -->
+<!-- CAP-1017 | Continue Architecture Planning.md L86629–86672 | turn 77 | version 0.31 -->
 ## v0.31 — 31.3 Three resource states
+
+> **Source sections:** `CAP-1017`
 
 Every resource dimension should therefore distinguish:
 
@@ -242,8 +250,10 @@ The budget was oversubscribed.
 
 ---
 
-<!-- source: Continue Architecture Planning.md L86674–86734 | turn 77 | version 0.31 -->
+<!-- CAP-1018 | Continue Architecture Planning.md L86674–86734 | turn 77 | version 0.31 -->
 ## v0.31 — 31.4 ResourceReservation
+
+> **Source sections:** `CAP-1018`
 
 ```JavaScript
 class ResourceReservation {
@@ -305,8 +315,10 @@ CONFLICT
 
 ---
 
-<!-- source: Continue Architecture Planning.md L86736–86789 | turn 77 | version 0.31 -->
+<!-- CAP-1019 | Continue Architecture Planning.md L86736–86789 | turn 77 | version 0.31 -->
 ## v0.31 — 31.5 Estimated cost vs actual cost
+
+> **Source sections:** `CAP-1019`
 
 Before execution:
 
@@ -361,8 +373,10 @@ future estimates
 
 ---
 
-<!-- source: Continue Architecture Planning.md L86791–86844 | turn 77 | version 0.31 -->
+<!-- CAP-1020 | Continue Architecture Planning.md L86791–86844 | turn 77 | version 0.31 -->
 ## v0.31 — 31.6 CostObservation
+
+> **Source sections:** `CAP-1020`
 
 Actual consumption is an observation.
 
@@ -417,8 +431,10 @@ For example, browser CPU time may be unavailable or approximate.
 
 ---
 
-<!-- source: Continue Architecture Planning.md L86846–86879 | turn 77 | version 0.31 -->
+<!-- CAP-1021 | Continue Architecture Planning.md L86846–86879 | turn 77 | version 0.31 -->
 ## v0.31 — 31.7 ResourceLedger
+
+> **Source sections:** `CAP-1021`
 
 The ledger becomes the authoritative accounting structure.
 
@@ -453,8 +469,10 @@ The ledger should support multiple scopes.
 
 ---
 
-<!-- source: Continue Architecture Planning.md L86881–86933 | turn 77 | version 0.31 -->
+<!-- CAP-1022 | Continue Architecture Planning.md L86881–86933 | turn 77 | version 0.31 -->
 ## v0.31 — 31.8 Budget scopes
+
+> **Source sections:** `CAP-1022`
 
 Budgets can exist at several levels:
 
@@ -508,8 +526,10 @@ Acquire(w)
 
 ---
 
-<!-- source: Continue Architecture Planning.md L86935–86974 | turn 77 | version 0.31 -->
+<!-- CAP-1023 | Continue Architecture Planning.md L86935–86974 | turn 77 | version 0.31 -->
 ## v0.31 — 31.9 Hierarchical budget accounting
+
+> **Source sections:** `CAP-1023`
 
 This creates a budget tree:
 
@@ -550,8 +570,10 @@ A single physical request is one consumption event with multiple accounting view
 
 ---
 
-<!-- source: Continue Architecture Planning.md L86976–87027 | turn 77 | version 0.31 -->
+<!-- CAP-1024 | Continue Architecture Planning.md L86976–87027 | turn 77 | version 0.31 -->
 ## v0.31 — 31.10 Resource allocation
+
+> **Source sections:** `CAP-1024`
 
 Arbitration says:
 
@@ -604,8 +626,10 @@ class ResourceAllocator {
 
 ---
 
-<!-- source: Continue Architecture Planning.md L87029–87055 | turn 77 | version 0.31 -->
+<!-- CAP-1025 | Continue Architecture Planning.md L87029–87055 | turn 77 | version 0.31 -->
 ## v0.31 — 31.11 Allocation is not execution
+
+> **Source sections:** `CAP-1025`
 
 This distinction is important.
 
@@ -633,8 +657,10 @@ It must not automatically count as an actual request.
 
 ---
 
-<!-- source: Continue Architecture Planning.md L87057–87102 | turn 77 | version 0.31 -->
+<!-- CAP-1026 | Continue Architecture Planning.md L87057–87102 | turn 77 | version 0.31 -->
 ## v0.31 — 31.12 Partial consumption
+
+> **Source sections:** `CAP-1026`
 
 Real execution often consumes less or more than estimated.
 
@@ -681,8 +707,10 @@ The policy belongs to the resource allocator, not the arbitrator.
 
 ---
 
-<!-- source: Continue Architecture Planning.md L87104–87146 | turn 77 | version 0.31 -->
+<!-- CAP-1027 | Continue Architecture Planning.md L87104–87146 | turn 77 | version 0.31 -->
 ## v0.31 — 31.13 Cost overruns
+
+> **Source sections:** `CAP-1027`
 
 Define:
 
@@ -726,8 +754,10 @@ actual > estimated → overrun
 
 ---
 
-<!-- source: Continue Architecture Planning.md L87148–87205 | turn 77 | version 0.31 -->
+<!-- CAP-1028 | Continue Architecture Planning.md L87148–87205 | turn 77 | version 0.31 -->
 ## v0.31 — 31.14 Cost model
+
+> **Source sections:** `CAP-1028`
 
 The engine can eventually calculate:
 
@@ -786,8 +816,10 @@ becomes uninterpretable.
 
 ---
 
-<!-- source: Continue Architecture Planning.md L87207–87242 | turn 77 | version 0.31 -->
+<!-- CAP-1029 | Continue Architecture Planning.md L87207–87242 | turn 77 | version 0.31 -->
 ## v0.31 — 31.15 Cost is context-dependent
+
+> **Source sections:** `CAP-1029`
 
 A request may be cheap for one origin and expensive for another.
 
@@ -824,8 +856,10 @@ This follows the same contextual-prior principle established in v0.21.
 
 ---
 
-<!-- source: Continue Architecture Planning.md L87244–87286 | turn 77 | version 0.31 -->
+<!-- CAP-1030 | Continue Architecture Planning.md L87244–87286 | turn 77 | version 0.31 -->
 ## v0.31 — 31.16 Resource exhaustion
+
+> **Source sections:** `CAP-1030`
 
 The ledger needs explicit states.
 
@@ -869,8 +903,10 @@ provider unavailable
 
 ---
 
-<!-- source: Continue Architecture Planning.md L87288–87323 | turn 77 | version 0.31 -->
+<!-- CAP-1031 | Continue Architecture Planning.md L87288–87323 | turn 77 | version 0.31 -->
 ## v0.31 — 31.17 Budget exhaustion vs frontier exhaustion
+
+> **Source sections:** `CAP-1031`
 
 These must remain separate.
 
@@ -907,8 +943,10 @@ Budget exhaustion cannot support:
 
 ---
 
-<!-- source: Continue Architecture Planning.md L87325–87363 | turn 77 | version 0.31 -->
+<!-- CAP-1032 | Continue Architecture Planning.md L87325–87363 | turn 77 | version 0.31 -->
 ## v0.31 — 31.18 Resource reservation race
+
+> **Source sections:** `CAP-1032`
 
 Consider:
 
@@ -948,8 +986,10 @@ for every scope.
 
 ---
 
-<!-- source: Continue Architecture Planning.md L87365–87415 | turn 77 | version 0.31 -->
+<!-- CAP-1033 | Continue Architecture Planning.md L87365–87415 | turn 77 | version 0.31 -->
 ## v0.31 — 31.19 Settlement
+
+> **Source sections:** `CAP-1033`
 
 After execution:
 
@@ -1001,8 +1041,10 @@ A settlement record should retain:
 
 ---
 
-<!-- source: Continue Architecture Planning.md L87417–87459 | turn 77 | version 0.31 -->
+<!-- CAP-1034 | Continue Architecture Planning.md L87417–87459 | turn 77 | version 0.31 -->
 ## v0.31 — 31.20 Cost feedback
+
+> **Source sections:** `CAP-1034`
 
 Now the complete adaptive loop exists:
 
@@ -1046,8 +1088,10 @@ because the engine begins learning **operational economics**.
 
 ---
 
-<!-- source: Continue Architecture Planning.md L87461–87491 | turn 77 | version 0.31 -->
+<!-- CAP-1035 | Continue Architecture Planning.md L87461–87491 | turn 77 | version 0.31 -->
 ## v0.31 — 31.21 ResourceLedger events
+
+> **Source sections:** `CAP-1035`
 
 Add:
 
@@ -1079,8 +1123,10 @@ Every accounting transition becomes auditable.
 
 ---
 
-<!-- source: Continue Architecture Planning.md L87493–87536 | turn 77 | version 0.31 -->
+<!-- CAP-1036 | Continue Architecture Planning.md L87493–87536 | turn 77 | version 0.31 -->
 ## v0.31 — 31.22 Resource accounting and provenance
+
+> **Source sections:** `CAP-1036`
 
 A useful provenance chain is now:
 
@@ -1125,8 +1171,10 @@ This is exactly the kind of accountability needed for a trustworthy acquisition 
 
 ---
 
-<!-- source: Continue Architecture Planning.md L87648–87701 | turn 77 | version 0.31 -->
+<!-- CAP-1039 | Continue Architecture Planning.md L87648–87701 | turn 77 | version 0.31 -->
 ## v0.31 — 31.25 What v0.31 adds
+
+> **Source sections:** `CAP-1039`
 
 The architecture now has three distinct control layers:
 

@@ -6,46 +6,46 @@
 >
 > **Purpose:** Multi-context coordination, consistency models, conflict resolution, replication and event transport.
 
-## Contents
+## Source Sections
 
-- **v0.34 — Coordination Protocol & Distributed Consistency** — `Continue Architecture Planning.md` L90351–90396
-- **v0.34 — Distributed Consistency & Conflict Resolution** — `Continue Architecture Planning.md` L90408–90446
-- **v0.34 — 34.2 The Core Consistency Model** — `Continue Architecture Planning.md` L90500–90585
-- **v0.34 — 34.3 Optimistic Concurrency Control** — `Continue Architecture Planning.md` L90587–90651
-- **v0.34 — 34.4 Version ≠ Time** — `Continue Architecture Planning.md` L90653–90694
-- **v0.34 — 34.5 Event Metadata** — `Continue Architecture Planning.md` L90696–90744
-- **v0.34 — 34.6 Versioning + Fencing** — `Continue Architecture Planning.md` L90746–90806
-- **v0.34 — 34.7 Conflict Is Not One Thing** — `Continue Architecture Planning.md` L90808–90830
-- **v0.34 — Claim conflict** — `Continue Architecture Planning.md` L90832–90839
-- **v0.34 — Candidate conflict** — `Continue Architecture Planning.md` L90841–90848
-- **v0.34 — Classification conflict** — `Continue Architecture Planning.md` L90850–90857
-- **v0.34 — Coverage conflict** — `Continue Architecture Planning.md` L90859–90873
-- **v0.34 — Budget conflict** — `Continue Architecture Planning.md` L90875–90886
-- **v0.34 — 34.8 Conflict Record** — `Continue Architecture Planning.md` L90888–90952
-- **v0.34 — 34.9 Deterministic Conflict Resolver** — `Continue Architecture Planning.md` L90954–90985
-- **v0.34 — 34.10 Resolution Policies** — `Continue Architecture Planning.md` L90987–91018
-- **v0.34 — 34.11 Classification Conflict** — `Continue Architecture Planning.md` L91020–91068
-- **v0.34 — 34.12 Provenance Must Survive Resolution** — `Continue Architecture Planning.md` L91070–91112
-- **v0.34 — 34.13 Last-Write-Wins Is Not the Default** — `Continue Architecture Planning.md` L91114–91156
-- **v0.34 — 34.14 Append-Only Is Especially Powerful** — `Continue Architecture Planning.md` L91158–91197
-- **v0.34 — 34.15 Materialized State** — `Continue Architecture Planning.md` L91199–91256
-- **v0.34 — 34.16 State Digest** — `Continue Architecture Planning.md` L91258–91304
-- **v0.34 — 34.17 Conflict Detection Pipeline** — `Continue Architecture Planning.md` L91306–91344
-- **v0.34 — 34.18 Conflict Detection vs Conflict Resolution** — `Continue Architecture Planning.md` L91346–91374
-- **v0.34 — 34.19 Conflict Resolver Context** — `Continue Architecture Planning.md` L91376–91420
-- **v0.34 — 34.20 Resolution Event** — `Continue Architecture Planning.md` L91422–91457
-- **v0.34 — 34.21 Cross-Object Conflicts** — `Continue Architecture Planning.md` L91459–91496
-- **v0.34 — 34.22 Consistency Domains** — `Continue Architecture Planning.md` L91498–91549
-- **v0.34 — 34.23 Consistency Is Not Global Ordering** — `Continue Architecture Planning.md` L91551–91585
-- **v0.34 — 34.24 Independent Evidence** — `Continue Architecture Planning.md` L91587–91622
-- **v0.34 — Consistency** — `Continue Architecture Planning.md` L91670–91677
-- **v0.34 — Fencing** — `Continue Architecture Planning.md` L91679–91683
-- **v0.34 — Conflict** — `Continue Architecture Planning.md` L91685–91693
-- **v0.34 — Provenance** — `Continue Architecture Planning.md` L91695–91700
-- **v0.34 — Recovery** — `Continue Architecture Planning.md` L91702–91707
-- **v0.34 — Scalability** — `Continue Architecture Planning.md` L91709–91716
-- **v0.34 — 34.27 The Unified State Model** — `Continue Architecture Planning.md` L91718–91798
-- **v0.34 — Generic discovery** — `Continue Architecture Planning.md` L92103–92123
+- **v0.34 — Coordination Protocol & Distributed Consistency** — `CAP-1116` — `Continue Architecture Planning.md` L90351–90396
+- **v0.34 — Distributed Consistency & Conflict Resolution** — `CAP-1118` — `Continue Architecture Planning.md` L90408–90446
+- **v0.34 — 34.2 The Core Consistency Model** — `CAP-1120` — `Continue Architecture Planning.md` L90500–90585
+- **v0.34 — 34.3 Optimistic Concurrency Control** — `CAP-1121` — `Continue Architecture Planning.md` L90587–90651
+- **v0.34 — 34.4 Version ≠ Time** — `CAP-1122` — `Continue Architecture Planning.md` L90653–90694
+- **v0.34 — 34.5 Event Metadata** — `CAP-1123` — `Continue Architecture Planning.md` L90696–90744
+- **v0.34 — 34.6 Versioning + Fencing** — `CAP-1124` — `Continue Architecture Planning.md` L90746–90806
+- **v0.34 — 34.7 Conflict Is Not One Thing** — `CAP-1125` — `Continue Architecture Planning.md` L90808–90830
+- **v0.34 — Claim conflict** — `CAP-1126` — `Continue Architecture Planning.md` L90832–90839
+- **v0.34 — Candidate conflict** — `CAP-1127` — `Continue Architecture Planning.md` L90841–90848
+- **v0.34 — Classification conflict** — `CAP-1128` — `Continue Architecture Planning.md` L90850–90857
+- **v0.34 — Coverage conflict** — `CAP-1129` — `Continue Architecture Planning.md` L90859–90873
+- **v0.34 — Budget conflict** — `CAP-1130` — `Continue Architecture Planning.md` L90875–90886
+- **v0.34 — 34.8 Conflict Record** — `CAP-1131` — `Continue Architecture Planning.md` L90888–90952
+- **v0.34 — 34.9 Deterministic Conflict Resolver** — `CAP-1132` — `Continue Architecture Planning.md` L90954–90985
+- **v0.34 — 34.10 Resolution Policies** — `CAP-1133` — `Continue Architecture Planning.md` L90987–91018
+- **v0.34 — 34.11 Classification Conflict** — `CAP-1134` — `Continue Architecture Planning.md` L91020–91068
+- **v0.34 — 34.12 Provenance Must Survive Resolution** — `CAP-1135` — `Continue Architecture Planning.md` L91070–91112
+- **v0.34 — 34.13 Last-Write-Wins Is Not the Default** — `CAP-1136` — `Continue Architecture Planning.md` L91114–91156
+- **v0.34 — 34.14 Append-Only Is Especially Powerful** — `CAP-1137` — `Continue Architecture Planning.md` L91158–91197
+- **v0.34 — 34.15 Materialized State** — `CAP-1138` — `Continue Architecture Planning.md` L91199–91256
+- **v0.34 — 34.16 State Digest** — `CAP-1139` — `Continue Architecture Planning.md` L91258–91304
+- **v0.34 — 34.17 Conflict Detection Pipeline** — `CAP-1140` — `Continue Architecture Planning.md` L91306–91344
+- **v0.34 — 34.18 Conflict Detection vs Conflict Resolution** — `CAP-1141` — `Continue Architecture Planning.md` L91346–91374
+- **v0.34 — 34.19 Conflict Resolver Context** — `CAP-1142` — `Continue Architecture Planning.md` L91376–91420
+- **v0.34 — 34.20 Resolution Event** — `CAP-1143` — `Continue Architecture Planning.md` L91422–91457
+- **v0.34 — 34.21 Cross-Object Conflicts** — `CAP-1144` — `Continue Architecture Planning.md` L91459–91496
+- **v0.34 — 34.22 Consistency Domains** — `CAP-1145` — `Continue Architecture Planning.md` L91498–91549
+- **v0.34 — 34.23 Consistency Is Not Global Ordering** — `CAP-1146` — `Continue Architecture Planning.md` L91551–91585
+- **v0.34 — 34.24 Independent Evidence** — `CAP-1147` — `Continue Architecture Planning.md` L91587–91622
+- **v0.34 — Consistency** — `CAP-1150` — `Continue Architecture Planning.md` L91670–91677
+- **v0.34 — Fencing** — `CAP-1151` — `Continue Architecture Planning.md` L91679–91683
+- **v0.34 — Conflict** — `CAP-1152` — `Continue Architecture Planning.md` L91685–91693
+- **v0.34 — Provenance** — `CAP-1153` — `Continue Architecture Planning.md` L91695–91700
+- **v0.34 — Recovery** — `CAP-1154` — `Continue Architecture Planning.md` L91702–91707
+- **v0.34 — Scalability** — `CAP-1155` — `Continue Architecture Planning.md` L91709–91716
+- **v0.34 — 34.27 The Unified State Model** — `CAP-1156` — `Continue Architecture Planning.md` L91718–91798
+- **v0.34 — Generic discovery** — `CAP-1167` — `Continue Architecture Planning.md` L92103–92123
 
 ## Related Documents
 
@@ -56,8 +56,12 @@
 
 ---
 
-<!-- source: Continue Architecture Planning.md L90351–90396 | turn 81 | version 0.34 -->
+<!-- CAP-1116 | Continue Architecture Planning.md L90351–90396 | turn 81 | version 0.34 -->
 ## v0.34 — Coordination Protocol & Distributed Consistency
+
+> **Source sections:** `CAP-1116`
+>
+> [DOCUMENTATION REVIEW] Contradiction **C-03** ([Review Notes](../REVIEW-NOTES.md#c-03--))
 
 The next boundary is now visible.
 
@@ -104,8 +108,10 @@ The key principle for v0.34:
 
 > **Concurrent disagreement must become explicit state, never silent last-write-wins.**
 
-<!-- source: Continue Architecture Planning.md L90408–90446 | turn 83 | version 0.34 -->
+<!-- CAP-1118 | Continue Architecture Planning.md L90408–90446 | turn 83 | version 0.34 -->
 ## v0.34 — Distributed Consistency & Conflict Resolution
+
+> **Source sections:** `CAP-1118`
 
 v0.33 established **who owns work**.
 
@@ -145,8 +151,10 @@ The v0.34 principle is:
 
 ---
 
-<!-- source: Continue Architecture Planning.md L90500–90585 | turn 83 | version 0.34 -->
+<!-- CAP-1120 | Continue Architecture Planning.md L90500–90585 | turn 83 | version 0.34 -->
 ## v0.34 — 34.2 The Core Consistency Model
+
+> **Source sections:** `CAP-1120`
 
 Each mutable aggregate receives a monotonically increasing version.
 
@@ -233,8 +241,12 @@ overwrite version 8
 
 ---
 
-<!-- source: Continue Architecture Planning.md L90587–90651 | turn 83 | version 0.34 -->
+<!-- CAP-1121 | Continue Architecture Planning.md L90587–90651 | turn 83 | version 0.34 -->
 ## v0.34 — 34.3 Optimistic Concurrency Control
+
+> **Source sections:** `CAP-1121`
+>
+> [DOCUMENTATION REVIEW] Contradiction **C-03** ([Review Notes](../REVIEW-NOTES.md#c-03--))
 
 The primitive operation is effectively:
 
@@ -300,8 +312,10 @@ because wall-clock timestamps are not reliable concurrency ordering.
 
 ---
 
-<!-- source: Continue Architecture Planning.md L90653–90694 | turn 83 | version 0.34 -->
+<!-- CAP-1122 | Continue Architecture Planning.md L90653–90694 | turn 83 | version 0.34 -->
 ## v0.34 — 34.4 Version ≠ Time
+
+> **Source sections:** `CAP-1122`
 
 This distinction is important.
 
@@ -344,8 +358,10 @@ Therefore:
 
 ---
 
-<!-- source: Continue Architecture Planning.md L90696–90744 | turn 83 | version 0.34 -->
+<!-- CAP-1123 | Continue Architecture Planning.md L90696–90744 | turn 83 | version 0.34 -->
 ## v0.34 — 34.5 Event Metadata
+
+> **Source sections:** `CAP-1123`
 
 v0.32 introduced the durable event ledger.
 
@@ -395,8 +411,12 @@ Now the engine can answer:
 
 ---
 
-<!-- source: Continue Architecture Planning.md L90746–90806 | turn 83 | version 0.34 -->
+<!-- CAP-1124 | Continue Architecture Planning.md L90746–90806 | turn 83 | version 0.34 -->
 ## v0.34 — 34.6 Versioning + Fencing
+
+> **Source sections:** `CAP-1124`
+>
+> [DOCUMENTATION REVIEW] Contradiction **C-03** ([Review Notes](../REVIEW-NOTES.md#c-03--))
 
 v0.33 introduced fencing.
 
@@ -458,8 +478,10 @@ version check rejects
 
 ---
 
-<!-- source: Continue Architecture Planning.md L90808–90830 | turn 83 | version 0.34 -->
+<!-- CAP-1125 | Continue Architecture Planning.md L90808–90830 | turn 83 | version 0.34 -->
 ## v0.34 — 34.7 Conflict Is Not One Thing
+
+> **Source sections:** `CAP-1125`
 
 A generic `CONFLICT` state is insufficient.
 
@@ -483,8 +505,12 @@ const ConflictType = Object.freeze({
 
 Examples:
 
-<!-- source: Continue Architecture Planning.md L90832–90839 | turn 83 | version 0.34 -->
+<!-- CAP-1126 | Continue Architecture Planning.md L90832–90839 | turn 83 | version 0.34 -->
 ### v0.34 — Claim conflict
+
+> **Source sections:** `CAP-1126`
+>
+> [DOCUMENTATION REVIEW] Contradiction **C-03** ([Review Notes](../REVIEW-NOTES.md#c-03--))
 
 ```
 A claims work-17
@@ -493,8 +519,10 @@ B claims work-17
 
 Usually resolved by authoritative claim state.
 
-<!-- source: Continue Architecture Planning.md L90841–90848 | turn 83 | version 0.34 -->
+<!-- CAP-1127 | Continue Architecture Planning.md L90841–90848 | turn 83 | version 0.34 -->
 ### v0.34 — Candidate conflict
+
+> **Source sections:** `CAP-1127`
 
 ```
 A: candidate status = queued
@@ -503,8 +531,10 @@ B: candidate status = completed
 
 Requires transition validation.
 
-<!-- source: Continue Architecture Planning.md L90850–90857 | turn 83 | version 0.34 -->
+<!-- CAP-1128 | Continue Architecture Planning.md L90850–90857 | turn 83 | version 0.34 -->
 ### v0.34 — Classification conflict
+
+> **Source sections:** `CAP-1128`
 
 ```
 Classifier A → service-manual
@@ -513,8 +543,12 @@ Classifier B → parts-catalog
 
 This may be a **legitimate epistemic disagreement**, not a database error.
 
-<!-- source: Continue Architecture Planning.md L90859–90873 | turn 83 | version 0.34 -->
+<!-- CAP-1129 | Continue Architecture Planning.md L90859–90873 | turn 83 | version 0.34 -->
 ### v0.34 — Coverage conflict
+
+> **Source sections:** `CAP-1129`
+>
+> [DOCUMENTATION REVIEW] Contradiction **C-05** ([Review Notes](../REVIEW-NOTES.md#c-05--))
 
 ```
 Partition A
@@ -530,8 +564,10 @@ These values cannot simply be:
 
 because exploration may overlap.
 
-<!-- source: Continue Architecture Planning.md L90875–90886 | turn 83 | version 0.34 -->
+<!-- CAP-1130 | Continue Architecture Planning.md L90875–90886 | turn 83 | version 0.34 -->
 ### v0.34 — Budget conflict
+
+> **Source sections:** `CAP-1130`
 
 ```
 Worker A reserves 8 requests
@@ -544,8 +580,10 @@ This must be prevented atomically.
 
 ---
 
-<!-- source: Continue Architecture Planning.md L90888–90952 | turn 83 | version 0.34 -->
+<!-- CAP-1131 | Continue Architecture Planning.md L90888–90952 | turn 83 | version 0.34 -->
 ## v0.34 — 34.8 Conflict Record
+
+> **Source sections:** `CAP-1131`
 
 Conflicts become durable objects.
 
@@ -611,8 +649,10 @@ Unresolved is preferable to fabricated agreement.
 
 ---
 
-<!-- source: Continue Architecture Planning.md L90954–90985 | turn 83 | version 0.34 -->
+<!-- CAP-1132 | Continue Architecture Planning.md L90954–90985 | turn 83 | version 0.34 -->
 ## v0.34 — 34.9 Deterministic Conflict Resolver
+
+> **Source sections:** `CAP-1132`
 
 ```JavaScript
 class ConflictResolver {
@@ -645,8 +685,10 @@ policy.
 
 ---
 
-<!-- source: Continue Architecture Planning.md L90987–91018 | turn 83 | version 0.34 -->
+<!-- CAP-1133 | Continue Architecture Planning.md L90987–91018 | turn 83 | version 0.34 -->
 ## v0.34 — 34.10 Resolution Policies
+
+> **Source sections:** `CAP-1133`
 
 A useful initial matrix:
 
@@ -679,8 +721,10 @@ An epistemic conflict may not be.
 
 ---
 
-<!-- source: Continue Architecture Planning.md L91020–91068 | turn 83 | version 0.34 -->
+<!-- CAP-1134 | Continue Architecture Planning.md L91020–91068 | turn 83 | version 0.34 -->
 ## v0.34 — 34.11 Classification Conflict
+
+> **Source sections:** `CAP-1134`
 
 Consider:
 
@@ -730,8 +774,10 @@ Thus:
 
 ---
 
-<!-- source: Continue Architecture Planning.md L91070–91112 | turn 83 | version 0.34 -->
+<!-- CAP-1135 | Continue Architecture Planning.md L91070–91112 | turn 83 | version 0.34 -->
 ## v0.34 — 34.12 Provenance Must Survive Resolution
+
+> **Source sections:** `CAP-1135`
 
 Bad:
 
@@ -775,8 +821,10 @@ why was this state selected?
 
 ---
 
-<!-- source: Continue Architecture Planning.md L91114–91156 | turn 83 | version 0.34 -->
+<!-- CAP-1136 | Continue Architecture Planning.md L91114–91156 | turn 83 | version 0.34 -->
 ## v0.34 — 34.13 Last-Write-Wins Is Not the Default
+
+> **Source sections:** `CAP-1136`
 
 LWW can be useful for some explicitly declared fields.
 
@@ -820,8 +868,10 @@ Every mutable aggregate should have an explicit merge policy.
 
 ---
 
-<!-- source: Continue Architecture Planning.md L91158–91197 | turn 83 | version 0.34 -->
+<!-- CAP-1137 | Continue Architecture Planning.md L91158–91197 | turn 83 | version 0.34 -->
 ## v0.34 — 34.14 Append-Only Is Especially Powerful
+
+> **Source sections:** `CAP-1137`
 
 For evidence:
 
@@ -862,8 +912,10 @@ Append-only epistemic history
 
 ---
 
-<!-- source: Continue Architecture Planning.md L91199–91256 | turn 83 | version 0.34 -->
+<!-- CAP-1138 | Continue Architecture Planning.md L91199–91256 | turn 83 | version 0.34 -->
 ## v0.34 — 34.15 Materialized State
+
+> **Source sections:** `CAP-1138`
 
 The engine should treat current state as a projection.
 
@@ -922,8 +974,10 @@ compare state digest
 
 ---
 
-<!-- source: Continue Architecture Planning.md L91258–91304 | turn 83 | version 0.34 -->
+<!-- CAP-1139 | Continue Architecture Planning.md L91258–91304 | turn 83 | version 0.34 -->
 ## v0.34 — 34.16 State Digest
+
+> **Source sections:** `CAP-1139`
 
 Snapshots introduced in v0.32 can now carry deterministic state hashes.
 
@@ -971,8 +1025,10 @@ not silent repair.
 
 ---
 
-<!-- source: Continue Architecture Planning.md L91306–91344 | turn 83 | version 0.34 -->
+<!-- CAP-1140 | Continue Architecture Planning.md L91306–91344 | turn 83 | version 0.34 -->
 ## v0.34 — 34.17 Conflict Detection Pipeline
+
+> **Source sections:** `CAP-1140`
 
 The complete v0.34 pipeline:
 
@@ -1012,8 +1068,10 @@ Validate Expected Version
 
 ---
 
-<!-- source: Continue Architecture Planning.md L91346–91374 | turn 83 | version 0.34 -->
+<!-- CAP-1141 | Continue Architecture Planning.md L91346–91374 | turn 83 | version 0.34 -->
 ## v0.34 — 34.18 Conflict Detection vs Conflict Resolution
+
+> **Source sections:** `CAP-1141`
 
 Keep these separate.
 
@@ -1043,8 +1101,10 @@ from becoming the architecture.
 
 ---
 
-<!-- source: Continue Architecture Planning.md L91376–91420 | turn 83 | version 0.34 -->
+<!-- CAP-1142 | Continue Architecture Planning.md L91376–91420 | turn 83 | version 0.34 -->
 ## v0.34 — 34.19 Conflict Resolver Context
+
+> **Source sections:** `CAP-1142`
 
 A resolver should receive restricted context:
 
@@ -1090,8 +1150,10 @@ delete evidence
 
 ---
 
-<!-- source: Continue Architecture Planning.md L91422–91457 | turn 83 | version 0.34 -->
+<!-- CAP-1143 | Continue Architecture Planning.md L91422–91457 | turn 83 | version 0.34 -->
 ## v0.34 — 34.20 Resolution Event
+
+> **Source sections:** `CAP-1143`
 
 A resolution itself is an event.
 
@@ -1128,8 +1190,10 @@ is itself auditable.
 
 ---
 
-<!-- source: Continue Architecture Planning.md L91459–91496 | turn 83 | version 0.34 -->
+<!-- CAP-1144 | Continue Architecture Planning.md L91459–91496 | turn 83 | version 0.34 -->
 ## v0.34 — 34.21 Cross-Object Conflicts
+
+> **Source sections:** `CAP-1144`
 
 Some conflicts cannot be understood from one aggregate.
 
@@ -1168,8 +1232,10 @@ This is the same principle used for claims.
 
 ---
 
-<!-- source: Continue Architecture Planning.md L91498–91549 | turn 83 | version 0.34 -->
+<!-- CAP-1145 | Continue Architecture Planning.md L91498–91549 | turn 83 | version 0.34 -->
 ## v0.34 — 34.22 Consistency Domains
+
+> **Source sections:** `CAP-1145`
 
 v0.34 therefore introduces:
 
@@ -1222,8 +1288,10 @@ global lock
 
 ---
 
-<!-- source: Continue Architecture Planning.md L91551–91585 | turn 83 | version 0.34 -->
+<!-- CAP-1146 | Continue Architecture Planning.md L91551–91585 | turn 83 | version 0.34 -->
 ## v0.34 — 34.23 Consistency Is Not Global Ordering
+
+> **Source sections:** `CAP-1146`
 
 The engine should explicitly reject the assumption:
 
@@ -1259,8 +1327,10 @@ rather than pretending that wall-clock order is causality.
 
 ---
 
-<!-- source: Continue Architecture Planning.md L91587–91622 | turn 83 | version 0.34 -->
+<!-- CAP-1147 | Continue Architecture Planning.md L91587–91622 | turn 83 | version 0.34 -->
 ## v0.34 — 34.24 Independent Evidence
+
+> **Source sections:** `CAP-1147`
 
 This also connects back to v0.28.
 
@@ -1297,8 +1367,10 @@ This is important for completeness and negative evidence.
 
 ---
 
-<!-- source: Continue Architecture Planning.md L91670–91677 | turn 83 | version 0.34 -->
+<!-- CAP-1150 | Continue Architecture Planning.md L91670–91677 | turn 83 | version 0.34 -->
 ### v0.34 — Consistency
+
+> **Source sections:** `CAP-1150`
 
 1. Every mutable aggregate has an authoritative version.
 2. A mutation must declare its expected version.
@@ -1307,15 +1379,21 @@ This is important for completeness and negative evidence.
 5. Version regression is invalid.
 6. Event sequence gaps are detectable.
 
-<!-- source: Continue Architecture Planning.md L91679–91683 | turn 83 | version 0.34 -->
+<!-- CAP-1151 | Continue Architecture Planning.md L91679–91683 | turn 83 | version 0.34 -->
 ### v0.34 — Fencing
+
+> **Source sections:** `CAP-1151`
+>
+> [DOCUMENTATION REVIEW] Contradiction **C-03** ([Review Notes](../REVIEW-NOTES.md#c-03--))
 
 7. Fencing prevents stale workers from mutating current state.
 8. Versioning prevents stale state from producing valid-looking mutations.
 9. Fencing and versioning protect different failure modes.
 
-<!-- source: Continue Architecture Planning.md L91685–91693 | turn 83 | version 0.34 -->
+<!-- CAP-1152 | Continue Architecture Planning.md L91685–91693 | turn 83 | version 0.34 -->
 ### v0.34 — Conflict
+
+> **Source sections:** `CAP-1152`
 
 10. Concurrent disagreement becomes explicit state.
 11. Conflict records are immutable.
@@ -1325,24 +1403,30 @@ This is important for completeness and negative evidence.
 15. Merge policy is explicit.
 16. Last-write-wins is never implicit.
 
-<!-- source: Continue Architecture Planning.md L91695–91700 | turn 83 | version 0.34 -->
+<!-- CAP-1153 | Continue Architecture Planning.md L91695–91700 | turn 83 | version 0.34 -->
 ### v0.34 — Provenance
+
+> **Source sections:** `CAP-1153`
 
 17. Every resolution references the conflicting inputs.
 18. Provenance is append-only.
 19. Duplicate execution does not automatically create independent evidence.
 20. Resolution cannot increase epistemic strength without evidence.
 
-<!-- source: Continue Architecture Planning.md L91702–91707 | turn 83 | version 0.34 -->
+<!-- CAP-1154 | Continue Architecture Planning.md L91702–91707 | turn 83 | version 0.34 -->
 ### v0.34 — Recovery
+
+> **Source sections:** `CAP-1154`
 
 21. Materialized state remains reconstructable from the event journal.
 22. Snapshot digests detect divergence.
 23. Recovery cannot fabricate missing events.
 24. Repairs produce explicit events.
 
-<!-- source: Continue Architecture Planning.md L91709–91716 | turn 83 | version 0.34 -->
+<!-- CAP-1155 | Continue Architecture Planning.md L91709–91716 | turn 83 | version 0.34 -->
 ### v0.34 — Scalability
+
+> **Source sections:** `CAP-1155`
 
 25. Consistency scope is no broader than necessary.
 26. Global serialization is avoided unless the invariant requires it.
@@ -1351,8 +1435,10 @@ This is important for completeness and negative evidence.
 
 ---
 
-<!-- source: Continue Architecture Planning.md L91718–91798 | turn 83 | version 0.34 -->
+<!-- CAP-1156 | Continue Architecture Planning.md L91718–91798 | turn 83 | version 0.34 -->
 ## v0.34 — 34.27 The Unified State Model
+
+> **Source sections:** `CAP-1156`
 
 At this point the architecture is becoming:
 
@@ -1434,8 +1520,10 @@ v0.34  How do concurrent states converge?
 
 ---
 
-<!-- source: Continue Architecture Planning.md L92103–92123 | turn 85 | version 0.34 -->
+<!-- CAP-1167 | Continue Architecture Planning.md L92103–92123 | turn 85 | version 0.34 -->
 ### v0.34 — Generic discovery
+
+> **Source sections:** `CAP-1167`
 
 ```
 resource space

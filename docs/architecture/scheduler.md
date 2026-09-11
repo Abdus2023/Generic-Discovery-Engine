@@ -6,19 +6,19 @@
 >
 > **Purpose:** Scheduling: priority, retry and backoff, fairness, aging, starvation and arbitration decisions.
 
-## Contents
+## Source Sections
 
-- **11. Don't immediately discard failed candidates** — `Userscript Discovery Prototype.md` L573–615
-- **12. Adaptive retry** — `Userscript Discovery Prototype.md` L617–646
-- **13. Scheduling becomes important** — `Userscript Discovery Prototype.md` L648–676
-- **39. A practical scheduler** — `Userscript Discovery Prototype.md` L1802–1829
-- **v0.13 — 2. Two schedulers, not one** — `Continue Architecture Planning.md` L59548–59596
-- **v0.13 — 10. Source scheduling** — `Continue Architecture Planning.md` L59914–59948
-- **v0.13 — 11. Fairness** — `Continue Architecture Planning.md` L59950–59994
-- **v0.15 — 11. WorkScheduler** — `Continue Architecture Planning.md` L62530–62568
-- **v0.15 — 12. Priority starvation** — `Continue Architecture Planning.md` L62570–62597
-- **v0.15 — 13. Priority aging** — `Continue Architecture Planning.md` L62599–62640
-- **v0.15 — 27. Scheduled work** — `Continue Architecture Planning.md` L63182–63219
+- **11. Don't immediately discard failed candidates** — `USP-020` — `Userscript Discovery Prototype.md` L573–615
+- **12. Adaptive retry** — `USP-021` — `Userscript Discovery Prototype.md` L617–646
+- **13. Scheduling becomes important** — `USP-022` — `Userscript Discovery Prototype.md` L648–676
+- **39. A practical scheduler** — `USP-062` — `Userscript Discovery Prototype.md` L1802–1829
+- **v0.13 — 2. Two schedulers, not one** — `CAP-192` — `Continue Architecture Planning.md` L59548–59596
+- **v0.13 — 10. Source scheduling** — `CAP-200` — `Continue Architecture Planning.md` L59914–59948
+- **v0.13 — 11. Fairness** — `CAP-201` — `Continue Architecture Planning.md` L59950–59994
+- **v0.15 — 11. WorkScheduler** — `CAP-284` — `Continue Architecture Planning.md` L62530–62568
+- **v0.15 — 12. Priority starvation** — `CAP-285` — `Continue Architecture Planning.md` L62570–62597
+- **v0.15 — 13. Priority aging** — `CAP-286` — `Continue Architecture Planning.md` L62599–62640
+- **v0.15 — 27. Scheduled work** — `CAP-300` — `Continue Architecture Planning.md` L63182–63219
 
 ## Related Documents
 
@@ -29,8 +29,10 @@
 
 ---
 
-<!-- source: Userscript Discovery Prototype.md L573–615 | turn 5 | version ? -->
+<!-- USP-020 | Userscript Discovery Prototype.md L573–615 | turn 5 | version ? -->
 ## 11. Don't immediately discard failed candidates
+
+> **Source sections:** `USP-020`
 
 A failed demodulation attempt can mean several things:
 
@@ -74,8 +76,10 @@ suggests that the frequency is probably interesting, but the current physical-la
 
 ---
 
-<!-- source: Userscript Discovery Prototype.md L617–646 | turn 5 | version ? -->
+<!-- USP-021 | Userscript Discovery Prototype.md L617–646 | turn 5 | version ? -->
 ## 12. Adaptive retry
+
+> **Source sections:** `USP-021`
 
 The scanner can then expand locally:
 
@@ -106,8 +110,10 @@ This is better than globally trying every combination.
 
 ---
 
-<!-- source: Userscript Discovery Prototype.md L648–676 | turn 5 | version ? -->
+<!-- USP-022 | Userscript Discovery Prototype.md L648–676 | turn 5 | version ? -->
 ## 13. Scheduling becomes important
+
+> **Source sections:** `USP-022`
 
 You can give every pending candidate a priority:
 
@@ -137,8 +143,10 @@ This turns blind scanning into an **active search algorithm**.
 
 ---
 
-<!-- source: Userscript Discovery Prototype.md L1802–1829 | turn 11 | version ? -->
+<!-- USP-062 | Userscript Discovery Prototype.md L1802–1829 | turn 11 | version ? -->
 ## 39. A practical scheduler
+
+> **Source sections:** `USP-062`
 
 The scheduler can maintain three collections:
 
@@ -167,8 +175,10 @@ That gives you a principled way to choose the next candidate.
 
 ---
 
-<!-- source: Continue Architecture Planning.md L59548–59596 | turn 39 | version 0.13 -->
+<!-- CAP-192 | Continue Architecture Planning.md L59548–59596 | turn 39 | version 0.13 -->
 ## v0.13 — 2. Two schedulers, not one
+
+> **Source sections:** `CAP-192`
 
 This is an important distinction.
 
@@ -218,8 +228,10 @@ A low-priority source can produce an extremely valuable candidate.
 
 ---
 
-<!-- source: Continue Architecture Planning.md L59914–59948 | turn 39 | version 0.13 -->
+<!-- CAP-200 | Continue Architecture Planning.md L59914–59948 | turn 39 | version 0.13 -->
 ## v0.13 — 10. Source scheduling
+
+> **Source sections:** `CAP-200`
 
 The scheduler can score tasks:
 
@@ -255,8 +267,10 @@ The important architectural point is:
 
 ---
 
-<!-- source: Continue Architecture Planning.md L59950–59994 | turn 39 | version 0.13 -->
+<!-- CAP-201 | Continue Architecture Planning.md L59950–59994 | turn 39 | version 0.13 -->
 ## v0.13 — 11. Fairness
+
+> **Source sections:** `CAP-201`
 
 Pure priority scheduling has a failure mode:
 
@@ -302,8 +316,10 @@ The controller can later support both.
 
 ---
 
-<!-- source: Continue Architecture Planning.md L62530–62568 | turn 43 | version 0.15 -->
+<!-- CAP-284 | Continue Architecture Planning.md L62530–62568 | turn 43 | version 0.15 -->
 ## v0.15 — 11. WorkScheduler
+
+> **Source sections:** `CAP-284`
 
 The scheduler can now operate over the common envelope.
 
@@ -343,8 +359,10 @@ But a pure priority queue introduces a problem.
 
 ---
 
-<!-- source: Continue Architecture Planning.md L62570–62597 | turn 43 | version 0.15 -->
+<!-- CAP-285 | Continue Architecture Planning.md L62570–62597 | turn 43 | version 0.15 -->
 ## v0.15 — 12. Priority starvation
+
+> **Source sections:** `CAP-285`
 
 Suppose:
 
@@ -373,8 +391,10 @@ Therefore:
 
 ---
 
-<!-- source: Continue Architecture Planning.md L62599–62640 | turn 43 | version 0.15 -->
+<!-- CAP-286 | Continue Architecture Planning.md L62599–62640 | turn 43 | version 0.15 -->
 ## v0.15 — 13. Priority aging
+
+> **Source sections:** `CAP-286`
 
 One solution:
 
@@ -417,8 +437,10 @@ must not make lower-priority work permanently unreachable.
 
 ---
 
-<!-- source: Continue Architecture Planning.md L63182–63219 | turn 43 | version 0.15 -->
+<!-- CAP-300 | Continue Architecture Planning.md L63182–63219 | turn 43 | version 0.15 -->
 ## v0.15 — 27. Scheduled work
+
+> **Source sections:** `CAP-300`
 
 Retries introduce another state:
 

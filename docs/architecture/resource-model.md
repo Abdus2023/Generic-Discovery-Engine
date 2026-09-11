@@ -1,94 +1,94 @@
 # Resource, Representation and Revision Model
 
-> **Status:** DESIGNED
+> **Status:** OPEN
 >
 > **Source:** `Continue Architecture Planning.md`; `Userscript Discovery Prototype.md`
 >
 > **Purpose:** Resources, locators, representations, artifacts, identity resolution and revision detection.
 
-## Contents
+## Source Sections
 
-- **21. Handle disappearing multiplexes** — `Userscript Discovery Prototype.md` L993–1023
-- **v0.17 — ResourceGraph + Identity Resolution** — `Continue Architecture Planning.md` L65216–65240
-- **v0.17 — ResourceGraph + Identity Resolution** — `Continue Architecture Planning.md` L65252–65295
-- **v0.17 — 1. The core problem** — `Continue Architecture Planning.md` L65297–65336
-- **v0.17 — 2. Resource identity must become graph-based** — `Continue Architecture Planning.md` L65338–65371
-- **v0.17 — 3. Candidate vs Resource vs Locator** — `Continue Architecture Planning.md` L65373–65375
-- **v0.17 — Candidate** — `Continue Architecture Planning.md` L65377–65385
-- **v0.17 — Locator** — `Continue Architecture Planning.md` L65387–65395
-- **v0.17 — Resource** — `Continue Architecture Planning.md` L65397–65429
-- **v0.17 — 4. Why not simply canonicalize everything?** — `Continue Architecture Planning.md` L65431–65477
-- **v0.17 — 5. Locator** — `Continue Architecture Planning.md` L65479–65526
-- **v0.17 — 6. Resource** — `Continue Architecture Planning.md` L65528–65570
-- **v0.17 — 7. Resource relationships** — `Continue Architecture Planning.md` L65572–65613
-- **v0.17 — 8. Redirects** — `Continue Architecture Planning.md` L65615–65653
-- **v0.17 — 9. Redirect chain** — `Continue Architecture Planning.md` L65655–65693
-- **v0.17 — 10. Content fingerprints** — `Continue Architecture Planning.md` L65695–65726
-- **v0.17 — 11. Same content does not prove same resource** — `Continue Architecture Planning.md` L65728–65775
-- **v0.17 — 12. Representation identity** — `Continue Architecture Planning.md` L65777–65814
-- **v0.17 — 14. IdentityResolver** — `Continue Architecture Planning.md` L65850–65890
-- **v0.17 — 15. Identity confidence should be relational** — `Continue Architecture Planning.md` L65892–65916
-- **v0.17 — 16. Identity classes** — `Continue Architecture Planning.md` L65918–65952
-- **v0.17 — 17. No destructive merges** — `Continue Architecture Planning.md` L65954–65990
-- **v0.17 — 18. ResourceGraph** — `Continue Architecture Planning.md` L65992–66040
-- **v0.17 — 19. Graph edge contract** — `Continue Architecture Planning.md` L66042–66080
-- **v0.17 — 20. Identity resolution pipeline** — `Continue Architecture Planning.md` L66082–66119
-- **v0.17 — 21. Canonical URL is still important** — `Continue Architecture Planning.md` L66121–66167
-- **v0.17 — 23. Identity resolution must be monotonic where possible** — `Continue Architecture Planning.md` L66197–66235
-- **v0.17 — 24. Resource revisions** — `Continue Architecture Planning.md` L66237–66274
-- **v0.17 — 25. Revision object** — `Continue Architecture Planning.md` L66276–66303
-- **v0.17 — 26. ResourceGraph vs KnowledgeBase** — `Continue Architecture Planning.md` L66305–66323
-- **v0.17 — What URLs identify this resource?** — `Continue Architecture Planning.md` L66329–66333
-- **v0.17 — Where was it discovered?** — `Continue Architecture Planning.md` L66335–66342
-- **v0.17 — What URLs redirect to it?** — `Continue Architecture Planning.md` L66344–66348
-- **v0.17 — Which URLs have identical observed bytes?** — `Continue Architecture Planning.md` L66350–66354
-- **v0.17 — Has this resource changed?** — `Continue Architecture Planning.md` L66356–66362
-- **v0.17 — Why do we believe two URLs are related?** — `Continue Architecture Planning.md` L66364–66378
-- **v0.17 — 28. Resource graph example** — `Continue Architecture Planning.md` L66380–66420
-- **v0.17 — Locator preservation** — `Continue Architecture Planning.md` L66452–66457
-- **v0.17 — No destructive merge** — `Continue Architecture Planning.md` L66459–66464
-- **v0.17 — Fingerprint independence** — `Continue Architecture Planning.md` L66466–66471
-- **v0.17 — Redirect independence** — `Continue Architecture Planning.md` L66473–66478
-- **v0.17 — Revision preservation** — `Continue Architecture Planning.md` L66487–66492
-- **v0.17 — Canonicalization transparency** — `Continue Architecture Planning.md` L66494–66501
-- **v0.17 — 33. The important transition** — `Continue Architecture Planning.md` L66608–66651
-- **v0.19 — Resource Representation & Revision Model** — `Continue Architecture Planning.md` L68083–68147
-- **v0.19 — Resource Representation + Artifact + Revision Model** — `Continue Architecture Planning.md` L68159–68177
-- **v0.19 — 19.1 The Core Distinction** — `Continue Architecture Planning.md` L68179–68207
-- **v0.19 — Resource** — `Continue Architecture Planning.md` L68209–68217
-- **v0.19 — Representation** — `Continue Architecture Planning.md` L68219–68228
-- **v0.19 — Artifact** — `Continue Architecture Planning.md` L68230–68237
-- **v0.19 — 19.2 Why Resource → Artifact Is Wrong** — `Continue Architecture Planning.md` L68252–68300
-- **v0.19 — 19.3 New Data Model** — `Continue Architecture Planning.md` L68302–68417
-- **v0.19 — 19.4 The Complete Identity Chain** — `Continue Architecture Planning.md` L68419–68463
-- **v0.19 — 19.5 Representation Is Not Just MIME** — `Continue Architecture Planning.md` L68465–68516
-- **v0.19 — 19.6 Representation Relations** — `Continue Architecture Planning.md` L68518–68543
-- **v0.19 — 19.7 Artifact Identity** — `Continue Architecture Planning.md` L68545–68591
-- **v0.19 — 19.8 Content Equivalence** — `Continue Architecture Planning.md` L68593–68636
-- **v0.19 — 19.9 Revision Detection** — `Continue Architecture Planning.md` L68638–68678
-- **v0.19 — 19.10 Revision Detection Is Not Always Proof of Semantic Revision** — `Continue Architecture Planning.md` L68680–68729
-- **v0.19 — 19.11 Revision Evidence** — `Continue Architecture Planning.md` L68731–68772
-- **v0.19 — 19.12 HTTP Validators Become Evidence** — `Continue Architecture Planning.md` L68774–68809
-- **v0.19 — 19.15 Resource State vs Artifact State** — `Continue Architecture Planning.md` L68904–68935
-- **v0.19 — Resource state** — `Continue Architecture Planning.md` L68937–68945
-- **v0.19 — Artifact state** — `Continue Architecture Planning.md` L68947–68955
-- **v0.19 — 19.16 ResourceGraph v0.19** — `Continue Architecture Planning.md` L68971–69004
-- **v0.19 — 19.17 ResourceGraph API** — `Continue Architecture Planning.md` L69006–69073
-- **v0.19 — 19.18 Artifact Deduplication** — `Continue Architecture Planning.md` L69075–69087
-- **v0.19 — Locator deduplication** — `Continue Architecture Planning.md` L69089–69095
-- **v0.19 — Artifact deduplication** — `Continue Architecture Planning.md` L69097–69127
-- **v0.19 — 19.19 Content-Addressed Storage** — `Continue Architecture Planning.md` L69129–69181
-- **v0.19 — 19.21 Independent Confirmation** — `Continue Architecture Planning.md` L69222–69271
-- **v0.19 — 19.22 Resource Confidence** — `Continue Architecture Planning.md` L69273–69310
-- **v0.19 — 19.23 Example** — `Continue Architecture Planning.md` L69312–69318
-- **v0.19 — Step 1 — Locator** — `Continue Architecture Planning.md` L69320–69325
-- **v0.19 — Step 2 — Resource** — `Continue Architecture Planning.md` L69327–69331
-- **v0.19 — Step 4 — Artifact** — `Continue Architecture Planning.md` L69341–69346
-- **v0.19 — Step 5 — Representation** — `Continue Architecture Planning.md` L69348–69354
-- **v0.19 — Step 6 — Classification** — `Continue Architecture Planning.md` L69356–69361
-- **v0.19 — Step 7 — Revision** — `Continue Architecture Planning.md` L69363–69397
-- **v0.19 — 19.24 A More Precise End-to-End Pipeline** — `Continue Architecture Planning.md` L69399–69452
-- **v0.19 — 19.27 What v0.19 Gives Us** — `Continue Architecture Planning.md` L69569–69657
+- **21. Handle disappearing multiplexes** — `USP-036` — `Userscript Discovery Prototype.md` L993–1023
+- **v0.17 — ResourceGraph + Identity Resolution** — `CAP-367` — `Continue Architecture Planning.md` L65216–65240
+- **v0.17 — ResourceGraph + Identity Resolution** — `CAP-369` — `Continue Architecture Planning.md` L65252–65295
+- **v0.17 — 1. The core problem** — `CAP-370` — `Continue Architecture Planning.md` L65297–65336
+- **v0.17 — 2. Resource identity must become graph-based** — `CAP-371` — `Continue Architecture Planning.md` L65338–65371
+- **v0.17 — 3. Candidate vs Resource vs Locator** — `CAP-372` — `Continue Architecture Planning.md` L65373–65375
+- **v0.17 — Candidate** — `CAP-373` — `Continue Architecture Planning.md` L65377–65385
+- **v0.17 — Locator** — `CAP-374` — `Continue Architecture Planning.md` L65387–65395
+- **v0.17 — Resource** — `CAP-375` — `Continue Architecture Planning.md` L65397–65429
+- **v0.17 — 4. Why not simply canonicalize everything?** — `CAP-376` — `Continue Architecture Planning.md` L65431–65477
+- **v0.17 — 5. Locator** — `CAP-377` — `Continue Architecture Planning.md` L65479–65526
+- **v0.17 — 6. Resource** — `CAP-378` — `Continue Architecture Planning.md` L65528–65570
+- **v0.17 — 7. Resource relationships** — `CAP-379` — `Continue Architecture Planning.md` L65572–65613
+- **v0.17 — 8. Redirects** — `CAP-380` — `Continue Architecture Planning.md` L65615–65653
+- **v0.17 — 9. Redirect chain** — `CAP-381` — `Continue Architecture Planning.md` L65655–65693
+- **v0.17 — 10. Content fingerprints** — `CAP-382` — `Continue Architecture Planning.md` L65695–65726
+- **v0.17 — 11. Same content does not prove same resource** — `CAP-383` — `Continue Architecture Planning.md` L65728–65775
+- **v0.17 — 12. Representation identity** — `CAP-384` — `Continue Architecture Planning.md` L65777–65814
+- **v0.17 — 14. IdentityResolver** — `CAP-386` — `Continue Architecture Planning.md` L65850–65890
+- **v0.17 — 15. Identity confidence should be relational** — `CAP-387` — `Continue Architecture Planning.md` L65892–65916
+- **v0.17 — 16. Identity classes** — `CAP-388` — `Continue Architecture Planning.md` L65918–65952
+- **v0.17 — 17. No destructive merges** — `CAP-389` — `Continue Architecture Planning.md` L65954–65990
+- **v0.17 — 18. ResourceGraph** — `CAP-390` — `Continue Architecture Planning.md` L65992–66040
+- **v0.17 — 19. Graph edge contract** — `CAP-391` — `Continue Architecture Planning.md` L66042–66080
+- **v0.17 — 20. Identity resolution pipeline** — `CAP-392` — `Continue Architecture Planning.md` L66082–66119
+- **v0.17 — 21. Canonical URL is still important** — `CAP-393` — `Continue Architecture Planning.md` L66121–66167
+- **v0.17 — 23. Identity resolution must be monotonic where possible** — `CAP-395` — `Continue Architecture Planning.md` L66197–66235
+- **v0.17 — 24. Resource revisions** — `CAP-396` — `Continue Architecture Planning.md` L66237–66274
+- **v0.17 — 25. Revision object** — `CAP-397` — `Continue Architecture Planning.md` L66276–66303
+- **v0.17 — 26. ResourceGraph vs KnowledgeBase** — `CAP-398` — `Continue Architecture Planning.md` L66305–66323
+- **v0.17 — What URLs identify this resource?** — `CAP-400` — `Continue Architecture Planning.md` L66329–66333
+- **v0.17 — Where was it discovered?** — `CAP-401` — `Continue Architecture Planning.md` L66335–66342
+- **v0.17 — What URLs redirect to it?** — `CAP-402` — `Continue Architecture Planning.md` L66344–66348
+- **v0.17 — Which URLs have identical observed bytes?** — `CAP-403` — `Continue Architecture Planning.md` L66350–66354
+- **v0.17 — Has this resource changed?** — `CAP-404` — `Continue Architecture Planning.md` L66356–66362
+- **v0.17 — Why do we believe two URLs are related?** — `CAP-405` — `Continue Architecture Planning.md` L66364–66378
+- **v0.17 — 28. Resource graph example** — `CAP-406` — `Continue Architecture Planning.md` L66380–66420
+- **v0.17 — Locator preservation** — `CAP-409` — `Continue Architecture Planning.md` L66452–66457
+- **v0.17 — No destructive merge** — `CAP-410` — `Continue Architecture Planning.md` L66459–66464
+- **v0.17 — Fingerprint independence** — `CAP-411` — `Continue Architecture Planning.md` L66466–66471
+- **v0.17 — Redirect independence** — `CAP-412` — `Continue Architecture Planning.md` L66473–66478
+- **v0.17 — Revision preservation** — `CAP-414` — `Continue Architecture Planning.md` L66487–66492
+- **v0.17 — Canonicalization transparency** — `CAP-415` — `Continue Architecture Planning.md` L66494–66501
+- **v0.17 — 33. The important transition** — `CAP-418` — `Continue Architecture Planning.md` L66608–66651
+- **v0.19 — Resource Representation & Revision Model** — `CAP-457` — `Continue Architecture Planning.md` L68083–68147
+- **v0.19 — Resource Representation + Artifact + Revision Model** — `CAP-459` — `Continue Architecture Planning.md` L68159–68177
+- **v0.19 — 19.1 The Core Distinction** — `CAP-460` — `Continue Architecture Planning.md` L68179–68207
+- **v0.19 — Resource** — `CAP-461` — `Continue Architecture Planning.md` L68209–68217
+- **v0.19 — Representation** — `CAP-462` — `Continue Architecture Planning.md` L68219–68228
+- **v0.19 — Artifact** — `CAP-463` — `Continue Architecture Planning.md` L68230–68237
+- **v0.19 — 19.2 Why Resource → Artifact Is Wrong** — `CAP-465` — `Continue Architecture Planning.md` L68252–68300
+- **v0.19 — 19.3 New Data Model** — `CAP-466` — `Continue Architecture Planning.md` L68302–68417
+- **v0.19 — 19.4 The Complete Identity Chain** — `CAP-467` — `Continue Architecture Planning.md` L68419–68463
+- **v0.19 — 19.5 Representation Is Not Just MIME** — `CAP-468` — `Continue Architecture Planning.md` L68465–68516
+- **v0.19 — 19.6 Representation Relations** — `CAP-469` — `Continue Architecture Planning.md` L68518–68543
+- **v0.19 — 19.7 Artifact Identity** — `CAP-470` — `Continue Architecture Planning.md` L68545–68591
+- **v0.19 — 19.8 Content Equivalence** — `CAP-471` — `Continue Architecture Planning.md` L68593–68636
+- **v0.19 — 19.9 Revision Detection** — `CAP-472` — `Continue Architecture Planning.md` L68638–68678
+- **v0.19 — 19.10 Revision Detection Is Not Always Proof of Semantic Revision** — `CAP-473` — `Continue Architecture Planning.md` L68680–68729
+- **v0.19 — 19.11 Revision Evidence** — `CAP-474` — `Continue Architecture Planning.md` L68731–68772
+- **v0.19 — 19.12 HTTP Validators Become Evidence** — `CAP-475` — `Continue Architecture Planning.md` L68774–68809
+- **v0.19 — 19.15 Resource State vs Artifact State** — `CAP-478` — `Continue Architecture Planning.md` L68904–68935
+- **v0.19 — Resource state** — `CAP-479` — `Continue Architecture Planning.md` L68937–68945
+- **v0.19 — Artifact state** — `CAP-480` — `Continue Architecture Planning.md` L68947–68955
+- **v0.19 — 19.16 ResourceGraph v0.19** — `CAP-482` — `Continue Architecture Planning.md` L68971–69004
+- **v0.19 — 19.17 ResourceGraph API** — `CAP-483` — `Continue Architecture Planning.md` L69006–69073
+- **v0.19 — 19.18 Artifact Deduplication** — `CAP-484` — `Continue Architecture Planning.md` L69075–69087
+- **v0.19 — Locator deduplication** — `CAP-485` — `Continue Architecture Planning.md` L69089–69095
+- **v0.19 — Artifact deduplication** — `CAP-486` — `Continue Architecture Planning.md` L69097–69127
+- **v0.19 — 19.19 Content-Addressed Storage** — `CAP-487` — `Continue Architecture Planning.md` L69129–69181
+- **v0.19 — 19.21 Independent Confirmation** — `CAP-489` — `Continue Architecture Planning.md` L69222–69271
+- **v0.19 — 19.22 Resource Confidence** — `CAP-490` — `Continue Architecture Planning.md` L69273–69310
+- **v0.19 — 19.23 Example** — `CAP-491` — `Continue Architecture Planning.md` L69312–69318
+- **v0.19 — Step 1 — Locator** — `CAP-492` — `Continue Architecture Planning.md` L69320–69325
+- **v0.19 — Step 2 — Resource** — `CAP-493` — `Continue Architecture Planning.md` L69327–69331
+- **v0.19 — Step 4 — Artifact** — `CAP-495` — `Continue Architecture Planning.md` L69341–69346
+- **v0.19 — Step 5 — Representation** — `CAP-496` — `Continue Architecture Planning.md` L69348–69354
+- **v0.19 — Step 6 — Classification** — `CAP-497` — `Continue Architecture Planning.md` L69356–69361
+- **v0.19 — Step 7 — Revision** — `CAP-498` — `Continue Architecture Planning.md` L69363–69397
+- **v0.19 — 19.24 A More Precise End-to-End Pipeline** — `CAP-499` — `Continue Architecture Planning.md` L69399–69452
+- **v0.19 — 19.27 What v0.19 Gives Us** — `CAP-510` — `Continue Architecture Planning.md` L69569–69657
 
 ## Related Documents
 
@@ -99,8 +99,10 @@
 
 ---
 
-<!-- source: Userscript Discovery Prototype.md L993–1023 | turn 7 | version ? -->
+<!-- USP-036 | Userscript Discovery Prototype.md L993–1023 | turn 7 | version ? -->
 ## 21. Handle disappearing multiplexes
+
+> **Source sections:** `USP-036`
 
 Discovery should also be able to represent negative information.
 
@@ -132,8 +134,12 @@ That prevents transient reception problems from being interpreted as network cha
 
 ---
 
-<!-- source: Continue Architecture Planning.md L65216–65240 | turn 45 | version 0.17 -->
+<!-- CAP-367 | Continue Architecture Planning.md L65216–65240 | turn 45 | version 0.17 -->
 ## v0.17 — ResourceGraph + Identity Resolution
+
+> **Source sections:** `CAP-367`
+>
+> [DOCUMENTATION REVIEW] Contradiction **C-04** ([Review Notes](../REVIEW-NOTES.md#c-04--))
 
 The central problem will be:
 
@@ -159,8 +165,12 @@ The central problem will be:
 
 That is where canonical URLs, redirects, content fingerprints, aliases, mirrors, revisions, MIME identity, and conflicting observations can finally be modeled without abusing the candidate model.
 
-<!-- source: Continue Architecture Planning.md L65252–65295 | turn 47 | version 0.17 -->
+<!-- CAP-369 | Continue Architecture Planning.md L65252–65295 | turn 47 | version 0.17 -->
 ## v0.17 — ResourceGraph + Identity Resolution
+
+> **Source sections:** `CAP-369`
+>
+> [DOCUMENTATION REVIEW] Contradiction **C-04** ([Review Notes](../REVIEW-NOTES.md#c-04--))
 
 v0.16 established the provenance chain:
 
@@ -205,8 +215,10 @@ So v0.17 introduces:
 
 ---
 
-<!-- source: Continue Architecture Planning.md L65297–65336 | turn 47 | version 0.17 -->
+<!-- CAP-370 | Continue Architecture Planning.md L65297–65336 | turn 47 | version 0.17 -->
 ## v0.17 — 1. The core problem
+
+> **Source sections:** `CAP-370`
 
 Consider:
 
@@ -247,8 +259,12 @@ is strong evidence of an alias relationship, but even a redirect should not caus
 
 ---
 
-<!-- source: Continue Architecture Planning.md L65338–65371 | turn 47 | version 0.17 -->
+<!-- CAP-371 | Continue Architecture Planning.md L65338–65371 | turn 47 | version 0.17 -->
 ## v0.17 — 2. Resource identity must become graph-based
+
+> **Source sections:** `CAP-371`
+>
+> [DOCUMENTATION REVIEW] Contradiction **C-04** ([Review Notes](../REVIEW-NOTES.md#c-04--))
 
 Instead of:
 
@@ -283,13 +299,17 @@ The resource is the entity those identifiers may refer to.
 
 ---
 
-<!-- source: Continue Architecture Planning.md L65373–65375 | turn 47 | version 0.17 -->
+<!-- CAP-372 | Continue Architecture Planning.md L65373–65375 | turn 47 | version 0.17 -->
 ## v0.17 — 3. Candidate vs Resource vs Locator
+
+> **Source sections:** `CAP-372`
 
 We now need three distinct concepts.
 
-<!-- source: Continue Architecture Planning.md L65377–65385 | turn 47 | version 0.17 -->
+<!-- CAP-373 | Continue Architecture Planning.md L65377–65385 | turn 47 | version 0.17 -->
 ### v0.17 — Candidate
+
+> **Source sections:** `CAP-373`
 
 Something the engine proposes to acquire.
 
@@ -299,8 +319,10 @@ candidate
 "this target may be worth acquiring"
 ```
 
-<!-- source: Continue Architecture Planning.md L65387–65395 | turn 47 | version 0.17 -->
+<!-- CAP-374 | Continue Architecture Planning.md L65387–65395 | turn 47 | version 0.17 -->
 ### v0.17 — Locator
+
+> **Source sections:** `CAP-374`
 
 A way of addressing something.
 
@@ -310,8 +332,10 @@ locator
 URL / endpoint / URI
 ```
 
-<!-- source: Continue Architecture Planning.md L65397–65429 | turn 47 | version 0.17 -->
+<!-- CAP-375 | Continue Architecture Planning.md L65397–65429 | turn 47 | version 0.17 -->
 ### v0.17 — Resource
+
+> **Source sections:** `CAP-375`
 
 A logical discovered entity.
 
@@ -345,8 +369,12 @@ one Resource
 
 ---
 
-<!-- source: Continue Architecture Planning.md L65431–65477 | turn 47 | version 0.17 -->
+<!-- CAP-376 | Continue Architecture Planning.md L65431–65477 | turn 47 | version 0.17 -->
 ## v0.17 — 4. Why not simply canonicalize everything?
+
+> **Source sections:** `CAP-376`
+>
+> [DOCUMENTATION REVIEW] Contradiction **C-04** ([Review Notes](../REVIEW-NOTES.md#c-04--))
 
 Canonicalization is useful:
 
@@ -394,8 +422,10 @@ Identity resolution happens afterward.
 
 ---
 
-<!-- source: Continue Architecture Planning.md L65479–65526 | turn 47 | version 0.17 -->
+<!-- CAP-377 | Continue Architecture Planning.md L65479–65526 | turn 47 | version 0.17 -->
 ## v0.17 — 5. Locator
+
+> **Source sections:** `CAP-377`
 
 A locator can become explicit:
 
@@ -444,8 +474,10 @@ For the current userscript, URLs remain the primary implementation.
 
 ---
 
-<!-- source: Continue Architecture Planning.md L65528–65570 | turn 47 | version 0.17 -->
+<!-- CAP-378 | Continue Architecture Planning.md L65528–65570 | turn 47 | version 0.17 -->
 ## v0.17 — 6. Resource
+
+> **Source sections:** `CAP-378`
 
 A resource becomes an identity node:
 
@@ -489,8 +521,10 @@ current URL
 
 ---
 
-<!-- source: Continue Architecture Planning.md L65572–65613 | turn 47 | version 0.17 -->
+<!-- CAP-379 | Continue Architecture Planning.md L65572–65613 | turn 47 | version 0.17 -->
 ## v0.17 — 7. Resource relationships
+
+> **Source sections:** `CAP-379`
 
 Now relationships become explicit.
 
@@ -533,8 +567,10 @@ A redirect is not necessarily the same relationship as identical bytes.
 
 ---
 
-<!-- source: Continue Architecture Planning.md L65615–65653 | turn 47 | version 0.17 -->
+<!-- CAP-380 | Continue Architecture Planning.md L65615–65653 | turn 47 | version 0.17 -->
 ## v0.17 — 8. Redirects
+
+> **Source sections:** `CAP-380`
 
 Suppose acquisition produces:
 
@@ -574,8 +610,10 @@ The original request remains historically meaningful.
 
 ---
 
-<!-- source: Continue Architecture Planning.md L65655–65693 | turn 47 | version 0.17 -->
+<!-- CAP-381 | Continue Architecture Planning.md L65655–65693 | turn 47 | version 0.17 -->
 ## v0.17 — 9. Redirect chain
+
+> **Source sections:** `CAP-381`
 
 Real redirects can form:
 
@@ -615,8 +653,12 @@ because the acquisition history disappears if we overwrite the request.
 
 ---
 
-<!-- source: Continue Architecture Planning.md L65695–65726 | turn 47 | version 0.17 -->
+<!-- CAP-382 | Continue Architecture Planning.md L65695–65726 | turn 47 | version 0.17 -->
 ## v0.17 — 10. Content fingerprints
+
+> **Source sections:** `CAP-382`
+>
+> [DOCUMENTATION REVIEW] Contradiction **C-07** ([Review Notes](../REVIEW-NOTES.md#c-07--))
 
 Now integrate v0.16 fingerprint evidence.
 
@@ -649,8 +691,10 @@ That distinction is essential.
 
 ---
 
-<!-- source: Continue Architecture Planning.md L65728–65775 | turn 47 | version 0.17 -->
+<!-- CAP-383 | Continue Architecture Planning.md L65728–65775 | turn 47 | version 0.17 -->
 ## v0.17 — 11. Same content does not prove same resource
+
+> **Source sections:** `CAP-383`
 
 Suppose two sites host the same PDF:
 
@@ -699,8 +743,12 @@ same fingerprint
 
 ---
 
-<!-- source: Continue Architecture Planning.md L65777–65814 | turn 47 | version 0.17 -->
+<!-- CAP-384 | Continue Architecture Planning.md L65777–65814 | turn 47 | version 0.17 -->
 ## v0.17 — 12. Representation identity
+
+> **Source sections:** `CAP-384`
+>
+> [DOCUMENTATION REVIEW] Contradiction **C-04** ([Review Notes](../REVIEW-NOTES.md#c-04--))
 
 HTTP introduces another complication.
 
@@ -739,8 +787,10 @@ where evidence supports it.
 
 ---
 
-<!-- source: Continue Architecture Planning.md L65850–65890 | turn 47 | version 0.17 -->
+<!-- CAP-386 | Continue Architecture Planning.md L65850–65890 | turn 47 | version 0.17 -->
 ## v0.17 — 14. IdentityResolver
+
+> **Source sections:** `CAP-386`
 
 Conceptually:
 
@@ -782,8 +832,14 @@ Unresolved
 
 ---
 
-<!-- source: Continue Architecture Planning.md L65892–65916 | turn 47 | version 0.17 -->
+<!-- CAP-387 | Continue Architecture Planning.md L65892–65916 | turn 47 | version 0.17 -->
 ## v0.17 — 15. Identity confidence should be relational
+
+> **Source sections:** `CAP-387`
+>
+> [DOCUMENTATION REVIEW] Contradiction **C-04** ([Review Notes](../REVIEW-NOTES.md#c-04--))
+>
+> [DOCUMENTATION REVIEW] Contradiction **C-06** ([Review Notes](../REVIEW-NOTES.md#c-06--))
 
 Instead of:
 
@@ -809,8 +865,12 @@ This avoids one global confidence number pretending to summarize everything.
 
 ---
 
-<!-- source: Continue Architecture Planning.md L65918–65952 | turn 47 | version 0.17 -->
+<!-- CAP-388 | Continue Architecture Planning.md L65918–65952 | turn 47 | version 0.17 -->
 ## v0.17 — 16. Identity classes
+
+> **Source sections:** `CAP-388`
+>
+> [DOCUMENTATION REVIEW] Contradiction **C-04** ([Review Notes](../REVIEW-NOTES.md#c-04--))
 
 A useful initial classification:
 
@@ -846,8 +906,10 @@ But the engine should preserve the actual evidence rather than only storing the 
 
 ---
 
-<!-- source: Continue Architecture Planning.md L65954–65990 | turn 47 | version 0.17 -->
+<!-- CAP-389 | Continue Architecture Planning.md L65954–65990 | turn 47 | version 0.17 -->
 ## v0.17 — 17. No destructive merges
+
+> **Source sections:** `CAP-389`
 
 This is perhaps the most important v0.17 rule.
 
@@ -885,8 +947,10 @@ This aligns directly with the evidence architecture.
 
 ---
 
-<!-- source: Continue Architecture Planning.md L65992–66040 | turn 47 | version 0.17 -->
+<!-- CAP-390 | Continue Architecture Planning.md L65992–66040 | turn 47 | version 0.17 -->
 ## v0.17 — 18. ResourceGraph
+
+> **Source sections:** `CAP-390`
 
 The graph can now be modeled:
 
@@ -936,8 +1000,10 @@ The semantic rules belong in the resolver, not the graph container.
 
 ---
 
-<!-- source: Continue Architecture Planning.md L66042–66080 | turn 47 | version 0.17 -->
+<!-- CAP-391 | Continue Architecture Planning.md L66042–66080 | turn 47 | version 0.17 -->
 ## v0.17 — 19. Graph edge contract
+
+> **Source sections:** `CAP-391`
 
 An edge should contain:
 
@@ -977,8 +1043,12 @@ session
 
 ---
 
-<!-- source: Continue Architecture Planning.md L66082–66119 | turn 47 | version 0.17 -->
+<!-- CAP-392 | Continue Architecture Planning.md L66082–66119 | turn 47 | version 0.17 -->
 ## v0.17 — 20. Identity resolution pipeline
+
+> **Source sections:** `CAP-392`
+>
+> [DOCUMENTATION REVIEW] Contradiction **C-04** ([Review Notes](../REVIEW-NOTES.md#c-04--))
 
 The full process:
 
@@ -1017,8 +1087,12 @@ The full process:
 
 ---
 
-<!-- source: Continue Architecture Planning.md L66121–66167 | turn 47 | version 0.17 -->
+<!-- CAP-393 | Continue Architecture Planning.md L66121–66167 | turn 47 | version 0.17 -->
 ## v0.17 — 21. Canonical URL is still important
+
+> **Source sections:** `CAP-393`
+>
+> [DOCUMENTATION REVIEW] Contradiction **C-04** ([Review Notes](../REVIEW-NOTES.md#c-04--))
 
 None of this means canonicalization becomes unnecessary.
 
@@ -1066,8 +1140,12 @@ stripEverythingWeDon'tUnderstand
 
 ---
 
-<!-- source: Continue Architecture Planning.md L66197–66235 | turn 47 | version 0.17 -->
+<!-- CAP-395 | Continue Architecture Planning.md L66197–66235 | turn 47 | version 0.17 -->
 ## v0.17 — 23. Identity resolution must be monotonic where possible
+
+> **Source sections:** `CAP-395`
+>
+> [DOCUMENTATION REVIEW] Contradiction **C-04** ([Review Notes](../REVIEW-NOTES.md#c-04--))
 
 Suppose initially:
 
@@ -1107,8 +1185,12 @@ The graph should accumulate evidence rather than repeatedly rewriting identity.
 
 ---
 
-<!-- source: Continue Architecture Planning.md L66237–66274 | turn 47 | version 0.17 -->
+<!-- CAP-396 | Continue Architecture Planning.md L66237–66274 | turn 47 | version 0.17 -->
 ## v0.17 — 24. Resource revisions
+
+> **Source sections:** `CAP-396`
+>
+> [DOCUMENTATION REVIEW] Contradiction **C-07** ([Review Notes](../REVIEW-NOTES.md#c-07--))
 
 Now the earlier revision problem becomes explicit.
 
@@ -1147,8 +1229,12 @@ is the safer default.
 
 ---
 
-<!-- source: Continue Architecture Planning.md L66276–66303 | turn 47 | version 0.17 -->
+<!-- CAP-397 | Continue Architecture Planning.md L66276–66303 | turn 47 | version 0.17 -->
 ## v0.17 — 25. Revision object
+
+> **Source sections:** `CAP-397`
+>
+> [DOCUMENTATION REVIEW] Contradiction **C-07** ([Review Notes](../REVIEW-NOTES.md#c-07--))
 
 We can later introduce:
 
@@ -1177,8 +1263,12 @@ For v0.17, this can remain conceptual or be represented directly through graph e
 
 ---
 
-<!-- source: Continue Architecture Planning.md L66305–66323 | turn 47 | version 0.17 -->
+<!-- CAP-398 | Continue Architecture Planning.md L66305–66323 | turn 47 | version 0.17 -->
 ## v0.17 — 26. ResourceGraph vs KnowledgeBase
+
+> **Source sections:** `CAP-398`
+>
+> [DOCUMENTATION REVIEW] Contradiction **C-10** ([Review Notes](../REVIEW-NOTES.md#c-10--))
 
 The KnowledgeBase remains the system's storage facade.
 
@@ -1198,15 +1288,19 @@ This is preferable to turning `KnowledgeBase` into one enormous class with every
 
 ---
 
-<!-- source: Continue Architecture Planning.md L66329–66333 | turn 47 | version 0.17 -->
+<!-- CAP-400 | Continue Architecture Planning.md L66329–66333 | turn 47 | version 0.17 -->
 ### v0.17 — What URLs identify this resource?
+
+> **Source sections:** `CAP-400`
 
 ```
 resource → locators
 ```
 
-<!-- source: Continue Architecture Planning.md L66335–66342 | turn 47 | version 0.17 -->
+<!-- CAP-401 | Continue Architecture Planning.md L66335–66342 | turn 47 | version 0.17 -->
 ### v0.17 — Where was it discovered?
+
+> **Source sections:** `CAP-401`
 
 ```
 resource
@@ -1215,22 +1309,28 @@ resource
  → observations
 ```
 
-<!-- source: Continue Architecture Planning.md L66344–66348 | turn 47 | version 0.17 -->
+<!-- CAP-402 | Continue Architecture Planning.md L66344–66348 | turn 47 | version 0.17 -->
 ### v0.17 — What URLs redirect to it?
+
+> **Source sections:** `CAP-402`
 
 ```
 resource ← redirects-to ← locator
 ```
 
-<!-- source: Continue Architecture Planning.md L66350–66354 | turn 47 | version 0.17 -->
+<!-- CAP-403 | Continue Architecture Planning.md L66350–66354 | turn 47 | version 0.17 -->
 ### v0.17 — Which URLs have identical observed bytes?
+
+> **Source sections:** `CAP-403`
 
 ```
 fingerprint → resources
 ```
 
-<!-- source: Continue Architecture Planning.md L66356–66362 | turn 47 | version 0.17 -->
+<!-- CAP-404 | Continue Architecture Planning.md L66356–66362 | turn 47 | version 0.17 -->
 ### v0.17 — Has this resource changed?
+
+> **Source sections:** `CAP-404`
 
 ```
 resource
@@ -1238,8 +1338,10 @@ resource
  → fingerprints
 ```
 
-<!-- source: Continue Architecture Planning.md L66364–66378 | turn 47 | version 0.17 -->
+<!-- CAP-405 | Continue Architecture Planning.md L66364–66378 | turn 47 | version 0.17 -->
 ### v0.17 — Why do we believe two URLs are related?
+
+> **Source sections:** `CAP-405`
 
 ```
 A
@@ -1255,8 +1357,10 @@ This is where the graph starts paying for its complexity.
 
 ---
 
-<!-- source: Continue Architecture Planning.md L66380–66420 | turn 47 | version 0.17 -->
+<!-- CAP-406 | Continue Architecture Planning.md L66380–66420 | turn 47 | version 0.17 -->
 ## v0.17 — 28. Resource graph example
+
+> **Source sections:** `CAP-406`
 
 Suppose we discover:
 
@@ -1298,48 +1402,66 @@ rather than forcing the merge.
 
 ---
 
-<!-- source: Continue Architecture Planning.md L66452–66457 | turn 47 | version 0.17 -->
+<!-- CAP-409 | Continue Architecture Planning.md L66452–66457 | turn 47 | version 0.17 -->
 ### v0.17 — Locator preservation
+
+> **Source sections:** `CAP-409`
 
 ```
 Every acquired target remains historically identifiable,
 even if it redirects.
 ```
 
-<!-- source: Continue Architecture Planning.md L66459–66464 | turn 47 | version 0.17 -->
+<!-- CAP-410 | Continue Architecture Planning.md L66459–66464 | turn 47 | version 0.17 -->
 ### v0.17 — No destructive merge
+
+> **Source sections:** `CAP-410`
 
 ```
 Identity resolution must not destroy
 previously recorded provenance.
 ```
 
-<!-- source: Continue Architecture Planning.md L66466–66471 | turn 47 | version 0.17 -->
+<!-- CAP-411 | Continue Architecture Planning.md L66466–66471 | turn 47 | version 0.17 -->
 ### v0.17 — Fingerprint independence
+
+> **Source sections:** `CAP-411`
+>
+> [DOCUMENTATION REVIEW] Contradiction **C-07** ([Review Notes](../REVIEW-NOTES.md#c-07--))
 
 ```
 Content equality does not automatically imply
 resource identity.
 ```
 
-<!-- source: Continue Architecture Planning.md L66473–66478 | turn 47 | version 0.17 -->
+<!-- CAP-412 | Continue Architecture Planning.md L66473–66478 | turn 47 | version 0.17 -->
 ### v0.17 — Redirect independence
+
+> **Source sections:** `CAP-412`
 
 ```
 A redirect relation does not require destructive
 locator replacement.
 ```
 
-<!-- source: Continue Architecture Planning.md L66487–66492 | turn 47 | version 0.17 -->
+<!-- CAP-414 | Continue Architecture Planning.md L66487–66492 | turn 47 | version 0.17 -->
 ### v0.17 — Revision preservation
+
+> **Source sections:** `CAP-414`
+>
+> [DOCUMENTATION REVIEW] Contradiction **C-07** ([Review Notes](../REVIEW-NOTES.md#c-07--))
 
 ```
 Different observations of the same locator remain
 historically distinct.
 ```
 
-<!-- source: Continue Architecture Planning.md L66494–66501 | turn 47 | version 0.17 -->
+<!-- CAP-415 | Continue Architecture Planning.md L66494–66501 | turn 47 | version 0.17 -->
 ### v0.17 — Canonicalization transparency
+
+> **Source sections:** `CAP-415`
+>
+> [DOCUMENTATION REVIEW] Contradiction **C-04** ([Review Notes](../REVIEW-NOTES.md#c-04--))
 
 ```
 Identity convergence caused by normalization
@@ -1348,8 +1470,10 @@ must be explainable.
 
 ---
 
-<!-- source: Continue Architecture Planning.md L66608–66651 | turn 47 | version 0.17 -->
+<!-- CAP-418 | Continue Architecture Planning.md L66608–66651 | turn 47 | version 0.17 -->
 ## v0.17 — 33. The important transition
+
+> **Source sections:** `CAP-418`
 
 The project has now crossed another conceptual boundary:
 
@@ -1394,8 +1518,12 @@ instead of treating all of them as variants of “a URL.”
 
 ---
 
-<!-- source: Continue Architecture Planning.md L68083–68147 | turn 49 | version 0.19 -->
+<!-- CAP-457 | Continue Architecture Planning.md L68083–68147 | turn 49 | version 0.19 -->
 ## v0.19 — Resource Representation & Revision Model
+
+> **Source sections:** `CAP-457`
+>
+> [DOCUMENTATION REVIEW] Contradiction **C-07** ([Review Notes](../REVIEW-NOTES.md#c-07--))
 
 The next boundary follows naturally.
 
@@ -1461,8 +1589,12 @@ EVIDENCE
 
 That will be the point where the Generic Discovery Engine starts becoming a genuine **resource intelligence system**, rather than merely a sophisticated crawler.
 
-<!-- source: Continue Architecture Planning.md L68159–68177 | turn 51 | version 0.19 -->
+<!-- CAP-459 | Continue Architecture Planning.md L68159–68177 | turn 51 | version 0.19 -->
 ## v0.19 — Resource Representation + Artifact + Revision Model
+
+> **Source sections:** `CAP-459`
+>
+> [DOCUMENTATION REVIEW] Contradiction **C-07** ([Review Notes](../REVIEW-NOTES.md#c-07--))
 
 At v0.18 we separated **resource identity** from **resource classification**.
 
@@ -1482,8 +1614,10 @@ So we need another identity layer.
 
 ---
 
-<!-- source: Continue Architecture Planning.md L68179–68207 | turn 51 | version 0.19 -->
+<!-- CAP-460 | Continue Architecture Planning.md L68179–68207 | turn 51 | version 0.19 -->
 ## v0.19 — 19.1 The Core Distinction
+
+> **Source sections:** `CAP-460`
 
 The model should become:
 
@@ -1513,8 +1647,10 @@ A useful rule:
 Resource ≠ Representation ≠ Artifact ≠ Observation
 ```
 
-<!-- source: Continue Architecture Planning.md L68209–68217 | turn 51 | version 0.19 -->
+<!-- CAP-461 | Continue Architecture Planning.md L68209–68217 | turn 51 | version 0.19 -->
 ### v0.19 — Resource
+
+> **Source sections:** `CAP-461`
 
 The logical thing.
 
@@ -1524,8 +1660,10 @@ Example:
 "Otis Gen2 Service Manual"
 ```
 
-<!-- source: Continue Architecture Planning.md L68219–68228 | turn 51 | version 0.19 -->
+<!-- CAP-462 | Continue Architecture Planning.md L68219–68228 | turn 51 | version 0.19 -->
 ### v0.19 — Representation
+
+> **Source sections:** `CAP-462`
 
 A particular way that resource is expressed.
 
@@ -1536,8 +1674,12 @@ OCR text
 JSON metadata
 ```
 
-<!-- source: Continue Architecture Planning.md L68230–68237 | turn 51 | version 0.19 -->
+<!-- CAP-463 | Continue Architecture Planning.md L68230–68237 | turn 51 | version 0.19 -->
 ### v0.19 — Artifact
+
+> **Source sections:** `CAP-463`
+>
+> [DOCUMENTATION REVIEW] Contradiction **C-07** ([Review Notes](../REVIEW-NOTES.md#c-07--))
 
 A concrete byte sequence.
 
@@ -1546,8 +1688,12 @@ SHA-256 = abc123...
 size = 18,421,991
 ```
 
-<!-- source: Continue Architecture Planning.md L68252–68300 | turn 51 | version 0.19 -->
+<!-- CAP-465 | Continue Architecture Planning.md L68252–68300 | turn 51 | version 0.19 -->
 ## v0.19 — 19.2 Why Resource → Artifact Is Wrong
+
+> **Source sections:** `CAP-465`
+>
+> [DOCUMENTATION REVIEW] Contradiction **C-07** ([Review Notes](../REVIEW-NOTES.md#c-07--))
 
 A tempting model is:
 
@@ -1597,8 +1743,10 @@ different resource
 
 ---
 
-<!-- source: Continue Architecture Planning.md L68302–68417 | turn 51 | version 0.19 -->
+<!-- CAP-466 | Continue Architecture Planning.md L68302–68417 | turn 51 | version 0.19 -->
 ## v0.19 — 19.3 New Data Model
+
+> **Source sections:** `CAP-466`
 
 Introduce four explicit objects.
 
@@ -1715,8 +1863,12 @@ class ResourceRevision {
 
 ---
 
-<!-- source: Continue Architecture Planning.md L68419–68463 | turn 51 | version 0.19 -->
+<!-- CAP-467 | Continue Architecture Planning.md L68419–68463 | turn 51 | version 0.19 -->
 ## v0.19 — 19.4 The Complete Identity Chain
+
+> **Source sections:** `CAP-467`
+>
+> [DOCUMENTATION REVIEW] Contradiction **C-04** ([Review Notes](../REVIEW-NOTES.md#c-04--))
 
 We now have:
 
@@ -1762,8 +1914,10 @@ many observations
 
 ---
 
-<!-- source: Continue Architecture Planning.md L68465–68516 | turn 51 | version 0.19 -->
+<!-- CAP-468 | Continue Architecture Planning.md L68465–68516 | turn 51 | version 0.19 -->
 ## v0.19 — 19.5 Representation Is Not Just MIME
+
+> **Source sections:** `CAP-468`
 
 Representation deserves its own identity because:
 
@@ -1816,8 +1970,10 @@ The logical resource may still be the same.
 
 ---
 
-<!-- source: Continue Architecture Planning.md L68518–68543 | turn 51 | version 0.19 -->
+<!-- CAP-469 | Continue Architecture Planning.md L68518–68543 | turn 51 | version 0.19 -->
 ## v0.19 — 19.6 Representation Relations
+
+> **Source sections:** `CAP-469`
 
 Add explicit relationships:
 
@@ -1844,8 +2000,14 @@ This is safer than pretending all representations are identical.
 
 ---
 
-<!-- source: Continue Architecture Planning.md L68545–68591 | turn 51 | version 0.19 -->
+<!-- CAP-470 | Continue Architecture Planning.md L68545–68591 | turn 51 | version 0.19 -->
 ## v0.19 — 19.7 Artifact Identity
+
+> **Source sections:** `CAP-470`
+>
+> [DOCUMENTATION REVIEW] Contradiction **C-04** ([Review Notes](../REVIEW-NOTES.md#c-04--))
+>
+> [DOCUMENTATION REVIEW] Contradiction **C-07** ([Review Notes](../REVIEW-NOTES.md#c-07--))
 
 Artifact identity should be byte-oriented.
 
@@ -1893,8 +2055,10 @@ This distinction must remain explicit.
 
 ---
 
-<!-- source: Continue Architecture Planning.md L68593–68636 | turn 51 | version 0.19 -->
+<!-- CAP-471 | Continue Architecture Planning.md L68593–68636 | turn 51 | version 0.19 -->
 ## v0.19 — 19.8 Content Equivalence
+
+> **Source sections:** `CAP-471`
 
 Now the old `same-content-as` relation becomes more precise.
 
@@ -1939,8 +2103,12 @@ because identical bytes can legitimately represent different logical entities.
 
 ---
 
-<!-- source: Continue Architecture Planning.md L68638–68678 | turn 51 | version 0.19 -->
+<!-- CAP-472 | Continue Architecture Planning.md L68638–68678 | turn 51 | version 0.19 -->
 ## v0.19 — 19.9 Revision Detection
+
+> **Source sections:** `CAP-472`
+>
+> [DOCUMENTATION REVIEW] Contradiction **C-07** ([Review Notes](../REVIEW-NOTES.md#c-07--))
 
 Now we can model change properly.
 
@@ -1982,8 +2150,12 @@ without changing resource identity.
 
 ---
 
-<!-- source: Continue Architecture Planning.md L68680–68729 | turn 51 | version 0.19 -->
+<!-- CAP-473 | Continue Architecture Planning.md L68680–68729 | turn 51 | version 0.19 -->
 ## v0.19 — 19.10 Revision Detection Is Not Always Proof of Semantic Revision
+
+> **Source sections:** `CAP-473`
+>
+> [DOCUMENTATION REVIEW] Contradiction **C-07** ([Review Notes](../REVIEW-NOTES.md#c-07--))
 
 This is an important edge case.
 
@@ -2034,8 +2206,12 @@ Initially, the engine should only claim the first.
 
 ---
 
-<!-- source: Continue Architecture Planning.md L68731–68772 | turn 51 | version 0.19 -->
+<!-- CAP-474 | Continue Architecture Planning.md L68731–68772 | turn 51 | version 0.19 -->
 ## v0.19 — 19.11 Revision Evidence
+
+> **Source sections:** `CAP-474`
+>
+> [DOCUMENTATION REVIEW] Contradiction **C-07** ([Review Notes](../REVIEW-NOTES.md#c-07--))
 
 A revision record should therefore contain evidence:
 
@@ -2078,8 +2254,10 @@ Servers can provide inaccurate metadata.
 
 ---
 
-<!-- source: Continue Architecture Planning.md L68774–68809 | turn 51 | version 0.19 -->
+<!-- CAP-475 | Continue Architecture Planning.md L68774–68809 | turn 51 | version 0.19 -->
 ## v0.19 — 19.12 HTTP Validators Become Evidence
+
+> **Source sections:** `CAP-475`
 
 Acquisition observations can now capture:
 
@@ -2116,8 +2294,12 @@ But these remain **signals**, not identity.
 
 ---
 
-<!-- source: Continue Architecture Planning.md L68904–68935 | turn 51 | version 0.19 -->
+<!-- CAP-478 | Continue Architecture Planning.md L68904–68935 | turn 51 | version 0.19 -->
 ## v0.19 — 19.15 Resource State vs Artifact State
+
+> **Source sections:** `CAP-478`
+>
+> [DOCUMENTATION REVIEW] Contradiction **C-07** ([Review Notes](../REVIEW-NOTES.md#c-07--))
 
 Do not combine them.
 
@@ -2150,8 +2332,10 @@ Observation:
 
 These are different state machines.
 
-<!-- source: Continue Architecture Planning.md L68937–68945 | turn 51 | version 0.19 -->
+<!-- CAP-479 | Continue Architecture Planning.md L68937–68945 | turn 51 | version 0.19 -->
 ### v0.19 — Resource state
+
+> **Source sections:** `CAP-479`
 
 ```
 unknown
@@ -2161,8 +2345,12 @@ superseded
 archived
 ```
 
-<!-- source: Continue Architecture Planning.md L68947–68955 | turn 51 | version 0.19 -->
+<!-- CAP-480 | Continue Architecture Planning.md L68947–68955 | turn 51 | version 0.19 -->
 ### v0.19 — Artifact state
+
+> **Source sections:** `CAP-480`
+>
+> [DOCUMENTATION REVIEW] Contradiction **C-07** ([Review Notes](../REVIEW-NOTES.md#c-07--))
 
 ```
 observed
@@ -2172,8 +2360,10 @@ corrupted
 missing
 ```
 
-<!-- source: Continue Architecture Planning.md L68971–69004 | turn 51 | version 0.19 -->
+<!-- CAP-482 | Continue Architecture Planning.md L68971–69004 | turn 51 | version 0.19 -->
 ## v0.19 — 19.16 ResourceGraph v0.19
+
+> **Source sections:** `CAP-482`
 
 The graph now expands substantially:
 
@@ -2208,8 +2398,10 @@ This is now an actual **knowledge graph**, not simply a URL database.
 
 ---
 
-<!-- source: Continue Architecture Planning.md L69006–69073 | turn 51 | version 0.19 -->
+<!-- CAP-483 | Continue Architecture Planning.md L69006–69073 | turn 51 | version 0.19 -->
 ## v0.19 — 19.17 ResourceGraph API
+
+> **Source sections:** `CAP-483`
 
 Extend the previous graph:
 
@@ -2278,8 +2470,12 @@ class ResourceGraph {
 
 ---
 
-<!-- source: Continue Architecture Planning.md L69075–69087 | turn 51 | version 0.19 -->
+<!-- CAP-484 | Continue Architecture Planning.md L69075–69087 | turn 51 | version 0.19 -->
 ## v0.19 — 19.18 Artifact Deduplication
+
+> **Source sections:** `CAP-484`
+>
+> [DOCUMENTATION REVIEW] Contradiction **C-07** ([Review Notes](../REVIEW-NOTES.md#c-07--))
 
 This also fixes an earlier limitation.
 
@@ -2293,8 +2489,10 @@ was primary.
 
 Now there are two distinct deduplication layers.
 
-<!-- source: Continue Architecture Planning.md L69089–69095 | turn 51 | version 0.19 -->
+<!-- CAP-485 | Continue Architecture Planning.md L69089–69095 | turn 51 | version 0.19 -->
 ### v0.19 — Locator deduplication
+
+> **Source sections:** `CAP-485`
 
 ```
 same canonical locator
@@ -2302,8 +2500,12 @@ same canonical locator
 same locator identity
 ```
 
-<!-- source: Continue Architecture Planning.md L69097–69127 | turn 51 | version 0.19 -->
+<!-- CAP-486 | Continue Architecture Planning.md L69097–69127 | turn 51 | version 0.19 -->
 ### v0.19 — Artifact deduplication
+
+> **Source sections:** `CAP-486`
+>
+> [DOCUMENTATION REVIEW] Contradiction **C-07** ([Review Notes](../REVIEW-NOTES.md#c-07--))
 
 ```
 same cryptographic digest
@@ -2335,8 +2537,10 @@ because those URLs are meaningful evidence.
 
 ---
 
-<!-- source: Continue Architecture Planning.md L69129–69181 | turn 51 | version 0.19 -->
+<!-- CAP-487 | Continue Architecture Planning.md L69129–69181 | turn 51 | version 0.19 -->
 ## v0.19 — 19.19 Content-Addressed Storage
+
+> **Source sections:** `CAP-487`
 
 This points naturally toward content-addressed storage.
 
@@ -2390,8 +2594,10 @@ until a durable artifact store is introduced.
 
 ---
 
-<!-- source: Continue Architecture Planning.md L69222–69271 | turn 51 | version 0.19 -->
+<!-- CAP-489 | Continue Architecture Planning.md L69222–69271 | turn 51 | version 0.19 -->
 ## v0.19 — 19.21 Independent Confirmation
+
+> **Source sections:** `CAP-489`
 
 This becomes particularly useful for the discovery algorithm.
 
@@ -2442,8 +2648,12 @@ The graph should preserve provenance so independence can later be reasoned about
 
 ---
 
-<!-- source: Continue Architecture Planning.md L69273–69310 | turn 51 | version 0.19 -->
+<!-- CAP-490 | Continue Architecture Planning.md L69273–69310 | turn 51 | version 0.19 -->
 ## v0.19 — 19.22 Resource Confidence
+
+> **Source sections:** `CAP-490`
+>
+> [DOCUMENTATION REVIEW] Contradiction **C-06** ([Review Notes](../REVIEW-NOTES.md#c-06--))
 
 This suggests another important separation.
 
@@ -2482,8 +2692,10 @@ independently.
 
 ---
 
-<!-- source: Continue Architecture Planning.md L69312–69318 | turn 51 | version 0.19 -->
+<!-- CAP-491 | Continue Architecture Planning.md L69312–69318 | turn 51 | version 0.19 -->
 ## v0.19 — 19.23 Example
+
+> **Source sections:** `CAP-491`
 
 Suppose the engine encounters:
 
@@ -2491,31 +2703,41 @@ Suppose the engine encounters:
 https://example.com/docs/gen2.pdf
 ```
 
-<!-- source: Continue Architecture Planning.md L69320–69325 | turn 51 | version 0.19 -->
+<!-- CAP-492 | Continue Architecture Planning.md L69320–69325 | turn 51 | version 0.19 -->
 ### v0.19 — Step 1 — Locator
+
+> **Source sections:** `CAP-492`
 
 ```
 Locator L1
 target = /docs/gen2.pdf
 ```
 
-<!-- source: Continue Architecture Planning.md L69327–69331 | turn 51 | version 0.19 -->
+<!-- CAP-493 | Continue Architecture Planning.md L69327–69331 | turn 51 | version 0.19 -->
 ### v0.19 — Step 2 — Resource
+
+> **Source sections:** `CAP-493`
 
 ```
 Resource R1
 ```
 
-<!-- source: Continue Architecture Planning.md L69341–69346 | turn 51 | version 0.19 -->
+<!-- CAP-495 | Continue Architecture Planning.md L69341–69346 | turn 51 | version 0.19 -->
 ### v0.19 — Step 4 — Artifact
+
+> **Source sections:** `CAP-495`
+>
+> [DOCUMENTATION REVIEW] Contradiction **C-07** ([Review Notes](../REVIEW-NOTES.md#c-07--))
 
 ```
 Artifact A1
 SHA256 = H1
 ```
 
-<!-- source: Continue Architecture Planning.md L69348–69354 | turn 51 | version 0.19 -->
+<!-- CAP-496 | Continue Architecture Planning.md L69348–69354 | turn 51 | version 0.19 -->
 ### v0.19 — Step 5 — Representation
+
+> **Source sections:** `CAP-496`
 
 ```
 Representation P1
@@ -2523,16 +2745,22 @@ format = PDF
 mediaType = application/pdf
 ```
 
-<!-- source: Continue Architecture Planning.md L69356–69361 | turn 51 | version 0.19 -->
+<!-- CAP-497 | Continue Architecture Planning.md L69356–69361 | turn 51 | version 0.19 -->
 ### v0.19 — Step 6 — Classification
+
+> **Source sections:** `CAP-497`
 
 ```
 service-manual
 confidence = 0.93
 ```
 
-<!-- source: Continue Architecture Planning.md L69363–69397 | turn 51 | version 0.19 -->
+<!-- CAP-498 | Continue Architecture Planning.md L69363–69397 | turn 51 | version 0.19 -->
 ### v0.19 — Step 7 — Revision
+
+> **Source sections:** `CAP-498`
+>
+> [DOCUMENTATION REVIEW] Contradiction **C-07** ([Review Notes](../REVIEW-NOTES.md#c-07--))
 
 ```
 Revision V1
@@ -2568,8 +2796,10 @@ Evidence
 
 ---
 
-<!-- source: Continue Architecture Planning.md L69399–69452 | turn 51 | version 0.19 -->
+<!-- CAP-499 | Continue Architecture Planning.md L69399–69452 | turn 51 | version 0.19 -->
 ## v0.19 — 19.24 A More Precise End-to-End Pipeline
+
+> **Source sections:** `CAP-499`
 
 The Generic Discovery Engine now has:
 
@@ -2624,8 +2854,10 @@ This is now a closed discovery loop.
 
 ---
 
-<!-- source: Continue Architecture Planning.md L69569–69657 | turn 51 | version 0.19 -->
+<!-- CAP-510 | Continue Architecture Planning.md L69569–69657 | turn 51 | version 0.19 -->
 ## v0.19 — 19.27 What v0.19 Gives Us
+
+> **Source sections:** `CAP-510`
 
 The system has now moved through:
 

@@ -6,10 +6,6 @@
 >
 > **Purpose:** The JSON response provider of the prototype, as implemented in the latest prototype script.
 
-## Contents
-
-- **JsonProvider (v0.7.1)** — code extract from `Continue Architecture Planning.md` L51683–51810
-
 ## Related Documents
 
 - [Providers Overview](overview.md)

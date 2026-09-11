@@ -1,65 +1,65 @@
 # Work Items and Frontier Arbitration
 
-> **Status:** DESIGNED
+> **Status:** OPEN
 >
 > **Source:** `Continue Architecture Planning.md`
 >
 > **Purpose:** Work items, work kinds, lifecycle, dependencies, frontier runtime and unified frontier arbitration.
 
-## Contents
+## Source Sections
 
-- **v0.15 — WorkItem + Frontier Runtime** — `Continue Architecture Planning.md` L61954–61988
-- **v0.15 — WorkItem + Frontier Runtime** — `Continue Architecture Planning.md` L62000–62029
-- **v0.15 — 1. The key distinction** — `Continue Architecture Planning.md` L62031–62070
-- **v0.15 — 2. Why `WorkItem` exists** — `Continue Architecture Planning.md` L62072–62129
-- **v0.15 — 3. WorkItem** — `Continue Architecture Planning.md` L62131–62207
-- **v0.15 — 4. Work kinds** — `Continue Architecture Planning.md` L62209–62242
-- **v0.15 — 5. Work payload** — `Continue Architecture Planning.md` L62244–62294
-- **v0.15 — 6. Work lifecycle** — `Continue Architecture Planning.md` L62296–62347
-- **v0.15 — 10. Frontier Runtime** — `Continue Architecture Planning.md` L62492–62528
-- **v0.15 — 15. Why not one giant queue?** — `Continue Architecture Planning.md` L62697–62734
-- **v0.15 — 16. Work dependencies** — `Continue Architecture Planning.md` L62736–62778
-- **v0.15 — 17. But dependencies must not create hidden coupling** — `Continue Architecture Planning.md` L62780–62798
-- **v0.15 — 18. Dependency states** — `Continue Architecture Planning.md` L62800–62830
-- **v0.15 — 19. Work completion** — `Continue Architecture Planning.md` L62832–62873
-- **v0.15 — 20. Work execution boundary** — `Continue Architecture Planning.md` L62875–62933
-- **v0.15 — 21. Work Runtime** — `Continue Architecture Planning.md` L62935–62977
-- **v0.15 — 22. Retry becomes generic** — `Continue Architecture Planning.md` L62979–63027
-- **v0.15 — 23. Retry identity** — `Continue Architecture Planning.md` L63029–63071
-- **v0.15 — 24. Cancellation** — `Continue Architecture Planning.md` L63073–63108
-- **v0.15 — 25. Scan termination with WorkItems** — `Continue Architecture Planning.md` L63110–63150
-- **v0.15 — 26. The three frontier states** — `Continue Architecture Planning.md` L63152–63180
-- **v0.15 — 28. Work state machine** — `Continue Architecture Planning.md` L63221–63264
-- **v0.15 — 29. Domain → Session → Work** — `Continue Architecture Planning.md` L63266–63290
-- **v0.15 — 30. What belongs where?** — `Continue Architecture Planning.md` L63292–63312
-- **v0.15 — 34. v0.15 architectural result** — `Continue Architecture Planning.md` L63432–63497
-- **v0.30 — Unified Frontier Arbitration** — `Continue Architecture Planning.md` L84664–84685
-- **v0.30 — The final conceptual separation** — `Continue Architecture Planning.md` L84762–84791
-- **v0.30 — The most important safety boundary** — `Continue Architecture Planning.md` L84910–84948
-- *Turn lead-in* — `Continue Architecture Planning.md` L85131–85131
-- **v0.30 — Unified Frontier Arbitration** — `Continue Architecture Planning.md` L85137–85169
-- **v0.30 — 30.2 WorkClass** — `Continue Architecture Planning.md` L85215–85256
-- **v0.30 — 30.3 WorkClassPolicy** — `Continue Architecture Planning.md` L85258–85314
-- **v0.30 — 30.4 ArbitrationDecision** — `Continue Architecture Planning.md` L85316–85382
-- **v0.30 — 30.5 Hard constraints vs soft priorities** — `Continue Architecture Planning.md` L85384–85386
-- **v0.30 — Hard constraints** — `Continue Architecture Planning.md` L85388–85402
-- **v0.30 — Soft priorities** — `Continue Architecture Planning.md` L85404–85441
-- **v0.30 — 30.6 Arbitration score** — `Continue Architecture Planning.md` L85443–85480
-- **v0.30 — 30.7 Aging** — `Continue Architecture Planning.md` L85482–85531
-- **v0.30 — 30.8 Starvation detection** — `Continue Architecture Planning.md` L85533–85579
-- **v0.30 — 30.9 Class starvation** — `Continue Architecture Planning.md` L85581–85625
-- **v0.30 — 30.10 Weighted fairness** — `Continue Architecture Planning.md` L85627–85656
-- **v0.30 — 30.11 Deficit-style arbitration** — `Continue Architecture Planning.md` L85658–85704
-- **v0.30 — 30.12 Cost-aware scheduling** — `Continue Architecture Planning.md` L85706–85759
-- **v0.30 — 30.13 Backpressure** — `Continue Architecture Planning.md` L85761–85818
-- **v0.30 — 30.14 Reserved capacity** — `Continue Architecture Planning.md` L85820–85854
-- **v0.30 — 30.15 Arbitration pipeline** — `Continue Architecture Planning.md` L85856–85909
-- **v0.30 — 30.16 The atomicity problem** — `Continue Architecture Planning.md` L85911–85957
-- **v0.30 — 30.17 Priority inversion** — `Continue Architecture Planning.md` L85959–85997
-- **v0.30 — 30.18 FrontierArbitrator** — `Continue Architecture Planning.md` L85999–86050
-- **v0.30 — 30.19 Arbitration result** — `Continue Architecture Planning.md` L86052–86090
-- **v0.30 — 30.20 Arbitration ledger** — `Continue Architecture Planning.md` L86092–86119
-- **v0.30 — 30.21 Replay** — `Continue Architecture Planning.md` L86121–86172
+- **v0.15 — WorkItem + Frontier Runtime** — `CAP-271` — `Continue Architecture Planning.md` L61954–61988
+- **v0.15 — WorkItem + Frontier Runtime** — `CAP-273` — `Continue Architecture Planning.md` L62000–62029
+- **v0.15 — 1. The key distinction** — `CAP-274` — `Continue Architecture Planning.md` L62031–62070
+- **v0.15 — 2. Why `WorkItem` exists** — `CAP-275` — `Continue Architecture Planning.md` L62072–62129
+- **v0.15 — 3. WorkItem** — `CAP-276` — `Continue Architecture Planning.md` L62131–62207
+- **v0.15 — 4. Work kinds** — `CAP-277` — `Continue Architecture Planning.md` L62209–62242
+- **v0.15 — 5. Work payload** — `CAP-278` — `Continue Architecture Planning.md` L62244–62294
+- **v0.15 — 6. Work lifecycle** — `CAP-279` — `Continue Architecture Planning.md` L62296–62347
+- **v0.15 — 10. Frontier Runtime** — `CAP-283` — `Continue Architecture Planning.md` L62492–62528
+- **v0.15 — 15. Why not one giant queue?** — `CAP-288` — `Continue Architecture Planning.md` L62697–62734
+- **v0.15 — 16. Work dependencies** — `CAP-289` — `Continue Architecture Planning.md` L62736–62778
+- **v0.15 — 17. But dependencies must not create hidden coupling** — `CAP-290` — `Continue Architecture Planning.md` L62780–62798
+- **v0.15 — 18. Dependency states** — `CAP-291` — `Continue Architecture Planning.md` L62800–62830
+- **v0.15 — 19. Work completion** — `CAP-292` — `Continue Architecture Planning.md` L62832–62873
+- **v0.15 — 20. Work execution boundary** — `CAP-293` — `Continue Architecture Planning.md` L62875–62933
+- **v0.15 — 21. Work Runtime** — `CAP-294` — `Continue Architecture Planning.md` L62935–62977
+- **v0.15 — 22. Retry becomes generic** — `CAP-295` — `Continue Architecture Planning.md` L62979–63027
+- **v0.15 — 23. Retry identity** — `CAP-296` — `Continue Architecture Planning.md` L63029–63071
+- **v0.15 — 24. Cancellation** — `CAP-297` — `Continue Architecture Planning.md` L63073–63108
+- **v0.15 — 25. Scan termination with WorkItems** — `CAP-298` — `Continue Architecture Planning.md` L63110–63150
+- **v0.15 — 26. The three frontier states** — `CAP-299` — `Continue Architecture Planning.md` L63152–63180
+- **v0.15 — 28. Work state machine** — `CAP-301` — `Continue Architecture Planning.md` L63221–63264
+- **v0.15 — 29. Domain → Session → Work** — `CAP-302` — `Continue Architecture Planning.md` L63266–63290
+- **v0.15 — 30. What belongs where?** — `CAP-303` — `Continue Architecture Planning.md` L63292–63312
+- **v0.15 — 34. v0.15 architectural result** — `CAP-307` — `Continue Architecture Planning.md` L63432–63497
+- **v0.30 — Unified Frontier Arbitration** — `CAP-972` — `Continue Architecture Planning.md` L84664–84685
+- **v0.30 — The final conceptual separation** — `CAP-975` — `Continue Architecture Planning.md` L84762–84791
+- **v0.30 — The most important safety boundary** — `CAP-978` — `Continue Architecture Planning.md` L84910–84948
+- *Turn lead-in* — `CAP-982` — `Continue Architecture Planning.md` L85131–85131
+- **v0.30 — Unified Frontier Arbitration** — `CAP-983` — `Continue Architecture Planning.md` L85137–85169
+- **v0.30 — 30.2 WorkClass** — `CAP-985` — `Continue Architecture Planning.md` L85215–85256
+- **v0.30 — 30.3 WorkClassPolicy** — `CAP-986` — `Continue Architecture Planning.md` L85258–85314
+- **v0.30 — 30.4 ArbitrationDecision** — `CAP-987` — `Continue Architecture Planning.md` L85316–85382
+- **v0.30 — 30.5 Hard constraints vs soft priorities** — `CAP-988` — `Continue Architecture Planning.md` L85384–85386
+- **v0.30 — Hard constraints** — `CAP-989` — `Continue Architecture Planning.md` L85388–85402
+- **v0.30 — Soft priorities** — `CAP-990` — `Continue Architecture Planning.md` L85404–85441
+- **v0.30 — 30.6 Arbitration score** — `CAP-991` — `Continue Architecture Planning.md` L85443–85480
+- **v0.30 — 30.7 Aging** — `CAP-992` — `Continue Architecture Planning.md` L85482–85531
+- **v0.30 — 30.8 Starvation detection** — `CAP-993` — `Continue Architecture Planning.md` L85533–85579
+- **v0.30 — 30.9 Class starvation** — `CAP-994` — `Continue Architecture Planning.md` L85581–85625
+- **v0.30 — 30.10 Weighted fairness** — `CAP-995` — `Continue Architecture Planning.md` L85627–85656
+- **v0.30 — 30.11 Deficit-style arbitration** — `CAP-996` — `Continue Architecture Planning.md` L85658–85704
+- **v0.30 — 30.12 Cost-aware scheduling** — `CAP-997` — `Continue Architecture Planning.md` L85706–85759
+- **v0.30 — 30.13 Backpressure** — `CAP-998` — `Continue Architecture Planning.md` L85761–85818
+- **v0.30 — 30.14 Reserved capacity** — `CAP-999` — `Continue Architecture Planning.md` L85820–85854
+- **v0.30 — 30.15 Arbitration pipeline** — `CAP-1000` — `Continue Architecture Planning.md` L85856–85909
+- **v0.30 — 30.16 The atomicity problem** — `CAP-1001` — `Continue Architecture Planning.md` L85911–85957
+- **v0.30 — 30.17 Priority inversion** — `CAP-1002` — `Continue Architecture Planning.md` L85959–85997
+- **v0.30 — 30.18 FrontierArbitrator** — `CAP-1003` — `Continue Architecture Planning.md` L85999–86050
+- **v0.30 — 30.19 Arbitration result** — `CAP-1004` — `Continue Architecture Planning.md` L86052–86090
+- **v0.30 — 30.20 Arbitration ledger** — `CAP-1005` — `Continue Architecture Planning.md` L86092–86119
+- **v0.30 — 30.21 Replay** — `CAP-1006` — `Continue Architecture Planning.md` L86121–86172
 
 ## Related Documents
 
@@ -70,8 +70,10 @@
 
 ---
 
-<!-- source: Continue Architecture Planning.md L61954–61988 | turn 41 | version 0.15 -->
+<!-- CAP-271 | Continue Architecture Planning.md L61954–61988 | turn 41 | version 0.15 -->
 ## v0.15 — WorkItem + Frontier Runtime
+
+> **Source sections:** `CAP-271`
 
 The goal would be to formalize:
 
@@ -107,8 +109,10 @@ The critical principle for v0.15 would be:
 
 That would solve the remaining scheduler/queue/lease duplication without merging the semantics of discovery and acquisition.
 
-<!-- source: Continue Architecture Planning.md L62000–62029 | turn 43 | version 0.15 -->
+<!-- CAP-273 | Continue Architecture Planning.md L62000–62029 | turn 43 | version 0.15 -->
 ## v0.15 — WorkItem + Frontier Runtime
+
+> **Source sections:** `CAP-273`
 
 v0.14 made the **search space explicit**.
 
@@ -139,8 +143,10 @@ Not as a replacement for discovery or acquisition semantics, but as their **comm
 
 ---
 
-<!-- source: Continue Architecture Planning.md L62031–62070 | turn 43 | version 0.15 -->
+<!-- CAP-274 | Continue Architecture Planning.md L62031–62070 | turn 43 | version 0.15 -->
 ## v0.15 — 1. The key distinction
+
+> **Source sections:** `CAP-274`
 
 We should **not** do this:
 
@@ -181,8 +187,10 @@ This is the same architectural principle already established:
 
 ---
 
-<!-- source: Continue Architecture Planning.md L62072–62129 | turn 43 | version 0.15 -->
+<!-- CAP-275 | Continue Architecture Planning.md L62072–62129 | turn 43 | version 0.15 -->
 ## v0.15 — 2. Why `WorkItem` exists
+
+> **Source sections:** `CAP-275`
 
 Without a common work model, every subsystem independently needs:
 
@@ -241,8 +249,10 @@ while the specialized object contains its own domain data.
 
 ---
 
-<!-- source: Continue Architecture Planning.md L62131–62207 | turn 43 | version 0.15 -->
+<!-- CAP-276 | Continue Architecture Planning.md L62131–62207 | turn 43 | version 0.15 -->
 ## v0.15 — 3. WorkItem
+
+> **Source sections:** `CAP-276`
 
 Conceptual structure:
 
@@ -320,8 +330,10 @@ It should not know how recognition works.
 
 ---
 
-<!-- source: Continue Architecture Planning.md L62209–62242 | turn 43 | version 0.15 -->
+<!-- CAP-277 | Continue Architecture Planning.md L62209–62242 | turn 43 | version 0.15 -->
 ## v0.15 — 4. Work kinds
+
+> **Source sections:** `CAP-277`
 
 Initial work kinds:
 
@@ -356,8 +368,10 @@ Recognition can remain inside the acquisition pipeline initially.
 
 ---
 
-<!-- source: Continue Architecture Planning.md L62244–62294 | turn 43 | version 0.15 -->
+<!-- CAP-278 | Continue Architecture Planning.md L62244–62294 | turn 43 | version 0.15 -->
 ## v0.15 — 5. Work payload
+
+> **Source sections:** `CAP-278`
 
 The generic envelope needs a typed payload.
 
@@ -409,8 +423,10 @@ The executor interprets the payload.
 
 ---
 
-<!-- source: Continue Architecture Planning.md L62296–62347 | turn 43 | version 0.15 -->
+<!-- CAP-279 | Continue Architecture Planning.md L62296–62347 | turn 43 | version 0.15 -->
 ## v0.15 — 6. Work lifecycle
+
+> **Source sections:** `CAP-279`
 
 A common lifecycle can now be defined.
 
@@ -463,8 +479,10 @@ QUEUED
 
 ---
 
-<!-- source: Continue Architecture Planning.md L62492–62528 | turn 43 | version 0.15 -->
+<!-- CAP-283 | Continue Architecture Planning.md L62492–62528 | turn 43 | version 0.15 -->
 ## v0.15 — 10. Frontier Runtime
+
+> **Source sections:** `CAP-283`
 
 Now we can introduce the actual common frontier.
 
@@ -502,8 +520,10 @@ FrontierRuntime = what remains to do
 
 ---
 
-<!-- source: Continue Architecture Planning.md L62697–62734 | turn 43 | version 0.15 -->
+<!-- CAP-288 | Continue Architecture Planning.md L62697–62734 | turn 43 | version 0.15 -->
 ## v0.15 — 15. Why not one giant queue?
+
+> **Source sections:** `CAP-288`
 
 A single queue sounds simpler:
 
@@ -542,8 +562,10 @@ The runtime should preserve work-class boundaries.
 
 ---
 
-<!-- source: Continue Architecture Planning.md L62736–62778 | turn 43 | version 0.15 -->
+<!-- CAP-289 | Continue Architecture Planning.md L62736–62778 | turn 43 | version 0.15 -->
 ## v0.15 — 16. Work dependencies
+
+> **Source sections:** `CAP-289`
 
 Now another useful property becomes possible.
 
@@ -587,8 +609,10 @@ This gives us a work DAG.
 
 ---
 
-<!-- source: Continue Architecture Planning.md L62780–62798 | turn 43 | version 0.15 -->
+<!-- CAP-290 | Continue Architecture Planning.md L62780–62798 | turn 43 | version 0.15 -->
 ## v0.15 — 17. But dependencies must not create hidden coupling
+
+> **Source sections:** `CAP-290`
 
 The engine should not turn into a giant workflow engine.
 
@@ -608,8 +632,10 @@ But the actual discovery semantics remain in `DiscoveryController`.
 
 ---
 
-<!-- source: Continue Architecture Planning.md L62800–62830 | turn 43 | version 0.15 -->
+<!-- CAP-291 | Continue Architecture Planning.md L62800–62830 | turn 43 | version 0.15 -->
 ## v0.15 — 18. Dependency states
+
+> **Source sections:** `CAP-291`
 
 A work item can therefore be:
 
@@ -641,8 +667,10 @@ A blocked task cannot.
 
 ---
 
-<!-- source: Continue Architecture Planning.md L62832–62873 | turn 43 | version 0.15 -->
+<!-- CAP-292 | Continue Architecture Planning.md L62832–62873 | turn 43 | version 0.15 -->
 ## v0.15 — 19. Work completion
+
+> **Source sections:** `CAP-292`
 
 A work item should produce a result, not directly mutate unrelated state.
 
@@ -685,8 +713,10 @@ mutates everything
 
 ---
 
-<!-- source: Continue Architecture Planning.md L62875–62933 | turn 43 | version 0.15 -->
+<!-- CAP-293 | Continue Architecture Planning.md L62875–62933 | turn 43 | version 0.15 -->
 ## v0.15 — 20. Work execution boundary
+
+> **Source sections:** `CAP-293`
 
 Define:
 
@@ -746,8 +776,10 @@ class AcquisitionExecutor extends WorkExecutor {
 
 ---
 
-<!-- source: Continue Architecture Planning.md L62935–62977 | turn 43 | version 0.15 -->
+<!-- CAP-294 | Continue Architecture Planning.md L62935–62977 | turn 43 | version 0.15 -->
 ## v0.15 — 21. Work Runtime
+
+> **Source sections:** `CAP-294`
 
 The pieces now form:
 
@@ -791,8 +823,10 @@ The specialized runtimes own:
 
 ---
 
-<!-- source: Continue Architecture Planning.md L62979–63027 | turn 43 | version 0.15 -->
+<!-- CAP-295 | Continue Architecture Planning.md L62979–63027 | turn 43 | version 0.15 -->
 ## v0.15 — 22. Retry becomes generic
+
+> **Source sections:** `CAP-295`
 
 Previously acquisition had retry.
 
@@ -842,8 +876,12 @@ Specialized runtime
 
 ---
 
-<!-- source: Continue Architecture Planning.md L63029–63071 | turn 43 | version 0.15 -->
+<!-- CAP-296 | Continue Architecture Planning.md L63029–63071 | turn 43 | version 0.15 -->
 ## v0.15 — 23. Retry identity
+
+> **Source sections:** `CAP-296`
+>
+> [DOCUMENTATION REVIEW] Contradiction **C-04** ([Review Notes](../REVIEW-NOTES.md#c-04--))
 
 An important rule:
 
@@ -887,8 +925,10 @@ work-completed
 
 ---
 
-<!-- source: Continue Architecture Planning.md L63073–63108 | turn 43 | version 0.15 -->
+<!-- CAP-297 | Continue Architecture Planning.md L63073–63108 | turn 43 | version 0.15 -->
 ## v0.15 — 24. Cancellation
+
+> **Source sections:** `CAP-297`
 
 Cancellation should also become work-level.
 
@@ -925,8 +965,12 @@ This keeps the earlier distinction:
 
 ---
 
-<!-- source: Continue Architecture Planning.md L63110–63150 | turn 43 | version 0.15 -->
+<!-- CAP-298 | Continue Architecture Planning.md L63110–63150 | turn 43 | version 0.15 -->
 ## v0.15 — 25. Scan termination with WorkItems
+
+> **Source sections:** `CAP-298`
+>
+> [DOCUMENTATION REVIEW] Contradiction **C-09** ([Review Notes](../REVIEW-NOTES.md#c-09--))
 
 v0.14 termination can now become much more precise.
 
@@ -968,8 +1012,10 @@ scan complete
 
 ---
 
-<!-- source: Continue Architecture Planning.md L63152–63180 | turn 43 | version 0.15 -->
+<!-- CAP-299 | Continue Architecture Planning.md L63152–63180 | turn 43 | version 0.15 -->
 ## v0.15 — 26. The three frontier states
+
+> **Source sections:** `CAP-299`
 
 We can now distinguish:
 
@@ -999,8 +1045,10 @@ assuming no future scheduled retry remains.
 
 ---
 
-<!-- source: Continue Architecture Planning.md L63221–63264 | turn 43 | version 0.15 -->
+<!-- CAP-301 | Continue Architecture Planning.md L63221–63264 | turn 43 | version 0.15 -->
 ## v0.15 — 28. Work state machine
+
+> **Source sections:** `CAP-301`
 
 ```
                      ┌─────────┐
@@ -1045,8 +1093,10 @@ Expired CLAIMED ────────────────→ QUEUED
 
 ---
 
-<!-- source: Continue Architecture Planning.md L63266–63290 | turn 43 | version 0.15 -->
+<!-- CAP-302 | Continue Architecture Planning.md L63266–63290 | turn 43 | version 0.15 -->
 ## v0.15 — 29. Domain → Session → Work
+
+> **Source sections:** `CAP-302`
 
 We now have a much cleaner hierarchy:
 
@@ -1072,8 +1122,10 @@ This gives each abstraction one job.
 
 ---
 
-<!-- source: Continue Architecture Planning.md L63292–63312 | turn 43 | version 0.15 -->
+<!-- CAP-303 | Continue Architecture Planning.md L63292–63312 | turn 43 | version 0.15 -->
 ## v0.15 — 30. What belongs where?
+
+> **Source sections:** `CAP-303`
 
 | Component | Responsibility |
 | --- | --- |
@@ -1095,8 +1147,10 @@ That is a considerably cleaner architecture than letting each subsystem implemen
 
 ---
 
-<!-- source: Continue Architecture Planning.md L63432–63497 | turn 43 | version 0.15 -->
+<!-- CAP-307 | Continue Architecture Planning.md L63432–63497 | turn 43 | version 0.15 -->
 ## v0.15 — 34. v0.15 architectural result
+
+> **Source sections:** `CAP-307`
 
 The progression is now:
 
@@ -1163,8 +1217,10 @@ It is the boundary between **observation, evidence, and knowledge**.
 
 That leads naturally to **v0.16 — EvidenceGraph + Provenance**, where the engine stops treating a discovery merely as “a URL we found” and starts representing **why the candidate exists, what observation supports it, what recognition mechanism produced it, and how independently verified paths converge on the same resource**.
 
-<!-- source: Continue Architecture Planning.md L84664–84685 | turn 71 | version 0.30 -->
+<!-- CAP-972 | Continue Architecture Planning.md L84664–84685 | turn 71 | version 0.30 -->
 ## v0.30 — Unified Frontier Arbitration
+
+> **Source sections:** `CAP-972`
 
 The question becomes:
 
@@ -1187,8 +1243,10 @@ The question becomes:
 
 The critical design issue will be ensuring that **adaptive prioritization can choose what to do next without becoming an authority layer that silently starves entire classes of work**.
 
-<!-- source: Continue Architecture Planning.md L84762–84791 | turn 73 | version 0.30 -->
+<!-- CAP-975 | Continue Architecture Planning.md L84762–84791 | turn 73 | version 0.30 -->
 ## v0.30 — The final conceptual separation
+
+> **Source sections:** `CAP-975`
 
 The architecture converged on these distinct questions:
 
@@ -1219,8 +1277,10 @@ That separation is the main architectural achievement.
 
 ---
 
-<!-- source: Continue Architecture Planning.md L84910–84948 | turn 73 | version 0.30 -->
+<!-- CAP-978 | Continue Architecture Planning.md L84910–84948 | turn 73 | version 0.30 -->
 ## v0.30 — The most important safety boundary
+
+> **Source sections:** `CAP-978`
 
 Dynamic discovery is powerful because:
 
@@ -1260,11 +1320,17 @@ This distinction is what keeps the system from turning into an uncontrolled craw
 
 ---
 
-<!-- source: Continue Architecture Planning.md L85131–85131 | turn 74 | You turn lead-in -->
+<!-- CAP-982 | Continue Architecture Planning.md L85131–85131 | turn 74 | You turn lead-in -->
+> **Source sections:** `CAP-982`
+>
+> **Note:** lead-in of the following section
+
 V 0.30
 
-<!-- source: Continue Architecture Planning.md L85137–85169 | turn 75 | version 0.30 -->
+<!-- CAP-983 | Continue Architecture Planning.md L85137–85169 | turn 75 | version 0.30 -->
 ## v0.30 — Unified Frontier Arbitration
+
+> **Source sections:** `CAP-983`
 
 The next boundary is the **control problem**.
 
@@ -1298,8 +1364,10 @@ The v0.30 abstraction is:
 
 ---
 
-<!-- source: Continue Architecture Planning.md L85215–85256 | turn 75 | version 0.30 -->
+<!-- CAP-985 | Continue Architecture Planning.md L85215–85256 | turn 75 | version 0.30 -->
 ## v0.30 — 30.2 WorkClass
+
+> **Source sections:** `CAP-985`
 
 The frontier now needs an explicit classification of work.
 
@@ -1342,8 +1410,12 @@ That distinction becomes important later.
 
 ---
 
-<!-- source: Continue Architecture Planning.md L85258–85314 | turn 75 | version 0.30 -->
+<!-- CAP-986 | Continue Architecture Planning.md L85258–85314 | turn 75 | version 0.30 -->
 ## v0.30 — 30.3 WorkClassPolicy
+
+> **Source sections:** `CAP-986`
+>
+> [DOCUMENTATION REVIEW] Contradiction **C-11** ([Review Notes](../REVIEW-NOTES.md#c-11--))
 
 Each class needs a scheduling policy.
 
@@ -1401,8 +1473,10 @@ These are **scheduler preferences**, not authority.
 
 ---
 
-<!-- source: Continue Architecture Planning.md L85316–85382 | turn 75 | version 0.30 -->
+<!-- CAP-987 | Continue Architecture Planning.md L85316–85382 | turn 75 | version 0.30 -->
 ## v0.30 — 30.4 ArbitrationDecision
+
+> **Source sections:** `CAP-987`
 
 The arbitrator should not simply return a work item.
 
@@ -1470,13 +1544,17 @@ has an actual answer.
 
 ---
 
-<!-- source: Continue Architecture Planning.md L85384–85386 | turn 75 | version 0.30 -->
+<!-- CAP-988 | Continue Architecture Planning.md L85384–85386 | turn 75 | version 0.30 -->
 ## v0.30 — 30.5 Hard constraints vs soft priorities
+
+> **Source sections:** `CAP-988`
 
 This is one of the most important v0.30 boundaries.
 
-<!-- source: Continue Architecture Planning.md L85388–85402 | turn 75 | version 0.30 -->
+<!-- CAP-989 | Continue Architecture Planning.md L85388–85402 | turn 75 | version 0.30 -->
 ### v0.30 — Hard constraints
+
+> **Source sections:** `CAP-989`
 
 These determine **eligibility**.
 
@@ -1492,8 +1570,10 @@ class disabled
 
 The arbitrator cannot override them.
 
-<!-- source: Continue Architecture Planning.md L85404–85441 | turn 75 | version 0.30 -->
+<!-- CAP-990 | Continue Architecture Planning.md L85404–85441 | turn 75 | version 0.30 -->
 ### v0.30 — Soft priorities
+
+> **Source sections:** `CAP-990`
 
 These determine **ordering**.
 
@@ -1532,8 +1612,10 @@ A score of `1000` must not make unauthorized work executable.
 
 ---
 
-<!-- source: Continue Architecture Planning.md L85443–85480 | turn 75 | version 0.30 -->
+<!-- CAP-991 | Continue Architecture Planning.md L85443–85480 | turn 75 | version 0.30 -->
 ## v0.30 — 30.6 Arbitration score
+
+> **Source sections:** `CAP-991`
 
 A conceptual scoring function:
 
@@ -1572,8 +1654,10 @@ This preserves the authority boundary established in earlier versions.
 
 ---
 
-<!-- source: Continue Architecture Planning.md L85482–85531 | turn 75 | version 0.30 -->
+<!-- CAP-992 | Continue Architecture Planning.md L85482–85531 | turn 75 | version 0.30 -->
 ## v0.30 — 30.7 Aging
+
+> **Source sections:** `CAP-992`
 
 Pure priority produces starvation.
 
@@ -1624,8 +1708,10 @@ Aging is therefore a fairness mechanism rather than a relevance mechanism.
 
 ---
 
-<!-- source: Continue Architecture Planning.md L85533–85579 | turn 75 | version 0.30 -->
+<!-- CAP-993 | Continue Architecture Planning.md L85533–85579 | turn 75 | version 0.30 -->
 ## v0.30 — 30.8 Starvation detection
+
+> **Source sections:** `CAP-993`
 
 Aging alone is not enough.
 
@@ -1673,8 +1759,10 @@ PRIORITY BOOST
 
 ---
 
-<!-- source: Continue Architecture Planning.md L85581–85625 | turn 75 | version 0.30 -->
+<!-- CAP-994 | Continue Architecture Planning.md L85581–85625 | turn 75 | version 0.30 -->
 ## v0.30 — 30.9 Class starvation
+
+> **Source sections:** `CAP-994`
 
 Individual starvation is only half the problem.
 
@@ -1720,8 +1808,10 @@ class fairness
 
 ---
 
-<!-- source: Continue Architecture Planning.md L85627–85656 | turn 75 | version 0.30 -->
+<!-- CAP-995 | Continue Architecture Planning.md L85627–85656 | turn 75 | version 0.30 -->
 ## v0.30 — 30.10 Weighted fairness
+
+> **Source sections:** `CAP-995`
 
 A useful baseline is weighted fair scheduling.
 
@@ -1752,8 +1842,10 @@ Instead, weights influence the long-run allocation.
 
 ---
 
-<!-- source: Continue Architecture Planning.md L85658–85704 | turn 75 | version 0.30 -->
+<!-- CAP-996 | Continue Architecture Planning.md L85658–85704 | turn 75 | version 0.30 -->
 ## v0.30 — 30.11 Deficit-style arbitration
+
+> **Source sections:** `CAP-996`
 
 A stronger model is deficit-based scheduling.
 
@@ -1801,8 +1893,10 @@ This makes scheduling less sensitive to the instantaneous queue ordering.
 
 ---
 
-<!-- source: Continue Architecture Planning.md L85706–85759 | turn 75 | version 0.30 -->
+<!-- CAP-997 | Continue Architecture Planning.md L85706–85759 | turn 75 | version 0.30 -->
 ## v0.30 — 30.12 Cost-aware scheduling
+
+> **Source sections:** `CAP-997`
 
 Not all work costs the same.
 
@@ -1857,8 +1951,10 @@ The actual outcome must later update the model.
 
 ---
 
-<!-- source: Continue Architecture Planning.md L85761–85818 | turn 75 | version 0.30 -->
+<!-- CAP-998 | Continue Architecture Planning.md L85761–85818 | turn 75 | version 0.30 -->
 ## v0.30 — 30.13 Backpressure
+
+> **Source sections:** `CAP-998`
 
 Suppose discovery produces candidates faster than acquisition can consume them:
 
@@ -1917,8 +2013,10 @@ It means:
 
 ---
 
-<!-- source: Continue Architecture Planning.md L85820–85854 | turn 75 | version 0.30 -->
+<!-- CAP-999 | Continue Architecture Planning.md L85820–85854 | turn 75 | version 0.30 -->
 ## v0.30 — 30.14 Reserved capacity
+
+> **Source sections:** `CAP-999`
 
 One way to prevent monopolization is to reserve capacity.
 
@@ -1954,8 +2052,10 @@ Reserved capacity provides a stronger non-starvation guarantee than priority agi
 
 ---
 
-<!-- source: Continue Architecture Planning.md L85856–85909 | turn 75 | version 0.30 -->
+<!-- CAP-1000 | Continue Architecture Planning.md L85856–85909 | turn 75 | version 0.30 -->
 ## v0.30 — 30.15 Arbitration pipeline
+
+> **Source sections:** `CAP-1000`
 
 The complete decision path becomes:
 
@@ -2010,8 +2110,12 @@ Execution
 
 ---
 
-<!-- source: Continue Architecture Planning.md L85911–85957 | turn 75 | version 0.30 -->
+<!-- CAP-1001 | Continue Architecture Planning.md L85911–85957 | turn 75 | version 0.30 -->
 ## v0.30 — 30.16 The atomicity problem
+
+> **Source sections:** `CAP-1001`
+>
+> [DOCUMENTATION REVIEW] Contradiction **C-03** ([Review Notes](../REVIEW-NOTES.md#c-03--))
 
 There is an important race:
 
@@ -2059,8 +2163,10 @@ This becomes particularly important if the userscript eventually supports multip
 
 ---
 
-<!-- source: Continue Architecture Planning.md L85959–85997 | turn 75 | version 0.30 -->
+<!-- CAP-1002 | Continue Architecture Planning.md L85959–85997 | turn 75 | version 0.30 -->
 ## v0.30 — 30.17 Priority inversion
+
+> **Source sections:** `CAP-1002`
 
 Another failure mode:
 
@@ -2100,8 +2206,10 @@ But:
 
 ---
 
-<!-- source: Continue Architecture Planning.md L85999–86050 | turn 75 | version 0.30 -->
+<!-- CAP-1003 | Continue Architecture Planning.md L85999–86050 | turn 75 | version 0.30 -->
 ## v0.30 — 30.18 FrontierArbitrator
+
+> **Source sections:** `CAP-1003`
 
 The central interface:
 
@@ -2154,8 +2262,10 @@ It selects work.
 
 ---
 
-<!-- source: Continue Architecture Planning.md L86052–86090 | turn 75 | version 0.30 -->
+<!-- CAP-1004 | Continue Architecture Planning.md L86052–86090 | turn 75 | version 0.30 -->
 ## v0.30 — 30.19 Arbitration result
+
+> **Source sections:** `CAP-1004`
 
 A complete result might look like:
 
@@ -2195,8 +2305,10 @@ This is operational provenance.
 
 ---
 
-<!-- source: Continue Architecture Planning.md L86092–86119 | turn 75 | version 0.30 -->
+<!-- CAP-1005 | Continue Architecture Planning.md L86092–86119 | turn 75 | version 0.30 -->
 ## v0.30 — 30.20 Arbitration ledger
+
+> **Source sections:** `CAP-1005`
 
 Add events:
 
@@ -2225,8 +2337,12 @@ Not merely:
 
 ---
 
-<!-- source: Continue Architecture Planning.md L86121–86172 | turn 75 | version 0.30 -->
+<!-- CAP-1006 | Continue Architecture Planning.md L86121–86172 | turn 75 | version 0.30 -->
 ## v0.30 — 30.21 Replay
+
+> **Source sections:** `CAP-1006`
+>
+> [DOCUMENTATION REVIEW] Contradiction **C-08** ([Review Notes](../REVIEW-NOTES.md#c-08--))
 
 Arbitration must be replayable.
 

@@ -6,16 +6,16 @@
 >
 > **Purpose:** The generic-discovery abstraction itself: layers, parameter-space search, naming and the final abstraction.
 
-## Contents
+## Source Sections
 
-- **Making it genuinely generic** — `Userscript Discovery Prototype.md` L66–102
-- *Turn lead-in* — `Userscript Discovery Prototype.md` L114–114
-- **1. Separate the layers** — `Userscript Discovery Prototype.md` L116–144
-- **7. Generic algorithm** — `Userscript Discovery Prototype.md` L384–439
-- **The key insight** — `Userscript Discovery Prototype.md` L441–452
-- **15. The generic discovery abstraction** — `Userscript Discovery Prototype.md` L739–775
-- **23. A useful formal name** — `Userscript Discovery Prototype.md` L1071–1099
-- **30. The final abstraction** — `Userscript Discovery Prototype.md` L1378–1429
+- **Making it genuinely generic** — `USP-004` — `Userscript Discovery Prototype.md` L66–102
+- *Turn lead-in* — `USP-006` — `Userscript Discovery Prototype.md` L114–114
+- **1. Separate the layers** — `USP-007` — `Userscript Discovery Prototype.md` L116–144
+- **7. Generic algorithm** — `USP-013` — `Userscript Discovery Prototype.md` L384–439
+- **The key insight** — `USP-014` — `Userscript Discovery Prototype.md` L441–452
+- **15. The generic discovery abstraction** — `USP-024` — `Userscript Discovery Prototype.md` L739–775
+- **23. A useful formal name** — `USP-038` — `Userscript Discovery Prototype.md` L1071–1099
+- **30. The final abstraction** — `USP-047` — `Userscript Discovery Prototype.md` L1378–1429
 
 ## Related Documents
 
@@ -26,8 +26,10 @@
 
 ---
 
-<!-- source: Userscript Discovery Prototype.md L66–102 | turn 1 | version ? -->
+<!-- USP-004 | Userscript Discovery Prototype.md L66–102 | turn 1 | version ? -->
 ### Making it genuinely generic
+
+> **Source sections:** `USP-004`
 
 The important abstraction is to separate **RF discovery** from **protocol-specific decoding**:
 
@@ -65,11 +67,17 @@ A useful implementation therefore models a blind scan as a **search over a param
 
 The optimization is also important: once one multiplex is found, its **NIT/network information can provide neighboring frequencies and parameters**, allowing the scanner to switch from expensive blind discovery to much faster guided discovery.
 
-<!-- source: Userscript Discovery Prototype.md L114–114 | turn 3 | ChatGPT turn lead-in -->
+<!-- USP-006 | Userscript Discovery Prototype.md L114–114 | turn 3 | ChatGPT turn lead-in -->
+> **Source sections:** `USP-006`
+>
+> **Note:** lead-in of the following section
+
 A good way to formalize this is to treat **blind scanning as constrained hypothesis testing over a physical-channel parameter space**.
 
-<!-- source: Userscript Discovery Prototype.md L116–144 | turn 3 | version ? -->
+<!-- USP-007 | Userscript Discovery Prototype.md L116–144 | turn 3 | version ? -->
 ### 1. Separate the layers
+
+> **Source sections:** `USP-007`
 
 A generic scanner can expose four interfaces:
 
@@ -99,8 +107,10 @@ The **candidate generator** is the part that makes the algorithm generic.
 
 ---
 
-<!-- source: Userscript Discovery Prototype.md L384–439 | turn 3 | version ? -->
+<!-- USP-013 | Userscript Discovery Prototype.md L384–439 | turn 3 | version ? -->
 ## 7. Generic algorithm
+
+> **Source sections:** `USP-013`
 
 Putting it together:
 
@@ -157,8 +167,10 @@ while search space is not exhausted:
 return discovered_database
 ```
 
-<!-- source: Userscript Discovery Prototype.md L441–452 | turn 3 | version ? -->
+<!-- USP-014 | Userscript Discovery Prototype.md L441–452 | turn 3 | version ? -->
 ### The key insight
+
+> **Source sections:** `USP-014`
 
 **Blind scanning isn't fundamentally a DVB-specific operation.** DVB-specific knowledge enters at the stages where you:
 
@@ -171,8 +183,10 @@ The higher-level algorithm—**generate hypotheses → test → validate → ext
 
 That same architecture can therefore support DVB-S/S2, DVB-T/T2, DVB-C, and potentially completely different broadcast protocols by replacing the protocol-specific acquisition and parsing modules.
 
-<!-- source: Userscript Discovery Prototype.md L739–775 | turn 5 | version ? -->
+<!-- USP-024 | Userscript Discovery Prototype.md L739–775 | turn 5 | version ? -->
 ## 15. The generic discovery abstraction
+
+> **Source sections:** `USP-024`
 
 At this point you can abstract DVB away almost completely:
 
@@ -210,8 +224,10 @@ A DVB-T2 implementation and DVB-S2 implementation can provide different acquisit
 
 That is the point where **“DVB blind scan” becomes a general-purpose discovery algorithm rather than merely a receiver feature**.
 
-<!-- source: Userscript Discovery Prototype.md L1071–1099 | turn 7 | version ? -->
+<!-- USP-038 | Userscript Discovery Prototype.md L1071–1099 | turn 7 | version ? -->
 ### 23. A useful formal name
+
+> **Source sections:** `USP-038`
 
 If you're designing this as a generic library, I'd avoid naming the core abstraction `DVBBlindScan`.
 
@@ -241,8 +257,10 @@ DiscoveryEngine
 
 The same engine could theoretically host other RF discovery protocols without changing the scheduler or database model.
 
-<!-- source: Userscript Discovery Prototype.md L1378–1429 | turn 9 | version ? -->
+<!-- USP-047 | Userscript Discovery Prototype.md L1378–1429 | turn 9 | version ? -->
 ## 30. The final abstraction
+
+> **Source sections:** `USP-047`
 
 At the highest level, the algorithm is simply:
 

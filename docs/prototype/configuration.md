@@ -6,10 +6,6 @@
 >
 > **Purpose:** The configuration surface of the latest prototype script.
 
-## Contents
-
-- **CONFIG (v0.7.1)** — code extract from `Continue Architecture Planning.md` L49000–49101
-
 ## Related Documents
 
 - [Prototype Overview](overview.md)

@@ -6,21 +6,21 @@
 >
 > **Purpose:** The provider layer: capability-driven adapters, acquisition providers, provider selection and provider failure.
 
-## Contents
+## Source Sections
 
-- **32. Use capability-driven adapters** — `Userscript Discovery Prototype.md` L1547–1584
-- **v0.9 — Acquisition Provider Architecture** — `Continue Architecture Planning.md` L55633–55639
-- **v0.9 — 1. AcquisitionProvider contract** — `Continue Architecture Planning.md` L55732–55779
-- **v0.9 — 2. Provider capabilities** — `Continue Architecture Planning.md` L55781–55807
-- **v0.9 — 3. Provider selection** — `Continue Architecture Planning.md` L55809–55860
-- **v0.9 — 4. GM-XHR becomes a component** — `Continue Architecture Planning.md` L55862–55906
-- **v0.9 — 6. Provider failure ≠ acquisition denial** — `Continue Architecture Planning.md` L55963–55965
-- **v0.9 — Policy denial** — `Continue Architecture Planning.md` L55967–55989
-- **v0.9 — Provider failure** — `Continue Architecture Planning.md` L55991–56016
-- **v0.9 — 7. Provider selection itself becomes an event** — `Continue Architecture Planning.md` L56018–56069
-- **v0.9 — Cache provider** — `Continue Architecture Planning.md` L56089–56099
-- **v0.9 — Replay provider** — `Continue Architecture Planning.md` L56101–56113
-- **v0.9 — 9. The engine is now approaching a general resource runtime** — `Continue Architecture Planning.md` L56115–56191
+- **32. Use capability-driven adapters** — `USP-055` — `Userscript Discovery Prototype.md` L1547–1584
+- **v0.9 — Acquisition Provider Architecture** — `CAP-080` — `Continue Architecture Planning.md` L55633–55639
+- **v0.9 — 1. AcquisitionProvider contract** — `CAP-083` — `Continue Architecture Planning.md` L55732–55779
+- **v0.9 — 2. Provider capabilities** — `CAP-084` — `Continue Architecture Planning.md` L55781–55807
+- **v0.9 — 3. Provider selection** — `CAP-085` — `Continue Architecture Planning.md` L55809–55860
+- **v0.9 — 4. GM-XHR becomes a component** — `CAP-086` — `Continue Architecture Planning.md` L55862–55906
+- **v0.9 — 6. Provider failure ≠ acquisition denial** — `CAP-088` — `Continue Architecture Planning.md` L55963–55965
+- **v0.9 — Policy denial** — `CAP-089` — `Continue Architecture Planning.md` L55967–55989
+- **v0.9 — Provider failure** — `CAP-090` — `Continue Architecture Planning.md` L55991–56016
+- **v0.9 — 7. Provider selection itself becomes an event** — `CAP-091` — `Continue Architecture Planning.md` L56018–56069
+- **v0.9 — Cache provider** — `CAP-093` — `Continue Architecture Planning.md` L56089–56099
+- **v0.9 — Replay provider** — `CAP-094` — `Continue Architecture Planning.md` L56101–56113
+- **v0.9 — 9. The engine is now approaching a general resource runtime** — `CAP-095` — `Continue Architecture Planning.md` L56115–56191
 
 ## Related Documents
 
@@ -31,8 +31,10 @@
 
 ---
 
-<!-- source: Userscript Discovery Prototype.md L1547–1584 | turn 11 | version ? -->
+<!-- USP-055 | Userscript Discovery Prototype.md L1547–1584 | turn 11 | version ? -->
 ## 32. Use capability-driven adapters
+
+> **Source sections:** `USP-055`
 
 The generic engine shouldn't know how to tune a specific chipset.
 
@@ -71,8 +73,10 @@ That is a major architectural advantage.
 
 ---
 
-<!-- source: Continue Architecture Planning.md L55633–55639 | turn 31 | version 0.9 -->
+<!-- CAP-080 | Continue Architecture Planning.md L55633–55639 | turn 31 | version 0.9 -->
 ## v0.9 — Acquisition Provider Architecture
+
+> **Source sections:** `CAP-080`
 
 The next boundary is cleanly defined:
 
@@ -80,8 +84,10 @@ The next boundary is cleanly defined:
 
 This removes the remaining hard dependency between the scheduler and `GM_xmlhttpRequest`.
 
-<!-- source: Continue Architecture Planning.md L55732–55779 | turn 31 | version 0.9 -->
+<!-- CAP-083 | Continue Architecture Planning.md L55732–55779 | turn 31 | version 0.9 -->
 ## v0.9 — 1. AcquisitionProvider contract
+
+> **Source sections:** `CAP-083`
 
 The contract should be deliberately small:
 
@@ -130,8 +136,10 @@ This distinction matters.
 
 ---
 
-<!-- source: Continue Architecture Planning.md L55781–55807 | turn 31 | version 0.9 -->
+<!-- CAP-084 | Continue Architecture Planning.md L55781–55807 | turn 31 | version 0.9 -->
 ## v0.9 — 2. Provider capabilities
+
+> **Source sections:** `CAP-084`
 
 A provider advertises capabilities:
 
@@ -159,8 +167,10 @@ That distinction must remain explicit.
 
 ---
 
-<!-- source: Continue Architecture Planning.md L55809–55860 | turn 31 | version 0.9 -->
+<!-- CAP-085 | Continue Architecture Planning.md L55809–55860 | turn 31 | version 0.9 -->
 ## v0.9 — 3. Provider selection
+
+> **Source sections:** `CAP-085`
 
 The resolver becomes:
 
@@ -213,8 +223,10 @@ class AcquisitionProviderRegistry {
 
 ---
 
-<!-- source: Continue Architecture Planning.md L55862–55906 | turn 31 | version 0.9 -->
+<!-- CAP-086 | Continue Architecture Planning.md L55862–55906 | turn 31 | version 0.9 -->
 ## v0.9 — 4. GM-XHR becomes a component
+
+> **Source sections:** `CAP-086`
 
 Instead of:
 
@@ -260,13 +272,19 @@ Now the rest of the engine doesn't care whether the request was performed by GM-
 
 ---
 
-<!-- source: Continue Architecture Planning.md L55963–55965 | turn 31 | version 0.9 -->
+<!-- CAP-088 | Continue Architecture Planning.md L55963–55965 | turn 31 | version 0.9 -->
 ## v0.9 — 6. Provider failure ≠ acquisition denial
+
+> **Source sections:** `CAP-088`
 
 This gives us another important state distinction.
 
-<!-- source: Continue Architecture Planning.md L55967–55989 | turn 31 | version 0.9 -->
+<!-- CAP-089 | Continue Architecture Planning.md L55967–55989 | turn 31 | version 0.9 -->
 ### v0.9 — Policy denial
+
+> **Source sections:** `CAP-089`
+>
+> [DOCUMENTATION REVIEW] Contradiction **C-11** ([Review Notes](../REVIEW-NOTES.md#c-11--))
 
 ```
 candidate
@@ -290,8 +308,10 @@ represented
 policy-denied
 ```
 
-<!-- source: Continue Architecture Planning.md L55991–56016 | turn 31 | version 0.9 -->
+<!-- CAP-090 | Continue Architecture Planning.md L55991–56016 | turn 31 | version 0.9 -->
 ### v0.9 — Provider failure
+
+> **Source sections:** `CAP-090`
 
 ```
 candidate
@@ -318,8 +338,10 @@ These must never collapse into the same status.
 
 ---
 
-<!-- source: Continue Architecture Planning.md L56018–56069 | turn 31 | version 0.9 -->
+<!-- CAP-091 | Continue Architecture Planning.md L56018–56069 | turn 31 | version 0.9 -->
 ## v0.9 — 7. Provider selection itself becomes an event
+
+> **Source sections:** `CAP-091`
 
 The v0.7 event ledger now gains:
 
@@ -372,8 +394,10 @@ This makes the decision trail much more useful.
 
 ---
 
-<!-- source: Continue Architecture Planning.md L56089–56099 | turn 31 | version 0.9 -->
+<!-- CAP-093 | Continue Architecture Planning.md L56089–56099 | turn 31 | version 0.9 -->
 ### v0.9 — Cache provider
+
+> **Source sections:** `CAP-093`
 
 ```
 candidate
@@ -385,8 +409,12 @@ existing observation
 
 No network request.
 
-<!-- source: Continue Architecture Planning.md L56101–56113 | turn 31 | version 0.9 -->
+<!-- CAP-094 | Continue Architecture Planning.md L56101–56113 | turn 31 | version 0.9 -->
 ### v0.9 — Replay provider
+
+> **Source sections:** `CAP-094`
+>
+> [DOCUMENTATION REVIEW] Contradiction **C-08** ([Review Notes](../REVIEW-NOTES.md#c-08--))
 
 ```
 candidate
@@ -400,8 +428,10 @@ This enables deterministic testing without pretending that network replay is equ
 
 ---
 
-<!-- source: Continue Architecture Planning.md L56115–56191 | turn 31 | version 0.9 -->
+<!-- CAP-095 | Continue Architecture Planning.md L56115–56191 | turn 31 | version 0.9 -->
 ## v0.9 — 9. The engine is now approaching a general resource runtime
+
+> **Source sections:** `CAP-095`
 
 The architecture has evolved:
 

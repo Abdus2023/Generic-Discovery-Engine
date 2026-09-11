@@ -6,17 +6,17 @@
 >
 > **Purpose:** The search/decision loop: coarse-to-fine search, the complete conceptual algorithm, and termination modes.
 
-## Contents
+## Source Sections
 
-- *Turn lead-in* — `Userscript Discovery Prototype.md` L464–464
-- **8. Model scanning as a search problem** — `Userscript Discovery Prototype.md` L466–489
-- **9. Coarse-to-fine search** — `Userscript Discovery Prototype.md` L491–527
-- **18. Termination** — `Userscript Discovery Prototype.md` L865–869
-- **Exhaustive scan** — `Userscript Discovery Prototype.md` L871–881
-- **Confidence-based scan** — `Userscript Discovery Prototype.md` L883–891
-- **Time-bounded scan** — `Userscript Discovery Prototype.md` L893–901
-- **Hybrid** — `Userscript Discovery Prototype.md` L903–915
-- **22. The complete conceptual algorithm** — `Userscript Discovery Prototype.md` L1025–1069
+- *Turn lead-in* — `USP-016` — `Userscript Discovery Prototype.md` L464–464
+- **8. Model scanning as a search problem** — `USP-017` — `Userscript Discovery Prototype.md` L466–489
+- **9. Coarse-to-fine search** — `USP-018` — `Userscript Discovery Prototype.md` L491–527
+- **18. Termination** — `USP-029` — `Userscript Discovery Prototype.md` L865–869
+- **Exhaustive scan** — `USP-030` — `Userscript Discovery Prototype.md` L871–881
+- **Confidence-based scan** — `USP-031` — `Userscript Discovery Prototype.md` L883–891
+- **Time-bounded scan** — `USP-032` — `Userscript Discovery Prototype.md` L893–901
+- **Hybrid** — `USP-033` — `Userscript Discovery Prototype.md` L903–915
+- **22. The complete conceptual algorithm** — `USP-037` — `Userscript Discovery Prototype.md` L1025–1069
 
 ## Related Documents
 
@@ -27,11 +27,17 @@
 
 ---
 
-<!-- source: Userscript Discovery Prototype.md L464–464 | turn 5 | ChatGPT turn lead-in -->
+<!-- USP-016 | Userscript Discovery Prototype.md L464–464 | turn 5 | ChatGPT turn lead-in -->
+> **Source sections:** `USP-016`
+>
+> **Note:** lead-in of the following section
+
 The next step is to make the scanner **adaptive** rather than a simple nested loop. That gives you something closer to a reusable discovery engine.
 
-<!-- source: Userscript Discovery Prototype.md L466–489 | turn 5 | version ? -->
+<!-- USP-017 | Userscript Discovery Prototype.md L466–489 | turn 5 | version ? -->
 ### 8. Model scanning as a search problem
+
+> **Source sections:** `USP-017`
 
 Define the complete search space as:
 
@@ -56,8 +62,10 @@ The important part is that you don't necessarily enumerate all of $X$. You progr
 
 ---
 
-<!-- source: Userscript Discovery Prototype.md L491–527 | turn 5 | version ? -->
+<!-- USP-018 | Userscript Discovery Prototype.md L491–527 | turn 5 | version ? -->
 ## 9. Coarse-to-fine search
+
+> **Source sections:** `USP-018`
 
 A particularly useful pattern is:
 
@@ -95,15 +103,21 @@ This matters because the cost of an RF measurement can be substantially lower th
 
 ---
 
-<!-- source: Userscript Discovery Prototype.md L865–869 | turn 7 | version ? -->
+<!-- USP-029 | Userscript Discovery Prototype.md L865–869 | turn 7 | version ? -->
 ## 18. Termination
+
+> **Source sections:** `USP-029`
+>
+> [DOCUMENTATION REVIEW] Contradiction **C-09** ([Review Notes](../REVIEW-NOTES.md#c-09--))
 
 A blind scan should not simply stop after finding the first multiplex.
 
 Typical termination conditions are:
 
-<!-- source: Userscript Discovery Prototype.md L871–881 | turn 7 | version ? -->
+<!-- USP-030 | Userscript Discovery Prototype.md L871–881 | turn 7 | version ? -->
 ### Exhaustive scan
+
+> **Source sections:** `USP-030`
 
 Stop when:
 
@@ -115,8 +129,12 @@ This gives the strongest claim:
 
 > "Everything in the configured search space was examined."
 
-<!-- source: Userscript Discovery Prototype.md L883–891 | turn 7 | version ? -->
+<!-- USP-031 | Userscript Discovery Prototype.md L883–891 | turn 7 | version ? -->
 ### Confidence-based scan
+
+> **Source sections:** `USP-031`
+>
+> [DOCUMENTATION REVIEW] Contradiction **C-06** ([Review Notes](../REVIEW-NOTES.md#c-06--))
 
 Stop when:
 
@@ -126,8 +144,10 @@ remaining candidates have probability < threshold
 
 This is faster but no longer guarantees exhaustive discovery.
 
-<!-- source: Userscript Discovery Prototype.md L893–901 | turn 7 | version ? -->
+<!-- USP-032 | Userscript Discovery Prototype.md L893–901 | turn 7 | version ? -->
 ### Time-bounded scan
+
+> **Source sections:** `USP-032`
 
 Stop after:
 
@@ -137,8 +157,10 @@ scan_time >= configured_budget
 
 Useful for receivers that need to remain responsive.
 
-<!-- source: Userscript Discovery Prototype.md L903–915 | turn 7 | version ? -->
+<!-- USP-033 | Userscript Discovery Prototype.md L903–915 | turn 7 | version ? -->
 ### Hybrid
+
+> **Source sections:** `USP-033`
 
 A practical implementation can do:
 
@@ -152,8 +174,10 @@ A practical implementation can do:
 
 ---
 
-<!-- source: Userscript Discovery Prototype.md L1025–1069 | turn 7 | version ? -->
+<!-- USP-037 | Userscript Discovery Prototype.md L1025–1069 | turn 7 | version ? -->
 ## 22. The complete conceptual algorithm
+
+> **Source sections:** `USP-037`
 
 You can now describe the whole thing compactly:
 

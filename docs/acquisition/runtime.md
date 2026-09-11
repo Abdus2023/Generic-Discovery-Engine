@@ -6,26 +6,26 @@
 >
 > **Purpose:** The runtime that executes acquisition: admission control, budgets, origin control, cancellation, timeouts and retries.
 
-## Contents
+## Source Sections
 
-- **v0.10 — Acquisition Runtime** — `Continue Architecture Planning.md` L56357–56366
-- **v0.10 — 2. The key distinction: Scheduler vs Runtime** — `Continue Architecture Planning.md` L56434–56436
-- **v0.10 — Scheduler** — `Continue Architecture Planning.md` L56438–56452
-- **v0.10 — Runtime** — `Continue Architecture Planning.md` L56454–56496
-- **v0.10 — 3. AcquisitionRuntime contract** — `Continue Architecture Planning.md` L56498–56540
-- **v0.10 — 4. Admission control** — `Continue Architecture Planning.md` L56542–56598
-- **v0.10 — 5. Budget becomes a first-class object** — `Continue Architecture Planning.md` L56600–56658
-- **v0.10 — 6. Why reservation must precede execution** — `Continue Architecture Planning.md` L56660–56704
-- **v0.10 — 7. OriginController** — `Continue Architecture Planning.md` L56706–56796
-- **v0.10 — 8. Provider selection happens after admission prerequisites** — `Continue Architecture Planning.md` L56798–56843
-- **v0.10 — 9. Provider must not own runtime policy** — `Continue Architecture Planning.md` L56845–56889
-- **v0.10 — 10. Cancellation becomes explicit** — `Continue Architecture Planning.md` L56891–56943
-- **v0.10 — 11. Timeout belongs to Runtime** — `Continue Architecture Planning.md` L56945–56979
-- **v0.10 — 12. Retry belongs to Runtime** — `Continue Architecture Planning.md` L56981–57027
-- **v0.10 — 13. Plan vs Attempt** — `Continue Architecture Planning.md` L57029–57056
-- **v0.10 — 14. Runtime event model** — `Continue Architecture Planning.md` L57058–57105
-- **v0.10 — 15. Runtime state machine** — `Continue Architecture Planning.md` L57107–57138
-- **v0.10 — 16. The complete execution equation** — `Continue Architecture Planning.md` L57140–57179
+- **v0.10 — Acquisition Runtime** — `CAP-106` — `Continue Architecture Planning.md` L56357–56366
+- **v0.10 — 2. The key distinction: Scheduler vs Runtime** — `CAP-108` — `Continue Architecture Planning.md` L56434–56436
+- **v0.10 — Scheduler** — `CAP-109` — `Continue Architecture Planning.md` L56438–56452
+- **v0.10 — Runtime** — `CAP-110` — `Continue Architecture Planning.md` L56454–56496
+- **v0.10 — 3. AcquisitionRuntime contract** — `CAP-111` — `Continue Architecture Planning.md` L56498–56540
+- **v0.10 — 4. Admission control** — `CAP-112` — `Continue Architecture Planning.md` L56542–56598
+- **v0.10 — 5. Budget becomes a first-class object** — `CAP-113` — `Continue Architecture Planning.md` L56600–56658
+- **v0.10 — 6. Why reservation must precede execution** — `CAP-114` — `Continue Architecture Planning.md` L56660–56704
+- **v0.10 — 7. OriginController** — `CAP-115` — `Continue Architecture Planning.md` L56706–56796
+- **v0.10 — 8. Provider selection happens after admission prerequisites** — `CAP-116` — `Continue Architecture Planning.md` L56798–56843
+- **v0.10 — 9. Provider must not own runtime policy** — `CAP-117` — `Continue Architecture Planning.md` L56845–56889
+- **v0.10 — 10. Cancellation becomes explicit** — `CAP-118` — `Continue Architecture Planning.md` L56891–56943
+- **v0.10 — 11. Timeout belongs to Runtime** — `CAP-119` — `Continue Architecture Planning.md` L56945–56979
+- **v0.10 — 12. Retry belongs to Runtime** — `CAP-120` — `Continue Architecture Planning.md` L56981–57027
+- **v0.10 — 13. Plan vs Attempt** — `CAP-121` — `Continue Architecture Planning.md` L57029–57056
+- **v0.10 — 14. Runtime event model** — `CAP-122` — `Continue Architecture Planning.md` L57058–57105
+- **v0.10 — 15. Runtime state machine** — `CAP-123` — `Continue Architecture Planning.md` L57107–57138
+- **v0.10 — 16. The complete execution equation** — `CAP-124` — `Continue Architecture Planning.md` L57140–57179
 
 ## Related Documents
 
@@ -36,8 +36,10 @@
 
 ---
 
-<!-- source: Continue Architecture Planning.md L56357–56366 | turn 33 | version 0.10 -->
+<!-- CAP-106 | Continue Architecture Planning.md L56357–56366 | turn 33 | version 0.10 -->
 ## v0.10 — Acquisition Runtime
+
+> **Source sections:** `CAP-106`
 
 v0.9 separated **how acquisition happens** from the discovery engine.  
 v0.10 should now separate **execution control** from the provider.
@@ -48,13 +50,17 @@ The central rule becomes:
 
 ---
 
-<!-- source: Continue Architecture Planning.md L56434–56436 | turn 33 | version 0.10 -->
+<!-- CAP-108 | Continue Architecture Planning.md L56434–56436 | turn 33 | version 0.10 -->
 ## v0.10 — 2. The key distinction: Scheduler vs Runtime
+
+> **Source sections:** `CAP-108`
 
 These are easy to accidentally merge.
 
-<!-- source: Continue Architecture Planning.md L56438–56452 | turn 33 | version 0.10 -->
+<!-- CAP-109 | Continue Architecture Planning.md L56438–56452 | turn 33 | version 0.10 -->
 ### v0.10 — Scheduler
+
+> **Source sections:** `CAP-109`
 
 Maintains candidate ordering:
 
@@ -70,8 +76,10 @@ It answers:
 Which candidate should run next?
 ```
 
-<!-- source: Continue Architecture Planning.md L56454–56496 | turn 33 | version 0.10 -->
+<!-- CAP-110 | Continue Architecture Planning.md L56454–56496 | turn 33 | version 0.10 -->
 ### v0.10 — Runtime
+
+> **Source sections:** `CAP-110`
 
 Controls execution:
 
@@ -115,8 +123,10 @@ GET /resource
 
 ---
 
-<!-- source: Continue Architecture Planning.md L56498–56540 | turn 33 | version 0.10 -->
+<!-- CAP-111 | Continue Architecture Planning.md L56498–56540 | turn 33 | version 0.10 -->
 ## v0.10 — 3. AcquisitionRuntime contract
+
+> **Source sections:** `CAP-111`
 
 The runtime can have a deliberately narrow interface:
 
@@ -160,8 +170,10 @@ admission
 
 ---
 
-<!-- source: Continue Architecture Planning.md L56542–56598 | turn 33 | version 0.10 -->
+<!-- CAP-112 | Continue Architecture Planning.md L56542–56598 | turn 33 | version 0.10 -->
 ## v0.10 — 4. Admission control
+
+> **Source sections:** `CAP-112`
 
 Before invoking a provider:
 
@@ -219,8 +231,10 @@ rather than the vague:
 
 ---
 
-<!-- source: Continue Architecture Planning.md L56600–56658 | turn 33 | version 0.10 -->
+<!-- CAP-113 | Continue Architecture Planning.md L56600–56658 | turn 33 | version 0.10 -->
 ## v0.10 — 5. Budget becomes a first-class object
+
+> **Source sections:** `CAP-113`
 
 Instead of scattered counters:
 
@@ -280,8 +294,10 @@ That distinction matters.
 
 ---
 
-<!-- source: Continue Architecture Planning.md L56660–56704 | turn 33 | version 0.10 -->
+<!-- CAP-114 | Continue Architecture Planning.md L56660–56704 | turn 33 | version 0.10 -->
 ## v0.10 — 6. Why reservation must precede execution
+
+> **Source sections:** `CAP-114`
 
 Consider concurrency:
 
@@ -327,8 +343,10 @@ The general principle is:
 
 ---
 
-<!-- source: Continue Architecture Planning.md L56706–56796 | turn 33 | version 0.10 -->
+<!-- CAP-115 | Continue Architecture Planning.md L56706–56796 | turn 33 | version 0.10 -->
 ## v0.10 — 7. OriginController
+
+> **Source sections:** `CAP-115`
 
 The existing v0.6 origin controls should move behind a dedicated interface.
 
@@ -420,8 +438,10 @@ is state-changing.
 
 ---
 
-<!-- source: Continue Architecture Planning.md L56798–56843 | turn 33 | version 0.10 -->
+<!-- CAP-116 | Continue Architecture Planning.md L56798–56843 | turn 33 | version 0.10 -->
 ## v0.10 — 8. Provider selection happens after admission prerequisites
+
+> **Source sections:** `CAP-116`
 
 A useful sequence is:
 
@@ -468,8 +488,12 @@ is preferable.
 
 ---
 
-<!-- source: Continue Architecture Planning.md L56845–56889 | turn 33 | version 0.10 -->
+<!-- CAP-117 | Continue Architecture Planning.md L56845–56889 | turn 33 | version 0.10 -->
 ## v0.10 — 9. Provider must not own runtime policy
+
+> **Source sections:** `CAP-117`
+>
+> [DOCUMENTATION REVIEW] Contradiction **C-11** ([Review Notes](../REVIEW-NOTES.md#c-11--))
 
 This would be wrong:
 
@@ -515,8 +539,10 @@ transport mechanism
 
 ---
 
-<!-- source: Continue Architecture Planning.md L56891–56943 | turn 33 | version 0.10 -->
+<!-- CAP-118 | Continue Architecture Planning.md L56891–56943 | turn 33 | version 0.10 -->
 ## v0.10 — 10. Cancellation becomes explicit
+
+> **Source sections:** `CAP-118`
 
 v0.6 had an important limitation:
 
@@ -570,8 +596,10 @@ when the userscript API supports it.
 
 ---
 
-<!-- source: Continue Architecture Planning.md L56945–56979 | turn 33 | version 0.10 -->
+<!-- CAP-119 | Continue Architecture Planning.md L56945–56979 | turn 33 | version 0.10 -->
 ## v0.10 — 11. Timeout belongs to Runtime
+
+> **Source sections:** `CAP-119`
 
 Timeout is also execution control.
 
@@ -607,8 +635,10 @@ The provider merely executes under that constraint.
 
 ---
 
-<!-- source: Continue Architecture Planning.md L56981–57027 | turn 33 | version 0.10 -->
+<!-- CAP-120 | Continue Architecture Planning.md L56981–57027 | turn 33 | version 0.10 -->
 ## v0.10 — 12. Retry belongs to Runtime
+
+> **Source sections:** `CAP-120`
 
 Similarly:
 
@@ -656,8 +686,10 @@ The event ledger records all three.
 
 ---
 
-<!-- source: Continue Architecture Planning.md L57029–57056 | turn 33 | version 0.10 -->
+<!-- CAP-121 | Continue Architecture Planning.md L57029–57056 | turn 33 | version 0.10 -->
 ## v0.10 — 13. Plan vs Attempt
+
+> **Source sections:** `CAP-121`
 
 This introduces another useful identity distinction:
 
@@ -686,8 +718,10 @@ It creates a new execution attempt.
 
 ---
 
-<!-- source: Continue Architecture Planning.md L57058–57105 | turn 33 | version 0.10 -->
+<!-- CAP-122 | Continue Architecture Planning.md L57058–57105 | turn 33 | version 0.10 -->
 ## v0.10 — 14. Runtime event model
+
+> **Source sections:** `CAP-122`
 
 v0.10 extends the ledger:
 
@@ -736,8 +770,10 @@ This gives a much stronger causal history.
 
 ---
 
-<!-- source: Continue Architecture Planning.md L57107–57138 | turn 33 | version 0.10 -->
+<!-- CAP-123 | Continue Architecture Planning.md L57107–57138 | turn 33 | version 0.10 -->
 ## v0.10 — 15. Runtime state machine
+
+> **Source sections:** `CAP-123`
 
 ```
                          ┌──────────────┐
@@ -770,8 +806,10 @@ This gives a much stronger causal history.
 
 ---
 
-<!-- source: Continue Architecture Planning.md L57140–57179 | turn 33 | version 0.10 -->
+<!-- CAP-124 | Continue Architecture Planning.md L57140–57179 | turn 33 | version 0.10 -->
 ## v0.10 — 16. The complete execution equation
+
+> **Source sections:** `CAP-124`
 
 v0.8 had:
 

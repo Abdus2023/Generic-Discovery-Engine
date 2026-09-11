@@ -1,17 +1,16 @@
 # Providers Overview
 
-> **Status:** CURRENT
+> **Status:** DESIGNED
 >
 > **Source:** `Continue Architecture Planning.md`; `Userscript Discovery Prototype.md`
 >
 > **Purpose:** The provider interface used by the prototype and the separation between provider planes.
 
-## Contents
+## Source Sections
 
-- **What changed — 2. HTML is no longer special** — `Userscript Discovery Prototype.md` L4756–4784
-- **v0.12 — 1. Three independent provider planes** — `Continue Architecture Planning.md` L58361–58416
-- **v0.12 — 8. The HTML provider should evolve** — `Continue Architecture Planning.md` L58757–58811
-- **base Provider class (v0.7.1)** — code extract from `Continue Architecture Planning.md` L51337–51349
+- **What changed — 2. HTML is no longer special** — `USP-072` — `Userscript Discovery Prototype.md` L4756–4784
+- **v0.12 — 1. Three independent provider planes** — `CAP-155` — `Continue Architecture Planning.md` L58361–58416
+- **v0.12 — 8. The HTML provider should evolve** — `CAP-167` — `Continue Architecture Planning.md` L58757–58811
 
 ## Related Documents
 
@@ -23,8 +22,12 @@
 
 ---
 
-<!-- source: Userscript Discovery Prototype.md L4756–4784 | turn 15 | version ? -->
+<!-- USP-072 | Userscript Discovery Prototype.md L4756–4784 | turn 15 | version ? -->
 ### What changed — 2. HTML is no longer special
+
+> **Source sections:** `USP-072`
+>
+> **Note:** split at numbered boundary
 
 **2. HTML is no longer special.**
 
@@ -54,8 +57,12 @@ new candidates
 
 That is much closer to the DVB abstraction: the acquisition layer produces an observation, and a protocol/content-specific provider decides whether that observation is meaningful.
 
-<!-- source: Continue Architecture Planning.md L58361–58416 | turn 37 | version 0.12 -->
+<!-- CAP-155 | Continue Architecture Planning.md L58361–58416 | turn 37 | version 0.12 -->
 ## v0.12 — 1. Three independent provider planes
+
+> **Source sections:** `CAP-155`
+>
+> **Note:** explicit override
 
 The engine now has:
 
@@ -112,8 +119,12 @@ The last arrow is the important one:
 
 ---
 
-<!-- source: Continue Architecture Planning.md L58757–58811 | turn 37 | version 0.12 -->
+<!-- CAP-167 | Continue Architecture Planning.md L58757–58811 | turn 37 | version 0.12 -->
 ## v0.12 — 8. The HTML provider should evolve
+
+> **Source sections:** `CAP-167`
+>
+> **Note:** explicit override
 
 There is a subtle architectural correction here.
 

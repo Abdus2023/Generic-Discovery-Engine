@@ -6,17 +6,17 @@
 >
 > **Purpose:** Candidates: generation, identity, lifecycle, states, deduplication and candidate budgets.
 
-## Contents
+## Source Sections
 
-- **2. Candidate generation** — `Userscript Discovery Prototype.md` L146–209
-- **6. Deduplication** — `Userscript Discovery Prototype.md` L348–382
-- **25. Candidate lifecycle** — `Userscript Discovery Prototype.md` L1147–1206
-- **Candidate** — `Userscript Discovery Prototype.md` L1455–1476
-- **34. Don't confuse candidate identity with reception identity** — `Userscript Discovery Prototype.md` L1616–1659
-- **35. Make deduplication hierarchical** — `Userscript Discovery Prototype.md` L1661–1701
-- **36. Treat metadata as a candidate generator** — `Userscript Discovery Prototype.md` L1703–1734
-- **v0.13 — 12. Candidate deduplication belongs after normalization** — `Continue Architecture Planning.md` L59996–60033
-- **v0.13 — 14. Candidate generation becomes transactional** — `Continue Architecture Planning.md` L60078–60117
+- **2. Candidate generation** — `USP-008` — `Userscript Discovery Prototype.md` L146–209
+- **6. Deduplication** — `USP-012` — `Userscript Discovery Prototype.md` L348–382
+- **25. Candidate lifecycle** — `USP-042` — `Userscript Discovery Prototype.md` L1147–1206
+- **Candidate** — `USP-051` — `Userscript Discovery Prototype.md` L1455–1476
+- **34. Don't confuse candidate identity with reception identity** — `USP-057` — `Userscript Discovery Prototype.md` L1616–1659
+- **35. Make deduplication hierarchical** — `USP-058` — `Userscript Discovery Prototype.md` L1661–1701
+- **36. Treat metadata as a candidate generator** — `USP-059` — `Userscript Discovery Prototype.md` L1703–1734
+- **v0.13 — 12. Candidate deduplication belongs after normalization** — `CAP-202` — `Continue Architecture Planning.md` L59996–60033
+- **v0.13 — 14. Candidate generation becomes transactional** — `CAP-204` — `Continue Architecture Planning.md` L60078–60117
 
 ## Related Documents
 
@@ -27,8 +27,10 @@
 
 ---
 
-<!-- source: Userscript Discovery Prototype.md L146–209 | turn 3 | version ? -->
+<!-- USP-008 | Userscript Discovery Prototype.md L146–209 | turn 3 | version ? -->
 ## 2. Candidate generation
+
+> **Source sections:** `USP-008`
 
 Instead of:
 
@@ -93,8 +95,10 @@ lock
 
 ---
 
-<!-- source: Userscript Discovery Prototype.md L348–382 | turn 3 | version ? -->
+<!-- USP-012 | Userscript Discovery Prototype.md L348–382 | turn 3 | version ? -->
 ## 6. Deduplication
+
+> **Source sections:** `USP-012`
 
 Multiple observations may describe the same multiplex.
 
@@ -130,8 +134,10 @@ If the same TS is rediscovered at slightly different tuning parameters, merge th
 
 ---
 
-<!-- source: Userscript Discovery Prototype.md L1147–1206 | turn 9 | version ? -->
+<!-- USP-042 | Userscript Discovery Prototype.md L1147–1206 | turn 9 | version ? -->
 ## 25. Candidate lifecycle
+
+> **Source sections:** `USP-042`
 
 A candidate should have a lifecycle rather than simply existing in a list:
 
@@ -192,8 +198,10 @@ Candidate C
 
 ---
 
-<!-- source: Userscript Discovery Prototype.md L1455–1476 | turn 11 | version ? -->
+<!-- USP-051 | Userscript Discovery Prototype.md L1455–1476 | turn 11 | version ? -->
 ### Candidate
+
+> **Source sections:** `USP-051`
 
 A candidate describes **what we intend to test**:
 
@@ -216,8 +224,12 @@ The `?` fields are important. A blind scanner often starts with incomplete infor
 
 ---
 
-<!-- source: Userscript Discovery Prototype.md L1616–1659 | turn 11 | version ? -->
+<!-- USP-057 | Userscript Discovery Prototype.md L1616–1659 | turn 11 | version ? -->
 ## 34. Don't confuse candidate identity with reception identity
+
+> **Source sections:** `USP-057`
+>
+> [DOCUMENTATION REVIEW] Contradiction **C-04** ([Review Notes](../REVIEW-NOTES.md#c-04--))
 
 This is subtle but important.
 
@@ -262,8 +274,10 @@ This becomes important when the same multiplex can be received:
 
 ---
 
-<!-- source: Userscript Discovery Prototype.md L1661–1701 | turn 11 | version ? -->
+<!-- USP-058 | Userscript Discovery Prototype.md L1661–1701 | turn 11 | version ? -->
 ## 35. Make deduplication hierarchical
+
+> **Source sections:** `USP-058`
 
 Deduplication can happen at several levels:
 
@@ -305,8 +319,10 @@ subject to the semantics of the delivery system and metadata.
 
 ---
 
-<!-- source: Userscript Discovery Prototype.md L1703–1734 | turn 11 | version ? -->
+<!-- USP-059 | Userscript Discovery Prototype.md L1703–1734 | turn 11 | version ? -->
 ## 36. Treat metadata as a candidate generator
+
+> **Source sections:** `USP-059`
 
 This is one of the most powerful pieces of the design.
 
@@ -339,8 +355,10 @@ The scheduler can then decide whether those hints deserve immediate acquisition.
 
 ---
 
-<!-- source: Continue Architecture Planning.md L59996–60033 | turn 39 | version 0.13 -->
+<!-- CAP-202 | Continue Architecture Planning.md L59996–60033 | turn 39 | version 0.13 -->
 ## v0.13 — 12. Candidate deduplication belongs after normalization
+
+> **Source sections:** `CAP-202`
 
 Consider:
 
@@ -379,8 +397,10 @@ Otherwise every source implements slightly different identity semantics.
 
 ---
 
-<!-- source: Continue Architecture Planning.md L60078–60117 | turn 39 | version 0.13 -->
+<!-- CAP-204 | Continue Architecture Planning.md L60078–60117 | turn 39 | version 0.13 -->
 ## v0.13 — 14. Candidate generation becomes transactional
+
+> **Source sections:** `CAP-204`
 
 The controller should process each proposal through a pipeline:
 

@@ -6,10 +6,10 @@
 >
 > **Purpose:** What the browser userscript prototype is, where it came from and how its iterations are organised.
 
-## Contents
+## Source Sections
 
-- *Turn lead-in* — `Userscript Discovery Prototype.md` L2967–3007
-- *Turn lead-in* — `Continue Architecture Planning.md` L21–38
+- *Turn lead-in* — `USP-067` — `Userscript Discovery Prototype.md` L2967–3007
+- *Turn lead-in* — `CAP-002` — `Continue Architecture Planning.md` L21–38
 
 ## Related Documents
 
@@ -21,7 +21,11 @@
 
 ---
 
-<!-- source: Userscript Discovery Prototype.md L2967–3007 | turn 13 | ChatGPT turn lead-in -->
+<!-- USP-067 | Userscript Discovery Prototype.md L2967–3007 | turn 13 | ChatGPT turn lead-in -->
+> **Source sections:** `USP-067`
+>
+> **Note:** prototype positioning
+
 The important part is that this **isn't really a “web crawler” disguised as a DVB scanner**. Its architecture deliberately follows the model we developed:
 
 ```
@@ -64,7 +68,11 @@ The important part is that this **isn't really a “web crawler” disguised as 
                                    └──────► Scheduler
 ```
 
-<!-- source: Continue Architecture Planning.md L21–38 | turn 1 | ChatGPT turn lead-in -->
+<!-- CAP-002 | Continue Architecture Planning.md L21–38 | turn 1 | ChatGPT turn lead-in -->
+> **Source sections:** `CAP-002`
+>
+> **Note:** assessment of the initial scripts
+
 I see you’ve provided **two versions of the same userscript**:
 
 * **v0.1.0** — basic discovery engine with HTML recognition.

@@ -6,109 +6,109 @@
 >
 > **Purpose:** Discovery strategies, adaptive strategy selection, query planning, tactic execution and enumeration.
 
-## Contents
+## Source Sections
 
-- **33. Discovery strategies should also be pluggable** — `Userscript Discovery Prototype.md` L1586–1614
-- **v0.17 — 27. Querying the graph** — `Continue Architecture Planning.md` L66325–66327
-- **v0.21 — Discovery Strategy Learning / Adaptive Search** — `Continue Architecture Planning.md` L71131–71200
-- **v0.21 — Adaptive Discovery Strategy** — `Continue Architecture Planning.md` L71212–71240
-- **v0.21 — 21.1 The Adaptive Loop** — `Continue Architecture Planning.md` L71242–71291
-- **v0.21 — 21.2 Strategy Performance Record** — `Continue Architecture Planning.md` L71293–71345
-- **v0.21 — 21.3 Yield Metrics** — `Continue Architecture Planning.md` L71347–71385
-- **v0.21 — 21.4 Strategy Score** — `Continue Architecture Planning.md` L71387–71432
-- **v0.21 — 21.5 Cold Start Problem** — `Continue Architecture Planning.md` L71434–71486
-- **v0.21 — 21.6 Exploration Quota** — `Continue Architecture Planning.md` L71488–71521
-- **v0.21 — 21.7 Strategy Selection Must Be Constrained** — `Continue Architecture Planning.md` L71523–71570
-- **v0.21 — 21.8 Strategy Eligibility** — `Continue Architecture Planning.md` L71572–71610
-- **v0.21 — 21.9 Temporary vs Permanent Failure** — `Continue Architecture Planning.md` L71612–71664
-- **v0.21 — 21.10 Strategy Outcome** — `Continue Architecture Planning.md` L71666–71711
-- **v0.21 — 21.11 Strategy Outcome ≠ Strategy Truth** — `Continue Architecture Planning.md` L71713–71752
-- **v0.21 — 21.12 Novelty** — `Continue Architecture Planning.md` L71754–71787
-- **v0.21 — 21.13 Frontier Expansion Value** — `Continue Architecture Planning.md` L71789–71826
-- **v0.21 — 21.14 Frontier Expansion Metric** — `Continue Architecture Planning.md` L71828–71853
-- **v0.21 — 21.15 Strategy Memory** — `Continue Architecture Planning.md` L71855–71901
-- **v0.21 — 21.16 Hierarchical Priors** — `Continue Architecture Planning.md` L71903–71955
-- **v0.21 — 21.17 Discovery Strategy Ledger** — `Continue Architecture Planning.md` L71957–71992
-- **v0.21 — 21.18 Deterministic Replay** — `Continue Architecture Planning.md` L71994–72028
-- **v0.21 — 21.19 Random Exploration** — `Continue Architecture Planning.md` L72030–72059
-- **v0.21 — 21.20 Learning Must Not Modify Safety Boundaries** — `Continue Architecture Planning.md` L72061–72108
-- **v0.21 — 21.21 Adaptive Discovery Controller** — `Continue Architecture Planning.md` L72110–72216
-- **v0.21 — 21.22 Tie-Breaking Must Be Deterministic** — `Continue Architecture Planning.md` L72218–72249
-- **v0.21 — 21.23 Performance Decay** — `Continue Architecture Planning.md` L72251–72277
-- **v0.21 — 21.24 Strategy Adaptation and Scan Sessions** — `Continue Architecture Planning.md` L72279–72325
-- **v0.21 — 21.25 Search Strategy as a First-Class Graph Node** — `Continue Architecture Planning.md` L72327–72362
-- **v0.21 — 21.26 Search Decision Graph** — `Continue Architecture Planning.md` L72364–72400
-- **v0.21 — 21.27 Two Kinds of Provenance** — `Continue Architecture Planning.md` L72402–72428
-- **v0.26 — Search Tactic Runtime** — `Continue Architecture Planning.md` L78548–78586
-- **v0.26 — Search Tactic Runtime** — `Continue Architecture Planning.md` L78598–78628
-- **v0.26 — 26.1 The architectural gap** — `Continue Architecture Planning.md` L78630–78673
-- **v0.26 — 26.2 QueryStep ≠ TacticExecution** — `Continue Architecture Planning.md` L78675–78713
-- **v0.26 — 26.3 TacticExecution** — `Continue Architecture Planning.md` L78715–78766
-- **v0.26 — 26.4 TacticRuntime** — `Continue Architecture Planning.md` L78768–78810
-- **v0.26 — 26.5 TacticRuntime responsibilities** — `Continue Architecture Planning.md` L78812–78861
-- **v0.26 — 26.6 Tactic contract** — `Continue Architecture Planning.md` L78863–78920
-- **v0.26 — 26.7 Capability surface** — `Continue Architecture Planning.md` L78922–78962
-- **v0.26 — 26.8 Bounded execution** — `Continue Architecture Planning.md` L78964–79006
-- **v0.26 — 26.9 Batch execution** — `Continue Architecture Planning.md` L79008–79074
-- **v0.26 — 26.10 Cursor** — `Continue Architecture Planning.md` L79076–79123
-- **v0.26 — 26.11 Checkpoint** — `Continue Architecture Planning.md` L79125–79165
-- **v0.26 — 26.12 Checkpoint atomicity** — `Continue Architecture Planning.md` L79167–79219
-- **v0.26 — 26.13 Tactic dependencies** — `Continue Architecture Planning.md` L79221–79272
-- **v0.26 — 26.14 Tactic lifecycle** — `Continue Architecture Planning.md` L79274–79315
-- **v0.26 — 26.15 Exhaustion vs completion** — `Continue Architecture Planning.md` L79317–79372
-- **v0.26 — 26.16 Tactic result** — `Continue Architecture Planning.md` L79374–79424
-- **v0.26 — 26.17 Tactic does not create candidates directly** — `Continue Architecture Planning.md` L79426–79465
-- **v0.26 — 26.18 Tactic → Strategy relationship** — `Continue Architecture Planning.md` L79467–79521
-- **v0.26 — 26.19 Tactic provenance** — `Continue Architecture Planning.md` L79523–79580
-- **v0.26 — Planning failures** — `Continue Architecture Planning.md` L79586–79593
-- **v0.26 — Runtime failures** — `Continue Architecture Planning.md` L79595–79605
-- **v0.26 — Strategy failures** — `Continue Architecture Planning.md` L79607–79614
-- **v0.26 — Search failures** — `Continue Architecture Planning.md` L79616–79624
-- **v0.26 — Recovery failures** — `Continue Architecture Planning.md` L79626–79649
-- **v0.26 — 26.21 Retry semantics** — `Continue Architecture Planning.md` L79651–79700
-- **v0.26 — 26.22 Cancellation** — `Continue Architecture Planning.md` L79702–79735
-- **v0.26 — 26.23 Shared Frontier interaction** — `Continue Architecture Planning.md` L79737–79782
-- **v0.26 — 26.25 Accounting** — `Continue Architecture Planning.md` L79854–79892
-- **v0.26 — 26.28 New state model** — `Continue Architecture Planning.md` L79966–80013
-- **v0.27 — Enumeration Runtime** — `Continue Architecture Planning.md` L80210–80255
-- **v0.27 — 27.1 The central distinction** — `Continue Architecture Planning.md` L80257–80301
-- **v0.27 — 27.2 Enumeration as a contract** — `Continue Architecture Planning.md` L80303–80333
-- **v0.27 — 27.3 Enumerator interface** — `Continue Architecture Planning.md` L80335–80377
-- **v0.27 — 27.4 EnumerationPage** — `Continue Architecture Planning.md` L80379–80423
-- **v0.27 — 27.5 `hasMore` is not always trustworthy** — `Continue Architecture Planning.md` L80425–80475
-- **v0.27 — 27.6 Enumeration state machine** — `Continue Architecture Planning.md` L80477–80515
-- **v0.27 — 27.7 EnumerationRuntime** — `Continue Architecture Planning.md` L80517–80563
-- **v0.27 — 27.8 Why this should not be inside DiscoveryStrategy** — `Continue Architecture Planning.md` L80565–80594
-- **v0.27 — 27.9 Enumerator examples** — `Continue Architecture Planning.md` L80596–80596
-- **v0.27 — Sitemap** — `Continue Architecture Planning.md` L80598–80606
-- **v0.27 — API** — `Continue Architecture Planning.md` L80608–80618
-- **v0.27 — Repository** — `Continue Architecture Planning.md` L80620–80630
-- **v0.27 — Manifest** — `Continue Architecture Planning.md` L80632–80644
-- **v0.27 — 27.10 EnumerationEntry** — `Continue Architecture Planning.md` L80646–80688
-- **v0.27 — 27.11 Entry identity** — `Continue Architecture Planning.md` L80690–80728
-- **v0.27 — 27.12 Enumeration cursor** — `Continue Architecture Planning.md` L80730–80732
-- **v0.27 — Offset** — `Continue Architecture Planning.md` L80734–80741
-- **v0.27 — Page** — `Continue Architecture Planning.md` L80743–80750
-- **v0.27 — Token** — `Continue Architecture Planning.md` L80752–80759
-- **v0.27 — Locator** — `Continue Architecture Planning.md` L80761–80768
-- **v0.27 — Composite** — `Continue Architecture Planning.md` L80770–80786
-- **v0.27 — 27.13 Cursor validity** — `Continue Architecture Planning.md` L80788–80835
-- **v0.27 — 27.14 Enumeration snapshot** — `Continue Architecture Planning.md` L80837–80868
-- **v0.27 — 27.15 Why snapshot identity matters** — `Continue Architecture Planning.md` L80870–80895
-- **v0.27 — 27.16 Cardinality** — `Continue Architecture Planning.md` L80897–80932
-- **v0.27 — 27.17 Ordering semantics** — `Continue Architecture Planning.md` L80934–80974
-- **v0.27 — 27.18 Enumeration consistency** — `Continue Architecture Planning.md` L80976–81012
-- **v0.27 — 27.19 Completeness assessment** — `Continue Architecture Planning.md` L81014–81053
-- **v0.27 — 27.20 The crucial three-level distinction** — `Continue Architecture Planning.md` L81055–81088
-- **v0.27 — 27.21 Example: sitemap** — `Continue Architecture Planning.md` L81090–81135
-- **v0.27 — 27.22 Enumeration → Coverage** — `Continue Architecture Planning.md` L81137–81179
-- **v0.27 — 27.23 Enumeration and negative evidence** — `Continue Architecture Planning.md` L81181–81237
-- **v0.27 — 27.24 Enumeration budget** — `Continue Architecture Planning.md` L81239–81278
-- **v0.27 — 27.25 Enumeration termination states** — `Continue Architecture Planning.md` L81280–81314
-- **v0.27 — 27.26 Enumeration accounting** — `Continue Architecture Planning.md` L81316–81348
-- **v0.27 — 27.27 Enumeration provenance** — `Continue Architecture Planning.md` L81350–81397
-- **v0.27 — 27.28 Enumeration replay** — `Continue Architecture Planning.md` L81399–81425
-- **v0.27 takeaway** — `Continue Architecture Planning.md` L81608–81646
+- **33. Discovery strategies should also be pluggable** — `USP-056` — `Userscript Discovery Prototype.md` L1586–1614
+- **v0.17 — 27. Querying the graph** — `CAP-399` — `Continue Architecture Planning.md` L66325–66327
+- **v0.21 — Discovery Strategy Learning / Adaptive Search** — `CAP-558` — `Continue Architecture Planning.md` L71131–71200
+- **v0.21 — Adaptive Discovery Strategy** — `CAP-560` — `Continue Architecture Planning.md` L71212–71240
+- **v0.21 — 21.1 The Adaptive Loop** — `CAP-561` — `Continue Architecture Planning.md` L71242–71291
+- **v0.21 — 21.2 Strategy Performance Record** — `CAP-562` — `Continue Architecture Planning.md` L71293–71345
+- **v0.21 — 21.3 Yield Metrics** — `CAP-563` — `Continue Architecture Planning.md` L71347–71385
+- **v0.21 — 21.4 Strategy Score** — `CAP-564` — `Continue Architecture Planning.md` L71387–71432
+- **v0.21 — 21.5 Cold Start Problem** — `CAP-565` — `Continue Architecture Planning.md` L71434–71486
+- **v0.21 — 21.6 Exploration Quota** — `CAP-566` — `Continue Architecture Planning.md` L71488–71521
+- **v0.21 — 21.7 Strategy Selection Must Be Constrained** — `CAP-567` — `Continue Architecture Planning.md` L71523–71570
+- **v0.21 — 21.8 Strategy Eligibility** — `CAP-568` — `Continue Architecture Planning.md` L71572–71610
+- **v0.21 — 21.9 Temporary vs Permanent Failure** — `CAP-569` — `Continue Architecture Planning.md` L71612–71664
+- **v0.21 — 21.10 Strategy Outcome** — `CAP-570` — `Continue Architecture Planning.md` L71666–71711
+- **v0.21 — 21.11 Strategy Outcome ≠ Strategy Truth** — `CAP-571` — `Continue Architecture Planning.md` L71713–71752
+- **v0.21 — 21.12 Novelty** — `CAP-572` — `Continue Architecture Planning.md` L71754–71787
+- **v0.21 — 21.13 Frontier Expansion Value** — `CAP-573` — `Continue Architecture Planning.md` L71789–71826
+- **v0.21 — 21.14 Frontier Expansion Metric** — `CAP-574` — `Continue Architecture Planning.md` L71828–71853
+- **v0.21 — 21.15 Strategy Memory** — `CAP-575` — `Continue Architecture Planning.md` L71855–71901
+- **v0.21 — 21.16 Hierarchical Priors** — `CAP-576` — `Continue Architecture Planning.md` L71903–71955
+- **v0.21 — 21.17 Discovery Strategy Ledger** — `CAP-577` — `Continue Architecture Planning.md` L71957–71992
+- **v0.21 — 21.18 Deterministic Replay** — `CAP-578` — `Continue Architecture Planning.md` L71994–72028
+- **v0.21 — 21.19 Random Exploration** — `CAP-579` — `Continue Architecture Planning.md` L72030–72059
+- **v0.21 — 21.20 Learning Must Not Modify Safety Boundaries** — `CAP-580` — `Continue Architecture Planning.md` L72061–72108
+- **v0.21 — 21.21 Adaptive Discovery Controller** — `CAP-581` — `Continue Architecture Planning.md` L72110–72216
+- **v0.21 — 21.22 Tie-Breaking Must Be Deterministic** — `CAP-582` — `Continue Architecture Planning.md` L72218–72249
+- **v0.21 — 21.23 Performance Decay** — `CAP-583` — `Continue Architecture Planning.md` L72251–72277
+- **v0.21 — 21.24 Strategy Adaptation and Scan Sessions** — `CAP-584` — `Continue Architecture Planning.md` L72279–72325
+- **v0.21 — 21.25 Search Strategy as a First-Class Graph Node** — `CAP-585` — `Continue Architecture Planning.md` L72327–72362
+- **v0.21 — 21.26 Search Decision Graph** — `CAP-586` — `Continue Architecture Planning.md` L72364–72400
+- **v0.21 — 21.27 Two Kinds of Provenance** — `CAP-587` — `Continue Architecture Planning.md` L72402–72428
+- **v0.26 — Search Tactic Runtime** — `CAP-762` — `Continue Architecture Planning.md` L78548–78586
+- **v0.26 — Search Tactic Runtime** — `CAP-764` — `Continue Architecture Planning.md` L78598–78628
+- **v0.26 — 26.1 The architectural gap** — `CAP-765` — `Continue Architecture Planning.md` L78630–78673
+- **v0.26 — 26.2 QueryStep ≠ TacticExecution** — `CAP-766` — `Continue Architecture Planning.md` L78675–78713
+- **v0.26 — 26.3 TacticExecution** — `CAP-767` — `Continue Architecture Planning.md` L78715–78766
+- **v0.26 — 26.4 TacticRuntime** — `CAP-768` — `Continue Architecture Planning.md` L78768–78810
+- **v0.26 — 26.5 TacticRuntime responsibilities** — `CAP-769` — `Continue Architecture Planning.md` L78812–78861
+- **v0.26 — 26.6 Tactic contract** — `CAP-770` — `Continue Architecture Planning.md` L78863–78920
+- **v0.26 — 26.7 Capability surface** — `CAP-771` — `Continue Architecture Planning.md` L78922–78962
+- **v0.26 — 26.8 Bounded execution** — `CAP-772` — `Continue Architecture Planning.md` L78964–79006
+- **v0.26 — 26.9 Batch execution** — `CAP-773` — `Continue Architecture Planning.md` L79008–79074
+- **v0.26 — 26.10 Cursor** — `CAP-774` — `Continue Architecture Planning.md` L79076–79123
+- **v0.26 — 26.11 Checkpoint** — `CAP-775` — `Continue Architecture Planning.md` L79125–79165
+- **v0.26 — 26.12 Checkpoint atomicity** — `CAP-776` — `Continue Architecture Planning.md` L79167–79219
+- **v0.26 — 26.13 Tactic dependencies** — `CAP-777` — `Continue Architecture Planning.md` L79221–79272
+- **v0.26 — 26.14 Tactic lifecycle** — `CAP-778` — `Continue Architecture Planning.md` L79274–79315
+- **v0.26 — 26.15 Exhaustion vs completion** — `CAP-779` — `Continue Architecture Planning.md` L79317–79372
+- **v0.26 — 26.16 Tactic result** — `CAP-780` — `Continue Architecture Planning.md` L79374–79424
+- **v0.26 — 26.17 Tactic does not create candidates directly** — `CAP-781` — `Continue Architecture Planning.md` L79426–79465
+- **v0.26 — 26.18 Tactic → Strategy relationship** — `CAP-782` — `Continue Architecture Planning.md` L79467–79521
+- **v0.26 — 26.19 Tactic provenance** — `CAP-783` — `Continue Architecture Planning.md` L79523–79580
+- **v0.26 — Planning failures** — `CAP-785` — `Continue Architecture Planning.md` L79586–79593
+- **v0.26 — Runtime failures** — `CAP-786` — `Continue Architecture Planning.md` L79595–79605
+- **v0.26 — Strategy failures** — `CAP-787` — `Continue Architecture Planning.md` L79607–79614
+- **v0.26 — Search failures** — `CAP-788` — `Continue Architecture Planning.md` L79616–79624
+- **v0.26 — Recovery failures** — `CAP-789` — `Continue Architecture Planning.md` L79626–79649
+- **v0.26 — 26.21 Retry semantics** — `CAP-790` — `Continue Architecture Planning.md` L79651–79700
+- **v0.26 — 26.22 Cancellation** — `CAP-791` — `Continue Architecture Planning.md` L79702–79735
+- **v0.26 — 26.23 Shared Frontier interaction** — `CAP-792` — `Continue Architecture Planning.md` L79737–79782
+- **v0.26 — 26.25 Accounting** — `CAP-794` — `Continue Architecture Planning.md` L79854–79892
+- **v0.26 — 26.28 New state model** — `CAP-797` — `Continue Architecture Planning.md` L79966–80013
+- **v0.27 — Enumeration Runtime** — `CAP-814` — `Continue Architecture Planning.md` L80210–80255
+- **v0.27 — 27.1 The central distinction** — `CAP-815` — `Continue Architecture Planning.md` L80257–80301
+- **v0.27 — 27.2 Enumeration as a contract** — `CAP-816` — `Continue Architecture Planning.md` L80303–80333
+- **v0.27 — 27.3 Enumerator interface** — `CAP-817` — `Continue Architecture Planning.md` L80335–80377
+- **v0.27 — 27.4 EnumerationPage** — `CAP-818` — `Continue Architecture Planning.md` L80379–80423
+- **v0.27 — 27.5 `hasMore` is not always trustworthy** — `CAP-819` — `Continue Architecture Planning.md` L80425–80475
+- **v0.27 — 27.6 Enumeration state machine** — `CAP-820` — `Continue Architecture Planning.md` L80477–80515
+- **v0.27 — 27.7 EnumerationRuntime** — `CAP-821` — `Continue Architecture Planning.md` L80517–80563
+- **v0.27 — 27.8 Why this should not be inside DiscoveryStrategy** — `CAP-822` — `Continue Architecture Planning.md` L80565–80594
+- **v0.27 — 27.9 Enumerator examples** — `CAP-823` — `Continue Architecture Planning.md` L80596–80596
+- **v0.27 — Sitemap** — `CAP-824` — `Continue Architecture Planning.md` L80598–80606
+- **v0.27 — API** — `CAP-825` — `Continue Architecture Planning.md` L80608–80618
+- **v0.27 — Repository** — `CAP-826` — `Continue Architecture Planning.md` L80620–80630
+- **v0.27 — Manifest** — `CAP-827` — `Continue Architecture Planning.md` L80632–80644
+- **v0.27 — 27.10 EnumerationEntry** — `CAP-828` — `Continue Architecture Planning.md` L80646–80688
+- **v0.27 — 27.11 Entry identity** — `CAP-829` — `Continue Architecture Planning.md` L80690–80728
+- **v0.27 — 27.12 Enumeration cursor** — `CAP-830` — `Continue Architecture Planning.md` L80730–80732
+- **v0.27 — Offset** — `CAP-831` — `Continue Architecture Planning.md` L80734–80741
+- **v0.27 — Page** — `CAP-832` — `Continue Architecture Planning.md` L80743–80750
+- **v0.27 — Token** — `CAP-833` — `Continue Architecture Planning.md` L80752–80759
+- **v0.27 — Locator** — `CAP-834` — `Continue Architecture Planning.md` L80761–80768
+- **v0.27 — Composite** — `CAP-835` — `Continue Architecture Planning.md` L80770–80786
+- **v0.27 — 27.13 Cursor validity** — `CAP-836` — `Continue Architecture Planning.md` L80788–80835
+- **v0.27 — 27.14 Enumeration snapshot** — `CAP-837` — `Continue Architecture Planning.md` L80837–80868
+- **v0.27 — 27.15 Why snapshot identity matters** — `CAP-838` — `Continue Architecture Planning.md` L80870–80895
+- **v0.27 — 27.16 Cardinality** — `CAP-839` — `Continue Architecture Planning.md` L80897–80932
+- **v0.27 — 27.17 Ordering semantics** — `CAP-840` — `Continue Architecture Planning.md` L80934–80974
+- **v0.27 — 27.18 Enumeration consistency** — `CAP-841` — `Continue Architecture Planning.md` L80976–81012
+- **v0.27 — 27.19 Completeness assessment** — `CAP-842` — `Continue Architecture Planning.md` L81014–81053
+- **v0.27 — 27.20 The crucial three-level distinction** — `CAP-843` — `Continue Architecture Planning.md` L81055–81088
+- **v0.27 — 27.21 Example: sitemap** — `CAP-844` — `Continue Architecture Planning.md` L81090–81135
+- **v0.27 — 27.22 Enumeration → Coverage** — `CAP-845` — `Continue Architecture Planning.md` L81137–81179
+- **v0.27 — 27.23 Enumeration and negative evidence** — `CAP-846` — `Continue Architecture Planning.md` L81181–81237
+- **v0.27 — 27.24 Enumeration budget** — `CAP-847` — `Continue Architecture Planning.md` L81239–81278
+- **v0.27 — 27.25 Enumeration termination states** — `CAP-848` — `Continue Architecture Planning.md` L81280–81314
+- **v0.27 — 27.26 Enumeration accounting** — `CAP-849` — `Continue Architecture Planning.md` L81316–81348
+- **v0.27 — 27.27 Enumeration provenance** — `CAP-850` — `Continue Architecture Planning.md` L81350–81397
+- **v0.27 — 27.28 Enumeration replay** — `CAP-851` — `Continue Architecture Planning.md` L81399–81425
+- **v0.27 takeaway** — `CAP-867` — `Continue Architecture Planning.md` L81608–81646
 
 ## Related Documents
 
@@ -119,8 +119,10 @@
 
 ---
 
-<!-- source: Userscript Discovery Prototype.md L1586–1614 | turn 11 | version ? -->
+<!-- USP-056 | Userscript Discovery Prototype.md L1586–1614 | turn 11 | version ? -->
 ## 33. Discovery strategies should also be pluggable
+
+> **Source sections:** `USP-056`
 
 The acquisition side is only half the abstraction.
 
@@ -150,13 +152,17 @@ The exact proportions shouldn't be hard-coded; the scheduler should dynamically 
 
 ---
 
-<!-- source: Continue Architecture Planning.md L66325–66327 | turn 47 | version 0.17 -->
+<!-- CAP-399 | Continue Architecture Planning.md L66325–66327 | turn 47 | version 0.17 -->
 ## v0.17 — 27. Querying the graph
+
+> **Source sections:** `CAP-399`
 
 The first useful queries become possible.
 
-<!-- source: Continue Architecture Planning.md L71131–71200 | turn 53 | version 0.21 -->
+<!-- CAP-558 | Continue Architecture Planning.md L71131–71200 | turn 53 | version 0.21 -->
 ## v0.21 — Discovery Strategy Learning / Adaptive Search
+
+> **Source sections:** `CAP-558`
 
 The next boundary now becomes clear.
 
@@ -227,8 +233,10 @@ The critical invariant will be:
 
 > **Adaptation may change search priority and strategy selection, but may never bypass domain boundaries, capability constraints, acquisition policy, budgets, provenance, or auditability.**
 
-<!-- source: Continue Architecture Planning.md L71212–71240 | turn 55 | version 0.21 -->
+<!-- CAP-560 | Continue Architecture Planning.md L71212–71240 | turn 55 | version 0.21 -->
 ## v0.21 — Adaptive Discovery Strategy
+
+> **Source sections:** `CAP-560`
 
 At v0.20 we introduced:
 
@@ -258,8 +266,10 @@ The first implementation should be deterministic, inspectable, and replayable.
 
 ---
 
-<!-- source: Continue Architecture Planning.md L71242–71291 | turn 55 | version 0.21 -->
+<!-- CAP-561 | Continue Architecture Planning.md L71242–71291 | turn 55 | version 0.21 -->
 ## v0.21 — 21.1 The Adaptive Loop
+
+> **Source sections:** `CAP-561`
 
 The basic loop becomes:
 
@@ -310,8 +320,10 @@ becomes a **decision**, not a hard-coded traversal order.
 
 ---
 
-<!-- source: Continue Architecture Planning.md L71293–71345 | turn 55 | version 0.21 -->
+<!-- CAP-562 | Continue Architecture Planning.md L71293–71345 | turn 55 | version 0.21 -->
 ## v0.21 — 21.2 Strategy Performance Record
+
+> **Source sections:** `CAP-562`
 
 Introduce a small historical object:
 
@@ -365,8 +377,10 @@ The engine should first know **what happened** before attempting to predict what
 
 ---
 
-<!-- source: Continue Architecture Planning.md L71347–71385 | turn 55 | version 0.21 -->
+<!-- CAP-563 | Continue Architecture Planning.md L71347–71385 | turn 55 | version 0.21 -->
 ## v0.21 — 21.3 Yield Metrics
+
+> **Source sections:** `CAP-563`
 
 From the record we can derive:
 
@@ -406,8 +420,10 @@ because then we lose the explanation.
 
 ---
 
-<!-- source: Continue Architecture Planning.md L71387–71432 | turn 55 | version 0.21 -->
+<!-- CAP-564 | Continue Architecture Planning.md L71387–71432 | turn 55 | version 0.21 -->
 ## v0.21 — 21.4 Strategy Score
+
+> **Source sections:** `CAP-564`
 
 A deterministic first version could use:
 
@@ -454,8 +470,10 @@ The contract is.
 
 ---
 
-<!-- source: Continue Architecture Planning.md L71434–71486 | turn 55 | version 0.21 -->
+<!-- CAP-565 | Continue Architecture Planning.md L71434–71486 | turn 55 | version 0.21 -->
 ## v0.21 — 21.5 Cold Start Problem
+
+> **Source sections:** `CAP-565`
 
 A new strategy has no history.
 
@@ -509,8 +527,10 @@ This prevents historical incumbents from permanently dominating.
 
 ---
 
-<!-- source: Continue Architecture Planning.md L71488–71521 | turn 55 | version 0.21 -->
+<!-- CAP-566 | Continue Architecture Planning.md L71488–71521 | turn 55 | version 0.21 -->
 ## v0.21 — 21.6 Exploration Quota
+
+> **Source sections:** `CAP-566`
 
 Introduce an explicit quota:
 
@@ -545,8 +565,10 @@ This distinction matters because a single strategy may produce many work items.
 
 ---
 
-<!-- source: Continue Architecture Planning.md L71523–71570 | turn 55 | version 0.21 -->
+<!-- CAP-567 | Continue Architecture Planning.md L71523–71570 | turn 55 | version 0.21 -->
 ## v0.21 — 21.7 Strategy Selection Must Be Constrained
+
+> **Source sections:** `CAP-567`
 
 Adaptive selection cannot simply say:
 
@@ -595,8 +617,10 @@ policy denied
 
 ---
 
-<!-- source: Continue Architecture Planning.md L71572–71610 | turn 55 | version 0.21 -->
+<!-- CAP-568 | Continue Architecture Planning.md L71572–71610 | turn 55 | version 0.21 -->
 ## v0.21 — 21.8 Strategy Eligibility
+
+> **Source sections:** `CAP-568`
 
 Introduce:
 
@@ -636,8 +660,10 @@ This distinction becomes important for diagnostics.
 
 ---
 
-<!-- source: Continue Architecture Planning.md L71612–71664 | turn 55 | version 0.21 -->
+<!-- CAP-569 | Continue Architecture Planning.md L71612–71664 | turn 55 | version 0.21 -->
 ## v0.21 — 21.9 Temporary vs Permanent Failure
+
+> **Source sections:** `CAP-569`
 
 Suppose:
 
@@ -691,8 +717,10 @@ versus:
 
 ---
 
-<!-- source: Continue Architecture Planning.md L71666–71711 | turn 55 | version 0.21 -->
+<!-- CAP-570 | Continue Architecture Planning.md L71666–71711 | turn 55 | version 0.21 -->
 ## v0.21 — 21.10 Strategy Outcome
+
+> **Source sections:** `CAP-570`
 
 Introduce an explicit result:
 
@@ -739,8 +767,10 @@ Now strategy adaptation has a clean input.
 
 ---
 
-<!-- source: Continue Architecture Planning.md L71713–71752 | turn 55 | version 0.21 -->
+<!-- CAP-571 | Continue Architecture Planning.md L71713–71752 | turn 55 | version 0.21 -->
 ## v0.21 — 21.11 Strategy Outcome ≠ Strategy Truth
+
+> **Source sections:** `CAP-571`
 
 Suppose:
 
@@ -781,8 +811,10 @@ rather than raw yield alone.
 
 ---
 
-<!-- source: Continue Architecture Planning.md L71754–71787 | turn 55 | version 0.21 -->
+<!-- CAP-572 | Continue Architecture Planning.md L71754–71787 | turn 55 | version 0.21 -->
 ## v0.21 — 21.12 Novelty
+
+> **Source sections:** `CAP-572`
 
 A powerful signal is **novelty**.
 
@@ -817,8 +849,10 @@ A strategy that discovers a new search region may have high value even if it pro
 
 ---
 
-<!-- source: Continue Architecture Planning.md L71789–71826 | turn 55 | version 0.21 -->
+<!-- CAP-573 | Continue Architecture Planning.md L71789–71826 | turn 55 | version 0.21 -->
 ## v0.21 — 21.13 Frontier Expansion Value
+
+> **Source sections:** `CAP-573`
 
 Consider:
 
@@ -857,8 +891,10 @@ frontierExpansion
 
 ---
 
-<!-- source: Continue Architecture Planning.md L71828–71853 | turn 55 | version 0.21 -->
+<!-- CAP-574 | Continue Architecture Planning.md L71828–71853 | turn 55 | version 0.21 -->
 ## v0.21 — 21.14 Frontier Expansion Metric
+
+> **Source sections:** `CAP-574`
 
 Conceptually:
 
@@ -885,8 +921,10 @@ Both are useful.
 
 ---
 
-<!-- source: Continue Architecture Planning.md L71855–71901 | turn 55 | version 0.21 -->
+<!-- CAP-575 | Continue Architecture Planning.md L71855–71901 | turn 55 | version 0.21 -->
 ## v0.21 — 21.15 Strategy Memory
+
+> **Source sections:** `CAP-575`
 
 Performance should be indexed by context.
 
@@ -934,8 +972,10 @@ function performanceKey(strategyId, context) {
 
 ---
 
-<!-- source: Continue Architecture Planning.md L71903–71955 | turn 55 | version 0.21 -->
+<!-- CAP-576 | Continue Architecture Planning.md L71903–71955 | turn 55 | version 0.21 -->
 ## v0.21 — 21.16 Hierarchical Priors
+
+> **Source sections:** `CAP-576`
 
 When there is no local history, fall back:
 
@@ -989,8 +1029,10 @@ This avoids requiring enormous amounts of historical data.
 
 ---
 
-<!-- source: Continue Architecture Planning.md L71957–71992 | turn 55 | version 0.21 -->
+<!-- CAP-577 | Continue Architecture Planning.md L71957–71992 | turn 55 | version 0.21 -->
 ## v0.21 — 21.17 Discovery Strategy Ledger
+
+> **Source sections:** `CAP-577`
 
 The event ledger should now capture:
 
@@ -1027,8 +1069,12 @@ without explanation.
 
 ---
 
-<!-- source: Continue Architecture Planning.md L71994–72028 | turn 55 | version 0.21 -->
+<!-- CAP-578 | Continue Architecture Planning.md L71994–72028 | turn 55 | version 0.21 -->
 ## v0.21 — 21.18 Deterministic Replay
+
+> **Source sections:** `CAP-578`
+>
+> [DOCUMENTATION REVIEW] Contradiction **C-08** ([Review Notes](../REVIEW-NOTES.md#c-08--))
 
 Given:
 
@@ -1064,8 +1110,10 @@ Adaptive does not have to mean nondeterministic.
 
 ---
 
-<!-- source: Continue Architecture Planning.md L72030–72059 | turn 55 | version 0.21 -->
+<!-- CAP-579 | Continue Architecture Planning.md L72030–72059 | turn 55 | version 0.21 -->
 ## v0.21 — 21.19 Random Exploration
+
+> **Source sections:** `CAP-579`
 
 At some point, randomization may be useful.
 
@@ -1096,8 +1144,10 @@ Do not introduce hidden `Math.random()` into the discovery controller.
 
 ---
 
-<!-- source: Continue Architecture Planning.md L72061–72108 | turn 55 | version 0.21 -->
+<!-- CAP-580 | Continue Architecture Planning.md L72061–72108 | turn 55 | version 0.21 -->
 ## v0.21 — 21.20 Learning Must Not Modify Safety Boundaries
+
+> **Source sections:** `CAP-580`
 
 This is probably the most important v0.21 invariant.
 
@@ -1146,8 +1196,10 @@ In other words:
 
 ---
 
-<!-- source: Continue Architecture Planning.md L72110–72216 | turn 55 | version 0.21 -->
+<!-- CAP-581 | Continue Architecture Planning.md L72110–72216 | turn 55 | version 0.21 -->
 ## v0.21 — 21.21 Adaptive Discovery Controller
+
+> **Source sections:** `CAP-581`
 
 We can now extend the controller.
 
@@ -1255,8 +1307,10 @@ The production version needs explicit:
 
 ---
 
-<!-- source: Continue Architecture Planning.md L72218–72249 | turn 55 | version 0.21 -->
+<!-- CAP-582 | Continue Architecture Planning.md L72218–72249 | turn 55 | version 0.21 -->
 ## v0.21 — 21.22 Tie-Breaking Must Be Deterministic
+
+> **Source sections:** `CAP-582`
 
 Suppose:
 
@@ -1289,8 +1343,10 @@ This matters for replay.
 
 ---
 
-<!-- source: Continue Architecture Planning.md L72251–72277 | turn 55 | version 0.21 -->
+<!-- CAP-583 | Continue Architecture Planning.md L72251–72277 | turn 55 | version 0.21 -->
 ## v0.21 — 21.23 Performance Decay
+
+> **Source sections:** `CAP-583`
 
 Old history can become stale.
 
@@ -1318,8 +1374,10 @@ historical performance
 
 ---
 
-<!-- source: Continue Architecture Planning.md L72279–72325 | turn 55 | version 0.21 -->
+<!-- CAP-584 | Continue Architecture Planning.md L72279–72325 | turn 55 | version 0.21 -->
 ## v0.21 — 21.24 Strategy Adaptation and Scan Sessions
+
+> **Source sections:** `CAP-584`
 
 Performance has another scope question.
 
@@ -1367,8 +1425,10 @@ Current decision
 
 ---
 
-<!-- source: Continue Architecture Planning.md L72327–72362 | turn 55 | version 0.21 -->
+<!-- CAP-585 | Continue Architecture Planning.md L72327–72362 | turn 55 | version 0.21 -->
 ## v0.21 — 21.25 Search Strategy as a First-Class Graph Node
+
+> **Source sections:** `CAP-585`
 
 At this point, strategy itself can become provenance.
 
@@ -1405,8 +1465,10 @@ That becomes valuable for later audit and replay.
 
 ---
 
-<!-- source: Continue Architecture Planning.md L72364–72400 | turn 55 | version 0.21 -->
+<!-- CAP-586 | Continue Architecture Planning.md L72364–72400 | turn 55 | version 0.21 -->
 ## v0.21 — 21.26 Search Decision Graph
+
+> **Source sections:** `CAP-586`
 
 We now have a second epistemic layer:
 
@@ -1444,8 +1506,10 @@ Why did the engine search here?
 
 ---
 
-<!-- source: Continue Architecture Planning.md L72402–72428 | turn 55 | version 0.21 -->
+<!-- CAP-587 | Continue Architecture Planning.md L72402–72428 | turn 55 | version 0.21 -->
 ## v0.21 — 21.27 Two Kinds of Provenance
+
+> **Source sections:** `CAP-587`
 
 This produces an important distinction:
 
@@ -1473,8 +1537,10 @@ These should not be merged.
 
 ---
 
-<!-- source: Continue Architecture Planning.md L78548–78586 | turn 63 | version 0.26 -->
+<!-- CAP-762 | Continue Architecture Planning.md L78548–78586 | turn 63 | version 0.26 -->
 ## v0.26 — Search Tactic Runtime
+
+> **Source sections:** `CAP-762`
 
 The next missing boundary is now between:
 
@@ -1514,8 +1580,10 @@ The key rule should be:
 
 > **A QueryPlan describes search intent; TacticRuntime turns that intent into bounded, resumable execution without acquiring authority beyond the existing domain/policy/capability/runtime boundaries.**
 
-<!-- source: Continue Architecture Planning.md L78598–78628 | turn 65 | version 0.26 -->
+<!-- CAP-764 | Continue Architecture Planning.md L78598–78628 | turn 65 | version 0.26 -->
 ## v0.26 — Search Tactic Runtime
+
+> **Source sections:** `CAP-764`
 
 We now have:
 
@@ -1547,8 +1615,10 @@ It does not acquire resources directly and it does not bypass the existing disco
 
 ---
 
-<!-- source: Continue Architecture Planning.md L78630–78673 | turn 65 | version 0.26 -->
+<!-- CAP-765 | Continue Architecture Planning.md L78630–78673 | turn 65 | version 0.26 -->
 ## v0.26 — 26.1 The architectural gap
+
+> **Source sections:** `CAP-765`
 
 Previously:
 
@@ -1593,8 +1663,10 @@ DiscoveryStrategy
 
 ---
 
-<!-- source: Continue Architecture Planning.md L78675–78713 | turn 65 | version 0.26 -->
+<!-- CAP-766 | Continue Architecture Planning.md L78675–78713 | turn 65 | version 0.26 -->
 ## v0.26 — 26.2 QueryStep ≠ TacticExecution
+
+> **Source sections:** `CAP-766`
 
 This distinction is critical.
 
@@ -1634,8 +1706,10 @@ Plan ≠ Attempt
 
 ---
 
-<!-- source: Continue Architecture Planning.md L78715–78766 | turn 65 | version 0.26 -->
+<!-- CAP-767 | Continue Architecture Planning.md L78715–78766 | turn 65 | version 0.26 -->
 ## v0.26 — 26.3 TacticExecution
+
+> **Source sections:** `CAP-767`
 
 ```JavaScript
 class TacticExecution {
@@ -1688,8 +1762,10 @@ The execution is therefore the durable identity of the tactic's progress.
 
 ---
 
-<!-- source: Continue Architecture Planning.md L78768–78810 | turn 65 | version 0.26 -->
+<!-- CAP-768 | Continue Architecture Planning.md L78768–78810 | turn 65 | version 0.26 -->
 ## v0.26 — 26.4 TacticRuntime
+
+> **Source sections:** `CAP-768`
 
 The runtime owns execution mechanics.
 
@@ -1733,8 +1809,10 @@ Those decisions remain with existing layers.
 
 ---
 
-<!-- source: Continue Architecture Planning.md L78812–78861 | turn 65 | version 0.26 -->
+<!-- CAP-769 | Continue Architecture Planning.md L78812–78861 | turn 65 | version 0.26 -->
 ## v0.26 — 26.5 TacticRuntime responsibilities
+
+> **Source sections:** `CAP-769`
 
 The runtime owns:
 
@@ -1785,8 +1863,10 @@ TacticRuntime
 
 ---
 
-<!-- source: Continue Architecture Planning.md L78863–78920 | turn 65 | version 0.26 -->
+<!-- CAP-770 | Continue Architecture Planning.md L78863–78920 | turn 65 | version 0.26 -->
 ## v0.26 — 26.6 Tactic contract
+
+> **Source sections:** `CAP-770`
 
 A tactic should itself remain relatively small.
 
@@ -1845,8 +1925,10 @@ That would recreate the global-coupling problem.
 
 ---
 
-<!-- source: Continue Architecture Planning.md L78922–78962 | turn 65 | version 0.26 -->
+<!-- CAP-771 | Continue Architecture Planning.md L78922–78962 | turn 65 | version 0.26 -->
 ## v0.26 — 26.7 Capability surface
+
+> **Source sections:** `CAP-771`
 
 A tactic should receive the smallest possible interface.
 
@@ -1888,8 +1970,10 @@ This is particularly important for a userscript because every JavaScript compone
 
 ---
 
-<!-- source: Continue Architecture Planning.md L78964–79006 | turn 65 | version 0.26 -->
+<!-- CAP-772 | Continue Architecture Planning.md L78964–79006 | turn 65 | version 0.26 -->
 ## v0.26 — 26.8 Bounded execution
+
+> **Source sections:** `CAP-772`
 
 A tactic must not be allowed to run indefinitely.
 
@@ -1933,8 +2017,10 @@ A tactic cannot create unlimited work simply because the global system still has
 
 ---
 
-<!-- source: Continue Architecture Planning.md L79008–79074 | turn 65 | version 0.26 -->
+<!-- CAP-773 | Continue Architecture Planning.md L79008–79074 | turn 65 | version 0.26 -->
 ## v0.26 — 26.9 Batch execution
+
+> **Source sections:** `CAP-773`
 
 The fundamental execution unit becomes a **tactic batch**.
 
@@ -2002,8 +2088,10 @@ continue
 
 ---
 
-<!-- source: Continue Architecture Planning.md L79076–79123 | turn 65 | version 0.26 -->
+<!-- CAP-774 | Continue Architecture Planning.md L79076–79123 | turn 65 | version 0.26 -->
 ## v0.26 — 26.10 Cursor
+
+> **Source sections:** `CAP-774`
 
 A tactic may need to remember where it stopped.
 
@@ -2052,8 +2140,10 @@ This avoids coupling the generic engine to every possible enumeration protocol.
 
 ---
 
-<!-- source: Continue Architecture Planning.md L79125–79165 | turn 65 | version 0.26 -->
+<!-- CAP-775 | Continue Architecture Planning.md L79125–79165 | turn 65 | version 0.26 -->
 ## v0.26 — 26.11 Checkpoint
+
+> **Source sections:** `CAP-775`
 
 Cursor alone is insufficient.
 
@@ -2095,8 +2185,12 @@ Checkpoint
 
 ---
 
-<!-- source: Continue Architecture Planning.md L79167–79219 | turn 65 | version 0.26 -->
+<!-- CAP-776 | Continue Architecture Planning.md L79167–79219 | turn 65 | version 0.26 -->
 ## v0.26 — 26.12 Checkpoint atomicity
+
+> **Source sections:** `CAP-776`
+>
+> [DOCUMENTATION REVIEW] Contradiction **C-03** ([Review Notes](../REVIEW-NOTES.md#c-03--))
 
 A dangerous failure exists:
 
@@ -2150,8 +2244,10 @@ This is an important completeness invariant.
 
 ---
 
-<!-- source: Continue Architecture Planning.md L79221–79272 | turn 65 | version 0.26 -->
+<!-- CAP-777 | Continue Architecture Planning.md L79221–79272 | turn 65 | version 0.26 -->
 ## v0.26 — 26.13 Tactic dependencies
+
+> **Source sections:** `CAP-777`
 
 Query steps can depend on other steps:
 
@@ -2204,8 +2300,10 @@ explicit execution state
 
 ---
 
-<!-- source: Continue Architecture Planning.md L79274–79315 | turn 65 | version 0.26 -->
+<!-- CAP-778 | Continue Architecture Planning.md L79274–79315 | turn 65 | version 0.26 -->
 ## v0.26 — 26.14 Tactic lifecycle
+
+> **Source sections:** `CAP-778`
 
 A useful lifecycle is:
 
@@ -2248,8 +2346,10 @@ It means:
 
 ---
 
-<!-- source: Continue Architecture Planning.md L79317–79372 | turn 65 | version 0.26 -->
+<!-- CAP-779 | Continue Architecture Planning.md L79317–79372 | turn 65 | version 0.26 -->
 ## v0.26 — 26.15 Exhaustion vs completion
+
+> **Source sections:** `CAP-779`
 
 We already established this distinction for partitions.
 
@@ -2306,8 +2406,10 @@ This separation should remain explicit throughout the architecture.
 
 ---
 
-<!-- source: Continue Architecture Planning.md L79374–79424 | turn 65 | version 0.26 -->
+<!-- CAP-780 | Continue Architecture Planning.md L79374–79424 | turn 65 | version 0.26 -->
 ## v0.26 — 26.16 Tactic result
+
+> **Source sections:** `CAP-780`
 
 The tactic should return structured results rather than mutating the engine.
 
@@ -2359,8 +2461,10 @@ The runtime then feeds proposals through the **existing CandidateNormalizer / Di
 
 ---
 
-<!-- source: Continue Architecture Planning.md L79426–79465 | turn 65 | version 0.26 -->
+<!-- CAP-781 | Continue Architecture Planning.md L79426–79465 | turn 65 | version 0.26 -->
 ## v0.26 — 26.17 Tactic does not create candidates directly
+
+> **Source sections:** `CAP-781`
 
 This is important.
 
@@ -2401,8 +2505,10 @@ The tactic only proposes.
 
 ---
 
-<!-- source: Continue Architecture Planning.md L79467–79521 | turn 65 | version 0.26 -->
+<!-- CAP-782 | Continue Architecture Planning.md L79467–79521 | turn 65 | version 0.26 -->
 ## v0.26 — 26.18 Tactic → Strategy relationship
+
+> **Source sections:** `CAP-782`
 
 The hierarchy is now:
 
@@ -2458,8 +2564,10 @@ But the tactic still cannot bypass runtime controls.
 
 ---
 
-<!-- source: Continue Architecture Planning.md L79523–79580 | turn 65 | version 0.26 -->
+<!-- CAP-783 | Continue Architecture Planning.md L79523–79580 | turn 65 | version 0.26 -->
 ## v0.26 — 26.19 Tactic provenance
+
+> **Source sections:** `CAP-783`
 
 Every tactic execution should explain itself.
 
@@ -2518,8 +2626,10 @@ candidate.source = "some tactic"
 
 ---
 
-<!-- source: Continue Architecture Planning.md L79586–79593 | turn 65 | version 0.26 -->
+<!-- CAP-785 | Continue Architecture Planning.md L79586–79593 | turn 65 | version 0.26 -->
 ### v0.26 — Planning failures
+
+> **Source sections:** `CAP-785`
 
 ```
 invalid-step
@@ -2528,8 +2638,10 @@ unsupported-tactic
 dependency-unsatisfied
 ```
 
-<!-- source: Continue Architecture Planning.md L79595–79605 | turn 65 | version 0.26 -->
+<!-- CAP-786 | Continue Architecture Planning.md L79595–79605 | turn 65 | version 0.26 -->
 ### v0.26 — Runtime failures
+
+> **Source sections:** `CAP-786`
 
 ```
 execution-claim-failed
@@ -2541,8 +2653,10 @@ timeout
 cancelled
 ```
 
-<!-- source: Continue Architecture Planning.md L79607–79614 | turn 65 | version 0.26 -->
+<!-- CAP-787 | Continue Architecture Planning.md L79607–79614 | turn 65 | version 0.26 -->
 ### v0.26 — Strategy failures
+
+> **Source sections:** `CAP-787`
 
 ```
 strategy-unavailable
@@ -2551,8 +2665,10 @@ strategy-policy-conflict
 strategy-capability-missing
 ```
 
-<!-- source: Continue Architecture Planning.md L79616–79624 | turn 65 | version 0.26 -->
+<!-- CAP-788 | Continue Architecture Planning.md L79616–79624 | turn 65 | version 0.26 -->
 ### v0.26 — Search failures
+
+> **Source sections:** `CAP-788`
 
 ```
 enumeration-incomplete
@@ -2562,8 +2678,10 @@ cursor-expired
 partition-inaccessible
 ```
 
-<!-- source: Continue Architecture Planning.md L79626–79649 | turn 65 | version 0.26 -->
+<!-- CAP-789 | Continue Architecture Planning.md L79626–79649 | turn 65 | version 0.26 -->
 ### v0.26 — Recovery failures
+
+> **Source sections:** `CAP-789`
 
 ```
 checkpoint-incompatible
@@ -2588,8 +2706,10 @@ ABSENT
 
 ---
 
-<!-- source: Continue Architecture Planning.md L79651–79700 | turn 65 | version 0.26 -->
+<!-- CAP-790 | Continue Architecture Planning.md L79651–79700 | turn 65 | version 0.26 -->
 ## v0.26 — 26.21 Retry semantics
+
+> **Source sections:** `CAP-790`
 
 Tactic retries must preserve execution identity.
 
@@ -2640,8 +2760,10 @@ recovery path
 
 ---
 
-<!-- source: Continue Architecture Planning.md L79702–79735 | turn 65 | version 0.26 -->
+<!-- CAP-791 | Continue Architecture Planning.md L79702–79735 | turn 65 | version 0.26 -->
 ## v0.26 — 26.22 Cancellation
+
+> **Source sections:** `CAP-791`
 
 Cancellation must propagate through the tactic context.
 
@@ -2676,8 +2798,10 @@ Therefore:
 
 ---
 
-<!-- source: Continue Architecture Planning.md L79737–79782 | turn 65 | version 0.26 -->
+<!-- CAP-792 | Continue Architecture Planning.md L79737–79782 | turn 65 | version 0.26 -->
 ## v0.26 — 26.23 Shared Frontier interaction
+
+> **Source sections:** `CAP-792`
 
 The tactic runtime must not create a competing scheduler.
 
@@ -2724,8 +2848,10 @@ Multiple execution semantics.
 
 ---
 
-<!-- source: Continue Architecture Planning.md L79854–79892 | turn 65 | version 0.26 -->
+<!-- CAP-794 | Continue Architecture Planning.md L79854–79892 | turn 65 | version 0.26 -->
 ## v0.26 — 26.25 Accounting
+
+> **Source sections:** `CAP-794`
 
 A tactic should produce explicit accounting.
 
@@ -2765,8 +2891,10 @@ guaranteed future yield
 
 ---
 
-<!-- source: Continue Architecture Planning.md L79966–80013 | turn 65 | version 0.26 -->
+<!-- CAP-797 | Continue Architecture Planning.md L79966–80013 | turn 65 | version 0.26 -->
 ## v0.26 — 26.28 New state model
+
+> **Source sections:** `CAP-797`
 
 We now have three different state machines:
 
@@ -2815,8 +2943,10 @@ These states should not be collapsed.
 
 ---
 
-<!-- source: Continue Architecture Planning.md L80210–80255 | turn 67 | version 0.27 -->
+<!-- CAP-814 | Continue Architecture Planning.md L80210–80255 | turn 67 | version 0.27 -->
 ## v0.27 — Enumeration Runtime
+
+> **Source sections:** `CAP-814`
 
 v0.26 gave us:
 
@@ -2863,8 +2993,10 @@ Entries
 
 ---
 
-<!-- source: Continue Architecture Planning.md L80257–80301 | turn 67 | version 0.27 -->
+<!-- CAP-815 | Continue Architecture Planning.md L80257–80301 | turn 67 | version 0.27 -->
 ## v0.27 — 27.1 The central distinction
+
+> **Source sections:** `CAP-815`
 
 We must distinguish:
 
@@ -2910,8 +3042,10 @@ unless the enumeration contract establishes that relationship.
 
 ---
 
-<!-- source: Continue Architecture Planning.md L80303–80333 | turn 67 | version 0.27 -->
+<!-- CAP-816 | Continue Architecture Planning.md L80303–80333 | turn 67 | version 0.27 -->
 ## v0.27 — 27.2 Enumeration as a contract
+
+> **Source sections:** `CAP-816`
 
 An enumerator should answer:
 
@@ -2943,8 +3077,10 @@ EnumerationContract
 
 ---
 
-<!-- source: Continue Architecture Planning.md L80335–80377 | turn 67 | version 0.27 -->
+<!-- CAP-817 | Continue Architecture Planning.md L80335–80377 | turn 67 | version 0.27 -->
 ## v0.27 — 27.3 Enumerator interface
+
+> **Source sections:** `CAP-817`
 
 ```JavaScript
 class Enumerator {
@@ -2988,8 +3124,10 @@ which produces a bounded page/batch.
 
 ---
 
-<!-- source: Continue Architecture Planning.md L80379–80423 | turn 67 | version 0.27 -->
+<!-- CAP-818 | Continue Architecture Planning.md L80379–80423 | turn 67 | version 0.27 -->
 ## v0.27 — 27.4 EnumerationPage
+
+> **Source sections:** `CAP-818`
 
 The result of one enumeration operation should be explicit.
 
@@ -3035,8 +3173,10 @@ Enumeration
 
 ---
 
-<!-- source: Continue Architecture Planning.md L80425–80475 | turn 67 | version 0.27 -->
+<!-- CAP-819 | Continue Architecture Planning.md L80425–80475 | turn 67 | version 0.27 -->
 ## v0.27 — 27.5 `hasMore` is not always trustworthy
+
+> **Source sections:** `CAP-819`
 
 A major failure mode is assuming:
 
@@ -3088,8 +3228,10 @@ It does not necessarily prove:
 
 ---
 
-<!-- source: Continue Architecture Planning.md L80477–80515 | turn 67 | version 0.27 -->
+<!-- CAP-820 | Continue Architecture Planning.md L80477–80515 | turn 67 | version 0.27 -->
 ## v0.27 — 27.6 Enumeration state machine
+
+> **Source sections:** `CAP-820`
 
 ```
 UNINITIALIZED
@@ -3129,8 +3271,10 @@ BUDGET_EXHAUSTED
 
 ---
 
-<!-- source: Continue Architecture Planning.md L80517–80563 | turn 67 | version 0.27 -->
+<!-- CAP-821 | Continue Architecture Planning.md L80517–80563 | turn 67 | version 0.27 -->
 ## v0.27 — 27.7 EnumerationRuntime
+
+> **Source sections:** `CAP-821`
 
 The runtime sits between tactic execution and the concrete enumerator.
 
@@ -3178,8 +3322,10 @@ The enumerator owns protocol-specific semantics.
 
 ---
 
-<!-- source: Continue Architecture Planning.md L80565–80594 | turn 67 | version 0.27 -->
+<!-- CAP-822 | Continue Architecture Planning.md L80565–80594 | turn 67 | version 0.27 -->
 ## v0.27 — 27.8 Why this should not be inside DiscoveryStrategy
+
+> **Source sections:** `CAP-822`
 
 Without this layer:
 
@@ -3210,13 +3356,17 @@ The reusable machinery becomes centralized.
 
 ---
 
-<!-- source: Continue Architecture Planning.md L80596–80596 | turn 67 | version 0.27 -->
+<!-- CAP-823 | Continue Architecture Planning.md L80596–80596 | turn 67 | version 0.27 -->
 ## v0.27 — 27.9 Enumerator examples
 
+> **Source sections:** `CAP-823`
 
 
-<!-- source: Continue Architecture Planning.md L80598–80606 | turn 67 | version 0.27 -->
+
+<!-- CAP-824 | Continue Architecture Planning.md L80598–80606 | turn 67 | version 0.27 -->
 ### v0.27 — Sitemap
+
+> **Source sections:** `CAP-824`
 
 ```
 Sitemap
@@ -3226,8 +3376,10 @@ URL entries
 next sitemap page
 ```
 
-<!-- source: Continue Architecture Planning.md L80608–80618 | turn 67 | version 0.27 -->
+<!-- CAP-825 | Continue Architecture Planning.md L80608–80618 | turn 67 | version 0.27 -->
 ### v0.27 — API
+
+> **Source sections:** `CAP-825`
 
 ```
 API endpoint
@@ -3239,8 +3391,10 @@ entries
 next token
 ```
 
-<!-- source: Continue Architecture Planning.md L80620–80630 | turn 67 | version 0.27 -->
+<!-- CAP-826 | Continue Architecture Planning.md L80620–80630 | turn 67 | version 0.27 -->
 ### v0.27 — Repository
+
+> **Source sections:** `CAP-826`
 
 ```
 repository index
@@ -3252,8 +3406,10 @@ pagination
 next page
 ```
 
-<!-- source: Continue Architecture Planning.md L80632–80644 | turn 67 | version 0.27 -->
+<!-- CAP-827 | Continue Architecture Planning.md L80632–80644 | turn 67 | version 0.27 -->
 ### v0.27 — Manifest
+
+> **Source sections:** `CAP-827`
 
 ```
 manifest
@@ -3267,8 +3423,10 @@ All four can use the same runtime.
 
 ---
 
-<!-- source: Continue Architecture Planning.md L80646–80688 | turn 67 | version 0.27 -->
+<!-- CAP-828 | Continue Architecture Planning.md L80646–80688 | turn 67 | version 0.27 -->
 ## v0.27 — 27.10 EnumerationEntry
+
+> **Source sections:** `CAP-828`
 
 Entries should not immediately become candidates.
 
@@ -3312,8 +3470,12 @@ This preserves the existing architecture.
 
 ---
 
-<!-- source: Continue Architecture Planning.md L80690–80728 | turn 67 | version 0.27 -->
+<!-- CAP-829 | Continue Architecture Planning.md L80690–80728 | turn 67 | version 0.27 -->
 ## v0.27 — 27.11 Entry identity
+
+> **Source sections:** `CAP-829`
+>
+> [DOCUMENTATION REVIEW] Contradiction **C-04** ([Review Notes](../REVIEW-NOTES.md#c-04--))
 
 An enumerator can encounter duplicates:
 
@@ -3353,13 +3515,17 @@ The ResourceGraph resolves logical identity.
 
 ---
 
-<!-- source: Continue Architecture Planning.md L80730–80732 | turn 67 | version 0.27 -->
+<!-- CAP-830 | Continue Architecture Planning.md L80730–80732 | turn 67 | version 0.27 -->
 ## v0.27 — 27.12 Enumeration cursor
+
+> **Source sections:** `CAP-830`
 
 There are several cursor classes.
 
-<!-- source: Continue Architecture Planning.md L80734–80741 | turn 67 | version 0.27 -->
+<!-- CAP-831 | Continue Architecture Planning.md L80734–80741 | turn 67 | version 0.27 -->
 ### v0.27 — Offset
+
+> **Source sections:** `CAP-831`
 
 ```JavaScript
 {
@@ -3368,8 +3534,10 @@ There are several cursor classes.
 }
 ```
 
-<!-- source: Continue Architecture Planning.md L80743–80750 | turn 67 | version 0.27 -->
+<!-- CAP-832 | Continue Architecture Planning.md L80743–80750 | turn 67 | version 0.27 -->
 ### v0.27 — Page
+
+> **Source sections:** `CAP-832`
 
 ```JavaScript
 {
@@ -3378,8 +3546,10 @@ There are several cursor classes.
 }
 ```
 
-<!-- source: Continue Architecture Planning.md L80752–80759 | turn 67 | version 0.27 -->
+<!-- CAP-833 | Continue Architecture Planning.md L80752–80759 | turn 67 | version 0.27 -->
 ### v0.27 — Token
+
+> **Source sections:** `CAP-833`
 
 ```JavaScript
 {
@@ -3388,8 +3558,10 @@ There are several cursor classes.
 }
 ```
 
-<!-- source: Continue Architecture Planning.md L80761–80768 | turn 67 | version 0.27 -->
+<!-- CAP-834 | Continue Architecture Planning.md L80761–80768 | turn 67 | version 0.27 -->
 ### v0.27 — Locator
+
+> **Source sections:** `CAP-834`
 
 ```JavaScript
 {
@@ -3398,8 +3570,10 @@ There are several cursor classes.
 }
 ```
 
-<!-- source: Continue Architecture Planning.md L80770–80786 | turn 67 | version 0.27 -->
+<!-- CAP-835 | Continue Architecture Planning.md L80770–80786 | turn 67 | version 0.27 -->
 ### v0.27 — Composite
+
+> **Source sections:** `CAP-835`
 
 ```JavaScript
 {
@@ -3417,8 +3591,10 @@ It should not reinterpret opaque values.
 
 ---
 
-<!-- source: Continue Architecture Planning.md L80788–80835 | turn 67 | version 0.27 -->
+<!-- CAP-836 | Continue Architecture Planning.md L80788–80835 | turn 67 | version 0.27 -->
 ## v0.27 — 27.13 Cursor validity
+
+> **Source sections:** `CAP-836`
 
 A cursor can become invalid.
 
@@ -3467,8 +3643,10 @@ attempt recovery policy
 
 ---
 
-<!-- source: Continue Architecture Planning.md L80837–80868 | turn 67 | version 0.27 -->
+<!-- CAP-837 | Continue Architecture Planning.md L80837–80868 | turn 67 | version 0.27 -->
 ## v0.27 — 27.14 Enumeration snapshot
+
+> **Source sections:** `CAP-837`
 
 For stronger completeness reasoning, the engine should identify what enumeration was observed.
 
@@ -3501,8 +3679,12 @@ Now completeness can refer to a concrete snapshot.
 
 ---
 
-<!-- source: Continue Architecture Planning.md L80870–80895 | turn 67 | version 0.27 -->
+<!-- CAP-838 | Continue Architecture Planning.md L80870–80895 | turn 67 | version 0.27 -->
 ## v0.27 — 27.15 Why snapshot identity matters
+
+> **Source sections:** `CAP-838`
+>
+> [DOCUMENTATION REVIEW] Contradiction **C-04** ([Review Notes](../REVIEW-NOTES.md#c-04--))
 
 Suppose:
 
@@ -3529,8 +3711,10 @@ This connects directly to v0.23 temporal absence reasoning.
 
 ---
 
-<!-- source: Continue Architecture Planning.md L80897–80932 | turn 67 | version 0.27 -->
+<!-- CAP-839 | Continue Architecture Planning.md L80897–80932 | turn 67 | version 0.27 -->
 ## v0.27 — 27.16 Cardinality
+
+> **Source sections:** `CAP-839`
 
 Some enumerators expose a total:
 
@@ -3567,8 +3751,10 @@ A provider could be wrong, stale, filtered, paginated incorrectly, or access-dep
 
 ---
 
-<!-- source: Continue Architecture Planning.md L80934–80974 | turn 67 | version 0.27 -->
+<!-- CAP-840 | Continue Architecture Planning.md L80934–80974 | turn 67 | version 0.27 -->
 ## v0.27 — 27.17 Ordering semantics
+
+> **Source sections:** `CAP-840`
 
 Enumeration ordering matters for recovery.
 
@@ -3610,8 +3796,10 @@ should affect completeness claims.
 
 ---
 
-<!-- source: Continue Architecture Planning.md L80976–81012 | turn 67 | version 0.27 -->
+<!-- CAP-841 | Continue Architecture Planning.md L80976–81012 | turn 67 | version 0.27 -->
 ## v0.27 — 27.18 Enumeration consistency
+
+> **Source sections:** `CAP-841`
 
 Useful states:
 
@@ -3649,8 +3837,12 @@ page 2
 
 ---
 
-<!-- source: Continue Architecture Planning.md L81014–81053 | turn 67 | version 0.27 -->
+<!-- CAP-842 | Continue Architecture Planning.md L81014–81053 | turn 67 | version 0.27 -->
 ## v0.27 — 27.19 Completeness assessment
+
+> **Source sections:** `CAP-842`
+>
+> [DOCUMENTATION REVIEW] Contradiction **C-05** ([Review Notes](../REVIEW-NOTES.md#c-05--))
 
 The EnumerationRuntime should produce a **termination observation**, not directly assert global completeness.
 
@@ -3691,8 +3883,10 @@ This becomes evidence for v0.22's coverage/completeness layer.
 
 ---
 
-<!-- source: Continue Architecture Planning.md L81055–81088 | turn 67 | version 0.27 -->
+<!-- CAP-843 | Continue Architecture Planning.md L81055–81088 | turn 67 | version 0.27 -->
 ## v0.27 — 27.20 The crucial three-level distinction
+
+> **Source sections:** `CAP-843`
 
 We now have:
 
@@ -3727,8 +3921,10 @@ and even then the resulting completeness claim is scoped to the enumeration cont
 
 ---
 
-<!-- source: Continue Architecture Planning.md L81090–81135 | turn 67 | version 0.27 -->
+<!-- CAP-844 | Continue Architecture Planning.md L81090–81135 | turn 67 | version 0.27 -->
 ## v0.27 — 27.21 Example: sitemap
+
+> **Source sections:** `CAP-844`
 
 Suppose:
 
@@ -3775,8 +3971,12 @@ This distinction is one of the most important properties of the system.
 
 ---
 
-<!-- source: Continue Architecture Planning.md L81137–81179 | turn 67 | version 0.27 -->
+<!-- CAP-845 | Continue Architecture Planning.md L81137–81179 | turn 67 | version 0.27 -->
 ## v0.27 — 27.22 Enumeration → Coverage
+
+> **Source sections:** `CAP-845`
+>
+> [DOCUMENTATION REVIEW] Contradiction **C-05** ([Review Notes](../REVIEW-NOTES.md#c-05--))
 
 Now the earlier coverage machinery becomes connected.
 
@@ -3820,8 +4020,10 @@ coverage scope = entire web origin
 
 ---
 
-<!-- source: Continue Architecture Planning.md L81181–81237 | turn 67 | version 0.27 -->
+<!-- CAP-846 | Continue Architecture Planning.md L81181–81237 | turn 67 | version 0.27 -->
 ## v0.27 — 27.23 Enumeration and negative evidence
+
+> **Source sections:** `CAP-846`
 
 v0.23 becomes more powerful here.
 
@@ -3879,8 +4081,10 @@ Negative evidence
 
 ---
 
-<!-- source: Continue Architecture Planning.md L81239–81278 | turn 67 | version 0.27 -->
+<!-- CAP-847 | Continue Architecture Planning.md L81239–81278 | turn 67 | version 0.27 -->
 ## v0.27 — 27.24 Enumeration budget
+
+> **Source sections:** `CAP-847`
 
 Enumeration introduces another potential runaway:
 
@@ -3921,8 +4125,12 @@ This is a hard semantic distinction.
 
 ---
 
-<!-- source: Continue Architecture Planning.md L81280–81314 | turn 67 | version 0.27 -->
+<!-- CAP-848 | Continue Architecture Planning.md L81280–81314 | turn 67 | version 0.27 -->
 ## v0.27 — 27.25 Enumeration termination states
+
+> **Source sections:** `CAP-848`
+>
+> [DOCUMENTATION REVIEW] Contradiction **C-09** ([Review Notes](../REVIEW-NOTES.md#c-09--))
 
 Use explicit states:
 
@@ -3958,8 +4166,10 @@ COMPLETE
 
 ---
 
-<!-- source: Continue Architecture Planning.md L81316–81348 | turn 67 | version 0.27 -->
+<!-- CAP-849 | Continue Architecture Planning.md L81316–81348 | turn 67 | version 0.27 -->
 ## v0.27 — 27.26 Enumeration accounting
+
+> **Source sections:** `CAP-849`
 
 An execution can now record:
 
@@ -3993,8 +4203,10 @@ replay
 
 ---
 
-<!-- source: Continue Architecture Planning.md L81350–81397 | turn 67 | version 0.27 -->
+<!-- CAP-850 | Continue Architecture Planning.md L81350–81397 | turn 67 | version 0.27 -->
 ## v0.27 — 27.27 Enumeration provenance
+
+> **Source sections:** `CAP-850`
 
 A candidate should be traceable all the way back:
 
@@ -4043,8 +4255,12 @@ foundBy = "sitemap"
 
 ---
 
-<!-- source: Continue Architecture Planning.md L81399–81425 | turn 67 | version 0.27 -->
+<!-- CAP-851 | Continue Architecture Planning.md L81399–81425 | turn 67 | version 0.27 -->
 ## v0.27 — 27.28 Enumeration replay
+
+> **Source sections:** `CAP-851`
+>
+> [DOCUMENTATION REVIEW] Contradiction **C-08** ([Review Notes](../REVIEW-NOTES.md#c-08--))
 
 A deterministic enumerator can be replayed from:
 
@@ -4072,8 +4288,10 @@ This distinction was already established for the broader system.
 
 ---
 
-<!-- source: Continue Architecture Planning.md L81608–81646 | turn 67 | version 0.27 -->
+<!-- CAP-867 | Continue Architecture Planning.md L81608–81646 | turn 67 | version 0.27 -->
 ## v0.27 takeaway
+
+> **Source sections:** `CAP-867`
 
 The architecture now has a proper bridge between **search tactics** and **coverage claims**:
 

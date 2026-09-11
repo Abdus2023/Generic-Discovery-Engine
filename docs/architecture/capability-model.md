@@ -6,25 +6,25 @@
 >
 > **Purpose:** Capabilities as first-class objects: the capability lattice, contracts and capability resolution.
 
-## Contents
+## Source Sections
 
-- **v0.8 — Capability-Aware Acquisition Runtime** — `Continue Architecture Planning.md` L54631–54653
-- **v0.8 — 1. The three graphs** — `Continue Architecture Planning.md` L54655–54681
-- **v0.8 — Discovery graph** — `Continue Architecture Planning.md` L54683–54695
-- **v0.8 — Evidence graph** — `Continue Architecture Planning.md` L54712–54729
-- **v0.8 — 2. Capability is now a first-class object** — `Continue Architecture Planning.md` L54731–54803
-- **v0.8 — 3. Capability lattice** — `Continue Architecture Planning.md` L54805–54839
-- **v0.8 — 4. Capability contract** — `Continue Architecture Planning.md` L54841–54905
-- **v0.8 — 5. Candidate requirements** — `Continue Architecture Planning.md` L54907–54968
-- **v0.8 — 7. Why this matters for generic discovery** — `Continue Architecture Planning.md` L55046–55104
-- **v0.8 — 9. Capability provenance** — `Continue Architecture Planning.md` L55204–55257
-- **v0.8 — 10. The four-level authorization model** — `Continue Architecture Planning.md` L55259–55301
-- **v0.8 — 11. New graph model** — `Continue Architecture Planning.md` L55303–55340
-- **v0.8 — 12. v0.8 ledger** — `Continue Architecture Planning.md` L55342–55402
-- **v0.8 — 13. Important architectural consequence** — `Continue Architecture Planning.md` L55404–55458
-- **v0.8 — 14. v0.8 scope boundary** — `Continue Architecture Planning.md` L55460–55462
-- **v0.8 — Implement** — `Continue Architecture Planning.md` L55464–55472
-- **v0.8 — Represent but deny** — `Continue Architecture Planning.md` L55474–55491
+- **v0.8 — Capability-Aware Acquisition Runtime** — `CAP-056` — `Continue Architecture Planning.md` L54631–54653
+- **v0.8 — 1. The three graphs** — `CAP-057` — `Continue Architecture Planning.md` L54655–54681
+- **v0.8 — Discovery graph** — `CAP-058` — `Continue Architecture Planning.md` L54683–54695
+- **v0.8 — Evidence graph** — `CAP-060` — `Continue Architecture Planning.md` L54712–54729
+- **v0.8 — 2. Capability is now a first-class object** — `CAP-061` — `Continue Architecture Planning.md` L54731–54803
+- **v0.8 — 3. Capability lattice** — `CAP-062` — `Continue Architecture Planning.md` L54805–54839
+- **v0.8 — 4. Capability contract** — `CAP-063` — `Continue Architecture Planning.md` L54841–54905
+- **v0.8 — 5. Candidate requirements** — `CAP-064` — `Continue Architecture Planning.md` L54907–54968
+- **v0.8 — 7. Why this matters for generic discovery** — `CAP-066` — `Continue Architecture Planning.md` L55046–55104
+- **v0.8 — 9. Capability provenance** — `CAP-068` — `Continue Architecture Planning.md` L55204–55257
+- **v0.8 — 10. The four-level authorization model** — `CAP-069` — `Continue Architecture Planning.md` L55259–55301
+- **v0.8 — 11. New graph model** — `CAP-070` — `Continue Architecture Planning.md` L55303–55340
+- **v0.8 — 12. v0.8 ledger** — `CAP-071` — `Continue Architecture Planning.md` L55342–55402
+- **v0.8 — 13. Important architectural consequence** — `CAP-072` — `Continue Architecture Planning.md` L55404–55458
+- **v0.8 — 14. v0.8 scope boundary** — `CAP-073` — `Continue Architecture Planning.md` L55460–55462
+- **v0.8 — Implement** — `CAP-074` — `Continue Architecture Planning.md` L55464–55472
+- **v0.8 — Represent but deny** — `CAP-075` — `Continue Architecture Planning.md` L55474–55491
 
 ## Related Documents
 
@@ -34,8 +34,10 @@
 
 ---
 
-<!-- source: Continue Architecture Planning.md L54631–54653 | turn 29 | version 0.8 -->
+<!-- CAP-056 | Continue Architecture Planning.md L54631–54653 | turn 29 | version 0.8 -->
 ## v0.8 — Capability-Aware Acquisition Runtime
+
+> **Source sections:** `CAP-056`
 
 v0.7.1 established the **decision boundary**:
 
@@ -59,8 +61,10 @@ This is the point where the engine starts moving from a crawler toward a **gener
 
 ---
 
-<!-- source: Continue Architecture Planning.md L54655–54681 | turn 29 | version 0.8 -->
+<!-- CAP-057 | Continue Architecture Planning.md L54655–54681 | turn 29 | version 0.8 -->
 ## v0.8 — 1. The three graphs
+
+> **Source sections:** `CAP-057`
 
 The v0.8 architecture should stop treating everything as one graph.
 
@@ -88,8 +92,10 @@ The v0.8 architecture should stop treating everything as one graph.
 
 These answer three different questions.
 
-<!-- source: Continue Architecture Planning.md L54683–54695 | turn 29 | version 0.8 -->
+<!-- CAP-058 | Continue Architecture Planning.md L54683–54695 | turn 29 | version 0.8 -->
 ### v0.8 — Discovery graph
+
+> **Source sections:** `CAP-058`
 
 ```
 HTML page
@@ -103,8 +109,10 @@ Meaning:
 
 > The API endpoint was discovered through a JavaScript resource.
 
-<!-- source: Continue Architecture Planning.md L54712–54729 | turn 29 | version 0.8 -->
+<!-- CAP-060 | Continue Architecture Planning.md L54712–54729 | turn 29 | version 0.8 -->
 ### v0.8 — Evidence graph
+
+> **Source sections:** `CAP-060`
 
 ```
 API endpoint
@@ -123,8 +131,10 @@ Meaning:
 
 ---
 
-<!-- source: Continue Architecture Planning.md L54731–54803 | turn 29 | version 0.8 -->
+<!-- CAP-061 | Continue Architecture Planning.md L54731–54803 | turn 29 | version 0.8 -->
 ## v0.8 — 2. Capability is now a first-class object
+
+> **Source sections:** `CAP-061`
 
 Instead of:
 
@@ -198,8 +208,10 @@ A POST endpoint may be observable but not executable by the current runtime.
 
 ---
 
-<!-- source: Continue Architecture Planning.md L54805–54839 | turn 29 | version 0.8 -->
+<!-- CAP-062 | Continue Architecture Planning.md L54805–54839 | turn 29 | version 0.8 -->
 ## v0.8 — 3. Capability lattice
+
+> **Source sections:** `CAP-062`
 
 The initial capability model can remain deliberately small.
 
@@ -235,8 +247,10 @@ AUTHORIZED
 
 ---
 
-<!-- source: Continue Architecture Planning.md L54841–54905 | turn 29 | version 0.8 -->
+<!-- CAP-063 | Continue Architecture Planning.md L54841–54905 | turn 29 | version 0.8 -->
 ## v0.8 — 4. Capability contract
+
+> **Source sections:** `CAP-063`
 
 Introduce a small contract:
 
@@ -302,8 +316,10 @@ This makes the safety boundary explicit.
 
 ---
 
-<!-- source: Continue Architecture Planning.md L54907–54968 | turn 29 | version 0.8 -->
+<!-- CAP-064 | Continue Architecture Planning.md L54907–54968 | turn 29 | version 0.8 -->
 ## v0.8 — 5. Candidate requirements
+
+> **Source sections:** `CAP-064`
 
 A candidate can now carry:
 
@@ -366,8 +382,10 @@ We don't need to pretend that the discovery itself was invalid.
 
 ---
 
-<!-- source: Continue Architecture Planning.md L55046–55104 | turn 29 | version 0.8 -->
+<!-- CAP-066 | Continue Architecture Planning.md L55046–55104 | turn 29 | version 0.8 -->
 ## v0.8 — 7. Why this matters for generic discovery
+
+> **Source sections:** `CAP-066`
 
 Consider three resources discovered from the same JavaScript file:
 
@@ -427,8 +445,10 @@ No special crawler logic is required.
 
 ---
 
-<!-- source: Continue Architecture Planning.md L55204–55257 | turn 29 | version 0.8 -->
+<!-- CAP-068 | Continue Architecture Planning.md L55204–55257 | turn 29 | version 0.8 -->
 ## v0.8 — 9. Capability provenance
+
+> **Source sections:** `CAP-068`
 
 There is another subtle distinction.
 
@@ -483,8 +503,10 @@ IT requires POST.
 
 ---
 
-<!-- source: Continue Architecture Planning.md L55259–55301 | turn 29 | version 0.8 -->
+<!-- CAP-069 | Continue Architecture Planning.md L55259–55301 | turn 29 | version 0.8 -->
 ## v0.8 — 10. The four-level authorization model
+
+> **Source sections:** `CAP-069`
 
 At this point the engine has four distinct gates:
 
@@ -528,8 +550,10 @@ Those are completely different outcomes.
 
 ---
 
-<!-- source: Continue Architecture Planning.md L55303–55340 | turn 29 | version 0.8 -->
+<!-- CAP-070 | Continue Architecture Planning.md L55303–55340 | turn 29 | version 0.8 -->
 ## v0.8 — 11. New graph model
+
+> **Source sections:** `CAP-070`
 
 The graph now looks like:
 
@@ -568,8 +592,10 @@ This is much closer to a knowledge graph than a queue of URLs.
 
 ---
 
-<!-- source: Continue Architecture Planning.md L55342–55402 | turn 29 | version 0.8 -->
+<!-- CAP-071 | Continue Architecture Planning.md L55342–55402 | turn 29 | version 0.8 -->
 ## v0.8 — 12. v0.8 ledger
+
+> **Source sections:** `CAP-071`
 
 The event ledger should gain capability events:
 
@@ -631,8 +657,10 @@ No guesswork.
 
 ---
 
-<!-- source: Continue Architecture Planning.md L55404–55458 | turn 29 | version 0.8 -->
+<!-- CAP-072 | Continue Architecture Planning.md L55404–55458 | turn 29 | version 0.8 -->
 ## v0.8 — 13. Important architectural consequence
+
+> **Source sections:** `CAP-072`
 
 The engine now has a clean separation:
 
@@ -688,13 +716,17 @@ The engine is becoming:
 
 ---
 
-<!-- source: Continue Architecture Planning.md L55460–55462 | turn 29 | version 0.8 -->
+<!-- CAP-073 | Continue Architecture Planning.md L55460–55462 | turn 29 | version 0.8 -->
 ## v0.8 — 14. v0.8 scope boundary
+
+> **Source sections:** `CAP-073`
 
 We should deliberately **not** implement everything represented by the capability system.
 
-<!-- source: Continue Architecture Planning.md L55464–55472 | turn 29 | version 0.8 -->
+<!-- CAP-074 | Continue Architecture Planning.md L55464–55472 | turn 29 | version 0.8 -->
 ### v0.8 — Implement
+
+> **Source sections:** `CAP-074`
 
 ```
 network.http
@@ -704,8 +736,10 @@ text-response
 binary-response [optional]
 ```
 
-<!-- source: Continue Architecture Planning.md L55474–55491 | turn 29 | version 0.8 -->
+<!-- CAP-075 | Continue Architecture Planning.md L55474–55491 | turn 29 | version 0.8 -->
 ### v0.8 — Represent but deny
+
+> **Source sections:** `CAP-075`
 
 ```
 network.post

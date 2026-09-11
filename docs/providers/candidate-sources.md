@@ -6,30 +6,30 @@
 >
 > **Purpose:** Candidate sources as search-space adapters: contracts, proposals, normalization and the source registry.
 
-## Contents
+## Source Sections
 
-- **v0.12 — Candidate Source Architecture** — `Continue Architecture Planning.md` L58349–58359
-- **v0.12 — 2. CandidateSource contract** — `Continue Architecture Planning.md` L58418–58464
-- **v0.12 — 3. CandidateSource is a search-space adapter** — `Continue Architecture Planning.md` L58466–58480
-- **v0.12 — Web page** — `Continue Architecture Planning.md` L58482–58490
-- **v0.12 — Network traffic** — `Continue Architecture Planning.md` L58492–58500
-- **v0.12 — Sitemap** — `Continue Architecture Planning.md` L58502–58510
-- **v0.12 — User seed** — `Continue Architecture Planning.md` L58512–58518
-- **v0.12 — Document** — `Continue Architecture Planning.md` L58520–58532
-- **v0.12 — 4. CandidateProposal** — `Continue Architecture Planning.md` L58534–58595
-- **v0.12 — 5. Why proposals matter** — `Continue Architecture Planning.md` L58597–58637
-- **v0.12 — 6. CandidateNormalizer** — `Continue Architecture Planning.md` L58639–58710
-- **v0.12 — 7. Source Registry** — `Continue Architecture Planning.md` L58712–58755
-- **v0.12 — 9. Evidence becomes an intermediate layer** — `Continue Architecture Planning.md` L58813–58864
-- **v0.12 — 10. Discovery becomes evidence-driven** — `Continue Architecture Planning.md` L58866–58894
-- **v0.12 — 11. CandidateSource context** — `Continue Architecture Planning.md` L58896–58930
-- **v0.12 — 12. CandidateSource examples** — `Continue Architecture Planning.md` L58932–58932
-- **v0.12 — HTML link source** — `Continue Architecture Planning.md` L58934–58978
-- **v0.12 — 13. NetworkSource** — `Continue Architecture Planning.md` L58980–59027
-- **v0.12 — 14. Search-space composition** — `Continue Architecture Planning.md` L59029–59056
-- **v0.12 — 15. Candidate identity** — `Continue Architecture Planning.md` L59058–59094
-- **v0.12 — 16. Discovery confidence aggregation** — `Continue Architecture Planning.md` L59096–59144
-- **v0.12 — 17. v0.12 provenance graph** — `Continue Architecture Planning.md` L59146–59206
+- **v0.12 — Candidate Source Architecture** — `CAP-154` — `Continue Architecture Planning.md` L58349–58359
+- **v0.12 — 2. CandidateSource contract** — `CAP-156` — `Continue Architecture Planning.md` L58418–58464
+- **v0.12 — 3. CandidateSource is a search-space adapter** — `CAP-157` — `Continue Architecture Planning.md` L58466–58480
+- **v0.12 — Web page** — `CAP-158` — `Continue Architecture Planning.md` L58482–58490
+- **v0.12 — Network traffic** — `CAP-159` — `Continue Architecture Planning.md` L58492–58500
+- **v0.12 — Sitemap** — `CAP-160` — `Continue Architecture Planning.md` L58502–58510
+- **v0.12 — User seed** — `CAP-161` — `Continue Architecture Planning.md` L58512–58518
+- **v0.12 — Document** — `CAP-162` — `Continue Architecture Planning.md` L58520–58532
+- **v0.12 — 4. CandidateProposal** — `CAP-163` — `Continue Architecture Planning.md` L58534–58595
+- **v0.12 — 5. Why proposals matter** — `CAP-164` — `Continue Architecture Planning.md` L58597–58637
+- **v0.12 — 6. CandidateNormalizer** — `CAP-165` — `Continue Architecture Planning.md` L58639–58710
+- **v0.12 — 7. Source Registry** — `CAP-166` — `Continue Architecture Planning.md` L58712–58755
+- **v0.12 — 9. Evidence becomes an intermediate layer** — `CAP-168` — `Continue Architecture Planning.md` L58813–58864
+- **v0.12 — 10. Discovery becomes evidence-driven** — `CAP-169` — `Continue Architecture Planning.md` L58866–58894
+- **v0.12 — 11. CandidateSource context** — `CAP-170` — `Continue Architecture Planning.md` L58896–58930
+- **v0.12 — 12. CandidateSource examples** — `CAP-171` — `Continue Architecture Planning.md` L58932–58932
+- **v0.12 — HTML link source** — `CAP-172` — `Continue Architecture Planning.md` L58934–58978
+- **v0.12 — 13. NetworkSource** — `CAP-173` — `Continue Architecture Planning.md` L58980–59027
+- **v0.12 — 14. Search-space composition** — `CAP-174` — `Continue Architecture Planning.md` L59029–59056
+- **v0.12 — 15. Candidate identity** — `CAP-175` — `Continue Architecture Planning.md` L59058–59094
+- **v0.12 — 16. Discovery confidence aggregation** — `CAP-176` — `Continue Architecture Planning.md` L59096–59144
+- **v0.12 — 17. v0.12 provenance graph** — `CAP-177` — `Continue Architecture Planning.md` L59146–59206
 
 ## Related Documents
 
@@ -40,8 +40,10 @@
 
 ---
 
-<!-- source: Continue Architecture Planning.md L58349–58359 | turn 37 | version 0.12 -->
+<!-- CAP-154 | Continue Architecture Planning.md L58349–58359 | turn 37 | version 0.12 -->
 ## v0.12 — Candidate Source Architecture
+
+> **Source sections:** `CAP-154`
 
 v0.11 separated **acquisition** from **recognition**.
 
@@ -53,8 +55,10 @@ This is the architectural equivalent of separating a DVB receiver's **search-spa
 
 ---
 
-<!-- source: Continue Architecture Planning.md L58418–58464 | turn 37 | version 0.12 -->
+<!-- CAP-156 | Continue Architecture Planning.md L58418–58464 | turn 37 | version 0.12 -->
 ## v0.12 — 2. CandidateSource contract
+
+> **Source sections:** `CAP-156`
 
 The minimal interface:
 
@@ -102,8 +106,10 @@ Those belong elsewhere.
 
 ---
 
-<!-- source: Continue Architecture Planning.md L58466–58480 | turn 37 | version 0.12 -->
+<!-- CAP-157 | Continue Architecture Planning.md L58466–58480 | turn 37 | version 0.12 -->
 ## v0.12 — 3. CandidateSource is a search-space adapter
+
+> **Source sections:** `CAP-157`
 
 This is the deeper abstraction:
 
@@ -119,8 +125,10 @@ NORMALIZED CANDIDATES
 
 Different spaces can therefore be normalized into the same candidate model.
 
-<!-- source: Continue Architecture Planning.md L58482–58490 | turn 37 | version 0.12 -->
+<!-- CAP-158 | Continue Architecture Planning.md L58482–58490 | turn 37 | version 0.12 -->
 ### v0.12 — Web page
+
+> **Source sections:** `CAP-158`
 
 ```
 HTML
@@ -130,8 +138,10 @@ links
 Candidate
 ```
 
-<!-- source: Continue Architecture Planning.md L58492–58500 | turn 37 | version 0.12 -->
+<!-- CAP-159 | Continue Architecture Planning.md L58492–58500 | turn 37 | version 0.12 -->
 ### v0.12 — Network traffic
+
+> **Source sections:** `CAP-159`
 
 ```
 Network observation
@@ -141,8 +151,10 @@ GET endpoint
 Candidate
 ```
 
-<!-- source: Continue Architecture Planning.md L58502–58510 | turn 37 | version 0.12 -->
+<!-- CAP-160 | Continue Architecture Planning.md L58502–58510 | turn 37 | version 0.12 -->
 ### v0.12 — Sitemap
+
+> **Source sections:** `CAP-160`
 
 ```
 sitemap.xml
@@ -152,8 +164,10 @@ sitemap.xml
 Candidate
 ```
 
-<!-- source: Continue Architecture Planning.md L58512–58518 | turn 37 | version 0.12 -->
+<!-- CAP-161 | Continue Architecture Planning.md L58512–58518 | turn 37 | version 0.12 -->
 ### v0.12 — User seed
+
+> **Source sections:** `CAP-161`
 
 ```
 user enters URL
@@ -161,8 +175,10 @@ user enters URL
 Candidate
 ```
 
-<!-- source: Continue Architecture Planning.md L58520–58532 | turn 37 | version 0.12 -->
+<!-- CAP-162 | Continue Architecture Planning.md L58520–58532 | turn 37 | version 0.12 -->
 ### v0.12 — Document
+
+> **Source sections:** `CAP-162`
 
 ```
 PDF
@@ -176,8 +192,10 @@ The scheduler doesn't need to know which one produced the candidate.
 
 ---
 
-<!-- source: Continue Architecture Planning.md L58534–58595 | turn 37 | version 0.12 -->
+<!-- CAP-163 | Continue Architecture Planning.md L58534–58595 | turn 37 | version 0.12 -->
 ## v0.12 — 4. CandidateProposal
+
+> **Source sections:** `CAP-163`
 
 I would introduce an intermediate object rather than allowing sources to manufacture full `Candidate` objects.
 
@@ -240,8 +258,10 @@ That gives the engine a clean admission boundary.
 
 ---
 
-<!-- source: Continue Architecture Planning.md L58597–58637 | turn 37 | version 0.12 -->
+<!-- CAP-164 | Continue Architecture Planning.md L58597–58637 | turn 37 | version 0.12 -->
 ## v0.12 — 5. Why proposals matter
+
+> **Source sections:** `CAP-164`
 
 Suppose an HTML parser emits:
 
@@ -283,8 +303,10 @@ KnowledgeBase
 
 ---
 
-<!-- source: Continue Architecture Planning.md L58639–58710 | turn 37 | version 0.12 -->
+<!-- CAP-165 | Continue Architecture Planning.md L58639–58710 | turn 37 | version 0.12 -->
 ## v0.12 — 6. CandidateNormalizer
+
+> **Source sections:** `CAP-165`
 
 ```JavaScript
 class CandidateNormalizer {
@@ -357,8 +379,10 @@ This establishes another important rule:
 
 ---
 
-<!-- source: Continue Architecture Planning.md L58712–58755 | turn 37 | version 0.12 -->
+<!-- CAP-166 | Continue Architecture Planning.md L58712–58755 | turn 37 | version 0.12 -->
 ## v0.12 — 7. Source Registry
+
+> **Source sections:** `CAP-166`
 
 Just as v0.9 introduced an acquisition-provider registry, v0.12 needs a source registry.
 
@@ -403,8 +427,10 @@ MutationSource
 
 ---
 
-<!-- source: Continue Architecture Planning.md L58813–58864 | turn 37 | version 0.12 -->
+<!-- CAP-168 | Continue Architecture Planning.md L58813–58864 | turn 37 | version 0.12 -->
 ## v0.12 — 9. Evidence becomes an intermediate layer
+
+> **Source sections:** `CAP-168`
 
 This is an important v0.12 improvement.
 
@@ -457,8 +483,10 @@ Now provenance is explicit.
 
 ---
 
-<!-- source: Continue Architecture Planning.md L58866–58894 | turn 37 | version 0.12 -->
+<!-- CAP-169 | Continue Architecture Planning.md L58866–58894 | turn 37 | version 0.12 -->
 ## v0.12 — 10. Discovery becomes evidence-driven
+
+> **Source sections:** `CAP-169`
 
 The complete chain becomes:
 
@@ -488,8 +516,10 @@ This is significantly stronger than directly extracting URLs.
 
 ---
 
-<!-- source: Continue Architecture Planning.md L58896–58930 | turn 37 | version 0.12 -->
+<!-- CAP-170 | Continue Architecture Planning.md L58896–58930 | turn 37 | version 0.12 -->
 ## v0.12 — 11. CandidateSource context
+
+> **Source sections:** `CAP-170`
 
 A source should receive a context object:
 
@@ -525,13 +555,17 @@ This prevents source plugins from becoming hidden engines.
 
 ---
 
-<!-- source: Continue Architecture Planning.md L58932–58932 | turn 37 | version 0.12 -->
+<!-- CAP-171 | Continue Architecture Planning.md L58932–58932 | turn 37 | version 0.12 -->
 ## v0.12 — 12. CandidateSource examples
 
+> **Source sections:** `CAP-171`
 
 
-<!-- source: Continue Architecture Planning.md L58934–58978 | turn 37 | version 0.12 -->
+
+<!-- CAP-172 | Continue Architecture Planning.md L58934–58978 | turn 37 | version 0.12 -->
 ### v0.12 — HTML link source
+
+> **Source sections:** `CAP-172`
 
 ```JavaScript
 class HtmlLinkSource extends CandidateSource {
@@ -577,8 +611,10 @@ no scheduler
 
 ---
 
-<!-- source: Continue Architecture Planning.md L58980–59027 | turn 37 | version 0.12 -->
+<!-- CAP-173 | Continue Architecture Planning.md L58980–59027 | turn 37 | version 0.12 -->
 ## v0.12 — 13. NetworkSource
+
+> **Source sections:** `CAP-173`
 
 Network observations become another candidate source.
 
@@ -627,8 +663,10 @@ rather than silently throwing the information away.
 
 ---
 
-<!-- source: Continue Architecture Planning.md L59029–59056 | turn 37 | version 0.12 -->
+<!-- CAP-174 | Continue Architecture Planning.md L59029–59056 | turn 37 | version 0.12 -->
 ## v0.12 — 14. Search-space composition
+
+> **Source sections:** `CAP-174`
 
 The most interesting consequence is that multiple sources can operate simultaneously.
 
@@ -657,8 +695,12 @@ The engine does not assume one discovery mechanism.
 
 ---
 
-<!-- source: Continue Architecture Planning.md L59058–59094 | turn 37 | version 0.12 -->
+<!-- CAP-175 | Continue Architecture Planning.md L59058–59094 | turn 37 | version 0.12 -->
 ## v0.12 — 15. Candidate identity
+
+> **Source sections:** `CAP-175`
+>
+> [DOCUMENTATION REVIEW] Contradiction **C-04** ([Review Notes](../REVIEW-NOTES.md#c-04--))
 
 The identity remains:
 
@@ -696,8 +738,12 @@ This distinction is essential.
 
 ---
 
-<!-- source: Continue Architecture Planning.md L59096–59144 | turn 37 | version 0.12 -->
+<!-- CAP-176 | Continue Architecture Planning.md L59096–59144 | turn 37 | version 0.12 -->
 ## v0.12 — 16. Discovery confidence aggregation
+
+> **Source sections:** `CAP-176`
+>
+> [DOCUMENTATION REVIEW] Contradiction **C-06** ([Review Notes](../REVIEW-NOTES.md#c-06--))
 
 Multiple independent sources can strengthen confidence.
 
@@ -747,8 +793,10 @@ This avoids baking probabilistic assumptions into discovery.
 
 ---
 
-<!-- source: Continue Architecture Planning.md L59146–59206 | turn 37 | version 0.12 -->
+<!-- CAP-177 | Continue Architecture Planning.md L59146–59206 | turn 37 | version 0.12 -->
 ## v0.12 — 17. v0.12 provenance graph
+
+> **Source sections:** `CAP-177`
 
 We now have:
 

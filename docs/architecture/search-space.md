@@ -1,119 +1,119 @@
 # Search Space
 
-> **Status:** DESIGNED
+> **Status:** OPEN
 >
 > **Source:** `Continue Architecture Planning.md`; `Userscript Discovery Prototype.md`
 >
 > **Purpose:** The search space: partitions, frontiers, expansion, reconciliation and search-space versions.
 
-## Contents
+## Source Sections
 
-- **17. Use observations to update the search space** — `Userscript Discovery Prototype.md` L825–863
-- **27. This helps with incremental scanning** — `Userscript Discovery Prototype.md` L1247–1286
-- **38. Avoid infinite candidate generation** — `Userscript Discovery Prototype.md` L1775–1800
-- **v0.16 — Search space** — `Continue Architecture Planning.md` L65162–65166
-- **v0.20 — Search-Space Partitioning + Discovery Strategies** — `Continue Architecture Planning.md` L69700–69732
-- **v0.20 — 20.1 The Search Space** — `Continue Architecture Planning.md` L69734–69768
-- **v0.20 — 20.2 What Is a Partition?** — `Continue Architecture Planning.md` L69770–69809
-- **v0.20 — 20.3 Partition ≠ Candidate** — `Continue Architecture Planning.md` L69811–69841
-- **v0.20 — 20.4 Partition Object** — `Continue Architecture Planning.md` L69843–69906
-- **v0.20 — 20.5 Partition State** — `Continue Architecture Planning.md` L69908–69945
-- **v0.20 — Saturated** — `Continue Architecture Planning.md` L69947–69949
-- **v0.20 — Exhausted** — `Continue Architecture Planning.md` L69951–69957
-- **v0.20 — 20.6 Search Coverage** — `Continue Architecture Planning.md` L69959–69993
-- **v0.20 — 20.7 Strategy Contract** — `Continue Architecture Planning.md` L69995–70024
-- **v0.20 — 20.8 Strategy vs Candidate Source** — `Continue Architecture Planning.md` L70026–70060
-- **v0.20 — 20.9 Strategy Types** — `Continue Architecture Planning.md` L70062–70064
-- **v0.20 — Seed Expansion** — `Continue Architecture Planning.md` L70066–70078
-- **v0.20 — Repository Expansion** — `Continue Architecture Planning.md` L70080–70088
-- **v0.20 — Sitemap Expansion** — `Continue Architecture Planning.md` L70090–70098
-- **v0.20 — API Schema Expansion** — `Continue Architecture Planning.md` L70100–70110
-- **v0.20 — Document-Family Expansion** — `Continue Architecture Planning.md` L70112–70127
-- **v0.20 — 20.11 Probe** — `Continue Architecture Planning.md` L70197–70227
-- **v0.20 — 20.12 Exploration Plan** — `Continue Architecture Planning.md` L70229–70282
-- **v0.20 — 20.13 Exploration Must Remain Budgeted** — `Continue Architecture Planning.md` L70284–70320
-- **v0.20 — 20.14 Adaptive Partition Priority** — `Continue Architecture Planning.md` L70322–70373
-- **v0.20 — 20.15 Exploration vs Exploitation** — `Continue Architecture Planning.md` L70375–70409
-- **v0.20 — 20.16 Aging** — `Continue Architecture Planning.md` L70411–70444
-- **v0.20 — 20.17 Partition Splitting** — `Continue Architecture Planning.md` L70446–70512
-- **v0.20 — 20.18 Partition Merge** — `Continue Architecture Planning.md` L70514–70550
-- **v0.20 — 20.19 Partition Graph** — `Continue Architecture Planning.md` L70552–70588
-- **v0.20 — 20.20 SearchSpace** — `Continue Architecture Planning.md` L70590–70645
-- **v0.20 — 20.21 Search-Space Controller** — `Continue Architecture Planning.md` L70647–70694
-- **v0.20 — 20.22 Three-Level Control Plane** — `Continue Architecture Planning.md` L70696–70724
-- **v0.20 — 20.23 Candidate Sources Remain Low-Level** — `Continue Architecture Planning.md` L70726–70766
-- **v0.20 — 20.24 Termination Becomes More Sophisticated** — `Continue Architecture Planning.md` L70768–70824
-- **v0.20 — 20.25 Saturation** — `Continue Architecture Planning.md` L70826–70858
-- **v0.20 — 20.26 Partition Statistics** — `Continue Architecture Planning.md` L70860–70905
-- **v0.20 — 20.27 Discovery Efficiency** — `Continue Architecture Planning.md` L70907–70942
-- **v0.28 — Search-Space Reconciliation & Frontier Deduplication** — `Continue Architecture Planning.md` L81648–81672
-- **v0.28 — Search-Space Reconciliation & Frontier Deduplication** — `Continue Architecture Planning.md` L81684–81726
-- **v0.28 — 28.1 The problem with naive deduplication** — `Continue Architecture Planning.md` L81728–81776
-- **v0.28 — 28.2 Five different kinds of duplication** — `Continue Architecture Planning.md` L81778–81802
-- **v0.28 — 28.3 Search-space overlap** — `Continue Architecture Planning.md` L81804–81846
-- **v0.28 — 28.4 SearchPartitionRelation** — `Continue Architecture Planning.md` L81848–81892
-- **v0.28 — 28.5 Coverage overlap** — `Continue Architecture Planning.md` L81894–81937
-- **v0.28 — 28.6 Frontier deduplication** — `Continue Architecture Planning.md` L81939–81969
-- **v0.28 — 28.7 SearchWorkKey** — `Continue Architecture Planning.md` L81971–82027
-- **v0.28 — 28.8 Work equivalence** — `Continue Architecture Planning.md` L82029–82063
-- **v0.28 — 28.9 Candidate convergence** — `Continue Architecture Planning.md` L82065–82106
-- **v0.28 — 28.11 Artifact convergence** — `Continue Architecture Planning.md` L82157–82197
-- **v0.28 — 28.12 Discovery independence** — `Continue Architecture Planning.md` L82199–82239
-- **v0.28 — 28.13 Evidence independence model** — `Continue Architecture Planning.md` L82241–82281
-- **v0.28 — 28.14 Coverage provenance** — `Continue Architecture Planning.md` L82283–82323
-- **v0.28 — 28.15 Coverage relation** — `Continue Architecture Planning.md` L82325–82360
-- **v0.28 — 28.16 Coverage union** — `Continue Architecture Planning.md` L82362–82389
-- **v0.28 — 28.17 Disjoint partitions** — `Continue Architecture Planning.md` L82391–82425
-- **v0.28 — 28.18 Unknown overlap** — `Continue Architecture Planning.md` L82427–82460
-- **v0.28 — 28.19 Frontier duplicate suppression** — `Continue Architecture Planning.md` L82462–82506
-- **v0.28 — 28.20 Duplicate suppression must preserve provenance** — `Continue Architecture Planning.md` L82508–82543
-- **v0.28 — 28.21 Convergence graph** — `Continue Architecture Planning.md` L82545–82577
-- **v0.28 — 28.22 Search-space graph** — `Continue Architecture Planning.md` L82579–82605
-- **v0.28 — 28.23 Search-space coverage ledger** — `Continue Architecture Planning.md` L82607–82640
-- **v0.28 — 28.24 Candidate count is not coverage** — `Continue Architecture Planning.md` L82642–82693
-- **v0.28 — 28.25 Search-space deduplication vs candidate deduplication** — `Continue Architecture Planning.md` L82695–82697
-- **v0.28 — Candidate deduplication** — `Continue Architecture Planning.md` L82699–82705
-- **v0.28 — Search-space deduplication** — `Continue Architecture Planning.md` L82707–82734
-- **v0.28 — 28.26 Adaptive strategy interaction** — `Continue Architecture Planning.md` L82736–82786
-- **v0.28 — 28.27 Example** — `Continue Architecture Planning.md` L82788–82839
-- **v0.28 — 28.28 Reconciliation algorithm** — `Continue Architecture Planning.md` L82841–82883
-- **v0.28 — 28.29 Reconciliation must be monotonic** — `Continue Architecture Planning.md` L82885–82922
-- **v0.28 — 28.30 Reconciliation does not delete evidence** — `Continue Architecture Planning.md` L82924–82946
-- **v0.28 — 28.34 The deeper architectural result** — `Continue Architecture Planning.md` L83130–83165
-- **v0.29 — Dynamic Search-Space Expansion** — `Continue Architecture Planning.md` L83238–83284
-- **v0.29 — 29.1 The central distinction** — `Continue Architecture Planning.md` L83286–83322
-- **v0.29 — 29.2 PartitionProposal** — `Continue Architecture Planning.md` L83324–83376
-- **v0.29 — 29.3 Why proposals are necessary** — `Continue Architecture Planning.md` L83378–83410
-- **v0.29 — 29.4 PartitionAdmissionController** — `Continue Architecture Planning.md` L83412–83460
-- **v0.29 — 29.5 Partition identity** — `Continue Architecture Planning.md` L83462–83522
-- **v0.29 — 29.6 Partition explosion** — `Continue Architecture Planning.md` L83524–83550
-- **v0.29 — 29.7 ExpansionBudget** — `Continue Architecture Planning.md` L83552–83581
-- **v0.29 — 29.8 Local expansion rate** — `Continue Architecture Planning.md` L83583–83606
-- **v0.29 — 29.9 Expansion rate limiting** — `Continue Architecture Planning.md` L83608–83640
-- **v0.29 — 29.10 Evidence threshold** — `Continue Architecture Planning.md` L83642–83670
-- **v0.29 — 29.11 Partition proposal epistemic status** — `Continue Architecture Planning.md` L83672–83693
-- **v0.29 — 29.12 Hypothesis connection** — `Continue Architecture Planning.md` L83695–83726
-- **v0.29 — 29.13 Partition generation sources** — `Continue Architecture Planning.md` L83728–83779
-- **v0.29 — 29.14 Expansion provider boundary** — `Continue Architecture Planning.md` L83781–83812
-- **v0.29 — 29.15 Dynamic search-space graph** — `Continue Architecture Planning.md` L83814–83843
-- **v0.29 — 29.16 Partition generation event** — `Continue Architecture Planning.md` L83845–83889
-- **v0.29 — 29.17 Search-space versioning** — `Continue Architecture Planning.md` L83891–83922
-- **v0.29 — 29.18 SearchSpaceSnapshot** — `Continue Architecture Planning.md` L83924–83960
-- **v0.29 — 29.19 Expansion and completeness** — `Continue Architecture Planning.md` L83962–84007
-- **v0.29 — 29.20 Dynamic expansion and negative evidence** — `Continue Architecture Planning.md` L84009–84053
-- **v0.29 — 29.21 Expansion priorities** — `Continue Architecture Planning.md` L84055–84083
-- **v0.29 — 29.22 Expansion depth** — `Continue Architecture Planning.md` L84085–84120
-- **v0.29 — 29.23 Expansion loops** — `Continue Architecture Planning.md` L84122–84165
-- **v0.29 — 29.24 Expansion cycle ≠ failure** — `Continue Architecture Planning.md` L84167–84195
-- **v0.29 — 29.25 Partition admission states** — `Continue Architecture Planning.md` L84197–84230
-- **v0.29 — 29.26 Partition proposal accounting** — `Continue Architecture Planning.md` L84232–84262
-- **v0.29 — 29.27 Partition explosion protection** — `Continue Architecture Planning.md` L84264–84289
-- **v0.29 — 29.28 Admission algorithm** — `Continue Architecture Planning.md` L84291–84337
-- **v0.29 — 29.29 Frontier generation** — `Continue Architecture Planning.md` L84339–84367
-- **v0.29 — 29.31 Two expansion paths** — `Continue Architecture Planning.md` L84401–84437
-- **v0.29 — 29.32 Search-space discovery as first-class knowledge** — `Continue Architecture Planning.md` L84439–84463
-- **v0.29 — 29.34 The system after v0.29** — `Continue Architecture Planning.md` L84545–84576
-- **v0.29 takeaway** — `Continue Architecture Planning.md` L84610–84662
+- **17. Use observations to update the search space** — `USP-028` — `Userscript Discovery Prototype.md` L825–863
+- **27. This helps with incremental scanning** — `USP-044` — `Userscript Discovery Prototype.md` L1247–1286
+- **38. Avoid infinite candidate generation** — `USP-061` — `Userscript Discovery Prototype.md` L1775–1800
+- **v0.16 — Search space** — `CAP-359` — `Continue Architecture Planning.md` L65162–65166
+- **v0.20 — Search-Space Partitioning + Discovery Strategies** — `CAP-513` — `Continue Architecture Planning.md` L69700–69732
+- **v0.20 — 20.1 The Search Space** — `CAP-514` — `Continue Architecture Planning.md` L69734–69768
+- **v0.20 — 20.2 What Is a Partition?** — `CAP-515` — `Continue Architecture Planning.md` L69770–69809
+- **v0.20 — 20.3 Partition ≠ Candidate** — `CAP-516` — `Continue Architecture Planning.md` L69811–69841
+- **v0.20 — 20.4 Partition Object** — `CAP-517` — `Continue Architecture Planning.md` L69843–69906
+- **v0.20 — 20.5 Partition State** — `CAP-518` — `Continue Architecture Planning.md` L69908–69945
+- **v0.20 — Saturated** — `CAP-519` — `Continue Architecture Planning.md` L69947–69949
+- **v0.20 — Exhausted** — `CAP-520` — `Continue Architecture Planning.md` L69951–69957
+- **v0.20 — 20.6 Search Coverage** — `CAP-521` — `Continue Architecture Planning.md` L69959–69993
+- **v0.20 — 20.7 Strategy Contract** — `CAP-522` — `Continue Architecture Planning.md` L69995–70024
+- **v0.20 — 20.8 Strategy vs Candidate Source** — `CAP-523` — `Continue Architecture Planning.md` L70026–70060
+- **v0.20 — 20.9 Strategy Types** — `CAP-524` — `Continue Architecture Planning.md` L70062–70064
+- **v0.20 — Seed Expansion** — `CAP-525` — `Continue Architecture Planning.md` L70066–70078
+- **v0.20 — Repository Expansion** — `CAP-526` — `Continue Architecture Planning.md` L70080–70088
+- **v0.20 — Sitemap Expansion** — `CAP-527` — `Continue Architecture Planning.md` L70090–70098
+- **v0.20 — API Schema Expansion** — `CAP-528` — `Continue Architecture Planning.md` L70100–70110
+- **v0.20 — Document-Family Expansion** — `CAP-529` — `Continue Architecture Planning.md` L70112–70127
+- **v0.20 — 20.11 Probe** — `CAP-531` — `Continue Architecture Planning.md` L70197–70227
+- **v0.20 — 20.12 Exploration Plan** — `CAP-532` — `Continue Architecture Planning.md` L70229–70282
+- **v0.20 — 20.13 Exploration Must Remain Budgeted** — `CAP-533` — `Continue Architecture Planning.md` L70284–70320
+- **v0.20 — 20.14 Adaptive Partition Priority** — `CAP-534` — `Continue Architecture Planning.md` L70322–70373
+- **v0.20 — 20.15 Exploration vs Exploitation** — `CAP-535` — `Continue Architecture Planning.md` L70375–70409
+- **v0.20 — 20.16 Aging** — `CAP-536` — `Continue Architecture Planning.md` L70411–70444
+- **v0.20 — 20.17 Partition Splitting** — `CAP-537` — `Continue Architecture Planning.md` L70446–70512
+- **v0.20 — 20.18 Partition Merge** — `CAP-538` — `Continue Architecture Planning.md` L70514–70550
+- **v0.20 — 20.19 Partition Graph** — `CAP-539` — `Continue Architecture Planning.md` L70552–70588
+- **v0.20 — 20.20 SearchSpace** — `CAP-540` — `Continue Architecture Planning.md` L70590–70645
+- **v0.20 — 20.21 Search-Space Controller** — `CAP-541` — `Continue Architecture Planning.md` L70647–70694
+- **v0.20 — 20.22 Three-Level Control Plane** — `CAP-542` — `Continue Architecture Planning.md` L70696–70724
+- **v0.20 — 20.23 Candidate Sources Remain Low-Level** — `CAP-543` — `Continue Architecture Planning.md` L70726–70766
+- **v0.20 — 20.24 Termination Becomes More Sophisticated** — `CAP-544` — `Continue Architecture Planning.md` L70768–70824
+- **v0.20 — 20.25 Saturation** — `CAP-545` — `Continue Architecture Planning.md` L70826–70858
+- **v0.20 — 20.26 Partition Statistics** — `CAP-546` — `Continue Architecture Planning.md` L70860–70905
+- **v0.20 — 20.27 Discovery Efficiency** — `CAP-547` — `Continue Architecture Planning.md` L70907–70942
+- **v0.28 — Search-Space Reconciliation & Frontier Deduplication** — `CAP-868` — `Continue Architecture Planning.md` L81648–81672
+- **v0.28 — Search-Space Reconciliation & Frontier Deduplication** — `CAP-870` — `Continue Architecture Planning.md` L81684–81726
+- **v0.28 — 28.1 The problem with naive deduplication** — `CAP-871` — `Continue Architecture Planning.md` L81728–81776
+- **v0.28 — 28.2 Five different kinds of duplication** — `CAP-872` — `Continue Architecture Planning.md` L81778–81802
+- **v0.28 — 28.3 Search-space overlap** — `CAP-873` — `Continue Architecture Planning.md` L81804–81846
+- **v0.28 — 28.4 SearchPartitionRelation** — `CAP-874` — `Continue Architecture Planning.md` L81848–81892
+- **v0.28 — 28.5 Coverage overlap** — `CAP-875` — `Continue Architecture Planning.md` L81894–81937
+- **v0.28 — 28.6 Frontier deduplication** — `CAP-876` — `Continue Architecture Planning.md` L81939–81969
+- **v0.28 — 28.7 SearchWorkKey** — `CAP-877` — `Continue Architecture Planning.md` L81971–82027
+- **v0.28 — 28.8 Work equivalence** — `CAP-878` — `Continue Architecture Planning.md` L82029–82063
+- **v0.28 — 28.9 Candidate convergence** — `CAP-879` — `Continue Architecture Planning.md` L82065–82106
+- **v0.28 — 28.11 Artifact convergence** — `CAP-881` — `Continue Architecture Planning.md` L82157–82197
+- **v0.28 — 28.12 Discovery independence** — `CAP-882` — `Continue Architecture Planning.md` L82199–82239
+- **v0.28 — 28.13 Evidence independence model** — `CAP-883` — `Continue Architecture Planning.md` L82241–82281
+- **v0.28 — 28.14 Coverage provenance** — `CAP-884` — `Continue Architecture Planning.md` L82283–82323
+- **v0.28 — 28.15 Coverage relation** — `CAP-885` — `Continue Architecture Planning.md` L82325–82360
+- **v0.28 — 28.16 Coverage union** — `CAP-886` — `Continue Architecture Planning.md` L82362–82389
+- **v0.28 — 28.17 Disjoint partitions** — `CAP-887` — `Continue Architecture Planning.md` L82391–82425
+- **v0.28 — 28.18 Unknown overlap** — `CAP-888` — `Continue Architecture Planning.md` L82427–82460
+- **v0.28 — 28.19 Frontier duplicate suppression** — `CAP-889` — `Continue Architecture Planning.md` L82462–82506
+- **v0.28 — 28.20 Duplicate suppression must preserve provenance** — `CAP-890` — `Continue Architecture Planning.md` L82508–82543
+- **v0.28 — 28.21 Convergence graph** — `CAP-891` — `Continue Architecture Planning.md` L82545–82577
+- **v0.28 — 28.22 Search-space graph** — `CAP-892` — `Continue Architecture Planning.md` L82579–82605
+- **v0.28 — 28.23 Search-space coverage ledger** — `CAP-893` — `Continue Architecture Planning.md` L82607–82640
+- **v0.28 — 28.24 Candidate count is not coverage** — `CAP-894` — `Continue Architecture Planning.md` L82642–82693
+- **v0.28 — 28.25 Search-space deduplication vs candidate deduplication** — `CAP-895` — `Continue Architecture Planning.md` L82695–82697
+- **v0.28 — Candidate deduplication** — `CAP-896` — `Continue Architecture Planning.md` L82699–82705
+- **v0.28 — Search-space deduplication** — `CAP-897` — `Continue Architecture Planning.md` L82707–82734
+- **v0.28 — 28.26 Adaptive strategy interaction** — `CAP-898` — `Continue Architecture Planning.md` L82736–82786
+- **v0.28 — 28.27 Example** — `CAP-899` — `Continue Architecture Planning.md` L82788–82839
+- **v0.28 — 28.28 Reconciliation algorithm** — `CAP-900` — `Continue Architecture Planning.md` L82841–82883
+- **v0.28 — 28.29 Reconciliation must be monotonic** — `CAP-901` — `Continue Architecture Planning.md` L82885–82922
+- **v0.28 — 28.30 Reconciliation does not delete evidence** — `CAP-902` — `Continue Architecture Planning.md` L82924–82946
+- **v0.28 — 28.34 The deeper architectural result** — `CAP-918` — `Continue Architecture Planning.md` L83130–83165
+- **v0.29 — Dynamic Search-Space Expansion** — `CAP-921` — `Continue Architecture Planning.md` L83238–83284
+- **v0.29 — 29.1 The central distinction** — `CAP-922` — `Continue Architecture Planning.md` L83286–83322
+- **v0.29 — 29.2 PartitionProposal** — `CAP-923` — `Continue Architecture Planning.md` L83324–83376
+- **v0.29 — 29.3 Why proposals are necessary** — `CAP-924` — `Continue Architecture Planning.md` L83378–83410
+- **v0.29 — 29.4 PartitionAdmissionController** — `CAP-925` — `Continue Architecture Planning.md` L83412–83460
+- **v0.29 — 29.5 Partition identity** — `CAP-926` — `Continue Architecture Planning.md` L83462–83522
+- **v0.29 — 29.6 Partition explosion** — `CAP-927` — `Continue Architecture Planning.md` L83524–83550
+- **v0.29 — 29.7 ExpansionBudget** — `CAP-928` — `Continue Architecture Planning.md` L83552–83581
+- **v0.29 — 29.8 Local expansion rate** — `CAP-929` — `Continue Architecture Planning.md` L83583–83606
+- **v0.29 — 29.9 Expansion rate limiting** — `CAP-930` — `Continue Architecture Planning.md` L83608–83640
+- **v0.29 — 29.10 Evidence threshold** — `CAP-931` — `Continue Architecture Planning.md` L83642–83670
+- **v0.29 — 29.11 Partition proposal epistemic status** — `CAP-932` — `Continue Architecture Planning.md` L83672–83693
+- **v0.29 — 29.12 Hypothesis connection** — `CAP-933` — `Continue Architecture Planning.md` L83695–83726
+- **v0.29 — 29.13 Partition generation sources** — `CAP-934` — `Continue Architecture Planning.md` L83728–83779
+- **v0.29 — 29.14 Expansion provider boundary** — `CAP-935` — `Continue Architecture Planning.md` L83781–83812
+- **v0.29 — 29.15 Dynamic search-space graph** — `CAP-936` — `Continue Architecture Planning.md` L83814–83843
+- **v0.29 — 29.16 Partition generation event** — `CAP-937` — `Continue Architecture Planning.md` L83845–83889
+- **v0.29 — 29.17 Search-space versioning** — `CAP-938` — `Continue Architecture Planning.md` L83891–83922
+- **v0.29 — 29.18 SearchSpaceSnapshot** — `CAP-939` — `Continue Architecture Planning.md` L83924–83960
+- **v0.29 — 29.19 Expansion and completeness** — `CAP-940` — `Continue Architecture Planning.md` L83962–84007
+- **v0.29 — 29.20 Dynamic expansion and negative evidence** — `CAP-941` — `Continue Architecture Planning.md` L84009–84053
+- **v0.29 — 29.21 Expansion priorities** — `CAP-942` — `Continue Architecture Planning.md` L84055–84083
+- **v0.29 — 29.22 Expansion depth** — `CAP-943` — `Continue Architecture Planning.md` L84085–84120
+- **v0.29 — 29.23 Expansion loops** — `CAP-944` — `Continue Architecture Planning.md` L84122–84165
+- **v0.29 — 29.24 Expansion cycle ≠ failure** — `CAP-945` — `Continue Architecture Planning.md` L84167–84195
+- **v0.29 — 29.25 Partition admission states** — `CAP-946` — `Continue Architecture Planning.md` L84197–84230
+- **v0.29 — 29.26 Partition proposal accounting** — `CAP-947` — `Continue Architecture Planning.md` L84232–84262
+- **v0.29 — 29.27 Partition explosion protection** — `CAP-948` — `Continue Architecture Planning.md` L84264–84289
+- **v0.29 — 29.28 Admission algorithm** — `CAP-949` — `Continue Architecture Planning.md` L84291–84337
+- **v0.29 — 29.29 Frontier generation** — `CAP-950` — `Continue Architecture Planning.md` L84339–84367
+- **v0.29 — 29.31 Two expansion paths** — `CAP-952` — `Continue Architecture Planning.md` L84401–84437
+- **v0.29 — 29.32 Search-space discovery as first-class knowledge** — `CAP-953` — `Continue Architecture Planning.md` L84439–84463
+- **v0.29 — 29.34 The system after v0.29** — `CAP-969` — `Continue Architecture Planning.md` L84545–84576
+- **v0.29 takeaway** — `CAP-971` — `Continue Architecture Planning.md` L84610–84662
 
 ## Related Documents
 
@@ -124,8 +124,10 @@
 
 ---
 
-<!-- source: Userscript Discovery Prototype.md L825–863 | turn 7 | version ? -->
+<!-- USP-028 | Userscript Discovery Prototype.md L825–863 | turn 7 | version ? -->
 ## 17. Use observations to update the search space
+
+> **Source sections:** `USP-028`
 
 The algorithm can be expressed as a loop over **beliefs**:
 
@@ -165,8 +167,10 @@ This is a very general pattern and isn't specific to DVB.
 
 ---
 
-<!-- source: Userscript Discovery Prototype.md L1247–1286 | turn 9 | version ? -->
+<!-- USP-044 | Userscript Discovery Prototype.md L1247–1286 | turn 9 | version ? -->
 ## 27. This helps with incremental scanning
+
+> **Source sections:** `USP-044`
 
 Imagine a receiver is continuously monitoring an area.
 
@@ -207,8 +211,10 @@ That is much closer to a **generic discovery service** than a traditional one-sh
 
 ---
 
-<!-- source: Userscript Discovery Prototype.md L1775–1800 | turn 11 | version ? -->
+<!-- USP-061 | Userscript Discovery Prototype.md L1775–1800 | turn 11 | version ? -->
 ## 38. Avoid infinite candidate generation
+
+> **Source sections:** `USP-061`
 
 Metadata can potentially produce candidates you've already investigated.
 
@@ -235,15 +241,19 @@ Without this, a network graph can repeatedly enqueue the same frequencies.
 
 ---
 
-<!-- source: Continue Architecture Planning.md L65162–65166 | turn 45 | version 0.16 -->
+<!-- CAP-359 | Continue Architecture Planning.md L65162–65166 | turn 45 | version 0.16 -->
 ### v0.16 — Search space
+
+> **Source sections:** `CAP-359`
 
 > Where are we allowed to look?
 
 `DiscoveryDomain`
 
-<!-- source: Continue Architecture Planning.md L69700–69732 | turn 53 | version 0.20 -->
+<!-- CAP-513 | Continue Architecture Planning.md L69700–69732 | turn 53 | version 0.20 -->
 ## v0.20 — Search-Space Partitioning + Discovery Strategies
+
+> **Source sections:** `CAP-513`
 
 At v0.19 the engine can represent:
 
@@ -277,8 +287,10 @@ It is:
 
 ---
 
-<!-- source: Continue Architecture Planning.md L69734–69768 | turn 53 | version 0.20 -->
+<!-- CAP-514 | Continue Architecture Planning.md L69734–69768 | turn 53 | version 0.20 -->
 ## v0.20 — 20.1 The Search Space
+
+> **Source sections:** `CAP-514`
 
 A `DiscoveryDomain` currently says:
 
@@ -314,8 +326,10 @@ A partition is simply:
 
 ---
 
-<!-- source: Continue Architecture Planning.md L69770–69809 | turn 53 | version 0.20 -->
+<!-- CAP-515 | Continue Architecture Planning.md L69770–69809 | turn 53 | version 0.20 -->
 ## v0.20 — 20.2 What Is a Partition?
+
+> **Source sections:** `CAP-515`
 
 For a web/document discovery system, partitions can be based on:
 
@@ -356,8 +370,10 @@ They are **search regions**.
 
 ---
 
-<!-- source: Continue Architecture Planning.md L69811–69841 | turn 53 | version 0.20 -->
+<!-- CAP-516 | Continue Architecture Planning.md L69811–69841 | turn 53 | version 0.20 -->
 ## v0.20 — 20.3 Partition ≠ Candidate
+
+> **Source sections:** `CAP-516`
 
 This distinction matters.
 
@@ -389,8 +405,10 @@ candidate proposals
 
 ---
 
-<!-- source: Continue Architecture Planning.md L69843–69906 | turn 53 | version 0.20 -->
+<!-- CAP-517 | Continue Architecture Planning.md L69843–69906 | turn 53 | version 0.20 -->
 ## v0.20 — 20.4 Partition Object
+
+> **Source sections:** `CAP-517`
 
 Introduce:
 
@@ -455,8 +473,10 @@ Another:
 
 ---
 
-<!-- source: Continue Architecture Planning.md L69908–69945 | turn 53 | version 0.20 -->
+<!-- CAP-518 | Continue Architecture Planning.md L69908–69945 | turn 53 | version 0.20 -->
 ## v0.20 — 20.5 Partition State
+
+> **Source sections:** `CAP-518`
 
 A partition needs its own lifecycle.
 
@@ -495,13 +515,17 @@ EXHAUSTED
 
 is useful.
 
-<!-- source: Continue Architecture Planning.md L69947–69949 | turn 53 | version 0.20 -->
+<!-- CAP-519 | Continue Architecture Planning.md L69947–69949 | turn 53 | version 0.20 -->
 ### v0.20 — Saturated
+
+> **Source sections:** `CAP-519`
 
 The current strategy is no longer finding useful new information.
 
-<!-- source: Continue Architecture Planning.md L69951–69957 | turn 53 | version 0.20 -->
+<!-- CAP-520 | Continue Architecture Planning.md L69951–69957 | turn 53 | version 0.20 -->
 ### v0.20 — Exhausted
+
+> **Source sections:** `CAP-520`
 
 The defined exploration method has completed its search.
 
@@ -509,8 +533,12 @@ These are not equivalent.
 
 ---
 
-<!-- source: Continue Architecture Planning.md L69959–69993 | turn 53 | version 0.20 -->
+<!-- CAP-521 | Continue Architecture Planning.md L69959–69993 | turn 53 | version 0.20 -->
 ## v0.20 — 20.6 Search Coverage
+
+> **Source sections:** `CAP-521`
+>
+> [DOCUMENTATION REVIEW] Contradiction **C-05** ([Review Notes](../REVIEW-NOTES.md#c-05--))
 
 Once partitions exist, the engine can ask:
 
@@ -546,8 +574,10 @@ Therefore coverage must be **relative to an exploration strategy**.
 
 ---
 
-<!-- source: Continue Architecture Planning.md L69995–70024 | turn 53 | version 0.20 -->
+<!-- CAP-522 | Continue Architecture Planning.md L69995–70024 | turn 53 | version 0.20 -->
 ## v0.20 — 20.7 Strategy Contract
+
+> **Source sections:** `CAP-522`
 
 Introduce:
 
@@ -578,8 +608,10 @@ It answers:
 
 ---
 
-<!-- source: Continue Architecture Planning.md L70026–70060 | turn 53 | version 0.20 -->
+<!-- CAP-523 | Continue Architecture Planning.md L70026–70060 | turn 53 | version 0.20 -->
 ## v0.20 — 20.8 Strategy vs Candidate Source
+
+> **Source sections:** `CAP-523`
 
 These are different abstractions.
 
@@ -615,13 +647,17 @@ This distinction prevents the CandidateSource interface from becoming overloaded
 
 ---
 
-<!-- source: Continue Architecture Planning.md L70062–70064 | turn 53 | version 0.20 -->
+<!-- CAP-524 | Continue Architecture Planning.md L70062–70064 | turn 53 | version 0.20 -->
 ## v0.20 — 20.9 Strategy Types
+
+> **Source sections:** `CAP-524`
 
 A generic discovery engine can support several strategies.
 
-<!-- source: Continue Architecture Planning.md L70066–70078 | turn 53 | version 0.20 -->
+<!-- CAP-525 | Continue Architecture Planning.md L70066–70078 | turn 53 | version 0.20 -->
 ### v0.20 — Seed Expansion
+
+> **Source sections:** `CAP-525`
 
 ```
 Seed
@@ -635,8 +671,10 @@ Expand frontier
 
 This is the default crawler-like strategy.
 
-<!-- source: Continue Architecture Planning.md L70080–70088 | turn 53 | version 0.20 -->
+<!-- CAP-526 | Continue Architecture Planning.md L70080–70088 | turn 53 | version 0.20 -->
 ### v0.20 — Repository Expansion
+
+> **Source sections:** `CAP-526`
 
 ```
 /docs/
@@ -646,8 +684,10 @@ This is the default crawler-like strategy.
 
 Explore each discovered repository-like region.
 
-<!-- source: Continue Architecture Planning.md L70090–70098 | turn 53 | version 0.20 -->
+<!-- CAP-527 | Continue Architecture Planning.md L70090–70098 | turn 53 | version 0.20 -->
 ### v0.20 — Sitemap Expansion
+
+> **Source sections:** `CAP-527`
 
 ```
 sitemap
@@ -657,8 +697,10 @@ partition URLs
 explore partitions
 ```
 
-<!-- source: Continue Architecture Planning.md L70100–70110 | turn 53 | version 0.20 -->
+<!-- CAP-528 | Continue Architecture Planning.md L70100–70110 | turn 53 | version 0.20 -->
 ### v0.20 — API Schema Expansion
+
+> **Source sections:** `CAP-528`
 
 ```
 API
@@ -670,8 +712,10 @@ endpoint families
 candidate endpoints
 ```
 
-<!-- source: Continue Architecture Planning.md L70112–70127 | turn 53 | version 0.20 -->
+<!-- CAP-529 | Continue Architecture Planning.md L70112–70127 | turn 53 | version 0.20 -->
 ### v0.20 — Document-Family Expansion
+
+> **Source sections:** `CAP-529`
 
 ```
 service-manual
@@ -688,8 +732,10 @@ The last category becomes particularly useful for the user's service-document ac
 
 ---
 
-<!-- source: Continue Architecture Planning.md L70197–70227 | turn 53 | version 0.20 -->
+<!-- CAP-531 | Continue Architecture Planning.md L70197–70227 | turn 53 | version 0.20 -->
 ## v0.20 — 20.11 Probe
+
+> **Source sections:** `CAP-531`
 
 This suggests another useful abstraction:
 
@@ -721,8 +767,10 @@ This connects discovery strategy to acquisition without allowing the strategy to
 
 ---
 
-<!-- source: Continue Architecture Planning.md L70229–70282 | turn 53 | version 0.20 -->
+<!-- CAP-532 | Continue Architecture Planning.md L70229–70282 | turn 53 | version 0.20 -->
 ## v0.20 — 20.12 Exploration Plan
+
+> **Source sections:** `CAP-532`
 
 A strategy can produce an exploration plan:
 
@@ -777,8 +825,10 @@ The acquisition runtime enforces execution.
 
 ---
 
-<!-- source: Continue Architecture Planning.md L70284–70320 | turn 53 | version 0.20 -->
+<!-- CAP-533 | Continue Architecture Planning.md L70284–70320 | turn 53 | version 0.20 -->
 ## v0.20 — 20.13 Exploration Must Remain Budgeted
+
+> **Source sections:** `CAP-533`
 
 A partition must never become an escape hatch around global limits.
 
@@ -816,8 +866,10 @@ All three must be satisfied.
 
 ---
 
-<!-- source: Continue Architecture Planning.md L70322–70373 | turn 53 | version 0.20 -->
+<!-- CAP-534 | Continue Architecture Planning.md L70322–70373 | turn 53 | version 0.20 -->
 ## v0.20 — 20.14 Adaptive Partition Priority
+
+> **Source sections:** `CAP-534`
 
 This is where the system becomes more interesting.
 
@@ -870,8 +922,10 @@ The architecture should expose the concept without locking in a scoring algorith
 
 ---
 
-<!-- source: Continue Architecture Planning.md L70375–70409 | turn 53 | version 0.20 -->
+<!-- CAP-535 | Continue Architecture Planning.md L70375–70409 | turn 53 | version 0.20 -->
 ## v0.20 — 20.15 Exploration vs Exploitation
+
+> **Source sections:** `CAP-535`
 
 This creates the classic tradeoff:
 
@@ -907,8 +961,10 @@ But the ratio should be policy/configuration, not hardcoded into the architectur
 
 ---
 
-<!-- source: Continue Architecture Planning.md L70411–70444 | turn 53 | version 0.20 -->
+<!-- CAP-536 | Continue Architecture Planning.md L70411–70444 | turn 53 | version 0.20 -->
 ## v0.20 — 20.16 Aging
+
+> **Source sections:** `CAP-536`
 
 A partition that has waited too long should eventually receive attention.
 
@@ -943,8 +999,10 @@ Work fairness
 
 ---
 
-<!-- source: Continue Architecture Planning.md L70446–70512 | turn 53 | version 0.20 -->
+<!-- CAP-537 | Continue Architecture Planning.md L70446–70512 | turn 53 | version 0.20 -->
 ## v0.20 — 20.17 Partition Splitting
+
+> **Source sections:** `CAP-537`
 
 A partition can reveal enough information to justify subdivision.
 
@@ -1012,8 +1070,10 @@ The controller validates and admits it.
 
 ---
 
-<!-- source: Continue Architecture Planning.md L70514–70550 | turn 53 | version 0.20 -->
+<!-- CAP-538 | Continue Architecture Planning.md L70514–70550 | turn 53 | version 0.20 -->
 ## v0.20 — 20.18 Partition Merge
+
+> **Source sections:** `CAP-538`
 
 Partitions can also overlap.
 
@@ -1051,8 +1111,10 @@ Because the overlap itself may reveal multiple discovery strategies.
 
 ---
 
-<!-- source: Continue Architecture Planning.md L70552–70588 | turn 53 | version 0.20 -->
+<!-- CAP-539 | Continue Architecture Planning.md L70552–70588 | turn 53 | version 0.20 -->
 ## v0.20 — 20.19 Partition Graph
+
+> **Source sections:** `CAP-539`
 
 The ResourceGraph now gets a companion:
 
@@ -1090,8 +1152,10 @@ saturated-by
 
 ---
 
-<!-- source: Continue Architecture Planning.md L70590–70645 | turn 53 | version 0.20 -->
+<!-- CAP-540 | Continue Architecture Planning.md L70590–70645 | turn 53 | version 0.20 -->
 ## v0.20 — 20.20 SearchSpace
+
+> **Source sections:** `CAP-540`
 
 Introduce the aggregate:
 
@@ -1148,8 +1212,10 @@ Frontier
 
 ---
 
-<!-- source: Continue Architecture Planning.md L70647–70694 | turn 53 | version 0.20 -->
+<!-- CAP-541 | Continue Architecture Planning.md L70647–70694 | turn 53 | version 0.20 -->
 ## v0.20 — 20.21 Search-Space Controller
+
+> **Source sections:** `CAP-541`
 
 Introduce a controller above strategies.
 
@@ -1198,8 +1264,10 @@ Strategies do not directly mutate the search space.
 
 ---
 
-<!-- source: Continue Architecture Planning.md L70696–70724 | turn 53 | version 0.20 -->
+<!-- CAP-542 | Continue Architecture Planning.md L70696–70724 | turn 53 | version 0.20 -->
 ## v0.20 — 20.22 Three-Level Control Plane
+
+> **Source sections:** `CAP-542`
 
 We now have:
 
@@ -1229,8 +1297,10 @@ This is cleaner than having every source decide everything.
 
 ---
 
-<!-- source: Continue Architecture Planning.md L70726–70766 | turn 53 | version 0.20 -->
+<!-- CAP-543 | Continue Architecture Planning.md L70726–70766 | turn 53 | version 0.20 -->
 ## v0.20 — 20.23 Candidate Sources Remain Low-Level
+
+> **Source sections:** `CAP-543`
 
 The distinction is now:
 
@@ -1272,8 +1342,12 @@ This division is important.
 
 ---
 
-<!-- source: Continue Architecture Planning.md L70768–70824 | turn 53 | version 0.20 -->
+<!-- CAP-544 | Continue Architecture Planning.md L70768–70824 | turn 53 | version 0.20 -->
 ## v0.20 — 20.24 Termination Becomes More Sophisticated
+
+> **Source sections:** `CAP-544`
+>
+> [DOCUMENTATION REVIEW] Contradiction **C-09** ([Review Notes](../REVIEW-NOTES.md#c-09--))
 
 Previously:
 
@@ -1331,8 +1405,10 @@ No pending retry
 
 ---
 
-<!-- source: Continue Architecture Planning.md L70826–70858 | turn 53 | version 0.20 -->
+<!-- CAP-545 | Continue Architecture Planning.md L70826–70858 | turn 53 | version 0.20 -->
 ## v0.20 — 20.25 Saturation
+
+> **Source sections:** `CAP-545`
 
 We should introduce an explicit concept of saturation.
 
@@ -1366,8 +1442,10 @@ This matters for adaptive discovery.
 
 ---
 
-<!-- source: Continue Architecture Planning.md L70860–70905 | turn 53 | version 0.20 -->
+<!-- CAP-546 | Continue Architecture Planning.md L70860–70905 | turn 53 | version 0.20 -->
 ## v0.20 — 20.26 Partition Statistics
+
+> **Source sections:** `CAP-546`
 
 Useful metrics:
 
@@ -1414,8 +1492,10 @@ But again:
 
 ---
 
-<!-- source: Continue Architecture Planning.md L70907–70942 | turn 53 | version 0.20 -->
+<!-- CAP-547 | Continue Architecture Planning.md L70907–70942 | turn 53 | version 0.20 -->
 ## v0.20 — 20.27 Discovery Efficiency
+
+> **Source sections:** `CAP-547`
 
 This allows a more meaningful metric than raw URL count.
 
@@ -1452,8 +1532,10 @@ cost per useful resource
 
 ---
 
-<!-- source: Continue Architecture Planning.md L81648–81672 | turn 67 | version 0.28 -->
+<!-- CAP-868 | Continue Architecture Planning.md L81648–81672 | turn 67 | version 0.28 -->
 ## v0.28 — Search-Space Reconciliation & Frontier Deduplication
+
+> **Source sections:** `CAP-868`
 
 with the central problem:
 
@@ -1479,8 +1561,10 @@ same search-space coverage
 
 Without this layer, the engine can become very good at scanning the same universe several times while incorrectly reporting increased coverage.
 
-<!-- source: Continue Architecture Planning.md L81684–81726 | turn 69 | version 0.28 -->
+<!-- CAP-870 | Continue Architecture Planning.md L81684–81726 | turn 69 | version 0.28 -->
 ## v0.28 — Search-Space Reconciliation & Frontier Deduplication
+
+> **Source sections:** `CAP-870`
 
 v0.27 gave us a formal enumeration layer:
 
@@ -1524,8 +1608,10 @@ The central rule for v0.28 is:
 
 ---
 
-<!-- source: Continue Architecture Planning.md L81728–81776 | turn 69 | version 0.28 -->
+<!-- CAP-871 | Continue Architecture Planning.md L81728–81776 | turn 69 | version 0.28 -->
 ## v0.28 — 28.1 The problem with naive deduplication
+
+> **Source sections:** `CAP-871`
 
 A simple crawler usually does:
 
@@ -1575,8 +1661,10 @@ The evidence should not.
 
 ---
 
-<!-- source: Continue Architecture Planning.md L81778–81802 | turn 69 | version 0.28 -->
+<!-- CAP-872 | Continue Architecture Planning.md L81778–81802 | turn 69 | version 0.28 -->
 ## v0.28 — 28.2 Five different kinds of duplication
+
+> **Source sections:** `CAP-872`
 
 We now need explicit categories.
 
@@ -1602,8 +1690,10 @@ Coverage deduplication
 
 ---
 
-<!-- source: Continue Architecture Planning.md L81804–81846 | turn 69 | version 0.28 -->
+<!-- CAP-873 | Continue Architecture Planning.md L81804–81846 | turn 69 | version 0.28 -->
 ## v0.28 — 28.3 Search-space overlap
+
+> **Source sections:** `CAP-873`
 
 Suppose:
 
@@ -1647,8 +1737,10 @@ Partition B
 
 ---
 
-<!-- source: Continue Architecture Planning.md L81848–81892 | turn 69 | version 0.28 -->
+<!-- CAP-874 | Continue Architecture Planning.md L81848–81892 | turn 69 | version 0.28 -->
 ## v0.28 — 28.4 SearchPartitionRelation
+
+> **Source sections:** `CAP-874`
 
 Introduce an explicit relation.
 
@@ -1694,8 +1786,12 @@ Do not infer `disjoint` merely because no overlap has yet been observed.
 
 ---
 
-<!-- source: Continue Architecture Planning.md L81894–81937 | turn 69 | version 0.28 -->
+<!-- CAP-875 | Continue Architecture Planning.md L81894–81937 | turn 69 | version 0.28 -->
 ## v0.28 — 28.5 Coverage overlap
+
+> **Source sections:** `CAP-875`
+>
+> [DOCUMENTATION REVIEW] Contradiction **C-05** ([Review Notes](../REVIEW-NOTES.md#c-05--))
 
 Suppose:
 
@@ -1740,8 +1836,10 @@ This is a key reason coverage cannot simply be accumulated by counting discovere
 
 ---
 
-<!-- source: Continue Architecture Planning.md L81939–81969 | turn 69 | version 0.28 -->
+<!-- CAP-876 | Continue Architecture Planning.md L81939–81969 | turn 69 | version 0.28 -->
 ## v0.28 — 28.6 Frontier deduplication
+
+> **Source sections:** `CAP-876`
 
 The FrontierRuntime currently prevents duplicate work items based on work identity.
 
@@ -1773,8 +1871,10 @@ are not necessarily equivalent evidence.
 
 ---
 
-<!-- source: Continue Architecture Planning.md L81971–82027 | turn 69 | version 0.28 -->
+<!-- CAP-877 | Continue Architecture Planning.md L81971–82027 | turn 69 | version 0.28 -->
 ## v0.28 — 28.7 SearchWorkKey
+
+> **Source sections:** `CAP-877`
 
 Introduce a semantic work identity.
 
@@ -1832,8 +1932,10 @@ There should therefore be **no universal string key**.
 
 ---
 
-<!-- source: Continue Architecture Planning.md L82029–82063 | turn 69 | version 0.28 -->
+<!-- CAP-878 | Continue Architecture Planning.md L82029–82063 | turn 69 | version 0.28 -->
 ## v0.28 — 28.8 Work equivalence
+
+> **Source sections:** `CAP-878`
 
 Introduce:
 
@@ -1869,8 +1971,10 @@ because semantic equivalence can require evidence.
 
 ---
 
-<!-- source: Continue Architecture Planning.md L82065–82106 | turn 69 | version 0.28 -->
+<!-- CAP-879 | Continue Architecture Planning.md L82065–82106 | turn 69 | version 0.28 -->
 ## v0.28 — 28.9 Candidate convergence
+
+> **Source sections:** `CAP-879`
 
 Candidate identity remains relatively simple:
 
@@ -1913,8 +2017,12 @@ This is exactly what we want.
 
 ---
 
-<!-- source: Continue Architecture Planning.md L82157–82197 | turn 69 | version 0.28 -->
+<!-- CAP-881 | Continue Architecture Planning.md L82157–82197 | turn 69 | version 0.28 -->
 ## v0.28 — 28.11 Artifact convergence
+
+> **Source sections:** `CAP-881`
+>
+> [DOCUMENTATION REVIEW] Contradiction **C-07** ([Review Notes](../REVIEW-NOTES.md#c-07--))
 
 Artifacts are different.
 
@@ -1956,8 +2064,10 @@ localized page linking identical binary
 
 ---
 
-<!-- source: Continue Architecture Planning.md L82199–82239 | turn 69 | version 0.28 -->
+<!-- CAP-882 | Continue Architecture Planning.md L82199–82239 | turn 69 | version 0.28 -->
 ## v0.28 — 28.12 Discovery independence
+
+> **Source sections:** `CAP-882`
 
 Now an important epistemic issue.
 
@@ -1999,8 +2109,10 @@ two independent confirmations
 
 ---
 
-<!-- source: Continue Architecture Planning.md L82241–82281 | turn 69 | version 0.28 -->
+<!-- CAP-883 | Continue Architecture Planning.md L82241–82281 | turn 69 | version 0.28 -->
 ## v0.28 — 28.13 Evidence independence model
+
+> **Source sections:** `CAP-883`
 
 Introduce:
 
@@ -2042,8 +2154,12 @@ should not be counted as an independent confirmation.
 
 ---
 
-<!-- source: Continue Architecture Planning.md L82283–82323 | turn 69 | version 0.28 -->
+<!-- CAP-884 | Continue Architecture Planning.md L82283–82323 | turn 69 | version 0.28 -->
 ## v0.28 — 28.14 Coverage provenance
+
+> **Source sections:** `CAP-884`
+>
+> [DOCUMENTATION REVIEW] Contradiction **C-05** ([Review Notes](../REVIEW-NOTES.md#c-05--))
 
 Coverage needs similar provenance.
 
@@ -2085,8 +2201,12 @@ Now two coverage records can be compared.
 
 ---
 
-<!-- source: Continue Architecture Planning.md L82325–82360 | turn 69 | version 0.28 -->
+<!-- CAP-885 | Continue Architecture Planning.md L82325–82360 | turn 69 | version 0.28 -->
 ## v0.28 — 28.15 Coverage relation
+
+> **Source sections:** `CAP-885`
+>
+> [DOCUMENTATION REVIEW] Contradiction **C-05** ([Review Notes](../REVIEW-NOTES.md#c-05--))
 
 Introduce:
 
@@ -2123,8 +2243,12 @@ unknown
 
 ---
 
-<!-- source: Continue Architecture Planning.md L82362–82389 | turn 69 | version 0.28 -->
+<!-- CAP-886 | Continue Architecture Planning.md L82362–82389 | turn 69 | version 0.28 -->
 ## v0.28 — 28.16 Coverage union
+
+> **Source sections:** `CAP-886`
+>
+> [DOCUMENTATION REVIEW] Contradiction **C-05** ([Review Notes](../REVIEW-NOTES.md#c-05--))
 
 Coverage aggregation should become an explicit operation.
 
@@ -2153,8 +2277,10 @@ unless the records are known to be disjoint.
 
 ---
 
-<!-- source: Continue Architecture Planning.md L82391–82425 | turn 69 | version 0.28 -->
+<!-- CAP-887 | Continue Architecture Planning.md L82391–82425 | turn 69 | version 0.28 -->
 ## v0.28 — 28.17 Disjoint partitions
+
+> **Source sections:** `CAP-887`
 
 If we have evidence that:
 
@@ -2190,8 +2316,10 @@ coverage aggregation permitted
 
 ---
 
-<!-- source: Continue Architecture Planning.md L82427–82460 | turn 69 | version 0.28 -->
+<!-- CAP-888 | Continue Architecture Planning.md L82427–82460 | turn 69 | version 0.28 -->
 ## v0.28 — 28.18 Unknown overlap
+
+> **Source sections:** `CAP-888`
 
 The default should be:
 
@@ -2226,8 +2354,10 @@ must prevent the system from making unjustified additive coverage claims.
 
 ---
 
-<!-- source: Continue Architecture Planning.md L82462–82506 | turn 69 | version 0.28 -->
+<!-- CAP-889 | Continue Architecture Planning.md L82462–82506 | turn 69 | version 0.28 -->
 ## v0.28 — 28.19 Frontier duplicate suppression
+
+> **Source sections:** `CAP-889`
 
 The FrontierRuntime can now ask:
 
@@ -2273,8 +2403,10 @@ should generally remain distinct.
 
 ---
 
-<!-- source: Continue Architecture Planning.md L82508–82543 | turn 69 | version 0.28 -->
+<!-- CAP-890 | Continue Architecture Planning.md L82508–82543 | turn 69 | version 0.28 -->
 ## v0.28 — 28.20 Duplicate suppression must preserve provenance
+
+> **Source sections:** `CAP-890`
 
 Suppose work B is suppressed.
 
@@ -2311,8 +2443,10 @@ provenance preservation
 
 ---
 
-<!-- source: Continue Architecture Planning.md L82545–82577 | turn 69 | version 0.28 -->
+<!-- CAP-891 | Continue Architecture Planning.md L82545–82577 | turn 69 | version 0.28 -->
 ## v0.28 — 28.21 Convergence graph
+
+> **Source sections:** `CAP-891`
 
 We can now represent convergence explicitly:
 
@@ -2346,8 +2480,10 @@ The discovery engine should become a **graph convergence system**.
 
 ---
 
-<!-- source: Continue Architecture Planning.md L82579–82605 | turn 69 | version 0.28 -->
+<!-- CAP-892 | Continue Architecture Planning.md L82579–82605 | turn 69 | version 0.28 -->
 ## v0.28 — 28.22 Search-space graph
+
+> **Source sections:** `CAP-892`
 
 The search space itself is also a graph:
 
@@ -2375,8 +2511,12 @@ They must not be merged.
 
 ---
 
-<!-- source: Continue Architecture Planning.md L82607–82640 | turn 69 | version 0.28 -->
+<!-- CAP-893 | Continue Architecture Planning.md L82607–82640 | turn 69 | version 0.28 -->
 ## v0.28 — 28.23 Search-space coverage ledger
+
+> **Source sections:** `CAP-893`
+>
+> [DOCUMENTATION REVIEW] Contradiction **C-05** ([Review Notes](../REVIEW-NOTES.md#c-05--))
 
 A useful aggregate structure:
 
@@ -2411,8 +2551,12 @@ candidate count
 
 ---
 
-<!-- source: Continue Architecture Planning.md L82642–82693 | turn 69 | version 0.28 -->
+<!-- CAP-894 | Continue Architecture Planning.md L82642–82693 | turn 69 | version 0.28 -->
 ## v0.28 — 28.24 Candidate count is not coverage
+
+> **Source sections:** `CAP-894`
+>
+> [DOCUMENTATION REVIEW] Contradiction **C-05** ([Review Notes](../REVIEW-NOTES.md#c-05--))
 
 This deserves explicit treatment.
 
@@ -2465,13 +2609,17 @@ completeness
 
 ---
 
-<!-- source: Continue Architecture Planning.md L82695–82697 | turn 69 | version 0.28 -->
+<!-- CAP-895 | Continue Architecture Planning.md L82695–82697 | turn 69 | version 0.28 -->
 ## v0.28 — 28.25 Search-space deduplication vs candidate deduplication
+
+> **Source sections:** `CAP-895`
 
 These are opposite operations.
 
-<!-- source: Continue Architecture Planning.md L82699–82705 | turn 69 | version 0.28 -->
+<!-- CAP-896 | Continue Architecture Planning.md L82699–82705 | turn 69 | version 0.28 -->
 ### v0.28 — Candidate deduplication
+
+> **Source sections:** `CAP-896`
 
 ```
 Many observations
@@ -2479,8 +2627,10 @@ Many observations
 one candidate
 ```
 
-<!-- source: Continue Architecture Planning.md L82707–82734 | turn 69 | version 0.28 -->
+<!-- CAP-897 | Continue Architecture Planning.md L82707–82734 | turn 69 | version 0.28 -->
 ### v0.28 — Search-space deduplication
+
+> **Source sections:** `CAP-897`
 
 ```
 Many planned searches
@@ -2509,8 +2659,10 @@ Independent evidence
 
 ---
 
-<!-- source: Continue Architecture Planning.md L82736–82786 | turn 69 | version 0.28 -->
+<!-- CAP-898 | Continue Architecture Planning.md L82736–82786 | turn 69 | version 0.28 -->
 ## v0.28 — 28.26 Adaptive strategy interaction
+
+> **Source sections:** `CAP-898`
 
 v0.21's adaptive selector can now use overlap-aware metrics.
 
@@ -2562,8 +2714,10 @@ novelty-aware metrics
 
 ---
 
-<!-- source: Continue Architecture Planning.md L82788–82839 | turn 69 | version 0.28 -->
+<!-- CAP-899 | Continue Architecture Planning.md L82788–82839 | turn 69 | version 0.28 -->
 ## v0.28 — 28.27 Example
+
+> **Source sections:** `CAP-899`
 
 Suppose:
 
@@ -2616,8 +2770,10 @@ This is the right accounting model.
 
 ---
 
-<!-- source: Continue Architecture Planning.md L82841–82883 | turn 69 | version 0.28 -->
+<!-- CAP-900 | Continue Architecture Planning.md L82841–82883 | turn 69 | version 0.28 -->
 ## v0.28 — 28.28 Reconciliation algorithm
+
+> **Source sections:** `CAP-900`
 
 A conceptual reconciliation pass:
 
@@ -2661,8 +2817,10 @@ CoverageClaim
 
 ---
 
-<!-- source: Continue Architecture Planning.md L82885–82922 | turn 69 | version 0.28 -->
+<!-- CAP-901 | Continue Architecture Planning.md L82885–82922 | turn 69 | version 0.28 -->
 ## v0.28 — 28.29 Reconciliation must be monotonic
+
+> **Source sections:** `CAP-901`
 
 A dangerous design would allow:
 
@@ -2701,8 +2859,10 @@ completeness claims
 
 ---
 
-<!-- source: Continue Architecture Planning.md L82924–82946 | turn 69 | version 0.28 -->
+<!-- CAP-902 | Continue Architecture Planning.md L82924–82946 | turn 69 | version 0.28 -->
 ## v0.28 — 28.30 Reconciliation does not delete evidence
+
+> **Source sections:** `CAP-902`
 
 Never:
 
@@ -2726,8 +2886,10 @@ Deduplication is a **graph relation**, not destructive garbage collection.
 
 ---
 
-<!-- source: Continue Architecture Planning.md L83130–83165 | turn 69 | version 0.28 -->
+<!-- CAP-918 | Continue Architecture Planning.md L83130–83165 | turn 69 | version 0.28 -->
 ## v0.28 — 28.34 The deeper architectural result
+
+> **Source sections:** `CAP-918`
 
 The system has crossed another important threshold.
 
@@ -2764,8 +2926,10 @@ That is the distinction that prevents a discovery engine from becoming a black-b
 
 ---
 
-<!-- source: Continue Architecture Planning.md L83238–83284 | turn 71 | version 0.29 -->
+<!-- CAP-921 | Continue Architecture Planning.md L83238–83284 | turn 71 | version 0.29 -->
 ## v0.29 — Dynamic Search-Space Expansion
+
+> **Source sections:** `CAP-921`
 
 v0.28 solved **reconciliation**:
 
@@ -2813,8 +2977,10 @@ We therefore need a controlled mechanism for turning **discovered structure into
 
 ---
 
-<!-- source: Continue Architecture Planning.md L83286–83322 | turn 71 | version 0.29 -->
+<!-- CAP-922 | Continue Architecture Planning.md L83286–83322 | turn 71 | version 0.29 -->
 ## v0.29 — 29.1 The central distinction
+
+> **Source sections:** `CAP-922`
 
 A discovery result may suggest:
 
@@ -2852,8 +3018,10 @@ PartitionProposal
 
 ---
 
-<!-- source: Continue Architecture Planning.md L83324–83376 | turn 71 | version 0.29 -->
+<!-- CAP-923 | Continue Architecture Planning.md L83324–83376 | turn 71 | version 0.29 -->
 ## v0.29 — 29.2 PartitionProposal
+
+> **Source sections:** `CAP-923`
 
 ```JavaScript
 class PartitionProposal {
@@ -2907,8 +3075,10 @@ Example:
 
 ---
 
-<!-- source: Continue Architecture Planning.md L83378–83410 | turn 71 | version 0.29 -->
+<!-- CAP-924 | Continue Architecture Planning.md L83378–83410 | turn 71 | version 0.29 -->
 ## v0.29 — 29.3 Why proposals are necessary
+
+> **Source sections:** `CAP-924`
 
 Without a proposal layer:
 
@@ -2942,8 +3112,10 @@ discovery ≠ partition authority
 
 ---
 
-<!-- source: Continue Architecture Planning.md L83412–83460 | turn 71 | version 0.29 -->
+<!-- CAP-925 | Continue Architecture Planning.md L83412–83460 | turn 71 | version 0.29 -->
 ## v0.29 — 29.4 PartitionAdmissionController
+
+> **Source sections:** `CAP-925`
 
 Introduce:
 
@@ -2993,8 +3165,12 @@ Admission
 
 ---
 
-<!-- source: Continue Architecture Planning.md L83462–83522 | turn 71 | version 0.29 -->
+<!-- CAP-926 | Continue Architecture Planning.md L83462–83522 | turn 71 | version 0.29 -->
 ## v0.29 — 29.5 Partition identity
+
+> **Source sections:** `CAP-926`
+>
+> [DOCUMENTATION REVIEW] Contradiction **C-04** ([Review Notes](../REVIEW-NOTES.md#c-04--))
 
 A partition needs a canonical identity.
 
@@ -3056,8 +3232,10 @@ unknown
 
 ---
 
-<!-- source: Continue Architecture Planning.md L83524–83550 | turn 71 | version 0.29 -->
+<!-- CAP-927 | Continue Architecture Planning.md L83524–83550 | turn 71 | version 0.29 -->
 ## v0.29 — 29.6 Partition explosion
+
+> **Source sections:** `CAP-927`
 
 This is the major v0.29 failure mode.
 
@@ -3085,8 +3263,10 @@ Expansion Budget
 
 ---
 
-<!-- source: Continue Architecture Planning.md L83552–83581 | turn 71 | version 0.29 -->
+<!-- CAP-928 | Continue Architecture Planning.md L83552–83581 | turn 71 | version 0.29 -->
 ## v0.29 — 29.7 ExpansionBudget
+
+> **Source sections:** `CAP-928`
 
 ```JavaScript
 class ExpansionBudget {
@@ -3117,8 +3297,10 @@ We also need local limits.
 
 ---
 
-<!-- source: Continue Architecture Planning.md L83583–83606 | turn 71 | version 0.29 -->
+<!-- CAP-929 | Continue Architecture Planning.md L83583–83606 | turn 71 | version 0.29 -->
 ## v0.29 — 29.8 Local expansion rate
+
+> **Source sections:** `CAP-929`
 
 A partition should have a child-generation budget:
 
@@ -3143,8 +3325,10 @@ This prevents one highly connected partition from monopolizing the entire search
 
 ---
 
-<!-- source: Continue Architecture Planning.md L83608–83640 | turn 71 | version 0.29 -->
+<!-- CAP-930 | Continue Architecture Planning.md L83608–83640 | turn 71 | version 0.29 -->
 ## v0.29 — 29.9 Expansion rate limiting
+
+> **Source sections:** `CAP-930`
 
 A useful metric:
 
@@ -3178,8 +3362,10 @@ not as a correctness judgment.
 
 ---
 
-<!-- source: Continue Architecture Planning.md L83642–83670 | turn 71 | version 0.29 -->
+<!-- CAP-931 | Continue Architecture Planning.md L83642–83670 | turn 71 | version 0.29 -->
 ## v0.29 — 29.10 Evidence threshold
+
+> **Source sections:** `CAP-931`
 
 A partition proposal should normally identify why the region exists.
 
@@ -3209,8 +3395,10 @@ The latter can still be a hypothesis, but must remain explicitly labeled.
 
 ---
 
-<!-- source: Continue Architecture Planning.md L83672–83693 | turn 71 | version 0.29 -->
+<!-- CAP-932 | Continue Architecture Planning.md L83672–83693 | turn 71 | version 0.29 -->
 ## v0.29 — 29.11 Partition proposal epistemic status
+
+> **Source sections:** `CAP-932`
 
 Use:
 
@@ -3233,8 +3421,10 @@ SearchPartition
 
 ---
 
-<!-- source: Continue Architecture Planning.md L83695–83726 | turn 71 | version 0.29 -->
+<!-- CAP-933 | Continue Architecture Planning.md L83695–83726 | turn 71 | version 0.29 -->
 ## v0.29 — 29.12 Hypothesis connection
+
+> **Source sections:** `CAP-933`
 
 v0.25 introduced:
 
@@ -3267,8 +3457,10 @@ The hypothesis may be rejected.
 
 ---
 
-<!-- source: Continue Architecture Planning.md L83728–83779 | turn 71 | version 0.29 -->
+<!-- CAP-934 | Continue Architecture Planning.md L83728–83779 | turn 71 | version 0.29 -->
 ## v0.29 — 29.13 Partition generation sources
+
+> **Source sections:** `CAP-934`
 
 Potential generators:
 
@@ -3321,8 +3513,10 @@ class PartitionExpansionProvider {
 
 ---
 
-<!-- source: Continue Architecture Planning.md L83781–83812 | turn 71 | version 0.29 -->
+<!-- CAP-935 | Continue Architecture Planning.md L83781–83812 | turn 71 | version 0.29 -->
 ## v0.29 — 29.14 Expansion provider boundary
+
+> **Source sections:** `CAP-935`
 
 The provider only proposes:
 
@@ -3355,8 +3549,10 @@ remains the authority boundary.
 
 ---
 
-<!-- source: Continue Architecture Planning.md L83814–83843 | turn 71 | version 0.29 -->
+<!-- CAP-936 | Continue Architecture Planning.md L83814–83843 | turn 71 | version 0.29 -->
 ## v0.29 — 29.15 Dynamic search-space graph
+
+> **Source sections:** `CAP-936`
 
 The search-space graph is now dynamic:
 
@@ -3387,8 +3583,10 @@ reconcilable
 
 ---
 
-<!-- source: Continue Architecture Planning.md L83845–83889 | turn 71 | version 0.29 -->
+<!-- CAP-937 | Continue Architecture Planning.md L83845–83889 | turn 71 | version 0.29 -->
 ## v0.29 — 29.16 Partition generation event
+
+> **Source sections:** `CAP-937`
 
 Every expansion should create an event.
 
@@ -3434,8 +3632,10 @@ with an explicit reason.
 
 ---
 
-<!-- source: Continue Architecture Planning.md L83891–83922 | turn 71 | version 0.29 -->
+<!-- CAP-938 | Continue Architecture Planning.md L83891–83922 | turn 71 | version 0.29 -->
 ## v0.29 — 29.17 Search-space versioning
+
+> **Source sections:** `CAP-938`
 
 Dynamic expansion creates another issue.
 
@@ -3468,8 +3668,10 @@ should identify the state of the search universe.
 
 ---
 
-<!-- source: Continue Architecture Planning.md L83924–83960 | turn 71 | version 0.29 -->
+<!-- CAP-939 | Continue Architecture Planning.md L83924–83960 | turn 71 | version 0.29 -->
 ## v0.29 — 29.18 SearchSpaceSnapshot
+
+> **Source sections:** `CAP-939`
 
 ```JavaScript
 class SearchSpaceSnapshot {
@@ -3507,8 +3709,12 @@ makes the scope explicit.
 
 ---
 
-<!-- source: Continue Architecture Planning.md L83962–84007 | turn 71 | version 0.29 -->
+<!-- CAP-940 | Continue Architecture Planning.md L83962–84007 | turn 71 | version 0.29 -->
 ## v0.29 — 29.19 Expansion and completeness
+
+> **Source sections:** `CAP-940`
+>
+> [DOCUMENTATION REVIEW] Contradiction **C-05** ([Review Notes](../REVIEW-NOTES.md#c-05--))
 
 A critical consequence:
 
@@ -3555,8 +3761,10 @@ This preserves temporal epistemic correctness.
 
 ---
 
-<!-- source: Continue Architecture Planning.md L84009–84053 | turn 71 | version 0.29 -->
+<!-- CAP-941 | Continue Architecture Planning.md L84009–84053 | turn 71 | version 0.29 -->
 ## v0.29 — 29.20 Dynamic expansion and negative evidence
+
+> **Source sections:** `CAP-941`
 
 Similarly, absence claims must be scoped.
 
@@ -3602,8 +3810,10 @@ This demonstrates why scoped predicates matter.
 
 ---
 
-<!-- source: Continue Architecture Planning.md L84055–84083 | turn 71 | version 0.29 -->
+<!-- CAP-942 | Continue Architecture Planning.md L84055–84083 | turn 71 | version 0.29 -->
 ## v0.29 — 29.21 Expansion priorities
+
+> **Source sections:** `CAP-942`
 
 Not all new partitions deserve equal priority.
 
@@ -3633,8 +3843,10 @@ budget
 
 ---
 
-<!-- source: Continue Architecture Planning.md L84085–84120 | turn 71 | version 0.29 -->
+<!-- CAP-943 | Continue Architecture Planning.md L84085–84120 | turn 71 | version 0.29 -->
 ## v0.29 — 29.22 Expansion depth
+
+> **Source sections:** `CAP-943`
 
 The parent-child relationship gives us a natural expansion depth:
 
@@ -3671,8 +3883,10 @@ These must not be conflated.
 
 ---
 
-<!-- source: Continue Architecture Planning.md L84122–84165 | turn 71 | version 0.29 -->
+<!-- CAP-944 | Continue Architecture Planning.md L84122–84165 | turn 71 | version 0.29 -->
 ## v0.29 — 29.23 Expansion loops
+
+> **Source sections:** `CAP-944`
 
 Dynamic expansion creates cycles.
 
@@ -3717,8 +3931,10 @@ new evidence/provenance
 
 ---
 
-<!-- source: Continue Architecture Planning.md L84167–84195 | turn 71 | version 0.29 -->
+<!-- CAP-945 | Continue Architecture Planning.md L84167–84195 | turn 71 | version 0.29 -->
 ## v0.29 — 29.24 Expansion cycle ≠ failure
+
+> **Source sections:** `CAP-945`
 
 A cycle:
 
@@ -3748,8 +3964,10 @@ delete branch
 
 ---
 
-<!-- source: Continue Architecture Planning.md L84197–84230 | turn 71 | version 0.29 -->
+<!-- CAP-946 | Continue Architecture Planning.md L84197–84230 | turn 71 | version 0.29 -->
 ## v0.29 — 29.25 Partition admission states
+
+> **Source sections:** `CAP-946`
 
 ```
 PROPOSED
@@ -3784,8 +4002,10 @@ The former means:
 
 ---
 
-<!-- source: Continue Architecture Planning.md L84232–84262 | turn 71 | version 0.29 -->
+<!-- CAP-947 | Continue Architecture Planning.md L84232–84262 | turn 71 | version 0.29 -->
 ## v0.29 — 29.26 Partition proposal accounting
+
+> **Source sections:** `CAP-947`
 
 Track:
 
@@ -3817,8 +4037,10 @@ mostly generating redundant search regions
 
 ---
 
-<!-- source: Continue Architecture Planning.md L84264–84289 | turn 71 | version 0.29 -->
+<!-- CAP-948 | Continue Architecture Planning.md L84264–84289 | turn 71 | version 0.29 -->
 ## v0.29 — 29.27 Partition explosion protection
+
+> **Source sections:** `CAP-948`
 
 A robust runtime should use several independent controls:
 
@@ -3845,8 +4067,10 @@ No single limit should be trusted as the only protection.
 
 ---
 
-<!-- source: Continue Architecture Planning.md L84291–84337 | turn 71 | version 0.29 -->
+<!-- CAP-949 | Continue Architecture Planning.md L84291–84337 | turn 71 | version 0.29 -->
 ## v0.29 — 29.28 Admission algorithm
+
+> **Source sections:** `CAP-949`
 
 Conceptually:
 
@@ -3894,8 +4118,10 @@ CREATE FRONTIER WORK
 
 ---
 
-<!-- source: Continue Architecture Planning.md L84339–84367 | turn 71 | version 0.29 -->
+<!-- CAP-950 | Continue Architecture Planning.md L84339–84367 | turn 71 | version 0.29 -->
 ## v0.29 — 29.29 Frontier generation
+
+> **Source sections:** `CAP-950`
 
 Once admitted:
 
@@ -3925,8 +4151,10 @@ Exactly the same separation established earlier for candidates.
 
 ---
 
-<!-- source: Continue Architecture Planning.md L84401–84437 | turn 71 | version 0.29 -->
+<!-- CAP-952 | Continue Architecture Planning.md L84401–84437 | turn 71 | version 0.29 -->
 ## v0.29 — 29.31 Two expansion paths
+
+> **Source sections:** `CAP-952`
 
 The engine now has:
 
@@ -3964,8 +4192,12 @@ The latter expands the **search space itself**.
 
 ---
 
-<!-- source: Continue Architecture Planning.md L84439–84463 | turn 71 | version 0.29 -->
+<!-- CAP-953 | Continue Architecture Planning.md L84439–84463 | turn 71 | version 0.29 -->
 ## v0.29 — 29.32 Search-space discovery as first-class knowledge
+
+> **Source sections:** `CAP-953`
+>
+> [DOCUMENTATION REVIEW] Contradiction **C-10** ([Review Notes](../REVIEW-NOTES.md#c-10--))
 
 We can now model:
 
@@ -3991,8 +4223,10 @@ The engine is discovering not just **things**, but also **ways of finding things
 
 ---
 
-<!-- source: Continue Architecture Planning.md L84545–84576 | turn 71 | version 0.29 -->
+<!-- CAP-969 | Continue Architecture Planning.md L84545–84576 | turn 71 | version 0.29 -->
 ## v0.29 — 29.34 The system after v0.29
+
+> **Source sections:** `CAP-969`
 
 We now have three dynamic graphs:
 
@@ -4025,8 +4259,10 @@ This is becoming a much more general architecture than a crawler.
 
 ---
 
-<!-- source: Continue Architecture Planning.md L84610–84662 | turn 71 | version 0.29 -->
+<!-- CAP-971 | Continue Architecture Planning.md L84610–84662 | turn 71 | version 0.29 -->
 ## v0.29 takeaway
+
+> **Source sections:** `CAP-971`
 
 The discovery engine can now grow its own search space, but only through a controlled path:
 

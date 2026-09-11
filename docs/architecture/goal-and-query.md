@@ -6,72 +6,72 @@
 >
 > **Purpose:** Search goals, relevance, goal-constrained discovery and the query planner and tactic runtime.
 
-## Contents
+## Source Sections
 
-- **v0.24 — Query/Goal-Constrained Discovery** — `Continue Architecture Planning.md` L75325–75390
-- **v0.24 — Query/Goal-Constrained Discovery** — `Continue Architecture Planning.md` L75402–75455
-- **v0.24 — 24.1 SearchGoal** — `Continue Architecture Planning.md` L75457–75517
-- **v0.24 — 24.2 Goal ≠ Domain** — `Continue Architecture Planning.md` L75519–75568
-- **v0.24 — 24.3 Goal constraints** — `Continue Architecture Planning.md` L75570–75622
-- **v0.24 — 24.4 Hard constraints vs soft preferences** — `Continue Architecture Planning.md` L75624–75662
-- **v0.24 — 24.5 GoalConstraint** — `Continue Architecture Planning.md` L75664–75710
-- **v0.24 — 24.6 Relevance is not classification** — `Continue Architecture Planning.md` L75712–75752
-- **v0.24 — 24.7 RelevanceAssertion** — `Continue Architecture Planning.md` L75754–75812
-- **v0.24 — 24.8 Why `UNKNOWN` matters** — `Continue Architecture Planning.md` L75814–75860
-- **v0.24 — 24.9 Relevance scoring** — `Continue Architecture Planning.md` L75862–75908
-- **v0.24 — 24.10 The six questions** — `Continue Architecture Planning.md` L75910–75925
-- **v0.24 — 24.11 Relevant Search Space** — `Continue Architecture Planning.md` L75927–75978
-- **v0.24 — 24.12 Example** — `Continue Architecture Planning.md` L75980–76037
-- **v0.24 — 24.13 Goal-directed adaptive discovery** — `Continue Architecture Planning.md` L76039–76091
-- **v0.24 — 24.14 Expected Goal Value** — `Continue Architecture Planning.md` L76093–76140
-- **v0.24 — 24.15 Information gain** — `Continue Architecture Planning.md` L76142–76172
-- **v0.24 — 24.16 Goal-aware partition scoring** — `Continue Architecture Planning.md` L76174–76215
-- **v0.24 — 24.17 Goal does not grant authority** — `Continue Architecture Planning.md` L76217–76267
-- **v0.24 — 24.18 Goal provenance** — `Continue Architecture Planning.md` L76269–76307
-- **v0.24 — 24.19 Goal-aware discovery event** — `Continue Architecture Planning.md` L76309–76352
-- **v0.24 — 24.20 Goal lifecycle** — `Continue Architecture Planning.md` L76354–76400
-- **v0.24 — 24.21 Goal termination policies** — `Continue Architecture Planning.md` L76402–76443
-- **v0.24 — 24.22 Goal satisfaction vs completeness** — `Continue Architecture Planning.md` L76445–76481
-- **v0.24 — 24.23 GoalResult** — `Continue Architecture Planning.md` L76483–76529
-- **v0.24 — 24.24 Result ranking** — `Continue Architecture Planning.md` L76531–76577
-- **v0.24 — 24.25 Result quality model** — `Continue Architecture Planning.md` L76579–76602
-- **v0.24 — 24.26 Goal conflict** — `Continue Architecture Planning.md` L76604–76641
-- **v0.24 — 24.27 Goal sessions** — `Continue Architecture Planning.md` L76643–76679
-- **v0.24 — 24.28 Reuse of previous knowledge** — `Continue Architecture Planning.md` L76681–76720
-- **v0.24 — 24.29 Knowledge reuse is not evidence reuse without qualification** — `Continue Architecture Planning.md` L76722–76761
-- **v0.24 — 24.33 What v0.24 changes fundamentally** — `Continue Architecture Planning.md` L76977–77032
-- **v0.25 — Discovery Query Planner** — `Continue Architecture Planning.md` L77034–77096
-- **v0.25 — Discovery Query Planner** — `Continue Architecture Planning.md` L77108–77158
-- **v0.25 — 25.1 Planner ≠ Search Engine** — `Continue Architecture Planning.md` L77160–77200
-- **v0.25 — 25.2 QueryPlan** — `Continue Architecture Planning.md` L77202–77261
-- **v0.25 — 25.3 QueryStep** — `Continue Architecture Planning.md` L77263–77321
-- **v0.25 — 25.4 Query decomposition** — `Continue Architecture Planning.md` L77323–77363
-- **v0.25 — 25.5 Search axes** — `Continue Architecture Planning.md` L77365–77401
-- **v0.25 — 25.6 QueryTactic** — `Continue Architecture Planning.md` L77403–77440
-- **v0.25 — 25.7 Tactic ≠ Strategy** — `Continue Architecture Planning.md` L77442–77479
-- **v0.25 — 25.8 Planner plugins** — `Continue Architecture Planning.md` L77481–77517
-- **v0.25 — 25.9 Planner contract** — `Continue Architecture Planning.md` L77519–77555
-- **v0.25 — 25.10 Query plan example** — `Continue Architecture Planning.md` L77557–77592
-- **v0.25 — 25.11 Dependencies** — `Continue Architecture Planning.md` L77594–77626
-- **v0.25 — 25.12 Conditional planning** — `Continue Architecture Planning.md` L77628–77669
-- **v0.25 — 25.13 Planning boundary** — `Continue Architecture Planning.md` L77671–77701
-- **v0.25 — 25.14 Query plan validation** — `Continue Architecture Planning.md` L77703–77735
-- **v0.25 — 25.15 Planner and adaptive discovery** — `Continue Architecture Planning.md` L77737–77765
-- **v0.25 — 25.16 Exploration vs exploitation moves upward** — `Continue Architecture Planning.md` L77767–77801
-- **v0.25 — 25.17 Query tactic performance** — `Continue Architecture Planning.md` L77803–77831
-- **v0.25 — 25.18 Query planner provenance** — `Continue Architecture Planning.md` L77833–77877
-- **v0.25 — 25.19 Query plan identity** — `Continue Architecture Planning.md` L77879–77907
-- **v0.25 — 25.20 Plan versioning** — `Continue Architecture Planning.md` L77909–77940
-- **v0.25 — 25.21 Planner cannot erase old work** — `Continue Architecture Planning.md` L77942–77973
-- **v0.25 — 25.22 Query expansion** — `Continue Architecture Planning.md` L77975–78028
-- **v0.25 — 25.23 Expansion evidence** — `Continue Architecture Planning.md` L78030–78052
-- **v0.25 — 25.24 Planner hallucination boundary** — `Continue Architecture Planning.md` L78054–78084
-- **v0.25 — 25.25 Search hypothesis** — `Continue Architecture Planning.md` L78086–78150
-- **v0.25 — 25.27 Planner output is not execution** — `Continue Architecture Planning.md` L78202–78227
-- **v0.25 — 25.28 Planner budget** — `Continue Architecture Planning.md` L78229–78269
-- **v0.25 — 25.29 Three different budgets** — `Continue Architecture Planning.md` L78271–78300
-- **v0.25 — 25.30 Termination propagation** — `Continue Architecture Planning.md` L78302–78348
-- **v0.25 — 25.33 The resulting abstraction stack** — `Continue Architecture Planning.md` L78463–78546
+- **v0.24 — Query/Goal-Constrained Discovery** — `CAP-679` — `Continue Architecture Planning.md` L75325–75390
+- **v0.24 — Query/Goal-Constrained Discovery** — `CAP-681` — `Continue Architecture Planning.md` L75402–75455
+- **v0.24 — 24.1 SearchGoal** — `CAP-682` — `Continue Architecture Planning.md` L75457–75517
+- **v0.24 — 24.2 Goal ≠ Domain** — `CAP-683` — `Continue Architecture Planning.md` L75519–75568
+- **v0.24 — 24.3 Goal constraints** — `CAP-684` — `Continue Architecture Planning.md` L75570–75622
+- **v0.24 — 24.4 Hard constraints vs soft preferences** — `CAP-685` — `Continue Architecture Planning.md` L75624–75662
+- **v0.24 — 24.5 GoalConstraint** — `CAP-686` — `Continue Architecture Planning.md` L75664–75710
+- **v0.24 — 24.6 Relevance is not classification** — `CAP-687` — `Continue Architecture Planning.md` L75712–75752
+- **v0.24 — 24.7 RelevanceAssertion** — `CAP-688` — `Continue Architecture Planning.md` L75754–75812
+- **v0.24 — 24.8 Why `UNKNOWN` matters** — `CAP-689` — `Continue Architecture Planning.md` L75814–75860
+- **v0.24 — 24.9 Relevance scoring** — `CAP-690` — `Continue Architecture Planning.md` L75862–75908
+- **v0.24 — 24.10 The six questions** — `CAP-691` — `Continue Architecture Planning.md` L75910–75925
+- **v0.24 — 24.11 Relevant Search Space** — `CAP-692` — `Continue Architecture Planning.md` L75927–75978
+- **v0.24 — 24.12 Example** — `CAP-693` — `Continue Architecture Planning.md` L75980–76037
+- **v0.24 — 24.13 Goal-directed adaptive discovery** — `CAP-694` — `Continue Architecture Planning.md` L76039–76091
+- **v0.24 — 24.14 Expected Goal Value** — `CAP-695` — `Continue Architecture Planning.md` L76093–76140
+- **v0.24 — 24.15 Information gain** — `CAP-696` — `Continue Architecture Planning.md` L76142–76172
+- **v0.24 — 24.16 Goal-aware partition scoring** — `CAP-697` — `Continue Architecture Planning.md` L76174–76215
+- **v0.24 — 24.17 Goal does not grant authority** — `CAP-698` — `Continue Architecture Planning.md` L76217–76267
+- **v0.24 — 24.18 Goal provenance** — `CAP-699` — `Continue Architecture Planning.md` L76269–76307
+- **v0.24 — 24.19 Goal-aware discovery event** — `CAP-700` — `Continue Architecture Planning.md` L76309–76352
+- **v0.24 — 24.20 Goal lifecycle** — `CAP-701` — `Continue Architecture Planning.md` L76354–76400
+- **v0.24 — 24.21 Goal termination policies** — `CAP-702` — `Continue Architecture Planning.md` L76402–76443
+- **v0.24 — 24.22 Goal satisfaction vs completeness** — `CAP-703` — `Continue Architecture Planning.md` L76445–76481
+- **v0.24 — 24.23 GoalResult** — `CAP-704` — `Continue Architecture Planning.md` L76483–76529
+- **v0.24 — 24.24 Result ranking** — `CAP-705` — `Continue Architecture Planning.md` L76531–76577
+- **v0.24 — 24.25 Result quality model** — `CAP-706` — `Continue Architecture Planning.md` L76579–76602
+- **v0.24 — 24.26 Goal conflict** — `CAP-707` — `Continue Architecture Planning.md` L76604–76641
+- **v0.24 — 24.27 Goal sessions** — `CAP-708` — `Continue Architecture Planning.md` L76643–76679
+- **v0.24 — 24.28 Reuse of previous knowledge** — `CAP-709` — `Continue Architecture Planning.md` L76681–76720
+- **v0.24 — 24.29 Knowledge reuse is not evidence reuse without qualification** — `CAP-710` — `Continue Architecture Planning.md` L76722–76761
+- **v0.24 — 24.33 What v0.24 changes fundamentally** — `CAP-724` — `Continue Architecture Planning.md` L76977–77032
+- **v0.25 — Discovery Query Planner** — `CAP-725` — `Continue Architecture Planning.md` L77034–77096
+- **v0.25 — Discovery Query Planner** — `CAP-727` — `Continue Architecture Planning.md` L77108–77158
+- **v0.25 — 25.1 Planner ≠ Search Engine** — `CAP-728` — `Continue Architecture Planning.md` L77160–77200
+- **v0.25 — 25.2 QueryPlan** — `CAP-729` — `Continue Architecture Planning.md` L77202–77261
+- **v0.25 — 25.3 QueryStep** — `CAP-730` — `Continue Architecture Planning.md` L77263–77321
+- **v0.25 — 25.4 Query decomposition** — `CAP-731` — `Continue Architecture Planning.md` L77323–77363
+- **v0.25 — 25.5 Search axes** — `CAP-732` — `Continue Architecture Planning.md` L77365–77401
+- **v0.25 — 25.6 QueryTactic** — `CAP-733` — `Continue Architecture Planning.md` L77403–77440
+- **v0.25 — 25.7 Tactic ≠ Strategy** — `CAP-734` — `Continue Architecture Planning.md` L77442–77479
+- **v0.25 — 25.8 Planner plugins** — `CAP-735` — `Continue Architecture Planning.md` L77481–77517
+- **v0.25 — 25.9 Planner contract** — `CAP-736` — `Continue Architecture Planning.md` L77519–77555
+- **v0.25 — 25.10 Query plan example** — `CAP-737` — `Continue Architecture Planning.md` L77557–77592
+- **v0.25 — 25.11 Dependencies** — `CAP-738` — `Continue Architecture Planning.md` L77594–77626
+- **v0.25 — 25.12 Conditional planning** — `CAP-739` — `Continue Architecture Planning.md` L77628–77669
+- **v0.25 — 25.13 Planning boundary** — `CAP-740` — `Continue Architecture Planning.md` L77671–77701
+- **v0.25 — 25.14 Query plan validation** — `CAP-741` — `Continue Architecture Planning.md` L77703–77735
+- **v0.25 — 25.15 Planner and adaptive discovery** — `CAP-742` — `Continue Architecture Planning.md` L77737–77765
+- **v0.25 — 25.16 Exploration vs exploitation moves upward** — `CAP-743` — `Continue Architecture Planning.md` L77767–77801
+- **v0.25 — 25.17 Query tactic performance** — `CAP-744` — `Continue Architecture Planning.md` L77803–77831
+- **v0.25 — 25.18 Query planner provenance** — `CAP-745` — `Continue Architecture Planning.md` L77833–77877
+- **v0.25 — 25.19 Query plan identity** — `CAP-746` — `Continue Architecture Planning.md` L77879–77907
+- **v0.25 — 25.20 Plan versioning** — `CAP-747` — `Continue Architecture Planning.md` L77909–77940
+- **v0.25 — 25.21 Planner cannot erase old work** — `CAP-748` — `Continue Architecture Planning.md` L77942–77973
+- **v0.25 — 25.22 Query expansion** — `CAP-749` — `Continue Architecture Planning.md` L77975–78028
+- **v0.25 — 25.23 Expansion evidence** — `CAP-750` — `Continue Architecture Planning.md` L78030–78052
+- **v0.25 — 25.24 Planner hallucination boundary** — `CAP-751` — `Continue Architecture Planning.md` L78054–78084
+- **v0.25 — 25.25 Search hypothesis** — `CAP-752` — `Continue Architecture Planning.md` L78086–78150
+- **v0.25 — 25.27 Planner output is not execution** — `CAP-754` — `Continue Architecture Planning.md` L78202–78227
+- **v0.25 — 25.28 Planner budget** — `CAP-755` — `Continue Architecture Planning.md` L78229–78269
+- **v0.25 — 25.29 Three different budgets** — `CAP-756` — `Continue Architecture Planning.md` L78271–78300
+- **v0.25 — 25.30 Termination propagation** — `CAP-757` — `Continue Architecture Planning.md` L78302–78348
+- **v0.25 — 25.33 The resulting abstraction stack** — `CAP-761` — `Continue Architecture Planning.md` L78463–78546
 
 ## Related Documents
 
@@ -81,8 +81,10 @@
 
 ---
 
-<!-- source: Continue Architecture Planning.md L75325–75390 | turn 59 | version 0.24 -->
+<!-- CAP-679 | Continue Architecture Planning.md L75325–75390 | turn 59 | version 0.24 -->
 ## v0.24 — Query/Goal-Constrained Discovery
+
+> **Source sections:** `CAP-679`
 
 The next missing abstraction is now unavoidable.
 
@@ -149,8 +151,10 @@ The crucial architectural rule for v0.24 should be:
 
 > **The goal defines relevance; it must never weaken domain, capability, acquisition, policy, evidence, or completeness invariants.**
 
-<!-- source: Continue Architecture Planning.md L75402–75455 | turn 61 | version 0.24 -->
+<!-- CAP-681 | Continue Architecture Planning.md L75402–75455 | turn 61 | version 0.24 -->
 ## v0.24 — Query/Goal-Constrained Discovery
+
+> **Source sections:** `CAP-681`
 
 v0.23 gave the engine the ability to reason about **presence, absence, and search assurance**.
 
@@ -205,8 +209,10 @@ COMPLETENESS
 
 ---
 
-<!-- source: Continue Architecture Planning.md L75457–75517 | turn 61 | version 0.24 -->
+<!-- CAP-682 | Continue Architecture Planning.md L75457–75517 | turn 61 | version 0.24 -->
 ## v0.24 — 24.1 SearchGoal
+
+> **Source sections:** `CAP-682`
 
 Introduce a first-class object.
 
@@ -268,8 +274,10 @@ That belongs to a domain classifier/type registry.
 
 ---
 
-<!-- source: Continue Architecture Planning.md L75519–75568 | turn 61 | version 0.24 -->
+<!-- CAP-683 | Continue Architecture Planning.md L75519–75568 | turn 61 | version 0.24 -->
 ## v0.24 — 24.2 Goal ≠ Domain
+
+> **Source sections:** `CAP-683`
 
 This distinction is essential.
 
@@ -320,8 +328,10 @@ domain
 
 ---
 
-<!-- source: Continue Architecture Planning.md L75570–75622 | turn 61 | version 0.24 -->
+<!-- CAP-684 | Continue Architecture Planning.md L75570–75622 | turn 61 | version 0.24 -->
 ## v0.24 — 24.3 Goal constraints
+
+> **Source sections:** `CAP-684`
 
 Constraints can operate on different dimensions.
 
@@ -375,8 +385,10 @@ Domain plugins interpret domain-specific fields.
 
 ---
 
-<!-- source: Continue Architecture Planning.md L75624–75662 | turn 61 | version 0.24 -->
+<!-- CAP-685 | Continue Architecture Planning.md L75624–75662 | turn 61 | version 0.24 -->
 ## v0.24 — 24.4 Hard constraints vs soft preferences
+
+> **Source sections:** `CAP-685`
 
 Do not mix:
 
@@ -416,8 +428,10 @@ This prevents a ranking preference from accidentally becoming an exclusion rule.
 
 ---
 
-<!-- source: Continue Architecture Planning.md L75664–75710 | turn 61 | version 0.24 -->
+<!-- CAP-686 | Continue Architecture Planning.md L75664–75710 | turn 61 | version 0.24 -->
 ## v0.24 — 24.5 GoalConstraint
+
+> **Source sections:** `CAP-686`
 
 ```JavaScript
 class GoalConstraint {
@@ -465,8 +479,10 @@ mode      = soft
 
 ---
 
-<!-- source: Continue Architecture Planning.md L75712–75752 | turn 61 | version 0.24 -->
+<!-- CAP-687 | Continue Architecture Planning.md L75712–75752 | turn 61 | version 0.24 -->
 ## v0.24 — 24.6 Relevance is not classification
+
+> **Source sections:** `CAP-687`
 
 A resource may be classified as:
 
@@ -508,8 +524,10 @@ Relevant = true
 
 ---
 
-<!-- source: Continue Architecture Planning.md L75754–75812 | turn 61 | version 0.24 -->
+<!-- CAP-688 | Continue Architecture Planning.md L75754–75812 | turn 61 | version 0.24 -->
 ## v0.24 — 24.7 RelevanceAssertion
+
+> **Source sections:** `CAP-688`
 
 Introduce:
 
@@ -569,8 +587,10 @@ EXCLUDED
 
 ---
 
-<!-- source: Continue Architecture Planning.md L75814–75860 | turn 61 | version 0.24 -->
+<!-- CAP-689 | Continue Architecture Planning.md L75814–75860 | turn 61 | version 0.24 -->
 ## v0.24 — 24.8 Why `UNKNOWN` matters
+
+> **Source sections:** `CAP-689`
 
 Suppose the engine finds:
 
@@ -618,8 +638,10 @@ This preserves uncertainty.
 
 ---
 
-<!-- source: Continue Architecture Planning.md L75862–75908 | turn 61 | version 0.24 -->
+<!-- CAP-690 | Continue Architecture Planning.md L75862–75908 | turn 61 | version 0.24 -->
 ## v0.24 — 24.9 Relevance scoring
+
+> **Source sections:** `CAP-690`
 
 A simple model might be:
 
@@ -667,8 +689,10 @@ Each answers a different question.
 
 ---
 
-<!-- source: Continue Architecture Planning.md L75910–75925 | turn 61 | version 0.24 -->
+<!-- CAP-691 | Continue Architecture Planning.md L75910–75925 | turn 61 | version 0.24 -->
 ## v0.24 — 24.10 The six questions
+
+> **Source sections:** `CAP-691`
 
 The system now has a clean semantic separation:
 
@@ -685,8 +709,10 @@ This is becoming a genuine discovery architecture rather than a crawler.
 
 ---
 
-<!-- source: Continue Architecture Planning.md L75927–75978 | turn 61 | version 0.24 -->
+<!-- CAP-692 | Continue Architecture Planning.md L75927–75978 | turn 61 | version 0.24 -->
 ## v0.24 — 24.11 Relevant Search Space
+
+> **Source sections:** `CAP-692`
 
 The goal should derive a **view** over the domain.
 
@@ -739,8 +765,10 @@ It can be a **logical filter over the entire search space**.
 
 ---
 
-<!-- source: Continue Architecture Planning.md L75980–76037 | turn 61 | version 0.24 -->
+<!-- CAP-693 | Continue Architecture Planning.md L75980–76037 | turn 61 | version 0.24 -->
 ## v0.24 — 24.12 Example
+
+> **Source sections:** `CAP-693`
 
 Suppose:
 
@@ -799,8 +827,10 @@ hard exclusion
 
 ---
 
-<!-- source: Continue Architecture Planning.md L76039–76091 | turn 61 | version 0.24 -->
+<!-- CAP-694 | Continue Architecture Planning.md L76039–76091 | turn 61 | version 0.24 -->
 ## v0.24 — 24.13 Goal-directed adaptive discovery
+
+> **Source sections:** `CAP-694`
 
 v0.21 already introduced adaptive strategy selection.
 
@@ -854,8 +884,10 @@ is still only a prioritization signal unless declared as a hard constraint.
 
 ---
 
-<!-- source: Continue Architecture Planning.md L76093–76140 | turn 61 | version 0.24 -->
+<!-- CAP-695 | Continue Architecture Planning.md L76093–76140 | turn 61 | version 0.24 -->
 ## v0.24 — 24.14 Expected Goal Value
+
+> **Source sections:** `CAP-695`
 
 A useful new metric:
 
@@ -904,8 +936,10 @@ when the goal is service manuals.
 
 ---
 
-<!-- source: Continue Architecture Planning.md L76142–76172 | turn 61 | version 0.24 -->
+<!-- CAP-696 | Continue Architecture Planning.md L76142–76172 | turn 61 | version 0.24 -->
 ## v0.24 — 24.15 Information gain
+
+> **Source sections:** `CAP-696`
 
 A discovery can be valuable even when it does not directly produce a result.
 
@@ -937,8 +971,10 @@ This prevents the adaptive engine from becoming excessively greedy.
 
 ---
 
-<!-- source: Continue Architecture Planning.md L76174–76215 | turn 61 | version 0.24 -->
+<!-- CAP-697 | Continue Architecture Planning.md L76174–76215 | turn 61 | version 0.24 -->
 ## v0.24 — 24.16 Goal-aware partition scoring
+
+> **Source sections:** `CAP-697`
 
 Partition context can now contain:
 
@@ -981,8 +1017,10 @@ Budget
 
 ---
 
-<!-- source: Continue Architecture Planning.md L76217–76267 | turn 61 | version 0.24 -->
+<!-- CAP-698 | Continue Architecture Planning.md L76217–76267 | turn 61 | version 0.24 -->
 ## v0.24 — 24.17 Goal does not grant authority
+
+> **Source sections:** `CAP-698`
 
 This needs an explicit invariant.
 
@@ -1034,8 +1072,10 @@ remain separate.
 
 ---
 
-<!-- source: Continue Architecture Planning.md L76269–76307 | turn 61 | version 0.24 -->
+<!-- CAP-699 | Continue Architecture Planning.md L76269–76307 | turn 61 | version 0.24 -->
 ## v0.24 — 24.18 Goal provenance
+
+> **Source sections:** `CAP-699`
 
 Every result should be traceable back to the goal that caused it to be selected.
 
@@ -1075,8 +1115,10 @@ These should remain distinct.
 
 ---
 
-<!-- source: Continue Architecture Planning.md L76309–76352 | turn 61 | version 0.24 -->
+<!-- CAP-700 | Continue Architecture Planning.md L76309–76352 | turn 61 | version 0.24 -->
 ## v0.24 — 24.19 Goal-aware discovery event
+
+> **Source sections:** `CAP-700`
 
 Extend the event ledger:
 
@@ -1121,8 +1163,10 @@ Goal G
 
 ---
 
-<!-- source: Continue Architecture Planning.md L76354–76400 | turn 61 | version 0.24 -->
+<!-- CAP-701 | Continue Architecture Planning.md L76354–76400 | turn 61 | version 0.24 -->
 ## v0.24 — 24.20 Goal lifecycle
+
+> **Source sections:** `CAP-701`
 
 A goal itself should have state.
 
@@ -1170,8 +1214,12 @@ because the goal did not require exhaustive discovery.
 
 ---
 
-<!-- source: Continue Architecture Planning.md L76402–76443 | turn 61 | version 0.24 -->
+<!-- CAP-702 | Continue Architecture Planning.md L76402–76443 | turn 61 | version 0.24 -->
 ## v0.24 — 24.21 Goal termination policies
+
+> **Source sections:** `CAP-702`
+>
+> [DOCUMENTATION REVIEW] Contradiction **C-09** ([Review Notes](../REVIEW-NOTES.md#c-09--))
 
 Introduce:
 
@@ -1214,8 +1262,12 @@ Goal:
 
 ---
 
-<!-- source: Continue Architecture Planning.md L76445–76481 | turn 61 | version 0.24 -->
+<!-- CAP-703 | Continue Architecture Planning.md L76445–76481 | turn 61 | version 0.24 -->
 ## v0.24 — 24.22 Goal satisfaction vs completeness
+
+> **Source sections:** `CAP-703`
+>
+> [DOCUMENTATION REVIEW] Contradiction **C-05** ([Review Notes](../REVIEW-NOTES.md#c-05--))
 
 This distinction should be explicit:
 
@@ -1253,8 +1305,10 @@ All three statements can be simultaneously true.
 
 ---
 
-<!-- source: Continue Architecture Planning.md L76483–76529 | turn 61 | version 0.24 -->
+<!-- CAP-704 | Continue Architecture Planning.md L76483–76529 | turn 61 | version 0.24 -->
 ## v0.24 — 24.23 GoalResult
+
+> **Source sections:** `CAP-704`
 
 Introduce:
 
@@ -1302,8 +1356,10 @@ UNKNOWN
 
 ---
 
-<!-- source: Continue Architecture Planning.md L76531–76577 | turn 61 | version 0.24 -->
+<!-- CAP-705 | Continue Architecture Planning.md L76531–76577 | turn 61 | version 0.24 -->
 ## v0.24 — 24.24 Result ranking
+
+> **Source sections:** `CAP-705`
 
 Once relevant resources exist, ranking becomes another layer.
 
@@ -1351,8 +1407,10 @@ RANK
 
 ---
 
-<!-- source: Continue Architecture Planning.md L76579–76602 | turn 61 | version 0.24 -->
+<!-- CAP-706 | Continue Architecture Planning.md L76579–76602 | turn 61 | version 0.24 -->
 ## v0.24 — 24.25 Result quality model
+
+> **Source sections:** `CAP-706`
 
 Eventually:
 
@@ -1377,8 +1435,10 @@ The latter loses explanatory power.
 
 ---
 
-<!-- source: Continue Architecture Planning.md L76604–76641 | turn 61 | version 0.24 -->
+<!-- CAP-707 | Continue Architecture Planning.md L76604–76641 | turn 61 | version 0.24 -->
 ## v0.24 — 24.26 Goal conflict
+
+> **Source sections:** `CAP-707`
 
 Two goals may coexist:
 
@@ -1417,8 +1477,10 @@ Goals create **views over those facts**.
 
 ---
 
-<!-- source: Continue Architecture Planning.md L76643–76679 | turn 61 | version 0.24 -->
+<!-- CAP-708 | Continue Architecture Planning.md L76643–76679 | turn 61 | version 0.24 -->
 ## v0.24 — 24.27 Goal sessions
+
+> **Source sections:** `CAP-708`
 
 A scan session should now optionally belong to a goal.
 
@@ -1456,8 +1518,12 @@ The same resource graph can support all of them.
 
 ---
 
-<!-- source: Continue Architecture Planning.md L76681–76720 | turn 61 | version 0.24 -->
+<!-- CAP-709 | Continue Architecture Planning.md L76681–76720 | turn 61 | version 0.24 -->
 ## v0.24 — 24.28 Reuse of previous knowledge
+
+> **Source sections:** `CAP-709`
+>
+> [DOCUMENTATION REVIEW] Contradiction **C-10** ([Review Notes](../REVIEW-NOTES.md#c-10--))
 
 This creates an important optimization.
 
@@ -1498,8 +1564,12 @@ This is one of the major reasons the resource/evidence graph must be separated f
 
 ---
 
-<!-- source: Continue Architecture Planning.md L76722–76761 | turn 61 | version 0.24 -->
+<!-- CAP-710 | Continue Architecture Planning.md L76722–76761 | turn 61 | version 0.24 -->
 ## v0.24 — 24.29 Knowledge reuse is not evidence reuse without qualification
+
+> **Source sections:** `CAP-710`
+>
+> [DOCUMENTATION REVIEW] Contradiction **C-10** ([Review Notes](../REVIEW-NOTES.md#c-10--))
 
 An old classification may still be useful:
 
@@ -1540,8 +1610,10 @@ unless the assertion's validity conditions allow reuse.
 
 ---
 
-<!-- source: Continue Architecture Planning.md L76977–77032 | turn 61 | version 0.24 -->
+<!-- CAP-724 | Continue Architecture Planning.md L76977–77032 | turn 61 | version 0.24 -->
 ## v0.24 — 24.33 What v0.24 changes fundamentally
+
+> **Source sections:** `CAP-724`
 
 Before v0.24:
 
@@ -1598,8 +1670,10 @@ as domain knowledge rather than hardcoded crawler behavior.
 
 ---
 
-<!-- source: Continue Architecture Planning.md L77034–77096 | turn 61 | version 0.25 -->
+<!-- CAP-725 | Continue Architecture Planning.md L77034–77096 | turn 61 | version 0.25 -->
 ## v0.25 — Discovery Query Planner
+
+> **Source sections:** `CAP-725`
 
 The next architectural boundary is the transition from:
 
@@ -1663,8 +1737,10 @@ The key question for v0.25 becomes:
 
 That is the next missing layer.
 
-<!-- source: Continue Architecture Planning.md L77108–77158 | turn 63 | version 0.25 -->
+<!-- CAP-727 | Continue Architecture Planning.md L77108–77158 | turn 63 | version 0.25 -->
 ## v0.25 — Discovery Query Planner
+
+> **Source sections:** `CAP-727`
 
 v0.24 established:
 
@@ -1716,8 +1792,10 @@ That last clause is important.
 
 ---
 
-<!-- source: Continue Architecture Planning.md L77160–77200 | turn 63 | version 0.25 -->
+<!-- CAP-728 | Continue Architecture Planning.md L77160–77200 | turn 63 | version 0.25 -->
 ## v0.25 — 25.1 Planner ≠ Search Engine
+
+> **Source sections:** `CAP-728`
 
 The planner should not become another crawler.
 
@@ -1759,8 +1837,10 @@ It does not execute work.
 
 ---
 
-<!-- source: Continue Architecture Planning.md L77202–77261 | turn 63 | version 0.25 -->
+<!-- CAP-729 | Continue Architecture Planning.md L77202–77261 | turn 63 | version 0.25 -->
 ## v0.25 — 25.2 QueryPlan
+
+> **Source sections:** `CAP-729`
 
 Introduce:
 
@@ -1821,8 +1901,10 @@ QueryPlan
 
 ---
 
-<!-- source: Continue Architecture Planning.md L77263–77321 | turn 63 | version 0.25 -->
+<!-- CAP-730 | Continue Architecture Planning.md L77263–77321 | turn 63 | version 0.25 -->
 ## v0.25 — 25.3 QueryStep
+
+> **Source sections:** `CAP-730`
 
 Each plan contains explicit steps.
 
@@ -1882,8 +1964,10 @@ target = resource-family
 
 ---
 
-<!-- source: Continue Architecture Planning.md L77323–77363 | turn 63 | version 0.25 -->
+<!-- CAP-731 | Continue Architecture Planning.md L77323–77363 | turn 63 | version 0.25 -->
 ## v0.25 — 25.4 Query decomposition
+
+> **Source sections:** `CAP-731`
 
 A planner takes:
 
@@ -1925,8 +2009,10 @@ The planner should be deterministic for the same inputs.
 
 ---
 
-<!-- source: Continue Architecture Planning.md L77365–77401 | turn 63 | version 0.25 -->
+<!-- CAP-732 | Continue Architecture Planning.md L77365–77401 | turn 63 | version 0.25 -->
 ## v0.25 — 25.5 Search axes
+
+> **Source sections:** `CAP-732`
 
 A useful abstraction is the **search axis**.
 
@@ -1964,8 +2050,10 @@ It asks registered planners/plugins to expose applicable axes.
 
 ---
 
-<!-- source: Continue Architecture Planning.md L77403–77440 | turn 63 | version 0.25 -->
+<!-- CAP-733 | Continue Architecture Planning.md L77403–77440 | turn 63 | version 0.25 -->
 ## v0.25 — 25.6 QueryTactic
+
+> **Source sections:** `CAP-733`
 
 Introduce a reusable tactic abstraction.
 
@@ -2004,8 +2092,10 @@ These produce `QueryStep`s.
 
 ---
 
-<!-- source: Continue Architecture Planning.md L77442–77479 | turn 63 | version 0.25 -->
+<!-- CAP-734 | Continue Architecture Planning.md L77442–77479 | turn 63 | version 0.25 -->
 ## v0.25 — 25.7 Tactic ≠ Strategy
+
+> **Source sections:** `CAP-734`
 
 This distinction becomes important.
 
@@ -2044,8 +2134,10 @@ JsonUrlSource
 
 ---
 
-<!-- source: Continue Architecture Planning.md L77481–77517 | turn 63 | version 0.25 -->
+<!-- CAP-735 | Continue Architecture Planning.md L77481–77517 | turn 63 | version 0.25 -->
 ## v0.25 — 25.8 Planner plugins
+
+> **Source sections:** `CAP-735`
 
 The generic planner should support domain-independent and domain-specific plugins.
 
@@ -2083,8 +2175,10 @@ The generic core remains unchanged.
 
 ---
 
-<!-- source: Continue Architecture Planning.md L77519–77555 | turn 63 | version 0.25 -->
+<!-- CAP-736 | Continue Architecture Planning.md L77519–77555 | turn 63 | version 0.25 -->
 ## v0.25 — 25.9 Planner contract
+
+> **Source sections:** `CAP-736`
 
 ```JavaScript
 class QueryPlanner {
@@ -2122,8 +2216,10 @@ This keeps planning pure enough to inspect and audit.
 
 ---
 
-<!-- source: Continue Architecture Planning.md L77557–77592 | turn 63 | version 0.25 -->
+<!-- CAP-737 | Continue Architecture Planning.md L77557–77592 | turn 63 | version 0.25 -->
 ## v0.25 — 25.10 Query plan example
+
+> **Source sections:** `CAP-737`
 
 Suppose:
 
@@ -2160,8 +2256,10 @@ Each step becomes independently auditable.
 
 ---
 
-<!-- source: Continue Architecture Planning.md L77594–77626 | turn 63 | version 0.25 -->
+<!-- CAP-738 | Continue Architecture Planning.md L77594–77626 | turn 63 | version 0.25 -->
 ## v0.25 — 25.11 Dependencies
+
+> **Source sections:** `CAP-738`
 
 Some query steps depend on previous discoveries.
 
@@ -2195,8 +2293,10 @@ Then the planner does not pretend it knows resources that have not yet been disc
 
 ---
 
-<!-- source: Continue Architecture Planning.md L77628–77669 | turn 63 | version 0.25 -->
+<!-- CAP-739 | Continue Architecture Planning.md L77628–77669 | turn 63 | version 0.25 -->
 ## v0.25 — 25.12 Conditional planning
+
+> **Source sections:** `CAP-739`
 
 A more interesting case:
 
@@ -2239,8 +2339,10 @@ But this must not become unconstrained self-modification.
 
 ---
 
-<!-- source: Continue Architecture Planning.md L77671–77701 | turn 63 | version 0.25 -->
+<!-- CAP-740 | Continue Architecture Planning.md L77671–77701 | turn 63 | version 0.25 -->
 ## v0.25 — 25.13 Planning boundary
+
+> **Source sections:** `CAP-740`
 
 A strict boundary:
 
@@ -2272,8 +2374,12 @@ The normal admission chain remains mandatory.
 
 ---
 
-<!-- source: Continue Architecture Planning.md L77703–77735 | turn 63 | version 0.25 -->
+<!-- CAP-741 | Continue Architecture Planning.md L77703–77735 | turn 63 | version 0.25 -->
 ## v0.25 — 25.14 Query plan validation
+
+> **Source sections:** `CAP-741`
+>
+> [DOCUMENTATION REVIEW] Contradiction **C-02** ([Review Notes](../REVIEW-NOTES.md#c-02--))
 
 Before execution:
 
@@ -2307,8 +2413,10 @@ This prevents the planner from becoming an authority boundary.
 
 ---
 
-<!-- source: Continue Architecture Planning.md L77737–77765 | turn 63 | version 0.25 -->
+<!-- CAP-742 | Continue Architecture Planning.md L77737–77765 | turn 63 | version 0.25 -->
 ## v0.25 — 25.15 Planner and adaptive discovery
+
+> **Source sections:** `CAP-742`
 
 v0.21 selected strategies adaptively.
 
@@ -2338,8 +2446,10 @@ The adaptive layer selects among them.
 
 ---
 
-<!-- source: Continue Architecture Planning.md L77767–77801 | turn 63 | version 0.25 -->
+<!-- CAP-743 | Continue Architecture Planning.md L77767–77801 | turn 63 | version 0.25 -->
 ## v0.25 — 25.16 Exploration vs exploitation moves upward
+
+> **Source sections:** `CAP-743`
 
 Previously:
 
@@ -2375,8 +2485,10 @@ There are multiple decision layers.
 
 ---
 
-<!-- source: Continue Architecture Planning.md L77803–77831 | turn 63 | version 0.25 -->
+<!-- CAP-744 | Continue Architecture Planning.md L77803–77831 | turn 63 | version 0.25 -->
 ## v0.25 — 25.17 Query tactic performance
+
+> **Source sections:** `CAP-744`
 
 A planner can eventually track:
 
@@ -2406,8 +2518,10 @@ But the same rule from v0.21 applies:
 
 ---
 
-<!-- source: Continue Architecture Planning.md L77833–77877 | turn 63 | version 0.25 -->
+<!-- CAP-745 | Continue Architecture Planning.md L77833–77877 | turn 63 | version 0.25 -->
 ## v0.25 — 25.18 Query planner provenance
+
+> **Source sections:** `CAP-745`
 
 Every generated step should explain why it exists.
 
@@ -2453,8 +2567,12 @@ This is operational provenance.
 
 ---
 
-<!-- source: Continue Architecture Planning.md L77879–77907 | turn 63 | version 0.25 -->
+<!-- CAP-746 | Continue Architecture Planning.md L77879–77907 | turn 63 | version 0.25 -->
 ## v0.25 — 25.19 Query plan identity
+
+> **Source sections:** `CAP-746`
+>
+> [DOCUMENTATION REVIEW] Contradiction **C-04** ([Review Notes](../REVIEW-NOTES.md#c-04--))
 
 Plans and executions must remain separate.
 
@@ -2484,8 +2602,10 @@ Do not mutate historical plans.
 
 ---
 
-<!-- source: Continue Architecture Planning.md L77909–77940 | turn 63 | version 0.25 -->
+<!-- CAP-747 | Continue Architecture Planning.md L77909–77940 | turn 63 | version 0.25 -->
 ## v0.25 — 25.20 Plan versioning
+
+> **Source sections:** `CAP-747`
 
 ```JavaScript
 {
@@ -2518,8 +2638,10 @@ Historical execution remains reproducible.
 
 ---
 
-<!-- source: Continue Architecture Planning.md L77942–77973 | turn 63 | version 0.25 -->
+<!-- CAP-748 | Continue Architecture Planning.md L77942–77973 | turn 63 | version 0.25 -->
 ## v0.25 — 25.21 Planner cannot erase old work
+
+> **Source sections:** `CAP-748`
 
 Suppose v1 says:
 
@@ -2552,8 +2674,10 @@ evidence
 
 ---
 
-<!-- source: Continue Architecture Planning.md L77975–78028 | turn 63 | version 0.25 -->
+<!-- CAP-749 | Continue Architecture Planning.md L77975–78028 | turn 63 | version 0.25 -->
 ## v0.25 — 25.22 Query expansion
+
+> **Source sections:** `CAP-749`
 
 A query may generate new search terms.
 
@@ -2608,8 +2732,10 @@ class QueryExpansionProvider {
 
 ---
 
-<!-- source: Continue Architecture Planning.md L78030–78052 | turn 63 | version 0.25 -->
+<!-- CAP-750 | Continue Architecture Planning.md L78030–78052 | turn 63 | version 0.25 -->
 ## v0.25 — 25.23 Expansion evidence
+
+> **Source sections:** `CAP-750`
 
 An expansion should have provenance.
 
@@ -2633,8 +2759,10 @@ This prevents a language model from silently generating arbitrary search vocabul
 
 ---
 
-<!-- source: Continue Architecture Planning.md L78054–78084 | turn 63 | version 0.25 -->
+<!-- CAP-751 | Continue Architecture Planning.md L78054–78084 | turn 63 | version 0.25 -->
 ## v0.25 — 25.24 Planner hallucination boundary
+
+> **Source sections:** `CAP-751`
 
 This is one of the most important failure modes.
 
@@ -2666,8 +2794,10 @@ and pass the normal candidate validation process.
 
 ---
 
-<!-- source: Continue Architecture Planning.md L78086–78150 | turn 63 | version 0.25 -->
+<!-- CAP-752 | Continue Architecture Planning.md L78086–78150 | turn 63 | version 0.25 -->
 ## v0.25 — 25.25 Search hypothesis
+
+> **Source sections:** `CAP-752`
 
 Introduce:
 
@@ -2733,8 +2863,10 @@ observation
 
 ---
 
-<!-- source: Continue Architecture Planning.md L78202–78227 | turn 63 | version 0.25 -->
+<!-- CAP-754 | Continue Architecture Planning.md L78202–78227 | turn 63 | version 0.25 -->
 ## v0.25 — 25.27 Planner output is not execution
+
+> **Source sections:** `CAP-754`
 
 The clean contract is:
 
@@ -2761,8 +2893,10 @@ This is important for security and reproducibility.
 
 ---
 
-<!-- source: Continue Architecture Planning.md L78229–78269 | turn 63 | version 0.25 -->
+<!-- CAP-755 | Continue Architecture Planning.md L78229–78269 | turn 63 | version 0.25 -->
 ## v0.25 — 25.28 Planner budget
+
+> **Source sections:** `CAP-755`
 
 Planning itself must be bounded.
 
@@ -2804,8 +2938,10 @@ acquisition budget
 
 ---
 
-<!-- source: Continue Architecture Planning.md L78271–78300 | turn 63 | version 0.25 -->
+<!-- CAP-756 | Continue Architecture Planning.md L78271–78300 | turn 63 | version 0.25 -->
 ## v0.25 — 25.29 Three different budgets
+
+> **Source sections:** `CAP-756`
 
 We now have:
 
@@ -2836,8 +2972,12 @@ is perfectly valid.
 
 ---
 
-<!-- source: Continue Architecture Planning.md L78302–78348 | turn 63 | version 0.25 -->
+<!-- CAP-757 | Continue Architecture Planning.md L78302–78348 | turn 63 | version 0.25 -->
 ## v0.25 — 25.30 Termination propagation
+
+> **Source sections:** `CAP-757`
+>
+> [DOCUMENTATION REVIEW] Contradiction **C-09** ([Review Notes](../REVIEW-NOTES.md#c-09--))
 
 Goal termination must propagate through the plan.
 
@@ -2885,8 +3025,10 @@ must be attached to the goal.
 
 ---
 
-<!-- source: Continue Architecture Planning.md L78463–78546 | turn 63 | version 0.25 -->
+<!-- CAP-761 | Continue Architecture Planning.md L78463–78546 | turn 63 | version 0.25 -->
 ## v0.25 — 25.33 The resulting abstraction stack
+
+> **Source sections:** `CAP-761`
 
 After v0.25, the system has a fairly clean hierarchy:
 

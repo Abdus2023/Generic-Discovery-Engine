@@ -6,13 +6,13 @@
 >
 > **Purpose:** What the prototype deliberately does and does not implement, and what a browser prototype can guarantee.
 
-## Contents
+## Source Sections
 
-- **What changed — 3. The actual scope is now explicit** — `Userscript Discovery Prototype.md` L4784–4807
-- **v0.7 — 6. One remaining architectural limitation** — `Continue Architecture Planning.md` L54418–54471
-- **v0.30 — What the userscript should and should not become** — `Continue Architecture Planning.md` L85024–85066
-- **v0.33 — 33.30 What the browser prototype can guarantee** — `Continue Architecture Planning.md` L90113–90152
-- **v0.34 — 34.29 Prototype Boundary** — `Continue Architecture Planning.md` L91859–91905
+- **What changed — 3. The actual scope is now explicit** — `USP-073` — `Userscript Discovery Prototype.md` L4784–4807
+- **v0.7 — 6. One remaining architectural limitation** — `CAP-052` — `Continue Architecture Planning.md` L54418–54471
+- **v0.30 — What the userscript should and should not become** — `CAP-980` — `Continue Architecture Planning.md` L85024–85066
+- **v0.33 — 33.30 What the browser prototype can guarantee** — `CAP-1110` — `Continue Architecture Planning.md` L90113–90152
+- **v0.34 — 34.29 Prototype Boundary** — `CAP-1161` — `Continue Architecture Planning.md` L91859–91905
 
 ## Related Documents
 
@@ -23,8 +23,12 @@
 
 ---
 
-<!-- source: Userscript Discovery Prototype.md L4784–4807 | turn 15 | version ? -->
+<!-- USP-073 | Userscript Discovery Prototype.md L4784–4807 | turn 15 | version ? -->
 ### What changed — 3. The actual scope is now explicit
+
+> **Source sections:** `USP-073`
+>
+> **Note:** split at numbered boundary
 
 **3. The actual scope is now explicit.**
 
@@ -50,8 +54,10 @@ scan database           →   knowledge base
 
 It intentionally does **not** claim that HTTP discovery is equivalent to RF discovery. The useful research question here is whether the **blind-scan control architecture** generalizes beyond DVB—and this prototype gives you a concrete testbed for that idea.
 
-<!-- source: Continue Architecture Planning.md L54418–54471 | turn 27 | version 0.7 -->
+<!-- CAP-052 | Continue Architecture Planning.md L54418–54471 | turn 27 | version 0.7 -->
 ## v0.7 — 6. One remaining architectural limitation
+
+> **Source sections:** `CAP-052`
 
 There is still an important boundary:
 
@@ -106,8 +112,12 @@ That separation prevents a common mistake:
 
 ---
 
-<!-- source: Continue Architecture Planning.md L85024–85066 | turn 73 | version 0.30 -->
+<!-- CAP-980 | Continue Architecture Planning.md L85024–85066 | turn 73 | version 0.30 -->
 ## v0.30 — What the userscript should and should not become
+
+> **Source sections:** `CAP-980`
+>
+> **Note:** explicit override
 
 The architecture is now considerably larger than a sensible userscript.
 
@@ -151,8 +161,12 @@ That is the natural convergence path with your broader **Rust + capability + evi
 
 ---
 
-<!-- source: Continue Architecture Planning.md L90113–90152 | turn 81 | version 0.33 -->
+<!-- CAP-1110 | Continue Architecture Planning.md L90113–90152 | turn 81 | version 0.33 -->
 ## v0.33 — 33.30 What the browser prototype can guarantee
+
+> **Source sections:** `CAP-1110`
+>
+> **Note:** explicit override
 
 A single browser profile may reasonably provide:
 
@@ -193,8 +207,12 @@ That requires a real coordination service or distributed database.
 
 ---
 
-<!-- source: Continue Architecture Planning.md L91859–91905 | turn 83 | version 0.34 -->
+<!-- CAP-1161 | Continue Architecture Planning.md L91859–91905 | turn 83 | version 0.34 -->
 ## v0.34 — 34.29 Prototype Boundary
+
+> **Source sections:** `CAP-1161`
+>
+> **Note:** explicit override
 
 For the userscript, a realistic implementation should initially support:
 

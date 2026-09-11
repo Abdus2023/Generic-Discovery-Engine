@@ -6,10 +6,6 @@
 >
 > **Purpose:** The plain-text response provider of the prototype, as implemented in the latest prototype script.
 
-## Contents
-
-- **TextProvider (v0.7.1)** — code extract from `Continue Architecture Planning.md` L52073–52152
-
 ## Related Documents
 
 - [Providers Overview](overview.md)

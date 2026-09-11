@@ -6,58 +6,58 @@
 >
 > **Purpose:** Coverage measurement, completeness claims, negative evidence and absence reasoning.
 
-## Contents
+## Source Sections
 
-- **19. Coverage is a better metric than elapsed time** — `Userscript Discovery Prototype.md` L917–949
-- **v0.22 — Discovery Completeness + Coverage Claims** — `Continue Architecture Planning.md` L72638–72695
-- **v0.22 — Discovery Completeness + Coverage Claims** — `Continue Architecture Planning.md` L72707–72717
-- **v0.22 — 22.1 The problem** — `Continue Architecture Planning.md` L72719–72763
-- **v0.22 — 22.2 Search-space state model** — `Continue Architecture Planning.md` L72765–72815
-- **v0.22 — 22.3 Coverage is a measurement** — `Continue Architecture Planning.md` L72817–72852
-- **v0.22 — 22.4 Coverage dimensions** — `Continue Architecture Planning.md` L72854–72906
-- **v0.22 — 22.5 CoverageRecord** — `Continue Architecture Planning.md` L72908–72980
-- **v0.22 — 22.6 Coverage state** — `Continue Architecture Planning.md` L72982–73020
-- **v0.22 — 22.7 CoverageClaim** — `Continue Architecture Planning.md` L73022–73075
-- **v0.22 — 22.8 Completeness is a stronger assertion** — `Continue Architecture Planning.md` L73077–73131
-- **v0.22 — 22.9 The finite-enumerator case** — `Continue Architecture Planning.md` L73133–73193
-- **v0.22 — 22.10 Enumeration contract** — `Continue Architecture Planning.md` L73195–73249
-- **v0.22 — 22.11 Negative evidence** — `Continue Architecture Planning.md` L73251–73323
-- **v0.22 — 22.12 Absence reasoning hierarchy** — `Continue Architecture Planning.md` L73325–73365
-- **v0.22 — 22.13 “Not found” becomes a first-class result** — `Continue Architecture Planning.md` L73367–73401
-- **v0.22 — 22.14 Coverage cannot necessarily be monotonically interpreted** — `Continue Architecture Planning.md` L73403–73459
-- **v0.22 — 22.15 Version the search universe** — `Continue Architecture Planning.md` L73461–73507
-- **v0.22 — 22.16 Coverage ledger** — `Continue Architecture Planning.md` L73509–73550
-- **v0.22 — 22.17 Three graphs now interact** — `Continue Architecture Planning.md` L73552–73607
-- **v0.22 — 22.18 Completeness assessment** — `Continue Architecture Planning.md` L73609–73663
-- **v0.22 — 22.20 Search completeness matrix** — `Continue Architecture Planning.md` L73699–73713
-- **v0.22 — 22.21 Coverage calculation** — `Continue Architecture Planning.md` L73715–73761
-- **v0.22 — 22.22 Coverage should be query-relative** — `Continue Architecture Planning.md` L73763–73807
-- **v0.23 — Negative Evidence + Absence Reasoning** — `Continue Architecture Planning.md` L74029–74056
-- **v0.23 — Negative Evidence + Absence Reasoning** — `Continue Architecture Planning.md` L74068–74090
-- **v0.23 — 23.1 The absence problem** — `Continue Architecture Planning.md` L74092–74142
-- **v0.23 — 23.2 Four fundamental states** — `Continue Architecture Planning.md` L74144–74182
-- **v0.23 — 23.3 PresenceAssertion** — `Continue Architecture Planning.md` L74184–74253
-- **v0.23 — 23.4 Absence is always scoped** — `Continue Architecture Planning.md` L74255–74296
-- **v0.23 — 23.5 NegativeEvidence** — `Continue Architecture Planning.md` L74298–74346
-- **v0.23 — 23.6 Absence strength** — `Continue Architecture Planning.md` L74348–74393
-- **v0.23 — 23.7 Search failure must not become negative evidence automatically** — `Continue Architecture Planning.md` L74395–74447
-- **v0.23 — 23.9 Exact locator absence** — `Continue Architecture Planning.md` L74483–74531
-- **v0.23 — 23.10 Claims need predicates** — `Continue Architecture Planning.md` L74533–74571
-- **v0.23 — 23.11 Predicate-aware absence** — `Continue Architecture Planning.md` L74573–74629
-- **v0.23 — 23.12 Contradiction becomes first-class** — `Continue Architecture Planning.md` L74631–74679
-- **v0.23 — 23.13 True contradiction** — `Continue Architecture Planning.md` L74681–74724
-- **v0.23 — 23.14 Absence confidence cannot simply be numeric** — `Continue Architecture Planning.md` L74726–74767
-- **v0.23 — 23.15 Independent evidence** — `Continue Architecture Planning.md` L74769–74817
-- **v0.23 — 23.16 Absence reasoning engine** — `Continue Architecture Planning.md` L74819–74864
-- **v0.23 — 23.17 Formal absence rule** — `Continue Architecture Planning.md` L74866–74913
-- **v0.23 — 23.18 Dynamic universes** — `Continue Architecture Planning.md` L74915–74961
-- **v0.23 — 23.19 Temporal validity** — `Continue Architecture Planning.md` L74963–74995
-- **v0.23 — 23.20 Absence and revision detection** — `Continue Architecture Planning.md` L74997–75044
-- **v0.23 — 23.21 Search state now becomes richer** — `Continue Architecture Planning.md` L75046–75099
-- **v0.23 — 23.23 The three epistemic outcomes** — `Continue Architecture Planning.md` L75169–75171
-- **v0.23 — Presence** — `Continue Architecture Planning.md` L75173–75183
-- **v0.23 — Absence** — `Continue Architecture Planning.md` L75185–75199
-- **v0.23 — Unknown** — `Continue Architecture Planning.md` L75201–75223
+- **19. Coverage is a better metric than elapsed time** — `USP-034` — `Userscript Discovery Prototype.md` L917–949
+- **v0.22 — Discovery Completeness + Coverage Claims** — `CAP-599` — `Continue Architecture Planning.md` L72638–72695
+- **v0.22 — Discovery Completeness + Coverage Claims** — `CAP-601` — `Continue Architecture Planning.md` L72707–72717
+- **v0.22 — 22.1 The problem** — `CAP-602` — `Continue Architecture Planning.md` L72719–72763
+- **v0.22 — 22.2 Search-space state model** — `CAP-603` — `Continue Architecture Planning.md` L72765–72815
+- **v0.22 — 22.3 Coverage is a measurement** — `CAP-604` — `Continue Architecture Planning.md` L72817–72852
+- **v0.22 — 22.4 Coverage dimensions** — `CAP-605` — `Continue Architecture Planning.md` L72854–72906
+- **v0.22 — 22.5 CoverageRecord** — `CAP-606` — `Continue Architecture Planning.md` L72908–72980
+- **v0.22 — 22.6 Coverage state** — `CAP-607` — `Continue Architecture Planning.md` L72982–73020
+- **v0.22 — 22.7 CoverageClaim** — `CAP-608` — `Continue Architecture Planning.md` L73022–73075
+- **v0.22 — 22.8 Completeness is a stronger assertion** — `CAP-609` — `Continue Architecture Planning.md` L73077–73131
+- **v0.22 — 22.9 The finite-enumerator case** — `CAP-610` — `Continue Architecture Planning.md` L73133–73193
+- **v0.22 — 22.10 Enumeration contract** — `CAP-611` — `Continue Architecture Planning.md` L73195–73249
+- **v0.22 — 22.11 Negative evidence** — `CAP-612` — `Continue Architecture Planning.md` L73251–73323
+- **v0.22 — 22.12 Absence reasoning hierarchy** — `CAP-613` — `Continue Architecture Planning.md` L73325–73365
+- **v0.22 — 22.13 “Not found” becomes a first-class result** — `CAP-614` — `Continue Architecture Planning.md` L73367–73401
+- **v0.22 — 22.14 Coverage cannot necessarily be monotonically interpreted** — `CAP-615` — `Continue Architecture Planning.md` L73403–73459
+- **v0.22 — 22.15 Version the search universe** — `CAP-616` — `Continue Architecture Planning.md` L73461–73507
+- **v0.22 — 22.16 Coverage ledger** — `CAP-617` — `Continue Architecture Planning.md` L73509–73550
+- **v0.22 — 22.17 Three graphs now interact** — `CAP-618` — `Continue Architecture Planning.md` L73552–73607
+- **v0.22 — 22.18 Completeness assessment** — `CAP-619` — `Continue Architecture Planning.md` L73609–73663
+- **v0.22 — 22.20 Search completeness matrix** — `CAP-621` — `Continue Architecture Planning.md` L73699–73713
+- **v0.22 — 22.21 Coverage calculation** — `CAP-622` — `Continue Architecture Planning.md` L73715–73761
+- **v0.22 — 22.22 Coverage should be query-relative** — `CAP-623` — `Continue Architecture Planning.md` L73763–73807
+- **v0.23 — Negative Evidence + Absence Reasoning** — `CAP-638` — `Continue Architecture Planning.md` L74029–74056
+- **v0.23 — Negative Evidence + Absence Reasoning** — `CAP-640` — `Continue Architecture Planning.md` L74068–74090
+- **v0.23 — 23.1 The absence problem** — `CAP-641` — `Continue Architecture Planning.md` L74092–74142
+- **v0.23 — 23.2 Four fundamental states** — `CAP-642` — `Continue Architecture Planning.md` L74144–74182
+- **v0.23 — 23.3 PresenceAssertion** — `CAP-643` — `Continue Architecture Planning.md` L74184–74253
+- **v0.23 — 23.4 Absence is always scoped** — `CAP-644` — `Continue Architecture Planning.md` L74255–74296
+- **v0.23 — 23.5 NegativeEvidence** — `CAP-645` — `Continue Architecture Planning.md` L74298–74346
+- **v0.23 — 23.6 Absence strength** — `CAP-646` — `Continue Architecture Planning.md` L74348–74393
+- **v0.23 — 23.7 Search failure must not become negative evidence automatically** — `CAP-647` — `Continue Architecture Planning.md` L74395–74447
+- **v0.23 — 23.9 Exact locator absence** — `CAP-649` — `Continue Architecture Planning.md` L74483–74531
+- **v0.23 — 23.10 Claims need predicates** — `CAP-650` — `Continue Architecture Planning.md` L74533–74571
+- **v0.23 — 23.11 Predicate-aware absence** — `CAP-651` — `Continue Architecture Planning.md` L74573–74629
+- **v0.23 — 23.12 Contradiction becomes first-class** — `CAP-652` — `Continue Architecture Planning.md` L74631–74679
+- **v0.23 — 23.13 True contradiction** — `CAP-653` — `Continue Architecture Planning.md` L74681–74724
+- **v0.23 — 23.14 Absence confidence cannot simply be numeric** — `CAP-654` — `Continue Architecture Planning.md` L74726–74767
+- **v0.23 — 23.15 Independent evidence** — `CAP-655` — `Continue Architecture Planning.md` L74769–74817
+- **v0.23 — 23.16 Absence reasoning engine** — `CAP-656` — `Continue Architecture Planning.md` L74819–74864
+- **v0.23 — 23.17 Formal absence rule** — `CAP-657` — `Continue Architecture Planning.md` L74866–74913
+- **v0.23 — 23.18 Dynamic universes** — `CAP-658` — `Continue Architecture Planning.md` L74915–74961
+- **v0.23 — 23.19 Temporal validity** — `CAP-659` — `Continue Architecture Planning.md` L74963–74995
+- **v0.23 — 23.20 Absence and revision detection** — `CAP-660` — `Continue Architecture Planning.md` L74997–75044
+- **v0.23 — 23.21 Search state now becomes richer** — `CAP-661` — `Continue Architecture Planning.md` L75046–75099
+- **v0.23 — 23.23 The three epistemic outcomes** — `CAP-663` — `Continue Architecture Planning.md` L75169–75171
+- **v0.23 — Presence** — `CAP-664` — `Continue Architecture Planning.md` L75173–75183
+- **v0.23 — Absence** — `CAP-665` — `Continue Architecture Planning.md` L75185–75199
+- **v0.23 — Unknown** — `CAP-666` — `Continue Architecture Planning.md` L75201–75223
 
 ## Related Documents
 
@@ -68,8 +68,12 @@
 
 ---
 
-<!-- source: Userscript Discovery Prototype.md L917–949 | turn 7 | version ? -->
+<!-- USP-034 | Userscript Discovery Prototype.md L917–949 | turn 7 | version ? -->
 ## 19. Coverage is a better metric than elapsed time
+
+> **Source sections:** `USP-034`
+>
+> [DOCUMENTATION REVIEW] Contradiction **C-05** ([Review Notes](../REVIEW-NOTES.md#c-05--))
 
 You can track:
 
@@ -103,8 +107,14 @@ Scan finished.
 
 ---
 
-<!-- source: Continue Architecture Planning.md L72638–72695 | turn 55 | version 0.22 -->
+<!-- CAP-599 | Continue Architecture Planning.md L72638–72695 | turn 55 | version 0.22 -->
 ## v0.22 — Discovery Completeness + Coverage Claims
+
+> **Source sections:** `CAP-599`
+>
+> [DOCUMENTATION REVIEW] Contradiction **C-03** ([Review Notes](../REVIEW-NOTES.md#c-03--))
+>
+> [DOCUMENTATION REVIEW] Contradiction **C-05** ([Review Notes](../REVIEW-NOTES.md#c-05--))
 
 There is now one problem that becomes unavoidable.
 
@@ -163,8 +173,14 @@ the engine may be able to make much stronger completeness claims.
 
 That leads naturally to **v0.22 — Coverage, Exhaustion, and Completeness Proofs**.
 
-<!-- source: Continue Architecture Planning.md L72707–72717 | turn 57 | version 0.22 -->
+<!-- CAP-601 | Continue Architecture Planning.md L72707–72717 | turn 57 | version 0.22 -->
 ## v0.22 — Discovery Completeness + Coverage Claims
+
+> **Source sections:** `CAP-601`
+>
+> [DOCUMENTATION REVIEW] Contradiction **C-03** ([Review Notes](../REVIEW-NOTES.md#c-03--))
+>
+> [DOCUMENTATION REVIEW] Contradiction **C-05** ([Review Notes](../REVIEW-NOTES.md#c-05--))
 
 The next architectural boundary is not “discover more.”
 
@@ -176,8 +192,10 @@ The engine now has enough structure to distinguish **search execution** from **s
 
 ---
 
-<!-- source: Continue Architecture Planning.md L72719–72763 | turn 57 | version 0.22 -->
+<!-- CAP-602 | Continue Architecture Planning.md L72719–72763 | turn 57 | version 0.22 -->
 ## v0.22 — 22.1 The problem
+
+> **Source sections:** `CAP-602`
 
 A scan can finish while the search is still incomplete.
 
@@ -223,8 +241,10 @@ If the engine follows every visible link, it may reach frontier exhaustion while
 
 ---
 
-<!-- source: Continue Architecture Planning.md L72765–72815 | turn 57 | version 0.22 -->
+<!-- CAP-603 | Continue Architecture Planning.md L72765–72815 | turn 57 | version 0.22 -->
 ## v0.22 — 22.2 Search-space state model
+
+> **Source sections:** `CAP-603`
 
 The search space should become explicitly measurable.
 
@@ -276,8 +296,12 @@ Coverage needs another dimension.
 
 ---
 
-<!-- source: Continue Architecture Planning.md L72817–72852 | turn 57 | version 0.22 -->
+<!-- CAP-604 | Continue Architecture Planning.md L72817–72852 | turn 57 | version 0.22 -->
 ## v0.22 — 22.3 Coverage is a measurement
+
+> **Source sections:** `CAP-604`
+>
+> [DOCUMENTATION REVIEW] Contradiction **C-05** ([Review Notes](../REVIEW-NOTES.md#c-05--))
 
 Define:
 
@@ -314,8 +338,12 @@ is meaningful.
 
 ---
 
-<!-- source: Continue Architecture Planning.md L72854–72906 | turn 57 | version 0.22 -->
+<!-- CAP-605 | Continue Architecture Planning.md L72854–72906 | turn 57 | version 0.22 -->
 ## v0.22 — 22.4 Coverage dimensions
+
+> **Source sections:** `CAP-605`
+>
+> [DOCUMENTATION REVIEW] Contradiction **C-05** ([Review Notes](../REVIEW-NOTES.md#c-05--))
 
 Coverage should not be one scalar.
 
@@ -369,8 +397,12 @@ and:
 
 ---
 
-<!-- source: Continue Architecture Planning.md L72908–72980 | turn 57 | version 0.22 -->
+<!-- CAP-606 | Continue Architecture Planning.md L72908–72980 | turn 57 | version 0.22 -->
 ## v0.22 — 22.5 CoverageRecord
+
+> **Source sections:** `CAP-606`
+>
+> [DOCUMENTATION REVIEW] Contradiction **C-05** ([Review Notes](../REVIEW-NOTES.md#c-05--))
 
 Introduce an explicit record.
 
@@ -444,8 +476,12 @@ assume 100%
 
 ---
 
-<!-- source: Continue Architecture Planning.md L72982–73020 | turn 57 | version 0.22 -->
+<!-- CAP-607 | Continue Architecture Planning.md L72982–73020 | turn 57 | version 0.22 -->
 ## v0.22 — 22.6 Coverage state
+
+> **Source sections:** `CAP-607`
+>
+> [DOCUMENTATION REVIEW] Contradiction **C-05** ([Review Notes](../REVIEW-NOTES.md#c-05--))
 
 Use qualitative states in addition to numerical measurements.
 
@@ -485,8 +521,14 @@ provided the enumeration itself is trusted and complete.
 
 ---
 
-<!-- source: Continue Architecture Planning.md L73022–73075 | turn 57 | version 0.22 -->
+<!-- CAP-608 | Continue Architecture Planning.md L73022–73075 | turn 57 | version 0.22 -->
 ## v0.22 — 22.7 CoverageClaim
+
+> **Source sections:** `CAP-608`
+>
+> [DOCUMENTATION REVIEW] Contradiction **C-03** ([Review Notes](../REVIEW-NOTES.md#c-03--))
+>
+> [DOCUMENTATION REVIEW] Contradiction **C-05** ([Review Notes](../REVIEW-NOTES.md#c-05--))
 
 A measurement is not automatically a claim.
 
@@ -541,8 +583,12 @@ The second usually is not.
 
 ---
 
-<!-- source: Continue Architecture Planning.md L73077–73131 | turn 57 | version 0.22 -->
+<!-- CAP-609 | Continue Architecture Planning.md L73077–73131 | turn 57 | version 0.22 -->
 ## v0.22 — 22.8 Completeness is a stronger assertion
+
+> **Source sections:** `CAP-609`
+>
+> [DOCUMENTATION REVIEW] Contradiction **C-05** ([Review Notes](../REVIEW-NOTES.md#c-05--))
 
 Define:
 
@@ -598,8 +644,10 @@ UNKNOWN
 
 ---
 
-<!-- source: Continue Architecture Planning.md L73133–73193 | turn 57 | version 0.22 -->
+<!-- CAP-610 | Continue Architecture Planning.md L73133–73193 | turn 57 | version 0.22 -->
 ## v0.22 — 22.9 The finite-enumerator case
+
+> **Source sections:** `CAP-610`
 
 This is where genuine completeness becomes possible.
 
@@ -661,8 +709,10 @@ Enumerator
 
 ---
 
-<!-- source: Continue Architecture Planning.md L73195–73249 | turn 57 | version 0.22 -->
+<!-- CAP-611 | Continue Architecture Planning.md L73195–73249 | turn 57 | version 0.22 -->
 ## v0.22 — 22.10 Enumeration contract
+
+> **Source sections:** `CAP-611`
 
 Introduce:
 
@@ -718,8 +768,10 @@ with:
 
 ---
 
-<!-- source: Continue Architecture Planning.md L73251–73323 | turn 57 | version 0.22 -->
+<!-- CAP-612 | Continue Architecture Planning.md L73251–73323 | turn 57 | version 0.22 -->
 ## v0.22 — 22.11 Negative evidence
+
+> **Source sections:** `CAP-612`
 
 This introduces a subtle but important concept.
 
@@ -793,8 +845,10 @@ This is substantially stronger than:
 
 ---
 
-<!-- source: Continue Architecture Planning.md L73325–73365 | turn 57 | version 0.22 -->
+<!-- CAP-613 | Continue Architecture Planning.md L73325–73365 | turn 57 | version 0.22 -->
 ## v0.22 — 22.12 Absence reasoning hierarchy
+
+> **Source sections:** `CAP-613`
 
 A useful hierarchy:
 
@@ -836,8 +890,10 @@ Instead:
 
 ---
 
-<!-- source: Continue Architecture Planning.md L73367–73401 | turn 57 | version 0.22 -->
+<!-- CAP-614 | Continue Architecture Planning.md L73367–73401 | turn 57 | version 0.22 -->
 ## v0.22 — 22.13 “Not found” becomes a first-class result
+
+> **Source sections:** `CAP-614`
 
 Discovery results should therefore distinguish:
 
@@ -873,8 +929,12 @@ which is obviously invalid.
 
 ---
 
-<!-- source: Continue Architecture Planning.md L73403–73459 | turn 57 | version 0.22 -->
+<!-- CAP-615 | Continue Architecture Planning.md L73403–73459 | turn 57 | version 0.22 -->
 ## v0.22 — 22.14 Coverage cannot necessarily be monotonically interpreted
+
+> **Source sections:** `CAP-615`
+>
+> [DOCUMENTATION REVIEW] Contradiction **C-05** ([Review Notes](../REVIEW-NOTES.md#c-05--))
 
 At first glance:
 
@@ -932,8 +992,10 @@ coverage relative to a versioned universe
 
 ---
 
-<!-- source: Continue Architecture Planning.md L73461–73507 | turn 57 | version 0.22 -->
+<!-- CAP-616 | Continue Architecture Planning.md L73461–73507 | turn 57 | version 0.22 -->
 ## v0.22 — 22.15 Version the search universe
+
+> **Source sections:** `CAP-616`
 
 Introduce:
 
@@ -981,8 +1043,12 @@ This preserves historical truth.
 
 ---
 
-<!-- source: Continue Architecture Planning.md L73509–73550 | turn 57 | version 0.22 -->
+<!-- CAP-617 | Continue Architecture Planning.md L73509–73550 | turn 57 | version 0.22 -->
 ## v0.22 — 22.16 Coverage ledger
+
+> **Source sections:** `CAP-617`
+>
+> [DOCUMENTATION REVIEW] Contradiction **C-05** ([Review Notes](../REVIEW-NOTES.md#c-05--))
 
 The event ledger now gains explicit search-assurance events.
 
@@ -1025,8 +1091,10 @@ The coverage graph answers:
 
 ---
 
-<!-- source: Continue Architecture Planning.md L73552–73607 | turn 57 | version 0.22 -->
+<!-- CAP-618 | Continue Architecture Planning.md L73552–73607 | turn 57 | version 0.22 -->
 ## v0.22 — 22.17 Three graphs now interact
+
+> **Source sections:** `CAP-618`
 
 The architecture becomes:
 
@@ -1083,8 +1151,12 @@ This is a significant architectural separation.
 
 ---
 
-<!-- source: Continue Architecture Planning.md L73609–73663 | turn 57 | version 0.22 -->
+<!-- CAP-619 | Continue Architecture Planning.md L73609–73663 | turn 57 | version 0.22 -->
 ## v0.22 — 22.18 Completeness assessment
+
+> **Source sections:** `CAP-619`
+>
+> [DOCUMENTATION REVIEW] Contradiction **C-05** ([Review Notes](../REVIEW-NOTES.md#c-05--))
 
 Completeness should be a deterministic evaluator.
 
@@ -1140,8 +1212,12 @@ complete = true
 
 ---
 
-<!-- source: Continue Architecture Planning.md L73699–73713 | turn 57 | version 0.22 -->
+<!-- CAP-621 | Continue Architecture Planning.md L73699–73713 | turn 57 | version 0.22 -->
 ## v0.22 — 22.20 Search completeness matrix
+
+> **Source sections:** `CAP-621`
+>
+> [DOCUMENTATION REVIEW] Contradiction **C-05** ([Review Notes](../REVIEW-NOTES.md#c-05--))
 
 | Situation | Frontier | Coverage | Completeness |
 | --- | --- | --- | --- |
@@ -1157,8 +1233,12 @@ complete = true
 
 ---
 
-<!-- source: Continue Architecture Planning.md L73715–73761 | turn 57 | version 0.22 -->
+<!-- CAP-622 | Continue Architecture Planning.md L73715–73761 | turn 57 | version 0.22 -->
 ## v0.22 — 22.21 Coverage calculation
+
+> **Source sections:** `CAP-622`
+>
+> [DOCUMENTATION REVIEW] Contradiction **C-05** ([Review Notes](../REVIEW-NOTES.md#c-05--))
 
 For partitions with known weights:
 
@@ -1206,8 +1286,12 @@ The engine should preserve the weighting method.
 
 ---
 
-<!-- source: Continue Architecture Planning.md L73763–73807 | turn 57 | version 0.22 -->
+<!-- CAP-623 | Continue Architecture Planning.md L73763–73807 | turn 57 | version 0.22 -->
 ## v0.22 — 22.22 Coverage should be query-relative
+
+> **Source sections:** `CAP-623`
+>
+> [DOCUMENTATION REVIEW] Contradiction **C-05** ([Review Notes](../REVIEW-NOTES.md#c-05--))
 
 This is particularly important for the eventual service-document system.
 
@@ -1253,8 +1337,10 @@ The generic engine should first establish objective coverage semantics.
 
 ---
 
-<!-- source: Continue Architecture Planning.md L74029–74056 | turn 57 | version 0.23 -->
+<!-- CAP-638 | Continue Architecture Planning.md L74029–74056 | turn 57 | version 0.23 -->
 ## v0.23 — Negative Evidence + Absence Reasoning
+
+> **Source sections:** `CAP-638`
 
 The next natural boundary is now clear.
 
@@ -1283,8 +1369,10 @@ The key problem becomes:
 
 That is the boundary between a crawler and an actual discovery/knowledge system.
 
-<!-- source: Continue Architecture Planning.md L74068–74090 | turn 59 | version 0.23 -->
+<!-- CAP-640 | Continue Architecture Planning.md L74068–74090 | turn 59 | version 0.23 -->
 ## v0.23 — Negative Evidence + Absence Reasoning
+
+> **Source sections:** `CAP-640`
 
 v0.22 established **coverage** and **completeness claims**.
 
@@ -1308,8 +1396,10 @@ A discovery engine that cannot distinguish these will eventually generate false 
 
 ---
 
-<!-- source: Continue Architecture Planning.md L74092–74142 | turn 59 | version 0.23 -->
+<!-- CAP-641 | Continue Architecture Planning.md L74092–74142 | turn 59 | version 0.23 -->
 ## v0.23 — 23.1 The absence problem
+
+> **Source sections:** `CAP-641`
 
 Consider:
 
@@ -1361,8 +1451,10 @@ results.length === 0
 
 ---
 
-<!-- source: Continue Architecture Planning.md L74144–74182 | turn 59 | version 0.23 -->
+<!-- CAP-642 | Continue Architecture Planning.md L74144–74182 | turn 59 | version 0.23 -->
 ## v0.23 — 23.2 Four fundamental states
+
+> **Source sections:** `CAP-642`
 
 v0.23 introduces a formal presence state.
 
@@ -1402,8 +1494,10 @@ is an **epistemic claim**.
 
 ---
 
-<!-- source: Continue Architecture Planning.md L74184–74253 | turn 59 | version 0.23 -->
+<!-- CAP-643 | Continue Architecture Planning.md L74184–74253 | turn 59 | version 0.23 -->
 ## v0.23 — 23.3 PresenceAssertion
+
+> **Source sections:** `CAP-643`
 
 Introduce an explicit assertion model.
 
@@ -1474,8 +1568,10 @@ The scope is essential.
 
 ---
 
-<!-- source: Continue Architecture Planning.md L74255–74296 | turn 59 | version 0.23 -->
+<!-- CAP-644 | Continue Architecture Planning.md L74255–74296 | turn 59 | version 0.23 -->
 ## v0.23 — 23.4 Absence is always scoped
+
+> **Source sections:** `CAP-644`
 
 Never store:
 
@@ -1518,8 +1614,10 @@ This is one of the central invariants of the system.
 
 ---
 
-<!-- source: Continue Architecture Planning.md L74298–74346 | turn 59 | version 0.23 -->
+<!-- CAP-645 | Continue Architecture Planning.md L74298–74346 | turn 59 | version 0.23 -->
 ## v0.23 — 23.5 NegativeEvidence
+
+> **Source sections:** `CAP-645`
 
 The previous version introduced the concept; v0.23 makes it operational.
 
@@ -1569,8 +1667,10 @@ NegativeEvidence
 
 ---
 
-<!-- source: Continue Architecture Planning.md L74348–74393 | turn 59 | version 0.23 -->
+<!-- CAP-646 | Continue Architecture Planning.md L74348–74393 | turn 59 | version 0.23 -->
 ## v0.23 — 23.6 Absence strength
+
+> **Source sections:** `CAP-646`
 
 Not all negative evidence has equal value.
 
@@ -1617,8 +1717,10 @@ The latter can support a much stronger absence claim.
 
 ---
 
-<!-- source: Continue Architecture Planning.md L74395–74447 | turn 59 | version 0.23 -->
+<!-- CAP-647 | Continue Architecture Planning.md L74395–74447 | turn 59 | version 0.23 -->
 ## v0.23 — 23.7 Search failure must not become negative evidence automatically
+
+> **Source sections:** `CAP-647`
 
 This is a major failure mode.
 
@@ -1672,8 +1774,10 @@ absence
 
 ---
 
-<!-- source: Continue Architecture Planning.md L74483–74531 | turn 59 | version 0.23 -->
+<!-- CAP-649 | Continue Architecture Planning.md L74483–74531 | turn 59 | version 0.23 -->
 ## v0.23 — 23.9 Exact locator absence
+
+> **Source sections:** `CAP-649`
 
 There is one useful special case.
 
@@ -1723,8 +1827,12 @@ This is an important predicate-level distinction.
 
 ---
 
-<!-- source: Continue Architecture Planning.md L74533–74571 | turn 59 | version 0.23 -->
+<!-- CAP-650 | Continue Architecture Planning.md L74533–74571 | turn 59 | version 0.23 -->
 ## v0.23 — 23.10 Claims need predicates
+
+> **Source sections:** `CAP-650`
+>
+> [DOCUMENTATION REVIEW] Contradiction **C-03** ([Review Notes](../REVIEW-NOTES.md#c-03--))
 
 The engine should therefore stop thinking about presence as one universal boolean.
 
@@ -1764,8 +1872,10 @@ These are different propositions.
 
 ---
 
-<!-- source: Continue Architecture Planning.md L74573–74629 | turn 59 | version 0.23 -->
+<!-- CAP-651 | Continue Architecture Planning.md L74573–74629 | turn 59 | version 0.23 -->
 ## v0.23 — 23.11 Predicate-aware absence
+
+> **Source sections:** `CAP-651`
 
 Introduce:
 
@@ -1823,8 +1933,10 @@ It does **not** mean:
 
 ---
 
-<!-- source: Continue Architecture Planning.md L74631–74679 | turn 59 | version 0.23 -->
+<!-- CAP-652 | Continue Architecture Planning.md L74631–74679 | turn 59 | version 0.23 -->
 ## v0.23 — 23.12 Contradiction becomes first-class
+
+> **Source sections:** `CAP-652`
 
 Now suppose two observations produce:
 
@@ -1874,8 +1986,10 @@ Therefore contradiction resolution must consider **scope and predicate** before 
 
 ---
 
-<!-- source: Continue Architecture Planning.md L74681–74724 | turn 59 | version 0.23 -->
+<!-- CAP-653 | Continue Architecture Planning.md L74681–74724 | turn 59 | version 0.23 -->
 ## v0.23 — 23.13 True contradiction
+
+> **Source sections:** `CAP-653`
 
 A genuine contradiction might be:
 
@@ -1920,8 +2034,12 @@ Never silently choose one.
 
 ---
 
-<!-- source: Continue Architecture Planning.md L74726–74767 | turn 59 | version 0.23 -->
+<!-- CAP-654 | Continue Architecture Planning.md L74726–74767 | turn 59 | version 0.23 -->
 ## v0.23 — 23.14 Absence confidence cannot simply be numeric
+
+> **Source sections:** `CAP-654`
+>
+> [DOCUMENTATION REVIEW] Contradiction **C-06** ([Review Notes](../REVIEW-NOTES.md#c-06--))
 
 A dangerous implementation would do:
 
@@ -1964,8 +2082,10 @@ It should not replace these dimensions.
 
 ---
 
-<!-- source: Continue Architecture Planning.md L74769–74817 | turn 59 | version 0.23 -->
+<!-- CAP-655 | Continue Architecture Planning.md L74769–74817 | turn 59 | version 0.23 -->
 ## v0.23 — 23.15 Independent evidence
+
+> **Source sections:** `CAP-655`
 
 Suppose the engine searches the same page three times:
 
@@ -2015,8 +2135,10 @@ and allow later independence analysis.
 
 ---
 
-<!-- source: Continue Architecture Planning.md L74819–74864 | turn 59 | version 0.23 -->
+<!-- CAP-656 | Continue Architecture Planning.md L74819–74864 | turn 59 | version 0.23 -->
 ## v0.23 — 23.16 Absence reasoning engine
+
+> **Source sections:** `CAP-656`
 
 Introduce:
 
@@ -2063,8 +2185,10 @@ The important property:
 
 ---
 
-<!-- source: Continue Architecture Planning.md L74866–74913 | turn 59 | version 0.23 -->
+<!-- CAP-657 | Continue Architecture Planning.md L74866–74913 | turn 59 | version 0.23 -->
 ## v0.23 — 23.17 Formal absence rule
+
+> **Source sections:** `CAP-657`
 
 A useful first rule:
 
@@ -2113,8 +2237,10 @@ and the universe itself is well-defined and enumerable.
 
 ---
 
-<!-- source: Continue Architecture Planning.md L74915–74961 | turn 59 | version 0.23 -->
+<!-- CAP-658 | Continue Architecture Planning.md L74915–74961 | turn 59 | version 0.23 -->
 ## v0.23 — 23.18 Dynamic universes
+
+> **Source sections:** `CAP-658`
 
 The web is not static.
 
@@ -2162,8 +2288,10 @@ That is a durable historical statement.
 
 ---
 
-<!-- source: Continue Architecture Planning.md L74963–74995 | turn 59 | version 0.23 -->
+<!-- CAP-659 | Continue Architecture Planning.md L74963–74995 | turn 59 | version 0.23 -->
 ## v0.23 — 23.19 Temporal validity
+
+> **Source sections:** `CAP-659`
 
 The epistemic model now becomes:
 
@@ -2197,8 +2325,12 @@ without corruption.
 
 ---
 
-<!-- source: Continue Architecture Planning.md L74997–75044 | turn 59 | version 0.23 -->
+<!-- CAP-660 | Continue Architecture Planning.md L74997–75044 | turn 59 | version 0.23 -->
 ## v0.23 — 23.20 Absence and revision detection
+
+> **Source sections:** `CAP-660`
+>
+> [DOCUMENTATION REVIEW] Contradiction **C-07** ([Review Notes](../REVIEW-NOTES.md#c-07--))
 
 This becomes especially useful for document aggregation.
 
@@ -2247,8 +2379,10 @@ This is the beginning of **change-aware discovery**.
 
 ---
 
-<!-- source: Continue Architecture Planning.md L75046–75099 | turn 59 | version 0.23 -->
+<!-- CAP-661 | Continue Architecture Planning.md L75046–75099 | turn 59 | version 0.23 -->
 ## v0.23 — 23.21 Search state now becomes richer
+
+> **Source sections:** `CAP-661`
 
 The frontier can report:
 
@@ -2303,13 +2437,17 @@ NOT_FOUND
 
 ---
 
-<!-- source: Continue Architecture Planning.md L75169–75171 | turn 59 | version 0.23 -->
+<!-- CAP-663 | Continue Architecture Planning.md L75169–75171 | turn 59 | version 0.23 -->
 ## v0.23 — 23.23 The three epistemic outcomes
+
+> **Source sections:** `CAP-663`
 
 The engine should now be able to say three fundamentally different things:
 
-<!-- source: Continue Architecture Planning.md L75173–75183 | turn 59 | version 0.23 -->
+<!-- CAP-664 | Continue Architecture Planning.md L75173–75183 | turn 59 | version 0.23 -->
 ### v0.23 — Presence
+
+> **Source sections:** `CAP-664`
 
 ```
 FOUND
@@ -2321,8 +2459,10 @@ with evidence:
 Observation → Evidence → PresenceClaim
 ```
 
-<!-- source: Continue Architecture Planning.md L75185–75199 | turn 59 | version 0.23 -->
+<!-- CAP-665 | Continue Architecture Planning.md L75185–75199 | turn 59 | version 0.23 -->
 ### v0.23 — Absence
+
+> **Source sections:** `CAP-665`
 
 ```
 ABSENT WITHIN SCOPE
@@ -2338,8 +2478,10 @@ Negative Evidence
 Absence Claim
 ```
 
-<!-- source: Continue Architecture Planning.md L75201–75223 | turn 59 | version 0.23 -->
+<!-- CAP-666 | Continue Architecture Planning.md L75201–75223 | turn 59 | version 0.23 -->
 ### v0.23 — Unknown
+
+> **Source sections:** `CAP-666`
 
 ```
 NOT DETERMINED
