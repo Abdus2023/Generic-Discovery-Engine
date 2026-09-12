@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Generic Discovery Engine
 // @namespace    generic-discovery
-// @version      0.8.0
+// @version      0.8.1
 // @description  Generic web-resource discovery engine inspired by the architecture of DVB blind scanning.
 // @match        *://*/*
 // @run-at       document-start
@@ -19,7 +19,18 @@
     /*
      * ============================================================
      * Generic Discovery Engine
-     * v0.8.0 — Providers & Change Detection (robots+headers + fingerprint diff + framework prelude)
+     * v0.8.1 — Modular Prelude + Export Hardening (src/ mirror + build check + coverage 9 providers)
+
+     * Patch notes vs v0.8.0:
+     * - Modular: src/ mirror (config.js, utils.js, models.js, knowledge.js,
+     *           ledger.js, providers.js, engine.js) extracted from dist
+     *           5,773 lines; scripts/build.js now verifies src/ exists and
+     *           dist header @version matches pkg + hash matches meta
+     *         + Export: CONFIG.version stays 8, exportData().schema
+     *           gde-export-v8.0 + pattern/cluster metrics now included in
+     *           coverage export (frontier + pattern + cluster)
+     *         + Tests: src existence + build determinism + 9-provider
+     *           ordered pipeline proven
 
      * Patch notes vs v0.7.9:
      * - Providers: RobotsProvider (Sitemap: extraction, robots.txt) +

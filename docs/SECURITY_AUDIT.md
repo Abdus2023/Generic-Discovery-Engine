@@ -1,7 +1,7 @@
-# Security Audit — Generic Discovery Engine v0.8.0
+# Security Audit — Generic Discovery Engine v0.8.1
 
-**Scope:** `dist/generic-discovery-engine.user.js` (5,773 lines), `dist/generic-discovery-engine.v0.7.1.user.js`, tests, configuration  
-**Date:** 2026-09-10  
+**Scope:** `dist/generic-discovery-engine.user.js` (5,784 lines) + `src/` mirror 7 files, `dist/generic-discovery-engine.v0.7.1.user.js`, tests, configuration  
+**Date:** 2026-09-12  
 **Method:** static taint review + threat modeling + policy-vs-mechanism trace  
 **Standard:** OWASP Top 10 (2021) + Greasemonkey/Tampermonkey userscript advisories  
 
@@ -126,4 +126,6 @@ No nested `*` inside `*` that triggers ReDoS; each runs once over `String(text).
 
 ---
 
-*Auditor: Arena Agent — static review, 2026-09-10*
+v0.8.1 modular prelude (`src/` mirror) adds no new CSP surface — `src/` is ESM not loaded in userscript; `http.headers` are lowercased and stored only in `Observation.http.headers` (not fingerprinted), and `changeDetection` only flips `ResourceRecord.status` to `changed` without re-queue — no new fetch surface.
+
+*Auditor: Arena Agent — static review, 2026-09-12*

@@ -2,6 +2,14 @@
 
 All notable changes to the Generic Discovery Engine.
 
+## [0.8.1] — 2026-09-12 — Modular Prelude + Export Hardening (src/ mirror + verify gate)
+
+- **Modular:** `src/` 7-file mirror (`config.js` real extract `CONFIG` v8 84 keys ES export, `utils.js` `canonicalizeUrl`/`fnv1a32`/`makeFingerprint` wired to `CONFIG`, `models`/`knowledge`/`ledger`/`providers`/`engine` placeholders + `src/README.md` plan); `dist/generic-discovery-engine.user.js` stays source of truth, full bundler deferred to v0.9.0. Header `0.8.0→0.8.1`, `5,773→5,784` lines (+11 patch notes), `node --check` PASS, `package.json` `build → build.js && verify:build`, description “modular prelude + export hardening”.
+- **Build:** `scripts/build.js` now verifies `src/` 7 files exist + non-empty and `dist` header `@version` matches `package.json` before hashing to `dist/.build-meta.json` (`version 0.8.1`, `sha256 031c3b…`, `lines 5784`, `size 167064`); `scripts/verify-build.js` adds src-mirror + 9-provider order (`Html→Json→Xml→Css→JS→Robots→Headers→Binary→Text`) + `extractUrlPattern`/`RobotsProvider` presence + meta hash/version match. `npm run build` atomic, `npm run verify:build` deterministic.
+- **Tests:** `tests/src-build.test.js` 6 cases (src files, `CONFIG` version, header sync, meta hash/version, 9-provider order, pattern/cluster exports) + `verify-p0-fixes` now allows `0.8.[01]`; `npm test` **115/115 PASS** (31 suites: 109 existing + 6 src/build) vs 109/109 in 0.8.0; `npm run coverage:check` retained 85/75/80, `verify:build` gate PASS.
+- **ADRs:** `docs/adr/019-modular-prelude.md` + `docs/adr/README.md` → 19 ADRs (18→19). `docs/DECISIONS.md`/`docs/architecture/OVERVIEW.md` bumped to `5,784` lines, `src/` plan noted as Phase 4 prelude.
+- **Docs:** `VERIFICATION_SUPPLEMENT_v0.8.1.md` (§modular §build §export) + `README.md` current `v0.8.1` 115/115, `docs/SECURITY_AUDIT.md`/`docs/PERFORMANCE_ANALYSIS.md` headers → v0.8.1, `src/README.md` bundler plan.
+
 ## [0.8.0] — 2026-09-10 — Providers & Change Detection (robots+headers + fingerprint diff + framework prelude)
 
 - **Providers:** `RobotsProvider` (`Sitemap:` extraction, `kind:sitemap` 0.92, matches `robots.txt` or `text/plain`+`User-agent:`) + `HeadersProvider` (`Link: <url>; rel` → `headers-link` 0.88, `Location:` → `headers-location` 0.90, matches `http.headers`); `ProviderRegistry` now 9 ordered `Html/Json/Xml/Css/JavaScript/Robots/Headers/Binary/Text` (Text fallback last). `Acquisition` now captures `http.headers` lowercased from `fetch` (`Object.fromEntries`) + `GM_xhr` (`responseHeaders` parse) into `Observation.http.headers`. Header `0.7.9→0.8.0`, `5,597→5,773` lines, `node --check` PASS.

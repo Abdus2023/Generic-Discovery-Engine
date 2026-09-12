@@ -7,7 +7,7 @@ New ADRs:
 2. Number sequentially (`004-…` next).
 3. Update `docs/DECISIONS.md` index.
 
-Current ADRs (v0.8.0 — 18 ADRs):
+Current ADRs (v0.8.1 — 19 ADRs):
 
 - `001-provider-pipeline.md` — 7 providers, ordered matching, `ProviderRegistry`.
 - `002-ledger.md` — 12 typed events, 5k FIFO, replayable `DecisionLedger`.
@@ -27,5 +27,6 @@ Current ADRs (v0.8.0 — 18 ADRs):
 - `016-robots-provider.md` — robots.txt Sitemap extraction, 9 providers ordered.
 - `017-headers-provider.md` — Link/Location header capture, HeadersProvider.
 - `018-change-detection.md` — fingerprint diff → resource-changed, changeDetection flag.
+- `019-modular-prelude.md` — src/ 7-file mirror, config/utils extracts, verify:build src check.
 
-Transcript provenance: `Continue Architecture Planning.md` (92,274 lines). Runnable artifact: `dist/generic-discovery-engine.user.js`.
+Transcript provenance: `Continue Architecture Planning.md` (92,274 lines). Runnable artifact: `dist/generic-discovery-engine.user.js` (v0.8.1, 5,784 lines) + `src/` mirror.
