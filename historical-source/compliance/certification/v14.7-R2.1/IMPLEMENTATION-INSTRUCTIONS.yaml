@@ -1,0 +1,86 @@
+{
+  "profile_id": "gde-v14.7-r2-boundary",
+  "profile_version": "14.7-R2.1",
+  "epistemic_status": "SUPPORTED",
+  "claim_class": "REALIZATION_PROFILE",
+  "objects": [
+    {
+      "instruction_id": "R2B-INS-001",
+      "target_requirement": {
+        "requirement_id": "R-BOUNDARY-010"
+      },
+      "scope": {
+        "profile_id": "gde-v14.7-r2-boundary",
+        "implementation_id": null
+      },
+      "instruction_type": "PROFILE_BINDING",
+      "statement": {
+        "text": "Order by stream sequence predecessor and commit index"
+      },
+      "mandatory": true,
+      "authority_ref": "profile:14.7-R2.1",
+      "rationale": null,
+      "alternatives": [],
+      "content_hash": "5b28e8560e3fa7bc3f261535659c598c919884473e42076bdcd0d641897fd7bc"
+    },
+    {
+      "instruction_id": "R2B-INS-002",
+      "target_requirement": {
+        "requirement_id": "R-BOUNDARY-005"
+      },
+      "scope": {
+        "profile_id": "gde-v14.7-r2-boundary",
+        "implementation_id": null
+      },
+      "instruction_type": "PROFILE_BINDING",
+      "statement": {
+        "text": "Hash active specification basis with SHA-256"
+      },
+      "mandatory": true,
+      "authority_ref": "profile:14.7-R2.1",
+      "rationale": null,
+      "alternatives": [],
+      "content_hash": "3babcf3b3d72df1167831445ccf56563e0716db919669f25d9ea8f9e2e51df10"
+    },
+    {
+      "instruction_id": "R2B-INS-003",
+      "target_requirement": {
+        "requirement_id": "R-BOUNDARY-006"
+      },
+      "scope": {
+        "profile_id": null,
+        "implementation_id": "reference-harness"
+      },
+      "instruction_type": "TEST_HARNESS",
+      "statement": {
+        "text": "Use Python reference classes for boundary tests"
+      },
+      "mandatory": false,
+      "authority_ref": null,
+      "rationale": null,
+      "alternatives": [],
+      "content_hash": "131f9210749b5e72fffb59f9430fae8d07473e67897358beff8b6e33e685f428"
+    },
+    {
+      "instruction_id": "R2B-INS-004",
+      "target_requirement": {
+        "requirement_id": "R-BOUNDARY-010"
+      },
+      "scope": {
+        "profile_id": null,
+        "implementation_id": "reference-harness"
+      },
+      "instruction_type": "STORAGE",
+      "statement": {
+        "text": "Use any backend proving atomic durable append"
+      },
+      "mandatory": true,
+      "authority_ref": "implementation-contract:r2.1",
+      "rationale": null,
+      "alternatives": [],
+      "content_hash": "b853a6884dc02289cafb1805ca50619c8852c93d8de84d9ea295a663ba250d26"
+    }
+  ],
+  "count": 4,
+  "mandatory_requires_authority": true
+}

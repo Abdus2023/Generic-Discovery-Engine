@@ -1,0 +1,18 @@
+{
+  "compatibility_id": "compat:r2-to-r2.1",
+  "source_profile": "14.7-R2",
+  "target_profile": "14.7-R2.1",
+  "classification": "CONVERTIBLE",
+  "migration_required": true,
+  "semantic_equivalence": "UNKNOWN",
+  "migration": {
+    "operation": "REVALIDATE_REHASH_RESIGN",
+    "source_validity": "NOT_TRANSFERRED",
+    "target_identity": "NEW_PROFILE_BOUND_IDENTITY",
+    "failure_result": "INCOMPATIBLE"
+  },
+  "evidence_refs": [
+    "BOUNDARY-TEST-RESULTS.yaml"
+  ],
+  "content_hash": "4a40f23f324d797eaf916f195bdd25d3bc505d160b0ebb1eb508eb28e098fbf9"
+}

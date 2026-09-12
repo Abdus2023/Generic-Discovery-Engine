@@ -1,0 +1,62 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://generic-discovery-engine.invalid/compliance/v14.7-R2.1/implementation-contract.schema.yaml",
+  "title": "implementation-contract",
+  "type": "object",
+  "required": [
+    "implementation_contract_id",
+    "implementation_id",
+    "profile_id",
+    "profile_version",
+    "artifact_hash",
+    "mapping_refs",
+    "capability_status",
+    "content_hash"
+  ],
+  "properties": {
+    "implementation_contract_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "implementation_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "profile_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "profile_version": {
+      "type": "string",
+      "minLength": 1
+    },
+    "artifact_hash": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$"
+    },
+    "mapping_refs": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "capability_status": {
+      "type": "object"
+    },
+    "content_hash": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$"
+    }
+  },
+  "additionalProperties": false,
+  "x-identity-fields": [
+    "implementation_contract_id"
+  ],
+  "x-immutable": true,
+  "x-self-excluding-hash-field": "content_hash",
+  "x-canonical-profile": "gde-cjson-1",
+  "x-normative-rules": [
+    "implementation identifies exact profile"
+  ]
+}

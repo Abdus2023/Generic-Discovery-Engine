@@ -1,0 +1,165 @@
+{
+  "profile_id": "gde-v14.7-r2-boundary",
+  "profile_version": "14.7-R2.1",
+  "specification": {
+    "specification_id": "gde-v14.7-active",
+    "specification_version": "14.7.1",
+    "specification_hash": "ece792e80e9b7b48d3b2268c1d839b8eca7a87028c6a7e12f745e3d957fe9c96"
+  },
+  "serialization": {
+    "format": "JSON",
+    "encoding": "UTF-8",
+    "canonicalization": "GDE-CJSON-1"
+  },
+  "hashing": {
+    "algorithm": "SHA-256"
+  },
+  "signatures": {
+    "algorithm": "Ed25519"
+  },
+  "time": {
+    "source": "SIGNED_TRUSTED_TIMESTAMP_EVIDENCE",
+    "representation": "RFC3339_UTC_Z",
+    "max_clock_skew": "PT5S"
+  },
+  "events": {
+    "ordering": "STREAM_SEQUENCE_PREDECESSOR_COMMIT",
+    "sequence_model": "ZERO_BASED_CONTIGUOUS_OR_TRUSTED_CHECKPOINT",
+    "atomic_commit": true
+  },
+  "policy": {
+    "predicate_language": "GDE-PREDICATE-1"
+  },
+  "limits": {
+    "maximum_object_size": 1048576,
+    "maximum_event_size": 262144,
+    "maximum_reference_depth": 64
+  },
+  "compatibility": {
+    "profile_compatibility_id": "compat:r2-to-r2.1"
+  },
+  "choice_universe": {
+    "closed": true,
+    "choices": [
+      "RESULT_DOMAINS",
+      "SERIALIZATION",
+      "HASH_ALGORITHM",
+      "SIGNATURE_ALGORITHM",
+      "TIME_REPRESENTATION",
+      "TIME_SOURCE",
+      "MAX_CLOCK_SKEW",
+      "EVENT_ORDER",
+      "PREDICATE_LANGUAGE",
+      "ENCODING",
+      "IDENTIFIER_SYNTAX",
+      "WIRE_FORMAT",
+      "OBJECT_SIZE_LIMIT",
+      "EVENT_SIZE_LIMIT",
+      "REFERENCE_DEPTH",
+      "INTERNAL_INDEX",
+      "STORAGE_BACKEND",
+      "PROCESS_ARCHITECTURE"
+    ]
+  },
+  "semantic_preservation": {
+    "semantic_states": "UNCHANGED",
+    "state_meanings": "UNCHANGED",
+    "authority": "UNCHANGED",
+    "invariants": "PRESERVED",
+    "validation_boundaries": "PRESERVED",
+    "uncertainty": "PRESERVED"
+  },
+  "choice_classification": [
+    {
+      "choice": "RESULT_DOMAINS",
+      "status": "FIXED",
+      "selected": "FROZEN_V14_7"
+    },
+    {
+      "choice": "SERIALIZATION",
+      "status": "PROFILE-SELECTABLE",
+      "selected": "GDE-CJSON-1"
+    },
+    {
+      "choice": "HASH_ALGORITHM",
+      "status": "PROFILE-SELECTABLE",
+      "selected": "SHA-256"
+    },
+    {
+      "choice": "SIGNATURE_ALGORITHM",
+      "status": "PROFILE-SELECTABLE",
+      "selected": "Ed25519"
+    },
+    {
+      "choice": "TIME_REPRESENTATION",
+      "status": "PROFILE-SELECTABLE",
+      "selected": "RFC3339_UTC_Z"
+    },
+    {
+      "choice": "TIME_SOURCE",
+      "status": "PROFILE-SELECTABLE",
+      "selected": "SIGNED_TRUSTED_TIMESTAMP_EVIDENCE"
+    },
+    {
+      "choice": "MAX_CLOCK_SKEW",
+      "status": "PROFILE-SELECTABLE",
+      "selected": "PT5S"
+    },
+    {
+      "choice": "EVENT_ORDER",
+      "status": "PROFILE-SELECTABLE",
+      "selected": "STREAM_SEQUENCE_PREDECESSOR_COMMIT"
+    },
+    {
+      "choice": "PREDICATE_LANGUAGE",
+      "status": "PROFILE-SELECTABLE",
+      "selected": "GDE-PREDICATE-1"
+    },
+    {
+      "choice": "ENCODING",
+      "status": "PROFILE-SELECTABLE",
+      "selected": "UTF-8"
+    },
+    {
+      "choice": "IDENTIFIER_SYNTAX",
+      "status": "PROFILE-SELECTABLE",
+      "selected": "URI_SAFE_ASCII"
+    },
+    {
+      "choice": "WIRE_FORMAT",
+      "status": "PROFILE-SELECTABLE",
+      "selected": "CANONICAL_JSON"
+    },
+    {
+      "choice": "OBJECT_SIZE_LIMIT",
+      "status": "PROFILE-SELECTABLE",
+      "selected": "1048576"
+    },
+    {
+      "choice": "EVENT_SIZE_LIMIT",
+      "status": "PROFILE-SELECTABLE",
+      "selected": "262144"
+    },
+    {
+      "choice": "REFERENCE_DEPTH",
+      "status": "PROFILE-SELECTABLE",
+      "selected": "64"
+    },
+    {
+      "choice": "INTERNAL_INDEX",
+      "status": "IMPLEMENTATION-DEFINED",
+      "selected": null
+    },
+    {
+      "choice": "STORAGE_BACKEND",
+      "status": "IMPLEMENTATION-DEFINED",
+      "selected": null
+    },
+    {
+      "choice": "PROCESS_ARCHITECTURE",
+      "status": "IMPLEMENTATION-DEFINED",
+      "selected": null
+    }
+  ],
+  "content_hash": "a08449d6f71a955d58e83ea600ab078142639edf538090fd429511d300557c80"
+}

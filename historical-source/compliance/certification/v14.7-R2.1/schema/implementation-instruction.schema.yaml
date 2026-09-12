@@ -1,0 +1,92 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://generic-discovery-engine.invalid/compliance/v14.7-R2.1/implementation-instruction.schema.yaml",
+  "title": "implementation-instruction",
+  "type": "object",
+  "required": [
+    "instruction_id",
+    "target_requirement",
+    "scope",
+    "instruction_type",
+    "statement",
+    "mandatory",
+    "authority_ref",
+    "rationale",
+    "alternatives",
+    "content_hash"
+  ],
+  "properties": {
+    "instruction_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "target_requirement": {
+      "type": "object"
+    },
+    "scope": {
+      "type": "object"
+    },
+    "instruction_type": {
+      "type": "string",
+      "enum": [
+        "PROFILE_BINDING",
+        "IMPLEMENTATION_GUIDANCE",
+        "OPTIMIZATION",
+        "DEPLOYMENT",
+        "TEST_HARNESS",
+        "STORAGE",
+        "LANGUAGE",
+        "LIBRARY"
+      ]
+    },
+    "statement": {
+      "type": "object"
+    },
+    "mandatory": {
+      "type": "boolean"
+    },
+    "authority_ref": {
+      "oneOf": [
+        {
+          "type": "string",
+          "minLength": 1
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "rationale": {
+      "oneOf": [
+        {
+          "type": "string",
+          "minLength": 1
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "alternatives": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "content_hash": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$"
+    }
+  },
+  "additionalProperties": false,
+  "x-identity-fields": [
+    "instruction_id"
+  ],
+  "x-immutable": true,
+  "x-self-excluding-hash-field": "content_hash",
+  "x-canonical-profile": "gde-cjson-1",
+  "x-normative-rules": [
+    "mandatory instruction requires profile or implementation-contract authority"
+  ]
+}

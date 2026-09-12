@@ -1,0 +1,299 @@
+{
+  "profile_version": "14.7-R2.1",
+  "overall_status": "PROFILE_CONFORMANT_IMPLEMENTATION_AND_TARGET_UNVERIFIED",
+  "summary": {
+    "total": 41,
+    "passed": 40,
+    "failed": 0,
+    "blocked": 1
+  },
+  "checks": [
+    {
+      "check_id": "I01",
+      "category": "inventory",
+      "result": "PASS",
+      "description": "44 generator-owned artifacts",
+      "detail": ""
+    },
+    {
+      "check_id": "I02",
+      "category": "parse",
+      "result": "PASS",
+      "description": "all YAML parses",
+      "detail": ""
+    },
+    {
+      "check_id": "I03",
+      "category": "inventory",
+      "result": "PASS",
+      "description": "no undeclared generator file",
+      "detail": "[]"
+    },
+    {
+      "check_id": "B01",
+      "category": "boundary",
+      "result": "PASS",
+      "description": "R2.1 is realization clarification without semantic layer",
+      "detail": ""
+    },
+    {
+      "check_id": "B02",
+      "category": "boundary",
+      "result": "PASS",
+      "description": "three realization defects and no semantic contradiction",
+      "detail": ""
+    },
+    {
+      "check_id": "S01",
+      "category": "schema",
+      "result": "PASS",
+      "description": "10 local schemas extend exact 57-schema predecessor set",
+      "detail": ""
+    },
+    {
+      "check_id": "S02",
+      "category": "schema",
+      "result": "PASS",
+      "description": "all boundary schemas complete immutable and hash-bound",
+      "detail": ""
+    },
+    {
+      "check_id": "P01",
+      "category": "profile",
+      "result": "PASS",
+      "description": "profile object satisfies required top-level shape",
+      "detail": ""
+    },
+    {
+      "check_id": "P02",
+      "category": "profile",
+      "result": "PASS",
+      "description": "profile content hash valid and exact specification basis bound",
+      "detail": ""
+    },
+    {
+      "check_id": "P03",
+      "category": "profile",
+      "result": "PASS",
+      "description": "specification basis binds v14.7 plus append-only correction",
+      "detail": ""
+    },
+    {
+      "check_id": "P04",
+      "category": "profile",
+      "result": "PASS",
+      "description": "every choice has exactly one of three statuses",
+      "detail": ""
+    },
+    {
+      "check_id": "P05",
+      "category": "profile",
+      "result": "PASS",
+      "description": "all profile-selectable choices selected and implementation-defined choices explicit",
+      "detail": ""
+    },
+    {
+      "check_id": "P06",
+      "category": "profile",
+      "result": "PASS",
+      "description": "complete interoperability bindings and limits",
+      "detail": ""
+    },
+    {
+      "check_id": "P07",
+      "category": "profile",
+      "result": "PASS",
+      "description": "profile-to-spec and implementation-to-profile claims separate",
+      "detail": ""
+    },
+    {
+      "check_id": "P08",
+      "category": "profile",
+      "result": "PASS",
+      "description": "compatibility explicit not version-inferred",
+      "detail": ""
+    },
+    {
+      "check_id": "O01",
+      "category": "outputs",
+      "result": "PASS",
+      "description": "ValidationResult exactly VALID INVALID BLOCKED UNKNOWN and no truth values",
+      "detail": ""
+    },
+    {
+      "check_id": "O02",
+      "category": "outputs",
+      "result": "PASS",
+      "description": "EvaluationResult remains exact and distinct",
+      "detail": ""
+    },
+    {
+      "check_id": "O03",
+      "category": "outputs",
+      "result": "PASS",
+      "description": "ConformanceResult exact and distinct from validation/evaluation",
+      "detail": ""
+    },
+    {
+      "check_id": "O04",
+      "category": "outputs",
+      "result": "PASS",
+      "description": "only VALID permits evaluation and validator cannot emit truth",
+      "detail": ""
+    },
+    {
+      "check_id": "R01",
+      "category": "requirements",
+      "result": "PASS",
+      "description": "12 complete immutable requirements with valid hashes",
+      "detail": ""
+    },
+    {
+      "check_id": "R02",
+      "category": "requirements",
+      "result": "PASS",
+      "description": "normative requirement statements contain no selected implementation technology",
+      "detail": ""
+    },
+    {
+      "check_id": "R03",
+      "category": "requirements",
+      "result": "PASS",
+      "description": "implementation instructions separately typed and hash-valid",
+      "detail": ""
+    },
+    {
+      "check_id": "R04",
+      "category": "requirements",
+      "result": "PASS",
+      "description": "every mandatory instruction has explicit profile or contract authority",
+      "detail": ""
+    },
+    {
+      "check_id": "R05",
+      "category": "requirements",
+      "result": "PASS",
+      "description": "all requirements have hash-bound profile bindings and executable mappings",
+      "detail": ""
+    },
+    {
+      "check_id": "R06",
+      "category": "requirements",
+      "result": "PASS",
+      "description": "implementation contract names exact profile and valid artifact",
+      "detail": ""
+    },
+    {
+      "check_id": "F01",
+      "category": "failures",
+      "result": "PASS",
+      "description": "11 exact hash-bound failure origins and no automatic implementation attribution",
+      "detail": ""
+    },
+    {
+      "check_id": "C01",
+      "category": "coercion",
+      "result": "PASS",
+      "description": "all nine forbidden cross-domain conversions explicit",
+      "detail": ""
+    },
+    {
+      "check_id": "T01",
+      "category": "tests",
+      "result": "PASS",
+      "description": "40 boundary tests independently rerun and pass",
+      "detail": ""
+    },
+    {
+      "check_id": "T02",
+      "category": "tests",
+      "result": "PASS",
+      "description": "validation tests never expect TRUE or FALSE",
+      "detail": ""
+    },
+    {
+      "check_id": "T03",
+      "category": "tests",
+      "result": "PASS",
+      "description": "all nine semantic coercions execute as rejected",
+      "detail": ""
+    },
+    {
+      "check_id": "T04",
+      "category": "tests",
+      "result": "PASS",
+      "description": "validation gate blocks INVALID BLOCKED UNKNOWN before evaluation",
+      "detail": ""
+    },
+    {
+      "check_id": "AC01",
+      "category": "acceptance",
+      "result": "PASS",
+      "description": "all 12 supplied acceptance criteria independently execute and pass",
+      "detail": ""
+    },
+    {
+      "check_id": "N01",
+      "category": "invariants",
+      "result": "PASS",
+      "description": "13 unique frozen-boundary invariants",
+      "detail": ""
+    },
+    {
+      "check_id": "TR01",
+      "category": "traceability",
+      "result": "PASS",
+      "description": "full object-to-verification and requirement-to-evidence traces bidirectional",
+      "detail": ""
+    },
+    {
+      "check_id": "NI01",
+      "category": "non_invention",
+      "result": "PASS",
+      "description": "profile conformant but implementation and target explicitly unverified",
+      "detail": ""
+    },
+    {
+      "check_id": "PR01",
+      "category": "integrity",
+      "result": "PASS",
+      "description": "all 852 predecessor artifacts preserved",
+      "detail": "[]"
+    },
+    {
+      "check_id": "D01",
+      "category": "documentation",
+      "result": "PASS",
+      "description": "26 required boundary deliverable sections",
+      "detail": ""
+    },
+    {
+      "check_id": "Q01",
+      "category": "determinism",
+      "result": "PASS",
+      "description": "44 generator artifacts deterministic",
+      "detail": ""
+    },
+    {
+      "check_id": "Q02",
+      "category": "regression",
+      "result": "PASS",
+      "description": "R2 predecessor and append guards pass",
+      "detail": ""
+    },
+    {
+      "check_id": "Q03",
+      "category": "hygiene",
+      "result": "PASS",
+      "description": "no Python caches",
+      "detail": ""
+    },
+    {
+      "check_id": "GATE-R21",
+      "category": "acceptance",
+      "result": "BLOCKED",
+      "description": "implementation and target conformance",
+      "detail": "Profile conforms; Ed25519 provider, durable store, and target engine remain unverified."
+    }
+  ]
+}

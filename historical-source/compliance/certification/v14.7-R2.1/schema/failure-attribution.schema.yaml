@@ -1,0 +1,69 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://generic-discovery-engine.invalid/compliance/v14.7-R2.1/failure-attribution.schema.yaml",
+  "title": "failure-attribution",
+  "type": "object",
+  "required": [
+    "failure_id",
+    "origin",
+    "object_ref",
+    "contract_ref",
+    "evidence_refs",
+    "retry_meaningful",
+    "content_hash"
+  ],
+  "properties": {
+    "failure_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "origin": {
+      "type": "string",
+      "enum": [
+        "VALIDATION_FAILURE",
+        "EVALUATION_FAILURE",
+        "ORACLE_FAILURE",
+        "CONFORMANCE_FAILURE",
+        "AUTHORITY_FAILURE",
+        "AUTHORIZATION_FAILURE",
+        "TRANSITION_FAILURE",
+        "IMPLEMENTATION_FAILURE",
+        "PROFILE_FAILURE",
+        "SPECIFICATION_FAILURE",
+        "ENVIRONMENT_FAILURE"
+      ]
+    },
+    "object_ref": {
+      "type": "string",
+      "minLength": 1
+    },
+    "contract_ref": {
+      "type": "string",
+      "minLength": 1
+    },
+    "evidence_refs": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "retry_meaningful": {
+      "type": "boolean"
+    },
+    "content_hash": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$"
+    }
+  },
+  "additionalProperties": false,
+  "x-identity-fields": [
+    "failure_id"
+  ],
+  "x-immutable": true,
+  "x-self-excluding-hash-field": "content_hash",
+  "x-canonical-profile": "gde-cjson-1",
+  "x-normative-rules": [
+    "origin not automatically implementation"
+  ]
+}

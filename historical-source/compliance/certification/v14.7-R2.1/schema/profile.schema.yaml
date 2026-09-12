@@ -1,0 +1,87 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://generic-discovery-engine.invalid/compliance/v14.7-R2.1/profile.schema.yaml",
+  "title": "profile",
+  "type": "object",
+  "required": [
+    "profile_id",
+    "profile_version",
+    "specification",
+    "serialization",
+    "hashing",
+    "signatures",
+    "time",
+    "events",
+    "policy",
+    "limits",
+    "compatibility",
+    "choice_universe",
+    "semantic_preservation",
+    "choice_classification",
+    "content_hash"
+  ],
+  "properties": {
+    "profile_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "profile_version": {
+      "type": "string",
+      "minLength": 1
+    },
+    "specification": {
+      "type": "object"
+    },
+    "serialization": {
+      "type": "object"
+    },
+    "hashing": {
+      "type": "object"
+    },
+    "signatures": {
+      "type": "object"
+    },
+    "time": {
+      "type": "object"
+    },
+    "events": {
+      "type": "object"
+    },
+    "policy": {
+      "type": "object"
+    },
+    "limits": {
+      "type": "object"
+    },
+    "compatibility": {
+      "type": "object"
+    },
+    "choice_universe": {
+      "type": "object"
+    },
+    "semantic_preservation": {
+      "type": "object"
+    },
+    "choice_classification": {
+      "type": "array",
+      "items": {
+        "type": "object"
+      }
+    },
+    "content_hash": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$"
+    }
+  },
+  "additionalProperties": false,
+  "x-identity-fields": [
+    "profile_id",
+    "profile_version"
+  ],
+  "x-immutable": true,
+  "x-self-excluding-hash-field": "content_hash",
+  "x-canonical-profile": "gde-cjson-1",
+  "x-normative-rules": [
+    "published profile binding immutable"
+  ]
+}

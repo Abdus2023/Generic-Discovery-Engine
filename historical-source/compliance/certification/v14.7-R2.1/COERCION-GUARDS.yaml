@@ -1,0 +1,63 @@
+{
+  "profile_id": "gde-v14.7-r2-boundary",
+  "profile_version": "14.7-R2.1",
+  "epistemic_status": "SUPPORTED",
+  "claim_class": "REALIZATION_PROFILE",
+  "forbidden": [
+    {
+      "source_domain": "ValidationResult",
+      "source_value": "INVALID",
+      "target_domain": "EvaluationResult",
+      "target_value": "FALSE"
+    },
+    {
+      "source_domain": "ValidationResult",
+      "source_value": "UNKNOWN",
+      "target_domain": "EvaluationResult",
+      "target_value": "TRUE"
+    },
+    {
+      "source_domain": "EvaluationResult",
+      "source_value": "UNKNOWN",
+      "target_domain": "EvaluationResult",
+      "target_value": "TRUE"
+    },
+    {
+      "source_domain": "EvaluationResult",
+      "source_value": "BLOCKED",
+      "target_domain": "EvaluationResult",
+      "target_value": "TRUE"
+    },
+    {
+      "source_domain": "EvaluationResult",
+      "source_value": "INVALID",
+      "target_domain": "EvaluationResult",
+      "target_value": "FALSE"
+    },
+    {
+      "source_domain": "ConformanceResult",
+      "source_value": "UNVERIFIED",
+      "target_domain": "ConformanceResult",
+      "target_value": "CONFORMANT"
+    },
+    {
+      "source_domain": "EligibilityResult",
+      "source_value": "UNKNOWN",
+      "target_domain": "Decision",
+      "target_value": "APPROVED"
+    },
+    {
+      "source_domain": "EligibilityResult",
+      "source_value": "BLOCKED",
+      "target_domain": "Decision",
+      "target_value": "APPROVED"
+    },
+    {
+      "source_domain": "Decision",
+      "source_value": "APPROVED",
+      "target_domain": "Execution",
+      "target_value": "EXECUTED"
+    }
+  ],
+  "explicit_rule_required": true
+}

@@ -1,0 +1,104 @@
+{
+  "profile_id": "gde-v14.7-r2-boundary",
+  "profile_version": "14.7-R2.1",
+  "epistemic_status": "SUPPORTED",
+  "claim_class": "REALIZATION_PROFILE",
+  "objects": [
+    {
+      "choice": "RESULT_DOMAINS",
+      "status": "FIXED",
+      "selected": "FROZEN_V14_7"
+    },
+    {
+      "choice": "SERIALIZATION",
+      "status": "PROFILE-SELECTABLE",
+      "selected": "GDE-CJSON-1"
+    },
+    {
+      "choice": "HASH_ALGORITHM",
+      "status": "PROFILE-SELECTABLE",
+      "selected": "SHA-256"
+    },
+    {
+      "choice": "SIGNATURE_ALGORITHM",
+      "status": "PROFILE-SELECTABLE",
+      "selected": "Ed25519"
+    },
+    {
+      "choice": "TIME_REPRESENTATION",
+      "status": "PROFILE-SELECTABLE",
+      "selected": "RFC3339_UTC_Z"
+    },
+    {
+      "choice": "TIME_SOURCE",
+      "status": "PROFILE-SELECTABLE",
+      "selected": "SIGNED_TRUSTED_TIMESTAMP_EVIDENCE"
+    },
+    {
+      "choice": "MAX_CLOCK_SKEW",
+      "status": "PROFILE-SELECTABLE",
+      "selected": "PT5S"
+    },
+    {
+      "choice": "EVENT_ORDER",
+      "status": "PROFILE-SELECTABLE",
+      "selected": "STREAM_SEQUENCE_PREDECESSOR_COMMIT"
+    },
+    {
+      "choice": "PREDICATE_LANGUAGE",
+      "status": "PROFILE-SELECTABLE",
+      "selected": "GDE-PREDICATE-1"
+    },
+    {
+      "choice": "ENCODING",
+      "status": "PROFILE-SELECTABLE",
+      "selected": "UTF-8"
+    },
+    {
+      "choice": "IDENTIFIER_SYNTAX",
+      "status": "PROFILE-SELECTABLE",
+      "selected": "URI_SAFE_ASCII"
+    },
+    {
+      "choice": "WIRE_FORMAT",
+      "status": "PROFILE-SELECTABLE",
+      "selected": "CANONICAL_JSON"
+    },
+    {
+      "choice": "OBJECT_SIZE_LIMIT",
+      "status": "PROFILE-SELECTABLE",
+      "selected": "1048576"
+    },
+    {
+      "choice": "EVENT_SIZE_LIMIT",
+      "status": "PROFILE-SELECTABLE",
+      "selected": "262144"
+    },
+    {
+      "choice": "REFERENCE_DEPTH",
+      "status": "PROFILE-SELECTABLE",
+      "selected": "64"
+    },
+    {
+      "choice": "INTERNAL_INDEX",
+      "status": "IMPLEMENTATION-DEFINED",
+      "selected": null
+    },
+    {
+      "choice": "STORAGE_BACKEND",
+      "status": "IMPLEMENTATION-DEFINED",
+      "selected": null
+    },
+    {
+      "choice": "PROCESS_ARCHITECTURE",
+      "status": "IMPLEMENTATION-DEFINED",
+      "selected": null
+    }
+  ],
+  "statuses": [
+    "FIXED",
+    "PROFILE-SELECTABLE",
+    "IMPLEMENTATION-DEFINED"
+  ],
+  "implicit_category": "FORBIDDEN"
+}

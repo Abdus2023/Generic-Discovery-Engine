@@ -1,0 +1,144 @@
+{
+  "profile_id": "gde-v14.7-r2-boundary",
+  "profile_version": "14.7-R2.1",
+  "epistemic_status": "SUPPORTED",
+  "claim_class": "REALIZATION_PROFILE",
+  "origins": [
+    "VALIDATION_FAILURE",
+    "EVALUATION_FAILURE",
+    "ORACLE_FAILURE",
+    "CONFORMANCE_FAILURE",
+    "AUTHORITY_FAILURE",
+    "AUTHORIZATION_FAILURE",
+    "TRANSITION_FAILURE",
+    "IMPLEMENTATION_FAILURE",
+    "PROFILE_FAILURE",
+    "SPECIFICATION_FAILURE",
+    "ENVIRONMENT_FAILURE"
+  ],
+  "objects": [
+    {
+      "failure_id": "failure-provenance-01",
+      "origin": "VALIDATION_FAILURE",
+      "object_ref": "subject:boundary",
+      "contract_ref": "contract:validation_failure",
+      "evidence_refs": [
+        "BOUNDARY-TEST-RESULTS.yaml"
+      ],
+      "retry_meaningful": false,
+      "content_hash": "4f81d69d3c5825812b89151d478b6b54b8a55a7ef5b8de6c7cfc66ae097b6d6e"
+    },
+    {
+      "failure_id": "failure-provenance-02",
+      "origin": "EVALUATION_FAILURE",
+      "object_ref": "subject:boundary",
+      "contract_ref": "contract:evaluation_failure",
+      "evidence_refs": [
+        "BOUNDARY-TEST-RESULTS.yaml"
+      ],
+      "retry_meaningful": false,
+      "content_hash": "3d5a9df35929a164604efccbe94d579980bcb6392f21ea047582b5b2299d50b0"
+    },
+    {
+      "failure_id": "failure-provenance-03",
+      "origin": "ORACLE_FAILURE",
+      "object_ref": "subject:boundary",
+      "contract_ref": "contract:oracle_failure",
+      "evidence_refs": [
+        "BOUNDARY-TEST-RESULTS.yaml"
+      ],
+      "retry_meaningful": false,
+      "content_hash": "5e9af88b03bab7f47f3c7508948340a3f36cb5604be385f9e31084c43348bfae"
+    },
+    {
+      "failure_id": "failure-provenance-04",
+      "origin": "CONFORMANCE_FAILURE",
+      "object_ref": "subject:boundary",
+      "contract_ref": "contract:conformance_failure",
+      "evidence_refs": [
+        "BOUNDARY-TEST-RESULTS.yaml"
+      ],
+      "retry_meaningful": false,
+      "content_hash": "fb5bffaa0e387b527fc1d4403f86edc5c99791411166ce6e56e81ca2d7254299"
+    },
+    {
+      "failure_id": "failure-provenance-05",
+      "origin": "AUTHORITY_FAILURE",
+      "object_ref": "subject:boundary",
+      "contract_ref": "contract:authority_failure",
+      "evidence_refs": [
+        "BOUNDARY-TEST-RESULTS.yaml"
+      ],
+      "retry_meaningful": false,
+      "content_hash": "ee79d7a4b1175f50eca5e7022906c72159414c64c50382ea3ac209d4a605dcd4"
+    },
+    {
+      "failure_id": "failure-provenance-06",
+      "origin": "AUTHORIZATION_FAILURE",
+      "object_ref": "subject:boundary",
+      "contract_ref": "contract:authorization_failure",
+      "evidence_refs": [
+        "BOUNDARY-TEST-RESULTS.yaml"
+      ],
+      "retry_meaningful": false,
+      "content_hash": "d956e083d250f4c395287b25b260adc1733e5ca9fd7289b6b57fc50ef9a507c2"
+    },
+    {
+      "failure_id": "failure-provenance-07",
+      "origin": "TRANSITION_FAILURE",
+      "object_ref": "subject:boundary",
+      "contract_ref": "contract:transition_failure",
+      "evidence_refs": [
+        "BOUNDARY-TEST-RESULTS.yaml"
+      ],
+      "retry_meaningful": false,
+      "content_hash": "fbbcb90e39829d16437cc1c22751fd080ece441bcd0f5f273f6807decaccfb40"
+    },
+    {
+      "failure_id": "failure-provenance-08",
+      "origin": "IMPLEMENTATION_FAILURE",
+      "object_ref": "subject:boundary",
+      "contract_ref": "contract:implementation_failure",
+      "evidence_refs": [
+        "BOUNDARY-TEST-RESULTS.yaml"
+      ],
+      "retry_meaningful": true,
+      "content_hash": "c41d01e479dfed60d0362105273078a3e783c00636b063d5c5bd12f306a8dcca"
+    },
+    {
+      "failure_id": "failure-provenance-09",
+      "origin": "PROFILE_FAILURE",
+      "object_ref": "subject:boundary",
+      "contract_ref": "contract:profile_failure",
+      "evidence_refs": [
+        "BOUNDARY-TEST-RESULTS.yaml"
+      ],
+      "retry_meaningful": false,
+      "content_hash": "19711f8aa662d6f713e7dd5b92a79e0467291baceb55f6c8840c28969302e310"
+    },
+    {
+      "failure_id": "failure-provenance-10",
+      "origin": "SPECIFICATION_FAILURE",
+      "object_ref": "subject:boundary",
+      "contract_ref": "contract:specification_failure",
+      "evidence_refs": [
+        "BOUNDARY-TEST-RESULTS.yaml"
+      ],
+      "retry_meaningful": false,
+      "content_hash": "e6f7a9783eac3d6fe9ea4b7722d4a79ebf64c068c1a2c4353f12c231e7b1f8f3"
+    },
+    {
+      "failure_id": "failure-provenance-11",
+      "origin": "ENVIRONMENT_FAILURE",
+      "object_ref": "subject:boundary",
+      "contract_ref": "contract:environment_failure",
+      "evidence_refs": [
+        "BOUNDARY-TEST-RESULTS.yaml"
+      ],
+      "retry_meaningful": true,
+      "content_hash": "8b07d4ef4bd71b183dc6ea4564acce646ee4ffc91a1ad378f419d532649bde05"
+    }
+  ],
+  "schema": "schema/failure-attribution.schema.yaml",
+  "automatic_implementation_attribution": false
+}

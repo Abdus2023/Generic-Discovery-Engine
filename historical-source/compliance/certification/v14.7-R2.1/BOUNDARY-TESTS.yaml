@@ -1,0 +1,846 @@
+{
+  "profile_id": "gde-v14.7-r2-boundary",
+  "profile_version": "14.7-R2.1",
+  "epistemic_status": "SUPPORTED",
+  "claim_class": "REALIZATION_PROFILE",
+  "objects": [
+    {
+      "test_id": "R2B-T-001",
+      "name": "validated-evaluate-VALID",
+      "operation": "VALIDATED_EVALUATE",
+      "input": {
+        "validation": "VALID",
+        "subject": {
+          "x": 1
+        },
+        "predicate": {
+          "op": "equals",
+          "field": "x",
+          "value": 1
+        }
+      },
+      "expected": "TRUE"
+    },
+    {
+      "test_id": "R2B-T-002",
+      "name": "validated-evaluate-INVALID",
+      "operation": "VALIDATED_EVALUATE",
+      "input": {
+        "validation": "INVALID",
+        "subject": {
+          "x": 1
+        },
+        "predicate": {
+          "op": "equals",
+          "field": "x",
+          "value": 1
+        }
+      },
+      "expected": "INVALID"
+    },
+    {
+      "test_id": "R2B-T-003",
+      "name": "validated-evaluate-BLOCKED",
+      "operation": "VALIDATED_EVALUATE",
+      "input": {
+        "validation": "BLOCKED",
+        "subject": {
+          "x": 1
+        },
+        "predicate": {
+          "op": "equals",
+          "field": "x",
+          "value": 1
+        }
+      },
+      "expected": "BLOCKED"
+    },
+    {
+      "test_id": "R2B-T-004",
+      "name": "validated-evaluate-UNKNOWN",
+      "operation": "VALIDATED_EVALUATE",
+      "input": {
+        "validation": "UNKNOWN",
+        "subject": {
+          "x": 1
+        },
+        "predicate": {
+          "op": "equals",
+          "field": "x",
+          "value": 1
+        }
+      },
+      "expected": "BLOCKED"
+    },
+    {
+      "test_id": "R2B-T-005",
+      "name": "evidence-FRESH",
+      "operation": "EVIDENCE_VALIDATE",
+      "input": {
+        "evidence": {
+          "freshness": "FRESH"
+        }
+      },
+      "expected": "VALID"
+    },
+    {
+      "test_id": "R2B-T-006",
+      "name": "evidence-STALE",
+      "operation": "EVIDENCE_VALIDATE",
+      "input": {
+        "evidence": {
+          "freshness": "STALE"
+        }
+      },
+      "expected": "UNKNOWN"
+    },
+    {
+      "test_id": "R2B-T-007",
+      "name": "evidence-UNAVAILABLE",
+      "operation": "EVIDENCE_VALIDATE",
+      "input": {
+        "evidence": {
+          "freshness": "UNAVAILABLE"
+        }
+      },
+      "expected": "BLOCKED"
+    },
+    {
+      "test_id": "R2B-T-008",
+      "name": "evidence-INVALID",
+      "operation": "EVIDENCE_VALIDATE",
+      "input": {
+        "evidence": {
+          "freshness": "INVALID"
+        }
+      },
+      "expected": "INVALID"
+    },
+    {
+      "test_id": "R2B-T-009",
+      "name": "scope-valid",
+      "operation": "SCOPE_VALIDATE",
+      "input": {
+        "requested": [
+          "a"
+        ],
+        "granted": [
+          "a"
+        ]
+      },
+      "expected": "VALID"
+    },
+    {
+      "test_id": "R2B-T-010",
+      "name": "scope-invalid",
+      "operation": "SCOPE_VALIDATE",
+      "input": {
+        "requested": [
+          "b"
+        ],
+        "granted": [
+          "a"
+        ]
+      },
+      "expected": "INVALID"
+    },
+    {
+      "test_id": "R2B-T-011",
+      "name": "temporal-valid",
+      "operation": "TEMPORAL_VALIDATE",
+      "input": {
+        "instant": "2026-01-01T00:00:00Z",
+        "not_before": "2026-01-01T00:00:00Z",
+        "not_after": "2027-01-01T00:00:00Z"
+      },
+      "expected": "VALID"
+    },
+    {
+      "test_id": "R2B-T-012",
+      "name": "conformance-TRUE",
+      "operation": "CONFORMANCE",
+      "input": {
+        "applicable": true,
+        "mandatory": [
+          "TRUE"
+        ]
+      },
+      "expected": "CONFORMANT"
+    },
+    {
+      "test_id": "R2B-T-013",
+      "name": "conformance-FALSE",
+      "operation": "CONFORMANCE",
+      "input": {
+        "applicable": true,
+        "mandatory": [
+          "FALSE"
+        ]
+      },
+      "expected": "NON_CONFORMANT"
+    },
+    {
+      "test_id": "R2B-T-014",
+      "name": "conformance-UNKNOWN",
+      "operation": "CONFORMANCE",
+      "input": {
+        "applicable": true,
+        "mandatory": [
+          "UNKNOWN"
+        ]
+      },
+      "expected": "UNVERIFIED"
+    },
+    {
+      "test_id": "R2B-T-015",
+      "name": "conformance-BLOCKED",
+      "operation": "CONFORMANCE",
+      "input": {
+        "applicable": true,
+        "mandatory": [
+          "BLOCKED"
+        ]
+      },
+      "expected": "BLOCKED"
+    },
+    {
+      "test_id": "R2B-T-016",
+      "name": "conformance-INVALID",
+      "operation": "CONFORMANCE",
+      "input": {
+        "applicable": true,
+        "mandatory": [
+          "INVALID"
+        ]
+      },
+      "expected": "NO_RESULT"
+    },
+    {
+      "test_id": "R2B-T-017",
+      "name": "conformance-na",
+      "operation": "CONFORMANCE",
+      "input": {
+        "applicable": false,
+        "mandatory": []
+      },
+      "expected": "NOT_APPLICABLE"
+    },
+    {
+      "test_id": "R2B-T-018",
+      "name": "coercion-1",
+      "operation": "COERCION",
+      "input": {
+        "conversion": [
+          "ValidationResult",
+          "INVALID",
+          "EvaluationResult",
+          "FALSE"
+        ]
+      },
+      "expected": "REJECTED"
+    },
+    {
+      "test_id": "R2B-T-019",
+      "name": "coercion-2",
+      "operation": "COERCION",
+      "input": {
+        "conversion": [
+          "ValidationResult",
+          "UNKNOWN",
+          "EvaluationResult",
+          "TRUE"
+        ]
+      },
+      "expected": "REJECTED"
+    },
+    {
+      "test_id": "R2B-T-020",
+      "name": "coercion-3",
+      "operation": "COERCION",
+      "input": {
+        "conversion": [
+          "EvaluationResult",
+          "UNKNOWN",
+          "EvaluationResult",
+          "TRUE"
+        ]
+      },
+      "expected": "REJECTED"
+    },
+    {
+      "test_id": "R2B-T-021",
+      "name": "coercion-4",
+      "operation": "COERCION",
+      "input": {
+        "conversion": [
+          "EvaluationResult",
+          "BLOCKED",
+          "EvaluationResult",
+          "TRUE"
+        ]
+      },
+      "expected": "REJECTED"
+    },
+    {
+      "test_id": "R2B-T-022",
+      "name": "coercion-5",
+      "operation": "COERCION",
+      "input": {
+        "conversion": [
+          "EvaluationResult",
+          "INVALID",
+          "EvaluationResult",
+          "FALSE"
+        ]
+      },
+      "expected": "REJECTED"
+    },
+    {
+      "test_id": "R2B-T-023",
+      "name": "coercion-6",
+      "operation": "COERCION",
+      "input": {
+        "conversion": [
+          "ConformanceResult",
+          "UNVERIFIED",
+          "ConformanceResult",
+          "CONFORMANT"
+        ]
+      },
+      "expected": "REJECTED"
+    },
+    {
+      "test_id": "R2B-T-024",
+      "name": "coercion-7",
+      "operation": "COERCION",
+      "input": {
+        "conversion": [
+          "EligibilityResult",
+          "UNKNOWN",
+          "Decision",
+          "APPROVED"
+        ]
+      },
+      "expected": "REJECTED"
+    },
+    {
+      "test_id": "R2B-T-025",
+      "name": "coercion-8",
+      "operation": "COERCION",
+      "input": {
+        "conversion": [
+          "EligibilityResult",
+          "BLOCKED",
+          "Decision",
+          "APPROVED"
+        ]
+      },
+      "expected": "REJECTED"
+    },
+    {
+      "test_id": "R2B-T-026",
+      "name": "coercion-9",
+      "operation": "COERCION",
+      "input": {
+        "conversion": [
+          "Decision",
+          "APPROVED",
+          "Execution",
+          "EXECUTED"
+        ]
+      },
+      "expected": "REJECTED"
+    },
+    {
+      "test_id": "R2B-T-027",
+      "name": "profile-conformance",
+      "operation": "PROFILE",
+      "input": {
+        "profile": {
+          "profile_id": "gde-v14.7-r2-boundary",
+          "profile_version": "14.7-R2.1",
+          "specification": {
+            "specification_id": "gde-v14.7-active",
+            "specification_version": "14.7.1",
+            "specification_hash": "ece792e80e9b7b48d3b2268c1d839b8eca7a87028c6a7e12f745e3d957fe9c96"
+          },
+          "serialization": {
+            "format": "JSON",
+            "encoding": "UTF-8",
+            "canonicalization": "GDE-CJSON-1"
+          },
+          "hashing": {
+            "algorithm": "SHA-256"
+          },
+          "signatures": {
+            "algorithm": "Ed25519"
+          },
+          "time": {
+            "source": "SIGNED_TRUSTED_TIMESTAMP_EVIDENCE",
+            "representation": "RFC3339_UTC_Z",
+            "max_clock_skew": "PT5S"
+          },
+          "events": {
+            "ordering": "STREAM_SEQUENCE_PREDECESSOR_COMMIT",
+            "sequence_model": "ZERO_BASED_CONTIGUOUS_OR_TRUSTED_CHECKPOINT",
+            "atomic_commit": true
+          },
+          "policy": {
+            "predicate_language": "GDE-PREDICATE-1"
+          },
+          "limits": {
+            "maximum_object_size": 1048576,
+            "maximum_event_size": 262144,
+            "maximum_reference_depth": 64
+          },
+          "compatibility": {
+            "profile_compatibility_id": "compat:r2-to-r2.1"
+          },
+          "choice_universe": {
+            "closed": true,
+            "choices": [
+              "RESULT_DOMAINS",
+              "SERIALIZATION",
+              "HASH_ALGORITHM",
+              "SIGNATURE_ALGORITHM",
+              "TIME_REPRESENTATION",
+              "TIME_SOURCE",
+              "MAX_CLOCK_SKEW",
+              "EVENT_ORDER",
+              "PREDICATE_LANGUAGE",
+              "ENCODING",
+              "IDENTIFIER_SYNTAX",
+              "WIRE_FORMAT",
+              "OBJECT_SIZE_LIMIT",
+              "EVENT_SIZE_LIMIT",
+              "REFERENCE_DEPTH",
+              "INTERNAL_INDEX",
+              "STORAGE_BACKEND",
+              "PROCESS_ARCHITECTURE"
+            ]
+          },
+          "semantic_preservation": {
+            "semantic_states": "UNCHANGED",
+            "state_meanings": "UNCHANGED",
+            "authority": "UNCHANGED",
+            "invariants": "PRESERVED",
+            "validation_boundaries": "PRESERVED",
+            "uncertainty": "PRESERVED"
+          },
+          "choice_classification": [
+            {
+              "choice": "RESULT_DOMAINS",
+              "status": "FIXED",
+              "selected": "FROZEN_V14_7"
+            },
+            {
+              "choice": "SERIALIZATION",
+              "status": "PROFILE-SELECTABLE",
+              "selected": "GDE-CJSON-1"
+            },
+            {
+              "choice": "HASH_ALGORITHM",
+              "status": "PROFILE-SELECTABLE",
+              "selected": "SHA-256"
+            },
+            {
+              "choice": "SIGNATURE_ALGORITHM",
+              "status": "PROFILE-SELECTABLE",
+              "selected": "Ed25519"
+            },
+            {
+              "choice": "TIME_REPRESENTATION",
+              "status": "PROFILE-SELECTABLE",
+              "selected": "RFC3339_UTC_Z"
+            },
+            {
+              "choice": "TIME_SOURCE",
+              "status": "PROFILE-SELECTABLE",
+              "selected": "SIGNED_TRUSTED_TIMESTAMP_EVIDENCE"
+            },
+            {
+              "choice": "MAX_CLOCK_SKEW",
+              "status": "PROFILE-SELECTABLE",
+              "selected": "PT5S"
+            },
+            {
+              "choice": "EVENT_ORDER",
+              "status": "PROFILE-SELECTABLE",
+              "selected": "STREAM_SEQUENCE_PREDECESSOR_COMMIT"
+            },
+            {
+              "choice": "PREDICATE_LANGUAGE",
+              "status": "PROFILE-SELECTABLE",
+              "selected": "GDE-PREDICATE-1"
+            },
+            {
+              "choice": "ENCODING",
+              "status": "PROFILE-SELECTABLE",
+              "selected": "UTF-8"
+            },
+            {
+              "choice": "IDENTIFIER_SYNTAX",
+              "status": "PROFILE-SELECTABLE",
+              "selected": "URI_SAFE_ASCII"
+            },
+            {
+              "choice": "WIRE_FORMAT",
+              "status": "PROFILE-SELECTABLE",
+              "selected": "CANONICAL_JSON"
+            },
+            {
+              "choice": "OBJECT_SIZE_LIMIT",
+              "status": "PROFILE-SELECTABLE",
+              "selected": "1048576"
+            },
+            {
+              "choice": "EVENT_SIZE_LIMIT",
+              "status": "PROFILE-SELECTABLE",
+              "selected": "262144"
+            },
+            {
+              "choice": "REFERENCE_DEPTH",
+              "status": "PROFILE-SELECTABLE",
+              "selected": "64"
+            },
+            {
+              "choice": "INTERNAL_INDEX",
+              "status": "IMPLEMENTATION-DEFINED",
+              "selected": null
+            },
+            {
+              "choice": "STORAGE_BACKEND",
+              "status": "IMPLEMENTATION-DEFINED",
+              "selected": null
+            },
+            {
+              "choice": "PROCESS_ARCHITECTURE",
+              "status": "IMPLEMENTATION-DEFINED",
+              "selected": null
+            }
+          ],
+          "content_hash": "a08449d6f71a955d58e83ea600ab078142639edf538090fd429511d300557c80"
+        },
+        "specification": {
+          "specification_id": "gde-v14.7-active",
+          "specification_version": "14.7.1",
+          "components": [
+            {
+              "path": "../v14.7/SPECIFICATION.md",
+              "sha256": "c59dfea6d69f664f65f0c1078ce4b3ba99e5e1ff003cc1c21fcabc0881ee23cc"
+            },
+            {
+              "path": "../v14.7.1/SPECIFICATION.md",
+              "sha256": "5acb6dcacc1b3adf2591e63b69f905151cf881a2523b849e9f7d1db2caf97710"
+            }
+          ],
+          "content_hash": "ece792e80e9b7b48d3b2268c1d839b8eca7a87028c6a7e12f745e3d957fe9c96"
+        }
+      },
+      "expected": "CONFORMANT"
+    },
+    {
+      "test_id": "R2B-T-028",
+      "name": "implementation-unverified",
+      "operation": "IMPLEMENTATION",
+      "input": {
+        "implementation": {
+          "implementation_contract_id": "implementation-contract:r2.1",
+          "implementation_id": "v147r21-python-boundary-harness",
+          "profile_id": "gde-v14.7-r2-boundary",
+          "profile_version": "14.7-R2.1",
+          "artifact_hash": "33051946d46b71fb4051de7b99e872498df974e0b73389b66aa57d91e261c2d7",
+          "mapping_refs": [
+            "REALIZATION-MAPPING.yaml"
+          ],
+          "capability_status": {
+            "BOUNDARY_HARNESS": "SATISFIED",
+            "ED25519_PROVIDER": "UNKNOWN",
+            "DURABLE_STORE": "UNKNOWN"
+          },
+          "content_hash": "c96a494c3acb494b4a5cea01587d2e1c2e562ecd1a6a61c536fad7002620218b"
+        },
+        "profile": {
+          "profile_id": "gde-v14.7-r2-boundary",
+          "profile_version": "14.7-R2.1",
+          "specification": {
+            "specification_id": "gde-v14.7-active",
+            "specification_version": "14.7.1",
+            "specification_hash": "ece792e80e9b7b48d3b2268c1d839b8eca7a87028c6a7e12f745e3d957fe9c96"
+          },
+          "serialization": {
+            "format": "JSON",
+            "encoding": "UTF-8",
+            "canonicalization": "GDE-CJSON-1"
+          },
+          "hashing": {
+            "algorithm": "SHA-256"
+          },
+          "signatures": {
+            "algorithm": "Ed25519"
+          },
+          "time": {
+            "source": "SIGNED_TRUSTED_TIMESTAMP_EVIDENCE",
+            "representation": "RFC3339_UTC_Z",
+            "max_clock_skew": "PT5S"
+          },
+          "events": {
+            "ordering": "STREAM_SEQUENCE_PREDECESSOR_COMMIT",
+            "sequence_model": "ZERO_BASED_CONTIGUOUS_OR_TRUSTED_CHECKPOINT",
+            "atomic_commit": true
+          },
+          "policy": {
+            "predicate_language": "GDE-PREDICATE-1"
+          },
+          "limits": {
+            "maximum_object_size": 1048576,
+            "maximum_event_size": 262144,
+            "maximum_reference_depth": 64
+          },
+          "compatibility": {
+            "profile_compatibility_id": "compat:r2-to-r2.1"
+          },
+          "choice_universe": {
+            "closed": true,
+            "choices": [
+              "RESULT_DOMAINS",
+              "SERIALIZATION",
+              "HASH_ALGORITHM",
+              "SIGNATURE_ALGORITHM",
+              "TIME_REPRESENTATION",
+              "TIME_SOURCE",
+              "MAX_CLOCK_SKEW",
+              "EVENT_ORDER",
+              "PREDICATE_LANGUAGE",
+              "ENCODING",
+              "IDENTIFIER_SYNTAX",
+              "WIRE_FORMAT",
+              "OBJECT_SIZE_LIMIT",
+              "EVENT_SIZE_LIMIT",
+              "REFERENCE_DEPTH",
+              "INTERNAL_INDEX",
+              "STORAGE_BACKEND",
+              "PROCESS_ARCHITECTURE"
+            ]
+          },
+          "semantic_preservation": {
+            "semantic_states": "UNCHANGED",
+            "state_meanings": "UNCHANGED",
+            "authority": "UNCHANGED",
+            "invariants": "PRESERVED",
+            "validation_boundaries": "PRESERVED",
+            "uncertainty": "PRESERVED"
+          },
+          "choice_classification": [
+            {
+              "choice": "RESULT_DOMAINS",
+              "status": "FIXED",
+              "selected": "FROZEN_V14_7"
+            },
+            {
+              "choice": "SERIALIZATION",
+              "status": "PROFILE-SELECTABLE",
+              "selected": "GDE-CJSON-1"
+            },
+            {
+              "choice": "HASH_ALGORITHM",
+              "status": "PROFILE-SELECTABLE",
+              "selected": "SHA-256"
+            },
+            {
+              "choice": "SIGNATURE_ALGORITHM",
+              "status": "PROFILE-SELECTABLE",
+              "selected": "Ed25519"
+            },
+            {
+              "choice": "TIME_REPRESENTATION",
+              "status": "PROFILE-SELECTABLE",
+              "selected": "RFC3339_UTC_Z"
+            },
+            {
+              "choice": "TIME_SOURCE",
+              "status": "PROFILE-SELECTABLE",
+              "selected": "SIGNED_TRUSTED_TIMESTAMP_EVIDENCE"
+            },
+            {
+              "choice": "MAX_CLOCK_SKEW",
+              "status": "PROFILE-SELECTABLE",
+              "selected": "PT5S"
+            },
+            {
+              "choice": "EVENT_ORDER",
+              "status": "PROFILE-SELECTABLE",
+              "selected": "STREAM_SEQUENCE_PREDECESSOR_COMMIT"
+            },
+            {
+              "choice": "PREDICATE_LANGUAGE",
+              "status": "PROFILE-SELECTABLE",
+              "selected": "GDE-PREDICATE-1"
+            },
+            {
+              "choice": "ENCODING",
+              "status": "PROFILE-SELECTABLE",
+              "selected": "UTF-8"
+            },
+            {
+              "choice": "IDENTIFIER_SYNTAX",
+              "status": "PROFILE-SELECTABLE",
+              "selected": "URI_SAFE_ASCII"
+            },
+            {
+              "choice": "WIRE_FORMAT",
+              "status": "PROFILE-SELECTABLE",
+              "selected": "CANONICAL_JSON"
+            },
+            {
+              "choice": "OBJECT_SIZE_LIMIT",
+              "status": "PROFILE-SELECTABLE",
+              "selected": "1048576"
+            },
+            {
+              "choice": "EVENT_SIZE_LIMIT",
+              "status": "PROFILE-SELECTABLE",
+              "selected": "262144"
+            },
+            {
+              "choice": "REFERENCE_DEPTH",
+              "status": "PROFILE-SELECTABLE",
+              "selected": "64"
+            },
+            {
+              "choice": "INTERNAL_INDEX",
+              "status": "IMPLEMENTATION-DEFINED",
+              "selected": null
+            },
+            {
+              "choice": "STORAGE_BACKEND",
+              "status": "IMPLEMENTATION-DEFINED",
+              "selected": null
+            },
+            {
+              "choice": "PROCESS_ARCHITECTURE",
+              "status": "IMPLEMENTATION-DEFINED",
+              "selected": null
+            }
+          ],
+          "content_hash": "a08449d6f71a955d58e83ea600ab078142639edf538090fd429511d300557c80"
+        },
+        "checks": [
+          "SATISFIED",
+          "UNKNOWN",
+          "UNKNOWN"
+        ]
+      },
+      "expected": "UNVERIFIED"
+    },
+    {
+      "test_id": "R2B-T-029",
+      "name": "acceptance-criterion-01",
+      "operation": "ARTIFACT_ASSERTION",
+      "input": {
+        "acceptance_criterion": "AC-01"
+      },
+      "expected": "PASS"
+    },
+    {
+      "test_id": "R2B-T-030",
+      "name": "acceptance-criterion-02",
+      "operation": "ARTIFACT_ASSERTION",
+      "input": {
+        "acceptance_criterion": "AC-02"
+      },
+      "expected": "PASS"
+    },
+    {
+      "test_id": "R2B-T-031",
+      "name": "acceptance-criterion-03",
+      "operation": "ARTIFACT_ASSERTION",
+      "input": {
+        "acceptance_criterion": "AC-03"
+      },
+      "expected": "PASS"
+    },
+    {
+      "test_id": "R2B-T-032",
+      "name": "acceptance-criterion-04",
+      "operation": "ARTIFACT_ASSERTION",
+      "input": {
+        "acceptance_criterion": "AC-04"
+      },
+      "expected": "PASS"
+    },
+    {
+      "test_id": "R2B-T-033",
+      "name": "acceptance-criterion-05",
+      "operation": "ARTIFACT_ASSERTION",
+      "input": {
+        "acceptance_criterion": "AC-05"
+      },
+      "expected": "PASS"
+    },
+    {
+      "test_id": "R2B-T-034",
+      "name": "acceptance-criterion-06",
+      "operation": "ARTIFACT_ASSERTION",
+      "input": {
+        "acceptance_criterion": "AC-06"
+      },
+      "expected": "PASS"
+    },
+    {
+      "test_id": "R2B-T-035",
+      "name": "acceptance-criterion-07",
+      "operation": "ARTIFACT_ASSERTION",
+      "input": {
+        "acceptance_criterion": "AC-07"
+      },
+      "expected": "PASS"
+    },
+    {
+      "test_id": "R2B-T-036",
+      "name": "acceptance-criterion-08",
+      "operation": "ARTIFACT_ASSERTION",
+      "input": {
+        "acceptance_criterion": "AC-08"
+      },
+      "expected": "PASS"
+    },
+    {
+      "test_id": "R2B-T-037",
+      "name": "acceptance-criterion-09",
+      "operation": "ARTIFACT_ASSERTION",
+      "input": {
+        "acceptance_criterion": "AC-09"
+      },
+      "expected": "PASS"
+    },
+    {
+      "test_id": "R2B-T-038",
+      "name": "acceptance-criterion-10",
+      "operation": "ARTIFACT_ASSERTION",
+      "input": {
+        "acceptance_criterion": "AC-10"
+      },
+      "expected": "PASS"
+    },
+    {
+      "test_id": "R2B-T-039",
+      "name": "acceptance-criterion-11",
+      "operation": "ARTIFACT_ASSERTION",
+      "input": {
+        "acceptance_criterion": "AC-11"
+      },
+      "expected": "PASS"
+    },
+    {
+      "test_id": "R2B-T-040",
+      "name": "acceptance-criterion-12",
+      "operation": "ARTIFACT_ASSERTION",
+      "input": {
+        "acceptance_criterion": "AC-12"
+      },
+      "expected": "PASS"
+    }
+  ],
+  "count": 40
+}

@@ -1,0 +1,87 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://generic-discovery-engine.invalid/compliance/v14.7-R2.1/evaluation-result.schema.yaml",
+  "title": "evaluation-result",
+  "type": "object",
+  "required": [
+    "evaluation_id",
+    "proposition_ref",
+    "status",
+    "failure_codes",
+    "evidence_refs",
+    "evaluator_id",
+    "evaluator_version",
+    "evaluator_hash",
+    "input_hash",
+    "evaluated_at",
+    "content_hash"
+  ],
+  "properties": {
+    "evaluation_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "proposition_ref": {
+      "type": "string",
+      "minLength": 1
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "TRUE",
+        "FALSE",
+        "UNKNOWN",
+        "BLOCKED",
+        "INVALID"
+      ]
+    },
+    "failure_codes": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "evidence_refs": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "evaluator_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "evaluator_version": {
+      "type": "string",
+      "minLength": 1
+    },
+    "evaluator_hash": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$"
+    },
+    "input_hash": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$"
+    },
+    "evaluated_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "content_hash": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$"
+    }
+  },
+  "additionalProperties": false,
+  "x-identity-fields": [
+    "evaluation_id"
+  ],
+  "x-immutable": true,
+  "x-self-excluding-hash-field": "content_hash",
+  "x-canonical-profile": "gde-cjson-1",
+  "x-normative-rules": [
+    "requires applicable VALID validation result"
+  ]
+}

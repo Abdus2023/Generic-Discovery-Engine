@@ -1,0 +1,47 @@
+{
+  "profile_version": "14.7-R2.1",
+  "method": "ISOLATED_PREDECESSOR_VALIDATION_AND_SUCCESSOR_GUARDS",
+  "objects": [
+    {
+      "check_id": "REG-01",
+      "script": "validate_executable_realization_v147r2.py",
+      "returncode": 0,
+      "expected": 0,
+      "passed": true,
+      "output_tail": "44 PASS / 0 FAIL / 1 BLOCKED (45 checks); REFERENCE_HARNESS_TESTS_PASS_DURABILITY_AND_TARGET_ENGINE_UNVERIFIED\n"
+    },
+    {
+      "check_id": "REG-02",
+      "script": "validate_v147_conformance_correction_v1471.py",
+      "returncode": 0,
+      "expected": 0,
+      "passed": true,
+      "output_tail": "92 PASS / 0 FAIL / 1 BLOCKED (93 checks); STRUCTURAL_PASS_CURRENT_CERTIFICATION_NOT_APPLICABLE\n"
+    },
+    {
+      "check_id": "REG-03",
+      "script": "build_executable_realization_v147r2.py",
+      "returncode": 1,
+      "expected": "refuse",
+      "passed": true,
+      "output_tail": "r21-reg-lhk45pw9/historical-source/tools/build_executable_realization_v147r2.py\", line 53, in main\n    if (C/'certification/v14.7-R2.1').exists():raise RuntimeError('refusing to erase predecessor artifacts after append-only v14.7-R2.1 clarification')\n                                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nRuntimeError: refusing to erase predecessor artifacts after append-only v14.7-R2.1 clarification\n"
+    },
+    {
+      "check_id": "REG-04",
+      "script": "build_frozen_boundary_realization_v147r21.py",
+      "returncode": 1,
+      "expected": "refuse",
+      "passed": true,
+      "output_tail": "en_boundary_realization_v147r21.py\", line 80, in <module>\n    if __name__=='__main__':main()\n                            ^^^^^^\n  File \"/tmp/gde-r21-reg-lhk45pw9/historical-source/tools/build_frozen_boundary_realization_v147r21.py\", line 36, in main\n    if D.exists():raise RuntimeError('refusing to regenerate immutable v14.7-R2.1 package')\n                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nRuntimeError: refusing to regenerate immutable v14.7-R2.1 package\n"
+    },
+    {
+      "check_id": "REG-05",
+      "script": "PRIOR-INTEGRITY.yaml",
+      "returncode": 0,
+      "expected": 0,
+      "passed": true,
+      "output_tail": "852 predecessor records present"
+    }
+  ],
+  "status": "PASS"
+}

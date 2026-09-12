@@ -1,0 +1,69 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://generic-discovery-engine.invalid/compliance/v14.7-R2.1/conformance-result.schema.yaml",
+  "title": "conformance-result",
+  "type": "object",
+  "required": [
+    "conformance_id",
+    "subject_ref",
+    "requirement_refs",
+    "evaluation_refs",
+    "result",
+    "evaluated_at",
+    "content_hash"
+  ],
+  "properties": {
+    "conformance_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "subject_ref": {
+      "type": "string",
+      "minLength": 1
+    },
+    "requirement_refs": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "evaluation_refs": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "result": {
+      "type": "string",
+      "enum": [
+        "CONFORMANT",
+        "PARTIALLY_CONFORMANT",
+        "NON_CONFORMANT",
+        "UNVERIFIED",
+        "BLOCKED",
+        "NOT_APPLICABLE",
+        "UNKNOWN"
+      ]
+    },
+    "evaluated_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "content_hash": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$"
+    }
+  },
+  "additionalProperties": false,
+  "x-identity-fields": [
+    "conformance_id"
+  ],
+  "x-immutable": true,
+  "x-self-excluding-hash-field": "content_hash",
+  "x-canonical-profile": "gde-cjson-1",
+  "x-normative-rules": [
+    "validation success alone insufficient"
+  ]
+}

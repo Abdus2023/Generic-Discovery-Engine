@@ -1,0 +1,393 @@
+{
+  "profile_id": "gde-v14.7-r2-boundary",
+  "profile_version": "14.7-R2.1",
+  "epistemic_status": "SUPPORTED",
+  "claim_class": "REALIZATION_PROFILE",
+  "objects": [
+    {
+      "requirement_id": "R-BOUNDARY-001",
+      "specification_id": "gde-v14.7-active",
+      "specification_version": "14.7.1",
+      "statement": {
+        "text": "Validation outputs MUST use only VALID INVALID BLOCKED UNKNOWN"
+      },
+      "normative_strength": "MUST",
+      "scope": {
+        "scope_id": "r2.1",
+        "scope_expression": "ALL_PROFILE_IMPLEMENTATIONS"
+      },
+      "preconditions": [],
+      "postconditions": [],
+      "invariants": [
+        "R2B-INV-001"
+      ],
+      "acceptance_criteria": [
+        "AC-01"
+      ],
+      "negative_conditions": [
+        "NO_IMPLICIT_COERCION"
+      ],
+      "dependencies": [],
+      "conflicts": [],
+      "traceability": {
+        "obligation_refs": [
+          "v14.7-frozen-boundary"
+        ]
+      },
+      "content_hash": "0f55a1b3f2ce5cd7e5190a138dc87b8a731b7f511e719b5c430a1cd57eba8f06"
+    },
+    {
+      "requirement_id": "R-BOUNDARY-002",
+      "specification_id": "gde-v14.7-active",
+      "specification_version": "14.7.1",
+      "statement": {
+        "text": "Evaluators MUST execute only after required validation is VALID"
+      },
+      "normative_strength": "MUST",
+      "scope": {
+        "scope_id": "r2.1",
+        "scope_expression": "ALL_PROFILE_IMPLEMENTATIONS"
+      },
+      "preconditions": [],
+      "postconditions": [],
+      "invariants": [
+        "R2B-INV-002"
+      ],
+      "acceptance_criteria": [
+        "AC-02"
+      ],
+      "negative_conditions": [
+        "NO_IMPLICIT_COERCION"
+      ],
+      "dependencies": [],
+      "conflicts": [],
+      "traceability": {
+        "obligation_refs": [
+          "v14.7-frozen-boundary"
+        ]
+      },
+      "content_hash": "a8c78683a2fe25ef76eab6fedaa62e39b03de06e732b99305d040b954f891661"
+    },
+    {
+      "requirement_id": "R-BOUNDARY-003",
+      "specification_id": "gde-v14.7-active",
+      "specification_version": "14.7.1",
+      "statement": {
+        "text": "Evaluation outputs MUST preserve TRUE FALSE UNKNOWN BLOCKED INVALID"
+      },
+      "normative_strength": "MUST",
+      "scope": {
+        "scope_id": "r2.1",
+        "scope_expression": "ALL_PROFILE_IMPLEMENTATIONS"
+      },
+      "preconditions": [],
+      "postconditions": [],
+      "invariants": [
+        "R2B-INV-003"
+      ],
+      "acceptance_criteria": [
+        "AC-03"
+      ],
+      "negative_conditions": [
+        "NO_IMPLICIT_COERCION"
+      ],
+      "dependencies": [],
+      "conflicts": [],
+      "traceability": {
+        "obligation_refs": [
+          "v14.7-frozen-boundary"
+        ]
+      },
+      "content_hash": "21272ee43ed9772071f6fe5afb857a4ff9dfc14d2024befd1384277249f20534"
+    },
+    {
+      "requirement_id": "R-BOUNDARY-004",
+      "specification_id": "gde-v14.7-active",
+      "specification_version": "14.7.1",
+      "statement": {
+        "text": "Conformance MUST derive from applicable requirements acceptance criteria and evidence"
+      },
+      "normative_strength": "MUST",
+      "scope": {
+        "scope_id": "r2.1",
+        "scope_expression": "ALL_PROFILE_IMPLEMENTATIONS"
+      },
+      "preconditions": [],
+      "postconditions": [],
+      "invariants": [
+        "R2B-INV-004"
+      ],
+      "acceptance_criteria": [
+        "AC-04"
+      ],
+      "negative_conditions": [
+        "NO_IMPLICIT_COERCION"
+      ],
+      "dependencies": [],
+      "conflicts": [],
+      "traceability": {
+        "obligation_refs": [
+          "v14.7-frozen-boundary"
+        ]
+      },
+      "content_hash": "ac8204786fdb12d54b4084d2e74e48e682cfb0f88d9fc7900863175c28054da2"
+    },
+    {
+      "requirement_id": "R-BOUNDARY-005",
+      "specification_id": "gde-v14.7-active",
+      "specification_version": "14.7.1",
+      "statement": {
+        "text": "Profiles MUST identify exact specification basis"
+      },
+      "normative_strength": "MUST",
+      "scope": {
+        "scope_id": "r2.1",
+        "scope_expression": "ALL_PROFILE_IMPLEMENTATIONS"
+      },
+      "preconditions": [],
+      "postconditions": [],
+      "invariants": [
+        "R2B-INV-005"
+      ],
+      "acceptance_criteria": [
+        "AC-05"
+      ],
+      "negative_conditions": [
+        "NO_IMPLICIT_COERCION"
+      ],
+      "dependencies": [],
+      "conflicts": [],
+      "traceability": {
+        "obligation_refs": [
+          "v14.7-frozen-boundary"
+        ]
+      },
+      "content_hash": "ed5015bf62a81d792d3127695bbd418525cc9dbcf9757571b5ace5a822dc6294"
+    },
+    {
+      "requirement_id": "R-BOUNDARY-006",
+      "specification_id": "gde-v14.7-active",
+      "specification_version": "14.7.1",
+      "statement": {
+        "text": "Implementations MUST identify exact profile id and version"
+      },
+      "normative_strength": "MUST",
+      "scope": {
+        "scope_id": "r2.1",
+        "scope_expression": "ALL_PROFILE_IMPLEMENTATIONS"
+      },
+      "preconditions": [],
+      "postconditions": [],
+      "invariants": [
+        "R2B-INV-006"
+      ],
+      "acceptance_criteria": [
+        "AC-06"
+      ],
+      "negative_conditions": [
+        "NO_IMPLICIT_COERCION"
+      ],
+      "dependencies": [],
+      "conflicts": [],
+      "traceability": {
+        "obligation_refs": [
+          "v14.7-frozen-boundary"
+        ]
+      },
+      "content_hash": "b060fde245c8b18854b9329b5b0fe5ea559ae5f39f727cca29ae861c255b9730"
+    },
+    {
+      "requirement_id": "R-BOUNDARY-007",
+      "specification_id": "gde-v14.7-active",
+      "specification_version": "14.7.1",
+      "statement": {
+        "text": "Profile choices MUST NOT weaken normative semantics"
+      },
+      "normative_strength": "MUST",
+      "scope": {
+        "scope_id": "r2.1",
+        "scope_expression": "ALL_PROFILE_IMPLEMENTATIONS"
+      },
+      "preconditions": [],
+      "postconditions": [],
+      "invariants": [
+        "R2B-INV-007"
+      ],
+      "acceptance_criteria": [
+        "AC-07"
+      ],
+      "negative_conditions": [
+        "NO_IMPLICIT_COERCION"
+      ],
+      "dependencies": [],
+      "conflicts": [],
+      "traceability": {
+        "obligation_refs": [
+          "v14.7-frozen-boundary"
+        ]
+      },
+      "content_hash": "3257a4e0140b8411939ae2f609bd74b86773318107ecd2524cb0bb658a256a53"
+    },
+    {
+      "requirement_id": "R-BOUNDARY-008",
+      "specification_id": "gde-v14.7-active",
+      "specification_version": "14.7.1",
+      "statement": {
+        "text": "Implementation instructions MUST NOT alter requirement semantics"
+      },
+      "normative_strength": "MUST",
+      "scope": {
+        "scope_id": "r2.1",
+        "scope_expression": "ALL_PROFILE_IMPLEMENTATIONS"
+      },
+      "preconditions": [],
+      "postconditions": [],
+      "invariants": [
+        "R2B-INV-008"
+      ],
+      "acceptance_criteria": [
+        "AC-08"
+      ],
+      "negative_conditions": [
+        "NO_IMPLICIT_COERCION"
+      ],
+      "dependencies": [],
+      "conflicts": [],
+      "traceability": {
+        "obligation_refs": [
+          "v14.7-frozen-boundary"
+        ]
+      },
+      "content_hash": "1a0e4f42bee6a3edbf1b4be3b64822bdd8611026de85d2a1786b22925ecfed35"
+    },
+    {
+      "requirement_id": "R-BOUNDARY-009",
+      "specification_id": "gde-v14.7-active",
+      "specification_version": "14.7.1",
+      "statement": {
+        "text": "Interpretation-changing profile choices MUST change profile version"
+      },
+      "normative_strength": "MUST",
+      "scope": {
+        "scope_id": "r2.1",
+        "scope_expression": "ALL_PROFILE_IMPLEMENTATIONS"
+      },
+      "preconditions": [],
+      "postconditions": [],
+      "invariants": [
+        "R2B-INV-009"
+      ],
+      "acceptance_criteria": [
+        "AC-09"
+      ],
+      "negative_conditions": [
+        "NO_IMPLICIT_COERCION"
+      ],
+      "dependencies": [],
+      "conflicts": [],
+      "traceability": {
+        "obligation_refs": [
+          "v14.7-frozen-boundary"
+        ]
+      },
+      "content_hash": "134bdd559ebbfcb1f4b0fef95576cb29aeafc212e9465fe2e899dc689d03c0b7"
+    },
+    {
+      "requirement_id": "R-BOUNDARY-010",
+      "specification_id": "gde-v14.7-active",
+      "specification_version": "14.7.1",
+      "statement": {
+        "text": "Event ordering MUST be deterministic"
+      },
+      "normative_strength": "MUST",
+      "scope": {
+        "scope_id": "r2.1",
+        "scope_expression": "ALL_PROFILE_IMPLEMENTATIONS"
+      },
+      "preconditions": [],
+      "postconditions": [],
+      "invariants": [
+        "R2B-INV-010"
+      ],
+      "acceptance_criteria": [
+        "AC-10"
+      ],
+      "negative_conditions": [
+        "NO_IMPLICIT_COERCION"
+      ],
+      "dependencies": [],
+      "conflicts": [],
+      "traceability": {
+        "obligation_refs": [
+          "v14.7-frozen-boundary"
+        ]
+      },
+      "content_hash": "a0aabdcfa88473786a1d373509d0e4aa295a2f75161b1aa90f522b72fccd3846"
+    },
+    {
+      "requirement_id": "R-BOUNDARY-011",
+      "specification_id": "gde-v14.7-active",
+      "specification_version": "14.7.1",
+      "statement": {
+        "text": "Mandatory instructions MUST cite profile or implementation-contract authority"
+      },
+      "normative_strength": "MUST",
+      "scope": {
+        "scope_id": "r2.1",
+        "scope_expression": "ALL_PROFILE_IMPLEMENTATIONS"
+      },
+      "preconditions": [],
+      "postconditions": [],
+      "invariants": [
+        "R2B-INV-011"
+      ],
+      "acceptance_criteria": [
+        "AC-11"
+      ],
+      "negative_conditions": [
+        "NO_IMPLICIT_COERCION"
+      ],
+      "dependencies": [],
+      "conflicts": [],
+      "traceability": {
+        "obligation_refs": [
+          "v14.7-frozen-boundary"
+        ]
+      },
+      "content_hash": "5ce8eeb424c102737d1971848c539725c64211f869a446e7693f227376af46ac"
+    },
+    {
+      "requirement_id": "R-BOUNDARY-012",
+      "specification_id": "gde-v14.7-active",
+      "specification_version": "14.7.1",
+      "statement": {
+        "text": "Cross-domain semantic coercions MUST be explicitly authorized or rejected"
+      },
+      "normative_strength": "MUST",
+      "scope": {
+        "scope_id": "r2.1",
+        "scope_expression": "ALL_PROFILE_IMPLEMENTATIONS"
+      },
+      "preconditions": [],
+      "postconditions": [],
+      "invariants": [
+        "R2B-INV-012"
+      ],
+      "acceptance_criteria": [
+        "AC-12"
+      ],
+      "negative_conditions": [
+        "NO_IMPLICIT_COERCION"
+      ],
+      "dependencies": [],
+      "conflicts": [],
+      "traceability": {
+        "obligation_refs": [
+          "v14.7-frozen-boundary"
+        ]
+      },
+      "content_hash": "1dcfe5760b49f3c5b6195e0ae5018df6d349a230a80883e258539f2ef5cd6895"
+    }
+  ],
+  "count": 12
+}
