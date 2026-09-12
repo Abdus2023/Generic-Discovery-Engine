@@ -1,0 +1,852 @@
+{
+  "schema_version": "13.2",
+  "validator": "Protocol-v13.2 independent validator",
+  "overall_status": "STRUCTURAL_PASS_AUDIT_BLOCKED",
+  "acceptance": "BLOCKED",
+  "summary": {
+    "total": 118,
+    "passed": 117,
+    "failed": 0,
+    "blocked": 1
+  },
+  "object_counts": {
+    "schemas": 9,
+    "state_histories": 6,
+    "state_transitions": 6,
+    "current_states": 6,
+    "decision_records": 0,
+    "current_decisions": 0,
+    "program_derivations": 3,
+    "audit_snapshots": 1,
+    "aggregates": 1,
+    "audit_statuses": 1
+  },
+  "checks": [
+    {
+      "check_id": "F01",
+      "category": "artifacts",
+      "description": "v13.2 artifact exists: STATE-DOMAIN-SEPARATION.yaml",
+      "result": "PASS",
+      "detail": ""
+    },
+    {
+      "check_id": "F02",
+      "category": "artifacts",
+      "description": "v13.2 artifact exists: BASELINE-IMPORT-POLICY.yaml",
+      "result": "PASS",
+      "detail": ""
+    },
+    {
+      "check_id": "F03",
+      "category": "artifacts",
+      "description": "v13.2 artifact exists: STATE-TRANSITION-MODEL.yaml",
+      "result": "PASS",
+      "detail": ""
+    },
+    {
+      "check_id": "F04",
+      "category": "artifacts",
+      "description": "v13.2 artifact exists: CURRENT-STATE-PROJECTION.yaml",
+      "result": "PASS",
+      "detail": ""
+    },
+    {
+      "check_id": "F05",
+      "category": "artifacts",
+      "description": "v13.2 artifact exists: STATE-HISTORIES.yaml",
+      "result": "PASS",
+      "detail": ""
+    },
+    {
+      "check_id": "F06",
+      "category": "artifacts",
+      "description": "v13.2 artifact exists: STATE-TRANSITION-REGISTRY.yaml",
+      "result": "PASS",
+      "detail": ""
+    },
+    {
+      "check_id": "F07",
+      "category": "artifacts",
+      "description": "v13.2 artifact exists: CURRENT-STATES.yaml",
+      "result": "PASS",
+      "detail": ""
+    },
+    {
+      "check_id": "F08",
+      "category": "artifacts",
+      "description": "v13.2 artifact exists: STATE-PROJECTION-TEST-VECTORS.yaml",
+      "result": "PASS",
+      "detail": ""
+    },
+    {
+      "check_id": "F09",
+      "category": "artifacts",
+      "description": "v13.2 artifact exists: DECISION-HISTORY-MODEL.yaml",
+      "result": "PASS",
+      "detail": ""
+    },
+    {
+      "check_id": "F10",
+      "category": "artifacts",
+      "description": "v13.2 artifact exists: COMPLIANCE-DECISION-HISTORIES.yaml",
+      "result": "PASS",
+      "detail": ""
+    },
+    {
+      "check_id": "F11",
+      "category": "artifacts",
+      "description": "v13.2 artifact exists: CURRENT-REQUIREMENT-DECISIONS.yaml",
+      "result": "PASS",
+      "detail": ""
+    },
+    {
+      "check_id": "F12",
+      "category": "artifacts",
+      "description": "v13.2 artifact exists: DECISION-PROJECTION-TEST-VECTORS.yaml",
+      "result": "PASS",
+      "detail": ""
+    },
+    {
+      "check_id": "F13",
+      "category": "artifacts",
+      "description": "v13.2 artifact exists: AGGREGATE-FUNCTION.yaml",
+      "result": "PASS",
+      "detail": ""
+    },
+    {
+      "check_id": "F14",
+      "category": "artifacts",
+      "description": "v13.2 artifact exists: AGGREGATE-TEST-VECTORS.yaml",
+      "result": "PASS",
+      "detail": ""
+    },
+    {
+      "check_id": "F15",
+      "category": "artifacts",
+      "description": "v13.2 artifact exists: AUDIT-SNAPSHOT.yaml",
+      "result": "PASS",
+      "detail": ""
+    },
+    {
+      "check_id": "F16",
+      "category": "artifacts",
+      "description": "v13.2 artifact exists: CURRENT-AGGREGATE.yaml",
+      "result": "PASS",
+      "detail": ""
+    },
+    {
+      "check_id": "F17",
+      "category": "artifacts",
+      "description": "v13.2 artifact exists: AUDIT-STATUS.yaml",
+      "result": "PASS",
+      "detail": ""
+    },
+    {
+      "check_id": "F18",
+      "category": "artifacts",
+      "description": "v13.2 artifact exists: AUDIT-INTEGRITY.yaml",
+      "result": "PASS",
+      "detail": ""
+    },
+    {
+      "check_id": "F19",
+      "category": "artifacts",
+      "description": "v13.2 artifact exists: PROGRAM-STATE-MACHINE.yaml",
+      "result": "PASS",
+      "detail": ""
+    },
+    {
+      "check_id": "F20",
+      "category": "artifacts",
+      "description": "v13.2 artifact exists: PROGRAM-DERIVATION-FUNCTION.yaml",
+      "result": "PASS",
+      "detail": ""
+    },
+    {
+      "check_id": "F21",
+      "category": "artifacts",
+      "description": "v13.2 artifact exists: PROGRAM-DERIVATIONS.yaml",
+      "result": "PASS",
+      "detail": ""
+    },
+    {
+      "check_id": "F22",
+      "category": "artifacts",
+      "description": "v13.2 artifact exists: PROGRAM-TEST-VECTORS.yaml",
+      "result": "PASS",
+      "detail": ""
+    },
+    {
+      "check_id": "F23",
+      "category": "artifacts",
+      "description": "v13.2 artifact exists: TEMPORAL-QUERY-RULES.yaml",
+      "result": "PASS",
+      "detail": ""
+    },
+    {
+      "check_id": "F24",
+      "category": "artifacts",
+      "description": "v13.2 artifact exists: CANONICAL-MODEL.yaml",
+      "result": "PASS",
+      "detail": ""
+    },
+    {
+      "check_id": "F25",
+      "category": "artifacts",
+      "description": "v13.2 artifact exists: CERTIFICATE-POLICY.yaml",
+      "result": "PASS",
+      "detail": ""
+    },
+    {
+      "check_id": "F26",
+      "category": "artifacts",
+      "description": "v13.2 artifact exists: CERTIFICATE-REVISION-STATUS.yaml",
+      "result": "PASS",
+      "detail": ""
+    },
+    {
+      "check_id": "F27",
+      "category": "artifacts",
+      "description": "v13.2 artifact exists: INVARIANTS.yaml",
+      "result": "PASS",
+      "detail": ""
+    },
+    {
+      "check_id": "F28",
+      "category": "artifacts",
+      "description": "v13.2 artifact exists: OBJECT-REGISTRY.yaml",
+      "result": "PASS",
+      "detail": ""
+    },
+    {
+      "check_id": "F29",
+      "category": "artifacts",
+      "description": "v13.2 artifact exists: SCHEMA-REGISTRY.yaml",
+      "result": "PASS",
+      "detail": ""
+    },
+    {
+      "check_id": "F30",
+      "category": "artifacts",
+      "description": "v13.2 artifact exists: VALIDATION-REPORT.yaml",
+      "result": "PASS",
+      "detail": ""
+    },
+    {
+      "check_id": "F31",
+      "category": "artifacts",
+      "description": "v13.2 artifact exists: PRIOR-INTEGRITY.yaml",
+      "result": "PASS",
+      "detail": ""
+    },
+    {
+      "check_id": "F32",
+      "category": "artifacts",
+      "description": "v13.2 artifact exists: schema/state-transition.schema.yaml",
+      "result": "PASS",
+      "detail": ""
+    },
+    {
+      "check_id": "F33",
+      "category": "artifacts",
+      "description": "v13.2 artifact exists: schema/current-state.schema.yaml",
+      "result": "PASS",
+      "detail": ""
+    },
+    {
+      "check_id": "F34",
+      "category": "artifacts",
+      "description": "v13.2 artifact exists: schema/state-history.schema.yaml",
+      "result": "PASS",
+      "detail": ""
+    },
+    {
+      "check_id": "F35",
+      "category": "artifacts",
+      "description": "v13.2 artifact exists: schema/compliance-decision-record.schema.yaml",
+      "result": "PASS",
+      "detail": ""
+    },
+    {
+      "check_id": "F36",
+      "category": "artifacts",
+      "description": "v13.2 artifact exists: schema/current-requirement-decision.schema.yaml",
+      "result": "PASS",
+      "detail": ""
+    },
+    {
+      "check_id": "F37",
+      "category": "artifacts",
+      "description": "v13.2 artifact exists: schema/audit-snapshot.schema.yaml",
+      "result": "PASS",
+      "detail": ""
+    },
+    {
+      "check_id": "F38",
+      "category": "artifacts",
+      "description": "v13.2 artifact exists: schema/audit-aggregate.schema.yaml",
+      "result": "PASS",
+      "detail": ""
+    },
+    {
+      "check_id": "F39",
+      "category": "artifacts",
+      "description": "v13.2 artifact exists: schema/program-state-derivation.schema.yaml",
+      "result": "PASS",
+      "detail": ""
+    },
+    {
+      "check_id": "F40",
+      "category": "artifacts",
+      "description": "v13.2 artifact exists: schema/audit-status.schema.yaml",
+      "result": "PASS",
+      "detail": ""
+    },
+    {
+      "check_id": "F41",
+      "category": "artifacts",
+      "description": "v13.2 artifact exists: reports/CURRENT-STATE-REPORT.yaml",
+      "result": "PASS",
+      "detail": ""
+    },
+    {
+      "check_id": "F42",
+      "category": "artifacts",
+      "description": "v13.2 artifact exists: reports/AGGREGATE-CONFORMANCE-REPORT.yaml",
+      "result": "PASS",
+      "detail": ""
+    },
+    {
+      "check_id": "F43",
+      "category": "artifacts",
+      "description": "v13.2 artifact exists: reports/TEMPORAL-INTEGRITY-REPORT.yaml",
+      "result": "PASS",
+      "detail": ""
+    },
+    {
+      "check_id": "F44",
+      "category": "artifacts",
+      "description": "v13.2 artifact exists: reports/CERTIFICATION-IMPACT-REPORT.yaml",
+      "result": "PASS",
+      "detail": ""
+    },
+    {
+      "check_id": "F45",
+      "category": "artifacts",
+      "description": "generator owns exactly 44 unique v13.2 deliverables",
+      "result": "PASS",
+      "detail": ""
+    },
+    {
+      "check_id": "F46",
+      "category": "artifacts",
+      "description": "all generated YAML is JSON-compatible",
+      "result": "PASS",
+      "detail": ""
+    },
+    {
+      "check_id": "S01",
+      "category": "schemas",
+      "description": "nine dedicated v13.2 schemas are complete",
+      "result": "PASS",
+      "detail": ""
+    },
+    {
+      "check_id": "S02",
+      "category": "schemas",
+      "description": "all schema references resolve",
+      "result": "PASS",
+      "detail": "[]"
+    },
+    {
+      "check_id": "S03",
+      "category": "schemas",
+      "description": "transition schema requires immutable identity, sequence, evidence, and hash",
+      "result": "PASS",
+      "detail": ""
+    },
+    {
+      "check_id": "S04",
+      "category": "schemas",
+      "description": "current state schema is projection-specific",
+      "result": "PASS",
+      "detail": ""
+    },
+    {
+      "check_id": "S05",
+      "category": "schemas",
+      "description": "invalid history can carry null current projection",
+      "result": "PASS",
+      "detail": ""
+    },
+    {
+      "check_id": "S06",
+      "category": "schemas",
+      "description": "decision history schema preserves snapshots and supersession",
+      "result": "PASS",
+      "detail": ""
+    },
+    {
+      "check_id": "S07",
+      "category": "schemas",
+      "description": "aggregate schema includes explicit empty-mandatory result",
+      "result": "PASS",
+      "detail": ""
+    },
+    {
+      "check_id": "S08",
+      "category": "schemas",
+      "description": "schema registry hashes all nine schemas",
+      "result": "PASS",
+      "detail": ""
+    },
+    {
+      "check_id": "H01",
+      "category": "history",
+      "description": "all six state histories validate against dedicated schemas",
+      "result": "PASS",
+      "detail": "{}"
+    },
+    {
+      "check_id": "H02",
+      "category": "projection",
+      "description": "all six current states independently reproject exactly",
+      "result": "PASS",
+      "detail": "[]"
+    },
+    {
+      "check_id": "H03",
+      "category": "history",
+      "description": "history integrity and hashes validate",
+      "result": "PASS",
+      "detail": ""
+    },
+    {
+      "check_id": "H04",
+      "category": "events",
+      "description": "all six baseline events have immutable hashes and contiguous genesis sequence",
+      "result": "PASS",
+      "detail": ""
+    },
+    {
+      "check_id": "H05",
+      "category": "non-invention",
+      "description": "baseline imports explicitly avoid reconstructing unavailable history",
+      "result": "PASS",
+      "detail": ""
+    },
+    {
+      "check_id": "H06",
+      "category": "derived-views",
+      "description": "event registry is an exact reproducible history view",
+      "result": "PASS",
+      "detail": ""
+    },
+    {
+      "check_id": "H07",
+      "category": "derived-views",
+      "description": "current-state registry is an exact reproducible projection",
+      "result": "PASS",
+      "detail": ""
+    },
+    {
+      "check_id": "H08",
+      "category": "projection",
+      "description": "finding and program current states remain separately OPEN and CREATED",
+      "result": "PASS",
+      "detail": ""
+    },
+    {
+      "check_id": "H09",
+      "category": "references",
+      "description": "all baseline evidence references resolve exactly once with matching subject type",
+      "result": "PASS",
+      "detail": ""
+    },
+    {
+      "check_id": "H10",
+      "category": "validation-order",
+      "description": "all twelve projection validation stages and no-skip failure behavior are explicit",
+      "result": "PASS",
+      "detail": ""
+    },
+    {
+      "check_id": "H11",
+      "category": "test-vectors",
+      "description": "all twelve history projection vectors reproduce independently",
+      "result": "PASS",
+      "detail": "[]"
+    },
+    {
+      "check_id": "H12",
+      "category": "terminal",
+      "description": "completed-to-active history is rejected",
+      "result": "PASS",
+      "detail": ""
+    },
+    {
+      "check_id": "H13",
+      "category": "block-return",
+      "description": "block return accepts only the previous operational state",
+      "result": "PASS",
+      "detail": ""
+    },
+    {
+      "check_id": "D01",
+      "category": "decision-history",
+      "description": "new decision triggers and immutable supersession semantics are exact",
+      "result": "PASS",
+      "detail": ""
+    },
+    {
+      "check_id": "D02",
+      "category": "decision-projection",
+      "description": "projection key includes audit, requirement, specification, and implementation",
+      "result": "PASS",
+      "detail": ""
+    },
+    {
+      "check_id": "D03",
+      "category": "decision-projection",
+      "description": "invalid latest decision cannot silently fall back",
+      "result": "PASS",
+      "detail": ""
+    },
+    {
+      "check_id": "D04",
+      "category": "test-vectors",
+      "description": "all six decision projection vectors reproduce independently",
+      "result": "PASS",
+      "detail": "[]"
+    },
+    {
+      "check_id": "D05",
+      "category": "schemas",
+      "description": "synthetic decision records and valid current projections exercise both schemas",
+      "result": "PASS",
+      "detail": "[]"
+    },
+    {
+      "check_id": "D06",
+      "category": "decision-history",
+      "description": "current package invents no requirement decisions",
+      "result": "PASS",
+      "detail": ""
+    },
+    {
+      "check_id": "A01",
+      "category": "aggregate",
+      "description": "canonical precedence is failure, blocked, unresolved, waiver, pass, empty",
+      "result": "PASS",
+      "detail": ""
+    },
+    {
+      "check_id": "A02",
+      "category": "aggregate",
+      "description": "aggregate excludes lifecycle process states",
+      "result": "PASS",
+      "detail": ""
+    },
+    {
+      "check_id": "A03",
+      "category": "optional",
+      "description": "optional results are separately reported and cannot alter mandatory aggregate",
+      "result": "PASS",
+      "detail": ""
+    },
+    {
+      "check_id": "A04",
+      "category": "test-vectors",
+      "description": "all twelve aggregate vectors reproduce independently",
+      "result": "PASS",
+      "detail": "[]"
+    },
+    {
+      "check_id": "A05",
+      "category": "precedence",
+      "description": "proven failure dominates blockers",
+      "result": "PASS",
+      "detail": ""
+    },
+    {
+      "check_id": "A06",
+      "category": "precedence",
+      "description": "blocked dominates unresolved",
+      "result": "PASS",
+      "detail": ""
+    },
+    {
+      "check_id": "A07",
+      "category": "precedence",
+      "description": "unresolved dominates waived failure",
+      "result": "PASS",
+      "detail": ""
+    },
+    {
+      "check_id": "A08",
+      "category": "waiver",
+      "description": "waived-only mandatory violation is conditional",
+      "result": "PASS",
+      "detail": ""
+    },
+    {
+      "check_id": "A09",
+      "category": "empty-set",
+      "description": "valid empty/all-excluded/optional-only mandatory sets are not compliant",
+      "result": "PASS",
+      "detail": ""
+    },
+    {
+      "check_id": "A10",
+      "category": "integrity",
+      "description": "integrity failure blocks empty-set evaluation",
+      "result": "PASS",
+      "detail": ""
+    },
+    {
+      "check_id": "A11",
+      "category": "optional",
+      "description": "optional failure with mandatory pass remains compliant",
+      "result": "PASS",
+      "detail": ""
+    },
+    {
+      "check_id": "N01",
+      "category": "snapshot",
+      "description": "audit snapshot validates and hash matches",
+      "result": "PASS",
+      "detail": ""
+    },
+    {
+      "check_id": "N02",
+      "category": "snapshot",
+      "description": "snapshot components and typed audit reference match exact immutable inputs",
+      "result": "PASS",
+      "detail": ""
+    },
+    {
+      "check_id": "N03",
+      "category": "current-aggregate",
+      "description": "current aggregate independently recomputes BLOCKED",
+      "result": "PASS",
+      "detail": ""
+    },
+    {
+      "check_id": "N04",
+      "category": "current-aggregate",
+      "description": "empty mandatory state is explicit without manufacturing compliance",
+      "result": "PASS",
+      "detail": ""
+    },
+    {
+      "check_id": "N05",
+      "category": "current-aggregate",
+      "description": "aggregate validates, identifies snapshot, and has canonical hash",
+      "result": "PASS",
+      "detail": ""
+    },
+    {
+      "check_id": "N06",
+      "category": "integrity",
+      "description": "H/D/R/T/S/E predicates block at invalid specification prerequisite",
+      "result": "PASS",
+      "detail": ""
+    },
+    {
+      "check_id": "N07",
+      "category": "audit-status",
+      "description": "audit status derives from snapshot aggregate and remains uncertifiable",
+      "result": "PASS",
+      "detail": ""
+    },
+    {
+      "check_id": "P01",
+      "category": "program-state",
+      "description": "all ten program states have exact definitions",
+      "result": "PASS",
+      "detail": ""
+    },
+    {
+      "check_id": "P02",
+      "category": "program-state",
+      "description": "canonical operational chain is guarded",
+      "result": "PASS",
+      "detail": ""
+    },
+    {
+      "check_id": "P03",
+      "category": "program-state",
+      "description": "block and return rules cover every operational state",
+      "result": "PASS",
+      "detail": ""
+    },
+    {
+      "check_id": "P04",
+      "category": "program-state",
+      "description": "completed is terminal and cannot return active",
+      "result": "PASS",
+      "detail": ""
+    },
+    {
+      "check_id": "P05",
+      "category": "separation",
+      "description": "program machine has no conformance effect",
+      "result": "PASS",
+      "detail": ""
+    },
+    {
+      "check_id": "P06",
+      "category": "program-derivation",
+      "description": "program predicate precedence is exact and resolves EVALUATING before ACTIVE",
+      "result": "PASS",
+      "detail": ""
+    },
+    {
+      "check_id": "P07",
+      "category": "program-derivation",
+      "description": "three referenced zero-member programs independently derive CREATED",
+      "result": "PASS",
+      "detail": "[]"
+    },
+    {
+      "check_id": "P08",
+      "category": "test-vectors",
+      "description": "all ten program derivation vectors reproduce independently",
+      "result": "PASS",
+      "detail": "[]"
+    },
+    {
+      "check_id": "T01",
+      "category": "temporal",
+      "description": "five temporal query classes are supported without wall-clock dependence",
+      "result": "PASS",
+      "detail": ""
+    },
+    {
+      "check_id": "T02",
+      "category": "temporal",
+      "description": "baseline temporal queries distinguish before-lineage from current state",
+      "result": "PASS",
+      "detail": ""
+    },
+    {
+      "check_id": "T03",
+      "category": "separation",
+      "description": "canonical flow is forward-only through certificate",
+      "result": "PASS",
+      "detail": ""
+    },
+    {
+      "check_id": "C01",
+      "category": "certificate",
+      "description": "certificate policy requires snapshot scope and immutable lineage",
+      "result": "PASS",
+      "detail": ""
+    },
+    {
+      "check_id": "C02",
+      "category": "certificate",
+      "description": "no certificate revision is authorized",
+      "result": "PASS",
+      "detail": ""
+    },
+    {
+      "check_id": "I01",
+      "category": "invariants",
+      "description": "all twenty canonical v13.2 invariants are mechanically enumerated",
+      "result": "PASS",
+      "detail": ""
+    },
+    {
+      "check_id": "I02",
+      "category": "identities",
+      "description": "all twenty-four v13.2 normative IDs are unique and valid",
+      "result": "PASS",
+      "detail": ""
+    },
+    {
+      "check_id": "I03",
+      "category": "registry",
+      "description": "object registry contains all and only canonical v13.2 objects",
+      "result": "PASS",
+      "detail": ""
+    },
+    {
+      "check_id": "I04",
+      "category": "identities",
+      "description": "v13.2 normative IDs are globally unique against predecessor registries",
+      "result": "PASS",
+      "detail": ""
+    },
+    {
+      "check_id": "I05",
+      "category": "references",
+      "description": "all three predecessor registry hashes resolve exactly",
+      "result": "PASS",
+      "detail": ""
+    },
+    {
+      "check_id": "I06",
+      "category": "validation",
+      "description": "generated report preserves structural pass and blocked audit",
+      "result": "PASS",
+      "detail": ""
+    },
+    {
+      "check_id": "R01",
+      "category": "append-only",
+      "description": "all 169 predecessor compliance artifacts remain byte-identical",
+      "result": "PASS",
+      "detail": "[]"
+    },
+    {
+      "check_id": "R02",
+      "category": "append-only",
+      "description": "v13.1 builder contains future-extension refusal",
+      "result": "PASS",
+      "detail": ""
+    },
+    {
+      "check_id": "R03",
+      "category": "reports",
+      "description": "four reports preserve current states, temporal integrity, aggregate, and certification separation",
+      "result": "PASS",
+      "detail": ""
+    },
+    {
+      "check_id": "Q01",
+      "category": "determinism",
+      "description": "all 44 generator-owned outputs reproduce byte-for-byte",
+      "result": "PASS",
+      "detail": ""
+    },
+    {
+      "check_id": "Q02",
+      "category": "regression",
+      "description": "v10.1 through v13.1 regressions and append-only guards pass",
+      "result": "PASS",
+      "detail": ""
+    },
+    {
+      "check_id": "Q03",
+      "category": "hygiene",
+      "description": "no Python cache artifacts exist",
+      "result": "PASS",
+      "detail": ""
+    },
+    {
+      "check_id": "Q04",
+      "category": "tools",
+      "description": "generic and pinned v13.2 tools exist",
+      "result": "PASS",
+      "detail": ""
+    },
+    {
+      "check_id": "GATE-V132",
+      "category": "acceptance",
+      "description": "current audit/certification decision",
+      "result": "BLOCKED",
+      "detail": "History and projection structures validate, but invalid normative scope and missing implementation/evidence prerequisites keep the current audit BLOCKED and prohibit certificate revision."
+    }
+  ]
+}

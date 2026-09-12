@@ -1,0 +1,22 @@
+{
+  "schema_version": "13.2",
+  "forward_flow": [
+    "IMMUTABLE_HISTORY",
+    "CURRENT_STATE",
+    "IMPLEMENTATION_CHANGE",
+    "VERIFICATION",
+    "COMPLIANCE_DECISION_HISTORY",
+    "CURRENT_DECISION",
+    "AGGREGATE",
+    "AUDIT_STATUS",
+    "CERTIFICATE"
+  ],
+  "reverse_mutation": false,
+  "separations": [
+    "HISTORY_NE_CURRENT_STATE",
+    "CURRENT_STATE_NE_CURRENT_DECISION",
+    "CURRENT_DECISION_NE_AGGREGATE",
+    "AGGREGATE_NE_CERTIFICATE"
+  ],
+  "central_consequence": "PROCESS_COMPLETION_NE_TRUTH_ESTABLISHMENT"
+}

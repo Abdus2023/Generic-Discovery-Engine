@@ -1,0 +1,613 @@
+{
+  "schema_version": "13.2",
+  "synthetic_non_normative": true,
+  "vectors": [
+    {
+      "vector_id": "VALID_CONTIGUOUS_CHAIN",
+      "events": [
+        {
+          "transition_id": "TEST-T1",
+          "object_type": "AUDIT_FINDING",
+          "object_id": "TEST-F1",
+          "from_state": null,
+          "to_state": "OPEN",
+          "reason": "BASELINE_IMPORT: test",
+          "evidence_refs": [
+            "TEST-EVIDENCE"
+          ],
+          "actor": "SYNTHETIC_TEST_VECTOR",
+          "occurred_at": "2026-09-12T17:20:43Z",
+          "sequence": 1,
+          "previous_transition": null,
+          "event_hash": "6f142de63c6afb344377077c1200065ce8682d4af0d6dc70578792f61fa0bd96"
+        },
+        {
+          "transition_id": "TEST-T2",
+          "object_type": "AUDIT_FINDING",
+          "object_id": "TEST-F1",
+          "from_state": "OPEN",
+          "to_state": "UNDER_REMEDIATION",
+          "reason": "TEST_GUARD_SATISFIED",
+          "evidence_refs": [
+            "TEST-EVIDENCE"
+          ],
+          "actor": "SYNTHETIC_TEST_VECTOR",
+          "occurred_at": "2026-09-12T17:20:43Z",
+          "sequence": 2,
+          "previous_transition": "TEST-T1",
+          "event_hash": "5871925e6f79efea9ec124d9033c6e8dc3a9407ba3ddaab0ce12f6613be9ddc0"
+        }
+      ],
+      "expected": "VALID",
+      "actual": "VALID",
+      "projected_state": "UNDER_REMEDIATION",
+      "pass": true
+    },
+    {
+      "vector_id": "SEQUENCE_GAP",
+      "events": [
+        {
+          "transition_id": "TEST-T1",
+          "object_type": "AUDIT_FINDING",
+          "object_id": "TEST-F1",
+          "from_state": null,
+          "to_state": "OPEN",
+          "reason": "BASELINE_IMPORT: test",
+          "evidence_refs": [
+            "TEST-EVIDENCE"
+          ],
+          "actor": "SYNTHETIC_TEST_VECTOR",
+          "occurred_at": "2026-09-12T17:20:43Z",
+          "sequence": 1,
+          "previous_transition": null,
+          "event_hash": "6f142de63c6afb344377077c1200065ce8682d4af0d6dc70578792f61fa0bd96"
+        },
+        {
+          "transition_id": "TEST-T3",
+          "object_type": "AUDIT_FINDING",
+          "object_id": "TEST-F1",
+          "from_state": "OPEN",
+          "to_state": "UNDER_REMEDIATION",
+          "reason": "TEST_GUARD_SATISFIED",
+          "evidence_refs": [
+            "TEST-EVIDENCE"
+          ],
+          "actor": "SYNTHETIC_TEST_VECTOR",
+          "occurred_at": "2026-09-12T17:20:43Z",
+          "sequence": 3,
+          "previous_transition": "TEST-T1",
+          "event_hash": "0ee63cb387a179f834200cf0862259aefdc6e3de4003200f4b6e4c1e4746415c"
+        }
+      ],
+      "expected": "HISTORY_INVALID",
+      "actual": "HISTORY_INVALID",
+      "projected_state": null,
+      "pass": true
+    },
+    {
+      "vector_id": "FROM_STATE_MISMATCH",
+      "events": [
+        {
+          "transition_id": "TEST-T1",
+          "object_type": "AUDIT_FINDING",
+          "object_id": "TEST-F1",
+          "from_state": null,
+          "to_state": "OPEN",
+          "reason": "BASELINE_IMPORT: test",
+          "evidence_refs": [
+            "TEST-EVIDENCE"
+          ],
+          "actor": "SYNTHETIC_TEST_VECTOR",
+          "occurred_at": "2026-09-12T17:20:43Z",
+          "sequence": 1,
+          "previous_transition": null,
+          "event_hash": "6f142de63c6afb344377077c1200065ce8682d4af0d6dc70578792f61fa0bd96"
+        },
+        {
+          "transition_id": "TEST-T2",
+          "object_type": "AUDIT_FINDING",
+          "object_id": "TEST-F1",
+          "from_state": "DETECTED",
+          "to_state": "VALIDATED",
+          "reason": "TEST_GUARD_SATISFIED",
+          "evidence_refs": [
+            "TEST-EVIDENCE"
+          ],
+          "actor": "SYNTHETIC_TEST_VECTOR",
+          "occurred_at": "2026-09-12T17:20:43Z",
+          "sequence": 2,
+          "previous_transition": "TEST-T1",
+          "event_hash": "ff1b7a6face8cb18b5380d7a5870b936257b608d7ffaef9caabc100a7662ee8f"
+        }
+      ],
+      "expected": "HISTORY_INVALID",
+      "actual": "HISTORY_INVALID",
+      "projected_state": null,
+      "pass": true
+    },
+    {
+      "vector_id": "IDENTITY_CHANGE",
+      "events": [
+        {
+          "transition_id": "TEST-T1",
+          "object_type": "AUDIT_FINDING",
+          "object_id": "TEST-F1",
+          "from_state": null,
+          "to_state": "OPEN",
+          "reason": "BASELINE_IMPORT: test",
+          "evidence_refs": [
+            "TEST-EVIDENCE"
+          ],
+          "actor": "SYNTHETIC_TEST_VECTOR",
+          "occurred_at": "2026-09-12T17:20:43Z",
+          "sequence": 1,
+          "previous_transition": null,
+          "event_hash": "6f142de63c6afb344377077c1200065ce8682d4af0d6dc70578792f61fa0bd96"
+        },
+        {
+          "transition_id": "TEST-T2",
+          "object_type": "AUDIT_FINDING",
+          "object_id": "TEST-F2",
+          "from_state": "OPEN",
+          "to_state": "UNDER_REMEDIATION",
+          "reason": "TEST_GUARD_SATISFIED",
+          "evidence_refs": [
+            "TEST-EVIDENCE"
+          ],
+          "actor": "SYNTHETIC_TEST_VECTOR",
+          "occurred_at": "2026-09-12T17:20:43Z",
+          "sequence": 2,
+          "previous_transition": "TEST-T1",
+          "event_hash": "b69a0a0b6bd67b3e4148aa021e8a5bdef025334d586d6b8f24ceb6bc0511b1b9"
+        }
+      ],
+      "expected": "HISTORY_INVALID",
+      "actual": "HISTORY_INVALID",
+      "projected_state": null,
+      "pass": true
+    },
+    {
+      "vector_id": "PREVIOUS_LINK_MISMATCH",
+      "events": [
+        {
+          "transition_id": "TEST-T1",
+          "object_type": "AUDIT_FINDING",
+          "object_id": "TEST-F1",
+          "from_state": null,
+          "to_state": "OPEN",
+          "reason": "BASELINE_IMPORT: test",
+          "evidence_refs": [
+            "TEST-EVIDENCE"
+          ],
+          "actor": "SYNTHETIC_TEST_VECTOR",
+          "occurred_at": "2026-09-12T17:20:43Z",
+          "sequence": 1,
+          "previous_transition": null,
+          "event_hash": "6f142de63c6afb344377077c1200065ce8682d4af0d6dc70578792f61fa0bd96"
+        },
+        {
+          "transition_id": "TEST-T2",
+          "object_type": "AUDIT_FINDING",
+          "object_id": "TEST-F1",
+          "from_state": "OPEN",
+          "to_state": "UNDER_REMEDIATION",
+          "reason": "TEST_GUARD_SATISFIED",
+          "evidence_refs": [
+            "TEST-EVIDENCE"
+          ],
+          "actor": "SYNTHETIC_TEST_VECTOR",
+          "occurred_at": "2026-09-12T17:20:43Z",
+          "sequence": 2,
+          "previous_transition": "WRONG",
+          "event_hash": "0740572f21dd746523ed14e378286ee7c86eb237b566b60aa9879e6c0016d099"
+        }
+      ],
+      "expected": "HISTORY_INVALID",
+      "actual": "HISTORY_INVALID",
+      "projected_state": null,
+      "pass": true
+    },
+    {
+      "vector_id": "HASH_INVALID",
+      "events": [
+        {
+          "transition_id": "TEST-T1",
+          "object_type": "AUDIT_FINDING",
+          "object_id": "TEST-F1",
+          "from_state": null,
+          "to_state": "OPEN",
+          "reason": "BASELINE_IMPORT: test",
+          "evidence_refs": [
+            "TEST-EVIDENCE"
+          ],
+          "actor": "SYNTHETIC_TEST_VECTOR",
+          "occurred_at": "2026-09-12T17:20:43Z",
+          "sequence": 1,
+          "previous_transition": null,
+          "event_hash": "6f142de63c6afb344377077c1200065ce8682d4af0d6dc70578792f61fa0bd96"
+        },
+        {
+          "transition_id": "TEST-T2",
+          "object_type": "AUDIT_FINDING",
+          "object_id": "TEST-F1",
+          "from_state": "OPEN",
+          "to_state": "UNDER_REMEDIATION",
+          "reason": "TEST_GUARD_SATISFIED",
+          "evidence_refs": [
+            "TEST-EVIDENCE"
+          ],
+          "actor": "SYNTHETIC_TEST_VECTOR",
+          "occurred_at": "2026-09-12T17:20:43Z",
+          "sequence": 2,
+          "previous_transition": "TEST-T1",
+          "event_hash": "0000000000000000000000000000000000000000000000000000000000000000"
+        }
+      ],
+      "expected": "HISTORY_INVALID",
+      "actual": "HISTORY_INVALID",
+      "projected_state": null,
+      "pass": true
+    },
+    {
+      "vector_id": "ILLEGAL_TRANSITION",
+      "events": [
+        {
+          "transition_id": "TEST-T1",
+          "object_type": "AUDIT_FINDING",
+          "object_id": "TEST-F1",
+          "from_state": null,
+          "to_state": "OPEN",
+          "reason": "BASELINE_IMPORT: test",
+          "evidence_refs": [
+            "TEST-EVIDENCE"
+          ],
+          "actor": "SYNTHETIC_TEST_VECTOR",
+          "occurred_at": "2026-09-12T17:20:43Z",
+          "sequence": 1,
+          "previous_transition": null,
+          "event_hash": "6f142de63c6afb344377077c1200065ce8682d4af0d6dc70578792f61fa0bd96"
+        },
+        {
+          "transition_id": "TEST-T2",
+          "object_type": "AUDIT_FINDING",
+          "object_id": "TEST-F1",
+          "from_state": "OPEN",
+          "to_state": "CLOSED",
+          "reason": "TEST_GUARD_SATISFIED",
+          "evidence_refs": [
+            "TEST-EVIDENCE"
+          ],
+          "actor": "SYNTHETIC_TEST_VECTOR",
+          "occurred_at": "2026-09-12T17:20:43Z",
+          "sequence": 2,
+          "previous_transition": "TEST-T1",
+          "event_hash": "3e44e083f6df5717280420309af60220798ba7180136f4630150d43513ffe6e7"
+        }
+      ],
+      "expected": "HISTORY_INVALID",
+      "actual": "HISTORY_INVALID",
+      "projected_state": null,
+      "pass": true
+    },
+    {
+      "vector_id": "TIMESTAMP_INVALID",
+      "events": [
+        {
+          "transition_id": "TEST-T1",
+          "object_type": "AUDIT_FINDING",
+          "object_id": "TEST-F1",
+          "from_state": null,
+          "to_state": "OPEN",
+          "reason": "BASELINE_IMPORT: test",
+          "evidence_refs": [
+            "TEST-EVIDENCE"
+          ],
+          "actor": "SYNTHETIC_TEST_VECTOR",
+          "occurred_at": "2026-09-12T17:20:43Z",
+          "sequence": 1,
+          "previous_transition": null,
+          "event_hash": "6f142de63c6afb344377077c1200065ce8682d4af0d6dc70578792f61fa0bd96"
+        },
+        {
+          "transition_id": "TEST-T2",
+          "object_type": "AUDIT_FINDING",
+          "object_id": "TEST-F1",
+          "from_state": "OPEN",
+          "to_state": "UNDER_REMEDIATION",
+          "reason": "TEST_GUARD_SATISFIED",
+          "evidence_refs": [
+            "TEST-EVIDENCE"
+          ],
+          "actor": "SYNTHETIC_TEST_VECTOR",
+          "occurred_at": "not-time",
+          "sequence": 2,
+          "previous_transition": "TEST-T1",
+          "event_hash": "9dd1f2d239a3067f975103ca722791249264426028273fd0c3a2811da1ffbfbf"
+        }
+      ],
+      "expected": "HISTORY_INVALID",
+      "actual": "HISTORY_INVALID",
+      "projected_state": null,
+      "pass": true
+    },
+    {
+      "vector_id": "EVIDENCE_MISSING",
+      "events": [
+        {
+          "transition_id": "TEST-T1",
+          "object_type": "AUDIT_FINDING",
+          "object_id": "TEST-F1",
+          "from_state": null,
+          "to_state": "OPEN",
+          "reason": "BASELINE_IMPORT: test",
+          "evidence_refs": [
+            "TEST-EVIDENCE"
+          ],
+          "actor": "SYNTHETIC_TEST_VECTOR",
+          "occurred_at": "2026-09-12T17:20:43Z",
+          "sequence": 1,
+          "previous_transition": null,
+          "event_hash": "6f142de63c6afb344377077c1200065ce8682d4af0d6dc70578792f61fa0bd96"
+        },
+        {
+          "transition_id": "TEST-T2",
+          "object_type": "AUDIT_FINDING",
+          "object_id": "TEST-F1",
+          "from_state": "OPEN",
+          "to_state": "UNDER_REMEDIATION",
+          "reason": "TEST_GUARD_SATISFIED",
+          "evidence_refs": [],
+          "actor": "SYNTHETIC_TEST_VECTOR",
+          "occurred_at": "2026-09-12T17:20:43Z",
+          "sequence": 2,
+          "previous_transition": "TEST-T1",
+          "event_hash": "ccd0affcb4d937f5731a73cee8759087d3aa2135a8076e651c07a3375c0e5627"
+        }
+      ],
+      "expected": "HISTORY_INVALID",
+      "actual": "HISTORY_INVALID",
+      "projected_state": null,
+      "pass": true
+    },
+    {
+      "vector_id": "BLOCK_RETURN_PREVIOUS",
+      "events": [
+        {
+          "transition_id": "TEST-T1",
+          "object_type": "AUDIT_FINDING",
+          "object_id": "TEST-F1",
+          "from_state": null,
+          "to_state": "OPEN",
+          "reason": "BASELINE_IMPORT: test",
+          "evidence_refs": [
+            "TEST-EVIDENCE"
+          ],
+          "actor": "SYNTHETIC_TEST_VECTOR",
+          "occurred_at": "2026-09-12T17:20:43Z",
+          "sequence": 1,
+          "previous_transition": null,
+          "event_hash": "6f142de63c6afb344377077c1200065ce8682d4af0d6dc70578792f61fa0bd96"
+        },
+        {
+          "transition_id": "TEST-T2",
+          "object_type": "AUDIT_FINDING",
+          "object_id": "TEST-F1",
+          "from_state": "OPEN",
+          "to_state": "BLOCKED",
+          "reason": "TEST_GUARD_SATISFIED",
+          "evidence_refs": [
+            "TEST-EVIDENCE"
+          ],
+          "actor": "SYNTHETIC_TEST_VECTOR",
+          "occurred_at": "2026-09-12T17:20:43Z",
+          "sequence": 2,
+          "previous_transition": "TEST-T1",
+          "event_hash": "ada9c2a828dff218b12e0150f2ad392b323020c4ee6fc78526758218426eb477"
+        },
+        {
+          "transition_id": "TEST-T3",
+          "object_type": "AUDIT_FINDING",
+          "object_id": "TEST-F1",
+          "from_state": "BLOCKED",
+          "to_state": "OPEN",
+          "reason": "BLOCK_REMOVED_AND_PREVIOUS_STATE_REVALIDATED",
+          "evidence_refs": [
+            "TEST-EVIDENCE"
+          ],
+          "actor": "SYNTHETIC_TEST_VECTOR",
+          "occurred_at": "2026-09-12T17:20:43Z",
+          "sequence": 3,
+          "previous_transition": "TEST-T2",
+          "event_hash": "1c5ed9a0d6d5c808b298508aeaaa0622a70430ee2661b20f9a7a00d52f89dcb0"
+        }
+      ],
+      "expected": "VALID",
+      "actual": "VALID",
+      "projected_state": "OPEN",
+      "pass": true
+    },
+    {
+      "vector_id": "BLOCK_RETURN_WRONG_STATE",
+      "events": [
+        {
+          "transition_id": "TEST-T1",
+          "object_type": "AUDIT_FINDING",
+          "object_id": "TEST-F1",
+          "from_state": null,
+          "to_state": "OPEN",
+          "reason": "BASELINE_IMPORT: test",
+          "evidence_refs": [
+            "TEST-EVIDENCE"
+          ],
+          "actor": "SYNTHETIC_TEST_VECTOR",
+          "occurred_at": "2026-09-12T17:20:43Z",
+          "sequence": 1,
+          "previous_transition": null,
+          "event_hash": "6f142de63c6afb344377077c1200065ce8682d4af0d6dc70578792f61fa0bd96"
+        },
+        {
+          "transition_id": "TEST-T2",
+          "object_type": "AUDIT_FINDING",
+          "object_id": "TEST-F1",
+          "from_state": "OPEN",
+          "to_state": "BLOCKED",
+          "reason": "TEST_GUARD_SATISFIED",
+          "evidence_refs": [
+            "TEST-EVIDENCE"
+          ],
+          "actor": "SYNTHETIC_TEST_VECTOR",
+          "occurred_at": "2026-09-12T17:20:43Z",
+          "sequence": 2,
+          "previous_transition": "TEST-T1",
+          "event_hash": "ada9c2a828dff218b12e0150f2ad392b323020c4ee6fc78526758218426eb477"
+        },
+        {
+          "transition_id": "TEST-T3",
+          "object_type": "AUDIT_FINDING",
+          "object_id": "TEST-F1",
+          "from_state": "BLOCKED",
+          "to_state": "DETECTED",
+          "reason": "BLOCK_REMOVED_AND_PREVIOUS_STATE_REVALIDATED",
+          "evidence_refs": [
+            "TEST-EVIDENCE"
+          ],
+          "actor": "SYNTHETIC_TEST_VECTOR",
+          "occurred_at": "2026-09-12T17:20:43Z",
+          "sequence": 3,
+          "previous_transition": "TEST-T2",
+          "event_hash": "336e62a5280cf4b336d01f98eb3c5449440db43e6ac79029b1e8f0968700d5b3"
+        }
+      ],
+      "expected": "HISTORY_INVALID",
+      "actual": "HISTORY_INVALID",
+      "projected_state": null,
+      "pass": true
+    },
+    {
+      "vector_id": "COMPLETED_PROGRAM_TERMINAL",
+      "events": [
+        {
+          "transition_id": "TEST-P1",
+          "object_type": "REMEDIATION_PROGRAM",
+          "object_id": "TEST-PROGRAM",
+          "from_state": null,
+          "to_state": "CREATED",
+          "reason": "BASELINE_IMPORT: test",
+          "evidence_refs": [
+            "TEST-EVIDENCE"
+          ],
+          "actor": "SYNTHETIC_TEST_VECTOR",
+          "occurred_at": "2026-09-12T17:20:43Z",
+          "sequence": 1,
+          "previous_transition": null,
+          "event_hash": "6052e4674293b87d63e1dfce7296e9e4cff9b20d9c6600e0bf1c6ae8efe32342"
+        },
+        {
+          "transition_id": "TEST-P2",
+          "object_type": "REMEDIATION_PROGRAM",
+          "object_id": "TEST-PROGRAM",
+          "from_state": "CREATED",
+          "to_state": "TRIAGED",
+          "reason": "TEST_GUARD_SATISFIED",
+          "evidence_refs": [
+            "TEST-EVIDENCE"
+          ],
+          "actor": "SYNTHETIC_TEST_VECTOR",
+          "occurred_at": "2026-09-12T17:20:43Z",
+          "sequence": 2,
+          "previous_transition": "TEST-P1",
+          "event_hash": "8de639637f883d7b6a56420dc0be1c684f9cc4fb629aac6051ffb697990a992e"
+        },
+        {
+          "transition_id": "TEST-P3",
+          "object_type": "REMEDIATION_PROGRAM",
+          "object_id": "TEST-PROGRAM",
+          "from_state": "TRIAGED",
+          "to_state": "PLANNED",
+          "reason": "TEST_GUARD_SATISFIED",
+          "evidence_refs": [
+            "TEST-EVIDENCE"
+          ],
+          "actor": "SYNTHETIC_TEST_VECTOR",
+          "occurred_at": "2026-09-12T17:20:43Z",
+          "sequence": 3,
+          "previous_transition": "TEST-P2",
+          "event_hash": "9879799d6f40caae93605c7511f05e35092685f35cc6fe15af9f855979b28306"
+        },
+        {
+          "transition_id": "TEST-P4",
+          "object_type": "REMEDIATION_PROGRAM",
+          "object_id": "TEST-PROGRAM",
+          "from_state": "PLANNED",
+          "to_state": "ACTIVE",
+          "reason": "TEST_GUARD_SATISFIED",
+          "evidence_refs": [
+            "TEST-EVIDENCE"
+          ],
+          "actor": "SYNTHETIC_TEST_VECTOR",
+          "occurred_at": "2026-09-12T17:20:43Z",
+          "sequence": 4,
+          "previous_transition": "TEST-P3",
+          "event_hash": "79cc47bf5b8b3b2a133b2149a371fd511b19fc7d239818314a646a1fe155c361"
+        },
+        {
+          "transition_id": "TEST-P5",
+          "object_type": "REMEDIATION_PROGRAM",
+          "object_id": "TEST-PROGRAM",
+          "from_state": "ACTIVE",
+          "to_state": "EVALUATING",
+          "reason": "TEST_GUARD_SATISFIED",
+          "evidence_refs": [
+            "TEST-EVIDENCE"
+          ],
+          "actor": "SYNTHETIC_TEST_VECTOR",
+          "occurred_at": "2026-09-12T17:20:43Z",
+          "sequence": 5,
+          "previous_transition": "TEST-P4",
+          "event_hash": "313a6668e4df76b9f7b9c825d21fb49faa6f8647fb6c56929cf9bc6e710b2b2b"
+        },
+        {
+          "transition_id": "TEST-P6",
+          "object_type": "REMEDIATION_PROGRAM",
+          "object_id": "TEST-PROGRAM",
+          "from_state": "EVALUATING",
+          "to_state": "COMPLETED",
+          "reason": "TEST_GUARD_SATISFIED",
+          "evidence_refs": [
+            "TEST-EVIDENCE"
+          ],
+          "actor": "SYNTHETIC_TEST_VECTOR",
+          "occurred_at": "2026-09-12T17:20:43Z",
+          "sequence": 6,
+          "previous_transition": "TEST-P5",
+          "event_hash": "12bd6260d0267a0176829ed406f844a9a37772f50897de34779d377cba98af32"
+        },
+        {
+          "transition_id": "TEST-P7",
+          "object_type": "REMEDIATION_PROGRAM",
+          "object_id": "TEST-PROGRAM",
+          "from_state": "COMPLETED",
+          "to_state": "ACTIVE",
+          "reason": "TEST_GUARD_SATISFIED",
+          "evidence_refs": [
+            "TEST-EVIDENCE"
+          ],
+          "actor": "SYNTHETIC_TEST_VECTOR",
+          "occurred_at": "2026-09-12T17:20:43Z",
+          "sequence": 7,
+          "previous_transition": "TEST-P6",
+          "event_hash": "afaa8c94428f75b5e407eb29fbcb4debb2a8a15127bf2059a283bff37ab57247"
+        }
+      ],
+      "expected": "HISTORY_INVALID",
+      "actual": "HISTORY_INVALID",
+      "projected_state": null,
+      "pass": true
+    }
+  ],
+  "summary": {
+    "total": 12,
+    "passed": 12,
+    "failed": 0
+  }
+}

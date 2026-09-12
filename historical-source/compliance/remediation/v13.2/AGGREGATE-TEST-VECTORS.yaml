@@ -1,0 +1,434 @@
+{
+  "schema_version": "13.2",
+  "vectors": [
+    {
+      "vector_id": "PROVEN_FAILURE_DOMINATES_BLOCKER",
+      "requirements": [
+        {
+          "requirement_id": "R1",
+          "mandatory": true,
+          "applicable": true,
+          "decision": "NON_CONFORMANT",
+          "waiver_effective": false
+        },
+        {
+          "requirement_id": "R2",
+          "mandatory": true,
+          "applicable": true,
+          "decision": "BLOCKED",
+          "waiver_effective": false
+        }
+      ],
+      "integrity_blockers": [
+        "HISTORY"
+      ],
+      "expected": "NON_COMPLIANT",
+      "actual": "NON_COMPLIANT",
+      "counts": {
+        "mandatory": {
+          "proven_failure": 1,
+          "waived_failure": 0,
+          "blocked": 1,
+          "unresolved": 0,
+          "pass": 0,
+          "excluded": 0
+        },
+        "optional": {
+          "proven_failure": 0,
+          "waived_failure": 0,
+          "blocked": 0,
+          "unresolved": 0,
+          "pass": 0,
+          "excluded": 0
+        }
+      },
+      "pass": true
+    },
+    {
+      "vector_id": "BLOCKED_DOMINATES_UNRESOLVED",
+      "requirements": [
+        {
+          "requirement_id": "R1",
+          "mandatory": true,
+          "applicable": true,
+          "decision": "BLOCKED",
+          "waiver_effective": false
+        },
+        {
+          "requirement_id": "R2",
+          "mandatory": true,
+          "applicable": true,
+          "decision": "UNKNOWN",
+          "waiver_effective": false
+        }
+      ],
+      "integrity_blockers": [],
+      "expected": "BLOCKED",
+      "actual": "BLOCKED",
+      "counts": {
+        "mandatory": {
+          "proven_failure": 0,
+          "waived_failure": 0,
+          "blocked": 1,
+          "unresolved": 1,
+          "pass": 0,
+          "excluded": 0
+        },
+        "optional": {
+          "proven_failure": 0,
+          "waived_failure": 0,
+          "blocked": 0,
+          "unresolved": 0,
+          "pass": 0,
+          "excluded": 0
+        }
+      },
+      "pass": true
+    },
+    {
+      "vector_id": "UNRESOLVED_DOMINATES_WAIVER",
+      "requirements": [
+        {
+          "requirement_id": "R1",
+          "mandatory": true,
+          "applicable": true,
+          "decision": "NON_CONFORMANT",
+          "waiver_effective": true
+        },
+        {
+          "requirement_id": "R2",
+          "mandatory": true,
+          "applicable": true,
+          "decision": "UNVERIFIED",
+          "waiver_effective": false
+        }
+      ],
+      "integrity_blockers": [],
+      "expected": "UNVERIFIED",
+      "actual": "UNVERIFIED",
+      "counts": {
+        "mandatory": {
+          "proven_failure": 0,
+          "waived_failure": 1,
+          "blocked": 0,
+          "unresolved": 1,
+          "pass": 0,
+          "excluded": 0
+        },
+        "optional": {
+          "proven_failure": 0,
+          "waived_failure": 0,
+          "blocked": 0,
+          "unresolved": 0,
+          "pass": 0,
+          "excluded": 0
+        }
+      },
+      "pass": true
+    },
+    {
+      "vector_id": "WAIVED_FAILURE_ONLY",
+      "requirements": [
+        {
+          "requirement_id": "R1",
+          "mandatory": true,
+          "applicable": true,
+          "decision": "NON_CONFORMANT",
+          "waiver_effective": true
+        }
+      ],
+      "integrity_blockers": [],
+      "expected": "CONDITIONALLY_COMPLIANT",
+      "actual": "CONDITIONALLY_COMPLIANT",
+      "counts": {
+        "mandatory": {
+          "proven_failure": 0,
+          "waived_failure": 1,
+          "blocked": 0,
+          "unresolved": 0,
+          "pass": 0,
+          "excluded": 0
+        },
+        "optional": {
+          "proven_failure": 0,
+          "waived_failure": 0,
+          "blocked": 0,
+          "unresolved": 0,
+          "pass": 0,
+          "excluded": 0
+        }
+      },
+      "pass": true
+    },
+    {
+      "vector_id": "ALL_MANDATORY_PASS",
+      "requirements": [
+        {
+          "requirement_id": "R1",
+          "mandatory": true,
+          "applicable": true,
+          "decision": "CONFORMANT",
+          "waiver_effective": false
+        }
+      ],
+      "integrity_blockers": [],
+      "expected": "COMPLIANT",
+      "actual": "COMPLIANT",
+      "counts": {
+        "mandatory": {
+          "proven_failure": 0,
+          "waived_failure": 0,
+          "blocked": 0,
+          "unresolved": 0,
+          "pass": 1,
+          "excluded": 0
+        },
+        "optional": {
+          "proven_failure": 0,
+          "waived_failure": 0,
+          "blocked": 0,
+          "unresolved": 0,
+          "pass": 0,
+          "excluded": 0
+        }
+      },
+      "pass": true
+    },
+    {
+      "vector_id": "VALID_EMPTY_MANDATORY",
+      "requirements": [],
+      "integrity_blockers": [],
+      "expected": "NO_MANDATORY_REQUIREMENTS",
+      "actual": "NO_MANDATORY_REQUIREMENTS",
+      "counts": {
+        "mandatory": {
+          "proven_failure": 0,
+          "waived_failure": 0,
+          "blocked": 0,
+          "unresolved": 0,
+          "pass": 0,
+          "excluded": 0
+        },
+        "optional": {
+          "proven_failure": 0,
+          "waived_failure": 0,
+          "blocked": 0,
+          "unresolved": 0,
+          "pass": 0,
+          "excluded": 0
+        }
+      },
+      "pass": true
+    },
+    {
+      "vector_id": "ALL_NOT_APPLICABLE",
+      "requirements": [
+        {
+          "requirement_id": "R1",
+          "mandatory": true,
+          "applicable": false,
+          "decision": "NOT_APPLICABLE",
+          "waiver_effective": false
+        }
+      ],
+      "integrity_blockers": [],
+      "expected": "NO_MANDATORY_REQUIREMENTS",
+      "actual": "NO_MANDATORY_REQUIREMENTS",
+      "counts": {
+        "mandatory": {
+          "proven_failure": 0,
+          "waived_failure": 0,
+          "blocked": 0,
+          "unresolved": 0,
+          "pass": 0,
+          "excluded": 1
+        },
+        "optional": {
+          "proven_failure": 0,
+          "waived_failure": 0,
+          "blocked": 0,
+          "unresolved": 0,
+          "pass": 0,
+          "excluded": 0
+        }
+      },
+      "pass": true
+    },
+    {
+      "vector_id": "OPTIONAL_FAILURE_WITH_NO_MANDATORY",
+      "requirements": [
+        {
+          "requirement_id": "O1",
+          "mandatory": false,
+          "applicable": true,
+          "decision": "NON_CONFORMANT",
+          "waiver_effective": false
+        }
+      ],
+      "integrity_blockers": [],
+      "expected": "NO_MANDATORY_REQUIREMENTS",
+      "actual": "NO_MANDATORY_REQUIREMENTS",
+      "counts": {
+        "mandatory": {
+          "proven_failure": 0,
+          "waived_failure": 0,
+          "blocked": 0,
+          "unresolved": 0,
+          "pass": 0,
+          "excluded": 0
+        },
+        "optional": {
+          "proven_failure": 1,
+          "waived_failure": 0,
+          "blocked": 0,
+          "unresolved": 0,
+          "pass": 0,
+          "excluded": 0
+        }
+      },
+      "pass": true
+    },
+    {
+      "vector_id": "OPTIONAL_FAILURE_WITH_MANDATORY_PASS",
+      "requirements": [
+        {
+          "requirement_id": "R1",
+          "mandatory": true,
+          "applicable": true,
+          "decision": "CONFORMANT",
+          "waiver_effective": false
+        },
+        {
+          "requirement_id": "O1",
+          "mandatory": false,
+          "applicable": true,
+          "decision": "NON_CONFORMANT",
+          "waiver_effective": false
+        }
+      ],
+      "integrity_blockers": [],
+      "expected": "COMPLIANT",
+      "actual": "COMPLIANT",
+      "counts": {
+        "mandatory": {
+          "proven_failure": 0,
+          "waived_failure": 0,
+          "blocked": 0,
+          "unresolved": 0,
+          "pass": 1,
+          "excluded": 0
+        },
+        "optional": {
+          "proven_failure": 1,
+          "waived_failure": 0,
+          "blocked": 0,
+          "unresolved": 0,
+          "pass": 0,
+          "excluded": 0
+        }
+      },
+      "pass": true
+    },
+    {
+      "vector_id": "INTEGRITY_BLOCKS_EMPTY_EVALUATION",
+      "requirements": [],
+      "integrity_blockers": [
+        "SPECIFICATION_SNAPSHOT_INVALID"
+      ],
+      "expected": "BLOCKED",
+      "actual": "BLOCKED",
+      "counts": {
+        "mandatory": {
+          "proven_failure": 0,
+          "waived_failure": 0,
+          "blocked": 0,
+          "unresolved": 0,
+          "pass": 0,
+          "excluded": 0
+        },
+        "optional": {
+          "proven_failure": 0,
+          "waived_failure": 0,
+          "blocked": 0,
+          "unresolved": 0,
+          "pass": 0,
+          "excluded": 0
+        }
+      },
+      "pass": true
+    },
+    {
+      "vector_id": "INTERMEDIATE_FINAL_DECISION_BLOCKS",
+      "requirements": [
+        {
+          "requirement_id": "R1",
+          "mandatory": true,
+          "applicable": true,
+          "decision": "VERIFIED",
+          "waiver_effective": false
+        }
+      ],
+      "integrity_blockers": [],
+      "expected": "BLOCKED",
+      "actual": "BLOCKED",
+      "counts": {
+        "mandatory": {
+          "proven_failure": 0,
+          "waived_failure": 0,
+          "blocked": 1,
+          "unresolved": 0,
+          "pass": 0,
+          "excluded": 0
+        },
+        "optional": {
+          "proven_failure": 0,
+          "waived_failure": 0,
+          "blocked": 0,
+          "unresolved": 0,
+          "pass": 0,
+          "excluded": 0
+        }
+      },
+      "pass": true
+    },
+    {
+      "vector_id": "UNKNOWN_IS_UNRESOLVED",
+      "requirements": [
+        {
+          "requirement_id": "R1",
+          "mandatory": true,
+          "applicable": true,
+          "decision": "UNKNOWN",
+          "waiver_effective": false
+        }
+      ],
+      "integrity_blockers": [],
+      "expected": "UNVERIFIED",
+      "actual": "UNVERIFIED",
+      "counts": {
+        "mandatory": {
+          "proven_failure": 0,
+          "waived_failure": 0,
+          "blocked": 0,
+          "unresolved": 1,
+          "pass": 0,
+          "excluded": 0
+        },
+        "optional": {
+          "proven_failure": 0,
+          "waived_failure": 0,
+          "blocked": 0,
+          "unresolved": 0,
+          "pass": 0,
+          "excluded": 0
+        }
+      },
+      "pass": true
+    }
+  ],
+  "summary": {
+    "total": 12,
+    "passed": 12,
+    "failed": 0
+  }
+}

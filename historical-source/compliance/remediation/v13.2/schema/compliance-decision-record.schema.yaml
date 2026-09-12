@@ -1,0 +1,129 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Protocol-v13.2 ComplianceDecisionRecord",
+  "type": "object",
+  "required": [
+    "decision_id",
+    "requirement_id",
+    "audit_id",
+    "decision",
+    "basis",
+    "decided_at",
+    "implementation_snapshot",
+    "specification_snapshot",
+    "audit_run_id",
+    "supersedes",
+    "decision_hash"
+  ],
+  "properties": {
+    "decision_id": {
+      "type": "string",
+      "pattern": "^[A-Za-z0-9][A-Za-z0-9._:/-]*$"
+    },
+    "requirement_id": {
+      "type": "string",
+      "pattern": "^[A-Za-z0-9][A-Za-z0-9._:/-]*$"
+    },
+    "audit_id": {
+      "type": "string",
+      "pattern": "^[A-Za-z0-9][A-Za-z0-9._:/-]*$"
+    },
+    "decision": {
+      "type": "string",
+      "enum": [
+        "UNASSESSED",
+        "MAPPED",
+        "VERIFIED",
+        "CONFORMANT",
+        "PARTIALLY_CONFORMANT",
+        "NON_CONFORMANT",
+        "UNVERIFIED",
+        "BLOCKED",
+        "UNKNOWN",
+        "NOT_APPLICABLE"
+      ]
+    },
+    "basis": {
+      "type": "object",
+      "required": [
+        "acceptance_criteria",
+        "evidence_refs",
+        "verification_refs",
+        "rule_refs"
+      ],
+      "properties": {
+        "acceptance_criteria": {
+          "type": "array",
+          "minItems": 0,
+          "items": {
+            "type": "string"
+          },
+          "uniqueItems": true
+        },
+        "evidence_refs": {
+          "type": "array",
+          "minItems": 0,
+          "items": {
+            "type": "string"
+          },
+          "uniqueItems": true
+        },
+        "verification_refs": {
+          "type": "array",
+          "minItems": 0,
+          "items": {
+            "type": "string"
+          },
+          "uniqueItems": true
+        },
+        "rule_refs": {
+          "type": "array",
+          "minItems": 0,
+          "items": {
+            "type": "string"
+          },
+          "uniqueItems": true
+        }
+      },
+      "additionalProperties": false
+    },
+    "decided_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "implementation_snapshot": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$"
+    },
+    "specification_snapshot": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$"
+    },
+    "audit_run_id": {
+      "type": "string",
+      "pattern": "^[A-Za-z0-9][A-Za-z0-9._:/-]*$"
+    },
+    "supersedes": {
+      "oneOf": [
+        {
+          "type": "string",
+          "pattern": "^[A-Za-z0-9][A-Za-z0-9._:/-]*$"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "decision_hash": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$"
+    }
+  },
+  "additionalProperties": false,
+  "x-v13.2-rules": [
+    "Immutable",
+    "New evidence creates a new record",
+    "Hash excludes decision_hash"
+  ],
+  "$id": "https://generic-discovery-engine.invalid/compliance/v13.2/compliance-decision-record.schema.yaml"
+}

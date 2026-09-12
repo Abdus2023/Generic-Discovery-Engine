@@ -1,0 +1,16 @@
+{
+  "schema_version": "13.2",
+  "formula": "current_state = to_state(highest contiguous valid transition sequence)",
+  "prerequisites": [
+    "all transitions valid",
+    "sequence contiguous",
+    "from_state matches predecessor to_state",
+    "identity stable",
+    "timestamps valid and ordered",
+    "hashes valid",
+    "transition guards valid"
+  ],
+  "malformed_result": "HISTORY_INVALID",
+  "independent_truth_source": false,
+  "deterministic": true
+}

@@ -1,0 +1,37 @@
+{
+  "schema_version": "13.2",
+  "objects": [
+    {
+      "aggregate_id": "AGGREGATE-V132-001",
+      "audit_snapshot_id": "AUDIT-SNAPSHOT-V132-001",
+      "aggregate_status": "BLOCKED",
+      "mandatory_counts": {
+        "proven_failure": 0,
+        "waived_failure": 0,
+        "blocked": 0,
+        "unresolved": 0,
+        "pass": 0,
+        "excluded": 0
+      },
+      "optional_counts": {
+        "proven_failure": 0,
+        "waived_failure": 0,
+        "blocked": 0,
+        "unresolved": 0,
+        "pass": 0,
+        "excluded": 0
+      },
+      "integrity_blockers": [
+        "INVALID_NORMATIVE_SPECIFICATION",
+        "EMPTY_REQUIREMENT_SCOPE",
+        "MISSING_IMPLEMENTATION_SOURCE",
+        "REMEDIATION_R2_NORMATIVE_BASIS_BLOCKED"
+      ],
+      "generated_at": "2026-09-12T17:20:43Z",
+      "aggregate_hash": "b85a733574040120f132c0f31b5075ec40a9054a06073c75364fd9509c0e14ac"
+    }
+  ],
+  "mandatory_set_status": "NO_MANDATORY_REQUIREMENTS",
+  "aggregate_status_after_integrity": "BLOCKED",
+  "explanation": "The empty mandatory set does not manufacture compliance; invalid specification and audit prerequisites block evaluation."
+}

@@ -1,0 +1,35 @@
+{
+  "schema_version": "13.2",
+  "distinctions": [
+    "STATE_HISTORY",
+    "CURRENT_STATE",
+    "CURRENT_DECISION",
+    "DERIVED_AGGREGATE",
+    "AUDIT_STATUS",
+    "CERTIFICATE"
+  ],
+  "domains": [
+    {
+      "domain": "REQUIREMENT_CONFORMANCE",
+      "owner": "COMPLIANCE_DECISION"
+    },
+    {
+      "domain": "FINDING_LIFECYCLE",
+      "owner": "AUDIT_FINDING"
+    },
+    {
+      "domain": "REMEDIATION_LIFECYCLE",
+      "owner": "REMEDIATION"
+    },
+    {
+      "domain": "PROGRAM_LIFECYCLE",
+      "owner": "REMEDIATION_PROGRAM"
+    },
+    {
+      "domain": "AGGREGATE_CONFORMANCE",
+      "owner": "AGGREGATE_FUNCTION"
+    }
+  ],
+  "state_substitution": "FORBIDDEN",
+  "reverse_mutation": "FORBIDDEN"
+}

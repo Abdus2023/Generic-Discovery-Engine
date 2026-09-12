@@ -1,0 +1,135 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Protocol-v13.2 AuditAggregate",
+  "type": "object",
+  "required": [
+    "aggregate_id",
+    "audit_snapshot_id",
+    "aggregate_status",
+    "mandatory_counts",
+    "optional_counts",
+    "integrity_blockers",
+    "generated_at",
+    "aggregate_hash"
+  ],
+  "properties": {
+    "aggregate_id": {
+      "type": "string",
+      "pattern": "^[A-Za-z0-9][A-Za-z0-9._:/-]*$"
+    },
+    "audit_snapshot_id": {
+      "type": "string",
+      "pattern": "^[A-Za-z0-9][A-Za-z0-9._:/-]*$"
+    },
+    "aggregate_status": {
+      "type": "string",
+      "enum": [
+        "NON_COMPLIANT",
+        "BLOCKED",
+        "UNVERIFIED",
+        "CONDITIONALLY_COMPLIANT",
+        "COMPLIANT",
+        "NO_MANDATORY_REQUIREMENTS"
+      ]
+    },
+    "mandatory_counts": {
+      "type": "object",
+      "required": [
+        "proven_failure",
+        "waived_failure",
+        "blocked",
+        "unresolved",
+        "pass",
+        "excluded"
+      ],
+      "properties": {
+        "proven_failure": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "waived_failure": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "blocked": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "unresolved": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "pass": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "excluded": {
+          "type": "integer",
+          "minimum": 0
+        }
+      },
+      "additionalProperties": false
+    },
+    "optional_counts": {
+      "type": "object",
+      "required": [
+        "proven_failure",
+        "waived_failure",
+        "blocked",
+        "unresolved",
+        "pass",
+        "excluded"
+      ],
+      "properties": {
+        "proven_failure": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "waived_failure": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "blocked": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "unresolved": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "pass": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "excluded": {
+          "type": "integer",
+          "minimum": 0
+        }
+      },
+      "additionalProperties": false
+    },
+    "integrity_blockers": {
+      "type": "array",
+      "minItems": 0,
+      "items": {
+        "type": "string"
+      },
+      "uniqueItems": true
+    },
+    "generated_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "aggregate_hash": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$"
+    }
+  },
+  "additionalProperties": false,
+  "x-v13.2-rules": [
+    "Derived, not manually assigned",
+    "Proven failure precedes blockers",
+    "Valid empty mandatory set is not compliant"
+  ],
+  "$id": "https://generic-discovery-engine.invalid/compliance/v13.2/audit-aggregate.schema.yaml"
+}

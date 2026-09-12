@@ -1,0 +1,52 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Protocol-v13.2 AuditStatus",
+  "type": "object",
+  "required": [
+    "audit_status_id",
+    "audit_snapshot_id",
+    "aggregate_id",
+    "status",
+    "certification_eligible",
+    "derived_at",
+    "status_hash"
+  ],
+  "properties": {
+    "audit_status_id": {
+      "type": "string",
+      "pattern": "^[A-Za-z0-9][A-Za-z0-9._:/-]*$"
+    },
+    "audit_snapshot_id": {
+      "type": "string",
+      "pattern": "^[A-Za-z0-9][A-Za-z0-9._:/-]*$"
+    },
+    "aggregate_id": {
+      "type": "string",
+      "pattern": "^[A-Za-z0-9][A-Za-z0-9._:/-]*$"
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "NON_COMPLIANT",
+        "BLOCKED",
+        "UNVERIFIED",
+        "CONDITIONALLY_COMPLIANT",
+        "COMPLIANT",
+        "NO_MANDATORY_REQUIREMENTS"
+      ]
+    },
+    "certification_eligible": {
+      "type": "boolean"
+    },
+    "derived_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "status_hash": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$"
+    }
+  },
+  "additionalProperties": false,
+  "$id": "https://generic-discovery-engine.invalid/compliance/v13.2/audit-status.schema.yaml"
+}

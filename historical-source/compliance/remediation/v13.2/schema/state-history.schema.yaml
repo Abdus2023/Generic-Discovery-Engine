@@ -1,0 +1,129 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Protocol-v13.2 StateHistory",
+  "type": "object",
+  "required": [
+    "history_id",
+    "object_type",
+    "object_id",
+    "initial_state",
+    "transitions",
+    "current_state",
+    "history_integrity",
+    "history_hash"
+  ],
+  "properties": {
+    "history_id": {
+      "type": "string",
+      "pattern": "^[A-Za-z0-9][A-Za-z0-9._:/-]*$"
+    },
+    "object_type": {
+      "type": "string"
+    },
+    "object_id": {
+      "type": "string",
+      "pattern": "^[A-Za-z0-9][A-Za-z0-9._:/-]*$"
+    },
+    "initial_state": {
+      "oneOf": [
+        {
+          "type": "string",
+          "enum": [
+            "ACTIVE",
+            "APPROVED",
+            "ASSESSED",
+            "BLOCKED",
+            "CANCELLED",
+            "CLASSIFIED",
+            "CLOSED",
+            "COMPLETE",
+            "COMPLETED",
+            "CONFORMANT",
+            "CREATED",
+            "DETECTED",
+            "EVALUATING",
+            "FAILED",
+            "IN_PROGRESS",
+            "MAPPED",
+            "NON_CONFORMANT",
+            "NOT_APPLICABLE",
+            "OPEN",
+            "PARTIALLY_CONFORMANT",
+            "PLANNED",
+            "PROPOSED",
+            "READY_FOR_VERIFICATION",
+            "REGRESSION",
+            "REJECTED",
+            "RESOLVED",
+            "REVERIFICATION",
+            "SUPERSEDED",
+            "TRIAGED",
+            "UNASSESSED",
+            "UNDER_REMEDIATION",
+            "UNKNOWN",
+            "UNVERIFIED",
+            "VALIDATED",
+            "VERIFIED",
+            "WAIVED"
+          ]
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "transitions": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "$ref": "state-transition.schema.yaml"
+      }
+    },
+    "current_state": {
+      "oneOf": [
+        {
+          "$ref": "current-state.schema.yaml"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "history_integrity": {
+      "type": "object",
+      "required": [
+        "valid",
+        "checked_at",
+        "error_codes"
+      ],
+      "properties": {
+        "valid": {
+          "type": "boolean"
+        },
+        "checked_at": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "error_codes": {
+          "type": "array",
+          "minItems": 0,
+          "items": {
+            "type": "string"
+          },
+          "uniqueItems": true
+        }
+      },
+      "additionalProperties": false
+    },
+    "history_hash": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$"
+    }
+  },
+  "additionalProperties": false,
+  "x-v13.2-rules": [
+    "Malformed history has no current_state projection",
+    "Hash excludes history_hash"
+  ],
+  "$id": "https://generic-discovery-engine.invalid/compliance/v13.2/state-history.schema.yaml"
+}

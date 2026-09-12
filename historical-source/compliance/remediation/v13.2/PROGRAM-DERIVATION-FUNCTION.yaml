@@ -1,0 +1,29 @@
+{
+  "schema_version": "13.2",
+  "precedence": [
+    "SUPERSEDED",
+    "CANCELLED",
+    "FAILED",
+    "BLOCKED",
+    "COMPLETED",
+    "EVALUATING",
+    "ACTIVE",
+    "PLANNED",
+    "TRIAGED",
+    "CREATED"
+  ],
+  "predicates": {
+    "SUPERSEDED": "program_superseded",
+    "CANCELLED": "program_cancelled",
+    "FAILED": "members_exist AND all_members_rejected",
+    "BLOCKED": "identified_blocking_condition",
+    "COMPLETED": "all_required_members_complete AND required_evaluation_complete",
+    "EVALUATING": "any_member_reverification_or_regression OR post_change_evaluation_pending OR complete_members_await_evaluation",
+    "ACTIVE": "any_member_in_progress_or_ready_for_verification",
+    "PLANNED": "any_member_proposed_assessed_or_approved",
+    "TRIAGED": "members_exist_otherwise",
+    "CREATED": "no_members"
+  },
+  "independent_assertion": "FORBIDDEN",
+  "truth_state_effect": "NONE"
+}

@@ -1,0 +1,30 @@
+{
+  "schema_version": "13.2",
+  "immutability": true,
+  "new_decision_triggers": [
+    "NEW_IMPLEMENTATION_STATE",
+    "NEW_EVIDENCE",
+    "CHANGED_REQUIREMENT",
+    "CHANGED_ORACLE"
+  ],
+  "supersession_deletes_predecessor": false,
+  "projection_key": [
+    "audit_id",
+    "requirement_id",
+    "specification_snapshot",
+    "implementation_snapshot"
+  ],
+  "latest_invalid_behavior": "DECISION_HISTORY_INVALID_NO_FALLBACK",
+  "validation_order": [
+    "LOAD_HISTORY",
+    "VALIDATE_RECORDS",
+    "AUDIT_IDENTITY",
+    "REQUIREMENT_IDENTITY",
+    "SPECIFICATION_SNAPSHOT",
+    "IMPLEMENTATION_SNAPSHOT",
+    "SUPERSESSION",
+    "APPLICABILITY",
+    "EFFECTIVE_WAIVER",
+    "SELECT_LATEST_VALID_APPLICABLE"
+  ]
+}

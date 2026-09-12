@@ -1,0 +1,14 @@
+{
+  "schema_version": "13.2",
+  "predicates": {
+    "H_state_history_valid": "PASS",
+    "D_current_decisions_valid": "BLOCKED_INVALID_SPECIFICATION_SCOPE",
+    "R_references_resolve": "PASS",
+    "T_temporal_integrity": "PASS_V13.2_PROJECTION",
+    "S_specification_snapshot_valid": "FAIL",
+    "E_required_evidence_integrity": "BLOCKED",
+    "result": "BLOCKED"
+  },
+  "earliest_invalid_prerequisite": "SPECIFICATION_SNAPSHOT",
+  "silent_fallback": false
+}

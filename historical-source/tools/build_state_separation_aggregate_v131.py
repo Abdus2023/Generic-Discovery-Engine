@@ -218,6 +218,7 @@ def protected_files() -> list[Path]:
 def main() -> None:
     required = [V13 / "VALIDATION.yaml", V13 / "REMEDIATION-PROGRAMS.yaml", OUT / "FINDINGS.yaml", OUT / "CONFORMANCE-DECISIONS.yaml", OUT / "AUDIT-CERTIFICATE.yaml"]
     if not all(path.is_file() for path in required): raise RuntimeError("validated Protocol-v13 and v12.1 packages are required")
+    if (V13 / "v13.2").exists(): raise RuntimeError("refusing to erase predecessor artifacts after append-only v13.2 extension")
     if DEST.exists():
         remediation_path = DEST / "REMEDIATIONS.yaml"
         transitions_path = DEST / "STATE-TRANSITIONS.yaml"

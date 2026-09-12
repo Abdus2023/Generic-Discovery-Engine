@@ -1,0 +1,159 @@
+{
+  "schema_version": "13.2",
+  "states": [
+    "CREATED",
+    "TRIAGED",
+    "PLANNED",
+    "ACTIVE",
+    "EVALUATING",
+    "COMPLETED",
+    "BLOCKED",
+    "FAILED",
+    "CANCELLED",
+    "SUPERSEDED"
+  ],
+  "definitions": {
+    "CREATED": "Program exists but has not undergone triage.",
+    "TRIAGED": "Finding and remediation scope were assessed sufficiently to determine program appropriateness.",
+    "PLANNED": "Required actions and dependencies are defined.",
+    "ACTIVE": "At least one remediation action is actively executing.",
+    "EVALUATING": "Changes exist and re-verification or regression evaluation is underway or pending.",
+    "COMPLETED": "All required actions and post-remediation evaluation completed; this has no conformance implication.",
+    "BLOCKED": "An identified dependency, environment, authorization, artifact, or verification blocker prevents progress.",
+    "FAILED": "The current remediation plan cannot achieve its declared objective.",
+    "CANCELLED": "The program was intentionally terminated without completion.",
+    "SUPERSEDED": "A newer remediation program replaces this immutable record."
+  },
+  "legal_transitions": [
+    {
+      "from": "CREATED",
+      "to": "TRIAGED",
+      "guard": "PROGRAM_EXISTS_AND_FINDING_SCOPE_RESOLVABLE"
+    },
+    {
+      "from": "TRIAGED",
+      "to": "PLANNED",
+      "guard": "SCOPE_TARGETS_STRATEGY_DEPENDENCIES_DEFINED"
+    },
+    {
+      "from": "PLANNED",
+      "to": "ACTIVE",
+      "guard": "ACTIONS_APPROVED_DEPENDENCIES_AVAILABLE_AUTHORIZATION_VALID"
+    },
+    {
+      "from": "ACTIVE",
+      "to": "EVALUATING",
+      "guard": "CHANGES_RECORDED_CHANGESET_VALID_IMPACT_COMPLETE"
+    },
+    {
+      "from": "EVALUATING",
+      "to": "COMPLETED",
+      "guard": "ACTIONS_REVERIFICATION_REGRESSION_RISKS_CLOSURE_COMPLETE"
+    },
+    {
+      "from": "CREATED",
+      "to": "CANCELLED",
+      "guard": "EXPLICIT_CANCELLATION"
+    },
+    {
+      "from": "TRIAGED",
+      "to": "CANCELLED",
+      "guard": "EXPLICIT_CANCELLATION"
+    },
+    {
+      "from": "PLANNED",
+      "to": "CANCELLED",
+      "guard": "EXPLICIT_CANCELLATION"
+    },
+    {
+      "from": "BLOCKED",
+      "to": "FAILED",
+      "guard": "BLOCK_PROVES_PLAN_CANNOT_ACHIEVE_OBJECTIVE"
+    },
+    {
+      "from": "BLOCKED",
+      "to": "CANCELLED",
+      "guard": "EXPLICIT_CANCELLATION"
+    },
+    {
+      "from": "TRIAGED",
+      "to": "SUPERSEDED",
+      "guard": "AUTHORIZED_SUCCESSOR_EXISTS"
+    },
+    {
+      "from": "PLANNED",
+      "to": "SUPERSEDED",
+      "guard": "AUTHORIZED_SUCCESSOR_EXISTS"
+    },
+    {
+      "from": "ACTIVE",
+      "to": "SUPERSEDED",
+      "guard": "AUTHORIZED_SUCCESSOR_EXISTS"
+    },
+    {
+      "from": "EVALUATING",
+      "to": "SUPERSEDED",
+      "guard": "AUTHORIZED_SUCCESSOR_EXISTS"
+    },
+    {
+      "from": "CREATED",
+      "to": "BLOCKED",
+      "guard": "IDENTIFIED_BLOCKING_CONDITION_EXISTS"
+    },
+    {
+      "from": "TRIAGED",
+      "to": "BLOCKED",
+      "guard": "IDENTIFIED_BLOCKING_CONDITION_EXISTS"
+    },
+    {
+      "from": "PLANNED",
+      "to": "BLOCKED",
+      "guard": "IDENTIFIED_BLOCKING_CONDITION_EXISTS"
+    },
+    {
+      "from": "ACTIVE",
+      "to": "BLOCKED",
+      "guard": "IDENTIFIED_BLOCKING_CONDITION_EXISTS"
+    },
+    {
+      "from": "EVALUATING",
+      "to": "BLOCKED",
+      "guard": "IDENTIFIED_BLOCKING_CONDITION_EXISTS"
+    },
+    {
+      "from": "BLOCKED",
+      "to": "CREATED",
+      "guard": "BLOCK_REMOVED_AND_PREVIOUS_OPERATIONAL_STATE_REVALIDATED"
+    },
+    {
+      "from": "BLOCKED",
+      "to": "TRIAGED",
+      "guard": "BLOCK_REMOVED_AND_PREVIOUS_OPERATIONAL_STATE_REVALIDATED"
+    },
+    {
+      "from": "BLOCKED",
+      "to": "PLANNED",
+      "guard": "BLOCK_REMOVED_AND_PREVIOUS_OPERATIONAL_STATE_REVALIDATED"
+    },
+    {
+      "from": "BLOCKED",
+      "to": "ACTIVE",
+      "guard": "BLOCK_REMOVED_AND_PREVIOUS_OPERATIONAL_STATE_REVALIDATED"
+    },
+    {
+      "from": "BLOCKED",
+      "to": "EVALUATING",
+      "guard": "BLOCK_REMOVED_AND_PREVIOUS_OPERATIONAL_STATE_REVALIDATED"
+    }
+  ],
+  "terminal_states": [
+    "COMPLETED",
+    "FAILED",
+    "CANCELLED",
+    "SUPERSEDED"
+  ],
+  "completed_to_active": "FORBIDDEN",
+  "post_completion_work": "NEW_PROGRAM_OR_AUTHORIZED_SUCCESSOR",
+  "block_cause_required": true,
+  "conformance_effect": "NONE"
+}

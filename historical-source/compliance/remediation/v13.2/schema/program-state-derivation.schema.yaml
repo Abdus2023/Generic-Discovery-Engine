@@ -1,0 +1,100 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Protocol-v13.2 ProgramStateDerivation",
+  "type": "object",
+  "required": [
+    "derivation_id",
+    "program_id",
+    "remediation_ids",
+    "remediation_states",
+    "program_predicates",
+    "precedence",
+    "derived_state",
+    "derived_at",
+    "evidence_refs",
+    "derivation_hash"
+  ],
+  "properties": {
+    "derivation_id": {
+      "type": "string",
+      "pattern": "^[A-Za-z0-9][A-Za-z0-9._:/-]*$"
+    },
+    "program_id": {
+      "type": "string",
+      "pattern": "^[A-Za-z0-9][A-Za-z0-9._:/-]*$"
+    },
+    "remediation_ids": {
+      "type": "array",
+      "minItems": 0,
+      "items": {
+        "type": "string"
+      },
+      "uniqueItems": true
+    },
+    "remediation_states": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "enum": [
+          "PROPOSED",
+          "ASSESSED",
+          "APPROVED",
+          "IN_PROGRESS",
+          "READY_FOR_VERIFICATION",
+          "REVERIFICATION",
+          "REGRESSION",
+          "COMPLETE",
+          "FAILED",
+          "BLOCKED",
+          "REJECTED",
+          "SUPERSEDED",
+          "CANCELLED"
+        ]
+      }
+    },
+    "program_predicates": {
+      "type": "object"
+    },
+    "precedence": {
+      "type": "array",
+      "minItems": 10,
+      "items": {
+        "type": "string"
+      },
+      "uniqueItems": true
+    },
+    "derived_state": {
+      "type": "string",
+      "enum": [
+        "CREATED",
+        "TRIAGED",
+        "PLANNED",
+        "ACTIVE",
+        "EVALUATING",
+        "COMPLETED",
+        "BLOCKED",
+        "FAILED",
+        "CANCELLED",
+        "SUPERSEDED"
+      ]
+    },
+    "derived_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "evidence_refs": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "string"
+      },
+      "uniqueItems": true
+    },
+    "derivation_hash": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$"
+    }
+  },
+  "additionalProperties": false,
+  "$id": "https://generic-discovery-engine.invalid/compliance/v13.2/program-state-derivation.schema.yaml"
+}

@@ -1,0 +1,86 @@
+{
+  "schema_version": "13.2",
+  "supported_queries": [
+    "decision_at(t)",
+    "finding_state_at(t)",
+    "remediation_state_at(t)",
+    "program_state_at(t)",
+    "aggregate_at(t)"
+  ],
+  "selection": "latest valid event at or before t within identified snapshot lineage",
+  "wall_clock_dependency": false,
+  "queries": [
+    {
+      "query": "state_at",
+      "object_id": "FINDING-V121-001",
+      "at": "2026-09-12T17:20:42Z",
+      "result": "NO_ACCEPTED_V13.2_STATE"
+    },
+    {
+      "query": "state_at",
+      "object_id": "FINDING-V121-001",
+      "at": "2026-09-12T17:20:43Z",
+      "result": "OPEN"
+    },
+    {
+      "query": "state_at",
+      "object_id": "FINDING-V121-002",
+      "at": "2026-09-12T17:20:42Z",
+      "result": "NO_ACCEPTED_V13.2_STATE"
+    },
+    {
+      "query": "state_at",
+      "object_id": "FINDING-V121-002",
+      "at": "2026-09-12T17:20:43Z",
+      "result": "OPEN"
+    },
+    {
+      "query": "state_at",
+      "object_id": "FINDING-V121-003",
+      "at": "2026-09-12T17:20:42Z",
+      "result": "NO_ACCEPTED_V13.2_STATE"
+    },
+    {
+      "query": "state_at",
+      "object_id": "FINDING-V121-003",
+      "at": "2026-09-12T17:20:43Z",
+      "result": "OPEN"
+    },
+    {
+      "query": "state_at",
+      "object_id": "PROGRAM-V131-001",
+      "at": "2026-09-12T17:20:42Z",
+      "result": "NO_ACCEPTED_V13.2_STATE"
+    },
+    {
+      "query": "state_at",
+      "object_id": "PROGRAM-V131-001",
+      "at": "2026-09-12T17:20:43Z",
+      "result": "CREATED"
+    },
+    {
+      "query": "state_at",
+      "object_id": "PROGRAM-V131-002",
+      "at": "2026-09-12T17:20:42Z",
+      "result": "NO_ACCEPTED_V13.2_STATE"
+    },
+    {
+      "query": "state_at",
+      "object_id": "PROGRAM-V131-002",
+      "at": "2026-09-12T17:20:43Z",
+      "result": "CREATED"
+    },
+    {
+      "query": "state_at",
+      "object_id": "PROGRAM-V131-003",
+      "at": "2026-09-12T17:20:42Z",
+      "result": "NO_ACCEPTED_V13.2_STATE"
+    },
+    {
+      "query": "state_at",
+      "object_id": "PROGRAM-V131-003",
+      "at": "2026-09-12T17:20:43Z",
+      "result": "CREATED"
+    }
+  ]
+}

@@ -1,0 +1,60 @@
+{
+  "schema_version": "13.2",
+  "status": "PASS",
+  "method": "independent validators executed against isolated version-correct trees",
+  "regressions": [
+    {
+      "protocol": "13.1",
+      "source": "current tree isolated copy",
+      "passed": 110,
+      "failed": 0,
+      "blocked": 1,
+      "overall_status": "STRUCTURAL_PASS_AGGREGATE_BLOCKED"
+    },
+    {
+      "protocol": "13.0",
+      "source": "current tree isolated copy",
+      "passed": 115,
+      "failed": 0,
+      "blocked": 1,
+      "overall_status": "STRUCTURAL_PASS_REMEDIATION_BLOCKED"
+    },
+    {
+      "protocol": "12.1",
+      "source": "current tree isolated copy",
+      "passed": 194,
+      "failed": 0,
+      "blocked": 1,
+      "overall_status": "STRUCTURAL_PASS_AUDIT_BLOCKED"
+    },
+    {
+      "protocol": "12.0",
+      "source_commit": "bc12e37",
+      "passed": 148,
+      "failed": 0,
+      "blocked": 1,
+      "overall_status": "STRUCTURAL_PASS_AUDIT_BLOCKED"
+    },
+    {
+      "protocol": "11.1",
+      "source_commit": "9884d9d",
+      "passed": 177,
+      "failed": 0,
+      "blocked": 1,
+      "overall_status": "STRUCTURAL_PASS_INPUT_REJECTED"
+    },
+    {
+      "protocol": "10.1",
+      "source_commit": "e32457a",
+      "passed": 143,
+      "failed": 0,
+      "blocked": 1,
+      "overall_status": "STRUCTURAL_PASS_INPUT_BLOCKED"
+    }
+  ],
+  "append_only_guards": {
+    "v13": "PASS_REFUSED",
+    "v13.1": "PASS_REFUSED",
+    "v13.2": "PASS_REFUSED"
+  }
+}

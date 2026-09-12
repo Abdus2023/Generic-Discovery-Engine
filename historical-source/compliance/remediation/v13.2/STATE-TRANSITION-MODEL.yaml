@@ -1,0 +1,21 @@
+{
+  "schema_version": "13.2",
+  "immutability": true,
+  "validation_order": [
+    "OBJECT_IDENTITY",
+    "INITIAL_STATE",
+    "SEQUENCE_ORDER",
+    "SEQUENCE_CONTINUITY",
+    "PREVIOUS_TRANSITION",
+    "FROM_STATE",
+    "TO_STATE",
+    "TRANSITION_GUARD",
+    "EVIDENCE_REFERENCES",
+    "TIMESTAMPS",
+    "EVENT_HASH",
+    "CURRENT_STATE_DERIVATION"
+  ],
+  "failure_behavior": "HISTORY_INVALID_NO_PROJECTION",
+  "skip_invalid_transition": false,
+  "hash_canonicalization": "UTF-8 sorted-key compact JSON excluding event_hash"
+}

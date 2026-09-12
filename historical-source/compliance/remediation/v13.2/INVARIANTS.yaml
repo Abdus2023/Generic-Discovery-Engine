@@ -1,0 +1,105 @@
+{
+  "schema_version": "13.2",
+  "invariants": [
+    {
+      "invariant_id": "V132-I01",
+      "statement": "Historical transitions MUST NOT be modified or deleted.",
+      "enforcement": "MECHANICAL"
+    },
+    {
+      "invariant_id": "V132-I02",
+      "statement": "Current state MUST be derivable from valid history.",
+      "enforcement": "MECHANICAL"
+    },
+    {
+      "invariant_id": "V132-I03",
+      "statement": "A compliance decision MUST NOT be mutated after recording.",
+      "enforcement": "MECHANICAL"
+    },
+    {
+      "invariant_id": "V132-I04",
+      "statement": "New evidence MUST produce a new decision record.",
+      "enforcement": "MECHANICAL"
+    },
+    {
+      "invariant_id": "V132-I05",
+      "statement": "Program completion MUST NOT directly produce conformance.",
+      "enforcement": "MECHANICAL"
+    },
+    {
+      "invariant_id": "V132-I06",
+      "statement": "Finding closure MUST NOT directly produce conformance.",
+      "enforcement": "MECHANICAL"
+    },
+    {
+      "invariant_id": "V132-I07",
+      "statement": "Remediation completion MUST NOT directly produce conformance.",
+      "enforcement": "MECHANICAL"
+    },
+    {
+      "invariant_id": "V132-I08",
+      "statement": "A proven mandatory violation MUST produce NON_COMPLIANT even when another requirement is blocked.",
+      "enforcement": "MECHANICAL"
+    },
+    {
+      "invariant_id": "V132-I09",
+      "statement": "A mandatory blocker MUST produce BLOCKED when no proven unwaived mandatory violation exists.",
+      "enforcement": "MECHANICAL"
+    },
+    {
+      "invariant_id": "V132-I10",
+      "statement": "An unresolved mandatory requirement prevents CONDITIONALLY_COMPLIANT.",
+      "enforcement": "MECHANICAL"
+    },
+    {
+      "invariant_id": "V132-I11",
+      "statement": "An effective waiver changes disposition and does not alter the underlying decision.",
+      "enforcement": "MECHANICAL"
+    },
+    {
+      "invariant_id": "V132-I12",
+      "statement": "Optional requirements cannot independently produce NON_COMPLIANT.",
+      "enforcement": "MECHANICAL"
+    },
+    {
+      "invariant_id": "V132-I13",
+      "statement": "An empty applicable mandatory set produces NO_MANDATORY_REQUIREMENTS when integrity permits evaluation.",
+      "enforcement": "MECHANICAL"
+    },
+    {
+      "invariant_id": "V132-I14",
+      "statement": "Superseded decisions remain historically queryable.",
+      "enforcement": "MECHANICAL"
+    },
+    {
+      "invariant_id": "V132-I15",
+      "statement": "Past aggregate results remain reproducible from their snapshots.",
+      "enforcement": "MECHANICAL"
+    },
+    {
+      "invariant_id": "V132-I16",
+      "statement": "Malformed state history produces an explicit integrity failure and no current projection.",
+      "enforcement": "MECHANICAL"
+    },
+    {
+      "invariant_id": "V132-I17",
+      "statement": "A completed program cannot transition back into active execution.",
+      "enforcement": "MECHANICAL"
+    },
+    {
+      "invariant_id": "V132-I18",
+      "statement": "Post-completion remediation uses a new program or explicitly authorized successor.",
+      "enforcement": "MECHANICAL"
+    },
+    {
+      "invariant_id": "V132-I19",
+      "statement": "Aggregate status is derived and cannot be manually assigned.",
+      "enforcement": "MECHANICAL"
+    },
+    {
+      "invariant_id": "V132-I20",
+      "statement": "A certificate describes a specific audit snapshot rather than universal system truth.",
+      "enforcement": "MECHANICAL"
+    }
+  ]
+}

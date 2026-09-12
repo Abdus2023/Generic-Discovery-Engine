@@ -1,0 +1,121 @@
+{
+  "schema_version": "13.2",
+  "vectors": [
+    {
+      "vector_id": "PROGRAM-VECTOR-01",
+      "remediation_states": [],
+      "predicates": {},
+      "expected": "CREATED",
+      "actual": "CREATED",
+      "pass": true
+    },
+    {
+      "vector_id": "PROGRAM-VECTOR-02",
+      "remediation_states": [
+        "PROPOSED"
+      ],
+      "predicates": {},
+      "expected": "PLANNED",
+      "actual": "PLANNED",
+      "pass": true
+    },
+    {
+      "vector_id": "PROGRAM-VECTOR-03",
+      "remediation_states": [
+        "IN_PROGRESS"
+      ],
+      "predicates": {},
+      "expected": "ACTIVE",
+      "actual": "ACTIVE",
+      "pass": true
+    },
+    {
+      "vector_id": "PROGRAM-VECTOR-04",
+      "remediation_states": [
+        "REVERIFICATION"
+      ],
+      "predicates": {},
+      "expected": "EVALUATING",
+      "actual": "EVALUATING",
+      "pass": true
+    },
+    {
+      "vector_id": "PROGRAM-VECTOR-05",
+      "remediation_states": [
+        "COMPLETE"
+      ],
+      "predicates": {
+        "evaluation_pending": true
+      },
+      "expected": "EVALUATING",
+      "actual": "EVALUATING",
+      "pass": true
+    },
+    {
+      "vector_id": "PROGRAM-VECTOR-06",
+      "remediation_states": [
+        "COMPLETE"
+      ],
+      "predicates": {
+        "evaluation_complete": true
+      },
+      "expected": "COMPLETED",
+      "actual": "COMPLETED",
+      "pass": true
+    },
+    {
+      "vector_id": "PROGRAM-VECTOR-07",
+      "remediation_states": [
+        "BLOCKED"
+      ],
+      "predicates": {
+        "blocking": true
+      },
+      "expected": "BLOCKED",
+      "actual": "BLOCKED",
+      "pass": true
+    },
+    {
+      "vector_id": "PROGRAM-VECTOR-08",
+      "remediation_states": [
+        "REJECTED"
+      ],
+      "predicates": {
+        "blocking": true
+      },
+      "expected": "FAILED",
+      "actual": "FAILED",
+      "pass": true
+    },
+    {
+      "vector_id": "PROGRAM-VECTOR-09",
+      "remediation_states": [
+        "IN_PROGRESS"
+      ],
+      "predicates": {
+        "cancelled": true
+      },
+      "expected": "CANCELLED",
+      "actual": "CANCELLED",
+      "pass": true
+    },
+    {
+      "vector_id": "PROGRAM-VECTOR-10",
+      "remediation_states": [
+        "IN_PROGRESS"
+      ],
+      "predicates": {
+        "superseded": true,
+        "cancelled": true
+      },
+      "expected": "SUPERSEDED",
+      "actual": "SUPERSEDED",
+      "pass": true
+    }
+  ],
+  "summary": {
+    "total": 10,
+    "passed": 10,
+    "failed": 0
+  }
+}

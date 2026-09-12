@@ -1,0 +1,35 @@
+{
+  "schema_version": "13.2",
+  "classification": {
+    "NON_CONFORMANT_UNWAIVED": "PROVEN_FAILURE",
+    "NON_CONFORMANT_WAIVED": "WAIVED_FAILURE",
+    "BLOCKED": "BLOCKED",
+    "PARTIALLY_CONFORMANT_UNVERIFIED_UNKNOWN": "UNRESOLVED",
+    "CONFORMANT": "PASS",
+    "NOT_APPLICABLE": "EXCLUDED"
+  },
+  "ordered_decision": [
+    "IF_PROVEN_FAILURE_RETURN_NON_COMPLIANT",
+    "ELSE_IF_INTEGRITY_OR_MANDATORY_BLOCKED_RETURN_BLOCKED",
+    "ELSE_IF_UNRESOLVED_RETURN_UNVERIFIED",
+    "ELSE_IF_WAIVED_FAILURE_RETURN_CONDITIONALLY_COMPLIANT",
+    "ELSE_IF_APPLICABLE_MANDATORY_EMPTY_RETURN_NO_MANDATORY_REQUIREMENTS",
+    "ELSE_RETURN_COMPLIANT"
+  ],
+  "precedence": [
+    "PROVEN_FAILURE",
+    "BLOCKED",
+    "UNRESOLVED",
+    "WAIVED_FAILURE",
+    "PASS",
+    "NO_MANDATORY_REQUIREMENTS"
+  ],
+  "optional_reporting": {
+    "proven_failure": "OPTIONAL_FAILURE",
+    "unresolved": "OPTIONAL_UNVERIFIED",
+    "blocked": "OPTIONAL_BLOCKED"
+  },
+  "optional_requirements_change_mandatory_aggregate": false,
+  "process_states_are_inputs": false,
+  "deterministic": true
+}
