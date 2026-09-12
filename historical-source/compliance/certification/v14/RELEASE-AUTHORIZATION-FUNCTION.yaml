@@ -1,0 +1,18 @@
+{
+  "schema_version": "14.0",
+  "inputs": [
+    "RELEASE_POLICY",
+    "CERTIFICATE_SET",
+    "CURRENT_AGGREGATE",
+    "CURRENT_FINDINGS",
+    "EFFECTIVE_WAIVERS",
+    "RESIDUAL_RISK_ACCEPTANCE",
+    "EVIDENCE_VALIDITY",
+    "SECURITY_STATUS",
+    "RELEASE_POLICY_INTEGRITY",
+    "RELEASE_AUTHORITY",
+    "RELEASE_SNAPSHOT"
+  ],
+  "distinct_from_aggregate": true,
+  "default_strict_result": "AUTHORIZED_ONLY_IF_ALL_MANDATORY_RELEASE_PREDICATES_PASS"
+}

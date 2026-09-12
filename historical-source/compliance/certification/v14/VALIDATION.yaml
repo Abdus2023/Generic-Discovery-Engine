@@ -1,0 +1,521 @@
+{
+  "schema_version": "14.0",
+  "validator": "Protocol-v14 independent certificate and release-gate validator",
+  "overall_status": "STRUCTURAL_PASS_CERTIFICATION_RELEASE_BLOCKED",
+  "acceptance": "BLOCKED",
+  "summary": {
+    "total": 71,
+    "passed": 70,
+    "failed": 0,
+    "blocked": 1
+  },
+  "object_counts": {
+    "schemas": 23,
+    "current_certificates": 0,
+    "current_snapshot_seals": 0,
+    "current_revocations": 0,
+    "current_waivers": 0,
+    "current_release_snapshots": 0,
+    "current_release_gates": 0,
+    "certificate_invariants": 20
+  },
+  "checks": [
+    {
+      "check_id": "I01",
+      "category": "inventory",
+      "result": "PASS",
+      "description": "all 68 generator-owned v14 deliverables exist",
+      "detail": ""
+    },
+    {
+      "check_id": "I02",
+      "category": "syntax",
+      "result": "PASS",
+      "description": "all v14 YAML artifacts are JSON-compatible and parseable",
+      "detail": "[]"
+    },
+    {
+      "check_id": "S01",
+      "category": "schemas",
+      "result": "PASS",
+      "description": "all 23 dedicated schemas have unique stable IDs",
+      "detail": ""
+    },
+    {
+      "check_id": "S02",
+      "category": "schemas",
+      "result": "PASS",
+      "description": "schemas prohibit undeclared object fields",
+      "detail": ""
+    },
+    {
+      "check_id": "S03",
+      "category": "schemas",
+      "result": "PASS",
+      "description": "schema registry resolves every schema with exact bytes",
+      "detail": "[]"
+    },
+    {
+      "check_id": "S04",
+      "category": "schemas",
+      "result": "PASS",
+      "description": "all production and synthetic objects satisfy their dedicated schemas",
+      "detail": "[]"
+    },
+    {
+      "check_id": "L01",
+      "category": "separation",
+      "result": "PASS",
+      "description": "aggregate, certificate, and release remain three independent layers",
+      "detail": ""
+    },
+    {
+      "check_id": "L02",
+      "category": "separation",
+      "result": "PASS",
+      "description": "controlled chain has no compliance-to-certification or certification-to-release shortcut",
+      "detail": ""
+    },
+    {
+      "check_id": "L03",
+      "category": "authority",
+      "result": "PASS",
+      "description": "certification, waiver, and release authority policies are independently owned",
+      "detail": ""
+    },
+    {
+      "check_id": "E01",
+      "category": "eligibility",
+      "result": "PASS",
+      "description": "certification policy hashes reproduce canonically",
+      "detail": "[]"
+    },
+    {
+      "check_id": "E02",
+      "category": "eligibility",
+      "result": "PASS",
+      "description": "all six conjunctive certificate-eligibility vectors reproduce independently",
+      "detail": "[]"
+    },
+    {
+      "check_id": "E03",
+      "category": "eligibility",
+      "result": "PASS",
+      "description": "eligibility requires all nine mandatory predicates and cannot approve aggregate truth",
+      "detail": ""
+    },
+    {
+      "check_id": "E04",
+      "category": "current",
+      "result": "PASS",
+      "description": "current eligibility is ineligible because no aggregate exists",
+      "detail": ""
+    },
+    {
+      "check_id": "E05",
+      "category": "hashes",
+      "result": "PASS",
+      "description": "current eligibility result hash validates",
+      "detail": ""
+    },
+    {
+      "check_id": "C01",
+      "category": "certificate",
+      "result": "PASS",
+      "description": "all fourteen certificate validity vectors reproduce independently",
+      "detail": "[]"
+    },
+    {
+      "check_id": "C02",
+      "category": "hashes",
+      "result": "PASS",
+      "description": "all certificate validity result hashes reproduce",
+      "detail": "[]"
+    },
+    {
+      "check_id": "C03",
+      "category": "aggregate",
+      "result": "PASS",
+      "description": "recorded/recomputed aggregate mismatch invalidates certificate",
+      "detail": ""
+    },
+    {
+      "check_id": "C04",
+      "category": "integrity",
+      "result": "PASS",
+      "description": "certificate hash, seal, signature, and authority fail independently",
+      "detail": ""
+    },
+    {
+      "check_id": "C05",
+      "category": "verification",
+      "result": "PASS",
+      "description": "prescribed twelve-step certificate sequence is exact and unskippable",
+      "detail": ""
+    },
+    {
+      "check_id": "C06",
+      "category": "separation",
+      "result": "PASS",
+      "description": "hash integrity, authenticated authority, and proof of conformance are distinct",
+      "detail": ""
+    },
+    {
+      "check_id": "T01",
+      "category": "state-machine",
+      "result": "PASS",
+      "description": "certificate lifecycle includes seven states and all state vectors pass",
+      "detail": ""
+    },
+    {
+      "check_id": "T02",
+      "category": "state-machine",
+      "result": "PASS",
+      "description": "revoked and expired certificates cannot return to valid",
+      "detail": ""
+    },
+    {
+      "check_id": "T03",
+      "category": "history",
+      "result": "PASS",
+      "description": "revocation and supersession preserve historical aggregates",
+      "detail": ""
+    },
+    {
+      "check_id": "F01",
+      "category": "freshness",
+      "result": "PASS",
+      "description": "all four policy-driven freshness vectors reproduce independently",
+      "detail": "[]"
+    },
+    {
+      "check_id": "F02",
+      "category": "freshness",
+      "result": "PASS",
+      "description": "time alone invalidates evidence only under explicit max-age policy",
+      "detail": ""
+    },
+    {
+      "check_id": "W01",
+      "category": "waiver",
+      "result": "PASS",
+      "description": "authorized, unauthorized, expired, and revoked waiver cases reproduce",
+      "detail": "[]"
+    },
+    {
+      "check_id": "W02",
+      "category": "waiver",
+      "result": "PASS",
+      "description": "unauthorized and expired waivers have no effect and do not mutate decisions",
+      "detail": ""
+    },
+    {
+      "check_id": "H01",
+      "category": "sealing",
+      "result": "PASS",
+      "description": "seven exact input planes are sealed before issuance",
+      "detail": ""
+    },
+    {
+      "check_id": "H02",
+      "category": "sealing",
+      "result": "PASS",
+      "description": "snapshot seal vectors prove integrity and new-snapshot behavior",
+      "detail": "[]"
+    },
+    {
+      "check_id": "R01",
+      "category": "release",
+      "result": "PASS",
+      "description": "all thirteen strict, conditional, authority, mismatch, risk, and security release vectors reproduce",
+      "detail": "[]"
+    },
+    {
+      "check_id": "R02",
+      "category": "hashes",
+      "result": "PASS",
+      "description": "release policy, snapshot, and evaluation hashes reproduce",
+      "detail": "[]"
+    },
+    {
+      "check_id": "R03",
+      "category": "release",
+      "result": "PASS",
+      "description": "artifact/snapshot mismatch blocks authorization",
+      "detail": ""
+    },
+    {
+      "check_id": "R04",
+      "category": "state-machine",
+      "result": "PASS",
+      "description": "release gate states, guards, recovery, and terminal behavior validate",
+      "detail": ""
+    },
+    {
+      "check_id": "R05",
+      "category": "reproducibility",
+      "result": "PASS",
+      "description": "build artifact identity match and mismatch vectors pass",
+      "detail": ""
+    },
+    {
+      "check_id": "R06",
+      "category": "authority",
+      "result": "PASS",
+      "description": "release authorization is a distinct policy function with explicit release snapshot",
+      "detail": ""
+    },
+    {
+      "check_id": "U01",
+      "category": "current",
+      "result": "PASS",
+      "description": "current v14 binding preserves blocked v13.3 truth",
+      "detail": ""
+    },
+    {
+      "check_id": "U02",
+      "category": "non-invention",
+      "result": "PASS",
+      "description": "no current certificate, seal, revocation, waiver, release snapshot, or release gate is invented",
+      "detail": ""
+    },
+    {
+      "check_id": "U03",
+      "category": "current",
+      "result": "PASS",
+      "description": "certification and release are explicitly not authorized",
+      "detail": ""
+    },
+    {
+      "check_id": "N01",
+      "category": "invariants",
+      "result": "PASS",
+      "description": "all twenty CERT invariants have exact stable IDs and mechanical checks",
+      "detail": "[]"
+    },
+    {
+      "check_id": "CERT-001",
+      "category": "certificate-invariant",
+      "result": "PASS",
+      "description": "Certificate scope MUST be explicit.",
+      "detail": ""
+    },
+    {
+      "check_id": "CERT-002",
+      "category": "certificate-invariant",
+      "result": "PASS",
+      "description": "Certificate MUST identify specification snapshot.",
+      "detail": ""
+    },
+    {
+      "check_id": "CERT-003",
+      "category": "certificate-invariant",
+      "result": "PASS",
+      "description": "Certificate MUST identify implementation snapshot.",
+      "detail": ""
+    },
+    {
+      "check_id": "CERT-004",
+      "category": "certificate-invariant",
+      "result": "PASS",
+      "description": "Certificate MUST identify aggregate result.",
+      "detail": ""
+    },
+    {
+      "check_id": "CERT-005",
+      "category": "certificate-invariant",
+      "result": "PASS",
+      "description": "Certificate MUST identify certification authority.",
+      "detail": ""
+    },
+    {
+      "check_id": "CERT-006",
+      "category": "certificate-invariant",
+      "result": "PASS",
+      "description": "Certificate MUST NOT mutate the underlying aggregate.",
+      "detail": ""
+    },
+    {
+      "check_id": "CERT-007",
+      "category": "certificate-invariant",
+      "result": "PASS",
+      "description": "Historical certificates MUST remain immutable.",
+      "detail": ""
+    },
+    {
+      "check_id": "CERT-008",
+      "category": "certificate-invariant",
+      "result": "PASS",
+      "description": "Superseded certificates MUST remain historically queryable.",
+      "detail": ""
+    },
+    {
+      "check_id": "CERT-009",
+      "category": "certificate-invariant",
+      "result": "PASS",
+      "description": "Revoked certificates MUST NOT be treated as valid.",
+      "detail": ""
+    },
+    {
+      "check_id": "CERT-010",
+      "category": "certificate-invariant",
+      "result": "PASS",
+      "description": "Expired certificates MUST NOT be treated as valid.",
+      "detail": ""
+    },
+    {
+      "check_id": "CERT-011",
+      "category": "certificate-invariant",
+      "result": "PASS",
+      "description": "Certificate aggregate MUST be reproducible.",
+      "detail": ""
+    },
+    {
+      "check_id": "CERT-012",
+      "category": "certificate-invariant",
+      "result": "PASS",
+      "description": "Certificate hash MUST validate.",
+      "detail": ""
+    },
+    {
+      "check_id": "CERT-013",
+      "category": "certificate-invariant",
+      "result": "PASS",
+      "description": "Signature MUST validate when signing is required.",
+      "detail": ""
+    },
+    {
+      "check_id": "CERT-014",
+      "category": "certificate-invariant",
+      "result": "PASS",
+      "description": "Unauthorized waivers MUST NOT affect certification.",
+      "detail": ""
+    },
+    {
+      "check_id": "CERT-015",
+      "category": "certificate-invariant",
+      "result": "PASS",
+      "description": "Expired waivers MUST NOT affect certification.",
+      "detail": ""
+    },
+    {
+      "check_id": "CERT-016",
+      "category": "certificate-invariant",
+      "result": "PASS",
+      "description": "Release authorization MUST be evaluated separately from compliance.",
+      "detail": ""
+    },
+    {
+      "check_id": "CERT-017",
+      "category": "certificate-invariant",
+      "result": "PASS",
+      "description": "Release artifact identity MUST match the certified scope.",
+      "detail": ""
+    },
+    {
+      "check_id": "CERT-018",
+      "category": "certificate-invariant",
+      "result": "PASS",
+      "description": "Snapshot changes MUST create a new evaluation.",
+      "detail": ""
+    },
+    {
+      "check_id": "CERT-019",
+      "category": "certificate-invariant",
+      "result": "PASS",
+      "description": "Certificate validity MUST NOT rewrite historical aggregate results.",
+      "detail": ""
+    },
+    {
+      "check_id": "CERT-020",
+      "category": "certificate-invariant",
+      "result": "PASS",
+      "description": "A valid signature MUST NOT be interpreted as proof of conformance.",
+      "detail": ""
+    },
+    {
+      "check_id": "O01",
+      "category": "registry",
+      "result": "PASS",
+      "description": "all ten current v14 normative IDs are unique",
+      "detail": ""
+    },
+    {
+      "check_id": "O02",
+      "category": "registry",
+      "result": "PASS",
+      "description": "v14 IDs are globally unique from predecessor registries",
+      "detail": ""
+    },
+    {
+      "check_id": "O03",
+      "category": "references",
+      "result": "PASS",
+      "description": "v14 predecessor registry references resolve with exact hashes",
+      "detail": ""
+    },
+    {
+      "check_id": "O04",
+      "category": "references",
+      "result": "PASS",
+      "description": "all normative authority-policy references resolve exactly once with matching type",
+      "detail": ""
+    },
+    {
+      "check_id": "P01",
+      "category": "append-only",
+      "result": "PASS",
+      "description": "all 292 predecessor compliance artifacts remain byte-identical",
+      "detail": "[]"
+    },
+    {
+      "check_id": "P02",
+      "category": "append-only",
+      "result": "PASS",
+      "description": "v13.3 builder refuses to erase the v14 extension",
+      "detail": ""
+    },
+    {
+      "check_id": "Q01",
+      "category": "determinism",
+      "result": "PASS",
+      "description": "all 68 generator outputs reproduce byte-for-byte",
+      "detail": ""
+    },
+    {
+      "check_id": "Q02",
+      "category": "regression",
+      "result": "PASS",
+      "description": "v10.1 through v13.3 regressions and all append guards pass",
+      "detail": ""
+    },
+    {
+      "check_id": "Q03",
+      "category": "hygiene",
+      "result": "PASS",
+      "description": "no Python cache artifacts exist",
+      "detail": ""
+    },
+    {
+      "check_id": "Q04",
+      "category": "tools",
+      "result": "PASS",
+      "description": "generic and pinned v14 builders and validators exist",
+      "detail": ""
+    },
+    {
+      "check_id": "G01",
+      "category": "reports",
+      "result": "PASS",
+      "description": "four reports preserve eligibility, validity, release, and authority separation",
+      "detail": ""
+    },
+    {
+      "check_id": "GATE-V14",
+      "category": "acceptance",
+      "result": "BLOCKED",
+      "description": "current certification and release authorization",
+      "detail": "The v14 protocol validates structurally, but v13.3 has no executable aggregate, certificate eligibility is INELIGIBLE, no certificate or release snapshot exists, and release authorization is not evaluated."
+    }
+  ]
+}

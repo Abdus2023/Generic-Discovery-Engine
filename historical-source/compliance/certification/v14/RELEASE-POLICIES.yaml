@@ -1,0 +1,43 @@
+{
+  "schema_version": "14.0",
+  "objects": [
+    {
+      "policy_id": "RELEASE-POLICY-V14-STRICT-001",
+      "required_certificate_types": [
+        "COMPLIANCE"
+      ],
+      "required_aggregate_status": "COMPLIANT",
+      "forbidden_findings": [
+        "CRITICAL",
+        "SECURITY_CRITICAL"
+      ],
+      "required_waiver_policy": "WAIVER-AUTHORITY-V14-001",
+      "evidence_freshness_policy": "EVIDENCE-FRESHNESS-V14-STRICT-001",
+      "required_security_status": "PASS",
+      "release_authority_policy": "RELEASE-AUTHORITY-POLICY-V14-001",
+      "conditional_authorization_allowed": false,
+      "residual_risk_authority_valid": false,
+      "schema_version": "14.0",
+      "policy_hash": "c8011c915d500853a4dbc9f900734f6b6c4d5006b019649e5e9e2d8ac57e80ea"
+    },
+    {
+      "required_certificate_types": [
+        "COMPLIANCE"
+      ],
+      "required_aggregate_status": "CONDITIONALLY_COMPLIANT",
+      "forbidden_findings": [
+        "CRITICAL",
+        "SECURITY_CRITICAL"
+      ],
+      "required_waiver_policy": "WAIVER-AUTHORITY-V14-001",
+      "evidence_freshness_policy": "EVIDENCE-FRESHNESS-V14-STRICT-001",
+      "required_security_status": "PASS",
+      "release_authority_policy": "RELEASE-AUTHORITY-POLICY-V14-001",
+      "conditional_authorization_allowed": true,
+      "residual_risk_authority_valid": true,
+      "schema_version": "14.0",
+      "policy_id": "RELEASE-POLICY-V14-CONDITIONAL-001",
+      "policy_hash": "85c7f05222fe8aa5f13cff9d78b37a400bf1c4cf0a9144141213ee23aa6403cc"
+    }
+  ]
+}

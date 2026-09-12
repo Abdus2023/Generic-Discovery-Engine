@@ -1,0 +1,139 @@
+{
+  "schema_version": "14.0",
+  "synthetic_non_normative": true,
+  "vectors": [
+    {
+      "vector_id": "STRICT_COMPLIANT",
+      "aggregate_status": "COMPLIANT",
+      "policy_id": "CERT-POLICY-V14-STRICT-001",
+      "predicates": {
+        "AGGREGATE_VALID": true,
+        "AUDIT_SCOPE_VALID": true,
+        "SPECIFICATION_SNAPSHOT_VALID": true,
+        "IMPLEMENTATION_SNAPSHOT_VALID": true,
+        "DECISION_HISTORY_VALID": true,
+        "STATE_HISTORY_VALID": true,
+        "TRACEABILITY_VALID": true,
+        "REQUIRED_VERIFICATION_VALID": true,
+        "NO_UNRESOLVED_CERTIFICATE_BLOCKER": true
+      },
+      "expected": "ELIGIBLE",
+      "actual": "ELIGIBLE",
+      "reasons": [],
+      "pass": true
+    },
+    {
+      "vector_id": "STRICT_CONDITIONAL",
+      "aggregate_status": "CONDITIONALLY_COMPLIANT",
+      "policy_id": "CERT-POLICY-V14-STRICT-001",
+      "predicates": {
+        "AGGREGATE_VALID": true,
+        "AUDIT_SCOPE_VALID": true,
+        "SPECIFICATION_SNAPSHOT_VALID": true,
+        "IMPLEMENTATION_SNAPSHOT_VALID": true,
+        "DECISION_HISTORY_VALID": true,
+        "STATE_HISTORY_VALID": true,
+        "TRACEABILITY_VALID": true,
+        "REQUIRED_VERIFICATION_VALID": true,
+        "NO_UNRESOLVED_CERTIFICATE_BLOCKER": true
+      },
+      "expected": "INELIGIBLE",
+      "actual": "INELIGIBLE",
+      "reasons": [
+        "AGGREGATE_STATUS_NOT_ALLOWED"
+      ],
+      "pass": true
+    },
+    {
+      "vector_id": "POLICY_CONDITIONAL",
+      "aggregate_status": "CONDITIONALLY_COMPLIANT",
+      "policy_id": "CERT-POLICY-V14-CONDITIONAL-001",
+      "predicates": {
+        "AGGREGATE_VALID": true,
+        "AUDIT_SCOPE_VALID": true,
+        "SPECIFICATION_SNAPSHOT_VALID": true,
+        "IMPLEMENTATION_SNAPSHOT_VALID": true,
+        "DECISION_HISTORY_VALID": true,
+        "STATE_HISTORY_VALID": true,
+        "TRACEABILITY_VALID": true,
+        "REQUIRED_VERIFICATION_VALID": true,
+        "NO_UNRESOLVED_CERTIFICATE_BLOCKER": true
+      },
+      "expected": "ELIGIBLE",
+      "actual": "ELIGIBLE",
+      "reasons": [],
+      "pass": true
+    },
+    {
+      "vector_id": "BLOCKED_AGGREGATE",
+      "aggregate_status": "BLOCKED",
+      "policy_id": "CERT-POLICY-V14-STRICT-001",
+      "predicates": {
+        "AGGREGATE_VALID": true,
+        "AUDIT_SCOPE_VALID": true,
+        "SPECIFICATION_SNAPSHOT_VALID": true,
+        "IMPLEMENTATION_SNAPSHOT_VALID": true,
+        "DECISION_HISTORY_VALID": true,
+        "STATE_HISTORY_VALID": true,
+        "TRACEABILITY_VALID": true,
+        "REQUIRED_VERIFICATION_VALID": true,
+        "NO_UNRESOLVED_CERTIFICATE_BLOCKER": true
+      },
+      "expected": "INELIGIBLE",
+      "actual": "INELIGIBLE",
+      "reasons": [
+        "AGGREGATE_STATUS_NOT_ALLOWED"
+      ],
+      "pass": true
+    },
+    {
+      "vector_id": "TRACEABILITY_INVALID",
+      "aggregate_status": "COMPLIANT",
+      "policy_id": "CERT-POLICY-V14-STRICT-001",
+      "predicates": {
+        "AGGREGATE_VALID": true,
+        "AUDIT_SCOPE_VALID": true,
+        "SPECIFICATION_SNAPSHOT_VALID": true,
+        "IMPLEMENTATION_SNAPSHOT_VALID": true,
+        "DECISION_HISTORY_VALID": true,
+        "STATE_HISTORY_VALID": true,
+        "TRACEABILITY_VALID": false,
+        "REQUIRED_VERIFICATION_VALID": true,
+        "NO_UNRESOLVED_CERTIFICATE_BLOCKER": true
+      },
+      "expected": "INELIGIBLE",
+      "actual": "INELIGIBLE",
+      "reasons": [
+        "TRACEABILITY_VALID"
+      ],
+      "pass": true
+    },
+    {
+      "vector_id": "AGGREGATE_MISSING",
+      "aggregate_status": null,
+      "policy_id": "CERT-POLICY-V14-STRICT-001",
+      "predicates": {
+        "AGGREGATE_VALID": true,
+        "AUDIT_SCOPE_VALID": true,
+        "SPECIFICATION_SNAPSHOT_VALID": true,
+        "IMPLEMENTATION_SNAPSHOT_VALID": true,
+        "DECISION_HISTORY_VALID": true,
+        "STATE_HISTORY_VALID": true,
+        "TRACEABILITY_VALID": true,
+        "REQUIRED_VERIFICATION_VALID": true,
+        "NO_UNRESOLVED_CERTIFICATE_BLOCKER": true
+      },
+      "expected": "INELIGIBLE",
+      "actual": "INELIGIBLE",
+      "reasons": [
+        "AGGREGATE_MISSING"
+      ],
+      "pass": true
+    }
+  ],
+  "summary": {
+    "total": 6,
+    "passed": 6,
+    "failed": 0
+  }
+}

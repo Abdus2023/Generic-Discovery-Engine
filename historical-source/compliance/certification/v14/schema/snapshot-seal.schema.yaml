@@ -1,0 +1,65 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "SnapshotSeal",
+  "type": "object",
+  "required": [
+    "seal_id",
+    "specification_hash",
+    "implementation_hash",
+    "decision_hash",
+    "evidence_hash",
+    "waiver_hash",
+    "state_history_hash",
+    "aggregate_hash",
+    "sealed_at",
+    "schema_version",
+    "seal_hash"
+  ],
+  "properties": {
+    "specification_hash": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$"
+    },
+    "implementation_hash": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$"
+    },
+    "decision_hash": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$"
+    },
+    "evidence_hash": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$"
+    },
+    "waiver_hash": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$"
+    },
+    "state_history_hash": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$"
+    },
+    "aggregate_hash": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$"
+    },
+    "seal_id": {
+      "type": "string",
+      "pattern": "^[A-Za-z0-9][A-Za-z0-9._:/-]*$"
+    },
+    "sealed_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "schema_version": {
+      "const": "14.0"
+    },
+    "seal_hash": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$"
+    }
+  },
+  "additionalProperties": false,
+  "$id": "https://generic-discovery-engine.invalid/compliance/v14/snapshot-seal.schema.yaml"
+}

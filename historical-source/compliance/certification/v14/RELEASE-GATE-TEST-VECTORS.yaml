@@ -1,0 +1,2203 @@
+{
+  "schema_version": "14.0",
+  "synthetic_non_normative": true,
+  "vectors": [
+    {
+      "vector_id": "STRICT_AUTHORIZED",
+      "policy_id": "RELEASE-POLICY-V14-STRICT-001",
+      "certificate_count": 1,
+      "certificates": [
+        {
+          "certificate_id": "TEST-RELEASE-CERT",
+          "audit_id": "TEST-AUDIT",
+          "certificate_type": "COMPLIANCE",
+          "status": "VALID",
+          "aggregate_status": "COMPLIANT",
+          "scope": {
+            "audit_scope_id": "TEST-SCOPE",
+            "requirements": [
+              "R1"
+            ],
+            "specification_snapshot": "1111111111111111111111111111111111111111111111111111111111111111",
+            "implementation_snapshot": "2222222222222222222222222222222222222222222222222222222222222222",
+            "environment_snapshot": null,
+            "architecture_scope": null,
+            "platform_scope": null,
+            "version_scope": "1.0.0-test",
+            "exclusions": []
+          },
+          "snapshot": {
+            "snapshot_id": "TEST-RELEASE-CERT-SNAPSHOT",
+            "audit_id": "TEST-AUDIT",
+            "specification_snapshot": "1111111111111111111111111111111111111111111111111111111111111111",
+            "implementation_snapshot": "2222222222222222222222222222222222222222222222222222222222222222",
+            "decision_snapshot": "3333333333333333333333333333333333333333333333333333333333333333",
+            "evidence_snapshot": "4444444444444444444444444444444444444444444444444444444444444444",
+            "waiver_snapshot": "5555555555555555555555555555555555555555555555555555555555555555",
+            "state_history_snapshot": "6666666666666666666666666666666666666666666666666666666666666666",
+            "aggregate_hash": "e29cf605037d78a66c4dfedfc2fab0433cb56b458a704904f52f53654902f7fd",
+            "scope_snapshot": "8888888888888888888888888888888888888888888888888888888888888888",
+            "generated_at": "2026-09-12T19:04:51Z",
+            "release_binding": {
+              "source_snapshot": "2222222222222222222222222222222222222222222222222222222222222222",
+              "build_snapshot": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+              "configuration_snapshot": "cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
+              "artifact_hashes": [
+                {
+                  "artifact_id": "TEST-ARTIFACT",
+                  "hash": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+                }
+              ]
+            },
+            "snapshot_hash": "5d539d97a3cc028689ba893c999263be7464227bfa8d763610558e0fad17476b"
+          },
+          "snapshot_seal": {
+            "seal_id": "TEST-RELEASE-CERT-SEAL",
+            "specification_hash": "1111111111111111111111111111111111111111111111111111111111111111",
+            "implementation_hash": "2222222222222222222222222222222222222222222222222222222222222222",
+            "decision_hash": "3333333333333333333333333333333333333333333333333333333333333333",
+            "evidence_hash": "4444444444444444444444444444444444444444444444444444444444444444",
+            "waiver_hash": "5555555555555555555555555555555555555555555555555555555555555555",
+            "state_history_hash": "6666666666666666666666666666666666666666666666666666666666666666",
+            "aggregate_hash": "e29cf605037d78a66c4dfedfc2fab0433cb56b458a704904f52f53654902f7fd",
+            "sealed_at": "2026-09-12T19:04:51Z",
+            "schema_version": "14.0",
+            "seal_hash": "6ced43e8e885ab143b2078e7ef95957e4664a82b37c666776b8a84d7b5ec2ba5"
+          },
+          "authority": {
+            "authority_id": "TEST-RELEASE-CERT-AUTHORITY",
+            "authority_type": "AUTOMATED_POLICY",
+            "authorization_policy": "TEST-CERTIFICATION-POLICY",
+            "authorization_evidence": [
+              "TEST-AUTH-EVIDENCE"
+            ],
+            "authorized_at": "2026-09-12T19:04:51Z"
+          },
+          "evidence_summary": {
+            "required_evidence_count": 1,
+            "valid_evidence_count": 1,
+            "invalid_evidence_count": 0,
+            "stale_evidence_count": 0,
+            "missing_evidence_count": 0,
+            "evidence_snapshot": "4444444444444444444444444444444444444444444444444444444444444444",
+            "integrity_status": "VALID"
+          },
+          "waiver_summary": {
+            "waiver_count": 0,
+            "effective_waiver_count": 0,
+            "unauthorized_waiver_count": 0,
+            "expired_waiver_count": 0,
+            "waiver_snapshot": "5555555555555555555555555555555555555555555555555555555555555555"
+          },
+          "aggregate_inputs": [
+            {
+              "requirement_id": "R1",
+              "mandatory": true,
+              "applicable": true,
+              "decision": "CONFORMANT"
+            }
+          ],
+          "issued_at": "2026-09-12T19:04:51Z",
+          "valid_from": "2026-09-12T19:04:51Z",
+          "valid_until": "2026-09-13T19:04:51Z",
+          "supersedes": null,
+          "schema_version": "14.0",
+          "certificate_hash": "39fa6bc0cdb2acf94775db3e1b077df1dd7196d781da3cf31efebd184426b3a8",
+          "signature": {
+            "profile": "TEST-SHA256-AUTHORITY-BINDING",
+            "signer_authority_id": "TEST-RELEASE-CERT-AUTHORITY",
+            "signed_at": "2026-09-12T19:04:51Z",
+            "signature_value": "f63aff77db7ce7d38c4f128b3d5fb8249dff5a1e43a51c08e38908896f2f686b"
+          }
+        }
+      ],
+      "aggregate_status": "COMPLIANT",
+      "findings": [],
+      "waivers_valid": true,
+      "residual_risk_accepted": true,
+      "evidence_fresh": true,
+      "security_pass": true,
+      "policy_integrity": true,
+      "release": {
+        "release_id": "TEST-RELEASE",
+        "version": "1.0.0-test",
+        "source_snapshot": "2222222222222222222222222222222222222222222222222222222222222222",
+        "build_snapshot": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+        "configuration_snapshot": "cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
+        "artifact_hashes": [
+          {
+            "artifact_id": "TEST-ARTIFACT",
+            "hash": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+          }
+        ],
+        "created_at": "2026-09-12T19:04:51Z",
+        "schema_version": "14.0",
+        "snapshot_hash": "2418f7ca91e71930e75931158f999dabe56cf8fb5d2c6c81afe02ec48dfd6516"
+      },
+      "expected": "AUTHORIZED",
+      "actual": "AUTHORIZED",
+      "reasons": [],
+      "gate": {
+        "gate_id": "RELEASE-GATE-STRICT_AUTHORIZED",
+        "release_id": "TEST-RELEASE",
+        "policy_id": "RELEASE-POLICY-V14-STRICT-001",
+        "release_snapshot_hash": "2418f7ca91e71930e75931158f999dabe56cf8fb5d2c6c81afe02ec48dfd6516",
+        "certificate_ids": [
+          "TEST-RELEASE-CERT"
+        ],
+        "required_certificate_types": [
+          "COMPLIANCE"
+        ],
+        "required_aggregate_status": "COMPLIANT",
+        "forbidden_findings": [
+          "CRITICAL",
+          "SECURITY_CRITICAL"
+        ],
+        "required_waiver_policy": "WAIVER-AUTHORITY-V14-001",
+        "evidence_freshness_policy": "EVIDENCE-FRESHNESS-V14-STRICT-001",
+        "required_security_status": "PASS",
+        "state": "AUTHORIZED",
+        "decision": "AUTHORIZED",
+        "evaluated_at": "2026-09-12T19:04:51Z",
+        "schema_version": "14.0",
+        "gate_hash": "9cfe8ab42db4a755db1449decd2e5a80e87ea04e0e3dce19649ef7c3c96b2687"
+      },
+      "evaluation": {
+        "evaluation_id": "RELEASE-EVALUATION-STRICT_AUTHORIZED",
+        "policy_id": "RELEASE-POLICY-V14-STRICT-001",
+        "release_id": "TEST-RELEASE",
+        "aggregate_status": "COMPLIANT",
+        "decision": "AUTHORIZED",
+        "reasons": [],
+        "evaluated_at": "2026-09-12T19:04:51Z",
+        "schema_version": "14.0",
+        "evaluation_hash": "f39318cd63ea11fe19757debb1ecbaa869b25dd8d948b1239df90e56c32f7465"
+      },
+      "pass": true
+    },
+    {
+      "vector_id": "COMPLIANT_NO_CERTIFICATE",
+      "policy_id": "RELEASE-POLICY-V14-STRICT-001",
+      "certificate_count": 0,
+      "certificates": [],
+      "aggregate_status": "COMPLIANT",
+      "findings": [],
+      "waivers_valid": true,
+      "residual_risk_accepted": true,
+      "evidence_fresh": true,
+      "security_pass": true,
+      "policy_integrity": true,
+      "release": {
+        "release_id": "TEST-RELEASE",
+        "version": "1.0.0-test",
+        "source_snapshot": "2222222222222222222222222222222222222222222222222222222222222222",
+        "build_snapshot": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+        "configuration_snapshot": "cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
+        "artifact_hashes": [
+          {
+            "artifact_id": "TEST-ARTIFACT",
+            "hash": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+          }
+        ],
+        "created_at": "2026-09-12T19:04:51Z",
+        "schema_version": "14.0",
+        "snapshot_hash": "2418f7ca91e71930e75931158f999dabe56cf8fb5d2c6c81afe02ec48dfd6516"
+      },
+      "expected": "BLOCKED",
+      "actual": "BLOCKED",
+      "reasons": [
+        "VALID_CERTIFICATE_MISSING"
+      ],
+      "gate": {
+        "gate_id": "RELEASE-GATE-COMPLIANT_NO_CERTIFICATE",
+        "release_id": "TEST-RELEASE",
+        "policy_id": "RELEASE-POLICY-V14-STRICT-001",
+        "release_snapshot_hash": "2418f7ca91e71930e75931158f999dabe56cf8fb5d2c6c81afe02ec48dfd6516",
+        "certificate_ids": [],
+        "required_certificate_types": [
+          "COMPLIANCE"
+        ],
+        "required_aggregate_status": "COMPLIANT",
+        "forbidden_findings": [
+          "CRITICAL",
+          "SECURITY_CRITICAL"
+        ],
+        "required_waiver_policy": "WAIVER-AUTHORITY-V14-001",
+        "evidence_freshness_policy": "EVIDENCE-FRESHNESS-V14-STRICT-001",
+        "required_security_status": "PASS",
+        "state": "BLOCKED",
+        "decision": "BLOCKED",
+        "evaluated_at": "2026-09-12T19:04:51Z",
+        "schema_version": "14.0",
+        "gate_hash": "40b647504ce88c706f86e7d5387ddcef23dc30e3ed797be04a674f69181edaa5"
+      },
+      "evaluation": {
+        "evaluation_id": "RELEASE-EVALUATION-COMPLIANT_NO_CERTIFICATE",
+        "policy_id": "RELEASE-POLICY-V14-STRICT-001",
+        "release_id": "TEST-RELEASE",
+        "aggregate_status": "COMPLIANT",
+        "decision": "BLOCKED",
+        "reasons": [
+          "VALID_CERTIFICATE_MISSING"
+        ],
+        "evaluated_at": "2026-09-12T19:04:51Z",
+        "schema_version": "14.0",
+        "evaluation_hash": "bd02ee3aed6251490f03cc5fd80f5e1e29abece122417bbce268efb8c4893b3c"
+      },
+      "pass": true
+    },
+    {
+      "vector_id": "REVOKED_CERTIFICATE",
+      "policy_id": "RELEASE-POLICY-V14-STRICT-001",
+      "certificate_count": 1,
+      "certificates": [
+        {
+          "certificate_id": "TEST-RELEASE-CERT",
+          "audit_id": "TEST-AUDIT",
+          "certificate_type": "COMPLIANCE",
+          "status": "REVOKED",
+          "aggregate_status": "COMPLIANT",
+          "scope": {
+            "audit_scope_id": "TEST-SCOPE",
+            "requirements": [
+              "R1"
+            ],
+            "specification_snapshot": "1111111111111111111111111111111111111111111111111111111111111111",
+            "implementation_snapshot": "2222222222222222222222222222222222222222222222222222222222222222",
+            "environment_snapshot": null,
+            "architecture_scope": null,
+            "platform_scope": null,
+            "version_scope": "1.0.0-test",
+            "exclusions": []
+          },
+          "snapshot": {
+            "snapshot_id": "TEST-RELEASE-CERT-SNAPSHOT",
+            "audit_id": "TEST-AUDIT",
+            "specification_snapshot": "1111111111111111111111111111111111111111111111111111111111111111",
+            "implementation_snapshot": "2222222222222222222222222222222222222222222222222222222222222222",
+            "decision_snapshot": "3333333333333333333333333333333333333333333333333333333333333333",
+            "evidence_snapshot": "4444444444444444444444444444444444444444444444444444444444444444",
+            "waiver_snapshot": "5555555555555555555555555555555555555555555555555555555555555555",
+            "state_history_snapshot": "6666666666666666666666666666666666666666666666666666666666666666",
+            "aggregate_hash": "e29cf605037d78a66c4dfedfc2fab0433cb56b458a704904f52f53654902f7fd",
+            "scope_snapshot": "8888888888888888888888888888888888888888888888888888888888888888",
+            "generated_at": "2026-09-12T19:04:51Z",
+            "release_binding": {
+              "source_snapshot": "2222222222222222222222222222222222222222222222222222222222222222",
+              "build_snapshot": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+              "configuration_snapshot": "cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
+              "artifact_hashes": [
+                {
+                  "artifact_id": "TEST-ARTIFACT",
+                  "hash": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+                }
+              ]
+            },
+            "snapshot_hash": "5d539d97a3cc028689ba893c999263be7464227bfa8d763610558e0fad17476b"
+          },
+          "snapshot_seal": {
+            "seal_id": "TEST-RELEASE-CERT-SEAL",
+            "specification_hash": "1111111111111111111111111111111111111111111111111111111111111111",
+            "implementation_hash": "2222222222222222222222222222222222222222222222222222222222222222",
+            "decision_hash": "3333333333333333333333333333333333333333333333333333333333333333",
+            "evidence_hash": "4444444444444444444444444444444444444444444444444444444444444444",
+            "waiver_hash": "5555555555555555555555555555555555555555555555555555555555555555",
+            "state_history_hash": "6666666666666666666666666666666666666666666666666666666666666666",
+            "aggregate_hash": "e29cf605037d78a66c4dfedfc2fab0433cb56b458a704904f52f53654902f7fd",
+            "sealed_at": "2026-09-12T19:04:51Z",
+            "schema_version": "14.0",
+            "seal_hash": "6ced43e8e885ab143b2078e7ef95957e4664a82b37c666776b8a84d7b5ec2ba5"
+          },
+          "authority": {
+            "authority_id": "TEST-RELEASE-CERT-AUTHORITY",
+            "authority_type": "AUTOMATED_POLICY",
+            "authorization_policy": "TEST-CERTIFICATION-POLICY",
+            "authorization_evidence": [
+              "TEST-AUTH-EVIDENCE"
+            ],
+            "authorized_at": "2026-09-12T19:04:51Z"
+          },
+          "evidence_summary": {
+            "required_evidence_count": 1,
+            "valid_evidence_count": 1,
+            "invalid_evidence_count": 0,
+            "stale_evidence_count": 0,
+            "missing_evidence_count": 0,
+            "evidence_snapshot": "4444444444444444444444444444444444444444444444444444444444444444",
+            "integrity_status": "VALID"
+          },
+          "waiver_summary": {
+            "waiver_count": 0,
+            "effective_waiver_count": 0,
+            "unauthorized_waiver_count": 0,
+            "expired_waiver_count": 0,
+            "waiver_snapshot": "5555555555555555555555555555555555555555555555555555555555555555"
+          },
+          "aggregate_inputs": [
+            {
+              "requirement_id": "R1",
+              "mandatory": true,
+              "applicable": true,
+              "decision": "CONFORMANT"
+            }
+          ],
+          "issued_at": "2026-09-12T19:04:51Z",
+          "valid_from": "2026-09-12T19:04:51Z",
+          "valid_until": "2026-09-13T19:04:51Z",
+          "supersedes": null,
+          "schema_version": "14.0",
+          "certificate_hash": "94ad226d860a6b77ab4e4a2e94dec2551ff182c5f3507083fc109d2f657682df",
+          "signature": {
+            "profile": "TEST-SHA256-AUTHORITY-BINDING",
+            "signer_authority_id": "TEST-RELEASE-CERT-AUTHORITY",
+            "signed_at": "2026-09-12T19:04:51Z",
+            "signature_value": "4ba386723f4a8e1e01ca7a00a0c3b25f44ca9ad226fa1267e9988a39174ca036"
+          }
+        }
+      ],
+      "aggregate_status": "COMPLIANT",
+      "findings": [],
+      "waivers_valid": true,
+      "residual_risk_accepted": true,
+      "evidence_fresh": true,
+      "security_pass": true,
+      "policy_integrity": true,
+      "release": {
+        "release_id": "TEST-RELEASE",
+        "version": "1.0.0-test",
+        "source_snapshot": "2222222222222222222222222222222222222222222222222222222222222222",
+        "build_snapshot": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+        "configuration_snapshot": "cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
+        "artifact_hashes": [
+          {
+            "artifact_id": "TEST-ARTIFACT",
+            "hash": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+          }
+        ],
+        "created_at": "2026-09-12T19:04:51Z",
+        "schema_version": "14.0",
+        "snapshot_hash": "2418f7ca91e71930e75931158f999dabe56cf8fb5d2c6c81afe02ec48dfd6516"
+      },
+      "expected": "BLOCKED",
+      "actual": "BLOCKED",
+      "reasons": [
+        "VALID_CERTIFICATE_MISSING"
+      ],
+      "gate": {
+        "gate_id": "RELEASE-GATE-REVOKED_CERTIFICATE",
+        "release_id": "TEST-RELEASE",
+        "policy_id": "RELEASE-POLICY-V14-STRICT-001",
+        "release_snapshot_hash": "2418f7ca91e71930e75931158f999dabe56cf8fb5d2c6c81afe02ec48dfd6516",
+        "certificate_ids": [
+          "TEST-RELEASE-CERT"
+        ],
+        "required_certificate_types": [
+          "COMPLIANCE"
+        ],
+        "required_aggregate_status": "COMPLIANT",
+        "forbidden_findings": [
+          "CRITICAL",
+          "SECURITY_CRITICAL"
+        ],
+        "required_waiver_policy": "WAIVER-AUTHORITY-V14-001",
+        "evidence_freshness_policy": "EVIDENCE-FRESHNESS-V14-STRICT-001",
+        "required_security_status": "PASS",
+        "state": "BLOCKED",
+        "decision": "BLOCKED",
+        "evaluated_at": "2026-09-12T19:04:51Z",
+        "schema_version": "14.0",
+        "gate_hash": "a3269c43f4f0f86c898abb78a84cf4624d016734a40dd5881eef5f98369632c0"
+      },
+      "evaluation": {
+        "evaluation_id": "RELEASE-EVALUATION-REVOKED_CERTIFICATE",
+        "policy_id": "RELEASE-POLICY-V14-STRICT-001",
+        "release_id": "TEST-RELEASE",
+        "aggregate_status": "COMPLIANT",
+        "decision": "BLOCKED",
+        "reasons": [
+          "VALID_CERTIFICATE_MISSING"
+        ],
+        "evaluated_at": "2026-09-12T19:04:51Z",
+        "schema_version": "14.0",
+        "evaluation_hash": "8ceceb7fd4685df83e3844f032e44a0616693ea5ee34d44bcdd867fae57c5181"
+      },
+      "pass": true
+    },
+    {
+      "vector_id": "SNAPSHOT_MISMATCH",
+      "policy_id": "RELEASE-POLICY-V14-STRICT-001",
+      "certificate_count": 1,
+      "certificates": [
+        {
+          "certificate_id": "TEST-RELEASE-CERT",
+          "audit_id": "TEST-AUDIT",
+          "certificate_type": "COMPLIANCE",
+          "status": "VALID",
+          "aggregate_status": "COMPLIANT",
+          "scope": {
+            "audit_scope_id": "TEST-SCOPE",
+            "requirements": [
+              "R1"
+            ],
+            "specification_snapshot": "1111111111111111111111111111111111111111111111111111111111111111",
+            "implementation_snapshot": "2222222222222222222222222222222222222222222222222222222222222222",
+            "environment_snapshot": null,
+            "architecture_scope": null,
+            "platform_scope": null,
+            "version_scope": "1.0.0-test",
+            "exclusions": []
+          },
+          "snapshot": {
+            "snapshot_id": "TEST-RELEASE-CERT-SNAPSHOT",
+            "audit_id": "TEST-AUDIT",
+            "specification_snapshot": "1111111111111111111111111111111111111111111111111111111111111111",
+            "implementation_snapshot": "2222222222222222222222222222222222222222222222222222222222222222",
+            "decision_snapshot": "3333333333333333333333333333333333333333333333333333333333333333",
+            "evidence_snapshot": "4444444444444444444444444444444444444444444444444444444444444444",
+            "waiver_snapshot": "5555555555555555555555555555555555555555555555555555555555555555",
+            "state_history_snapshot": "6666666666666666666666666666666666666666666666666666666666666666",
+            "aggregate_hash": "e29cf605037d78a66c4dfedfc2fab0433cb56b458a704904f52f53654902f7fd",
+            "scope_snapshot": "8888888888888888888888888888888888888888888888888888888888888888",
+            "generated_at": "2026-09-12T19:04:51Z",
+            "release_binding": {
+              "source_snapshot": "2222222222222222222222222222222222222222222222222222222222222222",
+              "build_snapshot": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+              "configuration_snapshot": "cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
+              "artifact_hashes": [
+                {
+                  "artifact_id": "TEST-ARTIFACT",
+                  "hash": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+                }
+              ]
+            },
+            "snapshot_hash": "5d539d97a3cc028689ba893c999263be7464227bfa8d763610558e0fad17476b"
+          },
+          "snapshot_seal": {
+            "seal_id": "TEST-RELEASE-CERT-SEAL",
+            "specification_hash": "1111111111111111111111111111111111111111111111111111111111111111",
+            "implementation_hash": "2222222222222222222222222222222222222222222222222222222222222222",
+            "decision_hash": "3333333333333333333333333333333333333333333333333333333333333333",
+            "evidence_hash": "4444444444444444444444444444444444444444444444444444444444444444",
+            "waiver_hash": "5555555555555555555555555555555555555555555555555555555555555555",
+            "state_history_hash": "6666666666666666666666666666666666666666666666666666666666666666",
+            "aggregate_hash": "e29cf605037d78a66c4dfedfc2fab0433cb56b458a704904f52f53654902f7fd",
+            "sealed_at": "2026-09-12T19:04:51Z",
+            "schema_version": "14.0",
+            "seal_hash": "6ced43e8e885ab143b2078e7ef95957e4664a82b37c666776b8a84d7b5ec2ba5"
+          },
+          "authority": {
+            "authority_id": "TEST-RELEASE-CERT-AUTHORITY",
+            "authority_type": "AUTOMATED_POLICY",
+            "authorization_policy": "TEST-CERTIFICATION-POLICY",
+            "authorization_evidence": [
+              "TEST-AUTH-EVIDENCE"
+            ],
+            "authorized_at": "2026-09-12T19:04:51Z"
+          },
+          "evidence_summary": {
+            "required_evidence_count": 1,
+            "valid_evidence_count": 1,
+            "invalid_evidence_count": 0,
+            "stale_evidence_count": 0,
+            "missing_evidence_count": 0,
+            "evidence_snapshot": "4444444444444444444444444444444444444444444444444444444444444444",
+            "integrity_status": "VALID"
+          },
+          "waiver_summary": {
+            "waiver_count": 0,
+            "effective_waiver_count": 0,
+            "unauthorized_waiver_count": 0,
+            "expired_waiver_count": 0,
+            "waiver_snapshot": "5555555555555555555555555555555555555555555555555555555555555555"
+          },
+          "aggregate_inputs": [
+            {
+              "requirement_id": "R1",
+              "mandatory": true,
+              "applicable": true,
+              "decision": "CONFORMANT"
+            }
+          ],
+          "issued_at": "2026-09-12T19:04:51Z",
+          "valid_from": "2026-09-12T19:04:51Z",
+          "valid_until": "2026-09-13T19:04:51Z",
+          "supersedes": null,
+          "schema_version": "14.0",
+          "certificate_hash": "39fa6bc0cdb2acf94775db3e1b077df1dd7196d781da3cf31efebd184426b3a8",
+          "signature": {
+            "profile": "TEST-SHA256-AUTHORITY-BINDING",
+            "signer_authority_id": "TEST-RELEASE-CERT-AUTHORITY",
+            "signed_at": "2026-09-12T19:04:51Z",
+            "signature_value": "f63aff77db7ce7d38c4f128b3d5fb8249dff5a1e43a51c08e38908896f2f686b"
+          }
+        }
+      ],
+      "aggregate_status": "COMPLIANT",
+      "findings": [],
+      "waivers_valid": true,
+      "residual_risk_accepted": true,
+      "evidence_fresh": true,
+      "security_pass": true,
+      "policy_integrity": true,
+      "release": {
+        "release_id": "TEST-RELEASE-OTHER",
+        "version": "1.0.0-test",
+        "source_snapshot": "dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd",
+        "build_snapshot": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+        "configuration_snapshot": "cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
+        "artifact_hashes": [
+          {
+            "artifact_id": "TEST-ARTIFACT",
+            "hash": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+          }
+        ],
+        "created_at": "2026-09-12T19:04:51Z",
+        "schema_version": "14.0",
+        "snapshot_hash": "8c871d2e817230dbe4ea5b114a1530b9d72ca78bc540123888b3b7d4158e347e"
+      },
+      "expected": "BLOCKED",
+      "actual": "BLOCKED",
+      "reasons": [
+        "CERTIFICATE_RELEASE_SNAPSHOT_MISMATCH"
+      ],
+      "gate": {
+        "gate_id": "RELEASE-GATE-SNAPSHOT_MISMATCH",
+        "release_id": "TEST-RELEASE-OTHER",
+        "policy_id": "RELEASE-POLICY-V14-STRICT-001",
+        "release_snapshot_hash": "8c871d2e817230dbe4ea5b114a1530b9d72ca78bc540123888b3b7d4158e347e",
+        "certificate_ids": [
+          "TEST-RELEASE-CERT"
+        ],
+        "required_certificate_types": [
+          "COMPLIANCE"
+        ],
+        "required_aggregate_status": "COMPLIANT",
+        "forbidden_findings": [
+          "CRITICAL",
+          "SECURITY_CRITICAL"
+        ],
+        "required_waiver_policy": "WAIVER-AUTHORITY-V14-001",
+        "evidence_freshness_policy": "EVIDENCE-FRESHNESS-V14-STRICT-001",
+        "required_security_status": "PASS",
+        "state": "BLOCKED",
+        "decision": "BLOCKED",
+        "evaluated_at": "2026-09-12T19:04:51Z",
+        "schema_version": "14.0",
+        "gate_hash": "038118909dcd3f7ffdd9130b633f023edd609932d1dbccf9d5a6a3b01b6093b7"
+      },
+      "evaluation": {
+        "evaluation_id": "RELEASE-EVALUATION-SNAPSHOT_MISMATCH",
+        "policy_id": "RELEASE-POLICY-V14-STRICT-001",
+        "release_id": "TEST-RELEASE-OTHER",
+        "aggregate_status": "COMPLIANT",
+        "decision": "BLOCKED",
+        "reasons": [
+          "CERTIFICATE_RELEASE_SNAPSHOT_MISMATCH"
+        ],
+        "evaluated_at": "2026-09-12T19:04:51Z",
+        "schema_version": "14.0",
+        "evaluation_hash": "d6431e971021af5a877516cfb28651eb1b6dc7f89a2572ef8a54e523f1410b84"
+      },
+      "pass": true
+    },
+    {
+      "vector_id": "FORBIDDEN_FINDING",
+      "policy_id": "RELEASE-POLICY-V14-STRICT-001",
+      "certificate_count": 1,
+      "certificates": [
+        {
+          "certificate_id": "TEST-RELEASE-CERT",
+          "audit_id": "TEST-AUDIT",
+          "certificate_type": "COMPLIANCE",
+          "status": "VALID",
+          "aggregate_status": "COMPLIANT",
+          "scope": {
+            "audit_scope_id": "TEST-SCOPE",
+            "requirements": [
+              "R1"
+            ],
+            "specification_snapshot": "1111111111111111111111111111111111111111111111111111111111111111",
+            "implementation_snapshot": "2222222222222222222222222222222222222222222222222222222222222222",
+            "environment_snapshot": null,
+            "architecture_scope": null,
+            "platform_scope": null,
+            "version_scope": "1.0.0-test",
+            "exclusions": []
+          },
+          "snapshot": {
+            "snapshot_id": "TEST-RELEASE-CERT-SNAPSHOT",
+            "audit_id": "TEST-AUDIT",
+            "specification_snapshot": "1111111111111111111111111111111111111111111111111111111111111111",
+            "implementation_snapshot": "2222222222222222222222222222222222222222222222222222222222222222",
+            "decision_snapshot": "3333333333333333333333333333333333333333333333333333333333333333",
+            "evidence_snapshot": "4444444444444444444444444444444444444444444444444444444444444444",
+            "waiver_snapshot": "5555555555555555555555555555555555555555555555555555555555555555",
+            "state_history_snapshot": "6666666666666666666666666666666666666666666666666666666666666666",
+            "aggregate_hash": "e29cf605037d78a66c4dfedfc2fab0433cb56b458a704904f52f53654902f7fd",
+            "scope_snapshot": "8888888888888888888888888888888888888888888888888888888888888888",
+            "generated_at": "2026-09-12T19:04:51Z",
+            "release_binding": {
+              "source_snapshot": "2222222222222222222222222222222222222222222222222222222222222222",
+              "build_snapshot": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+              "configuration_snapshot": "cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
+              "artifact_hashes": [
+                {
+                  "artifact_id": "TEST-ARTIFACT",
+                  "hash": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+                }
+              ]
+            },
+            "snapshot_hash": "5d539d97a3cc028689ba893c999263be7464227bfa8d763610558e0fad17476b"
+          },
+          "snapshot_seal": {
+            "seal_id": "TEST-RELEASE-CERT-SEAL",
+            "specification_hash": "1111111111111111111111111111111111111111111111111111111111111111",
+            "implementation_hash": "2222222222222222222222222222222222222222222222222222222222222222",
+            "decision_hash": "3333333333333333333333333333333333333333333333333333333333333333",
+            "evidence_hash": "4444444444444444444444444444444444444444444444444444444444444444",
+            "waiver_hash": "5555555555555555555555555555555555555555555555555555555555555555",
+            "state_history_hash": "6666666666666666666666666666666666666666666666666666666666666666",
+            "aggregate_hash": "e29cf605037d78a66c4dfedfc2fab0433cb56b458a704904f52f53654902f7fd",
+            "sealed_at": "2026-09-12T19:04:51Z",
+            "schema_version": "14.0",
+            "seal_hash": "6ced43e8e885ab143b2078e7ef95957e4664a82b37c666776b8a84d7b5ec2ba5"
+          },
+          "authority": {
+            "authority_id": "TEST-RELEASE-CERT-AUTHORITY",
+            "authority_type": "AUTOMATED_POLICY",
+            "authorization_policy": "TEST-CERTIFICATION-POLICY",
+            "authorization_evidence": [
+              "TEST-AUTH-EVIDENCE"
+            ],
+            "authorized_at": "2026-09-12T19:04:51Z"
+          },
+          "evidence_summary": {
+            "required_evidence_count": 1,
+            "valid_evidence_count": 1,
+            "invalid_evidence_count": 0,
+            "stale_evidence_count": 0,
+            "missing_evidence_count": 0,
+            "evidence_snapshot": "4444444444444444444444444444444444444444444444444444444444444444",
+            "integrity_status": "VALID"
+          },
+          "waiver_summary": {
+            "waiver_count": 0,
+            "effective_waiver_count": 0,
+            "unauthorized_waiver_count": 0,
+            "expired_waiver_count": 0,
+            "waiver_snapshot": "5555555555555555555555555555555555555555555555555555555555555555"
+          },
+          "aggregate_inputs": [
+            {
+              "requirement_id": "R1",
+              "mandatory": true,
+              "applicable": true,
+              "decision": "CONFORMANT"
+            }
+          ],
+          "issued_at": "2026-09-12T19:04:51Z",
+          "valid_from": "2026-09-12T19:04:51Z",
+          "valid_until": "2026-09-13T19:04:51Z",
+          "supersedes": null,
+          "schema_version": "14.0",
+          "certificate_hash": "39fa6bc0cdb2acf94775db3e1b077df1dd7196d781da3cf31efebd184426b3a8",
+          "signature": {
+            "profile": "TEST-SHA256-AUTHORITY-BINDING",
+            "signer_authority_id": "TEST-RELEASE-CERT-AUTHORITY",
+            "signed_at": "2026-09-12T19:04:51Z",
+            "signature_value": "f63aff77db7ce7d38c4f128b3d5fb8249dff5a1e43a51c08e38908896f2f686b"
+          }
+        }
+      ],
+      "aggregate_status": "COMPLIANT",
+      "findings": [
+        "CRITICAL"
+      ],
+      "waivers_valid": true,
+      "residual_risk_accepted": true,
+      "evidence_fresh": true,
+      "security_pass": true,
+      "policy_integrity": true,
+      "release": {
+        "release_id": "TEST-RELEASE",
+        "version": "1.0.0-test",
+        "source_snapshot": "2222222222222222222222222222222222222222222222222222222222222222",
+        "build_snapshot": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+        "configuration_snapshot": "cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
+        "artifact_hashes": [
+          {
+            "artifact_id": "TEST-ARTIFACT",
+            "hash": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+          }
+        ],
+        "created_at": "2026-09-12T19:04:51Z",
+        "schema_version": "14.0",
+        "snapshot_hash": "2418f7ca91e71930e75931158f999dabe56cf8fb5d2c6c81afe02ec48dfd6516"
+      },
+      "expected": "REJECTED",
+      "actual": "REJECTED",
+      "reasons": [
+        "FORBIDDEN_FINDING"
+      ],
+      "gate": {
+        "gate_id": "RELEASE-GATE-FORBIDDEN_FINDING",
+        "release_id": "TEST-RELEASE",
+        "policy_id": "RELEASE-POLICY-V14-STRICT-001",
+        "release_snapshot_hash": "2418f7ca91e71930e75931158f999dabe56cf8fb5d2c6c81afe02ec48dfd6516",
+        "certificate_ids": [
+          "TEST-RELEASE-CERT"
+        ],
+        "required_certificate_types": [
+          "COMPLIANCE"
+        ],
+        "required_aggregate_status": "COMPLIANT",
+        "forbidden_findings": [
+          "CRITICAL",
+          "SECURITY_CRITICAL"
+        ],
+        "required_waiver_policy": "WAIVER-AUTHORITY-V14-001",
+        "evidence_freshness_policy": "EVIDENCE-FRESHNESS-V14-STRICT-001",
+        "required_security_status": "PASS",
+        "state": "REJECTED",
+        "decision": "REJECTED",
+        "evaluated_at": "2026-09-12T19:04:51Z",
+        "schema_version": "14.0",
+        "gate_hash": "7feed4d01225ba9b3712e937475c946cf5aaf3b6e19ca82fa675b56514a6cb49"
+      },
+      "evaluation": {
+        "evaluation_id": "RELEASE-EVALUATION-FORBIDDEN_FINDING",
+        "policy_id": "RELEASE-POLICY-V14-STRICT-001",
+        "release_id": "TEST-RELEASE",
+        "aggregate_status": "COMPLIANT",
+        "decision": "REJECTED",
+        "reasons": [
+          "FORBIDDEN_FINDING"
+        ],
+        "evaluated_at": "2026-09-12T19:04:51Z",
+        "schema_version": "14.0",
+        "evaluation_hash": "5fce18c50e3a245072129a8ed33b9d2f59c7066c3ab67f38cef727a49c89d90d"
+      },
+      "pass": true
+    },
+    {
+      "vector_id": "SECURITY_FAIL",
+      "policy_id": "RELEASE-POLICY-V14-STRICT-001",
+      "certificate_count": 1,
+      "certificates": [
+        {
+          "certificate_id": "TEST-RELEASE-CERT",
+          "audit_id": "TEST-AUDIT",
+          "certificate_type": "COMPLIANCE",
+          "status": "VALID",
+          "aggregate_status": "COMPLIANT",
+          "scope": {
+            "audit_scope_id": "TEST-SCOPE",
+            "requirements": [
+              "R1"
+            ],
+            "specification_snapshot": "1111111111111111111111111111111111111111111111111111111111111111",
+            "implementation_snapshot": "2222222222222222222222222222222222222222222222222222222222222222",
+            "environment_snapshot": null,
+            "architecture_scope": null,
+            "platform_scope": null,
+            "version_scope": "1.0.0-test",
+            "exclusions": []
+          },
+          "snapshot": {
+            "snapshot_id": "TEST-RELEASE-CERT-SNAPSHOT",
+            "audit_id": "TEST-AUDIT",
+            "specification_snapshot": "1111111111111111111111111111111111111111111111111111111111111111",
+            "implementation_snapshot": "2222222222222222222222222222222222222222222222222222222222222222",
+            "decision_snapshot": "3333333333333333333333333333333333333333333333333333333333333333",
+            "evidence_snapshot": "4444444444444444444444444444444444444444444444444444444444444444",
+            "waiver_snapshot": "5555555555555555555555555555555555555555555555555555555555555555",
+            "state_history_snapshot": "6666666666666666666666666666666666666666666666666666666666666666",
+            "aggregate_hash": "e29cf605037d78a66c4dfedfc2fab0433cb56b458a704904f52f53654902f7fd",
+            "scope_snapshot": "8888888888888888888888888888888888888888888888888888888888888888",
+            "generated_at": "2026-09-12T19:04:51Z",
+            "release_binding": {
+              "source_snapshot": "2222222222222222222222222222222222222222222222222222222222222222",
+              "build_snapshot": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+              "configuration_snapshot": "cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
+              "artifact_hashes": [
+                {
+                  "artifact_id": "TEST-ARTIFACT",
+                  "hash": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+                }
+              ]
+            },
+            "snapshot_hash": "5d539d97a3cc028689ba893c999263be7464227bfa8d763610558e0fad17476b"
+          },
+          "snapshot_seal": {
+            "seal_id": "TEST-RELEASE-CERT-SEAL",
+            "specification_hash": "1111111111111111111111111111111111111111111111111111111111111111",
+            "implementation_hash": "2222222222222222222222222222222222222222222222222222222222222222",
+            "decision_hash": "3333333333333333333333333333333333333333333333333333333333333333",
+            "evidence_hash": "4444444444444444444444444444444444444444444444444444444444444444",
+            "waiver_hash": "5555555555555555555555555555555555555555555555555555555555555555",
+            "state_history_hash": "6666666666666666666666666666666666666666666666666666666666666666",
+            "aggregate_hash": "e29cf605037d78a66c4dfedfc2fab0433cb56b458a704904f52f53654902f7fd",
+            "sealed_at": "2026-09-12T19:04:51Z",
+            "schema_version": "14.0",
+            "seal_hash": "6ced43e8e885ab143b2078e7ef95957e4664a82b37c666776b8a84d7b5ec2ba5"
+          },
+          "authority": {
+            "authority_id": "TEST-RELEASE-CERT-AUTHORITY",
+            "authority_type": "AUTOMATED_POLICY",
+            "authorization_policy": "TEST-CERTIFICATION-POLICY",
+            "authorization_evidence": [
+              "TEST-AUTH-EVIDENCE"
+            ],
+            "authorized_at": "2026-09-12T19:04:51Z"
+          },
+          "evidence_summary": {
+            "required_evidence_count": 1,
+            "valid_evidence_count": 1,
+            "invalid_evidence_count": 0,
+            "stale_evidence_count": 0,
+            "missing_evidence_count": 0,
+            "evidence_snapshot": "4444444444444444444444444444444444444444444444444444444444444444",
+            "integrity_status": "VALID"
+          },
+          "waiver_summary": {
+            "waiver_count": 0,
+            "effective_waiver_count": 0,
+            "unauthorized_waiver_count": 0,
+            "expired_waiver_count": 0,
+            "waiver_snapshot": "5555555555555555555555555555555555555555555555555555555555555555"
+          },
+          "aggregate_inputs": [
+            {
+              "requirement_id": "R1",
+              "mandatory": true,
+              "applicable": true,
+              "decision": "CONFORMANT"
+            }
+          ],
+          "issued_at": "2026-09-12T19:04:51Z",
+          "valid_from": "2026-09-12T19:04:51Z",
+          "valid_until": "2026-09-13T19:04:51Z",
+          "supersedes": null,
+          "schema_version": "14.0",
+          "certificate_hash": "39fa6bc0cdb2acf94775db3e1b077df1dd7196d781da3cf31efebd184426b3a8",
+          "signature": {
+            "profile": "TEST-SHA256-AUTHORITY-BINDING",
+            "signer_authority_id": "TEST-RELEASE-CERT-AUTHORITY",
+            "signed_at": "2026-09-12T19:04:51Z",
+            "signature_value": "f63aff77db7ce7d38c4f128b3d5fb8249dff5a1e43a51c08e38908896f2f686b"
+          }
+        }
+      ],
+      "aggregate_status": "COMPLIANT",
+      "findings": [],
+      "waivers_valid": true,
+      "residual_risk_accepted": true,
+      "evidence_fresh": true,
+      "security_pass": false,
+      "policy_integrity": true,
+      "release": {
+        "release_id": "TEST-RELEASE",
+        "version": "1.0.0-test",
+        "source_snapshot": "2222222222222222222222222222222222222222222222222222222222222222",
+        "build_snapshot": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+        "configuration_snapshot": "cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
+        "artifact_hashes": [
+          {
+            "artifact_id": "TEST-ARTIFACT",
+            "hash": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+          }
+        ],
+        "created_at": "2026-09-12T19:04:51Z",
+        "schema_version": "14.0",
+        "snapshot_hash": "2418f7ca91e71930e75931158f999dabe56cf8fb5d2c6c81afe02ec48dfd6516"
+      },
+      "expected": "REJECTED",
+      "actual": "REJECTED",
+      "reasons": [
+        "SECURITY_GATE_FAILED"
+      ],
+      "gate": {
+        "gate_id": "RELEASE-GATE-SECURITY_FAIL",
+        "release_id": "TEST-RELEASE",
+        "policy_id": "RELEASE-POLICY-V14-STRICT-001",
+        "release_snapshot_hash": "2418f7ca91e71930e75931158f999dabe56cf8fb5d2c6c81afe02ec48dfd6516",
+        "certificate_ids": [
+          "TEST-RELEASE-CERT"
+        ],
+        "required_certificate_types": [
+          "COMPLIANCE"
+        ],
+        "required_aggregate_status": "COMPLIANT",
+        "forbidden_findings": [
+          "CRITICAL",
+          "SECURITY_CRITICAL"
+        ],
+        "required_waiver_policy": "WAIVER-AUTHORITY-V14-001",
+        "evidence_freshness_policy": "EVIDENCE-FRESHNESS-V14-STRICT-001",
+        "required_security_status": "PASS",
+        "state": "REJECTED",
+        "decision": "REJECTED",
+        "evaluated_at": "2026-09-12T19:04:51Z",
+        "schema_version": "14.0",
+        "gate_hash": "623168f8b13f0bd0194c13019c87ad2de60bd678770f8e4c65b3eb15c06a903f"
+      },
+      "evaluation": {
+        "evaluation_id": "RELEASE-EVALUATION-SECURITY_FAIL",
+        "policy_id": "RELEASE-POLICY-V14-STRICT-001",
+        "release_id": "TEST-RELEASE",
+        "aggregate_status": "COMPLIANT",
+        "decision": "REJECTED",
+        "reasons": [
+          "SECURITY_GATE_FAILED"
+        ],
+        "evaluated_at": "2026-09-12T19:04:51Z",
+        "schema_version": "14.0",
+        "evaluation_hash": "85743842c5a2e51360a6e3e4e65297b137581f2b0b1e9cf28a6b9ef560cc84cc"
+      },
+      "pass": true
+    },
+    {
+      "vector_id": "EVIDENCE_STALE",
+      "policy_id": "RELEASE-POLICY-V14-STRICT-001",
+      "certificate_count": 1,
+      "certificates": [
+        {
+          "certificate_id": "TEST-RELEASE-CERT",
+          "audit_id": "TEST-AUDIT",
+          "certificate_type": "COMPLIANCE",
+          "status": "VALID",
+          "aggregate_status": "COMPLIANT",
+          "scope": {
+            "audit_scope_id": "TEST-SCOPE",
+            "requirements": [
+              "R1"
+            ],
+            "specification_snapshot": "1111111111111111111111111111111111111111111111111111111111111111",
+            "implementation_snapshot": "2222222222222222222222222222222222222222222222222222222222222222",
+            "environment_snapshot": null,
+            "architecture_scope": null,
+            "platform_scope": null,
+            "version_scope": "1.0.0-test",
+            "exclusions": []
+          },
+          "snapshot": {
+            "snapshot_id": "TEST-RELEASE-CERT-SNAPSHOT",
+            "audit_id": "TEST-AUDIT",
+            "specification_snapshot": "1111111111111111111111111111111111111111111111111111111111111111",
+            "implementation_snapshot": "2222222222222222222222222222222222222222222222222222222222222222",
+            "decision_snapshot": "3333333333333333333333333333333333333333333333333333333333333333",
+            "evidence_snapshot": "4444444444444444444444444444444444444444444444444444444444444444",
+            "waiver_snapshot": "5555555555555555555555555555555555555555555555555555555555555555",
+            "state_history_snapshot": "6666666666666666666666666666666666666666666666666666666666666666",
+            "aggregate_hash": "e29cf605037d78a66c4dfedfc2fab0433cb56b458a704904f52f53654902f7fd",
+            "scope_snapshot": "8888888888888888888888888888888888888888888888888888888888888888",
+            "generated_at": "2026-09-12T19:04:51Z",
+            "release_binding": {
+              "source_snapshot": "2222222222222222222222222222222222222222222222222222222222222222",
+              "build_snapshot": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+              "configuration_snapshot": "cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
+              "artifact_hashes": [
+                {
+                  "artifact_id": "TEST-ARTIFACT",
+                  "hash": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+                }
+              ]
+            },
+            "snapshot_hash": "5d539d97a3cc028689ba893c999263be7464227bfa8d763610558e0fad17476b"
+          },
+          "snapshot_seal": {
+            "seal_id": "TEST-RELEASE-CERT-SEAL",
+            "specification_hash": "1111111111111111111111111111111111111111111111111111111111111111",
+            "implementation_hash": "2222222222222222222222222222222222222222222222222222222222222222",
+            "decision_hash": "3333333333333333333333333333333333333333333333333333333333333333",
+            "evidence_hash": "4444444444444444444444444444444444444444444444444444444444444444",
+            "waiver_hash": "5555555555555555555555555555555555555555555555555555555555555555",
+            "state_history_hash": "6666666666666666666666666666666666666666666666666666666666666666",
+            "aggregate_hash": "e29cf605037d78a66c4dfedfc2fab0433cb56b458a704904f52f53654902f7fd",
+            "sealed_at": "2026-09-12T19:04:51Z",
+            "schema_version": "14.0",
+            "seal_hash": "6ced43e8e885ab143b2078e7ef95957e4664a82b37c666776b8a84d7b5ec2ba5"
+          },
+          "authority": {
+            "authority_id": "TEST-RELEASE-CERT-AUTHORITY",
+            "authority_type": "AUTOMATED_POLICY",
+            "authorization_policy": "TEST-CERTIFICATION-POLICY",
+            "authorization_evidence": [
+              "TEST-AUTH-EVIDENCE"
+            ],
+            "authorized_at": "2026-09-12T19:04:51Z"
+          },
+          "evidence_summary": {
+            "required_evidence_count": 1,
+            "valid_evidence_count": 1,
+            "invalid_evidence_count": 0,
+            "stale_evidence_count": 0,
+            "missing_evidence_count": 0,
+            "evidence_snapshot": "4444444444444444444444444444444444444444444444444444444444444444",
+            "integrity_status": "VALID"
+          },
+          "waiver_summary": {
+            "waiver_count": 0,
+            "effective_waiver_count": 0,
+            "unauthorized_waiver_count": 0,
+            "expired_waiver_count": 0,
+            "waiver_snapshot": "5555555555555555555555555555555555555555555555555555555555555555"
+          },
+          "aggregate_inputs": [
+            {
+              "requirement_id": "R1",
+              "mandatory": true,
+              "applicable": true,
+              "decision": "CONFORMANT"
+            }
+          ],
+          "issued_at": "2026-09-12T19:04:51Z",
+          "valid_from": "2026-09-12T19:04:51Z",
+          "valid_until": "2026-09-13T19:04:51Z",
+          "supersedes": null,
+          "schema_version": "14.0",
+          "certificate_hash": "39fa6bc0cdb2acf94775db3e1b077df1dd7196d781da3cf31efebd184426b3a8",
+          "signature": {
+            "profile": "TEST-SHA256-AUTHORITY-BINDING",
+            "signer_authority_id": "TEST-RELEASE-CERT-AUTHORITY",
+            "signed_at": "2026-09-12T19:04:51Z",
+            "signature_value": "f63aff77db7ce7d38c4f128b3d5fb8249dff5a1e43a51c08e38908896f2f686b"
+          }
+        }
+      ],
+      "aggregate_status": "COMPLIANT",
+      "findings": [],
+      "waivers_valid": true,
+      "residual_risk_accepted": true,
+      "evidence_fresh": false,
+      "security_pass": true,
+      "policy_integrity": true,
+      "release": {
+        "release_id": "TEST-RELEASE",
+        "version": "1.0.0-test",
+        "source_snapshot": "2222222222222222222222222222222222222222222222222222222222222222",
+        "build_snapshot": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+        "configuration_snapshot": "cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
+        "artifact_hashes": [
+          {
+            "artifact_id": "TEST-ARTIFACT",
+            "hash": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+          }
+        ],
+        "created_at": "2026-09-12T19:04:51Z",
+        "schema_version": "14.0",
+        "snapshot_hash": "2418f7ca91e71930e75931158f999dabe56cf8fb5d2c6c81afe02ec48dfd6516"
+      },
+      "expected": "BLOCKED",
+      "actual": "BLOCKED",
+      "reasons": [
+        "EVIDENCE_STALE"
+      ],
+      "gate": {
+        "gate_id": "RELEASE-GATE-EVIDENCE_STALE",
+        "release_id": "TEST-RELEASE",
+        "policy_id": "RELEASE-POLICY-V14-STRICT-001",
+        "release_snapshot_hash": "2418f7ca91e71930e75931158f999dabe56cf8fb5d2c6c81afe02ec48dfd6516",
+        "certificate_ids": [
+          "TEST-RELEASE-CERT"
+        ],
+        "required_certificate_types": [
+          "COMPLIANCE"
+        ],
+        "required_aggregate_status": "COMPLIANT",
+        "forbidden_findings": [
+          "CRITICAL",
+          "SECURITY_CRITICAL"
+        ],
+        "required_waiver_policy": "WAIVER-AUTHORITY-V14-001",
+        "evidence_freshness_policy": "EVIDENCE-FRESHNESS-V14-STRICT-001",
+        "required_security_status": "PASS",
+        "state": "BLOCKED",
+        "decision": "BLOCKED",
+        "evaluated_at": "2026-09-12T19:04:51Z",
+        "schema_version": "14.0",
+        "gate_hash": "cdb677e261108d5b1d73820aa4efe15327a33099ae452417b84457cf214f271e"
+      },
+      "evaluation": {
+        "evaluation_id": "RELEASE-EVALUATION-EVIDENCE_STALE",
+        "policy_id": "RELEASE-POLICY-V14-STRICT-001",
+        "release_id": "TEST-RELEASE",
+        "aggregate_status": "COMPLIANT",
+        "decision": "BLOCKED",
+        "reasons": [
+          "EVIDENCE_STALE"
+        ],
+        "evaluated_at": "2026-09-12T19:04:51Z",
+        "schema_version": "14.0",
+        "evaluation_hash": "8d3d7382459c94f5b43dac1dac62a40f791c2834b0c9d29e43d9dd59fe009655"
+      },
+      "pass": true
+    },
+    {
+      "vector_id": "POLICY_INVALID",
+      "policy_id": "RELEASE-POLICY-V14-STRICT-001",
+      "certificate_count": 1,
+      "certificates": [
+        {
+          "certificate_id": "TEST-RELEASE-CERT",
+          "audit_id": "TEST-AUDIT",
+          "certificate_type": "COMPLIANCE",
+          "status": "VALID",
+          "aggregate_status": "COMPLIANT",
+          "scope": {
+            "audit_scope_id": "TEST-SCOPE",
+            "requirements": [
+              "R1"
+            ],
+            "specification_snapshot": "1111111111111111111111111111111111111111111111111111111111111111",
+            "implementation_snapshot": "2222222222222222222222222222222222222222222222222222222222222222",
+            "environment_snapshot": null,
+            "architecture_scope": null,
+            "platform_scope": null,
+            "version_scope": "1.0.0-test",
+            "exclusions": []
+          },
+          "snapshot": {
+            "snapshot_id": "TEST-RELEASE-CERT-SNAPSHOT",
+            "audit_id": "TEST-AUDIT",
+            "specification_snapshot": "1111111111111111111111111111111111111111111111111111111111111111",
+            "implementation_snapshot": "2222222222222222222222222222222222222222222222222222222222222222",
+            "decision_snapshot": "3333333333333333333333333333333333333333333333333333333333333333",
+            "evidence_snapshot": "4444444444444444444444444444444444444444444444444444444444444444",
+            "waiver_snapshot": "5555555555555555555555555555555555555555555555555555555555555555",
+            "state_history_snapshot": "6666666666666666666666666666666666666666666666666666666666666666",
+            "aggregate_hash": "e29cf605037d78a66c4dfedfc2fab0433cb56b458a704904f52f53654902f7fd",
+            "scope_snapshot": "8888888888888888888888888888888888888888888888888888888888888888",
+            "generated_at": "2026-09-12T19:04:51Z",
+            "release_binding": {
+              "source_snapshot": "2222222222222222222222222222222222222222222222222222222222222222",
+              "build_snapshot": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+              "configuration_snapshot": "cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
+              "artifact_hashes": [
+                {
+                  "artifact_id": "TEST-ARTIFACT",
+                  "hash": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+                }
+              ]
+            },
+            "snapshot_hash": "5d539d97a3cc028689ba893c999263be7464227bfa8d763610558e0fad17476b"
+          },
+          "snapshot_seal": {
+            "seal_id": "TEST-RELEASE-CERT-SEAL",
+            "specification_hash": "1111111111111111111111111111111111111111111111111111111111111111",
+            "implementation_hash": "2222222222222222222222222222222222222222222222222222222222222222",
+            "decision_hash": "3333333333333333333333333333333333333333333333333333333333333333",
+            "evidence_hash": "4444444444444444444444444444444444444444444444444444444444444444",
+            "waiver_hash": "5555555555555555555555555555555555555555555555555555555555555555",
+            "state_history_hash": "6666666666666666666666666666666666666666666666666666666666666666",
+            "aggregate_hash": "e29cf605037d78a66c4dfedfc2fab0433cb56b458a704904f52f53654902f7fd",
+            "sealed_at": "2026-09-12T19:04:51Z",
+            "schema_version": "14.0",
+            "seal_hash": "6ced43e8e885ab143b2078e7ef95957e4664a82b37c666776b8a84d7b5ec2ba5"
+          },
+          "authority": {
+            "authority_id": "TEST-RELEASE-CERT-AUTHORITY",
+            "authority_type": "AUTOMATED_POLICY",
+            "authorization_policy": "TEST-CERTIFICATION-POLICY",
+            "authorization_evidence": [
+              "TEST-AUTH-EVIDENCE"
+            ],
+            "authorized_at": "2026-09-12T19:04:51Z"
+          },
+          "evidence_summary": {
+            "required_evidence_count": 1,
+            "valid_evidence_count": 1,
+            "invalid_evidence_count": 0,
+            "stale_evidence_count": 0,
+            "missing_evidence_count": 0,
+            "evidence_snapshot": "4444444444444444444444444444444444444444444444444444444444444444",
+            "integrity_status": "VALID"
+          },
+          "waiver_summary": {
+            "waiver_count": 0,
+            "effective_waiver_count": 0,
+            "unauthorized_waiver_count": 0,
+            "expired_waiver_count": 0,
+            "waiver_snapshot": "5555555555555555555555555555555555555555555555555555555555555555"
+          },
+          "aggregate_inputs": [
+            {
+              "requirement_id": "R1",
+              "mandatory": true,
+              "applicable": true,
+              "decision": "CONFORMANT"
+            }
+          ],
+          "issued_at": "2026-09-12T19:04:51Z",
+          "valid_from": "2026-09-12T19:04:51Z",
+          "valid_until": "2026-09-13T19:04:51Z",
+          "supersedes": null,
+          "schema_version": "14.0",
+          "certificate_hash": "39fa6bc0cdb2acf94775db3e1b077df1dd7196d781da3cf31efebd184426b3a8",
+          "signature": {
+            "profile": "TEST-SHA256-AUTHORITY-BINDING",
+            "signer_authority_id": "TEST-RELEASE-CERT-AUTHORITY",
+            "signed_at": "2026-09-12T19:04:51Z",
+            "signature_value": "f63aff77db7ce7d38c4f128b3d5fb8249dff5a1e43a51c08e38908896f2f686b"
+          }
+        }
+      ],
+      "aggregate_status": "COMPLIANT",
+      "findings": [],
+      "waivers_valid": true,
+      "residual_risk_accepted": true,
+      "evidence_fresh": true,
+      "security_pass": true,
+      "policy_integrity": false,
+      "release": {
+        "release_id": "TEST-RELEASE",
+        "version": "1.0.0-test",
+        "source_snapshot": "2222222222222222222222222222222222222222222222222222222222222222",
+        "build_snapshot": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+        "configuration_snapshot": "cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
+        "artifact_hashes": [
+          {
+            "artifact_id": "TEST-ARTIFACT",
+            "hash": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+          }
+        ],
+        "created_at": "2026-09-12T19:04:51Z",
+        "schema_version": "14.0",
+        "snapshot_hash": "2418f7ca91e71930e75931158f999dabe56cf8fb5d2c6c81afe02ec48dfd6516"
+      },
+      "expected": "BLOCKED",
+      "actual": "BLOCKED",
+      "reasons": [
+        "RELEASE_POLICY_INVALID"
+      ],
+      "gate": {
+        "gate_id": "RELEASE-GATE-POLICY_INVALID",
+        "release_id": "TEST-RELEASE",
+        "policy_id": "RELEASE-POLICY-V14-STRICT-001",
+        "release_snapshot_hash": "2418f7ca91e71930e75931158f999dabe56cf8fb5d2c6c81afe02ec48dfd6516",
+        "certificate_ids": [
+          "TEST-RELEASE-CERT"
+        ],
+        "required_certificate_types": [
+          "COMPLIANCE"
+        ],
+        "required_aggregate_status": "COMPLIANT",
+        "forbidden_findings": [
+          "CRITICAL",
+          "SECURITY_CRITICAL"
+        ],
+        "required_waiver_policy": "WAIVER-AUTHORITY-V14-001",
+        "evidence_freshness_policy": "EVIDENCE-FRESHNESS-V14-STRICT-001",
+        "required_security_status": "PASS",
+        "state": "BLOCKED",
+        "decision": "BLOCKED",
+        "evaluated_at": "2026-09-12T19:04:51Z",
+        "schema_version": "14.0",
+        "gate_hash": "958c9061a81b6f6963c7ff8f9360d8ba6e40cc6c6ff7506561eb9296bac73eb0"
+      },
+      "evaluation": {
+        "evaluation_id": "RELEASE-EVALUATION-POLICY_INVALID",
+        "policy_id": "RELEASE-POLICY-V14-STRICT-001",
+        "release_id": "TEST-RELEASE",
+        "aggregate_status": "COMPLIANT",
+        "decision": "BLOCKED",
+        "reasons": [
+          "RELEASE_POLICY_INVALID"
+        ],
+        "evaluated_at": "2026-09-12T19:04:51Z",
+        "schema_version": "14.0",
+        "evaluation_hash": "6b7ba252c1574c1b81577f7d9cf4fdb3310c601726f42b62b50f2e654a4094a5"
+      },
+      "pass": true
+    },
+    {
+      "vector_id": "RELEASE_AUTHORITY_INVALID",
+      "policy_id": "RELEASE-POLICY-V14-STRICT-001",
+      "certificate_count": 1,
+      "certificates": [
+        {
+          "certificate_id": "TEST-RELEASE-CERT",
+          "audit_id": "TEST-AUDIT",
+          "certificate_type": "COMPLIANCE",
+          "status": "VALID",
+          "aggregate_status": "COMPLIANT",
+          "scope": {
+            "audit_scope_id": "TEST-SCOPE",
+            "requirements": [
+              "R1"
+            ],
+            "specification_snapshot": "1111111111111111111111111111111111111111111111111111111111111111",
+            "implementation_snapshot": "2222222222222222222222222222222222222222222222222222222222222222",
+            "environment_snapshot": null,
+            "architecture_scope": null,
+            "platform_scope": null,
+            "version_scope": "1.0.0-test",
+            "exclusions": []
+          },
+          "snapshot": {
+            "snapshot_id": "TEST-RELEASE-CERT-SNAPSHOT",
+            "audit_id": "TEST-AUDIT",
+            "specification_snapshot": "1111111111111111111111111111111111111111111111111111111111111111",
+            "implementation_snapshot": "2222222222222222222222222222222222222222222222222222222222222222",
+            "decision_snapshot": "3333333333333333333333333333333333333333333333333333333333333333",
+            "evidence_snapshot": "4444444444444444444444444444444444444444444444444444444444444444",
+            "waiver_snapshot": "5555555555555555555555555555555555555555555555555555555555555555",
+            "state_history_snapshot": "6666666666666666666666666666666666666666666666666666666666666666",
+            "aggregate_hash": "e29cf605037d78a66c4dfedfc2fab0433cb56b458a704904f52f53654902f7fd",
+            "scope_snapshot": "8888888888888888888888888888888888888888888888888888888888888888",
+            "generated_at": "2026-09-12T19:04:51Z",
+            "release_binding": {
+              "source_snapshot": "2222222222222222222222222222222222222222222222222222222222222222",
+              "build_snapshot": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+              "configuration_snapshot": "cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
+              "artifact_hashes": [
+                {
+                  "artifact_id": "TEST-ARTIFACT",
+                  "hash": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+                }
+              ]
+            },
+            "snapshot_hash": "5d539d97a3cc028689ba893c999263be7464227bfa8d763610558e0fad17476b"
+          },
+          "snapshot_seal": {
+            "seal_id": "TEST-RELEASE-CERT-SEAL",
+            "specification_hash": "1111111111111111111111111111111111111111111111111111111111111111",
+            "implementation_hash": "2222222222222222222222222222222222222222222222222222222222222222",
+            "decision_hash": "3333333333333333333333333333333333333333333333333333333333333333",
+            "evidence_hash": "4444444444444444444444444444444444444444444444444444444444444444",
+            "waiver_hash": "5555555555555555555555555555555555555555555555555555555555555555",
+            "state_history_hash": "6666666666666666666666666666666666666666666666666666666666666666",
+            "aggregate_hash": "e29cf605037d78a66c4dfedfc2fab0433cb56b458a704904f52f53654902f7fd",
+            "sealed_at": "2026-09-12T19:04:51Z",
+            "schema_version": "14.0",
+            "seal_hash": "6ced43e8e885ab143b2078e7ef95957e4664a82b37c666776b8a84d7b5ec2ba5"
+          },
+          "authority": {
+            "authority_id": "TEST-RELEASE-CERT-AUTHORITY",
+            "authority_type": "AUTOMATED_POLICY",
+            "authorization_policy": "TEST-CERTIFICATION-POLICY",
+            "authorization_evidence": [
+              "TEST-AUTH-EVIDENCE"
+            ],
+            "authorized_at": "2026-09-12T19:04:51Z"
+          },
+          "evidence_summary": {
+            "required_evidence_count": 1,
+            "valid_evidence_count": 1,
+            "invalid_evidence_count": 0,
+            "stale_evidence_count": 0,
+            "missing_evidence_count": 0,
+            "evidence_snapshot": "4444444444444444444444444444444444444444444444444444444444444444",
+            "integrity_status": "VALID"
+          },
+          "waiver_summary": {
+            "waiver_count": 0,
+            "effective_waiver_count": 0,
+            "unauthorized_waiver_count": 0,
+            "expired_waiver_count": 0,
+            "waiver_snapshot": "5555555555555555555555555555555555555555555555555555555555555555"
+          },
+          "aggregate_inputs": [
+            {
+              "requirement_id": "R1",
+              "mandatory": true,
+              "applicable": true,
+              "decision": "CONFORMANT"
+            }
+          ],
+          "issued_at": "2026-09-12T19:04:51Z",
+          "valid_from": "2026-09-12T19:04:51Z",
+          "valid_until": "2026-09-13T19:04:51Z",
+          "supersedes": null,
+          "schema_version": "14.0",
+          "certificate_hash": "39fa6bc0cdb2acf94775db3e1b077df1dd7196d781da3cf31efebd184426b3a8",
+          "signature": {
+            "profile": "TEST-SHA256-AUTHORITY-BINDING",
+            "signer_authority_id": "TEST-RELEASE-CERT-AUTHORITY",
+            "signed_at": "2026-09-12T19:04:51Z",
+            "signature_value": "f63aff77db7ce7d38c4f128b3d5fb8249dff5a1e43a51c08e38908896f2f686b"
+          }
+        }
+      ],
+      "aggregate_status": "COMPLIANT",
+      "findings": [],
+      "waivers_valid": true,
+      "residual_risk_accepted": true,
+      "evidence_fresh": true,
+      "security_pass": true,
+      "policy_integrity": true,
+      "release": {
+        "release_id": "TEST-RELEASE",
+        "version": "1.0.0-test",
+        "source_snapshot": "2222222222222222222222222222222222222222222222222222222222222222",
+        "build_snapshot": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+        "configuration_snapshot": "cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
+        "artifact_hashes": [
+          {
+            "artifact_id": "TEST-ARTIFACT",
+            "hash": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+          }
+        ],
+        "created_at": "2026-09-12T19:04:51Z",
+        "schema_version": "14.0",
+        "snapshot_hash": "2418f7ca91e71930e75931158f999dabe56cf8fb5d2c6c81afe02ec48dfd6516"
+      },
+      "expected": "BLOCKED",
+      "actual": "BLOCKED",
+      "reasons": [
+        "RELEASE_AUTHORITY_INVALID"
+      ],
+      "gate": {
+        "gate_id": "RELEASE-GATE-RELEASE_AUTHORITY_INVALID",
+        "release_id": "TEST-RELEASE",
+        "policy_id": "RELEASE-POLICY-V14-STRICT-001",
+        "release_snapshot_hash": "2418f7ca91e71930e75931158f999dabe56cf8fb5d2c6c81afe02ec48dfd6516",
+        "certificate_ids": [
+          "TEST-RELEASE-CERT"
+        ],
+        "required_certificate_types": [
+          "COMPLIANCE"
+        ],
+        "required_aggregate_status": "COMPLIANT",
+        "forbidden_findings": [
+          "CRITICAL",
+          "SECURITY_CRITICAL"
+        ],
+        "required_waiver_policy": "WAIVER-AUTHORITY-V14-001",
+        "evidence_freshness_policy": "EVIDENCE-FRESHNESS-V14-STRICT-001",
+        "required_security_status": "PASS",
+        "state": "BLOCKED",
+        "decision": "BLOCKED",
+        "evaluated_at": "2026-09-12T19:04:51Z",
+        "schema_version": "14.0",
+        "gate_hash": "c132515aaad36792c1adae933611ff462227e842f3b65e4cc4cfdd65f6922ab9"
+      },
+      "evaluation": {
+        "evaluation_id": "RELEASE-EVALUATION-RELEASE_AUTHORITY_INVALID",
+        "policy_id": "RELEASE-POLICY-V14-STRICT-001",
+        "release_id": "TEST-RELEASE",
+        "aggregate_status": "COMPLIANT",
+        "decision": "BLOCKED",
+        "reasons": [
+          "RELEASE_AUTHORITY_INVALID"
+        ],
+        "evaluated_at": "2026-09-12T19:04:51Z",
+        "schema_version": "14.0",
+        "evaluation_hash": "9fe0e674a7ab9f8201279e9f3a5048f78a93ac741de8870a814e8941387c5106"
+      },
+      "pass": true
+    },
+    {
+      "vector_id": "ARTIFACT_MISMATCH",
+      "policy_id": "RELEASE-POLICY-V14-STRICT-001",
+      "certificate_count": 1,
+      "certificates": [
+        {
+          "certificate_id": "TEST-RELEASE-CERT",
+          "audit_id": "TEST-AUDIT",
+          "certificate_type": "COMPLIANCE",
+          "status": "VALID",
+          "aggregate_status": "COMPLIANT",
+          "scope": {
+            "audit_scope_id": "TEST-SCOPE",
+            "requirements": [
+              "R1"
+            ],
+            "specification_snapshot": "1111111111111111111111111111111111111111111111111111111111111111",
+            "implementation_snapshot": "2222222222222222222222222222222222222222222222222222222222222222",
+            "environment_snapshot": null,
+            "architecture_scope": null,
+            "platform_scope": null,
+            "version_scope": "1.0.0-test",
+            "exclusions": []
+          },
+          "snapshot": {
+            "snapshot_id": "TEST-RELEASE-CERT-SNAPSHOT",
+            "audit_id": "TEST-AUDIT",
+            "specification_snapshot": "1111111111111111111111111111111111111111111111111111111111111111",
+            "implementation_snapshot": "2222222222222222222222222222222222222222222222222222222222222222",
+            "decision_snapshot": "3333333333333333333333333333333333333333333333333333333333333333",
+            "evidence_snapshot": "4444444444444444444444444444444444444444444444444444444444444444",
+            "waiver_snapshot": "5555555555555555555555555555555555555555555555555555555555555555",
+            "state_history_snapshot": "6666666666666666666666666666666666666666666666666666666666666666",
+            "aggregate_hash": "e29cf605037d78a66c4dfedfc2fab0433cb56b458a704904f52f53654902f7fd",
+            "scope_snapshot": "8888888888888888888888888888888888888888888888888888888888888888",
+            "generated_at": "2026-09-12T19:04:51Z",
+            "release_binding": {
+              "source_snapshot": "2222222222222222222222222222222222222222222222222222222222222222",
+              "build_snapshot": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+              "configuration_snapshot": "cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
+              "artifact_hashes": [
+                {
+                  "artifact_id": "TEST-ARTIFACT",
+                  "hash": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+                }
+              ]
+            },
+            "snapshot_hash": "5d539d97a3cc028689ba893c999263be7464227bfa8d763610558e0fad17476b"
+          },
+          "snapshot_seal": {
+            "seal_id": "TEST-RELEASE-CERT-SEAL",
+            "specification_hash": "1111111111111111111111111111111111111111111111111111111111111111",
+            "implementation_hash": "2222222222222222222222222222222222222222222222222222222222222222",
+            "decision_hash": "3333333333333333333333333333333333333333333333333333333333333333",
+            "evidence_hash": "4444444444444444444444444444444444444444444444444444444444444444",
+            "waiver_hash": "5555555555555555555555555555555555555555555555555555555555555555",
+            "state_history_hash": "6666666666666666666666666666666666666666666666666666666666666666",
+            "aggregate_hash": "e29cf605037d78a66c4dfedfc2fab0433cb56b458a704904f52f53654902f7fd",
+            "sealed_at": "2026-09-12T19:04:51Z",
+            "schema_version": "14.0",
+            "seal_hash": "6ced43e8e885ab143b2078e7ef95957e4664a82b37c666776b8a84d7b5ec2ba5"
+          },
+          "authority": {
+            "authority_id": "TEST-RELEASE-CERT-AUTHORITY",
+            "authority_type": "AUTOMATED_POLICY",
+            "authorization_policy": "TEST-CERTIFICATION-POLICY",
+            "authorization_evidence": [
+              "TEST-AUTH-EVIDENCE"
+            ],
+            "authorized_at": "2026-09-12T19:04:51Z"
+          },
+          "evidence_summary": {
+            "required_evidence_count": 1,
+            "valid_evidence_count": 1,
+            "invalid_evidence_count": 0,
+            "stale_evidence_count": 0,
+            "missing_evidence_count": 0,
+            "evidence_snapshot": "4444444444444444444444444444444444444444444444444444444444444444",
+            "integrity_status": "VALID"
+          },
+          "waiver_summary": {
+            "waiver_count": 0,
+            "effective_waiver_count": 0,
+            "unauthorized_waiver_count": 0,
+            "expired_waiver_count": 0,
+            "waiver_snapshot": "5555555555555555555555555555555555555555555555555555555555555555"
+          },
+          "aggregate_inputs": [
+            {
+              "requirement_id": "R1",
+              "mandatory": true,
+              "applicable": true,
+              "decision": "CONFORMANT"
+            }
+          ],
+          "issued_at": "2026-09-12T19:04:51Z",
+          "valid_from": "2026-09-12T19:04:51Z",
+          "valid_until": "2026-09-13T19:04:51Z",
+          "supersedes": null,
+          "schema_version": "14.0",
+          "certificate_hash": "39fa6bc0cdb2acf94775db3e1b077df1dd7196d781da3cf31efebd184426b3a8",
+          "signature": {
+            "profile": "TEST-SHA256-AUTHORITY-BINDING",
+            "signer_authority_id": "TEST-RELEASE-CERT-AUTHORITY",
+            "signed_at": "2026-09-12T19:04:51Z",
+            "signature_value": "f63aff77db7ce7d38c4f128b3d5fb8249dff5a1e43a51c08e38908896f2f686b"
+          }
+        }
+      ],
+      "aggregate_status": "COMPLIANT",
+      "findings": [],
+      "waivers_valid": true,
+      "residual_risk_accepted": true,
+      "evidence_fresh": true,
+      "security_pass": true,
+      "policy_integrity": true,
+      "release": {
+        "release_id": "TEST-RELEASE-BUILD",
+        "version": "1.0.0-test",
+        "source_snapshot": "2222222222222222222222222222222222222222222222222222222222222222",
+        "build_snapshot": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+        "configuration_snapshot": "cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
+        "artifact_hashes": [
+          {
+            "artifact_id": "TEST-ARTIFACT",
+            "hash": "dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd"
+          }
+        ],
+        "created_at": "2026-09-12T19:04:51Z",
+        "schema_version": "14.0",
+        "snapshot_hash": "72ebd55a5542a18a8537ab49168361b975fcd2dbe3dbb7c37b8c668f963a7835"
+      },
+      "expected": "BLOCKED",
+      "actual": "BLOCKED",
+      "reasons": [
+        "CERTIFICATE_RELEASE_SNAPSHOT_MISMATCH"
+      ],
+      "gate": {
+        "gate_id": "RELEASE-GATE-ARTIFACT_MISMATCH",
+        "release_id": "TEST-RELEASE-BUILD",
+        "policy_id": "RELEASE-POLICY-V14-STRICT-001",
+        "release_snapshot_hash": "72ebd55a5542a18a8537ab49168361b975fcd2dbe3dbb7c37b8c668f963a7835",
+        "certificate_ids": [
+          "TEST-RELEASE-CERT"
+        ],
+        "required_certificate_types": [
+          "COMPLIANCE"
+        ],
+        "required_aggregate_status": "COMPLIANT",
+        "forbidden_findings": [
+          "CRITICAL",
+          "SECURITY_CRITICAL"
+        ],
+        "required_waiver_policy": "WAIVER-AUTHORITY-V14-001",
+        "evidence_freshness_policy": "EVIDENCE-FRESHNESS-V14-STRICT-001",
+        "required_security_status": "PASS",
+        "state": "BLOCKED",
+        "decision": "BLOCKED",
+        "evaluated_at": "2026-09-12T19:04:51Z",
+        "schema_version": "14.0",
+        "gate_hash": "8d6a7fa5dd053b3e39d9405c1c5bd7d397a678280e845673a792f4ab821401e0"
+      },
+      "evaluation": {
+        "evaluation_id": "RELEASE-EVALUATION-ARTIFACT_MISMATCH",
+        "policy_id": "RELEASE-POLICY-V14-STRICT-001",
+        "release_id": "TEST-RELEASE-BUILD",
+        "aggregate_status": "COMPLIANT",
+        "decision": "BLOCKED",
+        "reasons": [
+          "CERTIFICATE_RELEASE_SNAPSHOT_MISMATCH"
+        ],
+        "evaluated_at": "2026-09-12T19:04:51Z",
+        "schema_version": "14.0",
+        "evaluation_hash": "2eb20973d447a623788fb17fe588f3209fa87e38add96bfb0947e332829b370e"
+      },
+      "pass": true
+    },
+    {
+      "vector_id": "CONDITIONAL_AUTHORIZED",
+      "policy_id": "RELEASE-POLICY-V14-CONDITIONAL-001",
+      "certificate_count": 1,
+      "certificates": [
+        {
+          "certificate_id": "TEST-RELEASE-CONDITIONAL-CERT",
+          "audit_id": "TEST-AUDIT",
+          "certificate_type": "COMPLIANCE",
+          "status": "VALID",
+          "aggregate_status": "CONDITIONALLY_COMPLIANT",
+          "scope": {
+            "audit_scope_id": "TEST-SCOPE",
+            "requirements": [
+              "R1"
+            ],
+            "specification_snapshot": "1111111111111111111111111111111111111111111111111111111111111111",
+            "implementation_snapshot": "2222222222222222222222222222222222222222222222222222222222222222",
+            "environment_snapshot": null,
+            "architecture_scope": null,
+            "platform_scope": null,
+            "version_scope": "1.0.0-test",
+            "exclusions": []
+          },
+          "snapshot": {
+            "snapshot_id": "TEST-RELEASE-CONDITIONAL-CERT-SNAPSHOT",
+            "audit_id": "TEST-AUDIT",
+            "specification_snapshot": "1111111111111111111111111111111111111111111111111111111111111111",
+            "implementation_snapshot": "2222222222222222222222222222222222222222222222222222222222222222",
+            "decision_snapshot": "3333333333333333333333333333333333333333333333333333333333333333",
+            "evidence_snapshot": "4444444444444444444444444444444444444444444444444444444444444444",
+            "waiver_snapshot": "5555555555555555555555555555555555555555555555555555555555555555",
+            "state_history_snapshot": "6666666666666666666666666666666666666666666666666666666666666666",
+            "aggregate_hash": "77de3fa5aa49d34c21d68c22dda43d54d49611c0a118da509b695553a43c2a61",
+            "scope_snapshot": "8888888888888888888888888888888888888888888888888888888888888888",
+            "generated_at": "2026-09-12T19:04:51Z",
+            "release_binding": {
+              "source_snapshot": "2222222222222222222222222222222222222222222222222222222222222222",
+              "build_snapshot": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+              "configuration_snapshot": "cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
+              "artifact_hashes": [
+                {
+                  "artifact_id": "TEST-ARTIFACT",
+                  "hash": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+                }
+              ]
+            },
+            "snapshot_hash": "86493549b7f3b8ea1721e8be3b1f2933637a528354afda719474ab95a2848ff7"
+          },
+          "snapshot_seal": {
+            "seal_id": "TEST-RELEASE-CONDITIONAL-CERT-SEAL",
+            "specification_hash": "1111111111111111111111111111111111111111111111111111111111111111",
+            "implementation_hash": "2222222222222222222222222222222222222222222222222222222222222222",
+            "decision_hash": "3333333333333333333333333333333333333333333333333333333333333333",
+            "evidence_hash": "4444444444444444444444444444444444444444444444444444444444444444",
+            "waiver_hash": "5555555555555555555555555555555555555555555555555555555555555555",
+            "state_history_hash": "6666666666666666666666666666666666666666666666666666666666666666",
+            "aggregate_hash": "77de3fa5aa49d34c21d68c22dda43d54d49611c0a118da509b695553a43c2a61",
+            "sealed_at": "2026-09-12T19:04:51Z",
+            "schema_version": "14.0",
+            "seal_hash": "b6d8554dafe086548fb67d649fc6ecf8b4b7cd22185d08d52deaccb78ca96af8"
+          },
+          "authority": {
+            "authority_id": "TEST-RELEASE-CONDITIONAL-CERT-AUTHORITY",
+            "authority_type": "AUTOMATED_POLICY",
+            "authorization_policy": "TEST-CERTIFICATION-POLICY",
+            "authorization_evidence": [
+              "TEST-AUTH-EVIDENCE"
+            ],
+            "authorized_at": "2026-09-12T19:04:51Z"
+          },
+          "evidence_summary": {
+            "required_evidence_count": 1,
+            "valid_evidence_count": 1,
+            "invalid_evidence_count": 0,
+            "stale_evidence_count": 0,
+            "missing_evidence_count": 0,
+            "evidence_snapshot": "4444444444444444444444444444444444444444444444444444444444444444",
+            "integrity_status": "VALID"
+          },
+          "waiver_summary": {
+            "waiver_count": 1,
+            "effective_waiver_count": 1,
+            "unauthorized_waiver_count": 0,
+            "expired_waiver_count": 0,
+            "waiver_snapshot": "5555555555555555555555555555555555555555555555555555555555555555"
+          },
+          "aggregate_inputs": [
+            {
+              "requirement_id": "R1",
+              "mandatory": true,
+              "applicable": true,
+              "decision": "NON_CONFORMANT",
+              "waiver_effective": true
+            }
+          ],
+          "issued_at": "2026-09-12T19:04:51Z",
+          "valid_from": "2026-09-12T19:04:51Z",
+          "valid_until": "2026-09-13T19:04:51Z",
+          "supersedes": null,
+          "schema_version": "14.0",
+          "certificate_hash": "6d648e199b88a8b4f3ba1534230ef4bf8f1134cc586e6ae8ed140b5164eb3114",
+          "signature": {
+            "profile": "TEST-SHA256-AUTHORITY-BINDING",
+            "signer_authority_id": "TEST-RELEASE-CONDITIONAL-CERT-AUTHORITY",
+            "signed_at": "2026-09-12T19:04:51Z",
+            "signature_value": "6a8466fddde2b74adba0bc2404a6a66392e281cb8493156b7cc6bc27eb932458"
+          }
+        }
+      ],
+      "aggregate_status": "CONDITIONALLY_COMPLIANT",
+      "findings": [],
+      "waivers_valid": true,
+      "residual_risk_accepted": true,
+      "evidence_fresh": true,
+      "security_pass": true,
+      "policy_integrity": true,
+      "release": {
+        "release_id": "TEST-RELEASE",
+        "version": "1.0.0-test",
+        "source_snapshot": "2222222222222222222222222222222222222222222222222222222222222222",
+        "build_snapshot": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+        "configuration_snapshot": "cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
+        "artifact_hashes": [
+          {
+            "artifact_id": "TEST-ARTIFACT",
+            "hash": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+          }
+        ],
+        "created_at": "2026-09-12T19:04:51Z",
+        "schema_version": "14.0",
+        "snapshot_hash": "2418f7ca91e71930e75931158f999dabe56cf8fb5d2c6c81afe02ec48dfd6516"
+      },
+      "expected": "CONDITIONALLY_AUTHORIZED",
+      "actual": "CONDITIONALLY_AUTHORIZED",
+      "reasons": [],
+      "gate": {
+        "gate_id": "RELEASE-GATE-CONDITIONAL_AUTHORIZED",
+        "release_id": "TEST-RELEASE",
+        "policy_id": "RELEASE-POLICY-V14-CONDITIONAL-001",
+        "release_snapshot_hash": "2418f7ca91e71930e75931158f999dabe56cf8fb5d2c6c81afe02ec48dfd6516",
+        "certificate_ids": [
+          "TEST-RELEASE-CONDITIONAL-CERT"
+        ],
+        "required_certificate_types": [
+          "COMPLIANCE"
+        ],
+        "required_aggregate_status": "CONDITIONALLY_COMPLIANT",
+        "forbidden_findings": [
+          "CRITICAL",
+          "SECURITY_CRITICAL"
+        ],
+        "required_waiver_policy": "WAIVER-AUTHORITY-V14-001",
+        "evidence_freshness_policy": "EVIDENCE-FRESHNESS-V14-STRICT-001",
+        "required_security_status": "PASS",
+        "state": "CONDITIONALLY_AUTHORIZED",
+        "decision": "CONDITIONALLY_AUTHORIZED",
+        "evaluated_at": "2026-09-12T19:04:51Z",
+        "schema_version": "14.0",
+        "gate_hash": "a21f37e85914cfbcffb979498e5a04d450e224f8e1baac089c0a04aa487e63ea"
+      },
+      "evaluation": {
+        "evaluation_id": "RELEASE-EVALUATION-CONDITIONAL_AUTHORIZED",
+        "policy_id": "RELEASE-POLICY-V14-CONDITIONAL-001",
+        "release_id": "TEST-RELEASE",
+        "aggregate_status": "CONDITIONALLY_COMPLIANT",
+        "decision": "CONDITIONALLY_AUTHORIZED",
+        "reasons": [],
+        "evaluated_at": "2026-09-12T19:04:51Z",
+        "schema_version": "14.0",
+        "evaluation_hash": "a80970a774164fcaa561631003927a957ff4e2fbcf7c6b9085986f85503826ed"
+      },
+      "pass": true
+    },
+    {
+      "vector_id": "CONDITIONAL_RISK_NOT_ACCEPTED",
+      "policy_id": "RELEASE-POLICY-V14-CONDITIONAL-001",
+      "certificate_count": 1,
+      "certificates": [
+        {
+          "certificate_id": "TEST-RELEASE-CONDITIONAL-CERT",
+          "audit_id": "TEST-AUDIT",
+          "certificate_type": "COMPLIANCE",
+          "status": "VALID",
+          "aggregate_status": "CONDITIONALLY_COMPLIANT",
+          "scope": {
+            "audit_scope_id": "TEST-SCOPE",
+            "requirements": [
+              "R1"
+            ],
+            "specification_snapshot": "1111111111111111111111111111111111111111111111111111111111111111",
+            "implementation_snapshot": "2222222222222222222222222222222222222222222222222222222222222222",
+            "environment_snapshot": null,
+            "architecture_scope": null,
+            "platform_scope": null,
+            "version_scope": "1.0.0-test",
+            "exclusions": []
+          },
+          "snapshot": {
+            "snapshot_id": "TEST-RELEASE-CONDITIONAL-CERT-SNAPSHOT",
+            "audit_id": "TEST-AUDIT",
+            "specification_snapshot": "1111111111111111111111111111111111111111111111111111111111111111",
+            "implementation_snapshot": "2222222222222222222222222222222222222222222222222222222222222222",
+            "decision_snapshot": "3333333333333333333333333333333333333333333333333333333333333333",
+            "evidence_snapshot": "4444444444444444444444444444444444444444444444444444444444444444",
+            "waiver_snapshot": "5555555555555555555555555555555555555555555555555555555555555555",
+            "state_history_snapshot": "6666666666666666666666666666666666666666666666666666666666666666",
+            "aggregate_hash": "77de3fa5aa49d34c21d68c22dda43d54d49611c0a118da509b695553a43c2a61",
+            "scope_snapshot": "8888888888888888888888888888888888888888888888888888888888888888",
+            "generated_at": "2026-09-12T19:04:51Z",
+            "release_binding": {
+              "source_snapshot": "2222222222222222222222222222222222222222222222222222222222222222",
+              "build_snapshot": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+              "configuration_snapshot": "cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
+              "artifact_hashes": [
+                {
+                  "artifact_id": "TEST-ARTIFACT",
+                  "hash": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+                }
+              ]
+            },
+            "snapshot_hash": "86493549b7f3b8ea1721e8be3b1f2933637a528354afda719474ab95a2848ff7"
+          },
+          "snapshot_seal": {
+            "seal_id": "TEST-RELEASE-CONDITIONAL-CERT-SEAL",
+            "specification_hash": "1111111111111111111111111111111111111111111111111111111111111111",
+            "implementation_hash": "2222222222222222222222222222222222222222222222222222222222222222",
+            "decision_hash": "3333333333333333333333333333333333333333333333333333333333333333",
+            "evidence_hash": "4444444444444444444444444444444444444444444444444444444444444444",
+            "waiver_hash": "5555555555555555555555555555555555555555555555555555555555555555",
+            "state_history_hash": "6666666666666666666666666666666666666666666666666666666666666666",
+            "aggregate_hash": "77de3fa5aa49d34c21d68c22dda43d54d49611c0a118da509b695553a43c2a61",
+            "sealed_at": "2026-09-12T19:04:51Z",
+            "schema_version": "14.0",
+            "seal_hash": "b6d8554dafe086548fb67d649fc6ecf8b4b7cd22185d08d52deaccb78ca96af8"
+          },
+          "authority": {
+            "authority_id": "TEST-RELEASE-CONDITIONAL-CERT-AUTHORITY",
+            "authority_type": "AUTOMATED_POLICY",
+            "authorization_policy": "TEST-CERTIFICATION-POLICY",
+            "authorization_evidence": [
+              "TEST-AUTH-EVIDENCE"
+            ],
+            "authorized_at": "2026-09-12T19:04:51Z"
+          },
+          "evidence_summary": {
+            "required_evidence_count": 1,
+            "valid_evidence_count": 1,
+            "invalid_evidence_count": 0,
+            "stale_evidence_count": 0,
+            "missing_evidence_count": 0,
+            "evidence_snapshot": "4444444444444444444444444444444444444444444444444444444444444444",
+            "integrity_status": "VALID"
+          },
+          "waiver_summary": {
+            "waiver_count": 1,
+            "effective_waiver_count": 1,
+            "unauthorized_waiver_count": 0,
+            "expired_waiver_count": 0,
+            "waiver_snapshot": "5555555555555555555555555555555555555555555555555555555555555555"
+          },
+          "aggregate_inputs": [
+            {
+              "requirement_id": "R1",
+              "mandatory": true,
+              "applicable": true,
+              "decision": "NON_CONFORMANT",
+              "waiver_effective": true
+            }
+          ],
+          "issued_at": "2026-09-12T19:04:51Z",
+          "valid_from": "2026-09-12T19:04:51Z",
+          "valid_until": "2026-09-13T19:04:51Z",
+          "supersedes": null,
+          "schema_version": "14.0",
+          "certificate_hash": "6d648e199b88a8b4f3ba1534230ef4bf8f1134cc586e6ae8ed140b5164eb3114",
+          "signature": {
+            "profile": "TEST-SHA256-AUTHORITY-BINDING",
+            "signer_authority_id": "TEST-RELEASE-CONDITIONAL-CERT-AUTHORITY",
+            "signed_at": "2026-09-12T19:04:51Z",
+            "signature_value": "6a8466fddde2b74adba0bc2404a6a66392e281cb8493156b7cc6bc27eb932458"
+          }
+        }
+      ],
+      "aggregate_status": "CONDITIONALLY_COMPLIANT",
+      "findings": [],
+      "waivers_valid": true,
+      "residual_risk_accepted": false,
+      "evidence_fresh": true,
+      "security_pass": true,
+      "policy_integrity": true,
+      "release": {
+        "release_id": "TEST-RELEASE",
+        "version": "1.0.0-test",
+        "source_snapshot": "2222222222222222222222222222222222222222222222222222222222222222",
+        "build_snapshot": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+        "configuration_snapshot": "cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
+        "artifact_hashes": [
+          {
+            "artifact_id": "TEST-ARTIFACT",
+            "hash": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+          }
+        ],
+        "created_at": "2026-09-12T19:04:51Z",
+        "schema_version": "14.0",
+        "snapshot_hash": "2418f7ca91e71930e75931158f999dabe56cf8fb5d2c6c81afe02ec48dfd6516"
+      },
+      "expected": "REJECTED",
+      "actual": "REJECTED",
+      "reasons": [
+        "CONDITIONAL_POLICY_UNSATISFIED"
+      ],
+      "gate": {
+        "gate_id": "RELEASE-GATE-CONDITIONAL_RISK_NOT_ACCEPTED",
+        "release_id": "TEST-RELEASE",
+        "policy_id": "RELEASE-POLICY-V14-CONDITIONAL-001",
+        "release_snapshot_hash": "2418f7ca91e71930e75931158f999dabe56cf8fb5d2c6c81afe02ec48dfd6516",
+        "certificate_ids": [
+          "TEST-RELEASE-CONDITIONAL-CERT"
+        ],
+        "required_certificate_types": [
+          "COMPLIANCE"
+        ],
+        "required_aggregate_status": "CONDITIONALLY_COMPLIANT",
+        "forbidden_findings": [
+          "CRITICAL",
+          "SECURITY_CRITICAL"
+        ],
+        "required_waiver_policy": "WAIVER-AUTHORITY-V14-001",
+        "evidence_freshness_policy": "EVIDENCE-FRESHNESS-V14-STRICT-001",
+        "required_security_status": "PASS",
+        "state": "REJECTED",
+        "decision": "REJECTED",
+        "evaluated_at": "2026-09-12T19:04:51Z",
+        "schema_version": "14.0",
+        "gate_hash": "8e7e09307426bf557d4483c935adf4bf85370443ddea5d54124a42e975079bf2"
+      },
+      "evaluation": {
+        "evaluation_id": "RELEASE-EVALUATION-CONDITIONAL_RISK_NOT_ACCEPTED",
+        "policy_id": "RELEASE-POLICY-V14-CONDITIONAL-001",
+        "release_id": "TEST-RELEASE",
+        "aggregate_status": "CONDITIONALLY_COMPLIANT",
+        "decision": "REJECTED",
+        "reasons": [
+          "CONDITIONAL_POLICY_UNSATISFIED"
+        ],
+        "evaluated_at": "2026-09-12T19:04:51Z",
+        "schema_version": "14.0",
+        "evaluation_hash": "ba709b9af8dddead4344009f7486e0aa3f9d8345f282f4b1b293404024415868"
+      },
+      "pass": true
+    },
+    {
+      "vector_id": "CONDITIONAL_WAIVER_INVALID",
+      "policy_id": "RELEASE-POLICY-V14-CONDITIONAL-001",
+      "certificate_count": 1,
+      "certificates": [
+        {
+          "certificate_id": "TEST-RELEASE-CONDITIONAL-CERT",
+          "audit_id": "TEST-AUDIT",
+          "certificate_type": "COMPLIANCE",
+          "status": "VALID",
+          "aggregate_status": "CONDITIONALLY_COMPLIANT",
+          "scope": {
+            "audit_scope_id": "TEST-SCOPE",
+            "requirements": [
+              "R1"
+            ],
+            "specification_snapshot": "1111111111111111111111111111111111111111111111111111111111111111",
+            "implementation_snapshot": "2222222222222222222222222222222222222222222222222222222222222222",
+            "environment_snapshot": null,
+            "architecture_scope": null,
+            "platform_scope": null,
+            "version_scope": "1.0.0-test",
+            "exclusions": []
+          },
+          "snapshot": {
+            "snapshot_id": "TEST-RELEASE-CONDITIONAL-CERT-SNAPSHOT",
+            "audit_id": "TEST-AUDIT",
+            "specification_snapshot": "1111111111111111111111111111111111111111111111111111111111111111",
+            "implementation_snapshot": "2222222222222222222222222222222222222222222222222222222222222222",
+            "decision_snapshot": "3333333333333333333333333333333333333333333333333333333333333333",
+            "evidence_snapshot": "4444444444444444444444444444444444444444444444444444444444444444",
+            "waiver_snapshot": "5555555555555555555555555555555555555555555555555555555555555555",
+            "state_history_snapshot": "6666666666666666666666666666666666666666666666666666666666666666",
+            "aggregate_hash": "77de3fa5aa49d34c21d68c22dda43d54d49611c0a118da509b695553a43c2a61",
+            "scope_snapshot": "8888888888888888888888888888888888888888888888888888888888888888",
+            "generated_at": "2026-09-12T19:04:51Z",
+            "release_binding": {
+              "source_snapshot": "2222222222222222222222222222222222222222222222222222222222222222",
+              "build_snapshot": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+              "configuration_snapshot": "cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
+              "artifact_hashes": [
+                {
+                  "artifact_id": "TEST-ARTIFACT",
+                  "hash": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+                }
+              ]
+            },
+            "snapshot_hash": "86493549b7f3b8ea1721e8be3b1f2933637a528354afda719474ab95a2848ff7"
+          },
+          "snapshot_seal": {
+            "seal_id": "TEST-RELEASE-CONDITIONAL-CERT-SEAL",
+            "specification_hash": "1111111111111111111111111111111111111111111111111111111111111111",
+            "implementation_hash": "2222222222222222222222222222222222222222222222222222222222222222",
+            "decision_hash": "3333333333333333333333333333333333333333333333333333333333333333",
+            "evidence_hash": "4444444444444444444444444444444444444444444444444444444444444444",
+            "waiver_hash": "5555555555555555555555555555555555555555555555555555555555555555",
+            "state_history_hash": "6666666666666666666666666666666666666666666666666666666666666666",
+            "aggregate_hash": "77de3fa5aa49d34c21d68c22dda43d54d49611c0a118da509b695553a43c2a61",
+            "sealed_at": "2026-09-12T19:04:51Z",
+            "schema_version": "14.0",
+            "seal_hash": "b6d8554dafe086548fb67d649fc6ecf8b4b7cd22185d08d52deaccb78ca96af8"
+          },
+          "authority": {
+            "authority_id": "TEST-RELEASE-CONDITIONAL-CERT-AUTHORITY",
+            "authority_type": "AUTOMATED_POLICY",
+            "authorization_policy": "TEST-CERTIFICATION-POLICY",
+            "authorization_evidence": [
+              "TEST-AUTH-EVIDENCE"
+            ],
+            "authorized_at": "2026-09-12T19:04:51Z"
+          },
+          "evidence_summary": {
+            "required_evidence_count": 1,
+            "valid_evidence_count": 1,
+            "invalid_evidence_count": 0,
+            "stale_evidence_count": 0,
+            "missing_evidence_count": 0,
+            "evidence_snapshot": "4444444444444444444444444444444444444444444444444444444444444444",
+            "integrity_status": "VALID"
+          },
+          "waiver_summary": {
+            "waiver_count": 1,
+            "effective_waiver_count": 1,
+            "unauthorized_waiver_count": 0,
+            "expired_waiver_count": 0,
+            "waiver_snapshot": "5555555555555555555555555555555555555555555555555555555555555555"
+          },
+          "aggregate_inputs": [
+            {
+              "requirement_id": "R1",
+              "mandatory": true,
+              "applicable": true,
+              "decision": "NON_CONFORMANT",
+              "waiver_effective": true
+            }
+          ],
+          "issued_at": "2026-09-12T19:04:51Z",
+          "valid_from": "2026-09-12T19:04:51Z",
+          "valid_until": "2026-09-13T19:04:51Z",
+          "supersedes": null,
+          "schema_version": "14.0",
+          "certificate_hash": "6d648e199b88a8b4f3ba1534230ef4bf8f1134cc586e6ae8ed140b5164eb3114",
+          "signature": {
+            "profile": "TEST-SHA256-AUTHORITY-BINDING",
+            "signer_authority_id": "TEST-RELEASE-CONDITIONAL-CERT-AUTHORITY",
+            "signed_at": "2026-09-12T19:04:51Z",
+            "signature_value": "6a8466fddde2b74adba0bc2404a6a66392e281cb8493156b7cc6bc27eb932458"
+          }
+        }
+      ],
+      "aggregate_status": "CONDITIONALLY_COMPLIANT",
+      "findings": [],
+      "waivers_valid": false,
+      "residual_risk_accepted": true,
+      "evidence_fresh": true,
+      "security_pass": true,
+      "policy_integrity": true,
+      "release": {
+        "release_id": "TEST-RELEASE",
+        "version": "1.0.0-test",
+        "source_snapshot": "2222222222222222222222222222222222222222222222222222222222222222",
+        "build_snapshot": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+        "configuration_snapshot": "cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
+        "artifact_hashes": [
+          {
+            "artifact_id": "TEST-ARTIFACT",
+            "hash": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+          }
+        ],
+        "created_at": "2026-09-12T19:04:51Z",
+        "schema_version": "14.0",
+        "snapshot_hash": "2418f7ca91e71930e75931158f999dabe56cf8fb5d2c6c81afe02ec48dfd6516"
+      },
+      "expected": "REJECTED",
+      "actual": "REJECTED",
+      "reasons": [
+        "CONDITIONAL_POLICY_UNSATISFIED"
+      ],
+      "gate": {
+        "gate_id": "RELEASE-GATE-CONDITIONAL_WAIVER_INVALID",
+        "release_id": "TEST-RELEASE",
+        "policy_id": "RELEASE-POLICY-V14-CONDITIONAL-001",
+        "release_snapshot_hash": "2418f7ca91e71930e75931158f999dabe56cf8fb5d2c6c81afe02ec48dfd6516",
+        "certificate_ids": [
+          "TEST-RELEASE-CONDITIONAL-CERT"
+        ],
+        "required_certificate_types": [
+          "COMPLIANCE"
+        ],
+        "required_aggregate_status": "CONDITIONALLY_COMPLIANT",
+        "forbidden_findings": [
+          "CRITICAL",
+          "SECURITY_CRITICAL"
+        ],
+        "required_waiver_policy": "WAIVER-AUTHORITY-V14-001",
+        "evidence_freshness_policy": "EVIDENCE-FRESHNESS-V14-STRICT-001",
+        "required_security_status": "PASS",
+        "state": "REJECTED",
+        "decision": "REJECTED",
+        "evaluated_at": "2026-09-12T19:04:51Z",
+        "schema_version": "14.0",
+        "gate_hash": "8c5913736a449074ca5b821a8e75509b84fc4de0a7cd9fa2e7486ada398d9880"
+      },
+      "evaluation": {
+        "evaluation_id": "RELEASE-EVALUATION-CONDITIONAL_WAIVER_INVALID",
+        "policy_id": "RELEASE-POLICY-V14-CONDITIONAL-001",
+        "release_id": "TEST-RELEASE",
+        "aggregate_status": "CONDITIONALLY_COMPLIANT",
+        "decision": "REJECTED",
+        "reasons": [
+          "CONDITIONAL_POLICY_UNSATISFIED"
+        ],
+        "evaluated_at": "2026-09-12T19:04:51Z",
+        "schema_version": "14.0",
+        "evaluation_hash": "1e6cc1e9bb3e19ae23bab82c233342c5be9776e60205b15cba0a1495b11ec98f"
+      },
+      "pass": true
+    }
+  ],
+  "summary": {
+    "total": 13,
+    "passed": 13,
+    "failed": 0
+  }
+}

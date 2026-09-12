@@ -1,0 +1,51 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "EvidenceSummary",
+  "type": "object",
+  "required": [
+    "required_evidence_count",
+    "valid_evidence_count",
+    "invalid_evidence_count",
+    "stale_evidence_count",
+    "missing_evidence_count",
+    "evidence_snapshot",
+    "integrity_status"
+  ],
+  "properties": {
+    "required_evidence_count": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "valid_evidence_count": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "invalid_evidence_count": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "stale_evidence_count": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "missing_evidence_count": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "evidence_snapshot": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$"
+    },
+    "integrity_status": {
+      "type": "string",
+      "enum": [
+        "VALID",
+        "INVALID",
+        "INCOMPLETE",
+        "UNKNOWN"
+      ]
+    }
+  },
+  "additionalProperties": false,
+  "$id": "https://generic-discovery-engine.invalid/compliance/v14/evidence-summary.schema.yaml"
+}

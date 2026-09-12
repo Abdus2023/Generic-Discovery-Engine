@@ -1,0 +1,92 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "CertificateEligibilityResult",
+  "type": "object",
+  "required": [
+    "eligibility_id",
+    "snapshot_id",
+    "aggregate_id",
+    "policy_id",
+    "aggregate_status",
+    "predicates",
+    "result",
+    "failure_reasons",
+    "evaluated_at",
+    "schema_version",
+    "eligibility_hash"
+  ],
+  "properties": {
+    "eligibility_id": {
+      "type": "string",
+      "pattern": "^[A-Za-z0-9][A-Za-z0-9._:/-]*$"
+    },
+    "snapshot_id": {
+      "type": "string",
+      "pattern": "^[A-Za-z0-9][A-Za-z0-9._:/-]*$"
+    },
+    "aggregate_id": {
+      "oneOf": [
+        {
+          "type": "string",
+          "pattern": "^[A-Za-z0-9][A-Za-z0-9._:/-]*$"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "policy_id": {
+      "type": "string",
+      "pattern": "^[A-Za-z0-9][A-Za-z0-9._:/-]*$"
+    },
+    "aggregate_status": {
+      "oneOf": [
+        {
+          "type": "string",
+          "enum": [
+            "COMPLIANT",
+            "CONDITIONALLY_COMPLIANT",
+            "NON_COMPLIANT",
+            "UNVERIFIED",
+            "BLOCKED",
+            "NO_MANDATORY_REQUIREMENTS"
+          ]
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "predicates": {
+      "type": "object"
+    },
+    "result": {
+      "type": "string",
+      "enum": [
+        "ELIGIBLE",
+        "INELIGIBLE"
+      ]
+    },
+    "failure_reasons": {
+      "type": "array",
+      "minItems": 0,
+      "items": {
+        "type": "string"
+      },
+      "uniqueItems": true
+    },
+    "evaluated_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "schema_version": {
+      "const": "14.0"
+    },
+    "eligibility_hash": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$"
+    }
+  },
+  "additionalProperties": false,
+  "$id": "https://generic-discovery-engine.invalid/compliance/v14/certificate-eligibility-result.schema.yaml"
+}

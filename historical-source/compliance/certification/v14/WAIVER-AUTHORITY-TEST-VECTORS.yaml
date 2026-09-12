@@ -1,0 +1,183 @@
+{
+  "schema_version": "14.0",
+  "synthetic_non_normative": true,
+  "vectors": [
+    {
+      "vector_id": "AUTHORIZED_ACTIVE",
+      "waiver": {
+        "waiver_id": "TEST-W1",
+        "requirement_id": "TEST-REQ",
+        "scope": "TEST-SCOPE",
+        "reason": "Synthetic waiver test",
+        "authority": {
+          "authority_id": "TEST-AUTHORITY",
+          "authority_type": "AUTOMATED_POLICY",
+          "authorization_policy": "TEST-CERTIFICATION-POLICY",
+          "authorization_evidence": [
+            "TEST-AUTH-EVIDENCE"
+          ],
+          "authorized_at": "2026-09-12T19:04:51Z"
+        },
+        "issued_at": "2026-09-12T19:04:51Z",
+        "valid_from": "2026-09-12T19:04:51Z",
+        "valid_until": "2026-09-13T19:04:51Z",
+        "conditions": [],
+        "residual_risk": "LOW",
+        "status": "ACTIVE",
+        "evidence_refs": [
+          "TEST-EVIDENCE"
+        ],
+        "schema_version": "14.0",
+        "waiver_hash": "c06afc129e8072d13ef34ddfaaeab96f957f75d89f1b0ee8083e8b4df3fe8dd2"
+      },
+      "expected": "EFFECTIVE",
+      "actual": "EFFECTIVE",
+      "expected_effective": true,
+      "actual_effective": true,
+      "authority_result": {
+        "result_id": "WAIVER-RESULT-AUTHORIZED_ACTIVE",
+        "waiver_id": "TEST-W1",
+        "result": "EFFECTIVE",
+        "effective": true,
+        "evaluated_at": "2026-09-12T19:04:51Z",
+        "schema_version": "14.0",
+        "result_hash": "090745383ea6755be0756b392b69c9a4349e3658f0fbe80264c4067890ecc7a6"
+      },
+      "pass": true
+    },
+    {
+      "vector_id": "UNAUTHORIZED",
+      "waiver": {
+        "waiver_id": "TEST-W2",
+        "requirement_id": "TEST-REQ",
+        "scope": "TEST-SCOPE",
+        "reason": "Synthetic waiver test",
+        "authority": {
+          "authority_id": "UNKNOWN-AUTHORITY",
+          "authority_type": "AUTOMATED_POLICY",
+          "authorization_policy": "TEST-CERTIFICATION-POLICY",
+          "authorization_evidence": [
+            "TEST-AUTH-EVIDENCE"
+          ],
+          "authorized_at": "2026-09-12T19:04:51Z"
+        },
+        "issued_at": "2026-09-12T19:04:51Z",
+        "valid_from": "2026-09-12T19:04:51Z",
+        "valid_until": "2026-09-13T19:04:51Z",
+        "conditions": [],
+        "residual_risk": "LOW",
+        "status": "ACTIVE",
+        "evidence_refs": [
+          "TEST-EVIDENCE"
+        ],
+        "schema_version": "14.0",
+        "waiver_hash": "2626a254832a74f532c4835e939fe27b07b5762e982ce9d996619335d8fa28c1"
+      },
+      "expected": "UNAUTHORIZED",
+      "actual": "UNAUTHORIZED",
+      "expected_effective": false,
+      "actual_effective": false,
+      "authority_result": {
+        "result_id": "WAIVER-RESULT-UNAUTHORIZED",
+        "waiver_id": "TEST-W2",
+        "result": "UNAUTHORIZED",
+        "effective": false,
+        "evaluated_at": "2026-09-12T19:04:51Z",
+        "schema_version": "14.0",
+        "result_hash": "a9b2287bb1e66029112c7437cb7479f9a8b699b0b38dbcdfa05279dbb43c4953"
+      },
+      "pass": true
+    },
+    {
+      "vector_id": "EXPIRED",
+      "waiver": {
+        "waiver_id": "TEST-W3",
+        "requirement_id": "TEST-REQ",
+        "scope": "TEST-SCOPE",
+        "reason": "Synthetic waiver test",
+        "authority": {
+          "authority_id": "TEST-AUTHORITY",
+          "authority_type": "AUTOMATED_POLICY",
+          "authorization_policy": "TEST-CERTIFICATION-POLICY",
+          "authorization_evidence": [
+            "TEST-AUTH-EVIDENCE"
+          ],
+          "authorized_at": "2026-09-12T19:04:51Z"
+        },
+        "issued_at": "2026-09-12T19:04:51Z",
+        "valid_from": "2026-09-12T19:04:51Z",
+        "valid_until": "2026-09-12T18:00:00Z",
+        "conditions": [],
+        "residual_risk": "LOW",
+        "status": "ACTIVE",
+        "evidence_refs": [
+          "TEST-EVIDENCE"
+        ],
+        "schema_version": "14.0",
+        "waiver_hash": "e770aa8a4969bc43bbe27f5c993c91ef3c409bc40578920382a4fbb302df1969"
+      },
+      "expected": "EXPIRED",
+      "actual": "EXPIRED",
+      "expected_effective": false,
+      "actual_effective": false,
+      "authority_result": {
+        "result_id": "WAIVER-RESULT-EXPIRED",
+        "waiver_id": "TEST-W3",
+        "result": "EXPIRED",
+        "effective": false,
+        "evaluated_at": "2026-09-12T19:04:51Z",
+        "schema_version": "14.0",
+        "result_hash": "d38a91458aa6b562037435a7fc9a5607c783df1087d1542d33b32e5da2365487"
+      },
+      "pass": true
+    },
+    {
+      "vector_id": "REVOKED",
+      "waiver": {
+        "waiver_id": "TEST-W4",
+        "requirement_id": "TEST-REQ",
+        "scope": "TEST-SCOPE",
+        "reason": "Synthetic waiver test",
+        "authority": {
+          "authority_id": "TEST-AUTHORITY",
+          "authority_type": "AUTOMATED_POLICY",
+          "authorization_policy": "TEST-CERTIFICATION-POLICY",
+          "authorization_evidence": [
+            "TEST-AUTH-EVIDENCE"
+          ],
+          "authorized_at": "2026-09-12T19:04:51Z"
+        },
+        "issued_at": "2026-09-12T19:04:51Z",
+        "valid_from": "2026-09-12T19:04:51Z",
+        "valid_until": "2026-09-13T19:04:51Z",
+        "conditions": [],
+        "residual_risk": "LOW",
+        "status": "REVOKED",
+        "evidence_refs": [
+          "TEST-EVIDENCE"
+        ],
+        "schema_version": "14.0",
+        "waiver_hash": "e30d059a894fe7384264b4a1b1c57041951fc7889844bc8a274e7907e0e185be"
+      },
+      "expected": "NOT_ACTIVE",
+      "actual": "NOT_ACTIVE",
+      "expected_effective": false,
+      "actual_effective": false,
+      "authority_result": {
+        "result_id": "WAIVER-RESULT-REVOKED",
+        "waiver_id": "TEST-W4",
+        "result": "NOT_ACTIVE",
+        "effective": false,
+        "evaluated_at": "2026-09-12T19:04:51Z",
+        "schema_version": "14.0",
+        "result_hash": "6a74a224f644a11641986f522c9870185318c114e86d435b83b270947694f3e0"
+      },
+      "pass": true
+    }
+  ],
+  "summary": {
+    "total": 4,
+    "passed": 4,
+    "failed": 0
+  }
+}

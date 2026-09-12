@@ -1,0 +1,85 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "CertificateScope",
+  "type": "object",
+  "required": [
+    "audit_scope_id",
+    "requirements",
+    "specification_snapshot",
+    "implementation_snapshot",
+    "environment_snapshot",
+    "architecture_scope",
+    "platform_scope",
+    "version_scope",
+    "exclusions"
+  ],
+  "properties": {
+    "audit_scope_id": {
+      "type": "string",
+      "pattern": "^[A-Za-z0-9][A-Za-z0-9._:/-]*$"
+    },
+    "requirements": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "string"
+      },
+      "uniqueItems": true
+    },
+    "specification_snapshot": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$"
+    },
+    "implementation_snapshot": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$"
+    },
+    "environment_snapshot": {
+      "oneOf": [
+        {
+          "type": "string",
+          "minLength": 1
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "architecture_scope": {
+      "oneOf": [
+        {
+          "type": "string",
+          "minLength": 1
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "platform_scope": {
+      "oneOf": [
+        {
+          "type": "string",
+          "minLength": 1
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "version_scope": {
+      "type": "string",
+      "minLength": 1
+    },
+    "exclusions": {
+      "type": "array",
+      "minItems": 0,
+      "items": {
+        "type": "string"
+      },
+      "uniqueItems": true
+    }
+  },
+  "additionalProperties": false,
+  "$id": "https://generic-discovery-engine.invalid/compliance/v14/certificate-scope.schema.yaml"
+}

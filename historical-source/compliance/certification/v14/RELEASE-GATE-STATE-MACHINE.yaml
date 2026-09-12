@@ -1,0 +1,59 @@
+{
+  "schema_version": "14.0",
+  "states": [
+    "CREATED",
+    "EVALUATING",
+    "BLOCKED",
+    "REJECTED",
+    "PASSED",
+    "AUTHORIZED",
+    "CONDITIONALLY_AUTHORIZED"
+  ],
+  "legal_transitions": [
+    {
+      "from": "CREATED",
+      "to": "EVALUATING",
+      "guard": "RELEASE_SNAPSHOT_AND_POLICY_LOADED"
+    },
+    {
+      "from": "EVALUATING",
+      "to": "BLOCKED",
+      "guard": "REQUIRED_EVALUATION_UNAVAILABLE"
+    },
+    {
+      "from": "EVALUATING",
+      "to": "REJECTED",
+      "guard": "POLICY_VIOLATION_ESTABLISHED"
+    },
+    {
+      "from": "EVALUATING",
+      "to": "PASSED",
+      "guard": "ALL_MANDATORY_RELEASE_PREDICATES_SATISFIED"
+    },
+    {
+      "from": "PASSED",
+      "to": "AUTHORIZED",
+      "guard": "RELEASE_AUTHORITY_VALID"
+    },
+    {
+      "from": "PASSED",
+      "to": "BLOCKED",
+      "guard": "RELEASE_AUTHORITY_INVALID_OR_UNAVAILABLE"
+    },
+    {
+      "from": "EVALUATING",
+      "to": "CONDITIONALLY_AUTHORIZED",
+      "guard": "CONDITIONAL_POLICY_WAIVERS_RISK_AUTHORITY_VALID"
+    },
+    {
+      "from": "BLOCKED",
+      "to": "EVALUATING",
+      "guard": "BLOCK_REMOVED_AND_ORIGINAL_SNAPSHOT_VALID"
+    }
+  ],
+  "terminal_states": [
+    "AUTHORIZED",
+    "REJECTED",
+    "CONDITIONALLY_AUTHORIZED"
+  ]
+}

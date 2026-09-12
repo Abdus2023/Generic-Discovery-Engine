@@ -1,0 +1,39 @@
+{
+  "schema_version": "14.0",
+  "objects": [
+    {
+      "policy_id": "EVIDENCE-FRESHNESS-V14-STRICT-001",
+      "max_age": null,
+      "invalidation_events": [
+        "IMPLEMENTATION_CHANGE",
+        "SPECIFICATION_CHANGE",
+        "CONFIGURATION_CHANGE",
+        "DEPENDENCY_CHANGE",
+        "ENVIRONMENT_CHANGE",
+        "SECURITY_EVENT",
+        "EVIDENCE_REVOCATION",
+        "MANUAL_INVALIDATION"
+      ],
+      "freshness_required": true,
+      "schema_version": "14.0",
+      "policy_hash": "51cfcbdb00733adc2d486606b4a87fbea799831e8caa0b36325ddb803d08d2f4"
+    },
+    {
+      "policy_id": "EVIDENCE-FRESHNESS-V14-30D-001",
+      "max_age": "P30D",
+      "invalidation_events": [
+        "IMPLEMENTATION_CHANGE",
+        "SPECIFICATION_CHANGE",
+        "CONFIGURATION_CHANGE",
+        "DEPENDENCY_CHANGE",
+        "ENVIRONMENT_CHANGE",
+        "SECURITY_EVENT",
+        "EVIDENCE_REVOCATION",
+        "MANUAL_INVALIDATION"
+      ],
+      "freshness_required": true,
+      "schema_version": "14.0",
+      "policy_hash": "e993b663ec997ded4189a09e302526230232f096c8ab2bc882a9252f603338e2"
+    }
+  ]
+}

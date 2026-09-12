@@ -1,0 +1,21 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "ArtifactHash",
+  "type": "object",
+  "required": [
+    "artifact_id",
+    "hash"
+  ],
+  "properties": {
+    "artifact_id": {
+      "type": "string",
+      "pattern": "^[A-Za-z0-9][A-Za-z0-9._:/-]*$"
+    },
+    "hash": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$"
+    }
+  },
+  "additionalProperties": false,
+  "$id": "https://generic-discovery-engine.invalid/compliance/v14/artifact-hash.schema.yaml"
+}

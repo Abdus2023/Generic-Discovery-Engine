@@ -1,0 +1,44 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "WaiverAuthorityResult",
+  "type": "object",
+  "required": [
+    "result_id",
+    "waiver_id",
+    "result",
+    "effective",
+    "evaluated_at",
+    "schema_version",
+    "result_hash"
+  ],
+  "properties": {
+    "result_id": {
+      "type": "string",
+      "pattern": "^[A-Za-z0-9][A-Za-z0-9._:/-]*$"
+    },
+    "waiver_id": {
+      "type": "string",
+      "pattern": "^[A-Za-z0-9][A-Za-z0-9._:/-]*$"
+    },
+    "result": {
+      "type": "string",
+      "minLength": 1
+    },
+    "effective": {
+      "type": "boolean"
+    },
+    "evaluated_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "schema_version": {
+      "const": "14.0"
+    },
+    "result_hash": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$"
+    }
+  },
+  "additionalProperties": false,
+  "$id": "https://generic-discovery-engine.invalid/compliance/v14/waiver-authority-result.schema.yaml"
+}

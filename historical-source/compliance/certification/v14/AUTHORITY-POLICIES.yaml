@@ -1,0 +1,50 @@
+{
+  "schema_version": "14.0",
+  "objects": [
+    {
+      "policy_id": "AUTHORITY-POLICY-V14-001",
+      "purpose": "CERTIFICATION",
+      "allowed_authority_types": [
+        "HUMAN",
+        "ORGANIZATION",
+        "AUTOMATED_POLICY",
+        "TRUSTED_SERVICE"
+      ],
+      "authorization_evidence_required": true,
+      "signature_profiles": [
+        "POLICY_SELECTED_PRODUCTION_PROFILE"
+      ],
+      "schema_version": "14.0",
+      "policy_hash": "3e136f3a2372cbfe299f8142c9111466d725513fe5a404b6c814f46bc0ff9c2d"
+    },
+    {
+      "policy_id": "WAIVER-AUTHORITY-V14-001",
+      "purpose": "WAIVER",
+      "allowed_authority_types": [
+        "HUMAN",
+        "ORGANIZATION"
+      ],
+      "authorization_evidence_required": true,
+      "signature_profiles": [],
+      "schema_version": "14.0",
+      "policy_hash": "7ae6dfd736e5e90c57304a2a7a4b10876e0008ce80a8c43ed62e06b1e234cec4"
+    },
+    {
+      "policy_id": "RELEASE-AUTHORITY-POLICY-V14-001",
+      "purpose": "RELEASE",
+      "allowed_authority_types": [
+        "HUMAN",
+        "ORGANIZATION",
+        "TRUSTED_SERVICE"
+      ],
+      "authorization_evidence_required": true,
+      "signature_profiles": [
+        "POLICY_SELECTED_PRODUCTION_PROFILE"
+      ],
+      "schema_version": "14.0",
+      "policy_hash": "3cb48793be46e286a50ed1dd6798116947563d5bac40899a310e7129c312c223"
+    }
+  ],
+  "authority_instances": [],
+  "authority_not_implied_by_conformance": true
+}

@@ -1,0 +1,66 @@
+{
+  "schema_version": "14.0",
+  "vectors": [
+    {
+      "from": "DRAFT",
+      "to": "ISSUED",
+      "expected_legal": true,
+      "actual_legal": true,
+      "pass": true
+    },
+    {
+      "from": "ISSUED",
+      "to": "VALID",
+      "expected_legal": true,
+      "actual_legal": true,
+      "pass": true
+    },
+    {
+      "from": "VALID",
+      "to": "REVOKED",
+      "expected_legal": true,
+      "actual_legal": true,
+      "pass": true
+    },
+    {
+      "from": "VALID",
+      "to": "SUPERSEDED",
+      "expected_legal": true,
+      "actual_legal": true,
+      "pass": true
+    },
+    {
+      "from": "VALID",
+      "to": "EXPIRED",
+      "expected_legal": true,
+      "actual_legal": true,
+      "pass": true
+    },
+    {
+      "from": "VALID",
+      "to": "INVALID",
+      "expected_legal": true,
+      "actual_legal": true,
+      "pass": true
+    },
+    {
+      "from": "REVOKED",
+      "to": "VALID",
+      "expected_legal": false,
+      "actual_legal": false,
+      "pass": true
+    },
+    {
+      "from": "EXPIRED",
+      "to": "VALID",
+      "expected_legal": false,
+      "actual_legal": false,
+      "pass": true
+    }
+  ],
+  "summary": {
+    "total": 8,
+    "passed": 8,
+    "failed": 0
+  }
+}

@@ -1,0 +1,54 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "RevocationRecord",
+  "type": "object",
+  "required": [
+    "revocation_id",
+    "certificate_id",
+    "reason",
+    "authority",
+    "revoked_at",
+    "schema_version",
+    "revocation_hash"
+  ],
+  "properties": {
+    "revocation_id": {
+      "type": "string",
+      "pattern": "^[A-Za-z0-9][A-Za-z0-9._:/-]*$"
+    },
+    "certificate_id": {
+      "type": "string",
+      "pattern": "^[A-Za-z0-9][A-Za-z0-9._:/-]*$"
+    },
+    "reason": {
+      "type": "string",
+      "enum": [
+        "CERTIFICATE_ERROR",
+        "AUTHORITY_INVALID",
+        "EVIDENCE_REVOKED",
+        "SNAPSHOT_INTEGRITY_FAILURE",
+        "SCOPE_ERROR",
+        "FRAUDULENT_EVIDENCE",
+        "POLICY_VIOLATION",
+        "SECURITY_EVENT",
+        "OTHER"
+      ]
+    },
+    "authority": {
+      "$ref": "certification-authority.schema.yaml"
+    },
+    "revoked_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "schema_version": {
+      "const": "14.0"
+    },
+    "revocation_hash": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$"
+    }
+  },
+  "additionalProperties": false,
+  "$id": "https://generic-discovery-engine.invalid/compliance/v14/revocation-record.schema.yaml"
+}

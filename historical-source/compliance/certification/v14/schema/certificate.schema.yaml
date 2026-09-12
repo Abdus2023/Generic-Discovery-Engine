@@ -1,0 +1,140 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Certificate",
+  "type": "object",
+  "required": [
+    "certificate_id",
+    "audit_id",
+    "certificate_type",
+    "status",
+    "aggregate_status",
+    "scope",
+    "snapshot",
+    "snapshot_seal",
+    "authority",
+    "evidence_summary",
+    "waiver_summary",
+    "aggregate_inputs",
+    "issued_at",
+    "valid_from",
+    "valid_until",
+    "supersedes",
+    "schema_version",
+    "certificate_hash",
+    "signature"
+  ],
+  "properties": {
+    "certificate_id": {
+      "type": "string",
+      "pattern": "^[A-Za-z0-9][A-Za-z0-9._:/-]*$"
+    },
+    "audit_id": {
+      "type": "string",
+      "pattern": "^[A-Za-z0-9][A-Za-z0-9._:/-]*$"
+    },
+    "certificate_type": {
+      "type": "string",
+      "enum": [
+        "COMPLIANCE",
+        "SECURITY",
+        "COMPATIBILITY",
+        "RELEASE",
+        "HISTORICAL",
+        "EXPERIMENTAL"
+      ]
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "DRAFT",
+        "ISSUED",
+        "VALID",
+        "SUPERSEDED",
+        "REVOKED",
+        "EXPIRED",
+        "INVALID"
+      ]
+    },
+    "aggregate_status": {
+      "type": "string",
+      "enum": [
+        "COMPLIANT",
+        "CONDITIONALLY_COMPLIANT",
+        "NON_COMPLIANT",
+        "UNVERIFIED",
+        "BLOCKED",
+        "NO_MANDATORY_REQUIREMENTS"
+      ]
+    },
+    "scope": {
+      "$ref": "certificate-scope.schema.yaml"
+    },
+    "snapshot": {
+      "$ref": "certificate-snapshot.schema.yaml"
+    },
+    "snapshot_seal": {
+      "$ref": "snapshot-seal.schema.yaml"
+    },
+    "authority": {
+      "$ref": "certification-authority.schema.yaml"
+    },
+    "evidence_summary": {
+      "$ref": "evidence-summary.schema.yaml"
+    },
+    "waiver_summary": {
+      "$ref": "waiver-summary.schema.yaml"
+    },
+    "aggregate_inputs": {
+      "type": "array",
+      "items": {
+        "type": "object"
+      }
+    },
+    "issued_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "valid_from": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "valid_until": {
+      "oneOf": [
+        {
+          "type": "string",
+          "format": "date-time"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "supersedes": {
+      "oneOf": [
+        {
+          "type": "string",
+          "pattern": "^[A-Za-z0-9][A-Za-z0-9._:/-]*$"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "schema_version": {
+      "const": "14.0"
+    },
+    "certificate_hash": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$"
+    },
+    "signature": {
+      "$ref": "certificate-signature.schema.yaml"
+    }
+  },
+  "additionalProperties": false,
+  "x-v14-rules": [
+    "certificate_hash excludes certificate_hash and signature",
+    "signature does not establish conformance"
+  ],
+  "$id": "https://generic-discovery-engine.invalid/compliance/v14/certificate.schema.yaml"
+}

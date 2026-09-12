@@ -1,0 +1,24 @@
+{
+  "schema_version": "14.0",
+  "layers": [
+    {
+      "layer": "AGGREGATE",
+      "question": "What follows mechanically from current audit inputs?",
+      "nature": "COMPUTED"
+    },
+    {
+      "layer": "CERTIFICATE",
+      "question": "Did authorized certification assert the result for a snapshot?",
+      "nature": "AUTHORIZED_ATTESTATION"
+    },
+    {
+      "layer": "RELEASE_GATE",
+      "question": "Does a release satisfy its policy?",
+      "nature": "POLICY_DECISION"
+    }
+  ],
+  "equivalence_forbidden": [
+    "COMPLIANCE_TRUTH_EQ_CERTIFICATION_AUTHORITY",
+    "CERTIFICATION_AUTHORITY_EQ_RELEASE_AUTHORITY"
+  ]
+}

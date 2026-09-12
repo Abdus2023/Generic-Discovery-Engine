@@ -1,0 +1,66 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "ReleaseGateTransition",
+  "type": "object",
+  "required": [
+    "transition_id",
+    "gate_id",
+    "from_state",
+    "to_state",
+    "guard",
+    "occurred_at",
+    "schema_version",
+    "transition_hash"
+  ],
+  "properties": {
+    "transition_id": {
+      "type": "string",
+      "pattern": "^[A-Za-z0-9][A-Za-z0-9._:/-]*$"
+    },
+    "gate_id": {
+      "type": "string",
+      "pattern": "^[A-Za-z0-9][A-Za-z0-9._:/-]*$"
+    },
+    "from_state": {
+      "type": "string",
+      "enum": [
+        "CREATED",
+        "EVALUATING",
+        "BLOCKED",
+        "REJECTED",
+        "PASSED",
+        "AUTHORIZED",
+        "CONDITIONALLY_AUTHORIZED"
+      ]
+    },
+    "to_state": {
+      "type": "string",
+      "enum": [
+        "CREATED",
+        "EVALUATING",
+        "BLOCKED",
+        "REJECTED",
+        "PASSED",
+        "AUTHORIZED",
+        "CONDITIONALLY_AUTHORIZED"
+      ]
+    },
+    "guard": {
+      "type": "string",
+      "minLength": 1
+    },
+    "occurred_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "schema_version": {
+      "const": "14.0"
+    },
+    "transition_hash": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$"
+    }
+  },
+  "additionalProperties": false,
+  "$id": "https://generic-discovery-engine.invalid/compliance/v14/release-gate-transition.schema.yaml"
+}

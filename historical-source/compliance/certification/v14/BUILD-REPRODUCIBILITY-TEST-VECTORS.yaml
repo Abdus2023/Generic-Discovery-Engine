@@ -1,0 +1,26 @@
+{
+  "schema_version": "14.0",
+  "vectors": [
+    {
+      "vector_id": "MATCHING_ARTIFACT",
+      "certified_artifact_hash": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+      "release_artifact_hash": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+      "expected": "MATCH",
+      "actual": "MATCH",
+      "pass": true
+    },
+    {
+      "vector_id": "MISMATCHING_ARTIFACT",
+      "certified_artifact_hash": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+      "release_artifact_hash": "dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd",
+      "expected": "RELEASE_REJECTED",
+      "actual": "RELEASE_REJECTED",
+      "pass": true
+    }
+  ],
+  "summary": {
+    "total": 2,
+    "passed": 2,
+    "failed": 0
+  }
+}

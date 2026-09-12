@@ -1,0 +1,59 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "EvidenceFreshnessPolicy",
+  "type": "object",
+  "required": [
+    "policy_id",
+    "max_age",
+    "invalidation_events",
+    "freshness_required",
+    "schema_version",
+    "policy_hash"
+  ],
+  "properties": {
+    "policy_id": {
+      "type": "string",
+      "pattern": "^[A-Za-z0-9][A-Za-z0-9._:/-]*$"
+    },
+    "max_age": {
+      "oneOf": [
+        {
+          "type": "string",
+          "minLength": 1
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "invalidation_events": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "enum": [
+          "IMPLEMENTATION_CHANGE",
+          "SPECIFICATION_CHANGE",
+          "CONFIGURATION_CHANGE",
+          "DEPENDENCY_CHANGE",
+          "ENVIRONMENT_CHANGE",
+          "SECURITY_EVENT",
+          "EVIDENCE_REVOCATION",
+          "MANUAL_INVALIDATION"
+        ]
+      },
+      "uniqueItems": true
+    },
+    "freshness_required": {
+      "type": "boolean"
+    },
+    "schema_version": {
+      "const": "14.0"
+    },
+    "policy_hash": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$"
+    }
+  },
+  "additionalProperties": false,
+  "$id": "https://generic-discovery-engine.invalid/compliance/v14/evidence-freshness-policy.schema.yaml"
+}

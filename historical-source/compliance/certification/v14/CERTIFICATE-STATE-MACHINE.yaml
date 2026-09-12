@@ -1,0 +1,70 @@
+{
+  "schema_version": "14.0",
+  "states": [
+    "DRAFT",
+    "ISSUED",
+    "VALID",
+    "SUPERSEDED",
+    "REVOKED",
+    "EXPIRED",
+    "INVALID"
+  ],
+  "legal_transitions": [
+    {
+      "from": "DRAFT",
+      "to": "ISSUED",
+      "guard": "ELIGIBILITY_AND_ISSUANCE_AUTHORITY_VALID"
+    },
+    {
+      "from": "ISSUED",
+      "to": "VALID",
+      "guard": "ALL_VALIDITY_PREDICATES_PASS"
+    },
+    {
+      "from": "VALID",
+      "to": "SUPERSEDED",
+      "guard": "AUTHORIZED_SUCCESSOR_EXISTS"
+    },
+    {
+      "from": "VALID",
+      "to": "REVOKED",
+      "guard": "VALID_REVOCATION_EXISTS"
+    },
+    {
+      "from": "VALID",
+      "to": "EXPIRED",
+      "guard": "VALIDITY_INTERVAL_ENDED"
+    },
+    {
+      "from": "ISSUED",
+      "to": "REVOKED",
+      "guard": "VALID_REVOCATION_EXISTS"
+    },
+    {
+      "from": "ISSUED",
+      "to": "SUPERSEDED",
+      "guard": "AUTHORIZED_SUCCESSOR_EXISTS"
+    },
+    {
+      "from": "VALID",
+      "to": "INVALID",
+      "guard": "MANDATORY_INTEGRITY_FAILURE"
+    }
+  ],
+  "terminal_or_replacement_required": [
+    "SUPERSEDED",
+    "REVOKED",
+    "EXPIRED",
+    "INVALID"
+  ],
+  "forbidden": [
+    [
+      "REVOKED",
+      "VALID"
+    ],
+    [
+      "EXPIRED",
+      "VALID"
+    ]
+  ]
+}

@@ -1,0 +1,56 @@
+{
+  "schema_version": "14.0",
+  "steps": [
+    {
+      "number": 1,
+      "step": "PARSE_CERTIFICATE"
+    },
+    {
+      "number": 2,
+      "step": "VALIDATE_SCHEMA"
+    },
+    {
+      "number": 3,
+      "step": "VALIDATE_SCOPE"
+    },
+    {
+      "number": 4,
+      "step": "VALIDATE_HASHES"
+    },
+    {
+      "number": 5,
+      "step": "VALIDATE_SNAPSHOT_SEAL"
+    },
+    {
+      "number": 6,
+      "step": "VALIDATE_SIGNATURE"
+    },
+    {
+      "number": 7,
+      "step": "VALIDATE_AUTHORITY"
+    },
+    {
+      "number": 8,
+      "step": "VALIDATE_VALIDITY_INTERVAL"
+    },
+    {
+      "number": 9,
+      "step": "VALIDATE_REVOCATION_SUPERSESSION"
+    },
+    {
+      "number": 10,
+      "step": "VALIDATE_EVIDENCE"
+    },
+    {
+      "number": 11,
+      "step": "RECOMPUTE_AGGREGATE"
+    },
+    {
+      "number": 12,
+      "step": "COMPARE_AGGREGATE"
+    }
+  ],
+  "mismatch_result": "CERTIFICATE_AGGREGATE_MISMATCH",
+  "failure_result": "INVALID",
+  "no_skip": true
+}

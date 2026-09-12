@@ -1,0 +1,66 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "CertificateTransition",
+  "type": "object",
+  "required": [
+    "transition_id",
+    "certificate_id",
+    "from_status",
+    "to_status",
+    "reason",
+    "occurred_at",
+    "schema_version",
+    "transition_hash"
+  ],
+  "properties": {
+    "transition_id": {
+      "type": "string",
+      "pattern": "^[A-Za-z0-9][A-Za-z0-9._:/-]*$"
+    },
+    "certificate_id": {
+      "type": "string",
+      "pattern": "^[A-Za-z0-9][A-Za-z0-9._:/-]*$"
+    },
+    "from_status": {
+      "type": "string",
+      "enum": [
+        "DRAFT",
+        "ISSUED",
+        "VALID",
+        "SUPERSEDED",
+        "REVOKED",
+        "EXPIRED",
+        "INVALID"
+      ]
+    },
+    "to_status": {
+      "type": "string",
+      "enum": [
+        "DRAFT",
+        "ISSUED",
+        "VALID",
+        "SUPERSEDED",
+        "REVOKED",
+        "EXPIRED",
+        "INVALID"
+      ]
+    },
+    "reason": {
+      "type": "string",
+      "minLength": 1
+    },
+    "occurred_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "schema_version": {
+      "const": "14.0"
+    },
+    "transition_hash": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$"
+    }
+  },
+  "additionalProperties": false,
+  "$id": "https://generic-discovery-engine.invalid/compliance/v14/certificate-transition.schema.yaml"
+}

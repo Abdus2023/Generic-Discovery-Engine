@@ -1,0 +1,38 @@
+{
+  "schema_version": "14.0",
+  "objects": [
+    {
+      "eligibility_id": "CERT-ELIGIBILITY-V14-001",
+      "snapshot_id": "AUDIT-SNAPSHOT-V133-001",
+      "aggregate_id": null,
+      "policy_id": "CERT-POLICY-V14-STRICT-001",
+      "aggregate_status": null,
+      "predicates": {
+        "AGGREGATE_VALID": false,
+        "AUDIT_SCOPE_VALID": false,
+        "SPECIFICATION_SNAPSHOT_VALID": false,
+        "IMPLEMENTATION_SNAPSHOT_VALID": false,
+        "DECISION_HISTORY_VALID": false,
+        "STATE_HISTORY_VALID": true,
+        "TRACEABILITY_VALID": false,
+        "REQUIRED_VERIFICATION_VALID": false,
+        "NO_UNRESOLVED_CERTIFICATE_BLOCKER": false
+      },
+      "result": "INELIGIBLE",
+      "failure_reasons": [
+        "AGGREGATE_MISSING",
+        "AGGREGATE_VALID",
+        "AUDIT_SCOPE_VALID",
+        "SPECIFICATION_SNAPSHOT_VALID",
+        "IMPLEMENTATION_SNAPSHOT_VALID",
+        "DECISION_HISTORY_VALID",
+        "TRACEABILITY_VALID",
+        "REQUIRED_VERIFICATION_VALID",
+        "NO_UNRESOLVED_CERTIFICATE_BLOCKER"
+      ],
+      "evaluated_at": "2026-09-12T19:04:51Z",
+      "schema_version": "14.0",
+      "eligibility_hash": "df977317b810917a4e62d3a096626e7dc6d9d011a5dae8a678a4455c8f59148d"
+    }
+  ]
+}

@@ -1,0 +1,55 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "CertificateValidityResult",
+  "type": "object",
+  "required": [
+    "validity_result_id",
+    "certificate_id",
+    "result",
+    "failure_code",
+    "verified_at",
+    "schema_version",
+    "result_hash"
+  ],
+  "properties": {
+    "validity_result_id": {
+      "type": "string",
+      "pattern": "^[A-Za-z0-9][A-Za-z0-9._:/-]*$"
+    },
+    "certificate_id": {
+      "type": "string",
+      "pattern": "^[A-Za-z0-9][A-Za-z0-9._:/-]*$"
+    },
+    "result": {
+      "type": "string",
+      "enum": [
+        "VALID",
+        "INVALID"
+      ]
+    },
+    "failure_code": {
+      "oneOf": [
+        {
+          "type": "string",
+          "minLength": 1
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "verified_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "schema_version": {
+      "const": "14.0"
+    },
+    "result_hash": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$"
+    }
+  },
+  "additionalProperties": false,
+  "$id": "https://generic-discovery-engine.invalid/compliance/v14/certificate-validity-result.schema.yaml"
+}

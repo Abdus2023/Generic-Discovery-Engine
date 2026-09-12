@@ -1,0 +1,79 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "ReleasePolicy",
+  "type": "object",
+  "required": [
+    "policy_id",
+    "required_certificate_types",
+    "required_aggregate_status",
+    "forbidden_findings",
+    "required_waiver_policy",
+    "evidence_freshness_policy",
+    "required_security_status",
+    "release_authority_policy",
+    "conditional_authorization_allowed",
+    "residual_risk_authority_valid",
+    "schema_version",
+    "policy_hash"
+  ],
+  "properties": {
+    "policy_id": {
+      "type": "string",
+      "pattern": "^[A-Za-z0-9][A-Za-z0-9._:/-]*$"
+    },
+    "required_certificate_types": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "string"
+      },
+      "uniqueItems": true
+    },
+    "required_aggregate_status": {
+      "type": "string",
+      "enum": [
+        "COMPLIANT",
+        "CONDITIONALLY_COMPLIANT"
+      ]
+    },
+    "forbidden_findings": {
+      "type": "array",
+      "minItems": 0,
+      "items": {
+        "type": "string"
+      },
+      "uniqueItems": true
+    },
+    "required_waiver_policy": {
+      "type": "string",
+      "pattern": "^[A-Za-z0-9][A-Za-z0-9._:/-]*$"
+    },
+    "evidence_freshness_policy": {
+      "type": "string",
+      "pattern": "^[A-Za-z0-9][A-Za-z0-9._:/-]*$"
+    },
+    "required_security_status": {
+      "type": "string",
+      "minLength": 1
+    },
+    "release_authority_policy": {
+      "type": "string",
+      "pattern": "^[A-Za-z0-9][A-Za-z0-9._:/-]*$"
+    },
+    "conditional_authorization_allowed": {
+      "type": "boolean"
+    },
+    "residual_risk_authority_valid": {
+      "type": "boolean"
+    },
+    "schema_version": {
+      "const": "14.0"
+    },
+    "policy_hash": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$"
+    }
+  },
+  "additionalProperties": false,
+  "$id": "https://generic-discovery-engine.invalid/compliance/v14/release-policy.schema.yaml"
+}

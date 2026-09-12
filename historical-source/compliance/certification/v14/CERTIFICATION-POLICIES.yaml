@@ -1,0 +1,30 @@
+{
+  "schema_version": "14.0",
+  "objects": [
+    {
+      "policy_id": "CERT-POLICY-V14-STRICT-001",
+      "allowed_aggregate_statuses": [
+        "COMPLIANT"
+      ],
+      "required_certificate_type": "COMPLIANCE",
+      "signature_required": true,
+      "authority_policy": "AUTHORITY-POLICY-V14-001",
+      "no_mandatory_requirements_allowed": false,
+      "schema_version": "14.0",
+      "policy_hash": "5e256f899c4553197a22012dcc952fa2eaa7a4e518d14916d2312160a42fcd54"
+    },
+    {
+      "policy_id": "CERT-POLICY-V14-CONDITIONAL-001",
+      "allowed_aggregate_statuses": [
+        "COMPLIANT",
+        "CONDITIONALLY_COMPLIANT"
+      ],
+      "required_certificate_type": "COMPLIANCE",
+      "signature_required": true,
+      "authority_policy": "AUTHORITY-POLICY-V14-001",
+      "no_mandatory_requirements_allowed": false,
+      "schema_version": "14.0",
+      "policy_hash": "75c61190eea2434d81071ab462d1331bfac0daa654d32f969313186190ab2ec8"
+    }
+  ]
+}

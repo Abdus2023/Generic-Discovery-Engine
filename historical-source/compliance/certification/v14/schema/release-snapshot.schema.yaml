@@ -1,0 +1,58 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "ReleaseSnapshot",
+  "type": "object",
+  "required": [
+    "release_id",
+    "version",
+    "source_snapshot",
+    "build_snapshot",
+    "configuration_snapshot",
+    "artifact_hashes",
+    "created_at",
+    "schema_version",
+    "snapshot_hash"
+  ],
+  "properties": {
+    "release_id": {
+      "type": "string",
+      "pattern": "^[A-Za-z0-9][A-Za-z0-9._:/-]*$"
+    },
+    "version": {
+      "type": "string",
+      "minLength": 1
+    },
+    "source_snapshot": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$"
+    },
+    "build_snapshot": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$"
+    },
+    "configuration_snapshot": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$"
+    },
+    "artifact_hashes": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "$ref": "artifact-hash.schema.yaml"
+      }
+    },
+    "created_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "schema_version": {
+      "const": "14.0"
+    },
+    "snapshot_hash": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$"
+    }
+  },
+  "additionalProperties": false,
+  "$id": "https://generic-discovery-engine.invalid/compliance/v14/release-snapshot.schema.yaml"
+}

@@ -1,0 +1,24 @@
+{
+  "schema_version": "14.0",
+  "flow": [
+    "HISTORY",
+    "EVIDENCE",
+    "VERIFICATION",
+    "CURRENT_DECISION",
+    "AGGREGATE",
+    "CERTIFICATE_ELIGIBILITY",
+    "CERTIFICATE",
+    "RELEASE_GATE",
+    "RELEASE_AUTHORIZATION"
+  ],
+  "independent_questions": {
+    "CONFORMANCE": "AGGREGATE",
+    "CERTIFICATION": "CERTIFICATE",
+    "RELEASE": "RELEASE_GATE"
+  },
+  "forbidden_shortcuts": [
+    "FIX_COMPLETE_TO_COMPLIANT",
+    "COMPLIANT_TO_CERTIFIED",
+    "CERTIFIED_TO_RELEASE_AUTHORIZED"
+  ]
+}

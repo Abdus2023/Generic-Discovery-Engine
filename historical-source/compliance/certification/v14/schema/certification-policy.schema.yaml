@@ -1,0 +1,59 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "CertificationPolicy",
+  "type": "object",
+  "required": [
+    "policy_id",
+    "allowed_aggregate_statuses",
+    "required_certificate_type",
+    "signature_required",
+    "authority_policy",
+    "no_mandatory_requirements_allowed",
+    "schema_version",
+    "policy_hash"
+  ],
+  "properties": {
+    "policy_id": {
+      "type": "string",
+      "pattern": "^[A-Za-z0-9][A-Za-z0-9._:/-]*$"
+    },
+    "allowed_aggregate_statuses": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "enum": [
+          "COMPLIANT",
+          "CONDITIONALLY_COMPLIANT",
+          "NON_COMPLIANT",
+          "UNVERIFIED",
+          "BLOCKED",
+          "NO_MANDATORY_REQUIREMENTS"
+        ]
+      },
+      "uniqueItems": true
+    },
+    "required_certificate_type": {
+      "type": "string",
+      "minLength": 1
+    },
+    "signature_required": {
+      "type": "boolean"
+    },
+    "authority_policy": {
+      "type": "string",
+      "pattern": "^[A-Za-z0-9][A-Za-z0-9._:/-]*$"
+    },
+    "no_mandatory_requirements_allowed": {
+      "type": "boolean"
+    },
+    "schema_version": {
+      "const": "14.0"
+    },
+    "policy_hash": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$"
+    }
+  },
+  "additionalProperties": false,
+  "$id": "https://generic-discovery-engine.invalid/compliance/v14/certification-policy.schema.yaml"
+}

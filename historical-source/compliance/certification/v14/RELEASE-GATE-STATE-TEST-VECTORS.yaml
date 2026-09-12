@@ -1,0 +1,66 @@
+{
+  "schema_version": "14.0",
+  "vectors": [
+    {
+      "from": "CREATED",
+      "to": "EVALUATING",
+      "expected_legal": true,
+      "actual_legal": true,
+      "pass": true
+    },
+    {
+      "from": "EVALUATING",
+      "to": "PASSED",
+      "expected_legal": true,
+      "actual_legal": true,
+      "pass": true
+    },
+    {
+      "from": "PASSED",
+      "to": "AUTHORIZED",
+      "expected_legal": true,
+      "actual_legal": true,
+      "pass": true
+    },
+    {
+      "from": "PASSED",
+      "to": "BLOCKED",
+      "expected_legal": true,
+      "actual_legal": true,
+      "pass": true
+    },
+    {
+      "from": "EVALUATING",
+      "to": "CONDITIONALLY_AUTHORIZED",
+      "expected_legal": true,
+      "actual_legal": true,
+      "pass": true
+    },
+    {
+      "from": "BLOCKED",
+      "to": "EVALUATING",
+      "expected_legal": true,
+      "actual_legal": true,
+      "pass": true
+    },
+    {
+      "from": "AUTHORIZED",
+      "to": "EVALUATING",
+      "expected_legal": false,
+      "actual_legal": false,
+      "pass": true
+    },
+    {
+      "from": "REJECTED",
+      "to": "EVALUATING",
+      "expected_legal": false,
+      "actual_legal": false,
+      "pass": true
+    }
+  ],
+  "summary": {
+    "total": 8,
+    "passed": 8,
+    "failed": 0
+  }
+}

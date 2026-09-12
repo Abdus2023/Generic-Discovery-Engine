@@ -1,0 +1,68 @@
+{
+  "schema_version": "14.0",
+  "vectors": [
+    {
+      "vector_id": "NO_EVENT_NO_MAX_AGE",
+      "policy_id": "EVIDENCE-FRESHNESS-V14-STRICT-001",
+      "evidence_at": "2020-01-01T00:00:00Z",
+      "evaluated_at": "2026-09-12T19:04:51Z",
+      "events": [],
+      "expected": "FRESH",
+      "actual": "FRESH",
+      "reasons": [],
+      "pass": true
+    },
+    {
+      "vector_id": "IMPLEMENTATION_CHANGE",
+      "policy_id": "EVIDENCE-FRESHNESS-V14-STRICT-001",
+      "evidence_at": "2026-09-12T19:04:51Z",
+      "evaluated_at": "2026-09-12T19:04:51Z",
+      "events": [
+        {
+          "event_type": "IMPLEMENTATION_CHANGE",
+          "occurred_at": "2026-09-12T19:04:51Z"
+        }
+      ],
+      "expected": "STALE",
+      "actual": "STALE",
+      "reasons": [
+        "IMPLEMENTATION_CHANGE"
+      ],
+      "pass": true
+    },
+    {
+      "vector_id": "UNLISTED_EVENT",
+      "policy_id": "EVIDENCE-FRESHNESS-V14-STRICT-001",
+      "evidence_at": "2026-09-12T19:04:51Z",
+      "evaluated_at": "2026-09-12T19:04:51Z",
+      "events": [
+        {
+          "event_type": "REPORT_RENDERED",
+          "occurred_at": "2026-09-12T19:04:51Z"
+        }
+      ],
+      "expected": "FRESH",
+      "actual": "FRESH",
+      "reasons": [],
+      "pass": true
+    },
+    {
+      "vector_id": "MAX_AGE_EXCEEDED",
+      "policy_id": "EVIDENCE-FRESHNESS-V14-30D-001",
+      "evidence_at": "2026-01-01T00:00:00Z",
+      "evaluated_at": "2026-09-12T19:04:51Z",
+      "events": [],
+      "expected": "STALE",
+      "actual": "STALE",
+      "reasons": [
+        "MAX_AGE_EXCEEDED"
+      ],
+      "pass": true
+    }
+  ],
+  "summary": {
+    "total": 4,
+    "passed": 4,
+    "failed": 0
+  }
+}

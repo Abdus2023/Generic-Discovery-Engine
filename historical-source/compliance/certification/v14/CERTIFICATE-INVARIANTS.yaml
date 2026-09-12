@@ -1,0 +1,105 @@
+{
+  "schema_version": "14.0",
+  "invariants": [
+    {
+      "id": "CERT-001",
+      "rule": "Certificate scope MUST be explicit.",
+      "machine_checked": true
+    },
+    {
+      "id": "CERT-002",
+      "rule": "Certificate MUST identify specification snapshot.",
+      "machine_checked": true
+    },
+    {
+      "id": "CERT-003",
+      "rule": "Certificate MUST identify implementation snapshot.",
+      "machine_checked": true
+    },
+    {
+      "id": "CERT-004",
+      "rule": "Certificate MUST identify aggregate result.",
+      "machine_checked": true
+    },
+    {
+      "id": "CERT-005",
+      "rule": "Certificate MUST identify certification authority.",
+      "machine_checked": true
+    },
+    {
+      "id": "CERT-006",
+      "rule": "Certificate MUST NOT mutate the underlying aggregate.",
+      "machine_checked": true
+    },
+    {
+      "id": "CERT-007",
+      "rule": "Historical certificates MUST remain immutable.",
+      "machine_checked": true
+    },
+    {
+      "id": "CERT-008",
+      "rule": "Superseded certificates MUST remain historically queryable.",
+      "machine_checked": true
+    },
+    {
+      "id": "CERT-009",
+      "rule": "Revoked certificates MUST NOT be treated as valid.",
+      "machine_checked": true
+    },
+    {
+      "id": "CERT-010",
+      "rule": "Expired certificates MUST NOT be treated as valid.",
+      "machine_checked": true
+    },
+    {
+      "id": "CERT-011",
+      "rule": "Certificate aggregate MUST be reproducible.",
+      "machine_checked": true
+    },
+    {
+      "id": "CERT-012",
+      "rule": "Certificate hash MUST validate.",
+      "machine_checked": true
+    },
+    {
+      "id": "CERT-013",
+      "rule": "Signature MUST validate when signing is required.",
+      "machine_checked": true
+    },
+    {
+      "id": "CERT-014",
+      "rule": "Unauthorized waivers MUST NOT affect certification.",
+      "machine_checked": true
+    },
+    {
+      "id": "CERT-015",
+      "rule": "Expired waivers MUST NOT affect certification.",
+      "machine_checked": true
+    },
+    {
+      "id": "CERT-016",
+      "rule": "Release authorization MUST be evaluated separately from compliance.",
+      "machine_checked": true
+    },
+    {
+      "id": "CERT-017",
+      "rule": "Release artifact identity MUST match the certified scope.",
+      "machine_checked": true
+    },
+    {
+      "id": "CERT-018",
+      "rule": "Snapshot changes MUST create a new evaluation.",
+      "machine_checked": true
+    },
+    {
+      "id": "CERT-019",
+      "rule": "Certificate validity MUST NOT rewrite historical aggregate results.",
+      "machine_checked": true
+    },
+    {
+      "id": "CERT-020",
+      "rule": "A valid signature MUST NOT be interpreted as proof of conformance.",
+      "machine_checked": true
+    }
+  ]
+}

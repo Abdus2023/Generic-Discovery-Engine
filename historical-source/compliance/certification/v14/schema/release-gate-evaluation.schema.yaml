@@ -1,0 +1,73 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "ReleaseGateEvaluation",
+  "type": "object",
+  "required": [
+    "evaluation_id",
+    "policy_id",
+    "release_id",
+    "aggregate_status",
+    "decision",
+    "reasons",
+    "evaluated_at",
+    "schema_version",
+    "evaluation_hash"
+  ],
+  "properties": {
+    "evaluation_id": {
+      "type": "string",
+      "pattern": "^[A-Za-z0-9][A-Za-z0-9._:/-]*$"
+    },
+    "policy_id": {
+      "type": "string",
+      "pattern": "^[A-Za-z0-9][A-Za-z0-9._:/-]*$"
+    },
+    "release_id": {
+      "type": "string",
+      "pattern": "^[A-Za-z0-9][A-Za-z0-9._:/-]*$"
+    },
+    "aggregate_status": {
+      "type": "string",
+      "enum": [
+        "COMPLIANT",
+        "CONDITIONALLY_COMPLIANT",
+        "NON_COMPLIANT",
+        "UNVERIFIED",
+        "BLOCKED",
+        "NO_MANDATORY_REQUIREMENTS"
+      ]
+    },
+    "decision": {
+      "type": "string",
+      "enum": [
+        "AUTHORIZED",
+        "CONDITIONALLY_AUTHORIZED",
+        "REJECTED",
+        "BLOCKED",
+        "EXPIRED",
+        "UNKNOWN"
+      ]
+    },
+    "reasons": {
+      "type": "array",
+      "minItems": 0,
+      "items": {
+        "type": "string"
+      },
+      "uniqueItems": true
+    },
+    "evaluated_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "schema_version": {
+      "const": "14.0"
+    },
+    "evaluation_hash": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$"
+    }
+  },
+  "additionalProperties": false,
+  "$id": "https://generic-discovery-engine.invalid/compliance/v14/release-gate-evaluation.schema.yaml"
+}

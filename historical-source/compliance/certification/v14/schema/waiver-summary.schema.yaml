@@ -1,0 +1,36 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "WaiverSummary",
+  "type": "object",
+  "required": [
+    "waiver_count",
+    "effective_waiver_count",
+    "unauthorized_waiver_count",
+    "expired_waiver_count",
+    "waiver_snapshot"
+  ],
+  "properties": {
+    "waiver_count": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "effective_waiver_count": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "unauthorized_waiver_count": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "expired_waiver_count": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "waiver_snapshot": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$"
+    }
+  },
+  "additionalProperties": false,
+  "$id": "https://generic-discovery-engine.invalid/compliance/v14/waiver-summary.schema.yaml"
+}

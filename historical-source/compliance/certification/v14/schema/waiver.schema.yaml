@@ -1,0 +1,107 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Waiver",
+  "type": "object",
+  "required": [
+    "waiver_id",
+    "requirement_id",
+    "scope",
+    "reason",
+    "authority",
+    "issued_at",
+    "valid_from",
+    "valid_until",
+    "conditions",
+    "residual_risk",
+    "status",
+    "evidence_refs",
+    "schema_version",
+    "waiver_hash"
+  ],
+  "properties": {
+    "waiver_id": {
+      "type": "string",
+      "pattern": "^[A-Za-z0-9][A-Za-z0-9._:/-]*$"
+    },
+    "requirement_id": {
+      "type": "string",
+      "pattern": "^[A-Za-z0-9][A-Za-z0-9._:/-]*$"
+    },
+    "scope": {
+      "type": "string",
+      "minLength": 1
+    },
+    "reason": {
+      "type": "string",
+      "minLength": 1
+    },
+    "authority": {
+      "$ref": "certification-authority.schema.yaml"
+    },
+    "issued_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "valid_from": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "valid_until": {
+      "oneOf": [
+        {
+          "type": "string",
+          "format": "date-time"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "conditions": {
+      "type": "array",
+      "minItems": 0,
+      "items": {
+        "type": "string"
+      },
+      "uniqueItems": true
+    },
+    "residual_risk": {
+      "type": "string",
+      "enum": [
+        "CRITICAL",
+        "HIGH",
+        "MEDIUM",
+        "LOW",
+        "INFO",
+        "UNKNOWN"
+      ]
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "DRAFT",
+        "ACTIVE",
+        "EXPIRED",
+        "REVOKED",
+        "SUPERSEDED"
+      ]
+    },
+    "evidence_refs": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "string"
+      },
+      "uniqueItems": true
+    },
+    "schema_version": {
+      "const": "14.0"
+    },
+    "waiver_hash": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$"
+    }
+  },
+  "additionalProperties": false,
+  "$id": "https://generic-discovery-engine.invalid/compliance/v14/waiver.schema.yaml"
+}
