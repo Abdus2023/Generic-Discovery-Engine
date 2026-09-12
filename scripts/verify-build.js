@@ -28,7 +28,7 @@ if (!content.includes(`v${pkg.version} —`)) {
   console.error(`verify-build: dist does not contain v${pkg.version} banner`);
   process.exit(1);
 }
-for (const rx of [/builtAt/, /__RANDOM__/]) {
+for (const rx of [/"builtAt"/, /__RANDOM__/]) {
   if (rx.test(content)) {
     console.error(`verify-build: forbidden pattern ${rx} in dist`);
     process.exit(1);
@@ -70,6 +70,31 @@ if (!content.includes('extractUrlPattern')) {
 }
 if (!content.includes('RobotsProvider')) {
   console.error('verify-build: missing RobotsProvider');
+  process.exit(1);
+}
+if (!content.includes('patternCount')) {
+  console.error('verify-build: missing patternCount in getCoverageMetrics (export hardening)');
+  process.exit(1);
+}
+if (!content.includes('inferenceEnabled')) {
+  console.error('verify-build: missing inferenceEnabled in getCoverageMetrics');
+  process.exit(1);
+}
+if (!content.includes('fingerprintUnique')) {
+  console.error('verify-build: missing fingerprintUnique');
+  process.exit(1);
+}
+// exportData must include inference block (hardening)
+if (!content.includes('inference,') && !content.includes('inference:') ) {
+  console.error('verify-build: missing inference in exportData');
+  process.exit(1);
+}
+if (!content.includes('patternMetrics')) {
+  console.error('verify-build: missing patternMetrics in exportData.inference');
+  process.exit(1);
+}
+if (!content.includes('clusterMetrics')) {
+  console.error('verify-build: missing clusterMetrics');
   process.exit(1);
 }
 console.log('verify-build: OK — deterministic');

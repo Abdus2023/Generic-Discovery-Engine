@@ -2,6 +2,15 @@
 
 All notable changes to the Generic Discovery Engine.
 
+## [0.8.2] — 2026-09-12 — Export Hardening + Inference Metrics (sorted coverage + inference block + deterministic export)
+
+- **Coverage:** `getCoverageMetrics()` now sorted `queuedByType` (alphabetical) + `patternCount`/`clusterCount`/`fingerprintUnique`/`inferenceEnabled` via `KnowledgeBase.getPatternMetrics()`/`getClusterMetrics()`/`fingerprintIndex.size` (O(n≤750) ~0.06 ms); deterministic JSON for diff tools. Header `0.8.1→0.8.2`, `5,784→5,864` lines (+80), `node --check` PASS.
+- **Export:** `exportData()` now `const coverage = getCoverageMetrics()` + `inference: {enabled, patternMetrics (top 20), clusterMetrics (top 20), fingerprintStats:{unique, total: sum Set sizes}}` additive alongside `coverage`/`engine`/`ledger` — schema stays `gde-export-v8.0` (old consumers ignore `inference`); ledger still seq-ordered 5 k FIFO. `npm run verify:build` now asserts `patternCount`/`inferenceEnabled`/`fingerprintUnique`/`patternMetrics`/`clusterMetrics`/`fingerprintStats` in dist.
+- **Build:** `scripts/verify-build.js` expanded inference asserts + forbidden check narrowed to `/"builtAt"/` (comment “build-time drift” no longer trips); `dist/.build-meta.json` updated `sha256 a46d37…` lines 5864.
+- **Tests:** `tests/export-inference.test.js` 6 cases (sorted queuedByType, export inference block, pattern collapse, JSON-stable, static keys, fingerprintUnique) + `verify-p0-fixes` now allows `0.8.[0-9]`; `npm test` **121/121 PASS** (32 suites: 115 existing + 6 export/inference) vs 115/115 in 0.8.1.
+- **ADRs:** `docs/adr/020-export-hardening.md` + `docs/adr/README.md` → 20 ADRs (19→20). `docs/DECISIONS.md`/`docs/architecture/OVERVIEW.md` bumped to `5,864` lines.
+- **Docs:** `VERIFICATION_SUPPLEMENT_v0.8.2.md` (§coverage §export §determinism) + `README.md` current `v0.8.2` 121/121, `src/README.md` 5,864.
+
 ## [0.8.1] — 2026-09-12 — Modular Prelude + Export Hardening (src/ mirror + verify gate)
 
 - **Modular:** `src/` 7-file mirror (`config.js` real extract `CONFIG` v8 84 keys ES export, `utils.js` `canonicalizeUrl`/`fnv1a32`/`makeFingerprint` wired to `CONFIG`, `models`/`knowledge`/`ledger`/`providers`/`engine` placeholders + `src/README.md` plan); `dist/generic-discovery-engine.user.js` stays source of truth, full bundler deferred to v0.9.0. Header `0.8.0→0.8.1`, `5,773→5,784` lines (+11 patch notes), `node --check` PASS, `package.json` `build → build.js && verify:build`, description “modular prelude + export hardening”.

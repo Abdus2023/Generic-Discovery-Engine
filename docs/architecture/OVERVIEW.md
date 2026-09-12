@@ -1,8 +1,8 @@
-# Architecture Overview — Generic Discovery Engine v0.8.1
+# Architecture Overview — Generic Discovery Engine v0.8.2
 
-**Runnable artifact:** `dist/generic-discovery-engine.user.js` (5,784 lines, CONFIG v8, `node --check` PASS) + `src/` 7-file mirror (config/utils extracts)  
+**Runnable artifact:** `dist/generic-discovery-engine.user.js` (5,864 lines, CONFIG v8, `node --check` PASS) + `src/` 7-file mirror (config/utils extracts)  
 **Transcript source:** `Continue Architecture Planning.md` (2.2 MB) → split into `docs/DECISIONS.md` + `docs/adr/*` (v0.7.4)  
-**Verification:** `VERIFICATION_REPORT.md` (v0.7.1) + `VERIFICATION_SUPPLEMENT_v0.7.2.md` + `VERIFICATION_SUPPLEMENT_v0.7.6.md` + `VERIFICATION_SUPPLEMENT_v0.7.7.md` + `VERIFICATION_SUPPLEMENT_v0.7.8.md` + `VERIFICATION_SUPPLEMENT_v0.7.9.md` + `VERIFICATION_SUPPLEMENT_v0.8.0.md` + `VERIFICATION_SUPPLEMENT_v0.8.1.md` + `docs/SECURITY_AUDIT.md` + `docs/PERFORMANCE_ANALYSIS.md` — `npm test` 115/115 PASS
+**Verification:** `VERIFICATION_REPORT.md` (v0.7.1) + `VERIFICATION_SUPPLEMENT_v0.7.2.md` + `VERIFICATION_SUPPLEMENT_v0.7.6.md` + `VERIFICATION_SUPPLEMENT_v0.7.7.md` + `VERIFICATION_SUPPLEMENT_v0.7.8.md` + `VERIFICATION_SUPPLEMENT_v0.7.9.md` + `VERIFICATION_SUPPLEMENT_v0.8.0.md` + `VERIFICATION_SUPPLEMENT_v0.8.1.md + `VERIFICATION_SUPPLEMENT_v0.8.2.md`` + `docs/SECURITY_AUDIT.md` + `docs/PERFORMANCE_ANALYSIS.md` — `npm test` 121/121 PASS
 
 ## 1. Control Architecture (DVB-inspired, not DVB-compatible)
 
@@ -18,10 +18,10 @@ NIT / new mux                   expansion (new candidates with provenance)
 
 The loop is `DISCOVERY → KNOWLEDGE GRAPH → ACQUISITION PLAN → SCHEDULER → ACQUISITION → OBSERVATION → RECOGNITION → DISCOVERY` (README diagram). Exhaustive DVB spectrum is replaced by **budgeted open-world search**: `maxCandidates 750 live`, `maxRequests 150 global`, `maxDepth 5`.
 
-## 2. Module Map (v0.8.1)
+## 2. Module Map (v0.8.2)
 
 ```
-src/ 7-file mirror (new in 0.8.1, ADR 019)
+src/ 7-file mirror (new in 0.8.1, ADR 019) + export hardening (0.8.2, ADR 020)
  ├── config.js — CONFIG v8 ~84 keys ES export (real extract)
  ├── utils.js — canonicalizeUrl, fnv1a32, makeFingerprint (wired to CONFIG)
  ├── models.js / knowledge.js / ledger.js / providers.js / engine.js — placeholders (plan in src/README.md)
@@ -38,7 +38,7 @@ CONFIG (v8, ~84 keys) + privacy stripSensitiveParams + candidateTTL 0/off + life
 ├── DecisionLedger (12 types, 5k FIFO, seq, export/restore)
 ├── NetworkObserver (bridge fetch/XHR + PerformanceObserver, GET-trust rule)
 └── GenericDiscoveryEngine (discover/plan/execute/worker/adaptive/persist/UI + rAF-batched updateUI + TTL-bounded claim + lifecycle-guarded marks + pattern/cluster metrics + getCoverageMetrics + ProviderRegistry 9 providers)
-dist/generic-discovery-engine.user.js (5,784 lines) still source of truth; src/ is verified mirror, not yet bundled (scripts/build.js checks src 7 exist before hashing).
+dist/generic-discovery-engine.user.js (5,864 lines) still source of truth; src/ is verified mirror, not yet bundled (scripts/build.js checks src 7 exist before hashing).
 ```
 
 ## 3. Data-Flow & Invariants
@@ -54,13 +54,14 @@ dist/generic-discovery-engine.user.js (5,784 lines) still source of truth; src/ 
 - **Pattern & cluster:** `extractUrlPattern` normalizes `/{int}/{uuid}/{hash}` and `clusterKeyForCandidate` groups `origin::pattern`; `recordPattern` O(1) on `addCandidate`, `getPatternMetrics`/`getClusterMetrics` O(n≤750) sorted top 20, ~0.06 ms (ADR 013/014).
 - **Providers 9:** `ProviderRegistry` ordered `Html/Json/Xml/Css/JavaScript/Robots/Headers/Binary/Text`; `RobotsProvider` `Sitemap:` 0.92, `HeadersProvider` `Link` 0.88/`Location` 0.90, `http.headers` captured from `fetch` + `GM_xhr` (ADR 016/017).
 - **Change detection:** `recordObservation` captures `_oldHash` before `ensureResource`, compares `hash !== _oldHash` when `CONFIG.changeDetection` → `resource-changed` diagnostic + `status='changed'`, O(1) ~0.01 ms (ADR 018).
+- **Coverage determinism:** `getCoverageMetrics()` now sorted `queuedByType` + `patternCount`/`clusterCount`/`fingerprintUnique`/`inferenceEnabled` via `getPatternMetrics()`, O(n≤750) ~0.06 ms; `exportData().inference` adds bounded pattern/cluster/fingerprint stats (ADR 020).
 - **Build determinism:** `scripts/build.js` captures `sha256`/`lines`/`size` → `dist/.build-meta.json`; `scripts/verify-build.js` asserts no `builtAt` in dist, header version matches `package.json`, hash matches meta, `extractUrlPattern` present, 9-provider order, src 7 present (ADR 015 → 019). `npm run build` now atomic `build && verify:build`.
 - **Modular prelude:** `src/config.js` is real `CONFIG` extract, `src/utils.js` re-exports canonical helpers; build fails if any `src/*.js` missing — guarantees mirror never drifts (ADR 019).
 - **Claim exclusivity:** `claimNextCandidate()` remains synchronous `eligible.sort → _validateTransition → claimed`; 4 workers + `setImmediate` interleaving never duplicate (ADR 011).
 - **TTL boundedness:** `claimNextCandidate()` sweeps `queued/failed` with `now()-createdAt > CONFIG.candidateTTL` → `ttl-expired` (visited+skipped); liveCount freed before sort, deterministic at 0.05 ms (see ADR 007).
 - **Coverage:** `getCoverageMetrics()` exposes `frontierSize/queuedByType/liveCount/requestsRemaining` in UI + export without extra traversal.
 
-## 4. Security Defaults (v0.8.1)
+## 4. Security Defaults (v0.8.2)
 
 - `sameOriginOnly:true` + `isAllowedUrl` (https only) enforced in both `discover()` and `policy`.
 - `@connect self` (header) with `*` commented; runtime warns if `sameOriginOnly=false`.
@@ -86,5 +87,5 @@ dist/generic-discovery-engine.user.js (5,784 lines) still source of truth; src/ 
 
 ## 7. Open Iterations (from DECISIONS.md)
 
-- Narrow `@connect` shipped v0.7.4; Trusted Types `gde-bridge` + fuzz + priority invariants shipped v0.7.5/v0.7.6; TTL + FIFO + throttle + gates shipped v0.7.7; lifecycle + concurrency + typecheck shipped v0.7.8; pattern/cluster + build determinism shipped v0.7.9; robots/headers + change detection shipped v0.8.0; modular prelude + export hardening shipped v0.8.1.
-- Planning doc fully split is incremental; this overview + 19 ADRs + coverage gates + TTL + lifecycle + concurrency + pattern/cluster + build determinism + robots/headers + change detection + modular prelude completes the v0.8.1 feature pass; `npm run coverage:check` 85/75/80 gate, `npm run coverage` 99% line, `npm run typecheck` informational, `npm run verify:build` deterministic (sha256 031c3… lines 5784, src 7).
+- Narrow `@connect` shipped v0.7.4; Trusted Types `gde-bridge` + fuzz + priority invariants shipped v0.7.5/v0.7.6; TTL + FIFO + throttle + gates shipped v0.7.7; lifecycle + concurrency + typecheck shipped v0.7.8; pattern/cluster + build determinism shipped v0.7.9; robots/headers + change detection shipped v0.8.0; modular prelude shipped v0.8.1; export hardening + inference metrics shipped v0.8.2.
+- Planning doc fully split is incremental; this overview + 19 ADRs + coverage gates + TTL + lifecycle + concurrency + pattern/cluster + build determinism + robots/headers + change detection + modular prelude completes the v0.8.1 feature pass; `npm run coverage:check` 85/75/80 gate, `npm run coverage` 99% line, `npm run typecheck` informational, `npm run verify:build` deterministic (sha256 a46d3… lines 5864, src 7, inference gate).

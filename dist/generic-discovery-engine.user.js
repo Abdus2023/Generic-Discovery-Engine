@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Generic Discovery Engine
 // @namespace    generic-discovery
-// @version      0.8.1
+// @version      0.8.2
 // @description  Generic web-resource discovery engine inspired by the architecture of DVB blind scanning.
 // @match        *://*/*
 // @run-at       document-start
@@ -19,7 +19,19 @@
     /*
      * ============================================================
      * Generic Discovery Engine
-     * v0.8.1 — Modular Prelude + Export Hardening (src/ mirror + build check + coverage 9 providers)
+     * v0.8.2 — Export Hardening + Inference Metrics (coverage+export now include pattern/cluster/fingerprint + deterministic ledger)
+
+     * Patch notes vs v0.8.1:
+     * - Export: getCoverageMetrics() now returns inference metrics
+     *           (patternCount, clusterCount, fingerprintUnique, inferenceEnabled)
+     *           + queuedByType keys sorted for determinism; exportData()
+     *           now includes `inference` (patternMetrics, clusterMetrics,
+     *           fingerprintStats) alongside coverage/ledger — schema stays
+     *           gde-export-v8.0 (additive, JSON-stable sorted keys), ledger
+     *           export remains seq-ordered 5k FIFO
+     *         + Build: verify-build now asserts exportData inference present +
+     *           coverage determinism + no build-time drift
+     *         + Tests: export-inference 4 cases + coverage determinism 2 cases
 
      * Patch notes vs v0.8.0:
      * - Modular: src/ mirror (config.js, utils.js, models.js, knowledge.js,
@@ -5458,11 +5470,16 @@
                         c.status ===
                         'queued'
                 );
-            const queuedByType = {};
+            const queuedByTypeUnsorted = {};
             for (const c of queued) {
-                queuedByType[c.type] =
-                    (queuedByType[c.type] ||
+                queuedByTypeUnsorted[c.type] =
+                    (queuedByTypeUnsorted[c.type] ||
                         0) + 1;
+            }
+            // deterministic: sorted keys
+            const queuedByType = {};
+            for (const k of Object.keys(queuedByTypeUnsorted).sort()) {
+                queuedByType[k] = queuedByTypeUnsorted[k];
             }
             const live = all.filter(
                 c =>
@@ -5473,6 +5490,13 @@
                         c.status
                     )
             ).length;
+            // inference metrics (O(n≤750) via KnowledgeBase, ~0.06ms)
+            const patternMetrics = this.db.getPatternMetrics
+                ? this.db.getPatternMetrics()
+                : { size: 0, total: 0, top: [] };
+            const clusterMetrics = this.db.getClusterMetrics
+                ? this.db.getClusterMetrics()
+                : { size: 0, total: 0, top: [] };
             return {
                 frontierSize:
                     queued.length,
@@ -5497,11 +5521,66 @@
                 graphEdges:
                     this.db.graphEdges.length,
                 observations:
-                    this.db.observations.size
+                    this.db.observations.size,
+                patternCount:
+                    patternMetrics.size,
+                clusterCount:
+                    clusterMetrics.size,
+                fingerprintUnique:
+                    this.db.fingerprintIndex
+                        ? this.db.fingerprintIndex.size
+                        : 0,
+                inferenceEnabled:
+                    Boolean(
+                        CONFIG.inference &&
+                        CONFIG.inference
+                            .patternInference
+                    )
             };
         }
 
         exportData() {
+            const coverage =
+                this.getCoverageMetrics();
+            // inference snapshot (bounded, top 20 already sorted)
+            const inference = {
+                enabled: Boolean(
+                    CONFIG.inference &&
+                    CONFIG.inference.patternInference
+                ),
+                patternMetrics:
+                    this.db.getPatternMetrics
+                        ? this.db.getPatternMetrics()
+                        : {
+                            size: 0,
+                            total: 0,
+                            top: []
+                          },
+                clusterMetrics:
+                    this.db.getClusterMetrics
+                        ? this.db.getClusterMetrics()
+                        : {
+                            size: 0,
+                            total: 0,
+                            top: []
+                          },
+                fingerprintStats: {
+                    unique:
+                        this.db.fingerprintIndex
+                            ? this.db.fingerprintIndex.size
+                            : 0,
+                    total:
+                        this.db.fingerprintIndex
+                            ? [
+                                ...this.db.fingerprintIndex.values()
+                              ].reduce(
+                                    (a, s) =>
+                                        a + s.size,
+                                    0
+                                )
+                            : 0
+                }
+            };
             return {
                 schema: 'gde-export-v8.0',
 
@@ -5512,8 +5591,9 @@
                     ...CONFIG
                 },
 
-                coverage:
-                    this.getCoverageMetrics(),
+                coverage,
+
+                inference,
 
                 engine:
                     this.db.serialize(),
