@@ -1,0 +1,45 @@
+                              GOAL
+                                │
+                                ▼
+                         QUERY PLANNER
+                                │
+                                ▼
+                           QUERY PLAN
+                                │
+                                ▼
+                           QUERY STEP
+                                │
+                                ▼
+                       TACTIC EXECUTION
+                                │
+                                ▼
+                        FRONTIER RUNTIME
+                                │
+                                ▼
+                         TACTIC RUNTIME
+                                │
+                    ┌───────────┴───────────┐
+                    │                       │
+             ordinary strategy        enumeration
+                    │                       │
+                    │               ENUMERATION RUNTIME
+                    │                       │
+                    │                    ENUMERATOR
+                    │                       │
+                    │                  EnumerationPage
+                    │                       │
+                    └───────────┬───────────┘
+                                │
+                        CandidateProposal
+                                │
+                                ▼
+                    DISCOVERY CONTROLLER
+                                │
+                                ▼
+                    CANDIDATE NORMALIZER
+                                │
+                                ▼
+                           CANDIDATE
+                                │
+                                ▼
+                         RESOURCE GRAPH

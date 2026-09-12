@@ -1,0 +1,589 @@
+{
+  "schema_version": 1,
+  "history": [
+    {
+      "snapshot_id": "snapshot-0001",
+      "version": "v0.1.0",
+      "variant": "mechanically-composed",
+      "providers": [
+        "HtmlRecognizer"
+      ],
+      "events": [
+        {
+          "provider": "HtmlRecognizer",
+          "event": "unknown",
+          "reason": "no unambiguous previous snapshot"
+        }
+      ],
+      "source_artifact": "rec-dbef25f8ab917d5a"
+    },
+    {
+      "snapshot_id": "snapshot-0003",
+      "version": "v0.2.0",
+      "variant": "mechanically-composed",
+      "providers": [
+        "HtmlProvider",
+        "JsonProvider",
+        "ResponseProvider",
+        "TextProvider"
+      ],
+      "events": [
+        {
+          "provider": "HtmlProvider",
+          "event": "introduced"
+        },
+        {
+          "provider": "JsonProvider",
+          "event": "introduced"
+        },
+        {
+          "provider": "ResponseProvider",
+          "event": "introduced"
+        },
+        {
+          "provider": "TextProvider",
+          "event": "introduced"
+        },
+        {
+          "provider": "HtmlRecognizer",
+          "event": "removed"
+        }
+      ],
+      "source_artifact": "rec-e8df26fe56d82d1c"
+    },
+    {
+      "snapshot_id": "snapshot-0005",
+      "version": "v0.3.0",
+      "variant": "only-evidenced-complete-occurrence",
+      "providers": [
+        "HtmlProvider",
+        "JsonProvider",
+        "ResponseProvider",
+        "TextProvider"
+      ],
+      "events": [
+        {
+          "provider": "HtmlProvider",
+          "event": "introduced"
+        },
+        {
+          "provider": "JsonProvider",
+          "event": "introduced"
+        },
+        {
+          "provider": "ResponseProvider",
+          "event": "introduced"
+        },
+        {
+          "provider": "TextProvider",
+          "event": "introduced"
+        }
+      ],
+      "source_artifact": "art-44eb3694339abdcb"
+    },
+    {
+      "snapshot_id": "snapshot-0006",
+      "version": "v0.4.0",
+      "variant": "variant-a",
+      "providers": [
+        "HtmlProvider",
+        "JsonProvider",
+        "ManifestProvider",
+        "ResponseProvider",
+        "TextProvider",
+        "XmlProvider"
+      ],
+      "events": [
+        {
+          "provider": "HtmlProvider",
+          "event": "modified"
+        },
+        {
+          "provider": "JsonProvider",
+          "event": "modified"
+        },
+        {
+          "provider": "ManifestProvider",
+          "event": "introduced"
+        },
+        {
+          "provider": "ResponseProvider",
+          "event": "modified"
+        },
+        {
+          "provider": "TextProvider",
+          "event": "modified"
+        },
+        {
+          "provider": "XmlProvider",
+          "event": "introduced"
+        }
+      ],
+      "source_artifact": "art-deb961ea9f622d3a"
+    },
+    {
+      "snapshot_id": "snapshot-0007",
+      "version": "v0.5.0",
+      "variant": "variant-a",
+      "providers": [
+        "ApiDescriptionProvider",
+        "HtmlProvider",
+        "JsonProvider",
+        "ManifestProvider",
+        "ResponseProvider",
+        "RobotsProvider",
+        "TextProvider",
+        "XmlProvider"
+      ],
+      "events": [
+        {
+          "provider": "ApiDescriptionProvider",
+          "event": "introduced"
+        },
+        {
+          "provider": "HtmlProvider",
+          "event": "modified"
+        },
+        {
+          "provider": "JsonProvider",
+          "event": "modified"
+        },
+        {
+          "provider": "ManifestProvider",
+          "event": "modified"
+        },
+        {
+          "provider": "ResponseProvider",
+          "event": "modified"
+        },
+        {
+          "provider": "RobotsProvider",
+          "event": "introduced"
+        },
+        {
+          "provider": "TextProvider",
+          "event": "modified"
+        },
+        {
+          "provider": "XmlProvider",
+          "event": "modified"
+        }
+      ],
+      "source_artifact": "art-2c6f74909f301798"
+    },
+    {
+      "snapshot_id": "snapshot-0008",
+      "version": "v0.4.0",
+      "variant": "variant-b",
+      "providers": [
+        "CssProvider",
+        "HtmlProvider",
+        "JavaScriptProvider",
+        "JsonProvider",
+        "ResponseProvider",
+        "RobotsProvider",
+        "TextProvider",
+        "XmlProvider"
+      ],
+      "events": [
+        {
+          "provider": "CssProvider",
+          "event": "introduced"
+        },
+        {
+          "provider": "HtmlProvider",
+          "event": "modified"
+        },
+        {
+          "provider": "JavaScriptProvider",
+          "event": "introduced"
+        },
+        {
+          "provider": "JsonProvider",
+          "event": "modified"
+        },
+        {
+          "provider": "ResponseProvider",
+          "event": "modified"
+        },
+        {
+          "provider": "RobotsProvider",
+          "event": "introduced"
+        },
+        {
+          "provider": "TextProvider",
+          "event": "modified"
+        },
+        {
+          "provider": "XmlProvider",
+          "event": "introduced"
+        }
+      ],
+      "source_artifact": "art-c19ebb3956fba19c"
+    },
+    {
+      "snapshot_id": "snapshot-0009",
+      "version": "v0.5.0",
+      "variant": "variant-b",
+      "providers": [
+        "CssProvider",
+        "HtmlProvider",
+        "JavaScriptProvider",
+        "JsonProvider",
+        "Provider",
+        "RobotsProvider",
+        "TextProvider",
+        "XmlProvider"
+      ],
+      "events": [
+        {
+          "provider": "CssProvider",
+          "event": "modified"
+        },
+        {
+          "provider": "HtmlProvider",
+          "event": "modified"
+        },
+        {
+          "provider": "JavaScriptProvider",
+          "event": "modified"
+        },
+        {
+          "provider": "JsonProvider",
+          "event": "modified"
+        },
+        {
+          "provider": "Provider",
+          "event": "introduced"
+        },
+        {
+          "provider": "RobotsProvider",
+          "event": "modified"
+        },
+        {
+          "provider": "TextProvider",
+          "event": "modified"
+        },
+        {
+          "provider": "XmlProvider",
+          "event": "modified"
+        },
+        {
+          "provider": "ResponseProvider",
+          "event": "removed"
+        }
+      ],
+      "source_artifact": "art-fbebfdf9a3874c18"
+    },
+    {
+      "snapshot_id": "snapshot-0010",
+      "version": "v0.6.0",
+      "variant": "variant-a",
+      "providers": [
+        "BinaryProvider",
+        "CssProvider",
+        "HtmlProvider",
+        "JavaScriptProvider",
+        "JsonProvider",
+        "Provider",
+        "RobotsProvider",
+        "TextProvider",
+        "XmlProvider"
+      ],
+      "events": [
+        {
+          "provider": "BinaryProvider",
+          "event": "introduced"
+        },
+        {
+          "provider": "CssProvider",
+          "event": "modified"
+        },
+        {
+          "provider": "HtmlProvider",
+          "event": "modified"
+        },
+        {
+          "provider": "JavaScriptProvider",
+          "event": "modified"
+        },
+        {
+          "provider": "JsonProvider",
+          "event": "modified"
+        },
+        {
+          "provider": "Provider",
+          "event": "unknown"
+        },
+        {
+          "provider": "RobotsProvider",
+          "event": "modified"
+        },
+        {
+          "provider": "TextProvider",
+          "event": "modified"
+        },
+        {
+          "provider": "XmlProvider",
+          "event": "modified"
+        }
+      ],
+      "source_artifact": "art-b1368ed9b372a6a6"
+    },
+    {
+      "snapshot_id": "snapshot-0011",
+      "version": "v0.5.0",
+      "variant": "variant-c",
+      "providers": [
+        "BinaryProvider",
+        "CssProvider",
+        "HtmlProvider",
+        "JavaScriptProvider",
+        "JsonProvider",
+        "Provider",
+        "ResponseProvider",
+        "RobotsProvider",
+        "TextProvider",
+        "XmlProvider"
+      ],
+      "events": [
+        {
+          "provider": "BinaryProvider",
+          "event": "unknown",
+          "reason": "no unambiguous previous snapshot"
+        },
+        {
+          "provider": "CssProvider",
+          "event": "unknown",
+          "reason": "no unambiguous previous snapshot"
+        },
+        {
+          "provider": "HtmlProvider",
+          "event": "unknown",
+          "reason": "no unambiguous previous snapshot"
+        },
+        {
+          "provider": "JavaScriptProvider",
+          "event": "unknown",
+          "reason": "no unambiguous previous snapshot"
+        },
+        {
+          "provider": "JsonProvider",
+          "event": "unknown",
+          "reason": "no unambiguous previous snapshot"
+        },
+        {
+          "provider": "Provider",
+          "event": "unknown",
+          "reason": "no unambiguous previous snapshot"
+        },
+        {
+          "provider": "ResponseProvider",
+          "event": "unknown",
+          "reason": "no unambiguous previous snapshot"
+        },
+        {
+          "provider": "RobotsProvider",
+          "event": "unknown",
+          "reason": "no unambiguous previous snapshot"
+        },
+        {
+          "provider": "TextProvider",
+          "event": "unknown",
+          "reason": "no unambiguous previous snapshot"
+        },
+        {
+          "provider": "XmlProvider",
+          "event": "unknown",
+          "reason": "no unambiguous previous snapshot"
+        }
+      ],
+      "source_artifact": "art-f019277e6c28e8f5"
+    },
+    {
+      "snapshot_id": "snapshot-0012",
+      "version": "v0.6.0",
+      "variant": "variant-b",
+      "providers": [
+        "BinaryProvider",
+        "CssProvider",
+        "HtmlProvider",
+        "JavaScriptProvider",
+        "JsonProvider",
+        "Provider",
+        "ResponseProvider",
+        "RobotsProvider",
+        "TextProvider",
+        "XmlProvider"
+      ],
+      "events": [
+        {
+          "provider": "BinaryProvider",
+          "event": "modified"
+        },
+        {
+          "provider": "CssProvider",
+          "event": "modified"
+        },
+        {
+          "provider": "HtmlProvider",
+          "event": "modified"
+        },
+        {
+          "provider": "JavaScriptProvider",
+          "event": "modified"
+        },
+        {
+          "provider": "JsonProvider",
+          "event": "modified"
+        },
+        {
+          "provider": "Provider",
+          "event": "modified"
+        },
+        {
+          "provider": "ResponseProvider",
+          "event": "modified"
+        },
+        {
+          "provider": "RobotsProvider",
+          "event": "modified"
+        },
+        {
+          "provider": "TextProvider",
+          "event": "modified"
+        },
+        {
+          "provider": "XmlProvider",
+          "event": "modified"
+        }
+      ],
+      "source_artifact": "art-3680c60f0bc39673"
+    },
+    {
+      "snapshot_id": "snapshot-0013",
+      "version": "v0.6.0",
+      "variant": "variant-c",
+      "providers": [
+        "BinaryProvider",
+        "CssProvider",
+        "HtmlProvider",
+        "JavaScriptProvider",
+        "JsonProvider",
+        "Provider",
+        "ResponseProvider",
+        "RobotsProvider",
+        "TextProvider",
+        "XmlProvider"
+      ],
+      "events": [
+        {
+          "provider": "BinaryProvider",
+          "event": "modified"
+        },
+        {
+          "provider": "CssProvider",
+          "event": "modified"
+        },
+        {
+          "provider": "HtmlProvider",
+          "event": "modified"
+        },
+        {
+          "provider": "JavaScriptProvider",
+          "event": "modified"
+        },
+        {
+          "provider": "JsonProvider",
+          "event": "modified"
+        },
+        {
+          "provider": "Provider",
+          "event": "modified"
+        },
+        {
+          "provider": "ResponseProvider",
+          "event": "modified"
+        },
+        {
+          "provider": "RobotsProvider",
+          "event": "modified"
+        },
+        {
+          "provider": "TextProvider",
+          "event": "modified"
+        },
+        {
+          "provider": "XmlProvider",
+          "event": "modified"
+        }
+      ],
+      "source_artifact": "art-33fa8de51e13e087"
+    },
+    {
+      "snapshot_id": "snapshot-0014",
+      "version": "v0.7.1",
+      "variant": "only-evidenced-complete-occurrence",
+      "providers": [
+        "BinaryProvider",
+        "CssProvider",
+        "HtmlProvider",
+        "JavaScriptProvider",
+        "JsonProvider",
+        "Provider",
+        "TextProvider",
+        "XmlProvider"
+      ],
+      "events": [
+        {
+          "provider": "BinaryProvider",
+          "event": "modified"
+        },
+        {
+          "provider": "CssProvider",
+          "event": "modified"
+        },
+        {
+          "provider": "HtmlProvider",
+          "event": "modified"
+        },
+        {
+          "provider": "JavaScriptProvider",
+          "event": "modified"
+        },
+        {
+          "provider": "JsonProvider",
+          "event": "modified"
+        },
+        {
+          "provider": "Provider",
+          "event": "modified"
+        },
+        {
+          "provider": "TextProvider",
+          "event": "modified"
+        },
+        {
+          "provider": "XmlProvider",
+          "event": "modified"
+        },
+        {
+          "provider": "ResponseProvider",
+          "event": "removed"
+        },
+        {
+          "provider": "RobotsProvider",
+          "event": "removed"
+        }
+      ],
+      "source_artifact": "art-e0789bc8f62176cb"
+    }
+  ],
+  "change_terms": [
+    "introduced",
+    "modified",
+    "removed",
+    "reintroduced",
+    "unknown"
+  ]
+}

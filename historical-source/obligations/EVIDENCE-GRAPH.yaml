@@ -1,0 +1,2338 @@
+{
+  "schema_version": "1.0",
+  "graph_type": "EVIDENCE_GRAPH",
+  "nodes": [
+    {
+      "id": "NE-V1-SOURCE",
+      "kind": "EVIDENCE",
+      "status": "UNVERIFIED"
+    },
+    {
+      "id": "NE-V2-LINEAGE",
+      "kind": "EVIDENCE",
+      "status": "STRUCTURALLY_PRESENT"
+    },
+    {
+      "id": "NE-V3-RECON",
+      "kind": "EVIDENCE",
+      "status": "PROVISIONAL_SOURCE_LOCAL"
+    },
+    {
+      "id": "NE-V3-DATA",
+      "kind": "EVIDENCE",
+      "status": "PROVISIONAL_SOURCE_LOCAL"
+    },
+    {
+      "id": "NE-V3-API",
+      "kind": "EVIDENCE",
+      "status": "PROVISIONAL_SOURCE_LOCAL"
+    },
+    {
+      "id": "NE-V3-PROVIDERS",
+      "kind": "EVIDENCE",
+      "status": "PROVISIONAL_SOURCE_LOCAL"
+    },
+    {
+      "id": "NE-V8-FAILURE-MATRIX",
+      "kind": "EVIDENCE",
+      "status": "PROVISIONAL_SOURCE_LOCAL"
+    },
+    {
+      "id": "NE-V8-CLAIM",
+      "kind": "EVIDENCE",
+      "status": "PROVISIONAL_SOURCE_LOCAL"
+    },
+    {
+      "id": "NE-V8-DUPLICATE",
+      "kind": "EVIDENCE",
+      "status": "PROVISIONAL_SOURCE_LOCAL"
+    },
+    {
+      "id": "NE-V8-RETRY",
+      "kind": "EVIDENCE",
+      "status": "PROVISIONAL_SOURCE_LOCAL"
+    },
+    {
+      "id": "NE-V8-CANCEL",
+      "kind": "EVIDENCE",
+      "status": "PROVISIONAL_SOURCE_LOCAL"
+    },
+    {
+      "id": "NE-V8-PROVENANCE",
+      "kind": "EVIDENCE",
+      "status": "PROVISIONAL_SOURCE_LOCAL"
+    },
+    {
+      "id": "NE-V8-OBSERVE",
+      "kind": "EVIDENCE",
+      "status": "PROVISIONAL_SOURCE_LOCAL"
+    },
+    {
+      "id": "NE-V8-PERSIST",
+      "kind": "EVIDENCE",
+      "status": "PROVISIONAL_SOURCE_LOCAL"
+    },
+    {
+      "id": "NE-V8-EXPORT",
+      "kind": "EVIDENCE",
+      "status": "PROVISIONAL_SOURCE_LOCAL"
+    },
+    {
+      "id": "NE-V8-BOUNDS",
+      "kind": "EVIDENCE",
+      "status": "PROVISIONAL_SOURCE_LOCAL"
+    },
+    {
+      "id": "NE-V8-RISKS",
+      "kind": "EVIDENCE",
+      "status": "PROVISIONAL_SOURCE_LOCAL"
+    },
+    {
+      "id": "NE-V8-BOUNDARIES",
+      "kind": "EVIDENCE",
+      "status": "PROVISIONAL_SOURCE_LOCAL"
+    },
+    {
+      "id": "NE-V8-AUTHORITY",
+      "kind": "EVIDENCE",
+      "status": "PROVISIONAL_SOURCE_LOCAL"
+    },
+    {
+      "id": "NE-V8-PARSERS",
+      "kind": "EVIDENCE",
+      "status": "PROVISIONAL_SOURCE_LOCAL"
+    },
+    {
+      "id": "NE-V8-CODE-DATA",
+      "kind": "EVIDENCE",
+      "status": "PROVISIONAL_SOURCE_LOCAL"
+    },
+    {
+      "id": "NE-V9-STATES",
+      "kind": "EVIDENCE",
+      "status": "PROVISIONAL_SOURCE_LOCAL"
+    },
+    {
+      "id": "NE-V9-CLAIMS",
+      "kind": "EVIDENCE",
+      "status": "PROVISIONAL_SOURCE_LOCAL"
+    },
+    {
+      "id": "NE-V9-INVARIANTS",
+      "kind": "EVIDENCE",
+      "status": "PROVISIONAL_SOURCE_LOCAL"
+    },
+    {
+      "id": "NE-V9-UNKNOWNS",
+      "kind": "EVIDENCE",
+      "status": "PROVISIONAL_SOURCE_LOCAL"
+    },
+    {
+      "id": "NE-V9-CONTRADICTIONS",
+      "kind": "EVIDENCE",
+      "status": "PROVISIONAL_SOURCE_LOCAL"
+    },
+    {
+      "id": "PROP-snapshot-0001-ALGORITHM",
+      "kind": "HISTORICAL_PROPERTY",
+      "status": "SUPPORTED"
+    },
+    {
+      "id": "PROP-snapshot-0001-ARCHITECTURE",
+      "kind": "HISTORICAL_PROPERTY",
+      "status": "SUPPORTED"
+    },
+    {
+      "id": "PROP-snapshot-0001-DATA",
+      "kind": "HISTORICAL_PROPERTY",
+      "status": "SUPPORTED"
+    },
+    {
+      "id": "PROP-snapshot-0001-INTERFACES",
+      "kind": "HISTORICAL_PROPERTY",
+      "status": "SUPPORTED"
+    },
+    {
+      "id": "PROP-snapshot-0001-CONTRACTS",
+      "kind": "HISTORICAL_PROPERTY",
+      "status": "UNKNOWN"
+    },
+    {
+      "id": "PROP-snapshot-0001-SCHEDULER",
+      "kind": "HISTORICAL_PROPERTY",
+      "status": "SUPPORTED"
+    },
+    {
+      "id": "PROP-snapshot-0001-CONCURRENCY",
+      "kind": "HISTORICAL_PROPERTY",
+      "status": "SUPPORTED"
+    },
+    {
+      "id": "PROP-snapshot-0001-FAILURE",
+      "kind": "HISTORICAL_PROPERTY",
+      "status": "SUPPORTED"
+    },
+    {
+      "id": "PROP-snapshot-0001-SECURITY",
+      "kind": "HISTORICAL_PROPERTY",
+      "status": "SUPPORTED"
+    },
+    {
+      "id": "PROP-snapshot-0001-PROVENANCE",
+      "kind": "HISTORICAL_PROPERTY",
+      "status": "SUPPORTED"
+    },
+    {
+      "id": "PROP-snapshot-0001-OBSERVABILITY",
+      "kind": "HISTORICAL_PROPERTY",
+      "status": "SUPPORTED"
+    },
+    {
+      "id": "PROP-snapshot-0001-TESTING",
+      "kind": "HISTORICAL_PROPERTY",
+      "status": "SUPPORTED"
+    },
+    {
+      "id": "PROP-snapshot-0003-ALGORITHM",
+      "kind": "HISTORICAL_PROPERTY",
+      "status": "SUPPORTED"
+    },
+    {
+      "id": "PROP-snapshot-0003-ARCHITECTURE",
+      "kind": "HISTORICAL_PROPERTY",
+      "status": "SUPPORTED"
+    },
+    {
+      "id": "PROP-snapshot-0003-DATA",
+      "kind": "HISTORICAL_PROPERTY",
+      "status": "SUPPORTED"
+    },
+    {
+      "id": "PROP-snapshot-0003-INTERFACES",
+      "kind": "HISTORICAL_PROPERTY",
+      "status": "SUPPORTED"
+    },
+    {
+      "id": "PROP-snapshot-0003-CONTRACTS",
+      "kind": "HISTORICAL_PROPERTY",
+      "status": "UNKNOWN"
+    },
+    {
+      "id": "PROP-snapshot-0003-SCHEDULER",
+      "kind": "HISTORICAL_PROPERTY",
+      "status": "SUPPORTED"
+    },
+    {
+      "id": "PROP-snapshot-0003-CONCURRENCY",
+      "kind": "HISTORICAL_PROPERTY",
+      "status": "SUPPORTED"
+    },
+    {
+      "id": "PROP-snapshot-0003-FAILURE",
+      "kind": "HISTORICAL_PROPERTY",
+      "status": "SUPPORTED"
+    },
+    {
+      "id": "PROP-snapshot-0003-SECURITY",
+      "kind": "HISTORICAL_PROPERTY",
+      "status": "SUPPORTED"
+    },
+    {
+      "id": "PROP-snapshot-0003-PROVENANCE",
+      "kind": "HISTORICAL_PROPERTY",
+      "status": "SUPPORTED"
+    },
+    {
+      "id": "PROP-snapshot-0003-OBSERVABILITY",
+      "kind": "HISTORICAL_PROPERTY",
+      "status": "SUPPORTED"
+    },
+    {
+      "id": "PROP-snapshot-0003-TESTING",
+      "kind": "HISTORICAL_PROPERTY",
+      "status": "SUPPORTED"
+    },
+    {
+      "id": "PROP-snapshot-0005-ALGORITHM",
+      "kind": "HISTORICAL_PROPERTY",
+      "status": "SUPPORTED"
+    },
+    {
+      "id": "PROP-snapshot-0005-ARCHITECTURE",
+      "kind": "HISTORICAL_PROPERTY",
+      "status": "SUPPORTED"
+    },
+    {
+      "id": "PROP-snapshot-0005-DATA",
+      "kind": "HISTORICAL_PROPERTY",
+      "status": "SUPPORTED"
+    },
+    {
+      "id": "PROP-snapshot-0005-INTERFACES",
+      "kind": "HISTORICAL_PROPERTY",
+      "status": "SUPPORTED"
+    },
+    {
+      "id": "PROP-snapshot-0005-CONTRACTS",
+      "kind": "HISTORICAL_PROPERTY",
+      "status": "UNKNOWN"
+    },
+    {
+      "id": "PROP-snapshot-0005-SCHEDULER",
+      "kind": "HISTORICAL_PROPERTY",
+      "status": "SUPPORTED"
+    },
+    {
+      "id": "PROP-snapshot-0005-CONCURRENCY",
+      "kind": "HISTORICAL_PROPERTY",
+      "status": "SUPPORTED"
+    },
+    {
+      "id": "PROP-snapshot-0005-FAILURE",
+      "kind": "HISTORICAL_PROPERTY",
+      "status": "SUPPORTED"
+    },
+    {
+      "id": "PROP-snapshot-0005-SECURITY",
+      "kind": "HISTORICAL_PROPERTY",
+      "status": "SUPPORTED"
+    },
+    {
+      "id": "PROP-snapshot-0005-PROVENANCE",
+      "kind": "HISTORICAL_PROPERTY",
+      "status": "SUPPORTED"
+    },
+    {
+      "id": "PROP-snapshot-0005-OBSERVABILITY",
+      "kind": "HISTORICAL_PROPERTY",
+      "status": "SUPPORTED"
+    },
+    {
+      "id": "PROP-snapshot-0005-TESTING",
+      "kind": "HISTORICAL_PROPERTY",
+      "status": "SUPPORTED"
+    },
+    {
+      "id": "PROP-snapshot-0006-ALGORITHM",
+      "kind": "HISTORICAL_PROPERTY",
+      "status": "SUPPORTED"
+    },
+    {
+      "id": "PROP-snapshot-0006-ARCHITECTURE",
+      "kind": "HISTORICAL_PROPERTY",
+      "status": "SUPPORTED"
+    },
+    {
+      "id": "PROP-snapshot-0006-DATA",
+      "kind": "HISTORICAL_PROPERTY",
+      "status": "SUPPORTED"
+    },
+    {
+      "id": "PROP-snapshot-0006-INTERFACES",
+      "kind": "HISTORICAL_PROPERTY",
+      "status": "SUPPORTED"
+    },
+    {
+      "id": "PROP-snapshot-0006-CONTRACTS",
+      "kind": "HISTORICAL_PROPERTY",
+      "status": "UNKNOWN"
+    },
+    {
+      "id": "PROP-snapshot-0006-SCHEDULER",
+      "kind": "HISTORICAL_PROPERTY",
+      "status": "SUPPORTED"
+    },
+    {
+      "id": "PROP-snapshot-0006-CONCURRENCY",
+      "kind": "HISTORICAL_PROPERTY",
+      "status": "SUPPORTED"
+    },
+    {
+      "id": "PROP-snapshot-0006-FAILURE",
+      "kind": "HISTORICAL_PROPERTY",
+      "status": "SUPPORTED"
+    },
+    {
+      "id": "PROP-snapshot-0006-SECURITY",
+      "kind": "HISTORICAL_PROPERTY",
+      "status": "SUPPORTED"
+    },
+    {
+      "id": "PROP-snapshot-0006-PROVENANCE",
+      "kind": "HISTORICAL_PROPERTY",
+      "status": "SUPPORTED"
+    },
+    {
+      "id": "PROP-snapshot-0006-OBSERVABILITY",
+      "kind": "HISTORICAL_PROPERTY",
+      "status": "SUPPORTED"
+    },
+    {
+      "id": "PROP-snapshot-0006-TESTING",
+      "kind": "HISTORICAL_PROPERTY",
+      "status": "SUPPORTED"
+    },
+    {
+      "id": "PROP-snapshot-0008-ALGORITHM",
+      "kind": "HISTORICAL_PROPERTY",
+      "status": "SUPPORTED"
+    },
+    {
+      "id": "PROP-snapshot-0008-ARCHITECTURE",
+      "kind": "HISTORICAL_PROPERTY",
+      "status": "SUPPORTED"
+    },
+    {
+      "id": "PROP-snapshot-0008-DATA",
+      "kind": "HISTORICAL_PROPERTY",
+      "status": "SUPPORTED"
+    },
+    {
+      "id": "PROP-snapshot-0008-INTERFACES",
+      "kind": "HISTORICAL_PROPERTY",
+      "status": "SUPPORTED"
+    },
+    {
+      "id": "PROP-snapshot-0008-CONTRACTS",
+      "kind": "HISTORICAL_PROPERTY",
+      "status": "UNKNOWN"
+    },
+    {
+      "id": "PROP-snapshot-0008-SCHEDULER",
+      "kind": "HISTORICAL_PROPERTY",
+      "status": "SUPPORTED"
+    },
+    {
+      "id": "PROP-snapshot-0008-CONCURRENCY",
+      "kind": "HISTORICAL_PROPERTY",
+      "status": "SUPPORTED"
+    },
+    {
+      "id": "PROP-snapshot-0008-FAILURE",
+      "kind": "HISTORICAL_PROPERTY",
+      "status": "SUPPORTED"
+    },
+    {
+      "id": "PROP-snapshot-0008-SECURITY",
+      "kind": "HISTORICAL_PROPERTY",
+      "status": "SUPPORTED"
+    },
+    {
+      "id": "PROP-snapshot-0008-PROVENANCE",
+      "kind": "HISTORICAL_PROPERTY",
+      "status": "SUPPORTED"
+    },
+    {
+      "id": "PROP-snapshot-0008-OBSERVABILITY",
+      "kind": "HISTORICAL_PROPERTY",
+      "status": "SUPPORTED"
+    },
+    {
+      "id": "PROP-snapshot-0008-TESTING",
+      "kind": "HISTORICAL_PROPERTY",
+      "status": "SUPPORTED"
+    },
+    {
+      "id": "PROP-snapshot-0007-ALGORITHM",
+      "kind": "HISTORICAL_PROPERTY",
+      "status": "SUPPORTED"
+    },
+    {
+      "id": "PROP-snapshot-0007-ARCHITECTURE",
+      "kind": "HISTORICAL_PROPERTY",
+      "status": "SUPPORTED"
+    },
+    {
+      "id": "PROP-snapshot-0007-DATA",
+      "kind": "HISTORICAL_PROPERTY",
+      "status": "SUPPORTED"
+    },
+    {
+      "id": "PROP-snapshot-0007-INTERFACES",
+      "kind": "HISTORICAL_PROPERTY",
+      "status": "SUPPORTED"
+    },
+    {
+      "id": "PROP-snapshot-0007-CONTRACTS",
+      "kind": "HISTORICAL_PROPERTY",
+      "status": "UNKNOWN"
+    },
+    {
+      "id": "PROP-snapshot-0007-SCHEDULER",
+      "kind": "HISTORICAL_PROPERTY",
+      "status": "SUPPORTED"
+    },
+    {
+      "id": "PROP-snapshot-0007-CONCURRENCY",
+      "kind": "HISTORICAL_PROPERTY",
+      "status": "SUPPORTED"
+    },
+    {
+      "id": "PROP-snapshot-0007-FAILURE",
+      "kind": "HISTORICAL_PROPERTY",
+      "status": "SUPPORTED"
+    },
+    {
+      "id": "PROP-snapshot-0007-SECURITY",
+      "kind": "HISTORICAL_PROPERTY",
+      "status": "SUPPORTED"
+    },
+    {
+      "id": "PROP-snapshot-0007-PROVENANCE",
+      "kind": "HISTORICAL_PROPERTY",
+      "status": "SUPPORTED"
+    },
+    {
+      "id": "PROP-snapshot-0007-OBSERVABILITY",
+      "kind": "HISTORICAL_PROPERTY",
+      "status": "SUPPORTED"
+    },
+    {
+      "id": "PROP-snapshot-0007-TESTING",
+      "kind": "HISTORICAL_PROPERTY",
+      "status": "SUPPORTED"
+    },
+    {
+      "id": "PROP-snapshot-0009-ALGORITHM",
+      "kind": "HISTORICAL_PROPERTY",
+      "status": "SUPPORTED"
+    },
+    {
+      "id": "PROP-snapshot-0009-ARCHITECTURE",
+      "kind": "HISTORICAL_PROPERTY",
+      "status": "SUPPORTED"
+    },
+    {
+      "id": "PROP-snapshot-0009-DATA",
+      "kind": "HISTORICAL_PROPERTY",
+      "status": "SUPPORTED"
+    },
+    {
+      "id": "PROP-snapshot-0009-INTERFACES",
+      "kind": "HISTORICAL_PROPERTY",
+      "status": "SUPPORTED"
+    },
+    {
+      "id": "PROP-snapshot-0009-CONTRACTS",
+      "kind": "HISTORICAL_PROPERTY",
+      "status": "UNKNOWN"
+    },
+    {
+      "id": "PROP-snapshot-0009-SCHEDULER",
+      "kind": "HISTORICAL_PROPERTY",
+      "status": "SUPPORTED"
+    },
+    {
+      "id": "PROP-snapshot-0009-CONCURRENCY",
+      "kind": "HISTORICAL_PROPERTY",
+      "status": "SUPPORTED"
+    },
+    {
+      "id": "PROP-snapshot-0009-FAILURE",
+      "kind": "HISTORICAL_PROPERTY",
+      "status": "SUPPORTED"
+    },
+    {
+      "id": "PROP-snapshot-0009-SECURITY",
+      "kind": "HISTORICAL_PROPERTY",
+      "status": "SUPPORTED"
+    },
+    {
+      "id": "PROP-snapshot-0009-PROVENANCE",
+      "kind": "HISTORICAL_PROPERTY",
+      "status": "SUPPORTED"
+    },
+    {
+      "id": "PROP-snapshot-0009-OBSERVABILITY",
+      "kind": "HISTORICAL_PROPERTY",
+      "status": "SUPPORTED"
+    },
+    {
+      "id": "PROP-snapshot-0009-TESTING",
+      "kind": "HISTORICAL_PROPERTY",
+      "status": "SUPPORTED"
+    },
+    {
+      "id": "PROP-snapshot-0011-ALGORITHM",
+      "kind": "HISTORICAL_PROPERTY",
+      "status": "SUPPORTED"
+    },
+    {
+      "id": "PROP-snapshot-0011-ARCHITECTURE",
+      "kind": "HISTORICAL_PROPERTY",
+      "status": "SUPPORTED"
+    },
+    {
+      "id": "PROP-snapshot-0011-DATA",
+      "kind": "HISTORICAL_PROPERTY",
+      "status": "SUPPORTED"
+    },
+    {
+      "id": "PROP-snapshot-0011-INTERFACES",
+      "kind": "HISTORICAL_PROPERTY",
+      "status": "SUPPORTED"
+    },
+    {
+      "id": "PROP-snapshot-0011-CONTRACTS",
+      "kind": "HISTORICAL_PROPERTY",
+      "status": "UNKNOWN"
+    },
+    {
+      "id": "PROP-snapshot-0011-SCHEDULER",
+      "kind": "HISTORICAL_PROPERTY",
+      "status": "SUPPORTED"
+    },
+    {
+      "id": "PROP-snapshot-0011-CONCURRENCY",
+      "kind": "HISTORICAL_PROPERTY",
+      "status": "SUPPORTED"
+    },
+    {
+      "id": "PROP-snapshot-0011-FAILURE",
+      "kind": "HISTORICAL_PROPERTY",
+      "status": "SUPPORTED"
+    },
+    {
+      "id": "PROP-snapshot-0011-SECURITY",
+      "kind": "HISTORICAL_PROPERTY",
+      "status": "SUPPORTED"
+    },
+    {
+      "id": "PROP-snapshot-0011-PROVENANCE",
+      "kind": "HISTORICAL_PROPERTY",
+      "status": "SUPPORTED"
+    },
+    {
+      "id": "PROP-snapshot-0011-OBSERVABILITY",
+      "kind": "HISTORICAL_PROPERTY",
+      "status": "SUPPORTED"
+    },
+    {
+      "id": "PROP-snapshot-0011-TESTING",
+      "kind": "HISTORICAL_PROPERTY",
+      "status": "SUPPORTED"
+    },
+    {
+      "id": "PROP-snapshot-0010-ALGORITHM",
+      "kind": "HISTORICAL_PROPERTY",
+      "status": "SUPPORTED"
+    },
+    {
+      "id": "PROP-snapshot-0010-ARCHITECTURE",
+      "kind": "HISTORICAL_PROPERTY",
+      "status": "SUPPORTED"
+    },
+    {
+      "id": "PROP-snapshot-0010-DATA",
+      "kind": "HISTORICAL_PROPERTY",
+      "status": "SUPPORTED"
+    },
+    {
+      "id": "PROP-snapshot-0010-INTERFACES",
+      "kind": "HISTORICAL_PROPERTY",
+      "status": "SUPPORTED"
+    },
+    {
+      "id": "PROP-snapshot-0010-CONTRACTS",
+      "kind": "HISTORICAL_PROPERTY",
+      "status": "UNKNOWN"
+    },
+    {
+      "id": "PROP-snapshot-0010-SCHEDULER",
+      "kind": "HISTORICAL_PROPERTY",
+      "status": "SUPPORTED"
+    },
+    {
+      "id": "PROP-snapshot-0010-CONCURRENCY",
+      "kind": "HISTORICAL_PROPERTY",
+      "status": "SUPPORTED"
+    },
+    {
+      "id": "PROP-snapshot-0010-FAILURE",
+      "kind": "HISTORICAL_PROPERTY",
+      "status": "SUPPORTED"
+    },
+    {
+      "id": "PROP-snapshot-0010-SECURITY",
+      "kind": "HISTORICAL_PROPERTY",
+      "status": "SUPPORTED"
+    },
+    {
+      "id": "PROP-snapshot-0010-PROVENANCE",
+      "kind": "HISTORICAL_PROPERTY",
+      "status": "SUPPORTED"
+    },
+    {
+      "id": "PROP-snapshot-0010-OBSERVABILITY",
+      "kind": "HISTORICAL_PROPERTY",
+      "status": "SUPPORTED"
+    },
+    {
+      "id": "PROP-snapshot-0010-TESTING",
+      "kind": "HISTORICAL_PROPERTY",
+      "status": "SUPPORTED"
+    },
+    {
+      "id": "PROP-snapshot-0012-ALGORITHM",
+      "kind": "HISTORICAL_PROPERTY",
+      "status": "SUPPORTED"
+    },
+    {
+      "id": "PROP-snapshot-0012-ARCHITECTURE",
+      "kind": "HISTORICAL_PROPERTY",
+      "status": "SUPPORTED"
+    },
+    {
+      "id": "PROP-snapshot-0012-DATA",
+      "kind": "HISTORICAL_PROPERTY",
+      "status": "SUPPORTED"
+    },
+    {
+      "id": "PROP-snapshot-0012-INTERFACES",
+      "kind": "HISTORICAL_PROPERTY",
+      "status": "SUPPORTED"
+    },
+    {
+      "id": "PROP-snapshot-0012-CONTRACTS",
+      "kind": "HISTORICAL_PROPERTY",
+      "status": "UNKNOWN"
+    },
+    {
+      "id": "PROP-snapshot-0012-SCHEDULER",
+      "kind": "HISTORICAL_PROPERTY",
+      "status": "SUPPORTED"
+    },
+    {
+      "id": "PROP-snapshot-0012-CONCURRENCY",
+      "kind": "HISTORICAL_PROPERTY",
+      "status": "SUPPORTED"
+    },
+    {
+      "id": "PROP-snapshot-0012-FAILURE",
+      "kind": "HISTORICAL_PROPERTY",
+      "status": "SUPPORTED"
+    },
+    {
+      "id": "PROP-snapshot-0012-SECURITY",
+      "kind": "HISTORICAL_PROPERTY",
+      "status": "SUPPORTED"
+    },
+    {
+      "id": "PROP-snapshot-0012-PROVENANCE",
+      "kind": "HISTORICAL_PROPERTY",
+      "status": "SUPPORTED"
+    },
+    {
+      "id": "PROP-snapshot-0012-OBSERVABILITY",
+      "kind": "HISTORICAL_PROPERTY",
+      "status": "SUPPORTED"
+    },
+    {
+      "id": "PROP-snapshot-0012-TESTING",
+      "kind": "HISTORICAL_PROPERTY",
+      "status": "SUPPORTED"
+    },
+    {
+      "id": "PROP-snapshot-0013-ALGORITHM",
+      "kind": "HISTORICAL_PROPERTY",
+      "status": "SUPPORTED"
+    },
+    {
+      "id": "PROP-snapshot-0013-ARCHITECTURE",
+      "kind": "HISTORICAL_PROPERTY",
+      "status": "SUPPORTED"
+    },
+    {
+      "id": "PROP-snapshot-0013-DATA",
+      "kind": "HISTORICAL_PROPERTY",
+      "status": "SUPPORTED"
+    },
+    {
+      "id": "PROP-snapshot-0013-INTERFACES",
+      "kind": "HISTORICAL_PROPERTY",
+      "status": "SUPPORTED"
+    },
+    {
+      "id": "PROP-snapshot-0013-CONTRACTS",
+      "kind": "HISTORICAL_PROPERTY",
+      "status": "UNKNOWN"
+    },
+    {
+      "id": "PROP-snapshot-0013-SCHEDULER",
+      "kind": "HISTORICAL_PROPERTY",
+      "status": "SUPPORTED"
+    },
+    {
+      "id": "PROP-snapshot-0013-CONCURRENCY",
+      "kind": "HISTORICAL_PROPERTY",
+      "status": "SUPPORTED"
+    },
+    {
+      "id": "PROP-snapshot-0013-FAILURE",
+      "kind": "HISTORICAL_PROPERTY",
+      "status": "SUPPORTED"
+    },
+    {
+      "id": "PROP-snapshot-0013-SECURITY",
+      "kind": "HISTORICAL_PROPERTY",
+      "status": "SUPPORTED"
+    },
+    {
+      "id": "PROP-snapshot-0013-PROVENANCE",
+      "kind": "HISTORICAL_PROPERTY",
+      "status": "SUPPORTED"
+    },
+    {
+      "id": "PROP-snapshot-0013-OBSERVABILITY",
+      "kind": "HISTORICAL_PROPERTY",
+      "status": "SUPPORTED"
+    },
+    {
+      "id": "PROP-snapshot-0013-TESTING",
+      "kind": "HISTORICAL_PROPERTY",
+      "status": "SUPPORTED"
+    },
+    {
+      "id": "PROP-snapshot-0014-ALGORITHM",
+      "kind": "HISTORICAL_PROPERTY",
+      "status": "SUPPORTED"
+    },
+    {
+      "id": "PROP-snapshot-0014-ARCHITECTURE",
+      "kind": "HISTORICAL_PROPERTY",
+      "status": "SUPPORTED"
+    },
+    {
+      "id": "PROP-snapshot-0014-DATA",
+      "kind": "HISTORICAL_PROPERTY",
+      "status": "SUPPORTED"
+    },
+    {
+      "id": "PROP-snapshot-0014-INTERFACES",
+      "kind": "HISTORICAL_PROPERTY",
+      "status": "SUPPORTED"
+    },
+    {
+      "id": "PROP-snapshot-0014-CONTRACTS",
+      "kind": "HISTORICAL_PROPERTY",
+      "status": "UNKNOWN"
+    },
+    {
+      "id": "PROP-snapshot-0014-SCHEDULER",
+      "kind": "HISTORICAL_PROPERTY",
+      "status": "SUPPORTED"
+    },
+    {
+      "id": "PROP-snapshot-0014-CONCURRENCY",
+      "kind": "HISTORICAL_PROPERTY",
+      "status": "SUPPORTED"
+    },
+    {
+      "id": "PROP-snapshot-0014-FAILURE",
+      "kind": "HISTORICAL_PROPERTY",
+      "status": "SUPPORTED"
+    },
+    {
+      "id": "PROP-snapshot-0014-SECURITY",
+      "kind": "HISTORICAL_PROPERTY",
+      "status": "SUPPORTED"
+    },
+    {
+      "id": "PROP-snapshot-0014-PROVENANCE",
+      "kind": "HISTORICAL_PROPERTY",
+      "status": "SUPPORTED"
+    },
+    {
+      "id": "PROP-snapshot-0014-OBSERVABILITY",
+      "kind": "HISTORICAL_PROPERTY",
+      "status": "SUPPORTED"
+    },
+    {
+      "id": "PROP-snapshot-0014-TESTING",
+      "kind": "HISTORICAL_PROPERTY",
+      "status": "SUPPORTED"
+    },
+    {
+      "id": "PROP-CANDIDATE-IDENTITY",
+      "kind": "HISTORICAL_PROPERTY",
+      "status": "SUPPORTED"
+    },
+    {
+      "id": "PROP-CANDIDATE-EQUIVALENCE",
+      "kind": "HISTORICAL_PROPERTY",
+      "status": "UNKNOWN"
+    },
+    {
+      "id": "PROP-DEDUP-SCOPES",
+      "kind": "HISTORICAL_PROPERTY",
+      "status": "SUPPORTED"
+    },
+    {
+      "id": "PROP-CANDIDATE-ORIGIN",
+      "kind": "HISTORICAL_PROPERTY",
+      "status": "SUPPORTED"
+    },
+    {
+      "id": "PROP-CANDIDATE-PARENT",
+      "kind": "HISTORICAL_PROPERTY",
+      "status": "SUPPORTED"
+    },
+    {
+      "id": "PROP-CANDIDATE-STATE",
+      "kind": "HISTORICAL_PROPERTY",
+      "status": "SUPPORTED"
+    },
+    {
+      "id": "PROP-CANDIDATE-PRIORITY",
+      "kind": "HISTORICAL_PROPERTY",
+      "status": "INFERRED"
+    },
+    {
+      "id": "PROP-CANDIDATE-ATTEMPTS",
+      "kind": "HISTORICAL_PROPERTY",
+      "status": "SUPPORTED"
+    },
+    {
+      "id": "PROP-CANDIDATE-TIMESTAMPS",
+      "kind": "HISTORICAL_PROPERTY",
+      "status": "SUPPORTED"
+    },
+    {
+      "id": "PROP-CLAIM-EXCLUSIVITY",
+      "kind": "HISTORICAL_PROPERTY",
+      "status": "SUPPORTED"
+    },
+    {
+      "id": "PROP-TERMINAL-OWNERSHIP",
+      "kind": "HISTORICAL_PROPERTY",
+      "status": "SUPPORTED"
+    },
+    {
+      "id": "PROP-ACQ-BEFORE-INTERP",
+      "kind": "HISTORICAL_PROPERTY",
+      "status": "SUPPORTED"
+    },
+    {
+      "id": "PROP-ACQ-OUTCOME",
+      "kind": "HISTORICAL_PROPERTY",
+      "status": "SUPPORTED"
+    },
+    {
+      "id": "PROP-ACQ-METADATA",
+      "kind": "HISTORICAL_PROPERTY",
+      "status": "SUPPORTED"
+    },
+    {
+      "id": "PROP-ACQ-TIMEOUT",
+      "kind": "HISTORICAL_PROPERTY",
+      "status": "SUPPORTED"
+    },
+    {
+      "id": "PROP-ACQ-SCOPE",
+      "kind": "HISTORICAL_PROPERTY",
+      "status": "SUPPORTED"
+    },
+    {
+      "id": "PROP-CANCELLATION",
+      "kind": "HISTORICAL_PROPERTY",
+      "status": "SUPPORTED"
+    },
+    {
+      "id": "PROP-OBS-DISTINCT",
+      "kind": "HISTORICAL_PROPERTY",
+      "status": "SUPPORTED"
+    },
+    {
+      "id": "PROP-OBS-SOURCE",
+      "kind": "HISTORICAL_PROPERTY",
+      "status": "SUPPORTED"
+    },
+    {
+      "id": "PROP-OBS-OUTCOMES",
+      "kind": "HISTORICAL_PROPERTY",
+      "status": "SUPPORTED"
+    },
+    {
+      "id": "PROP-RECOGNITION-DISTINCT",
+      "kind": "HISTORICAL_PROPERTY",
+      "status": "SUPPORTED"
+    },
+    {
+      "id": "PROP-RECOGNITION-OUTCOMES",
+      "kind": "HISTORICAL_PROPERTY",
+      "status": "SUPPORTED"
+    },
+    {
+      "id": "PROP-PROVIDER-CONTRACT",
+      "kind": "HISTORICAL_PROPERTY",
+      "status": "SUPPORTED"
+    },
+    {
+      "id": "PROP-PROVIDER-FAILURE",
+      "kind": "HISTORICAL_PROPERTY",
+      "status": "SUPPORTED"
+    },
+    {
+      "id": "PROP-PROVIDER-ORDER",
+      "kind": "HISTORICAL_PROPERTY",
+      "status": "UNKNOWN"
+    },
+    {
+      "id": "PROP-DISCOVERY-RECORD",
+      "kind": "HISTORICAL_PROPERTY",
+      "status": "SUPPORTED"
+    },
+    {
+      "id": "PROP-EXPANSION-RECURSIVE",
+      "kind": "HISTORICAL_PROPERTY",
+      "status": "SUPPORTED"
+    },
+    {
+      "id": "PROP-EXPANSION-VS-RETRY",
+      "kind": "HISTORICAL_PROPERTY",
+      "status": "SUPPORTED"
+    },
+    {
+      "id": "PROP-CANDIDATE-ADMISSION",
+      "kind": "HISTORICAL_PROPERTY",
+      "status": "SUPPORTED"
+    },
+    {
+      "id": "PROP-KNOWLEDGE",
+      "kind": "HISTORICAL_PROPERTY",
+      "status": "SUPPORTED"
+    },
+    {
+      "id": "PROP-BOUNDED-CONCURRENCY",
+      "kind": "HISTORICAL_PROPERTY",
+      "status": "SUPPORTED"
+    },
+    {
+      "id": "PROP-SCHEDULER-TERMINATION",
+      "kind": "HISTORICAL_PROPERTY",
+      "status": "SUPPORTED"
+    },
+    {
+      "id": "PROP-WORKER-FAILURE",
+      "kind": "HISTORICAL_PROPERTY",
+      "status": "SUPPORTED"
+    },
+    {
+      "id": "PROP-RETRY",
+      "kind": "HISTORICAL_PROPERTY",
+      "status": "SUPPORTED"
+    },
+    {
+      "id": "PROP-PROVENANCE",
+      "kind": "HISTORICAL_PROPERTY",
+      "status": "SUPPORTED"
+    },
+    {
+      "id": "PROP-PROVENANCE-INTEGRITY",
+      "kind": "HISTORICAL_PROPERTY",
+      "status": "SUPPORTED"
+    },
+    {
+      "id": "PROP-REMOTE-DATA",
+      "kind": "HISTORICAL_PROPERTY",
+      "status": "SUPPORTED"
+    },
+    {
+      "id": "PROP-AUTHORITY",
+      "kind": "HISTORICAL_PROPERTY",
+      "status": "SUPPORTED"
+    },
+    {
+      "id": "PROP-PARSER",
+      "kind": "HISTORICAL_PROPERTY",
+      "status": "SUPPORTED"
+    },
+    {
+      "id": "PROP-RESOURCE",
+      "kind": "HISTORICAL_PROPERTY",
+      "status": "SUPPORTED"
+    },
+    {
+      "id": "PROP-UNBOUNDED",
+      "kind": "HISTORICAL_PROPERTY",
+      "status": "SUPPORTED"
+    },
+    {
+      "id": "PROP-LIFECYCLE-OBS",
+      "kind": "HISTORICAL_PROPERTY",
+      "status": "SUPPORTED"
+    },
+    {
+      "id": "PROP-AUDIT",
+      "kind": "HISTORICAL_PROPERTY",
+      "status": "SUPPORTED"
+    },
+    {
+      "id": "PROP-SILENT-FAILURE",
+      "kind": "HISTORICAL_PROPERTY",
+      "status": "SUPPORTED"
+    },
+    {
+      "id": "PROP-PERSIST-COMPAT",
+      "kind": "HISTORICAL_PROPERTY",
+      "status": "SUPPORTED"
+    },
+    {
+      "id": "PROP-PERSIST-CORRUPTION",
+      "kind": "HISTORICAL_PROPERTY",
+      "status": "SUPPORTED"
+    },
+    {
+      "id": "PROP-EXPORT",
+      "kind": "HISTORICAL_PROPERTY",
+      "status": "SUPPORTED"
+    },
+    {
+      "id": "PROP-UI",
+      "kind": "HISTORICAL_PROPERTY",
+      "status": "SUPPORTED"
+    },
+    {
+      "id": "PROP-PRIVATE-SHAPE",
+      "kind": "HISTORICAL_PROPERTY",
+      "status": "INFERRED"
+    },
+    {
+      "id": "PROP-CONTRACT-INPUT",
+      "kind": "HISTORICAL_PROPERTY",
+      "status": "PROVED"
+    },
+    {
+      "id": "PROP-ERROR-CONTRACT",
+      "kind": "HISTORICAL_PROPERTY",
+      "status": "SUPPORTED"
+    },
+    {
+      "id": "PROP-REGRESSION",
+      "kind": "HISTORICAL_PROPERTY",
+      "status": "SUPPORTED"
+    },
+    {
+      "id": "PROP-PARSE-DEFECT",
+      "kind": "HISTORICAL_PROPERTY",
+      "status": "PROVED"
+    },
+    {
+      "id": "PROP-WEB-GENERALIZE",
+      "kind": "HISTORICAL_PROPERTY",
+      "status": "SUPPORTED"
+    }
+  ],
+  "edges": [
+    {
+      "from": "NE-V9-STATES",
+      "to": "PROP-snapshot-0001-ALGORITHM",
+      "relation": "SUPPORTS_PROPERTY"
+    },
+    {
+      "from": "NE-V9-STATES",
+      "to": "PROP-snapshot-0001-ARCHITECTURE",
+      "relation": "SUPPORTS_PROPERTY"
+    },
+    {
+      "from": "NE-V9-STATES",
+      "to": "PROP-snapshot-0001-DATA",
+      "relation": "SUPPORTS_PROPERTY"
+    },
+    {
+      "from": "NE-V9-STATES",
+      "to": "PROP-snapshot-0001-INTERFACES",
+      "relation": "SUPPORTS_PROPERTY"
+    },
+    {
+      "from": "NE-V9-STATES",
+      "to": "PROP-snapshot-0001-CONTRACTS",
+      "relation": "SUPPORTS_PROPERTY"
+    },
+    {
+      "from": "NE-V9-STATES",
+      "to": "PROP-snapshot-0001-SCHEDULER",
+      "relation": "SUPPORTS_PROPERTY"
+    },
+    {
+      "from": "NE-V9-STATES",
+      "to": "PROP-snapshot-0001-CONCURRENCY",
+      "relation": "SUPPORTS_PROPERTY"
+    },
+    {
+      "from": "NE-V9-STATES",
+      "to": "PROP-snapshot-0001-FAILURE",
+      "relation": "SUPPORTS_PROPERTY"
+    },
+    {
+      "from": "NE-V9-STATES",
+      "to": "PROP-snapshot-0001-SECURITY",
+      "relation": "SUPPORTS_PROPERTY"
+    },
+    {
+      "from": "NE-V9-STATES",
+      "to": "PROP-snapshot-0001-PROVENANCE",
+      "relation": "SUPPORTS_PROPERTY"
+    },
+    {
+      "from": "NE-V9-STATES",
+      "to": "PROP-snapshot-0001-OBSERVABILITY",
+      "relation": "SUPPORTS_PROPERTY"
+    },
+    {
+      "from": "NE-V9-STATES",
+      "to": "PROP-snapshot-0001-TESTING",
+      "relation": "SUPPORTS_PROPERTY"
+    },
+    {
+      "from": "NE-V9-STATES",
+      "to": "PROP-snapshot-0003-ALGORITHM",
+      "relation": "SUPPORTS_PROPERTY"
+    },
+    {
+      "from": "NE-V9-STATES",
+      "to": "PROP-snapshot-0003-ARCHITECTURE",
+      "relation": "SUPPORTS_PROPERTY"
+    },
+    {
+      "from": "NE-V9-STATES",
+      "to": "PROP-snapshot-0003-DATA",
+      "relation": "SUPPORTS_PROPERTY"
+    },
+    {
+      "from": "NE-V9-STATES",
+      "to": "PROP-snapshot-0003-INTERFACES",
+      "relation": "SUPPORTS_PROPERTY"
+    },
+    {
+      "from": "NE-V9-STATES",
+      "to": "PROP-snapshot-0003-CONTRACTS",
+      "relation": "SUPPORTS_PROPERTY"
+    },
+    {
+      "from": "NE-V9-STATES",
+      "to": "PROP-snapshot-0003-SCHEDULER",
+      "relation": "SUPPORTS_PROPERTY"
+    },
+    {
+      "from": "NE-V9-STATES",
+      "to": "PROP-snapshot-0003-CONCURRENCY",
+      "relation": "SUPPORTS_PROPERTY"
+    },
+    {
+      "from": "NE-V9-STATES",
+      "to": "PROP-snapshot-0003-FAILURE",
+      "relation": "SUPPORTS_PROPERTY"
+    },
+    {
+      "from": "NE-V9-STATES",
+      "to": "PROP-snapshot-0003-SECURITY",
+      "relation": "SUPPORTS_PROPERTY"
+    },
+    {
+      "from": "NE-V9-STATES",
+      "to": "PROP-snapshot-0003-PROVENANCE",
+      "relation": "SUPPORTS_PROPERTY"
+    },
+    {
+      "from": "NE-V9-STATES",
+      "to": "PROP-snapshot-0003-OBSERVABILITY",
+      "relation": "SUPPORTS_PROPERTY"
+    },
+    {
+      "from": "NE-V9-STATES",
+      "to": "PROP-snapshot-0003-TESTING",
+      "relation": "SUPPORTS_PROPERTY"
+    },
+    {
+      "from": "NE-V9-STATES",
+      "to": "PROP-snapshot-0005-ALGORITHM",
+      "relation": "SUPPORTS_PROPERTY"
+    },
+    {
+      "from": "NE-V9-STATES",
+      "to": "PROP-snapshot-0005-ARCHITECTURE",
+      "relation": "SUPPORTS_PROPERTY"
+    },
+    {
+      "from": "NE-V9-STATES",
+      "to": "PROP-snapshot-0005-DATA",
+      "relation": "SUPPORTS_PROPERTY"
+    },
+    {
+      "from": "NE-V9-STATES",
+      "to": "PROP-snapshot-0005-INTERFACES",
+      "relation": "SUPPORTS_PROPERTY"
+    },
+    {
+      "from": "NE-V9-STATES",
+      "to": "PROP-snapshot-0005-CONTRACTS",
+      "relation": "SUPPORTS_PROPERTY"
+    },
+    {
+      "from": "NE-V9-STATES",
+      "to": "PROP-snapshot-0005-SCHEDULER",
+      "relation": "SUPPORTS_PROPERTY"
+    },
+    {
+      "from": "NE-V9-STATES",
+      "to": "PROP-snapshot-0005-CONCURRENCY",
+      "relation": "SUPPORTS_PROPERTY"
+    },
+    {
+      "from": "NE-V9-STATES",
+      "to": "PROP-snapshot-0005-FAILURE",
+      "relation": "SUPPORTS_PROPERTY"
+    },
+    {
+      "from": "NE-V9-STATES",
+      "to": "PROP-snapshot-0005-SECURITY",
+      "relation": "SUPPORTS_PROPERTY"
+    },
+    {
+      "from": "NE-V9-STATES",
+      "to": "PROP-snapshot-0005-PROVENANCE",
+      "relation": "SUPPORTS_PROPERTY"
+    },
+    {
+      "from": "NE-V9-STATES",
+      "to": "PROP-snapshot-0005-OBSERVABILITY",
+      "relation": "SUPPORTS_PROPERTY"
+    },
+    {
+      "from": "NE-V9-STATES",
+      "to": "PROP-snapshot-0005-TESTING",
+      "relation": "SUPPORTS_PROPERTY"
+    },
+    {
+      "from": "NE-V9-STATES",
+      "to": "PROP-snapshot-0006-ALGORITHM",
+      "relation": "SUPPORTS_PROPERTY"
+    },
+    {
+      "from": "NE-V9-STATES",
+      "to": "PROP-snapshot-0006-ARCHITECTURE",
+      "relation": "SUPPORTS_PROPERTY"
+    },
+    {
+      "from": "NE-V9-STATES",
+      "to": "PROP-snapshot-0006-DATA",
+      "relation": "SUPPORTS_PROPERTY"
+    },
+    {
+      "from": "NE-V9-STATES",
+      "to": "PROP-snapshot-0006-INTERFACES",
+      "relation": "SUPPORTS_PROPERTY"
+    },
+    {
+      "from": "NE-V9-STATES",
+      "to": "PROP-snapshot-0006-CONTRACTS",
+      "relation": "SUPPORTS_PROPERTY"
+    },
+    {
+      "from": "NE-V9-STATES",
+      "to": "PROP-snapshot-0006-SCHEDULER",
+      "relation": "SUPPORTS_PROPERTY"
+    },
+    {
+      "from": "NE-V9-STATES",
+      "to": "PROP-snapshot-0006-CONCURRENCY",
+      "relation": "SUPPORTS_PROPERTY"
+    },
+    {
+      "from": "NE-V9-STATES",
+      "to": "PROP-snapshot-0006-FAILURE",
+      "relation": "SUPPORTS_PROPERTY"
+    },
+    {
+      "from": "NE-V9-STATES",
+      "to": "PROP-snapshot-0006-SECURITY",
+      "relation": "SUPPORTS_PROPERTY"
+    },
+    {
+      "from": "NE-V9-STATES",
+      "to": "PROP-snapshot-0006-PROVENANCE",
+      "relation": "SUPPORTS_PROPERTY"
+    },
+    {
+      "from": "NE-V9-STATES",
+      "to": "PROP-snapshot-0006-OBSERVABILITY",
+      "relation": "SUPPORTS_PROPERTY"
+    },
+    {
+      "from": "NE-V9-STATES",
+      "to": "PROP-snapshot-0006-TESTING",
+      "relation": "SUPPORTS_PROPERTY"
+    },
+    {
+      "from": "NE-V9-STATES",
+      "to": "PROP-snapshot-0008-ALGORITHM",
+      "relation": "SUPPORTS_PROPERTY"
+    },
+    {
+      "from": "NE-V9-STATES",
+      "to": "PROP-snapshot-0008-ARCHITECTURE",
+      "relation": "SUPPORTS_PROPERTY"
+    },
+    {
+      "from": "NE-V9-STATES",
+      "to": "PROP-snapshot-0008-DATA",
+      "relation": "SUPPORTS_PROPERTY"
+    },
+    {
+      "from": "NE-V9-STATES",
+      "to": "PROP-snapshot-0008-INTERFACES",
+      "relation": "SUPPORTS_PROPERTY"
+    },
+    {
+      "from": "NE-V9-STATES",
+      "to": "PROP-snapshot-0008-CONTRACTS",
+      "relation": "SUPPORTS_PROPERTY"
+    },
+    {
+      "from": "NE-V9-STATES",
+      "to": "PROP-snapshot-0008-SCHEDULER",
+      "relation": "SUPPORTS_PROPERTY"
+    },
+    {
+      "from": "NE-V9-STATES",
+      "to": "PROP-snapshot-0008-CONCURRENCY",
+      "relation": "SUPPORTS_PROPERTY"
+    },
+    {
+      "from": "NE-V9-STATES",
+      "to": "PROP-snapshot-0008-FAILURE",
+      "relation": "SUPPORTS_PROPERTY"
+    },
+    {
+      "from": "NE-V9-STATES",
+      "to": "PROP-snapshot-0008-SECURITY",
+      "relation": "SUPPORTS_PROPERTY"
+    },
+    {
+      "from": "NE-V9-STATES",
+      "to": "PROP-snapshot-0008-PROVENANCE",
+      "relation": "SUPPORTS_PROPERTY"
+    },
+    {
+      "from": "NE-V9-STATES",
+      "to": "PROP-snapshot-0008-OBSERVABILITY",
+      "relation": "SUPPORTS_PROPERTY"
+    },
+    {
+      "from": "NE-V9-STATES",
+      "to": "PROP-snapshot-0008-TESTING",
+      "relation": "SUPPORTS_PROPERTY"
+    },
+    {
+      "from": "NE-V9-STATES",
+      "to": "PROP-snapshot-0007-ALGORITHM",
+      "relation": "SUPPORTS_PROPERTY"
+    },
+    {
+      "from": "NE-V9-STATES",
+      "to": "PROP-snapshot-0007-ARCHITECTURE",
+      "relation": "SUPPORTS_PROPERTY"
+    },
+    {
+      "from": "NE-V9-STATES",
+      "to": "PROP-snapshot-0007-DATA",
+      "relation": "SUPPORTS_PROPERTY"
+    },
+    {
+      "from": "NE-V9-STATES",
+      "to": "PROP-snapshot-0007-INTERFACES",
+      "relation": "SUPPORTS_PROPERTY"
+    },
+    {
+      "from": "NE-V9-STATES",
+      "to": "PROP-snapshot-0007-CONTRACTS",
+      "relation": "SUPPORTS_PROPERTY"
+    },
+    {
+      "from": "NE-V9-STATES",
+      "to": "PROP-snapshot-0007-SCHEDULER",
+      "relation": "SUPPORTS_PROPERTY"
+    },
+    {
+      "from": "NE-V9-STATES",
+      "to": "PROP-snapshot-0007-CONCURRENCY",
+      "relation": "SUPPORTS_PROPERTY"
+    },
+    {
+      "from": "NE-V9-STATES",
+      "to": "PROP-snapshot-0007-FAILURE",
+      "relation": "SUPPORTS_PROPERTY"
+    },
+    {
+      "from": "NE-V9-STATES",
+      "to": "PROP-snapshot-0007-SECURITY",
+      "relation": "SUPPORTS_PROPERTY"
+    },
+    {
+      "from": "NE-V9-STATES",
+      "to": "PROP-snapshot-0007-PROVENANCE",
+      "relation": "SUPPORTS_PROPERTY"
+    },
+    {
+      "from": "NE-V9-STATES",
+      "to": "PROP-snapshot-0007-OBSERVABILITY",
+      "relation": "SUPPORTS_PROPERTY"
+    },
+    {
+      "from": "NE-V9-STATES",
+      "to": "PROP-snapshot-0007-TESTING",
+      "relation": "SUPPORTS_PROPERTY"
+    },
+    {
+      "from": "NE-V9-STATES",
+      "to": "PROP-snapshot-0009-ALGORITHM",
+      "relation": "SUPPORTS_PROPERTY"
+    },
+    {
+      "from": "NE-V9-STATES",
+      "to": "PROP-snapshot-0009-ARCHITECTURE",
+      "relation": "SUPPORTS_PROPERTY"
+    },
+    {
+      "from": "NE-V9-STATES",
+      "to": "PROP-snapshot-0009-DATA",
+      "relation": "SUPPORTS_PROPERTY"
+    },
+    {
+      "from": "NE-V9-STATES",
+      "to": "PROP-snapshot-0009-INTERFACES",
+      "relation": "SUPPORTS_PROPERTY"
+    },
+    {
+      "from": "NE-V9-STATES",
+      "to": "PROP-snapshot-0009-CONTRACTS",
+      "relation": "SUPPORTS_PROPERTY"
+    },
+    {
+      "from": "NE-V9-STATES",
+      "to": "PROP-snapshot-0009-SCHEDULER",
+      "relation": "SUPPORTS_PROPERTY"
+    },
+    {
+      "from": "NE-V9-STATES",
+      "to": "PROP-snapshot-0009-CONCURRENCY",
+      "relation": "SUPPORTS_PROPERTY"
+    },
+    {
+      "from": "NE-V9-STATES",
+      "to": "PROP-snapshot-0009-FAILURE",
+      "relation": "SUPPORTS_PROPERTY"
+    },
+    {
+      "from": "NE-V9-STATES",
+      "to": "PROP-snapshot-0009-SECURITY",
+      "relation": "SUPPORTS_PROPERTY"
+    },
+    {
+      "from": "NE-V9-STATES",
+      "to": "PROP-snapshot-0009-PROVENANCE",
+      "relation": "SUPPORTS_PROPERTY"
+    },
+    {
+      "from": "NE-V9-STATES",
+      "to": "PROP-snapshot-0009-OBSERVABILITY",
+      "relation": "SUPPORTS_PROPERTY"
+    },
+    {
+      "from": "NE-V9-STATES",
+      "to": "PROP-snapshot-0009-TESTING",
+      "relation": "SUPPORTS_PROPERTY"
+    },
+    {
+      "from": "NE-V9-STATES",
+      "to": "PROP-snapshot-0011-ALGORITHM",
+      "relation": "SUPPORTS_PROPERTY"
+    },
+    {
+      "from": "NE-V9-STATES",
+      "to": "PROP-snapshot-0011-ARCHITECTURE",
+      "relation": "SUPPORTS_PROPERTY"
+    },
+    {
+      "from": "NE-V9-STATES",
+      "to": "PROP-snapshot-0011-DATA",
+      "relation": "SUPPORTS_PROPERTY"
+    },
+    {
+      "from": "NE-V9-STATES",
+      "to": "PROP-snapshot-0011-INTERFACES",
+      "relation": "SUPPORTS_PROPERTY"
+    },
+    {
+      "from": "NE-V9-STATES",
+      "to": "PROP-snapshot-0011-CONTRACTS",
+      "relation": "SUPPORTS_PROPERTY"
+    },
+    {
+      "from": "NE-V9-STATES",
+      "to": "PROP-snapshot-0011-SCHEDULER",
+      "relation": "SUPPORTS_PROPERTY"
+    },
+    {
+      "from": "NE-V9-STATES",
+      "to": "PROP-snapshot-0011-CONCURRENCY",
+      "relation": "SUPPORTS_PROPERTY"
+    },
+    {
+      "from": "NE-V9-STATES",
+      "to": "PROP-snapshot-0011-FAILURE",
+      "relation": "SUPPORTS_PROPERTY"
+    },
+    {
+      "from": "NE-V9-STATES",
+      "to": "PROP-snapshot-0011-SECURITY",
+      "relation": "SUPPORTS_PROPERTY"
+    },
+    {
+      "from": "NE-V9-STATES",
+      "to": "PROP-snapshot-0011-PROVENANCE",
+      "relation": "SUPPORTS_PROPERTY"
+    },
+    {
+      "from": "NE-V9-STATES",
+      "to": "PROP-snapshot-0011-OBSERVABILITY",
+      "relation": "SUPPORTS_PROPERTY"
+    },
+    {
+      "from": "NE-V9-STATES",
+      "to": "PROP-snapshot-0011-TESTING",
+      "relation": "SUPPORTS_PROPERTY"
+    },
+    {
+      "from": "NE-V9-STATES",
+      "to": "PROP-snapshot-0010-ALGORITHM",
+      "relation": "SUPPORTS_PROPERTY"
+    },
+    {
+      "from": "NE-V9-STATES",
+      "to": "PROP-snapshot-0010-ARCHITECTURE",
+      "relation": "SUPPORTS_PROPERTY"
+    },
+    {
+      "from": "NE-V9-STATES",
+      "to": "PROP-snapshot-0010-DATA",
+      "relation": "SUPPORTS_PROPERTY"
+    },
+    {
+      "from": "NE-V9-STATES",
+      "to": "PROP-snapshot-0010-INTERFACES",
+      "relation": "SUPPORTS_PROPERTY"
+    },
+    {
+      "from": "NE-V9-STATES",
+      "to": "PROP-snapshot-0010-CONTRACTS",
+      "relation": "SUPPORTS_PROPERTY"
+    },
+    {
+      "from": "NE-V9-STATES",
+      "to": "PROP-snapshot-0010-SCHEDULER",
+      "relation": "SUPPORTS_PROPERTY"
+    },
+    {
+      "from": "NE-V9-STATES",
+      "to": "PROP-snapshot-0010-CONCURRENCY",
+      "relation": "SUPPORTS_PROPERTY"
+    },
+    {
+      "from": "NE-V9-STATES",
+      "to": "PROP-snapshot-0010-FAILURE",
+      "relation": "SUPPORTS_PROPERTY"
+    },
+    {
+      "from": "NE-V9-STATES",
+      "to": "PROP-snapshot-0010-SECURITY",
+      "relation": "SUPPORTS_PROPERTY"
+    },
+    {
+      "from": "NE-V9-STATES",
+      "to": "PROP-snapshot-0010-PROVENANCE",
+      "relation": "SUPPORTS_PROPERTY"
+    },
+    {
+      "from": "NE-V9-STATES",
+      "to": "PROP-snapshot-0010-OBSERVABILITY",
+      "relation": "SUPPORTS_PROPERTY"
+    },
+    {
+      "from": "NE-V9-STATES",
+      "to": "PROP-snapshot-0010-TESTING",
+      "relation": "SUPPORTS_PROPERTY"
+    },
+    {
+      "from": "NE-V9-STATES",
+      "to": "PROP-snapshot-0012-ALGORITHM",
+      "relation": "SUPPORTS_PROPERTY"
+    },
+    {
+      "from": "NE-V9-STATES",
+      "to": "PROP-snapshot-0012-ARCHITECTURE",
+      "relation": "SUPPORTS_PROPERTY"
+    },
+    {
+      "from": "NE-V9-STATES",
+      "to": "PROP-snapshot-0012-DATA",
+      "relation": "SUPPORTS_PROPERTY"
+    },
+    {
+      "from": "NE-V9-STATES",
+      "to": "PROP-snapshot-0012-INTERFACES",
+      "relation": "SUPPORTS_PROPERTY"
+    },
+    {
+      "from": "NE-V9-STATES",
+      "to": "PROP-snapshot-0012-CONTRACTS",
+      "relation": "SUPPORTS_PROPERTY"
+    },
+    {
+      "from": "NE-V9-STATES",
+      "to": "PROP-snapshot-0012-SCHEDULER",
+      "relation": "SUPPORTS_PROPERTY"
+    },
+    {
+      "from": "NE-V9-STATES",
+      "to": "PROP-snapshot-0012-CONCURRENCY",
+      "relation": "SUPPORTS_PROPERTY"
+    },
+    {
+      "from": "NE-V9-STATES",
+      "to": "PROP-snapshot-0012-FAILURE",
+      "relation": "SUPPORTS_PROPERTY"
+    },
+    {
+      "from": "NE-V9-STATES",
+      "to": "PROP-snapshot-0012-SECURITY",
+      "relation": "SUPPORTS_PROPERTY"
+    },
+    {
+      "from": "NE-V9-STATES",
+      "to": "PROP-snapshot-0012-PROVENANCE",
+      "relation": "SUPPORTS_PROPERTY"
+    },
+    {
+      "from": "NE-V9-STATES",
+      "to": "PROP-snapshot-0012-OBSERVABILITY",
+      "relation": "SUPPORTS_PROPERTY"
+    },
+    {
+      "from": "NE-V9-STATES",
+      "to": "PROP-snapshot-0012-TESTING",
+      "relation": "SUPPORTS_PROPERTY"
+    },
+    {
+      "from": "NE-V9-STATES",
+      "to": "PROP-snapshot-0013-ALGORITHM",
+      "relation": "SUPPORTS_PROPERTY"
+    },
+    {
+      "from": "NE-V9-STATES",
+      "to": "PROP-snapshot-0013-ARCHITECTURE",
+      "relation": "SUPPORTS_PROPERTY"
+    },
+    {
+      "from": "NE-V9-STATES",
+      "to": "PROP-snapshot-0013-DATA",
+      "relation": "SUPPORTS_PROPERTY"
+    },
+    {
+      "from": "NE-V9-STATES",
+      "to": "PROP-snapshot-0013-INTERFACES",
+      "relation": "SUPPORTS_PROPERTY"
+    },
+    {
+      "from": "NE-V9-STATES",
+      "to": "PROP-snapshot-0013-CONTRACTS",
+      "relation": "SUPPORTS_PROPERTY"
+    },
+    {
+      "from": "NE-V9-STATES",
+      "to": "PROP-snapshot-0013-SCHEDULER",
+      "relation": "SUPPORTS_PROPERTY"
+    },
+    {
+      "from": "NE-V9-STATES",
+      "to": "PROP-snapshot-0013-CONCURRENCY",
+      "relation": "SUPPORTS_PROPERTY"
+    },
+    {
+      "from": "NE-V9-STATES",
+      "to": "PROP-snapshot-0013-FAILURE",
+      "relation": "SUPPORTS_PROPERTY"
+    },
+    {
+      "from": "NE-V9-STATES",
+      "to": "PROP-snapshot-0013-SECURITY",
+      "relation": "SUPPORTS_PROPERTY"
+    },
+    {
+      "from": "NE-V9-STATES",
+      "to": "PROP-snapshot-0013-PROVENANCE",
+      "relation": "SUPPORTS_PROPERTY"
+    },
+    {
+      "from": "NE-V9-STATES",
+      "to": "PROP-snapshot-0013-OBSERVABILITY",
+      "relation": "SUPPORTS_PROPERTY"
+    },
+    {
+      "from": "NE-V9-STATES",
+      "to": "PROP-snapshot-0013-TESTING",
+      "relation": "SUPPORTS_PROPERTY"
+    },
+    {
+      "from": "NE-V9-STATES",
+      "to": "PROP-snapshot-0014-ALGORITHM",
+      "relation": "SUPPORTS_PROPERTY"
+    },
+    {
+      "from": "NE-V9-STATES",
+      "to": "PROP-snapshot-0014-ARCHITECTURE",
+      "relation": "SUPPORTS_PROPERTY"
+    },
+    {
+      "from": "NE-V9-STATES",
+      "to": "PROP-snapshot-0014-DATA",
+      "relation": "SUPPORTS_PROPERTY"
+    },
+    {
+      "from": "NE-V9-STATES",
+      "to": "PROP-snapshot-0014-INTERFACES",
+      "relation": "SUPPORTS_PROPERTY"
+    },
+    {
+      "from": "NE-V9-STATES",
+      "to": "PROP-snapshot-0014-CONTRACTS",
+      "relation": "SUPPORTS_PROPERTY"
+    },
+    {
+      "from": "NE-V9-STATES",
+      "to": "PROP-snapshot-0014-SCHEDULER",
+      "relation": "SUPPORTS_PROPERTY"
+    },
+    {
+      "from": "NE-V9-STATES",
+      "to": "PROP-snapshot-0014-CONCURRENCY",
+      "relation": "SUPPORTS_PROPERTY"
+    },
+    {
+      "from": "NE-V9-STATES",
+      "to": "PROP-snapshot-0014-FAILURE",
+      "relation": "SUPPORTS_PROPERTY"
+    },
+    {
+      "from": "NE-V9-STATES",
+      "to": "PROP-snapshot-0014-SECURITY",
+      "relation": "SUPPORTS_PROPERTY"
+    },
+    {
+      "from": "NE-V9-STATES",
+      "to": "PROP-snapshot-0014-PROVENANCE",
+      "relation": "SUPPORTS_PROPERTY"
+    },
+    {
+      "from": "NE-V9-STATES",
+      "to": "PROP-snapshot-0014-OBSERVABILITY",
+      "relation": "SUPPORTS_PROPERTY"
+    },
+    {
+      "from": "NE-V9-STATES",
+      "to": "PROP-snapshot-0014-TESTING",
+      "relation": "SUPPORTS_PROPERTY"
+    },
+    {
+      "from": "NE-V9-CLAIMS",
+      "to": "PROP-CANDIDATE-IDENTITY",
+      "relation": "SUPPORTS_PROPERTY"
+    },
+    {
+      "from": "NE-V9-INVARIANTS",
+      "to": "PROP-CANDIDATE-IDENTITY",
+      "relation": "SUPPORTS_PROPERTY"
+    },
+    {
+      "from": "NE-V9-CLAIMS",
+      "to": "PROP-CANDIDATE-EQUIVALENCE",
+      "relation": "SUPPORTS_PROPERTY"
+    },
+    {
+      "from": "NE-V9-UNKNOWNS",
+      "to": "PROP-CANDIDATE-EQUIVALENCE",
+      "relation": "SUPPORTS_PROPERTY"
+    },
+    {
+      "from": "NE-V8-DUPLICATE",
+      "to": "PROP-DEDUP-SCOPES",
+      "relation": "SUPPORTS_PROPERTY"
+    },
+    {
+      "from": "NE-V9-CLAIMS",
+      "to": "PROP-DEDUP-SCOPES",
+      "relation": "SUPPORTS_PROPERTY"
+    },
+    {
+      "from": "NE-V8-PROVENANCE",
+      "to": "PROP-CANDIDATE-ORIGIN",
+      "relation": "SUPPORTS_PROPERTY"
+    },
+    {
+      "from": "NE-V8-PROVENANCE",
+      "to": "PROP-CANDIDATE-PARENT",
+      "relation": "SUPPORTS_PROPERTY"
+    },
+    {
+      "from": "NE-V9-CLAIMS",
+      "to": "PROP-CANDIDATE-PARENT",
+      "relation": "SUPPORTS_PROPERTY"
+    },
+    {
+      "from": "NE-V8-CLAIM",
+      "to": "PROP-CANDIDATE-STATE",
+      "relation": "SUPPORTS_PROPERTY"
+    },
+    {
+      "from": "NE-V8-RETRY",
+      "to": "PROP-CANDIDATE-STATE",
+      "relation": "SUPPORTS_PROPERTY"
+    },
+    {
+      "from": "NE-V9-CLAIMS",
+      "to": "PROP-CANDIDATE-STATE",
+      "relation": "SUPPORTS_PROPERTY"
+    },
+    {
+      "from": "NE-V3-DATA",
+      "to": "PROP-CANDIDATE-PRIORITY",
+      "relation": "SUPPORTS_PROPERTY"
+    },
+    {
+      "from": "NE-V8-RETRY",
+      "to": "PROP-CANDIDATE-ATTEMPTS",
+      "relation": "SUPPORTS_PROPERTY"
+    },
+    {
+      "from": "NE-V3-DATA",
+      "to": "PROP-CANDIDATE-TIMESTAMPS",
+      "relation": "SUPPORTS_PROPERTY"
+    },
+    {
+      "from": "NE-V8-OBSERVE",
+      "to": "PROP-CANDIDATE-TIMESTAMPS",
+      "relation": "SUPPORTS_PROPERTY"
+    },
+    {
+      "from": "NE-V8-CLAIM",
+      "to": "PROP-CLAIM-EXCLUSIVITY",
+      "relation": "SUPPORTS_PROPERTY"
+    },
+    {
+      "from": "NE-V9-CLAIMS",
+      "to": "PROP-CLAIM-EXCLUSIVITY",
+      "relation": "SUPPORTS_PROPERTY"
+    },
+    {
+      "from": "NE-V8-CLAIM",
+      "to": "PROP-TERMINAL-OWNERSHIP",
+      "relation": "SUPPORTS_PROPERTY"
+    },
+    {
+      "from": "NE-V9-CLAIMS",
+      "to": "PROP-ACQ-BEFORE-INTERP",
+      "relation": "SUPPORTS_PROPERTY"
+    },
+    {
+      "from": "NE-V9-INVARIANTS",
+      "to": "PROP-ACQ-BEFORE-INTERP",
+      "relation": "SUPPORTS_PROPERTY"
+    },
+    {
+      "from": "NE-V8-FAILURE-MATRIX",
+      "to": "PROP-ACQ-OUTCOME",
+      "relation": "SUPPORTS_PROPERTY"
+    },
+    {
+      "from": "NE-V9-INVARIANTS",
+      "to": "PROP-ACQ-OUTCOME",
+      "relation": "SUPPORTS_PROPERTY"
+    },
+    {
+      "from": "NE-V3-DATA",
+      "to": "PROP-ACQ-METADATA",
+      "relation": "SUPPORTS_PROPERTY"
+    },
+    {
+      "from": "NE-V8-PROVENANCE",
+      "to": "PROP-ACQ-METADATA",
+      "relation": "SUPPORTS_PROPERTY"
+    },
+    {
+      "from": "NE-V8-BOUNDS",
+      "to": "PROP-ACQ-TIMEOUT",
+      "relation": "SUPPORTS_PROPERTY"
+    },
+    {
+      "from": "NE-V9-CLAIMS",
+      "to": "PROP-ACQ-TIMEOUT",
+      "relation": "SUPPORTS_PROPERTY"
+    },
+    {
+      "from": "NE-V8-BOUNDARIES",
+      "to": "PROP-ACQ-SCOPE",
+      "relation": "SUPPORTS_PROPERTY"
+    },
+    {
+      "from": "NE-V9-INVARIANTS",
+      "to": "PROP-ACQ-SCOPE",
+      "relation": "SUPPORTS_PROPERTY"
+    },
+    {
+      "from": "NE-V8-CANCEL",
+      "to": "PROP-CANCELLATION",
+      "relation": "SUPPORTS_PROPERTY"
+    },
+    {
+      "from": "NE-V9-CLAIMS",
+      "to": "PROP-OBS-DISTINCT",
+      "relation": "SUPPORTS_PROPERTY"
+    },
+    {
+      "from": "NE-V9-INVARIANTS",
+      "to": "PROP-OBS-DISTINCT",
+      "relation": "SUPPORTS_PROPERTY"
+    },
+    {
+      "from": "NE-V8-PROVENANCE",
+      "to": "PROP-OBS-SOURCE",
+      "relation": "SUPPORTS_PROPERTY"
+    },
+    {
+      "from": "NE-V9-INVARIANTS",
+      "to": "PROP-OBS-SOURCE",
+      "relation": "SUPPORTS_PROPERTY"
+    },
+    {
+      "from": "NE-V3-DATA",
+      "to": "PROP-OBS-OUTCOMES",
+      "relation": "SUPPORTS_PROPERTY"
+    },
+    {
+      "from": "NE-V8-FAILURE-MATRIX",
+      "to": "PROP-OBS-OUTCOMES",
+      "relation": "SUPPORTS_PROPERTY"
+    },
+    {
+      "from": "NE-V9-CLAIMS",
+      "to": "PROP-RECOGNITION-DISTINCT",
+      "relation": "SUPPORTS_PROPERTY"
+    },
+    {
+      "from": "NE-V9-INVARIANTS",
+      "to": "PROP-RECOGNITION-DISTINCT",
+      "relation": "SUPPORTS_PROPERTY"
+    },
+    {
+      "from": "NE-V3-API",
+      "to": "PROP-RECOGNITION-OUTCOMES",
+      "relation": "SUPPORTS_PROPERTY"
+    },
+    {
+      "from": "NE-V8-FAILURE-MATRIX",
+      "to": "PROP-RECOGNITION-OUTCOMES",
+      "relation": "SUPPORTS_PROPERTY"
+    },
+    {
+      "from": "NE-V3-PROVIDERS",
+      "to": "PROP-PROVIDER-CONTRACT",
+      "relation": "SUPPORTS_PROPERTY"
+    },
+    {
+      "from": "NE-V9-CLAIMS",
+      "to": "PROP-PROVIDER-CONTRACT",
+      "relation": "SUPPORTS_PROPERTY"
+    },
+    {
+      "from": "NE-V8-FAILURE-MATRIX",
+      "to": "PROP-PROVIDER-FAILURE",
+      "relation": "SUPPORTS_PROPERTY"
+    },
+    {
+      "from": "NE-V3-PROVIDERS",
+      "to": "PROP-PROVIDER-ORDER",
+      "relation": "SUPPORTS_PROPERTY"
+    },
+    {
+      "from": "NE-V9-UNKNOWNS",
+      "to": "PROP-PROVIDER-ORDER",
+      "relation": "SUPPORTS_PROPERTY"
+    },
+    {
+      "from": "NE-V3-DATA",
+      "to": "PROP-DISCOVERY-RECORD",
+      "relation": "SUPPORTS_PROPERTY"
+    },
+    {
+      "from": "NE-V8-PROVENANCE",
+      "to": "PROP-DISCOVERY-RECORD",
+      "relation": "SUPPORTS_PROPERTY"
+    },
+    {
+      "from": "NE-V9-CLAIMS",
+      "to": "PROP-DISCOVERY-RECORD",
+      "relation": "SUPPORTS_PROPERTY"
+    },
+    {
+      "from": "NE-V9-CLAIMS",
+      "to": "PROP-EXPANSION-RECURSIVE",
+      "relation": "SUPPORTS_PROPERTY"
+    },
+    {
+      "from": "NE-V9-INVARIANTS",
+      "to": "PROP-EXPANSION-RECURSIVE",
+      "relation": "SUPPORTS_PROPERTY"
+    },
+    {
+      "from": "NE-V8-RETRY",
+      "to": "PROP-EXPANSION-VS-RETRY",
+      "relation": "SUPPORTS_PROPERTY"
+    },
+    {
+      "from": "NE-V9-CLAIMS",
+      "to": "PROP-EXPANSION-VS-RETRY",
+      "relation": "SUPPORTS_PROPERTY"
+    },
+    {
+      "from": "NE-V8-DUPLICATE",
+      "to": "PROP-CANDIDATE-ADMISSION",
+      "relation": "SUPPORTS_PROPERTY"
+    },
+    {
+      "from": "NE-V9-CLAIMS",
+      "to": "PROP-CANDIDATE-ADMISSION",
+      "relation": "SUPPORTS_PROPERTY"
+    },
+    {
+      "from": "NE-V9-CLAIMS",
+      "to": "PROP-KNOWLEDGE",
+      "relation": "SUPPORTS_PROPERTY"
+    },
+    {
+      "from": "NE-V9-INVARIANTS",
+      "to": "PROP-KNOWLEDGE",
+      "relation": "SUPPORTS_PROPERTY"
+    },
+    {
+      "from": "NE-V8-BOUNDS",
+      "to": "PROP-BOUNDED-CONCURRENCY",
+      "relation": "SUPPORTS_PROPERTY"
+    },
+    {
+      "from": "NE-V9-CLAIMS",
+      "to": "PROP-BOUNDED-CONCURRENCY",
+      "relation": "SUPPORTS_PROPERTY"
+    },
+    {
+      "from": "NE-V8-CLAIM",
+      "to": "PROP-SCHEDULER-TERMINATION",
+      "relation": "SUPPORTS_PROPERTY"
+    },
+    {
+      "from": "NE-V9-INVARIANTS",
+      "to": "PROP-SCHEDULER-TERMINATION",
+      "relation": "SUPPORTS_PROPERTY"
+    },
+    {
+      "from": "NE-V8-CLAIM",
+      "to": "PROP-WORKER-FAILURE",
+      "relation": "SUPPORTS_PROPERTY"
+    },
+    {
+      "from": "NE-V8-FAILURE-MATRIX",
+      "to": "PROP-WORKER-FAILURE",
+      "relation": "SUPPORTS_PROPERTY"
+    },
+    {
+      "from": "NE-V8-BOUNDS",
+      "to": "PROP-RETRY",
+      "relation": "SUPPORTS_PROPERTY"
+    },
+    {
+      "from": "NE-V8-RETRY",
+      "to": "PROP-RETRY",
+      "relation": "SUPPORTS_PROPERTY"
+    },
+    {
+      "from": "NE-V8-PROVENANCE",
+      "to": "PROP-PROVENANCE",
+      "relation": "SUPPORTS_PROPERTY"
+    },
+    {
+      "from": "NE-V9-INVARIANTS",
+      "to": "PROP-PROVENANCE",
+      "relation": "SUPPORTS_PROPERTY"
+    },
+    {
+      "from": "NE-V8-PROVENANCE",
+      "to": "PROP-PROVENANCE-INTEGRITY",
+      "relation": "SUPPORTS_PROPERTY"
+    },
+    {
+      "from": "NE-V9-UNKNOWNS",
+      "to": "PROP-PROVENANCE-INTEGRITY",
+      "relation": "SUPPORTS_PROPERTY"
+    },
+    {
+      "from": "NE-V8-CODE-DATA",
+      "to": "PROP-REMOTE-DATA",
+      "relation": "SUPPORTS_PROPERTY"
+    },
+    {
+      "from": "NE-V8-PARSERS",
+      "to": "PROP-REMOTE-DATA",
+      "relation": "SUPPORTS_PROPERTY"
+    },
+    {
+      "from": "NE-V8-AUTHORITY",
+      "to": "PROP-AUTHORITY",
+      "relation": "SUPPORTS_PROPERTY"
+    },
+    {
+      "from": "NE-V8-FAILURE-MATRIX",
+      "to": "PROP-PARSER",
+      "relation": "SUPPORTS_PROPERTY"
+    },
+    {
+      "from": "NE-V8-PARSERS",
+      "to": "PROP-PARSER",
+      "relation": "SUPPORTS_PROPERTY"
+    },
+    {
+      "from": "NE-V8-BOUNDS",
+      "to": "PROP-RESOURCE",
+      "relation": "SUPPORTS_PROPERTY"
+    },
+    {
+      "from": "NE-V9-CLAIMS",
+      "to": "PROP-RESOURCE",
+      "relation": "SUPPORTS_PROPERTY"
+    },
+    {
+      "from": "NE-V8-RISKS",
+      "to": "PROP-UNBOUNDED",
+      "relation": "SUPPORTS_PROPERTY"
+    },
+    {
+      "from": "NE-V8-FAILURE-MATRIX",
+      "to": "PROP-LIFECYCLE-OBS",
+      "relation": "SUPPORTS_PROPERTY"
+    },
+    {
+      "from": "NE-V8-OBSERVE",
+      "to": "PROP-LIFECYCLE-OBS",
+      "relation": "SUPPORTS_PROPERTY"
+    },
+    {
+      "from": "NE-V8-OBSERVE",
+      "to": "PROP-AUDIT",
+      "relation": "SUPPORTS_PROPERTY"
+    },
+    {
+      "from": "NE-V9-CLAIMS",
+      "to": "PROP-AUDIT",
+      "relation": "SUPPORTS_PROPERTY"
+    },
+    {
+      "from": "NE-V8-FAILURE-MATRIX",
+      "to": "PROP-SILENT-FAILURE",
+      "relation": "SUPPORTS_PROPERTY"
+    },
+    {
+      "from": "NE-V8-PERSIST",
+      "to": "PROP-PERSIST-COMPAT",
+      "relation": "SUPPORTS_PROPERTY"
+    },
+    {
+      "from": "NE-V8-PERSIST",
+      "to": "PROP-PERSIST-CORRUPTION",
+      "relation": "SUPPORTS_PROPERTY"
+    },
+    {
+      "from": "NE-V8-EXPORT",
+      "to": "PROP-EXPORT",
+      "relation": "SUPPORTS_PROPERTY"
+    },
+    {
+      "from": "NE-V8-OBSERVE",
+      "to": "PROP-UI",
+      "relation": "SUPPORTS_PROPERTY"
+    },
+    {
+      "from": "NE-V3-API",
+      "to": "PROP-PRIVATE-SHAPE",
+      "relation": "SUPPORTS_PROPERTY"
+    },
+    {
+      "from": "NE-V3-DATA",
+      "to": "PROP-PRIVATE-SHAPE",
+      "relation": "SUPPORTS_PROPERTY"
+    },
+    {
+      "from": "NE-V9-CLAIMS",
+      "to": "PROP-CONTRACT-INPUT",
+      "relation": "SUPPORTS_PROPERTY"
+    },
+    {
+      "from": "NE-V9-UNKNOWNS",
+      "to": "PROP-CONTRACT-INPUT",
+      "relation": "SUPPORTS_PROPERTY"
+    },
+    {
+      "from": "NE-V3-API",
+      "to": "PROP-ERROR-CONTRACT",
+      "relation": "SUPPORTS_PROPERTY"
+    },
+    {
+      "from": "NE-V8-FAILURE-MATRIX",
+      "to": "PROP-ERROR-CONTRACT",
+      "relation": "SUPPORTS_PROPERTY"
+    },
+    {
+      "from": "NE-V9-CLAIMS",
+      "to": "PROP-ERROR-CONTRACT",
+      "relation": "SUPPORTS_PROPERTY"
+    },
+    {
+      "from": "NE-V9-CLAIMS",
+      "to": "PROP-REGRESSION",
+      "relation": "SUPPORTS_PROPERTY"
+    },
+    {
+      "from": "NE-V9-UNKNOWNS",
+      "to": "PROP-REGRESSION",
+      "relation": "SUPPORTS_PROPERTY"
+    },
+    {
+      "from": "NE-V9-CLAIMS",
+      "to": "PROP-PARSE-DEFECT",
+      "relation": "SUPPORTS_PROPERTY"
+    },
+    {
+      "from": "NE-V9-CONTRADICTIONS",
+      "to": "PROP-PARSE-DEFECT",
+      "relation": "SUPPORTS_PROPERTY"
+    },
+    {
+      "from": "NE-V9-CLAIMS",
+      "to": "PROP-WEB-GENERALIZE",
+      "relation": "SUPPORTS_PROPERTY"
+    },
+    {
+      "from": "NE-V9-INVARIANTS",
+      "to": "PROP-WEB-GENERALIZE",
+      "relation": "SUPPORTS_PROPERTY"
+    }
+  ]
+}

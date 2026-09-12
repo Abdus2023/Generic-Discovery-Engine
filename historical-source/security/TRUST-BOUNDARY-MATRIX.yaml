@@ -1,0 +1,967 @@
+{
+  "schema_version": 8,
+  "builder": "security-archaeology-builder-v8",
+  "model_kind": "DERIVED_SECURITY_ARCHAEOLOGY_NOT_SOURCE",
+  "matrix": [
+    {
+      "snapshot_id": "snapshot-0001",
+      "version": "v0.1.0",
+      "variant": "mechanically-composed",
+      "boundary": "NETWORK",
+      "historical_scope": "HISTORICAL_TRUST_OR_AUTHORITY_BOUNDARY",
+      "validation": "SUPPORTED",
+      "isolation": "UNKNOWN",
+      "provenance": "SUPPORTED",
+      "enforcement": "SUPPORTED",
+      "guarantee": "UNKNOWN",
+      "evidence": [
+        "security-ev-ce39263ea398c095",
+        "security-ev-d64c4269c0f700b3"
+      ]
+    },
+    {
+      "snapshot_id": "snapshot-0001",
+      "version": "v0.1.0",
+      "variant": "mechanically-composed",
+      "boundary": "PROVIDER_CODE",
+      "historical_scope": "DATA_OR_AUTHORITY_BOUNDARY",
+      "validation": "UNKNOWN",
+      "isolation": "UNKNOWN",
+      "provenance": "SUPPORTED",
+      "enforcement": "SUPPORTED",
+      "guarantee": "UNKNOWN",
+      "evidence": [
+        "security-ev-cfdebb9f2dc12d86",
+        "security-ev-d64c4269c0f700b3"
+      ]
+    },
+    {
+      "snapshot_id": "snapshot-0001",
+      "version": "v0.1.0",
+      "variant": "mechanically-composed",
+      "boundary": "SCHEDULER",
+      "historical_scope": "INTERNAL_AUTHORITY_BOUNDARY_NOT_PROVED_TRUST",
+      "validation": "UNKNOWN",
+      "isolation": "UNKNOWN",
+      "provenance": "SUPPORTED",
+      "enforcement": "UNKNOWN",
+      "guarantee": "UNKNOWN",
+      "evidence": [
+        "security-ev-30baf6409a04e8f0",
+        "security-ev-d64c4269c0f700b3"
+      ]
+    },
+    {
+      "snapshot_id": "snapshot-0001",
+      "version": "v0.1.0",
+      "variant": "mechanically-composed",
+      "boundary": "STORAGE",
+      "historical_scope": "HISTORICAL_TRUST_OR_AUTHORITY_BOUNDARY",
+      "validation": "UNKNOWN",
+      "isolation": "UNKNOWN",
+      "provenance": "SUPPORTED",
+      "enforcement": "SUPPORTED",
+      "guarantee": "UNKNOWN",
+      "evidence": [
+        "security-ev-fdcba3da4e192bbc",
+        "security-ev-d64c4269c0f700b3"
+      ]
+    },
+    {
+      "snapshot_id": "snapshot-0001",
+      "version": "v0.1.0",
+      "variant": "mechanically-composed",
+      "boundary": "UI",
+      "historical_scope": "DATA_OR_AUTHORITY_BOUNDARY",
+      "validation": "UNKNOWN",
+      "isolation": "UNKNOWN",
+      "provenance": "SUPPORTED",
+      "enforcement": "SUPPORTED",
+      "guarantee": "UNKNOWN",
+      "evidence": [
+        "security-ev-2458cce86d2f93d8",
+        "security-ev-d64c4269c0f700b3"
+      ]
+    },
+    {
+      "snapshot_id": "snapshot-0003",
+      "version": "v0.2.0",
+      "variant": "mechanically-composed",
+      "boundary": "NETWORK",
+      "historical_scope": "HISTORICAL_TRUST_OR_AUTHORITY_BOUNDARY",
+      "validation": "SUPPORTED",
+      "isolation": "UNKNOWN",
+      "provenance": "SUPPORTED",
+      "enforcement": "SUPPORTED",
+      "guarantee": "UNKNOWN",
+      "evidence": [
+        "security-ev-f53c807f85934a28",
+        "security-ev-3ffeb0ac0971fdc5"
+      ]
+    },
+    {
+      "snapshot_id": "snapshot-0003",
+      "version": "v0.2.0",
+      "variant": "mechanically-composed",
+      "boundary": "PROVIDER_CODE",
+      "historical_scope": "DATA_OR_AUTHORITY_BOUNDARY",
+      "validation": "UNKNOWN",
+      "isolation": "UNKNOWN",
+      "provenance": "SUPPORTED",
+      "enforcement": "SUPPORTED",
+      "guarantee": "UNKNOWN",
+      "evidence": [
+        "security-ev-ced6dfa50a072be3",
+        "security-ev-3ffeb0ac0971fdc5"
+      ]
+    },
+    {
+      "snapshot_id": "snapshot-0003",
+      "version": "v0.2.0",
+      "variant": "mechanically-composed",
+      "boundary": "SCHEDULER",
+      "historical_scope": "INTERNAL_AUTHORITY_BOUNDARY_NOT_PROVED_TRUST",
+      "validation": "UNKNOWN",
+      "isolation": "UNKNOWN",
+      "provenance": "SUPPORTED",
+      "enforcement": "UNKNOWN",
+      "guarantee": "UNKNOWN",
+      "evidence": [
+        "security-ev-b855a9b503872d9b",
+        "security-ev-3ffeb0ac0971fdc5"
+      ]
+    },
+    {
+      "snapshot_id": "snapshot-0003",
+      "version": "v0.2.0",
+      "variant": "mechanically-composed",
+      "boundary": "STORAGE",
+      "historical_scope": "HISTORICAL_TRUST_OR_AUTHORITY_BOUNDARY",
+      "validation": "UNKNOWN",
+      "isolation": "UNKNOWN",
+      "provenance": "SUPPORTED",
+      "enforcement": "SUPPORTED",
+      "guarantee": "UNKNOWN",
+      "evidence": [
+        "security-ev-30127912154d80c8",
+        "security-ev-3ffeb0ac0971fdc5"
+      ]
+    },
+    {
+      "snapshot_id": "snapshot-0003",
+      "version": "v0.2.0",
+      "variant": "mechanically-composed",
+      "boundary": "UI",
+      "historical_scope": "DATA_OR_AUTHORITY_BOUNDARY",
+      "validation": "UNKNOWN",
+      "isolation": "UNKNOWN",
+      "provenance": "SUPPORTED",
+      "enforcement": "SUPPORTED",
+      "guarantee": "UNKNOWN",
+      "evidence": [
+        "security-ev-7e383430833b8cac",
+        "security-ev-3ffeb0ac0971fdc5"
+      ]
+    },
+    {
+      "snapshot_id": "snapshot-0005",
+      "version": "v0.3.0",
+      "variant": "only-evidenced-complete-occurrence",
+      "boundary": "NETWORK",
+      "historical_scope": "HISTORICAL_TRUST_OR_AUTHORITY_BOUNDARY",
+      "validation": "SUPPORTED",
+      "isolation": "UNKNOWN",
+      "provenance": "SUPPORTED",
+      "enforcement": "SUPPORTED",
+      "guarantee": "UNKNOWN",
+      "evidence": [
+        "security-ev-2a7eae36715d380e",
+        "security-ev-61d9257349665422"
+      ]
+    },
+    {
+      "snapshot_id": "snapshot-0005",
+      "version": "v0.3.0",
+      "variant": "only-evidenced-complete-occurrence",
+      "boundary": "PROVIDER_CODE",
+      "historical_scope": "DATA_OR_AUTHORITY_BOUNDARY",
+      "validation": "UNKNOWN",
+      "isolation": "UNKNOWN",
+      "provenance": "SUPPORTED",
+      "enforcement": "SUPPORTED",
+      "guarantee": "UNKNOWN",
+      "evidence": [
+        "security-ev-a22ce4186d614f83",
+        "security-ev-61d9257349665422"
+      ]
+    },
+    {
+      "snapshot_id": "snapshot-0005",
+      "version": "v0.3.0",
+      "variant": "only-evidenced-complete-occurrence",
+      "boundary": "SCHEDULER",
+      "historical_scope": "INTERNAL_AUTHORITY_BOUNDARY_NOT_PROVED_TRUST",
+      "validation": "UNKNOWN",
+      "isolation": "UNKNOWN",
+      "provenance": "SUPPORTED",
+      "enforcement": "UNKNOWN",
+      "guarantee": "UNKNOWN",
+      "evidence": [
+        "security-ev-e74615ba07abd20e",
+        "security-ev-61d9257349665422"
+      ]
+    },
+    {
+      "snapshot_id": "snapshot-0005",
+      "version": "v0.3.0",
+      "variant": "only-evidenced-complete-occurrence",
+      "boundary": "STORAGE",
+      "historical_scope": "HISTORICAL_TRUST_OR_AUTHORITY_BOUNDARY",
+      "validation": "UNKNOWN",
+      "isolation": "UNKNOWN",
+      "provenance": "SUPPORTED",
+      "enforcement": "SUPPORTED",
+      "guarantee": "UNKNOWN",
+      "evidence": [
+        "security-ev-10fb7cb2dc90eaa3",
+        "security-ev-61d9257349665422"
+      ]
+    },
+    {
+      "snapshot_id": "snapshot-0005",
+      "version": "v0.3.0",
+      "variant": "only-evidenced-complete-occurrence",
+      "boundary": "UI",
+      "historical_scope": "DATA_OR_AUTHORITY_BOUNDARY",
+      "validation": "UNKNOWN",
+      "isolation": "UNKNOWN",
+      "provenance": "SUPPORTED",
+      "enforcement": "SUPPORTED",
+      "guarantee": "UNKNOWN",
+      "evidence": [
+        "security-ev-6a04419ed0d6daa0",
+        "security-ev-61d9257349665422"
+      ]
+    },
+    {
+      "snapshot_id": "snapshot-0006",
+      "version": "v0.4.0",
+      "variant": "variant-a",
+      "boundary": "NETWORK",
+      "historical_scope": "HISTORICAL_TRUST_OR_AUTHORITY_BOUNDARY",
+      "validation": "SUPPORTED",
+      "isolation": "UNKNOWN",
+      "provenance": "SUPPORTED",
+      "enforcement": "SUPPORTED",
+      "guarantee": "UNKNOWN",
+      "evidence": [
+        "security-ev-49a2388aa7e29d47",
+        "security-ev-d4dbac1166faa672"
+      ]
+    },
+    {
+      "snapshot_id": "snapshot-0006",
+      "version": "v0.4.0",
+      "variant": "variant-a",
+      "boundary": "PROVIDER_CODE",
+      "historical_scope": "DATA_OR_AUTHORITY_BOUNDARY",
+      "validation": "UNKNOWN",
+      "isolation": "SUPPORTED",
+      "provenance": "SUPPORTED",
+      "enforcement": "SUPPORTED",
+      "guarantee": "UNKNOWN",
+      "evidence": [
+        "security-ev-0b7e6ffda1147d8c",
+        "security-ev-d4dbac1166faa672"
+      ]
+    },
+    {
+      "snapshot_id": "snapshot-0006",
+      "version": "v0.4.0",
+      "variant": "variant-a",
+      "boundary": "SCHEDULER",
+      "historical_scope": "INTERNAL_AUTHORITY_BOUNDARY_NOT_PROVED_TRUST",
+      "validation": "UNKNOWN",
+      "isolation": "UNKNOWN",
+      "provenance": "SUPPORTED",
+      "enforcement": "UNKNOWN",
+      "guarantee": "UNKNOWN",
+      "evidence": [
+        "security-ev-8525b855368cd490",
+        "security-ev-d4dbac1166faa672"
+      ]
+    },
+    {
+      "snapshot_id": "snapshot-0006",
+      "version": "v0.4.0",
+      "variant": "variant-a",
+      "boundary": "STORAGE",
+      "historical_scope": "HISTORICAL_TRUST_OR_AUTHORITY_BOUNDARY",
+      "validation": "UNKNOWN",
+      "isolation": "UNKNOWN",
+      "provenance": "SUPPORTED",
+      "enforcement": "SUPPORTED",
+      "guarantee": "UNKNOWN",
+      "evidence": [
+        "security-ev-175a5ecfaf8c2306",
+        "security-ev-d4dbac1166faa672"
+      ]
+    },
+    {
+      "snapshot_id": "snapshot-0006",
+      "version": "v0.4.0",
+      "variant": "variant-a",
+      "boundary": "UI",
+      "historical_scope": "DATA_OR_AUTHORITY_BOUNDARY",
+      "validation": "UNKNOWN",
+      "isolation": "UNKNOWN",
+      "provenance": "SUPPORTED",
+      "enforcement": "SUPPORTED",
+      "guarantee": "UNKNOWN",
+      "evidence": [
+        "security-ev-f53be3c2f460d118",
+        "security-ev-d4dbac1166faa672"
+      ]
+    },
+    {
+      "snapshot_id": "snapshot-0008",
+      "version": "v0.4.0",
+      "variant": "variant-b",
+      "boundary": "NETWORK",
+      "historical_scope": "HISTORICAL_TRUST_OR_AUTHORITY_BOUNDARY",
+      "validation": "SUPPORTED",
+      "isolation": "UNKNOWN",
+      "provenance": "SUPPORTED",
+      "enforcement": "SUPPORTED",
+      "guarantee": "UNKNOWN",
+      "evidence": [
+        "security-ev-01ed895be57742f8",
+        "security-ev-682da086115e60d2"
+      ]
+    },
+    {
+      "snapshot_id": "snapshot-0008",
+      "version": "v0.4.0",
+      "variant": "variant-b",
+      "boundary": "PROVIDER_CODE",
+      "historical_scope": "DATA_OR_AUTHORITY_BOUNDARY",
+      "validation": "UNKNOWN",
+      "isolation": "SUPPORTED",
+      "provenance": "SUPPORTED",
+      "enforcement": "SUPPORTED",
+      "guarantee": "UNKNOWN",
+      "evidence": [
+        "security-ev-b19e2d6355923ddf",
+        "security-ev-682da086115e60d2"
+      ]
+    },
+    {
+      "snapshot_id": "snapshot-0008",
+      "version": "v0.4.0",
+      "variant": "variant-b",
+      "boundary": "SCHEDULER",
+      "historical_scope": "INTERNAL_AUTHORITY_BOUNDARY_NOT_PROVED_TRUST",
+      "validation": "UNKNOWN",
+      "isolation": "UNKNOWN",
+      "provenance": "SUPPORTED",
+      "enforcement": "UNKNOWN",
+      "guarantee": "UNKNOWN",
+      "evidence": [
+        "security-ev-cd0b9238737da409",
+        "security-ev-682da086115e60d2"
+      ]
+    },
+    {
+      "snapshot_id": "snapshot-0008",
+      "version": "v0.4.0",
+      "variant": "variant-b",
+      "boundary": "STORAGE",
+      "historical_scope": "HISTORICAL_TRUST_OR_AUTHORITY_BOUNDARY",
+      "validation": "UNKNOWN",
+      "isolation": "UNKNOWN",
+      "provenance": "SUPPORTED",
+      "enforcement": "SUPPORTED",
+      "guarantee": "UNKNOWN",
+      "evidence": [
+        "security-ev-29937b34f4cf525e",
+        "security-ev-682da086115e60d2"
+      ]
+    },
+    {
+      "snapshot_id": "snapshot-0008",
+      "version": "v0.4.0",
+      "variant": "variant-b",
+      "boundary": "UI",
+      "historical_scope": "DATA_OR_AUTHORITY_BOUNDARY",
+      "validation": "UNKNOWN",
+      "isolation": "UNKNOWN",
+      "provenance": "SUPPORTED",
+      "enforcement": "SUPPORTED",
+      "guarantee": "UNKNOWN",
+      "evidence": [
+        "security-ev-0ad23f477ac9846c",
+        "security-ev-682da086115e60d2"
+      ]
+    },
+    {
+      "snapshot_id": "snapshot-0007",
+      "version": "v0.5.0",
+      "variant": "variant-a",
+      "boundary": "NETWORK",
+      "historical_scope": "HISTORICAL_TRUST_OR_AUTHORITY_BOUNDARY",
+      "validation": "SUPPORTED",
+      "isolation": "UNKNOWN",
+      "provenance": "SUPPORTED",
+      "enforcement": "SUPPORTED",
+      "guarantee": "UNKNOWN",
+      "evidence": [
+        "security-ev-151856594d08c39b",
+        "security-ev-e9789eaf1a754667"
+      ]
+    },
+    {
+      "snapshot_id": "snapshot-0007",
+      "version": "v0.5.0",
+      "variant": "variant-a",
+      "boundary": "PROVIDER_CODE",
+      "historical_scope": "DATA_OR_AUTHORITY_BOUNDARY",
+      "validation": "UNKNOWN",
+      "isolation": "SUPPORTED",
+      "provenance": "SUPPORTED",
+      "enforcement": "SUPPORTED",
+      "guarantee": "UNKNOWN",
+      "evidence": [
+        "security-ev-abe298f993f6c4b2",
+        "security-ev-e9789eaf1a754667"
+      ]
+    },
+    {
+      "snapshot_id": "snapshot-0007",
+      "version": "v0.5.0",
+      "variant": "variant-a",
+      "boundary": "SCHEDULER",
+      "historical_scope": "INTERNAL_AUTHORITY_BOUNDARY_NOT_PROVED_TRUST",
+      "validation": "UNKNOWN",
+      "isolation": "UNKNOWN",
+      "provenance": "SUPPORTED",
+      "enforcement": "UNKNOWN",
+      "guarantee": "UNKNOWN",
+      "evidence": [
+        "security-ev-ead91c04cc1ba257",
+        "security-ev-e9789eaf1a754667"
+      ]
+    },
+    {
+      "snapshot_id": "snapshot-0007",
+      "version": "v0.5.0",
+      "variant": "variant-a",
+      "boundary": "STORAGE",
+      "historical_scope": "HISTORICAL_TRUST_OR_AUTHORITY_BOUNDARY",
+      "validation": "UNKNOWN",
+      "isolation": "UNKNOWN",
+      "provenance": "SUPPORTED",
+      "enforcement": "SUPPORTED",
+      "guarantee": "UNKNOWN",
+      "evidence": [
+        "security-ev-a018ea32406b461f",
+        "security-ev-e9789eaf1a754667"
+      ]
+    },
+    {
+      "snapshot_id": "snapshot-0007",
+      "version": "v0.5.0",
+      "variant": "variant-a",
+      "boundary": "UI",
+      "historical_scope": "DATA_OR_AUTHORITY_BOUNDARY",
+      "validation": "UNKNOWN",
+      "isolation": "UNKNOWN",
+      "provenance": "SUPPORTED",
+      "enforcement": "SUPPORTED",
+      "guarantee": "UNKNOWN",
+      "evidence": [
+        "security-ev-00682ee504d500a0",
+        "security-ev-e9789eaf1a754667"
+      ]
+    },
+    {
+      "snapshot_id": "snapshot-0009",
+      "version": "v0.5.0",
+      "variant": "variant-b",
+      "boundary": "NETWORK",
+      "historical_scope": "HISTORICAL_TRUST_OR_AUTHORITY_BOUNDARY",
+      "validation": "SUPPORTED",
+      "isolation": "UNKNOWN",
+      "provenance": "SUPPORTED",
+      "enforcement": "SUPPORTED",
+      "guarantee": "UNKNOWN",
+      "evidence": [
+        "security-ev-2a057edbc6b6ff78",
+        "security-ev-43248758212fd585"
+      ]
+    },
+    {
+      "snapshot_id": "snapshot-0009",
+      "version": "v0.5.0",
+      "variant": "variant-b",
+      "boundary": "PROVIDER_CODE",
+      "historical_scope": "DATA_OR_AUTHORITY_BOUNDARY",
+      "validation": "UNKNOWN",
+      "isolation": "SUPPORTED",
+      "provenance": "SUPPORTED",
+      "enforcement": "SUPPORTED",
+      "guarantee": "UNKNOWN",
+      "evidence": [
+        "security-ev-2262aeeb364c43e7",
+        "security-ev-43248758212fd585"
+      ]
+    },
+    {
+      "snapshot_id": "snapshot-0009",
+      "version": "v0.5.0",
+      "variant": "variant-b",
+      "boundary": "SCHEDULER",
+      "historical_scope": "INTERNAL_AUTHORITY_BOUNDARY_NOT_PROVED_TRUST",
+      "validation": "UNKNOWN",
+      "isolation": "UNKNOWN",
+      "provenance": "SUPPORTED",
+      "enforcement": "UNKNOWN",
+      "guarantee": "UNKNOWN",
+      "evidence": [
+        "security-absence-b72f770a26c5e23b",
+        "security-ev-43248758212fd585"
+      ]
+    },
+    {
+      "snapshot_id": "snapshot-0009",
+      "version": "v0.5.0",
+      "variant": "variant-b",
+      "boundary": "STORAGE",
+      "historical_scope": "HISTORICAL_TRUST_OR_AUTHORITY_BOUNDARY",
+      "validation": "UNKNOWN",
+      "isolation": "UNKNOWN",
+      "provenance": "SUPPORTED",
+      "enforcement": "SUPPORTED",
+      "guarantee": "UNKNOWN",
+      "evidence": [
+        "security-ev-132e709eafa111f7",
+        "security-ev-43248758212fd585"
+      ]
+    },
+    {
+      "snapshot_id": "snapshot-0009",
+      "version": "v0.5.0",
+      "variant": "variant-b",
+      "boundary": "UI",
+      "historical_scope": "DATA_OR_AUTHORITY_BOUNDARY",
+      "validation": "UNKNOWN",
+      "isolation": "UNKNOWN",
+      "provenance": "SUPPORTED",
+      "enforcement": "SUPPORTED",
+      "guarantee": "UNKNOWN",
+      "evidence": [
+        "security-ev-67317eabf8a41fb4",
+        "security-ev-43248758212fd585"
+      ]
+    },
+    {
+      "snapshot_id": "snapshot-0011",
+      "version": "v0.5.0",
+      "variant": "variant-c",
+      "boundary": "NETWORK",
+      "historical_scope": "HISTORICAL_TRUST_OR_AUTHORITY_BOUNDARY",
+      "validation": "SUPPORTED",
+      "isolation": "UNKNOWN",
+      "provenance": "SUPPORTED",
+      "enforcement": "SUPPORTED",
+      "guarantee": "UNKNOWN",
+      "evidence": [
+        "security-ev-0c34fccd2487ffab",
+        "security-ev-0fe8a8134e652c18"
+      ]
+    },
+    {
+      "snapshot_id": "snapshot-0011",
+      "version": "v0.5.0",
+      "variant": "variant-c",
+      "boundary": "PROVIDER_CODE",
+      "historical_scope": "DATA_OR_AUTHORITY_BOUNDARY",
+      "validation": "UNKNOWN",
+      "isolation": "SUPPORTED",
+      "provenance": "SUPPORTED",
+      "enforcement": "SUPPORTED",
+      "guarantee": "UNKNOWN",
+      "evidence": [
+        "security-ev-86c474a6c57b0b82",
+        "security-ev-0fe8a8134e652c18"
+      ]
+    },
+    {
+      "snapshot_id": "snapshot-0011",
+      "version": "v0.5.0",
+      "variant": "variant-c",
+      "boundary": "SCHEDULER",
+      "historical_scope": "INTERNAL_AUTHORITY_BOUNDARY_NOT_PROVED_TRUST",
+      "validation": "UNKNOWN",
+      "isolation": "UNKNOWN",
+      "provenance": "SUPPORTED",
+      "enforcement": "UNKNOWN",
+      "guarantee": "UNKNOWN",
+      "evidence": [
+        "security-ev-98ddd786085f0522",
+        "security-ev-0fe8a8134e652c18"
+      ]
+    },
+    {
+      "snapshot_id": "snapshot-0011",
+      "version": "v0.5.0",
+      "variant": "variant-c",
+      "boundary": "STORAGE",
+      "historical_scope": "HISTORICAL_TRUST_OR_AUTHORITY_BOUNDARY",
+      "validation": "UNKNOWN",
+      "isolation": "UNKNOWN",
+      "provenance": "SUPPORTED",
+      "enforcement": "SUPPORTED",
+      "guarantee": "UNKNOWN",
+      "evidence": [
+        "security-ev-7ff7a2d68585dcfb",
+        "security-ev-0fe8a8134e652c18"
+      ]
+    },
+    {
+      "snapshot_id": "snapshot-0011",
+      "version": "v0.5.0",
+      "variant": "variant-c",
+      "boundary": "UI",
+      "historical_scope": "DATA_OR_AUTHORITY_BOUNDARY",
+      "validation": "UNKNOWN",
+      "isolation": "UNKNOWN",
+      "provenance": "SUPPORTED",
+      "enforcement": "SUPPORTED",
+      "guarantee": "UNKNOWN",
+      "evidence": [
+        "security-ev-0ecb4fcf356e3933",
+        "security-ev-0fe8a8134e652c18"
+      ]
+    },
+    {
+      "snapshot_id": "snapshot-0010",
+      "version": "v0.6.0",
+      "variant": "variant-a",
+      "boundary": "NETWORK",
+      "historical_scope": "HISTORICAL_TRUST_OR_AUTHORITY_BOUNDARY",
+      "validation": "SUPPORTED",
+      "isolation": "UNKNOWN",
+      "provenance": "SUPPORTED",
+      "enforcement": "SUPPORTED",
+      "guarantee": "UNKNOWN",
+      "evidence": [
+        "security-ev-1e1cce39b9958d72",
+        "security-ev-1b911f7578ffc1b9"
+      ]
+    },
+    {
+      "snapshot_id": "snapshot-0010",
+      "version": "v0.6.0",
+      "variant": "variant-a",
+      "boundary": "PROVIDER_CODE",
+      "historical_scope": "DATA_OR_AUTHORITY_BOUNDARY",
+      "validation": "UNKNOWN",
+      "isolation": "SUPPORTED",
+      "provenance": "SUPPORTED",
+      "enforcement": "SUPPORTED",
+      "guarantee": "UNKNOWN",
+      "evidence": [
+        "security-ev-ff49d7188f9644a0",
+        "security-ev-1b911f7578ffc1b9"
+      ]
+    },
+    {
+      "snapshot_id": "snapshot-0010",
+      "version": "v0.6.0",
+      "variant": "variant-a",
+      "boundary": "SCHEDULER",
+      "historical_scope": "INTERNAL_AUTHORITY_BOUNDARY_NOT_PROVED_TRUST",
+      "validation": "UNKNOWN",
+      "isolation": "UNKNOWN",
+      "provenance": "SUPPORTED",
+      "enforcement": "UNKNOWN",
+      "guarantee": "UNKNOWN",
+      "evidence": [
+        "security-ev-d9d65dfba37a8ae7",
+        "security-ev-1b911f7578ffc1b9"
+      ]
+    },
+    {
+      "snapshot_id": "snapshot-0010",
+      "version": "v0.6.0",
+      "variant": "variant-a",
+      "boundary": "STORAGE",
+      "historical_scope": "HISTORICAL_TRUST_OR_AUTHORITY_BOUNDARY",
+      "validation": "UNKNOWN",
+      "isolation": "UNKNOWN",
+      "provenance": "SUPPORTED",
+      "enforcement": "SUPPORTED",
+      "guarantee": "UNKNOWN",
+      "evidence": [
+        "security-ev-b2246cfd68cdcb8f",
+        "security-ev-1b911f7578ffc1b9"
+      ]
+    },
+    {
+      "snapshot_id": "snapshot-0010",
+      "version": "v0.6.0",
+      "variant": "variant-a",
+      "boundary": "UI",
+      "historical_scope": "DATA_OR_AUTHORITY_BOUNDARY",
+      "validation": "UNKNOWN",
+      "isolation": "UNKNOWN",
+      "provenance": "SUPPORTED",
+      "enforcement": "SUPPORTED",
+      "guarantee": "UNKNOWN",
+      "evidence": [
+        "security-ev-5bfe7157e4301b8b",
+        "security-ev-1b911f7578ffc1b9"
+      ]
+    },
+    {
+      "snapshot_id": "snapshot-0012",
+      "version": "v0.6.0",
+      "variant": "variant-b",
+      "boundary": "NETWORK",
+      "historical_scope": "HISTORICAL_TRUST_OR_AUTHORITY_BOUNDARY",
+      "validation": "SUPPORTED",
+      "isolation": "UNKNOWN",
+      "provenance": "SUPPORTED",
+      "enforcement": "SUPPORTED",
+      "guarantee": "UNKNOWN",
+      "evidence": [
+        "security-ev-79fc53d9b9451380",
+        "security-ev-44230bb705d86b81"
+      ]
+    },
+    {
+      "snapshot_id": "snapshot-0012",
+      "version": "v0.6.0",
+      "variant": "variant-b",
+      "boundary": "PROVIDER_CODE",
+      "historical_scope": "DATA_OR_AUTHORITY_BOUNDARY",
+      "validation": "UNKNOWN",
+      "isolation": "SUPPORTED",
+      "provenance": "SUPPORTED",
+      "enforcement": "SUPPORTED",
+      "guarantee": "UNKNOWN",
+      "evidence": [
+        "security-ev-f4bd64249f6c0ee8",
+        "security-ev-44230bb705d86b81"
+      ]
+    },
+    {
+      "snapshot_id": "snapshot-0012",
+      "version": "v0.6.0",
+      "variant": "variant-b",
+      "boundary": "SCHEDULER",
+      "historical_scope": "INTERNAL_AUTHORITY_BOUNDARY_NOT_PROVED_TRUST",
+      "validation": "UNKNOWN",
+      "isolation": "UNKNOWN",
+      "provenance": "SUPPORTED",
+      "enforcement": "UNKNOWN",
+      "guarantee": "UNKNOWN",
+      "evidence": [
+        "security-ev-1e60b195dd76b078",
+        "security-ev-44230bb705d86b81"
+      ]
+    },
+    {
+      "snapshot_id": "snapshot-0012",
+      "version": "v0.6.0",
+      "variant": "variant-b",
+      "boundary": "STORAGE",
+      "historical_scope": "HISTORICAL_TRUST_OR_AUTHORITY_BOUNDARY",
+      "validation": "UNKNOWN",
+      "isolation": "UNKNOWN",
+      "provenance": "SUPPORTED",
+      "enforcement": "SUPPORTED",
+      "guarantee": "UNKNOWN",
+      "evidence": [
+        "security-ev-aa39f2b13961b99c",
+        "security-ev-44230bb705d86b81"
+      ]
+    },
+    {
+      "snapshot_id": "snapshot-0012",
+      "version": "v0.6.0",
+      "variant": "variant-b",
+      "boundary": "UI",
+      "historical_scope": "DATA_OR_AUTHORITY_BOUNDARY",
+      "validation": "UNKNOWN",
+      "isolation": "UNKNOWN",
+      "provenance": "SUPPORTED",
+      "enforcement": "SUPPORTED",
+      "guarantee": "UNKNOWN",
+      "evidence": [
+        "security-ev-6e955acee8d44690",
+        "security-ev-44230bb705d86b81"
+      ]
+    },
+    {
+      "snapshot_id": "snapshot-0013",
+      "version": "v0.6.0",
+      "variant": "variant-c",
+      "boundary": "NETWORK",
+      "historical_scope": "HISTORICAL_TRUST_OR_AUTHORITY_BOUNDARY",
+      "validation": "SUPPORTED",
+      "isolation": "UNKNOWN",
+      "provenance": "SUPPORTED",
+      "enforcement": "SUPPORTED",
+      "guarantee": "UNKNOWN",
+      "evidence": [
+        "security-ev-3cfcded9f363c486",
+        "security-ev-b120bb6a14bbf209"
+      ]
+    },
+    {
+      "snapshot_id": "snapshot-0013",
+      "version": "v0.6.0",
+      "variant": "variant-c",
+      "boundary": "PROVIDER_CODE",
+      "historical_scope": "DATA_OR_AUTHORITY_BOUNDARY",
+      "validation": "UNKNOWN",
+      "isolation": "SUPPORTED",
+      "provenance": "SUPPORTED",
+      "enforcement": "SUPPORTED",
+      "guarantee": "UNKNOWN",
+      "evidence": [
+        "security-ev-4062a551815356b4",
+        "security-ev-b120bb6a14bbf209"
+      ]
+    },
+    {
+      "snapshot_id": "snapshot-0013",
+      "version": "v0.6.0",
+      "variant": "variant-c",
+      "boundary": "SCHEDULER",
+      "historical_scope": "INTERNAL_AUTHORITY_BOUNDARY_NOT_PROVED_TRUST",
+      "validation": "UNKNOWN",
+      "isolation": "UNKNOWN",
+      "provenance": "SUPPORTED",
+      "enforcement": "UNKNOWN",
+      "guarantee": "UNKNOWN",
+      "evidence": [
+        "security-ev-9bbe221d03aced56",
+        "security-ev-b120bb6a14bbf209"
+      ]
+    },
+    {
+      "snapshot_id": "snapshot-0013",
+      "version": "v0.6.0",
+      "variant": "variant-c",
+      "boundary": "STORAGE",
+      "historical_scope": "HISTORICAL_TRUST_OR_AUTHORITY_BOUNDARY",
+      "validation": "UNKNOWN",
+      "isolation": "UNKNOWN",
+      "provenance": "SUPPORTED",
+      "enforcement": "SUPPORTED",
+      "guarantee": "UNKNOWN",
+      "evidence": [
+        "security-ev-1869612aee2bbbb0",
+        "security-ev-b120bb6a14bbf209"
+      ]
+    },
+    {
+      "snapshot_id": "snapshot-0013",
+      "version": "v0.6.0",
+      "variant": "variant-c",
+      "boundary": "UI",
+      "historical_scope": "DATA_OR_AUTHORITY_BOUNDARY",
+      "validation": "UNKNOWN",
+      "isolation": "UNKNOWN",
+      "provenance": "SUPPORTED",
+      "enforcement": "SUPPORTED",
+      "guarantee": "UNKNOWN",
+      "evidence": [
+        "security-ev-32e92382561cad60",
+        "security-ev-b120bb6a14bbf209"
+      ]
+    },
+    {
+      "snapshot_id": "snapshot-0014",
+      "version": "v0.7.1",
+      "variant": "only-evidenced-complete-occurrence",
+      "boundary": "NETWORK",
+      "historical_scope": "HISTORICAL_TRUST_OR_AUTHORITY_BOUNDARY",
+      "validation": "SUPPORTED",
+      "isolation": "UNKNOWN",
+      "provenance": "SUPPORTED",
+      "enforcement": "SUPPORTED",
+      "guarantee": "UNKNOWN",
+      "evidence": [
+        "security-ev-73051bad30648bb9",
+        "security-ev-ba6a4804bb5fb6d4"
+      ]
+    },
+    {
+      "snapshot_id": "snapshot-0014",
+      "version": "v0.7.1",
+      "variant": "only-evidenced-complete-occurrence",
+      "boundary": "PROVIDER_CODE",
+      "historical_scope": "DATA_OR_AUTHORITY_BOUNDARY",
+      "validation": "UNKNOWN",
+      "isolation": "SUPPORTED",
+      "provenance": "SUPPORTED",
+      "enforcement": "SUPPORTED",
+      "guarantee": "UNKNOWN",
+      "evidence": [
+        "security-ev-d27c0ba035892aa5",
+        "security-ev-ba6a4804bb5fb6d4"
+      ]
+    },
+    {
+      "snapshot_id": "snapshot-0014",
+      "version": "v0.7.1",
+      "variant": "only-evidenced-complete-occurrence",
+      "boundary": "SCHEDULER",
+      "historical_scope": "INTERNAL_AUTHORITY_BOUNDARY_NOT_PROVED_TRUST",
+      "validation": "UNKNOWN",
+      "isolation": "UNKNOWN",
+      "provenance": "SUPPORTED",
+      "enforcement": "UNKNOWN",
+      "guarantee": "UNKNOWN",
+      "evidence": [
+        "security-ev-eb636afe2d39a0b6",
+        "security-ev-ba6a4804bb5fb6d4"
+      ]
+    },
+    {
+      "snapshot_id": "snapshot-0014",
+      "version": "v0.7.1",
+      "variant": "only-evidenced-complete-occurrence",
+      "boundary": "STORAGE",
+      "historical_scope": "HISTORICAL_TRUST_OR_AUTHORITY_BOUNDARY",
+      "validation": "UNKNOWN",
+      "isolation": "UNKNOWN",
+      "provenance": "SUPPORTED",
+      "enforcement": "SUPPORTED",
+      "guarantee": "UNKNOWN",
+      "evidence": [
+        "security-ev-a409cd84fcd1ddf4",
+        "security-ev-ba6a4804bb5fb6d4"
+      ]
+    },
+    {
+      "snapshot_id": "snapshot-0014",
+      "version": "v0.7.1",
+      "variant": "only-evidenced-complete-occurrence",
+      "boundary": "UI",
+      "historical_scope": "DATA_OR_AUTHORITY_BOUNDARY",
+      "validation": "UNKNOWN",
+      "isolation": "UNKNOWN",
+      "provenance": "SUPPORTED",
+      "enforcement": "SUPPORTED",
+      "guarantee": "UNKNOWN",
+      "evidence": [
+        "security-ev-3dbd60e6f4421b22",
+        "security-ev-ba6a4804bb5fb6d4"
+      ]
+    }
+  ]
+}

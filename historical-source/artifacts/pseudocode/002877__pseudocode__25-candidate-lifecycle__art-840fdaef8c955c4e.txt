@@ -1,0 +1,21 @@
+GENERATED
+    │
+    ▼
+QUEUED
+    │
+    ▼
+PROBED
+    │
+    ├───────────────┐
+    ▼               ▼
+REJECTED         PROMISING
+                    │
+                    ▼
+                 ACQUIRED
+                    │
+              ┌─────┴─────┐
+              ▼           ▼
+           CONFIRMED    FAILED
+              │
+              ▼
+          EXPANDED

@@ -1,0 +1,14 @@
+/api/catalog
+    GET
+    textual
+    same-origin
+
+/api/order
+    POST
+    request-body
+    session-dependent
+
+/report.pdf
+    GET
+    binary
+    same-origin

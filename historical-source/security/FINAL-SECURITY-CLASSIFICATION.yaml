@@ -1,0 +1,187 @@
+{
+  "schema_version": 8,
+  "builder": "security-archaeology-builder-v8",
+  "model_kind": "DERIVED_SECURITY_ARCHAEOLOGY_NOT_SOURCE",
+  "classification": {
+    "HISTORICALLY_VERIFIED_SECURITY_MECHANISMS": [
+      {
+        "mechanism": "URL parsing/canonicalization and admission checks",
+        "scope": "path-local",
+        "evidence": [
+          "security-ev-db5726c7efee3f8e",
+          "security-ev-03c88adaa970a421",
+          "security-ev-c4e774a69340b25f",
+          "security-ev-80099042171aef8d",
+          "security-ev-77f266a19fc0f29f",
+          "security-ev-aca15d5b382bd8ef",
+          "security-ev-3d8c7ac36a596f78",
+          "security-ev-19aeba3424a9e136"
+        ]
+      },
+      {
+        "mechanism": "request error and timeout callbacks",
+        "scope": "selected acquisition paths",
+        "evidence": [
+          "security-ev-f5938550f988fa3e",
+          "security-ev-92452c8c6a88aa28",
+          "security-ev-b90fb5bcfffb1a0b",
+          "security-ev-ee35b3e2616be7b6",
+          "security-ev-a636b4c2f43931b0",
+          "security-ev-eaeb4711e4fdb262",
+          "security-ev-31d8abcbe3efa516",
+          "security-ev-7486a1ae2556e31e"
+        ]
+      },
+      {
+        "mechanism": "provider/worker/persistence catch paths",
+        "scope": "individual recovered handlers",
+        "evidence": [
+          "security-ev-8812129cadb6f280",
+          "security-ev-cd52827ef732e7d4",
+          "security-ev-b1fbd072c5e527b7",
+          "security-ev-5f02dc3748547b35",
+          "security-ev-f5938550f988fa3e",
+          "security-ev-6b1bd6d142794968",
+          "security-ev-abd184135de8a5dc",
+          "security-ev-835a71ba17d2d8a9"
+        ]
+      },
+      {
+        "mechanism": "candidate key, visited, and claimed structures",
+        "scope": "event-loop-local recovered paths",
+        "evidence": [
+          "security-ev-8af866b795e522ac",
+          "security-ev-3ee2a2e956067025",
+          "security-ev-0590f50feb5e617d",
+          "security-ev-92d9e9915edcc531",
+          "security-ev-6e9638b8c4e6d9b3",
+          "security-ev-3041f392a8b0367f",
+          "security-ev-88057ef4134c32d1",
+          "security-ev-6419507122220469"
+        ]
+      },
+      {
+        "mechanism": "configured and referenced resource bounds",
+        "scope": "recorded enforcement points",
+        "evidence": [
+          "security-ev-948cf470b5888a69",
+          "security-ev-2830473f43bce3b7",
+          "security-ev-c36edd585706ea75",
+          "security-ev-08cc2e4da8ffe70a",
+          "security-ev-f9d9b3c207c68249",
+          "security-ev-c9932dde2d91acff",
+          "security-ev-530e5c93b3b1af3f",
+          "security-ev-86efdcfaa2888d90"
+        ]
+      }
+    ],
+    "HISTORICALLY_VERIFIED_SECURITY_PROPERTIES": [
+      {
+        "property": "selected claim mutations execute synchronously before the first await",
+        "scope": "claim method path only",
+        "evidence": [
+          "security-ev-2edbfd1d30a21f40",
+          "security-ev-c420f255e02c9133",
+          "security-ev-c4ef2d16cfef0d8b",
+          "security-ev-f3da7d05db853cb3",
+          "security-ev-7f1b04549b616213",
+          "security-ev-440d9662316f2e81",
+          "security-ev-27dd07689c764d06",
+          "security-ev-6b8e166c442ea9c2"
+        ]
+      },
+      {
+        "property": "selected provider exceptions are caught at registry/provider paths",
+        "scope": "handlers with F5 classification only",
+        "evidence": [
+          "security-ev-aaa9560381e948a1",
+          "security-ev-3fc932de00813d14",
+          "security-ev-009da1367f7fdaab",
+          "security-ev-5b145551404d979f",
+          "security-ev-d18f5b6d3631b252",
+          "security-ev-66971bb9d0ba20ef",
+          "security-ev-53070a6bff14d424",
+          "security-ev-1d829d3bcbc1e32d"
+        ]
+      }
+    ],
+    "SECURITY_GOALS_WITHOUT_ENFORCEMENT": [
+      {
+        "goal": "Safer DOM/UI handling",
+        "occurrences": [
+          "snapshot-0005"
+        ],
+        "enforcement": "UNDERSPECIFIED_GOAL_NO_COMPLETE_PROPERTY",
+        "evidence": [
+          "security-ev-e76896ef295ed96a"
+        ]
+      }
+    ],
+    "RETROSPECTIVE_SECURITY_INTERPRETATIONS": [
+      {
+        "interpretation": "Remote parsing and retained state form a resource-exhaustion surface; no exploit or incident is claimed.",
+        "evidence": [
+          "security-ev-5471b3e7aa6a76cb",
+          "security-ev-948cf470b5888a69",
+          "security-ev-2830473f43bce3b7",
+          "security-ev-2a7ac0b8a04a756b",
+          "security-ev-f600017308845c43",
+          "security-ev-f9d9b3c207c68249",
+          "security-ev-c9932dde2d91acff",
+          "security-ev-4d4cfb2910e97f77"
+        ]
+      },
+      {
+        "interpretation": "Ambient GM/browser authority is broader than narrow capability-like object passing; least authority is not established.",
+        "evidence": [
+          "security-ev-d9e5058dbe63c966",
+          "security-ev-a82b3596633357ce",
+          "security-ev-26e0e27f857c8d12",
+          "security-ev-0fccb67773c861f5",
+          "security-ev-81e05737eb13b422",
+          "security-ev-d388598d778f5ebe",
+          "security-ev-1ad10736ac056e4f",
+          "security-ev-b01e77f114caac22"
+        ]
+      }
+    ],
+    "CURRENT_PROPOSED_SECURITY_ARCHITECTURE": [
+      {
+        "concept": "capability-oriented extension boundaries",
+        "status": "CURRENT_OR_PROPOSED_NOT_BACKFILLED",
+        "evidence": [
+          "security-prose-bd024c40087b4836"
+        ]
+      },
+      {
+        "concept": "WASM extension/execution proposal",
+        "status": "CURRENT_OR_PROPOSED_NOT_BACKFILLED",
+        "evidence": [
+          "security-prose-712ba4dd9551284c"
+        ]
+      },
+      {
+        "concept": "explicit policy architecture",
+        "status": "CURRENT_OR_PROPOSED_NOT_BACKFILLED",
+        "evidence": [
+          "security-prose-1734b4e2e4d2ed16"
+        ]
+      },
+      {
+        "concept": "run isolation",
+        "status": "CURRENT_OR_PROPOSED_NOT_BACKFILLED",
+        "evidence": [
+          "security-prose-179f24337f97b51c"
+        ]
+      }
+    ],
+    "UNKNOWN": [
+      "whole-system provider isolation",
+      "global uniqueness",
+      "cross-thread/distributed safety",
+      "redirect trust",
+      "persistence crash atomicity",
+      "absence of all code-execution paths"
+    ]
+  }
+}

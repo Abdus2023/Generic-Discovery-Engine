@@ -1,0 +1,45 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "schema_version": "1.0",
+  "additionalProperties": true,
+  "title": "Historical property",
+  "type": "object",
+  "required": [
+    "property_id",
+    "property_type",
+    "statement",
+    "version_scope",
+    "evidence_refs",
+    "epistemic_status",
+    "historical_status"
+  ],
+  "properties": {
+    "property_type": {
+      "enum": [
+        "ALGORITHMIC",
+        "ARCHITECTURAL",
+        "BEHAVIORAL",
+        "DATA",
+        "INTERFACE",
+        "CONTRACTUAL",
+        "CONCURRENCY",
+        "FAILURE",
+        "SECURITY",
+        "PROVENANCE",
+        "OBSERVABILITY",
+        "RESOURCE",
+        "COMPATIBILITY"
+      ]
+    },
+    "epistemic_status": {
+      "enum": [
+        "PROVED",
+        "SUPPORTED",
+        "INFERRED",
+        "CONJECTURED",
+        "CONTRADICTED",
+        "UNKNOWN"
+      ]
+    }
+  }
+}

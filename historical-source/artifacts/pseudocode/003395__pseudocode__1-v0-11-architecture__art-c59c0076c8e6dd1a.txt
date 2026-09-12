@@ -1,0 +1,41 @@
+                         CANDIDATE
+                            │
+                            ▼
+                     ACQUISITION PLAN
+                            │
+                            ▼
+                         POLICY
+                            │
+                            ▼
+                        SCHEDULER
+                            │
+                            ▼
+                  ACQUISITION RUNTIME
+                            │
+                            ▼
+                  ACQUISITION PROVIDER
+                            │
+                            ▼
+                       OBSERVATION
+                            │
+                            ▼
+                 ┌─────────────────────┐
+                 │ RESPONSE ROUTER     │
+                 └──────────┬──────────┘
+                            │
+          ┌─────────────────┼─────────────────┐
+          ▼                 ▼                 ▼
+       HTML                JSON               XML
+          │                 │                 │
+          ▼                 ▼                 ▼
+     HTML Provider     JSON Provider      XML Provider
+          │                 │                 │
+          └─────────────────┼─────────────────┘
+                            ▼
+                       DISCOVERIES
+                            │
+                            ▼
+                     KNOWLEDGE BASE
+                            │
+                            ▼
+                        CANDIDATES

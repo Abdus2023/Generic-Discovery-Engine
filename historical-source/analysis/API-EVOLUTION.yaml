@@ -1,0 +1,832 @@
+{
+  "schema_version": 1,
+  "api_evolution": [
+    {
+      "symbol": "recognize",
+      "revisions": [
+        {
+          "snapshot_id": "snapshot-0001",
+          "version": "v0.1.0",
+          "variant": "mechanically-composed",
+          "signatures": [
+            "recognize(candidate, observation)"
+          ],
+          "source_artifact": "rec-dbef25f8ab917d5a"
+        },
+        {
+          "snapshot_id": "snapshot-0003",
+          "version": "v0.2.0",
+          "variant": "mechanically-composed",
+          "signatures": [
+            "recognize(/* candidate, observation */)",
+            "recognize(candidate, observation)"
+          ],
+          "source_artifact": "rec-e8df26fe56d82d1c"
+        },
+        {
+          "snapshot_id": "snapshot-0005",
+          "version": "v0.3.0",
+          "variant": "only-evidenced-complete-occurrence",
+          "signatures": [
+            "recognize(/* candidate, observation */)",
+            "recognize(candidate, observation)"
+          ],
+          "source_artifact": "art-44eb3694339abdcb"
+        },
+        {
+          "snapshot_id": "snapshot-0008",
+          "version": "v0.4.0",
+          "variant": "variant-b",
+          "signatures": [
+            "recognize()"
+          ],
+          "source_artifact": "art-c19ebb3956fba19c"
+        },
+        {
+          "snapshot_id": "snapshot-0009",
+          "version": "v0.5.0",
+          "variant": "variant-b",
+          "signatures": [
+            "recognize()"
+          ],
+          "source_artifact": "art-fbebfdf9a3874c18"
+        },
+        {
+          "snapshot_id": "snapshot-0010",
+          "version": "v0.6.0",
+          "variant": "variant-a",
+          "signatures": [
+            "recognize()"
+          ],
+          "source_artifact": "art-b1368ed9b372a6a6"
+        },
+        {
+          "snapshot_id": "snapshot-0011",
+          "version": "v0.5.0",
+          "variant": "variant-c",
+          "signatures": [
+            "recognize()",
+            "recognize(candidate, observation)"
+          ],
+          "source_artifact": "art-f019277e6c28e8f5"
+        },
+        {
+          "snapshot_id": "snapshot-0012",
+          "version": "v0.6.0",
+          "variant": "variant-b",
+          "signatures": [
+            "recognize()"
+          ],
+          "source_artifact": "art-3680c60f0bc39673"
+        },
+        {
+          "snapshot_id": "snapshot-0013",
+          "version": "v0.6.0",
+          "variant": "variant-c",
+          "signatures": [
+            "recognize(observation)"
+          ],
+          "source_artifact": "art-33fa8de51e13e087"
+        },
+        {
+          "snapshot_id": "snapshot-0014",
+          "version": "v0.7.1",
+          "variant": "only-evidenced-complete-occurrence",
+          "signatures": [
+            "recognize()",
+            "recognize(candidate, observation)"
+          ],
+          "source_artifact": "art-e0789bc8f62176cb"
+        }
+      ],
+      "normalization_performed": false
+    },
+    {
+      "symbol": "acquire",
+      "revisions": [
+        {
+          "snapshot_id": "snapshot-0001",
+          "version": "v0.1.0",
+          "variant": "mechanically-composed",
+          "signatures": [
+            "acquire(candidate)"
+          ],
+          "source_artifact": "rec-dbef25f8ab917d5a"
+        },
+        {
+          "snapshot_id": "snapshot-0003",
+          "version": "v0.2.0",
+          "variant": "mechanically-composed",
+          "signatures": [
+            "acquire(candidate)"
+          ],
+          "source_artifact": "rec-e8df26fe56d82d1c"
+        },
+        {
+          "snapshot_id": "snapshot-0005",
+          "version": "v0.3.0",
+          "variant": "only-evidenced-complete-occurrence",
+          "signatures": [
+            "acquire(candidate)"
+          ],
+          "source_artifact": "art-44eb3694339abdcb"
+        },
+        {
+          "snapshot_id": "snapshot-0006",
+          "version": "v0.4.0",
+          "variant": "variant-a",
+          "signatures": [
+            "acquire(candidate)"
+          ],
+          "source_artifact": "art-deb961ea9f622d3a"
+        },
+        {
+          "snapshot_id": "snapshot-0007",
+          "version": "v0.5.0",
+          "variant": "variant-a",
+          "signatures": [
+            "acquire(candidate)"
+          ],
+          "source_artifact": "art-2c6f74909f301798"
+        },
+        {
+          "snapshot_id": "snapshot-0008",
+          "version": "v0.4.0",
+          "variant": "variant-b",
+          "signatures": [
+            "acquire(candidate)"
+          ],
+          "source_artifact": "art-c19ebb3956fba19c"
+        },
+        {
+          "snapshot_id": "snapshot-0010",
+          "version": "v0.6.0",
+          "variant": "variant-a",
+          "signatures": [
+            "acquire(url)"
+          ],
+          "source_artifact": "art-b1368ed9b372a6a6"
+        },
+        {
+          "snapshot_id": "snapshot-0011",
+          "version": "v0.5.0",
+          "variant": "variant-c",
+          "signatures": [
+            "acquire(candidate)"
+          ],
+          "source_artifact": "art-f019277e6c28e8f5"
+        },
+        {
+          "snapshot_id": "snapshot-0012",
+          "version": "v0.6.0",
+          "variant": "variant-b",
+          "signatures": [
+            "acquire(candidate)"
+          ],
+          "source_artifact": "art-3680c60f0bc39673"
+        },
+        {
+          "snapshot_id": "snapshot-0013",
+          "version": "v0.6.0",
+          "variant": "variant-c",
+          "signatures": [
+            "acquire(url)"
+          ],
+          "source_artifact": "art-33fa8de51e13e087"
+        },
+        {
+          "snapshot_id": "snapshot-0014",
+          "version": "v0.7.1",
+          "variant": "only-evidenced-complete-occurrence",
+          "signatures": [
+            "acquire(origin)"
+          ],
+          "source_artifact": "art-e0789bc8f62176cb"
+        }
+      ],
+      "normalization_performed": false
+    },
+    {
+      "symbol": "claimNextCandidate",
+      "revisions": [
+        {
+          "snapshot_id": "snapshot-0003",
+          "version": "v0.2.0",
+          "variant": "mechanically-composed",
+          "signatures": [
+            "claimNextCandidate()"
+          ],
+          "source_artifact": "rec-e8df26fe56d82d1c"
+        },
+        {
+          "snapshot_id": "snapshot-0005",
+          "version": "v0.3.0",
+          "variant": "only-evidenced-complete-occurrence",
+          "signatures": [
+            "claimNextCandidate()"
+          ],
+          "source_artifact": "art-44eb3694339abdcb"
+        },
+        {
+          "snapshot_id": "snapshot-0006",
+          "version": "v0.4.0",
+          "variant": "variant-a",
+          "signatures": [
+            "claimNextCandidate()"
+          ],
+          "source_artifact": "art-deb961ea9f622d3a"
+        },
+        {
+          "snapshot_id": "snapshot-0007",
+          "version": "v0.5.0",
+          "variant": "variant-a",
+          "signatures": [
+            "claimNextCandidate()"
+          ],
+          "source_artifact": "art-2c6f74909f301798"
+        },
+        {
+          "snapshot_id": "snapshot-0008",
+          "version": "v0.4.0",
+          "variant": "variant-b",
+          "signatures": [
+            "claimNextCandidate()"
+          ],
+          "source_artifact": "art-c19ebb3956fba19c"
+        },
+        {
+          "snapshot_id": "snapshot-0011",
+          "version": "v0.5.0",
+          "variant": "variant-c",
+          "signatures": [
+            "claimNextCandidate()"
+          ],
+          "source_artifact": "art-f019277e6c28e8f5"
+        },
+        {
+          "snapshot_id": "snapshot-0012",
+          "version": "v0.6.0",
+          "variant": "variant-b",
+          "signatures": [
+            "claimNextCandidate()"
+          ],
+          "source_artifact": "art-3680c60f0bc39673"
+        },
+        {
+          "snapshot_id": "snapshot-0013",
+          "version": "v0.6.0",
+          "variant": "variant-c",
+          "signatures": [
+            "claimNextCandidate()"
+          ],
+          "source_artifact": "art-33fa8de51e13e087"
+        },
+        {
+          "snapshot_id": "snapshot-0014",
+          "version": "v0.7.1",
+          "variant": "only-evidenced-complete-occurrence",
+          "signatures": [
+            "claimNextCandidate()"
+          ],
+          "source_artifact": "art-e0789bc8f62176cb"
+        }
+      ],
+      "normalization_performed": false
+    },
+    {
+      "symbol": "run",
+      "revisions": [
+        {
+          "snapshot_id": "snapshot-0001",
+          "version": "v0.1.0",
+          "variant": "mechanically-composed",
+          "signatures": [
+            "run()"
+          ],
+          "source_artifact": "rec-dbef25f8ab917d5a"
+        },
+        {
+          "snapshot_id": "snapshot-0003",
+          "version": "v0.2.0",
+          "variant": "mechanically-composed",
+          "signatures": [
+            "run()"
+          ],
+          "source_artifact": "rec-e8df26fe56d82d1c"
+        },
+        {
+          "snapshot_id": "snapshot-0005",
+          "version": "v0.3.0",
+          "variant": "only-evidenced-complete-occurrence",
+          "signatures": [
+            "run()"
+          ],
+          "source_artifact": "art-44eb3694339abdcb"
+        },
+        {
+          "snapshot_id": "snapshot-0006",
+          "version": "v0.4.0",
+          "variant": "variant-a",
+          "signatures": [
+            "run()"
+          ],
+          "source_artifact": "art-deb961ea9f622d3a"
+        },
+        {
+          "snapshot_id": "snapshot-0007",
+          "version": "v0.5.0",
+          "variant": "variant-a",
+          "signatures": [
+            "run()"
+          ],
+          "source_artifact": "art-2c6f74909f301798"
+        },
+        {
+          "snapshot_id": "snapshot-0008",
+          "version": "v0.4.0",
+          "variant": "variant-b",
+          "signatures": [
+            "run()"
+          ],
+          "source_artifact": "art-c19ebb3956fba19c"
+        },
+        {
+          "snapshot_id": "snapshot-0009",
+          "version": "v0.5.0",
+          "variant": "variant-b",
+          "signatures": [
+            "run()"
+          ],
+          "source_artifact": "art-fbebfdf9a3874c18"
+        },
+        {
+          "snapshot_id": "snapshot-0010",
+          "version": "v0.6.0",
+          "variant": "variant-a",
+          "signatures": [
+            "run()"
+          ],
+          "source_artifact": "art-b1368ed9b372a6a6"
+        },
+        {
+          "snapshot_id": "snapshot-0011",
+          "version": "v0.5.0",
+          "variant": "variant-c",
+          "signatures": [
+            "run()"
+          ],
+          "source_artifact": "art-f019277e6c28e8f5"
+        },
+        {
+          "snapshot_id": "snapshot-0012",
+          "version": "v0.6.0",
+          "variant": "variant-b",
+          "signatures": [
+            "run()"
+          ],
+          "source_artifact": "art-3680c60f0bc39673"
+        }
+      ],
+      "normalization_performed": false
+    },
+    {
+      "symbol": "start",
+      "revisions": [
+        {
+          "snapshot_id": "snapshot-0013",
+          "version": "v0.6.0",
+          "variant": "variant-c",
+          "signatures": [
+            "start()"
+          ],
+          "source_artifact": "art-33fa8de51e13e087"
+        },
+        {
+          "snapshot_id": "snapshot-0014",
+          "version": "v0.7.1",
+          "variant": "only-evidenced-complete-occurrence",
+          "signatures": [
+            "start()"
+          ],
+          "source_artifact": "art-e0789bc8f62176cb"
+        }
+      ],
+      "normalization_performed": false
+    },
+    {
+      "symbol": "stop",
+      "revisions": [
+        {
+          "snapshot_id": "snapshot-0007",
+          "version": "v0.5.0",
+          "variant": "variant-a",
+          "signatures": [
+            "stop()"
+          ],
+          "source_artifact": "art-2c6f74909f301798"
+        },
+        {
+          "snapshot_id": "snapshot-0012",
+          "version": "v0.6.0",
+          "variant": "variant-b",
+          "signatures": [
+            "stop()"
+          ],
+          "source_artifact": "art-3680c60f0bc39673"
+        },
+        {
+          "snapshot_id": "snapshot-0013",
+          "version": "v0.6.0",
+          "variant": "variant-c",
+          "signatures": [
+            "stop()"
+          ],
+          "source_artifact": "art-33fa8de51e13e087"
+        },
+        {
+          "snapshot_id": "snapshot-0014",
+          "version": "v0.7.1",
+          "variant": "only-evidenced-complete-occurrence",
+          "signatures": [
+            "stop()"
+          ],
+          "source_artifact": "art-e0789bc8f62176cb"
+        }
+      ],
+      "normalization_performed": false
+    },
+    {
+      "symbol": "addCandidate",
+      "revisions": [
+        {
+          "snapshot_id": "snapshot-0001",
+          "version": "v0.1.0",
+          "variant": "mechanically-composed",
+          "signatures": [
+            "addCandidate(candidate)"
+          ],
+          "source_artifact": "rec-dbef25f8ab917d5a"
+        },
+        {
+          "snapshot_id": "snapshot-0003",
+          "version": "v0.2.0",
+          "variant": "mechanically-composed",
+          "signatures": [
+            "addCandidate(candidate)"
+          ],
+          "source_artifact": "rec-e8df26fe56d82d1c"
+        },
+        {
+          "snapshot_id": "snapshot-0005",
+          "version": "v0.3.0",
+          "variant": "only-evidenced-complete-occurrence",
+          "signatures": [
+            "addCandidate(candidate)"
+          ],
+          "source_artifact": "art-44eb3694339abdcb"
+        },
+        {
+          "snapshot_id": "snapshot-0006",
+          "version": "v0.4.0",
+          "variant": "variant-a",
+          "signatures": [
+            "addCandidate(candidate)"
+          ],
+          "source_artifact": "art-deb961ea9f622d3a"
+        },
+        {
+          "snapshot_id": "snapshot-0007",
+          "version": "v0.5.0",
+          "variant": "variant-a",
+          "signatures": [
+            "addCandidate(candidate)"
+          ],
+          "source_artifact": "art-2c6f74909f301798"
+        },
+        {
+          "snapshot_id": "snapshot-0008",
+          "version": "v0.4.0",
+          "variant": "variant-b",
+          "signatures": [
+            "addCandidate(candidate)"
+          ],
+          "source_artifact": "art-c19ebb3956fba19c"
+        },
+        {
+          "snapshot_id": "snapshot-0009",
+          "version": "v0.5.0",
+          "variant": "variant-b",
+          "signatures": [
+            "addCandidate(candidate)"
+          ],
+          "source_artifact": "art-fbebfdf9a3874c18"
+        },
+        {
+          "snapshot_id": "snapshot-0011",
+          "version": "v0.5.0",
+          "variant": "variant-c",
+          "signatures": [
+            "addCandidate(candidate)"
+          ],
+          "source_artifact": "art-f019277e6c28e8f5"
+        },
+        {
+          "snapshot_id": "snapshot-0012",
+          "version": "v0.6.0",
+          "variant": "variant-b",
+          "signatures": [
+            "addCandidate(candidate)"
+          ],
+          "source_artifact": "art-3680c60f0bc39673"
+        },
+        {
+          "snapshot_id": "snapshot-0013",
+          "version": "v0.6.0",
+          "variant": "variant-c",
+          "signatures": [
+            "addCandidate(input)"
+          ],
+          "source_artifact": "art-33fa8de51e13e087"
+        },
+        {
+          "snapshot_id": "snapshot-0014",
+          "version": "v0.7.1",
+          "variant": "only-evidenced-complete-occurrence",
+          "signatures": [
+            "addCandidate(candidate, discovery = null)"
+          ],
+          "source_artifact": "art-e0789bc8f62176cb"
+        }
+      ],
+      "normalization_performed": false
+    },
+    {
+      "symbol": "addObservation",
+      "revisions": [
+        {
+          "snapshot_id": "snapshot-0001",
+          "version": "v0.1.0",
+          "variant": "mechanically-composed",
+          "signatures": [
+            "addObservation(observation)"
+          ],
+          "source_artifact": "rec-dbef25f8ab917d5a"
+        },
+        {
+          "snapshot_id": "snapshot-0003",
+          "version": "v0.2.0",
+          "variant": "mechanically-composed",
+          "signatures": [
+            "addObservation(observation)"
+          ],
+          "source_artifact": "rec-e8df26fe56d82d1c"
+        },
+        {
+          "snapshot_id": "snapshot-0005",
+          "version": "v0.3.0",
+          "variant": "only-evidenced-complete-occurrence",
+          "signatures": [
+            "addObservation(observation)"
+          ],
+          "source_artifact": "art-44eb3694339abdcb"
+        },
+        {
+          "snapshot_id": "snapshot-0006",
+          "version": "v0.4.0",
+          "variant": "variant-a",
+          "signatures": [
+            "addObservation(observation)"
+          ],
+          "source_artifact": "art-deb961ea9f622d3a"
+        },
+        {
+          "snapshot_id": "snapshot-0011",
+          "version": "v0.5.0",
+          "variant": "variant-c",
+          "signatures": [
+            "addObservation(observation)"
+          ],
+          "source_artifact": "art-f019277e6c28e8f5"
+        },
+        {
+          "snapshot_id": "snapshot-0012",
+          "version": "v0.6.0",
+          "variant": "variant-b",
+          "signatures": [
+            "addObservation(observation)"
+          ],
+          "source_artifact": "art-3680c60f0bc39673"
+        },
+        {
+          "snapshot_id": "snapshot-0013",
+          "version": "v0.6.0",
+          "variant": "variant-c",
+          "signatures": [
+            "addObservation(observation)"
+          ],
+          "source_artifact": "art-33fa8de51e13e087"
+        }
+      ],
+      "normalization_performed": false
+    },
+    {
+      "symbol": "addDiscovery",
+      "revisions": [
+        {
+          "snapshot_id": "snapshot-0001",
+          "version": "v0.1.0",
+          "variant": "mechanically-composed",
+          "signatures": [
+            "addDiscovery(discovery)"
+          ],
+          "source_artifact": "rec-dbef25f8ab917d5a"
+        },
+        {
+          "snapshot_id": "snapshot-0003",
+          "version": "v0.2.0",
+          "variant": "mechanically-composed",
+          "signatures": [
+            "addDiscovery(discovery)"
+          ],
+          "source_artifact": "rec-e8df26fe56d82d1c"
+        },
+        {
+          "snapshot_id": "snapshot-0005",
+          "version": "v0.3.0",
+          "variant": "only-evidenced-complete-occurrence",
+          "signatures": [
+            "addDiscovery(discovery)"
+          ],
+          "source_artifact": "art-44eb3694339abdcb"
+        },
+        {
+          "snapshot_id": "snapshot-0006",
+          "version": "v0.4.0",
+          "variant": "variant-a",
+          "signatures": [
+            "addDiscovery(discovery)"
+          ],
+          "source_artifact": "art-deb961ea9f622d3a"
+        },
+        {
+          "snapshot_id": "snapshot-0007",
+          "version": "v0.5.0",
+          "variant": "variant-a",
+          "signatures": [
+            "addDiscovery(discovery)"
+          ],
+          "source_artifact": "art-2c6f74909f301798"
+        },
+        {
+          "snapshot_id": "snapshot-0008",
+          "version": "v0.4.0",
+          "variant": "variant-b",
+          "signatures": [
+            "addDiscovery(discovery)"
+          ],
+          "source_artifact": "art-c19ebb3956fba19c"
+        },
+        {
+          "snapshot_id": "snapshot-0011",
+          "version": "v0.5.0",
+          "variant": "variant-c",
+          "signatures": [
+            "addDiscovery(discovery)"
+          ],
+          "source_artifact": "art-f019277e6c28e8f5"
+        },
+        {
+          "snapshot_id": "snapshot-0012",
+          "version": "v0.6.0",
+          "variant": "variant-b",
+          "signatures": [
+            "addDiscovery(discovery)"
+          ],
+          "source_artifact": "art-3680c60f0bc39673"
+        },
+        {
+          "snapshot_id": "snapshot-0013",
+          "version": "v0.6.0",
+          "variant": "variant-c",
+          "signatures": [
+            "addDiscovery(discovery)"
+          ],
+          "source_artifact": "art-33fa8de51e13e087"
+        },
+        {
+          "snapshot_id": "snapshot-0014",
+          "version": "v0.7.1",
+          "variant": "only-evidenced-complete-occurrence",
+          "signatures": [
+            "addDiscovery(discovery)"
+          ],
+          "source_artifact": "art-e0789bc8f62176cb"
+        }
+      ],
+      "normalization_performed": false
+    },
+    {
+      "symbol": "persist",
+      "revisions": [
+        {
+          "snapshot_id": "snapshot-0001",
+          "version": "v0.1.0",
+          "variant": "mechanically-composed",
+          "signatures": [
+            "persist()"
+          ],
+          "source_artifact": "rec-dbef25f8ab917d5a"
+        },
+        {
+          "snapshot_id": "snapshot-0003",
+          "version": "v0.2.0",
+          "variant": "mechanically-composed",
+          "signatures": [
+            "persist()"
+          ],
+          "source_artifact": "rec-e8df26fe56d82d1c"
+        },
+        {
+          "snapshot_id": "snapshot-0005",
+          "version": "v0.3.0",
+          "variant": "only-evidenced-complete-occurrence",
+          "signatures": [
+            "persist()"
+          ],
+          "source_artifact": "art-44eb3694339abdcb"
+        },
+        {
+          "snapshot_id": "snapshot-0006",
+          "version": "v0.4.0",
+          "variant": "variant-a",
+          "signatures": [
+            "persist()"
+          ],
+          "source_artifact": "art-deb961ea9f622d3a"
+        },
+        {
+          "snapshot_id": "snapshot-0007",
+          "version": "v0.5.0",
+          "variant": "variant-a",
+          "signatures": [
+            "persist()"
+          ],
+          "source_artifact": "art-2c6f74909f301798"
+        },
+        {
+          "snapshot_id": "snapshot-0008",
+          "version": "v0.4.0",
+          "variant": "variant-b",
+          "signatures": [
+            "persist()"
+          ],
+          "source_artifact": "art-c19ebb3956fba19c"
+        },
+        {
+          "snapshot_id": "snapshot-0009",
+          "version": "v0.5.0",
+          "variant": "variant-b",
+          "signatures": [
+            "persist()"
+          ],
+          "source_artifact": "art-fbebfdf9a3874c18"
+        },
+        {
+          "snapshot_id": "snapshot-0010",
+          "version": "v0.6.0",
+          "variant": "variant-a",
+          "signatures": [
+            "persist()"
+          ],
+          "source_artifact": "art-b1368ed9b372a6a6"
+        },
+        {
+          "snapshot_id": "snapshot-0014",
+          "version": "v0.7.1",
+          "variant": "only-evidenced-complete-occurrence",
+          "signatures": [
+            "persist()"
+          ],
+          "source_artifact": "art-e0789bc8f62176cb"
+        }
+      ],
+      "normalization_performed": false
+    },
+    {
+      "symbol": "restore",
+      "revisions": [
+        {
+          "snapshot_id": "snapshot-0014",
+          "version": "v0.7.1",
+          "variant": "only-evidenced-complete-occurrence",
+          "signatures": [
+            "restore()",
+            "restore(data)"
+          ],
+          "source_artifact": "art-e0789bc8f62176cb"
+        }
+      ],
+      "normalization_performed": false
+    }
+  ]
+}

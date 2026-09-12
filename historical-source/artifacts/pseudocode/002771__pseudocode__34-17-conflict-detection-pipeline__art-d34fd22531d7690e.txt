@@ -1,0 +1,31 @@
+Mutation Request
+      │
+      ▼
+Validate Worker
+      │
+      ▼
+Validate Fencing
+      │
+      ▼
+Validate Expected Version
+      │
+      ├───────────────┐
+      │               │
+      ▼               ▼
+    VALID           STALE
+      │               │
+      ▼               ▼
+   COMMIT         ConflictRecord
+      │               │
+      ▼               ▼
+ New Version      ConflictClassifier
+                      │
+              ┌───────┴────────┐
+              ▼                ▼
+         Auto-resolve      Unresolved
+              │                │
+              ▼                ▼
+        ResolutionEvent    Review Queue
+              │
+              ▼
+        Materialized State

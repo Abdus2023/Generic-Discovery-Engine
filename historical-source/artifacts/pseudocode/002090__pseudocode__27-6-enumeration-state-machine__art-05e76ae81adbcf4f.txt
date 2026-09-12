@@ -1,0 +1,21 @@
+UNINITIALIZED
+      ↓
+INITIALIZED
+      ↓
+ENUMERATING
+      ↓
+PAGE_OBSERVED
+      ↓
+CHECKPOINTED
+      ↓
+ENUMERATING
+      │
+      ├── MORE
+      │    ↓
+      │  ENUMERATING
+      │
+      └── NO_MORE
+           ↓
+       TERMINATED
+           ↓
+     COMPLETENESS ASSESSMENT

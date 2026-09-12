@@ -1,0 +1,15 @@
+                    acquisition
+                         │
+             ┌───────────┴───────────┐
+             │                       │
+         network                 browser
+             │                       │
+       ┌─────┴─────┐           ┌─────┴─────┐
+       │           │           │           │
+      HTTP       DNS*       context     session*
+       │
+   ┌───┴────┐
+   │        │
+  GET    binary
+   │
+ textual

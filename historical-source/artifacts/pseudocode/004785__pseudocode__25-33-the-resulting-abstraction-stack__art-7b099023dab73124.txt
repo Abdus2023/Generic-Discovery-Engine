@@ -1,0 +1,49 @@
+                    USER / APPLICATION
+                           │
+                           ▼
+                         GOAL
+                           │
+                           ▼
+                    QUERY PLANNER
+                           │
+                           ▼
+                      QUERY PLAN
+                           │
+                           ▼
+                  RELEVANT SEARCH SPACE
+                           │
+                           ▼
+                 DISCOVERY STRATEGIES
+                           │
+                           ▼
+                    FRONTIER RUNTIME
+                           │
+                           ▼
+                  ACQUISITION RUNTIME
+                           │
+                           ▼
+                  ACQUISITION PROVIDER
+                           │
+                           ▼
+                      OBSERVATION
+                           │
+                           ▼
+                 RECOGNITION RUNTIME
+                           │
+                           ▼
+                       EVIDENCE
+                           │
+             ┌─────────────┴─────────────┐
+             ▼                           ▼
+         RESOURCE                  CLASSIFICATION
+             │                           │
+             └─────────────┬─────────────┘
+                           ▼
+                       RELEVANCE
+                           │
+                           ▼
+                       RESULTS
+                           │
+                 ┌─────────┴─────────┐
+                 ▼                   ▼
+             COVERAGE           COMPLETENESS

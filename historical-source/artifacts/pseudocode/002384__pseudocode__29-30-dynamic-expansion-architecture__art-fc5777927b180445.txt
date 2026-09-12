@@ -1,0 +1,21 @@
+                         OBSERVATION
+                              │
+                              ▼
+                           EVIDENCE
+                              │
+                 ┌────────────┴────────────┐
+                 ▼                         ▼
+          CandidateProposal        PartitionProposal
+                 │                         │
+                 ▼                         ▼
+       CandidateNormalizer       PartitionAdmission
+                 │                         │
+                 ▼                         ▼
+             Candidate               SearchPartition
+                 │                         │
+                 │                         ▼
+                 │                  FrontierRuntime
+                 │                         │
+                 └────────────┬────────────┘
+                              ▼
+                         NEW WORK

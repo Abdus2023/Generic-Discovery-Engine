@@ -1,0 +1,267 @@
+{
+  "schema_version": 8,
+  "builder": "security-archaeology-builder-v8",
+  "model_kind": "DERIVED_SECURITY_ARCHAEOLOGY_NOT_SOURCE",
+  "snapshots": [
+    {
+      "snapshot_id": "snapshot-0001",
+      "version": "v0.1.0",
+      "variant": "mechanically-composed",
+      "timeout_scope": "REQUEST_TIMEOUT",
+      "configured_value": "8000",
+      "detection": "TIMEOUT_CALLBACK",
+      "cancellation": "USERSCRIPT_API_TIMEOUT_PLATFORM_BEHAVIOR",
+      "cleanup": "UNKNOWN",
+      "retry": "NOT_EVIDENCED",
+      "failure_recording": "SUPPORTED",
+      "candidate_timeout": "NOT_EVIDENCED",
+      "worker_timeout": "NOT_EVIDENCED",
+      "scan_timeout": "NOT_EVIDENCED",
+      "global_timeout": "NOT_EVIDENCED",
+      "evidence": [
+        "security-ev-530e5c93b3b1af3f",
+        "security-ev-727ac7ab39e0a50a"
+      ]
+    },
+    {
+      "snapshot_id": "snapshot-0003",
+      "version": "v0.2.0",
+      "variant": "mechanically-composed",
+      "timeout_scope": "REQUEST_TIMEOUT",
+      "configured_value": "8000",
+      "detection": "TIMEOUT_CALLBACK",
+      "cancellation": "USERSCRIPT_API_TIMEOUT_PLATFORM_BEHAVIOR",
+      "cleanup": "UNKNOWN",
+      "retry": "NOT_EVIDENCED",
+      "failure_recording": "SUPPORTED",
+      "candidate_timeout": "NOT_EVIDENCED",
+      "worker_timeout": "NOT_EVIDENCED",
+      "scan_timeout": "NOT_EVIDENCED",
+      "global_timeout": "NOT_EVIDENCED",
+      "evidence": [
+        "security-ev-46855021b9972193",
+        "security-ev-1153fc8a1f247bb8"
+      ]
+    },
+    {
+      "snapshot_id": "snapshot-0005",
+      "version": "v0.3.0",
+      "variant": "only-evidenced-complete-occurrence",
+      "timeout_scope": "REQUEST_TIMEOUT",
+      "configured_value": "8000",
+      "detection": "TIMEOUT_CALLBACK",
+      "cancellation": "ABORTCONTROLLER_PATH",
+      "cleanup": "SUPPORTED_TIMER_CLEAR",
+      "retry": "IMPLEMENTED",
+      "failure_recording": "SUPPORTED",
+      "candidate_timeout": "NOT_EVIDENCED",
+      "worker_timeout": "NOT_EVIDENCED",
+      "scan_timeout": "NOT_EVIDENCED",
+      "global_timeout": "NOT_EVIDENCED",
+      "evidence": [
+        "security-ev-7a754fe41348901a",
+        "security-ev-7a18ff98f6586b12",
+        "security-ev-5d4d36f5a43b7a91",
+        "security-ev-a9a037cdb5d0147d"
+      ]
+    },
+    {
+      "snapshot_id": "snapshot-0006",
+      "version": "v0.4.0",
+      "variant": "variant-a",
+      "timeout_scope": "REQUEST_TIMEOUT",
+      "configured_value": "8000",
+      "detection": "TIMEOUT_CALLBACK",
+      "cancellation": "ABORTCONTROLLER_PATH",
+      "cleanup": "SUPPORTED_TIMER_CLEAR",
+      "retry": "IMPLEMENTED",
+      "failure_recording": "SUPPORTED",
+      "candidate_timeout": "NOT_EVIDENCED",
+      "worker_timeout": "NOT_EVIDENCED",
+      "scan_timeout": "NOT_EVIDENCED",
+      "global_timeout": "NOT_EVIDENCED",
+      "evidence": [
+        "security-ev-4f868a87782c1049",
+        "security-ev-17e6f12150090fbe",
+        "security-ev-634f621ca82aa1cb",
+        "security-ev-056b86a60f4b69b3"
+      ]
+    },
+    {
+      "snapshot_id": "snapshot-0008",
+      "version": "v0.4.0",
+      "variant": "variant-b",
+      "timeout_scope": "REQUEST_TIMEOUT",
+      "configured_value": "8000",
+      "detection": "TIMEOUT_CALLBACK",
+      "cancellation": "ABORTCONTROLLER_PATH",
+      "cleanup": "SUPPORTED_TIMER_CLEAR",
+      "retry": "IMPLEMENTED",
+      "failure_recording": "SUPPORTED",
+      "candidate_timeout": "NOT_EVIDENCED",
+      "worker_timeout": "NOT_EVIDENCED",
+      "scan_timeout": "NOT_EVIDENCED",
+      "global_timeout": "NOT_EVIDENCED",
+      "evidence": [
+        "security-ev-8a455c9b2af9b9be",
+        "security-ev-0f9c5c564a4737b0",
+        "security-ev-0a7ae574de8e714c",
+        "security-ev-2b7edad99e13ae3e"
+      ]
+    },
+    {
+      "snapshot_id": "snapshot-0007",
+      "version": "v0.5.0",
+      "variant": "variant-a",
+      "timeout_scope": "REQUEST_TIMEOUT",
+      "configured_value": "8000",
+      "detection": "TIMEOUT_CALLBACK",
+      "cancellation": "ABORTCONTROLLER_PATH",
+      "cleanup": "SUPPORTED_TIMER_CLEAR",
+      "retry": "IMPLEMENTED",
+      "failure_recording": "SUPPORTED",
+      "candidate_timeout": "NOT_EVIDENCED",
+      "worker_timeout": "NOT_EVIDENCED",
+      "scan_timeout": "NOT_EVIDENCED",
+      "global_timeout": "NOT_EVIDENCED",
+      "evidence": [
+        "security-ev-40906d859e747688",
+        "security-ev-0c778b4fa17d9fc9",
+        "security-ev-9c06f06c3d68a68b",
+        "security-ev-e5162d0743aa14b2"
+      ]
+    },
+    {
+      "snapshot_id": "snapshot-0009",
+      "version": "v0.5.0",
+      "variant": "variant-b",
+      "timeout_scope": "REQUEST_TIMEOUT",
+      "configured_value": "8000",
+      "detection": "TIMEOUT_CALLBACK",
+      "cancellation": "ABORTCONTROLLER_PATH",
+      "cleanup": "SUPPORTED_TIMER_CLEAR",
+      "retry": "IMPLEMENTED",
+      "failure_recording": "SUPPORTED",
+      "candidate_timeout": "NOT_EVIDENCED",
+      "worker_timeout": "NOT_EVIDENCED",
+      "scan_timeout": "NOT_EVIDENCED",
+      "global_timeout": "NOT_EVIDENCED",
+      "evidence": [
+        "security-ev-9afbabc94c9435de",
+        "security-ev-0d1a4f8ba4153271",
+        "security-ev-7fea04cdc6a53c2e",
+        "security-ev-1326124bdf04c4c6"
+      ]
+    },
+    {
+      "snapshot_id": "snapshot-0011",
+      "version": "v0.5.0",
+      "variant": "variant-c",
+      "timeout_scope": "REQUEST_TIMEOUT",
+      "configured_value": "8000",
+      "detection": "TIMEOUT_CALLBACK",
+      "cancellation": "ABORTCONTROLLER_PATH",
+      "cleanup": "SUPPORTED_TIMER_CLEAR",
+      "retry": "IMPLEMENTED",
+      "failure_recording": "SUPPORTED",
+      "candidate_timeout": "NOT_EVIDENCED",
+      "worker_timeout": "NOT_EVIDENCED",
+      "scan_timeout": "NOT_EVIDENCED",
+      "global_timeout": "NOT_EVIDENCED",
+      "evidence": [
+        "security-ev-2772b223730d16c1",
+        "security-ev-e07c49ef6ff4e2b9",
+        "security-ev-cf9e544367d8dd9a",
+        "security-ev-74ec4239e59b3c41"
+      ]
+    },
+    {
+      "snapshot_id": "snapshot-0010",
+      "version": "v0.6.0",
+      "variant": "variant-a",
+      "timeout_scope": "REQUEST_TIMEOUT",
+      "configured_value": "8000",
+      "detection": "TIMEOUT_CALLBACK",
+      "cancellation": "ABORTCONTROLLER_PATH",
+      "cleanup": "SUPPORTED_TIMER_CLEAR",
+      "retry": "IMPLEMENTED",
+      "failure_recording": "SUPPORTED",
+      "candidate_timeout": "NOT_EVIDENCED",
+      "worker_timeout": "NOT_EVIDENCED",
+      "scan_timeout": "NOT_EVIDENCED",
+      "global_timeout": "NOT_EVIDENCED",
+      "evidence": [
+        "security-ev-93a761f3b1805ee9",
+        "security-ev-ff8456ccc7cf139f",
+        "security-ev-e6f3dd76197c9581",
+        "security-ev-a9bc870bc0adcb62"
+      ]
+    },
+    {
+      "snapshot_id": "snapshot-0012",
+      "version": "v0.6.0",
+      "variant": "variant-b",
+      "timeout_scope": "REQUEST_TIMEOUT",
+      "configured_value": "8000",
+      "detection": "TIMEOUT_CALLBACK",
+      "cancellation": "ABORTCONTROLLER_PATH",
+      "cleanup": "SUPPORTED_TIMER_CLEAR",
+      "retry": "IMPLEMENTED",
+      "failure_recording": "SUPPORTED",
+      "candidate_timeout": "NOT_EVIDENCED",
+      "worker_timeout": "NOT_EVIDENCED",
+      "scan_timeout": "NOT_EVIDENCED",
+      "global_timeout": "NOT_EVIDENCED",
+      "evidence": [
+        "security-ev-95ca4c6ba9667eee",
+        "security-ev-03169cf860fd9e14",
+        "security-ev-98eff4ddf0ff6d48",
+        "security-ev-62110bba738c4335"
+      ]
+    },
+    {
+      "snapshot_id": "snapshot-0013",
+      "version": "v0.6.0",
+      "variant": "variant-c",
+      "timeout_scope": "REQUEST_TIMEOUT",
+      "configured_value": "8000",
+      "detection": "TIMEOUT_CALLBACK",
+      "cancellation": "ABORTCONTROLLER_PATH",
+      "cleanup": "SUPPORTED_TIMER_CLEAR",
+      "retry": "IMPLEMENTED",
+      "failure_recording": "SUPPORTED",
+      "candidate_timeout": "NOT_EVIDENCED",
+      "worker_timeout": "NOT_EVIDENCED",
+      "scan_timeout": "NOT_EVIDENCED",
+      "global_timeout": "NOT_EVIDENCED",
+      "evidence": [
+        "security-ev-8a745601c8b99944",
+        "security-ev-f02bc5ee8b3e8989",
+        "security-ev-dc70f73d1880b10e",
+        "security-ev-d882f7ef1713b96c"
+      ]
+    },
+    {
+      "snapshot_id": "snapshot-0014",
+      "version": "v0.7.1",
+      "variant": "only-evidenced-complete-occurrence",
+      "timeout_scope": "REQUEST_TIMEOUT",
+      "configured_value": "8000",
+      "detection": "TIMEOUT_CALLBACK",
+      "cancellation": "ABORTCONTROLLER_PATH",
+      "cleanup": "SUPPORTED_TIMER_CLEAR",
+      "retry": "CONFIGURED_WITHOUT_COMPLETE_PATH_PROOF",
+      "failure_recording": "SUPPORTED",
+      "candidate_timeout": "NOT_EVIDENCED",
+      "worker_timeout": "NOT_EVIDENCED",
+      "scan_timeout": "NOT_EVIDENCED",
+      "global_timeout": "NOT_EVIDENCED",
+      "evidence": [
+        "security-ev-1c4e952c7b476d12",
+        "security-ev-7ee1b7b17364d5d0",
+        "security-ev-3dd2db87b8729c24",
+        "security-ev-9ac9c9eb9c06ac69"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,47 @@
+                         SEARCH DOMAIN
+                              │
+                              ▼
+                         SEARCH SPACE
+                              │
+                              ▼
+                       COVERAGE MODEL
+                              │
+             ┌────────────────┼────────────────┐
+             │                │                │
+         EXPLORED         UNEXPLORED      INACCESSIBLE
+             │
+             ▼
+        DISCOVERY
+             │
+             ▼
+       ACQUISITION
+             │
+             ▼
+        OBSERVATION
+             │
+             ▼
+          EVIDENCE
+             │
+      ┌──────┴──────┐
+      │             │
+ POSITIVE       NEGATIVE
+ EVIDENCE       EVIDENCE
+      │             │
+      ▼             ▼
+ PRESENCE        ABSENCE
+  CLAIM           CLAIM
+      │             │
+      └──────┬──────┘
+             ▼
+       CLAIM GRAPH
+             │
+      ┌──────┴──────┐
+      │             │
+   SUPPORTS      CONTRADICTS
+      │             │
+      └──────┬──────┘
+             ▼
+       ASSURANCE LAYER
+             │
+             ▼
+       COMPLETENESS

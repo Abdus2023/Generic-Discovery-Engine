@@ -1,0 +1,5 @@
+{
+    termination: {
+        mode: 'first-match'
+    }
+}

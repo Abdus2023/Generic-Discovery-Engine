@@ -1,0 +1,619 @@
+{
+  "schema_version": 8,
+  "builder": "security-archaeology-builder-v8",
+  "model_kind": "DERIVED_SECURITY_ARCHAEOLOGY_NOT_SOURCE",
+  "snapshots": [
+    {
+      "snapshot_id": "snapshot-0001",
+      "version": "v0.1.0",
+      "variant": "mechanically-composed",
+      "edges": [
+        {
+          "from": "Discovery",
+          "to": "Observation",
+          "field": "observationId",
+          "status": "EXPLICIT_STORED_IDENTIFIER",
+          "evidence": [
+            "security-ev-d64c4269c0f700b3"
+          ]
+        },
+        {
+          "from": "Observation",
+          "to": "Candidate",
+          "field": "candidateId",
+          "status": "EXPLICIT_STORED_IDENTIFIER",
+          "evidence": [
+            "security-ev-04a1849bf2b86df6"
+          ]
+        },
+        {
+          "from": "Candidate",
+          "to": "Parent Candidate",
+          "field": "parent",
+          "status": "STORED_REFERENCE",
+          "evidence": [
+            "security-ev-58523db917b3633b"
+          ]
+        },
+        {
+          "from": "Parent Candidate",
+          "to": "Seed",
+          "field": "origin",
+          "status": "STORED_ORIGIN_LABEL_SEED_RECONSTRUCTION_UNKNOWN",
+          "evidence": [
+            "security-ev-650e0f4f98cc7e85"
+          ]
+        }
+      ],
+      "end_to_end_traceability": "PARTIAL",
+      "integrity_guarantee": "NOT_ESTABLISHED",
+      "evidence": [
+        "security-ev-d64c4269c0f700b3",
+        "security-ev-04a1849bf2b86df6",
+        "security-ev-58523db917b3633b",
+        "security-ev-650e0f4f98cc7e85"
+      ]
+    },
+    {
+      "snapshot_id": "snapshot-0003",
+      "version": "v0.2.0",
+      "variant": "mechanically-composed",
+      "edges": [
+        {
+          "from": "Discovery",
+          "to": "Observation",
+          "field": "observationId",
+          "status": "EXPLICIT_STORED_IDENTIFIER",
+          "evidence": [
+            "security-ev-3ffeb0ac0971fdc5"
+          ]
+        },
+        {
+          "from": "Observation",
+          "to": "Candidate",
+          "field": "candidateId",
+          "status": "EXPLICIT_STORED_IDENTIFIER",
+          "evidence": [
+            "security-ev-a06f12c582ac764c"
+          ]
+        },
+        {
+          "from": "Candidate",
+          "to": "Parent Candidate",
+          "field": "parent",
+          "status": "STORED_REFERENCE",
+          "evidence": [
+            "security-ev-07758f0ce49c6e8c"
+          ]
+        },
+        {
+          "from": "Parent Candidate",
+          "to": "Seed",
+          "field": "origin",
+          "status": "STORED_ORIGIN_LABEL_SEED_RECONSTRUCTION_UNKNOWN",
+          "evidence": [
+            "security-ev-6fb1ed784d1bee52"
+          ]
+        }
+      ],
+      "end_to_end_traceability": "PARTIAL",
+      "integrity_guarantee": "NOT_ESTABLISHED",
+      "evidence": [
+        "security-ev-3ffeb0ac0971fdc5",
+        "security-ev-a06f12c582ac764c",
+        "security-ev-07758f0ce49c6e8c",
+        "security-ev-6fb1ed784d1bee52"
+      ]
+    },
+    {
+      "snapshot_id": "snapshot-0005",
+      "version": "v0.3.0",
+      "variant": "only-evidenced-complete-occurrence",
+      "edges": [
+        {
+          "from": "Discovery",
+          "to": "Observation",
+          "field": "observationId",
+          "status": "EXPLICIT_STORED_IDENTIFIER",
+          "evidence": [
+            "security-ev-61d9257349665422"
+          ]
+        },
+        {
+          "from": "Observation",
+          "to": "Candidate",
+          "field": "candidateId",
+          "status": "EXPLICIT_STORED_IDENTIFIER",
+          "evidence": [
+            "security-ev-6744aa8f4da06977"
+          ]
+        },
+        {
+          "from": "Candidate",
+          "to": "Parent Candidate",
+          "field": "parent",
+          "status": "STORED_REFERENCE",
+          "evidence": [
+            "security-ev-4050635ed8f1ac9c"
+          ]
+        },
+        {
+          "from": "Parent Candidate",
+          "to": "Seed",
+          "field": "origin",
+          "status": "STORED_ORIGIN_LABEL_SEED_RECONSTRUCTION_UNKNOWN",
+          "evidence": [
+            "security-ev-0ef2bb67b43dd064"
+          ]
+        }
+      ],
+      "end_to_end_traceability": "PARTIAL",
+      "integrity_guarantee": "NOT_ESTABLISHED",
+      "evidence": [
+        "security-ev-61d9257349665422",
+        "security-ev-6744aa8f4da06977",
+        "security-ev-4050635ed8f1ac9c",
+        "security-ev-0ef2bb67b43dd064"
+      ]
+    },
+    {
+      "snapshot_id": "snapshot-0006",
+      "version": "v0.4.0",
+      "variant": "variant-a",
+      "edges": [
+        {
+          "from": "Discovery",
+          "to": "Observation",
+          "field": "observationId",
+          "status": "EXPLICIT_STORED_IDENTIFIER",
+          "evidence": [
+            "security-ev-d4dbac1166faa672"
+          ]
+        },
+        {
+          "from": "Observation",
+          "to": "Candidate",
+          "field": "candidateId",
+          "status": "EXPLICIT_STORED_IDENTIFIER",
+          "evidence": [
+            "security-ev-e873a22416ed1fec"
+          ]
+        },
+        {
+          "from": "Candidate",
+          "to": "Parent Candidate",
+          "field": "parent",
+          "status": "STORED_REFERENCE",
+          "evidence": [
+            "security-ev-7b8fe91e91fef18f"
+          ]
+        },
+        {
+          "from": "Parent Candidate",
+          "to": "Seed",
+          "field": "origin",
+          "status": "STORED_ORIGIN_LABEL_SEED_RECONSTRUCTION_UNKNOWN",
+          "evidence": [
+            "security-ev-5dddbf99137ffccc"
+          ]
+        }
+      ],
+      "end_to_end_traceability": "PARTIAL",
+      "integrity_guarantee": "NOT_ESTABLISHED",
+      "evidence": [
+        "security-ev-d4dbac1166faa672",
+        "security-ev-e873a22416ed1fec",
+        "security-ev-7b8fe91e91fef18f",
+        "security-ev-5dddbf99137ffccc"
+      ]
+    },
+    {
+      "snapshot_id": "snapshot-0008",
+      "version": "v0.4.0",
+      "variant": "variant-b",
+      "edges": [
+        {
+          "from": "Discovery",
+          "to": "Observation",
+          "field": "observationId",
+          "status": "EXPLICIT_STORED_IDENTIFIER",
+          "evidence": [
+            "security-ev-682da086115e60d2"
+          ]
+        },
+        {
+          "from": "Observation",
+          "to": "Candidate",
+          "field": "candidateId",
+          "status": "EXPLICIT_STORED_IDENTIFIER",
+          "evidence": [
+            "security-ev-3abdc9651156a859"
+          ]
+        },
+        {
+          "from": "Candidate",
+          "to": "Parent Candidate",
+          "field": "parent",
+          "status": "STORED_REFERENCE",
+          "evidence": [
+            "security-ev-4868f0d3dd51a31c"
+          ]
+        },
+        {
+          "from": "Parent Candidate",
+          "to": "Seed",
+          "field": "origin",
+          "status": "STORED_ORIGIN_LABEL_SEED_RECONSTRUCTION_UNKNOWN",
+          "evidence": [
+            "security-ev-df54e8f3ec6b7eee"
+          ]
+        }
+      ],
+      "end_to_end_traceability": "PARTIAL",
+      "integrity_guarantee": "NOT_ESTABLISHED",
+      "evidence": [
+        "security-ev-682da086115e60d2",
+        "security-ev-3abdc9651156a859",
+        "security-ev-4868f0d3dd51a31c",
+        "security-ev-df54e8f3ec6b7eee"
+      ]
+    },
+    {
+      "snapshot_id": "snapshot-0007",
+      "version": "v0.5.0",
+      "variant": "variant-a",
+      "edges": [
+        {
+          "from": "Discovery",
+          "to": "Observation",
+          "field": "observationId",
+          "status": "EXPLICIT_STORED_IDENTIFIER",
+          "evidence": [
+            "security-ev-e9789eaf1a754667"
+          ]
+        },
+        {
+          "from": "Observation",
+          "to": "Candidate",
+          "field": "candidateId",
+          "status": "EXPLICIT_STORED_IDENTIFIER",
+          "evidence": [
+            "security-ev-f688e83edfc47b33"
+          ]
+        },
+        {
+          "from": "Candidate",
+          "to": "Parent Candidate",
+          "field": "parent",
+          "status": "STORED_REFERENCE",
+          "evidence": [
+            "security-ev-0927a88331d843d7"
+          ]
+        },
+        {
+          "from": "Parent Candidate",
+          "to": "Seed",
+          "field": "origin",
+          "status": "STORED_ORIGIN_LABEL_SEED_RECONSTRUCTION_UNKNOWN",
+          "evidence": [
+            "security-ev-b73419bb55e69489"
+          ]
+        }
+      ],
+      "end_to_end_traceability": "PARTIAL",
+      "integrity_guarantee": "NOT_ESTABLISHED",
+      "evidence": [
+        "security-ev-e9789eaf1a754667",
+        "security-ev-f688e83edfc47b33",
+        "security-ev-0927a88331d843d7",
+        "security-ev-b73419bb55e69489"
+      ]
+    },
+    {
+      "snapshot_id": "snapshot-0009",
+      "version": "v0.5.0",
+      "variant": "variant-b",
+      "edges": [
+        {
+          "from": "Discovery",
+          "to": "Observation",
+          "field": "observationId",
+          "status": "EXPLICIT_STORED_IDENTIFIER",
+          "evidence": [
+            "security-ev-43248758212fd585"
+          ]
+        },
+        {
+          "from": "Observation",
+          "to": "Candidate",
+          "field": "candidateId",
+          "status": "EXPLICIT_STORED_IDENTIFIER",
+          "evidence": [
+            "security-ev-9c623cea7d297954"
+          ]
+        },
+        {
+          "from": "Candidate",
+          "to": "Parent Candidate",
+          "field": "parent",
+          "status": "STORED_REFERENCE",
+          "evidence": [
+            "security-ev-072997bf1659ecfa"
+          ]
+        },
+        {
+          "from": "Parent Candidate",
+          "to": "Seed",
+          "field": "origin",
+          "status": "STORED_ORIGIN_LABEL_SEED_RECONSTRUCTION_UNKNOWN",
+          "evidence": [
+            "security-ev-baad3c29adefd9bd"
+          ]
+        }
+      ],
+      "end_to_end_traceability": "PARTIAL",
+      "integrity_guarantee": "NOT_ESTABLISHED",
+      "evidence": [
+        "security-ev-43248758212fd585",
+        "security-ev-9c623cea7d297954",
+        "security-ev-072997bf1659ecfa",
+        "security-ev-baad3c29adefd9bd"
+      ]
+    },
+    {
+      "snapshot_id": "snapshot-0011",
+      "version": "v0.5.0",
+      "variant": "variant-c",
+      "edges": [
+        {
+          "from": "Discovery",
+          "to": "Observation",
+          "field": "observationId",
+          "status": "EXPLICIT_STORED_IDENTIFIER",
+          "evidence": [
+            "security-ev-0fe8a8134e652c18"
+          ]
+        },
+        {
+          "from": "Observation",
+          "to": "Candidate",
+          "field": "candidateId",
+          "status": "EXPLICIT_STORED_IDENTIFIER",
+          "evidence": [
+            "security-ev-a15a8673c4772f5c"
+          ]
+        },
+        {
+          "from": "Candidate",
+          "to": "Parent Candidate",
+          "field": "parent",
+          "status": "STORED_REFERENCE",
+          "evidence": [
+            "security-ev-d949a20f759777c7"
+          ]
+        },
+        {
+          "from": "Parent Candidate",
+          "to": "Seed",
+          "field": "origin",
+          "status": "STORED_ORIGIN_LABEL_SEED_RECONSTRUCTION_UNKNOWN",
+          "evidence": [
+            "security-ev-f27063b5fbac7f4a"
+          ]
+        }
+      ],
+      "end_to_end_traceability": "PARTIAL",
+      "integrity_guarantee": "NOT_ESTABLISHED",
+      "evidence": [
+        "security-ev-0fe8a8134e652c18",
+        "security-ev-a15a8673c4772f5c",
+        "security-ev-d949a20f759777c7",
+        "security-ev-f27063b5fbac7f4a"
+      ]
+    },
+    {
+      "snapshot_id": "snapshot-0010",
+      "version": "v0.6.0",
+      "variant": "variant-a",
+      "edges": [
+        {
+          "from": "Discovery",
+          "to": "Observation",
+          "field": "observationId",
+          "status": "EXPLICIT_STORED_IDENTIFIER",
+          "evidence": [
+            "security-ev-1b911f7578ffc1b9"
+          ]
+        },
+        {
+          "from": "Observation",
+          "to": "Candidate",
+          "field": "candidateId",
+          "status": "EXPLICIT_STORED_IDENTIFIER",
+          "evidence": [
+            "security-ev-f87c9f4a3e7af9c3"
+          ]
+        },
+        {
+          "from": "Candidate",
+          "to": "Parent Candidate",
+          "field": "parent",
+          "status": "STORED_REFERENCE",
+          "evidence": [
+            "security-ev-00b5d99b2ef799db"
+          ]
+        },
+        {
+          "from": "Parent Candidate",
+          "to": "Seed",
+          "field": "origin",
+          "status": "STORED_ORIGIN_LABEL_SEED_RECONSTRUCTION_UNKNOWN",
+          "evidence": [
+            "security-ev-e9f8991952b5fdff"
+          ]
+        }
+      ],
+      "end_to_end_traceability": "PARTIAL",
+      "integrity_guarantee": "NOT_ESTABLISHED",
+      "evidence": [
+        "security-ev-1b911f7578ffc1b9",
+        "security-ev-f87c9f4a3e7af9c3",
+        "security-ev-00b5d99b2ef799db",
+        "security-ev-e9f8991952b5fdff"
+      ]
+    },
+    {
+      "snapshot_id": "snapshot-0012",
+      "version": "v0.6.0",
+      "variant": "variant-b",
+      "edges": [
+        {
+          "from": "Discovery",
+          "to": "Observation",
+          "field": "observationId",
+          "status": "EXPLICIT_STORED_IDENTIFIER",
+          "evidence": [
+            "security-ev-44230bb705d86b81"
+          ]
+        },
+        {
+          "from": "Observation",
+          "to": "Candidate",
+          "field": "candidateId",
+          "status": "EXPLICIT_STORED_IDENTIFIER",
+          "evidence": [
+            "security-ev-5b27f19399da3af9"
+          ]
+        },
+        {
+          "from": "Candidate",
+          "to": "Parent Candidate",
+          "field": "parent",
+          "status": "STORED_REFERENCE",
+          "evidence": [
+            "security-ev-6be09cf1f8eabdf1"
+          ]
+        },
+        {
+          "from": "Parent Candidate",
+          "to": "Seed",
+          "field": "origin",
+          "status": "STORED_ORIGIN_LABEL_SEED_RECONSTRUCTION_UNKNOWN",
+          "evidence": [
+            "security-ev-a16000a4f6ce52fd"
+          ]
+        }
+      ],
+      "end_to_end_traceability": "PARTIAL",
+      "integrity_guarantee": "NOT_ESTABLISHED",
+      "evidence": [
+        "security-ev-44230bb705d86b81",
+        "security-ev-5b27f19399da3af9",
+        "security-ev-6be09cf1f8eabdf1",
+        "security-ev-a16000a4f6ce52fd"
+      ]
+    },
+    {
+      "snapshot_id": "snapshot-0013",
+      "version": "v0.6.0",
+      "variant": "variant-c",
+      "edges": [
+        {
+          "from": "Discovery",
+          "to": "Observation",
+          "field": "observationId",
+          "status": "EXPLICIT_STORED_IDENTIFIER",
+          "evidence": [
+            "security-ev-b120bb6a14bbf209"
+          ]
+        },
+        {
+          "from": "Observation",
+          "to": "Candidate",
+          "field": "candidateId",
+          "status": "EXPLICIT_STORED_IDENTIFIER",
+          "evidence": [
+            "security-ev-6316789f73993ffb"
+          ]
+        },
+        {
+          "from": "Candidate",
+          "to": "Parent Candidate",
+          "field": "parent",
+          "status": "STORED_REFERENCE",
+          "evidence": [
+            "security-ev-705811d8c7d7958d"
+          ]
+        },
+        {
+          "from": "Parent Candidate",
+          "to": "Seed",
+          "field": "origin",
+          "status": "STORED_ORIGIN_LABEL_SEED_RECONSTRUCTION_UNKNOWN",
+          "evidence": [
+            "security-ev-b7a335f29a5ab807"
+          ]
+        }
+      ],
+      "end_to_end_traceability": "PARTIAL",
+      "integrity_guarantee": "NOT_ESTABLISHED",
+      "evidence": [
+        "security-ev-b120bb6a14bbf209",
+        "security-ev-6316789f73993ffb",
+        "security-ev-705811d8c7d7958d",
+        "security-ev-b7a335f29a5ab807"
+      ]
+    },
+    {
+      "snapshot_id": "snapshot-0014",
+      "version": "v0.7.1",
+      "variant": "only-evidenced-complete-occurrence",
+      "edges": [
+        {
+          "from": "Discovery",
+          "to": "Observation",
+          "field": "observationId",
+          "status": "EXPLICIT_STORED_IDENTIFIER",
+          "evidence": [
+            "security-ev-ba6a4804bb5fb6d4"
+          ]
+        },
+        {
+          "from": "Observation",
+          "to": "Candidate",
+          "field": "candidateId",
+          "status": "EXPLICIT_STORED_IDENTIFIER",
+          "evidence": [
+            "security-ev-40cb4681d5d70f23"
+          ]
+        },
+        {
+          "from": "Candidate",
+          "to": "Parent Candidate",
+          "field": "parent",
+          "status": "STORED_REFERENCE",
+          "evidence": [
+            "security-ev-90568e12d0b23229"
+          ]
+        },
+        {
+          "from": "Parent Candidate",
+          "to": "Seed",
+          "field": "origin",
+          "status": "STORED_ORIGIN_LABEL_SEED_RECONSTRUCTION_UNKNOWN",
+          "evidence": [
+            "security-ev-14c10df0776ba1f4"
+          ]
+        }
+      ],
+      "end_to_end_traceability": "PARTIAL",
+      "integrity_guarantee": "NOT_ESTABLISHED",
+      "evidence": [
+        "security-ev-ba6a4804bb5fb6d4",
+        "security-ev-40cb4681d5d70f23",
+        "security-ev-90568e12d0b23229",
+        "security-ev-14c10df0776ba1f4"
+      ]
+    }
+  ]
+}

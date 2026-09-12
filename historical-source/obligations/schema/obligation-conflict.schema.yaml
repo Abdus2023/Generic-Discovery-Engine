@@ -1,0 +1,27 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "schema_version": "1.0",
+  "additionalProperties": true,
+  "title": "Obligation conflict",
+  "type": "object",
+  "required": [
+    "conflict_id",
+    "left_obligation",
+    "right_obligation",
+    "relation",
+    "semantic_difference",
+    "resolution_status"
+  ],
+  "properties": {
+    "relation": {
+      "const": "CONFLICTS_WITH"
+    },
+    "resolution_status": {
+      "enum": [
+        "CONDITIONALLY_RESOLVED",
+        "UNRESOLVED",
+        "FALSE_CONFLICT"
+      ]
+    }
+  }
+}

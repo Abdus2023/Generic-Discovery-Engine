@@ -1,0 +1,877 @@
+{
+  "schema_version": 1,
+  "snapshot_id": "snapshot-0005",
+  "historical_version": "v0.3.0",
+  "variant": "only-evidenced-complete-occurrence",
+  "variant_status": "SOLE_RECOVERED_VARIANT",
+  "date": "2026-09-10T20:36:25+01:00",
+  "commit": "cc8df7357c2dbfe9d149747743e2f5e9ac9c0178",
+  "revision": "1c7b52bb1244677ba22bf25285ba199f9e5f722d",
+  "release": null,
+  "extraction_sequence": 142,
+  "source_documents": [
+    "Continue Architecture Planning.md"
+  ],
+  "version_boundary": {
+    "confidence": "STRONG",
+    "evidence": {
+      "metadata_version": "0.3.0",
+      "manifest_version": "0.3.0",
+      "artifact_id": "art-44eb3694339abdcb"
+    }
+  },
+  "reconstruction": {
+    "status": "EXACT",
+    "source_nature": "ORIGINAL_SOURCE",
+    "authoritative": false,
+    "authoritative_source": "artifacts/userscript/000142__userscript__generic-discovery-v0-3-0__art-44eb3694339abdcb.js",
+    "completeness": 1.0,
+    "completeness_basis": "A complete contiguous userscript artifact with matching explicit @version exists directly.",
+    "assumption_dependent": false
+  },
+  "base_selection": {
+    "result": "SELECTED_WITHOUT_AMBIGUITY",
+    "rule": "same historical revision and explicit version",
+    "selected": "art-44eb3694339abdcb",
+    "alternatives_not_merged": true
+  },
+  "compatibility_test": {
+    "same_revision": "PASS",
+    "same_branch": "PASS",
+    "same_version": "PASS",
+    "same_implementation_family": "PASS",
+    "dependency_assumptions": "NO_CROSS_ARTIFACT_DEPENDENCIES_COMPOSED",
+    "compatible_symbol_definitions": "PASS",
+    "decision": "NO_FRAGMENT_COMPOSITION"
+  },
+  "transformation_plan": {
+    "BASE": "art-44eb3694339abdcb",
+    "ADDITIONS": [],
+    "MODIFICATIONS": [],
+    "DELETIONS": [],
+    "RENAMES": [],
+    "DEPENDENCY_CHANGES": []
+  },
+  "artifacts": [
+    "art-44eb3694339abdcb"
+  ],
+  "dependencies": {
+    "entries": [
+      {
+        "name": "Scheduler",
+        "status": "PRESENT",
+        "basis": "definition occurs in recovered source"
+      },
+      {
+        "name": "Worker",
+        "status": "HISTORICAL_EXTERNAL",
+        "basis": "browser/userscript/runtime-provided API; historical availability not executed"
+      },
+      {
+        "name": "Observation",
+        "status": "PRESENT",
+        "basis": "definition occurs in recovered source"
+      },
+      {
+        "name": "Discovery",
+        "status": "PRESENT",
+        "basis": "definition occurs in recovered source"
+      },
+      {
+        "name": "KnowledgeBase",
+        "status": "PRESENT",
+        "basis": "definition occurs in recovered source"
+      },
+      {
+        "name": "Provider",
+        "status": "UNKNOWN",
+        "basis": "extraction dependency inventory mentions the name, but implementation/reference semantics are not mechanically resolvable"
+      },
+      {
+        "name": "ProviderRegistry",
+        "status": "PRESENT",
+        "basis": "definition occurs in recovered source"
+      },
+      {
+        "name": "ResponseProvider",
+        "status": "PRESENT",
+        "basis": "definition occurs in recovered source"
+      },
+      {
+        "name": "DiscoveryEngine",
+        "status": "PRESENT",
+        "basis": "definition occurs in recovered source"
+      },
+      {
+        "name": "GM_xmlhttpRequest",
+        "status": "HISTORICAL_EXTERNAL",
+        "basis": "browser/userscript/runtime-provided API; historical availability not executed"
+      },
+      {
+        "name": "GM_getValue",
+        "status": "HISTORICAL_EXTERNAL",
+        "basis": "browser/userscript/runtime-provided API; historical availability not executed"
+      },
+      {
+        "name": "GM_setValue",
+        "status": "HISTORICAL_EXTERNAL",
+        "basis": "browser/userscript/runtime-provided API; historical availability not executed"
+      },
+      {
+        "name": "fetch",
+        "status": "HISTORICAL_EXTERNAL",
+        "basis": "browser/userscript/runtime-provided API; historical availability not executed"
+      },
+      {
+        "name": "DOMParser",
+        "status": "HISTORICAL_EXTERNAL",
+        "basis": "browser/userscript/runtime-provided API; historical availability not executed"
+      },
+      {
+        "name": "AbortController",
+        "status": "HISTORICAL_EXTERNAL",
+        "basis": "browser/userscript/runtime-provided API; historical availability not executed"
+      },
+      {
+        "name": "URL",
+        "status": "HISTORICAL_EXTERNAL",
+        "basis": "browser/userscript/runtime-provided API; historical availability not executed"
+      },
+      {
+        "name": "Map",
+        "status": "HISTORICAL_EXTERNAL",
+        "basis": "browser/userscript/runtime-provided API; historical availability not executed"
+      },
+      {
+        "name": "Set",
+        "status": "HISTORICAL_EXTERNAL",
+        "basis": "browser/userscript/runtime-provided API; historical availability not executed"
+      },
+      {
+        "name": "Promise",
+        "status": "HISTORICAL_EXTERNAL",
+        "basis": "browser/userscript/runtime-provided API; historical availability not executed"
+      },
+      {
+        "name": "document",
+        "status": "HISTORICAL_EXTERNAL",
+        "basis": "browser/userscript/runtime-provided API; historical availability not executed"
+      },
+      {
+        "name": "window",
+        "status": "HISTORICAL_EXTERNAL",
+        "basis": "browser/userscript/runtime-provided API; historical availability not executed"
+      },
+      {
+        "name": "localStorage",
+        "status": "HISTORICAL_EXTERNAL",
+        "basis": "browser/userscript/runtime-provided API; historical availability not executed"
+      }
+    ],
+    "status_registry": [
+      "HISTORICAL_EXTERNAL",
+      "INFERRED",
+      "MISSING",
+      "PRESENT",
+      "UNKNOWN"
+    ],
+    "self_contained": {
+      "status": "UNKNOWN",
+      "missing_dependencies": [],
+      "unknown_dependencies": [
+        "Provider"
+      ],
+      "historical_external_dependencies": [
+        "Worker",
+        "GM_xmlhttpRequest",
+        "GM_getValue",
+        "GM_setValue",
+        "fetch",
+        "DOMParser",
+        "AbortController",
+        "URL",
+        "Map",
+        "Set",
+        "Promise",
+        "document",
+        "window",
+        "localStorage"
+      ],
+      "note": "PARTIAL means bundled internal definitions appear closed but historical platform APIs were not executed; UNKNOWN preserves unresolved dependency semantics."
+    }
+  },
+  "symbols": {
+    "definitions": {
+      "classes": [
+        "Candidate",
+        "Observation",
+        "Discovery",
+        "KnowledgeBase",
+        "HttpAcquisitionAdapter",
+        "ResponseProvider",
+        "HtmlProvider",
+        "JsonProvider",
+        "TextProvider",
+        "ProviderRegistry",
+        "Scheduler",
+        "DiscoveryEngine"
+      ],
+      "functions": [
+        "makeId",
+        "unique",
+        "canonicalizeUrl",
+        "isAllowedUrl",
+        "normalizeContentType",
+        "isHtmlContentType",
+        "isJsonContentType",
+        "isTextContentType",
+        "looksLikeHtml",
+        "extractUrlsFromText",
+        "updateUi",
+        "startUiTimer",
+        "stopUiTimer"
+      ],
+      "constants": [
+        "CONFIG",
+        "absoluteMatches",
+        "added",
+        "anchor",
+        "baseUrl",
+        "blob",
+        "body",
+        "bounded",
+        "candidate",
+        "candidates",
+        "canonical",
+        "content",
+        "contentType",
+        "controller",
+        "current",
+        "data",
+        "direct",
+        "discoveries",
+        "discovery",
+        "doc",
+        "elements",
+        "embedded",
+        "embeddedUrls",
+        "engine",
+        "existingPanel",
+        "finish",
+        "forms",
+        "httpEquiv",
+        "inFlight",
+        "key",
+        "links",
+        "log",
+        "match",
+        "metadata",
+        "newCandidates",
+        "now",
+        "observation",
+        "panel",
+        "progress",
+        "queue",
+        "raw",
+        "relativeMatches",
+        "resources",
+        "response",
+        "result",
+        "selector",
+        "stats",
+        "status",
+        "text",
+        "title",
+        "trimmed",
+        "type",
+        "url",
+        "urls",
+        "visit",
+        "warn",
+        "workers"
+      ]
+    },
+    "api_signatures": {
+      "recognize": [
+        "recognize(/* candidate, observation */)",
+        "recognize(candidate, observation)"
+      ],
+      "acquire": [
+        "acquire(candidate)"
+      ],
+      "claimNextCandidate": [
+        "claimNextCandidate()"
+      ],
+      "run": [
+        "run()"
+      ],
+      "addCandidate": [
+        "addCandidate(candidate)"
+      ],
+      "addObservation": [
+        "addObservation(observation)"
+      ],
+      "addDiscovery": [
+        "addDiscovery(discovery)"
+      ],
+      "persist": [
+        "persist()"
+      ]
+    },
+    "class_content_sha256": {
+      "Candidate": "1550a5f0c0602b585967d696a953b1a2fd57d4039831051bbcd7df8d439f43ca",
+      "Observation": "f20aa1be7e9ecd4e542e63549b37fedb7d616cd2d68f6abd6456e11cdd9f95e9",
+      "Discovery": "d12eef9640d3261852f94a278f14045fb5ed977a8e03e4fe06d7342caf31da19",
+      "KnowledgeBase": "794551c344dcd239c18c7a804ebc5973b9d70247b7a777cf620cec6d4260ee55",
+      "HttpAcquisitionAdapter": "619b53baa917677ebafb79b1282e4542545370b70ebacec7a5efdaa8798e796b",
+      "ResponseProvider": "059556b76653fa33dfcb4319e052e385c7d5072bd5a86adc91f0fa92370d7c59",
+      "HtmlProvider": "8d0df436ac715da7e8f2f54966a99e5f5bfbea40aa603b22deab917c16887e63",
+      "JsonProvider": "059cb296f591074df78080ae40d6135894053046849f8ba314944c12289f14cc",
+      "TextProvider": "3f6b8f7df6b00e7b4b1879334171b927c3663b7b35fa3440bf6e3b606a4b0112",
+      "ProviderRegistry": "fe9461284d815d4258ea675bfaf9427eb5de39e0d005c321be152e954698f5b8",
+      "Scheduler": "645d214f09a1c9b15dcab00f18f8dcdb0591d15361f0a400863174baa623cc7e",
+      "DiscoveryEngine": "6af3fbb9472de66574910bbd7cfd95e0002dc161fb9bcb2340b983b0478ea845"
+    },
+    "model_fields": {
+      "Candidate": [
+        "attempts",
+        "createdAt",
+        "hints",
+        "id",
+        "origin",
+        "parent",
+        "priority",
+        "status",
+        "target",
+        "type"
+      ],
+      "Observation": [
+        "body",
+        "candidateId",
+        "completedAt",
+        "errors",
+        "http",
+        "id",
+        "signalPresent",
+        "startedAt",
+        "status",
+        "target"
+      ],
+      "Discovery": [
+        "candidateId",
+        "confidence",
+        "createdAt",
+        "data",
+        "id",
+        "kind",
+        "observationId",
+        "provenance"
+      ],
+      "KnowledgeBase": [
+        "candidates",
+        "claimed",
+        "discoveries",
+        "observations",
+        "visited"
+      ],
+      "Scheduler": [
+        "database"
+      ]
+    },
+    "conflicts": [],
+    "analysis_method": "read-only lexical regular expressions; no AST rewrite"
+  },
+  "changes_from_previous": {
+    "previous_snapshot": "snapshot-0004",
+    "lineage_evidence": "preceding prose explicitly says v0.3.0 is based on v0.2.0",
+    "source_diff": "snapshots/v0.3/analysis/source-diff-from-previous.diff",
+    "source_diff_sha256": "2b0237b1abd5a0a5de365e4de93be9d6ea49f377f1314b46777bf9c8e2efd052",
+    "symbol_diff": {
+      "added": [
+        "CONFIG",
+        "Candidate",
+        "Discovery",
+        "DiscoveryEngine",
+        "HtmlProvider",
+        "HttpAcquisitionAdapter",
+        "JsonProvider",
+        "KnowledgeBase",
+        "Observation",
+        "ProviderRegistry",
+        "ResponseProvider",
+        "Scheduler",
+        "TextProvider",
+        "absoluteMatches",
+        "added",
+        "anchor",
+        "baseUrl",
+        "blob",
+        "body",
+        "bounded",
+        "candidate",
+        "candidates",
+        "canonical",
+        "canonicalizeUrl",
+        "content",
+        "contentType",
+        "controller",
+        "current",
+        "data",
+        "direct",
+        "discoveries",
+        "discovery",
+        "doc",
+        "elements",
+        "embedded",
+        "embeddedUrls",
+        "engine",
+        "existingPanel",
+        "extractUrlsFromText",
+        "finish",
+        "forms",
+        "httpEquiv",
+        "inFlight",
+        "isAllowedUrl",
+        "isHtmlContentType",
+        "isJsonContentType",
+        "isTextContentType",
+        "key",
+        "links",
+        "log",
+        "looksLikeHtml",
+        "makeId",
+        "match",
+        "metadata",
+        "newCandidates",
+        "normalizeContentType",
+        "now",
+        "observation",
+        "panel",
+        "progress",
+        "queue",
+        "raw",
+        "relativeMatches",
+        "resources",
+        "response",
+        "result",
+        "selector",
+        "startUiTimer",
+        "stats",
+        "status",
+        "stopUiTimer",
+        "text",
+        "title",
+        "trimmed",
+        "type",
+        "unique",
+        "updateUi",
+        "url",
+        "urls",
+        "visit",
+        "warn",
+        "workers"
+      ],
+      "removed": []
+    },
+    "api_diff": {
+      "added": [
+        {
+          "symbol": "acquire",
+          "signature": "acquire(candidate)"
+        },
+        {
+          "symbol": "addCandidate",
+          "signature": "addCandidate(candidate)"
+        },
+        {
+          "symbol": "addDiscovery",
+          "signature": "addDiscovery(discovery)"
+        },
+        {
+          "symbol": "addObservation",
+          "signature": "addObservation(observation)"
+        },
+        {
+          "symbol": "claimNextCandidate",
+          "signature": "claimNextCandidate()"
+        },
+        {
+          "symbol": "persist",
+          "signature": "persist()"
+        },
+        {
+          "symbol": "recognize",
+          "signature": "recognize(/* candidate, observation */)"
+        },
+        {
+          "symbol": "recognize",
+          "signature": "recognize(candidate, observation)"
+        },
+        {
+          "symbol": "run",
+          "signature": "run()"
+        }
+      ],
+      "removed": []
+    },
+    "data_model_diff": {
+      "Candidate": {
+        "added_fields": [
+          "attempts",
+          "createdAt",
+          "hints",
+          "id",
+          "origin",
+          "parent",
+          "priority",
+          "status",
+          "target",
+          "type"
+        ],
+        "removed_fields": [],
+        "retained_fields": []
+      },
+      "Observation": {
+        "added_fields": [
+          "body",
+          "candidateId",
+          "completedAt",
+          "errors",
+          "http",
+          "id",
+          "signalPresent",
+          "startedAt",
+          "status",
+          "target"
+        ],
+        "removed_fields": [],
+        "retained_fields": []
+      },
+      "Discovery": {
+        "added_fields": [
+          "candidateId",
+          "confidence",
+          "createdAt",
+          "data",
+          "id",
+          "kind",
+          "observationId",
+          "provenance"
+        ],
+        "removed_fields": [],
+        "retained_fields": []
+      },
+      "KnowledgeBase": {
+        "added_fields": [
+          "candidates",
+          "claimed",
+          "discoveries",
+          "observations",
+          "visited"
+        ],
+        "removed_fields": [],
+        "retained_fields": []
+      },
+      "Scheduler": {
+        "added_fields": [
+          "database"
+        ],
+        "removed_fields": [],
+        "retained_fields": []
+      }
+    },
+    "behavioral_observation": "Textual source differences only; behavior was not executed or proved.",
+    "architectural_difference": {
+      "Candidate model": {
+        "from": "UNKNOWN",
+        "to": "IMPLEMENTED"
+      },
+      "Observation model": {
+        "from": "UNKNOWN",
+        "to": "IMPLEMENTED"
+      },
+      "Discovery model": {
+        "from": "UNKNOWN",
+        "to": "IMPLEMENTED"
+      },
+      "KnowledgeBase": {
+        "from": "UNKNOWN",
+        "to": "IMPLEMENTED"
+      },
+      "HTML provider": {
+        "from": "UNKNOWN",
+        "to": "IMPLEMENTED"
+      },
+      "JSON provider": {
+        "from": "UNKNOWN",
+        "to": "IMPLEMENTED"
+      },
+      "Text provider": {
+        "from": "UNKNOWN",
+        "to": "IMPLEMENTED"
+      },
+      "XML provider": {
+        "from": "UNKNOWN",
+        "to": "ABSENT"
+      },
+      "Provider registry": {
+        "from": "UNKNOWN",
+        "to": "IMPLEMENTED"
+      },
+      "Scheduler": {
+        "from": "UNKNOWN",
+        "to": "IMPLEMENTED"
+      },
+      "Concurrent workers": {
+        "from": "PARTIAL",
+        "to": "IMPLEMENTED"
+      },
+      "Synchronous claim operation": {
+        "from": "PARTIAL",
+        "to": "IMPLEMENTED"
+      },
+      "Provenance records": {
+        "from": "PARTIAL",
+        "to": "IMPLEMENTED"
+      },
+      "GM acquisition": {
+        "from": "PARTIAL",
+        "to": "IMPLEMENTED"
+      },
+      "Fetch acquisition": {
+        "from": "PARTIAL",
+        "to": "IMPLEMENTED"
+      }
+    }
+  },
+  "capabilities": {
+    "Candidate model": {
+      "status": "IMPLEMENTED",
+      "evidence": {
+        "artifact_id": "art-44eb3694339abdcb",
+        "line": 309,
+        "matched_source": "\r\n    class Candidate"
+      }
+    },
+    "Observation model": {
+      "status": "IMPLEMENTED",
+      "evidence": {
+        "artifact_id": "art-44eb3694339abdcb",
+        "line": 361,
+        "matched_source": "\r\n    class Observation"
+      }
+    },
+    "Discovery model": {
+      "status": "IMPLEMENTED",
+      "evidence": {
+        "artifact_id": "art-44eb3694339abdcb",
+        "line": 396,
+        "matched_source": "\r\n    class Discovery"
+      }
+    },
+    "KnowledgeBase": {
+      "status": "IMPLEMENTED",
+      "evidence": {
+        "artifact_id": "art-44eb3694339abdcb",
+        "line": 428,
+        "matched_source": "\r\n    class KnowledgeBase"
+      }
+    },
+    "HTML provider": {
+      "status": "IMPLEMENTED",
+      "evidence": {
+        "artifact_id": "art-44eb3694339abdcb",
+        "line": 1025,
+        "matched_source": "\r\n    class HtmlProvider"
+      }
+    },
+    "JSON provider": {
+      "status": "IMPLEMENTED",
+      "evidence": {
+        "artifact_id": "art-44eb3694339abdcb",
+        "line": 1443,
+        "matched_source": "\r\n    class JsonProvider"
+      }
+    },
+    "Text provider": {
+      "status": "IMPLEMENTED",
+      "evidence": {
+        "artifact_id": "art-44eb3694339abdcb",
+        "line": 1587,
+        "matched_source": "\r\n    class TextProvider"
+      }
+    },
+    "XML provider": {
+      "status": "ABSENT",
+      "evidence": {
+        "artifact_id": "art-44eb3694339abdcb",
+        "observation": "pattern absent from recovered source"
+      }
+    },
+    "Provider registry": {
+      "status": "IMPLEMENTED",
+      "evidence": {
+        "artifact_id": "art-44eb3694339abdcb",
+        "line": 1665,
+        "matched_source": "\r\n    class ProviderRegistry"
+      }
+    },
+    "Scheduler": {
+      "status": "IMPLEMENTED",
+      "evidence": {
+        "artifact_id": "art-44eb3694339abdcb",
+        "line": 1719,
+        "matched_source": "\r\n    class Scheduler"
+      }
+    },
+    "Concurrent workers": {
+      "status": "IMPLEMENTED",
+      "evidence": {
+        "artifact_id": "art-44eb3694339abdcb",
+        "line": 2000,
+        "matched_source": "Promise.all("
+      }
+    },
+    "Synchronous claim operation": {
+      "status": "IMPLEMENTED",
+      "evidence": {
+        "artifact_id": "art-44eb3694339abdcb",
+        "line": 495,
+        "matched_source": "claimNextCandidate("
+      }
+    },
+    "Provenance records": {
+      "status": "IMPLEMENTED",
+      "evidence": {
+        "artifact_id": "art-44eb3694339abdcb",
+        "line": 415,
+        "matched_source": "this.provenance"
+      }
+    },
+    "GM acquisition": {
+      "status": "IMPLEMENTED",
+      "evidence": {
+        "artifact_id": "art-44eb3694339abdcb",
+        "line": 838,
+        "matched_source": "GM_xmlhttpRequest("
+      }
+    },
+    "Fetch acquisition": {
+      "status": "IMPLEMENTED",
+      "evidence": {
+        "artifact_id": "art-44eb3694339abdcb",
+        "line": 929,
+        "matched_source": "fetch("
+      }
+    }
+  },
+  "conflicts": [],
+  "uncertainties": [],
+  "assumptions": [],
+  "executability": "LIKELY_EXECUTABLE",
+  "static_validation": {
+    "syntax_and_ast_parse": {
+      "attempted": true,
+      "result": "PASS",
+      "tool": "node --check -",
+      "exit_code": 0,
+      "diagnostic": "",
+      "source_modified": false,
+      "runtime_executed": false
+    },
+    "userscript_metadata": {
+      "result": "PASS",
+      "status": "PARSED",
+      "version": "0.3.0",
+      "directives": {
+        "connect": [
+          "*"
+        ],
+        "description": [
+          "Generic web-resource discovery prototype inspired by the architecture of DVB blind scanning."
+        ],
+        "grant": [
+          "GM_getValue",
+          "GM_setValue",
+          "GM_xmlhttpRequest"
+        ],
+        "match": [
+          "*://*/*"
+        ],
+        "name": [
+          "Generic Discovery Engine"
+        ],
+        "namespace": [
+          "generic-discovery"
+        ],
+        "version": [
+          "0.3.0"
+        ]
+      },
+      "raw_header_present": true
+    },
+    "dependency_resolution": "UNKNOWN",
+    "source_was_modified_to_validate": false
+  },
+  "runtime_validation": {
+    "executed": false,
+    "result": "NOT_EXECUTED"
+  },
+  "historical_execution": "UNKNOWN",
+  "historical_environment": {
+    "browser": "UNKNOWN",
+    "userscript_manager": "Tampermonkey/Greasemonkey-compatible (document claim; exact version UNKNOWN)",
+    "permissions": [
+      "GM_getValue",
+      "GM_setValue",
+      "GM_xmlhttpRequest"
+    ],
+    "external_dependencies": [
+      "Worker",
+      "GM_xmlhttpRequest",
+      "GM_getValue",
+      "GM_setValue",
+      "fetch",
+      "DOMParser",
+      "AbortController",
+      "URL",
+      "Map",
+      "Set",
+      "Promise",
+      "document",
+      "window",
+      "localStorage"
+    ],
+    "runtime_assumptions": "NOT_TESTED"
+  },
+  "evidence": [
+    {
+      "source_artifact": "art-44eb3694339abdcb",
+      "source_anchor": "lines 53-2644; bytes 59808-130297",
+      "reconstruction_operation": "direct_copy",
+      "confidence": "HIGH",
+      "assumptions": []
+    }
+  ],
+  "integrity": {
+    "reconstructed_sha256": "f52fccf69f9d89c5d4269de784479657e1c2baaca3d1ff5d7d4b07887ad156e3",
+    "size_bytes": 70490,
+    "source_map_sha256": "0efab05eb6b9d31f8e0d44f635e6f993e21c26a3b7a2be33d8b7e9802a25da30"
+  },
+  "temporal_tests": {
+    "artifact_not_later_than_snapshot": "PASS",
+    "dependency_temporal_consistency": "PASS_NO_LATER_ARTIFACT_COMPOSED",
+    "backward_contamination": "PASS",
+    "forward_contamination": "PASS_NO_CROSS_VERSION_SOURCE_INSERTION"
+  },
+  "generated": {
+    "timestamp": "2026-09-11T13:21:04+00:00",
+    "extractor_version": "mechanical-reconstruction-v1",
+    "metadata_is_historical": false
+  },
+  "paths": {
+    "source": "snapshots/v0.3/source/generic-discovery.user.js",
+    "source_map": "snapshots/v0.3/source-map.yaml",
+    "report": "snapshots/v0.3/reconstruction-report.md"
+  }
+}

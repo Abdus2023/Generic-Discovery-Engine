@@ -1,0 +1,487 @@
+{
+  "schema_version": 1,
+  "history": [
+    {
+      "snapshot_id": "snapshot-0001",
+      "version": "v0.1.0",
+      "variant": "mechanically-composed",
+      "implementation_evidence": {
+        "model": [
+          "async worker pool",
+          "shared queue/frontier"
+        ],
+        "worker_count": 3,
+        "ownership_mechanism": [
+          "visited state/set"
+        ],
+        "claim_point": "UNKNOWN",
+        "async_boundary": "first await at artifact line 410",
+        "duplicate_prevention": [
+          "visited state/set"
+        ],
+        "cancellation": [
+          "UNKNOWN"
+        ],
+        "error_isolation": "try/catch observed",
+        "asserted_safety": false,
+        "mechanical_safety_observations": [
+          "visited state/set"
+        ],
+        "verification_status": "UNVERIFIED",
+        "safety_conclusion": "UNKNOWN"
+      },
+      "claimed_properties": [],
+      "source_artifact": "rec-dbef25f8ab917d5a",
+      "runtime_verified": false
+    },
+    {
+      "snapshot_id": "snapshot-0003",
+      "version": "v0.2.0",
+      "variant": "mechanically-composed",
+      "implementation_evidence": {
+        "model": [
+          "async worker pool",
+          "shared queue/frontier"
+        ],
+        "worker_count": 3,
+        "ownership_mechanism": [
+          "claimNextCandidate",
+          "claimed state/set",
+          "visited state/set"
+        ],
+        "claim_point": "claimNextCandidate",
+        "async_boundary": "first await at artifact line 315",
+        "duplicate_prevention": [
+          "claimed state/set",
+          "visited state/set"
+        ],
+        "cancellation": [
+          "UNKNOWN"
+        ],
+        "error_isolation": "try/catch observed",
+        "asserted_safety": false,
+        "mechanical_safety_observations": [
+          "claimNextCandidate",
+          "claimed state/set",
+          "visited state/set"
+        ],
+        "verification_status": "UNVERIFIED",
+        "safety_conclusion": "UNKNOWN"
+      },
+      "claimed_properties": [],
+      "source_artifact": "rec-e8df26fe56d82d1c",
+      "runtime_verified": false
+    },
+    {
+      "snapshot_id": "snapshot-0005",
+      "version": "v0.3.0",
+      "variant": "only-evidenced-complete-occurrence",
+      "implementation_evidence": {
+        "model": [
+          "async worker pool",
+          "shared queue/frontier"
+        ],
+        "worker_count": 3,
+        "ownership_mechanism": [
+          "claimNextCandidate",
+          "claimed state/set",
+          "visited state/set"
+        ],
+        "claim_point": "claimNextCandidate",
+        "async_boundary": "first await at artifact line 490",
+        "duplicate_prevention": [
+          "claimed state/set",
+          "visited state/set"
+        ],
+        "cancellation": [
+          "AbortController",
+          "stop"
+        ],
+        "error_isolation": "try/catch observed",
+        "asserted_safety": true,
+        "mechanical_safety_observations": [
+          "claimNextCandidate",
+          "claimed state/set",
+          "visited state/set"
+        ],
+        "verification_status": "UNVERIFIED",
+        "safety_conclusion": "UNKNOWN"
+      },
+      "claimed_properties": [],
+      "source_artifact": "art-44eb3694339abdcb",
+      "runtime_verified": false
+    },
+    {
+      "snapshot_id": "snapshot-0006",
+      "version": "v0.4.0",
+      "variant": "variant-a",
+      "implementation_evidence": {
+        "model": [
+          "async worker pool",
+          "shared queue/frontier"
+        ],
+        "worker_count": 3,
+        "ownership_mechanism": [
+          "claimNextCandidate",
+          "claimed state/set",
+          "visited state/set"
+        ],
+        "claim_point": "claimNextCandidate",
+        "async_boundary": "first await at artifact line 1106",
+        "duplicate_prevention": [
+          "claimed state/set",
+          "visited state/set"
+        ],
+        "cancellation": [
+          "AbortController",
+          "stop"
+        ],
+        "error_isolation": "try/catch observed",
+        "asserted_safety": false,
+        "mechanical_safety_observations": [
+          "claimNextCandidate",
+          "claimed state/set",
+          "visited state/set"
+        ],
+        "verification_status": "UNVERIFIED",
+        "safety_conclusion": "UNKNOWN"
+      },
+      "claimed_properties": [
+        {
+          "line": 704,
+          "text": "atomic claim",
+          "status": "CLAIM_ONLY"
+        }
+      ],
+      "source_artifact": "art-deb961ea9f622d3a",
+      "runtime_verified": false
+    },
+    {
+      "snapshot_id": "snapshot-0007",
+      "version": "v0.5.0",
+      "variant": "variant-a",
+      "implementation_evidence": {
+        "model": [
+          "async worker pool",
+          "shared queue/frontier"
+        ],
+        "worker_count": 4,
+        "ownership_mechanism": [
+          "claimNextCandidate",
+          "claimed state/set",
+          "visited state/set"
+        ],
+        "claim_point": "claimNextCandidate",
+        "async_boundary": "first await at artifact line 1515",
+        "duplicate_prevention": [
+          "claimed state/set",
+          "visited state/set"
+        ],
+        "cancellation": [
+          "AbortController",
+          "stop",
+          "pause"
+        ],
+        "error_isolation": "try/catch observed",
+        "asserted_safety": true,
+        "mechanical_safety_observations": [
+          "claimNextCandidate",
+          "claimed state/set",
+          "visited state/set"
+        ],
+        "verification_status": "UNVERIFIED",
+        "safety_conclusion": "UNKNOWN"
+      },
+      "claimed_properties": [],
+      "source_artifact": "art-2c6f74909f301798",
+      "runtime_verified": false
+    },
+    {
+      "snapshot_id": "snapshot-0008",
+      "version": "v0.4.0",
+      "variant": "variant-b",
+      "implementation_evidence": {
+        "model": [
+          "async worker pool",
+          "shared queue/frontier"
+        ],
+        "worker_count": 4,
+        "ownership_mechanism": [
+          "claimNextCandidate",
+          "claimed state/set",
+          "visited state/set"
+        ],
+        "claim_point": "claimNextCandidate",
+        "async_boundary": "first await at artifact line 1257",
+        "duplicate_prevention": [
+          "claimed state/set",
+          "visited state/set"
+        ],
+        "cancellation": [
+          "AbortController",
+          "stop"
+        ],
+        "error_isolation": "try/catch observed",
+        "asserted_safety": true,
+        "mechanical_safety_observations": [
+          "claimNextCandidate",
+          "claimed state/set",
+          "visited state/set"
+        ],
+        "verification_status": "UNVERIFIED",
+        "safety_conclusion": "UNKNOWN"
+      },
+      "claimed_properties": [],
+      "source_artifact": "art-c19ebb3956fba19c",
+      "runtime_verified": false
+    },
+    {
+      "snapshot_id": "snapshot-0009",
+      "version": "v0.5.0",
+      "variant": "variant-b",
+      "implementation_evidence": {
+        "model": [
+          "async worker pool",
+          "shared queue/frontier"
+        ],
+        "worker_count": 4,
+        "ownership_mechanism": [
+          "claimed state/set",
+          "visited state/set"
+        ],
+        "claim_point": "UNKNOWN",
+        "async_boundary": "first await at artifact line 556",
+        "duplicate_prevention": [
+          "claimed state/set",
+          "visited state/set"
+        ],
+        "cancellation": [
+          "AbortController"
+        ],
+        "error_isolation": "try/catch observed",
+        "asserted_safety": false,
+        "mechanical_safety_observations": [
+          "claimed state/set",
+          "visited state/set"
+        ],
+        "verification_status": "UNVERIFIED",
+        "safety_conclusion": "UNKNOWN"
+      },
+      "claimed_properties": [
+        {
+          "line": 989,
+          "text": "Atomic claim",
+          "status": "CLAIM_ONLY"
+        }
+      ],
+      "source_artifact": "art-fbebfdf9a3874c18",
+      "runtime_verified": false
+    },
+    {
+      "snapshot_id": "snapshot-0010",
+      "version": "v0.6.0",
+      "variant": "variant-a",
+      "implementation_evidence": {
+        "model": [
+          "async worker pool",
+          "shared queue/frontier"
+        ],
+        "worker_count": 4,
+        "ownership_mechanism": [
+          "claimed state/set",
+          "visited state/set"
+        ],
+        "claim_point": "UNKNOWN",
+        "async_boundary": "first await at artifact line 490",
+        "duplicate_prevention": [
+          "claimed state/set",
+          "visited state/set"
+        ],
+        "cancellation": [
+          "AbortController"
+        ],
+        "error_isolation": "try/catch observed",
+        "asserted_safety": false,
+        "mechanical_safety_observations": [
+          "claimed state/set",
+          "visited state/set"
+        ],
+        "verification_status": "UNVERIFIED",
+        "safety_conclusion": "UNKNOWN"
+      },
+      "claimed_properties": [],
+      "source_artifact": "art-b1368ed9b372a6a6",
+      "runtime_verified": false
+    },
+    {
+      "snapshot_id": "snapshot-0011",
+      "version": "v0.5.0",
+      "variant": "variant-c",
+      "implementation_evidence": {
+        "model": [
+          "async worker pool",
+          "shared queue/frontier"
+        ],
+        "worker_count": 4,
+        "ownership_mechanism": [
+          "claimNextCandidate",
+          "claimed state/set",
+          "visited state/set"
+        ],
+        "claim_point": "claimNextCandidate",
+        "async_boundary": "first await at artifact line 1380",
+        "duplicate_prevention": [
+          "claimed state/set",
+          "visited state/set"
+        ],
+        "cancellation": [
+          "AbortController"
+        ],
+        "error_isolation": "try/catch observed",
+        "asserted_safety": false,
+        "mechanical_safety_observations": [
+          "claimNextCandidate",
+          "claimed state/set",
+          "visited state/set"
+        ],
+        "verification_status": "UNVERIFIED",
+        "safety_conclusion": "UNKNOWN"
+      },
+      "claimed_properties": [],
+      "source_artifact": "art-f019277e6c28e8f5",
+      "runtime_verified": false
+    },
+    {
+      "snapshot_id": "snapshot-0012",
+      "version": "v0.6.0",
+      "variant": "variant-b",
+      "implementation_evidence": {
+        "model": [
+          "async worker pool",
+          "shared queue/frontier",
+          "lease-based ownership"
+        ],
+        "worker_count": 5,
+        "ownership_mechanism": [
+          "claimNextCandidate",
+          "claimed state/set",
+          "visited state/set",
+          "lease"
+        ],
+        "claim_point": "claimNextCandidate",
+        "async_boundary": "first await at artifact line 2379",
+        "duplicate_prevention": [
+          "claimed state/set",
+          "visited state/set",
+          "lease"
+        ],
+        "cancellation": [
+          "AbortController",
+          "stop",
+          "pause"
+        ],
+        "error_isolation": "try/catch observed",
+        "asserted_safety": false,
+        "mechanical_safety_observations": [
+          "claimNextCandidate",
+          "claimed state/set",
+          "visited state/set",
+          "lease"
+        ],
+        "verification_status": "UNVERIFIED",
+        "safety_conclusion": "UNKNOWN"
+      },
+      "claimed_properties": [],
+      "source_artifact": "art-3680c60f0bc39673",
+      "runtime_verified": false
+    },
+    {
+      "snapshot_id": "snapshot-0013",
+      "version": "v0.6.0",
+      "variant": "variant-c",
+      "implementation_evidence": {
+        "model": [
+          "async worker pool",
+          "shared queue/frontier",
+          "lease-based ownership"
+        ],
+        "worker_count": 4,
+        "ownership_mechanism": [
+          "claimNextCandidate",
+          "claimed state/set",
+          "visited state/set",
+          "lease"
+        ],
+        "claim_point": "claimNextCandidate",
+        "async_boundary": "first await at artifact line 1586",
+        "duplicate_prevention": [
+          "claimed state/set",
+          "visited state/set",
+          "lease"
+        ],
+        "cancellation": [
+          "AbortController",
+          "stop",
+          "pause"
+        ],
+        "error_isolation": "try/catch observed",
+        "asserted_safety": true,
+        "mechanical_safety_observations": [
+          "claimNextCandidate",
+          "claimed state/set",
+          "visited state/set",
+          "lease"
+        ],
+        "verification_status": "UNVERIFIED",
+        "safety_conclusion": "UNKNOWN"
+      },
+      "claimed_properties": [],
+      "source_artifact": "art-33fa8de51e13e087",
+      "runtime_verified": false
+    },
+    {
+      "snapshot_id": "snapshot-0014",
+      "version": "v0.7.1",
+      "variant": "only-evidenced-complete-occurrence",
+      "implementation_evidence": {
+        "model": [
+          "async worker pool",
+          "shared queue/frontier",
+          "lease-based ownership"
+        ],
+        "worker_count": 4,
+        "ownership_mechanism": [
+          "claimNextCandidate",
+          "claimed state/set",
+          "visited state/set",
+          "lease"
+        ],
+        "claim_point": "claimNextCandidate",
+        "async_boundary": "first await at artifact line 1946",
+        "duplicate_prevention": [
+          "claimed state/set",
+          "visited state/set",
+          "lease"
+        ],
+        "cancellation": [
+          "AbortController",
+          "stop",
+          "pause"
+        ],
+        "error_isolation": "try/catch observed",
+        "asserted_safety": false,
+        "mechanical_safety_observations": [
+          "claimNextCandidate",
+          "claimed state/set",
+          "visited state/set",
+          "lease"
+        ],
+        "verification_status": "UNVERIFIED",
+        "safety_conclusion": "UNKNOWN"
+      },
+      "claimed_properties": [],
+      "source_artifact": "art-e0789bc8f62176cb",
+      "runtime_verified": false
+    }
+  ]
+}

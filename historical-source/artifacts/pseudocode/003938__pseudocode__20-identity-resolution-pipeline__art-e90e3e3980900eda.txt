@@ -1,0 +1,30 @@
+                  LOCATOR
+                     │
+                     ▼
+               NORMALIZATION
+                     │
+                     ▼
+              EXISTING MATCH?
+                /          \
+              yes           no
+               │             │
+               ▼             ▼
+           known node    OBSERVATIONS
+                             │
+                     ┌───────┼────────┐
+                     ▼       ▼        ▼
+                  redirect hash   metadata
+                     │       │        │
+                     └───────┼────────┘
+                             ▼
+                     IDENTITY EVIDENCE
+                             │
+                             ▼
+                     IDENTITY RESOLVER
+                             │
+                  ┌──────────┴──────────┐
+                  ▼                     ▼
+              relation              unresolved
+                  │
+                  ▼
+             RESOURCE GRAPH

@@ -1,0 +1,20 @@
+# v0.32 — Transactional Persistence & Crash Recovery
+
+                    WORK
+                      │
+                      ▼
+                  RESERVATION
+                      │
+                      ▼
+                   EXECUTION
+                      │
+             ┌────────┴────────┐
+             ▼                 ▼
+          COMMIT             CRASH
+             │                 │
+             ▼                 ▼
+         DURABLE STATE     RECOVERY
+                               │
+                    ┌──────────┼──────────┐
+                    ▼          ▼          ▼
+                 replay      retry      abandon

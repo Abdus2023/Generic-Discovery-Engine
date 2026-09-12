@@ -1,0 +1,10 @@
+Score(w) =
+    BasePriority(w)
+  + GoalValue(w)
+  + CoverageValue(w)
+  + InformationGain(w)
+  + Novelty(w)
+  + Aging(w)
+  + StarvationBoost(w)
+  - CostPenalty(w)
+  - FailurePenalty(w)

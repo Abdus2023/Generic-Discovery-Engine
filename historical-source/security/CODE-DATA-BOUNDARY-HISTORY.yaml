@@ -1,0 +1,221 @@
+{
+  "schema_version": 8,
+  "builder": "security-archaeology-builder-v8",
+  "model_kind": "DERIVED_SECURITY_ARCHAEOLOGY_NOT_SOURCE",
+  "snapshots": [
+    {
+      "snapshot_id": "snapshot-0001",
+      "version": "v0.1.0",
+      "variant": "mechanically-composed",
+      "sinks": [
+        "innerHTML"
+      ],
+      "acquired_content_to_code_path": "NO_EVIDENCE_OF_CODE_EXECUTION",
+      "inner_html": "PRESENT_UI_OR_TEMPLATE_SINK_REMOTE_TAINT_NOT_PROVED",
+      "script_insertion": "ABSENT",
+      "html_extraction_executes_scripts": "NOT_EVIDENCED",
+      "json_strings_executed": "NOT_EVIDENCED",
+      "absence_is_not_security_guarantee": true,
+      "evidence": [
+        "security-ev-c2b65f751cd68d51"
+      ]
+    },
+    {
+      "snapshot_id": "snapshot-0003",
+      "version": "v0.2.0",
+      "variant": "mechanically-composed",
+      "sinks": [
+        "innerHTML"
+      ],
+      "acquired_content_to_code_path": "NO_EVIDENCE_OF_CODE_EXECUTION",
+      "inner_html": "PRESENT_UI_OR_TEMPLATE_SINK_REMOTE_TAINT_NOT_PROVED",
+      "script_insertion": "ABSENT",
+      "html_extraction_executes_scripts": "NOT_EVIDENCED",
+      "json_strings_executed": "NOT_EVIDENCED",
+      "absence_is_not_security_guarantee": true,
+      "evidence": [
+        "security-ev-7123bf5d8c84d6f4"
+      ]
+    },
+    {
+      "snapshot_id": "snapshot-0005",
+      "version": "v0.3.0",
+      "variant": "only-evidenced-complete-occurrence",
+      "sinks": [
+        "innerHTML"
+      ],
+      "acquired_content_to_code_path": "NO_EVIDENCE_OF_CODE_EXECUTION",
+      "inner_html": "PRESENT_UI_OR_TEMPLATE_SINK_REMOTE_TAINT_NOT_PROVED",
+      "script_insertion": "ABSENT",
+      "html_extraction_executes_scripts": "NOT_EVIDENCED",
+      "json_strings_executed": "NOT_EVIDENCED",
+      "absence_is_not_security_guarantee": true,
+      "evidence": [
+        "security-ev-05ed0b72a2e40a6d"
+      ]
+    },
+    {
+      "snapshot_id": "snapshot-0006",
+      "version": "v0.4.0",
+      "variant": "variant-a",
+      "sinks": [
+        "innerHTML"
+      ],
+      "acquired_content_to_code_path": "NO_EVIDENCE_OF_CODE_EXECUTION",
+      "inner_html": "PRESENT_UI_OR_TEMPLATE_SINK_REMOTE_TAINT_NOT_PROVED",
+      "script_insertion": "ABSENT",
+      "html_extraction_executes_scripts": "NOT_EVIDENCED",
+      "json_strings_executed": "NOT_EVIDENCED",
+      "absence_is_not_security_guarantee": true,
+      "evidence": [
+        "security-ev-4b1f1121ff6d855b"
+      ]
+    },
+    {
+      "snapshot_id": "snapshot-0008",
+      "version": "v0.4.0",
+      "variant": "variant-b",
+      "sinks": [
+        "innerHTML",
+        "script insertion"
+      ],
+      "acquired_content_to_code_path": "NO_EVIDENCE_OF_CODE_EXECUTION",
+      "inner_html": "PRESENT_UI_OR_TEMPLATE_SINK_REMOTE_TAINT_NOT_PROVED",
+      "script_insertion": "STATIC_PAGE_BRIDGE_CODE",
+      "html_extraction_executes_scripts": "NOT_EVIDENCED",
+      "json_strings_executed": "NOT_EVIDENCED",
+      "absence_is_not_security_guarantee": true,
+      "evidence": [
+        "security-ev-0400a2f04846ba1d",
+        "security-ev-dd33e5933d4533d6"
+      ]
+    },
+    {
+      "snapshot_id": "snapshot-0007",
+      "version": "v0.5.0",
+      "variant": "variant-a",
+      "sinks": [
+        "innerHTML",
+        "script insertion"
+      ],
+      "acquired_content_to_code_path": "NO_EVIDENCE_OF_CODE_EXECUTION",
+      "inner_html": "PRESENT_UI_OR_TEMPLATE_SINK_REMOTE_TAINT_NOT_PROVED",
+      "script_insertion": "PRESENT_SOURCE_UNKNOWN",
+      "html_extraction_executes_scripts": "NOT_EVIDENCED",
+      "json_strings_executed": "NOT_EVIDENCED",
+      "absence_is_not_security_guarantee": true,
+      "evidence": [
+        "security-ev-ebed62125f4af7ae",
+        "security-ev-f9bdf24b86aa2c0c"
+      ]
+    },
+    {
+      "snapshot_id": "snapshot-0009",
+      "version": "v0.5.0",
+      "variant": "variant-b",
+      "sinks": [
+        "innerHTML",
+        "script insertion"
+      ],
+      "acquired_content_to_code_path": "NO_EVIDENCE_OF_CODE_EXECUTION",
+      "inner_html": "PRESENT_UI_OR_TEMPLATE_SINK_REMOTE_TAINT_NOT_PROVED",
+      "script_insertion": "STATIC_PAGE_BRIDGE_CODE",
+      "html_extraction_executes_scripts": "NOT_EVIDENCED",
+      "json_strings_executed": "NOT_EVIDENCED",
+      "absence_is_not_security_guarantee": true,
+      "evidence": [
+        "security-ev-d83a4c0b812e1958",
+        "security-ev-ffda3b844c9a7612"
+      ]
+    },
+    {
+      "snapshot_id": "snapshot-0011",
+      "version": "v0.5.0",
+      "variant": "variant-c",
+      "sinks": [
+        "script insertion"
+      ],
+      "acquired_content_to_code_path": "NO_EVIDENCE_OF_CODE_EXECUTION",
+      "inner_html": "ABSENT",
+      "script_insertion": "PRESENT_SOURCE_UNKNOWN",
+      "html_extraction_executes_scripts": "NOT_EVIDENCED",
+      "json_strings_executed": "NOT_EVIDENCED",
+      "absence_is_not_security_guarantee": true,
+      "evidence": [
+        "security-ev-5da9aa1ab39f6b75"
+      ]
+    },
+    {
+      "snapshot_id": "snapshot-0010",
+      "version": "v0.6.0",
+      "variant": "variant-a",
+      "sinks": [
+        "innerHTML",
+        "script insertion"
+      ],
+      "acquired_content_to_code_path": "NO_EVIDENCE_OF_CODE_EXECUTION",
+      "inner_html": "PRESENT_UI_OR_TEMPLATE_SINK_REMOTE_TAINT_NOT_PROVED",
+      "script_insertion": "PRESENT_SOURCE_UNKNOWN",
+      "html_extraction_executes_scripts": "NOT_EVIDENCED",
+      "json_strings_executed": "NOT_EVIDENCED",
+      "absence_is_not_security_guarantee": true,
+      "evidence": [
+        "security-ev-7923f57307af6346",
+        "security-ev-bf1ebeb9faa9b342"
+      ]
+    },
+    {
+      "snapshot_id": "snapshot-0012",
+      "version": "v0.6.0",
+      "variant": "variant-b",
+      "sinks": [
+        "script insertion"
+      ],
+      "acquired_content_to_code_path": "NO_EVIDENCE_OF_CODE_EXECUTION",
+      "inner_html": "ABSENT",
+      "script_insertion": "PRESENT_SOURCE_UNKNOWN",
+      "html_extraction_executes_scripts": "NOT_EVIDENCED",
+      "json_strings_executed": "NOT_EVIDENCED",
+      "absence_is_not_security_guarantee": true,
+      "evidence": [
+        "security-ev-55dcf5dabe25596c"
+      ]
+    },
+    {
+      "snapshot_id": "snapshot-0013",
+      "version": "v0.6.0",
+      "variant": "variant-c",
+      "sinks": [
+        "innerHTML",
+        "script insertion"
+      ],
+      "acquired_content_to_code_path": "NO_EVIDENCE_OF_CODE_EXECUTION",
+      "inner_html": "PRESENT_UI_OR_TEMPLATE_SINK_REMOTE_TAINT_NOT_PROVED",
+      "script_insertion": "PRESENT_SOURCE_UNKNOWN",
+      "html_extraction_executes_scripts": "NOT_EVIDENCED",
+      "json_strings_executed": "NOT_EVIDENCED",
+      "absence_is_not_security_guarantee": true,
+      "evidence": [
+        "security-ev-128869e0b3ffafd6",
+        "security-ev-18df7ea3e448f634"
+      ]
+    },
+    {
+      "snapshot_id": "snapshot-0014",
+      "version": "v0.7.1",
+      "variant": "only-evidenced-complete-occurrence",
+      "sinks": [
+        "script insertion"
+      ],
+      "acquired_content_to_code_path": "NO_EVIDENCE_OF_CODE_EXECUTION",
+      "inner_html": "ABSENT",
+      "script_insertion": "STATIC_PAGE_BRIDGE_CODE",
+      "html_extraction_executes_scripts": "NOT_EVIDENCED",
+      "json_strings_executed": "NOT_EVIDENCED",
+      "absence_is_not_security_guarantee": true,
+      "evidence": [
+        "security-ev-1bcbb02ae0469af3"
+      ]
+    }
+  ]
+}

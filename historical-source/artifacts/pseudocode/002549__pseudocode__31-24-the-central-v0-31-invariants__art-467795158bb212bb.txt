@@ -1,0 +1,41 @@
+1. Limit ≠ reservation ≠ consumption.
+
+2. Estimated cost ≠ actual cost.
+
+3. Reservation does not imply execution.
+
+4. Consumed resources must be accounted exactly once.
+
+5. Reservations must be atomic.
+
+6. Hierarchical budgets cannot permit oversubscription.
+
+7. Actual cost remains immutable evidence.
+
+8. Cost estimates may influence scheduling but cannot
+   override admission constraints.
+
+9. Budget exhaustion ≠ frontier exhaustion.
+
+10. Budget exhaustion ≠ search completeness.
+
+11. Resource release must be distinguishable from
+    actual consumption.
+
+12. Overruns must be explicitly represented.
+
+13. Every allocation has provenance.
+
+14. Every settlement has an execution basis.
+
+15. Resource accounting is independent from semantic
+    relevance.
+
+16. Historical cost is evidence for future estimation,
+    not an authority over current execution.
+
+17. Resource dimensions remain separately observable;
+    scalar cost is derived, not fundamental.
+
+18. Accounting conflicts must never be silently repaired
+    by overwriting history.

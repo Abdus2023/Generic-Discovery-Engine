@@ -1,0 +1,831 @@
+{
+  "schema_version": "1.0",
+  "graph_type": "FUTURE_ENGINEERING_OBLIGATION_GRAPH",
+  "nodes": [
+    {
+      "id": "OBL-CANDIDATE-IDENTITY",
+      "kind": "OBLIGATION",
+      "status": "FORMALIZED",
+      "category": "PRESERVATION_OBLIGATION"
+    },
+    {
+      "id": "OBL-CANDIDATE-EQUIVALENCE",
+      "kind": "OBLIGATION",
+      "status": "FORMALIZED",
+      "category": "FUTURE_STRENGTHENING"
+    },
+    {
+      "id": "OBL-DEDUP-SCOPES",
+      "kind": "OBLIGATION",
+      "status": "FORMALIZED",
+      "category": "ENGINEERING_REQUIREMENT"
+    },
+    {
+      "id": "OBL-CANDIDATE-ORIGIN",
+      "kind": "OBLIGATION",
+      "status": "FORMALIZED",
+      "category": "PRESERVATION_OBLIGATION"
+    },
+    {
+      "id": "OBL-CANDIDATE-PARENT",
+      "kind": "OBLIGATION",
+      "status": "FORMALIZED",
+      "category": "PRESERVATION_OBLIGATION"
+    },
+    {
+      "id": "OBL-CANDIDATE-STATE",
+      "kind": "OBLIGATION",
+      "status": "FORMALIZED",
+      "category": "FUTURE_STRENGTHENING"
+    },
+    {
+      "id": "OBL-CANDIDATE-PRIORITY",
+      "kind": "OBLIGATION",
+      "status": "FORMALIZED",
+      "category": "COMPATIBILITY_OBLIGATION"
+    },
+    {
+      "id": "OBL-CANDIDATE-ATTEMPTS",
+      "kind": "OBLIGATION",
+      "status": "FORMALIZED",
+      "category": "PRESERVATION_OBLIGATION"
+    },
+    {
+      "id": "OBL-CANDIDATE-TIMESTAMPS",
+      "kind": "OBLIGATION",
+      "status": "FORMALIZED",
+      "category": "FUTURE_STRENGTHENING"
+    },
+    {
+      "id": "OBL-CLAIM-EXCLUSIVITY",
+      "kind": "OBLIGATION",
+      "status": "FORMALIZED",
+      "category": "ENGINEERING_REQUIREMENT"
+    },
+    {
+      "id": "OBL-TERMINAL-OWNERSHIP",
+      "kind": "OBLIGATION",
+      "status": "FORMALIZED",
+      "category": "FUTURE_STRENGTHENING"
+    },
+    {
+      "id": "OBL-ACQ-BEFORE-INTERP",
+      "kind": "OBLIGATION",
+      "status": "FORMALIZED",
+      "category": "PRESERVATION_OBLIGATION"
+    },
+    {
+      "id": "OBL-ACQ-OUTCOME",
+      "kind": "OBLIGATION",
+      "status": "FORMALIZED",
+      "category": "ENGINEERING_REQUIREMENT"
+    },
+    {
+      "id": "OBL-ACQ-METADATA",
+      "kind": "OBLIGATION",
+      "status": "FORMALIZED",
+      "category": "PRESERVATION_OBLIGATION"
+    },
+    {
+      "id": "OBL-ACQ-TIMEOUT",
+      "kind": "OBLIGATION",
+      "status": "FORMALIZED",
+      "category": "PRESERVATION_OBLIGATION"
+    },
+    {
+      "id": "OBL-ACQ-SCOPE",
+      "kind": "OBLIGATION",
+      "status": "FORMALIZED",
+      "category": "ENGINEERING_REQUIREMENT"
+    },
+    {
+      "id": "OBL-CANCELLATION",
+      "kind": "OBLIGATION",
+      "status": "FORMALIZED",
+      "category": "FUTURE_STRENGTHENING"
+    },
+    {
+      "id": "OBL-OBS-DISTINCT",
+      "kind": "OBLIGATION",
+      "status": "FORMALIZED",
+      "category": "PRESERVATION_OBLIGATION"
+    },
+    {
+      "id": "OBL-OBS-SOURCE",
+      "kind": "OBLIGATION",
+      "status": "FORMALIZED",
+      "category": "PRESERVATION_OBLIGATION"
+    },
+    {
+      "id": "OBL-OBS-OUTCOMES",
+      "kind": "OBLIGATION",
+      "status": "FORMALIZED",
+      "category": "FUTURE_STRENGTHENING"
+    },
+    {
+      "id": "OBL-RECOGNITION-DISTINCT",
+      "kind": "OBLIGATION",
+      "status": "FORMALIZED",
+      "category": "PRESERVATION_OBLIGATION"
+    },
+    {
+      "id": "OBL-RECOGNITION-OUTCOMES",
+      "kind": "OBLIGATION",
+      "status": "FORMALIZED",
+      "category": "FUTURE_STRENGTHENING"
+    },
+    {
+      "id": "OBL-PROVIDER-CONTRACT",
+      "kind": "OBLIGATION",
+      "status": "FORMALIZED",
+      "category": "FUTURE_STRENGTHENING"
+    },
+    {
+      "id": "OBL-PROVIDER-FAILURE",
+      "kind": "OBLIGATION",
+      "status": "FORMALIZED",
+      "category": "FUTURE_STRENGTHENING"
+    },
+    {
+      "id": "OBL-DISCOVERY-RECORD",
+      "kind": "OBLIGATION",
+      "status": "FORMALIZED",
+      "category": "PRESERVATION_OBLIGATION"
+    },
+    {
+      "id": "OBL-EXPANSION-RECURSIVE",
+      "kind": "OBLIGATION",
+      "status": "FORMALIZED",
+      "category": "PRESERVATION_OBLIGATION"
+    },
+    {
+      "id": "OBL-EXPANSION-VS-RETRY",
+      "kind": "OBLIGATION",
+      "status": "FORMALIZED",
+      "category": "ENGINEERING_REQUIREMENT"
+    },
+    {
+      "id": "OBL-CANDIDATE-ADMISSION",
+      "kind": "OBLIGATION",
+      "status": "FORMALIZED",
+      "category": "FUTURE_STRENGTHENING"
+    },
+    {
+      "id": "OBL-KNOWLEDGE",
+      "kind": "OBLIGATION",
+      "status": "FORMALIZED",
+      "category": "PRESERVATION_OBLIGATION"
+    },
+    {
+      "id": "OBL-BOUNDED-CONCURRENCY",
+      "kind": "OBLIGATION",
+      "status": "FORMALIZED",
+      "category": "PRESERVATION_OBLIGATION"
+    },
+    {
+      "id": "OBL-SCHEDULER-TERMINATION",
+      "kind": "OBLIGATION",
+      "status": "FORMALIZED",
+      "category": "FUTURE_STRENGTHENING"
+    },
+    {
+      "id": "OBL-WORKER-FAILURE",
+      "kind": "OBLIGATION",
+      "status": "FORMALIZED",
+      "category": "FUTURE_STRENGTHENING"
+    },
+    {
+      "id": "OBL-RETRY",
+      "kind": "OBLIGATION",
+      "status": "FORMALIZED",
+      "category": "FUTURE_STRENGTHENING"
+    },
+    {
+      "id": "OBL-PROVENANCE",
+      "kind": "OBLIGATION",
+      "status": "FORMALIZED",
+      "category": "PRESERVATION_OBLIGATION"
+    },
+    {
+      "id": "OBL-PROVENANCE-INTEGRITY",
+      "kind": "OBLIGATION",
+      "status": "FORMALIZED",
+      "category": "FUTURE_STRENGTHENING"
+    },
+    {
+      "id": "OBL-REMOTE-DATA",
+      "kind": "OBLIGATION",
+      "status": "FORMALIZED",
+      "category": "ENGINEERING_REQUIREMENT"
+    },
+    {
+      "id": "OBL-AUTHORITY",
+      "kind": "OBLIGATION",
+      "status": "FORMALIZED",
+      "category": "FUTURE_STRENGTHENING"
+    },
+    {
+      "id": "OBL-PARSER",
+      "kind": "OBLIGATION",
+      "status": "FORMALIZED",
+      "category": "ENGINEERING_REQUIREMENT"
+    },
+    {
+      "id": "OBL-RESOURCE",
+      "kind": "OBLIGATION",
+      "status": "FORMALIZED",
+      "category": "PRESERVATION_OBLIGATION"
+    },
+    {
+      "id": "OBL-UNBOUNDED",
+      "kind": "OBLIGATION",
+      "status": "FORMALIZED",
+      "category": "FUTURE_STRENGTHENING"
+    },
+    {
+      "id": "OBL-LIFECYCLE-OBS",
+      "kind": "OBLIGATION",
+      "status": "FORMALIZED",
+      "category": "FUTURE_STRENGTHENING"
+    },
+    {
+      "id": "OBL-AUDIT",
+      "kind": "OBLIGATION",
+      "status": "FORMALIZED",
+      "category": "FUTURE_STRENGTHENING"
+    },
+    {
+      "id": "OBL-SILENT-FAILURE",
+      "kind": "OBLIGATION",
+      "status": "FORMALIZED",
+      "category": "FUTURE_STRENGTHENING"
+    },
+    {
+      "id": "OBL-PERSIST-COMPAT",
+      "kind": "OBLIGATION",
+      "status": "FORMALIZED",
+      "category": "COMPATIBILITY_OBLIGATION"
+    },
+    {
+      "id": "OBL-PERSIST-CORRUPTION",
+      "kind": "OBLIGATION",
+      "status": "FORMALIZED",
+      "category": "FUTURE_STRENGTHENING"
+    },
+    {
+      "id": "OBL-EXPORT",
+      "kind": "OBLIGATION",
+      "status": "FORMALIZED",
+      "category": "FUTURE_STRENGTHENING"
+    },
+    {
+      "id": "OBL-ERROR-CONTRACT",
+      "kind": "OBLIGATION",
+      "status": "FORMALIZED",
+      "category": "FUTURE_STRENGTHENING"
+    },
+    {
+      "id": "OBL-REGRESSION",
+      "kind": "OBLIGATION",
+      "status": "FORMALIZED",
+      "category": "ENGINEERING_REQUIREMENT"
+    },
+    {
+      "id": "OBL-PARSE-DEFECT",
+      "kind": "OBLIGATION",
+      "status": "FORMALIZED",
+      "category": "HISTORICAL_DEFECT"
+    },
+    {
+      "id": "OBL-WEB-GENERALIZE",
+      "kind": "OBLIGATION",
+      "status": "FORMALIZED",
+      "category": "FUTURE_STRENGTHENING"
+    }
+  ],
+  "edges": [
+    {
+      "from": "OBL-ACQ-METADATA",
+      "to": "OBL-OBS-DISTINCT",
+      "relation": "REQUIRES",
+      "reason": "The dependent behavior needs acquisition evidence distinct from interpretation."
+    },
+    {
+      "from": "OBL-ACQ-METADATA",
+      "to": "OBL-OBS-SOURCE",
+      "relation": "REQUIRES",
+      "reason": "The dependent behavior needs an attributable source candidate for observation/discovery correlation."
+    },
+    {
+      "from": "OBL-ACQ-OUTCOME",
+      "to": "OBL-ACQ-BEFORE-INTERP",
+      "relation": "REQUIRES",
+      "reason": "Acquisition outcome recording consumes or semantically assumes the property guaranteed by Acquisition precedes interpretation; satisfying the dependent without that prerequisite would leave its stated invariant undefined."
+    },
+    {
+      "from": "OBL-ACQ-OUTCOME",
+      "to": "OBL-CANDIDATE-IDENTITY",
+      "relation": "REQUIRES",
+      "reason": "The dependent behavior must correlate the same candidate across lifecycle operations."
+    },
+    {
+      "from": "OBL-ACQ-SCOPE",
+      "to": "OBL-ACQ-BEFORE-INTERP",
+      "relation": "REQUIRES",
+      "reason": "Acquisition scope enforcement consumes or semantically assumes the property guaranteed by Acquisition precedes interpretation; satisfying the dependent without that prerequisite would leave its stated invariant undefined."
+    },
+    {
+      "from": "OBL-ACQ-SCOPE",
+      "to": "OBL-AUTHORITY",
+      "relation": "REQUIRES",
+      "reason": "Acquisition scope enforcement consumes or semantically assumes the property guaranteed by Explicit authority scope; satisfying the dependent without that prerequisite would leave its stated invariant undefined."
+    },
+    {
+      "from": "OBL-ACQ-TIMEOUT",
+      "to": "OBL-ACQ-BEFORE-INTERP",
+      "relation": "REQUIRES",
+      "reason": "Finite acquisition timeout consumes or semantically assumes the property guaranteed by Acquisition precedes interpretation; satisfying the dependent without that prerequisite would leave its stated invariant undefined."
+    },
+    {
+      "from": "OBL-AUDIT",
+      "to": "OBL-LIFECYCLE-OBS",
+      "relation": "REQUIRES",
+      "reason": "The dependent behavior needs observable lifecycle evidence to diagnose or verify satisfaction."
+    },
+    {
+      "from": "OBL-AUDIT",
+      "to": "OBL-PROVENANCE",
+      "relation": "REQUIRES",
+      "reason": "The dependent behavior assumes visible derivation associations."
+    },
+    {
+      "from": "OBL-AUDIT",
+      "to": "OBL-PROVENANCE-INTEGRITY",
+      "relation": "REQUIRES",
+      "reason": "The dependent audit/integrity behavior cannot be claimed while provenance mutation remains unverified."
+    },
+    {
+      "from": "OBL-CANCELLATION",
+      "to": "OBL-ACQ-TIMEOUT",
+      "relation": "REQUIRES",
+      "reason": "Cancellation verification consumes or semantically assumes the property guaranteed by Finite acquisition timeout; satisfying the dependent without that prerequisite would leave its stated invariant undefined."
+    },
+    {
+      "from": "OBL-CANCELLATION",
+      "to": "OBL-CANDIDATE-STATE",
+      "relation": "REQUIRES",
+      "reason": "The dependent behavior reads or mutates candidate lifecycle state and needs legal transitions."
+    },
+    {
+      "from": "OBL-CANCELLATION",
+      "to": "OBL-SCHEDULER-TERMINATION",
+      "relation": "REQUIRES",
+      "reason": "Cancellation verification consumes or semantically assumes the property guaranteed by In-flight-aware termination; satisfying the dependent without that prerequisite would leave its stated invariant undefined."
+    },
+    {
+      "from": "OBL-CANCELLATION",
+      "to": "OBL-TERMINAL-OWNERSHIP",
+      "relation": "REQUIRES",
+      "reason": "The dependent behavior cannot close safely while owned work lacks terminal accountability."
+    },
+    {
+      "from": "OBL-CANDIDATE-ADMISSION",
+      "to": "OBL-CANDIDATE-PARENT",
+      "relation": "REQUIRES",
+      "reason": "Candidate admission transaction consumes or semantically assumes the property guaranteed by Candidate parentage preservation; satisfying the dependent without that prerequisite would leave its stated invariant undefined."
+    },
+    {
+      "from": "OBL-CANDIDATE-ADMISSION",
+      "to": "OBL-CANDIDATE-STATE",
+      "relation": "REQUIRES",
+      "reason": "The dependent behavior reads or mutates candidate lifecycle state and needs legal transitions."
+    },
+    {
+      "from": "OBL-CANDIDATE-ADMISSION",
+      "to": "OBL-DEDUP-SCOPES",
+      "relation": "REQUIRES",
+      "reason": "Candidate admission transaction consumes or semantically assumes the property guaranteed by Independent deduplication scopes; satisfying the dependent without that prerequisite would leave its stated invariant undefined."
+    },
+    {
+      "from": "OBL-CANDIDATE-ATTEMPTS",
+      "to": "OBL-CANDIDATE-STATE",
+      "relation": "REQUIRES",
+      "reason": "The dependent behavior reads or mutates candidate lifecycle state and needs legal transitions."
+    },
+    {
+      "from": "OBL-CANDIDATE-EQUIVALENCE",
+      "to": "OBL-CANDIDATE-IDENTITY",
+      "relation": "REQUIRES",
+      "reason": "The dependent behavior must correlate the same candidate across lifecycle operations."
+    },
+    {
+      "from": "OBL-CANDIDATE-ORIGIN",
+      "to": "OBL-CANDIDATE-IDENTITY",
+      "relation": "REQUIRES",
+      "reason": "The dependent behavior must correlate the same candidate across lifecycle operations."
+    },
+    {
+      "from": "OBL-CANDIDATE-PARENT",
+      "to": "OBL-CANDIDATE-IDENTITY",
+      "relation": "REQUIRES",
+      "reason": "The dependent behavior must correlate the same candidate across lifecycle operations."
+    },
+    {
+      "from": "OBL-CANDIDATE-PRIORITY",
+      "to": "OBL-CANDIDATE-IDENTITY",
+      "relation": "REQUIRES",
+      "reason": "The dependent behavior must correlate the same candidate across lifecycle operations."
+    },
+    {
+      "from": "OBL-CANDIDATE-STATE",
+      "to": "OBL-CANDIDATE-IDENTITY",
+      "relation": "REQUIRES",
+      "reason": "The dependent behavior must correlate the same candidate across lifecycle operations."
+    },
+    {
+      "from": "OBL-CANDIDATE-TIMESTAMPS",
+      "to": "OBL-CANDIDATE-STATE",
+      "relation": "REQUIRES",
+      "reason": "The dependent behavior reads or mutates candidate lifecycle state and needs legal transitions."
+    },
+    {
+      "from": "OBL-CLAIM-EXCLUSIVITY",
+      "to": "OBL-CANDIDATE-STATE",
+      "relation": "REQUIRES",
+      "reason": "The dependent behavior reads or mutates candidate lifecycle state and needs legal transitions."
+    },
+    {
+      "from": "OBL-DEDUP-SCOPES",
+      "to": "OBL-CANDIDATE-IDENTITY",
+      "relation": "REQUIRES",
+      "reason": "The dependent behavior must correlate the same candidate across lifecycle operations."
+    },
+    {
+      "from": "OBL-ERROR-CONTRACT",
+      "to": "OBL-OBS-OUTCOMES",
+      "relation": "REQUIRES",
+      "reason": "Error compatibility contract consumes or semantically assumes the property guaranteed by Observation outcome semantics; satisfying the dependent without that prerequisite would leave its stated invariant undefined."
+    },
+    {
+      "from": "OBL-ERROR-CONTRACT",
+      "to": "OBL-RECOGNITION-OUTCOMES",
+      "relation": "REQUIRES",
+      "reason": "The dependent behavior needs no-match, failure, partial, and success to remain distinct."
+    },
+    {
+      "from": "OBL-EXPANSION-RECURSIVE",
+      "to": "OBL-RESOURCE",
+      "relation": "REQUIRES",
+      "reason": "The dependent recursive/resource behavior needs explicit bounds to avoid unbounded execution."
+    },
+    {
+      "from": "OBL-EXPANSION-RECURSIVE",
+      "to": "OBL-SCHEDULER-TERMINATION",
+      "relation": "REQUIRES",
+      "reason": "Recursive expansion capability consumes or semantically assumes the property guaranteed by In-flight-aware termination; satisfying the dependent without that prerequisite would leave its stated invariant undefined."
+    },
+    {
+      "from": "OBL-EXPANSION-VS-RETRY",
+      "to": "OBL-EXPANSION-RECURSIVE",
+      "relation": "REQUIRES",
+      "reason": "Expansion is not retry consumes or semantically assumes the property guaranteed by Recursive expansion capability; satisfying the dependent without that prerequisite would leave its stated invariant undefined."
+    },
+    {
+      "from": "OBL-EXPANSION-VS-RETRY",
+      "to": "OBL-RETRY",
+      "relation": "REQUIRES",
+      "reason": "Expansion is not retry consumes or semantically assumes the property guaranteed by Bounded explicit retry; satisfying the dependent without that prerequisite would leave its stated invariant undefined."
+    },
+    {
+      "from": "OBL-EXPORT",
+      "to": "OBL-ERROR-CONTRACT",
+      "relation": "REQUIRES",
+      "reason": "The dependent serialized/API behavior needs explicit error and null-like value semantics."
+    },
+    {
+      "from": "OBL-EXPORT",
+      "to": "OBL-KNOWLEDGE",
+      "relation": "REQUIRES",
+      "reason": "Export role and schema consumes or semantically assumes the property guaranteed by Knowledge accumulation; satisfying the dependent without that prerequisite would leave its stated invariant undefined."
+    },
+    {
+      "from": "OBL-EXPORT",
+      "to": "OBL-PROVENANCE",
+      "relation": "REQUIRES",
+      "reason": "The dependent behavior assumes visible derivation associations."
+    },
+    {
+      "from": "OBL-LIFECYCLE-OBS",
+      "to": "OBL-ACQ-OUTCOME",
+      "relation": "REQUIRES",
+      "reason": "Lifecycle observability consumes or semantically assumes the property guaranteed by Acquisition outcome recording; satisfying the dependent without that prerequisite would leave its stated invariant undefined."
+    },
+    {
+      "from": "OBL-LIFECYCLE-OBS",
+      "to": "OBL-CANDIDATE-STATE",
+      "relation": "REQUIRES",
+      "reason": "The dependent behavior reads or mutates candidate lifecycle state and needs legal transitions."
+    },
+    {
+      "from": "OBL-LIFECYCLE-OBS",
+      "to": "OBL-DISCOVERY-RECORD",
+      "relation": "REQUIRES",
+      "reason": "Lifecycle observability consumes or semantically assumes the property guaranteed by Discovery semantic record; satisfying the dependent without that prerequisite would leave its stated invariant undefined."
+    },
+    {
+      "from": "OBL-LIFECYCLE-OBS",
+      "to": "OBL-RECOGNITION-OUTCOMES",
+      "relation": "REQUIRES",
+      "reason": "The dependent behavior needs no-match, failure, partial, and success to remain distinct."
+    },
+    {
+      "from": "OBL-OBS-OUTCOMES",
+      "to": "OBL-ACQ-OUTCOME",
+      "relation": "REQUIRES",
+      "reason": "Observation outcome semantics consumes or semantically assumes the property guaranteed by Acquisition outcome recording; satisfying the dependent without that prerequisite would leave its stated invariant undefined."
+    },
+    {
+      "from": "OBL-OBS-OUTCOMES",
+      "to": "OBL-OBS-DISTINCT",
+      "relation": "REQUIRES",
+      "reason": "The dependent behavior needs acquisition evidence distinct from interpretation."
+    },
+    {
+      "from": "OBL-OBS-SOURCE",
+      "to": "OBL-OBS-DISTINCT",
+      "relation": "REQUIRES",
+      "reason": "The dependent behavior needs acquisition evidence distinct from interpretation."
+    },
+    {
+      "from": "OBL-PARSE-DEFECT",
+      "to": "OBL-REGRESSION",
+      "relation": "REQUIRES",
+      "reason": "The known-defect rejection needs an executable build/parse regression test."
+    },
+    {
+      "from": "OBL-PARSER",
+      "to": "OBL-RECOGNITION-DISTINCT",
+      "relation": "REQUIRES",
+      "reason": "The dependent behavior assumes recognition remains separable from acquisition."
+    },
+    {
+      "from": "OBL-PARSER",
+      "to": "OBL-REMOTE-DATA",
+      "relation": "REQUIRES",
+      "reason": "Malformed-input containment consumes or semantically assumes the property guaranteed by Remote content remains untrusted data; satisfying the dependent without that prerequisite would leave its stated invariant undefined."
+    },
+    {
+      "from": "OBL-PERSIST-COMPAT",
+      "to": "OBL-ERROR-CONTRACT",
+      "relation": "REQUIRES",
+      "reason": "The dependent serialized/API behavior needs explicit error and null-like value semantics."
+    },
+    {
+      "from": "OBL-PERSIST-COMPAT",
+      "to": "OBL-KNOWLEDGE",
+      "relation": "REQUIRES",
+      "reason": "Persistence schema compatibility consumes or semantically assumes the property guaranteed by Knowledge accumulation; satisfying the dependent without that prerequisite would leave its stated invariant undefined."
+    },
+    {
+      "from": "OBL-PERSIST-COMPAT",
+      "to": "OBL-PROVENANCE",
+      "relation": "REQUIRES",
+      "reason": "The dependent behavior assumes visible derivation associations."
+    },
+    {
+      "from": "OBL-PERSIST-CORRUPTION",
+      "to": "OBL-PERSIST-COMPAT",
+      "relation": "REQUIRES",
+      "reason": "Persistence corruption containment consumes or semantically assumes the property guaranteed by Persistence schema compatibility; satisfying the dependent without that prerequisite would leave its stated invariant undefined."
+    },
+    {
+      "from": "OBL-PERSIST-CORRUPTION",
+      "to": "OBL-SILENT-FAILURE",
+      "relation": "REQUIRES",
+      "reason": "Persistence corruption containment consumes or semantically assumes the property guaranteed by Reject silent semantic failure; satisfying the dependent without that prerequisite would leave its stated invariant undefined."
+    },
+    {
+      "from": "OBL-PROVENANCE",
+      "to": "OBL-CANDIDATE-ORIGIN",
+      "relation": "REQUIRES",
+      "reason": "End-to-end provenance associations consumes or semantically assumes the property guaranteed by Candidate origin preservation; satisfying the dependent without that prerequisite would leave its stated invariant undefined."
+    },
+    {
+      "from": "OBL-PROVENANCE",
+      "to": "OBL-CANDIDATE-PARENT",
+      "relation": "REQUIRES",
+      "reason": "End-to-end provenance associations consumes or semantically assumes the property guaranteed by Candidate parentage preservation; satisfying the dependent without that prerequisite would leave its stated invariant undefined."
+    },
+    {
+      "from": "OBL-PROVENANCE",
+      "to": "OBL-DISCOVERY-RECORD",
+      "relation": "REQUIRES",
+      "reason": "End-to-end provenance associations consumes or semantically assumes the property guaranteed by Discovery semantic record; satisfying the dependent without that prerequisite would leave its stated invariant undefined."
+    },
+    {
+      "from": "OBL-PROVENANCE",
+      "to": "OBL-OBS-SOURCE",
+      "relation": "REQUIRES",
+      "reason": "The dependent behavior needs an attributable source candidate for observation/discovery correlation."
+    },
+    {
+      "from": "OBL-PROVENANCE-INTEGRITY",
+      "to": "OBL-PROVENANCE",
+      "relation": "REQUIRES",
+      "reason": "The dependent behavior assumes visible derivation associations."
+    },
+    {
+      "from": "OBL-PROVIDER-CONTRACT",
+      "to": "OBL-RECOGNITION-DISTINCT",
+      "relation": "REQUIRES",
+      "reason": "The dependent behavior assumes recognition remains separable from acquisition."
+    },
+    {
+      "from": "OBL-PROVIDER-CONTRACT",
+      "to": "OBL-RECOGNITION-OUTCOMES",
+      "relation": "REQUIRES",
+      "reason": "The dependent behavior needs no-match, failure, partial, and success to remain distinct."
+    },
+    {
+      "from": "OBL-PROVIDER-FAILURE",
+      "to": "OBL-PROVIDER-CONTRACT",
+      "relation": "REQUIRES",
+      "reason": "Provider failure containment consumes or semantically assumes the property guaranteed by Provider semantic contract; satisfying the dependent without that prerequisite would leave its stated invariant undefined."
+    },
+    {
+      "from": "OBL-PROVIDER-FAILURE",
+      "to": "OBL-SILENT-FAILURE",
+      "relation": "REQUIRES",
+      "reason": "Provider failure containment consumes or semantically assumes the property guaranteed by Reject silent semantic failure; satisfying the dependent without that prerequisite would leave its stated invariant undefined."
+    },
+    {
+      "from": "OBL-RECOGNITION-DISTINCT",
+      "to": "OBL-ACQ-BEFORE-INTERP",
+      "relation": "REQUIRES",
+      "reason": "Recognition stage separation consumes or semantically assumes the property guaranteed by Acquisition precedes interpretation; satisfying the dependent without that prerequisite would leave its stated invariant undefined."
+    },
+    {
+      "from": "OBL-RECOGNITION-OUTCOMES",
+      "to": "OBL-OBS-OUTCOMES",
+      "relation": "REQUIRES",
+      "reason": "Recognition outcome contract consumes or semantically assumes the property guaranteed by Observation outcome semantics; satisfying the dependent without that prerequisite would leave its stated invariant undefined."
+    },
+    {
+      "from": "OBL-RECOGNITION-OUTCOMES",
+      "to": "OBL-RECOGNITION-DISTINCT",
+      "relation": "REQUIRES",
+      "reason": "The dependent behavior assumes recognition remains separable from acquisition."
+    },
+    {
+      "from": "OBL-REMOTE-DATA",
+      "to": "OBL-ACQ-SCOPE",
+      "relation": "REQUIRES",
+      "reason": "Remote content remains untrusted data consumes or semantically assumes the property guaranteed by Acquisition scope enforcement; satisfying the dependent without that prerequisite would leave its stated invariant undefined."
+    },
+    {
+      "from": "OBL-REMOTE-DATA",
+      "to": "OBL-RECOGNITION-DISTINCT",
+      "relation": "REQUIRES",
+      "reason": "The dependent behavior assumes recognition remains separable from acquisition."
+    },
+    {
+      "from": "OBL-RETRY",
+      "to": "OBL-ACQ-TIMEOUT",
+      "relation": "REQUIRES",
+      "reason": "Bounded explicit retry consumes or semantically assumes the property guaranteed by Finite acquisition timeout; satisfying the dependent without that prerequisite would leave its stated invariant undefined."
+    },
+    {
+      "from": "OBL-RETRY",
+      "to": "OBL-CANDIDATE-ATTEMPTS",
+      "relation": "REQUIRES",
+      "reason": "Bounded explicit retry consumes or semantically assumes the property guaranteed by Attempt accounting; satisfying the dependent without that prerequisite would leave its stated invariant undefined."
+    },
+    {
+      "from": "OBL-RETRY",
+      "to": "OBL-TERMINAL-OWNERSHIP",
+      "relation": "REQUIRES",
+      "reason": "The dependent behavior cannot close safely while owned work lacks terminal accountability."
+    },
+    {
+      "from": "OBL-SCHEDULER-TERMINATION",
+      "to": "OBL-BOUNDED-CONCURRENCY",
+      "relation": "REQUIRES",
+      "reason": "The dependent behavior cannot reason about in-flight completion without a finite worker scope."
+    },
+    {
+      "from": "OBL-SCHEDULER-TERMINATION",
+      "to": "OBL-CANDIDATE-ADMISSION",
+      "relation": "REQUIRES",
+      "reason": "The dependent behavior creates work and therefore needs defined admission and duplicate handling."
+    },
+    {
+      "from": "OBL-SCHEDULER-TERMINATION",
+      "to": "OBL-LIFECYCLE-OBS",
+      "relation": "REQUIRES",
+      "reason": "The dependent behavior needs observable lifecycle evidence to diagnose or verify satisfaction."
+    },
+    {
+      "from": "OBL-SCHEDULER-TERMINATION",
+      "to": "OBL-TERMINAL-OWNERSHIP",
+      "relation": "REQUIRES",
+      "reason": "The dependent behavior cannot close safely while owned work lacks terminal accountability."
+    },
+    {
+      "from": "OBL-SILENT-FAILURE",
+      "to": "OBL-OBS-OUTCOMES",
+      "relation": "REQUIRES",
+      "reason": "Reject silent semantic failure consumes or semantically assumes the property guaranteed by Observation outcome semantics; satisfying the dependent without that prerequisite would leave its stated invariant undefined."
+    },
+    {
+      "from": "OBL-SILENT-FAILURE",
+      "to": "OBL-RECOGNITION-OUTCOMES",
+      "relation": "REQUIRES",
+      "reason": "The dependent behavior needs no-match, failure, partial, and success to remain distinct."
+    },
+    {
+      "from": "OBL-TERMINAL-OWNERSHIP",
+      "to": "OBL-CANDIDATE-STATE",
+      "relation": "REQUIRES",
+      "reason": "The dependent behavior reads or mutates candidate lifecycle state and needs legal transitions."
+    },
+    {
+      "from": "OBL-TERMINAL-OWNERSHIP",
+      "to": "OBL-CLAIM-EXCLUSIVITY",
+      "relation": "REQUIRES",
+      "reason": "The dependent behavior needs an attributable exclusive owner before terminal mutation."
+    },
+    {
+      "from": "OBL-UNBOUNDED",
+      "to": "OBL-RESOURCE",
+      "relation": "REQUIRES",
+      "reason": "The dependent recursive/resource behavior needs explicit bounds to avoid unbounded execution."
+    },
+    {
+      "from": "OBL-WEB-GENERALIZE",
+      "to": "OBL-ACQ-BEFORE-INTERP",
+      "relation": "REQUIRES",
+      "reason": "Generalize beyond web without losing web semantics consumes or semantically assumes the property guaranteed by Acquisition precedes interpretation; satisfying the dependent without that prerequisite would leave its stated invariant undefined."
+    },
+    {
+      "from": "OBL-WEB-GENERALIZE",
+      "to": "OBL-ACQ-SCOPE",
+      "relation": "REQUIRES",
+      "reason": "Generalize beyond web without losing web semantics consumes or semantically assumes the property guaranteed by Acquisition scope enforcement; satisfying the dependent without that prerequisite would leave its stated invariant undefined."
+    },
+    {
+      "from": "OBL-WORKER-FAILURE",
+      "to": "OBL-CLAIM-EXCLUSIVITY",
+      "relation": "REQUIRES",
+      "reason": "The dependent behavior needs an attributable exclusive owner before terminal mutation."
+    },
+    {
+      "from": "OBL-WORKER-FAILURE",
+      "to": "OBL-SILENT-FAILURE",
+      "relation": "REQUIRES",
+      "reason": "Worker failure state consistency consumes or semantically assumes the property guaranteed by Reject silent semantic failure; satisfying the dependent without that prerequisite would leave its stated invariant undefined."
+    },
+    {
+      "from": "OBL-WORKER-FAILURE",
+      "to": "OBL-TERMINAL-OWNERSHIP",
+      "relation": "REQUIRES",
+      "reason": "The dependent behavior cannot close safely while owned work lacks terminal accountability."
+    },
+    {
+      "from": "OBL-CANDIDATE-STATE",
+      "to": "OBL-CANDIDATE-IDENTITY",
+      "relation": "REFINES",
+      "reason": "The dependent behavior must correlate the same candidate across lifecycle operations."
+    },
+    {
+      "from": "OBL-CLAIM-EXCLUSIVITY",
+      "to": "OBL-CANDIDATE-STATE",
+      "relation": "REFINES",
+      "reason": "The dependent behavior reads or mutates candidate lifecycle state and needs legal transitions."
+    },
+    {
+      "from": "OBL-RESOURCE",
+      "to": "OBL-EXPANSION-RECURSIVE",
+      "relation": "CONSTRAINS",
+      "reason": "Explicit resource bounds consumes or semantically assumes the property guaranteed by Recursive expansion capability; satisfying the dependent without that prerequisite would leave its stated invariant undefined."
+    },
+    {
+      "from": "OBL-LIFECYCLE-OBS",
+      "to": "OBL-AUDIT",
+      "relation": "SUPPORTS",
+      "reason": "Lifecycle observability consumes or semantically assumes the property guaranteed by Auditability verification; satisfying the dependent without that prerequisite would leave its stated invariant undefined."
+    },
+    {
+      "from": "OBL-PROVENANCE-INTEGRITY",
+      "to": "OBL-PROVENANCE",
+      "relation": "STRENGTHENS",
+      "reason": "The dependent behavior assumes visible derivation associations."
+    },
+    {
+      "from": "OBL-PROVIDER-FAILURE",
+      "to": "OBL-PROVIDER-CONTRACT",
+      "relation": "STRENGTHENS",
+      "reason": "Provider failure containment consumes or semantically assumes the property guaranteed by Provider semantic contract; satisfying the dependent without that prerequisite would leave its stated invariant undefined."
+    }
+  ],
+  "historical_edges_not_relabelled": true
+}

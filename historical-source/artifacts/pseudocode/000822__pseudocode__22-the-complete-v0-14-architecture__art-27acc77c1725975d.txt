@@ -1,0 +1,68 @@
+                         ┌───────────────────────┐
+                         │   DISCOVERY DOMAIN    │
+                         │                       │
+                         │ schemes               │
+                         │ origins               │
+                         │ resource types        │
+                         │ seeds                 │
+                         │ source set             │
+                         │ budgets               │
+                         │ termination            │
+                         └───────────┬───────────┘
+                                     │
+                                     ▼
+                         ┌───────────────────────┐
+                         │     SCAN SESSION      │
+                         │                       │
+                         │ lifecycle             │
+                         │ counters              │
+                         │ frontier              │
+                         │ snapshot              │
+                         │ cancellation          │
+                         │ termination           │
+                         └───────────┬───────────┘
+                                     │
+                                     ▼
+                         ┌───────────────────────┐
+                         │ DISCOVERY CONTROLLER   │
+                         └───────────┬───────────┘
+                                     │
+                         ┌───────────┴───────────┐
+                         ▼                       ▼
+                Discovery Scheduler       Discovery Sources
+                         │                       │
+                         └───────────┬───────────┘
+                                     ▼
+                               PROPOSALS
+                                     │
+                                     ▼
+                             NORMALIZATION
+                                     │
+                                     ▼
+                               CANDIDATES
+                                     │
+                                     ▼
+                           ACQUISITION SCHEDULER
+                                     │
+                                     ▼
+                           ACQUISITION RUNTIME
+                                     │
+                                     ▼
+                           ACQUISITION PROVIDER
+                                     │
+                                     ▼
+                              OBSERVATION
+                                     │
+                                     ▼
+                         RECOGNITION RUNTIME
+                                     │
+                                     ▼
+                               EVIDENCE
+                                     │
+                                     ▼
+                         DISCOVERY CONTROLLER
+                                     │
+                                     └──────────────┐
+                                                    │
+                                                    ▼
+                                               NEW FRONTIER

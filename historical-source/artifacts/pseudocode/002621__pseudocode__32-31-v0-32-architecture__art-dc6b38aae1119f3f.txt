@@ -1,0 +1,44 @@
+                       DURABLE STORAGE
+                              │
+                              ▼
+                       RECOVERY MANAGER
+                              │
+                ┌─────────────┼─────────────┐
+                ▼             ▼             ▼
+          TX recovery     lease scan    checkpoint scan
+                │             │             │
+                └─────────────┼─────────────┘
+                              ▼
+                       STATE RECONCILER
+                              │
+                              ▼
+                     MATERIALIZED STATE
+                              │
+                              ▼
+                       FRONTIER REBUILD
+                              │
+                              ▼
+                       ADMISSION CONTROL
+                              │
+                              ▼
+                         ARBITRATION
+                              │
+                              ▼
+                         ALLOCATION
+                              │
+                              ▼
+                          EXECUTION
+                              │
+                              ▼
+                         OBSERVATION
+                              │
+                              ▼
+                    DURABLE TRANSACTION
+                              │
+                ┌─────────────┼─────────────┐
+                ▼             ▼             ▼
+             knowledge       ledger      checkpoint
+                │             │             │
+                └─────────────┼─────────────┘
+                              ▼
+                           COMMIT

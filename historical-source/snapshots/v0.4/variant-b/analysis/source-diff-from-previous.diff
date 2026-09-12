@@ -1,0 +1,5553 @@
+--- snapshot-0005/generic-discovery.user.js
++++ snapshot-0008/generic-discovery.user.js
+@@ -1,12 +1,14 @@
+ // ==UserScript==
+ // @name         Generic Discovery Engine
+ // @namespace    generic-discovery
+-// @version      0.3.0
+-// @description  Generic web-resource discovery prototype inspired by the architecture of DVB blind scanning.
++// @version      0.4.0
++// @description  Generic web-resource discovery engine inspired by the architecture of DVB blind scanning.
+ // @match        *://*/*
++// @run-at       document-start
+ // @grant        GM_getValue
+ // @grant        GM_setValue
+ // @grant        GM_xmlhttpRequest
++// @grant        unsafeWindow
+ // @connect      *
+ // ==/UserScript==
+ 
+@@ -14,24 +16,44 @@
+     'use strict';
+ 
+     /* =====================================================================
+-     * GENERIC DISCOVERY ENGINE v0.3.0
++     * GENERIC DISCOVERY ENGINE v0.4.0
+      * =====================================================================
+      *
+      * Architecture:
+      *
+      *     candidate
+      *         ↓
++     *     scheduler
++     *         ↓
+      *     acquisition
+      *         ↓
+      *     observation
+      *         ↓
+-     *     recognition
++     *     recognition/provider
+      *         ↓
+      *     discovery
+      *         ↓
+      *     new candidates
+      *         ↓
+      *     scheduler
++     *
++     * Network-observation path:
++     *
++     *     page fetch/XHR
++     *         ↓
++     *     page-context bridge
++     *         ↓
++     *     userscript
++     *         ↓
++     *     network candidate
++     *         ↓
++     *     normal acquisition/discovery pipeline
++     *
++     * Passive path:
++     *
++     *     PerformanceResourceTiming
++     *         ↓
++     *     resource candidate
+      *
+      * This is NOT a DVB/RF scanner.
+      *
+@@ -42,50 +64,38 @@
+      *   - perform FEC synchronization
+      *   - demodulate DVB signals
+      *
+-     * Instead, it applies a similar discovery architecture to web
+-     * resources:
++     * It applies a similar candidate/acquisition/recognition/discovery
++     * architecture to web resources.
+      *
+-     *     URL → HTTP response → provider → discovered metadata → URLs
+-     *
+-     * Supported providers:
+-     *   - HTML
+-     *   - JSON
+-     *   - text
+-     *
+-     * v0.3.0 improvements:
+-     *   - Correct relative URL resolution for fetched documents
++     * v0.4.0:
++     *   - Page-context fetch/XHR observation
++     *   - PerformanceResourceTiming observation
+      *   - Atomic candidate claiming
+-     *   - Retry with bounded attempts
+-     *   - Better fetch timeout handling
+-     *   - Improved Content-Type parsing
+-     *   - More HTML resource types
+-     *   - Canonical/meta-refresh discovery
+-     *   - URL extraction from JSON and text
+-     *   - Bounded persisted state
++     *   - Depth-aware scheduling
++     *   - Exponential retry backoff
++     *   - Maximum discovery depth
++     *   - HTML metadata discovery
++     *   - Manifest discovery
++     *   - robots.txt discovery
++     *   - sitemap.xml discovery
++     *   - XML/sitemap provider
++     *   - CSS provider
++     *   - JavaScript provider
++     *   - Embedded URL extraction
++     *   - Bounded persistence
++     *   - Compact JSON persistence
++     *   - Rich provenance
++     *   - Graph-oriented export
+      *   - Live progress UI
+-     *   - Per-run statistics reset
+-     *   - Safer DOM/UI handling
+-     *   - Explicit provider interface
+      * ===================================================================== */
+ 
+-
+-    // =====================================================================
+-    // CONFIGURATION
+-    // =====================================================================
+-
+     const CONFIG = {
+-        maxCandidates: 500,
+-        maxRequests: 100,
+-
+-        concurrency: 3,
++        maxCandidates: 750,
++        maxRequests: 150,
++        concurrency: 4,
+ 
+         requestTimeout: 8000,
+ 
+-        /*
+-         * Keep this true unless you intentionally want cross-origin
+-         * discovery. Cross-origin requests also depend on userscript
+-         * manager permissions and remote server behavior.
+-         */
+         sameOriginOnly: true,
+ 
+         discoverLinks: true,
+@@ -93,25 +103,37 @@
+         discoverForms: true,
+         discoverMetadata: true,
+         discoverFromText: true,
+-
+-        /*
+-         * Number of times an acquisition may be retried after failure.
+-         */
+-        maxRetries: 1,
+-
+-        /*
+-         * State persistence can become large on long-running scans.
+-         */
++        discoverNetwork: true,
++        discoverPerformance: true,
++        discoverWellKnown: true,
++
++        maxRetries: 2,
++        retryBaseDelay: 500,
++        retryMaxDelay: 8000,
++
++        maxDepth: 5,
++
++        priorityDepthPenalty: 0.045,
++
+         persistState: true,
+-        maxPersistedDiscoveries: 1000,
++        maxPersistedDiscoveries: 1200,
++
++        maxStoredTextPreview: 300,
++
++        networkBridge: true,
+ 
+         debug: true
+     };
+ 
+-
+-    // =====================================================================
+-    // LOGGING / UTILITIES
+-    // =====================================================================
++    const STATE_KEY = 'discovery-state';
++
++    const NETWORK_SOURCE =
++        'GenericDiscoveryNetworkBridge';
++
++    const NETWORK_CHANNEL =
++        `generic-discovery-${Date.now()}-${Math.random()
++            .toString(36)
++            .slice(2, 10)}`;
+ 
+     const log = (...args) => {
+         if (CONFIG.debug) {
+@@ -124,6 +146,11 @@
+     };
+ 
+     const now = () => Date.now();
++
++    const sleep = ms =>
++        new Promise(resolve =>
++            setTimeout(resolve, ms)
++        );
+ 
+     function makeId(prefix = 'id') {
+         return `${prefix}-${now()}-${Math.random()
+@@ -135,8 +162,14 @@
+         return [...new Set(values)];
+     }
+ 
+-    function canonicalizeUrl(value, baseUrl = location.href) {
+-        if (!value || typeof value !== 'string') {
++    function canonicalizeUrl(
++        value,
++        baseUrl = location.href
++    ) {
++        if (
++            !value ||
++            typeof value !== 'string'
++        ) {
+             return null;
+         }
+ 
+@@ -146,11 +179,8 @@
+             return null;
+         }
+ 
+-        /*
+-         * Ignore non-fetchable schemes.
+-         */
+         if (
+-            /^(javascript|mailto|tel|data|blob|about|file):/i.test(
++            /^(javascript|mailto|tel|data|blob|about|file|chrome|chrome-extension):/i.test(
+                 trimmed
+             )
+         ) {
+@@ -158,11 +188,19 @@
+         }
+ 
+         try {
+-            const url = new URL(trimmed, baseUrl);
+-
+-            /*
+-             * Fragments do not identify a separately fetchable resource.
+-             */
++            const url =
++                new URL(
++                    trimmed,
++                    baseUrl
++                );
++
++            if (
++                url.protocol !== 'http:' &&
++                url.protocol !== 'https:'
++            ) {
++                return null;
++            }
++
+             url.hash = '';
+ 
+             return url.href;
+@@ -181,7 +219,10 @@
+         }
+ 
+         try {
+-            return new URL(url).origin === location.origin;
++            return (
++                new URL(url).origin ===
++                location.origin
++            );
+         } catch {
+             return false;
+         }
+@@ -198,8 +239,9 @@
+             .toLowerCase();
+     }
+ 
+-    function isHtmlContentType(contentType) {
+-        const type = normalizeContentType(contentType);
++    function isHtmlContentType(value) {
++        const type =
++            normalizeContentType(value);
+ 
+         return (
+             type === 'text/html' ||
+@@ -207,8 +249,9 @@
+         );
+     }
+ 
+-    function isJsonContentType(contentType) {
+-        const type = normalizeContentType(contentType);
++    function isJsonContentType(value) {
++        const type =
++            normalizeContentType(value);
+ 
+         return (
+             type === 'application/json' ||
+@@ -216,20 +259,71 @@
+         );
+     }
+ 
+-    function isTextContentType(contentType) {
+-        const type = normalizeContentType(contentType);
++    function isXmlContentType(value) {
++        const type =
++            normalizeContentType(value);
++
++        return (
++            type === 'application/xml' ||
++            type === 'text/xml' ||
++            type === 'application/rss+xml' ||
++            type === 'application/atom+xml' ||
++            type === 'application/soap+xml' ||
++            type === 'application/sitemap+xml' ||
++            type === 'text/xml'
++        );
++    }
++
++    function isCssContentType(value) {
++        return (
++            normalizeContentType(value) ===
++            'text/css'
++        );
++    }
++
++    function isJavaScriptContentType(value) {
++        const type =
++            normalizeContentType(value);
++
++        return (
++            type ===
++                'application/javascript' ||
++            type ===
++                'application/x-javascript' ||
++            type ===
++                'text/javascript' ||
++            type ===
++                'application/ecmascript' ||
++            type ===
++                'text/ecmascript'
++        );
++    }
++
++    function isTextContentType(value) {
++        const type =
++            normalizeContentType(value);
+ 
+         return (
+             type.startsWith('text/') ||
+             type === 'application/xml' ||
+-            type === 'application/xhtml+xml' ||
+-            type === 'application/javascript' ||
+-            type === 'application/x-javascript' ||
+-            type === 'application/ld+json'
++            type ===
++                'application/xhtml+xml' ||
++            type ===
++                'application/javascript' ||
++            type ===
++                'application/x-javascript' ||
++            type ===
++                'application/ld+json' ||
++            type ===
++                'application/graphql'
+         );
+     }
+ 
+     function looksLikeHtml(body) {
++        if (!body) {
++            return false;
++        }
++
+         return (
+             /<!doctype\s+html/i.test(body) ||
+             /<html[\s>]/i.test(body) ||
+@@ -238,63 +332,88 @@
+         );
+     }
+ 
+-
+-    // =====================================================================
+-    // URL EXTRACTION
+-    // =====================================================================
+-
+-    function extractUrlsFromText(text, baseUrl = location.href) {
++    function looksLikeJson(body) {
++        if (!body) {
++            return false;
++        }
++
++        const trimmed =
++            body.trim();
++
++        return (
++            (trimmed.startsWith('{') &&
++                trimmed.endsWith('}')) ||
++            (trimmed.startsWith('[') &&
++                trimmed.endsWith(']'))
++        );
++    }
++
++    function extractUrlsFromText(
++        text,
++        baseUrl = location.href
++    ) {
+         if (!text) {
+             return [];
+         }
+ 
+         const result = [];
+ 
+-        /*
+-         * Absolute HTTP(S) URLs.
+-         */
+         const absoluteMatches =
+             text.match(
+                 /https?:\/\/[^\s"'<>()[\]{}]+/gi
+             ) || [];
+ 
+-        for (const value of absoluteMatches) {
+-            const url = canonicalizeUrl(
+-                value.replace(/[.,;:!?]+$/, ''),
+-                baseUrl
+-            );
+-
+-            if (url && isAllowedUrl(url)) {
++        for (
++            const value of absoluteMatches
++        ) {
++            const cleaned =
++                value.replace(
++                    /[.,;:!?]+$/,
++                    ''
++                );
++
++            const url =
++                canonicalizeUrl(
++                    cleaned,
++                    baseUrl
++                );
++
++            if (
++                url &&
++                isAllowedUrl(url)
++            ) {
+                 result.push(url);
+             }
+         }
+ 
+-        /*
+-         * Common quoted URL-like paths.
+-         *
+-         * This intentionally remains conservative rather than attempting
+-         * to interpret every arbitrary string as a URL.
+-         */
+-        const relativeMatches =
++        const quotedRelativeMatches =
+             text.match(
+                 /["'`](\/[^"'`\s<>]+)["'`]/g
+             ) || [];
+ 
+-        for (const value of relativeMatches) {
+-            const match = value.match(
+-                /["'`](\/[^"'`\s<>]+)["'`]/
+-            );
++        for (
++            const value of
++            quotedRelativeMatches
++        ) {
++            const match =
++                value.match(
++                    /["'`](\/[^"'`\s<>]+)["'`]/
++                );
+ 
+             if (!match) {
+                 continue;
+             }
+ 
+-            const url = canonicalizeUrl(
+-                match[1],
+-                baseUrl
+-            );
+-
+-            if (url && isAllowedUrl(url)) {
++            const url =
++                canonicalizeUrl(
++                    match[1],
++                    baseUrl
++                );
++
++            if (
++                url &&
++                isAllowedUrl(url)
++            ) {
+                 result.push(url);
+             }
+         }
+@@ -302,10 +421,187 @@
+         return unique(result);
+     }
+ 
+-
+-    // =====================================================================
+-    // CANDIDATE
+-    // =====================================================================
++    function extractCssUrls(
++        css,
++        baseUrl
++    ) {
++        if (!css) {
++            return [];
++        }
++
++        const result = [];
++
++        const regex =
++            /url\s*\(\s*(['"]?)(.*?)\1\s*\)/gi;
++
++        let match;
++
++        while (
++            (match =
++                regex.exec(css)) !== null
++        ) {
++            const raw =
++                match[2]
++                    .trim();
++
++            const url =
++                canonicalizeUrl(
++                    raw,
++                    baseUrl
++                );
++
++            if (
++                url &&
++                isAllowedUrl(url)
++            ) {
++                result.push(url);
++            }
++        }
++
++        const imports =
++            css.match(
++                /@import\s+(?:url\s*\(\s*)?["']([^"']+)["']/gi
++            ) || [];
++
++        for (
++            const item of imports
++        ) {
++            const match =
++                item.match(
++                    /["']([^"']+)["']/
++                );
++
++            if (!match) {
++                continue;
++            }
++
++            const url =
++                canonicalizeUrl(
++                    match[1],
++                    baseUrl
++                );
++
++            if (
++                url &&
++                isAllowedUrl(url)
++            ) {
++                result.push(url);
++            }
++        }
++
++        return unique(result);
++    }
++
++    function extractXmlLocs(
++        xml,
++        baseUrl
++    ) {
++        if (!xml) {
++            return [];
++        }
++
++        const result = [];
++
++        try {
++            const doc =
++                new DOMParser()
++                    .parseFromString(
++                        xml,
++                        'application/xml'
++                    );
++
++            const parserError =
++                doc.querySelector(
++                    'parsererror'
++                );
++
++            if (!parserError) {
++                for (
++                    const element of
++                    doc.getElementsByTagName(
++                        'loc'
++                    )
++                ) {
++                    const raw =
++                        element.textContent
++                            ?.trim();
++
++                    const url =
++                        canonicalizeUrl(
++                            raw,
++                            baseUrl
++                        );
++
++                    if (
++                        url &&
++                        isAllowedUrl(url)
++                    ) {
++                        result.push(url);
++                    }
++                }
++
++                for (
++                    const element of
++                    doc.querySelectorAll(
++                        'link[href]'
++                    )
++                ) {
++                    const raw =
++                        element.getAttribute(
++                            'href'
++                        );
++
++                    const url =
++                        canonicalizeUrl(
++                            raw,
++                            baseUrl
++                        );
++
++                    if (
++                        url &&
++                        isAllowedUrl(url)
++                    ) {
++                        result.push(url);
++                    }
++                }
++            }
++        } catch {
++            // Fall through to regex extraction.
++        }
++
++        const fallback =
++            xml.match(
++                /<loc[^>]*>\s*([^<]+)\s*<\/loc>/gi
++            ) || [];
++
++        for (
++            const value of fallback
++        ) {
++            const match =
++                value.match(
++                    /<loc[^>]*>\s*([^<]+)\s*<\/loc>/i
++                );
++
++            if (!match) {
++                continue;
++            }
++
++            const url =
++                canonicalizeUrl(
++                    match[1].trim(),
++                    baseUrl
++                );
++
++            if (
++                url &&
++                isAllowedUrl(url)
++            ) {
++                result.push(url);
++            }
++        }
++
++        return unique(result);
++    }
+ 
+     class Candidate {
+         constructor({
+@@ -314,63 +610,86 @@
+             origin = 'unknown',
+             priority = 0.5,
+             parent = null,
+-            hints = {}
++            hints = {},
++            depth = 0
+         }) {
+-            this.id = makeId('candidate');
+-
+-            this.target = target;
+-            this.type = type;
+-
+-            /*
+-             * Why was this candidate created?
+-             *
+-             * Examples:
+-             *   initial-page
+-             *   initial-dom
+-             *   html:<discovery-id>
+-             *   json:<discovery-id>
+-             */
+-            this.origin = origin;
+-
+-            /*
+-             * Discovery from which this candidate originated.
+-             */
+-            this.parent = parent;
+-
+-            this.priority = priority;
+-            this.hints = hints;
+-
+-            this.createdAt = now();
+-            this.attempts = 0;
+-
+-            /*
+-             * queued → claimed → completed / failed
+-             */
+-            this.status = 'queued';
++            this.id =
++                makeId('candidate');
++
++            this.target =
++                target;
++
++            this.type =
++                type;
++
++            this.origin =
++                origin;
++
++            this.parent =
++                parent;
++
++            this.priority =
++                priority;
++
++            this.hints =
++                hints;
++
++            this.depth =
++                Math.max(
++                    0,
++                    Number(depth) || 0
++                );
++
++            this.createdAt =
++                now();
++
++            this.attempts =
++                0;
++
++            this.status =
++                'queued';
++
++            this.nextAttemptAt =
++                now();
+         }
+ 
+         key() {
+-            return `${this.type}:${this.target}`;
++            return (
++                `${this.type}:${this.target}`
++            );
++        }
++
++        effectivePriority() {
++            return (
++                this.priority -
++                this.depth *
++                    CONFIG.priorityDepthPenalty
++            );
+         }
+     }
+-
+-
+-    // =====================================================================
+-    // OBSERVATION
+-    // =====================================================================
+ 
+     class Observation {
+         constructor(candidate) {
+-            this.id = makeId('observation');
+-
+-            this.candidateId = candidate.id;
+-            this.target = candidate.target;
+-
+-            this.startedAt = now();
+-            this.completedAt = null;
+-
+-            this.status = 'unknown';
+-            this.signalPresent = false;
++            this.id =
++                makeId('observation');
++
++            this.candidateId =
++                candidate.id;
++
++            this.target =
++                candidate.target;
++
++            this.startedAt =
++                now();
++
++            this.completedAt =
++                null;
++
++            this.status =
++                'unknown';
++
++            this.signalPresent =
++                false;
+ 
+             this.http = {
+                 status: null,
+@@ -379,20 +698,34 @@
+                 finalUrl: null
+             };
+ 
+-            this.body = null;
+-            this.errors = [];
++            this.body =
++                null;
++
++            this.errors =
++                [];
++
++            this.network =
++                candidate.type ===
++                    'network'
++                    ? {
++                          observed: true,
++                          mechanism:
++                              candidate
++                                  .hints
++                                  ?.mechanism ||
++                              null
++                      }
++                    : null;
+         }
+ 
+         complete(status) {
+-            this.completedAt = now();
+-            this.status = status;
++            this.completedAt =
++                now();
++
++            this.status =
++                status;
+         }
+     }
+-
+-
+-    // =====================================================================
+-    // DISCOVERY
+-    // =====================================================================
+ 
+     class Discovery {
+         constructor({
+@@ -400,47 +733,67 @@
+             observation,
+             kind,
+             confidence = 0.5,
++            mechanism = 'provider',
+             data = {}
+         }) {
+-            this.id = makeId('discovery');
+-
+-            this.candidateId = candidate.id;
+-            this.observationId = observation.id;
+-
+-            this.kind = kind;
+-            this.confidence = confidence;
+-
+-            this.data = data;
++            this.id =
++                makeId('discovery');
++
++            this.candidateId =
++                candidate.id;
++
++            this.observationId =
++                observation.id;
++
++            this.kind =
++                kind;
++
++            this.confidence =
++                confidence;
++
++            this.data =
++                data;
+ 
+             this.provenance = {
+-                origin: candidate.origin,
+-                parent: candidate.parent
++                origin:
++                    candidate.origin,
++
++                parent:
++                    candidate.parent,
++
++                candidateTarget:
++                    candidate.target,
++
++                candidateType:
++                    candidate.type,
++
++                mechanism,
++
++                depth:
++                    candidate.depth
+             };
+ 
+-            this.createdAt = now();
++            this.createdAt =
++                now();
+         }
+     }
+-
+-
+-    // =====================================================================
+-    // KNOWLEDGE BASE
+-    // =====================================================================
+ 
+     class KnowledgeBase {
+         constructor() {
+-            this.candidates = new Map();
+-            this.observations = new Map();
+-            this.discoveries = new Map();
+-
+-            /*
+-             * Permanently completed/failed candidates.
+-             */
+-            this.visited = new Set();
+-
+-            /*
+-             * Candidates currently owned by workers.
+-             */
+-            this.claimed = new Set();
++            this.candidates =
++                new Map();
++
++            this.observations =
++                new Map();
++
++            this.discoveries =
++                new Map();
++
++            this.visited =
++                new Set();
++
++            this.claimed =
++                new Set();
+ 
+             this.load();
+         }
+@@ -450,21 +803,30 @@
+         }
+ 
+         addCandidate(candidate) {
+-            const key = this.candidateKey(candidate);
+-
+-            if (!candidate.target) {
++            if (
++                !candidate ||
++                !candidate.target
++            ) {
+                 return false;
+             }
+ 
+-            if (this.visited.has(key)) {
++            if (
++                candidate.depth >
++                CONFIG.maxDepth
++            ) {
+                 return false;
+             }
+ 
+-            if (this.claimed.has(key)) {
+-                return false;
+-            }
+-
+-            if (this.candidates.has(key)) {
++            const key =
++                this.candidateKey(
++                    candidate
++                );
++
++            if (
++                this.visited.has(key) ||
++                this.claimed.has(key) ||
++                this.candidates.has(key)
++            ) {
+                 return false;
+             }
+ 
+@@ -475,87 +837,190 @@
+                 return false;
+             }
+ 
+-            this.candidates.set(key, candidate);
++            this.candidates.set(
++                key,
++                candidate
++            );
+ 
+             this.persist();
+ 
+             return true;
+         }
+ 
+-        /*
+-         * ---------------------------------------------------------------
+-         * ATOMIC CANDIDATE CLAIM
+-         * ---------------------------------------------------------------
+-         *
+-         * No await occurs during this operation.
+-         *
+-         * Therefore concurrent async workers cannot claim the same
+-         * candidate between selection and removal.
+-         */
+         claimNextCandidate() {
+-            const candidates = [
++            const entries = [
+                 ...this.candidates.entries()
+             ];
+ 
+-            if (!candidates.length) {
++            if (!entries.length) {
+                 return null;
+             }
+ 
+-            candidates.sort((a, b) => {
+-                return (
+-                    b[1].priority -
+-                    a[1].priority
+-                );
+-            });
+-
+-            for (const [key, candidate]
+-                of candidates) {
+-
++            const current =
++                now();
++
++            const ready =
++                entries.filter(
++                    ([key, candidate]) =>
++                        !this.visited.has(key) &&
++                        !this.claimed.has(key) &&
++                        (
++                            !candidate.nextAttemptAt ||
++                            candidate.nextAttemptAt <=
++                                current
++                        )
++                );
++
++            if (!ready.length) {
++                return null;
++            }
++
++            ready.sort(
++                (a, b) => {
++                    const priorityDifference =
++                        b[1].effectivePriority() -
++                        a[1].effectivePriority();
++
++                    if (
++                        priorityDifference !==
++                        0
++                    ) {
++                        return priorityDifference;
++                    }
++
++                    return (
++                        a[1].createdAt -
++                        b[1].createdAt
++                    );
++                }
++            );
++
++            const [
++                key,
++                candidate
++            ] = ready[0];
++
++            /*
++             * IMPORTANT:
++             *
++             * Remove from the queue and mark claimed
++             * BEFORE any asynchronous work occurs.
++             *
++             * This makes candidate claiming atomic from
++             * the scheduler's perspective and prevents two
++             * workers from acquiring the same candidate.
++             */
++            this.candidates.delete(key);
++
++            this.claimed.add(key);
++
++            candidate.status =
++                'claimed';
++
++            candidate.claimedAt =
++                current;
++
++            this.persist();
++
++            return candidate;
++        }
++
++        nextReadyDelay() {
++            const entries = [
++                ...this.candidates.values()
++            ];
++
++            if (!entries.length) {
++                return null;
++            }
++
++            const current =
++                now();
++
++            let minimum =
++                Infinity;
++
++            for (
++                const candidate of
++                entries
++            ) {
+                 if (
+-                    this.visited.has(key) ||
+-                    this.claimed.has(key)
++                    !candidate.nextAttemptAt
+                 ) {
+-                    continue;
++                    return 0;
+                 }
+ 
+-                /*
+-                 * Atomic synchronous ownership transfer.
+-                 */
+-                this.candidates.delete(key);
+-                this.claimed.add(key);
+-
+-                candidate.status = 'claimed';
+-                candidate.claimedAt = now();
+-
+-                this.persist();
+-
+-                return candidate;
+-            }
+-
+-            return null;
++                minimum =
++                    Math.min(
++                        minimum,
++                        Math.max(
++                            0,
++                            candidate.nextAttemptAt -
++                                current
++                        )
++                    );
++            }
++
++            return Number.isFinite(
++                minimum
++            )
++                ? minimum
++                : null;
+         }
+ 
+         completeCandidate(candidate) {
+             const key =
+-                this.candidateKey(candidate);
++                this.candidateKey(
++                    candidate
++                );
+ 
+             this.claimed.delete(key);
++
+             this.visited.add(key);
+ 
+-            candidate.status = 'completed';
+-            candidate.completedAt = now();
++            candidate.status =
++                'completed';
++
++            candidate.completedAt =
++                now();
+ 
+             this.persist();
+         }
+ 
+-        failCandidate(candidate, retry = false) {
++        failCandidate(
++            candidate,
++            retry = false
++        ) {
+             const key =
+-                this.candidateKey(candidate);
++                this.candidateKey(
++                    candidate
++                );
+ 
+             this.claimed.delete(key);
+ 
+             if (retry) {
+-                candidate.status = 'queued';
++                const exponent =
++                    Math.max(
++                        0,
++                        candidate.attempts -
++                            1
++                    );
++
++                const delay =
++                    Math.min(
++                        CONFIG.retryMaxDelay,
++                        CONFIG.retryBaseDelay *
++                            Math.pow(
++                                2,
++                                exponent
++                            )
++                    );
++
++                candidate.status =
++                    'queued';
++
++                candidate.nextAttemptAt =
++                    now() + delay;
+ 
+                 this.candidates.set(
+                     key,
+@@ -564,23 +1029,23 @@
+             } else {
+                 this.visited.add(key);
+ 
+-                candidate.status = 'failed';
+-                candidate.failedAt = now();
++                candidate.status =
++                    'failed';
++
++                candidate.failedAt =
++                    now();
+             }
+ 
+             this.persist();
+         }
+ 
+-        addObservation(observation) {
++        addObservation(
++            observation
++        ) {
+             this.observations.set(
+                 observation.id,
+                 observation
+             );
+-
+-            /*
+-             * Observations can contain complete response bodies and are
+-             * deliberately not persisted.
+-             */
+         }
+ 
+         addDiscovery(discovery) {
+@@ -605,27 +1070,42 @@
+         }
+ 
+         serialize() {
+-            const discoveries = [
+-                ...this.discoveries.values()
+-            ];
+-
+-            /*
+-             * Keep persistence bounded.
+-             */
++            const discoveries =
++                [
++                    ...this.discoveries
++                        .values()
++                ];
++
+             const bounded =
+                 discoveries.slice(
+                     -CONFIG.maxPersistedDiscoveries
+                 );
+ 
++            /*
++             * Deliberately do not persist:
++             *   - response bodies
++             *   - observations
++             *   - pending candidates
++             *
++             * Response bodies can be huge and can also contain
++             * sensitive application data.
++             */
+             return {
+-                version: 3,
+-                visited: [...this.visited],
+-                discoveries: bounded
++                version: 4,
++
++                visited: [
++                    ...this.visited
++                ],
++
++                discoveries:
++                    bounded
+             };
+         }
+ 
+         persist() {
+-            if (!CONFIG.persistState) {
++            if (
++                !CONFIG.persistState
++            ) {
+                 return;
+             }
+ 
+@@ -640,7 +1120,7 @@
+                     'function'
+                 ) {
+                     GM_setValue(
+-                        'discovery-state',
++                        STATE_KEY,
+                         data
+                     );
+                 } else {
+@@ -658,21 +1138,25 @@
+         }
+ 
+         load() {
+-            if (!CONFIG.persistState) {
++            if (
++                !CONFIG.persistState
++            ) {
+                 return;
+             }
+ 
+             try {
+-                let raw = null;
++                let raw =
++                    null;
+ 
+                 if (
+                     typeof GM_getValue ===
+                     'function'
+                 ) {
+-                    raw = GM_getValue(
+-                        'discovery-state',
+-                        null
+-                    );
++                    raw =
++                        GM_getValue(
++                            STATE_KEY,
++                            null
++                        );
+                 } else {
+                     raw =
+                         localStorage.getItem(
+@@ -685,16 +1169,14 @@
+                 }
+ 
+                 const data =
+-                    typeof raw === 'string'
++                    typeof raw ===
++                    'string'
+                         ? JSON.parse(raw)
+                         : raw;
+ 
+-                /*
+-                 * Ignore incompatible future state formats.
+-                 */
+                 if (
+                     data.version &&
+-                    data.version > 3
++                    data.version > 4
+                 ) {
+                     warn(
+                         'Stored state is from a newer version.'
+@@ -707,7 +1189,14 @@
+                     const key of
+                     data.visited || []
+                 ) {
+-                    this.visited.add(key);
++                    if (
++                        typeof key ===
++                        'string'
++                    ) {
++                        this.visited.add(
++                            key
++                        );
++                    }
+                 }
+ 
+                 for (
+@@ -726,10 +1215,11 @@
+                 }
+ 
+                 log(
+-                    'Restored state:',
++                    'Restored state',
+                     {
+                         visited:
+                             this.visited.size,
++
+                         discoveries:
+                             this.discoveries.size
+                     }
+@@ -746,7 +1236,6 @@
+             this.candidates.clear();
+             this.observations.clear();
+             this.discoveries.clear();
+-
+             this.visited.clear();
+             this.claimed.clear();
+ 
+@@ -754,16 +1243,12 @@
+         }
+     }
+ 
+-
+-    // =====================================================================
+-    // HTTP ACQUISITION ADAPTER
+-    // =====================================================================
+-
+     class HttpAcquisitionAdapter {
+-
+         async acquire(candidate) {
+             const observation =
+-                new Observation(candidate);
++                new Observation(
++                    candidate
++                );
+ 
+             candidate.attempts++;
+ 
+@@ -783,9 +1268,12 @@
+                     response.contentType;
+ 
+                 observation.http.contentLength =
+-                    response.body
+-                        ? response.body.length
+-                        : 0;
++                    response.contentLength ??
++                    (
++                        response.body
++                            ? response.body.length
++                            : 0
++                    );
+ 
+                 observation.http.finalUrl =
+                     response.finalUrl ||
+@@ -813,26 +1301,29 @@
+         request(url) {
+             return new Promise(
+                 (resolve, reject) => {
+-
+-                    /*
+-                     * Prefer userscript-manager networking.
+-                     */
+                     if (
+                         typeof GM_xmlhttpRequest ===
+                         'function'
+                     ) {
+-                        let settled = false;
++                        let settled =
++                            false;
+ 
+                         const finish = (
+                             callback,
+                             value
+                         ) => {
+-                            if (settled) {
++                            if (
++                                settled
++                            ) {
+                                 return;
+                             }
+ 
+-                            settled = true;
+-                            callback(value);
++                            settled =
++                                true;
++
++                            callback(
++                                value
++                            );
+                         };
+ 
+                         GM_xmlhttpRequest({
+@@ -843,120 +1334,133 @@
+                             timeout:
+                                 CONFIG.requestTimeout,
+ 
+-                            /*
+-                             * Text is sufficient for all providers
+-                             * currently implemented.
+-                             */
+-                            responseType: 'text',
+-
+-                            onload: response => {
+-                                const contentType =
+-                                    this.extractContentType(
+-                                        response.responseHeaders
++                            responseType:
++                                'text',
++
++                            onload:
++                                response => {
++                                    const contentType =
++                                        this.extractContentType(
++                                            response.responseHeaders
++                                        );
++
++                                    const contentLength =
++                                        this.extractContentLength(
++                                            response.responseHeaders
++                                        );
++
++                                    finish(
++                                        resolve,
++                                        {
++                                            status:
++                                                response.status,
++
++                                            contentType,
++
++                                            contentLength,
++
++                                            body:
++                                                response.responseText ||
++                                                '',
++
++                                            finalUrl:
++                                                response.finalUrl ||
++                                                url
++                                        }
+                                     );
+-
+-                                finish(resolve, {
+-                                    status:
+-                                        response.status,
+-
+-                                    contentType,
+-
+-                                    body:
+-                                        response.responseText ||
+-                                        '',
+-
+-                                    finalUrl:
+-                                        response.finalUrl ||
+-                                        url
+-                                });
+-                            },
+-
+-                            onerror: () => {
+-                                finish(
+-                                    reject,
+-                                    new Error(
+-                                        'request failed'
+-                                    )
+-                                );
+-                            },
+-
+-                            ontimeout: () => {
+-                                finish(
+-                                    reject,
+-                                    new Error(
+-                                        'request timeout'
+-                                    )
+-                                );
+-                            },
+-
+-                            onabort: () => {
+-                                finish(
+-                                    reject,
+-                                    new Error(
+-                                        'request aborted'
+-                                    )
+-                                );
+-                            }
++                                },
++
++                            onerror:
++                                () => {
++                                    finish(
++                                        reject,
++                                        new Error(
++                                            'request failed'
++                                        )
++                                    );
++                                },
++
++                            ontimeout:
++                                () => {
++                                    finish(
++                                        reject,
++                                        new Error(
++                                            'request timeout'
++                                        )
++                                    );
++                                },
++
++                            onabort:
++                                () => {
++                                    finish(
++                                        reject,
++                                        new Error(
++                                            'request aborted'
++                                        )
++                                    );
++                                }
+                         });
+ 
+                         return;
+                     }
+ 
+-                    /*
+-                     * Native fetch fallback.
+-                     *
+-                     * AbortController is used instead of relying on
+-                     * AbortSignal.timeout(), which is not available
+-                     * everywhere.
+-                     */
+                     const controller =
+                         typeof AbortController !==
+                         'undefined'
+                             ? new AbortController()
+                             : null;
+ 
+-                    let timer = null;
+-
+-                    if (controller) {
+-                        timer = setTimeout(
+-                            () => {
+-                                controller.abort();
+-                            },
+-                            CONFIG.requestTimeout
+-                        );
++                    let timer =
++                        null;
++
++                    if (
++                        controller
++                    ) {
++                        timer =
++                            setTimeout(
++                                () => {
++                                    controller.abort();
++                                },
++                                CONFIG.requestTimeout
++                            );
+                     }
+ 
+                     fetch(url, {
+                         method: 'GET',
+-
+                         credentials:
+                             'same-origin',
+-
+                         signal:
+                             controller
+                                 ? controller.signal
+                                 : undefined
+                     })
+-                        .then(async response => {
+-                            const body =
+-                                await response.text();
+-
+-                            return {
+-                                status:
+-                                    response.status,
+-
+-                                contentType:
+-                                    response.headers.get(
+-                                        'content-type'
+-                                    ),
+-
+-                                body,
+-
+-                                finalUrl:
+-                                    response.url ||
+-                                    url
+-                            };
+-                        })
++                        .then(
++                            async response => {
++                                const body =
++                                    await response.text();
++
++                                return {
++                                    status:
++                                        response.status,
++
++                                    contentType:
++                                        response.headers.get(
++                                            'content-type'
++                                        ),
++
++                                    contentLength:
++                                        response.headers.get(
++                                            'content-length'
++                                        ),
++
++                                    body,
++
++                                    finalUrl:
++                                        response.url ||
++                                        url
++                                };
++                            }
++                        )
+                         .then(resolve)
+                         .catch(error => {
+                             if (
+@@ -970,19 +1474,27 @@
+                                     )
+                                 );
+                             } else {
+-                                reject(error);
++                                reject(
++                                    error
++                                );
+                             }
+                         })
+                         .finally(() => {
+-                            if (timer) {
+-                                clearTimeout(timer);
++                            if (
++                                timer
++                            ) {
++                                clearTimeout(
++                                    timer
++                                );
+                             }
+                         });
+                 }
+             );
+         }
+ 
+-        extractContentType(headers) {
++        extractContentType(
++            headers
++        ) {
+             if (!headers) {
+                 return '';
+             }
+@@ -996,55 +1508,79 @@
+                 ? match[1].trim()
+                 : '';
+         }
++
++        extractContentLength(
++            headers
++        ) {
++            if (!headers) {
++                return null;
++            }
++
++            const match =
++                String(headers).match(
++                    /^content-length:\s*(\d+)/im
++                );
++
++            if (!match) {
++                return null;
++            }
++
++            const value =
++                Number(match[1]);
++
++            return Number.isFinite(
++                value
++            )
++                ? value
++                : null;
++        }
+     }
+ 
+-
+-    // =====================================================================
+-    // RESPONSE PROVIDER INTERFACE
+-    // =====================================================================
+-
+     class ResponseProvider {
+-
+-        matches(/* observation */) {
++        matches() {
+             return false;
+         }
+ 
+-        recognize(/* candidate, observation */) {
++        recognize() {
+             return null;
+         }
+ 
+-        candidates(/* discovery */) {
++        candidates() {
+             return [];
+         }
+     }
+ 
+-
+-    // =====================================================================
+-    // HTML PROVIDER
+-    // =====================================================================
+-
+-    class HtmlProvider extends ResponseProvider {
++    class HtmlProvider
++        extends ResponseProvider {
+ 
+         matches(observation) {
+-            const type =
+-                observation.http.contentType || '';
++            return (
++                isHtmlContentType(
++                    observation
++                        .http
++                        .contentType
++                ) ||
++                looksLikeHtml(
++                    observation.body
++                )
++            );
++        }
++
++        recognize(
++            candidate,
++            observation
++        ) {
++            if (
++                !this.matches(
++                    observation
++                )
++            ) {
++                return null;
++            }
+ 
+             const body =
+-                observation.body || '';
+-
+-            return (
+-                isHtmlContentType(type) ||
+-                looksLikeHtml(body)
+-            );
+-        }
+-
+-        recognize(candidate, observation) {
+-            if (!this.matches(observation)) {
+-                return null;
+-            }
+-
+-            const body =
+-                observation.body || '';
++                observation.body ||
++                '';
+ 
+             const doc =
+                 new DOMParser()
+@@ -1054,26 +1590,42 @@
+                     );
+ 
+             /*
+-             * IMPORTANT:
+-             *
+-             * DOMParser creates a document whose base URL may not be
+-             * the URL from which the document was acquired.
+-             *
+-             * We therefore resolve every raw attribute explicitly
+-             * against the acquired document URL.
++             * The fetched document does not have the URL
++             * of the current page as its base. Therefore all
++             * relative URLs must be resolved explicitly.
+              */
+             const baseUrl =
+                 observation.http.finalUrl ||
+                 candidate.target;
+ 
++            const explicitBase =
++                doc.querySelector(
++                    'base[href]'
++                );
++
++            const documentBase =
++                explicitBase
++                    ? canonicalizeUrl(
++                          explicitBase.getAttribute(
++                              'href'
++                          ),
++                          baseUrl
++                      ) ||
++                      baseUrl
++                    : baseUrl;
++
+             const title =
+-                doc.querySelector('title')
++                doc.querySelector(
++                    'title'
++                )
+                     ?.textContent
+                     ?.trim() || '';
+ 
+             const links = [];
+ 
+-            if (CONFIG.discoverLinks) {
++            if (
++                CONFIG.discoverLinks
++            ) {
+                 for (
+                     const element of
+                     doc.querySelectorAll(
+@@ -1088,21 +1640,25 @@
+                     const url =
+                         canonicalizeUrl(
+                             raw,
+-                            baseUrl
++                            documentBase
+                         );
+ 
+                     if (
+                         url &&
+                         isAllowedUrl(url)
+                     ) {
+-                        links.push(url);
++                        links.push(
++                            url
++                        );
+                     }
+                 }
+             }
+ 
+             const resources = [];
+ 
+-            if (CONFIG.discoverResources) {
++            if (
++                CONFIG.discoverResources
++            ) {
+                 const selector = [
+                     'script[src]',
+                     'link[href]',
+@@ -1115,7 +1671,10 @@
+                     'track[src]',
+                     'object[data]',
+                     'embed[src]',
+-                    'input[src]'
++                    'input[src]',
++                    'image[href]',
++                    'use[href]',
++                    'use[xlink\\:href]'
+                 ].join(',');
+ 
+                 for (
+@@ -1133,26 +1692,33 @@
+                         ) ||
+                         element.getAttribute(
+                             'data'
++                        ) ||
++                        element.getAttribute(
++                            'xlink:href'
+                         );
+ 
+                     const url =
+                         canonicalizeUrl(
+                             raw,
+-                            baseUrl
++                            documentBase
+                         );
+ 
+                     if (
+                         url &&
+                         isAllowedUrl(url)
+                     ) {
+-                        resources.push(url);
++                        resources.push(
++                            url
++                        );
+                     }
+                 }
+             }
+ 
+             const forms = [];
+ 
+-            if (CONFIG.discoverForms) {
++            if (
++                CONFIG.discoverForms
++            ) {
+                 for (
+                     const form of
+                     doc.querySelectorAll(
+@@ -1167,24 +1733,25 @@
+                     const url =
+                         canonicalizeUrl(
+                             raw,
+-                            baseUrl
++                            documentBase
+                         );
+ 
+                     if (
+                         url &&
+                         isAllowedUrl(url)
+                     ) {
+-                        forms.push(url);
++                        forms.push(
++                            url
++                        );
+                     }
+                 }
+             }
+ 
+             const metadata = [];
+ 
+-            if (CONFIG.discoverMetadata) {
+-                /*
+-                 * Canonical URL.
+-                 */
++            if (
++                CONFIG.discoverMetadata
++            ) {
+                 const canonical =
+                     doc.querySelector(
+                         'link[rel~="canonical"][href]'
+@@ -1196,24 +1763,23 @@
+                             canonical.getAttribute(
+                                 'href'
+                             ),
+-                            baseUrl
++                            documentBase
+                         );
+ 
+                     if (
+                         url &&
+                         isAllowedUrl(url)
+                     ) {
+-                        metadata.push(url);
++                        metadata.push(
++                            url
++                        );
+                     }
+                 }
+ 
+-                /*
+-                 * OpenGraph URL.
+-                 */
+                 for (
+                     const element of
+                     doc.querySelectorAll(
+-                        'meta[property="og:url"][content]'
++                        'meta[property="og:url"][content], meta[name="twitter:url"][content]'
+                     )
+                 ) {
+                     const url =
+@@ -1221,20 +1787,67 @@
+                             element.getAttribute(
+                                 'content'
+                             ),
+-                            baseUrl
++                            documentBase
+                         );
+ 
+                     if (
+                         url &&
+                         isAllowedUrl(url)
+                     ) {
+-                        metadata.push(url);
++                        metadata.push(
++                            url
++                        );
+                     }
+                 }
+ 
+-                /*
+-                 * Meta refresh.
+-                 */
++                const manifest =
++                    doc.querySelector(
++                        'link[rel~="manifest"][href]'
++                    );
++
++                if (manifest) {
++                    const url =
++                        canonicalizeUrl(
++                            manifest.getAttribute(
++                                'href'
++                            ),
++                            documentBase
++                        );
++
++                    if (
++                        url &&
++                        isAllowedUrl(url)
++                    ) {
++                        metadata.push(
++                            url
++                        );
++                    }
++                }
++
++                for (
++                    const element of
++                    doc.querySelectorAll(
++                        'link[rel~="sitemap"][href]'
++                    )
++                ) {
++                    const url =
++                        canonicalizeUrl(
++                            element.getAttribute(
++                                'href'
++                            ),
++                            documentBase
++                        );
++
++                    if (
++                        url &&
++                        isAllowedUrl(url)
++                    ) {
++                        metadata.push(
++                            url
++                        );
++                    }
++                }
++
+                 for (
+                     const element of
+                     doc.querySelectorAll(
+@@ -1279,57 +1892,69 @@
+                     const url =
+                         canonicalizeUrl(
+                             raw,
+-                            baseUrl
++                            documentBase
+                         );
+ 
+                     if (
+                         url &&
+                         isAllowedUrl(url)
+                     ) {
+-                        metadata.push(url);
++                        metadata.push(
++                            url
++                        );
+                     }
+                 }
+             }
+ 
+-            /*
+-             * Extract URLs from inline HTML/attributes as a secondary
+-             * discovery signal.
+-             */
+             const embeddedUrls =
+                 CONFIG.discoverFromText
+                     ? extractUrlsFromText(
+                           body,
+-                          baseUrl
++                          documentBase
+                       )
+                     : [];
+ 
+             return new Discovery({
+                 candidate,
+                 observation,
+-
+-                kind: 'html-document',
+-
++                kind:
++                    'html-document',
+                 confidence: 0.95,
+-
++                mechanism:
++                    'html-parser',
+                 data: {
+-                    url: candidate.target,
+-
+-                    finalUrl: baseUrl,
++                    url:
++                        candidate.target,
++
++                    finalUrl:
++                        documentBase,
+ 
+                     title,
+ 
+-                    links: unique(links),
++                    links:
++                        unique(
++                            links
++                        ),
+ 
+                     resources:
+-                        unique(resources),
+-
+-                    forms: unique(forms),
++                        unique(
++                            resources
++                        ),
++
++                    forms:
++                        unique(
++                            forms
++                        ),
+ 
+                     metadata:
+-                        unique(metadata),
++                        unique(
++                            metadata
++                        ),
+ 
+                     embeddedUrls:
+-                        unique(embeddedUrls)
++                        unique(
++                            embeddedUrls
++                        )
+                 }
+             });
+         }
+@@ -1337,161 +1962,229 @@
+         candidates(discovery) {
+             const result = [];
+ 
+-            if (CONFIG.discoverLinks) {
+-                for (
+-                    const url of
+-                    discovery.data.links || []
+-                ) {
+-                    result.push(
+-                        new Candidate({
+-                            target: url,
+-                            type: 'url',
+-                            origin:
+-                                `html:${discovery.id}`,
+-                            parent:
+-                                discovery.id,
+-                            priority: 0.8
+-                        })
+-                    );
+-                }
+-            }
+-
+-            if (CONFIG.discoverResources) {
+-                for (
+-                    const url of
+-                    discovery.data.resources || []
+-                ) {
+-                    result.push(
+-                        new Candidate({
+-                            target: url,
+-                            type: 'resource',
+-                            origin:
+-                                `html:${discovery.id}`,
+-                            parent:
+-                                discovery.id,
+-                            priority: 0.5
+-                        })
+-                    );
+-                }
+-            }
+-
+-            if (CONFIG.discoverForms) {
+-                for (
+-                    const url of
+-                    discovery.data.forms || []
+-                ) {
+-                    result.push(
+-                        new Candidate({
+-                            target: url,
+-                            type: 'form',
+-                            origin:
+-                                `html:${discovery.id}`,
+-                            parent:
+-                                discovery.id,
+-                            priority: 0.6
+-                        })
+-                    );
+-                }
+-            }
+-
+-            if (CONFIG.discoverMetadata) {
+-                for (
+-                    const url of
+-                    discovery.data.metadata || []
+-                ) {
+-                    result.push(
+-                        new Candidate({
+-                            target: url,
+-                            type: 'metadata',
+-                            origin:
+-                                `html:${discovery.id}`,
+-                            parent:
+-                                discovery.id,
+-                            priority: 0.7
+-                        })
+-                    );
+-                }
+-            }
+-
+-            if (CONFIG.discoverFromText) {
+-                for (
+-                    const url of
+-                    discovery.data.embeddedUrls || []
+-                ) {
+-                    result.push(
+-                        new Candidate({
+-                            target: url,
+-                            type: 'embedded-url',
+-                            origin:
+-                                `html:${discovery.id}`,
+-                            parent:
+-                                discovery.id,
+-                            priority: 0.4
+-                        })
+-                    );
+-                }
++            const depth =
++                (
++                    discovery
++                        .provenance
++                        .depth || 0
++                ) + 1;
++
++            const parent =
++                discovery.id;
++
++            for (
++                const url of
++                discovery.data.links ||
++                []
++            ) {
++                result.push(
++                    new Candidate({
++                        target: url,
++                        type: 'url',
++                        origin:
++                            `html:${discovery.id}`,
++                        parent,
++                        priority: 0.82,
++                        depth
++                    })
++                );
++            }
++
++            for (
++                const url of
++                discovery.data.resources ||
++                []
++            ) {
++                result.push(
++                    new Candidate({
++                        target: url,
++                        type: 'resource',
++                        origin:
++                            `html:${discovery.id}`,
++                        parent,
++                        priority: 0.52,
++                        depth
++                    })
++                );
++            }
++
++            for (
++                const url of
++                discovery.data.forms ||
++                []
++            ) {
++                result.push(
++                    new Candidate({
++                        target: url,
++                        type: 'form',
++                        origin:
++                            `html:${discovery.id}`,
++                        parent,
++                        priority: 0.62,
++                        depth
++                    })
++                );
++            }
++
++            for (
++                const url of
++                discovery.data.metadata ||
++                []
++            ) {
++                result.push(
++                    new Candidate({
++                        target: url,
++                        type: 'metadata',
++                        origin:
++                            `html:${discovery.id}`,
++                        parent,
++                        priority: 0.72,
++                        depth
++                    })
++                );
++            }
++
++            for (
++                const url of
++                discovery.data.embeddedUrls ||
++                []
++            ) {
++                result.push(
++                    new Candidate({
++                        target: url,
++                        type:
++                            'embedded-url',
++                        origin:
++                            `html:${discovery.id}`,
++                        parent,
++                        priority: 0.42,
++                        depth
++                    })
++                );
+             }
+ 
+             return result;
+         }
+     }
+ 
+-
+-    // =====================================================================
+-    // JSON PROVIDER
+-    // =====================================================================
+-
+-    class JsonProvider extends ResponseProvider {
++    class JsonProvider
++        extends ResponseProvider {
+ 
+         matches(observation) {
+             const type =
+-                observation.http.contentType || '';
++                observation
++                    .http
++                    .contentType;
+ 
+             return (
+-                isJsonContentType(type) ||
+-                normalizeContentType(type) ===
+-                    'application/ld+json'
++                isJsonContentType(
++                    type
++                ) ||
++                normalizeContentType(
++                    type
++                ) ===
++                    'application/ld+json' ||
++                (
++                    !type &&
++                    looksLikeJson(
++                        observation.body
++                    )
++                )
+             );
+         }
+ 
+-        recognize(candidate, observation) {
+-            if (!this.matches(observation)) {
++        recognize(
++            candidate,
++            observation
++        ) {
++            if (
++                !this.matches(
++                    observation
++                )
++            ) {
+                 return null;
+             }
+ 
+             let value;
+ 
+             try {
+-                value = JSON.parse(
+-                    observation.body || ''
+-                );
++                value =
++                    JSON.parse(
++                        observation.body ||
++                            ''
++                    );
+             } catch {
+                 return null;
+             }
++
++            const baseUrl =
++                observation
++                    .http
++                    .finalUrl ||
++                candidate.target;
+ 
+             const urls =
+                 this.extractUrls(
+                     value,
+-                    observation.http.finalUrl ||
+-                        candidate.target
+-                );
+-
++                    baseUrl
++                );
++
++            let summary;
++
++            if (
++                Array.isArray(value)
++            ) {
++                summary = {
++                    valueType:
++                        'array',
++
++                    arrayLength:
++                        value.length
++                };
++            } else if (
++                value &&
++                typeof value ===
++                    'object'
++            ) {
++                summary = {
++                    valueType:
++                        'object',
++
++                    keys:
++                        Object.keys(
++                            value
++                        ).slice(
++                            0,
++                            100
++                        )
++                };
++            } else {
++                summary = {
++                    valueType:
++                        typeof value
++                };
++            }
++
++            /*
++             * Do not store the complete JSON object.
++             * API responses can contain large or sensitive data.
++             */
+             return new Discovery({
+                 candidate,
+                 observation,
+-
+-                kind: 'json-document',
+-
++                kind:
++                    'json-document',
+                 confidence: 0.95,
+-
++                mechanism:
++                    'json-parser',
+                 data: {
+-                    url: candidate.target,
++                    url:
++                        candidate.target,
+ 
+                     finalUrl:
+-                        observation.http.finalUrl ||
+-                        candidate.target,
+-
+-                    value,
++                        baseUrl,
++
++                    ...summary,
+ 
+                     urls
+                 }
+@@ -1504,137 +2197,674 @@
+         ) {
+             const result = [];
+ 
+-            const visit = value => {
+-                if (
+-                    typeof value ===
+-                    'string'
+-                ) {
+-                    /*
+-                     * First attempt to interpret the complete string
+-                     * as a URL.
+-                     */
+-                    const direct =
+-                        canonicalizeUrl(
+-                            value,
+-                            baseUrl
+-                        );
+-
++            const visit =
++                value => {
+                     if (
+-                        direct &&
+-                        isAllowedUrl(direct)
++                        typeof value ===
++                        'string'
+                     ) {
+-                        result.push(direct);
++                        const direct =
++                            canonicalizeUrl(
++                                value,
++                                baseUrl
++                            );
++
++                        if (
++                            direct &&
++                            isAllowedUrl(
++                                direct
++                            )
++                        ) {
++                            result.push(
++                                direct
++                            );
++                        }
++
++                        result.push(
++                            ...extractUrlsFromText(
++                                value,
++                                baseUrl
++                            )
++                        );
++
++                        return;
+                     }
+ 
+-                    /*
+-                     * Then look for URLs embedded in larger strings.
+-                     */
+-                    const embedded =
+-                        extractUrlsFromText(
+-                            value,
+-                            baseUrl
+-                        );
+-
+-                    result.push(
+-                        ...embedded
+-                    );
+-
+-                    return;
++                    if (
++                        !value ||
++                        typeof value !==
++                            'object'
++                    ) {
++                        return;
++                    }
++
++                    for (
++                        const child of
++                        Object.values(
++                            value
++                        )
++                    ) {
++                        visit(child);
++                    }
++                };
++
++            visit(value);
++
++            return unique(
++                result
++            );
++        }
++
++        candidates(discovery) {
++            const depth =
++                (
++                    discovery
++                        .provenance
++                        .depth || 0
++                ) + 1;
++
++            return (
++                discovery.data.urls ||
++                []
++            ).map(url =>
++                new Candidate({
++                    target: url,
++                    type: 'api',
++                    origin:
++                        `json:${discovery.id}`,
++                    parent:
++                        discovery.id,
++                    priority: 0.72,
++                    depth
++                })
++            );
++        }
++    }
++
++    class XmlProvider
++        extends ResponseProvider {
++
++        matches(observation) {
++            const type =
++                observation
++                    .http
++                    .contentType;
++
++            const body =
++                observation.body ||
++                '';
++
++            return (
++                isXmlContentType(
++                    type
++                ) ||
++                (
++                    !isHtmlContentType(
++                        type
++                    ) &&
++                    /<loc[\s>]/i.test(
++                        body
++                    )
++                )
++            );
++        }
++
++        recognize(
++            candidate,
++            observation
++        ) {
++            if (
++                !this.matches(
++                    observation
++                )
++            ) {
++                return null;
++            }
++
++            const baseUrl =
++                observation
++                    .http
++                    .finalUrl ||
++                candidate.target;
++
++            const urls =
++                extractXmlLocs(
++                    observation.body ||
++                        '',
++                    baseUrl
++                );
++
++            return new Discovery({
++                candidate,
++                observation,
++                kind:
++                    'xml-document',
++                confidence: 0.92,
++                mechanism:
++                    'xml-parser',
++                data: {
++                    url:
++                        candidate.target,
++
++                    finalUrl:
++                        baseUrl,
++
++                    urls,
++
++                    documentType:
++                        this.detectType(
++                            observation.body ||
++                                ''
++                        )
+                 }
+-
+-                if (
+-                    !value ||
+-                    typeof value !==
+-                        'object'
+-                ) {
+-                    return;
+-                }
+-
+-                for (
+-                    const child of
+-                    Object.values(value)
+-                ) {
+-                    visit(child);
+-                }
+-            };
+-
+-            visit(value);
+-
+-            return unique(result);
++            });
++        }
++
++        detectType(xml) {
++            if (
++                /<urlset[\s>]/i.test(
++                    xml
++                )
++            ) {
++                return 'sitemap';
++            }
++
++            if (
++                /<sitemapindex[\s>]/i.test(
++                    xml
++                )
++            ) {
++                return 'sitemap-index';
++            }
++
++            if (
++                /<rss[\s>]/i.test(
++                    xml
++                )
++            ) {
++                return 'rss';
++            }
++
++            if (
++                /<feed[\s>]/i.test(
++                    xml
++                )
++            ) {
++                return 'atom';
++            }
++
++            return 'xml';
+         }
+ 
+         candidates(discovery) {
++            const depth =
++                (
++                    discovery
++                        .provenance
++                        .depth || 0
++                ) + 1;
++
+             return (
+-                discovery.data.urls || []
++                discovery.data.urls ||
++                []
+             ).map(url =>
+                 new Candidate({
+                     target: url,
+                     type: 'url',
+                     origin:
+-                        `json:${discovery.id}`,
++                        `xml:${discovery.id}`,
+                     parent:
+                         discovery.id,
+-                    priority: 0.7
++                    priority: 0.65,
++                    depth
+                 })
+             );
+         }
+     }
+ 
+-
+-    // =====================================================================
+-    // TEXT PROVIDER
+-    // =====================================================================
+-
+-    class TextProvider extends ResponseProvider {
++    class CssProvider
++        extends ResponseProvider {
+ 
+         matches(observation) {
+-            const type =
+-                observation.http.contentType || '';
+-
+-            /*
+-             * Do not treat unknown binary responses as arbitrary text.
+-             *
+-             * An empty Content-Type is accepted because many simple
+-             * endpoints omit it.
+-             */
++            return isCssContentType(
++                observation
++                    .http
++                    .contentType
++            );
++        }
++
++        recognize(
++            candidate,
++            observation
++        ) {
++            if (
++                !this.matches(
++                    observation
++                )
++            ) {
++                return null;
++            }
++
++            const baseUrl =
++                observation
++                    .http
++                    .finalUrl ||
++                candidate.target;
++
++            const urls =
++                extractCssUrls(
++                    observation.body ||
++                        '',
++                    baseUrl
++                );
++
++            return new Discovery({
++                candidate,
++                observation,
++                kind:
++                    'css-document',
++                confidence: 0.9,
++                mechanism:
++                    'css-parser',
++                data: {
++                    url:
++                        candidate.target,
++
++                    finalUrl:
++                        baseUrl,
++
++                    urls
++                }
++            });
++        }
++
++        candidates(discovery) {
++            const depth =
++                (
++                    discovery
++                        .provenance
++                        .depth || 0
++                ) + 1;
++
+             return (
+-                isTextContentType(type) ||
+-                normalizeContentType(type) === ''
++                discovery.data.urls ||
++                []
++            ).map(url =>
++                new Candidate({
++                    target: url,
++                    type: 'resource',
++                    origin:
++                        `css:${discovery.id}`,
++                    parent:
++                        discovery.id,
++                    priority: 0.48,
++                    depth
++                })
+             );
+         }
+-
+-        recognize(candidate, observation) {
+-            if (!this.matches(observation)) {
++    }
++
++    class JavaScriptProvider
++        extends ResponseProvider {
++
++        matches(observation) {
++            return isJavaScriptContentType(
++                observation
++                    .http
++                    .contentType
++            );
++        }
++
++        recognize(
++            candidate,
++            observation
++        ) {
++            if (
++                !this.matches(
++                    observation
++                )
++            ) {
+                 return null;
+             }
+ 
++            const baseUrl =
++                observation
++                    .http
++                    .finalUrl ||
++                candidate.target;
++
+             const text =
+-                observation.body || '';
++                observation.body ||
++                '';
+ 
+             const urls =
+                 extractUrlsFromText(
+                     text,
+-                    observation.http.finalUrl ||
+-                        candidate.target
++                    baseUrl
++                );
++
++            const sourceMapUrls =
++                this.extractSourceMaps(
++                    text,
++                    baseUrl
+                 );
+ 
+             return new Discovery({
+                 candidate,
+                 observation,
+-
+-                kind: 'text-document',
+-
+-                confidence: 0.75,
+-
++                kind:
++                    'javascript-document',
++                confidence: 0.84,
++                mechanism:
++                    'javascript-text-parser',
+                 data: {
+-                    url: candidate.target,
++                    url:
++                        candidate.target,
+ 
+                     finalUrl:
+-                        observation.http.finalUrl ||
+-                        candidate.target,
++                        baseUrl,
+ 
+                     textLength:
+                         text.length,
++
++                    urls:
++                        unique(
++                            [
++                                ...urls,
++                                ...sourceMapUrls
++                            ]
++                        )
++                }
++            });
++        }
++
++        extractSourceMaps(
++            text,
++            baseUrl
++        ) {
++            const result = [];
++
++            const regex =
++                /[#@]\s*sourceMappingURL\s*=\s*([^\s]+)/gi;
++
++            let match;
++
++            while (
++                (match =
++                    regex.exec(text)) !==
++                null
++            ) {
++                const url =
++                    canonicalizeUrl(
++                        match[1],
++                        baseUrl
++                    );
++
++                if (
++                    url &&
++                    isAllowedUrl(url)
++                ) {
++                    result.push(
++                        url
++                    );
++                }
++            }
++
++            return unique(
++                result
++            );
++        }
++
++        candidates(discovery) {
++            const depth =
++                (
++                    discovery
++                        .provenance
++                        .depth || 0
++                ) + 1;
++
++            return (
++                discovery.data.urls ||
++                []
++            ).map(url =>
++                new Candidate({
++                    target: url,
++                    type:
++                        url.endsWith(
++                            '.map'
++                        )
++                            ? 'source-map'
++                            : 'url',
++                    origin:
++                        `javascript:${discovery.id}`,
++                    parent:
++                        discovery.id,
++                    priority:
++                        url.endsWith(
++                            '.map'
++                        )
++                            ? 0.6
++                            : 0.38,
++                    depth
++                })
++            );
++        }
++    }
++
++    class RobotsProvider
++        extends ResponseProvider {
++
++        matches(observation) {
++            const target =
++                observation.target ||
++                '';
++
++            return (
++                /\/robots\.txt$/i.test(
++                    target
++                )
++            );
++        }
++
++        recognize(
++            candidate,
++            observation
++        ) {
++            if (
++                !this.matches(
++                    observation
++                )
++            ) {
++                return null;
++            }
++
++            const text =
++                observation.body ||
++                '';
++
++            const sitemaps = [];
++
++            for (
++                const line of
++                text.split(/\r?\n/)
++            ) {
++                const match =
++                    line.match(
++                        /^\s*Sitemap\s*:\s*(\S+)/i
++                    );
++
++                if (!match) {
++                    continue;
++                }
++
++                const url =
++                    canonicalizeUrl(
++                        match[1],
++                        observation
++                            .http
++                            .finalUrl ||
++                            candidate.target
++                    );
++
++                if (
++                    url &&
++                    isAllowedUrl(url)
++                ) {
++                    sitemaps.push(
++                        url
++                    );
++                }
++            }
++
++            return new Discovery({
++                candidate,
++                observation,
++                kind:
++                    'robots-document',
++                confidence: 0.98,
++                mechanism:
++                    'robots-parser',
++                data: {
++                    url:
++                        candidate.target,
++
++                    finalUrl:
++                        observation
++                            .http
++                            .finalUrl ||
++                        candidate.target,
++
++                    sitemaps:
++                        unique(
++                            sitemaps
++                        ),
++
++                    lineCount:
++                        text.split(
++                            /\r?\n/
++                        ).length
++                }
++            });
++        }
++
++        candidates(discovery) {
++            const depth =
++                (
++                    discovery
++                        .provenance
++                        .depth || 0
++                ) + 1;
++
++            return (
++                discovery.data.sitemaps ||
++                []
++            ).map(url =>
++                new Candidate({
++                    target: url,
++                    type: 'sitemap',
++                    origin:
++                        `robots:${discovery.id}`,
++                    parent:
++                        discovery.id,
++                    priority: 0.9,
++                    depth
++                })
++            );
++        }
++    }
++
++    class TextProvider
++        extends ResponseProvider {
++
++        matches(observation) {
++            const type =
++                observation
++                    .http
++                    .contentType;
++
++            /*
++             * Unknown content types are accepted only when
++             * the response looks textual. This avoids trying
++             * to parse arbitrary binary content as text.
++             */
++            if (
++                isTextContentType(
++                    type
++                )
++            ) {
++                return true;
++            }
++
++            if (
++                !type &&
++                observation.body
++            ) {
++                return (
++                    !looksLikeHtml(
++                        observation.body
++                    ) &&
++                    !looksLikeJson(
++                        observation.body
++                    )
++                );
++            }
++
++            return false;
++        }
++
++        recognize(
++            candidate,
++            observation
++        ) {
++            if (
++                !this.matches(
++                    observation
++                )
++            ) {
++                return null;
++            }
++
++            const text =
++                observation.body ||
++                '';
++
++            const baseUrl =
++                observation
++                    .http
++                    .finalUrl ||
++                candidate.target;
++
++            const urls =
++                CONFIG.discoverFromText
++                    ? extractUrlsFromText(
++                          text,
++                          baseUrl
++                      )
++                    : [];
++
++            return new Discovery({
++                candidate,
++                observation,
++                kind:
++                    'text-document',
++                confidence: 0.72,
++                mechanism:
++                    'text-url-parser',
++                data: {
++                    url:
++                        candidate.target,
++
++                    finalUrl:
++                        baseUrl,
++
++                    textLength:
++                        text.length,
++
++                    textPreview:
++                        text.slice(
++                            0,
++                            CONFIG.maxStoredTextPreview
++                        ),
+ 
+                     urls
+                 }
+@@ -1642,8 +2872,16 @@
+         }
+ 
+         candidates(discovery) {
++            const depth =
++                (
++                    discovery
++                        .provenance
++                        .depth || 0
++                ) + 1;
++
+             return (
+-                discovery.data.urls || []
++                discovery.data.urls ||
++                []
+             ).map(url =>
+                 new Candidate({
+                     target: url,
+@@ -1652,28 +2890,28 @@
+                         `text:${discovery.id}`,
+                     parent:
+                         discovery.id,
+-                    priority: 0.4
++                    priority: 0.38,
++                    depth
+                 })
+             );
+         }
+     }
+ 
+-
+-    // =====================================================================
+-    // PROVIDER REGISTRY
+-    // =====================================================================
+-
+     class ProviderRegistry {
+-
+         constructor() {
+             /*
+              * Order matters.
+              *
+-             * JSON is checked before generic text.
++             * Specialized providers come before the
++             * generic text provider.
+              */
+             this.providers = [
++                new RobotsProvider(),
+                 new JsonProvider(),
+                 new HtmlProvider(),
++                new XmlProvider(),
++                new CssProvider(),
++                new JavaScriptProvider(),
+                 new TextProvider()
+             ];
+         }
+@@ -1686,46 +2924,54 @@
+                 const provider of
+                 this.providers
+             ) {
+-                if (
+-                    !provider.matches(
+-                        observation
+-                    )
+-                ) {
+-                    continue;
++                try {
++                    if (
++                        !provider.matches(
++                            observation
++                        )
++                    ) {
++                        continue;
++                    }
++
++                    const discovery =
++                        provider.recognize(
++                            candidate,
++                            observation
++                        );
++
++                    if (
++                        discovery
++                    ) {
++                        return {
++                            provider,
++                            discovery
++                        };
++                    }
++                } catch (error) {
++                    warn(
++                        'Provider error:',
++                        error
++                    );
+                 }
+-
+-                const discovery =
+-                    provider.recognize(
+-                        candidate,
+-                        observation
+-                    );
+-
+-                if (discovery) {
+-                    return {
+-                        provider,
+-                        discovery
+-                    };
+-                }
+             }
+ 
+             return null;
+         }
+     }
+ 
+-
+-    // =====================================================================
+-    // SCHEDULER
+-    // =====================================================================
+-
+     class Scheduler {
+-
+-        constructor(database) {
+-            this.database = database;
++        constructor(
++            database
++        ) {
++            this.database =
++                database;
+         }
+ 
+         add(candidate) {
+             return this.database
+-                .addCandidate(candidate);
++                .addCandidate(
++                    candidate
++                );
+         }
+ 
+         claim() {
+@@ -1735,7 +2981,9 @@
+ 
+         complete(candidate) {
+             this.database
+-                .completeCandidate(candidate);
++                .completeCandidate(
++                    candidate
++                );
+         }
+ 
+         fail(
+@@ -1758,15 +3006,436 @@
+             return this.database
+                 .claimedSize();
+         }
++
++        nextReadyDelay() {
++            return this.database
++                .nextReadyDelay();
++        }
+     }
+ 
+-
+-    // =====================================================================
+-    // DISCOVERY ENGINE
+-    // =====================================================================
++    class NetworkObserver {
++        constructor(engine) {
++            this.engine =
++                engine;
++
++            this.installed =
++                false;
++
++            this.performanceObserver =
++                null;
++
++            this.install();
++        }
++
++        install() {
++            if (
++                !CONFIG.discoverNetwork &&
++                !CONFIG.discoverPerformance
++            ) {
++                return;
++            }
++
++            if (
++                CONFIG.discoverNetwork &&
++                CONFIG.networkBridge
++            ) {
++                this.installPageBridge();
++            }
++
++            if (
++                CONFIG.discoverPerformance
++            ) {
++                this.installPerformanceObserver();
++            }
++        }
++
++        installPageBridge() {
++            try {
++                const script =
++                    document.createElement(
++                        'script'
++                    );
++
++                script.textContent = `
++                    (() => {
++                        const CHANNEL = ${JSON.stringify(
++                            NETWORK_CHANNEL
++                        )};
++                        const SOURCE = ${JSON.stringify(
++                            NETWORK_SOURCE
++                        )};
++
++                        if (
++                            window.__genericDiscoveryBridgeInstalled
++                        ) {
++                            return;
++                        }
++
++                        window.__genericDiscoveryBridgeInstalled = true;
++
++                        const emit = detail => {
++                            try {
++                                window.postMessage(
++                                    {
++                                        source: SOURCE,
++                                        channel: CHANNEL,
++                                        ...detail
++                                    },
++                                    '*'
++                                );
++                            } catch (_) {}
++                        };
++
++                        const normalize = value => {
++                            try {
++                                if (
++                                    typeof value === 'string'
++                                ) {
++                                    return value;
++                                }
++
++                                if (
++                                    value &&
++                                    typeof value.url === 'string'
++                                ) {
++                                    return value.url;
++                                }
++                            } catch (_) {}
++
++                            return null;
++                        };
++
++                        try {
++                            if (
++                                typeof window.fetch ===
++                                'function'
++                            ) {
++                                const originalFetch =
++                                    window.fetch;
++
++                                window.fetch =
++                                    function(input, init) {
++                                        const requestUrl =
++                                            normalize(input);
++
++                                        emit({
++                                            event: 'request',
++                                            api: 'fetch',
++                                            url: requestUrl,
++                                            time: Date.now()
++                                        });
++
++                                        return originalFetch
++                                            .apply(this, arguments)
++                                            .then(
++                                                response => {
++                                                    emit({
++                                                        event: 'response',
++                                                        api: 'fetch',
++                                                        url:
++                                                            response.url ||
++                                                            requestUrl,
++                                                        status:
++                                                            response.status,
++                                                        contentType:
++                                                            (() => {
++                                                                try {
++                                                                    return response.headers.get(
++                                                                        'content-type'
++                                                                    );
++                                                                } catch (_) {
++                                                                    return null;
++                                                                }
++                                                            })(),
++                                                        time: Date.now()
++                                                    });
++
++                                                    return response;
++                                                },
++                                                error => {
++                                                    emit({
++                                                        event: 'error',
++                                                        api: 'fetch',
++                                                        url: requestUrl,
++                                                        error:
++                                                            String(error),
++                                                        time: Date.now()
++                                                    });
++
++                                                    throw error;
++                                                }
++                                            );
++                                    };
++                            }
++                        } catch (_) {}
++
++                        try {
++                            const XHR =
++                                window.XMLHttpRequest;
++
++                            if (
++                                XHR &&
++                                XHR.prototype
++                            ) {
++                                const originalOpen =
++                                    XHR.prototype.open;
++
++                                const originalSend =
++                                    XHR.prototype.send;
++
++                                XHR.prototype.open =
++                                    function(
++                                        method,
++                                        url
++                                    ) {
++                                        try {
++                                            this.__gdMethod =
++                                                method;
++
++                                            this.__gdUrl =
++                                                new URL(
++                                                    url,
++                                                    location.href
++                                                ).href;
++                                        } catch (_) {
++                                            this.__gdUrl =
++                                                String(url || '');
++                                        }
++
++                                        return originalOpen
++                                            .apply(
++                                                this,
++                                                arguments
++                                            );
++                                    };
++
++                                XHR.prototype.send =
++                                    function() {
++                                        const xhr =
++                                            this;
++
++                                        try {
++                                            emit({
++                                                event:
++                                                    'request',
++                                                api:
++                                                    'xhr',
++                                                method:
++                                                    xhr.__gdMethod ||
++                                                    null,
++                                                url:
++                                                    xhr.__gdUrl ||
++                                                    null,
++                                                time:
++                                                    Date.now()
++                                            });
++
++                                            xhr.addEventListener(
++                                                'loadend',
++                                                () => {
++                                                    emit({
++                                                        event:
++                                                            'response',
++                                                        api:
++                                                            'xhr',
++                                                        method:
++                                                            xhr.__gdMethod ||
++                                                            null,
++                                                        url:
++                                                            xhr.responseURL ||
++                                                            xhr.__gdUrl ||
++                                                            null,
++                                                        status:
++                                                            xhr.status,
++                                                        contentType:
++                                                            xhr.getResponseHeader(
++                                                                'content-type'
++                                                            ),
++                                                        time:
++                                                            Date.now()
++                                                    });
++                                                },
++                                                {
++                                                    once:
++                                                        true
++                                                }
++                                            );
++                                        } catch (_) {}
++
++                                        return originalSend
++                                            .apply(
++                                                this,
++                                                arguments
++                                            );
++                                    };
++                            }
++                        } catch (_) {}
++
++                        emit({
++                            event: 'installed',
++                            api: 'bridge',
++                            time: Date.now()
++                        });
++                    })();
++                `;
++
++                (
++                    document.documentElement ||
++                    document.head ||
++                    document.body
++                )?.appendChild(
++                    script
++                );
++
++                script.remove();
++
++                this.installed =
++                    true;
++
++                log(
++                    'Network page bridge installed'
++                );
++            } catch (error) {
++                warn(
++                    'Network bridge installation failed:',
++                    error
++                );
++            }
++
++            window.addEventListener(
++                'message',
++                this.handleMessage.bind(
++                    this
++                ),
++                false
++            );
++        }
++
++        handleMessage(event) {
++            const data =
++                event.data;
++
++            if (
++                !data ||
++                data.source !==
++                    NETWORK_SOURCE ||
++                data.channel !==
++                    NETWORK_CHANNEL
++            ) {
++                return;
++            }
++
++            if (
++                data.event ===
++                    'installed'
++            ) {
++                return;
++            }
++
++            if (
++                !data.url
++            ) {
++                return;
++            }
++
++            this.engine.observeNetwork({
++                url:
++                    data.url,
++
++                mechanism:
++                    data.api ===
++                        'xhr'
++                        ? 'network-xhr'
++                        : 'network-fetch',
++
++                event:
++                    data.event,
++
++                status:
++                    data.status ??
++                    null,
++
++                contentType:
++                    data.contentType ??
++                    null
++            });
++        }
++
++        installPerformanceObserver() {
++            const process =
++                entries => {
++                    for (
++                        const entry of
++                        entries
++                    ) {
++                        if (
++                            !entry ||
++                            !entry.name
++                        ) {
++                            continue;
++                        }
++
++                        this.engine.observeNetwork(
++                            {
++                                url:
++                                    entry.name,
++
++                                mechanism:
++                                    'performance-resource',
++
++                                event:
++                                    'resource',
++
++                                initiatorType:
++                                    entry.initiatorType ||
++                                    null
++                            }
++                        );
++                    }
++                };
++
++            try {
++                if (
++                    typeof PerformanceObserver !==
++                    'undefined'
++                ) {
++                    this.performanceObserver =
++                        new PerformanceObserver(
++                            list => {
++                                process(
++                                    list.getEntries()
++                                );
++                            }
++                        );
++
++                    this.performanceObserver.observe(
++                        {
++                            entryTypes: [
++                                'resource'
++                            ]
++                        }
++                    );
++                }
++            } catch (error) {
++                warn(
++                    'PerformanceObserver unavailable:',
++                    error
++                );
++            }
++
++            try {
++                process(
++                    performance.getEntriesByType(
++                        'resource'
++                    )
++                );
++            } catch {
++                // Ignore.
++            }
++        }
++    }
+ 
+     class DiscoveryEngine {
+-
+         constructor() {
+             this.database =
+                 new KnowledgeBase();
+@@ -1782,9 +3451,32 @@
+             this.providers =
+                 new ProviderRegistry();
+ 
+-            this.running = false;
+-
+-            this.stats = this.newStats();
++            this.running =
++                false;
++
++            this.stats =
++                this.newStats();
++
++            this.networkSeen =
++                new Set();
++
++            this.networkObserver =
++                null;
++
++            /*
++             * Install the observer as early as possible.
++             * Performance entries already present will also
++             * be processed.
++             */
++            if (
++                CONFIG.discoverNetwork ||
++                CONFIG.discoverPerformance
++            ) {
++                this.networkObserver =
++                    new NetworkObserver(
++                        this
++                    );
++            }
+         }
+ 
+         newStats() {
+@@ -1793,12 +3485,20 @@
+                 finishedAt: null,
+ 
+                 requests: 0,
++
+                 discoveries: 0,
++
+                 failures: 0,
++
+                 retries: 0,
+ 
+                 candidatesCreated: 0,
+-                candidatesRejected: 0
++
++                candidatesRejected: 0,
++
++                networkCandidates: 0,
++
++                performanceCandidates: 0
+             };
+         }
+ 
+@@ -1807,11 +3507,19 @@
+                 this.newStats();
+         }
+ 
+-        /*
+-         * Add a candidate through one central path so statistics remain
+-         * consistent.
+-         */
+-        addCandidate(candidate) {
++        addCandidate(
++            candidate
++        ) {
++            if (
++                !candidate ||
++                !candidate.target
++            ) {
++                this.stats
++                    .candidatesRejected++;
++
++                return false;
++            }
++
+             const added =
+                 this.scheduler.add(
+                     candidate
+@@ -1828,10 +3536,110 @@
+             return added;
+         }
+ 
++        observeNetwork({
++            url,
++            mechanism =
++                'network',
++            event = 'request',
++            status = null,
++            contentType = null
++        }) {
++            if (
++                !CONFIG.discoverNetwork &&
++                mechanism !==
++                    'performance-resource'
++            ) {
++                return;
++            }
++
++            const canonical =
++                canonicalizeUrl(
++                    url,
++                    location.href
++                );
++
++            if (
++                !canonical ||
++                !isAllowedUrl(
++                    canonical
++                )
++            ) {
++                return;
++            }
++
++            const key =
++                `${mechanism}:${canonical}`;
++
++            if (
++                this.networkSeen.has(
++                    key
++                )
++            ) {
++                return;
++            }
++
++            this.networkSeen.add(
++                key
++            );
++
++            const candidate =
++                new Candidate({
++                    target:
++                        canonical,
++
++                    type:
++                        'network',
++
++                    origin:
++                        mechanism,
++
++                    parent:
++                        null,
++
++                    priority:
++                        mechanism ===
++                            'network-fetch' ||
++                        mechanism ===
++                            'network-xhr'
++                            ? 0.95
++                            : 0.82,
++
++                    depth: 0,
++
++                    hints: {
++                        mechanism,
++                        event,
++                        status,
++                        contentType
++                    }
++                });
++
++            const added =
++                this.addCandidate(
++                    candidate
++                );
++
++            if (added) {
++                if (
++                    mechanism ===
++                    'performance-resource'
++                ) {
++                    this.stats
++                        .performanceCandidates++;
++                } else {
++                    this.stats
++                        .networkCandidates++;
++                }
++
++                log(
++                    'Network candidate:',
++                    canonical,
++                    mechanism
++                );
++            }
++        }
++
+         seed() {
+-            /*
+-             * Seed the current document.
+-             */
+             const current =
+                 canonicalizeUrl(
+                     location.href
+@@ -1840,63 +3648,70 @@
+             if (current) {
+                 this.addCandidate(
+                     new Candidate({
+-                        target: current,
+-                        type: 'url',
++                        target:
++                            current,
++
++                        type:
++                            'url',
++
+                         origin:
+                             'initial-page',
+-                        priority: 1.0
++
++                        priority:
++                            1.0,
++
++                        depth: 0
+                     })
+                 );
+             }
+ 
+-            /*
+-             * Discover links already present in the loaded DOM.
+-             *
+-             * These do not require another request merely to become
+-             * candidates.
+-             */
+-            if (CONFIG.discoverLinks) {
+-                const elements =
++            if (
++                CONFIG.discoverLinks
++            ) {
++                for (
++                    const element of
+                     document.querySelectorAll(
+                         'a[href], area[href]'
+-                    );
+-
+-                for (
+-                    const element of
+-                    elements
++                    )
+                 ) {
+-                    const raw =
+-                        element.getAttribute(
+-                            'href'
+-                        );
+-
+                     const url =
+                         canonicalizeUrl(
+-                            raw,
++                            element.getAttribute(
++                                'href'
++                            ),
+                             location.href
+                         );
+ 
+                     if (
+                         url &&
+-                        isAllowedUrl(url)
++                        isAllowedUrl(
++                            url
++                        )
+                     ) {
+                         this.addCandidate(
+                             new Candidate({
+-                                target: url,
+-                                type: 'url',
++                                target:
++                                    url,
++
++                                type:
++                                    'url',
++
+                                 origin:
+                                     'initial-dom',
+-                                priority: 0.7
++
++                                priority:
++                                    0.72,
++
++                                depth: 1
+                             })
+                         );
+                     }
+                 }
+             }
+ 
+-            /*
+-             * Seed resources already visible in the DOM.
+-             */
+-            if (CONFIG.discoverResources) {
++            if (
++                CONFIG.discoverResources
++            ) {
+                 const selector = [
+                     'script[src]',
+                     'link[href]',
+@@ -1905,7 +3720,11 @@
+                     'frame[src]',
+                     'source[src]',
+                     'video[src]',
+-                    'audio[src]'
++                    'audio[src]',
++                    'track[src]',
++                    'object[data]',
++                    'embed[src]',
++                    'input[src]'
+                 ].join(',');
+ 
+                 for (
+@@ -1920,6 +3739,9 @@
+                         ) ||
+                         element.getAttribute(
+                             'href'
++                        ) ||
++                        element.getAttribute(
++                            'data'
+                         );
+ 
+                     const url =
+@@ -1930,16 +3752,135 @@
+ 
+                     if (
+                         url &&
+-                        isAllowedUrl(url)
++                        isAllowedUrl(
++                            url
++                        )
+                     ) {
+                         this.addCandidate(
+                             new Candidate({
+-                                target: url,
++                                target:
++                                    url,
++
+                                 type:
+                                     'resource',
++
+                                 origin:
+                                     'initial-dom',
+-                                priority: 0.5
++
++                                priority:
++                                    0.55,
++
++                                depth: 1
++                            })
++                        );
++                    }
++                }
++            }
++
++            if (
++                CONFIG.discoverMetadata
++            ) {
++                const manifest =
++                    document.querySelector(
++                        'link[rel~="manifest"][href]'
++                    );
++
++                if (manifest) {
++                    const url =
++                        canonicalizeUrl(
++                            manifest.getAttribute(
++                                'href'
++                            ),
++                            location.href
++                        );
++
++                    if (
++                        url &&
++                        isAllowedUrl(
++                            url
++                        )
++                    ) {
++                        this.addCandidate(
++                            new Candidate({
++                                target:
++                                    url,
++
++                                type:
++                                    'manifest',
++
++                                origin:
++                                    'initial-dom',
++
++                                priority:
++                                    0.85,
++
++                                depth: 1
++                            })
++                        );
++                    }
++                }
++            }
++
++            if (
++                CONFIG.discoverWellKnown
++            ) {
++                const origin =
++                    location.origin;
++
++                const wellKnown = [
++                    {
++                        path:
++                            '/robots.txt',
++
++                        type:
++                            'robots',
++
++                        priority:
++                            0.88
++                    },
++                    {
++                        path:
++                            '/sitemap.xml',
++
++                        type:
++                            'sitemap',
++
++                        priority:
++                            0.86
++                    }
++                ];
++
++                for (
++                    const item of
++                    wellKnown
++                ) {
++                    const url =
++                        canonicalizeUrl(
++                            item.path,
++                            origin
++                        );
++
++                    if (
++                        url &&
++                        isAllowedUrl(
++                            url
++                        )
++                    ) {
++                        this.addCandidate(
++                            new Candidate({
++                                target:
++                                    url,
++
++                                type:
++                                    item.type,
++
++                                origin:
++                                    'well-known',
++
++                                priority:
++                                    item.priority,
++
++                                depth: 1
+                             })
+                         );
+                     }
+@@ -1950,23 +3891,27 @@
+                 'Seed complete',
+                 {
+                     queue:
+-                        this.scheduler.size()
++                        this.scheduler
++                            .size(),
++
++                    inFlight:
++                        this.scheduler
++                            .inFlight()
+                 }
+             );
+         }
+ 
+         async run() {
+-            if (this.running) {
++            if (
++                this.running
++            ) {
+                 return;
+             }
+ 
+-            /*
+-             * Each Scan button starts a fresh statistics interval,
+-             * while the knowledge base remains persistent.
+-             */
+             this.resetStats();
+ 
+-            this.running = true;
++            this.running =
++                true;
+ 
+             this.stats.startedAt =
+                 now();
+@@ -1980,8 +3925,12 @@
+                     maxRequests:
+                         CONFIG.maxRequests,
+ 
++                    maxDepth:
++                        CONFIG.maxDepth,
++
+                     queue:
+-                        this.scheduler.size()
++                        this.scheduler
++                            .size()
+                 }
+             );
+ 
+@@ -2004,7 +3953,8 @@
+             this.stats.finishedAt =
+                 now();
+ 
+-            this.running = false;
++            this.running =
++                false;
+ 
+             log(
+                 'Discovery complete',
+@@ -2014,38 +3964,94 @@
+             this.report();
+         }
+ 
+-        async worker(workerId) {
++        async worker(
++            workerId
++        ) {
+             while (
+                 this.running &&
+                 this.stats.requests <
+                     CONFIG.maxRequests
+             ) {
+-                /*
+-                 * CLAIM FIRST.
+-                 *
+-                 * This is synchronous and establishes worker ownership
+-                 * before any asynchronous network operation.
+-                 */
+                 const candidate =
+                     this.scheduler.claim();
+ 
+-                if (!candidate) {
+-                    break;
++                if (
++                    !candidate
++                ) {
++                    const queueSize =
++                        this.scheduler
++                            .size();
++
++                    const inFlight =
++                        this.scheduler
++                            .inFlight();
++
++                    if (
++                        queueSize === 0
++                    ) {
++                        break;
++                    }
++
++                    /*
++                     * There may be queued retry candidates
++                     * waiting for backoff.
++                     *
++                     * Wait rather than terminating the worker.
++                     */
++                    const delay =
++                        this.scheduler
++                            .nextReadyDelay();
++
++                    if (
++                        delay === null
++                    ) {
++                        break;
++                    }
++
++                    await sleep(
++                        Math.min(
++                            Math.max(
++                                25,
++                                delay
++                            ),
++                            250
++                        )
++                    );
++
++                    /*
++                     * If other workers are still processing
++                     * candidates, loop again and see whether
++                     * they have produced new work.
++                     */
++                    if (
++                        inFlight > 0
++                    ) {
++                        continue;
++                    }
++
++                    continue;
+                 }
+ 
+-                /*
+-                 * The increment is also synchronous, so two workers
+-                 * cannot observe and increment the same request count
+-                 * between awaits.
+-                 */
+                 this.stats.requests++;
+ 
+                 log(
+                     `Worker ${workerId} claimed`,
+-                    candidate.target
+-                );
+-
+-                let completed = false;
++                    candidate.target,
++                    {
++                        type:
++                            candidate.type,
++
++                        depth:
++                            candidate.depth,
++
++                        attempt:
++                            candidate.attempts +
++                            1
++                    }
++                );
++
++                let finalized =
++                    false;
+ 
+                 try {
+                     const observation =
+@@ -2066,13 +4072,12 @@
+                         this.stats
+                             .failures++;
+ 
+-                        /*
+-                         * Retry only while the candidate still has
+-                         * retry budget.
+-                         */
++                        const retryable =
++                            candidate.attempts <=
++                            CONFIG.maxRetries;
++
+                         if (
+-                            candidate.attempts <=
+-                            CONFIG.maxRetries
++                            retryable
+                         ) {
+                             this.stats
+                                 .retries++;
+@@ -2083,8 +4088,9 @@
+                             );
+ 
+                             log(
+-                                `Worker ${workerId} retrying`,
+-                                candidate.target
++                                `Worker ${workerId} retry scheduled`,
++                                candidate.target,
++                                candidate.nextAttemptAt
+                             );
+                         } else {
+                             this.scheduler.fail(
+@@ -2093,21 +4099,26 @@
+                             );
+                         }
+ 
++                        finalized =
++                            true;
++
+                         continue;
+                     }
+ 
+                     const result =
+-                        this.providers.recognize(
+-                            candidate,
+-                            observation
+-                        );
++                        this.providers
++                            .recognize(
++                                candidate,
++                                observation
++                            );
+ 
+                     if (!result) {
+                         this.scheduler.complete(
+                             candidate
+                         );
+ 
+-                        completed = true;
++                        finalized =
++                            true;
+ 
+                         continue;
+                     }
+@@ -2131,17 +4142,24 @@
+                         candidate.target
+                     );
+ 
+-                    /*
+-                     * Provider expands the search space.
+-                     */
+-                    const newCandidates =
+-                        provider.candidates(
+-                            discovery
+-                        );
++                    let newCandidates =
++                        [];
++
++                    try {
++                        newCandidates =
++                            provider.candidates(
++                                discovery
++                            );
++                    } catch (error) {
++                        warn(
++                            'Candidate expansion failed:',
++                            error
++                        );
++                    }
+ 
+                     for (
+-                        const next
+-                        of newCandidates
++                        const next of
++                        newCandidates
+                     ) {
+                         this.addCandidate(
+                             next
+@@ -2152,7 +4170,8 @@
+                         candidate
+                     );
+ 
+-                    completed = true;
++                    finalized =
++                        true;
+                 } catch (error) {
+                     warn(
+                         `Worker ${workerId} failed:`,
+@@ -2162,12 +4181,12 @@
+                     this.stats
+                         .failures++;
+ 
+-                    /*
+-                     * Retry unexpected failures as well.
+-                     */
++                    const retryable =
++                        candidate.attempts <=
++                        CONFIG.maxRetries;
++
+                     if (
+-                        candidate.attempts <=
+-                        CONFIG.maxRetries
++                        retryable
+                     ) {
+                         this.stats
+                             .retries++;
+@@ -2182,32 +4201,79 @@
+                             false
+                         );
+                     }
++
++                    finalized =
++                        true;
++                } finally {
++                    /*
++                     * Defensive cleanup.
++                     *
++                     * This prevents a candidate from remaining
++                     * permanently claimed if an unexpected path
++                     * bypassed the normal finalization logic.
++                     */
++                    if (
++                        !finalized &&
++                        this.database
++                            .claimed
++                            .has(
++                                candidate.key()
++                            )
++                    ) {
++                        this.scheduler.fail(
++                            candidate,
++                            false
++                        );
++                    }
+                 }
+-
+-                /*
+-                 * Defensive cleanup.
+-                 *
+-                 * Normally all paths above already complete/fail the
+-                 * candidate. This prevents an accidental future code
+-                 * path from leaving it permanently claimed.
+-                 */
++            }
++        }
++
++        export() {
++            const discoveries =
++                [
++                    ...this.database
++                        .discoveries
++                        .values()
++                ];
++
++            const edges =
++                [];
++
++            for (
++                const discovery of
++                discoveries
++            ) {
++                const parent =
++                    discovery
++                        .provenance
++                        .parent;
++
+                 if (
+-                    !completed &&
+-                    this.database.claimed.has(
+-                        candidate.key()
+-                    )
++                    parent
+                 ) {
+-                    this.scheduler.fail(
+-                        candidate,
+-                        false
+-                    );
++                    edges.push({
++                        from:
++                            parent,
++
++                        to:
++                            discovery.id,
++
++                        candidate:
++                            discovery
++                                .provenance
++                                .candidateTarget,
++
++                        mechanism:
++                            discovery
++                                .provenance
++                                .mechanism
++                    });
+                 }
+             }
+-        }
+-
+-        export() {
++
+             return {
+-                version: 3,
++                version: 4,
+ 
+                 scope: {
+                     type:
+@@ -2221,7 +4287,8 @@
+                 },
+ 
+                 timestamp:
+-                    new Date().toISOString(),
++                    new Date()
++                        .toISOString(),
+ 
+                 page:
+                     location.href,
+@@ -2229,28 +4296,51 @@
+                 statistics:
+                     this.stats,
+ 
++                configuration: {
++                    maxCandidates:
++                        CONFIG.maxCandidates,
++
++                    maxRequests:
++                        CONFIG.maxRequests,
++
++                    concurrency:
++                        CONFIG.concurrency,
++
++                    maxDepth:
++                        CONFIG.maxDepth,
++
++                    sameOriginOnly:
++                        CONFIG.sameOriginOnly
++                },
++
+                 queue: {
+                     pending:
+-                        this.scheduler.size(),
++                        this.scheduler
++                            .size(),
+ 
+                     inFlight:
+-                        this.scheduler.inFlight()
++                        this.scheduler
++                            .inFlight()
+                 },
+ 
+-                discoveries: [
++                graph: {
++                    nodes:
++                        discoveries,
++
++                    edges
++                },
++
++                discoveries
++            };
++        }
++
++        report() {
++            const discoveries =
++                [
+                     ...this.database
+                         .discoveries
+                         .values()
+-                ]
+-            };
+-        }
+-
+-        report() {
+-            const discoveries = [
+-                ...this.database
+-                    .discoveries
+-                    .values()
+-            ];
++                ];
+ 
+             console.group(
+                 '[Discovery] Results'
+@@ -2265,12 +4355,24 @@
+                         confidence:
+                             discovery.confidence,
+ 
+-                        url:
+-                            discovery.data.url ||
+-                            '',
++                        candidate:
++                            discovery
++                                .provenance
++                                .candidateTarget,
++
++                        mechanism:
++                            discovery
++                                .provenance
++                                .mechanism,
++
++                        depth:
++                            discovery
++                                .provenance
++                                .depth,
+ 
+                         title:
+-                            discovery.data.title ||
++                            discovery.data
++                                ?.title ||
+                             '',
+ 
+                         createdAt:
+@@ -2281,12 +4383,14 @@
+ 
+             console.log(
+                 'Queue:',
+-                this.scheduler.size()
++                this.scheduler
++                    .size()
+             );
+ 
+             console.log(
+                 'In flight:',
+-                this.scheduler.inFlight()
++                this.scheduler
++                    .inFlight()
+             );
+ 
+             console.log(
+@@ -2299,294 +4403,376 @@
+ 
+         clear() {
+             this.database.clear();
++
++            this.networkSeen.clear();
++
+             this.resetStats();
+         }
+     }
+ 
+-
+-    // =====================================================================
+-    // UI
+-    // =====================================================================
++    /*
++     * =====================================================================
++     * ENGINE INITIALIZATION
++     * =====================================================================
++     */
+ 
+     const engine =
+         new DiscoveryEngine();
+ 
+-    /*
+-     * Public API for experimentation.
+-     */
+     window.GenericDiscovery =
+         engine;
+ 
+     /*
+-     * Avoid creating duplicate panels if the userscript is accidentally
+-     * injected twice into the same document.
++     * =====================================================================
++     * UI
++     * =====================================================================
+      */
+-    const existingPanel =
+-        document.getElementById(
+-            'generic-discovery-panel'
++
++    function createPanel() {
++        const existing =
++            document.getElementById(
++                'generic-discovery-panel'
++            );
++
++        if (existing) {
++            existing.remove();
++        }
++
++        const panel =
++            document.createElement(
++                'div'
++            );
++
++        panel.id =
++            'generic-discovery-panel';
++
++        panel.style.cssText = `
++            position: fixed;
++            right: 12px;
++            bottom: 12px;
++            z-index: 2147483647;
++            background: rgba(20, 20, 20, .94);
++            color: white;
++            padding: 10px;
++            border-radius: 8px;
++            font: 12px monospace;
++            line-height: 1.45;
++            box-shadow: 0 3px 15px rgba(0, 0, 0, .4);
++            min-width: 290px;
++            max-width: 360px;
++        `;
++
++        panel.innerHTML = `
++            <div style="margin-bottom:6px">
++                <strong>Generic Discovery v0.4</strong>
++            </div>
++
++            <div style="
++                margin-bottom:8px;
++                opacity:.7;
++            ">
++                Web-resource discovery engine with
++                network observation.
++            </div>
++
++            <div style="margin-bottom:8px">
++                <button id="gd-start">
++                    Scan
++                </button>
++
++                <button id="gd-clear">
++                    Clear
++                </button>
++
++                <button id="gd-export">
++                    Export
++                </button>
++            </div>
++
++            <div id="gd-status">
++                idle
++            </div>
++
++            <div
++                id="gd-progress"
++                style="
++                    margin-top:6px;
++                    opacity:.8;
++                "
++            >
++                queue: 0 |
++                in-flight: 0
++            </div>
++
++            <div
++                id="gd-network"
++                style="
++                    margin-top:4px;
++                    opacity:.8;
++                "
++            >
++                network: 0 |
++                performance: 0
++            </div>
++        `;
++
++        (
++            document.documentElement ||
++            document.body
++        )?.appendChild(
++            panel
+         );
+ 
+-    if (existingPanel) {
+-        existingPanel.remove();
++        return panel;
+     }
+ 
+-    const panel =
+-        document.createElement('div');
+-
+-    panel.id =
+-        'generic-discovery-panel';
+-
+-    panel.style.cssText = `
+-        position: fixed;
+-        right: 12px;
+-        bottom: 12px;
+-        z-index: 2147483647;
+-        background: rgba(20, 20, 20, .94);
+-        color: white;
+-        padding: 10px;
+-        border-radius: 8px;
+-        font: 12px monospace;
+-        line-height: 1.45;
+-        box-shadow: 0 3px 15px rgba(0, 0, 0, .4);
+-        min-width: 250px;
+-    `;
+-
+-    panel.innerHTML = `
+-        <div style="margin-bottom:6px">
+-            <strong>Generic Discovery v0.3</strong>
+-        </div>
+-
+-        <div style="
+-            margin-bottom:8px;
+-            opacity:.7;
+-            max-width:280px;
+-        ">
+-            Web-resource prototype inspired by
+-            DVB blind-scan architecture.
+-        </div>
+-
+-        <div style="margin-bottom:8px">
+-            <button id="gd-start">Scan</button>
+-            <button id="gd-clear">Clear</button>
+-            <button id="gd-export">Export</button>
+-        </div>
+-
+-        <div id="gd-status">
+-            idle
+-        </div>
+-
+-        <div id="gd-progress" style="
+-            margin-top:6px;
+-            opacity:.8;
+-        ">
+-            queue: 0 | in-flight: 0
+-        </div>
+-    `;
+-
+-    document.documentElement.appendChild(
+-        panel
++    function initializeUi() {
++        const panel =
++            createPanel();
++
++        const status =
++            panel.querySelector(
++                '#gd-status'
++            );
++
++        const progress =
++            panel.querySelector(
++                '#gd-progress'
++            );
++
++        const network =
++            panel.querySelector(
++                '#gd-network'
++            );
++
++        function updateUi() {
++            if (
++                !status ||
++                !progress ||
++                !network
++            ) {
++                return;
++            }
++
++            const queue =
++                engine.scheduler
++                    .size();
++
++            const inFlight =
++                engine.scheduler
++                    .inFlight();
++
++            const stats =
++                engine.stats;
++
++            if (
++                engine.running
++            ) {
++                status.textContent =
++                    'scanning...';
++            }
++
++            progress.textContent =
++                `queue: ${queue} | ` +
++                `in-flight: ${inFlight} | ` +
++                `requests: ${stats.requests}/${CONFIG.maxRequests} | ` +
++                `discoveries: ${stats.discoveries} | ` +
++                `failures: ${stats.failures}`;
++
++            network.textContent =
++                `network: ${stats.networkCandidates} | ` +
++                `performance: ${stats.performanceCandidates} | ` +
++                `depth: ${CONFIG.maxDepth}`;
++        }
++
++        let uiTimer =
++            null;
++
++        function startUiTimer() {
++            if (uiTimer) {
++                return;
++            }
++
++            uiTimer =
++                setInterval(
++                    updateUi,
++                    250
++                );
++        }
++
++        function stopUiTimer() {
++            if (!uiTimer) {
++                return;
++            }
++
++            clearInterval(
++                uiTimer
++            );
++
++            uiTimer =
++                null;
++        }
++
++        panel.querySelector(
++            '#gd-start'
++        )?.addEventListener(
++            'click',
++            async () => {
++                if (
++                    engine.running
++                ) {
++                    return;
++                }
++
++                status.textContent =
++                    'seeding...';
++
++                engine.seed();
++
++                updateUi();
++
++                startUiTimer();
++
++                try {
++                    await engine.run();
++
++                    status.textContent =
++                        `done — ` +
++                        `${engine.stats.discoveries} discoveries`;
++                } catch (error) {
++                    warn(
++                        'Engine run failed:',
++                        error
++                    );
++
++                    status.textContent =
++                        'error — see console';
++                } finally {
++                    stopUiTimer();
++
++                    updateUi();
++                }
++            }
++        );
++
++        panel.querySelector(
++            '#gd-clear'
++        )?.addEventListener(
++            'click',
++            () => {
++                if (
++                    engine.running
++                ) {
++                    status.textContent =
++                        'cannot clear while scanning';
++
++                    return;
++                }
++
++                engine.clear();
++
++                status.textContent =
++                    'cleared';
++
++                updateUi();
++            }
++        );
++
++        panel.querySelector(
++            '#gd-export'
++        )?.addEventListener(
++            'click',
++            () => {
++                try {
++                    const data =
++                        engine.export();
++
++                    const blob =
++                        new Blob(
++                            [
++                                JSON.stringify(
++                                    data,
++                                    null,
++                                    2
++                                )
++                            ],
++                            {
++                                type:
++                                    'application/json'
++                            }
++                        );
++
++                    const url =
++                        URL.createObjectURL(
++                            blob
++                        );
++
++                    const anchor =
++                        document.createElement(
++                            'a'
++                        );
++
++                    anchor.href =
++                        url;
++
++                    anchor.download =
++                        `discovery-${Date.now()}.json`;
++
++                    document.body.appendChild(
++                        anchor
++                    );
++
++                    anchor.click();
++
++                    anchor.remove();
++
++                    setTimeout(
++                        () => {
++                            URL.revokeObjectURL(
++                                url
++                            );
++                        },
++                        1000
++                    );
++                } catch (error) {
++                    warn(
++                        'Export failed:',
++                        error
++                    );
++
++                    status.textContent =
++                        'export failed — see console';
++                }
++            }
++        );
++
++        updateUi();
++    }
++
++    /*
++     * document-start means the DOM may not exist yet.
++     *
++     * Wait until there is a usable document root for the panel.
++     * The network bridge was installed earlier, so page activity
++     * occurring after document-start can still be observed.
++     */
++    if (
++        document.readyState ===
++        'loading'
++    ) {
++        document.addEventListener(
++            'DOMContentLoaded',
++            initializeUi,
++            {
++                once: true
++            }
++        );
++    } else {
++        initializeUi();
++    }
++
++    log(
++        'Generic Discovery Engine v0.4.0 loaded'
+     );
+ 
+-    const status =
+-        panel.querySelector(
+-            '#gd-status'
+-        );
+-
+-    const progress =
+-        panel.querySelector(
+-            '#gd-progress'
+-        );
+-
+-    function updateUi() {
+-        if (!status || !progress) {
+-            return;
+-        }
+-
+-        const queue =
+-            engine.scheduler.size();
+-
+-        const inFlight =
+-            engine.scheduler.inFlight();
+-
+-        const stats =
+-            engine.stats;
+-
+-        if (engine.running) {
+-            status.textContent =
+-                'scanning...';
+-        }
+-
+-        progress.textContent =
+-            `queue: ${queue} | ` +
+-            `in-flight: ${inFlight} | ` +
+-            `requests: ${stats.requests}/${CONFIG.maxRequests} | ` +
+-            `discoveries: ${stats.discoveries} | ` +
+-            `failures: ${stats.failures}`;
+-    }
+-
+-    let uiTimer = null;
+-
+-    function startUiTimer() {
+-        if (uiTimer) {
+-            return;
+-        }
+-
+-        uiTimer =
+-            setInterval(
+-                updateUi,
+-                250
+-            );
+-    }
+-
+-    function stopUiTimer() {
+-        if (!uiTimer) {
+-            return;
+-        }
+-
+-        clearInterval(uiTimer);
+-        uiTimer = null;
+-    }
+-
+-
+-    // =====================================================================
+-    // BUTTONS
+-    // =====================================================================
+-
+-    panel.querySelector(
+-        '#gd-start'
+-    ).addEventListener(
+-        'click',
+-        async () => {
+-
+-            if (engine.running) {
+-                return;
+-            }
+-
+-            status.textContent =
+-                'seeding...';
+-
+-            engine.seed();
+-
+-            updateUi();
+-
+-            startUiTimer();
+-
+-            try {
+-                await engine.run();
+-
+-                status.textContent =
+-                    `done — ` +
+-                    `${engine.stats.discoveries} discoveries`;
+-            } catch (error) {
+-                warn(
+-                    'Engine run failed:',
+-                    error
+-                );
+-
+-                status.textContent =
+-                    'error — see console';
+-            } finally {
+-                stopUiTimer();
+-                updateUi();
+-            }
+-        }
+-    );
+-
+-
+-    panel.querySelector(
+-        '#gd-clear'
+-    ).addEventListener(
+-        'click',
+-        () => {
+-
+-            if (engine.running) {
+-                status.textContent =
+-                    'cannot clear while scanning';
+-
+-                return;
+-            }
+-
+-            engine.clear();
+-
+-            status.textContent =
+-                'cleared';
+-
+-            updateUi();
+-        }
+-    );
+-
+-
+-    panel.querySelector(
+-        '#gd-export'
+-    ).addEventListener(
+-        'click',
+-        () => {
+-
+-            const data =
+-                engine.export();
+-
+-            const blob =
+-                new Blob(
+-                    [
+-                        JSON.stringify(
+-                            data,
+-                            null,
+-                            2
+-                        )
+-                    ],
+-                    {
+-                        type:
+-                            'application/json'
+-                    }
+-                );
+-
+-            const url =
+-                URL.createObjectURL(
+-                    blob
+-                );
+-
+-            const anchor =
+-                document.createElement(
+-                    'a'
+-                );
+-
+-            anchor.href = url;
+-
+-            anchor.download =
+-                `discovery-${Date.now()}.json`;
+-
+-            document.body.appendChild(
+-                anchor
+-            );
+-
+-            anchor.click();
+-
+-            anchor.remove();
+-
+-            /*
+-             * Give the browser a chance to consume the download before
+-             * releasing the object URL.
+-             */
+-            setTimeout(
+-                () => {
+-                    URL.revokeObjectURL(
+-                        url
+-                    );
+-                },
+-                1000
+-            );
+-        }
+-    );
+-
+-
+-    // =====================================================================
+-    // INITIAL STATE
+-    // =====================================================================
+-
+-    updateUi();
+-
+-    log(
+-        'Generic Discovery Engine v0.3.0 loaded'
+-    );
+-
+ })();

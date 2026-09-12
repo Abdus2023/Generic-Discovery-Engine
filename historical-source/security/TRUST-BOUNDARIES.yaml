@@ -1,0 +1,2743 @@
+{
+  "schema_version": 8,
+  "builder": "security-archaeology-builder-v8",
+  "model_kind": "DERIVED_SECURITY_ARCHAEOLOGY_NOT_SOURCE",
+  "boundaries": [
+    {
+      "boundary_id": "trust-boundary-e54974aa71919e4c",
+      "snapshot_id": "snapshot-0001",
+      "version": "v0.1.0",
+      "variant": "mechanically-composed",
+      "boundary": "USER_INPUT",
+      "source": "user/UI event",
+      "sink": "validation/engine",
+      "data": "seed or control value",
+      "validation": "UNKNOWN",
+      "authority": "NOT_EVIDENCED",
+      "sanitization": "UNKNOWN",
+      "isolation": "UNKNOWN",
+      "boundary_status": "NOT_PRESENT_OR_NOT_EVIDENCED",
+      "security_guarantee": "NOT_ESTABLISHED",
+      "evidence": [
+        "security-absence-1e3fe556108fa8d6"
+      ]
+    },
+    {
+      "boundary_id": "trust-boundary-5c1a3fc5f262419d",
+      "snapshot_id": "snapshot-0001",
+      "version": "v0.1.0",
+      "variant": "mechanically-composed",
+      "boundary": "PAGE_DOM",
+      "source": "page DOM",
+      "sink": "candidate extraction",
+      "data": "links/forms/resources/metadata",
+      "validation": "URL_CANONICALIZATION_OR_ALLOW_CHECK",
+      "authority": "browser DOM read",
+      "sanitization": "EXTRACTION_OR_NORMALIZATION_ONLY",
+      "isolation": "UNKNOWN",
+      "boundary_status": "HISTORICAL_TRUST_OR_AUTHORITY_BOUNDARY",
+      "security_guarantee": "NOT_ESTABLISHED",
+      "evidence": [
+        "security-ev-6687585eb4e95e9d"
+      ]
+    },
+    {
+      "boundary_id": "trust-boundary-0465e8403b549e0a",
+      "snapshot_id": "snapshot-0001",
+      "version": "v0.1.0",
+      "variant": "mechanically-composed",
+      "boundary": "NETWORK",
+      "source": "remote server",
+      "sink": "acquisition",
+      "data": "request/response",
+      "validation": "URL_CANONICALIZATION_OR_ALLOW_CHECK",
+      "authority": "GM/fetch network authority",
+      "sanitization": "UNKNOWN",
+      "isolation": "UNKNOWN",
+      "boundary_status": "HISTORICAL_TRUST_OR_AUTHORITY_BOUNDARY",
+      "security_guarantee": "NOT_ESTABLISHED",
+      "evidence": [
+        "security-ev-ce39263ea398c095"
+      ]
+    },
+    {
+      "boundary_id": "trust-boundary-1c4fe56d6eb315b7",
+      "snapshot_id": "snapshot-0001",
+      "version": "v0.1.0",
+      "variant": "mechanically-composed",
+      "boundary": "REMOTE_CONTENT",
+      "source": "acquisition response",
+      "sink": "provider/parser",
+      "data": "HTML/JSON/text/headers",
+      "validation": "PARSER_OR_PROVIDER_HEURISTIC",
+      "authority": "parse and extraction authority",
+      "sanitization": "EXTRACTION_OR_NORMALIZATION_ONLY",
+      "isolation": "UNKNOWN",
+      "boundary_status": "HISTORICAL_TRUST_OR_AUTHORITY_BOUNDARY",
+      "security_guarantee": "NOT_ESTABLISHED",
+      "evidence": [
+        "security-ev-99f0e1637bad7bae"
+      ]
+    },
+    {
+      "boundary_id": "trust-boundary-f13867d8faab6399",
+      "snapshot_id": "snapshot-0001",
+      "version": "v0.1.0",
+      "variant": "mechanically-composed",
+      "boundary": "PROVIDER_CODE",
+      "source": "provider implementation",
+      "sink": "registry/engine",
+      "data": "recognition and discovery results",
+      "validation": "UNKNOWN",
+      "authority": "provider method execution",
+      "sanitization": "UNKNOWN",
+      "isolation": "UNKNOWN",
+      "boundary_status": "DATA_OR_AUTHORITY_BOUNDARY",
+      "security_guarantee": "NOT_ESTABLISHED",
+      "evidence": [
+        "security-ev-cfdebb9f2dc12d86"
+      ]
+    },
+    {
+      "boundary_id": "trust-boundary-1c28a4e3b6fa5063",
+      "snapshot_id": "snapshot-0001",
+      "version": "v0.1.0",
+      "variant": "mechanically-composed",
+      "boundary": "SCHEDULER",
+      "source": "candidate frontier",
+      "sink": "worker",
+      "data": "claim/work state",
+      "validation": "UNKNOWN",
+      "authority": "work admission authority",
+      "sanitization": "UNKNOWN",
+      "isolation": "UNKNOWN",
+      "boundary_status": "INTERNAL_AUTHORITY_BOUNDARY_NOT_PROVED_TRUST",
+      "security_guarantee": "NOT_ESTABLISHED",
+      "evidence": [
+        "security-ev-30baf6409a04e8f0"
+      ]
+    },
+    {
+      "boundary_id": "trust-boundary-a0b06f69f4b365e9",
+      "snapshot_id": "snapshot-0001",
+      "version": "v0.1.0",
+      "variant": "mechanically-composed",
+      "boundary": "STORAGE",
+      "source": "in-memory state",
+      "sink": "GM/local storage",
+      "data": "serialized state",
+      "validation": "UNKNOWN",
+      "authority": "storage read/write authority",
+      "sanitization": "UNKNOWN",
+      "isolation": "UNKNOWN",
+      "boundary_status": "HISTORICAL_TRUST_OR_AUTHORITY_BOUNDARY",
+      "security_guarantee": "NOT_ESTABLISHED",
+      "evidence": [
+        "security-ev-fdcba3da4e192bbc"
+      ]
+    },
+    {
+      "boundary_id": "trust-boundary-e5499fef59f60151",
+      "snapshot_id": "snapshot-0001",
+      "version": "v0.1.0",
+      "variant": "mechanically-composed",
+      "boundary": "EXPORT",
+      "source": "engine state",
+      "sink": "download/consumer",
+      "data": "JSON/blob",
+      "validation": "UNKNOWN",
+      "authority": "state disclosure authority",
+      "sanitization": "UNKNOWN",
+      "isolation": "UNKNOWN",
+      "boundary_status": "DATA_OR_AUTHORITY_BOUNDARY",
+      "security_guarantee": "NOT_ESTABLISHED",
+      "evidence": [
+        "security-ev-8fa6a5f31eb7c2ae"
+      ]
+    },
+    {
+      "boundary_id": "trust-boundary-8887a4563cd18224",
+      "snapshot_id": "snapshot-0001",
+      "version": "v0.1.0",
+      "variant": "mechanically-composed",
+      "boundary": "UI",
+      "source": "engine state",
+      "sink": "page DOM/user",
+      "data": "status/results/controls",
+      "validation": "UNKNOWN",
+      "authority": "DOM mutation authority",
+      "sanitization": "UNKNOWN",
+      "isolation": "UNKNOWN",
+      "boundary_status": "DATA_OR_AUTHORITY_BOUNDARY",
+      "security_guarantee": "NOT_ESTABLISHED",
+      "evidence": [
+        "security-ev-2458cce86d2f93d8"
+      ]
+    },
+    {
+      "boundary_id": "trust-boundary-84794c0625aeb0de",
+      "snapshot_id": "snapshot-0001",
+      "version": "v0.1.0",
+      "variant": "mechanically-composed",
+      "boundary": "BROWSER_APIS",
+      "source": "engine",
+      "sink": "browser API",
+      "data": "DOM/network/timers",
+      "validation": "UNKNOWN",
+      "authority": "ambient browser authority",
+      "sanitization": "UNKNOWN",
+      "isolation": "UNKNOWN",
+      "boundary_status": "DATA_OR_AUTHORITY_BOUNDARY",
+      "security_guarantee": "NOT_ESTABLISHED",
+      "evidence": [
+        "security-ev-8a45f0571469596e"
+      ]
+    },
+    {
+      "boundary_id": "trust-boundary-9a62fc000110b051",
+      "snapshot_id": "snapshot-0001",
+      "version": "v0.1.0",
+      "variant": "mechanically-composed",
+      "boundary": "USERSCRIPT_APIS",
+      "source": "engine",
+      "sink": "userscript manager",
+      "data": "privileged network/storage",
+      "validation": "UNKNOWN",
+      "authority": "metadata-granted authority",
+      "sanitization": "UNKNOWN",
+      "isolation": "UNKNOWN",
+      "boundary_status": "HISTORICAL_TRUST_OR_AUTHORITY_BOUNDARY",
+      "security_guarantee": "NOT_ESTABLISHED",
+      "evidence": [
+        "security-ev-e9721cb755a90356"
+      ]
+    },
+    {
+      "boundary_id": "trust-boundary-47bcbe209f7ca995",
+      "snapshot_id": "snapshot-0001",
+      "version": "v0.1.0",
+      "variant": "mechanically-composed",
+      "boundary": "THIRD_PARTY_LIBRARIES",
+      "source": "external library",
+      "sink": "engine",
+      "data": "code/data",
+      "validation": "UNKNOWN",
+      "authority": "NOT_EVIDENCED",
+      "sanitization": "UNKNOWN",
+      "isolation": "UNKNOWN",
+      "boundary_status": "NOT_PRESENT_OR_NOT_EVIDENCED",
+      "security_guarantee": "NOT_ESTABLISHED",
+      "evidence": [
+        "security-absence-2939703dbd53485e"
+      ]
+    },
+    {
+      "boundary_id": "trust-boundary-28c5c38466471de5",
+      "snapshot_id": "snapshot-0003",
+      "version": "v0.2.0",
+      "variant": "mechanically-composed",
+      "boundary": "USER_INPUT",
+      "source": "user/UI event",
+      "sink": "validation/engine",
+      "data": "seed or control value",
+      "validation": "UNKNOWN",
+      "authority": "NOT_EVIDENCED",
+      "sanitization": "UNKNOWN",
+      "isolation": "UNKNOWN",
+      "boundary_status": "NOT_PRESENT_OR_NOT_EVIDENCED",
+      "security_guarantee": "NOT_ESTABLISHED",
+      "evidence": [
+        "security-absence-f2855cc195d0deba"
+      ]
+    },
+    {
+      "boundary_id": "trust-boundary-01bc603426228e42",
+      "snapshot_id": "snapshot-0003",
+      "version": "v0.2.0",
+      "variant": "mechanically-composed",
+      "boundary": "PAGE_DOM",
+      "source": "page DOM",
+      "sink": "candidate extraction",
+      "data": "links/forms/resources/metadata",
+      "validation": "URL_CANONICALIZATION_OR_ALLOW_CHECK",
+      "authority": "browser DOM read",
+      "sanitization": "EXTRACTION_OR_NORMALIZATION_ONLY",
+      "isolation": "UNKNOWN",
+      "boundary_status": "HISTORICAL_TRUST_OR_AUTHORITY_BOUNDARY",
+      "security_guarantee": "NOT_ESTABLISHED",
+      "evidence": [
+        "security-ev-86dcc20372d38cdc"
+      ]
+    },
+    {
+      "boundary_id": "trust-boundary-f93133518d0dff9f",
+      "snapshot_id": "snapshot-0003",
+      "version": "v0.2.0",
+      "variant": "mechanically-composed",
+      "boundary": "NETWORK",
+      "source": "remote server",
+      "sink": "acquisition",
+      "data": "request/response",
+      "validation": "URL_CANONICALIZATION_OR_ALLOW_CHECK",
+      "authority": "GM/fetch network authority",
+      "sanitization": "UNKNOWN",
+      "isolation": "UNKNOWN",
+      "boundary_status": "HISTORICAL_TRUST_OR_AUTHORITY_BOUNDARY",
+      "security_guarantee": "NOT_ESTABLISHED",
+      "evidence": [
+        "security-ev-f53c807f85934a28"
+      ]
+    },
+    {
+      "boundary_id": "trust-boundary-3cc9f7702229c074",
+      "snapshot_id": "snapshot-0003",
+      "version": "v0.2.0",
+      "variant": "mechanically-composed",
+      "boundary": "REMOTE_CONTENT",
+      "source": "acquisition response",
+      "sink": "provider/parser",
+      "data": "HTML/JSON/text/headers",
+      "validation": "PARSER_OR_PROVIDER_HEURISTIC",
+      "authority": "parse and extraction authority",
+      "sanitization": "EXTRACTION_OR_NORMALIZATION_ONLY",
+      "isolation": "UNKNOWN",
+      "boundary_status": "HISTORICAL_TRUST_OR_AUTHORITY_BOUNDARY",
+      "security_guarantee": "NOT_ESTABLISHED",
+      "evidence": [
+        "security-ev-ed6d2e188f6025bf"
+      ]
+    },
+    {
+      "boundary_id": "trust-boundary-410bf8c8298b7212",
+      "snapshot_id": "snapshot-0003",
+      "version": "v0.2.0",
+      "variant": "mechanically-composed",
+      "boundary": "PROVIDER_CODE",
+      "source": "provider implementation",
+      "sink": "registry/engine",
+      "data": "recognition and discovery results",
+      "validation": "UNKNOWN",
+      "authority": "provider method execution",
+      "sanitization": "UNKNOWN",
+      "isolation": "UNKNOWN",
+      "boundary_status": "DATA_OR_AUTHORITY_BOUNDARY",
+      "security_guarantee": "NOT_ESTABLISHED",
+      "evidence": [
+        "security-ev-ced6dfa50a072be3"
+      ]
+    },
+    {
+      "boundary_id": "trust-boundary-78e7dcad16ef7e8a",
+      "snapshot_id": "snapshot-0003",
+      "version": "v0.2.0",
+      "variant": "mechanically-composed",
+      "boundary": "SCHEDULER",
+      "source": "candidate frontier",
+      "sink": "worker",
+      "data": "claim/work state",
+      "validation": "UNKNOWN",
+      "authority": "work admission authority",
+      "sanitization": "UNKNOWN",
+      "isolation": "UNKNOWN",
+      "boundary_status": "INTERNAL_AUTHORITY_BOUNDARY_NOT_PROVED_TRUST",
+      "security_guarantee": "NOT_ESTABLISHED",
+      "evidence": [
+        "security-ev-b855a9b503872d9b"
+      ]
+    },
+    {
+      "boundary_id": "trust-boundary-298289815223dac8",
+      "snapshot_id": "snapshot-0003",
+      "version": "v0.2.0",
+      "variant": "mechanically-composed",
+      "boundary": "STORAGE",
+      "source": "in-memory state",
+      "sink": "GM/local storage",
+      "data": "serialized state",
+      "validation": "UNKNOWN",
+      "authority": "storage read/write authority",
+      "sanitization": "UNKNOWN",
+      "isolation": "UNKNOWN",
+      "boundary_status": "HISTORICAL_TRUST_OR_AUTHORITY_BOUNDARY",
+      "security_guarantee": "NOT_ESTABLISHED",
+      "evidence": [
+        "security-ev-30127912154d80c8"
+      ]
+    },
+    {
+      "boundary_id": "trust-boundary-2919ce7855d23e1f",
+      "snapshot_id": "snapshot-0003",
+      "version": "v0.2.0",
+      "variant": "mechanically-composed",
+      "boundary": "EXPORT",
+      "source": "engine state",
+      "sink": "download/consumer",
+      "data": "JSON/blob",
+      "validation": "UNKNOWN",
+      "authority": "state disclosure authority",
+      "sanitization": "UNKNOWN",
+      "isolation": "UNKNOWN",
+      "boundary_status": "DATA_OR_AUTHORITY_BOUNDARY",
+      "security_guarantee": "NOT_ESTABLISHED",
+      "evidence": [
+        "security-ev-111224eb2963ba44"
+      ]
+    },
+    {
+      "boundary_id": "trust-boundary-f09e9fdc5e65c3bb",
+      "snapshot_id": "snapshot-0003",
+      "version": "v0.2.0",
+      "variant": "mechanically-composed",
+      "boundary": "UI",
+      "source": "engine state",
+      "sink": "page DOM/user",
+      "data": "status/results/controls",
+      "validation": "UNKNOWN",
+      "authority": "DOM mutation authority",
+      "sanitization": "UNKNOWN",
+      "isolation": "UNKNOWN",
+      "boundary_status": "DATA_OR_AUTHORITY_BOUNDARY",
+      "security_guarantee": "NOT_ESTABLISHED",
+      "evidence": [
+        "security-ev-7e383430833b8cac"
+      ]
+    },
+    {
+      "boundary_id": "trust-boundary-e0deb431ea7c4c31",
+      "snapshot_id": "snapshot-0003",
+      "version": "v0.2.0",
+      "variant": "mechanically-composed",
+      "boundary": "BROWSER_APIS",
+      "source": "engine",
+      "sink": "browser API",
+      "data": "DOM/network/timers",
+      "validation": "UNKNOWN",
+      "authority": "ambient browser authority",
+      "sanitization": "UNKNOWN",
+      "isolation": "UNKNOWN",
+      "boundary_status": "DATA_OR_AUTHORITY_BOUNDARY",
+      "security_guarantee": "NOT_ESTABLISHED",
+      "evidence": [
+        "security-ev-078430c1bafd9e63"
+      ]
+    },
+    {
+      "boundary_id": "trust-boundary-2c5febda48b3f8bf",
+      "snapshot_id": "snapshot-0003",
+      "version": "v0.2.0",
+      "variant": "mechanically-composed",
+      "boundary": "USERSCRIPT_APIS",
+      "source": "engine",
+      "sink": "userscript manager",
+      "data": "privileged network/storage",
+      "validation": "UNKNOWN",
+      "authority": "metadata-granted authority",
+      "sanitization": "UNKNOWN",
+      "isolation": "UNKNOWN",
+      "boundary_status": "HISTORICAL_TRUST_OR_AUTHORITY_BOUNDARY",
+      "security_guarantee": "NOT_ESTABLISHED",
+      "evidence": [
+        "security-ev-5efb718c18e0ae9f"
+      ]
+    },
+    {
+      "boundary_id": "trust-boundary-94ea53079ea9faed",
+      "snapshot_id": "snapshot-0003",
+      "version": "v0.2.0",
+      "variant": "mechanically-composed",
+      "boundary": "THIRD_PARTY_LIBRARIES",
+      "source": "external library",
+      "sink": "engine",
+      "data": "code/data",
+      "validation": "UNKNOWN",
+      "authority": "NOT_EVIDENCED",
+      "sanitization": "UNKNOWN",
+      "isolation": "UNKNOWN",
+      "boundary_status": "NOT_PRESENT_OR_NOT_EVIDENCED",
+      "security_guarantee": "NOT_ESTABLISHED",
+      "evidence": [
+        "security-absence-047416a3e62bb046"
+      ]
+    },
+    {
+      "boundary_id": "trust-boundary-979e5461d0becd44",
+      "snapshot_id": "snapshot-0005",
+      "version": "v0.3.0",
+      "variant": "only-evidenced-complete-occurrence",
+      "boundary": "USER_INPUT",
+      "source": "user/UI event",
+      "sink": "validation/engine",
+      "data": "seed or control value",
+      "validation": "UNKNOWN",
+      "authority": "NOT_EVIDENCED",
+      "sanitization": "UNKNOWN",
+      "isolation": "UNKNOWN",
+      "boundary_status": "NOT_PRESENT_OR_NOT_EVIDENCED",
+      "security_guarantee": "NOT_ESTABLISHED",
+      "evidence": [
+        "security-absence-882bc8043e47266b"
+      ]
+    },
+    {
+      "boundary_id": "trust-boundary-c7b335e3ff606f94",
+      "snapshot_id": "snapshot-0005",
+      "version": "v0.3.0",
+      "variant": "only-evidenced-complete-occurrence",
+      "boundary": "PAGE_DOM",
+      "source": "page DOM",
+      "sink": "candidate extraction",
+      "data": "links/forms/resources/metadata",
+      "validation": "URL_CANONICALIZATION_OR_ALLOW_CHECK",
+      "authority": "browser DOM read",
+      "sanitization": "EXTRACTION_OR_NORMALIZATION_ONLY",
+      "isolation": "UNKNOWN",
+      "boundary_status": "HISTORICAL_TRUST_OR_AUTHORITY_BOUNDARY",
+      "security_guarantee": "NOT_ESTABLISHED",
+      "evidence": [
+        "security-ev-3b19b28b49573752"
+      ]
+    },
+    {
+      "boundary_id": "trust-boundary-c5fde4502be798e7",
+      "snapshot_id": "snapshot-0005",
+      "version": "v0.3.0",
+      "variant": "only-evidenced-complete-occurrence",
+      "boundary": "NETWORK",
+      "source": "remote server",
+      "sink": "acquisition",
+      "data": "request/response",
+      "validation": "URL_CANONICALIZATION_OR_ALLOW_CHECK",
+      "authority": "GM/fetch network authority",
+      "sanitization": "UNKNOWN",
+      "isolation": "UNKNOWN",
+      "boundary_status": "HISTORICAL_TRUST_OR_AUTHORITY_BOUNDARY",
+      "security_guarantee": "NOT_ESTABLISHED",
+      "evidence": [
+        "security-ev-2a7eae36715d380e"
+      ]
+    },
+    {
+      "boundary_id": "trust-boundary-49317de54311b69f",
+      "snapshot_id": "snapshot-0005",
+      "version": "v0.3.0",
+      "variant": "only-evidenced-complete-occurrence",
+      "boundary": "REMOTE_CONTENT",
+      "source": "acquisition response",
+      "sink": "provider/parser",
+      "data": "HTML/JSON/text/headers",
+      "validation": "PARSER_OR_PROVIDER_HEURISTIC",
+      "authority": "parse and extraction authority",
+      "sanitization": "EXTRACTION_OR_NORMALIZATION_ONLY",
+      "isolation": "UNKNOWN",
+      "boundary_status": "HISTORICAL_TRUST_OR_AUTHORITY_BOUNDARY",
+      "security_guarantee": "NOT_ESTABLISHED",
+      "evidence": [
+        "security-ev-ab336ba7e2d09d0d"
+      ]
+    },
+    {
+      "boundary_id": "trust-boundary-3b65f1822f2d0a91",
+      "snapshot_id": "snapshot-0005",
+      "version": "v0.3.0",
+      "variant": "only-evidenced-complete-occurrence",
+      "boundary": "PROVIDER_CODE",
+      "source": "provider implementation",
+      "sink": "registry/engine",
+      "data": "recognition and discovery results",
+      "validation": "UNKNOWN",
+      "authority": "provider method execution",
+      "sanitization": "UNKNOWN",
+      "isolation": "UNKNOWN",
+      "boundary_status": "DATA_OR_AUTHORITY_BOUNDARY",
+      "security_guarantee": "NOT_ESTABLISHED",
+      "evidence": [
+        "security-ev-a22ce4186d614f83"
+      ]
+    },
+    {
+      "boundary_id": "trust-boundary-ecdbd8a02da5863c",
+      "snapshot_id": "snapshot-0005",
+      "version": "v0.3.0",
+      "variant": "only-evidenced-complete-occurrence",
+      "boundary": "SCHEDULER",
+      "source": "candidate frontier",
+      "sink": "worker",
+      "data": "claim/work state",
+      "validation": "UNKNOWN",
+      "authority": "work admission authority",
+      "sanitization": "UNKNOWN",
+      "isolation": "UNKNOWN",
+      "boundary_status": "INTERNAL_AUTHORITY_BOUNDARY_NOT_PROVED_TRUST",
+      "security_guarantee": "NOT_ESTABLISHED",
+      "evidence": [
+        "security-ev-e74615ba07abd20e"
+      ]
+    },
+    {
+      "boundary_id": "trust-boundary-33561d9a9d5e377a",
+      "snapshot_id": "snapshot-0005",
+      "version": "v0.3.0",
+      "variant": "only-evidenced-complete-occurrence",
+      "boundary": "STORAGE",
+      "source": "in-memory state",
+      "sink": "GM/local storage",
+      "data": "serialized state",
+      "validation": "UNKNOWN",
+      "authority": "storage read/write authority",
+      "sanitization": "UNKNOWN",
+      "isolation": "UNKNOWN",
+      "boundary_status": "HISTORICAL_TRUST_OR_AUTHORITY_BOUNDARY",
+      "security_guarantee": "NOT_ESTABLISHED",
+      "evidence": [
+        "security-ev-10fb7cb2dc90eaa3"
+      ]
+    },
+    {
+      "boundary_id": "trust-boundary-96d09636db06e287",
+      "snapshot_id": "snapshot-0005",
+      "version": "v0.3.0",
+      "variant": "only-evidenced-complete-occurrence",
+      "boundary": "EXPORT",
+      "source": "engine state",
+      "sink": "download/consumer",
+      "data": "JSON/blob",
+      "validation": "UNKNOWN",
+      "authority": "state disclosure authority",
+      "sanitization": "UNKNOWN",
+      "isolation": "UNKNOWN",
+      "boundary_status": "DATA_OR_AUTHORITY_BOUNDARY",
+      "security_guarantee": "NOT_ESTABLISHED",
+      "evidence": [
+        "security-ev-de7b87cbfa42612d"
+      ]
+    },
+    {
+      "boundary_id": "trust-boundary-e1d0dd64a9bf7c87",
+      "snapshot_id": "snapshot-0005",
+      "version": "v0.3.0",
+      "variant": "only-evidenced-complete-occurrence",
+      "boundary": "UI",
+      "source": "engine state",
+      "sink": "page DOM/user",
+      "data": "status/results/controls",
+      "validation": "UNKNOWN",
+      "authority": "DOM mutation authority",
+      "sanitization": "UNKNOWN",
+      "isolation": "UNKNOWN",
+      "boundary_status": "DATA_OR_AUTHORITY_BOUNDARY",
+      "security_guarantee": "NOT_ESTABLISHED",
+      "evidence": [
+        "security-ev-6a04419ed0d6daa0"
+      ]
+    },
+    {
+      "boundary_id": "trust-boundary-9ebb414123f689ff",
+      "snapshot_id": "snapshot-0005",
+      "version": "v0.3.0",
+      "variant": "only-evidenced-complete-occurrence",
+      "boundary": "BROWSER_APIS",
+      "source": "engine",
+      "sink": "browser API",
+      "data": "DOM/network/timers",
+      "validation": "UNKNOWN",
+      "authority": "ambient browser authority",
+      "sanitization": "UNKNOWN",
+      "isolation": "UNKNOWN",
+      "boundary_status": "DATA_OR_AUTHORITY_BOUNDARY",
+      "security_guarantee": "NOT_ESTABLISHED",
+      "evidence": [
+        "security-ev-ff182bee93db77c8"
+      ]
+    },
+    {
+      "boundary_id": "trust-boundary-8e784a8fbd276915",
+      "snapshot_id": "snapshot-0005",
+      "version": "v0.3.0",
+      "variant": "only-evidenced-complete-occurrence",
+      "boundary": "USERSCRIPT_APIS",
+      "source": "engine",
+      "sink": "userscript manager",
+      "data": "privileged network/storage",
+      "validation": "UNKNOWN",
+      "authority": "metadata-granted authority",
+      "sanitization": "UNKNOWN",
+      "isolation": "UNKNOWN",
+      "boundary_status": "HISTORICAL_TRUST_OR_AUTHORITY_BOUNDARY",
+      "security_guarantee": "NOT_ESTABLISHED",
+      "evidence": [
+        "security-ev-4bf1ea886eac174b"
+      ]
+    },
+    {
+      "boundary_id": "trust-boundary-2c95f4d5939c98ed",
+      "snapshot_id": "snapshot-0005",
+      "version": "v0.3.0",
+      "variant": "only-evidenced-complete-occurrence",
+      "boundary": "THIRD_PARTY_LIBRARIES",
+      "source": "external library",
+      "sink": "engine",
+      "data": "code/data",
+      "validation": "UNKNOWN",
+      "authority": "NOT_EVIDENCED",
+      "sanitization": "UNKNOWN",
+      "isolation": "UNKNOWN",
+      "boundary_status": "NOT_PRESENT_OR_NOT_EVIDENCED",
+      "security_guarantee": "NOT_ESTABLISHED",
+      "evidence": [
+        "security-absence-ec0345e9b6789f8e"
+      ]
+    },
+    {
+      "boundary_id": "trust-boundary-5cb59952ec516fb0",
+      "snapshot_id": "snapshot-0006",
+      "version": "v0.4.0",
+      "variant": "variant-a",
+      "boundary": "USER_INPUT",
+      "source": "user/UI event",
+      "sink": "validation/engine",
+      "data": "seed or control value",
+      "validation": "UNKNOWN",
+      "authority": "NOT_EVIDENCED",
+      "sanitization": "UNKNOWN",
+      "isolation": "UNKNOWN",
+      "boundary_status": "NOT_PRESENT_OR_NOT_EVIDENCED",
+      "security_guarantee": "NOT_ESTABLISHED",
+      "evidence": [
+        "security-absence-eeb85b9a51333da9"
+      ]
+    },
+    {
+      "boundary_id": "trust-boundary-b6f8c799139905e5",
+      "snapshot_id": "snapshot-0006",
+      "version": "v0.4.0",
+      "variant": "variant-a",
+      "boundary": "PAGE_DOM",
+      "source": "page DOM",
+      "sink": "candidate extraction",
+      "data": "links/forms/resources/metadata",
+      "validation": "URL_CANONICALIZATION_OR_ALLOW_CHECK",
+      "authority": "browser DOM read",
+      "sanitization": "EXTRACTION_OR_NORMALIZATION_ONLY",
+      "isolation": "UNKNOWN",
+      "boundary_status": "HISTORICAL_TRUST_OR_AUTHORITY_BOUNDARY",
+      "security_guarantee": "NOT_ESTABLISHED",
+      "evidence": [
+        "security-ev-9fc68a2e0719870d"
+      ]
+    },
+    {
+      "boundary_id": "trust-boundary-925778284acf89c1",
+      "snapshot_id": "snapshot-0006",
+      "version": "v0.4.0",
+      "variant": "variant-a",
+      "boundary": "NETWORK",
+      "source": "remote server",
+      "sink": "acquisition",
+      "data": "request/response",
+      "validation": "URL_CANONICALIZATION_OR_ALLOW_CHECK",
+      "authority": "GM/fetch network authority",
+      "sanitization": "UNKNOWN",
+      "isolation": "UNKNOWN",
+      "boundary_status": "HISTORICAL_TRUST_OR_AUTHORITY_BOUNDARY",
+      "security_guarantee": "NOT_ESTABLISHED",
+      "evidence": [
+        "security-ev-49a2388aa7e29d47"
+      ]
+    },
+    {
+      "boundary_id": "trust-boundary-7f9bdaeaa1423867",
+      "snapshot_id": "snapshot-0006",
+      "version": "v0.4.0",
+      "variant": "variant-a",
+      "boundary": "REMOTE_CONTENT",
+      "source": "acquisition response",
+      "sink": "provider/parser",
+      "data": "HTML/JSON/text/headers",
+      "validation": "PARSER_OR_PROVIDER_HEURISTIC",
+      "authority": "parse and extraction authority",
+      "sanitization": "EXTRACTION_OR_NORMALIZATION_ONLY",
+      "isolation": "UNKNOWN",
+      "boundary_status": "HISTORICAL_TRUST_OR_AUTHORITY_BOUNDARY",
+      "security_guarantee": "NOT_ESTABLISHED",
+      "evidence": [
+        "security-ev-f7465781a2b632ce"
+      ]
+    },
+    {
+      "boundary_id": "trust-boundary-71ef4b0cf72acd5f",
+      "snapshot_id": "snapshot-0006",
+      "version": "v0.4.0",
+      "variant": "variant-a",
+      "boundary": "PROVIDER_CODE",
+      "source": "provider implementation",
+      "sink": "registry/engine",
+      "data": "recognition and discovery results",
+      "validation": "UNKNOWN",
+      "authority": "provider method execution",
+      "sanitization": "UNKNOWN",
+      "isolation": "CATCH_PATHS_PRESENT_NOT_GUARANTEE",
+      "boundary_status": "DATA_OR_AUTHORITY_BOUNDARY",
+      "security_guarantee": "NOT_ESTABLISHED",
+      "evidence": [
+        "security-ev-0b7e6ffda1147d8c"
+      ]
+    },
+    {
+      "boundary_id": "trust-boundary-adc624db969601f2",
+      "snapshot_id": "snapshot-0006",
+      "version": "v0.4.0",
+      "variant": "variant-a",
+      "boundary": "SCHEDULER",
+      "source": "candidate frontier",
+      "sink": "worker",
+      "data": "claim/work state",
+      "validation": "UNKNOWN",
+      "authority": "work admission authority",
+      "sanitization": "UNKNOWN",
+      "isolation": "UNKNOWN",
+      "boundary_status": "INTERNAL_AUTHORITY_BOUNDARY_NOT_PROVED_TRUST",
+      "security_guarantee": "NOT_ESTABLISHED",
+      "evidence": [
+        "security-ev-8525b855368cd490"
+      ]
+    },
+    {
+      "boundary_id": "trust-boundary-95dca49854efceae",
+      "snapshot_id": "snapshot-0006",
+      "version": "v0.4.0",
+      "variant": "variant-a",
+      "boundary": "STORAGE",
+      "source": "in-memory state",
+      "sink": "GM/local storage",
+      "data": "serialized state",
+      "validation": "UNKNOWN",
+      "authority": "storage read/write authority",
+      "sanitization": "UNKNOWN",
+      "isolation": "UNKNOWN",
+      "boundary_status": "HISTORICAL_TRUST_OR_AUTHORITY_BOUNDARY",
+      "security_guarantee": "NOT_ESTABLISHED",
+      "evidence": [
+        "security-ev-175a5ecfaf8c2306"
+      ]
+    },
+    {
+      "boundary_id": "trust-boundary-689196b5fcc1e79e",
+      "snapshot_id": "snapshot-0006",
+      "version": "v0.4.0",
+      "variant": "variant-a",
+      "boundary": "EXPORT",
+      "source": "engine state",
+      "sink": "download/consumer",
+      "data": "JSON/blob",
+      "validation": "UNKNOWN",
+      "authority": "state disclosure authority",
+      "sanitization": "UNKNOWN",
+      "isolation": "UNKNOWN",
+      "boundary_status": "DATA_OR_AUTHORITY_BOUNDARY",
+      "security_guarantee": "NOT_ESTABLISHED",
+      "evidence": [
+        "security-ev-35291b2c6231b264"
+      ]
+    },
+    {
+      "boundary_id": "trust-boundary-a28446f57deea919",
+      "snapshot_id": "snapshot-0006",
+      "version": "v0.4.0",
+      "variant": "variant-a",
+      "boundary": "UI",
+      "source": "engine state",
+      "sink": "page DOM/user",
+      "data": "status/results/controls",
+      "validation": "UNKNOWN",
+      "authority": "DOM mutation authority",
+      "sanitization": "UNKNOWN",
+      "isolation": "UNKNOWN",
+      "boundary_status": "DATA_OR_AUTHORITY_BOUNDARY",
+      "security_guarantee": "NOT_ESTABLISHED",
+      "evidence": [
+        "security-ev-f53be3c2f460d118"
+      ]
+    },
+    {
+      "boundary_id": "trust-boundary-4d483101c7085fd6",
+      "snapshot_id": "snapshot-0006",
+      "version": "v0.4.0",
+      "variant": "variant-a",
+      "boundary": "BROWSER_APIS",
+      "source": "engine",
+      "sink": "browser API",
+      "data": "DOM/network/timers",
+      "validation": "UNKNOWN",
+      "authority": "ambient browser authority",
+      "sanitization": "UNKNOWN",
+      "isolation": "UNKNOWN",
+      "boundary_status": "DATA_OR_AUTHORITY_BOUNDARY",
+      "security_guarantee": "NOT_ESTABLISHED",
+      "evidence": [
+        "security-ev-e691dec7687e8aa3"
+      ]
+    },
+    {
+      "boundary_id": "trust-boundary-b6ed14504591ad70",
+      "snapshot_id": "snapshot-0006",
+      "version": "v0.4.0",
+      "variant": "variant-a",
+      "boundary": "USERSCRIPT_APIS",
+      "source": "engine",
+      "sink": "userscript manager",
+      "data": "privileged network/storage",
+      "validation": "UNKNOWN",
+      "authority": "metadata-granted authority",
+      "sanitization": "UNKNOWN",
+      "isolation": "UNKNOWN",
+      "boundary_status": "HISTORICAL_TRUST_OR_AUTHORITY_BOUNDARY",
+      "security_guarantee": "NOT_ESTABLISHED",
+      "evidence": [
+        "security-ev-93529d9c7774b2c5"
+      ]
+    },
+    {
+      "boundary_id": "trust-boundary-a1d2f9b97b679b27",
+      "snapshot_id": "snapshot-0006",
+      "version": "v0.4.0",
+      "variant": "variant-a",
+      "boundary": "THIRD_PARTY_LIBRARIES",
+      "source": "external library",
+      "sink": "engine",
+      "data": "code/data",
+      "validation": "UNKNOWN",
+      "authority": "NOT_EVIDENCED",
+      "sanitization": "UNKNOWN",
+      "isolation": "UNKNOWN",
+      "boundary_status": "NOT_PRESENT_OR_NOT_EVIDENCED",
+      "security_guarantee": "NOT_ESTABLISHED",
+      "evidence": [
+        "security-ev-ecce83d7ab804f15"
+      ]
+    },
+    {
+      "boundary_id": "trust-boundary-da64bddd4926eace",
+      "snapshot_id": "snapshot-0008",
+      "version": "v0.4.0",
+      "variant": "variant-b",
+      "boundary": "USER_INPUT",
+      "source": "user/UI event",
+      "sink": "validation/engine",
+      "data": "seed or control value",
+      "validation": "UNKNOWN",
+      "authority": "NOT_EVIDENCED",
+      "sanitization": "UNKNOWN",
+      "isolation": "UNKNOWN",
+      "boundary_status": "NOT_PRESENT_OR_NOT_EVIDENCED",
+      "security_guarantee": "NOT_ESTABLISHED",
+      "evidence": [
+        "security-absence-6a2a976fce4c049b"
+      ]
+    },
+    {
+      "boundary_id": "trust-boundary-21b76576e9cdafcd",
+      "snapshot_id": "snapshot-0008",
+      "version": "v0.4.0",
+      "variant": "variant-b",
+      "boundary": "PAGE_DOM",
+      "source": "page DOM",
+      "sink": "candidate extraction",
+      "data": "links/forms/resources/metadata",
+      "validation": "URL_CANONICALIZATION_OR_ALLOW_CHECK",
+      "authority": "browser DOM read",
+      "sanitization": "EXTRACTION_OR_NORMALIZATION_ONLY",
+      "isolation": "UNKNOWN",
+      "boundary_status": "HISTORICAL_TRUST_OR_AUTHORITY_BOUNDARY",
+      "security_guarantee": "NOT_ESTABLISHED",
+      "evidence": [
+        "security-ev-b1826613e25c18cd"
+      ]
+    },
+    {
+      "boundary_id": "trust-boundary-86ccd6d539e3dfda",
+      "snapshot_id": "snapshot-0008",
+      "version": "v0.4.0",
+      "variant": "variant-b",
+      "boundary": "NETWORK",
+      "source": "remote server",
+      "sink": "acquisition",
+      "data": "request/response",
+      "validation": "URL_CANONICALIZATION_OR_ALLOW_CHECK",
+      "authority": "GM/fetch network authority",
+      "sanitization": "UNKNOWN",
+      "isolation": "UNKNOWN",
+      "boundary_status": "HISTORICAL_TRUST_OR_AUTHORITY_BOUNDARY",
+      "security_guarantee": "NOT_ESTABLISHED",
+      "evidence": [
+        "security-ev-01ed895be57742f8"
+      ]
+    },
+    {
+      "boundary_id": "trust-boundary-b7641377031e55b6",
+      "snapshot_id": "snapshot-0008",
+      "version": "v0.4.0",
+      "variant": "variant-b",
+      "boundary": "REMOTE_CONTENT",
+      "source": "acquisition response",
+      "sink": "provider/parser",
+      "data": "HTML/JSON/text/headers",
+      "validation": "PARSER_OR_PROVIDER_HEURISTIC",
+      "authority": "parse and extraction authority",
+      "sanitization": "EXTRACTION_OR_NORMALIZATION_ONLY",
+      "isolation": "UNKNOWN",
+      "boundary_status": "HISTORICAL_TRUST_OR_AUTHORITY_BOUNDARY",
+      "security_guarantee": "NOT_ESTABLISHED",
+      "evidence": [
+        "security-ev-769ea32cb6fdcb31"
+      ]
+    },
+    {
+      "boundary_id": "trust-boundary-273d2bca770db386",
+      "snapshot_id": "snapshot-0008",
+      "version": "v0.4.0",
+      "variant": "variant-b",
+      "boundary": "PROVIDER_CODE",
+      "source": "provider implementation",
+      "sink": "registry/engine",
+      "data": "recognition and discovery results",
+      "validation": "UNKNOWN",
+      "authority": "provider method execution",
+      "sanitization": "UNKNOWN",
+      "isolation": "CATCH_PATHS_PRESENT_NOT_GUARANTEE",
+      "boundary_status": "DATA_OR_AUTHORITY_BOUNDARY",
+      "security_guarantee": "NOT_ESTABLISHED",
+      "evidence": [
+        "security-ev-b19e2d6355923ddf"
+      ]
+    },
+    {
+      "boundary_id": "trust-boundary-4b7adb6920bb6a61",
+      "snapshot_id": "snapshot-0008",
+      "version": "v0.4.0",
+      "variant": "variant-b",
+      "boundary": "SCHEDULER",
+      "source": "candidate frontier",
+      "sink": "worker",
+      "data": "claim/work state",
+      "validation": "UNKNOWN",
+      "authority": "work admission authority",
+      "sanitization": "UNKNOWN",
+      "isolation": "UNKNOWN",
+      "boundary_status": "INTERNAL_AUTHORITY_BOUNDARY_NOT_PROVED_TRUST",
+      "security_guarantee": "NOT_ESTABLISHED",
+      "evidence": [
+        "security-ev-cd0b9238737da409"
+      ]
+    },
+    {
+      "boundary_id": "trust-boundary-38ee7eef2297bde9",
+      "snapshot_id": "snapshot-0008",
+      "version": "v0.4.0",
+      "variant": "variant-b",
+      "boundary": "STORAGE",
+      "source": "in-memory state",
+      "sink": "GM/local storage",
+      "data": "serialized state",
+      "validation": "UNKNOWN",
+      "authority": "storage read/write authority",
+      "sanitization": "UNKNOWN",
+      "isolation": "UNKNOWN",
+      "boundary_status": "HISTORICAL_TRUST_OR_AUTHORITY_BOUNDARY",
+      "security_guarantee": "NOT_ESTABLISHED",
+      "evidence": [
+        "security-ev-29937b34f4cf525e"
+      ]
+    },
+    {
+      "boundary_id": "trust-boundary-cee880930c8b4ae2",
+      "snapshot_id": "snapshot-0008",
+      "version": "v0.4.0",
+      "variant": "variant-b",
+      "boundary": "EXPORT",
+      "source": "engine state",
+      "sink": "download/consumer",
+      "data": "JSON/blob",
+      "validation": "UNKNOWN",
+      "authority": "state disclosure authority",
+      "sanitization": "UNKNOWN",
+      "isolation": "UNKNOWN",
+      "boundary_status": "DATA_OR_AUTHORITY_BOUNDARY",
+      "security_guarantee": "NOT_ESTABLISHED",
+      "evidence": [
+        "security-ev-c1302d2a9b79abb7"
+      ]
+    },
+    {
+      "boundary_id": "trust-boundary-0b7a7f909d7fe179",
+      "snapshot_id": "snapshot-0008",
+      "version": "v0.4.0",
+      "variant": "variant-b",
+      "boundary": "UI",
+      "source": "engine state",
+      "sink": "page DOM/user",
+      "data": "status/results/controls",
+      "validation": "UNKNOWN",
+      "authority": "DOM mutation authority",
+      "sanitization": "UNKNOWN",
+      "isolation": "UNKNOWN",
+      "boundary_status": "DATA_OR_AUTHORITY_BOUNDARY",
+      "security_guarantee": "NOT_ESTABLISHED",
+      "evidence": [
+        "security-ev-0ad23f477ac9846c"
+      ]
+    },
+    {
+      "boundary_id": "trust-boundary-35d3da7ffb2eaeab",
+      "snapshot_id": "snapshot-0008",
+      "version": "v0.4.0",
+      "variant": "variant-b",
+      "boundary": "BROWSER_APIS",
+      "source": "engine",
+      "sink": "browser API",
+      "data": "DOM/network/timers",
+      "validation": "UNKNOWN",
+      "authority": "ambient browser authority",
+      "sanitization": "UNKNOWN",
+      "isolation": "UNKNOWN",
+      "boundary_status": "DATA_OR_AUTHORITY_BOUNDARY",
+      "security_guarantee": "NOT_ESTABLISHED",
+      "evidence": [
+        "security-ev-47e99725a5303a19"
+      ]
+    },
+    {
+      "boundary_id": "trust-boundary-bbc7805b73c08f05",
+      "snapshot_id": "snapshot-0008",
+      "version": "v0.4.0",
+      "variant": "variant-b",
+      "boundary": "USERSCRIPT_APIS",
+      "source": "engine",
+      "sink": "userscript manager",
+      "data": "privileged network/storage",
+      "validation": "UNKNOWN",
+      "authority": "metadata-granted authority",
+      "sanitization": "UNKNOWN",
+      "isolation": "UNKNOWN",
+      "boundary_status": "HISTORICAL_TRUST_OR_AUTHORITY_BOUNDARY",
+      "security_guarantee": "NOT_ESTABLISHED",
+      "evidence": [
+        "security-ev-a52a2df863f2fc60"
+      ]
+    },
+    {
+      "boundary_id": "trust-boundary-61b3da1278f2b2ad",
+      "snapshot_id": "snapshot-0008",
+      "version": "v0.4.0",
+      "variant": "variant-b",
+      "boundary": "THIRD_PARTY_LIBRARIES",
+      "source": "external library",
+      "sink": "engine",
+      "data": "code/data",
+      "validation": "UNKNOWN",
+      "authority": "NOT_EVIDENCED",
+      "sanitization": "UNKNOWN",
+      "isolation": "UNKNOWN",
+      "boundary_status": "NOT_PRESENT_OR_NOT_EVIDENCED",
+      "security_guarantee": "NOT_ESTABLISHED",
+      "evidence": [
+        "security-ev-d1316fbb847ebca3"
+      ]
+    },
+    {
+      "boundary_id": "trust-boundary-67603d903270cb56",
+      "snapshot_id": "snapshot-0007",
+      "version": "v0.5.0",
+      "variant": "variant-a",
+      "boundary": "USER_INPUT",
+      "source": "user/UI event",
+      "sink": "validation/engine",
+      "data": "seed or control value",
+      "validation": "UNKNOWN",
+      "authority": "NOT_EVIDENCED",
+      "sanitization": "UNKNOWN",
+      "isolation": "UNKNOWN",
+      "boundary_status": "NOT_PRESENT_OR_NOT_EVIDENCED",
+      "security_guarantee": "NOT_ESTABLISHED",
+      "evidence": [
+        "security-absence-b43fb3aadb21fcdd"
+      ]
+    },
+    {
+      "boundary_id": "trust-boundary-45fe0f7710e3a93e",
+      "snapshot_id": "snapshot-0007",
+      "version": "v0.5.0",
+      "variant": "variant-a",
+      "boundary": "PAGE_DOM",
+      "source": "page DOM",
+      "sink": "candidate extraction",
+      "data": "links/forms/resources/metadata",
+      "validation": "URL_CANONICALIZATION_OR_ALLOW_CHECK",
+      "authority": "browser DOM read",
+      "sanitization": "EXTRACTION_OR_NORMALIZATION_ONLY",
+      "isolation": "UNKNOWN",
+      "boundary_status": "HISTORICAL_TRUST_OR_AUTHORITY_BOUNDARY",
+      "security_guarantee": "NOT_ESTABLISHED",
+      "evidence": [
+        "security-ev-57bdc981fbe4e9c7"
+      ]
+    },
+    {
+      "boundary_id": "trust-boundary-29d1f8cd6b9cf7d9",
+      "snapshot_id": "snapshot-0007",
+      "version": "v0.5.0",
+      "variant": "variant-a",
+      "boundary": "NETWORK",
+      "source": "remote server",
+      "sink": "acquisition",
+      "data": "request/response",
+      "validation": "URL_CANONICALIZATION_OR_ALLOW_CHECK",
+      "authority": "GM/fetch network authority",
+      "sanitization": "UNKNOWN",
+      "isolation": "UNKNOWN",
+      "boundary_status": "HISTORICAL_TRUST_OR_AUTHORITY_BOUNDARY",
+      "security_guarantee": "NOT_ESTABLISHED",
+      "evidence": [
+        "security-ev-151856594d08c39b"
+      ]
+    },
+    {
+      "boundary_id": "trust-boundary-240c708564dda7b2",
+      "snapshot_id": "snapshot-0007",
+      "version": "v0.5.0",
+      "variant": "variant-a",
+      "boundary": "REMOTE_CONTENT",
+      "source": "acquisition response",
+      "sink": "provider/parser",
+      "data": "HTML/JSON/text/headers",
+      "validation": "PARSER_OR_PROVIDER_HEURISTIC",
+      "authority": "parse and extraction authority",
+      "sanitization": "EXTRACTION_OR_NORMALIZATION_ONLY",
+      "isolation": "UNKNOWN",
+      "boundary_status": "HISTORICAL_TRUST_OR_AUTHORITY_BOUNDARY",
+      "security_guarantee": "NOT_ESTABLISHED",
+      "evidence": [
+        "security-ev-aa116b3bec79670a"
+      ]
+    },
+    {
+      "boundary_id": "trust-boundary-2894c0440f92ff6b",
+      "snapshot_id": "snapshot-0007",
+      "version": "v0.5.0",
+      "variant": "variant-a",
+      "boundary": "PROVIDER_CODE",
+      "source": "provider implementation",
+      "sink": "registry/engine",
+      "data": "recognition and discovery results",
+      "validation": "UNKNOWN",
+      "authority": "provider method execution",
+      "sanitization": "UNKNOWN",
+      "isolation": "CATCH_PATHS_PRESENT_NOT_GUARANTEE",
+      "boundary_status": "DATA_OR_AUTHORITY_BOUNDARY",
+      "security_guarantee": "NOT_ESTABLISHED",
+      "evidence": [
+        "security-ev-abe298f993f6c4b2"
+      ]
+    },
+    {
+      "boundary_id": "trust-boundary-0b34c4db65c39400",
+      "snapshot_id": "snapshot-0007",
+      "version": "v0.5.0",
+      "variant": "variant-a",
+      "boundary": "SCHEDULER",
+      "source": "candidate frontier",
+      "sink": "worker",
+      "data": "claim/work state",
+      "validation": "UNKNOWN",
+      "authority": "work admission authority",
+      "sanitization": "UNKNOWN",
+      "isolation": "UNKNOWN",
+      "boundary_status": "INTERNAL_AUTHORITY_BOUNDARY_NOT_PROVED_TRUST",
+      "security_guarantee": "NOT_ESTABLISHED",
+      "evidence": [
+        "security-ev-ead91c04cc1ba257"
+      ]
+    },
+    {
+      "boundary_id": "trust-boundary-a17012b6f645b66a",
+      "snapshot_id": "snapshot-0007",
+      "version": "v0.5.0",
+      "variant": "variant-a",
+      "boundary": "STORAGE",
+      "source": "in-memory state",
+      "sink": "GM/local storage",
+      "data": "serialized state",
+      "validation": "UNKNOWN",
+      "authority": "storage read/write authority",
+      "sanitization": "UNKNOWN",
+      "isolation": "UNKNOWN",
+      "boundary_status": "HISTORICAL_TRUST_OR_AUTHORITY_BOUNDARY",
+      "security_guarantee": "NOT_ESTABLISHED",
+      "evidence": [
+        "security-ev-a018ea32406b461f"
+      ]
+    },
+    {
+      "boundary_id": "trust-boundary-7c95b2e969b37bfa",
+      "snapshot_id": "snapshot-0007",
+      "version": "v0.5.0",
+      "variant": "variant-a",
+      "boundary": "EXPORT",
+      "source": "engine state",
+      "sink": "download/consumer",
+      "data": "JSON/blob",
+      "validation": "UNKNOWN",
+      "authority": "state disclosure authority",
+      "sanitization": "UNKNOWN",
+      "isolation": "UNKNOWN",
+      "boundary_status": "DATA_OR_AUTHORITY_BOUNDARY",
+      "security_guarantee": "NOT_ESTABLISHED",
+      "evidence": [
+        "security-ev-ba2837063a670d99"
+      ]
+    },
+    {
+      "boundary_id": "trust-boundary-75bfaa37b48cca51",
+      "snapshot_id": "snapshot-0007",
+      "version": "v0.5.0",
+      "variant": "variant-a",
+      "boundary": "UI",
+      "source": "engine state",
+      "sink": "page DOM/user",
+      "data": "status/results/controls",
+      "validation": "UNKNOWN",
+      "authority": "DOM mutation authority",
+      "sanitization": "UNKNOWN",
+      "isolation": "UNKNOWN",
+      "boundary_status": "DATA_OR_AUTHORITY_BOUNDARY",
+      "security_guarantee": "NOT_ESTABLISHED",
+      "evidence": [
+        "security-ev-00682ee504d500a0"
+      ]
+    },
+    {
+      "boundary_id": "trust-boundary-094e22779e0c4640",
+      "snapshot_id": "snapshot-0007",
+      "version": "v0.5.0",
+      "variant": "variant-a",
+      "boundary": "BROWSER_APIS",
+      "source": "engine",
+      "sink": "browser API",
+      "data": "DOM/network/timers",
+      "validation": "UNKNOWN",
+      "authority": "ambient browser authority",
+      "sanitization": "UNKNOWN",
+      "isolation": "UNKNOWN",
+      "boundary_status": "DATA_OR_AUTHORITY_BOUNDARY",
+      "security_guarantee": "NOT_ESTABLISHED",
+      "evidence": [
+        "security-ev-af63e765895b98a5"
+      ]
+    },
+    {
+      "boundary_id": "trust-boundary-2751ed96b862e27a",
+      "snapshot_id": "snapshot-0007",
+      "version": "v0.5.0",
+      "variant": "variant-a",
+      "boundary": "USERSCRIPT_APIS",
+      "source": "engine",
+      "sink": "userscript manager",
+      "data": "privileged network/storage",
+      "validation": "UNKNOWN",
+      "authority": "metadata-granted authority",
+      "sanitization": "UNKNOWN",
+      "isolation": "UNKNOWN",
+      "boundary_status": "HISTORICAL_TRUST_OR_AUTHORITY_BOUNDARY",
+      "security_guarantee": "NOT_ESTABLISHED",
+      "evidence": [
+        "security-ev-b80aa73155f4b1f8"
+      ]
+    },
+    {
+      "boundary_id": "trust-boundary-06a1c7dcf0332b3b",
+      "snapshot_id": "snapshot-0007",
+      "version": "v0.5.0",
+      "variant": "variant-a",
+      "boundary": "THIRD_PARTY_LIBRARIES",
+      "source": "external library",
+      "sink": "engine",
+      "data": "code/data",
+      "validation": "UNKNOWN",
+      "authority": "NOT_EVIDENCED",
+      "sanitization": "UNKNOWN",
+      "isolation": "UNKNOWN",
+      "boundary_status": "NOT_PRESENT_OR_NOT_EVIDENCED",
+      "security_guarantee": "NOT_ESTABLISHED",
+      "evidence": [
+        "security-ev-b4e276a736e1854c"
+      ]
+    },
+    {
+      "boundary_id": "trust-boundary-7e1a627a870ab9f2",
+      "snapshot_id": "snapshot-0009",
+      "version": "v0.5.0",
+      "variant": "variant-b",
+      "boundary": "USER_INPUT",
+      "source": "user/UI event",
+      "sink": "validation/engine",
+      "data": "seed or control value",
+      "validation": "UNKNOWN",
+      "authority": "UI event authority",
+      "sanitization": "UNKNOWN",
+      "isolation": "UNKNOWN",
+      "boundary_status": "DATA_OR_AUTHORITY_BOUNDARY",
+      "security_guarantee": "NOT_ESTABLISHED",
+      "evidence": [
+        "security-ev-4bab6af63268d484"
+      ]
+    },
+    {
+      "boundary_id": "trust-boundary-b8732878608a3df5",
+      "snapshot_id": "snapshot-0009",
+      "version": "v0.5.0",
+      "variant": "variant-b",
+      "boundary": "PAGE_DOM",
+      "source": "page DOM",
+      "sink": "candidate extraction",
+      "data": "links/forms/resources/metadata",
+      "validation": "URL_CANONICALIZATION_OR_ALLOW_CHECK",
+      "authority": "browser DOM read",
+      "sanitization": "EXTRACTION_OR_NORMALIZATION_ONLY",
+      "isolation": "UNKNOWN",
+      "boundary_status": "HISTORICAL_TRUST_OR_AUTHORITY_BOUNDARY",
+      "security_guarantee": "NOT_ESTABLISHED",
+      "evidence": [
+        "security-ev-c88490bb8788c2c0"
+      ]
+    },
+    {
+      "boundary_id": "trust-boundary-2e3b0699a32738c0",
+      "snapshot_id": "snapshot-0009",
+      "version": "v0.5.0",
+      "variant": "variant-b",
+      "boundary": "NETWORK",
+      "source": "remote server",
+      "sink": "acquisition",
+      "data": "request/response",
+      "validation": "URL_CANONICALIZATION_OR_ALLOW_CHECK",
+      "authority": "GM/fetch network authority",
+      "sanitization": "UNKNOWN",
+      "isolation": "UNKNOWN",
+      "boundary_status": "HISTORICAL_TRUST_OR_AUTHORITY_BOUNDARY",
+      "security_guarantee": "NOT_ESTABLISHED",
+      "evidence": [
+        "security-ev-2a057edbc6b6ff78"
+      ]
+    },
+    {
+      "boundary_id": "trust-boundary-cff220745e77e602",
+      "snapshot_id": "snapshot-0009",
+      "version": "v0.5.0",
+      "variant": "variant-b",
+      "boundary": "REMOTE_CONTENT",
+      "source": "acquisition response",
+      "sink": "provider/parser",
+      "data": "HTML/JSON/text/headers",
+      "validation": "PARSER_OR_PROVIDER_HEURISTIC",
+      "authority": "parse and extraction authority",
+      "sanitization": "EXTRACTION_OR_NORMALIZATION_ONLY",
+      "isolation": "UNKNOWN",
+      "boundary_status": "HISTORICAL_TRUST_OR_AUTHORITY_BOUNDARY",
+      "security_guarantee": "NOT_ESTABLISHED",
+      "evidence": [
+        "security-ev-5015364acbe30e65"
+      ]
+    },
+    {
+      "boundary_id": "trust-boundary-f1b7af2a3623ec03",
+      "snapshot_id": "snapshot-0009",
+      "version": "v0.5.0",
+      "variant": "variant-b",
+      "boundary": "PROVIDER_CODE",
+      "source": "provider implementation",
+      "sink": "registry/engine",
+      "data": "recognition and discovery results",
+      "validation": "UNKNOWN",
+      "authority": "provider method execution",
+      "sanitization": "UNKNOWN",
+      "isolation": "CATCH_PATHS_PRESENT_NOT_GUARANTEE",
+      "boundary_status": "DATA_OR_AUTHORITY_BOUNDARY",
+      "security_guarantee": "NOT_ESTABLISHED",
+      "evidence": [
+        "security-ev-2262aeeb364c43e7"
+      ]
+    },
+    {
+      "boundary_id": "trust-boundary-81a886084f8f43d7",
+      "snapshot_id": "snapshot-0009",
+      "version": "v0.5.0",
+      "variant": "variant-b",
+      "boundary": "SCHEDULER",
+      "source": "candidate frontier",
+      "sink": "worker",
+      "data": "claim/work state",
+      "validation": "UNKNOWN",
+      "authority": "NOT_EVIDENCED",
+      "sanitization": "UNKNOWN",
+      "isolation": "UNKNOWN",
+      "boundary_status": "INTERNAL_AUTHORITY_BOUNDARY_NOT_PROVED_TRUST",
+      "security_guarantee": "NOT_ESTABLISHED",
+      "evidence": [
+        "security-absence-b72f770a26c5e23b"
+      ]
+    },
+    {
+      "boundary_id": "trust-boundary-27a6c9e02ace8a99",
+      "snapshot_id": "snapshot-0009",
+      "version": "v0.5.0",
+      "variant": "variant-b",
+      "boundary": "STORAGE",
+      "source": "in-memory state",
+      "sink": "GM/local storage",
+      "data": "serialized state",
+      "validation": "UNKNOWN",
+      "authority": "storage read/write authority",
+      "sanitization": "UNKNOWN",
+      "isolation": "UNKNOWN",
+      "boundary_status": "HISTORICAL_TRUST_OR_AUTHORITY_BOUNDARY",
+      "security_guarantee": "NOT_ESTABLISHED",
+      "evidence": [
+        "security-ev-132e709eafa111f7"
+      ]
+    },
+    {
+      "boundary_id": "trust-boundary-87d38d1e16968ecf",
+      "snapshot_id": "snapshot-0009",
+      "version": "v0.5.0",
+      "variant": "variant-b",
+      "boundary": "EXPORT",
+      "source": "engine state",
+      "sink": "download/consumer",
+      "data": "JSON/blob",
+      "validation": "UNKNOWN",
+      "authority": "state disclosure authority",
+      "sanitization": "UNKNOWN",
+      "isolation": "UNKNOWN",
+      "boundary_status": "DATA_OR_AUTHORITY_BOUNDARY",
+      "security_guarantee": "NOT_ESTABLISHED",
+      "evidence": [
+        "security-ev-b8558fff73d04134"
+      ]
+    },
+    {
+      "boundary_id": "trust-boundary-71ff92673e1f7364",
+      "snapshot_id": "snapshot-0009",
+      "version": "v0.5.0",
+      "variant": "variant-b",
+      "boundary": "UI",
+      "source": "engine state",
+      "sink": "page DOM/user",
+      "data": "status/results/controls",
+      "validation": "UNKNOWN",
+      "authority": "DOM mutation authority",
+      "sanitization": "UNKNOWN",
+      "isolation": "UNKNOWN",
+      "boundary_status": "DATA_OR_AUTHORITY_BOUNDARY",
+      "security_guarantee": "NOT_ESTABLISHED",
+      "evidence": [
+        "security-ev-67317eabf8a41fb4"
+      ]
+    },
+    {
+      "boundary_id": "trust-boundary-476c233a3109e828",
+      "snapshot_id": "snapshot-0009",
+      "version": "v0.5.0",
+      "variant": "variant-b",
+      "boundary": "BROWSER_APIS",
+      "source": "engine",
+      "sink": "browser API",
+      "data": "DOM/network/timers",
+      "validation": "UNKNOWN",
+      "authority": "ambient browser authority",
+      "sanitization": "UNKNOWN",
+      "isolation": "UNKNOWN",
+      "boundary_status": "DATA_OR_AUTHORITY_BOUNDARY",
+      "security_guarantee": "NOT_ESTABLISHED",
+      "evidence": [
+        "security-ev-bd71d7c79a760355"
+      ]
+    },
+    {
+      "boundary_id": "trust-boundary-adeab3fa8d4ade64",
+      "snapshot_id": "snapshot-0009",
+      "version": "v0.5.0",
+      "variant": "variant-b",
+      "boundary": "USERSCRIPT_APIS",
+      "source": "engine",
+      "sink": "userscript manager",
+      "data": "privileged network/storage",
+      "validation": "UNKNOWN",
+      "authority": "metadata-granted authority",
+      "sanitization": "UNKNOWN",
+      "isolation": "UNKNOWN",
+      "boundary_status": "HISTORICAL_TRUST_OR_AUTHORITY_BOUNDARY",
+      "security_guarantee": "NOT_ESTABLISHED",
+      "evidence": [
+        "security-ev-3b581d4a466adb8f"
+      ]
+    },
+    {
+      "boundary_id": "trust-boundary-99dfae1462f8ae9c",
+      "snapshot_id": "snapshot-0009",
+      "version": "v0.5.0",
+      "variant": "variant-b",
+      "boundary": "THIRD_PARTY_LIBRARIES",
+      "source": "external library",
+      "sink": "engine",
+      "data": "code/data",
+      "validation": "UNKNOWN",
+      "authority": "NOT_EVIDENCED",
+      "sanitization": "UNKNOWN",
+      "isolation": "UNKNOWN",
+      "boundary_status": "NOT_PRESENT_OR_NOT_EVIDENCED",
+      "security_guarantee": "NOT_ESTABLISHED",
+      "evidence": [
+        "security-ev-345a7f70cd6ced13"
+      ]
+    },
+    {
+      "boundary_id": "trust-boundary-904b52419bc7ab9c",
+      "snapshot_id": "snapshot-0011",
+      "version": "v0.5.0",
+      "variant": "variant-c",
+      "boundary": "USER_INPUT",
+      "source": "user/UI event",
+      "sink": "validation/engine",
+      "data": "seed or control value",
+      "validation": "UNKNOWN",
+      "authority": "UI event authority",
+      "sanitization": "UNKNOWN",
+      "isolation": "UNKNOWN",
+      "boundary_status": "DATA_OR_AUTHORITY_BOUNDARY",
+      "security_guarantee": "NOT_ESTABLISHED",
+      "evidence": [
+        "security-ev-5359b38618c169dd"
+      ]
+    },
+    {
+      "boundary_id": "trust-boundary-45a782b621ac5ee0",
+      "snapshot_id": "snapshot-0011",
+      "version": "v0.5.0",
+      "variant": "variant-c",
+      "boundary": "PAGE_DOM",
+      "source": "page DOM",
+      "sink": "candidate extraction",
+      "data": "links/forms/resources/metadata",
+      "validation": "URL_CANONICALIZATION_OR_ALLOW_CHECK",
+      "authority": "browser DOM read",
+      "sanitization": "EXTRACTION_OR_NORMALIZATION_ONLY",
+      "isolation": "UNKNOWN",
+      "boundary_status": "HISTORICAL_TRUST_OR_AUTHORITY_BOUNDARY",
+      "security_guarantee": "NOT_ESTABLISHED",
+      "evidence": [
+        "security-ev-b8dea5dbd2ff07e6"
+      ]
+    },
+    {
+      "boundary_id": "trust-boundary-68fa2cbec5e7723c",
+      "snapshot_id": "snapshot-0011",
+      "version": "v0.5.0",
+      "variant": "variant-c",
+      "boundary": "NETWORK",
+      "source": "remote server",
+      "sink": "acquisition",
+      "data": "request/response",
+      "validation": "URL_CANONICALIZATION_OR_ALLOW_CHECK",
+      "authority": "GM/fetch network authority",
+      "sanitization": "UNKNOWN",
+      "isolation": "UNKNOWN",
+      "boundary_status": "HISTORICAL_TRUST_OR_AUTHORITY_BOUNDARY",
+      "security_guarantee": "NOT_ESTABLISHED",
+      "evidence": [
+        "security-ev-0c34fccd2487ffab"
+      ]
+    },
+    {
+      "boundary_id": "trust-boundary-0e5d19d347525d06",
+      "snapshot_id": "snapshot-0011",
+      "version": "v0.5.0",
+      "variant": "variant-c",
+      "boundary": "REMOTE_CONTENT",
+      "source": "acquisition response",
+      "sink": "provider/parser",
+      "data": "HTML/JSON/text/headers",
+      "validation": "PARSER_OR_PROVIDER_HEURISTIC",
+      "authority": "parse and extraction authority",
+      "sanitization": "EXTRACTION_OR_NORMALIZATION_ONLY",
+      "isolation": "UNKNOWN",
+      "boundary_status": "HISTORICAL_TRUST_OR_AUTHORITY_BOUNDARY",
+      "security_guarantee": "NOT_ESTABLISHED",
+      "evidence": [
+        "security-ev-a6313de5c4ac3c78"
+      ]
+    },
+    {
+      "boundary_id": "trust-boundary-8c70cafad406f86f",
+      "snapshot_id": "snapshot-0011",
+      "version": "v0.5.0",
+      "variant": "variant-c",
+      "boundary": "PROVIDER_CODE",
+      "source": "provider implementation",
+      "sink": "registry/engine",
+      "data": "recognition and discovery results",
+      "validation": "UNKNOWN",
+      "authority": "provider method execution",
+      "sanitization": "UNKNOWN",
+      "isolation": "CATCH_PATHS_PRESENT_NOT_GUARANTEE",
+      "boundary_status": "DATA_OR_AUTHORITY_BOUNDARY",
+      "security_guarantee": "NOT_ESTABLISHED",
+      "evidence": [
+        "security-ev-86c474a6c57b0b82"
+      ]
+    },
+    {
+      "boundary_id": "trust-boundary-267ca83c0e8282a3",
+      "snapshot_id": "snapshot-0011",
+      "version": "v0.5.0",
+      "variant": "variant-c",
+      "boundary": "SCHEDULER",
+      "source": "candidate frontier",
+      "sink": "worker",
+      "data": "claim/work state",
+      "validation": "UNKNOWN",
+      "authority": "work admission authority",
+      "sanitization": "UNKNOWN",
+      "isolation": "UNKNOWN",
+      "boundary_status": "INTERNAL_AUTHORITY_BOUNDARY_NOT_PROVED_TRUST",
+      "security_guarantee": "NOT_ESTABLISHED",
+      "evidence": [
+        "security-ev-98ddd786085f0522"
+      ]
+    },
+    {
+      "boundary_id": "trust-boundary-865d1fdf99464032",
+      "snapshot_id": "snapshot-0011",
+      "version": "v0.5.0",
+      "variant": "variant-c",
+      "boundary": "STORAGE",
+      "source": "in-memory state",
+      "sink": "GM/local storage",
+      "data": "serialized state",
+      "validation": "UNKNOWN",
+      "authority": "storage read/write authority",
+      "sanitization": "UNKNOWN",
+      "isolation": "UNKNOWN",
+      "boundary_status": "HISTORICAL_TRUST_OR_AUTHORITY_BOUNDARY",
+      "security_guarantee": "NOT_ESTABLISHED",
+      "evidence": [
+        "security-ev-7ff7a2d68585dcfb"
+      ]
+    },
+    {
+      "boundary_id": "trust-boundary-bb494f92469c8c43",
+      "snapshot_id": "snapshot-0011",
+      "version": "v0.5.0",
+      "variant": "variant-c",
+      "boundary": "EXPORT",
+      "source": "engine state",
+      "sink": "download/consumer",
+      "data": "JSON/blob",
+      "validation": "UNKNOWN",
+      "authority": "state disclosure authority",
+      "sanitization": "UNKNOWN",
+      "isolation": "UNKNOWN",
+      "boundary_status": "DATA_OR_AUTHORITY_BOUNDARY",
+      "security_guarantee": "NOT_ESTABLISHED",
+      "evidence": [
+        "security-ev-cdf45b75de19f069"
+      ]
+    },
+    {
+      "boundary_id": "trust-boundary-a3a82dfb33ea2ca2",
+      "snapshot_id": "snapshot-0011",
+      "version": "v0.5.0",
+      "variant": "variant-c",
+      "boundary": "UI",
+      "source": "engine state",
+      "sink": "page DOM/user",
+      "data": "status/results/controls",
+      "validation": "UNKNOWN",
+      "authority": "DOM mutation authority",
+      "sanitization": "UNKNOWN",
+      "isolation": "UNKNOWN",
+      "boundary_status": "DATA_OR_AUTHORITY_BOUNDARY",
+      "security_guarantee": "NOT_ESTABLISHED",
+      "evidence": [
+        "security-ev-0ecb4fcf356e3933"
+      ]
+    },
+    {
+      "boundary_id": "trust-boundary-2331b1dc24c2bcd6",
+      "snapshot_id": "snapshot-0011",
+      "version": "v0.5.0",
+      "variant": "variant-c",
+      "boundary": "BROWSER_APIS",
+      "source": "engine",
+      "sink": "browser API",
+      "data": "DOM/network/timers",
+      "validation": "UNKNOWN",
+      "authority": "ambient browser authority",
+      "sanitization": "UNKNOWN",
+      "isolation": "UNKNOWN",
+      "boundary_status": "DATA_OR_AUTHORITY_BOUNDARY",
+      "security_guarantee": "NOT_ESTABLISHED",
+      "evidence": [
+        "security-ev-71a5199c791ebb0e"
+      ]
+    },
+    {
+      "boundary_id": "trust-boundary-12ded219149e916b",
+      "snapshot_id": "snapshot-0011",
+      "version": "v0.5.0",
+      "variant": "variant-c",
+      "boundary": "USERSCRIPT_APIS",
+      "source": "engine",
+      "sink": "userscript manager",
+      "data": "privileged network/storage",
+      "validation": "UNKNOWN",
+      "authority": "metadata-granted authority",
+      "sanitization": "UNKNOWN",
+      "isolation": "UNKNOWN",
+      "boundary_status": "HISTORICAL_TRUST_OR_AUTHORITY_BOUNDARY",
+      "security_guarantee": "NOT_ESTABLISHED",
+      "evidence": [
+        "security-ev-02081e470ad3fc24"
+      ]
+    },
+    {
+      "boundary_id": "trust-boundary-0630e4036fdfb73c",
+      "snapshot_id": "snapshot-0011",
+      "version": "v0.5.0",
+      "variant": "variant-c",
+      "boundary": "THIRD_PARTY_LIBRARIES",
+      "source": "external library",
+      "sink": "engine",
+      "data": "code/data",
+      "validation": "UNKNOWN",
+      "authority": "NOT_EVIDENCED",
+      "sanitization": "UNKNOWN",
+      "isolation": "UNKNOWN",
+      "boundary_status": "NOT_PRESENT_OR_NOT_EVIDENCED",
+      "security_guarantee": "NOT_ESTABLISHED",
+      "evidence": [
+        "security-ev-f4e29400183b62b4"
+      ]
+    },
+    {
+      "boundary_id": "trust-boundary-c47b926bb66436a6",
+      "snapshot_id": "snapshot-0010",
+      "version": "v0.6.0",
+      "variant": "variant-a",
+      "boundary": "USER_INPUT",
+      "source": "user/UI event",
+      "sink": "validation/engine",
+      "data": "seed or control value",
+      "validation": "UNKNOWN",
+      "authority": "UI event authority",
+      "sanitization": "UNKNOWN",
+      "isolation": "UNKNOWN",
+      "boundary_status": "DATA_OR_AUTHORITY_BOUNDARY",
+      "security_guarantee": "NOT_ESTABLISHED",
+      "evidence": [
+        "security-ev-477f72bba230752e"
+      ]
+    },
+    {
+      "boundary_id": "trust-boundary-f231adc858488aa9",
+      "snapshot_id": "snapshot-0010",
+      "version": "v0.6.0",
+      "variant": "variant-a",
+      "boundary": "PAGE_DOM",
+      "source": "page DOM",
+      "sink": "candidate extraction",
+      "data": "links/forms/resources/metadata",
+      "validation": "URL_CANONICALIZATION_OR_ALLOW_CHECK",
+      "authority": "browser DOM read",
+      "sanitization": "EXTRACTION_OR_NORMALIZATION_ONLY",
+      "isolation": "UNKNOWN",
+      "boundary_status": "HISTORICAL_TRUST_OR_AUTHORITY_BOUNDARY",
+      "security_guarantee": "NOT_ESTABLISHED",
+      "evidence": [
+        "security-ev-4cbdcd6a815756d3"
+      ]
+    },
+    {
+      "boundary_id": "trust-boundary-6e1c77031140797c",
+      "snapshot_id": "snapshot-0010",
+      "version": "v0.6.0",
+      "variant": "variant-a",
+      "boundary": "NETWORK",
+      "source": "remote server",
+      "sink": "acquisition",
+      "data": "request/response",
+      "validation": "URL_CANONICALIZATION_OR_ALLOW_CHECK",
+      "authority": "GM/fetch network authority",
+      "sanitization": "UNKNOWN",
+      "isolation": "UNKNOWN",
+      "boundary_status": "HISTORICAL_TRUST_OR_AUTHORITY_BOUNDARY",
+      "security_guarantee": "NOT_ESTABLISHED",
+      "evidence": [
+        "security-ev-1e1cce39b9958d72"
+      ]
+    },
+    {
+      "boundary_id": "trust-boundary-edf5dc4418ce04ee",
+      "snapshot_id": "snapshot-0010",
+      "version": "v0.6.0",
+      "variant": "variant-a",
+      "boundary": "REMOTE_CONTENT",
+      "source": "acquisition response",
+      "sink": "provider/parser",
+      "data": "HTML/JSON/text/headers",
+      "validation": "PARSER_OR_PROVIDER_HEURISTIC",
+      "authority": "parse and extraction authority",
+      "sanitization": "EXTRACTION_OR_NORMALIZATION_ONLY",
+      "isolation": "UNKNOWN",
+      "boundary_status": "HISTORICAL_TRUST_OR_AUTHORITY_BOUNDARY",
+      "security_guarantee": "NOT_ESTABLISHED",
+      "evidence": [
+        "security-ev-d827a7b4f963eaf6"
+      ]
+    },
+    {
+      "boundary_id": "trust-boundary-426a66a429babca3",
+      "snapshot_id": "snapshot-0010",
+      "version": "v0.6.0",
+      "variant": "variant-a",
+      "boundary": "PROVIDER_CODE",
+      "source": "provider implementation",
+      "sink": "registry/engine",
+      "data": "recognition and discovery results",
+      "validation": "UNKNOWN",
+      "authority": "provider method execution",
+      "sanitization": "UNKNOWN",
+      "isolation": "CATCH_PATHS_PRESENT_NOT_GUARANTEE",
+      "boundary_status": "DATA_OR_AUTHORITY_BOUNDARY",
+      "security_guarantee": "NOT_ESTABLISHED",
+      "evidence": [
+        "security-ev-ff49d7188f9644a0"
+      ]
+    },
+    {
+      "boundary_id": "trust-boundary-57deecc6ad669617",
+      "snapshot_id": "snapshot-0010",
+      "version": "v0.6.0",
+      "variant": "variant-a",
+      "boundary": "SCHEDULER",
+      "source": "candidate frontier",
+      "sink": "worker",
+      "data": "claim/work state",
+      "validation": "UNKNOWN",
+      "authority": "NOT_EVIDENCED",
+      "sanitization": "UNKNOWN",
+      "isolation": "UNKNOWN",
+      "boundary_status": "INTERNAL_AUTHORITY_BOUNDARY_NOT_PROVED_TRUST",
+      "security_guarantee": "NOT_ESTABLISHED",
+      "evidence": [
+        "security-ev-d9d65dfba37a8ae7"
+      ]
+    },
+    {
+      "boundary_id": "trust-boundary-6243654c682ba5f5",
+      "snapshot_id": "snapshot-0010",
+      "version": "v0.6.0",
+      "variant": "variant-a",
+      "boundary": "STORAGE",
+      "source": "in-memory state",
+      "sink": "GM/local storage",
+      "data": "serialized state",
+      "validation": "UNKNOWN",
+      "authority": "storage read/write authority",
+      "sanitization": "UNKNOWN",
+      "isolation": "UNKNOWN",
+      "boundary_status": "HISTORICAL_TRUST_OR_AUTHORITY_BOUNDARY",
+      "security_guarantee": "NOT_ESTABLISHED",
+      "evidence": [
+        "security-ev-b2246cfd68cdcb8f"
+      ]
+    },
+    {
+      "boundary_id": "trust-boundary-feb2419e4d33b617",
+      "snapshot_id": "snapshot-0010",
+      "version": "v0.6.0",
+      "variant": "variant-a",
+      "boundary": "EXPORT",
+      "source": "engine state",
+      "sink": "download/consumer",
+      "data": "JSON/blob",
+      "validation": "UNKNOWN",
+      "authority": "state disclosure authority",
+      "sanitization": "UNKNOWN",
+      "isolation": "UNKNOWN",
+      "boundary_status": "DATA_OR_AUTHORITY_BOUNDARY",
+      "security_guarantee": "NOT_ESTABLISHED",
+      "evidence": [
+        "security-ev-d6cd4cac2fef56cd"
+      ]
+    },
+    {
+      "boundary_id": "trust-boundary-a09c84e3ea5be26a",
+      "snapshot_id": "snapshot-0010",
+      "version": "v0.6.0",
+      "variant": "variant-a",
+      "boundary": "UI",
+      "source": "engine state",
+      "sink": "page DOM/user",
+      "data": "status/results/controls",
+      "validation": "UNKNOWN",
+      "authority": "DOM mutation authority",
+      "sanitization": "UNKNOWN",
+      "isolation": "UNKNOWN",
+      "boundary_status": "DATA_OR_AUTHORITY_BOUNDARY",
+      "security_guarantee": "NOT_ESTABLISHED",
+      "evidence": [
+        "security-ev-5bfe7157e4301b8b"
+      ]
+    },
+    {
+      "boundary_id": "trust-boundary-187c58ededd25417",
+      "snapshot_id": "snapshot-0010",
+      "version": "v0.6.0",
+      "variant": "variant-a",
+      "boundary": "BROWSER_APIS",
+      "source": "engine",
+      "sink": "browser API",
+      "data": "DOM/network/timers",
+      "validation": "UNKNOWN",
+      "authority": "ambient browser authority",
+      "sanitization": "UNKNOWN",
+      "isolation": "UNKNOWN",
+      "boundary_status": "DATA_OR_AUTHORITY_BOUNDARY",
+      "security_guarantee": "NOT_ESTABLISHED",
+      "evidence": [
+        "security-ev-5964be79f3d4994e"
+      ]
+    },
+    {
+      "boundary_id": "trust-boundary-90b33e64e6d3346b",
+      "snapshot_id": "snapshot-0010",
+      "version": "v0.6.0",
+      "variant": "variant-a",
+      "boundary": "USERSCRIPT_APIS",
+      "source": "engine",
+      "sink": "userscript manager",
+      "data": "privileged network/storage",
+      "validation": "UNKNOWN",
+      "authority": "metadata-granted authority",
+      "sanitization": "UNKNOWN",
+      "isolation": "UNKNOWN",
+      "boundary_status": "HISTORICAL_TRUST_OR_AUTHORITY_BOUNDARY",
+      "security_guarantee": "NOT_ESTABLISHED",
+      "evidence": [
+        "security-ev-a68624da5c7526c7"
+      ]
+    },
+    {
+      "boundary_id": "trust-boundary-f7d402bad6ff4dca",
+      "snapshot_id": "snapshot-0010",
+      "version": "v0.6.0",
+      "variant": "variant-a",
+      "boundary": "THIRD_PARTY_LIBRARIES",
+      "source": "external library",
+      "sink": "engine",
+      "data": "code/data",
+      "validation": "UNKNOWN",
+      "authority": "NOT_EVIDENCED",
+      "sanitization": "UNKNOWN",
+      "isolation": "UNKNOWN",
+      "boundary_status": "NOT_PRESENT_OR_NOT_EVIDENCED",
+      "security_guarantee": "NOT_ESTABLISHED",
+      "evidence": [
+        "security-absence-e982967cdeecfb58"
+      ]
+    },
+    {
+      "boundary_id": "trust-boundary-f093a585acfa1d20",
+      "snapshot_id": "snapshot-0012",
+      "version": "v0.6.0",
+      "variant": "variant-b",
+      "boundary": "USER_INPUT",
+      "source": "user/UI event",
+      "sink": "validation/engine",
+      "data": "seed or control value",
+      "validation": "UNKNOWN",
+      "authority": "UI event authority",
+      "sanitization": "UNKNOWN",
+      "isolation": "UNKNOWN",
+      "boundary_status": "DATA_OR_AUTHORITY_BOUNDARY",
+      "security_guarantee": "NOT_ESTABLISHED",
+      "evidence": [
+        "security-ev-7dc7468ec7d8c57c"
+      ]
+    },
+    {
+      "boundary_id": "trust-boundary-426a840864e5dfbd",
+      "snapshot_id": "snapshot-0012",
+      "version": "v0.6.0",
+      "variant": "variant-b",
+      "boundary": "PAGE_DOM",
+      "source": "page DOM",
+      "sink": "candidate extraction",
+      "data": "links/forms/resources/metadata",
+      "validation": "URL_CANONICALIZATION_OR_ALLOW_CHECK",
+      "authority": "browser DOM read",
+      "sanitization": "EXTRACTION_OR_NORMALIZATION_ONLY",
+      "isolation": "UNKNOWN",
+      "boundary_status": "HISTORICAL_TRUST_OR_AUTHORITY_BOUNDARY",
+      "security_guarantee": "NOT_ESTABLISHED",
+      "evidence": [
+        "security-ev-914375cd980ed949"
+      ]
+    },
+    {
+      "boundary_id": "trust-boundary-9cd16af1a4f6dd83",
+      "snapshot_id": "snapshot-0012",
+      "version": "v0.6.0",
+      "variant": "variant-b",
+      "boundary": "NETWORK",
+      "source": "remote server",
+      "sink": "acquisition",
+      "data": "request/response",
+      "validation": "URL_CANONICALIZATION_OR_ALLOW_CHECK",
+      "authority": "GM/fetch network authority",
+      "sanitization": "UNKNOWN",
+      "isolation": "UNKNOWN",
+      "boundary_status": "HISTORICAL_TRUST_OR_AUTHORITY_BOUNDARY",
+      "security_guarantee": "NOT_ESTABLISHED",
+      "evidence": [
+        "security-ev-79fc53d9b9451380"
+      ]
+    },
+    {
+      "boundary_id": "trust-boundary-cd86000b8913b3ba",
+      "snapshot_id": "snapshot-0012",
+      "version": "v0.6.0",
+      "variant": "variant-b",
+      "boundary": "REMOTE_CONTENT",
+      "source": "acquisition response",
+      "sink": "provider/parser",
+      "data": "HTML/JSON/text/headers",
+      "validation": "PARSER_OR_PROVIDER_HEURISTIC",
+      "authority": "parse and extraction authority",
+      "sanitization": "EXTRACTION_OR_NORMALIZATION_ONLY",
+      "isolation": "UNKNOWN",
+      "boundary_status": "HISTORICAL_TRUST_OR_AUTHORITY_BOUNDARY",
+      "security_guarantee": "NOT_ESTABLISHED",
+      "evidence": [
+        "security-ev-92b963673751377c"
+      ]
+    },
+    {
+      "boundary_id": "trust-boundary-62bed2896579c47e",
+      "snapshot_id": "snapshot-0012",
+      "version": "v0.6.0",
+      "variant": "variant-b",
+      "boundary": "PROVIDER_CODE",
+      "source": "provider implementation",
+      "sink": "registry/engine",
+      "data": "recognition and discovery results",
+      "validation": "UNKNOWN",
+      "authority": "provider method execution",
+      "sanitization": "UNKNOWN",
+      "isolation": "CATCH_PATHS_PRESENT_NOT_GUARANTEE",
+      "boundary_status": "DATA_OR_AUTHORITY_BOUNDARY",
+      "security_guarantee": "NOT_ESTABLISHED",
+      "evidence": [
+        "security-ev-f4bd64249f6c0ee8"
+      ]
+    },
+    {
+      "boundary_id": "trust-boundary-12d4c4cbdf02c953",
+      "snapshot_id": "snapshot-0012",
+      "version": "v0.6.0",
+      "variant": "variant-b",
+      "boundary": "SCHEDULER",
+      "source": "candidate frontier",
+      "sink": "worker",
+      "data": "claim/work state",
+      "validation": "UNKNOWN",
+      "authority": "work admission authority",
+      "sanitization": "UNKNOWN",
+      "isolation": "UNKNOWN",
+      "boundary_status": "INTERNAL_AUTHORITY_BOUNDARY_NOT_PROVED_TRUST",
+      "security_guarantee": "NOT_ESTABLISHED",
+      "evidence": [
+        "security-ev-1e60b195dd76b078"
+      ]
+    },
+    {
+      "boundary_id": "trust-boundary-6ec13471b666c7bc",
+      "snapshot_id": "snapshot-0012",
+      "version": "v0.6.0",
+      "variant": "variant-b",
+      "boundary": "STORAGE",
+      "source": "in-memory state",
+      "sink": "GM/local storage",
+      "data": "serialized state",
+      "validation": "UNKNOWN",
+      "authority": "storage read/write authority",
+      "sanitization": "UNKNOWN",
+      "isolation": "UNKNOWN",
+      "boundary_status": "HISTORICAL_TRUST_OR_AUTHORITY_BOUNDARY",
+      "security_guarantee": "NOT_ESTABLISHED",
+      "evidence": [
+        "security-ev-aa39f2b13961b99c"
+      ]
+    },
+    {
+      "boundary_id": "trust-boundary-f11b3e04ba6f322e",
+      "snapshot_id": "snapshot-0012",
+      "version": "v0.6.0",
+      "variant": "variant-b",
+      "boundary": "EXPORT",
+      "source": "engine state",
+      "sink": "download/consumer",
+      "data": "JSON/blob",
+      "validation": "UNKNOWN",
+      "authority": "state disclosure authority",
+      "sanitization": "UNKNOWN",
+      "isolation": "UNKNOWN",
+      "boundary_status": "DATA_OR_AUTHORITY_BOUNDARY",
+      "security_guarantee": "NOT_ESTABLISHED",
+      "evidence": [
+        "security-ev-0a605edcbdeca2b3"
+      ]
+    },
+    {
+      "boundary_id": "trust-boundary-e3b9fe6b912a2f23",
+      "snapshot_id": "snapshot-0012",
+      "version": "v0.6.0",
+      "variant": "variant-b",
+      "boundary": "UI",
+      "source": "engine state",
+      "sink": "page DOM/user",
+      "data": "status/results/controls",
+      "validation": "UNKNOWN",
+      "authority": "DOM mutation authority",
+      "sanitization": "UNKNOWN",
+      "isolation": "UNKNOWN",
+      "boundary_status": "DATA_OR_AUTHORITY_BOUNDARY",
+      "security_guarantee": "NOT_ESTABLISHED",
+      "evidence": [
+        "security-ev-6e955acee8d44690"
+      ]
+    },
+    {
+      "boundary_id": "trust-boundary-fb59c31b83c2af9b",
+      "snapshot_id": "snapshot-0012",
+      "version": "v0.6.0",
+      "variant": "variant-b",
+      "boundary": "BROWSER_APIS",
+      "source": "engine",
+      "sink": "browser API",
+      "data": "DOM/network/timers",
+      "validation": "UNKNOWN",
+      "authority": "ambient browser authority",
+      "sanitization": "UNKNOWN",
+      "isolation": "UNKNOWN",
+      "boundary_status": "DATA_OR_AUTHORITY_BOUNDARY",
+      "security_guarantee": "NOT_ESTABLISHED",
+      "evidence": [
+        "security-ev-2766f82c29666ff0"
+      ]
+    },
+    {
+      "boundary_id": "trust-boundary-e68993b63a27d302",
+      "snapshot_id": "snapshot-0012",
+      "version": "v0.6.0",
+      "variant": "variant-b",
+      "boundary": "USERSCRIPT_APIS",
+      "source": "engine",
+      "sink": "userscript manager",
+      "data": "privileged network/storage",
+      "validation": "UNKNOWN",
+      "authority": "metadata-granted authority",
+      "sanitization": "UNKNOWN",
+      "isolation": "UNKNOWN",
+      "boundary_status": "HISTORICAL_TRUST_OR_AUTHORITY_BOUNDARY",
+      "security_guarantee": "NOT_ESTABLISHED",
+      "evidence": [
+        "security-ev-29c9adc7e786d1ec"
+      ]
+    },
+    {
+      "boundary_id": "trust-boundary-77fa56b3dcd4786b",
+      "snapshot_id": "snapshot-0012",
+      "version": "v0.6.0",
+      "variant": "variant-b",
+      "boundary": "THIRD_PARTY_LIBRARIES",
+      "source": "external library",
+      "sink": "engine",
+      "data": "code/data",
+      "validation": "UNKNOWN",
+      "authority": "NOT_EVIDENCED",
+      "sanitization": "UNKNOWN",
+      "isolation": "UNKNOWN",
+      "boundary_status": "NOT_PRESENT_OR_NOT_EVIDENCED",
+      "security_guarantee": "NOT_ESTABLISHED",
+      "evidence": [
+        "security-ev-b7093b327180f551"
+      ]
+    },
+    {
+      "boundary_id": "trust-boundary-b7bf38a1b7f6b09c",
+      "snapshot_id": "snapshot-0013",
+      "version": "v0.6.0",
+      "variant": "variant-c",
+      "boundary": "USER_INPUT",
+      "source": "user/UI event",
+      "sink": "validation/engine",
+      "data": "seed or control value",
+      "validation": "UNKNOWN",
+      "authority": "UI event authority",
+      "sanitization": "UNKNOWN",
+      "isolation": "UNKNOWN",
+      "boundary_status": "DATA_OR_AUTHORITY_BOUNDARY",
+      "security_guarantee": "NOT_ESTABLISHED",
+      "evidence": [
+        "security-ev-b4bd1cd8c60250e5"
+      ]
+    },
+    {
+      "boundary_id": "trust-boundary-7cf025bf7c68401c",
+      "snapshot_id": "snapshot-0013",
+      "version": "v0.6.0",
+      "variant": "variant-c",
+      "boundary": "PAGE_DOM",
+      "source": "page DOM",
+      "sink": "candidate extraction",
+      "data": "links/forms/resources/metadata",
+      "validation": "URL_CANONICALIZATION_OR_ALLOW_CHECK",
+      "authority": "browser DOM read",
+      "sanitization": "EXTRACTION_OR_NORMALIZATION_ONLY",
+      "isolation": "UNKNOWN",
+      "boundary_status": "HISTORICAL_TRUST_OR_AUTHORITY_BOUNDARY",
+      "security_guarantee": "NOT_ESTABLISHED",
+      "evidence": [
+        "security-ev-a50c011a1a224b33"
+      ]
+    },
+    {
+      "boundary_id": "trust-boundary-d2322d98e66c89b8",
+      "snapshot_id": "snapshot-0013",
+      "version": "v0.6.0",
+      "variant": "variant-c",
+      "boundary": "NETWORK",
+      "source": "remote server",
+      "sink": "acquisition",
+      "data": "request/response",
+      "validation": "URL_CANONICALIZATION_OR_ALLOW_CHECK",
+      "authority": "GM/fetch network authority",
+      "sanitization": "UNKNOWN",
+      "isolation": "UNKNOWN",
+      "boundary_status": "HISTORICAL_TRUST_OR_AUTHORITY_BOUNDARY",
+      "security_guarantee": "NOT_ESTABLISHED",
+      "evidence": [
+        "security-ev-3cfcded9f363c486"
+      ]
+    },
+    {
+      "boundary_id": "trust-boundary-9b3d1bce71b4e051",
+      "snapshot_id": "snapshot-0013",
+      "version": "v0.6.0",
+      "variant": "variant-c",
+      "boundary": "REMOTE_CONTENT",
+      "source": "acquisition response",
+      "sink": "provider/parser",
+      "data": "HTML/JSON/text/headers",
+      "validation": "PARSER_OR_PROVIDER_HEURISTIC",
+      "authority": "parse and extraction authority",
+      "sanitization": "EXTRACTION_OR_NORMALIZATION_ONLY",
+      "isolation": "UNKNOWN",
+      "boundary_status": "HISTORICAL_TRUST_OR_AUTHORITY_BOUNDARY",
+      "security_guarantee": "NOT_ESTABLISHED",
+      "evidence": [
+        "security-ev-a17f01d1ad9ca754"
+      ]
+    },
+    {
+      "boundary_id": "trust-boundary-23d3715f966b7d04",
+      "snapshot_id": "snapshot-0013",
+      "version": "v0.6.0",
+      "variant": "variant-c",
+      "boundary": "PROVIDER_CODE",
+      "source": "provider implementation",
+      "sink": "registry/engine",
+      "data": "recognition and discovery results",
+      "validation": "UNKNOWN",
+      "authority": "provider method execution",
+      "sanitization": "UNKNOWN",
+      "isolation": "CATCH_PATHS_PRESENT_NOT_GUARANTEE",
+      "boundary_status": "DATA_OR_AUTHORITY_BOUNDARY",
+      "security_guarantee": "NOT_ESTABLISHED",
+      "evidence": [
+        "security-ev-4062a551815356b4"
+      ]
+    },
+    {
+      "boundary_id": "trust-boundary-d4654f79dd780d2b",
+      "snapshot_id": "snapshot-0013",
+      "version": "v0.6.0",
+      "variant": "variant-c",
+      "boundary": "SCHEDULER",
+      "source": "candidate frontier",
+      "sink": "worker",
+      "data": "claim/work state",
+      "validation": "UNKNOWN",
+      "authority": "work admission authority",
+      "sanitization": "UNKNOWN",
+      "isolation": "UNKNOWN",
+      "boundary_status": "INTERNAL_AUTHORITY_BOUNDARY_NOT_PROVED_TRUST",
+      "security_guarantee": "NOT_ESTABLISHED",
+      "evidence": [
+        "security-ev-9bbe221d03aced56"
+      ]
+    },
+    {
+      "boundary_id": "trust-boundary-ee791068e42e3703",
+      "snapshot_id": "snapshot-0013",
+      "version": "v0.6.0",
+      "variant": "variant-c",
+      "boundary": "STORAGE",
+      "source": "in-memory state",
+      "sink": "GM/local storage",
+      "data": "serialized state",
+      "validation": "UNKNOWN",
+      "authority": "storage read/write authority",
+      "sanitization": "UNKNOWN",
+      "isolation": "UNKNOWN",
+      "boundary_status": "HISTORICAL_TRUST_OR_AUTHORITY_BOUNDARY",
+      "security_guarantee": "NOT_ESTABLISHED",
+      "evidence": [
+        "security-ev-1869612aee2bbbb0"
+      ]
+    },
+    {
+      "boundary_id": "trust-boundary-21b9215e0923dc6e",
+      "snapshot_id": "snapshot-0013",
+      "version": "v0.6.0",
+      "variant": "variant-c",
+      "boundary": "EXPORT",
+      "source": "engine state",
+      "sink": "download/consumer",
+      "data": "JSON/blob",
+      "validation": "UNKNOWN",
+      "authority": "state disclosure authority",
+      "sanitization": "UNKNOWN",
+      "isolation": "UNKNOWN",
+      "boundary_status": "DATA_OR_AUTHORITY_BOUNDARY",
+      "security_guarantee": "NOT_ESTABLISHED",
+      "evidence": [
+        "security-ev-7cf8580b1da70975"
+      ]
+    },
+    {
+      "boundary_id": "trust-boundary-7584a2172e2b5b33",
+      "snapshot_id": "snapshot-0013",
+      "version": "v0.6.0",
+      "variant": "variant-c",
+      "boundary": "UI",
+      "source": "engine state",
+      "sink": "page DOM/user",
+      "data": "status/results/controls",
+      "validation": "UNKNOWN",
+      "authority": "DOM mutation authority",
+      "sanitization": "UNKNOWN",
+      "isolation": "UNKNOWN",
+      "boundary_status": "DATA_OR_AUTHORITY_BOUNDARY",
+      "security_guarantee": "NOT_ESTABLISHED",
+      "evidence": [
+        "security-ev-32e92382561cad60"
+      ]
+    },
+    {
+      "boundary_id": "trust-boundary-e5ea8572e1dff203",
+      "snapshot_id": "snapshot-0013",
+      "version": "v0.6.0",
+      "variant": "variant-c",
+      "boundary": "BROWSER_APIS",
+      "source": "engine",
+      "sink": "browser API",
+      "data": "DOM/network/timers",
+      "validation": "UNKNOWN",
+      "authority": "ambient browser authority",
+      "sanitization": "UNKNOWN",
+      "isolation": "UNKNOWN",
+      "boundary_status": "DATA_OR_AUTHORITY_BOUNDARY",
+      "security_guarantee": "NOT_ESTABLISHED",
+      "evidence": [
+        "security-ev-d36eb88ce7de3aeb"
+      ]
+    },
+    {
+      "boundary_id": "trust-boundary-b1d72ac5ea6dec0a",
+      "snapshot_id": "snapshot-0013",
+      "version": "v0.6.0",
+      "variant": "variant-c",
+      "boundary": "USERSCRIPT_APIS",
+      "source": "engine",
+      "sink": "userscript manager",
+      "data": "privileged network/storage",
+      "validation": "UNKNOWN",
+      "authority": "metadata-granted authority",
+      "sanitization": "UNKNOWN",
+      "isolation": "UNKNOWN",
+      "boundary_status": "HISTORICAL_TRUST_OR_AUTHORITY_BOUNDARY",
+      "security_guarantee": "NOT_ESTABLISHED",
+      "evidence": [
+        "security-ev-b224d9d09a8c56c7"
+      ]
+    },
+    {
+      "boundary_id": "trust-boundary-e3262b41bba0de6b",
+      "snapshot_id": "snapshot-0013",
+      "version": "v0.6.0",
+      "variant": "variant-c",
+      "boundary": "THIRD_PARTY_LIBRARIES",
+      "source": "external library",
+      "sink": "engine",
+      "data": "code/data",
+      "validation": "UNKNOWN",
+      "authority": "NOT_EVIDENCED",
+      "sanitization": "UNKNOWN",
+      "isolation": "UNKNOWN",
+      "boundary_status": "NOT_PRESENT_OR_NOT_EVIDENCED",
+      "security_guarantee": "NOT_ESTABLISHED",
+      "evidence": [
+        "security-ev-fd68da97be798669"
+      ]
+    },
+    {
+      "boundary_id": "trust-boundary-7c507e51c5145bfc",
+      "snapshot_id": "snapshot-0014",
+      "version": "v0.7.1",
+      "variant": "only-evidenced-complete-occurrence",
+      "boundary": "USER_INPUT",
+      "source": "user/UI event",
+      "sink": "validation/engine",
+      "data": "seed or control value",
+      "validation": "UNKNOWN",
+      "authority": "NOT_EVIDENCED",
+      "sanitization": "UNKNOWN",
+      "isolation": "UNKNOWN",
+      "boundary_status": "NOT_PRESENT_OR_NOT_EVIDENCED",
+      "security_guarantee": "NOT_ESTABLISHED",
+      "evidence": [
+        "security-absence-42b03210cd7485fb"
+      ]
+    },
+    {
+      "boundary_id": "trust-boundary-c5f1618ac7a4d710",
+      "snapshot_id": "snapshot-0014",
+      "version": "v0.7.1",
+      "variant": "only-evidenced-complete-occurrence",
+      "boundary": "PAGE_DOM",
+      "source": "page DOM",
+      "sink": "candidate extraction",
+      "data": "links/forms/resources/metadata",
+      "validation": "URL_CANONICALIZATION_OR_ALLOW_CHECK",
+      "authority": "browser DOM read",
+      "sanitization": "EXTRACTION_OR_NORMALIZATION_ONLY",
+      "isolation": "UNKNOWN",
+      "boundary_status": "HISTORICAL_TRUST_OR_AUTHORITY_BOUNDARY",
+      "security_guarantee": "NOT_ESTABLISHED",
+      "evidence": [
+        "security-ev-8c78d7f32eb00a53"
+      ]
+    },
+    {
+      "boundary_id": "trust-boundary-c6e52c6ea3274dbe",
+      "snapshot_id": "snapshot-0014",
+      "version": "v0.7.1",
+      "variant": "only-evidenced-complete-occurrence",
+      "boundary": "NETWORK",
+      "source": "remote server",
+      "sink": "acquisition",
+      "data": "request/response",
+      "validation": "URL_CANONICALIZATION_OR_ALLOW_CHECK",
+      "authority": "GM/fetch network authority",
+      "sanitization": "UNKNOWN",
+      "isolation": "UNKNOWN",
+      "boundary_status": "HISTORICAL_TRUST_OR_AUTHORITY_BOUNDARY",
+      "security_guarantee": "NOT_ESTABLISHED",
+      "evidence": [
+        "security-ev-73051bad30648bb9"
+      ]
+    },
+    {
+      "boundary_id": "trust-boundary-5e61603abf07c189",
+      "snapshot_id": "snapshot-0014",
+      "version": "v0.7.1",
+      "variant": "only-evidenced-complete-occurrence",
+      "boundary": "REMOTE_CONTENT",
+      "source": "acquisition response",
+      "sink": "provider/parser",
+      "data": "HTML/JSON/text/headers",
+      "validation": "PARSER_OR_PROVIDER_HEURISTIC",
+      "authority": "parse and extraction authority",
+      "sanitization": "EXTRACTION_OR_NORMALIZATION_ONLY",
+      "isolation": "UNKNOWN",
+      "boundary_status": "HISTORICAL_TRUST_OR_AUTHORITY_BOUNDARY",
+      "security_guarantee": "NOT_ESTABLISHED",
+      "evidence": [
+        "security-ev-d0c0f1bb3ec223ce"
+      ]
+    },
+    {
+      "boundary_id": "trust-boundary-5ce425e604d448df",
+      "snapshot_id": "snapshot-0014",
+      "version": "v0.7.1",
+      "variant": "only-evidenced-complete-occurrence",
+      "boundary": "PROVIDER_CODE",
+      "source": "provider implementation",
+      "sink": "registry/engine",
+      "data": "recognition and discovery results",
+      "validation": "UNKNOWN",
+      "authority": "provider method execution",
+      "sanitization": "UNKNOWN",
+      "isolation": "CATCH_PATHS_PRESENT_NOT_GUARANTEE",
+      "boundary_status": "DATA_OR_AUTHORITY_BOUNDARY",
+      "security_guarantee": "NOT_ESTABLISHED",
+      "evidence": [
+        "security-ev-d27c0ba035892aa5"
+      ]
+    },
+    {
+      "boundary_id": "trust-boundary-1b3f69ad5d93e87c",
+      "snapshot_id": "snapshot-0014",
+      "version": "v0.7.1",
+      "variant": "only-evidenced-complete-occurrence",
+      "boundary": "SCHEDULER",
+      "source": "candidate frontier",
+      "sink": "worker",
+      "data": "claim/work state",
+      "validation": "UNKNOWN",
+      "authority": "work admission authority",
+      "sanitization": "UNKNOWN",
+      "isolation": "UNKNOWN",
+      "boundary_status": "INTERNAL_AUTHORITY_BOUNDARY_NOT_PROVED_TRUST",
+      "security_guarantee": "NOT_ESTABLISHED",
+      "evidence": [
+        "security-ev-eb636afe2d39a0b6"
+      ]
+    },
+    {
+      "boundary_id": "trust-boundary-80a62dac32e84d71",
+      "snapshot_id": "snapshot-0014",
+      "version": "v0.7.1",
+      "variant": "only-evidenced-complete-occurrence",
+      "boundary": "STORAGE",
+      "source": "in-memory state",
+      "sink": "GM/local storage",
+      "data": "serialized state",
+      "validation": "UNKNOWN",
+      "authority": "storage read/write authority",
+      "sanitization": "UNKNOWN",
+      "isolation": "UNKNOWN",
+      "boundary_status": "HISTORICAL_TRUST_OR_AUTHORITY_BOUNDARY",
+      "security_guarantee": "NOT_ESTABLISHED",
+      "evidence": [
+        "security-ev-a409cd84fcd1ddf4"
+      ]
+    },
+    {
+      "boundary_id": "trust-boundary-d315043ac8adefbe",
+      "snapshot_id": "snapshot-0014",
+      "version": "v0.7.1",
+      "variant": "only-evidenced-complete-occurrence",
+      "boundary": "EXPORT",
+      "source": "engine state",
+      "sink": "download/consumer",
+      "data": "JSON/blob",
+      "validation": "UNKNOWN",
+      "authority": "state disclosure authority",
+      "sanitization": "UNKNOWN",
+      "isolation": "UNKNOWN",
+      "boundary_status": "DATA_OR_AUTHORITY_BOUNDARY",
+      "security_guarantee": "NOT_ESTABLISHED",
+      "evidence": [
+        "security-ev-121bba38edf1cfcd"
+      ]
+    },
+    {
+      "boundary_id": "trust-boundary-4dbce1a556f9ecc2",
+      "snapshot_id": "snapshot-0014",
+      "version": "v0.7.1",
+      "variant": "only-evidenced-complete-occurrence",
+      "boundary": "UI",
+      "source": "engine state",
+      "sink": "page DOM/user",
+      "data": "status/results/controls",
+      "validation": "UNKNOWN",
+      "authority": "DOM mutation authority",
+      "sanitization": "UNKNOWN",
+      "isolation": "UNKNOWN",
+      "boundary_status": "DATA_OR_AUTHORITY_BOUNDARY",
+      "security_guarantee": "NOT_ESTABLISHED",
+      "evidence": [
+        "security-ev-3dbd60e6f4421b22"
+      ]
+    },
+    {
+      "boundary_id": "trust-boundary-08eda54286491f24",
+      "snapshot_id": "snapshot-0014",
+      "version": "v0.7.1",
+      "variant": "only-evidenced-complete-occurrence",
+      "boundary": "BROWSER_APIS",
+      "source": "engine",
+      "sink": "browser API",
+      "data": "DOM/network/timers",
+      "validation": "UNKNOWN",
+      "authority": "ambient browser authority",
+      "sanitization": "UNKNOWN",
+      "isolation": "UNKNOWN",
+      "boundary_status": "DATA_OR_AUTHORITY_BOUNDARY",
+      "security_guarantee": "NOT_ESTABLISHED",
+      "evidence": [
+        "security-ev-bfd7bf8c91295a4d"
+      ]
+    },
+    {
+      "boundary_id": "trust-boundary-27fc13271934dd50",
+      "snapshot_id": "snapshot-0014",
+      "version": "v0.7.1",
+      "variant": "only-evidenced-complete-occurrence",
+      "boundary": "USERSCRIPT_APIS",
+      "source": "engine",
+      "sink": "userscript manager",
+      "data": "privileged network/storage",
+      "validation": "UNKNOWN",
+      "authority": "metadata-granted authority",
+      "sanitization": "UNKNOWN",
+      "isolation": "UNKNOWN",
+      "boundary_status": "HISTORICAL_TRUST_OR_AUTHORITY_BOUNDARY",
+      "security_guarantee": "NOT_ESTABLISHED",
+      "evidence": [
+        "security-ev-0b70394e3a4791ea"
+      ]
+    },
+    {
+      "boundary_id": "trust-boundary-680469714a3a3229",
+      "snapshot_id": "snapshot-0014",
+      "version": "v0.7.1",
+      "variant": "only-evidenced-complete-occurrence",
+      "boundary": "THIRD_PARTY_LIBRARIES",
+      "source": "external library",
+      "sink": "engine",
+      "data": "code/data",
+      "validation": "UNKNOWN",
+      "authority": "NOT_EVIDENCED",
+      "sanitization": "UNKNOWN",
+      "isolation": "UNKNOWN",
+      "boundary_status": "NOT_PRESENT_OR_NOT_EVIDENCED",
+      "security_guarantee": "NOT_ESTABLISHED",
+      "evidence": [
+        "security-absence-2ee25fc57ab33eff"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,968 @@
+{
+  "schema_version": 8,
+  "builder": "security-archaeology-builder-v8",
+  "model_kind": "DERIVED_SECURITY_ARCHAEOLOGY_NOT_SOURCE",
+  "parsers": [
+    {
+      "parser_id": "parser-a5d9a34ba5d23ec6",
+      "snapshot_id": "snapshot-0001",
+      "version": "v0.1.0",
+      "variant": "mechanically-composed",
+      "parser": "HTML",
+      "owner": "HtmlRecognizer.recognize",
+      "mechanism": "DOM_CONSTRUCTION",
+      "input_size": "UNBOUNDED_OR_UNKNOWN_AT_PARSER",
+      "recursion": "NOT_EVIDENCED",
+      "dom_construction": true,
+      "json_parsing": false,
+      "regex_extraction": false,
+      "external_entities": "UNKNOWN",
+      "script_execution": "NO_EVIDENCE_OF_PARSER_SCRIPT_EXECUTION",
+      "error_handling": "UNKNOWN",
+      "security_guarantee": "NOT_ESTABLISHED",
+      "evidence": [
+        "security-ev-edd94eccc7b95dee"
+      ]
+    },
+    {
+      "parser_id": "parser-6f9aba39618ba30f",
+      "snapshot_id": "snapshot-0001",
+      "version": "v0.1.0",
+      "variant": "mechanically-composed",
+      "parser": "JSON",
+      "owner": "KnowledgeBase.load",
+      "mechanism": "JSON_PARSE",
+      "input_size": "UNBOUNDED_OR_UNKNOWN_AT_PARSER",
+      "recursion": "NOT_EVIDENCED",
+      "dom_construction": false,
+      "json_parsing": true,
+      "regex_extraction": false,
+      "external_entities": "UNKNOWN",
+      "script_execution": "NO_EVIDENCE_OF_PARSER_SCRIPT_EXECUTION",
+      "error_handling": "LOCAL_CHECK_OR_CATCH",
+      "security_guarantee": "NOT_ESTABLISHED",
+      "evidence": [
+        "security-ev-f534af0a7be1a011"
+      ]
+    },
+    {
+      "parser_id": "parser-3eca625315ebd4d5",
+      "snapshot_id": "snapshot-0001",
+      "version": "v0.1.0",
+      "variant": "mechanically-composed",
+      "parser": "TEXT",
+      "owner": "HttpAcquisitionAdapter.request",
+      "mechanism": "REGEX_OR_TOKEN_EXTRACTION",
+      "input_size": "UNBOUNDED_OR_UNKNOWN_AT_PARSER",
+      "recursion": "NOT_EVIDENCED",
+      "dom_construction": false,
+      "json_parsing": false,
+      "regex_extraction": true,
+      "external_entities": "UNKNOWN",
+      "script_execution": "NO_EVIDENCE_OF_PARSER_SCRIPT_EXECUTION",
+      "error_handling": "LOCAL_CHECK_OR_CATCH",
+      "security_guarantee": "NOT_ESTABLISHED",
+      "evidence": [
+        "security-ev-ff1b333f1ae57db4"
+      ]
+    },
+    {
+      "parser_id": "parser-2e362333b2c51d94",
+      "snapshot_id": "snapshot-0003",
+      "version": "v0.2.0",
+      "variant": "mechanically-composed",
+      "parser": "HTML",
+      "owner": "HtmlProvider.recognize",
+      "mechanism": "DOM_CONSTRUCTION",
+      "input_size": "UNBOUNDED_OR_UNKNOWN_AT_PARSER",
+      "recursion": "NOT_EVIDENCED",
+      "dom_construction": true,
+      "json_parsing": false,
+      "regex_extraction": false,
+      "external_entities": "UNKNOWN",
+      "script_execution": "NO_EVIDENCE_OF_PARSER_SCRIPT_EXECUTION",
+      "error_handling": "UNKNOWN",
+      "security_guarantee": "NOT_ESTABLISHED",
+      "evidence": [
+        "security-ev-272860da20271650"
+      ]
+    },
+    {
+      "parser_id": "parser-62e20961283bb44c",
+      "snapshot_id": "snapshot-0003",
+      "version": "v0.2.0",
+      "variant": "mechanically-composed",
+      "parser": "JSON",
+      "owner": "KnowledgeBase.load",
+      "mechanism": "JSON_PARSE",
+      "input_size": "UNBOUNDED_OR_UNKNOWN_AT_PARSER",
+      "recursion": "NOT_EVIDENCED",
+      "dom_construction": false,
+      "json_parsing": true,
+      "regex_extraction": false,
+      "external_entities": "UNKNOWN",
+      "script_execution": "NO_EVIDENCE_OF_PARSER_SCRIPT_EXECUTION",
+      "error_handling": "LOCAL_CHECK_OR_CATCH",
+      "security_guarantee": "NOT_ESTABLISHED",
+      "evidence": [
+        "security-ev-5e9017bac9daab2e"
+      ]
+    },
+    {
+      "parser_id": "parser-9de2933193318c56",
+      "snapshot_id": "snapshot-0003",
+      "version": "v0.2.0",
+      "variant": "mechanically-composed",
+      "parser": "TEXT",
+      "owner": "HttpAcquisitionAdapter.request",
+      "mechanism": "REGEX_OR_TOKEN_EXTRACTION",
+      "input_size": "UNBOUNDED_OR_UNKNOWN_AT_PARSER",
+      "recursion": "NOT_EVIDENCED",
+      "dom_construction": false,
+      "json_parsing": false,
+      "regex_extraction": true,
+      "external_entities": "UNKNOWN",
+      "script_execution": "NO_EVIDENCE_OF_PARSER_SCRIPT_EXECUTION",
+      "error_handling": "LOCAL_CHECK_OR_CATCH",
+      "security_guarantee": "NOT_ESTABLISHED",
+      "evidence": [
+        "security-ev-c6556380bee7ce77"
+      ]
+    },
+    {
+      "parser_id": "parser-ef21500351bfe4d5",
+      "snapshot_id": "snapshot-0005",
+      "version": "v0.3.0",
+      "variant": "only-evidenced-complete-occurrence",
+      "parser": "HTML",
+      "owner": "HtmlProvider.recognize",
+      "mechanism": "DOM_CONSTRUCTION",
+      "input_size": "UNBOUNDED_OR_UNKNOWN_AT_PARSER",
+      "recursion": "PRESENT",
+      "dom_construction": true,
+      "json_parsing": false,
+      "regex_extraction": false,
+      "external_entities": "UNKNOWN",
+      "script_execution": "NO_EVIDENCE_OF_PARSER_SCRIPT_EXECUTION",
+      "error_handling": "UNKNOWN",
+      "security_guarantee": "NOT_ESTABLISHED",
+      "evidence": [
+        "security-ev-2fd9a4ce8ca5ae27"
+      ]
+    },
+    {
+      "parser_id": "parser-0bbcacfc896c6e4e",
+      "snapshot_id": "snapshot-0005",
+      "version": "v0.3.0",
+      "variant": "only-evidenced-complete-occurrence",
+      "parser": "JSON",
+      "owner": "KnowledgeBase.load",
+      "mechanism": "JSON_PARSE",
+      "input_size": "UNBOUNDED_OR_UNKNOWN_AT_PARSER",
+      "recursion": "NOT_EVIDENCED",
+      "dom_construction": false,
+      "json_parsing": true,
+      "regex_extraction": false,
+      "external_entities": "UNKNOWN",
+      "script_execution": "NO_EVIDENCE_OF_PARSER_SCRIPT_EXECUTION",
+      "error_handling": "LOCAL_CHECK_OR_CATCH",
+      "security_guarantee": "NOT_ESTABLISHED",
+      "evidence": [
+        "security-ev-3ec781c57aed9288"
+      ]
+    },
+    {
+      "parser_id": "parser-f71a950775409521",
+      "snapshot_id": "snapshot-0005",
+      "version": "v0.3.0",
+      "variant": "only-evidenced-complete-occurrence",
+      "parser": "TEXT",
+      "owner": "TOP_LEVEL.extractUrlsFromText",
+      "mechanism": "REGEX_OR_TOKEN_EXTRACTION",
+      "input_size": "UNBOUNDED_OR_UNKNOWN_AT_PARSER",
+      "recursion": "NOT_EVIDENCED",
+      "dom_construction": false,
+      "json_parsing": false,
+      "regex_extraction": true,
+      "external_entities": "UNKNOWN",
+      "script_execution": "NO_EVIDENCE_OF_PARSER_SCRIPT_EXECUTION",
+      "error_handling": "UNKNOWN",
+      "security_guarantee": "NOT_ESTABLISHED",
+      "evidence": [
+        "security-ev-756c1e05fb812b46"
+      ]
+    },
+    {
+      "parser_id": "parser-c9284fcf6c0834bd",
+      "snapshot_id": "snapshot-0006",
+      "version": "v0.4.0",
+      "variant": "variant-a",
+      "parser": "HTML",
+      "owner": "HtmlProvider.recognize",
+      "mechanism": "DOM_CONSTRUCTION",
+      "input_size": "UNBOUNDED_OR_UNKNOWN_AT_PARSER",
+      "recursion": "PRESENT",
+      "dom_construction": true,
+      "json_parsing": false,
+      "regex_extraction": false,
+      "external_entities": "UNKNOWN",
+      "script_execution": "NO_EVIDENCE_OF_PARSER_SCRIPT_EXECUTION",
+      "error_handling": "UNKNOWN",
+      "security_guarantee": "NOT_ESTABLISHED",
+      "evidence": [
+        "security-ev-d5c477f52edba5e9"
+      ]
+    },
+    {
+      "parser_id": "parser-bcd8d4b747fa80e0",
+      "snapshot_id": "snapshot-0006",
+      "version": "v0.4.0",
+      "variant": "variant-a",
+      "parser": "XML",
+      "owner": "XmlProvider.recognize",
+      "mechanism": "DOM_CONSTRUCTION",
+      "input_size": "UNBOUNDED_OR_UNKNOWN_AT_PARSER",
+      "recursion": "PRESENT",
+      "dom_construction": true,
+      "json_parsing": false,
+      "regex_extraction": false,
+      "external_entities": "UNKNOWN",
+      "script_execution": "NO_EVIDENCE_OF_PARSER_SCRIPT_EXECUTION",
+      "error_handling": "LOCAL_CHECK_OR_CATCH",
+      "security_guarantee": "NOT_ESTABLISHED",
+      "evidence": [
+        "security-ev-9df06179340de0c9"
+      ]
+    },
+    {
+      "parser_id": "parser-9e2571420b059f4b",
+      "snapshot_id": "snapshot-0006",
+      "version": "v0.4.0",
+      "variant": "variant-a",
+      "parser": "JSON",
+      "owner": "KnowledgeBase.load",
+      "mechanism": "JSON_PARSE",
+      "input_size": "UNBOUNDED_OR_UNKNOWN_AT_PARSER",
+      "recursion": "NOT_EVIDENCED",
+      "dom_construction": false,
+      "json_parsing": true,
+      "regex_extraction": false,
+      "external_entities": "UNKNOWN",
+      "script_execution": "NO_EVIDENCE_OF_PARSER_SCRIPT_EXECUTION",
+      "error_handling": "LOCAL_CHECK_OR_CATCH",
+      "security_guarantee": "NOT_ESTABLISHED",
+      "evidence": [
+        "security-ev-50c791e4ae1a1d5a"
+      ]
+    },
+    {
+      "parser_id": "parser-992af51768d0b5a7",
+      "snapshot_id": "snapshot-0006",
+      "version": "v0.4.0",
+      "variant": "variant-a",
+      "parser": "TEXT",
+      "owner": "TOP_LEVEL.extractUrlsFromText",
+      "mechanism": "REGEX_OR_TOKEN_EXTRACTION",
+      "input_size": "UNBOUNDED_OR_UNKNOWN_AT_PARSER",
+      "recursion": "NOT_EVIDENCED",
+      "dom_construction": false,
+      "json_parsing": false,
+      "regex_extraction": true,
+      "external_entities": "UNKNOWN",
+      "script_execution": "NO_EVIDENCE_OF_PARSER_SCRIPT_EXECUTION",
+      "error_handling": "UNKNOWN",
+      "security_guarantee": "NOT_ESTABLISHED",
+      "evidence": [
+        "security-ev-33099a07dfd6b292"
+      ]
+    },
+    {
+      "parser_id": "parser-0fa82725779d0887",
+      "snapshot_id": "snapshot-0008",
+      "version": "v0.4.0",
+      "variant": "variant-b",
+      "parser": "HTML",
+      "owner": "TOP_LEVEL.extractXmlLocs",
+      "mechanism": "DOM_CONSTRUCTION",
+      "input_size": "maxStoredTextPreview",
+      "recursion": "NOT_EVIDENCED",
+      "dom_construction": true,
+      "json_parsing": false,
+      "regex_extraction": false,
+      "external_entities": "UNKNOWN",
+      "script_execution": "NO_EVIDENCE_OF_PARSER_SCRIPT_EXECUTION",
+      "error_handling": "LOCAL_CHECK_OR_CATCH",
+      "security_guarantee": "NOT_ESTABLISHED",
+      "evidence": [
+        "security-ev-a1c5b48249d4167d"
+      ]
+    },
+    {
+      "parser_id": "parser-329e7c231fc632af",
+      "snapshot_id": "snapshot-0008",
+      "version": "v0.4.0",
+      "variant": "variant-b",
+      "parser": "XML",
+      "owner": "TOP_LEVEL.extractXmlLocs",
+      "mechanism": "DOM_CONSTRUCTION",
+      "input_size": "maxStoredTextPreview",
+      "recursion": "NOT_EVIDENCED",
+      "dom_construction": true,
+      "json_parsing": false,
+      "regex_extraction": false,
+      "external_entities": "UNKNOWN",
+      "script_execution": "NO_EVIDENCE_OF_PARSER_SCRIPT_EXECUTION",
+      "error_handling": "LOCAL_CHECK_OR_CATCH",
+      "security_guarantee": "NOT_ESTABLISHED",
+      "evidence": [
+        "security-ev-bc3ccc7848d89d38"
+      ]
+    },
+    {
+      "parser_id": "parser-3f1b77e11c61b0a6",
+      "snapshot_id": "snapshot-0008",
+      "version": "v0.4.0",
+      "variant": "variant-b",
+      "parser": "JSON",
+      "owner": "KnowledgeBase.load",
+      "mechanism": "JSON_PARSE",
+      "input_size": "maxStoredTextPreview",
+      "recursion": "NOT_EVIDENCED",
+      "dom_construction": false,
+      "json_parsing": true,
+      "regex_extraction": false,
+      "external_entities": "UNKNOWN",
+      "script_execution": "NO_EVIDENCE_OF_PARSER_SCRIPT_EXECUTION",
+      "error_handling": "LOCAL_CHECK_OR_CATCH",
+      "security_guarantee": "NOT_ESTABLISHED",
+      "evidence": [
+        "security-ev-5a727c2b8c23212f"
+      ]
+    },
+    {
+      "parser_id": "parser-0b65ec6431b8a190",
+      "snapshot_id": "snapshot-0008",
+      "version": "v0.4.0",
+      "variant": "variant-b",
+      "parser": "TEXT",
+      "owner": "TOP_LEVEL.extractUrlsFromText",
+      "mechanism": "REGEX_OR_TOKEN_EXTRACTION",
+      "input_size": "maxStoredTextPreview",
+      "recursion": "NOT_EVIDENCED",
+      "dom_construction": false,
+      "json_parsing": false,
+      "regex_extraction": true,
+      "external_entities": "UNKNOWN",
+      "script_execution": "NO_EVIDENCE_OF_PARSER_SCRIPT_EXECUTION",
+      "error_handling": "UNKNOWN",
+      "security_guarantee": "NOT_ESTABLISHED",
+      "evidence": [
+        "security-ev-14edab463acba14f"
+      ]
+    },
+    {
+      "parser_id": "parser-f1c51d1d0e80c36f",
+      "snapshot_id": "snapshot-0007",
+      "version": "v0.5.0",
+      "variant": "variant-a",
+      "parser": "HTML",
+      "owner": "HtmlProvider.recognize",
+      "mechanism": "DOM_CONSTRUCTION",
+      "input_size": "maxResponseBytes",
+      "recursion": "PRESENT",
+      "dom_construction": true,
+      "json_parsing": false,
+      "regex_extraction": false,
+      "external_entities": "UNKNOWN",
+      "script_execution": "NO_EVIDENCE_OF_PARSER_SCRIPT_EXECUTION",
+      "error_handling": "UNKNOWN",
+      "security_guarantee": "NOT_ESTABLISHED",
+      "evidence": [
+        "security-ev-4de4c144107c0e30"
+      ]
+    },
+    {
+      "parser_id": "parser-602e199347c8ff18",
+      "snapshot_id": "snapshot-0007",
+      "version": "v0.5.0",
+      "variant": "variant-a",
+      "parser": "XML",
+      "owner": "XmlProvider.recognize",
+      "mechanism": "DOM_CONSTRUCTION",
+      "input_size": "maxResponseBytes",
+      "recursion": "NOT_EVIDENCED",
+      "dom_construction": true,
+      "json_parsing": false,
+      "regex_extraction": false,
+      "external_entities": "UNKNOWN",
+      "script_execution": "NO_EVIDENCE_OF_PARSER_SCRIPT_EXECUTION",
+      "error_handling": "LOCAL_CHECK_OR_CATCH",
+      "security_guarantee": "NOT_ESTABLISHED",
+      "evidence": [
+        "security-ev-405e8b1e9e70c141"
+      ]
+    },
+    {
+      "parser_id": "parser-575e8ef9019b0171",
+      "snapshot_id": "snapshot-0007",
+      "version": "v0.5.0",
+      "variant": "variant-a",
+      "parser": "JSON",
+      "owner": "KnowledgeBase.load",
+      "mechanism": "JSON_PARSE",
+      "input_size": "maxResponseBytes",
+      "recursion": "NOT_EVIDENCED",
+      "dom_construction": false,
+      "json_parsing": true,
+      "regex_extraction": false,
+      "external_entities": "UNKNOWN",
+      "script_execution": "NO_EVIDENCE_OF_PARSER_SCRIPT_EXECUTION",
+      "error_handling": "LOCAL_CHECK_OR_CATCH",
+      "security_guarantee": "NOT_ESTABLISHED",
+      "evidence": [
+        "security-ev-d37446cbb709e8ac"
+      ]
+    },
+    {
+      "parser_id": "parser-9a298e3456c789b6",
+      "snapshot_id": "snapshot-0007",
+      "version": "v0.5.0",
+      "variant": "variant-a",
+      "parser": "TEXT",
+      "owner": "TOP_LEVEL.extractUrlsFromText",
+      "mechanism": "REGEX_OR_TOKEN_EXTRACTION",
+      "input_size": "maxResponseBytes",
+      "recursion": "NOT_EVIDENCED",
+      "dom_construction": false,
+      "json_parsing": false,
+      "regex_extraction": true,
+      "external_entities": "UNKNOWN",
+      "script_execution": "NO_EVIDENCE_OF_PARSER_SCRIPT_EXECUTION",
+      "error_handling": "UNKNOWN",
+      "security_guarantee": "NOT_ESTABLISHED",
+      "evidence": [
+        "security-ev-952381e988d0ff7b"
+      ]
+    },
+    {
+      "parser_id": "parser-11acd3b02f6f16a4",
+      "snapshot_id": "snapshot-0009",
+      "version": "v0.5.0",
+      "variant": "variant-b",
+      "parser": "HTML",
+      "owner": "TOP_LEVEL.extractXmlLocs",
+      "mechanism": "DOM_CONSTRUCTION",
+      "input_size": "maxTextPreview",
+      "recursion": "NOT_EVIDENCED",
+      "dom_construction": true,
+      "json_parsing": false,
+      "regex_extraction": false,
+      "external_entities": "UNKNOWN",
+      "script_execution": "NO_EVIDENCE_OF_PARSER_SCRIPT_EXECUTION",
+      "error_handling": "LOCAL_CHECK_OR_CATCH",
+      "security_guarantee": "NOT_ESTABLISHED",
+      "evidence": [
+        "security-ev-7aaaae3ab045f474"
+      ]
+    },
+    {
+      "parser_id": "parser-4ac04101fbbdd660",
+      "snapshot_id": "snapshot-0009",
+      "version": "v0.5.0",
+      "variant": "variant-b",
+      "parser": "XML",
+      "owner": "TOP_LEVEL.extractXmlLocs",
+      "mechanism": "DOM_CONSTRUCTION",
+      "input_size": "maxTextPreview",
+      "recursion": "NOT_EVIDENCED",
+      "dom_construction": true,
+      "json_parsing": false,
+      "regex_extraction": false,
+      "external_entities": "UNKNOWN",
+      "script_execution": "NO_EVIDENCE_OF_PARSER_SCRIPT_EXECUTION",
+      "error_handling": "LOCAL_CHECK_OR_CATCH",
+      "security_guarantee": "NOT_ESTABLISHED",
+      "evidence": [
+        "security-ev-5ea1e2524acae586"
+      ]
+    },
+    {
+      "parser_id": "parser-317109b5e0899d8c",
+      "snapshot_id": "snapshot-0009",
+      "version": "v0.5.0",
+      "variant": "variant-b",
+      "parser": "JSON",
+      "owner": "KnowledgeBase.load",
+      "mechanism": "JSON_PARSE",
+      "input_size": "maxTextPreview",
+      "recursion": "NOT_EVIDENCED",
+      "dom_construction": false,
+      "json_parsing": true,
+      "regex_extraction": false,
+      "external_entities": "UNKNOWN",
+      "script_execution": "NO_EVIDENCE_OF_PARSER_SCRIPT_EXECUTION",
+      "error_handling": "LOCAL_CHECK_OR_CATCH",
+      "security_guarantee": "NOT_ESTABLISHED",
+      "evidence": [
+        "security-ev-ce31dc47b6318256"
+      ]
+    },
+    {
+      "parser_id": "parser-09d795e932d28075",
+      "snapshot_id": "snapshot-0009",
+      "version": "v0.5.0",
+      "variant": "variant-b",
+      "parser": "TEXT",
+      "owner": "TOP_LEVEL.extractUrls",
+      "mechanism": "REGEX_OR_TOKEN_EXTRACTION",
+      "input_size": "maxTextPreview",
+      "recursion": "NOT_EVIDENCED",
+      "dom_construction": false,
+      "json_parsing": false,
+      "regex_extraction": true,
+      "external_entities": "UNKNOWN",
+      "script_execution": "NO_EVIDENCE_OF_PARSER_SCRIPT_EXECUTION",
+      "error_handling": "UNKNOWN",
+      "security_guarantee": "NOT_ESTABLISHED",
+      "evidence": [
+        "security-ev-9cdcb737984fbde7"
+      ]
+    },
+    {
+      "parser_id": "parser-c18dac87692f2e26",
+      "snapshot_id": "snapshot-0011",
+      "version": "v0.5.0",
+      "variant": "variant-c",
+      "parser": "HTML",
+      "owner": "HtmlProvider.recognize",
+      "mechanism": "DOM_CONSTRUCTION",
+      "input_size": "maxStoredTextPreview",
+      "recursion": "PRESENT",
+      "dom_construction": true,
+      "json_parsing": false,
+      "regex_extraction": false,
+      "external_entities": "UNKNOWN",
+      "script_execution": "NO_EVIDENCE_OF_PARSER_SCRIPT_EXECUTION",
+      "error_handling": "UNKNOWN",
+      "security_guarantee": "NOT_ESTABLISHED",
+      "evidence": [
+        "security-ev-fa584bc6e966c23d"
+      ]
+    },
+    {
+      "parser_id": "parser-ed89dd1f4a97c90d",
+      "snapshot_id": "snapshot-0011",
+      "version": "v0.5.0",
+      "variant": "variant-c",
+      "parser": "JSON",
+      "owner": "JsonProvider.recognize",
+      "mechanism": "JSON_PARSE",
+      "input_size": "maxStoredTextPreview",
+      "recursion": "PRESENT",
+      "dom_construction": false,
+      "json_parsing": true,
+      "regex_extraction": false,
+      "external_entities": "UNKNOWN",
+      "script_execution": "NO_EVIDENCE_OF_PARSER_SCRIPT_EXECUTION",
+      "error_handling": "LOCAL_CHECK_OR_CATCH",
+      "security_guarantee": "NOT_ESTABLISHED",
+      "evidence": [
+        "security-ev-9cf5584355194a67"
+      ]
+    },
+    {
+      "parser_id": "parser-eb54ca1cc1e35132",
+      "snapshot_id": "snapshot-0011",
+      "version": "v0.5.0",
+      "variant": "variant-c",
+      "parser": "TEXT",
+      "owner": "TOP_LEVEL.canonicalizeUrl",
+      "mechanism": "REGEX_OR_TOKEN_EXTRACTION",
+      "input_size": "maxStoredTextPreview",
+      "recursion": "NOT_EVIDENCED",
+      "dom_construction": false,
+      "json_parsing": false,
+      "regex_extraction": true,
+      "external_entities": "UNKNOWN",
+      "script_execution": "NO_EVIDENCE_OF_PARSER_SCRIPT_EXECUTION",
+      "error_handling": "LOCAL_CHECK_OR_CATCH",
+      "security_guarantee": "NOT_ESTABLISHED",
+      "evidence": [
+        "security-ev-8d845b18662cceba"
+      ]
+    },
+    {
+      "parser_id": "parser-1339153dde3ebfed",
+      "snapshot_id": "snapshot-0010",
+      "version": "v0.6.0",
+      "variant": "variant-a",
+      "parser": "HTML",
+      "owner": "HtmlProvider.recognize",
+      "mechanism": "DOM_CONSTRUCTION",
+      "input_size": "UNBOUNDED_OR_UNKNOWN_AT_PARSER",
+      "recursion": "PRESENT",
+      "dom_construction": true,
+      "json_parsing": false,
+      "regex_extraction": false,
+      "external_entities": "UNKNOWN",
+      "script_execution": "NO_EVIDENCE_OF_PARSER_SCRIPT_EXECUTION",
+      "error_handling": "UNKNOWN",
+      "security_guarantee": "NOT_ESTABLISHED",
+      "evidence": [
+        "security-ev-4334d53a6bb1a87b"
+      ]
+    },
+    {
+      "parser_id": "parser-87944f6ba0cb20ff",
+      "snapshot_id": "snapshot-0010",
+      "version": "v0.6.0",
+      "variant": "variant-a",
+      "parser": "JSON",
+      "owner": "KnowledgeBase.load",
+      "mechanism": "JSON_PARSE",
+      "input_size": "UNBOUNDED_OR_UNKNOWN_AT_PARSER",
+      "recursion": "NOT_EVIDENCED",
+      "dom_construction": false,
+      "json_parsing": true,
+      "regex_extraction": false,
+      "external_entities": "UNKNOWN",
+      "script_execution": "NO_EVIDENCE_OF_PARSER_SCRIPT_EXECUTION",
+      "error_handling": "LOCAL_CHECK_OR_CATCH",
+      "security_guarantee": "NOT_ESTABLISHED",
+      "evidence": [
+        "security-ev-c328c697f9d62ae0"
+      ]
+    },
+    {
+      "parser_id": "parser-9df9b753109737c3",
+      "snapshot_id": "snapshot-0010",
+      "version": "v0.6.0",
+      "variant": "variant-a",
+      "parser": "TEXT",
+      "owner": "TOP_LEVEL.extractUrls",
+      "mechanism": "REGEX_OR_TOKEN_EXTRACTION",
+      "input_size": "UNBOUNDED_OR_UNKNOWN_AT_PARSER",
+      "recursion": "NOT_EVIDENCED",
+      "dom_construction": false,
+      "json_parsing": false,
+      "regex_extraction": true,
+      "external_entities": "UNKNOWN",
+      "script_execution": "NO_EVIDENCE_OF_PARSER_SCRIPT_EXECUTION",
+      "error_handling": "UNKNOWN",
+      "security_guarantee": "NOT_ESTABLISHED",
+      "evidence": [
+        "security-ev-4acc77324d4b2cc6"
+      ]
+    },
+    {
+      "parser_id": "parser-6f7b038960dc9cba",
+      "snapshot_id": "snapshot-0012",
+      "version": "v0.6.0",
+      "variant": "variant-b",
+      "parser": "HTML",
+      "owner": "HtmlProvider.recognize",
+      "mechanism": "DOM_CONSTRUCTION",
+      "input_size": "UNBOUNDED_OR_UNKNOWN_AT_PARSER",
+      "recursion": "PRESENT",
+      "dom_construction": true,
+      "json_parsing": false,
+      "regex_extraction": false,
+      "external_entities": "UNKNOWN",
+      "script_execution": "NO_EVIDENCE_OF_PARSER_SCRIPT_EXECUTION",
+      "error_handling": "UNKNOWN",
+      "security_guarantee": "NOT_ESTABLISHED",
+      "evidence": [
+        "security-ev-cb1d561b1f72dc34"
+      ]
+    },
+    {
+      "parser_id": "parser-1494cb96c7797752",
+      "snapshot_id": "snapshot-0012",
+      "version": "v0.6.0",
+      "variant": "variant-b",
+      "parser": "JSON",
+      "owner": "JsonProvider.recognize",
+      "mechanism": "JSON_PARSE",
+      "input_size": "UNBOUNDED_OR_UNKNOWN_AT_PARSER",
+      "recursion": "PRESENT",
+      "dom_construction": false,
+      "json_parsing": true,
+      "regex_extraction": false,
+      "external_entities": "UNKNOWN",
+      "script_execution": "NO_EVIDENCE_OF_PARSER_SCRIPT_EXECUTION",
+      "error_handling": "LOCAL_CHECK_OR_CATCH",
+      "security_guarantee": "NOT_ESTABLISHED",
+      "evidence": [
+        "security-ev-a51ec424b299dd90"
+      ]
+    },
+    {
+      "parser_id": "parser-79d52d96b8474f1e",
+      "snapshot_id": "snapshot-0012",
+      "version": "v0.6.0",
+      "variant": "variant-b",
+      "parser": "TEXT",
+      "owner": "TOP_LEVEL.canonicalizeUrl",
+      "mechanism": "REGEX_OR_TOKEN_EXTRACTION",
+      "input_size": "UNBOUNDED_OR_UNKNOWN_AT_PARSER",
+      "recursion": "NOT_EVIDENCED",
+      "dom_construction": false,
+      "json_parsing": false,
+      "regex_extraction": true,
+      "external_entities": "UNKNOWN",
+      "script_execution": "NO_EVIDENCE_OF_PARSER_SCRIPT_EXECUTION",
+      "error_handling": "LOCAL_CHECK_OR_CATCH",
+      "security_guarantee": "NOT_ESTABLISHED",
+      "evidence": [
+        "security-ev-9a6504499528ae33"
+      ]
+    },
+    {
+      "parser_id": "parser-d3981708e65ddcba",
+      "snapshot_id": "snapshot-0013",
+      "version": "v0.6.0",
+      "variant": "variant-c",
+      "parser": "HTML",
+      "owner": "HtmlProvider.discover",
+      "mechanism": "DOM_CONSTRUCTION",
+      "input_size": "UNBOUNDED_OR_UNKNOWN_AT_PARSER",
+      "recursion": "PRESENT",
+      "dom_construction": true,
+      "json_parsing": false,
+      "regex_extraction": false,
+      "external_entities": "UNKNOWN",
+      "script_execution": "NO_EVIDENCE_OF_PARSER_SCRIPT_EXECUTION",
+      "error_handling": "UNKNOWN",
+      "security_guarantee": "NOT_ESTABLISHED",
+      "evidence": [
+        "security-ev-13caee4ba1e1becb"
+      ]
+    },
+    {
+      "parser_id": "parser-d85bacfe6f2d224a",
+      "snapshot_id": "snapshot-0013",
+      "version": "v0.6.0",
+      "variant": "variant-c",
+      "parser": "JSON",
+      "owner": "KnowledgeBase.load",
+      "mechanism": "JSON_PARSE",
+      "input_size": "UNBOUNDED_OR_UNKNOWN_AT_PARSER",
+      "recursion": "NOT_EVIDENCED",
+      "dom_construction": false,
+      "json_parsing": true,
+      "regex_extraction": false,
+      "external_entities": "UNKNOWN",
+      "script_execution": "NO_EVIDENCE_OF_PARSER_SCRIPT_EXECUTION",
+      "error_handling": "LOCAL_CHECK_OR_CATCH",
+      "security_guarantee": "NOT_ESTABLISHED",
+      "evidence": [
+        "security-ev-499b12bbe52be215"
+      ]
+    },
+    {
+      "parser_id": "parser-4bbc654960b121dc",
+      "snapshot_id": "snapshot-0013",
+      "version": "v0.6.0",
+      "variant": "variant-c",
+      "parser": "TEXT",
+      "owner": "TOP_LEVEL.canonicalizeUrl",
+      "mechanism": "REGEX_OR_TOKEN_EXTRACTION",
+      "input_size": "UNBOUNDED_OR_UNKNOWN_AT_PARSER",
+      "recursion": "NOT_EVIDENCED",
+      "dom_construction": false,
+      "json_parsing": false,
+      "regex_extraction": true,
+      "external_entities": "UNKNOWN",
+      "script_execution": "NO_EVIDENCE_OF_PARSER_SCRIPT_EXECUTION",
+      "error_handling": "LOCAL_CHECK_OR_CATCH",
+      "security_guarantee": "NOT_ESTABLISHED",
+      "evidence": [
+        "security-ev-1836280a8384b880"
+      ]
+    },
+    {
+      "parser_id": "parser-a0a2758f9562e6b1",
+      "snapshot_id": "snapshot-0014",
+      "version": "v0.7.1",
+      "variant": "only-evidenced-complete-occurrence",
+      "parser": "HTML",
+      "owner": "TOP_LEVEL.extractXmlLocs",
+      "mechanism": "DOM_CONSTRUCTION",
+      "input_size": "maxBodyChars",
+      "recursion": "NOT_EVIDENCED",
+      "dom_construction": true,
+      "json_parsing": false,
+      "regex_extraction": false,
+      "external_entities": "UNKNOWN",
+      "script_execution": "NO_EVIDENCE_OF_PARSER_SCRIPT_EXECUTION",
+      "error_handling": "LOCAL_CHECK_OR_CATCH",
+      "security_guarantee": "NOT_ESTABLISHED",
+      "evidence": [
+        "security-ev-f62d2a4917af9b42"
+      ]
+    },
+    {
+      "parser_id": "parser-3d9bdba00adc2527",
+      "snapshot_id": "snapshot-0014",
+      "version": "v0.7.1",
+      "variant": "only-evidenced-complete-occurrence",
+      "parser": "XML",
+      "owner": "TOP_LEVEL.extractXmlLocs",
+      "mechanism": "DOM_CONSTRUCTION",
+      "input_size": "maxBodyChars",
+      "recursion": "NOT_EVIDENCED",
+      "dom_construction": true,
+      "json_parsing": false,
+      "regex_extraction": false,
+      "external_entities": "UNKNOWN",
+      "script_execution": "NO_EVIDENCE_OF_PARSER_SCRIPT_EXECUTION",
+      "error_handling": "LOCAL_CHECK_OR_CATCH",
+      "security_guarantee": "NOT_ESTABLISHED",
+      "evidence": [
+        "security-ev-f996cceb621bf37d"
+      ]
+    },
+    {
+      "parser_id": "parser-123e0d6c4e4e99ad",
+      "snapshot_id": "snapshot-0014",
+      "version": "v0.7.1",
+      "variant": "only-evidenced-complete-occurrence",
+      "parser": "JSON",
+      "owner": "JsonProvider.recognize",
+      "mechanism": "JSON_PARSE",
+      "input_size": "maxBodyChars",
+      "recursion": "PRESENT",
+      "dom_construction": false,
+      "json_parsing": true,
+      "regex_extraction": false,
+      "external_entities": "UNKNOWN",
+      "script_execution": "NO_EVIDENCE_OF_PARSER_SCRIPT_EXECUTION",
+      "error_handling": "LOCAL_CHECK_OR_CATCH",
+      "security_guarantee": "NOT_ESTABLISHED",
+      "evidence": [
+        "security-ev-9bcae44b57f9bab8"
+      ]
+    },
+    {
+      "parser_id": "parser-1438e4f663a5c5fb",
+      "snapshot_id": "snapshot-0014",
+      "version": "v0.7.1",
+      "variant": "only-evidenced-complete-occurrence",
+      "parser": "TEXT",
+      "owner": "TOP_LEVEL.isAllowedUrl",
+      "mechanism": "REGEX_OR_TOKEN_EXTRACTION",
+      "input_size": "maxBodyChars",
+      "recursion": "NOT_EVIDENCED",
+      "dom_construction": false,
+      "json_parsing": false,
+      "regex_extraction": true,
+      "external_entities": "UNKNOWN",
+      "script_execution": "NO_EVIDENCE_OF_PARSER_SCRIPT_EXECUTION",
+      "error_handling": "LOCAL_CHECK_OR_CATCH",
+      "security_guarantee": "NOT_ESTABLISHED",
+      "evidence": [
+        "security-ev-db7a472e360bca27"
+      ]
+    }
+  ],
+  "regex_risks": [
+    {
+      "regex_id": "regex-374e03184cd0d57c",
+      "snapshot_id": "snapshot-0011",
+      "version": "v0.5.0",
+      "owner": "TOP_LEVEL.looksLikeHtml",
+      "pattern": "/<!doctype\\s+html|<html[\\s>]|<head[\\s>]|<body[\\s>]/i",
+      "risk": "THEORETICAL",
+      "catastrophic_backtracking": "NOT_ESTABLISHED",
+      "input_bound": "UNKNOWN",
+      "demonstrated": false,
+      "evidence": [
+        "security-ev-e1f9fdcf25ec8135"
+      ]
+    },
+    {
+      "regex_id": "regex-e7b4570baf5d0608",
+      "snapshot_id": "snapshot-0012",
+      "version": "v0.6.0",
+      "owner": "TOP_LEVEL.looksLikeHtml",
+      "pattern": "/<!doctype\\s+html|<html[\\s>]|<head[\\s>]|<body[\\s>]/i",
+      "risk": "THEORETICAL",
+      "catastrophic_backtracking": "NOT_ESTABLISHED",
+      "input_bound": "UNKNOWN",
+      "demonstrated": false,
+      "evidence": [
+        "security-ev-51764f0aa3e86e46"
+      ]
+    },
+    {
+      "regex_id": "regex-99177e103b6b0ee0",
+      "snapshot_id": "snapshot-0013",
+      "version": "v0.6.0",
+      "owner": "TOP_LEVEL.looksLikeHtml",
+      "pattern": "/<html[\\s>]|<!doctype\\s+html|<head[\\s>]|<body[\\s>]/i",
+      "risk": "THEORETICAL",
+      "catastrophic_backtracking": "NOT_ESTABLISHED",
+      "input_bound": "UNKNOWN",
+      "demonstrated": false,
+      "evidence": [
+        "security-ev-1842fb926ea0888f"
+      ]
+    },
+    {
+      "regex_id": "regex-3013e11c41e8d6fe",
+      "snapshot_id": "snapshot-0013",
+      "version": "v0.6.0",
+      "owner": "TOP_LEVEL.looksLikeXml",
+      "pattern": "/^\\s*(<\\?xml\\b|<[\\w:-]+[\\s>])/i",
+      "risk": "THEORETICAL",
+      "catastrophic_backtracking": "NOT_ESTABLISHED",
+      "input_bound": "UNKNOWN",
+      "demonstrated": false,
+      "evidence": [
+        "security-ev-bab0cf2d4305319b"
+      ]
+    },
+    {
+      "regex_id": "regex-61ae1f4b0de71917",
+      "snapshot_id": "snapshot-0014",
+      "version": "v0.7.1",
+      "owner": "TOP_LEVEL.looksLikeHtml",
+      "pattern": "/^\\s*(<!doctype\\s+html|<html\\b)/i",
+      "risk": "THEORETICAL",
+      "catastrophic_backtracking": "NOT_ESTABLISHED",
+      "input_bound": "UNKNOWN",
+      "demonstrated": false,
+      "evidence": [
+        "security-ev-45480cea091c41e0"
+      ]
+    },
+    {
+      "regex_id": "regex-06167785299df738",
+      "snapshot_id": "snapshot-0014",
+      "version": "v0.7.1",
+      "owner": "TOP_LEVEL.looksLikeJson",
+      "pattern": "/^\\s*[\\[{]/",
+      "risk": "THEORETICAL",
+      "catastrophic_backtracking": "NOT_ESTABLISHED",
+      "input_bound": "UNKNOWN",
+      "demonstrated": false,
+      "evidence": [
+        "security-ev-9e946ebc7cfc45ee"
+      ]
+    },
+    {
+      "regex_id": "regex-7d34130a327aa090",
+      "snapshot_id": "snapshot-0014",
+      "version": "v0.7.1",
+      "owner": "TOP_LEVEL.looksLikeXml",
+      "pattern": "/^\\s*<\\?xml\\b/i",
+      "risk": "THEORETICAL",
+      "catastrophic_backtracking": "NOT_ESTABLISHED",
+      "input_bound": "UNKNOWN",
+      "demonstrated": false,
+      "evidence": [
+        "security-ev-24e6eb3a33c37d74"
+      ]
+    }
+  ]
+}

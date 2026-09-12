@@ -1,0 +1,50 @@
+initialize blind search space
+initialize guided search queue
+initialize discovered database
+
+while search space is not exhausted:
+
+    candidate = select_next_candidate()
+
+    tune(candidate)
+
+    if not detect_signal():
+        continue
+
+    hypotheses = characterize_signal(candidate)
+
+    for hypothesis in rank(hypotheses):
+
+        if not acquire(hypothesis):
+            continue
+
+        if not validate_transport_stream():
+            continue
+
+        protocol = identify_protocol()
+
+        if protocol != DVB:
+            continue
+
+        metadata = parse_DVB_metadata()
+
+        multiplex = identify_or_create_multiplex(metadata)
+
+        merge_reception_parameters(
+            multiplex,
+            hypothesis
+        )
+
+        services = enumerate_services()
+
+        merge_services(multiplex, services)
+
+        new_candidates = extract_network_candidates(metadata)
+
+        add_to_guided_queue(new_candidates)
+
+        mark_candidate_successful(candidate)
+
+        break
+
+return discovered_database

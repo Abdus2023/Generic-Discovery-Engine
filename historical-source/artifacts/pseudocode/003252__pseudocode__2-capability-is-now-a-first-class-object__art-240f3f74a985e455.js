@@ -1,0 +1,1 @@
+candidate.type === "api"

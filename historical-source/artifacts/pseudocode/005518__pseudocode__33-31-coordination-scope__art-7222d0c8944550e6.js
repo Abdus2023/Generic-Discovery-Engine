@@ -1,0 +1,4 @@
+{
+    coordinationScope:
+        "browser-profile"
+}

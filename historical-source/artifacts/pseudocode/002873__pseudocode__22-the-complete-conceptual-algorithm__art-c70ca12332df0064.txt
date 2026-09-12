@@ -1,0 +1,33 @@
+initialize knowledge base
+initialize search space
+initialize candidate priority queue
+
+while termination_condition_not_met:
+
+    candidate = scheduler.select()
+
+    observation = acquire_and_measure(candidate)
+
+    knowledge.update(observation)
+
+    if observation.contains_valid_DVB_stream:
+
+        metadata = parse_PSI_SI(observation.stream)
+
+        discovery = normalize(metadata, observation)
+
+        database.merge(discovery)
+
+        candidates = derive_candidates(metadata)
+
+        scheduler.add(candidates, high_priority)
+
+    else:
+
+        candidates = refine_hypothesis(candidate, observation)
+
+        scheduler.add(candidates, calculated_priority)
+
+    update_coverage()
+
+return database + coverage + observations

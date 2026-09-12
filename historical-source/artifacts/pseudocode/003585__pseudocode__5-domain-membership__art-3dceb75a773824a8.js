@@ -1,0 +1,1 @@
+domain.contains(candidate)

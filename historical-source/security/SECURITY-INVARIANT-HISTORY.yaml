@@ -1,0 +1,1232 @@
+{
+  "schema_version": 8,
+  "builder": "security-archaeology-builder-v8",
+  "model_kind": "DERIVED_SECURITY_ARCHAEOLOGY_NOT_SOURCE",
+  "invariants": [
+    {
+      "invariant_id": "security-invariant-2e0cbae1dc85898b",
+      "snapshot_id": "snapshot-0001",
+      "version": "v0.1.0",
+      "variant": "mechanically-composed",
+      "invariant": "remote content is data",
+      "status": "SUPPORTED",
+      "claim_type": "SECURITY_PROPERTY",
+      "mechanism_not_guarantee": true,
+      "historical_test": "NOT_FOUND",
+      "evidence": [
+        "security-ev-c2b65f751cd68d51"
+      ]
+    },
+    {
+      "invariant_id": "security-invariant-3774572fa9194acc",
+      "snapshot_id": "snapshot-0001",
+      "version": "v0.1.0",
+      "variant": "mechanically-composed",
+      "invariant": "provider failure cannot corrupt global state",
+      "status": "UNKNOWN",
+      "claim_type": "SECURITY_ASSUMPTION",
+      "mechanism_not_guarantee": true,
+      "historical_test": "NOT_FOUND",
+      "evidence": [
+        "security-absence-ae48fcb5e0ce5002"
+      ]
+    },
+    {
+      "invariant_id": "security-invariant-984ba7e6ef28517b",
+      "snapshot_id": "snapshot-0001",
+      "version": "v0.1.0",
+      "variant": "mechanically-composed",
+      "invariant": "candidate identity remains stable",
+      "status": "UNKNOWN",
+      "claim_type": "SECURITY_ASSUMPTION",
+      "mechanism_not_guarantee": true,
+      "historical_test": "NOT_FOUND",
+      "evidence": [
+        "security-ev-aa616e0a22058be3"
+      ]
+    },
+    {
+      "invariant_id": "security-invariant-147639cd8fed4e97",
+      "snapshot_id": "snapshot-0001",
+      "version": "v0.1.0",
+      "variant": "mechanically-composed",
+      "invariant": "provenance cannot be silently lost",
+      "status": "UNKNOWN",
+      "claim_type": "SECURITY_ASSUMPTION",
+      "mechanism_not_guarantee": true,
+      "historical_test": "NOT_FOUND",
+      "evidence": [
+        "security-ev-d64c4269c0f700b3",
+        "security-ev-04a1849bf2b86df6"
+      ]
+    },
+    {
+      "invariant_id": "security-invariant-f33d8ab99fceacf7",
+      "snapshot_id": "snapshot-0001",
+      "version": "v0.1.0",
+      "variant": "mechanically-composed",
+      "invariant": "workers cannot double-claim candidates",
+      "status": "UNKNOWN",
+      "claim_type": "SECURITY_PROPERTY",
+      "mechanism_not_guarantee": true,
+      "historical_test": "NOT_FOUND",
+      "evidence": [
+        "security-absence-f247455ad45b5a6c"
+      ]
+    },
+    {
+      "invariant_id": "security-invariant-cb3fe421c2a432a8",
+      "snapshot_id": "snapshot-0001",
+      "version": "v0.1.0",
+      "variant": "mechanically-composed",
+      "invariant": "bounded concurrency is preserved",
+      "status": "SUPPORTED",
+      "claim_type": "SECURITY_PROPERTY",
+      "mechanism_not_guarantee": true,
+      "historical_test": "NOT_FOUND",
+      "evidence": [
+        "security-ev-f9d9b3c207c68249"
+      ]
+    },
+    {
+      "invariant_id": "security-invariant-32d391d4c588ab8d",
+      "snapshot_id": "snapshot-0001",
+      "version": "v0.1.0",
+      "variant": "mechanically-composed",
+      "invariant": "untrusted input cannot execute as code",
+      "status": "UNKNOWN",
+      "claim_type": "SECURITY_ASSUMPTION",
+      "mechanism_not_guarantee": true,
+      "historical_test": "NOT_FOUND",
+      "evidence": [
+        "security-ev-c2b65f751cd68d51"
+      ]
+    },
+    {
+      "invariant_id": "security-invariant-be3cf27c1d72beed",
+      "snapshot_id": "snapshot-0003",
+      "version": "v0.2.0",
+      "variant": "mechanically-composed",
+      "invariant": "remote content is data",
+      "status": "SUPPORTED",
+      "claim_type": "SECURITY_PROPERTY",
+      "mechanism_not_guarantee": true,
+      "historical_test": "NOT_FOUND",
+      "evidence": [
+        "security-ev-7123bf5d8c84d6f4"
+      ]
+    },
+    {
+      "invariant_id": "security-invariant-2978008a04ae64ba",
+      "snapshot_id": "snapshot-0003",
+      "version": "v0.2.0",
+      "variant": "mechanically-composed",
+      "invariant": "provider failure cannot corrupt global state",
+      "status": "UNKNOWN",
+      "claim_type": "SECURITY_ASSUMPTION",
+      "mechanism_not_guarantee": true,
+      "historical_test": "NOT_FOUND",
+      "evidence": [
+        "security-ev-93f7b757e1468cb4"
+      ]
+    },
+    {
+      "invariant_id": "security-invariant-b2dbe6ef942bd2b5",
+      "snapshot_id": "snapshot-0003",
+      "version": "v0.2.0",
+      "variant": "mechanically-composed",
+      "invariant": "candidate identity remains stable",
+      "status": "UNKNOWN",
+      "claim_type": "SECURITY_ASSUMPTION",
+      "mechanism_not_guarantee": true,
+      "historical_test": "NOT_FOUND",
+      "evidence": [
+        "security-ev-efd80a1692bf5aa1"
+      ]
+    },
+    {
+      "invariant_id": "security-invariant-a464188bfcd36b27",
+      "snapshot_id": "snapshot-0003",
+      "version": "v0.2.0",
+      "variant": "mechanically-composed",
+      "invariant": "provenance cannot be silently lost",
+      "status": "UNKNOWN",
+      "claim_type": "SECURITY_ASSUMPTION",
+      "mechanism_not_guarantee": true,
+      "historical_test": "NOT_FOUND",
+      "evidence": [
+        "security-ev-3ffeb0ac0971fdc5",
+        "security-ev-a06f12c582ac764c"
+      ]
+    },
+    {
+      "invariant_id": "security-invariant-1e5510d1f4937969",
+      "snapshot_id": "snapshot-0003",
+      "version": "v0.2.0",
+      "variant": "mechanically-composed",
+      "invariant": "workers cannot double-claim candidates",
+      "status": "SUPPORTED",
+      "claim_type": "SECURITY_PROPERTY",
+      "mechanism_not_guarantee": true,
+      "historical_test": "NOT_FOUND",
+      "evidence": [
+        "security-ev-2edbfd1d30a21f40",
+        "security-ev-c420f255e02c9133",
+        "security-ev-c4ef2d16cfef0d8b"
+      ]
+    },
+    {
+      "invariant_id": "security-invariant-3247f3dbff5d07e0",
+      "snapshot_id": "snapshot-0003",
+      "version": "v0.2.0",
+      "variant": "mechanically-composed",
+      "invariant": "bounded concurrency is preserved",
+      "status": "SUPPORTED",
+      "claim_type": "SECURITY_PROPERTY",
+      "mechanism_not_guarantee": true,
+      "historical_test": "NOT_FOUND",
+      "evidence": [
+        "security-ev-837e9c017eea2290"
+      ]
+    },
+    {
+      "invariant_id": "security-invariant-be0b7087f1ae3504",
+      "snapshot_id": "snapshot-0003",
+      "version": "v0.2.0",
+      "variant": "mechanically-composed",
+      "invariant": "untrusted input cannot execute as code",
+      "status": "UNKNOWN",
+      "claim_type": "SECURITY_ASSUMPTION",
+      "mechanism_not_guarantee": true,
+      "historical_test": "NOT_FOUND",
+      "evidence": [
+        "security-ev-7123bf5d8c84d6f4"
+      ]
+    },
+    {
+      "invariant_id": "security-invariant-450206010e9068ed",
+      "snapshot_id": "snapshot-0005",
+      "version": "v0.3.0",
+      "variant": "only-evidenced-complete-occurrence",
+      "invariant": "remote content is data",
+      "status": "SUPPORTED",
+      "claim_type": "SECURITY_PROPERTY",
+      "mechanism_not_guarantee": true,
+      "historical_test": "NOT_FOUND",
+      "evidence": [
+        "security-ev-05ed0b72a2e40a6d"
+      ]
+    },
+    {
+      "invariant_id": "security-invariant-38e1b1fd1d043e5e",
+      "snapshot_id": "snapshot-0005",
+      "version": "v0.3.0",
+      "variant": "only-evidenced-complete-occurrence",
+      "invariant": "provider failure cannot corrupt global state",
+      "status": "UNKNOWN",
+      "claim_type": "SECURITY_ASSUMPTION",
+      "mechanism_not_guarantee": true,
+      "historical_test": "NOT_FOUND",
+      "evidence": [
+        "security-ev-0fc30ac9c02fc3da"
+      ]
+    },
+    {
+      "invariant_id": "security-invariant-bab2b390670371ac",
+      "snapshot_id": "snapshot-0005",
+      "version": "v0.3.0",
+      "variant": "only-evidenced-complete-occurrence",
+      "invariant": "candidate identity remains stable",
+      "status": "UNKNOWN",
+      "claim_type": "SECURITY_ASSUMPTION",
+      "mechanism_not_guarantee": true,
+      "historical_test": "NOT_FOUND",
+      "evidence": [
+        "security-ev-1da2b787cec33726"
+      ]
+    },
+    {
+      "invariant_id": "security-invariant-26fa2a1a5d5b2b56",
+      "snapshot_id": "snapshot-0005",
+      "version": "v0.3.0",
+      "variant": "only-evidenced-complete-occurrence",
+      "invariant": "provenance cannot be silently lost",
+      "status": "UNKNOWN",
+      "claim_type": "SECURITY_ASSUMPTION",
+      "mechanism_not_guarantee": true,
+      "historical_test": "NOT_FOUND",
+      "evidence": [
+        "security-ev-61d9257349665422",
+        "security-ev-6744aa8f4da06977"
+      ]
+    },
+    {
+      "invariant_id": "security-invariant-56d0f98ee4b082f4",
+      "snapshot_id": "snapshot-0005",
+      "version": "v0.3.0",
+      "variant": "only-evidenced-complete-occurrence",
+      "invariant": "workers cannot double-claim candidates",
+      "status": "SUPPORTED",
+      "claim_type": "SECURITY_PROPERTY",
+      "mechanism_not_guarantee": true,
+      "historical_test": "NOT_FOUND",
+      "evidence": [
+        "security-ev-f3da7d05db853cb3",
+        "security-ev-7f1b04549b616213",
+        "security-ev-440d9662316f2e81"
+      ]
+    },
+    {
+      "invariant_id": "security-invariant-99e7724337dfcd5a",
+      "snapshot_id": "snapshot-0005",
+      "version": "v0.3.0",
+      "variant": "only-evidenced-complete-occurrence",
+      "invariant": "bounded concurrency is preserved",
+      "status": "SUPPORTED",
+      "claim_type": "SECURITY_PROPERTY",
+      "mechanism_not_guarantee": true,
+      "historical_test": "NOT_FOUND",
+      "evidence": [
+        "security-ev-edeb6f3b342f4d19"
+      ]
+    },
+    {
+      "invariant_id": "security-invariant-999249eadeaf6465",
+      "snapshot_id": "snapshot-0005",
+      "version": "v0.3.0",
+      "variant": "only-evidenced-complete-occurrence",
+      "invariant": "untrusted input cannot execute as code",
+      "status": "UNKNOWN",
+      "claim_type": "SECURITY_ASSUMPTION",
+      "mechanism_not_guarantee": true,
+      "historical_test": "NOT_FOUND",
+      "evidence": [
+        "security-ev-05ed0b72a2e40a6d"
+      ]
+    },
+    {
+      "invariant_id": "security-invariant-40fb184ed7aad5f8",
+      "snapshot_id": "snapshot-0006",
+      "version": "v0.4.0",
+      "variant": "variant-a",
+      "invariant": "remote content is data",
+      "status": "SUPPORTED",
+      "claim_type": "SECURITY_PROPERTY",
+      "mechanism_not_guarantee": true,
+      "historical_test": "NOT_FOUND",
+      "evidence": [
+        "security-ev-4b1f1121ff6d855b"
+      ]
+    },
+    {
+      "invariant_id": "security-invariant-3951a46235c056f0",
+      "snapshot_id": "snapshot-0006",
+      "version": "v0.4.0",
+      "variant": "variant-a",
+      "invariant": "provider failure cannot corrupt global state",
+      "status": "UNKNOWN",
+      "claim_type": "SECURITY_ASSUMPTION",
+      "mechanism_not_guarantee": true,
+      "historical_test": "NOT_FOUND",
+      "evidence": [
+        "security-ev-cb7b5a34ff7ea49e"
+      ]
+    },
+    {
+      "invariant_id": "security-invariant-6410d482351d182c",
+      "snapshot_id": "snapshot-0006",
+      "version": "v0.4.0",
+      "variant": "variant-a",
+      "invariant": "candidate identity remains stable",
+      "status": "UNKNOWN",
+      "claim_type": "SECURITY_ASSUMPTION",
+      "mechanism_not_guarantee": true,
+      "historical_test": "NOT_FOUND",
+      "evidence": [
+        "security-ev-30fc6c4deb85bf1d"
+      ]
+    },
+    {
+      "invariant_id": "security-invariant-72e4a96e92581241",
+      "snapshot_id": "snapshot-0006",
+      "version": "v0.4.0",
+      "variant": "variant-a",
+      "invariant": "provenance cannot be silently lost",
+      "status": "UNKNOWN",
+      "claim_type": "SECURITY_ASSUMPTION",
+      "mechanism_not_guarantee": true,
+      "historical_test": "NOT_FOUND",
+      "evidence": [
+        "security-ev-d4dbac1166faa672",
+        "security-ev-e873a22416ed1fec"
+      ]
+    },
+    {
+      "invariant_id": "security-invariant-3b1522099dea44a9",
+      "snapshot_id": "snapshot-0006",
+      "version": "v0.4.0",
+      "variant": "variant-a",
+      "invariant": "workers cannot double-claim candidates",
+      "status": "SUPPORTED",
+      "claim_type": "SECURITY_PROPERTY",
+      "mechanism_not_guarantee": true,
+      "historical_test": "NOT_FOUND",
+      "evidence": [
+        "security-ev-27dd07689c764d06",
+        "security-ev-6b8e166c442ea9c2",
+        "security-ev-1fa46a68aa933042"
+      ]
+    },
+    {
+      "invariant_id": "security-invariant-23765ed62adadb73",
+      "snapshot_id": "snapshot-0006",
+      "version": "v0.4.0",
+      "variant": "variant-a",
+      "invariant": "bounded concurrency is preserved",
+      "status": "SUPPORTED",
+      "claim_type": "SECURITY_PROPERTY",
+      "mechanism_not_guarantee": true,
+      "historical_test": "NOT_FOUND",
+      "evidence": [
+        "security-ev-920e7b53532ac55a"
+      ]
+    },
+    {
+      "invariant_id": "security-invariant-9dda07ee50171e6f",
+      "snapshot_id": "snapshot-0006",
+      "version": "v0.4.0",
+      "variant": "variant-a",
+      "invariant": "untrusted input cannot execute as code",
+      "status": "UNKNOWN",
+      "claim_type": "SECURITY_ASSUMPTION",
+      "mechanism_not_guarantee": true,
+      "historical_test": "NOT_FOUND",
+      "evidence": [
+        "security-ev-4b1f1121ff6d855b"
+      ]
+    },
+    {
+      "invariant_id": "security-invariant-97b20b64d4968ef4",
+      "snapshot_id": "snapshot-0008",
+      "version": "v0.4.0",
+      "variant": "variant-b",
+      "invariant": "remote content is data",
+      "status": "SUPPORTED",
+      "claim_type": "SECURITY_PROPERTY",
+      "mechanism_not_guarantee": true,
+      "historical_test": "NOT_FOUND",
+      "evidence": [
+        "security-ev-0400a2f04846ba1d",
+        "security-ev-dd33e5933d4533d6"
+      ]
+    },
+    {
+      "invariant_id": "security-invariant-bd8cf0c60cd62219",
+      "snapshot_id": "snapshot-0008",
+      "version": "v0.4.0",
+      "variant": "variant-b",
+      "invariant": "provider failure cannot corrupt global state",
+      "status": "UNKNOWN",
+      "claim_type": "SECURITY_ASSUMPTION",
+      "mechanism_not_guarantee": true,
+      "historical_test": "NOT_FOUND",
+      "evidence": [
+        "security-ev-f6372cc6eabe4a2a"
+      ]
+    },
+    {
+      "invariant_id": "security-invariant-40f5b94858537ceb",
+      "snapshot_id": "snapshot-0008",
+      "version": "v0.4.0",
+      "variant": "variant-b",
+      "invariant": "candidate identity remains stable",
+      "status": "UNKNOWN",
+      "claim_type": "SECURITY_ASSUMPTION",
+      "mechanism_not_guarantee": true,
+      "historical_test": "NOT_FOUND",
+      "evidence": [
+        "security-ev-3c93f1875be348cd"
+      ]
+    },
+    {
+      "invariant_id": "security-invariant-0f9e4d272dd78cb2",
+      "snapshot_id": "snapshot-0008",
+      "version": "v0.4.0",
+      "variant": "variant-b",
+      "invariant": "provenance cannot be silently lost",
+      "status": "UNKNOWN",
+      "claim_type": "SECURITY_ASSUMPTION",
+      "mechanism_not_guarantee": true,
+      "historical_test": "NOT_FOUND",
+      "evidence": [
+        "security-ev-682da086115e60d2",
+        "security-ev-3abdc9651156a859"
+      ]
+    },
+    {
+      "invariant_id": "security-invariant-dd79ddf52a8682ad",
+      "snapshot_id": "snapshot-0008",
+      "version": "v0.4.0",
+      "variant": "variant-b",
+      "invariant": "workers cannot double-claim candidates",
+      "status": "SUPPORTED",
+      "claim_type": "SECURITY_PROPERTY",
+      "mechanism_not_guarantee": true,
+      "historical_test": "NOT_FOUND",
+      "evidence": [
+        "security-ev-3617b08d250e3f16",
+        "security-ev-7f36a4c573eb8527",
+        "security-ev-d91735d861538334"
+      ]
+    },
+    {
+      "invariant_id": "security-invariant-be232a07079731ba",
+      "snapshot_id": "snapshot-0008",
+      "version": "v0.4.0",
+      "variant": "variant-b",
+      "invariant": "bounded concurrency is preserved",
+      "status": "SUPPORTED",
+      "claim_type": "SECURITY_PROPERTY",
+      "mechanism_not_guarantee": true,
+      "historical_test": "NOT_FOUND",
+      "evidence": [
+        "security-ev-5d0fabe654497739"
+      ]
+    },
+    {
+      "invariant_id": "security-invariant-0db0a92f8d98fd59",
+      "snapshot_id": "snapshot-0008",
+      "version": "v0.4.0",
+      "variant": "variant-b",
+      "invariant": "untrusted input cannot execute as code",
+      "status": "UNKNOWN",
+      "claim_type": "SECURITY_ASSUMPTION",
+      "mechanism_not_guarantee": true,
+      "historical_test": "NOT_FOUND",
+      "evidence": [
+        "security-ev-0400a2f04846ba1d",
+        "security-ev-dd33e5933d4533d6"
+      ]
+    },
+    {
+      "invariant_id": "security-invariant-3465519233a23829",
+      "snapshot_id": "snapshot-0007",
+      "version": "v0.5.0",
+      "variant": "variant-a",
+      "invariant": "remote content is data",
+      "status": "SUPPORTED",
+      "claim_type": "SECURITY_PROPERTY",
+      "mechanism_not_guarantee": true,
+      "historical_test": "NOT_FOUND",
+      "evidence": [
+        "security-ev-ebed62125f4af7ae",
+        "security-ev-f9bdf24b86aa2c0c"
+      ]
+    },
+    {
+      "invariant_id": "security-invariant-acb140206715c937",
+      "snapshot_id": "snapshot-0007",
+      "version": "v0.5.0",
+      "variant": "variant-a",
+      "invariant": "provider failure cannot corrupt global state",
+      "status": "UNKNOWN",
+      "claim_type": "SECURITY_ASSUMPTION",
+      "mechanism_not_guarantee": true,
+      "historical_test": "NOT_FOUND",
+      "evidence": [
+        "security-ev-965dab7c70c38738"
+      ]
+    },
+    {
+      "invariant_id": "security-invariant-4d810eade77f9c21",
+      "snapshot_id": "snapshot-0007",
+      "version": "v0.5.0",
+      "variant": "variant-a",
+      "invariant": "candidate identity remains stable",
+      "status": "UNKNOWN",
+      "claim_type": "SECURITY_ASSUMPTION",
+      "mechanism_not_guarantee": true,
+      "historical_test": "NOT_FOUND",
+      "evidence": [
+        "security-ev-06c9589b499ca3f9"
+      ]
+    },
+    {
+      "invariant_id": "security-invariant-cbbe1330e6d9678d",
+      "snapshot_id": "snapshot-0007",
+      "version": "v0.5.0",
+      "variant": "variant-a",
+      "invariant": "provenance cannot be silently lost",
+      "status": "UNKNOWN",
+      "claim_type": "SECURITY_ASSUMPTION",
+      "mechanism_not_guarantee": true,
+      "historical_test": "NOT_FOUND",
+      "evidence": [
+        "security-ev-e9789eaf1a754667",
+        "security-ev-f688e83edfc47b33"
+      ]
+    },
+    {
+      "invariant_id": "security-invariant-76cf7fcc6fc0119f",
+      "snapshot_id": "snapshot-0007",
+      "version": "v0.5.0",
+      "variant": "variant-a",
+      "invariant": "workers cannot double-claim candidates",
+      "status": "SUPPORTED",
+      "claim_type": "SECURITY_PROPERTY",
+      "mechanism_not_guarantee": true,
+      "historical_test": "NOT_FOUND",
+      "evidence": [
+        "security-ev-bb8cc313ee3b16f3",
+        "security-ev-d7d15157168272c9",
+        "security-ev-d219f1c4633346af"
+      ]
+    },
+    {
+      "invariant_id": "security-invariant-2f6a8866e10923a8",
+      "snapshot_id": "snapshot-0007",
+      "version": "v0.5.0",
+      "variant": "variant-a",
+      "invariant": "bounded concurrency is preserved",
+      "status": "SUPPORTED",
+      "claim_type": "SECURITY_PROPERTY",
+      "mechanism_not_guarantee": true,
+      "historical_test": "NOT_FOUND",
+      "evidence": [
+        "security-ev-2174317aa462de1a"
+      ]
+    },
+    {
+      "invariant_id": "security-invariant-d5c91151bd2f7399",
+      "snapshot_id": "snapshot-0007",
+      "version": "v0.5.0",
+      "variant": "variant-a",
+      "invariant": "untrusted input cannot execute as code",
+      "status": "UNKNOWN",
+      "claim_type": "SECURITY_ASSUMPTION",
+      "mechanism_not_guarantee": true,
+      "historical_test": "NOT_FOUND",
+      "evidence": [
+        "security-ev-ebed62125f4af7ae",
+        "security-ev-f9bdf24b86aa2c0c"
+      ]
+    },
+    {
+      "invariant_id": "security-invariant-332abc6f2e3805d2",
+      "snapshot_id": "snapshot-0009",
+      "version": "v0.5.0",
+      "variant": "variant-b",
+      "invariant": "remote content is data",
+      "status": "SUPPORTED",
+      "claim_type": "SECURITY_PROPERTY",
+      "mechanism_not_guarantee": true,
+      "historical_test": "NOT_FOUND",
+      "evidence": [
+        "security-ev-d83a4c0b812e1958",
+        "security-ev-ffda3b844c9a7612"
+      ]
+    },
+    {
+      "invariant_id": "security-invariant-af4f31b818b715b7",
+      "snapshot_id": "snapshot-0009",
+      "version": "v0.5.0",
+      "variant": "variant-b",
+      "invariant": "provider failure cannot corrupt global state",
+      "status": "UNKNOWN",
+      "claim_type": "SECURITY_ASSUMPTION",
+      "mechanism_not_guarantee": true,
+      "historical_test": "NOT_FOUND",
+      "evidence": [
+        "security-ev-7a492c80ee19b9d9"
+      ]
+    },
+    {
+      "invariant_id": "security-invariant-47bbe9dfa9353aa4",
+      "snapshot_id": "snapshot-0009",
+      "version": "v0.5.0",
+      "variant": "variant-b",
+      "invariant": "candidate identity remains stable",
+      "status": "UNKNOWN",
+      "claim_type": "SECURITY_ASSUMPTION",
+      "mechanism_not_guarantee": true,
+      "historical_test": "NOT_FOUND",
+      "evidence": [
+        "security-ev-c744c67a59fe9768"
+      ]
+    },
+    {
+      "invariant_id": "security-invariant-aabe7f18e59d0fd0",
+      "snapshot_id": "snapshot-0009",
+      "version": "v0.5.0",
+      "variant": "variant-b",
+      "invariant": "provenance cannot be silently lost",
+      "status": "UNKNOWN",
+      "claim_type": "SECURITY_ASSUMPTION",
+      "mechanism_not_guarantee": true,
+      "historical_test": "NOT_FOUND",
+      "evidence": [
+        "security-ev-43248758212fd585",
+        "security-ev-9c623cea7d297954"
+      ]
+    },
+    {
+      "invariant_id": "security-invariant-5334b5582b530b7d",
+      "snapshot_id": "snapshot-0009",
+      "version": "v0.5.0",
+      "variant": "variant-b",
+      "invariant": "workers cannot double-claim candidates",
+      "status": "SUPPORTED",
+      "claim_type": "SECURITY_PROPERTY",
+      "mechanism_not_guarantee": true,
+      "historical_test": "NOT_FOUND",
+      "evidence": [
+        "security-ev-8320559b9265c706",
+        "security-ev-20d2ab2c01abd242",
+        "security-ev-2791254450bcac7e"
+      ]
+    },
+    {
+      "invariant_id": "security-invariant-5e1c2cd88f126695",
+      "snapshot_id": "snapshot-0009",
+      "version": "v0.5.0",
+      "variant": "variant-b",
+      "invariant": "bounded concurrency is preserved",
+      "status": "SUPPORTED",
+      "claim_type": "SECURITY_PROPERTY",
+      "mechanism_not_guarantee": true,
+      "historical_test": "NOT_FOUND",
+      "evidence": [
+        "security-ev-8c32ca5db4664d98"
+      ]
+    },
+    {
+      "invariant_id": "security-invariant-be84a6c3707c51aa",
+      "snapshot_id": "snapshot-0009",
+      "version": "v0.5.0",
+      "variant": "variant-b",
+      "invariant": "untrusted input cannot execute as code",
+      "status": "UNKNOWN",
+      "claim_type": "SECURITY_ASSUMPTION",
+      "mechanism_not_guarantee": true,
+      "historical_test": "NOT_FOUND",
+      "evidence": [
+        "security-ev-d83a4c0b812e1958",
+        "security-ev-ffda3b844c9a7612"
+      ]
+    },
+    {
+      "invariant_id": "security-invariant-38a793a2be7526eb",
+      "snapshot_id": "snapshot-0011",
+      "version": "v0.5.0",
+      "variant": "variant-c",
+      "invariant": "remote content is data",
+      "status": "SUPPORTED",
+      "claim_type": "SECURITY_PROPERTY",
+      "mechanism_not_guarantee": true,
+      "historical_test": "NOT_FOUND",
+      "evidence": [
+        "security-ev-5da9aa1ab39f6b75"
+      ]
+    },
+    {
+      "invariant_id": "security-invariant-1c8b167b1a20ffa1",
+      "snapshot_id": "snapshot-0011",
+      "version": "v0.5.0",
+      "variant": "variant-c",
+      "invariant": "provider failure cannot corrupt global state",
+      "status": "UNKNOWN",
+      "claim_type": "SECURITY_ASSUMPTION",
+      "mechanism_not_guarantee": true,
+      "historical_test": "NOT_FOUND",
+      "evidence": [
+        "security-ev-1328303decba4ccb"
+      ]
+    },
+    {
+      "invariant_id": "security-invariant-01f887460b077f21",
+      "snapshot_id": "snapshot-0011",
+      "version": "v0.5.0",
+      "variant": "variant-c",
+      "invariant": "candidate identity remains stable",
+      "status": "UNKNOWN",
+      "claim_type": "SECURITY_ASSUMPTION",
+      "mechanism_not_guarantee": true,
+      "historical_test": "NOT_FOUND",
+      "evidence": [
+        "security-ev-d38a6e7514f6dc3b"
+      ]
+    },
+    {
+      "invariant_id": "security-invariant-09553ebd82bed581",
+      "snapshot_id": "snapshot-0011",
+      "version": "v0.5.0",
+      "variant": "variant-c",
+      "invariant": "provenance cannot be silently lost",
+      "status": "UNKNOWN",
+      "claim_type": "SECURITY_ASSUMPTION",
+      "mechanism_not_guarantee": true,
+      "historical_test": "NOT_FOUND",
+      "evidence": [
+        "security-ev-0fe8a8134e652c18",
+        "security-ev-a15a8673c4772f5c"
+      ]
+    },
+    {
+      "invariant_id": "security-invariant-37fc9278c614a699",
+      "snapshot_id": "snapshot-0011",
+      "version": "v0.5.0",
+      "variant": "variant-c",
+      "invariant": "workers cannot double-claim candidates",
+      "status": "SUPPORTED",
+      "claim_type": "SECURITY_PROPERTY",
+      "mechanism_not_guarantee": true,
+      "historical_test": "NOT_FOUND",
+      "evidence": [
+        "security-ev-6a81c3d50c44205f",
+        "security-ev-5fac886d1e98f572",
+        "security-ev-e0fed62a21d805e2"
+      ]
+    },
+    {
+      "invariant_id": "security-invariant-ed659770533ebe2f",
+      "snapshot_id": "snapshot-0011",
+      "version": "v0.5.0",
+      "variant": "variant-c",
+      "invariant": "bounded concurrency is preserved",
+      "status": "SUPPORTED",
+      "claim_type": "SECURITY_PROPERTY",
+      "mechanism_not_guarantee": true,
+      "historical_test": "NOT_FOUND",
+      "evidence": [
+        "security-ev-b3943354d083c663"
+      ]
+    },
+    {
+      "invariant_id": "security-invariant-0fe05fab15b3ce17",
+      "snapshot_id": "snapshot-0011",
+      "version": "v0.5.0",
+      "variant": "variant-c",
+      "invariant": "untrusted input cannot execute as code",
+      "status": "UNKNOWN",
+      "claim_type": "SECURITY_ASSUMPTION",
+      "mechanism_not_guarantee": true,
+      "historical_test": "NOT_FOUND",
+      "evidence": [
+        "security-ev-5da9aa1ab39f6b75"
+      ]
+    },
+    {
+      "invariant_id": "security-invariant-124f8a19a34f4544",
+      "snapshot_id": "snapshot-0010",
+      "version": "v0.6.0",
+      "variant": "variant-a",
+      "invariant": "remote content is data",
+      "status": "SUPPORTED",
+      "claim_type": "SECURITY_PROPERTY",
+      "mechanism_not_guarantee": true,
+      "historical_test": "NOT_FOUND",
+      "evidence": [
+        "security-ev-7923f57307af6346",
+        "security-ev-bf1ebeb9faa9b342"
+      ]
+    },
+    {
+      "invariant_id": "security-invariant-b3f2aa577da4b872",
+      "snapshot_id": "snapshot-0010",
+      "version": "v0.6.0",
+      "variant": "variant-a",
+      "invariant": "provider failure cannot corrupt global state",
+      "status": "UNKNOWN",
+      "claim_type": "SECURITY_ASSUMPTION",
+      "mechanism_not_guarantee": true,
+      "historical_test": "NOT_FOUND",
+      "evidence": [
+        "security-ev-6d11608bf06b2d58"
+      ]
+    },
+    {
+      "invariant_id": "security-invariant-4782e97f3ff60c10",
+      "snapshot_id": "snapshot-0010",
+      "version": "v0.6.0",
+      "variant": "variant-a",
+      "invariant": "candidate identity remains stable",
+      "status": "UNKNOWN",
+      "claim_type": "SECURITY_ASSUMPTION",
+      "mechanism_not_guarantee": true,
+      "historical_test": "NOT_FOUND",
+      "evidence": [
+        "security-ev-6a0f40c6c081eca9"
+      ]
+    },
+    {
+      "invariant_id": "security-invariant-0f512ad453a8989f",
+      "snapshot_id": "snapshot-0010",
+      "version": "v0.6.0",
+      "variant": "variant-a",
+      "invariant": "provenance cannot be silently lost",
+      "status": "UNKNOWN",
+      "claim_type": "SECURITY_ASSUMPTION",
+      "mechanism_not_guarantee": true,
+      "historical_test": "NOT_FOUND",
+      "evidence": [
+        "security-ev-1b911f7578ffc1b9",
+        "security-ev-f87c9f4a3e7af9c3"
+      ]
+    },
+    {
+      "invariant_id": "security-invariant-0fd76d6efd476668",
+      "snapshot_id": "snapshot-0010",
+      "version": "v0.6.0",
+      "variant": "variant-a",
+      "invariant": "workers cannot double-claim candidates",
+      "status": "SUPPORTED",
+      "claim_type": "SECURITY_PROPERTY",
+      "mechanism_not_guarantee": true,
+      "historical_test": "NOT_FOUND",
+      "evidence": [
+        "security-ev-49913f50640c7915",
+        "security-ev-e5c362f7899cb8e9",
+        "security-ev-8df7f336596abeca"
+      ]
+    },
+    {
+      "invariant_id": "security-invariant-349d3d0b9251e028",
+      "snapshot_id": "snapshot-0010",
+      "version": "v0.6.0",
+      "variant": "variant-a",
+      "invariant": "bounded concurrency is preserved",
+      "status": "SUPPORTED",
+      "claim_type": "SECURITY_PROPERTY",
+      "mechanism_not_guarantee": true,
+      "historical_test": "NOT_FOUND",
+      "evidence": [
+        "security-ev-b85752d37da17503"
+      ]
+    },
+    {
+      "invariant_id": "security-invariant-afec725e28c4cb97",
+      "snapshot_id": "snapshot-0010",
+      "version": "v0.6.0",
+      "variant": "variant-a",
+      "invariant": "untrusted input cannot execute as code",
+      "status": "UNKNOWN",
+      "claim_type": "SECURITY_ASSUMPTION",
+      "mechanism_not_guarantee": true,
+      "historical_test": "NOT_FOUND",
+      "evidence": [
+        "security-ev-7923f57307af6346",
+        "security-ev-bf1ebeb9faa9b342"
+      ]
+    },
+    {
+      "invariant_id": "security-invariant-2ebe7011ef473170",
+      "snapshot_id": "snapshot-0012",
+      "version": "v0.6.0",
+      "variant": "variant-b",
+      "invariant": "remote content is data",
+      "status": "SUPPORTED",
+      "claim_type": "SECURITY_PROPERTY",
+      "mechanism_not_guarantee": true,
+      "historical_test": "NOT_FOUND",
+      "evidence": [
+        "security-ev-55dcf5dabe25596c"
+      ]
+    },
+    {
+      "invariant_id": "security-invariant-fbf677f8ef2969b3",
+      "snapshot_id": "snapshot-0012",
+      "version": "v0.6.0",
+      "variant": "variant-b",
+      "invariant": "provider failure cannot corrupt global state",
+      "status": "UNKNOWN",
+      "claim_type": "SECURITY_ASSUMPTION",
+      "mechanism_not_guarantee": true,
+      "historical_test": "NOT_FOUND",
+      "evidence": [
+        "security-ev-c022445af55471eb"
+      ]
+    },
+    {
+      "invariant_id": "security-invariant-df79eca21c9cf446",
+      "snapshot_id": "snapshot-0012",
+      "version": "v0.6.0",
+      "variant": "variant-b",
+      "invariant": "candidate identity remains stable",
+      "status": "UNKNOWN",
+      "claim_type": "SECURITY_ASSUMPTION",
+      "mechanism_not_guarantee": true,
+      "historical_test": "NOT_FOUND",
+      "evidence": [
+        "security-ev-da554a583bf837f4"
+      ]
+    },
+    {
+      "invariant_id": "security-invariant-b9ab9064059d78e9",
+      "snapshot_id": "snapshot-0012",
+      "version": "v0.6.0",
+      "variant": "variant-b",
+      "invariant": "provenance cannot be silently lost",
+      "status": "UNKNOWN",
+      "claim_type": "SECURITY_ASSUMPTION",
+      "mechanism_not_guarantee": true,
+      "historical_test": "NOT_FOUND",
+      "evidence": [
+        "security-ev-44230bb705d86b81",
+        "security-ev-5b27f19399da3af9"
+      ]
+    },
+    {
+      "invariant_id": "security-invariant-85f2d68a918947a8",
+      "snapshot_id": "snapshot-0012",
+      "version": "v0.6.0",
+      "variant": "variant-b",
+      "invariant": "workers cannot double-claim candidates",
+      "status": "SUPPORTED",
+      "claim_type": "SECURITY_PROPERTY",
+      "mechanism_not_guarantee": true,
+      "historical_test": "NOT_FOUND",
+      "evidence": [
+        "security-ev-f149ecc24fbeee03",
+        "security-ev-3e46f78a1cd90567",
+        "security-ev-055155492a06a46e"
+      ]
+    },
+    {
+      "invariant_id": "security-invariant-d4676f74eb85ebab",
+      "snapshot_id": "snapshot-0012",
+      "version": "v0.6.0",
+      "variant": "variant-b",
+      "invariant": "bounded concurrency is preserved",
+      "status": "SUPPORTED",
+      "claim_type": "SECURITY_PROPERTY",
+      "mechanism_not_guarantee": true,
+      "historical_test": "NOT_FOUND",
+      "evidence": [
+        "security-ev-e6b335806f397249"
+      ]
+    },
+    {
+      "invariant_id": "security-invariant-33a2cc2f0e338e7a",
+      "snapshot_id": "snapshot-0012",
+      "version": "v0.6.0",
+      "variant": "variant-b",
+      "invariant": "untrusted input cannot execute as code",
+      "status": "UNKNOWN",
+      "claim_type": "SECURITY_ASSUMPTION",
+      "mechanism_not_guarantee": true,
+      "historical_test": "NOT_FOUND",
+      "evidence": [
+        "security-ev-55dcf5dabe25596c"
+      ]
+    },
+    {
+      "invariant_id": "security-invariant-44e9f806221cb681",
+      "snapshot_id": "snapshot-0013",
+      "version": "v0.6.0",
+      "variant": "variant-c",
+      "invariant": "remote content is data",
+      "status": "SUPPORTED",
+      "claim_type": "SECURITY_PROPERTY",
+      "mechanism_not_guarantee": true,
+      "historical_test": "NOT_FOUND",
+      "evidence": [
+        "security-ev-128869e0b3ffafd6",
+        "security-ev-18df7ea3e448f634"
+      ]
+    },
+    {
+      "invariant_id": "security-invariant-d56db9d3d1044e02",
+      "snapshot_id": "snapshot-0013",
+      "version": "v0.6.0",
+      "variant": "variant-c",
+      "invariant": "provider failure cannot corrupt global state",
+      "status": "UNKNOWN",
+      "claim_type": "SECURITY_ASSUMPTION",
+      "mechanism_not_guarantee": true,
+      "historical_test": "NOT_FOUND",
+      "evidence": [
+        "security-ev-3a5d89fe93bee938"
+      ]
+    },
+    {
+      "invariant_id": "security-invariant-001633d1d2db68c0",
+      "snapshot_id": "snapshot-0013",
+      "version": "v0.6.0",
+      "variant": "variant-c",
+      "invariant": "candidate identity remains stable",
+      "status": "UNKNOWN",
+      "claim_type": "SECURITY_ASSUMPTION",
+      "mechanism_not_guarantee": true,
+      "historical_test": "NOT_FOUND",
+      "evidence": [
+        "security-ev-d3f0fdb89c9428f6"
+      ]
+    },
+    {
+      "invariant_id": "security-invariant-b89302d826a17a9e",
+      "snapshot_id": "snapshot-0013",
+      "version": "v0.6.0",
+      "variant": "variant-c",
+      "invariant": "provenance cannot be silently lost",
+      "status": "UNKNOWN",
+      "claim_type": "SECURITY_ASSUMPTION",
+      "mechanism_not_guarantee": true,
+      "historical_test": "NOT_FOUND",
+      "evidence": [
+        "security-ev-b120bb6a14bbf209",
+        "security-ev-6316789f73993ffb"
+      ]
+    },
+    {
+      "invariant_id": "security-invariant-04a2da9d865ca96b",
+      "snapshot_id": "snapshot-0013",
+      "version": "v0.6.0",
+      "variant": "variant-c",
+      "invariant": "workers cannot double-claim candidates",
+      "status": "SUPPORTED",
+      "claim_type": "SECURITY_PROPERTY",
+      "mechanism_not_guarantee": true,
+      "historical_test": "NOT_FOUND",
+      "evidence": [
+        "security-ev-05a55ad67c992290",
+        "security-ev-32823a7ddd5cf707",
+        "security-ev-3694b4012d324097"
+      ]
+    },
+    {
+      "invariant_id": "security-invariant-bf2f9a061cf6d151",
+      "snapshot_id": "snapshot-0013",
+      "version": "v0.6.0",
+      "variant": "variant-c",
+      "invariant": "bounded concurrency is preserved",
+      "status": "SUPPORTED",
+      "claim_type": "SECURITY_PROPERTY",
+      "mechanism_not_guarantee": true,
+      "historical_test": "NOT_FOUND",
+      "evidence": [
+        "security-ev-708c0c0951543c86"
+      ]
+    },
+    {
+      "invariant_id": "security-invariant-b544029a83f5db39",
+      "snapshot_id": "snapshot-0013",
+      "version": "v0.6.0",
+      "variant": "variant-c",
+      "invariant": "untrusted input cannot execute as code",
+      "status": "UNKNOWN",
+      "claim_type": "SECURITY_ASSUMPTION",
+      "mechanism_not_guarantee": true,
+      "historical_test": "NOT_FOUND",
+      "evidence": [
+        "security-ev-128869e0b3ffafd6",
+        "security-ev-18df7ea3e448f634"
+      ]
+    },
+    {
+      "invariant_id": "security-invariant-987943fd9a086e5a",
+      "snapshot_id": "snapshot-0014",
+      "version": "v0.7.1",
+      "variant": "only-evidenced-complete-occurrence",
+      "invariant": "remote content is data",
+      "status": "SUPPORTED",
+      "claim_type": "SECURITY_PROPERTY",
+      "mechanism_not_guarantee": true,
+      "historical_test": "NOT_FOUND",
+      "evidence": [
+        "security-ev-1bcbb02ae0469af3"
+      ]
+    },
+    {
+      "invariant_id": "security-invariant-aff378c20bcd421e",
+      "snapshot_id": "snapshot-0014",
+      "version": "v0.7.1",
+      "variant": "only-evidenced-complete-occurrence",
+      "invariant": "provider failure cannot corrupt global state",
+      "status": "UNKNOWN",
+      "claim_type": "SECURITY_ASSUMPTION",
+      "mechanism_not_guarantee": true,
+      "historical_test": "NOT_FOUND",
+      "evidence": [
+        "security-ev-04e831773ad6ee85"
+      ]
+    },
+    {
+      "invariant_id": "security-invariant-c09976704d1e41de",
+      "snapshot_id": "snapshot-0014",
+      "version": "v0.7.1",
+      "variant": "only-evidenced-complete-occurrence",
+      "invariant": "candidate identity remains stable",
+      "status": "UNKNOWN",
+      "claim_type": "SECURITY_ASSUMPTION",
+      "mechanism_not_guarantee": true,
+      "historical_test": "NOT_FOUND",
+      "evidence": [
+        "security-ev-721179d83247cd5b"
+      ]
+    },
+    {
+      "invariant_id": "security-invariant-26b56f607982acd7",
+      "snapshot_id": "snapshot-0014",
+      "version": "v0.7.1",
+      "variant": "only-evidenced-complete-occurrence",
+      "invariant": "provenance cannot be silently lost",
+      "status": "UNKNOWN",
+      "claim_type": "SECURITY_ASSUMPTION",
+      "mechanism_not_guarantee": true,
+      "historical_test": "NOT_FOUND",
+      "evidence": [
+        "security-ev-ba6a4804bb5fb6d4",
+        "security-ev-40cb4681d5d70f23"
+      ]
+    },
+    {
+      "invariant_id": "security-invariant-7b5538d13a9819e3",
+      "snapshot_id": "snapshot-0014",
+      "version": "v0.7.1",
+      "variant": "only-evidenced-complete-occurrence",
+      "invariant": "workers cannot double-claim candidates",
+      "status": "SUPPORTED",
+      "claim_type": "SECURITY_PROPERTY",
+      "mechanism_not_guarantee": true,
+      "historical_test": "NOT_FOUND",
+      "evidence": [
+        "security-ev-94687ceddf56ba0c"
+      ]
+    },
+    {
+      "invariant_id": "security-invariant-5a4fa585f4ee2b55",
+      "snapshot_id": "snapshot-0014",
+      "version": "v0.7.1",
+      "variant": "only-evidenced-complete-occurrence",
+      "invariant": "bounded concurrency is preserved",
+      "status": "SUPPORTED",
+      "claim_type": "SECURITY_PROPERTY",
+      "mechanism_not_guarantee": true,
+      "historical_test": "NOT_FOUND",
+      "evidence": [
+        "security-ev-11c827fcf409a99b"
+      ]
+    },
+    {
+      "invariant_id": "security-invariant-a84c5e2416bd663c",
+      "snapshot_id": "snapshot-0014",
+      "version": "v0.7.1",
+      "variant": "only-evidenced-complete-occurrence",
+      "invariant": "untrusted input cannot execute as code",
+      "status": "UNKNOWN",
+      "claim_type": "SECURITY_ASSUMPTION",
+      "mechanism_not_guarantee": true,
+      "historical_test": "NOT_FOUND",
+      "evidence": [
+        "security-ev-1bcbb02ae0469af3"
+      ]
+    }
+  ],
+  "claim_types": [
+    "SECURITY_ASSUMPTION",
+    "SECURITY_GOAL",
+    "SECURITY_GUARANTEE",
+    "SECURITY_MECHANISM",
+    "SECURITY_PROPERTY"
+  ]
+}

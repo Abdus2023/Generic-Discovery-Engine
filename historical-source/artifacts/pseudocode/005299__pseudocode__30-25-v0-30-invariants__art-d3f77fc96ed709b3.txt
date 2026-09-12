@@ -1,0 +1,42 @@
+1. Admission precedes arbitration.
+
+2. Arbitration cannot override authorization.
+
+3. Policy is not a priority.
+
+4. Capability is not a priority.
+
+5. Budget is not a priority.
+
+6. Selected work must be eligible.
+
+7. Selection does not guarantee successful claiming.
+
+8. Selection does not guarantee execution.
+
+9. Every work class has an explicit fairness policy.
+
+10. No eligible work may starve indefinitely under
+    a configured starvation guarantee.
+
+11. Dependency priority may propagate but cannot
+    bypass authorization.
+
+12. Backpressure delays work; it does not redefine
+    work as invalid.
+
+13. Arbitration decisions are provenance-bearing.
+
+14. Arbitration decisions are replayable under the
+    same decision context.
+
+15. Class-level fairness is distinct from item priority.
+
+16. Cost estimates influence priority but do not
+    become facts.
+
+17. Historical performance influences arbitration but
+    cannot override current evidence or policy.
+
+18. Frontier state remains authoritative over
+    scheduler assumptions.

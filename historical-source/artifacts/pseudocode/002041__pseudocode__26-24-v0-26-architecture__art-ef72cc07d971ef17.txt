@@ -1,0 +1,59 @@
+                           SEARCH INTENT
+                               │
+                               ▼
+                              Goal
+                               │
+                               ▼
+                         Query Planner
+                               │
+                               ▼
+                           QueryPlan
+                               │
+                               ▼
+                           QueryStep
+                               │
+                               ▼
+                        TacticExecution
+                               │
+                               ▼
+                       FrontierRuntime
+                               │
+                         claim / lease
+                               │
+                               ▼
+                         TacticRuntime
+                               │
+                    ┌──────────┴──────────┐
+                    │                     │
+                    ▼                     ▼
+             SearchTactic          Tactic Budget
+                    │
+                    ▼
+            DiscoveryStrategy
+                    │
+                    ▼
+                 Probe
+                    │
+                    ▼
+             Acquisition Layer
+                    │
+                    ▼
+               Observation
+                    │
+                    ▼
+                Evidence
+                    │
+                    ▼
+          CandidateProposal
+                    │
+                    ▼
+          DiscoveryController
+                    │
+                    ▼
+          CandidateNormalizer
+                    │
+                    ▼
+                Candidate
+                    │
+                    ▼
+             ResourceGraph

@@ -1,0 +1,58 @@
+                              GOAL
+                                │
+                                ▼
+                         QUERY PLANNER
+                                │
+                 ┌──────────────┼──────────────┐
+                 │              │              │
+             Constraints    Expansions      Preferences
+                 │              │              │
+                 └──────────────┼──────────────┘
+                                ▼
+                           QUERY PLAN
+                                │
+                         ┌──────┴──────┐
+                         │             │
+                    Query Steps    Hypotheses
+                         │             │
+                         └──────┬──────┘
+                                ▼
+                         PLAN VALIDATOR
+                                │
+                  ┌─────────────┼─────────────┐
+                  ▼             ▼             ▼
+               Domain        Policy       Capability
+                  │             │             │
+                  └─────────────┼─────────────┘
+                                ▼
+                         RELEVANT SPACE
+                                │
+                                ▼
+                       ADAPTIVE STRATEGY
+                                │
+                                ▼
+                         FRONTIER RUNTIME
+                                │
+                                ▼
+                           ACQUISITION
+                                │
+                                ▼
+                           OBSERVATION
+                                │
+                                ▼
+                            EVIDENCE
+                                │
+              ┌─────────────────┼─────────────────┐
+              ▼                 ▼                 ▼
+          RESOURCE        CLASSIFICATION      COVERAGE
+              │                 │                 │
+              └─────────────────┼─────────────────┘
+                                ▼
+                           RELEVANCE
+                                │
+                                ▼
+                           GOAL RESULT
+                                │
+                       ┌────────┴────────┐
+                       ▼                 ▼
+                  SATISFACTION      COMPLETENESS

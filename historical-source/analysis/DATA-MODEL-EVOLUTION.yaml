@@ -1,0 +1,771 @@
+{
+  "schema_version": 1,
+  "models": [
+    {
+      "snapshot_id": "snapshot-0001",
+      "version": "v0.1.0",
+      "variant": "mechanically-composed",
+      "fields": {
+        "Candidate": [
+          "attempts",
+          "createdAt",
+          "hints",
+          "id",
+          "origin",
+          "parent",
+          "priority",
+          "status",
+          "target",
+          "type"
+        ],
+        "Observation": [
+          "candidateId",
+          "completedAt",
+          "errors",
+          "features",
+          "http",
+          "id",
+          "signalPresent",
+          "startedAt",
+          "status",
+          "target"
+        ],
+        "Discovery": [
+          "candidateId",
+          "confidence",
+          "createdAt",
+          "data",
+          "id",
+          "kind",
+          "observationId",
+          "provenance"
+        ],
+        "KnowledgeBase": [
+          "candidates",
+          "discoveries",
+          "observations",
+          "visited"
+        ],
+        "Scheduler": [
+          "database"
+        ]
+      },
+      "source_artifact": "rec-dbef25f8ab917d5a"
+    },
+    {
+      "snapshot_id": "snapshot-0003",
+      "version": "v0.2.0",
+      "variant": "mechanically-composed",
+      "fields": {
+        "Candidate": [
+          "attempts",
+          "createdAt",
+          "hints",
+          "id",
+          "origin",
+          "parent",
+          "priority",
+          "status",
+          "target",
+          "type"
+        ],
+        "Observation": [
+          "body",
+          "candidateId",
+          "completedAt",
+          "errors",
+          "http",
+          "id",
+          "signalPresent",
+          "startedAt",
+          "status",
+          "target"
+        ],
+        "Discovery": [
+          "candidateId",
+          "confidence",
+          "createdAt",
+          "data",
+          "id",
+          "kind",
+          "observationId",
+          "provenance"
+        ],
+        "KnowledgeBase": [
+          "candidates",
+          "claimed",
+          "discoveries",
+          "observations",
+          "visited"
+        ],
+        "Scheduler": [
+          "database"
+        ]
+      },
+      "source_artifact": "rec-e8df26fe56d82d1c"
+    },
+    {
+      "snapshot_id": "snapshot-0005",
+      "version": "v0.3.0",
+      "variant": "only-evidenced-complete-occurrence",
+      "fields": {
+        "Candidate": [
+          "attempts",
+          "createdAt",
+          "hints",
+          "id",
+          "origin",
+          "parent",
+          "priority",
+          "status",
+          "target",
+          "type"
+        ],
+        "Observation": [
+          "body",
+          "candidateId",
+          "completedAt",
+          "errors",
+          "http",
+          "id",
+          "signalPresent",
+          "startedAt",
+          "status",
+          "target"
+        ],
+        "Discovery": [
+          "candidateId",
+          "confidence",
+          "createdAt",
+          "data",
+          "id",
+          "kind",
+          "observationId",
+          "provenance"
+        ],
+        "KnowledgeBase": [
+          "candidates",
+          "claimed",
+          "discoveries",
+          "observations",
+          "visited"
+        ],
+        "Scheduler": [
+          "database"
+        ]
+      },
+      "source_artifact": "art-44eb3694339abdcb"
+    },
+    {
+      "snapshot_id": "snapshot-0006",
+      "version": "v0.4.0",
+      "variant": "variant-a",
+      "fields": {
+        "Candidate": [
+          "attempts",
+          "createdAt",
+          "depth",
+          "hints",
+          "id",
+          "nextAttemptAt",
+          "origin",
+          "parent",
+          "priority",
+          "status",
+          "target",
+          "type"
+        ],
+        "Observation": [
+          "body",
+          "candidateId",
+          "completedAt",
+          "errors",
+          "http",
+          "id",
+          "signalPresent",
+          "startedAt",
+          "status",
+          "target"
+        ],
+        "Discovery": [
+          "candidateId",
+          "confidence",
+          "createdAt",
+          "data",
+          "id",
+          "kind",
+          "mechanism",
+          "observationId",
+          "provenance"
+        ],
+        "KnowledgeBase": [
+          "candidates",
+          "claimed",
+          "discoveries",
+          "graph",
+          "observations",
+          "visited"
+        ],
+        "Scheduler": [
+          "database"
+        ]
+      },
+      "source_artifact": "art-deb961ea9f622d3a"
+    },
+    {
+      "snapshot_id": "snapshot-0007",
+      "version": "v0.5.0",
+      "variant": "variant-a",
+      "fields": {
+        "Candidate": [
+          "attempts",
+          "createdAt",
+          "depth",
+          "hints",
+          "id",
+          "nextAttemptAt",
+          "origin",
+          "parent",
+          "priority",
+          "status",
+          "target",
+          "type"
+        ],
+        "Observation": [
+          "body",
+          "bodyTruncated",
+          "candidateId",
+          "completedAt",
+          "errors",
+          "http",
+          "id",
+          "signalPresent",
+          "startedAt",
+          "status",
+          "target"
+        ],
+        "Discovery": [
+          "candidateId",
+          "confidence",
+          "createdAt",
+          "data",
+          "id",
+          "kind",
+          "mechanism",
+          "observationId",
+          "provenance"
+        ],
+        "KnowledgeBase": [
+          "candidates",
+          "claimed",
+          "discoveries",
+          "graph",
+          "observations",
+          "visited"
+        ],
+        "Scheduler": [
+          "database"
+        ]
+      },
+      "source_artifact": "art-2c6f74909f301798"
+    },
+    {
+      "snapshot_id": "snapshot-0008",
+      "version": "v0.4.0",
+      "variant": "variant-b",
+      "fields": {
+        "Candidate": [
+          "attempts",
+          "createdAt",
+          "depth",
+          "hints",
+          "id",
+          "nextAttemptAt",
+          "origin",
+          "parent",
+          "priority",
+          "status",
+          "target",
+          "type"
+        ],
+        "Observation": [
+          "body",
+          "candidateId",
+          "completedAt",
+          "errors",
+          "http",
+          "id",
+          "network",
+          "signalPresent",
+          "startedAt",
+          "status",
+          "target"
+        ],
+        "Discovery": [
+          "candidateId",
+          "confidence",
+          "createdAt",
+          "data",
+          "id",
+          "kind",
+          "observationId",
+          "provenance"
+        ],
+        "KnowledgeBase": [
+          "candidates",
+          "claimed",
+          "discoveries",
+          "observations",
+          "visited"
+        ],
+        "Scheduler": [
+          "database"
+        ]
+      },
+      "source_artifact": "art-c19ebb3956fba19c"
+    },
+    {
+      "snapshot_id": "snapshot-0009",
+      "version": "v0.5.0",
+      "variant": "variant-b",
+      "fields": {
+        "Candidate": [
+          "attempts",
+          "createdAt",
+          "depth",
+          "hints",
+          "id",
+          "lastError",
+          "nextAttemptAt",
+          "origin",
+          "parent",
+          "priority",
+          "status",
+          "target",
+          "type"
+        ],
+        "Observation": [
+          "body",
+          "candidateId",
+          "completedAt",
+          "errors",
+          "fingerprint",
+          "http",
+          "id",
+          "signalPresent",
+          "startedAt",
+          "status",
+          "target"
+        ],
+        "Discovery": [
+          "candidateId",
+          "confidence",
+          "createdAt",
+          "data",
+          "id",
+          "kind",
+          "observationId",
+          "provenance"
+        ],
+        "KnowledgeBase": [
+          "candidates",
+          "claimed",
+          "discoveries",
+          "networkEvents",
+          "observations",
+          "visited"
+        ],
+        "Provider": []
+      },
+      "source_artifact": "art-fbebfdf9a3874c18"
+    },
+    {
+      "snapshot_id": "snapshot-0010",
+      "version": "v0.6.0",
+      "variant": "variant-a",
+      "fields": {
+        "Candidate": [
+          "acquiringAt",
+          "attempts",
+          "claimedAt",
+          "completedAt",
+          "createdAt",
+          "depth",
+          "expandedAt",
+          "failedAt",
+          "hints",
+          "id",
+          "lastError",
+          "nextAttemptAt",
+          "observedAt",
+          "origin",
+          "parent",
+          "priority",
+          "queuedAt",
+          "recognizedAt",
+          "status",
+          "target",
+          "type"
+        ],
+        "Observation": [
+          "body",
+          "candidateId",
+          "completedAt",
+          "errors",
+          "fingerprint",
+          "http",
+          "id",
+          "signalPresent",
+          "startedAt",
+          "status",
+          "target"
+        ],
+        "Discovery": [
+          "candidateId",
+          "confidence",
+          "createdAt",
+          "data",
+          "id",
+          "kind",
+          "mechanism",
+          "observationId",
+          "provenance"
+        ],
+        "KnowledgeBase": [
+          "candidates",
+          "claimed",
+          "discoveries",
+          "edges",
+          "engine",
+          "networkEvents",
+          "networkRequests",
+          "observations",
+          "persistTimer",
+          "resources",
+          "visited"
+        ],
+        "Provider": []
+      },
+      "source_artifact": "art-b1368ed9b372a6a6"
+    },
+    {
+      "snapshot_id": "snapshot-0011",
+      "version": "v0.5.0",
+      "variant": "variant-c",
+      "fields": {
+        "Candidate": [
+          "acquiringAt",
+          "alternateOrigins",
+          "alternateTypes",
+          "attempts",
+          "claimedAt",
+          "completedAt",
+          "createdAt",
+          "depth",
+          "expandedAt",
+          "failedAt",
+          "hints",
+          "id",
+          "nextAttemptAt",
+          "observedAt",
+          "origin",
+          "parent",
+          "parents",
+          "priority",
+          "queuedAt",
+          "recognizedAt",
+          "status",
+          "target",
+          "type"
+        ],
+        "Observation": [
+          "body",
+          "candidateId",
+          "completedAt",
+          "errors",
+          "fingerprint",
+          "http",
+          "id",
+          "network",
+          "signalPresent",
+          "startedAt",
+          "status",
+          "target"
+        ],
+        "Discovery": [
+          "candidateId",
+          "confidence",
+          "createdAt",
+          "data",
+          "id",
+          "kind",
+          "mechanism",
+          "observationId",
+          "provenance"
+        ],
+        "KnowledgeBase": [
+          "candidates",
+          "claimed",
+          "discoveries",
+          "edgeRecords",
+          "observations",
+          "persistTimer",
+          "queue",
+          "resources",
+          "statistics",
+          "visited"
+        ],
+        "Provider": [
+          "exclusive",
+          "name"
+        ],
+        "Scheduler": [
+          "database"
+        ]
+      },
+      "source_artifact": "art-f019277e6c28e8f5"
+    },
+    {
+      "snapshot_id": "snapshot-0012",
+      "version": "v0.6.0",
+      "variant": "variant-b",
+      "fields": {
+        "Candidate": [
+          "acquiringAt",
+          "alternateOrigins",
+          "alternateTypes",
+          "attempts",
+          "claimedAt",
+          "completedAt",
+          "createdAt",
+          "depth",
+          "expandedAt",
+          "failedAt",
+          "hints",
+          "id",
+          "nextAttemptAt",
+          "observedAt",
+          "origin",
+          "parent",
+          "parents",
+          "priority",
+          "queuedAt",
+          "recognizedAt",
+          "skippedAt",
+          "status",
+          "target",
+          "type"
+        ],
+        "Observation": [
+          "body",
+          "candidateId",
+          "completedAt",
+          "errors",
+          "fingerprint",
+          "http",
+          "id",
+          "network",
+          "reason",
+          "signalPresent",
+          "startedAt",
+          "status",
+          "target"
+        ],
+        "Discovery": [
+          "candidateId",
+          "confidence",
+          "createdAt",
+          "data",
+          "id",
+          "kind",
+          "mechanism",
+          "observationId",
+          "provenance"
+        ],
+        "KnowledgeBase": [
+          "candidates",
+          "claimed",
+          "discoveries",
+          "edgeRecords",
+          "fingerprintIndex",
+          "observations",
+          "persistTimer",
+          "queue",
+          "resources",
+          "statistics",
+          "visited"
+        ],
+        "Provider": [
+          "exclusive",
+          "name"
+        ],
+        "Scheduler": [
+          "engine"
+        ]
+      },
+      "source_artifact": "art-3680c60f0bc39673"
+    },
+    {
+      "snapshot_id": "snapshot-0013",
+      "version": "v0.6.0",
+      "variant": "variant-c",
+      "fields": {
+        "Candidate": [
+          "acquiringAt",
+          "alternateOrigins",
+          "alternateParents",
+          "alternateTypes",
+          "attempts",
+          "claimedAt",
+          "completedAt",
+          "createdAt",
+          "depth",
+          "discoveredAt",
+          "expandedAt",
+          "failedAt",
+          "hints",
+          "id",
+          "nextAttemptAt",
+          "observedAt",
+          "origin",
+          "parent",
+          "priority",
+          "queuedAt",
+          "recognizedAt",
+          "status",
+          "target",
+          "type"
+        ],
+        "Observation": [
+          "body",
+          "candidateId",
+          "completedAt",
+          "errors",
+          "fingerprint",
+          "http",
+          "id",
+          "network",
+          "reason",
+          "requestedUrl",
+          "signalPresent",
+          "startedAt",
+          "status",
+          "target"
+        ],
+        "Discovery": [
+          "candidateId",
+          "confidence",
+          "createdAt",
+          "data",
+          "id",
+          "kind",
+          "mechanism",
+          "observationId",
+          "provenance"
+        ],
+        "KnowledgeBase": [
+          "candidates",
+          "claimed",
+          "diagnostics",
+          "discoveries",
+          "edges",
+          "fingerprintIndex",
+          "networkEvents",
+          "observations",
+          "persistenceTimer",
+          "resources",
+          "stats",
+          "visited"
+        ],
+        "Provider": [
+          "exclusive",
+          "name"
+        ]
+      },
+      "source_artifact": "art-33fa8de51e13e087"
+    },
+    {
+      "snapshot_id": "snapshot-0014",
+      "version": "v0.7.1",
+      "variant": "only-evidenced-complete-occurrence",
+      "fields": {
+        "Candidate": [
+          "acquiringAt",
+          "alternateOrigins",
+          "alternateParents",
+          "alternateTypes",
+          "attempts",
+          "claimedAt",
+          "completedAt",
+          "createdAt",
+          "depth",
+          "discoveredAt",
+          "expandedAt",
+          "failedAt",
+          "hints",
+          "id",
+          "nextAttemptAt",
+          "observedAt",
+          "origin",
+          "parent",
+          "plannedAt",
+          "priority",
+          "queuedAt",
+          "recognizedAt",
+          "skippedAt",
+          "status",
+          "target",
+          "type"
+        ],
+        "Observation": [
+          "body",
+          "bodyTruncated",
+          "candidateId",
+          "completedAt",
+          "errors",
+          "fingerprint",
+          "http",
+          "id",
+          "network",
+          "planId",
+          "reason",
+          "requestedUrl",
+          "signalPresent",
+          "startedAt",
+          "status",
+          "target"
+        ],
+        "Discovery": [
+          "candidateId",
+          "confidence",
+          "createdAt",
+          "data",
+          "id",
+          "kind",
+          "mechanism",
+          "observationId",
+          "provenance"
+        ],
+        "KnowledgeBase": [
+          "candidateKeys",
+          "candidates",
+          "claimed",
+          "diagnostics",
+          "discoveries",
+          "fingerprintIndex",
+          "graphEdges",
+          "networkEvents",
+          "observations",
+          "resources",
+          "stats",
+          "visited"
+        ],
+        "Provider": [
+          "name"
+        ]
+      },
+      "source_artifact": "art-e0789bc8f62176cb"
+    }
+  ],
+  "note": "Fields are mechanically observed this.<field> assignments; no schema normalization or rename inference."
+}

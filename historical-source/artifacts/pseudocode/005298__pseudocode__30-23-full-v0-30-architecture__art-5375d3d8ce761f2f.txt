@@ -1,0 +1,55 @@
+                         ┌───────────────┐
+                         │     GOAL      │
+                         └───────┬───────┘
+                                 ▼
+                         ┌───────────────┐
+                         │ QUERY PLAN    │
+                         └───────┬───────┘
+                                 ▼
+                         ┌───────────────┐
+                         │ SEARCH SPACE  │
+                         └───────┬───────┘
+                                 ▼
+                    ┌────────────────────────┐
+                    │     FRONTIER RUNTIME   │
+                    │                        │
+                    │ ┌────────────────────┐ │
+                    │ │ Admission          │ │
+                    │ ├────────────────────┤ │
+                    │ │ Dependencies       │ │
+                    │ │ Domain             │ │
+                    │ │ Capability         │ │
+                    │ │ Policy             │ │
+                    │ │ Budget             │ │
+                    │ │ Backpressure       │ │
+                    │ └────────────────────┘ │
+                    │                        │
+                    │ ┌────────────────────┐ │
+                    │ │ Arbitration        │ │
+                    │ ├────────────────────┤ │
+                    │ │ Class fairness     │ │
+                    │ │ Aging              │ │
+                    │ │ Goal value         │ │
+                    │ │ Coverage value     │ │
+                    │ │ Novelty            │ │
+                    │ │ Information gain   │ │
+                    │ │ Cost               │ │
+                    │ │ Failure history    │ │
+                    │ └────────────────────┘ │
+                    └───────────┬────────────┘
+                                ▼
+                       ArbitrationDecision
+                                │
+                                ▼
+                           Atomic Claim
+                                │
+                                ▼
+                             Executor
+                                │
+                                ▼
+                             Outcome
+                                │
+                    ┌───────────┴───────────┐
+                    ▼                       ▼
+               Knowledge               Frontier
+                 update                  update

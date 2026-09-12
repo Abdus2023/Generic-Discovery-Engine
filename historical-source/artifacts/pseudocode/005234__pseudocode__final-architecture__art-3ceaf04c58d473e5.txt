@@ -1,0 +1,52 @@
+┌───────────────────────────────────────────────────────────┐
+│                       SEARCH GOAL                          │
+└───────────────────────────┬───────────────────────────────┘
+                            ▼
+┌───────────────────────────────────────────────────────────┐
+│                     QUERY PLANNER                         │
+│       plans / tactics / hypotheses / constraints          │
+└───────────────────────────┬───────────────────────────────┘
+                            ▼
+┌───────────────────────────────────────────────────────────┐
+│                      SEARCH SPACE                         │
+│       domain / partitions / snapshots / relations         │
+└───────────────────────────┬───────────────────────────────┘
+                            ▼
+┌───────────────────────────────────────────────────────────┐
+│                    FRONTIER RUNTIME                       │
+│       admission / arbitration / fairness / leases         │
+└──────────────┬────────────────┬────────────────┬──────────┘
+               ▼                ▼                ▼
+        DiscoveryWork     AcquisitionWork   EnumerationWork
+               │                │                │
+               └────────────────┼────────────────┘
+                                ▼
+                     ┌────────────────────┐
+                     │ ACQUISITION POLICY │
+                     │ CAPABILITIES       │
+                     │ BUDGET             │
+                     └─────────┬──────────┘
+                               ▼
+                     ACQUISITION PROVIDER
+                               │
+                               ▼
+                          OBSERVATION
+                               │
+                               ▼
+                     RECOGNITION RUNTIME
+                               │
+                ┌──────────────┼──────────────┐
+                ▼              ▼              ▼
+             Evidence     Classification   Artifact
+                │              │              │
+                └──────────────┼──────────────┘
+                               ▼
+                         RESOURCE GRAPH
+                               │
+                ┌──────────────┼──────────────┐
+                ▼              ▼              ▼
+            Relevance       Coverage       Absence
+                │              │              │
+                └──────────────┼──────────────┘
+                               ▼
+                      COMPLETENESS CLAIMS

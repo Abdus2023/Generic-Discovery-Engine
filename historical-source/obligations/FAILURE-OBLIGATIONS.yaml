@@ -1,0 +1,495 @@
+{
+  "schema_version": "1.0",
+  "input_contract_status": "INPUT_CONTRACT_FAILED",
+  "failure_obligations": [
+    {
+      "failure_class": "acquisition",
+      "source_taxonomy": [
+        "ACQUISITION_FAILURE",
+        "HTTP_FAILURE",
+        "NETWORK_FAILURE",
+        "TIMEOUT"
+      ],
+      "detection": [
+        "PROVED",
+        "UNKNOWN"
+      ],
+      "containment": [
+        "SUPPORTED",
+        "UNKNOWN"
+      ],
+      "propagation": [
+        "SUPPORTED",
+        "UNKNOWN"
+      ],
+      "recording": [
+        "SUPPORTED",
+        "UNKNOWN"
+      ],
+      "retryability": "EXPLICIT_ONLY_WHERE_CLASSIFIED",
+      "recovery": [
+        "SUPPORTED",
+        "UNKNOWN"
+      ],
+      "observability": [
+        "SUPPORTED",
+        "UNKNOWN"
+      ],
+      "historical_status": "SUPPORTED_WITH_UNKNOWN_PATHS",
+      "engineering_obligation": "CONTAIN_AND_RECORD_WITHOUT_SILENT_SUCCESS",
+      "strength": "REQUIRED",
+      "future_strengthening": "Explicit classification and observability",
+      "failure_if_violated": "OBLIGATION_DEPENDENCY_FAILURE"
+    },
+    {
+      "failure_class": "parsing",
+      "source_taxonomy": [
+        "PARSING_FAILURE"
+      ],
+      "detection": [
+        "PROVED",
+        "UNKNOWN"
+      ],
+      "containment": [
+        "SUPPORTED",
+        "UNKNOWN"
+      ],
+      "propagation": [
+        "SUPPORTED",
+        "UNKNOWN"
+      ],
+      "recording": [
+        "UNKNOWN"
+      ],
+      "retryability": "UNKNOWN",
+      "recovery": [
+        "SUPPORTED",
+        "UNKNOWN"
+      ],
+      "observability": [
+        "UNKNOWN"
+      ],
+      "historical_status": "SUPPORTED_WITH_UNKNOWN_PATHS",
+      "engineering_obligation": "CONTAIN_AND_RECORD_WITHOUT_SILENT_SUCCESS",
+      "strength": "REQUIRED",
+      "future_strengthening": "Explicit classification and observability",
+      "failure_if_violated": "OBLIGATION_DEPENDENCY_FAILURE"
+    },
+    {
+      "failure_class": "provider",
+      "source_taxonomy": [
+        "PROVIDER_FAILURE",
+        "RECOGNITION_FAILURE"
+      ],
+      "detection": [
+        "PROVED",
+        "UNKNOWN"
+      ],
+      "containment": [
+        "SUPPORTED",
+        "UNKNOWN"
+      ],
+      "propagation": [
+        "UNKNOWN"
+      ],
+      "recording": [
+        "SUPPORTED",
+        "UNKNOWN"
+      ],
+      "retryability": "UNKNOWN",
+      "recovery": [
+        "SUPPORTED",
+        "UNKNOWN"
+      ],
+      "observability": [
+        "SUPPORTED",
+        "UNKNOWN"
+      ],
+      "historical_status": "SUPPORTED_WITH_UNKNOWN_PATHS",
+      "engineering_obligation": "CONTAIN_AND_RECORD_WITHOUT_SILENT_SUCCESS",
+      "strength": "REQUIRED",
+      "future_strengthening": "Explicit classification and observability",
+      "failure_if_violated": "OBLIGATION_DEPENDENCY_FAILURE"
+    },
+    {
+      "failure_class": "scheduler",
+      "source_taxonomy": [
+        "DEDUPLICATION_FAILURE",
+        "SCHEDULER_FAILURE",
+        "STATE_FAILURE"
+      ],
+      "detection": [
+        "PROVED",
+        "UNKNOWN"
+      ],
+      "containment": [
+        "SUPPORTED",
+        "UNKNOWN"
+      ],
+      "propagation": [
+        "SUPPORTED",
+        "UNKNOWN"
+      ],
+      "recording": [
+        "SUPPORTED",
+        "UNKNOWN"
+      ],
+      "retryability": "UNKNOWN",
+      "recovery": [
+        "SUPPORTED",
+        "UNKNOWN"
+      ],
+      "observability": [
+        "SUPPORTED",
+        "UNKNOWN"
+      ],
+      "historical_status": "SUPPORTED_WITH_UNKNOWN_PATHS",
+      "engineering_obligation": "CONTAIN_AND_RECORD_WITHOUT_SILENT_SUCCESS",
+      "strength": "REQUIRED",
+      "future_strengthening": "Explicit classification and observability",
+      "failure_if_violated": "OBLIGATION_DEPENDENCY_FAILURE"
+    },
+    {
+      "failure_class": "concurrency",
+      "source_taxonomy": [
+        "CANCELLATION",
+        "CONCURRENCY_FAILURE"
+      ],
+      "detection": [
+        "UNKNOWN"
+      ],
+      "containment": [
+        "UNKNOWN"
+      ],
+      "propagation": [
+        "UNKNOWN"
+      ],
+      "recording": [
+        "UNKNOWN"
+      ],
+      "retryability": "UNKNOWN",
+      "recovery": [
+        "UNKNOWN"
+      ],
+      "observability": [
+        "UNKNOWN"
+      ],
+      "historical_status": "UNKNOWN",
+      "engineering_obligation": "REQUIREMENT_NOT_JUSTIFIED",
+      "strength": "UNKNOWN",
+      "future_strengthening": "Explicit classification and observability",
+      "failure_if_violated": "OBLIGATION_DEPENDENCY_FAILURE"
+    },
+    {
+      "failure_class": "persistence",
+      "source_taxonomy": [
+        "PERSISTENCE_FAILURE"
+      ],
+      "detection": [
+        "PROVED"
+      ],
+      "containment": [
+        "SUPPORTED"
+      ],
+      "propagation": [
+        "UNKNOWN"
+      ],
+      "recording": [
+        "SUPPORTED"
+      ],
+      "retryability": "UNKNOWN",
+      "recovery": [
+        "SUPPORTED",
+        "UNKNOWN"
+      ],
+      "observability": [
+        "SUPPORTED"
+      ],
+      "historical_status": "SUPPORTED_WITH_UNKNOWN_PATHS",
+      "engineering_obligation": "CONTAIN_AND_RECORD_WITHOUT_SILENT_SUCCESS",
+      "strength": "REQUIRED",
+      "future_strengthening": "Explicit classification and observability",
+      "failure_if_violated": "OBLIGATION_DEPENDENCY_FAILURE"
+    },
+    {
+      "failure_class": "export",
+      "source_taxonomy": [
+        "EXPORT_FAILURE"
+      ],
+      "detection": [
+        "UNKNOWN"
+      ],
+      "containment": [
+        "UNKNOWN"
+      ],
+      "propagation": [
+        "UNKNOWN"
+      ],
+      "recording": [
+        "UNKNOWN"
+      ],
+      "retryability": "UNKNOWN",
+      "recovery": [
+        "UNKNOWN"
+      ],
+      "observability": [
+        "UNKNOWN"
+      ],
+      "historical_status": "UNKNOWN",
+      "engineering_obligation": "REQUIREMENT_NOT_JUSTIFIED",
+      "strength": "UNKNOWN",
+      "future_strengthening": "Explicit classification and observability",
+      "failure_if_violated": "OBLIGATION_DEPENDENCY_FAILURE"
+    }
+  ],
+  "failure_matrix": [
+    {
+      "failure_class": "acquisition",
+      "source_taxonomy": [
+        "ACQUISITION_FAILURE",
+        "HTTP_FAILURE",
+        "NETWORK_FAILURE",
+        "TIMEOUT"
+      ],
+      "detection": [
+        "PROVED",
+        "UNKNOWN"
+      ],
+      "containment": [
+        "SUPPORTED",
+        "UNKNOWN"
+      ],
+      "propagation": [
+        "SUPPORTED",
+        "UNKNOWN"
+      ],
+      "recording": [
+        "SUPPORTED",
+        "UNKNOWN"
+      ],
+      "retryability": "EXPLICIT_ONLY_WHERE_CLASSIFIED",
+      "recovery": [
+        "SUPPORTED",
+        "UNKNOWN"
+      ],
+      "observability": [
+        "SUPPORTED",
+        "UNKNOWN"
+      ],
+      "historical_status": "SUPPORTED_WITH_UNKNOWN_PATHS",
+      "engineering_obligation": "CONTAIN_AND_RECORD_WITHOUT_SILENT_SUCCESS",
+      "strength": "REQUIRED",
+      "future_strengthening": "Explicit classification and observability",
+      "failure_if_violated": "OBLIGATION_DEPENDENCY_FAILURE"
+    },
+    {
+      "failure_class": "parsing",
+      "source_taxonomy": [
+        "PARSING_FAILURE"
+      ],
+      "detection": [
+        "PROVED",
+        "UNKNOWN"
+      ],
+      "containment": [
+        "SUPPORTED",
+        "UNKNOWN"
+      ],
+      "propagation": [
+        "SUPPORTED",
+        "UNKNOWN"
+      ],
+      "recording": [
+        "UNKNOWN"
+      ],
+      "retryability": "UNKNOWN",
+      "recovery": [
+        "SUPPORTED",
+        "UNKNOWN"
+      ],
+      "observability": [
+        "UNKNOWN"
+      ],
+      "historical_status": "SUPPORTED_WITH_UNKNOWN_PATHS",
+      "engineering_obligation": "CONTAIN_AND_RECORD_WITHOUT_SILENT_SUCCESS",
+      "strength": "REQUIRED",
+      "future_strengthening": "Explicit classification and observability",
+      "failure_if_violated": "OBLIGATION_DEPENDENCY_FAILURE"
+    },
+    {
+      "failure_class": "provider",
+      "source_taxonomy": [
+        "PROVIDER_FAILURE",
+        "RECOGNITION_FAILURE"
+      ],
+      "detection": [
+        "PROVED",
+        "UNKNOWN"
+      ],
+      "containment": [
+        "SUPPORTED",
+        "UNKNOWN"
+      ],
+      "propagation": [
+        "UNKNOWN"
+      ],
+      "recording": [
+        "SUPPORTED",
+        "UNKNOWN"
+      ],
+      "retryability": "UNKNOWN",
+      "recovery": [
+        "SUPPORTED",
+        "UNKNOWN"
+      ],
+      "observability": [
+        "SUPPORTED",
+        "UNKNOWN"
+      ],
+      "historical_status": "SUPPORTED_WITH_UNKNOWN_PATHS",
+      "engineering_obligation": "CONTAIN_AND_RECORD_WITHOUT_SILENT_SUCCESS",
+      "strength": "REQUIRED",
+      "future_strengthening": "Explicit classification and observability",
+      "failure_if_violated": "OBLIGATION_DEPENDENCY_FAILURE"
+    },
+    {
+      "failure_class": "scheduler",
+      "source_taxonomy": [
+        "DEDUPLICATION_FAILURE",
+        "SCHEDULER_FAILURE",
+        "STATE_FAILURE"
+      ],
+      "detection": [
+        "PROVED",
+        "UNKNOWN"
+      ],
+      "containment": [
+        "SUPPORTED",
+        "UNKNOWN"
+      ],
+      "propagation": [
+        "SUPPORTED",
+        "UNKNOWN"
+      ],
+      "recording": [
+        "SUPPORTED",
+        "UNKNOWN"
+      ],
+      "retryability": "UNKNOWN",
+      "recovery": [
+        "SUPPORTED",
+        "UNKNOWN"
+      ],
+      "observability": [
+        "SUPPORTED",
+        "UNKNOWN"
+      ],
+      "historical_status": "SUPPORTED_WITH_UNKNOWN_PATHS",
+      "engineering_obligation": "CONTAIN_AND_RECORD_WITHOUT_SILENT_SUCCESS",
+      "strength": "REQUIRED",
+      "future_strengthening": "Explicit classification and observability",
+      "failure_if_violated": "OBLIGATION_DEPENDENCY_FAILURE"
+    },
+    {
+      "failure_class": "concurrency",
+      "source_taxonomy": [
+        "CANCELLATION",
+        "CONCURRENCY_FAILURE"
+      ],
+      "detection": [
+        "UNKNOWN"
+      ],
+      "containment": [
+        "UNKNOWN"
+      ],
+      "propagation": [
+        "UNKNOWN"
+      ],
+      "recording": [
+        "UNKNOWN"
+      ],
+      "retryability": "UNKNOWN",
+      "recovery": [
+        "UNKNOWN"
+      ],
+      "observability": [
+        "UNKNOWN"
+      ],
+      "historical_status": "UNKNOWN",
+      "engineering_obligation": "REQUIREMENT_NOT_JUSTIFIED",
+      "strength": "UNKNOWN",
+      "future_strengthening": "Explicit classification and observability",
+      "failure_if_violated": "OBLIGATION_DEPENDENCY_FAILURE"
+    },
+    {
+      "failure_class": "persistence",
+      "source_taxonomy": [
+        "PERSISTENCE_FAILURE"
+      ],
+      "detection": [
+        "PROVED"
+      ],
+      "containment": [
+        "SUPPORTED"
+      ],
+      "propagation": [
+        "UNKNOWN"
+      ],
+      "recording": [
+        "SUPPORTED"
+      ],
+      "retryability": "UNKNOWN",
+      "recovery": [
+        "SUPPORTED",
+        "UNKNOWN"
+      ],
+      "observability": [
+        "SUPPORTED"
+      ],
+      "historical_status": "SUPPORTED_WITH_UNKNOWN_PATHS",
+      "engineering_obligation": "CONTAIN_AND_RECORD_WITHOUT_SILENT_SUCCESS",
+      "strength": "REQUIRED",
+      "future_strengthening": "Explicit classification and observability",
+      "failure_if_violated": "OBLIGATION_DEPENDENCY_FAILURE"
+    },
+    {
+      "failure_class": "export",
+      "source_taxonomy": [
+        "EXPORT_FAILURE"
+      ],
+      "detection": [
+        "UNKNOWN"
+      ],
+      "containment": [
+        "UNKNOWN"
+      ],
+      "propagation": [
+        "UNKNOWN"
+      ],
+      "recording": [
+        "UNKNOWN"
+      ],
+      "retryability": "UNKNOWN",
+      "recovery": [
+        "UNKNOWN"
+      ],
+      "observability": [
+        "UNKNOWN"
+      ],
+      "historical_status": "UNKNOWN",
+      "engineering_obligation": "REQUIREMENT_NOT_JUSTIFIED",
+      "strength": "UNKNOWN",
+      "future_strengthening": "Explicit classification and observability",
+      "failure_if_violated": "OBLIGATION_DEPENDENCY_FAILURE"
+    }
+  ],
+  "failure_classes": [
+    "OBLIGATION_VIOLATED",
+    "OBLIGATION_UNVERIFIED",
+    "OBLIGATION_BLOCKED",
+    "OBLIGATION_SUPERSEDED",
+    "OBLIGATION_CONTRADICTED",
+    "OBLIGATION_DEPENDENCY_FAILURE"
+  ],
+  "rule": "Static failure mode is not a runtime incident; UNKNOWN remains UNKNOWN."
+}

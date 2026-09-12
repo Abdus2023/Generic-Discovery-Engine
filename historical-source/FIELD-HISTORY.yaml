@@ -1,0 +1,1053 @@
+{
+  "schema_version": 1,
+  "field_histories": [
+    {
+      "model": "Candidate",
+      "from": "art-6d420309da1b4bb7",
+      "to": "art-5c3e8f1c4e3fcae5",
+      "introduced_fields": [],
+      "removed_fields": [],
+      "retained_fields": [
+        "attempts",
+        "createdAt",
+        "hints",
+        "id",
+        "origin",
+        "parent",
+        "priority",
+        "status",
+        "target",
+        "type"
+      ],
+      "renamed_fields": [],
+      "type_changes": [],
+      "note": "renames and type changes are UNKNOWN unless explicit; none inferred"
+    },
+    {
+      "model": "KnowledgeBase",
+      "from": "art-f79bedb8ba7febed",
+      "to": "art-8df8f9bb24a6f4ac",
+      "introduced_fields": [
+        "claimed"
+      ],
+      "removed_fields": [],
+      "retained_fields": [
+        "candidates",
+        "discoveries",
+        "observations",
+        "visited"
+      ],
+      "renamed_fields": [],
+      "type_changes": [],
+      "note": "renames and type changes are UNKNOWN unless explicit; none inferred"
+    },
+    {
+      "model": "Observation",
+      "from": "art-538cc6a7a7b8b4d6",
+      "to": "art-756466d45f355acc",
+      "introduced_fields": [
+        "body"
+      ],
+      "removed_fields": [
+        "features"
+      ],
+      "retained_fields": [
+        "candidateId",
+        "completedAt",
+        "errors",
+        "http",
+        "id",
+        "signalPresent",
+        "startedAt",
+        "status",
+        "target"
+      ],
+      "renamed_fields": [],
+      "type_changes": [],
+      "note": "renames and type changes are UNKNOWN unless explicit; none inferred"
+    },
+    {
+      "model": "Candidate",
+      "from": "art-f52789eef20c179d",
+      "to": "art-c59c9caae171cd46",
+      "introduced_fields": [
+        "depth",
+        "nextAttemptAt"
+      ],
+      "removed_fields": [],
+      "retained_fields": [
+        "attempts",
+        "createdAt",
+        "hints",
+        "id",
+        "origin",
+        "parent",
+        "priority",
+        "status",
+        "target",
+        "type"
+      ],
+      "renamed_fields": [],
+      "type_changes": [],
+      "note": "renames and type changes are UNKNOWN unless explicit; none inferred"
+    },
+    {
+      "model": "Discovery",
+      "from": "art-d556d5eb848af542",
+      "to": "art-8267c4e2e0748d7e",
+      "introduced_fields": [
+        "mechanism"
+      ],
+      "removed_fields": [],
+      "retained_fields": [
+        "candidateId",
+        "confidence",
+        "createdAt",
+        "data",
+        "id",
+        "kind",
+        "observationId",
+        "provenance"
+      ],
+      "renamed_fields": [],
+      "type_changes": [],
+      "note": "renames and type changes are UNKNOWN unless explicit; none inferred"
+    },
+    {
+      "model": "KnowledgeBase",
+      "from": "art-1a8a80a2eace5b4f",
+      "to": "art-4fb30cb408283e41",
+      "introduced_fields": [
+        "graph"
+      ],
+      "removed_fields": [],
+      "retained_fields": [
+        "candidates",
+        "claimed",
+        "discoveries",
+        "observations",
+        "visited"
+      ],
+      "renamed_fields": [],
+      "type_changes": [],
+      "note": "renames and type changes are UNKNOWN unless explicit; none inferred"
+    },
+    {
+      "model": "Observation",
+      "from": "art-3fb6fd6d55e078b1",
+      "to": "art-92f49788f0e46f5e",
+      "introduced_fields": [],
+      "removed_fields": [],
+      "retained_fields": [
+        "body",
+        "candidateId",
+        "completedAt",
+        "errors",
+        "http",
+        "id",
+        "signalPresent",
+        "startedAt",
+        "status",
+        "target"
+      ],
+      "renamed_fields": [],
+      "type_changes": [],
+      "note": "renames and type changes are UNKNOWN unless explicit; none inferred"
+    },
+    {
+      "model": "Candidate",
+      "from": "art-c59c9caae171cd46",
+      "to": "art-7658c21799c264ae",
+      "introduced_fields": [],
+      "removed_fields": [],
+      "retained_fields": [
+        "attempts",
+        "createdAt",
+        "depth",
+        "hints",
+        "id",
+        "nextAttemptAt",
+        "origin",
+        "parent",
+        "priority",
+        "status",
+        "target",
+        "type"
+      ],
+      "renamed_fields": [],
+      "type_changes": [],
+      "note": "renames and type changes are UNKNOWN unless explicit; none inferred"
+    },
+    {
+      "model": "Discovery",
+      "from": "art-8267c4e2e0748d7e",
+      "to": "art-e765b0cddd9bde04",
+      "introduced_fields": [],
+      "removed_fields": [],
+      "retained_fields": [
+        "candidateId",
+        "confidence",
+        "createdAt",
+        "data",
+        "id",
+        "kind",
+        "mechanism",
+        "observationId",
+        "provenance"
+      ],
+      "renamed_fields": [],
+      "type_changes": [],
+      "note": "renames and type changes are UNKNOWN unless explicit; none inferred"
+    },
+    {
+      "model": "KnowledgeBase",
+      "from": "art-4fb30cb408283e41",
+      "to": "art-3c357e1fce63e052",
+      "introduced_fields": [],
+      "removed_fields": [],
+      "retained_fields": [
+        "candidates",
+        "claimed",
+        "discoveries",
+        "graph",
+        "observations",
+        "visited"
+      ],
+      "renamed_fields": [],
+      "type_changes": [],
+      "note": "renames and type changes are UNKNOWN unless explicit; none inferred"
+    },
+    {
+      "model": "Observation",
+      "from": "art-92f49788f0e46f5e",
+      "to": "art-89a1e78cce30332a",
+      "introduced_fields": [
+        "bodyTruncated"
+      ],
+      "removed_fields": [],
+      "retained_fields": [
+        "body",
+        "candidateId",
+        "completedAt",
+        "errors",
+        "http",
+        "id",
+        "signalPresent",
+        "startedAt",
+        "status",
+        "target"
+      ],
+      "renamed_fields": [],
+      "type_changes": [],
+      "note": "renames and type changes are UNKNOWN unless explicit; none inferred"
+    },
+    {
+      "model": "ProvenanceGraph",
+      "from": "art-90a39e5c1f4767ef",
+      "to": "art-4e90c43b200db8a2",
+      "introduced_fields": [],
+      "removed_fields": [],
+      "retained_fields": [
+        "edges",
+        "nodes"
+      ],
+      "renamed_fields": [],
+      "type_changes": [],
+      "note": "renames and type changes are UNKNOWN unless explicit; none inferred"
+    },
+    {
+      "model": "Candidate",
+      "from": "art-f52789eef20c179d",
+      "to": "art-a7e23401a50e698f",
+      "introduced_fields": [
+        "depth",
+        "nextAttemptAt"
+      ],
+      "removed_fields": [],
+      "retained_fields": [
+        "attempts",
+        "createdAt",
+        "hints",
+        "id",
+        "origin",
+        "parent",
+        "priority",
+        "status",
+        "target",
+        "type"
+      ],
+      "renamed_fields": [],
+      "type_changes": [],
+      "note": "renames and type changes are UNKNOWN unless explicit; none inferred"
+    },
+    {
+      "model": "Discovery",
+      "from": "art-d556d5eb848af542",
+      "to": "art-11fedee43a51499d",
+      "introduced_fields": [],
+      "removed_fields": [],
+      "retained_fields": [
+        "candidateId",
+        "confidence",
+        "createdAt",
+        "data",
+        "id",
+        "kind",
+        "observationId",
+        "provenance"
+      ],
+      "renamed_fields": [],
+      "type_changes": [],
+      "note": "renames and type changes are UNKNOWN unless explicit; none inferred"
+    },
+    {
+      "model": "KnowledgeBase",
+      "from": "art-1a8a80a2eace5b4f",
+      "to": "art-f3bf233dfcd8c882",
+      "introduced_fields": [],
+      "removed_fields": [],
+      "retained_fields": [
+        "candidates",
+        "claimed",
+        "discoveries",
+        "observations",
+        "visited"
+      ],
+      "renamed_fields": [],
+      "type_changes": [],
+      "note": "renames and type changes are UNKNOWN unless explicit; none inferred"
+    },
+    {
+      "model": "Observation",
+      "from": "art-3fb6fd6d55e078b1",
+      "to": "art-38e1267ff7742f1f",
+      "introduced_fields": [
+        "network"
+      ],
+      "removed_fields": [],
+      "retained_fields": [
+        "body",
+        "candidateId",
+        "completedAt",
+        "errors",
+        "http",
+        "id",
+        "signalPresent",
+        "startedAt",
+        "status",
+        "target"
+      ],
+      "renamed_fields": [],
+      "type_changes": [],
+      "note": "renames and type changes are UNKNOWN unless explicit; none inferred"
+    },
+    {
+      "model": "Candidate",
+      "from": "art-a7e23401a50e698f",
+      "to": "art-cb0533a61ff3ade7",
+      "introduced_fields": [
+        "lastError"
+      ],
+      "removed_fields": [],
+      "retained_fields": [
+        "attempts",
+        "createdAt",
+        "depth",
+        "hints",
+        "id",
+        "nextAttemptAt",
+        "origin",
+        "parent",
+        "priority",
+        "status",
+        "target",
+        "type"
+      ],
+      "renamed_fields": [],
+      "type_changes": [],
+      "note": "renames and type changes are UNKNOWN unless explicit; none inferred"
+    },
+    {
+      "model": "Discovery",
+      "from": "art-11fedee43a51499d",
+      "to": "art-690c74cbd36aec9e",
+      "introduced_fields": [],
+      "removed_fields": [],
+      "retained_fields": [
+        "candidateId",
+        "confidence",
+        "createdAt",
+        "data",
+        "id",
+        "kind",
+        "observationId",
+        "provenance"
+      ],
+      "renamed_fields": [],
+      "type_changes": [],
+      "note": "renames and type changes are UNKNOWN unless explicit; none inferred"
+    },
+    {
+      "model": "KnowledgeBase",
+      "from": "art-f3bf233dfcd8c882",
+      "to": "art-b9ef2487d49ea940",
+      "introduced_fields": [
+        "networkEvents"
+      ],
+      "removed_fields": [],
+      "retained_fields": [
+        "candidates",
+        "claimed",
+        "discoveries",
+        "observations",
+        "visited"
+      ],
+      "renamed_fields": [],
+      "type_changes": [],
+      "note": "renames and type changes are UNKNOWN unless explicit; none inferred"
+    },
+    {
+      "model": "Observation",
+      "from": "art-38e1267ff7742f1f",
+      "to": "art-b844d07af7682d56",
+      "introduced_fields": [
+        "fingerprint"
+      ],
+      "removed_fields": [
+        "network"
+      ],
+      "retained_fields": [
+        "body",
+        "candidateId",
+        "completedAt",
+        "errors",
+        "http",
+        "id",
+        "signalPresent",
+        "startedAt",
+        "status",
+        "target"
+      ],
+      "renamed_fields": [],
+      "type_changes": [],
+      "note": "renames and type changes are UNKNOWN unless explicit; none inferred"
+    },
+    {
+      "model": "Candidate",
+      "from": "art-cb0533a61ff3ade7",
+      "to": "art-75bed90a2bdbfbaf",
+      "introduced_fields": [
+        "acquiringAt",
+        "claimedAt",
+        "completedAt",
+        "expandedAt",
+        "failedAt",
+        "observedAt",
+        "queuedAt",
+        "recognizedAt"
+      ],
+      "removed_fields": [],
+      "retained_fields": [
+        "attempts",
+        "createdAt",
+        "depth",
+        "hints",
+        "id",
+        "lastError",
+        "nextAttemptAt",
+        "origin",
+        "parent",
+        "priority",
+        "status",
+        "target",
+        "type"
+      ],
+      "renamed_fields": [],
+      "type_changes": [],
+      "note": "renames and type changes are UNKNOWN unless explicit; none inferred"
+    },
+    {
+      "model": "Discovery",
+      "from": "art-690c74cbd36aec9e",
+      "to": "art-fa108f051a086874",
+      "introduced_fields": [
+        "mechanism"
+      ],
+      "removed_fields": [],
+      "retained_fields": [
+        "candidateId",
+        "confidence",
+        "createdAt",
+        "data",
+        "id",
+        "kind",
+        "observationId",
+        "provenance"
+      ],
+      "renamed_fields": [],
+      "type_changes": [],
+      "note": "renames and type changes are UNKNOWN unless explicit; none inferred"
+    },
+    {
+      "model": "KnowledgeBase",
+      "from": "art-b9ef2487d49ea940",
+      "to": "art-774852ff67b40e5e",
+      "introduced_fields": [
+        "edges",
+        "engine",
+        "networkRequests",
+        "persistTimer",
+        "resources"
+      ],
+      "removed_fields": [],
+      "retained_fields": [
+        "candidates",
+        "claimed",
+        "discoveries",
+        "networkEvents",
+        "observations",
+        "visited"
+      ],
+      "renamed_fields": [],
+      "type_changes": [],
+      "note": "renames and type changes are UNKNOWN unless explicit; none inferred"
+    },
+    {
+      "model": "NetworkEvent",
+      "from": "art-171eed39d8b4b6bf",
+      "to": "art-72e2b112a29c271d",
+      "introduced_fields": [
+        "candidateCreated",
+        "finalUrl",
+        "requestAt",
+        "requestId",
+        "responseAt"
+      ],
+      "removed_fields": [],
+      "retained_fields": [
+        "api",
+        "contentType",
+        "duration",
+        "error",
+        "id",
+        "initiatorType",
+        "method",
+        "phase",
+        "status",
+        "timestamp",
+        "url"
+      ],
+      "renamed_fields": [],
+      "type_changes": [],
+      "note": "renames and type changes are UNKNOWN unless explicit; none inferred"
+    },
+    {
+      "model": "Observation",
+      "from": "art-b844d07af7682d56",
+      "to": "art-16ccd6bf6ce57e54",
+      "introduced_fields": [],
+      "removed_fields": [],
+      "retained_fields": [
+        "body",
+        "candidateId",
+        "completedAt",
+        "errors",
+        "fingerprint",
+        "http",
+        "id",
+        "signalPresent",
+        "startedAt",
+        "status",
+        "target"
+      ],
+      "renamed_fields": [],
+      "type_changes": [],
+      "note": "renames and type changes are UNKNOWN unless explicit; none inferred"
+    },
+    {
+      "model": "Candidate",
+      "from": "art-4bcdef425e8bda9b",
+      "to": "art-eee0d6ac4f5f54ac",
+      "introduced_fields": [
+        "skippedAt"
+      ],
+      "removed_fields": [],
+      "retained_fields": [
+        "acquiringAt",
+        "alternateOrigins",
+        "alternateTypes",
+        "attempts",
+        "claimedAt",
+        "completedAt",
+        "createdAt",
+        "depth",
+        "expandedAt",
+        "failedAt",
+        "hints",
+        "id",
+        "nextAttemptAt",
+        "observedAt",
+        "origin",
+        "parent",
+        "parents",
+        "priority",
+        "queuedAt",
+        "recognizedAt",
+        "status",
+        "target",
+        "type"
+      ],
+      "renamed_fields": [],
+      "type_changes": [],
+      "note": "renames and type changes are UNKNOWN unless explicit; none inferred"
+    },
+    {
+      "model": "Discovery",
+      "from": "art-3ec453a391b13904",
+      "to": "art-32a3d0a3e9d729d8",
+      "introduced_fields": [],
+      "removed_fields": [],
+      "retained_fields": [
+        "candidateId",
+        "confidence",
+        "createdAt",
+        "data",
+        "id",
+        "kind",
+        "mechanism",
+        "observationId",
+        "provenance"
+      ],
+      "renamed_fields": [],
+      "type_changes": [],
+      "note": "renames and type changes are UNKNOWN unless explicit; none inferred"
+    },
+    {
+      "model": "KnowledgeBase",
+      "from": "art-60e1efcb69393e27",
+      "to": "art-fbd2c2852d622a92",
+      "introduced_fields": [
+        "fingerprintIndex"
+      ],
+      "removed_fields": [],
+      "retained_fields": [
+        "candidates",
+        "claimed",
+        "discoveries",
+        "edgeRecords",
+        "observations",
+        "persistTimer",
+        "queue",
+        "resources",
+        "statistics",
+        "visited"
+      ],
+      "renamed_fields": [],
+      "type_changes": [],
+      "note": "renames and type changes are UNKNOWN unless explicit; none inferred"
+    },
+    {
+      "model": "NetworkEvent",
+      "from": "art-fb3efdca89aa4581",
+      "to": "art-a53d5a11a5af7ddf",
+      "introduced_fields": [],
+      "removed_fields": [],
+      "retained_fields": [
+        "api",
+        "contentType",
+        "duration",
+        "error",
+        "finalUrl",
+        "id",
+        "initiatorType",
+        "method",
+        "phase",
+        "requestAt",
+        "requestId",
+        "responseAt",
+        "status",
+        "url"
+      ],
+      "renamed_fields": [],
+      "type_changes": [],
+      "note": "renames and type changes are UNKNOWN unless explicit; none inferred"
+    },
+    {
+      "model": "Observation",
+      "from": "art-427d31dbfe025c9e",
+      "to": "art-dca138c09325c970",
+      "introduced_fields": [
+        "reason"
+      ],
+      "removed_fields": [],
+      "retained_fields": [
+        "body",
+        "candidateId",
+        "completedAt",
+        "errors",
+        "fingerprint",
+        "http",
+        "id",
+        "network",
+        "signalPresent",
+        "startedAt",
+        "status",
+        "target"
+      ],
+      "renamed_fields": [],
+      "type_changes": [],
+      "note": "renames and type changes are UNKNOWN unless explicit; none inferred"
+    },
+    {
+      "model": "ResourceRecord",
+      "from": "art-8568f8c50dcf77bf",
+      "to": "art-0537bb9b805f67e1",
+      "introduced_fields": [
+        "duplicateFingerprint",
+        "redirectTo"
+      ],
+      "removed_fields": [],
+      "retained_fields": [
+        "candidateIds",
+        "discoveryIds",
+        "finalUrl",
+        "fingerprint",
+        "firstSeenAt",
+        "id",
+        "lastSeenAt",
+        "mechanisms",
+        "observationIds",
+        "parents",
+        "status",
+        "types",
+        "url"
+      ],
+      "renamed_fields": [],
+      "type_changes": [],
+      "note": "renames and type changes are UNKNOWN unless explicit; none inferred"
+    },
+    {
+      "model": "Candidate",
+      "from": "art-eee0d6ac4f5f54ac",
+      "to": "art-da15dee66827cf8c",
+      "introduced_fields": [
+        "alternateParents",
+        "discoveredAt"
+      ],
+      "removed_fields": [
+        "parents",
+        "skippedAt"
+      ],
+      "retained_fields": [
+        "acquiringAt",
+        "alternateOrigins",
+        "alternateTypes",
+        "attempts",
+        "claimedAt",
+        "completedAt",
+        "createdAt",
+        "depth",
+        "expandedAt",
+        "failedAt",
+        "hints",
+        "id",
+        "nextAttemptAt",
+        "observedAt",
+        "origin",
+        "parent",
+        "priority",
+        "queuedAt",
+        "recognizedAt",
+        "status",
+        "target",
+        "type"
+      ],
+      "renamed_fields": [],
+      "type_changes": [],
+      "note": "renames and type changes are UNKNOWN unless explicit; none inferred"
+    },
+    {
+      "model": "Discovery",
+      "from": "art-32a3d0a3e9d729d8",
+      "to": "art-bf0e5de651e02a37",
+      "introduced_fields": [],
+      "removed_fields": [],
+      "retained_fields": [
+        "candidateId",
+        "confidence",
+        "createdAt",
+        "data",
+        "id",
+        "kind",
+        "mechanism",
+        "observationId",
+        "provenance"
+      ],
+      "renamed_fields": [],
+      "type_changes": [],
+      "note": "renames and type changes are UNKNOWN unless explicit; none inferred"
+    },
+    {
+      "model": "KnowledgeBase",
+      "from": "art-fbd2c2852d622a92",
+      "to": "art-a77939f7530f26f9",
+      "introduced_fields": [
+        "diagnostics",
+        "edges",
+        "networkEvents",
+        "persistenceTimer",
+        "stats"
+      ],
+      "removed_fields": [
+        "edgeRecords",
+        "persistTimer",
+        "queue",
+        "statistics"
+      ],
+      "retained_fields": [
+        "candidates",
+        "claimed",
+        "discoveries",
+        "fingerprintIndex",
+        "observations",
+        "resources",
+        "visited"
+      ],
+      "renamed_fields": [],
+      "type_changes": [],
+      "note": "renames and type changes are UNKNOWN unless explicit; none inferred"
+    },
+    {
+      "model": "NetworkEvent",
+      "from": "art-a53d5a11a5af7ddf",
+      "to": "art-20be851633cc7076",
+      "introduced_fields": [],
+      "removed_fields": [
+        "api",
+        "contentType",
+        "duration",
+        "error",
+        "finalUrl",
+        "id",
+        "initiatorType",
+        "method",
+        "phase",
+        "requestAt",
+        "requestId",
+        "responseAt",
+        "status",
+        "url"
+      ],
+      "retained_fields": [],
+      "renamed_fields": [],
+      "type_changes": [],
+      "note": "renames and type changes are UNKNOWN unless explicit; none inferred"
+    },
+    {
+      "model": "Observation",
+      "from": "art-dca138c09325c970",
+      "to": "art-5bb815a8798f901f",
+      "introduced_fields": [
+        "requestedUrl"
+      ],
+      "removed_fields": [],
+      "retained_fields": [
+        "body",
+        "candidateId",
+        "completedAt",
+        "errors",
+        "fingerprint",
+        "http",
+        "id",
+        "network",
+        "reason",
+        "signalPresent",
+        "startedAt",
+        "status",
+        "target"
+      ],
+      "renamed_fields": [],
+      "type_changes": [],
+      "note": "renames and type changes are UNKNOWN unless explicit; none inferred"
+    },
+    {
+      "model": "ResourceRecord",
+      "from": "art-0537bb9b805f67e1",
+      "to": "art-9ccf57692f298ba7",
+      "introduced_fields": [
+        "networkEventIds",
+        "skipReason"
+      ],
+      "removed_fields": [
+        "duplicateFingerprint",
+        "redirectTo"
+      ],
+      "retained_fields": [
+        "candidateIds",
+        "discoveryIds",
+        "finalUrl",
+        "fingerprint",
+        "firstSeenAt",
+        "id",
+        "lastSeenAt",
+        "mechanisms",
+        "observationIds",
+        "parents",
+        "status",
+        "types",
+        "url"
+      ],
+      "renamed_fields": [],
+      "type_changes": [],
+      "note": "renames and type changes are UNKNOWN unless explicit; none inferred"
+    },
+    {
+      "model": "Candidate",
+      "from": "art-da15dee66827cf8c",
+      "to": "art-a99ebc49a4254f07",
+      "introduced_fields": [
+        "plannedAt",
+        "skippedAt"
+      ],
+      "removed_fields": [],
+      "retained_fields": [
+        "acquiringAt",
+        "alternateOrigins",
+        "alternateParents",
+        "alternateTypes",
+        "attempts",
+        "claimedAt",
+        "completedAt",
+        "createdAt",
+        "depth",
+        "discoveredAt",
+        "expandedAt",
+        "failedAt",
+        "hints",
+        "id",
+        "nextAttemptAt",
+        "observedAt",
+        "origin",
+        "parent",
+        "priority",
+        "queuedAt",
+        "recognizedAt",
+        "status",
+        "target",
+        "type"
+      ],
+      "renamed_fields": [],
+      "type_changes": [],
+      "note": "renames and type changes are UNKNOWN unless explicit; none inferred"
+    },
+    {
+      "model": "Discovery",
+      "from": "art-bf0e5de651e02a37",
+      "to": "art-d37432fd888e46a7",
+      "introduced_fields": [],
+      "removed_fields": [],
+      "retained_fields": [
+        "candidateId",
+        "confidence",
+        "createdAt",
+        "data",
+        "id",
+        "kind",
+        "mechanism",
+        "observationId",
+        "provenance"
+      ],
+      "renamed_fields": [],
+      "type_changes": [],
+      "note": "renames and type changes are UNKNOWN unless explicit; none inferred"
+    },
+    {
+      "model": "KnowledgeBase",
+      "from": "art-a77939f7530f26f9",
+      "to": "art-2697c5969175b5b0",
+      "introduced_fields": [
+        "candidateKeys",
+        "graphEdges"
+      ],
+      "removed_fields": [
+        "edges",
+        "persistenceTimer"
+      ],
+      "retained_fields": [
+        "candidates",
+        "claimed",
+        "diagnostics",
+        "discoveries",
+        "fingerprintIndex",
+        "networkEvents",
+        "observations",
+        "resources",
+        "stats",
+        "visited"
+      ],
+      "renamed_fields": [],
+      "type_changes": [],
+      "note": "renames and type changes are UNKNOWN unless explicit; none inferred"
+    },
+    {
+      "model": "Observation",
+      "from": "art-5bb815a8798f901f",
+      "to": "art-e98ef71f3937a5f2",
+      "introduced_fields": [
+        "bodyTruncated",
+        "planId"
+      ],
+      "removed_fields": [],
+      "retained_fields": [
+        "body",
+        "candidateId",
+        "completedAt",
+        "errors",
+        "fingerprint",
+        "http",
+        "id",
+        "network",
+        "reason",
+        "requestedUrl",
+        "signalPresent",
+        "startedAt",
+        "status",
+        "target"
+      ],
+      "renamed_fields": [],
+      "type_changes": [],
+      "note": "renames and type changes are UNKNOWN unless explicit; none inferred"
+    },
+    {
+      "model": "ResourceRecord",
+      "from": "art-9ccf57692f298ba7",
+      "to": "art-f697379e09af3a4a",
+      "introduced_fields": [
+        "createdAt",
+        "updatedAt"
+      ],
+      "removed_fields": [
+        "firstSeenAt",
+        "id",
+        "lastSeenAt"
+      ],
+      "retained_fields": [
+        "candidateIds",
+        "discoveryIds",
+        "finalUrl",
+        "fingerprint",
+        "mechanisms",
+        "networkEventIds",
+        "observationIds",
+        "parents",
+        "skipReason",
+        "status",
+        "types",
+        "url"
+      ],
+      "renamed_fields": [],
+      "type_changes": [],
+      "note": "renames and type changes are UNKNOWN unless explicit; none inferred"
+    }
+  ]
+}

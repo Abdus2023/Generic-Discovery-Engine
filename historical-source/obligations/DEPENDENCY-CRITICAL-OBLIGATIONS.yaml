@@ -1,0 +1,2449 @@
+{
+  "schema_version": "1.0",
+  "input_contract_status": "INPUT_CONTRACT_FAILED",
+  "records": [
+    {
+      "obligation_id": "OBL-CANDIDATE-IDENTITY",
+      "direct_dependents": [
+        "OBL-ACQ-BEFORE-INTERP",
+        "OBL-ACQ-OUTCOME",
+        "OBL-CANDIDATE-ADMISSION",
+        "OBL-CANDIDATE-EQUIVALENCE",
+        "OBL-CANDIDATE-ORIGIN",
+        "OBL-CANDIDATE-PARENT",
+        "OBL-CANDIDATE-PRIORITY",
+        "OBL-CANDIDATE-STATE",
+        "OBL-CLAIM-EXCLUSIVITY",
+        "OBL-DEDUP-SCOPES",
+        "OBL-KNOWLEDGE",
+        "OBL-OBS-SOURCE"
+      ],
+      "transitive_dependents": [
+        "OBL-ACQ-BEFORE-INTERP",
+        "OBL-ACQ-METADATA",
+        "OBL-ACQ-OUTCOME",
+        "OBL-ACQ-SCOPE",
+        "OBL-ACQ-TIMEOUT",
+        "OBL-AUDIT",
+        "OBL-CANCELLATION",
+        "OBL-CANDIDATE-ADMISSION",
+        "OBL-CANDIDATE-ATTEMPTS",
+        "OBL-CANDIDATE-EQUIVALENCE",
+        "OBL-CANDIDATE-ORIGIN",
+        "OBL-CANDIDATE-PARENT",
+        "OBL-CANDIDATE-PRIORITY",
+        "OBL-CANDIDATE-STATE",
+        "OBL-CANDIDATE-TIMESTAMPS",
+        "OBL-CLAIM-EXCLUSIVITY",
+        "OBL-DEDUP-SCOPES",
+        "OBL-DISCOVERY-RECORD",
+        "OBL-ERROR-CONTRACT",
+        "OBL-EXPANSION-RECURSIVE",
+        "OBL-EXPANSION-VS-RETRY",
+        "OBL-EXPORT",
+        "OBL-KNOWLEDGE",
+        "OBL-LIFECYCLE-OBS",
+        "OBL-OBS-DISTINCT",
+        "OBL-OBS-OUTCOMES",
+        "OBL-OBS-SOURCE",
+        "OBL-PARSER",
+        "OBL-PERSIST-COMPAT",
+        "OBL-PERSIST-CORRUPTION",
+        "OBL-PROVENANCE",
+        "OBL-PROVENANCE-INTEGRITY",
+        "OBL-PROVIDER-CONTRACT",
+        "OBL-PROVIDER-FAILURE",
+        "OBL-RECOGNITION-DISTINCT",
+        "OBL-RECOGNITION-OUTCOMES",
+        "OBL-REMOTE-DATA",
+        "OBL-RETRY",
+        "OBL-SCHEDULER-TERMINATION",
+        "OBL-SILENT-FAILURE",
+        "OBL-TERMINAL-OWNERSHIP",
+        "OBL-WEB-GENERALIZE",
+        "OBL-WORKER-FAILURE"
+      ],
+      "centrality": 43,
+      "classification": "DEPENDENCY_CRITICAL",
+      "verification_priority": 3,
+      "reason": "Priority is based on downstream dependency count, not chronology or historical importance.",
+      "change_impact": {
+        "revisit_dependents": [
+          "OBL-ACQ-BEFORE-INTERP",
+          "OBL-ACQ-METADATA",
+          "OBL-ACQ-OUTCOME",
+          "OBL-ACQ-SCOPE",
+          "OBL-ACQ-TIMEOUT",
+          "OBL-AUDIT",
+          "OBL-CANCELLATION",
+          "OBL-CANDIDATE-ADMISSION",
+          "OBL-CANDIDATE-ATTEMPTS",
+          "OBL-CANDIDATE-EQUIVALENCE",
+          "OBL-CANDIDATE-ORIGIN",
+          "OBL-CANDIDATE-PARENT",
+          "OBL-CANDIDATE-PRIORITY",
+          "OBL-CANDIDATE-STATE",
+          "OBL-CANDIDATE-TIMESTAMPS",
+          "OBL-CLAIM-EXCLUSIVITY",
+          "OBL-DEDUP-SCOPES",
+          "OBL-DISCOVERY-RECORD",
+          "OBL-ERROR-CONTRACT",
+          "OBL-EXPANSION-RECURSIVE",
+          "OBL-EXPANSION-VS-RETRY",
+          "OBL-EXPORT",
+          "OBL-KNOWLEDGE",
+          "OBL-LIFECYCLE-OBS",
+          "OBL-OBS-DISTINCT",
+          "OBL-OBS-OUTCOMES",
+          "OBL-OBS-SOURCE",
+          "OBL-PARSER",
+          "OBL-PERSIST-COMPAT",
+          "OBL-PERSIST-CORRUPTION",
+          "OBL-PROVENANCE",
+          "OBL-PROVENANCE-INTEGRITY",
+          "OBL-PROVIDER-CONTRACT",
+          "OBL-PROVIDER-FAILURE",
+          "OBL-RECOGNITION-DISTINCT",
+          "OBL-RECOGNITION-OUTCOMES",
+          "OBL-REMOTE-DATA",
+          "OBL-RETRY",
+          "OBL-SCHEDULER-TERMINATION",
+          "OBL-SILENT-FAILURE",
+          "OBL-TERMINAL-OWNERSHIP",
+          "OBL-WEB-GENERALIZE",
+          "OBL-WORKER-FAILURE"
+        ],
+        "revisit_invariants": [
+          "INV-CANDIDATE-IDENTITY",
+          "INV-ACQ-BEFORE-INTERP",
+          "INV-ACQ-METADATA",
+          "INV-ACQ-OUTCOME",
+          "INV-ACQ-SCOPE",
+          "INV-ACQ-TIMEOUT",
+          "INV-AUDIT",
+          "INV-CANCELLATION",
+          "INV-CANDIDATE-ADMISSION",
+          "INV-CANDIDATE-ATTEMPTS",
+          "INV-CANDIDATE-EQUIVALENCE",
+          "INV-CANDIDATE-ORIGIN",
+          "INV-CANDIDATE-PARENT",
+          "INV-CANDIDATE-PRIORITY",
+          "INV-CANDIDATE-STATE",
+          "INV-CANDIDATE-TIMESTAMPS",
+          "INV-CLAIM-EXCLUSIVITY",
+          "INV-DEDUP-SCOPES",
+          "INV-DISCOVERY-RECORD",
+          "INV-ERROR-CONTRACT",
+          "INV-EXPANSION-RECURSIVE",
+          "INV-EXPANSION-VS-RETRY",
+          "INV-EXPORT",
+          "INV-KNOWLEDGE",
+          "INV-LIFECYCLE-OBS",
+          "INV-OBS-DISTINCT",
+          "INV-OBS-OUTCOMES",
+          "INV-OBS-SOURCE",
+          "INV-PARSER",
+          "INV-PERSIST-COMPAT",
+          "INV-PERSIST-CORRUPTION",
+          "INV-PROVENANCE",
+          "INV-PROVENANCE-INTEGRITY",
+          "INV-PROVIDER-CONTRACT",
+          "INV-PROVIDER-FAILURE",
+          "INV-RECOGNITION-DISTINCT",
+          "INV-RECOGNITION-OUTCOMES",
+          "INV-REMOTE-DATA",
+          "INV-RETRY",
+          "INV-SCHEDULER-TERMINATION",
+          "INV-SILENT-FAILURE",
+          "INV-TERMINAL-OWNERSHIP",
+          "INV-WEB-GENERALIZE",
+          "INV-WORKER-FAILURE"
+        ],
+        "revisit_regression_tests": [
+          "TEST-CANDIDATE-IDENTITY",
+          "TEST-ACQ-BEFORE-INTERP",
+          "TEST-ACQ-METADATA",
+          "TEST-ACQ-OUTCOME",
+          "TEST-ACQ-SCOPE",
+          "TEST-ACQ-TIMEOUT",
+          "TEST-AUDIT",
+          "TEST-CANCELLATION",
+          "TEST-CANDIDATE-ADMISSION",
+          "TEST-CANDIDATE-ATTEMPTS",
+          "TEST-CANDIDATE-EQUIVALENCE",
+          "TEST-CANDIDATE-ORIGIN",
+          "TEST-CANDIDATE-PARENT",
+          "TEST-CANDIDATE-PRIORITY",
+          "TEST-CANDIDATE-STATE",
+          "TEST-CANDIDATE-TIMESTAMPS",
+          "TEST-CLAIM-EXCLUSIVITY",
+          "TEST-DEDUP-SCOPES",
+          "TEST-DISCOVERY-RECORD",
+          "TEST-ERROR-CONTRACT",
+          "TEST-EXPANSION-RECURSIVE",
+          "TEST-EXPANSION-VS-RETRY",
+          "TEST-EXPORT",
+          "TEST-KNOWLEDGE",
+          "TEST-LIFECYCLE-OBS",
+          "TEST-OBS-DISTINCT",
+          "TEST-OBS-OUTCOMES",
+          "TEST-OBS-SOURCE",
+          "TEST-PARSER",
+          "TEST-PERSIST-COMPAT",
+          "TEST-PERSIST-CORRUPTION",
+          "TEST-PROVENANCE",
+          "TEST-PROVENANCE-INTEGRITY",
+          "TEST-PROVIDER-CONTRACT",
+          "TEST-PROVIDER-FAILURE",
+          "TEST-RECOGNITION-DISTINCT",
+          "TEST-RECOGNITION-OUTCOMES",
+          "TEST-REMOTE-DATA",
+          "TEST-RETRY",
+          "TEST-SCHEDULER-TERMINATION",
+          "TEST-SILENT-FAILURE",
+          "TEST-TERMINAL-OWNERSHIP",
+          "TEST-WEB-GENERALIZE",
+          "TEST-WORKER-FAILURE"
+        ],
+        "revisit_migration": true,
+        "revisit_conflicts": true
+      }
+    },
+    {
+      "obligation_id": "OBL-ACQ-BEFORE-INTERP",
+      "direct_dependents": [
+        "OBL-ACQ-OUTCOME",
+        "OBL-ACQ-SCOPE",
+        "OBL-ACQ-TIMEOUT",
+        "OBL-OBS-DISTINCT",
+        "OBL-RECOGNITION-DISTINCT",
+        "OBL-WEB-GENERALIZE"
+      ],
+      "transitive_dependents": [
+        "OBL-ACQ-METADATA",
+        "OBL-ACQ-OUTCOME",
+        "OBL-ACQ-SCOPE",
+        "OBL-ACQ-TIMEOUT",
+        "OBL-AUDIT",
+        "OBL-CANCELLATION",
+        "OBL-DISCOVERY-RECORD",
+        "OBL-ERROR-CONTRACT",
+        "OBL-EXPANSION-RECURSIVE",
+        "OBL-EXPANSION-VS-RETRY",
+        "OBL-EXPORT",
+        "OBL-KNOWLEDGE",
+        "OBL-LIFECYCLE-OBS",
+        "OBL-OBS-DISTINCT",
+        "OBL-OBS-OUTCOMES",
+        "OBL-OBS-SOURCE",
+        "OBL-PARSER",
+        "OBL-PERSIST-COMPAT",
+        "OBL-PERSIST-CORRUPTION",
+        "OBL-PROVENANCE",
+        "OBL-PROVENANCE-INTEGRITY",
+        "OBL-PROVIDER-CONTRACT",
+        "OBL-PROVIDER-FAILURE",
+        "OBL-RECOGNITION-DISTINCT",
+        "OBL-RECOGNITION-OUTCOMES",
+        "OBL-REMOTE-DATA",
+        "OBL-RETRY",
+        "OBL-SCHEDULER-TERMINATION",
+        "OBL-SILENT-FAILURE",
+        "OBL-WEB-GENERALIZE",
+        "OBL-WORKER-FAILURE"
+      ],
+      "centrality": 31,
+      "classification": "DEPENDENCY_CRITICAL",
+      "verification_priority": 10,
+      "reason": "Priority is based on downstream dependency count, not chronology or historical importance.",
+      "change_impact": {
+        "revisit_dependents": [
+          "OBL-ACQ-METADATA",
+          "OBL-ACQ-OUTCOME",
+          "OBL-ACQ-SCOPE",
+          "OBL-ACQ-TIMEOUT",
+          "OBL-AUDIT",
+          "OBL-CANCELLATION",
+          "OBL-DISCOVERY-RECORD",
+          "OBL-ERROR-CONTRACT",
+          "OBL-EXPANSION-RECURSIVE",
+          "OBL-EXPANSION-VS-RETRY",
+          "OBL-EXPORT",
+          "OBL-KNOWLEDGE",
+          "OBL-LIFECYCLE-OBS",
+          "OBL-OBS-DISTINCT",
+          "OBL-OBS-OUTCOMES",
+          "OBL-OBS-SOURCE",
+          "OBL-PARSER",
+          "OBL-PERSIST-COMPAT",
+          "OBL-PERSIST-CORRUPTION",
+          "OBL-PROVENANCE",
+          "OBL-PROVENANCE-INTEGRITY",
+          "OBL-PROVIDER-CONTRACT",
+          "OBL-PROVIDER-FAILURE",
+          "OBL-RECOGNITION-DISTINCT",
+          "OBL-RECOGNITION-OUTCOMES",
+          "OBL-REMOTE-DATA",
+          "OBL-RETRY",
+          "OBL-SCHEDULER-TERMINATION",
+          "OBL-SILENT-FAILURE",
+          "OBL-WEB-GENERALIZE",
+          "OBL-WORKER-FAILURE"
+        ],
+        "revisit_invariants": [
+          "INV-ACQ-BEFORE-INTERP",
+          "INV-ACQ-METADATA",
+          "INV-ACQ-OUTCOME",
+          "INV-ACQ-SCOPE",
+          "INV-ACQ-TIMEOUT",
+          "INV-AUDIT",
+          "INV-CANCELLATION",
+          "INV-DISCOVERY-RECORD",
+          "INV-ERROR-CONTRACT",
+          "INV-EXPANSION-RECURSIVE",
+          "INV-EXPANSION-VS-RETRY",
+          "INV-EXPORT",
+          "INV-KNOWLEDGE",
+          "INV-LIFECYCLE-OBS",
+          "INV-OBS-DISTINCT",
+          "INV-OBS-OUTCOMES",
+          "INV-OBS-SOURCE",
+          "INV-PARSER",
+          "INV-PERSIST-COMPAT",
+          "INV-PERSIST-CORRUPTION",
+          "INV-PROVENANCE",
+          "INV-PROVENANCE-INTEGRITY",
+          "INV-PROVIDER-CONTRACT",
+          "INV-PROVIDER-FAILURE",
+          "INV-RECOGNITION-DISTINCT",
+          "INV-RECOGNITION-OUTCOMES",
+          "INV-REMOTE-DATA",
+          "INV-RETRY",
+          "INV-SCHEDULER-TERMINATION",
+          "INV-SILENT-FAILURE",
+          "INV-WEB-GENERALIZE",
+          "INV-WORKER-FAILURE"
+        ],
+        "revisit_regression_tests": [
+          "TEST-ACQ-BEFORE-INTERP",
+          "TEST-ACQ-METADATA",
+          "TEST-ACQ-OUTCOME",
+          "TEST-ACQ-SCOPE",
+          "TEST-ACQ-TIMEOUT",
+          "TEST-AUDIT",
+          "TEST-CANCELLATION",
+          "TEST-DISCOVERY-RECORD",
+          "TEST-ERROR-CONTRACT",
+          "TEST-EXPANSION-RECURSIVE",
+          "TEST-EXPANSION-VS-RETRY",
+          "TEST-EXPORT",
+          "TEST-KNOWLEDGE",
+          "TEST-LIFECYCLE-OBS",
+          "TEST-OBS-DISTINCT",
+          "TEST-OBS-OUTCOMES",
+          "TEST-OBS-SOURCE",
+          "TEST-PARSER",
+          "TEST-PERSIST-COMPAT",
+          "TEST-PERSIST-CORRUPTION",
+          "TEST-PROVENANCE",
+          "TEST-PROVENANCE-INTEGRITY",
+          "TEST-PROVIDER-CONTRACT",
+          "TEST-PROVIDER-FAILURE",
+          "TEST-RECOGNITION-DISTINCT",
+          "TEST-RECOGNITION-OUTCOMES",
+          "TEST-REMOTE-DATA",
+          "TEST-RETRY",
+          "TEST-SCHEDULER-TERMINATION",
+          "TEST-SILENT-FAILURE",
+          "TEST-WEB-GENERALIZE",
+          "TEST-WORKER-FAILURE"
+        ],
+        "revisit_migration": true,
+        "revisit_conflicts": true
+      }
+    },
+    {
+      "obligation_id": "OBL-OBS-DISTINCT",
+      "direct_dependents": [
+        "OBL-ACQ-METADATA",
+        "OBL-KNOWLEDGE",
+        "OBL-OBS-OUTCOMES",
+        "OBL-OBS-SOURCE",
+        "OBL-RECOGNITION-DISTINCT"
+      ],
+      "transitive_dependents": [
+        "OBL-ACQ-METADATA",
+        "OBL-AUDIT",
+        "OBL-CANCELLATION",
+        "OBL-DISCOVERY-RECORD",
+        "OBL-ERROR-CONTRACT",
+        "OBL-EXPANSION-RECURSIVE",
+        "OBL-EXPANSION-VS-RETRY",
+        "OBL-EXPORT",
+        "OBL-KNOWLEDGE",
+        "OBL-LIFECYCLE-OBS",
+        "OBL-OBS-OUTCOMES",
+        "OBL-OBS-SOURCE",
+        "OBL-PARSER",
+        "OBL-PERSIST-COMPAT",
+        "OBL-PERSIST-CORRUPTION",
+        "OBL-PROVENANCE",
+        "OBL-PROVENANCE-INTEGRITY",
+        "OBL-PROVIDER-CONTRACT",
+        "OBL-PROVIDER-FAILURE",
+        "OBL-RECOGNITION-DISTINCT",
+        "OBL-RECOGNITION-OUTCOMES",
+        "OBL-REMOTE-DATA",
+        "OBL-SCHEDULER-TERMINATION",
+        "OBL-SILENT-FAILURE",
+        "OBL-WORKER-FAILURE"
+      ],
+      "centrality": 25,
+      "classification": "DEPENDENCY_CRITICAL",
+      "verification_priority": 22,
+      "reason": "Priority is based on downstream dependency count, not chronology or historical importance.",
+      "change_impact": {
+        "revisit_dependents": [
+          "OBL-ACQ-METADATA",
+          "OBL-AUDIT",
+          "OBL-CANCELLATION",
+          "OBL-DISCOVERY-RECORD",
+          "OBL-ERROR-CONTRACT",
+          "OBL-EXPANSION-RECURSIVE",
+          "OBL-EXPANSION-VS-RETRY",
+          "OBL-EXPORT",
+          "OBL-KNOWLEDGE",
+          "OBL-LIFECYCLE-OBS",
+          "OBL-OBS-OUTCOMES",
+          "OBL-OBS-SOURCE",
+          "OBL-PARSER",
+          "OBL-PERSIST-COMPAT",
+          "OBL-PERSIST-CORRUPTION",
+          "OBL-PROVENANCE",
+          "OBL-PROVENANCE-INTEGRITY",
+          "OBL-PROVIDER-CONTRACT",
+          "OBL-PROVIDER-FAILURE",
+          "OBL-RECOGNITION-DISTINCT",
+          "OBL-RECOGNITION-OUTCOMES",
+          "OBL-REMOTE-DATA",
+          "OBL-SCHEDULER-TERMINATION",
+          "OBL-SILENT-FAILURE",
+          "OBL-WORKER-FAILURE"
+        ],
+        "revisit_invariants": [
+          "INV-OBS-DISTINCT",
+          "INV-ACQ-METADATA",
+          "INV-AUDIT",
+          "INV-CANCELLATION",
+          "INV-DISCOVERY-RECORD",
+          "INV-ERROR-CONTRACT",
+          "INV-EXPANSION-RECURSIVE",
+          "INV-EXPANSION-VS-RETRY",
+          "INV-EXPORT",
+          "INV-KNOWLEDGE",
+          "INV-LIFECYCLE-OBS",
+          "INV-OBS-OUTCOMES",
+          "INV-OBS-SOURCE",
+          "INV-PARSER",
+          "INV-PERSIST-COMPAT",
+          "INV-PERSIST-CORRUPTION",
+          "INV-PROVENANCE",
+          "INV-PROVENANCE-INTEGRITY",
+          "INV-PROVIDER-CONTRACT",
+          "INV-PROVIDER-FAILURE",
+          "INV-RECOGNITION-DISTINCT",
+          "INV-RECOGNITION-OUTCOMES",
+          "INV-REMOTE-DATA",
+          "INV-SCHEDULER-TERMINATION",
+          "INV-SILENT-FAILURE",
+          "INV-WORKER-FAILURE"
+        ],
+        "revisit_regression_tests": [
+          "TEST-OBS-DISTINCT",
+          "TEST-ACQ-METADATA",
+          "TEST-AUDIT",
+          "TEST-CANCELLATION",
+          "TEST-DISCOVERY-RECORD",
+          "TEST-ERROR-CONTRACT",
+          "TEST-EXPANSION-RECURSIVE",
+          "TEST-EXPANSION-VS-RETRY",
+          "TEST-EXPORT",
+          "TEST-KNOWLEDGE",
+          "TEST-LIFECYCLE-OBS",
+          "TEST-OBS-OUTCOMES",
+          "TEST-OBS-SOURCE",
+          "TEST-PARSER",
+          "TEST-PERSIST-COMPAT",
+          "TEST-PERSIST-CORRUPTION",
+          "TEST-PROVENANCE",
+          "TEST-PROVENANCE-INTEGRITY",
+          "TEST-PROVIDER-CONTRACT",
+          "TEST-PROVIDER-FAILURE",
+          "TEST-RECOGNITION-DISTINCT",
+          "TEST-RECOGNITION-OUTCOMES",
+          "TEST-REMOTE-DATA",
+          "TEST-SCHEDULER-TERMINATION",
+          "TEST-SILENT-FAILURE",
+          "TEST-WORKER-FAILURE"
+        ],
+        "revisit_migration": true,
+        "revisit_conflicts": true
+      }
+    },
+    {
+      "obligation_id": "OBL-RECOGNITION-DISTINCT",
+      "direct_dependents": [
+        "OBL-DISCOVERY-RECORD",
+        "OBL-PARSER",
+        "OBL-PROVIDER-CONTRACT",
+        "OBL-RECOGNITION-OUTCOMES",
+        "OBL-REMOTE-DATA"
+      ],
+      "transitive_dependents": [
+        "OBL-AUDIT",
+        "OBL-CANCELLATION",
+        "OBL-DISCOVERY-RECORD",
+        "OBL-ERROR-CONTRACT",
+        "OBL-EXPANSION-RECURSIVE",
+        "OBL-EXPANSION-VS-RETRY",
+        "OBL-EXPORT",
+        "OBL-KNOWLEDGE",
+        "OBL-LIFECYCLE-OBS",
+        "OBL-PARSER",
+        "OBL-PERSIST-COMPAT",
+        "OBL-PERSIST-CORRUPTION",
+        "OBL-PROVENANCE",
+        "OBL-PROVENANCE-INTEGRITY",
+        "OBL-PROVIDER-CONTRACT",
+        "OBL-PROVIDER-FAILURE",
+        "OBL-RECOGNITION-OUTCOMES",
+        "OBL-REMOTE-DATA",
+        "OBL-SCHEDULER-TERMINATION",
+        "OBL-SILENT-FAILURE",
+        "OBL-WORKER-FAILURE"
+      ],
+      "centrality": 21,
+      "classification": "DEPENDENCY_CRITICAL",
+      "verification_priority": 30,
+      "reason": "Priority is based on downstream dependency count, not chronology or historical importance.",
+      "change_impact": {
+        "revisit_dependents": [
+          "OBL-AUDIT",
+          "OBL-CANCELLATION",
+          "OBL-DISCOVERY-RECORD",
+          "OBL-ERROR-CONTRACT",
+          "OBL-EXPANSION-RECURSIVE",
+          "OBL-EXPANSION-VS-RETRY",
+          "OBL-EXPORT",
+          "OBL-KNOWLEDGE",
+          "OBL-LIFECYCLE-OBS",
+          "OBL-PARSER",
+          "OBL-PERSIST-COMPAT",
+          "OBL-PERSIST-CORRUPTION",
+          "OBL-PROVENANCE",
+          "OBL-PROVENANCE-INTEGRITY",
+          "OBL-PROVIDER-CONTRACT",
+          "OBL-PROVIDER-FAILURE",
+          "OBL-RECOGNITION-OUTCOMES",
+          "OBL-REMOTE-DATA",
+          "OBL-SCHEDULER-TERMINATION",
+          "OBL-SILENT-FAILURE",
+          "OBL-WORKER-FAILURE"
+        ],
+        "revisit_invariants": [
+          "INV-RECOGNITION-DISTINCT",
+          "INV-AUDIT",
+          "INV-CANCELLATION",
+          "INV-DISCOVERY-RECORD",
+          "INV-ERROR-CONTRACT",
+          "INV-EXPANSION-RECURSIVE",
+          "INV-EXPANSION-VS-RETRY",
+          "INV-EXPORT",
+          "INV-KNOWLEDGE",
+          "INV-LIFECYCLE-OBS",
+          "INV-PARSER",
+          "INV-PERSIST-COMPAT",
+          "INV-PERSIST-CORRUPTION",
+          "INV-PROVENANCE",
+          "INV-PROVENANCE-INTEGRITY",
+          "INV-PROVIDER-CONTRACT",
+          "INV-PROVIDER-FAILURE",
+          "INV-RECOGNITION-OUTCOMES",
+          "INV-REMOTE-DATA",
+          "INV-SCHEDULER-TERMINATION",
+          "INV-SILENT-FAILURE",
+          "INV-WORKER-FAILURE"
+        ],
+        "revisit_regression_tests": [
+          "TEST-RECOGNITION-DISTINCT",
+          "TEST-AUDIT",
+          "TEST-CANCELLATION",
+          "TEST-DISCOVERY-RECORD",
+          "TEST-ERROR-CONTRACT",
+          "TEST-EXPANSION-RECURSIVE",
+          "TEST-EXPANSION-VS-RETRY",
+          "TEST-EXPORT",
+          "TEST-KNOWLEDGE",
+          "TEST-LIFECYCLE-OBS",
+          "TEST-PARSER",
+          "TEST-PERSIST-COMPAT",
+          "TEST-PERSIST-CORRUPTION",
+          "TEST-PROVENANCE",
+          "TEST-PROVENANCE-INTEGRITY",
+          "TEST-PROVIDER-CONTRACT",
+          "TEST-PROVIDER-FAILURE",
+          "TEST-RECOGNITION-OUTCOMES",
+          "TEST-REMOTE-DATA",
+          "TEST-SCHEDULER-TERMINATION",
+          "TEST-SILENT-FAILURE",
+          "TEST-WORKER-FAILURE"
+        ],
+        "revisit_migration": true,
+        "revisit_conflicts": true
+      }
+    },
+    {
+      "obligation_id": "OBL-ACQ-OUTCOME",
+      "direct_dependents": [
+        "OBL-LIFECYCLE-OBS",
+        "OBL-OBS-OUTCOMES"
+      ],
+      "transitive_dependents": [
+        "OBL-AUDIT",
+        "OBL-CANCELLATION",
+        "OBL-ERROR-CONTRACT",
+        "OBL-EXPANSION-RECURSIVE",
+        "OBL-EXPANSION-VS-RETRY",
+        "OBL-EXPORT",
+        "OBL-LIFECYCLE-OBS",
+        "OBL-OBS-OUTCOMES",
+        "OBL-PERSIST-COMPAT",
+        "OBL-PERSIST-CORRUPTION",
+        "OBL-PROVIDER-CONTRACT",
+        "OBL-PROVIDER-FAILURE",
+        "OBL-RECOGNITION-OUTCOMES",
+        "OBL-SCHEDULER-TERMINATION",
+        "OBL-SILENT-FAILURE",
+        "OBL-WORKER-FAILURE"
+      ],
+      "centrality": 16,
+      "classification": "DEPENDENCY_CRITICAL",
+      "verification_priority": 19,
+      "reason": "Priority is based on downstream dependency count, not chronology or historical importance.",
+      "change_impact": {
+        "revisit_dependents": [
+          "OBL-AUDIT",
+          "OBL-CANCELLATION",
+          "OBL-ERROR-CONTRACT",
+          "OBL-EXPANSION-RECURSIVE",
+          "OBL-EXPANSION-VS-RETRY",
+          "OBL-EXPORT",
+          "OBL-LIFECYCLE-OBS",
+          "OBL-OBS-OUTCOMES",
+          "OBL-PERSIST-COMPAT",
+          "OBL-PERSIST-CORRUPTION",
+          "OBL-PROVIDER-CONTRACT",
+          "OBL-PROVIDER-FAILURE",
+          "OBL-RECOGNITION-OUTCOMES",
+          "OBL-SCHEDULER-TERMINATION",
+          "OBL-SILENT-FAILURE",
+          "OBL-WORKER-FAILURE"
+        ],
+        "revisit_invariants": [
+          "INV-ACQ-OUTCOME",
+          "INV-AUDIT",
+          "INV-CANCELLATION",
+          "INV-ERROR-CONTRACT",
+          "INV-EXPANSION-RECURSIVE",
+          "INV-EXPANSION-VS-RETRY",
+          "INV-EXPORT",
+          "INV-LIFECYCLE-OBS",
+          "INV-OBS-OUTCOMES",
+          "INV-PERSIST-COMPAT",
+          "INV-PERSIST-CORRUPTION",
+          "INV-PROVIDER-CONTRACT",
+          "INV-PROVIDER-FAILURE",
+          "INV-RECOGNITION-OUTCOMES",
+          "INV-SCHEDULER-TERMINATION",
+          "INV-SILENT-FAILURE",
+          "INV-WORKER-FAILURE"
+        ],
+        "revisit_regression_tests": [
+          "TEST-ACQ-OUTCOME",
+          "TEST-AUDIT",
+          "TEST-CANCELLATION",
+          "TEST-ERROR-CONTRACT",
+          "TEST-EXPANSION-RECURSIVE",
+          "TEST-EXPANSION-VS-RETRY",
+          "TEST-EXPORT",
+          "TEST-LIFECYCLE-OBS",
+          "TEST-OBS-OUTCOMES",
+          "TEST-PERSIST-COMPAT",
+          "TEST-PERSIST-CORRUPTION",
+          "TEST-PROVIDER-CONTRACT",
+          "TEST-PROVIDER-FAILURE",
+          "TEST-RECOGNITION-OUTCOMES",
+          "TEST-SCHEDULER-TERMINATION",
+          "TEST-SILENT-FAILURE",
+          "TEST-WORKER-FAILURE"
+        ],
+        "revisit_migration": true,
+        "revisit_conflicts": true
+      }
+    },
+    {
+      "obligation_id": "OBL-OBS-OUTCOMES",
+      "direct_dependents": [
+        "OBL-ERROR-CONTRACT",
+        "OBL-RECOGNITION-OUTCOMES",
+        "OBL-SILENT-FAILURE"
+      ],
+      "transitive_dependents": [
+        "OBL-AUDIT",
+        "OBL-CANCELLATION",
+        "OBL-ERROR-CONTRACT",
+        "OBL-EXPANSION-RECURSIVE",
+        "OBL-EXPANSION-VS-RETRY",
+        "OBL-EXPORT",
+        "OBL-LIFECYCLE-OBS",
+        "OBL-PERSIST-COMPAT",
+        "OBL-PERSIST-CORRUPTION",
+        "OBL-PROVIDER-CONTRACT",
+        "OBL-PROVIDER-FAILURE",
+        "OBL-RECOGNITION-OUTCOMES",
+        "OBL-SCHEDULER-TERMINATION",
+        "OBL-SILENT-FAILURE",
+        "OBL-WORKER-FAILURE"
+      ],
+      "centrality": 15,
+      "classification": "DEPENDENCY_CRITICAL",
+      "verification_priority": 28,
+      "reason": "Priority is based on downstream dependency count, not chronology or historical importance.",
+      "change_impact": {
+        "revisit_dependents": [
+          "OBL-AUDIT",
+          "OBL-CANCELLATION",
+          "OBL-ERROR-CONTRACT",
+          "OBL-EXPANSION-RECURSIVE",
+          "OBL-EXPANSION-VS-RETRY",
+          "OBL-EXPORT",
+          "OBL-LIFECYCLE-OBS",
+          "OBL-PERSIST-COMPAT",
+          "OBL-PERSIST-CORRUPTION",
+          "OBL-PROVIDER-CONTRACT",
+          "OBL-PROVIDER-FAILURE",
+          "OBL-RECOGNITION-OUTCOMES",
+          "OBL-SCHEDULER-TERMINATION",
+          "OBL-SILENT-FAILURE",
+          "OBL-WORKER-FAILURE"
+        ],
+        "revisit_invariants": [
+          "INV-OBS-OUTCOMES",
+          "INV-AUDIT",
+          "INV-CANCELLATION",
+          "INV-ERROR-CONTRACT",
+          "INV-EXPANSION-RECURSIVE",
+          "INV-EXPANSION-VS-RETRY",
+          "INV-EXPORT",
+          "INV-LIFECYCLE-OBS",
+          "INV-PERSIST-COMPAT",
+          "INV-PERSIST-CORRUPTION",
+          "INV-PROVIDER-CONTRACT",
+          "INV-PROVIDER-FAILURE",
+          "INV-RECOGNITION-OUTCOMES",
+          "INV-SCHEDULER-TERMINATION",
+          "INV-SILENT-FAILURE",
+          "INV-WORKER-FAILURE"
+        ],
+        "revisit_regression_tests": [
+          "TEST-OBS-OUTCOMES",
+          "TEST-AUDIT",
+          "TEST-CANCELLATION",
+          "TEST-ERROR-CONTRACT",
+          "TEST-EXPANSION-RECURSIVE",
+          "TEST-EXPANSION-VS-RETRY",
+          "TEST-EXPORT",
+          "TEST-LIFECYCLE-OBS",
+          "TEST-PERSIST-COMPAT",
+          "TEST-PERSIST-CORRUPTION",
+          "TEST-PROVIDER-CONTRACT",
+          "TEST-PROVIDER-FAILURE",
+          "TEST-RECOGNITION-OUTCOMES",
+          "TEST-SCHEDULER-TERMINATION",
+          "TEST-SILENT-FAILURE",
+          "TEST-WORKER-FAILURE"
+        ],
+        "revisit_migration": true,
+        "revisit_conflicts": true
+      }
+    },
+    {
+      "obligation_id": "OBL-OBS-SOURCE",
+      "direct_dependents": [
+        "OBL-ACQ-METADATA",
+        "OBL-DISCOVERY-RECORD",
+        "OBL-PROVENANCE"
+      ],
+      "transitive_dependents": [
+        "OBL-ACQ-METADATA",
+        "OBL-AUDIT",
+        "OBL-CANCELLATION",
+        "OBL-DISCOVERY-RECORD",
+        "OBL-EXPANSION-RECURSIVE",
+        "OBL-EXPANSION-VS-RETRY",
+        "OBL-EXPORT",
+        "OBL-KNOWLEDGE",
+        "OBL-LIFECYCLE-OBS",
+        "OBL-PERSIST-COMPAT",
+        "OBL-PERSIST-CORRUPTION",
+        "OBL-PROVENANCE",
+        "OBL-PROVENANCE-INTEGRITY",
+        "OBL-SCHEDULER-TERMINATION"
+      ],
+      "centrality": 14,
+      "classification": "DEPENDENCY_CRITICAL",
+      "verification_priority": 29,
+      "reason": "Priority is based on downstream dependency count, not chronology or historical importance.",
+      "change_impact": {
+        "revisit_dependents": [
+          "OBL-ACQ-METADATA",
+          "OBL-AUDIT",
+          "OBL-CANCELLATION",
+          "OBL-DISCOVERY-RECORD",
+          "OBL-EXPANSION-RECURSIVE",
+          "OBL-EXPANSION-VS-RETRY",
+          "OBL-EXPORT",
+          "OBL-KNOWLEDGE",
+          "OBL-LIFECYCLE-OBS",
+          "OBL-PERSIST-COMPAT",
+          "OBL-PERSIST-CORRUPTION",
+          "OBL-PROVENANCE",
+          "OBL-PROVENANCE-INTEGRITY",
+          "OBL-SCHEDULER-TERMINATION"
+        ],
+        "revisit_invariants": [
+          "INV-OBS-SOURCE",
+          "INV-ACQ-METADATA",
+          "INV-AUDIT",
+          "INV-CANCELLATION",
+          "INV-DISCOVERY-RECORD",
+          "INV-EXPANSION-RECURSIVE",
+          "INV-EXPANSION-VS-RETRY",
+          "INV-EXPORT",
+          "INV-KNOWLEDGE",
+          "INV-LIFECYCLE-OBS",
+          "INV-PERSIST-COMPAT",
+          "INV-PERSIST-CORRUPTION",
+          "INV-PROVENANCE",
+          "INV-PROVENANCE-INTEGRITY",
+          "INV-SCHEDULER-TERMINATION"
+        ],
+        "revisit_regression_tests": [
+          "TEST-OBS-SOURCE",
+          "TEST-ACQ-METADATA",
+          "TEST-AUDIT",
+          "TEST-CANCELLATION",
+          "TEST-DISCOVERY-RECORD",
+          "TEST-EXPANSION-RECURSIVE",
+          "TEST-EXPANSION-VS-RETRY",
+          "TEST-EXPORT",
+          "TEST-KNOWLEDGE",
+          "TEST-LIFECYCLE-OBS",
+          "TEST-PERSIST-COMPAT",
+          "TEST-PERSIST-CORRUPTION",
+          "TEST-PROVENANCE",
+          "TEST-PROVENANCE-INTEGRITY",
+          "TEST-SCHEDULER-TERMINATION"
+        ],
+        "revisit_migration": true,
+        "revisit_conflicts": true
+      }
+    },
+    {
+      "obligation_id": "OBL-RECOGNITION-OUTCOMES",
+      "direct_dependents": [
+        "OBL-ERROR-CONTRACT",
+        "OBL-LIFECYCLE-OBS",
+        "OBL-PROVIDER-CONTRACT",
+        "OBL-SILENT-FAILURE"
+      ],
+      "transitive_dependents": [
+        "OBL-AUDIT",
+        "OBL-CANCELLATION",
+        "OBL-ERROR-CONTRACT",
+        "OBL-EXPANSION-RECURSIVE",
+        "OBL-EXPANSION-VS-RETRY",
+        "OBL-EXPORT",
+        "OBL-LIFECYCLE-OBS",
+        "OBL-PERSIST-COMPAT",
+        "OBL-PERSIST-CORRUPTION",
+        "OBL-PROVIDER-CONTRACT",
+        "OBL-PROVIDER-FAILURE",
+        "OBL-SCHEDULER-TERMINATION",
+        "OBL-SILENT-FAILURE",
+        "OBL-WORKER-FAILURE"
+      ],
+      "centrality": 14,
+      "classification": "DEPENDENCY_CRITICAL",
+      "verification_priority": 34,
+      "reason": "Priority is based on downstream dependency count, not chronology or historical importance.",
+      "change_impact": {
+        "revisit_dependents": [
+          "OBL-AUDIT",
+          "OBL-CANCELLATION",
+          "OBL-ERROR-CONTRACT",
+          "OBL-EXPANSION-RECURSIVE",
+          "OBL-EXPANSION-VS-RETRY",
+          "OBL-EXPORT",
+          "OBL-LIFECYCLE-OBS",
+          "OBL-PERSIST-COMPAT",
+          "OBL-PERSIST-CORRUPTION",
+          "OBL-PROVIDER-CONTRACT",
+          "OBL-PROVIDER-FAILURE",
+          "OBL-SCHEDULER-TERMINATION",
+          "OBL-SILENT-FAILURE",
+          "OBL-WORKER-FAILURE"
+        ],
+        "revisit_invariants": [
+          "INV-RECOGNITION-OUTCOMES",
+          "INV-AUDIT",
+          "INV-CANCELLATION",
+          "INV-ERROR-CONTRACT",
+          "INV-EXPANSION-RECURSIVE",
+          "INV-EXPANSION-VS-RETRY",
+          "INV-EXPORT",
+          "INV-LIFECYCLE-OBS",
+          "INV-PERSIST-COMPAT",
+          "INV-PERSIST-CORRUPTION",
+          "INV-PROVIDER-CONTRACT",
+          "INV-PROVIDER-FAILURE",
+          "INV-SCHEDULER-TERMINATION",
+          "INV-SILENT-FAILURE",
+          "INV-WORKER-FAILURE"
+        ],
+        "revisit_regression_tests": [
+          "TEST-RECOGNITION-OUTCOMES",
+          "TEST-AUDIT",
+          "TEST-CANCELLATION",
+          "TEST-ERROR-CONTRACT",
+          "TEST-EXPANSION-RECURSIVE",
+          "TEST-EXPANSION-VS-RETRY",
+          "TEST-EXPORT",
+          "TEST-LIFECYCLE-OBS",
+          "TEST-PERSIST-COMPAT",
+          "TEST-PERSIST-CORRUPTION",
+          "TEST-PROVIDER-CONTRACT",
+          "TEST-PROVIDER-FAILURE",
+          "TEST-SCHEDULER-TERMINATION",
+          "TEST-SILENT-FAILURE",
+          "TEST-WORKER-FAILURE"
+        ],
+        "revisit_migration": true,
+        "revisit_conflicts": true
+      }
+    },
+    {
+      "obligation_id": "OBL-CANDIDATE-STATE",
+      "direct_dependents": [
+        "OBL-CANCELLATION",
+        "OBL-CANDIDATE-ADMISSION",
+        "OBL-CANDIDATE-ATTEMPTS",
+        "OBL-CANDIDATE-TIMESTAMPS",
+        "OBL-CLAIM-EXCLUSIVITY",
+        "OBL-LIFECYCLE-OBS",
+        "OBL-TERMINAL-OWNERSHIP"
+      ],
+      "transitive_dependents": [
+        "OBL-AUDIT",
+        "OBL-CANCELLATION",
+        "OBL-CANDIDATE-ADMISSION",
+        "OBL-CANDIDATE-ATTEMPTS",
+        "OBL-CANDIDATE-TIMESTAMPS",
+        "OBL-CLAIM-EXCLUSIVITY",
+        "OBL-EXPANSION-RECURSIVE",
+        "OBL-EXPANSION-VS-RETRY",
+        "OBL-LIFECYCLE-OBS",
+        "OBL-RETRY",
+        "OBL-SCHEDULER-TERMINATION",
+        "OBL-TERMINAL-OWNERSHIP",
+        "OBL-WORKER-FAILURE"
+      ],
+      "centrality": 13,
+      "classification": "DEPENDENCY_CRITICAL",
+      "verification_priority": 15,
+      "reason": "Priority is based on downstream dependency count, not chronology or historical importance.",
+      "change_impact": {
+        "revisit_dependents": [
+          "OBL-AUDIT",
+          "OBL-CANCELLATION",
+          "OBL-CANDIDATE-ADMISSION",
+          "OBL-CANDIDATE-ATTEMPTS",
+          "OBL-CANDIDATE-TIMESTAMPS",
+          "OBL-CLAIM-EXCLUSIVITY",
+          "OBL-EXPANSION-RECURSIVE",
+          "OBL-EXPANSION-VS-RETRY",
+          "OBL-LIFECYCLE-OBS",
+          "OBL-RETRY",
+          "OBL-SCHEDULER-TERMINATION",
+          "OBL-TERMINAL-OWNERSHIP",
+          "OBL-WORKER-FAILURE"
+        ],
+        "revisit_invariants": [
+          "INV-CANDIDATE-STATE",
+          "INV-AUDIT",
+          "INV-CANCELLATION",
+          "INV-CANDIDATE-ADMISSION",
+          "INV-CANDIDATE-ATTEMPTS",
+          "INV-CANDIDATE-TIMESTAMPS",
+          "INV-CLAIM-EXCLUSIVITY",
+          "INV-EXPANSION-RECURSIVE",
+          "INV-EXPANSION-VS-RETRY",
+          "INV-LIFECYCLE-OBS",
+          "INV-RETRY",
+          "INV-SCHEDULER-TERMINATION",
+          "INV-TERMINAL-OWNERSHIP",
+          "INV-WORKER-FAILURE"
+        ],
+        "revisit_regression_tests": [
+          "TEST-CANDIDATE-STATE",
+          "TEST-AUDIT",
+          "TEST-CANCELLATION",
+          "TEST-CANDIDATE-ADMISSION",
+          "TEST-CANDIDATE-ATTEMPTS",
+          "TEST-CANDIDATE-TIMESTAMPS",
+          "TEST-CLAIM-EXCLUSIVITY",
+          "TEST-EXPANSION-RECURSIVE",
+          "TEST-EXPANSION-VS-RETRY",
+          "TEST-LIFECYCLE-OBS",
+          "TEST-RETRY",
+          "TEST-SCHEDULER-TERMINATION",
+          "TEST-TERMINAL-OWNERSHIP",
+          "TEST-WORKER-FAILURE"
+        ],
+        "revisit_migration": true,
+        "revisit_conflicts": true
+      }
+    },
+    {
+      "obligation_id": "OBL-DISCOVERY-RECORD",
+      "direct_dependents": [
+        "OBL-EXPANSION-RECURSIVE",
+        "OBL-KNOWLEDGE",
+        "OBL-LIFECYCLE-OBS",
+        "OBL-PROVENANCE"
+      ],
+      "transitive_dependents": [
+        "OBL-AUDIT",
+        "OBL-CANCELLATION",
+        "OBL-EXPANSION-RECURSIVE",
+        "OBL-EXPANSION-VS-RETRY",
+        "OBL-EXPORT",
+        "OBL-KNOWLEDGE",
+        "OBL-LIFECYCLE-OBS",
+        "OBL-PERSIST-COMPAT",
+        "OBL-PERSIST-CORRUPTION",
+        "OBL-PROVENANCE",
+        "OBL-PROVENANCE-INTEGRITY",
+        "OBL-SCHEDULER-TERMINATION"
+      ],
+      "centrality": 12,
+      "classification": "DEPENDENCY_CRITICAL",
+      "verification_priority": 33,
+      "reason": "Priority is based on downstream dependency count, not chronology or historical importance.",
+      "change_impact": {
+        "revisit_dependents": [
+          "OBL-AUDIT",
+          "OBL-CANCELLATION",
+          "OBL-EXPANSION-RECURSIVE",
+          "OBL-EXPANSION-VS-RETRY",
+          "OBL-EXPORT",
+          "OBL-KNOWLEDGE",
+          "OBL-LIFECYCLE-OBS",
+          "OBL-PERSIST-COMPAT",
+          "OBL-PERSIST-CORRUPTION",
+          "OBL-PROVENANCE",
+          "OBL-PROVENANCE-INTEGRITY",
+          "OBL-SCHEDULER-TERMINATION"
+        ],
+        "revisit_invariants": [
+          "INV-DISCOVERY-RECORD",
+          "INV-AUDIT",
+          "INV-CANCELLATION",
+          "INV-EXPANSION-RECURSIVE",
+          "INV-EXPANSION-VS-RETRY",
+          "INV-EXPORT",
+          "INV-KNOWLEDGE",
+          "INV-LIFECYCLE-OBS",
+          "INV-PERSIST-COMPAT",
+          "INV-PERSIST-CORRUPTION",
+          "INV-PROVENANCE",
+          "INV-PROVENANCE-INTEGRITY",
+          "INV-SCHEDULER-TERMINATION"
+        ],
+        "revisit_regression_tests": [
+          "TEST-DISCOVERY-RECORD",
+          "TEST-AUDIT",
+          "TEST-CANCELLATION",
+          "TEST-EXPANSION-RECURSIVE",
+          "TEST-EXPANSION-VS-RETRY",
+          "TEST-EXPORT",
+          "TEST-KNOWLEDGE",
+          "TEST-LIFECYCLE-OBS",
+          "TEST-PERSIST-COMPAT",
+          "TEST-PERSIST-CORRUPTION",
+          "TEST-PROVENANCE",
+          "TEST-PROVENANCE-INTEGRITY",
+          "TEST-SCHEDULER-TERMINATION"
+        ],
+        "revisit_migration": true,
+        "revisit_conflicts": true
+      }
+    },
+    {
+      "obligation_id": "OBL-CANDIDATE-PARENT",
+      "direct_dependents": [
+        "OBL-CANDIDATE-ADMISSION",
+        "OBL-PROVENANCE"
+      ],
+      "transitive_dependents": [
+        "OBL-AUDIT",
+        "OBL-CANCELLATION",
+        "OBL-CANDIDATE-ADMISSION",
+        "OBL-EXPANSION-RECURSIVE",
+        "OBL-EXPANSION-VS-RETRY",
+        "OBL-EXPORT",
+        "OBL-PERSIST-COMPAT",
+        "OBL-PERSIST-CORRUPTION",
+        "OBL-PROVENANCE",
+        "OBL-PROVENANCE-INTEGRITY",
+        "OBL-SCHEDULER-TERMINATION"
+      ],
+      "centrality": 11,
+      "classification": "DEPENDENCY_CRITICAL",
+      "verification_priority": 13,
+      "reason": "Priority is based on downstream dependency count, not chronology or historical importance.",
+      "change_impact": {
+        "revisit_dependents": [
+          "OBL-AUDIT",
+          "OBL-CANCELLATION",
+          "OBL-CANDIDATE-ADMISSION",
+          "OBL-EXPANSION-RECURSIVE",
+          "OBL-EXPANSION-VS-RETRY",
+          "OBL-EXPORT",
+          "OBL-PERSIST-COMPAT",
+          "OBL-PERSIST-CORRUPTION",
+          "OBL-PROVENANCE",
+          "OBL-PROVENANCE-INTEGRITY",
+          "OBL-SCHEDULER-TERMINATION"
+        ],
+        "revisit_invariants": [
+          "INV-CANDIDATE-PARENT",
+          "INV-AUDIT",
+          "INV-CANCELLATION",
+          "INV-CANDIDATE-ADMISSION",
+          "INV-EXPANSION-RECURSIVE",
+          "INV-EXPANSION-VS-RETRY",
+          "INV-EXPORT",
+          "INV-PERSIST-COMPAT",
+          "INV-PERSIST-CORRUPTION",
+          "INV-PROVENANCE",
+          "INV-PROVENANCE-INTEGRITY",
+          "INV-SCHEDULER-TERMINATION"
+        ],
+        "revisit_regression_tests": [
+          "TEST-CANDIDATE-PARENT",
+          "TEST-AUDIT",
+          "TEST-CANCELLATION",
+          "TEST-CANDIDATE-ADMISSION",
+          "TEST-EXPANSION-RECURSIVE",
+          "TEST-EXPANSION-VS-RETRY",
+          "TEST-EXPORT",
+          "TEST-PERSIST-COMPAT",
+          "TEST-PERSIST-CORRUPTION",
+          "TEST-PROVENANCE",
+          "TEST-PROVENANCE-INTEGRITY",
+          "TEST-SCHEDULER-TERMINATION"
+        ],
+        "revisit_migration": true,
+        "revisit_conflicts": true
+      }
+    },
+    {
+      "obligation_id": "OBL-CLAIM-EXCLUSIVITY",
+      "direct_dependents": [
+        "OBL-TERMINAL-OWNERSHIP",
+        "OBL-WORKER-FAILURE"
+      ],
+      "transitive_dependents": [
+        "OBL-CANCELLATION",
+        "OBL-EXPANSION-RECURSIVE",
+        "OBL-EXPANSION-VS-RETRY",
+        "OBL-RETRY",
+        "OBL-SCHEDULER-TERMINATION",
+        "OBL-TERMINAL-OWNERSHIP",
+        "OBL-WORKER-FAILURE"
+      ],
+      "centrality": 7,
+      "classification": "DEPENDENCY_CRITICAL",
+      "verification_priority": 25,
+      "reason": "Priority is based on downstream dependency count, not chronology or historical importance.",
+      "change_impact": {
+        "revisit_dependents": [
+          "OBL-CANCELLATION",
+          "OBL-EXPANSION-RECURSIVE",
+          "OBL-EXPANSION-VS-RETRY",
+          "OBL-RETRY",
+          "OBL-SCHEDULER-TERMINATION",
+          "OBL-TERMINAL-OWNERSHIP",
+          "OBL-WORKER-FAILURE"
+        ],
+        "revisit_invariants": [
+          "INV-CLAIM-EXCLUSIVITY",
+          "INV-CANCELLATION",
+          "INV-EXPANSION-RECURSIVE",
+          "INV-EXPANSION-VS-RETRY",
+          "INV-RETRY",
+          "INV-SCHEDULER-TERMINATION",
+          "INV-TERMINAL-OWNERSHIP",
+          "INV-WORKER-FAILURE"
+        ],
+        "revisit_regression_tests": [
+          "TEST-CLAIM-EXCLUSIVITY",
+          "TEST-CANCELLATION",
+          "TEST-EXPANSION-RECURSIVE",
+          "TEST-EXPANSION-VS-RETRY",
+          "TEST-RETRY",
+          "TEST-SCHEDULER-TERMINATION",
+          "TEST-TERMINAL-OWNERSHIP",
+          "TEST-WORKER-FAILURE"
+        ],
+        "revisit_migration": true,
+        "revisit_conflicts": true
+      }
+    },
+    {
+      "obligation_id": "OBL-CANDIDATE-ORIGIN",
+      "direct_dependents": [
+        "OBL-PROVENANCE"
+      ],
+      "transitive_dependents": [
+        "OBL-AUDIT",
+        "OBL-EXPORT",
+        "OBL-PERSIST-COMPAT",
+        "OBL-PERSIST-CORRUPTION",
+        "OBL-PROVENANCE",
+        "OBL-PROVENANCE-INTEGRITY"
+      ],
+      "centrality": 6,
+      "classification": "DEPENDENCY_CRITICAL",
+      "verification_priority": 12,
+      "reason": "Priority is based on downstream dependency count, not chronology or historical importance.",
+      "change_impact": {
+        "revisit_dependents": [
+          "OBL-AUDIT",
+          "OBL-EXPORT",
+          "OBL-PERSIST-COMPAT",
+          "OBL-PERSIST-CORRUPTION",
+          "OBL-PROVENANCE",
+          "OBL-PROVENANCE-INTEGRITY"
+        ],
+        "revisit_invariants": [
+          "INV-CANDIDATE-ORIGIN",
+          "INV-AUDIT",
+          "INV-EXPORT",
+          "INV-PERSIST-COMPAT",
+          "INV-PERSIST-CORRUPTION",
+          "INV-PROVENANCE",
+          "INV-PROVENANCE-INTEGRITY"
+        ],
+        "revisit_regression_tests": [
+          "TEST-CANDIDATE-ORIGIN",
+          "TEST-AUDIT",
+          "TEST-EXPORT",
+          "TEST-PERSIST-COMPAT",
+          "TEST-PERSIST-CORRUPTION",
+          "TEST-PROVENANCE",
+          "TEST-PROVENANCE-INTEGRITY"
+        ],
+        "revisit_migration": true,
+        "revisit_conflicts": true
+      }
+    },
+    {
+      "obligation_id": "OBL-TERMINAL-OWNERSHIP",
+      "direct_dependents": [
+        "OBL-CANCELLATION",
+        "OBL-RETRY",
+        "OBL-SCHEDULER-TERMINATION",
+        "OBL-WORKER-FAILURE"
+      ],
+      "transitive_dependents": [
+        "OBL-CANCELLATION",
+        "OBL-EXPANSION-RECURSIVE",
+        "OBL-EXPANSION-VS-RETRY",
+        "OBL-RETRY",
+        "OBL-SCHEDULER-TERMINATION",
+        "OBL-WORKER-FAILURE"
+      ],
+      "centrality": 6,
+      "classification": "DEPENDENCY_CRITICAL",
+      "verification_priority": 31,
+      "reason": "Priority is based on downstream dependency count, not chronology or historical importance.",
+      "change_impact": {
+        "revisit_dependents": [
+          "OBL-CANCELLATION",
+          "OBL-EXPANSION-RECURSIVE",
+          "OBL-EXPANSION-VS-RETRY",
+          "OBL-RETRY",
+          "OBL-SCHEDULER-TERMINATION",
+          "OBL-WORKER-FAILURE"
+        ],
+        "revisit_invariants": [
+          "INV-TERMINAL-OWNERSHIP",
+          "INV-CANCELLATION",
+          "INV-EXPANSION-RECURSIVE",
+          "INV-EXPANSION-VS-RETRY",
+          "INV-RETRY",
+          "INV-SCHEDULER-TERMINATION",
+          "INV-WORKER-FAILURE"
+        ],
+        "revisit_regression_tests": [
+          "TEST-TERMINAL-OWNERSHIP",
+          "TEST-CANCELLATION",
+          "TEST-EXPANSION-RECURSIVE",
+          "TEST-EXPANSION-VS-RETRY",
+          "TEST-RETRY",
+          "TEST-SCHEDULER-TERMINATION",
+          "TEST-WORKER-FAILURE"
+        ],
+        "revisit_migration": true,
+        "revisit_conflicts": true
+      }
+    },
+    {
+      "obligation_id": "OBL-DEDUP-SCOPES",
+      "direct_dependents": [
+        "OBL-CANDIDATE-ADMISSION"
+      ],
+      "transitive_dependents": [
+        "OBL-CANCELLATION",
+        "OBL-CANDIDATE-ADMISSION",
+        "OBL-EXPANSION-RECURSIVE",
+        "OBL-EXPANSION-VS-RETRY",
+        "OBL-SCHEDULER-TERMINATION"
+      ],
+      "centrality": 5,
+      "classification": "DEPENDENCY_CRITICAL",
+      "verification_priority": 16,
+      "reason": "Priority is based on downstream dependency count, not chronology or historical importance.",
+      "change_impact": {
+        "revisit_dependents": [
+          "OBL-CANCELLATION",
+          "OBL-CANDIDATE-ADMISSION",
+          "OBL-EXPANSION-RECURSIVE",
+          "OBL-EXPANSION-VS-RETRY",
+          "OBL-SCHEDULER-TERMINATION"
+        ],
+        "revisit_invariants": [
+          "INV-DEDUP-SCOPES",
+          "INV-CANCELLATION",
+          "INV-CANDIDATE-ADMISSION",
+          "INV-EXPANSION-RECURSIVE",
+          "INV-EXPANSION-VS-RETRY",
+          "INV-SCHEDULER-TERMINATION"
+        ],
+        "revisit_regression_tests": [
+          "TEST-DEDUP-SCOPES",
+          "TEST-CANCELLATION",
+          "TEST-CANDIDATE-ADMISSION",
+          "TEST-EXPANSION-RECURSIVE",
+          "TEST-EXPANSION-VS-RETRY",
+          "TEST-SCHEDULER-TERMINATION"
+        ],
+        "revisit_migration": true,
+        "revisit_conflicts": true
+      }
+    },
+    {
+      "obligation_id": "OBL-LIFECYCLE-OBS",
+      "direct_dependents": [
+        "OBL-AUDIT",
+        "OBL-SCHEDULER-TERMINATION"
+      ],
+      "transitive_dependents": [
+        "OBL-AUDIT",
+        "OBL-CANCELLATION",
+        "OBL-EXPANSION-RECURSIVE",
+        "OBL-EXPANSION-VS-RETRY",
+        "OBL-SCHEDULER-TERMINATION"
+      ],
+      "centrality": 5,
+      "classification": "DEPENDENCY_CRITICAL",
+      "verification_priority": 40,
+      "reason": "Priority is based on downstream dependency count, not chronology or historical importance.",
+      "change_impact": {
+        "revisit_dependents": [
+          "OBL-AUDIT",
+          "OBL-CANCELLATION",
+          "OBL-EXPANSION-RECURSIVE",
+          "OBL-EXPANSION-VS-RETRY",
+          "OBL-SCHEDULER-TERMINATION"
+        ],
+        "revisit_invariants": [
+          "INV-LIFECYCLE-OBS",
+          "INV-AUDIT",
+          "INV-CANCELLATION",
+          "INV-EXPANSION-RECURSIVE",
+          "INV-EXPANSION-VS-RETRY",
+          "INV-SCHEDULER-TERMINATION"
+        ],
+        "revisit_regression_tests": [
+          "TEST-LIFECYCLE-OBS",
+          "TEST-AUDIT",
+          "TEST-CANCELLATION",
+          "TEST-EXPANSION-RECURSIVE",
+          "TEST-EXPANSION-VS-RETRY",
+          "TEST-SCHEDULER-TERMINATION"
+        ],
+        "revisit_migration": true,
+        "revisit_conflicts": true
+      }
+    },
+    {
+      "obligation_id": "OBL-PROVENANCE",
+      "direct_dependents": [
+        "OBL-AUDIT",
+        "OBL-EXPORT",
+        "OBL-PERSIST-COMPAT",
+        "OBL-PROVENANCE-INTEGRITY"
+      ],
+      "transitive_dependents": [
+        "OBL-AUDIT",
+        "OBL-EXPORT",
+        "OBL-PERSIST-COMPAT",
+        "OBL-PERSIST-CORRUPTION",
+        "OBL-PROVENANCE-INTEGRITY"
+      ],
+      "centrality": 5,
+      "classification": "DEPENDENCY_CRITICAL",
+      "verification_priority": 38,
+      "reason": "Priority is based on downstream dependency count, not chronology or historical importance.",
+      "change_impact": {
+        "revisit_dependents": [
+          "OBL-AUDIT",
+          "OBL-EXPORT",
+          "OBL-PERSIST-COMPAT",
+          "OBL-PERSIST-CORRUPTION",
+          "OBL-PROVENANCE-INTEGRITY"
+        ],
+        "revisit_invariants": [
+          "INV-PROVENANCE",
+          "INV-AUDIT",
+          "INV-EXPORT",
+          "INV-PERSIST-COMPAT",
+          "INV-PERSIST-CORRUPTION",
+          "INV-PROVENANCE-INTEGRITY"
+        ],
+        "revisit_regression_tests": [
+          "TEST-PROVENANCE",
+          "TEST-AUDIT",
+          "TEST-EXPORT",
+          "TEST-PERSIST-COMPAT",
+          "TEST-PERSIST-CORRUPTION",
+          "TEST-PROVENANCE-INTEGRITY"
+        ],
+        "revisit_migration": true,
+        "revisit_conflicts": true
+      }
+    },
+    {
+      "obligation_id": "OBL-AUTHORITY",
+      "direct_dependents": [
+        "OBL-ACQ-SCOPE"
+      ],
+      "transitive_dependents": [
+        "OBL-ACQ-SCOPE",
+        "OBL-PARSER",
+        "OBL-REMOTE-DATA",
+        "OBL-WEB-GENERALIZE"
+      ],
+      "centrality": 4,
+      "classification": "DEPENDENCY_CONNECTED",
+      "verification_priority": 1,
+      "reason": "Priority is based on downstream dependency count, not chronology or historical importance.",
+      "change_impact": {
+        "revisit_dependents": [
+          "OBL-ACQ-SCOPE",
+          "OBL-PARSER",
+          "OBL-REMOTE-DATA",
+          "OBL-WEB-GENERALIZE"
+        ],
+        "revisit_invariants": [
+          "INV-AUTHORITY",
+          "INV-ACQ-SCOPE",
+          "INV-PARSER",
+          "INV-REMOTE-DATA",
+          "INV-WEB-GENERALIZE"
+        ],
+        "revisit_regression_tests": [
+          "TEST-AUTHORITY",
+          "TEST-ACQ-SCOPE",
+          "TEST-PARSER",
+          "TEST-REMOTE-DATA",
+          "TEST-WEB-GENERALIZE"
+        ],
+        "revisit_migration": true,
+        "revisit_conflicts": true
+      }
+    },
+    {
+      "obligation_id": "OBL-BOUNDED-CONCURRENCY",
+      "direct_dependents": [
+        "OBL-SCHEDULER-TERMINATION"
+      ],
+      "transitive_dependents": [
+        "OBL-CANCELLATION",
+        "OBL-EXPANSION-RECURSIVE",
+        "OBL-EXPANSION-VS-RETRY",
+        "OBL-SCHEDULER-TERMINATION"
+      ],
+      "centrality": 4,
+      "classification": "DEPENDENCY_CONNECTED",
+      "verification_priority": 2,
+      "reason": "Priority is based on downstream dependency count, not chronology or historical importance.",
+      "change_impact": {
+        "revisit_dependents": [
+          "OBL-CANCELLATION",
+          "OBL-EXPANSION-RECURSIVE",
+          "OBL-EXPANSION-VS-RETRY",
+          "OBL-SCHEDULER-TERMINATION"
+        ],
+        "revisit_invariants": [
+          "INV-BOUNDED-CONCURRENCY",
+          "INV-CANCELLATION",
+          "INV-EXPANSION-RECURSIVE",
+          "INV-EXPANSION-VS-RETRY",
+          "INV-SCHEDULER-TERMINATION"
+        ],
+        "revisit_regression_tests": [
+          "TEST-BOUNDED-CONCURRENCY",
+          "TEST-CANCELLATION",
+          "TEST-EXPANSION-RECURSIVE",
+          "TEST-EXPANSION-VS-RETRY",
+          "TEST-SCHEDULER-TERMINATION"
+        ],
+        "revisit_migration": true,
+        "revisit_conflicts": true
+      }
+    },
+    {
+      "obligation_id": "OBL-CANDIDATE-ADMISSION",
+      "direct_dependents": [
+        "OBL-EXPANSION-RECURSIVE",
+        "OBL-SCHEDULER-TERMINATION"
+      ],
+      "transitive_dependents": [
+        "OBL-CANCELLATION",
+        "OBL-EXPANSION-RECURSIVE",
+        "OBL-EXPANSION-VS-RETRY",
+        "OBL-SCHEDULER-TERMINATION"
+      ],
+      "centrality": 4,
+      "classification": "DEPENDENCY_CONNECTED",
+      "verification_priority": 26,
+      "reason": "Priority is based on downstream dependency count, not chronology or historical importance.",
+      "change_impact": {
+        "revisit_dependents": [
+          "OBL-CANCELLATION",
+          "OBL-EXPANSION-RECURSIVE",
+          "OBL-EXPANSION-VS-RETRY",
+          "OBL-SCHEDULER-TERMINATION"
+        ],
+        "revisit_invariants": [
+          "INV-CANDIDATE-ADMISSION",
+          "INV-CANCELLATION",
+          "INV-EXPANSION-RECURSIVE",
+          "INV-EXPANSION-VS-RETRY",
+          "INV-SCHEDULER-TERMINATION"
+        ],
+        "revisit_regression_tests": [
+          "TEST-CANDIDATE-ADMISSION",
+          "TEST-CANCELLATION",
+          "TEST-EXPANSION-RECURSIVE",
+          "TEST-EXPANSION-VS-RETRY",
+          "TEST-SCHEDULER-TERMINATION"
+        ],
+        "revisit_migration": true,
+        "revisit_conflicts": true
+      }
+    },
+    {
+      "obligation_id": "OBL-ACQ-SCOPE",
+      "direct_dependents": [
+        "OBL-REMOTE-DATA",
+        "OBL-WEB-GENERALIZE"
+      ],
+      "transitive_dependents": [
+        "OBL-PARSER",
+        "OBL-REMOTE-DATA",
+        "OBL-WEB-GENERALIZE"
+      ],
+      "centrality": 3,
+      "classification": "DEPENDENCY_CONNECTED",
+      "verification_priority": 20,
+      "reason": "Priority is based on downstream dependency count, not chronology or historical importance.",
+      "change_impact": {
+        "revisit_dependents": [
+          "OBL-PARSER",
+          "OBL-REMOTE-DATA",
+          "OBL-WEB-GENERALIZE"
+        ],
+        "revisit_invariants": [
+          "INV-ACQ-SCOPE",
+          "INV-PARSER",
+          "INV-REMOTE-DATA",
+          "INV-WEB-GENERALIZE"
+        ],
+        "revisit_regression_tests": [
+          "TEST-ACQ-SCOPE",
+          "TEST-PARSER",
+          "TEST-REMOTE-DATA",
+          "TEST-WEB-GENERALIZE"
+        ],
+        "revisit_migration": true,
+        "revisit_conflicts": true
+      }
+    },
+    {
+      "obligation_id": "OBL-ACQ-TIMEOUT",
+      "direct_dependents": [
+        "OBL-CANCELLATION",
+        "OBL-RETRY"
+      ],
+      "transitive_dependents": [
+        "OBL-CANCELLATION",
+        "OBL-EXPANSION-VS-RETRY",
+        "OBL-RETRY"
+      ],
+      "centrality": 3,
+      "classification": "DEPENDENCY_CONNECTED",
+      "verification_priority": 21,
+      "reason": "Priority is based on downstream dependency count, not chronology or historical importance.",
+      "change_impact": {
+        "revisit_dependents": [
+          "OBL-CANCELLATION",
+          "OBL-EXPANSION-VS-RETRY",
+          "OBL-RETRY"
+        ],
+        "revisit_invariants": [
+          "INV-ACQ-TIMEOUT",
+          "INV-CANCELLATION",
+          "INV-EXPANSION-VS-RETRY",
+          "INV-RETRY"
+        ],
+        "revisit_regression_tests": [
+          "TEST-ACQ-TIMEOUT",
+          "TEST-CANCELLATION",
+          "TEST-EXPANSION-VS-RETRY",
+          "TEST-RETRY"
+        ],
+        "revisit_migration": true,
+        "revisit_conflicts": true
+      }
+    },
+    {
+      "obligation_id": "OBL-ERROR-CONTRACT",
+      "direct_dependents": [
+        "OBL-EXPORT",
+        "OBL-PERSIST-COMPAT"
+      ],
+      "transitive_dependents": [
+        "OBL-EXPORT",
+        "OBL-PERSIST-COMPAT",
+        "OBL-PERSIST-CORRUPTION"
+      ],
+      "centrality": 3,
+      "classification": "DEPENDENCY_CONNECTED",
+      "verification_priority": 39,
+      "reason": "Priority is based on downstream dependency count, not chronology or historical importance.",
+      "change_impact": {
+        "revisit_dependents": [
+          "OBL-EXPORT",
+          "OBL-PERSIST-COMPAT",
+          "OBL-PERSIST-CORRUPTION"
+        ],
+        "revisit_invariants": [
+          "INV-ERROR-CONTRACT",
+          "INV-EXPORT",
+          "INV-PERSIST-COMPAT",
+          "INV-PERSIST-CORRUPTION"
+        ],
+        "revisit_regression_tests": [
+          "TEST-ERROR-CONTRACT",
+          "TEST-EXPORT",
+          "TEST-PERSIST-COMPAT",
+          "TEST-PERSIST-CORRUPTION"
+        ],
+        "revisit_migration": true,
+        "revisit_conflicts": true
+      }
+    },
+    {
+      "obligation_id": "OBL-KNOWLEDGE",
+      "direct_dependents": [
+        "OBL-EXPORT",
+        "OBL-PERSIST-COMPAT"
+      ],
+      "transitive_dependents": [
+        "OBL-EXPORT",
+        "OBL-PERSIST-COMPAT",
+        "OBL-PERSIST-CORRUPTION"
+      ],
+      "centrality": 3,
+      "classification": "DEPENDENCY_CONNECTED",
+      "verification_priority": 37,
+      "reason": "Priority is based on downstream dependency count, not chronology or historical importance.",
+      "change_impact": {
+        "revisit_dependents": [
+          "OBL-EXPORT",
+          "OBL-PERSIST-COMPAT",
+          "OBL-PERSIST-CORRUPTION"
+        ],
+        "revisit_invariants": [
+          "INV-KNOWLEDGE",
+          "INV-EXPORT",
+          "INV-PERSIST-COMPAT",
+          "INV-PERSIST-CORRUPTION"
+        ],
+        "revisit_regression_tests": [
+          "TEST-KNOWLEDGE",
+          "TEST-EXPORT",
+          "TEST-PERSIST-COMPAT",
+          "TEST-PERSIST-CORRUPTION"
+        ],
+        "revisit_migration": true,
+        "revisit_conflicts": true
+      }
+    },
+    {
+      "obligation_id": "OBL-RESOURCE",
+      "direct_dependents": [
+        "OBL-EXPANSION-RECURSIVE",
+        "OBL-UNBOUNDED"
+      ],
+      "transitive_dependents": [
+        "OBL-EXPANSION-RECURSIVE",
+        "OBL-EXPANSION-VS-RETRY",
+        "OBL-UNBOUNDED"
+      ],
+      "centrality": 3,
+      "classification": "DEPENDENCY_CONNECTED",
+      "verification_priority": 8,
+      "reason": "Priority is based on downstream dependency count, not chronology or historical importance.",
+      "change_impact": {
+        "revisit_dependents": [
+          "OBL-EXPANSION-RECURSIVE",
+          "OBL-EXPANSION-VS-RETRY",
+          "OBL-UNBOUNDED"
+        ],
+        "revisit_invariants": [
+          "INV-RESOURCE",
+          "INV-EXPANSION-RECURSIVE",
+          "INV-EXPANSION-VS-RETRY",
+          "INV-UNBOUNDED"
+        ],
+        "revisit_regression_tests": [
+          "TEST-RESOURCE",
+          "TEST-EXPANSION-RECURSIVE",
+          "TEST-EXPANSION-VS-RETRY",
+          "TEST-UNBOUNDED"
+        ],
+        "revisit_migration": true,
+        "revisit_conflicts": true
+      }
+    },
+    {
+      "obligation_id": "OBL-SCHEDULER-TERMINATION",
+      "direct_dependents": [
+        "OBL-CANCELLATION",
+        "OBL-EXPANSION-RECURSIVE"
+      ],
+      "transitive_dependents": [
+        "OBL-CANCELLATION",
+        "OBL-EXPANSION-RECURSIVE",
+        "OBL-EXPANSION-VS-RETRY"
+      ],
+      "centrality": 3,
+      "classification": "DEPENDENCY_CONNECTED",
+      "verification_priority": 47,
+      "reason": "Priority is based on downstream dependency count, not chronology or historical importance.",
+      "change_impact": {
+        "revisit_dependents": [
+          "OBL-CANCELLATION",
+          "OBL-EXPANSION-RECURSIVE",
+          "OBL-EXPANSION-VS-RETRY"
+        ],
+        "revisit_invariants": [
+          "INV-SCHEDULER-TERMINATION",
+          "INV-CANCELLATION",
+          "INV-EXPANSION-RECURSIVE",
+          "INV-EXPANSION-VS-RETRY"
+        ],
+        "revisit_regression_tests": [
+          "TEST-SCHEDULER-TERMINATION",
+          "TEST-CANCELLATION",
+          "TEST-EXPANSION-RECURSIVE",
+          "TEST-EXPANSION-VS-RETRY"
+        ],
+        "revisit_migration": true,
+        "revisit_conflicts": true
+      }
+    },
+    {
+      "obligation_id": "OBL-SILENT-FAILURE",
+      "direct_dependents": [
+        "OBL-PERSIST-CORRUPTION",
+        "OBL-PROVIDER-FAILURE",
+        "OBL-WORKER-FAILURE"
+      ],
+      "transitive_dependents": [
+        "OBL-PERSIST-CORRUPTION",
+        "OBL-PROVIDER-FAILURE",
+        "OBL-WORKER-FAILURE"
+      ],
+      "centrality": 3,
+      "classification": "DEPENDENCY_CONNECTED",
+      "verification_priority": 42,
+      "reason": "Priority is based on downstream dependency count, not chronology or historical importance.",
+      "change_impact": {
+        "revisit_dependents": [
+          "OBL-PERSIST-CORRUPTION",
+          "OBL-PROVIDER-FAILURE",
+          "OBL-WORKER-FAILURE"
+        ],
+        "revisit_invariants": [
+          "INV-SILENT-FAILURE",
+          "INV-PERSIST-CORRUPTION",
+          "INV-PROVIDER-FAILURE",
+          "INV-WORKER-FAILURE"
+        ],
+        "revisit_regression_tests": [
+          "TEST-SILENT-FAILURE",
+          "TEST-PERSIST-CORRUPTION",
+          "TEST-PROVIDER-FAILURE",
+          "TEST-WORKER-FAILURE"
+        ],
+        "revisit_migration": true,
+        "revisit_conflicts": true
+      }
+    },
+    {
+      "obligation_id": "OBL-CANDIDATE-ATTEMPTS",
+      "direct_dependents": [
+        "OBL-RETRY"
+      ],
+      "transitive_dependents": [
+        "OBL-EXPANSION-VS-RETRY",
+        "OBL-RETRY"
+      ],
+      "centrality": 2,
+      "classification": "DEPENDENCY_CONNECTED",
+      "verification_priority": 23,
+      "reason": "Priority is based on downstream dependency count, not chronology or historical importance.",
+      "change_impact": {
+        "revisit_dependents": [
+          "OBL-EXPANSION-VS-RETRY",
+          "OBL-RETRY"
+        ],
+        "revisit_invariants": [
+          "INV-CANDIDATE-ATTEMPTS",
+          "INV-EXPANSION-VS-RETRY",
+          "INV-RETRY"
+        ],
+        "revisit_regression_tests": [
+          "TEST-CANDIDATE-ATTEMPTS",
+          "TEST-EXPANSION-VS-RETRY",
+          "TEST-RETRY"
+        ],
+        "revisit_migration": true,
+        "revisit_conflicts": true
+      }
+    },
+    {
+      "obligation_id": "OBL-EXPANSION-RECURSIVE",
+      "direct_dependents": [
+        "OBL-EXPANSION-VS-RETRY"
+      ],
+      "transitive_dependents": [
+        "OBL-EXPANSION-VS-RETRY"
+      ],
+      "centrality": 1,
+      "classification": "DEPENDENCY_CONNECTED",
+      "verification_priority": 53,
+      "reason": "Priority is based on downstream dependency count, not chronology or historical importance.",
+      "change_impact": {
+        "revisit_dependents": [
+          "OBL-EXPANSION-VS-RETRY"
+        ],
+        "revisit_invariants": [
+          "INV-EXPANSION-RECURSIVE",
+          "INV-EXPANSION-VS-RETRY"
+        ],
+        "revisit_regression_tests": [
+          "TEST-EXPANSION-RECURSIVE",
+          "TEST-EXPANSION-VS-RETRY"
+        ],
+        "revisit_migration": true,
+        "revisit_conflicts": true
+      }
+    },
+    {
+      "obligation_id": "OBL-PERSIST-COMPAT",
+      "direct_dependents": [
+        "OBL-PERSIST-CORRUPTION"
+      ],
+      "transitive_dependents": [
+        "OBL-PERSIST-CORRUPTION"
+      ],
+      "centrality": 1,
+      "classification": "DEPENDENCY_CONNECTED",
+      "verification_priority": 46,
+      "reason": "Priority is based on downstream dependency count, not chronology or historical importance.",
+      "change_impact": {
+        "revisit_dependents": [
+          "OBL-PERSIST-CORRUPTION"
+        ],
+        "revisit_invariants": [
+          "INV-PERSIST-COMPAT",
+          "INV-PERSIST-CORRUPTION"
+        ],
+        "revisit_regression_tests": [
+          "TEST-PERSIST-COMPAT",
+          "TEST-PERSIST-CORRUPTION"
+        ],
+        "revisit_migration": true,
+        "revisit_conflicts": true
+      }
+    },
+    {
+      "obligation_id": "OBL-PROVENANCE-INTEGRITY",
+      "direct_dependents": [
+        "OBL-AUDIT"
+      ],
+      "transitive_dependents": [
+        "OBL-AUDIT"
+      ],
+      "centrality": 1,
+      "classification": "DEPENDENCY_CONNECTED",
+      "verification_priority": 44,
+      "reason": "Priority is based on downstream dependency count, not chronology or historical importance.",
+      "change_impact": {
+        "revisit_dependents": [
+          "OBL-AUDIT"
+        ],
+        "revisit_invariants": [
+          "INV-PROVENANCE-INTEGRITY",
+          "INV-AUDIT"
+        ],
+        "revisit_regression_tests": [
+          "TEST-PROVENANCE-INTEGRITY",
+          "TEST-AUDIT"
+        ],
+        "revisit_migration": true,
+        "revisit_conflicts": true
+      }
+    },
+    {
+      "obligation_id": "OBL-PROVIDER-CONTRACT",
+      "direct_dependents": [
+        "OBL-PROVIDER-FAILURE"
+      ],
+      "transitive_dependents": [
+        "OBL-PROVIDER-FAILURE"
+      ],
+      "centrality": 1,
+      "classification": "DEPENDENCY_CONNECTED",
+      "verification_priority": 41,
+      "reason": "Priority is based on downstream dependency count, not chronology or historical importance.",
+      "change_impact": {
+        "revisit_dependents": [
+          "OBL-PROVIDER-FAILURE"
+        ],
+        "revisit_invariants": [
+          "INV-PROVIDER-CONTRACT",
+          "INV-PROVIDER-FAILURE"
+        ],
+        "revisit_regression_tests": [
+          "TEST-PROVIDER-CONTRACT",
+          "TEST-PROVIDER-FAILURE"
+        ],
+        "revisit_migration": true,
+        "revisit_conflicts": true
+      }
+    },
+    {
+      "obligation_id": "OBL-REGRESSION",
+      "direct_dependents": [
+        "OBL-PARSE-DEFECT"
+      ],
+      "transitive_dependents": [
+        "OBL-PARSE-DEFECT"
+      ],
+      "centrality": 1,
+      "classification": "DEPENDENCY_CONNECTED",
+      "verification_priority": 7,
+      "reason": "Priority is based on downstream dependency count, not chronology or historical importance.",
+      "change_impact": {
+        "revisit_dependents": [
+          "OBL-PARSE-DEFECT"
+        ],
+        "revisit_invariants": [
+          "INV-REGRESSION",
+          "INV-PARSE-DEFECT"
+        ],
+        "revisit_regression_tests": [
+          "TEST-REGRESSION",
+          "TEST-PARSE-DEFECT"
+        ],
+        "revisit_migration": true,
+        "revisit_conflicts": true
+      }
+    },
+    {
+      "obligation_id": "OBL-REMOTE-DATA",
+      "direct_dependents": [
+        "OBL-PARSER"
+      ],
+      "transitive_dependents": [
+        "OBL-PARSER"
+      ],
+      "centrality": 1,
+      "classification": "DEPENDENCY_CONNECTED",
+      "verification_priority": 35,
+      "reason": "Priority is based on downstream dependency count, not chronology or historical importance.",
+      "change_impact": {
+        "revisit_dependents": [
+          "OBL-PARSER"
+        ],
+        "revisit_invariants": [
+          "INV-REMOTE-DATA",
+          "INV-PARSER"
+        ],
+        "revisit_regression_tests": [
+          "TEST-REMOTE-DATA",
+          "TEST-PARSER"
+        ],
+        "revisit_migration": true,
+        "revisit_conflicts": true
+      }
+    },
+    {
+      "obligation_id": "OBL-RETRY",
+      "direct_dependents": [
+        "OBL-EXPANSION-VS-RETRY"
+      ],
+      "transitive_dependents": [
+        "OBL-EXPANSION-VS-RETRY"
+      ],
+      "centrality": 1,
+      "classification": "DEPENDENCY_CONNECTED",
+      "verification_priority": 36,
+      "reason": "Priority is based on downstream dependency count, not chronology or historical importance.",
+      "change_impact": {
+        "revisit_dependents": [
+          "OBL-EXPANSION-VS-RETRY"
+        ],
+        "revisit_invariants": [
+          "INV-RETRY",
+          "INV-EXPANSION-VS-RETRY"
+        ],
+        "revisit_regression_tests": [
+          "TEST-RETRY",
+          "TEST-EXPANSION-VS-RETRY"
+        ],
+        "revisit_migration": true,
+        "revisit_conflicts": true
+      }
+    },
+    {
+      "obligation_id": "OBL-ACQ-METADATA",
+      "direct_dependents": [],
+      "transitive_dependents": [],
+      "centrality": 0,
+      "classification": "LEAF",
+      "verification_priority": 32,
+      "reason": "Priority is based on downstream dependency count, not chronology or historical importance.",
+      "change_impact": {
+        "revisit_dependents": [],
+        "revisit_invariants": [
+          "INV-ACQ-METADATA"
+        ],
+        "revisit_regression_tests": [
+          "TEST-ACQ-METADATA"
+        ],
+        "revisit_migration": false,
+        "revisit_conflicts": true
+      }
+    },
+    {
+      "obligation_id": "OBL-AUDIT",
+      "direct_dependents": [],
+      "transitive_dependents": [],
+      "centrality": 0,
+      "classification": "LEAF",
+      "verification_priority": 50,
+      "reason": "Priority is based on downstream dependency count, not chronology or historical importance.",
+      "change_impact": {
+        "revisit_dependents": [],
+        "revisit_invariants": [
+          "INV-AUDIT"
+        ],
+        "revisit_regression_tests": [
+          "TEST-AUDIT"
+        ],
+        "revisit_migration": false,
+        "revisit_conflicts": true
+      }
+    },
+    {
+      "obligation_id": "OBL-CANCELLATION",
+      "direct_dependents": [],
+      "transitive_dependents": [],
+      "centrality": 0,
+      "classification": "LEAF",
+      "verification_priority": 52,
+      "reason": "Priority is based on downstream dependency count, not chronology or historical importance.",
+      "change_impact": {
+        "revisit_dependents": [],
+        "revisit_invariants": [
+          "INV-CANCELLATION"
+        ],
+        "revisit_regression_tests": [
+          "TEST-CANCELLATION"
+        ],
+        "revisit_migration": false,
+        "revisit_conflicts": true
+      }
+    },
+    {
+      "obligation_id": "OBL-CANDIDATE-EQUIVALENCE",
+      "direct_dependents": [],
+      "transitive_dependents": [],
+      "centrality": 0,
+      "classification": "LEAF",
+      "verification_priority": 11,
+      "reason": "Priority is based on downstream dependency count, not chronology or historical importance.",
+      "change_impact": {
+        "revisit_dependents": [],
+        "revisit_invariants": [
+          "INV-CANDIDATE-EQUIVALENCE"
+        ],
+        "revisit_regression_tests": [
+          "TEST-CANDIDATE-EQUIVALENCE"
+        ],
+        "revisit_migration": false,
+        "revisit_conflicts": true
+      }
+    },
+    {
+      "obligation_id": "OBL-CANDIDATE-PRIORITY",
+      "direct_dependents": [],
+      "transitive_dependents": [],
+      "centrality": 0,
+      "classification": "LEAF",
+      "verification_priority": 14,
+      "reason": "Priority is based on downstream dependency count, not chronology or historical importance.",
+      "change_impact": {
+        "revisit_dependents": [],
+        "revisit_invariants": [
+          "INV-CANDIDATE-PRIORITY"
+        ],
+        "revisit_regression_tests": [
+          "TEST-CANDIDATE-PRIORITY"
+        ],
+        "revisit_migration": false,
+        "revisit_conflicts": true
+      }
+    },
+    {
+      "obligation_id": "OBL-CANDIDATE-TIMESTAMPS",
+      "direct_dependents": [],
+      "transitive_dependents": [],
+      "centrality": 0,
+      "classification": "LEAF",
+      "verification_priority": 24,
+      "reason": "Priority is based on downstream dependency count, not chronology or historical importance.",
+      "change_impact": {
+        "revisit_dependents": [],
+        "revisit_invariants": [
+          "INV-CANDIDATE-TIMESTAMPS"
+        ],
+        "revisit_regression_tests": [
+          "TEST-CANDIDATE-TIMESTAMPS"
+        ],
+        "revisit_migration": false,
+        "revisit_conflicts": true
+      }
+    },
+    {
+      "obligation_id": "OBL-CONTRACT-INPUT",
+      "direct_dependents": [],
+      "transitive_dependents": [],
+      "centrality": 0,
+      "classification": "LEAF",
+      "verification_priority": 4,
+      "reason": "Priority is based on downstream dependency count, not chronology or historical importance.",
+      "change_impact": {
+        "revisit_dependents": [],
+        "revisit_invariants": [
+          "INV-CONTRACT-INPUT"
+        ],
+        "revisit_regression_tests": [
+          "TEST-CONTRACT-INPUT"
+        ],
+        "revisit_migration": false,
+        "revisit_conflicts": true
+      }
+    },
+    {
+      "obligation_id": "OBL-EXPANSION-VS-RETRY",
+      "direct_dependents": [],
+      "transitive_dependents": [],
+      "centrality": 0,
+      "classification": "LEAF",
+      "verification_priority": 54,
+      "reason": "Priority is based on downstream dependency count, not chronology or historical importance.",
+      "change_impact": {
+        "revisit_dependents": [],
+        "revisit_invariants": [
+          "INV-EXPANSION-VS-RETRY"
+        ],
+        "revisit_regression_tests": [
+          "TEST-EXPANSION-VS-RETRY"
+        ],
+        "revisit_migration": false,
+        "revisit_conflicts": true
+      }
+    },
+    {
+      "obligation_id": "OBL-EXPORT",
+      "direct_dependents": [],
+      "transitive_dependents": [],
+      "centrality": 0,
+      "classification": "LEAF",
+      "verification_priority": 45,
+      "reason": "Priority is based on downstream dependency count, not chronology or historical importance.",
+      "change_impact": {
+        "revisit_dependents": [],
+        "revisit_invariants": [
+          "INV-EXPORT"
+        ],
+        "revisit_regression_tests": [
+          "TEST-EXPORT"
+        ],
+        "revisit_migration": false,
+        "revisit_conflicts": true
+      }
+    },
+    {
+      "obligation_id": "OBL-PARSE-DEFECT",
+      "direct_dependents": [],
+      "transitive_dependents": [],
+      "centrality": 0,
+      "classification": "LEAF",
+      "verification_priority": 17,
+      "reason": "Priority is based on downstream dependency count, not chronology or historical importance.",
+      "change_impact": {
+        "revisit_dependents": [],
+        "revisit_invariants": [
+          "INV-PARSE-DEFECT"
+        ],
+        "revisit_regression_tests": [
+          "TEST-PARSE-DEFECT"
+        ],
+        "revisit_migration": false,
+        "revisit_conflicts": true
+      }
+    },
+    {
+      "obligation_id": "OBL-PARSER",
+      "direct_dependents": [],
+      "transitive_dependents": [],
+      "centrality": 0,
+      "classification": "LEAF",
+      "verification_priority": 43,
+      "reason": "Priority is based on downstream dependency count, not chronology or historical importance.",
+      "change_impact": {
+        "revisit_dependents": [],
+        "revisit_invariants": [
+          "INV-PARSER"
+        ],
+        "revisit_regression_tests": [
+          "TEST-PARSER"
+        ],
+        "revisit_migration": false,
+        "revisit_conflicts": true
+      }
+    },
+    {
+      "obligation_id": "OBL-PERSIST-CORRUPTION",
+      "direct_dependents": [],
+      "transitive_dependents": [],
+      "centrality": 0,
+      "classification": "LEAF",
+      "verification_priority": 51,
+      "reason": "Priority is based on downstream dependency count, not chronology or historical importance.",
+      "change_impact": {
+        "revisit_dependents": [],
+        "revisit_invariants": [
+          "INV-PERSIST-CORRUPTION"
+        ],
+        "revisit_regression_tests": [
+          "TEST-PERSIST-CORRUPTION"
+        ],
+        "revisit_migration": false,
+        "revisit_conflicts": true
+      }
+    },
+    {
+      "obligation_id": "OBL-PRIVATE-SHAPE",
+      "direct_dependents": [],
+      "transitive_dependents": [],
+      "centrality": 0,
+      "classification": "LEAF",
+      "verification_priority": 5,
+      "reason": "Priority is based on downstream dependency count, not chronology or historical importance.",
+      "change_impact": {
+        "revisit_dependents": [],
+        "revisit_invariants": [
+          "INV-PRIVATE-SHAPE"
+        ],
+        "revisit_regression_tests": [
+          "TEST-PRIVATE-SHAPE"
+        ],
+        "revisit_migration": false,
+        "revisit_conflicts": true
+      }
+    },
+    {
+      "obligation_id": "OBL-PROVIDER-FAILURE",
+      "direct_dependents": [],
+      "transitive_dependents": [],
+      "centrality": 0,
+      "classification": "LEAF",
+      "verification_priority": 48,
+      "reason": "Priority is based on downstream dependency count, not chronology or historical importance.",
+      "change_impact": {
+        "revisit_dependents": [],
+        "revisit_invariants": [
+          "INV-PROVIDER-FAILURE"
+        ],
+        "revisit_regression_tests": [
+          "TEST-PROVIDER-FAILURE"
+        ],
+        "revisit_migration": false,
+        "revisit_conflicts": true
+      }
+    },
+    {
+      "obligation_id": "OBL-PROVIDER-ORDER",
+      "direct_dependents": [],
+      "transitive_dependents": [],
+      "centrality": 0,
+      "classification": "LEAF",
+      "verification_priority": 6,
+      "reason": "Priority is based on downstream dependency count, not chronology or historical importance.",
+      "change_impact": {
+        "revisit_dependents": [],
+        "revisit_invariants": [
+          "INV-PROVIDER-ORDER"
+        ],
+        "revisit_regression_tests": [
+          "TEST-PROVIDER-ORDER"
+        ],
+        "revisit_migration": false,
+        "revisit_conflicts": true
+      }
+    },
+    {
+      "obligation_id": "OBL-UI",
+      "direct_dependents": [],
+      "transitive_dependents": [],
+      "centrality": 0,
+      "classification": "LEAF",
+      "verification_priority": 9,
+      "reason": "Priority is based on downstream dependency count, not chronology or historical importance.",
+      "change_impact": {
+        "revisit_dependents": [],
+        "revisit_invariants": [
+          "INV-UI"
+        ],
+        "revisit_regression_tests": [
+          "TEST-UI"
+        ],
+        "revisit_migration": false,
+        "revisit_conflicts": true
+      }
+    },
+    {
+      "obligation_id": "OBL-UNBOUNDED",
+      "direct_dependents": [],
+      "transitive_dependents": [],
+      "centrality": 0,
+      "classification": "LEAF",
+      "verification_priority": 18,
+      "reason": "Priority is based on downstream dependency count, not chronology or historical importance.",
+      "change_impact": {
+        "revisit_dependents": [],
+        "revisit_invariants": [
+          "INV-UNBOUNDED"
+        ],
+        "revisit_regression_tests": [
+          "TEST-UNBOUNDED"
+        ],
+        "revisit_migration": false,
+        "revisit_conflicts": true
+      }
+    },
+    {
+      "obligation_id": "OBL-WEB-GENERALIZE",
+      "direct_dependents": [],
+      "transitive_dependents": [],
+      "centrality": 0,
+      "classification": "LEAF",
+      "verification_priority": 27,
+      "reason": "Priority is based on downstream dependency count, not chronology or historical importance.",
+      "change_impact": {
+        "revisit_dependents": [],
+        "revisit_invariants": [
+          "INV-WEB-GENERALIZE"
+        ],
+        "revisit_regression_tests": [
+          "TEST-WEB-GENERALIZE"
+        ],
+        "revisit_migration": false,
+        "revisit_conflicts": true
+      }
+    },
+    {
+      "obligation_id": "OBL-WORKER-FAILURE",
+      "direct_dependents": [],
+      "transitive_dependents": [],
+      "centrality": 0,
+      "classification": "LEAF",
+      "verification_priority": 49,
+      "reason": "Priority is based on downstream dependency count, not chronology or historical importance.",
+      "change_impact": {
+        "revisit_dependents": [],
+        "revisit_invariants": [
+          "INV-WORKER-FAILURE"
+        ],
+        "revisit_regression_tests": [
+          "TEST-WORKER-FAILURE"
+        ],
+        "revisit_migration": false,
+        "revisit_conflicts": true
+      }
+    }
+  ]
+}

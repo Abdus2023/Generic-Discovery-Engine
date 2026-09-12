@@ -1,0 +1,33 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "schema_version": "1.0",
+  "additionalProperties": true,
+  "title": "Obligation dependency",
+  "type": "object",
+  "required": [
+    "dependency_id",
+    "from_obligation",
+    "to_obligation",
+    "relation",
+    "reason"
+  ],
+  "properties": {
+    "relation": {
+      "enum": [
+        "REQUIRES",
+        "SUPPORTS",
+        "ENABLES",
+        "REFINES",
+        "STRENGTHENS",
+        "CONSTRAINS",
+        "CONFLICTS_WITH",
+        "SUPERSEDES",
+        "DERIVED_FROM",
+        "VERIFIED_BY"
+      ]
+    },
+    "scope": {
+      "type": "object"
+    }
+  }
+}

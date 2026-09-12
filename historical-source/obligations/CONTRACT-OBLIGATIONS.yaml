@@ -1,0 +1,201 @@
+{
+  "schema_version": "1.0",
+  "input_contract_status": "INPUT_CONTRACT_FAILED",
+  "v7_contract_inventory": {
+    "status": "INPUT_MISSING",
+    "contracts_consumed": 0,
+    "reason": "historical-source/contracts is absent"
+  },
+  "contract_obligations": [
+    {
+      "area": "candidate",
+      "status": "UNKNOWN",
+      "strengthen": "UNKNOWN",
+      "weaken": "UNKNOWN",
+      "replace": "UNKNOWN",
+      "retire": "UNKNOWN",
+      "reason": "REQUIREMENT_NOT_JUSTIFIED"
+    },
+    {
+      "area": "acquisition",
+      "status": "UNKNOWN",
+      "strengthen": "UNKNOWN",
+      "weaken": "UNKNOWN",
+      "replace": "UNKNOWN",
+      "retire": "UNKNOWN",
+      "reason": "REQUIREMENT_NOT_JUSTIFIED"
+    },
+    {
+      "area": "observation",
+      "status": "UNKNOWN",
+      "strengthen": "UNKNOWN",
+      "weaken": "UNKNOWN",
+      "replace": "UNKNOWN",
+      "retire": "UNKNOWN",
+      "reason": "REQUIREMENT_NOT_JUSTIFIED"
+    },
+    {
+      "area": "provider",
+      "status": "UNKNOWN",
+      "strengthen": "UNKNOWN",
+      "weaken": "UNKNOWN",
+      "replace": "UNKNOWN",
+      "retire": "UNKNOWN",
+      "reason": "REQUIREMENT_NOT_JUSTIFIED"
+    },
+    {
+      "area": "discovery",
+      "status": "UNKNOWN",
+      "strengthen": "UNKNOWN",
+      "weaken": "UNKNOWN",
+      "replace": "UNKNOWN",
+      "retire": "UNKNOWN",
+      "reason": "REQUIREMENT_NOT_JUSTIFIED"
+    },
+    {
+      "area": "scheduler",
+      "status": "UNKNOWN",
+      "strengthen": "UNKNOWN",
+      "weaken": "UNKNOWN",
+      "replace": "UNKNOWN",
+      "retire": "UNKNOWN",
+      "reason": "REQUIREMENT_NOT_JUSTIFIED"
+    },
+    {
+      "area": "failure",
+      "status": "UNKNOWN",
+      "strengthen": "UNKNOWN",
+      "weaken": "UNKNOWN",
+      "replace": "UNKNOWN",
+      "retire": "UNKNOWN",
+      "reason": "REQUIREMENT_NOT_JUSTIFIED"
+    },
+    {
+      "area": "provenance",
+      "status": "UNKNOWN",
+      "strengthen": "UNKNOWN",
+      "weaken": "UNKNOWN",
+      "replace": "UNKNOWN",
+      "retire": "UNKNOWN",
+      "reason": "REQUIREMENT_NOT_JUSTIFIED"
+    },
+    {
+      "area": "serialization",
+      "status": "UNKNOWN",
+      "strengthen": "UNKNOWN",
+      "weaken": "UNKNOWN",
+      "replace": "UNKNOWN",
+      "retire": "UNKNOWN",
+      "reason": "REQUIREMENT_NOT_JUSTIFIED"
+    }
+  ],
+  "versioned_contract_envelope": [
+    {
+      "old_contract": "v0.1.0",
+      "new_contract": "v0.2.0",
+      "classification": "UNKNOWN",
+      "outputs": "UNKNOWN",
+      "side_effects": "UNKNOWN",
+      "errors": "UNKNOWN",
+      "ordering": "UNKNOWN",
+      "ownership": "UNKNOWN",
+      "lifecycle": "UNKNOWN",
+      "concurrency": "UNKNOWN",
+      "provenance": "UNKNOWN",
+      "reason": "Protocol-v7 is missing; signatures are insufficient."
+    },
+    {
+      "old_contract": "v0.2.0",
+      "new_contract": "v0.3.0",
+      "classification": "UNKNOWN",
+      "outputs": "UNKNOWN",
+      "side_effects": "UNKNOWN",
+      "errors": "UNKNOWN",
+      "ordering": "UNKNOWN",
+      "ownership": "UNKNOWN",
+      "lifecycle": "UNKNOWN",
+      "concurrency": "UNKNOWN",
+      "provenance": "UNKNOWN",
+      "reason": "Protocol-v7 is missing; signatures are insufficient."
+    },
+    {
+      "old_contract": "v0.3.0",
+      "new_contract": "v0.4.0",
+      "classification": "UNKNOWN",
+      "outputs": "UNKNOWN",
+      "side_effects": "UNKNOWN",
+      "errors": "UNKNOWN",
+      "ordering": "UNKNOWN",
+      "ownership": "UNKNOWN",
+      "lifecycle": "UNKNOWN",
+      "concurrency": "UNKNOWN",
+      "provenance": "UNKNOWN",
+      "reason": "Protocol-v7 is missing; signatures are insufficient."
+    },
+    {
+      "old_contract": "v0.4.0",
+      "new_contract": "v0.5.0",
+      "classification": "UNKNOWN",
+      "outputs": "UNKNOWN",
+      "side_effects": "UNKNOWN",
+      "errors": "UNKNOWN",
+      "ordering": "UNKNOWN",
+      "ownership": "UNKNOWN",
+      "lifecycle": "UNKNOWN",
+      "concurrency": "UNKNOWN",
+      "provenance": "UNKNOWN",
+      "reason": "Protocol-v7 is missing; signatures are insufficient."
+    },
+    {
+      "old_contract": "v0.5.0",
+      "new_contract": "v0.6.0",
+      "classification": "UNKNOWN",
+      "outputs": "UNKNOWN",
+      "side_effects": "UNKNOWN",
+      "errors": "UNKNOWN",
+      "ordering": "UNKNOWN",
+      "ownership": "UNKNOWN",
+      "lifecycle": "UNKNOWN",
+      "concurrency": "UNKNOWN",
+      "provenance": "UNKNOWN",
+      "reason": "Protocol-v7 is missing; signatures are insufficient."
+    },
+    {
+      "old_contract": "v0.6.0",
+      "new_contract": "v0.7.1",
+      "classification": "UNKNOWN",
+      "outputs": "UNKNOWN",
+      "side_effects": "UNKNOWN",
+      "errors": "UNKNOWN",
+      "ordering": "UNKNOWN",
+      "ownership": "UNKNOWN",
+      "lifecycle": "UNKNOWN",
+      "concurrency": "UNKNOWN",
+      "provenance": "UNKNOWN",
+      "reason": "Protocol-v7 is missing; signatures are insufficient."
+    }
+  ],
+  "semantic_dimensions": [
+    "outputs",
+    "side effects",
+    "errors",
+    "ordering",
+    "ownership",
+    "lifecycle",
+    "concurrency",
+    "provenance"
+  ],
+  "source_api_shapes": 11,
+  "future_strengthening": {
+    "provider": [
+      "matching",
+      "output",
+      "errors",
+      "ownership",
+      "lifecycle",
+      "cancellation",
+      "provenance"
+    ],
+    "historical_fact": false
+  }
+}

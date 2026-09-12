@@ -1,0 +1,15 @@
+                    ENGINE STATE
+                         │
+             ┌───────────┴───────────┐
+             ▼                       ▼
+         DURABLE                  EPHEMERAL
+             │                       │
+             ├── candidates          ├── workers
+             ├── observations        ├── timers
+             ├── evidence            ├── promises
+             ├── artifacts            ├── sockets
+             ├── checkpoints          ├── DOM handles
+             ├── work state           └── provider objects
+             ├── reservations
+             ├── settlements
+             └── event ledger

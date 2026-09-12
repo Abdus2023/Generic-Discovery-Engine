@@ -1,0 +1,42 @@
+1. Durable knowledge must not depend on ephemeral runtime state.
+
+2. A cursor cannot advance beyond durably persisted knowledge.
+
+3. Incomplete transactions are distinguishable from committed
+   transactions.
+
+4. Recovery never fabricates observations.
+
+5. Unknown execution outcome remains unknown until resolved.
+
+6. Expired claims are recoverable.
+
+7. Reservations and consumption remain distinct during recovery.
+
+8. Duplicate processing is preferable to silent knowledge loss.
+
+9. Idempotent operations may suppress duplicate durable effects
+   without suppressing provenance.
+
+10. Historical events are immutable.
+
+11. Repairs produce explicit recovery events.
+
+12. Materialized state may be rebuilt from durable state.
+
+13. Schema evolution requires explicit versioning.
+
+14. Snapshot integrity is independently verifiable.
+
+15. Recovery occurs before normal frontier execution resumes.
+
+16. Reconciliation may repair state but cannot rewrite history.
+
+17. An artifact digest does not imply artifact durability.
+
+18. A completed request does not imply a durable observation.
+
+19. A durable observation does not automatically imply a durable
+    semantic claim.
+
+20. Crash recovery cannot upgrade epistemic confidence.

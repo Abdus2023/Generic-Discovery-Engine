@@ -1,0 +1,44 @@
+                         SCAN SESSION
+                              │
+                              ▼
+                       DISCOVERY DOMAIN
+                              │
+                              ▼
+                       FRONTIER RUNTIME
+                              │
+                 ┌────────────┴────────────┐
+                 ▼                         ▼
+          Discovery Work            Acquisition Work
+                 │                         │
+                 ▼                         ▼
+       Candidate Sources           Acquisition Runtime
+                 │                         │
+                 ▼                         ▼
+            Candidate                 Observation
+                 │                         │
+                 └────────────┬────────────┘
+                              ▼
+                         EVIDENCE GRAPH
+                              │
+                              ▼
+                     RESPONSE RECOGNITION
+                              │
+                              ▼
+                           RESOURCE
+                              │
+                              ▼
+                   IDENTITY RESOLUTION
+                              │
+                              ▼
+                  CLASSIFICATION RUNTIME
+                              │
+               ┌──────────────┼──────────────┐
+               ▼              ▼              ▼
+          Representation   Behavior      Semantic Role
+               │              │              │
+               └──────────────┼──────────────┘
+                              ▼
+                     Strategy Resolution
+                              │
+                              ▼
+                       New WorkItems

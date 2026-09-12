@@ -1,0 +1,21 @@
+Network {
+    network_id
+    name
+    transport_streams[]
+}
+
+TransportStream {
+    ts_id
+    reception[]
+    services[]
+}
+
+Reception {
+    frequency
+    bandwidth
+    polarization
+    symbol_rate
+    modulation
+    delivery_system
+    quality_metrics
+}

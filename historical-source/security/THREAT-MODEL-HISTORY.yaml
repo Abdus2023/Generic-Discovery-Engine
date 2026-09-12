@@ -1,0 +1,769 @@
+{
+  "schema_version": 8,
+  "builder": "security-archaeology-builder-v8",
+  "model_kind": "DERIVED_SECURITY_ARCHAEOLOGY_NOT_SOURCE",
+  "snapshots": [
+    {
+      "snapshot_id": "snapshot-0001",
+      "version": "v0.1.0",
+      "variant": "mechanically-composed",
+      "threats": [
+        {
+          "threat": "remote content",
+          "classification": "IMPLICIT_THREAT",
+          "evidence": [
+            "security-ev-2224a706f10034c5"
+          ]
+        },
+        {
+          "threat": "arbitrary URLs",
+          "classification": "IMPLICIT_THREAT",
+          "evidence": [
+            "security-ev-604b0adf0ff4798b"
+          ]
+        },
+        {
+          "threat": "cross-origin access",
+          "classification": "IMPLICIT_THREAT",
+          "evidence": [
+            "security-ev-b37c0806ac4200ad"
+          ]
+        },
+        {
+          "threat": "resource exhaustion",
+          "classification": "IMPLICIT_THREAT",
+          "evidence": [
+            "security-ev-cbd8c1d0a7f9b85c"
+          ]
+        },
+        {
+          "threat": "duplicate processing",
+          "classification": "IMPLICIT_THREAT",
+          "evidence": [
+            "security-ev-728b30ffe167a3a6"
+          ]
+        },
+        {
+          "threat": "state corruption",
+          "classification": "RETROSPECTIVE_THREAT",
+          "evidence": [
+            "security-ev-335648e073ddb329"
+          ]
+        }
+      ],
+      "complete_threat_model": "NOT_EVIDENCED",
+      "retrospective_items_do_not_become_historical": true,
+      "evidence": [
+        "security-ev-2224a706f10034c5",
+        "security-ev-604b0adf0ff4798b",
+        "security-ev-b37c0806ac4200ad",
+        "security-ev-cbd8c1d0a7f9b85c",
+        "security-ev-728b30ffe167a3a6",
+        "security-ev-335648e073ddb329"
+      ]
+    },
+    {
+      "snapshot_id": "snapshot-0003",
+      "version": "v0.2.0",
+      "variant": "mechanically-composed",
+      "threats": [
+        {
+          "threat": "remote content",
+          "classification": "IMPLICIT_THREAT",
+          "evidence": [
+            "security-ev-7f7a68698b3143bf"
+          ]
+        },
+        {
+          "threat": "arbitrary URLs",
+          "classification": "IMPLICIT_THREAT",
+          "evidence": [
+            "security-ev-7ed5de36f5a3bdb2"
+          ]
+        },
+        {
+          "threat": "cross-origin access",
+          "classification": "IMPLICIT_THREAT",
+          "evidence": [
+            "security-ev-826643ee789adbd7"
+          ]
+        },
+        {
+          "threat": "resource exhaustion",
+          "classification": "IMPLICIT_THREAT",
+          "evidence": [
+            "security-ev-9dddeed8b42a0d0a"
+          ]
+        },
+        {
+          "threat": "duplicate processing",
+          "classification": "IMPLICIT_THREAT",
+          "evidence": [
+            "security-ev-df44f4291023f410"
+          ]
+        },
+        {
+          "threat": "state corruption",
+          "classification": "RETROSPECTIVE_THREAT",
+          "evidence": [
+            "security-ev-d839ae20acba28d1"
+          ]
+        }
+      ],
+      "complete_threat_model": "NOT_EVIDENCED",
+      "retrospective_items_do_not_become_historical": true,
+      "evidence": [
+        "security-ev-7f7a68698b3143bf",
+        "security-ev-7ed5de36f5a3bdb2",
+        "security-ev-826643ee789adbd7",
+        "security-ev-9dddeed8b42a0d0a",
+        "security-ev-df44f4291023f410",
+        "security-ev-d839ae20acba28d1"
+      ]
+    },
+    {
+      "snapshot_id": "snapshot-0005",
+      "version": "v0.3.0",
+      "variant": "only-evidenced-complete-occurrence",
+      "threats": [
+        {
+          "threat": "remote content",
+          "classification": "IMPLICIT_THREAT",
+          "evidence": [
+            "security-ev-1deb0d0e80ab5d4d"
+          ]
+        },
+        {
+          "threat": "arbitrary URLs",
+          "classification": "IMPLICIT_THREAT",
+          "evidence": [
+            "security-ev-6b521dfe8f10c2a2"
+          ]
+        },
+        {
+          "threat": "cross-origin access",
+          "classification": "IMPLICIT_THREAT",
+          "evidence": [
+            "security-ev-156b217676ff1aaf"
+          ]
+        },
+        {
+          "threat": "resource exhaustion",
+          "classification": "IMPLICIT_THREAT",
+          "evidence": [
+            "security-ev-f7c671e0309f4d9d"
+          ]
+        },
+        {
+          "threat": "duplicate processing",
+          "classification": "IMPLICIT_THREAT",
+          "evidence": [
+            "security-ev-bbda0f7f5ce60a4d"
+          ]
+        },
+        {
+          "threat": "state corruption",
+          "classification": "RETROSPECTIVE_THREAT",
+          "evidence": [
+            "security-ev-f955a7150285ae1d"
+          ]
+        }
+      ],
+      "complete_threat_model": "NOT_EVIDENCED",
+      "retrospective_items_do_not_become_historical": true,
+      "evidence": [
+        "security-ev-1deb0d0e80ab5d4d",
+        "security-ev-6b521dfe8f10c2a2",
+        "security-ev-156b217676ff1aaf",
+        "security-ev-f7c671e0309f4d9d",
+        "security-ev-bbda0f7f5ce60a4d",
+        "security-ev-f955a7150285ae1d"
+      ]
+    },
+    {
+      "snapshot_id": "snapshot-0006",
+      "version": "v0.4.0",
+      "variant": "variant-a",
+      "threats": [
+        {
+          "threat": "remote content",
+          "classification": "IMPLICIT_THREAT",
+          "evidence": [
+            "security-ev-56aa58c250286a0a"
+          ]
+        },
+        {
+          "threat": "arbitrary URLs",
+          "classification": "IMPLICIT_THREAT",
+          "evidence": [
+            "security-ev-e2dc46af515e1685"
+          ]
+        },
+        {
+          "threat": "cross-origin access",
+          "classification": "IMPLICIT_THREAT",
+          "evidence": [
+            "security-ev-96ee839bd4922e9e"
+          ]
+        },
+        {
+          "threat": "resource exhaustion",
+          "classification": "IMPLICIT_THREAT",
+          "evidence": [
+            "security-ev-ebeb28b71440b908"
+          ]
+        },
+        {
+          "threat": "duplicate processing",
+          "classification": "IMPLICIT_THREAT",
+          "evidence": [
+            "security-ev-5abadb92a25a545d"
+          ]
+        },
+        {
+          "threat": "state corruption",
+          "classification": "RETROSPECTIVE_THREAT",
+          "evidence": [
+            "security-ev-f56a94859ac8cf22"
+          ]
+        }
+      ],
+      "complete_threat_model": "NOT_EVIDENCED",
+      "retrospective_items_do_not_become_historical": true,
+      "evidence": [
+        "security-ev-56aa58c250286a0a",
+        "security-ev-e2dc46af515e1685",
+        "security-ev-96ee839bd4922e9e",
+        "security-ev-ebeb28b71440b908",
+        "security-ev-5abadb92a25a545d",
+        "security-ev-f56a94859ac8cf22"
+      ]
+    },
+    {
+      "snapshot_id": "snapshot-0008",
+      "version": "v0.4.0",
+      "variant": "variant-b",
+      "threats": [
+        {
+          "threat": "remote content",
+          "classification": "IMPLICIT_THREAT",
+          "evidence": [
+            "security-ev-56bf37a748be85c8"
+          ]
+        },
+        {
+          "threat": "arbitrary URLs",
+          "classification": "IMPLICIT_THREAT",
+          "evidence": [
+            "security-ev-991a6e6695c55ee2"
+          ]
+        },
+        {
+          "threat": "cross-origin access",
+          "classification": "IMPLICIT_THREAT",
+          "evidence": [
+            "security-ev-622fd4548d4c30f9"
+          ]
+        },
+        {
+          "threat": "resource exhaustion",
+          "classification": "IMPLICIT_THREAT",
+          "evidence": [
+            "security-ev-7bbca4fbfe8e5477"
+          ]
+        },
+        {
+          "threat": "duplicate processing",
+          "classification": "IMPLICIT_THREAT",
+          "evidence": [
+            "security-ev-bcdee16458188c2f"
+          ]
+        },
+        {
+          "threat": "provider failures",
+          "classification": "IMPLICIT_THREAT",
+          "evidence": [
+            "security-ev-4bcb422358835cf7"
+          ]
+        },
+        {
+          "threat": "state corruption",
+          "classification": "RETROSPECTIVE_THREAT",
+          "evidence": [
+            "security-ev-6f9d248066623c9d"
+          ]
+        }
+      ],
+      "complete_threat_model": "NOT_EVIDENCED",
+      "retrospective_items_do_not_become_historical": true,
+      "evidence": [
+        "security-ev-56bf37a748be85c8",
+        "security-ev-991a6e6695c55ee2",
+        "security-ev-622fd4548d4c30f9",
+        "security-ev-7bbca4fbfe8e5477",
+        "security-ev-bcdee16458188c2f",
+        "security-ev-4bcb422358835cf7",
+        "security-ev-6f9d248066623c9d"
+      ]
+    },
+    {
+      "snapshot_id": "snapshot-0007",
+      "version": "v0.5.0",
+      "variant": "variant-a",
+      "threats": [
+        {
+          "threat": "remote content",
+          "classification": "IMPLICIT_THREAT",
+          "evidence": [
+            "security-ev-e962e3ba57af0696"
+          ]
+        },
+        {
+          "threat": "arbitrary URLs",
+          "classification": "IMPLICIT_THREAT",
+          "evidence": [
+            "security-ev-39dc44b25db63f2a"
+          ]
+        },
+        {
+          "threat": "cross-origin access",
+          "classification": "IMPLICIT_THREAT",
+          "evidence": [
+            "security-ev-90378c4c3a1e1ce5"
+          ]
+        },
+        {
+          "threat": "resource exhaustion",
+          "classification": "IMPLICIT_THREAT",
+          "evidence": [
+            "security-ev-4fde34b24e0532b5"
+          ]
+        },
+        {
+          "threat": "duplicate processing",
+          "classification": "IMPLICIT_THREAT",
+          "evidence": [
+            "security-ev-e98619736cb38598"
+          ]
+        },
+        {
+          "threat": "provider failures",
+          "classification": "IMPLICIT_THREAT",
+          "evidence": [
+            "security-ev-faa098a0a21c5bac"
+          ]
+        },
+        {
+          "threat": "state corruption",
+          "classification": "RETROSPECTIVE_THREAT",
+          "evidence": [
+            "security-ev-4af95c2b2c0c14cf"
+          ]
+        }
+      ],
+      "complete_threat_model": "NOT_EVIDENCED",
+      "retrospective_items_do_not_become_historical": true,
+      "evidence": [
+        "security-ev-e962e3ba57af0696",
+        "security-ev-39dc44b25db63f2a",
+        "security-ev-90378c4c3a1e1ce5",
+        "security-ev-4fde34b24e0532b5",
+        "security-ev-e98619736cb38598",
+        "security-ev-faa098a0a21c5bac",
+        "security-ev-4af95c2b2c0c14cf"
+      ]
+    },
+    {
+      "snapshot_id": "snapshot-0009",
+      "version": "v0.5.0",
+      "variant": "variant-b",
+      "threats": [
+        {
+          "threat": "remote content",
+          "classification": "IMPLICIT_THREAT",
+          "evidence": [
+            "security-ev-8c5dbdbfc04a1009"
+          ]
+        },
+        {
+          "threat": "arbitrary URLs",
+          "classification": "IMPLICIT_THREAT",
+          "evidence": [
+            "security-ev-b3d34257fd6a1c7d"
+          ]
+        },
+        {
+          "threat": "cross-origin access",
+          "classification": "IMPLICIT_THREAT",
+          "evidence": [
+            "security-ev-daa241abddaedb09"
+          ]
+        },
+        {
+          "threat": "resource exhaustion",
+          "classification": "IMPLICIT_THREAT",
+          "evidence": [
+            "security-ev-040504eeb33427f4"
+          ]
+        },
+        {
+          "threat": "duplicate processing",
+          "classification": "IMPLICIT_THREAT",
+          "evidence": [
+            "security-ev-951a40f65a0116a7"
+          ]
+        },
+        {
+          "threat": "provider failures",
+          "classification": "IMPLICIT_THREAT",
+          "evidence": [
+            "security-ev-2f00a3f130e5270e"
+          ]
+        },
+        {
+          "threat": "state corruption",
+          "classification": "RETROSPECTIVE_THREAT",
+          "evidence": [
+            "security-ev-abdd8b9b2a6c32a6"
+          ]
+        }
+      ],
+      "complete_threat_model": "NOT_EVIDENCED",
+      "retrospective_items_do_not_become_historical": true,
+      "evidence": [
+        "security-ev-8c5dbdbfc04a1009",
+        "security-ev-b3d34257fd6a1c7d",
+        "security-ev-daa241abddaedb09",
+        "security-ev-040504eeb33427f4",
+        "security-ev-951a40f65a0116a7",
+        "security-ev-2f00a3f130e5270e",
+        "security-ev-abdd8b9b2a6c32a6"
+      ]
+    },
+    {
+      "snapshot_id": "snapshot-0011",
+      "version": "v0.5.0",
+      "variant": "variant-c",
+      "threats": [
+        {
+          "threat": "remote content",
+          "classification": "IMPLICIT_THREAT",
+          "evidence": [
+            "security-ev-4a79ce54bef9469d"
+          ]
+        },
+        {
+          "threat": "arbitrary URLs",
+          "classification": "IMPLICIT_THREAT",
+          "evidence": [
+            "security-ev-f9649862950e151f"
+          ]
+        },
+        {
+          "threat": "cross-origin access",
+          "classification": "IMPLICIT_THREAT",
+          "evidence": [
+            "security-ev-40d471803bd4ca17"
+          ]
+        },
+        {
+          "threat": "resource exhaustion",
+          "classification": "IMPLICIT_THREAT",
+          "evidence": [
+            "security-ev-4018e3bf9f4f2a66"
+          ]
+        },
+        {
+          "threat": "duplicate processing",
+          "classification": "IMPLICIT_THREAT",
+          "evidence": [
+            "security-ev-afbd589eef45b6b6"
+          ]
+        },
+        {
+          "threat": "provider failures",
+          "classification": "IMPLICIT_THREAT",
+          "evidence": [
+            "security-ev-8a24d57c36433b28"
+          ]
+        },
+        {
+          "threat": "state corruption",
+          "classification": "RETROSPECTIVE_THREAT",
+          "evidence": [
+            "security-ev-321c8cfa9354fbf8"
+          ]
+        }
+      ],
+      "complete_threat_model": "NOT_EVIDENCED",
+      "retrospective_items_do_not_become_historical": true,
+      "evidence": [
+        "security-ev-4a79ce54bef9469d",
+        "security-ev-f9649862950e151f",
+        "security-ev-40d471803bd4ca17",
+        "security-ev-4018e3bf9f4f2a66",
+        "security-ev-afbd589eef45b6b6",
+        "security-ev-8a24d57c36433b28",
+        "security-ev-321c8cfa9354fbf8"
+      ]
+    },
+    {
+      "snapshot_id": "snapshot-0010",
+      "version": "v0.6.0",
+      "variant": "variant-a",
+      "threats": [
+        {
+          "threat": "remote content",
+          "classification": "IMPLICIT_THREAT",
+          "evidence": [
+            "security-ev-401abf127ba660f5"
+          ]
+        },
+        {
+          "threat": "arbitrary URLs",
+          "classification": "IMPLICIT_THREAT",
+          "evidence": [
+            "security-ev-79d11530850e54c2"
+          ]
+        },
+        {
+          "threat": "cross-origin access",
+          "classification": "IMPLICIT_THREAT",
+          "evidence": [
+            "security-ev-d51f55a58313de7a"
+          ]
+        },
+        {
+          "threat": "resource exhaustion",
+          "classification": "IMPLICIT_THREAT",
+          "evidence": [
+            "security-ev-ff360e746b7a8278"
+          ]
+        },
+        {
+          "threat": "duplicate processing",
+          "classification": "IMPLICIT_THREAT",
+          "evidence": [
+            "security-ev-8bc0fe54d609a684"
+          ]
+        },
+        {
+          "threat": "provider failures",
+          "classification": "IMPLICIT_THREAT",
+          "evidence": [
+            "security-ev-0ec0fe44fb13e434"
+          ]
+        },
+        {
+          "threat": "state corruption",
+          "classification": "RETROSPECTIVE_THREAT",
+          "evidence": [
+            "security-ev-848939ec0d2079d6"
+          ]
+        }
+      ],
+      "complete_threat_model": "NOT_EVIDENCED",
+      "retrospective_items_do_not_become_historical": true,
+      "evidence": [
+        "security-ev-401abf127ba660f5",
+        "security-ev-79d11530850e54c2",
+        "security-ev-d51f55a58313de7a",
+        "security-ev-ff360e746b7a8278",
+        "security-ev-8bc0fe54d609a684",
+        "security-ev-0ec0fe44fb13e434",
+        "security-ev-848939ec0d2079d6"
+      ]
+    },
+    {
+      "snapshot_id": "snapshot-0012",
+      "version": "v0.6.0",
+      "variant": "variant-b",
+      "threats": [
+        {
+          "threat": "remote content",
+          "classification": "IMPLICIT_THREAT",
+          "evidence": [
+            "security-ev-3ad8d4e90b1fd6b5"
+          ]
+        },
+        {
+          "threat": "arbitrary URLs",
+          "classification": "IMPLICIT_THREAT",
+          "evidence": [
+            "security-ev-970572c014e4a6e4"
+          ]
+        },
+        {
+          "threat": "cross-origin access",
+          "classification": "IMPLICIT_THREAT",
+          "evidence": [
+            "security-ev-a89ed50eb8d9ad40"
+          ]
+        },
+        {
+          "threat": "resource exhaustion",
+          "classification": "IMPLICIT_THREAT",
+          "evidence": [
+            "security-ev-001caa647eff00ca"
+          ]
+        },
+        {
+          "threat": "duplicate processing",
+          "classification": "IMPLICIT_THREAT",
+          "evidence": [
+            "security-ev-4800cba07cfbdfa3"
+          ]
+        },
+        {
+          "threat": "provider failures",
+          "classification": "IMPLICIT_THREAT",
+          "evidence": [
+            "security-ev-af9e80eb2ece2a55"
+          ]
+        },
+        {
+          "threat": "state corruption",
+          "classification": "RETROSPECTIVE_THREAT",
+          "evidence": [
+            "security-ev-2b44e9bf8b2b88bf"
+          ]
+        }
+      ],
+      "complete_threat_model": "NOT_EVIDENCED",
+      "retrospective_items_do_not_become_historical": true,
+      "evidence": [
+        "security-ev-3ad8d4e90b1fd6b5",
+        "security-ev-970572c014e4a6e4",
+        "security-ev-a89ed50eb8d9ad40",
+        "security-ev-001caa647eff00ca",
+        "security-ev-4800cba07cfbdfa3",
+        "security-ev-af9e80eb2ece2a55",
+        "security-ev-2b44e9bf8b2b88bf"
+      ]
+    },
+    {
+      "snapshot_id": "snapshot-0013",
+      "version": "v0.6.0",
+      "variant": "variant-c",
+      "threats": [
+        {
+          "threat": "remote content",
+          "classification": "IMPLICIT_THREAT",
+          "evidence": [
+            "security-ev-41673b6683c0715e"
+          ]
+        },
+        {
+          "threat": "arbitrary URLs",
+          "classification": "IMPLICIT_THREAT",
+          "evidence": [
+            "security-ev-06e4d735ffc92690"
+          ]
+        },
+        {
+          "threat": "cross-origin access",
+          "classification": "IMPLICIT_THREAT",
+          "evidence": [
+            "security-ev-9b264dd3b9567966"
+          ]
+        },
+        {
+          "threat": "resource exhaustion",
+          "classification": "IMPLICIT_THREAT",
+          "evidence": [
+            "security-ev-7cc7d2767df1f18b"
+          ]
+        },
+        {
+          "threat": "provider failures",
+          "classification": "IMPLICIT_THREAT",
+          "evidence": [
+            "security-ev-6c594abf057e61f5"
+          ]
+        },
+        {
+          "threat": "state corruption",
+          "classification": "RETROSPECTIVE_THREAT",
+          "evidence": [
+            "security-ev-a38bf9221c9d1b18"
+          ]
+        }
+      ],
+      "complete_threat_model": "NOT_EVIDENCED",
+      "retrospective_items_do_not_become_historical": true,
+      "evidence": [
+        "security-ev-41673b6683c0715e",
+        "security-ev-06e4d735ffc92690",
+        "security-ev-9b264dd3b9567966",
+        "security-ev-7cc7d2767df1f18b",
+        "security-ev-6c594abf057e61f5",
+        "security-ev-a38bf9221c9d1b18"
+      ]
+    },
+    {
+      "snapshot_id": "snapshot-0014",
+      "version": "v0.7.1",
+      "variant": "only-evidenced-complete-occurrence",
+      "threats": [
+        {
+          "threat": "remote content",
+          "classification": "IMPLICIT_THREAT",
+          "evidence": [
+            "security-ev-043102ef700b20eb"
+          ]
+        },
+        {
+          "threat": "arbitrary URLs",
+          "classification": "IMPLICIT_THREAT",
+          "evidence": [
+            "security-ev-ae489bc12617870c"
+          ]
+        },
+        {
+          "threat": "cross-origin access",
+          "classification": "IMPLICIT_THREAT",
+          "evidence": [
+            "security-ev-6668295cbaf1afb8"
+          ]
+        },
+        {
+          "threat": "resource exhaustion",
+          "classification": "IMPLICIT_THREAT",
+          "evidence": [
+            "security-ev-76c75494103f60d6"
+          ]
+        },
+        {
+          "threat": "provider failures",
+          "classification": "IMPLICIT_THREAT",
+          "evidence": [
+            "security-ev-72855f011d56092b"
+          ]
+        },
+        {
+          "threat": "state corruption",
+          "classification": "RETROSPECTIVE_THREAT",
+          "evidence": [
+            "security-ev-614f4a573b56db89"
+          ]
+        }
+      ],
+      "complete_threat_model": "NOT_EVIDENCED",
+      "retrospective_items_do_not_become_historical": true,
+      "evidence": [
+        "security-ev-043102ef700b20eb",
+        "security-ev-ae489bc12617870c",
+        "security-ev-6668295cbaf1afb8",
+        "security-ev-76c75494103f60d6",
+        "security-ev-72855f011d56092b",
+        "security-ev-614f4a573b56db89"
+      ]
+    }
+  ],
+  "classification_registry": [
+    "EXPLICIT_THREAT",
+    "IMPLICIT_THREAT",
+    "RETROSPECTIVE_THREAT",
+    "UNKNOWN"
+  ]
+}

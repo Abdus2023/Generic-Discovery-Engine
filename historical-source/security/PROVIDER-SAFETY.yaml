@@ -1,0 +1,687 @@
+{
+  "schema_version": 8,
+  "builder": "security-archaeology-builder-v8",
+  "model_kind": "DERIVED_SECURITY_ARCHAEOLOGY_NOT_SOURCE",
+  "providers": [
+    {
+      "snapshot_id": "snapshot-0001",
+      "version": "v0.1.0",
+      "provider_kind": "HTML",
+      "provider": "HtmlRecognizer",
+      "reads_links": true,
+      "reads_scripts": true,
+      "reads_forms": false,
+      "reads_resources": true,
+      "parses": true,
+      "recurses": false,
+      "extracts_strings_or_urls": true,
+      "injects_html": false,
+      "evaluates_expressions": false,
+      "executes_embedded_content": "NOT_EVIDENCED",
+      "security_guarantee": "NOT_ESTABLISHED",
+      "evidence": [
+        "security-ev-ffa2c7a3aa4f6f27"
+      ]
+    },
+    {
+      "snapshot_id": "snapshot-0003",
+      "version": "v0.2.0",
+      "provider_kind": "HTML",
+      "provider": "HtmlProvider",
+      "reads_links": true,
+      "reads_scripts": true,
+      "reads_forms": false,
+      "reads_resources": true,
+      "parses": true,
+      "recurses": false,
+      "extracts_strings_or_urls": true,
+      "injects_html": false,
+      "evaluates_expressions": false,
+      "executes_embedded_content": "NOT_EVIDENCED",
+      "security_guarantee": "NOT_ESTABLISHED",
+      "evidence": [
+        "security-ev-28bcf30a981f15c9"
+      ]
+    },
+    {
+      "snapshot_id": "snapshot-0003",
+      "version": "v0.2.0",
+      "provider_kind": "JSON",
+      "provider": "JsonProvider",
+      "reads_links": false,
+      "reads_scripts": false,
+      "reads_forms": false,
+      "reads_resources": false,
+      "parses": true,
+      "recurses": true,
+      "extracts_strings_or_urls": true,
+      "injects_html": false,
+      "evaluates_expressions": false,
+      "executes_embedded_content": "NOT_EVIDENCED",
+      "security_guarantee": "NOT_ESTABLISHED",
+      "evidence": [
+        "security-ev-aeece361ea6786db"
+      ]
+    },
+    {
+      "snapshot_id": "snapshot-0003",
+      "version": "v0.2.0",
+      "provider_kind": "TEXT",
+      "provider": "TextProvider",
+      "reads_links": false,
+      "reads_scripts": false,
+      "reads_forms": false,
+      "reads_resources": false,
+      "parses": false,
+      "recurses": false,
+      "extracts_strings_or_urls": true,
+      "injects_html": false,
+      "evaluates_expressions": false,
+      "executes_embedded_content": "NOT_EVIDENCED",
+      "security_guarantee": "NOT_ESTABLISHED",
+      "evidence": [
+        "security-ev-c69bbbca064323aa"
+      ]
+    },
+    {
+      "snapshot_id": "snapshot-0005",
+      "version": "v0.3.0",
+      "provider_kind": "HTML",
+      "provider": "HtmlProvider",
+      "reads_links": true,
+      "reads_scripts": true,
+      "reads_forms": true,
+      "reads_resources": true,
+      "parses": true,
+      "recurses": true,
+      "extracts_strings_or_urls": true,
+      "injects_html": false,
+      "evaluates_expressions": false,
+      "executes_embedded_content": "NOT_EVIDENCED",
+      "security_guarantee": "NOT_ESTABLISHED",
+      "evidence": [
+        "security-ev-f260ab24b9093f7f"
+      ]
+    },
+    {
+      "snapshot_id": "snapshot-0005",
+      "version": "v0.3.0",
+      "provider_kind": "JSON",
+      "provider": "JsonProvider",
+      "reads_links": false,
+      "reads_scripts": false,
+      "reads_forms": false,
+      "reads_resources": false,
+      "parses": true,
+      "recurses": true,
+      "extracts_strings_or_urls": true,
+      "injects_html": false,
+      "evaluates_expressions": false,
+      "executes_embedded_content": "NOT_EVIDENCED",
+      "security_guarantee": "NOT_ESTABLISHED",
+      "evidence": [
+        "security-ev-304716407d9ddd60"
+      ]
+    },
+    {
+      "snapshot_id": "snapshot-0005",
+      "version": "v0.3.0",
+      "provider_kind": "TEXT",
+      "provider": "TextProvider",
+      "reads_links": false,
+      "reads_scripts": false,
+      "reads_forms": false,
+      "reads_resources": false,
+      "parses": false,
+      "recurses": true,
+      "extracts_strings_or_urls": true,
+      "injects_html": false,
+      "evaluates_expressions": false,
+      "executes_embedded_content": "NOT_EVIDENCED",
+      "security_guarantee": "NOT_ESTABLISHED",
+      "evidence": [
+        "security-ev-61e1da3382c453cf"
+      ]
+    },
+    {
+      "snapshot_id": "snapshot-0006",
+      "version": "v0.4.0",
+      "provider_kind": "HTML",
+      "provider": "HtmlProvider",
+      "reads_links": true,
+      "reads_scripts": true,
+      "reads_forms": true,
+      "reads_resources": true,
+      "parses": true,
+      "recurses": true,
+      "extracts_strings_or_urls": true,
+      "injects_html": false,
+      "evaluates_expressions": false,
+      "executes_embedded_content": "NOT_EVIDENCED",
+      "security_guarantee": "NOT_ESTABLISHED",
+      "evidence": [
+        "security-ev-8bf0d524c3d6f516"
+      ]
+    },
+    {
+      "snapshot_id": "snapshot-0006",
+      "version": "v0.4.0",
+      "provider_kind": "JSON",
+      "provider": "JsonProvider",
+      "reads_links": false,
+      "reads_scripts": false,
+      "reads_forms": false,
+      "reads_resources": false,
+      "parses": true,
+      "recurses": true,
+      "extracts_strings_or_urls": true,
+      "injects_html": false,
+      "evaluates_expressions": false,
+      "executes_embedded_content": "NOT_EVIDENCED",
+      "security_guarantee": "NOT_ESTABLISHED",
+      "evidence": [
+        "security-ev-942f6aa61c8ccf68"
+      ]
+    },
+    {
+      "snapshot_id": "snapshot-0006",
+      "version": "v0.4.0",
+      "provider_kind": "TEXT",
+      "provider": "TextProvider",
+      "reads_links": false,
+      "reads_scripts": true,
+      "reads_forms": false,
+      "reads_resources": false,
+      "parses": false,
+      "recurses": true,
+      "extracts_strings_or_urls": true,
+      "injects_html": false,
+      "evaluates_expressions": false,
+      "executes_embedded_content": "NOT_EVIDENCED",
+      "security_guarantee": "NOT_ESTABLISHED",
+      "evidence": [
+        "security-ev-9f23a325e47fee9f"
+      ]
+    },
+    {
+      "snapshot_id": "snapshot-0008",
+      "version": "v0.4.0",
+      "provider_kind": "HTML",
+      "provider": "HtmlProvider",
+      "reads_links": true,
+      "reads_scripts": true,
+      "reads_forms": true,
+      "reads_resources": true,
+      "parses": true,
+      "recurses": true,
+      "extracts_strings_or_urls": true,
+      "injects_html": false,
+      "evaluates_expressions": false,
+      "executes_embedded_content": "NOT_EVIDENCED",
+      "security_guarantee": "NOT_ESTABLISHED",
+      "evidence": [
+        "security-ev-5628098edc8d663c"
+      ]
+    },
+    {
+      "snapshot_id": "snapshot-0008",
+      "version": "v0.4.0",
+      "provider_kind": "JSON",
+      "provider": "JsonProvider",
+      "reads_links": false,
+      "reads_scripts": false,
+      "reads_forms": false,
+      "reads_resources": false,
+      "parses": true,
+      "recurses": true,
+      "extracts_strings_or_urls": true,
+      "injects_html": false,
+      "evaluates_expressions": false,
+      "executes_embedded_content": "NOT_EVIDENCED",
+      "security_guarantee": "NOT_ESTABLISHED",
+      "evidence": [
+        "security-ev-ed02d9940f3dbc81"
+      ]
+    },
+    {
+      "snapshot_id": "snapshot-0008",
+      "version": "v0.4.0",
+      "provider_kind": "TEXT",
+      "provider": "TextProvider",
+      "reads_links": false,
+      "reads_scripts": false,
+      "reads_forms": false,
+      "reads_resources": false,
+      "parses": false,
+      "recurses": true,
+      "extracts_strings_or_urls": true,
+      "injects_html": false,
+      "evaluates_expressions": false,
+      "executes_embedded_content": "NOT_EVIDENCED",
+      "security_guarantee": "NOT_ESTABLISHED",
+      "evidence": [
+        "security-ev-02662a221d66cef8"
+      ]
+    },
+    {
+      "snapshot_id": "snapshot-0007",
+      "version": "v0.5.0",
+      "provider_kind": "HTML",
+      "provider": "HtmlProvider",
+      "reads_links": true,
+      "reads_scripts": true,
+      "reads_forms": true,
+      "reads_resources": true,
+      "parses": true,
+      "recurses": true,
+      "extracts_strings_or_urls": true,
+      "injects_html": false,
+      "evaluates_expressions": false,
+      "executes_embedded_content": "NOT_EVIDENCED",
+      "security_guarantee": "NOT_ESTABLISHED",
+      "evidence": [
+        "security-ev-a72cac2b9a44ee29"
+      ]
+    },
+    {
+      "snapshot_id": "snapshot-0007",
+      "version": "v0.5.0",
+      "provider_kind": "JSON",
+      "provider": "JsonProvider",
+      "reads_links": false,
+      "reads_scripts": false,
+      "reads_forms": false,
+      "reads_resources": false,
+      "parses": true,
+      "recurses": true,
+      "extracts_strings_or_urls": true,
+      "injects_html": false,
+      "evaluates_expressions": false,
+      "executes_embedded_content": "NOT_EVIDENCED",
+      "security_guarantee": "NOT_ESTABLISHED",
+      "evidence": [
+        "security-ev-6b3c4e61d161279e"
+      ]
+    },
+    {
+      "snapshot_id": "snapshot-0007",
+      "version": "v0.5.0",
+      "provider_kind": "TEXT",
+      "provider": "TextProvider",
+      "reads_links": false,
+      "reads_scripts": true,
+      "reads_forms": false,
+      "reads_resources": false,
+      "parses": false,
+      "recurses": true,
+      "extracts_strings_or_urls": true,
+      "injects_html": false,
+      "evaluates_expressions": false,
+      "executes_embedded_content": "NOT_EVIDENCED",
+      "security_guarantee": "NOT_ESTABLISHED",
+      "evidence": [
+        "security-ev-74ee42d9a36f14f2"
+      ]
+    },
+    {
+      "snapshot_id": "snapshot-0009",
+      "version": "v0.5.0",
+      "provider_kind": "HTML",
+      "provider": "HtmlProvider",
+      "reads_links": true,
+      "reads_scripts": true,
+      "reads_forms": true,
+      "reads_resources": true,
+      "parses": true,
+      "recurses": true,
+      "extracts_strings_or_urls": true,
+      "injects_html": false,
+      "evaluates_expressions": false,
+      "executes_embedded_content": "NOT_EVIDENCED",
+      "security_guarantee": "NOT_ESTABLISHED",
+      "evidence": [
+        "security-ev-3d61ca224adbd298"
+      ]
+    },
+    {
+      "snapshot_id": "snapshot-0009",
+      "version": "v0.5.0",
+      "provider_kind": "JSON",
+      "provider": "JsonProvider",
+      "reads_links": false,
+      "reads_scripts": false,
+      "reads_forms": false,
+      "reads_resources": false,
+      "parses": true,
+      "recurses": true,
+      "extracts_strings_or_urls": true,
+      "injects_html": false,
+      "evaluates_expressions": false,
+      "executes_embedded_content": "NOT_EVIDENCED",
+      "security_guarantee": "NOT_ESTABLISHED",
+      "evidence": [
+        "security-ev-fc1994e00691acec"
+      ]
+    },
+    {
+      "snapshot_id": "snapshot-0009",
+      "version": "v0.5.0",
+      "provider_kind": "TEXT",
+      "provider": "TextProvider",
+      "reads_links": false,
+      "reads_scripts": false,
+      "reads_forms": false,
+      "reads_resources": true,
+      "parses": false,
+      "recurses": true,
+      "extracts_strings_or_urls": true,
+      "injects_html": false,
+      "evaluates_expressions": false,
+      "executes_embedded_content": "NOT_EVIDENCED",
+      "security_guarantee": "NOT_ESTABLISHED",
+      "evidence": [
+        "security-ev-4df6ff3cf25d27c7"
+      ]
+    },
+    {
+      "snapshot_id": "snapshot-0011",
+      "version": "v0.5.0",
+      "provider_kind": "HTML",
+      "provider": "HtmlProvider",
+      "reads_links": true,
+      "reads_scripts": true,
+      "reads_forms": true,
+      "reads_resources": true,
+      "parses": true,
+      "recurses": true,
+      "extracts_strings_or_urls": true,
+      "injects_html": false,
+      "evaluates_expressions": false,
+      "executes_embedded_content": "NOT_EVIDENCED",
+      "security_guarantee": "NOT_ESTABLISHED",
+      "evidence": [
+        "security-ev-4d4a91e59da88a9d"
+      ]
+    },
+    {
+      "snapshot_id": "snapshot-0011",
+      "version": "v0.5.0",
+      "provider_kind": "JSON",
+      "provider": "JsonProvider",
+      "reads_links": false,
+      "reads_scripts": false,
+      "reads_forms": false,
+      "reads_resources": false,
+      "parses": true,
+      "recurses": true,
+      "extracts_strings_or_urls": true,
+      "injects_html": false,
+      "evaluates_expressions": false,
+      "executes_embedded_content": "NOT_EVIDENCED",
+      "security_guarantee": "NOT_ESTABLISHED",
+      "evidence": [
+        "security-ev-7f774ffd778bc876"
+      ]
+    },
+    {
+      "snapshot_id": "snapshot-0011",
+      "version": "v0.5.0",
+      "provider_kind": "TEXT",
+      "provider": "TextProvider",
+      "reads_links": false,
+      "reads_scripts": true,
+      "reads_forms": true,
+      "reads_resources": false,
+      "parses": false,
+      "recurses": true,
+      "extracts_strings_or_urls": true,
+      "injects_html": false,
+      "evaluates_expressions": false,
+      "executes_embedded_content": "NOT_EVIDENCED",
+      "security_guarantee": "NOT_ESTABLISHED",
+      "evidence": [
+        "security-ev-5cca2eb5f8489e9f"
+      ]
+    },
+    {
+      "snapshot_id": "snapshot-0010",
+      "version": "v0.6.0",
+      "provider_kind": "HTML",
+      "provider": "HtmlProvider",
+      "reads_links": true,
+      "reads_scripts": true,
+      "reads_forms": true,
+      "reads_resources": true,
+      "parses": true,
+      "recurses": true,
+      "extracts_strings_or_urls": true,
+      "injects_html": false,
+      "evaluates_expressions": false,
+      "executes_embedded_content": "NOT_EVIDENCED",
+      "security_guarantee": "NOT_ESTABLISHED",
+      "evidence": [
+        "security-ev-6b0a9f246e390b33"
+      ]
+    },
+    {
+      "snapshot_id": "snapshot-0010",
+      "version": "v0.6.0",
+      "provider_kind": "JSON",
+      "provider": "JsonProvider",
+      "reads_links": false,
+      "reads_scripts": false,
+      "reads_forms": false,
+      "reads_resources": false,
+      "parses": true,
+      "recurses": true,
+      "extracts_strings_or_urls": true,
+      "injects_html": false,
+      "evaluates_expressions": false,
+      "executes_embedded_content": "NOT_EVIDENCED",
+      "security_guarantee": "NOT_ESTABLISHED",
+      "evidence": [
+        "security-ev-669cf414ca78e6db"
+      ]
+    },
+    {
+      "snapshot_id": "snapshot-0010",
+      "version": "v0.6.0",
+      "provider_kind": "TEXT",
+      "provider": "TextProvider",
+      "reads_links": false,
+      "reads_scripts": true,
+      "reads_forms": false,
+      "reads_resources": false,
+      "parses": false,
+      "recurses": true,
+      "extracts_strings_or_urls": true,
+      "injects_html": false,
+      "evaluates_expressions": false,
+      "executes_embedded_content": "NOT_EVIDENCED",
+      "security_guarantee": "NOT_ESTABLISHED",
+      "evidence": [
+        "security-ev-a3d9e705186380fd"
+      ]
+    },
+    {
+      "snapshot_id": "snapshot-0012",
+      "version": "v0.6.0",
+      "provider_kind": "HTML",
+      "provider": "HtmlProvider",
+      "reads_links": true,
+      "reads_scripts": true,
+      "reads_forms": true,
+      "reads_resources": true,
+      "parses": true,
+      "recurses": true,
+      "extracts_strings_or_urls": true,
+      "injects_html": false,
+      "evaluates_expressions": false,
+      "executes_embedded_content": "NOT_EVIDENCED",
+      "security_guarantee": "NOT_ESTABLISHED",
+      "evidence": [
+        "security-ev-be232e5bc9f9469a"
+      ]
+    },
+    {
+      "snapshot_id": "snapshot-0012",
+      "version": "v0.6.0",
+      "provider_kind": "JSON",
+      "provider": "JsonProvider",
+      "reads_links": false,
+      "reads_scripts": false,
+      "reads_forms": false,
+      "reads_resources": false,
+      "parses": true,
+      "recurses": true,
+      "extracts_strings_or_urls": true,
+      "injects_html": false,
+      "evaluates_expressions": false,
+      "executes_embedded_content": "NOT_EVIDENCED",
+      "security_guarantee": "NOT_ESTABLISHED",
+      "evidence": [
+        "security-ev-47e57244d32ed2f7"
+      ]
+    },
+    {
+      "snapshot_id": "snapshot-0012",
+      "version": "v0.6.0",
+      "provider_kind": "TEXT",
+      "provider": "TextProvider",
+      "reads_links": false,
+      "reads_scripts": true,
+      "reads_forms": false,
+      "reads_resources": false,
+      "parses": false,
+      "recurses": true,
+      "extracts_strings_or_urls": true,
+      "injects_html": false,
+      "evaluates_expressions": false,
+      "executes_embedded_content": "NOT_EVIDENCED",
+      "security_guarantee": "NOT_ESTABLISHED",
+      "evidence": [
+        "security-ev-7c3c27331fd805d9"
+      ]
+    },
+    {
+      "snapshot_id": "snapshot-0013",
+      "version": "v0.6.0",
+      "provider_kind": "HTML",
+      "provider": "HtmlProvider",
+      "reads_links": true,
+      "reads_scripts": true,
+      "reads_forms": true,
+      "reads_resources": true,
+      "parses": true,
+      "recurses": true,
+      "extracts_strings_or_urls": true,
+      "injects_html": false,
+      "evaluates_expressions": false,
+      "executes_embedded_content": "NOT_EVIDENCED",
+      "security_guarantee": "NOT_ESTABLISHED",
+      "evidence": [
+        "security-ev-c6505f5f6ff1eb94"
+      ]
+    },
+    {
+      "snapshot_id": "snapshot-0013",
+      "version": "v0.6.0",
+      "provider_kind": "JSON",
+      "provider": "JsonProvider",
+      "reads_links": false,
+      "reads_scripts": false,
+      "reads_forms": false,
+      "reads_resources": false,
+      "parses": true,
+      "recurses": true,
+      "extracts_strings_or_urls": true,
+      "injects_html": false,
+      "evaluates_expressions": false,
+      "executes_embedded_content": "NOT_EVIDENCED",
+      "security_guarantee": "NOT_ESTABLISHED",
+      "evidence": [
+        "security-ev-bc4714093ce07252"
+      ]
+    },
+    {
+      "snapshot_id": "snapshot-0013",
+      "version": "v0.6.0",
+      "provider_kind": "TEXT",
+      "provider": "TextProvider",
+      "reads_links": false,
+      "reads_scripts": false,
+      "reads_forms": false,
+      "reads_resources": false,
+      "parses": false,
+      "recurses": true,
+      "extracts_strings_or_urls": true,
+      "injects_html": false,
+      "evaluates_expressions": false,
+      "executes_embedded_content": "NOT_EVIDENCED",
+      "security_guarantee": "NOT_ESTABLISHED",
+      "evidence": [
+        "security-ev-e89893eeeafecc98"
+      ]
+    },
+    {
+      "snapshot_id": "snapshot-0014",
+      "version": "v0.7.1",
+      "provider_kind": "HTML",
+      "provider": "HtmlProvider",
+      "reads_links": true,
+      "reads_scripts": true,
+      "reads_forms": true,
+      "reads_resources": true,
+      "parses": true,
+      "recurses": true,
+      "extracts_strings_or_urls": true,
+      "injects_html": false,
+      "evaluates_expressions": false,
+      "executes_embedded_content": "NOT_EVIDENCED",
+      "security_guarantee": "NOT_ESTABLISHED",
+      "evidence": [
+        "security-ev-0875b023aa66862f"
+      ]
+    },
+    {
+      "snapshot_id": "snapshot-0014",
+      "version": "v0.7.1",
+      "provider_kind": "JSON",
+      "provider": "JsonProvider",
+      "reads_links": false,
+      "reads_scripts": false,
+      "reads_forms": false,
+      "reads_resources": false,
+      "parses": true,
+      "recurses": true,
+      "extracts_strings_or_urls": true,
+      "injects_html": false,
+      "evaluates_expressions": false,
+      "executes_embedded_content": "NOT_EVIDENCED",
+      "security_guarantee": "NOT_ESTABLISHED",
+      "evidence": [
+        "security-ev-07bb90714484cf6a"
+      ]
+    },
+    {
+      "snapshot_id": "snapshot-0014",
+      "version": "v0.7.1",
+      "provider_kind": "TEXT",
+      "provider": "TextProvider",
+      "reads_links": false,
+      "reads_scripts": false,
+      "reads_forms": false,
+      "reads_resources": false,
+      "parses": false,
+      "recurses": true,
+      "extracts_strings_or_urls": true,
+      "injects_html": false,
+      "evaluates_expressions": false,
+      "executes_embedded_content": "NOT_EVIDENCED",
+      "security_guarantee": "NOT_ESTABLISHED",
+      "evidence": [
+        "security-ev-2d3e0ddaf3b7b891"
+      ]
+    }
+  ]
+}

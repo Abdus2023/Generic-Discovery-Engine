@@ -1,0 +1,10 @@
+ScanSession.cancel()
+        │
+        ▼
+FrontierRuntime
+        │
+ ┌──────┼──────────┐
+ ▼      ▼          ▼
+queued claimed   running
+ │       │          │
+cancel  cancel     cancellation token

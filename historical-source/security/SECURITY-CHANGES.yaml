@@ -1,0 +1,1194 @@
+{
+  "schema_version": 8,
+  "builder": "security-archaeology-builder-v8",
+  "model_kind": "DERIVED_SECURITY_ARCHAEOLOGY_NOT_SOURCE",
+  "comparisons": [
+    {
+      "change_id": "security-change-74cc1146b4d4727f",
+      "before_snapshot": "snapshot-0001",
+      "after_snapshot": "snapshot-0003",
+      "relationship": "ADJACENT_RECOVERED_VERSION_COMPARISON_NOT_LINEAGE",
+      "controls_added": [
+        "CANDIDATE_CLAIM"
+      ],
+      "controls_absent_after": [],
+      "controls_shared": [
+        "BOUND:CANDIDATE_FRONTIER",
+        "BOUND:REQUEST_DURATION",
+        "BOUND:SCAN_REQUEST_COUNT",
+        "BOUND:WORKER_COUNT",
+        "PROVENANCE_FIELDS",
+        "URL_VALIDATION"
+      ],
+      "improvement": "MECHANISM_ADDITION_NOT_GENERIC_SECURITY_SCORE",
+      "removal_classification": "NONE",
+      "regression": "NOT_PROVED_WITHOUT_LINEAGE_REQUIREMENT_AND_BEHAVIOR_EVIDENCE",
+      "scope_expansion": "NOT_ESTABLISHED",
+      "transition_confidence": "SUPPORTED",
+      "motivation": "UNKNOWN",
+      "evidence": [
+        "security-ev-1c0fd82853d155f4",
+        "security-ev-4f9539a6f593d6ce"
+      ]
+    },
+    {
+      "change_id": "security-change-20bbd1f7e2482cbb",
+      "before_snapshot": "snapshot-0003",
+      "after_snapshot": "snapshot-0005",
+      "relationship": "ADJACENT_RECOVERED_VERSION_COMPARISON_NOT_LINEAGE",
+      "controls_added": [
+        "ABORT_PATH",
+        "BOUND:PERSISTED_DISCOVERIES",
+        "BOUND:RETRY_COUNT"
+      ],
+      "controls_absent_after": [],
+      "controls_shared": [
+        "BOUND:CANDIDATE_FRONTIER",
+        "BOUND:REQUEST_DURATION",
+        "BOUND:SCAN_REQUEST_COUNT",
+        "BOUND:WORKER_COUNT",
+        "CANDIDATE_CLAIM",
+        "PROVENANCE_FIELDS",
+        "URL_VALIDATION"
+      ],
+      "improvement": "MECHANISM_ADDITION_NOT_GENERIC_SECURITY_SCORE",
+      "removal_classification": "NONE",
+      "regression": "NOT_PROVED_WITHOUT_LINEAGE_REQUIREMENT_AND_BEHAVIOR_EVIDENCE",
+      "scope_expansion": "NOT_ESTABLISHED",
+      "transition_confidence": "SUPPORTED",
+      "motivation": "UNKNOWN",
+      "evidence": [
+        "security-ev-4f9539a6f593d6ce",
+        "security-ev-b0b769612a21dbd5"
+      ]
+    },
+    {
+      "change_id": "security-change-58a74d9a764c9912",
+      "before_snapshot": "snapshot-0005",
+      "after_snapshot": "snapshot-0006",
+      "relationship": "ADJACENT_RECOVERED_VERSION_COMPARISON_NOT_LINEAGE",
+      "controls_added": [
+        "BOUND:EXPANSION_DEPTH",
+        "PROVIDER_CATCH_PATH"
+      ],
+      "controls_absent_after": [],
+      "controls_shared": [
+        "ABORT_PATH",
+        "BOUND:CANDIDATE_FRONTIER",
+        "BOUND:PERSISTED_DISCOVERIES",
+        "BOUND:REQUEST_DURATION",
+        "BOUND:RETRY_COUNT",
+        "BOUND:SCAN_REQUEST_COUNT",
+        "BOUND:WORKER_COUNT",
+        "CANDIDATE_CLAIM",
+        "PROVENANCE_FIELDS",
+        "URL_VALIDATION"
+      ],
+      "improvement": "MECHANISM_ADDITION_NOT_GENERIC_SECURITY_SCORE",
+      "removal_classification": "NONE",
+      "regression": "NOT_PROVED_WITHOUT_LINEAGE_REQUIREMENT_AND_BEHAVIOR_EVIDENCE",
+      "scope_expansion": "NOT_ESTABLISHED",
+      "transition_confidence": "SUPPORTED",
+      "motivation": "UNKNOWN",
+      "evidence": [
+        "security-ev-b0b769612a21dbd5",
+        "security-ev-6c2ad20eba19e638"
+      ]
+    },
+    {
+      "change_id": "security-change-e975db353f3858be",
+      "before_snapshot": "snapshot-0005",
+      "after_snapshot": "snapshot-0008",
+      "relationship": "ADJACENT_RECOVERED_VERSION_COMPARISON_NOT_LINEAGE",
+      "controls_added": [
+        "BOUND:EXPANSION_DEPTH",
+        "BOUND:RETRY_DELAY",
+        "BOUND:TEXT_RETENTION",
+        "PROVIDER_CATCH_PATH"
+      ],
+      "controls_absent_after": [],
+      "controls_shared": [
+        "ABORT_PATH",
+        "BOUND:CANDIDATE_FRONTIER",
+        "BOUND:PERSISTED_DISCOVERIES",
+        "BOUND:REQUEST_DURATION",
+        "BOUND:RETRY_COUNT",
+        "BOUND:SCAN_REQUEST_COUNT",
+        "BOUND:WORKER_COUNT",
+        "CANDIDATE_CLAIM",
+        "PROVENANCE_FIELDS",
+        "URL_VALIDATION"
+      ],
+      "improvement": "MECHANISM_ADDITION_NOT_GENERIC_SECURITY_SCORE",
+      "removal_classification": "NONE",
+      "regression": "NOT_PROVED_WITHOUT_LINEAGE_REQUIREMENT_AND_BEHAVIOR_EVIDENCE",
+      "scope_expansion": "NOT_ESTABLISHED",
+      "transition_confidence": "SUPPORTED",
+      "motivation": "UNKNOWN",
+      "evidence": [
+        "security-ev-b0b769612a21dbd5",
+        "security-ev-090755281bfac436"
+      ]
+    },
+    {
+      "change_id": "security-change-3269fde48706f4fd",
+      "before_snapshot": "snapshot-0006",
+      "after_snapshot": "snapshot-0007",
+      "relationship": "ADJACENT_RECOVERED_VERSION_COMPARISON_NOT_LINEAGE",
+      "controls_added": [
+        "BOUND:EXPANSION_FANOUT",
+        "BOUND:GRAPH_EDGE_RETENTION",
+        "BOUND:RESPONSE_BODY",
+        "BOUND:RETRY_DELAY"
+      ],
+      "controls_absent_after": [],
+      "controls_shared": [
+        "ABORT_PATH",
+        "BOUND:CANDIDATE_FRONTIER",
+        "BOUND:EXPANSION_DEPTH",
+        "BOUND:PERSISTED_DISCOVERIES",
+        "BOUND:REQUEST_DURATION",
+        "BOUND:RETRY_COUNT",
+        "BOUND:SCAN_REQUEST_COUNT",
+        "BOUND:WORKER_COUNT",
+        "CANDIDATE_CLAIM",
+        "PROVENANCE_FIELDS",
+        "PROVIDER_CATCH_PATH",
+        "URL_VALIDATION"
+      ],
+      "improvement": "MECHANISM_ADDITION_NOT_GENERIC_SECURITY_SCORE",
+      "removal_classification": "NONE",
+      "regression": "NOT_PROVED_WITHOUT_LINEAGE_REQUIREMENT_AND_BEHAVIOR_EVIDENCE",
+      "scope_expansion": "NOT_ESTABLISHED",
+      "transition_confidence": "SUPPORTED",
+      "motivation": "UNKNOWN",
+      "evidence": [
+        "security-ev-6c2ad20eba19e638",
+        "security-ev-4f52959e02632633"
+      ]
+    },
+    {
+      "change_id": "security-change-c06261a6f701a47f",
+      "before_snapshot": "snapshot-0006",
+      "after_snapshot": "snapshot-0009",
+      "relationship": "ADJACENT_RECOVERED_VERSION_COMPARISON_NOT_LINEAGE",
+      "controls_added": [
+        "BOUND:NETWORK_EVENT_RETENTION",
+        "BOUND:RETRY_DELAY",
+        "BOUND:TEXT_RETENTION"
+      ],
+      "controls_absent_after": [],
+      "controls_shared": [
+        "ABORT_PATH",
+        "BOUND:CANDIDATE_FRONTIER",
+        "BOUND:EXPANSION_DEPTH",
+        "BOUND:PERSISTED_DISCOVERIES",
+        "BOUND:REQUEST_DURATION",
+        "BOUND:RETRY_COUNT",
+        "BOUND:SCAN_REQUEST_COUNT",
+        "BOUND:WORKER_COUNT",
+        "CANDIDATE_CLAIM",
+        "PROVENANCE_FIELDS",
+        "PROVIDER_CATCH_PATH",
+        "URL_VALIDATION"
+      ],
+      "improvement": "MECHANISM_ADDITION_NOT_GENERIC_SECURITY_SCORE",
+      "removal_classification": "NONE",
+      "regression": "NOT_PROVED_WITHOUT_LINEAGE_REQUIREMENT_AND_BEHAVIOR_EVIDENCE",
+      "scope_expansion": "NOT_ESTABLISHED",
+      "transition_confidence": "SUPPORTED",
+      "motivation": "UNKNOWN",
+      "evidence": [
+        "security-ev-6c2ad20eba19e638",
+        "security-ev-ac26860e55542dc5"
+      ]
+    },
+    {
+      "change_id": "security-change-a1b0ba8af3a493fa",
+      "before_snapshot": "snapshot-0006",
+      "after_snapshot": "snapshot-0011",
+      "relationship": "ADJACENT_RECOVERED_VERSION_COMPARISON_NOT_LINEAGE",
+      "controls_added": [
+        "BOUND:FINGERPRINT_INPUT",
+        "BOUND:GRAPH_EDGE_RETENTION",
+        "BOUND:NETWORK_EVENT_RETENTION",
+        "BOUND:PERSISTED_EDGES",
+        "BOUND:PERSISTED_RESOURCES",
+        "BOUND:RETRY_DELAY",
+        "BOUND:TEXT_RETENTION"
+      ],
+      "controls_absent_after": [],
+      "controls_shared": [
+        "ABORT_PATH",
+        "BOUND:CANDIDATE_FRONTIER",
+        "BOUND:EXPANSION_DEPTH",
+        "BOUND:PERSISTED_DISCOVERIES",
+        "BOUND:REQUEST_DURATION",
+        "BOUND:RETRY_COUNT",
+        "BOUND:SCAN_REQUEST_COUNT",
+        "BOUND:WORKER_COUNT",
+        "CANDIDATE_CLAIM",
+        "PROVENANCE_FIELDS",
+        "PROVIDER_CATCH_PATH",
+        "URL_VALIDATION"
+      ],
+      "improvement": "MECHANISM_ADDITION_NOT_GENERIC_SECURITY_SCORE",
+      "removal_classification": "NONE",
+      "regression": "NOT_PROVED_WITHOUT_LINEAGE_REQUIREMENT_AND_BEHAVIOR_EVIDENCE",
+      "scope_expansion": "NOT_ESTABLISHED",
+      "transition_confidence": "SUPPORTED",
+      "motivation": "UNKNOWN",
+      "evidence": [
+        "security-ev-6c2ad20eba19e638",
+        "security-ev-59f895da4881668b"
+      ]
+    },
+    {
+      "change_id": "security-change-672e2b84b4cbee6e",
+      "before_snapshot": "snapshot-0008",
+      "after_snapshot": "snapshot-0007",
+      "relationship": "ADJACENT_RECOVERED_VERSION_COMPARISON_NOT_LINEAGE",
+      "controls_added": [
+        "BOUND:EXPANSION_FANOUT",
+        "BOUND:GRAPH_EDGE_RETENTION",
+        "BOUND:RESPONSE_BODY"
+      ],
+      "controls_absent_after": [
+        "BOUND:TEXT_RETENTION"
+      ],
+      "controls_shared": [
+        "ABORT_PATH",
+        "BOUND:CANDIDATE_FRONTIER",
+        "BOUND:EXPANSION_DEPTH",
+        "BOUND:PERSISTED_DISCOVERIES",
+        "BOUND:REQUEST_DURATION",
+        "BOUND:RETRY_COUNT",
+        "BOUND:RETRY_DELAY",
+        "BOUND:SCAN_REQUEST_COUNT",
+        "BOUND:WORKER_COUNT",
+        "CANDIDATE_CLAIM",
+        "PROVENANCE_FIELDS",
+        "PROVIDER_CATCH_PATH",
+        "URL_VALIDATION"
+      ],
+      "improvement": "MECHANISM_ADDITION_NOT_GENERIC_SECURITY_SCORE",
+      "removal_classification": "UNKNOWN",
+      "regression": "NOT_PROVED_WITHOUT_LINEAGE_REQUIREMENT_AND_BEHAVIOR_EVIDENCE",
+      "scope_expansion": "NOT_ESTABLISHED",
+      "transition_confidence": "SUPPORTED",
+      "motivation": "UNKNOWN",
+      "evidence": [
+        "security-ev-090755281bfac436",
+        "security-ev-4f52959e02632633"
+      ]
+    },
+    {
+      "change_id": "security-change-8904468cdb4e200f",
+      "before_snapshot": "snapshot-0008",
+      "after_snapshot": "snapshot-0009",
+      "relationship": "ADJACENT_RECOVERED_VERSION_COMPARISON_NOT_LINEAGE",
+      "controls_added": [
+        "BOUND:NETWORK_EVENT_RETENTION"
+      ],
+      "controls_absent_after": [],
+      "controls_shared": [
+        "ABORT_PATH",
+        "BOUND:CANDIDATE_FRONTIER",
+        "BOUND:EXPANSION_DEPTH",
+        "BOUND:PERSISTED_DISCOVERIES",
+        "BOUND:REQUEST_DURATION",
+        "BOUND:RETRY_COUNT",
+        "BOUND:RETRY_DELAY",
+        "BOUND:SCAN_REQUEST_COUNT",
+        "BOUND:TEXT_RETENTION",
+        "BOUND:WORKER_COUNT",
+        "CANDIDATE_CLAIM",
+        "PROVENANCE_FIELDS",
+        "PROVIDER_CATCH_PATH",
+        "URL_VALIDATION"
+      ],
+      "improvement": "MECHANISM_ADDITION_NOT_GENERIC_SECURITY_SCORE",
+      "removal_classification": "NONE",
+      "regression": "NOT_PROVED_WITHOUT_LINEAGE_REQUIREMENT_AND_BEHAVIOR_EVIDENCE",
+      "scope_expansion": "NOT_ESTABLISHED",
+      "transition_confidence": "SUPPORTED",
+      "motivation": "UNKNOWN",
+      "evidence": [
+        "security-ev-090755281bfac436",
+        "security-ev-ac26860e55542dc5"
+      ]
+    },
+    {
+      "change_id": "security-change-7d71c4ea064d2503",
+      "before_snapshot": "snapshot-0008",
+      "after_snapshot": "snapshot-0011",
+      "relationship": "ADJACENT_RECOVERED_VERSION_COMPARISON_NOT_LINEAGE",
+      "controls_added": [
+        "BOUND:FINGERPRINT_INPUT",
+        "BOUND:GRAPH_EDGE_RETENTION",
+        "BOUND:NETWORK_EVENT_RETENTION",
+        "BOUND:PERSISTED_EDGES",
+        "BOUND:PERSISTED_RESOURCES"
+      ],
+      "controls_absent_after": [],
+      "controls_shared": [
+        "ABORT_PATH",
+        "BOUND:CANDIDATE_FRONTIER",
+        "BOUND:EXPANSION_DEPTH",
+        "BOUND:PERSISTED_DISCOVERIES",
+        "BOUND:REQUEST_DURATION",
+        "BOUND:RETRY_COUNT",
+        "BOUND:RETRY_DELAY",
+        "BOUND:SCAN_REQUEST_COUNT",
+        "BOUND:TEXT_RETENTION",
+        "BOUND:WORKER_COUNT",
+        "CANDIDATE_CLAIM",
+        "PROVENANCE_FIELDS",
+        "PROVIDER_CATCH_PATH",
+        "URL_VALIDATION"
+      ],
+      "improvement": "MECHANISM_ADDITION_NOT_GENERIC_SECURITY_SCORE",
+      "removal_classification": "NONE",
+      "regression": "NOT_PROVED_WITHOUT_LINEAGE_REQUIREMENT_AND_BEHAVIOR_EVIDENCE",
+      "scope_expansion": "NOT_ESTABLISHED",
+      "transition_confidence": "SUPPORTED",
+      "motivation": "UNKNOWN",
+      "evidence": [
+        "security-ev-090755281bfac436",
+        "security-ev-59f895da4881668b"
+      ]
+    },
+    {
+      "change_id": "security-change-60e24d35eaa463cd",
+      "before_snapshot": "snapshot-0007",
+      "after_snapshot": "snapshot-0010",
+      "relationship": "ADJACENT_RECOVERED_VERSION_COMPARISON_NOT_LINEAGE",
+      "controls_added": [
+        "BOUND:FINGERPRINT_INPUT",
+        "BOUND:NETWORK_EVENT_RETENTION",
+        "BOUND:PERSISTED_EDGES",
+        "BOUND:PERSISTED_RESOURCES"
+      ],
+      "controls_absent_after": [
+        "BOUND:EXPANSION_FANOUT",
+        "BOUND:RESPONSE_BODY"
+      ],
+      "controls_shared": [
+        "ABORT_PATH",
+        "BOUND:CANDIDATE_FRONTIER",
+        "BOUND:EXPANSION_DEPTH",
+        "BOUND:GRAPH_EDGE_RETENTION",
+        "BOUND:PERSISTED_DISCOVERIES",
+        "BOUND:REQUEST_DURATION",
+        "BOUND:RETRY_COUNT",
+        "BOUND:RETRY_DELAY",
+        "BOUND:SCAN_REQUEST_COUNT",
+        "BOUND:WORKER_COUNT",
+        "CANDIDATE_CLAIM",
+        "PROVENANCE_FIELDS",
+        "PROVIDER_CATCH_PATH",
+        "URL_VALIDATION"
+      ],
+      "improvement": "MECHANISM_ADDITION_NOT_GENERIC_SECURITY_SCORE",
+      "removal_classification": "UNKNOWN",
+      "regression": "NOT_PROVED_WITHOUT_LINEAGE_REQUIREMENT_AND_BEHAVIOR_EVIDENCE",
+      "scope_expansion": "NOT_ESTABLISHED",
+      "transition_confidence": "SUPPORTED",
+      "motivation": "UNKNOWN",
+      "evidence": [
+        "security-ev-4f52959e02632633",
+        "security-ev-7f3ca1a078f11d0d"
+      ]
+    },
+    {
+      "change_id": "security-change-0004db148a87df78",
+      "before_snapshot": "snapshot-0007",
+      "after_snapshot": "snapshot-0012",
+      "relationship": "ADJACENT_RECOVERED_VERSION_COMPARISON_NOT_LINEAGE",
+      "controls_added": [
+        "BOUND:DIAGNOSTIC_RETENTION",
+        "BOUND:FINGERPRINT_INPUT",
+        "BOUND:NETWORK_EVENT_RETENTION",
+        "BOUND:ORIGIN_CONCURRENCY",
+        "BOUND:ORIGIN_RATE",
+        "BOUND:ORIGIN_REQUEST_COUNT",
+        "BOUND:PERSISTED_EDGES",
+        "BOUND:PERSISTED_RESOURCES"
+      ],
+      "controls_absent_after": [
+        "BOUND:EXPANSION_FANOUT",
+        "BOUND:GRAPH_EDGE_RETENTION",
+        "BOUND:RESPONSE_BODY"
+      ],
+      "controls_shared": [
+        "ABORT_PATH",
+        "BOUND:CANDIDATE_FRONTIER",
+        "BOUND:EXPANSION_DEPTH",
+        "BOUND:PERSISTED_DISCOVERIES",
+        "BOUND:REQUEST_DURATION",
+        "BOUND:RETRY_COUNT",
+        "BOUND:RETRY_DELAY",
+        "BOUND:SCAN_REQUEST_COUNT",
+        "BOUND:WORKER_COUNT",
+        "CANDIDATE_CLAIM",
+        "PROVENANCE_FIELDS",
+        "PROVIDER_CATCH_PATH",
+        "URL_VALIDATION"
+      ],
+      "improvement": "MECHANISM_ADDITION_NOT_GENERIC_SECURITY_SCORE",
+      "removal_classification": "UNKNOWN",
+      "regression": "NOT_PROVED_WITHOUT_LINEAGE_REQUIREMENT_AND_BEHAVIOR_EVIDENCE",
+      "scope_expansion": "NOT_ESTABLISHED",
+      "transition_confidence": "SUPPORTED",
+      "motivation": "UNKNOWN",
+      "evidence": [
+        "security-ev-4f52959e02632633",
+        "security-ev-f95ce5b983873d9c"
+      ]
+    },
+    {
+      "change_id": "security-change-a6e094cf7408e223",
+      "before_snapshot": "snapshot-0007",
+      "after_snapshot": "snapshot-0013",
+      "relationship": "ADJACENT_RECOVERED_VERSION_COMPARISON_NOT_LINEAGE",
+      "controls_added": [
+        "BOUND:DIAGNOSTIC_RETENTION",
+        "BOUND:FINGERPRINT_INPUT",
+        "BOUND:NETWORK_EVENT_RETENTION",
+        "BOUND:ORIGIN_CONCURRENCY",
+        "BOUND:ORIGIN_RATE",
+        "BOUND:ORIGIN_REQUEST_COUNT",
+        "BOUND:PERSISTED_EDGES",
+        "BOUND:PERSISTED_RESOURCES",
+        "STRUCTURED_AUDIT"
+      ],
+      "controls_absent_after": [
+        "BOUND:EXPANSION_FANOUT",
+        "BOUND:RESPONSE_BODY",
+        "BOUND:RETRY_DELAY"
+      ],
+      "controls_shared": [
+        "ABORT_PATH",
+        "BOUND:CANDIDATE_FRONTIER",
+        "BOUND:EXPANSION_DEPTH",
+        "BOUND:GRAPH_EDGE_RETENTION",
+        "BOUND:PERSISTED_DISCOVERIES",
+        "BOUND:REQUEST_DURATION",
+        "BOUND:RETRY_COUNT",
+        "BOUND:SCAN_REQUEST_COUNT",
+        "BOUND:WORKER_COUNT",
+        "CANDIDATE_CLAIM",
+        "PROVENANCE_FIELDS",
+        "PROVIDER_CATCH_PATH",
+        "URL_VALIDATION"
+      ],
+      "improvement": "MECHANISM_ADDITION_NOT_GENERIC_SECURITY_SCORE",
+      "removal_classification": "UNKNOWN",
+      "regression": "NOT_PROVED_WITHOUT_LINEAGE_REQUIREMENT_AND_BEHAVIOR_EVIDENCE",
+      "scope_expansion": "NOT_ESTABLISHED",
+      "transition_confidence": "SUPPORTED",
+      "motivation": "UNKNOWN",
+      "evidence": [
+        "security-ev-4f52959e02632633",
+        "security-ev-3b16625e2da1e7c4"
+      ]
+    },
+    {
+      "change_id": "security-change-8b033aea4425cbcd",
+      "before_snapshot": "snapshot-0009",
+      "after_snapshot": "snapshot-0010",
+      "relationship": "ADJACENT_RECOVERED_VERSION_COMPARISON_NOT_LINEAGE",
+      "controls_added": [
+        "BOUND:FINGERPRINT_INPUT",
+        "BOUND:GRAPH_EDGE_RETENTION",
+        "BOUND:PERSISTED_EDGES",
+        "BOUND:PERSISTED_RESOURCES"
+      ],
+      "controls_absent_after": [
+        "BOUND:TEXT_RETENTION"
+      ],
+      "controls_shared": [
+        "ABORT_PATH",
+        "BOUND:CANDIDATE_FRONTIER",
+        "BOUND:EXPANSION_DEPTH",
+        "BOUND:NETWORK_EVENT_RETENTION",
+        "BOUND:PERSISTED_DISCOVERIES",
+        "BOUND:REQUEST_DURATION",
+        "BOUND:RETRY_COUNT",
+        "BOUND:RETRY_DELAY",
+        "BOUND:SCAN_REQUEST_COUNT",
+        "BOUND:WORKER_COUNT",
+        "CANDIDATE_CLAIM",
+        "PROVENANCE_FIELDS",
+        "PROVIDER_CATCH_PATH",
+        "URL_VALIDATION"
+      ],
+      "improvement": "MECHANISM_ADDITION_NOT_GENERIC_SECURITY_SCORE",
+      "removal_classification": "UNKNOWN",
+      "regression": "NOT_PROVED_WITHOUT_LINEAGE_REQUIREMENT_AND_BEHAVIOR_EVIDENCE",
+      "scope_expansion": "NOT_ESTABLISHED",
+      "transition_confidence": "SUPPORTED",
+      "motivation": "UNKNOWN",
+      "evidence": [
+        "security-ev-ac26860e55542dc5",
+        "security-ev-7f3ca1a078f11d0d"
+      ]
+    },
+    {
+      "change_id": "security-change-d4e680a5b83939a7",
+      "before_snapshot": "snapshot-0009",
+      "after_snapshot": "snapshot-0012",
+      "relationship": "ADJACENT_RECOVERED_VERSION_COMPARISON_NOT_LINEAGE",
+      "controls_added": [
+        "BOUND:DIAGNOSTIC_RETENTION",
+        "BOUND:FINGERPRINT_INPUT",
+        "BOUND:ORIGIN_CONCURRENCY",
+        "BOUND:ORIGIN_RATE",
+        "BOUND:ORIGIN_REQUEST_COUNT",
+        "BOUND:PERSISTED_EDGES",
+        "BOUND:PERSISTED_RESOURCES"
+      ],
+      "controls_absent_after": [
+        "BOUND:TEXT_RETENTION"
+      ],
+      "controls_shared": [
+        "ABORT_PATH",
+        "BOUND:CANDIDATE_FRONTIER",
+        "BOUND:EXPANSION_DEPTH",
+        "BOUND:NETWORK_EVENT_RETENTION",
+        "BOUND:PERSISTED_DISCOVERIES",
+        "BOUND:REQUEST_DURATION",
+        "BOUND:RETRY_COUNT",
+        "BOUND:RETRY_DELAY",
+        "BOUND:SCAN_REQUEST_COUNT",
+        "BOUND:WORKER_COUNT",
+        "CANDIDATE_CLAIM",
+        "PROVENANCE_FIELDS",
+        "PROVIDER_CATCH_PATH",
+        "URL_VALIDATION"
+      ],
+      "improvement": "MECHANISM_ADDITION_NOT_GENERIC_SECURITY_SCORE",
+      "removal_classification": "UNKNOWN",
+      "regression": "NOT_PROVED_WITHOUT_LINEAGE_REQUIREMENT_AND_BEHAVIOR_EVIDENCE",
+      "scope_expansion": "NOT_ESTABLISHED",
+      "transition_confidence": "SUPPORTED",
+      "motivation": "UNKNOWN",
+      "evidence": [
+        "security-ev-ac26860e55542dc5",
+        "security-ev-f95ce5b983873d9c"
+      ]
+    },
+    {
+      "change_id": "security-change-92841de692fe0159",
+      "before_snapshot": "snapshot-0009",
+      "after_snapshot": "snapshot-0013",
+      "relationship": "ADJACENT_RECOVERED_VERSION_COMPARISON_NOT_LINEAGE",
+      "controls_added": [
+        "BOUND:DIAGNOSTIC_RETENTION",
+        "BOUND:FINGERPRINT_INPUT",
+        "BOUND:GRAPH_EDGE_RETENTION",
+        "BOUND:ORIGIN_CONCURRENCY",
+        "BOUND:ORIGIN_RATE",
+        "BOUND:ORIGIN_REQUEST_COUNT",
+        "BOUND:PERSISTED_EDGES",
+        "BOUND:PERSISTED_RESOURCES",
+        "STRUCTURED_AUDIT"
+      ],
+      "controls_absent_after": [
+        "BOUND:RETRY_DELAY",
+        "BOUND:TEXT_RETENTION"
+      ],
+      "controls_shared": [
+        "ABORT_PATH",
+        "BOUND:CANDIDATE_FRONTIER",
+        "BOUND:EXPANSION_DEPTH",
+        "BOUND:NETWORK_EVENT_RETENTION",
+        "BOUND:PERSISTED_DISCOVERIES",
+        "BOUND:REQUEST_DURATION",
+        "BOUND:RETRY_COUNT",
+        "BOUND:SCAN_REQUEST_COUNT",
+        "BOUND:WORKER_COUNT",
+        "CANDIDATE_CLAIM",
+        "PROVENANCE_FIELDS",
+        "PROVIDER_CATCH_PATH",
+        "URL_VALIDATION"
+      ],
+      "improvement": "MECHANISM_ADDITION_NOT_GENERIC_SECURITY_SCORE",
+      "removal_classification": "UNKNOWN",
+      "regression": "NOT_PROVED_WITHOUT_LINEAGE_REQUIREMENT_AND_BEHAVIOR_EVIDENCE",
+      "scope_expansion": "NOT_ESTABLISHED",
+      "transition_confidence": "SUPPORTED",
+      "motivation": "UNKNOWN",
+      "evidence": [
+        "security-ev-ac26860e55542dc5",
+        "security-ev-3b16625e2da1e7c4"
+      ]
+    },
+    {
+      "change_id": "security-change-9762f4f19c7f7256",
+      "before_snapshot": "snapshot-0011",
+      "after_snapshot": "snapshot-0010",
+      "relationship": "ADJACENT_RECOVERED_VERSION_COMPARISON_NOT_LINEAGE",
+      "controls_added": [],
+      "controls_absent_after": [
+        "BOUND:TEXT_RETENTION"
+      ],
+      "controls_shared": [
+        "ABORT_PATH",
+        "BOUND:CANDIDATE_FRONTIER",
+        "BOUND:EXPANSION_DEPTH",
+        "BOUND:FINGERPRINT_INPUT",
+        "BOUND:GRAPH_EDGE_RETENTION",
+        "BOUND:NETWORK_EVENT_RETENTION",
+        "BOUND:PERSISTED_DISCOVERIES",
+        "BOUND:PERSISTED_EDGES",
+        "BOUND:PERSISTED_RESOURCES",
+        "BOUND:REQUEST_DURATION",
+        "BOUND:RETRY_COUNT",
+        "BOUND:RETRY_DELAY",
+        "BOUND:SCAN_REQUEST_COUNT",
+        "BOUND:WORKER_COUNT",
+        "CANDIDATE_CLAIM",
+        "PROVENANCE_FIELDS",
+        "PROVIDER_CATCH_PATH",
+        "URL_VALIDATION"
+      ],
+      "improvement": "NONE_EVIDENCED",
+      "removal_classification": "UNKNOWN",
+      "regression": "NOT_PROVED_WITHOUT_LINEAGE_REQUIREMENT_AND_BEHAVIOR_EVIDENCE",
+      "scope_expansion": "NOT_ESTABLISHED",
+      "transition_confidence": "SUPPORTED",
+      "motivation": "UNKNOWN",
+      "evidence": [
+        "security-ev-59f895da4881668b",
+        "security-ev-7f3ca1a078f11d0d"
+      ]
+    },
+    {
+      "change_id": "security-change-c947f7a479877b57",
+      "before_snapshot": "snapshot-0011",
+      "after_snapshot": "snapshot-0012",
+      "relationship": "ADJACENT_RECOVERED_VERSION_COMPARISON_NOT_LINEAGE",
+      "controls_added": [
+        "BOUND:DIAGNOSTIC_RETENTION",
+        "BOUND:ORIGIN_CONCURRENCY",
+        "BOUND:ORIGIN_RATE",
+        "BOUND:ORIGIN_REQUEST_COUNT"
+      ],
+      "controls_absent_after": [
+        "BOUND:GRAPH_EDGE_RETENTION",
+        "BOUND:TEXT_RETENTION"
+      ],
+      "controls_shared": [
+        "ABORT_PATH",
+        "BOUND:CANDIDATE_FRONTIER",
+        "BOUND:EXPANSION_DEPTH",
+        "BOUND:FINGERPRINT_INPUT",
+        "BOUND:NETWORK_EVENT_RETENTION",
+        "BOUND:PERSISTED_DISCOVERIES",
+        "BOUND:PERSISTED_EDGES",
+        "BOUND:PERSISTED_RESOURCES",
+        "BOUND:REQUEST_DURATION",
+        "BOUND:RETRY_COUNT",
+        "BOUND:RETRY_DELAY",
+        "BOUND:SCAN_REQUEST_COUNT",
+        "BOUND:WORKER_COUNT",
+        "CANDIDATE_CLAIM",
+        "PROVENANCE_FIELDS",
+        "PROVIDER_CATCH_PATH",
+        "URL_VALIDATION"
+      ],
+      "improvement": "MECHANISM_ADDITION_NOT_GENERIC_SECURITY_SCORE",
+      "removal_classification": "UNKNOWN",
+      "regression": "NOT_PROVED_WITHOUT_LINEAGE_REQUIREMENT_AND_BEHAVIOR_EVIDENCE",
+      "scope_expansion": "NOT_ESTABLISHED",
+      "transition_confidence": "SUPPORTED",
+      "motivation": "UNKNOWN",
+      "evidence": [
+        "security-ev-59f895da4881668b",
+        "security-ev-f95ce5b983873d9c"
+      ]
+    },
+    {
+      "change_id": "security-change-22af80d88525fad7",
+      "before_snapshot": "snapshot-0011",
+      "after_snapshot": "snapshot-0013",
+      "relationship": "ADJACENT_RECOVERED_VERSION_COMPARISON_NOT_LINEAGE",
+      "controls_added": [
+        "BOUND:DIAGNOSTIC_RETENTION",
+        "BOUND:ORIGIN_CONCURRENCY",
+        "BOUND:ORIGIN_RATE",
+        "BOUND:ORIGIN_REQUEST_COUNT",
+        "STRUCTURED_AUDIT"
+      ],
+      "controls_absent_after": [
+        "BOUND:RETRY_DELAY",
+        "BOUND:TEXT_RETENTION"
+      ],
+      "controls_shared": [
+        "ABORT_PATH",
+        "BOUND:CANDIDATE_FRONTIER",
+        "BOUND:EXPANSION_DEPTH",
+        "BOUND:FINGERPRINT_INPUT",
+        "BOUND:GRAPH_EDGE_RETENTION",
+        "BOUND:NETWORK_EVENT_RETENTION",
+        "BOUND:PERSISTED_DISCOVERIES",
+        "BOUND:PERSISTED_EDGES",
+        "BOUND:PERSISTED_RESOURCES",
+        "BOUND:REQUEST_DURATION",
+        "BOUND:RETRY_COUNT",
+        "BOUND:SCAN_REQUEST_COUNT",
+        "BOUND:WORKER_COUNT",
+        "CANDIDATE_CLAIM",
+        "PROVENANCE_FIELDS",
+        "PROVIDER_CATCH_PATH",
+        "URL_VALIDATION"
+      ],
+      "improvement": "MECHANISM_ADDITION_NOT_GENERIC_SECURITY_SCORE",
+      "removal_classification": "UNKNOWN",
+      "regression": "NOT_PROVED_WITHOUT_LINEAGE_REQUIREMENT_AND_BEHAVIOR_EVIDENCE",
+      "scope_expansion": "NOT_ESTABLISHED",
+      "transition_confidence": "SUPPORTED",
+      "motivation": "UNKNOWN",
+      "evidence": [
+        "security-ev-59f895da4881668b",
+        "security-ev-3b16625e2da1e7c4"
+      ]
+    },
+    {
+      "change_id": "security-change-3ccb559fb2ce703c",
+      "before_snapshot": "snapshot-0010",
+      "after_snapshot": "snapshot-0014",
+      "relationship": "ADJACENT_RECOVERED_VERSION_COMPARISON_NOT_LINEAGE",
+      "controls_added": [
+        "BOUND:DIAGNOSTIC_RETENTION",
+        "BOUND:ORIGIN_CONCURRENCY",
+        "BOUND:ORIGIN_RATE",
+        "BOUND:ORIGIN_REQUEST_COUNT",
+        "BOUND:RESPONSE_BODY",
+        "STRUCTURED_AUDIT"
+      ],
+      "controls_absent_after": [
+        "BOUND:RETRY_DELAY"
+      ],
+      "controls_shared": [
+        "ABORT_PATH",
+        "BOUND:CANDIDATE_FRONTIER",
+        "BOUND:EXPANSION_DEPTH",
+        "BOUND:FINGERPRINT_INPUT",
+        "BOUND:GRAPH_EDGE_RETENTION",
+        "BOUND:NETWORK_EVENT_RETENTION",
+        "BOUND:PERSISTED_DISCOVERIES",
+        "BOUND:PERSISTED_EDGES",
+        "BOUND:PERSISTED_RESOURCES",
+        "BOUND:REQUEST_DURATION",
+        "BOUND:RETRY_COUNT",
+        "BOUND:SCAN_REQUEST_COUNT",
+        "BOUND:WORKER_COUNT",
+        "CANDIDATE_CLAIM",
+        "PROVENANCE_FIELDS",
+        "PROVIDER_CATCH_PATH",
+        "URL_VALIDATION"
+      ],
+      "improvement": "MECHANISM_ADDITION_NOT_GENERIC_SECURITY_SCORE",
+      "removal_classification": "UNKNOWN",
+      "regression": "NOT_PROVED_WITHOUT_LINEAGE_REQUIREMENT_AND_BEHAVIOR_EVIDENCE",
+      "scope_expansion": "NOT_ESTABLISHED",
+      "transition_confidence": "SUPPORTED",
+      "motivation": "UNKNOWN",
+      "evidence": [
+        "security-ev-7f3ca1a078f11d0d",
+        "security-ev-3ab7c8dd550118e6"
+      ]
+    },
+    {
+      "change_id": "security-change-f21f48e351a3e025",
+      "before_snapshot": "snapshot-0012",
+      "after_snapshot": "snapshot-0014",
+      "relationship": "ADJACENT_RECOVERED_VERSION_COMPARISON_NOT_LINEAGE",
+      "controls_added": [
+        "BOUND:GRAPH_EDGE_RETENTION",
+        "BOUND:RESPONSE_BODY",
+        "STRUCTURED_AUDIT"
+      ],
+      "controls_absent_after": [
+        "BOUND:RETRY_DELAY"
+      ],
+      "controls_shared": [
+        "ABORT_PATH",
+        "BOUND:CANDIDATE_FRONTIER",
+        "BOUND:DIAGNOSTIC_RETENTION",
+        "BOUND:EXPANSION_DEPTH",
+        "BOUND:FINGERPRINT_INPUT",
+        "BOUND:NETWORK_EVENT_RETENTION",
+        "BOUND:ORIGIN_CONCURRENCY",
+        "BOUND:ORIGIN_RATE",
+        "BOUND:ORIGIN_REQUEST_COUNT",
+        "BOUND:PERSISTED_DISCOVERIES",
+        "BOUND:PERSISTED_EDGES",
+        "BOUND:PERSISTED_RESOURCES",
+        "BOUND:REQUEST_DURATION",
+        "BOUND:RETRY_COUNT",
+        "BOUND:SCAN_REQUEST_COUNT",
+        "BOUND:WORKER_COUNT",
+        "CANDIDATE_CLAIM",
+        "PROVENANCE_FIELDS",
+        "PROVIDER_CATCH_PATH",
+        "URL_VALIDATION"
+      ],
+      "improvement": "MECHANISM_ADDITION_NOT_GENERIC_SECURITY_SCORE",
+      "removal_classification": "UNKNOWN",
+      "regression": "NOT_PROVED_WITHOUT_LINEAGE_REQUIREMENT_AND_BEHAVIOR_EVIDENCE",
+      "scope_expansion": "NOT_ESTABLISHED",
+      "transition_confidence": "SUPPORTED",
+      "motivation": "UNKNOWN",
+      "evidence": [
+        "security-ev-f95ce5b983873d9c",
+        "security-ev-3ab7c8dd550118e6"
+      ]
+    },
+    {
+      "change_id": "security-change-012e1c54f394d0dd",
+      "before_snapshot": "snapshot-0013",
+      "after_snapshot": "snapshot-0014",
+      "relationship": "ADJACENT_RECOVERED_VERSION_COMPARISON_NOT_LINEAGE",
+      "controls_added": [
+        "BOUND:RESPONSE_BODY"
+      ],
+      "controls_absent_after": [],
+      "controls_shared": [
+        "ABORT_PATH",
+        "BOUND:CANDIDATE_FRONTIER",
+        "BOUND:DIAGNOSTIC_RETENTION",
+        "BOUND:EXPANSION_DEPTH",
+        "BOUND:FINGERPRINT_INPUT",
+        "BOUND:GRAPH_EDGE_RETENTION",
+        "BOUND:NETWORK_EVENT_RETENTION",
+        "BOUND:ORIGIN_CONCURRENCY",
+        "BOUND:ORIGIN_RATE",
+        "BOUND:ORIGIN_REQUEST_COUNT",
+        "BOUND:PERSISTED_DISCOVERIES",
+        "BOUND:PERSISTED_EDGES",
+        "BOUND:PERSISTED_RESOURCES",
+        "BOUND:REQUEST_DURATION",
+        "BOUND:RETRY_COUNT",
+        "BOUND:SCAN_REQUEST_COUNT",
+        "BOUND:WORKER_COUNT",
+        "CANDIDATE_CLAIM",
+        "PROVENANCE_FIELDS",
+        "PROVIDER_CATCH_PATH",
+        "STRUCTURED_AUDIT",
+        "URL_VALIDATION"
+      ],
+      "improvement": "MECHANISM_ADDITION_NOT_GENERIC_SECURITY_SCORE",
+      "removal_classification": "NONE",
+      "regression": "NOT_PROVED_WITHOUT_LINEAGE_REQUIREMENT_AND_BEHAVIOR_EVIDENCE",
+      "scope_expansion": "NOT_ESTABLISHED",
+      "transition_confidence": "SUPPORTED",
+      "motivation": "UNKNOWN",
+      "evidence": [
+        "security-ev-3b16625e2da1e7c4",
+        "security-ev-3ab7c8dd550118e6"
+      ]
+    },
+    {
+      "change_id": "security-change-384ffe15ab7ad6c5",
+      "before_snapshot": "snapshot-0006",
+      "after_snapshot": "snapshot-0008",
+      "relationship": "SAME_VERSION_VARIANT_COMPARISON_NOT_LINEAGE",
+      "controls_added": [
+        "BOUND:RETRY_DELAY",
+        "BOUND:TEXT_RETENTION"
+      ],
+      "controls_absent_after": [],
+      "controls_shared": [
+        "ABORT_PATH",
+        "BOUND:CANDIDATE_FRONTIER",
+        "BOUND:EXPANSION_DEPTH",
+        "BOUND:PERSISTED_DISCOVERIES",
+        "BOUND:REQUEST_DURATION",
+        "BOUND:RETRY_COUNT",
+        "BOUND:SCAN_REQUEST_COUNT",
+        "BOUND:WORKER_COUNT",
+        "CANDIDATE_CLAIM",
+        "PROVENANCE_FIELDS",
+        "PROVIDER_CATCH_PATH",
+        "URL_VALIDATION"
+      ],
+      "improvement": "MECHANISM_ADDITION_NOT_GENERIC_SECURITY_SCORE",
+      "removal_classification": "NONE",
+      "regression": "NOT_PROVED_WITHOUT_LINEAGE_REQUIREMENT_AND_BEHAVIOR_EVIDENCE",
+      "scope_expansion": "UNKNOWN_WITHOUT_VARIANT_LINEAGE",
+      "transition_confidence": "SUPPORTED",
+      "motivation": "UNKNOWN",
+      "evidence": [
+        "security-ev-698bc33d50d77868",
+        "security-ev-bd7e2f2d054fe210"
+      ]
+    },
+    {
+      "change_id": "security-change-7f20203479496ab4",
+      "before_snapshot": "snapshot-0007",
+      "after_snapshot": "snapshot-0009",
+      "relationship": "SAME_VERSION_VARIANT_COMPARISON_NOT_LINEAGE",
+      "controls_added": [
+        "BOUND:NETWORK_EVENT_RETENTION",
+        "BOUND:TEXT_RETENTION"
+      ],
+      "controls_absent_after": [
+        "BOUND:EXPANSION_FANOUT",
+        "BOUND:GRAPH_EDGE_RETENTION",
+        "BOUND:RESPONSE_BODY"
+      ],
+      "controls_shared": [
+        "ABORT_PATH",
+        "BOUND:CANDIDATE_FRONTIER",
+        "BOUND:EXPANSION_DEPTH",
+        "BOUND:PERSISTED_DISCOVERIES",
+        "BOUND:REQUEST_DURATION",
+        "BOUND:RETRY_COUNT",
+        "BOUND:RETRY_DELAY",
+        "BOUND:SCAN_REQUEST_COUNT",
+        "BOUND:WORKER_COUNT",
+        "CANDIDATE_CLAIM",
+        "PROVENANCE_FIELDS",
+        "PROVIDER_CATCH_PATH",
+        "URL_VALIDATION"
+      ],
+      "improvement": "MECHANISM_ADDITION_NOT_GENERIC_SECURITY_SCORE",
+      "removal_classification": "UNKNOWN",
+      "regression": "NOT_PROVED_WITHOUT_LINEAGE_REQUIREMENT_AND_BEHAVIOR_EVIDENCE",
+      "scope_expansion": "UNKNOWN_WITHOUT_VARIANT_LINEAGE",
+      "transition_confidence": "SUPPORTED",
+      "motivation": "UNKNOWN",
+      "evidence": [
+        "security-ev-bb12cc012cb2177b",
+        "security-ev-5d02ea92972c557a"
+      ]
+    },
+    {
+      "change_id": "security-change-baf3d229fc66d2ce",
+      "before_snapshot": "snapshot-0007",
+      "after_snapshot": "snapshot-0011",
+      "relationship": "SAME_VERSION_VARIANT_COMPARISON_NOT_LINEAGE",
+      "controls_added": [
+        "BOUND:FINGERPRINT_INPUT",
+        "BOUND:NETWORK_EVENT_RETENTION",
+        "BOUND:PERSISTED_EDGES",
+        "BOUND:PERSISTED_RESOURCES",
+        "BOUND:TEXT_RETENTION"
+      ],
+      "controls_absent_after": [
+        "BOUND:EXPANSION_FANOUT",
+        "BOUND:RESPONSE_BODY"
+      ],
+      "controls_shared": [
+        "ABORT_PATH",
+        "BOUND:CANDIDATE_FRONTIER",
+        "BOUND:EXPANSION_DEPTH",
+        "BOUND:GRAPH_EDGE_RETENTION",
+        "BOUND:PERSISTED_DISCOVERIES",
+        "BOUND:REQUEST_DURATION",
+        "BOUND:RETRY_COUNT",
+        "BOUND:RETRY_DELAY",
+        "BOUND:SCAN_REQUEST_COUNT",
+        "BOUND:WORKER_COUNT",
+        "CANDIDATE_CLAIM",
+        "PROVENANCE_FIELDS",
+        "PROVIDER_CATCH_PATH",
+        "URL_VALIDATION"
+      ],
+      "improvement": "MECHANISM_ADDITION_NOT_GENERIC_SECURITY_SCORE",
+      "removal_classification": "UNKNOWN",
+      "regression": "NOT_PROVED_WITHOUT_LINEAGE_REQUIREMENT_AND_BEHAVIOR_EVIDENCE",
+      "scope_expansion": "UNKNOWN_WITHOUT_VARIANT_LINEAGE",
+      "transition_confidence": "SUPPORTED",
+      "motivation": "UNKNOWN",
+      "evidence": [
+        "security-ev-bb12cc012cb2177b",
+        "security-ev-f20bea67db52f56e"
+      ]
+    },
+    {
+      "change_id": "security-change-ab0e2db4529fdfdd",
+      "before_snapshot": "snapshot-0009",
+      "after_snapshot": "snapshot-0011",
+      "relationship": "SAME_VERSION_VARIANT_COMPARISON_NOT_LINEAGE",
+      "controls_added": [
+        "BOUND:FINGERPRINT_INPUT",
+        "BOUND:GRAPH_EDGE_RETENTION",
+        "BOUND:PERSISTED_EDGES",
+        "BOUND:PERSISTED_RESOURCES"
+      ],
+      "controls_absent_after": [],
+      "controls_shared": [
+        "ABORT_PATH",
+        "BOUND:CANDIDATE_FRONTIER",
+        "BOUND:EXPANSION_DEPTH",
+        "BOUND:NETWORK_EVENT_RETENTION",
+        "BOUND:PERSISTED_DISCOVERIES",
+        "BOUND:REQUEST_DURATION",
+        "BOUND:RETRY_COUNT",
+        "BOUND:RETRY_DELAY",
+        "BOUND:SCAN_REQUEST_COUNT",
+        "BOUND:TEXT_RETENTION",
+        "BOUND:WORKER_COUNT",
+        "CANDIDATE_CLAIM",
+        "PROVENANCE_FIELDS",
+        "PROVIDER_CATCH_PATH",
+        "URL_VALIDATION"
+      ],
+      "improvement": "MECHANISM_ADDITION_NOT_GENERIC_SECURITY_SCORE",
+      "removal_classification": "NONE",
+      "regression": "NOT_PROVED_WITHOUT_LINEAGE_REQUIREMENT_AND_BEHAVIOR_EVIDENCE",
+      "scope_expansion": "UNKNOWN_WITHOUT_VARIANT_LINEAGE",
+      "transition_confidence": "SUPPORTED",
+      "motivation": "UNKNOWN",
+      "evidence": [
+        "security-ev-5d02ea92972c557a",
+        "security-ev-f20bea67db52f56e"
+      ]
+    },
+    {
+      "change_id": "security-change-6f50f57f1f99424b",
+      "before_snapshot": "snapshot-0010",
+      "after_snapshot": "snapshot-0012",
+      "relationship": "SAME_VERSION_VARIANT_COMPARISON_NOT_LINEAGE",
+      "controls_added": [
+        "BOUND:DIAGNOSTIC_RETENTION",
+        "BOUND:ORIGIN_CONCURRENCY",
+        "BOUND:ORIGIN_RATE",
+        "BOUND:ORIGIN_REQUEST_COUNT"
+      ],
+      "controls_absent_after": [
+        "BOUND:GRAPH_EDGE_RETENTION"
+      ],
+      "controls_shared": [
+        "ABORT_PATH",
+        "BOUND:CANDIDATE_FRONTIER",
+        "BOUND:EXPANSION_DEPTH",
+        "BOUND:FINGERPRINT_INPUT",
+        "BOUND:NETWORK_EVENT_RETENTION",
+        "BOUND:PERSISTED_DISCOVERIES",
+        "BOUND:PERSISTED_EDGES",
+        "BOUND:PERSISTED_RESOURCES",
+        "BOUND:REQUEST_DURATION",
+        "BOUND:RETRY_COUNT",
+        "BOUND:RETRY_DELAY",
+        "BOUND:SCAN_REQUEST_COUNT",
+        "BOUND:WORKER_COUNT",
+        "CANDIDATE_CLAIM",
+        "PROVENANCE_FIELDS",
+        "PROVIDER_CATCH_PATH",
+        "URL_VALIDATION"
+      ],
+      "improvement": "MECHANISM_ADDITION_NOT_GENERIC_SECURITY_SCORE",
+      "removal_classification": "UNKNOWN",
+      "regression": "NOT_PROVED_WITHOUT_LINEAGE_REQUIREMENT_AND_BEHAVIOR_EVIDENCE",
+      "scope_expansion": "UNKNOWN_WITHOUT_VARIANT_LINEAGE",
+      "transition_confidence": "SUPPORTED",
+      "motivation": "UNKNOWN",
+      "evidence": [
+        "security-ev-2cc4f9aef354e17b",
+        "security-ev-f846c333b3035b0f"
+      ]
+    },
+    {
+      "change_id": "security-change-081dca40501542f7",
+      "before_snapshot": "snapshot-0010",
+      "after_snapshot": "snapshot-0013",
+      "relationship": "SAME_VERSION_VARIANT_COMPARISON_NOT_LINEAGE",
+      "controls_added": [
+        "BOUND:DIAGNOSTIC_RETENTION",
+        "BOUND:ORIGIN_CONCURRENCY",
+        "BOUND:ORIGIN_RATE",
+        "BOUND:ORIGIN_REQUEST_COUNT",
+        "STRUCTURED_AUDIT"
+      ],
+      "controls_absent_after": [
+        "BOUND:RETRY_DELAY"
+      ],
+      "controls_shared": [
+        "ABORT_PATH",
+        "BOUND:CANDIDATE_FRONTIER",
+        "BOUND:EXPANSION_DEPTH",
+        "BOUND:FINGERPRINT_INPUT",
+        "BOUND:GRAPH_EDGE_RETENTION",
+        "BOUND:NETWORK_EVENT_RETENTION",
+        "BOUND:PERSISTED_DISCOVERIES",
+        "BOUND:PERSISTED_EDGES",
+        "BOUND:PERSISTED_RESOURCES",
+        "BOUND:REQUEST_DURATION",
+        "BOUND:RETRY_COUNT",
+        "BOUND:SCAN_REQUEST_COUNT",
+        "BOUND:WORKER_COUNT",
+        "CANDIDATE_CLAIM",
+        "PROVENANCE_FIELDS",
+        "PROVIDER_CATCH_PATH",
+        "URL_VALIDATION"
+      ],
+      "improvement": "MECHANISM_ADDITION_NOT_GENERIC_SECURITY_SCORE",
+      "removal_classification": "UNKNOWN",
+      "regression": "NOT_PROVED_WITHOUT_LINEAGE_REQUIREMENT_AND_BEHAVIOR_EVIDENCE",
+      "scope_expansion": "UNKNOWN_WITHOUT_VARIANT_LINEAGE",
+      "transition_confidence": "SUPPORTED",
+      "motivation": "UNKNOWN",
+      "evidence": [
+        "security-ev-2cc4f9aef354e17b",
+        "security-ev-153de5cda114a0c5"
+      ]
+    },
+    {
+      "change_id": "security-change-c587e4c6a4d51f97",
+      "before_snapshot": "snapshot-0012",
+      "after_snapshot": "snapshot-0013",
+      "relationship": "SAME_VERSION_VARIANT_COMPARISON_NOT_LINEAGE",
+      "controls_added": [
+        "BOUND:GRAPH_EDGE_RETENTION",
+        "STRUCTURED_AUDIT"
+      ],
+      "controls_absent_after": [
+        "BOUND:RETRY_DELAY"
+      ],
+      "controls_shared": [
+        "ABORT_PATH",
+        "BOUND:CANDIDATE_FRONTIER",
+        "BOUND:DIAGNOSTIC_RETENTION",
+        "BOUND:EXPANSION_DEPTH",
+        "BOUND:FINGERPRINT_INPUT",
+        "BOUND:NETWORK_EVENT_RETENTION",
+        "BOUND:ORIGIN_CONCURRENCY",
+        "BOUND:ORIGIN_RATE",
+        "BOUND:ORIGIN_REQUEST_COUNT",
+        "BOUND:PERSISTED_DISCOVERIES",
+        "BOUND:PERSISTED_EDGES",
+        "BOUND:PERSISTED_RESOURCES",
+        "BOUND:REQUEST_DURATION",
+        "BOUND:RETRY_COUNT",
+        "BOUND:SCAN_REQUEST_COUNT",
+        "BOUND:WORKER_COUNT",
+        "CANDIDATE_CLAIM",
+        "PROVENANCE_FIELDS",
+        "PROVIDER_CATCH_PATH",
+        "URL_VALIDATION"
+      ],
+      "improvement": "MECHANISM_ADDITION_NOT_GENERIC_SECURITY_SCORE",
+      "removal_classification": "UNKNOWN",
+      "regression": "NOT_PROVED_WITHOUT_LINEAGE_REQUIREMENT_AND_BEHAVIOR_EVIDENCE",
+      "scope_expansion": "UNKNOWN_WITHOUT_VARIANT_LINEAGE",
+      "transition_confidence": "SUPPORTED",
+      "motivation": "UNKNOWN",
+      "evidence": [
+        "security-ev-f846c333b3035b0f",
+        "security-ev-153de5cda114a0c5"
+      ]
+    }
+  ],
+  "change_registry": [
+    "EXPERIMENT",
+    "REGRESSION",
+    "REQUIREMENT_CHANGE",
+    "SIMPLIFICATION",
+    "UNKNOWN"
+  ]
+}

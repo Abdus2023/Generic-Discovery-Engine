@@ -1,0 +1,248 @@
+{
+  "schema_version": 8,
+  "builder": "security-archaeology-builder-v8",
+  "model_kind": "DERIVED_SECURITY_ARCHAEOLOGY_NOT_SOURCE",
+  "mappings": [
+    {
+      "failure": "VALIDATION_FAILURE",
+      "contract_requirement": "validation_failure handling semantics",
+      "enforcement": [
+        "CATCH"
+      ],
+      "test": "UNVERIFIED_NO_HISTORICAL_TEST_EVIDENCE",
+      "evidence": [
+        "security-ev-8812129cadb6f280",
+        "security-ev-cd52827ef732e7d4",
+        "security-ev-6b1bd6d142794968",
+        "security-ev-abd184135de8a5dc",
+        "security-ev-1ba1749f7bb08635",
+        "security-ev-7b42b4c75a35c40b",
+        "security-ev-50d55f3a25cc1fe2",
+        "security-ev-ad2979326b8e91bb",
+        "security-ev-b759cadcdbf70f45",
+        "security-ev-7d40670f2145698b",
+        "security-ev-04b6f9cc28fb1db5",
+        "security-ev-b3525ca60c92ca0a"
+      ]
+    },
+    {
+      "failure": "NETWORK_FAILURE",
+      "contract_requirement": "acquisition error semantics",
+      "enforcement": [
+        "CATCH",
+        "ERROR_CALLBACK",
+        "PROMISE_REJECT"
+      ],
+      "test": "UNVERIFIED_NO_HISTORICAL_TEST_EVIDENCE",
+      "evidence": [
+        "security-ev-f5938550f988fa3e",
+        "security-ev-92452c8c6a88aa28",
+        "security-ev-eaeb4711e4fdb262",
+        "security-ev-31d8abcbe3efa516",
+        "security-ev-7486a1ae2556e31e",
+        "security-ev-1ce4c30d7aee4cbe",
+        "security-ev-8dec6407a9878075",
+        "security-ev-7c3aecaa2a3311ee",
+        "security-ev-d9756b313b0bdfeb",
+        "security-ev-0c08681555390146",
+        "security-ev-2494dffb56b1338c",
+        "security-ev-635bd37dc0747a2f"
+      ]
+    },
+    {
+      "failure": "TIMEOUT",
+      "contract_requirement": "timeout/cancellation semantics",
+      "enforcement": [
+        "CATCH",
+        "PROMISE_REJECT",
+        "TIMEOUT_CALLBACK"
+      ],
+      "test": "UNVERIFIED_NO_HISTORICAL_TEST_EVIDENCE",
+      "evidence": [
+        "security-ev-b90fb5bcfffb1a0b",
+        "security-ev-ee35b3e2616be7b6",
+        "security-ev-a636b4c2f43931b0",
+        "security-ev-3bd0babe0ddc9dd1",
+        "security-ev-b26acb6b433db456",
+        "security-ev-e8d3221e94ae51f6",
+        "security-ev-eb9e7d49538e5225",
+        "security-ev-4d4b8b882716017b",
+        "security-ev-4f518ea0e96c746f",
+        "security-ev-c964527405a755b3",
+        "security-ev-d500dd972d3fe3dc",
+        "security-ev-b53b18113680d363"
+      ]
+    },
+    {
+      "failure": "HTTP_FAILURE",
+      "contract_requirement": "HTTP result-state semantics",
+      "enforcement": [
+        "STATUS_BRANCH"
+      ],
+      "test": "UNVERIFIED_NO_HISTORICAL_TEST_EVIDENCE",
+      "evidence": [
+        "security-ev-32c487a7ad04682b"
+      ]
+    },
+    {
+      "failure": "PARSING_FAILURE",
+      "contract_requirement": "parser failure representation",
+      "enforcement": [
+        "CATCH",
+        "PARSER_RESULT_CHECK"
+      ],
+      "test": "UNVERIFIED_NO_HISTORICAL_TEST_EVIDENCE",
+      "evidence": [
+        "security-ev-02b567c67da4c8b5",
+        "security-ev-47c3b73e9986039d",
+        "security-ev-6ddd02322352c69c",
+        "security-ev-72e1f963a4696ba3",
+        "security-ev-a3b3149bdbd52f96",
+        "security-ev-c94cb5d4760ccebe",
+        "security-ev-8fb08357ee4eef73",
+        "security-ev-4444fafb643822b0",
+        "security-ev-ac339e5406a0eb94",
+        "security-ev-c284b644a39df9a2",
+        "security-ev-d39b7991d4a43cf7",
+        "security-ev-22b2aacf73799079"
+      ]
+    },
+    {
+      "failure": "RECOGNITION_FAILURE",
+      "contract_requirement": "recognition_failure handling semantics",
+      "enforcement": [
+        "CATCH"
+      ],
+      "test": "UNVERIFIED_NO_HISTORICAL_TEST_EVIDENCE",
+      "evidence": [
+        "security-ev-2a1d605376e427f7",
+        "security-ev-e95b3dce058b18ac",
+        "security-ev-f168646fec075ff0",
+        "security-ev-f254e663b5062707"
+      ]
+    },
+    {
+      "failure": "PROVIDER_FAILURE",
+      "contract_requirement": "provider failure isolation",
+      "enforcement": [
+        "CATCH"
+      ],
+      "test": "UNVERIFIED_NO_HISTORICAL_TEST_EVIDENCE",
+      "evidence": [
+        "security-ev-aaa9560381e948a1",
+        "security-ev-3fc932de00813d14",
+        "security-ev-009da1367f7fdaab",
+        "security-ev-5b145551404d979f",
+        "security-ev-d18f5b6d3631b252",
+        "security-ev-66971bb9d0ba20ef",
+        "security-ev-53070a6bff14d424",
+        "security-ev-1d829d3bcbc1e32d",
+        "security-ev-46758ad69378490d",
+        "security-ev-861ff3b621877a87",
+        "security-ev-7cf385dfde3a7caf",
+        "security-ev-d09f05e9d84b8ff2"
+      ]
+    },
+    {
+      "failure": "DISCOVERY_FAILURE",
+      "contract_requirement": "discovery_failure handling semantics",
+      "enforcement": [
+        "CATCH",
+        "THROW"
+      ],
+      "test": "UNVERIFIED_NO_HISTORICAL_TEST_EVIDENCE",
+      "evidence": [
+        "security-ev-f875723dd7182e84",
+        "security-ev-d43a32c192003104",
+        "security-ev-9bdc5f2a324fb459",
+        "security-ev-b8afc4cefd17803c",
+        "security-ev-b17b56e741440f77",
+        "security-ev-0a006f91dcbbacbf",
+        "security-ev-a7d42d74faefcd3e",
+        "security-ev-ab9373967ec67969",
+        "security-ev-aa8fb61eb0125582",
+        "security-ev-9d20a8e1ad288e55",
+        "security-ev-4adab4c4d3ae2cc9",
+        "security-ev-8f0a57342f68ac74"
+      ]
+    },
+    {
+      "failure": "SCHEDULER_FAILURE",
+      "contract_requirement": "candidate failure ownership and progress",
+      "enforcement": [
+        "CATCH"
+      ],
+      "test": "UNVERIFIED_NO_HISTORICAL_TEST_EVIDENCE",
+      "evidence": [
+        "security-ev-1d37613eb7c14a60",
+        "security-ev-1346929761a5141d",
+        "security-ev-cad68c2f8dede196",
+        "security-ev-9bcfaf7e04e86dd5",
+        "security-ev-81ddf74585b8145a",
+        "security-ev-d2c836579249cf42",
+        "security-ev-32ec9479f8f1f5ee",
+        "security-ev-eee36f69aa9b3c02",
+        "security-ev-fcc81df80fb5470c",
+        "security-ev-af156f68e5fcbbe9"
+      ]
+    },
+    {
+      "failure": "PERSISTENCE_FAILURE",
+      "contract_requirement": "persistence integrity and observability",
+      "enforcement": [
+        "CATCH"
+      ],
+      "test": "UNVERIFIED_NO_HISTORICAL_TEST_EVIDENCE",
+      "evidence": [
+        "security-ev-b1fbd072c5e527b7",
+        "security-ev-5f02dc3748547b35",
+        "security-ev-835a71ba17d2d8a9",
+        "security-ev-1d21f8fcd42ea7c6",
+        "security-ev-ee29dd239ff45ec6",
+        "security-ev-70b3e3144ce034e6",
+        "security-ev-fba0d372e9b84529",
+        "security-ev-9423be634285ec26",
+        "security-ev-61961c48a02bed55",
+        "security-ev-bd419689d6722640",
+        "security-ev-fc8cbf327f935700",
+        "security-ev-403e6a06e0a5dba7"
+      ]
+    },
+    {
+      "failure": "UI_FAILURE",
+      "contract_requirement": "ui_failure handling semantics",
+      "enforcement": [
+        "CATCH"
+      ],
+      "test": "UNVERIFIED_NO_HISTORICAL_TEST_EVIDENCE",
+      "evidence": [
+        "security-ev-bbb568635e0b932f",
+        "security-ev-9285156f407a342b",
+        "security-ev-9055b34f5f52dd69",
+        "security-ev-eef78ec4f3d37cf9",
+        "security-ev-65348f69e361196d",
+        "security-ev-a5989b691bdde740",
+        "security-ev-ebeeb7ea763e30e3",
+        "security-ev-99887e645fb57713"
+      ]
+    },
+    {
+      "failure": "UNKNOWN_FAILURE",
+      "contract_requirement": "unknown_failure handling semantics",
+      "enforcement": [
+        "CATCH"
+      ],
+      "test": "UNVERIFIED_NO_HISTORICAL_TEST_EVIDENCE",
+      "evidence": [
+        "security-ev-c34b150ed06211c0",
+        "security-ev-ada91e361358b57e",
+        "security-ev-25684d9ed6322712",
+        "security-ev-5e0d140d0b548186",
+        "security-ev-888079f700892021",
+        "security-ev-62b4a2dfb3d93671",
+        "security-ev-9ae6e046cf5f209d",
+        "security-ev-c1e0a7900dd364e7"
+      ]
+    }
+  ]
+}

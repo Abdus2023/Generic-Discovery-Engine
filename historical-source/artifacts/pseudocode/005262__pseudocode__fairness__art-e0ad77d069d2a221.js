@@ -1,0 +1,3 @@
+individual fairness
++
+class fairness

@@ -1,0 +1,5 @@
+{
+    sessionId,
+    domainId,
+    ...
+}

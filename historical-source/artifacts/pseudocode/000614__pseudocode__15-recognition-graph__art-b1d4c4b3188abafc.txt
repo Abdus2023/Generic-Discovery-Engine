@@ -1,0 +1,21 @@
+                         OBSERVATION
+                              │
+                              ▼
+                    ┌──────────────────┐
+                    │ RESPONSE ROUTER  │
+                    └────────┬─────────┘
+                             │
+              ┌──────────────┼──────────────┐
+              ▼              ▼              ▼
+           HTML           Metadata        Generic
+         recognizer       recognizer      extractor
+              │              │              │
+              └──────────────┼──────────────┘
+                             ▼
+                      DISCOVERY SET
+                             │
+                             ▼
+                       DEDUPLICATION
+                             │
+                             ▼
+                     KNOWLEDGE GRAPH

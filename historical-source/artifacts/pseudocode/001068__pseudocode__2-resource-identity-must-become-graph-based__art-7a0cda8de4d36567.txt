@@ -1,0 +1,14 @@
+                     RESOURCE GRAPH
+
+       ┌─────────────┐
+       │ Resource R1 │
+       └──────┬──────┘
+              │
+       ┌──────┼─────────────┐
+       │      │             │
+       ▼      ▼             ▼
+     URL A  URL B         URL C
+       │      │             │
+    alias   redirect      mirror
+       │      │             │
+       └──────┴─────────────┘

@@ -1,0 +1,14 @@
+DURABLE STATE
+     │
+     ▼
+RECOVERY
+     │
+     ├── completed work
+     ├── queued work
+     ├── blocked work
+     ├── expired work
+     ├── uncertain work
+     └── corrupted work
+             │
+             ▼
+        FRONTIER REBUILD

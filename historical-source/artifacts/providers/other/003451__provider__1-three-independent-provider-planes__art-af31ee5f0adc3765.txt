@@ -1,0 +1,12 @@
+                     DISCOVERY ENGINE
+                           │
+          ┌────────────────┼────────────────┐
+          │                │                │
+          ▼                ▼                ▼
+ CandidateSource   AcquisitionProvider  RecognitionProvider
+          │                │                │
+       "find"            "get"          "understand"
+          │                │                │
+          └───────────────┬┴───────────────┘
+                          │
+                       GRAPH

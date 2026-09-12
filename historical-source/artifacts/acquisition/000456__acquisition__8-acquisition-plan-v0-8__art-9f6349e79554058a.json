@@ -1,0 +1,23 @@
+{
+  "target": "https://example.com/api/order",
+  "method": "POST",
+
+  "requiredCapabilities": [
+    "network.http",
+    "network.post",
+    "request-body"
+  ],
+
+  "grantedCapabilities": [
+    "network.http",
+    "network.get"
+  ],
+
+  "missingCapabilities": [
+    "network.post",
+    "request-body"
+  ],
+
+  "allowed": false,
+  "reason": "missing-capabilities"
+}

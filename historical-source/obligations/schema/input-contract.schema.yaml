@@ -1,0 +1,29 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "schema_version": "1.0",
+  "additionalProperties": true,
+  "title": "Protocol-v10.1 input contract",
+  "type": "object",
+  "required": [
+    "input_contract_version",
+    "obligation_schema_version",
+    "status",
+    "required_inputs",
+    "integrity_checks",
+    "normalized_evidence"
+  ],
+  "properties": {
+    "input_contract_version": {
+      "const": "1.0"
+    },
+    "obligation_schema_version": {
+      "const": "1.0"
+    },
+    "status": {
+      "enum": [
+        "VALID",
+        "INPUT_CONTRACT_FAILED"
+      ]
+    }
+  }
+}

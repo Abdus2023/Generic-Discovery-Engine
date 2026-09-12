@@ -1,0 +1,6209 @@
+// ==UserScript==
+// @name         Generic Discovery Engine
+// @namespace    generic-discovery
+// @version      0.6.0
+// @description  Generic web-resource discovery engine with acquisition, recognition, network correlation, adaptive scheduling, fingerprints, and provenance graph.
+// @match        *://*/*
+// @run-at       document-start
+// @grant        GM_getValue
+// @grant        GM_setValue
+// @grant        GM_xmlhttpRequest
+// @connect      *
+// ==/UserScript==
+
+(() => {
+    'use strict';
+
+    /*
+     * =====================================================================
+     * GENERIC DISCOVERY ENGINE v0.6.0
+     * =====================================================================
+     *
+     * Abstract discovery architecture:
+     *
+     *   candidate
+     *       |
+     *       v
+     *   scheduler
+     *       |
+     *       v
+     *   acquisition
+     *       |
+     *       v
+     *   observation
+     *       |
+     *       v
+     *   recognition
+     *       |
+     *       v
+     *   discovery
+     *       |
+     *       v
+     *   candidate
+     *
+     * Passive path:
+     *
+     *   page network activity
+     *       |
+     *       v
+     *   correlated network event
+     *       |
+     *       +----> resource registry
+     *       |
+     *       +----> candidate
+     *
+     * v0.6:
+     *   - canonical resource registry
+     *   - requestId network correlation
+     *   - explicit lifecycle timestamps
+     *   - adaptive content-aware priority
+     *   - acquisition reuse
+     *   - redirect records
+     *   - persistent provenance edges
+     *   - bounded network event retention
+     *   - graph export
+     *
+     * This is a generic web discovery engine.
+     * It does NOT perform RF/DVB scanning, frequency tuning,
+     * demodulation, carrier synchronization, or FEC.
+     */
+
+    const CONFIG = {
+        maxCandidates: 1000,
+        maxRequests: 200,
+        concurrency: 4,
+
+        requestTimeout: 8000,
+
+        sameOriginOnly: true,
+
+        maxDepth: 6,
+
+        maxRetries: 2,
+        retryBaseDelay: 500,
+        retryMaxDelay: 8000,
+
+        priorityDepthPenalty: 0.045,
+        confidencePriorityBoost: 0.10,
+        retryPriorityPenalty: 0.035,
+
+        maxNetworkEvents: 1500,
+        maxGraphEdges: 5000,
+
+        maxPersistedDiscoveries: 1500,
+        maxPersistedResources: 1500,
+        maxPersistedEdges: 4000,
+
+        fingerprintMaxChars: 1000000,
+
+        persistState: true,
+        persistDebounceMs: 500,
+
+        discoverLinks: true,
+        discoverResources: true,
+        discoverForms: true,
+        discoverMetadata: true,
+        discoverFromText: true,
+        discoverNetwork: true,
+        discoverPerformance: true,
+        discoverWellKnown: true,
+
+        /*
+         * Only GET/HEAD/unknown observed requests are considered
+         * automatically replayable. State-changing requests remain
+         * observational only unless explicitly enabled.
+         */
+        acquireObservedNonGet: false,
+
+        debug: true
+    };
+
+    const STATE_KEY =
+        'generic-discovery-engine-v6';
+
+    const NETWORK_SOURCE =
+        'GenericDiscoveryEngineNetwork';
+
+    const NETWORK_CHANNEL =
+        `gde-${Date.now()}-${Math.random()
+            .toString(36)
+            .slice(2, 10)}`;
+
+    const TYPE_PRIORITY = {
+        page: 1.00,
+        api: 0.96,
+        manifest: 0.91,
+        robots: 0.90,
+        sitemap: 0.88,
+        url: 0.82,
+        frame: 0.68,
+        feed: 0.64,
+        script: 0.60,
+        'source-map': 0.57,
+        stylesheet: 0.52,
+        metadata: 0.50,
+        resource: 0.44,
+        form: 0.36,
+        media: 0.25,
+        network: 0.80
+    };
+
+    const log = (...args) => {
+        if (CONFIG.debug) {
+            console.log(
+                '[GenericDiscovery]',
+                ...args
+            );
+        }
+    };
+
+    const warn = (...args) =>
+        console.warn(
+            '[GenericDiscovery]',
+            ...args
+        );
+
+    const now = () =>
+        Date.now();
+
+    const sleep = ms =>
+        new Promise(resolve =>
+            setTimeout(resolve, ms)
+        );
+
+    function makeId(prefix) {
+        return (
+            `${prefix}-${Date.now()}-` +
+            Math.random()
+                .toString(36)
+                .slice(2, 10)
+        );
+    }
+
+    function unique(values) {
+        return [
+            ...new Set(values)
+        ];
+    }
+
+    function clamp(
+        value,
+        min = 0,
+        max = 1
+    ) {
+        return Math.max(
+            min,
+            Math.min(max, value)
+        );
+    }
+
+    function canonicalizeUrl(
+        value,
+        base = location.href
+    ) {
+        if (
+            typeof value !== 'string' ||
+            !value.trim()
+        ) {
+            return null;
+        }
+
+        const input =
+            value.trim();
+
+        if (
+            /^(javascript|mailto|tel|data|blob|file|about|chrome):/i.test(
+                input
+            )
+        ) {
+            return null;
+        }
+
+        try {
+            const url =
+                new URL(
+                    input,
+                    base
+                );
+
+            if (
+                url.protocol !== 'http:' &&
+                url.protocol !== 'https:'
+            ) {
+                return null;
+            }
+
+            url.hash = '';
+
+            if (
+                url.protocol === 'http:' &&
+                url.port === '80'
+            ) {
+                url.port = '';
+            }
+
+            if (
+                url.protocol === 'https:' &&
+                url.port === '443'
+            ) {
+                url.port = '';
+            }
+
+            return url.href;
+        } catch {
+            return null;
+        }
+    }
+
+    function allowed(url) {
+        if (!url) {
+            return false;
+        }
+
+        if (!CONFIG.sameOriginOnly) {
+            return true;
+        }
+
+        try {
+            return (
+                new URL(url).origin ===
+                location.origin
+            );
+        } catch {
+            return false;
+        }
+    }
+
+    function contentType(value) {
+        return String(value || '')
+            .split(';')[0]
+            .trim()
+            .toLowerCase();
+    }
+
+    function isHtml(type) {
+        type =
+            contentType(type);
+
+        return (
+            type === 'text/html' ||
+            type === 'application/xhtml+xml'
+        );
+    }
+
+    function isJson(type) {
+        type =
+            contentType(type);
+
+        return (
+            type === 'application/json' ||
+            type.endsWith('+json')
+        );
+    }
+
+    function isXml(type) {
+        type =
+            contentType(type);
+
+        return (
+            type === 'application/xml' ||
+            type === 'text/xml' ||
+            type === 'application/rss+xml' ||
+            type === 'application/atom+xml' ||
+            type === 'application/sitemap+xml'
+        );
+    }
+
+    function isCss(type) {
+        return (
+            contentType(type) ===
+            'text/css'
+        );
+    }
+
+    function isJavaScript(type) {
+        return [
+            'application/javascript',
+            'application/x-javascript',
+            'text/javascript',
+            'application/ecmascript',
+            'text/ecmascript'
+        ].includes(
+            contentType(type)
+        );
+    }
+
+    function isText(type) {
+        return String(type || '')
+            .toLowerCase()
+            .startsWith('text/');
+    }
+
+    function looksHtml(body) {
+        return (
+            /<!doctype\s+html/i.test(
+                body || ''
+            ) ||
+            /<html[\s>]/i.test(
+                body || ''
+            )
+        );
+    }
+
+    function looksJson(body) {
+        const text =
+            String(body || '')
+                .trim();
+
+        return (
+            (text.startsWith('{') &&
+                text.endsWith('}')) ||
+            (text.startsWith('[') &&
+                text.endsWith(']'))
+        );
+    }
+
+    function extractUrls(
+        text,
+        base
+    ) {
+        const result = [];
+
+        if (!text) {
+            return result;
+        }
+
+        const absolute =
+            text.match(
+                /https?:\/\/[^\s"'<>()[\]{}]+/gi
+            ) || [];
+
+        for (
+            let value of absolute
+        ) {
+            value =
+                value.replace(
+                    /[.,;:!?]+$/,
+                    ''
+                );
+
+            const url =
+                canonicalizeUrl(
+                    value,
+                    base
+                );
+
+            if (
+                url &&
+                allowed(url)
+            ) {
+                result.push(url);
+            }
+        }
+
+        return unique(result);
+    }
+
+    function extractCssUrls(
+        css,
+        base
+    ) {
+        const result = [];
+
+        const regex =
+            /url\s*\(\s*(['"]?)(.*?)\1\s*\)/gi;
+
+        let match;
+
+        while (
+            (match =
+                regex.exec(css || '')) !==
+            null
+        ) {
+            const url =
+                canonicalizeUrl(
+                    match[2],
+                    base
+                );
+
+            if (
+                url &&
+                allowed(url)
+            ) {
+                result.push(url);
+            }
+        }
+
+        return unique(result);
+    }
+
+    function extractXmlLocs(
+        xml,
+        base
+    ) {
+        const result = [];
+
+        const regex =
+            /<loc[^>]*>\s*([^<]+?)\s*<\/loc>/gi;
+
+        let match;
+
+        while (
+            (match =
+                regex.exec(xml || '')) !==
+            null
+        ) {
+            const url =
+                canonicalizeUrl(
+                    match[1],
+                    base
+                );
+
+            if (
+                url &&
+                allowed(url)
+            ) {
+                result.push(url);
+            }
+        }
+
+        return unique(result);
+    }
+
+    async function sha256(text) {
+        const value =
+            String(text || '')
+                .slice(
+                    0,
+                    CONFIG.fingerprintMaxChars
+                );
+
+        if (
+            typeof crypto !==
+                'undefined' &&
+            crypto.subtle &&
+            typeof TextEncoder !==
+                'undefined'
+        ) {
+            try {
+                const buffer =
+                    await crypto.subtle.digest(
+                        'SHA-256',
+                        new TextEncoder().encode(
+                            value
+                        )
+                    );
+
+                return [
+                    ...new Uint8Array(
+                        buffer
+                    )
+                ]
+                    .map(
+                        byte =>
+                            byte
+                                .toString(16)
+                                .padStart(
+                                    2,
+                                    '0'
+                                )
+                    )
+                    .join('');
+            } catch {
+                // Fallback below.
+            }
+        }
+
+        /*
+         * Lightweight non-cryptographic fallback.
+         */
+        let hash =
+            2166136261;
+
+        for (
+            let i = 0;
+            i < value.length;
+            i++
+        ) {
+            hash ^=
+                value.charCodeAt(i);
+
+            hash =
+                Math.imul(
+                    hash,
+                    16777619
+                );
+        }
+
+        return (
+            'fnv1a-' +
+            (
+                hash >>> 0
+            ).toString(16)
+        );
+    }
+
+    function classifyUrl(
+        url,
+        hintType = ''
+    ) {
+        if (
+            hintType &&
+            TYPE_PRIORITY[hintType]
+        ) {
+            return hintType;
+        }
+
+        const lower =
+            String(url || '')
+                .toLowerCase();
+
+        if (
+            /\/(api|graphql|rpc|ajax)(\/|$)/.test(
+                lower
+            ) ||
+            /\.(json|graphql)$/.test(
+                lower
+            )
+        ) {
+            return 'api';
+        }
+
+        if (
+            /\.(m?js)$/.test(
+                lower
+            )
+        ) {
+            return 'script';
+        }
+
+        if (
+            /\.css$/.test(
+                lower
+            )
+        ) {
+            return 'stylesheet';
+        }
+
+        if (
+            /\.map$/.test(
+                lower
+            )
+        ) {
+            return 'source-map';
+        }
+
+        if (
+            /\.(png|jpg|jpeg|gif|webp|svg|ico|mp4|webm|mp3|wav|ogg)$/.test(
+                lower
+            )
+        ) {
+            return 'media';
+        }
+
+        if (
+            /\/robots\.txt$/.test(
+                lower
+            )
+        ) {
+            return 'robots';
+        }
+
+        if (
+            /sitemap[^/]*\.xml$/.test(
+                lower
+            )
+        ) {
+            return 'sitemap';
+        }
+
+        return 'resource';
+    }
+
+    /*
+     * =====================================================================
+     * CANDIDATE
+     * =====================================================================
+     */
+
+    class Candidate {
+        constructor(options) {
+            this.id =
+                options.id ||
+                makeId('candidate');
+
+            this.target =
+                canonicalizeUrl(
+                    options.target
+                );
+
+            this.type =
+                options.type ||
+                'resource';
+
+            this.origin =
+                options.origin ||
+                'unknown';
+
+            this.parent =
+                options.parent ||
+                null;
+
+            this.priority =
+                Number.isFinite(
+                    options.priority
+                )
+                    ? options.priority
+                    : 0.5;
+
+            this.depth =
+                Number.isFinite(
+                    options.depth
+                )
+                    ? options.depth
+                    : 0;
+
+            this.hints =
+                options.hints ||
+                {};
+
+            this.createdAt =
+                options.createdAt ||
+                now();
+
+            this.attempts =
+                options.attempts ||
+                0;
+
+            this.status =
+                options.status ||
+                'discovered';
+
+            this.nextAttemptAt =
+                options.nextAttemptAt ||
+                now();
+
+            this.lastError =
+                options.lastError ||
+                null;
+
+            this.queuedAt =
+                options.queuedAt ||
+                null;
+
+            this.claimedAt =
+                options.claimedAt ||
+                null;
+
+            this.acquiringAt =
+                options.acquiringAt ||
+                null;
+
+            this.observedAt =
+                options.observedAt ||
+                null;
+
+            this.recognizedAt =
+                options.recognizedAt ||
+                null;
+
+            this.expandedAt =
+                options.expandedAt ||
+                null;
+
+            this.completedAt =
+                options.completedAt ||
+                null;
+
+            this.failedAt =
+                options.failedAt ||
+                null;
+        }
+
+        key() {
+            return this.target;
+        }
+
+        lifecycle(status) {
+            this.status =
+                status;
+
+            const stamp =
+                now();
+
+            if (
+                status ===
+                'queued'
+            ) {
+                this.queuedAt =
+                    stamp;
+            } else if (
+                status ===
+                'claimed'
+            ) {
+                this.claimedAt =
+                    stamp;
+            } else if (
+                status ===
+                'acquiring'
+            ) {
+                this.acquiringAt =
+                    stamp;
+            } else if (
+                status ===
+                'observed'
+            ) {
+                this.observedAt =
+                    stamp;
+            } else if (
+                status ===
+                'recognized'
+            ) {
+                this.recognizedAt =
+                    stamp;
+            } else if (
+                status ===
+                'expanded'
+            ) {
+                this.expandedAt =
+                    stamp;
+            } else if (
+                status ===
+                'completed'
+            ) {
+                this.completedAt =
+                    stamp;
+            } else if (
+                status ===
+                'failed'
+            ) {
+                this.failedAt =
+                    stamp;
+            }
+        }
+
+        score() {
+            let score =
+                this.priority;
+
+            score +=
+                (
+                    TYPE_PRIORITY[
+                        this.type
+                    ] ||
+                    TYPE_PRIORITY.resource
+                ) * 0.22;
+
+            const confidence =
+                Number(
+                    this.hints
+                        ?.confidence ||
+                        0
+                );
+
+            score +=
+                confidence *
+                CONFIG.confidencePriorityBoost;
+
+            score -=
+                this.depth *
+                CONFIG.priorityDepthPenalty;
+
+            score -=
+                this.attempts *
+                CONFIG.retryPriorityPenalty;
+
+            if (
+                isJson(
+                    this.hints
+                        ?.contentType
+                )
+            ) {
+                score +=
+                    0.08;
+            }
+
+            return score;
+        }
+    }
+
+    /*
+     * =====================================================================
+     * RESOURCE REGISTRY
+     * =====================================================================
+     *
+     * A resource is identified by canonical URL.
+     *
+     * Different candidate types and discovery mechanisms may all
+     * refer to the same ResourceRecord.
+     */
+
+    class ResourceRecord {
+        constructor(url) {
+            this.url =
+                canonicalizeUrl(
+                    url
+                ) || url;
+
+            this.id =
+                'resource:' +
+                this.url;
+
+            this.types =
+                new Set();
+
+            this.mechanisms =
+                new Set();
+
+            this.parents =
+                new Set();
+
+            this.candidateIds =
+                new Set();
+
+            this.observationIds =
+                new Set();
+
+            this.discoveryIds =
+                new Set();
+
+            this.status =
+                'known';
+
+            this.firstSeenAt =
+                now();
+
+            this.lastSeenAt =
+                now();
+
+            this.fingerprint =
+                null;
+
+            this.finalUrl =
+                null;
+
+            this.acquisitionCount =
+                0;
+        }
+
+        mergeCandidate(
+            candidate
+        ) {
+            this.types.add(
+                candidate.type
+            );
+
+            this.mechanisms.add(
+                candidate.origin
+            );
+
+            if (
+                candidate.parent
+            ) {
+                this.parents.add(
+                    candidate.parent
+                );
+            }
+
+            this.candidateIds.add(
+                candidate.id
+            );
+
+            this.lastSeenAt =
+                now();
+        }
+
+        mergeObservation(
+            observation
+        ) {
+            this.observationIds.add(
+                observation.id
+            );
+
+            this.status =
+                observation.status ===
+                'observed'
+                    ? 'acquired'
+                    : observation.status;
+
+            if (
+                observation.http
+                    ?.finalUrl
+            ) {
+                this.finalUrl =
+                    observation.http.finalUrl;
+            }
+
+            if (
+                observation.fingerprint
+            ) {
+                this.fingerprint =
+                    observation.fingerprint;
+            }
+
+            this.acquisitionCount++;
+
+            this.lastSeenAt =
+                now();
+        }
+
+        mergeDiscovery(
+            discovery
+        ) {
+            this.discoveryIds.add(
+                discovery.id
+            );
+
+            this.lastSeenAt =
+                now();
+        }
+
+        toJSON() {
+            return {
+                url:
+                    this.url,
+
+                id:
+                    this.id,
+
+                types:
+                    [...this.types],
+
+                mechanisms:
+                    [...this.mechanisms],
+
+                parents:
+                    [...this.parents],
+
+                candidateIds:
+                    [...this.candidateIds],
+
+                observationIds:
+                    [...this.observationIds],
+
+                discoveryIds:
+                    [...this.discoveryIds],
+
+                status:
+                    this.status,
+
+                firstSeenAt:
+                    this.firstSeenAt,
+
+                lastSeenAt:
+                    this.lastSeenAt,
+
+                fingerprint:
+                    this.fingerprint,
+
+                finalUrl:
+                    this.finalUrl,
+
+                acquisitionCount:
+                    this.acquisitionCount
+            };
+        }
+
+        static fromJSON(
+            value
+        ) {
+            const resource =
+                new ResourceRecord(
+                    value.url
+                );
+
+            resource.id =
+                value.id ||
+                resource.id;
+
+            resource.types =
+                new Set(
+                    value.types || []
+                );
+
+            resource.mechanisms =
+                new Set(
+                    value.mechanisms || []
+                );
+
+            resource.parents =
+                new Set(
+                    value.parents || []
+                );
+
+            resource.candidateIds =
+                new Set(
+                    value.candidateIds ||
+                        []
+                );
+
+            resource.observationIds =
+                new Set(
+                    value.observationIds ||
+                        []
+                );
+
+            resource.discoveryIds =
+                new Set(
+                    value.discoveryIds ||
+                        []
+                );
+
+            resource.status =
+                value.status ||
+                'known';
+
+            resource.firstSeenAt =
+                value.firstSeenAt ||
+                now();
+
+            resource.lastSeenAt =
+                value.lastSeenAt ||
+                resource.firstSeenAt;
+
+            resource.fingerprint =
+                value.fingerprint ||
+                null;
+
+            resource.finalUrl =
+                value.finalUrl ||
+                null;
+
+            resource.acquisitionCount =
+                value.acquisitionCount ||
+                0;
+
+            return resource;
+        }
+    }
+
+    /*
+     * =====================================================================
+     * OBSERVATION
+     * =====================================================================
+     */
+
+    class Observation {
+        constructor(candidate) {
+            this.id =
+                makeId('observation');
+
+            this.candidateId =
+                candidate.id;
+
+            this.target =
+                candidate.target;
+
+            this.startedAt =
+                now();
+
+            this.completedAt =
+                null;
+
+            this.status =
+                'acquiring';
+
+            this.signalPresent =
+                false;
+
+            this.http = {
+                status:
+                    null,
+
+                contentType:
+                    '',
+
+                contentLength:
+                    null,
+
+                finalUrl:
+                    candidate.target
+            };
+
+            this.fingerprint =
+                null;
+
+            this.body =
+                '';
+
+            this.errors =
+                [];
+        }
+
+        complete(status) {
+            this.status =
+                status;
+
+            this.completedAt =
+                now();
+        }
+    }
+
+    /*
+     * =====================================================================
+     * DISCOVERY
+     * =====================================================================
+     */
+
+    class Discovery {
+        constructor(options) {
+            this.id =
+                makeId('discovery');
+
+            this.candidateId =
+                options.candidate.id;
+
+            this.observationId =
+                options.observation.id;
+
+            this.kind =
+                options.kind;
+
+            this.confidence =
+                clamp(
+                    Number(
+                        options.confidence
+                    ) || 0
+                );
+
+            this.mechanism =
+                options.mechanism ||
+                'provider';
+
+            this.data =
+                options.data ||
+                {};
+
+            this.provenance = {
+                origin:
+                    options.candidate
+                        .origin,
+
+                parent:
+                    options.candidate
+                        .parent,
+
+                candidateTarget:
+                    options.candidate
+                        .target,
+
+                candidateType:
+                    options.candidate
+                        .type,
+
+                mechanism:
+                    this.mechanism,
+
+                depth:
+                    options.candidate
+                        .depth
+            };
+
+            this.createdAt =
+                now();
+        }
+
+        target() {
+            return (
+                this.data.finalUrl ||
+                this.data.url ||
+                this.provenance
+                    .candidateTarget
+            );
+        }
+    }
+
+    /*
+     * =====================================================================
+     * NETWORK EVENT
+     * =====================================================================
+     */
+
+    class NetworkEvent {
+        constructor(data = {}) {
+            this.id =
+                data.id ||
+                makeId('network');
+
+            this.requestId =
+                data.requestId ||
+                null;
+
+            this.api =
+                data.api ||
+                null;
+
+            this.phase =
+                data.phase ||
+                null;
+
+            this.method =
+                data.method ||
+                null;
+
+            this.url =
+                data.url ||
+                null;
+
+            this.finalUrl =
+                data.finalUrl ||
+                null;
+
+            this.status =
+                data.status ??
+                null;
+
+            this.contentType =
+                data.contentType ||
+                '';
+
+            this.initiatorType =
+                data.initiatorType ||
+                null;
+
+            this.requestAt =
+                data.requestAt ||
+                null;
+
+            this.responseAt =
+                data.responseAt ||
+                null;
+
+            this.duration =
+                data.duration ??
+                null;
+
+            this.error =
+                data.error ||
+                null;
+
+            this.candidateCreated =
+                Boolean(
+                    data.candidateCreated
+                );
+
+            this.timestamp =
+                data.timestamp ||
+                now();
+        }
+
+        update(data) {
+            if (
+                data.api
+            ) {
+                this.api =
+                    data.api;
+            }
+
+            if (
+                data.method
+            ) {
+                this.method =
+                    data.method;
+            }
+
+            if (
+                data.url
+            ) {
+                this.url =
+                    data.url;
+            }
+
+            if (
+                data.finalUrl
+            ) {
+                this.finalUrl =
+                    data.finalUrl;
+            }
+
+            if (
+                data.status !==
+                undefined
+            ) {
+                this.status =
+                    data.status;
+            }
+
+            if (
+                data.contentType !==
+                undefined
+            ) {
+                this.contentType =
+                    data.contentType;
+            }
+
+            if (
+                data.initiatorType
+            ) {
+                this.initiatorType =
+                    data.initiatorType;
+            }
+
+            if (
+                data.phase ===
+                'request'
+            ) {
+                this.requestAt =
+                    data.timestamp ||
+                    now();
+            }
+
+            if (
+                data.phase ===
+                'response' ||
+                data.phase ===
+                'error'
+            ) {
+                this.responseAt =
+                    data.timestamp ||
+                    now();
+
+                if (
+                    this.requestAt
+                ) {
+                    this.duration =
+                        this.responseAt -
+                        this.requestAt;
+                }
+            }
+
+            if (
+                data.error
+            ) {
+                this.error =
+                    data.error;
+            }
+
+            this.phase =
+                data.phase ||
+                this.phase;
+
+            this.timestamp =
+                data.timestamp ||
+                now();
+        }
+    }
+
+    /*
+     * =====================================================================
+     * KNOWLEDGE BASE
+     * =====================================================================
+     */
+
+    class KnowledgeBase {
+        constructor(engine) {
+            this.engine =
+                engine;
+
+            this.candidates =
+                new Map();
+
+            this.claimed =
+                new Set();
+
+            this.visited =
+                new Set();
+
+            this.observations =
+                new Map();
+
+            this.discoveries =
+                new Map();
+
+            this.resources =
+                new Map();
+
+            this.edges =
+                new Map();
+
+            this.networkEvents =
+                new Map();
+
+            this.networkRequests =
+                new Map();
+
+            this.persistTimer =
+                null;
+
+            this.load();
+        }
+
+        getResource(url) {
+            const target =
+                canonicalizeUrl(
+                    url
+                );
+
+            if (!target) {
+                return null;
+            }
+
+            let resource =
+                this.resources.get(
+                    target
+                );
+
+            if (!resource) {
+                resource =
+                    new ResourceRecord(
+                        target
+                    );
+
+                this.resources.set(
+                    target,
+                    resource
+                );
+            }
+
+            return resource;
+        }
+
+        addCandidate(
+            candidate
+        ) {
+            if (
+                !candidate.target ||
+                !allowed(
+                    candidate.target
+                )
+            ) {
+                return false;
+            }
+
+            if (
+                candidate.depth >
+                CONFIG.maxDepth
+            ) {
+                this.engine.stats
+                    .maxDepthRejected++;
+
+                return false;
+            }
+
+            const resource =
+                this.getResource(
+                    candidate.target
+                );
+
+            resource.mergeCandidate(
+                candidate
+            );
+
+            /*
+             * Provenance is retained even when the candidate
+             * itself is deduplicated.
+             */
+            this.recordCandidateEdge(
+                candidate
+            );
+
+            const key =
+                candidate.key();
+
+            /*
+             * Resource-level acquisition deduplication.
+             */
+            if (
+                resource.status ===
+                    'acquired' &&
+                resource.fingerprint
+            ) {
+                this.engine.stats
+                    .cacheSkips++;
+
+                return false;
+            }
+
+            if (
+                this.visited.has(key) ||
+                this.claimed.has(key)
+            ) {
+                return false;
+            }
+
+            const existing =
+                this.candidates.get(
+                    key
+                );
+
+            if (existing) {
+                this.mergeCandidate(
+                    existing,
+                    candidate
+                );
+
+                this.engine.stats
+                    .candidatesMerged++;
+
+                return false;
+            }
+
+            if (
+                this.candidates.size >=
+                CONFIG.maxCandidates
+            ) {
+                this.engine.stats
+                    .candidateLimitHits++;
+
+                return false;
+            }
+
+            candidate.lifecycle(
+                'queued'
+            );
+
+            this.candidates.set(
+                key,
+                candidate
+            );
+
+            this.schedulePersist();
+
+            return true;
+        }
+
+        mergeCandidate(
+            existing,
+            incoming
+        ) {
+            existing.priority =
+                Math.max(
+                    existing.priority,
+                    incoming.priority
+                );
+
+            existing.depth =
+                Math.min(
+                    existing.depth,
+                    incoming.depth
+                );
+
+            existing.hints = {
+                ...existing.hints,
+                ...incoming.hints
+            };
+
+            if (
+                incoming.parent &&
+                !existing.parent
+            ) {
+                existing.parent =
+                    incoming.parent;
+            }
+        }
+
+        recordCandidateEdge(
+            candidate
+        ) {
+            if (
+                this.edges.size >=
+                CONFIG.maxGraphEdges
+            ) {
+                return;
+            }
+
+            const from =
+                candidate.parent ||
+                'root';
+
+            const key =
+                [
+                    from,
+                    candidate.target,
+                    candidate.type,
+                    candidate.origin
+                ].join('|');
+
+            if (
+                this.edges.has(key)
+            ) {
+                return;
+            }
+
+            this.edges.set(
+                key,
+                {
+                    id:
+                        makeId('edge'),
+
+                    fromDiscoveryId:
+                        candidate.parent,
+
+                    target:
+                        candidate.target,
+
+                    relationship:
+                        'candidate-reference',
+
+                    mechanism:
+                        candidate.origin,
+
+                    candidateType:
+                        candidate.type,
+
+                    priority:
+                        candidate.priority,
+
+                    depth:
+                        candidate.depth,
+
+                    createdAt:
+                        now()
+                }
+            );
+        }
+
+        claimNext() {
+            const current =
+                now();
+
+            const ready =
+                [
+                    ...this.candidates
+                        .entries()
+                ].filter(
+                    ([, candidate]) =>
+                        candidate
+                            .nextAttemptAt <=
+                        current
+                );
+
+            if (!ready.length) {
+                return null;
+            }
+
+            ready.sort(
+                (a, b) =>
+                    b[1].score() -
+                    a[1].score()
+            );
+
+            const [
+                key,
+                candidate
+            ] = ready[0];
+
+            this.candidates.delete(
+                key
+            );
+
+            this.claimed.add(
+                key
+            );
+
+            candidate.lifecycle(
+                'claimed'
+            );
+
+            return candidate;
+        }
+
+        complete(
+            candidate
+        ) {
+            const key =
+                candidate.key();
+
+            this.claimed.delete(
+                key
+            );
+
+            this.visited.add(
+                key
+            );
+
+            candidate.lifecycle(
+                'completed'
+            );
+
+            this.schedulePersist();
+        }
+
+        fail(
+            candidate,
+            retry
+        ) {
+            const key =
+                candidate.key();
+
+            this.claimed.delete(
+                key
+            );
+
+            if (retry) {
+                const exponent =
+                    Math.max(
+                        0,
+                        candidate.attempts -
+                            1
+                    );
+
+                const delay =
+                    Math.min(
+                        CONFIG.retryMaxDelay,
+                        CONFIG.retryBaseDelay *
+                            Math.pow(
+                                2,
+                                exponent
+                            )
+                    );
+
+                candidate.status =
+                    'retry-wait';
+
+                candidate.nextAttemptAt =
+                    now() + delay;
+
+                this.candidates.set(
+                    key,
+                    candidate
+                );
+            } else {
+                candidate.lifecycle(
+                    'failed'
+                );
+
+                this.visited.add(
+                    key
+                );
+
+                const resource =
+                    this.getResource(
+                        candidate.target
+                    );
+
+                resource.status =
+                    'failed';
+            }
+
+            this.schedulePersist();
+        }
+
+        addObservation(
+            observation
+        ) {
+            this.observations.set(
+                observation.id,
+                observation
+            );
+
+            const resource =
+                this.getResource(
+                    observation.target
+                );
+
+            resource.mergeObservation(
+                observation
+            );
+
+            this.schedulePersist();
+        }
+
+        addDiscovery(
+            discovery
+        ) {
+            this.discoveries.set(
+                discovery.id,
+                discovery
+            );
+
+            const resource =
+                this.getResource(
+                    discovery.provenance
+                        .candidateTarget
+                );
+
+            resource.mergeDiscovery(
+                discovery
+            );
+
+            this.schedulePersist();
+        }
+
+        addNetworkEvent(
+            event
+        ) {
+            if (
+                event.requestId &&
+                this.networkRequests.has(
+                    event.requestId
+                )
+            ) {
+                const existing =
+                    this.networkRequests.get(
+                        event.requestId
+                    );
+
+                existing.update(
+                    event
+                );
+
+                this.addNetworkResource(
+                    existing
+                );
+
+                return existing;
+            }
+
+            if (
+                this.networkEvents.size >=
+                CONFIG.maxNetworkEvents
+            ) {
+                const oldest =
+                    this.networkEvents
+                        .keys()
+                        .next()
+                        .value;
+
+                if (oldest) {
+                    this.networkEvents.delete(
+                        oldest
+                    );
+                }
+            }
+
+            this.networkEvents.set(
+                event.id,
+                event
+            );
+
+            if (
+                event.requestId
+            ) {
+                this.networkRequests.set(
+                    event.requestId,
+                    event
+                );
+            }
+
+            this.addNetworkResource(
+                event
+            );
+
+            return event;
+        }
+
+        addNetworkResource(
+            event
+        ) {
+            if (!event.url) {
+                return;
+            }
+
+            const resource =
+                this.getResource(
+                    event.url
+                );
+
+            if (!resource) {
+                return;
+            }
+
+            resource.mechanisms.add(
+                `network:${event.api}`
+            );
+
+            resource.lastSeenAt =
+                now();
+
+            if (
+                event.contentType
+            ) {
+                resource.types.add(
+                    classifyUrl(
+                        event.url,
+                        event.contentType
+                    )
+                );
+            }
+        }
+
+        queueSize() {
+            return this.candidates.size;
+        }
+
+        inFlight() {
+            return this.claimed.size;
+        }
+
+        nextDelay() {
+            if (
+                !this.candidates.size
+            ) {
+                return null;
+            }
+
+            const current =
+                now();
+
+            return Math.min(
+                ...[
+                    ...this.candidates
+                        .values()
+                ].map(
+                    candidate =>
+                        Math.max(
+                            0,
+                            candidate
+                                .nextAttemptAt -
+                                current
+                        )
+                )
+            );
+        }
+
+        serialize() {
+            return {
+                version: 6,
+
+                visited:
+                    [
+                        ...this.visited
+                    ].slice(
+                        -CONFIG.maxCandidates
+                    ),
+
+                resources:
+                    [
+                        ...this.resources
+                            .values()
+                    ]
+                        .slice(
+                            -CONFIG.maxPersistedResources
+                        )
+                        .map(
+                            resource =>
+                                resource.toJSON()
+                        ),
+
+                discoveries:
+                    [
+                        ...this.discoveries
+                            .values()
+                    ].slice(
+                        -CONFIG.maxPersistedDiscoveries
+                    ),
+
+                edges:
+                    [
+                        ...this.edges
+                            .values()
+                    ].slice(
+                        -CONFIG.maxPersistedEdges
+                    )
+            };
+        }
+
+        schedulePersist() {
+            if (
+                !CONFIG.persistState
+            ) {
+                return;
+            }
+
+            clearTimeout(
+                this.persistTimer
+            );
+
+            this.persistTimer =
+                setTimeout(
+                    () => this.persist(),
+                    CONFIG.persistDebounceMs
+                );
+        }
+
+        persist() {
+            if (
+                !CONFIG.persistState
+            ) {
+                return;
+            }
+
+            clearTimeout(
+                this.persistTimer
+            );
+
+            this.persistTimer =
+                null;
+
+            try {
+                GM_setValue(
+                    STATE_KEY,
+                    JSON.stringify(
+                        this.serialize()
+                    )
+                );
+            } catch (error) {
+                warn(
+                    'Persistence failed',
+                    error
+                );
+            }
+        }
+
+        load() {
+            if (
+                !CONFIG.persistState
+            ) {
+                return;
+            }
+
+            try {
+                const raw =
+                    GM_getValue(
+                        STATE_KEY,
+                        null
+                    );
+
+                if (!raw) {
+                    return;
+                }
+
+                const state =
+                    typeof raw ===
+                    'string'
+                        ? JSON.parse(raw)
+                        : raw;
+
+                for (
+                    const value of
+                    state.visited || []
+                ) {
+                    this.visited.add(
+                        value
+                    );
+                }
+
+                for (
+                    const value of
+                    state.resources || []
+                ) {
+                    if (
+                        value?.url
+                    ) {
+                        this.resources.set(
+                            value.url,
+                            ResourceRecord
+                                .fromJSON(
+                                    value
+                                )
+                        );
+                    }
+                }
+
+                for (
+                    const value of
+                    state.discoveries || []
+                ) {
+                    if (
+                        value?.id
+                    ) {
+                        this.discoveries.set(
+                            value.id,
+                            value
+                        );
+                    }
+                }
+
+                for (
+                    const value of
+                    state.edges || []
+                ) {
+                    if (
+                        value?.target
+                    ) {
+                        const key =
+                            [
+                                value
+                                    .fromDiscoveryId ||
+                                    'root',
+                                value.target,
+                                value
+                                    .candidateType ||
+                                    '',
+                                value
+                                    .mechanism ||
+                                    ''
+                            ].join('|');
+
+                        this.edges.set(
+                            key,
+                            value
+                        );
+                    }
+                }
+
+                log(
+                    'Restored persistent state',
+                    {
+                        version:
+                            state.version,
+
+                        resources:
+                            this.resources.size,
+
+                        discoveries:
+                            this.discoveries.size,
+
+                        edges:
+                            this.edges.size
+                    }
+                );
+            } catch (error) {
+                warn(
+                    'State restoration failed',
+                    error
+                );
+            }
+        }
+
+        clear() {
+            clearTimeout(
+                this.persistTimer
+            );
+
+            this.candidates.clear();
+            this.claimed.clear();
+            this.visited.clear();
+            this.observations.clear();
+            this.discoveries.clear();
+            this.resources.clear();
+            this.edges.clear();
+            this.networkEvents.clear();
+            this.networkRequests.clear();
+
+            this.persist();
+        }
+    }
+
+    /*
+     * =====================================================================
+     * HTTP ACQUISITION
+     * =====================================================================
+     */
+
+    class HttpAcquisition {
+        acquire(url) {
+            if (
+                typeof GM_xmlhttpRequest ===
+                'function'
+            ) {
+                return this.gmRequest(
+                    url
+                );
+            }
+
+            return this.fetchRequest(
+                url
+            );
+        }
+
+        gmRequest(url) {
+            return new Promise(
+                (resolve, reject) => {
+                    let settled =
+                        false;
+
+                    const finish = (
+                        callback,
+                        value
+                    ) => {
+                        if (
+                            settled
+                        ) {
+                            return;
+                        }
+
+                        settled =
+                            true;
+
+                        callback(
+                            value
+                        );
+                    };
+
+                    GM_xmlhttpRequest({
+                        method:
+                            'GET',
+
+                        url,
+
+                        timeout:
+                            CONFIG.requestTimeout,
+
+                        responseType:
+                            'text',
+
+                        onload:
+                            response => {
+                                const headers =
+                                    String(
+                                        response
+                                            .responseHeaders ||
+                                            ''
+                                    );
+
+                                const ct =
+                                    headers.match(
+                                        /^content-type:\s*([^\r\n]+)/im
+                                    );
+
+                                const length =
+                                    headers.match(
+                                        /^content-length:\s*(\d+)/im
+                                    );
+
+                                finish(
+                                    resolve,
+                                    {
+                                        status:
+                                            response.status,
+
+                                        contentType:
+                                            ct
+                                                ? ct[1]
+                                                : '',
+
+                                        contentLength:
+                                            length
+                                                ? Number(
+                                                      length[1]
+                                                  )
+                                                : null,
+
+                                        body:
+                                            response
+                                                .responseText ||
+                                            '',
+
+                                        finalUrl:
+                                            response
+                                                .finalUrl ||
+                                            url
+                                    }
+                                );
+                            },
+
+                        onerror:
+                            () =>
+                                finish(
+                                    reject,
+                                    new Error(
+                                        'request failed'
+                                    )
+                                ),
+
+                        ontimeout:
+                            () =>
+                                finish(
+                                    reject,
+                                    new Error(
+                                        'request timeout'
+                                    )
+                                ),
+
+                        onabort:
+                            () =>
+                                finish(
+                                    reject,
+                                    new Error(
+                                        'request aborted'
+                                    )
+                                )
+                    });
+                }
+            );
+        }
+
+        async fetchRequest(url) {
+            const controller =
+                typeof AbortController !==
+                'undefined'
+                    ? new AbortController()
+                    : null;
+
+            let timer;
+
+            if (controller) {
+                timer =
+                    setTimeout(
+                        () =>
+                            controller.abort(),
+                        CONFIG.requestTimeout
+                    );
+            }
+
+            try {
+                const response =
+                    await fetch(
+                        url,
+                        {
+                            method:
+                                'GET',
+
+                            credentials:
+                                'same-origin',
+
+                            signal:
+                                controller
+                                    ?.signal
+                        }
+                    );
+
+                return {
+                    status:
+                        response.status,
+
+                    contentType:
+                        response.headers.get(
+                            'content-type'
+                        ) || '',
+
+                    contentLength:
+                        Number(
+                            response.headers.get(
+                                'content-length'
+                            )
+                        ) || null,
+
+                    body:
+                        await response.text(),
+
+                    finalUrl:
+                        response.url ||
+                        url
+                };
+            } finally {
+                if (timer) {
+                    clearTimeout(
+                        timer
+                    );
+                }
+            }
+        }
+    }
+
+    /*
+     * =====================================================================
+     * PROVIDER BASE
+     * =====================================================================
+     */
+
+    class Provider {
+        matches() {
+            return false;
+        }
+
+        recognize() {
+            return [];
+        }
+
+        candidates() {
+            return [];
+        }
+    }
+
+    class HtmlProvider
+        extends Provider {
+
+        matches(
+            candidate,
+            observation
+        ) {
+            return (
+                isHtml(
+                    observation.http
+                        .contentType
+                ) ||
+                looksHtml(
+                    observation.body
+                )
+            );
+        }
+
+        recognize(
+            candidate,
+            observation
+        ) {
+            const base =
+                observation.http
+                    .finalUrl ||
+                candidate.target;
+
+            const doc =
+                new DOMParser()
+                    .parseFromString(
+                        observation.body ||
+                            '',
+                        'text/html'
+                    );
+
+            const baseElement =
+                doc.querySelector(
+                    'base[href]'
+                );
+
+            const documentBase =
+                baseElement
+                    ? canonicalizeUrl(
+                          baseElement
+                              .getAttribute(
+                                  'href'
+                              ),
+                          base
+                      ) || base
+                    : base;
+
+            const references =
+                [];
+
+            if (
+                CONFIG.discoverLinks
+            ) {
+                for (
+                    const element of
+                    doc.querySelectorAll(
+                        'a[href],area[href]'
+                    )
+                ) {
+                    const url =
+                        canonicalizeUrl(
+                            element.getAttribute(
+                                'href'
+                            ),
+                            documentBase
+                        );
+
+                    if (
+                        url &&
+                        allowed(url)
+                    ) {
+                        references.push({
+                            url,
+                            type:
+                                'url',
+                            mechanism:
+                                'html-link',
+                            tag:
+                                element.tagName
+                                    .toLowerCase()
+                        });
+                    }
+                }
+            }
+
+            if (
+                CONFIG.discoverResources
+            ) {
+                const selector = [
+                    'script[src]',
+                    'link[href]',
+                    'img[src]',
+                    'iframe[src]',
+                    'frame[src]',
+                    'source[src]',
+                    'video[src]',
+                    'audio[src]',
+                    'track[src]',
+                    'object[data]',
+                    'embed[src]'
+                ].join(',');
+
+                for (
+                    const element of
+                    doc.querySelectorAll(
+                        selector
+                    )
+                ) {
+                    const raw =
+                        element.getAttribute(
+                            'src'
+                        ) ||
+                        element.getAttribute(
+                            'href'
+                        ) ||
+                        element.getAttribute(
+                            'data'
+                        );
+
+                    const url =
+                        canonicalizeUrl(
+                            raw,
+                            documentBase
+                        );
+
+                    if (
+                        !url ||
+                        !allowed(url)
+                    ) {
+                        continue;
+                    }
+
+                    const tag =
+                        element.tagName
+                            .toLowerCase();
+
+                    const rel =
+                        (
+                            element.getAttribute(
+                                'rel'
+                            ) || ''
+                        ).toLowerCase();
+
+                    let type =
+                        'resource';
+
+                    if (
+                        tag ===
+                        'script'
+                    ) {
+                        type =
+                            'script';
+                    } else if (
+                        tag === 'link' &&
+                        rel.includes(
+                            'stylesheet'
+                        )
+                    ) {
+                        type =
+                            'stylesheet';
+                    } else if (
+                        tag === 'link' &&
+                        rel.includes(
+                            'manifest'
+                        )
+                    ) {
+                        type =
+                            'manifest';
+                    } else if (
+                        tag === 'iframe' ||
+                        tag === 'frame'
+                    ) {
+                        type =
+                            'frame';
+                    } else if (
+                        tag === 'img' ||
+                        tag === 'video' ||
+                        tag === 'audio' ||
+                        tag === 'source' ||
+                        tag === 'track'
+                    ) {
+                        type =
+                            'media';
+                    }
+
+                    references.push({
+                        url,
+                        type,
+                        mechanism:
+                            'html-resource',
+                        tag,
+                        rel
+                    });
+                }
+            }
+
+            if (
+                CONFIG.discoverMetadata
+            ) {
+                for (
+                    const element of
+                    doc.querySelectorAll(
+                        'link[href]'
+                    )
+                ) {
+                    const rel =
+                        (
+                            element.getAttribute(
+                                'rel'
+                            ) || ''
+                        ).toLowerCase();
+
+                    const url =
+                        canonicalizeUrl(
+                            element.getAttribute(
+                                'href'
+                            ),
+                            documentBase
+                        );
+
+                    if (
+                        !url ||
+                        !allowed(url)
+                    ) {
+                        continue;
+                    }
+
+                    if (
+                        rel.includes(
+                            'sitemap'
+                        )
+                    ) {
+                        references.push({
+                            url,
+                            type:
+                                'sitemap',
+                            mechanism:
+                                'html-sitemap',
+                            tag:
+                                'link',
+                            rel
+                        });
+                    } else if (
+                        rel.includes(
+                            'alternate'
+                        )
+                    ) {
+                        references.push({
+                            url,
+                            type:
+                                'feed',
+                            mechanism:
+                                'html-alternate',
+                            tag:
+                                'link',
+                            rel
+                        });
+                    } else if (
+                        rel.includes(
+                            'canonical'
+                        )
+                    ) {
+                        references.push({
+                            url,
+                            type:
+                                'metadata',
+                            mechanism:
+                                'html-canonical',
+                            tag:
+                                'link',
+                            rel
+                        });
+                    }
+                }
+            }
+
+            const forms =
+                [];
+
+            if (
+                CONFIG.discoverForms
+            ) {
+                for (
+                    const form of
+                    doc.querySelectorAll(
+                        'form[action]'
+                    )
+                ) {
+                    const url =
+                        canonicalizeUrl(
+                            form.getAttribute(
+                                'action'
+                            ),
+                            documentBase
+                        );
+
+                    if (
+                        url &&
+                        allowed(url)
+                    ) {
+                        forms.push(
+                            url
+                        );
+                    }
+                }
+            }
+
+            const embedded =
+                CONFIG.discoverFromText
+                    ? extractUrls(
+                          observation.body,
+                          documentBase
+                      )
+                    : [];
+
+            const title =
+                doc.querySelector(
+                    'title'
+                )
+                    ?.textContent
+                    ?.trim() || '';
+
+            const discoveries = [
+                new Discovery({
+                    candidate,
+                    observation,
+                    kind:
+                        'html-document',
+                    confidence:
+                        0.99,
+                    mechanism:
+                        'html-recognition',
+                    data: {
+                        url:
+                            candidate.target,
+                        finalUrl:
+                            documentBase,
+                        title
+                    }
+                })
+            ];
+
+            if (
+                references.length
+            ) {
+                discoveries.push(
+                    new Discovery({
+                        candidate,
+                        observation,
+                        kind:
+                            'html-references',
+                        confidence:
+                            0.97,
+                        mechanism:
+                            'html-reference-parser',
+                        data: {
+                            references
+                        }
+                    })
+                );
+            }
+
+            if (
+                forms.length
+            ) {
+                discoveries.push(
+                    new Discovery({
+                        candidate,
+                        observation,
+                        kind:
+                            'html-forms',
+                        confidence:
+                            0.92,
+                        mechanism:
+                            'html-form-parser',
+                        data: {
+                            urls:
+                                unique(
+                                    forms
+                                )
+                        }
+                    })
+                );
+            }
+
+            if (
+                embedded.length
+            ) {
+                discoveries.push(
+                    new Discovery({
+                        candidate,
+                        observation,
+                        kind:
+                            'html-embedded-urls',
+                        confidence:
+                            0.72,
+                        mechanism:
+                            'html-text-parser',
+                        data: {
+                            urls:
+                                unique(
+                                    embedded
+                                )
+                        }
+                    })
+                );
+            }
+
+            return discoveries;
+        }
+
+        candidates(
+            discovery
+        ) {
+            const depth =
+                discovery
+                    .provenance
+                    .depth + 1;
+
+            if (
+                discovery.kind ===
+                'html-references'
+            ) {
+                return (
+                    discovery.data
+                        .references || []
+                ).map(
+                    reference =>
+                        new Candidate({
+                            target:
+                                reference.url,
+
+                            type:
+                                reference.type,
+
+                            origin:
+                                reference.mechanism,
+
+                            parent:
+                                discovery.id,
+
+                            depth,
+
+                            priority:
+                                TYPE_PRIORITY[
+                                    reference.type
+                                ] ??
+                                0.45,
+
+                            hints: {
+                                confidence:
+                                    discovery.confidence,
+
+                                relation:
+                                    reference.rel ||
+                                    null
+                            }
+                        })
+                );
+            }
+
+            if (
+                discovery.kind ===
+                'html-forms'
+            ) {
+                return (
+                    discovery.data.urls ||
+                    []
+                ).map(url =>
+                    new Candidate({
+                        target:
+                            url,
+
+                        type:
+                            'form',
+
+                        origin:
+                            'html-form-parser',
+
+                        parent:
+                            discovery.id,
+
+                        depth,
+
+                        priority:
+                            0.36,
+
+                        hints: {
+                            confidence:
+                                discovery.confidence
+                        }
+                    })
+                );
+            }
+
+            if (
+                discovery.kind ===
+                'html-embedded-urls'
+            ) {
+                return (
+                    discovery.data.urls ||
+                    []
+                ).map(url =>
+                    new Candidate({
+                        target:
+                            url,
+
+                        type:
+                            classifyUrl(
+                                url
+                            ),
+
+                        origin:
+                            'html-text-parser',
+
+                        parent:
+                            discovery.id,
+
+                        depth,
+
+                        priority:
+                            0.34,
+
+                        hints: {
+                            confidence:
+                                discovery.confidence
+                        }
+                    })
+                );
+            }
+
+            return [];
+        }
+    }
+
+    class JsonProvider
+        extends Provider {
+
+        matches(
+            candidate,
+            observation
+        ) {
+            return (
+                isJson(
+                    observation.http
+                        .contentType
+                ) ||
+                (
+                    (
+                        candidate.type ===
+                        'manifest' ||
+                        candidate.type ===
+                        'api'
+                    ) &&
+                    looksJson(
+                        observation.body
+                    )
+                )
+            );
+        }
+
+        recognize(
+            candidate,
+            observation
+        ) {
+            let value;
+
+            try {
+                value =
+                    JSON.parse(
+                        observation.body ||
+                            ''
+                    );
+            } catch {
+                return [];
+            }
+
+            const base =
+                observation.http
+                    .finalUrl ||
+                candidate.target;
+
+            const urls =
+                [];
+
+            const visit =
+                value => {
+                    if (
+                        typeof value ===
+                        'string'
+                    ) {
+                        const direct =
+                            canonicalizeUrl(
+                                value,
+                                base
+                            );
+
+                        if (
+                            direct &&
+                            allowed(direct)
+                        ) {
+                            urls.push(
+                                direct
+                            );
+                        }
+
+                        urls.push(
+                            ...extractUrls(
+                                value,
+                                base
+                            )
+                        );
+
+                        return;
+                    }
+
+                    if (
+                        !value ||
+                        typeof value !==
+                            'object'
+                    ) {
+                        return;
+                    }
+
+                    for (
+                        const child of
+                        Object.values(
+                            value
+                        )
+                    ) {
+                        visit(child);
+                    }
+                };
+
+            visit(value);
+
+            const summary =
+                Array.isArray(value)
+                    ? {
+                          valueType:
+                              'array',
+
+                          arrayLength:
+                              value.length
+                      }
+                    : value &&
+                      typeof value ===
+                          'object'
+                    ? {
+                          valueType:
+                              'object',
+
+                          keys:
+                              Object.keys(
+                                  value
+                              ).slice(
+                                  0,
+                                  100
+                              )
+                      }
+                    : {
+                          valueType:
+                              typeof value
+                      };
+
+            return [
+                new Discovery({
+                    candidate,
+                    observation,
+                    kind:
+                        candidate.type ===
+                        'manifest'
+                            ? 'manifest-json'
+                            : 'json-document',
+                    confidence:
+                        0.98,
+                    mechanism:
+                        'json-parser',
+                    data: {
+                        url:
+                            candidate.target,
+
+                        finalUrl:
+                            base,
+
+                        ...summary,
+
+                        urls:
+                            unique(
+                                urls
+                            )
+                    }
+                })
+            ];
+        }
+
+        candidates(
+            discovery
+        ) {
+            const depth =
+                discovery
+                    .provenance
+                    .depth + 1;
+
+            return (
+                discovery.data.urls ||
+                []
+            ).map(url =>
+                new Candidate({
+                    target:
+                        url,
+
+                    type:
+                        classifyUrl(
+                            url,
+                            'api'
+                        ),
+
+                    origin:
+                        'json-parser',
+
+                    parent:
+                        discovery.id,
+
+                    depth,
+
+                    priority:
+                        0.72,
+
+                    hints: {
+                        confidence:
+                            discovery.confidence
+                    }
+                })
+            );
+        }
+    }
+
+    class XmlProvider
+        extends Provider {
+
+        matches(
+            candidate,
+            observation
+        ) {
+            return (
+                isXml(
+                    observation.http
+                        .contentType
+                ) ||
+                candidate.type ===
+                    'sitemap' ||
+                /<loc[\s>]/i.test(
+                    observation.body ||
+                        ''
+                )
+            );
+        }
+
+        recognize(
+            candidate,
+            observation
+        ) {
+            const base =
+                observation.http
+                    .finalUrl ||
+                candidate.target;
+
+            const body =
+                observation.body ||
+                '';
+
+            let documentType =
+                'xml';
+
+            if (
+                /<urlset[\s>]/i.test(
+                    body
+                )
+            ) {
+                documentType =
+                    'sitemap';
+            } else if (
+                /<sitemapindex[\s>]/i.test(
+                    body
+                )
+            ) {
+                documentType =
+                    'sitemap-index';
+            } else if (
+                /<rss[\s>]/i.test(
+                    body
+                )
+            ) {
+                documentType =
+                    'rss';
+            } else if (
+                /<feed[\s>]/i.test(
+                    body
+                )
+            ) {
+                documentType =
+                    'atom';
+            }
+
+            return [
+                new Discovery({
+                    candidate,
+                    observation,
+                    kind:
+                        'xml-document',
+                    confidence:
+                        0.95,
+                    mechanism:
+                        'xml-parser',
+                    data: {
+                        url:
+                            candidate.target,
+
+                        finalUrl:
+                            base,
+
+                        documentType,
+
+                        urls:
+                            extractXmlLocs(
+                                body,
+                                base
+                            )
+                    }
+                })
+            ];
+        }
+
+        candidates(
+            discovery
+        ) {
+            const depth =
+                discovery
+                    .provenance
+                    .depth + 1;
+
+            return (
+                discovery.data.urls ||
+                []
+            ).map(url =>
+                new Candidate({
+                    target:
+                        url,
+
+                    type:
+                        discovery.data
+                            .documentType ===
+                        'sitemap'
+                            ? 'url'
+                            : 'resource',
+
+                    origin:
+                        'xml-parser',
+
+                    parent:
+                        discovery.id,
+
+                    depth,
+
+                    priority:
+                        discovery.data
+                            .documentType ===
+                        'sitemap'
+                            ? 0.64
+                            : 0.42,
+
+                    hints: {
+                        confidence:
+                            discovery.confidence
+                    }
+                })
+            );
+        }
+    }
+
+    class CssProvider
+        extends Provider {
+
+        matches(
+            candidate,
+            observation
+        ) {
+            return (
+                isCss(
+                    observation.http
+                        .contentType
+                ) ||
+                candidate.type ===
+                    'stylesheet'
+            );
+        }
+
+        recognize(
+            candidate,
+            observation
+        ) {
+            const base =
+                observation.http
+                    .finalUrl ||
+                candidate.target;
+
+            return [
+                new Discovery({
+                    candidate,
+                    observation,
+                    kind:
+                        'css-document',
+                    confidence:
+                        0.94,
+                    mechanism:
+                        'css-parser',
+                    data: {
+                        url:
+                            candidate.target,
+
+                        finalUrl:
+                            base,
+
+                        urls:
+                            extractCssUrls(
+                                observation.body,
+                                base
+                            )
+                    }
+                })
+            ];
+        }
+
+        candidates(
+            discovery
+        ) {
+            const depth =
+                discovery
+                    .provenance
+                    .depth + 1;
+
+            return (
+                discovery.data.urls ||
+                []
+            ).map(url =>
+                new Candidate({
+                    target:
+                        url,
+
+                    type:
+                        classifyUrl(
+                            url
+                        ),
+
+                    origin:
+                        'css-parser',
+
+                    parent:
+                        discovery.id,
+
+                    depth,
+
+                    priority:
+                        0.40,
+
+                    hints: {
+                        confidence:
+                            discovery.confidence
+                    }
+                })
+            );
+        }
+    }
+
+    class JavaScriptProvider
+        extends Provider {
+
+        matches(
+            candidate,
+            observation
+        ) {
+            return (
+                isJavaScript(
+                    observation.http
+                        .contentType
+                ) ||
+                candidate.type ===
+                    'script' ||
+                /\.(m?js)$/i.test(
+                    candidate.target
+                )
+            );
+        }
+
+        recognize(
+            candidate,
+            observation
+        ) {
+            const base =
+                observation.http
+                    .finalUrl ||
+                candidate.target;
+
+            const body =
+                observation.body ||
+                '';
+
+            const urls =
+                extractUrls(
+                    body,
+                    base
+                );
+
+            const sourceMaps =
+                [];
+
+            const regex =
+                /[#@]\s*sourceMappingURL\s*=\s*([^\s]+)/gi;
+
+            let match;
+
+            while (
+                (match =
+                    regex.exec(body)) !==
+                null
+            ) {
+                const url =
+                    canonicalizeUrl(
+                        match[1],
+                        base
+                    );
+
+                if (
+                    url &&
+                    allowed(url)
+                ) {
+                    sourceMaps.push(
+                        url
+                    );
+                }
+            }
+
+            return [
+                new Discovery({
+                    candidate,
+                    observation,
+                    kind:
+                        'javascript-document',
+                    confidence:
+                        0.88,
+                    mechanism:
+                        'javascript-parser',
+                    data: {
+                        url:
+                            candidate.target,
+
+                        finalUrl:
+                            base,
+
+                        textLength:
+                            body.length,
+
+                        urls:
+                            unique([
+                                ...urls,
+                                ...sourceMaps
+                            ])
+                    }
+                })
+            ];
+        }
+
+        candidates(
+            discovery
+        ) {
+            const depth =
+                discovery
+                    .provenance
+                    .depth + 1;
+
+            return (
+                discovery.data.urls ||
+                []
+            ).map(url =>
+                new Candidate({
+                    target:
+                        url,
+
+                    type:
+                        /\.map$/i.test(
+                            url
+                        )
+                            ? 'source-map'
+                            : classifyUrl(
+                                  url
+                              ),
+
+                    origin:
+                        'javascript-parser',
+
+                    parent:
+                        discovery.id,
+
+                    depth,
+
+                    priority:
+                        /\.map$/i.test(
+                            url
+                        )
+                            ? 0.53
+                            : 0.34,
+
+                    hints: {
+                        confidence:
+                            discovery.confidence
+                    }
+                })
+            );
+        }
+    }
+
+    class RobotsProvider
+        extends Provider {
+
+        matches(
+            candidate
+        ) {
+            return (
+                candidate.type ===
+                    'robots' ||
+                /\/robots\.txt$/i.test(
+                    candidate.target
+                )
+            );
+        }
+
+        recognize(
+            candidate,
+            observation
+        ) {
+            const base =
+                observation.http
+                    .finalUrl ||
+                candidate.target;
+
+            const sitemaps =
+                [];
+
+            for (
+                const line of
+                String(
+                    observation.body ||
+                        ''
+                ).split(
+                    /\r?\n/
+                )
+            ) {
+                const match =
+                    line.match(
+                        /^\s*Sitemap\s*:\s*(\S+)/i
+                    );
+
+                if (!match) {
+                    continue;
+                }
+
+                const url =
+                    canonicalizeUrl(
+                        match[1],
+                        base
+                    );
+
+                if (
+                    url &&
+                    allowed(url)
+                ) {
+                    sitemaps.push(
+                        url
+                    );
+                }
+            }
+
+            return [
+                new Discovery({
+                    candidate,
+                    observation,
+                    kind:
+                        'robots-document',
+                    confidence:
+                        0.99,
+                    mechanism:
+                        'robots-parser',
+                    data: {
+                        url:
+                            candidate.target,
+
+                        finalUrl:
+                            base,
+
+                        sitemaps:
+                            unique(
+                                sitemaps
+                            )
+                    }
+                })
+            ];
+        }
+
+        candidates(
+            discovery
+        ) {
+            const depth =
+                discovery
+                    .provenance
+                    .depth + 1;
+
+            return (
+                discovery.data.sitemaps ||
+                []
+            ).map(url =>
+                new Candidate({
+                    target:
+                        url,
+
+                    type:
+                        'sitemap',
+
+                    origin:
+                        'robots-parser',
+
+                    parent:
+                        discovery.id,
+
+                    depth,
+
+                    priority:
+                        0.92,
+
+                    hints: {
+                        confidence:
+                            discovery.confidence
+                    }
+                })
+            );
+        }
+    }
+
+    class TextProvider
+        extends Provider {
+
+        matches(
+            candidate,
+            observation
+        ) {
+            const type =
+                observation.http
+                    .contentType;
+
+            if (
+                candidate.type ===
+                    'robots' ||
+                isHtml(type) ||
+                isJson(type) ||
+                isXml(type) ||
+                isCss(type) ||
+                isJavaScript(type)
+            ) {
+                return false;
+            }
+
+            return isText(type);
+        }
+
+        recognize(
+            candidate,
+            observation
+        ) {
+            const base =
+                observation.http
+                    .finalUrl ||
+                candidate.target;
+
+            const body =
+                observation.body ||
+                '';
+
+            return [
+                new Discovery({
+                    candidate,
+                    observation,
+                    kind:
+                        'text-document',
+                    confidence:
+                        0.70,
+                    mechanism:
+                        'text-parser',
+                    data: {
+                        url:
+                            candidate.target,
+
+                        finalUrl:
+                            base,
+
+                        textLength:
+                            body.length,
+
+                        preview:
+                            body.slice(
+                                0,
+                                CONFIG.maxTextPreview
+                            ),
+
+                        urls:
+                            extractUrls(
+                                body,
+                                base
+                            )
+                    }
+                })
+            ];
+        }
+
+        candidates(
+            discovery
+        ) {
+            const depth =
+                discovery
+                    .provenance
+                    .depth + 1;
+
+            return (
+                discovery.data.urls ||
+                []
+            ).map(url =>
+                new Candidate({
+                    target:
+                        url,
+
+                    type:
+                        classifyUrl(
+                            url
+                        ),
+
+                    origin:
+                        'text-parser',
+
+                    parent:
+                        discovery.id,
+
+                    depth,
+
+                    priority:
+                        0.31,
+
+                    hints: {
+                        confidence:
+                            discovery.confidence
+                    }
+                })
+            );
+        }
+    }
+
+    /*
+     * Metadata provider is deliberately lightweight. It recognizes
+     * non-text resources so that an image/font/media acquisition still
+     * becomes a meaningful resource observation without trying to parse
+     * binary data as HTML/JSON/etc.
+     */
+
+    class BinaryProvider
+        extends Provider {
+
+        matches(
+            candidate,
+            observation
+        ) {
+            const type =
+                contentType(
+                    observation.http
+                        .contentType
+                );
+
+            if (
+                !type ||
+                isText(type) ||
+                isJson(type) ||
+                isXml(type) ||
+                isCss(type) ||
+                isJavaScript(type)
+            ) {
+                return false;
+            }
+
+            return true;
+        }
+
+        recognize(
+            candidate,
+            observation
+        ) {
+            return [
+                new Discovery({
+                    candidate,
+                    observation,
+                    kind:
+                        'binary-resource',
+                    confidence:
+                        0.92,
+                    mechanism:
+                        'content-type-recognition',
+                    data: {
+                        url:
+                            candidate.target,
+
+                        finalUrl:
+                            observation.http
+                                .finalUrl,
+
+                        contentType:
+                            observation.http
+                                .contentType,
+
+                        contentLength:
+                            observation.http
+                                .contentLength
+                    }
+                })
+            ];
+        }
+    }
+
+    class ProviderRegistry {
+        constructor() {
+            this.providers = [
+                new RobotsProvider(),
+                new JsonProvider(),
+                new HtmlProvider(),
+                new XmlProvider(),
+                new CssProvider(),
+                new JavaScriptProvider(),
+                new TextProvider(),
+                new BinaryProvider()
+            ];
+        }
+
+        recognize(
+            candidate,
+            observation
+        ) {
+            const result =
+                [];
+
+            for (
+                const provider of
+                this.providers
+            ) {
+                try {
+                    if (
+                        !provider.matches(
+                            candidate,
+                            observation
+                        )
+                    ) {
+                        continue;
+                    }
+
+                    const discoveries =
+                        provider.recognize(
+                            candidate,
+                            observation
+                        );
+
+                    if (
+                        discoveries?.length
+                    ) {
+                        result.push({
+                            provider,
+                            discoveries
+                        });
+
+                        /*
+                         * Content recognition is normally exclusive.
+                         * The provider itself may still return many
+                         * discoveries.
+                         */
+                        break;
+                    }
+                } catch (error) {
+                    warn(
+                        'Provider error',
+                        error
+                    );
+                }
+            }
+
+            return result;
+        }
+    }
+
+    /*
+     * =====================================================================
+     * NETWORK BRIDGE
+     * =====================================================================
+     */
+
+    class NetworkBridge {
+        constructor(engine) {
+            this.engine =
+                engine;
+
+            this.install();
+        }
+
+        install() {
+            if (
+                !CONFIG.discoverNetwork
+            ) {
+                return;
+            }
+
+            window.addEventListener(
+                'message',
+                event => {
+                    if (
+                        event.source !==
+                        window
+                    ) {
+                        return;
+                    }
+
+                    const data =
+                        event.data;
+
+                    if (
+                        !data ||
+                        data.source !==
+                            NETWORK_SOURCE ||
+                        data.channel !==
+                            NETWORK_CHANNEL
+                    ) {
+                        return;
+                    }
+
+                    this.handle(
+                        data
+                    );
+                }
+            );
+
+            const inject =
+                () => {
+                    try {
+                        const script =
+                            document.createElement(
+                                'script'
+                            );
+
+                        script.textContent = `
+                            (() => {
+                                const SOURCE =
+                                    ${JSON.stringify(
+                                        NETWORK_SOURCE
+                                    )};
+
+                                const CHANNEL =
+                                    ${JSON.stringify(
+                                        NETWORK_CHANNEL
+                                    )};
+
+                                if (
+                                    window.__GDE_NETWORK_BRIDGE__
+                                ) {
+                                    return;
+                                }
+
+                                window.__GDE_NETWORK_BRIDGE__ =
+                                    true;
+
+                                let sequence = 0;
+
+                                const nextId = prefix =>
+                                    prefix +
+                                    '-' +
+                                    Date.now() +
+                                    '-' +
+                                    (++sequence);
+
+                                const emit = payload => {
+                                    try {
+                                        window.postMessage(
+                                            {
+                                                source:
+                                                    SOURCE,
+
+                                                channel:
+                                                    CHANNEL,
+
+                                                ...payload
+                                            },
+                                            '*'
+                                        );
+                                    } catch (_) {}
+                                };
+
+                                const resolveUrl =
+                                    value => {
+                                        try {
+                                            if (
+                                                value &&
+                                                typeof value.url ===
+                                                    'string'
+                                            ) {
+                                                value =
+                                                    value.url;
+                                            }
+
+                                            if (
+                                                typeof value !==
+                                                'string'
+                                            ) {
+                                                return null;
+                                            }
+
+                                            return new URL(
+                                                value,
+                                                location.href
+                                            ).href;
+                                        } catch (_) {
+                                            return null;
+                                        }
+                                    };
+
+                                /*
+                                 * fetch()
+                                 */
+                                try {
+                                    const originalFetch =
+                                        window.fetch;
+
+                                    if (
+                                        typeof originalFetch ===
+                                        'function'
+                                    ) {
+                                        window.fetch =
+                                            function(
+                                                input,
+                                                init
+                                            ) {
+                                                const requestId =
+                                                    nextId(
+                                                        'fetch'
+                                                    );
+
+                                                const url =
+                                                    resolveUrl(
+                                                        input
+                                                    );
+
+                                                let method =
+                                                    init &&
+                                                    init.method;
+
+                                                if (
+                                                    !method &&
+                                                    input &&
+                                                    typeof input.method ===
+                                                        'string'
+                                                ) {
+                                                    method =
+                                                        input.method;
+                                                }
+
+                                                method =
+                                                    String(
+                                                        method ||
+                                                        'GET'
+                                                    ).toUpperCase();
+
+                                                emit({
+                                                    phase:
+                                                        'request',
+
+                                                    requestId,
+
+                                                    api:
+                                                        'fetch',
+
+                                                    url,
+
+                                                    method,
+
+                                                    timestamp:
+                                                        Date.now()
+                                                });
+
+                                                let promise;
+
+                                                try {
+                                                    promise =
+                                                        originalFetch.apply(
+                                                            this,
+                                                            arguments
+                                                        );
+                                                } catch (
+                                                    error
+                                                ) {
+                                                    emit({
+                                                        phase:
+                                                            'error',
+
+                                                        requestId,
+
+                                                        api:
+                                                            'fetch',
+
+                                                        url,
+
+                                                        method,
+
+                                                        error:
+                                                            String(
+                                                                error
+                                                            ),
+
+                                                        timestamp:
+                                                            Date.now()
+                                                    });
+
+                                                    throw error;
+                                                }
+
+                                                return promise.then(
+                                                    response => {
+                                                        let ct =
+                                                            '';
+
+                                                        try {
+                                                            ct =
+                                                                response.headers.get(
+                                                                    'content-type'
+                                                                ) ||
+                                                                '';
+                                                        } catch (_) {}
+
+                                                        emit({
+                                                            phase:
+                                                                'response',
+
+                                                            requestId,
+
+                                                            api:
+                                                                'fetch',
+
+                                                            url,
+
+                                                            finalUrl:
+                                                                response.url ||
+                                                                url,
+
+                                                            method,
+
+                                                            status:
+                                                                response.status,
+
+                                                            contentType:
+                                                                ct,
+
+                                                            timestamp:
+                                                                Date.now()
+                                                        });
+
+                                                        return response;
+                                                    },
+
+                                                    error => {
+                                                        emit({
+                                                            phase:
+                                                                'error',
+
+                                                            requestId,
+
+                                                            api:
+                                                                'fetch',
+
+                                                            url,
+
+                                                            method,
+
+                                                            error:
+                                                                String(
+                                                                    error
+                                                                ),
+
+                                                            timestamp:
+                                                                Date.now()
+                                                        });
+
+                                                        throw error;
+                                                    }
+                                                );
+                                            };
+                                    }
+                                } catch (_) {}
+
+                                /*
+                                 * XMLHttpRequest
+                                 */
+                                try {
+                                    const XHR =
+                                        window.XMLHttpRequest;
+
+                                    if (
+                                        XHR &&
+                                        XHR.prototype
+                                    ) {
+                                        const originalOpen =
+                                            XHR.prototype.open;
+
+                                        const originalSend =
+                                            XHR.prototype.send;
+
+                                        XHR.prototype.open =
+                                            function(
+                                                method,
+                                                url
+                                            ) {
+                                                this.__GDE =
+                                                    {
+                                                        method:
+                                                            String(
+                                                                method ||
+                                                                'GET'
+                                                            ).toUpperCase(),
+
+                                                        url:
+                                                            resolveUrl(
+                                                                url
+                                                            )
+                                                    };
+
+                                                return originalOpen.apply(
+                                                    this,
+                                                    arguments
+                                                );
+                                            };
+
+                                        XHR.prototype.send =
+                                            function() {
+                                                const xhr =
+                                                    this;
+
+                                                const meta =
+                                                    xhr.__GDE ||
+                                                    {
+                                                        method:
+                                                            'GET',
+
+                                                        url:
+                                                            null
+                                                    };
+
+                                                const requestId =
+                                                    nextId(
+                                                        'xhr'
+                                                    );
+
+                                                emit({
+                                                    phase:
+                                                        'request',
+
+                                                    requestId,
+
+                                                    api:
+                                                        'xhr',
+
+                                                    url:
+                                                        meta.url,
+
+                                                    method:
+                                                        meta.method,
+
+                                                    timestamp:
+                                                        Date.now()
+                                                });
+
+                                                try {
+                                                    xhr.addEventListener(
+                                                        'loadend',
+                                                        () => {
+                                                            let ct =
+                                                                '';
+
+                                                            try {
+                                                                ct =
+                                                                    xhr.getResponseHeader(
+                                                                        'content-type'
+                                                                    ) ||
+                                                                    '';
+                                                            } catch (_) {}
+
+                                                            emit({
+                                                                phase:
+                                                                    'response',
+
+                                                                requestId,
+
+                                                                api:
+                                                                    'xhr',
+
+                                                                url:
+                                                                    meta.url,
+
+                                                                finalUrl:
+                                                                    xhr.responseURL ||
+                                                                    meta.url,
+
+                                                                method:
+                                                                    meta.method,
+
+                                                                status:
+                                                                    xhr.status,
+
+                                                                contentType:
+                                                                    ct,
+
+                                                                timestamp:
+                                                                    Date.now()
+                                                            });
+                                                        },
+                                                        {
+                                                            once:
+                                                                true
+                                                        }
+                                                    );
+                                                } catch (_) {}
+
+                                                return originalSend.apply(
+                                                    this,
+                                                    arguments
+                                                );
+                                            };
+                                    }
+                                } catch (_) {}
+
+                                emit({
+                                    phase:
+                                        'installed',
+
+                                    api:
+                                        'bridge',
+
+                                    timestamp:
+                                        Date.now()
+                                });
+                            })();
+                        `;
+
+                        const root =
+                            document.documentElement ||
+                            document.head ||
+                            document.body;
+
+                        if (root) {
+                            root.appendChild(
+                                script
+                            );
+
+                            script.remove();
+                        }
+                    } catch (error) {
+                        warn(
+                            'Network bridge injection failed',
+                            error
+                        );
+                    }
+                };
+
+            if (
+                document.documentElement
+            ) {
+                inject();
+            } else {
+                setTimeout(
+                    inject,
+                    0
+                );
+            }
+        }
+
+        handle(data) {
+            const url =
+                canonicalizeUrl(
+                    data.url
+                );
+
+            if (
+                !url ||
+                !allowed(url)
+            ) {
+                return;
+            }
+
+            const event =
+                new NetworkEvent({
+                    requestId:
+                        data.requestId,
+
+                    api:
+                        data.api,
+
+                    phase:
+                        data.phase,
+
+                    url,
+
+                    finalUrl:
+                        canonicalizeUrl(
+                            data.finalUrl
+                        ) || null,
+
+                    method:
+                        data.method,
+
+                    status:
+                        data.status,
+
+                    contentType:
+                        data.contentType,
+
+                    error:
+                        data.error,
+
+                    timestamp:
+                        data.timestamp ||
+                        now()
+                });
+
+            this.engine
+                .handleNetworkEvent(
+                    event
+                );
+        }
+    }
+
+    /*
+     * =====================================================================
+     * PERFORMANCE OBSERVER
+     * =====================================================================
+     */
+
+    class PerformanceObserverAdapter {
+        constructor(engine) {
+            this.engine =
+                engine;
+
+            this.seen =
+                new Set();
+
+            this.install();
+        }
+
+        install() {
+            if (
+                !CONFIG.discoverPerformance
+            ) {
+                return;
+            }
+
+            const process =
+                entries => {
+                    for (
+                        const entry of
+                        entries
+                    ) {
+                        const url =
+                            canonicalizeUrl(
+                                entry.name
+                            );
+
+                        if (
+                            !url ||
+                            !allowed(url)
+                        ) {
+                            continue;
+                        }
+
+                        const key =
+                            `${url}|${entry.initiatorType}`;
+
+                        if (
+                            this.seen.has(
+                                key
+                            )
+                        ) {
+                            continue;
+                        }
+
+                        this.seen.add(
+                            key
+                        );
+
+                        this.engine
+                            .handleNetworkEvent(
+                                new NetworkEvent({
+                                    api:
+                                        'performance',
+
+                                    phase:
+                                        'resource',
+
+                                    url,
+
+                                    initiatorType:
+                                        entry.initiatorType,
+
+                                    duration:
+                                        entry.duration
+                                })
+                            );
+                    }
+                };
+
+            try {
+                if (
+                    typeof PerformanceObserver !==
+                    'undefined'
+                ) {
+                    const observer =
+                        new PerformanceObserver(
+                            list =>
+                                process(
+                                    list.getEntries()
+                                )
+                        );
+
+                    observer.observe({
+                        entryTypes:
+                            ['resource']
+                    });
+                }
+            } catch {
+                // Optional API.
+            }
+
+            try {
+                process(
+                    performance.getEntriesByType(
+                        'resource'
+                    )
+                );
+            } catch {
+                // Optional API.
+            }
+        }
+    }
+
+    /*
+     * =====================================================================
+     * ENGINE
+     * =====================================================================
+     */
+
+    class DiscoveryEngine {
+        constructor() {
+            this.db =
+                new KnowledgeBase(
+                    this
+                );
+
+            this.acquisition =
+                new HttpAcquisition();
+
+            this.providers =
+                new ProviderRegistry();
+
+            this.running =
+                false;
+
+            this.stats =
+                this.createStats();
+
+            this.networkCandidateKeys =
+                new Set();
+
+            new NetworkBridge(
+                this
+            );
+
+            new PerformanceObserverAdapter(
+                this
+            );
+        }
+
+        createStats() {
+            return {
+                startedAt:
+                    null,
+
+                finishedAt:
+                    null,
+
+                requests:
+                    0,
+
+                observations:
+                    0,
+
+                discoveries:
+                    0,
+
+                candidatesCreated:
+                    0,
+
+                candidatesMerged:
+                    0,
+
+                candidatesRejected:
+                    0,
+
+                candidateLimitHits:
+                    0,
+
+                maxDepthRejected:
+                    0,
+
+                maxDepthSeen:
+                    0,
+
+                maxDepthReached:
+                    0,
+
+                maxRequestsReached:
+                    0,
+
+                failures:
+                    0,
+
+                retries:
+                    0,
+
+                cacheSkips:
+                    0,
+
+                networkEvents:
+                    0,
+
+                networkCandidates:
+                    0,
+
+                performanceEvents:
+                    0
+            };
+        }
+
+        addCandidate(
+            candidate
+        ) {
+            if (
+                !candidate?.target
+            ) {
+                return false;
+            }
+
+            const before =
+                this.stats
+                    .candidatesCreated;
+
+            const added =
+                this.db.addCandidate(
+                    candidate
+                );
+
+            if (added) {
+                this.stats
+                    .candidatesCreated++;
+
+                this.stats.maxDepthSeen =
+                    Math.max(
+                        this.stats
+                            .maxDepthSeen,
+                        candidate.depth
+                    );
+
+                if (
+                    candidate.depth ===
+                    CONFIG.maxDepth
+                ) {
+                    this.stats
+                        .maxDepthReached++;
+                }
+            } else if (
+                this.stats
+                    .candidatesCreated ===
+                before
+            ) {
+                this.stats
+                    .candidatesRejected++;
+            }
+
+            return added;
+        }
+
+        handleNetworkEvent(
+            event
+        ) {
+            this.stats
+                .networkEvents++;
+
+            if (
+                event.api ===
+                'performance'
+            ) {
+                this.stats
+                    .performanceEvents++;
+            }
+
+            const stored =
+                this.db.addNetworkEvent(
+                    event
+                );
+
+            /*
+             * Requests themselves are observations, but not yet
+             * sufficient to justify an acquisition candidate.
+             */
+            if (
+                stored.phase ===
+                'request'
+            ) {
+                return;
+            }
+
+            if (
+                stored.phase !==
+                    'response' &&
+                stored.phase !==
+                    'resource'
+            ) {
+                return;
+            }
+
+            const method =
+                String(
+                    stored.method ||
+                        'GET'
+                ).toUpperCase();
+
+            const safe =
+                method === 'GET' ||
+                method === 'HEAD' ||
+                !stored.method;
+
+            if (
+                !safe &&
+                !CONFIG.acquireObservedNonGet
+            ) {
+                return;
+            }
+
+            const target =
+                stored.url;
+
+            if (
+                !target ||
+                !allowed(target)
+            ) {
+                return;
+            }
+
+            const type =
+                classifyUrl(
+                    target,
+                    stored.contentType
+                );
+
+            const key =
+                `${target}|${type}`;
+
+            if (
+                this.networkCandidateKeys.has(
+                    key
+                )
+            ) {
+                return;
+            }
+
+            this.networkCandidateKeys.add(
+                key
+            );
+
+            const candidate =
+                new Candidate({
+                    target,
+
+                    type,
+
+                    origin:
+                        stored.api ===
+                        'performance'
+                            ? 'performance-observer'
+                            : `network-${stored.api}`,
+
+                    depth:
+                        0,
+
+                    priority:
+                        type === 'api'
+                            ? 0.98
+                            : 0.82,
+
+                    hints: {
+                        confidence:
+                            stored.api ===
+                            'performance'
+                                ? 0.76
+                                : 0.94,
+
+                        method,
+
+                        status:
+                            stored.status,
+
+                        contentType:
+                            stored.contentType,
+
+                        requestId:
+                            stored.requestId,
+
+                        finalUrl:
+                            stored.finalUrl
+                    }
+                });
+
+            if (
+                this.addCandidate(
+                    candidate
+                )
+            ) {
+                this.stats
+                    .networkCandidates++;
+
+                stored.candidateCreated =
+                    true;
+            }
+        }
+
+        seed() {
+            const root =
+                canonicalizeUrl(
+                    location.href
+                );
+
+            if (root) {
+                this.addCandidate(
+                    new Candidate({
+                        target:
+                            root,
+
+                        type:
+                            'page',
+
+                        origin:
+                            'root',
+
+                        depth:
+                            0,
+
+                        priority:
+                            1.0
+                    })
+                );
+            }
+
+            if (
+                CONFIG.discoverLinks
+            ) {
+                for (
+                    const element of
+                    document.querySelectorAll(
+                        'a[href],area[href]'
+                    )
+                ) {
+                    const url =
+                        canonicalizeUrl(
+                            element.getAttribute(
+                                'href'
+                            )
+                        );
+
+                    if (
+                        url &&
+                        allowed(url)
+                    ) {
+                        this.addCandidate(
+                            new Candidate({
+                                target:
+                                    url,
+
+                                type:
+                                    'url',
+
+                                origin:
+                                    'initial-dom',
+
+                                depth:
+                                    1,
+
+                                priority:
+                                    0.78
+                            })
+                        );
+                    }
+                }
+            }
+
+            if (
+                CONFIG.discoverResources
+            ) {
+                const selector = [
+                    'script[src]',
+                    'link[href]',
+                    'img[src]',
+                    'iframe[src]',
+                    'frame[src]',
+                    'source[src]',
+                    'video[src]',
+                    'audio[src]',
+                    'track[src]',
+                    'object[data]',
+                    'embed[src]'
+                ].join(',');
+
+                for (
+                    const element of
+                    document.querySelectorAll(
+                        selector
+                    )
+                ) {
+                    const raw =
+                        element.getAttribute(
+                            'src'
+                        ) ||
+                        element.getAttribute(
+                            'href'
+                        ) ||
+                        element.getAttribute(
+                            'data'
+                        );
+
+                    const url =
+                        canonicalizeUrl(
+                            raw
+                        );
+
+                    if (
+                        !url ||
+                        !allowed(url)
+                    ) {
+                        continue;
+                    }
+
+                    const tag =
+                        element.tagName
+                            .toLowerCase();
+
+                    let type =
+                        classifyUrl(
+                            url
+                        );
+
+                    if (
+                        tag ===
+                        'script'
+                    ) {
+                        type =
+                            'script';
+                    } else if (
+                        tag ===
+                        'link'
+                    ) {
+                        const rel =
+                            (
+                                element.getAttribute(
+                                    'rel'
+                                ) || ''
+                            ).toLowerCase();
+
+                        if (
+                            rel.includes(
+                                'stylesheet'
+                            )
+                        ) {
+                            type =
+                                'stylesheet';
+                        } else if (
+                            rel.includes(
+                                'manifest'
+                            )
+                        ) {
+                            type =
+                                'manifest';
+                        }
+                    } else if (
+                        tag ===
+                            'iframe' ||
+                        tag ===
+                            'frame'
+                    ) {
+                        type =
+                            'frame';
+                    } else if (
+                        [
+                            'img',
+                            'video',
+                            'audio',
+                            'source',
+                            'track'
+                        ].includes(
+                            tag
+                        )
+                    ) {
+                        type =
+                            'media';
+                    }
+
+                    this.addCandidate(
+                        new Candidate({
+                            target:
+                                url,
+
+                            type,
+
+                            origin:
+                                'initial-dom',
+
+                            depth:
+                                1,
+
+                            priority:
+                                TYPE_PRIORITY[
+                                    type
+                                ] ??
+                                0.40
+                        })
+                    );
+                }
+            }
+
+            if (
+                CONFIG.discoverWellKnown
+            ) {
+                for (
+                    const item of [
+                        [
+                            '/robots.txt',
+                            'robots',
+                            0.90
+                        ],
+                        [
+                            '/sitemap.xml',
+                            'sitemap',
+                            0.86
+                        ]
+                    ]
+                ) {
+                    const url =
+                        canonicalizeUrl(
+                            item[0],
+                            location.origin
+                        );
+
+                    if (url) {
+                        this.addCandidate(
+                            new Candidate({
+                                target:
+                                    url,
+
+                                type:
+                                    item[1],
+
+                                origin:
+                                    'well-known',
+
+                                depth:
+                                    1,
+
+                                priority:
+                                    item[2]
+                            })
+                        );
+                    }
+                }
+            }
+        }
+
+        async run() {
+            if (
+                this.running
+            ) {
+                return;
+            }
+
+            this.running =
+                true;
+
+            this.stats =
+                this.createStats();
+
+            this.stats.startedAt =
+                now();
+
+            const workers =
+                [];
+
+            for (
+                let i = 0;
+                i < CONFIG.concurrency;
+                i++
+            ) {
+                workers.push(
+                    this.worker(i)
+                );
+            }
+
+            await Promise.all(
+                workers
+            );
+
+            if (
+                this.stats.requests >=
+                CONFIG.maxRequests
+            ) {
+                this.stats
+                    .maxRequestsReached++;
+            }
+
+            this.stats.finishedAt =
+                now();
+
+            this.running =
+                false;
+
+            this.db.persist();
+        }
+
+        async worker(
+            workerId
+        ) {
+            while (
+                this.running
+            ) {
+                if (
+                    this.stats.requests >=
+                    CONFIG.maxRequests
+                ) {
+                    break;
+                }
+
+                const candidate =
+                    this.db.claimNext();
+
+                if (!candidate) {
+                    if (
+                        this.db.queueSize() ===
+                        0
+                    ) {
+                        if (
+                            this.db.inFlight() >
+                            0
+                        ) {
+                            await sleep(
+                                50
+                            );
+
+                            continue;
+                        }
+
+                        break;
+                    }
+
+                    const delay =
+                        this.db.nextDelay();
+
+                    if (
+                        delay !== null
+                    ) {
+                        await sleep(
+                            Math.min(
+                                Math.max(
+                                    25,
+                                    delay
+                                ),
+                                250
+                            )
+                        );
+                    }
+
+                    continue;
+                }
+
+                /*
+                 * Resource-level reuse check.
+                 */
+                const resource =
+                    this.db.getResource(
+                        candidate.target
+                    );
+
+                if (
+                    resource?.status ===
+                        'acquired' &&
+                    resource.fingerprint
+                ) {
+                    this.stats
+                        .cacheSkips++;
+
+                    candidate.lifecycle(
+                        'observed'
+                    );
+
+                    this.db.complete(
+                        candidate
+                    );
+
+                    continue;
+                }
+
+                if (
+                    this.stats.requests >=
+                    CONFIG.maxRequests
+                ) {
+                    this.db.fail(
+                        candidate,
+                        false
+                    );
+
+                    break;
+                }
+
+                this.stats.requests++;
+
+                candidate.lifecycle(
+                    'acquiring'
+                );
+
+                resource.status =
+                    'acquiring';
+
+                try {
+                    const observation =
+                        await this.acquisition
+                            .acquire(
+                                candidate.target
+                            );
+
+                    this.stats
+                        .observations++;
+
+                    if (
+                        observation.body
+                    ) {
+                        observation.fingerprint =
+                            {
+                                length:
+                                    observation.body
+                                        .length,
+
+                                sha256:
+                                    await sha256(
+                                        observation.body
+                                    )
+                            };
+                    } else {
+                        observation.fingerprint =
+                            {
+                                length:
+                                    observation
+                                        .http
+                                        .contentLength,
+
+                                sha256:
+                                    null
+                            };
+                    }
+
+                    this.db.addObservation(
+                        observation
+                    );
+
+                    if (
+                        observation.status !==
+                        'observed'
+                    ) {
+                        await this.handleFailure(
+                            candidate
+                        );
+
+                        continue;
+                    }
+
+                    candidate.lifecycle(
+                        'observed'
+                    );
+
+                    const finalUrl =
+                        canonicalizeUrl(
+                            observation
+                                .http
+                                .finalUrl
+                        );
+
+                    if (
+                        finalUrl &&
+                        finalUrl !==
+                            candidate.target
+                    ) {
+                        this.recordRedirect(
+                            candidate.target,
+                            finalUrl,
+                            candidate
+                        );
+                    }
+
+                    const matches =
+                        this.providers
+                            .recognize(
+                                candidate,
+                                observation
+                            );
+
+                    candidate.lifecycle(
+                        'recognized'
+                    );
+
+                    for (
+                        const match of
+                        matches
+                    ) {
+                        for (
+                            const discovery of
+                            match.discoveries
+                        ) {
+                            this.db
+                                .addDiscovery(
+                                    discovery
+                                );
+
+                            this.stats
+                                .discoveries++;
+
+                            const generated =
+                                match.provider
+                                    .candidates(
+                                        discovery
+                                    ) || [];
+
+                            candidate.lifecycle(
+                                'expanded'
+                            );
+
+                            for (
+                                const next of
+                                generated
+                            ) {
+                                this.addCandidate(
+                                    next
+                                );
+                            }
+                        }
+                    }
+
+                    resource.status =
+                        'acquired';
+
+                    this.db.complete(
+                        candidate
+                    );
+
+                    log(
+                        `worker ${workerId}`,
+                        candidate.target,
+                        'completed'
+                    );
+                } catch (error) {
+                    await this.handleFailure(
+                        candidate,
+                        error
+                    );
+                }
+            }
+        }
+
+        async handleFailure(
+            candidate,
+            error
+        ) {
+            this.stats.failures++;
+
+            candidate.lastError =
+                error
+                    ? String(error)
+                    : 'acquisition failed';
+
+            const retry =
+                candidate.attempts <
+                CONFIG.maxRetries + 1;
+
+            if (retry) {
+                this.stats.retries++;
+
+                this.db.fail(
+                    candidate,
+                    true
+                );
+            } else {
+                this.db.fail(
+                    candidate,
+                    false
+                );
+            }
+        }
+
+        recordRedirect(
+            from,
+            to,
+            candidate
+        ) {
+            if (
+                this.db.edges.size >=
+                CONFIG.maxGraphEdges
+            ) {
+                return;
+            }
+
+            const key =
+                `redirect|${from}|${to}`;
+
+            if (
+                this.db.edges.has(
+                    key
+                )
+            ) {
+                return;
+            }
+
+            this.db.edges.set(
+                key,
+                {
+                    id:
+                        makeId('edge'),
+
+                    fromUrl:
+                        from,
+
+                    target:
+                        to,
+
+                    relationship:
+                        'redirect',
+
+                    mechanism:
+                        'http-acquisition',
+
+                    candidateType:
+                        candidate.type,
+
+                    createdAt:
+                        now()
+                }
+            );
+        }
+
+        buildGraph() {
+            const nodes =
+                [];
+
+            const edges =
+                [];
+
+            const resourceNodeIds =
+                new Map();
+
+            nodes.push({
+                id:
+                    'root',
+
+                kind:
+                    'root',
+
+                url:
+                    canonicalizeUrl(
+                        location.href
+                    ),
+
+                title:
+                    document.title ||
+                    ''
+            });
+
+            for (
+                const resource of
+                this.db.resources.values()
+            ) {
+                const nodeId =
+                    resource.id;
+
+                resourceNodeIds.set(
+                    resource.url,
+                    nodeId
+                );
+
+                nodes.push({
+                    id:
+                        nodeId,
+
+                    kind:
+                        'resource',
+
+                    url:
+                        resource.url,
+
+                    finalUrl:
+                        resource.finalUrl,
+
+                    types:
+                        [
+                            ...resource.types
+                        ],
+
+                    mechanisms:
+                        [
+                            ...resource
+                                .mechanisms
+                        ],
+
+                    status:
+                        resource.status,
+
+                    firstSeenAt:
+                        resource.firstSeenAt,
+
+                    lastSeenAt:
+                        resource.lastSeenAt,
+
+                    acquisitionCount:
+                        resource
+                            .acquisitionCount,
+
+                    fingerprint:
+                        resource.fingerprint
+                });
+            }
+
+            /*
+             * Candidate provenance edges.
+             */
+            for (
+                const edge of
+                this.db.edges.values()
+            ) {
+                if (
+                    edge.relationship ===
+                    'redirect'
+                ) {
+                    const fromId =
+                        resourceNodeIds.get(
+                            edge.fromUrl
+                        );
+
+                    const toId =
+                        resourceNodeIds.get(
+                            edge.target
+                        );
+
+                    if (
+                        fromId &&
+                        toId &&
+                        fromId !== toId
+                    ) {
+                        edges.push({
+                            id:
+                                edge.id,
+
+                            from:
+                                fromId,
+
+                            to:
+                                toId,
+
+                            relationship:
+                                'redirect',
+
+                            mechanism:
+                                edge.mechanism,
+
+                            candidateType:
+                                edge.candidateType
+                        });
+                    }
+
+                    continue;
+                }
+
+                let fromId =
+                    'root';
+
+                if (
+                    edge.fromDiscoveryId
+                ) {
+                    const discovery =
+                        this.db
+                            .discoveries
+                            .get(
+                                edge.fromDiscoveryId
+                            );
+
+                    if (
+                        discovery
+                    ) {
+                        const source =
+                            discovery
+                                .target();
+
+                        fromId =
+                            resourceNodeIds.get(
+                                source
+                            ) ||
+                            'root';
+                    }
+                }
+
+                const toId =
+                    resourceNodeIds.get(
+                        edge.target
+                    );
+
+                if (
+                    !toId
+                ) {
+                    continue;
+                }
+
+                if (
+                    fromId ===
+                    toId
+                ) {
+                    continue;
+                }
+
+                edges.push({
+                    id:
+                        edge.id,
+
+                    from:
+                        fromId,
+
+                    to:
+                        toId,
+
+                    relationship:
+                        edge.relationship,
+
+                    mechanism:
+                        edge.mechanism,
+
+                    candidateType:
+                        edge.candidateType,
+
+                    priority:
+                        edge.priority,
+
+                    depth:
+                        edge.depth
+                });
+            }
+
+            /*
+             * Network observation edges.
+             */
+            for (
+                const event of
+                this.db.networkEvents.values()
+            ) {
+                const toId =
+                    resourceNodeIds.get(
+                        event.url
+                    );
+
+                if (
+                    !toId
+                ) {
+                    continue;
+                }
+
+                edges.push({
+                    id:
+                        makeId('edge'),
+
+                    from:
+                        'root',
+
+                    to:
+                        toId,
+
+                    relationship:
+                        'network-observation',
+
+                    mechanism:
+                        event.api,
+
+                    requestId:
+                        event.requestId,
+
+                    method:
+                        event.method,
+
+                    status:
+                        event.status
+                });
+            }
+
+            return {
+                nodes,
+                edges:
+                    edges.slice(
+                        0,
+                        CONFIG.maxGraphEdges
+                    )
+            };
+        }
+
+        export() {
+            return {
+                version:
+                    '0.6.0',
+
+                engine:
+                    'Generic Discovery Engine',
+
+                scope: {
+                    type:
+                        'web-resource-discovery',
+
+                    sameOriginOnly:
+                        CONFIG.sameOriginOnly,
+
+                    rfScanning:
+                        false
+                },
+
+                architecture: [
+                    'candidate',
+                    'scheduler',
+                    'acquisition',
+                    'observation',
+                    'recognition',
+                    'discovery',
+                    'candidate'
+                ],
+
+                timestamp:
+                    new Date()
+                        .toISOString(),
+
+                page: {
+                    url:
+                        location.href,
+
+                    title:
+                        document.title ||
+                        ''
+                },
+
+                configuration:
+                    {
+                        ...CONFIG
+                    },
+
+                statistics:
+                    {
+                        ...this.stats,
+
+                        resources:
+                            this.db
+                                .resources
+                                .size,
+
+                        pending:
+                            this.db
+                                .queueSize(),
+
+                        inFlight:
+                            this.db
+                                .inFlight(),
+
+                        graphEdges:
+                            this.db
+                                .edges
+                                .size
+                    },
+
+                lifecycle: {
+                    discovered:
+                        'candidate created',
+
+                    queued:
+                        'candidate available to scheduler',
+
+                    claimed:
+                        'candidate atomically claimed',
+
+                    acquiring:
+                        'acquisition in progress',
+
+                    observed:
+                        'acquisition produced observation',
+
+                    recognized:
+                        'provider recognized observation',
+
+                    expanded:
+                        'provider generated new candidates',
+
+                    completed:
+                        'candidate finished',
+
+                    failed:
+                        'candidate exhausted retries'
+                },
+
+                graph:
+                    this.buildGraph(),
+
+                resources:
+                    [
+                        ...this.db
+                            .resources
+                            .values()
+                    ].map(
+                        resource =>
+                            resource.toJSON()
+                    ),
+
+                candidates:
+                    [
+                        ...this.db
+                            .candidates
+                            .values()
+                    ],
+
+                observations:
+                    [
+                        ...this.db
+                            .observations
+                            .values()
+                    ].map(
+                        observation => ({
+                            id:
+                                observation.id,
+
+                            candidateId:
+                                observation
+                                    .candidateId,
+
+                            target:
+                                observation
+                                    .target,
+
+                            startedAt:
+                                observation
+                                    .startedAt,
+
+                            completedAt:
+                                observation
+                                    .completedAt,
+
+                            status:
+                                observation
+                                    .status,
+
+                            signalPresent:
+                                observation
+                                    .signalPresent,
+
+                            http:
+                                observation
+                                    .http,
+
+                            fingerprint:
+                                observation
+                                    .fingerprint,
+
+                            errors:
+                                observation
+                                    .errors
+                        })
+                    ),
+
+                discoveries:
+                    [
+                        ...this.db
+                            .discoveries
+                            .values()
+                    ],
+
+                networkEvents:
+                    [
+                        ...this.db
+                            .networkEvents
+                            .values()
+                    ]
+            };
+        }
+
+        clear() {
+            this.db.clear();
+
+            this.networkCandidateKeys.clear();
+
+            this.stats =
+                this.createStats();
+        }
+    }
+
+    /*
+     * =====================================================================
+     * UI
+     * =====================================================================
+     */
+
+    function installUi() {
+        document
+            .getElementById(
+                'gde-panel'
+            )
+            ?.remove();
+
+        const panel =
+            document.createElement(
+                'div'
+            );
+
+        panel.id =
+            'gde-panel';
+
+        panel.style.cssText = `
+            position:fixed;
+            right:12px;
+            bottom:12px;
+            z-index:2147483647;
+            width:360px;
+            padding:12px;
+            border-radius:8px;
+            background:rgba(18,18,18,.96);
+            color:#fff;
+            font:12px/1.45 monospace;
+            box-shadow:0 5px 20px rgba(0,0,0,.45);
+        `;
+
+        panel.innerHTML = `
+            <div style="
+                font-weight:bold;
+                font-size:13px;
+                margin-bottom:3px;
+            ">
+                Generic Discovery Engine 0.6
+            </div>
+
+            <div style="
+                opacity:.6;
+                margin-bottom:9px;
+            ">
+                resource identity / network correlation / graph
+            </div>
+
+            <div style="margin-bottom:9px">
+                <button id="gde-scan">Scan</button>
+                <button id="gde-clear">Clear</button>
+                <button id="gde-export">Export</button>
+            </div>
+
+            <div id="gde-state">
+                idle
+            </div>
+
+            <div id="gde-stats"
+                 style="
+                    margin-top:7px;
+                    opacity:.78;
+                 ">
+            </div>
+        `;
+
+        (
+            document.documentElement ||
+            document.body
+        )?.appendChild(
+            panel
+        );
+
+        const state =
+            panel.querySelector(
+                '#gde-state'
+            );
+
+        const stats =
+            panel.querySelector(
+                '#gde-stats'
+            );
+
+        const update =
+            () => {
+                const s =
+                    engine.stats;
+
+                state.textContent =
+                    engine.running
+                        ? 'scanning...'
+                        : 'idle';
+
+                stats.textContent =
+                    [
+                        `queue=${engine.db.queueSize()}`,
+                        `inFlight=${engine.db.inFlight()}`,
+                        `requests=${s.requests}/${CONFIG.maxRequests}`,
+                        `resources=${engine.db.resources.size}`,
+                        `observations=${s.observations}`,
+                        `discoveries=${s.discoveries}`,
+                        `network=${s.networkEvents}`,
+                        `failures=${s.failures}`,
+                        `retries=${s.retries}`,
+                        `depth=${s.maxDepthSeen}`
+                    ].join(
+                        ' | '
+                    );
+            };
+
+        panel.querySelector(
+            '#gde-scan'
+        )?.addEventListener(
+            'click',
+            async () => {
+                if (
+                    engine.running
+                ) {
+                    return;
+                }
+
+                engine.seed();
+
+                const timer =
+                    setInterval(
+                        update,
+                        200
+                    );
+
+                try {
+                    await engine.run();
+
+                    state.textContent =
+                        'scan complete';
+                } catch (error) {
+                    state.textContent =
+                        'scan error';
+
+                    warn(
+                        error
+                    );
+                } finally {
+                    clearInterval(
+                        timer
+                    );
+
+                    update();
+                }
+            }
+        );
+
+        panel.querySelector(
+            '#gde-clear'
+        )?.addEventListener(
+            'click',
+            () => {
+                if (
+                    engine.running
+                ) {
+                    state.textContent =
+                        'cannot clear while scanning';
+
+                    return;
+                }
+
+                engine.clear();
+
+                state.textContent =
+                    'cleared';
+
+                update();
+            }
+        );
+
+        panel.querySelector(
+            '#gde-export'
+        )?.addEventListener(
+            'click',
+            () => {
+                try {
+                    const json =
+                        JSON.stringify(
+                            engine.export(),
+                            null,
+                            2
+                        );
+
+                    const blob =
+                        new Blob(
+                            [json],
+                            {
+                                type:
+                                    'application/json'
+                            }
+                        );
+
+                    const url =
+                        URL.createObjectURL(
+                            blob
+                        );
+
+                    const link =
+                        document.createElement(
+                            'a'
+                        );
+
+                    link.href =
+                        url;
+
+                    link.download =
+                        `generic-discovery-${Date.now()}.json`;
+
+                    document.body.appendChild(
+                        link
+                    );
+
+                    link.click();
+
+                    link.remove();
+
+                    setTimeout(
+                        () =>
+                            URL.revokeObjectURL(
+                                url
+                            ),
+                        1000
+                    );
+                } catch (error) {
+                    warn(
+                        'Export failed',
+                        error
+                    );
+                }
+            }
+        );
+
+        update();
+    }
+
+    /*
+     * =====================================================================
+     * STARTUP
+     * =====================================================================
+     */
+
+    const engine =
+        new DiscoveryEngine();
+
+    window.GenericDiscoveryEngine =
+        engine;
+
+    if (
+        document.readyState ===
+        'loading'
+    ) {
+        document.addEventListener(
+            'DOMContentLoaded',
+            installUi,
+            {
+                once:
+                    true
+            }
+        );
+    } else {
+        installUi();
+    }
+
+    log(
+        'Generic Discovery Engine v0.6.0 loaded'
+    );
+})();

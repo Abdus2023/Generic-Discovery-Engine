@@ -1,0 +1,413 @@
+{
+  "schema_version": 8,
+  "builder": "security-archaeology-builder-v8",
+  "model_kind": "DERIVED_SECURITY_ARCHAEOLOGY_NOT_SOURCE",
+  "migrations": [
+    {
+      "migration_id": "security-boundary-migration-b8589e2138f5aa7c",
+      "operation": "candidate claim",
+      "before_snapshot": "snapshot-0006",
+      "after_snapshot": "snapshot-0009",
+      "before_boundary": "KnowledgeBase.claimNextCandidate",
+      "after_boundary": "KnowledgeBase.claimNext",
+      "security_consequence": "UNKNOWN",
+      "classification": "COMPARATIVE_MOVEMENT_NOT_PROVED_LINEAGE",
+      "evidence": [
+        "security-ev-a1b98348fb619a54",
+        "security-ev-638d3382ba451c59"
+      ]
+    },
+    {
+      "migration_id": "security-boundary-migration-9217a4013b3e5a2b",
+      "operation": "candidate claim",
+      "before_snapshot": "snapshot-0008",
+      "after_snapshot": "snapshot-0009",
+      "before_boundary": "KnowledgeBase.claimNextCandidate",
+      "after_boundary": "KnowledgeBase.claimNext",
+      "security_consequence": "UNKNOWN",
+      "classification": "COMPARATIVE_MOVEMENT_NOT_PROVED_LINEAGE",
+      "evidence": [
+        "security-ev-8eadc23b5458ed83",
+        "security-ev-638d3382ba451c59"
+      ]
+    },
+    {
+      "migration_id": "security-boundary-migration-32ec92e398d3464b",
+      "operation": "candidate claim",
+      "before_snapshot": "snapshot-0007",
+      "after_snapshot": "snapshot-0010",
+      "before_boundary": "KnowledgeBase.claimNextCandidate",
+      "after_boundary": "KnowledgeBase.claimNext",
+      "security_consequence": "UNKNOWN",
+      "classification": "COMPARATIVE_MOVEMENT_NOT_PROVED_LINEAGE",
+      "evidence": [
+        "security-ev-6ebeac096049a370",
+        "security-ev-0aa5d0e032ad18b9"
+      ]
+    },
+    {
+      "migration_id": "security-boundary-migration-2eeadba01e8488dd",
+      "operation": "candidate claim",
+      "before_snapshot": "snapshot-0009",
+      "after_snapshot": "snapshot-0012",
+      "before_boundary": "KnowledgeBase.claimNext",
+      "after_boundary": "KnowledgeBase.claimNextCandidate",
+      "security_consequence": "UNKNOWN",
+      "classification": "COMPARATIVE_MOVEMENT_NOT_PROVED_LINEAGE",
+      "evidence": [
+        "security-ev-638d3382ba451c59",
+        "security-ev-1af8e5438ec5b6df"
+      ]
+    },
+    {
+      "migration_id": "security-boundary-migration-908c6d1c3de134ed",
+      "operation": "candidate claim",
+      "before_snapshot": "snapshot-0009",
+      "after_snapshot": "snapshot-0013",
+      "before_boundary": "KnowledgeBase.claimNext",
+      "after_boundary": "KnowledgeBase.claimNextCandidate",
+      "security_consequence": "UNKNOWN",
+      "classification": "COMPARATIVE_MOVEMENT_NOT_PROVED_LINEAGE",
+      "evidence": [
+        "security-ev-638d3382ba451c59",
+        "security-ev-71c46fb042053164"
+      ]
+    },
+    {
+      "migration_id": "security-boundary-migration-88cd69201ea6396d",
+      "operation": "candidate claim",
+      "before_snapshot": "snapshot-0011",
+      "after_snapshot": "snapshot-0010",
+      "before_boundary": "KnowledgeBase.claimNextCandidate",
+      "after_boundary": "KnowledgeBase.claimNext",
+      "security_consequence": "UNKNOWN",
+      "classification": "COMPARATIVE_MOVEMENT_NOT_PROVED_LINEAGE",
+      "evidence": [
+        "security-ev-04cc2ae24618fe52",
+        "security-ev-0aa5d0e032ad18b9"
+      ]
+    },
+    {
+      "migration_id": "security-boundary-migration-1e12bdd350fd59b1",
+      "operation": "candidate claim",
+      "before_snapshot": "snapshot-0010",
+      "after_snapshot": "snapshot-0014",
+      "before_boundary": "KnowledgeBase.claimNext",
+      "after_boundary": "KnowledgeBase.claimNextCandidate",
+      "security_consequence": "UNKNOWN",
+      "classification": "COMPARATIVE_MOVEMENT_NOT_PROVED_LINEAGE",
+      "evidence": [
+        "security-ev-0aa5d0e032ad18b9",
+        "security-ev-055f05f309bf6e8f"
+      ]
+    },
+    {
+      "migration_id": "security-boundary-migration-6cd7bdad730a7121",
+      "operation": "candidate insertion",
+      "before_snapshot": "snapshot-0005",
+      "after_snapshot": "snapshot-0006",
+      "before_boundary": "KnowledgeBase.addCandidate",
+      "after_boundary": "ProvenanceGraph.addCandidate",
+      "security_consequence": "UNKNOWN",
+      "classification": "COMPARATIVE_MOVEMENT_NOT_PROVED_LINEAGE",
+      "evidence": [
+        "security-ev-5f3f89b8992b3483",
+        "security-ev-04b6aa1932a29103"
+      ]
+    },
+    {
+      "migration_id": "security-boundary-migration-f310d2dcf8827ff1",
+      "operation": "candidate insertion",
+      "before_snapshot": "snapshot-0006",
+      "after_snapshot": "snapshot-0009",
+      "before_boundary": "ProvenanceGraph.addCandidate",
+      "after_boundary": "KnowledgeBase.addCandidate",
+      "security_consequence": "UNKNOWN",
+      "classification": "COMPARATIVE_MOVEMENT_NOT_PROVED_LINEAGE",
+      "evidence": [
+        "security-ev-04b6aa1932a29103",
+        "security-ev-e5cae457e60cd524"
+      ]
+    },
+    {
+      "migration_id": "security-boundary-migration-c33654e7206f025d",
+      "operation": "candidate insertion",
+      "before_snapshot": "snapshot-0006",
+      "after_snapshot": "snapshot-0011",
+      "before_boundary": "ProvenanceGraph.addCandidate",
+      "after_boundary": "KnowledgeBase.addCandidate",
+      "security_consequence": "UNKNOWN",
+      "classification": "COMPARATIVE_MOVEMENT_NOT_PROVED_LINEAGE",
+      "evidence": [
+        "security-ev-04b6aa1932a29103",
+        "security-ev-4baa70de3e497b24"
+      ]
+    },
+    {
+      "migration_id": "security-boundary-migration-98bb2e783195485c",
+      "operation": "candidate insertion",
+      "before_snapshot": "snapshot-0008",
+      "after_snapshot": "snapshot-0007",
+      "before_boundary": "KnowledgeBase.addCandidate",
+      "after_boundary": "ProvenanceGraph.addCandidate",
+      "security_consequence": "UNKNOWN",
+      "classification": "COMPARATIVE_MOVEMENT_NOT_PROVED_LINEAGE",
+      "evidence": [
+        "security-ev-9e315bb3e437a469",
+        "security-ev-745684b781f3c489"
+      ]
+    },
+    {
+      "migration_id": "security-boundary-migration-47b87c3083f08346",
+      "operation": "candidate insertion",
+      "before_snapshot": "snapshot-0007",
+      "after_snapshot": "snapshot-0010",
+      "before_boundary": "ProvenanceGraph.addCandidate",
+      "after_boundary": "KnowledgeBase.addCandidate",
+      "security_consequence": "UNKNOWN",
+      "classification": "COMPARATIVE_MOVEMENT_NOT_PROVED_LINEAGE",
+      "evidence": [
+        "security-ev-745684b781f3c489",
+        "security-ev-400fd64ac355d151"
+      ]
+    },
+    {
+      "migration_id": "security-boundary-migration-0f1224e5925c80e2",
+      "operation": "candidate insertion",
+      "before_snapshot": "snapshot-0007",
+      "after_snapshot": "snapshot-0012",
+      "before_boundary": "ProvenanceGraph.addCandidate",
+      "after_boundary": "KnowledgeBase.addCandidate",
+      "security_consequence": "UNKNOWN",
+      "classification": "COMPARATIVE_MOVEMENT_NOT_PROVED_LINEAGE",
+      "evidence": [
+        "security-ev-745684b781f3c489",
+        "security-ev-32c3b1f92e34ed29"
+      ]
+    },
+    {
+      "migration_id": "security-boundary-migration-6bbef8349214fbcb",
+      "operation": "candidate insertion",
+      "before_snapshot": "snapshot-0007",
+      "after_snapshot": "snapshot-0013",
+      "before_boundary": "ProvenanceGraph.addCandidate",
+      "after_boundary": "KnowledgeBase.addCandidate",
+      "security_consequence": "UNKNOWN",
+      "classification": "COMPARATIVE_MOVEMENT_NOT_PROVED_LINEAGE",
+      "evidence": [
+        "security-ev-745684b781f3c489",
+        "security-ev-fb93b652e93a6b4f"
+      ]
+    },
+    {
+      "migration_id": "security-boundary-migration-20ed74df03d6a3c7",
+      "operation": "network request",
+      "before_snapshot": "snapshot-0006",
+      "after_snapshot": "snapshot-0009",
+      "before_boundary": "HttpAcquisitionAdapter.request",
+      "after_boundary": "HttpAcquisition.request",
+      "security_consequence": "UNKNOWN",
+      "classification": "COMPARATIVE_MOVEMENT_NOT_PROVED_LINEAGE",
+      "evidence": [
+        "security-ev-0fccb67773c861f5",
+        "security-ev-1ad10736ac056e4f"
+      ]
+    },
+    {
+      "migration_id": "security-boundary-migration-cd86da75cfd321ed",
+      "operation": "network request",
+      "before_snapshot": "snapshot-0006",
+      "after_snapshot": "snapshot-0011",
+      "before_boundary": "HttpAcquisitionAdapter.request",
+      "after_boundary": "HttpAcquisitionAdapter.acquire",
+      "security_consequence": "UNKNOWN",
+      "classification": "COMPARATIVE_MOVEMENT_NOT_PROVED_LINEAGE",
+      "evidence": [
+        "security-ev-0fccb67773c861f5",
+        "security-ev-b01e77f114caac22"
+      ]
+    },
+    {
+      "migration_id": "security-boundary-migration-b5973e35968dbcd5",
+      "operation": "network request",
+      "before_snapshot": "snapshot-0008",
+      "after_snapshot": "snapshot-0009",
+      "before_boundary": "HttpAcquisitionAdapter.request",
+      "after_boundary": "HttpAcquisition.request",
+      "security_consequence": "UNKNOWN",
+      "classification": "COMPARATIVE_MOVEMENT_NOT_PROVED_LINEAGE",
+      "evidence": [
+        "security-ev-81e05737eb13b422",
+        "security-ev-1ad10736ac056e4f"
+      ]
+    },
+    {
+      "migration_id": "security-boundary-migration-5d12d5765d8224b1",
+      "operation": "network request",
+      "before_snapshot": "snapshot-0008",
+      "after_snapshot": "snapshot-0011",
+      "before_boundary": "HttpAcquisitionAdapter.request",
+      "after_boundary": "HttpAcquisitionAdapter.acquire",
+      "security_consequence": "UNKNOWN",
+      "classification": "COMPARATIVE_MOVEMENT_NOT_PROVED_LINEAGE",
+      "evidence": [
+        "security-ev-81e05737eb13b422",
+        "security-ev-b01e77f114caac22"
+      ]
+    },
+    {
+      "migration_id": "security-boundary-migration-23bd0cda9efd494e",
+      "operation": "network request",
+      "before_snapshot": "snapshot-0007",
+      "after_snapshot": "snapshot-0010",
+      "before_boundary": "HttpAcquisitionAdapter.request",
+      "after_boundary": "HttpAcquisition.acquire",
+      "security_consequence": "UNKNOWN",
+      "classification": "COMPARATIVE_MOVEMENT_NOT_PROVED_LINEAGE",
+      "evidence": [
+        "security-ev-d388598d778f5ebe",
+        "security-ev-33edf529d2e0fcb6"
+      ]
+    },
+    {
+      "migration_id": "security-boundary-migration-d37818772eff2148",
+      "operation": "network request",
+      "before_snapshot": "snapshot-0007",
+      "after_snapshot": "snapshot-0012",
+      "before_boundary": "HttpAcquisitionAdapter.request",
+      "after_boundary": "HttpAcquisitionAdapter.acquire",
+      "security_consequence": "UNKNOWN",
+      "classification": "COMPARATIVE_MOVEMENT_NOT_PROVED_LINEAGE",
+      "evidence": [
+        "security-ev-d388598d778f5ebe",
+        "security-ev-0759f60ed00944b7"
+      ]
+    },
+    {
+      "migration_id": "security-boundary-migration-0c71ac800cc3d8b1",
+      "operation": "network request",
+      "before_snapshot": "snapshot-0007",
+      "after_snapshot": "snapshot-0013",
+      "before_boundary": "HttpAcquisitionAdapter.request",
+      "after_boundary": "TOP_LEVEL.gmRequest",
+      "security_consequence": "UNKNOWN",
+      "classification": "COMPARATIVE_MOVEMENT_NOT_PROVED_LINEAGE",
+      "evidence": [
+        "security-ev-d388598d778f5ebe",
+        "security-ev-dd5b0ee1b53fed93"
+      ]
+    },
+    {
+      "migration_id": "security-boundary-migration-d6f7c1b8b0293703",
+      "operation": "network request",
+      "before_snapshot": "snapshot-0009",
+      "after_snapshot": "snapshot-0010",
+      "before_boundary": "HttpAcquisition.request",
+      "after_boundary": "HttpAcquisition.acquire",
+      "security_consequence": "UNKNOWN",
+      "classification": "COMPARATIVE_MOVEMENT_NOT_PROVED_LINEAGE",
+      "evidence": [
+        "security-ev-1ad10736ac056e4f",
+        "security-ev-33edf529d2e0fcb6"
+      ]
+    },
+    {
+      "migration_id": "security-boundary-migration-f67be1e4d8d13f80",
+      "operation": "network request",
+      "before_snapshot": "snapshot-0009",
+      "after_snapshot": "snapshot-0012",
+      "before_boundary": "HttpAcquisition.request",
+      "after_boundary": "HttpAcquisitionAdapter.acquire",
+      "security_consequence": "UNKNOWN",
+      "classification": "COMPARATIVE_MOVEMENT_NOT_PROVED_LINEAGE",
+      "evidence": [
+        "security-ev-1ad10736ac056e4f",
+        "security-ev-0759f60ed00944b7"
+      ]
+    },
+    {
+      "migration_id": "security-boundary-migration-ce3884297118ffd4",
+      "operation": "network request",
+      "before_snapshot": "snapshot-0009",
+      "after_snapshot": "snapshot-0013",
+      "before_boundary": "HttpAcquisition.request",
+      "after_boundary": "TOP_LEVEL.gmRequest",
+      "security_consequence": "UNKNOWN",
+      "classification": "COMPARATIVE_MOVEMENT_NOT_PROVED_LINEAGE",
+      "evidence": [
+        "security-ev-1ad10736ac056e4f",
+        "security-ev-dd5b0ee1b53fed93"
+      ]
+    },
+    {
+      "migration_id": "security-boundary-migration-89af618e49c8acaf",
+      "operation": "network request",
+      "before_snapshot": "snapshot-0011",
+      "after_snapshot": "snapshot-0010",
+      "before_boundary": "HttpAcquisitionAdapter.acquire",
+      "after_boundary": "HttpAcquisition.acquire",
+      "security_consequence": "UNKNOWN",
+      "classification": "COMPARATIVE_MOVEMENT_NOT_PROVED_LINEAGE",
+      "evidence": [
+        "security-ev-b01e77f114caac22",
+        "security-ev-33edf529d2e0fcb6"
+      ]
+    },
+    {
+      "migration_id": "security-boundary-migration-bfa359583d07fac8",
+      "operation": "network request",
+      "before_snapshot": "snapshot-0011",
+      "after_snapshot": "snapshot-0013",
+      "before_boundary": "HttpAcquisitionAdapter.acquire",
+      "after_boundary": "TOP_LEVEL.gmRequest",
+      "security_consequence": "UNKNOWN",
+      "classification": "COMPARATIVE_MOVEMENT_NOT_PROVED_LINEAGE",
+      "evidence": [
+        "security-ev-b01e77f114caac22",
+        "security-ev-dd5b0ee1b53fed93"
+      ]
+    },
+    {
+      "migration_id": "security-boundary-migration-e1ff7fee5b28e36e",
+      "operation": "network request",
+      "before_snapshot": "snapshot-0010",
+      "after_snapshot": "snapshot-0014",
+      "before_boundary": "HttpAcquisition.acquire",
+      "after_boundary": "Acquisition.request",
+      "security_consequence": "UNKNOWN",
+      "classification": "COMPARATIVE_MOVEMENT_NOT_PROVED_LINEAGE",
+      "evidence": [
+        "security-ev-33edf529d2e0fcb6",
+        "security-ev-b489b295fca83c2d"
+      ]
+    },
+    {
+      "migration_id": "security-boundary-migration-8270f7ac214278f4",
+      "operation": "network request",
+      "before_snapshot": "snapshot-0012",
+      "after_snapshot": "snapshot-0014",
+      "before_boundary": "HttpAcquisitionAdapter.acquire",
+      "after_boundary": "Acquisition.request",
+      "security_consequence": "UNKNOWN",
+      "classification": "COMPARATIVE_MOVEMENT_NOT_PROVED_LINEAGE",
+      "evidence": [
+        "security-ev-0759f60ed00944b7",
+        "security-ev-b489b295fca83c2d"
+      ]
+    },
+    {
+      "migration_id": "security-boundary-migration-7999f78009a99173",
+      "operation": "network request",
+      "before_snapshot": "snapshot-0013",
+      "after_snapshot": "snapshot-0014",
+      "before_boundary": "TOP_LEVEL.gmRequest",
+      "after_boundary": "Acquisition.request",
+      "security_consequence": "UNKNOWN",
+      "classification": "COMPARATIVE_MOVEMENT_NOT_PROVED_LINEAGE",
+      "evidence": [
+        "security-ev-dd5b0ee1b53fed93",
+        "security-ev-b489b295fca83c2d"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,206 @@
+{
+  "schema_version": 1,
+  "architecture_to_code": [
+    {
+      "architecture_statement": "Pluggable WASM module capability",
+      "architecture_evidence": "art-2fc1b4d5505c8aa5",
+      "claim_status": "DESIGNED",
+      "historical_code_evidence": [],
+      "future_design_inserted_into_snapshot": false
+    },
+    {
+      "architecture_statement": "SQLite persistence adapter",
+      "architecture_evidence": "art-00b31a2a5c2ed229",
+      "claim_status": "DESIGNED",
+      "historical_code_evidence": [],
+      "future_design_inserted_into_snapshot": false
+    },
+    {
+      "architecture_statement": "Rust discovery runtime / agent platform",
+      "architecture_evidence": "art-1f55a93250c0fe5b",
+      "claim_status": "PROPOSED",
+      "historical_code_evidence": [],
+      "future_design_inserted_into_snapshot": false
+    },
+    {
+      "architecture_statement": "Distributed coordination protocol",
+      "architecture_evidence": "art-21cb39a9a46f1b03",
+      "claim_status": "DESIGNED",
+      "historical_code_evidence": [],
+      "future_design_inserted_into_snapshot": false
+    }
+  ],
+  "code_to_architecture": [
+    {
+      "symbol": "AcquisitionPlan",
+      "implementation_evidence": "art-e0789bc8f62176cb",
+      "documentation_status": "DOCUMENTED",
+      "architecture_evidence": [
+        "art-12ab9ad20944641e",
+        "art-fba0c94f4f935dbb",
+        "art-1cb76f97ad6ef100"
+      ]
+    },
+    {
+      "symbol": "DecisionLedger",
+      "implementation_evidence": "art-e0789bc8f62176cb",
+      "documentation_status": "DOCUMENTED",
+      "architecture_evidence": [
+        "art-b36e1120c72ff0f9"
+      ]
+    },
+    {
+      "symbol": "Candidate",
+      "implementation_evidence": "art-e0789bc8f62176cb",
+      "documentation_status": "DOCUMENTED",
+      "architecture_evidence": [
+        "art-b0a125768ad39393",
+        "art-dc96688d88ea92a4",
+        "art-370583f1cdda8999"
+      ]
+    },
+    {
+      "symbol": "Observation",
+      "implementation_evidence": "art-e0789bc8f62176cb",
+      "documentation_status": "DOCUMENTED",
+      "architecture_evidence": [
+        "art-2dd104a2ee7cd64a",
+        "art-f93fb99a03339a57",
+        "art-ba3a70ab0ad8b6c0"
+      ]
+    },
+    {
+      "symbol": "Discovery",
+      "implementation_evidence": "art-e0789bc8f62176cb",
+      "documentation_status": "DOCUMENTED",
+      "architecture_evidence": [
+        "art-b0a125768ad39393",
+        "art-2dd104a2ee7cd64a",
+        "art-f93fb99a03339a57"
+      ]
+    },
+    {
+      "symbol": "ResourceRecord",
+      "implementation_evidence": "art-e0789bc8f62176cb",
+      "documentation_status": "DOCUMENTED",
+      "architecture_evidence": [
+        "art-b4273f5c564c3044"
+      ]
+    },
+    {
+      "symbol": "KnowledgeBase",
+      "implementation_evidence": "art-e0789bc8f62176cb",
+      "documentation_status": "DOCUMENTED",
+      "architecture_evidence": [
+        "art-f93fb99a03339a57",
+        "art-c5582a67223746c0",
+        "art-9c057dc09e1afa04"
+      ]
+    },
+    {
+      "symbol": "AcquisitionPolicy",
+      "implementation_evidence": "art-e0789bc8f62176cb",
+      "documentation_status": "DOCUMENTED",
+      "architecture_evidence": [
+        "art-1cb76f97ad6ef100",
+        "art-11c0785540408d30",
+        "art-45ed9cf5408e7ea1"
+      ]
+    },
+    {
+      "symbol": "OriginController",
+      "implementation_evidence": "art-e0789bc8f62176cb",
+      "documentation_status": "DOCUMENTED",
+      "architecture_evidence": [
+        "art-9e17c39979e3f1dc"
+      ]
+    },
+    {
+      "symbol": "Acquisition",
+      "implementation_evidence": "art-e0789bc8f62176cb",
+      "documentation_status": "DOCUMENTED",
+      "architecture_evidence": [
+        "art-b0a125768ad39393",
+        "art-5919df31ae67799a",
+        "art-17da1fd34aa34529"
+      ]
+    },
+    {
+      "symbol": "Provider",
+      "implementation_evidence": "art-e0789bc8f62176cb",
+      "documentation_status": "DOCUMENTED",
+      "architecture_evidence": [
+        "art-9da212190c10b6e5",
+        "art-2fc1b4d5505c8aa5",
+        "art-e6b079808ce6b46e"
+      ]
+    },
+    {
+      "symbol": "HtmlProvider",
+      "implementation_evidence": "art-e0789bc8f62176cb",
+      "documentation_status": "DOCUMENTED",
+      "architecture_evidence": [
+        "art-cd622cb0aa3a8eaf",
+        "art-20c0931322251874"
+      ]
+    },
+    {
+      "symbol": "JsonProvider",
+      "implementation_evidence": "art-e0789bc8f62176cb",
+      "documentation_status": "IMPLICIT",
+      "architecture_evidence": []
+    },
+    {
+      "symbol": "XmlProvider",
+      "implementation_evidence": "art-e0789bc8f62176cb",
+      "documentation_status": "IMPLICIT",
+      "architecture_evidence": []
+    },
+    {
+      "symbol": "CssProvider",
+      "implementation_evidence": "art-e0789bc8f62176cb",
+      "documentation_status": "IMPLICIT",
+      "architecture_evidence": []
+    },
+    {
+      "symbol": "JavaScriptProvider",
+      "implementation_evidence": "art-e0789bc8f62176cb",
+      "documentation_status": "IMPLICIT",
+      "architecture_evidence": []
+    },
+    {
+      "symbol": "TextProvider",
+      "implementation_evidence": "art-e0789bc8f62176cb",
+      "documentation_status": "IMPLICIT",
+      "architecture_evidence": []
+    },
+    {
+      "symbol": "BinaryProvider",
+      "implementation_evidence": "art-e0789bc8f62176cb",
+      "documentation_status": "IMPLICIT",
+      "architecture_evidence": []
+    },
+    {
+      "symbol": "ProviderRegistry",
+      "implementation_evidence": "art-e0789bc8f62176cb",
+      "documentation_status": "IMPLICIT",
+      "architecture_evidence": []
+    },
+    {
+      "symbol": "NetworkObserver",
+      "implementation_evidence": "art-e0789bc8f62176cb",
+      "documentation_status": "DOCUMENTED",
+      "architecture_evidence": [
+        "art-50de9d4e0198aac7",
+        "art-cbe08107ac061ff7",
+        "art-b7ede0547956f930"
+      ]
+    },
+    {
+      "symbol": "GenericDiscoveryEngine",
+      "implementation_evidence": "art-e0789bc8f62176cb",
+      "documentation_status": "IMPLICIT",
+      "architecture_evidence": []
+    }
+  ]
+}

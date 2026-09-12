@@ -1,0 +1,1032 @@
+{
+  "schema_version": "1.0",
+  "protocol": "v10.1",
+  "overall_status": "STRUCTURAL_PASS_INPUT_BLOCKED",
+  "acceptance": "INPUT_CONTRACT_FAILED",
+  "summary": {
+    "total": 144,
+    "passed": 143,
+    "failed": 0,
+    "blocked": 1
+  },
+  "corpus_counts": {
+    "normalized_evidence": 26,
+    "facts": 144,
+    "properties": 198,
+    "obligations": 54,
+    "requirements": 54,
+    "dependencies": 100,
+    "invariants": 54,
+    "tests": 54
+  },
+  "checks": [
+    {
+      "check_id": "A01",
+      "category": "deliverables",
+      "description": "required deliverable exists: README.md",
+      "result": "PASS",
+      "detail": ""
+    },
+    {
+      "check_id": "A02",
+      "category": "deliverables",
+      "description": "required deliverable exists: INPUT-CONTRACT.yaml",
+      "result": "PASS",
+      "detail": ""
+    },
+    {
+      "check_id": "A03",
+      "category": "deliverables",
+      "description": "required deliverable exists: OBLIGATIONS.yaml",
+      "result": "PASS",
+      "detail": ""
+    },
+    {
+      "check_id": "A04",
+      "category": "deliverables",
+      "description": "required deliverable exists: OBLIGATION-DEPENDENCIES.yaml",
+      "result": "PASS",
+      "detail": ""
+    },
+    {
+      "check_id": "A05",
+      "category": "deliverables",
+      "description": "required deliverable exists: OBLIGATION-DEPENDENCY-MATRIX.yaml",
+      "result": "PASS",
+      "detail": ""
+    },
+    {
+      "check_id": "A06",
+      "category": "deliverables",
+      "description": "required deliverable exists: DEPENDENCY-CLOSURE.md",
+      "result": "PASS",
+      "detail": ""
+    },
+    {
+      "check_id": "A07",
+      "category": "deliverables",
+      "description": "required deliverable exists: DEPENDENCY-CRITICAL-OBLIGATIONS.yaml",
+      "result": "PASS",
+      "detail": ""
+    },
+    {
+      "check_id": "A08",
+      "category": "deliverables",
+      "description": "required deliverable exists: EVIDENCE-GRAPH.yaml",
+      "result": "PASS",
+      "detail": ""
+    },
+    {
+      "check_id": "A09",
+      "category": "deliverables",
+      "description": "required deliverable exists: HISTORICAL-OBLIGATION-GRAPH.yaml",
+      "result": "PASS",
+      "detail": ""
+    },
+    {
+      "check_id": "A10",
+      "category": "deliverables",
+      "description": "required deliverable exists: FUTURE-ENGINEERING-OBLIGATION-GRAPH.yaml",
+      "result": "PASS",
+      "detail": ""
+    },
+    {
+      "check_id": "A11",
+      "category": "deliverables",
+      "description": "required deliverable exists: VERIFICATION-GRAPH.yaml",
+      "result": "PASS",
+      "detail": ""
+    },
+    {
+      "check_id": "A12",
+      "category": "deliverables",
+      "description": "required deliverable exists: OBLIGATION-LINEAGE.yaml",
+      "result": "PASS",
+      "detail": ""
+    },
+    {
+      "check_id": "A13",
+      "category": "deliverables",
+      "description": "required deliverable exists: OBLIGATION-LINEAGE-GRAPH.md",
+      "result": "PASS",
+      "detail": ""
+    },
+    {
+      "check_id": "A14",
+      "category": "deliverables",
+      "description": "required deliverable exists: OBLIGATION-CONFLICTS.yaml",
+      "result": "PASS",
+      "detail": ""
+    },
+    {
+      "check_id": "A15",
+      "category": "deliverables",
+      "description": "required deliverable exists: FAILURE-OBLIGATIONS.yaml",
+      "result": "PASS",
+      "detail": ""
+    },
+    {
+      "check_id": "A16",
+      "category": "deliverables",
+      "description": "required deliverable exists: SECURITY-OBLIGATIONS.yaml",
+      "result": "PASS",
+      "detail": ""
+    },
+    {
+      "check_id": "A17",
+      "category": "deliverables",
+      "description": "required deliverable exists: CONTRACT-OBLIGATIONS.yaml",
+      "result": "PASS",
+      "detail": ""
+    },
+    {
+      "check_id": "A18",
+      "category": "deliverables",
+      "description": "required deliverable exists: NULLABILITY-COMPATIBILITY.yaml",
+      "result": "PASS",
+      "detail": ""
+    },
+    {
+      "check_id": "A19",
+      "category": "deliverables",
+      "description": "required deliverable exists: HISTORICAL-API-SURFACE.yaml",
+      "result": "PASS",
+      "detail": ""
+    },
+    {
+      "check_id": "A20",
+      "category": "deliverables",
+      "description": "required deliverable exists: TRACEABILITY-MATRIX.yaml",
+      "result": "PASS",
+      "detail": ""
+    },
+    {
+      "check_id": "A21",
+      "category": "deliverables",
+      "description": "required deliverable exists: HISTORICAL-REGRESSION-SUITE.md",
+      "result": "PASS",
+      "detail": ""
+    },
+    {
+      "check_id": "A22",
+      "category": "deliverables",
+      "description": "required deliverable exists: COMPATIBILITY-ENVELOPE.md",
+      "result": "PASS",
+      "detail": ""
+    },
+    {
+      "check_id": "A23",
+      "category": "deliverables",
+      "description": "required deliverable exists: ESSENTIAL-VS-ACCIDENTAL.md",
+      "result": "PASS",
+      "detail": ""
+    },
+    {
+      "check_id": "A24",
+      "category": "deliverables",
+      "description": "required deliverable exists: MIGRATION-OBLIGATIONS.md",
+      "result": "PASS",
+      "detail": ""
+    },
+    {
+      "check_id": "A25",
+      "category": "deliverables",
+      "description": "required deliverable exists: OBLIGATION-CONFLICTS.md",
+      "result": "PASS",
+      "detail": ""
+    },
+    {
+      "check_id": "A26",
+      "category": "deliverables",
+      "description": "required deliverable exists: OBLIGATION-GRAPH.md",
+      "result": "PASS",
+      "detail": ""
+    },
+    {
+      "check_id": "A27",
+      "category": "deliverables",
+      "description": "required deliverable exists: ENGINEERING-OBLIGATION-REPORT.md",
+      "result": "PASS",
+      "detail": ""
+    },
+    {
+      "check_id": "A28",
+      "category": "deliverables",
+      "description": "required deliverable exists: schema/input-contract.schema.yaml",
+      "result": "PASS",
+      "detail": ""
+    },
+    {
+      "check_id": "A29",
+      "category": "deliverables",
+      "description": "required deliverable exists: schema/historical-property.schema.yaml",
+      "result": "PASS",
+      "detail": ""
+    },
+    {
+      "check_id": "A30",
+      "category": "deliverables",
+      "description": "required deliverable exists: schema/obligation.schema.yaml",
+      "result": "PASS",
+      "detail": ""
+    },
+    {
+      "check_id": "A31",
+      "category": "deliverables",
+      "description": "required deliverable exists: schema/obligation-dependency.schema.yaml",
+      "result": "PASS",
+      "detail": ""
+    },
+    {
+      "check_id": "A32",
+      "category": "deliverables",
+      "description": "required deliverable exists: schema/obligation-lineage.schema.yaml",
+      "result": "PASS",
+      "detail": ""
+    },
+    {
+      "check_id": "A33",
+      "category": "deliverables",
+      "description": "required deliverable exists: schema/obligation-conflict.schema.yaml",
+      "result": "PASS",
+      "detail": ""
+    },
+    {
+      "check_id": "A34",
+      "category": "deliverables",
+      "description": "required deliverable exists: schema/traceability.schema.yaml",
+      "result": "PASS",
+      "detail": ""
+    },
+    {
+      "check_id": "I00",
+      "category": "input",
+      "description": "input contract and obligation schema versions are 1.0",
+      "result": "PASS",
+      "detail": ""
+    },
+    {
+      "check_id": "I01",
+      "category": "input",
+      "description": "all nine required input kinds are represented",
+      "result": "PASS",
+      "detail": ""
+    },
+    {
+      "check_id": "I02",
+      "category": "input",
+      "description": "schemas are checked and missing schema inputs remain blocked",
+      "result": "PASS",
+      "detail": ""
+    },
+    {
+      "check_id": "I03",
+      "category": "input",
+      "description": "content hashes and v1 mismatch are distinguished",
+      "result": "PASS",
+      "detail": ""
+    },
+    {
+      "check_id": "I04",
+      "category": "input",
+      "description": "version consistency gate is blocked, not falsely passed",
+      "result": "PASS",
+      "detail": ""
+    },
+    {
+      "check_id": "I05",
+      "category": "input",
+      "description": "provenance references structurally resolve",
+      "result": "PASS",
+      "detail": ""
+    },
+    {
+      "check_id": "I06",
+      "category": "input",
+      "description": "normalized evidence epistemic labels are valid",
+      "result": "PASS",
+      "detail": ""
+    },
+    {
+      "check_id": "I07",
+      "category": "input",
+      "description": "contradictions are preserved",
+      "result": "PASS",
+      "detail": ""
+    },
+    {
+      "check_id": "I08",
+      "category": "input",
+      "description": "unknowns are preserved",
+      "result": "PASS",
+      "detail": ""
+    },
+    {
+      "check_id": "I09",
+      "category": "input",
+      "description": "missing v4 reconstruction verification fails explicitly",
+      "result": "PASS",
+      "detail": ""
+    },
+    {
+      "check_id": "I10",
+      "category": "input",
+      "description": "temporal isolation gate is explicit",
+      "result": "PASS",
+      "detail": ""
+    },
+    {
+      "check_id": "I11",
+      "category": "input",
+      "description": "v4-v7 remain missing, not synthesized",
+      "result": "PASS",
+      "detail": ""
+    },
+    {
+      "check_id": "I12",
+      "category": "input",
+      "description": "overall failed status and downgrade authorization are explicit",
+      "result": "PASS",
+      "detail": ""
+    },
+    {
+      "check_id": "I13",
+      "category": "input",
+      "description": "missing evidence is not evidence of absence",
+      "result": "PASS",
+      "detail": ""
+    },
+    {
+      "check_id": "I14",
+      "category": "input",
+      "description": "every failure state belongs to normative registry",
+      "result": "PASS",
+      "detail": ""
+    },
+    {
+      "check_id": "I15",
+      "category": "input",
+      "description": "normalization envelope has exact core fields",
+      "result": "PASS",
+      "detail": ""
+    },
+    {
+      "check_id": "I16",
+      "category": "input",
+      "description": "derivation declares normalized-evidence-only consumption",
+      "result": "PASS",
+      "detail": ""
+    },
+    {
+      "check_id": "I17",
+      "category": "input",
+      "description": "direct mandatory-source rejection policy is present",
+      "result": "PASS",
+      "detail": ""
+    },
+    {
+      "check_id": "I18",
+      "category": "input",
+      "description": "normalized content hashes bind existing source paths",
+      "result": "PASS",
+      "detail": ""
+    },
+    {
+      "check_id": "I19",
+      "category": "input",
+      "description": "normalized evidence uses only accepted evidence classes",
+      "result": "PASS",
+      "detail": ""
+    },
+    {
+      "check_id": "P01",
+      "category": "properties",
+      "description": "facts remain distinct from properties and obligations",
+      "result": "PASS",
+      "detail": ""
+    },
+    {
+      "check_id": "P02",
+      "category": "properties",
+      "description": "all properties use prescribed uppercase property types",
+      "result": "PASS",
+      "detail": ""
+    },
+    {
+      "check_id": "P03",
+      "category": "properties",
+      "description": "all properties include minimum v10.1 model fields",
+      "result": "PASS",
+      "detail": ""
+    },
+    {
+      "check_id": "P04",
+      "category": "properties",
+      "description": "every property resolves normalized evidence",
+      "result": "PASS",
+      "detail": ""
+    },
+    {
+      "check_id": "P05",
+      "category": "properties",
+      "description": "property is not automatically a requirement",
+      "result": "PASS",
+      "detail": ""
+    },
+    {
+      "check_id": "P06",
+      "category": "properties",
+      "description": "state properties preserve epistemic labels",
+      "result": "PASS",
+      "detail": ""
+    },
+    {
+      "check_id": "O01",
+      "category": "obligations",
+      "description": "every obligation includes the minimum schema",
+      "result": "PASS",
+      "detail": ""
+    },
+    {
+      "check_id": "O02",
+      "category": "obligations",
+      "description": "class enum excludes UNKNOWN",
+      "result": "PASS",
+      "detail": ""
+    },
+    {
+      "check_id": "O03",
+      "category": "obligations",
+      "description": "strength, category, epistemic, and lifecycle enums are independent and valid",
+      "result": "PASS",
+      "detail": ""
+    },
+    {
+      "check_id": "O04",
+      "category": "obligations",
+      "description": "obligation IDs are unique",
+      "result": "PASS",
+      "detail": ""
+    },
+    {
+      "check_id": "O05",
+      "category": "obligations",
+      "description": "all source properties/evidence resolve",
+      "result": "PASS",
+      "detail": ""
+    },
+    {
+      "check_id": "O06",
+      "category": "obligations",
+      "description": "all obligations expose version scope",
+      "result": "PASS",
+      "detail": ""
+    },
+    {
+      "check_id": "O07",
+      "category": "obligations",
+      "description": "no obligation is marked VERIFIED or IMPLEMENTED",
+      "result": "PASS",
+      "detail": ""
+    },
+    {
+      "check_id": "O08",
+      "category": "obligations",
+      "description": "verified status is distinct from implementation and test result",
+      "result": "PASS",
+      "detail": ""
+    },
+    {
+      "check_id": "O09",
+      "category": "obligations",
+      "description": "classes, strengths and categories are not mechanically identical",
+      "result": "PASS",
+      "detail": ""
+    },
+    {
+      "check_id": "O10",
+      "category": "obligations",
+      "description": "historical defects are explicitly rejected",
+      "result": "PASS",
+      "detail": ""
+    },
+    {
+      "check_id": "O11",
+      "category": "obligations",
+      "description": "future strengthenings remain labeled",
+      "result": "PASS",
+      "detail": ""
+    },
+    {
+      "check_id": "O12",
+      "category": "obligations",
+      "description": "requirements retain source-local blocked acceptance",
+      "result": "PASS",
+      "detail": ""
+    },
+    {
+      "check_id": "O13",
+      "category": "obligations",
+      "description": "one invariant and test resolves for every obligation",
+      "result": "PASS",
+      "detail": ""
+    },
+    {
+      "check_id": "O14",
+      "category": "obligations",
+      "description": "priority basis is risk-based rather than chronological",
+      "result": "PASS",
+      "detail": ""
+    },
+    {
+      "check_id": "V02",
+      "category": "dependencies",
+      "description": "dependency direction and relation are valid",
+      "result": "PASS",
+      "detail": ""
+    },
+    {
+      "check_id": "V03",
+      "category": "dependencies",
+      "description": "every dependency has semantic justification and provenance",
+      "result": "PASS",
+      "detail": ""
+    },
+    {
+      "check_id": "V04",
+      "category": "dependencies",
+      "description": "verification edges resolve actual test evidence without false verification",
+      "result": "PASS",
+      "detail": ""
+    },
+    {
+      "check_id": "V05",
+      "category": "dependencies",
+      "description": "REQUIRES cycles are detected and none are silently linearized",
+      "result": "PASS",
+      "detail": ""
+    },
+    {
+      "check_id": "V06",
+      "category": "dependencies",
+      "description": "every REQUIRED obligation exposes complete dependency closure",
+      "result": "PASS",
+      "detail": ""
+    },
+    {
+      "check_id": "V07",
+      "category": "dependencies",
+      "description": "no obligation is VERIFIED while required dependencies are unverified",
+      "result": "PASS",
+      "detail": ""
+    },
+    {
+      "check_id": "V08",
+      "category": "dependencies",
+      "description": "centrality and change impact cover every obligation",
+      "result": "PASS",
+      "detail": ""
+    },
+    {
+      "check_id": "V09",
+      "category": "dependencies",
+      "description": "topological verification order puts REQUIRES targets first",
+      "result": "PASS",
+      "detail": ""
+    },
+    {
+      "check_id": "V10",
+      "category": "dependencies",
+      "description": "failure propagation reaches dependent tests",
+      "result": "PASS",
+      "detail": ""
+    },
+    {
+      "check_id": "V11",
+      "category": "dependencies",
+      "description": "historical and future dependency types are explicit",
+      "result": "PASS",
+      "detail": ""
+    },
+    {
+      "check_id": "V12",
+      "category": "dependencies",
+      "description": "conflicts do not enter dependency graph",
+      "result": "PASS",
+      "detail": ""
+    },
+    {
+      "check_id": "V13",
+      "category": "dependencies",
+      "description": "lineage and supersession remain separate",
+      "result": "PASS",
+      "detail": ""
+    },
+    {
+      "check_id": "V14",
+      "category": "dependencies",
+      "description": "matrix covers all obligation pairs",
+      "result": "PASS",
+      "detail": ""
+    },
+    {
+      "check_id": "V15",
+      "category": "dependencies",
+      "description": "dependency IDs resolve in obligation adjacency",
+      "result": "PASS",
+      "detail": ""
+    },
+    {
+      "check_id": "V16",
+      "category": "dependencies",
+      "description": "required closures are blocked rather than falsely verified",
+      "result": "PASS",
+      "detail": ""
+    },
+    {
+      "check_id": "V17",
+      "category": "dependencies",
+      "description": "dependency layers do not place dependents below prerequisites",
+      "result": "PASS",
+      "detail": ""
+    },
+    {
+      "check_id": "G01",
+      "category": "graphs",
+      "description": "evidence graph is distinct and typed",
+      "result": "PASS",
+      "detail": ""
+    },
+    {
+      "check_id": "G02",
+      "category": "graphs",
+      "description": "historical dependency graph excludes future edges",
+      "result": "PASS",
+      "detail": ""
+    },
+    {
+      "check_id": "G03",
+      "category": "graphs",
+      "description": "future engineering dependency graph does not relabel history",
+      "result": "PASS",
+      "detail": ""
+    },
+    {
+      "check_id": "G04",
+      "category": "graphs",
+      "description": "verification graph remains distinct",
+      "result": "PASS",
+      "detail": ""
+    },
+    {
+      "check_id": "G05",
+      "category": "graphs",
+      "description": "lineage graph has explicit version/status fields",
+      "result": "PASS",
+      "detail": ""
+    },
+    {
+      "check_id": "G06",
+      "category": "graphs",
+      "description": "conflict graph carries semantic differences and resolution status",
+      "result": "PASS",
+      "detail": ""
+    },
+    {
+      "check_id": "G07",
+      "category": "graphs",
+      "description": "dependency graph has distinct typed nodes and edges",
+      "result": "PASS",
+      "detail": ""
+    },
+    {
+      "check_id": "S01",
+      "category": "specialized",
+      "description": "failure classes separate obligation propagation states",
+      "result": "PASS",
+      "detail": ""
+    },
+    {
+      "check_id": "S02",
+      "category": "specialized",
+      "description": "security treats remote content as untrusted data",
+      "result": "PASS",
+      "detail": ""
+    },
+    {
+      "check_id": "S03",
+      "category": "specialized",
+      "description": "contract conclusions remain unknown under missing v7",
+      "result": "PASS",
+      "detail": ""
+    },
+    {
+      "check_id": "S04",
+      "category": "specialized",
+      "description": "nullability remains unknown without v7",
+      "result": "PASS",
+      "detail": ""
+    },
+    {
+      "check_id": "S05",
+      "category": "specialized",
+      "description": "API signatures do not prove semantics",
+      "result": "PASS",
+      "detail": ""
+    },
+    {
+      "check_id": "S06",
+      "category": "specialized",
+      "description": "traceability resolves obligations, properties and tests",
+      "result": "PASS",
+      "detail": ""
+    },
+    {
+      "check_id": "S07",
+      "category": "specialized",
+      "description": "traceability includes dependency and verification result",
+      "result": "PASS",
+      "detail": ""
+    },
+    {
+      "check_id": "C01",
+      "category": "schemas",
+      "description": "seven schemas are versioned 1.0",
+      "result": "PASS",
+      "detail": ""
+    },
+    {
+      "check_id": "C02",
+      "category": "schemas",
+      "description": "obligation schema class enum excludes UNKNOWN",
+      "result": "PASS",
+      "detail": ""
+    },
+    {
+      "check_id": "C03",
+      "category": "schemas",
+      "description": "property schema uses required type enum",
+      "result": "PASS",
+      "detail": ""
+    },
+    {
+      "check_id": "C04",
+      "category": "schemas",
+      "description": "dependency schema permits normative REQUIRES",
+      "result": "PASS",
+      "detail": ""
+    },
+    {
+      "check_id": "C05",
+      "category": "schemas",
+      "description": "traceability schema requires dependency and verification",
+      "result": "PASS",
+      "detail": ""
+    },
+    {
+      "check_id": "M01",
+      "category": "model",
+      "description": "core obligation coverage is present",
+      "result": "PASS",
+      "detail": ""
+    },
+    {
+      "check_id": "M02",
+      "category": "model",
+      "description": "candidate identity dimensions remain independent",
+      "result": "PASS",
+      "detail": ""
+    },
+    {
+      "check_id": "M03",
+      "category": "model",
+      "description": "deduplication scopes remain independent",
+      "result": "PASS",
+      "detail": ""
+    },
+    {
+      "check_id": "M04",
+      "category": "model",
+      "description": "claim scope does not overstate thread/distributed atomicity",
+      "result": "PASS",
+      "detail": ""
+    },
+    {
+      "check_id": "M05",
+      "category": "model",
+      "description": "termination remains an engineering strengthening",
+      "result": "PASS",
+      "detail": ""
+    },
+    {
+      "check_id": "M06",
+      "category": "model",
+      "description": "cancellation API does not imply safety",
+      "result": "PASS",
+      "detail": ""
+    },
+    {
+      "check_id": "M07",
+      "category": "model",
+      "description": "auditability is not inferred from logs",
+      "result": "PASS",
+      "detail": ""
+    },
+    {
+      "check_id": "M08",
+      "category": "model",
+      "description": "provenance visibility and integrity stay separate",
+      "result": "PASS",
+      "detail": ""
+    },
+    {
+      "check_id": "M09",
+      "category": "model",
+      "description": "resource findings are static risk not incidents",
+      "result": "PASS",
+      "detail": ""
+    },
+    {
+      "check_id": "M10",
+      "category": "model",
+      "description": "future mechanisms remain unselected",
+      "result": "PASS",
+      "detail": ""
+    },
+    {
+      "check_id": "M11",
+      "category": "model",
+      "description": "no externally visible API is invented",
+      "result": "PASS",
+      "detail": ""
+    },
+    {
+      "check_id": "M12",
+      "category": "model",
+      "description": "historical parse defect is not future behavior",
+      "result": "PASS",
+      "detail": ""
+    },
+    {
+      "check_id": "M13",
+      "category": "model",
+      "description": "provider ordering uncertainty remains explicit",
+      "result": "PASS",
+      "detail": ""
+    },
+    {
+      "check_id": "M14",
+      "category": "model",
+      "description": "v7 gate is required without inventing contract conclusions",
+      "result": "PASS",
+      "detail": ""
+    },
+    {
+      "check_id": "Q01",
+      "category": "quality",
+      "description": "all required inputs exist, are valid, verified and temporally clean",
+      "result": "BLOCKED",
+      "detail": "Protocol-v1 validation fails and Protocol-v4-v7 required artifacts are missing; acceptance cannot proceed."
+    },
+    {
+      "check_id": "Q02",
+      "category": "quality",
+      "description": "every historical property traces to normalized evidence",
+      "result": "PASS",
+      "detail": ""
+    },
+    {
+      "check_id": "Q03",
+      "category": "quality",
+      "description": "every obligation has historical property/evidence justification",
+      "result": "PASS",
+      "detail": ""
+    },
+    {
+      "check_id": "Q04",
+      "category": "quality",
+      "description": "class strength category epistemic and lifecycle are separately declared",
+      "result": "PASS",
+      "detail": ""
+    },
+    {
+      "check_id": "Q05",
+      "category": "quality",
+      "description": "every dependency has direction, condition, reason, provenance and scope",
+      "result": "PASS",
+      "detail": ""
+    },
+    {
+      "check_id": "Q06",
+      "category": "quality",
+      "description": "REQUIRES graph is acyclic or cycles would be reported",
+      "result": "PASS",
+      "detail": ""
+    },
+    {
+      "check_id": "Q07",
+      "category": "quality",
+      "description": "every REQUIRED obligation exposes closure",
+      "result": "PASS",
+      "detail": ""
+    },
+    {
+      "check_id": "Q08",
+      "category": "quality",
+      "description": "dependency criticality and ordering are reproducible",
+      "result": "PASS",
+      "detail": ""
+    },
+    {
+      "check_id": "Q09",
+      "category": "quality",
+      "description": "dependency failure propagation is encoded",
+      "result": "PASS",
+      "detail": ""
+    },
+    {
+      "check_id": "Q10",
+      "category": "quality",
+      "description": "historical and future dependency models remain distinct",
+      "result": "PASS",
+      "detail": ""
+    },
+    {
+      "check_id": "Q11",
+      "category": "quality",
+      "description": "dependency, lineage, conflict and verification semantics remain distinct",
+      "result": "PASS",
+      "detail": ""
+    },
+    {
+      "check_id": "Q12",
+      "category": "quality",
+      "description": "IMPLEMENTED never implies VERIFIED",
+      "result": "PASS",
+      "detail": ""
+    },
+    {
+      "check_id": "Q13",
+      "category": "quality",
+      "description": "future strengthenings are explicit and not historical claims",
+      "result": "PASS",
+      "detail": ""
+    },
+    {
+      "check_id": "Q14",
+      "category": "quality",
+      "description": "unknowns and contradictions remain preserved",
+      "result": "PASS",
+      "detail": ""
+    },
+    {
+      "check_id": "Q15",
+      "category": "quality",
+      "description": "all reports carry failed-input disposition",
+      "result": "PASS",
+      "detail": ""
+    },
+    {
+      "check_id": "Q16",
+      "category": "quality",
+      "description": "all generator-owned outputs reproduce byte-for-byte",
+      "result": "PASS",
+      "detail": ""
+    },
+    {
+      "check_id": "H01",
+      "category": "hygiene",
+      "description": "authoritative documents remain outside generated corpus",
+      "result": "PASS",
+      "detail": ""
+    },
+    {
+      "check_id": "H02",
+      "category": "hygiene",
+      "description": "no Python cache artifacts exist",
+      "result": "PASS",
+      "detail": ""
+    },
+    {
+      "check_id": "H03",
+      "category": "hygiene",
+      "description": "tool hashes are current",
+      "result": "PASS",
+      "detail": ""
+    },
+    {
+      "check_id": "H04",
+      "category": "hygiene",
+      "description": "all machine artifacts are JSON-compatible YAML",
+      "result": "PASS",
+      "detail": ""
+    },
+    {
+      "check_id": "H05",
+      "category": "hygiene",
+      "description": "no rejected current/future documents enter normalized evidence",
+      "result": "PASS",
+      "detail": ""
+    }
+  ]
+}

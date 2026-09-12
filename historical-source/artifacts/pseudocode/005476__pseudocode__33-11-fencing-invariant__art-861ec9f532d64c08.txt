@@ -1,0 +1,6 @@
+CanMutate(W, C)
+    ⇒
+    Owner(W) = Worker(C)
+    ∧ Claim(W) = C
+    ∧ Epoch(W) = Epoch(C)
+    ∧ LeaseValid(C)

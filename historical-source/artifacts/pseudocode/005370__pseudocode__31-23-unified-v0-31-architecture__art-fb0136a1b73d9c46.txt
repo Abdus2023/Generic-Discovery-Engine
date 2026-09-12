@@ -1,0 +1,55 @@
+                         SEARCH GOAL
+                              │
+                              ▼
+                        QUERY PLANNER
+                              │
+                              ▼
+                         SEARCH SPACE
+                              │
+                              ▼
+                    ┌───────────────────┐
+                    │ FRONTIER RUNTIME  │
+                    └─────────┬─────────┘
+                              │
+                              ▼
+                       ADMISSION CONTROL
+                              │
+                              ▼
+                         ARBITRATION
+                              │
+                              ▼
+                    ArbitrationDecision
+                              │
+                              ▼
+                      RESOURCE ALLOCATOR
+                              │
+                 ┌────────────┼────────────┐
+                 ▼            ▼            ▼
+              budget       capacity      quotas
+                 │            │            │
+                 └────────────┼────────────┘
+                              ▼
+                       RESERVATION
+                              │
+                              ▼
+                           EXECUTE
+                              │
+                              ▼
+                         OBSERVATION
+                              │
+                              ▼
+                       COST OBSERVATION
+                              │
+                              ▼
+                         SETTLEMENT
+                              │
+                              ▼
+                      RESOURCE LEDGER
+                              │
+                  ┌───────────┴───────────┐
+                  ▼                       ▼
+             remaining              cost history
+                  │                       │
+                  └───────────┬───────────┘
+                              ▼
+                         ARBITRATION

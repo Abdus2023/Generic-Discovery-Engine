@@ -1,0 +1,1401 @@
+{
+  "schema_version": 8,
+  "builder": "security-archaeology-builder-v8",
+  "model_kind": "DERIVED_SECURITY_ARCHAEOLOGY_NOT_SOURCE",
+  "authorities": [
+    {
+      "authority_id": "authority-e6e2076666ab8142",
+      "snapshot_id": "snapshot-0001",
+      "version": "v0.1.0",
+      "variant": "mechanically-composed",
+      "operation": "network request",
+      "authority_required": "Acquisition/adapter or engine",
+      "authority_granted": "GLOBAL_OR_AMBIENT",
+      "authority_used": "HttpAcquisitionAdapter.request",
+      "unnecessarily_exposed": "POSSIBLE",
+      "least_authority": "NOT_ESTABLISHED",
+      "capability_like_pattern": "CAPABILITY_LIKE_PATTERN",
+      "formal_capability_system": false,
+      "evidence": [
+        "security-ev-d9e5058dbe63c966"
+      ]
+    },
+    {
+      "authority_id": "authority-f00fc383c6f845d5",
+      "snapshot_id": "snapshot-0001",
+      "version": "v0.1.0",
+      "variant": "mechanically-composed",
+      "operation": "candidate insertion",
+      "authority_required": "KnowledgeBase/scheduler/engine",
+      "authority_granted": "KnowledgeBase.addCandidate",
+      "authority_used": "KnowledgeBase.addCandidate",
+      "unnecessarily_exposed": "UNKNOWN",
+      "least_authority": "NOT_ESTABLISHED",
+      "capability_like_pattern": "CAPABILITY_LIKE_PATTERN",
+      "formal_capability_system": false,
+      "evidence": [
+        "security-ev-979f38feb06f0fec"
+      ]
+    },
+    {
+      "authority_id": "authority-350763031a8fbf17",
+      "snapshot_id": "snapshot-0001",
+      "version": "v0.1.0",
+      "variant": "mechanically-composed",
+      "operation": "state mutation",
+      "authority_required": "KnowledgeBase/engine",
+      "authority_granted": "KnowledgeBase.addCandidate",
+      "authority_used": "KnowledgeBase.addCandidate",
+      "unnecessarily_exposed": "UNKNOWN",
+      "least_authority": "NOT_ESTABLISHED",
+      "capability_like_pattern": "NOT_EVIDENCED",
+      "formal_capability_system": false,
+      "evidence": [
+        "security-ev-b09312afbcf61aa8"
+      ]
+    },
+    {
+      "authority_id": "authority-4e8be763608d4765",
+      "snapshot_id": "snapshot-0001",
+      "version": "v0.1.0",
+      "variant": "mechanically-composed",
+      "operation": "export",
+      "authority_required": "Engine/UI",
+      "authority_granted": "DiscoveryEngine.export",
+      "authority_used": "DiscoveryEngine.export",
+      "unnecessarily_exposed": "UNKNOWN",
+      "least_authority": "NOT_ESTABLISHED",
+      "capability_like_pattern": "NOT_EVIDENCED",
+      "formal_capability_system": false,
+      "evidence": [
+        "security-ev-77f11af7029cc2d3"
+      ]
+    },
+    {
+      "authority_id": "authority-d0000b37901b0029",
+      "snapshot_id": "snapshot-0001",
+      "version": "v0.1.0",
+      "variant": "mechanically-composed",
+      "operation": "configuration",
+      "authority_required": "global userscript scope",
+      "authority_granted": "GLOBAL_OR_AMBIENT",
+      "authority_used": "TOP_LEVEL.TOP_LEVEL",
+      "unnecessarily_exposed": "POSSIBLE",
+      "least_authority": "NOT_ESTABLISHED",
+      "capability_like_pattern": "NOT_EVIDENCED",
+      "formal_capability_system": false,
+      "evidence": [
+        "security-ev-95ad26395d96d042"
+      ]
+    },
+    {
+      "authority_id": "authority-7a10c2d71fe685cf",
+      "snapshot_id": "snapshot-0003",
+      "version": "v0.2.0",
+      "variant": "mechanically-composed",
+      "operation": "network request",
+      "authority_required": "Acquisition/adapter or engine",
+      "authority_granted": "GLOBAL_OR_AMBIENT",
+      "authority_used": "HttpAcquisitionAdapter.request",
+      "unnecessarily_exposed": "POSSIBLE",
+      "least_authority": "NOT_ESTABLISHED",
+      "capability_like_pattern": "CAPABILITY_LIKE_PATTERN",
+      "formal_capability_system": false,
+      "evidence": [
+        "security-ev-a82b3596633357ce"
+      ]
+    },
+    {
+      "authority_id": "authority-9a0afa25b7e94173",
+      "snapshot_id": "snapshot-0003",
+      "version": "v0.2.0",
+      "variant": "mechanically-composed",
+      "operation": "candidate insertion",
+      "authority_required": "KnowledgeBase/scheduler/engine",
+      "authority_granted": "KnowledgeBase.addCandidate",
+      "authority_used": "KnowledgeBase.addCandidate",
+      "unnecessarily_exposed": "UNKNOWN",
+      "least_authority": "NOT_ESTABLISHED",
+      "capability_like_pattern": "CAPABILITY_LIKE_PATTERN",
+      "formal_capability_system": false,
+      "evidence": [
+        "security-ev-efd9838fc7eb304b"
+      ]
+    },
+    {
+      "authority_id": "authority-a83c843fdd2d9194",
+      "snapshot_id": "snapshot-0003",
+      "version": "v0.2.0",
+      "variant": "mechanically-composed",
+      "operation": "candidate claim",
+      "authority_required": "KnowledgeBase/scheduler",
+      "authority_granted": "KnowledgeBase.claimNextCandidate",
+      "authority_used": "KnowledgeBase.claimNextCandidate",
+      "unnecessarily_exposed": "UNKNOWN",
+      "least_authority": "NOT_ESTABLISHED",
+      "capability_like_pattern": "CAPABILITY_LIKE_PATTERN",
+      "formal_capability_system": false,
+      "evidence": [
+        "security-ev-da9ccf7e37394f64"
+      ]
+    },
+    {
+      "authority_id": "authority-cc6dbaec8c82d37f",
+      "snapshot_id": "snapshot-0003",
+      "version": "v0.2.0",
+      "variant": "mechanically-composed",
+      "operation": "provider registration",
+      "authority_required": "ProviderRegistry/composition root",
+      "authority_granted": "ProviderRegistry.constructor",
+      "authority_used": "ProviderRegistry.constructor",
+      "unnecessarily_exposed": "UNKNOWN",
+      "least_authority": "NOT_ESTABLISHED",
+      "capability_like_pattern": "NOT_EVIDENCED",
+      "formal_capability_system": false,
+      "evidence": [
+        "security-ev-19649f1287062611"
+      ]
+    },
+    {
+      "authority_id": "authority-f26faf2c12f389ec",
+      "snapshot_id": "snapshot-0003",
+      "version": "v0.2.0",
+      "variant": "mechanically-composed",
+      "operation": "state mutation",
+      "authority_required": "KnowledgeBase/engine",
+      "authority_granted": "KnowledgeBase.addCandidate",
+      "authority_used": "KnowledgeBase.addCandidate",
+      "unnecessarily_exposed": "UNKNOWN",
+      "least_authority": "NOT_ESTABLISHED",
+      "capability_like_pattern": "NOT_EVIDENCED",
+      "formal_capability_system": false,
+      "evidence": [
+        "security-ev-71decef9ec57ab2e"
+      ]
+    },
+    {
+      "authority_id": "authority-5a51965b070baf25",
+      "snapshot_id": "snapshot-0003",
+      "version": "v0.2.0",
+      "variant": "mechanically-composed",
+      "operation": "export",
+      "authority_required": "Engine/UI",
+      "authority_granted": "DiscoveryEngine.export",
+      "authority_used": "DiscoveryEngine.export",
+      "unnecessarily_exposed": "UNKNOWN",
+      "least_authority": "NOT_ESTABLISHED",
+      "capability_like_pattern": "NOT_EVIDENCED",
+      "formal_capability_system": false,
+      "evidence": [
+        "security-ev-960bde96fbd03c5f"
+      ]
+    },
+    {
+      "authority_id": "authority-972c9c70f060569f",
+      "snapshot_id": "snapshot-0003",
+      "version": "v0.2.0",
+      "variant": "mechanically-composed",
+      "operation": "configuration",
+      "authority_required": "global userscript scope",
+      "authority_granted": "GLOBAL_OR_AMBIENT",
+      "authority_used": "TOP_LEVEL.TOP_LEVEL",
+      "unnecessarily_exposed": "POSSIBLE",
+      "least_authority": "NOT_ESTABLISHED",
+      "capability_like_pattern": "NOT_EVIDENCED",
+      "formal_capability_system": false,
+      "evidence": [
+        "security-ev-4ddd32c9c4d1d3ab"
+      ]
+    },
+    {
+      "authority_id": "authority-15b828f69f7c83a2",
+      "snapshot_id": "snapshot-0005",
+      "version": "v0.3.0",
+      "variant": "only-evidenced-complete-occurrence",
+      "operation": "network request",
+      "authority_required": "Acquisition/adapter or engine",
+      "authority_granted": "GLOBAL_OR_AMBIENT",
+      "authority_used": "HttpAcquisitionAdapter.request",
+      "unnecessarily_exposed": "POSSIBLE",
+      "least_authority": "NOT_ESTABLISHED",
+      "capability_like_pattern": "CAPABILITY_LIKE_PATTERN",
+      "formal_capability_system": false,
+      "evidence": [
+        "security-ev-26e0e27f857c8d12"
+      ]
+    },
+    {
+      "authority_id": "authority-5c636d311784212c",
+      "snapshot_id": "snapshot-0005",
+      "version": "v0.3.0",
+      "variant": "only-evidenced-complete-occurrence",
+      "operation": "candidate insertion",
+      "authority_required": "KnowledgeBase/scheduler/engine",
+      "authority_granted": "KnowledgeBase.addCandidate",
+      "authority_used": "KnowledgeBase.addCandidate",
+      "unnecessarily_exposed": "UNKNOWN",
+      "least_authority": "NOT_ESTABLISHED",
+      "capability_like_pattern": "CAPABILITY_LIKE_PATTERN",
+      "formal_capability_system": false,
+      "evidence": [
+        "security-ev-5f3f89b8992b3483"
+      ]
+    },
+    {
+      "authority_id": "authority-d972556f98ea4562",
+      "snapshot_id": "snapshot-0005",
+      "version": "v0.3.0",
+      "variant": "only-evidenced-complete-occurrence",
+      "operation": "candidate claim",
+      "authority_required": "KnowledgeBase/scheduler",
+      "authority_granted": "KnowledgeBase.claimNextCandidate",
+      "authority_used": "KnowledgeBase.claimNextCandidate",
+      "unnecessarily_exposed": "UNKNOWN",
+      "least_authority": "NOT_ESTABLISHED",
+      "capability_like_pattern": "CAPABILITY_LIKE_PATTERN",
+      "formal_capability_system": false,
+      "evidence": [
+        "security-ev-402f96d98d4a1946"
+      ]
+    },
+    {
+      "authority_id": "authority-f68d044758a2e002",
+      "snapshot_id": "snapshot-0005",
+      "version": "v0.3.0",
+      "variant": "only-evidenced-complete-occurrence",
+      "operation": "provider registration",
+      "authority_required": "ProviderRegistry/composition root",
+      "authority_granted": "ProviderRegistry.constructor",
+      "authority_used": "ProviderRegistry.constructor",
+      "unnecessarily_exposed": "UNKNOWN",
+      "least_authority": "NOT_ESTABLISHED",
+      "capability_like_pattern": "NOT_EVIDENCED",
+      "formal_capability_system": false,
+      "evidence": [
+        "security-ev-40e807fb12751c05"
+      ]
+    },
+    {
+      "authority_id": "authority-3a32ef5f66ee3474",
+      "snapshot_id": "snapshot-0005",
+      "version": "v0.3.0",
+      "variant": "only-evidenced-complete-occurrence",
+      "operation": "state mutation",
+      "authority_required": "KnowledgeBase/engine",
+      "authority_granted": "KnowledgeBase.addCandidate",
+      "authority_used": "KnowledgeBase.addCandidate",
+      "unnecessarily_exposed": "UNKNOWN",
+      "least_authority": "NOT_ESTABLISHED",
+      "capability_like_pattern": "NOT_EVIDENCED",
+      "formal_capability_system": false,
+      "evidence": [
+        "security-ev-a2704d6f9786e80b"
+      ]
+    },
+    {
+      "authority_id": "authority-efc9035a070dd171",
+      "snapshot_id": "snapshot-0005",
+      "version": "v0.3.0",
+      "variant": "only-evidenced-complete-occurrence",
+      "operation": "export",
+      "authority_required": "Engine/UI",
+      "authority_granted": "DiscoveryEngine.export",
+      "authority_used": "DiscoveryEngine.export",
+      "unnecessarily_exposed": "UNKNOWN",
+      "least_authority": "NOT_ESTABLISHED",
+      "capability_like_pattern": "NOT_EVIDENCED",
+      "formal_capability_system": false,
+      "evidence": [
+        "security-ev-a2a625f7b85c3cfa"
+      ]
+    },
+    {
+      "authority_id": "authority-07ec816bcfa29e5a",
+      "snapshot_id": "snapshot-0005",
+      "version": "v0.3.0",
+      "variant": "only-evidenced-complete-occurrence",
+      "operation": "configuration",
+      "authority_required": "global userscript scope",
+      "authority_granted": "GLOBAL_OR_AMBIENT",
+      "authority_used": "TOP_LEVEL.TOP_LEVEL",
+      "unnecessarily_exposed": "POSSIBLE",
+      "least_authority": "NOT_ESTABLISHED",
+      "capability_like_pattern": "NOT_EVIDENCED",
+      "formal_capability_system": false,
+      "evidence": [
+        "security-ev-2124c121390a169a"
+      ]
+    },
+    {
+      "authority_id": "authority-e15a0a24eb89385a",
+      "snapshot_id": "snapshot-0006",
+      "version": "v0.4.0",
+      "variant": "variant-a",
+      "operation": "network request",
+      "authority_required": "Acquisition/adapter or engine",
+      "authority_granted": "GLOBAL_OR_AMBIENT",
+      "authority_used": "HttpAcquisitionAdapter.request",
+      "unnecessarily_exposed": "POSSIBLE",
+      "least_authority": "NOT_ESTABLISHED",
+      "capability_like_pattern": "CAPABILITY_LIKE_PATTERN",
+      "formal_capability_system": false,
+      "evidence": [
+        "security-ev-0fccb67773c861f5"
+      ]
+    },
+    {
+      "authority_id": "authority-8299cb56cfef0ab5",
+      "snapshot_id": "snapshot-0006",
+      "version": "v0.4.0",
+      "variant": "variant-a",
+      "operation": "candidate insertion",
+      "authority_required": "KnowledgeBase/scheduler/engine",
+      "authority_granted": "ProvenanceGraph.addCandidate",
+      "authority_used": "ProvenanceGraph.addCandidate",
+      "unnecessarily_exposed": "UNKNOWN",
+      "least_authority": "NOT_ESTABLISHED",
+      "capability_like_pattern": "CAPABILITY_LIKE_PATTERN",
+      "formal_capability_system": false,
+      "evidence": [
+        "security-ev-04b6aa1932a29103"
+      ]
+    },
+    {
+      "authority_id": "authority-51eb379e0e10a9e6",
+      "snapshot_id": "snapshot-0006",
+      "version": "v0.4.0",
+      "variant": "variant-a",
+      "operation": "candidate claim",
+      "authority_required": "KnowledgeBase/scheduler",
+      "authority_granted": "KnowledgeBase.claimNextCandidate",
+      "authority_used": "KnowledgeBase.claimNextCandidate",
+      "unnecessarily_exposed": "UNKNOWN",
+      "least_authority": "NOT_ESTABLISHED",
+      "capability_like_pattern": "CAPABILITY_LIKE_PATTERN",
+      "formal_capability_system": false,
+      "evidence": [
+        "security-ev-a1b98348fb619a54"
+      ]
+    },
+    {
+      "authority_id": "authority-b81ff53742f2ccee",
+      "snapshot_id": "snapshot-0006",
+      "version": "v0.4.0",
+      "variant": "variant-a",
+      "operation": "provider registration",
+      "authority_required": "ProviderRegistry/composition root",
+      "authority_granted": "ProviderRegistry.constructor",
+      "authority_used": "ProviderRegistry.constructor",
+      "unnecessarily_exposed": "UNKNOWN",
+      "least_authority": "NOT_ESTABLISHED",
+      "capability_like_pattern": "NOT_EVIDENCED",
+      "formal_capability_system": false,
+      "evidence": [
+        "security-ev-2ffb6b9f0fa63a66"
+      ]
+    },
+    {
+      "authority_id": "authority-1149c4e29a02df62",
+      "snapshot_id": "snapshot-0006",
+      "version": "v0.4.0",
+      "variant": "variant-a",
+      "operation": "state mutation",
+      "authority_required": "KnowledgeBase/engine",
+      "authority_granted": "KnowledgeBase.addCandidate",
+      "authority_used": "KnowledgeBase.addCandidate",
+      "unnecessarily_exposed": "UNKNOWN",
+      "least_authority": "NOT_ESTABLISHED",
+      "capability_like_pattern": "NOT_EVIDENCED",
+      "formal_capability_system": false,
+      "evidence": [
+        "security-ev-755ac41103ba467b"
+      ]
+    },
+    {
+      "authority_id": "authority-8f4f02c3b364493f",
+      "snapshot_id": "snapshot-0006",
+      "version": "v0.4.0",
+      "variant": "variant-a",
+      "operation": "export",
+      "authority_required": "Engine/UI",
+      "authority_granted": "DiscoveryEngine.export",
+      "authority_used": "DiscoveryEngine.export",
+      "unnecessarily_exposed": "UNKNOWN",
+      "least_authority": "NOT_ESTABLISHED",
+      "capability_like_pattern": "NOT_EVIDENCED",
+      "formal_capability_system": false,
+      "evidence": [
+        "security-ev-feaa126e8342d19c"
+      ]
+    },
+    {
+      "authority_id": "authority-82fc0c740d27289b",
+      "snapshot_id": "snapshot-0006",
+      "version": "v0.4.0",
+      "variant": "variant-a",
+      "operation": "configuration",
+      "authority_required": "global userscript scope",
+      "authority_granted": "GLOBAL_OR_AMBIENT",
+      "authority_used": "TOP_LEVEL.TOP_LEVEL",
+      "unnecessarily_exposed": "POSSIBLE",
+      "least_authority": "NOT_ESTABLISHED",
+      "capability_like_pattern": "NOT_EVIDENCED",
+      "formal_capability_system": false,
+      "evidence": [
+        "security-ev-3c2609aa4044a9b5"
+      ]
+    },
+    {
+      "authority_id": "authority-a72c1e1b7e7140bc",
+      "snapshot_id": "snapshot-0008",
+      "version": "v0.4.0",
+      "variant": "variant-b",
+      "operation": "network request",
+      "authority_required": "Acquisition/adapter or engine",
+      "authority_granted": "GLOBAL_OR_AMBIENT",
+      "authority_used": "HttpAcquisitionAdapter.request",
+      "unnecessarily_exposed": "POSSIBLE",
+      "least_authority": "NOT_ESTABLISHED",
+      "capability_like_pattern": "CAPABILITY_LIKE_PATTERN",
+      "formal_capability_system": false,
+      "evidence": [
+        "security-ev-81e05737eb13b422"
+      ]
+    },
+    {
+      "authority_id": "authority-e42ab0c6beb2201c",
+      "snapshot_id": "snapshot-0008",
+      "version": "v0.4.0",
+      "variant": "variant-b",
+      "operation": "candidate insertion",
+      "authority_required": "KnowledgeBase/scheduler/engine",
+      "authority_granted": "KnowledgeBase.addCandidate",
+      "authority_used": "KnowledgeBase.addCandidate",
+      "unnecessarily_exposed": "UNKNOWN",
+      "least_authority": "NOT_ESTABLISHED",
+      "capability_like_pattern": "CAPABILITY_LIKE_PATTERN",
+      "formal_capability_system": false,
+      "evidence": [
+        "security-ev-9e315bb3e437a469"
+      ]
+    },
+    {
+      "authority_id": "authority-8a5ba8f3ed59d87d",
+      "snapshot_id": "snapshot-0008",
+      "version": "v0.4.0",
+      "variant": "variant-b",
+      "operation": "candidate claim",
+      "authority_required": "KnowledgeBase/scheduler",
+      "authority_granted": "KnowledgeBase.claimNextCandidate",
+      "authority_used": "KnowledgeBase.claimNextCandidate",
+      "unnecessarily_exposed": "UNKNOWN",
+      "least_authority": "NOT_ESTABLISHED",
+      "capability_like_pattern": "CAPABILITY_LIKE_PATTERN",
+      "formal_capability_system": false,
+      "evidence": [
+        "security-ev-8eadc23b5458ed83"
+      ]
+    },
+    {
+      "authority_id": "authority-1f37fa38c8d57bef",
+      "snapshot_id": "snapshot-0008",
+      "version": "v0.4.0",
+      "variant": "variant-b",
+      "operation": "provider registration",
+      "authority_required": "ProviderRegistry/composition root",
+      "authority_granted": "ProviderRegistry.constructor",
+      "authority_used": "ProviderRegistry.constructor",
+      "unnecessarily_exposed": "UNKNOWN",
+      "least_authority": "NOT_ESTABLISHED",
+      "capability_like_pattern": "NOT_EVIDENCED",
+      "formal_capability_system": false,
+      "evidence": [
+        "security-ev-6c1a7dd6b5218a45"
+      ]
+    },
+    {
+      "authority_id": "authority-85362d6ff4ae06f9",
+      "snapshot_id": "snapshot-0008",
+      "version": "v0.4.0",
+      "variant": "variant-b",
+      "operation": "state mutation",
+      "authority_required": "KnowledgeBase/engine",
+      "authority_granted": "KnowledgeBase.addCandidate",
+      "authority_used": "KnowledgeBase.addCandidate",
+      "unnecessarily_exposed": "UNKNOWN",
+      "least_authority": "NOT_ESTABLISHED",
+      "capability_like_pattern": "NOT_EVIDENCED",
+      "formal_capability_system": false,
+      "evidence": [
+        "security-ev-2e1136a6945eb284"
+      ]
+    },
+    {
+      "authority_id": "authority-bedec501d7ed473a",
+      "snapshot_id": "snapshot-0008",
+      "version": "v0.4.0",
+      "variant": "variant-b",
+      "operation": "export",
+      "authority_required": "Engine/UI",
+      "authority_granted": "DiscoveryEngine.export",
+      "authority_used": "DiscoveryEngine.export",
+      "unnecessarily_exposed": "UNKNOWN",
+      "least_authority": "NOT_ESTABLISHED",
+      "capability_like_pattern": "NOT_EVIDENCED",
+      "formal_capability_system": false,
+      "evidence": [
+        "security-ev-63ec75ef792ee933"
+      ]
+    },
+    {
+      "authority_id": "authority-f7d7c726e81590e5",
+      "snapshot_id": "snapshot-0008",
+      "version": "v0.4.0",
+      "variant": "variant-b",
+      "operation": "configuration",
+      "authority_required": "global userscript scope",
+      "authority_granted": "GLOBAL_OR_AMBIENT",
+      "authority_used": "TOP_LEVEL.TOP_LEVEL",
+      "unnecessarily_exposed": "POSSIBLE",
+      "least_authority": "NOT_ESTABLISHED",
+      "capability_like_pattern": "NOT_EVIDENCED",
+      "formal_capability_system": false,
+      "evidence": [
+        "security-ev-a40f7d758ae89e83"
+      ]
+    },
+    {
+      "authority_id": "authority-386c9a5ed6de9982",
+      "snapshot_id": "snapshot-0007",
+      "version": "v0.5.0",
+      "variant": "variant-a",
+      "operation": "network request",
+      "authority_required": "Acquisition/adapter or engine",
+      "authority_granted": "GLOBAL_OR_AMBIENT",
+      "authority_used": "HttpAcquisitionAdapter.request",
+      "unnecessarily_exposed": "POSSIBLE",
+      "least_authority": "NOT_ESTABLISHED",
+      "capability_like_pattern": "CAPABILITY_LIKE_PATTERN",
+      "formal_capability_system": false,
+      "evidence": [
+        "security-ev-d388598d778f5ebe"
+      ]
+    },
+    {
+      "authority_id": "authority-27d1a3d438f8b0ba",
+      "snapshot_id": "snapshot-0007",
+      "version": "v0.5.0",
+      "variant": "variant-a",
+      "operation": "candidate insertion",
+      "authority_required": "KnowledgeBase/scheduler/engine",
+      "authority_granted": "ProvenanceGraph.addCandidate",
+      "authority_used": "ProvenanceGraph.addCandidate",
+      "unnecessarily_exposed": "UNKNOWN",
+      "least_authority": "NOT_ESTABLISHED",
+      "capability_like_pattern": "CAPABILITY_LIKE_PATTERN",
+      "formal_capability_system": false,
+      "evidence": [
+        "security-ev-745684b781f3c489"
+      ]
+    },
+    {
+      "authority_id": "authority-8cd97a4652eff9d5",
+      "snapshot_id": "snapshot-0007",
+      "version": "v0.5.0",
+      "variant": "variant-a",
+      "operation": "candidate claim",
+      "authority_required": "KnowledgeBase/scheduler",
+      "authority_granted": "KnowledgeBase.claimNextCandidate",
+      "authority_used": "KnowledgeBase.claimNextCandidate",
+      "unnecessarily_exposed": "UNKNOWN",
+      "least_authority": "NOT_ESTABLISHED",
+      "capability_like_pattern": "CAPABILITY_LIKE_PATTERN",
+      "formal_capability_system": false,
+      "evidence": [
+        "security-ev-6ebeac096049a370"
+      ]
+    },
+    {
+      "authority_id": "authority-7784e6d58b6d19bc",
+      "snapshot_id": "snapshot-0007",
+      "version": "v0.5.0",
+      "variant": "variant-a",
+      "operation": "provider registration",
+      "authority_required": "ProviderRegistry/composition root",
+      "authority_granted": "ProviderRegistry.constructor",
+      "authority_used": "ProviderRegistry.constructor",
+      "unnecessarily_exposed": "UNKNOWN",
+      "least_authority": "NOT_ESTABLISHED",
+      "capability_like_pattern": "NOT_EVIDENCED",
+      "formal_capability_system": false,
+      "evidence": [
+        "security-ev-cea068238b2a3b4e"
+      ]
+    },
+    {
+      "authority_id": "authority-345b848eb15e154a",
+      "snapshot_id": "snapshot-0007",
+      "version": "v0.5.0",
+      "variant": "variant-a",
+      "operation": "state mutation",
+      "authority_required": "KnowledgeBase/engine",
+      "authority_granted": "KnowledgeBase.addCandidate",
+      "authority_used": "KnowledgeBase.addCandidate",
+      "unnecessarily_exposed": "UNKNOWN",
+      "least_authority": "NOT_ESTABLISHED",
+      "capability_like_pattern": "NOT_EVIDENCED",
+      "formal_capability_system": false,
+      "evidence": [
+        "security-ev-6d45fa96e29d4328"
+      ]
+    },
+    {
+      "authority_id": "authority-53767fb11127977d",
+      "snapshot_id": "snapshot-0007",
+      "version": "v0.5.0",
+      "variant": "variant-a",
+      "operation": "export",
+      "authority_required": "Engine/UI",
+      "authority_granted": "DiscoveryEngine.export",
+      "authority_used": "DiscoveryEngine.export",
+      "unnecessarily_exposed": "UNKNOWN",
+      "least_authority": "NOT_ESTABLISHED",
+      "capability_like_pattern": "NOT_EVIDENCED",
+      "formal_capability_system": false,
+      "evidence": [
+        "security-ev-f1a5ff6483f19855"
+      ]
+    },
+    {
+      "authority_id": "authority-f955c2f4ecaeaa46",
+      "snapshot_id": "snapshot-0007",
+      "version": "v0.5.0",
+      "variant": "variant-a",
+      "operation": "configuration",
+      "authority_required": "global userscript scope",
+      "authority_granted": "GLOBAL_OR_AMBIENT",
+      "authority_used": "TOP_LEVEL.TOP_LEVEL",
+      "unnecessarily_exposed": "POSSIBLE",
+      "least_authority": "NOT_ESTABLISHED",
+      "capability_like_pattern": "NOT_EVIDENCED",
+      "formal_capability_system": false,
+      "evidence": [
+        "security-ev-66f700193f4aa92e"
+      ]
+    },
+    {
+      "authority_id": "authority-afc2a5ce66d5542c",
+      "snapshot_id": "snapshot-0009",
+      "version": "v0.5.0",
+      "variant": "variant-b",
+      "operation": "network request",
+      "authority_required": "Acquisition/adapter or engine",
+      "authority_granted": "GLOBAL_OR_AMBIENT",
+      "authority_used": "HttpAcquisition.request",
+      "unnecessarily_exposed": "POSSIBLE",
+      "least_authority": "NOT_ESTABLISHED",
+      "capability_like_pattern": "CAPABILITY_LIKE_PATTERN",
+      "formal_capability_system": false,
+      "evidence": [
+        "security-ev-1ad10736ac056e4f"
+      ]
+    },
+    {
+      "authority_id": "authority-856f059661921077",
+      "snapshot_id": "snapshot-0009",
+      "version": "v0.5.0",
+      "variant": "variant-b",
+      "operation": "candidate insertion",
+      "authority_required": "KnowledgeBase/scheduler/engine",
+      "authority_granted": "KnowledgeBase.addCandidate",
+      "authority_used": "KnowledgeBase.addCandidate",
+      "unnecessarily_exposed": "UNKNOWN",
+      "least_authority": "NOT_ESTABLISHED",
+      "capability_like_pattern": "CAPABILITY_LIKE_PATTERN",
+      "formal_capability_system": false,
+      "evidence": [
+        "security-ev-e5cae457e60cd524"
+      ]
+    },
+    {
+      "authority_id": "authority-17de82e0112312e9",
+      "snapshot_id": "snapshot-0009",
+      "version": "v0.5.0",
+      "variant": "variant-b",
+      "operation": "candidate claim",
+      "authority_required": "KnowledgeBase/scheduler",
+      "authority_granted": "KnowledgeBase.claimNext",
+      "authority_used": "KnowledgeBase.claimNext",
+      "unnecessarily_exposed": "UNKNOWN",
+      "least_authority": "NOT_ESTABLISHED",
+      "capability_like_pattern": "CAPABILITY_LIKE_PATTERN",
+      "formal_capability_system": false,
+      "evidence": [
+        "security-ev-638d3382ba451c59"
+      ]
+    },
+    {
+      "authority_id": "authority-47279b8f54636cb4",
+      "snapshot_id": "snapshot-0009",
+      "version": "v0.5.0",
+      "variant": "variant-b",
+      "operation": "provider registration",
+      "authority_required": "ProviderRegistry/composition root",
+      "authority_granted": "ProviderRegistry.constructor",
+      "authority_used": "ProviderRegistry.constructor",
+      "unnecessarily_exposed": "UNKNOWN",
+      "least_authority": "NOT_ESTABLISHED",
+      "capability_like_pattern": "NOT_EVIDENCED",
+      "formal_capability_system": false,
+      "evidence": [
+        "security-ev-443667df21396a1e"
+      ]
+    },
+    {
+      "authority_id": "authority-38412157914215a3",
+      "snapshot_id": "snapshot-0009",
+      "version": "v0.5.0",
+      "variant": "variant-b",
+      "operation": "state mutation",
+      "authority_required": "KnowledgeBase/engine",
+      "authority_granted": "KnowledgeBase.addCandidate",
+      "authority_used": "KnowledgeBase.addCandidate",
+      "unnecessarily_exposed": "UNKNOWN",
+      "least_authority": "NOT_ESTABLISHED",
+      "capability_like_pattern": "NOT_EVIDENCED",
+      "formal_capability_system": false,
+      "evidence": [
+        "security-ev-53a233af2993a443"
+      ]
+    },
+    {
+      "authority_id": "authority-828d7f9e933f6578",
+      "snapshot_id": "snapshot-0009",
+      "version": "v0.5.0",
+      "variant": "variant-b",
+      "operation": "export",
+      "authority_required": "Engine/UI",
+      "authority_granted": "DiscoveryEngine.export",
+      "authority_used": "DiscoveryEngine.export",
+      "unnecessarily_exposed": "UNKNOWN",
+      "least_authority": "NOT_ESTABLISHED",
+      "capability_like_pattern": "NOT_EVIDENCED",
+      "formal_capability_system": false,
+      "evidence": [
+        "security-ev-b4317789b8579b02"
+      ]
+    },
+    {
+      "authority_id": "authority-800d6ca446269911",
+      "snapshot_id": "snapshot-0009",
+      "version": "v0.5.0",
+      "variant": "variant-b",
+      "operation": "configuration",
+      "authority_required": "global userscript scope",
+      "authority_granted": "GLOBAL_OR_AMBIENT",
+      "authority_used": "TOP_LEVEL.TOP_LEVEL",
+      "unnecessarily_exposed": "POSSIBLE",
+      "least_authority": "NOT_ESTABLISHED",
+      "capability_like_pattern": "NOT_EVIDENCED",
+      "formal_capability_system": false,
+      "evidence": [
+        "security-ev-2460ae9b30e55d86"
+      ]
+    },
+    {
+      "authority_id": "authority-a8979a1bc8fab117",
+      "snapshot_id": "snapshot-0011",
+      "version": "v0.5.0",
+      "variant": "variant-c",
+      "operation": "network request",
+      "authority_required": "Acquisition/adapter or engine",
+      "authority_granted": "GLOBAL_OR_AMBIENT",
+      "authority_used": "HttpAcquisitionAdapter.acquire",
+      "unnecessarily_exposed": "POSSIBLE",
+      "least_authority": "NOT_ESTABLISHED",
+      "capability_like_pattern": "CAPABILITY_LIKE_PATTERN",
+      "formal_capability_system": false,
+      "evidence": [
+        "security-ev-b01e77f114caac22"
+      ]
+    },
+    {
+      "authority_id": "authority-f795852b27c2bdd4",
+      "snapshot_id": "snapshot-0011",
+      "version": "v0.5.0",
+      "variant": "variant-c",
+      "operation": "candidate insertion",
+      "authority_required": "KnowledgeBase/scheduler/engine",
+      "authority_granted": "KnowledgeBase.addCandidate",
+      "authority_used": "KnowledgeBase.addCandidate",
+      "unnecessarily_exposed": "UNKNOWN",
+      "least_authority": "NOT_ESTABLISHED",
+      "capability_like_pattern": "CAPABILITY_LIKE_PATTERN",
+      "formal_capability_system": false,
+      "evidence": [
+        "security-ev-4baa70de3e497b24"
+      ]
+    },
+    {
+      "authority_id": "authority-db7e0a7bffbba166",
+      "snapshot_id": "snapshot-0011",
+      "version": "v0.5.0",
+      "variant": "variant-c",
+      "operation": "candidate claim",
+      "authority_required": "KnowledgeBase/scheduler",
+      "authority_granted": "KnowledgeBase.claimNextCandidate",
+      "authority_used": "KnowledgeBase.claimNextCandidate",
+      "unnecessarily_exposed": "UNKNOWN",
+      "least_authority": "NOT_ESTABLISHED",
+      "capability_like_pattern": "CAPABILITY_LIKE_PATTERN",
+      "formal_capability_system": false,
+      "evidence": [
+        "security-ev-04cc2ae24618fe52"
+      ]
+    },
+    {
+      "authority_id": "authority-d6942da47a803e05",
+      "snapshot_id": "snapshot-0011",
+      "version": "v0.5.0",
+      "variant": "variant-c",
+      "operation": "provider registration",
+      "authority_required": "ProviderRegistry/composition root",
+      "authority_granted": "ProviderRegistry.constructor",
+      "authority_used": "ProviderRegistry.constructor",
+      "unnecessarily_exposed": "UNKNOWN",
+      "least_authority": "NOT_ESTABLISHED",
+      "capability_like_pattern": "NOT_EVIDENCED",
+      "formal_capability_system": false,
+      "evidence": [
+        "security-ev-0b04c9a39035a690"
+      ]
+    },
+    {
+      "authority_id": "authority-9da281097d03ba62",
+      "snapshot_id": "snapshot-0011",
+      "version": "v0.5.0",
+      "variant": "variant-c",
+      "operation": "state mutation",
+      "authority_required": "KnowledgeBase/engine",
+      "authority_granted": "KnowledgeBase.addCandidate",
+      "authority_used": "KnowledgeBase.addCandidate",
+      "unnecessarily_exposed": "UNKNOWN",
+      "least_authority": "NOT_ESTABLISHED",
+      "capability_like_pattern": "NOT_EVIDENCED",
+      "formal_capability_system": false,
+      "evidence": [
+        "security-ev-7cdd39142a36fc5b"
+      ]
+    },
+    {
+      "authority_id": "authority-037dab64ccc5ae71",
+      "snapshot_id": "snapshot-0011",
+      "version": "v0.5.0",
+      "variant": "variant-c",
+      "operation": "export",
+      "authority_required": "Engine/UI",
+      "authority_granted": "DiscoveryEngine.export",
+      "authority_used": "DiscoveryEngine.export",
+      "unnecessarily_exposed": "UNKNOWN",
+      "least_authority": "NOT_ESTABLISHED",
+      "capability_like_pattern": "NOT_EVIDENCED",
+      "formal_capability_system": false,
+      "evidence": [
+        "security-ev-e9ac83436cf8573c"
+      ]
+    },
+    {
+      "authority_id": "authority-0f4b24ca98358537",
+      "snapshot_id": "snapshot-0011",
+      "version": "v0.5.0",
+      "variant": "variant-c",
+      "operation": "configuration",
+      "authority_required": "global userscript scope",
+      "authority_granted": "GLOBAL_OR_AMBIENT",
+      "authority_used": "TOP_LEVEL.TOP_LEVEL",
+      "unnecessarily_exposed": "POSSIBLE",
+      "least_authority": "NOT_ESTABLISHED",
+      "capability_like_pattern": "NOT_EVIDENCED",
+      "formal_capability_system": false,
+      "evidence": [
+        "security-ev-bda79b22a515f5a1"
+      ]
+    },
+    {
+      "authority_id": "authority-809f6d7b9d693d56",
+      "snapshot_id": "snapshot-0010",
+      "version": "v0.6.0",
+      "variant": "variant-a",
+      "operation": "network request",
+      "authority_required": "Acquisition/adapter or engine",
+      "authority_granted": "GLOBAL_OR_AMBIENT",
+      "authority_used": "HttpAcquisition.acquire",
+      "unnecessarily_exposed": "POSSIBLE",
+      "least_authority": "NOT_ESTABLISHED",
+      "capability_like_pattern": "CAPABILITY_LIKE_PATTERN",
+      "formal_capability_system": false,
+      "evidence": [
+        "security-ev-33edf529d2e0fcb6"
+      ]
+    },
+    {
+      "authority_id": "authority-5e0681c5a97e1671",
+      "snapshot_id": "snapshot-0010",
+      "version": "v0.6.0",
+      "variant": "variant-a",
+      "operation": "candidate insertion",
+      "authority_required": "KnowledgeBase/scheduler/engine",
+      "authority_granted": "KnowledgeBase.addCandidate",
+      "authority_used": "KnowledgeBase.addCandidate",
+      "unnecessarily_exposed": "UNKNOWN",
+      "least_authority": "NOT_ESTABLISHED",
+      "capability_like_pattern": "CAPABILITY_LIKE_PATTERN",
+      "formal_capability_system": false,
+      "evidence": [
+        "security-ev-400fd64ac355d151"
+      ]
+    },
+    {
+      "authority_id": "authority-48105f6c1d38efeb",
+      "snapshot_id": "snapshot-0010",
+      "version": "v0.6.0",
+      "variant": "variant-a",
+      "operation": "candidate claim",
+      "authority_required": "KnowledgeBase/scheduler",
+      "authority_granted": "KnowledgeBase.claimNext",
+      "authority_used": "KnowledgeBase.claimNext",
+      "unnecessarily_exposed": "UNKNOWN",
+      "least_authority": "NOT_ESTABLISHED",
+      "capability_like_pattern": "CAPABILITY_LIKE_PATTERN",
+      "formal_capability_system": false,
+      "evidence": [
+        "security-ev-0aa5d0e032ad18b9"
+      ]
+    },
+    {
+      "authority_id": "authority-9daa39442ba2821c",
+      "snapshot_id": "snapshot-0010",
+      "version": "v0.6.0",
+      "variant": "variant-a",
+      "operation": "provider registration",
+      "authority_required": "ProviderRegistry/composition root",
+      "authority_granted": "ProviderRegistry.constructor",
+      "authority_used": "ProviderRegistry.constructor",
+      "unnecessarily_exposed": "UNKNOWN",
+      "least_authority": "NOT_ESTABLISHED",
+      "capability_like_pattern": "NOT_EVIDENCED",
+      "formal_capability_system": false,
+      "evidence": [
+        "security-ev-20e6f6d8ce89cd61"
+      ]
+    },
+    {
+      "authority_id": "authority-17433022f531fa57",
+      "snapshot_id": "snapshot-0010",
+      "version": "v0.6.0",
+      "variant": "variant-a",
+      "operation": "state mutation",
+      "authority_required": "KnowledgeBase/engine",
+      "authority_granted": "KnowledgeBase.addCandidate",
+      "authority_used": "KnowledgeBase.addCandidate",
+      "unnecessarily_exposed": "UNKNOWN",
+      "least_authority": "NOT_ESTABLISHED",
+      "capability_like_pattern": "NOT_EVIDENCED",
+      "formal_capability_system": false,
+      "evidence": [
+        "security-ev-fd3ecd8efd3d8b39"
+      ]
+    },
+    {
+      "authority_id": "authority-32c825150b018484",
+      "snapshot_id": "snapshot-0010",
+      "version": "v0.6.0",
+      "variant": "variant-a",
+      "operation": "export",
+      "authority_required": "Engine/UI",
+      "authority_granted": "DiscoveryEngine.export",
+      "authority_used": "DiscoveryEngine.export",
+      "unnecessarily_exposed": "UNKNOWN",
+      "least_authority": "NOT_ESTABLISHED",
+      "capability_like_pattern": "NOT_EVIDENCED",
+      "formal_capability_system": false,
+      "evidence": [
+        "security-ev-a7e04f25a748c497"
+      ]
+    },
+    {
+      "authority_id": "authority-7f05f034e4f49ce7",
+      "snapshot_id": "snapshot-0010",
+      "version": "v0.6.0",
+      "variant": "variant-a",
+      "operation": "configuration",
+      "authority_required": "global userscript scope",
+      "authority_granted": "GLOBAL_OR_AMBIENT",
+      "authority_used": "TOP_LEVEL.TOP_LEVEL",
+      "unnecessarily_exposed": "POSSIBLE",
+      "least_authority": "NOT_ESTABLISHED",
+      "capability_like_pattern": "NOT_EVIDENCED",
+      "formal_capability_system": false,
+      "evidence": [
+        "security-ev-2d9f3f923b4989fd"
+      ]
+    },
+    {
+      "authority_id": "authority-912b7cd90cdee4a7",
+      "snapshot_id": "snapshot-0012",
+      "version": "v0.6.0",
+      "variant": "variant-b",
+      "operation": "network request",
+      "authority_required": "Acquisition/adapter or engine",
+      "authority_granted": "GLOBAL_OR_AMBIENT",
+      "authority_used": "HttpAcquisitionAdapter.acquire",
+      "unnecessarily_exposed": "POSSIBLE",
+      "least_authority": "NOT_ESTABLISHED",
+      "capability_like_pattern": "CAPABILITY_LIKE_PATTERN",
+      "formal_capability_system": false,
+      "evidence": [
+        "security-ev-0759f60ed00944b7"
+      ]
+    },
+    {
+      "authority_id": "authority-ce8d77d9d4b31dbf",
+      "snapshot_id": "snapshot-0012",
+      "version": "v0.6.0",
+      "variant": "variant-b",
+      "operation": "candidate insertion",
+      "authority_required": "KnowledgeBase/scheduler/engine",
+      "authority_granted": "KnowledgeBase.addCandidate",
+      "authority_used": "KnowledgeBase.addCandidate",
+      "unnecessarily_exposed": "UNKNOWN",
+      "least_authority": "NOT_ESTABLISHED",
+      "capability_like_pattern": "CAPABILITY_LIKE_PATTERN",
+      "formal_capability_system": false,
+      "evidence": [
+        "security-ev-32c3b1f92e34ed29"
+      ]
+    },
+    {
+      "authority_id": "authority-a1f7e2fd30936208",
+      "snapshot_id": "snapshot-0012",
+      "version": "v0.6.0",
+      "variant": "variant-b",
+      "operation": "candidate claim",
+      "authority_required": "KnowledgeBase/scheduler",
+      "authority_granted": "KnowledgeBase.claimNextCandidate",
+      "authority_used": "KnowledgeBase.claimNextCandidate",
+      "unnecessarily_exposed": "UNKNOWN",
+      "least_authority": "NOT_ESTABLISHED",
+      "capability_like_pattern": "CAPABILITY_LIKE_PATTERN",
+      "formal_capability_system": false,
+      "evidence": [
+        "security-ev-1af8e5438ec5b6df"
+      ]
+    },
+    {
+      "authority_id": "authority-c67ef6accab5c670",
+      "snapshot_id": "snapshot-0012",
+      "version": "v0.6.0",
+      "variant": "variant-b",
+      "operation": "provider registration",
+      "authority_required": "ProviderRegistry/composition root",
+      "authority_granted": "ProviderRegistry.constructor",
+      "authority_used": "ProviderRegistry.constructor",
+      "unnecessarily_exposed": "UNKNOWN",
+      "least_authority": "NOT_ESTABLISHED",
+      "capability_like_pattern": "NOT_EVIDENCED",
+      "formal_capability_system": false,
+      "evidence": [
+        "security-ev-06e8e4465b9bb85b"
+      ]
+    },
+    {
+      "authority_id": "authority-4dd24afdcd72367c",
+      "snapshot_id": "snapshot-0012",
+      "version": "v0.6.0",
+      "variant": "variant-b",
+      "operation": "state mutation",
+      "authority_required": "KnowledgeBase/engine",
+      "authority_granted": "KnowledgeBase.addCandidate",
+      "authority_used": "KnowledgeBase.addCandidate",
+      "unnecessarily_exposed": "UNKNOWN",
+      "least_authority": "NOT_ESTABLISHED",
+      "capability_like_pattern": "NOT_EVIDENCED",
+      "formal_capability_system": false,
+      "evidence": [
+        "security-ev-5c134763efe2a80a"
+      ]
+    },
+    {
+      "authority_id": "authority-8dbd111ffb66fec5",
+      "snapshot_id": "snapshot-0012",
+      "version": "v0.6.0",
+      "variant": "variant-b",
+      "operation": "export",
+      "authority_required": "Engine/UI",
+      "authority_granted": "DiscoveryEngine.export",
+      "authority_used": "DiscoveryEngine.export",
+      "unnecessarily_exposed": "UNKNOWN",
+      "least_authority": "NOT_ESTABLISHED",
+      "capability_like_pattern": "NOT_EVIDENCED",
+      "formal_capability_system": false,
+      "evidence": [
+        "security-ev-12cb6349f338099c"
+      ]
+    },
+    {
+      "authority_id": "authority-2b53ecbaeb54277c",
+      "snapshot_id": "snapshot-0012",
+      "version": "v0.6.0",
+      "variant": "variant-b",
+      "operation": "configuration",
+      "authority_required": "global userscript scope",
+      "authority_granted": "GLOBAL_OR_AMBIENT",
+      "authority_used": "TOP_LEVEL.TOP_LEVEL",
+      "unnecessarily_exposed": "POSSIBLE",
+      "least_authority": "NOT_ESTABLISHED",
+      "capability_like_pattern": "NOT_EVIDENCED",
+      "formal_capability_system": false,
+      "evidence": [
+        "security-ev-473ff91512a481aa"
+      ]
+    },
+    {
+      "authority_id": "authority-11ccd0039f246dd7",
+      "snapshot_id": "snapshot-0013",
+      "version": "v0.6.0",
+      "variant": "variant-c",
+      "operation": "network request",
+      "authority_required": "Acquisition/adapter or engine",
+      "authority_granted": "GLOBAL_OR_AMBIENT",
+      "authority_used": "TOP_LEVEL.gmRequest",
+      "unnecessarily_exposed": "POSSIBLE",
+      "least_authority": "NOT_ESTABLISHED",
+      "capability_like_pattern": "NOT_EVIDENCED",
+      "formal_capability_system": false,
+      "evidence": [
+        "security-ev-dd5b0ee1b53fed93"
+      ]
+    },
+    {
+      "authority_id": "authority-d1ca339ecd024cae",
+      "snapshot_id": "snapshot-0013",
+      "version": "v0.6.0",
+      "variant": "variant-c",
+      "operation": "candidate insertion",
+      "authority_required": "KnowledgeBase/scheduler/engine",
+      "authority_granted": "KnowledgeBase.addCandidate",
+      "authority_used": "KnowledgeBase.addCandidate",
+      "unnecessarily_exposed": "UNKNOWN",
+      "least_authority": "NOT_ESTABLISHED",
+      "capability_like_pattern": "CAPABILITY_LIKE_PATTERN",
+      "formal_capability_system": false,
+      "evidence": [
+        "security-ev-fb93b652e93a6b4f"
+      ]
+    },
+    {
+      "authority_id": "authority-6b169518374f6444",
+      "snapshot_id": "snapshot-0013",
+      "version": "v0.6.0",
+      "variant": "variant-c",
+      "operation": "candidate claim",
+      "authority_required": "KnowledgeBase/scheduler",
+      "authority_granted": "KnowledgeBase.claimNextCandidate",
+      "authority_used": "KnowledgeBase.claimNextCandidate",
+      "unnecessarily_exposed": "UNKNOWN",
+      "least_authority": "NOT_ESTABLISHED",
+      "capability_like_pattern": "CAPABILITY_LIKE_PATTERN",
+      "formal_capability_system": false,
+      "evidence": [
+        "security-ev-71c46fb042053164"
+      ]
+    },
+    {
+      "authority_id": "authority-78f2587947aea819",
+      "snapshot_id": "snapshot-0013",
+      "version": "v0.6.0",
+      "variant": "variant-c",
+      "operation": "provider registration",
+      "authority_required": "ProviderRegistry/composition root",
+      "authority_granted": "ProviderRegistry.constructor",
+      "authority_used": "ProviderRegistry.constructor",
+      "unnecessarily_exposed": "UNKNOWN",
+      "least_authority": "NOT_ESTABLISHED",
+      "capability_like_pattern": "NOT_EVIDENCED",
+      "formal_capability_system": false,
+      "evidence": [
+        "security-ev-e624d0e165959e2d"
+      ]
+    },
+    {
+      "authority_id": "authority-dd1c44c201823e9f",
+      "snapshot_id": "snapshot-0013",
+      "version": "v0.6.0",
+      "variant": "variant-c",
+      "operation": "state mutation",
+      "authority_required": "KnowledgeBase/engine",
+      "authority_granted": "KnowledgeBase.addCandidate",
+      "authority_used": "KnowledgeBase.addCandidate",
+      "unnecessarily_exposed": "UNKNOWN",
+      "least_authority": "NOT_ESTABLISHED",
+      "capability_like_pattern": "NOT_EVIDENCED",
+      "formal_capability_system": false,
+      "evidence": [
+        "security-ev-9a5453879028fab9"
+      ]
+    },
+    {
+      "authority_id": "authority-d6eb61fb4c408804",
+      "snapshot_id": "snapshot-0013",
+      "version": "v0.6.0",
+      "variant": "variant-c",
+      "operation": "export",
+      "authority_required": "Engine/UI",
+      "authority_granted": "GenericDiscoveryEngine.downloadExport",
+      "authority_used": "GenericDiscoveryEngine.downloadExport",
+      "unnecessarily_exposed": "UNKNOWN",
+      "least_authority": "NOT_ESTABLISHED",
+      "capability_like_pattern": "NOT_EVIDENCED",
+      "formal_capability_system": false,
+      "evidence": [
+        "security-ev-b9df6fe9869fe969"
+      ]
+    },
+    {
+      "authority_id": "authority-0d755577cca0f5f9",
+      "snapshot_id": "snapshot-0013",
+      "version": "v0.6.0",
+      "variant": "variant-c",
+      "operation": "configuration",
+      "authority_required": "global userscript scope",
+      "authority_granted": "GLOBAL_OR_AMBIENT",
+      "authority_used": "TOP_LEVEL.TOP_LEVEL",
+      "unnecessarily_exposed": "POSSIBLE",
+      "least_authority": "NOT_ESTABLISHED",
+      "capability_like_pattern": "NOT_EVIDENCED",
+      "formal_capability_system": false,
+      "evidence": [
+        "security-ev-eff832c3fd9331e3"
+      ]
+    },
+    {
+      "authority_id": "authority-664a44957e1c9c7f",
+      "snapshot_id": "snapshot-0014",
+      "version": "v0.7.1",
+      "variant": "only-evidenced-complete-occurrence",
+      "operation": "network request",
+      "authority_required": "Acquisition/adapter or engine",
+      "authority_granted": "GLOBAL_OR_AMBIENT",
+      "authority_used": "Acquisition.request",
+      "unnecessarily_exposed": "POSSIBLE",
+      "least_authority": "NOT_ESTABLISHED",
+      "capability_like_pattern": "CAPABILITY_LIKE_PATTERN",
+      "formal_capability_system": false,
+      "evidence": [
+        "security-ev-b489b295fca83c2d"
+      ]
+    },
+    {
+      "authority_id": "authority-2d862e4a36de223e",
+      "snapshot_id": "snapshot-0014",
+      "version": "v0.7.1",
+      "variant": "only-evidenced-complete-occurrence",
+      "operation": "candidate insertion",
+      "authority_required": "KnowledgeBase/scheduler/engine",
+      "authority_granted": "KnowledgeBase.addCandidate",
+      "authority_used": "KnowledgeBase.addCandidate",
+      "unnecessarily_exposed": "UNKNOWN",
+      "least_authority": "NOT_ESTABLISHED",
+      "capability_like_pattern": "CAPABILITY_LIKE_PATTERN",
+      "formal_capability_system": false,
+      "evidence": [
+        "security-ev-89ce4336f8bbef09"
+      ]
+    },
+    {
+      "authority_id": "authority-5f7476840f3d873a",
+      "snapshot_id": "snapshot-0014",
+      "version": "v0.7.1",
+      "variant": "only-evidenced-complete-occurrence",
+      "operation": "candidate claim",
+      "authority_required": "KnowledgeBase/scheduler",
+      "authority_granted": "KnowledgeBase.claimNextCandidate",
+      "authority_used": "KnowledgeBase.claimNextCandidate",
+      "unnecessarily_exposed": "UNKNOWN",
+      "least_authority": "NOT_ESTABLISHED",
+      "capability_like_pattern": "CAPABILITY_LIKE_PATTERN",
+      "formal_capability_system": false,
+      "evidence": [
+        "security-ev-055f05f309bf6e8f"
+      ]
+    },
+    {
+      "authority_id": "authority-7693371d77f88cc8",
+      "snapshot_id": "snapshot-0014",
+      "version": "v0.7.1",
+      "variant": "only-evidenced-complete-occurrence",
+      "operation": "provider registration",
+      "authority_required": "ProviderRegistry/composition root",
+      "authority_granted": "ProviderRegistry.constructor",
+      "authority_used": "ProviderRegistry.constructor",
+      "unnecessarily_exposed": "UNKNOWN",
+      "least_authority": "NOT_ESTABLISHED",
+      "capability_like_pattern": "NOT_EVIDENCED",
+      "formal_capability_system": false,
+      "evidence": [
+        "security-ev-68adfa1ee0a98301"
+      ]
+    },
+    {
+      "authority_id": "authority-f5bb79acbc798e70",
+      "snapshot_id": "snapshot-0014",
+      "version": "v0.7.1",
+      "variant": "only-evidenced-complete-occurrence",
+      "operation": "state mutation",
+      "authority_required": "KnowledgeBase/engine",
+      "authority_granted": "KnowledgeBase.addCandidate",
+      "authority_used": "KnowledgeBase.addCandidate",
+      "unnecessarily_exposed": "UNKNOWN",
+      "least_authority": "NOT_ESTABLISHED",
+      "capability_like_pattern": "NOT_EVIDENCED",
+      "formal_capability_system": false,
+      "evidence": [
+        "security-ev-03dc3e2779dae3cd"
+      ]
+    },
+    {
+      "authority_id": "authority-a70d921da6d5fe85",
+      "snapshot_id": "snapshot-0014",
+      "version": "v0.7.1",
+      "variant": "only-evidenced-complete-occurrence",
+      "operation": "export",
+      "authority_required": "Engine/UI",
+      "authority_granted": "DecisionLedger.export",
+      "authority_used": "DecisionLedger.export",
+      "unnecessarily_exposed": "UNKNOWN",
+      "least_authority": "NOT_ESTABLISHED",
+      "capability_like_pattern": "NOT_EVIDENCED",
+      "formal_capability_system": false,
+      "evidence": [
+        "security-ev-e60f6918fdac4720"
+      ]
+    },
+    {
+      "authority_id": "authority-03d9e8f10ada5444",
+      "snapshot_id": "snapshot-0014",
+      "version": "v0.7.1",
+      "variant": "only-evidenced-complete-occurrence",
+      "operation": "configuration",
+      "authority_required": "global userscript scope",
+      "authority_granted": "GLOBAL_OR_AMBIENT",
+      "authority_used": "TOP_LEVEL.TOP_LEVEL",
+      "unnecessarily_exposed": "POSSIBLE",
+      "least_authority": "NOT_ESTABLISHED",
+      "capability_like_pattern": "NOT_EVIDENCED",
+      "formal_capability_system": false,
+      "evidence": [
+        "security-ev-47cb33822e5a8605"
+      ]
+    }
+  ]
+}

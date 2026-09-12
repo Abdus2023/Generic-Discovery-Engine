@@ -1,0 +1,40 @@
+                       DURABLE FRONTIER
+                              │
+                              ▼
+                       ADMISSION CONTROL
+                              │
+                              ▼
+                         ARBITRATION
+                              │
+                              ▼
+                      SELECTED WORK ITEM
+                              │
+                              ▼
+                    ┌─────────────────────┐
+                    │ COORDINATION MANAGER│
+                    └──────────┬──────────┘
+                               │
+                    ┌──────────┼──────────┐
+                    ▼          ▼          ▼
+                 Worker A   Worker B   Worker C
+                    │          │          │
+                    ▼          ▼          ▼
+                 Claim/Lease/Capability/Capacity
+                    │          │          │
+                    └──────────┼──────────┘
+                               ▼
+                           EXECUTION
+                               │
+                               ▼
+                         OBSERVATION
+                               │
+                               ▼
+                       DURABLE TRANSACTION
+                               │
+                ┌──────────────┼──────────────┐
+                ▼              ▼              ▼
+             KNOWLEDGE      ACCOUNTING      EVENTS
+                │              │              │
+                └──────────────┼──────────────┘
+                               ▼
+                       SHARED FRONTIER

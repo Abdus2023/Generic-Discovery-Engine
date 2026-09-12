@@ -1,0 +1,7 @@
+compare-and-swap
+
+IF currentVersion == expectedVersion
+    apply mutation
+    currentVersion++
+ELSE
+    reject mutation

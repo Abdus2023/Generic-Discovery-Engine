@@ -1,0 +1,13 @@
+Resource R42
+
+representation:
+    PDF                  confidence 1.00
+    evidence: magic-bytes
+
+semantic-role:
+    service-manual       confidence 0.94
+    evidence: title + text structure
+
+semantic-role:
+    technical-bulletin   confidence 0.12
+    evidence: weak keyword match

@@ -1,0 +1,19 @@
+┌──────────────────────────────────────┐
+│          Discovery Controller        │
+│  scheduling / deduplication / retry  │
+└──────────────────┬───────────────────┘
+                   │
+┌──────────────────▼───────────────────┐
+│          Candidate Generator         │
+│ frequencies × bandwidth × SR × ...   │
+└──────────────────┬───────────────────┘
+                   │
+┌──────────────────▼───────────────────┐
+│         Signal Acquisition            │
+│ tune → detect → synchronize → lock   │
+└──────────────────┬───────────────────┘
+                   │
+┌──────────────────▼───────────────────┐
+│        Stream / Metadata Parser       │
+│ TS → SI/PSI → services → networks    │
+└──────────────────────────────────────┘

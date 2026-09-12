@@ -1,0 +1,459 @@
+{
+  "schema_version": 8,
+  "protocol": "Historical Generic Discovery Failure, Security & Trust-Boundary Evolution Archaeology Protocol v8",
+  "overall": "PASS",
+  "acceptance": "PROVISIONAL_ONLY_UPSTREAM_BLOCKED",
+  "checks": [
+    {
+      "check": "security output directory exists",
+      "result": "PASS",
+      "detail": "/home/user/Generic-Discovery-Engine/historical-source/security"
+    },
+    {
+      "check": "manifest exists and parses",
+      "result": "PASS",
+      "detail": "/home/user/Generic-Discovery-Engine/historical-source/security/SECURITY-MANIFEST.yaml"
+    },
+    {
+      "check": "all required Protocol-v8 deliverables exist",
+      "result": "PASS",
+      "detail": "missing=[]"
+    },
+    {
+      "check": "all seven per-version reports exist",
+      "result": "PASS",
+      "detail": "v0.1.0 through v0.7.1"
+    },
+    {
+      "check": "generator and validator are bound",
+      "result": "PASS",
+      "detail": "{'generator': '6d343ae3de13edde0f468d4e4fdfa23b83b0eff8bacba7661afe55f9f4f76ad4', 'validator': '9a5fedf93c866116c28a58240a1648541cfc357f479db6e59e99aebce13fbad3'}"
+    },
+    {
+      "check": "every bound input hash matches",
+      "result": "PASS",
+      "detail": "bad=[]"
+    },
+    {
+      "check": "every generator output hash matches",
+      "result": "PASS",
+      "detail": "bad=[]"
+    },
+    {
+      "check": "manifest output count is exact",
+      "result": "PASS",
+      "detail": "declared=81 hashed=80"
+    },
+    {
+      "check": "scope has 12 complete semantic snapshots",
+      "result": "PASS",
+      "detail": "['snapshot-0001', 'snapshot-0003', 'snapshot-0005', 'snapshot-0006', 'snapshot-0007', 'snapshot-0008', 'snapshot-0009', 'snapshot-0010', 'snapshot-0011', 'snapshot-0012', 'snapshot-0013', 'snapshot-0014']"
+    },
+    {
+      "check": "two partial variants remain uncertainty-only",
+      "result": "PASS",
+      "detail": "['snapshot-0002', 'snapshot-0004']"
+    },
+    {
+      "check": "upstream availability and prerequisite acceptance are reported truthfully",
+      "result": "PASS",
+      "detail": "{'v1_v3_present': True, 'v1_validation': 'FAIL', 'v3_validation': 'PASS', 'v4_present': False, 'v5_present': False, 'v6_present': False, 'v7_present': False, 'all_required_verified_inputs_available': False}"
+    },
+    {
+      "check": "evidence IDs are unique",
+      "result": "PASS",
+      "detail": "rows=2305 unique=2305"
+    },
+    {
+      "check": "all evidence byte ranges and bounded absences independently verify",
+      "result": "PASS",
+      "detail": "bad=[] total=0"
+    },
+    {
+      "check": "all historical evidence flows source-to-derived",
+      "result": "PASS",
+      "detail": "rows=2305"
+    },
+    {
+      "check": "no partial snapshot is used as semantic evidence",
+      "result": "PASS",
+      "detail": "partial evidence count=0"
+    },
+    {
+      "check": "all machine-ledger evidence references resolve",
+      "result": "PASS",
+      "detail": "references=4685 unresolved=[]"
+    },
+    {
+      "check": "stable failure taxonomy is exact",
+      "result": "PASS",
+      "detail": "['ACQUISITION_FAILURE', 'CANCELLATION', 'CONCURRENCY_FAILURE', 'CONFIGURATION_FAILURE', 'DEDUPLICATION_FAILURE', 'DISCOVERY_FAILURE', 'EXPANSION_FAILURE', 'EXPORT_FAILURE', 'HTTP_FAILURE', 'INPUT_FAILURE', 'NETWORK_FAILURE', 'PARSING_FAILURE', 'PERSISTENCE_FAILURE', 'PROVIDER_FAILURE', 'RECOGNITION_FAILURE', 'RESOURCE_EXHAUSTION', 'SCHEDULER_FAILURE', 'STATE_FAILURE', 'TIMEOUT', 'UI_FAILURE', 'UNKNOWN_FAILURE', 'VALIDATION_FAILURE']"
+    },
+    {
+      "check": "failure stages and containment vocabularies are exact",
+      "result": "PASS",
+      "detail": "stages=['INPUT', 'VALIDATION', 'ACQUISITION', 'OBSERVATION', 'RECOGNITION', 'DISCOVERY', 'EXPANSION', 'SCHEDULING', 'PERSISTENCE', 'EXPORT', 'UI', 'CROSS_CUTTING'] levels=dict_keys(['F0', 'F1', 'F2', 'F3', 'F4', 'F5', 'F6', 'UNKNOWN'])"
+    },
+    {
+      "check": "failure event schema is complete",
+      "result": "PASS",
+      "detail": "events=211"
+    },
+    {
+      "check": "failure events use valid taxonomies",
+      "result": "PASS",
+      "detail": "events=211"
+    },
+    {
+      "check": "failure event count matches manifest",
+      "result": "PASS",
+      "detail": "211"
+    },
+    {
+      "check": "static failure events never claim runtime occurrence",
+      "result": "PASS",
+      "detail": "events=211"
+    },
+    {
+      "check": "containment claims are evidence-backed",
+      "result": "PASS",
+      "detail": "events=211"
+    },
+    {
+      "check": "unknown failure remains available and no category is forced",
+      "result": "PASS",
+      "detail": "unknown events=8"
+    },
+    {
+      "check": "failure matrix covers every category in every snapshot",
+      "result": "PASS",
+      "detail": "rows=264"
+    },
+    {
+      "check": "failure model covers all eight pipeline stages plus cross-cutting stages in every snapshot",
+      "result": "PASS",
+      "detail": "rows=144"
+    },
+    {
+      "check": "failure semantics use four-way evidence labels",
+      "result": "PASS",
+      "detail": "rows=264"
+    },
+    {
+      "check": "failure propagation edges resolve and carry evidence",
+      "result": "PASS",
+      "detail": "edges=533"
+    },
+    {
+      "check": "silent failure candidates use exact conservative classes",
+      "result": "PASS",
+      "detail": "rows=143"
+    },
+    {
+      "check": "error information preservation covers required fields",
+      "result": "PASS",
+      "detail": "handlers=168"
+    },
+    {
+      "check": "retry history covers snapshots and rejects recursion inference",
+      "result": "PASS",
+      "detail": "rows=12"
+    },
+    {
+      "check": "implemented retry requires count/action evidence",
+      "result": "PASS",
+      "detail": "implemented=9"
+    },
+    {
+      "check": "timeout scopes remain independently tracked",
+      "result": "PASS",
+      "detail": "rows=12"
+    },
+    {
+      "check": "cancellation does not promote stop controls to operation cancellation",
+      "result": "PASS",
+      "detail": "rows=12"
+    },
+    {
+      "check": "resource bound count and schemas match",
+      "result": "PASS",
+      "detail": "bounds=128"
+    },
+    {
+      "check": "resource risks distinguish static risk from incidents",
+      "result": "PASS",
+      "detail": "risks=72"
+    },
+    {
+      "check": "shared state records writers readers await and ordering",
+      "result": "PASS",
+      "detail": "rows=72"
+    },
+    {
+      "check": "claim analysis separates six ownership/safety dimensions",
+      "result": "PASS",
+      "detail": "rows=12"
+    },
+    {
+      "check": "claim analysis rejects thread/distributed generalization",
+      "result": "PASS",
+      "detail": "rows=12"
+    },
+    {
+      "check": "duplicate processing factors remain separate",
+      "result": "PASS",
+      "detail": "rows=12"
+    },
+    {
+      "check": "race candidates are theoretical rather than demonstrated",
+      "result": "PASS",
+      "detail": "rows=18"
+    },
+    {
+      "check": "data integrity distinguishes possible observed prevented unknown",
+      "result": "PASS",
+      "detail": "conditions=84"
+    },
+    {
+      "check": "tampering surfaces are only integrity weaknesses",
+      "result": "PASS",
+      "detail": "weaknesses=24"
+    },
+    {
+      "check": "provenance tracks all four edges independently",
+      "result": "PASS",
+      "detail": "rows=12"
+    },
+    {
+      "check": "trust-boundary inventory covers twelve potential boundaries per snapshot",
+      "result": "PASS",
+      "detail": "rows=144"
+    },
+    {
+      "check": "internal scheduler boundaries are not auto-promoted to trust boundaries",
+      "result": "PASS",
+      "detail": "scheduler rows checked"
+    },
+    {
+      "check": "no trust boundary claims a security guarantee",
+      "result": "PASS",
+      "detail": "rows=144"
+    },
+    {
+      "check": "trust matrix covers five named boundaries per snapshot",
+      "result": "PASS",
+      "detail": "rows=60"
+    },
+    {
+      "check": "authority required/granted/used/exposure remain distinct",
+      "result": "PASS",
+      "detail": "rows=82"
+    },
+    {
+      "check": "capability-like patterns are not formal capability systems",
+      "result": "PASS",
+      "detail": "rows=82"
+    },
+    {
+      "check": "authority migrations preserve unknown lineage and consequences",
+      "result": "PASS",
+      "detail": "rows=35"
+    },
+    {
+      "check": "security-boundary migrations remain comparative with unknown consequences",
+      "result": "PASS",
+      "detail": "rows=29"
+    },
+    {
+      "check": "privileged API rows track permission and both data/error crossings",
+      "result": "PASS",
+      "detail": "rows=54"
+    },
+    {
+      "check": "security/function tradeoffs avoid measured or superiority claims",
+      "result": "PASS",
+      "detail": "rows=78"
+    },
+    {
+      "check": "HTML JSON and text provider safety separates extraction from execution",
+      "result": "PASS",
+      "detail": "rows=34"
+    },
+    {
+      "check": "JavaScript memory surfaces and cleanup avoid memory-safety guarantee",
+      "result": "PASS",
+      "detail": "rows=12"
+    },
+    {
+      "check": "userscript permissions exactly preserve parsed metadata",
+      "result": "PASS",
+      "detail": "rows=12 bad=[]"
+    },
+    {
+      "check": "origin scope separates metadata authority, policy, and use",
+      "result": "PASS",
+      "detail": "rows=12"
+    },
+    {
+      "check": "URL trust covers scheme origin redirect credentials and local addresses",
+      "result": "PASS",
+      "detail": "rows=12"
+    },
+    {
+      "check": "code/data history distinguishes absence evidence from security",
+      "result": "PASS",
+      "detail": "rows=12"
+    },
+    {
+      "check": "no acquired-content execution path is invented",
+      "result": "PASS",
+      "detail": "{'NO_EVIDENCE_OF_CODE_EXECUTION'}"
+    },
+    {
+      "check": "parser rows constrain security claims",
+      "result": "PASS",
+      "detail": "parsers=41"
+    },
+    {
+      "check": "regex risks use theoretical/supported/demonstrated/unknown vocabulary",
+      "result": "PASS",
+      "detail": "regexes=7"
+    },
+    {
+      "check": "persistence integrity does not invent atomicity or crash recovery",
+      "result": "PASS",
+      "detail": "rows=12"
+    },
+    {
+      "check": "export integrity distinguishes interpretation from compatibility",
+      "result": "PASS",
+      "detail": "rows=12"
+    },
+    {
+      "check": "observability separates detection from visibility",
+      "result": "PASS",
+      "detail": "rows=12"
+    },
+    {
+      "check": "auditability is never called verified without execution",
+      "result": "PASS",
+      "detail": "rows=12"
+    },
+    {
+      "check": "security claim types are exact and invariants cover seven per snapshot",
+      "result": "PASS",
+      "detail": "rows=84"
+    },
+    {
+      "check": "threat model preserves explicit implicit retrospective unknown",
+      "result": "PASS",
+      "detail": "rows=12"
+    },
+    {
+      "check": "branch-preserving security comparisons include adjacent and same-version variants",
+      "result": "PASS",
+      "detail": "rows=29 relationships=['ADJACENT_RECOVERED_VERSION_COMPARISON_NOT_LINEAGE', 'SAME_VERSION_VARIANT_COMPARISON_NOT_LINEAGE']"
+    },
+    {
+      "check": "control disappearance is not auto-labelled regression",
+      "result": "PASS",
+      "detail": "rows=29"
+    },
+    {
+      "check": "security/architecture mapping rejects chronology as causality",
+      "result": "PASS",
+      "detail": "rows=5"
+    },
+    {
+      "check": "every failure-contract mapping remains test-unverified",
+      "result": "PASS",
+      "detail": "rows=12"
+    },
+    {
+      "check": "all 23 final questions are answered and evidenced",
+      "result": "PASS",
+      "detail": "rows=23"
+    },
+    {
+      "check": "final failure classification has all seven sections",
+      "result": "PASS",
+      "detail": "['CONTAINED_FAILURES', 'HANDLED_FAILURES', 'OBSERVED_FAILURES', 'POTENTIAL_FAILURE_MODES', 'RECOVERABLE_FAILURES', 'SILENT_FAILURES', 'UNVERIFIED_FAILURE_MODES']"
+    },
+    {
+      "check": "final security classification has all six sections",
+      "result": "PASS",
+      "detail": "['CURRENT_PROPOSED_SECURITY_ARCHITECTURE', 'HISTORICALLY_VERIFIED_SECURITY_MECHANISMS', 'HISTORICALLY_VERIFIED_SECURITY_PROPERTIES', 'RETROSPECTIVE_SECURITY_INTERPRETATIONS', 'SECURITY_GOALS_WITHOUT_ENFORCEMENT', 'UNKNOWN']"
+    },
+    {
+      "check": "historically verified properties are path-scoped",
+      "result": "PASS",
+      "detail": "properties=2"
+    },
+    {
+      "check": "final report contains governing distinctions",
+      "result": "PASS",
+      "detail": "distinctions"
+    },
+    {
+      "check": "final report contains questions 1 through 23",
+      "result": "PASS",
+      "detail": "23 headings"
+    },
+    {
+      "check": "final report contains all failure classification headings",
+      "result": "PASS",
+      "detail": "failure headings"
+    },
+    {
+      "check": "final report contains all security classification headings",
+      "result": "PASS",
+      "detail": "security headings"
+    },
+    {
+      "check": "report expressly rejects mechanism-to-guarantee promotions",
+      "result": "PASS",
+      "detail": "guarantee rule"
+    },
+    {
+      "check": "temporal contamination is expressly prohibited",
+      "result": "PASS",
+      "detail": "current concepts isolated"
+    },
+    {
+      "check": "all eight acceptance constraints hold",
+      "result": "PASS",
+      "detail": "{'mechanism_is_not_guarantee': True, 'failure_event_is_not_runtime_incident': True, 'no_thread_safe_generalization': True, 'no_vulnerability_without_execution_path': True, 'no_security_score': True, 'no_chronology_as_causality': True, 'same_version_variants_preserved': True, 'temporal_backfill_forbidden': True}"
+    },
+    {
+      "check": "authoritative source documents remain unchanged",
+      "result": "PASS",
+      "detail": "git-diff-exit=0"
+    },
+    {
+      "check": "no Python cache artifacts exist",
+      "result": "PASS",
+      "detail": "bad=[]"
+    },
+    {
+      "check": "no unexpected validator-owned files enter generator manifest",
+      "result": "PASS",
+      "detail": "validator outputs excluded"
+    }
+  ],
+  "counts": {
+    "checks": 87,
+    "passed": 87,
+    "failed": 0,
+    "evidence": 2305,
+    "failure_events": 211,
+    "silent_failures": 143,
+    "resource_bounds": 128,
+    "resource_risks": 72,
+    "shared_structures": 72,
+    "race_candidates": 18,
+    "trust_boundaries": 144,
+    "authorities": 82,
+    "parser_rows": 41,
+    "questions": 23
+  }
+}

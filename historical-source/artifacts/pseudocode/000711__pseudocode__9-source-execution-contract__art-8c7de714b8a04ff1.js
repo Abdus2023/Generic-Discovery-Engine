@@ -1,0 +1,1 @@
+discoverBatch(context, cursor)

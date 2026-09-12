@@ -1,0 +1,137 @@
+{
+  "schema_version": "1.0",
+  "graph_type": "OBLIGATION_CONFLICT_GRAPH",
+  "nodes": [
+    "OBL-BOUNDED-CONCURRENCY",
+    "OBL-CANDIDATE-PARENT",
+    "OBL-CANDIDATE-PRIORITY",
+    "OBL-DEDUP-SCOPES",
+    "OBL-PARSE-DEFECT",
+    "OBL-PERSIST-COMPAT",
+    "OBL-PRIVATE-SHAPE",
+    "OBL-PROVENANCE-INTEGRITY",
+    "OBL-PROVIDER-FAILURE",
+    "OBL-PROVIDER-ORDER",
+    "OBL-RESOURCE",
+    "OBL-RETRY"
+  ],
+  "edges": [
+    {
+      "from": "OBL-CANDIDATE-PRIORITY",
+      "to": "OBL-BOUNDED-CONCURRENCY",
+      "relation": "CONFLICTS_WITH",
+      "conflict_id": "CONF-001"
+    },
+    {
+      "from": "OBL-DEDUP-SCOPES",
+      "to": "OBL-CANDIDATE-PARENT",
+      "relation": "CONFLICTS_WITH",
+      "conflict_id": "CONF-002"
+    },
+    {
+      "from": "OBL-RETRY",
+      "to": "OBL-RESOURCE",
+      "relation": "CONFLICTS_WITH",
+      "conflict_id": "CONF-003"
+    },
+    {
+      "from": "OBL-PERSIST-COMPAT",
+      "to": "OBL-PROVENANCE-INTEGRITY",
+      "relation": "CONFLICTS_WITH",
+      "conflict_id": "CONF-004"
+    },
+    {
+      "from": "OBL-PROVIDER-ORDER",
+      "to": "OBL-PROVIDER-FAILURE",
+      "relation": "CONFLICTS_WITH",
+      "conflict_id": "CONF-005"
+    },
+    {
+      "from": "OBL-PARSE-DEFECT",
+      "to": "OBL-PRIVATE-SHAPE",
+      "relation": "CONFLICTS_WITH",
+      "conflict_id": "CONF-006"
+    }
+  ],
+  "conflicts": [
+    {
+      "conflict_id": "CONF-001",
+      "left_obligation": "OBL-CANDIDATE-PRIORITY",
+      "right_obligation": "OBL-BOUNDED-CONCURRENCY",
+      "relation": "CONFLICTS_WITH",
+      "evidence_strength": "SUPPORTED_OR_EXPLICITLY_QUALIFIED",
+      "version_scope": "VARIES_OR_FUTURE",
+      "semantic_difference": "Potential stable ordering semantics may conflict with unrestricted concurrent scheduling.",
+      "compatibility_impact": "REQUIRES_EXPLICIT_DECISION",
+      "resolution_status": "UNRESOLVED",
+      "possible_resolution": "Version ordering or prove order-insensitive equivalence.",
+      "dependency": false
+    },
+    {
+      "conflict_id": "CONF-002",
+      "left_obligation": "OBL-DEDUP-SCOPES",
+      "right_obligation": "OBL-CANDIDATE-PARENT",
+      "relation": "CONFLICTS_WITH",
+      "evidence_strength": "SUPPORTED_OR_EXPLICITLY_QUALIFIED",
+      "version_scope": "VARIES_OR_FUTURE",
+      "semantic_difference": "Aggressive merging may discard alternate parent provenance.",
+      "compatibility_impact": "REQUIRES_EXPLICIT_DECISION",
+      "resolution_status": "UNRESOLVED",
+      "possible_resolution": "Merge work identity while retaining alternate derivation edges.",
+      "dependency": false
+    },
+    {
+      "conflict_id": "CONF-003",
+      "left_obligation": "OBL-RETRY",
+      "right_obligation": "OBL-RESOURCE",
+      "relation": "CONFLICTS_WITH",
+      "evidence_strength": "SUPPORTED_OR_EXPLICITLY_QUALIFIED",
+      "version_scope": "VARIES_OR_FUTURE",
+      "semantic_difference": "Continuation through retry is constrained by finite resource bounds.",
+      "compatibility_impact": "REQUIRES_EXPLICIT_DECISION",
+      "resolution_status": "CONDITIONALLY_RESOLVED",
+      "possible_resolution": "Classify retryability and expose exhaustion under explicit limits.",
+      "dependency": false
+    },
+    {
+      "conflict_id": "CONF-004",
+      "left_obligation": "OBL-PERSIST-COMPAT",
+      "right_obligation": "OBL-PROVENANCE-INTEGRITY",
+      "relation": "CONFLICTS_WITH",
+      "evidence_strength": "SUPPORTED_OR_EXPLICITLY_QUALIFIED",
+      "version_scope": "VARIES_OR_FUTURE",
+      "semantic_difference": "Schema compatibility may conflict with strengthened provenance fields or protection.",
+      "compatibility_impact": "REQUIRES_EXPLICIT_DECISION",
+      "resolution_status": "UNRESOLVED",
+      "possible_resolution": "Version and migrate rather than reinterpret old records.",
+      "dependency": false
+    },
+    {
+      "conflict_id": "CONF-005",
+      "left_obligation": "OBL-PROVIDER-ORDER",
+      "right_obligation": "OBL-PROVIDER-FAILURE",
+      "relation": "CONFLICTS_WITH",
+      "evidence_strength": "SUPPORTED_OR_EXPLICITLY_QUALIFIED",
+      "version_scope": "VARIES_OR_FUTURE",
+      "semantic_difference": "Parallel/isolation changes may alter first-match provider ordering.",
+      "compatibility_impact": "REQUIRES_EXPLICIT_DECISION",
+      "resolution_status": "UNRESOLVED",
+      "possible_resolution": "Establish ordering dependence, then test or version the change.",
+      "dependency": false
+    },
+    {
+      "conflict_id": "CONF-006",
+      "left_obligation": "OBL-PARSE-DEFECT",
+      "right_obligation": "OBL-PRIVATE-SHAPE",
+      "relation": "CONFLICTS_WITH",
+      "evidence_strength": "SUPPORTED_OR_EXPLICITLY_QUALIFIED",
+      "version_scope": "VARIES_OR_FUTURE",
+      "semantic_difference": "Byte/source-form preservation is not semantic preservation of a known parse defect.",
+      "compatibility_impact": "REQUIRES_EXPLICIT_DECISION",
+      "resolution_status": "FALSE_CONFLICT",
+      "possible_resolution": "Preserve defect evidence; reject reproduction as a future requirement.",
+      "dependency": false
+    }
+  ],
+  "rule": "Conflicts are not prerequisites and are not resolved by chronology."
+}

@@ -1,0 +1,84 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "schema_version": "1.0",
+  "additionalProperties": true,
+  "title": "Engineering obligation",
+  "type": "object",
+  "required": [
+    "obligation_id",
+    "statement",
+    "class",
+    "strength",
+    "final_category",
+    "epistemic_status",
+    "source_properties",
+    "source_evidence",
+    "dependencies",
+    "dependents",
+    "verification",
+    "compatibility",
+    "exceptions",
+    "status"
+  ],
+  "properties": {
+    "class": {
+      "enum": [
+        "PRESERVE",
+        "COMPATIBILITY",
+        "STABILIZE",
+        "GENERALIZE",
+        "FORMALIZE",
+        "VERIFY",
+        "CONTAIN",
+        "OBSERVE",
+        "DEPRECATE",
+        "REJECT",
+        "OPTIONAL"
+      ]
+    },
+    "strength": {
+      "enum": [
+        "REQUIRED",
+        "CONDITIONAL",
+        "RECOMMENDED",
+        "OPTIONAL",
+        "UNKNOWN"
+      ]
+    },
+    "final_category": {
+      "enum": [
+        "HISTORICAL_FACT",
+        "HISTORICAL_PROPERTY",
+        "PRESERVATION_OBLIGATION",
+        "COMPATIBILITY_OBLIGATION",
+        "ENGINEERING_REQUIREMENT",
+        "FUTURE_STRENGTHENING",
+        "DESIGN_OPTION",
+        "HISTORICAL_DEFECT",
+        "UNKNOWN"
+      ]
+    },
+    "epistemic_status": {
+      "enum": [
+        "PROVED",
+        "SUPPORTED",
+        "INFERRED",
+        "CONJECTURED",
+        "CONTRADICTED",
+        "UNKNOWN"
+      ]
+    },
+    "status": {
+      "enum": [
+        "DISCOVERED",
+        "SUPPORTED",
+        "FORMALIZED",
+        "IMPLEMENTED",
+        "VERIFIED",
+        "SUPERSEDED",
+        "REJECTED",
+        "UNKNOWN"
+      ]
+    }
+  }
+}

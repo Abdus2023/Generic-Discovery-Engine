@@ -1,0 +1,26 @@
+{
+  "schema_version": 1,
+  "observations": [
+    {
+      "from": "DiscoveryEngine",
+      "to": "GenericDiscoveryEngine",
+      "classification": "UNKNOWN",
+      "basis": "names overlap and coexist in historical snapshots; no explicit rename evidence was found"
+    },
+    {
+      "from": "Scheduler",
+      "to": "OriginController",
+      "classification": "UNKNOWN",
+      "basis": "responsibilities may overlap, but same-name/caller evidence is insufficient for a rename claim"
+    },
+    {
+      "from": "HttpAcquisitionAdapter",
+      "to": "Acquisition",
+      "classification": "POSSIBLE_RENAME",
+      "basis": "adjacent implementations share acquisition responsibility; explicit rename evidence unavailable"
+    }
+  ],
+  "proved_splits": [],
+  "proved_merges": [],
+  "note": "No same-name or responsibility similarity was promoted to a proved rename/split/merge."
+}

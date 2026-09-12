@@ -1,0 +1,277 @@
+{
+  "schema_version": 8,
+  "builder": "security-archaeology-builder-v8",
+  "model_kind": "DERIVED_SECURITY_ARCHAEOLOGY_NOT_SOURCE",
+  "races": [
+    {
+      "race_id": "race-3654530841b96467",
+      "snapshot_id": "snapshot-0003",
+      "version": "v0.2.0",
+      "shared_state": "providers",
+      "operation_a": "DiscoveryEngine.worker before await",
+      "operation_b": "another event-loop continuation touching shared state",
+      "interleaving": "POSSIBLE_AT_AWAIT_BOUNDARY",
+      "observable_consequence": "UNKNOWN_NOT_DEMONSTRATED",
+      "mitigation": "UNKNOWN",
+      "classification": "THEORETICAL_INTERLEAVING_NOT_DEMONSTRATED_FAILURE",
+      "evidence": [
+        "security-ev-4eb7d3ce6fd7db4c"
+      ]
+    },
+    {
+      "race_id": "race-7a7f75e0408253c6",
+      "snapshot_id": "snapshot-0005",
+      "version": "v0.3.0",
+      "shared_state": "claimed",
+      "operation_a": "DiscoveryEngine.worker before await",
+      "operation_b": "another event-loop continuation touching shared state",
+      "interleaving": "POSSIBLE_AT_AWAIT_BOUNDARY",
+      "observable_consequence": "UNKNOWN_NOT_DEMONSTRATED",
+      "mitigation": "claim-before-await",
+      "classification": "THEORETICAL_INTERLEAVING_NOT_DEMONSTRATED_FAILURE",
+      "evidence": [
+        "security-ev-1416a00b8042f3f1"
+      ]
+    },
+    {
+      "race_id": "race-7ff8a0f89465460f",
+      "snapshot_id": "snapshot-0005",
+      "version": "v0.3.0",
+      "shared_state": "providers",
+      "operation_a": "DiscoveryEngine.worker before await",
+      "operation_b": "another event-loop continuation touching shared state",
+      "interleaving": "POSSIBLE_AT_AWAIT_BOUNDARY",
+      "observable_consequence": "UNKNOWN_NOT_DEMONSTRATED",
+      "mitigation": "UNKNOWN",
+      "classification": "THEORETICAL_INTERLEAVING_NOT_DEMONSTRATED_FAILURE",
+      "evidence": [
+        "security-ev-8454a8b598c875b2"
+      ]
+    },
+    {
+      "race_id": "race-212a458319aec0d6",
+      "snapshot_id": "snapshot-0006",
+      "version": "v0.4.0",
+      "shared_state": "claimed",
+      "operation_a": "DiscoveryEngine.worker before await",
+      "operation_b": "another event-loop continuation touching shared state",
+      "interleaving": "POSSIBLE_AT_AWAIT_BOUNDARY",
+      "observable_consequence": "UNKNOWN_NOT_DEMONSTRATED",
+      "mitigation": "claim-before-await",
+      "classification": "THEORETICAL_INTERLEAVING_NOT_DEMONSTRATED_FAILURE",
+      "evidence": [
+        "security-ev-93f1514aa45646c3"
+      ]
+    },
+    {
+      "race_id": "race-249de47927c18c81",
+      "snapshot_id": "snapshot-0006",
+      "version": "v0.4.0",
+      "shared_state": "providers",
+      "operation_a": "DiscoveryEngine.worker before await",
+      "operation_b": "another event-loop continuation touching shared state",
+      "interleaving": "POSSIBLE_AT_AWAIT_BOUNDARY",
+      "observable_consequence": "UNKNOWN_NOT_DEMONSTRATED",
+      "mitigation": "UNKNOWN",
+      "classification": "THEORETICAL_INTERLEAVING_NOT_DEMONSTRATED_FAILURE",
+      "evidence": [
+        "security-ev-4010695c3ff653b7"
+      ]
+    },
+    {
+      "race_id": "race-24fa50919d5697ca",
+      "snapshot_id": "snapshot-0008",
+      "version": "v0.4.0",
+      "shared_state": "providers",
+      "operation_a": "DiscoveryEngine.worker before await",
+      "operation_b": "another event-loop continuation touching shared state",
+      "interleaving": "POSSIBLE_AT_AWAIT_BOUNDARY",
+      "observable_consequence": "UNKNOWN_NOT_DEMONSTRATED",
+      "mitigation": "UNKNOWN",
+      "classification": "THEORETICAL_INTERLEAVING_NOT_DEMONSTRATED_FAILURE",
+      "evidence": [
+        "security-ev-4139baefff804a19"
+      ]
+    },
+    {
+      "race_id": "race-a1adccdec1be6cef",
+      "snapshot_id": "snapshot-0007",
+      "version": "v0.5.0",
+      "shared_state": "providers",
+      "operation_a": "DiscoveryEngine.worker before await",
+      "operation_b": "another event-loop continuation touching shared state",
+      "interleaving": "POSSIBLE_AT_AWAIT_BOUNDARY",
+      "observable_consequence": "UNKNOWN_NOT_DEMONSTRATED",
+      "mitigation": "UNKNOWN",
+      "classification": "THEORETICAL_INTERLEAVING_NOT_DEMONSTRATED_FAILURE",
+      "evidence": [
+        "security-ev-07441ae6b3b15198"
+      ]
+    },
+    {
+      "race_id": "race-7d61c8c1663dab1f",
+      "snapshot_id": "snapshot-0009",
+      "version": "v0.5.0",
+      "shared_state": "providers",
+      "operation_a": "DiscoveryEngine.worker before await",
+      "operation_b": "another event-loop continuation touching shared state",
+      "interleaving": "POSSIBLE_AT_AWAIT_BOUNDARY",
+      "observable_consequence": "UNKNOWN_NOT_DEMONSTRATED",
+      "mitigation": "UNKNOWN",
+      "classification": "THEORETICAL_INTERLEAVING_NOT_DEMONSTRATED_FAILURE",
+      "evidence": [
+        "security-ev-01875dee095768e5"
+      ]
+    },
+    {
+      "race_id": "race-0fd4de968d87428c",
+      "snapshot_id": "snapshot-0011",
+      "version": "v0.5.0",
+      "shared_state": "providers",
+      "operation_a": "DiscoveryEngine.processCandidate before await",
+      "operation_b": "another event-loop continuation touching shared state",
+      "interleaving": "POSSIBLE_AT_AWAIT_BOUNDARY",
+      "observable_consequence": "UNKNOWN_NOT_DEMONSTRATED",
+      "mitigation": "UNKNOWN",
+      "classification": "THEORETICAL_INTERLEAVING_NOT_DEMONSTRATED_FAILURE",
+      "evidence": [
+        "security-ev-32f5486ad349d3a6"
+      ]
+    },
+    {
+      "race_id": "race-a4a9b353eafa3fbc",
+      "snapshot_id": "snapshot-0010",
+      "version": "v0.6.0",
+      "shared_state": "providers",
+      "operation_a": "DiscoveryEngine.worker before await",
+      "operation_b": "another event-loop continuation touching shared state",
+      "interleaving": "POSSIBLE_AT_AWAIT_BOUNDARY",
+      "observable_consequence": "UNKNOWN_NOT_DEMONSTRATED",
+      "mitigation": "UNKNOWN",
+      "classification": "THEORETICAL_INTERLEAVING_NOT_DEMONSTRATED_FAILURE",
+      "evidence": [
+        "security-ev-876c0a694a4e7b98"
+      ]
+    },
+    {
+      "race_id": "race-e4fc705da8d68d1e",
+      "snapshot_id": "snapshot-0012",
+      "version": "v0.6.0",
+      "shared_state": "queue",
+      "operation_a": "DiscoveryEngine.processCandidate before await",
+      "operation_b": "another event-loop continuation touching shared state",
+      "interleaving": "POSSIBLE_AT_AWAIT_BOUNDARY",
+      "observable_consequence": "UNKNOWN_NOT_DEMONSTRATED",
+      "mitigation": "claim-before-await",
+      "classification": "THEORETICAL_INTERLEAVING_NOT_DEMONSTRATED_FAILURE",
+      "evidence": [
+        "security-ev-224645eeff27b498"
+      ]
+    },
+    {
+      "race_id": "race-249d7a08bafa484c",
+      "snapshot_id": "snapshot-0012",
+      "version": "v0.6.0",
+      "shared_state": "claimed",
+      "operation_a": "DiscoveryEngine.processCandidate before await",
+      "operation_b": "another event-loop continuation touching shared state",
+      "interleaving": "POSSIBLE_AT_AWAIT_BOUNDARY",
+      "observable_consequence": "UNKNOWN_NOT_DEMONSTRATED",
+      "mitigation": "claim-before-await",
+      "classification": "THEORETICAL_INTERLEAVING_NOT_DEMONSTRATED_FAILURE",
+      "evidence": [
+        "security-ev-8f1baae26e2b05e6"
+      ]
+    },
+    {
+      "race_id": "race-621ae345288c36c3",
+      "snapshot_id": "snapshot-0012",
+      "version": "v0.6.0",
+      "shared_state": "providers",
+      "operation_a": "DiscoveryEngine.processCandidate before await",
+      "operation_b": "another event-loop continuation touching shared state",
+      "interleaving": "POSSIBLE_AT_AWAIT_BOUNDARY",
+      "observable_consequence": "UNKNOWN_NOT_DEMONSTRATED",
+      "mitigation": "UNKNOWN",
+      "classification": "THEORETICAL_INTERLEAVING_NOT_DEMONSTRATED_FAILURE",
+      "evidence": [
+        "security-ev-1fcee97182f2b2aa"
+      ]
+    },
+    {
+      "race_id": "race-34230a1cef4130f8",
+      "snapshot_id": "snapshot-0013",
+      "version": "v0.6.0",
+      "shared_state": "providers",
+      "operation_a": "GenericDiscoveryEngine.processCandidate before await",
+      "operation_b": "another event-loop continuation touching shared state",
+      "interleaving": "POSSIBLE_AT_AWAIT_BOUNDARY",
+      "observable_consequence": "UNKNOWN_NOT_DEMONSTRATED",
+      "mitigation": "UNKNOWN",
+      "classification": "THEORETICAL_INTERLEAVING_NOT_DEMONSTRATED_FAILURE",
+      "evidence": [
+        "security-ev-5f5f9599825a6684"
+      ]
+    },
+    {
+      "race_id": "race-624a26537646c7d2",
+      "snapshot_id": "snapshot-0014",
+      "version": "v0.7.1",
+      "shared_state": "claimed",
+      "operation_a": "TOP_LEVEL.looksLikeJson before await",
+      "operation_b": "another event-loop continuation touching shared state",
+      "interleaving": "POSSIBLE_AT_AWAIT_BOUNDARY",
+      "observable_consequence": "UNKNOWN_NOT_DEMONSTRATED",
+      "mitigation": "claim-before-await",
+      "classification": "THEORETICAL_INTERLEAVING_NOT_DEMONSTRATED_FAILURE",
+      "evidence": [
+        "security-ev-e142a5b106be5fd1"
+      ]
+    },
+    {
+      "race_id": "race-36b08c299d5a33e5",
+      "snapshot_id": "snapshot-0014",
+      "version": "v0.7.1",
+      "shared_state": "visited",
+      "operation_a": "TOP_LEVEL.looksLikeJson before await",
+      "operation_b": "another event-loop continuation touching shared state",
+      "interleaving": "POSSIBLE_AT_AWAIT_BOUNDARY",
+      "observable_consequence": "UNKNOWN_NOT_DEMONSTRATED",
+      "mitigation": "UNKNOWN",
+      "classification": "THEORETICAL_INTERLEAVING_NOT_DEMONSTRATED_FAILURE",
+      "evidence": [
+        "security-ev-e962d89ad876c5cd"
+      ]
+    },
+    {
+      "race_id": "race-95c116842011d063",
+      "snapshot_id": "snapshot-0014",
+      "version": "v0.7.1",
+      "shared_state": "candidates",
+      "operation_a": "TOP_LEVEL.looksLikeJson before await",
+      "operation_b": "another event-loop continuation touching shared state",
+      "interleaving": "POSSIBLE_AT_AWAIT_BOUNDARY",
+      "observable_consequence": "UNKNOWN_NOT_DEMONSTRATED",
+      "mitigation": "claim-before-await",
+      "classification": "THEORETICAL_INTERLEAVING_NOT_DEMONSTRATED_FAILURE",
+      "evidence": [
+        "security-ev-a14d1b6cca942aca"
+      ]
+    },
+    {
+      "race_id": "race-d44a3ab5b080b0c1",
+      "snapshot_id": "snapshot-0014",
+      "version": "v0.7.1",
+      "shared_state": "providers",
+      "operation_a": "GenericDiscoveryEngine.executePlan before await",
+      "operation_b": "another event-loop continuation touching shared state",
+      "interleaving": "POSSIBLE_AT_AWAIT_BOUNDARY",
+      "observable_consequence": "UNKNOWN_NOT_DEMONSTRATED",
+      "mitigation": "UNKNOWN",
+      "classification": "THEORETICAL_INTERLEAVING_NOT_DEMONSTRATED_FAILURE",
+      "evidence": [
+        "security-ev-05fa53caa4a2c995"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,14 @@
+provider
+    → "request failed"
+
+runtime
+    → classify failure
+
+runtime
+    → retry?
+
+runtime
+    → backoff
+
+runtime
+    → execute again

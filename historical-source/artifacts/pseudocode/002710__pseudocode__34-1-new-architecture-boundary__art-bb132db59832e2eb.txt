@@ -1,0 +1,35 @@
+                    WORKERS
+                       │
+             ┌─────────┴─────────┐
+             ▼                   ▼
+        Worker A             Worker B
+             │                   │
+             └─────────┬─────────┘
+                       ▼
+              Coordination Layer
+                       │
+              ┌────────┴────────┐
+              ▼                 ▼
+        Version Check      Causal Metadata
+              │                 │
+              └────────┬────────┘
+                       ▼
+                State Mutation
+                       │
+                ┌──────┴──────┐
+                │             │
+             ACCEPT        CONFLICT
+                │             │
+                ▼             ▼
+             Commit       Conflict Record
+                              │
+                              ▼
+                       Conflict Resolver
+                              │
+                       ┌──────┴──────┐
+                       ▼             ▼
+                    RESOLVED      UNRESOLVED
+                       │             │
+                       └──────┬──────┘
+                              ▼
+                       Materialized State

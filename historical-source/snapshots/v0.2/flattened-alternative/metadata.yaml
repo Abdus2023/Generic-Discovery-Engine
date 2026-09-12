@@ -1,0 +1,446 @@
+{
+  "schema_version": 1,
+  "snapshot_id": "snapshot-0004",
+  "historical_version": "v0.2.0",
+  "variant": "flattened-alternative",
+  "variant_status": "ALTERNATIVE_REPRESENTATION",
+  "date": "2026-09-10T20:36:25+01:00",
+  "commit": "cc8df7357c2dbfe9d149747743e2f5e9ac9c0178",
+  "revision": "1c7b52bb1244677ba22bf25285ba199f9e5f722d",
+  "release": null,
+  "extraction_sequence": 141,
+  "source_documents": [
+    "Continue Architecture Planning.md"
+  ],
+  "version_boundary": {
+    "confidence": "MEDIUM",
+    "evidence": {
+      "metadata_version": null,
+      "manifest_version": "0.2.0",
+      "artifact_id": "art-e69de36ddbc7cb3b"
+    }
+  },
+  "reconstruction": {
+    "status": "PARTIAL",
+    "source_nature": "PARTIALLY_RECONSTRUCTED_SOURCE",
+    "authoritative": false,
+    "authoritative_source": "artifacts/userscript/000141__userscript__generic-discovery-v0-2-0__art-e69de36ddbc7cb3b.js",
+    "completeness": "UNKNOWN",
+    "completeness_basis": "Formatting loss is proved, but the amount and exact location of all lost source cannot be quantified.",
+    "assumption_dependent": false
+  },
+  "base_selection": {
+    "result": "SELECTED_PARTIAL_REPRESENTATION",
+    "rule": "same historical revision and explicit version",
+    "selected": "art-e69de36ddbc7cb3b",
+    "alternatives_not_merged": true
+  },
+  "compatibility_test": {
+    "same_revision": "PASS",
+    "same_branch": "PASS",
+    "same_version": "PASS",
+    "same_implementation_family": "PASS",
+    "dependency_assumptions": "NO_CROSS_ARTIFACT_DEPENDENCIES_COMPOSED",
+    "compatible_symbol_definitions": "PASS",
+    "decision": "NO_FRAGMENT_COMPOSITION"
+  },
+  "transformation_plan": {
+    "BASE": "art-e69de36ddbc7cb3b",
+    "ADDITIONS": [
+      "explicit non-historical gap marker"
+    ],
+    "MODIFICATIONS": [],
+    "DELETIONS": [],
+    "RENAMES": [],
+    "DEPENDENCY_CHANGES": []
+  },
+  "artifacts": [
+    "art-e69de36ddbc7cb3b"
+  ],
+  "dependencies": {
+    "entries": [
+      {
+        "name": "Candidate",
+        "status": "UNKNOWN",
+        "basis": "artifact is an incomplete/flattened representation; definition boundaries are not reliably recoverable"
+      },
+      {
+        "name": "Scheduler",
+        "status": "UNKNOWN",
+        "basis": "artifact is an incomplete/flattened representation; definition boundaries are not reliably recoverable"
+      },
+      {
+        "name": "Worker",
+        "status": "HISTORICAL_EXTERNAL",
+        "basis": "browser/userscript/runtime-provided API; historical availability not executed"
+      },
+      {
+        "name": "Observation",
+        "status": "UNKNOWN",
+        "basis": "artifact is an incomplete/flattened representation; definition boundaries are not reliably recoverable"
+      },
+      {
+        "name": "Discovery",
+        "status": "UNKNOWN",
+        "basis": "artifact is an incomplete/flattened representation; definition boundaries are not reliably recoverable"
+      },
+      {
+        "name": "KnowledgeBase",
+        "status": "UNKNOWN",
+        "basis": "artifact is an incomplete/flattened representation; definition boundaries are not reliably recoverable"
+      },
+      {
+        "name": "Provider",
+        "status": "UNKNOWN",
+        "basis": "artifact is an incomplete/flattened representation; definition boundaries are not reliably recoverable"
+      },
+      {
+        "name": "ProviderRegistry",
+        "status": "UNKNOWN",
+        "basis": "artifact is an incomplete/flattened representation; definition boundaries are not reliably recoverable"
+      },
+      {
+        "name": "ResponseProvider",
+        "status": "UNKNOWN",
+        "basis": "artifact is an incomplete/flattened representation; definition boundaries are not reliably recoverable"
+      },
+      {
+        "name": "Acquisition",
+        "status": "UNKNOWN",
+        "basis": "artifact is an incomplete/flattened representation; definition boundaries are not reliably recoverable"
+      },
+      {
+        "name": "DiscoveryEngine",
+        "status": "UNKNOWN",
+        "basis": "artifact is an incomplete/flattened representation; definition boundaries are not reliably recoverable"
+      },
+      {
+        "name": "GM_xmlhttpRequest",
+        "status": "HISTORICAL_EXTERNAL",
+        "basis": "browser/userscript/runtime-provided API; historical availability not executed"
+      },
+      {
+        "name": "GM_getValue",
+        "status": "HISTORICAL_EXTERNAL",
+        "basis": "browser/userscript/runtime-provided API; historical availability not executed"
+      },
+      {
+        "name": "GM_setValue",
+        "status": "HISTORICAL_EXTERNAL",
+        "basis": "browser/userscript/runtime-provided API; historical availability not executed"
+      },
+      {
+        "name": "fetch",
+        "status": "HISTORICAL_EXTERNAL",
+        "basis": "browser/userscript/runtime-provided API; historical availability not executed"
+      },
+      {
+        "name": "DOMParser",
+        "status": "HISTORICAL_EXTERNAL",
+        "basis": "browser/userscript/runtime-provided API; historical availability not executed"
+      },
+      {
+        "name": "URL",
+        "status": "HISTORICAL_EXTERNAL",
+        "basis": "browser/userscript/runtime-provided API; historical availability not executed"
+      },
+      {
+        "name": "Map",
+        "status": "HISTORICAL_EXTERNAL",
+        "basis": "browser/userscript/runtime-provided API; historical availability not executed"
+      },
+      {
+        "name": "Set",
+        "status": "HISTORICAL_EXTERNAL",
+        "basis": "browser/userscript/runtime-provided API; historical availability not executed"
+      },
+      {
+        "name": "Promise",
+        "status": "HISTORICAL_EXTERNAL",
+        "basis": "browser/userscript/runtime-provided API; historical availability not executed"
+      },
+      {
+        "name": "document",
+        "status": "HISTORICAL_EXTERNAL",
+        "basis": "browser/userscript/runtime-provided API; historical availability not executed"
+      },
+      {
+        "name": "window",
+        "status": "HISTORICAL_EXTERNAL",
+        "basis": "browser/userscript/runtime-provided API; historical availability not executed"
+      },
+      {
+        "name": "localStorage",
+        "status": "HISTORICAL_EXTERNAL",
+        "basis": "browser/userscript/runtime-provided API; historical availability not executed"
+      }
+    ],
+    "status_registry": [
+      "HISTORICAL_EXTERNAL",
+      "INFERRED",
+      "MISSING",
+      "PRESENT",
+      "UNKNOWN"
+    ],
+    "self_contained": {
+      "status": "UNKNOWN",
+      "missing_dependencies": [],
+      "unknown_dependencies": [
+        "Candidate",
+        "Scheduler",
+        "Observation",
+        "Discovery",
+        "KnowledgeBase",
+        "Provider",
+        "ProviderRegistry",
+        "ResponseProvider",
+        "Acquisition",
+        "DiscoveryEngine"
+      ],
+      "historical_external_dependencies": [
+        "Worker",
+        "GM_xmlhttpRequest",
+        "GM_getValue",
+        "GM_setValue",
+        "fetch",
+        "DOMParser",
+        "URL",
+        "Map",
+        "Set",
+        "Promise",
+        "document",
+        "window",
+        "localStorage"
+      ],
+      "note": "PARTIAL means bundled internal definitions appear closed but historical platform APIs were not executed; UNKNOWN preserves unresolved dependency semantics."
+    }
+  },
+  "symbols": {
+    "definitions": {
+      "classes": [],
+      "functions": [],
+      "constants": []
+    },
+    "api_signatures": {},
+    "class_content_sha256": {},
+    "model_fields": {},
+    "conflicts": [],
+    "analysis_method": "read-only lexical regular expressions; no AST rewrite"
+  },
+  "changes_from_previous": {
+    "previous_snapshot": "snapshot-0002",
+    "lineage_evidence": "same pasted pair; formatting loss prevents exact lineage identity",
+    "source_diff": "snapshots/v0.2/flattened-alternative/analysis/source-diff-from-previous.diff",
+    "source_diff_sha256": "d53180ad40e563df3a1576141c802d8a139b620aab81e8d0a43532dc65e9e41d",
+    "symbol_diff": {
+      "added": [],
+      "removed": []
+    },
+    "api_diff": {
+      "added": [],
+      "removed": []
+    },
+    "data_model_diff": {},
+    "behavioral_observation": "Textual source differences only; behavior was not executed or proved.",
+    "architectural_difference": {
+      "Synchronous claim operation": {
+        "from": "UNKNOWN",
+        "to": "PARTIAL"
+      }
+    }
+  },
+  "capabilities": {
+    "Candidate model": {
+      "status": "UNKNOWN",
+      "evidence": {
+        "artifact_id": "art-e69de36ddbc7cb3b",
+        "observation": "pattern absent from recovered source"
+      }
+    },
+    "Observation model": {
+      "status": "UNKNOWN",
+      "evidence": {
+        "artifact_id": "art-e69de36ddbc7cb3b",
+        "observation": "pattern absent from recovered source"
+      }
+    },
+    "Discovery model": {
+      "status": "UNKNOWN",
+      "evidence": {
+        "artifact_id": "art-e69de36ddbc7cb3b",
+        "observation": "pattern absent from recovered source"
+      }
+    },
+    "KnowledgeBase": {
+      "status": "UNKNOWN",
+      "evidence": {
+        "artifact_id": "art-e69de36ddbc7cb3b",
+        "observation": "pattern absent from recovered source"
+      }
+    },
+    "HTML provider": {
+      "status": "UNKNOWN",
+      "evidence": {
+        "artifact_id": "art-e69de36ddbc7cb3b",
+        "observation": "pattern absent from recovered source"
+      }
+    },
+    "JSON provider": {
+      "status": "UNKNOWN",
+      "evidence": {
+        "artifact_id": "art-e69de36ddbc7cb3b",
+        "observation": "pattern absent from recovered source"
+      }
+    },
+    "Text provider": {
+      "status": "UNKNOWN",
+      "evidence": {
+        "artifact_id": "art-e69de36ddbc7cb3b",
+        "observation": "pattern absent from recovered source"
+      }
+    },
+    "XML provider": {
+      "status": "UNKNOWN",
+      "evidence": {
+        "artifact_id": "art-e69de36ddbc7cb3b",
+        "observation": "pattern absent from recovered source"
+      }
+    },
+    "Provider registry": {
+      "status": "UNKNOWN",
+      "evidence": {
+        "artifact_id": "art-e69de36ddbc7cb3b",
+        "observation": "pattern absent from recovered source"
+      }
+    },
+    "Scheduler": {
+      "status": "UNKNOWN",
+      "evidence": {
+        "artifact_id": "art-e69de36ddbc7cb3b",
+        "observation": "pattern absent from recovered source"
+      }
+    },
+    "Concurrent workers": {
+      "status": "PARTIAL",
+      "evidence": {
+        "artifact_id": "art-e69de36ddbc7cb3b",
+        "line": 4,
+        "matched_source": "Promise.all("
+      }
+    },
+    "Synchronous claim operation": {
+      "status": "PARTIAL",
+      "evidence": {
+        "artifact_id": "art-e69de36ddbc7cb3b",
+        "line": 4,
+        "matched_source": "claimNextCandidate("
+      }
+    },
+    "Provenance records": {
+      "status": "PARTIAL",
+      "evidence": {
+        "artifact_id": "art-e69de36ddbc7cb3b",
+        "line": 4,
+        "matched_source": "this.provenance"
+      }
+    },
+    "GM acquisition": {
+      "status": "PARTIAL",
+      "evidence": {
+        "artifact_id": "art-e69de36ddbc7cb3b",
+        "line": 4,
+        "matched_source": "GM_xmlhttpRequest("
+      }
+    },
+    "Fetch acquisition": {
+      "status": "PARTIAL",
+      "evidence": {
+        "artifact_id": "art-e69de36ddbc7cb3b",
+        "line": 4,
+        "matched_source": "fetch("
+      }
+    }
+  },
+  "conflicts": [],
+  "uncertainties": [
+    "GAP-FLATTENED-0.2.0"
+  ],
+  "assumptions": [],
+  "executability": "NON_EXECUTABLE",
+  "static_validation": {
+    "syntax_and_ast_parse": {
+      "attempted": true,
+      "result": "FAIL",
+      "tool": "node --check -",
+      "exit_code": 1,
+      "diagnostic": "[stdin]:5\n})();\n ^\n\nSyntaxError: Unexpected token ')'\n    at wrapSafe (node:internal/modules/cjs/loader:1713:18)\n    at checkSyntax (node:internal/main/check_syntax:78:3)\n    at node:internal/main/check_syntax:45:5\n    at Socket.<anonymous> (node:internal/process/execution:201:5)\n    at Socket.emit (node:events:531:35)\n    at endReadableNT (node:internal/streams/readable:1698:12)\n    at process.processTicksAndRejections (node:internal/process/task_queues:89:21)\n\nNode.js v22.22.3\n",
+      "source_modified": false,
+      "runtime_executed": false
+    },
+    "userscript_metadata": {
+      "result": "PASS",
+      "status": "PARSED",
+      "version": null,
+      "directives": {},
+      "raw_header_present": true
+    },
+    "dependency_resolution": "UNKNOWN",
+    "source_was_modified_to_validate": false
+  },
+  "runtime_validation": {
+    "executed": false,
+    "result": "NOT_EXECUTED"
+  },
+  "historical_execution": "UNKNOWN",
+  "historical_environment": {
+    "browser": "UNKNOWN",
+    "userscript_manager": "Tampermonkey/Greasemonkey-compatible (document claim; exact version UNKNOWN)",
+    "permissions": [],
+    "external_dependencies": [
+      "Worker",
+      "GM_xmlhttpRequest",
+      "GM_getValue",
+      "GM_setValue",
+      "fetch",
+      "DOMParser",
+      "URL",
+      "Map",
+      "Set",
+      "Promise",
+      "document",
+      "window",
+      "localStorage"
+    ],
+    "runtime_assumptions": "NOT_TESTED"
+  },
+  "evidence": [
+    {
+      "source_artifact": "art-e69de36ddbc7cb3b",
+      "source_anchor": "lines 11-15; bytes 22437-57650",
+      "reconstruction_operation": "direct_copy",
+      "confidence": "HIGH",
+      "assumptions": []
+    }
+  ],
+  "integrity": {
+    "reconstructed_sha256": "457fcf715e58cd59dec9157ace098b4d9ae499d9aa079154ca472ff8fdaf57b0",
+    "size_bytes": 35429,
+    "source_map_sha256": "12cc900c8d3c284ab4ea734c574cf6a951c12767f92192b1ed4b48a9333e6466"
+  },
+  "temporal_tests": {
+    "artifact_not_later_than_snapshot": "PASS",
+    "dependency_temporal_consistency": "PASS_NO_LATER_ARTIFACT_COMPOSED",
+    "backward_contamination": "PASS",
+    "forward_contamination": "PASS_NO_CROSS_VERSION_SOURCE_INSERTION"
+  },
+  "generated": {
+    "timestamp": "2026-09-11T13:21:04+00:00",
+    "extractor_version": "mechanical-reconstruction-v1",
+    "metadata_is_historical": false
+  },
+  "paths": {
+    "source": "snapshots/v0.2/flattened-alternative/source/generic-discovery.user.js",
+    "source_map": "snapshots/v0.2/flattened-alternative/source-map.yaml",
+    "report": "snapshots/v0.2/flattened-alternative/reconstruction-report.md"
+  }
+}

@@ -1,0 +1,243 @@
+{
+  "schema_version": 8,
+  "builder": "security-archaeology-builder-v8",
+  "model_kind": "DERIVED_SECURITY_ARCHAEOLOGY_NOT_SOURCE",
+  "snapshots": [
+    {
+      "snapshot_id": "snapshot-0001",
+      "version": "v0.1.0",
+      "variant": "mechanically-composed",
+      "claim_operation": "NOT_EVIDENCED",
+      "claim_atomicity": "UNKNOWN",
+      "claim_ownership": "UNKNOWN",
+      "processing_exclusivity": "UNKNOWN",
+      "completion_ownership": "UNKNOWN",
+      "failure_ownership": "UNKNOWN",
+      "requeue": "NOT_EVIDENCED",
+      "cross_await_atomicity": "NOT_CLAIMED",
+      "thread_safety": "NOT_ESTABLISHED",
+      "distributed_atomicity": "NOT_ESTABLISHED",
+      "evidence": [
+        "security-absence-f247455ad45b5a6c"
+      ]
+    },
+    {
+      "snapshot_id": "snapshot-0003",
+      "version": "v0.2.0",
+      "variant": "mechanically-composed",
+      "claim_operation": "KnowledgeBase.claimNextCandidate",
+      "claim_atomicity": "SYNCHRONOUS_EVENT_LOOP_LOCAL_SEQUENCE",
+      "claim_ownership": "SUPPORTED_LOCAL_CLAIM_SET_OR_QUEUE_REMOVAL",
+      "processing_exclusivity": "SUPPORTED_FOR_RECOVERED_WORKER_PATH",
+      "completion_ownership": "KnowledgeBase.completeCandidate",
+      "failure_ownership": "KnowledgeBase.failCandidate",
+      "requeue": "NOT_EVIDENCED",
+      "cross_await_atomicity": "NOT_CLAIMED",
+      "thread_safety": "NOT_ESTABLISHED",
+      "distributed_atomicity": "NOT_ESTABLISHED",
+      "evidence": [
+        "security-ev-2edbfd1d30a21f40",
+        "security-ev-c420f255e02c9133",
+        "security-ev-c4ef2d16cfef0d8b"
+      ]
+    },
+    {
+      "snapshot_id": "snapshot-0005",
+      "version": "v0.3.0",
+      "variant": "only-evidenced-complete-occurrence",
+      "claim_operation": "KnowledgeBase.claimNextCandidate",
+      "claim_atomicity": "SYNCHRONOUS_EVENT_LOOP_LOCAL_SEQUENCE",
+      "claim_ownership": "SUPPORTED_LOCAL_CLAIM_SET_OR_QUEUE_REMOVAL",
+      "processing_exclusivity": "SUPPORTED_FOR_RECOVERED_WORKER_PATH",
+      "completion_ownership": "KnowledgeBase.completeCandidate",
+      "failure_ownership": "KnowledgeBase.failCandidate",
+      "requeue": "IMPLEMENTED",
+      "cross_await_atomicity": "NOT_CLAIMED",
+      "thread_safety": "NOT_ESTABLISHED",
+      "distributed_atomicity": "NOT_ESTABLISHED",
+      "evidence": [
+        "security-ev-f3da7d05db853cb3",
+        "security-ev-7f1b04549b616213",
+        "security-ev-440d9662316f2e81"
+      ]
+    },
+    {
+      "snapshot_id": "snapshot-0006",
+      "version": "v0.4.0",
+      "variant": "variant-a",
+      "claim_operation": "KnowledgeBase.claimNextCandidate",
+      "claim_atomicity": "SYNCHRONOUS_EVENT_LOOP_LOCAL_SEQUENCE",
+      "claim_ownership": "SUPPORTED_LOCAL_CLAIM_SET_OR_QUEUE_REMOVAL",
+      "processing_exclusivity": "SUPPORTED_FOR_RECOVERED_WORKER_PATH",
+      "completion_ownership": "KnowledgeBase.completeCandidate",
+      "failure_ownership": "KnowledgeBase.failCandidate",
+      "requeue": "IMPLEMENTED",
+      "cross_await_atomicity": "NOT_CLAIMED",
+      "thread_safety": "NOT_ESTABLISHED",
+      "distributed_atomicity": "NOT_ESTABLISHED",
+      "evidence": [
+        "security-ev-27dd07689c764d06",
+        "security-ev-6b8e166c442ea9c2",
+        "security-ev-1fa46a68aa933042"
+      ]
+    },
+    {
+      "snapshot_id": "snapshot-0008",
+      "version": "v0.4.0",
+      "variant": "variant-b",
+      "claim_operation": "KnowledgeBase.claimNextCandidate",
+      "claim_atomicity": "SYNCHRONOUS_EVENT_LOOP_LOCAL_SEQUENCE",
+      "claim_ownership": "SUPPORTED_LOCAL_CLAIM_SET_OR_QUEUE_REMOVAL",
+      "processing_exclusivity": "SUPPORTED_FOR_RECOVERED_WORKER_PATH",
+      "completion_ownership": "KnowledgeBase.completeCandidate",
+      "failure_ownership": "KnowledgeBase.failCandidate",
+      "requeue": "IMPLEMENTED",
+      "cross_await_atomicity": "NOT_CLAIMED",
+      "thread_safety": "NOT_ESTABLISHED",
+      "distributed_atomicity": "NOT_ESTABLISHED",
+      "evidence": [
+        "security-ev-3617b08d250e3f16",
+        "security-ev-7f36a4c573eb8527",
+        "security-ev-d91735d861538334"
+      ]
+    },
+    {
+      "snapshot_id": "snapshot-0007",
+      "version": "v0.5.0",
+      "variant": "variant-a",
+      "claim_operation": "KnowledgeBase.claimNextCandidate",
+      "claim_atomicity": "SYNCHRONOUS_EVENT_LOOP_LOCAL_SEQUENCE",
+      "claim_ownership": "SUPPORTED_LOCAL_CLAIM_SET_OR_QUEUE_REMOVAL",
+      "processing_exclusivity": "SUPPORTED_FOR_RECOVERED_WORKER_PATH",
+      "completion_ownership": "KnowledgeBase.completeCandidate",
+      "failure_ownership": "KnowledgeBase.failCandidate",
+      "requeue": "IMPLEMENTED",
+      "cross_await_atomicity": "NOT_CLAIMED",
+      "thread_safety": "NOT_ESTABLISHED",
+      "distributed_atomicity": "NOT_ESTABLISHED",
+      "evidence": [
+        "security-ev-bb8cc313ee3b16f3",
+        "security-ev-d7d15157168272c9",
+        "security-ev-d219f1c4633346af"
+      ]
+    },
+    {
+      "snapshot_id": "snapshot-0009",
+      "version": "v0.5.0",
+      "variant": "variant-b",
+      "claim_operation": "KnowledgeBase.claimNext",
+      "claim_atomicity": "SYNCHRONOUS_EVENT_LOOP_LOCAL_SEQUENCE",
+      "claim_ownership": "SUPPORTED_LOCAL_CLAIM_SET_OR_QUEUE_REMOVAL",
+      "processing_exclusivity": "SUPPORTED_FOR_RECOVERED_WORKER_PATH",
+      "completion_ownership": "KnowledgeBase.complete",
+      "failure_ownership": "KnowledgeBase.fail",
+      "requeue": "IMPLEMENTED",
+      "cross_await_atomicity": "NOT_CLAIMED",
+      "thread_safety": "NOT_ESTABLISHED",
+      "distributed_atomicity": "NOT_ESTABLISHED",
+      "evidence": [
+        "security-ev-8320559b9265c706",
+        "security-ev-20d2ab2c01abd242",
+        "security-ev-2791254450bcac7e"
+      ]
+    },
+    {
+      "snapshot_id": "snapshot-0011",
+      "version": "v0.5.0",
+      "variant": "variant-c",
+      "claim_operation": "KnowledgeBase.claimNextCandidate",
+      "claim_atomicity": "SYNCHRONOUS_EVENT_LOOP_LOCAL_SEQUENCE",
+      "claim_ownership": "SUPPORTED_LOCAL_CLAIM_SET_OR_QUEUE_REMOVAL",
+      "processing_exclusivity": "SUPPORTED_FOR_RECOVERED_WORKER_PATH",
+      "completion_ownership": "KnowledgeBase.completeCandidate",
+      "failure_ownership": "KnowledgeBase.failCandidate",
+      "requeue": "IMPLEMENTED",
+      "cross_await_atomicity": "NOT_CLAIMED",
+      "thread_safety": "NOT_ESTABLISHED",
+      "distributed_atomicity": "NOT_ESTABLISHED",
+      "evidence": [
+        "security-ev-6a81c3d50c44205f",
+        "security-ev-5fac886d1e98f572",
+        "security-ev-e0fed62a21d805e2"
+      ]
+    },
+    {
+      "snapshot_id": "snapshot-0010",
+      "version": "v0.6.0",
+      "variant": "variant-a",
+      "claim_operation": "KnowledgeBase.claimNext",
+      "claim_atomicity": "SYNCHRONOUS_EVENT_LOOP_LOCAL_SEQUENCE",
+      "claim_ownership": "SUPPORTED_LOCAL_CLAIM_SET_OR_QUEUE_REMOVAL",
+      "processing_exclusivity": "SUPPORTED_FOR_RECOVERED_WORKER_PATH",
+      "completion_ownership": "KnowledgeBase.complete",
+      "failure_ownership": "KnowledgeBase.fail",
+      "requeue": "IMPLEMENTED",
+      "cross_await_atomicity": "NOT_CLAIMED",
+      "thread_safety": "NOT_ESTABLISHED",
+      "distributed_atomicity": "NOT_ESTABLISHED",
+      "evidence": [
+        "security-ev-49913f50640c7915",
+        "security-ev-e5c362f7899cb8e9",
+        "security-ev-8df7f336596abeca"
+      ]
+    },
+    {
+      "snapshot_id": "snapshot-0012",
+      "version": "v0.6.0",
+      "variant": "variant-b",
+      "claim_operation": "KnowledgeBase.claimNextCandidate",
+      "claim_atomicity": "SYNCHRONOUS_EVENT_LOOP_LOCAL_SEQUENCE",
+      "claim_ownership": "SUPPORTED_LOCAL_CLAIM_SET_OR_QUEUE_REMOVAL",
+      "processing_exclusivity": "SUPPORTED_FOR_RECOVERED_WORKER_PATH",
+      "completion_ownership": "KnowledgeBase.completeCandidate",
+      "failure_ownership": "KnowledgeBase.failCandidate",
+      "requeue": "IMPLEMENTED",
+      "cross_await_atomicity": "NOT_CLAIMED",
+      "thread_safety": "NOT_ESTABLISHED",
+      "distributed_atomicity": "NOT_ESTABLISHED",
+      "evidence": [
+        "security-ev-f149ecc24fbeee03",
+        "security-ev-3e46f78a1cd90567",
+        "security-ev-055155492a06a46e"
+      ]
+    },
+    {
+      "snapshot_id": "snapshot-0013",
+      "version": "v0.6.0",
+      "variant": "variant-c",
+      "claim_operation": "KnowledgeBase.claimNextCandidate",
+      "claim_atomicity": "SYNCHRONOUS_EVENT_LOOP_LOCAL_SEQUENCE",
+      "claim_ownership": "SUPPORTED_LOCAL_CLAIM_SET_OR_QUEUE_REMOVAL",
+      "processing_exclusivity": "SUPPORTED_FOR_RECOVERED_WORKER_PATH",
+      "completion_ownership": "KnowledgeBase.completeCandidate",
+      "failure_ownership": "KnowledgeBase.failCandidate",
+      "requeue": "IMPLEMENTED",
+      "cross_await_atomicity": "NOT_CLAIMED",
+      "thread_safety": "NOT_ESTABLISHED",
+      "distributed_atomicity": "NOT_ESTABLISHED",
+      "evidence": [
+        "security-ev-05a55ad67c992290",
+        "security-ev-32823a7ddd5cf707",
+        "security-ev-3694b4012d324097"
+      ]
+    },
+    {
+      "snapshot_id": "snapshot-0014",
+      "version": "v0.7.1",
+      "variant": "only-evidenced-complete-occurrence",
+      "claim_operation": "KnowledgeBase.claimNextCandidate",
+      "claim_atomicity": "SYNCHRONOUS_EVENT_LOOP_LOCAL_SEQUENCE",
+      "claim_ownership": "SUPPORTED_LOCAL_CLAIM_SET_OR_QUEUE_REMOVAL",
+      "processing_exclusivity": "SUPPORTED_FOR_RECOVERED_WORKER_PATH",
+      "completion_ownership": "UNKNOWN",
+      "failure_ownership": "UNKNOWN",
+      "requeue": "CONFIGURED_WITHOUT_COMPLETE_PATH_PROOF",
+      "cross_await_atomicity": "NOT_CLAIMED",
+      "thread_safety": "NOT_ESTABLISHED",
+      "distributed_atomicity": "NOT_ESTABLISHED",
+      "evidence": [
+        "security-ev-94687ceddf56ba0c"
+      ]
+    }
+  ]
+}

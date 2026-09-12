@@ -1,0 +1,35 @@
+                         DISCOVERY DOMAIN
+                                │
+                                ▼
+                         SCAN SESSION
+                                │
+                                ▼
+                      ┌──────────────────┐
+                      │ FRONTIER RUNTIME │
+                      └────────┬─────────┘
+                               │
+                         WORK SCHEDULER
+                               │
+                  ┌────────────┴────────────┐
+                  │                         │
+                  ▼                         ▼
+           DISCOVERY WORK             ACQUISITION WORK
+                  │                         │
+                  ▼                         ▼
+        DISCOVERY CONTROLLER       ACQUISITION RUNTIME
+                  │                         │
+                  ▼                         ▼
+         CANDIDATE SOURCES         ACQUISITION PROVIDERS
+                  │                         │
+                  ▼                         ▼
+             PROPOSALS                 OBSERVATIONS
+                  │                         │
+                  ▼                         ▼
+            CANDIDATES             RECOGNITION RUNTIME
+                  │                         │
+                  └──────────┬──────────────┘
+                             ▼
+                       KNOWLEDGE BASE
+                             │
+                             ▼
+                        EVENT LEDGER

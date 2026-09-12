@@ -1,0 +1,1058 @@
+{
+  "schema_version": "protocol-v9",
+  "states": [
+    {
+      "state_id": "state-snapshot-0001",
+      "snapshot_id": "snapshot-0001",
+      "version": "v0.1.0",
+      "variant": "mechanically-composed",
+      "source_artifact_id": "rec-dbef25f8ab917d5a",
+      "state_vector": {
+        "algorithm": {
+          "state": "PRESENT",
+          "status": "SUPPORTED"
+        },
+        "architecture": {
+          "state": "CANDIDATE_CENTRIC_PIPELINE",
+          "status": "SUPPORTED"
+        },
+        "contracts": {
+          "state": "UNKNOWN",
+          "status": "UNKNOWN",
+          "reason": "Protocol-v7 contract outputs are absent; source shapes are not upgraded into validated contracts"
+        },
+        "data": {
+          "state": "STRUCTURED",
+          "status": "SUPPORTED",
+          "model_count": 5,
+          "field_count": 33
+        },
+        "execution": {
+          "state": "LIKELY_EXECUTABLE",
+          "status": "SUPPORTED",
+          "historical_runtime": "UNKNOWN"
+        },
+        "concurrency": {
+          "state": "EXPLICIT",
+          "status": "SUPPORTED"
+        },
+        "providers": {
+          "state": "SINGLE_RECOGNIZER",
+          "status": "SUPPORTED",
+          "count": 1
+        },
+        "provenance": {
+          "state": "EXPLICIT",
+          "status": "SUPPORTED"
+        },
+        "failure": {
+          "state": "EXPLICIT_HANDLING_PRESENT",
+          "status": "SUPPORTED",
+          "event_count": 9
+        },
+        "security": {
+          "state": "MECHANISMS_NOT_GUARANTEES",
+          "status": "SUPPORTED",
+          "trust_boundary_count": 12,
+          "authority_count": 5
+        },
+        "observability": {
+          "state": "OBSERVATION_CENTRIC",
+          "status": "SUPPORTED"
+        },
+        "validation": {
+          "state": "STATIC_ONLY",
+          "status": "SUPPORTED",
+          "historical_tests": "UNKNOWN"
+        }
+      },
+      "resource_bound_count": 4,
+      "parser_boundary_count": 3,
+      "evidence_refs": [
+        "syn-ev-00001",
+        "syn-ev-00002",
+        "syn-ev-00003",
+        "syn-ev-00004",
+        "syn-ev-00005",
+        "syn-ev-00006",
+        "syn-ev-00007",
+        "syn-ev-00008",
+        "syn-ev-00009",
+        "syn-ev-00010",
+        "syn-ev-00011",
+        "syn-ev-00012"
+      ],
+      "confidence": "SUPPORTED",
+      "acceptance_caveat": "V1_FAILED_V4_V7_MISSING"
+    },
+    {
+      "state_id": "state-snapshot-0003",
+      "snapshot_id": "snapshot-0003",
+      "version": "v0.2.0",
+      "variant": "mechanically-composed",
+      "source_artifact_id": "rec-e8df26fe56d82d1c",
+      "state_vector": {
+        "algorithm": {
+          "state": "PRESENT",
+          "status": "SUPPORTED"
+        },
+        "architecture": {
+          "state": "CANDIDATE_CENTRIC_PIPELINE",
+          "status": "SUPPORTED"
+        },
+        "contracts": {
+          "state": "UNKNOWN",
+          "status": "UNKNOWN",
+          "reason": "Protocol-v7 contract outputs are absent; source shapes are not upgraded into validated contracts"
+        },
+        "data": {
+          "state": "STRUCTURED",
+          "status": "SUPPORTED",
+          "model_count": 5,
+          "field_count": 34
+        },
+        "execution": {
+          "state": "LIKELY_EXECUTABLE",
+          "status": "SUPPORTED",
+          "historical_runtime": "UNKNOWN"
+        },
+        "concurrency": {
+          "state": "EXPLICIT",
+          "status": "SUPPORTED"
+        },
+        "providers": {
+          "state": "MULTI_PROVIDER",
+          "status": "SUPPORTED",
+          "count": 4
+        },
+        "provenance": {
+          "state": "EXPLICIT",
+          "status": "SUPPORTED"
+        },
+        "failure": {
+          "state": "EXPLICIT_HANDLING_PRESENT",
+          "status": "SUPPORTED",
+          "event_count": 11
+        },
+        "security": {
+          "state": "MECHANISMS_NOT_GUARANTEES",
+          "status": "SUPPORTED",
+          "trust_boundary_count": 12,
+          "authority_count": 7
+        },
+        "observability": {
+          "state": "OBSERVATION_CENTRIC",
+          "status": "SUPPORTED"
+        },
+        "validation": {
+          "state": "STATIC_ONLY",
+          "status": "SUPPORTED",
+          "historical_tests": "UNKNOWN"
+        }
+      },
+      "resource_bound_count": 4,
+      "parser_boundary_count": 3,
+      "evidence_refs": [
+        "syn-ev-00013",
+        "syn-ev-00014",
+        "syn-ev-00015",
+        "syn-ev-00016",
+        "syn-ev-00017",
+        "syn-ev-00018",
+        "syn-ev-00019",
+        "syn-ev-00020",
+        "syn-ev-00021",
+        "syn-ev-00022",
+        "syn-ev-00023",
+        "syn-ev-00024",
+        "syn-ev-00025",
+        "syn-ev-00026",
+        "syn-ev-00027"
+      ],
+      "confidence": "SUPPORTED",
+      "acceptance_caveat": "V1_FAILED_V4_V7_MISSING"
+    },
+    {
+      "state_id": "state-snapshot-0005",
+      "snapshot_id": "snapshot-0005",
+      "version": "v0.3.0",
+      "variant": "only-evidenced-complete-occurrence",
+      "source_artifact_id": "art-44eb3694339abdcb",
+      "state_vector": {
+        "algorithm": {
+          "state": "PRESENT",
+          "status": "SUPPORTED"
+        },
+        "architecture": {
+          "state": "CANDIDATE_CENTRIC_PIPELINE",
+          "status": "SUPPORTED"
+        },
+        "contracts": {
+          "state": "UNKNOWN",
+          "status": "UNKNOWN",
+          "reason": "Protocol-v7 contract outputs are absent; source shapes are not upgraded into validated contracts"
+        },
+        "data": {
+          "state": "STRUCTURED",
+          "status": "SUPPORTED",
+          "model_count": 5,
+          "field_count": 34
+        },
+        "execution": {
+          "state": "LIKELY_EXECUTABLE",
+          "status": "SUPPORTED",
+          "historical_runtime": "UNKNOWN"
+        },
+        "concurrency": {
+          "state": "EXPLICIT",
+          "status": "SUPPORTED"
+        },
+        "providers": {
+          "state": "MULTI_PROVIDER",
+          "status": "SUPPORTED",
+          "count": 4
+        },
+        "provenance": {
+          "state": "EXPLICIT",
+          "status": "SUPPORTED"
+        },
+        "failure": {
+          "state": "EXPLICIT_HANDLING_PRESENT",
+          "status": "SUPPORTED",
+          "event_count": 12
+        },
+        "security": {
+          "state": "MECHANISMS_NOT_GUARANTEES",
+          "status": "SUPPORTED",
+          "trust_boundary_count": 12,
+          "authority_count": 7
+        },
+        "observability": {
+          "state": "OBSERVATION_CENTRIC",
+          "status": "SUPPORTED"
+        },
+        "validation": {
+          "state": "STATIC_ONLY",
+          "status": "SUPPORTED",
+          "historical_tests": "UNKNOWN"
+        }
+      },
+      "resource_bound_count": 6,
+      "parser_boundary_count": 3,
+      "evidence_refs": [
+        "syn-ev-00028",
+        "syn-ev-00029",
+        "syn-ev-00030",
+        "syn-ev-00031",
+        "syn-ev-00032",
+        "syn-ev-00033",
+        "syn-ev-00034",
+        "syn-ev-00035",
+        "syn-ev-00036",
+        "syn-ev-00037",
+        "syn-ev-00038",
+        "syn-ev-00039",
+        "syn-ev-00040",
+        "syn-ev-00041",
+        "syn-ev-00042"
+      ],
+      "confidence": "SUPPORTED",
+      "acceptance_caveat": "V1_FAILED_V4_V7_MISSING"
+    },
+    {
+      "state_id": "state-snapshot-0006",
+      "snapshot_id": "snapshot-0006",
+      "version": "v0.4.0",
+      "variant": "variant-a",
+      "source_artifact_id": "art-deb961ea9f622d3a",
+      "state_vector": {
+        "algorithm": {
+          "state": "PRESENT",
+          "status": "SUPPORTED"
+        },
+        "architecture": {
+          "state": "CANDIDATE_CENTRIC_PIPELINE",
+          "status": "SUPPORTED"
+        },
+        "contracts": {
+          "state": "UNKNOWN",
+          "status": "UNKNOWN",
+          "reason": "Protocol-v7 contract outputs are absent; source shapes are not upgraded into validated contracts"
+        },
+        "data": {
+          "state": "STRUCTURED",
+          "status": "SUPPORTED",
+          "model_count": 5,
+          "field_count": 38
+        },
+        "execution": {
+          "state": "LIKELY_EXECUTABLE",
+          "status": "SUPPORTED",
+          "historical_runtime": "UNKNOWN"
+        },
+        "concurrency": {
+          "state": "EXPLICIT",
+          "status": "SUPPORTED"
+        },
+        "providers": {
+          "state": "MULTI_PROVIDER",
+          "status": "SUPPORTED",
+          "count": 6
+        },
+        "provenance": {
+          "state": "EXPLICIT",
+          "status": "SUPPORTED"
+        },
+        "failure": {
+          "state": "EXPLICIT_HANDLING_PRESENT",
+          "status": "SUPPORTED",
+          "event_count": 18
+        },
+        "security": {
+          "state": "MECHANISMS_NOT_GUARANTEES",
+          "status": "SUPPORTED",
+          "trust_boundary_count": 12,
+          "authority_count": 7
+        },
+        "observability": {
+          "state": "OBSERVATION_CENTRIC",
+          "status": "SUPPORTED"
+        },
+        "validation": {
+          "state": "STATIC_ONLY",
+          "status": "SUPPORTED",
+          "historical_tests": "UNKNOWN"
+        }
+      },
+      "resource_bound_count": 7,
+      "parser_boundary_count": 4,
+      "evidence_refs": [
+        "syn-ev-00043",
+        "syn-ev-00044",
+        "syn-ev-00045",
+        "syn-ev-00046",
+        "syn-ev-00047",
+        "syn-ev-00048",
+        "syn-ev-00049",
+        "syn-ev-00050",
+        "syn-ev-00051",
+        "syn-ev-00052",
+        "syn-ev-00053",
+        "syn-ev-00054",
+        "syn-ev-00055",
+        "syn-ev-00056",
+        "syn-ev-00057"
+      ],
+      "confidence": "SUPPORTED",
+      "acceptance_caveat": "V1_FAILED_V4_V7_MISSING"
+    },
+    {
+      "state_id": "state-snapshot-0008",
+      "snapshot_id": "snapshot-0008",
+      "version": "v0.4.0",
+      "variant": "variant-b",
+      "source_artifact_id": "art-c19ebb3956fba19c",
+      "state_vector": {
+        "algorithm": {
+          "state": "PRESENT",
+          "status": "SUPPORTED"
+        },
+        "architecture": {
+          "state": "CANDIDATE_CENTRIC_PIPELINE",
+          "status": "SUPPORTED"
+        },
+        "contracts": {
+          "state": "UNKNOWN",
+          "status": "UNKNOWN",
+          "reason": "Protocol-v7 contract outputs are absent; source shapes are not upgraded into validated contracts"
+        },
+        "data": {
+          "state": "STRUCTURED",
+          "status": "SUPPORTED",
+          "model_count": 5,
+          "field_count": 37
+        },
+        "execution": {
+          "state": "LIKELY_EXECUTABLE",
+          "status": "SUPPORTED",
+          "historical_runtime": "UNKNOWN"
+        },
+        "concurrency": {
+          "state": "EXPLICIT",
+          "status": "SUPPORTED"
+        },
+        "providers": {
+          "state": "MULTI_PROVIDER",
+          "status": "SUPPORTED",
+          "count": 8
+        },
+        "provenance": {
+          "state": "EXPLICIT",
+          "status": "SUPPORTED"
+        },
+        "failure": {
+          "state": "EXPLICIT_HANDLING_PRESENT",
+          "status": "SUPPORTED",
+          "event_count": 22
+        },
+        "security": {
+          "state": "MECHANISMS_NOT_GUARANTEES",
+          "status": "SUPPORTED",
+          "trust_boundary_count": 12,
+          "authority_count": 7
+        },
+        "observability": {
+          "state": "NETWORK_OBSERVATION",
+          "status": "SUPPORTED"
+        },
+        "validation": {
+          "state": "STATIC_ONLY",
+          "status": "SUPPORTED",
+          "historical_tests": "UNKNOWN"
+        }
+      },
+      "resource_bound_count": 9,
+      "parser_boundary_count": 4,
+      "evidence_refs": [
+        "syn-ev-00058",
+        "syn-ev-00059",
+        "syn-ev-00060",
+        "syn-ev-00061",
+        "syn-ev-00062",
+        "syn-ev-00063",
+        "syn-ev-00064",
+        "syn-ev-00065",
+        "syn-ev-00066",
+        "syn-ev-00067",
+        "syn-ev-00068",
+        "syn-ev-00069",
+        "syn-ev-00070",
+        "syn-ev-00071",
+        "syn-ev-00072",
+        "syn-ev-00073"
+      ],
+      "confidence": "SUPPORTED",
+      "acceptance_caveat": "V1_FAILED_V4_V7_MISSING"
+    },
+    {
+      "state_id": "state-snapshot-0007",
+      "snapshot_id": "snapshot-0007",
+      "version": "v0.5.0",
+      "variant": "variant-a",
+      "source_artifact_id": "art-2c6f74909f301798",
+      "state_vector": {
+        "algorithm": {
+          "state": "PRESENT",
+          "status": "SUPPORTED"
+        },
+        "architecture": {
+          "state": "CANDIDATE_CENTRIC_PIPELINE",
+          "status": "SUPPORTED"
+        },
+        "contracts": {
+          "state": "UNKNOWN",
+          "status": "UNKNOWN",
+          "reason": "Protocol-v7 contract outputs are absent; source shapes are not upgraded into validated contracts"
+        },
+        "data": {
+          "state": "STRUCTURED",
+          "status": "SUPPORTED",
+          "model_count": 5,
+          "field_count": 39
+        },
+        "execution": {
+          "state": "LIKELY_EXECUTABLE",
+          "status": "SUPPORTED",
+          "historical_runtime": "UNKNOWN"
+        },
+        "concurrency": {
+          "state": "EXPLICIT",
+          "status": "SUPPORTED"
+        },
+        "providers": {
+          "state": "MULTI_PROVIDER",
+          "status": "SUPPORTED",
+          "count": 8
+        },
+        "provenance": {
+          "state": "EXPLICIT",
+          "status": "SUPPORTED"
+        },
+        "failure": {
+          "state": "EXPLICIT_HANDLING_PRESENT",
+          "status": "SUPPORTED",
+          "event_count": 28
+        },
+        "security": {
+          "state": "MECHANISMS_NOT_GUARANTEES",
+          "status": "SUPPORTED",
+          "trust_boundary_count": 12,
+          "authority_count": 7
+        },
+        "observability": {
+          "state": "NETWORK_OBSERVATION",
+          "status": "SUPPORTED"
+        },
+        "validation": {
+          "state": "STATIC_ONLY",
+          "status": "SUPPORTED",
+          "historical_tests": "UNKNOWN"
+        }
+      },
+      "resource_bound_count": 11,
+      "parser_boundary_count": 4,
+      "evidence_refs": [
+        "syn-ev-00074",
+        "syn-ev-00075",
+        "syn-ev-00076",
+        "syn-ev-00077",
+        "syn-ev-00078",
+        "syn-ev-00079",
+        "syn-ev-00080",
+        "syn-ev-00081",
+        "syn-ev-00082",
+        "syn-ev-00083",
+        "syn-ev-00084",
+        "syn-ev-00085",
+        "syn-ev-00086",
+        "syn-ev-00087",
+        "syn-ev-00088",
+        "syn-ev-00089"
+      ],
+      "confidence": "SUPPORTED",
+      "acceptance_caveat": "V1_FAILED_V4_V7_MISSING"
+    },
+    {
+      "state_id": "state-snapshot-0009",
+      "snapshot_id": "snapshot-0009",
+      "version": "v0.5.0",
+      "variant": "variant-b",
+      "source_artifact_id": "art-fbebfdf9a3874c18",
+      "state_vector": {
+        "algorithm": {
+          "state": "PRESENT",
+          "status": "SUPPORTED"
+        },
+        "architecture": {
+          "state": "CANDIDATE_CENTRIC_PIPELINE",
+          "status": "SUPPORTED"
+        },
+        "contracts": {
+          "state": "UNKNOWN",
+          "status": "UNKNOWN",
+          "reason": "Protocol-v7 contract outputs are absent; source shapes are not upgraded into validated contracts"
+        },
+        "data": {
+          "state": "STRUCTURED",
+          "status": "SUPPORTED",
+          "model_count": 5,
+          "field_count": 38
+        },
+        "execution": {
+          "state": "NON_EXECUTABLE",
+          "status": "SUPPORTED",
+          "historical_runtime": "UNKNOWN"
+        },
+        "concurrency": {
+          "state": "EXPLICIT",
+          "status": "SUPPORTED"
+        },
+        "providers": {
+          "state": "MULTI_PROVIDER",
+          "status": "SUPPORTED",
+          "count": 8
+        },
+        "provenance": {
+          "state": "EXPLICIT",
+          "status": "SUPPORTED"
+        },
+        "failure": {
+          "state": "EXPLICIT_HANDLING_PRESENT",
+          "status": "SUPPORTED",
+          "event_count": 19
+        },
+        "security": {
+          "state": "MECHANISMS_NOT_GUARANTEES",
+          "status": "SUPPORTED",
+          "trust_boundary_count": 12,
+          "authority_count": 7
+        },
+        "observability": {
+          "state": "NETWORK_OBSERVATION",
+          "status": "SUPPORTED"
+        },
+        "validation": {
+          "state": "STATIC_PARSE_FAIL",
+          "status": "SUPPORTED",
+          "historical_tests": "UNKNOWN"
+        }
+      },
+      "resource_bound_count": 10,
+      "parser_boundary_count": 4,
+      "evidence_refs": [
+        "syn-ev-00090",
+        "syn-ev-00091",
+        "syn-ev-00092",
+        "syn-ev-00093",
+        "syn-ev-00094",
+        "syn-ev-00095",
+        "syn-ev-00096",
+        "syn-ev-00097",
+        "syn-ev-00098",
+        "syn-ev-00099",
+        "syn-ev-00100",
+        "syn-ev-00101",
+        "syn-ev-00102",
+        "syn-ev-00103"
+      ],
+      "confidence": "SUPPORTED",
+      "acceptance_caveat": "V1_FAILED_V4_V7_MISSING"
+    },
+    {
+      "state_id": "state-snapshot-0011",
+      "snapshot_id": "snapshot-0011",
+      "version": "v0.5.0",
+      "variant": "variant-c",
+      "source_artifact_id": "art-f019277e6c28e8f5",
+      "state_vector": {
+        "algorithm": {
+          "state": "PRESENT",
+          "status": "SUPPORTED"
+        },
+        "architecture": {
+          "state": "CANDIDATE_CENTRIC_PIPELINE",
+          "status": "SUPPORTED"
+        },
+        "contracts": {
+          "state": "UNKNOWN",
+          "status": "UNKNOWN",
+          "reason": "Protocol-v7 contract outputs are absent; source shapes are not upgraded into validated contracts"
+        },
+        "data": {
+          "state": "STRUCTURED",
+          "status": "SUPPORTED",
+          "model_count": 6,
+          "field_count": 57
+        },
+        "execution": {
+          "state": "LIKELY_EXECUTABLE",
+          "status": "SUPPORTED",
+          "historical_runtime": "UNKNOWN"
+        },
+        "concurrency": {
+          "state": "EXPLICIT",
+          "status": "SUPPORTED"
+        },
+        "providers": {
+          "state": "MULTI_PROVIDER",
+          "status": "SUPPORTED",
+          "count": 10
+        },
+        "provenance": {
+          "state": "EXPLICIT",
+          "status": "SUPPORTED"
+        },
+        "failure": {
+          "state": "EXPLICIT_HANDLING_PRESENT",
+          "status": "SUPPORTED",
+          "event_count": 23
+        },
+        "security": {
+          "state": "MECHANISMS_NOT_GUARANTEES",
+          "status": "SUPPORTED",
+          "trust_boundary_count": 12,
+          "authority_count": 7
+        },
+        "observability": {
+          "state": "NETWORK_OBSERVATION",
+          "status": "SUPPORTED"
+        },
+        "validation": {
+          "state": "STATIC_ONLY",
+          "status": "SUPPORTED",
+          "historical_tests": "UNKNOWN"
+        }
+      },
+      "resource_bound_count": 14,
+      "parser_boundary_count": 3,
+      "evidence_refs": [
+        "syn-ev-00104",
+        "syn-ev-00105",
+        "syn-ev-00106",
+        "syn-ev-00107",
+        "syn-ev-00108",
+        "syn-ev-00109",
+        "syn-ev-00110",
+        "syn-ev-00111",
+        "syn-ev-00112",
+        "syn-ev-00113",
+        "syn-ev-00114",
+        "syn-ev-00115",
+        "syn-ev-00116",
+        "syn-ev-00117",
+        "syn-ev-00118",
+        "syn-ev-00119"
+      ],
+      "confidence": "SUPPORTED",
+      "acceptance_caveat": "V1_FAILED_V4_V7_MISSING"
+    },
+    {
+      "state_id": "state-snapshot-0010",
+      "snapshot_id": "snapshot-0010",
+      "version": "v0.6.0",
+      "variant": "variant-a",
+      "source_artifact_id": "art-b1368ed9b372a6a6",
+      "state_vector": {
+        "algorithm": {
+          "state": "PRESENT",
+          "status": "SUPPORTED"
+        },
+        "architecture": {
+          "state": "CANDIDATE_CENTRIC_PIPELINE",
+          "status": "SUPPORTED"
+        },
+        "contracts": {
+          "state": "UNKNOWN",
+          "status": "UNKNOWN",
+          "reason": "Protocol-v7 contract outputs are absent; source shapes are not upgraded into validated contracts"
+        },
+        "data": {
+          "state": "STRUCTURED",
+          "status": "SUPPORTED",
+          "model_count": 5,
+          "field_count": 52
+        },
+        "execution": {
+          "state": "LIKELY_EXECUTABLE",
+          "status": "SUPPORTED",
+          "historical_runtime": "UNKNOWN"
+        },
+        "concurrency": {
+          "state": "EXPLICIT",
+          "status": "SUPPORTED"
+        },
+        "providers": {
+          "state": "MULTI_PROVIDER",
+          "status": "SUPPORTED",
+          "count": 9
+        },
+        "provenance": {
+          "state": "EXPLICIT",
+          "status": "SUPPORTED"
+        },
+        "failure": {
+          "state": "EXPLICIT_HANDLING_PRESENT",
+          "status": "SUPPORTED",
+          "event_count": 15
+        },
+        "security": {
+          "state": "MECHANISMS_NOT_GUARANTEES",
+          "status": "SUPPORTED",
+          "trust_boundary_count": 12,
+          "authority_count": 7
+        },
+        "observability": {
+          "state": "NETWORK_OBSERVATION",
+          "status": "SUPPORTED"
+        },
+        "validation": {
+          "state": "STATIC_ONLY",
+          "status": "SUPPORTED",
+          "historical_tests": "UNKNOWN"
+        }
+      },
+      "resource_bound_count": 13,
+      "parser_boundary_count": 3,
+      "evidence_refs": [
+        "syn-ev-00120",
+        "syn-ev-00121",
+        "syn-ev-00122",
+        "syn-ev-00123",
+        "syn-ev-00124",
+        "syn-ev-00125",
+        "syn-ev-00126",
+        "syn-ev-00127",
+        "syn-ev-00128",
+        "syn-ev-00129",
+        "syn-ev-00130",
+        "syn-ev-00131",
+        "syn-ev-00132",
+        "syn-ev-00133"
+      ],
+      "confidence": "SUPPORTED",
+      "acceptance_caveat": "V1_FAILED_V4_V7_MISSING"
+    },
+    {
+      "state_id": "state-snapshot-0012",
+      "snapshot_id": "snapshot-0012",
+      "version": "v0.6.0",
+      "variant": "variant-b",
+      "source_artifact_id": "art-3680c60f0bc39673",
+      "state_vector": {
+        "algorithm": {
+          "state": "PRESENT",
+          "status": "SUPPORTED"
+        },
+        "architecture": {
+          "state": "CANDIDATE_CENTRIC_PIPELINE",
+          "status": "SUPPORTED"
+        },
+        "contracts": {
+          "state": "UNKNOWN",
+          "status": "UNKNOWN",
+          "reason": "Protocol-v7 contract outputs are absent; source shapes are not upgraded into validated contracts"
+        },
+        "data": {
+          "state": "STRUCTURED",
+          "status": "SUPPORTED",
+          "model_count": 6,
+          "field_count": 60
+        },
+        "execution": {
+          "state": "LIKELY_EXECUTABLE",
+          "status": "SUPPORTED",
+          "historical_runtime": "UNKNOWN"
+        },
+        "concurrency": {
+          "state": "EXPLICIT",
+          "status": "SUPPORTED"
+        },
+        "providers": {
+          "state": "MULTI_PROVIDER",
+          "status": "SUPPORTED",
+          "count": 10
+        },
+        "provenance": {
+          "state": "EXPLICIT",
+          "status": "SUPPORTED"
+        },
+        "failure": {
+          "state": "EXPLICIT_HANDLING_PRESENT",
+          "status": "SUPPORTED",
+          "event_count": 24
+        },
+        "security": {
+          "state": "MECHANISMS_NOT_GUARANTEES",
+          "status": "SUPPORTED",
+          "trust_boundary_count": 12,
+          "authority_count": 7
+        },
+        "observability": {
+          "state": "STRUCTURED_DIAGNOSTICS",
+          "status": "SUPPORTED"
+        },
+        "validation": {
+          "state": "STATIC_ONLY",
+          "status": "SUPPORTED",
+          "historical_tests": "UNKNOWN"
+        }
+      },
+      "resource_bound_count": 16,
+      "parser_boundary_count": 3,
+      "evidence_refs": [
+        "syn-ev-00134",
+        "syn-ev-00135",
+        "syn-ev-00136",
+        "syn-ev-00137",
+        "syn-ev-00138",
+        "syn-ev-00139",
+        "syn-ev-00140",
+        "syn-ev-00141",
+        "syn-ev-00142",
+        "syn-ev-00143",
+        "syn-ev-00144",
+        "syn-ev-00145",
+        "syn-ev-00146",
+        "syn-ev-00147",
+        "syn-ev-00148",
+        "syn-ev-00149",
+        "syn-ev-00150",
+        "syn-ev-00151"
+      ],
+      "confidence": "SUPPORTED",
+      "acceptance_caveat": "V1_FAILED_V4_V7_MISSING"
+    },
+    {
+      "state_id": "state-snapshot-0013",
+      "snapshot_id": "snapshot-0013",
+      "version": "v0.6.0",
+      "variant": "variant-c",
+      "source_artifact_id": "art-33fa8de51e13e087",
+      "state_vector": {
+        "algorithm": {
+          "state": "PRESENT",
+          "status": "SUPPORTED"
+        },
+        "architecture": {
+          "state": "CANDIDATE_CENTRIC_PIPELINE",
+          "status": "SUPPORTED"
+        },
+        "contracts": {
+          "state": "UNKNOWN",
+          "status": "UNKNOWN",
+          "reason": "Protocol-v7 contract outputs are absent; source shapes are not upgraded into validated contracts"
+        },
+        "data": {
+          "state": "STRUCTURED",
+          "status": "SUPPORTED",
+          "model_count": 5,
+          "field_count": 61
+        },
+        "execution": {
+          "state": "LIKELY_EXECUTABLE",
+          "status": "SUPPORTED",
+          "historical_runtime": "UNKNOWN"
+        },
+        "concurrency": {
+          "state": "EXPLICIT",
+          "status": "SUPPORTED"
+        },
+        "providers": {
+          "state": "MULTI_PROVIDER",
+          "status": "SUPPORTED",
+          "count": 10
+        },
+        "provenance": {
+          "state": "EXPLICIT",
+          "status": "SUPPORTED"
+        },
+        "failure": {
+          "state": "EXPLICIT_HANDLING_PRESENT",
+          "status": "SUPPORTED",
+          "event_count": 14
+        },
+        "security": {
+          "state": "MECHANISMS_NOT_GUARANTEES",
+          "status": "SUPPORTED",
+          "trust_boundary_count": 12,
+          "authority_count": 7
+        },
+        "observability": {
+          "state": "STRUCTURED_DIAGNOSTICS",
+          "status": "SUPPORTED"
+        },
+        "validation": {
+          "state": "STATIC_ONLY",
+          "status": "SUPPORTED",
+          "historical_tests": "UNKNOWN"
+        }
+      },
+      "resource_bound_count": 17,
+      "parser_boundary_count": 3,
+      "evidence_refs": [
+        "syn-ev-00152",
+        "syn-ev-00153",
+        "syn-ev-00154",
+        "syn-ev-00155",
+        "syn-ev-00156",
+        "syn-ev-00157",
+        "syn-ev-00158",
+        "syn-ev-00159",
+        "syn-ev-00160",
+        "syn-ev-00161",
+        "syn-ev-00162",
+        "syn-ev-00163",
+        "syn-ev-00164",
+        "syn-ev-00165",
+        "syn-ev-00166",
+        "syn-ev-00167",
+        "syn-ev-00168",
+        "syn-ev-00169"
+      ],
+      "confidence": "SUPPORTED",
+      "acceptance_caveat": "V1_FAILED_V4_V7_MISSING"
+    },
+    {
+      "state_id": "state-snapshot-0014",
+      "snapshot_id": "snapshot-0014",
+      "version": "v0.7.1",
+      "variant": "only-evidenced-complete-occurrence",
+      "source_artifact_id": "art-e0789bc8f62176cb",
+      "state_vector": {
+        "algorithm": {
+          "state": "PRESENT",
+          "status": "SUPPORTED"
+        },
+        "architecture": {
+          "state": "CANDIDATE_CENTRIC_PIPELINE",
+          "status": "SUPPORTED"
+        },
+        "contracts": {
+          "state": "UNKNOWN",
+          "status": "UNKNOWN",
+          "reason": "Protocol-v7 contract outputs are absent; source shapes are not upgraded into validated contracts"
+        },
+        "data": {
+          "state": "STRUCTURED",
+          "status": "SUPPORTED",
+          "model_count": 5,
+          "field_count": 64
+        },
+        "execution": {
+          "state": "LIKELY_EXECUTABLE",
+          "status": "SUPPORTED",
+          "historical_runtime": "UNKNOWN"
+        },
+        "concurrency": {
+          "state": "EXPLICIT",
+          "status": "SUPPORTED"
+        },
+        "providers": {
+          "state": "MULTI_PROVIDER",
+          "status": "SUPPORTED",
+          "count": 8
+        },
+        "provenance": {
+          "state": "EXPLICIT",
+          "status": "SUPPORTED"
+        },
+        "failure": {
+          "state": "EXPLICIT_HANDLING_PRESENT",
+          "status": "SUPPORTED",
+          "event_count": 16
+        },
+        "security": {
+          "state": "MECHANISMS_NOT_GUARANTEES",
+          "status": "SUPPORTED",
+          "trust_boundary_count": 12,
+          "authority_count": 7
+        },
+        "observability": {
+          "state": "DECISION_LEDGER_AND_DIAGNOSTICS",
+          "status": "SUPPORTED"
+        },
+        "validation": {
+          "state": "STATIC_ONLY",
+          "status": "SUPPORTED",
+          "historical_tests": "UNKNOWN"
+        }
+      },
+      "resource_bound_count": 17,
+      "parser_boundary_count": 4,
+      "evidence_refs": [
+        "syn-ev-00170",
+        "syn-ev-00171",
+        "syn-ev-00172",
+        "syn-ev-00173",
+        "syn-ev-00174",
+        "syn-ev-00175",
+        "syn-ev-00176",
+        "syn-ev-00177",
+        "syn-ev-00178",
+        "syn-ev-00179",
+        "syn-ev-00180",
+        "syn-ev-00181",
+        "syn-ev-00182",
+        "syn-ev-00183",
+        "syn-ev-00184",
+        "syn-ev-00185",
+        "syn-ev-00186",
+        "syn-ev-00187",
+        "syn-ev-00188",
+        "syn-ev-00189"
+      ],
+      "confidence": "SUPPORTED",
+      "acceptance_caveat": "V1_FAILED_V4_V7_MISSING"
+    }
+  ]
+}

@@ -1,0 +1,84 @@
+                 ┌──────────────────────┐
+                 │      SOURCES         │
+                 │ DOM / HTML / Network │
+                 │ JSON / XML / CSS     │
+                 └──────────┬───────────┘
+                            │
+                            ▼
+                 ┌──────────────────────┐
+                 │      DISCOVERY       │
+                 │                      │
+                 │ URL + type + hints   │
+                 │ confidence           │
+                 │ provenance           │
+                 └──────────┬───────────┘
+                            │
+                            ▼
+                 ┌──────────────────────┐
+                 │   KNOWLEDGE GRAPH    │
+                 │                      │
+                 │ candidates           │
+                 │ resources            │
+                 │ observations         │
+                 │ edges                │
+                 └──────────┬───────────┘
+                            │
+                            ▼
+                 ┌──────────────────────┐
+                 │   ACQUISITION POLICY │
+                 │                      │
+                 │ method               │
+                 │ scope                │
+                 │ type                 │
+                 │ depth                │
+                 │ capabilities         │
+                 └──────────┬───────────┘
+                            │
+                            ▼
+                 ┌──────────────────────┐
+                 │  ACQUISITION PLAN    │
+                 │                      │
+                 │ allowed              │
+                 │ reason               │
+                 │ priority             │
+                 │ policyVersion        │
+                 │ expectedType         │
+                 └──────────┬───────────┘
+                            │
+                            ▼
+                 ┌──────────────────────┐
+                 │      SCHEDULER       │
+                 │                      │
+                 │ priority             │
+                 │ budget               │
+                 │ concurrency          │
+                 │ origin limits        │
+                 └──────────┬───────────┘
+                            │
+                            ▼
+                 ┌──────────────────────┐
+                 │     ACQUISITION      │
+                 │                      │
+                 │ GET only             │
+                 │ timeout              │
+                 │ origin control       │
+                 └──────────┬───────────┘
+                            │
+                            ▼
+                 ┌──────────────────────┐
+                 │     OBSERVATION      │
+                 │                      │
+                 │ status               │
+                 │ headers              │
+                 │ body                 │
+                 │ fingerprint          │
+                 └──────────┬───────────┘
+                            │
+                            ▼
+                 ┌──────────────────────┐
+                 │     PROVIDERS        │
+                 │                      │
+                 │ HTML JSON XML CSS JS │
+                 └──────────┬───────────┘
+                            │
+                            └──────────────► DISCOVERY

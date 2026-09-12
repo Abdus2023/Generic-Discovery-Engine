@@ -1,0 +1,39 @@
+                         DISCOVERY DOMAIN
+                                │
+                                ▼
+                          SCAN SESSION
+                                │
+                                ▼
+                        FRONTIER RUNTIME
+                                │
+                                ▼
+                            WORK ITEM
+                                │
+                    ┌───────────┴───────────┐
+                    ▼                       ▼
+              DISCOVERY WORK         ACQUISITION WORK
+                    │                       │
+                    ▼                       ▼
+          DISCOVERY CONTROLLER      ACQUISITION RUNTIME
+                    │                       │
+                    ▼                       ▼
+             CANDIDATE SOURCE        ACQUISITION PROVIDER
+                    │                       │
+                    ▼                       ▼
+               PROPOSAL                 OBSERVATION
+                    │                       │
+                    ▼                       ▼
+               CANDIDATE           RECOGNITION RUNTIME
+                    │                       │
+                    └──────────┬────────────┘
+                               ▼
+                           EVIDENCE
+                               │
+                               ▼
+                             CLAIM
+                               │
+                               ▼
+                           RESOURCE
+                               │
+                               ▼
+                        KNOWLEDGE GRAPH

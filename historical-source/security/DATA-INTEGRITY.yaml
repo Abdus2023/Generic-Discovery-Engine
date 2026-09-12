@@ -1,0 +1,1534 @@
+{
+  "schema_version": 8,
+  "builder": "security-archaeology-builder-v8",
+  "model_kind": "DERIVED_SECURITY_ARCHAEOLOGY_NOT_SOURCE",
+  "conditions": [
+    {
+      "integrity_id": "integrity-91a03f702bba9643",
+      "snapshot_id": "snapshot-0001",
+      "version": "v0.1.0",
+      "variant": "mechanically-composed",
+      "condition": "orphaned observations",
+      "classification": "POSSIBLE",
+      "scope": "RECOVERED_STATIC_PATHS",
+      "caveat": "No foreign-key enforcement is evidenced.",
+      "runtime_failure_observed": false,
+      "evidence": [
+        "security-ev-0e4926c2a7c3ea9d"
+      ]
+    },
+    {
+      "integrity_id": "integrity-8ba2e2d26ced32d3",
+      "snapshot_id": "snapshot-0001",
+      "version": "v0.1.0",
+      "variant": "mechanically-composed",
+      "condition": "orphaned discoveries",
+      "classification": "POSSIBLE",
+      "scope": "RECOVERED_STATIC_PATHS",
+      "caveat": "Identifiers are stored but referential enforcement is not proved.",
+      "runtime_failure_observed": false,
+      "evidence": [
+        "security-ev-518f7612799c2070"
+      ]
+    },
+    {
+      "integrity_id": "integrity-59d2634e867808d2",
+      "snapshot_id": "snapshot-0001",
+      "version": "v0.1.0",
+      "variant": "mechanically-composed",
+      "condition": "duplicate candidates",
+      "classification": "PREVENTED",
+      "scope": "RECOVERED_STATIC_PATHS",
+      "caveat": "Local key/visited path only.",
+      "runtime_failure_observed": false,
+      "evidence": [
+        "security-ev-8af866b795e522ac",
+        "security-ev-3ee2a2e956067025"
+      ]
+    },
+    {
+      "integrity_id": "integrity-faa6426ae1d7b6a3",
+      "snapshot_id": "snapshot-0001",
+      "version": "v0.1.0",
+      "variant": "mechanically-composed",
+      "condition": "lost provenance",
+      "classification": "POSSIBLE",
+      "scope": "RECOVERED_STATIC_PATHS",
+      "caveat": "Presence of fields does not guarantee preservation at every boundary.",
+      "runtime_failure_observed": false,
+      "evidence": [
+        "security-ev-d06f6eaf13c84548",
+        "security-ev-5add7bf434002ac1"
+      ]
+    },
+    {
+      "integrity_id": "integrity-003e646b6dc0aa8f",
+      "snapshot_id": "snapshot-0001",
+      "version": "v0.1.0",
+      "variant": "mechanically-composed",
+      "condition": "partial records",
+      "classification": "POSSIBLE",
+      "scope": "RECOVERED_STATIC_PATHS",
+      "caveat": "Incremental mutable object construction and persistence are present.",
+      "runtime_failure_observed": false,
+      "evidence": [
+        "security-ev-35eac11aafcc5be4"
+      ]
+    },
+    {
+      "integrity_id": "integrity-264c9d7cf619acea",
+      "snapshot_id": "snapshot-0001",
+      "version": "v0.1.0",
+      "variant": "mechanically-composed",
+      "condition": "inconsistent status",
+      "classification": "POSSIBLE",
+      "scope": "RECOVERED_STATIC_PATHS",
+      "caveat": "Multiple mutation paths; no exhaustive state machine verification.",
+      "runtime_failure_observed": false,
+      "evidence": [
+        "security-ev-1282c6db0a8b6ae0"
+      ]
+    },
+    {
+      "integrity_id": "integrity-957bf0d6bb301f3c",
+      "snapshot_id": "snapshot-0001",
+      "version": "v0.1.0",
+      "variant": "mechanically-composed",
+      "condition": "stale claims",
+      "classification": "POSSIBLE",
+      "scope": "RECOVERED_STATIC_PATHS",
+      "caveat": "Only handled completion/failure paths are covered.",
+      "runtime_failure_observed": false,
+      "evidence": [
+        "security-absence-f247455ad45b5a6c"
+      ]
+    },
+    {
+      "integrity_id": "integrity-048ac568f561f8f8",
+      "snapshot_id": "snapshot-0003",
+      "version": "v0.2.0",
+      "variant": "mechanically-composed",
+      "condition": "orphaned observations",
+      "classification": "POSSIBLE",
+      "scope": "RECOVERED_STATIC_PATHS",
+      "caveat": "No foreign-key enforcement is evidenced.",
+      "runtime_failure_observed": false,
+      "evidence": [
+        "security-ev-e3ecb0e0baf0687b"
+      ]
+    },
+    {
+      "integrity_id": "integrity-df5cacbc319ea609",
+      "snapshot_id": "snapshot-0003",
+      "version": "v0.2.0",
+      "variant": "mechanically-composed",
+      "condition": "orphaned discoveries",
+      "classification": "POSSIBLE",
+      "scope": "RECOVERED_STATIC_PATHS",
+      "caveat": "Identifiers are stored but referential enforcement is not proved.",
+      "runtime_failure_observed": false,
+      "evidence": [
+        "security-ev-a77907e115049300"
+      ]
+    },
+    {
+      "integrity_id": "integrity-0548793550863a71",
+      "snapshot_id": "snapshot-0003",
+      "version": "v0.2.0",
+      "variant": "mechanically-composed",
+      "condition": "duplicate candidates",
+      "classification": "PREVENTED",
+      "scope": "RECOVERED_STATIC_PATHS",
+      "caveat": "Local key/visited path only.",
+      "runtime_failure_observed": false,
+      "evidence": [
+        "security-ev-0590f50feb5e617d",
+        "security-ev-92d9e9915edcc531",
+        "security-ev-6e9638b8c4e6d9b3"
+      ]
+    },
+    {
+      "integrity_id": "integrity-91eb9cb032195dbb",
+      "snapshot_id": "snapshot-0003",
+      "version": "v0.2.0",
+      "variant": "mechanically-composed",
+      "condition": "lost provenance",
+      "classification": "POSSIBLE",
+      "scope": "RECOVERED_STATIC_PATHS",
+      "caveat": "Presence of fields does not guarantee preservation at every boundary.",
+      "runtime_failure_observed": false,
+      "evidence": [
+        "security-ev-23eb82c518554e25",
+        "security-ev-dfacb3e73cc14caa"
+      ]
+    },
+    {
+      "integrity_id": "integrity-e2be7733a31013c6",
+      "snapshot_id": "snapshot-0003",
+      "version": "v0.2.0",
+      "variant": "mechanically-composed",
+      "condition": "partial records",
+      "classification": "POSSIBLE",
+      "scope": "RECOVERED_STATIC_PATHS",
+      "caveat": "Incremental mutable object construction and persistence are present.",
+      "runtime_failure_observed": false,
+      "evidence": [
+        "security-ev-68125ccfbdd1c0d9"
+      ]
+    },
+    {
+      "integrity_id": "integrity-7e595dd2a54c7ab1",
+      "snapshot_id": "snapshot-0003",
+      "version": "v0.2.0",
+      "variant": "mechanically-composed",
+      "condition": "inconsistent status",
+      "classification": "POSSIBLE",
+      "scope": "RECOVERED_STATIC_PATHS",
+      "caveat": "Multiple mutation paths; no exhaustive state machine verification.",
+      "runtime_failure_observed": false,
+      "evidence": [
+        "security-ev-b4389f5d16a4cc13"
+      ]
+    },
+    {
+      "integrity_id": "integrity-2cf5ea1fb5b80050",
+      "snapshot_id": "snapshot-0003",
+      "version": "v0.2.0",
+      "variant": "mechanically-composed",
+      "condition": "stale claims",
+      "classification": "PREVENTED",
+      "scope": "RECOVERED_STATIC_PATHS",
+      "caveat": "Only handled completion/failure paths are covered.",
+      "runtime_failure_observed": false,
+      "evidence": [
+        "security-ev-2edbfd1d30a21f40",
+        "security-ev-c420f255e02c9133",
+        "security-ev-c4ef2d16cfef0d8b"
+      ]
+    },
+    {
+      "integrity_id": "integrity-061c7e363b5f062c",
+      "snapshot_id": "snapshot-0005",
+      "version": "v0.3.0",
+      "variant": "only-evidenced-complete-occurrence",
+      "condition": "orphaned observations",
+      "classification": "POSSIBLE",
+      "scope": "RECOVERED_STATIC_PATHS",
+      "caveat": "No foreign-key enforcement is evidenced.",
+      "runtime_failure_observed": false,
+      "evidence": [
+        "security-ev-867a5ce9f6d7b287"
+      ]
+    },
+    {
+      "integrity_id": "integrity-35302c45696bb2a4",
+      "snapshot_id": "snapshot-0005",
+      "version": "v0.3.0",
+      "variant": "only-evidenced-complete-occurrence",
+      "condition": "orphaned discoveries",
+      "classification": "POSSIBLE",
+      "scope": "RECOVERED_STATIC_PATHS",
+      "caveat": "Identifiers are stored but referential enforcement is not proved.",
+      "runtime_failure_observed": false,
+      "evidence": [
+        "security-ev-30500c4a90ba0d47"
+      ]
+    },
+    {
+      "integrity_id": "integrity-e1346cf65043b671",
+      "snapshot_id": "snapshot-0005",
+      "version": "v0.3.0",
+      "variant": "only-evidenced-complete-occurrence",
+      "condition": "duplicate candidates",
+      "classification": "PREVENTED",
+      "scope": "RECOVERED_STATIC_PATHS",
+      "caveat": "Local key/visited path only.",
+      "runtime_failure_observed": false,
+      "evidence": [
+        "security-ev-3041f392a8b0367f",
+        "security-ev-88057ef4134c32d1",
+        "security-ev-6419507122220469"
+      ]
+    },
+    {
+      "integrity_id": "integrity-172c374ef72c37f4",
+      "snapshot_id": "snapshot-0005",
+      "version": "v0.3.0",
+      "variant": "only-evidenced-complete-occurrence",
+      "condition": "lost provenance",
+      "classification": "POSSIBLE",
+      "scope": "RECOVERED_STATIC_PATHS",
+      "caveat": "Presence of fields does not guarantee preservation at every boundary.",
+      "runtime_failure_observed": false,
+      "evidence": [
+        "security-ev-8dbff73fe64a4282",
+        "security-ev-69038bf27cfefd6b"
+      ]
+    },
+    {
+      "integrity_id": "integrity-1acd0358d557fcee",
+      "snapshot_id": "snapshot-0005",
+      "version": "v0.3.0",
+      "variant": "only-evidenced-complete-occurrence",
+      "condition": "partial records",
+      "classification": "POSSIBLE",
+      "scope": "RECOVERED_STATIC_PATHS",
+      "caveat": "Incremental mutable object construction and persistence are present.",
+      "runtime_failure_observed": false,
+      "evidence": [
+        "security-ev-a6cbdd16456522bd"
+      ]
+    },
+    {
+      "integrity_id": "integrity-134eb1e8640a2a22",
+      "snapshot_id": "snapshot-0005",
+      "version": "v0.3.0",
+      "variant": "only-evidenced-complete-occurrence",
+      "condition": "inconsistent status",
+      "classification": "POSSIBLE",
+      "scope": "RECOVERED_STATIC_PATHS",
+      "caveat": "Multiple mutation paths; no exhaustive state machine verification.",
+      "runtime_failure_observed": false,
+      "evidence": [
+        "security-ev-277ab7432684224c"
+      ]
+    },
+    {
+      "integrity_id": "integrity-6f30dab0c30970d4",
+      "snapshot_id": "snapshot-0005",
+      "version": "v0.3.0",
+      "variant": "only-evidenced-complete-occurrence",
+      "condition": "stale claims",
+      "classification": "PREVENTED",
+      "scope": "RECOVERED_STATIC_PATHS",
+      "caveat": "Only handled completion/failure paths are covered.",
+      "runtime_failure_observed": false,
+      "evidence": [
+        "security-ev-f3da7d05db853cb3",
+        "security-ev-7f1b04549b616213",
+        "security-ev-440d9662316f2e81"
+      ]
+    },
+    {
+      "integrity_id": "integrity-7855ceaf80b1a13b",
+      "snapshot_id": "snapshot-0006",
+      "version": "v0.4.0",
+      "variant": "variant-a",
+      "condition": "orphaned observations",
+      "classification": "POSSIBLE",
+      "scope": "RECOVERED_STATIC_PATHS",
+      "caveat": "No foreign-key enforcement is evidenced.",
+      "runtime_failure_observed": false,
+      "evidence": [
+        "security-ev-7b138e2d05493dc2"
+      ]
+    },
+    {
+      "integrity_id": "integrity-905bffb730a5c960",
+      "snapshot_id": "snapshot-0006",
+      "version": "v0.4.0",
+      "variant": "variant-a",
+      "condition": "orphaned discoveries",
+      "classification": "POSSIBLE",
+      "scope": "RECOVERED_STATIC_PATHS",
+      "caveat": "Identifiers are stored but referential enforcement is not proved.",
+      "runtime_failure_observed": false,
+      "evidence": [
+        "security-ev-3159e3a9cf499b11"
+      ]
+    },
+    {
+      "integrity_id": "integrity-bace5ce85f50c136",
+      "snapshot_id": "snapshot-0006",
+      "version": "v0.4.0",
+      "variant": "variant-a",
+      "condition": "duplicate candidates",
+      "classification": "PREVENTED",
+      "scope": "RECOVERED_STATIC_PATHS",
+      "caveat": "Local key/visited path only.",
+      "runtime_failure_observed": false,
+      "evidence": [
+        "security-ev-f069b22abf5046f9",
+        "security-ev-e0605d9aa643ecce",
+        "security-ev-d626bf0a259d4487"
+      ]
+    },
+    {
+      "integrity_id": "integrity-9a6a215ab9af2289",
+      "snapshot_id": "snapshot-0006",
+      "version": "v0.4.0",
+      "variant": "variant-a",
+      "condition": "lost provenance",
+      "classification": "POSSIBLE",
+      "scope": "RECOVERED_STATIC_PATHS",
+      "caveat": "Presence of fields does not guarantee preservation at every boundary.",
+      "runtime_failure_observed": false,
+      "evidence": [
+        "security-ev-1e36bace66f2fa5a",
+        "security-ev-18e73ec60dc27d8a"
+      ]
+    },
+    {
+      "integrity_id": "integrity-3ef6dae1fba5c230",
+      "snapshot_id": "snapshot-0006",
+      "version": "v0.4.0",
+      "variant": "variant-a",
+      "condition": "partial records",
+      "classification": "POSSIBLE",
+      "scope": "RECOVERED_STATIC_PATHS",
+      "caveat": "Incremental mutable object construction and persistence are present.",
+      "runtime_failure_observed": false,
+      "evidence": [
+        "security-ev-f2b643f5b369f510"
+      ]
+    },
+    {
+      "integrity_id": "integrity-c1653acc49ebd424",
+      "snapshot_id": "snapshot-0006",
+      "version": "v0.4.0",
+      "variant": "variant-a",
+      "condition": "inconsistent status",
+      "classification": "POSSIBLE",
+      "scope": "RECOVERED_STATIC_PATHS",
+      "caveat": "Multiple mutation paths; no exhaustive state machine verification.",
+      "runtime_failure_observed": false,
+      "evidence": [
+        "security-ev-ed50925aba35efd5"
+      ]
+    },
+    {
+      "integrity_id": "integrity-f6e69ccd1f6266be",
+      "snapshot_id": "snapshot-0006",
+      "version": "v0.4.0",
+      "variant": "variant-a",
+      "condition": "stale claims",
+      "classification": "PREVENTED",
+      "scope": "RECOVERED_STATIC_PATHS",
+      "caveat": "Only handled completion/failure paths are covered.",
+      "runtime_failure_observed": false,
+      "evidence": [
+        "security-ev-27dd07689c764d06",
+        "security-ev-6b8e166c442ea9c2",
+        "security-ev-1fa46a68aa933042"
+      ]
+    },
+    {
+      "integrity_id": "integrity-864c64501cfd5791",
+      "snapshot_id": "snapshot-0008",
+      "version": "v0.4.0",
+      "variant": "variant-b",
+      "condition": "orphaned observations",
+      "classification": "POSSIBLE",
+      "scope": "RECOVERED_STATIC_PATHS",
+      "caveat": "No foreign-key enforcement is evidenced.",
+      "runtime_failure_observed": false,
+      "evidence": [
+        "security-ev-9cc8cde8197caf90"
+      ]
+    },
+    {
+      "integrity_id": "integrity-8c34a0aaedc8c3b9",
+      "snapshot_id": "snapshot-0008",
+      "version": "v0.4.0",
+      "variant": "variant-b",
+      "condition": "orphaned discoveries",
+      "classification": "POSSIBLE",
+      "scope": "RECOVERED_STATIC_PATHS",
+      "caveat": "Identifiers are stored but referential enforcement is not proved.",
+      "runtime_failure_observed": false,
+      "evidence": [
+        "security-ev-d6460f6e659270f4"
+      ]
+    },
+    {
+      "integrity_id": "integrity-37ef5bb094c7305a",
+      "snapshot_id": "snapshot-0008",
+      "version": "v0.4.0",
+      "variant": "variant-b",
+      "condition": "duplicate candidates",
+      "classification": "PREVENTED",
+      "scope": "RECOVERED_STATIC_PATHS",
+      "caveat": "Local key/visited path only.",
+      "runtime_failure_observed": false,
+      "evidence": [
+        "security-ev-dd347b80e971a354",
+        "security-ev-3447bd5bd64ff372",
+        "security-ev-0c7e6b50bd4ddc23"
+      ]
+    },
+    {
+      "integrity_id": "integrity-5e61f5a67b134a54",
+      "snapshot_id": "snapshot-0008",
+      "version": "v0.4.0",
+      "variant": "variant-b",
+      "condition": "lost provenance",
+      "classification": "POSSIBLE",
+      "scope": "RECOVERED_STATIC_PATHS",
+      "caveat": "Presence of fields does not guarantee preservation at every boundary.",
+      "runtime_failure_observed": false,
+      "evidence": [
+        "security-ev-35f9b992b592f126",
+        "security-ev-f2c787dfca9b3d0d"
+      ]
+    },
+    {
+      "integrity_id": "integrity-367ed4f77d86c676",
+      "snapshot_id": "snapshot-0008",
+      "version": "v0.4.0",
+      "variant": "variant-b",
+      "condition": "partial records",
+      "classification": "POSSIBLE",
+      "scope": "RECOVERED_STATIC_PATHS",
+      "caveat": "Incremental mutable object construction and persistence are present.",
+      "runtime_failure_observed": false,
+      "evidence": [
+        "security-ev-6763ff7e567b2f32"
+      ]
+    },
+    {
+      "integrity_id": "integrity-164090756bb2b1d7",
+      "snapshot_id": "snapshot-0008",
+      "version": "v0.4.0",
+      "variant": "variant-b",
+      "condition": "inconsistent status",
+      "classification": "POSSIBLE",
+      "scope": "RECOVERED_STATIC_PATHS",
+      "caveat": "Multiple mutation paths; no exhaustive state machine verification.",
+      "runtime_failure_observed": false,
+      "evidence": [
+        "security-ev-f793660cbcd378a2"
+      ]
+    },
+    {
+      "integrity_id": "integrity-f806c8f727e8a919",
+      "snapshot_id": "snapshot-0008",
+      "version": "v0.4.0",
+      "variant": "variant-b",
+      "condition": "stale claims",
+      "classification": "PREVENTED",
+      "scope": "RECOVERED_STATIC_PATHS",
+      "caveat": "Only handled completion/failure paths are covered.",
+      "runtime_failure_observed": false,
+      "evidence": [
+        "security-ev-3617b08d250e3f16",
+        "security-ev-7f36a4c573eb8527",
+        "security-ev-d91735d861538334"
+      ]
+    },
+    {
+      "integrity_id": "integrity-4daf2c5b62b01732",
+      "snapshot_id": "snapshot-0007",
+      "version": "v0.5.0",
+      "variant": "variant-a",
+      "condition": "orphaned observations",
+      "classification": "POSSIBLE",
+      "scope": "RECOVERED_STATIC_PATHS",
+      "caveat": "No foreign-key enforcement is evidenced.",
+      "runtime_failure_observed": false,
+      "evidence": [
+        "security-ev-e6b4dd1abbcbda97"
+      ]
+    },
+    {
+      "integrity_id": "integrity-ef806b539954086e",
+      "snapshot_id": "snapshot-0007",
+      "version": "v0.5.0",
+      "variant": "variant-a",
+      "condition": "orphaned discoveries",
+      "classification": "POSSIBLE",
+      "scope": "RECOVERED_STATIC_PATHS",
+      "caveat": "Identifiers are stored but referential enforcement is not proved.",
+      "runtime_failure_observed": false,
+      "evidence": [
+        "security-ev-c7d18c8f1707874e"
+      ]
+    },
+    {
+      "integrity_id": "integrity-a26e9092bdb07cbb",
+      "snapshot_id": "snapshot-0007",
+      "version": "v0.5.0",
+      "variant": "variant-a",
+      "condition": "duplicate candidates",
+      "classification": "PREVENTED",
+      "scope": "RECOVERED_STATIC_PATHS",
+      "caveat": "Local key/visited path only.",
+      "runtime_failure_observed": false,
+      "evidence": [
+        "security-ev-8e86da1c206e8b2c",
+        "security-ev-a2bb44afa08123d7",
+        "security-ev-fc599e5b6d61e1cc"
+      ]
+    },
+    {
+      "integrity_id": "integrity-eed0ff2981576780",
+      "snapshot_id": "snapshot-0007",
+      "version": "v0.5.0",
+      "variant": "variant-a",
+      "condition": "lost provenance",
+      "classification": "POSSIBLE",
+      "scope": "RECOVERED_STATIC_PATHS",
+      "caveat": "Presence of fields does not guarantee preservation at every boundary.",
+      "runtime_failure_observed": false,
+      "evidence": [
+        "security-ev-c4b74d2c7dba8432",
+        "security-ev-b343227bed51d137"
+      ]
+    },
+    {
+      "integrity_id": "integrity-2a900e9f57364921",
+      "snapshot_id": "snapshot-0007",
+      "version": "v0.5.0",
+      "variant": "variant-a",
+      "condition": "partial records",
+      "classification": "POSSIBLE",
+      "scope": "RECOVERED_STATIC_PATHS",
+      "caveat": "Incremental mutable object construction and persistence are present.",
+      "runtime_failure_observed": false,
+      "evidence": [
+        "security-ev-d33ce52feab5a32f"
+      ]
+    },
+    {
+      "integrity_id": "integrity-f47c47482e0c5c99",
+      "snapshot_id": "snapshot-0007",
+      "version": "v0.5.0",
+      "variant": "variant-a",
+      "condition": "inconsistent status",
+      "classification": "POSSIBLE",
+      "scope": "RECOVERED_STATIC_PATHS",
+      "caveat": "Multiple mutation paths; no exhaustive state machine verification.",
+      "runtime_failure_observed": false,
+      "evidence": [
+        "security-ev-551131376801825b"
+      ]
+    },
+    {
+      "integrity_id": "integrity-b29ed7c2ebe95a97",
+      "snapshot_id": "snapshot-0007",
+      "version": "v0.5.0",
+      "variant": "variant-a",
+      "condition": "stale claims",
+      "classification": "PREVENTED",
+      "scope": "RECOVERED_STATIC_PATHS",
+      "caveat": "Only handled completion/failure paths are covered.",
+      "runtime_failure_observed": false,
+      "evidence": [
+        "security-ev-bb8cc313ee3b16f3",
+        "security-ev-d7d15157168272c9",
+        "security-ev-d219f1c4633346af"
+      ]
+    },
+    {
+      "integrity_id": "integrity-73d741e61541c6cc",
+      "snapshot_id": "snapshot-0009",
+      "version": "v0.5.0",
+      "variant": "variant-b",
+      "condition": "orphaned observations",
+      "classification": "POSSIBLE",
+      "scope": "RECOVERED_STATIC_PATHS",
+      "caveat": "No foreign-key enforcement is evidenced.",
+      "runtime_failure_observed": false,
+      "evidence": [
+        "security-ev-7c755e71cc44533a"
+      ]
+    },
+    {
+      "integrity_id": "integrity-709091f74a63a0f5",
+      "snapshot_id": "snapshot-0009",
+      "version": "v0.5.0",
+      "variant": "variant-b",
+      "condition": "orphaned discoveries",
+      "classification": "POSSIBLE",
+      "scope": "RECOVERED_STATIC_PATHS",
+      "caveat": "Identifiers are stored but referential enforcement is not proved.",
+      "runtime_failure_observed": false,
+      "evidence": [
+        "security-ev-5709725083b65f28"
+      ]
+    },
+    {
+      "integrity_id": "integrity-84e03198446b45e3",
+      "snapshot_id": "snapshot-0009",
+      "version": "v0.5.0",
+      "variant": "variant-b",
+      "condition": "duplicate candidates",
+      "classification": "PREVENTED",
+      "scope": "RECOVERED_STATIC_PATHS",
+      "caveat": "Local key/visited path only.",
+      "runtime_failure_observed": false,
+      "evidence": [
+        "security-ev-c0524b2ac13e31b7",
+        "security-ev-d260cf7ce344f170",
+        "security-ev-8cbfc1973c29603b"
+      ]
+    },
+    {
+      "integrity_id": "integrity-fdeb3b55eea37941",
+      "snapshot_id": "snapshot-0009",
+      "version": "v0.5.0",
+      "variant": "variant-b",
+      "condition": "lost provenance",
+      "classification": "POSSIBLE",
+      "scope": "RECOVERED_STATIC_PATHS",
+      "caveat": "Presence of fields does not guarantee preservation at every boundary.",
+      "runtime_failure_observed": false,
+      "evidence": [
+        "security-ev-413fcdc0a053b066",
+        "security-ev-585726a2254b79ac"
+      ]
+    },
+    {
+      "integrity_id": "integrity-b5e55c312b3903f8",
+      "snapshot_id": "snapshot-0009",
+      "version": "v0.5.0",
+      "variant": "variant-b",
+      "condition": "partial records",
+      "classification": "POSSIBLE",
+      "scope": "RECOVERED_STATIC_PATHS",
+      "caveat": "Incremental mutable object construction and persistence are present.",
+      "runtime_failure_observed": false,
+      "evidence": [
+        "security-ev-04734d0fe303ffa4"
+      ]
+    },
+    {
+      "integrity_id": "integrity-4770db558a8f0e35",
+      "snapshot_id": "snapshot-0009",
+      "version": "v0.5.0",
+      "variant": "variant-b",
+      "condition": "inconsistent status",
+      "classification": "POSSIBLE",
+      "scope": "RECOVERED_STATIC_PATHS",
+      "caveat": "Multiple mutation paths; no exhaustive state machine verification.",
+      "runtime_failure_observed": false,
+      "evidence": [
+        "security-ev-0a76852e9c1e9581"
+      ]
+    },
+    {
+      "integrity_id": "integrity-77798778ef2f0a8f",
+      "snapshot_id": "snapshot-0009",
+      "version": "v0.5.0",
+      "variant": "variant-b",
+      "condition": "stale claims",
+      "classification": "PREVENTED",
+      "scope": "RECOVERED_STATIC_PATHS",
+      "caveat": "Only handled completion/failure paths are covered.",
+      "runtime_failure_observed": false,
+      "evidence": [
+        "security-ev-8320559b9265c706",
+        "security-ev-20d2ab2c01abd242",
+        "security-ev-2791254450bcac7e"
+      ]
+    },
+    {
+      "integrity_id": "integrity-05bca56b0b4083db",
+      "snapshot_id": "snapshot-0011",
+      "version": "v0.5.0",
+      "variant": "variant-c",
+      "condition": "orphaned observations",
+      "classification": "POSSIBLE",
+      "scope": "RECOVERED_STATIC_PATHS",
+      "caveat": "No foreign-key enforcement is evidenced.",
+      "runtime_failure_observed": false,
+      "evidence": [
+        "security-ev-3a4b7f3a93f5555e"
+      ]
+    },
+    {
+      "integrity_id": "integrity-65e6e35564afbb49",
+      "snapshot_id": "snapshot-0011",
+      "version": "v0.5.0",
+      "variant": "variant-c",
+      "condition": "orphaned discoveries",
+      "classification": "POSSIBLE",
+      "scope": "RECOVERED_STATIC_PATHS",
+      "caveat": "Identifiers are stored but referential enforcement is not proved.",
+      "runtime_failure_observed": false,
+      "evidence": [
+        "security-ev-00c1cdf3eb463a8b"
+      ]
+    },
+    {
+      "integrity_id": "integrity-3b5f0594635b19c7",
+      "snapshot_id": "snapshot-0011",
+      "version": "v0.5.0",
+      "variant": "variant-c",
+      "condition": "duplicate candidates",
+      "classification": "PREVENTED",
+      "scope": "RECOVERED_STATIC_PATHS",
+      "caveat": "Local key/visited path only.",
+      "runtime_failure_observed": false,
+      "evidence": [
+        "security-ev-721018063cf329a8",
+        "security-ev-f84bb100c320b65a",
+        "security-ev-34a2917d85573d26"
+      ]
+    },
+    {
+      "integrity_id": "integrity-48281207655c66d7",
+      "snapshot_id": "snapshot-0011",
+      "version": "v0.5.0",
+      "variant": "variant-c",
+      "condition": "lost provenance",
+      "classification": "POSSIBLE",
+      "scope": "RECOVERED_STATIC_PATHS",
+      "caveat": "Presence of fields does not guarantee preservation at every boundary.",
+      "runtime_failure_observed": false,
+      "evidence": [
+        "security-ev-93394d5c6e424c59",
+        "security-ev-c6ba3e1a510fe1b1"
+      ]
+    },
+    {
+      "integrity_id": "integrity-8467af70a663f5ab",
+      "snapshot_id": "snapshot-0011",
+      "version": "v0.5.0",
+      "variant": "variant-c",
+      "condition": "partial records",
+      "classification": "POSSIBLE",
+      "scope": "RECOVERED_STATIC_PATHS",
+      "caveat": "Incremental mutable object construction and persistence are present.",
+      "runtime_failure_observed": false,
+      "evidence": [
+        "security-ev-6ccd9fed933af94f"
+      ]
+    },
+    {
+      "integrity_id": "integrity-aef83fbb98be6533",
+      "snapshot_id": "snapshot-0011",
+      "version": "v0.5.0",
+      "variant": "variant-c",
+      "condition": "inconsistent status",
+      "classification": "POSSIBLE",
+      "scope": "RECOVERED_STATIC_PATHS",
+      "caveat": "Multiple mutation paths; no exhaustive state machine verification.",
+      "runtime_failure_observed": false,
+      "evidence": [
+        "security-ev-55267345924de610"
+      ]
+    },
+    {
+      "integrity_id": "integrity-77b50f12758ea648",
+      "snapshot_id": "snapshot-0011",
+      "version": "v0.5.0",
+      "variant": "variant-c",
+      "condition": "stale claims",
+      "classification": "PREVENTED",
+      "scope": "RECOVERED_STATIC_PATHS",
+      "caveat": "Only handled completion/failure paths are covered.",
+      "runtime_failure_observed": false,
+      "evidence": [
+        "security-ev-6a81c3d50c44205f",
+        "security-ev-5fac886d1e98f572",
+        "security-ev-e0fed62a21d805e2"
+      ]
+    },
+    {
+      "integrity_id": "integrity-82ca50f1fd954de8",
+      "snapshot_id": "snapshot-0010",
+      "version": "v0.6.0",
+      "variant": "variant-a",
+      "condition": "orphaned observations",
+      "classification": "POSSIBLE",
+      "scope": "RECOVERED_STATIC_PATHS",
+      "caveat": "No foreign-key enforcement is evidenced.",
+      "runtime_failure_observed": false,
+      "evidence": [
+        "security-ev-fdffd8c673720de7"
+      ]
+    },
+    {
+      "integrity_id": "integrity-6fe1cc9218673af3",
+      "snapshot_id": "snapshot-0010",
+      "version": "v0.6.0",
+      "variant": "variant-a",
+      "condition": "orphaned discoveries",
+      "classification": "POSSIBLE",
+      "scope": "RECOVERED_STATIC_PATHS",
+      "caveat": "Identifiers are stored but referential enforcement is not proved.",
+      "runtime_failure_observed": false,
+      "evidence": [
+        "security-ev-818b3f0ad9e11522"
+      ]
+    },
+    {
+      "integrity_id": "integrity-b474c68e06ccb03f",
+      "snapshot_id": "snapshot-0010",
+      "version": "v0.6.0",
+      "variant": "variant-a",
+      "condition": "duplicate candidates",
+      "classification": "PREVENTED",
+      "scope": "RECOVERED_STATIC_PATHS",
+      "caveat": "Local key/visited path only.",
+      "runtime_failure_observed": false,
+      "evidence": [
+        "security-ev-8d6b019d0069edad",
+        "security-ev-ee40e793b9200f46",
+        "security-ev-26d88e1719a5251f"
+      ]
+    },
+    {
+      "integrity_id": "integrity-e93aed6707ef79eb",
+      "snapshot_id": "snapshot-0010",
+      "version": "v0.6.0",
+      "variant": "variant-a",
+      "condition": "lost provenance",
+      "classification": "POSSIBLE",
+      "scope": "RECOVERED_STATIC_PATHS",
+      "caveat": "Presence of fields does not guarantee preservation at every boundary.",
+      "runtime_failure_observed": false,
+      "evidence": [
+        "security-ev-2ff872f5dd990b8e",
+        "security-ev-80dbdaf9eeb1dd28"
+      ]
+    },
+    {
+      "integrity_id": "integrity-484cf1ec312f63c7",
+      "snapshot_id": "snapshot-0010",
+      "version": "v0.6.0",
+      "variant": "variant-a",
+      "condition": "partial records",
+      "classification": "POSSIBLE",
+      "scope": "RECOVERED_STATIC_PATHS",
+      "caveat": "Incremental mutable object construction and persistence are present.",
+      "runtime_failure_observed": false,
+      "evidence": [
+        "security-ev-fd442f7512f78a7b"
+      ]
+    },
+    {
+      "integrity_id": "integrity-9db0c6766ec410f2",
+      "snapshot_id": "snapshot-0010",
+      "version": "v0.6.0",
+      "variant": "variant-a",
+      "condition": "inconsistent status",
+      "classification": "POSSIBLE",
+      "scope": "RECOVERED_STATIC_PATHS",
+      "caveat": "Multiple mutation paths; no exhaustive state machine verification.",
+      "runtime_failure_observed": false,
+      "evidence": [
+        "security-ev-2e8cc06bf0e61b54"
+      ]
+    },
+    {
+      "integrity_id": "integrity-35f9668d3f1e5fa3",
+      "snapshot_id": "snapshot-0010",
+      "version": "v0.6.0",
+      "variant": "variant-a",
+      "condition": "stale claims",
+      "classification": "PREVENTED",
+      "scope": "RECOVERED_STATIC_PATHS",
+      "caveat": "Only handled completion/failure paths are covered.",
+      "runtime_failure_observed": false,
+      "evidence": [
+        "security-ev-49913f50640c7915",
+        "security-ev-e5c362f7899cb8e9",
+        "security-ev-8df7f336596abeca"
+      ]
+    },
+    {
+      "integrity_id": "integrity-948733d2c31587ce",
+      "snapshot_id": "snapshot-0012",
+      "version": "v0.6.0",
+      "variant": "variant-b",
+      "condition": "orphaned observations",
+      "classification": "POSSIBLE",
+      "scope": "RECOVERED_STATIC_PATHS",
+      "caveat": "No foreign-key enforcement is evidenced.",
+      "runtime_failure_observed": false,
+      "evidence": [
+        "security-ev-d9401f1c90961576"
+      ]
+    },
+    {
+      "integrity_id": "integrity-0fc5e23ece126023",
+      "snapshot_id": "snapshot-0012",
+      "version": "v0.6.0",
+      "variant": "variant-b",
+      "condition": "orphaned discoveries",
+      "classification": "POSSIBLE",
+      "scope": "RECOVERED_STATIC_PATHS",
+      "caveat": "Identifiers are stored but referential enforcement is not proved.",
+      "runtime_failure_observed": false,
+      "evidence": [
+        "security-ev-cfeac2355e3dcbc7"
+      ]
+    },
+    {
+      "integrity_id": "integrity-03d1e390d1b2e4bb",
+      "snapshot_id": "snapshot-0012",
+      "version": "v0.6.0",
+      "variant": "variant-b",
+      "condition": "duplicate candidates",
+      "classification": "PREVENTED",
+      "scope": "RECOVERED_STATIC_PATHS",
+      "caveat": "Local key/visited path only.",
+      "runtime_failure_observed": false,
+      "evidence": [
+        "security-ev-7a4d023ae8e5ef92",
+        "security-ev-26e224d501fc8f6f",
+        "security-ev-65f63fe6a6380969"
+      ]
+    },
+    {
+      "integrity_id": "integrity-c706a6c3da47589e",
+      "snapshot_id": "snapshot-0012",
+      "version": "v0.6.0",
+      "variant": "variant-b",
+      "condition": "lost provenance",
+      "classification": "POSSIBLE",
+      "scope": "RECOVERED_STATIC_PATHS",
+      "caveat": "Presence of fields does not guarantee preservation at every boundary.",
+      "runtime_failure_observed": false,
+      "evidence": [
+        "security-ev-48f69d7bf4d3bfb7",
+        "security-ev-89ecdcdcb52c23bf"
+      ]
+    },
+    {
+      "integrity_id": "integrity-645f4409b64e1724",
+      "snapshot_id": "snapshot-0012",
+      "version": "v0.6.0",
+      "variant": "variant-b",
+      "condition": "partial records",
+      "classification": "POSSIBLE",
+      "scope": "RECOVERED_STATIC_PATHS",
+      "caveat": "Incremental mutable object construction and persistence are present.",
+      "runtime_failure_observed": false,
+      "evidence": [
+        "security-ev-76a853911288c9c3"
+      ]
+    },
+    {
+      "integrity_id": "integrity-f022e8cc9367ffde",
+      "snapshot_id": "snapshot-0012",
+      "version": "v0.6.0",
+      "variant": "variant-b",
+      "condition": "inconsistent status",
+      "classification": "POSSIBLE",
+      "scope": "RECOVERED_STATIC_PATHS",
+      "caveat": "Multiple mutation paths; no exhaustive state machine verification.",
+      "runtime_failure_observed": false,
+      "evidence": [
+        "security-ev-d9be126a0137bc7e"
+      ]
+    },
+    {
+      "integrity_id": "integrity-976e5dd382208dd0",
+      "snapshot_id": "snapshot-0012",
+      "version": "v0.6.0",
+      "variant": "variant-b",
+      "condition": "stale claims",
+      "classification": "PREVENTED",
+      "scope": "RECOVERED_STATIC_PATHS",
+      "caveat": "Only handled completion/failure paths are covered.",
+      "runtime_failure_observed": false,
+      "evidence": [
+        "security-ev-f149ecc24fbeee03",
+        "security-ev-3e46f78a1cd90567",
+        "security-ev-055155492a06a46e"
+      ]
+    },
+    {
+      "integrity_id": "integrity-b86a94f8eda26b09",
+      "snapshot_id": "snapshot-0013",
+      "version": "v0.6.0",
+      "variant": "variant-c",
+      "condition": "orphaned observations",
+      "classification": "POSSIBLE",
+      "scope": "RECOVERED_STATIC_PATHS",
+      "caveat": "No foreign-key enforcement is evidenced.",
+      "runtime_failure_observed": false,
+      "evidence": [
+        "security-ev-b3cfdf9139a9367a"
+      ]
+    },
+    {
+      "integrity_id": "integrity-f809a68877641c8d",
+      "snapshot_id": "snapshot-0013",
+      "version": "v0.6.0",
+      "variant": "variant-c",
+      "condition": "orphaned discoveries",
+      "classification": "POSSIBLE",
+      "scope": "RECOVERED_STATIC_PATHS",
+      "caveat": "Identifiers are stored but referential enforcement is not proved.",
+      "runtime_failure_observed": false,
+      "evidence": [
+        "security-ev-2f0eb61c10faf4e3"
+      ]
+    },
+    {
+      "integrity_id": "integrity-704ac8dc1ab861c9",
+      "snapshot_id": "snapshot-0013",
+      "version": "v0.6.0",
+      "variant": "variant-c",
+      "condition": "duplicate candidates",
+      "classification": "PREVENTED",
+      "scope": "RECOVERED_STATIC_PATHS",
+      "caveat": "Local key/visited path only.",
+      "runtime_failure_observed": false,
+      "evidence": [
+        "security-ev-f44e79e24280537d",
+        "security-ev-c79012f7fb12de96",
+        "security-ev-14f0a67456ab9d1a"
+      ]
+    },
+    {
+      "integrity_id": "integrity-9b367180a7f65318",
+      "snapshot_id": "snapshot-0013",
+      "version": "v0.6.0",
+      "variant": "variant-c",
+      "condition": "lost provenance",
+      "classification": "POSSIBLE",
+      "scope": "RECOVERED_STATIC_PATHS",
+      "caveat": "Presence of fields does not guarantee preservation at every boundary.",
+      "runtime_failure_observed": false,
+      "evidence": [
+        "security-ev-5e8c0a6038ac9ede",
+        "security-ev-0ccd386530b05a7f"
+      ]
+    },
+    {
+      "integrity_id": "integrity-b14fc86784fd40ab",
+      "snapshot_id": "snapshot-0013",
+      "version": "v0.6.0",
+      "variant": "variant-c",
+      "condition": "partial records",
+      "classification": "POSSIBLE",
+      "scope": "RECOVERED_STATIC_PATHS",
+      "caveat": "Incremental mutable object construction and persistence are present.",
+      "runtime_failure_observed": false,
+      "evidence": [
+        "security-ev-cbce8a3b43d9c64b"
+      ]
+    },
+    {
+      "integrity_id": "integrity-7254837907476149",
+      "snapshot_id": "snapshot-0013",
+      "version": "v0.6.0",
+      "variant": "variant-c",
+      "condition": "inconsistent status",
+      "classification": "POSSIBLE",
+      "scope": "RECOVERED_STATIC_PATHS",
+      "caveat": "Multiple mutation paths; no exhaustive state machine verification.",
+      "runtime_failure_observed": false,
+      "evidence": [
+        "security-ev-0ddd6d2a82d8987f"
+      ]
+    },
+    {
+      "integrity_id": "integrity-cb6bf02e1c6a49f8",
+      "snapshot_id": "snapshot-0013",
+      "version": "v0.6.0",
+      "variant": "variant-c",
+      "condition": "stale claims",
+      "classification": "PREVENTED",
+      "scope": "RECOVERED_STATIC_PATHS",
+      "caveat": "Only handled completion/failure paths are covered.",
+      "runtime_failure_observed": false,
+      "evidence": [
+        "security-ev-05a55ad67c992290",
+        "security-ev-32823a7ddd5cf707",
+        "security-ev-3694b4012d324097"
+      ]
+    },
+    {
+      "integrity_id": "integrity-c93977ef028f2f2a",
+      "snapshot_id": "snapshot-0014",
+      "version": "v0.7.1",
+      "variant": "only-evidenced-complete-occurrence",
+      "condition": "orphaned observations",
+      "classification": "POSSIBLE",
+      "scope": "RECOVERED_STATIC_PATHS",
+      "caveat": "No foreign-key enforcement is evidenced.",
+      "runtime_failure_observed": false,
+      "evidence": [
+        "security-ev-7347bc5291526bc1"
+      ]
+    },
+    {
+      "integrity_id": "integrity-f88e45525820a622",
+      "snapshot_id": "snapshot-0014",
+      "version": "v0.7.1",
+      "variant": "only-evidenced-complete-occurrence",
+      "condition": "orphaned discoveries",
+      "classification": "POSSIBLE",
+      "scope": "RECOVERED_STATIC_PATHS",
+      "caveat": "Identifiers are stored but referential enforcement is not proved.",
+      "runtime_failure_observed": false,
+      "evidence": [
+        "security-ev-ecd309e4fd00dfc2"
+      ]
+    },
+    {
+      "integrity_id": "integrity-80581c30957d7342",
+      "snapshot_id": "snapshot-0014",
+      "version": "v0.7.1",
+      "variant": "only-evidenced-complete-occurrence",
+      "condition": "duplicate candidates",
+      "classification": "PREVENTED",
+      "scope": "RECOVERED_STATIC_PATHS",
+      "caveat": "Local key/visited path only.",
+      "runtime_failure_observed": false,
+      "evidence": [
+        "security-ev-18379b0b1b33f1ff",
+        "security-ev-d63d5a045163ab6b",
+        "security-ev-e8714bf44aeafb0a"
+      ]
+    },
+    {
+      "integrity_id": "integrity-d06de14827e3b18b",
+      "snapshot_id": "snapshot-0014",
+      "version": "v0.7.1",
+      "variant": "only-evidenced-complete-occurrence",
+      "condition": "lost provenance",
+      "classification": "POSSIBLE",
+      "scope": "RECOVERED_STATIC_PATHS",
+      "caveat": "Presence of fields does not guarantee preservation at every boundary.",
+      "runtime_failure_observed": false,
+      "evidence": [
+        "security-ev-1a09396f85a69a6a",
+        "security-ev-18d693c26e0c6f32"
+      ]
+    },
+    {
+      "integrity_id": "integrity-fcf99376e1a058b1",
+      "snapshot_id": "snapshot-0014",
+      "version": "v0.7.1",
+      "variant": "only-evidenced-complete-occurrence",
+      "condition": "partial records",
+      "classification": "POSSIBLE",
+      "scope": "RECOVERED_STATIC_PATHS",
+      "caveat": "Incremental mutable object construction and persistence are present.",
+      "runtime_failure_observed": false,
+      "evidence": [
+        "security-ev-0ca555e48667426a"
+      ]
+    },
+    {
+      "integrity_id": "integrity-bbe71eff2bb54547",
+      "snapshot_id": "snapshot-0014",
+      "version": "v0.7.1",
+      "variant": "only-evidenced-complete-occurrence",
+      "condition": "inconsistent status",
+      "classification": "POSSIBLE",
+      "scope": "RECOVERED_STATIC_PATHS",
+      "caveat": "Multiple mutation paths; no exhaustive state machine verification.",
+      "runtime_failure_observed": false,
+      "evidence": [
+        "security-ev-3d8a66debe0e1b5e"
+      ]
+    },
+    {
+      "integrity_id": "integrity-4a07e892171a47f8",
+      "snapshot_id": "snapshot-0014",
+      "version": "v0.7.1",
+      "variant": "only-evidenced-complete-occurrence",
+      "condition": "stale claims",
+      "classification": "POSSIBLE",
+      "scope": "RECOVERED_STATIC_PATHS",
+      "caveat": "Only handled completion/failure paths are covered.",
+      "runtime_failure_observed": false,
+      "evidence": [
+        "security-ev-94687ceddf56ba0c"
+      ]
+    }
+  ],
+  "classification_registry": [
+    "OBSERVED",
+    "POSSIBLE",
+    "PREVENTED",
+    "UNKNOWN"
+  ],
+  "weaknesses": [
+    {
+      "weakness_id": "integrity-weakness-c14cc8436ccb4d4a",
+      "snapshot_id": "snapshot-0001",
+      "version": "v0.1.0",
+      "surface": "observation replacement",
+      "classification": "INTEGRITY_WEAKNESS",
+      "malicious_tampering_claimed": false,
+      "authority": "KnowledgeBase",
+      "evidence": [
+        "security-ev-daebd8449932f70c"
+      ]
+    },
+    {
+      "weakness_id": "integrity-weakness-9f0a29a678db6965",
+      "snapshot_id": "snapshot-0001",
+      "version": "v0.1.0",
+      "surface": "timestamp modification",
+      "classification": "INTEGRITY_WEAKNESS",
+      "malicious_tampering_claimed": false,
+      "authority": "Candidate",
+      "evidence": [
+        "security-ev-0f45a7c5cf7193c4"
+      ]
+    },
+    {
+      "weakness_id": "integrity-weakness-f3d75253f8407c09",
+      "snapshot_id": "snapshot-0003",
+      "version": "v0.2.0",
+      "surface": "observation replacement",
+      "classification": "INTEGRITY_WEAKNESS",
+      "malicious_tampering_claimed": false,
+      "authority": "KnowledgeBase",
+      "evidence": [
+        "security-ev-617f8b51f8e6dc15"
+      ]
+    },
+    {
+      "weakness_id": "integrity-weakness-a46ea9f40c7cf011",
+      "snapshot_id": "snapshot-0003",
+      "version": "v0.2.0",
+      "surface": "timestamp modification",
+      "classification": "INTEGRITY_WEAKNESS",
+      "malicious_tampering_claimed": false,
+      "authority": "Candidate",
+      "evidence": [
+        "security-ev-b63f5abbd4465b1b"
+      ]
+    },
+    {
+      "weakness_id": "integrity-weakness-9679760e6a420b3a",
+      "snapshot_id": "snapshot-0005",
+      "version": "v0.3.0",
+      "surface": "observation replacement",
+      "classification": "INTEGRITY_WEAKNESS",
+      "malicious_tampering_claimed": false,
+      "authority": "KnowledgeBase",
+      "evidence": [
+        "security-ev-b6979432123e957a"
+      ]
+    },
+    {
+      "weakness_id": "integrity-weakness-977ebfe009547b93",
+      "snapshot_id": "snapshot-0005",
+      "version": "v0.3.0",
+      "surface": "timestamp modification",
+      "classification": "INTEGRITY_WEAKNESS",
+      "malicious_tampering_claimed": false,
+      "authority": "Candidate",
+      "evidence": [
+        "security-ev-d7780779482d372a"
+      ]
+    },
+    {
+      "weakness_id": "integrity-weakness-dfb7ce9e01a962f8",
+      "snapshot_id": "snapshot-0006",
+      "version": "v0.4.0",
+      "surface": "observation replacement",
+      "classification": "INTEGRITY_WEAKNESS",
+      "malicious_tampering_claimed": false,
+      "authority": "KnowledgeBase",
+      "evidence": [
+        "security-ev-ab1580921b4ddbe8"
+      ]
+    },
+    {
+      "weakness_id": "integrity-weakness-57d1e6d82d0443df",
+      "snapshot_id": "snapshot-0006",
+      "version": "v0.4.0",
+      "surface": "timestamp modification",
+      "classification": "INTEGRITY_WEAKNESS",
+      "malicious_tampering_claimed": false,
+      "authority": "Candidate",
+      "evidence": [
+        "security-ev-b6bbc46e53bdcce8"
+      ]
+    },
+    {
+      "weakness_id": "integrity-weakness-2ec10f18e284a885",
+      "snapshot_id": "snapshot-0008",
+      "version": "v0.4.0",
+      "surface": "observation replacement",
+      "classification": "INTEGRITY_WEAKNESS",
+      "malicious_tampering_claimed": false,
+      "authority": "KnowledgeBase",
+      "evidence": [
+        "security-ev-9195b19f7cfc2058"
+      ]
+    },
+    {
+      "weakness_id": "integrity-weakness-c1d5d3eabcf90262",
+      "snapshot_id": "snapshot-0008",
+      "version": "v0.4.0",
+      "surface": "timestamp modification",
+      "classification": "INTEGRITY_WEAKNESS",
+      "malicious_tampering_claimed": false,
+      "authority": "Candidate",
+      "evidence": [
+        "security-ev-2ed7866d015a603e"
+      ]
+    },
+    {
+      "weakness_id": "integrity-weakness-9279cdbaf7f66c51",
+      "snapshot_id": "snapshot-0007",
+      "version": "v0.5.0",
+      "surface": "observation replacement",
+      "classification": "INTEGRITY_WEAKNESS",
+      "malicious_tampering_claimed": false,
+      "authority": "KnowledgeBase",
+      "evidence": [
+        "security-ev-8be3336753f410a5"
+      ]
+    },
+    {
+      "weakness_id": "integrity-weakness-6a88cd82ab8e4aba",
+      "snapshot_id": "snapshot-0007",
+      "version": "v0.5.0",
+      "surface": "timestamp modification",
+      "classification": "INTEGRITY_WEAKNESS",
+      "malicious_tampering_claimed": false,
+      "authority": "Candidate",
+      "evidence": [
+        "security-ev-186d4bd990a42b31"
+      ]
+    },
+    {
+      "weakness_id": "integrity-weakness-96d26cfaabf40f64",
+      "snapshot_id": "snapshot-0009",
+      "version": "v0.5.0",
+      "surface": "observation replacement",
+      "classification": "INTEGRITY_WEAKNESS",
+      "malicious_tampering_claimed": false,
+      "authority": "KnowledgeBase",
+      "evidence": [
+        "security-ev-c75e65c4b500750d"
+      ]
+    },
+    {
+      "weakness_id": "integrity-weakness-c8962c20be12778f",
+      "snapshot_id": "snapshot-0009",
+      "version": "v0.5.0",
+      "surface": "timestamp modification",
+      "classification": "INTEGRITY_WEAKNESS",
+      "malicious_tampering_claimed": false,
+      "authority": "Candidate",
+      "evidence": [
+        "security-ev-8c69ffc110d1fdf3"
+      ]
+    },
+    {
+      "weakness_id": "integrity-weakness-a265f0fb7b3a3659",
+      "snapshot_id": "snapshot-0011",
+      "version": "v0.5.0",
+      "surface": "observation replacement",
+      "classification": "INTEGRITY_WEAKNESS",
+      "malicious_tampering_claimed": false,
+      "authority": "KnowledgeBase",
+      "evidence": [
+        "security-ev-67d93daba4cf1262"
+      ]
+    },
+    {
+      "weakness_id": "integrity-weakness-553e1484f4014edf",
+      "snapshot_id": "snapshot-0011",
+      "version": "v0.5.0",
+      "surface": "timestamp modification",
+      "classification": "INTEGRITY_WEAKNESS",
+      "malicious_tampering_claimed": false,
+      "authority": "Candidate",
+      "evidence": [
+        "security-ev-3fe5fdd23aa4c0cb"
+      ]
+    },
+    {
+      "weakness_id": "integrity-weakness-a63efa8634b33a8e",
+      "snapshot_id": "snapshot-0010",
+      "version": "v0.6.0",
+      "surface": "observation replacement",
+      "classification": "INTEGRITY_WEAKNESS",
+      "malicious_tampering_claimed": false,
+      "authority": "KnowledgeBase",
+      "evidence": [
+        "security-ev-0c8450926d515b38"
+      ]
+    },
+    {
+      "weakness_id": "integrity-weakness-d4078a59bbd63e65",
+      "snapshot_id": "snapshot-0010",
+      "version": "v0.6.0",
+      "surface": "timestamp modification",
+      "classification": "INTEGRITY_WEAKNESS",
+      "malicious_tampering_claimed": false,
+      "authority": "Candidate",
+      "evidence": [
+        "security-ev-5ce0747e21862264"
+      ]
+    },
+    {
+      "weakness_id": "integrity-weakness-ed4455b0819446ba",
+      "snapshot_id": "snapshot-0012",
+      "version": "v0.6.0",
+      "surface": "observation replacement",
+      "classification": "INTEGRITY_WEAKNESS",
+      "malicious_tampering_claimed": false,
+      "authority": "KnowledgeBase",
+      "evidence": [
+        "security-ev-ea5ace05d7804d5d"
+      ]
+    },
+    {
+      "weakness_id": "integrity-weakness-4b1cccfb74b3a5db",
+      "snapshot_id": "snapshot-0012",
+      "version": "v0.6.0",
+      "surface": "timestamp modification",
+      "classification": "INTEGRITY_WEAKNESS",
+      "malicious_tampering_claimed": false,
+      "authority": "Candidate",
+      "evidence": [
+        "security-ev-ecb4f7285b27b250"
+      ]
+    },
+    {
+      "weakness_id": "integrity-weakness-34138b79de4d8d5f",
+      "snapshot_id": "snapshot-0013",
+      "version": "v0.6.0",
+      "surface": "observation replacement",
+      "classification": "INTEGRITY_WEAKNESS",
+      "malicious_tampering_claimed": false,
+      "authority": "KnowledgeBase",
+      "evidence": [
+        "security-ev-3dbd2ecad3c2d03d"
+      ]
+    },
+    {
+      "weakness_id": "integrity-weakness-233b7b2610b0bbb2",
+      "snapshot_id": "snapshot-0013",
+      "version": "v0.6.0",
+      "surface": "timestamp modification",
+      "classification": "INTEGRITY_WEAKNESS",
+      "malicious_tampering_claimed": false,
+      "authority": "Candidate",
+      "evidence": [
+        "security-ev-13929e6325015fb6"
+      ]
+    },
+    {
+      "weakness_id": "integrity-weakness-2df2041c39e3675e",
+      "snapshot_id": "snapshot-0014",
+      "version": "v0.7.1",
+      "surface": "observation replacement",
+      "classification": "INTEGRITY_WEAKNESS",
+      "malicious_tampering_claimed": false,
+      "authority": "KnowledgeBase",
+      "evidence": [
+        "security-ev-6e3e337fb2882d52"
+      ]
+    },
+    {
+      "weakness_id": "integrity-weakness-ab2096c466e3fec7",
+      "snapshot_id": "snapshot-0014",
+      "version": "v0.7.1",
+      "surface": "timestamp modification",
+      "classification": "INTEGRITY_WEAKNESS",
+      "malicious_tampering_claimed": false,
+      "authority": "AcquisitionPlan",
+      "evidence": [
+        "security-ev-598f9fb51267a8c9"
+      ]
+    }
+  ]
+}

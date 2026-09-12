@@ -1,0 +1,10 @@
+# Historical payloads are byte-authoritative. Never apply text conversion.
+raw/** -text
+artifacts/** -text
+reconstructed/** -text
+snapshots/**/source/** -text
+
+# Derived metadata and tooling use repository-stable LF.
+*.md text eol=lf
+*.yaml text eol=lf
+tools/*.py text eol=lf

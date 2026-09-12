@@ -1,0 +1,54 @@
+                         SEARCH GOAL
+                             │
+                             ▼
+                       QUERY PLANNER
+                             │
+                             ▼
+                         QUERY PLAN
+                             │
+                             ▼
+                       TACTIC RUNTIME
+                             │
+                             ▼
+                       SEARCH SPACE
+                             │
+                 ┌───────────┴───────────┐
+                 ▼                       ▼
+            PARTITIONS              EXPANSION
+                 │                       │
+                 ▼                       │
+          ADAPTIVE STRATEGY              │
+                 │                       │
+                 ▼                       │
+             FRONTIER ◄─────────────────┘
+                 │
+          ┌──────┼─────────┐
+          ▼      ▼         ▼
+      discovery acquisition enumeration
+          │      │         │
+          └──────┼─────────┘
+                 ▼
+             ACQUISITION
+                 │
+                 ▼
+             OBSERVATION
+                 │
+                 ▼
+           RECOGNITION
+                 │
+          ┌──────┼──────────┐
+          ▼      ▼          ▼
+       EVIDENCE CLASSIFICATION ARTIFACT
+          │      │          │
+          └──────┼──────────┘
+                 ▼
+             RESOURCE
+                 │
+                 ▼
+             RELEVANCE
+                 │
+                 ▼
+              COVERAGE
+                 │
+                 ▼
+          COMPLETENESS CLAIM

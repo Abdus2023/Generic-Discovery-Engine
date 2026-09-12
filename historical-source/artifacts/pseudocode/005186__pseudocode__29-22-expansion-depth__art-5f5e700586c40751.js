@@ -1,0 +1,1 @@
+maxPartitionDepth: 5

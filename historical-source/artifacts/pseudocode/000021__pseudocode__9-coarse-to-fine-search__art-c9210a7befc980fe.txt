@@ -1,0 +1,27 @@
+                    Whole spectrum
+                          │
+                          ▼
+                 coarse energy scan
+                          │
+             ┌────────────┴────────────┐
+             │                         │
+          no energy                 candidate
+             │                         │
+             ▼                         ▼
+          discard              characterize
+                                       │
+                                       ▼
+                              parameter hypotheses
+                                       │
+                                       ▼
+                                demodulator test
+                                       │
+                              ┌────────┴────────┐
+                              │                 │
+                            fail              lock
+                              │                 │
+                              ▼                 ▼
+                           discard        validate TS
+                                                │
+                                                ▼
+                                          parse metadata

@@ -1,0 +1,44 @@
+                         DISCOVERY CONTROLLER
+                                  │
+              ┌───────────────────┼───────────────────┐
+              │                   │                   │
+              ▼                   ▼                   ▼
+        Source Policy       Source Scheduler     Source Budget
+              │                   │                   │
+              └───────────────────┼───────────────────┘
+                                  │
+                                  ▼
+                         CandidateSource
+                                  │
+                                  ▼
+                             Proposals
+                                  │
+                                  ▼
+                        CandidateNormalizer
+                                  │
+                                  ▼
+                             Candidates
+                                  │
+                                  ▼
+                           Main Scheduler
+                                  │
+                                  ▼
+                        Acquisition Runtime
+                                  │
+                                  ▼
+                       Acquisition Provider
+                                  │
+                                  ▼
+                            Observation
+                                  │
+                                  ▼
+                       Recognition Runtime
+                                  │
+                                  ▼
+                      Recognition Provider
+                                  │
+                                  ▼
+                              Evidence
+                                  │
+                                  ▼
+                         Discovery Controller

@@ -1,0 +1,12 @@
+TACTIC EXECUTION STATE
+
+queued
+   ↓
+claimed
+   ↓
+running
+   ├── checkpointed ──→ running
+   ├── delayed ───────→ queued
+   ├── exhausted ─────→ completed
+   ├── cancelled
+   └── failed

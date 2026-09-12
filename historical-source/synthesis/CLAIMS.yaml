@@ -1,0 +1,340 @@
+{
+  "schema_version": "protocol-v9",
+  "claims": [
+    {
+      "claim_id": "claim-generic-a",
+      "claim": "Strict-generic condition A: stable discovery identity is represented in v0.1.0.",
+      "status": "SUPPORTED",
+      "evidence_refs": [
+        "syn-ev-00001",
+        "syn-ev-00196"
+      ],
+      "depends_on": [],
+      "interpretation_boundary": "historical",
+      "upstream_blocker": "V1_FAILED_V4_V7_MISSING"
+    },
+    {
+      "claim_id": "claim-generic-b",
+      "claim": "Strict-generic condition B: executable acquisition code is represented in the statically parseable occurrence in v0.1.0.",
+      "status": "SUPPORTED",
+      "evidence_refs": [
+        "syn-ev-00006",
+        "syn-ev-00199"
+      ],
+      "depends_on": [],
+      "interpretation_boundary": "historical",
+      "upstream_blocker": "V1_FAILED_V4_V7_MISSING"
+    },
+    {
+      "claim_id": "claim-generic-c",
+      "claim": "Strict-generic condition C: structured Observation is represented in v0.1.0.",
+      "status": "SUPPORTED",
+      "evidence_refs": [
+        "syn-ev-00002"
+      ],
+      "depends_on": [],
+      "interpretation_boundary": "historical",
+      "upstream_blocker": "V1_FAILED_V4_V7_MISSING"
+    },
+    {
+      "claim_id": "claim-generic-d",
+      "claim": "Strict-generic condition D: recognition is separable from acquisition in v0.1.0.",
+      "status": "SUPPORTED",
+      "evidence_refs": [
+        "syn-ev-00004"
+      ],
+      "depends_on": [],
+      "interpretation_boundary": "historical",
+      "upstream_blocker": "V1_FAILED_V4_V7_MISSING"
+    },
+    {
+      "claim_id": "claim-generic-e",
+      "claim": "Strict-generic condition E: discoveries can yield new candidates in v0.1.0.",
+      "status": "SUPPORTED",
+      "evidence_refs": [
+        "syn-ev-00007"
+      ],
+      "depends_on": [],
+      "interpretation_boundary": "historical",
+      "upstream_blocker": "V1_FAILED_V4_V7_MISSING"
+    },
+    {
+      "claim_id": "claim-generic-f",
+      "claim": "Strict-generic condition F: scheduled revisiting/repetition is represented in v0.1.0.",
+      "status": "SUPPORTED",
+      "evidence_refs": [
+        "syn-ev-00008"
+      ],
+      "depends_on": [],
+      "interpretation_boundary": "historical",
+      "upstream_blocker": "V1_FAILED_V4_V7_MISSING"
+    },
+    {
+      "claim_id": "claim-generic-g",
+      "claim": "Strict-generic condition G: duplicate-management and scheduling state are represented in v0.1.0.",
+      "status": "SUPPORTED",
+      "evidence_refs": [
+        "syn-ev-00005",
+        "syn-ev-00197"
+      ],
+      "depends_on": [],
+      "interpretation_boundary": "historical",
+      "upstream_blocker": "V1_FAILED_V4_V7_MISSING"
+    },
+    {
+      "claim_id": "claim-generic-h",
+      "claim": "Strict-generic condition H: an entry-to-discovery/output-state path is represented in v0.1.0.",
+      "status": "SUPPORTED",
+      "evidence_refs": [
+        "syn-ev-00003",
+        "syn-ev-00198"
+      ],
+      "depends_on": [],
+      "interpretation_boundary": "historical",
+      "upstream_blocker": "V1_FAILED_V4_V7_MISSING"
+    },
+    {
+      "claim_id": "claim-earliest-runnable",
+      "claim": "v0.1.0 is the earliest recovered complete occurrence classified LIKELY_EXECUTABLE by retrospective static validation; historical execution remains UNKNOWN.",
+      "status": "SUPPORTED",
+      "evidence_refs": [
+        "syn-ev-00001",
+        "syn-ev-00200"
+      ],
+      "depends_on": [],
+      "interpretation_boundary": "historical",
+      "upstream_blocker": "V1_FAILED_V4_V7_MISSING"
+    },
+    {
+      "claim_id": "claim-earliest-generic",
+      "claim": "v0.1.0 is the earliest recovered architecture satisfying strict conditions A-H at source-local SUPPORTED confidence.",
+      "status": "SUPPORTED",
+      "evidence_refs": [],
+      "depends_on": [
+        "claim-generic-a",
+        "claim-generic-b",
+        "claim-generic-c",
+        "claim-generic-d",
+        "claim-generic-e",
+        "claim-generic-f",
+        "claim-generic-g",
+        "claim-generic-h"
+      ],
+      "interpretation_boundary": "historical",
+      "upstream_blocker": "V1_FAILED_V4_V7_MISSING"
+    },
+    {
+      "claim_id": "claim-earliest-contract",
+      "claim": "Earliest contract-driven architecture is UNKNOWN because Protocol-v7 outputs are unavailable; source shapes are not silently promoted to validated contracts.",
+      "status": "UNKNOWN",
+      "evidence_refs": [
+        "syn-ev-00201"
+      ],
+      "depends_on": [],
+      "interpretation_boundary": "historical",
+      "upstream_blocker": "V1_FAILED_V4_V7_MISSING"
+    },
+    {
+      "claim_id": "claim-closure",
+      "claim": "Every complete recovered occurrence represents recursive discovery closure mechanisms, but no occurrence proves exhaustive search completeness.",
+      "status": "SUPPORTED",
+      "evidence_refs": [
+        "syn-ev-00007",
+        "syn-ev-00008"
+      ],
+      "depends_on": [],
+      "interpretation_boundary": "historical",
+      "upstream_blocker": "V1_FAILED_V4_V7_MISSING"
+    },
+    {
+      "claim_id": "claim-exhaustive-closure",
+      "claim": "Recovered recursive closure guarantees exhaustive search completeness.",
+      "status": "CONTRADICTED",
+      "evidence_refs": [
+        "syn-ev-00202"
+      ],
+      "depends_on": [
+        "claim-closure"
+      ],
+      "interpretation_boundary": "historical",
+      "upstream_blocker": "V1_FAILED_V4_V7_MISSING"
+    },
+    {
+      "claim_id": "claim-protocol",
+      "claim": "Recovered snapshots remain web-protocol coupled; protocol-independent genericity is not proved historically.",
+      "status": "SUPPORTED",
+      "evidence_refs": [
+        "syn-ev-00006"
+      ],
+      "depends_on": [],
+      "interpretation_boundary": "historical",
+      "upstream_blocker": "V1_FAILED_V4_V7_MISSING"
+    },
+    {
+      "claim_id": "claim-acceptance",
+      "claim": "Protocol-v9 cannot receive full acceptance in this checkout.",
+      "status": "PROVED",
+      "evidence_refs": [
+        "syn-ev-00203"
+      ],
+      "depends_on": [],
+      "interpretation_boundary": "historical",
+      "upstream_blocker": "V1_FAILED_V4_V7_MISSING"
+    },
+    {
+      "claim_id": "claim-current-separation",
+      "claim": "Current architecture proposals are retrospective/current context and are not evidence for missing historical implementation.",
+      "status": "SUPPORTED",
+      "evidence_refs": [
+        "syn-ev-00204"
+      ],
+      "depends_on": [],
+      "interpretation_boundary": "current-versus-historical",
+      "upstream_blocker": "V1_FAILED_V4_V7_MISSING"
+    },
+    {
+      "claim_id": "claim-causal-limit",
+      "claim": "Most transition motivations remain UNKNOWN; atomic deltas do not establish authorial cause.",
+      "status": "SUPPORTED",
+      "evidence_refs": [
+        "syn-ev-00021",
+        "syn-ev-00025",
+        "syn-ev-00026",
+        "syn-ev-00016",
+        "syn-ev-00016",
+        "syn-ev-00016",
+        "syn-ev-00016",
+        "syn-ev-00004",
+        "syn-ev-00072",
+        "syn-ev-00046"
+      ],
+      "depends_on": [],
+      "interpretation_boundary": "historical",
+      "upstream_blocker": "V1_FAILED_V4_V7_MISSING"
+    },
+    {
+      "claim_id": "claim-version-v010",
+      "claim": "v0.1.0 represents the earliest recovered candidate-centric closed web discovery loop.",
+      "status": "SUPPORTED",
+      "evidence_refs": [
+        "syn-ev-00001",
+        "syn-ev-00002",
+        "syn-ev-00003",
+        "syn-ev-00007",
+        "syn-ev-00008"
+      ],
+      "depends_on": [
+        "claim-earliest-generic"
+      ],
+      "interpretation_boundary": "historical",
+      "upstream_blocker": "V1_FAILED_V4_V7_MISSING"
+    },
+    {
+      "claim_id": "claim-version-v020",
+      "claim": "v0.2.0 represents a reusable multi-provider pipeline with explicit candidate claiming.",
+      "status": "SUPPORTED",
+      "evidence_refs": [
+        "syn-ev-00016",
+        "syn-ev-00021",
+        "syn-ev-00025"
+      ],
+      "depends_on": [],
+      "interpretation_boundary": "historical",
+      "upstream_blocker": "V1_FAILED_V4_V7_MISSING"
+    },
+    {
+      "claim_id": "claim-version-v030",
+      "claim": "v0.3.0 retains the claimed provider pipeline, adds explicit bounded retry, and elaborates cancellation with controller-based timeout handling.",
+      "status": "SUPPORTED",
+      "evidence_refs": [
+        "syn-ev-00037",
+        "syn-ev-00038",
+        "syn-ev-00040"
+      ],
+      "depends_on": [],
+      "interpretation_boundary": "historical",
+      "upstream_blocker": "V1_FAILED_V4_V7_MISSING"
+    },
+    {
+      "claim_id": "claim-version-v040",
+      "claim": "v0.4.0 is preserved as divergent richer-provider/provenance/failure-handling alternatives.",
+      "status": "SUPPORTED",
+      "evidence_refs": [
+        "syn-ev-00046",
+        "syn-ev-00054",
+        "syn-ev-00056",
+        "syn-ev-00061",
+        "syn-ev-00069",
+        "syn-ev-00071",
+        "syn-ev-00072"
+      ],
+      "depends_on": [],
+      "interpretation_boundary": "historical",
+      "upstream_blocker": "V1_FAILED_V4_V7_MISSING"
+    },
+    {
+      "claim_id": "claim-version-v050",
+      "claim": "v0.5.0 preserves three divergent provider/resource/observability occurrences, including one static parse failure.",
+      "status": "SUPPORTED",
+      "evidence_refs": [
+        "syn-ev-00077",
+        "syn-ev-00083",
+        "syn-ev-00085",
+        "syn-ev-00088",
+        "syn-ev-00093",
+        "syn-ev-00098",
+        "syn-ev-00100",
+        "syn-ev-00102",
+        "syn-ev-00107",
+        "syn-ev-00113",
+        "syn-ev-00115",
+        "syn-ev-00118",
+        "syn-ev-00205"
+      ],
+      "depends_on": [],
+      "interpretation_boundary": "historical",
+      "upstream_blocker": "V1_FAILED_V4_V7_MISSING"
+    },
+    {
+      "claim_id": "claim-version-v060",
+      "claim": "v0.6.0 preserves three broad provider/policy/diagnostic/resource-control experiments.",
+      "status": "SUPPORTED",
+      "evidence_refs": [
+        "syn-ev-00123",
+        "syn-ev-00128",
+        "syn-ev-00130",
+        "syn-ev-00132",
+        "syn-ev-00137",
+        "syn-ev-00143",
+        "syn-ev-00145",
+        "syn-ev-00146",
+        "syn-ev-00149",
+        "syn-ev-00150",
+        "syn-ev-00155",
+        "syn-ev-00161",
+        "syn-ev-00163",
+        "syn-ev-00164",
+        "syn-ev-00167",
+        "syn-ev-00168"
+      ],
+      "depends_on": [],
+      "interpretation_boundary": "historical",
+      "upstream_blocker": "V1_FAILED_V4_V7_MISSING"
+    },
+    {
+      "claim_id": "claim-version-v071",
+      "claim": "v0.7.1 represents explicit acquisition policy, plan, and decision-ledger structures around the recursive pipeline.",
+      "status": "SUPPORTED",
+      "evidence_refs": [
+        "syn-ev-00173",
+        "syn-ev-00176",
+        "syn-ev-00182",
+        "syn-ev-00183",
+        "syn-ev-00184"
+      ],
+      "depends_on": [],
+      "interpretation_boundary": "historical",
+      "upstream_blocker": "V1_FAILED_V4_V7_MISSING"
+    }
+  ]
+}

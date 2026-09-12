@@ -1,0 +1,152 @@
+{
+  "schema_version": "1.0",
+  "graph_type": "OBLIGATION_LINEAGE_GRAPH",
+  "nodes": [
+    "OBL-ACQ-METADATA",
+    "OBL-AUDIT",
+    "OBL-CANDIDATE-EQUIVALENCE",
+    "OBL-CANDIDATE-IDENTITY",
+    "OBL-CANDIDATE-STATE",
+    "OBL-CLAIM-EXCLUSIVITY",
+    "OBL-LIFECYCLE-OBS",
+    "OBL-OBS-DISTINCT",
+    "OBL-PROVENANCE",
+    "OBL-PROVENANCE-INTEGRITY",
+    "OBL-PROVIDER-CONTRACT",
+    "OBL-RECOGNITION-DISTINCT",
+    "OBL-RESOURCE",
+    "OBL-UNBOUNDED"
+  ],
+  "edges": [
+    {
+      "from": "OBL-CANDIDATE-IDENTITY",
+      "to": "OBL-CANDIDATE-EQUIVALENCE",
+      "relation": "FORMALIZED_AS",
+      "lineage_id": "LIN-001"
+    },
+    {
+      "from": "OBL-CANDIDATE-STATE",
+      "to": "OBL-CLAIM-EXCLUSIVITY",
+      "relation": "STRENGTHENED",
+      "lineage_id": "LIN-002"
+    },
+    {
+      "from": "OBL-OBS-DISTINCT",
+      "to": "OBL-ACQ-METADATA",
+      "relation": "ELABORATED",
+      "lineage_id": "LIN-003"
+    },
+    {
+      "from": "OBL-RECOGNITION-DISTINCT",
+      "to": "OBL-PROVIDER-CONTRACT",
+      "relation": "GENERALIZED",
+      "lineage_id": "LIN-004"
+    },
+    {
+      "from": "OBL-PROVENANCE",
+      "to": "OBL-PROVENANCE-INTEGRITY",
+      "relation": "FUTURE_STRENGTHENING",
+      "lineage_id": "LIN-005"
+    },
+    {
+      "from": "OBL-RESOURCE",
+      "to": "OBL-UNBOUNDED",
+      "relation": "FUTURE_STRENGTHENING",
+      "lineage_id": "LIN-006"
+    },
+    {
+      "from": "OBL-LIFECYCLE-OBS",
+      "to": "OBL-AUDIT",
+      "relation": "FUTURE_STRENGTHENING",
+      "lineage_id": "LIN-007"
+    }
+  ],
+  "lineage": [
+    {
+      "lineage_id": "LIN-001",
+      "from_obligation": "OBL-CANDIDATE-IDENTITY",
+      "to_obligation": "OBL-CANDIDATE-EQUIVALENCE",
+      "relation": "FORMALIZED_AS",
+      "valid_from": "v0.1.0",
+      "valid_until": "UNKNOWN",
+      "epistemic_status": "INFERRED",
+      "dependency": false,
+      "supersession": false,
+      "reason": "Analytical obligation evolution; no implementation lineage is silently asserted."
+    },
+    {
+      "lineage_id": "LIN-002",
+      "from_obligation": "OBL-CANDIDATE-STATE",
+      "to_obligation": "OBL-CLAIM-EXCLUSIVITY",
+      "relation": "STRENGTHENED",
+      "valid_from": "v0.2.0",
+      "valid_until": "UNKNOWN",
+      "epistemic_status": "SUPPORTED",
+      "dependency": false,
+      "supersession": false,
+      "reason": "Analytical obligation evolution; no implementation lineage is silently asserted."
+    },
+    {
+      "lineage_id": "LIN-003",
+      "from_obligation": "OBL-OBS-DISTINCT",
+      "to_obligation": "OBL-ACQ-METADATA",
+      "relation": "ELABORATED",
+      "valid_from": "v0.1.0",
+      "valid_until": "UNKNOWN",
+      "epistemic_status": "SUPPORTED",
+      "dependency": false,
+      "supersession": false,
+      "reason": "Analytical obligation evolution; no implementation lineage is silently asserted."
+    },
+    {
+      "lineage_id": "LIN-004",
+      "from_obligation": "OBL-RECOGNITION-DISTINCT",
+      "to_obligation": "OBL-PROVIDER-CONTRACT",
+      "relation": "GENERALIZED",
+      "valid_from": "v0.2.0",
+      "valid_until": "UNKNOWN",
+      "epistemic_status": "SUPPORTED",
+      "dependency": false,
+      "supersession": false,
+      "reason": "Analytical obligation evolution; no implementation lineage is silently asserted."
+    },
+    {
+      "lineage_id": "LIN-005",
+      "from_obligation": "OBL-PROVENANCE",
+      "to_obligation": "OBL-PROVENANCE-INTEGRITY",
+      "relation": "FUTURE_STRENGTHENING",
+      "valid_from": "UNKNOWN",
+      "valid_until": "UNKNOWN",
+      "epistemic_status": "SUPPORTED",
+      "dependency": false,
+      "supersession": false,
+      "reason": "Analytical obligation evolution; no implementation lineage is silently asserted."
+    },
+    {
+      "lineage_id": "LIN-006",
+      "from_obligation": "OBL-RESOURCE",
+      "to_obligation": "OBL-UNBOUNDED",
+      "relation": "FUTURE_STRENGTHENING",
+      "valid_from": "UNKNOWN",
+      "valid_until": "UNKNOWN",
+      "epistemic_status": "SUPPORTED",
+      "dependency": false,
+      "supersession": false,
+      "reason": "Analytical obligation evolution; no implementation lineage is silently asserted."
+    },
+    {
+      "lineage_id": "LIN-007",
+      "from_obligation": "OBL-LIFECYCLE-OBS",
+      "to_obligation": "OBL-AUDIT",
+      "relation": "FUTURE_STRENGTHENING",
+      "valid_from": "v0.7.1",
+      "valid_until": "UNKNOWN",
+      "epistemic_status": "SUPPORTED",
+      "dependency": false,
+      "supersession": false,
+      "reason": "Analytical obligation evolution; no implementation lineage is silently asserted."
+    }
+  ],
+  "supersessions": [],
+  "rule": "Lineage is evolution, not logical prerequisite or supersession."
+}

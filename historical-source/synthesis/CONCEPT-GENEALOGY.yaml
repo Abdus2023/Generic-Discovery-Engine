@@ -1,0 +1,1331 @@
+{
+  "schema_version": "protocol-v9",
+  "genealogies": [
+    {
+      "concept": "Candidate identity",
+      "first_mention": {
+        "version": "v0.1.0",
+        "status": "SUPPORTED",
+        "evidence_refs": [
+          "syn-ev-00001"
+        ]
+      },
+      "first_design": {
+        "version": "UNKNOWN",
+        "status": "UNKNOWN",
+        "reason": "Code occurrence is not silently upgraded to prior design"
+      },
+      "first_code": {
+        "version": "v0.1.0",
+        "status": "SUPPORTED",
+        "evidence_refs": [
+          "syn-ev-00001"
+        ]
+      },
+      "first_use": {
+        "version": "v0.1.0",
+        "status": "SUPPORTED",
+        "evidence_refs": [
+          "syn-ev-00001"
+        ]
+      },
+      "first_test": {
+        "version": "UNKNOWN",
+        "status": "UNKNOWN",
+        "reason": "No historical test corpus is verified"
+      },
+      "first_verification": {
+        "version": "UNKNOWN",
+        "status": "UNKNOWN",
+        "reason": "Retrospective static checks are not historical verification"
+      },
+      "stabilization": {
+        "version": "UNKNOWN",
+        "status": "UNKNOWN",
+        "reason": "Branch lineage and contract verification are unavailable"
+      },
+      "occurrences": [
+        {
+          "snapshot_id": "snapshot-0001",
+          "version": "v0.1.0",
+          "variant": "mechanically-composed"
+        },
+        {
+          "snapshot_id": "snapshot-0003",
+          "version": "v0.2.0",
+          "variant": "mechanically-composed"
+        },
+        {
+          "snapshot_id": "snapshot-0005",
+          "version": "v0.3.0",
+          "variant": "only-evidenced-complete-occurrence"
+        },
+        {
+          "snapshot_id": "snapshot-0006",
+          "version": "v0.4.0",
+          "variant": "variant-a"
+        },
+        {
+          "snapshot_id": "snapshot-0008",
+          "version": "v0.4.0",
+          "variant": "variant-b"
+        },
+        {
+          "snapshot_id": "snapshot-0007",
+          "version": "v0.5.0",
+          "variant": "variant-a"
+        },
+        {
+          "snapshot_id": "snapshot-0009",
+          "version": "v0.5.0",
+          "variant": "variant-b"
+        },
+        {
+          "snapshot_id": "snapshot-0011",
+          "version": "v0.5.0",
+          "variant": "variant-c"
+        },
+        {
+          "snapshot_id": "snapshot-0010",
+          "version": "v0.6.0",
+          "variant": "variant-a"
+        },
+        {
+          "snapshot_id": "snapshot-0012",
+          "version": "v0.6.0",
+          "variant": "variant-b"
+        },
+        {
+          "snapshot_id": "snapshot-0013",
+          "version": "v0.6.0",
+          "variant": "variant-c"
+        },
+        {
+          "snapshot_id": "snapshot-0014",
+          "version": "v0.7.1",
+          "variant": "only-evidenced-complete-occurrence"
+        }
+      ],
+      "identity_across_occurrences": "UNKNOWN",
+      "transformations": {
+        "renames": [],
+        "splits": [],
+        "merges": [],
+        "generalizations": [],
+        "abandonments": [],
+        "reintroductions": [],
+        "empty_list_meaning": "NOT_PROVED_NOT_NONE_HISTORICALLY"
+      },
+      "unresolved_transformation_questions": [
+        "rename identity",
+        "split or merge identity",
+        "abandonment versus non-occurrence",
+        "reintroduction versus independent recurrence"
+      ],
+      "expected_first_version_check": "v0.1.0"
+    },
+    {
+      "concept": "Observation",
+      "first_mention": {
+        "version": "v0.1.0",
+        "status": "SUPPORTED",
+        "evidence_refs": [
+          "syn-ev-00002"
+        ]
+      },
+      "first_design": {
+        "version": "UNKNOWN",
+        "status": "UNKNOWN",
+        "reason": "Code occurrence is not silently upgraded to prior design"
+      },
+      "first_code": {
+        "version": "v0.1.0",
+        "status": "SUPPORTED",
+        "evidence_refs": [
+          "syn-ev-00002"
+        ]
+      },
+      "first_use": {
+        "version": "v0.1.0",
+        "status": "SUPPORTED",
+        "evidence_refs": [
+          "syn-ev-00002"
+        ]
+      },
+      "first_test": {
+        "version": "UNKNOWN",
+        "status": "UNKNOWN",
+        "reason": "No historical test corpus is verified"
+      },
+      "first_verification": {
+        "version": "UNKNOWN",
+        "status": "UNKNOWN",
+        "reason": "Retrospective static checks are not historical verification"
+      },
+      "stabilization": {
+        "version": "UNKNOWN",
+        "status": "UNKNOWN",
+        "reason": "Branch lineage and contract verification are unavailable"
+      },
+      "occurrences": [
+        {
+          "snapshot_id": "snapshot-0001",
+          "version": "v0.1.0",
+          "variant": "mechanically-composed"
+        },
+        {
+          "snapshot_id": "snapshot-0003",
+          "version": "v0.2.0",
+          "variant": "mechanically-composed"
+        },
+        {
+          "snapshot_id": "snapshot-0005",
+          "version": "v0.3.0",
+          "variant": "only-evidenced-complete-occurrence"
+        },
+        {
+          "snapshot_id": "snapshot-0006",
+          "version": "v0.4.0",
+          "variant": "variant-a"
+        },
+        {
+          "snapshot_id": "snapshot-0008",
+          "version": "v0.4.0",
+          "variant": "variant-b"
+        },
+        {
+          "snapshot_id": "snapshot-0007",
+          "version": "v0.5.0",
+          "variant": "variant-a"
+        },
+        {
+          "snapshot_id": "snapshot-0009",
+          "version": "v0.5.0",
+          "variant": "variant-b"
+        },
+        {
+          "snapshot_id": "snapshot-0011",
+          "version": "v0.5.0",
+          "variant": "variant-c"
+        },
+        {
+          "snapshot_id": "snapshot-0010",
+          "version": "v0.6.0",
+          "variant": "variant-a"
+        },
+        {
+          "snapshot_id": "snapshot-0012",
+          "version": "v0.6.0",
+          "variant": "variant-b"
+        },
+        {
+          "snapshot_id": "snapshot-0013",
+          "version": "v0.6.0",
+          "variant": "variant-c"
+        },
+        {
+          "snapshot_id": "snapshot-0014",
+          "version": "v0.7.1",
+          "variant": "only-evidenced-complete-occurrence"
+        }
+      ],
+      "identity_across_occurrences": "UNKNOWN",
+      "transformations": {
+        "renames": [],
+        "splits": [],
+        "merges": [],
+        "generalizations": [],
+        "abandonments": [],
+        "reintroductions": [],
+        "empty_list_meaning": "NOT_PROVED_NOT_NONE_HISTORICALLY"
+      },
+      "unresolved_transformation_questions": [
+        "rename identity",
+        "split or merge identity",
+        "abandonment versus non-occurrence",
+        "reintroduction versus independent recurrence"
+      ],
+      "expected_first_version_check": "v0.1.0"
+    },
+    {
+      "concept": "Discovery",
+      "first_mention": {
+        "version": "v0.1.0",
+        "status": "SUPPORTED",
+        "evidence_refs": [
+          "syn-ev-00003"
+        ]
+      },
+      "first_design": {
+        "version": "UNKNOWN",
+        "status": "UNKNOWN",
+        "reason": "Code occurrence is not silently upgraded to prior design"
+      },
+      "first_code": {
+        "version": "v0.1.0",
+        "status": "SUPPORTED",
+        "evidence_refs": [
+          "syn-ev-00003"
+        ]
+      },
+      "first_use": {
+        "version": "v0.1.0",
+        "status": "SUPPORTED",
+        "evidence_refs": [
+          "syn-ev-00003"
+        ]
+      },
+      "first_test": {
+        "version": "UNKNOWN",
+        "status": "UNKNOWN",
+        "reason": "No historical test corpus is verified"
+      },
+      "first_verification": {
+        "version": "UNKNOWN",
+        "status": "UNKNOWN",
+        "reason": "Retrospective static checks are not historical verification"
+      },
+      "stabilization": {
+        "version": "UNKNOWN",
+        "status": "UNKNOWN",
+        "reason": "Branch lineage and contract verification are unavailable"
+      },
+      "occurrences": [
+        {
+          "snapshot_id": "snapshot-0001",
+          "version": "v0.1.0",
+          "variant": "mechanically-composed"
+        },
+        {
+          "snapshot_id": "snapshot-0003",
+          "version": "v0.2.0",
+          "variant": "mechanically-composed"
+        },
+        {
+          "snapshot_id": "snapshot-0005",
+          "version": "v0.3.0",
+          "variant": "only-evidenced-complete-occurrence"
+        },
+        {
+          "snapshot_id": "snapshot-0006",
+          "version": "v0.4.0",
+          "variant": "variant-a"
+        },
+        {
+          "snapshot_id": "snapshot-0008",
+          "version": "v0.4.0",
+          "variant": "variant-b"
+        },
+        {
+          "snapshot_id": "snapshot-0007",
+          "version": "v0.5.0",
+          "variant": "variant-a"
+        },
+        {
+          "snapshot_id": "snapshot-0009",
+          "version": "v0.5.0",
+          "variant": "variant-b"
+        },
+        {
+          "snapshot_id": "snapshot-0011",
+          "version": "v0.5.0",
+          "variant": "variant-c"
+        },
+        {
+          "snapshot_id": "snapshot-0010",
+          "version": "v0.6.0",
+          "variant": "variant-a"
+        },
+        {
+          "snapshot_id": "snapshot-0012",
+          "version": "v0.6.0",
+          "variant": "variant-b"
+        },
+        {
+          "snapshot_id": "snapshot-0013",
+          "version": "v0.6.0",
+          "variant": "variant-c"
+        },
+        {
+          "snapshot_id": "snapshot-0014",
+          "version": "v0.7.1",
+          "variant": "only-evidenced-complete-occurrence"
+        }
+      ],
+      "identity_across_occurrences": "UNKNOWN",
+      "transformations": {
+        "renames": [],
+        "splits": [],
+        "merges": [],
+        "generalizations": [],
+        "abandonments": [],
+        "reintroductions": [],
+        "empty_list_meaning": "NOT_PROVED_NOT_NONE_HISTORICALLY"
+      },
+      "unresolved_transformation_questions": [
+        "rename identity",
+        "split or merge identity",
+        "abandonment versus non-occurrence",
+        "reintroduction versus independent recurrence"
+      ],
+      "expected_first_version_check": "v0.1.0"
+    },
+    {
+      "concept": "Revisiting scheduler",
+      "first_mention": {
+        "version": "v0.1.0",
+        "status": "SUPPORTED",
+        "evidence_refs": [
+          "syn-ev-00008"
+        ]
+      },
+      "first_design": {
+        "version": "UNKNOWN",
+        "status": "UNKNOWN",
+        "reason": "Code occurrence is not silently upgraded to prior design"
+      },
+      "first_code": {
+        "version": "v0.1.0",
+        "status": "SUPPORTED",
+        "evidence_refs": [
+          "syn-ev-00008"
+        ]
+      },
+      "first_use": {
+        "version": "v0.1.0",
+        "status": "SUPPORTED",
+        "evidence_refs": [
+          "syn-ev-00008"
+        ]
+      },
+      "first_test": {
+        "version": "UNKNOWN",
+        "status": "UNKNOWN",
+        "reason": "No historical test corpus is verified"
+      },
+      "first_verification": {
+        "version": "UNKNOWN",
+        "status": "UNKNOWN",
+        "reason": "Retrospective static checks are not historical verification"
+      },
+      "stabilization": {
+        "version": "UNKNOWN",
+        "status": "UNKNOWN",
+        "reason": "Branch lineage and contract verification are unavailable"
+      },
+      "occurrences": [
+        {
+          "snapshot_id": "snapshot-0001",
+          "version": "v0.1.0",
+          "variant": "mechanically-composed"
+        },
+        {
+          "snapshot_id": "snapshot-0003",
+          "version": "v0.2.0",
+          "variant": "mechanically-composed"
+        },
+        {
+          "snapshot_id": "snapshot-0005",
+          "version": "v0.3.0",
+          "variant": "only-evidenced-complete-occurrence"
+        },
+        {
+          "snapshot_id": "snapshot-0006",
+          "version": "v0.4.0",
+          "variant": "variant-a"
+        },
+        {
+          "snapshot_id": "snapshot-0008",
+          "version": "v0.4.0",
+          "variant": "variant-b"
+        },
+        {
+          "snapshot_id": "snapshot-0007",
+          "version": "v0.5.0",
+          "variant": "variant-a"
+        },
+        {
+          "snapshot_id": "snapshot-0009",
+          "version": "v0.5.0",
+          "variant": "variant-b"
+        },
+        {
+          "snapshot_id": "snapshot-0011",
+          "version": "v0.5.0",
+          "variant": "variant-c"
+        },
+        {
+          "snapshot_id": "snapshot-0010",
+          "version": "v0.6.0",
+          "variant": "variant-a"
+        },
+        {
+          "snapshot_id": "snapshot-0012",
+          "version": "v0.6.0",
+          "variant": "variant-b"
+        },
+        {
+          "snapshot_id": "snapshot-0013",
+          "version": "v0.6.0",
+          "variant": "variant-c"
+        },
+        {
+          "snapshot_id": "snapshot-0014",
+          "version": "v0.7.1",
+          "variant": "only-evidenced-complete-occurrence"
+        }
+      ],
+      "identity_across_occurrences": "UNKNOWN",
+      "transformations": {
+        "renames": [],
+        "splits": [],
+        "merges": [],
+        "generalizations": [],
+        "abandonments": [],
+        "reintroductions": [],
+        "empty_list_meaning": "NOT_PROVED_NOT_NONE_HISTORICALLY"
+      },
+      "unresolved_transformation_questions": [
+        "rename identity",
+        "split or merge identity",
+        "abandonment versus non-occurrence",
+        "reintroduction versus independent recurrence"
+      ],
+      "expected_first_version_check": "v0.1.0"
+    },
+    {
+      "concept": "Recognition role",
+      "first_mention": {
+        "version": "v0.1.0",
+        "status": "SUPPORTED",
+        "evidence_refs": [
+          "syn-ev-00004"
+        ]
+      },
+      "first_design": {
+        "version": "UNKNOWN",
+        "status": "UNKNOWN",
+        "reason": "Code occurrence is not silently upgraded to prior design"
+      },
+      "first_code": {
+        "version": "v0.1.0",
+        "status": "SUPPORTED",
+        "evidence_refs": [
+          "syn-ev-00004"
+        ]
+      },
+      "first_use": {
+        "version": "v0.1.0",
+        "status": "SUPPORTED",
+        "evidence_refs": [
+          "syn-ev-00004"
+        ]
+      },
+      "first_test": {
+        "version": "UNKNOWN",
+        "status": "UNKNOWN",
+        "reason": "No historical test corpus is verified"
+      },
+      "first_verification": {
+        "version": "UNKNOWN",
+        "status": "UNKNOWN",
+        "reason": "Retrospective static checks are not historical verification"
+      },
+      "stabilization": {
+        "version": "UNKNOWN",
+        "status": "UNKNOWN",
+        "reason": "Branch lineage and contract verification are unavailable"
+      },
+      "occurrences": [
+        {
+          "snapshot_id": "snapshot-0001",
+          "version": "v0.1.0",
+          "variant": "mechanically-composed"
+        },
+        {
+          "snapshot_id": "snapshot-0003",
+          "version": "v0.2.0",
+          "variant": "mechanically-composed"
+        },
+        {
+          "snapshot_id": "snapshot-0005",
+          "version": "v0.3.0",
+          "variant": "only-evidenced-complete-occurrence"
+        },
+        {
+          "snapshot_id": "snapshot-0006",
+          "version": "v0.4.0",
+          "variant": "variant-a"
+        },
+        {
+          "snapshot_id": "snapshot-0008",
+          "version": "v0.4.0",
+          "variant": "variant-b"
+        },
+        {
+          "snapshot_id": "snapshot-0007",
+          "version": "v0.5.0",
+          "variant": "variant-a"
+        },
+        {
+          "snapshot_id": "snapshot-0009",
+          "version": "v0.5.0",
+          "variant": "variant-b"
+        },
+        {
+          "snapshot_id": "snapshot-0011",
+          "version": "v0.5.0",
+          "variant": "variant-c"
+        },
+        {
+          "snapshot_id": "snapshot-0010",
+          "version": "v0.6.0",
+          "variant": "variant-a"
+        },
+        {
+          "snapshot_id": "snapshot-0012",
+          "version": "v0.6.0",
+          "variant": "variant-b"
+        },
+        {
+          "snapshot_id": "snapshot-0013",
+          "version": "v0.6.0",
+          "variant": "variant-c"
+        },
+        {
+          "snapshot_id": "snapshot-0014",
+          "version": "v0.7.1",
+          "variant": "only-evidenced-complete-occurrence"
+        }
+      ],
+      "identity_across_occurrences": "UNKNOWN",
+      "transformations": {
+        "renames": [],
+        "splits": [],
+        "merges": [],
+        "generalizations": [],
+        "abandonments": [],
+        "reintroductions": [],
+        "empty_list_meaning": "NOT_PROVED_NOT_NONE_HISTORICALLY"
+      },
+      "unresolved_transformation_questions": [
+        "rename identity",
+        "split or merge identity",
+        "abandonment versus non-occurrence",
+        "reintroduction versus independent recurrence"
+      ],
+      "expected_first_version_check": "v0.1.0"
+    },
+    {
+      "concept": "Reusable provider abstraction",
+      "first_mention": {
+        "version": "v0.2.0",
+        "status": "SUPPORTED",
+        "evidence_refs": [
+          "syn-ev-00021"
+        ]
+      },
+      "first_design": {
+        "version": "UNKNOWN",
+        "status": "UNKNOWN",
+        "reason": "Code occurrence is not silently upgraded to prior design"
+      },
+      "first_code": {
+        "version": "v0.2.0",
+        "status": "SUPPORTED",
+        "evidence_refs": [
+          "syn-ev-00021"
+        ]
+      },
+      "first_use": {
+        "version": "v0.2.0",
+        "status": "SUPPORTED",
+        "evidence_refs": [
+          "syn-ev-00021"
+        ]
+      },
+      "first_test": {
+        "version": "UNKNOWN",
+        "status": "UNKNOWN",
+        "reason": "No historical test corpus is verified"
+      },
+      "first_verification": {
+        "version": "UNKNOWN",
+        "status": "UNKNOWN",
+        "reason": "Retrospective static checks are not historical verification"
+      },
+      "stabilization": {
+        "version": "UNKNOWN",
+        "status": "UNKNOWN",
+        "reason": "Branch lineage and contract verification are unavailable"
+      },
+      "occurrences": [
+        {
+          "snapshot_id": "snapshot-0003",
+          "version": "v0.2.0",
+          "variant": "mechanically-composed"
+        },
+        {
+          "snapshot_id": "snapshot-0005",
+          "version": "v0.3.0",
+          "variant": "only-evidenced-complete-occurrence"
+        },
+        {
+          "snapshot_id": "snapshot-0006",
+          "version": "v0.4.0",
+          "variant": "variant-a"
+        },
+        {
+          "snapshot_id": "snapshot-0008",
+          "version": "v0.4.0",
+          "variant": "variant-b"
+        },
+        {
+          "snapshot_id": "snapshot-0007",
+          "version": "v0.5.0",
+          "variant": "variant-a"
+        },
+        {
+          "snapshot_id": "snapshot-0009",
+          "version": "v0.5.0",
+          "variant": "variant-b"
+        },
+        {
+          "snapshot_id": "snapshot-0011",
+          "version": "v0.5.0",
+          "variant": "variant-c"
+        },
+        {
+          "snapshot_id": "snapshot-0010",
+          "version": "v0.6.0",
+          "variant": "variant-a"
+        },
+        {
+          "snapshot_id": "snapshot-0012",
+          "version": "v0.6.0",
+          "variant": "variant-b"
+        },
+        {
+          "snapshot_id": "snapshot-0013",
+          "version": "v0.6.0",
+          "variant": "variant-c"
+        },
+        {
+          "snapshot_id": "snapshot-0014",
+          "version": "v0.7.1",
+          "variant": "only-evidenced-complete-occurrence"
+        }
+      ],
+      "identity_across_occurrences": "UNKNOWN",
+      "transformations": {
+        "renames": [],
+        "splits": [],
+        "merges": [],
+        "generalizations": [
+          {
+            "at_version": "v0.2.0",
+            "status": "INFERRED",
+            "interpretation": "The recovered recognition role broadens from one HtmlRecognizer occurrence to a reusable multi-provider family; implementation lineage remains UNKNOWN.",
+            "evidence_refs": [
+              "syn-ev-00021"
+            ]
+          }
+        ],
+        "abandonments": [],
+        "reintroductions": [],
+        "empty_list_meaning": "NOT_PROVED_NOT_NONE_HISTORICALLY"
+      },
+      "unresolved_transformation_questions": [
+        "rename identity",
+        "split or merge identity",
+        "abandonment versus non-occurrence",
+        "reintroduction versus independent recurrence"
+      ],
+      "expected_first_version_check": "v0.2.0"
+    },
+    {
+      "concept": "Explicit retry",
+      "first_mention": {
+        "version": "v0.1.0",
+        "status": "SUPPORTED",
+        "evidence_refs": [
+          "syn-ev-00009"
+        ]
+      },
+      "first_design": {
+        "version": "UNKNOWN",
+        "status": "UNKNOWN",
+        "reason": "Code occurrence is not silently upgraded to prior design"
+      },
+      "first_code": {
+        "version": "v0.1.0",
+        "status": "SUPPORTED",
+        "evidence_refs": [
+          "syn-ev-00009"
+        ]
+      },
+      "first_use": {
+        "version": "v0.1.0",
+        "status": "SUPPORTED",
+        "evidence_refs": [
+          "syn-ev-00009"
+        ]
+      },
+      "first_test": {
+        "version": "UNKNOWN",
+        "status": "UNKNOWN",
+        "reason": "No historical test corpus is verified"
+      },
+      "first_verification": {
+        "version": "UNKNOWN",
+        "status": "UNKNOWN",
+        "reason": "Retrospective static checks are not historical verification"
+      },
+      "stabilization": {
+        "version": "UNKNOWN",
+        "status": "UNKNOWN",
+        "reason": "Branch lineage and contract verification are unavailable"
+      },
+      "occurrences": [
+        {
+          "snapshot_id": "snapshot-0001",
+          "version": "v0.1.0",
+          "variant": "mechanically-composed"
+        },
+        {
+          "snapshot_id": "snapshot-0003",
+          "version": "v0.2.0",
+          "variant": "mechanically-composed"
+        },
+        {
+          "snapshot_id": "snapshot-0005",
+          "version": "v0.3.0",
+          "variant": "only-evidenced-complete-occurrence"
+        },
+        {
+          "snapshot_id": "snapshot-0006",
+          "version": "v0.4.0",
+          "variant": "variant-a"
+        },
+        {
+          "snapshot_id": "snapshot-0008",
+          "version": "v0.4.0",
+          "variant": "variant-b"
+        },
+        {
+          "snapshot_id": "snapshot-0007",
+          "version": "v0.5.0",
+          "variant": "variant-a"
+        },
+        {
+          "snapshot_id": "snapshot-0009",
+          "version": "v0.5.0",
+          "variant": "variant-b"
+        },
+        {
+          "snapshot_id": "snapshot-0011",
+          "version": "v0.5.0",
+          "variant": "variant-c"
+        },
+        {
+          "snapshot_id": "snapshot-0010",
+          "version": "v0.6.0",
+          "variant": "variant-a"
+        },
+        {
+          "snapshot_id": "snapshot-0012",
+          "version": "v0.6.0",
+          "variant": "variant-b"
+        },
+        {
+          "snapshot_id": "snapshot-0013",
+          "version": "v0.6.0",
+          "variant": "variant-c"
+        },
+        {
+          "snapshot_id": "snapshot-0014",
+          "version": "v0.7.1",
+          "variant": "only-evidenced-complete-occurrence"
+        }
+      ],
+      "identity_across_occurrences": "UNKNOWN",
+      "transformations": {
+        "renames": [],
+        "splits": [],
+        "merges": [],
+        "generalizations": [],
+        "abandonments": [],
+        "reintroductions": [],
+        "empty_list_meaning": "NOT_PROVED_NOT_NONE_HISTORICALLY"
+      },
+      "unresolved_transformation_questions": [
+        "rename identity",
+        "split or merge identity",
+        "abandonment versus non-occurrence",
+        "reintroduction versus independent recurrence"
+      ],
+      "expected_first_version_check": "v0.3.0"
+    },
+    {
+      "concept": "Cancellation",
+      "first_mention": {
+        "version": "v0.1.0",
+        "status": "SUPPORTED",
+        "evidence_refs": [
+          "syn-ev-00010"
+        ]
+      },
+      "first_design": {
+        "version": "UNKNOWN",
+        "status": "UNKNOWN",
+        "reason": "Code occurrence is not silently upgraded to prior design"
+      },
+      "first_code": {
+        "version": "v0.1.0",
+        "status": "SUPPORTED",
+        "evidence_refs": [
+          "syn-ev-00010"
+        ]
+      },
+      "first_use": {
+        "version": "v0.1.0",
+        "status": "SUPPORTED",
+        "evidence_refs": [
+          "syn-ev-00010"
+        ]
+      },
+      "first_test": {
+        "version": "UNKNOWN",
+        "status": "UNKNOWN",
+        "reason": "No historical test corpus is verified"
+      },
+      "first_verification": {
+        "version": "UNKNOWN",
+        "status": "UNKNOWN",
+        "reason": "Retrospective static checks are not historical verification"
+      },
+      "stabilization": {
+        "version": "UNKNOWN",
+        "status": "UNKNOWN",
+        "reason": "Branch lineage and contract verification are unavailable"
+      },
+      "occurrences": [
+        {
+          "snapshot_id": "snapshot-0001",
+          "version": "v0.1.0",
+          "variant": "mechanically-composed"
+        },
+        {
+          "snapshot_id": "snapshot-0003",
+          "version": "v0.2.0",
+          "variant": "mechanically-composed"
+        },
+        {
+          "snapshot_id": "snapshot-0005",
+          "version": "v0.3.0",
+          "variant": "only-evidenced-complete-occurrence"
+        },
+        {
+          "snapshot_id": "snapshot-0006",
+          "version": "v0.4.0",
+          "variant": "variant-a"
+        },
+        {
+          "snapshot_id": "snapshot-0008",
+          "version": "v0.4.0",
+          "variant": "variant-b"
+        },
+        {
+          "snapshot_id": "snapshot-0007",
+          "version": "v0.5.0",
+          "variant": "variant-a"
+        },
+        {
+          "snapshot_id": "snapshot-0009",
+          "version": "v0.5.0",
+          "variant": "variant-b"
+        },
+        {
+          "snapshot_id": "snapshot-0011",
+          "version": "v0.5.0",
+          "variant": "variant-c"
+        },
+        {
+          "snapshot_id": "snapshot-0010",
+          "version": "v0.6.0",
+          "variant": "variant-a"
+        },
+        {
+          "snapshot_id": "snapshot-0012",
+          "version": "v0.6.0",
+          "variant": "variant-b"
+        },
+        {
+          "snapshot_id": "snapshot-0013",
+          "version": "v0.6.0",
+          "variant": "variant-c"
+        },
+        {
+          "snapshot_id": "snapshot-0014",
+          "version": "v0.7.1",
+          "variant": "only-evidenced-complete-occurrence"
+        }
+      ],
+      "identity_across_occurrences": "UNKNOWN",
+      "transformations": {
+        "renames": [],
+        "splits": [],
+        "merges": [],
+        "generalizations": [],
+        "abandonments": [],
+        "reintroductions": [],
+        "empty_list_meaning": "NOT_PROVED_NOT_NONE_HISTORICALLY"
+      },
+      "unresolved_transformation_questions": [
+        "rename identity",
+        "split or merge identity",
+        "abandonment versus non-occurrence",
+        "reintroduction versus independent recurrence"
+      ],
+      "expected_first_version_check": "v0.3.0"
+    },
+    {
+      "concept": "Explicit provenance",
+      "first_mention": {
+        "version": "v0.1.0",
+        "status": "SUPPORTED",
+        "evidence_refs": [
+          "syn-ev-00011"
+        ]
+      },
+      "first_design": {
+        "version": "UNKNOWN",
+        "status": "UNKNOWN",
+        "reason": "Code occurrence is not silently upgraded to prior design"
+      },
+      "first_code": {
+        "version": "v0.1.0",
+        "status": "SUPPORTED",
+        "evidence_refs": [
+          "syn-ev-00011"
+        ]
+      },
+      "first_use": {
+        "version": "v0.1.0",
+        "status": "SUPPORTED",
+        "evidence_refs": [
+          "syn-ev-00011"
+        ]
+      },
+      "first_test": {
+        "version": "UNKNOWN",
+        "status": "UNKNOWN",
+        "reason": "No historical test corpus is verified"
+      },
+      "first_verification": {
+        "version": "UNKNOWN",
+        "status": "UNKNOWN",
+        "reason": "Retrospective static checks are not historical verification"
+      },
+      "stabilization": {
+        "version": "UNKNOWN",
+        "status": "UNKNOWN",
+        "reason": "Branch lineage and contract verification are unavailable"
+      },
+      "occurrences": [
+        {
+          "snapshot_id": "snapshot-0001",
+          "version": "v0.1.0",
+          "variant": "mechanically-composed"
+        },
+        {
+          "snapshot_id": "snapshot-0003",
+          "version": "v0.2.0",
+          "variant": "mechanically-composed"
+        },
+        {
+          "snapshot_id": "snapshot-0005",
+          "version": "v0.3.0",
+          "variant": "only-evidenced-complete-occurrence"
+        },
+        {
+          "snapshot_id": "snapshot-0006",
+          "version": "v0.4.0",
+          "variant": "variant-a"
+        },
+        {
+          "snapshot_id": "snapshot-0008",
+          "version": "v0.4.0",
+          "variant": "variant-b"
+        },
+        {
+          "snapshot_id": "snapshot-0007",
+          "version": "v0.5.0",
+          "variant": "variant-a"
+        },
+        {
+          "snapshot_id": "snapshot-0009",
+          "version": "v0.5.0",
+          "variant": "variant-b"
+        },
+        {
+          "snapshot_id": "snapshot-0011",
+          "version": "v0.5.0",
+          "variant": "variant-c"
+        },
+        {
+          "snapshot_id": "snapshot-0010",
+          "version": "v0.6.0",
+          "variant": "variant-a"
+        },
+        {
+          "snapshot_id": "snapshot-0012",
+          "version": "v0.6.0",
+          "variant": "variant-b"
+        },
+        {
+          "snapshot_id": "snapshot-0013",
+          "version": "v0.6.0",
+          "variant": "variant-c"
+        },
+        {
+          "snapshot_id": "snapshot-0014",
+          "version": "v0.7.1",
+          "variant": "only-evidenced-complete-occurrence"
+        }
+      ],
+      "identity_across_occurrences": "UNKNOWN",
+      "transformations": {
+        "renames": [],
+        "splits": [],
+        "merges": [],
+        "generalizations": [],
+        "abandonments": [],
+        "reintroductions": [],
+        "empty_list_meaning": "NOT_PROVED_NOT_NONE_HISTORICALLY"
+      },
+      "unresolved_transformation_questions": [
+        "rename identity",
+        "split or merge identity",
+        "abandonment versus non-occurrence",
+        "reintroduction versus independent recurrence"
+      ],
+      "expected_first_version_check": "v0.1.0"
+    },
+    {
+      "concept": "Acquisition policy",
+      "first_mention": {
+        "version": "v0.6.0",
+        "status": "SUPPORTED",
+        "evidence_refs": [
+          "syn-ev-00146"
+        ]
+      },
+      "first_design": {
+        "version": "UNKNOWN",
+        "status": "UNKNOWN",
+        "reason": "Code occurrence is not silently upgraded to prior design"
+      },
+      "first_code": {
+        "version": "v0.6.0",
+        "status": "SUPPORTED",
+        "evidence_refs": [
+          "syn-ev-00146"
+        ]
+      },
+      "first_use": {
+        "version": "v0.6.0",
+        "status": "SUPPORTED",
+        "evidence_refs": [
+          "syn-ev-00146"
+        ]
+      },
+      "first_test": {
+        "version": "UNKNOWN",
+        "status": "UNKNOWN",
+        "reason": "No historical test corpus is verified"
+      },
+      "first_verification": {
+        "version": "UNKNOWN",
+        "status": "UNKNOWN",
+        "reason": "Retrospective static checks are not historical verification"
+      },
+      "stabilization": {
+        "version": "UNKNOWN",
+        "status": "UNKNOWN",
+        "reason": "Branch lineage and contract verification are unavailable"
+      },
+      "occurrences": [
+        {
+          "snapshot_id": "snapshot-0012",
+          "version": "v0.6.0",
+          "variant": "variant-b"
+        },
+        {
+          "snapshot_id": "snapshot-0013",
+          "version": "v0.6.0",
+          "variant": "variant-c"
+        },
+        {
+          "snapshot_id": "snapshot-0014",
+          "version": "v0.7.1",
+          "variant": "only-evidenced-complete-occurrence"
+        }
+      ],
+      "identity_across_occurrences": "UNKNOWN",
+      "transformations": {
+        "renames": [],
+        "splits": [],
+        "merges": [],
+        "generalizations": [],
+        "abandonments": [],
+        "reintroductions": [],
+        "empty_list_meaning": "NOT_PROVED_NOT_NONE_HISTORICALLY"
+      },
+      "unresolved_transformation_questions": [
+        "rename identity",
+        "split or merge identity",
+        "abandonment versus non-occurrence",
+        "reintroduction versus independent recurrence"
+      ],
+      "expected_first_version_check": "v0.6.0"
+    },
+    {
+      "concept": "Acquisition plan",
+      "first_mention": {
+        "version": "v0.7.1",
+        "status": "SUPPORTED",
+        "evidence_refs": [
+          "syn-ev-00183"
+        ]
+      },
+      "first_design": {
+        "version": "UNKNOWN",
+        "status": "UNKNOWN",
+        "reason": "Code occurrence is not silently upgraded to prior design"
+      },
+      "first_code": {
+        "version": "v0.7.1",
+        "status": "SUPPORTED",
+        "evidence_refs": [
+          "syn-ev-00183"
+        ]
+      },
+      "first_use": {
+        "version": "v0.7.1",
+        "status": "SUPPORTED",
+        "evidence_refs": [
+          "syn-ev-00183"
+        ]
+      },
+      "first_test": {
+        "version": "UNKNOWN",
+        "status": "UNKNOWN",
+        "reason": "No historical test corpus is verified"
+      },
+      "first_verification": {
+        "version": "UNKNOWN",
+        "status": "UNKNOWN",
+        "reason": "Retrospective static checks are not historical verification"
+      },
+      "stabilization": {
+        "version": "UNKNOWN",
+        "status": "UNKNOWN",
+        "reason": "Branch lineage and contract verification are unavailable"
+      },
+      "occurrences": [
+        {
+          "snapshot_id": "snapshot-0014",
+          "version": "v0.7.1",
+          "variant": "only-evidenced-complete-occurrence"
+        }
+      ],
+      "identity_across_occurrences": "UNKNOWN",
+      "transformations": {
+        "renames": [],
+        "splits": [],
+        "merges": [],
+        "generalizations": [],
+        "abandonments": [],
+        "reintroductions": [],
+        "empty_list_meaning": "NOT_PROVED_NOT_NONE_HISTORICALLY"
+      },
+      "unresolved_transformation_questions": [
+        "rename identity",
+        "split or merge identity",
+        "abandonment versus non-occurrence",
+        "reintroduction versus independent recurrence"
+      ],
+      "expected_first_version_check": "v0.7.1"
+    },
+    {
+      "concept": "Decision ledger",
+      "first_mention": {
+        "version": "v0.7.1",
+        "status": "SUPPORTED",
+        "evidence_refs": [
+          "syn-ev-00184"
+        ]
+      },
+      "first_design": {
+        "version": "UNKNOWN",
+        "status": "UNKNOWN",
+        "reason": "Code occurrence is not silently upgraded to prior design"
+      },
+      "first_code": {
+        "version": "v0.7.1",
+        "status": "SUPPORTED",
+        "evidence_refs": [
+          "syn-ev-00184"
+        ]
+      },
+      "first_use": {
+        "version": "v0.7.1",
+        "status": "SUPPORTED",
+        "evidence_refs": [
+          "syn-ev-00184"
+        ]
+      },
+      "first_test": {
+        "version": "UNKNOWN",
+        "status": "UNKNOWN",
+        "reason": "No historical test corpus is verified"
+      },
+      "first_verification": {
+        "version": "UNKNOWN",
+        "status": "UNKNOWN",
+        "reason": "Retrospective static checks are not historical verification"
+      },
+      "stabilization": {
+        "version": "UNKNOWN",
+        "status": "UNKNOWN",
+        "reason": "Branch lineage and contract verification are unavailable"
+      },
+      "occurrences": [
+        {
+          "snapshot_id": "snapshot-0014",
+          "version": "v0.7.1",
+          "variant": "only-evidenced-complete-occurrence"
+        }
+      ],
+      "identity_across_occurrences": "UNKNOWN",
+      "transformations": {
+        "renames": [],
+        "splits": [],
+        "merges": [],
+        "generalizations": [],
+        "abandonments": [],
+        "reintroductions": [],
+        "empty_list_meaning": "NOT_PROVED_NOT_NONE_HISTORICALLY"
+      },
+      "unresolved_transformation_questions": [
+        "rename identity",
+        "split or merge identity",
+        "abandonment versus non-occurrence",
+        "reintroduction versus independent recurrence"
+      ],
+      "expected_first_version_check": "v0.7.1"
+    }
+  ],
+  "rename_split_merge_rule": "Same names, similar code, and chronological adjacency do not prove identity, renaming, splits, merges, deletion, or reintroduction."
+}

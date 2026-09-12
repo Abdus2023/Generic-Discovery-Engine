@@ -1,0 +1,11 @@
+confidence < T1
+    → ignore
+
+T1 ≤ confidence < T2
+    → investigate
+
+T2 ≤ confidence < T3
+    → demodulate
+
+confidence ≥ T3
+    → confirmed

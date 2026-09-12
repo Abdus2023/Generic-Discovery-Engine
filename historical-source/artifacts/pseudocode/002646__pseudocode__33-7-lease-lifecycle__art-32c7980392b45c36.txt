@@ -1,0 +1,13 @@
+QUEUED
+   ↓
+CLAIMED
+   ↓
+LEASE ACTIVE
+   │
+   ├── heartbeat ──► renewed
+   │
+   └── expiration
+            ↓
+        RECOVERABLE
+            ↓
+          QUEUED

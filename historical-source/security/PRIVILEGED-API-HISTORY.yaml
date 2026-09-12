@@ -1,0 +1,817 @@
+{
+  "schema_version": 8,
+  "builder": "security-archaeology-builder-v8",
+  "model_kind": "DERIVED_SECURITY_ARCHAEOLOGY_NOT_SOURCE",
+  "apis": [
+    {
+      "api_id": "privileged-api-b00b66ca2b4ccd38",
+      "snapshot_id": "snapshot-0001",
+      "version": "v0.1.0",
+      "api": "GM_xmlhttpRequest",
+      "caller": "HttpAcquisitionAdapter.request",
+      "permission": "EXPLICIT_GRANT",
+      "data_crossing_out": "network request metadata/body",
+      "data_crossing_in": "response/status/headers/body",
+      "error_crossing": "callback or rejection",
+      "platform_semantics_verified": false,
+      "evidence": [
+        "security-ev-0707a2ffd827285b"
+      ]
+    },
+    {
+      "api_id": "privileged-api-e2f832269470e9e8",
+      "snapshot_id": "snapshot-0001",
+      "version": "v0.1.0",
+      "api": "GM_getValue",
+      "caller": "KnowledgeBase.load",
+      "permission": "EXPLICIT_GRANT",
+      "data_crossing_out": "storage key/default",
+      "data_crossing_in": "persisted value",
+      "error_crossing": "throw/catch path",
+      "platform_semantics_verified": false,
+      "evidence": [
+        "security-ev-1447f196dd9d2ec9"
+      ]
+    },
+    {
+      "api_id": "privileged-api-db892bd31243566c",
+      "snapshot_id": "snapshot-0001",
+      "version": "v0.1.0",
+      "api": "GM_setValue",
+      "caller": "KnowledgeBase.persist",
+      "permission": "EXPLICIT_GRANT",
+      "data_crossing_out": "storage key/serialized state",
+      "data_crossing_in": "storage side effect",
+      "error_crossing": "throw/catch path",
+      "platform_semantics_verified": false,
+      "evidence": [
+        "security-ev-19ac8c742c3c800a"
+      ]
+    },
+    {
+      "api_id": "privileged-api-b382dc2f04cb275e",
+      "snapshot_id": "snapshot-0001",
+      "version": "v0.1.0",
+      "api": "fetch",
+      "caller": "HttpAcquisitionAdapter.request",
+      "permission": "BROWSER_AMBIENT",
+      "data_crossing_out": "URL/request options",
+      "data_crossing_in": "Response object/body",
+      "error_crossing": "Promise rejection",
+      "platform_semantics_verified": false,
+      "evidence": [
+        "security-ev-25fe2b5c3a0bd055"
+      ]
+    },
+    {
+      "api_id": "privileged-api-8b7bf17c34747f10",
+      "snapshot_id": "snapshot-0001",
+      "version": "v0.1.0",
+      "api": "localStorage",
+      "caller": "KnowledgeBase.persist",
+      "permission": "BROWSER_AMBIENT",
+      "data_crossing_out": "storage key/value",
+      "data_crossing_in": "persisted value",
+      "error_crossing": "throw/catch path",
+      "platform_semantics_verified": false,
+      "evidence": [
+        "security-ev-2672a37e9a2d6b33"
+      ]
+    },
+    {
+      "api_id": "privileged-api-09107b7ad4b604e3",
+      "snapshot_id": "snapshot-0003",
+      "version": "v0.2.0",
+      "api": "GM_xmlhttpRequest",
+      "caller": "HttpAcquisitionAdapter.request",
+      "permission": "EXPLICIT_GRANT",
+      "data_crossing_out": "network request metadata/body",
+      "data_crossing_in": "response/status/headers/body",
+      "error_crossing": "callback or rejection",
+      "platform_semantics_verified": false,
+      "evidence": [
+        "security-ev-b043393083220b9a"
+      ]
+    },
+    {
+      "api_id": "privileged-api-bdb7e0d3f415c4d8",
+      "snapshot_id": "snapshot-0003",
+      "version": "v0.2.0",
+      "api": "GM_getValue",
+      "caller": "KnowledgeBase.load",
+      "permission": "EXPLICIT_GRANT",
+      "data_crossing_out": "storage key/default",
+      "data_crossing_in": "persisted value",
+      "error_crossing": "throw/catch path",
+      "platform_semantics_verified": false,
+      "evidence": [
+        "security-ev-762d00c4730594bb"
+      ]
+    },
+    {
+      "api_id": "privileged-api-1b14619957a42f3c",
+      "snapshot_id": "snapshot-0003",
+      "version": "v0.2.0",
+      "api": "GM_setValue",
+      "caller": "KnowledgeBase.persist",
+      "permission": "EXPLICIT_GRANT",
+      "data_crossing_out": "storage key/serialized state",
+      "data_crossing_in": "storage side effect",
+      "error_crossing": "throw/catch path",
+      "platform_semantics_verified": false,
+      "evidence": [
+        "security-ev-940178b1d4d5538f"
+      ]
+    },
+    {
+      "api_id": "privileged-api-f1185c86bc27e173",
+      "snapshot_id": "snapshot-0003",
+      "version": "v0.2.0",
+      "api": "fetch",
+      "caller": "HttpAcquisitionAdapter.request",
+      "permission": "BROWSER_AMBIENT",
+      "data_crossing_out": "URL/request options",
+      "data_crossing_in": "Response object/body",
+      "error_crossing": "Promise rejection",
+      "platform_semantics_verified": false,
+      "evidence": [
+        "security-ev-9e5cd6b86edf19cf"
+      ]
+    },
+    {
+      "api_id": "privileged-api-0591ed1825cb525a",
+      "snapshot_id": "snapshot-0003",
+      "version": "v0.2.0",
+      "api": "localStorage",
+      "caller": "KnowledgeBase.persist",
+      "permission": "BROWSER_AMBIENT",
+      "data_crossing_out": "storage key/value",
+      "data_crossing_in": "persisted value",
+      "error_crossing": "throw/catch path",
+      "platform_semantics_verified": false,
+      "evidence": [
+        "security-ev-38d7e4ca77a844c7"
+      ]
+    },
+    {
+      "api_id": "privileged-api-30883fa0f25ddbaf",
+      "snapshot_id": "snapshot-0005",
+      "version": "v0.3.0",
+      "api": "GM_xmlhttpRequest",
+      "caller": "HttpAcquisitionAdapter.request",
+      "permission": "EXPLICIT_GRANT",
+      "data_crossing_out": "network request metadata/body",
+      "data_crossing_in": "response/status/headers/body",
+      "error_crossing": "callback or rejection",
+      "platform_semantics_verified": false,
+      "evidence": [
+        "security-ev-5f2a26f7794b12e6"
+      ]
+    },
+    {
+      "api_id": "privileged-api-5b644f3abad4ffc0",
+      "snapshot_id": "snapshot-0005",
+      "version": "v0.3.0",
+      "api": "GM_getValue",
+      "caller": "KnowledgeBase.load",
+      "permission": "EXPLICIT_GRANT",
+      "data_crossing_out": "storage key/default",
+      "data_crossing_in": "persisted value",
+      "error_crossing": "throw/catch path",
+      "platform_semantics_verified": false,
+      "evidence": [
+        "security-ev-ef4870aa758b1905"
+      ]
+    },
+    {
+      "api_id": "privileged-api-d86515ca0031b60a",
+      "snapshot_id": "snapshot-0005",
+      "version": "v0.3.0",
+      "api": "GM_setValue",
+      "caller": "KnowledgeBase.persist",
+      "permission": "EXPLICIT_GRANT",
+      "data_crossing_out": "storage key/serialized state",
+      "data_crossing_in": "storage side effect",
+      "error_crossing": "throw/catch path",
+      "platform_semantics_verified": false,
+      "evidence": [
+        "security-ev-cfa28599477d412c"
+      ]
+    },
+    {
+      "api_id": "privileged-api-8bdc147621ca72d5",
+      "snapshot_id": "snapshot-0005",
+      "version": "v0.3.0",
+      "api": "fetch",
+      "caller": "HttpAcquisitionAdapter.request",
+      "permission": "BROWSER_AMBIENT",
+      "data_crossing_out": "URL/request options",
+      "data_crossing_in": "Response object/body",
+      "error_crossing": "Promise rejection",
+      "platform_semantics_verified": false,
+      "evidence": [
+        "security-ev-8166ee6cfa9ee81d"
+      ]
+    },
+    {
+      "api_id": "privileged-api-4c835278cf9cb46f",
+      "snapshot_id": "snapshot-0005",
+      "version": "v0.3.0",
+      "api": "localStorage",
+      "caller": "KnowledgeBase.persist",
+      "permission": "BROWSER_AMBIENT",
+      "data_crossing_out": "storage key/value",
+      "data_crossing_in": "persisted value",
+      "error_crossing": "throw/catch path",
+      "platform_semantics_verified": false,
+      "evidence": [
+        "security-ev-5efc917d2e1e47fa"
+      ]
+    },
+    {
+      "api_id": "privileged-api-90dee7c8bd294c80",
+      "snapshot_id": "snapshot-0006",
+      "version": "v0.4.0",
+      "api": "GM_xmlhttpRequest",
+      "caller": "HttpAcquisitionAdapter.request",
+      "permission": "EXPLICIT_GRANT",
+      "data_crossing_out": "network request metadata/body",
+      "data_crossing_in": "response/status/headers/body",
+      "error_crossing": "callback or rejection",
+      "platform_semantics_verified": false,
+      "evidence": [
+        "security-ev-0cfaf414624c7e5b"
+      ]
+    },
+    {
+      "api_id": "privileged-api-bb1651b2e777907f",
+      "snapshot_id": "snapshot-0006",
+      "version": "v0.4.0",
+      "api": "GM_getValue",
+      "caller": "KnowledgeBase.load",
+      "permission": "EXPLICIT_GRANT",
+      "data_crossing_out": "storage key/default",
+      "data_crossing_in": "persisted value",
+      "error_crossing": "throw/catch path",
+      "platform_semantics_verified": false,
+      "evidence": [
+        "security-ev-e0297a75625f357a"
+      ]
+    },
+    {
+      "api_id": "privileged-api-3fee75662f148ae1",
+      "snapshot_id": "snapshot-0006",
+      "version": "v0.4.0",
+      "api": "GM_setValue",
+      "caller": "KnowledgeBase.persist",
+      "permission": "EXPLICIT_GRANT",
+      "data_crossing_out": "storage key/serialized state",
+      "data_crossing_in": "storage side effect",
+      "error_crossing": "throw/catch path",
+      "platform_semantics_verified": false,
+      "evidence": [
+        "security-ev-f6a32d7efb0efbd4"
+      ]
+    },
+    {
+      "api_id": "privileged-api-99b60717531e4a9b",
+      "snapshot_id": "snapshot-0006",
+      "version": "v0.4.0",
+      "api": "fetch",
+      "caller": "HttpAcquisitionAdapter.request",
+      "permission": "BROWSER_AMBIENT",
+      "data_crossing_out": "URL/request options",
+      "data_crossing_in": "Response object/body",
+      "error_crossing": "Promise rejection",
+      "platform_semantics_verified": false,
+      "evidence": [
+        "security-ev-52f62a3b1eb98b29"
+      ]
+    },
+    {
+      "api_id": "privileged-api-f097436605303598",
+      "snapshot_id": "snapshot-0006",
+      "version": "v0.4.0",
+      "api": "localStorage",
+      "caller": "KnowledgeBase.persist",
+      "permission": "BROWSER_AMBIENT",
+      "data_crossing_out": "storage key/value",
+      "data_crossing_in": "persisted value",
+      "error_crossing": "throw/catch path",
+      "platform_semantics_verified": false,
+      "evidence": [
+        "security-ev-5eb6729c1970ebd7"
+      ]
+    },
+    {
+      "api_id": "privileged-api-38c554a8a0a1d28b",
+      "snapshot_id": "snapshot-0008",
+      "version": "v0.4.0",
+      "api": "GM_xmlhttpRequest",
+      "caller": "HttpAcquisitionAdapter.request",
+      "permission": "EXPLICIT_GRANT",
+      "data_crossing_out": "network request metadata/body",
+      "data_crossing_in": "response/status/headers/body",
+      "error_crossing": "callback or rejection",
+      "platform_semantics_verified": false,
+      "evidence": [
+        "security-ev-d66233eff049889b"
+      ]
+    },
+    {
+      "api_id": "privileged-api-40299d6b6bacbf77",
+      "snapshot_id": "snapshot-0008",
+      "version": "v0.4.0",
+      "api": "GM_getValue",
+      "caller": "KnowledgeBase.load",
+      "permission": "EXPLICIT_GRANT",
+      "data_crossing_out": "storage key/default",
+      "data_crossing_in": "persisted value",
+      "error_crossing": "throw/catch path",
+      "platform_semantics_verified": false,
+      "evidence": [
+        "security-ev-8ad8affe50c61727"
+      ]
+    },
+    {
+      "api_id": "privileged-api-f88833d347c46a38",
+      "snapshot_id": "snapshot-0008",
+      "version": "v0.4.0",
+      "api": "GM_setValue",
+      "caller": "KnowledgeBase.persist",
+      "permission": "EXPLICIT_GRANT",
+      "data_crossing_out": "storage key/serialized state",
+      "data_crossing_in": "storage side effect",
+      "error_crossing": "throw/catch path",
+      "platform_semantics_verified": false,
+      "evidence": [
+        "security-ev-609b69acc2170831"
+      ]
+    },
+    {
+      "api_id": "privileged-api-b8e48c5eae31dee0",
+      "snapshot_id": "snapshot-0008",
+      "version": "v0.4.0",
+      "api": "fetch",
+      "caller": "HttpAcquisitionAdapter.request",
+      "permission": "BROWSER_AMBIENT",
+      "data_crossing_out": "URL/request options",
+      "data_crossing_in": "Response object/body",
+      "error_crossing": "Promise rejection",
+      "platform_semantics_verified": false,
+      "evidence": [
+        "security-ev-07d6dde0e0d9dab3"
+      ]
+    },
+    {
+      "api_id": "privileged-api-d7e5f312aa3c70be",
+      "snapshot_id": "snapshot-0008",
+      "version": "v0.4.0",
+      "api": "localStorage",
+      "caller": "KnowledgeBase.persist",
+      "permission": "BROWSER_AMBIENT",
+      "data_crossing_out": "storage key/value",
+      "data_crossing_in": "persisted value",
+      "error_crossing": "throw/catch path",
+      "platform_semantics_verified": false,
+      "evidence": [
+        "security-ev-75375766ae374b0e"
+      ]
+    },
+    {
+      "api_id": "privileged-api-787b5113c4804353",
+      "snapshot_id": "snapshot-0007",
+      "version": "v0.5.0",
+      "api": "GM_xmlhttpRequest",
+      "caller": "HttpAcquisitionAdapter.request",
+      "permission": "EXPLICIT_GRANT",
+      "data_crossing_out": "network request metadata/body",
+      "data_crossing_in": "response/status/headers/body",
+      "error_crossing": "callback or rejection",
+      "platform_semantics_verified": false,
+      "evidence": [
+        "security-ev-5ce85763365ede34"
+      ]
+    },
+    {
+      "api_id": "privileged-api-2b3d128949722bf2",
+      "snapshot_id": "snapshot-0007",
+      "version": "v0.5.0",
+      "api": "GM_getValue",
+      "caller": "KnowledgeBase.load",
+      "permission": "EXPLICIT_GRANT",
+      "data_crossing_out": "storage key/default",
+      "data_crossing_in": "persisted value",
+      "error_crossing": "throw/catch path",
+      "platform_semantics_verified": false,
+      "evidence": [
+        "security-ev-5977943557ace90b"
+      ]
+    },
+    {
+      "api_id": "privileged-api-f1bf36a56354976e",
+      "snapshot_id": "snapshot-0007",
+      "version": "v0.5.0",
+      "api": "GM_setValue",
+      "caller": "KnowledgeBase.persist",
+      "permission": "EXPLICIT_GRANT",
+      "data_crossing_out": "storage key/serialized state",
+      "data_crossing_in": "storage side effect",
+      "error_crossing": "throw/catch path",
+      "platform_semantics_verified": false,
+      "evidence": [
+        "security-ev-f3d80ce0768349ed"
+      ]
+    },
+    {
+      "api_id": "privileged-api-13fb370bbf88fd13",
+      "snapshot_id": "snapshot-0007",
+      "version": "v0.5.0",
+      "api": "fetch",
+      "caller": "HttpAcquisitionAdapter.request",
+      "permission": "BROWSER_AMBIENT",
+      "data_crossing_out": "URL/request options",
+      "data_crossing_in": "Response object/body",
+      "error_crossing": "Promise rejection",
+      "platform_semantics_verified": false,
+      "evidence": [
+        "security-ev-6b425042449281c5"
+      ]
+    },
+    {
+      "api_id": "privileged-api-d50cce207faa0e5d",
+      "snapshot_id": "snapshot-0007",
+      "version": "v0.5.0",
+      "api": "localStorage",
+      "caller": "KnowledgeBase.persist",
+      "permission": "BROWSER_AMBIENT",
+      "data_crossing_out": "storage key/value",
+      "data_crossing_in": "persisted value",
+      "error_crossing": "throw/catch path",
+      "platform_semantics_verified": false,
+      "evidence": [
+        "security-ev-b887c9cc4ad1c1d1"
+      ]
+    },
+    {
+      "api_id": "privileged-api-ceb3a205bc89f397",
+      "snapshot_id": "snapshot-0009",
+      "version": "v0.5.0",
+      "api": "GM_xmlhttpRequest",
+      "caller": "HttpAcquisition.request",
+      "permission": "EXPLICIT_GRANT",
+      "data_crossing_out": "network request metadata/body",
+      "data_crossing_in": "response/status/headers/body",
+      "error_crossing": "callback or rejection",
+      "platform_semantics_verified": false,
+      "evidence": [
+        "security-ev-58ef5899ccf9fc8b"
+      ]
+    },
+    {
+      "api_id": "privileged-api-bd973519c9c7b14a",
+      "snapshot_id": "snapshot-0009",
+      "version": "v0.5.0",
+      "api": "GM_getValue",
+      "caller": "KnowledgeBase.load",
+      "permission": "EXPLICIT_GRANT",
+      "data_crossing_out": "storage key/default",
+      "data_crossing_in": "persisted value",
+      "error_crossing": "throw/catch path",
+      "platform_semantics_verified": false,
+      "evidence": [
+        "security-ev-bfb39b7aad0f4c01"
+      ]
+    },
+    {
+      "api_id": "privileged-api-13c12fd63e810748",
+      "snapshot_id": "snapshot-0009",
+      "version": "v0.5.0",
+      "api": "GM_setValue",
+      "caller": "KnowledgeBase.persist",
+      "permission": "EXPLICIT_GRANT",
+      "data_crossing_out": "storage key/serialized state",
+      "data_crossing_in": "storage side effect",
+      "error_crossing": "throw/catch path",
+      "platform_semantics_verified": false,
+      "evidence": [
+        "security-ev-46c4859e264d7c01"
+      ]
+    },
+    {
+      "api_id": "privileged-api-7d58f6375e4decd6",
+      "snapshot_id": "snapshot-0009",
+      "version": "v0.5.0",
+      "api": "fetch",
+      "caller": "HttpAcquisition.request",
+      "permission": "BROWSER_AMBIENT",
+      "data_crossing_out": "URL/request options",
+      "data_crossing_in": "Response object/body",
+      "error_crossing": "Promise rejection",
+      "platform_semantics_verified": false,
+      "evidence": [
+        "security-ev-985f3c0611b91226"
+      ]
+    },
+    {
+      "api_id": "privileged-api-6d93d63a8e732552",
+      "snapshot_id": "snapshot-0011",
+      "version": "v0.5.0",
+      "api": "GM_xmlhttpRequest",
+      "caller": "HttpAcquisitionAdapter.acquire",
+      "permission": "EXPLICIT_GRANT",
+      "data_crossing_out": "network request metadata/body",
+      "data_crossing_in": "response/status/headers/body",
+      "error_crossing": "callback or rejection",
+      "platform_semantics_verified": false,
+      "evidence": [
+        "security-ev-c5c2af30f3b2e34c"
+      ]
+    },
+    {
+      "api_id": "privileged-api-9f4e58dee14f7ca9",
+      "snapshot_id": "snapshot-0011",
+      "version": "v0.5.0",
+      "api": "GM_getValue",
+      "caller": "KnowledgeBase.load",
+      "permission": "EXPLICIT_GRANT",
+      "data_crossing_out": "storage key/default",
+      "data_crossing_in": "persisted value",
+      "error_crossing": "throw/catch path",
+      "platform_semantics_verified": false,
+      "evidence": [
+        "security-ev-ad4a955d27674922"
+      ]
+    },
+    {
+      "api_id": "privileged-api-95041423917253a2",
+      "snapshot_id": "snapshot-0011",
+      "version": "v0.5.0",
+      "api": "GM_setValue",
+      "caller": "KnowledgeBase.persistNow",
+      "permission": "EXPLICIT_GRANT",
+      "data_crossing_out": "storage key/serialized state",
+      "data_crossing_in": "storage side effect",
+      "error_crossing": "throw/catch path",
+      "platform_semantics_verified": false,
+      "evidence": [
+        "security-ev-d6db8bfd0f078c1e"
+      ]
+    },
+    {
+      "api_id": "privileged-api-f7d74f2c2fbb4b60",
+      "snapshot_id": "snapshot-0011",
+      "version": "v0.5.0",
+      "api": "fetch",
+      "caller": "HttpAcquisitionAdapter.acquireFetch",
+      "permission": "BROWSER_AMBIENT",
+      "data_crossing_out": "URL/request options",
+      "data_crossing_in": "Response object/body",
+      "error_crossing": "Promise rejection",
+      "platform_semantics_verified": false,
+      "evidence": [
+        "security-ev-3bae3b9b8862bb2c"
+      ]
+    },
+    {
+      "api_id": "privileged-api-1c7d49a69ccee31f",
+      "snapshot_id": "snapshot-0010",
+      "version": "v0.6.0",
+      "api": "GM_xmlhttpRequest",
+      "caller": "HttpAcquisition.acquire",
+      "permission": "EXPLICIT_GRANT",
+      "data_crossing_out": "network request metadata/body",
+      "data_crossing_in": "response/status/headers/body",
+      "error_crossing": "callback or rejection",
+      "platform_semantics_verified": false,
+      "evidence": [
+        "security-ev-9c7e9aef52868d66"
+      ]
+    },
+    {
+      "api_id": "privileged-api-549d39e4cfa67132",
+      "snapshot_id": "snapshot-0010",
+      "version": "v0.6.0",
+      "api": "GM_getValue",
+      "caller": "KnowledgeBase.load",
+      "permission": "EXPLICIT_GRANT",
+      "data_crossing_out": "storage key/default",
+      "data_crossing_in": "persisted value",
+      "error_crossing": "throw/catch path",
+      "platform_semantics_verified": false,
+      "evidence": [
+        "security-ev-62d18983b6e7afa9"
+      ]
+    },
+    {
+      "api_id": "privileged-api-080a588e6251db12",
+      "snapshot_id": "snapshot-0010",
+      "version": "v0.6.0",
+      "api": "GM_setValue",
+      "caller": "KnowledgeBase.persist",
+      "permission": "EXPLICIT_GRANT",
+      "data_crossing_out": "storage key/serialized state",
+      "data_crossing_in": "storage side effect",
+      "error_crossing": "throw/catch path",
+      "platform_semantics_verified": false,
+      "evidence": [
+        "security-ev-3da0b8562ae6fcdb"
+      ]
+    },
+    {
+      "api_id": "privileged-api-0a1f8cfba04b4f50",
+      "snapshot_id": "snapshot-0010",
+      "version": "v0.6.0",
+      "api": "fetch",
+      "caller": "HttpAcquisition.fetchRequest",
+      "permission": "BROWSER_AMBIENT",
+      "data_crossing_out": "URL/request options",
+      "data_crossing_in": "Response object/body",
+      "error_crossing": "Promise rejection",
+      "platform_semantics_verified": false,
+      "evidence": [
+        "security-ev-277b1f3e304ccaab"
+      ]
+    },
+    {
+      "api_id": "privileged-api-18aec896a5159292",
+      "snapshot_id": "snapshot-0012",
+      "version": "v0.6.0",
+      "api": "GM_xmlhttpRequest",
+      "caller": "HttpAcquisitionAdapter.acquire",
+      "permission": "EXPLICIT_GRANT",
+      "data_crossing_out": "network request metadata/body",
+      "data_crossing_in": "response/status/headers/body",
+      "error_crossing": "callback or rejection",
+      "platform_semantics_verified": false,
+      "evidence": [
+        "security-ev-8be7437e064fe4ac"
+      ]
+    },
+    {
+      "api_id": "privileged-api-927025bd92268112",
+      "snapshot_id": "snapshot-0012",
+      "version": "v0.6.0",
+      "api": "GM_getValue",
+      "caller": "KnowledgeBase.load",
+      "permission": "EXPLICIT_GRANT",
+      "data_crossing_out": "storage key/default",
+      "data_crossing_in": "persisted value",
+      "error_crossing": "throw/catch path",
+      "platform_semantics_verified": false,
+      "evidence": [
+        "security-ev-e5fccf719e9105ff"
+      ]
+    },
+    {
+      "api_id": "privileged-api-cbecffb8a1587c89",
+      "snapshot_id": "snapshot-0012",
+      "version": "v0.6.0",
+      "api": "GM_setValue",
+      "caller": "KnowledgeBase.persistNow",
+      "permission": "EXPLICIT_GRANT",
+      "data_crossing_out": "storage key/serialized state",
+      "data_crossing_in": "storage side effect",
+      "error_crossing": "throw/catch path",
+      "platform_semantics_verified": false,
+      "evidence": [
+        "security-ev-6af8ffce8315570c"
+      ]
+    },
+    {
+      "api_id": "privileged-api-c8a1f6050913de82",
+      "snapshot_id": "snapshot-0012",
+      "version": "v0.6.0",
+      "api": "fetch",
+      "caller": "HttpAcquisitionAdapter.acquireFetch",
+      "permission": "BROWSER_AMBIENT",
+      "data_crossing_out": "URL/request options",
+      "data_crossing_in": "Response object/body",
+      "error_crossing": "Promise rejection",
+      "platform_semantics_verified": false,
+      "evidence": [
+        "security-ev-50d2d9015dbcf9de"
+      ]
+    },
+    {
+      "api_id": "privileged-api-bb107ad97f0d6fe5",
+      "snapshot_id": "snapshot-0013",
+      "version": "v0.6.0",
+      "api": "GM_xmlhttpRequest",
+      "caller": "TOP_LEVEL.gmRequest",
+      "permission": "EXPLICIT_GRANT",
+      "data_crossing_out": "network request metadata/body",
+      "data_crossing_in": "response/status/headers/body",
+      "error_crossing": "callback or rejection",
+      "platform_semantics_verified": false,
+      "evidence": [
+        "security-ev-bb110e77692a14b5"
+      ]
+    },
+    {
+      "api_id": "privileged-api-c0a4b2930581d06c",
+      "snapshot_id": "snapshot-0013",
+      "version": "v0.6.0",
+      "api": "GM_getValue",
+      "caller": "KnowledgeBase.load",
+      "permission": "EXPLICIT_GRANT",
+      "data_crossing_out": "storage key/default",
+      "data_crossing_in": "persisted value",
+      "error_crossing": "throw/catch path",
+      "platform_semantics_verified": false,
+      "evidence": [
+        "security-ev-9870083298506286"
+      ]
+    },
+    {
+      "api_id": "privileged-api-a003c4a239b0840e",
+      "snapshot_id": "snapshot-0013",
+      "version": "v0.6.0",
+      "api": "GM_setValue",
+      "caller": "KnowledgeBase.persistSoon",
+      "permission": "EXPLICIT_GRANT",
+      "data_crossing_out": "storage key/serialized state",
+      "data_crossing_in": "storage side effect",
+      "error_crossing": "throw/catch path",
+      "platform_semantics_verified": false,
+      "evidence": [
+        "security-ev-738dac7db4919cb1"
+      ]
+    },
+    {
+      "api_id": "privileged-api-2c97e156c49799b0",
+      "snapshot_id": "snapshot-0013",
+      "version": "v0.6.0",
+      "api": "fetch",
+      "caller": "TOP_LEVEL.fetchRequest",
+      "permission": "BROWSER_AMBIENT",
+      "data_crossing_out": "URL/request options",
+      "data_crossing_in": "Response object/body",
+      "error_crossing": "Promise rejection",
+      "platform_semantics_verified": false,
+      "evidence": [
+        "security-ev-c0314bf52e84e079"
+      ]
+    },
+    {
+      "api_id": "privileged-api-572d3771f3170a5a",
+      "snapshot_id": "snapshot-0014",
+      "version": "v0.7.1",
+      "api": "GM_xmlhttpRequest",
+      "caller": "Acquisition.request",
+      "permission": "EXPLICIT_GRANT",
+      "data_crossing_out": "network request metadata/body",
+      "data_crossing_in": "response/status/headers/body",
+      "error_crossing": "callback or rejection",
+      "platform_semantics_verified": false,
+      "evidence": [
+        "security-ev-a83381e747ff4b6b"
+      ]
+    },
+    {
+      "api_id": "privileged-api-8c1a3c07f087453f",
+      "snapshot_id": "snapshot-0014",
+      "version": "v0.7.1",
+      "api": "GM_getValue",
+      "caller": "GenericDiscoveryEngine.restore",
+      "permission": "EXPLICIT_GRANT",
+      "data_crossing_out": "storage key/default",
+      "data_crossing_in": "persisted value",
+      "error_crossing": "throw/catch path",
+      "platform_semantics_verified": false,
+      "evidence": [
+        "security-ev-f838bee36d605fc2"
+      ]
+    },
+    {
+      "api_id": "privileged-api-dff8ecbb388331d5",
+      "snapshot_id": "snapshot-0014",
+      "version": "v0.7.1",
+      "api": "GM_setValue",
+      "caller": "GenericDiscoveryEngine.persist",
+      "permission": "EXPLICIT_GRANT",
+      "data_crossing_out": "storage key/serialized state",
+      "data_crossing_in": "storage side effect",
+      "error_crossing": "throw/catch path",
+      "platform_semantics_verified": false,
+      "evidence": [
+        "security-ev-889eaa6da72e752d"
+      ]
+    },
+    {
+      "api_id": "privileged-api-01dcf62d59ea45d5",
+      "snapshot_id": "snapshot-0014",
+      "version": "v0.7.1",
+      "api": "fetch",
+      "caller": "Acquisition.request",
+      "permission": "BROWSER_AMBIENT",
+      "data_crossing_out": "URL/request options",
+      "data_crossing_in": "Response object/body",
+      "error_crossing": "Promise rejection",
+      "platform_semantics_verified": false,
+      "evidence": [
+        "security-ev-8510c6489ceb8c30"
+      ]
+    }
+  ]
+}

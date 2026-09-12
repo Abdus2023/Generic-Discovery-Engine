@@ -1,0 +1,49 @@
+{
+  "schema_version": "protocol-v9",
+  "contradictions": [
+    {
+      "contradiction_id": "contra-001",
+      "claim_a": "Protocol-v1 raw revisions and extracted ranges are byte-verified",
+      "claim_b": "Active validation reports 0/4 raw revisions and 0/5644 artifact ranges valid",
+      "status": "CONTRADICTED",
+      "resolution": "UNRESOLVED_INPUT_INTEGRITY_FAILURE",
+      "effect": "All later acceptance is provisional",
+      "evidence_refs": [
+        "syn-ev-00192"
+      ]
+    },
+    {
+      "contradiction_id": "contra-002",
+      "claim_a": "A passing Protocol-v3 report establishes a verified Protocol-v1-through-v3 chain",
+      "claim_b": "Protocol-v1 source/range validation fails even though Protocol-v3's internal validation passes",
+      "status": "CONTRADICTED",
+      "resolution": "V3_INTERNAL_PASS_DOES_NOT_REPAIR_V1_CHAIN",
+      "effect": "Source-local reconstruction facts are capped at SUPPORTED",
+      "evidence_refs": [
+        "syn-ev-00193"
+      ]
+    },
+    {
+      "contradiction_id": "contra-003",
+      "claim_a": "All exact complete reconstructed occurrences are statically executable",
+      "claim_b": "snapshot-0009 is exact but fails static parsing and is classified NON_EXECUTABLE",
+      "status": "CONTRADICTED",
+      "resolution": "EXACTNESS_IS_NOT_EXECUTABILITY",
+      "effect": "v0.5 has executable and non-executable variants",
+      "evidence_refs": [
+        "syn-ev-00194"
+      ]
+    },
+    {
+      "contradiction_id": "contra-004",
+      "claim_a": "Protocol-v9 can consume verified Protocol-v4-v7 outputs",
+      "claim_b": "verification/, algorithm/, architecture/, and contracts/ are absent",
+      "status": "CONTRADICTED",
+      "resolution": "MISSING_INPUTS_REMAIN_UNKNOWN",
+      "effect": "Contract integration and full verified-fact synthesis are blocked",
+      "evidence_refs": [
+        "syn-ev-00195"
+      ]
+    }
+  ]
+}

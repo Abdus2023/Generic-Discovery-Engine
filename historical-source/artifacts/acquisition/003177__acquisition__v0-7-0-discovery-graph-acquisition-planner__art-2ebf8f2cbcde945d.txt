@@ -1,0 +1,50 @@
+                    ┌─────────────────────┐
+                    │      DISCOVERY      │
+                    │                     │
+                    │ HTML / JSON / XML   │
+                    │ DOM / Network / CSS │
+                    └──────────┬──────────┘
+                               │
+                               ▼
+                    ┌─────────────────────┐
+                    │   KNOWLEDGE GRAPH   │
+                    │                     │
+                    │ resource            │
+                    │ provenance          │
+                    │ evidence            │
+                    │ observations        │
+                    └──────────┬──────────┘
+                               │
+                               ▼
+                    ┌─────────────────────┐
+                    │ ACQUISITION PLANNER │
+                    │                     │
+                    │ policy              │
+                    │ method              │
+                    │ origin budget       │
+                    │ priority            │
+                    │ deduplication       │
+                    └──────────┬──────────┘
+                               │
+                               ▼
+                    ┌─────────────────────┐
+                    │     SCHEDULER       │
+                    │                     │
+                    │ claim → execute     │
+                    │ retry → backoff     │
+                    │ adaptive concurrency│
+                    └──────────┬──────────┘
+                               │
+                               ▼
+                    ┌─────────────────────┐
+                    │     ACQUISITION     │
+                    │                     │
+                    │ GET / observe       │
+                    └──────────┬──────────┘
+                               │
+                               ▼
+                    ┌─────────────────────┐
+                    │    OBSERVATION      │
+                    └──────────┬──────────┘
+                               │
+                               └──────► DISCOVERY

@@ -1,0 +1,2158 @@
+{
+  "schema_version": 8,
+  "builder": "security-archaeology-builder-v8",
+  "model_kind": "DERIVED_SECURITY_ARCHAEOLOGY_NOT_SOURCE",
+  "failures": [
+    {
+      "silence_id": "silence-37e8f702a01a66e4",
+      "snapshot_id": "snapshot-0001",
+      "version": "v0.1.0",
+      "variant": "mechanically-composed",
+      "operation": "TOP_LEVEL.canonicalizeUrl",
+      "classification": "ERROR_SUPPRESSION",
+      "observable": false,
+      "state_recorded": false,
+      "rethrows": false,
+      "bug_claimed": false,
+      "evidence": [
+        "security-ev-8812129cadb6f280"
+      ]
+    },
+    {
+      "silence_id": "silence-0e69323f234ac3b4",
+      "snapshot_id": "snapshot-0001",
+      "version": "v0.1.0",
+      "variant": "mechanically-composed",
+      "operation": "TOP_LEVEL.isAllowedUrl",
+      "classification": "ERROR_SUPPRESSION",
+      "observable": false,
+      "state_recorded": false,
+      "rethrows": false,
+      "bug_claimed": false,
+      "evidence": [
+        "security-ev-cd52827ef732e7d4"
+      ]
+    },
+    {
+      "silence_id": "silence-6617dff8be491c3d",
+      "snapshot_id": "snapshot-0001",
+      "version": "v0.1.0",
+      "variant": "mechanically-composed",
+      "operation": "KnowledgeBase.persist",
+      "classification": "ERROR_SUPPRESSION",
+      "observable": true,
+      "state_recorded": false,
+      "rethrows": false,
+      "bug_claimed": false,
+      "evidence": [
+        "security-ev-b1fbd072c5e527b7"
+      ]
+    },
+    {
+      "silence_id": "silence-8f83e53d943011f1",
+      "snapshot_id": "snapshot-0001",
+      "version": "v0.1.0",
+      "variant": "mechanically-composed",
+      "operation": "KnowledgeBase.load",
+      "classification": "ERROR_SUPPRESSION",
+      "observable": true,
+      "state_recorded": false,
+      "rethrows": false,
+      "bug_claimed": false,
+      "evidence": [
+        "security-ev-5f02dc3748547b35"
+      ]
+    },
+    {
+      "silence_id": "silence-1f40e10416faa73b",
+      "snapshot_id": "snapshot-0003",
+      "version": "v0.2.0",
+      "variant": "mechanically-composed",
+      "operation": "TOP_LEVEL.canonicalizeUrl",
+      "classification": "ERROR_SUPPRESSION",
+      "observable": false,
+      "state_recorded": false,
+      "rethrows": false,
+      "bug_claimed": false,
+      "evidence": [
+        "security-ev-6b1bd6d142794968"
+      ]
+    },
+    {
+      "silence_id": "silence-960a683b889ddc22",
+      "snapshot_id": "snapshot-0003",
+      "version": "v0.2.0",
+      "variant": "mechanically-composed",
+      "operation": "TOP_LEVEL.isAllowedUrl",
+      "classification": "ERROR_SUPPRESSION",
+      "observable": false,
+      "state_recorded": false,
+      "rethrows": false,
+      "bug_claimed": false,
+      "evidence": [
+        "security-ev-abd184135de8a5dc"
+      ]
+    },
+    {
+      "silence_id": "silence-4e935e828ef65a64",
+      "snapshot_id": "snapshot-0003",
+      "version": "v0.2.0",
+      "variant": "mechanically-composed",
+      "operation": "KnowledgeBase.persist",
+      "classification": "ERROR_SUPPRESSION",
+      "observable": true,
+      "state_recorded": false,
+      "rethrows": false,
+      "bug_claimed": false,
+      "evidence": [
+        "security-ev-835a71ba17d2d8a9"
+      ]
+    },
+    {
+      "silence_id": "silence-fa836c6b002b57fb",
+      "snapshot_id": "snapshot-0003",
+      "version": "v0.2.0",
+      "variant": "mechanically-composed",
+      "operation": "KnowledgeBase.load",
+      "classification": "ERROR_SUPPRESSION",
+      "observable": true,
+      "state_recorded": false,
+      "rethrows": false,
+      "bug_claimed": false,
+      "evidence": [
+        "security-ev-1d21f8fcd42ea7c6"
+      ]
+    },
+    {
+      "silence_id": "silence-37e696abc32e4b9a",
+      "snapshot_id": "snapshot-0003",
+      "version": "v0.2.0",
+      "variant": "mechanically-composed",
+      "operation": "JsonProvider.recognize",
+      "classification": "ERROR_SUPPRESSION",
+      "observable": false,
+      "state_recorded": false,
+      "rethrows": false,
+      "bug_claimed": false,
+      "evidence": [
+        "security-ev-02b567c67da4c8b5"
+      ]
+    },
+    {
+      "silence_id": "silence-45c0c79cd191b414",
+      "snapshot_id": "snapshot-0005",
+      "version": "v0.3.0",
+      "variant": "only-evidenced-complete-occurrence",
+      "operation": "TOP_LEVEL.canonicalizeUrl",
+      "classification": "ERROR_SUPPRESSION",
+      "observable": false,
+      "state_recorded": false,
+      "rethrows": false,
+      "bug_claimed": false,
+      "evidence": [
+        "security-ev-1ba1749f7bb08635"
+      ]
+    },
+    {
+      "silence_id": "silence-5d119c9311ecde21",
+      "snapshot_id": "snapshot-0005",
+      "version": "v0.3.0",
+      "variant": "only-evidenced-complete-occurrence",
+      "operation": "TOP_LEVEL.isAllowedUrl",
+      "classification": "ERROR_SUPPRESSION",
+      "observable": false,
+      "state_recorded": false,
+      "rethrows": false,
+      "bug_claimed": false,
+      "evidence": [
+        "security-ev-7b42b4c75a35c40b"
+      ]
+    },
+    {
+      "silence_id": "silence-8067bb12357bac34",
+      "snapshot_id": "snapshot-0005",
+      "version": "v0.3.0",
+      "variant": "only-evidenced-complete-occurrence",
+      "operation": "KnowledgeBase.persist",
+      "classification": "ERROR_SUPPRESSION",
+      "observable": true,
+      "state_recorded": false,
+      "rethrows": false,
+      "bug_claimed": false,
+      "evidence": [
+        "security-ev-ee29dd239ff45ec6"
+      ]
+    },
+    {
+      "silence_id": "silence-fc5f6f9a0a85c846",
+      "snapshot_id": "snapshot-0005",
+      "version": "v0.3.0",
+      "variant": "only-evidenced-complete-occurrence",
+      "operation": "KnowledgeBase.load",
+      "classification": "ERROR_SUPPRESSION",
+      "observable": true,
+      "state_recorded": false,
+      "rethrows": false,
+      "bug_claimed": false,
+      "evidence": [
+        "security-ev-70b3e3144ce034e6"
+      ]
+    },
+    {
+      "silence_id": "silence-e3661ca250e0ac93",
+      "snapshot_id": "snapshot-0005",
+      "version": "v0.3.0",
+      "variant": "only-evidenced-complete-occurrence",
+      "operation": "JsonProvider.recognize",
+      "classification": "ERROR_SUPPRESSION",
+      "observable": false,
+      "state_recorded": false,
+      "rethrows": false,
+      "bug_claimed": false,
+      "evidence": [
+        "security-ev-47c3b73e9986039d"
+      ]
+    },
+    {
+      "silence_id": "silence-a24ddea4ad03c42a",
+      "snapshot_id": "snapshot-0005",
+      "version": "v0.3.0",
+      "variant": "only-evidenced-complete-occurrence",
+      "operation": "DiscoveryEngine.clear",
+      "classification": "ERROR_SUPPRESSION",
+      "observable": true,
+      "state_recorded": false,
+      "rethrows": false,
+      "bug_claimed": false,
+      "evidence": [
+        "security-ev-f875723dd7182e84"
+      ]
+    },
+    {
+      "silence_id": "silence-3307981480cb7c86",
+      "snapshot_id": "snapshot-0006",
+      "version": "v0.4.0",
+      "variant": "variant-a",
+      "operation": "TOP_LEVEL.canonicalizeUrl",
+      "classification": "ERROR_SUPPRESSION",
+      "observable": false,
+      "state_recorded": false,
+      "rethrows": false,
+      "bug_claimed": false,
+      "evidence": [
+        "security-ev-50d55f3a25cc1fe2"
+      ]
+    },
+    {
+      "silence_id": "silence-590c27fa75074299",
+      "snapshot_id": "snapshot-0006",
+      "version": "v0.4.0",
+      "variant": "variant-a",
+      "operation": "TOP_LEVEL.isAllowedUrl",
+      "classification": "ERROR_SUPPRESSION",
+      "observable": false,
+      "state_recorded": false,
+      "rethrows": false,
+      "bug_claimed": false,
+      "evidence": [
+        "security-ev-ad2979326b8e91bb"
+      ]
+    },
+    {
+      "silence_id": "silence-dab1f144bc9a21e7",
+      "snapshot_id": "snapshot-0006",
+      "version": "v0.4.0",
+      "variant": "variant-a",
+      "operation": "KnowledgeBase.persist",
+      "classification": "ERROR_SUPPRESSION",
+      "observable": true,
+      "state_recorded": false,
+      "rethrows": false,
+      "bug_claimed": false,
+      "evidence": [
+        "security-ev-fba0d372e9b84529"
+      ]
+    },
+    {
+      "silence_id": "silence-b4b6052488a1b021",
+      "snapshot_id": "snapshot-0006",
+      "version": "v0.4.0",
+      "variant": "variant-a",
+      "operation": "KnowledgeBase.load",
+      "classification": "ERROR_SUPPRESSION",
+      "observable": true,
+      "state_recorded": false,
+      "rethrows": false,
+      "bug_claimed": false,
+      "evidence": [
+        "security-ev-9423be634285ec26"
+      ]
+    },
+    {
+      "silence_id": "silence-b2e09847176098e7",
+      "snapshot_id": "snapshot-0006",
+      "version": "v0.4.0",
+      "variant": "variant-a",
+      "operation": "JsonProvider.recognize",
+      "classification": "ERROR_SUPPRESSION",
+      "observable": false,
+      "state_recorded": false,
+      "rethrows": false,
+      "bug_claimed": false,
+      "evidence": [
+        "security-ev-6ddd02322352c69c"
+      ]
+    },
+    {
+      "silence_id": "silence-d286a9548b9ed3f4",
+      "snapshot_id": "snapshot-0006",
+      "version": "v0.4.0",
+      "variant": "variant-a",
+      "operation": "ManifestProvider.recognize",
+      "classification": "ERROR_SUPPRESSION",
+      "observable": false,
+      "state_recorded": false,
+      "rethrows": false,
+      "bug_claimed": false,
+      "evidence": [
+        "security-ev-8fb08357ee4eef73"
+      ]
+    },
+    {
+      "silence_id": "silence-0f2a75e2b72e652e",
+      "snapshot_id": "snapshot-0006",
+      "version": "v0.4.0",
+      "variant": "variant-a",
+      "operation": "NetworkObserver.installFetchObserver",
+      "classification": "ERROR_SUPPRESSION",
+      "observable": false,
+      "state_recorded": false,
+      "rethrows": false,
+      "bug_claimed": false,
+      "evidence": [
+        "security-ev-0c08681555390146"
+      ]
+    },
+    {
+      "silence_id": "silence-0fe403ccb1a2eef0",
+      "snapshot_id": "snapshot-0006",
+      "version": "v0.4.0",
+      "variant": "variant-a",
+      "operation": "NetworkObserver.installXhrObserver",
+      "classification": "ERROR_SUPPRESSION",
+      "observable": false,
+      "state_recorded": false,
+      "rethrows": false,
+      "bug_claimed": false,
+      "evidence": [
+        "security-ev-2494dffb56b1338c"
+      ]
+    },
+    {
+      "silence_id": "silence-2320a4bc32cad2d8",
+      "snapshot_id": "snapshot-0006",
+      "version": "v0.4.0",
+      "variant": "variant-a",
+      "operation": "DiscoveryEngine.clear",
+      "classification": "ERROR_SUPPRESSION",
+      "observable": true,
+      "state_recorded": false,
+      "rethrows": false,
+      "bug_claimed": false,
+      "evidence": [
+        "security-ev-d43a32c192003104"
+      ]
+    },
+    {
+      "silence_id": "silence-a8be351f2783c8c7",
+      "snapshot_id": "snapshot-0008",
+      "version": "v0.4.0",
+      "variant": "variant-b",
+      "operation": "TOP_LEVEL.canonicalizeUrl",
+      "classification": "ERROR_SUPPRESSION",
+      "observable": false,
+      "state_recorded": false,
+      "rethrows": false,
+      "bug_claimed": false,
+      "evidence": [
+        "security-ev-b759cadcdbf70f45"
+      ]
+    },
+    {
+      "silence_id": "silence-53c7792c8ec96ccd",
+      "snapshot_id": "snapshot-0008",
+      "version": "v0.4.0",
+      "variant": "variant-b",
+      "operation": "TOP_LEVEL.isAllowedUrl",
+      "classification": "ERROR_SUPPRESSION",
+      "observable": false,
+      "state_recorded": false,
+      "rethrows": false,
+      "bug_claimed": false,
+      "evidence": [
+        "security-ev-7d40670f2145698b"
+      ]
+    },
+    {
+      "silence_id": "silence-bcfeba374765c4ad",
+      "snapshot_id": "snapshot-0008",
+      "version": "v0.4.0",
+      "variant": "variant-b",
+      "operation": "TOP_LEVEL.extractXmlLocs",
+      "classification": "UNEXPLAINED_SILENCE",
+      "observable": false,
+      "state_recorded": false,
+      "rethrows": false,
+      "bug_claimed": false,
+      "evidence": [
+        "security-ev-d39b7991d4a43cf7"
+      ]
+    },
+    {
+      "silence_id": "silence-cd1e6a5a7a7ac1b3",
+      "snapshot_id": "snapshot-0008",
+      "version": "v0.4.0",
+      "variant": "variant-b",
+      "operation": "KnowledgeBase.persist",
+      "classification": "ERROR_SUPPRESSION",
+      "observable": true,
+      "state_recorded": false,
+      "rethrows": false,
+      "bug_claimed": false,
+      "evidence": [
+        "security-ev-61961c48a02bed55"
+      ]
+    },
+    {
+      "silence_id": "silence-c9a44b6bc97fcd89",
+      "snapshot_id": "snapshot-0008",
+      "version": "v0.4.0",
+      "variant": "variant-b",
+      "operation": "KnowledgeBase.load",
+      "classification": "ERROR_SUPPRESSION",
+      "observable": true,
+      "state_recorded": false,
+      "rethrows": false,
+      "bug_claimed": false,
+      "evidence": [
+        "security-ev-bd419689d6722640"
+      ]
+    },
+    {
+      "silence_id": "silence-3a6aa07de2ad2e70",
+      "snapshot_id": "snapshot-0008",
+      "version": "v0.4.0",
+      "variant": "variant-b",
+      "operation": "JsonProvider.recognize",
+      "classification": "ERROR_SUPPRESSION",
+      "observable": false,
+      "state_recorded": false,
+      "rethrows": false,
+      "bug_claimed": false,
+      "evidence": [
+        "security-ev-22b2aacf73799079"
+      ]
+    },
+    {
+      "silence_id": "silence-81936886beeefe71",
+      "snapshot_id": "snapshot-0008",
+      "version": "v0.4.0",
+      "variant": "variant-b",
+      "operation": "ProviderRegistry.recognize",
+      "classification": "ERROR_SUPPRESSION",
+      "observable": true,
+      "state_recorded": false,
+      "rethrows": false,
+      "bug_claimed": false,
+      "evidence": [
+        "security-ev-aaa9560381e948a1"
+      ]
+    },
+    {
+      "silence_id": "silence-5caa5957a79b83ac",
+      "snapshot_id": "snapshot-0008",
+      "version": "v0.4.0",
+      "variant": "variant-b",
+      "operation": "NetworkObserver.installPageBridge",
+      "classification": "ERROR_SUPPRESSION",
+      "observable": true,
+      "state_recorded": false,
+      "rethrows": false,
+      "bug_claimed": false,
+      "evidence": [
+        "security-ev-a0674bbdc33ebc3a"
+      ]
+    },
+    {
+      "silence_id": "silence-a1b2e2aefdfb01ba",
+      "snapshot_id": "snapshot-0008",
+      "version": "v0.4.0",
+      "variant": "variant-b",
+      "operation": "NetworkObserver.installPerformanceObserver",
+      "classification": "ERROR_SUPPRESSION",
+      "observable": true,
+      "state_recorded": false,
+      "rethrows": false,
+      "bug_claimed": false,
+      "evidence": [
+        "security-ev-ee982601a1b9a02f"
+      ]
+    },
+    {
+      "silence_id": "silence-8d3ec96cd0595319",
+      "snapshot_id": "snapshot-0008",
+      "version": "v0.4.0",
+      "variant": "variant-b",
+      "operation": "NetworkObserver.installPerformanceObserver",
+      "classification": "INTENTIONAL_SILENCE",
+      "observable": false,
+      "state_recorded": false,
+      "rethrows": false,
+      "bug_claimed": false,
+      "evidence": [
+        "security-ev-b0320bf41d9659cf"
+      ]
+    },
+    {
+      "silence_id": "silence-4460c33f25f9e546",
+      "snapshot_id": "snapshot-0008",
+      "version": "v0.4.0",
+      "variant": "variant-b",
+      "operation": "DiscoveryEngine.worker",
+      "classification": "ERROR_SUPPRESSION",
+      "observable": true,
+      "state_recorded": false,
+      "rethrows": false,
+      "bug_claimed": false,
+      "evidence": [
+        "security-ev-9bcfaf7e04e86dd5"
+      ]
+    },
+    {
+      "silence_id": "silence-bfa45a6fff6ac935",
+      "snapshot_id": "snapshot-0008",
+      "version": "v0.4.0",
+      "variant": "variant-b",
+      "operation": "TOP_LEVEL.initializeUi",
+      "classification": "ERROR_SUPPRESSION",
+      "observable": true,
+      "state_recorded": false,
+      "rethrows": false,
+      "bug_claimed": false,
+      "evidence": [
+        "security-ev-bbb568635e0b932f"
+      ]
+    },
+    {
+      "silence_id": "silence-330de93796b99a5b",
+      "snapshot_id": "snapshot-0008",
+      "version": "v0.4.0",
+      "variant": "variant-b",
+      "operation": "TOP_LEVEL.initializeUi",
+      "classification": "ERROR_SUPPRESSION",
+      "observable": true,
+      "state_recorded": false,
+      "rethrows": false,
+      "bug_claimed": false,
+      "evidence": [
+        "security-ev-9285156f407a342b"
+      ]
+    },
+    {
+      "silence_id": "silence-2a9da92d1364e3c5",
+      "snapshot_id": "snapshot-0007",
+      "version": "v0.5.0",
+      "variant": "variant-a",
+      "operation": "TOP_LEVEL.canonicalizeUrl",
+      "classification": "ERROR_SUPPRESSION",
+      "observable": false,
+      "state_recorded": false,
+      "rethrows": false,
+      "bug_claimed": false,
+      "evidence": [
+        "security-ev-04b6f9cc28fb1db5"
+      ]
+    },
+    {
+      "silence_id": "silence-b777d1256eef2c79",
+      "snapshot_id": "snapshot-0007",
+      "version": "v0.5.0",
+      "variant": "variant-a",
+      "operation": "TOP_LEVEL.isAllowedUrl",
+      "classification": "ERROR_SUPPRESSION",
+      "observable": false,
+      "state_recorded": false,
+      "rethrows": false,
+      "bug_claimed": false,
+      "evidence": [
+        "security-ev-b3525ca60c92ca0a"
+      ]
+    },
+    {
+      "silence_id": "silence-c65a6ecea31fcef5",
+      "snapshot_id": "snapshot-0007",
+      "version": "v0.5.0",
+      "variant": "variant-a",
+      "operation": "KnowledgeBase.persist",
+      "classification": "ERROR_SUPPRESSION",
+      "observable": true,
+      "state_recorded": false,
+      "rethrows": false,
+      "bug_claimed": false,
+      "evidence": [
+        "security-ev-fc8cbf327f935700"
+      ]
+    },
+    {
+      "silence_id": "silence-044fc2c3de3e5981",
+      "snapshot_id": "snapshot-0007",
+      "version": "v0.5.0",
+      "variant": "variant-a",
+      "operation": "KnowledgeBase.load",
+      "classification": "ERROR_SUPPRESSION",
+      "observable": true,
+      "state_recorded": false,
+      "rethrows": false,
+      "bug_claimed": false,
+      "evidence": [
+        "security-ev-403e6a06e0a5dba7"
+      ]
+    },
+    {
+      "silence_id": "silence-043c84cf7f2e09f3",
+      "snapshot_id": "snapshot-0007",
+      "version": "v0.5.0",
+      "variant": "variant-a",
+      "operation": "JsonProvider.recognize",
+      "classification": "ERROR_SUPPRESSION",
+      "observable": false,
+      "state_recorded": false,
+      "rethrows": false,
+      "bug_claimed": false,
+      "evidence": [
+        "security-ev-e0879af9eee908b5"
+      ]
+    },
+    {
+      "silence_id": "silence-5a9c9d269b08bc4a",
+      "snapshot_id": "snapshot-0007",
+      "version": "v0.5.0",
+      "variant": "variant-a",
+      "operation": "ManifestProvider.recognize",
+      "classification": "ERROR_SUPPRESSION",
+      "observable": false,
+      "state_recorded": false,
+      "rethrows": false,
+      "bug_claimed": false,
+      "evidence": [
+        "security-ev-fb78d1b84e770f3b"
+      ]
+    },
+    {
+      "silence_id": "silence-df24e0300c94b207",
+      "snapshot_id": "snapshot-0007",
+      "version": "v0.5.0",
+      "variant": "variant-a",
+      "operation": "ApiDescriptionProvider.recognize",
+      "classification": "ERROR_SUPPRESSION",
+      "observable": false,
+      "state_recorded": false,
+      "rethrows": false,
+      "bug_claimed": false,
+      "evidence": [
+        "security-ev-898e0989c9374523"
+      ]
+    },
+    {
+      "silence_id": "silence-db2653e80ad5ab58",
+      "snapshot_id": "snapshot-0007",
+      "version": "v0.5.0",
+      "variant": "variant-a",
+      "operation": "ProviderRegistry.recognize",
+      "classification": "ERROR_SUPPRESSION",
+      "observable": false,
+      "state_recorded": false,
+      "rethrows": false,
+      "bug_claimed": false,
+      "evidence": [
+        "security-ev-3fc932de00813d14"
+      ]
+    },
+    {
+      "silence_id": "silence-56eaeb5828956d7d",
+      "snapshot_id": "snapshot-0007",
+      "version": "v0.5.0",
+      "variant": "variant-a",
+      "operation": "ProviderRegistry.recognize",
+      "classification": "ERROR_SUPPRESSION",
+      "observable": true,
+      "state_recorded": false,
+      "rethrows": false,
+      "bug_claimed": false,
+      "evidence": [
+        "security-ev-009da1367f7fdaab"
+      ]
+    },
+    {
+      "silence_id": "silence-18e98edbaf503f21",
+      "snapshot_id": "snapshot-0007",
+      "version": "v0.5.0",
+      "variant": "variant-a",
+      "operation": "NetworkObserver.installPageBridge",
+      "classification": "ERROR_SUPPRESSION",
+      "observable": true,
+      "state_recorded": false,
+      "rethrows": false,
+      "bug_claimed": false,
+      "evidence": [
+        "security-ev-5aa800cf06305328"
+      ]
+    },
+    {
+      "silence_id": "silence-ce68bf22ffbfb77a",
+      "snapshot_id": "snapshot-0007",
+      "version": "v0.5.0",
+      "variant": "variant-a",
+      "operation": "NetworkObserver.installPerformanceObserver",
+      "classification": "ERROR_SUPPRESSION",
+      "observable": true,
+      "state_recorded": false,
+      "rethrows": false,
+      "bug_claimed": false,
+      "evidence": [
+        "security-ev-56fdecb1b838f3dc"
+      ]
+    },
+    {
+      "silence_id": "silence-2800831d86e4a5a4",
+      "snapshot_id": "snapshot-0007",
+      "version": "v0.5.0",
+      "variant": "variant-a",
+      "operation": "NetworkObserver.dispose",
+      "classification": "UNEXPLAINED_SILENCE",
+      "observable": false,
+      "state_recorded": false,
+      "rethrows": false,
+      "bug_claimed": false,
+      "evidence": [
+        "security-ev-2f6ac9e1df570cda"
+      ]
+    },
+    {
+      "silence_id": "silence-a69f65a5f8f42daf",
+      "snapshot_id": "snapshot-0007",
+      "version": "v0.5.0",
+      "variant": "variant-a",
+      "operation": "DiscoveryEngine.inspectDomNode",
+      "classification": "ERROR_SUPPRESSION",
+      "observable": false,
+      "state_recorded": false,
+      "rethrows": false,
+      "bug_claimed": false,
+      "evidence": [
+        "security-ev-9bdc5f2a324fb459"
+      ]
+    },
+    {
+      "silence_id": "silence-4f6246b67f99574f",
+      "snapshot_id": "snapshot-0007",
+      "version": "v0.5.0",
+      "variant": "variant-a",
+      "operation": "DiscoveryEngine.seed",
+      "classification": "UNEXPLAINED_SILENCE",
+      "observable": false,
+      "state_recorded": false,
+      "rethrows": false,
+      "bug_claimed": false,
+      "evidence": [
+        "security-ev-b8afc4cefd17803c"
+      ]
+    },
+    {
+      "silence_id": "silence-a64c42510acba26b",
+      "snapshot_id": "snapshot-0007",
+      "version": "v0.5.0",
+      "variant": "variant-a",
+      "operation": "DiscoveryEngine.worker",
+      "classification": "ERROR_SUPPRESSION",
+      "observable": true,
+      "state_recorded": false,
+      "rethrows": false,
+      "bug_claimed": false,
+      "evidence": [
+        "security-ev-d2c836579249cf42"
+      ]
+    },
+    {
+      "silence_id": "silence-90967388c006ad63",
+      "snapshot_id": "snapshot-0007",
+      "version": "v0.5.0",
+      "variant": "variant-a",
+      "operation": "DiscoveryEngine.worker",
+      "classification": "ERROR_SUPPRESSION",
+      "observable": true,
+      "state_recorded": false,
+      "rethrows": false,
+      "bug_claimed": false,
+      "evidence": [
+        "security-ev-32ec9479f8f1f5ee"
+      ]
+    },
+    {
+      "silence_id": "silence-7deadc701dafeac3",
+      "snapshot_id": "snapshot-0007",
+      "version": "v0.5.0",
+      "variant": "variant-a",
+      "operation": "TOP_LEVEL.initializeUi",
+      "classification": "ERROR_SUPPRESSION",
+      "observable": true,
+      "state_recorded": false,
+      "rethrows": false,
+      "bug_claimed": false,
+      "evidence": [
+        "security-ev-9055b34f5f52dd69"
+      ]
+    },
+    {
+      "silence_id": "silence-ebfdddfefe2232c2",
+      "snapshot_id": "snapshot-0007",
+      "version": "v0.5.0",
+      "variant": "variant-a",
+      "operation": "TOP_LEVEL.initializeUi",
+      "classification": "ERROR_SUPPRESSION",
+      "observable": true,
+      "state_recorded": false,
+      "rethrows": false,
+      "bug_claimed": false,
+      "evidence": [
+        "security-ev-eef78ec4f3d37cf9"
+      ]
+    },
+    {
+      "silence_id": "silence-aee75c2c85793875",
+      "snapshot_id": "snapshot-0009",
+      "version": "v0.5.0",
+      "variant": "variant-b",
+      "operation": "TOP_LEVEL.canonicalizeUrl",
+      "classification": "ERROR_SUPPRESSION",
+      "observable": false,
+      "state_recorded": false,
+      "rethrows": false,
+      "bug_claimed": false,
+      "evidence": [
+        "security-ev-a84dba91536be4c1"
+      ]
+    },
+    {
+      "silence_id": "silence-0c381cb30e4f2ee6",
+      "snapshot_id": "snapshot-0009",
+      "version": "v0.5.0",
+      "variant": "variant-b",
+      "operation": "TOP_LEVEL.allowed",
+      "classification": "ERROR_SUPPRESSION",
+      "observable": false,
+      "state_recorded": false,
+      "rethrows": false,
+      "bug_claimed": false,
+      "evidence": [
+        "security-ev-c21fa3d6808e31d7"
+      ]
+    },
+    {
+      "silence_id": "silence-3f10c97d7553bf56",
+      "snapshot_id": "snapshot-0009",
+      "version": "v0.5.0",
+      "variant": "variant-b",
+      "operation": "TOP_LEVEL.extractXmlLocs",
+      "classification": "UNEXPLAINED_SILENCE",
+      "observable": false,
+      "state_recorded": false,
+      "rethrows": false,
+      "bug_claimed": false,
+      "evidence": [
+        "security-ev-2db9d4078eccdcdd"
+      ]
+    },
+    {
+      "silence_id": "silence-a00b862583948a2a",
+      "snapshot_id": "snapshot-0009",
+      "version": "v0.5.0",
+      "variant": "variant-b",
+      "operation": "TOP_LEVEL.hashText",
+      "classification": "UNEXPLAINED_SILENCE",
+      "observable": false,
+      "state_recorded": false,
+      "rethrows": false,
+      "bug_claimed": false,
+      "evidence": [
+        "security-ev-c34b150ed06211c0"
+      ]
+    },
+    {
+      "silence_id": "silence-a82ac02254cef9e7",
+      "snapshot_id": "snapshot-0009",
+      "version": "v0.5.0",
+      "variant": "variant-b",
+      "operation": "KnowledgeBase.persist",
+      "classification": "ERROR_SUPPRESSION",
+      "observable": true,
+      "state_recorded": false,
+      "rethrows": false,
+      "bug_claimed": false,
+      "evidence": [
+        "security-ev-76092a05a4b6f32c"
+      ]
+    },
+    {
+      "silence_id": "silence-35b5ed3fde7b97fb",
+      "snapshot_id": "snapshot-0009",
+      "version": "v0.5.0",
+      "variant": "variant-b",
+      "operation": "KnowledgeBase.load",
+      "classification": "ERROR_SUPPRESSION",
+      "observable": true,
+      "state_recorded": false,
+      "rethrows": false,
+      "bug_claimed": false,
+      "evidence": [
+        "security-ev-10c90284e1eec905"
+      ]
+    },
+    {
+      "silence_id": "silence-017b1b8504cc58a3",
+      "snapshot_id": "snapshot-0009",
+      "version": "v0.5.0",
+      "variant": "variant-b",
+      "operation": "JsonProvider.recognize",
+      "classification": "ERROR_SUPPRESSION",
+      "observable": false,
+      "state_recorded": false,
+      "rethrows": false,
+      "bug_claimed": false,
+      "evidence": [
+        "security-ev-b50aa775ef5cebb4"
+      ]
+    },
+    {
+      "silence_id": "silence-200abef69810a7cc",
+      "snapshot_id": "snapshot-0009",
+      "version": "v0.5.0",
+      "variant": "variant-b",
+      "operation": "ProviderRegistry.recognize",
+      "classification": "ERROR_SUPPRESSION",
+      "observable": true,
+      "state_recorded": false,
+      "rethrows": false,
+      "bug_claimed": false,
+      "evidence": [
+        "security-ev-5b145551404d979f"
+      ]
+    },
+    {
+      "silence_id": "silence-0aba58b39813c864",
+      "snapshot_id": "snapshot-0009",
+      "version": "v0.5.0",
+      "variant": "variant-b",
+      "operation": "NetworkBridge.install",
+      "classification": "ERROR_SUPPRESSION",
+      "observable": true,
+      "state_recorded": false,
+      "rethrows": false,
+      "bug_claimed": false,
+      "evidence": [
+        "security-ev-9d0df95606504131"
+      ]
+    },
+    {
+      "silence_id": "silence-ae18421b39688e28",
+      "snapshot_id": "snapshot-0009",
+      "version": "v0.5.0",
+      "variant": "variant-b",
+      "operation": "PerformanceNetworkObserver.install",
+      "classification": "INTENTIONAL_SILENCE",
+      "observable": false,
+      "state_recorded": false,
+      "rethrows": false,
+      "bug_claimed": false,
+      "evidence": [
+        "security-ev-2342d1624f8df8bd"
+      ]
+    },
+    {
+      "silence_id": "silence-2e812dfd2770ae15",
+      "snapshot_id": "snapshot-0009",
+      "version": "v0.5.0",
+      "variant": "variant-b",
+      "operation": "PerformanceNetworkObserver.install",
+      "classification": "INTENTIONAL_SILENCE",
+      "observable": false,
+      "state_recorded": false,
+      "rethrows": false,
+      "bug_claimed": false,
+      "evidence": [
+        "security-ev-3777f6c65d4a2d9f"
+      ]
+    },
+    {
+      "silence_id": "silence-4729a086794e4d63",
+      "snapshot_id": "snapshot-0009",
+      "version": "v0.5.0",
+      "variant": "variant-b",
+      "operation": "DiscoveryEngine.recordNetwork",
+      "classification": "ERROR_SUPPRESSION",
+      "observable": false,
+      "state_recorded": false,
+      "rethrows": false,
+      "bug_claimed": false,
+      "evidence": [
+        "security-ev-d86dde81c075c2df"
+      ]
+    },
+    {
+      "silence_id": "silence-b584ec79381d9878",
+      "snapshot_id": "snapshot-0009",
+      "version": "v0.5.0",
+      "variant": "variant-b",
+      "operation": "DiscoveryEngine.worker",
+      "classification": "ERROR_SUPPRESSION",
+      "observable": true,
+      "state_recorded": false,
+      "rethrows": false,
+      "bug_claimed": false,
+      "evidence": [
+        "security-ev-eee36f69aa9b3c02"
+      ]
+    },
+    {
+      "silence_id": "silence-98e08bc3f69a3b58",
+      "snapshot_id": "snapshot-0009",
+      "version": "v0.5.0",
+      "variant": "variant-b",
+      "operation": "DiscoveryEngine.expand",
+      "classification": "ERROR_SUPPRESSION",
+      "observable": true,
+      "state_recorded": false,
+      "rethrows": false,
+      "bug_claimed": false,
+      "evidence": [
+        "security-ev-ab9373967ec67969"
+      ]
+    },
+    {
+      "silence_id": "silence-67ba12bb14af8b33",
+      "snapshot_id": "snapshot-0009",
+      "version": "v0.5.0",
+      "variant": "variant-b",
+      "operation": "TOP_LEVEL.installUi",
+      "classification": "ERROR_SUPPRESSION",
+      "observable": true,
+      "state_recorded": false,
+      "rethrows": false,
+      "bug_claimed": false,
+      "evidence": [
+        "security-ev-65348f69e361196d"
+      ]
+    },
+    {
+      "silence_id": "silence-84dceea2b6010926",
+      "snapshot_id": "snapshot-0009",
+      "version": "v0.5.0",
+      "variant": "variant-b",
+      "operation": "TOP_LEVEL.installUi",
+      "classification": "ERROR_SUPPRESSION",
+      "observable": true,
+      "state_recorded": false,
+      "rethrows": false,
+      "bug_claimed": false,
+      "evidence": [
+        "security-ev-a5989b691bdde740"
+      ]
+    },
+    {
+      "silence_id": "silence-17ff534ed5731d9f",
+      "snapshot_id": "snapshot-0011",
+      "version": "v0.5.0",
+      "variant": "variant-c",
+      "operation": "TOP_LEVEL.canonicalizeUrl",
+      "classification": "ERROR_SUPPRESSION",
+      "observable": false,
+      "state_recorded": false,
+      "rethrows": false,
+      "bug_claimed": false,
+      "evidence": [
+        "security-ev-a9b11bb8e9ca1eef"
+      ]
+    },
+    {
+      "silence_id": "silence-ae614af2c776a99b",
+      "snapshot_id": "snapshot-0011",
+      "version": "v0.5.0",
+      "variant": "variant-c",
+      "operation": "TOP_LEVEL.isAllowedUrl",
+      "classification": "ERROR_SUPPRESSION",
+      "observable": false,
+      "state_recorded": false,
+      "rethrows": false,
+      "bug_claimed": false,
+      "evidence": [
+        "security-ev-cc19b1eb77fe4b1e"
+      ]
+    },
+    {
+      "silence_id": "silence-0ed7e335bd07a6b7",
+      "snapshot_id": "snapshot-0011",
+      "version": "v0.5.0",
+      "variant": "variant-c",
+      "operation": "TOP_LEVEL.looksLikeApiUrl",
+      "classification": "ERROR_SUPPRESSION",
+      "observable": false,
+      "state_recorded": false,
+      "rethrows": false,
+      "bug_claimed": false,
+      "evidence": [
+        "security-ev-979f3b42f84b889b"
+      ]
+    },
+    {
+      "silence_id": "silence-c595291372409045",
+      "snapshot_id": "snapshot-0011",
+      "version": "v0.5.0",
+      "variant": "variant-c",
+      "operation": "KnowledgeBase.persistNow",
+      "classification": "ERROR_SUPPRESSION",
+      "observable": true,
+      "state_recorded": false,
+      "rethrows": false,
+      "bug_claimed": false,
+      "evidence": [
+        "security-ev-a187f75c1fdd3656"
+      ]
+    },
+    {
+      "silence_id": "silence-369999cf77ef3087",
+      "snapshot_id": "snapshot-0011",
+      "version": "v0.5.0",
+      "variant": "variant-c",
+      "operation": "KnowledgeBase.load",
+      "classification": "ERROR_SUPPRESSION",
+      "observable": true,
+      "state_recorded": false,
+      "rethrows": false,
+      "bug_claimed": false,
+      "evidence": [
+        "security-ev-65b5ceec48a25c81"
+      ]
+    },
+    {
+      "silence_id": "silence-4f5b2ced460a4cf4",
+      "snapshot_id": "snapshot-0011",
+      "version": "v0.5.0",
+      "variant": "variant-c",
+      "operation": "KnowledgeBase.clear",
+      "classification": "ERROR_SUPPRESSION",
+      "observable": true,
+      "state_recorded": false,
+      "rethrows": false,
+      "bug_claimed": false,
+      "evidence": [
+        "security-ev-3600667c9ab5b535"
+      ]
+    },
+    {
+      "silence_id": "silence-305ec85414fa3742",
+      "snapshot_id": "snapshot-0011",
+      "version": "v0.5.0",
+      "variant": "variant-c",
+      "operation": "HttpAcquisitionAdapter.acquireGM",
+      "classification": "ERROR_SUPPRESSION",
+      "observable": false,
+      "state_recorded": false,
+      "rethrows": false,
+      "bug_claimed": false,
+      "evidence": [
+        "security-ev-0d779bea41564305"
+      ]
+    },
+    {
+      "silence_id": "silence-14a5890757d8c652",
+      "snapshot_id": "snapshot-0011",
+      "version": "v0.5.0",
+      "variant": "variant-c",
+      "operation": "JsonProvider.recognize",
+      "classification": "ERROR_SUPPRESSION",
+      "observable": false,
+      "state_recorded": false,
+      "rethrows": false,
+      "bug_claimed": false,
+      "evidence": [
+        "security-ev-1f48ace5ac7a2ada"
+      ]
+    },
+    {
+      "silence_id": "silence-dce7218987a3f06d",
+      "snapshot_id": "snapshot-0011",
+      "version": "v0.5.0",
+      "variant": "variant-c",
+      "operation": "RobotsProvider.matches",
+      "classification": "ERROR_SUPPRESSION",
+      "observable": false,
+      "state_recorded": false,
+      "rethrows": false,
+      "bug_claimed": false,
+      "evidence": [
+        "security-ev-2a1d605376e427f7"
+      ]
+    },
+    {
+      "silence_id": "silence-21847d466d51ba1b",
+      "snapshot_id": "snapshot-0011",
+      "version": "v0.5.0",
+      "variant": "variant-c",
+      "operation": "TextProvider.matches",
+      "classification": "INTENTIONAL_SILENCE",
+      "observable": false,
+      "state_recorded": false,
+      "rethrows": false,
+      "bug_claimed": false,
+      "evidence": [
+        "security-ev-e95b3dce058b18ac"
+      ]
+    },
+    {
+      "silence_id": "silence-783ccd4424e6d43e",
+      "snapshot_id": "snapshot-0011",
+      "version": "v0.5.0",
+      "variant": "variant-c",
+      "operation": "ProviderRegistry.recognizeAll",
+      "classification": "ERROR_SUPPRESSION",
+      "observable": true,
+      "state_recorded": false,
+      "rethrows": false,
+      "bug_claimed": false,
+      "evidence": [
+        "security-ev-d18f5b6d3631b252"
+      ]
+    },
+    {
+      "silence_id": "silence-aa8bceb9a2a9885c",
+      "snapshot_id": "snapshot-0011",
+      "version": "v0.5.0",
+      "variant": "variant-c",
+      "operation": "ProviderRegistry.recognizeAll",
+      "classification": "ERROR_SUPPRESSION",
+      "observable": true,
+      "state_recorded": false,
+      "rethrows": false,
+      "bug_claimed": false,
+      "evidence": [
+        "security-ev-66971bb9d0ba20ef"
+      ]
+    },
+    {
+      "silence_id": "silence-227ebbb309d96c89",
+      "snapshot_id": "snapshot-0011",
+      "version": "v0.5.0",
+      "variant": "variant-c",
+      "operation": "ProviderRegistry.candidatesFor",
+      "classification": "ERROR_SUPPRESSION",
+      "observable": true,
+      "state_recorded": false,
+      "rethrows": false,
+      "bug_claimed": false,
+      "evidence": [
+        "security-ev-53070a6bff14d424"
+      ]
+    },
+    {
+      "silence_id": "silence-7295f52eb00b96ca",
+      "snapshot_id": "snapshot-0011",
+      "version": "v0.5.0",
+      "variant": "variant-c",
+      "operation": "NetworkObserver.installPageBridge",
+      "classification": "ERROR_SUPPRESSION",
+      "observable": true,
+      "state_recorded": false,
+      "rethrows": false,
+      "bug_claimed": false,
+      "evidence": [
+        "security-ev-82f0ff4d05dc560a"
+      ]
+    },
+    {
+      "silence_id": "silence-8af315e79e3a7fe0",
+      "snapshot_id": "snapshot-0011",
+      "version": "v0.5.0",
+      "variant": "variant-c",
+      "operation": "NetworkObserver.installPerformanceObserver",
+      "classification": "ERROR_SUPPRESSION",
+      "observable": true,
+      "state_recorded": false,
+      "rethrows": false,
+      "bug_claimed": false,
+      "evidence": [
+        "security-ev-6b777a96e79c3de9"
+      ]
+    },
+    {
+      "silence_id": "silence-3a6e3e1e4525fab7",
+      "snapshot_id": "snapshot-0011",
+      "version": "v0.5.0",
+      "variant": "variant-c",
+      "operation": "NetworkObserver.installPerformanceObserver",
+      "classification": "ERROR_SUPPRESSION",
+      "observable": true,
+      "state_recorded": false,
+      "rethrows": false,
+      "bug_claimed": false,
+      "evidence": [
+        "security-ev-62427229aa9fa8cf"
+      ]
+    },
+    {
+      "silence_id": "silence-6d8d204db8938467",
+      "snapshot_id": "snapshot-0011",
+      "version": "v0.5.0",
+      "variant": "variant-c",
+      "operation": "DiscoveryEngine.seedWellKnown",
+      "classification": "ERROR_SUPPRESSION",
+      "observable": false,
+      "state_recorded": false,
+      "rethrows": false,
+      "bug_claimed": false,
+      "evidence": [
+        "security-ev-aa8fb61eb0125582"
+      ]
+    },
+    {
+      "silence_id": "silence-d0575daae4cbeb25",
+      "snapshot_id": "snapshot-0011",
+      "version": "v0.5.0",
+      "variant": "variant-c",
+      "operation": "EngineUI.downloadExport",
+      "classification": "ERROR_SUPPRESSION",
+      "observable": true,
+      "state_recorded": false,
+      "rethrows": false,
+      "bug_claimed": false,
+      "evidence": [
+        "security-ev-9e25ec197595c177"
+      ]
+    },
+    {
+      "silence_id": "silence-9ac187b66a2398cc",
+      "snapshot_id": "snapshot-0011",
+      "version": "v0.5.0",
+      "variant": "variant-c",
+      "operation": "EngineUI.downloadExport",
+      "classification": "ERROR_SUPPRESSION",
+      "observable": true,
+      "state_recorded": false,
+      "rethrows": false,
+      "bug_claimed": false,
+      "evidence": [
+        "security-ev-19f1c70b815c4b88"
+      ]
+    },
+    {
+      "silence_id": "silence-7d406d4b79f485af",
+      "snapshot_id": "snapshot-0010",
+      "version": "v0.6.0",
+      "variant": "variant-a",
+      "operation": "TOP_LEVEL.canonicalizeUrl",
+      "classification": "ERROR_SUPPRESSION",
+      "observable": false,
+      "state_recorded": false,
+      "rethrows": false,
+      "bug_claimed": false,
+      "evidence": [
+        "security-ev-2f20919cd31873d9"
+      ]
+    },
+    {
+      "silence_id": "silence-5c767ef235e93693",
+      "snapshot_id": "snapshot-0010",
+      "version": "v0.6.0",
+      "variant": "variant-a",
+      "operation": "TOP_LEVEL.allowed",
+      "classification": "ERROR_SUPPRESSION",
+      "observable": false,
+      "state_recorded": false,
+      "rethrows": false,
+      "bug_claimed": false,
+      "evidence": [
+        "security-ev-271b9e4aa6ac5f23"
+      ]
+    },
+    {
+      "silence_id": "silence-5655bec3634ec1cf",
+      "snapshot_id": "snapshot-0010",
+      "version": "v0.6.0",
+      "variant": "variant-a",
+      "operation": "TOP_LEVEL.sha256",
+      "classification": "UNEXPLAINED_SILENCE",
+      "observable": false,
+      "state_recorded": false,
+      "rethrows": false,
+      "bug_claimed": false,
+      "evidence": [
+        "security-ev-ada91e361358b57e"
+      ]
+    },
+    {
+      "silence_id": "silence-392f9802b5b0838d",
+      "snapshot_id": "snapshot-0010",
+      "version": "v0.6.0",
+      "variant": "variant-a",
+      "operation": "KnowledgeBase.persist",
+      "classification": "ERROR_SUPPRESSION",
+      "observable": true,
+      "state_recorded": false,
+      "rethrows": false,
+      "bug_claimed": false,
+      "evidence": [
+        "security-ev-a602df7600ee69a3"
+      ]
+    },
+    {
+      "silence_id": "silence-01cff22ad82a039e",
+      "snapshot_id": "snapshot-0010",
+      "version": "v0.6.0",
+      "variant": "variant-a",
+      "operation": "KnowledgeBase.load",
+      "classification": "ERROR_SUPPRESSION",
+      "observable": true,
+      "state_recorded": false,
+      "rethrows": false,
+      "bug_claimed": false,
+      "evidence": [
+        "security-ev-ba42bba450ba90ac"
+      ]
+    },
+    {
+      "silence_id": "silence-fa08b96b077d0499",
+      "snapshot_id": "snapshot-0010",
+      "version": "v0.6.0",
+      "variant": "variant-a",
+      "operation": "JsonProvider.recognize",
+      "classification": "ERROR_SUPPRESSION",
+      "observable": false,
+      "state_recorded": false,
+      "rethrows": false,
+      "bug_claimed": false,
+      "evidence": [
+        "security-ev-7ca4438712e07786"
+      ]
+    },
+    {
+      "silence_id": "silence-c254bea917826dbe",
+      "snapshot_id": "snapshot-0010",
+      "version": "v0.6.0",
+      "variant": "variant-a",
+      "operation": "ProviderRegistry.recognize",
+      "classification": "ERROR_SUPPRESSION",
+      "observable": true,
+      "state_recorded": false,
+      "rethrows": false,
+      "bug_claimed": false,
+      "evidence": [
+        "security-ev-1d829d3bcbc1e32d"
+      ]
+    },
+    {
+      "silence_id": "silence-c153bcf95b4d358d",
+      "snapshot_id": "snapshot-0010",
+      "version": "v0.6.0",
+      "variant": "variant-a",
+      "operation": "NetworkBridge.install",
+      "classification": "ERROR_SUPPRESSION",
+      "observable": true,
+      "state_recorded": false,
+      "rethrows": false,
+      "bug_claimed": false,
+      "evidence": [
+        "security-ev-67a955f801298e24"
+      ]
+    },
+    {
+      "silence_id": "silence-f8e0ff71af97fb85",
+      "snapshot_id": "snapshot-0010",
+      "version": "v0.6.0",
+      "variant": "variant-a",
+      "operation": "PerformanceObserverAdapter.install",
+      "classification": "INTENTIONAL_SILENCE",
+      "observable": false,
+      "state_recorded": false,
+      "rethrows": false,
+      "bug_claimed": false,
+      "evidence": [
+        "security-ev-25684d9ed6322712"
+      ]
+    },
+    {
+      "silence_id": "silence-5f34a8d5f9619dc8",
+      "snapshot_id": "snapshot-0010",
+      "version": "v0.6.0",
+      "variant": "variant-a",
+      "operation": "PerformanceObserverAdapter.install",
+      "classification": "INTENTIONAL_SILENCE",
+      "observable": false,
+      "state_recorded": false,
+      "rethrows": false,
+      "bug_claimed": false,
+      "evidence": [
+        "security-ev-5e0d140d0b548186"
+      ]
+    },
+    {
+      "silence_id": "silence-3409beb7998451ba",
+      "snapshot_id": "snapshot-0010",
+      "version": "v0.6.0",
+      "variant": "variant-a",
+      "operation": "DiscoveryEngine.worker",
+      "classification": "ERROR_SUPPRESSION",
+      "observable": false,
+      "state_recorded": false,
+      "rethrows": false,
+      "bug_claimed": false,
+      "evidence": [
+        "security-ev-fcc81df80fb5470c"
+      ]
+    },
+    {
+      "silence_id": "silence-761cda873fb80b2d",
+      "snapshot_id": "snapshot-0010",
+      "version": "v0.6.0",
+      "variant": "variant-a",
+      "operation": "TOP_LEVEL.installUi",
+      "classification": "ERROR_SUPPRESSION",
+      "observable": true,
+      "state_recorded": false,
+      "rethrows": false,
+      "bug_claimed": false,
+      "evidence": [
+        "security-ev-ebeeb7ea763e30e3"
+      ]
+    },
+    {
+      "silence_id": "silence-56818c3d00009631",
+      "snapshot_id": "snapshot-0010",
+      "version": "v0.6.0",
+      "variant": "variant-a",
+      "operation": "TOP_LEVEL.installUi",
+      "classification": "ERROR_SUPPRESSION",
+      "observable": true,
+      "state_recorded": false,
+      "rethrows": false,
+      "bug_claimed": false,
+      "evidence": [
+        "security-ev-99887e645fb57713"
+      ]
+    },
+    {
+      "silence_id": "silence-b2af7e14e110858f",
+      "snapshot_id": "snapshot-0012",
+      "version": "v0.6.0",
+      "variant": "variant-b",
+      "operation": "TOP_LEVEL.getOrigin",
+      "classification": "ERROR_SUPPRESSION",
+      "observable": false,
+      "state_recorded": false,
+      "rethrows": false,
+      "bug_claimed": false,
+      "evidence": [
+        "security-ev-888079f700892021"
+      ]
+    },
+    {
+      "silence_id": "silence-9d21b08b8113636e",
+      "snapshot_id": "snapshot-0012",
+      "version": "v0.6.0",
+      "variant": "variant-b",
+      "operation": "TOP_LEVEL.canonicalizeUrl",
+      "classification": "ERROR_SUPPRESSION",
+      "observable": false,
+      "state_recorded": false,
+      "rethrows": false,
+      "bug_claimed": false,
+      "evidence": [
+        "security-ev-708c1b5fc3086240"
+      ]
+    },
+    {
+      "silence_id": "silence-b8eba8dab4b6699c",
+      "snapshot_id": "snapshot-0012",
+      "version": "v0.6.0",
+      "variant": "variant-b",
+      "operation": "TOP_LEVEL.isAllowedUrl",
+      "classification": "ERROR_SUPPRESSION",
+      "observable": false,
+      "state_recorded": false,
+      "rethrows": false,
+      "bug_claimed": false,
+      "evidence": [
+        "security-ev-566c3db11479f466"
+      ]
+    },
+    {
+      "silence_id": "silence-5d45c69dd743526f",
+      "snapshot_id": "snapshot-0012",
+      "version": "v0.6.0",
+      "variant": "variant-b",
+      "operation": "TOP_LEVEL.looksLikeApiUrl",
+      "classification": "ERROR_SUPPRESSION",
+      "observable": false,
+      "state_recorded": false,
+      "rethrows": false,
+      "bug_claimed": false,
+      "evidence": [
+        "security-ev-24575052747f41f2"
+      ]
+    },
+    {
+      "silence_id": "silence-b2fcc8d69e751293",
+      "snapshot_id": "snapshot-0012",
+      "version": "v0.6.0",
+      "variant": "variant-b",
+      "operation": "KnowledgeBase.persistNow",
+      "classification": "ERROR_SUPPRESSION",
+      "observable": true,
+      "state_recorded": false,
+      "rethrows": false,
+      "bug_claimed": false,
+      "evidence": [
+        "security-ev-de72aa189484071c"
+      ]
+    },
+    {
+      "silence_id": "silence-f153ffbe475375f4",
+      "snapshot_id": "snapshot-0012",
+      "version": "v0.6.0",
+      "variant": "variant-b",
+      "operation": "KnowledgeBase.load",
+      "classification": "ERROR_SUPPRESSION",
+      "observable": true,
+      "state_recorded": false,
+      "rethrows": false,
+      "bug_claimed": false,
+      "evidence": [
+        "security-ev-6fe57ae14a4bf257"
+      ]
+    },
+    {
+      "silence_id": "silence-35291be65e03e7e1",
+      "snapshot_id": "snapshot-0012",
+      "version": "v0.6.0",
+      "variant": "variant-b",
+      "operation": "KnowledgeBase.clear",
+      "classification": "ERROR_SUPPRESSION",
+      "observable": true,
+      "state_recorded": false,
+      "rethrows": false,
+      "bug_claimed": false,
+      "evidence": [
+        "security-ev-f28f50c537a86404"
+      ]
+    },
+    {
+      "silence_id": "silence-037c6b014ac24fa1",
+      "snapshot_id": "snapshot-0012",
+      "version": "v0.6.0",
+      "variant": "variant-b",
+      "operation": "HttpAcquisitionAdapter.acquireGM",
+      "classification": "ERROR_SUPPRESSION",
+      "observable": false,
+      "state_recorded": false,
+      "rethrows": false,
+      "bug_claimed": false,
+      "evidence": [
+        "security-ev-2fbf659cea67412c"
+      ]
+    },
+    {
+      "silence_id": "silence-26d5aca3280a908e",
+      "snapshot_id": "snapshot-0012",
+      "version": "v0.6.0",
+      "variant": "variant-b",
+      "operation": "JsonProvider.recognize",
+      "classification": "ERROR_SUPPRESSION",
+      "observable": false,
+      "state_recorded": false,
+      "rethrows": false,
+      "bug_claimed": false,
+      "evidence": [
+        "security-ev-0b7d996f5b8d55c1"
+      ]
+    },
+    {
+      "silence_id": "silence-934fae93daf657cf",
+      "snapshot_id": "snapshot-0012",
+      "version": "v0.6.0",
+      "variant": "variant-b",
+      "operation": "RobotsProvider.matches",
+      "classification": "ERROR_SUPPRESSION",
+      "observable": false,
+      "state_recorded": false,
+      "rethrows": false,
+      "bug_claimed": false,
+      "evidence": [
+        "security-ev-f168646fec075ff0"
+      ]
+    },
+    {
+      "silence_id": "silence-fc66871a1874308b",
+      "snapshot_id": "snapshot-0012",
+      "version": "v0.6.0",
+      "variant": "variant-b",
+      "operation": "TextProvider.matches",
+      "classification": "INTENTIONAL_SILENCE",
+      "observable": false,
+      "state_recorded": false,
+      "rethrows": false,
+      "bug_claimed": false,
+      "evidence": [
+        "security-ev-f254e663b5062707"
+      ]
+    },
+    {
+      "silence_id": "silence-0bee932d62d6ab1e",
+      "snapshot_id": "snapshot-0012",
+      "version": "v0.6.0",
+      "variant": "variant-b",
+      "operation": "ProviderRegistry.recognizeAll",
+      "classification": "ERROR_SUPPRESSION",
+      "observable": true,
+      "state_recorded": false,
+      "rethrows": false,
+      "bug_claimed": false,
+      "evidence": [
+        "security-ev-46758ad69378490d"
+      ]
+    },
+    {
+      "silence_id": "silence-350d3235b9bc46fb",
+      "snapshot_id": "snapshot-0012",
+      "version": "v0.6.0",
+      "variant": "variant-b",
+      "operation": "ProviderRegistry.recognizeAll",
+      "classification": "ERROR_SUPPRESSION",
+      "observable": true,
+      "state_recorded": false,
+      "rethrows": false,
+      "bug_claimed": false,
+      "evidence": [
+        "security-ev-861ff3b621877a87"
+      ]
+    },
+    {
+      "silence_id": "silence-2fe01e5ef1824e14",
+      "snapshot_id": "snapshot-0012",
+      "version": "v0.6.0",
+      "variant": "variant-b",
+      "operation": "ProviderRegistry.candidatesFor",
+      "classification": "ERROR_SUPPRESSION",
+      "observable": true,
+      "state_recorded": false,
+      "rethrows": false,
+      "bug_claimed": false,
+      "evidence": [
+        "security-ev-7cf385dfde3a7caf"
+      ]
+    },
+    {
+      "silence_id": "silence-dfd5dca002541934",
+      "snapshot_id": "snapshot-0012",
+      "version": "v0.6.0",
+      "variant": "variant-b",
+      "operation": "NetworkObserver.installPageBridge",
+      "classification": "ERROR_SUPPRESSION",
+      "observable": true,
+      "state_recorded": false,
+      "rethrows": false,
+      "bug_claimed": false,
+      "evidence": [
+        "security-ev-8048f31a8f8460b4"
+      ]
+    },
+    {
+      "silence_id": "silence-83d87ed20a528229",
+      "snapshot_id": "snapshot-0012",
+      "version": "v0.6.0",
+      "variant": "variant-b",
+      "operation": "NetworkObserver.installPerformanceObserver",
+      "classification": "ERROR_SUPPRESSION",
+      "observable": true,
+      "state_recorded": false,
+      "rethrows": false,
+      "bug_claimed": false,
+      "evidence": [
+        "security-ev-449c9738ecfc8de9"
+      ]
+    },
+    {
+      "silence_id": "silence-bacac74eb1da5df1",
+      "snapshot_id": "snapshot-0012",
+      "version": "v0.6.0",
+      "variant": "variant-b",
+      "operation": "NetworkObserver.installPerformanceObserver",
+      "classification": "ERROR_SUPPRESSION",
+      "observable": true,
+      "state_recorded": false,
+      "rethrows": false,
+      "bug_claimed": false,
+      "evidence": [
+        "security-ev-7336fafd6650cfdd"
+      ]
+    },
+    {
+      "silence_id": "silence-cb66f49462f1c1cd",
+      "snapshot_id": "snapshot-0012",
+      "version": "v0.6.0",
+      "variant": "variant-b",
+      "operation": "DiscoveryEngine.seedWellKnown",
+      "classification": "ERROR_SUPPRESSION",
+      "observable": false,
+      "state_recorded": false,
+      "rethrows": false,
+      "bug_claimed": false,
+      "evidence": [
+        "security-ev-4adab4c4d3ae2cc9"
+      ]
+    },
+    {
+      "silence_id": "silence-3af1c9d6bb62b7ad",
+      "snapshot_id": "snapshot-0012",
+      "version": "v0.6.0",
+      "variant": "variant-b",
+      "operation": "EngineUI.downloadExport",
+      "classification": "ERROR_SUPPRESSION",
+      "observable": true,
+      "state_recorded": false,
+      "rethrows": false,
+      "bug_claimed": false,
+      "evidence": [
+        "security-ev-d6acf7bc386e387a"
+      ]
+    },
+    {
+      "silence_id": "silence-df74d337a10015d2",
+      "snapshot_id": "snapshot-0012",
+      "version": "v0.6.0",
+      "variant": "variant-b",
+      "operation": "EngineUI.downloadExport",
+      "classification": "ERROR_SUPPRESSION",
+      "observable": true,
+      "state_recorded": false,
+      "rethrows": false,
+      "bug_claimed": false,
+      "evidence": [
+        "security-ev-578fe6abd7101266"
+      ]
+    },
+    {
+      "silence_id": "silence-92b21da2f5c092c4",
+      "snapshot_id": "snapshot-0013",
+      "version": "v0.6.0",
+      "variant": "variant-c",
+      "operation": "TOP_LEVEL.originOf",
+      "classification": "ERROR_SUPPRESSION",
+      "observable": false,
+      "state_recorded": false,
+      "rethrows": false,
+      "bug_claimed": false,
+      "evidence": [
+        "security-ev-62b4a2dfb3d93671"
+      ]
+    },
+    {
+      "silence_id": "silence-6a13e4e752f08f0f",
+      "snapshot_id": "snapshot-0013",
+      "version": "v0.6.0",
+      "variant": "variant-c",
+      "operation": "TOP_LEVEL.canonicalizeUrl",
+      "classification": "ERROR_SUPPRESSION",
+      "observable": false,
+      "state_recorded": false,
+      "rethrows": false,
+      "bug_claimed": false,
+      "evidence": [
+        "security-ev-67d410bb66e533fc"
+      ]
+    },
+    {
+      "silence_id": "silence-c1fbb9fe469291b3",
+      "snapshot_id": "snapshot-0013",
+      "version": "v0.6.0",
+      "variant": "variant-c",
+      "operation": "TOP_LEVEL.contentTypeForTarget",
+      "classification": "ERROR_SUPPRESSION",
+      "observable": false,
+      "state_recorded": false,
+      "rethrows": false,
+      "bug_claimed": false,
+      "evidence": [
+        "security-ev-9ae6e046cf5f209d"
+      ]
+    },
+    {
+      "silence_id": "silence-6708df09d40653cd",
+      "snapshot_id": "snapshot-0013",
+      "version": "v0.6.0",
+      "variant": "variant-c",
+      "operation": "KnowledgeBase.persistSoon",
+      "classification": "ERROR_SUPPRESSION",
+      "observable": true,
+      "state_recorded": false,
+      "rethrows": false,
+      "bug_claimed": false,
+      "evidence": [
+        "security-ev-d93e18e8c1e998c2"
+      ]
+    },
+    {
+      "silence_id": "silence-993164d3a01a0893",
+      "snapshot_id": "snapshot-0013",
+      "version": "v0.6.0",
+      "variant": "variant-c",
+      "operation": "KnowledgeBase.load",
+      "classification": "ERROR_SUPPRESSION",
+      "observable": true,
+      "state_recorded": false,
+      "rethrows": false,
+      "bug_claimed": false,
+      "evidence": [
+        "security-ev-1bf8fc7bbb6afbc9"
+      ]
+    },
+    {
+      "silence_id": "silence-e81cd3b744d867a4",
+      "snapshot_id": "snapshot-0013",
+      "version": "v0.6.0",
+      "variant": "variant-c",
+      "operation": "KnowledgeBase.clear",
+      "classification": "INTENTIONAL_SILENCE",
+      "observable": false,
+      "state_recorded": false,
+      "rethrows": false,
+      "bug_claimed": false,
+      "evidence": [
+        "security-ev-4088c2804364a776"
+      ]
+    },
+    {
+      "silence_id": "silence-d746c890ad6866c9",
+      "snapshot_id": "snapshot-0013",
+      "version": "v0.6.0",
+      "variant": "variant-c",
+      "operation": "JsonProvider.discover",
+      "classification": "ERROR_SUPPRESSION",
+      "observable": false,
+      "state_recorded": false,
+      "rethrows": false,
+      "bug_claimed": false,
+      "evidence": [
+        "security-ev-bf8a7dda4bc3fdf3"
+      ]
+    },
+    {
+      "silence_id": "silence-91f6e22d473ba228",
+      "snapshot_id": "snapshot-0013",
+      "version": "v0.6.0",
+      "variant": "variant-c",
+      "operation": "ProviderRegistry.discover",
+      "classification": "ERROR_SUPPRESSION",
+      "observable": true,
+      "state_recorded": false,
+      "rethrows": false,
+      "bug_claimed": false,
+      "evidence": [
+        "security-ev-d09f05e9d84b8ff2"
+      ]
+    },
+    {
+      "silence_id": "silence-c950b4273633305e",
+      "snapshot_id": "snapshot-0013",
+      "version": "v0.6.0",
+      "variant": "variant-c",
+      "operation": "TOP_LEVEL.gmRequest",
+      "classification": "ERROR_SUPPRESSION",
+      "observable": false,
+      "state_recorded": false,
+      "rethrows": false,
+      "bug_claimed": false,
+      "evidence": [
+        "security-ev-442bd1bd40a7dd57"
+      ]
+    },
+    {
+      "silence_id": "silence-6e770ee8d5ba2eb5",
+      "snapshot_id": "snapshot-0013",
+      "version": "v0.6.0",
+      "variant": "variant-c",
+      "operation": "NetworkObserver.installPerformanceObserver",
+      "classification": "ERROR_SUPPRESSION",
+      "observable": true,
+      "state_recorded": false,
+      "rethrows": false,
+      "bug_claimed": false,
+      "evidence": [
+        "security-ev-bc56107008ebaef1"
+      ]
+    },
+    {
+      "silence_id": "silence-3d938862ccc3e39a",
+      "snapshot_id": "snapshot-0013",
+      "version": "v0.6.0",
+      "variant": "variant-c",
+      "operation": "GenericDiscoveryEngine.processCandidate",
+      "classification": "ERROR_SUPPRESSION",
+      "observable": true,
+      "state_recorded": false,
+      "rethrows": false,
+      "bug_claimed": false,
+      "evidence": [
+        "security-ev-d4c6ec2b97e75606"
+      ]
+    },
+    {
+      "silence_id": "silence-32f8cb62ffc512a2",
+      "snapshot_id": "snapshot-0014",
+      "version": "v0.7.1",
+      "variant": "only-evidenced-complete-occurrence",
+      "operation": "TOP_LEVEL.originOf",
+      "classification": "ERROR_SUPPRESSION",
+      "observable": false,
+      "state_recorded": false,
+      "rethrows": false,
+      "bug_claimed": false,
+      "evidence": [
+        "security-ev-c1e0a7900dd364e7"
+      ]
+    },
+    {
+      "silence_id": "silence-cb9c12740a0344f2",
+      "snapshot_id": "snapshot-0014",
+      "version": "v0.7.1",
+      "variant": "only-evidenced-complete-occurrence",
+      "operation": "TOP_LEVEL.canonicalizeUrl",
+      "classification": "ERROR_SUPPRESSION",
+      "observable": false,
+      "state_recorded": false,
+      "rethrows": false,
+      "bug_claimed": false,
+      "evidence": [
+        "security-ev-93399494c7b81238"
+      ]
+    },
+    {
+      "silence_id": "silence-bb14947b194ad5a5",
+      "snapshot_id": "snapshot-0014",
+      "version": "v0.7.1",
+      "variant": "only-evidenced-complete-occurrence",
+      "operation": "TOP_LEVEL.isAllowedUrl",
+      "classification": "ERROR_SUPPRESSION",
+      "observable": false,
+      "state_recorded": false,
+      "rethrows": false,
+      "bug_claimed": false,
+      "evidence": [
+        "security-ev-7813bbecc7244e35"
+      ]
+    },
+    {
+      "silence_id": "silence-5045646c3bc565b9",
+      "snapshot_id": "snapshot-0014",
+      "version": "v0.7.1",
+      "variant": "only-evidenced-complete-occurrence",
+      "operation": "TOP_LEVEL.looksLikeApiUrl",
+      "classification": "ERROR_SUPPRESSION",
+      "observable": false,
+      "state_recorded": false,
+      "rethrows": false,
+      "bug_claimed": false,
+      "evidence": [
+        "security-ev-415c4a01be959441"
+      ]
+    },
+    {
+      "silence_id": "silence-47e4c8a2a9e76f3f",
+      "snapshot_id": "snapshot-0014",
+      "version": "v0.7.1",
+      "variant": "only-evidenced-complete-occurrence",
+      "operation": "TOP_LEVEL.extractXmlLocs",
+      "classification": "UNEXPLAINED_SILENCE",
+      "observable": false,
+      "state_recorded": false,
+      "rethrows": false,
+      "bug_claimed": false,
+      "evidence": [
+        "security-ev-b48cec225e57a571"
+      ]
+    },
+    {
+      "silence_id": "silence-ca8185d0184c472d",
+      "snapshot_id": "snapshot-0014",
+      "version": "v0.7.1",
+      "variant": "only-evidenced-complete-occurrence",
+      "operation": "Acquisition.request",
+      "classification": "ERROR_SUPPRESSION",
+      "observable": false,
+      "state_recorded": false,
+      "rethrows": false,
+      "bug_claimed": false,
+      "evidence": [
+        "security-ev-b4979490680146c4"
+      ]
+    },
+    {
+      "silence_id": "silence-c622bcda1b6d7a9b",
+      "snapshot_id": "snapshot-0014",
+      "version": "v0.7.1",
+      "variant": "only-evidenced-complete-occurrence",
+      "operation": "HtmlProvider.recognize",
+      "classification": "ERROR_SUPPRESSION",
+      "observable": false,
+      "state_recorded": false,
+      "rethrows": false,
+      "bug_claimed": false,
+      "evidence": [
+        "security-ev-611d5ec5488f4c38"
+      ]
+    },
+    {
+      "silence_id": "silence-6cf41b1416e34361",
+      "snapshot_id": "snapshot-0014",
+      "version": "v0.7.1",
+      "variant": "only-evidenced-complete-occurrence",
+      "operation": "JsonProvider.recognize",
+      "classification": "ERROR_SUPPRESSION",
+      "observable": false,
+      "state_recorded": false,
+      "rethrows": false,
+      "bug_claimed": false,
+      "evidence": [
+        "security-ev-decbce3b7e9befab"
+      ]
+    },
+    {
+      "silence_id": "silence-26852073b3304a62",
+      "snapshot_id": "snapshot-0014",
+      "version": "v0.7.1",
+      "variant": "only-evidenced-complete-occurrence",
+      "operation": "GenericDiscoveryEngine.restore",
+      "classification": "ERROR_SUPPRESSION",
+      "observable": true,
+      "state_recorded": false,
+      "rethrows": false,
+      "bug_claimed": false,
+      "evidence": [
+        "security-ev-8bc48fa3ff3f2023"
+      ]
+    }
+  ],
+  "classification_registry": [
+    "ERROR_SUPPRESSION",
+    "INTENTIONAL_SILENCE",
+    "UNEXPLAINED_SILENCE",
+    "UNKNOWN"
+  ]
+}

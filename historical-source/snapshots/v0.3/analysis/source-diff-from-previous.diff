@@ -1,0 +1,2603 @@
+--- snapshot-0004/generic-discovery.user.js
++++ snapshot-0005/generic-discovery.user.js
+@@ -1,9 +1,2592 @@
+-// ==UserScript== // @name         Generic Discovery Engine // @namespace    generic-discovery // @version      0.2.0 // @description  Generic web-resource discovery prototype inspired by the architecture of DVB blind scanning. // @match        *://*/* // @grant        GM_getValue // @grant        GM_setValue // @grant        GM_xmlhttpRequest // @connect      * // ==/UserScript==
+- 
+-(() => { 'use strict';
+- /*  * =====================================================================  * GENERIC DISCOVERY ENGINE  * =====================================================================  *  * PURPOSE  * -------  * This is a browser-side discovery prototype inspired by the  * architecture of DVB blind scanning:  *  *      candidate  *          ↓  *      observation  *          ↓  *      recognition  *          ↓  *      discovery  *          ↓  *      new candidates  *          ↓  *      scheduler  *  * IMPORTANT SCOPE  * ---------------  * This script is NOT a DVB/RF scanner.  *  * It does not:  *   - access RF hardware  *   - tune DVB frequencies  *   - perform carrier synchronization  *   - perform DVB FEC synchronization  *   - demodulate DVB-S/S2/T/T2/C  *  * Instead, it applies the same discovery architecture to WEB  * resources available to the browser:  *  *   URL → HTTP response → provider → discovered metadata → new URLs  *  * Supported response providers in this prototype:  *  *   - HTML  *   - JSON  *   - plain text  *  * The architecture is intentionally extensible.  *  * =====================================================================  */  const CONFIG = {     maxCandidates: 500,     maxRequests: 100,      // Number of simultaneous acquisitions.     concurrency: 3,      requestTimeout: 8000,      sameOriginOnly: true,      discoverLinks: true,     discoverResources: true,      persistState: true,      debug: true };  // ===================================================================== // Utility // =====================================================================  const log = (...args) => {     if (CONFIG.debug) {         console.log('[Discovery]', ...args);     } };  const warn = (...args) => {     console.warn('[Discovery]', ...args); };  const now = () => Date.now();  function makeId(prefix) {     return ${prefix}-${now()}-${Math.random()         .toString(36)         .slice(2, 9)}; }  function canonicalizeUrl(value) {     try {         const url = new URL(value, location.href);          // Fragments don't identify a separately fetchable resource.         url.hash = '';          return url.href;     } catch {         return null;     } }  function isAllowedUrl(url) {     if (!url) {         return false;     }      if (!CONFIG.sameOriginOnly) {         return true;     }      try {         return new URL(url).origin === location.origin;     } catch {         return false;     } }  // ===================================================================== // Candidate // =====================================================================  class Candidate {     constructor({         target,         type = 'url',         origin = 'unknown',         priority = 0.5,         parent = null,         hints = {}     }) {         this.id = makeId('candidate');          this.target = target;         this.type = type;          // Why was this candidate created?         // e.g. initial-dom, html-provider, json-provider         this.origin = origin;          // Candidate from which this one was derived.         this.parent = parent;          this.priority = priority;         this.hints = hints;          this.createdAt = now();          this.attempts = 0;          // queued → claimed → completed / failed         this.status = 'queued';     }      key() {         return ${this.type}:${this.target};     } }  // ===================================================================== // Observation // =====================================================================  class Observation {     constructor(candidate) {         this.id = makeId('observation');          this.candidateId = candidate.id;         this.target = candidate.target;          this.startedAt = now();         this.completedAt = null;          this.status = 'unknown';          this.signalPresent = false;          this.http = {             status: null,             contentType: null,             contentLength: null         };          this.body = null;          this.errors = [];     }      complete(status) {         this.completedAt = now();         this.status = status;     } }  // ===================================================================== // Discovery // =====================================================================  class Discovery {     constructor({         candidate,         observation,         kind,         confidence = 0.5,         data = {}     }) {         this.id = makeId('discovery');          this.candidateId = candidate.id;         this.observationId = observation.id;          this.kind = kind;         this.confidence = confidence;          this.data = data;          this.provenance = {             origin: candidate.origin,             parent: candidate.parent         };          this.createdAt = now();     } }  // ===================================================================== // Knowledge Base // =====================================================================  class KnowledgeBase {      constructor() {         this.candidates = new Map();          this.observations = new Map();          this.discoveries = new Map();          /*          * visited:          *     candidates permanently completed.          *          * claimed:          *     candidates currently owned by a worker.          *          * Keeping claimed separate from visited is important.          */         this.visited = new Set();         this.claimed = new Set();          this.load();     }      candidateKey(candidate) {         return candidate.key();     }      addCandidate(candidate) {          const key =             this.candidateKey(candidate);          if (!candidate.target) {             return false;         }          if (this.visited.has(key)) {             return false;         }          if (this.claimed.has(key)) {             return false;         }          if (this.candidates.has(key)) {             return false;         }          if (             this.candidates.size >=             CONFIG.maxCandidates         ) {             return false;         }          this.candidates.set(key, candidate);          this.persist();          return true;     }      /*      * ---------------------------------------------------------------      * ATOMIC CANDIDATE CLAIM      * ---------------------------------------------------------------      *      * JavaScript executes this synchronous section without another      * worker being able to interleave an await.      *      * A worker therefore:      *      *     1. asks for the next candidate      *     2. candidate is immediately removed from the queue      *     3. candidate is immediately placed in claimed      *     4. only then does the worker perform async I/O      *      * This prevents two concurrent workers from claiming the same      * candidate.      */     claimNextCandidate() {          const candidates = [             ...this.candidates.entries()         ];          if (!candidates.length) {             return null;         }          candidates.sort((a, b) => {             return (                 b[1].priority -                 a[1].priority             );         });          for (const [key, candidate]             of candidates) {              if (                 this.visited.has(key) ||                 this.claimed.has(key)             ) {                 continue;             }              /*              * Claim is synchronous and happens before returning.              */             this.candidates.delete(key);              this.claimed.add(key);              candidate.status = 'claimed';             candidate.claimedAt = now();              this.persist();              return candidate;         }          return null;     }      completeCandidate(candidate) {          const key =             this.candidateKey(candidate);          this.claimed.delete(key);         this.visited.add(key);          candidate.status = 'completed';         candidate.completedAt = now();          this.persist();     }      failCandidate(candidate, retry = false) {          const key =             this.candidateKey(candidate);          this.claimed.delete(key);          if (retry) {             candidate.status = 'queued';              this.candidates.set(                 key,                 candidate             );         } else {             this.visited.add(key);             candidate.status = 'failed';         }          this.persist();     }      addObservation(observation) {         this.observations.set(             observation.id,             observation         );          this.persist();     }      addDiscovery(discovery) {         this.discoveries.set(             discovery.id,             discovery         );          this.persist();     }      queueSize() {         return this.candidates.size;     }      claimedSize() {         return this.claimed.size;     }      serialize() {         return {             visited: [...this.visited],              discoveries: [                 ...this.discoveries.values()             ]         };     }      persist() {          if (!CONFIG.persistState) {             return;         }          try {              const data =                 JSON.stringify(                     this.serialize()                 );              if (                 typeof GM_setValue ===                 'function'             ) {                 GM_setValue(                     'discovery-state',                     data                 );             } else {                 localStorage.setItem(                     'generic-discovery-state',                     data                 );             }          } catch (error) {             warn(                 'Persistence failed:',                 error             );         }     }      load() {          if (!CONFIG.persistState) {             return;         }          try {              let raw = null;              if (                 typeof GM_getValue ===                 'function'             ) {                 raw = GM_getValue(                     'discovery-state',                     null                 );             } else {                 raw =                     localStorage.getItem(                         'generic-discovery-state'                     );             }              if (!raw) {                 return;             }              const data =                 typeof raw === 'string'                     ? JSON.parse(raw)                     : raw;              for (                 const key of                 data.visited || []             ) {                 this.visited.add(key);             }              for (                 const discovery of                 data.discoveries || []             ) {                 this.discoveries.set(                     discovery.id,                     discovery                 );             }          } catch (error) {             warn(                 'Could not restore state:',                 error             );         }     }      clear() {          this.candidates.clear();         this.observations.clear();         this.discoveries.clear();          this.visited.clear();         this.claimed.clear();          this.persist();     } }  // ===================================================================== // Acquisition Adapter // =====================================================================  class HttpAcquisitionAdapter {      async acquire(candidate) {          const observation =             new Observation(candidate);          candidate.attempts++;          try {              const response =                 await this.request(                     candidate.target                 );              observation.signalPresent =                 true;              observation.http.status =                 response.status;              observation.http.contentType =                 response.contentType;              observation.http.contentLength =                 response.body?.length || 0;              observation.body =                 response.body;              observation.complete(                 'acquired'             );          } catch (error) {              observation.errors.push(                 String(error)             );              observation.complete(                 'failed'             );         }          return observation;     }      request(url) {          return new Promise(             (resolve, reject) => {                  if (                     typeof GM_xmlhttpRequest ===                     'function'                 ) {                      GM_xmlhttpRequest({                          method: 'GET',                          url,                          timeout:                             CONFIG.requestTimeout,                          onload: response => {                              const contentType =                                 response                                     .responseHeaders                                     ?.match(                                         /content-type:\s*([^\r\n]+)/i                                     )?.[1] ||                                 null;                              resolve({                                 status:                                     response.status,                                  contentType,                                  body:                                     response.responseText                             });                         },                          onerror: () =>                             reject(                                 new Error(                                     'request failed'                                 )                             ),                          ontimeout: () =>                             reject(                                 new Error(                                     'request timeout'                                 )                             )                     });                      return;                 }                  fetch(url, {                     credentials:                         'same-origin',                      signal:                         AbortSignal.timeout(                             CONFIG.requestTimeout                         )                 })                     .then(async response => ({                         status:                             response.status,                          contentType:                             response.headers                                 .get(                                     'content-type'                                 ),                          body:                             await response.text()                     }))                     .then(resolve)                     .catch(reject);             }         );     } }  // ===================================================================== // Provider Interface // =====================================================================  /*  * A provider answers:  *  *     "Can I recognize this response?"  *  * and, if yes:  *  *     "What did I discover, and what new candidates did I learn?"  *  * Providers are intentionally independent of acquisition.  */  class ResponseProvider {      matches(/* observation */) {         return false;     }      recognize(/* candidate, observation */) {         return null;     }      candidates(/* discovery */) {         return [];     } }  // ===================================================================== // HTML Provider // =====================================================================  class HtmlProvider extends ResponseProvider {      matches(observation) {          const type =             observation.http.contentType ||             '';          const body =             observation.body || '';          return (             type.includes('text/html') ||             /<html[\s>]/i.test(body) ||             /<body[\s>]/i.test(body)         );     }      recognize(candidate, observation) {          if (!this.matches(observation)) {             return null;         }          const body =             observation.body || '';          const doc =             new DOMParser()                 .parseFromString(                     body,                     'text/html'                 );          const title =             doc.querySelector('title')                 ?.textContent                 ?.trim() || '';          const links = [             ...doc.querySelectorAll(                 'a[href]'             )         ]             .map(element =>                 canonicalizeUrl(                     element.href                 )             )             .filter(Boolean)             .filter(isAllowedUrl);          const resources = [             ...doc.querySelectorAll(                 'script[src],' +                 'link[href],' +                 'img[src]'             )         ]             .map(element =>                 canonicalizeUrl(                     element.src ||                     element.href                 )             )             .filter(Boolean)             .filter(isAllowedUrl);          return new Discovery({             candidate,             observation,              kind: 'html-document',              confidence: 0.95,              data: {                 url: candidate.target,                 title,                 links,                 resources             }         });     }      candidates(discovery) {          const result = [];          if (CONFIG.discoverLinks) {              for (                 const url of                 discovery.data.links || []             ) {                  result.push(                     new Candidate({                         target: url,                         type: 'url',                         origin:                             html:${discovery.id},                         parent:                             discovery.id,                         priority: 0.8                     })                 );             }         }          if (CONFIG.discoverResources) {              for (                 const url of                 discovery.data.resources || []             ) {                  result.push(                     new Candidate({                         target: url,                         type: 'resource',                         origin:                             html:${discovery.id},                         parent:                             discovery.id,                         priority: 0.5                     })                 );             }         }          return result;     } }  // ===================================================================== // JSON Provider // =====================================================================  class JsonProvider extends ResponseProvider {      matches(observation) {          const type =             observation.http.contentType ||             '';          return (             type.includes(                 'application/json'             ) ||             type.includes(                 '+json'             )         );     }      recognize(candidate, observation) {          if (!this.matches(observation)) {             return null;         }          let value;          try {              value =                 JSON.parse(                     observation.body                 );          } catch {             return null;         }          const urls =             this.extractUrls(value);          return new Discovery({             candidate,             observation,              kind: 'json-document',              confidence: 0.95,              data: {                 url: candidate.target,                 value,                 urls             }         });     }      extractUrls(value) {          const result = [];          const visit = value => {              if (typeof value === 'string') {                  const url =                     canonicalizeUrl(                         value                     );                  if (                     url &&                     isAllowedUrl(url)                 ) {                     result.push(url);                 }                  return;             }              if (!value || typeof value !== 'object') {                 return;             }              for (                 const child of                 Object.values(value)             ) {                 visit(child);             }         };          visit(value);          return [             ...new Set(result)         ];     }      candidates(discovery) {          return (             discovery.data.urls || []         ).map(url =>             new Candidate({                 target: url,                 type: 'url',                 origin:                     json:${discovery.id},                 parent:                     discovery.id,                 priority: 0.7             })         );     } }  // ===================================================================== // Plain Text Provider // =====================================================================  class TextProvider extends ResponseProvider {      matches(observation) {          const type =             observation.http.contentType ||             '';          return (             type.startsWith('text/') ||             type === ''         );     }      recognize(candidate, observation) {          if (!this.matches(observation)) {             return null;         }          const text =             observation.body || '';          /*          * Find absolute HTTP(S) URLs in text.          */         const matches =             text.match(                 /https?:\/\/[^\s"'<>]+/gi             ) || [];          const urls =             matches                 .map(canonicalizeUrl)                 .filter(Boolean)                 .filter(isAllowedUrl);          return new Discovery({             candidate,             observation,              kind: 'text-document',              confidence: 0.75,              data: {                 url: candidate.target,                 textLength: text.length,                 urls: [                     ...new Set(urls)                 ]             }         });     }      candidates(discovery) {          return (             discovery.data.urls || []         ).map(url =>             new Candidate({                 target: url,                 type: 'url',                 origin:                     text:${discovery.id},                 parent:                     discovery.id,                 priority: 0.4             })         );     } }  // ===================================================================== // Provider Registry // =====================================================================  class ProviderRegistry {      constructor() {          this.providers = [             new JsonProvider(),             new HtmlProvider(),             new TextProvider()         ];     }      recognize(candidate, observation) {          for (             const provider of             this.providers         ) {              if (                 !provider.matches(                     observation                 )             ) {                 continue;             }              const discovery =                 provider.recognize(                     candidate,                     observation                 );              if (discovery) {                  return {                     provider,                     discovery                 };             }         }          return null;     } }  // ===================================================================== // Scheduler // =====================================================================  class Scheduler {      constructor(database) {         this.database = database;     }      add(candidate) {         return this.database             .addCandidate(candidate);     }      /*      * Important:      *      * Do NOT implement this as:      *      *     candidate = next()      *     await something      *     markVisited(candidate)      *      * The candidate must be claimed synchronously before the      * worker performs any asynchronous operation.      */     claim() {         return this.database             .claimNextCandidate();     }      complete(candidate) {         this.database             .completeCandidate(candidate);     }      fail(candidate, retry = false) {         this.database             .failCandidate(                 candidate,                 retry             );     }      size() {         return this.database             .queueSize();     } }  // ===================================================================== // Discovery Engine // =====================================================================  class DiscoveryEngine {      constructor() {          this.database =             new KnowledgeBase();          this.scheduler =             new Scheduler(                 this.database             );          this.acquisition =             new HttpAcquisitionAdapter();          this.providers =             new ProviderRegistry();          this.running = false;          this.stats = {             startedAt: null,             requests: 0,             discoveries: 0,             failures: 0,             candidatesCreated: 0         };     }      seed() {          const current =             canonicalizeUrl(                 location.href             );          if (current) {              this.addCandidate(                 new Candidate({                     target: current,                     type: 'url',                     origin: 'initial-page',                     priority: 1.0                 })             );         }          /*          * Treat the already-loaded DOM as an initial observation.          * This avoids requiring a network request just to discover          * links already present on the page.          */         const initialLinks = [             ...document.querySelectorAll(                 'a[href]'             )         ];          for (             const element of initialLinks         ) {              const url =                 canonicalizeUrl(                     element.href                 );              if (                 url &&                 isAllowedUrl(url)             ) {                  this.addCandidate(                     new Candidate({                         target: url,                         type: 'url',                         origin: 'initial-dom',                         priority: 0.7                     })                 );             }         }     }      addCandidate(candidate) {          const added =             this.scheduler.add(                 candidate             );          if (added) {             this.stats.candidatesCreated++;         }          return added;     }      async run() {          if (this.running) {             return;         }          this.running = true;          this.stats.startedAt = now();          log(             'Starting discovery',             {                 concurrency:                     CONFIG.concurrency             }         );          const workers = [];          for (             let i = 0;             i < CONFIG.concurrency;             i++         ) {              workers.push(                 this.worker(i)             );         }          await Promise.all(workers);          this.running = false;          log(             'Discovery complete',             this.stats         );     }      async worker(workerId) {          while (             this.running &&             this.stats.requests <                 CONFIG.maxRequests         ) {              /*              * CLAIM FIRST.              *              * This operation is synchronous.              * No await occurs before ownership is established.              */             const candidate =                 this.scheduler.claim();              if (!candidate) {                 break;             }              this.stats.requests++;              log(                 Worker ${workerId} claimed,                 candidate.target             );              try {                  const observation =                     await this.acquisition                         .acquire(candidate);                  this.database                     .addObservation(                         observation                     );                  if (                     observation.status !==                     'acquired'                 ) {                      this.stats.failures++;                      this.scheduler.fail(                         candidate,                         false                     );                      continue;                 }                  const result =                     this.providers.recognize(                         candidate,                         observation                     );                  if (!result) {                      this.scheduler.complete(                         candidate                     );                      continue;                 }                  const {                     provider,                     discovery                 } = result;                  this.database                     .addDiscovery(                         discovery                     );                  this.stats.discoveries++;                  log(                     Worker ${workerId} discovered,                     discovery.kind,                     candidate.target                 );                  /*                  * A provider can expand the search space.                  */                 const newCandidates =                     provider.candidates(                         discovery                     );                  for (                     const next                     of newCandidates                 ) {                     this.addCandidate(next);                 }                  this.scheduler.complete(                     candidate                 );              } catch (error) {                  warn(                     Worker ${workerId} failed:,                     error                 );                  this.stats.failures++;                  this.scheduler.fail(                     candidate,                     false                 );             }         }     }      export() {          return {             version: 2,              scope: {                 type:                     'web-resource-discovery',                  inspiredBy:                     'DVB blind-scan architecture',                  rfScanning:                     false             },              timestamp:                 new Date().toISOString(),              page:                 location.href,              statistics:                 this.stats,              discoveries: [                 ...this.database                     .discoveries                     .values()             ]         };     }      report() {          const discoveries = [             ...this.database                 .discoveries                 .values()         ];          console.group(             '[Discovery] Results'         );          console.table(             discoveries.map(                 discovery => ({                     kind:                         discovery.kind,                      confidence:                         discovery.confidence,                      url:                         discovery.data.url,                      title:                         discovery.data.title ||                         ''                 })             )         );          console.log(             'Queue:',             this.scheduler.size()         );          console.log(             'In flight:',             this.database.claimedSize()         );          console.log(             'Statistics:',             this.stats         );          console.groupEnd();     }      clear() {         this.database.clear();     } }  // ===================================================================== // UI // =====================================================================  const engine =     new DiscoveryEngine();  /*  * Public API for experimentation.  */ window.GenericDiscovery = engine;  const panel =     document.createElement('div');  panel.style.cssText =      position: fixed;     right: 12px;     bottom: 12px;     z-index: 2147483647;     background: rgba(20,20,20,.94);     color: white;     padding: 10px;     border-radius: 8px;     font: 12px monospace;     box-shadow: 0 3px 15px rgba(0,0,0,.4); ;  panel.innerHTML =      <div style="margin-bottom:6px">         <strong>Generic Discovery</strong>     </div>      <div style="         margin-bottom:8px;         opacity:.7;         max-width:260px;     ">         Web-resource prototype inspired by         DVB blind-scan architecture.     </div>      <button id="gd-start">         Scan     </button>      <button id="gd-clear">         Clear     </button>      <button id="gd-export">         Export     </button>      <div id="gd-status"          style="margin-top:6px">         idle     </div> ;  document.documentElement.appendChild(     panel );  const status =     panel.querySelector(         '#gd-status'     );  panel.querySelector(     '#gd-start' ).addEventListener(     'click',     async () => {          if (engine.running) {             return;         }          status.textContent =             'scanning...';          engine.seed();          await engine.run();          engine.report();          status.textContent =             done —  +             ${engine.stats.discoveries} discoveries;     } );  panel.querySelector(     '#gd-clear' ).addEventListener(     'click',     () => {          engine.clear();          status.textContent =             'cleared';     } );  panel.querySelector(     '#gd-export' ).addEventListener(     'click',     () => {          const data =             engine.export();          const blob =             new Blob(                 [                     JSON.stringify(                         data,                         null,                         2                     )                 ],                 {                     type:                         'application/json'                 }             );          const url =             URL.createObjectURL(                 blob             );          const a =             document.createElement('a');          a.href = url;          a.download =             discovery-${Date.now()}.json;          a.click();          URL.revokeObjectURL(url);     } );  
++// ==UserScript==
++// @name         Generic Discovery Engine
++// @namespace    generic-discovery
++// @version      0.3.0
++// @description  Generic web-resource discovery prototype inspired by the architecture of DVB blind scanning.
++// @match        *://*/*
++// @grant        GM_getValue
++// @grant        GM_setValue
++// @grant        GM_xmlhttpRequest
++// @connect      *
++// ==/UserScript==
++
++(() => {
++    'use strict';
++
++    /* =====================================================================
++     * GENERIC DISCOVERY ENGINE v0.3.0
++     * =====================================================================
++     *
++     * Architecture:
++     *
++     *     candidate
++     *         ↓
++     *     acquisition
++     *         ↓
++     *     observation
++     *         ↓
++     *     recognition
++     *         ↓
++     *     discovery
++     *         ↓
++     *     new candidates
++     *         ↓
++     *     scheduler
++     *
++     * This is NOT a DVB/RF scanner.
++     *
++     * It does not:
++     *   - access RF hardware
++     *   - tune frequencies
++     *   - synchronize carriers
++     *   - perform FEC synchronization
++     *   - demodulate DVB signals
++     *
++     * Instead, it applies a similar discovery architecture to web
++     * resources:
++     *
++     *     URL → HTTP response → provider → discovered metadata → URLs
++     *
++     * Supported providers:
++     *   - HTML
++     *   - JSON
++     *   - text
++     *
++     * v0.3.0 improvements:
++     *   - Correct relative URL resolution for fetched documents
++     *   - Atomic candidate claiming
++     *   - Retry with bounded attempts
++     *   - Better fetch timeout handling
++     *   - Improved Content-Type parsing
++     *   - More HTML resource types
++     *   - Canonical/meta-refresh discovery
++     *   - URL extraction from JSON and text
++     *   - Bounded persisted state
++     *   - Live progress UI
++     *   - Per-run statistics reset
++     *   - Safer DOM/UI handling
++     *   - Explicit provider interface
++     * ===================================================================== */
++
++
++    // =====================================================================
++    // CONFIGURATION
++    // =====================================================================
++
++    const CONFIG = {
++        maxCandidates: 500,
++        maxRequests: 100,
++
++        concurrency: 3,
++
++        requestTimeout: 8000,
++
++        /*
++         * Keep this true unless you intentionally want cross-origin
++         * discovery. Cross-origin requests also depend on userscript
++         * manager permissions and remote server behavior.
++         */
++        sameOriginOnly: true,
++
++        discoverLinks: true,
++        discoverResources: true,
++        discoverForms: true,
++        discoverMetadata: true,
++        discoverFromText: true,
++
++        /*
++         * Number of times an acquisition may be retried after failure.
++         */
++        maxRetries: 1,
++
++        /*
++         * State persistence can become large on long-running scans.
++         */
++        persistState: true,
++        maxPersistedDiscoveries: 1000,
++
++        debug: true
++    };
++
++
++    // =====================================================================
++    // LOGGING / UTILITIES
++    // =====================================================================
++
++    const log = (...args) => {
++        if (CONFIG.debug) {
++            console.log('[Discovery]', ...args);
++        }
++    };
++
++    const warn = (...args) => {
++        console.warn('[Discovery]', ...args);
++    };
++
++    const now = () => Date.now();
++
++    function makeId(prefix = 'id') {
++        return `${prefix}-${now()}-${Math.random()
++            .toString(36)
++            .slice(2, 9)}`;
++    }
++
++    function unique(values) {
++        return [...new Set(values)];
++    }
++
++    function canonicalizeUrl(value, baseUrl = location.href) {
++        if (!value || typeof value !== 'string') {
++            return null;
++        }
++
++        const trimmed = value.trim();
++
++        if (!trimmed) {
++            return null;
++        }
++
++        /*
++         * Ignore non-fetchable schemes.
++         */
++        if (
++            /^(javascript|mailto|tel|data|blob|about|file):/i.test(
++                trimmed
++            )
++        ) {
++            return null;
++        }
++
++        try {
++            const url = new URL(trimmed, baseUrl);
++
++            /*
++             * Fragments do not identify a separately fetchable resource.
++             */
++            url.hash = '';
++
++            return url.href;
++        } catch {
++            return null;
++        }
++    }
++
++    function isAllowedUrl(url) {
++        if (!url) {
++            return false;
++        }
++
++        if (!CONFIG.sameOriginOnly) {
++            return true;
++        }
++
++        try {
++            return new URL(url).origin === location.origin;
++        } catch {
++            return false;
++        }
++    }
++
++    function normalizeContentType(value) {
++        if (!value) {
++            return '';
++        }
++
++        return String(value)
++            .split(';', 1)[0]
++            .trim()
++            .toLowerCase();
++    }
++
++    function isHtmlContentType(contentType) {
++        const type = normalizeContentType(contentType);
++
++        return (
++            type === 'text/html' ||
++            type === 'application/xhtml+xml'
++        );
++    }
++
++    function isJsonContentType(contentType) {
++        const type = normalizeContentType(contentType);
++
++        return (
++            type === 'application/json' ||
++            type.endsWith('+json')
++        );
++    }
++
++    function isTextContentType(contentType) {
++        const type = normalizeContentType(contentType);
++
++        return (
++            type.startsWith('text/') ||
++            type === 'application/xml' ||
++            type === 'application/xhtml+xml' ||
++            type === 'application/javascript' ||
++            type === 'application/x-javascript' ||
++            type === 'application/ld+json'
++        );
++    }
++
++    function looksLikeHtml(body) {
++        return (
++            /<!doctype\s+html/i.test(body) ||
++            /<html[\s>]/i.test(body) ||
++            /<head[\s>]/i.test(body) ||
++            /<body[\s>]/i.test(body)
++        );
++    }
++
++
++    // =====================================================================
++    // URL EXTRACTION
++    // =====================================================================
++
++    function extractUrlsFromText(text, baseUrl = location.href) {
++        if (!text) {
++            return [];
++        }
++
++        const result = [];
++
++        /*
++         * Absolute HTTP(S) URLs.
++         */
++        const absoluteMatches =
++            text.match(
++                /https?:\/\/[^\s"'<>()[\]{}]+/gi
++            ) || [];
++
++        for (const value of absoluteMatches) {
++            const url = canonicalizeUrl(
++                value.replace(/[.,;:!?]+$/, ''),
++                baseUrl
++            );
++
++            if (url && isAllowedUrl(url)) {
++                result.push(url);
++            }
++        }
++
++        /*
++         * Common quoted URL-like paths.
++         *
++         * This intentionally remains conservative rather than attempting
++         * to interpret every arbitrary string as a URL.
++         */
++        const relativeMatches =
++            text.match(
++                /["'`](\/[^"'`\s<>]+)["'`]/g
++            ) || [];
++
++        for (const value of relativeMatches) {
++            const match = value.match(
++                /["'`](\/[^"'`\s<>]+)["'`]/
++            );
++
++            if (!match) {
++                continue;
++            }
++
++            const url = canonicalizeUrl(
++                match[1],
++                baseUrl
++            );
++
++            if (url && isAllowedUrl(url)) {
++                result.push(url);
++            }
++        }
++
++        return unique(result);
++    }
++
++
++    // =====================================================================
++    // CANDIDATE
++    // =====================================================================
++
++    class Candidate {
++        constructor({
++            target,
++            type = 'url',
++            origin = 'unknown',
++            priority = 0.5,
++            parent = null,
++            hints = {}
++        }) {
++            this.id = makeId('candidate');
++
++            this.target = target;
++            this.type = type;
++
++            /*
++             * Why was this candidate created?
++             *
++             * Examples:
++             *   initial-page
++             *   initial-dom
++             *   html:<discovery-id>
++             *   json:<discovery-id>
++             */
++            this.origin = origin;
++
++            /*
++             * Discovery from which this candidate originated.
++             */
++            this.parent = parent;
++
++            this.priority = priority;
++            this.hints = hints;
++
++            this.createdAt = now();
++            this.attempts = 0;
++
++            /*
++             * queued → claimed → completed / failed
++             */
++            this.status = 'queued';
++        }
++
++        key() {
++            return `${this.type}:${this.target}`;
++        }
++    }
++
++
++    // =====================================================================
++    // OBSERVATION
++    // =====================================================================
++
++    class Observation {
++        constructor(candidate) {
++            this.id = makeId('observation');
++
++            this.candidateId = candidate.id;
++            this.target = candidate.target;
++
++            this.startedAt = now();
++            this.completedAt = null;
++
++            this.status = 'unknown';
++            this.signalPresent = false;
++
++            this.http = {
++                status: null,
++                contentType: null,
++                contentLength: null,
++                finalUrl: null
++            };
++
++            this.body = null;
++            this.errors = [];
++        }
++
++        complete(status) {
++            this.completedAt = now();
++            this.status = status;
++        }
++    }
++
++
++    // =====================================================================
++    // DISCOVERY
++    // =====================================================================
++
++    class Discovery {
++        constructor({
++            candidate,
++            observation,
++            kind,
++            confidence = 0.5,
++            data = {}
++        }) {
++            this.id = makeId('discovery');
++
++            this.candidateId = candidate.id;
++            this.observationId = observation.id;
++
++            this.kind = kind;
++            this.confidence = confidence;
++
++            this.data = data;
++
++            this.provenance = {
++                origin: candidate.origin,
++                parent: candidate.parent
++            };
++
++            this.createdAt = now();
++        }
++    }
++
++
++    // =====================================================================
++    // KNOWLEDGE BASE
++    // =====================================================================
++
++    class KnowledgeBase {
++        constructor() {
++            this.candidates = new Map();
++            this.observations = new Map();
++            this.discoveries = new Map();
++
++            /*
++             * Permanently completed/failed candidates.
++             */
++            this.visited = new Set();
++
++            /*
++             * Candidates currently owned by workers.
++             */
++            this.claimed = new Set();
++
++            this.load();
++        }
++
++        candidateKey(candidate) {
++            return candidate.key();
++        }
++
++        addCandidate(candidate) {
++            const key = this.candidateKey(candidate);
++
++            if (!candidate.target) {
++                return false;
++            }
++
++            if (this.visited.has(key)) {
++                return false;
++            }
++
++            if (this.claimed.has(key)) {
++                return false;
++            }
++
++            if (this.candidates.has(key)) {
++                return false;
++            }
++
++            if (
++                this.candidates.size >=
++                CONFIG.maxCandidates
++            ) {
++                return false;
++            }
++
++            this.candidates.set(key, candidate);
++
++            this.persist();
++
++            return true;
++        }
++
++        /*
++         * ---------------------------------------------------------------
++         * ATOMIC CANDIDATE CLAIM
++         * ---------------------------------------------------------------
++         *
++         * No await occurs during this operation.
++         *
++         * Therefore concurrent async workers cannot claim the same
++         * candidate between selection and removal.
++         */
++        claimNextCandidate() {
++            const candidates = [
++                ...this.candidates.entries()
++            ];
++
++            if (!candidates.length) {
++                return null;
++            }
++
++            candidates.sort((a, b) => {
++                return (
++                    b[1].priority -
++                    a[1].priority
++                );
++            });
++
++            for (const [key, candidate]
++                of candidates) {
++
++                if (
++                    this.visited.has(key) ||
++                    this.claimed.has(key)
++                ) {
++                    continue;
++                }
++
++                /*
++                 * Atomic synchronous ownership transfer.
++                 */
++                this.candidates.delete(key);
++                this.claimed.add(key);
++
++                candidate.status = 'claimed';
++                candidate.claimedAt = now();
++
++                this.persist();
++
++                return candidate;
++            }
++
++            return null;
++        }
++
++        completeCandidate(candidate) {
++            const key =
++                this.candidateKey(candidate);
++
++            this.claimed.delete(key);
++            this.visited.add(key);
++
++            candidate.status = 'completed';
++            candidate.completedAt = now();
++
++            this.persist();
++        }
++
++        failCandidate(candidate, retry = false) {
++            const key =
++                this.candidateKey(candidate);
++
++            this.claimed.delete(key);
++
++            if (retry) {
++                candidate.status = 'queued';
++
++                this.candidates.set(
++                    key,
++                    candidate
++                );
++            } else {
++                this.visited.add(key);
++
++                candidate.status = 'failed';
++                candidate.failedAt = now();
++            }
++
++            this.persist();
++        }
++
++        addObservation(observation) {
++            this.observations.set(
++                observation.id,
++                observation
++            );
++
++            /*
++             * Observations can contain complete response bodies and are
++             * deliberately not persisted.
++             */
++        }
++
++        addDiscovery(discovery) {
++            this.discoveries.set(
++                discovery.id,
++                discovery
++            );
++
++            this.persist();
++        }
++
++        queueSize() {
++            return this.candidates.size;
++        }
++
++        claimedSize() {
++            return this.claimed.size;
++        }
++
++        discoveryCount() {
++            return this.discoveries.size;
++        }
++
++        serialize() {
++            const discoveries = [
++                ...this.discoveries.values()
++            ];
++
++            /*
++             * Keep persistence bounded.
++             */
++            const bounded =
++                discoveries.slice(
++                    -CONFIG.maxPersistedDiscoveries
++                );
++
++            return {
++                version: 3,
++                visited: [...this.visited],
++                discoveries: bounded
++            };
++        }
++
++        persist() {
++            if (!CONFIG.persistState) {
++                return;
++            }
++
++            try {
++                const data =
++                    JSON.stringify(
++                        this.serialize()
++                    );
++
++                if (
++                    typeof GM_setValue ===
++                    'function'
++                ) {
++                    GM_setValue(
++                        'discovery-state',
++                        data
++                    );
++                } else {
++                    localStorage.setItem(
++                        'generic-discovery-state',
++                        data
++                    );
++                }
++            } catch (error) {
++                warn(
++                    'Persistence failed:',
++                    error
++                );
++            }
++        }
++
++        load() {
++            if (!CONFIG.persistState) {
++                return;
++            }
++
++            try {
++                let raw = null;
++
++                if (
++                    typeof GM_getValue ===
++                    'function'
++                ) {
++                    raw = GM_getValue(
++                        'discovery-state',
++                        null
++                    );
++                } else {
++                    raw =
++                        localStorage.getItem(
++                            'generic-discovery-state'
++                        );
++                }
++
++                if (!raw) {
++                    return;
++                }
++
++                const data =
++                    typeof raw === 'string'
++                        ? JSON.parse(raw)
++                        : raw;
++
++                /*
++                 * Ignore incompatible future state formats.
++                 */
++                if (
++                    data.version &&
++                    data.version > 3
++                ) {
++                    warn(
++                        'Stored state is from a newer version.'
++                    );
++
++                    return;
++                }
++
++                for (
++                    const key of
++                    data.visited || []
++                ) {
++                    this.visited.add(key);
++                }
++
++                for (
++                    const discovery of
++                    data.discoveries || []
++                ) {
++                    if (
++                        discovery &&
++                        discovery.id
++                    ) {
++                        this.discoveries.set(
++                            discovery.id,
++                            discovery
++                        );
++                    }
++                }
++
++                log(
++                    'Restored state:',
++                    {
++                        visited:
++                            this.visited.size,
++                        discoveries:
++                            this.discoveries.size
++                    }
++                );
++            } catch (error) {
++                warn(
++                    'Could not restore state:',
++                    error
++                );
++            }
++        }
++
++        clear() {
++            this.candidates.clear();
++            this.observations.clear();
++            this.discoveries.clear();
++
++            this.visited.clear();
++            this.claimed.clear();
++
++            this.persist();
++        }
++    }
++
++
++    // =====================================================================
++    // HTTP ACQUISITION ADAPTER
++    // =====================================================================
++
++    class HttpAcquisitionAdapter {
++
++        async acquire(candidate) {
++            const observation =
++                new Observation(candidate);
++
++            candidate.attempts++;
++
++            try {
++                const response =
++                    await this.request(
++                        candidate.target
++                    );
++
++                observation.signalPresent =
++                    true;
++
++                observation.http.status =
++                    response.status;
++
++                observation.http.contentType =
++                    response.contentType;
++
++                observation.http.contentLength =
++                    response.body
++                        ? response.body.length
++                        : 0;
++
++                observation.http.finalUrl =
++                    response.finalUrl ||
++                    candidate.target;
++
++                observation.body =
++                    response.body;
++
++                observation.complete(
++                    'acquired'
++                );
++            } catch (error) {
++                observation.errors.push(
++                    String(error)
++                );
++
++                observation.complete(
++                    'failed'
++                );
++            }
++
++            return observation;
++        }
++
++        request(url) {
++            return new Promise(
++                (resolve, reject) => {
++
++                    /*
++                     * Prefer userscript-manager networking.
++                     */
++                    if (
++                        typeof GM_xmlhttpRequest ===
++                        'function'
++                    ) {
++                        let settled = false;
++
++                        const finish = (
++                            callback,
++                            value
++                        ) => {
++                            if (settled) {
++                                return;
++                            }
++
++                            settled = true;
++                            callback(value);
++                        };
++
++                        GM_xmlhttpRequest({
++                            method: 'GET',
++
++                            url,
++
++                            timeout:
++                                CONFIG.requestTimeout,
++
++                            /*
++                             * Text is sufficient for all providers
++                             * currently implemented.
++                             */
++                            responseType: 'text',
++
++                            onload: response => {
++                                const contentType =
++                                    this.extractContentType(
++                                        response.responseHeaders
++                                    );
++
++                                finish(resolve, {
++                                    status:
++                                        response.status,
++
++                                    contentType,
++
++                                    body:
++                                        response.responseText ||
++                                        '',
++
++                                    finalUrl:
++                                        response.finalUrl ||
++                                        url
++                                });
++                            },
++
++                            onerror: () => {
++                                finish(
++                                    reject,
++                                    new Error(
++                                        'request failed'
++                                    )
++                                );
++                            },
++
++                            ontimeout: () => {
++                                finish(
++                                    reject,
++                                    new Error(
++                                        'request timeout'
++                                    )
++                                );
++                            },
++
++                            onabort: () => {
++                                finish(
++                                    reject,
++                                    new Error(
++                                        'request aborted'
++                                    )
++                                );
++                            }
++                        });
++
++                        return;
++                    }
++
++                    /*
++                     * Native fetch fallback.
++                     *
++                     * AbortController is used instead of relying on
++                     * AbortSignal.timeout(), which is not available
++                     * everywhere.
++                     */
++                    const controller =
++                        typeof AbortController !==
++                        'undefined'
++                            ? new AbortController()
++                            : null;
++
++                    let timer = null;
++
++                    if (controller) {
++                        timer = setTimeout(
++                            () => {
++                                controller.abort();
++                            },
++                            CONFIG.requestTimeout
++                        );
++                    }
++
++                    fetch(url, {
++                        method: 'GET',
++
++                        credentials:
++                            'same-origin',
++
++                        signal:
++                            controller
++                                ? controller.signal
++                                : undefined
++                    })
++                        .then(async response => {
++                            const body =
++                                await response.text();
++
++                            return {
++                                status:
++                                    response.status,
++
++                                contentType:
++                                    response.headers.get(
++                                        'content-type'
++                                    ),
++
++                                body,
++
++                                finalUrl:
++                                    response.url ||
++                                    url
++                            };
++                        })
++                        .then(resolve)
++                        .catch(error => {
++                            if (
++                                error &&
++                                error.name ===
++                                    'AbortError'
++                            ) {
++                                reject(
++                                    new Error(
++                                        'request timeout'
++                                    )
++                                );
++                            } else {
++                                reject(error);
++                            }
++                        })
++                        .finally(() => {
++                            if (timer) {
++                                clearTimeout(timer);
++                            }
++                        });
++                }
++            );
++        }
++
++        extractContentType(headers) {
++            if (!headers) {
++                return '';
++            }
++
++            const match =
++                String(headers).match(
++                    /^content-type:\s*([^\r\n]+)/im
++                );
++
++            return match
++                ? match[1].trim()
++                : '';
++        }
++    }
++
++
++    // =====================================================================
++    // RESPONSE PROVIDER INTERFACE
++    // =====================================================================
++
++    class ResponseProvider {
++
++        matches(/* observation */) {
++            return false;
++        }
++
++        recognize(/* candidate, observation */) {
++            return null;
++        }
++
++        candidates(/* discovery */) {
++            return [];
++        }
++    }
++
++
++    // =====================================================================
++    // HTML PROVIDER
++    // =====================================================================
++
++    class HtmlProvider extends ResponseProvider {
++
++        matches(observation) {
++            const type =
++                observation.http.contentType || '';
++
++            const body =
++                observation.body || '';
++
++            return (
++                isHtmlContentType(type) ||
++                looksLikeHtml(body)
++            );
++        }
++
++        recognize(candidate, observation) {
++            if (!this.matches(observation)) {
++                return null;
++            }
++
++            const body =
++                observation.body || '';
++
++            const doc =
++                new DOMParser()
++                    .parseFromString(
++                        body,
++                        'text/html'
++                    );
++
++            /*
++             * IMPORTANT:
++             *
++             * DOMParser creates a document whose base URL may not be
++             * the URL from which the document was acquired.
++             *
++             * We therefore resolve every raw attribute explicitly
++             * against the acquired document URL.
++             */
++            const baseUrl =
++                observation.http.finalUrl ||
++                candidate.target;
++
++            const title =
++                doc.querySelector('title')
++                    ?.textContent
++                    ?.trim() || '';
++
++            const links = [];
++
++            if (CONFIG.discoverLinks) {
++                for (
++                    const element of
++                    doc.querySelectorAll(
++                        'a[href], area[href]'
++                    )
++                ) {
++                    const raw =
++                        element.getAttribute(
++                            'href'
++                        );
++
++                    const url =
++                        canonicalizeUrl(
++                            raw,
++                            baseUrl
++                        );
++
++                    if (
++                        url &&
++                        isAllowedUrl(url)
++                    ) {
++                        links.push(url);
++                    }
++                }
++            }
++
++            const resources = [];
++
++            if (CONFIG.discoverResources) {
++                const selector = [
++                    'script[src]',
++                    'link[href]',
++                    'img[src]',
++                    'iframe[src]',
++                    'frame[src]',
++                    'source[src]',
++                    'video[src]',
++                    'audio[src]',
++                    'track[src]',
++                    'object[data]',
++                    'embed[src]',
++                    'input[src]'
++                ].join(',');
++
++                for (
++                    const element of
++                    doc.querySelectorAll(
++                        selector
++                    )
++                ) {
++                    const raw =
++                        element.getAttribute(
++                            'src'
++                        ) ||
++                        element.getAttribute(
++                            'href'
++                        ) ||
++                        element.getAttribute(
++                            'data'
++                        );
++
++                    const url =
++                        canonicalizeUrl(
++                            raw,
++                            baseUrl
++                        );
++
++                    if (
++                        url &&
++                        isAllowedUrl(url)
++                    ) {
++                        resources.push(url);
++                    }
++                }
++            }
++
++            const forms = [];
++
++            if (CONFIG.discoverForms) {
++                for (
++                    const form of
++                    doc.querySelectorAll(
++                        'form[action]'
++                    )
++                ) {
++                    const raw =
++                        form.getAttribute(
++                            'action'
++                        );
++
++                    const url =
++                        canonicalizeUrl(
++                            raw,
++                            baseUrl
++                        );
++
++                    if (
++                        url &&
++                        isAllowedUrl(url)
++                    ) {
++                        forms.push(url);
++                    }
++                }
++            }
++
++            const metadata = [];
++
++            if (CONFIG.discoverMetadata) {
++                /*
++                 * Canonical URL.
++                 */
++                const canonical =
++                    doc.querySelector(
++                        'link[rel~="canonical"][href]'
++                    );
++
++                if (canonical) {
++                    const url =
++                        canonicalizeUrl(
++                            canonical.getAttribute(
++                                'href'
++                            ),
++                            baseUrl
++                        );
++
++                    if (
++                        url &&
++                        isAllowedUrl(url)
++                    ) {
++                        metadata.push(url);
++                    }
++                }
++
++                /*
++                 * OpenGraph URL.
++                 */
++                for (
++                    const element of
++                    doc.querySelectorAll(
++                        'meta[property="og:url"][content]'
++                    )
++                ) {
++                    const url =
++                        canonicalizeUrl(
++                            element.getAttribute(
++                                'content'
++                            ),
++                            baseUrl
++                        );
++
++                    if (
++                        url &&
++                        isAllowedUrl(url)
++                    ) {
++                        metadata.push(url);
++                    }
++                }
++
++                /*
++                 * Meta refresh.
++                 */
++                for (
++                    const element of
++                    doc.querySelectorAll(
++                        'meta[http-equiv][content]'
++                    )
++                ) {
++                    const httpEquiv =
++                        element.getAttribute(
++                            'http-equiv'
++                        );
++
++                    if (
++                        !httpEquiv ||
++                        httpEquiv.toLowerCase() !==
++                            'refresh'
++                    ) {
++                        continue;
++                    }
++
++                    const content =
++                        element.getAttribute(
++                            'content'
++                        ) || '';
++
++                    const match =
++                        content.match(
++                            /url\s*=\s*(.+)$/i
++                        );
++
++                    if (!match) {
++                        continue;
++                    }
++
++                    const raw =
++                        match[1]
++                            .trim()
++                            .replace(
++                                /^['"]|['"]$/g,
++                                ''
++                            );
++
++                    const url =
++                        canonicalizeUrl(
++                            raw,
++                            baseUrl
++                        );
++
++                    if (
++                        url &&
++                        isAllowedUrl(url)
++                    ) {
++                        metadata.push(url);
++                    }
++                }
++            }
++
++            /*
++             * Extract URLs from inline HTML/attributes as a secondary
++             * discovery signal.
++             */
++            const embeddedUrls =
++                CONFIG.discoverFromText
++                    ? extractUrlsFromText(
++                          body,
++                          baseUrl
++                      )
++                    : [];
++
++            return new Discovery({
++                candidate,
++                observation,
++
++                kind: 'html-document',
++
++                confidence: 0.95,
++
++                data: {
++                    url: candidate.target,
++
++                    finalUrl: baseUrl,
++
++                    title,
++
++                    links: unique(links),
++
++                    resources:
++                        unique(resources),
++
++                    forms: unique(forms),
++
++                    metadata:
++                        unique(metadata),
++
++                    embeddedUrls:
++                        unique(embeddedUrls)
++                }
++            });
++        }
++
++        candidates(discovery) {
++            const result = [];
++
++            if (CONFIG.discoverLinks) {
++                for (
++                    const url of
++                    discovery.data.links || []
++                ) {
++                    result.push(
++                        new Candidate({
++                            target: url,
++                            type: 'url',
++                            origin:
++                                `html:${discovery.id}`,
++                            parent:
++                                discovery.id,
++                            priority: 0.8
++                        })
++                    );
++                }
++            }
++
++            if (CONFIG.discoverResources) {
++                for (
++                    const url of
++                    discovery.data.resources || []
++                ) {
++                    result.push(
++                        new Candidate({
++                            target: url,
++                            type: 'resource',
++                            origin:
++                                `html:${discovery.id}`,
++                            parent:
++                                discovery.id,
++                            priority: 0.5
++                        })
++                    );
++                }
++            }
++
++            if (CONFIG.discoverForms) {
++                for (
++                    const url of
++                    discovery.data.forms || []
++                ) {
++                    result.push(
++                        new Candidate({
++                            target: url,
++                            type: 'form',
++                            origin:
++                                `html:${discovery.id}`,
++                            parent:
++                                discovery.id,
++                            priority: 0.6
++                        })
++                    );
++                }
++            }
++
++            if (CONFIG.discoverMetadata) {
++                for (
++                    const url of
++                    discovery.data.metadata || []
++                ) {
++                    result.push(
++                        new Candidate({
++                            target: url,
++                            type: 'metadata',
++                            origin:
++                                `html:${discovery.id}`,
++                            parent:
++                                discovery.id,
++                            priority: 0.7
++                        })
++                    );
++                }
++            }
++
++            if (CONFIG.discoverFromText) {
++                for (
++                    const url of
++                    discovery.data.embeddedUrls || []
++                ) {
++                    result.push(
++                        new Candidate({
++                            target: url,
++                            type: 'embedded-url',
++                            origin:
++                                `html:${discovery.id}`,
++                            parent:
++                                discovery.id,
++                            priority: 0.4
++                        })
++                    );
++                }
++            }
++
++            return result;
++        }
++    }
++
++
++    // =====================================================================
++    // JSON PROVIDER
++    // =====================================================================
++
++    class JsonProvider extends ResponseProvider {
++
++        matches(observation) {
++            const type =
++                observation.http.contentType || '';
++
++            return (
++                isJsonContentType(type) ||
++                normalizeContentType(type) ===
++                    'application/ld+json'
++            );
++        }
++
++        recognize(candidate, observation) {
++            if (!this.matches(observation)) {
++                return null;
++            }
++
++            let value;
++
++            try {
++                value = JSON.parse(
++                    observation.body || ''
++                );
++            } catch {
++                return null;
++            }
++
++            const urls =
++                this.extractUrls(
++                    value,
++                    observation.http.finalUrl ||
++                        candidate.target
++                );
++
++            return new Discovery({
++                candidate,
++                observation,
++
++                kind: 'json-document',
++
++                confidence: 0.95,
++
++                data: {
++                    url: candidate.target,
++
++                    finalUrl:
++                        observation.http.finalUrl ||
++                        candidate.target,
++
++                    value,
++
++                    urls
++                }
++            });
++        }
++
++        extractUrls(
++            value,
++            baseUrl
++        ) {
++            const result = [];
++
++            const visit = value => {
++                if (
++                    typeof value ===
++                    'string'
++                ) {
++                    /*
++                     * First attempt to interpret the complete string
++                     * as a URL.
++                     */
++                    const direct =
++                        canonicalizeUrl(
++                            value,
++                            baseUrl
++                        );
++
++                    if (
++                        direct &&
++                        isAllowedUrl(direct)
++                    ) {
++                        result.push(direct);
++                    }
++
++                    /*
++                     * Then look for URLs embedded in larger strings.
++                     */
++                    const embedded =
++                        extractUrlsFromText(
++                            value,
++                            baseUrl
++                        );
++
++                    result.push(
++                        ...embedded
++                    );
++
++                    return;
++                }
++
++                if (
++                    !value ||
++                    typeof value !==
++                        'object'
++                ) {
++                    return;
++                }
++
++                for (
++                    const child of
++                    Object.values(value)
++                ) {
++                    visit(child);
++                }
++            };
++
++            visit(value);
++
++            return unique(result);
++        }
++
++        candidates(discovery) {
++            return (
++                discovery.data.urls || []
++            ).map(url =>
++                new Candidate({
++                    target: url,
++                    type: 'url',
++                    origin:
++                        `json:${discovery.id}`,
++                    parent:
++                        discovery.id,
++                    priority: 0.7
++                })
++            );
++        }
++    }
++
++
++    // =====================================================================
++    // TEXT PROVIDER
++    // =====================================================================
++
++    class TextProvider extends ResponseProvider {
++
++        matches(observation) {
++            const type =
++                observation.http.contentType || '';
++
++            /*
++             * Do not treat unknown binary responses as arbitrary text.
++             *
++             * An empty Content-Type is accepted because many simple
++             * endpoints omit it.
++             */
++            return (
++                isTextContentType(type) ||
++                normalizeContentType(type) === ''
++            );
++        }
++
++        recognize(candidate, observation) {
++            if (!this.matches(observation)) {
++                return null;
++            }
++
++            const text =
++                observation.body || '';
++
++            const urls =
++                extractUrlsFromText(
++                    text,
++                    observation.http.finalUrl ||
++                        candidate.target
++                );
++
++            return new Discovery({
++                candidate,
++                observation,
++
++                kind: 'text-document',
++
++                confidence: 0.75,
++
++                data: {
++                    url: candidate.target,
++
++                    finalUrl:
++                        observation.http.finalUrl ||
++                        candidate.target,
++
++                    textLength:
++                        text.length,
++
++                    urls
++                }
++            });
++        }
++
++        candidates(discovery) {
++            return (
++                discovery.data.urls || []
++            ).map(url =>
++                new Candidate({
++                    target: url,
++                    type: 'url',
++                    origin:
++                        `text:${discovery.id}`,
++                    parent:
++                        discovery.id,
++                    priority: 0.4
++                })
++            );
++        }
++    }
++
++
++    // =====================================================================
++    // PROVIDER REGISTRY
++    // =====================================================================
++
++    class ProviderRegistry {
++
++        constructor() {
++            /*
++             * Order matters.
++             *
++             * JSON is checked before generic text.
++             */
++            this.providers = [
++                new JsonProvider(),
++                new HtmlProvider(),
++                new TextProvider()
++            ];
++        }
++
++        recognize(
++            candidate,
++            observation
++        ) {
++            for (
++                const provider of
++                this.providers
++            ) {
++                if (
++                    !provider.matches(
++                        observation
++                    )
++                ) {
++                    continue;
++                }
++
++                const discovery =
++                    provider.recognize(
++                        candidate,
++                        observation
++                    );
++
++                if (discovery) {
++                    return {
++                        provider,
++                        discovery
++                    };
++                }
++            }
++
++            return null;
++        }
++    }
++
++
++    // =====================================================================
++    // SCHEDULER
++    // =====================================================================
++
++    class Scheduler {
++
++        constructor(database) {
++            this.database = database;
++        }
++
++        add(candidate) {
++            return this.database
++                .addCandidate(candidate);
++        }
++
++        claim() {
++            return this.database
++                .claimNextCandidate();
++        }
++
++        complete(candidate) {
++            this.database
++                .completeCandidate(candidate);
++        }
++
++        fail(
++            candidate,
++            retry = false
++        ) {
++            this.database
++                .failCandidate(
++                    candidate,
++                    retry
++                );
++        }
++
++        size() {
++            return this.database
++                .queueSize();
++        }
++
++        inFlight() {
++            return this.database
++                .claimedSize();
++        }
++    }
++
++
++    // =====================================================================
++    // DISCOVERY ENGINE
++    // =====================================================================
++
++    class DiscoveryEngine {
++
++        constructor() {
++            this.database =
++                new KnowledgeBase();
++
++            this.scheduler =
++                new Scheduler(
++                    this.database
++                );
++
++            this.acquisition =
++                new HttpAcquisitionAdapter();
++
++            this.providers =
++                new ProviderRegistry();
++
++            this.running = false;
++
++            this.stats = this.newStats();
++        }
++
++        newStats() {
++            return {
++                startedAt: null,
++                finishedAt: null,
++
++                requests: 0,
++                discoveries: 0,
++                failures: 0,
++                retries: 0,
++
++                candidatesCreated: 0,
++                candidatesRejected: 0
++            };
++        }
++
++        resetStats() {
++            this.stats =
++                this.newStats();
++        }
++
++        /*
++         * Add a candidate through one central path so statistics remain
++         * consistent.
++         */
++        addCandidate(candidate) {
++            const added =
++                this.scheduler.add(
++                    candidate
++                );
++
++            if (added) {
++                this.stats
++                    .candidatesCreated++;
++            } else {
++                this.stats
++                    .candidatesRejected++;
++            }
++
++            return added;
++        }
++
++        seed() {
++            /*
++             * Seed the current document.
++             */
++            const current =
++                canonicalizeUrl(
++                    location.href
++                );
++
++            if (current) {
++                this.addCandidate(
++                    new Candidate({
++                        target: current,
++                        type: 'url',
++                        origin:
++                            'initial-page',
++                        priority: 1.0
++                    })
++                );
++            }
++
++            /*
++             * Discover links already present in the loaded DOM.
++             *
++             * These do not require another request merely to become
++             * candidates.
++             */
++            if (CONFIG.discoverLinks) {
++                const elements =
++                    document.querySelectorAll(
++                        'a[href], area[href]'
++                    );
++
++                for (
++                    const element of
++                    elements
++                ) {
++                    const raw =
++                        element.getAttribute(
++                            'href'
++                        );
++
++                    const url =
++                        canonicalizeUrl(
++                            raw,
++                            location.href
++                        );
++
++                    if (
++                        url &&
++                        isAllowedUrl(url)
++                    ) {
++                        this.addCandidate(
++                            new Candidate({
++                                target: url,
++                                type: 'url',
++                                origin:
++                                    'initial-dom',
++                                priority: 0.7
++                            })
++                        );
++                    }
++                }
++            }
++
++            /*
++             * Seed resources already visible in the DOM.
++             */
++            if (CONFIG.discoverResources) {
++                const selector = [
++                    'script[src]',
++                    'link[href]',
++                    'img[src]',
++                    'iframe[src]',
++                    'frame[src]',
++                    'source[src]',
++                    'video[src]',
++                    'audio[src]'
++                ].join(',');
++
++                for (
++                    const element of
++                    document.querySelectorAll(
++                        selector
++                    )
++                ) {
++                    const raw =
++                        element.getAttribute(
++                            'src'
++                        ) ||
++                        element.getAttribute(
++                            'href'
++                        );
++
++                    const url =
++                        canonicalizeUrl(
++                            raw,
++                            location.href
++                        );
++
++                    if (
++                        url &&
++                        isAllowedUrl(url)
++                    ) {
++                        this.addCandidate(
++                            new Candidate({
++                                target: url,
++                                type:
++                                    'resource',
++                                origin:
++                                    'initial-dom',
++                                priority: 0.5
++                            })
++                        );
++                    }
++                }
++            }
++
++            log(
++                'Seed complete',
++                {
++                    queue:
++                        this.scheduler.size()
++                }
++            );
++        }
++
++        async run() {
++            if (this.running) {
++                return;
++            }
++
++            /*
++             * Each Scan button starts a fresh statistics interval,
++             * while the knowledge base remains persistent.
++             */
++            this.resetStats();
++
++            this.running = true;
++
++            this.stats.startedAt =
++                now();
++
++            log(
++                'Starting discovery',
++                {
++                    concurrency:
++                        CONFIG.concurrency,
++
++                    maxRequests:
++                        CONFIG.maxRequests,
++
++                    queue:
++                        this.scheduler.size()
++                }
++            );
++
++            const workers = [];
++
++            for (
++                let i = 0;
++                i < CONFIG.concurrency;
++                i++
++            ) {
++                workers.push(
++                    this.worker(i)
++                );
++            }
++
++            await Promise.all(
++                workers
++            );
++
++            this.stats.finishedAt =
++                now();
++
++            this.running = false;
++
++            log(
++                'Discovery complete',
++                this.stats
++            );
++
++            this.report();
++        }
++
++        async worker(workerId) {
++            while (
++                this.running &&
++                this.stats.requests <
++                    CONFIG.maxRequests
++            ) {
++                /*
++                 * CLAIM FIRST.
++                 *
++                 * This is synchronous and establishes worker ownership
++                 * before any asynchronous network operation.
++                 */
++                const candidate =
++                    this.scheduler.claim();
++
++                if (!candidate) {
++                    break;
++                }
++
++                /*
++                 * The increment is also synchronous, so two workers
++                 * cannot observe and increment the same request count
++                 * between awaits.
++                 */
++                this.stats.requests++;
++
++                log(
++                    `Worker ${workerId} claimed`,
++                    candidate.target
++                );
++
++                let completed = false;
++
++                try {
++                    const observation =
++                        await this.acquisition
++                            .acquire(
++                                candidate
++                            );
++
++                    this.database
++                        .addObservation(
++                            observation
++                        );
++
++                    if (
++                        observation.status !==
++                        'acquired'
++                    ) {
++                        this.stats
++                            .failures++;
++
++                        /*
++                         * Retry only while the candidate still has
++                         * retry budget.
++                         */
++                        if (
++                            candidate.attempts <=
++                            CONFIG.maxRetries
++                        ) {
++                            this.stats
++                                .retries++;
++
++                            this.scheduler.fail(
++                                candidate,
++                                true
++                            );
++
++                            log(
++                                `Worker ${workerId} retrying`,
++                                candidate.target
++                            );
++                        } else {
++                            this.scheduler.fail(
++                                candidate,
++                                false
++                            );
++                        }
++
++                        continue;
++                    }
++
++                    const result =
++                        this.providers.recognize(
++                            candidate,
++                            observation
++                        );
++
++                    if (!result) {
++                        this.scheduler.complete(
++                            candidate
++                        );
++
++                        completed = true;
++
++                        continue;
++                    }
++
++                    const {
++                        provider,
++                        discovery
++                    } = result;
++
++                    this.database
++                        .addDiscovery(
++                            discovery
++                        );
++
++                    this.stats
++                        .discoveries++;
++
++                    log(
++                        `Worker ${workerId} discovered`,
++                        discovery.kind,
++                        candidate.target
++                    );
++
++                    /*
++                     * Provider expands the search space.
++                     */
++                    const newCandidates =
++                        provider.candidates(
++                            discovery
++                        );
++
++                    for (
++                        const next
++                        of newCandidates
++                    ) {
++                        this.addCandidate(
++                            next
++                        );
++                    }
++
++                    this.scheduler.complete(
++                        candidate
++                    );
++
++                    completed = true;
++                } catch (error) {
++                    warn(
++                        `Worker ${workerId} failed:`,
++                        error
++                    );
++
++                    this.stats
++                        .failures++;
++
++                    /*
++                     * Retry unexpected failures as well.
++                     */
++                    if (
++                        candidate.attempts <=
++                        CONFIG.maxRetries
++                    ) {
++                        this.stats
++                            .retries++;
++
++                        this.scheduler.fail(
++                            candidate,
++                            true
++                        );
++                    } else {
++                        this.scheduler.fail(
++                            candidate,
++                            false
++                        );
++                    }
++                }
++
++                /*
++                 * Defensive cleanup.
++                 *
++                 * Normally all paths above already complete/fail the
++                 * candidate. This prevents an accidental future code
++                 * path from leaving it permanently claimed.
++                 */
++                if (
++                    !completed &&
++                    this.database.claimed.has(
++                        candidate.key()
++                    )
++                ) {
++                    this.scheduler.fail(
++                        candidate,
++                        false
++                    );
++                }
++            }
++        }
++
++        export() {
++            return {
++                version: 3,
++
++                scope: {
++                    type:
++                        'web-resource-discovery',
++
++                    inspiredBy:
++                        'DVB blind-scan architecture',
++
++                    rfScanning:
++                        false
++                },
++
++                timestamp:
++                    new Date().toISOString(),
++
++                page:
++                    location.href,
++
++                statistics:
++                    this.stats,
++
++                queue: {
++                    pending:
++                        this.scheduler.size(),
++
++                    inFlight:
++                        this.scheduler.inFlight()
++                },
++
++                discoveries: [
++                    ...this.database
++                        .discoveries
++                        .values()
++                ]
++            };
++        }
++
++        report() {
++            const discoveries = [
++                ...this.database
++                    .discoveries
++                    .values()
++            ];
++
++            console.group(
++                '[Discovery] Results'
++            );
++
++            console.table(
++                discoveries.map(
++                    discovery => ({
++                        kind:
++                            discovery.kind,
++
++                        confidence:
++                            discovery.confidence,
++
++                        url:
++                            discovery.data.url ||
++                            '',
++
++                        title:
++                            discovery.data.title ||
++                            '',
++
++                        createdAt:
++                            discovery.createdAt
++                    })
++                )
++            );
++
++            console.log(
++                'Queue:',
++                this.scheduler.size()
++            );
++
++            console.log(
++                'In flight:',
++                this.scheduler.inFlight()
++            );
++
++            console.log(
++                'Statistics:',
++                this.stats
++            );
++
++            console.groupEnd();
++        }
++
++        clear() {
++            this.database.clear();
++            this.resetStats();
++        }
++    }
++
++
++    // =====================================================================
++    // UI
++    // =====================================================================
++
++    const engine =
++        new DiscoveryEngine();
++
++    /*
++     * Public API for experimentation.
++     */
++    window.GenericDiscovery =
++        engine;
++
++    /*
++     * Avoid creating duplicate panels if the userscript is accidentally
++     * injected twice into the same document.
++     */
++    const existingPanel =
++        document.getElementById(
++            'generic-discovery-panel'
++        );
++
++    if (existingPanel) {
++        existingPanel.remove();
++    }
++
++    const panel =
++        document.createElement('div');
++
++    panel.id =
++        'generic-discovery-panel';
++
++    panel.style.cssText = `
++        position: fixed;
++        right: 12px;
++        bottom: 12px;
++        z-index: 2147483647;
++        background: rgba(20, 20, 20, .94);
++        color: white;
++        padding: 10px;
++        border-radius: 8px;
++        font: 12px monospace;
++        line-height: 1.45;
++        box-shadow: 0 3px 15px rgba(0, 0, 0, .4);
++        min-width: 250px;
++    `;
++
++    panel.innerHTML = `
++        <div style="margin-bottom:6px">
++            <strong>Generic Discovery v0.3</strong>
++        </div>
++
++        <div style="
++            margin-bottom:8px;
++            opacity:.7;
++            max-width:280px;
++        ">
++            Web-resource prototype inspired by
++            DVB blind-scan architecture.
++        </div>
++
++        <div style="margin-bottom:8px">
++            <button id="gd-start">Scan</button>
++            <button id="gd-clear">Clear</button>
++            <button id="gd-export">Export</button>
++        </div>
++
++        <div id="gd-status">
++            idle
++        </div>
++
++        <div id="gd-progress" style="
++            margin-top:6px;
++            opacity:.8;
++        ">
++            queue: 0 | in-flight: 0
++        </div>
++    `;
++
++    document.documentElement.appendChild(
++        panel
++    );
++
++    const status =
++        panel.querySelector(
++            '#gd-status'
++        );
++
++    const progress =
++        panel.querySelector(
++            '#gd-progress'
++        );
++
++    function updateUi() {
++        if (!status || !progress) {
++            return;
++        }
++
++        const queue =
++            engine.scheduler.size();
++
++        const inFlight =
++            engine.scheduler.inFlight();
++
++        const stats =
++            engine.stats;
++
++        if (engine.running) {
++            status.textContent =
++                'scanning...';
++        }
++
++        progress.textContent =
++            `queue: ${queue} | ` +
++            `in-flight: ${inFlight} | ` +
++            `requests: ${stats.requests}/${CONFIG.maxRequests} | ` +
++            `discoveries: ${stats.discoveries} | ` +
++            `failures: ${stats.failures}`;
++    }
++
++    let uiTimer = null;
++
++    function startUiTimer() {
++        if (uiTimer) {
++            return;
++        }
++
++        uiTimer =
++            setInterval(
++                updateUi,
++                250
++            );
++    }
++
++    function stopUiTimer() {
++        if (!uiTimer) {
++            return;
++        }
++
++        clearInterval(uiTimer);
++        uiTimer = null;
++    }
++
++
++    // =====================================================================
++    // BUTTONS
++    // =====================================================================
++
++    panel.querySelector(
++        '#gd-start'
++    ).addEventListener(
++        'click',
++        async () => {
++
++            if (engine.running) {
++                return;
++            }
++
++            status.textContent =
++                'seeding...';
++
++            engine.seed();
++
++            updateUi();
++
++            startUiTimer();
++
++            try {
++                await engine.run();
++
++                status.textContent =
++                    `done — ` +
++                    `${engine.stats.discoveries} discoveries`;
++            } catch (error) {
++                warn(
++                    'Engine run failed:',
++                    error
++                );
++
++                status.textContent =
++                    'error — see console';
++            } finally {
++                stopUiTimer();
++                updateUi();
++            }
++        }
++    );
++
++
++    panel.querySelector(
++        '#gd-clear'
++    ).addEventListener(
++        'click',
++        () => {
++
++            if (engine.running) {
++                status.textContent =
++                    'cannot clear while scanning';
++
++                return;
++            }
++
++            engine.clear();
++
++            status.textContent =
++                'cleared';
++
++            updateUi();
++        }
++    );
++
++
++    panel.querySelector(
++        '#gd-export'
++    ).addEventListener(
++        'click',
++        () => {
++
++            const data =
++                engine.export();
++
++            const blob =
++                new Blob(
++                    [
++                        JSON.stringify(
++                            data,
++                            null,
++                            2
++                        )
++                    ],
++                    {
++                        type:
++                            'application/json'
++                    }
++                );
++
++            const url =
++                URL.createObjectURL(
++                    blob
++                );
++
++            const anchor =
++                document.createElement(
++                    'a'
++                );
++
++            anchor.href = url;
++
++            anchor.download =
++                `discovery-${Date.now()}.json`;
++
++            document.body.appendChild(
++                anchor
++            );
++
++            anchor.click();
++
++            anchor.remove();
++
++            /*
++             * Give the browser a chance to consume the download before
++             * releasing the object URL.
++             */
++            setTimeout(
++                () => {
++                    URL.revokeObjectURL(
++                        url
++                    );
++                },
++                1000
++            );
++        }
++    );
++
++
++    // =====================================================================
++    // INITIAL STATE
++    // =====================================================================
++
++    updateUi();
++
++    log(
++        'Generic Discovery Engine v0.3.0 loaded'
++    );
++
+ })();
+-/* HISTORICAL SOURCE GAP
+-   snapshot-0004 (0.2.0): original pre-flattening whitespace and component boundaries are not recoverable.
+-   Reconstruction intentionally remains incomplete; no source was invented.
+-*/

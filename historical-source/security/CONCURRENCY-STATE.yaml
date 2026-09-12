@@ -1,0 +1,2035 @@
+{
+  "schema_version": 8,
+  "builder": "security-archaeology-builder-v8",
+  "model_kind": "DERIVED_SECURITY_ARCHAEOLOGY_NOT_SOURCE",
+  "structures": [
+    {
+      "state_id": "shared-state-e2a040ac82e057cc",
+      "snapshot_id": "snapshot-0001",
+      "version": "v0.1.0",
+      "variant": "mechanically-composed",
+      "structure": "visited",
+      "writers": [
+        "KnowledgeBase.clear",
+        "KnowledgeBase.constructor",
+        "KnowledgeBase.load",
+        "KnowledgeBase.markVisited"
+      ],
+      "readers": [
+        "KnowledgeBase.addCandidate",
+        "KnowledgeBase.serialize"
+      ],
+      "mutation_timing": "SYNCHRONOUS_METHOD_BODY",
+      "await_boundaries": [],
+      "synchronization": "NO_LOCK_PRIMITIVE_EVIDENCED",
+      "ordering_assumptions": "EVENT_LOOP_TASK_ORDER_AND_LOCAL_CALL_ORDER_ONLY",
+      "thread_safe_claim": false,
+      "evidence": [
+        "security-ev-f6a16fb24d4b08e0",
+        "security-ev-c2aa7d348a488a0f",
+        "security-ev-ca6ff4e9fee05f56",
+        "security-ev-9aee6fc38fffdcd5"
+      ]
+    },
+    {
+      "state_id": "shared-state-eaa7679239483173",
+      "snapshot_id": "snapshot-0001",
+      "version": "v0.1.0",
+      "variant": "mechanically-composed",
+      "structure": "candidates",
+      "writers": [
+        "KnowledgeBase.addCandidate",
+        "KnowledgeBase.clear",
+        "KnowledgeBase.constructor",
+        "KnowledgeBase.markVisited"
+      ],
+      "readers": [
+        "KnowledgeBase.addCandidate",
+        "KnowledgeBase.hasCandidate",
+        "Scheduler.next",
+        "Scheduler.size"
+      ],
+      "mutation_timing": "SYNCHRONOUS_METHOD_BODY",
+      "await_boundaries": [],
+      "synchronization": "NO_LOCK_PRIMITIVE_EVIDENCED",
+      "ordering_assumptions": "EVENT_LOOP_TASK_ORDER_AND_LOCAL_CALL_ORDER_ONLY",
+      "thread_safe_claim": false,
+      "evidence": [
+        "security-ev-a22750431e496fb0",
+        "security-ev-a15b43553592aeb4",
+        "security-ev-c1f8e5e7c549ffd1",
+        "security-ev-89fa0f8c21390f4f"
+      ]
+    },
+    {
+      "state_id": "shared-state-5016595e3d680f50",
+      "snapshot_id": "snapshot-0001",
+      "version": "v0.1.0",
+      "variant": "mechanically-composed",
+      "structure": "observations",
+      "writers": [
+        "KnowledgeBase.addObservation",
+        "KnowledgeBase.clear",
+        "KnowledgeBase.constructor"
+      ],
+      "readers": [],
+      "mutation_timing": "SYNCHRONOUS_METHOD_BODY",
+      "await_boundaries": [],
+      "synchronization": "NO_LOCK_PRIMITIVE_EVIDENCED",
+      "ordering_assumptions": "EVENT_LOOP_TASK_ORDER_AND_LOCAL_CALL_ORDER_ONLY",
+      "thread_safe_claim": false,
+      "evidence": [
+        "security-ev-dbc8c17949437a82",
+        "security-ev-ed1b482a1592f805",
+        "security-ev-0c1e7548cd6fb640",
+        "security-ev-0161229a344ae02a"
+      ]
+    },
+    {
+      "state_id": "shared-state-fc8ff58d2b85d867",
+      "snapshot_id": "snapshot-0001",
+      "version": "v0.1.0",
+      "variant": "mechanically-composed",
+      "structure": "discoveries",
+      "writers": [
+        "KnowledgeBase.addDiscovery",
+        "KnowledgeBase.clear",
+        "KnowledgeBase.constructor",
+        "KnowledgeBase.load"
+      ],
+      "readers": [
+        "DiscoveryEngine.report",
+        "KnowledgeBase.serialize"
+      ],
+      "mutation_timing": "SYNCHRONOUS_METHOD_BODY",
+      "await_boundaries": [],
+      "synchronization": "NO_LOCK_PRIMITIVE_EVIDENCED",
+      "ordering_assumptions": "EVENT_LOOP_TASK_ORDER_AND_LOCAL_CALL_ORDER_ONLY",
+      "thread_safe_claim": false,
+      "evidence": [
+        "security-ev-b4c4c899638d1550",
+        "security-ev-51257a23b4455a47",
+        "security-ev-1ce1afc9ba46c5f3",
+        "security-ev-c0a3ceccc8b0695c"
+      ]
+    },
+    {
+      "state_id": "shared-state-09ea02b77bf97e0c",
+      "snapshot_id": "snapshot-0003",
+      "version": "v0.2.0",
+      "variant": "mechanically-composed",
+      "structure": "claimed",
+      "writers": [
+        "KnowledgeBase.claimNextCandidate",
+        "KnowledgeBase.clear",
+        "KnowledgeBase.completeCandidate",
+        "KnowledgeBase.constructor",
+        "KnowledgeBase.failCandidate"
+      ],
+      "readers": [
+        "KnowledgeBase.addCandidate",
+        "KnowledgeBase.claimNextCandidate",
+        "KnowledgeBase.claimedSize"
+      ],
+      "mutation_timing": "SYNCHRONOUS_METHOD_BODY",
+      "await_boundaries": [],
+      "synchronization": "NO_LOCK_PRIMITIVE_EVIDENCED",
+      "ordering_assumptions": "EVENT_LOOP_TASK_ORDER_AND_LOCAL_CALL_ORDER_ONLY",
+      "thread_safe_claim": false,
+      "evidence": [
+        "security-ev-7aea824198577ceb",
+        "security-ev-a1c80f1eba14dc4c",
+        "security-ev-c786353efc1c2513",
+        "security-ev-3f9ab16dc274b22b"
+      ]
+    },
+    {
+      "state_id": "shared-state-ba63f62bfcb432a3",
+      "snapshot_id": "snapshot-0003",
+      "version": "v0.2.0",
+      "variant": "mechanically-composed",
+      "structure": "visited",
+      "writers": [
+        "KnowledgeBase.clear",
+        "KnowledgeBase.completeCandidate",
+        "KnowledgeBase.constructor",
+        "KnowledgeBase.failCandidate",
+        "KnowledgeBase.load"
+      ],
+      "readers": [
+        "KnowledgeBase.addCandidate",
+        "KnowledgeBase.claimNextCandidate",
+        "KnowledgeBase.serialize"
+      ],
+      "mutation_timing": "SYNCHRONOUS_METHOD_BODY",
+      "await_boundaries": [],
+      "synchronization": "NO_LOCK_PRIMITIVE_EVIDENCED",
+      "ordering_assumptions": "EVENT_LOOP_TASK_ORDER_AND_LOCAL_CALL_ORDER_ONLY",
+      "thread_safe_claim": false,
+      "evidence": [
+        "security-ev-8f9369af33c9ff45",
+        "security-ev-494225bd3a2e9c54",
+        "security-ev-75bca63da2639ae7",
+        "security-ev-a021555480a8253a"
+      ]
+    },
+    {
+      "state_id": "shared-state-c1eb3382784154ef",
+      "snapshot_id": "snapshot-0003",
+      "version": "v0.2.0",
+      "variant": "mechanically-composed",
+      "structure": "candidates",
+      "writers": [
+        "KnowledgeBase.addCandidate",
+        "KnowledgeBase.claimNextCandidate",
+        "KnowledgeBase.clear",
+        "KnowledgeBase.constructor",
+        "KnowledgeBase.failCandidate"
+      ],
+      "readers": [
+        "KnowledgeBase.addCandidate",
+        "KnowledgeBase.claimNextCandidate",
+        "KnowledgeBase.queueSize"
+      ],
+      "mutation_timing": "SYNCHRONOUS_METHOD_BODY",
+      "await_boundaries": [],
+      "synchronization": "NO_LOCK_PRIMITIVE_EVIDENCED",
+      "ordering_assumptions": "EVENT_LOOP_TASK_ORDER_AND_LOCAL_CALL_ORDER_ONLY",
+      "thread_safe_claim": false,
+      "evidence": [
+        "security-ev-bea0e1687980cd36",
+        "security-ev-cfc87ffd6783acb7",
+        "security-ev-a256f71a99845742",
+        "security-ev-eaf906d7ad163d3f"
+      ]
+    },
+    {
+      "state_id": "shared-state-8f4989c2a7421c1c",
+      "snapshot_id": "snapshot-0003",
+      "version": "v0.2.0",
+      "variant": "mechanically-composed",
+      "structure": "observations",
+      "writers": [
+        "KnowledgeBase.addObservation",
+        "KnowledgeBase.clear",
+        "KnowledgeBase.constructor"
+      ],
+      "readers": [],
+      "mutation_timing": "SYNCHRONOUS_METHOD_BODY",
+      "await_boundaries": [],
+      "synchronization": "NO_LOCK_PRIMITIVE_EVIDENCED",
+      "ordering_assumptions": "EVENT_LOOP_TASK_ORDER_AND_LOCAL_CALL_ORDER_ONLY",
+      "thread_safe_claim": false,
+      "evidence": [
+        "security-ev-337069fad6a4df1b",
+        "security-ev-137d140f234e010d",
+        "security-ev-5e3f2ddf61493731",
+        "security-ev-386d15fc7e71673e"
+      ]
+    },
+    {
+      "state_id": "shared-state-1691574b0a8ead39",
+      "snapshot_id": "snapshot-0003",
+      "version": "v0.2.0",
+      "variant": "mechanically-composed",
+      "structure": "discoveries",
+      "writers": [
+        "KnowledgeBase.addDiscovery",
+        "KnowledgeBase.clear",
+        "KnowledgeBase.constructor",
+        "KnowledgeBase.load"
+      ],
+      "readers": [
+        "KnowledgeBase.serialize"
+      ],
+      "mutation_timing": "SYNCHRONOUS_METHOD_BODY",
+      "await_boundaries": [],
+      "synchronization": "NO_LOCK_PRIMITIVE_EVIDENCED",
+      "ordering_assumptions": "EVENT_LOOP_TASK_ORDER_AND_LOCAL_CALL_ORDER_ONLY",
+      "thread_safe_claim": false,
+      "evidence": [
+        "security-ev-fec5e8730bf72db6",
+        "security-ev-face2ebbef10c45a",
+        "security-ev-191814db3d2379ab",
+        "security-ev-06aa75d5fcfc5601"
+      ]
+    },
+    {
+      "state_id": "shared-state-29c28d36fcffa7d5",
+      "snapshot_id": "snapshot-0003",
+      "version": "v0.2.0",
+      "variant": "mechanically-composed",
+      "structure": "providers",
+      "writers": [
+        "DiscoveryEngine.constructor",
+        "ProviderRegistry.constructor"
+      ],
+      "readers": [],
+      "mutation_timing": "SYNCHRONOUS_METHOD_BODY",
+      "await_boundaries": [
+        "DiscoveryEngine.worker"
+      ],
+      "synchronization": "NO_LOCK_PRIMITIVE_EVIDENCED",
+      "ordering_assumptions": "EVENT_LOOP_TASK_ORDER_AND_LOCAL_CALL_ORDER_ONLY",
+      "thread_safe_claim": false,
+      "evidence": [
+        "security-ev-a66abc44c7529ccf",
+        "security-ev-80780983600b7526",
+        "security-ev-ecc699918ccf85b4",
+        "security-ev-80a2b4524d89b8c2"
+      ]
+    },
+    {
+      "state_id": "shared-state-3db740be975414b2",
+      "snapshot_id": "snapshot-0005",
+      "version": "v0.3.0",
+      "variant": "only-evidenced-complete-occurrence",
+      "structure": "claimed",
+      "writers": [
+        "KnowledgeBase.claimNextCandidate",
+        "KnowledgeBase.clear",
+        "KnowledgeBase.completeCandidate",
+        "KnowledgeBase.constructor",
+        "KnowledgeBase.failCandidate"
+      ],
+      "readers": [
+        "DiscoveryEngine.worker",
+        "KnowledgeBase.addCandidate",
+        "KnowledgeBase.claimNextCandidate",
+        "KnowledgeBase.claimedSize"
+      ],
+      "mutation_timing": "SYNCHRONOUS_METHOD_BODY",
+      "await_boundaries": [
+        "DiscoveryEngine.worker"
+      ],
+      "synchronization": "NO_LOCK_PRIMITIVE_EVIDENCED",
+      "ordering_assumptions": "EVENT_LOOP_TASK_ORDER_AND_LOCAL_CALL_ORDER_ONLY",
+      "thread_safe_claim": false,
+      "evidence": [
+        "security-ev-7113bd636cab91e6",
+        "security-ev-0ad66fff7354b0f5",
+        "security-ev-4203d5c09d221233",
+        "security-ev-35da488b49c367d0"
+      ]
+    },
+    {
+      "state_id": "shared-state-016cedb2ac719bda",
+      "snapshot_id": "snapshot-0005",
+      "version": "v0.3.0",
+      "variant": "only-evidenced-complete-occurrence",
+      "structure": "visited",
+      "writers": [
+        "KnowledgeBase.clear",
+        "KnowledgeBase.completeCandidate",
+        "KnowledgeBase.constructor",
+        "KnowledgeBase.failCandidate",
+        "KnowledgeBase.load"
+      ],
+      "readers": [
+        "KnowledgeBase.addCandidate",
+        "KnowledgeBase.claimNextCandidate",
+        "KnowledgeBase.load",
+        "KnowledgeBase.serialize"
+      ],
+      "mutation_timing": "SYNCHRONOUS_METHOD_BODY",
+      "await_boundaries": [],
+      "synchronization": "NO_LOCK_PRIMITIVE_EVIDENCED",
+      "ordering_assumptions": "EVENT_LOOP_TASK_ORDER_AND_LOCAL_CALL_ORDER_ONLY",
+      "thread_safe_claim": false,
+      "evidence": [
+        "security-ev-dbe42b089a0f728c",
+        "security-ev-adce63831028a970",
+        "security-ev-acdafb49d83dd03a",
+        "security-ev-9cdf7edd9a3ded4b"
+      ]
+    },
+    {
+      "state_id": "shared-state-38181dcfb74eaa03",
+      "snapshot_id": "snapshot-0005",
+      "version": "v0.3.0",
+      "variant": "only-evidenced-complete-occurrence",
+      "structure": "candidates",
+      "writers": [
+        "KnowledgeBase.addCandidate",
+        "KnowledgeBase.claimNextCandidate",
+        "KnowledgeBase.clear",
+        "KnowledgeBase.constructor",
+        "KnowledgeBase.failCandidate"
+      ],
+      "readers": [
+        "KnowledgeBase.addCandidate",
+        "KnowledgeBase.claimNextCandidate",
+        "KnowledgeBase.queueSize"
+      ],
+      "mutation_timing": "SYNCHRONOUS_METHOD_BODY",
+      "await_boundaries": [],
+      "synchronization": "NO_LOCK_PRIMITIVE_EVIDENCED",
+      "ordering_assumptions": "EVENT_LOOP_TASK_ORDER_AND_LOCAL_CALL_ORDER_ONLY",
+      "thread_safe_claim": false,
+      "evidence": [
+        "security-ev-d9bd6f38cdf472ee",
+        "security-ev-4cbbf30cece607d1",
+        "security-ev-3795567cb9ba8aa4",
+        "security-ev-caf414fc3ac220be"
+      ]
+    },
+    {
+      "state_id": "shared-state-77039e18ec380597",
+      "snapshot_id": "snapshot-0005",
+      "version": "v0.3.0",
+      "variant": "only-evidenced-complete-occurrence",
+      "structure": "observations",
+      "writers": [
+        "KnowledgeBase.addObservation",
+        "KnowledgeBase.clear",
+        "KnowledgeBase.constructor"
+      ],
+      "readers": [],
+      "mutation_timing": "SYNCHRONOUS_METHOD_BODY",
+      "await_boundaries": [],
+      "synchronization": "NO_LOCK_PRIMITIVE_EVIDENCED",
+      "ordering_assumptions": "EVENT_LOOP_TASK_ORDER_AND_LOCAL_CALL_ORDER_ONLY",
+      "thread_safe_claim": false,
+      "evidence": [
+        "security-ev-485c44abcabc3909",
+        "security-ev-4f65d552e8fe7705",
+        "security-ev-c1337fda2ecafcea",
+        "security-ev-3ebd9d7894572b45"
+      ]
+    },
+    {
+      "state_id": "shared-state-8b112d8d7c217f77",
+      "snapshot_id": "snapshot-0005",
+      "version": "v0.3.0",
+      "variant": "only-evidenced-complete-occurrence",
+      "structure": "discoveries",
+      "writers": [
+        "KnowledgeBase.addDiscovery",
+        "KnowledgeBase.clear",
+        "KnowledgeBase.constructor",
+        "KnowledgeBase.load"
+      ],
+      "readers": [
+        "KnowledgeBase.discoveryCount",
+        "KnowledgeBase.load",
+        "KnowledgeBase.serialize"
+      ],
+      "mutation_timing": "SYNCHRONOUS_METHOD_BODY",
+      "await_boundaries": [],
+      "synchronization": "NO_LOCK_PRIMITIVE_EVIDENCED",
+      "ordering_assumptions": "EVENT_LOOP_TASK_ORDER_AND_LOCAL_CALL_ORDER_ONLY",
+      "thread_safe_claim": false,
+      "evidence": [
+        "security-ev-0075273d00195318",
+        "security-ev-8991dec8f55402a4",
+        "security-ev-7628dc8db0895639",
+        "security-ev-8b5c4bc48ac47223"
+      ]
+    },
+    {
+      "state_id": "shared-state-2a23ca5e85d63fdb",
+      "snapshot_id": "snapshot-0005",
+      "version": "v0.3.0",
+      "variant": "only-evidenced-complete-occurrence",
+      "structure": "providers",
+      "writers": [
+        "DiscoveryEngine.constructor",
+        "ProviderRegistry.constructor"
+      ],
+      "readers": [],
+      "mutation_timing": "SYNCHRONOUS_METHOD_BODY",
+      "await_boundaries": [
+        "DiscoveryEngine.worker"
+      ],
+      "synchronization": "NO_LOCK_PRIMITIVE_EVIDENCED",
+      "ordering_assumptions": "EVENT_LOOP_TASK_ORDER_AND_LOCAL_CALL_ORDER_ONLY",
+      "thread_safe_claim": false,
+      "evidence": [
+        "security-ev-8411f6ded7b527c3",
+        "security-ev-de68f1a1dd03b9d4",
+        "security-ev-d2e26236b41c9108",
+        "security-ev-4d484a67a5153b59"
+      ]
+    },
+    {
+      "state_id": "shared-state-a1e169e3a2431e3f",
+      "snapshot_id": "snapshot-0006",
+      "version": "v0.4.0",
+      "variant": "variant-a",
+      "structure": "claimed",
+      "writers": [
+        "KnowledgeBase.claimNextCandidate",
+        "KnowledgeBase.clear",
+        "KnowledgeBase.completeCandidate",
+        "KnowledgeBase.constructor",
+        "KnowledgeBase.failCandidate"
+      ],
+      "readers": [
+        "DiscoveryEngine.worker",
+        "KnowledgeBase.addCandidate",
+        "KnowledgeBase.claimNextCandidate",
+        "KnowledgeBase.claimedSize"
+      ],
+      "mutation_timing": "SYNCHRONOUS_METHOD_BODY",
+      "await_boundaries": [
+        "DiscoveryEngine.worker"
+      ],
+      "synchronization": "NO_LOCK_PRIMITIVE_EVIDENCED",
+      "ordering_assumptions": "EVENT_LOOP_TASK_ORDER_AND_LOCAL_CALL_ORDER_ONLY",
+      "thread_safe_claim": false,
+      "evidence": [
+        "security-ev-bafab66452031c34",
+        "security-ev-d3b2ecfc0d9a9852",
+        "security-ev-d867f6e86d2bc85f",
+        "security-ev-35dff27d4ad3ee5c"
+      ]
+    },
+    {
+      "state_id": "shared-state-1e6420d068a47851",
+      "snapshot_id": "snapshot-0006",
+      "version": "v0.4.0",
+      "variant": "variant-a",
+      "structure": "visited",
+      "writers": [
+        "KnowledgeBase.clear",
+        "KnowledgeBase.completeCandidate",
+        "KnowledgeBase.constructor",
+        "KnowledgeBase.failCandidate",
+        "KnowledgeBase.load"
+      ],
+      "readers": [
+        "KnowledgeBase.addCandidate",
+        "KnowledgeBase.claimNextCandidate",
+        "KnowledgeBase.load",
+        "KnowledgeBase.serialize"
+      ],
+      "mutation_timing": "SYNCHRONOUS_METHOD_BODY",
+      "await_boundaries": [],
+      "synchronization": "NO_LOCK_PRIMITIVE_EVIDENCED",
+      "ordering_assumptions": "EVENT_LOOP_TASK_ORDER_AND_LOCAL_CALL_ORDER_ONLY",
+      "thread_safe_claim": false,
+      "evidence": [
+        "security-ev-c25309cd983208cb",
+        "security-ev-0ab407c73dc17f3a",
+        "security-ev-e670a212c3197156",
+        "security-ev-e66e1c83236d4d22"
+      ]
+    },
+    {
+      "state_id": "shared-state-10baa3af94a121ba",
+      "snapshot_id": "snapshot-0006",
+      "version": "v0.4.0",
+      "variant": "variant-a",
+      "structure": "candidates",
+      "writers": [
+        "KnowledgeBase.addCandidate",
+        "KnowledgeBase.claimNextCandidate",
+        "KnowledgeBase.clear",
+        "KnowledgeBase.constructor",
+        "KnowledgeBase.failCandidate"
+      ],
+      "readers": [
+        "KnowledgeBase.addCandidate",
+        "KnowledgeBase.claimNextCandidate",
+        "KnowledgeBase.queueSize"
+      ],
+      "mutation_timing": "SYNCHRONOUS_METHOD_BODY",
+      "await_boundaries": [],
+      "synchronization": "NO_LOCK_PRIMITIVE_EVIDENCED",
+      "ordering_assumptions": "EVENT_LOOP_TASK_ORDER_AND_LOCAL_CALL_ORDER_ONLY",
+      "thread_safe_claim": false,
+      "evidence": [
+        "security-ev-50a4ecd9089b8bd7",
+        "security-ev-5fa6f8a73a7ffb9c",
+        "security-ev-772e30668d76dcf0",
+        "security-ev-e90d1506b3726d31"
+      ]
+    },
+    {
+      "state_id": "shared-state-267f07fb5a861406",
+      "snapshot_id": "snapshot-0006",
+      "version": "v0.4.0",
+      "variant": "variant-a",
+      "structure": "observations",
+      "writers": [
+        "KnowledgeBase.addObservation",
+        "KnowledgeBase.clear",
+        "KnowledgeBase.constructor"
+      ],
+      "readers": [],
+      "mutation_timing": "SYNCHRONOUS_METHOD_BODY",
+      "await_boundaries": [],
+      "synchronization": "NO_LOCK_PRIMITIVE_EVIDENCED",
+      "ordering_assumptions": "EVENT_LOOP_TASK_ORDER_AND_LOCAL_CALL_ORDER_ONLY",
+      "thread_safe_claim": false,
+      "evidence": [
+        "security-ev-1b4a7fa9595c1bb1",
+        "security-ev-62be000cfdd2a15b",
+        "security-ev-66ea426a17fd335c",
+        "security-ev-bffab1cb201623c7"
+      ]
+    },
+    {
+      "state_id": "shared-state-ed5d247d99c5053f",
+      "snapshot_id": "snapshot-0006",
+      "version": "v0.4.0",
+      "variant": "variant-a",
+      "structure": "discoveries",
+      "writers": [
+        "KnowledgeBase.addDiscovery",
+        "KnowledgeBase.clear",
+        "KnowledgeBase.constructor",
+        "KnowledgeBase.load"
+      ],
+      "readers": [
+        "KnowledgeBase.discoveryCount",
+        "KnowledgeBase.load",
+        "KnowledgeBase.serialize"
+      ],
+      "mutation_timing": "SYNCHRONOUS_METHOD_BODY",
+      "await_boundaries": [],
+      "synchronization": "NO_LOCK_PRIMITIVE_EVIDENCED",
+      "ordering_assumptions": "EVENT_LOOP_TASK_ORDER_AND_LOCAL_CALL_ORDER_ONLY",
+      "thread_safe_claim": false,
+      "evidence": [
+        "security-ev-1f6db6ce5320855d",
+        "security-ev-79ece444a6cf27d8",
+        "security-ev-62d473337d77b5b6",
+        "security-ev-268d314ec22f911e"
+      ]
+    },
+    {
+      "state_id": "shared-state-9f049960177b58cc",
+      "snapshot_id": "snapshot-0006",
+      "version": "v0.4.0",
+      "variant": "variant-a",
+      "structure": "providers",
+      "writers": [
+        "DiscoveryEngine.constructor",
+        "ProviderRegistry.constructor"
+      ],
+      "readers": [],
+      "mutation_timing": "SYNCHRONOUS_METHOD_BODY",
+      "await_boundaries": [
+        "DiscoveryEngine.worker"
+      ],
+      "synchronization": "NO_LOCK_PRIMITIVE_EVIDENCED",
+      "ordering_assumptions": "EVENT_LOOP_TASK_ORDER_AND_LOCAL_CALL_ORDER_ONLY",
+      "thread_safe_claim": false,
+      "evidence": [
+        "security-ev-ca7fac8603e6ee06",
+        "security-ev-e720ac804e18145a",
+        "security-ev-43633065fc29bc6f",
+        "security-ev-5a6065bee27f0017"
+      ]
+    },
+    {
+      "state_id": "shared-state-8e82af3116a8c492",
+      "snapshot_id": "snapshot-0008",
+      "version": "v0.4.0",
+      "variant": "variant-b",
+      "structure": "claimed",
+      "writers": [
+        "KnowledgeBase.claimNextCandidate",
+        "KnowledgeBase.clear",
+        "KnowledgeBase.completeCandidate",
+        "KnowledgeBase.constructor",
+        "KnowledgeBase.failCandidate"
+      ],
+      "readers": [
+        "KnowledgeBase.addCandidate",
+        "KnowledgeBase.claimNextCandidate",
+        "KnowledgeBase.claimedSize"
+      ],
+      "mutation_timing": "SYNCHRONOUS_METHOD_BODY",
+      "await_boundaries": [],
+      "synchronization": "NO_LOCK_PRIMITIVE_EVIDENCED",
+      "ordering_assumptions": "EVENT_LOOP_TASK_ORDER_AND_LOCAL_CALL_ORDER_ONLY",
+      "thread_safe_claim": false,
+      "evidence": [
+        "security-ev-25c384ad4a8c3cc1",
+        "security-ev-7ea80e53a0b593ac",
+        "security-ev-4f5a48a7ed6daee4",
+        "security-ev-28936cccb44fc86b"
+      ]
+    },
+    {
+      "state_id": "shared-state-5092e8cf65dfd051",
+      "snapshot_id": "snapshot-0008",
+      "version": "v0.4.0",
+      "variant": "variant-b",
+      "structure": "visited",
+      "writers": [
+        "KnowledgeBase.clear",
+        "KnowledgeBase.completeCandidate",
+        "KnowledgeBase.constructor",
+        "KnowledgeBase.failCandidate",
+        "KnowledgeBase.load"
+      ],
+      "readers": [
+        "KnowledgeBase.addCandidate",
+        "KnowledgeBase.claimNextCandidate",
+        "KnowledgeBase.load",
+        "KnowledgeBase.serialize"
+      ],
+      "mutation_timing": "SYNCHRONOUS_METHOD_BODY",
+      "await_boundaries": [],
+      "synchronization": "NO_LOCK_PRIMITIVE_EVIDENCED",
+      "ordering_assumptions": "EVENT_LOOP_TASK_ORDER_AND_LOCAL_CALL_ORDER_ONLY",
+      "thread_safe_claim": false,
+      "evidence": [
+        "security-ev-e71a52f26cf40292",
+        "security-ev-c18a63d86dc0c793",
+        "security-ev-d97121e192b27010",
+        "security-ev-ae221d27579e475f"
+      ]
+    },
+    {
+      "state_id": "shared-state-77c7a22fa23c9a89",
+      "snapshot_id": "snapshot-0008",
+      "version": "v0.4.0",
+      "variant": "variant-b",
+      "structure": "candidates",
+      "writers": [
+        "KnowledgeBase.addCandidate",
+        "KnowledgeBase.claimNextCandidate",
+        "KnowledgeBase.clear",
+        "KnowledgeBase.constructor",
+        "KnowledgeBase.failCandidate"
+      ],
+      "readers": [
+        "KnowledgeBase.addCandidate",
+        "KnowledgeBase.claimNextCandidate",
+        "KnowledgeBase.nextReadyDelay",
+        "KnowledgeBase.queueSize"
+      ],
+      "mutation_timing": "SYNCHRONOUS_METHOD_BODY",
+      "await_boundaries": [],
+      "synchronization": "NO_LOCK_PRIMITIVE_EVIDENCED",
+      "ordering_assumptions": "EVENT_LOOP_TASK_ORDER_AND_LOCAL_CALL_ORDER_ONLY",
+      "thread_safe_claim": false,
+      "evidence": [
+        "security-ev-44871b474a4a2b9b",
+        "security-ev-0cca60e82969f710",
+        "security-ev-039ed55dd1683af1",
+        "security-ev-516da719500ca3a7"
+      ]
+    },
+    {
+      "state_id": "shared-state-cc7e9a131c44d3fa",
+      "snapshot_id": "snapshot-0008",
+      "version": "v0.4.0",
+      "variant": "variant-b",
+      "structure": "observations",
+      "writers": [
+        "KnowledgeBase.addObservation",
+        "KnowledgeBase.clear",
+        "KnowledgeBase.constructor"
+      ],
+      "readers": [],
+      "mutation_timing": "SYNCHRONOUS_METHOD_BODY",
+      "await_boundaries": [],
+      "synchronization": "NO_LOCK_PRIMITIVE_EVIDENCED",
+      "ordering_assumptions": "EVENT_LOOP_TASK_ORDER_AND_LOCAL_CALL_ORDER_ONLY",
+      "thread_safe_claim": false,
+      "evidence": [
+        "security-ev-bf7fa6a4985bc9e4",
+        "security-ev-09c0467f706bb776",
+        "security-ev-cb280156b7af81fa",
+        "security-ev-6bc6d2ea948c978e"
+      ]
+    },
+    {
+      "state_id": "shared-state-7f8f97c7c96199ea",
+      "snapshot_id": "snapshot-0008",
+      "version": "v0.4.0",
+      "variant": "variant-b",
+      "structure": "discoveries",
+      "writers": [
+        "KnowledgeBase.addDiscovery",
+        "KnowledgeBase.clear",
+        "KnowledgeBase.constructor",
+        "KnowledgeBase.load"
+      ],
+      "readers": [
+        "KnowledgeBase.discoveryCount",
+        "KnowledgeBase.load",
+        "KnowledgeBase.serialize"
+      ],
+      "mutation_timing": "SYNCHRONOUS_METHOD_BODY",
+      "await_boundaries": [],
+      "synchronization": "NO_LOCK_PRIMITIVE_EVIDENCED",
+      "ordering_assumptions": "EVENT_LOOP_TASK_ORDER_AND_LOCAL_CALL_ORDER_ONLY",
+      "thread_safe_claim": false,
+      "evidence": [
+        "security-ev-43fa8f5932701ead",
+        "security-ev-efa1069cdd128bf6",
+        "security-ev-296e7a11219e51d7",
+        "security-ev-277657f9fe579b5f"
+      ]
+    },
+    {
+      "state_id": "shared-state-20afe87b23f40cde",
+      "snapshot_id": "snapshot-0008",
+      "version": "v0.4.0",
+      "variant": "variant-b",
+      "structure": "providers",
+      "writers": [
+        "DiscoveryEngine.constructor",
+        "ProviderRegistry.constructor"
+      ],
+      "readers": [],
+      "mutation_timing": "SYNCHRONOUS_METHOD_BODY",
+      "await_boundaries": [
+        "DiscoveryEngine.worker"
+      ],
+      "synchronization": "NO_LOCK_PRIMITIVE_EVIDENCED",
+      "ordering_assumptions": "EVENT_LOOP_TASK_ORDER_AND_LOCAL_CALL_ORDER_ONLY",
+      "thread_safe_claim": false,
+      "evidence": [
+        "security-ev-8e1400b5bd9e3038",
+        "security-ev-5477832443ef3992",
+        "security-ev-0aa34d2661297ee6",
+        "security-ev-8f5bcdc9fc27986b"
+      ]
+    },
+    {
+      "state_id": "shared-state-52e3fe968748a465",
+      "snapshot_id": "snapshot-0007",
+      "version": "v0.5.0",
+      "variant": "variant-a",
+      "structure": "claimed",
+      "writers": [
+        "KnowledgeBase.claimNextCandidate",
+        "KnowledgeBase.clear",
+        "KnowledgeBase.completeCandidate",
+        "KnowledgeBase.constructor",
+        "KnowledgeBase.failCandidate"
+      ],
+      "readers": [
+        "KnowledgeBase.addCandidate",
+        "KnowledgeBase.claimNextCandidate",
+        "KnowledgeBase.claimedSize"
+      ],
+      "mutation_timing": "SYNCHRONOUS_METHOD_BODY",
+      "await_boundaries": [],
+      "synchronization": "NO_LOCK_PRIMITIVE_EVIDENCED",
+      "ordering_assumptions": "EVENT_LOOP_TASK_ORDER_AND_LOCAL_CALL_ORDER_ONLY",
+      "thread_safe_claim": false,
+      "evidence": [
+        "security-ev-a33809615113999c",
+        "security-ev-f9220d79e19fdc01",
+        "security-ev-c63dbb11dca519c5",
+        "security-ev-ca0f07dd146ca298"
+      ]
+    },
+    {
+      "state_id": "shared-state-f8e539b6ca00a602",
+      "snapshot_id": "snapshot-0007",
+      "version": "v0.5.0",
+      "variant": "variant-a",
+      "structure": "visited",
+      "writers": [
+        "KnowledgeBase.clear",
+        "KnowledgeBase.completeCandidate",
+        "KnowledgeBase.constructor",
+        "KnowledgeBase.failCandidate",
+        "KnowledgeBase.load"
+      ],
+      "readers": [
+        "KnowledgeBase.addCandidate",
+        "KnowledgeBase.claimNextCandidate",
+        "KnowledgeBase.load",
+        "KnowledgeBase.serialize"
+      ],
+      "mutation_timing": "SYNCHRONOUS_METHOD_BODY",
+      "await_boundaries": [],
+      "synchronization": "NO_LOCK_PRIMITIVE_EVIDENCED",
+      "ordering_assumptions": "EVENT_LOOP_TASK_ORDER_AND_LOCAL_CALL_ORDER_ONLY",
+      "thread_safe_claim": false,
+      "evidence": [
+        "security-ev-270013f212382fc5",
+        "security-ev-f8dec33326b0fb09",
+        "security-ev-833833f63849cb84",
+        "security-ev-15a6ec3ca43d0312"
+      ]
+    },
+    {
+      "state_id": "shared-state-6d7c3f71dd4544a7",
+      "snapshot_id": "snapshot-0007",
+      "version": "v0.5.0",
+      "variant": "variant-a",
+      "structure": "candidates",
+      "writers": [
+        "KnowledgeBase.addCandidate",
+        "KnowledgeBase.claimNextCandidate",
+        "KnowledgeBase.clear",
+        "KnowledgeBase.constructor",
+        "KnowledgeBase.failCandidate"
+      ],
+      "readers": [
+        "KnowledgeBase.addCandidate",
+        "KnowledgeBase.claimNextCandidate",
+        "KnowledgeBase.queueSize"
+      ],
+      "mutation_timing": "SYNCHRONOUS_METHOD_BODY",
+      "await_boundaries": [],
+      "synchronization": "NO_LOCK_PRIMITIVE_EVIDENCED",
+      "ordering_assumptions": "EVENT_LOOP_TASK_ORDER_AND_LOCAL_CALL_ORDER_ONLY",
+      "thread_safe_claim": false,
+      "evidence": [
+        "security-ev-264065ae6faf5cba",
+        "security-ev-fb04dc115039e499",
+        "security-ev-f52071f26977b239",
+        "security-ev-0f1af345625de5d7"
+      ]
+    },
+    {
+      "state_id": "shared-state-2f9df5d4d145be08",
+      "snapshot_id": "snapshot-0007",
+      "version": "v0.5.0",
+      "variant": "variant-a",
+      "structure": "observations",
+      "writers": [
+        "KnowledgeBase.addObservation",
+        "KnowledgeBase.clear",
+        "KnowledgeBase.constructor"
+      ],
+      "readers": [],
+      "mutation_timing": "SYNCHRONOUS_METHOD_BODY",
+      "await_boundaries": [],
+      "synchronization": "NO_LOCK_PRIMITIVE_EVIDENCED",
+      "ordering_assumptions": "EVENT_LOOP_TASK_ORDER_AND_LOCAL_CALL_ORDER_ONLY",
+      "thread_safe_claim": false,
+      "evidence": [
+        "security-ev-d822099d1b5144f2",
+        "security-ev-3a65bca4e6d521ad",
+        "security-ev-34d0be0b4d7464db",
+        "security-ev-99998ca8064f0f16"
+      ]
+    },
+    {
+      "state_id": "shared-state-b73b72664bbed1ae",
+      "snapshot_id": "snapshot-0007",
+      "version": "v0.5.0",
+      "variant": "variant-a",
+      "structure": "discoveries",
+      "writers": [
+        "KnowledgeBase.addDiscovery",
+        "KnowledgeBase.clear",
+        "KnowledgeBase.constructor",
+        "KnowledgeBase.load"
+      ],
+      "readers": [
+        "KnowledgeBase.discoveryCount",
+        "KnowledgeBase.serialize"
+      ],
+      "mutation_timing": "SYNCHRONOUS_METHOD_BODY",
+      "await_boundaries": [],
+      "synchronization": "NO_LOCK_PRIMITIVE_EVIDENCED",
+      "ordering_assumptions": "EVENT_LOOP_TASK_ORDER_AND_LOCAL_CALL_ORDER_ONLY",
+      "thread_safe_claim": false,
+      "evidence": [
+        "security-ev-0cb659c0525e7143",
+        "security-ev-a5ef22a7361e2b57",
+        "security-ev-2d7a54e00c68ec20",
+        "security-ev-8ef776d8fbc77d0d"
+      ]
+    },
+    {
+      "state_id": "shared-state-f139a143a44f858c",
+      "snapshot_id": "snapshot-0007",
+      "version": "v0.5.0",
+      "variant": "variant-a",
+      "structure": "providers",
+      "writers": [
+        "DiscoveryEngine.constructor",
+        "ProviderRegistry.constructor"
+      ],
+      "readers": [],
+      "mutation_timing": "SYNCHRONOUS_METHOD_BODY",
+      "await_boundaries": [
+        "DiscoveryEngine.worker"
+      ],
+      "synchronization": "NO_LOCK_PRIMITIVE_EVIDENCED",
+      "ordering_assumptions": "EVENT_LOOP_TASK_ORDER_AND_LOCAL_CALL_ORDER_ONLY",
+      "thread_safe_claim": false,
+      "evidence": [
+        "security-ev-e7001279162952c5",
+        "security-ev-8d03c2d4350630a5",
+        "security-ev-366534c7f5f9b80e",
+        "security-ev-451cc9dd6250d08d"
+      ]
+    },
+    {
+      "state_id": "shared-state-f9c290d74440bb01",
+      "snapshot_id": "snapshot-0009",
+      "version": "v0.5.0",
+      "variant": "variant-b",
+      "structure": "claimed",
+      "writers": [
+        "KnowledgeBase.claimNext",
+        "KnowledgeBase.clear",
+        "KnowledgeBase.complete",
+        "KnowledgeBase.constructor",
+        "KnowledgeBase.fail"
+      ],
+      "readers": [
+        "KnowledgeBase.addCandidate",
+        "KnowledgeBase.inFlight"
+      ],
+      "mutation_timing": "SYNCHRONOUS_METHOD_BODY",
+      "await_boundaries": [],
+      "synchronization": "NO_LOCK_PRIMITIVE_EVIDENCED",
+      "ordering_assumptions": "EVENT_LOOP_TASK_ORDER_AND_LOCAL_CALL_ORDER_ONLY",
+      "thread_safe_claim": false,
+      "evidence": [
+        "security-ev-b364217dbea7ee97",
+        "security-ev-f199093eed60da36",
+        "security-ev-e10b74dde502bbc0",
+        "security-ev-c8cc014aa59b5778"
+      ]
+    },
+    {
+      "state_id": "shared-state-fde3a5214c4a5087",
+      "snapshot_id": "snapshot-0009",
+      "version": "v0.5.0",
+      "variant": "variant-b",
+      "structure": "visited",
+      "writers": [
+        "KnowledgeBase.clear",
+        "KnowledgeBase.complete",
+        "KnowledgeBase.constructor",
+        "KnowledgeBase.fail",
+        "KnowledgeBase.load"
+      ],
+      "readers": [
+        "KnowledgeBase.addCandidate",
+        "KnowledgeBase.serialize"
+      ],
+      "mutation_timing": "SYNCHRONOUS_METHOD_BODY",
+      "await_boundaries": [],
+      "synchronization": "NO_LOCK_PRIMITIVE_EVIDENCED",
+      "ordering_assumptions": "EVENT_LOOP_TASK_ORDER_AND_LOCAL_CALL_ORDER_ONLY",
+      "thread_safe_claim": false,
+      "evidence": [
+        "security-ev-c981d70d624d70a5",
+        "security-ev-894e2fdd1850d795",
+        "security-ev-11460aac6042bc42",
+        "security-ev-1fbaaa6e0f3de9a8"
+      ]
+    },
+    {
+      "state_id": "shared-state-1452fa5a5ae74099",
+      "snapshot_id": "snapshot-0009",
+      "version": "v0.5.0",
+      "variant": "variant-b",
+      "structure": "candidates",
+      "writers": [
+        "KnowledgeBase.addCandidate",
+        "KnowledgeBase.claimNext",
+        "KnowledgeBase.clear",
+        "KnowledgeBase.constructor",
+        "KnowledgeBase.fail"
+      ],
+      "readers": [
+        "KnowledgeBase.addCandidate",
+        "KnowledgeBase.claimNext",
+        "KnowledgeBase.nextDelay",
+        "KnowledgeBase.queueSize"
+      ],
+      "mutation_timing": "SYNCHRONOUS_METHOD_BODY",
+      "await_boundaries": [],
+      "synchronization": "NO_LOCK_PRIMITIVE_EVIDENCED",
+      "ordering_assumptions": "EVENT_LOOP_TASK_ORDER_AND_LOCAL_CALL_ORDER_ONLY",
+      "thread_safe_claim": false,
+      "evidence": [
+        "security-ev-e2d29645df8ac57d",
+        "security-ev-d7fae0b6395c01de",
+        "security-ev-c17f37a6e704fdcc",
+        "security-ev-1816ae3f8c70e112"
+      ]
+    },
+    {
+      "state_id": "shared-state-9682713a5c63f8a0",
+      "snapshot_id": "snapshot-0009",
+      "version": "v0.5.0",
+      "variant": "variant-b",
+      "structure": "observations",
+      "writers": [
+        "KnowledgeBase.addObservation",
+        "KnowledgeBase.clear",
+        "KnowledgeBase.constructor"
+      ],
+      "readers": [],
+      "mutation_timing": "SYNCHRONOUS_METHOD_BODY",
+      "await_boundaries": [],
+      "synchronization": "NO_LOCK_PRIMITIVE_EVIDENCED",
+      "ordering_assumptions": "EVENT_LOOP_TASK_ORDER_AND_LOCAL_CALL_ORDER_ONLY",
+      "thread_safe_claim": false,
+      "evidence": [
+        "security-ev-cb4eb7a7f39c2977",
+        "security-ev-6d6ae7b80a5fbc8a",
+        "security-ev-801c97a3acdfd8aa",
+        "security-ev-0dc1f72102860900"
+      ]
+    },
+    {
+      "state_id": "shared-state-a841fe6117507217",
+      "snapshot_id": "snapshot-0009",
+      "version": "v0.5.0",
+      "variant": "variant-b",
+      "structure": "discoveries",
+      "writers": [
+        "KnowledgeBase.addDiscovery",
+        "KnowledgeBase.clear",
+        "KnowledgeBase.constructor",
+        "KnowledgeBase.load"
+      ],
+      "readers": [
+        "KnowledgeBase.serialize"
+      ],
+      "mutation_timing": "SYNCHRONOUS_METHOD_BODY",
+      "await_boundaries": [],
+      "synchronization": "NO_LOCK_PRIMITIVE_EVIDENCED",
+      "ordering_assumptions": "EVENT_LOOP_TASK_ORDER_AND_LOCAL_CALL_ORDER_ONLY",
+      "thread_safe_claim": false,
+      "evidence": [
+        "security-ev-2c649b71a37dae92",
+        "security-ev-92c06c04bf77d1b8",
+        "security-ev-f7da375362830af7",
+        "security-ev-19417a6908bb1700"
+      ]
+    },
+    {
+      "state_id": "shared-state-35b44d4f5487089d",
+      "snapshot_id": "snapshot-0009",
+      "version": "v0.5.0",
+      "variant": "variant-b",
+      "structure": "providers",
+      "writers": [
+        "DiscoveryEngine.constructor",
+        "ProviderRegistry.constructor"
+      ],
+      "readers": [],
+      "mutation_timing": "SYNCHRONOUS_METHOD_BODY",
+      "await_boundaries": [
+        "DiscoveryEngine.worker"
+      ],
+      "synchronization": "NO_LOCK_PRIMITIVE_EVIDENCED",
+      "ordering_assumptions": "EVENT_LOOP_TASK_ORDER_AND_LOCAL_CALL_ORDER_ONLY",
+      "thread_safe_claim": false,
+      "evidence": [
+        "security-ev-27566e2316c0ecd8",
+        "security-ev-15b98ea65c8a6e31",
+        "security-ev-abe71c69a079f3f9",
+        "security-ev-60464cf3b7cb5a3a"
+      ]
+    },
+    {
+      "state_id": "shared-state-a9626b2b2401def2",
+      "snapshot_id": "snapshot-0011",
+      "version": "v0.5.0",
+      "variant": "variant-c",
+      "structure": "queue",
+      "writers": [
+        "KnowledgeBase.addCandidate",
+        "KnowledgeBase.claimNextCandidate",
+        "KnowledgeBase.constructor",
+        "KnowledgeBase.failCandidate"
+      ],
+      "readers": [
+        "KnowledgeBase.claimNextCandidate"
+      ],
+      "mutation_timing": "SYNCHRONOUS_METHOD_BODY",
+      "await_boundaries": [],
+      "synchronization": "NO_LOCK_PRIMITIVE_EVIDENCED",
+      "ordering_assumptions": "EVENT_LOOP_TASK_ORDER_AND_LOCAL_CALL_ORDER_ONLY",
+      "thread_safe_claim": false,
+      "evidence": [
+        "security-ev-6617ffd0ee2f3565",
+        "security-ev-aaf152ffc225b925",
+        "security-ev-af9129e5db12921f",
+        "security-ev-95656fec734abc87"
+      ]
+    },
+    {
+      "state_id": "shared-state-a2757192369819d4",
+      "snapshot_id": "snapshot-0011",
+      "version": "v0.5.0",
+      "variant": "variant-c",
+      "structure": "claimed",
+      "writers": [
+        "KnowledgeBase.claimNextCandidate",
+        "KnowledgeBase.clear",
+        "KnowledgeBase.completeCandidate",
+        "KnowledgeBase.constructor",
+        "KnowledgeBase.failCandidate"
+      ],
+      "readers": [
+        "DiscoveryEngine.report",
+        "KnowledgeBase.addCandidate"
+      ],
+      "mutation_timing": "SYNCHRONOUS_METHOD_BODY",
+      "await_boundaries": [],
+      "synchronization": "NO_LOCK_PRIMITIVE_EVIDENCED",
+      "ordering_assumptions": "EVENT_LOOP_TASK_ORDER_AND_LOCAL_CALL_ORDER_ONLY",
+      "thread_safe_claim": false,
+      "evidence": [
+        "security-ev-a0b789ab792d7855",
+        "security-ev-e58f2242f613430b",
+        "security-ev-72f20cdc7993644a",
+        "security-ev-a3f7c8066d3e5bf7"
+      ]
+    },
+    {
+      "state_id": "shared-state-3db961f2ce17168b",
+      "snapshot_id": "snapshot-0011",
+      "version": "v0.5.0",
+      "variant": "variant-c",
+      "structure": "visited",
+      "writers": [
+        "KnowledgeBase.addCandidate",
+        "KnowledgeBase.clear",
+        "KnowledgeBase.completeCandidate",
+        "KnowledgeBase.constructor",
+        "KnowledgeBase.failCandidate",
+        "KnowledgeBase.load"
+      ],
+      "readers": [
+        "KnowledgeBase.addCandidate",
+        "KnowledgeBase.persistNow"
+      ],
+      "mutation_timing": "SYNCHRONOUS_METHOD_BODY",
+      "await_boundaries": [],
+      "synchronization": "NO_LOCK_PRIMITIVE_EVIDENCED",
+      "ordering_assumptions": "EVENT_LOOP_TASK_ORDER_AND_LOCAL_CALL_ORDER_ONLY",
+      "thread_safe_claim": false,
+      "evidence": [
+        "security-ev-142b4f0962b63143",
+        "security-ev-24d04b8c5add6559",
+        "security-ev-d77997d36b2751cd",
+        "security-ev-173ea15c2dad8984"
+      ]
+    },
+    {
+      "state_id": "shared-state-595053896bd054d1",
+      "snapshot_id": "snapshot-0011",
+      "version": "v0.5.0",
+      "variant": "variant-c",
+      "structure": "candidates",
+      "writers": [
+        "KnowledgeBase.addCandidate",
+        "KnowledgeBase.claimNextCandidate",
+        "KnowledgeBase.clear",
+        "KnowledgeBase.constructor"
+      ],
+      "readers": [
+        "KnowledgeBase.addCandidate"
+      ],
+      "mutation_timing": "SYNCHRONOUS_METHOD_BODY",
+      "await_boundaries": [],
+      "synchronization": "NO_LOCK_PRIMITIVE_EVIDENCED",
+      "ordering_assumptions": "EVENT_LOOP_TASK_ORDER_AND_LOCAL_CALL_ORDER_ONLY",
+      "thread_safe_claim": false,
+      "evidence": [
+        "security-ev-47273d319232d315",
+        "security-ev-04d033047a62d1e5",
+        "security-ev-db3667e165a341ba",
+        "security-ev-52f73d10c33cf7e5"
+      ]
+    },
+    {
+      "state_id": "shared-state-d5cc3ecd41951f39",
+      "snapshot_id": "snapshot-0011",
+      "version": "v0.5.0",
+      "variant": "variant-c",
+      "structure": "observations",
+      "writers": [
+        "KnowledgeBase.addObservation",
+        "KnowledgeBase.clear",
+        "KnowledgeBase.constructor"
+      ],
+      "readers": [
+        "DiscoveryEngine.export",
+        "DiscoveryEngine.report"
+      ],
+      "mutation_timing": "SYNCHRONOUS_METHOD_BODY",
+      "await_boundaries": [],
+      "synchronization": "NO_LOCK_PRIMITIVE_EVIDENCED",
+      "ordering_assumptions": "EVENT_LOOP_TASK_ORDER_AND_LOCAL_CALL_ORDER_ONLY",
+      "thread_safe_claim": false,
+      "evidence": [
+        "security-ev-8404fe3edcecbdf0",
+        "security-ev-8367d753620ad116",
+        "security-ev-a017dde72fa1b05d",
+        "security-ev-c7f1c28b7a59be44"
+      ]
+    },
+    {
+      "state_id": "shared-state-11ac165a7c3f8685",
+      "snapshot_id": "snapshot-0011",
+      "version": "v0.5.0",
+      "variant": "variant-c",
+      "structure": "discoveries",
+      "writers": [
+        "KnowledgeBase.addDiscovery",
+        "KnowledgeBase.clear",
+        "KnowledgeBase.constructor",
+        "KnowledgeBase.load"
+      ],
+      "readers": [
+        "DiscoveryEngine.export",
+        "DiscoveryEngine.report",
+        "KnowledgeBase.load",
+        "KnowledgeBase.persistNow"
+      ],
+      "mutation_timing": "SYNCHRONOUS_METHOD_BODY",
+      "await_boundaries": [],
+      "synchronization": "NO_LOCK_PRIMITIVE_EVIDENCED",
+      "ordering_assumptions": "EVENT_LOOP_TASK_ORDER_AND_LOCAL_CALL_ORDER_ONLY",
+      "thread_safe_claim": false,
+      "evidence": [
+        "security-ev-a095ac26df99d178",
+        "security-ev-817c459b8e986266",
+        "security-ev-4dabb4806f8b39b8",
+        "security-ev-2059ff9a12f13558"
+      ]
+    },
+    {
+      "state_id": "shared-state-3a0bdee1948fe138",
+      "snapshot_id": "snapshot-0011",
+      "version": "v0.5.0",
+      "variant": "variant-c",
+      "structure": "providers",
+      "writers": [
+        "DiscoveryEngine.constructor",
+        "ProviderRegistry.constructor"
+      ],
+      "readers": [
+        "ProviderRegistry.candidatesFor"
+      ],
+      "mutation_timing": "SYNCHRONOUS_METHOD_BODY",
+      "await_boundaries": [
+        "DiscoveryEngine.processCandidate"
+      ],
+      "synchronization": "NO_LOCK_PRIMITIVE_EVIDENCED",
+      "ordering_assumptions": "EVENT_LOOP_TASK_ORDER_AND_LOCAL_CALL_ORDER_ONLY",
+      "thread_safe_claim": false,
+      "evidence": [
+        "security-ev-bdd9a73e544ea5df",
+        "security-ev-1b07dc9a119bc16b",
+        "security-ev-726d857d400aa0cb",
+        "security-ev-02b1d2709e1bef21"
+      ]
+    },
+    {
+      "state_id": "shared-state-d8ec9175ed918a33",
+      "snapshot_id": "snapshot-0010",
+      "version": "v0.6.0",
+      "variant": "variant-a",
+      "structure": "claimed",
+      "writers": [
+        "KnowledgeBase.claimNext",
+        "KnowledgeBase.clear",
+        "KnowledgeBase.complete",
+        "KnowledgeBase.constructor",
+        "KnowledgeBase.fail"
+      ],
+      "readers": [
+        "KnowledgeBase.addCandidate",
+        "KnowledgeBase.inFlight"
+      ],
+      "mutation_timing": "SYNCHRONOUS_METHOD_BODY",
+      "await_boundaries": [],
+      "synchronization": "NO_LOCK_PRIMITIVE_EVIDENCED",
+      "ordering_assumptions": "EVENT_LOOP_TASK_ORDER_AND_LOCAL_CALL_ORDER_ONLY",
+      "thread_safe_claim": false,
+      "evidence": [
+        "security-ev-1ffa713699e0014f",
+        "security-ev-e99f657c21d84345",
+        "security-ev-10ec8df50384487d",
+        "security-ev-084bbbf9c5727382"
+      ]
+    },
+    {
+      "state_id": "shared-state-1e9510bb75b40dec",
+      "snapshot_id": "snapshot-0010",
+      "version": "v0.6.0",
+      "variant": "variant-a",
+      "structure": "visited",
+      "writers": [
+        "KnowledgeBase.clear",
+        "KnowledgeBase.complete",
+        "KnowledgeBase.constructor",
+        "KnowledgeBase.fail",
+        "KnowledgeBase.load"
+      ],
+      "readers": [
+        "KnowledgeBase.addCandidate",
+        "KnowledgeBase.serialize"
+      ],
+      "mutation_timing": "SYNCHRONOUS_METHOD_BODY",
+      "await_boundaries": [],
+      "synchronization": "NO_LOCK_PRIMITIVE_EVIDENCED",
+      "ordering_assumptions": "EVENT_LOOP_TASK_ORDER_AND_LOCAL_CALL_ORDER_ONLY",
+      "thread_safe_claim": false,
+      "evidence": [
+        "security-ev-a978261e94b74615",
+        "security-ev-c94ca3f4d87b14be",
+        "security-ev-049a3075ecf9cdb1",
+        "security-ev-305d0ae5ef502d32"
+      ]
+    },
+    {
+      "state_id": "shared-state-4d89d2e9986d9733",
+      "snapshot_id": "snapshot-0010",
+      "version": "v0.6.0",
+      "variant": "variant-a",
+      "structure": "candidates",
+      "writers": [
+        "KnowledgeBase.addCandidate",
+        "KnowledgeBase.claimNext",
+        "KnowledgeBase.clear",
+        "KnowledgeBase.constructor",
+        "KnowledgeBase.fail"
+      ],
+      "readers": [
+        "KnowledgeBase.addCandidate",
+        "KnowledgeBase.claimNext",
+        "KnowledgeBase.nextDelay",
+        "KnowledgeBase.queueSize"
+      ],
+      "mutation_timing": "SYNCHRONOUS_METHOD_BODY",
+      "await_boundaries": [],
+      "synchronization": "NO_LOCK_PRIMITIVE_EVIDENCED",
+      "ordering_assumptions": "EVENT_LOOP_TASK_ORDER_AND_LOCAL_CALL_ORDER_ONLY",
+      "thread_safe_claim": false,
+      "evidence": [
+        "security-ev-b40acae42534e6ef",
+        "security-ev-4aac37e8cde1bac9",
+        "security-ev-481f6838ebd4a842",
+        "security-ev-ce06d8a035ab7ef0"
+      ]
+    },
+    {
+      "state_id": "shared-state-c82d1680f04bf1c2",
+      "snapshot_id": "snapshot-0010",
+      "version": "v0.6.0",
+      "variant": "variant-a",
+      "structure": "observations",
+      "writers": [
+        "KnowledgeBase.addObservation",
+        "KnowledgeBase.clear",
+        "KnowledgeBase.constructor"
+      ],
+      "readers": [],
+      "mutation_timing": "SYNCHRONOUS_METHOD_BODY",
+      "await_boundaries": [],
+      "synchronization": "NO_LOCK_PRIMITIVE_EVIDENCED",
+      "ordering_assumptions": "EVENT_LOOP_TASK_ORDER_AND_LOCAL_CALL_ORDER_ONLY",
+      "thread_safe_claim": false,
+      "evidence": [
+        "security-ev-4443ff4d1c7edc8b",
+        "security-ev-5f0908fbd4b6c32f",
+        "security-ev-2bcfdf968fbba615",
+        "security-ev-5a4c97550a0ada27"
+      ]
+    },
+    {
+      "state_id": "shared-state-8af24d2b0503f537",
+      "snapshot_id": "snapshot-0010",
+      "version": "v0.6.0",
+      "variant": "variant-a",
+      "structure": "discoveries",
+      "writers": [
+        "KnowledgeBase.addDiscovery",
+        "KnowledgeBase.clear",
+        "KnowledgeBase.constructor",
+        "KnowledgeBase.load"
+      ],
+      "readers": [
+        "KnowledgeBase.load",
+        "KnowledgeBase.serialize"
+      ],
+      "mutation_timing": "SYNCHRONOUS_METHOD_BODY",
+      "await_boundaries": [],
+      "synchronization": "NO_LOCK_PRIMITIVE_EVIDENCED",
+      "ordering_assumptions": "EVENT_LOOP_TASK_ORDER_AND_LOCAL_CALL_ORDER_ONLY",
+      "thread_safe_claim": false,
+      "evidence": [
+        "security-ev-c747fff97e7911d0",
+        "security-ev-dfda0b66c60821df",
+        "security-ev-0dfc5893f16fe454",
+        "security-ev-c440eb3fecde9d80"
+      ]
+    },
+    {
+      "state_id": "shared-state-e147f630d5da767e",
+      "snapshot_id": "snapshot-0010",
+      "version": "v0.6.0",
+      "variant": "variant-a",
+      "structure": "providers",
+      "writers": [
+        "DiscoveryEngine.constructor",
+        "ProviderRegistry.constructor"
+      ],
+      "readers": [],
+      "mutation_timing": "SYNCHRONOUS_METHOD_BODY",
+      "await_boundaries": [
+        "DiscoveryEngine.worker"
+      ],
+      "synchronization": "NO_LOCK_PRIMITIVE_EVIDENCED",
+      "ordering_assumptions": "EVENT_LOOP_TASK_ORDER_AND_LOCAL_CALL_ORDER_ONLY",
+      "thread_safe_claim": false,
+      "evidence": [
+        "security-ev-0aa3c9671e6defcd",
+        "security-ev-6aaefc5370337c26",
+        "security-ev-eba437984f9b8371",
+        "security-ev-e9f0785de7305829"
+      ]
+    },
+    {
+      "state_id": "shared-state-442c4347dd5f81b4",
+      "snapshot_id": "snapshot-0012",
+      "version": "v0.6.0",
+      "variant": "variant-b",
+      "structure": "queue",
+      "writers": [
+        "DiscoveryEngine.processCandidate",
+        "KnowledgeBase.addCandidate",
+        "KnowledgeBase.claimNextCandidate",
+        "KnowledgeBase.constructor",
+        "KnowledgeBase.failCandidate"
+      ],
+      "readers": [
+        "KnowledgeBase.claimNextCandidate"
+      ],
+      "mutation_timing": "SYNCHRONOUS_METHOD_BODY",
+      "await_boundaries": [
+        "DiscoveryEngine.processCandidate"
+      ],
+      "synchronization": "NO_LOCK_PRIMITIVE_EVIDENCED",
+      "ordering_assumptions": "EVENT_LOOP_TASK_ORDER_AND_LOCAL_CALL_ORDER_ONLY",
+      "thread_safe_claim": false,
+      "evidence": [
+        "security-ev-95c7fe0a397649a9",
+        "security-ev-9a28cf579624d818",
+        "security-ev-2baf0f66a295a660",
+        "security-ev-f8bfda4a9582f245"
+      ]
+    },
+    {
+      "state_id": "shared-state-d3a33e1045dea304",
+      "snapshot_id": "snapshot-0012",
+      "version": "v0.6.0",
+      "variant": "variant-b",
+      "structure": "claimed",
+      "writers": [
+        "DiscoveryEngine.processCandidate",
+        "KnowledgeBase.claimNextCandidate",
+        "KnowledgeBase.clear",
+        "KnowledgeBase.completeCandidate",
+        "KnowledgeBase.constructor",
+        "KnowledgeBase.failCandidate",
+        "KnowledgeBase.skipCandidate"
+      ],
+      "readers": [
+        "DiscoveryEngine.report",
+        "KnowledgeBase.addCandidate"
+      ],
+      "mutation_timing": "SYNCHRONOUS_METHOD_BODY",
+      "await_boundaries": [
+        "DiscoveryEngine.processCandidate"
+      ],
+      "synchronization": "NO_LOCK_PRIMITIVE_EVIDENCED",
+      "ordering_assumptions": "EVENT_LOOP_TASK_ORDER_AND_LOCAL_CALL_ORDER_ONLY",
+      "thread_safe_claim": false,
+      "evidence": [
+        "security-ev-764387c276639954",
+        "security-ev-291799340b91999b",
+        "security-ev-def6b917fcbde98b",
+        "security-ev-f8a4ff0427896ad0"
+      ]
+    },
+    {
+      "state_id": "shared-state-333ae923be9f4678",
+      "snapshot_id": "snapshot-0012",
+      "version": "v0.6.0",
+      "variant": "variant-b",
+      "structure": "visited",
+      "writers": [
+        "KnowledgeBase.addCandidate",
+        "KnowledgeBase.clear",
+        "KnowledgeBase.completeCandidate",
+        "KnowledgeBase.constructor",
+        "KnowledgeBase.failCandidate",
+        "KnowledgeBase.load",
+        "KnowledgeBase.skipCandidate"
+      ],
+      "readers": [
+        "KnowledgeBase.addCandidate",
+        "KnowledgeBase.persistNow"
+      ],
+      "mutation_timing": "SYNCHRONOUS_METHOD_BODY",
+      "await_boundaries": [],
+      "synchronization": "NO_LOCK_PRIMITIVE_EVIDENCED",
+      "ordering_assumptions": "EVENT_LOOP_TASK_ORDER_AND_LOCAL_CALL_ORDER_ONLY",
+      "thread_safe_claim": false,
+      "evidence": [
+        "security-ev-181825a2cbc1c2e0",
+        "security-ev-2a8920dd37e351ed",
+        "security-ev-f06dfe6d8bf96152",
+        "security-ev-51a8c668bfa57e60"
+      ]
+    },
+    {
+      "state_id": "shared-state-c0013a5ab8e08f92",
+      "snapshot_id": "snapshot-0012",
+      "version": "v0.6.0",
+      "variant": "variant-b",
+      "structure": "candidates",
+      "writers": [
+        "KnowledgeBase.addCandidate",
+        "KnowledgeBase.claimNextCandidate",
+        "KnowledgeBase.clear",
+        "KnowledgeBase.constructor"
+      ],
+      "readers": [
+        "KnowledgeBase.addCandidate"
+      ],
+      "mutation_timing": "SYNCHRONOUS_METHOD_BODY",
+      "await_boundaries": [],
+      "synchronization": "NO_LOCK_PRIMITIVE_EVIDENCED",
+      "ordering_assumptions": "EVENT_LOOP_TASK_ORDER_AND_LOCAL_CALL_ORDER_ONLY",
+      "thread_safe_claim": false,
+      "evidence": [
+        "security-ev-0ccaf26efb967b69",
+        "security-ev-4a278d75e5bac8b6",
+        "security-ev-b85c8dfb4216eebe",
+        "security-ev-e593ba2870745993"
+      ]
+    },
+    {
+      "state_id": "shared-state-3e4b8cc29b8d9634",
+      "snapshot_id": "snapshot-0012",
+      "version": "v0.6.0",
+      "variant": "variant-b",
+      "structure": "observations",
+      "writers": [
+        "KnowledgeBase.addObservation",
+        "KnowledgeBase.clear",
+        "KnowledgeBase.constructor"
+      ],
+      "readers": [
+        "DiscoveryEngine.report"
+      ],
+      "mutation_timing": "SYNCHRONOUS_METHOD_BODY",
+      "await_boundaries": [],
+      "synchronization": "NO_LOCK_PRIMITIVE_EVIDENCED",
+      "ordering_assumptions": "EVENT_LOOP_TASK_ORDER_AND_LOCAL_CALL_ORDER_ONLY",
+      "thread_safe_claim": false,
+      "evidence": [
+        "security-ev-13b577d9562bee16",
+        "security-ev-307bf8ca948d3ff6",
+        "security-ev-e40145fb52f9b2be",
+        "security-ev-382c517709673a12"
+      ]
+    },
+    {
+      "state_id": "shared-state-ad7c9888f4b921bb",
+      "snapshot_id": "snapshot-0012",
+      "version": "v0.6.0",
+      "variant": "variant-b",
+      "structure": "discoveries",
+      "writers": [
+        "KnowledgeBase.addDiscovery",
+        "KnowledgeBase.clear",
+        "KnowledgeBase.constructor",
+        "KnowledgeBase.load"
+      ],
+      "readers": [
+        "DiscoveryEngine.report",
+        "KnowledgeBase.load",
+        "KnowledgeBase.persistNow"
+      ],
+      "mutation_timing": "SYNCHRONOUS_METHOD_BODY",
+      "await_boundaries": [],
+      "synchronization": "NO_LOCK_PRIMITIVE_EVIDENCED",
+      "ordering_assumptions": "EVENT_LOOP_TASK_ORDER_AND_LOCAL_CALL_ORDER_ONLY",
+      "thread_safe_claim": false,
+      "evidence": [
+        "security-ev-c19c93719fd18434",
+        "security-ev-92a7a8fa3543fbff",
+        "security-ev-c60ee9ff0578d037",
+        "security-ev-9eb60975734be7c6"
+      ]
+    },
+    {
+      "state_id": "shared-state-aeae528ac9535692",
+      "snapshot_id": "snapshot-0012",
+      "version": "v0.6.0",
+      "variant": "variant-b",
+      "structure": "providers",
+      "writers": [
+        "DiscoveryEngine.constructor",
+        "ProviderRegistry.constructor"
+      ],
+      "readers": [
+        "ProviderRegistry.candidatesFor"
+      ],
+      "mutation_timing": "SYNCHRONOUS_METHOD_BODY",
+      "await_boundaries": [
+        "DiscoveryEngine.processCandidate"
+      ],
+      "synchronization": "NO_LOCK_PRIMITIVE_EVIDENCED",
+      "ordering_assumptions": "EVENT_LOOP_TASK_ORDER_AND_LOCAL_CALL_ORDER_ONLY",
+      "thread_safe_claim": false,
+      "evidence": [
+        "security-ev-9f9d6e9c4003e9bc",
+        "security-ev-0e2a55cde9bc5037",
+        "security-ev-cc9cfd41321c1729",
+        "security-ev-6d46aa3171837179"
+      ]
+    },
+    {
+      "state_id": "shared-state-77dde5cc966401c2",
+      "snapshot_id": "snapshot-0013",
+      "version": "v0.6.0",
+      "variant": "variant-c",
+      "structure": "claimed",
+      "writers": [
+        "KnowledgeBase.claimNextCandidate",
+        "KnowledgeBase.clear",
+        "KnowledgeBase.completeCandidate",
+        "KnowledgeBase.constructor",
+        "KnowledgeBase.failCandidate",
+        "KnowledgeBase.markSkipped",
+        "KnowledgeBase.requeue"
+      ],
+      "readers": [],
+      "mutation_timing": "SYNCHRONOUS_METHOD_BODY",
+      "await_boundaries": [],
+      "synchronization": "NO_LOCK_PRIMITIVE_EVIDENCED",
+      "ordering_assumptions": "EVENT_LOOP_TASK_ORDER_AND_LOCAL_CALL_ORDER_ONLY",
+      "thread_safe_claim": false,
+      "evidence": [
+        "security-ev-975f15bfcb723ee9",
+        "security-ev-22cf32f44a43e730",
+        "security-ev-e5919094ccf273da",
+        "security-ev-ff99e70fb78e1d9e"
+      ]
+    },
+    {
+      "state_id": "shared-state-e09de77cbff3f458",
+      "snapshot_id": "snapshot-0013",
+      "version": "v0.6.0",
+      "variant": "variant-c",
+      "structure": "visited",
+      "writers": [
+        "KnowledgeBase.clear",
+        "KnowledgeBase.completeCandidate",
+        "KnowledgeBase.constructor",
+        "KnowledgeBase.load",
+        "KnowledgeBase.markSkipped"
+      ],
+      "readers": [
+        "KnowledgeBase.serializePersistence"
+      ],
+      "mutation_timing": "SYNCHRONOUS_METHOD_BODY",
+      "await_boundaries": [],
+      "synchronization": "NO_LOCK_PRIMITIVE_EVIDENCED",
+      "ordering_assumptions": "EVENT_LOOP_TASK_ORDER_AND_LOCAL_CALL_ORDER_ONLY",
+      "thread_safe_claim": false,
+      "evidence": [
+        "security-ev-4c245d409b701692",
+        "security-ev-802a3f0fe969c848",
+        "security-ev-5ad37944737ad6f5",
+        "security-ev-84cd5eb589075171"
+      ]
+    },
+    {
+      "state_id": "shared-state-60f60d073641d1e6",
+      "snapshot_id": "snapshot-0013",
+      "version": "v0.6.0",
+      "variant": "variant-c",
+      "structure": "candidates",
+      "writers": [
+        "KnowledgeBase.addCandidate",
+        "KnowledgeBase.clear",
+        "KnowledgeBase.constructor"
+      ],
+      "readers": [
+        "KnowledgeBase.addCandidate",
+        "KnowledgeBase.addDiscovery",
+        "KnowledgeBase.claimNextCandidate"
+      ],
+      "mutation_timing": "SYNCHRONOUS_METHOD_BODY",
+      "await_boundaries": [],
+      "synchronization": "NO_LOCK_PRIMITIVE_EVIDENCED",
+      "ordering_assumptions": "EVENT_LOOP_TASK_ORDER_AND_LOCAL_CALL_ORDER_ONLY",
+      "thread_safe_claim": false,
+      "evidence": [
+        "security-ev-70da47c5b14c3da7",
+        "security-ev-1dccfd8818dd9cfb",
+        "security-ev-b50db0c1f10bed67",
+        "security-ev-02d2a1b200d45454"
+      ]
+    },
+    {
+      "state_id": "shared-state-60f89f0898833178",
+      "snapshot_id": "snapshot-0013",
+      "version": "v0.6.0",
+      "variant": "variant-c",
+      "structure": "observations",
+      "writers": [
+        "KnowledgeBase.addObservation",
+        "KnowledgeBase.clear",
+        "KnowledgeBase.constructor"
+      ],
+      "readers": [],
+      "mutation_timing": "SYNCHRONOUS_METHOD_BODY",
+      "await_boundaries": [],
+      "synchronization": "NO_LOCK_PRIMITIVE_EVIDENCED",
+      "ordering_assumptions": "EVENT_LOOP_TASK_ORDER_AND_LOCAL_CALL_ORDER_ONLY",
+      "thread_safe_claim": false,
+      "evidence": [
+        "security-ev-9846cb2ab4e0b839",
+        "security-ev-90724500a2d59ff8",
+        "security-ev-5d28a42e27bdbffd",
+        "security-ev-75a15725e6920a10"
+      ]
+    },
+    {
+      "state_id": "shared-state-7889008d4c439681",
+      "snapshot_id": "snapshot-0013",
+      "version": "v0.6.0",
+      "variant": "variant-c",
+      "structure": "discoveries",
+      "writers": [
+        "KnowledgeBase.addDiscovery",
+        "KnowledgeBase.clear",
+        "KnowledgeBase.constructor",
+        "KnowledgeBase.load"
+      ],
+      "readers": [
+        "KnowledgeBase.load",
+        "KnowledgeBase.serializePersistence"
+      ],
+      "mutation_timing": "SYNCHRONOUS_METHOD_BODY",
+      "await_boundaries": [],
+      "synchronization": "NO_LOCK_PRIMITIVE_EVIDENCED",
+      "ordering_assumptions": "EVENT_LOOP_TASK_ORDER_AND_LOCAL_CALL_ORDER_ONLY",
+      "thread_safe_claim": false,
+      "evidence": [
+        "security-ev-7717bd59c9b9d78d",
+        "security-ev-f4ba84fffe120292",
+        "security-ev-92cf62936712d513",
+        "security-ev-5b5586d3d660c7fb"
+      ]
+    },
+    {
+      "state_id": "shared-state-606d628bedd6ae9f",
+      "snapshot_id": "snapshot-0013",
+      "version": "v0.6.0",
+      "variant": "variant-c",
+      "structure": "providers",
+      "writers": [
+        "GenericDiscoveryEngine.constructor",
+        "ProviderRegistry.constructor"
+      ],
+      "readers": [],
+      "mutation_timing": "SYNCHRONOUS_METHOD_BODY",
+      "await_boundaries": [
+        "GenericDiscoveryEngine.processCandidate"
+      ],
+      "synchronization": "NO_LOCK_PRIMITIVE_EVIDENCED",
+      "ordering_assumptions": "EVENT_LOOP_TASK_ORDER_AND_LOCAL_CALL_ORDER_ONLY",
+      "thread_safe_claim": false,
+      "evidence": [
+        "security-ev-62c0c3250637484c",
+        "security-ev-14a0ea65222a9471",
+        "security-ev-8862f45863308667",
+        "security-ev-72428a35acfc7a23"
+      ]
+    },
+    {
+      "state_id": "shared-state-2e6afc35cfa48d3d",
+      "snapshot_id": "snapshot-0014",
+      "version": "v0.7.1",
+      "variant": "only-evidenced-complete-occurrence",
+      "structure": "claimed",
+      "writers": [
+        "KnowledgeBase.claimNextCandidate",
+        "KnowledgeBase.constructor",
+        "TOP_LEVEL.looksLikeJson"
+      ],
+      "readers": [],
+      "mutation_timing": "SYNCHRONOUS_METHOD_BODY",
+      "await_boundaries": [
+        "TOP_LEVEL.looksLikeJson"
+      ],
+      "synchronization": "NO_LOCK_PRIMITIVE_EVIDENCED",
+      "ordering_assumptions": "EVENT_LOOP_TASK_ORDER_AND_LOCAL_CALL_ORDER_ONLY",
+      "thread_safe_claim": false,
+      "evidence": [
+        "security-ev-ea10f5fe8eac66a2",
+        "security-ev-257944e1c49528cb",
+        "security-ev-97c8f1ecb979eb50",
+        "security-ev-1b02500c751adfab"
+      ]
+    },
+    {
+      "state_id": "shared-state-561bc6e9c3134841",
+      "snapshot_id": "snapshot-0014",
+      "version": "v0.7.1",
+      "variant": "only-evidenced-complete-occurrence",
+      "structure": "visited",
+      "writers": [
+        "KnowledgeBase.constructor",
+        "KnowledgeBase.markCompleted",
+        "KnowledgeBase.restore",
+        "TOP_LEVEL.looksLikeJson"
+      ],
+      "readers": [
+        "KnowledgeBase.serialize",
+        "TOP_LEVEL.looksLikeJson"
+      ],
+      "mutation_timing": "SYNCHRONOUS_METHOD_BODY",
+      "await_boundaries": [
+        "TOP_LEVEL.looksLikeJson"
+      ],
+      "synchronization": "NO_LOCK_PRIMITIVE_EVIDENCED",
+      "ordering_assumptions": "EVENT_LOOP_TASK_ORDER_AND_LOCAL_CALL_ORDER_ONLY",
+      "thread_safe_claim": false,
+      "evidence": [
+        "security-ev-ea9d3abec23b3161",
+        "security-ev-7cf1fa62db54c17f",
+        "security-ev-f634b0f45519200d",
+        "security-ev-c65a62334dff7780"
+      ]
+    },
+    {
+      "state_id": "shared-state-77d60cf4c6687c74",
+      "snapshot_id": "snapshot-0014",
+      "version": "v0.7.1",
+      "variant": "only-evidenced-complete-occurrence",
+      "structure": "candidates",
+      "writers": [
+        "KnowledgeBase.addCandidate",
+        "KnowledgeBase.constructor",
+        "KnowledgeBase.restore",
+        "TOP_LEVEL.looksLikeJson"
+      ],
+      "readers": [
+        "KnowledgeBase.addCandidate",
+        "KnowledgeBase.claimNextCandidate",
+        "KnowledgeBase.serialize",
+        "TOP_LEVEL.looksLikeJson"
+      ],
+      "mutation_timing": "SYNCHRONOUS_METHOD_BODY",
+      "await_boundaries": [
+        "TOP_LEVEL.looksLikeJson"
+      ],
+      "synchronization": "NO_LOCK_PRIMITIVE_EVIDENCED",
+      "ordering_assumptions": "EVENT_LOOP_TASK_ORDER_AND_LOCAL_CALL_ORDER_ONLY",
+      "thread_safe_claim": false,
+      "evidence": [
+        "security-ev-2c31781d57af46fa",
+        "security-ev-9f756132d83f59c5",
+        "security-ev-8b7bccb27fd21227",
+        "security-ev-e00ac7d23b265b6f"
+      ]
+    },
+    {
+      "state_id": "shared-state-071858a9963f7065",
+      "snapshot_id": "snapshot-0014",
+      "version": "v0.7.1",
+      "variant": "only-evidenced-complete-occurrence",
+      "structure": "observations",
+      "writers": [
+        "KnowledgeBase.constructor",
+        "KnowledgeBase.recordObservation",
+        "KnowledgeBase.restore",
+        "TOP_LEVEL.looksLikeJson"
+      ],
+      "readers": [
+        "KnowledgeBase.serialize",
+        "TOP_LEVEL.looksLikeJson"
+      ],
+      "mutation_timing": "SYNCHRONOUS_METHOD_BODY",
+      "await_boundaries": [
+        "TOP_LEVEL.looksLikeJson"
+      ],
+      "synchronization": "NO_LOCK_PRIMITIVE_EVIDENCED",
+      "ordering_assumptions": "EVENT_LOOP_TASK_ORDER_AND_LOCAL_CALL_ORDER_ONLY",
+      "thread_safe_claim": false,
+      "evidence": [
+        "security-ev-6eb61fcd645a2a68",
+        "security-ev-72d7c1659b6dc0cc",
+        "security-ev-3fdda83fe377a327",
+        "security-ev-eb86e85dd2265cc3"
+      ]
+    },
+    {
+      "state_id": "shared-state-9cb2b09087525aea",
+      "snapshot_id": "snapshot-0014",
+      "version": "v0.7.1",
+      "variant": "only-evidenced-complete-occurrence",
+      "structure": "discoveries",
+      "writers": [
+        "KnowledgeBase.addDiscovery",
+        "KnowledgeBase.constructor",
+        "KnowledgeBase.restore",
+        "TOP_LEVEL.looksLikeJson"
+      ],
+      "readers": [
+        "KnowledgeBase.serialize",
+        "TOP_LEVEL.looksLikeJson"
+      ],
+      "mutation_timing": "SYNCHRONOUS_METHOD_BODY",
+      "await_boundaries": [
+        "TOP_LEVEL.looksLikeJson"
+      ],
+      "synchronization": "NO_LOCK_PRIMITIVE_EVIDENCED",
+      "ordering_assumptions": "EVENT_LOOP_TASK_ORDER_AND_LOCAL_CALL_ORDER_ONLY",
+      "thread_safe_claim": false,
+      "evidence": [
+        "security-ev-f3416318fd74f77c",
+        "security-ev-23051d5e5b8fd778",
+        "security-ev-e04129fb260f4471",
+        "security-ev-b2cc1a495f90ded9"
+      ]
+    },
+    {
+      "state_id": "shared-state-668e5ff087c1425d",
+      "snapshot_id": "snapshot-0014",
+      "version": "v0.7.1",
+      "variant": "only-evidenced-complete-occurrence",
+      "structure": "providers",
+      "writers": [
+        "GenericDiscoveryEngine.constructor",
+        "ProviderRegistry.constructor",
+        "TOP_LEVEL.looksLikeJson"
+      ],
+      "readers": [
+        "ProviderRegistry.matching",
+        "TOP_LEVEL.looksLikeJson"
+      ],
+      "mutation_timing": "SYNCHRONOUS_METHOD_BODY",
+      "await_boundaries": [
+        "GenericDiscoveryEngine.executePlan",
+        "TOP_LEVEL.looksLikeJson"
+      ],
+      "synchronization": "NO_LOCK_PRIMITIVE_EVIDENCED",
+      "ordering_assumptions": "EVENT_LOOP_TASK_ORDER_AND_LOCAL_CALL_ORDER_ONLY",
+      "thread_safe_claim": false,
+      "evidence": [
+        "security-ev-4241a909fbfe0c7e",
+        "security-ev-65caafa525d6b355",
+        "security-ev-e5a85163986865ac",
+        "security-ev-5b7c94fe1bd5d94a"
+      ]
+    }
+  ]
+}

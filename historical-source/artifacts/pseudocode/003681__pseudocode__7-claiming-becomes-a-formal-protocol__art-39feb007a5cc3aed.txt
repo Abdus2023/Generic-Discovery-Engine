@@ -1,0 +1,10 @@
+             QUEUED
+                │
+         atomic claim()
+                │
+       ┌────────┴────────┐
+       │                 │
+    success            failure
+       │                 │
+       ▼                 ▼
+   CLAIMED             QUEUED

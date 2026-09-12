@@ -1,0 +1,63 @@
+                         SEARCH GOAL
+                              │
+                              ▼
+                         QUERY PLAN
+                              │
+                              ▼
+                       SEARCH TACTICS
+                              │
+                              ▼
+                         PARTITIONS
+                              │
+                              ▼
+                         DISCOVERY
+                              │
+                              ▼
+                         CANDIDATES
+                              │
+                              ▼
+                    FRONTIER ARBITRATION
+                              │
+                              ▼
+                         WORK ITEMS
+                              │
+                              ▼
+                       COORDINATION
+                              │
+                       ┌──────┴──────┐
+                       ▼             ▼
+                    Worker A      Worker B
+                       │             │
+                       └──────┬──────┘
+                              ▼
+                    CONSISTENCY CONTROL
+                              │
+                  ┌───────────┴───────────┐
+                  ▼                       ▼
+               COMMIT                 CONFLICT
+                  │                       │
+                  │                  RESOLUTION
+                  │                       │
+                  └───────────┬───────────┘
+                              ▼
+                       ACQUISITION
+                              │
+                              ▼
+                        OBSERVATION
+                              │
+                              ▼
+                           EVIDENCE
+                              │
+                    ┌─────────┴─────────┐
+                    ▼                   ▼
+              CLASSIFICATION       VERIFICATION
+                    │                   │
+                    └─────────┬─────────┘
+                              ▼
+                       RESOURCE GRAPH
+                              │
+                              ▼
+                       COVERAGE MODEL
+                              │
+                              ▼
+                     COMPLETENESS CLAIM

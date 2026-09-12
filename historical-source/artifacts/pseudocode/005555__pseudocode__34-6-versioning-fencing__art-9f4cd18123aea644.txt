@@ -1,0 +1,8 @@
+Mutate(W,S,M)
+⇒
+Owner(W) = Worker(M)
+∧ Claim(W) = Claim(M)
+∧ Epoch(W) = Epoch(M)
+∧ LeaseValid(M)
+∧ ExpectedVersion(M) = CurrentVersion(S)
+∧ PolicyAllows(M)

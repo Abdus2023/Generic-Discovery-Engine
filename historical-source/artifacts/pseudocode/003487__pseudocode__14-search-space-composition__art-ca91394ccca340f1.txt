@@ -1,0 +1,16 @@
+                  DISCOVERY CONTEXT
+                         │
+       ┌─────────────────┼──────────────────┐
+       ▼                 ▼                  ▼
+ HTML Source       Network Source     Metadata Source
+       │                 │                  │
+       ▼                 ▼                  ▼
+ proposals[]        proposals[]        proposals[]
+       │                 │                  │
+       └─────────────────┼──────────────────┘
+                         ▼
+                  NORMALIZATION
+                         ▼
+                    DEDUPLICATION
+                         ▼
+                     CANDIDATES

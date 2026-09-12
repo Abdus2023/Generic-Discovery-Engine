@@ -1,0 +1,6403 @@
+{
+  "schema_version": 8,
+  "builder": "security-archaeology-builder-v8",
+  "model_kind": "DERIVED_SECURITY_ARCHAEOLOGY_NOT_SOURCE",
+  "edges": [
+    {
+      "edge_id": "failure-edge-7c4a31019836dcf5",
+      "failure_id": "failure-caebde7abb52ddc5",
+      "snapshot_id": "snapshot-0001",
+      "source": "FAILURE_SOURCE",
+      "target": "DETECTION",
+      "type": "TRIGGERS",
+      "confidence": "PROVED",
+      "evidence": [
+        "security-ev-8812129cadb6f280"
+      ]
+    },
+    {
+      "edge_id": "failure-edge-144ff4abc66b4c60",
+      "failure_id": "failure-caebde7abb52ddc5",
+      "snapshot_id": "snapshot-0001",
+      "source": "DETECTION",
+      "target": "OPERATION_LOCAL",
+      "type": "HANDLED_AT",
+      "confidence": "SUPPORTED",
+      "evidence": [
+        "security-ev-8812129cadb6f280"
+      ]
+    },
+    {
+      "edge_id": "failure-edge-a0c779b5dfbd67d0",
+      "failure_id": "failure-caebde7abb52ddc5",
+      "snapshot_id": "snapshot-0001",
+      "source": "OPERATION_LOCAL",
+      "target": "RECOVERY_PATH",
+      "type": "ENABLES_PATH",
+      "confidence": "SUPPORTED",
+      "evidence": [
+        "security-ev-8812129cadb6f280"
+      ]
+    },
+    {
+      "edge_id": "failure-edge-14cf4aed1e2d1c76",
+      "failure_id": "failure-bc35dbaabe203bc9",
+      "snapshot_id": "snapshot-0001",
+      "source": "FAILURE_SOURCE",
+      "target": "DETECTION",
+      "type": "TRIGGERS",
+      "confidence": "PROVED",
+      "evidence": [
+        "security-ev-cd52827ef732e7d4"
+      ]
+    },
+    {
+      "edge_id": "failure-edge-2937293ed2c54138",
+      "failure_id": "failure-bc35dbaabe203bc9",
+      "snapshot_id": "snapshot-0001",
+      "source": "DETECTION",
+      "target": "OPERATION_LOCAL",
+      "type": "HANDLED_AT",
+      "confidence": "SUPPORTED",
+      "evidence": [
+        "security-ev-cd52827ef732e7d4"
+      ]
+    },
+    {
+      "edge_id": "failure-edge-6b7de94a3ac899f2",
+      "failure_id": "failure-bc35dbaabe203bc9",
+      "snapshot_id": "snapshot-0001",
+      "source": "OPERATION_LOCAL",
+      "target": "RECOVERY_PATH",
+      "type": "ENABLES_PATH",
+      "confidence": "SUPPORTED",
+      "evidence": [
+        "security-ev-cd52827ef732e7d4"
+      ]
+    },
+    {
+      "edge_id": "failure-edge-69e2eaa368aab2ba",
+      "failure_id": "failure-88a16f7ee1c4d27e",
+      "snapshot_id": "snapshot-0001",
+      "source": "FAILURE_SOURCE",
+      "target": "DETECTION",
+      "type": "TRIGGERS",
+      "confidence": "PROVED",
+      "evidence": [
+        "security-ev-b1fbd072c5e527b7"
+      ]
+    },
+    {
+      "edge_id": "failure-edge-432149742ae45d2d",
+      "failure_id": "failure-88a16f7ee1c4d27e",
+      "snapshot_id": "snapshot-0001",
+      "source": "DETECTION",
+      "target": "OPERATION_LOCAL",
+      "type": "HANDLED_AT",
+      "confidence": "SUPPORTED",
+      "evidence": [
+        "security-ev-b1fbd072c5e527b7"
+      ]
+    },
+    {
+      "edge_id": "failure-edge-c2f0f1a55781a1ca",
+      "failure_id": "failure-326b0f20f8823541",
+      "snapshot_id": "snapshot-0001",
+      "source": "FAILURE_SOURCE",
+      "target": "DETECTION",
+      "type": "TRIGGERS",
+      "confidence": "PROVED",
+      "evidence": [
+        "security-ev-5f02dc3748547b35"
+      ]
+    },
+    {
+      "edge_id": "failure-edge-d75eab253370bb75",
+      "failure_id": "failure-326b0f20f8823541",
+      "snapshot_id": "snapshot-0001",
+      "source": "DETECTION",
+      "target": "OPERATION_LOCAL",
+      "type": "HANDLED_AT",
+      "confidence": "SUPPORTED",
+      "evidence": [
+        "security-ev-5f02dc3748547b35"
+      ]
+    },
+    {
+      "edge_id": "failure-edge-7d1423df4062e060",
+      "failure_id": "failure-88f6128a6a2eb35e",
+      "snapshot_id": "snapshot-0001",
+      "source": "FAILURE_SOURCE",
+      "target": "DETECTION",
+      "type": "TRIGGERS",
+      "confidence": "PROVED",
+      "evidence": [
+        "security-ev-f5938550f988fa3e"
+      ]
+    },
+    {
+      "edge_id": "failure-edge-568d9abbdec97777",
+      "failure_id": "failure-88f6128a6a2eb35e",
+      "snapshot_id": "snapshot-0001",
+      "source": "DETECTION",
+      "target": "OPERATION_LOCAL",
+      "type": "HANDLED_AT",
+      "confidence": "SUPPORTED",
+      "evidence": [
+        "security-ev-f5938550f988fa3e"
+      ]
+    },
+    {
+      "edge_id": "failure-edge-5f08f5eb1ce2e414",
+      "failure_id": "failure-88f6128a6a2eb35e",
+      "snapshot_id": "snapshot-0001",
+      "source": "OPERATION_LOCAL",
+      "target": "RECOVERY_PATH",
+      "type": "ENABLES_PATH",
+      "confidence": "SUPPORTED",
+      "evidence": [
+        "security-ev-f5938550f988fa3e"
+      ]
+    },
+    {
+      "edge_id": "failure-edge-399694e82e5625d8",
+      "failure_id": "failure-a73dc6039b8fd4fc",
+      "snapshot_id": "snapshot-0001",
+      "source": "FAILURE_SOURCE",
+      "target": "DETECTION",
+      "type": "TRIGGERS",
+      "confidence": "PROVED",
+      "evidence": [
+        "security-ev-92452c8c6a88aa28"
+      ]
+    },
+    {
+      "edge_id": "failure-edge-d6f3d41309036185",
+      "failure_id": "failure-a73dc6039b8fd4fc",
+      "snapshot_id": "snapshot-0001",
+      "source": "DETECTION",
+      "target": "CALLER",
+      "type": "PROPAGATES_TO",
+      "confidence": "SUPPORTED",
+      "evidence": [
+        "security-ev-92452c8c6a88aa28"
+      ]
+    },
+    {
+      "edge_id": "failure-edge-eb21b906765e3f2e",
+      "failure_id": "failure-a73dc6039b8fd4fc",
+      "snapshot_id": "snapshot-0001",
+      "source": "STOP_BOUNDARY_NOT_PROVED",
+      "target": "RECOVERY_PATH",
+      "type": "ENABLES_PATH",
+      "confidence": "SUPPORTED",
+      "evidence": [
+        "security-ev-92452c8c6a88aa28"
+      ]
+    },
+    {
+      "edge_id": "failure-edge-b21f766f1dd95edf",
+      "failure_id": "failure-4b5b547675c6ff73",
+      "snapshot_id": "snapshot-0001",
+      "source": "FAILURE_SOURCE",
+      "target": "DETECTION",
+      "type": "TRIGGERS",
+      "confidence": "PROVED",
+      "evidence": [
+        "security-ev-b90fb5bcfffb1a0b"
+      ]
+    },
+    {
+      "edge_id": "failure-edge-442ab97d07333ef5",
+      "failure_id": "failure-4b5b547675c6ff73",
+      "snapshot_id": "snapshot-0001",
+      "source": "DETECTION",
+      "target": "CALLER",
+      "type": "PROPAGATES_TO",
+      "confidence": "SUPPORTED",
+      "evidence": [
+        "security-ev-b90fb5bcfffb1a0b"
+      ]
+    },
+    {
+      "edge_id": "failure-edge-68217d5223b947ce",
+      "failure_id": "failure-6dfb9ead2896e157",
+      "snapshot_id": "snapshot-0001",
+      "source": "FAILURE_SOURCE",
+      "target": "DETECTION",
+      "type": "TRIGGERS",
+      "confidence": "PROVED",
+      "evidence": [
+        "security-ev-ee35b3e2616be7b6"
+      ]
+    },
+    {
+      "edge_id": "failure-edge-b24cb6f83e3eaaf4",
+      "failure_id": "failure-6dfb9ead2896e157",
+      "snapshot_id": "snapshot-0001",
+      "source": "DETECTION",
+      "target": "CALLER",
+      "type": "PROPAGATES_TO",
+      "confidence": "SUPPORTED",
+      "evidence": [
+        "security-ev-ee35b3e2616be7b6"
+      ]
+    },
+    {
+      "edge_id": "failure-edge-5a7f50efdf3ba7a8",
+      "failure_id": "failure-6dfb9ead2896e157",
+      "snapshot_id": "snapshot-0001",
+      "source": "STOP_BOUNDARY_NOT_PROVED",
+      "target": "RECOVERY_PATH",
+      "type": "ENABLES_PATH",
+      "confidence": "SUPPORTED",
+      "evidence": [
+        "security-ev-ee35b3e2616be7b6"
+      ]
+    },
+    {
+      "edge_id": "failure-edge-0472a156b8cefb64",
+      "failure_id": "failure-fae6d8fccc18f639",
+      "snapshot_id": "snapshot-0001",
+      "source": "FAILURE_SOURCE",
+      "target": "DETECTION",
+      "type": "TRIGGERS",
+      "confidence": "PROVED",
+      "evidence": [
+        "security-ev-a636b4c2f43931b0"
+      ]
+    },
+    {
+      "edge_id": "failure-edge-0dc59ff1738496d1",
+      "failure_id": "failure-fae6d8fccc18f639",
+      "snapshot_id": "snapshot-0001",
+      "source": "DETECTION",
+      "target": "CALLER",
+      "type": "PROPAGATES_TO",
+      "confidence": "SUPPORTED",
+      "evidence": [
+        "security-ev-a636b4c2f43931b0"
+      ]
+    },
+    {
+      "edge_id": "failure-edge-3d155554798d3dbc",
+      "failure_id": "failure-1f7849935679299b",
+      "snapshot_id": "snapshot-0003",
+      "source": "FAILURE_SOURCE",
+      "target": "DETECTION",
+      "type": "TRIGGERS",
+      "confidence": "PROVED",
+      "evidence": [
+        "security-ev-6b1bd6d142794968"
+      ]
+    },
+    {
+      "edge_id": "failure-edge-d9ceb030449e309f",
+      "failure_id": "failure-1f7849935679299b",
+      "snapshot_id": "snapshot-0003",
+      "source": "DETECTION",
+      "target": "OPERATION_LOCAL",
+      "type": "HANDLED_AT",
+      "confidence": "SUPPORTED",
+      "evidence": [
+        "security-ev-6b1bd6d142794968"
+      ]
+    },
+    {
+      "edge_id": "failure-edge-459d5bd1ce72bd23",
+      "failure_id": "failure-1f7849935679299b",
+      "snapshot_id": "snapshot-0003",
+      "source": "OPERATION_LOCAL",
+      "target": "RECOVERY_PATH",
+      "type": "ENABLES_PATH",
+      "confidence": "SUPPORTED",
+      "evidence": [
+        "security-ev-6b1bd6d142794968"
+      ]
+    },
+    {
+      "edge_id": "failure-edge-560392794dd3336b",
+      "failure_id": "failure-81a3ecf11d1b43c2",
+      "snapshot_id": "snapshot-0003",
+      "source": "FAILURE_SOURCE",
+      "target": "DETECTION",
+      "type": "TRIGGERS",
+      "confidence": "PROVED",
+      "evidence": [
+        "security-ev-abd184135de8a5dc"
+      ]
+    },
+    {
+      "edge_id": "failure-edge-9d93db6e3bd92658",
+      "failure_id": "failure-81a3ecf11d1b43c2",
+      "snapshot_id": "snapshot-0003",
+      "source": "DETECTION",
+      "target": "OPERATION_LOCAL",
+      "type": "HANDLED_AT",
+      "confidence": "SUPPORTED",
+      "evidence": [
+        "security-ev-abd184135de8a5dc"
+      ]
+    },
+    {
+      "edge_id": "failure-edge-aec79be32c25985c",
+      "failure_id": "failure-81a3ecf11d1b43c2",
+      "snapshot_id": "snapshot-0003",
+      "source": "OPERATION_LOCAL",
+      "target": "RECOVERY_PATH",
+      "type": "ENABLES_PATH",
+      "confidence": "SUPPORTED",
+      "evidence": [
+        "security-ev-abd184135de8a5dc"
+      ]
+    },
+    {
+      "edge_id": "failure-edge-12be98a2013f5dad",
+      "failure_id": "failure-27310ccf933d5cb3",
+      "snapshot_id": "snapshot-0003",
+      "source": "FAILURE_SOURCE",
+      "target": "DETECTION",
+      "type": "TRIGGERS",
+      "confidence": "PROVED",
+      "evidence": [
+        "security-ev-835a71ba17d2d8a9"
+      ]
+    },
+    {
+      "edge_id": "failure-edge-fc1171f85b053165",
+      "failure_id": "failure-27310ccf933d5cb3",
+      "snapshot_id": "snapshot-0003",
+      "source": "DETECTION",
+      "target": "OPERATION_LOCAL",
+      "type": "HANDLED_AT",
+      "confidence": "SUPPORTED",
+      "evidence": [
+        "security-ev-835a71ba17d2d8a9"
+      ]
+    },
+    {
+      "edge_id": "failure-edge-f4d280cd5ea638ca",
+      "failure_id": "failure-23d16f1c6b5a3f99",
+      "snapshot_id": "snapshot-0003",
+      "source": "FAILURE_SOURCE",
+      "target": "DETECTION",
+      "type": "TRIGGERS",
+      "confidence": "PROVED",
+      "evidence": [
+        "security-ev-1d21f8fcd42ea7c6"
+      ]
+    },
+    {
+      "edge_id": "failure-edge-69101a49b4427945",
+      "failure_id": "failure-23d16f1c6b5a3f99",
+      "snapshot_id": "snapshot-0003",
+      "source": "DETECTION",
+      "target": "OPERATION_LOCAL",
+      "type": "HANDLED_AT",
+      "confidence": "SUPPORTED",
+      "evidence": [
+        "security-ev-1d21f8fcd42ea7c6"
+      ]
+    },
+    {
+      "edge_id": "failure-edge-14c093cc383d8e7c",
+      "failure_id": "failure-3dd1b2d1f0e874a5",
+      "snapshot_id": "snapshot-0003",
+      "source": "FAILURE_SOURCE",
+      "target": "DETECTION",
+      "type": "TRIGGERS",
+      "confidence": "PROVED",
+      "evidence": [
+        "security-ev-eaeb4711e4fdb262"
+      ]
+    },
+    {
+      "edge_id": "failure-edge-8e93ae35468cd7f8",
+      "failure_id": "failure-3dd1b2d1f0e874a5",
+      "snapshot_id": "snapshot-0003",
+      "source": "DETECTION",
+      "target": "OPERATION_LOCAL",
+      "type": "HANDLED_AT",
+      "confidence": "SUPPORTED",
+      "evidence": [
+        "security-ev-eaeb4711e4fdb262"
+      ]
+    },
+    {
+      "edge_id": "failure-edge-b3721cedafc958ac",
+      "failure_id": "failure-3dd1b2d1f0e874a5",
+      "snapshot_id": "snapshot-0003",
+      "source": "OPERATION_LOCAL",
+      "target": "RECOVERY_PATH",
+      "type": "ENABLES_PATH",
+      "confidence": "SUPPORTED",
+      "evidence": [
+        "security-ev-eaeb4711e4fdb262"
+      ]
+    },
+    {
+      "edge_id": "failure-edge-9ff2c4a403415656",
+      "failure_id": "failure-86c08d6ca2f94f91",
+      "snapshot_id": "snapshot-0003",
+      "source": "FAILURE_SOURCE",
+      "target": "DETECTION",
+      "type": "TRIGGERS",
+      "confidence": "PROVED",
+      "evidence": [
+        "security-ev-31d8abcbe3efa516"
+      ]
+    },
+    {
+      "edge_id": "failure-edge-aad57ff1e66619cd",
+      "failure_id": "failure-86c08d6ca2f94f91",
+      "snapshot_id": "snapshot-0003",
+      "source": "DETECTION",
+      "target": "CALLER",
+      "type": "PROPAGATES_TO",
+      "confidence": "SUPPORTED",
+      "evidence": [
+        "security-ev-31d8abcbe3efa516"
+      ]
+    },
+    {
+      "edge_id": "failure-edge-5893ba3bfca778c6",
+      "failure_id": "failure-86c08d6ca2f94f91",
+      "snapshot_id": "snapshot-0003",
+      "source": "STOP_BOUNDARY_NOT_PROVED",
+      "target": "RECOVERY_PATH",
+      "type": "ENABLES_PATH",
+      "confidence": "SUPPORTED",
+      "evidence": [
+        "security-ev-31d8abcbe3efa516"
+      ]
+    },
+    {
+      "edge_id": "failure-edge-2049f3610d89a0d0",
+      "failure_id": "failure-97a71e88344f5088",
+      "snapshot_id": "snapshot-0003",
+      "source": "FAILURE_SOURCE",
+      "target": "DETECTION",
+      "type": "TRIGGERS",
+      "confidence": "PROVED",
+      "evidence": [
+        "security-ev-7486a1ae2556e31e"
+      ]
+    },
+    {
+      "edge_id": "failure-edge-49efe0cd14e0d090",
+      "failure_id": "failure-97a71e88344f5088",
+      "snapshot_id": "snapshot-0003",
+      "source": "DETECTION",
+      "target": "CALLER",
+      "type": "PROPAGATES_TO",
+      "confidence": "SUPPORTED",
+      "evidence": [
+        "security-ev-7486a1ae2556e31e"
+      ]
+    },
+    {
+      "edge_id": "failure-edge-2863480644b8b61b",
+      "failure_id": "failure-519c9350a5e55f1c",
+      "snapshot_id": "snapshot-0003",
+      "source": "FAILURE_SOURCE",
+      "target": "DETECTION",
+      "type": "TRIGGERS",
+      "confidence": "PROVED",
+      "evidence": [
+        "security-ev-3bd0babe0ddc9dd1"
+      ]
+    },
+    {
+      "edge_id": "failure-edge-7ba283c2efdcab6f",
+      "failure_id": "failure-519c9350a5e55f1c",
+      "snapshot_id": "snapshot-0003",
+      "source": "DETECTION",
+      "target": "CALLER",
+      "type": "PROPAGATES_TO",
+      "confidence": "SUPPORTED",
+      "evidence": [
+        "security-ev-3bd0babe0ddc9dd1"
+      ]
+    },
+    {
+      "edge_id": "failure-edge-4ec682892e52abb0",
+      "failure_id": "failure-519c9350a5e55f1c",
+      "snapshot_id": "snapshot-0003",
+      "source": "STOP_BOUNDARY_NOT_PROVED",
+      "target": "RECOVERY_PATH",
+      "type": "ENABLES_PATH",
+      "confidence": "SUPPORTED",
+      "evidence": [
+        "security-ev-3bd0babe0ddc9dd1"
+      ]
+    },
+    {
+      "edge_id": "failure-edge-a62dd8bfa150854d",
+      "failure_id": "failure-58fd002f563df966",
+      "snapshot_id": "snapshot-0003",
+      "source": "FAILURE_SOURCE",
+      "target": "DETECTION",
+      "type": "TRIGGERS",
+      "confidence": "PROVED",
+      "evidence": [
+        "security-ev-b26acb6b433db456"
+      ]
+    },
+    {
+      "edge_id": "failure-edge-14d98b5f4012ee51",
+      "failure_id": "failure-58fd002f563df966",
+      "snapshot_id": "snapshot-0003",
+      "source": "DETECTION",
+      "target": "CALLER",
+      "type": "PROPAGATES_TO",
+      "confidence": "SUPPORTED",
+      "evidence": [
+        "security-ev-b26acb6b433db456"
+      ]
+    },
+    {
+      "edge_id": "failure-edge-625ac4d4d07affae",
+      "failure_id": "failure-b02da9aecc766538",
+      "snapshot_id": "snapshot-0003",
+      "source": "FAILURE_SOURCE",
+      "target": "DETECTION",
+      "type": "TRIGGERS",
+      "confidence": "PROVED",
+      "evidence": [
+        "security-ev-02b567c67da4c8b5"
+      ]
+    },
+    {
+      "edge_id": "failure-edge-20822cf5799e46ec",
+      "failure_id": "failure-b02da9aecc766538",
+      "snapshot_id": "snapshot-0003",
+      "source": "DETECTION",
+      "target": "OPERATION_LOCAL",
+      "type": "HANDLED_AT",
+      "confidence": "SUPPORTED",
+      "evidence": [
+        "security-ev-02b567c67da4c8b5"
+      ]
+    },
+    {
+      "edge_id": "failure-edge-615db51e26399f3a",
+      "failure_id": "failure-b02da9aecc766538",
+      "snapshot_id": "snapshot-0003",
+      "source": "OPERATION_LOCAL",
+      "target": "RECOVERY_PATH",
+      "type": "ENABLES_PATH",
+      "confidence": "SUPPORTED",
+      "evidence": [
+        "security-ev-02b567c67da4c8b5"
+      ]
+    },
+    {
+      "edge_id": "failure-edge-3d3359d272542664",
+      "failure_id": "failure-0de55d1ae77e4442",
+      "snapshot_id": "snapshot-0003",
+      "source": "FAILURE_SOURCE",
+      "target": "DETECTION",
+      "type": "TRIGGERS",
+      "confidence": "PROVED",
+      "evidence": [
+        "security-ev-1d37613eb7c14a60"
+      ]
+    },
+    {
+      "edge_id": "failure-edge-718026731064f4d9",
+      "failure_id": "failure-0de55d1ae77e4442",
+      "snapshot_id": "snapshot-0003",
+      "source": "DETECTION",
+      "target": "CANDIDATE_WIDE",
+      "type": "HANDLED_AT",
+      "confidence": "SUPPORTED",
+      "evidence": [
+        "security-ev-1d37613eb7c14a60"
+      ]
+    },
+    {
+      "edge_id": "failure-edge-e1d863c0f55f8d9e",
+      "failure_id": "failure-0de55d1ae77e4442",
+      "snapshot_id": "snapshot-0003",
+      "source": "CANDIDATE_WIDE",
+      "target": "RECOVERY_PATH",
+      "type": "ENABLES_PATH",
+      "confidence": "SUPPORTED",
+      "evidence": [
+        "security-ev-1d37613eb7c14a60"
+      ]
+    },
+    {
+      "edge_id": "failure-edge-a7d70f13b8cbe722",
+      "failure_id": "failure-df86d3f501b1d8a8",
+      "snapshot_id": "snapshot-0005",
+      "source": "FAILURE_SOURCE",
+      "target": "DETECTION",
+      "type": "TRIGGERS",
+      "confidence": "PROVED",
+      "evidence": [
+        "security-ev-1ba1749f7bb08635"
+      ]
+    },
+    {
+      "edge_id": "failure-edge-9fea71b357102ec9",
+      "failure_id": "failure-df86d3f501b1d8a8",
+      "snapshot_id": "snapshot-0005",
+      "source": "DETECTION",
+      "target": "OPERATION_LOCAL",
+      "type": "HANDLED_AT",
+      "confidence": "SUPPORTED",
+      "evidence": [
+        "security-ev-1ba1749f7bb08635"
+      ]
+    },
+    {
+      "edge_id": "failure-edge-1abc7813e435009c",
+      "failure_id": "failure-df86d3f501b1d8a8",
+      "snapshot_id": "snapshot-0005",
+      "source": "OPERATION_LOCAL",
+      "target": "RECOVERY_PATH",
+      "type": "ENABLES_PATH",
+      "confidence": "SUPPORTED",
+      "evidence": [
+        "security-ev-1ba1749f7bb08635"
+      ]
+    },
+    {
+      "edge_id": "failure-edge-a98738bc5c46d798",
+      "failure_id": "failure-30996485b3f2e441",
+      "snapshot_id": "snapshot-0005",
+      "source": "FAILURE_SOURCE",
+      "target": "DETECTION",
+      "type": "TRIGGERS",
+      "confidence": "PROVED",
+      "evidence": [
+        "security-ev-7b42b4c75a35c40b"
+      ]
+    },
+    {
+      "edge_id": "failure-edge-a7e580cc54ea0d47",
+      "failure_id": "failure-30996485b3f2e441",
+      "snapshot_id": "snapshot-0005",
+      "source": "DETECTION",
+      "target": "OPERATION_LOCAL",
+      "type": "HANDLED_AT",
+      "confidence": "SUPPORTED",
+      "evidence": [
+        "security-ev-7b42b4c75a35c40b"
+      ]
+    },
+    {
+      "edge_id": "failure-edge-4c4c2c28744bd653",
+      "failure_id": "failure-30996485b3f2e441",
+      "snapshot_id": "snapshot-0005",
+      "source": "OPERATION_LOCAL",
+      "target": "RECOVERY_PATH",
+      "type": "ENABLES_PATH",
+      "confidence": "SUPPORTED",
+      "evidence": [
+        "security-ev-7b42b4c75a35c40b"
+      ]
+    },
+    {
+      "edge_id": "failure-edge-1865dab35d1ae5b7",
+      "failure_id": "failure-4882fae6c082338e",
+      "snapshot_id": "snapshot-0005",
+      "source": "FAILURE_SOURCE",
+      "target": "DETECTION",
+      "type": "TRIGGERS",
+      "confidence": "PROVED",
+      "evidence": [
+        "security-ev-ee29dd239ff45ec6"
+      ]
+    },
+    {
+      "edge_id": "failure-edge-ca73a8e401199591",
+      "failure_id": "failure-4882fae6c082338e",
+      "snapshot_id": "snapshot-0005",
+      "source": "DETECTION",
+      "target": "OPERATION_LOCAL",
+      "type": "HANDLED_AT",
+      "confidence": "SUPPORTED",
+      "evidence": [
+        "security-ev-ee29dd239ff45ec6"
+      ]
+    },
+    {
+      "edge_id": "failure-edge-a86490ba8531f436",
+      "failure_id": "failure-7eab834919fe16c1",
+      "snapshot_id": "snapshot-0005",
+      "source": "FAILURE_SOURCE",
+      "target": "DETECTION",
+      "type": "TRIGGERS",
+      "confidence": "PROVED",
+      "evidence": [
+        "security-ev-70b3e3144ce034e6"
+      ]
+    },
+    {
+      "edge_id": "failure-edge-8ac8c76612f5870c",
+      "failure_id": "failure-7eab834919fe16c1",
+      "snapshot_id": "snapshot-0005",
+      "source": "DETECTION",
+      "target": "OPERATION_LOCAL",
+      "type": "HANDLED_AT",
+      "confidence": "SUPPORTED",
+      "evidence": [
+        "security-ev-70b3e3144ce034e6"
+      ]
+    },
+    {
+      "edge_id": "failure-edge-88a4aa58eb856fd7",
+      "failure_id": "failure-99ec6a19d869d893",
+      "snapshot_id": "snapshot-0005",
+      "source": "FAILURE_SOURCE",
+      "target": "DETECTION",
+      "type": "TRIGGERS",
+      "confidence": "PROVED",
+      "evidence": [
+        "security-ev-1ce4c30d7aee4cbe"
+      ]
+    },
+    {
+      "edge_id": "failure-edge-8a42661fbb5921e8",
+      "failure_id": "failure-99ec6a19d869d893",
+      "snapshot_id": "snapshot-0005",
+      "source": "DETECTION",
+      "target": "OPERATION_LOCAL",
+      "type": "HANDLED_AT",
+      "confidence": "SUPPORTED",
+      "evidence": [
+        "security-ev-1ce4c30d7aee4cbe"
+      ]
+    },
+    {
+      "edge_id": "failure-edge-d0c2bf81f42df9e9",
+      "failure_id": "failure-99ec6a19d869d893",
+      "snapshot_id": "snapshot-0005",
+      "source": "OPERATION_LOCAL",
+      "target": "RECOVERY_PATH",
+      "type": "ENABLES_PATH",
+      "confidence": "SUPPORTED",
+      "evidence": [
+        "security-ev-1ce4c30d7aee4cbe"
+      ]
+    },
+    {
+      "edge_id": "failure-edge-34863e1e878f3ba4",
+      "failure_id": "failure-c648e89dbff7e8e8",
+      "snapshot_id": "snapshot-0005",
+      "source": "FAILURE_SOURCE",
+      "target": "DETECTION",
+      "type": "TRIGGERS",
+      "confidence": "PROVED",
+      "evidence": [
+        "security-ev-8dec6407a9878075"
+      ]
+    },
+    {
+      "edge_id": "failure-edge-61af613f35f480ba",
+      "failure_id": "failure-c648e89dbff7e8e8",
+      "snapshot_id": "snapshot-0005",
+      "source": "DETECTION",
+      "target": "CALLER",
+      "type": "PROPAGATES_TO",
+      "confidence": "SUPPORTED",
+      "evidence": [
+        "security-ev-8dec6407a9878075"
+      ]
+    },
+    {
+      "edge_id": "failure-edge-e7127d544c14e938",
+      "failure_id": "failure-c648e89dbff7e8e8",
+      "snapshot_id": "snapshot-0005",
+      "source": "STOP_BOUNDARY_NOT_PROVED",
+      "target": "RECOVERY_PATH",
+      "type": "ENABLES_PATH",
+      "confidence": "SUPPORTED",
+      "evidence": [
+        "security-ev-8dec6407a9878075"
+      ]
+    },
+    {
+      "edge_id": "failure-edge-d0cd1ef8ea9045db",
+      "failure_id": "failure-ca311f6d8bcad19c",
+      "snapshot_id": "snapshot-0005",
+      "source": "FAILURE_SOURCE",
+      "target": "DETECTION",
+      "type": "TRIGGERS",
+      "confidence": "PROVED",
+      "evidence": [
+        "security-ev-e8d3221e94ae51f6"
+      ]
+    },
+    {
+      "edge_id": "failure-edge-e5c6c1ea1dbb15e5",
+      "failure_id": "failure-ca311f6d8bcad19c",
+      "snapshot_id": "snapshot-0005",
+      "source": "DETECTION",
+      "target": "CALLER",
+      "type": "PROPAGATES_TO",
+      "confidence": "SUPPORTED",
+      "evidence": [
+        "security-ev-e8d3221e94ae51f6"
+      ]
+    },
+    {
+      "edge_id": "failure-edge-58d92df1d2add7b0",
+      "failure_id": "failure-ca311f6d8bcad19c",
+      "snapshot_id": "snapshot-0005",
+      "source": "STOP_BOUNDARY_NOT_PROVED",
+      "target": "RECOVERY_PATH",
+      "type": "ENABLES_PATH",
+      "confidence": "SUPPORTED",
+      "evidence": [
+        "security-ev-e8d3221e94ae51f6"
+      ]
+    },
+    {
+      "edge_id": "failure-edge-5e44b2e86c64af19",
+      "failure_id": "failure-5b914dc5c16d1c8a",
+      "snapshot_id": "snapshot-0005",
+      "source": "FAILURE_SOURCE",
+      "target": "DETECTION",
+      "type": "TRIGGERS",
+      "confidence": "PROVED",
+      "evidence": [
+        "security-ev-eb9e7d49538e5225"
+      ]
+    },
+    {
+      "edge_id": "failure-edge-0660f71b51669097",
+      "failure_id": "failure-5b914dc5c16d1c8a",
+      "snapshot_id": "snapshot-0005",
+      "source": "DETECTION",
+      "target": "CALLER",
+      "type": "PROPAGATES_TO",
+      "confidence": "SUPPORTED",
+      "evidence": [
+        "security-ev-eb9e7d49538e5225"
+      ]
+    },
+    {
+      "edge_id": "failure-edge-54bbd72ff84449d7",
+      "failure_id": "failure-5432d347c901ba96",
+      "snapshot_id": "snapshot-0005",
+      "source": "FAILURE_SOURCE",
+      "target": "DETECTION",
+      "type": "TRIGGERS",
+      "confidence": "PROVED",
+      "evidence": [
+        "security-ev-4d4b8b882716017b"
+      ]
+    },
+    {
+      "edge_id": "failure-edge-cd24adfab27d3864",
+      "failure_id": "failure-5432d347c901ba96",
+      "snapshot_id": "snapshot-0005",
+      "source": "DETECTION",
+      "target": "CALLER",
+      "type": "PROPAGATES_TO",
+      "confidence": "SUPPORTED",
+      "evidence": [
+        "security-ev-4d4b8b882716017b"
+      ]
+    },
+    {
+      "edge_id": "failure-edge-53e1b0f5bb57d257",
+      "failure_id": "failure-a533f5a63df5c0bd",
+      "snapshot_id": "snapshot-0005",
+      "source": "FAILURE_SOURCE",
+      "target": "DETECTION",
+      "type": "TRIGGERS",
+      "confidence": "PROVED",
+      "evidence": [
+        "security-ev-47c3b73e9986039d"
+      ]
+    },
+    {
+      "edge_id": "failure-edge-3fdc0ff2d99a5426",
+      "failure_id": "failure-a533f5a63df5c0bd",
+      "snapshot_id": "snapshot-0005",
+      "source": "DETECTION",
+      "target": "OPERATION_LOCAL",
+      "type": "HANDLED_AT",
+      "confidence": "SUPPORTED",
+      "evidence": [
+        "security-ev-47c3b73e9986039d"
+      ]
+    },
+    {
+      "edge_id": "failure-edge-65b275dc0ca2583f",
+      "failure_id": "failure-a533f5a63df5c0bd",
+      "snapshot_id": "snapshot-0005",
+      "source": "OPERATION_LOCAL",
+      "target": "RECOVERY_PATH",
+      "type": "ENABLES_PATH",
+      "confidence": "SUPPORTED",
+      "evidence": [
+        "security-ev-47c3b73e9986039d"
+      ]
+    },
+    {
+      "edge_id": "failure-edge-bde964b9dd77ab43",
+      "failure_id": "failure-be33c52501b4f1af",
+      "snapshot_id": "snapshot-0005",
+      "source": "FAILURE_SOURCE",
+      "target": "DETECTION",
+      "type": "TRIGGERS",
+      "confidence": "PROVED",
+      "evidence": [
+        "security-ev-1346929761a5141d"
+      ]
+    },
+    {
+      "edge_id": "failure-edge-84ee8a0f2607dce4",
+      "failure_id": "failure-be33c52501b4f1af",
+      "snapshot_id": "snapshot-0005",
+      "source": "DETECTION",
+      "target": "CANDIDATE_WIDE",
+      "type": "HANDLED_AT",
+      "confidence": "SUPPORTED",
+      "evidence": [
+        "security-ev-1346929761a5141d"
+      ]
+    },
+    {
+      "edge_id": "failure-edge-97cdc5caf6c9aaf1",
+      "failure_id": "failure-be33c52501b4f1af",
+      "snapshot_id": "snapshot-0005",
+      "source": "CANDIDATE_WIDE",
+      "target": "RECOVERY_PATH",
+      "type": "ENABLES_PATH",
+      "confidence": "SUPPORTED",
+      "evidence": [
+        "security-ev-1346929761a5141d"
+      ]
+    },
+    {
+      "edge_id": "failure-edge-731dba19e5743144",
+      "failure_id": "failure-2442356daf4a5ff3",
+      "snapshot_id": "snapshot-0005",
+      "source": "FAILURE_SOURCE",
+      "target": "DETECTION",
+      "type": "TRIGGERS",
+      "confidence": "PROVED",
+      "evidence": [
+        "security-ev-f875723dd7182e84"
+      ]
+    },
+    {
+      "edge_id": "failure-edge-6ae4ed86026ed1d0",
+      "failure_id": "failure-2442356daf4a5ff3",
+      "snapshot_id": "snapshot-0005",
+      "source": "DETECTION",
+      "target": "OPERATION_LOCAL",
+      "type": "HANDLED_AT",
+      "confidence": "SUPPORTED",
+      "evidence": [
+        "security-ev-f875723dd7182e84"
+      ]
+    },
+    {
+      "edge_id": "failure-edge-d219dcd012de84a2",
+      "failure_id": "failure-f3ab6f7308892521",
+      "snapshot_id": "snapshot-0006",
+      "source": "FAILURE_SOURCE",
+      "target": "DETECTION",
+      "type": "TRIGGERS",
+      "confidence": "PROVED",
+      "evidence": [
+        "security-ev-50d55f3a25cc1fe2"
+      ]
+    },
+    {
+      "edge_id": "failure-edge-50adda1577027aa1",
+      "failure_id": "failure-f3ab6f7308892521",
+      "snapshot_id": "snapshot-0006",
+      "source": "DETECTION",
+      "target": "OPERATION_LOCAL",
+      "type": "HANDLED_AT",
+      "confidence": "SUPPORTED",
+      "evidence": [
+        "security-ev-50d55f3a25cc1fe2"
+      ]
+    },
+    {
+      "edge_id": "failure-edge-83e06abe46d7fe7b",
+      "failure_id": "failure-f3ab6f7308892521",
+      "snapshot_id": "snapshot-0006",
+      "source": "OPERATION_LOCAL",
+      "target": "RECOVERY_PATH",
+      "type": "ENABLES_PATH",
+      "confidence": "SUPPORTED",
+      "evidence": [
+        "security-ev-50d55f3a25cc1fe2"
+      ]
+    },
+    {
+      "edge_id": "failure-edge-d8a4a58f209e4912",
+      "failure_id": "failure-eda3a7bb6c9531ca",
+      "snapshot_id": "snapshot-0006",
+      "source": "FAILURE_SOURCE",
+      "target": "DETECTION",
+      "type": "TRIGGERS",
+      "confidence": "PROVED",
+      "evidence": [
+        "security-ev-ad2979326b8e91bb"
+      ]
+    },
+    {
+      "edge_id": "failure-edge-f8835076b889f065",
+      "failure_id": "failure-eda3a7bb6c9531ca",
+      "snapshot_id": "snapshot-0006",
+      "source": "DETECTION",
+      "target": "OPERATION_LOCAL",
+      "type": "HANDLED_AT",
+      "confidence": "SUPPORTED",
+      "evidence": [
+        "security-ev-ad2979326b8e91bb"
+      ]
+    },
+    {
+      "edge_id": "failure-edge-16e75450dd89cad4",
+      "failure_id": "failure-eda3a7bb6c9531ca",
+      "snapshot_id": "snapshot-0006",
+      "source": "OPERATION_LOCAL",
+      "target": "RECOVERY_PATH",
+      "type": "ENABLES_PATH",
+      "confidence": "SUPPORTED",
+      "evidence": [
+        "security-ev-ad2979326b8e91bb"
+      ]
+    },
+    {
+      "edge_id": "failure-edge-b222fdab5569cc18",
+      "failure_id": "failure-3bb8bbd2c4d9290d",
+      "snapshot_id": "snapshot-0006",
+      "source": "FAILURE_SOURCE",
+      "target": "DETECTION",
+      "type": "TRIGGERS",
+      "confidence": "PROVED",
+      "evidence": [
+        "security-ev-fba0d372e9b84529"
+      ]
+    },
+    {
+      "edge_id": "failure-edge-d0d5577b175b9320",
+      "failure_id": "failure-3bb8bbd2c4d9290d",
+      "snapshot_id": "snapshot-0006",
+      "source": "DETECTION",
+      "target": "OPERATION_LOCAL",
+      "type": "HANDLED_AT",
+      "confidence": "SUPPORTED",
+      "evidence": [
+        "security-ev-fba0d372e9b84529"
+      ]
+    },
+    {
+      "edge_id": "failure-edge-4ea9df614af686ba",
+      "failure_id": "failure-8021b6b447a931b1",
+      "snapshot_id": "snapshot-0006",
+      "source": "FAILURE_SOURCE",
+      "target": "DETECTION",
+      "type": "TRIGGERS",
+      "confidence": "PROVED",
+      "evidence": [
+        "security-ev-9423be634285ec26"
+      ]
+    },
+    {
+      "edge_id": "failure-edge-8d063e6786d13733",
+      "failure_id": "failure-8021b6b447a931b1",
+      "snapshot_id": "snapshot-0006",
+      "source": "DETECTION",
+      "target": "OPERATION_LOCAL",
+      "type": "HANDLED_AT",
+      "confidence": "SUPPORTED",
+      "evidence": [
+        "security-ev-9423be634285ec26"
+      ]
+    },
+    {
+      "edge_id": "failure-edge-bde892fed198ca71",
+      "failure_id": "failure-5a0c191058f2d0c0",
+      "snapshot_id": "snapshot-0006",
+      "source": "FAILURE_SOURCE",
+      "target": "DETECTION",
+      "type": "TRIGGERS",
+      "confidence": "PROVED",
+      "evidence": [
+        "security-ev-7c3aecaa2a3311ee"
+      ]
+    },
+    {
+      "edge_id": "failure-edge-a01db0a15406e8a8",
+      "failure_id": "failure-5a0c191058f2d0c0",
+      "snapshot_id": "snapshot-0006",
+      "source": "DETECTION",
+      "target": "OPERATION_LOCAL",
+      "type": "HANDLED_AT",
+      "confidence": "SUPPORTED",
+      "evidence": [
+        "security-ev-7c3aecaa2a3311ee"
+      ]
+    },
+    {
+      "edge_id": "failure-edge-b097c176cfa914da",
+      "failure_id": "failure-5a0c191058f2d0c0",
+      "snapshot_id": "snapshot-0006",
+      "source": "OPERATION_LOCAL",
+      "target": "RECOVERY_PATH",
+      "type": "ENABLES_PATH",
+      "confidence": "SUPPORTED",
+      "evidence": [
+        "security-ev-7c3aecaa2a3311ee"
+      ]
+    },
+    {
+      "edge_id": "failure-edge-80c034a8834c25ea",
+      "failure_id": "failure-3eb1aa48a691bb48",
+      "snapshot_id": "snapshot-0006",
+      "source": "FAILURE_SOURCE",
+      "target": "DETECTION",
+      "type": "TRIGGERS",
+      "confidence": "PROVED",
+      "evidence": [
+        "security-ev-d9756b313b0bdfeb"
+      ]
+    },
+    {
+      "edge_id": "failure-edge-2046c48228c8fd36",
+      "failure_id": "failure-3eb1aa48a691bb48",
+      "snapshot_id": "snapshot-0006",
+      "source": "DETECTION",
+      "target": "CALLER",
+      "type": "PROPAGATES_TO",
+      "confidence": "SUPPORTED",
+      "evidence": [
+        "security-ev-d9756b313b0bdfeb"
+      ]
+    },
+    {
+      "edge_id": "failure-edge-22474edd84f688dc",
+      "failure_id": "failure-3eb1aa48a691bb48",
+      "snapshot_id": "snapshot-0006",
+      "source": "STOP_BOUNDARY_NOT_PROVED",
+      "target": "RECOVERY_PATH",
+      "type": "ENABLES_PATH",
+      "confidence": "SUPPORTED",
+      "evidence": [
+        "security-ev-d9756b313b0bdfeb"
+      ]
+    },
+    {
+      "edge_id": "failure-edge-ff5b6e9fcd813d71",
+      "failure_id": "failure-1b8ece61c36145d3",
+      "snapshot_id": "snapshot-0006",
+      "source": "FAILURE_SOURCE",
+      "target": "DETECTION",
+      "type": "TRIGGERS",
+      "confidence": "PROVED",
+      "evidence": [
+        "security-ev-4f518ea0e96c746f"
+      ]
+    },
+    {
+      "edge_id": "failure-edge-b483b504b0679c41",
+      "failure_id": "failure-1b8ece61c36145d3",
+      "snapshot_id": "snapshot-0006",
+      "source": "DETECTION",
+      "target": "CALLER",
+      "type": "PROPAGATES_TO",
+      "confidence": "SUPPORTED",
+      "evidence": [
+        "security-ev-4f518ea0e96c746f"
+      ]
+    },
+    {
+      "edge_id": "failure-edge-86730c4eaba6a49d",
+      "failure_id": "failure-1b8ece61c36145d3",
+      "snapshot_id": "snapshot-0006",
+      "source": "STOP_BOUNDARY_NOT_PROVED",
+      "target": "RECOVERY_PATH",
+      "type": "ENABLES_PATH",
+      "confidence": "SUPPORTED",
+      "evidence": [
+        "security-ev-4f518ea0e96c746f"
+      ]
+    },
+    {
+      "edge_id": "failure-edge-cdb609dae2deb521",
+      "failure_id": "failure-019368f4981c6f88",
+      "snapshot_id": "snapshot-0006",
+      "source": "FAILURE_SOURCE",
+      "target": "DETECTION",
+      "type": "TRIGGERS",
+      "confidence": "PROVED",
+      "evidence": [
+        "security-ev-c964527405a755b3"
+      ]
+    },
+    {
+      "edge_id": "failure-edge-bc9e64d3d61e56ae",
+      "failure_id": "failure-019368f4981c6f88",
+      "snapshot_id": "snapshot-0006",
+      "source": "DETECTION",
+      "target": "CALLER",
+      "type": "PROPAGATES_TO",
+      "confidence": "SUPPORTED",
+      "evidence": [
+        "security-ev-c964527405a755b3"
+      ]
+    },
+    {
+      "edge_id": "failure-edge-eb0f24ad7893b73f",
+      "failure_id": "failure-38912beb20d96be1",
+      "snapshot_id": "snapshot-0006",
+      "source": "FAILURE_SOURCE",
+      "target": "DETECTION",
+      "type": "TRIGGERS",
+      "confidence": "PROVED",
+      "evidence": [
+        "security-ev-d500dd972d3fe3dc"
+      ]
+    },
+    {
+      "edge_id": "failure-edge-dd86cc53610d2e48",
+      "failure_id": "failure-38912beb20d96be1",
+      "snapshot_id": "snapshot-0006",
+      "source": "DETECTION",
+      "target": "CALLER",
+      "type": "PROPAGATES_TO",
+      "confidence": "SUPPORTED",
+      "evidence": [
+        "security-ev-d500dd972d3fe3dc"
+      ]
+    },
+    {
+      "edge_id": "failure-edge-09d744d9744e2a63",
+      "failure_id": "failure-93dbfe85eade9fed",
+      "snapshot_id": "snapshot-0006",
+      "source": "FAILURE_SOURCE",
+      "target": "DETECTION",
+      "type": "TRIGGERS",
+      "confidence": "PROVED",
+      "evidence": [
+        "security-ev-6ddd02322352c69c"
+      ]
+    },
+    {
+      "edge_id": "failure-edge-fec0bf5f476ea311",
+      "failure_id": "failure-93dbfe85eade9fed",
+      "snapshot_id": "snapshot-0006",
+      "source": "DETECTION",
+      "target": "OPERATION_LOCAL",
+      "type": "HANDLED_AT",
+      "confidence": "SUPPORTED",
+      "evidence": [
+        "security-ev-6ddd02322352c69c"
+      ]
+    },
+    {
+      "edge_id": "failure-edge-cb6822af47518ca3",
+      "failure_id": "failure-93dbfe85eade9fed",
+      "snapshot_id": "snapshot-0006",
+      "source": "OPERATION_LOCAL",
+      "target": "RECOVERY_PATH",
+      "type": "ENABLES_PATH",
+      "confidence": "SUPPORTED",
+      "evidence": [
+        "security-ev-6ddd02322352c69c"
+      ]
+    },
+    {
+      "edge_id": "failure-edge-aa9f6a5cdc497ad9",
+      "failure_id": "failure-5fba34f5424e25df",
+      "snapshot_id": "snapshot-0006",
+      "source": "FAILURE_SOURCE",
+      "target": "DETECTION",
+      "type": "TRIGGERS",
+      "confidence": "PROVED",
+      "evidence": [
+        "security-ev-72e1f963a4696ba3"
+      ]
+    },
+    {
+      "edge_id": "failure-edge-f0ebd80c2321eebe",
+      "failure_id": "failure-5fba34f5424e25df",
+      "snapshot_id": "snapshot-0006",
+      "source": "DETECTION",
+      "target": "OPERATION_LOCAL",
+      "type": "HANDLED_AT",
+      "confidence": "SUPPORTED",
+      "evidence": [
+        "security-ev-72e1f963a4696ba3"
+      ]
+    },
+    {
+      "edge_id": "failure-edge-a85e8fcb7b1a4f95",
+      "failure_id": "failure-5fba34f5424e25df",
+      "snapshot_id": "snapshot-0006",
+      "source": "OPERATION_LOCAL",
+      "target": "RECOVERY_PATH",
+      "type": "ENABLES_PATH",
+      "confidence": "SUPPORTED",
+      "evidence": [
+        "security-ev-72e1f963a4696ba3"
+      ]
+    },
+    {
+      "edge_id": "failure-edge-f4986f1a290e7e37",
+      "failure_id": "failure-c35514a91b870c3c",
+      "snapshot_id": "snapshot-0006",
+      "source": "FAILURE_SOURCE",
+      "target": "DETECTION",
+      "type": "TRIGGERS",
+      "confidence": "PROVED",
+      "evidence": [
+        "security-ev-a3b3149bdbd52f96"
+      ]
+    },
+    {
+      "edge_id": "failure-edge-ba0f5792974e96ab",
+      "failure_id": "failure-c35514a91b870c3c",
+      "snapshot_id": "snapshot-0006",
+      "source": "DETECTION",
+      "target": "OPERATION_LOCAL",
+      "type": "HANDLED_AT",
+      "confidence": "SUPPORTED",
+      "evidence": [
+        "security-ev-a3b3149bdbd52f96"
+      ]
+    },
+    {
+      "edge_id": "failure-edge-7b12afde47a8fd79",
+      "failure_id": "failure-c35514a91b870c3c",
+      "snapshot_id": "snapshot-0006",
+      "source": "OPERATION_LOCAL",
+      "target": "RECOVERY_PATH",
+      "type": "ENABLES_PATH",
+      "confidence": "SUPPORTED",
+      "evidence": [
+        "security-ev-a3b3149bdbd52f96"
+      ]
+    },
+    {
+      "edge_id": "failure-edge-c0edf4cee7c18be3",
+      "failure_id": "failure-c804cb5b3275ba6d",
+      "snapshot_id": "snapshot-0006",
+      "source": "FAILURE_SOURCE",
+      "target": "DETECTION",
+      "type": "TRIGGERS",
+      "confidence": "PROVED",
+      "evidence": [
+        "security-ev-c94cb5d4760ccebe"
+      ]
+    },
+    {
+      "edge_id": "failure-edge-e6648df58bd024d2",
+      "failure_id": "failure-c804cb5b3275ba6d",
+      "snapshot_id": "snapshot-0006",
+      "source": "DETECTION",
+      "target": "OPERATION_LOCAL",
+      "type": "HANDLED_AT",
+      "confidence": "SUPPORTED",
+      "evidence": [
+        "security-ev-c94cb5d4760ccebe"
+      ]
+    },
+    {
+      "edge_id": "failure-edge-307edc432a16327b",
+      "failure_id": "failure-c804cb5b3275ba6d",
+      "snapshot_id": "snapshot-0006",
+      "source": "OPERATION_LOCAL",
+      "target": "RECOVERY_PATH",
+      "type": "ENABLES_PATH",
+      "confidence": "SUPPORTED",
+      "evidence": [
+        "security-ev-c94cb5d4760ccebe"
+      ]
+    },
+    {
+      "edge_id": "failure-edge-2cafdec63407e0f3",
+      "failure_id": "failure-41b4e50edfa18dd0",
+      "snapshot_id": "snapshot-0006",
+      "source": "FAILURE_SOURCE",
+      "target": "DETECTION",
+      "type": "TRIGGERS",
+      "confidence": "PROVED",
+      "evidence": [
+        "security-ev-8fb08357ee4eef73"
+      ]
+    },
+    {
+      "edge_id": "failure-edge-222b7cdc8d4fd284",
+      "failure_id": "failure-41b4e50edfa18dd0",
+      "snapshot_id": "snapshot-0006",
+      "source": "DETECTION",
+      "target": "OPERATION_LOCAL",
+      "type": "HANDLED_AT",
+      "confidence": "SUPPORTED",
+      "evidence": [
+        "security-ev-8fb08357ee4eef73"
+      ]
+    },
+    {
+      "edge_id": "failure-edge-61060917831271ea",
+      "failure_id": "failure-41b4e50edfa18dd0",
+      "snapshot_id": "snapshot-0006",
+      "source": "OPERATION_LOCAL",
+      "target": "RECOVERY_PATH",
+      "type": "ENABLES_PATH",
+      "confidence": "SUPPORTED",
+      "evidence": [
+        "security-ev-8fb08357ee4eef73"
+      ]
+    },
+    {
+      "edge_id": "failure-edge-80f1defc4fbe740c",
+      "failure_id": "failure-2119e9cd17436ef2",
+      "snapshot_id": "snapshot-0006",
+      "source": "FAILURE_SOURCE",
+      "target": "DETECTION",
+      "type": "TRIGGERS",
+      "confidence": "PROVED",
+      "evidence": [
+        "security-ev-0c08681555390146"
+      ]
+    },
+    {
+      "edge_id": "failure-edge-818c228174a41ec1",
+      "failure_id": "failure-2119e9cd17436ef2",
+      "snapshot_id": "snapshot-0006",
+      "source": "DETECTION",
+      "target": "STOP_BOUNDARY_NOT_PROVED",
+      "type": "HANDLED_AT",
+      "confidence": "SUPPORTED",
+      "evidence": [
+        "security-ev-0c08681555390146"
+      ]
+    },
+    {
+      "edge_id": "failure-edge-8b9c9c3350b71bf5",
+      "failure_id": "failure-1991dd5bdc6fac79",
+      "snapshot_id": "snapshot-0006",
+      "source": "FAILURE_SOURCE",
+      "target": "DETECTION",
+      "type": "TRIGGERS",
+      "confidence": "PROVED",
+      "evidence": [
+        "security-ev-2494dffb56b1338c"
+      ]
+    },
+    {
+      "edge_id": "failure-edge-fcd930ca07e1facc",
+      "failure_id": "failure-1991dd5bdc6fac79",
+      "snapshot_id": "snapshot-0006",
+      "source": "DETECTION",
+      "target": "STOP_BOUNDARY_NOT_PROVED",
+      "type": "HANDLED_AT",
+      "confidence": "SUPPORTED",
+      "evidence": [
+        "security-ev-2494dffb56b1338c"
+      ]
+    },
+    {
+      "edge_id": "failure-edge-52a8a6572679c7bb",
+      "failure_id": "failure-fd7068638ffc0624",
+      "snapshot_id": "snapshot-0006",
+      "source": "FAILURE_SOURCE",
+      "target": "DETECTION",
+      "type": "TRIGGERS",
+      "confidence": "PROVED",
+      "evidence": [
+        "security-ev-cad68c2f8dede196"
+      ]
+    },
+    {
+      "edge_id": "failure-edge-9d75ab2456b800d9",
+      "failure_id": "failure-fd7068638ffc0624",
+      "snapshot_id": "snapshot-0006",
+      "source": "DETECTION",
+      "target": "CANDIDATE_WIDE",
+      "type": "HANDLED_AT",
+      "confidence": "SUPPORTED",
+      "evidence": [
+        "security-ev-cad68c2f8dede196"
+      ]
+    },
+    {
+      "edge_id": "failure-edge-99e11f7a45eb3d71",
+      "failure_id": "failure-fd7068638ffc0624",
+      "snapshot_id": "snapshot-0006",
+      "source": "CANDIDATE_WIDE",
+      "target": "RECOVERY_PATH",
+      "type": "ENABLES_PATH",
+      "confidence": "SUPPORTED",
+      "evidence": [
+        "security-ev-cad68c2f8dede196"
+      ]
+    },
+    {
+      "edge_id": "failure-edge-5e31eab04c135515",
+      "failure_id": "failure-385f311348d869a3",
+      "snapshot_id": "snapshot-0006",
+      "source": "FAILURE_SOURCE",
+      "target": "DETECTION",
+      "type": "TRIGGERS",
+      "confidence": "PROVED",
+      "evidence": [
+        "security-ev-d43a32c192003104"
+      ]
+    },
+    {
+      "edge_id": "failure-edge-eaa3afb5554ed924",
+      "failure_id": "failure-385f311348d869a3",
+      "snapshot_id": "snapshot-0006",
+      "source": "DETECTION",
+      "target": "OPERATION_LOCAL",
+      "type": "HANDLED_AT",
+      "confidence": "SUPPORTED",
+      "evidence": [
+        "security-ev-d43a32c192003104"
+      ]
+    },
+    {
+      "edge_id": "failure-edge-ffedbbf0b8e62cc6",
+      "failure_id": "failure-19a1966812bd54f3",
+      "snapshot_id": "snapshot-0008",
+      "source": "FAILURE_SOURCE",
+      "target": "DETECTION",
+      "type": "TRIGGERS",
+      "confidence": "PROVED",
+      "evidence": [
+        "security-ev-b759cadcdbf70f45"
+      ]
+    },
+    {
+      "edge_id": "failure-edge-3a9e17e4528c575b",
+      "failure_id": "failure-19a1966812bd54f3",
+      "snapshot_id": "snapshot-0008",
+      "source": "DETECTION",
+      "target": "OPERATION_LOCAL",
+      "type": "HANDLED_AT",
+      "confidence": "SUPPORTED",
+      "evidence": [
+        "security-ev-b759cadcdbf70f45"
+      ]
+    },
+    {
+      "edge_id": "failure-edge-c87c96e78813c696",
+      "failure_id": "failure-19a1966812bd54f3",
+      "snapshot_id": "snapshot-0008",
+      "source": "OPERATION_LOCAL",
+      "target": "RECOVERY_PATH",
+      "type": "ENABLES_PATH",
+      "confidence": "SUPPORTED",
+      "evidence": [
+        "security-ev-b759cadcdbf70f45"
+      ]
+    },
+    {
+      "edge_id": "failure-edge-ae663162b63bdb85",
+      "failure_id": "failure-527507bf03ba512f",
+      "snapshot_id": "snapshot-0008",
+      "source": "FAILURE_SOURCE",
+      "target": "DETECTION",
+      "type": "TRIGGERS",
+      "confidence": "PROVED",
+      "evidence": [
+        "security-ev-7d40670f2145698b"
+      ]
+    },
+    {
+      "edge_id": "failure-edge-feccec65125568d6",
+      "failure_id": "failure-527507bf03ba512f",
+      "snapshot_id": "snapshot-0008",
+      "source": "DETECTION",
+      "target": "OPERATION_LOCAL",
+      "type": "HANDLED_AT",
+      "confidence": "SUPPORTED",
+      "evidence": [
+        "security-ev-7d40670f2145698b"
+      ]
+    },
+    {
+      "edge_id": "failure-edge-e654535d141326eb",
+      "failure_id": "failure-527507bf03ba512f",
+      "snapshot_id": "snapshot-0008",
+      "source": "OPERATION_LOCAL",
+      "target": "RECOVERY_PATH",
+      "type": "ENABLES_PATH",
+      "confidence": "SUPPORTED",
+      "evidence": [
+        "security-ev-7d40670f2145698b"
+      ]
+    },
+    {
+      "edge_id": "failure-edge-8d341a12ee9212b1",
+      "failure_id": "failure-54fd0d100cda3d3b",
+      "snapshot_id": "snapshot-0008",
+      "source": "FAILURE_SOURCE",
+      "target": "DETECTION",
+      "type": "TRIGGERS",
+      "confidence": "PROVED",
+      "evidence": [
+        "security-ev-4444fafb643822b0"
+      ]
+    },
+    {
+      "edge_id": "failure-edge-0cdc622c5751e501",
+      "failure_id": "failure-54fd0d100cda3d3b",
+      "snapshot_id": "snapshot-0008",
+      "source": "DETECTION",
+      "target": "OPERATION_LOCAL",
+      "type": "HANDLED_AT",
+      "confidence": "SUPPORTED",
+      "evidence": [
+        "security-ev-4444fafb643822b0"
+      ]
+    },
+    {
+      "edge_id": "failure-edge-e535aa23a08c5357",
+      "failure_id": "failure-54fd0d100cda3d3b",
+      "snapshot_id": "snapshot-0008",
+      "source": "OPERATION_LOCAL",
+      "target": "RECOVERY_PATH",
+      "type": "ENABLES_PATH",
+      "confidence": "SUPPORTED",
+      "evidence": [
+        "security-ev-4444fafb643822b0"
+      ]
+    },
+    {
+      "edge_id": "failure-edge-110b4c7a3498565b",
+      "failure_id": "failure-84529c1927863232",
+      "snapshot_id": "snapshot-0008",
+      "source": "FAILURE_SOURCE",
+      "target": "DETECTION",
+      "type": "TRIGGERS",
+      "confidence": "PROVED",
+      "evidence": [
+        "security-ev-ac339e5406a0eb94"
+      ]
+    },
+    {
+      "edge_id": "failure-edge-b2a08d444000bfb4",
+      "failure_id": "failure-84529c1927863232",
+      "snapshot_id": "snapshot-0008",
+      "source": "DETECTION",
+      "target": "OPERATION_LOCAL",
+      "type": "HANDLED_AT",
+      "confidence": "SUPPORTED",
+      "evidence": [
+        "security-ev-ac339e5406a0eb94"
+      ]
+    },
+    {
+      "edge_id": "failure-edge-5bc7a260841484eb",
+      "failure_id": "failure-84529c1927863232",
+      "snapshot_id": "snapshot-0008",
+      "source": "OPERATION_LOCAL",
+      "target": "RECOVERY_PATH",
+      "type": "ENABLES_PATH",
+      "confidence": "SUPPORTED",
+      "evidence": [
+        "security-ev-ac339e5406a0eb94"
+      ]
+    },
+    {
+      "edge_id": "failure-edge-793882906390feee",
+      "failure_id": "failure-0654abc717e76937",
+      "snapshot_id": "snapshot-0008",
+      "source": "FAILURE_SOURCE",
+      "target": "DETECTION",
+      "type": "TRIGGERS",
+      "confidence": "PROVED",
+      "evidence": [
+        "security-ev-c284b644a39df9a2"
+      ]
+    },
+    {
+      "edge_id": "failure-edge-380c6e8d2b139219",
+      "failure_id": "failure-0654abc717e76937",
+      "snapshot_id": "snapshot-0008",
+      "source": "DETECTION",
+      "target": "OPERATION_LOCAL",
+      "type": "HANDLED_AT",
+      "confidence": "SUPPORTED",
+      "evidence": [
+        "security-ev-c284b644a39df9a2"
+      ]
+    },
+    {
+      "edge_id": "failure-edge-50ae8354790bb645",
+      "failure_id": "failure-0654abc717e76937",
+      "snapshot_id": "snapshot-0008",
+      "source": "OPERATION_LOCAL",
+      "target": "RECOVERY_PATH",
+      "type": "ENABLES_PATH",
+      "confidence": "SUPPORTED",
+      "evidence": [
+        "security-ev-c284b644a39df9a2"
+      ]
+    },
+    {
+      "edge_id": "failure-edge-9671214682966292",
+      "failure_id": "failure-3ea57acb7cac5340",
+      "snapshot_id": "snapshot-0008",
+      "source": "FAILURE_SOURCE",
+      "target": "DETECTION",
+      "type": "TRIGGERS",
+      "confidence": "PROVED",
+      "evidence": [
+        "security-ev-d39b7991d4a43cf7"
+      ]
+    },
+    {
+      "edge_id": "failure-edge-9ebdcab3877da7cb",
+      "failure_id": "failure-3ea57acb7cac5340",
+      "snapshot_id": "snapshot-0008",
+      "source": "DETECTION",
+      "target": "OPERATION_LOCAL",
+      "type": "HANDLED_AT",
+      "confidence": "SUPPORTED",
+      "evidence": [
+        "security-ev-d39b7991d4a43cf7"
+      ]
+    },
+    {
+      "edge_id": "failure-edge-5bf3c605078337ad",
+      "failure_id": "failure-6fbd5dcf5ef7f361",
+      "snapshot_id": "snapshot-0008",
+      "source": "FAILURE_SOURCE",
+      "target": "DETECTION",
+      "type": "TRIGGERS",
+      "confidence": "PROVED",
+      "evidence": [
+        "security-ev-61961c48a02bed55"
+      ]
+    },
+    {
+      "edge_id": "failure-edge-00e69dd3d6c3bfe7",
+      "failure_id": "failure-6fbd5dcf5ef7f361",
+      "snapshot_id": "snapshot-0008",
+      "source": "DETECTION",
+      "target": "OPERATION_LOCAL",
+      "type": "HANDLED_AT",
+      "confidence": "SUPPORTED",
+      "evidence": [
+        "security-ev-61961c48a02bed55"
+      ]
+    },
+    {
+      "edge_id": "failure-edge-ec86cc2e8ec4ef58",
+      "failure_id": "failure-73b1c9d16a74d66d",
+      "snapshot_id": "snapshot-0008",
+      "source": "FAILURE_SOURCE",
+      "target": "DETECTION",
+      "type": "TRIGGERS",
+      "confidence": "PROVED",
+      "evidence": [
+        "security-ev-bd419689d6722640"
+      ]
+    },
+    {
+      "edge_id": "failure-edge-cdcf9a9c28928be9",
+      "failure_id": "failure-73b1c9d16a74d66d",
+      "snapshot_id": "snapshot-0008",
+      "source": "DETECTION",
+      "target": "OPERATION_LOCAL",
+      "type": "HANDLED_AT",
+      "confidence": "SUPPORTED",
+      "evidence": [
+        "security-ev-bd419689d6722640"
+      ]
+    },
+    {
+      "edge_id": "failure-edge-2b56b5e357fdbe0a",
+      "failure_id": "failure-d19e780e159293ad",
+      "snapshot_id": "snapshot-0008",
+      "source": "FAILURE_SOURCE",
+      "target": "DETECTION",
+      "type": "TRIGGERS",
+      "confidence": "PROVED",
+      "evidence": [
+        "security-ev-635bd37dc0747a2f"
+      ]
+    },
+    {
+      "edge_id": "failure-edge-aa4fa8f4dd22ef54",
+      "failure_id": "failure-d19e780e159293ad",
+      "snapshot_id": "snapshot-0008",
+      "source": "DETECTION",
+      "target": "OPERATION_LOCAL",
+      "type": "HANDLED_AT",
+      "confidence": "SUPPORTED",
+      "evidence": [
+        "security-ev-635bd37dc0747a2f"
+      ]
+    },
+    {
+      "edge_id": "failure-edge-6282f7f6bba9e1a8",
+      "failure_id": "failure-d19e780e159293ad",
+      "snapshot_id": "snapshot-0008",
+      "source": "OPERATION_LOCAL",
+      "target": "RECOVERY_PATH",
+      "type": "ENABLES_PATH",
+      "confidence": "SUPPORTED",
+      "evidence": [
+        "security-ev-635bd37dc0747a2f"
+      ]
+    },
+    {
+      "edge_id": "failure-edge-f7a6cc6f4732bc30",
+      "failure_id": "failure-fe3e1038caa881e0",
+      "snapshot_id": "snapshot-0008",
+      "source": "FAILURE_SOURCE",
+      "target": "DETECTION",
+      "type": "TRIGGERS",
+      "confidence": "PROVED",
+      "evidence": [
+        "security-ev-ab0d3829214a8ab1"
+      ]
+    },
+    {
+      "edge_id": "failure-edge-0c8356327c956ff7",
+      "failure_id": "failure-fe3e1038caa881e0",
+      "snapshot_id": "snapshot-0008",
+      "source": "DETECTION",
+      "target": "CALLER",
+      "type": "PROPAGATES_TO",
+      "confidence": "SUPPORTED",
+      "evidence": [
+        "security-ev-ab0d3829214a8ab1"
+      ]
+    },
+    {
+      "edge_id": "failure-edge-f8a5db864d2621db",
+      "failure_id": "failure-fe3e1038caa881e0",
+      "snapshot_id": "snapshot-0008",
+      "source": "STOP_BOUNDARY_NOT_PROVED",
+      "target": "RECOVERY_PATH",
+      "type": "ENABLES_PATH",
+      "confidence": "SUPPORTED",
+      "evidence": [
+        "security-ev-ab0d3829214a8ab1"
+      ]
+    },
+    {
+      "edge_id": "failure-edge-94f3add84a0e5199",
+      "failure_id": "failure-c38cefc90275860c",
+      "snapshot_id": "snapshot-0008",
+      "source": "FAILURE_SOURCE",
+      "target": "DETECTION",
+      "type": "TRIGGERS",
+      "confidence": "PROVED",
+      "evidence": [
+        "security-ev-b53b18113680d363"
+      ]
+    },
+    {
+      "edge_id": "failure-edge-401a4e6c964369c3",
+      "failure_id": "failure-c38cefc90275860c",
+      "snapshot_id": "snapshot-0008",
+      "source": "DETECTION",
+      "target": "CALLER",
+      "type": "PROPAGATES_TO",
+      "confidence": "SUPPORTED",
+      "evidence": [
+        "security-ev-b53b18113680d363"
+      ]
+    },
+    {
+      "edge_id": "failure-edge-68364cebe4beb93b",
+      "failure_id": "failure-c38cefc90275860c",
+      "snapshot_id": "snapshot-0008",
+      "source": "STOP_BOUNDARY_NOT_PROVED",
+      "target": "RECOVERY_PATH",
+      "type": "ENABLES_PATH",
+      "confidence": "SUPPORTED",
+      "evidence": [
+        "security-ev-b53b18113680d363"
+      ]
+    },
+    {
+      "edge_id": "failure-edge-d35901cba573affb",
+      "failure_id": "failure-d8b7db4394ce33a4",
+      "snapshot_id": "snapshot-0008",
+      "source": "FAILURE_SOURCE",
+      "target": "DETECTION",
+      "type": "TRIGGERS",
+      "confidence": "PROVED",
+      "evidence": [
+        "security-ev-58d3e547d9b0f37c"
+      ]
+    },
+    {
+      "edge_id": "failure-edge-ed2a83216917d1fa",
+      "failure_id": "failure-d8b7db4394ce33a4",
+      "snapshot_id": "snapshot-0008",
+      "source": "DETECTION",
+      "target": "CALLER",
+      "type": "PROPAGATES_TO",
+      "confidence": "SUPPORTED",
+      "evidence": [
+        "security-ev-58d3e547d9b0f37c"
+      ]
+    },
+    {
+      "edge_id": "failure-edge-7b0b4cbdbd5c3259",
+      "failure_id": "failure-fdef9430098be1a1",
+      "snapshot_id": "snapshot-0008",
+      "source": "FAILURE_SOURCE",
+      "target": "DETECTION",
+      "type": "TRIGGERS",
+      "confidence": "PROVED",
+      "evidence": [
+        "security-ev-27ad5dddc0328ae7"
+      ]
+    },
+    {
+      "edge_id": "failure-edge-d94a453fad4506bc",
+      "failure_id": "failure-fdef9430098be1a1",
+      "snapshot_id": "snapshot-0008",
+      "source": "DETECTION",
+      "target": "CALLER",
+      "type": "PROPAGATES_TO",
+      "confidence": "SUPPORTED",
+      "evidence": [
+        "security-ev-27ad5dddc0328ae7"
+      ]
+    },
+    {
+      "edge_id": "failure-edge-d3fa9b95d79713aa",
+      "failure_id": "failure-717fe2188654282d",
+      "snapshot_id": "snapshot-0008",
+      "source": "FAILURE_SOURCE",
+      "target": "DETECTION",
+      "type": "TRIGGERS",
+      "confidence": "PROVED",
+      "evidence": [
+        "security-ev-22b2aacf73799079"
+      ]
+    },
+    {
+      "edge_id": "failure-edge-18fc6ae227926101",
+      "failure_id": "failure-717fe2188654282d",
+      "snapshot_id": "snapshot-0008",
+      "source": "DETECTION",
+      "target": "OPERATION_LOCAL",
+      "type": "HANDLED_AT",
+      "confidence": "SUPPORTED",
+      "evidence": [
+        "security-ev-22b2aacf73799079"
+      ]
+    },
+    {
+      "edge_id": "failure-edge-3fc2ad7d50f19e1b",
+      "failure_id": "failure-717fe2188654282d",
+      "snapshot_id": "snapshot-0008",
+      "source": "OPERATION_LOCAL",
+      "target": "RECOVERY_PATH",
+      "type": "ENABLES_PATH",
+      "confidence": "SUPPORTED",
+      "evidence": [
+        "security-ev-22b2aacf73799079"
+      ]
+    },
+    {
+      "edge_id": "failure-edge-5414a997446b489c",
+      "failure_id": "failure-b97da589b749b6c1",
+      "snapshot_id": "snapshot-0008",
+      "source": "FAILURE_SOURCE",
+      "target": "DETECTION",
+      "type": "TRIGGERS",
+      "confidence": "PROVED",
+      "evidence": [
+        "security-ev-aaa9560381e948a1"
+      ]
+    },
+    {
+      "edge_id": "failure-edge-e4ea2fb7ca3148f5",
+      "failure_id": "failure-b97da589b749b6c1",
+      "snapshot_id": "snapshot-0008",
+      "source": "DETECTION",
+      "target": "PROVIDER_WIDE",
+      "type": "HANDLED_AT",
+      "confidence": "SUPPORTED",
+      "evidence": [
+        "security-ev-aaa9560381e948a1"
+      ]
+    },
+    {
+      "edge_id": "failure-edge-b665dd65cfffc6b8",
+      "failure_id": "failure-b97da589b749b6c1",
+      "snapshot_id": "snapshot-0008",
+      "source": "PROVIDER_WIDE",
+      "target": "RECOVERY_PATH",
+      "type": "ENABLES_PATH",
+      "confidence": "SUPPORTED",
+      "evidence": [
+        "security-ev-aaa9560381e948a1"
+      ]
+    },
+    {
+      "edge_id": "failure-edge-4373c9fd50970646",
+      "failure_id": "failure-8b6827961a21630e",
+      "snapshot_id": "snapshot-0008",
+      "source": "FAILURE_SOURCE",
+      "target": "DETECTION",
+      "type": "TRIGGERS",
+      "confidence": "PROVED",
+      "evidence": [
+        "security-ev-a0674bbdc33ebc3a"
+      ]
+    },
+    {
+      "edge_id": "failure-edge-b7f649c6a0078f56",
+      "failure_id": "failure-8b6827961a21630e",
+      "snapshot_id": "snapshot-0008",
+      "source": "DETECTION",
+      "target": "OPERATION_LOCAL",
+      "type": "HANDLED_AT",
+      "confidence": "SUPPORTED",
+      "evidence": [
+        "security-ev-a0674bbdc33ebc3a"
+      ]
+    },
+    {
+      "edge_id": "failure-edge-da385fea12f7879e",
+      "failure_id": "failure-9019fbea8ea0bca3",
+      "snapshot_id": "snapshot-0008",
+      "source": "FAILURE_SOURCE",
+      "target": "DETECTION",
+      "type": "TRIGGERS",
+      "confidence": "PROVED",
+      "evidence": [
+        "security-ev-ee982601a1b9a02f"
+      ]
+    },
+    {
+      "edge_id": "failure-edge-e3ecbd985c6dd83b",
+      "failure_id": "failure-9019fbea8ea0bca3",
+      "snapshot_id": "snapshot-0008",
+      "source": "DETECTION",
+      "target": "OPERATION_LOCAL",
+      "type": "HANDLED_AT",
+      "confidence": "SUPPORTED",
+      "evidence": [
+        "security-ev-ee982601a1b9a02f"
+      ]
+    },
+    {
+      "edge_id": "failure-edge-48ca6c95c77477b3",
+      "failure_id": "failure-d06fd74fa1613039",
+      "snapshot_id": "snapshot-0008",
+      "source": "FAILURE_SOURCE",
+      "target": "DETECTION",
+      "type": "TRIGGERS",
+      "confidence": "PROVED",
+      "evidence": [
+        "security-ev-b0320bf41d9659cf"
+      ]
+    },
+    {
+      "edge_id": "failure-edge-767d3e1de0a85d40",
+      "failure_id": "failure-d06fd74fa1613039",
+      "snapshot_id": "snapshot-0008",
+      "source": "DETECTION",
+      "target": "OPERATION_LOCAL",
+      "type": "HANDLED_AT",
+      "confidence": "SUPPORTED",
+      "evidence": [
+        "security-ev-b0320bf41d9659cf"
+      ]
+    },
+    {
+      "edge_id": "failure-edge-9854514ab248d1b2",
+      "failure_id": "failure-c485a8cfc38429b1",
+      "snapshot_id": "snapshot-0008",
+      "source": "FAILURE_SOURCE",
+      "target": "DETECTION",
+      "type": "TRIGGERS",
+      "confidence": "PROVED",
+      "evidence": [
+        "security-ev-9bcfaf7e04e86dd5"
+      ]
+    },
+    {
+      "edge_id": "failure-edge-650babc797a21bfe",
+      "failure_id": "failure-c485a8cfc38429b1",
+      "snapshot_id": "snapshot-0008",
+      "source": "DETECTION",
+      "target": "OPERATION_LOCAL",
+      "type": "HANDLED_AT",
+      "confidence": "SUPPORTED",
+      "evidence": [
+        "security-ev-9bcfaf7e04e86dd5"
+      ]
+    },
+    {
+      "edge_id": "failure-edge-651fc838dd5427d5",
+      "failure_id": "failure-0afe9405905489be",
+      "snapshot_id": "snapshot-0008",
+      "source": "FAILURE_SOURCE",
+      "target": "DETECTION",
+      "type": "TRIGGERS",
+      "confidence": "PROVED",
+      "evidence": [
+        "security-ev-81ddf74585b8145a"
+      ]
+    },
+    {
+      "edge_id": "failure-edge-0325b32394dabad2",
+      "failure_id": "failure-0afe9405905489be",
+      "snapshot_id": "snapshot-0008",
+      "source": "DETECTION",
+      "target": "CANDIDATE_WIDE",
+      "type": "HANDLED_AT",
+      "confidence": "SUPPORTED",
+      "evidence": [
+        "security-ev-81ddf74585b8145a"
+      ]
+    },
+    {
+      "edge_id": "failure-edge-5a0c6483af3d9cd3",
+      "failure_id": "failure-0afe9405905489be",
+      "snapshot_id": "snapshot-0008",
+      "source": "CANDIDATE_WIDE",
+      "target": "RECOVERY_PATH",
+      "type": "ENABLES_PATH",
+      "confidence": "SUPPORTED",
+      "evidence": [
+        "security-ev-81ddf74585b8145a"
+      ]
+    },
+    {
+      "edge_id": "failure-edge-32ef582f4732cb1f",
+      "failure_id": "failure-257eb2d2c39e79ee",
+      "snapshot_id": "snapshot-0008",
+      "source": "FAILURE_SOURCE",
+      "target": "DETECTION",
+      "type": "TRIGGERS",
+      "confidence": "PROVED",
+      "evidence": [
+        "security-ev-bbb568635e0b932f"
+      ]
+    },
+    {
+      "edge_id": "failure-edge-40ba140e52af897b",
+      "failure_id": "failure-257eb2d2c39e79ee",
+      "snapshot_id": "snapshot-0008",
+      "source": "DETECTION",
+      "target": "OPERATION_LOCAL",
+      "type": "HANDLED_AT",
+      "confidence": "SUPPORTED",
+      "evidence": [
+        "security-ev-bbb568635e0b932f"
+      ]
+    },
+    {
+      "edge_id": "failure-edge-7edb524fc84f481d",
+      "failure_id": "failure-162e6224c27a1389",
+      "snapshot_id": "snapshot-0008",
+      "source": "FAILURE_SOURCE",
+      "target": "DETECTION",
+      "type": "TRIGGERS",
+      "confidence": "PROVED",
+      "evidence": [
+        "security-ev-9285156f407a342b"
+      ]
+    },
+    {
+      "edge_id": "failure-edge-b3d25000f0f3c237",
+      "failure_id": "failure-162e6224c27a1389",
+      "snapshot_id": "snapshot-0008",
+      "source": "DETECTION",
+      "target": "OPERATION_LOCAL",
+      "type": "HANDLED_AT",
+      "confidence": "SUPPORTED",
+      "evidence": [
+        "security-ev-9285156f407a342b"
+      ]
+    },
+    {
+      "edge_id": "failure-edge-f280f7565223a0ea",
+      "failure_id": "failure-1ab3b7f29c203afd",
+      "snapshot_id": "snapshot-0007",
+      "source": "FAILURE_SOURCE",
+      "target": "DETECTION",
+      "type": "TRIGGERS",
+      "confidence": "PROVED",
+      "evidence": [
+        "security-ev-04b6f9cc28fb1db5"
+      ]
+    },
+    {
+      "edge_id": "failure-edge-4536befe0943166d",
+      "failure_id": "failure-1ab3b7f29c203afd",
+      "snapshot_id": "snapshot-0007",
+      "source": "DETECTION",
+      "target": "OPERATION_LOCAL",
+      "type": "HANDLED_AT",
+      "confidence": "SUPPORTED",
+      "evidence": [
+        "security-ev-04b6f9cc28fb1db5"
+      ]
+    },
+    {
+      "edge_id": "failure-edge-b34762167f28a6e8",
+      "failure_id": "failure-1ab3b7f29c203afd",
+      "snapshot_id": "snapshot-0007",
+      "source": "OPERATION_LOCAL",
+      "target": "RECOVERY_PATH",
+      "type": "ENABLES_PATH",
+      "confidence": "SUPPORTED",
+      "evidence": [
+        "security-ev-04b6f9cc28fb1db5"
+      ]
+    },
+    {
+      "edge_id": "failure-edge-6558b3a24b07a418",
+      "failure_id": "failure-b40f5a5e187021cd",
+      "snapshot_id": "snapshot-0007",
+      "source": "FAILURE_SOURCE",
+      "target": "DETECTION",
+      "type": "TRIGGERS",
+      "confidence": "PROVED",
+      "evidence": [
+        "security-ev-b3525ca60c92ca0a"
+      ]
+    },
+    {
+      "edge_id": "failure-edge-7b9f1591165ce337",
+      "failure_id": "failure-b40f5a5e187021cd",
+      "snapshot_id": "snapshot-0007",
+      "source": "DETECTION",
+      "target": "OPERATION_LOCAL",
+      "type": "HANDLED_AT",
+      "confidence": "SUPPORTED",
+      "evidence": [
+        "security-ev-b3525ca60c92ca0a"
+      ]
+    },
+    {
+      "edge_id": "failure-edge-3d54eb7db2b10d9a",
+      "failure_id": "failure-b40f5a5e187021cd",
+      "snapshot_id": "snapshot-0007",
+      "source": "OPERATION_LOCAL",
+      "target": "RECOVERY_PATH",
+      "type": "ENABLES_PATH",
+      "confidence": "SUPPORTED",
+      "evidence": [
+        "security-ev-b3525ca60c92ca0a"
+      ]
+    },
+    {
+      "edge_id": "failure-edge-d357ece768f8be05",
+      "failure_id": "failure-3af3dc9835a8eb44",
+      "snapshot_id": "snapshot-0007",
+      "source": "FAILURE_SOURCE",
+      "target": "DETECTION",
+      "type": "TRIGGERS",
+      "confidence": "PROVED",
+      "evidence": [
+        "security-ev-32c487a7ad04682b"
+      ]
+    },
+    {
+      "edge_id": "failure-edge-30e4a09af85245f5",
+      "failure_id": "failure-3af3dc9835a8eb44",
+      "snapshot_id": "snapshot-0007",
+      "source": "DETECTION",
+      "target": "STOP_BOUNDARY_NOT_PROVED",
+      "type": "HANDLED_AT",
+      "confidence": "SUPPORTED",
+      "evidence": [
+        "security-ev-32c487a7ad04682b"
+      ]
+    },
+    {
+      "edge_id": "failure-edge-b33bd0c5dc53f1dd",
+      "failure_id": "failure-3af3dc9835a8eb44",
+      "snapshot_id": "snapshot-0007",
+      "source": "STOP_BOUNDARY_NOT_PROVED",
+      "target": "RECOVERY_PATH",
+      "type": "ENABLES_PATH",
+      "confidence": "SUPPORTED",
+      "evidence": [
+        "security-ev-32c487a7ad04682b"
+      ]
+    },
+    {
+      "edge_id": "failure-edge-6c2150780ae66df9",
+      "failure_id": "failure-531daa99d9c0ac39",
+      "snapshot_id": "snapshot-0007",
+      "source": "FAILURE_SOURCE",
+      "target": "DETECTION",
+      "type": "TRIGGERS",
+      "confidence": "PROVED",
+      "evidence": [
+        "security-ev-fc8cbf327f935700"
+      ]
+    },
+    {
+      "edge_id": "failure-edge-14f665a77bb06504",
+      "failure_id": "failure-531daa99d9c0ac39",
+      "snapshot_id": "snapshot-0007",
+      "source": "DETECTION",
+      "target": "OPERATION_LOCAL",
+      "type": "HANDLED_AT",
+      "confidence": "SUPPORTED",
+      "evidence": [
+        "security-ev-fc8cbf327f935700"
+      ]
+    },
+    {
+      "edge_id": "failure-edge-c6c5d14422918e93",
+      "failure_id": "failure-f8e9a89e7a382b50",
+      "snapshot_id": "snapshot-0007",
+      "source": "FAILURE_SOURCE",
+      "target": "DETECTION",
+      "type": "TRIGGERS",
+      "confidence": "PROVED",
+      "evidence": [
+        "security-ev-403e6a06e0a5dba7"
+      ]
+    },
+    {
+      "edge_id": "failure-edge-cac0f1f0c8fcfb66",
+      "failure_id": "failure-f8e9a89e7a382b50",
+      "snapshot_id": "snapshot-0007",
+      "source": "DETECTION",
+      "target": "OPERATION_LOCAL",
+      "type": "HANDLED_AT",
+      "confidence": "SUPPORTED",
+      "evidence": [
+        "security-ev-403e6a06e0a5dba7"
+      ]
+    },
+    {
+      "edge_id": "failure-edge-5eae9eeffe852cf6",
+      "failure_id": "failure-9301ce4ae5c9a515",
+      "snapshot_id": "snapshot-0007",
+      "source": "FAILURE_SOURCE",
+      "target": "DETECTION",
+      "type": "TRIGGERS",
+      "confidence": "PROVED",
+      "evidence": [
+        "security-ev-01efc913b4108c58"
+      ]
+    },
+    {
+      "edge_id": "failure-edge-490b75d3bbafcf29",
+      "failure_id": "failure-9301ce4ae5c9a515",
+      "snapshot_id": "snapshot-0007",
+      "source": "DETECTION",
+      "target": "OPERATION_LOCAL",
+      "type": "HANDLED_AT",
+      "confidence": "SUPPORTED",
+      "evidence": [
+        "security-ev-01efc913b4108c58"
+      ]
+    },
+    {
+      "edge_id": "failure-edge-0a1a3307c064dc39",
+      "failure_id": "failure-9301ce4ae5c9a515",
+      "snapshot_id": "snapshot-0007",
+      "source": "OPERATION_LOCAL",
+      "target": "RECOVERY_PATH",
+      "type": "ENABLES_PATH",
+      "confidence": "SUPPORTED",
+      "evidence": [
+        "security-ev-01efc913b4108c58"
+      ]
+    },
+    {
+      "edge_id": "failure-edge-abcc11f8111bd0d2",
+      "failure_id": "failure-f94dfacabb38d1c4",
+      "snapshot_id": "snapshot-0007",
+      "source": "FAILURE_SOURCE",
+      "target": "DETECTION",
+      "type": "TRIGGERS",
+      "confidence": "PROVED",
+      "evidence": [
+        "security-ev-dfb3749ba68feb59"
+      ]
+    },
+    {
+      "edge_id": "failure-edge-4bb3f7a4cd26f60a",
+      "failure_id": "failure-f94dfacabb38d1c4",
+      "snapshot_id": "snapshot-0007",
+      "source": "DETECTION",
+      "target": "CALLER",
+      "type": "PROPAGATES_TO",
+      "confidence": "SUPPORTED",
+      "evidence": [
+        "security-ev-dfb3749ba68feb59"
+      ]
+    },
+    {
+      "edge_id": "failure-edge-70a6f4991d9fd4f0",
+      "failure_id": "failure-f94dfacabb38d1c4",
+      "snapshot_id": "snapshot-0007",
+      "source": "STOP_BOUNDARY_NOT_PROVED",
+      "target": "RECOVERY_PATH",
+      "type": "ENABLES_PATH",
+      "confidence": "SUPPORTED",
+      "evidence": [
+        "security-ev-dfb3749ba68feb59"
+      ]
+    },
+    {
+      "edge_id": "failure-edge-fb262bd68fba6dba",
+      "failure_id": "failure-953acdb89be7f0eb",
+      "snapshot_id": "snapshot-0007",
+      "source": "FAILURE_SOURCE",
+      "target": "DETECTION",
+      "type": "TRIGGERS",
+      "confidence": "PROVED",
+      "evidence": [
+        "security-ev-b96af40fd9bb8f62"
+      ]
+    },
+    {
+      "edge_id": "failure-edge-a689d8e767229c0b",
+      "failure_id": "failure-953acdb89be7f0eb",
+      "snapshot_id": "snapshot-0007",
+      "source": "DETECTION",
+      "target": "CALLER",
+      "type": "PROPAGATES_TO",
+      "confidence": "SUPPORTED",
+      "evidence": [
+        "security-ev-b96af40fd9bb8f62"
+      ]
+    },
+    {
+      "edge_id": "failure-edge-d4ea4f6fba0ec6f3",
+      "failure_id": "failure-953acdb89be7f0eb",
+      "snapshot_id": "snapshot-0007",
+      "source": "STOP_BOUNDARY_NOT_PROVED",
+      "target": "RECOVERY_PATH",
+      "type": "ENABLES_PATH",
+      "confidence": "SUPPORTED",
+      "evidence": [
+        "security-ev-b96af40fd9bb8f62"
+      ]
+    },
+    {
+      "edge_id": "failure-edge-84cf9b6e18253934",
+      "failure_id": "failure-27187993dc637ff6",
+      "snapshot_id": "snapshot-0007",
+      "source": "FAILURE_SOURCE",
+      "target": "DETECTION",
+      "type": "TRIGGERS",
+      "confidence": "PROVED",
+      "evidence": [
+        "security-ev-e17f7efaea356e7b"
+      ]
+    },
+    {
+      "edge_id": "failure-edge-3b5e7b3a9283ecf1",
+      "failure_id": "failure-27187993dc637ff6",
+      "snapshot_id": "snapshot-0007",
+      "source": "DETECTION",
+      "target": "CALLER",
+      "type": "PROPAGATES_TO",
+      "confidence": "SUPPORTED",
+      "evidence": [
+        "security-ev-e17f7efaea356e7b"
+      ]
+    },
+    {
+      "edge_id": "failure-edge-bdb6313f0fe8b272",
+      "failure_id": "failure-2388201c333802f1",
+      "snapshot_id": "snapshot-0007",
+      "source": "FAILURE_SOURCE",
+      "target": "DETECTION",
+      "type": "TRIGGERS",
+      "confidence": "PROVED",
+      "evidence": [
+        "security-ev-ba5e37f93c881f9a"
+      ]
+    },
+    {
+      "edge_id": "failure-edge-9911591129c2d321",
+      "failure_id": "failure-2388201c333802f1",
+      "snapshot_id": "snapshot-0007",
+      "source": "DETECTION",
+      "target": "CALLER",
+      "type": "PROPAGATES_TO",
+      "confidence": "SUPPORTED",
+      "evidence": [
+        "security-ev-ba5e37f93c881f9a"
+      ]
+    },
+    {
+      "edge_id": "failure-edge-1f9dbd8821e13c40",
+      "failure_id": "failure-420526453b7eccba",
+      "snapshot_id": "snapshot-0007",
+      "source": "FAILURE_SOURCE",
+      "target": "DETECTION",
+      "type": "TRIGGERS",
+      "confidence": "PROVED",
+      "evidence": [
+        "security-ev-e0879af9eee908b5"
+      ]
+    },
+    {
+      "edge_id": "failure-edge-423fa9acbdf962a2",
+      "failure_id": "failure-420526453b7eccba",
+      "snapshot_id": "snapshot-0007",
+      "source": "DETECTION",
+      "target": "OPERATION_LOCAL",
+      "type": "HANDLED_AT",
+      "confidence": "SUPPORTED",
+      "evidence": [
+        "security-ev-e0879af9eee908b5"
+      ]
+    },
+    {
+      "edge_id": "failure-edge-fb75f0d79719ab6e",
+      "failure_id": "failure-420526453b7eccba",
+      "snapshot_id": "snapshot-0007",
+      "source": "OPERATION_LOCAL",
+      "target": "RECOVERY_PATH",
+      "type": "ENABLES_PATH",
+      "confidence": "SUPPORTED",
+      "evidence": [
+        "security-ev-e0879af9eee908b5"
+      ]
+    },
+    {
+      "edge_id": "failure-edge-8d3f2ece19f9963a",
+      "failure_id": "failure-daa9c1165b9d10d2",
+      "snapshot_id": "snapshot-0007",
+      "source": "FAILURE_SOURCE",
+      "target": "DETECTION",
+      "type": "TRIGGERS",
+      "confidence": "PROVED",
+      "evidence": [
+        "security-ev-fb78d1b84e770f3b"
+      ]
+    },
+    {
+      "edge_id": "failure-edge-e345c16db8a88f78",
+      "failure_id": "failure-daa9c1165b9d10d2",
+      "snapshot_id": "snapshot-0007",
+      "source": "DETECTION",
+      "target": "OPERATION_LOCAL",
+      "type": "HANDLED_AT",
+      "confidence": "SUPPORTED",
+      "evidence": [
+        "security-ev-fb78d1b84e770f3b"
+      ]
+    },
+    {
+      "edge_id": "failure-edge-608a1c17c0b75cbf",
+      "failure_id": "failure-daa9c1165b9d10d2",
+      "snapshot_id": "snapshot-0007",
+      "source": "OPERATION_LOCAL",
+      "target": "RECOVERY_PATH",
+      "type": "ENABLES_PATH",
+      "confidence": "SUPPORTED",
+      "evidence": [
+        "security-ev-fb78d1b84e770f3b"
+      ]
+    },
+    {
+      "edge_id": "failure-edge-8274dc954ed84bb9",
+      "failure_id": "failure-ba15696fab019055",
+      "snapshot_id": "snapshot-0007",
+      "source": "FAILURE_SOURCE",
+      "target": "DETECTION",
+      "type": "TRIGGERS",
+      "confidence": "PROVED",
+      "evidence": [
+        "security-ev-ef760bc379c718c2"
+      ]
+    },
+    {
+      "edge_id": "failure-edge-1cf58168f0bd7885",
+      "failure_id": "failure-ba15696fab019055",
+      "snapshot_id": "snapshot-0007",
+      "source": "DETECTION",
+      "target": "OPERATION_LOCAL",
+      "type": "HANDLED_AT",
+      "confidence": "SUPPORTED",
+      "evidence": [
+        "security-ev-ef760bc379c718c2"
+      ]
+    },
+    {
+      "edge_id": "failure-edge-cd9bde3f2eeebb4f",
+      "failure_id": "failure-ba15696fab019055",
+      "snapshot_id": "snapshot-0007",
+      "source": "OPERATION_LOCAL",
+      "target": "RECOVERY_PATH",
+      "type": "ENABLES_PATH",
+      "confidence": "SUPPORTED",
+      "evidence": [
+        "security-ev-ef760bc379c718c2"
+      ]
+    },
+    {
+      "edge_id": "failure-edge-c82190ae92a1fd9e",
+      "failure_id": "failure-a99ab7285893d645",
+      "snapshot_id": "snapshot-0007",
+      "source": "FAILURE_SOURCE",
+      "target": "DETECTION",
+      "type": "TRIGGERS",
+      "confidence": "PROVED",
+      "evidence": [
+        "security-ev-898e0989c9374523"
+      ]
+    },
+    {
+      "edge_id": "failure-edge-dc3a23ecb6a76bba",
+      "failure_id": "failure-a99ab7285893d645",
+      "snapshot_id": "snapshot-0007",
+      "source": "DETECTION",
+      "target": "OPERATION_LOCAL",
+      "type": "HANDLED_AT",
+      "confidence": "SUPPORTED",
+      "evidence": [
+        "security-ev-898e0989c9374523"
+      ]
+    },
+    {
+      "edge_id": "failure-edge-b6541a328cac4498",
+      "failure_id": "failure-a99ab7285893d645",
+      "snapshot_id": "snapshot-0007",
+      "source": "OPERATION_LOCAL",
+      "target": "RECOVERY_PATH",
+      "type": "ENABLES_PATH",
+      "confidence": "SUPPORTED",
+      "evidence": [
+        "security-ev-898e0989c9374523"
+      ]
+    },
+    {
+      "edge_id": "failure-edge-6b0018d99fa0524c",
+      "failure_id": "failure-abd937bbbe3fdf75",
+      "snapshot_id": "snapshot-0007",
+      "source": "FAILURE_SOURCE",
+      "target": "DETECTION",
+      "type": "TRIGGERS",
+      "confidence": "PROVED",
+      "evidence": [
+        "security-ev-3fc932de00813d14"
+      ]
+    },
+    {
+      "edge_id": "failure-edge-88b3027dba6ccc8c",
+      "failure_id": "failure-abd937bbbe3fdf75",
+      "snapshot_id": "snapshot-0007",
+      "source": "DETECTION",
+      "target": "PROVIDER_WIDE",
+      "type": "HANDLED_AT",
+      "confidence": "SUPPORTED",
+      "evidence": [
+        "security-ev-3fc932de00813d14"
+      ]
+    },
+    {
+      "edge_id": "failure-edge-b4d130b1b325b623",
+      "failure_id": "failure-abd937bbbe3fdf75",
+      "snapshot_id": "snapshot-0007",
+      "source": "PROVIDER_WIDE",
+      "target": "RECOVERY_PATH",
+      "type": "ENABLES_PATH",
+      "confidence": "SUPPORTED",
+      "evidence": [
+        "security-ev-3fc932de00813d14"
+      ]
+    },
+    {
+      "edge_id": "failure-edge-dcfdbd6c280eddd6",
+      "failure_id": "failure-9fbf163a79b2e2c8",
+      "snapshot_id": "snapshot-0007",
+      "source": "FAILURE_SOURCE",
+      "target": "DETECTION",
+      "type": "TRIGGERS",
+      "confidence": "PROVED",
+      "evidence": [
+        "security-ev-009da1367f7fdaab"
+      ]
+    },
+    {
+      "edge_id": "failure-edge-611bb48c74a8e46f",
+      "failure_id": "failure-9fbf163a79b2e2c8",
+      "snapshot_id": "snapshot-0007",
+      "source": "DETECTION",
+      "target": "PROVIDER_WIDE",
+      "type": "HANDLED_AT",
+      "confidence": "SUPPORTED",
+      "evidence": [
+        "security-ev-009da1367f7fdaab"
+      ]
+    },
+    {
+      "edge_id": "failure-edge-255aafb6bc581b73",
+      "failure_id": "failure-9fbf163a79b2e2c8",
+      "snapshot_id": "snapshot-0007",
+      "source": "PROVIDER_WIDE",
+      "target": "RECOVERY_PATH",
+      "type": "ENABLES_PATH",
+      "confidence": "SUPPORTED",
+      "evidence": [
+        "security-ev-009da1367f7fdaab"
+      ]
+    },
+    {
+      "edge_id": "failure-edge-813b004c904b9ee5",
+      "failure_id": "failure-e163fc126c6b57d7",
+      "snapshot_id": "snapshot-0007",
+      "source": "FAILURE_SOURCE",
+      "target": "DETECTION",
+      "type": "TRIGGERS",
+      "confidence": "PROVED",
+      "evidence": [
+        "security-ev-5aa800cf06305328"
+      ]
+    },
+    {
+      "edge_id": "failure-edge-c6045b5a9086b873",
+      "failure_id": "failure-e163fc126c6b57d7",
+      "snapshot_id": "snapshot-0007",
+      "source": "DETECTION",
+      "target": "OPERATION_LOCAL",
+      "type": "HANDLED_AT",
+      "confidence": "SUPPORTED",
+      "evidence": [
+        "security-ev-5aa800cf06305328"
+      ]
+    },
+    {
+      "edge_id": "failure-edge-c9d3185bb7765e4d",
+      "failure_id": "failure-dc495cf8478b42a2",
+      "snapshot_id": "snapshot-0007",
+      "source": "FAILURE_SOURCE",
+      "target": "DETECTION",
+      "type": "TRIGGERS",
+      "confidence": "PROVED",
+      "evidence": [
+        "security-ev-56fdecb1b838f3dc"
+      ]
+    },
+    {
+      "edge_id": "failure-edge-dd7b6bb35fece774",
+      "failure_id": "failure-dc495cf8478b42a2",
+      "snapshot_id": "snapshot-0007",
+      "source": "DETECTION",
+      "target": "OPERATION_LOCAL",
+      "type": "HANDLED_AT",
+      "confidence": "SUPPORTED",
+      "evidence": [
+        "security-ev-56fdecb1b838f3dc"
+      ]
+    },
+    {
+      "edge_id": "failure-edge-bfbbeceda5648c9a",
+      "failure_id": "failure-938555a5cfc309f4",
+      "snapshot_id": "snapshot-0007",
+      "source": "FAILURE_SOURCE",
+      "target": "DETECTION",
+      "type": "TRIGGERS",
+      "confidence": "PROVED",
+      "evidence": [
+        "security-ev-2f6ac9e1df570cda"
+      ]
+    },
+    {
+      "edge_id": "failure-edge-fa24eb46bfec71c7",
+      "failure_id": "failure-938555a5cfc309f4",
+      "snapshot_id": "snapshot-0007",
+      "source": "DETECTION",
+      "target": "OPERATION_LOCAL",
+      "type": "HANDLED_AT",
+      "confidence": "SUPPORTED",
+      "evidence": [
+        "security-ev-2f6ac9e1df570cda"
+      ]
+    },
+    {
+      "edge_id": "failure-edge-c18a9a95628219a7",
+      "failure_id": "failure-48e92452b4acb71e",
+      "snapshot_id": "snapshot-0007",
+      "source": "FAILURE_SOURCE",
+      "target": "DETECTION",
+      "type": "TRIGGERS",
+      "confidence": "PROVED",
+      "evidence": [
+        "security-ev-9bdc5f2a324fb459"
+      ]
+    },
+    {
+      "edge_id": "failure-edge-3e483da5dd3b08e0",
+      "failure_id": "failure-48e92452b4acb71e",
+      "snapshot_id": "snapshot-0007",
+      "source": "DETECTION",
+      "target": "OPERATION_LOCAL",
+      "type": "HANDLED_AT",
+      "confidence": "SUPPORTED",
+      "evidence": [
+        "security-ev-9bdc5f2a324fb459"
+      ]
+    },
+    {
+      "edge_id": "failure-edge-2f36003daa67133f",
+      "failure_id": "failure-48e92452b4acb71e",
+      "snapshot_id": "snapshot-0007",
+      "source": "OPERATION_LOCAL",
+      "target": "RECOVERY_PATH",
+      "type": "ENABLES_PATH",
+      "confidence": "SUPPORTED",
+      "evidence": [
+        "security-ev-9bdc5f2a324fb459"
+      ]
+    },
+    {
+      "edge_id": "failure-edge-55b9cc4fae232645",
+      "failure_id": "failure-6d44c816ed167b5a",
+      "snapshot_id": "snapshot-0007",
+      "source": "FAILURE_SOURCE",
+      "target": "DETECTION",
+      "type": "TRIGGERS",
+      "confidence": "PROVED",
+      "evidence": [
+        "security-ev-b8afc4cefd17803c"
+      ]
+    },
+    {
+      "edge_id": "failure-edge-850f2cd1fbfe537c",
+      "failure_id": "failure-6d44c816ed167b5a",
+      "snapshot_id": "snapshot-0007",
+      "source": "DETECTION",
+      "target": "OPERATION_LOCAL",
+      "type": "HANDLED_AT",
+      "confidence": "SUPPORTED",
+      "evidence": [
+        "security-ev-b8afc4cefd17803c"
+      ]
+    },
+    {
+      "edge_id": "failure-edge-d439c5082a656a6d",
+      "failure_id": "failure-2baf2af1dd08373a",
+      "snapshot_id": "snapshot-0007",
+      "source": "FAILURE_SOURCE",
+      "target": "DETECTION",
+      "type": "TRIGGERS",
+      "confidence": "PROVED",
+      "evidence": [
+        "security-ev-d2c836579249cf42"
+      ]
+    },
+    {
+      "edge_id": "failure-edge-4a0dceb3b11bba52",
+      "failure_id": "failure-2baf2af1dd08373a",
+      "snapshot_id": "snapshot-0007",
+      "source": "DETECTION",
+      "target": "OPERATION_LOCAL",
+      "type": "HANDLED_AT",
+      "confidence": "SUPPORTED",
+      "evidence": [
+        "security-ev-d2c836579249cf42"
+      ]
+    },
+    {
+      "edge_id": "failure-edge-1dcd533c55e202d2",
+      "failure_id": "failure-fb9e05c4f71cd3fa",
+      "snapshot_id": "snapshot-0007",
+      "source": "FAILURE_SOURCE",
+      "target": "DETECTION",
+      "type": "TRIGGERS",
+      "confidence": "PROVED",
+      "evidence": [
+        "security-ev-32ec9479f8f1f5ee"
+      ]
+    },
+    {
+      "edge_id": "failure-edge-be2cacaa02771af9",
+      "failure_id": "failure-fb9e05c4f71cd3fa",
+      "snapshot_id": "snapshot-0007",
+      "source": "DETECTION",
+      "target": "OPERATION_LOCAL",
+      "type": "HANDLED_AT",
+      "confidence": "SUPPORTED",
+      "evidence": [
+        "security-ev-32ec9479f8f1f5ee"
+      ]
+    },
+    {
+      "edge_id": "failure-edge-7c9861776bc5bac3",
+      "failure_id": "failure-4ec8d984e363d924",
+      "snapshot_id": "snapshot-0007",
+      "source": "FAILURE_SOURCE",
+      "target": "DETECTION",
+      "type": "TRIGGERS",
+      "confidence": "PROVED",
+      "evidence": [
+        "security-ev-b17b56e741440f77"
+      ]
+    },
+    {
+      "edge_id": "failure-edge-7028990270526190",
+      "failure_id": "failure-4ec8d984e363d924",
+      "snapshot_id": "snapshot-0007",
+      "source": "DETECTION",
+      "target": "CALLER",
+      "type": "PROPAGATES_TO",
+      "confidence": "SUPPORTED",
+      "evidence": [
+        "security-ev-b17b56e741440f77"
+      ]
+    },
+    {
+      "edge_id": "failure-edge-faa868828eef03a0",
+      "failure_id": "failure-3f7177ea19fe6d56",
+      "snapshot_id": "snapshot-0007",
+      "source": "FAILURE_SOURCE",
+      "target": "DETECTION",
+      "type": "TRIGGERS",
+      "confidence": "PROVED",
+      "evidence": [
+        "security-ev-0a006f91dcbbacbf"
+      ]
+    },
+    {
+      "edge_id": "failure-edge-2664f7733cc49ca1",
+      "failure_id": "failure-3f7177ea19fe6d56",
+      "snapshot_id": "snapshot-0007",
+      "source": "DETECTION",
+      "target": "CALLER",
+      "type": "PROPAGATES_TO",
+      "confidence": "SUPPORTED",
+      "evidence": [
+        "security-ev-0a006f91dcbbacbf"
+      ]
+    },
+    {
+      "edge_id": "failure-edge-2587a6001d8ccf37",
+      "failure_id": "failure-3c61a1e949d8005c",
+      "snapshot_id": "snapshot-0007",
+      "source": "FAILURE_SOURCE",
+      "target": "DETECTION",
+      "type": "TRIGGERS",
+      "confidence": "PROVED",
+      "evidence": [
+        "security-ev-a7d42d74faefcd3e"
+      ]
+    },
+    {
+      "edge_id": "failure-edge-d9c6fe89fd0badd0",
+      "failure_id": "failure-3c61a1e949d8005c",
+      "snapshot_id": "snapshot-0007",
+      "source": "DETECTION",
+      "target": "CALLER",
+      "type": "PROPAGATES_TO",
+      "confidence": "SUPPORTED",
+      "evidence": [
+        "security-ev-a7d42d74faefcd3e"
+      ]
+    },
+    {
+      "edge_id": "failure-edge-55a396e49ade0575",
+      "failure_id": "failure-b18b3afe0ec0bd11",
+      "snapshot_id": "snapshot-0007",
+      "source": "FAILURE_SOURCE",
+      "target": "DETECTION",
+      "type": "TRIGGERS",
+      "confidence": "PROVED",
+      "evidence": [
+        "security-ev-9055b34f5f52dd69"
+      ]
+    },
+    {
+      "edge_id": "failure-edge-dc31ee1698142a4f",
+      "failure_id": "failure-b18b3afe0ec0bd11",
+      "snapshot_id": "snapshot-0007",
+      "source": "DETECTION",
+      "target": "OPERATION_LOCAL",
+      "type": "HANDLED_AT",
+      "confidence": "SUPPORTED",
+      "evidence": [
+        "security-ev-9055b34f5f52dd69"
+      ]
+    },
+    {
+      "edge_id": "failure-edge-dd7703fca7234d68",
+      "failure_id": "failure-f6173968cb4c1d95",
+      "snapshot_id": "snapshot-0007",
+      "source": "FAILURE_SOURCE",
+      "target": "DETECTION",
+      "type": "TRIGGERS",
+      "confidence": "PROVED",
+      "evidence": [
+        "security-ev-eef78ec4f3d37cf9"
+      ]
+    },
+    {
+      "edge_id": "failure-edge-8e496e9e2d18a73c",
+      "failure_id": "failure-f6173968cb4c1d95",
+      "snapshot_id": "snapshot-0007",
+      "source": "DETECTION",
+      "target": "OPERATION_LOCAL",
+      "type": "HANDLED_AT",
+      "confidence": "SUPPORTED",
+      "evidence": [
+        "security-ev-eef78ec4f3d37cf9"
+      ]
+    },
+    {
+      "edge_id": "failure-edge-93cc2c423c3aa61b",
+      "failure_id": "failure-48496b14048d5fcc",
+      "snapshot_id": "snapshot-0009",
+      "source": "FAILURE_SOURCE",
+      "target": "DETECTION",
+      "type": "TRIGGERS",
+      "confidence": "PROVED",
+      "evidence": [
+        "security-ev-a84dba91536be4c1"
+      ]
+    },
+    {
+      "edge_id": "failure-edge-32f0fe76a81543b1",
+      "failure_id": "failure-48496b14048d5fcc",
+      "snapshot_id": "snapshot-0009",
+      "source": "DETECTION",
+      "target": "OPERATION_LOCAL",
+      "type": "HANDLED_AT",
+      "confidence": "SUPPORTED",
+      "evidence": [
+        "security-ev-a84dba91536be4c1"
+      ]
+    },
+    {
+      "edge_id": "failure-edge-c3caf79aedc2c3b1",
+      "failure_id": "failure-48496b14048d5fcc",
+      "snapshot_id": "snapshot-0009",
+      "source": "OPERATION_LOCAL",
+      "target": "RECOVERY_PATH",
+      "type": "ENABLES_PATH",
+      "confidence": "SUPPORTED",
+      "evidence": [
+        "security-ev-a84dba91536be4c1"
+      ]
+    },
+    {
+      "edge_id": "failure-edge-25f007c90d3e250e",
+      "failure_id": "failure-c3db45e0429c7564",
+      "snapshot_id": "snapshot-0009",
+      "source": "FAILURE_SOURCE",
+      "target": "DETECTION",
+      "type": "TRIGGERS",
+      "confidence": "PROVED",
+      "evidence": [
+        "security-ev-c21fa3d6808e31d7"
+      ]
+    },
+    {
+      "edge_id": "failure-edge-34e61a04579ca00b",
+      "failure_id": "failure-c3db45e0429c7564",
+      "snapshot_id": "snapshot-0009",
+      "source": "DETECTION",
+      "target": "OPERATION_LOCAL",
+      "type": "HANDLED_AT",
+      "confidence": "SUPPORTED",
+      "evidence": [
+        "security-ev-c21fa3d6808e31d7"
+      ]
+    },
+    {
+      "edge_id": "failure-edge-7c976f160a609853",
+      "failure_id": "failure-c3db45e0429c7564",
+      "snapshot_id": "snapshot-0009",
+      "source": "OPERATION_LOCAL",
+      "target": "RECOVERY_PATH",
+      "type": "ENABLES_PATH",
+      "confidence": "SUPPORTED",
+      "evidence": [
+        "security-ev-c21fa3d6808e31d7"
+      ]
+    },
+    {
+      "edge_id": "failure-edge-1bc85cefb29f7be7",
+      "failure_id": "failure-66e3299a95186e08",
+      "snapshot_id": "snapshot-0009",
+      "source": "FAILURE_SOURCE",
+      "target": "DETECTION",
+      "type": "TRIGGERS",
+      "confidence": "PROVED",
+      "evidence": [
+        "security-ev-2db9d4078eccdcdd"
+      ]
+    },
+    {
+      "edge_id": "failure-edge-141c0d752289dfcc",
+      "failure_id": "failure-66e3299a95186e08",
+      "snapshot_id": "snapshot-0009",
+      "source": "DETECTION",
+      "target": "OPERATION_LOCAL",
+      "type": "HANDLED_AT",
+      "confidence": "SUPPORTED",
+      "evidence": [
+        "security-ev-2db9d4078eccdcdd"
+      ]
+    },
+    {
+      "edge_id": "failure-edge-edef73101a8dea5d",
+      "failure_id": "failure-2ab14ed10f89c580",
+      "snapshot_id": "snapshot-0009",
+      "source": "FAILURE_SOURCE",
+      "target": "DETECTION",
+      "type": "TRIGGERS",
+      "confidence": "PROVED",
+      "evidence": [
+        "security-ev-c34b150ed06211c0"
+      ]
+    },
+    {
+      "edge_id": "failure-edge-98ce54be94a94941",
+      "failure_id": "failure-2ab14ed10f89c580",
+      "snapshot_id": "snapshot-0009",
+      "source": "DETECTION",
+      "target": "OPERATION_LOCAL",
+      "type": "HANDLED_AT",
+      "confidence": "SUPPORTED",
+      "evidence": [
+        "security-ev-c34b150ed06211c0"
+      ]
+    },
+    {
+      "edge_id": "failure-edge-d1dac1903b68309c",
+      "failure_id": "failure-aca1ba589edfca2d",
+      "snapshot_id": "snapshot-0009",
+      "source": "FAILURE_SOURCE",
+      "target": "DETECTION",
+      "type": "TRIGGERS",
+      "confidence": "PROVED",
+      "evidence": [
+        "security-ev-76092a05a4b6f32c"
+      ]
+    },
+    {
+      "edge_id": "failure-edge-43a6d449d1113ed7",
+      "failure_id": "failure-aca1ba589edfca2d",
+      "snapshot_id": "snapshot-0009",
+      "source": "DETECTION",
+      "target": "OPERATION_LOCAL",
+      "type": "HANDLED_AT",
+      "confidence": "SUPPORTED",
+      "evidence": [
+        "security-ev-76092a05a4b6f32c"
+      ]
+    },
+    {
+      "edge_id": "failure-edge-d565668048f51018",
+      "failure_id": "failure-30e25a13ef1d8b92",
+      "snapshot_id": "snapshot-0009",
+      "source": "FAILURE_SOURCE",
+      "target": "DETECTION",
+      "type": "TRIGGERS",
+      "confidence": "PROVED",
+      "evidence": [
+        "security-ev-10c90284e1eec905"
+      ]
+    },
+    {
+      "edge_id": "failure-edge-f92d962a48d4804d",
+      "failure_id": "failure-30e25a13ef1d8b92",
+      "snapshot_id": "snapshot-0009",
+      "source": "DETECTION",
+      "target": "OPERATION_LOCAL",
+      "type": "HANDLED_AT",
+      "confidence": "SUPPORTED",
+      "evidence": [
+        "security-ev-10c90284e1eec905"
+      ]
+    },
+    {
+      "edge_id": "failure-edge-d3ea22c1b06902a9",
+      "failure_id": "failure-45b09b92fd60d3a6",
+      "snapshot_id": "snapshot-0009",
+      "source": "FAILURE_SOURCE",
+      "target": "DETECTION",
+      "type": "TRIGGERS",
+      "confidence": "PROVED",
+      "evidence": [
+        "security-ev-3fa8659b10445a46"
+      ]
+    },
+    {
+      "edge_id": "failure-edge-eb5ecd624d87b458",
+      "failure_id": "failure-45b09b92fd60d3a6",
+      "snapshot_id": "snapshot-0009",
+      "source": "DETECTION",
+      "target": "OPERATION_LOCAL",
+      "type": "HANDLED_AT",
+      "confidence": "SUPPORTED",
+      "evidence": [
+        "security-ev-3fa8659b10445a46"
+      ]
+    },
+    {
+      "edge_id": "failure-edge-a6683c6063478c77",
+      "failure_id": "failure-45b09b92fd60d3a6",
+      "snapshot_id": "snapshot-0009",
+      "source": "OPERATION_LOCAL",
+      "target": "RECOVERY_PATH",
+      "type": "ENABLES_PATH",
+      "confidence": "SUPPORTED",
+      "evidence": [
+        "security-ev-3fa8659b10445a46"
+      ]
+    },
+    {
+      "edge_id": "failure-edge-b9657da9c29c6352",
+      "failure_id": "failure-fa8cb694b18a312a",
+      "snapshot_id": "snapshot-0009",
+      "source": "FAILURE_SOURCE",
+      "target": "DETECTION",
+      "type": "TRIGGERS",
+      "confidence": "PROVED",
+      "evidence": [
+        "security-ev-d9f1a8fcba553210"
+      ]
+    },
+    {
+      "edge_id": "failure-edge-4f196af82d54749b",
+      "failure_id": "failure-fa8cb694b18a312a",
+      "snapshot_id": "snapshot-0009",
+      "source": "DETECTION",
+      "target": "STOP_BOUNDARY_NOT_PROVED",
+      "type": "HANDLED_AT",
+      "confidence": "SUPPORTED",
+      "evidence": [
+        "security-ev-d9f1a8fcba553210"
+      ]
+    },
+    {
+      "edge_id": "failure-edge-d926564fa52b63d0",
+      "failure_id": "failure-fa8cb694b18a312a",
+      "snapshot_id": "snapshot-0009",
+      "source": "STOP_BOUNDARY_NOT_PROVED",
+      "target": "RECOVERY_PATH",
+      "type": "ENABLES_PATH",
+      "confidence": "SUPPORTED",
+      "evidence": [
+        "security-ev-d9f1a8fcba553210"
+      ]
+    },
+    {
+      "edge_id": "failure-edge-5bdc178b636e0bad",
+      "failure_id": "failure-c3861367de71e379",
+      "snapshot_id": "snapshot-0009",
+      "source": "FAILURE_SOURCE",
+      "target": "DETECTION",
+      "type": "TRIGGERS",
+      "confidence": "PROVED",
+      "evidence": [
+        "security-ev-370e17c00bcfd2e8"
+      ]
+    },
+    {
+      "edge_id": "failure-edge-472e78a1f49aed87",
+      "failure_id": "failure-c3861367de71e379",
+      "snapshot_id": "snapshot-0009",
+      "source": "DETECTION",
+      "target": "STOP_BOUNDARY_NOT_PROVED",
+      "type": "HANDLED_AT",
+      "confidence": "SUPPORTED",
+      "evidence": [
+        "security-ev-370e17c00bcfd2e8"
+      ]
+    },
+    {
+      "edge_id": "failure-edge-af125f9ec65b05bc",
+      "failure_id": "failure-c3861367de71e379",
+      "snapshot_id": "snapshot-0009",
+      "source": "STOP_BOUNDARY_NOT_PROVED",
+      "target": "RECOVERY_PATH",
+      "type": "ENABLES_PATH",
+      "confidence": "SUPPORTED",
+      "evidence": [
+        "security-ev-370e17c00bcfd2e8"
+      ]
+    },
+    {
+      "edge_id": "failure-edge-7c73a8062576318b",
+      "failure_id": "failure-9ed406bbd5b4ee81",
+      "snapshot_id": "snapshot-0009",
+      "source": "FAILURE_SOURCE",
+      "target": "DETECTION",
+      "type": "TRIGGERS",
+      "confidence": "PROVED",
+      "evidence": [
+        "security-ev-b50aa775ef5cebb4"
+      ]
+    },
+    {
+      "edge_id": "failure-edge-d9f207a0fc7f7b1d",
+      "failure_id": "failure-9ed406bbd5b4ee81",
+      "snapshot_id": "snapshot-0009",
+      "source": "DETECTION",
+      "target": "OPERATION_LOCAL",
+      "type": "HANDLED_AT",
+      "confidence": "SUPPORTED",
+      "evidence": [
+        "security-ev-b50aa775ef5cebb4"
+      ]
+    },
+    {
+      "edge_id": "failure-edge-0baa3120cc92a8b0",
+      "failure_id": "failure-9ed406bbd5b4ee81",
+      "snapshot_id": "snapshot-0009",
+      "source": "OPERATION_LOCAL",
+      "target": "RECOVERY_PATH",
+      "type": "ENABLES_PATH",
+      "confidence": "SUPPORTED",
+      "evidence": [
+        "security-ev-b50aa775ef5cebb4"
+      ]
+    },
+    {
+      "edge_id": "failure-edge-ae438e1ad311fdd2",
+      "failure_id": "failure-06bc9f1f1c3550c8",
+      "snapshot_id": "snapshot-0009",
+      "source": "FAILURE_SOURCE",
+      "target": "DETECTION",
+      "type": "TRIGGERS",
+      "confidence": "PROVED",
+      "evidence": [
+        "security-ev-5b145551404d979f"
+      ]
+    },
+    {
+      "edge_id": "failure-edge-84c788003dbbafd9",
+      "failure_id": "failure-06bc9f1f1c3550c8",
+      "snapshot_id": "snapshot-0009",
+      "source": "DETECTION",
+      "target": "PROVIDER_WIDE",
+      "type": "HANDLED_AT",
+      "confidence": "SUPPORTED",
+      "evidence": [
+        "security-ev-5b145551404d979f"
+      ]
+    },
+    {
+      "edge_id": "failure-edge-f883f9fe144269cd",
+      "failure_id": "failure-06bc9f1f1c3550c8",
+      "snapshot_id": "snapshot-0009",
+      "source": "PROVIDER_WIDE",
+      "target": "RECOVERY_PATH",
+      "type": "ENABLES_PATH",
+      "confidence": "SUPPORTED",
+      "evidence": [
+        "security-ev-5b145551404d979f"
+      ]
+    },
+    {
+      "edge_id": "failure-edge-bb09cad4e7df594e",
+      "failure_id": "failure-871440faee0e89dd",
+      "snapshot_id": "snapshot-0009",
+      "source": "FAILURE_SOURCE",
+      "target": "DETECTION",
+      "type": "TRIGGERS",
+      "confidence": "PROVED",
+      "evidence": [
+        "security-ev-9d0df95606504131"
+      ]
+    },
+    {
+      "edge_id": "failure-edge-13a456568972c00a",
+      "failure_id": "failure-871440faee0e89dd",
+      "snapshot_id": "snapshot-0009",
+      "source": "DETECTION",
+      "target": "OPERATION_LOCAL",
+      "type": "HANDLED_AT",
+      "confidence": "SUPPORTED",
+      "evidence": [
+        "security-ev-9d0df95606504131"
+      ]
+    },
+    {
+      "edge_id": "failure-edge-d49c173cbb8518ad",
+      "failure_id": "failure-bb4fbbcd2ff51775",
+      "snapshot_id": "snapshot-0009",
+      "source": "FAILURE_SOURCE",
+      "target": "DETECTION",
+      "type": "TRIGGERS",
+      "confidence": "PROVED",
+      "evidence": [
+        "security-ev-2342d1624f8df8bd"
+      ]
+    },
+    {
+      "edge_id": "failure-edge-7764c68fa7794a6f",
+      "failure_id": "failure-bb4fbbcd2ff51775",
+      "snapshot_id": "snapshot-0009",
+      "source": "DETECTION",
+      "target": "OPERATION_LOCAL",
+      "type": "HANDLED_AT",
+      "confidence": "SUPPORTED",
+      "evidence": [
+        "security-ev-2342d1624f8df8bd"
+      ]
+    },
+    {
+      "edge_id": "failure-edge-395a04d772b462b1",
+      "failure_id": "failure-01a77ded6b0f453c",
+      "snapshot_id": "snapshot-0009",
+      "source": "FAILURE_SOURCE",
+      "target": "DETECTION",
+      "type": "TRIGGERS",
+      "confidence": "PROVED",
+      "evidence": [
+        "security-ev-3777f6c65d4a2d9f"
+      ]
+    },
+    {
+      "edge_id": "failure-edge-f6ee1c147031dcb6",
+      "failure_id": "failure-01a77ded6b0f453c",
+      "snapshot_id": "snapshot-0009",
+      "source": "DETECTION",
+      "target": "OPERATION_LOCAL",
+      "type": "HANDLED_AT",
+      "confidence": "SUPPORTED",
+      "evidence": [
+        "security-ev-3777f6c65d4a2d9f"
+      ]
+    },
+    {
+      "edge_id": "failure-edge-9e1a99b4c6b34f44",
+      "failure_id": "failure-b089289b9e7a1ad0",
+      "snapshot_id": "snapshot-0009",
+      "source": "FAILURE_SOURCE",
+      "target": "DETECTION",
+      "type": "TRIGGERS",
+      "confidence": "PROVED",
+      "evidence": [
+        "security-ev-d86dde81c075c2df"
+      ]
+    },
+    {
+      "edge_id": "failure-edge-46e8b82c337292a9",
+      "failure_id": "failure-b089289b9e7a1ad0",
+      "snapshot_id": "snapshot-0009",
+      "source": "DETECTION",
+      "target": "STOP_BOUNDARY_NOT_PROVED",
+      "type": "HANDLED_AT",
+      "confidence": "SUPPORTED",
+      "evidence": [
+        "security-ev-d86dde81c075c2df"
+      ]
+    },
+    {
+      "edge_id": "failure-edge-68195c5c5b7d30a4",
+      "failure_id": "failure-15d09774218b12c4",
+      "snapshot_id": "snapshot-0009",
+      "source": "FAILURE_SOURCE",
+      "target": "DETECTION",
+      "type": "TRIGGERS",
+      "confidence": "PROVED",
+      "evidence": [
+        "security-ev-eee36f69aa9b3c02"
+      ]
+    },
+    {
+      "edge_id": "failure-edge-26c7271e2a30dd1a",
+      "failure_id": "failure-15d09774218b12c4",
+      "snapshot_id": "snapshot-0009",
+      "source": "DETECTION",
+      "target": "OPERATION_LOCAL",
+      "type": "HANDLED_AT",
+      "confidence": "SUPPORTED",
+      "evidence": [
+        "security-ev-eee36f69aa9b3c02"
+      ]
+    },
+    {
+      "edge_id": "failure-edge-e38f0621caad2d2d",
+      "failure_id": "failure-8dcfe220cfbc087d",
+      "snapshot_id": "snapshot-0009",
+      "source": "FAILURE_SOURCE",
+      "target": "DETECTION",
+      "type": "TRIGGERS",
+      "confidence": "PROVED",
+      "evidence": [
+        "security-ev-ab9373967ec67969"
+      ]
+    },
+    {
+      "edge_id": "failure-edge-f7617e5532d4fe85",
+      "failure_id": "failure-8dcfe220cfbc087d",
+      "snapshot_id": "snapshot-0009",
+      "source": "DETECTION",
+      "target": "OPERATION_LOCAL",
+      "type": "HANDLED_AT",
+      "confidence": "SUPPORTED",
+      "evidence": [
+        "security-ev-ab9373967ec67969"
+      ]
+    },
+    {
+      "edge_id": "failure-edge-ad2b189ed7f22232",
+      "failure_id": "failure-8dcfe220cfbc087d",
+      "snapshot_id": "snapshot-0009",
+      "source": "OPERATION_LOCAL",
+      "target": "RECOVERY_PATH",
+      "type": "ENABLES_PATH",
+      "confidence": "SUPPORTED",
+      "evidence": [
+        "security-ev-ab9373967ec67969"
+      ]
+    },
+    {
+      "edge_id": "failure-edge-e43d3ff5f060c48d",
+      "failure_id": "failure-5f034cb52c78a33e",
+      "snapshot_id": "snapshot-0009",
+      "source": "FAILURE_SOURCE",
+      "target": "DETECTION",
+      "type": "TRIGGERS",
+      "confidence": "PROVED",
+      "evidence": [
+        "security-ev-65348f69e361196d"
+      ]
+    },
+    {
+      "edge_id": "failure-edge-3ce5d2ccf5fdb52e",
+      "failure_id": "failure-5f034cb52c78a33e",
+      "snapshot_id": "snapshot-0009",
+      "source": "DETECTION",
+      "target": "OPERATION_LOCAL",
+      "type": "HANDLED_AT",
+      "confidence": "SUPPORTED",
+      "evidence": [
+        "security-ev-65348f69e361196d"
+      ]
+    },
+    {
+      "edge_id": "failure-edge-471335236213c38b",
+      "failure_id": "failure-10f6dccee4f8b1b3",
+      "snapshot_id": "snapshot-0009",
+      "source": "FAILURE_SOURCE",
+      "target": "DETECTION",
+      "type": "TRIGGERS",
+      "confidence": "PROVED",
+      "evidence": [
+        "security-ev-a5989b691bdde740"
+      ]
+    },
+    {
+      "edge_id": "failure-edge-f1e28773b8b7f297",
+      "failure_id": "failure-10f6dccee4f8b1b3",
+      "snapshot_id": "snapshot-0009",
+      "source": "DETECTION",
+      "target": "OPERATION_LOCAL",
+      "type": "HANDLED_AT",
+      "confidence": "SUPPORTED",
+      "evidence": [
+        "security-ev-a5989b691bdde740"
+      ]
+    },
+    {
+      "edge_id": "failure-edge-7d616102a60d1235",
+      "failure_id": "failure-48a08e465c0a86aa",
+      "snapshot_id": "snapshot-0011",
+      "source": "FAILURE_SOURCE",
+      "target": "DETECTION",
+      "type": "TRIGGERS",
+      "confidence": "PROVED",
+      "evidence": [
+        "security-ev-a9b11bb8e9ca1eef"
+      ]
+    },
+    {
+      "edge_id": "failure-edge-5ffb9a185e0ba645",
+      "failure_id": "failure-48a08e465c0a86aa",
+      "snapshot_id": "snapshot-0011",
+      "source": "DETECTION",
+      "target": "OPERATION_LOCAL",
+      "type": "HANDLED_AT",
+      "confidence": "SUPPORTED",
+      "evidence": [
+        "security-ev-a9b11bb8e9ca1eef"
+      ]
+    },
+    {
+      "edge_id": "failure-edge-e57a0223e2d0a3b1",
+      "failure_id": "failure-48a08e465c0a86aa",
+      "snapshot_id": "snapshot-0011",
+      "source": "OPERATION_LOCAL",
+      "target": "RECOVERY_PATH",
+      "type": "ENABLES_PATH",
+      "confidence": "SUPPORTED",
+      "evidence": [
+        "security-ev-a9b11bb8e9ca1eef"
+      ]
+    },
+    {
+      "edge_id": "failure-edge-1ac5a7c934d5aafc",
+      "failure_id": "failure-8c0d47bd434db055",
+      "snapshot_id": "snapshot-0011",
+      "source": "FAILURE_SOURCE",
+      "target": "DETECTION",
+      "type": "TRIGGERS",
+      "confidence": "PROVED",
+      "evidence": [
+        "security-ev-cc19b1eb77fe4b1e"
+      ]
+    },
+    {
+      "edge_id": "failure-edge-336e2557ccfda619",
+      "failure_id": "failure-8c0d47bd434db055",
+      "snapshot_id": "snapshot-0011",
+      "source": "DETECTION",
+      "target": "OPERATION_LOCAL",
+      "type": "HANDLED_AT",
+      "confidence": "SUPPORTED",
+      "evidence": [
+        "security-ev-cc19b1eb77fe4b1e"
+      ]
+    },
+    {
+      "edge_id": "failure-edge-43a18270db3541d9",
+      "failure_id": "failure-8c0d47bd434db055",
+      "snapshot_id": "snapshot-0011",
+      "source": "OPERATION_LOCAL",
+      "target": "RECOVERY_PATH",
+      "type": "ENABLES_PATH",
+      "confidence": "SUPPORTED",
+      "evidence": [
+        "security-ev-cc19b1eb77fe4b1e"
+      ]
+    },
+    {
+      "edge_id": "failure-edge-b35c70d71eff53d2",
+      "failure_id": "failure-04f3c876d952e707",
+      "snapshot_id": "snapshot-0011",
+      "source": "FAILURE_SOURCE",
+      "target": "DETECTION",
+      "type": "TRIGGERS",
+      "confidence": "PROVED",
+      "evidence": [
+        "security-ev-979f3b42f84b889b"
+      ]
+    },
+    {
+      "edge_id": "failure-edge-eacb57582741c391",
+      "failure_id": "failure-04f3c876d952e707",
+      "snapshot_id": "snapshot-0011",
+      "source": "DETECTION",
+      "target": "OPERATION_LOCAL",
+      "type": "HANDLED_AT",
+      "confidence": "SUPPORTED",
+      "evidence": [
+        "security-ev-979f3b42f84b889b"
+      ]
+    },
+    {
+      "edge_id": "failure-edge-b9a99ece00b9107f",
+      "failure_id": "failure-04f3c876d952e707",
+      "snapshot_id": "snapshot-0011",
+      "source": "OPERATION_LOCAL",
+      "target": "RECOVERY_PATH",
+      "type": "ENABLES_PATH",
+      "confidence": "SUPPORTED",
+      "evidence": [
+        "security-ev-979f3b42f84b889b"
+      ]
+    },
+    {
+      "edge_id": "failure-edge-79ad7ec9d949f4fc",
+      "failure_id": "failure-5e52262a0766f12e",
+      "snapshot_id": "snapshot-0011",
+      "source": "FAILURE_SOURCE",
+      "target": "DETECTION",
+      "type": "TRIGGERS",
+      "confidence": "PROVED",
+      "evidence": [
+        "security-ev-a187f75c1fdd3656"
+      ]
+    },
+    {
+      "edge_id": "failure-edge-93e1c566228cba70",
+      "failure_id": "failure-5e52262a0766f12e",
+      "snapshot_id": "snapshot-0011",
+      "source": "DETECTION",
+      "target": "OPERATION_LOCAL",
+      "type": "HANDLED_AT",
+      "confidence": "SUPPORTED",
+      "evidence": [
+        "security-ev-a187f75c1fdd3656"
+      ]
+    },
+    {
+      "edge_id": "failure-edge-91caf4991b151335",
+      "failure_id": "failure-226a42807f3f2065",
+      "snapshot_id": "snapshot-0011",
+      "source": "FAILURE_SOURCE",
+      "target": "DETECTION",
+      "type": "TRIGGERS",
+      "confidence": "PROVED",
+      "evidence": [
+        "security-ev-65b5ceec48a25c81"
+      ]
+    },
+    {
+      "edge_id": "failure-edge-83aa681c92df70e2",
+      "failure_id": "failure-226a42807f3f2065",
+      "snapshot_id": "snapshot-0011",
+      "source": "DETECTION",
+      "target": "OPERATION_LOCAL",
+      "type": "HANDLED_AT",
+      "confidence": "SUPPORTED",
+      "evidence": [
+        "security-ev-65b5ceec48a25c81"
+      ]
+    },
+    {
+      "edge_id": "failure-edge-d21fd028b18bbecf",
+      "failure_id": "failure-161fe3bd4f24e019",
+      "snapshot_id": "snapshot-0011",
+      "source": "FAILURE_SOURCE",
+      "target": "DETECTION",
+      "type": "TRIGGERS",
+      "confidence": "PROVED",
+      "evidence": [
+        "security-ev-3600667c9ab5b535"
+      ]
+    },
+    {
+      "edge_id": "failure-edge-a88b20af2c463423",
+      "failure_id": "failure-161fe3bd4f24e019",
+      "snapshot_id": "snapshot-0011",
+      "source": "DETECTION",
+      "target": "OPERATION_LOCAL",
+      "type": "HANDLED_AT",
+      "confidence": "SUPPORTED",
+      "evidence": [
+        "security-ev-3600667c9ab5b535"
+      ]
+    },
+    {
+      "edge_id": "failure-edge-63cebd2714fbe98e",
+      "failure_id": "failure-4359ac73a8181b7d",
+      "snapshot_id": "snapshot-0011",
+      "source": "FAILURE_SOURCE",
+      "target": "DETECTION",
+      "type": "TRIGGERS",
+      "confidence": "PROVED",
+      "evidence": [
+        "security-ev-de72a13fe4426945"
+      ]
+    },
+    {
+      "edge_id": "failure-edge-bd6b05a5d947c6dc",
+      "failure_id": "failure-4359ac73a8181b7d",
+      "snapshot_id": "snapshot-0011",
+      "source": "DETECTION",
+      "target": "CALLER",
+      "type": "PROPAGATES_TO",
+      "confidence": "SUPPORTED",
+      "evidence": [
+        "security-ev-de72a13fe4426945"
+      ]
+    },
+    {
+      "edge_id": "failure-edge-306c187cd7f204a7",
+      "failure_id": "failure-4359ac73a8181b7d",
+      "snapshot_id": "snapshot-0011",
+      "source": "STOP_BOUNDARY_NOT_PROVED",
+      "target": "RECOVERY_PATH",
+      "type": "ENABLES_PATH",
+      "confidence": "SUPPORTED",
+      "evidence": [
+        "security-ev-de72a13fe4426945"
+      ]
+    },
+    {
+      "edge_id": "failure-edge-015cd023d15e6e57",
+      "failure_id": "failure-c931140d983b9a38",
+      "snapshot_id": "snapshot-0011",
+      "source": "FAILURE_SOURCE",
+      "target": "DETECTION",
+      "type": "TRIGGERS",
+      "confidence": "PROVED",
+      "evidence": [
+        "security-ev-0fe7e7b44bf232ad"
+      ]
+    },
+    {
+      "edge_id": "failure-edge-f89f1908ae50f3c4",
+      "failure_id": "failure-c931140d983b9a38",
+      "snapshot_id": "snapshot-0011",
+      "source": "DETECTION",
+      "target": "STOP_BOUNDARY_NOT_PROVED",
+      "type": "HANDLED_AT",
+      "confidence": "SUPPORTED",
+      "evidence": [
+        "security-ev-0fe7e7b44bf232ad"
+      ]
+    },
+    {
+      "edge_id": "failure-edge-5df62322f94b946b",
+      "failure_id": "failure-c931140d983b9a38",
+      "snapshot_id": "snapshot-0011",
+      "source": "STOP_BOUNDARY_NOT_PROVED",
+      "target": "RECOVERY_PATH",
+      "type": "ENABLES_PATH",
+      "confidence": "SUPPORTED",
+      "evidence": [
+        "security-ev-0fe7e7b44bf232ad"
+      ]
+    },
+    {
+      "edge_id": "failure-edge-4f09d0a713ddfdb7",
+      "failure_id": "failure-baa0d3572d0f8cac",
+      "snapshot_id": "snapshot-0011",
+      "source": "FAILURE_SOURCE",
+      "target": "DETECTION",
+      "type": "TRIGGERS",
+      "confidence": "PROVED",
+      "evidence": [
+        "security-ev-f4471832ce82561e"
+      ]
+    },
+    {
+      "edge_id": "failure-edge-826e0713710c240a",
+      "failure_id": "failure-baa0d3572d0f8cac",
+      "snapshot_id": "snapshot-0011",
+      "source": "DETECTION",
+      "target": "STOP_BOUNDARY_NOT_PROVED",
+      "type": "HANDLED_AT",
+      "confidence": "SUPPORTED",
+      "evidence": [
+        "security-ev-f4471832ce82561e"
+      ]
+    },
+    {
+      "edge_id": "failure-edge-32390551695e6564",
+      "failure_id": "failure-baa0d3572d0f8cac",
+      "snapshot_id": "snapshot-0011",
+      "source": "STOP_BOUNDARY_NOT_PROVED",
+      "target": "RECOVERY_PATH",
+      "type": "ENABLES_PATH",
+      "confidence": "SUPPORTED",
+      "evidence": [
+        "security-ev-f4471832ce82561e"
+      ]
+    },
+    {
+      "edge_id": "failure-edge-b13221f5ab5bd863",
+      "failure_id": "failure-601478277d12a36b",
+      "snapshot_id": "snapshot-0011",
+      "source": "FAILURE_SOURCE",
+      "target": "DETECTION",
+      "type": "TRIGGERS",
+      "confidence": "PROVED",
+      "evidence": [
+        "security-ev-0d779bea41564305"
+      ]
+    },
+    {
+      "edge_id": "failure-edge-238798202d76ed78",
+      "failure_id": "failure-601478277d12a36b",
+      "snapshot_id": "snapshot-0011",
+      "source": "DETECTION",
+      "target": "STOP_BOUNDARY_NOT_PROVED",
+      "type": "HANDLED_AT",
+      "confidence": "SUPPORTED",
+      "evidence": [
+        "security-ev-0d779bea41564305"
+      ]
+    },
+    {
+      "edge_id": "failure-edge-0d816d2741368135",
+      "failure_id": "failure-73b5ec987ae621df",
+      "snapshot_id": "snapshot-0011",
+      "source": "FAILURE_SOURCE",
+      "target": "DETECTION",
+      "type": "TRIGGERS",
+      "confidence": "PROVED",
+      "evidence": [
+        "security-ev-1f48ace5ac7a2ada"
+      ]
+    },
+    {
+      "edge_id": "failure-edge-b911b71d6aa7287b",
+      "failure_id": "failure-73b5ec987ae621df",
+      "snapshot_id": "snapshot-0011",
+      "source": "DETECTION",
+      "target": "OPERATION_LOCAL",
+      "type": "HANDLED_AT",
+      "confidence": "SUPPORTED",
+      "evidence": [
+        "security-ev-1f48ace5ac7a2ada"
+      ]
+    },
+    {
+      "edge_id": "failure-edge-45144c02f40f7576",
+      "failure_id": "failure-73b5ec987ae621df",
+      "snapshot_id": "snapshot-0011",
+      "source": "OPERATION_LOCAL",
+      "target": "RECOVERY_PATH",
+      "type": "ENABLES_PATH",
+      "confidence": "SUPPORTED",
+      "evidence": [
+        "security-ev-1f48ace5ac7a2ada"
+      ]
+    },
+    {
+      "edge_id": "failure-edge-a0281e19bcbb4202",
+      "failure_id": "failure-ba3e4752a4de15aa",
+      "snapshot_id": "snapshot-0011",
+      "source": "FAILURE_SOURCE",
+      "target": "DETECTION",
+      "type": "TRIGGERS",
+      "confidence": "PROVED",
+      "evidence": [
+        "security-ev-2a1d605376e427f7"
+      ]
+    },
+    {
+      "edge_id": "failure-edge-adbaa3461757eee9",
+      "failure_id": "failure-ba3e4752a4de15aa",
+      "snapshot_id": "snapshot-0011",
+      "source": "DETECTION",
+      "target": "OPERATION_LOCAL",
+      "type": "HANDLED_AT",
+      "confidence": "SUPPORTED",
+      "evidence": [
+        "security-ev-2a1d605376e427f7"
+      ]
+    },
+    {
+      "edge_id": "failure-edge-c1d5be7f4e3bbb0d",
+      "failure_id": "failure-ba3e4752a4de15aa",
+      "snapshot_id": "snapshot-0011",
+      "source": "OPERATION_LOCAL",
+      "target": "RECOVERY_PATH",
+      "type": "ENABLES_PATH",
+      "confidence": "SUPPORTED",
+      "evidence": [
+        "security-ev-2a1d605376e427f7"
+      ]
+    },
+    {
+      "edge_id": "failure-edge-94e5f4791c67d407",
+      "failure_id": "failure-81229bd6ffa04ee8",
+      "snapshot_id": "snapshot-0011",
+      "source": "FAILURE_SOURCE",
+      "target": "DETECTION",
+      "type": "TRIGGERS",
+      "confidence": "PROVED",
+      "evidence": [
+        "security-ev-e95b3dce058b18ac"
+      ]
+    },
+    {
+      "edge_id": "failure-edge-29c58cd05d68d9e0",
+      "failure_id": "failure-81229bd6ffa04ee8",
+      "snapshot_id": "snapshot-0011",
+      "source": "DETECTION",
+      "target": "OPERATION_LOCAL",
+      "type": "HANDLED_AT",
+      "confidence": "SUPPORTED",
+      "evidence": [
+        "security-ev-e95b3dce058b18ac"
+      ]
+    },
+    {
+      "edge_id": "failure-edge-5ccdc2bb75022649",
+      "failure_id": "failure-9d08339c5db9da8a",
+      "snapshot_id": "snapshot-0011",
+      "source": "FAILURE_SOURCE",
+      "target": "DETECTION",
+      "type": "TRIGGERS",
+      "confidence": "PROVED",
+      "evidence": [
+        "security-ev-d18f5b6d3631b252"
+      ]
+    },
+    {
+      "edge_id": "failure-edge-3f6c90ec3d26b352",
+      "failure_id": "failure-9d08339c5db9da8a",
+      "snapshot_id": "snapshot-0011",
+      "source": "DETECTION",
+      "target": "PROVIDER_WIDE",
+      "type": "HANDLED_AT",
+      "confidence": "SUPPORTED",
+      "evidence": [
+        "security-ev-d18f5b6d3631b252"
+      ]
+    },
+    {
+      "edge_id": "failure-edge-6e47d876438a01e6",
+      "failure_id": "failure-9d08339c5db9da8a",
+      "snapshot_id": "snapshot-0011",
+      "source": "PROVIDER_WIDE",
+      "target": "RECOVERY_PATH",
+      "type": "ENABLES_PATH",
+      "confidence": "SUPPORTED",
+      "evidence": [
+        "security-ev-d18f5b6d3631b252"
+      ]
+    },
+    {
+      "edge_id": "failure-edge-65dcb62d65436293",
+      "failure_id": "failure-f187f59118b39f8d",
+      "snapshot_id": "snapshot-0011",
+      "source": "FAILURE_SOURCE",
+      "target": "DETECTION",
+      "type": "TRIGGERS",
+      "confidence": "PROVED",
+      "evidence": [
+        "security-ev-66971bb9d0ba20ef"
+      ]
+    },
+    {
+      "edge_id": "failure-edge-9fd9f1129734d830",
+      "failure_id": "failure-f187f59118b39f8d",
+      "snapshot_id": "snapshot-0011",
+      "source": "DETECTION",
+      "target": "PROVIDER_WIDE",
+      "type": "HANDLED_AT",
+      "confidence": "SUPPORTED",
+      "evidence": [
+        "security-ev-66971bb9d0ba20ef"
+      ]
+    },
+    {
+      "edge_id": "failure-edge-31ac63b58a1334d2",
+      "failure_id": "failure-f187f59118b39f8d",
+      "snapshot_id": "snapshot-0011",
+      "source": "PROVIDER_WIDE",
+      "target": "RECOVERY_PATH",
+      "type": "ENABLES_PATH",
+      "confidence": "SUPPORTED",
+      "evidence": [
+        "security-ev-66971bb9d0ba20ef"
+      ]
+    },
+    {
+      "edge_id": "failure-edge-5148321beb768352",
+      "failure_id": "failure-7e1d8b80463916d7",
+      "snapshot_id": "snapshot-0011",
+      "source": "FAILURE_SOURCE",
+      "target": "DETECTION",
+      "type": "TRIGGERS",
+      "confidence": "PROVED",
+      "evidence": [
+        "security-ev-53070a6bff14d424"
+      ]
+    },
+    {
+      "edge_id": "failure-edge-2ec31b1ca3e513dc",
+      "failure_id": "failure-7e1d8b80463916d7",
+      "snapshot_id": "snapshot-0011",
+      "source": "DETECTION",
+      "target": "PROVIDER_WIDE",
+      "type": "HANDLED_AT",
+      "confidence": "SUPPORTED",
+      "evidence": [
+        "security-ev-53070a6bff14d424"
+      ]
+    },
+    {
+      "edge_id": "failure-edge-cf80154c43642221",
+      "failure_id": "failure-7e1d8b80463916d7",
+      "snapshot_id": "snapshot-0011",
+      "source": "PROVIDER_WIDE",
+      "target": "RECOVERY_PATH",
+      "type": "ENABLES_PATH",
+      "confidence": "SUPPORTED",
+      "evidence": [
+        "security-ev-53070a6bff14d424"
+      ]
+    },
+    {
+      "edge_id": "failure-edge-0fe495e0199016a8",
+      "failure_id": "failure-f6a5965d5818fbdc",
+      "snapshot_id": "snapshot-0011",
+      "source": "FAILURE_SOURCE",
+      "target": "DETECTION",
+      "type": "TRIGGERS",
+      "confidence": "PROVED",
+      "evidence": [
+        "security-ev-82f0ff4d05dc560a"
+      ]
+    },
+    {
+      "edge_id": "failure-edge-16c72bbb5c3c7c88",
+      "failure_id": "failure-f6a5965d5818fbdc",
+      "snapshot_id": "snapshot-0011",
+      "source": "DETECTION",
+      "target": "OPERATION_LOCAL",
+      "type": "HANDLED_AT",
+      "confidence": "SUPPORTED",
+      "evidence": [
+        "security-ev-82f0ff4d05dc560a"
+      ]
+    },
+    {
+      "edge_id": "failure-edge-4d640112b97f1b8c",
+      "failure_id": "failure-ca514618d68edd16",
+      "snapshot_id": "snapshot-0011",
+      "source": "FAILURE_SOURCE",
+      "target": "DETECTION",
+      "type": "TRIGGERS",
+      "confidence": "PROVED",
+      "evidence": [
+        "security-ev-6b777a96e79c3de9"
+      ]
+    },
+    {
+      "edge_id": "failure-edge-6e0d429f858085ed",
+      "failure_id": "failure-ca514618d68edd16",
+      "snapshot_id": "snapshot-0011",
+      "source": "DETECTION",
+      "target": "OPERATION_LOCAL",
+      "type": "HANDLED_AT",
+      "confidence": "SUPPORTED",
+      "evidence": [
+        "security-ev-6b777a96e79c3de9"
+      ]
+    },
+    {
+      "edge_id": "failure-edge-c64dc1ebe3f8509c",
+      "failure_id": "failure-7240b74609bdb9b4",
+      "snapshot_id": "snapshot-0011",
+      "source": "FAILURE_SOURCE",
+      "target": "DETECTION",
+      "type": "TRIGGERS",
+      "confidence": "PROVED",
+      "evidence": [
+        "security-ev-62427229aa9fa8cf"
+      ]
+    },
+    {
+      "edge_id": "failure-edge-6827fd305de8a3e1",
+      "failure_id": "failure-7240b74609bdb9b4",
+      "snapshot_id": "snapshot-0011",
+      "source": "DETECTION",
+      "target": "OPERATION_LOCAL",
+      "type": "HANDLED_AT",
+      "confidence": "SUPPORTED",
+      "evidence": [
+        "security-ev-62427229aa9fa8cf"
+      ]
+    },
+    {
+      "edge_id": "failure-edge-d9791d71cab8e78e",
+      "failure_id": "failure-beef4917fd54f44b",
+      "snapshot_id": "snapshot-0011",
+      "source": "FAILURE_SOURCE",
+      "target": "DETECTION",
+      "type": "TRIGGERS",
+      "confidence": "PROVED",
+      "evidence": [
+        "security-ev-aa8fb61eb0125582"
+      ]
+    },
+    {
+      "edge_id": "failure-edge-5c5e820a4439713d",
+      "failure_id": "failure-beef4917fd54f44b",
+      "snapshot_id": "snapshot-0011",
+      "source": "DETECTION",
+      "target": "OPERATION_LOCAL",
+      "type": "HANDLED_AT",
+      "confidence": "SUPPORTED",
+      "evidence": [
+        "security-ev-aa8fb61eb0125582"
+      ]
+    },
+    {
+      "edge_id": "failure-edge-cdad5bcbece02c8a",
+      "failure_id": "failure-beef4917fd54f44b",
+      "snapshot_id": "snapshot-0011",
+      "source": "OPERATION_LOCAL",
+      "target": "RECOVERY_PATH",
+      "type": "ENABLES_PATH",
+      "confidence": "SUPPORTED",
+      "evidence": [
+        "security-ev-aa8fb61eb0125582"
+      ]
+    },
+    {
+      "edge_id": "failure-edge-ea82503c6bf95783",
+      "failure_id": "failure-35f58de881f50ab5",
+      "snapshot_id": "snapshot-0011",
+      "source": "FAILURE_SOURCE",
+      "target": "DETECTION",
+      "type": "TRIGGERS",
+      "confidence": "PROVED",
+      "evidence": [
+        "security-ev-9d20a8e1ad288e55"
+      ]
+    },
+    {
+      "edge_id": "failure-edge-c33def27c477d7e5",
+      "failure_id": "failure-35f58de881f50ab5",
+      "snapshot_id": "snapshot-0011",
+      "source": "DETECTION",
+      "target": "CANDIDATE_WIDE",
+      "type": "HANDLED_AT",
+      "confidence": "SUPPORTED",
+      "evidence": [
+        "security-ev-9d20a8e1ad288e55"
+      ]
+    },
+    {
+      "edge_id": "failure-edge-16eee27825786781",
+      "failure_id": "failure-35f58de881f50ab5",
+      "snapshot_id": "snapshot-0011",
+      "source": "CANDIDATE_WIDE",
+      "target": "RECOVERY_PATH",
+      "type": "ENABLES_PATH",
+      "confidence": "SUPPORTED",
+      "evidence": [
+        "security-ev-9d20a8e1ad288e55"
+      ]
+    },
+    {
+      "edge_id": "failure-edge-4a41696c10712107",
+      "failure_id": "failure-361d01319e32720b",
+      "snapshot_id": "snapshot-0011",
+      "source": "FAILURE_SOURCE",
+      "target": "DETECTION",
+      "type": "TRIGGERS",
+      "confidence": "PROVED",
+      "evidence": [
+        "security-ev-9e25ec197595c177"
+      ]
+    },
+    {
+      "edge_id": "failure-edge-6e87521b74d13346",
+      "failure_id": "failure-361d01319e32720b",
+      "snapshot_id": "snapshot-0011",
+      "source": "DETECTION",
+      "target": "OPERATION_LOCAL",
+      "type": "HANDLED_AT",
+      "confidence": "SUPPORTED",
+      "evidence": [
+        "security-ev-9e25ec197595c177"
+      ]
+    },
+    {
+      "edge_id": "failure-edge-284866a74b03b9e7",
+      "failure_id": "failure-a61b7359941c34f8",
+      "snapshot_id": "snapshot-0011",
+      "source": "FAILURE_SOURCE",
+      "target": "DETECTION",
+      "type": "TRIGGERS",
+      "confidence": "PROVED",
+      "evidence": [
+        "security-ev-19f1c70b815c4b88"
+      ]
+    },
+    {
+      "edge_id": "failure-edge-14a9902736866c0a",
+      "failure_id": "failure-a61b7359941c34f8",
+      "snapshot_id": "snapshot-0011",
+      "source": "DETECTION",
+      "target": "OPERATION_LOCAL",
+      "type": "HANDLED_AT",
+      "confidence": "SUPPORTED",
+      "evidence": [
+        "security-ev-19f1c70b815c4b88"
+      ]
+    },
+    {
+      "edge_id": "failure-edge-00f7446227384c4b",
+      "failure_id": "failure-040ea5948a8753e5",
+      "snapshot_id": "snapshot-0010",
+      "source": "FAILURE_SOURCE",
+      "target": "DETECTION",
+      "type": "TRIGGERS",
+      "confidence": "PROVED",
+      "evidence": [
+        "security-ev-2f20919cd31873d9"
+      ]
+    },
+    {
+      "edge_id": "failure-edge-496141b2516ae09a",
+      "failure_id": "failure-040ea5948a8753e5",
+      "snapshot_id": "snapshot-0010",
+      "source": "DETECTION",
+      "target": "OPERATION_LOCAL",
+      "type": "HANDLED_AT",
+      "confidence": "SUPPORTED",
+      "evidence": [
+        "security-ev-2f20919cd31873d9"
+      ]
+    },
+    {
+      "edge_id": "failure-edge-5262e17759ef8fb1",
+      "failure_id": "failure-040ea5948a8753e5",
+      "snapshot_id": "snapshot-0010",
+      "source": "OPERATION_LOCAL",
+      "target": "RECOVERY_PATH",
+      "type": "ENABLES_PATH",
+      "confidence": "SUPPORTED",
+      "evidence": [
+        "security-ev-2f20919cd31873d9"
+      ]
+    },
+    {
+      "edge_id": "failure-edge-8c9fd46bff83adb1",
+      "failure_id": "failure-81d2a4d158535d01",
+      "snapshot_id": "snapshot-0010",
+      "source": "FAILURE_SOURCE",
+      "target": "DETECTION",
+      "type": "TRIGGERS",
+      "confidence": "PROVED",
+      "evidence": [
+        "security-ev-271b9e4aa6ac5f23"
+      ]
+    },
+    {
+      "edge_id": "failure-edge-90d4e0da6800a0d9",
+      "failure_id": "failure-81d2a4d158535d01",
+      "snapshot_id": "snapshot-0010",
+      "source": "DETECTION",
+      "target": "OPERATION_LOCAL",
+      "type": "HANDLED_AT",
+      "confidence": "SUPPORTED",
+      "evidence": [
+        "security-ev-271b9e4aa6ac5f23"
+      ]
+    },
+    {
+      "edge_id": "failure-edge-866b57b337898b3e",
+      "failure_id": "failure-81d2a4d158535d01",
+      "snapshot_id": "snapshot-0010",
+      "source": "OPERATION_LOCAL",
+      "target": "RECOVERY_PATH",
+      "type": "ENABLES_PATH",
+      "confidence": "SUPPORTED",
+      "evidence": [
+        "security-ev-271b9e4aa6ac5f23"
+      ]
+    },
+    {
+      "edge_id": "failure-edge-ef1dbc1c7ae910ea",
+      "failure_id": "failure-5745b893117aadf7",
+      "snapshot_id": "snapshot-0010",
+      "source": "FAILURE_SOURCE",
+      "target": "DETECTION",
+      "type": "TRIGGERS",
+      "confidence": "PROVED",
+      "evidence": [
+        "security-ev-ada91e361358b57e"
+      ]
+    },
+    {
+      "edge_id": "failure-edge-758ee5893d2d6e48",
+      "failure_id": "failure-5745b893117aadf7",
+      "snapshot_id": "snapshot-0010",
+      "source": "DETECTION",
+      "target": "OPERATION_LOCAL",
+      "type": "HANDLED_AT",
+      "confidence": "SUPPORTED",
+      "evidence": [
+        "security-ev-ada91e361358b57e"
+      ]
+    },
+    {
+      "edge_id": "failure-edge-3dafceba459a23b8",
+      "failure_id": "failure-4be27445680a8f31",
+      "snapshot_id": "snapshot-0010",
+      "source": "FAILURE_SOURCE",
+      "target": "DETECTION",
+      "type": "TRIGGERS",
+      "confidence": "PROVED",
+      "evidence": [
+        "security-ev-a602df7600ee69a3"
+      ]
+    },
+    {
+      "edge_id": "failure-edge-8ed718fb68c99133",
+      "failure_id": "failure-4be27445680a8f31",
+      "snapshot_id": "snapshot-0010",
+      "source": "DETECTION",
+      "target": "OPERATION_LOCAL",
+      "type": "HANDLED_AT",
+      "confidence": "SUPPORTED",
+      "evidence": [
+        "security-ev-a602df7600ee69a3"
+      ]
+    },
+    {
+      "edge_id": "failure-edge-051f5de91025e4ff",
+      "failure_id": "failure-d2bedc6ef98ee35a",
+      "snapshot_id": "snapshot-0010",
+      "source": "FAILURE_SOURCE",
+      "target": "DETECTION",
+      "type": "TRIGGERS",
+      "confidence": "PROVED",
+      "evidence": [
+        "security-ev-ba42bba450ba90ac"
+      ]
+    },
+    {
+      "edge_id": "failure-edge-57ef2a8657b4494d",
+      "failure_id": "failure-d2bedc6ef98ee35a",
+      "snapshot_id": "snapshot-0010",
+      "source": "DETECTION",
+      "target": "OPERATION_LOCAL",
+      "type": "HANDLED_AT",
+      "confidence": "SUPPORTED",
+      "evidence": [
+        "security-ev-ba42bba450ba90ac"
+      ]
+    },
+    {
+      "edge_id": "failure-edge-dd75b0b9b1138d9c",
+      "failure_id": "failure-7de047cf76b618a9",
+      "snapshot_id": "snapshot-0010",
+      "source": "FAILURE_SOURCE",
+      "target": "DETECTION",
+      "type": "TRIGGERS",
+      "confidence": "PROVED",
+      "evidence": [
+        "security-ev-d00ca17c85ddc7ce"
+      ]
+    },
+    {
+      "edge_id": "failure-edge-6c47f000685b05dc",
+      "failure_id": "failure-7de047cf76b618a9",
+      "snapshot_id": "snapshot-0010",
+      "source": "DETECTION",
+      "target": "STOP_BOUNDARY_NOT_PROVED",
+      "type": "HANDLED_AT",
+      "confidence": "SUPPORTED",
+      "evidence": [
+        "security-ev-d00ca17c85ddc7ce"
+      ]
+    },
+    {
+      "edge_id": "failure-edge-6b15bf5033342cc9",
+      "failure_id": "failure-7de047cf76b618a9",
+      "snapshot_id": "snapshot-0010",
+      "source": "STOP_BOUNDARY_NOT_PROVED",
+      "target": "RECOVERY_PATH",
+      "type": "ENABLES_PATH",
+      "confidence": "SUPPORTED",
+      "evidence": [
+        "security-ev-d00ca17c85ddc7ce"
+      ]
+    },
+    {
+      "edge_id": "failure-edge-16eb071c1affce1f",
+      "failure_id": "failure-125d85c9da400b50",
+      "snapshot_id": "snapshot-0010",
+      "source": "FAILURE_SOURCE",
+      "target": "DETECTION",
+      "type": "TRIGGERS",
+      "confidence": "PROVED",
+      "evidence": [
+        "security-ev-969b4d57cfee4313"
+      ]
+    },
+    {
+      "edge_id": "failure-edge-f3c18bba0deea45d",
+      "failure_id": "failure-125d85c9da400b50",
+      "snapshot_id": "snapshot-0010",
+      "source": "DETECTION",
+      "target": "STOP_BOUNDARY_NOT_PROVED",
+      "type": "HANDLED_AT",
+      "confidence": "SUPPORTED",
+      "evidence": [
+        "security-ev-969b4d57cfee4313"
+      ]
+    },
+    {
+      "edge_id": "failure-edge-642fb062a0d217b9",
+      "failure_id": "failure-125d85c9da400b50",
+      "snapshot_id": "snapshot-0010",
+      "source": "STOP_BOUNDARY_NOT_PROVED",
+      "target": "RECOVERY_PATH",
+      "type": "ENABLES_PATH",
+      "confidence": "SUPPORTED",
+      "evidence": [
+        "security-ev-969b4d57cfee4313"
+      ]
+    },
+    {
+      "edge_id": "failure-edge-d52d35045b913811",
+      "failure_id": "failure-b922d46a4a17c8e9",
+      "snapshot_id": "snapshot-0010",
+      "source": "FAILURE_SOURCE",
+      "target": "DETECTION",
+      "type": "TRIGGERS",
+      "confidence": "PROVED",
+      "evidence": [
+        "security-ev-7ca4438712e07786"
+      ]
+    },
+    {
+      "edge_id": "failure-edge-174b3839097e004f",
+      "failure_id": "failure-b922d46a4a17c8e9",
+      "snapshot_id": "snapshot-0010",
+      "source": "DETECTION",
+      "target": "OPERATION_LOCAL",
+      "type": "HANDLED_AT",
+      "confidence": "SUPPORTED",
+      "evidence": [
+        "security-ev-7ca4438712e07786"
+      ]
+    },
+    {
+      "edge_id": "failure-edge-7d93f834ab72ee75",
+      "failure_id": "failure-b922d46a4a17c8e9",
+      "snapshot_id": "snapshot-0010",
+      "source": "OPERATION_LOCAL",
+      "target": "RECOVERY_PATH",
+      "type": "ENABLES_PATH",
+      "confidence": "SUPPORTED",
+      "evidence": [
+        "security-ev-7ca4438712e07786"
+      ]
+    },
+    {
+      "edge_id": "failure-edge-bf465293bf3520a8",
+      "failure_id": "failure-ca517e2d4a15b717",
+      "snapshot_id": "snapshot-0010",
+      "source": "FAILURE_SOURCE",
+      "target": "DETECTION",
+      "type": "TRIGGERS",
+      "confidence": "PROVED",
+      "evidence": [
+        "security-ev-1d829d3bcbc1e32d"
+      ]
+    },
+    {
+      "edge_id": "failure-edge-dc3df49688c80f04",
+      "failure_id": "failure-ca517e2d4a15b717",
+      "snapshot_id": "snapshot-0010",
+      "source": "DETECTION",
+      "target": "PROVIDER_WIDE",
+      "type": "HANDLED_AT",
+      "confidence": "SUPPORTED",
+      "evidence": [
+        "security-ev-1d829d3bcbc1e32d"
+      ]
+    },
+    {
+      "edge_id": "failure-edge-fdb76c86b545fcbe",
+      "failure_id": "failure-ca517e2d4a15b717",
+      "snapshot_id": "snapshot-0010",
+      "source": "PROVIDER_WIDE",
+      "target": "RECOVERY_PATH",
+      "type": "ENABLES_PATH",
+      "confidence": "SUPPORTED",
+      "evidence": [
+        "security-ev-1d829d3bcbc1e32d"
+      ]
+    },
+    {
+      "edge_id": "failure-edge-a3d3274000c465ae",
+      "failure_id": "failure-0b8df73e250c9830",
+      "snapshot_id": "snapshot-0010",
+      "source": "FAILURE_SOURCE",
+      "target": "DETECTION",
+      "type": "TRIGGERS",
+      "confidence": "PROVED",
+      "evidence": [
+        "security-ev-67a955f801298e24"
+      ]
+    },
+    {
+      "edge_id": "failure-edge-692535cd37ac054d",
+      "failure_id": "failure-0b8df73e250c9830",
+      "snapshot_id": "snapshot-0010",
+      "source": "DETECTION",
+      "target": "OPERATION_LOCAL",
+      "type": "HANDLED_AT",
+      "confidence": "SUPPORTED",
+      "evidence": [
+        "security-ev-67a955f801298e24"
+      ]
+    },
+    {
+      "edge_id": "failure-edge-6d8633c734bb7807",
+      "failure_id": "failure-d4cb9588c66c14be",
+      "snapshot_id": "snapshot-0010",
+      "source": "FAILURE_SOURCE",
+      "target": "DETECTION",
+      "type": "TRIGGERS",
+      "confidence": "PROVED",
+      "evidence": [
+        "security-ev-25684d9ed6322712"
+      ]
+    },
+    {
+      "edge_id": "failure-edge-a8d024a37530c412",
+      "failure_id": "failure-d4cb9588c66c14be",
+      "snapshot_id": "snapshot-0010",
+      "source": "DETECTION",
+      "target": "OPERATION_LOCAL",
+      "type": "HANDLED_AT",
+      "confidence": "SUPPORTED",
+      "evidence": [
+        "security-ev-25684d9ed6322712"
+      ]
+    },
+    {
+      "edge_id": "failure-edge-dec7281778cf8bbf",
+      "failure_id": "failure-c1684f89553524ac",
+      "snapshot_id": "snapshot-0010",
+      "source": "FAILURE_SOURCE",
+      "target": "DETECTION",
+      "type": "TRIGGERS",
+      "confidence": "PROVED",
+      "evidence": [
+        "security-ev-5e0d140d0b548186"
+      ]
+    },
+    {
+      "edge_id": "failure-edge-422919d5c8e81cdc",
+      "failure_id": "failure-c1684f89553524ac",
+      "snapshot_id": "snapshot-0010",
+      "source": "DETECTION",
+      "target": "OPERATION_LOCAL",
+      "type": "HANDLED_AT",
+      "confidence": "SUPPORTED",
+      "evidence": [
+        "security-ev-5e0d140d0b548186"
+      ]
+    },
+    {
+      "edge_id": "failure-edge-0c4fd7e8246ed79e",
+      "failure_id": "failure-7486de62148ed271",
+      "snapshot_id": "snapshot-0010",
+      "source": "FAILURE_SOURCE",
+      "target": "DETECTION",
+      "type": "TRIGGERS",
+      "confidence": "PROVED",
+      "evidence": [
+        "security-ev-fcc81df80fb5470c"
+      ]
+    },
+    {
+      "edge_id": "failure-edge-1420b7fa13045977",
+      "failure_id": "failure-7486de62148ed271",
+      "snapshot_id": "snapshot-0010",
+      "source": "DETECTION",
+      "target": "STOP_BOUNDARY_NOT_PROVED",
+      "type": "HANDLED_AT",
+      "confidence": "SUPPORTED",
+      "evidence": [
+        "security-ev-fcc81df80fb5470c"
+      ]
+    },
+    {
+      "edge_id": "failure-edge-164ec53394334498",
+      "failure_id": "failure-d509d367fc767097",
+      "snapshot_id": "snapshot-0010",
+      "source": "FAILURE_SOURCE",
+      "target": "DETECTION",
+      "type": "TRIGGERS",
+      "confidence": "PROVED",
+      "evidence": [
+        "security-ev-ebeeb7ea763e30e3"
+      ]
+    },
+    {
+      "edge_id": "failure-edge-e7c6b728c5f9ecbc",
+      "failure_id": "failure-d509d367fc767097",
+      "snapshot_id": "snapshot-0010",
+      "source": "DETECTION",
+      "target": "OPERATION_LOCAL",
+      "type": "HANDLED_AT",
+      "confidence": "SUPPORTED",
+      "evidence": [
+        "security-ev-ebeeb7ea763e30e3"
+      ]
+    },
+    {
+      "edge_id": "failure-edge-67f05bfab3e728b6",
+      "failure_id": "failure-a41cd59cd61ff923",
+      "snapshot_id": "snapshot-0010",
+      "source": "FAILURE_SOURCE",
+      "target": "DETECTION",
+      "type": "TRIGGERS",
+      "confidence": "PROVED",
+      "evidence": [
+        "security-ev-99887e645fb57713"
+      ]
+    },
+    {
+      "edge_id": "failure-edge-9353b46efb2ed07f",
+      "failure_id": "failure-a41cd59cd61ff923",
+      "snapshot_id": "snapshot-0010",
+      "source": "DETECTION",
+      "target": "OPERATION_LOCAL",
+      "type": "HANDLED_AT",
+      "confidence": "SUPPORTED",
+      "evidence": [
+        "security-ev-99887e645fb57713"
+      ]
+    },
+    {
+      "edge_id": "failure-edge-5234364d1f81d445",
+      "failure_id": "failure-bcc0dd372049d1a5",
+      "snapshot_id": "snapshot-0012",
+      "source": "FAILURE_SOURCE",
+      "target": "DETECTION",
+      "type": "TRIGGERS",
+      "confidence": "PROVED",
+      "evidence": [
+        "security-ev-888079f700892021"
+      ]
+    },
+    {
+      "edge_id": "failure-edge-45bad7637ac57eb2",
+      "failure_id": "failure-bcc0dd372049d1a5",
+      "snapshot_id": "snapshot-0012",
+      "source": "DETECTION",
+      "target": "OPERATION_LOCAL",
+      "type": "HANDLED_AT",
+      "confidence": "SUPPORTED",
+      "evidence": [
+        "security-ev-888079f700892021"
+      ]
+    },
+    {
+      "edge_id": "failure-edge-094f3769db24b84f",
+      "failure_id": "failure-bcc0dd372049d1a5",
+      "snapshot_id": "snapshot-0012",
+      "source": "OPERATION_LOCAL",
+      "target": "RECOVERY_PATH",
+      "type": "ENABLES_PATH",
+      "confidence": "SUPPORTED",
+      "evidence": [
+        "security-ev-888079f700892021"
+      ]
+    },
+    {
+      "edge_id": "failure-edge-33f1b3fda851f9eb",
+      "failure_id": "failure-7c2de535075aad79",
+      "snapshot_id": "snapshot-0012",
+      "source": "FAILURE_SOURCE",
+      "target": "DETECTION",
+      "type": "TRIGGERS",
+      "confidence": "PROVED",
+      "evidence": [
+        "security-ev-708c1b5fc3086240"
+      ]
+    },
+    {
+      "edge_id": "failure-edge-024da8621b9430c8",
+      "failure_id": "failure-7c2de535075aad79",
+      "snapshot_id": "snapshot-0012",
+      "source": "DETECTION",
+      "target": "OPERATION_LOCAL",
+      "type": "HANDLED_AT",
+      "confidence": "SUPPORTED",
+      "evidence": [
+        "security-ev-708c1b5fc3086240"
+      ]
+    },
+    {
+      "edge_id": "failure-edge-cae7ee4925f32201",
+      "failure_id": "failure-7c2de535075aad79",
+      "snapshot_id": "snapshot-0012",
+      "source": "OPERATION_LOCAL",
+      "target": "RECOVERY_PATH",
+      "type": "ENABLES_PATH",
+      "confidence": "SUPPORTED",
+      "evidence": [
+        "security-ev-708c1b5fc3086240"
+      ]
+    },
+    {
+      "edge_id": "failure-edge-7abdaaf5d302408a",
+      "failure_id": "failure-dd45819565f97c78",
+      "snapshot_id": "snapshot-0012",
+      "source": "FAILURE_SOURCE",
+      "target": "DETECTION",
+      "type": "TRIGGERS",
+      "confidence": "PROVED",
+      "evidence": [
+        "security-ev-566c3db11479f466"
+      ]
+    },
+    {
+      "edge_id": "failure-edge-cde8f9e09366c6ce",
+      "failure_id": "failure-dd45819565f97c78",
+      "snapshot_id": "snapshot-0012",
+      "source": "DETECTION",
+      "target": "OPERATION_LOCAL",
+      "type": "HANDLED_AT",
+      "confidence": "SUPPORTED",
+      "evidence": [
+        "security-ev-566c3db11479f466"
+      ]
+    },
+    {
+      "edge_id": "failure-edge-4c06485e67709e69",
+      "failure_id": "failure-dd45819565f97c78",
+      "snapshot_id": "snapshot-0012",
+      "source": "OPERATION_LOCAL",
+      "target": "RECOVERY_PATH",
+      "type": "ENABLES_PATH",
+      "confidence": "SUPPORTED",
+      "evidence": [
+        "security-ev-566c3db11479f466"
+      ]
+    },
+    {
+      "edge_id": "failure-edge-2ba67546b9fadcc8",
+      "failure_id": "failure-3fff94b0a0a337bc",
+      "snapshot_id": "snapshot-0012",
+      "source": "FAILURE_SOURCE",
+      "target": "DETECTION",
+      "type": "TRIGGERS",
+      "confidence": "PROVED",
+      "evidence": [
+        "security-ev-24575052747f41f2"
+      ]
+    },
+    {
+      "edge_id": "failure-edge-15a8e0f85e86452e",
+      "failure_id": "failure-3fff94b0a0a337bc",
+      "snapshot_id": "snapshot-0012",
+      "source": "DETECTION",
+      "target": "OPERATION_LOCAL",
+      "type": "HANDLED_AT",
+      "confidence": "SUPPORTED",
+      "evidence": [
+        "security-ev-24575052747f41f2"
+      ]
+    },
+    {
+      "edge_id": "failure-edge-0bc3a94eb57aa334",
+      "failure_id": "failure-3fff94b0a0a337bc",
+      "snapshot_id": "snapshot-0012",
+      "source": "OPERATION_LOCAL",
+      "target": "RECOVERY_PATH",
+      "type": "ENABLES_PATH",
+      "confidence": "SUPPORTED",
+      "evidence": [
+        "security-ev-24575052747f41f2"
+      ]
+    },
+    {
+      "edge_id": "failure-edge-b2d493b2f41cc57c",
+      "failure_id": "failure-835f4a384af0282e",
+      "snapshot_id": "snapshot-0012",
+      "source": "FAILURE_SOURCE",
+      "target": "DETECTION",
+      "type": "TRIGGERS",
+      "confidence": "PROVED",
+      "evidence": [
+        "security-ev-de72aa189484071c"
+      ]
+    },
+    {
+      "edge_id": "failure-edge-8a4e8040e998c6fb",
+      "failure_id": "failure-835f4a384af0282e",
+      "snapshot_id": "snapshot-0012",
+      "source": "DETECTION",
+      "target": "OPERATION_LOCAL",
+      "type": "HANDLED_AT",
+      "confidence": "SUPPORTED",
+      "evidence": [
+        "security-ev-de72aa189484071c"
+      ]
+    },
+    {
+      "edge_id": "failure-edge-934c0410426650c8",
+      "failure_id": "failure-71f5de11ae716456",
+      "snapshot_id": "snapshot-0012",
+      "source": "FAILURE_SOURCE",
+      "target": "DETECTION",
+      "type": "TRIGGERS",
+      "confidence": "PROVED",
+      "evidence": [
+        "security-ev-6fe57ae14a4bf257"
+      ]
+    },
+    {
+      "edge_id": "failure-edge-93131a6f17c78955",
+      "failure_id": "failure-71f5de11ae716456",
+      "snapshot_id": "snapshot-0012",
+      "source": "DETECTION",
+      "target": "OPERATION_LOCAL",
+      "type": "HANDLED_AT",
+      "confidence": "SUPPORTED",
+      "evidence": [
+        "security-ev-6fe57ae14a4bf257"
+      ]
+    },
+    {
+      "edge_id": "failure-edge-c66763e8935ebdbb",
+      "failure_id": "failure-2be3b1a9e9188281",
+      "snapshot_id": "snapshot-0012",
+      "source": "FAILURE_SOURCE",
+      "target": "DETECTION",
+      "type": "TRIGGERS",
+      "confidence": "PROVED",
+      "evidence": [
+        "security-ev-f28f50c537a86404"
+      ]
+    },
+    {
+      "edge_id": "failure-edge-4cc51a1e9d99dcfc",
+      "failure_id": "failure-2be3b1a9e9188281",
+      "snapshot_id": "snapshot-0012",
+      "source": "DETECTION",
+      "target": "OPERATION_LOCAL",
+      "type": "HANDLED_AT",
+      "confidence": "SUPPORTED",
+      "evidence": [
+        "security-ev-f28f50c537a86404"
+      ]
+    },
+    {
+      "edge_id": "failure-edge-5002dfec2adfa85b",
+      "failure_id": "failure-99623a28bfcbdd12",
+      "snapshot_id": "snapshot-0012",
+      "source": "FAILURE_SOURCE",
+      "target": "DETECTION",
+      "type": "TRIGGERS",
+      "confidence": "PROVED",
+      "evidence": [
+        "security-ev-913eb3775eca79c1"
+      ]
+    },
+    {
+      "edge_id": "failure-edge-523cfa88d0f9261e",
+      "failure_id": "failure-99623a28bfcbdd12",
+      "snapshot_id": "snapshot-0012",
+      "source": "DETECTION",
+      "target": "CALLER",
+      "type": "PROPAGATES_TO",
+      "confidence": "SUPPORTED",
+      "evidence": [
+        "security-ev-913eb3775eca79c1"
+      ]
+    },
+    {
+      "edge_id": "failure-edge-38c89afbcaed2146",
+      "failure_id": "failure-99623a28bfcbdd12",
+      "snapshot_id": "snapshot-0012",
+      "source": "STOP_BOUNDARY_NOT_PROVED",
+      "target": "RECOVERY_PATH",
+      "type": "ENABLES_PATH",
+      "confidence": "SUPPORTED",
+      "evidence": [
+        "security-ev-913eb3775eca79c1"
+      ]
+    },
+    {
+      "edge_id": "failure-edge-b7b9556dba6add1d",
+      "failure_id": "failure-5811f9c0beaee6bf",
+      "snapshot_id": "snapshot-0012",
+      "source": "FAILURE_SOURCE",
+      "target": "DETECTION",
+      "type": "TRIGGERS",
+      "confidence": "PROVED",
+      "evidence": [
+        "security-ev-b08c4412bf587ec8"
+      ]
+    },
+    {
+      "edge_id": "failure-edge-27bf00a06e00b3e8",
+      "failure_id": "failure-5811f9c0beaee6bf",
+      "snapshot_id": "snapshot-0012",
+      "source": "DETECTION",
+      "target": "STOP_BOUNDARY_NOT_PROVED",
+      "type": "HANDLED_AT",
+      "confidence": "SUPPORTED",
+      "evidence": [
+        "security-ev-b08c4412bf587ec8"
+      ]
+    },
+    {
+      "edge_id": "failure-edge-ba687f8e1f525923",
+      "failure_id": "failure-5811f9c0beaee6bf",
+      "snapshot_id": "snapshot-0012",
+      "source": "STOP_BOUNDARY_NOT_PROVED",
+      "target": "RECOVERY_PATH",
+      "type": "ENABLES_PATH",
+      "confidence": "SUPPORTED",
+      "evidence": [
+        "security-ev-b08c4412bf587ec8"
+      ]
+    },
+    {
+      "edge_id": "failure-edge-a44462da9f508309",
+      "failure_id": "failure-753ae817a6e17b1b",
+      "snapshot_id": "snapshot-0012",
+      "source": "FAILURE_SOURCE",
+      "target": "DETECTION",
+      "type": "TRIGGERS",
+      "confidence": "PROVED",
+      "evidence": [
+        "security-ev-e313eca352c1c9bc"
+      ]
+    },
+    {
+      "edge_id": "failure-edge-a15092ed727d706c",
+      "failure_id": "failure-753ae817a6e17b1b",
+      "snapshot_id": "snapshot-0012",
+      "source": "DETECTION",
+      "target": "STOP_BOUNDARY_NOT_PROVED",
+      "type": "HANDLED_AT",
+      "confidence": "SUPPORTED",
+      "evidence": [
+        "security-ev-e313eca352c1c9bc"
+      ]
+    },
+    {
+      "edge_id": "failure-edge-eb9b3b617ac70f08",
+      "failure_id": "failure-753ae817a6e17b1b",
+      "snapshot_id": "snapshot-0012",
+      "source": "STOP_BOUNDARY_NOT_PROVED",
+      "target": "RECOVERY_PATH",
+      "type": "ENABLES_PATH",
+      "confidence": "SUPPORTED",
+      "evidence": [
+        "security-ev-e313eca352c1c9bc"
+      ]
+    },
+    {
+      "edge_id": "failure-edge-c2642243e4721fe9",
+      "failure_id": "failure-a82a68ce3176f144",
+      "snapshot_id": "snapshot-0012",
+      "source": "FAILURE_SOURCE",
+      "target": "DETECTION",
+      "type": "TRIGGERS",
+      "confidence": "PROVED",
+      "evidence": [
+        "security-ev-2fbf659cea67412c"
+      ]
+    },
+    {
+      "edge_id": "failure-edge-9fb6fc0f434364e7",
+      "failure_id": "failure-a82a68ce3176f144",
+      "snapshot_id": "snapshot-0012",
+      "source": "DETECTION",
+      "target": "STOP_BOUNDARY_NOT_PROVED",
+      "type": "HANDLED_AT",
+      "confidence": "SUPPORTED",
+      "evidence": [
+        "security-ev-2fbf659cea67412c"
+      ]
+    },
+    {
+      "edge_id": "failure-edge-4b1b3f76132cbd9e",
+      "failure_id": "failure-d5b594b600c61237",
+      "snapshot_id": "snapshot-0012",
+      "source": "FAILURE_SOURCE",
+      "target": "DETECTION",
+      "type": "TRIGGERS",
+      "confidence": "PROVED",
+      "evidence": [
+        "security-ev-0b7d996f5b8d55c1"
+      ]
+    },
+    {
+      "edge_id": "failure-edge-f22e6f965ef43c00",
+      "failure_id": "failure-d5b594b600c61237",
+      "snapshot_id": "snapshot-0012",
+      "source": "DETECTION",
+      "target": "OPERATION_LOCAL",
+      "type": "HANDLED_AT",
+      "confidence": "SUPPORTED",
+      "evidence": [
+        "security-ev-0b7d996f5b8d55c1"
+      ]
+    },
+    {
+      "edge_id": "failure-edge-339553333c51f8e1",
+      "failure_id": "failure-d5b594b600c61237",
+      "snapshot_id": "snapshot-0012",
+      "source": "OPERATION_LOCAL",
+      "target": "RECOVERY_PATH",
+      "type": "ENABLES_PATH",
+      "confidence": "SUPPORTED",
+      "evidence": [
+        "security-ev-0b7d996f5b8d55c1"
+      ]
+    },
+    {
+      "edge_id": "failure-edge-a11382ec0ba429cf",
+      "failure_id": "failure-6397beb98d3c40d2",
+      "snapshot_id": "snapshot-0012",
+      "source": "FAILURE_SOURCE",
+      "target": "DETECTION",
+      "type": "TRIGGERS",
+      "confidence": "PROVED",
+      "evidence": [
+        "security-ev-f168646fec075ff0"
+      ]
+    },
+    {
+      "edge_id": "failure-edge-9ec512f6cb20898a",
+      "failure_id": "failure-6397beb98d3c40d2",
+      "snapshot_id": "snapshot-0012",
+      "source": "DETECTION",
+      "target": "OPERATION_LOCAL",
+      "type": "HANDLED_AT",
+      "confidence": "SUPPORTED",
+      "evidence": [
+        "security-ev-f168646fec075ff0"
+      ]
+    },
+    {
+      "edge_id": "failure-edge-a8f0c641499b498f",
+      "failure_id": "failure-6397beb98d3c40d2",
+      "snapshot_id": "snapshot-0012",
+      "source": "OPERATION_LOCAL",
+      "target": "RECOVERY_PATH",
+      "type": "ENABLES_PATH",
+      "confidence": "SUPPORTED",
+      "evidence": [
+        "security-ev-f168646fec075ff0"
+      ]
+    },
+    {
+      "edge_id": "failure-edge-a81ffa99470562bc",
+      "failure_id": "failure-cb96cf40e6ddf41a",
+      "snapshot_id": "snapshot-0012",
+      "source": "FAILURE_SOURCE",
+      "target": "DETECTION",
+      "type": "TRIGGERS",
+      "confidence": "PROVED",
+      "evidence": [
+        "security-ev-f254e663b5062707"
+      ]
+    },
+    {
+      "edge_id": "failure-edge-85c9074f6ef7eae7",
+      "failure_id": "failure-cb96cf40e6ddf41a",
+      "snapshot_id": "snapshot-0012",
+      "source": "DETECTION",
+      "target": "OPERATION_LOCAL",
+      "type": "HANDLED_AT",
+      "confidence": "SUPPORTED",
+      "evidence": [
+        "security-ev-f254e663b5062707"
+      ]
+    },
+    {
+      "edge_id": "failure-edge-ee2e325a6946a24c",
+      "failure_id": "failure-dec029cad23418d8",
+      "snapshot_id": "snapshot-0012",
+      "source": "FAILURE_SOURCE",
+      "target": "DETECTION",
+      "type": "TRIGGERS",
+      "confidence": "PROVED",
+      "evidence": [
+        "security-ev-46758ad69378490d"
+      ]
+    },
+    {
+      "edge_id": "failure-edge-88335aa5e5b1e3cc",
+      "failure_id": "failure-dec029cad23418d8",
+      "snapshot_id": "snapshot-0012",
+      "source": "DETECTION",
+      "target": "PROVIDER_WIDE",
+      "type": "HANDLED_AT",
+      "confidence": "SUPPORTED",
+      "evidence": [
+        "security-ev-46758ad69378490d"
+      ]
+    },
+    {
+      "edge_id": "failure-edge-c1b6dfd761718363",
+      "failure_id": "failure-dec029cad23418d8",
+      "snapshot_id": "snapshot-0012",
+      "source": "PROVIDER_WIDE",
+      "target": "RECOVERY_PATH",
+      "type": "ENABLES_PATH",
+      "confidence": "SUPPORTED",
+      "evidence": [
+        "security-ev-46758ad69378490d"
+      ]
+    },
+    {
+      "edge_id": "failure-edge-00e84caa0c81eeee",
+      "failure_id": "failure-84ffe20d6362a6d4",
+      "snapshot_id": "snapshot-0012",
+      "source": "FAILURE_SOURCE",
+      "target": "DETECTION",
+      "type": "TRIGGERS",
+      "confidence": "PROVED",
+      "evidence": [
+        "security-ev-861ff3b621877a87"
+      ]
+    },
+    {
+      "edge_id": "failure-edge-4acef1e34b1ff16b",
+      "failure_id": "failure-84ffe20d6362a6d4",
+      "snapshot_id": "snapshot-0012",
+      "source": "DETECTION",
+      "target": "PROVIDER_WIDE",
+      "type": "HANDLED_AT",
+      "confidence": "SUPPORTED",
+      "evidence": [
+        "security-ev-861ff3b621877a87"
+      ]
+    },
+    {
+      "edge_id": "failure-edge-12cfdd08c1162f4a",
+      "failure_id": "failure-84ffe20d6362a6d4",
+      "snapshot_id": "snapshot-0012",
+      "source": "PROVIDER_WIDE",
+      "target": "RECOVERY_PATH",
+      "type": "ENABLES_PATH",
+      "confidence": "SUPPORTED",
+      "evidence": [
+        "security-ev-861ff3b621877a87"
+      ]
+    },
+    {
+      "edge_id": "failure-edge-46c18742158334b1",
+      "failure_id": "failure-7f0f2845e5ba5896",
+      "snapshot_id": "snapshot-0012",
+      "source": "FAILURE_SOURCE",
+      "target": "DETECTION",
+      "type": "TRIGGERS",
+      "confidence": "PROVED",
+      "evidence": [
+        "security-ev-7cf385dfde3a7caf"
+      ]
+    },
+    {
+      "edge_id": "failure-edge-22cadee9785ed4a1",
+      "failure_id": "failure-7f0f2845e5ba5896",
+      "snapshot_id": "snapshot-0012",
+      "source": "DETECTION",
+      "target": "PROVIDER_WIDE",
+      "type": "HANDLED_AT",
+      "confidence": "SUPPORTED",
+      "evidence": [
+        "security-ev-7cf385dfde3a7caf"
+      ]
+    },
+    {
+      "edge_id": "failure-edge-5107d635012b8fe0",
+      "failure_id": "failure-7f0f2845e5ba5896",
+      "snapshot_id": "snapshot-0012",
+      "source": "PROVIDER_WIDE",
+      "target": "RECOVERY_PATH",
+      "type": "ENABLES_PATH",
+      "confidence": "SUPPORTED",
+      "evidence": [
+        "security-ev-7cf385dfde3a7caf"
+      ]
+    },
+    {
+      "edge_id": "failure-edge-ce2c2f1d6075e57b",
+      "failure_id": "failure-046b9636bce25492",
+      "snapshot_id": "snapshot-0012",
+      "source": "FAILURE_SOURCE",
+      "target": "DETECTION",
+      "type": "TRIGGERS",
+      "confidence": "PROVED",
+      "evidence": [
+        "security-ev-8048f31a8f8460b4"
+      ]
+    },
+    {
+      "edge_id": "failure-edge-60d94dc5b3f18de7",
+      "failure_id": "failure-046b9636bce25492",
+      "snapshot_id": "snapshot-0012",
+      "source": "DETECTION",
+      "target": "OPERATION_LOCAL",
+      "type": "HANDLED_AT",
+      "confidence": "SUPPORTED",
+      "evidence": [
+        "security-ev-8048f31a8f8460b4"
+      ]
+    },
+    {
+      "edge_id": "failure-edge-d67cb6e39cd96d7a",
+      "failure_id": "failure-388150998104c5b8",
+      "snapshot_id": "snapshot-0012",
+      "source": "FAILURE_SOURCE",
+      "target": "DETECTION",
+      "type": "TRIGGERS",
+      "confidence": "PROVED",
+      "evidence": [
+        "security-ev-449c9738ecfc8de9"
+      ]
+    },
+    {
+      "edge_id": "failure-edge-9b3933f25cb827bd",
+      "failure_id": "failure-388150998104c5b8",
+      "snapshot_id": "snapshot-0012",
+      "source": "DETECTION",
+      "target": "OPERATION_LOCAL",
+      "type": "HANDLED_AT",
+      "confidence": "SUPPORTED",
+      "evidence": [
+        "security-ev-449c9738ecfc8de9"
+      ]
+    },
+    {
+      "edge_id": "failure-edge-ea3b69a7267c8d25",
+      "failure_id": "failure-84638a61cdbc9b94",
+      "snapshot_id": "snapshot-0012",
+      "source": "FAILURE_SOURCE",
+      "target": "DETECTION",
+      "type": "TRIGGERS",
+      "confidence": "PROVED",
+      "evidence": [
+        "security-ev-7336fafd6650cfdd"
+      ]
+    },
+    {
+      "edge_id": "failure-edge-fcad839b0855d559",
+      "failure_id": "failure-84638a61cdbc9b94",
+      "snapshot_id": "snapshot-0012",
+      "source": "DETECTION",
+      "target": "OPERATION_LOCAL",
+      "type": "HANDLED_AT",
+      "confidence": "SUPPORTED",
+      "evidence": [
+        "security-ev-7336fafd6650cfdd"
+      ]
+    },
+    {
+      "edge_id": "failure-edge-d6dfa132fe795f33",
+      "failure_id": "failure-14d66b6fe154f63f",
+      "snapshot_id": "snapshot-0012",
+      "source": "FAILURE_SOURCE",
+      "target": "DETECTION",
+      "type": "TRIGGERS",
+      "confidence": "PROVED",
+      "evidence": [
+        "security-ev-4adab4c4d3ae2cc9"
+      ]
+    },
+    {
+      "edge_id": "failure-edge-5c70348410b0a794",
+      "failure_id": "failure-14d66b6fe154f63f",
+      "snapshot_id": "snapshot-0012",
+      "source": "DETECTION",
+      "target": "OPERATION_LOCAL",
+      "type": "HANDLED_AT",
+      "confidence": "SUPPORTED",
+      "evidence": [
+        "security-ev-4adab4c4d3ae2cc9"
+      ]
+    },
+    {
+      "edge_id": "failure-edge-a17930ffa2399ebd",
+      "failure_id": "failure-14d66b6fe154f63f",
+      "snapshot_id": "snapshot-0012",
+      "source": "OPERATION_LOCAL",
+      "target": "RECOVERY_PATH",
+      "type": "ENABLES_PATH",
+      "confidence": "SUPPORTED",
+      "evidence": [
+        "security-ev-4adab4c4d3ae2cc9"
+      ]
+    },
+    {
+      "edge_id": "failure-edge-1e9b5a8d3477858d",
+      "failure_id": "failure-c456625f753c98d2",
+      "snapshot_id": "snapshot-0012",
+      "source": "FAILURE_SOURCE",
+      "target": "DETECTION",
+      "type": "TRIGGERS",
+      "confidence": "PROVED",
+      "evidence": [
+        "security-ev-8f0a57342f68ac74"
+      ]
+    },
+    {
+      "edge_id": "failure-edge-64b2aa7b0fa2ec6e",
+      "failure_id": "failure-c456625f753c98d2",
+      "snapshot_id": "snapshot-0012",
+      "source": "DETECTION",
+      "target": "CANDIDATE_WIDE",
+      "type": "HANDLED_AT",
+      "confidence": "SUPPORTED",
+      "evidence": [
+        "security-ev-8f0a57342f68ac74"
+      ]
+    },
+    {
+      "edge_id": "failure-edge-e2cae961e343baec",
+      "failure_id": "failure-c456625f753c98d2",
+      "snapshot_id": "snapshot-0012",
+      "source": "CANDIDATE_WIDE",
+      "target": "RECOVERY_PATH",
+      "type": "ENABLES_PATH",
+      "confidence": "SUPPORTED",
+      "evidence": [
+        "security-ev-8f0a57342f68ac74"
+      ]
+    },
+    {
+      "edge_id": "failure-edge-f7b894d0e0b98d6e",
+      "failure_id": "failure-7b74b2b066795a33",
+      "snapshot_id": "snapshot-0012",
+      "source": "FAILURE_SOURCE",
+      "target": "DETECTION",
+      "type": "TRIGGERS",
+      "confidence": "PROVED",
+      "evidence": [
+        "security-ev-d6acf7bc386e387a"
+      ]
+    },
+    {
+      "edge_id": "failure-edge-ea5fb2227055d806",
+      "failure_id": "failure-7b74b2b066795a33",
+      "snapshot_id": "snapshot-0012",
+      "source": "DETECTION",
+      "target": "OPERATION_LOCAL",
+      "type": "HANDLED_AT",
+      "confidence": "SUPPORTED",
+      "evidence": [
+        "security-ev-d6acf7bc386e387a"
+      ]
+    },
+    {
+      "edge_id": "failure-edge-86aaa85ec91943a1",
+      "failure_id": "failure-8f73c42a1e092ac8",
+      "snapshot_id": "snapshot-0012",
+      "source": "FAILURE_SOURCE",
+      "target": "DETECTION",
+      "type": "TRIGGERS",
+      "confidence": "PROVED",
+      "evidence": [
+        "security-ev-578fe6abd7101266"
+      ]
+    },
+    {
+      "edge_id": "failure-edge-e3c1820f9af9eecf",
+      "failure_id": "failure-8f73c42a1e092ac8",
+      "snapshot_id": "snapshot-0012",
+      "source": "DETECTION",
+      "target": "OPERATION_LOCAL",
+      "type": "HANDLED_AT",
+      "confidence": "SUPPORTED",
+      "evidence": [
+        "security-ev-578fe6abd7101266"
+      ]
+    },
+    {
+      "edge_id": "failure-edge-088df19c0a64df06",
+      "failure_id": "failure-a546cee963bab9de",
+      "snapshot_id": "snapshot-0013",
+      "source": "FAILURE_SOURCE",
+      "target": "DETECTION",
+      "type": "TRIGGERS",
+      "confidence": "PROVED",
+      "evidence": [
+        "security-ev-62b4a2dfb3d93671"
+      ]
+    },
+    {
+      "edge_id": "failure-edge-d512433d49478d44",
+      "failure_id": "failure-a546cee963bab9de",
+      "snapshot_id": "snapshot-0013",
+      "source": "DETECTION",
+      "target": "STOP_BOUNDARY_NOT_PROVED",
+      "type": "HANDLED_AT",
+      "confidence": "SUPPORTED",
+      "evidence": [
+        "security-ev-62b4a2dfb3d93671"
+      ]
+    },
+    {
+      "edge_id": "failure-edge-00ee0cd50f4aa0d4",
+      "failure_id": "failure-b42505aacbe0a0e0",
+      "snapshot_id": "snapshot-0013",
+      "source": "FAILURE_SOURCE",
+      "target": "DETECTION",
+      "type": "TRIGGERS",
+      "confidence": "PROVED",
+      "evidence": [
+        "security-ev-67d410bb66e533fc"
+      ]
+    },
+    {
+      "edge_id": "failure-edge-0ae2c48e64a440d4",
+      "failure_id": "failure-b42505aacbe0a0e0",
+      "snapshot_id": "snapshot-0013",
+      "source": "DETECTION",
+      "target": "OPERATION_LOCAL",
+      "type": "HANDLED_AT",
+      "confidence": "SUPPORTED",
+      "evidence": [
+        "security-ev-67d410bb66e533fc"
+      ]
+    },
+    {
+      "edge_id": "failure-edge-505f6160e0a37dac",
+      "failure_id": "failure-b42505aacbe0a0e0",
+      "snapshot_id": "snapshot-0013",
+      "source": "OPERATION_LOCAL",
+      "target": "RECOVERY_PATH",
+      "type": "ENABLES_PATH",
+      "confidence": "SUPPORTED",
+      "evidence": [
+        "security-ev-67d410bb66e533fc"
+      ]
+    },
+    {
+      "edge_id": "failure-edge-2f265a67ff7b470f",
+      "failure_id": "failure-734340f64ba3d62f",
+      "snapshot_id": "snapshot-0013",
+      "source": "FAILURE_SOURCE",
+      "target": "DETECTION",
+      "type": "TRIGGERS",
+      "confidence": "PROVED",
+      "evidence": [
+        "security-ev-9ae6e046cf5f209d"
+      ]
+    },
+    {
+      "edge_id": "failure-edge-7a799ee8185e8420",
+      "failure_id": "failure-734340f64ba3d62f",
+      "snapshot_id": "snapshot-0013",
+      "source": "DETECTION",
+      "target": "STOP_BOUNDARY_NOT_PROVED",
+      "type": "HANDLED_AT",
+      "confidence": "SUPPORTED",
+      "evidence": [
+        "security-ev-9ae6e046cf5f209d"
+      ]
+    },
+    {
+      "edge_id": "failure-edge-250b447780f6a6ff",
+      "failure_id": "failure-39f5a41f882fa66b",
+      "snapshot_id": "snapshot-0013",
+      "source": "FAILURE_SOURCE",
+      "target": "DETECTION",
+      "type": "TRIGGERS",
+      "confidence": "PROVED",
+      "evidence": [
+        "security-ev-d93e18e8c1e998c2"
+      ]
+    },
+    {
+      "edge_id": "failure-edge-71a0a464cb9604a9",
+      "failure_id": "failure-39f5a41f882fa66b",
+      "snapshot_id": "snapshot-0013",
+      "source": "DETECTION",
+      "target": "OPERATION_LOCAL",
+      "type": "HANDLED_AT",
+      "confidence": "SUPPORTED",
+      "evidence": [
+        "security-ev-d93e18e8c1e998c2"
+      ]
+    },
+    {
+      "edge_id": "failure-edge-35c2102da13fbaba",
+      "failure_id": "failure-9d45c4ed3b57285d",
+      "snapshot_id": "snapshot-0013",
+      "source": "FAILURE_SOURCE",
+      "target": "DETECTION",
+      "type": "TRIGGERS",
+      "confidence": "PROVED",
+      "evidence": [
+        "security-ev-1bf8fc7bbb6afbc9"
+      ]
+    },
+    {
+      "edge_id": "failure-edge-33e564abf80aa2f3",
+      "failure_id": "failure-9d45c4ed3b57285d",
+      "snapshot_id": "snapshot-0013",
+      "source": "DETECTION",
+      "target": "OPERATION_LOCAL",
+      "type": "HANDLED_AT",
+      "confidence": "SUPPORTED",
+      "evidence": [
+        "security-ev-1bf8fc7bbb6afbc9"
+      ]
+    },
+    {
+      "edge_id": "failure-edge-c02a915aaf937176",
+      "failure_id": "failure-83064f094c751d4b",
+      "snapshot_id": "snapshot-0013",
+      "source": "FAILURE_SOURCE",
+      "target": "DETECTION",
+      "type": "TRIGGERS",
+      "confidence": "PROVED",
+      "evidence": [
+        "security-ev-4088c2804364a776"
+      ]
+    },
+    {
+      "edge_id": "failure-edge-edc9512864b04ef0",
+      "failure_id": "failure-83064f094c751d4b",
+      "snapshot_id": "snapshot-0013",
+      "source": "DETECTION",
+      "target": "OPERATION_LOCAL",
+      "type": "HANDLED_AT",
+      "confidence": "SUPPORTED",
+      "evidence": [
+        "security-ev-4088c2804364a776"
+      ]
+    },
+    {
+      "edge_id": "failure-edge-d6c9977e6d386ad5",
+      "failure_id": "failure-3db898c5193b4b9c",
+      "snapshot_id": "snapshot-0013",
+      "source": "FAILURE_SOURCE",
+      "target": "DETECTION",
+      "type": "TRIGGERS",
+      "confidence": "PROVED",
+      "evidence": [
+        "security-ev-bf8a7dda4bc3fdf3"
+      ]
+    },
+    {
+      "edge_id": "failure-edge-5606630172198975",
+      "failure_id": "failure-3db898c5193b4b9c",
+      "snapshot_id": "snapshot-0013",
+      "source": "DETECTION",
+      "target": "OPERATION_LOCAL",
+      "type": "HANDLED_AT",
+      "confidence": "SUPPORTED",
+      "evidence": [
+        "security-ev-bf8a7dda4bc3fdf3"
+      ]
+    },
+    {
+      "edge_id": "failure-edge-032136a0ff792898",
+      "failure_id": "failure-3db898c5193b4b9c",
+      "snapshot_id": "snapshot-0013",
+      "source": "OPERATION_LOCAL",
+      "target": "RECOVERY_PATH",
+      "type": "ENABLES_PATH",
+      "confidence": "SUPPORTED",
+      "evidence": [
+        "security-ev-bf8a7dda4bc3fdf3"
+      ]
+    },
+    {
+      "edge_id": "failure-edge-40a056682f3c54a2",
+      "failure_id": "failure-19b741fff8ee5ff7",
+      "snapshot_id": "snapshot-0013",
+      "source": "FAILURE_SOURCE",
+      "target": "DETECTION",
+      "type": "TRIGGERS",
+      "confidence": "PROVED",
+      "evidence": [
+        "security-ev-d09f05e9d84b8ff2"
+      ]
+    },
+    {
+      "edge_id": "failure-edge-c2f477d076ea404c",
+      "failure_id": "failure-19b741fff8ee5ff7",
+      "snapshot_id": "snapshot-0013",
+      "source": "DETECTION",
+      "target": "PROVIDER_WIDE",
+      "type": "HANDLED_AT",
+      "confidence": "SUPPORTED",
+      "evidence": [
+        "security-ev-d09f05e9d84b8ff2"
+      ]
+    },
+    {
+      "edge_id": "failure-edge-e9281052dbfa994f",
+      "failure_id": "failure-19b741fff8ee5ff7",
+      "snapshot_id": "snapshot-0013",
+      "source": "PROVIDER_WIDE",
+      "target": "RECOVERY_PATH",
+      "type": "ENABLES_PATH",
+      "confidence": "SUPPORTED",
+      "evidence": [
+        "security-ev-d09f05e9d84b8ff2"
+      ]
+    },
+    {
+      "edge_id": "failure-edge-4b9bdfbc43766957",
+      "failure_id": "failure-c72aa5fca997426a",
+      "snapshot_id": "snapshot-0013",
+      "source": "FAILURE_SOURCE",
+      "target": "DETECTION",
+      "type": "TRIGGERS",
+      "confidence": "PROVED",
+      "evidence": [
+        "security-ev-4c6864414081c3fb"
+      ]
+    },
+    {
+      "edge_id": "failure-edge-45d3d62904912755",
+      "failure_id": "failure-c72aa5fca997426a",
+      "snapshot_id": "snapshot-0013",
+      "source": "DETECTION",
+      "target": "STOP_BOUNDARY_NOT_PROVED",
+      "type": "HANDLED_AT",
+      "confidence": "SUPPORTED",
+      "evidence": [
+        "security-ev-4c6864414081c3fb"
+      ]
+    },
+    {
+      "edge_id": "failure-edge-f79108c70b99f55b",
+      "failure_id": "failure-c72aa5fca997426a",
+      "snapshot_id": "snapshot-0013",
+      "source": "STOP_BOUNDARY_NOT_PROVED",
+      "target": "RECOVERY_PATH",
+      "type": "ENABLES_PATH",
+      "confidence": "SUPPORTED",
+      "evidence": [
+        "security-ev-4c6864414081c3fb"
+      ]
+    },
+    {
+      "edge_id": "failure-edge-79753c46a6f86995",
+      "failure_id": "failure-24456081ba5d92b0",
+      "snapshot_id": "snapshot-0013",
+      "source": "FAILURE_SOURCE",
+      "target": "DETECTION",
+      "type": "TRIGGERS",
+      "confidence": "PROVED",
+      "evidence": [
+        "security-ev-c3b3e1fe251bcf28"
+      ]
+    },
+    {
+      "edge_id": "failure-edge-3af38b7459543c9e",
+      "failure_id": "failure-24456081ba5d92b0",
+      "snapshot_id": "snapshot-0013",
+      "source": "DETECTION",
+      "target": "STOP_BOUNDARY_NOT_PROVED",
+      "type": "HANDLED_AT",
+      "confidence": "SUPPORTED",
+      "evidence": [
+        "security-ev-c3b3e1fe251bcf28"
+      ]
+    },
+    {
+      "edge_id": "failure-edge-d056884945c21ca8",
+      "failure_id": "failure-24456081ba5d92b0",
+      "snapshot_id": "snapshot-0013",
+      "source": "STOP_BOUNDARY_NOT_PROVED",
+      "target": "RECOVERY_PATH",
+      "type": "ENABLES_PATH",
+      "confidence": "SUPPORTED",
+      "evidence": [
+        "security-ev-c3b3e1fe251bcf28"
+      ]
+    },
+    {
+      "edge_id": "failure-edge-121d87a0100c0bec",
+      "failure_id": "failure-893f6c1bcba0a0c4",
+      "snapshot_id": "snapshot-0013",
+      "source": "FAILURE_SOURCE",
+      "target": "DETECTION",
+      "type": "TRIGGERS",
+      "confidence": "PROVED",
+      "evidence": [
+        "security-ev-442bd1bd40a7dd57"
+      ]
+    },
+    {
+      "edge_id": "failure-edge-7806f9d5c3e19806",
+      "failure_id": "failure-893f6c1bcba0a0c4",
+      "snapshot_id": "snapshot-0013",
+      "source": "DETECTION",
+      "target": "STOP_BOUNDARY_NOT_PROVED",
+      "type": "HANDLED_AT",
+      "confidence": "SUPPORTED",
+      "evidence": [
+        "security-ev-442bd1bd40a7dd57"
+      ]
+    },
+    {
+      "edge_id": "failure-edge-d627e135c4727618",
+      "failure_id": "failure-2bf238496d420070",
+      "snapshot_id": "snapshot-0013",
+      "source": "FAILURE_SOURCE",
+      "target": "DETECTION",
+      "type": "TRIGGERS",
+      "confidence": "PROVED",
+      "evidence": [
+        "security-ev-bc56107008ebaef1"
+      ]
+    },
+    {
+      "edge_id": "failure-edge-f06338fd0919f753",
+      "failure_id": "failure-2bf238496d420070",
+      "snapshot_id": "snapshot-0013",
+      "source": "DETECTION",
+      "target": "OPERATION_LOCAL",
+      "type": "HANDLED_AT",
+      "confidence": "SUPPORTED",
+      "evidence": [
+        "security-ev-bc56107008ebaef1"
+      ]
+    },
+    {
+      "edge_id": "failure-edge-264385baef5c8c33",
+      "failure_id": "failure-c8433ebd97c5d395",
+      "snapshot_id": "snapshot-0013",
+      "source": "FAILURE_SOURCE",
+      "target": "DETECTION",
+      "type": "TRIGGERS",
+      "confidence": "PROVED",
+      "evidence": [
+        "security-ev-af156f68e5fcbbe9"
+      ]
+    },
+    {
+      "edge_id": "failure-edge-c9da9ec3e30e0d53",
+      "failure_id": "failure-c8433ebd97c5d395",
+      "snapshot_id": "snapshot-0013",
+      "source": "DETECTION",
+      "target": "CANDIDATE_WIDE",
+      "type": "HANDLED_AT",
+      "confidence": "SUPPORTED",
+      "evidence": [
+        "security-ev-af156f68e5fcbbe9"
+      ]
+    },
+    {
+      "edge_id": "failure-edge-ec0546a16bfcbe4f",
+      "failure_id": "failure-c8433ebd97c5d395",
+      "snapshot_id": "snapshot-0013",
+      "source": "CANDIDATE_WIDE",
+      "target": "RECOVERY_PATH",
+      "type": "ENABLES_PATH",
+      "confidence": "SUPPORTED",
+      "evidence": [
+        "security-ev-af156f68e5fcbbe9"
+      ]
+    },
+    {
+      "edge_id": "failure-edge-c99be0483bf201e2",
+      "failure_id": "failure-fdacaa12572d11a8",
+      "snapshot_id": "snapshot-0013",
+      "source": "FAILURE_SOURCE",
+      "target": "DETECTION",
+      "type": "TRIGGERS",
+      "confidence": "PROVED",
+      "evidence": [
+        "security-ev-d4c6ec2b97e75606"
+      ]
+    },
+    {
+      "edge_id": "failure-edge-e060042cdb7037cb",
+      "failure_id": "failure-fdacaa12572d11a8",
+      "snapshot_id": "snapshot-0013",
+      "source": "DETECTION",
+      "target": "OPERATION_LOCAL",
+      "type": "HANDLED_AT",
+      "confidence": "SUPPORTED",
+      "evidence": [
+        "security-ev-d4c6ec2b97e75606"
+      ]
+    },
+    {
+      "edge_id": "failure-edge-b33de7bdd3af4fb4",
+      "failure_id": "failure-0546a174deab431d",
+      "snapshot_id": "snapshot-0014",
+      "source": "FAILURE_SOURCE",
+      "target": "DETECTION",
+      "type": "TRIGGERS",
+      "confidence": "PROVED",
+      "evidence": [
+        "security-ev-c1e0a7900dd364e7"
+      ]
+    },
+    {
+      "edge_id": "failure-edge-4c23511d0450a095",
+      "failure_id": "failure-0546a174deab431d",
+      "snapshot_id": "snapshot-0014",
+      "source": "DETECTION",
+      "target": "STOP_BOUNDARY_NOT_PROVED",
+      "type": "HANDLED_AT",
+      "confidence": "SUPPORTED",
+      "evidence": [
+        "security-ev-c1e0a7900dd364e7"
+      ]
+    },
+    {
+      "edge_id": "failure-edge-ddd5c57aae443226",
+      "failure_id": "failure-614c44910551ebe7",
+      "snapshot_id": "snapshot-0014",
+      "source": "FAILURE_SOURCE",
+      "target": "DETECTION",
+      "type": "TRIGGERS",
+      "confidence": "PROVED",
+      "evidence": [
+        "security-ev-93399494c7b81238"
+      ]
+    },
+    {
+      "edge_id": "failure-edge-10f14b6a72c6b121",
+      "failure_id": "failure-614c44910551ebe7",
+      "snapshot_id": "snapshot-0014",
+      "source": "DETECTION",
+      "target": "OPERATION_LOCAL",
+      "type": "HANDLED_AT",
+      "confidence": "SUPPORTED",
+      "evidence": [
+        "security-ev-93399494c7b81238"
+      ]
+    },
+    {
+      "edge_id": "failure-edge-4bb25deceb042bc2",
+      "failure_id": "failure-614c44910551ebe7",
+      "snapshot_id": "snapshot-0014",
+      "source": "OPERATION_LOCAL",
+      "target": "RECOVERY_PATH",
+      "type": "ENABLES_PATH",
+      "confidence": "SUPPORTED",
+      "evidence": [
+        "security-ev-93399494c7b81238"
+      ]
+    },
+    {
+      "edge_id": "failure-edge-291a009766b47e5c",
+      "failure_id": "failure-298820a4c1981e16",
+      "snapshot_id": "snapshot-0014",
+      "source": "FAILURE_SOURCE",
+      "target": "DETECTION",
+      "type": "TRIGGERS",
+      "confidence": "PROVED",
+      "evidence": [
+        "security-ev-7813bbecc7244e35"
+      ]
+    },
+    {
+      "edge_id": "failure-edge-0d490aa4d4d1978f",
+      "failure_id": "failure-298820a4c1981e16",
+      "snapshot_id": "snapshot-0014",
+      "source": "DETECTION",
+      "target": "OPERATION_LOCAL",
+      "type": "HANDLED_AT",
+      "confidence": "SUPPORTED",
+      "evidence": [
+        "security-ev-7813bbecc7244e35"
+      ]
+    },
+    {
+      "edge_id": "failure-edge-6c2c64bbe955d9e8",
+      "failure_id": "failure-298820a4c1981e16",
+      "snapshot_id": "snapshot-0014",
+      "source": "OPERATION_LOCAL",
+      "target": "RECOVERY_PATH",
+      "type": "ENABLES_PATH",
+      "confidence": "SUPPORTED",
+      "evidence": [
+        "security-ev-7813bbecc7244e35"
+      ]
+    },
+    {
+      "edge_id": "failure-edge-7cdc145e35bef374",
+      "failure_id": "failure-d3922e0c2b63cdbb",
+      "snapshot_id": "snapshot-0014",
+      "source": "FAILURE_SOURCE",
+      "target": "DETECTION",
+      "type": "TRIGGERS",
+      "confidence": "PROVED",
+      "evidence": [
+        "security-ev-415c4a01be959441"
+      ]
+    },
+    {
+      "edge_id": "failure-edge-f73232d11b80816d",
+      "failure_id": "failure-d3922e0c2b63cdbb",
+      "snapshot_id": "snapshot-0014",
+      "source": "DETECTION",
+      "target": "OPERATION_LOCAL",
+      "type": "HANDLED_AT",
+      "confidence": "SUPPORTED",
+      "evidence": [
+        "security-ev-415c4a01be959441"
+      ]
+    },
+    {
+      "edge_id": "failure-edge-214a372364a65605",
+      "failure_id": "failure-d3922e0c2b63cdbb",
+      "snapshot_id": "snapshot-0014",
+      "source": "OPERATION_LOCAL",
+      "target": "RECOVERY_PATH",
+      "type": "ENABLES_PATH",
+      "confidence": "SUPPORTED",
+      "evidence": [
+        "security-ev-415c4a01be959441"
+      ]
+    },
+    {
+      "edge_id": "failure-edge-914cb6fd68fe5450",
+      "failure_id": "failure-76d97c5a562d8c75",
+      "snapshot_id": "snapshot-0014",
+      "source": "FAILURE_SOURCE",
+      "target": "DETECTION",
+      "type": "TRIGGERS",
+      "confidence": "PROVED",
+      "evidence": [
+        "security-ev-b48cec225e57a571"
+      ]
+    },
+    {
+      "edge_id": "failure-edge-350e1c08142b7d63",
+      "failure_id": "failure-76d97c5a562d8c75",
+      "snapshot_id": "snapshot-0014",
+      "source": "DETECTION",
+      "target": "OPERATION_LOCAL",
+      "type": "HANDLED_AT",
+      "confidence": "SUPPORTED",
+      "evidence": [
+        "security-ev-b48cec225e57a571"
+      ]
+    },
+    {
+      "edge_id": "failure-edge-90a87d064ec078fd",
+      "failure_id": "failure-97212aeba3b6b89b",
+      "snapshot_id": "snapshot-0014",
+      "source": "FAILURE_SOURCE",
+      "target": "DETECTION",
+      "type": "TRIGGERS",
+      "confidence": "PROVED",
+      "evidence": [
+        "security-ev-e3ca6040d1719596"
+      ]
+    },
+    {
+      "edge_id": "failure-edge-6d62c19302e7d361",
+      "failure_id": "failure-97212aeba3b6b89b",
+      "snapshot_id": "snapshot-0014",
+      "source": "DETECTION",
+      "target": "STOP_BOUNDARY_NOT_PROVED",
+      "type": "HANDLED_AT",
+      "confidence": "SUPPORTED",
+      "evidence": [
+        "security-ev-e3ca6040d1719596"
+      ]
+    },
+    {
+      "edge_id": "failure-edge-0b51f0bc5c621ef8",
+      "failure_id": "failure-97212aeba3b6b89b",
+      "snapshot_id": "snapshot-0014",
+      "source": "STOP_BOUNDARY_NOT_PROVED",
+      "target": "RECOVERY_PATH",
+      "type": "ENABLES_PATH",
+      "confidence": "SUPPORTED",
+      "evidence": [
+        "security-ev-e3ca6040d1719596"
+      ]
+    },
+    {
+      "edge_id": "failure-edge-1d191c8eb01b6b58",
+      "failure_id": "failure-00fc6a722bebc94a",
+      "snapshot_id": "snapshot-0014",
+      "source": "FAILURE_SOURCE",
+      "target": "DETECTION",
+      "type": "TRIGGERS",
+      "confidence": "PROVED",
+      "evidence": [
+        "security-ev-4035436c20beb029"
+      ]
+    },
+    {
+      "edge_id": "failure-edge-72b6dae30f26336f",
+      "failure_id": "failure-00fc6a722bebc94a",
+      "snapshot_id": "snapshot-0014",
+      "source": "DETECTION",
+      "target": "STOP_BOUNDARY_NOT_PROVED",
+      "type": "HANDLED_AT",
+      "confidence": "SUPPORTED",
+      "evidence": [
+        "security-ev-4035436c20beb029"
+      ]
+    },
+    {
+      "edge_id": "failure-edge-43b472936385d8f9",
+      "failure_id": "failure-00fc6a722bebc94a",
+      "snapshot_id": "snapshot-0014",
+      "source": "STOP_BOUNDARY_NOT_PROVED",
+      "target": "RECOVERY_PATH",
+      "type": "ENABLES_PATH",
+      "confidence": "SUPPORTED",
+      "evidence": [
+        "security-ev-4035436c20beb029"
+      ]
+    },
+    {
+      "edge_id": "failure-edge-d2d85b7978cecc7b",
+      "failure_id": "failure-69f5ae030382771e",
+      "snapshot_id": "snapshot-0014",
+      "source": "FAILURE_SOURCE",
+      "target": "DETECTION",
+      "type": "TRIGGERS",
+      "confidence": "PROVED",
+      "evidence": [
+        "security-ev-b4979490680146c4"
+      ]
+    },
+    {
+      "edge_id": "failure-edge-283b367017f68cd4",
+      "failure_id": "failure-69f5ae030382771e",
+      "snapshot_id": "snapshot-0014",
+      "source": "DETECTION",
+      "target": "STOP_BOUNDARY_NOT_PROVED",
+      "type": "HANDLED_AT",
+      "confidence": "SUPPORTED",
+      "evidence": [
+        "security-ev-b4979490680146c4"
+      ]
+    },
+    {
+      "edge_id": "failure-edge-069459b37f113f1e",
+      "failure_id": "failure-764d4830909f1ae6",
+      "snapshot_id": "snapshot-0014",
+      "source": "FAILURE_SOURCE",
+      "target": "DETECTION",
+      "type": "TRIGGERS",
+      "confidence": "PROVED",
+      "evidence": [
+        "security-ev-1154e947aa545777"
+      ]
+    },
+    {
+      "edge_id": "failure-edge-e09bbfffccc01b79",
+      "failure_id": "failure-764d4830909f1ae6",
+      "snapshot_id": "snapshot-0014",
+      "source": "DETECTION",
+      "target": "OPERATION_LOCAL",
+      "type": "HANDLED_AT",
+      "confidence": "SUPPORTED",
+      "evidence": [
+        "security-ev-1154e947aa545777"
+      ]
+    },
+    {
+      "edge_id": "failure-edge-800082a882ce1630",
+      "failure_id": "failure-764d4830909f1ae6",
+      "snapshot_id": "snapshot-0014",
+      "source": "OPERATION_LOCAL",
+      "target": "RECOVERY_PATH",
+      "type": "ENABLES_PATH",
+      "confidence": "SUPPORTED",
+      "evidence": [
+        "security-ev-1154e947aa545777"
+      ]
+    },
+    {
+      "edge_id": "failure-edge-22c546276f9c99a6",
+      "failure_id": "failure-8e783c65eef9fcd8",
+      "snapshot_id": "snapshot-0014",
+      "source": "FAILURE_SOURCE",
+      "target": "DETECTION",
+      "type": "TRIGGERS",
+      "confidence": "PROVED",
+      "evidence": [
+        "security-ev-611d5ec5488f4c38"
+      ]
+    },
+    {
+      "edge_id": "failure-edge-a041410c57a419b1",
+      "failure_id": "failure-8e783c65eef9fcd8",
+      "snapshot_id": "snapshot-0014",
+      "source": "DETECTION",
+      "target": "STOP_BOUNDARY_NOT_PROVED",
+      "type": "HANDLED_AT",
+      "confidence": "SUPPORTED",
+      "evidence": [
+        "security-ev-611d5ec5488f4c38"
+      ]
+    },
+    {
+      "edge_id": "failure-edge-aed8e294cbb81c24",
+      "failure_id": "failure-618323e5feeb77f1",
+      "snapshot_id": "snapshot-0014",
+      "source": "FAILURE_SOURCE",
+      "target": "DETECTION",
+      "type": "TRIGGERS",
+      "confidence": "PROVED",
+      "evidence": [
+        "security-ev-decbce3b7e9befab"
+      ]
+    },
+    {
+      "edge_id": "failure-edge-37b3fb713d9f3865",
+      "failure_id": "failure-618323e5feeb77f1",
+      "snapshot_id": "snapshot-0014",
+      "source": "DETECTION",
+      "target": "STOP_BOUNDARY_NOT_PROVED",
+      "type": "HANDLED_AT",
+      "confidence": "SUPPORTED",
+      "evidence": [
+        "security-ev-decbce3b7e9befab"
+      ]
+    },
+    {
+      "edge_id": "failure-edge-054629f6f4d21387",
+      "failure_id": "failure-c012dd0e8dfef1dd",
+      "snapshot_id": "snapshot-0014",
+      "source": "FAILURE_SOURCE",
+      "target": "DETECTION",
+      "type": "TRIGGERS",
+      "confidence": "PROVED",
+      "evidence": [
+        "security-ev-b9c9b9ade075bdce"
+      ]
+    },
+    {
+      "edge_id": "failure-edge-cd0b4ab9091296bb",
+      "failure_id": "failure-c012dd0e8dfef1dd",
+      "snapshot_id": "snapshot-0014",
+      "source": "DETECTION",
+      "target": "OPERATION_LOCAL",
+      "type": "HANDLED_AT",
+      "confidence": "SUPPORTED",
+      "evidence": [
+        "security-ev-b9c9b9ade075bdce"
+      ]
+    },
+    {
+      "edge_id": "failure-edge-e8dd77ba327b5d65",
+      "failure_id": "failure-c012dd0e8dfef1dd",
+      "snapshot_id": "snapshot-0014",
+      "source": "OPERATION_LOCAL",
+      "target": "RECOVERY_PATH",
+      "type": "ENABLES_PATH",
+      "confidence": "SUPPORTED",
+      "evidence": [
+        "security-ev-b9c9b9ade075bdce"
+      ]
+    },
+    {
+      "edge_id": "failure-edge-b92ec9f3f0e557f3",
+      "failure_id": "failure-9b460fb0db9ee469",
+      "snapshot_id": "snapshot-0014",
+      "source": "FAILURE_SOURCE",
+      "target": "DETECTION",
+      "type": "TRIGGERS",
+      "confidence": "PROVED",
+      "evidence": [
+        "security-ev-559db334b90926b1"
+      ]
+    },
+    {
+      "edge_id": "failure-edge-099c010fc3379626",
+      "failure_id": "failure-9b460fb0db9ee469",
+      "snapshot_id": "snapshot-0014",
+      "source": "DETECTION",
+      "target": "OPERATION_LOCAL",
+      "type": "HANDLED_AT",
+      "confidence": "SUPPORTED",
+      "evidence": [
+        "security-ev-559db334b90926b1"
+      ]
+    },
+    {
+      "edge_id": "failure-edge-3ccba7bf6e1acb8d",
+      "failure_id": "failure-9b460fb0db9ee469",
+      "snapshot_id": "snapshot-0014",
+      "source": "OPERATION_LOCAL",
+      "target": "RECOVERY_PATH",
+      "type": "ENABLES_PATH",
+      "confidence": "SUPPORTED",
+      "evidence": [
+        "security-ev-559db334b90926b1"
+      ]
+    },
+    {
+      "edge_id": "failure-edge-2fe46054465d73e5",
+      "failure_id": "failure-711635649053a91f",
+      "snapshot_id": "snapshot-0014",
+      "source": "FAILURE_SOURCE",
+      "target": "DETECTION",
+      "type": "TRIGGERS",
+      "confidence": "PROVED",
+      "evidence": [
+        "security-ev-87403833796eabe4"
+      ]
+    },
+    {
+      "edge_id": "failure-edge-e64ae8b5d735263c",
+      "failure_id": "failure-711635649053a91f",
+      "snapshot_id": "snapshot-0014",
+      "source": "DETECTION",
+      "target": "OPERATION_LOCAL",
+      "type": "HANDLED_AT",
+      "confidence": "SUPPORTED",
+      "evidence": [
+        "security-ev-87403833796eabe4"
+      ]
+    },
+    {
+      "edge_id": "failure-edge-ce439773497d28b5",
+      "failure_id": "failure-711635649053a91f",
+      "snapshot_id": "snapshot-0014",
+      "source": "OPERATION_LOCAL",
+      "target": "RECOVERY_PATH",
+      "type": "ENABLES_PATH",
+      "confidence": "SUPPORTED",
+      "evidence": [
+        "security-ev-87403833796eabe4"
+      ]
+    },
+    {
+      "edge_id": "failure-edge-e5df62c1b4afed14",
+      "failure_id": "failure-4cf7408076941ee9",
+      "snapshot_id": "snapshot-0014",
+      "source": "FAILURE_SOURCE",
+      "target": "DETECTION",
+      "type": "TRIGGERS",
+      "confidence": "PROVED",
+      "evidence": [
+        "security-ev-bf4fdf005f17eb96"
+      ]
+    },
+    {
+      "edge_id": "failure-edge-fbabb4b6115334ef",
+      "failure_id": "failure-4cf7408076941ee9",
+      "snapshot_id": "snapshot-0014",
+      "source": "DETECTION",
+      "target": "OPERATION_LOCAL",
+      "type": "HANDLED_AT",
+      "confidence": "SUPPORTED",
+      "evidence": [
+        "security-ev-bf4fdf005f17eb96"
+      ]
+    },
+    {
+      "edge_id": "failure-edge-6d028945df6f5c11",
+      "failure_id": "failure-4cf7408076941ee9",
+      "snapshot_id": "snapshot-0014",
+      "source": "OPERATION_LOCAL",
+      "target": "RECOVERY_PATH",
+      "type": "ENABLES_PATH",
+      "confidence": "SUPPORTED",
+      "evidence": [
+        "security-ev-bf4fdf005f17eb96"
+      ]
+    },
+    {
+      "edge_id": "failure-edge-43cae4d8b4292e32",
+      "failure_id": "failure-3d6b5c25df9534b4",
+      "snapshot_id": "snapshot-0014",
+      "source": "FAILURE_SOURCE",
+      "target": "DETECTION",
+      "type": "TRIGGERS",
+      "confidence": "PROVED",
+      "evidence": [
+        "security-ev-8bc48fa3ff3f2023"
+      ]
+    },
+    {
+      "edge_id": "failure-edge-8020e83c8c7a8bd3",
+      "failure_id": "failure-3d6b5c25df9534b4",
+      "snapshot_id": "snapshot-0014",
+      "source": "DETECTION",
+      "target": "OPERATION_LOCAL",
+      "type": "HANDLED_AT",
+      "confidence": "SUPPORTED",
+      "evidence": [
+        "security-ev-8bc48fa3ff3f2023"
+      ]
+    }
+  ]
+}

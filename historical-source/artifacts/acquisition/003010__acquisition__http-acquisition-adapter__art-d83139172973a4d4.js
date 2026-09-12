@@ -1,0 +1,365 @@
+    class HttpAcquisitionAdapter {
+
+        async acquire(candidate) {
+            const observation =
+                new Observation(
+                    candidate
+                );
+
+            candidate.attempts++;
+
+            try {
+                const response =
+                    await this.request(
+                        candidate.target,
+                        candidate
+                    );
+
+                observation.signalPresent =
+                    true;
+
+                observation.http.status =
+                    response.status;
+
+                observation.http.contentType =
+                    response.contentType;
+
+                observation.http.contentLength =
+                    response.contentLength;
+
+                observation.http.finalUrl =
+                    response.finalUrl ||
+                    candidate.target;
+
+                observation.body =
+                    response.body;
+
+                observation.bodyTruncated =
+                    Boolean(
+                        response.bodyTruncated
+                    );
+
+                observation.complete(
+                    'acquired'
+                );
+            } catch (error) {
+                observation.errors.push(
+                    String(error)
+                );
+
+                observation.complete(
+                    'failed'
+                );
+            }
+
+            return observation;
+        }
+
+        request(
+            url,
+            candidate
+        ) {
+            return new Promise(
+                (resolve, reject) => {
+
+                    if (
+                        typeof GM_xmlhttpRequest ===
+                        'function'
+                    ) {
+                        let settled =
+                            false;
+
+                        const finish = (
+                            callback,
+                            value
+                        ) => {
+                            if (
+                                settled
+                            ) {
+                                return;
+                            }
+
+                            settled =
+                                true;
+
+                            callback(
+                                value
+                            );
+                        };
+
+                        GM_xmlhttpRequest({
+                            method:
+                                candidate
+                                    .hints
+                                    ?.method ||
+                                'GET',
+
+                            url,
+
+                            timeout:
+                                CONFIG.requestTimeout,
+
+                            responseType:
+                                'text',
+
+                            onload:
+                                response => {
+                                    const body =
+                                        String(
+                                            response
+                                                .responseText ||
+                                                ''
+                                        );
+
+                                    const limited =
+                                        this.limitBody(
+                                            body
+                                        );
+
+                                    finish(
+                                        resolve,
+                                        {
+                                            status:
+                                                response
+                                                    .status,
+
+                                            contentType:
+                                                this.extractContentType(
+                                                    response.responseHeaders
+                                                ),
+
+                                            contentLength:
+                                                this.extractContentLength(
+                                                    response.responseHeaders
+                                                ),
+
+                                            body:
+                                                limited
+                                                    .body,
+
+                                            bodyTruncated:
+                                                limited
+                                                    .truncated,
+
+                                            finalUrl:
+                                                response
+                                                    .finalUrl ||
+                                                url
+                                        }
+                                    );
+                                },
+
+                            onerror:
+                                () => {
+                                    finish(
+                                        reject,
+                                        new Error(
+                                            'request failed'
+                                        )
+                                    );
+                                },
+
+                            ontimeout:
+                                () => {
+                                    finish(
+                                        reject,
+                                        new Error(
+                                            'request timeout'
+                                        )
+                                    );
+                                },
+
+                            onabort:
+                                () => {
+                                    finish(
+                                        reject,
+                                        new Error(
+                                            'request aborted'
+                                        )
+                                    );
+                                }
+                        });
+
+                        return;
+                    }
+
+                    const controller =
+                        typeof AbortController !==
+                        'undefined'
+                            ? new AbortController()
+                            : null;
+
+                    let timer =
+                        null;
+
+                    if (
+                        controller
+                    ) {
+                        timer =
+                            setTimeout(
+                                () => {
+                                    controller.abort();
+                                },
+                                CONFIG.requestTimeout
+                            );
+                    }
+
+                    fetch(
+                        url,
+                        {
+                            method:
+                                'GET',
+
+                            credentials:
+                                'same-origin',
+
+                            signal:
+                                controller
+                                    ? controller
+                                          .signal
+                                    : undefined
+                        }
+                    )
+                        .then(
+                            async response => {
+                                const body =
+                                    await response.text();
+
+                                const limited =
+                                    this.limitBody(
+                                        body
+                                    );
+
+                                return {
+                                    status:
+                                        response.status,
+
+                                    contentType:
+                                        response
+                                            .headers
+                                            .get(
+                                                'content-type'
+                                            ),
+
+                                    contentLength:
+                                        response
+                                            .headers
+                                            .get(
+                                                'content-length'
+                                            ),
+
+                                    body:
+                                        limited.body,
+
+                                    bodyTruncated:
+                                        limited
+                                            .truncated,
+
+                                    finalUrl:
+                                        response.url ||
+                                        url
+                                };
+                            }
+                        )
+                        .then(
+                            resolve
+                        )
+                        .catch(
+                            error => {
+                                if (
+                                    error?.name ===
+                                    'AbortError'
+                                ) {
+                                    reject(
+                                        new Error(
+                                            'request timeout'
+                                        )
+                                    );
+                                } else {
+                                    reject(
+                                        error
+                                    );
+                                }
+                            }
+                        )
+                        .finally(
+                            () => {
+                                if (
+                                    timer
+                                ) {
+                                    clearTimeout(
+                                        timer
+                                    );
+                                }
+                            }
+                        );
+                }
+            );
+        }
+
+        limitBody(body) {
+            const max =
+                CONFIG.maxResponseBytes;
+
+            if (
+                body.length <= max
+            ) {
+                return {
+                    body,
+                    truncated:
+                        false
+                };
+            }
+
+            return {
+                body:
+                    body.slice(
+                        0,
+                        max
+                    ),
+
+                truncated:
+                    true
+            };
+        }
+
+        extractContentType(
+            headers
+        ) {
+            if (!headers) {
+                return '';
+            }
+
+            const match =
+                String(
+                    headers
+                ).match(
+                    /^content-type:\s*([^\r\n]+)/im
+                );
+
+            return match
+                ? match[1].trim()
+                : '';
+        }
+
+        extractContentLength(
+            headers
+        ) {
+            if (!headers) {
+                return null;
+            }
+
+            const match =
+                String(
+                    headers
+                ).match(
+                    /^content-length:\s*(\d+)/im
+                );
+
+            return match
+                ? Number(
+                      match[1]
+                  )
+                : null;
+        }
+    }

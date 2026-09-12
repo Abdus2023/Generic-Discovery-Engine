@@ -1,0 +1,26 @@
+                         ┌──────────────┐
+                         │    PLANNED   │
+                         └──────┬───────┘
+                                │
+                                ▼
+                         PROVIDER SELECTED
+                                │
+                                ▼
+                           ADMISSION
+                         /           \
+                       deny          grant
+                       │               │
+                       ▼               ▼
+                    SKIPPED       RESERVED
+                                       │
+                                       ▼
+                                    RUNNING
+                                  /    |    \
+                                 /     |     \
+                            success  retry   cancel
+                              │       │        │
+                              ▼       ▼        ▼
+                         OBSERVED  BACKOFF   CANCELLED
+                                      │
+                                      ▼
+                                    RUNNING

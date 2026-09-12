@@ -1,0 +1,2182 @@
+{
+  "schema_version": 8,
+  "builder": "security-archaeology-builder-v8",
+  "model_kind": "DERIVED_SECURITY_ARCHAEOLOGY_NOT_SOURCE",
+  "bounds": [
+    {
+      "bound_id": "bound-0c9a63b3e2552733",
+      "snapshot_id": "snapshot-0001",
+      "version": "v0.1.0",
+      "variant": "mechanically-composed",
+      "bound": "maxCandidates",
+      "value": "500",
+      "scope": "CANDIDATE_FRONTIER",
+      "first_appearance": "v0.1.0",
+      "enforcement_point": "KnowledgeBase.addCandidate",
+      "enforcement": "PROVED_REFERENCE",
+      "failure_behavior": "REJECT_DROP_OR_STOP",
+      "evidence": [
+        "security-ev-948cf470b5888a69",
+        "security-ev-2830473f43bce3b7"
+      ]
+    },
+    {
+      "bound_id": "bound-37d1e06c4da846ba",
+      "snapshot_id": "snapshot-0001",
+      "version": "v0.1.0",
+      "variant": "mechanically-composed",
+      "bound": "maxRequests",
+      "value": "100",
+      "scope": "SCAN_REQUEST_COUNT",
+      "first_appearance": "v0.1.0",
+      "enforcement_point": "DiscoveryEngine.worker",
+      "enforcement": "PROVED_REFERENCE",
+      "failure_behavior": "REJECT_DROP_OR_STOP",
+      "evidence": [
+        "security-ev-c36edd585706ea75",
+        "security-ev-08cc2e4da8ffe70a"
+      ]
+    },
+    {
+      "bound_id": "bound-7307144a230a134d",
+      "snapshot_id": "snapshot-0001",
+      "version": "v0.1.0",
+      "variant": "mechanically-composed",
+      "bound": "concurrency",
+      "value": "3",
+      "scope": "WORKER_COUNT",
+      "first_appearance": "v0.1.0",
+      "enforcement_point": "DiscoveryEngine.run",
+      "enforcement": "PROVED_REFERENCE",
+      "failure_behavior": "ENFORCEMENT_EXPRESSION_PRESENT_OUTCOME_NEEDS_PATH_ANALYSIS",
+      "evidence": [
+        "security-ev-f9d9b3c207c68249",
+        "security-ev-c9932dde2d91acff"
+      ]
+    },
+    {
+      "bound_id": "bound-2d5d89a48f00deef",
+      "snapshot_id": "snapshot-0001",
+      "version": "v0.1.0",
+      "variant": "mechanically-composed",
+      "bound": "requestTimeout",
+      "value": "8000",
+      "scope": "REQUEST_DURATION",
+      "first_appearance": "v0.1.0",
+      "enforcement_point": "HttpAcquisitionAdapter.request",
+      "enforcement": "PROVED_REFERENCE",
+      "failure_behavior": "ENFORCEMENT_EXPRESSION_PRESENT_OUTCOME_NEEDS_PATH_ANALYSIS",
+      "evidence": [
+        "security-ev-530e5c93b3b1af3f",
+        "security-ev-86efdcfaa2888d90"
+      ]
+    },
+    {
+      "bound_id": "bound-ba87cf2042f6ed66",
+      "snapshot_id": "snapshot-0003",
+      "version": "v0.2.0",
+      "variant": "mechanically-composed",
+      "bound": "maxCandidates",
+      "value": "500",
+      "scope": "CANDIDATE_FRONTIER",
+      "first_appearance": "v0.1.0",
+      "enforcement_point": "KnowledgeBase.addCandidate",
+      "enforcement": "PROVED_REFERENCE",
+      "failure_behavior": "REJECT_DROP_OR_STOP",
+      "evidence": [
+        "security-ev-9cf987ce4e7e19da",
+        "security-ev-1e8b1330a3862cc9"
+      ]
+    },
+    {
+      "bound_id": "bound-f7312e7a9487b91e",
+      "snapshot_id": "snapshot-0003",
+      "version": "v0.2.0",
+      "variant": "mechanically-composed",
+      "bound": "maxRequests",
+      "value": "100",
+      "scope": "SCAN_REQUEST_COUNT",
+      "first_appearance": "v0.1.0",
+      "enforcement_point": "DiscoveryEngine.worker",
+      "enforcement": "PROVED_REFERENCE",
+      "failure_behavior": "REJECT_DROP_OR_STOP",
+      "evidence": [
+        "security-ev-53a4284c6a3893ed",
+        "security-ev-45fccd3d3a79a5c5"
+      ]
+    },
+    {
+      "bound_id": "bound-ad7a9066652634c5",
+      "snapshot_id": "snapshot-0003",
+      "version": "v0.2.0",
+      "variant": "mechanically-composed",
+      "bound": "concurrency",
+      "value": "3",
+      "scope": "WORKER_COUNT",
+      "first_appearance": "v0.1.0",
+      "enforcement_point": "DiscoveryEngine.run",
+      "enforcement": "PROVED_REFERENCE",
+      "failure_behavior": "ENFORCEMENT_EXPRESSION_PRESENT_OUTCOME_NEEDS_PATH_ANALYSIS",
+      "evidence": [
+        "security-ev-837e9c017eea2290",
+        "security-ev-724e30e236e3bf61"
+      ]
+    },
+    {
+      "bound_id": "bound-6806cc66436a87db",
+      "snapshot_id": "snapshot-0003",
+      "version": "v0.2.0",
+      "variant": "mechanically-composed",
+      "bound": "requestTimeout",
+      "value": "8000",
+      "scope": "REQUEST_DURATION",
+      "first_appearance": "v0.1.0",
+      "enforcement_point": "HttpAcquisitionAdapter.request",
+      "enforcement": "PROVED_REFERENCE",
+      "failure_behavior": "ENFORCEMENT_EXPRESSION_PRESENT_OUTCOME_NEEDS_PATH_ANALYSIS",
+      "evidence": [
+        "security-ev-46855021b9972193",
+        "security-ev-eadabcd3f312505a"
+      ]
+    },
+    {
+      "bound_id": "bound-51f3f3fb04889241",
+      "snapshot_id": "snapshot-0005",
+      "version": "v0.3.0",
+      "variant": "only-evidenced-complete-occurrence",
+      "bound": "maxCandidates",
+      "value": "500",
+      "scope": "CANDIDATE_FRONTIER",
+      "first_appearance": "v0.1.0",
+      "enforcement_point": "KnowledgeBase.addCandidate",
+      "enforcement": "PROVED_REFERENCE",
+      "failure_behavior": "REJECT_DROP_OR_STOP",
+      "evidence": [
+        "security-ev-9358b8015ad588fa",
+        "security-ev-c9b690810046d893"
+      ]
+    },
+    {
+      "bound_id": "bound-f98b772b0dc7ead0",
+      "snapshot_id": "snapshot-0005",
+      "version": "v0.3.0",
+      "variant": "only-evidenced-complete-occurrence",
+      "bound": "maxRequests",
+      "value": "100",
+      "scope": "SCAN_REQUEST_COUNT",
+      "first_appearance": "v0.1.0",
+      "enforcement_point": "DiscoveryEngine.run",
+      "enforcement": "PROVED_REFERENCE",
+      "failure_behavior": "ENFORCEMENT_EXPRESSION_PRESENT_OUTCOME_NEEDS_PATH_ANALYSIS",
+      "evidence": [
+        "security-ev-ffe2e0fa86975934",
+        "security-ev-ed399ba64e586455"
+      ]
+    },
+    {
+      "bound_id": "bound-213fa3e95b051948",
+      "snapshot_id": "snapshot-0005",
+      "version": "v0.3.0",
+      "variant": "only-evidenced-complete-occurrence",
+      "bound": "concurrency",
+      "value": "3",
+      "scope": "WORKER_COUNT",
+      "first_appearance": "v0.1.0",
+      "enforcement_point": "DiscoveryEngine.run",
+      "enforcement": "PROVED_REFERENCE",
+      "failure_behavior": "ENFORCEMENT_EXPRESSION_PRESENT_OUTCOME_NEEDS_PATH_ANALYSIS",
+      "evidence": [
+        "security-ev-edeb6f3b342f4d19",
+        "security-ev-b10348eea3420322"
+      ]
+    },
+    {
+      "bound_id": "bound-e43f816bec262a8c",
+      "snapshot_id": "snapshot-0005",
+      "version": "v0.3.0",
+      "variant": "only-evidenced-complete-occurrence",
+      "bound": "requestTimeout",
+      "value": "8000",
+      "scope": "REQUEST_DURATION",
+      "first_appearance": "v0.1.0",
+      "enforcement_point": "HttpAcquisitionAdapter.request",
+      "enforcement": "PROVED_REFERENCE",
+      "failure_behavior": "ENFORCEMENT_EXPRESSION_PRESENT_OUTCOME_NEEDS_PATH_ANALYSIS",
+      "evidence": [
+        "security-ev-7a754fe41348901a",
+        "security-ev-de6e3e3cca133777"
+      ]
+    },
+    {
+      "bound_id": "bound-bbcba0d89005d975",
+      "snapshot_id": "snapshot-0005",
+      "version": "v0.3.0",
+      "variant": "only-evidenced-complete-occurrence",
+      "bound": "maxRetries",
+      "value": "1",
+      "scope": "RETRY_COUNT",
+      "first_appearance": "v0.3.0",
+      "enforcement_point": "DiscoveryEngine.worker",
+      "enforcement": "PROVED_REFERENCE",
+      "failure_behavior": "ENFORCEMENT_EXPRESSION_PRESENT_OUTCOME_NEEDS_PATH_ANALYSIS",
+      "evidence": [
+        "security-ev-c984040edce91058",
+        "security-ev-e97192b6d83ee678"
+      ]
+    },
+    {
+      "bound_id": "bound-5c0098d1417cb8c3",
+      "snapshot_id": "snapshot-0005",
+      "version": "v0.3.0",
+      "variant": "only-evidenced-complete-occurrence",
+      "bound": "maxPersistedDiscoveries",
+      "value": "1000",
+      "scope": "PERSISTED_DISCOVERIES",
+      "first_appearance": "v0.3.0",
+      "enforcement_point": "KnowledgeBase.serialize",
+      "enforcement": "PROVED_REFERENCE",
+      "failure_behavior": "TRUNCATE",
+      "evidence": [
+        "security-ev-4937f86529d1b0c6",
+        "security-ev-924435e711fd76ba"
+      ]
+    },
+    {
+      "bound_id": "bound-185f9675702583c1",
+      "snapshot_id": "snapshot-0006",
+      "version": "v0.4.0",
+      "variant": "variant-a",
+      "bound": "maxCandidates",
+      "value": "750",
+      "scope": "CANDIDATE_FRONTIER",
+      "first_appearance": "v0.1.0",
+      "enforcement_point": "KnowledgeBase.addCandidate",
+      "enforcement": "PROVED_REFERENCE",
+      "failure_behavior": "REJECT_DROP_OR_STOP",
+      "evidence": [
+        "security-ev-bc91f817a57c1e37",
+        "security-ev-ccc97fc4107c422c"
+      ]
+    },
+    {
+      "bound_id": "bound-7b06247728225e9a",
+      "snapshot_id": "snapshot-0006",
+      "version": "v0.4.0",
+      "variant": "variant-a",
+      "bound": "maxRequests",
+      "value": "150",
+      "scope": "SCAN_REQUEST_COUNT",
+      "first_appearance": "v0.1.0",
+      "enforcement_point": "DiscoveryEngine.run",
+      "enforcement": "PROVED_REFERENCE",
+      "failure_behavior": "ENFORCEMENT_EXPRESSION_PRESENT_OUTCOME_NEEDS_PATH_ANALYSIS",
+      "evidence": [
+        "security-ev-301da7d397441a37",
+        "security-ev-2d0938bbd81d086f"
+      ]
+    },
+    {
+      "bound_id": "bound-b1dcb2b8cec755fc",
+      "snapshot_id": "snapshot-0006",
+      "version": "v0.4.0",
+      "variant": "variant-a",
+      "bound": "concurrency",
+      "value": "3",
+      "scope": "WORKER_COUNT",
+      "first_appearance": "v0.1.0",
+      "enforcement_point": "DiscoveryEngine.run",
+      "enforcement": "PROVED_REFERENCE",
+      "failure_behavior": "ENFORCEMENT_EXPRESSION_PRESENT_OUTCOME_NEEDS_PATH_ANALYSIS",
+      "evidence": [
+        "security-ev-920e7b53532ac55a",
+        "security-ev-bd622b221d7bb465"
+      ]
+    },
+    {
+      "bound_id": "bound-8f06bd59d7310c45",
+      "snapshot_id": "snapshot-0006",
+      "version": "v0.4.0",
+      "variant": "variant-a",
+      "bound": "requestTimeout",
+      "value": "8000",
+      "scope": "REQUEST_DURATION",
+      "first_appearance": "v0.1.0",
+      "enforcement_point": "HttpAcquisitionAdapter.request",
+      "enforcement": "PROVED_REFERENCE",
+      "failure_behavior": "ENFORCEMENT_EXPRESSION_PRESENT_OUTCOME_NEEDS_PATH_ANALYSIS",
+      "evidence": [
+        "security-ev-4f868a87782c1049",
+        "security-ev-c68d1f83d93569f9"
+      ]
+    },
+    {
+      "bound_id": "bound-2b3ee045baf6e8af",
+      "snapshot_id": "snapshot-0006",
+      "version": "v0.4.0",
+      "variant": "variant-a",
+      "bound": "maxDepth",
+      "value": "8",
+      "scope": "EXPANSION_DEPTH",
+      "first_appearance": "v0.4.0",
+      "enforcement_point": "KnowledgeBase.addCandidate",
+      "enforcement": "PROVED_REFERENCE",
+      "failure_behavior": "REJECT_DROP_OR_STOP",
+      "evidence": [
+        "security-ev-19d91b3a4dc8deb9",
+        "security-ev-8c78d3fcf18912a3"
+      ]
+    },
+    {
+      "bound_id": "bound-1365c8abd23295a6",
+      "snapshot_id": "snapshot-0006",
+      "version": "v0.4.0",
+      "variant": "variant-a",
+      "bound": "maxRetries",
+      "value": "2",
+      "scope": "RETRY_COUNT",
+      "first_appearance": "v0.3.0",
+      "enforcement_point": "KnowledgeBase.failCandidate",
+      "enforcement": "PROVED_REFERENCE",
+      "failure_behavior": "ENFORCEMENT_EXPRESSION_PRESENT_OUTCOME_NEEDS_PATH_ANALYSIS",
+      "evidence": [
+        "security-ev-e1e83171af3c031b",
+        "security-ev-9dd69319dcfe803e"
+      ]
+    },
+    {
+      "bound_id": "bound-03f1b125da13fcca",
+      "snapshot_id": "snapshot-0006",
+      "version": "v0.4.0",
+      "variant": "variant-a",
+      "bound": "maxPersistedDiscoveries",
+      "value": "1500",
+      "scope": "PERSISTED_DISCOVERIES",
+      "first_appearance": "v0.3.0",
+      "enforcement_point": "KnowledgeBase.serialize",
+      "enforcement": "PROVED_REFERENCE",
+      "failure_behavior": "TRUNCATE",
+      "evidence": [
+        "security-ev-e20dd6edcf5d37d7",
+        "security-ev-a859314cd8373275"
+      ]
+    },
+    {
+      "bound_id": "bound-5ffc45ff3021762b",
+      "snapshot_id": "snapshot-0008",
+      "version": "v0.4.0",
+      "variant": "variant-b",
+      "bound": "maxCandidates",
+      "value": "750",
+      "scope": "CANDIDATE_FRONTIER",
+      "first_appearance": "v0.1.0",
+      "enforcement_point": "KnowledgeBase.addCandidate",
+      "enforcement": "PROVED_REFERENCE",
+      "failure_behavior": "REJECT_DROP_OR_STOP",
+      "evidence": [
+        "security-ev-e13eb17efc3869cf",
+        "security-ev-2af1aca5ee69031a"
+      ]
+    },
+    {
+      "bound_id": "bound-a71a1d0b5326493d",
+      "snapshot_id": "snapshot-0008",
+      "version": "v0.4.0",
+      "variant": "variant-b",
+      "bound": "maxRequests",
+      "value": "150",
+      "scope": "SCAN_REQUEST_COUNT",
+      "first_appearance": "v0.1.0",
+      "enforcement_point": "DiscoveryEngine.run",
+      "enforcement": "PROVED_REFERENCE",
+      "failure_behavior": "ENFORCEMENT_EXPRESSION_PRESENT_OUTCOME_NEEDS_PATH_ANALYSIS",
+      "evidence": [
+        "security-ev-10f1d5e76cc27724",
+        "security-ev-d75d9bd5ee3fb06b"
+      ]
+    },
+    {
+      "bound_id": "bound-2011733f09f7f22b",
+      "snapshot_id": "snapshot-0008",
+      "version": "v0.4.0",
+      "variant": "variant-b",
+      "bound": "concurrency",
+      "value": "4",
+      "scope": "WORKER_COUNT",
+      "first_appearance": "v0.1.0",
+      "enforcement_point": "DiscoveryEngine.run",
+      "enforcement": "PROVED_REFERENCE",
+      "failure_behavior": "ENFORCEMENT_EXPRESSION_PRESENT_OUTCOME_NEEDS_PATH_ANALYSIS",
+      "evidence": [
+        "security-ev-5d0fabe654497739",
+        "security-ev-2b51376e042d9813"
+      ]
+    },
+    {
+      "bound_id": "bound-53bfef85f2d7ddfc",
+      "snapshot_id": "snapshot-0008",
+      "version": "v0.4.0",
+      "variant": "variant-b",
+      "bound": "requestTimeout",
+      "value": "8000",
+      "scope": "REQUEST_DURATION",
+      "first_appearance": "v0.1.0",
+      "enforcement_point": "HttpAcquisitionAdapter.request",
+      "enforcement": "PROVED_REFERENCE",
+      "failure_behavior": "ENFORCEMENT_EXPRESSION_PRESENT_OUTCOME_NEEDS_PATH_ANALYSIS",
+      "evidence": [
+        "security-ev-8a455c9b2af9b9be",
+        "security-ev-acd61fc8765fe6bd"
+      ]
+    },
+    {
+      "bound_id": "bound-e2d28a7d50c5e962",
+      "snapshot_id": "snapshot-0008",
+      "version": "v0.4.0",
+      "variant": "variant-b",
+      "bound": "maxDepth",
+      "value": "5",
+      "scope": "EXPANSION_DEPTH",
+      "first_appearance": "v0.4.0",
+      "enforcement_point": "KnowledgeBase.addCandidate",
+      "enforcement": "PROVED_REFERENCE",
+      "failure_behavior": "REJECT_DROP_OR_STOP",
+      "evidence": [
+        "security-ev-5380db781a26a056",
+        "security-ev-2f10605b820e7ed0"
+      ]
+    },
+    {
+      "bound_id": "bound-122b0b6c7c28f4d9",
+      "snapshot_id": "snapshot-0008",
+      "version": "v0.4.0",
+      "variant": "variant-b",
+      "bound": "maxRetries",
+      "value": "2",
+      "scope": "RETRY_COUNT",
+      "first_appearance": "v0.3.0",
+      "enforcement_point": "DiscoveryEngine.worker",
+      "enforcement": "PROVED_REFERENCE",
+      "failure_behavior": "ENFORCEMENT_EXPRESSION_PRESENT_OUTCOME_NEEDS_PATH_ANALYSIS",
+      "evidence": [
+        "security-ev-6472cab0e0d1fced",
+        "security-ev-436a9fda781ced2f"
+      ]
+    },
+    {
+      "bound_id": "bound-2c095e8fa9fa0983",
+      "snapshot_id": "snapshot-0008",
+      "version": "v0.4.0",
+      "variant": "variant-b",
+      "bound": "retryMaxDelay",
+      "value": "8000",
+      "scope": "RETRY_DELAY",
+      "first_appearance": "v0.4.0",
+      "enforcement_point": "KnowledgeBase.failCandidate",
+      "enforcement": "PROVED_REFERENCE",
+      "failure_behavior": "ENFORCEMENT_EXPRESSION_PRESENT_OUTCOME_NEEDS_PATH_ANALYSIS",
+      "evidence": [
+        "security-ev-1872ec76e06ecce2",
+        "security-ev-b5d3161038c4340e"
+      ]
+    },
+    {
+      "bound_id": "bound-5b003714ef2ceb6a",
+      "snapshot_id": "snapshot-0008",
+      "version": "v0.4.0",
+      "variant": "variant-b",
+      "bound": "maxPersistedDiscoveries",
+      "value": "1200",
+      "scope": "PERSISTED_DISCOVERIES",
+      "first_appearance": "v0.3.0",
+      "enforcement_point": "KnowledgeBase.serialize",
+      "enforcement": "PROVED_REFERENCE",
+      "failure_behavior": "TRUNCATE",
+      "evidence": [
+        "security-ev-91f4dd6b17c332a3",
+        "security-ev-6f788a55643f5456"
+      ]
+    },
+    {
+      "bound_id": "bound-be31986d5705bad7",
+      "snapshot_id": "snapshot-0008",
+      "version": "v0.4.0",
+      "variant": "variant-b",
+      "bound": "maxStoredTextPreview",
+      "value": "300",
+      "scope": "TEXT_RETENTION",
+      "first_appearance": "v0.4.0",
+      "enforcement_point": "TextProvider.recognize",
+      "enforcement": "PROVED_REFERENCE",
+      "failure_behavior": "TRUNCATE",
+      "evidence": [
+        "security-ev-d966192ed0c94857",
+        "security-ev-95cbd8a534b0c3cd"
+      ]
+    },
+    {
+      "bound_id": "bound-f0fa89650b748240",
+      "snapshot_id": "snapshot-0007",
+      "version": "v0.5.0",
+      "variant": "variant-a",
+      "bound": "maxCandidates",
+      "value": "1000",
+      "scope": "CANDIDATE_FRONTIER",
+      "first_appearance": "v0.1.0",
+      "enforcement_point": "KnowledgeBase.addCandidate",
+      "enforcement": "PROVED_REFERENCE",
+      "failure_behavior": "REJECT_DROP_OR_STOP",
+      "evidence": [
+        "security-ev-33f0fc39c06a85a9",
+        "security-ev-27f86b50063e4e51"
+      ]
+    },
+    {
+      "bound_id": "bound-8c4e28232a8df6e3",
+      "snapshot_id": "snapshot-0007",
+      "version": "v0.5.0",
+      "variant": "variant-a",
+      "bound": "maxRequests",
+      "value": "200",
+      "scope": "SCAN_REQUEST_COUNT",
+      "first_appearance": "v0.1.0",
+      "enforcement_point": "DiscoveryEngine.run",
+      "enforcement": "PROVED_REFERENCE",
+      "failure_behavior": "ENFORCEMENT_EXPRESSION_PRESENT_OUTCOME_NEEDS_PATH_ANALYSIS",
+      "evidence": [
+        "security-ev-2eacc8239f6c4430",
+        "security-ev-f6d71d762f57db94"
+      ]
+    },
+    {
+      "bound_id": "bound-14da7bc53dbd004d",
+      "snapshot_id": "snapshot-0007",
+      "version": "v0.5.0",
+      "variant": "variant-a",
+      "bound": "concurrency",
+      "value": "4",
+      "scope": "WORKER_COUNT",
+      "first_appearance": "v0.1.0",
+      "enforcement_point": "DiscoveryEngine.run",
+      "enforcement": "PROVED_REFERENCE",
+      "failure_behavior": "ENFORCEMENT_EXPRESSION_PRESENT_OUTCOME_NEEDS_PATH_ANALYSIS",
+      "evidence": [
+        "security-ev-2174317aa462de1a",
+        "security-ev-f0007c730d63b73a"
+      ]
+    },
+    {
+      "bound_id": "bound-454a813b0c91b707",
+      "snapshot_id": "snapshot-0007",
+      "version": "v0.5.0",
+      "variant": "variant-a",
+      "bound": "requestTimeout",
+      "value": "8000",
+      "scope": "REQUEST_DURATION",
+      "first_appearance": "v0.1.0",
+      "enforcement_point": "HttpAcquisitionAdapter.request",
+      "enforcement": "PROVED_REFERENCE",
+      "failure_behavior": "ENFORCEMENT_EXPRESSION_PRESENT_OUTCOME_NEEDS_PATH_ANALYSIS",
+      "evidence": [
+        "security-ev-40906d859e747688",
+        "security-ev-1d5bce70e3efbe2e"
+      ]
+    },
+    {
+      "bound_id": "bound-715d6d852c727ad7",
+      "snapshot_id": "snapshot-0007",
+      "version": "v0.5.0",
+      "variant": "variant-a",
+      "bound": "maxResponseBytes",
+      "value": "2 * 1024 * 1024",
+      "scope": "RESPONSE_BODY",
+      "first_appearance": "v0.5.0",
+      "enforcement_point": "HttpAcquisitionAdapter.limitBody",
+      "enforcement": "PROVED_REFERENCE",
+      "failure_behavior": "TRUNCATE",
+      "evidence": [
+        "security-ev-ca827d98c13df14b",
+        "security-ev-f297cf24270fa296"
+      ]
+    },
+    {
+      "bound_id": "bound-0074d2e0efd6bd4e",
+      "snapshot_id": "snapshot-0007",
+      "version": "v0.5.0",
+      "variant": "variant-a",
+      "bound": "maxDepth",
+      "value": "8",
+      "scope": "EXPANSION_DEPTH",
+      "first_appearance": "v0.4.0",
+      "enforcement_point": "KnowledgeBase.addCandidate",
+      "enforcement": "PROVED_REFERENCE",
+      "failure_behavior": "REJECT_DROP_OR_STOP",
+      "evidence": [
+        "security-ev-2ebe01ddc9b85390",
+        "security-ev-4126b9dd0447a69f"
+      ]
+    },
+    {
+      "bound_id": "bound-c77850dc8c2e994a",
+      "snapshot_id": "snapshot-0007",
+      "version": "v0.5.0",
+      "variant": "variant-a",
+      "bound": "maxRetries",
+      "value": "2",
+      "scope": "RETRY_COUNT",
+      "first_appearance": "v0.3.0",
+      "enforcement_point": "KnowledgeBase.failCandidate",
+      "enforcement": "PROVED_REFERENCE",
+      "failure_behavior": "ENFORCEMENT_EXPRESSION_PRESENT_OUTCOME_NEEDS_PATH_ANALYSIS",
+      "evidence": [
+        "security-ev-da25693a65a4fd19",
+        "security-ev-53876b597747c6e5"
+      ]
+    },
+    {
+      "bound_id": "bound-3c9521662f7d1a5e",
+      "snapshot_id": "snapshot-0007",
+      "version": "v0.5.0",
+      "variant": "variant-a",
+      "bound": "retryMaxDelay",
+      "value": "8000",
+      "scope": "RETRY_DELAY",
+      "first_appearance": "v0.4.0",
+      "enforcement_point": "KnowledgeBase.failCandidate",
+      "enforcement": "PROVED_REFERENCE",
+      "failure_behavior": "ENFORCEMENT_EXPRESSION_PRESENT_OUTCOME_NEEDS_PATH_ANALYSIS",
+      "evidence": [
+        "security-ev-fc1286a138a1e097",
+        "security-ev-2749bc24cb971d0c"
+      ]
+    },
+    {
+      "bound_id": "bound-0ef1c8285a5ac00d",
+      "snapshot_id": "snapshot-0007",
+      "version": "v0.5.0",
+      "variant": "variant-a",
+      "bound": "maxPersistedDiscoveries",
+      "value": "2000",
+      "scope": "PERSISTED_DISCOVERIES",
+      "first_appearance": "v0.3.0",
+      "enforcement_point": "KnowledgeBase.serialize",
+      "enforcement": "PROVED_REFERENCE",
+      "failure_behavior": "TRUNCATE",
+      "evidence": [
+        "security-ev-4fb8832dda3678dd",
+        "security-ev-2dfe86c69f6f8342"
+      ]
+    },
+    {
+      "bound_id": "bound-b0bc1d5bfeeeb14f",
+      "snapshot_id": "snapshot-0007",
+      "version": "v0.5.0",
+      "variant": "variant-a",
+      "bound": "maxGraphEdges",
+      "value": "10000",
+      "scope": "GRAPH_EDGE_RETENTION",
+      "first_appearance": "v0.5.0",
+      "enforcement_point": "ProvenanceGraph.addEdge",
+      "enforcement": "PROVED_REFERENCE",
+      "failure_behavior": "ENFORCEMENT_EXPRESSION_PRESENT_OUTCOME_NEEDS_PATH_ANALYSIS",
+      "evidence": [
+        "security-ev-86d2a21060efadb4",
+        "security-ev-9d7fe298712df8ca"
+      ]
+    },
+    {
+      "bound_id": "bound-cd8f2edb12b03317",
+      "snapshot_id": "snapshot-0007",
+      "version": "v0.5.0",
+      "variant": "variant-a",
+      "bound": "maxUrlsPerDiscovery",
+      "value": "500",
+      "scope": "EXPANSION_FANOUT",
+      "first_appearance": "v0.5.0",
+      "enforcement_point": "TOP_LEVEL.extractUrlsFromText",
+      "enforcement": "PROVED_REFERENCE",
+      "failure_behavior": "TRUNCATE",
+      "evidence": [
+        "security-ev-2cb3caa83ca6a52f",
+        "security-ev-74da7ffa6187be8e"
+      ]
+    },
+    {
+      "bound_id": "bound-fd873a6793b2bf78",
+      "snapshot_id": "snapshot-0009",
+      "version": "v0.5.0",
+      "variant": "variant-b",
+      "bound": "maxCandidates",
+      "value": "1000",
+      "scope": "CANDIDATE_FRONTIER",
+      "first_appearance": "v0.1.0",
+      "enforcement_point": "KnowledgeBase.addCandidate",
+      "enforcement": "PROVED_REFERENCE",
+      "failure_behavior": "REJECT_DROP_OR_STOP",
+      "evidence": [
+        "security-ev-4552649e95cee11a",
+        "security-ev-14b57f3f7d6168ac"
+      ]
+    },
+    {
+      "bound_id": "bound-d496feba764aeb41",
+      "snapshot_id": "snapshot-0009",
+      "version": "v0.5.0",
+      "variant": "variant-b",
+      "bound": "maxRequests",
+      "value": "200",
+      "scope": "SCAN_REQUEST_COUNT",
+      "first_appearance": "v0.1.0",
+      "enforcement_point": "DiscoveryEngine.worker",
+      "enforcement": "PROVED_REFERENCE",
+      "failure_behavior": "REJECT_DROP_OR_STOP",
+      "evidence": [
+        "security-ev-c5e7a26acf0bafec",
+        "security-ev-762fa51d32ed3797"
+      ]
+    },
+    {
+      "bound_id": "bound-ef9e2863e0d47d44",
+      "snapshot_id": "snapshot-0009",
+      "version": "v0.5.0",
+      "variant": "variant-b",
+      "bound": "concurrency",
+      "value": "4",
+      "scope": "WORKER_COUNT",
+      "first_appearance": "v0.1.0",
+      "enforcement_point": "DiscoveryEngine.run",
+      "enforcement": "PROVED_REFERENCE",
+      "failure_behavior": "ENFORCEMENT_EXPRESSION_PRESENT_OUTCOME_NEEDS_PATH_ANALYSIS",
+      "evidence": [
+        "security-ev-8c32ca5db4664d98",
+        "security-ev-7890e8bd70c41477"
+      ]
+    },
+    {
+      "bound_id": "bound-8ef79a5b200ac3fb",
+      "snapshot_id": "snapshot-0009",
+      "version": "v0.5.0",
+      "variant": "variant-b",
+      "bound": "requestTimeout",
+      "value": "8000",
+      "scope": "REQUEST_DURATION",
+      "first_appearance": "v0.1.0",
+      "enforcement_point": "HttpAcquisition.request",
+      "enforcement": "PROVED_REFERENCE",
+      "failure_behavior": "ENFORCEMENT_EXPRESSION_PRESENT_OUTCOME_NEEDS_PATH_ANALYSIS",
+      "evidence": [
+        "security-ev-9afbabc94c9435de",
+        "security-ev-bffbd9156efd6fb7"
+      ]
+    },
+    {
+      "bound_id": "bound-590594c79fa84449",
+      "snapshot_id": "snapshot-0009",
+      "version": "v0.5.0",
+      "variant": "variant-b",
+      "bound": "maxDepth",
+      "value": "6",
+      "scope": "EXPANSION_DEPTH",
+      "first_appearance": "v0.4.0",
+      "enforcement_point": "KnowledgeBase.addCandidate",
+      "enforcement": "PROVED_REFERENCE",
+      "failure_behavior": "REJECT_DROP_OR_STOP",
+      "evidence": [
+        "security-ev-3d227196e2ed4d9a",
+        "security-ev-79c8808f661a08a2"
+      ]
+    },
+    {
+      "bound_id": "bound-4f67dbce32a2df35",
+      "snapshot_id": "snapshot-0009",
+      "version": "v0.5.0",
+      "variant": "variant-b",
+      "bound": "maxRetries",
+      "value": "2",
+      "scope": "RETRY_COUNT",
+      "first_appearance": "v0.3.0",
+      "enforcement_point": "DiscoveryEngine.handleFailure",
+      "enforcement": "PROVED_REFERENCE",
+      "failure_behavior": "ENFORCEMENT_EXPRESSION_PRESENT_OUTCOME_NEEDS_PATH_ANALYSIS",
+      "evidence": [
+        "security-ev-24bdf50644a00e88",
+        "security-ev-e42e2bb5e3ce86ee"
+      ]
+    },
+    {
+      "bound_id": "bound-576446894cf6834f",
+      "snapshot_id": "snapshot-0009",
+      "version": "v0.5.0",
+      "variant": "variant-b",
+      "bound": "retryMaxDelay",
+      "value": "8000",
+      "scope": "RETRY_DELAY",
+      "first_appearance": "v0.4.0",
+      "enforcement_point": "KnowledgeBase.fail",
+      "enforcement": "PROVED_REFERENCE",
+      "failure_behavior": "ENFORCEMENT_EXPRESSION_PRESENT_OUTCOME_NEEDS_PATH_ANALYSIS",
+      "evidence": [
+        "security-ev-d26fba8c1d01cf76",
+        "security-ev-e69113a3b8280d62"
+      ]
+    },
+    {
+      "bound_id": "bound-c1b4fbcd43eea8a4",
+      "snapshot_id": "snapshot-0009",
+      "version": "v0.5.0",
+      "variant": "variant-b",
+      "bound": "maxPersistedDiscoveries",
+      "value": "1500",
+      "scope": "PERSISTED_DISCOVERIES",
+      "first_appearance": "v0.3.0",
+      "enforcement_point": "KnowledgeBase.serialize",
+      "enforcement": "PROVED_REFERENCE",
+      "failure_behavior": "TRUNCATE",
+      "evidence": [
+        "security-ev-358f049dcafe2dd5",
+        "security-ev-89a4515ae7574e6b"
+      ]
+    },
+    {
+      "bound_id": "bound-3312fdf8579f0d35",
+      "snapshot_id": "snapshot-0009",
+      "version": "v0.5.0",
+      "variant": "variant-b",
+      "bound": "maxNetworkEvents",
+      "value": "1500",
+      "scope": "NETWORK_EVENT_RETENTION",
+      "first_appearance": "v0.5.0",
+      "enforcement_point": "KnowledgeBase.addNetworkEvent",
+      "enforcement": "PROVED_REFERENCE",
+      "failure_behavior": "ENFORCEMENT_EXPRESSION_PRESENT_OUTCOME_NEEDS_PATH_ANALYSIS",
+      "evidence": [
+        "security-ev-29da91033fb6d23b",
+        "security-ev-8625be4ffa28c8db"
+      ]
+    },
+    {
+      "bound_id": "bound-f010d6a5233051a3",
+      "snapshot_id": "snapshot-0009",
+      "version": "v0.5.0",
+      "variant": "variant-b",
+      "bound": "maxTextPreview",
+      "value": "300",
+      "scope": "TEXT_RETENTION",
+      "first_appearance": "v0.5.0",
+      "enforcement_point": "TextProvider.recognize",
+      "enforcement": "PROVED_REFERENCE",
+      "failure_behavior": "TRUNCATE",
+      "evidence": [
+        "security-ev-13294e44b768cbbd",
+        "security-ev-f6357187961d4fc7"
+      ]
+    },
+    {
+      "bound_id": "bound-b6d53cd30c79d974",
+      "snapshot_id": "snapshot-0011",
+      "version": "v0.5.0",
+      "variant": "variant-c",
+      "bound": "maxCandidates",
+      "value": "750",
+      "scope": "CANDIDATE_FRONTIER",
+      "first_appearance": "v0.1.0",
+      "enforcement_point": "KnowledgeBase.addCandidate",
+      "enforcement": "PROVED_REFERENCE",
+      "failure_behavior": "REJECT_DROP_OR_STOP",
+      "evidence": [
+        "security-ev-edda96b53a6d0b9f",
+        "security-ev-f526104cdaa6d7a5"
+      ]
+    },
+    {
+      "bound_id": "bound-d7b15d40956e8e3f",
+      "snapshot_id": "snapshot-0011",
+      "version": "v0.5.0",
+      "variant": "variant-c",
+      "bound": "maxRequests",
+      "value": "150",
+      "scope": "SCAN_REQUEST_COUNT",
+      "first_appearance": "v0.1.0",
+      "enforcement_point": "DiscoveryEngine.worker",
+      "enforcement": "PROVED_REFERENCE",
+      "failure_behavior": "REJECT_DROP_OR_STOP",
+      "evidence": [
+        "security-ev-be5a725b7d1dfe6a",
+        "security-ev-60d8abfdda32d2d2"
+      ]
+    },
+    {
+      "bound_id": "bound-58c77359b4511e2d",
+      "snapshot_id": "snapshot-0011",
+      "version": "v0.5.0",
+      "variant": "variant-c",
+      "bound": "concurrency",
+      "value": "4",
+      "scope": "WORKER_COUNT",
+      "first_appearance": "v0.1.0",
+      "enforcement_point": "DiscoveryEngine.run",
+      "enforcement": "PROVED_REFERENCE",
+      "failure_behavior": "ENFORCEMENT_EXPRESSION_PRESENT_OUTCOME_NEEDS_PATH_ANALYSIS",
+      "evidence": [
+        "security-ev-b3943354d083c663",
+        "security-ev-36b5585afc863e47"
+      ]
+    },
+    {
+      "bound_id": "bound-d5548c0c553eb779",
+      "snapshot_id": "snapshot-0011",
+      "version": "v0.5.0",
+      "variant": "variant-c",
+      "bound": "requestTimeout",
+      "value": "8000",
+      "scope": "REQUEST_DURATION",
+      "first_appearance": "v0.1.0",
+      "enforcement_point": "HttpAcquisitionAdapter.acquireGM",
+      "enforcement": "PROVED_REFERENCE",
+      "failure_behavior": "ENFORCEMENT_EXPRESSION_PRESENT_OUTCOME_NEEDS_PATH_ANALYSIS",
+      "evidence": [
+        "security-ev-2772b223730d16c1",
+        "security-ev-98b5ee5ecfb317f9"
+      ]
+    },
+    {
+      "bound_id": "bound-1a47bc4352ef3e14",
+      "snapshot_id": "snapshot-0011",
+      "version": "v0.5.0",
+      "variant": "variant-c",
+      "bound": "maxDepth",
+      "value": "5",
+      "scope": "EXPANSION_DEPTH",
+      "first_appearance": "v0.4.0",
+      "enforcement_point": "KnowledgeBase.addCandidate",
+      "enforcement": "PROVED_REFERENCE",
+      "failure_behavior": "REJECT_DROP_OR_STOP",
+      "evidence": [
+        "security-ev-88ef88905af18ad5",
+        "security-ev-131390c09ceb2cf7"
+      ]
+    },
+    {
+      "bound_id": "bound-94e5c55758616a51",
+      "snapshot_id": "snapshot-0011",
+      "version": "v0.5.0",
+      "variant": "variant-c",
+      "bound": "maxRetries",
+      "value": "2",
+      "scope": "RETRY_COUNT",
+      "first_appearance": "v0.3.0",
+      "enforcement_point": "KnowledgeBase.failCandidate",
+      "enforcement": "PROVED_REFERENCE",
+      "failure_behavior": "ENFORCEMENT_EXPRESSION_PRESENT_OUTCOME_NEEDS_PATH_ANALYSIS",
+      "evidence": [
+        "security-ev-7b7771d8b30eca12",
+        "security-ev-2d2917cb15d8e867"
+      ]
+    },
+    {
+      "bound_id": "bound-599f1ad4a43d476f",
+      "snapshot_id": "snapshot-0011",
+      "version": "v0.5.0",
+      "variant": "variant-c",
+      "bound": "retryMaxDelay",
+      "value": "8000",
+      "scope": "RETRY_DELAY",
+      "first_appearance": "v0.4.0",
+      "enforcement_point": "KnowledgeBase.failCandidate",
+      "enforcement": "PROVED_REFERENCE",
+      "failure_behavior": "ENFORCEMENT_EXPRESSION_PRESENT_OUTCOME_NEEDS_PATH_ANALYSIS",
+      "evidence": [
+        "security-ev-f692d6254d9e3abb",
+        "security-ev-71af48b34e00515b"
+      ]
+    },
+    {
+      "bound_id": "bound-66ed3901646e4380",
+      "snapshot_id": "snapshot-0011",
+      "version": "v0.5.0",
+      "variant": "variant-c",
+      "bound": "maxPersistedDiscoveries",
+      "value": "1200",
+      "scope": "PERSISTED_DISCOVERIES",
+      "first_appearance": "v0.3.0",
+      "enforcement_point": "KnowledgeBase.persistNow",
+      "enforcement": "PROVED_REFERENCE",
+      "failure_behavior": "TRUNCATE",
+      "evidence": [
+        "security-ev-c1fe0b0ff4be398a",
+        "security-ev-4e5d6b882d7ec2f2"
+      ]
+    },
+    {
+      "bound_id": "bound-39e0b01ab316ec69",
+      "snapshot_id": "snapshot-0011",
+      "version": "v0.5.0",
+      "variant": "variant-c",
+      "bound": "maxPersistedResources",
+      "value": "1500",
+      "scope": "PERSISTED_RESOURCES",
+      "first_appearance": "v0.5.0",
+      "enforcement_point": "KnowledgeBase.persistNow",
+      "enforcement": "PROVED_REFERENCE",
+      "failure_behavior": "TRUNCATE",
+      "evidence": [
+        "security-ev-62df804f2cc12311",
+        "security-ev-87a94c14487e71fe"
+      ]
+    },
+    {
+      "bound_id": "bound-a88db4d32ac115b7",
+      "snapshot_id": "snapshot-0011",
+      "version": "v0.5.0",
+      "variant": "variant-c",
+      "bound": "maxPersistedEdges",
+      "value": "3000",
+      "scope": "PERSISTED_EDGES",
+      "first_appearance": "v0.5.0",
+      "enforcement_point": "KnowledgeBase.persistNow",
+      "enforcement": "PROVED_REFERENCE",
+      "failure_behavior": "TRUNCATE",
+      "evidence": [
+        "security-ev-8e3c0e161f8a6554",
+        "security-ev-ec9cae01c55cb49d"
+      ]
+    },
+    {
+      "bound_id": "bound-049c21ca9fe18db2",
+      "snapshot_id": "snapshot-0011",
+      "version": "v0.5.0",
+      "variant": "variant-c",
+      "bound": "maxNetworkEvents",
+      "value": "1000",
+      "scope": "NETWORK_EVENT_RETENTION",
+      "first_appearance": "v0.5.0",
+      "enforcement_point": "DiscoveryEngine.storeNetworkEvent",
+      "enforcement": "PROVED_REFERENCE",
+      "failure_behavior": "REJECT_DROP_OR_STOP",
+      "evidence": [
+        "security-ev-74ba1fc9268d01a8",
+        "security-ev-f62f50de6bdc8b0a"
+      ]
+    },
+    {
+      "bound_id": "bound-0b9708214b142380",
+      "snapshot_id": "snapshot-0011",
+      "version": "v0.5.0",
+      "variant": "variant-c",
+      "bound": "maxGraphEdges",
+      "value": "5000",
+      "scope": "GRAPH_EDGE_RETENTION",
+      "first_appearance": "v0.5.0",
+      "enforcement_point": "KnowledgeBase.recordCandidateEdge",
+      "enforcement": "PROVED_REFERENCE",
+      "failure_behavior": "ENFORCEMENT_EXPRESSION_PRESENT_OUTCOME_NEEDS_PATH_ANALYSIS",
+      "evidence": [
+        "security-ev-900fee90b2ad12ac",
+        "security-ev-97d5baa90d49eca9"
+      ]
+    },
+    {
+      "bound_id": "bound-924f7ee1f92d44a7",
+      "snapshot_id": "snapshot-0011",
+      "version": "v0.5.0",
+      "variant": "variant-c",
+      "bound": "maxStoredTextPreview",
+      "value": "300",
+      "scope": "TEXT_RETENTION",
+      "first_appearance": "v0.4.0",
+      "enforcement_point": "HtmlProvider.recognize",
+      "enforcement": "PROVED_REFERENCE",
+      "failure_behavior": "TRUNCATE",
+      "evidence": [
+        "security-ev-06bb773d27967c72",
+        "security-ev-e5d8504f8517cbc9"
+      ]
+    },
+    {
+      "bound_id": "bound-4cdd36e73736d409",
+      "snapshot_id": "snapshot-0011",
+      "version": "v0.5.0",
+      "variant": "variant-c",
+      "bound": "fingerprintMaxChars",
+      "value": "1000000",
+      "scope": "FINGERPRINT_INPUT",
+      "first_appearance": "v0.5.0",
+      "enforcement_point": "TOP_LEVEL.fnv1a32",
+      "enforcement": "PROVED_REFERENCE",
+      "failure_behavior": "TRUNCATE",
+      "evidence": [
+        "security-ev-0dbb6abe3b6dfa86",
+        "security-ev-06d6a56089f66a9c"
+      ]
+    },
+    {
+      "bound_id": "bound-173a5e21eb06ba0c",
+      "snapshot_id": "snapshot-0010",
+      "version": "v0.6.0",
+      "variant": "variant-a",
+      "bound": "maxCandidates",
+      "value": "1000",
+      "scope": "CANDIDATE_FRONTIER",
+      "first_appearance": "v0.1.0",
+      "enforcement_point": "KnowledgeBase.addCandidate",
+      "enforcement": "PROVED_REFERENCE",
+      "failure_behavior": "REJECT_DROP_OR_STOP",
+      "evidence": [
+        "security-ev-bc970a0cd1a19db1",
+        "security-ev-c9d53ed033033d9a"
+      ]
+    },
+    {
+      "bound_id": "bound-d63fe861861e75b1",
+      "snapshot_id": "snapshot-0010",
+      "version": "v0.6.0",
+      "variant": "variant-a",
+      "bound": "maxRequests",
+      "value": "200",
+      "scope": "SCAN_REQUEST_COUNT",
+      "first_appearance": "v0.1.0",
+      "enforcement_point": "DiscoveryEngine.run",
+      "enforcement": "PROVED_REFERENCE",
+      "failure_behavior": "ENFORCEMENT_EXPRESSION_PRESENT_OUTCOME_NEEDS_PATH_ANALYSIS",
+      "evidence": [
+        "security-ev-7f3d2c807b4d31c8",
+        "security-ev-e2110a108f04ac04"
+      ]
+    },
+    {
+      "bound_id": "bound-d55b7ad7674fdc67",
+      "snapshot_id": "snapshot-0010",
+      "version": "v0.6.0",
+      "variant": "variant-a",
+      "bound": "concurrency",
+      "value": "4",
+      "scope": "WORKER_COUNT",
+      "first_appearance": "v0.1.0",
+      "enforcement_point": "DiscoveryEngine.run",
+      "enforcement": "PROVED_REFERENCE",
+      "failure_behavior": "ENFORCEMENT_EXPRESSION_PRESENT_OUTCOME_NEEDS_PATH_ANALYSIS",
+      "evidence": [
+        "security-ev-b85752d37da17503",
+        "security-ev-6e74b81d0e1a294c"
+      ]
+    },
+    {
+      "bound_id": "bound-1048389ce3ae0610",
+      "snapshot_id": "snapshot-0010",
+      "version": "v0.6.0",
+      "variant": "variant-a",
+      "bound": "requestTimeout",
+      "value": "8000",
+      "scope": "REQUEST_DURATION",
+      "first_appearance": "v0.1.0",
+      "enforcement_point": "HttpAcquisition.gmRequest",
+      "enforcement": "PROVED_REFERENCE",
+      "failure_behavior": "ENFORCEMENT_EXPRESSION_PRESENT_OUTCOME_NEEDS_PATH_ANALYSIS",
+      "evidence": [
+        "security-ev-93a761f3b1805ee9",
+        "security-ev-bb0c686a0900a576"
+      ]
+    },
+    {
+      "bound_id": "bound-87c45c7cd5139487",
+      "snapshot_id": "snapshot-0010",
+      "version": "v0.6.0",
+      "variant": "variant-a",
+      "bound": "maxDepth",
+      "value": "6",
+      "scope": "EXPANSION_DEPTH",
+      "first_appearance": "v0.4.0",
+      "enforcement_point": "KnowledgeBase.addCandidate",
+      "enforcement": "PROVED_REFERENCE",
+      "failure_behavior": "REJECT_DROP_OR_STOP",
+      "evidence": [
+        "security-ev-683b45e5cfcf0088",
+        "security-ev-8016318c0a1384f2"
+      ]
+    },
+    {
+      "bound_id": "bound-35c8cdb5fb882f4a",
+      "snapshot_id": "snapshot-0010",
+      "version": "v0.6.0",
+      "variant": "variant-a",
+      "bound": "maxRetries",
+      "value": "2",
+      "scope": "RETRY_COUNT",
+      "first_appearance": "v0.3.0",
+      "enforcement_point": "DiscoveryEngine.handleFailure",
+      "enforcement": "PROVED_REFERENCE",
+      "failure_behavior": "ENFORCEMENT_EXPRESSION_PRESENT_OUTCOME_NEEDS_PATH_ANALYSIS",
+      "evidence": [
+        "security-ev-b629e44795d6b562",
+        "security-ev-6c77a90560445e27"
+      ]
+    },
+    {
+      "bound_id": "bound-ba8227dbb53f3ae2",
+      "snapshot_id": "snapshot-0010",
+      "version": "v0.6.0",
+      "variant": "variant-a",
+      "bound": "retryMaxDelay",
+      "value": "8000",
+      "scope": "RETRY_DELAY",
+      "first_appearance": "v0.4.0",
+      "enforcement_point": "KnowledgeBase.fail",
+      "enforcement": "PROVED_REFERENCE",
+      "failure_behavior": "ENFORCEMENT_EXPRESSION_PRESENT_OUTCOME_NEEDS_PATH_ANALYSIS",
+      "evidence": [
+        "security-ev-ca5935db26fbfb75",
+        "security-ev-c5cd024e917035f5"
+      ]
+    },
+    {
+      "bound_id": "bound-b6e14cf9f3c82a5b",
+      "snapshot_id": "snapshot-0010",
+      "version": "v0.6.0",
+      "variant": "variant-a",
+      "bound": "maxPersistedDiscoveries",
+      "value": "1500",
+      "scope": "PERSISTED_DISCOVERIES",
+      "first_appearance": "v0.3.0",
+      "enforcement_point": "KnowledgeBase.serialize",
+      "enforcement": "PROVED_REFERENCE",
+      "failure_behavior": "TRUNCATE",
+      "evidence": [
+        "security-ev-1bd59b699e4a4d5b",
+        "security-ev-ffbea1563eeb2985"
+      ]
+    },
+    {
+      "bound_id": "bound-d775b11f693b50f8",
+      "snapshot_id": "snapshot-0010",
+      "version": "v0.6.0",
+      "variant": "variant-a",
+      "bound": "maxPersistedResources",
+      "value": "1500",
+      "scope": "PERSISTED_RESOURCES",
+      "first_appearance": "v0.5.0",
+      "enforcement_point": "KnowledgeBase.serialize",
+      "enforcement": "PROVED_REFERENCE",
+      "failure_behavior": "TRUNCATE",
+      "evidence": [
+        "security-ev-38b0628f8974b48b",
+        "security-ev-6075fe033ccd9794"
+      ]
+    },
+    {
+      "bound_id": "bound-1665c676e2325510",
+      "snapshot_id": "snapshot-0010",
+      "version": "v0.6.0",
+      "variant": "variant-a",
+      "bound": "maxPersistedEdges",
+      "value": "4000",
+      "scope": "PERSISTED_EDGES",
+      "first_appearance": "v0.5.0",
+      "enforcement_point": "KnowledgeBase.serialize",
+      "enforcement": "PROVED_REFERENCE",
+      "failure_behavior": "TRUNCATE",
+      "evidence": [
+        "security-ev-1923f693a239258a",
+        "security-ev-051b36f703649132"
+      ]
+    },
+    {
+      "bound_id": "bound-fcd43a194c91ab7c",
+      "snapshot_id": "snapshot-0010",
+      "version": "v0.6.0",
+      "variant": "variant-a",
+      "bound": "maxNetworkEvents",
+      "value": "1500",
+      "scope": "NETWORK_EVENT_RETENTION",
+      "first_appearance": "v0.5.0",
+      "enforcement_point": "KnowledgeBase.addNetworkEvent",
+      "enforcement": "PROVED_REFERENCE",
+      "failure_behavior": "ENFORCEMENT_EXPRESSION_PRESENT_OUTCOME_NEEDS_PATH_ANALYSIS",
+      "evidence": [
+        "security-ev-e647a17ad4a5d879",
+        "security-ev-a0e25f4d8c93c6f3"
+      ]
+    },
+    {
+      "bound_id": "bound-66ee6d0aa7d043f0",
+      "snapshot_id": "snapshot-0010",
+      "version": "v0.6.0",
+      "variant": "variant-a",
+      "bound": "maxGraphEdges",
+      "value": "5000",
+      "scope": "GRAPH_EDGE_RETENTION",
+      "first_appearance": "v0.5.0",
+      "enforcement_point": "KnowledgeBase.recordCandidateEdge",
+      "enforcement": "PROVED_REFERENCE",
+      "failure_behavior": "ENFORCEMENT_EXPRESSION_PRESENT_OUTCOME_NEEDS_PATH_ANALYSIS",
+      "evidence": [
+        "security-ev-4599b4acd7a63bf2",
+        "security-ev-e181226698f83d56"
+      ]
+    },
+    {
+      "bound_id": "bound-c02f9ef1bc99999c",
+      "snapshot_id": "snapshot-0010",
+      "version": "v0.6.0",
+      "variant": "variant-a",
+      "bound": "fingerprintMaxChars",
+      "value": "1000000",
+      "scope": "FINGERPRINT_INPUT",
+      "first_appearance": "v0.5.0",
+      "enforcement_point": "TOP_LEVEL.sha256",
+      "enforcement": "PROVED_REFERENCE",
+      "failure_behavior": "TRUNCATE",
+      "evidence": [
+        "security-ev-b5696a7c5abeb48e",
+        "security-ev-6c8ea5409cafe906"
+      ]
+    },
+    {
+      "bound_id": "bound-93228d9734aa358a",
+      "snapshot_id": "snapshot-0012",
+      "version": "v0.6.0",
+      "variant": "variant-b",
+      "bound": "maxCandidates",
+      "value": "1000",
+      "scope": "CANDIDATE_FRONTIER",
+      "first_appearance": "v0.1.0",
+      "enforcement_point": "KnowledgeBase.addCandidate",
+      "enforcement": "PROVED_REFERENCE",
+      "failure_behavior": "REJECT_DROP_OR_STOP",
+      "evidence": [
+        "security-ev-33bc6f5c50d1db09",
+        "security-ev-b90d39a8edfe7d98"
+      ]
+    },
+    {
+      "bound_id": "bound-d2550a85061f6595",
+      "snapshot_id": "snapshot-0012",
+      "version": "v0.6.0",
+      "variant": "variant-b",
+      "bound": "maxRequests",
+      "value": "200",
+      "scope": "SCAN_REQUEST_COUNT",
+      "first_appearance": "v0.1.0",
+      "enforcement_point": "DiscoveryEngine.worker",
+      "enforcement": "PROVED_REFERENCE",
+      "failure_behavior": "REJECT_DROP_OR_STOP",
+      "evidence": [
+        "security-ev-56a2b1bc44fe5ec6",
+        "security-ev-cc15471933485251"
+      ]
+    },
+    {
+      "bound_id": "bound-eae850f14aa79d23",
+      "snapshot_id": "snapshot-0012",
+      "version": "v0.6.0",
+      "variant": "variant-b",
+      "bound": "concurrency",
+      "value": "5",
+      "scope": "WORKER_COUNT",
+      "first_appearance": "v0.1.0",
+      "enforcement_point": "Scheduler.waitForGlobalSlot",
+      "enforcement": "PROVED_REFERENCE",
+      "failure_behavior": "REJECT_DROP_OR_STOP",
+      "evidence": [
+        "security-ev-e6b335806f397249",
+        "security-ev-7f4035170c1fe553"
+      ]
+    },
+    {
+      "bound_id": "bound-cbc86ed4561f9b20",
+      "snapshot_id": "snapshot-0012",
+      "version": "v0.6.0",
+      "variant": "variant-b",
+      "bound": "requestTimeout",
+      "value": "8000",
+      "scope": "REQUEST_DURATION",
+      "first_appearance": "v0.1.0",
+      "enforcement_point": "HttpAcquisitionAdapter.acquireGM",
+      "enforcement": "PROVED_REFERENCE",
+      "failure_behavior": "ENFORCEMENT_EXPRESSION_PRESENT_OUTCOME_NEEDS_PATH_ANALYSIS",
+      "evidence": [
+        "security-ev-95ca4c6ba9667eee",
+        "security-ev-b77dac5751d61973"
+      ]
+    },
+    {
+      "bound_id": "bound-d4877d5025626f6d",
+      "snapshot_id": "snapshot-0012",
+      "version": "v0.6.0",
+      "variant": "variant-b",
+      "bound": "maxDepth",
+      "value": "6",
+      "scope": "EXPANSION_DEPTH",
+      "first_appearance": "v0.4.0",
+      "enforcement_point": "KnowledgeBase.addCandidate",
+      "enforcement": "PROVED_REFERENCE",
+      "failure_behavior": "REJECT_DROP_OR_STOP",
+      "evidence": [
+        "security-ev-359a7520dfcb9276",
+        "security-ev-7e3639a20e7343eb"
+      ]
+    },
+    {
+      "bound_id": "bound-60f33e4cbf56d010",
+      "snapshot_id": "snapshot-0012",
+      "version": "v0.6.0",
+      "variant": "variant-b",
+      "bound": "maxRetries",
+      "value": "2",
+      "scope": "RETRY_COUNT",
+      "first_appearance": "v0.3.0",
+      "enforcement_point": "KnowledgeBase.failCandidate",
+      "enforcement": "PROVED_REFERENCE",
+      "failure_behavior": "ENFORCEMENT_EXPRESSION_PRESENT_OUTCOME_NEEDS_PATH_ANALYSIS",
+      "evidence": [
+        "security-ev-21ad968c7e1fbe9c",
+        "security-ev-e657a09d37d83f60"
+      ]
+    },
+    {
+      "bound_id": "bound-ebcf307e5d113ba3",
+      "snapshot_id": "snapshot-0012",
+      "version": "v0.6.0",
+      "variant": "variant-b",
+      "bound": "retryMaxDelay",
+      "value": "8000",
+      "scope": "RETRY_DELAY",
+      "first_appearance": "v0.4.0",
+      "enforcement_point": "KnowledgeBase.failCandidate",
+      "enforcement": "PROVED_REFERENCE",
+      "failure_behavior": "ENFORCEMENT_EXPRESSION_PRESENT_OUTCOME_NEEDS_PATH_ANALYSIS",
+      "evidence": [
+        "security-ev-514f7493aebdf9e7",
+        "security-ev-0da44340d00e02ef"
+      ]
+    },
+    {
+      "bound_id": "bound-0a27ceb81dfe93d0",
+      "snapshot_id": "snapshot-0012",
+      "version": "v0.6.0",
+      "variant": "variant-b",
+      "bound": "maxRequestsPerOrigin",
+      "value": "40",
+      "scope": "ORIGIN_REQUEST_COUNT",
+      "first_appearance": "v0.6.0",
+      "enforcement_point": "OriginBudget.canRequest",
+      "enforcement": "PROVED_REFERENCE",
+      "failure_behavior": "REJECT_DROP_OR_STOP",
+      "evidence": [
+        "security-ev-980b7e0d9cd91d03",
+        "security-ev-f467e375e016072a"
+      ]
+    },
+    {
+      "bound_id": "bound-2aa711e919e71bc9",
+      "snapshot_id": "snapshot-0012",
+      "version": "v0.6.0",
+      "variant": "variant-b",
+      "bound": "maxConcurrentPerOrigin",
+      "value": "2",
+      "scope": "ORIGIN_CONCURRENCY",
+      "first_appearance": "v0.6.0",
+      "enforcement_point": "OriginBudget.canRequest",
+      "enforcement": "PROVED_REFERENCE",
+      "failure_behavior": "REJECT_DROP_OR_STOP",
+      "evidence": [
+        "security-ev-4d4b146388a47c02",
+        "security-ev-8362c710014e210c"
+      ]
+    },
+    {
+      "bound_id": "bound-dfe247400130437b",
+      "snapshot_id": "snapshot-0012",
+      "version": "v0.6.0",
+      "variant": "variant-b",
+      "bound": "minRequestInterval",
+      "value": "150",
+      "scope": "ORIGIN_RATE",
+      "first_appearance": "v0.6.0",
+      "enforcement_point": "OriginBudget.remainingDelay",
+      "enforcement": "PROVED_REFERENCE",
+      "failure_behavior": "ENFORCEMENT_EXPRESSION_PRESENT_OUTCOME_NEEDS_PATH_ANALYSIS",
+      "evidence": [
+        "security-ev-f7d80a053252bb87",
+        "security-ev-6cf33f1b942ab20a"
+      ]
+    },
+    {
+      "bound_id": "bound-e65e9a4448b1a29d",
+      "snapshot_id": "snapshot-0012",
+      "version": "v0.6.0",
+      "variant": "variant-b",
+      "bound": "maxPersistedDiscoveries",
+      "value": "1500",
+      "scope": "PERSISTED_DISCOVERIES",
+      "first_appearance": "v0.3.0",
+      "enforcement_point": "KnowledgeBase.persistNow",
+      "enforcement": "PROVED_REFERENCE",
+      "failure_behavior": "TRUNCATE",
+      "evidence": [
+        "security-ev-db8dcda458753dd6",
+        "security-ev-64cc47590bbffbb1"
+      ]
+    },
+    {
+      "bound_id": "bound-0832cce3d08e7bd1",
+      "snapshot_id": "snapshot-0012",
+      "version": "v0.6.0",
+      "variant": "variant-b",
+      "bound": "maxPersistedResources",
+      "value": "2000",
+      "scope": "PERSISTED_RESOURCES",
+      "first_appearance": "v0.5.0",
+      "enforcement_point": "KnowledgeBase.persistNow",
+      "enforcement": "PROVED_REFERENCE",
+      "failure_behavior": "TRUNCATE",
+      "evidence": [
+        "security-ev-84af7216bf920b83",
+        "security-ev-4132647f651066d9"
+      ]
+    },
+    {
+      "bound_id": "bound-5960d784f395bdd0",
+      "snapshot_id": "snapshot-0012",
+      "version": "v0.6.0",
+      "variant": "variant-b",
+      "bound": "maxPersistedEdges",
+      "value": "4000",
+      "scope": "PERSISTED_EDGES",
+      "first_appearance": "v0.5.0",
+      "enforcement_point": "KnowledgeBase.persistNow",
+      "enforcement": "PROVED_REFERENCE",
+      "failure_behavior": "TRUNCATE",
+      "evidence": [
+        "security-ev-8311a7f2be7db2ff",
+        "security-ev-0a7a657bfb9285d6"
+      ]
+    },
+    {
+      "bound_id": "bound-f969c9722cd036d7",
+      "snapshot_id": "snapshot-0012",
+      "version": "v0.6.0",
+      "variant": "variant-b",
+      "bound": "maxNetworkEvents",
+      "value": "1500",
+      "scope": "NETWORK_EVENT_RETENTION",
+      "first_appearance": "v0.5.0",
+      "enforcement_point": "DiscoveryEngine.storeNetworkEvent",
+      "enforcement": "PROVED_REFERENCE",
+      "failure_behavior": "REJECT_DROP_OR_STOP",
+      "evidence": [
+        "security-ev-50e4b103a9d7b097",
+        "security-ev-db51724545d51543"
+      ]
+    },
+    {
+      "bound_id": "bound-381d8d963ab1ebc3",
+      "snapshot_id": "snapshot-0012",
+      "version": "v0.6.0",
+      "variant": "variant-b",
+      "bound": "maxDiagnostics",
+      "value": "500",
+      "scope": "DIAGNOSTIC_RETENTION",
+      "first_appearance": "v0.6.0",
+      "enforcement_point": "DiscoveryEngine.diagnostic",
+      "enforcement": "PROVED_REFERENCE",
+      "failure_behavior": "ENFORCEMENT_EXPRESSION_PRESENT_OUTCOME_NEEDS_PATH_ANALYSIS",
+      "evidence": [
+        "security-ev-5c4890012a18b073",
+        "security-ev-1b4c09afa4d3566c"
+      ]
+    },
+    {
+      "bound_id": "bound-d661fc6184502a2d",
+      "snapshot_id": "snapshot-0012",
+      "version": "v0.6.0",
+      "variant": "variant-b",
+      "bound": "fingerprintMaxChars",
+      "value": "1000000",
+      "scope": "FINGERPRINT_INPUT",
+      "first_appearance": "v0.5.0",
+      "enforcement_point": "TOP_LEVEL.fnv1a32",
+      "enforcement": "PROVED_REFERENCE",
+      "failure_behavior": "TRUNCATE",
+      "evidence": [
+        "security-ev-8f8e1ec33185b5fe",
+        "security-ev-61a2aa6bd9e8b8d0"
+      ]
+    },
+    {
+      "bound_id": "bound-52734ccce65de71b",
+      "snapshot_id": "snapshot-0013",
+      "version": "v0.6.0",
+      "variant": "variant-c",
+      "bound": "maxCandidates",
+      "value": "750",
+      "scope": "CANDIDATE_FRONTIER",
+      "first_appearance": "v0.1.0",
+      "enforcement_point": "KnowledgeBase.addCandidate",
+      "enforcement": "PROVED_REFERENCE",
+      "failure_behavior": "REJECT_DROP_OR_STOP",
+      "evidence": [
+        "security-ev-def5e14370875997",
+        "security-ev-e30797064b3668bd"
+      ]
+    },
+    {
+      "bound_id": "bound-cbf78ef2fc32b562",
+      "snapshot_id": "snapshot-0013",
+      "version": "v0.6.0",
+      "variant": "variant-c",
+      "bound": "maxRequests",
+      "value": "150",
+      "scope": "SCAN_REQUEST_COUNT",
+      "first_appearance": "v0.1.0",
+      "enforcement_point": "GenericDiscoveryEngine.reserveRequestSlot",
+      "enforcement": "PROVED_REFERENCE",
+      "failure_behavior": "REJECT_DROP_OR_STOP",
+      "evidence": [
+        "security-ev-e6cfdcfc2f709a28",
+        "security-ev-89f913d1f88f8c0b"
+      ]
+    },
+    {
+      "bound_id": "bound-899855660d6c8303",
+      "snapshot_id": "snapshot-0013",
+      "version": "v0.6.0",
+      "variant": "variant-c",
+      "bound": "concurrency",
+      "value": "4",
+      "scope": "WORKER_COUNT",
+      "first_appearance": "v0.1.0",
+      "enforcement_point": "AdaptiveScheduler.constructor",
+      "enforcement": "PROVED_REFERENCE",
+      "failure_behavior": "ENFORCEMENT_EXPRESSION_PRESENT_OUTCOME_NEEDS_PATH_ANALYSIS",
+      "evidence": [
+        "security-ev-708c0c0951543c86",
+        "security-ev-37cac8d5154f3c62"
+      ]
+    },
+    {
+      "bound_id": "bound-8d4089bbb62a1727",
+      "snapshot_id": "snapshot-0013",
+      "version": "v0.6.0",
+      "variant": "variant-c",
+      "bound": "requestTimeout",
+      "value": "8000",
+      "scope": "REQUEST_DURATION",
+      "first_appearance": "v0.1.0",
+      "enforcement_point": "TOP_LEVEL.gmRequest",
+      "enforcement": "PROVED_REFERENCE",
+      "failure_behavior": "ENFORCEMENT_EXPRESSION_PRESENT_OUTCOME_NEEDS_PATH_ANALYSIS",
+      "evidence": [
+        "security-ev-8a745601c8b99944",
+        "security-ev-d9d37999479cc799"
+      ]
+    },
+    {
+      "bound_id": "bound-6a38b2b72b80999a",
+      "snapshot_id": "snapshot-0013",
+      "version": "v0.6.0",
+      "variant": "variant-c",
+      "bound": "maxDepth",
+      "value": "5",
+      "scope": "EXPANSION_DEPTH",
+      "first_appearance": "v0.4.0",
+      "enforcement_point": "KnowledgeBase.addCandidate",
+      "enforcement": "PROVED_REFERENCE",
+      "failure_behavior": "REJECT_DROP_OR_STOP",
+      "evidence": [
+        "security-ev-1eea3cc46a8d43fa",
+        "security-ev-77f06bb90660769d"
+      ]
+    },
+    {
+      "bound_id": "bound-a23534102d09a4a6",
+      "snapshot_id": "snapshot-0013",
+      "version": "v0.6.0",
+      "variant": "variant-c",
+      "bound": "maxRetries",
+      "value": "2",
+      "scope": "RETRY_COUNT",
+      "first_appearance": "v0.3.0",
+      "enforcement_point": "KnowledgeBase.failCandidate",
+      "enforcement": "PROVED_REFERENCE",
+      "failure_behavior": "ENFORCEMENT_EXPRESSION_PRESENT_OUTCOME_NEEDS_PATH_ANALYSIS",
+      "evidence": [
+        "security-ev-9eb10e57952cf890",
+        "security-ev-919e5b21081e4aa6"
+      ]
+    },
+    {
+      "bound_id": "bound-272a0f12606021ba",
+      "snapshot_id": "snapshot-0013",
+      "version": "v0.6.0",
+      "variant": "variant-c",
+      "bound": "maxRequestsPerOrigin",
+      "value": "50",
+      "scope": "ORIGIN_REQUEST_COUNT",
+      "first_appearance": "v0.6.0",
+      "enforcement_point": "OriginController.acquire",
+      "enforcement": "PROVED_REFERENCE",
+      "failure_behavior": "REJECT_DROP_OR_STOP",
+      "evidence": [
+        "security-ev-b428559800a7c031",
+        "security-ev-e70994a498455418"
+      ]
+    },
+    {
+      "bound_id": "bound-f2ce22c7737336fd",
+      "snapshot_id": "snapshot-0013",
+      "version": "v0.6.0",
+      "variant": "variant-c",
+      "bound": "maxConcurrentPerOrigin",
+      "value": "2",
+      "scope": "ORIGIN_CONCURRENCY",
+      "first_appearance": "v0.6.0",
+      "enforcement_point": "OriginController.acquire",
+      "enforcement": "PROVED_REFERENCE",
+      "failure_behavior": "ENFORCEMENT_EXPRESSION_PRESENT_OUTCOME_NEEDS_PATH_ANALYSIS",
+      "evidence": [
+        "security-ev-b83b4f6e9f9b46f1",
+        "security-ev-8ca683d5ebd3f717"
+      ]
+    },
+    {
+      "bound_id": "bound-e6eaf85a9cef1095",
+      "snapshot_id": "snapshot-0013",
+      "version": "v0.6.0",
+      "variant": "variant-c",
+      "bound": "minRequestInterval",
+      "value": "150",
+      "scope": "ORIGIN_RATE",
+      "first_appearance": "v0.6.0",
+      "enforcement_point": "OriginController.acquire",
+      "enforcement": "PROVED_REFERENCE",
+      "failure_behavior": "ENFORCEMENT_EXPRESSION_PRESENT_OUTCOME_NEEDS_PATH_ANALYSIS",
+      "evidence": [
+        "security-ev-7613ab5cc435811c",
+        "security-ev-6636605d7c1dc58c"
+      ]
+    },
+    {
+      "bound_id": "bound-23e80c8c1e8122c4",
+      "snapshot_id": "snapshot-0013",
+      "version": "v0.6.0",
+      "variant": "variant-c",
+      "bound": "persistedDiscoveries",
+      "value": "1200",
+      "scope": "PERSISTED_DISCOVERIES",
+      "first_appearance": "v0.6.0",
+      "enforcement_point": "KnowledgeBase.serializePersistence",
+      "enforcement": "PROVED_REFERENCE",
+      "failure_behavior": "TRUNCATE",
+      "evidence": [
+        "security-ev-55988411e1c3d4c8",
+        "security-ev-e991eef0a61ae5a4"
+      ]
+    },
+    {
+      "bound_id": "bound-a808a0d570a37fe7",
+      "snapshot_id": "snapshot-0013",
+      "version": "v0.6.0",
+      "variant": "variant-c",
+      "bound": "persistedResources",
+      "value": "1500",
+      "scope": "PERSISTED_RESOURCES",
+      "first_appearance": "v0.6.0",
+      "enforcement_point": "KnowledgeBase.serializePersistence",
+      "enforcement": "PROVED_REFERENCE",
+      "failure_behavior": "TRUNCATE",
+      "evidence": [
+        "security-ev-533e3edabd896b36",
+        "security-ev-4e27e5a1bf3f1107"
+      ]
+    },
+    {
+      "bound_id": "bound-47c5df9ce8a1ccf6",
+      "snapshot_id": "snapshot-0013",
+      "version": "v0.6.0",
+      "variant": "variant-c",
+      "bound": "persistedEdges",
+      "value": "3000",
+      "scope": "PERSISTED_EDGES",
+      "first_appearance": "v0.6.0",
+      "enforcement_point": "KnowledgeBase.serializePersistence",
+      "enforcement": "PROVED_REFERENCE",
+      "failure_behavior": "TRUNCATE",
+      "evidence": [
+        "security-ev-b5461086a8c50814",
+        "security-ev-dcb2f55af645f6d9"
+      ]
+    },
+    {
+      "bound_id": "bound-1728157bf40c44a7",
+      "snapshot_id": "snapshot-0013",
+      "version": "v0.6.0",
+      "variant": "variant-c",
+      "bound": "maxNetworkEvents",
+      "value": "1000",
+      "scope": "NETWORK_EVENT_RETENTION",
+      "first_appearance": "v0.5.0",
+      "enforcement_point": "KnowledgeBase.addNetworkEvent",
+      "enforcement": "PROVED_REFERENCE",
+      "failure_behavior": "ENFORCEMENT_EXPRESSION_PRESENT_OUTCOME_NEEDS_PATH_ANALYSIS",
+      "evidence": [
+        "security-ev-add2f10f90de0562",
+        "security-ev-52dc6643766f3d55"
+      ]
+    },
+    {
+      "bound_id": "bound-cc9820b2fe0e07c9",
+      "snapshot_id": "snapshot-0013",
+      "version": "v0.6.0",
+      "variant": "variant-c",
+      "bound": "maxGraphEdges",
+      "value": "5000",
+      "scope": "GRAPH_EDGE_RETENTION",
+      "first_appearance": "v0.5.0",
+      "enforcement_point": "KnowledgeBase.recordCandidateEdge",
+      "enforcement": "PROVED_REFERENCE",
+      "failure_behavior": "ENFORCEMENT_EXPRESSION_PRESENT_OUTCOME_NEEDS_PATH_ANALYSIS",
+      "evidence": [
+        "security-ev-468c35cfeb782e71",
+        "security-ev-e5fddde3e2df20ee"
+      ]
+    },
+    {
+      "bound_id": "bound-3544663d9cdaa11d",
+      "snapshot_id": "snapshot-0013",
+      "version": "v0.6.0",
+      "variant": "variant-c",
+      "bound": "maxDiagnostics",
+      "value": "500",
+      "scope": "DIAGNOSTIC_RETENTION",
+      "first_appearance": "v0.6.0",
+      "enforcement_point": "KnowledgeBase.recordDiagnostic",
+      "enforcement": "PROVED_REFERENCE",
+      "failure_behavior": "REJECT_DROP_OR_STOP",
+      "evidence": [
+        "security-ev-8fffb194a0189149",
+        "security-ev-055f5c69affeae9b"
+      ]
+    },
+    {
+      "bound_id": "bound-63f8c3b6f76cfa50",
+      "snapshot_id": "snapshot-0013",
+      "version": "v0.6.0",
+      "variant": "variant-c",
+      "bound": "maxStoredTextPreview",
+      "value": "300",
+      "scope": "TEXT_RETENTION",
+      "first_appearance": "v0.4.0",
+      "enforcement_point": "NOT_EVIDENCED",
+      "enforcement": "UNKNOWN",
+      "failure_behavior": "CONFIGURED_ENFORCEMENT_NOT_EVIDENCED",
+      "evidence": [
+        "security-ev-64fcf1e5a4a345be"
+      ]
+    },
+    {
+      "bound_id": "bound-75a5ff5bee6cf4b9",
+      "snapshot_id": "snapshot-0013",
+      "version": "v0.6.0",
+      "variant": "variant-c",
+      "bound": "fingerprintMaxChars",
+      "value": "1_000_000",
+      "scope": "FINGERPRINT_INPUT",
+      "first_appearance": "v0.5.0",
+      "enforcement_point": "TOP_LEVEL.makeFingerprint",
+      "enforcement": "PROVED_REFERENCE",
+      "failure_behavior": "TRUNCATE",
+      "evidence": [
+        "security-ev-b7461f921486fd97",
+        "security-ev-1beaabe34ad4dd78"
+      ]
+    },
+    {
+      "bound_id": "bound-108cb799346014c7",
+      "snapshot_id": "snapshot-0014",
+      "version": "v0.7.1",
+      "variant": "only-evidenced-complete-occurrence",
+      "bound": "maxCandidates",
+      "value": "750",
+      "scope": "CANDIDATE_FRONTIER",
+      "first_appearance": "v0.1.0",
+      "enforcement_point": "KnowledgeBase.addCandidate",
+      "enforcement": "PROVED_REFERENCE",
+      "failure_behavior": "REJECT_DROP_OR_STOP",
+      "evidence": [
+        "security-ev-ce891efdbc701626",
+        "security-ev-9585d263181c71b4"
+      ]
+    },
+    {
+      "bound_id": "bound-76faa34b45780bfd",
+      "snapshot_id": "snapshot-0014",
+      "version": "v0.7.1",
+      "variant": "only-evidenced-complete-occurrence",
+      "bound": "maxRequests",
+      "value": "150",
+      "scope": "SCAN_REQUEST_COUNT",
+      "first_appearance": "v0.1.0",
+      "enforcement_point": "GenericDiscoveryEngine.reserveRequestSlot",
+      "enforcement": "PROVED_REFERENCE",
+      "failure_behavior": "REJECT_DROP_OR_STOP",
+      "evidence": [
+        "security-ev-31b846e9a76c0633",
+        "security-ev-fab4e1d05f5123d9"
+      ]
+    },
+    {
+      "bound_id": "bound-c362e5de34051f6d",
+      "snapshot_id": "snapshot-0014",
+      "version": "v0.7.1",
+      "variant": "only-evidenced-complete-occurrence",
+      "bound": "concurrency",
+      "value": "4",
+      "scope": "WORKER_COUNT",
+      "first_appearance": "v0.1.0",
+      "enforcement_point": "GenericDiscoveryEngine.constructor",
+      "enforcement": "PROVED_REFERENCE",
+      "failure_behavior": "ENFORCEMENT_EXPRESSION_PRESENT_OUTCOME_NEEDS_PATH_ANALYSIS",
+      "evidence": [
+        "security-ev-11c827fcf409a99b",
+        "security-ev-1a59f6e095d076b3"
+      ]
+    },
+    {
+      "bound_id": "bound-1da28faa0c602ac8",
+      "snapshot_id": "snapshot-0014",
+      "version": "v0.7.1",
+      "variant": "only-evidenced-complete-occurrence",
+      "bound": "requestTimeout",
+      "value": "8000",
+      "scope": "REQUEST_DURATION",
+      "first_appearance": "v0.1.0",
+      "enforcement_point": "Acquisition.request",
+      "enforcement": "PROVED_REFERENCE",
+      "failure_behavior": "ENFORCEMENT_EXPRESSION_PRESENT_OUTCOME_NEEDS_PATH_ANALYSIS",
+      "evidence": [
+        "security-ev-1c4e952c7b476d12",
+        "security-ev-e6e0d7d234ce5979"
+      ]
+    },
+    {
+      "bound_id": "bound-80bd96fa12bd978c",
+      "snapshot_id": "snapshot-0014",
+      "version": "v0.7.1",
+      "variant": "only-evidenced-complete-occurrence",
+      "bound": "maxBodyChars",
+      "value": "2_000_000",
+      "scope": "RESPONSE_BODY",
+      "first_appearance": "v0.7.1",
+      "enforcement_point": "Acquisition.request",
+      "enforcement": "PROVED_REFERENCE",
+      "failure_behavior": "TRUNCATE",
+      "evidence": [
+        "security-ev-2d1c83f9a3412b4e",
+        "security-ev-358172e952f4deca"
+      ]
+    },
+    {
+      "bound_id": "bound-9952d822133828fe",
+      "snapshot_id": "snapshot-0014",
+      "version": "v0.7.1",
+      "variant": "only-evidenced-complete-occurrence",
+      "bound": "maxDepth",
+      "value": "5",
+      "scope": "EXPANSION_DEPTH",
+      "first_appearance": "v0.4.0",
+      "enforcement_point": "AcquisitionPolicy.plan",
+      "enforcement": "PROVED_REFERENCE",
+      "failure_behavior": "ENFORCEMENT_EXPRESSION_PRESENT_OUTCOME_NEEDS_PATH_ANALYSIS",
+      "evidence": [
+        "security-ev-a69e142e6c5dab3f",
+        "security-ev-03379c2f41de1086"
+      ]
+    },
+    {
+      "bound_id": "bound-86e8f916ca0c76a6",
+      "snapshot_id": "snapshot-0014",
+      "version": "v0.7.1",
+      "variant": "only-evidenced-complete-occurrence",
+      "bound": "maxRetries",
+      "value": "2",
+      "scope": "RETRY_COUNT",
+      "first_appearance": "v0.3.0",
+      "enforcement_point": "KnowledgeBase.retryCandidate",
+      "enforcement": "PROVED_REFERENCE",
+      "failure_behavior": "REJECT_DROP_OR_STOP",
+      "evidence": [
+        "security-ev-5d61d46289727c9c",
+        "security-ev-df61f9fa43cc5fe0"
+      ]
+    },
+    {
+      "bound_id": "bound-ad30749b0dcfc40f",
+      "snapshot_id": "snapshot-0014",
+      "version": "v0.7.1",
+      "variant": "only-evidenced-complete-occurrence",
+      "bound": "maxRequestsPerOrigin",
+      "value": "50",
+      "scope": "ORIGIN_REQUEST_COUNT",
+      "first_appearance": "v0.6.0",
+      "enforcement_point": "OriginController.canReserve",
+      "enforcement": "PROVED_REFERENCE",
+      "failure_behavior": "REJECT_DROP_OR_STOP",
+      "evidence": [
+        "security-ev-e56bf9e275c8a16c",
+        "security-ev-e7c16f93b83952d1"
+      ]
+    },
+    {
+      "bound_id": "bound-1a5b60e7a7756d46",
+      "snapshot_id": "snapshot-0014",
+      "version": "v0.7.1",
+      "variant": "only-evidenced-complete-occurrence",
+      "bound": "maxConcurrentPerOrigin",
+      "value": "2",
+      "scope": "ORIGIN_CONCURRENCY",
+      "first_appearance": "v0.6.0",
+      "enforcement_point": "OriginController.canReserve",
+      "enforcement": "PROVED_REFERENCE",
+      "failure_behavior": "REJECT_DROP_OR_STOP",
+      "evidence": [
+        "security-ev-5d1e23e491f71d6f",
+        "security-ev-e98f8e9379e0d58e"
+      ]
+    },
+    {
+      "bound_id": "bound-56a8371236444a9d",
+      "snapshot_id": "snapshot-0014",
+      "version": "v0.7.1",
+      "variant": "only-evidenced-complete-occurrence",
+      "bound": "minRequestInterval",
+      "value": "150",
+      "scope": "ORIGIN_RATE",
+      "first_appearance": "v0.6.0",
+      "enforcement_point": "OriginController.acquire",
+      "enforcement": "PROVED_REFERENCE",
+      "failure_behavior": "REJECT_DROP_OR_STOP",
+      "evidence": [
+        "security-ev-e4c7e5a3b6503f9e",
+        "security-ev-bf696d8619268a9d"
+      ]
+    },
+    {
+      "bound_id": "bound-8b0c703f86a171a2",
+      "snapshot_id": "snapshot-0014",
+      "version": "v0.7.1",
+      "variant": "only-evidenced-complete-occurrence",
+      "bound": "persistedDiscoveries",
+      "value": "1200",
+      "scope": "PERSISTED_DISCOVERIES",
+      "first_appearance": "v0.6.0",
+      "enforcement_point": "KnowledgeBase.serialize",
+      "enforcement": "PROVED_REFERENCE",
+      "failure_behavior": "TRUNCATE",
+      "evidence": [
+        "security-ev-dbf5b815568da666",
+        "security-ev-122488824aaa2566"
+      ]
+    },
+    {
+      "bound_id": "bound-afb81e5bccb8c019",
+      "snapshot_id": "snapshot-0014",
+      "version": "v0.7.1",
+      "variant": "only-evidenced-complete-occurrence",
+      "bound": "persistedResources",
+      "value": "1500",
+      "scope": "PERSISTED_RESOURCES",
+      "first_appearance": "v0.6.0",
+      "enforcement_point": "KnowledgeBase.serialize",
+      "enforcement": "PROVED_REFERENCE",
+      "failure_behavior": "TRUNCATE",
+      "evidence": [
+        "security-ev-1cf13d994cd9c507",
+        "security-ev-fadd2056d4bc56ae"
+      ]
+    },
+    {
+      "bound_id": "bound-7da97222ca7823ad",
+      "snapshot_id": "snapshot-0014",
+      "version": "v0.7.1",
+      "variant": "only-evidenced-complete-occurrence",
+      "bound": "persistedEdges",
+      "value": "3000",
+      "scope": "PERSISTED_EDGES",
+      "first_appearance": "v0.6.0",
+      "enforcement_point": "KnowledgeBase.serialize",
+      "enforcement": "PROVED_REFERENCE",
+      "failure_behavior": "TRUNCATE",
+      "evidence": [
+        "security-ev-f1ee013190291a96",
+        "security-ev-3cd3c12be0c1498d"
+      ]
+    },
+    {
+      "bound_id": "bound-360e44658e88ee07",
+      "snapshot_id": "snapshot-0014",
+      "version": "v0.7.1",
+      "variant": "only-evidenced-complete-occurrence",
+      "bound": "maxNetworkEvents",
+      "value": "1000",
+      "scope": "NETWORK_EVENT_RETENTION",
+      "first_appearance": "v0.5.0",
+      "enforcement_point": "GenericDiscoveryEngine.recordNetworkEvent",
+      "enforcement": "PROVED_REFERENCE",
+      "failure_behavior": "ENFORCEMENT_EXPRESSION_PRESENT_OUTCOME_NEEDS_PATH_ANALYSIS",
+      "evidence": [
+        "security-ev-20f94964824bb0ef",
+        "security-ev-5538c97088a81b2a"
+      ]
+    },
+    {
+      "bound_id": "bound-841996e8eec2b0c8",
+      "snapshot_id": "snapshot-0014",
+      "version": "v0.7.1",
+      "variant": "only-evidenced-complete-occurrence",
+      "bound": "maxGraphEdges",
+      "value": "5000",
+      "scope": "GRAPH_EDGE_RETENTION",
+      "first_appearance": "v0.5.0",
+      "enforcement_point": "KnowledgeBase.addEdge",
+      "enforcement": "PROVED_REFERENCE",
+      "failure_behavior": "ENFORCEMENT_EXPRESSION_PRESENT_OUTCOME_NEEDS_PATH_ANALYSIS",
+      "evidence": [
+        "security-ev-d37ecb6c51f8b632",
+        "security-ev-687bc6ff9880189a"
+      ]
+    },
+    {
+      "bound_id": "bound-5cca60e4063c84ee",
+      "snapshot_id": "snapshot-0014",
+      "version": "v0.7.1",
+      "variant": "only-evidenced-complete-occurrence",
+      "bound": "maxDiagnostics",
+      "value": "500",
+      "scope": "DIAGNOSTIC_RETENTION",
+      "first_appearance": "v0.6.0",
+      "enforcement_point": "KnowledgeBase.recordDiagnostic",
+      "enforcement": "PROVED_REFERENCE",
+      "failure_behavior": "ENFORCEMENT_EXPRESSION_PRESENT_OUTCOME_NEEDS_PATH_ANALYSIS",
+      "evidence": [
+        "security-ev-28876964d54cda1c",
+        "security-ev-7a853297aa18683e"
+      ]
+    },
+    {
+      "bound_id": "bound-ce34d860d375ca05",
+      "snapshot_id": "snapshot-0014",
+      "version": "v0.7.1",
+      "variant": "only-evidenced-complete-occurrence",
+      "bound": "fingerprintMaxChars",
+      "value": "1_000_000",
+      "scope": "FINGERPRINT_INPUT",
+      "first_appearance": "v0.5.0",
+      "enforcement_point": "TOP_LEVEL.makeFingerprint",
+      "enforcement": "PROVED_REFERENCE",
+      "failure_behavior": "TRUNCATE",
+      "evidence": [
+        "security-ev-7ef51848405b586c",
+        "security-ev-b52cb518f899cfd3"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,321 @@
+{
+  "synthesis_version": "protocol-v9",
+  "source_versions": [
+    "v0.1.0",
+    "v0.2.0",
+    "v0.3.0",
+    "v0.4.0",
+    "v0.5.0",
+    "v0.6.0",
+    "v0.7.1"
+  ],
+  "verified_artifacts": [
+    {
+      "path": "historical-source/VALIDATION.yaml",
+      "sha256": "06bca90c1ca0168a6e1aef60a799d21cb12765cf29c3d09615098118c5c06538",
+      "status": "FAILED_PREREQUISITE"
+    },
+    {
+      "path": "historical-source/RECONSTRUCTION-MANIFEST.yaml",
+      "sha256": "a71a0afe9f5632aeedf17c49dc8c6d555e3512d6d36d0f4abddd7c0c215d9151",
+      "status": "INTERNALLY_VALIDATED_SOURCE_LOCAL"
+    },
+    {
+      "path": "historical-source/RECONSTRUCTION-VALIDATION.yaml",
+      "sha256": "3d2ba592221f8fc79e3f4184dba6e2638897845ef3890ec57f30d7c8fc9c7364",
+      "status": "INTERNALLY_VALIDATED_SOURCE_LOCAL"
+    },
+    {
+      "path": "historical-source/analysis/DATA-MODEL-EVOLUTION.yaml",
+      "sha256": "80550aa7f831d50a328d35d21066c8cec2f77de5b3ff8d38b1941b8398040321",
+      "status": "INTERNALLY_VALIDATED_SOURCE_LOCAL"
+    },
+    {
+      "path": "historical-source/analysis/PROVIDER-HISTORY.yaml",
+      "sha256": "79139e409c120d10209cd69ea70dfa0214c43eaeee3d82e7e32534e7ac270852",
+      "status": "INTERNALLY_VALIDATED_SOURCE_LOCAL"
+    },
+    {
+      "path": "historical-source/security/VALIDATION.yaml",
+      "sha256": "a15bcdd149821f00ab3be8c4ee8991cb398c1cf2cb5417edb815bf3186d675cd",
+      "status": "PROVISIONAL_ONLY_UPSTREAM_BLOCKED"
+    },
+    {
+      "path": "historical-source/security/SECURITY-MANIFEST.yaml",
+      "sha256": "149e2b807562fe99a8e4049dbfac93de6d00de96e98b63aed738fc470ca46e41",
+      "status": "PROVISIONAL_ONLY_UPSTREAM_BLOCKED"
+    },
+    {
+      "path": "historical-source/security/FAILURE-EVENTS.yaml",
+      "sha256": "c5d49d9b0f5c2d59d1bc1430bc32a071e013f2308f034469b69dea620cbbd221",
+      "status": "PROVISIONAL_ONLY_UPSTREAM_BLOCKED"
+    },
+    {
+      "path": "historical-source/security/TRUST-BOUNDARIES.yaml",
+      "sha256": "3fde68027bc0280b3a751d6a015be0c1dd7f85dcefa5b5b55bad8dd972733343",
+      "status": "PROVISIONAL_ONLY_UPSTREAM_BLOCKED"
+    },
+    {
+      "path": "historical-source/security/AUTHORITY-HISTORY.yaml",
+      "sha256": "ef4f80ecf645d445c49b432a77c75e8f57b3ee1599651f610d6301ba30bd3a70",
+      "status": "PROVISIONAL_ONLY_UPSTREAM_BLOCKED"
+    },
+    {
+      "path": "historical-source/security/RESOURCE-BOUNDS.yaml",
+      "sha256": "3ff2bf8ca98e2333c2934160b1901c10cbeb45cd698b735f38d9bef0ba682623",
+      "status": "PROVISIONAL_ONLY_UPSTREAM_BLOCKED"
+    },
+    {
+      "path": "historical-source/security/PARSER-SAFETY-HISTORY.yaml",
+      "sha256": "ff9c271ee12e1095f721b78a2425f4ace1f8bd319bee6e1959b0f2e2fdc4cf21",
+      "status": "PROVISIONAL_ONLY_UPSTREAM_BLOCKED"
+    },
+    {
+      "path": "historical-source/security/CURRENT-PROPOSED-SECURITY.yaml",
+      "sha256": "362046bf915b5adc4b16596920d224e318cffddd48d7b0797f9ba16441197eb2",
+      "status": "PROVISIONAL_ONLY_UPSTREAM_BLOCKED"
+    },
+    {
+      "path": "historical-source/snapshots/v0.1/mechanically-composed/source/generic-discovery.user.js",
+      "sha256": "5ae5a2bbeacc88827794c0052a27101bf29d4c9dd3aa4b4c96b53667ca0537cd",
+      "status": "SNAPSHOT_INPUT_SOURCE_LOCAL"
+    },
+    {
+      "path": "historical-source/snapshots/v0.2/mechanically-composed/source/generic-discovery.user.js",
+      "sha256": "b7586963c62b827291c574118a9f25e22b67f5e9374b72a9fc2b58d4ca4ea28e",
+      "status": "SNAPSHOT_INPUT_SOURCE_LOCAL"
+    },
+    {
+      "path": "historical-source/snapshots/v0.3/source/generic-discovery.user.js",
+      "sha256": "f52fccf69f9d89c5d4269de784479657e1c2baaca3d1ff5d7d4b07887ad156e3",
+      "status": "SNAPSHOT_INPUT_SOURCE_LOCAL"
+    },
+    {
+      "path": "historical-source/snapshots/v0.4/variant-a/source/generic-discovery.user.js",
+      "sha256": "9239a85bf7e040427adf93d4380d9ed28ceaf908b36201c7ca171150f94256b8",
+      "status": "SNAPSHOT_INPUT_SOURCE_LOCAL"
+    },
+    {
+      "path": "historical-source/snapshots/v0.4/variant-b/source/generic-discovery.user.js",
+      "sha256": "c60c3278d160ed1ba6e8b4254d26cab291a3df64a4e986234cfc1fa7f897b783",
+      "status": "SNAPSHOT_INPUT_SOURCE_LOCAL"
+    },
+    {
+      "path": "historical-source/snapshots/v0.5/variant-a/source/generic-discovery.user.js",
+      "sha256": "a55a835ef0b1274db71e4019616b8ac8b12f67a3b96d050e42bc3d8eca9ed0ab",
+      "status": "SNAPSHOT_INPUT_SOURCE_LOCAL"
+    },
+    {
+      "path": "historical-source/snapshots/v0.5/variant-b/source/generic-discovery.user.js",
+      "sha256": "f71b190c334069da6e4ae82a8e8d27383826b5e333de4ca3cb1f72de19d9b1cd",
+      "status": "SNAPSHOT_INPUT_SOURCE_LOCAL"
+    },
+    {
+      "path": "historical-source/snapshots/v0.5/variant-c/source/generic-discovery.user.js",
+      "sha256": "644e9cf006441cf81e407e47f4b37b8ff12d91a65e738595de5eabadee6ec390",
+      "status": "SNAPSHOT_INPUT_SOURCE_LOCAL"
+    },
+    {
+      "path": "historical-source/snapshots/v0.6/variant-a/source/generic-discovery.user.js",
+      "sha256": "3a3aa26747ff5105ce52578133e8c8932edb2ec0c54246853ea0b8938ba3118c",
+      "status": "SNAPSHOT_INPUT_SOURCE_LOCAL"
+    },
+    {
+      "path": "historical-source/snapshots/v0.6/variant-b/source/generic-discovery.user.js",
+      "sha256": "414ad2bfc4df241d85b20367a4c8764187155f9cfdf8daacd5fb7e773477eed1",
+      "status": "SNAPSHOT_INPUT_SOURCE_LOCAL"
+    },
+    {
+      "path": "historical-source/snapshots/v0.6/variant-c/source/generic-discovery.user.js",
+      "sha256": "8b0987792f6182090942ff5959eb8ae1e5cbf5386c45632c08b1f31742bf14d3",
+      "status": "SNAPSHOT_INPUT_SOURCE_LOCAL"
+    },
+    {
+      "path": "historical-source/snapshots/v0.7.1/source/generic-discovery.user.js",
+      "sha256": "00c676fabe2d0b6c0e469e03171e00971a7291c7da404b624751fa86c19d39bb",
+      "status": "SNAPSHOT_INPUT_SOURCE_LOCAL"
+    }
+  ],
+  "evolution_events": 34,
+  "causal_claims": 34,
+  "architecture_states": 12,
+  "contract_states": 12,
+  "contract_state_disposition": "ALL_UNKNOWN_BECAUSE_PROTOCOL_V7_IS_ABSENT",
+  "security_states": 12,
+  "algorithm_states": 12,
+  "unresolved_questions": 15,
+  "contradictions": 4,
+  "confidence": "PROVISIONAL_SOURCE_LOCAL_SUPPORTED",
+  "prerequisite_acceptance": "BLOCKED_MISSING_OR_FAILED_UPSTREAM",
+  "acceptance": "PROVISIONAL_ONLY_UPSTREAM_BLOCKED",
+  "upstream_availability": {
+    "v1_v3_present": true,
+    "v1_validation": "FAIL",
+    "v3_validation": "PASS",
+    "v4_present": false,
+    "v5_present": false,
+    "v6_present": false,
+    "v7_present": false,
+    "all_required_verified_inputs_available": false
+  },
+  "dimensions_unavailable": [
+    "Protocol-v4 verified runtime facts",
+    "Protocol-v5 validated algorithm model",
+    "Protocol-v6 validated architecture model",
+    "Protocol-v7 validated contracts"
+  ],
+  "generator": "historical-source/tools/build_historical_synthesis.py",
+  "tools": {
+    "generator": "4291be09a75c6e4278839021be8040889a27bfb5ffe3d8b58c9fc0e5d0a9f5e9",
+    "validator": "b02b359779fdcebac9c0961516bba1876683b06283662036cd3d526d712a99b5"
+  },
+  "required_deliverables": [
+    "EVIDENCE-LEDGER.yaml",
+    "VERSION-STATE-VECTORS.yaml",
+    "EVOLUTION-EVENTS.yaml",
+    "EVOLUTION-MATRIX.csv",
+    "CONCEPT-GENEALOGY.yaml",
+    "ARCHITECTURE-EVOLUTION.md",
+    "ALGORITHM-AND-SCHEDULER-EVOLUTION.md",
+    "PROVIDER-AND-ACQUISITION-EVOLUTION.md",
+    "OBSERVATION-PROVENANCE-EVOLUTION.md",
+    "DISCOVERY-CLOSURE-ANALYSIS.md",
+    "CONTRACT-SECURITY-INTEGRATION.md",
+    "PLANNED-VS-IMPLEMENTED.md",
+    "CAUSAL-CLAIMS.yaml",
+    "INVARIANTS.yaml",
+    "ARCHITECTURE-EPOCHS.md",
+    "CONVERGENCE-AND-DIVERGENCE.md",
+    "CAPABILITY-EMERGENCE.md",
+    "COMPLEXITY-GROWTH.csv",
+    "STABILITY-ANALYSIS.md",
+    "CONTRADICTIONS.yaml",
+    "UNCERTAINTIES.yaml",
+    "CLAIMS.yaml",
+    "HISTORICAL-CLAIMS-GRAPH.json",
+    "SYNTHESIS-MANIFEST.yaml",
+    "FINAL-HISTORICAL-REPORT.md"
+  ],
+  "files": [
+    {
+      "path": "historical-source/synthesis/EVIDENCE-LEDGER.yaml",
+      "sha256": "ae1eb08e53f5784096042537449f0c885c44aa10fa58b8445f75d65435e757f3",
+      "size": 216367
+    },
+    {
+      "path": "historical-source/synthesis/VERSION-STATE-VECTORS.yaml",
+      "sha256": "6b520e563fbaa26dcefd1746c3bd8ee4075ffad29a6270c844dfe69485476e1c",
+      "size": 29263
+    },
+    {
+      "path": "historical-source/synthesis/EVOLUTION-EVENTS.yaml",
+      "sha256": "9e65f91843a3e542558a32d70c977545b15fe8c6944bc0555e6462f596520c08",
+      "size": 20416
+    },
+    {
+      "path": "historical-source/synthesis/EVOLUTION-MATRIX.csv",
+      "sha256": "36f5f1ff891efb2bfdb968b26623132a33358e02890ef525092cf72207e60ff7",
+      "size": 5230
+    },
+    {
+      "path": "historical-source/synthesis/CONCEPT-GENEALOGY.yaml",
+      "sha256": "3f6ced4db121ee63bbf5211054fb6f257706b5a422513a7d37498a06be0bf1a2",
+      "size": 36881
+    },
+    {
+      "path": "historical-source/synthesis/ARCHITECTURE-EVOLUTION.md",
+      "sha256": "a978905b5436a2ea3891abb65a0ade5515bc2093af05528bdf2ecc9ce4763c5f",
+      "size": 8563
+    },
+    {
+      "path": "historical-source/synthesis/ALGORITHM-AND-SCHEDULER-EVOLUTION.md",
+      "sha256": "8395456cdfe6d7a68825f2d6cf2838c71ebdf330d47e4c29e6b26f35d05a08aa",
+      "size": 2682
+    },
+    {
+      "path": "historical-source/synthesis/PROVIDER-AND-ACQUISITION-EVOLUTION.md",
+      "sha256": "42f9c87e72e2b0fcb6f154793c8386f869e97947ada3e6d75d92c1e6e546f03c",
+      "size": 3560
+    },
+    {
+      "path": "historical-source/synthesis/OBSERVATION-PROVENANCE-EVOLUTION.md",
+      "sha256": "a6a005d29d0dc0b3f34abd2c876595518d36eff14df0446cb3037891b25e9031",
+      "size": 3144
+    },
+    {
+      "path": "historical-source/synthesis/DISCOVERY-CLOSURE-ANALYSIS.md",
+      "sha256": "07ce00589d8469a943819e8f885992648837cdf20d92a8991ff686d6ab0ebd4a",
+      "size": 1959
+    },
+    {
+      "path": "historical-source/synthesis/CONTRACT-SECURITY-INTEGRATION.md",
+      "sha256": "64d41cb5bba74803d2c0473d98d0bbdff3021e5efb8f4329766fa9731a625430",
+      "size": 1845
+    },
+    {
+      "path": "historical-source/synthesis/PLANNED-VS-IMPLEMENTED.md",
+      "sha256": "b06c318f1bc9c35817d0fb29ac5b017c7d3806f54ca860484d921c7a551c5e83",
+      "size": 2351
+    },
+    {
+      "path": "historical-source/synthesis/CAUSAL-CLAIMS.yaml",
+      "sha256": "2f67f63bd24a97aabd99cfc12f4cda7c580f323d30d5f661858b7acf2ca5593e",
+      "size": 16479
+    },
+    {
+      "path": "historical-source/synthesis/INVARIANTS.yaml",
+      "sha256": "5fe5f086d117cfff0ba25d89c9f781042e6c23ff19d3ee81d5806f4f21d3f797",
+      "size": 6211
+    },
+    {
+      "path": "historical-source/synthesis/ARCHITECTURE-EPOCHS.md",
+      "sha256": "ce51bdcae3f91aef9fb67d7a815957b3d560dca0d8aa061bf52cc3f49beeea24",
+      "size": 882
+    },
+    {
+      "path": "historical-source/synthesis/CONVERGENCE-AND-DIVERGENCE.md",
+      "sha256": "9ac753aa243138c10aa92ad9ed7e3f8119faf36825251c1f3b06af6425459265",
+      "size": 1332
+    },
+    {
+      "path": "historical-source/synthesis/CAPABILITY-EMERGENCE.md",
+      "sha256": "d3c56755eb745973f2fa6be7bcea2aee51e6abe6eea84cadbec55db1f500ecbb",
+      "size": 1698
+    },
+    {
+      "path": "historical-source/synthesis/COMPLEXITY-GROWTH.csv",
+      "sha256": "9075a06edd9ffac00ad32b22407401fc175b8c265c85beaf88876ad176f3657f",
+      "size": 993
+    },
+    {
+      "path": "historical-source/synthesis/STABILITY-ANALYSIS.md",
+      "sha256": "47fe7647a31b2969756fc5eb1e0069246337983ae480730fb3ae403c7da69529",
+      "size": 1465
+    },
+    {
+      "path": "historical-source/synthesis/CONTRADICTIONS.yaml",
+      "sha256": "444549fe9fb65abeb9e0f2bad9beb13778f1a74834584a6e0ad2ac6d3ca2f41b",
+      "size": 1896
+    },
+    {
+      "path": "historical-source/synthesis/UNCERTAINTIES.yaml",
+      "sha256": "f702d900be14b72deffe985047ffe4b995c0c040f6a1ff91708de8e005395431",
+      "size": 3987
+    },
+    {
+      "path": "historical-source/synthesis/CLAIMS.yaml",
+      "sha256": "3ca5690e15443caf7c718b5aa452ad19999e5fd7a4cf615d3ca547baf3f18fd0",
+      "size": 10950
+    },
+    {
+      "path": "historical-source/synthesis/HISTORICAL-CLAIMS-GRAPH.json",
+      "sha256": "b8a444d8f309a044168e37da71585be04fca2b8f62582844438cce94c3a98ba5",
+      "size": 42067
+    },
+    {
+      "path": "historical-source/synthesis/FINAL-HISTORICAL-REPORT.md",
+      "sha256": "db185ea5fe7546413632a40830e0310224c0407afeaa5fc85a96e041775d5332",
+      "size": 10235
+    }
+  ]
+}

@@ -1,0 +1,52 @@
+                         SCAN SESSION
+                              │
+                              ▼
+                       DISCOVERY DOMAIN
+                              │
+                              ▼
+                         SEARCH SPACE
+                              │
+                              ▼
+                         PARTITIONS
+                              │
+                              ▼
+                  ADAPTIVE STRATEGY CONTROLLER
+                              │
+              ┌───────────────┼────────────────┐
+              ▼               ▼                ▼
+         Eligibility      Performance       Exploration
+            Policy          History            Quota
+              │               │                │
+              └───────────────┼────────────────┘
+                              ▼
+                       STRATEGY DECISION
+                              │
+                              ▼
+                      EXPLORATION PLAN
+                              │
+                              ▼
+                       FRONTIER RUNTIME
+                              │
+              ┌───────────────┼────────────────┐
+              ▼               ▼                ▼
+         Discovery        Acquisition      Classification
+           Work              Work              Work
+              │               │                │
+              ▼               ▼                ▼
+         Candidates       Observations      Assertions
+              │               │                │
+              └───────────────┼────────────────┘
+                              ▼
+                        KNOWLEDGE GRAPH
+                              │
+                 ┌────────────┼────────────┐
+                 ▼            ▼            ▼
+              Resource      Artifact     Evidence
+                 │
+                 ▼
+             Revisions
+                 │
+                 ▼
+          Search-space expansion
+                 │
+                 └──────────────► New Partitions

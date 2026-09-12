@@ -1,0 +1,49 @@
+                         CANDIDATE
+                            │
+                            ▼
+                    ┌───────────────┐
+                    │ ACQUISITION   │
+                    │     PLAN      │
+                    └───────┬───────┘
+                            │
+                            ▼
+                    ┌───────────────┐
+                    │    POLICY     │
+                    │ authorized?   │
+                    └───────┬───────┘
+                            │
+                            ▼
+                    ┌───────────────┐
+                    │   SCHEDULER   │
+                    │ when?         │
+                    └───────┬───────┘
+                            │
+                            ▼
+              ┌─────────────────────────────┐
+              │     ACQUISITION RUNTIME     │
+              │                             │
+              │  budget                     │
+              │  concurrency                │
+              │  origin limits              │
+              │  timeout                    │
+              │  retry                      │
+              │  cancellation               │
+              │  admission                  │
+              └──────────────┬──────────────┘
+                             │
+                             ▼
+                    ┌────────────────┐
+                    │    PROVIDER    │
+                    │                │
+                    │ GM-XHR / Fetch│
+                    │ Browser / ... │
+                    └───────┬────────┘
+                            │
+                            ▼
+                       OBSERVATION
+                            │
+                            ▼
+                       RECOGNITION
+                            │
+                            ▼
+                       DISCOVERY

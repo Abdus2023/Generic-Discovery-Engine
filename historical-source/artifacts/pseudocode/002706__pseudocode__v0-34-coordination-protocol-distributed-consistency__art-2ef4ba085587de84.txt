@@ -1,0 +1,8 @@
+Worker A                 Worker B
+   │                        │
+   │ update candidate       │
+   │                        │ update candidate
+   │                        │
+   └─────────┬──────────────┘
+             ▼
+        CONFLICT

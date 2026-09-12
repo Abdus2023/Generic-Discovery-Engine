@@ -1,0 +1,4340 @@
+--- snapshot-0005/generic-discovery.user.js
++++ snapshot-0006/generic-discovery.user.js
+@@ -1,8 +1,8 @@
+ // ==UserScript==
+ // @name         Generic Discovery Engine
+ // @namespace    generic-discovery
+-// @version      0.3.0
+-// @description  Generic web-resource discovery prototype inspired by the architecture of DVB blind scanning.
++// @version      0.4.0
++// @description  Generic web-resource discovery engine inspired by the architecture of DVB blind scanning.
+ // @match        *://*/*
+ // @grant        GM_getValue
+ // @grant        GM_setValue
+@@ -14,58 +14,57 @@
+     'use strict';
+ 
+     /* =====================================================================
+-     * GENERIC DISCOVERY ENGINE v0.3.0
++     * GENERIC DISCOVERY ENGINE v0.4.0
+      * =====================================================================
+      *
+      * Architecture:
+      *
+-     *     candidate
+-     *         ↓
+-     *     acquisition
+-     *         ↓
+-     *     observation
+-     *         ↓
+-     *     recognition
+-     *         ↓
+-     *     discovery
+-     *         ↓
+-     *     new candidates
+-     *         ↓
+-     *     scheduler
++     *       observations
++     *            │
++     *       ┌────┴────┐
++     *       │         │
++     *      DOM     network
++     *       │         │
++     *       └────┬────┘
++     *            ▼
++     *       candidates
++     *            ▼
++     *       scheduler
++     *            ▼
++     *       acquisition
++     *            ▼
++     *       observation
++     *            ▼
++     *       provider registry
++     *            ▼
++     *       discovery
++     *            ▼
++     *       provenance graph
++     *            │
++     *            ▼
++     *       new candidates
+      *
+-     * This is NOT a DVB/RF scanner.
++     * This is a WEB discovery engine.
+      *
+-     * It does not:
+-     *   - access RF hardware
+-     *   - tune frequencies
+-     *   - synchronize carriers
+-     *   - perform FEC synchronization
+-     *   - demodulate DVB signals
++     * It is NOT an RF/DVB scanner and does not access radio hardware,
++     * tune frequencies, demodulate signals, or perform DVB synchronization.
+      *
+-     * Instead, it applies a similar discovery architecture to web
+-     * resources:
++     * v0.4.0 additions:
+      *
+-     *     URL → HTTP response → provider → discovered metadata → URLs
++     *   - passive fetch/XHR observation
++     *   - passive DOM resource observation
++     *   - provenance graph
++     *   - depth-aware candidates
++     *   - priority + depth scheduling
++     *   - retry backoff
++     *   - XML provider
++     *   - sitemap recognition
++     *   - web-manifest recognition
++     *   - CSS url()/@import extraction
++     *   - richer HTML metadata discovery
++     *   - bounded persistent state
++     *   - live statistics
+      *
+-     * Supported providers:
+-     *   - HTML
+-     *   - JSON
+-     *   - text
+-     *
+-     * v0.3.0 improvements:
+-     *   - Correct relative URL resolution for fetched documents
+-     *   - Atomic candidate claiming
+-     *   - Retry with bounded attempts
+-     *   - Better fetch timeout handling
+-     *   - Improved Content-Type parsing
+-     *   - More HTML resource types
+-     *   - Canonical/meta-refresh discovery
+-     *   - URL extraction from JSON and text
+-     *   - Bounded persisted state
+-     *   - Live progress UI
+-     *   - Per-run statistics reset
+-     *   - Safer DOM/UI handling
+-     *   - Explicit provider interface
+      * ===================================================================== */
+ 
+ 
+@@ -74,43 +73,45 @@
+     // =====================================================================
+ 
+     const CONFIG = {
+-        maxCandidates: 500,
+-        maxRequests: 100,
++        maxCandidates: 750,
++        maxRequests: 150,
+ 
+         concurrency: 3,
+ 
+         requestTimeout: 8000,
+ 
++        sameOriginOnly: true,
++
++        maxDepth: 8,
++
++        maxRetries: 2,
++
++        retryBaseDelay: 500,
++
+         /*
+-         * Keep this true unless you intentionally want cross-origin
+-         * discovery. Cross-origin requests also depend on userscript
+-         * manager permissions and remote server behavior.
++         * Passive observers do not themselves perform requests.
++         * They only record resources the current page is already using.
+          */
+-        sameOriginOnly: true,
++        observeNetwork: true,
++        observeDomResources: true,
+ 
+         discoverLinks: true,
+         discoverResources: true,
+         discoverForms: true,
+         discoverMetadata: true,
+         discoverFromText: true,
+-
+-        /*
+-         * Number of times an acquisition may be retried after failure.
+-         */
+-        maxRetries: 1,
+-
+-        /*
+-         * State persistence can become large on long-running scans.
+-         */
++        discoverCss: true,
++
+         persistState: true,
+-        maxPersistedDiscoveries: 1000,
++        maxPersistedDiscoveries: 1500,
++        maxPersistedVisited: 5000,
+ 
+         debug: true
+     };
+ 
+ 
+     // =====================================================================
+-    // LOGGING / UTILITIES
++    // LOGGING
+     // =====================================================================
+ 
+     const log = (...args) => {
+@@ -122,6 +123,11 @@
+     const warn = (...args) => {
+         console.warn('[Discovery]', ...args);
+     };
++
++
++    // =====================================================================
++    // BASIC UTILITIES
++    // =====================================================================
+ 
+     const now = () => Date.now();
+ 
+@@ -135,58 +141,6 @@
+         return [...new Set(values)];
+     }
+ 
+-    function canonicalizeUrl(value, baseUrl = location.href) {
+-        if (!value || typeof value !== 'string') {
+-            return null;
+-        }
+-
+-        const trimmed = value.trim();
+-
+-        if (!trimmed) {
+-            return null;
+-        }
+-
+-        /*
+-         * Ignore non-fetchable schemes.
+-         */
+-        if (
+-            /^(javascript|mailto|tel|data|blob|about|file):/i.test(
+-                trimmed
+-            )
+-        ) {
+-            return null;
+-        }
+-
+-        try {
+-            const url = new URL(trimmed, baseUrl);
+-
+-            /*
+-             * Fragments do not identify a separately fetchable resource.
+-             */
+-            url.hash = '';
+-
+-            return url.href;
+-        } catch {
+-            return null;
+-        }
+-    }
+-
+-    function isAllowedUrl(url) {
+-        if (!url) {
+-            return false;
+-        }
+-
+-        if (!CONFIG.sameOriginOnly) {
+-            return true;
+-        }
+-
+-        try {
+-            return new URL(url).origin === location.origin;
+-        } catch {
+-            return false;
+-        }
+-    }
+-
+     function normalizeContentType(value) {
+         if (!value) {
+             return '';
+@@ -198,35 +152,66 @@
+             .toLowerCase();
+     }
+ 
+-    function isHtmlContentType(contentType) {
+-        const type = normalizeContentType(contentType);
+-
+-        return (
+-            type === 'text/html' ||
+-            type === 'application/xhtml+xml'
+-        );
++    function canonicalizeUrl(
++        value,
++        baseUrl = location.href
++    ) {
++        if (!value || typeof value !== 'string') {
++            return null;
++        }
++
++        const input = value.trim();
++
++        if (!input) {
++            return null;
++        }
++
++        /*
++         * These schemes do not represent ordinary HTTP resources.
++         */
++        if (
++            /^(javascript|mailto|tel|data|blob|about|file):/i.test(
++                input
++            )
++        ) {
++            return null;
++        }
++
++        try {
++            const url =
++                new URL(
++                    input,
++                    baseUrl
++                );
++
++            /*
++             * Fragments are not independently fetchable resources.
++             */
++            url.hash = '';
++
++            return url.href;
++        } catch {
++            return null;
++        }
+     }
+ 
+-    function isJsonContentType(contentType) {
+-        const type = normalizeContentType(contentType);
+-
+-        return (
+-            type === 'application/json' ||
+-            type.endsWith('+json')
+-        );
+-    }
+-
+-    function isTextContentType(contentType) {
+-        const type = normalizeContentType(contentType);
+-
+-        return (
+-            type.startsWith('text/') ||
+-            type === 'application/xml' ||
+-            type === 'application/xhtml+xml' ||
+-            type === 'application/javascript' ||
+-            type === 'application/x-javascript' ||
+-            type === 'application/ld+json'
+-        );
++    function isAllowedUrl(url) {
++        if (!url) {
++            return false;
++        }
++
++        if (!CONFIG.sameOriginOnly) {
++            return true;
++        }
++
++        try {
++            return (
++                new URL(url).origin ===
++                location.origin
++            );
++        } catch {
++            return false;
++        }
+     }
+ 
+     function looksLikeHtml(body) {
+@@ -238,12 +223,44 @@
+         );
+     }
+ 
++    function looksLikeJson(body) {
++        if (!body) {
++            return false;
++        }
++
++        const text = body.trim();
++
++        return (
++            text.startsWith('{') ||
++            text.startsWith('[')
++        );
++    }
++
++    function looksLikeXml(body) {
++        if (!body) {
++            return false;
++        }
++
++        const text = body.trim();
++
++        return (
++            /^<\?xml\b/i.test(text) ||
++            /^<urlset[\s>]/i.test(text) ||
++            /^<sitemapindex[\s>]/i.test(text) ||
++            /^<rss[\s>]/i.test(text) ||
++            /^<feed[\s>]/i.test(text)
++        );
++    }
++
+ 
+     // =====================================================================
+     // URL EXTRACTION
+     // =====================================================================
+ 
+-    function extractUrlsFromText(text, baseUrl = location.href) {
++    function extractUrlsFromText(
++        text,
++        baseUrl = location.href
++    ) {
+         if (!text) {
+             return [];
+         }
+@@ -253,48 +270,60 @@
+         /*
+          * Absolute HTTP(S) URLs.
+          */
+-        const absoluteMatches =
++        const absolute =
+             text.match(
+                 /https?:\/\/[^\s"'<>()[\]{}]+/gi
+             ) || [];
+ 
+-        for (const value of absoluteMatches) {
+-            const url = canonicalizeUrl(
+-                value.replace(/[.,;:!?]+$/, ''),
+-                baseUrl
+-            );
+-
+-            if (url && isAllowedUrl(url)) {
++        for (const raw of absolute) {
++            const cleaned =
++                raw.replace(
++                    /[.,;:!?]+$/,
++                    ''
++                );
++
++            const url =
++                canonicalizeUrl(
++                    cleaned,
++                    baseUrl
++                );
++
++            if (
++                url &&
++                isAllowedUrl(url)
++            ) {
+                 result.push(url);
+             }
+         }
+ 
+         /*
+-         * Common quoted URL-like paths.
+-         *
+-         * This intentionally remains conservative rather than attempting
+-         * to interpret every arbitrary string as a URL.
++         * Quoted root-relative URLs.
+          */
+-        const relativeMatches =
++        const relative =
+             text.match(
+                 /["'`](\/[^"'`\s<>]+)["'`]/g
+             ) || [];
+ 
+-        for (const value of relativeMatches) {
+-            const match = value.match(
+-                /["'`](\/[^"'`\s<>]+)["'`]/
+-            );
++        for (const value of relative) {
++            const match =
++                value.match(
++                    /["'`](\/[^"'`\s<>]+)["'`]/
++                );
+ 
+             if (!match) {
+                 continue;
+             }
+ 
+-            const url = canonicalizeUrl(
+-                match[1],
+-                baseUrl
+-            );
+-
+-            if (url && isAllowedUrl(url)) {
++            const url =
++                canonicalizeUrl(
++                    match[1],
++                    baseUrl
++                );
++
++            if (
++                url &&
++                isAllowedUrl(url)
++            ) {
+                 result.push(url);
+             }
+         }
+@@ -314,43 +343,50 @@
+             origin = 'unknown',
+             priority = 0.5,
+             parent = null,
++            depth = 0,
+             hints = {}
+         }) {
+-            this.id = makeId('candidate');
+-
+-            this.target = target;
+-            this.type = type;
+-
+-            /*
+-             * Why was this candidate created?
+-             *
+-             * Examples:
+-             *   initial-page
+-             *   initial-dom
+-             *   html:<discovery-id>
+-             *   json:<discovery-id>
+-             */
+-            this.origin = origin;
+-
+-            /*
+-             * Discovery from which this candidate originated.
+-             */
+-            this.parent = parent;
+-
+-            this.priority = priority;
+-            this.hints = hints;
+-
+-            this.createdAt = now();
+-            this.attempts = 0;
+-
+-            /*
+-             * queued → claimed → completed / failed
+-             */
+-            this.status = 'queued';
++            this.id =
++                makeId('candidate');
++
++            this.target =
++                target;
++
++            this.type =
++                type;
++
++            this.origin =
++                origin;
++
++            this.priority =
++                priority;
++
++            this.parent =
++                parent;
++
++            this.depth =
++                depth;
++
++            this.hints =
++                hints;
++
++            this.createdAt =
++                now();
++
++            this.attempts =
++                0;
++
++            this.status =
++                'queued';
++
++            this.nextAttemptAt =
++                0;
+         }
+ 
+         key() {
+-            return `${this.type}:${this.target}`;
++            return (
++                `${this.type}:${this.target}`
++            );
+         }
+     }
+ 
+@@ -361,16 +397,26 @@
+ 
+     class Observation {
+         constructor(candidate) {
+-            this.id = makeId('observation');
+-
+-            this.candidateId = candidate.id;
+-            this.target = candidate.target;
+-
+-            this.startedAt = now();
+-            this.completedAt = null;
+-
+-            this.status = 'unknown';
+-            this.signalPresent = false;
++            this.id =
++                makeId('observation');
++
++            this.candidateId =
++                candidate.id;
++
++            this.target =
++                candidate.target;
++
++            this.startedAt =
++                now();
++
++            this.completedAt =
++                null;
++
++            this.status =
++                'unknown';
++
++            this.signalPresent =
++                false;
+ 
+             this.http = {
+                 status: null,
+@@ -379,13 +425,19 @@
+                 finalUrl: null
+             };
+ 
+-            this.body = null;
+-            this.errors = [];
++            this.body =
++                null;
++
++            this.errors =
++                [];
+         }
+ 
+         complete(status) {
+-            this.completedAt = now();
+-            this.status = status;
++            this.completedAt =
++                now();
++
++            this.status =
++                status;
+         }
+     }
+ 
+@@ -397,27 +449,166 @@
+     class Discovery {
+         constructor({
+             candidate,
+-            observation,
++            observation = null,
+             kind,
+             confidence = 0.5,
+-            data = {}
++            data = {},
++            mechanism = 'active-acquisition'
+         }) {
+-            this.id = makeId('discovery');
+-
+-            this.candidateId = candidate.id;
+-            this.observationId = observation.id;
+-
+-            this.kind = kind;
+-            this.confidence = confidence;
+-
+-            this.data = data;
++            this.id =
++                makeId('discovery');
++
++            this.candidateId =
++                candidate.id;
++
++            this.observationId =
++                observation
++                    ? observation.id
++                    : null;
++
++            this.kind =
++                kind;
++
++            this.confidence =
++                confidence;
++
++            this.mechanism =
++                mechanism;
++
++            this.data =
++                data;
+ 
+             this.provenance = {
+-                origin: candidate.origin,
+-                parent: candidate.parent
++                origin:
++                    candidate.origin,
++
++                parent:
++                    candidate.parent,
++
++                depth:
++                    candidate.depth
+             };
+ 
+-            this.createdAt = now();
++            this.createdAt =
++                now();
++        }
++    }
++
++
++    // =====================================================================
++    // PROVENANCE GRAPH
++    // =====================================================================
++
++    class ProvenanceGraph {
++        constructor() {
++            this.nodes =
++                new Map();
++
++            this.edges =
++                new Map();
++        }
++
++        addNode(node) {
++            if (!node || !node.id) {
++                return;
++            }
++
++            this.nodes.set(
++                node.id,
++                node
++            );
++        }
++
++        addEdge({
++            from,
++            to,
++            relation,
++            confidence = 0.5
++        }) {
++            const id =
++                makeId('edge');
++
++            this.edges.set(
++                id,
++                {
++                    id,
++                    from,
++                    to,
++                    relation,
++                    confidence,
++                    createdAt: now()
++                }
++            );
++        }
++
++        addDiscovery(discovery) {
++            this.addNode({
++                id: discovery.id,
++                type: 'discovery',
++                kind: discovery.kind,
++                target:
++                    discovery.data.url ||
++                    null,
++                confidence:
++                    discovery.confidence
++            });
++
++            if (
++                discovery.provenance.parent
++            ) {
++                this.addEdge({
++                    from:
++                        discovery.provenance.parent,
++                    to:
++                        discovery.id,
++                    relation:
++                        'produced',
++                    confidence:
++                        discovery.confidence
++                });
++            }
++        }
++
++        addCandidate(candidate) {
++            this.addNode({
++                id: candidate.id,
++                type: 'candidate',
++                candidateType:
++                    candidate.type,
++                target:
++                    candidate.target,
++                depth:
++                    candidate.depth
++            });
++
++            if (candidate.parent) {
++                this.addEdge({
++                    from:
++                        candidate.parent,
++                    to:
++                        candidate.id,
++                    relation:
++                        'generated',
++                    confidence:
++                        candidate.priority
++                });
++            }
++        }
++
++        serialize() {
++            return {
++                nodes: [
++                    ...this.nodes.values()
++                ],
++                edges: [
++                    ...this.edges.values()
++                ]
++            };
++        }
++
++        clear() {
++            this.nodes.clear();
++            this.edges.clear();
+         }
+     }
+ 
+@@ -428,19 +619,23 @@
+ 
+     class KnowledgeBase {
+         constructor() {
+-            this.candidates = new Map();
+-            this.observations = new Map();
+-            this.discoveries = new Map();
+-
+-            /*
+-             * Permanently completed/failed candidates.
+-             */
+-            this.visited = new Set();
+-
+-            /*
+-             * Candidates currently owned by workers.
+-             */
+-            this.claimed = new Set();
++            this.candidates =
++                new Map();
++
++            this.observations =
++                new Map();
++
++            this.discoveries =
++                new Map();
++
++            this.visited =
++                new Set();
++
++            this.claimed =
++                new Set();
++
++            this.graph =
++                new ProvenanceGraph();
+ 
+             this.load();
+         }
+@@ -450,21 +645,37 @@
+         }
+ 
+         addCandidate(candidate) {
+-            const key = this.candidateKey(candidate);
++            const key =
++                this.candidateKey(
++                    candidate
++                );
+ 
+             if (!candidate.target) {
+                 return false;
+             }
+ 
+-            if (this.visited.has(key)) {
++            if (
++                candidate.depth >
++                CONFIG.maxDepth
++            ) {
+                 return false;
+             }
+ 
+-            if (this.claimed.has(key)) {
++            if (
++                this.visited.has(key)
++            ) {
+                 return false;
+             }
+ 
+-            if (this.candidates.has(key)) {
++            if (
++                this.claimed.has(key)
++            ) {
++                return false;
++            }
++
++            if (
++                this.candidates.has(key)
++            ) {
+                 return false;
+             }
+ 
+@@ -475,7 +686,14 @@
+                 return false;
+             }
+ 
+-            this.candidates.set(key, candidate);
++            this.candidates.set(
++                key,
++                candidate
++            );
++
++            this.graph.addCandidate(
++                candidate
++            );
+ 
+             this.persist();
+ 
+@@ -483,14 +701,7 @@
+         }
+ 
+         /*
+-         * ---------------------------------------------------------------
+-         * ATOMIC CANDIDATE CLAIM
+-         * ---------------------------------------------------------------
+-         *
+-         * No await occurs during this operation.
+-         *
+-         * Therefore concurrent async workers cannot claim the same
+-         * candidate between selection and removal.
++         * Synchronous atomic claim.
+          */
+         claimNextCandidate() {
+             const candidates = [
+@@ -501,16 +712,40 @@
+                 return null;
+             }
+ 
+-            candidates.sort((a, b) => {
+-                return (
+-                    b[1].priority -
+-                    a[1].priority
+-                );
+-            });
+-
+-            for (const [key, candidate]
+-                of candidates) {
+-
++            /*
++             * Highest effective score first.
++             *
++             * Priority is primary.
++             * Lower depth receives a small preference.
++             * Retry delay is enforced separately.
++             */
++            candidates.sort(
++                (a, b) => {
++                    const ca = a[1];
++                    const cb = b[1];
++
++                    const scoreA =
++                        ca.priority -
++                        ca.depth * 0.025;
++
++                    const scoreB =
++                        cb.priority -
++                        cb.depth * 0.025;
++
++                    return (
++                        scoreB -
++                        scoreA
++                    );
++                }
++            );
++
++            const timestamp =
++                now();
++
++            for (
++                const [key, candidate]
++                of candidates
++            ) {
+                 if (
+                     this.visited.has(key) ||
+                     this.claimed.has(key)
+@@ -519,13 +754,31 @@
+                 }
+ 
+                 /*
+-                 * Atomic synchronous ownership transfer.
++                 * Retry backoff.
+                  */
+-                this.candidates.delete(key);
+-                this.claimed.add(key);
+-
+-                candidate.status = 'claimed';
+-                candidate.claimedAt = now();
++                if (
++                    candidate.nextAttemptAt >
++                    timestamp
++                ) {
++                    continue;
++                }
++
++                /*
++                 * Atomic ownership transfer.
++                 */
++                this.candidates.delete(
++                    key
++                );
++
++                this.claimed.add(
++                    key
++                );
++
++                candidate.status =
++                    'claimed';
++
++                candidate.claimedAt =
++                    timestamp;
+ 
+                 this.persist();
+ 
+@@ -537,25 +790,53 @@
+ 
+         completeCandidate(candidate) {
+             const key =
+-                this.candidateKey(candidate);
++                this.candidateKey(
++                    candidate
++                );
+ 
+             this.claimed.delete(key);
+             this.visited.add(key);
+ 
+-            candidate.status = 'completed';
+-            candidate.completedAt = now();
++            candidate.status =
++                'completed';
++
++            candidate.completedAt =
++                now();
+ 
+             this.persist();
+         }
+ 
+-        failCandidate(candidate, retry = false) {
++        failCandidate(
++            candidate,
++            retry = false
++        ) {
+             const key =
+-                this.candidateKey(candidate);
++                this.candidateKey(
++                    candidate
++                );
+ 
+             this.claimed.delete(key);
+ 
+-            if (retry) {
+-                candidate.status = 'queued';
++            if (
++                retry &&
++                candidate.attempts <=
++                    CONFIG.maxRetries
++            ) {
++                candidate.status =
++                    'queued';
++
++                const delay =
++                    CONFIG.retryBaseDelay *
++                    Math.pow(
++                        2,
++                        Math.max(
++                            0,
++                            candidate.attempts - 1
++                        )
++                    );
++
++                candidate.nextAttemptAt =
++                    now() + delay;
+ 
+                 this.candidates.set(
+                     key,
+@@ -564,23 +845,26 @@
+             } else {
+                 this.visited.add(key);
+ 
+-                candidate.status = 'failed';
+-                candidate.failedAt = now();
++                candidate.status =
++                    'failed';
++
++                candidate.failedAt =
++                    now();
+             }
+ 
+             this.persist();
+         }
+ 
+         addObservation(observation) {
++            /*
++             * Observations are kept in memory only.
++             *
++             * They may contain complete HTTP bodies.
++             */
+             this.observations.set(
+                 observation.id,
+                 observation
+             );
+-
+-            /*
+-             * Observations can contain complete response bodies and are
+-             * deliberately not persisted.
+-             */
+         }
+ 
+         addDiscovery(discovery) {
+@@ -589,6 +873,10 @@
+                 discovery
+             );
+ 
++            this.graph.addDiscovery(
++                discovery
++            );
++
+             this.persist();
+         }
+ 
+@@ -609,18 +897,25 @@
+                 ...this.discoveries.values()
+             ];
+ 
+-            /*
+-             * Keep persistence bounded.
+-             */
+-            const bounded =
+-                discoveries.slice(
+-                    -CONFIG.maxPersistedDiscoveries
+-                );
++            const visited = [
++                ...this.visited
++            ];
+ 
+             return {
+-                version: 3,
+-                visited: [...this.visited],
+-                discoveries: bounded
++                version: 4,
++
++                visited:
++                    visited.slice(
++                        -CONFIG.maxPersistedVisited
++                    ),
++
++                discoveries:
++                    discoveries.slice(
++                        -CONFIG.maxPersistedDiscoveries
++                    ),
++
++                graph:
++                    this.graph.serialize()
+             };
+         }
+ 
+@@ -630,7 +925,7 @@
+             }
+ 
+             try {
+-                const data =
++                const raw =
+                     JSON.stringify(
+                         this.serialize()
+                     );
+@@ -641,12 +936,12 @@
+                 ) {
+                     GM_setValue(
+                         'discovery-state',
+-                        data
++                        raw
+                     );
+                 } else {
+                     localStorage.setItem(
+                         'generic-discovery-state',
+-                        data
++                        raw
+                     );
+                 }
+             } catch (error) {
+@@ -685,19 +980,17 @@
+                 }
+ 
+                 const data =
+-                    typeof raw === 'string'
++                    typeof raw ===
++                    'string'
+                         ? JSON.parse(raw)
+                         : raw;
+ 
+-                /*
+-                 * Ignore incompatible future state formats.
+-                 */
+                 if (
+                     data.version &&
+-                    data.version > 3
++                    data.version > 4
+                 ) {
+                     warn(
+-                        'Stored state is from a newer version.'
++                        'Stored state belongs to a newer version.'
+                     );
+ 
+                     return;
+@@ -725,13 +1018,50 @@
+                     }
+                 }
+ 
++                /*
++                 * Restore graph data if available.
++                 */
++                for (
++                    const node of
++                    data.graph?.nodes || []
++                ) {
++                    if (
++                        node &&
++                        node.id
++                    ) {
++                        this.graph.nodes.set(
++                            node.id,
++                            node
++                        );
++                    }
++                }
++
++                for (
++                    const edge of
++                    data.graph?.edges || []
++                ) {
++                    if (
++                        edge &&
++                        edge.id
++                    ) {
++                        this.graph.edges.set(
++                            edge.id,
++                            edge
++                        );
++                    }
++                }
++
+                 log(
+-                    'Restored state:',
++                    'State restored',
+                     {
+                         visited:
+                             this.visited.size,
++
+                         discoveries:
+-                            this.discoveries.size
++                            this.discoveries.size,
++
++                        graphNodes:
++                            this.graph.nodes.size
+                     }
+                 );
+             } catch (error) {
+@@ -750,20 +1080,24 @@
+             this.visited.clear();
+             this.claimed.clear();
+ 
++            this.graph.clear();
++
+             this.persist();
+         }
+     }
+ 
+ 
+     // =====================================================================
+-    // HTTP ACQUISITION ADAPTER
++    // HTTP ACQUISITION
+     // =====================================================================
+ 
+     class HttpAcquisitionAdapter {
+ 
+         async acquire(candidate) {
+             const observation =
+-                new Observation(candidate);
++                new Observation(
++                    candidate
++                );
+ 
+             candidate.attempts++;
+ 
+@@ -814,14 +1148,12 @@
+             return new Promise(
+                 (resolve, reject) => {
+ 
+-                    /*
+-                     * Prefer userscript-manager networking.
+-                     */
+                     if (
+                         typeof GM_xmlhttpRequest ===
+                         'function'
+                     ) {
+-                        let settled = false;
++                        let settled =
++                            false;
+ 
+                         const finish = (
+                             callback,
+@@ -832,7 +1164,10 @@
+                             }
+ 
+                             settled = true;
+-                            callback(value);
++
++                            callback(
++                                value
++                            );
+                         };
+ 
+                         GM_xmlhttpRequest({
+@@ -843,72 +1178,67 @@
+                             timeout:
+                                 CONFIG.requestTimeout,
+ 
+-                            /*
+-                             * Text is sufficient for all providers
+-                             * currently implemented.
+-                             */
+-                            responseType: 'text',
+-
+-                            onload: response => {
+-                                const contentType =
+-                                    this.extractContentType(
+-                                        response.responseHeaders
++                            responseType:
++                                'text',
++
++                            onload:
++                                response => {
++                                    finish(
++                                        resolve,
++                                        {
++                                            status:
++                                                response.status,
++
++                                            contentType:
++                                                this.extractContentType(
++                                                    response.responseHeaders
++                                                ),
++
++                                            body:
++                                                response.responseText ||
++                                                '',
++
++                                            finalUrl:
++                                                response.finalUrl ||
++                                                url
++                                        }
+                                     );
+-
+-                                finish(resolve, {
+-                                    status:
+-                                        response.status,
+-
+-                                    contentType,
+-
+-                                    body:
+-                                        response.responseText ||
+-                                        '',
+-
+-                                    finalUrl:
+-                                        response.finalUrl ||
+-                                        url
+-                                });
+-                            },
+-
+-                            onerror: () => {
+-                                finish(
+-                                    reject,
+-                                    new Error(
+-                                        'request failed'
+-                                    )
+-                                );
+-                            },
+-
+-                            ontimeout: () => {
+-                                finish(
+-                                    reject,
+-                                    new Error(
+-                                        'request timeout'
+-                                    )
+-                                );
+-                            },
+-
+-                            onabort: () => {
+-                                finish(
+-                                    reject,
+-                                    new Error(
+-                                        'request aborted'
+-                                    )
+-                                );
+-                            }
++                                },
++
++                            onerror:
++                                () => {
++                                    finish(
++                                        reject,
++                                        new Error(
++                                            'request failed'
++                                        )
++                                    );
++                                },
++
++                            ontimeout:
++                                () => {
++                                    finish(
++                                        reject,
++                                        new Error(
++                                            'request timeout'
++                                        )
++                                    );
++                                },
++
++                            onabort:
++                                () => {
++                                    finish(
++                                        reject,
++                                        new Error(
++                                            'request aborted'
++                                        )
++                                    );
++                                }
+                         });
+ 
+                         return;
+                     }
+ 
+-                    /*
+-                     * Native fetch fallback.
+-                     *
+-                     * AbortController is used instead of relying on
+-                     * AbortSignal.timeout(), which is not available
+-                     * everywhere.
+-                     */
+                     const controller =
+                         typeof AbortController !==
+                         'undefined'
+@@ -918,12 +1248,13 @@
+                     let timer = null;
+ 
+                     if (controller) {
+-                        timer = setTimeout(
+-                            () => {
+-                                controller.abort();
+-                            },
+-                            CONFIG.requestTimeout
+-                        );
++                        timer =
++                            setTimeout(
++                                () => {
++                                    controller.abort();
++                                },
++                                CONFIG.requestTimeout
++                            );
+                     }
+ 
+                     fetch(url, {
+@@ -937,11 +1268,8 @@
+                                 ? controller.signal
+                                 : undefined
+                     })
+-                        .then(async response => {
+-                            const body =
+-                                await response.text();
+-
+-                            return {
++                        .then(
++                            async response => ({
+                                 status:
+                                     response.status,
+ 
+@@ -950,19 +1278,19 @@
+                                         'content-type'
+                                     ),
+ 
+-                                body,
++                                body:
++                                    await response.text(),
+ 
+                                 finalUrl:
+                                     response.url ||
+                                     url
+-                            };
+-                        })
++                            })
++                        )
+                         .then(resolve)
+                         .catch(error => {
+                             if (
+-                                error &&
+-                                error.name ===
+-                                    'AbortError'
++                                error?.name ===
++                                'AbortError'
+                             ) {
+                                 reject(
+                                     new Error(
+@@ -970,12 +1298,16 @@
+                                     )
+                                 );
+                             } else {
+-                                reject(error);
++                                reject(
++                                    error
++                                );
+                             }
+                         })
+                         .finally(() => {
+                             if (timer) {
+-                                clearTimeout(timer);
++                                clearTimeout(
++                                    timer
++                                );
+                             }
+                         });
+                 }
+@@ -1000,7 +1332,7 @@
+ 
+ 
+     // =====================================================================
+-    // RESPONSE PROVIDER INTERFACE
++    // RESPONSE PROVIDER
+     // =====================================================================
+ 
+     class ResponseProvider {
+@@ -1009,11 +1341,15 @@
+             return false;
+         }
+ 
+-        recognize(/* candidate, observation */) {
++        recognize(
++            /* candidate, observation */
++        ) {
+             return null;
+         }
+ 
+-        candidates(/* discovery */) {
++        candidates(
++            /* discovery */
++        ) {
+             return [];
+         }
+     }
+@@ -1023,28 +1359,49 @@
+     // HTML PROVIDER
+     // =====================================================================
+ 
+-    class HtmlProvider extends ResponseProvider {
++    class HtmlProvider
++        extends ResponseProvider {
+ 
+         matches(observation) {
+             const type =
+-                observation.http.contentType || '';
++                normalizeContentType(
++                    observation.http
++                        .contentType
++                );
+ 
+             const body =
+-                observation.body || '';
++                observation.body ||
++                '';
+ 
+             return (
+-                isHtmlContentType(type) ||
++                type ===
++                    'text/html' ||
++                type ===
++                    'application/xhtml+xml' ||
+                 looksLikeHtml(body)
+             );
+         }
+ 
+-        recognize(candidate, observation) {
+-            if (!this.matches(observation)) {
++        recognize(
++            candidate,
++            observation
++        ) {
++            if (
++                !this.matches(
++                    observation
++                )
++            ) {
+                 return null;
+             }
+ 
+             const body =
+-                observation.body || '';
++                observation.body ||
++                '';
++
++            const baseUrl =
++                observation.http
++                    .finalUrl ||
++                candidate.target;
+ 
+             const doc =
+                 new DOMParser()
+@@ -1053,23 +1410,13 @@
+                         'text/html'
+                     );
+ 
+-            /*
+-             * IMPORTANT:
+-             *
+-             * DOMParser creates a document whose base URL may not be
+-             * the URL from which the document was acquired.
+-             *
+-             * We therefore resolve every raw attribute explicitly
+-             * against the acquired document URL.
+-             */
+-            const baseUrl =
+-                observation.http.finalUrl ||
+-                candidate.target;
+-
+             const title =
+-                doc.querySelector('title')
++                doc.querySelector(
++                    'title'
++                )
+                     ?.textContent
+-                    ?.trim() || '';
++                    ?.trim() ||
++                '';
+ 
+             const links = [];
+ 
+@@ -1077,17 +1424,14 @@
+                 for (
+                     const element of
+                     doc.querySelectorAll(
+-                        'a[href], area[href]'
++                        'a[href],area[href]'
+                     )
+                 ) {
+-                    const raw =
+-                        element.getAttribute(
+-                            'href'
+-                        );
+-
+                     const url =
+                         canonicalizeUrl(
+-                            raw,
++                            element.getAttribute(
++                                'href'
++                            ),
+                             baseUrl
+                         );
+ 
+@@ -1115,7 +1459,8 @@
+                     'track[src]',
+                     'object[data]',
+                     'embed[src]',
+-                    'input[src]'
++                    'input[src]',
++                    'image[href]'
+                 ].join(',');
+ 
+                 for (
+@@ -1145,7 +1490,51 @@
+                         url &&
+                         isAllowedUrl(url)
+                     ) {
+-                        resources.push(url);
++                        resources.push(
++                            url
++                        );
++                    }
++                }
++
++                /*
++                 * srcset can contain multiple URLs.
++                 */
++                for (
++                    const element of
++                    doc.querySelectorAll(
++                        '[srcset]'
++                    )
++                ) {
++                    const srcset =
++                        element.getAttribute(
++                            'srcset'
++                        ) || '';
++
++                    for (
++                        const entry of
++                        srcset.split(',')
++                    ) {
++                        const raw =
++                            entry
++                                .trim()
++                                .split(
++                                    /\s+/
++                                )[0];
++
++                        const url =
++                            canonicalizeUrl(
++                                raw,
++                                baseUrl
++                            );
++
++                        if (
++                            url &&
++                            isAllowedUrl(url)
++                        ) {
++                            resources.push(
++                                url
++                            );
++                        }
+                     }
+                 }
+             }
+@@ -1159,14 +1548,11 @@
+                         'form[action]'
+                     )
+                 ) {
+-                    const raw =
+-                        form.getAttribute(
+-                            'action'
+-                        );
+-
+                     const url =
+                         canonicalizeUrl(
+-                            raw,
++                            form.getAttribute(
++                                'action'
++                            ),
+                             baseUrl
+                         );
+ 
+@@ -1183,17 +1569,17 @@
+ 
+             if (CONFIG.discoverMetadata) {
+                 /*
+-                 * Canonical URL.
++                 * Canonical.
+                  */
+-                const canonical =
+-                    doc.querySelector(
++                for (
++                    const element of
++                    doc.querySelectorAll(
+                         'link[rel~="canonical"][href]'
+-                    );
+-
+-                if (canonical) {
++                    )
++                ) {
+                     const url =
+                         canonicalizeUrl(
+-                            canonical.getAttribute(
++                            element.getAttribute(
+                                 'href'
+                             ),
+                             baseUrl
+@@ -1208,18 +1594,118 @@
+                 }
+ 
+                 /*
+-                 * OpenGraph URL.
++                 * Alternate resources.
+                  */
+                 for (
+                     const element of
+                     doc.querySelectorAll(
+-                        'meta[property="og:url"][content]'
++                        'link[rel][href]'
++                    )
++                ) {
++                    const rel =
++                        (
++                            element.getAttribute(
++                                'rel'
++                            ) || ''
++                        ).toLowerCase();
++
++                    if (
++                        !(
++                            rel.includes(
++                                'alternate'
++                            ) ||
++                            rel.includes(
++                                'manifest'
++                            ) ||
++                            rel.includes(
++                                'preload'
++                            ) ||
++                            rel.includes(
++                                'prefetch'
++                            )
++                        )
++                    ) {
++                        continue;
++                    }
++
++                    const url =
++                        canonicalizeUrl(
++                            element.getAttribute(
++                                'href'
++                            ),
++                            baseUrl
++                        );
++
++                    if (
++                        url &&
++                        isAllowedUrl(url)
++                    ) {
++                        metadata.push(url);
++                    }
++                }
++
++                /*
++                 * OpenGraph and common metadata URL values.
++                 */
++                for (
++                    const element of
++                    doc.querySelectorAll(
++                        'meta[content]'
++                    )
++                ) {
++                    const property =
++                        (
++                            element.getAttribute(
++                                'property'
++                            ) ||
++                            element.getAttribute(
++                                'name'
++                            ) ||
++                            ''
++                        ).toLowerCase();
++
++                    if (
++                        !(
++                            property ===
++                                'og:url' ||
++                            property ===
++                                'twitter:url' ||
++                            property ===
++                                'application-url'
++                        )
++                    ) {
++                        continue;
++                    }
++
++                    const url =
++                        canonicalizeUrl(
++                            element.getAttribute(
++                                'content'
++                            ),
++                            baseUrl
++                        );
++
++                    if (
++                        url &&
++                        isAllowedUrl(url)
++                    ) {
++                        metadata.push(url);
++                    }
++                }
++
++                /*
++                 * Web App Manifest.
++                 */
++                for (
++                    const element of
++                    doc.querySelectorAll(
++                        'link[rel~="manifest"][href]'
+                     )
+                 ) {
+                     const url =
+                         canonicalizeUrl(
+                             element.getAttribute(
+-                                'content'
++                                'href'
+                             ),
+                             baseUrl
+                         );
+@@ -1241,15 +1727,16 @@
+                         'meta[http-equiv][content]'
+                     )
+                 ) {
+-                    const httpEquiv =
+-                        element.getAttribute(
+-                            'http-equiv'
+-                        );
++                    const directive =
++                        (
++                            element.getAttribute(
++                                'http-equiv'
++                            ) || ''
++                        ).toLowerCase();
+ 
+                     if (
+-                        !httpEquiv ||
+-                        httpEquiv.toLowerCase() !==
+-                            'refresh'
++                        directive !==
++                        'refresh'
+                     ) {
+                         continue;
+                     }
+@@ -1292,8 +1779,7 @@
+             }
+ 
+             /*
+-             * Extract URLs from inline HTML/attributes as a secondary
+-             * discovery signal.
++             * Embedded URLs.
+              */
+             const embeddedUrls =
+                 CONFIG.discoverFromText
+@@ -1303,55 +1789,95 @@
+                       )
+                     : [];
+ 
++            /*
++             * Stylesheet URL extraction.
++             */
++            const cssUrls = [];
++
++            if (CONFIG.discoverCss) {
++                for (
++                    const style of
++                    doc.querySelectorAll(
++                        'style'
++                    )
++                ) {
++                    cssUrls.push(
++                        ...extractCssUrls(
++                            style.textContent ||
++                                '',
++                            baseUrl
++                        )
++                    );
++                }
++            }
++
+             return new Discovery({
+                 candidate,
+                 observation,
+ 
+-                kind: 'html-document',
+-
+-                confidence: 0.95,
++                kind:
++                    'html-document',
++
++                confidence:
++                    0.95,
+ 
+                 data: {
+-                    url: candidate.target,
+-
+-                    finalUrl: baseUrl,
++                    url:
++                        candidate.target,
++
++                    finalUrl:
++                        baseUrl,
+ 
+                     title,
+ 
+-                    links: unique(links),
++                    links:
++                        unique(links),
+ 
+                     resources:
+                         unique(resources),
+ 
+-                    forms: unique(forms),
++                    forms:
++                        unique(forms),
+ 
+                     metadata:
+                         unique(metadata),
+ 
+                     embeddedUrls:
+-                        unique(embeddedUrls)
++                        unique(
++                            embeddedUrls
++                        ),
++
++                    cssUrls:
++                        unique(cssUrls)
+                 }
+             });
+         }
+ 
+         candidates(discovery) {
+             const result = [];
++
++            const depth =
++                (
++                    discovery
++                        .provenance
++                        .depth ||
++                    0
++                ) + 1;
+ 
+             if (CONFIG.discoverLinks) {
+                 for (
+                     const url of
+-                    discovery.data.links || []
++                    discovery.data
++                        .links || []
+                 ) {
+                     result.push(
+-                        new Candidate({
+-                            target: url,
+-                            type: 'url',
+-                            origin:
+-                                `html:${discovery.id}`,
+-                            parent:
+-                                discovery.id,
+-                            priority: 0.8
+-                        })
++                        makeDerivedCandidate(
++                            url,
++                            'url',
++                            discovery,
++                            0.8,
++                            depth
++                        )
+                     );
+                 }
+             }
+@@ -1359,18 +1885,17 @@
+             if (CONFIG.discoverResources) {
+                 for (
+                     const url of
+-                    discovery.data.resources || []
++                    discovery.data
++                        .resources || []
+                 ) {
+                     result.push(
+-                        new Candidate({
+-                            target: url,
+-                            type: 'resource',
+-                            origin:
+-                                `html:${discovery.id}`,
+-                            parent:
+-                                discovery.id,
+-                            priority: 0.5
+-                        })
++                        makeDerivedCandidate(
++                            url,
++                            'resource',
++                            discovery,
++                            0.5,
++                            depth
++                        )
+                     );
+                 }
+             }
+@@ -1378,18 +1903,17 @@
+             if (CONFIG.discoverForms) {
+                 for (
+                     const url of
+-                    discovery.data.forms || []
++                    discovery.data
++                        .forms || []
+                 ) {
+                     result.push(
+-                        new Candidate({
+-                            target: url,
+-                            type: 'form',
+-                            origin:
+-                                `html:${discovery.id}`,
+-                            parent:
+-                                discovery.id,
+-                            priority: 0.6
+-                        })
++                        makeDerivedCandidate(
++                            url,
++                            'form',
++                            discovery,
++                            0.6,
++                            depth
++                        )
+                     );
+                 }
+             }
+@@ -1397,18 +1921,17 @@
+             if (CONFIG.discoverMetadata) {
+                 for (
+                     const url of
+-                    discovery.data.metadata || []
++                    discovery.data
++                        .metadata || []
+                 ) {
+                     result.push(
+-                        new Candidate({
+-                            target: url,
+-                            type: 'metadata',
+-                            origin:
+-                                `html:${discovery.id}`,
+-                            parent:
+-                                discovery.id,
+-                            priority: 0.7
+-                        })
++                        makeDerivedCandidate(
++                            url,
++                            'metadata',
++                            discovery,
++                            0.7,
++                            depth
++                        )
+                     );
+                 }
+             }
+@@ -1416,22 +1939,39 @@
+             if (CONFIG.discoverFromText) {
+                 for (
+                     const url of
+-                    discovery.data.embeddedUrls || []
++                    discovery.data
++                        .embeddedUrls || []
+                 ) {
+                     result.push(
+-                        new Candidate({
+-                            target: url,
+-                            type: 'embedded-url',
+-                            origin:
+-                                `html:${discovery.id}`,
+-                            parent:
+-                                discovery.id,
+-                            priority: 0.4
+-                        })
++                        makeDerivedCandidate(
++                            url,
++                            'embedded-url',
++                            discovery,
++                            0.4,
++                            depth
++                        )
+                     );
+                 }
+             }
+ 
++            if (CONFIG.discoverCss) {
++                for (
++                    const url of
++                    discovery.data
++                        .cssUrls || []
++                ) {
++                    result.push(
++                        makeDerivedCandidate(
++                            url,
++                            'stylesheet-url',
++                            discovery,
++                            0.45,
++                            depth
++                        )
++                    );
++                }
++            }
++
+             return result;
+         }
+     }
+@@ -1441,30 +1981,49 @@
+     // JSON PROVIDER
+     // =====================================================================
+ 
+-    class JsonProvider extends ResponseProvider {
++    class JsonProvider
++        extends ResponseProvider {
+ 
+         matches(observation) {
+             const type =
+-                observation.http.contentType || '';
++                normalizeContentType(
++                    observation.http
++                        .contentType
++                );
+ 
+             return (
+-                isJsonContentType(type) ||
+-                normalizeContentType(type) ===
+-                    'application/ld+json'
++                type ===
++                    'application/json' ||
++                type.endsWith('+json') ||
++                (
++                    type === '' &&
++                    looksLikeJson(
++                        observation.body
++                    )
++                )
+             );
+         }
+ 
+-        recognize(candidate, observation) {
+-            if (!this.matches(observation)) {
++        recognize(
++            candidate,
++            observation
++        ) {
++            if (
++                !this.matches(
++                    observation
++                )
++            ) {
+                 return null;
+             }
+ 
+             let value;
+ 
+             try {
+-                value = JSON.parse(
+-                    observation.body || ''
+-                );
++                value =
++                    JSON.parse(
++                        observation.body ||
++                            ''
++                    );
+             } catch {
+                 return null;
+             }
+@@ -1472,7 +2031,8 @@
+             const urls =
+                 this.extractUrls(
+                     value,
+-                    observation.http.finalUrl ||
++                    observation.http
++                        .finalUrl ||
+                         candidate.target
+                 );
+ 
+@@ -1480,15 +2040,19 @@
+                 candidate,
+                 observation,
+ 
+-                kind: 'json-document',
+-
+-                confidence: 0.95,
++                kind:
++                    'json-document',
++
++                confidence:
++                    0.95,
+ 
+                 data: {
+-                    url: candidate.target,
++                    url:
++                        candidate.target,
+ 
+                     finalUrl:
+-                        observation.http.finalUrl ||
++                        observation.http
++                            .finalUrl ||
+                         candidate.target,
+ 
+                     value,
+@@ -1509,10 +2073,6 @@
+                     typeof value ===
+                     'string'
+                 ) {
+-                    /*
+-                     * First attempt to interpret the complete string
+-                     * as a URL.
+-                     */
+                     const direct =
+                         canonicalizeUrl(
+                             value,
+@@ -1521,22 +2081,20 @@
+ 
+                     if (
+                         direct &&
+-                        isAllowedUrl(direct)
++                        isAllowedUrl(
++                            direct
++                        )
+                     ) {
+-                        result.push(direct);
++                        result.push(
++                            direct
++                        );
+                     }
+ 
+-                    /*
+-                     * Then look for URLs embedded in larger strings.
+-                     */
+-                    const embedded =
+-                        extractUrlsFromText(
++                    result.push(
++                        ...extractUrlsFromText(
+                             value,
+                             baseUrl
+-                        );
+-
+-                    result.push(
+-                        ...embedded
++                        )
+                     );
+ 
+                     return;
+@@ -1564,18 +2122,25 @@
+         }
+ 
+         candidates(discovery) {
++            const depth =
++                (
++                    discovery
++                        .provenance
++                        .depth ||
++                    0
++                ) + 1;
++
+             return (
+-                discovery.data.urls || []
++                discovery.data.urls ||
++                []
+             ).map(url =>
+-                new Candidate({
+-                    target: url,
+-                    type: 'url',
+-                    origin:
+-                        `json:${discovery.id}`,
+-                    parent:
+-                        discovery.id,
+-                    priority: 0.7
+-                })
++                makeDerivedCandidate(
++                    url,
++                    'url',
++                    discovery,
++                    0.7,
++                    depth
++                )
+             );
+         }
+     }
+@@ -1585,77 +2150,590 @@
+     // TEXT PROVIDER
+     // =====================================================================
+ 
+-    class TextProvider extends ResponseProvider {
++    class TextProvider
++        extends ResponseProvider {
+ 
+         matches(observation) {
+             const type =
+-                observation.http.contentType || '';
+-
+-            /*
+-             * Do not treat unknown binary responses as arbitrary text.
+-             *
+-             * An empty Content-Type is accepted because many simple
+-             * endpoints omit it.
+-             */
++                normalizeContentType(
++                    observation.http
++                        .contentType
++                );
++
+             return (
+-                isTextContentType(type) ||
+-                normalizeContentType(type) === ''
++                type.startsWith(
++                    'text/'
++                ) ||
++                type ===
++                    'application/javascript' ||
++                type ===
++                    'application/x-javascript' ||
++                type === ''
+             );
+         }
+ 
+-        recognize(candidate, observation) {
+-            if (!this.matches(observation)) {
++        recognize(
++            candidate,
++            observation
++        ) {
++            if (
++                !this.matches(
++                    observation
++                )
++            ) {
+                 return null;
+             }
+ 
+             const text =
+-                observation.body || '';
++                observation.body ||
++                '';
++
++            const baseUrl =
++                observation.http
++                    .finalUrl ||
++                candidate.target;
+ 
+             const urls =
+                 extractUrlsFromText(
+                     text,
+-                    observation.http.finalUrl ||
+-                        candidate.target
+-                );
++                    baseUrl
++                );
++
++            const cssUrls =
++                CONFIG.discoverCss
++                    ? extractCssUrls(
++                          text,
++                          baseUrl
++                      )
++                    : [];
+ 
+             return new Discovery({
+                 candidate,
+                 observation,
+ 
+-                kind: 'text-document',
+-
+-                confidence: 0.75,
++                kind:
++                    'text-document',
++
++                confidence:
++                    0.75,
+ 
+                 data: {
+-                    url: candidate.target,
++                    url:
++                        candidate.target,
+ 
+                     finalUrl:
+-                        observation.http.finalUrl ||
+-                        candidate.target,
++                        baseUrl,
+ 
+                     textLength:
+                         text.length,
+ 
+-                    urls
++                    urls:
++                        unique(urls),
++
++                    cssUrls:
++                        unique(cssUrls)
+                 }
+             });
+         }
+ 
+         candidates(discovery) {
++            const depth =
++                (
++                    discovery
++                        .provenance
++                        .depth ||
++                    0
++                ) + 1;
++
++            const result = [];
++
++            for (
++                const url of
++                discovery.data.urls ||
++                []
++            ) {
++                result.push(
++                    makeDerivedCandidate(
++                        url,
++                        'url',
++                        discovery,
++                        0.4,
++                        depth
++                    )
++                );
++            }
++
++            for (
++                const url of
++                discovery.data.cssUrls ||
++                []
++            ) {
++                result.push(
++                    makeDerivedCandidate(
++                        url,
++                        'stylesheet-url',
++                        discovery,
++                        0.45,
++                        depth
++                    )
++                );
++            }
++
++            return result;
++        }
++    }
++
++
++    // =====================================================================
++    // CSS URL EXTRACTION
++    // =====================================================================
++
++    function extractCssUrls(
++        css,
++        baseUrl
++    ) {
++        if (!css) {
++            return [];
++        }
++
++        const result = [];
++
++        /*
++         * url(...)
++         */
++        const urlRegex =
++            /url\(\s*(['"]?)(.*?)\1\s*\)/gi;
++
++        let match;
++
++        while (
++            (match =
++                urlRegex.exec(css))
++        ) {
++            const raw =
++                match[2].trim();
++
++            const url =
++                canonicalizeUrl(
++                    raw,
++                    baseUrl
++                );
++
++            if (
++                url &&
++                isAllowedUrl(url)
++            ) {
++                result.push(url);
++            }
++        }
++
++        /*
++         * @import "..."
++         */
++        const importRegex =
++            /@import\s+(?:url\(\s*)?(['"])(.*?)\1/gi;
++
++        while (
++            (match =
++                importRegex.exec(css))
++        ) {
++            const url =
++                canonicalizeUrl(
++                    match[2],
++                    baseUrl
++                );
++
++            if (
++                url &&
++                isAllowedUrl(url)
++            ) {
++                result.push(url);
++            }
++        }
++
++        return unique(result);
++    }
++
++
++    // =====================================================================
++    // XML / SITEMAP PROVIDER
++    // =====================================================================
++
++    class XmlProvider
++        extends ResponseProvider {
++
++        matches(observation) {
++            const type =
++                normalizeContentType(
++                    observation.http
++                        .contentType
++                );
++
++            const body =
++                observation.body ||
++                '';
++
+             return (
+-                discovery.data.urls || []
++                type ===
++                    'application/xml' ||
++                type ===
++                    'text/xml' ||
++                type.endsWith(
++                    '+xml'
++                ) ||
++                (
++                    type === '' &&
++                    looksLikeXml(body)
++                )
++            );
++        }
++
++        recognize(
++            candidate,
++            observation
++        ) {
++            if (
++                !this.matches(
++                    observation
++                )
++            ) {
++                return null;
++            }
++
++            const body =
++                observation.body ||
++                '';
++
++            const baseUrl =
++                observation.http
++                    .finalUrl ||
++                candidate.target;
++
++            const doc =
++                new DOMParser()
++                    .parseFromString(
++                        body,
++                        'application/xml'
++                    );
++
++            const parseError =
++                doc.querySelector(
++                    'parsererror'
++                );
++
++            if (parseError) {
++                return null;
++            }
++
++            const urls = [];
++
++            /*
++             * Sitemap:
++             *
++             * <loc>https://example...</loc>
++             */
++            for (
++                const element of
++                doc.querySelectorAll(
++                    'loc'
++                )
++            ) {
++                const url =
++                    canonicalizeUrl(
++                        element
++                            .textContent
++                            ?.trim(),
++                        baseUrl
++                    );
++
++                if (
++                    url &&
++                    isAllowedUrl(url)
++                ) {
++                    urls.push(url);
++                }
++            }
++
++            /*
++             * RSS/Atom links.
++             */
++            for (
++                const element of
++                doc.querySelectorAll(
++                    'link'
++                )
++            ) {
++                const raw =
++                    element.getAttribute(
++                        'href'
++                    ) ||
++                    element.textContent
++                        ?.trim();
++
++                const url =
++                    canonicalizeUrl(
++                        raw,
++                        baseUrl
++                    );
++
++                if (
++                    url &&
++                    isAllowedUrl(url)
++                ) {
++                    urls.push(url);
++                }
++            }
++
++            /*
++             * Generic XML text URL extraction as a secondary signal.
++             */
++            urls.push(
++                ...extractUrlsFromText(
++                    body,
++                    baseUrl
++                )
++            );
++
++            const root =
++                doc.documentElement
++                    ?.localName ||
++                '';
++
++            const kind =
++                root === 'urlset'
++                    ? 'sitemap'
++                    : root ===
++                        'sitemapindex'
++                    ? 'sitemap-index'
++                    : root === 'rss'
++                    ? 'rss-feed'
++                    : root === 'feed'
++                    ? 'atom-feed'
++                    : 'xml-document';
++
++            return new Discovery({
++                candidate,
++                observation,
++
++                kind,
++
++                confidence:
++                    kind === 'sitemap' ||
++                    kind === 'sitemap-index'
++                        ? 0.98
++                        : 0.85,
++
++                data: {
++                    url:
++                        candidate.target,
++
++                    finalUrl:
++                        baseUrl,
++
++                    root,
++
++                    urls:
++                        unique(urls)
++                }
++            });
++        }
++
++        candidates(discovery) {
++            const depth =
++                (
++                    discovery
++                        .provenance
++                        .depth ||
++                    0
++                ) + 1;
++
++            return (
++                discovery.data.urls ||
++                []
+             ).map(url =>
+-                new Candidate({
+-                    target: url,
+-                    type: 'url',
+-                    origin:
+-                        `text:${discovery.id}`,
+-                    parent:
+-                        discovery.id,
+-                    priority: 0.4
+-                })
++                makeDerivedCandidate(
++                    url,
++                    'xml-url',
++                    discovery,
++                    0.65,
++                    depth
++                )
+             );
+         }
++    }
++
++
++    // =====================================================================
++    // WEB MANIFEST PROVIDER
++    // =====================================================================
++
++    class ManifestProvider
++        extends ResponseProvider {
++
++        matches(observation) {
++            const type =
++                normalizeContentType(
++                    observation.http
++                        .contentType
++                );
++
++            return (
++                type ===
++                    'application/manifest+json'
++            );
++        }
++
++        recognize(
++            candidate,
++            observation
++        ) {
++            if (
++                !this.matches(
++                    observation
++                )
++            ) {
++                return null;
++            }
++
++            let value;
++
++            try {
++                value =
++                    JSON.parse(
++                        observation.body ||
++                            ''
++                    );
++            } catch {
++                return null;
++            }
++
++            const baseUrl =
++                observation.http
++                    .finalUrl ||
++                candidate.target;
++
++            const urls = [];
++
++            const inspect =
++                value => {
++                    if (
++                        typeof value ===
++                        'string'
++                    ) {
++                        const url =
++                            canonicalizeUrl(
++                                value,
++                                baseUrl
++                            );
++
++                        if (
++                            url &&
++                            isAllowedUrl(
++                                url
++                            )
++                        ) {
++                            urls.push(url);
++                        }
++
++                        return;
++                    }
++
++                    if (
++                        !value ||
++                        typeof value !==
++                            'object'
++                    ) {
++                        return;
++                    }
++
++                    for (
++                        const child of
++                        Object.values(
++                            value
++                        )
++                    ) {
++                        inspect(child);
++                    }
++                };
++
++            inspect(value);
++
++            return new Discovery({
++                candidate,
++                observation,
++
++                kind:
++                    'web-manifest',
++
++                confidence:
++                    0.97,
++
++                data: {
++                    url:
++                        candidate.target,
++
++                    finalUrl:
++                        baseUrl,
++
++                    value,
++
++                    urls:
++                        unique(urls)
++                }
++            });
++        }
++
++        candidates(discovery) {
++            const depth =
++                (
++                    discovery
++                        .provenance
++                        .depth ||
++                    0
++                ) + 1;
++
++            return (
++                discovery.data.urls ||
++                []
++            ).map(url =>
++                makeDerivedCandidate(
++                    url,
++                    'manifest-resource',
++                    discovery,
++                    0.55,
++                    depth
++                )
++            );
++        }
++    }
++
++
++    // =====================================================================
++    // DERIVED CANDIDATE HELPER
++    // =====================================================================
++
++    function makeDerivedCandidate(
++        url,
++        type,
++        discovery,
++        priority,
++        depth
++    ) {
++        return new Candidate({
++            target: url,
++
++            type,
++
++            origin:
++                `${discovery.kind}:${discovery.id}`,
++
++            parent:
++                discovery.id,
++
++            priority,
++
++            depth
++        });
+     }
+ 
+ 
+@@ -1667,13 +2745,13 @@
+ 
+         constructor() {
+             /*
+-             * Order matters.
+-             *
+-             * JSON is checked before generic text.
++             * More specific providers first.
+              */
+             this.providers = [
++                new ManifestProvider(),
+                 new JsonProvider(),
+                 new HtmlProvider(),
++                new XmlProvider(),
+                 new TextProvider()
+             ];
+         }
+@@ -1720,12 +2798,15 @@
+     class Scheduler {
+ 
+         constructor(database) {
+-            this.database = database;
++            this.database =
++                database;
+         }
+ 
+         add(candidate) {
+             return this.database
+-                .addCandidate(candidate);
++                .addCandidate(
++                    candidate
++                );
+         }
+ 
+         claim() {
+@@ -1735,7 +2816,9 @@
+ 
+         complete(candidate) {
+             this.database
+-                .completeCandidate(candidate);
++                .completeCandidate(
++                    candidate
++                );
+         }
+ 
+         fail(
+@@ -1762,6 +2845,234 @@
+ 
+ 
+     // =====================================================================
++    // PASSIVE NETWORK OBSERVER
++    // =====================================================================
++
++    class NetworkObserver {
++
++        constructor(engine) {
++            this.engine =
++                engine;
++
++            this.installed =
++                false;
++
++            this.originalFetch =
++                null;
++
++            this.originalOpen =
++                null;
++
++            this.originalSend =
++                null;
++        }
++
++        install() {
++            if (
++                this.installed ||
++                !CONFIG.observeNetwork
++            ) {
++                return;
++            }
++
++            this.installed =
++                true;
++
++            this.installFetchObserver();
++            this.installXhrObserver();
++
++            log(
++                'Network observer installed'
++            );
++        }
++
++        installFetchObserver() {
++            if (
++                typeof window.fetch !==
++                'function'
++            ) {
++                return;
++            }
++
++            this.originalFetch =
++                window.fetch;
++
++            const engine =
++                this.engine;
++
++            window.fetch =
++                function (...args) {
++                    let url = null;
++
++                    try {
++                        const input =
++                            args[0];
++
++                        if (
++                            typeof input ===
++                            'string'
++                        ) {
++                            url =
++                                canonicalizeUrl(
++                                    input,
++                                    location.href
++                                );
++                        } else if (
++                            input &&
++                            typeof input.url ===
++                                'string'
++                        ) {
++                            url =
++                                canonicalizeUrl(
++                                    input.url,
++                                    location.href
++                                );
++                        }
++                    } catch {
++                        url = null;
++                    }
++
++                    const promise =
++                        engine.networkObserver
++                            .originalFetch
++                            .apply(
++                                this,
++                                args
++                            );
++
++                    if (url) {
++                        promise
++                            .then(response => {
++                                engine.recordPassiveNetwork(
++                                    {
++                                        url,
++
++                                        status:
++                                            response.status,
++
++                                        contentType:
++                                            response
++                                                .headers
++                                                ?.get(
++                                                    'content-type'
++                                                ),
++
++                                        mechanism:
++                                            'fetch'
++                                    }
++                                );
++
++                                return response;
++                            })
++                            .catch(() => {
++                                /*
++                                 * The request itself will have been
++                                 * observed as attempted. No additional
++                                 * action is required here.
++                                 */
++                            });
++                    }
++
++                    return promise;
++                };
++        }
++
++        installXhrObserver() {
++            if (
++                typeof XMLHttpRequest ===
++                'undefined'
++            ) {
++                return;
++            }
++
++            this.originalOpen =
++                XMLHttpRequest.prototype.open;
++
++            this.originalSend =
++                XMLHttpRequest.prototype.send;
++
++            const engine =
++                this.engine;
++
++            XMLHttpRequest.prototype.open =
++                function (
++                    method,
++                    url,
++                    ...rest
++                ) {
++                    try {
++                        this.__gdUrl =
++                            canonicalizeUrl(
++                                url,
++                                location.href
++                            );
++
++                        this.__gdMethod =
++                            method;
++                    } catch {
++                        this.__gdUrl =
++                            null;
++                    }
++
++                    return engine
++                        .networkObserver
++                        .originalOpen
++                        .call(
++                            this,
++                            method,
++                            url,
++                            ...rest
++                        );
++                };
++
++            XMLHttpRequest.prototype.send =
++                function (...args) {
++                    const xhr =
++                        this;
++
++                    if (
++                        xhr.__gdUrl
++                    ) {
++                        xhr.addEventListener(
++                            'load',
++                            () => {
++                                engine.recordPassiveNetwork(
++                                    {
++                                        url:
++                                            xhr.__gdUrl,
++
++                                        status:
++                                            xhr.status,
++
++                                        contentType:
++                                            xhr.getResponseHeader(
++                                                'content-type'
++                                            ),
++
++                                        mechanism:
++                                            'xhr'
++                                    }
++                                );
++                            },
++                            {
++                                once: true
++                            }
++                        );
++                    }
++
++                    return engine
++                        .networkObserver
++                        .originalSend
++                        .apply(
++                            this,
++                            args
++                        );
++                };
++        }
++    }
++
++
++    // =====================================================================
+     // DISCOVERY ENGINE
+     // =====================================================================
+ 
+@@ -1782,9 +3093,23 @@
+             this.providers =
+                 new ProviderRegistry();
+ 
+-            this.running = false;
+-
+-            this.stats = this.newStats();
++            this.networkObserver =
++                new NetworkObserver(
++                    this
++                );
++
++            this.running =
++                false;
++
++            this.stats =
++                this.newStats();
++
++            /*
++             * Passive observations are deduplicated independently from
++             * active candidates.
++             */
++            this.passiveObserved =
++                new Set();
+         }
+ 
+         newStats() {
+@@ -1793,12 +3118,20 @@
+                 finishedAt: null,
+ 
+                 requests: 0,
++
+                 discoveries: 0,
++
+                 failures: 0,
++
+                 retries: 0,
+ 
+                 candidatesCreated: 0,
+-                candidatesRejected: 0
++
++                candidatesRejected: 0,
++
++                passiveNetworkEvents: 0,
++
++                passiveDomEvents: 0
+             };
+         }
+ 
+@@ -1807,10 +3140,280 @@
+                 this.newStats();
+         }
+ 
+-        /*
+-         * Add a candidate through one central path so statistics remain
+-         * consistent.
+-         */
++        startObservers() {
++            this.networkObserver
++                .install();
++
++            if (
++                CONFIG.observeDomResources
++            ) {
++                this.installDomObserver();
++            }
++        }
++
++        installDomObserver() {
++            if (
++                this.domObserver
++            ) {
++                return;
++            }
++
++            if (
++                typeof MutationObserver ===
++                'undefined'
++            ) {
++                return;
++            }
++
++            this.domObserver =
++                new MutationObserver(
++                    mutations => {
++                        for (
++                            const mutation of
++                            mutations
++                        ) {
++                            for (
++                                const node of
++                                mutation.addedNodes
++                            ) {
++                                if (
++                                    node.nodeType !==
++                                    Node.ELEMENT_NODE
++                                ) {
++                                    continue;
++                                }
++
++                                this.inspectDomNode(
++                                    node
++                                );
++                            }
++                        }
++                    }
++                );
++
++            this.domObserver.observe(
++                document.documentElement,
++                {
++                    subtree: true,
++                    childList: true
++                }
++            );
++
++            log(
++                'DOM observer installed'
++            );
++        }
++
++        inspectDomNode(node) {
++            if (
++                !node.querySelectorAll
++            ) {
++                return;
++            }
++
++            const selector = [
++                'a[href]',
++                'script[src]',
++                'link[href]',
++                'img[src]',
++                'iframe[src]',
++                'source[src]',
++                'video[src]',
++                'audio[src]',
++                'form[action]'
++            ].join(',');
++
++            const elements = [];
++
++            if (
++                node.matches?.(
++                    selector
++                )
++            ) {
++                elements.push(node);
++            }
++
++            elements.push(
++                ...node.querySelectorAll(
++                    selector
++                )
++            );
++
++            for (
++                const element of
++                elements
++            ) {
++                this.observeDomElement(
++                    element
++                );
++            }
++        }
++
++        observeDomElement(element) {
++            let raw = null;
++            let type = 'dom-resource';
++
++            if (
++                element.matches(
++                    'a[href]'
++                )
++            ) {
++                raw =
++                    element.getAttribute(
++                        'href'
++                    );
++
++                type =
++                    'dom-link';
++            } else if (
++                element.matches(
++                    'form[action]'
++                )
++            ) {
++                raw =
++                    element.getAttribute(
++                        'action'
++                    );
++
++                type =
++                    'dom-form';
++            } else {
++                raw =
++                    element.getAttribute(
++                        'src'
++                    ) ||
++                    element.getAttribute(
++                        'href'
++                    );
++            }
++
++            const url =
++                canonicalizeUrl(
++                    raw,
++                    location.href
++                );
++
++            if (
++                !url ||
++                !isAllowedUrl(url)
++            ) {
++                return;
++            }
++
++            const key =
++                `${type}:${url}`;
++
++            if (
++                this.passiveObserved
++                    .has(key)
++            ) {
++                return;
++            }
++
++            this.passiveObserved
++                .add(key);
++
++            this.stats
++                .passiveDomEvents++;
++
++            /*
++             * Passive DOM observations are turned into candidates.
++             */
++            this.addCandidate(
++                new Candidate({
++                    target: url,
++
++                    type:
++                        type ===
++                        'dom-link'
++                            ? 'url'
++                            : 'resource',
++
++                    origin:
++                        'passive-dom',
++
++                    priority:
++                        type ===
++                        'dom-link'
++                            ? 0.65
++                            : 0.45,
++
++                    depth: 0
++                })
++            );
++        }
++
++        recordPassiveNetwork({
++            url,
++            status,
++            contentType,
++            mechanism
++        }) {
++            if (
++                !url ||
++                !isAllowedUrl(url)
++            ) {
++                return;
++            }
++
++            const key =
++                `${mechanism}:${url}`;
++
++            if (
++                this.passiveObserved
++                    .has(key)
++            ) {
++                return;
++            }
++
++            this.passiveObserved
++                .add(key);
++
++            this.stats
++                .passiveNetworkEvents++;
++
++            /*
++             * A network-observed resource is a high-quality candidate
++             * because the page itself has already demonstrated that
++             * the resource exists or was attempted.
++             */
++            const candidate =
++                new Candidate({
++                    target: url,
++
++                    type:
++                        'network-resource',
++
++                    origin:
++                        `network:${mechanism}`,
++
++                    priority:
++                        0.9,
++
++                    depth: 0,
++
++                    hints: {
++                        observedStatus:
++                            status,
++
++                        observedContentType:
++                            contentType,
++
++                        mechanism
++                    }
++                });
++
++            this.addCandidate(
++                candidate
++            );
++
++            log(
++                'Passive network observation',
++                mechanism,
++                url
++            );
++        }
++
+         addCandidate(candidate) {
+             const added =
+                 this.scheduler.add(
+@@ -1830,8 +3433,10 @@
+ 
+         seed() {
+             /*
+-             * Seed the current document.
++             * Start passive observers before scanning the current DOM.
+              */
++            this.startObservers();
++
+             const current =
+                 canonicalizeUrl(
+                     location.href
+@@ -1841,38 +3446,35 @@
+                 this.addCandidate(
+                     new Candidate({
+                         target: current,
++
+                         type: 'url',
++
+                         origin:
+                             'initial-page',
+-                        priority: 1.0
++
++                        priority:
++                            1.0,
++
++                        depth: 0
+                     })
+                 );
+             }
+ 
+             /*
+-             * Discover links already present in the loaded DOM.
+-             *
+-             * These do not require another request merely to become
+-             * candidates.
++             * Existing links.
+              */
+             if (CONFIG.discoverLinks) {
+-                const elements =
+-                    document.querySelectorAll(
+-                        'a[href], area[href]'
+-                    );
+-
+                 for (
+                     const element of
+-                    elements
++                    document.querySelectorAll(
++                        'a[href],area[href]'
++                    )
+                 ) {
+-                    const raw =
+-                        element.getAttribute(
+-                            'href'
+-                        );
+-
+                     const url =
+                         canonicalizeUrl(
+-                            raw,
++                            element.getAttribute(
++                                'href'
++                            ),
+                             location.href
+                         );
+ 
+@@ -1883,10 +3485,17 @@
+                         this.addCandidate(
+                             new Candidate({
+                                 target: url,
+-                                type: 'url',
++
++                                type:
++                                    'url',
++
+                                 origin:
+                                     'initial-dom',
+-                                priority: 0.7
++
++                                priority:
++                                    0.7,
++
++                                depth: 0
+                             })
+                         );
+                     }
+@@ -1894,7 +3503,7 @@
+             }
+ 
+             /*
+-             * Seed resources already visible in the DOM.
++             * Existing resources.
+              */
+             if (CONFIG.discoverResources) {
+                 const selector = [
+@@ -1905,7 +3514,8 @@
+                     'frame[src]',
+                     'source[src]',
+                     'video[src]',
+-                    'audio[src]'
++                    'audio[src]',
++                    'track[src]'
+                 ].join(',');
+ 
+                 for (
+@@ -1935,15 +3545,32 @@
+                         this.addCandidate(
+                             new Candidate({
+                                 target: url,
++
+                                 type:
+                                     'resource',
++
+                                 origin:
+                                     'initial-dom',
+-                                priority: 0.5
++
++                                priority:
++                                    0.5,
++
++                                depth: 0
+                             })
+                         );
+                     }
+                 }
++            }
++
++            /*
++             * Also inspect the initial DOM through the same passive path.
++             */
++            if (
++                this.domObserver
++            ) {
++                this.inspectDomNode(
++                    document.documentElement
++                );
+             }
+ 
+             log(
+@@ -1960,13 +3587,10 @@
+                 return;
+             }
+ 
+-            /*
+-             * Each Scan button starts a fresh statistics interval,
+-             * while the knowledge base remains persistent.
+-             */
+             this.resetStats();
+ 
+-            this.running = true;
++            this.running =
++                true;
+ 
+             this.stats.startedAt =
+                 now();
+@@ -1980,8 +3604,8 @@
+                     maxRequests:
+                         CONFIG.maxRequests,
+ 
+-                    queue:
+-                        this.scheduler.size()
++                    maxDepth:
++                        CONFIG.maxDepth
+                 }
+             );
+ 
+@@ -2004,7 +3628,8 @@
+             this.stats.finishedAt =
+                 now();
+ 
+-            this.running = false;
++            this.running =
++                false;
+ 
+             log(
+                 'Discovery complete',
+@@ -2020,23 +3645,33 @@
+                 this.stats.requests <
+                     CONFIG.maxRequests
+             ) {
+-                /*
+-                 * CLAIM FIRST.
+-                 *
+-                 * This is synchronous and establishes worker ownership
+-                 * before any asynchronous network operation.
+-                 */
+                 const candidate =
+                     this.scheduler.claim();
+ 
+                 if (!candidate) {
++                    /*
++                     * A queue can temporarily contain only candidates
++                     * waiting for retry backoff.
++                     *
++                     * Give them a chance to become eligible rather than
++                     * immediately terminating all workers.
++                     */
++                    if (
++                        this.scheduler.size() >
++                        0
++                    ) {
++                        await this.sleep(
++                            100
++                        );
++
++                        continue;
++                    }
++
+                     break;
+                 }
+ 
+                 /*
+-                 * The increment is also synchronous, so two workers
+-                 * cannot observe and increment the same request count
+-                 * between awaits.
++                 * Synchronous reservation.
+                  */
+                 this.stats.requests++;
+ 
+@@ -2045,7 +3680,8 @@
+                     candidate.target
+                 );
+ 
+-                let completed = false;
++                let finalized =
++                    false;
+ 
+                 try {
+                     const observation =
+@@ -2066,10 +3702,6 @@
+                         this.stats
+                             .failures++;
+ 
+-                        /*
+-                         * Retry only while the candidate still has
+-                         * retry budget.
+-                         */
+                         if (
+                             candidate.attempts <=
+                             CONFIG.maxRetries
+@@ -2080,11 +3712,6 @@
+                             this.scheduler.fail(
+                                 candidate,
+                                 true
+-                            );
+-
+-                            log(
+-                                `Worker ${workerId} retrying`,
+-                                candidate.target
+                             );
+                         } else {
+                             this.scheduler.fail(
+@@ -2093,21 +3720,27 @@
+                             );
+                         }
+ 
++                        finalized =
++                            true;
++
+                         continue;
+                     }
+ 
+                     const result =
+-                        this.providers.recognize(
+-                            candidate,
+-                            observation
+-                        );
++                        this.providers
++                            .recognize(
++                                candidate,
++                                observation
++                            );
+ 
+                     if (!result) {
+-                        this.scheduler.complete(
+-                            candidate
+-                        );
+-
+-                        completed = true;
++                        this.scheduler
++                            .complete(
++                                candidate
++                            );
++
++                        finalized =
++                            true;
+ 
+                         continue;
+                     }
+@@ -2131,40 +3764,36 @@
+                         candidate.target
+                     );
+ 
+-                    /*
+-                     * Provider expands the search space.
+-                     */
+                     const newCandidates =
+                         provider.candidates(
+                             discovery
+                         );
+ 
+                     for (
+-                        const next
+-                        of newCandidates
++                        const next of
++                        newCandidates
+                     ) {
+                         this.addCandidate(
+                             next
+                         );
+                     }
+ 
+-                    this.scheduler.complete(
+-                        candidate
+-                    );
+-
+-                    completed = true;
++                    this.scheduler
++                        .complete(
++                            candidate
++                        );
++
++                    finalized =
++                        true;
+                 } catch (error) {
+                     warn(
+-                        `Worker ${workerId} failed:`,
++                        `Worker ${workerId} error:`,
+                         error
+                     );
+ 
+                     this.stats
+                         .failures++;
+ 
+-                    /*
+-                     * Retry unexpected failures as well.
+-                     */
+                     if (
+                         candidate.attempts <=
+                         CONFIG.maxRetries
+@@ -2182,17 +3811,16 @@
+                             false
+                         );
+                     }
++
++                    finalized =
++                        true;
+                 }
+ 
+                 /*
+-                 * Defensive cleanup.
+-                 *
+-                 * Normally all paths above already complete/fail the
+-                 * candidate. This prevents an accidental future code
+-                 * path from leaving it permanently claimed.
++                 * Defensive ownership cleanup.
+                  */
+                 if (
+-                    !completed &&
++                    !finalized &&
+                     this.database.claimed.has(
+                         candidate.key()
+                     )
+@@ -2205,9 +3833,19 @@
+             }
+         }
+ 
++        sleep(ms) {
++            return new Promise(
++                resolve =>
++                    setTimeout(
++                        resolve,
++                        ms
++                    )
++            );
++        }
++
+         export() {
+             return {
+-                version: 3,
++                version: 4,
+ 
+                 scope: {
+                     type:
+@@ -2221,10 +3859,28 @@
+                 },
+ 
+                 timestamp:
+-                    new Date().toISOString(),
++                    new Date()
++                        .toISOString(),
+ 
+                 page:
+                     location.href,
++
++                configuration: {
++                    maxCandidates:
++                        CONFIG.maxCandidates,
++
++                    maxRequests:
++                        CONFIG.maxRequests,
++
++                    concurrency:
++                        CONFIG.concurrency,
++
++                    maxDepth:
++                        CONFIG.maxDepth,
++
++                    sameOriginOnly:
++                        CONFIG.sameOriginOnly
++                },
+ 
+                 statistics:
+                     this.stats,
+@@ -2241,7 +3897,11 @@
+                     ...this.database
+                         .discoveries
+                         .values()
+-                ]
++                ],
++
++                provenance:
++                    this.database.graph
++                        .serialize()
+             };
+         }
+ 
+@@ -2265,16 +3925,23 @@
+                         confidence:
+                             discovery.confidence,
+ 
++                        mechanism:
++                            discovery.mechanism,
++
++                        depth:
++                            discovery.provenance
++                                ?.depth ??
++                            '',
++
+                         url:
+-                            discovery.data.url ||
++                            discovery.data
++                                ?.url ||
+                             '',
+ 
+                         title:
+-                            discovery.data.title ||
+-                            '',
+-
+-                        createdAt:
+-                            discovery.createdAt
++                            discovery.data
++                                ?.title ||
++                            ''
+                     })
+                 )
+             );
+@@ -2290,6 +3957,18 @@
+             );
+ 
+             console.log(
++                'Graph nodes:',
++                this.database.graph
++                    .nodes.size
++            );
++
++            console.log(
++                'Graph edges:',
++                this.database.graph
++                    .edges.size
++            );
++
++            console.log(
+                 'Statistics:',
+                 this.stats
+             );
+@@ -2299,6 +3978,10 @@
+ 
+         clear() {
+             this.database.clear();
++
++            this.passiveObserved
++                .clear();
++
+             this.resetStats();
+         }
+     }
+@@ -2311,27 +3994,20 @@
+     const engine =
+         new DiscoveryEngine();
+ 
+-    /*
+-     * Public API for experimentation.
+-     */
+     window.GenericDiscovery =
+         engine;
+ 
+     /*
+-     * Avoid creating duplicate panels if the userscript is accidentally
+-     * injected twice into the same document.
++     * Avoid duplicate panels.
+      */
+-    const existingPanel =
+-        document.getElementById(
+-            'generic-discovery-panel'
++    document.getElementById(
++        'generic-discovery-panel'
++    )?.remove();
++
++    const panel =
++        document.createElement(
++            'div'
+         );
+-
+-    if (existingPanel) {
+-        existingPanel.remove();
+-    }
+-
+-    const panel =
+-        document.createElement('div');
+ 
+     panel.id =
+         'generic-discovery-panel';
+@@ -2341,34 +4017,57 @@
+         right: 12px;
+         bottom: 12px;
+         z-index: 2147483647;
+-        background: rgba(20, 20, 20, .94);
++
++        background: rgba(20,20,20,.95);
+         color: white;
++
+         padding: 10px;
++
+         border-radius: 8px;
++
+         font: 12px monospace;
+         line-height: 1.45;
+-        box-shadow: 0 3px 15px rgba(0, 0, 0, .4);
+-        min-width: 250px;
++
++        box-shadow:
++            0 3px 15px rgba(0,0,0,.4);
++
++        min-width: 285px;
++
++        user-select: none;
+     `;
+ 
+     panel.innerHTML = `
+-        <div style="margin-bottom:6px">
+-            <strong>Generic Discovery v0.3</strong>
++        <div style="
++            margin-bottom:6px;
++        ">
++            <strong>
++                Generic Discovery v0.4
++            </strong>
+         </div>
+ 
+         <div style="
+             margin-bottom:8px;
+             opacity:.7;
+-            max-width:280px;
++            max-width:300px;
+         ">
+-            Web-resource prototype inspired by
+-            DVB blind-scan architecture.
++            Web-resource discovery engine
++            inspired by blind-scan architecture.
+         </div>
+ 
+-        <div style="margin-bottom:8px">
+-            <button id="gd-start">Scan</button>
+-            <button id="gd-clear">Clear</button>
+-            <button id="gd-export">Export</button>
++        <div style="
++            margin-bottom:8px;
++        ">
++            <button id="gd-start">
++                Scan
++            </button>
++
++            <button id="gd-clear">
++                Clear
++            </button>
++
++            <button id="gd-export">
++                Export
++            </button>
+         </div>
+ 
+         <div id="gd-status">
+@@ -2379,13 +4078,23 @@
+             margin-top:6px;
+             opacity:.8;
+         ">
+-            queue: 0 | in-flight: 0
++            queue: 0 |
++            in-flight: 0 |
++            requests: 0 |
++            discoveries: 0
++        </div>
++
++        <div id="gd-network" style="
++            margin-top:4px;
++            opacity:.7;
++        ">
++            network: 0 |
++            DOM: 0
+         </div>
+     `;
+ 
+-    document.documentElement.appendChild(
+-        panel
+-    );
++    document.documentElement
++        .appendChild(panel);
+ 
+     const status =
+         panel.querySelector(
+@@ -2397,21 +4106,32 @@
+             '#gd-progress'
+         );
+ 
++    const network =
++        panel.querySelector(
++            '#gd-network'
++        );
++
+     function updateUi() {
+-        if (!status || !progress) {
++        if (
++            !status ||
++            !progress
++        ) {
+             return;
+         }
++
++        const stats =
++            engine.stats;
+ 
+         const queue =
+             engine.scheduler.size();
+ 
+         const inFlight =
+-            engine.scheduler.inFlight();
+-
+-        const stats =
+-            engine.stats;
+-
+-        if (engine.running) {
++            engine.scheduler
++                .inFlight();
++
++        if (
++            engine.running
++        ) {
+             status.textContent =
+                 'scanning...';
+         }
+@@ -2420,8 +4140,13 @@
+             `queue: ${queue} | ` +
+             `in-flight: ${inFlight} | ` +
+             `requests: ${stats.requests}/${CONFIG.maxRequests} | ` +
+-            `discoveries: ${stats.discoveries} | ` +
+-            `failures: ${stats.failures}`;
++            `discoveries: ${stats.discoveries}`;
++
++        network.textContent =
++            `network: ${stats.passiveNetworkEvents} | ` +
++            `DOM: ${stats.passiveDomEvents} | ` +
++            `failures: ${stats.failures} | ` +
++            `retries: ${stats.retries}`;
+     }
+ 
+     let uiTimer = null;
+@@ -2443,13 +4168,17 @@
+             return;
+         }
+ 
+-        clearInterval(uiTimer);
+-        uiTimer = null;
++        clearInterval(
++            uiTimer
++        );
++
++        uiTimer =
++            null;
+     }
+ 
+ 
+     // =====================================================================
+-    // BUTTONS
++    // SCAN
+     // =====================================================================
+ 
+     panel.querySelector(
+@@ -2458,7 +4187,9 @@
+         'click',
+         async () => {
+ 
+-            if (engine.running) {
++            if (
++                engine.running
++            ) {
+                 return;
+             }
+ 
+@@ -2493,13 +4224,19 @@
+     );
+ 
+ 
++    // =====================================================================
++    // CLEAR
++    // =====================================================================
++
+     panel.querySelector(
+         '#gd-clear'
+     ).addEventListener(
+         'click',
+         () => {
+ 
+-            if (engine.running) {
++            if (
++                engine.running
++            ) {
+                 status.textContent =
+                     'cannot clear while scanning';
+ 
+@@ -2515,6 +4252,10 @@
+         }
+     );
+ 
++
++    // =====================================================================
++    // EXPORT
++    // =====================================================================
+ 
+     panel.querySelector(
+         '#gd-export'
+@@ -2550,7 +4291,8 @@
+                     'a'
+                 );
+ 
+-            anchor.href = url;
++            anchor.href =
++                url;
+ 
+             anchor.download =
+                 `discovery-${Date.now()}.json`;
+@@ -2563,10 +4305,6 @@
+ 
+             anchor.remove();
+ 
+-            /*
+-             * Give the browser a chance to consume the download before
+-             * releasing the object URL.
+-             */
+             setTimeout(
+                 () => {
+                     URL.revokeObjectURL(
+@@ -2580,13 +4318,13 @@
+ 
+ 
+     // =====================================================================
+-    // INITIAL STATE
++    // INITIALIZATION
+     // =====================================================================
+ 
+     updateUi();
+ 
+     log(
+-        'Generic Discovery Engine v0.3.0 loaded'
++        'Generic Discovery Engine v0.4.0 loaded'
+     );
+ 
+ })();

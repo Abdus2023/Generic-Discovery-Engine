@@ -1,0 +1,5206 @@
+{
+  "schema_version": 8,
+  "builder": "security-archaeology-builder-v8",
+  "model_kind": "DERIVED_SECURITY_ARCHAEOLOGY_NOT_SOURCE",
+  "stages": [
+    {
+      "snapshot_id": "snapshot-0001",
+      "version": "v0.1.0",
+      "variant": "mechanically-composed",
+      "stage": "INPUT",
+      "failure_sources": [
+        "UNKNOWN_FAILURE"
+      ],
+      "detection_points": [
+        "UNKNOWN"
+      ],
+      "representations": [
+        "UNKNOWN"
+      ],
+      "propagation": [
+        "UNKNOWN"
+      ],
+      "containment": [
+        "UNKNOWN"
+      ],
+      "recovery": [
+        "UNKNOWN"
+      ],
+      "logging": [
+        "UNKNOWN"
+      ],
+      "provenance": [
+        "UNKNOWN"
+      ],
+      "evidence": [
+        "security-ev-2d0105c69f45b01f"
+      ]
+    },
+    {
+      "snapshot_id": "snapshot-0001",
+      "version": "v0.1.0",
+      "variant": "mechanically-composed",
+      "stage": "VALIDATION",
+      "failure_sources": [
+        "VALIDATION_FAILURE"
+      ],
+      "detection_points": [
+        "CATCH"
+      ],
+      "representations": [
+        "UNBOUND_EXCEPTION"
+      ],
+      "propagation": [
+        "FALLBACK_RETURN"
+      ],
+      "containment": [
+        "OPERATION_LOCAL"
+      ],
+      "recovery": [
+        "FALLBACK_VALUE"
+      ],
+      "logging": [
+        "NOT_EVIDENCED"
+      ],
+      "provenance": [
+        "FAILURE_CONTEXT_NOT_EVIDENCED_IN_HANDLER"
+      ],
+      "evidence": [
+        "security-ev-8812129cadb6f280",
+        "security-ev-cd52827ef732e7d4"
+      ]
+    },
+    {
+      "snapshot_id": "snapshot-0001",
+      "version": "v0.1.0",
+      "variant": "mechanically-composed",
+      "stage": "ACQUISITION",
+      "failure_sources": [
+        "NETWORK_FAILURE",
+        "TIMEOUT"
+      ],
+      "detection_points": [
+        "CATCH",
+        "ERROR_CALLBACK",
+        "PROMISE_REJECT",
+        "TIMEOUT_CALLBACK"
+      ],
+      "representations": [
+        "ERROR_OBJECT",
+        "EXCEPTION_VARIABLE",
+        "PROMISE_REJECTION"
+      ],
+      "propagation": [
+        "PROPAGATES_AS_REJECTION",
+        "PROPAGATES_TO_CALLER",
+        "STATE_OR_DIAGNOSTIC_RECORD"
+      ],
+      "containment": [
+        "OPERATION_LOCAL",
+        "STOP_BOUNDARY_NOT_PROVED"
+      ],
+      "recovery": [
+        "CALLER_DECIDES",
+        "CALLER_OR_WORKER_MAY_HANDLE",
+        "RECORD_AND_RETURN_OR_CONTINUE"
+      ],
+      "logging": [
+        "NOT_EVIDENCED_AT_CALLBACK",
+        "NOT_EVIDENCED_AT_THROW",
+        "OBSERVATION"
+      ],
+      "provenance": [
+        "CANDIDATE_OR_REQUEST_LINKAGE_UNKNOWN_AT_CALLBACK",
+        "FAILURE_CONTEXT_NOT_EVIDENCED_IN_HANDLER",
+        "MESSAGE_PRESERVED_CANDIDATE_PROVIDER_CONTEXT_VARIES"
+      ],
+      "evidence": [
+        "security-ev-f5938550f988fa3e",
+        "security-ev-92452c8c6a88aa28",
+        "security-ev-b90fb5bcfffb1a0b",
+        "security-ev-ee35b3e2616be7b6",
+        "security-ev-a636b4c2f43931b0"
+      ]
+    },
+    {
+      "snapshot_id": "snapshot-0001",
+      "version": "v0.1.0",
+      "variant": "mechanically-composed",
+      "stage": "OBSERVATION",
+      "failure_sources": [
+        "UNKNOWN_FAILURE"
+      ],
+      "detection_points": [
+        "UNKNOWN"
+      ],
+      "representations": [
+        "UNKNOWN"
+      ],
+      "propagation": [
+        "UNKNOWN"
+      ],
+      "containment": [
+        "UNKNOWN"
+      ],
+      "recovery": [
+        "UNKNOWN"
+      ],
+      "logging": [
+        "UNKNOWN"
+      ],
+      "provenance": [
+        "UNKNOWN"
+      ],
+      "evidence": [
+        "security-ev-36ca2e2b89208309"
+      ]
+    },
+    {
+      "snapshot_id": "snapshot-0001",
+      "version": "v0.1.0",
+      "variant": "mechanically-composed",
+      "stage": "RECOGNITION",
+      "failure_sources": [
+        "UNKNOWN_FAILURE"
+      ],
+      "detection_points": [
+        "UNKNOWN"
+      ],
+      "representations": [
+        "UNKNOWN"
+      ],
+      "propagation": [
+        "UNKNOWN"
+      ],
+      "containment": [
+        "UNKNOWN"
+      ],
+      "recovery": [
+        "UNKNOWN"
+      ],
+      "logging": [
+        "UNKNOWN"
+      ],
+      "provenance": [
+        "UNKNOWN"
+      ],
+      "evidence": [
+        "security-ev-fbba7f6cc69ce596"
+      ]
+    },
+    {
+      "snapshot_id": "snapshot-0001",
+      "version": "v0.1.0",
+      "variant": "mechanically-composed",
+      "stage": "DISCOVERY",
+      "failure_sources": [
+        "UNKNOWN_FAILURE"
+      ],
+      "detection_points": [
+        "UNKNOWN"
+      ],
+      "representations": [
+        "UNKNOWN"
+      ],
+      "propagation": [
+        "UNKNOWN"
+      ],
+      "containment": [
+        "UNKNOWN"
+      ],
+      "recovery": [
+        "UNKNOWN"
+      ],
+      "logging": [
+        "UNKNOWN"
+      ],
+      "provenance": [
+        "UNKNOWN"
+      ],
+      "evidence": [
+        "security-ev-2c9f64174529df13"
+      ]
+    },
+    {
+      "snapshot_id": "snapshot-0001",
+      "version": "v0.1.0",
+      "variant": "mechanically-composed",
+      "stage": "EXPANSION",
+      "failure_sources": [
+        "UNKNOWN_FAILURE"
+      ],
+      "detection_points": [
+        "UNKNOWN"
+      ],
+      "representations": [
+        "UNKNOWN"
+      ],
+      "propagation": [
+        "UNKNOWN"
+      ],
+      "containment": [
+        "UNKNOWN"
+      ],
+      "recovery": [
+        "UNKNOWN"
+      ],
+      "logging": [
+        "UNKNOWN"
+      ],
+      "provenance": [
+        "UNKNOWN"
+      ],
+      "evidence": [
+        "security-ev-1f13b814b61c2357"
+      ]
+    },
+    {
+      "snapshot_id": "snapshot-0001",
+      "version": "v0.1.0",
+      "variant": "mechanically-composed",
+      "stage": "SCHEDULING",
+      "failure_sources": [
+        "UNKNOWN_FAILURE"
+      ],
+      "detection_points": [
+        "UNKNOWN"
+      ],
+      "representations": [
+        "UNKNOWN"
+      ],
+      "propagation": [
+        "UNKNOWN"
+      ],
+      "containment": [
+        "UNKNOWN"
+      ],
+      "recovery": [
+        "UNKNOWN"
+      ],
+      "logging": [
+        "UNKNOWN"
+      ],
+      "provenance": [
+        "UNKNOWN"
+      ],
+      "evidence": [
+        "security-ev-d27d7087b6bd587a"
+      ]
+    },
+    {
+      "snapshot_id": "snapshot-0001",
+      "version": "v0.1.0",
+      "variant": "mechanically-composed",
+      "stage": "PERSISTENCE",
+      "failure_sources": [
+        "PERSISTENCE_FAILURE"
+      ],
+      "detection_points": [
+        "CATCH"
+      ],
+      "representations": [
+        "EXCEPTION_VARIABLE"
+      ],
+      "propagation": [
+        "SUPPRESSED_OR_LOCAL_UNKNOWN"
+      ],
+      "containment": [
+        "OPERATION_LOCAL"
+      ],
+      "recovery": [
+        "NONE_EVIDENCED"
+      ],
+      "logging": [
+        "LOG_WRAPPER"
+      ],
+      "provenance": [
+        "FAILURE_CONTEXT_NOT_EVIDENCED_IN_HANDLER"
+      ],
+      "evidence": [
+        "security-ev-b1fbd072c5e527b7",
+        "security-ev-5f02dc3748547b35"
+      ]
+    },
+    {
+      "snapshot_id": "snapshot-0001",
+      "version": "v0.1.0",
+      "variant": "mechanically-composed",
+      "stage": "EXPORT",
+      "failure_sources": [
+        "UNKNOWN_FAILURE"
+      ],
+      "detection_points": [
+        "UNKNOWN"
+      ],
+      "representations": [
+        "UNKNOWN"
+      ],
+      "propagation": [
+        "UNKNOWN"
+      ],
+      "containment": [
+        "UNKNOWN"
+      ],
+      "recovery": [
+        "UNKNOWN"
+      ],
+      "logging": [
+        "UNKNOWN"
+      ],
+      "provenance": [
+        "UNKNOWN"
+      ],
+      "evidence": [
+        "security-ev-6460cc3f3215adc0"
+      ]
+    },
+    {
+      "snapshot_id": "snapshot-0001",
+      "version": "v0.1.0",
+      "variant": "mechanically-composed",
+      "stage": "UI",
+      "failure_sources": [
+        "UNKNOWN_FAILURE"
+      ],
+      "detection_points": [
+        "UNKNOWN"
+      ],
+      "representations": [
+        "UNKNOWN"
+      ],
+      "propagation": [
+        "UNKNOWN"
+      ],
+      "containment": [
+        "UNKNOWN"
+      ],
+      "recovery": [
+        "UNKNOWN"
+      ],
+      "logging": [
+        "UNKNOWN"
+      ],
+      "provenance": [
+        "UNKNOWN"
+      ],
+      "evidence": [
+        "security-ev-bb8b03c204ccc8ae"
+      ]
+    },
+    {
+      "snapshot_id": "snapshot-0001",
+      "version": "v0.1.0",
+      "variant": "mechanically-composed",
+      "stage": "CROSS_CUTTING",
+      "failure_sources": [
+        "UNKNOWN_FAILURE"
+      ],
+      "detection_points": [
+        "UNKNOWN"
+      ],
+      "representations": [
+        "UNKNOWN"
+      ],
+      "propagation": [
+        "UNKNOWN"
+      ],
+      "containment": [
+        "UNKNOWN"
+      ],
+      "recovery": [
+        "UNKNOWN"
+      ],
+      "logging": [
+        "UNKNOWN"
+      ],
+      "provenance": [
+        "UNKNOWN"
+      ],
+      "evidence": [
+        "security-ev-71d696f4286f0786"
+      ]
+    },
+    {
+      "snapshot_id": "snapshot-0003",
+      "version": "v0.2.0",
+      "variant": "mechanically-composed",
+      "stage": "INPUT",
+      "failure_sources": [
+        "UNKNOWN_FAILURE"
+      ],
+      "detection_points": [
+        "UNKNOWN"
+      ],
+      "representations": [
+        "UNKNOWN"
+      ],
+      "propagation": [
+        "UNKNOWN"
+      ],
+      "containment": [
+        "UNKNOWN"
+      ],
+      "recovery": [
+        "UNKNOWN"
+      ],
+      "logging": [
+        "UNKNOWN"
+      ],
+      "provenance": [
+        "UNKNOWN"
+      ],
+      "evidence": [
+        "security-ev-06460381aa4ef246"
+      ]
+    },
+    {
+      "snapshot_id": "snapshot-0003",
+      "version": "v0.2.0",
+      "variant": "mechanically-composed",
+      "stage": "VALIDATION",
+      "failure_sources": [
+        "VALIDATION_FAILURE"
+      ],
+      "detection_points": [
+        "CATCH"
+      ],
+      "representations": [
+        "UNBOUND_EXCEPTION"
+      ],
+      "propagation": [
+        "FALLBACK_RETURN"
+      ],
+      "containment": [
+        "OPERATION_LOCAL"
+      ],
+      "recovery": [
+        "FALLBACK_VALUE"
+      ],
+      "logging": [
+        "NOT_EVIDENCED"
+      ],
+      "provenance": [
+        "FAILURE_CONTEXT_NOT_EVIDENCED_IN_HANDLER"
+      ],
+      "evidence": [
+        "security-ev-6b1bd6d142794968",
+        "security-ev-abd184135de8a5dc"
+      ]
+    },
+    {
+      "snapshot_id": "snapshot-0003",
+      "version": "v0.2.0",
+      "variant": "mechanically-composed",
+      "stage": "ACQUISITION",
+      "failure_sources": [
+        "NETWORK_FAILURE",
+        "TIMEOUT"
+      ],
+      "detection_points": [
+        "CATCH",
+        "ERROR_CALLBACK",
+        "PROMISE_REJECT",
+        "TIMEOUT_CALLBACK"
+      ],
+      "representations": [
+        "ERROR_OBJECT",
+        "EXCEPTION_VARIABLE",
+        "PROMISE_REJECTION"
+      ],
+      "propagation": [
+        "PROPAGATES_AS_REJECTION",
+        "PROPAGATES_TO_CALLER",
+        "STATE_OR_DIAGNOSTIC_RECORD"
+      ],
+      "containment": [
+        "OPERATION_LOCAL",
+        "STOP_BOUNDARY_NOT_PROVED"
+      ],
+      "recovery": [
+        "CALLER_DECIDES",
+        "CALLER_OR_WORKER_MAY_HANDLE",
+        "RECORD_AND_RETURN_OR_CONTINUE"
+      ],
+      "logging": [
+        "NOT_EVIDENCED_AT_CALLBACK",
+        "NOT_EVIDENCED_AT_THROW",
+        "OBSERVATION"
+      ],
+      "provenance": [
+        "CANDIDATE_OR_REQUEST_LINKAGE_UNKNOWN_AT_CALLBACK",
+        "FAILURE_CONTEXT_NOT_EVIDENCED_IN_HANDLER",
+        "MESSAGE_PRESERVED_CANDIDATE_PROVIDER_CONTEXT_VARIES"
+      ],
+      "evidence": [
+        "security-ev-eaeb4711e4fdb262",
+        "security-ev-31d8abcbe3efa516",
+        "security-ev-7486a1ae2556e31e",
+        "security-ev-3bd0babe0ddc9dd1",
+        "security-ev-b26acb6b433db456"
+      ]
+    },
+    {
+      "snapshot_id": "snapshot-0003",
+      "version": "v0.2.0",
+      "variant": "mechanically-composed",
+      "stage": "OBSERVATION",
+      "failure_sources": [
+        "UNKNOWN_FAILURE"
+      ],
+      "detection_points": [
+        "UNKNOWN"
+      ],
+      "representations": [
+        "UNKNOWN"
+      ],
+      "propagation": [
+        "UNKNOWN"
+      ],
+      "containment": [
+        "UNKNOWN"
+      ],
+      "recovery": [
+        "UNKNOWN"
+      ],
+      "logging": [
+        "UNKNOWN"
+      ],
+      "provenance": [
+        "UNKNOWN"
+      ],
+      "evidence": [
+        "security-ev-132c3b6187e2b08a"
+      ]
+    },
+    {
+      "snapshot_id": "snapshot-0003",
+      "version": "v0.2.0",
+      "variant": "mechanically-composed",
+      "stage": "RECOGNITION",
+      "failure_sources": [
+        "PARSING_FAILURE"
+      ],
+      "detection_points": [
+        "CATCH"
+      ],
+      "representations": [
+        "UNBOUND_EXCEPTION"
+      ],
+      "propagation": [
+        "FALLBACK_RETURN"
+      ],
+      "containment": [
+        "OPERATION_LOCAL"
+      ],
+      "recovery": [
+        "FALLBACK_VALUE"
+      ],
+      "logging": [
+        "NOT_EVIDENCED"
+      ],
+      "provenance": [
+        "FAILURE_CONTEXT_NOT_EVIDENCED_IN_HANDLER"
+      ],
+      "evidence": [
+        "security-ev-02b567c67da4c8b5"
+      ]
+    },
+    {
+      "snapshot_id": "snapshot-0003",
+      "version": "v0.2.0",
+      "variant": "mechanically-composed",
+      "stage": "DISCOVERY",
+      "failure_sources": [
+        "UNKNOWN_FAILURE"
+      ],
+      "detection_points": [
+        "UNKNOWN"
+      ],
+      "representations": [
+        "UNKNOWN"
+      ],
+      "propagation": [
+        "UNKNOWN"
+      ],
+      "containment": [
+        "UNKNOWN"
+      ],
+      "recovery": [
+        "UNKNOWN"
+      ],
+      "logging": [
+        "UNKNOWN"
+      ],
+      "provenance": [
+        "UNKNOWN"
+      ],
+      "evidence": [
+        "security-ev-e734bd8e5e0b555c"
+      ]
+    },
+    {
+      "snapshot_id": "snapshot-0003",
+      "version": "v0.2.0",
+      "variant": "mechanically-composed",
+      "stage": "EXPANSION",
+      "failure_sources": [
+        "UNKNOWN_FAILURE"
+      ],
+      "detection_points": [
+        "UNKNOWN"
+      ],
+      "representations": [
+        "UNKNOWN"
+      ],
+      "propagation": [
+        "UNKNOWN"
+      ],
+      "containment": [
+        "UNKNOWN"
+      ],
+      "recovery": [
+        "UNKNOWN"
+      ],
+      "logging": [
+        "UNKNOWN"
+      ],
+      "provenance": [
+        "UNKNOWN"
+      ],
+      "evidence": [
+        "security-ev-a3575f03e941d7f2"
+      ]
+    },
+    {
+      "snapshot_id": "snapshot-0003",
+      "version": "v0.2.0",
+      "variant": "mechanically-composed",
+      "stage": "SCHEDULING",
+      "failure_sources": [
+        "SCHEDULER_FAILURE"
+      ],
+      "detection_points": [
+        "CATCH"
+      ],
+      "representations": [
+        "EXCEPTION_VARIABLE"
+      ],
+      "propagation": [
+        "STATE_OR_DIAGNOSTIC_RECORD"
+      ],
+      "containment": [
+        "CANDIDATE_WIDE"
+      ],
+      "recovery": [
+        "RECORD_AND_RETURN_OR_CONTINUE"
+      ],
+      "logging": [
+        "KNOWLEDGE_BASE_OR_SCHEDULER_STATE",
+        "LOG_WRAPPER"
+      ],
+      "provenance": [
+        "FAILURE_CONTEXT_NOT_EVIDENCED_IN_HANDLER"
+      ],
+      "evidence": [
+        "security-ev-1d37613eb7c14a60"
+      ]
+    },
+    {
+      "snapshot_id": "snapshot-0003",
+      "version": "v0.2.0",
+      "variant": "mechanically-composed",
+      "stage": "PERSISTENCE",
+      "failure_sources": [
+        "PERSISTENCE_FAILURE"
+      ],
+      "detection_points": [
+        "CATCH"
+      ],
+      "representations": [
+        "EXCEPTION_VARIABLE"
+      ],
+      "propagation": [
+        "SUPPRESSED_OR_LOCAL_UNKNOWN"
+      ],
+      "containment": [
+        "OPERATION_LOCAL"
+      ],
+      "recovery": [
+        "NONE_EVIDENCED"
+      ],
+      "logging": [
+        "LOG_WRAPPER"
+      ],
+      "provenance": [
+        "FAILURE_CONTEXT_NOT_EVIDENCED_IN_HANDLER"
+      ],
+      "evidence": [
+        "security-ev-835a71ba17d2d8a9",
+        "security-ev-1d21f8fcd42ea7c6"
+      ]
+    },
+    {
+      "snapshot_id": "snapshot-0003",
+      "version": "v0.2.0",
+      "variant": "mechanically-composed",
+      "stage": "EXPORT",
+      "failure_sources": [
+        "UNKNOWN_FAILURE"
+      ],
+      "detection_points": [
+        "UNKNOWN"
+      ],
+      "representations": [
+        "UNKNOWN"
+      ],
+      "propagation": [
+        "UNKNOWN"
+      ],
+      "containment": [
+        "UNKNOWN"
+      ],
+      "recovery": [
+        "UNKNOWN"
+      ],
+      "logging": [
+        "UNKNOWN"
+      ],
+      "provenance": [
+        "UNKNOWN"
+      ],
+      "evidence": [
+        "security-ev-380c77c8c3f844a8"
+      ]
+    },
+    {
+      "snapshot_id": "snapshot-0003",
+      "version": "v0.2.0",
+      "variant": "mechanically-composed",
+      "stage": "UI",
+      "failure_sources": [
+        "UNKNOWN_FAILURE"
+      ],
+      "detection_points": [
+        "UNKNOWN"
+      ],
+      "representations": [
+        "UNKNOWN"
+      ],
+      "propagation": [
+        "UNKNOWN"
+      ],
+      "containment": [
+        "UNKNOWN"
+      ],
+      "recovery": [
+        "UNKNOWN"
+      ],
+      "logging": [
+        "UNKNOWN"
+      ],
+      "provenance": [
+        "UNKNOWN"
+      ],
+      "evidence": [
+        "security-ev-20e02f4e510abd20"
+      ]
+    },
+    {
+      "snapshot_id": "snapshot-0003",
+      "version": "v0.2.0",
+      "variant": "mechanically-composed",
+      "stage": "CROSS_CUTTING",
+      "failure_sources": [
+        "UNKNOWN_FAILURE"
+      ],
+      "detection_points": [
+        "UNKNOWN"
+      ],
+      "representations": [
+        "UNKNOWN"
+      ],
+      "propagation": [
+        "UNKNOWN"
+      ],
+      "containment": [
+        "UNKNOWN"
+      ],
+      "recovery": [
+        "UNKNOWN"
+      ],
+      "logging": [
+        "UNKNOWN"
+      ],
+      "provenance": [
+        "UNKNOWN"
+      ],
+      "evidence": [
+        "security-ev-e7881aa08a17c6bf"
+      ]
+    },
+    {
+      "snapshot_id": "snapshot-0005",
+      "version": "v0.3.0",
+      "variant": "only-evidenced-complete-occurrence",
+      "stage": "INPUT",
+      "failure_sources": [
+        "UNKNOWN_FAILURE"
+      ],
+      "detection_points": [
+        "UNKNOWN"
+      ],
+      "representations": [
+        "UNKNOWN"
+      ],
+      "propagation": [
+        "UNKNOWN"
+      ],
+      "containment": [
+        "UNKNOWN"
+      ],
+      "recovery": [
+        "UNKNOWN"
+      ],
+      "logging": [
+        "UNKNOWN"
+      ],
+      "provenance": [
+        "UNKNOWN"
+      ],
+      "evidence": [
+        "security-ev-fc8a1225f1a0178c"
+      ]
+    },
+    {
+      "snapshot_id": "snapshot-0005",
+      "version": "v0.3.0",
+      "variant": "only-evidenced-complete-occurrence",
+      "stage": "VALIDATION",
+      "failure_sources": [
+        "VALIDATION_FAILURE"
+      ],
+      "detection_points": [
+        "CATCH"
+      ],
+      "representations": [
+        "UNBOUND_EXCEPTION"
+      ],
+      "propagation": [
+        "FALLBACK_RETURN"
+      ],
+      "containment": [
+        "OPERATION_LOCAL"
+      ],
+      "recovery": [
+        "FALLBACK_VALUE"
+      ],
+      "logging": [
+        "NOT_EVIDENCED"
+      ],
+      "provenance": [
+        "FAILURE_CONTEXT_NOT_EVIDENCED_IN_HANDLER"
+      ],
+      "evidence": [
+        "security-ev-1ba1749f7bb08635",
+        "security-ev-7b42b4c75a35c40b"
+      ]
+    },
+    {
+      "snapshot_id": "snapshot-0005",
+      "version": "v0.3.0",
+      "variant": "only-evidenced-complete-occurrence",
+      "stage": "ACQUISITION",
+      "failure_sources": [
+        "NETWORK_FAILURE",
+        "TIMEOUT"
+      ],
+      "detection_points": [
+        "CATCH",
+        "ERROR_CALLBACK",
+        "PROMISE_REJECT",
+        "TIMEOUT_CALLBACK"
+      ],
+      "representations": [
+        "ERROR_OBJECT",
+        "EXCEPTION_VARIABLE",
+        "PROMISE_REJECTION"
+      ],
+      "propagation": [
+        "PROMISE_REJECTION",
+        "PROPAGATES_AS_REJECTION",
+        "PROPAGATES_TO_CALLER",
+        "STATE_OR_DIAGNOSTIC_RECORD"
+      ],
+      "containment": [
+        "OPERATION_LOCAL",
+        "STOP_BOUNDARY_NOT_PROVED"
+      ],
+      "recovery": [
+        "CALLER_DECIDES",
+        "CALLER_OR_WORKER_MAY_HANDLE",
+        "DELEGATED_TO_CALLER",
+        "RECORD_AND_RETURN_OR_CONTINUE"
+      ],
+      "logging": [
+        "NOT_EVIDENCED",
+        "NOT_EVIDENCED_AT_CALLBACK",
+        "NOT_EVIDENCED_AT_THROW",
+        "OBSERVATION"
+      ],
+      "provenance": [
+        "CANDIDATE_OR_REQUEST_LINKAGE_UNKNOWN_AT_CALLBACK",
+        "FAILURE_CONTEXT_NOT_EVIDENCED_IN_HANDLER",
+        "MESSAGE_PRESERVED_CANDIDATE_PROVIDER_CONTEXT_VARIES"
+      ],
+      "evidence": [
+        "security-ev-1ce4c30d7aee4cbe",
+        "security-ev-8dec6407a9878075",
+        "security-ev-e8d3221e94ae51f6",
+        "security-ev-eb9e7d49538e5225",
+        "security-ev-4d4b8b882716017b"
+      ]
+    },
+    {
+      "snapshot_id": "snapshot-0005",
+      "version": "v0.3.0",
+      "variant": "only-evidenced-complete-occurrence",
+      "stage": "OBSERVATION",
+      "failure_sources": [
+        "UNKNOWN_FAILURE"
+      ],
+      "detection_points": [
+        "UNKNOWN"
+      ],
+      "representations": [
+        "UNKNOWN"
+      ],
+      "propagation": [
+        "UNKNOWN"
+      ],
+      "containment": [
+        "UNKNOWN"
+      ],
+      "recovery": [
+        "UNKNOWN"
+      ],
+      "logging": [
+        "UNKNOWN"
+      ],
+      "provenance": [
+        "UNKNOWN"
+      ],
+      "evidence": [
+        "security-ev-164a1ac847352fe4"
+      ]
+    },
+    {
+      "snapshot_id": "snapshot-0005",
+      "version": "v0.3.0",
+      "variant": "only-evidenced-complete-occurrence",
+      "stage": "RECOGNITION",
+      "failure_sources": [
+        "PARSING_FAILURE"
+      ],
+      "detection_points": [
+        "CATCH"
+      ],
+      "representations": [
+        "UNBOUND_EXCEPTION"
+      ],
+      "propagation": [
+        "FALLBACK_RETURN"
+      ],
+      "containment": [
+        "OPERATION_LOCAL"
+      ],
+      "recovery": [
+        "FALLBACK_VALUE"
+      ],
+      "logging": [
+        "NOT_EVIDENCED"
+      ],
+      "provenance": [
+        "FAILURE_CONTEXT_NOT_EVIDENCED_IN_HANDLER"
+      ],
+      "evidence": [
+        "security-ev-47c3b73e9986039d"
+      ]
+    },
+    {
+      "snapshot_id": "snapshot-0005",
+      "version": "v0.3.0",
+      "variant": "only-evidenced-complete-occurrence",
+      "stage": "DISCOVERY",
+      "failure_sources": [
+        "DISCOVERY_FAILURE"
+      ],
+      "detection_points": [
+        "CATCH"
+      ],
+      "representations": [
+        "EXCEPTION_VARIABLE"
+      ],
+      "propagation": [
+        "SUPPRESSED_OR_LOCAL_UNKNOWN"
+      ],
+      "containment": [
+        "OPERATION_LOCAL"
+      ],
+      "recovery": [
+        "NONE_EVIDENCED"
+      ],
+      "logging": [
+        "LOG_WRAPPER",
+        "UI"
+      ],
+      "provenance": [
+        "FAILURE_CONTEXT_NOT_EVIDENCED_IN_HANDLER"
+      ],
+      "evidence": [
+        "security-ev-f875723dd7182e84"
+      ]
+    },
+    {
+      "snapshot_id": "snapshot-0005",
+      "version": "v0.3.0",
+      "variant": "only-evidenced-complete-occurrence",
+      "stage": "EXPANSION",
+      "failure_sources": [
+        "UNKNOWN_FAILURE"
+      ],
+      "detection_points": [
+        "UNKNOWN"
+      ],
+      "representations": [
+        "UNKNOWN"
+      ],
+      "propagation": [
+        "UNKNOWN"
+      ],
+      "containment": [
+        "UNKNOWN"
+      ],
+      "recovery": [
+        "UNKNOWN"
+      ],
+      "logging": [
+        "UNKNOWN"
+      ],
+      "provenance": [
+        "UNKNOWN"
+      ],
+      "evidence": [
+        "security-ev-cdcb90707daf29f5"
+      ]
+    },
+    {
+      "snapshot_id": "snapshot-0005",
+      "version": "v0.3.0",
+      "variant": "only-evidenced-complete-occurrence",
+      "stage": "SCHEDULING",
+      "failure_sources": [
+        "SCHEDULER_FAILURE"
+      ],
+      "detection_points": [
+        "CATCH"
+      ],
+      "representations": [
+        "EXCEPTION_VARIABLE"
+      ],
+      "propagation": [
+        "STATE_OR_DIAGNOSTIC_RECORD"
+      ],
+      "containment": [
+        "CANDIDATE_WIDE"
+      ],
+      "recovery": [
+        "RETRY_OR_REQUEUE_PATH"
+      ],
+      "logging": [
+        "KNOWLEDGE_BASE_OR_SCHEDULER_STATE",
+        "LOG_WRAPPER"
+      ],
+      "provenance": [
+        "FAILURE_CONTEXT_NOT_EVIDENCED_IN_HANDLER"
+      ],
+      "evidence": [
+        "security-ev-1346929761a5141d"
+      ]
+    },
+    {
+      "snapshot_id": "snapshot-0005",
+      "version": "v0.3.0",
+      "variant": "only-evidenced-complete-occurrence",
+      "stage": "PERSISTENCE",
+      "failure_sources": [
+        "PERSISTENCE_FAILURE"
+      ],
+      "detection_points": [
+        "CATCH"
+      ],
+      "representations": [
+        "EXCEPTION_VARIABLE"
+      ],
+      "propagation": [
+        "SUPPRESSED_OR_LOCAL_UNKNOWN"
+      ],
+      "containment": [
+        "OPERATION_LOCAL"
+      ],
+      "recovery": [
+        "NONE_EVIDENCED"
+      ],
+      "logging": [
+        "LOG_WRAPPER"
+      ],
+      "provenance": [
+        "FAILURE_CONTEXT_NOT_EVIDENCED_IN_HANDLER"
+      ],
+      "evidence": [
+        "security-ev-ee29dd239ff45ec6",
+        "security-ev-70b3e3144ce034e6"
+      ]
+    },
+    {
+      "snapshot_id": "snapshot-0005",
+      "version": "v0.3.0",
+      "variant": "only-evidenced-complete-occurrence",
+      "stage": "EXPORT",
+      "failure_sources": [
+        "UNKNOWN_FAILURE"
+      ],
+      "detection_points": [
+        "UNKNOWN"
+      ],
+      "representations": [
+        "UNKNOWN"
+      ],
+      "propagation": [
+        "UNKNOWN"
+      ],
+      "containment": [
+        "UNKNOWN"
+      ],
+      "recovery": [
+        "UNKNOWN"
+      ],
+      "logging": [
+        "UNKNOWN"
+      ],
+      "provenance": [
+        "UNKNOWN"
+      ],
+      "evidence": [
+        "security-ev-6c52ccba22f502e5"
+      ]
+    },
+    {
+      "snapshot_id": "snapshot-0005",
+      "version": "v0.3.0",
+      "variant": "only-evidenced-complete-occurrence",
+      "stage": "UI",
+      "failure_sources": [
+        "UNKNOWN_FAILURE"
+      ],
+      "detection_points": [
+        "UNKNOWN"
+      ],
+      "representations": [
+        "UNKNOWN"
+      ],
+      "propagation": [
+        "UNKNOWN"
+      ],
+      "containment": [
+        "UNKNOWN"
+      ],
+      "recovery": [
+        "UNKNOWN"
+      ],
+      "logging": [
+        "UNKNOWN"
+      ],
+      "provenance": [
+        "UNKNOWN"
+      ],
+      "evidence": [
+        "security-ev-77d434a6e99e7980"
+      ]
+    },
+    {
+      "snapshot_id": "snapshot-0005",
+      "version": "v0.3.0",
+      "variant": "only-evidenced-complete-occurrence",
+      "stage": "CROSS_CUTTING",
+      "failure_sources": [
+        "UNKNOWN_FAILURE"
+      ],
+      "detection_points": [
+        "UNKNOWN"
+      ],
+      "representations": [
+        "UNKNOWN"
+      ],
+      "propagation": [
+        "UNKNOWN"
+      ],
+      "containment": [
+        "UNKNOWN"
+      ],
+      "recovery": [
+        "UNKNOWN"
+      ],
+      "logging": [
+        "UNKNOWN"
+      ],
+      "provenance": [
+        "UNKNOWN"
+      ],
+      "evidence": [
+        "security-ev-6df525fd3a607a8a"
+      ]
+    },
+    {
+      "snapshot_id": "snapshot-0006",
+      "version": "v0.4.0",
+      "variant": "variant-a",
+      "stage": "INPUT",
+      "failure_sources": [
+        "UNKNOWN_FAILURE"
+      ],
+      "detection_points": [
+        "UNKNOWN"
+      ],
+      "representations": [
+        "UNKNOWN"
+      ],
+      "propagation": [
+        "UNKNOWN"
+      ],
+      "containment": [
+        "UNKNOWN"
+      ],
+      "recovery": [
+        "UNKNOWN"
+      ],
+      "logging": [
+        "UNKNOWN"
+      ],
+      "provenance": [
+        "UNKNOWN"
+      ],
+      "evidence": [
+        "security-ev-5d5b9b8004c277a0"
+      ]
+    },
+    {
+      "snapshot_id": "snapshot-0006",
+      "version": "v0.4.0",
+      "variant": "variant-a",
+      "stage": "VALIDATION",
+      "failure_sources": [
+        "VALIDATION_FAILURE"
+      ],
+      "detection_points": [
+        "CATCH"
+      ],
+      "representations": [
+        "UNBOUND_EXCEPTION"
+      ],
+      "propagation": [
+        "FALLBACK_RETURN"
+      ],
+      "containment": [
+        "OPERATION_LOCAL"
+      ],
+      "recovery": [
+        "FALLBACK_VALUE"
+      ],
+      "logging": [
+        "NOT_EVIDENCED"
+      ],
+      "provenance": [
+        "FAILURE_CONTEXT_NOT_EVIDENCED_IN_HANDLER"
+      ],
+      "evidence": [
+        "security-ev-50d55f3a25cc1fe2",
+        "security-ev-ad2979326b8e91bb"
+      ]
+    },
+    {
+      "snapshot_id": "snapshot-0006",
+      "version": "v0.4.0",
+      "variant": "variant-a",
+      "stage": "ACQUISITION",
+      "failure_sources": [
+        "NETWORK_FAILURE",
+        "TIMEOUT"
+      ],
+      "detection_points": [
+        "CATCH",
+        "ERROR_CALLBACK",
+        "PROMISE_REJECT",
+        "TIMEOUT_CALLBACK"
+      ],
+      "representations": [
+        "ERROR_OBJECT",
+        "EXCEPTION_VARIABLE",
+        "PROMISE_REJECTION",
+        "UNBOUND_EXCEPTION"
+      ],
+      "propagation": [
+        "PROMISE_REJECTION",
+        "PROPAGATES_AS_REJECTION",
+        "PROPAGATES_TO_CALLER",
+        "STATE_OR_DIAGNOSTIC_RECORD",
+        "SUPPRESSED_OR_LOCAL_UNKNOWN"
+      ],
+      "containment": [
+        "OPERATION_LOCAL",
+        "STOP_BOUNDARY_NOT_PROVED"
+      ],
+      "recovery": [
+        "CALLER_DECIDES",
+        "CALLER_OR_WORKER_MAY_HANDLE",
+        "DELEGATED_TO_CALLER",
+        "NONE_EVIDENCED",
+        "RECORD_AND_RETURN_OR_CONTINUE"
+      ],
+      "logging": [
+        "NOT_EVIDENCED",
+        "NOT_EVIDENCED_AT_CALLBACK",
+        "NOT_EVIDENCED_AT_THROW",
+        "OBSERVATION"
+      ],
+      "provenance": [
+        "CANDIDATE_OR_REQUEST_LINKAGE_UNKNOWN_AT_CALLBACK",
+        "FAILURE_CONTEXT_NOT_EVIDENCED_IN_HANDLER",
+        "MESSAGE_PRESERVED_CANDIDATE_PROVIDER_CONTEXT_VARIES"
+      ],
+      "evidence": [
+        "security-ev-7c3aecaa2a3311ee",
+        "security-ev-d9756b313b0bdfeb",
+        "security-ev-4f518ea0e96c746f",
+        "security-ev-c964527405a755b3",
+        "security-ev-d500dd972d3fe3dc",
+        "security-ev-0c08681555390146",
+        "security-ev-2494dffb56b1338c"
+      ]
+    },
+    {
+      "snapshot_id": "snapshot-0006",
+      "version": "v0.4.0",
+      "variant": "variant-a",
+      "stage": "OBSERVATION",
+      "failure_sources": [
+        "UNKNOWN_FAILURE"
+      ],
+      "detection_points": [
+        "UNKNOWN"
+      ],
+      "representations": [
+        "UNKNOWN"
+      ],
+      "propagation": [
+        "UNKNOWN"
+      ],
+      "containment": [
+        "UNKNOWN"
+      ],
+      "recovery": [
+        "UNKNOWN"
+      ],
+      "logging": [
+        "UNKNOWN"
+      ],
+      "provenance": [
+        "UNKNOWN"
+      ],
+      "evidence": [
+        "security-ev-b12d86e54bc57930"
+      ]
+    },
+    {
+      "snapshot_id": "snapshot-0006",
+      "version": "v0.4.0",
+      "variant": "variant-a",
+      "stage": "RECOGNITION",
+      "failure_sources": [
+        "PARSING_FAILURE"
+      ],
+      "detection_points": [
+        "CATCH",
+        "PARSER_RESULT_CHECK"
+      ],
+      "representations": [
+        "UNBOUND_EXCEPTION",
+        "parseError",
+        "parsererror"
+      ],
+      "propagation": [
+        "FALLBACK_RETURN",
+        "LOCAL_FALLBACK_OR_PROVIDER_RESULT"
+      ],
+      "containment": [
+        "OPERATION_LOCAL"
+      ],
+      "recovery": [
+        "FALLBACK_VALUE",
+        "RETURN_NULL_FALSE_OR_ERROR_DISCOVERY"
+      ],
+      "logging": [
+        "NOT_EVIDENCED"
+      ],
+      "provenance": [
+        "FAILURE_CONTEXT_NOT_EVIDENCED_IN_HANDLER",
+        "PROVIDER_OR_OBSERVATION_LINKAGE_VARIES"
+      ],
+      "evidence": [
+        "security-ev-6ddd02322352c69c",
+        "security-ev-72e1f963a4696ba3",
+        "security-ev-a3b3149bdbd52f96",
+        "security-ev-c94cb5d4760ccebe",
+        "security-ev-8fb08357ee4eef73"
+      ]
+    },
+    {
+      "snapshot_id": "snapshot-0006",
+      "version": "v0.4.0",
+      "variant": "variant-a",
+      "stage": "DISCOVERY",
+      "failure_sources": [
+        "DISCOVERY_FAILURE"
+      ],
+      "detection_points": [
+        "CATCH"
+      ],
+      "representations": [
+        "EXCEPTION_VARIABLE"
+      ],
+      "propagation": [
+        "SUPPRESSED_OR_LOCAL_UNKNOWN"
+      ],
+      "containment": [
+        "OPERATION_LOCAL"
+      ],
+      "recovery": [
+        "NONE_EVIDENCED"
+      ],
+      "logging": [
+        "LOG_WRAPPER",
+        "UI"
+      ],
+      "provenance": [
+        "FAILURE_CONTEXT_NOT_EVIDENCED_IN_HANDLER"
+      ],
+      "evidence": [
+        "security-ev-d43a32c192003104"
+      ]
+    },
+    {
+      "snapshot_id": "snapshot-0006",
+      "version": "v0.4.0",
+      "variant": "variant-a",
+      "stage": "EXPANSION",
+      "failure_sources": [
+        "UNKNOWN_FAILURE"
+      ],
+      "detection_points": [
+        "UNKNOWN"
+      ],
+      "representations": [
+        "UNKNOWN"
+      ],
+      "propagation": [
+        "UNKNOWN"
+      ],
+      "containment": [
+        "UNKNOWN"
+      ],
+      "recovery": [
+        "UNKNOWN"
+      ],
+      "logging": [
+        "UNKNOWN"
+      ],
+      "provenance": [
+        "UNKNOWN"
+      ],
+      "evidence": [
+        "security-ev-99f8c4083b39db7e"
+      ]
+    },
+    {
+      "snapshot_id": "snapshot-0006",
+      "version": "v0.4.0",
+      "variant": "variant-a",
+      "stage": "SCHEDULING",
+      "failure_sources": [
+        "SCHEDULER_FAILURE"
+      ],
+      "detection_points": [
+        "CATCH"
+      ],
+      "representations": [
+        "EXCEPTION_VARIABLE"
+      ],
+      "propagation": [
+        "STATE_OR_DIAGNOSTIC_RECORD"
+      ],
+      "containment": [
+        "CANDIDATE_WIDE"
+      ],
+      "recovery": [
+        "RECORD_AND_RETURN_OR_CONTINUE"
+      ],
+      "logging": [
+        "KNOWLEDGE_BASE_OR_SCHEDULER_STATE",
+        "LOG_WRAPPER"
+      ],
+      "provenance": [
+        "FAILURE_CONTEXT_NOT_EVIDENCED_IN_HANDLER"
+      ],
+      "evidence": [
+        "security-ev-cad68c2f8dede196"
+      ]
+    },
+    {
+      "snapshot_id": "snapshot-0006",
+      "version": "v0.4.0",
+      "variant": "variant-a",
+      "stage": "PERSISTENCE",
+      "failure_sources": [
+        "PERSISTENCE_FAILURE"
+      ],
+      "detection_points": [
+        "CATCH"
+      ],
+      "representations": [
+        "EXCEPTION_VARIABLE"
+      ],
+      "propagation": [
+        "SUPPRESSED_OR_LOCAL_UNKNOWN"
+      ],
+      "containment": [
+        "OPERATION_LOCAL"
+      ],
+      "recovery": [
+        "NONE_EVIDENCED"
+      ],
+      "logging": [
+        "LOG_WRAPPER"
+      ],
+      "provenance": [
+        "FAILURE_CONTEXT_NOT_EVIDENCED_IN_HANDLER"
+      ],
+      "evidence": [
+        "security-ev-fba0d372e9b84529",
+        "security-ev-9423be634285ec26"
+      ]
+    },
+    {
+      "snapshot_id": "snapshot-0006",
+      "version": "v0.4.0",
+      "variant": "variant-a",
+      "stage": "EXPORT",
+      "failure_sources": [
+        "UNKNOWN_FAILURE"
+      ],
+      "detection_points": [
+        "UNKNOWN"
+      ],
+      "representations": [
+        "UNKNOWN"
+      ],
+      "propagation": [
+        "UNKNOWN"
+      ],
+      "containment": [
+        "UNKNOWN"
+      ],
+      "recovery": [
+        "UNKNOWN"
+      ],
+      "logging": [
+        "UNKNOWN"
+      ],
+      "provenance": [
+        "UNKNOWN"
+      ],
+      "evidence": [
+        "security-ev-93d8be0a29578960"
+      ]
+    },
+    {
+      "snapshot_id": "snapshot-0006",
+      "version": "v0.4.0",
+      "variant": "variant-a",
+      "stage": "UI",
+      "failure_sources": [
+        "UNKNOWN_FAILURE"
+      ],
+      "detection_points": [
+        "UNKNOWN"
+      ],
+      "representations": [
+        "UNKNOWN"
+      ],
+      "propagation": [
+        "UNKNOWN"
+      ],
+      "containment": [
+        "UNKNOWN"
+      ],
+      "recovery": [
+        "UNKNOWN"
+      ],
+      "logging": [
+        "UNKNOWN"
+      ],
+      "provenance": [
+        "UNKNOWN"
+      ],
+      "evidence": [
+        "security-ev-4a6d3c0c8d69f286"
+      ]
+    },
+    {
+      "snapshot_id": "snapshot-0006",
+      "version": "v0.4.0",
+      "variant": "variant-a",
+      "stage": "CROSS_CUTTING",
+      "failure_sources": [
+        "UNKNOWN_FAILURE"
+      ],
+      "detection_points": [
+        "UNKNOWN"
+      ],
+      "representations": [
+        "UNKNOWN"
+      ],
+      "propagation": [
+        "UNKNOWN"
+      ],
+      "containment": [
+        "UNKNOWN"
+      ],
+      "recovery": [
+        "UNKNOWN"
+      ],
+      "logging": [
+        "UNKNOWN"
+      ],
+      "provenance": [
+        "UNKNOWN"
+      ],
+      "evidence": [
+        "security-ev-8924ff15da19f006"
+      ]
+    },
+    {
+      "snapshot_id": "snapshot-0008",
+      "version": "v0.4.0",
+      "variant": "variant-b",
+      "stage": "INPUT",
+      "failure_sources": [
+        "UNKNOWN_FAILURE"
+      ],
+      "detection_points": [
+        "UNKNOWN"
+      ],
+      "representations": [
+        "UNKNOWN"
+      ],
+      "propagation": [
+        "UNKNOWN"
+      ],
+      "containment": [
+        "UNKNOWN"
+      ],
+      "recovery": [
+        "UNKNOWN"
+      ],
+      "logging": [
+        "UNKNOWN"
+      ],
+      "provenance": [
+        "UNKNOWN"
+      ],
+      "evidence": [
+        "security-ev-6f3a6d308ba4d36c"
+      ]
+    },
+    {
+      "snapshot_id": "snapshot-0008",
+      "version": "v0.4.0",
+      "variant": "variant-b",
+      "stage": "VALIDATION",
+      "failure_sources": [
+        "VALIDATION_FAILURE"
+      ],
+      "detection_points": [
+        "CATCH"
+      ],
+      "representations": [
+        "UNBOUND_EXCEPTION"
+      ],
+      "propagation": [
+        "FALLBACK_RETURN"
+      ],
+      "containment": [
+        "OPERATION_LOCAL"
+      ],
+      "recovery": [
+        "FALLBACK_VALUE"
+      ],
+      "logging": [
+        "NOT_EVIDENCED"
+      ],
+      "provenance": [
+        "FAILURE_CONTEXT_NOT_EVIDENCED_IN_HANDLER"
+      ],
+      "evidence": [
+        "security-ev-b759cadcdbf70f45",
+        "security-ev-7d40670f2145698b"
+      ]
+    },
+    {
+      "snapshot_id": "snapshot-0008",
+      "version": "v0.4.0",
+      "variant": "variant-b",
+      "stage": "ACQUISITION",
+      "failure_sources": [
+        "NETWORK_FAILURE",
+        "TIMEOUT"
+      ],
+      "detection_points": [
+        "CATCH",
+        "ERROR_CALLBACK",
+        "PROMISE_REJECT",
+        "TIMEOUT_CALLBACK"
+      ],
+      "representations": [
+        "ERROR_OBJECT",
+        "EXCEPTION_VARIABLE",
+        "PROMISE_REJECTION"
+      ],
+      "propagation": [
+        "PROMISE_REJECTION",
+        "PROPAGATES_AS_REJECTION",
+        "PROPAGATES_TO_CALLER",
+        "STATE_OR_DIAGNOSTIC_RECORD"
+      ],
+      "containment": [
+        "OPERATION_LOCAL",
+        "STOP_BOUNDARY_NOT_PROVED"
+      ],
+      "recovery": [
+        "CALLER_DECIDES",
+        "CALLER_OR_WORKER_MAY_HANDLE",
+        "DELEGATED_TO_CALLER",
+        "RECORD_AND_RETURN_OR_CONTINUE"
+      ],
+      "logging": [
+        "NOT_EVIDENCED",
+        "NOT_EVIDENCED_AT_CALLBACK",
+        "NOT_EVIDENCED_AT_THROW",
+        "OBSERVATION"
+      ],
+      "provenance": [
+        "CANDIDATE_OR_REQUEST_LINKAGE_UNKNOWN_AT_CALLBACK",
+        "FAILURE_CONTEXT_NOT_EVIDENCED_IN_HANDLER",
+        "MESSAGE_PRESERVED_CANDIDATE_PROVIDER_CONTEXT_VARIES"
+      ],
+      "evidence": [
+        "security-ev-635bd37dc0747a2f",
+        "security-ev-ab0d3829214a8ab1",
+        "security-ev-b53b18113680d363",
+        "security-ev-58d3e547d9b0f37c",
+        "security-ev-27ad5dddc0328ae7"
+      ]
+    },
+    {
+      "snapshot_id": "snapshot-0008",
+      "version": "v0.4.0",
+      "variant": "variant-b",
+      "stage": "OBSERVATION",
+      "failure_sources": [
+        "UNKNOWN_FAILURE"
+      ],
+      "detection_points": [
+        "UNKNOWN"
+      ],
+      "representations": [
+        "UNKNOWN"
+      ],
+      "propagation": [
+        "UNKNOWN"
+      ],
+      "containment": [
+        "UNKNOWN"
+      ],
+      "recovery": [
+        "UNKNOWN"
+      ],
+      "logging": [
+        "UNKNOWN"
+      ],
+      "provenance": [
+        "UNKNOWN"
+      ],
+      "evidence": [
+        "security-ev-000000e13ef3d8fc"
+      ]
+    },
+    {
+      "snapshot_id": "snapshot-0008",
+      "version": "v0.4.0",
+      "variant": "variant-b",
+      "stage": "RECOGNITION",
+      "failure_sources": [
+        "PARSING_FAILURE",
+        "PROVIDER_FAILURE"
+      ],
+      "detection_points": [
+        "CATCH",
+        "PARSER_RESULT_CHECK"
+      ],
+      "representations": [
+        "EXCEPTION_VARIABLE",
+        "UNBOUND_EXCEPTION",
+        "parserError",
+        "parsererror"
+      ],
+      "propagation": [
+        "FALLBACK_RETURN",
+        "LOCAL_FALLBACK_OR_PROVIDER_RESULT",
+        "SUPPRESSED_OR_LOCAL_UNKNOWN"
+      ],
+      "containment": [
+        "OPERATION_LOCAL",
+        "PROVIDER_WIDE"
+      ],
+      "recovery": [
+        "CONTINUE_PROVIDER_LOOP_OR_METHOD_FALLBACK",
+        "FALLBACK_VALUE",
+        "NONE_EVIDENCED",
+        "RETURN_NULL_FALSE_OR_ERROR_DISCOVERY"
+      ],
+      "logging": [
+        "LOG_WRAPPER",
+        "NOT_EVIDENCED"
+      ],
+      "provenance": [
+        "CONTEXT_PARTIALLY_RETAINED",
+        "FAILURE_CONTEXT_NOT_EVIDENCED_IN_HANDLER",
+        "PROVIDER_OR_OBSERVATION_LINKAGE_VARIES"
+      ],
+      "evidence": [
+        "security-ev-4444fafb643822b0",
+        "security-ev-ac339e5406a0eb94",
+        "security-ev-c284b644a39df9a2",
+        "security-ev-d39b7991d4a43cf7",
+        "security-ev-22b2aacf73799079",
+        "security-ev-aaa9560381e948a1"
+      ]
+    },
+    {
+      "snapshot_id": "snapshot-0008",
+      "version": "v0.4.0",
+      "variant": "variant-b",
+      "stage": "DISCOVERY",
+      "failure_sources": [
+        "UNKNOWN_FAILURE"
+      ],
+      "detection_points": [
+        "UNKNOWN"
+      ],
+      "representations": [
+        "UNKNOWN"
+      ],
+      "propagation": [
+        "UNKNOWN"
+      ],
+      "containment": [
+        "UNKNOWN"
+      ],
+      "recovery": [
+        "UNKNOWN"
+      ],
+      "logging": [
+        "UNKNOWN"
+      ],
+      "provenance": [
+        "UNKNOWN"
+      ],
+      "evidence": [
+        "security-ev-e610a058592fdeb1"
+      ]
+    },
+    {
+      "snapshot_id": "snapshot-0008",
+      "version": "v0.4.0",
+      "variant": "variant-b",
+      "stage": "EXPANSION",
+      "failure_sources": [
+        "UNKNOWN_FAILURE"
+      ],
+      "detection_points": [
+        "UNKNOWN"
+      ],
+      "representations": [
+        "UNKNOWN"
+      ],
+      "propagation": [
+        "UNKNOWN"
+      ],
+      "containment": [
+        "UNKNOWN"
+      ],
+      "recovery": [
+        "UNKNOWN"
+      ],
+      "logging": [
+        "UNKNOWN"
+      ],
+      "provenance": [
+        "UNKNOWN"
+      ],
+      "evidence": [
+        "security-ev-e3ef0a5a22cd3084"
+      ]
+    },
+    {
+      "snapshot_id": "snapshot-0008",
+      "version": "v0.4.0",
+      "variant": "variant-b",
+      "stage": "SCHEDULING",
+      "failure_sources": [
+        "SCHEDULER_FAILURE"
+      ],
+      "detection_points": [
+        "CATCH"
+      ],
+      "representations": [
+        "EXCEPTION_VARIABLE"
+      ],
+      "propagation": [
+        "STATE_OR_DIAGNOSTIC_RECORD",
+        "SUPPRESSED_OR_LOCAL_UNKNOWN"
+      ],
+      "containment": [
+        "CANDIDATE_WIDE",
+        "OPERATION_LOCAL"
+      ],
+      "recovery": [
+        "NONE_EVIDENCED",
+        "RETRY_OR_REQUEUE_PATH"
+      ],
+      "logging": [
+        "KNOWLEDGE_BASE_OR_SCHEDULER_STATE",
+        "LOG_WRAPPER"
+      ],
+      "provenance": [
+        "FAILURE_CONTEXT_NOT_EVIDENCED_IN_HANDLER"
+      ],
+      "evidence": [
+        "security-ev-9bcfaf7e04e86dd5",
+        "security-ev-81ddf74585b8145a"
+      ]
+    },
+    {
+      "snapshot_id": "snapshot-0008",
+      "version": "v0.4.0",
+      "variant": "variant-b",
+      "stage": "PERSISTENCE",
+      "failure_sources": [
+        "PERSISTENCE_FAILURE"
+      ],
+      "detection_points": [
+        "CATCH"
+      ],
+      "representations": [
+        "EXCEPTION_VARIABLE"
+      ],
+      "propagation": [
+        "SUPPRESSED_OR_LOCAL_UNKNOWN"
+      ],
+      "containment": [
+        "OPERATION_LOCAL"
+      ],
+      "recovery": [
+        "NONE_EVIDENCED"
+      ],
+      "logging": [
+        "LOG_WRAPPER"
+      ],
+      "provenance": [
+        "FAILURE_CONTEXT_NOT_EVIDENCED_IN_HANDLER"
+      ],
+      "evidence": [
+        "security-ev-61961c48a02bed55",
+        "security-ev-bd419689d6722640"
+      ]
+    },
+    {
+      "snapshot_id": "snapshot-0008",
+      "version": "v0.4.0",
+      "variant": "variant-b",
+      "stage": "EXPORT",
+      "failure_sources": [
+        "UNKNOWN_FAILURE"
+      ],
+      "detection_points": [
+        "UNKNOWN"
+      ],
+      "representations": [
+        "UNKNOWN"
+      ],
+      "propagation": [
+        "UNKNOWN"
+      ],
+      "containment": [
+        "UNKNOWN"
+      ],
+      "recovery": [
+        "UNKNOWN"
+      ],
+      "logging": [
+        "UNKNOWN"
+      ],
+      "provenance": [
+        "UNKNOWN"
+      ],
+      "evidence": [
+        "security-ev-176cd00cfbd8908f"
+      ]
+    },
+    {
+      "snapshot_id": "snapshot-0008",
+      "version": "v0.4.0",
+      "variant": "variant-b",
+      "stage": "UI",
+      "failure_sources": [
+        "UI_FAILURE"
+      ],
+      "detection_points": [
+        "CATCH"
+      ],
+      "representations": [
+        "EXCEPTION_VARIABLE"
+      ],
+      "propagation": [
+        "SUPPRESSED_OR_LOCAL_UNKNOWN"
+      ],
+      "containment": [
+        "OPERATION_LOCAL"
+      ],
+      "recovery": [
+        "NONE_EVIDENCED"
+      ],
+      "logging": [
+        "LOG_WRAPPER",
+        "UI"
+      ],
+      "provenance": [
+        "FAILURE_CONTEXT_NOT_EVIDENCED_IN_HANDLER"
+      ],
+      "evidence": [
+        "security-ev-bbb568635e0b932f",
+        "security-ev-9285156f407a342b"
+      ]
+    },
+    {
+      "snapshot_id": "snapshot-0008",
+      "version": "v0.4.0",
+      "variant": "variant-b",
+      "stage": "CROSS_CUTTING",
+      "failure_sources": [
+        "NETWORK_FAILURE"
+      ],
+      "detection_points": [
+        "CATCH"
+      ],
+      "representations": [
+        "EXCEPTION_VARIABLE",
+        "UNBOUND_EXCEPTION"
+      ],
+      "propagation": [
+        "SUPPRESSED_OR_LOCAL_UNKNOWN"
+      ],
+      "containment": [
+        "OPERATION_LOCAL"
+      ],
+      "recovery": [
+        "NONE_EVIDENCED"
+      ],
+      "logging": [
+        "LOG_WRAPPER",
+        "NOT_EVIDENCED"
+      ],
+      "provenance": [
+        "FAILURE_CONTEXT_NOT_EVIDENCED_IN_HANDLER"
+      ],
+      "evidence": [
+        "security-ev-a0674bbdc33ebc3a",
+        "security-ev-ee982601a1b9a02f",
+        "security-ev-b0320bf41d9659cf"
+      ]
+    },
+    {
+      "snapshot_id": "snapshot-0007",
+      "version": "v0.5.0",
+      "variant": "variant-a",
+      "stage": "INPUT",
+      "failure_sources": [
+        "UNKNOWN_FAILURE"
+      ],
+      "detection_points": [
+        "UNKNOWN"
+      ],
+      "representations": [
+        "UNKNOWN"
+      ],
+      "propagation": [
+        "UNKNOWN"
+      ],
+      "containment": [
+        "UNKNOWN"
+      ],
+      "recovery": [
+        "UNKNOWN"
+      ],
+      "logging": [
+        "UNKNOWN"
+      ],
+      "provenance": [
+        "UNKNOWN"
+      ],
+      "evidence": [
+        "security-ev-8976b05d9f55a361"
+      ]
+    },
+    {
+      "snapshot_id": "snapshot-0007",
+      "version": "v0.5.0",
+      "variant": "variant-a",
+      "stage": "VALIDATION",
+      "failure_sources": [
+        "VALIDATION_FAILURE"
+      ],
+      "detection_points": [
+        "CATCH"
+      ],
+      "representations": [
+        "UNBOUND_EXCEPTION"
+      ],
+      "propagation": [
+        "FALLBACK_RETURN"
+      ],
+      "containment": [
+        "OPERATION_LOCAL"
+      ],
+      "recovery": [
+        "FALLBACK_VALUE"
+      ],
+      "logging": [
+        "NOT_EVIDENCED"
+      ],
+      "provenance": [
+        "FAILURE_CONTEXT_NOT_EVIDENCED_IN_HANDLER"
+      ],
+      "evidence": [
+        "security-ev-04b6f9cc28fb1db5",
+        "security-ev-b3525ca60c92ca0a"
+      ]
+    },
+    {
+      "snapshot_id": "snapshot-0007",
+      "version": "v0.5.0",
+      "variant": "variant-a",
+      "stage": "ACQUISITION",
+      "failure_sources": [
+        "HTTP_FAILURE",
+        "NETWORK_FAILURE",
+        "TIMEOUT"
+      ],
+      "detection_points": [
+        "CATCH",
+        "ERROR_CALLBACK",
+        "PROMISE_REJECT",
+        "STATUS_BRANCH",
+        "TIMEOUT_CALLBACK"
+      ],
+      "representations": [
+        "ERROR_OBJECT",
+        "EXCEPTION_VARIABLE",
+        "FAILED_STATUS_OR_RESULT",
+        "PROMISE_REJECTION"
+      ],
+      "propagation": [
+        "LOCAL_BRANCH_OR_CALLER_RESULT",
+        "PROMISE_REJECTION",
+        "PROPAGATES_AS_REJECTION",
+        "PROPAGATES_TO_CALLER",
+        "STATE_OR_DIAGNOSTIC_RECORD",
+        "SUPPRESSED_OR_LOCAL_UNKNOWN"
+      ],
+      "containment": [
+        "OPERATION_LOCAL",
+        "STOP_BOUNDARY_NOT_PROVED"
+      ],
+      "recovery": [
+        "CALLER_DECIDES",
+        "CALLER_OR_WORKER_MAY_HANDLE",
+        "DELEGATED_TO_CALLER",
+        "NONE_EVIDENCED",
+        "NONE_OR_CALLER_DECIDES",
+        "RECORD_AND_RETURN_OR_CONTINUE"
+      ],
+      "logging": [
+        "LOG_WRAPPER",
+        "NOT_EVIDENCED",
+        "NOT_EVIDENCED_AT_CALLBACK",
+        "NOT_EVIDENCED_AT_THROW",
+        "OBSERVATION"
+      ],
+      "provenance": [
+        "CANDIDATE_OR_REQUEST_LINKAGE_UNKNOWN_AT_CALLBACK",
+        "FAILURE_CONTEXT_NOT_EVIDENCED_IN_HANDLER",
+        "MESSAGE_PRESERVED_CANDIDATE_PROVIDER_CONTEXT_VARIES",
+        "RESPONSE_STATUS_MAY_BE_RETAINED"
+      ],
+      "evidence": [
+        "security-ev-32c487a7ad04682b",
+        "security-ev-01efc913b4108c58",
+        "security-ev-dfb3749ba68feb59",
+        "security-ev-b96af40fd9bb8f62",
+        "security-ev-e17f7efaea356e7b",
+        "security-ev-ba5e37f93c881f9a",
+        "security-ev-5aa800cf06305328"
+      ]
+    },
+    {
+      "snapshot_id": "snapshot-0007",
+      "version": "v0.5.0",
+      "variant": "variant-a",
+      "stage": "OBSERVATION",
+      "failure_sources": [
+        "UNKNOWN_FAILURE"
+      ],
+      "detection_points": [
+        "UNKNOWN"
+      ],
+      "representations": [
+        "UNKNOWN"
+      ],
+      "propagation": [
+        "UNKNOWN"
+      ],
+      "containment": [
+        "UNKNOWN"
+      ],
+      "recovery": [
+        "UNKNOWN"
+      ],
+      "logging": [
+        "UNKNOWN"
+      ],
+      "provenance": [
+        "UNKNOWN"
+      ],
+      "evidence": [
+        "security-ev-45e63bed9bcce9aa"
+      ]
+    },
+    {
+      "snapshot_id": "snapshot-0007",
+      "version": "v0.5.0",
+      "variant": "variant-a",
+      "stage": "RECOGNITION",
+      "failure_sources": [
+        "PARSING_FAILURE",
+        "PROVIDER_FAILURE"
+      ],
+      "detection_points": [
+        "CATCH",
+        "PARSER_RESULT_CHECK"
+      ],
+      "representations": [
+        "EXCEPTION_VARIABLE",
+        "UNBOUND_EXCEPTION",
+        "parsererror"
+      ],
+      "propagation": [
+        "FALLBACK_RETURN",
+        "LOCAL_FALLBACK_OR_PROVIDER_RESULT",
+        "SUPPRESSED_OR_LOCAL_UNKNOWN"
+      ],
+      "containment": [
+        "OPERATION_LOCAL",
+        "PROVIDER_WIDE"
+      ],
+      "recovery": [
+        "CONTINUE_PROVIDER_LOOP_OR_METHOD_FALLBACK",
+        "FALLBACK_VALUE",
+        "RETURN_NULL_FALSE_OR_ERROR_DISCOVERY"
+      ],
+      "logging": [
+        "LOG_WRAPPER",
+        "NOT_EVIDENCED"
+      ],
+      "provenance": [
+        "CONTEXT_PARTIALLY_RETAINED",
+        "FAILURE_CONTEXT_NOT_EVIDENCED_IN_HANDLER",
+        "PROVIDER_OR_OBSERVATION_LINKAGE_VARIES"
+      ],
+      "evidence": [
+        "security-ev-e0879af9eee908b5",
+        "security-ev-fb78d1b84e770f3b",
+        "security-ev-ef760bc379c718c2",
+        "security-ev-898e0989c9374523",
+        "security-ev-3fc932de00813d14",
+        "security-ev-009da1367f7fdaab"
+      ]
+    },
+    {
+      "snapshot_id": "snapshot-0007",
+      "version": "v0.5.0",
+      "variant": "variant-a",
+      "stage": "DISCOVERY",
+      "failure_sources": [
+        "DISCOVERY_FAILURE"
+      ],
+      "detection_points": [
+        "CATCH",
+        "THROW"
+      ],
+      "representations": [
+        "ERROR_OBJECT",
+        "UNBOUND_EXCEPTION"
+      ],
+      "propagation": [
+        "FALLBACK_RETURN",
+        "PROPAGATES_TO_CALLER",
+        "SUPPRESSED_OR_LOCAL_UNKNOWN"
+      ],
+      "containment": [
+        "OPERATION_LOCAL",
+        "STOP_BOUNDARY_NOT_PROVED"
+      ],
+      "recovery": [
+        "CALLER_DECIDES",
+        "FALLBACK_VALUE",
+        "NONE_EVIDENCED"
+      ],
+      "logging": [
+        "NOT_EVIDENCED",
+        "NOT_EVIDENCED_AT_THROW"
+      ],
+      "provenance": [
+        "FAILURE_CONTEXT_NOT_EVIDENCED_IN_HANDLER",
+        "MESSAGE_PRESERVED_CANDIDATE_PROVIDER_CONTEXT_VARIES"
+      ],
+      "evidence": [
+        "security-ev-9bdc5f2a324fb459",
+        "security-ev-b8afc4cefd17803c",
+        "security-ev-b17b56e741440f77",
+        "security-ev-0a006f91dcbbacbf",
+        "security-ev-a7d42d74faefcd3e"
+      ]
+    },
+    {
+      "snapshot_id": "snapshot-0007",
+      "version": "v0.5.0",
+      "variant": "variant-a",
+      "stage": "EXPANSION",
+      "failure_sources": [
+        "UNKNOWN_FAILURE"
+      ],
+      "detection_points": [
+        "UNKNOWN"
+      ],
+      "representations": [
+        "UNKNOWN"
+      ],
+      "propagation": [
+        "UNKNOWN"
+      ],
+      "containment": [
+        "UNKNOWN"
+      ],
+      "recovery": [
+        "UNKNOWN"
+      ],
+      "logging": [
+        "UNKNOWN"
+      ],
+      "provenance": [
+        "UNKNOWN"
+      ],
+      "evidence": [
+        "security-ev-38e0407649be372f"
+      ]
+    },
+    {
+      "snapshot_id": "snapshot-0007",
+      "version": "v0.5.0",
+      "variant": "variant-a",
+      "stage": "SCHEDULING",
+      "failure_sources": [
+        "SCHEDULER_FAILURE"
+      ],
+      "detection_points": [
+        "CATCH"
+      ],
+      "representations": [
+        "EXCEPTION_VARIABLE"
+      ],
+      "propagation": [
+        "SUPPRESSED_OR_LOCAL_UNKNOWN"
+      ],
+      "containment": [
+        "OPERATION_LOCAL"
+      ],
+      "recovery": [
+        "NONE_EVIDENCED"
+      ],
+      "logging": [
+        "LOG_WRAPPER"
+      ],
+      "provenance": [
+        "FAILURE_CONTEXT_NOT_EVIDENCED_IN_HANDLER"
+      ],
+      "evidence": [
+        "security-ev-d2c836579249cf42",
+        "security-ev-32ec9479f8f1f5ee"
+      ]
+    },
+    {
+      "snapshot_id": "snapshot-0007",
+      "version": "v0.5.0",
+      "variant": "variant-a",
+      "stage": "PERSISTENCE",
+      "failure_sources": [
+        "PERSISTENCE_FAILURE"
+      ],
+      "detection_points": [
+        "CATCH"
+      ],
+      "representations": [
+        "EXCEPTION_VARIABLE"
+      ],
+      "propagation": [
+        "SUPPRESSED_OR_LOCAL_UNKNOWN"
+      ],
+      "containment": [
+        "OPERATION_LOCAL"
+      ],
+      "recovery": [
+        "NONE_EVIDENCED"
+      ],
+      "logging": [
+        "LOG_WRAPPER"
+      ],
+      "provenance": [
+        "FAILURE_CONTEXT_NOT_EVIDENCED_IN_HANDLER"
+      ],
+      "evidence": [
+        "security-ev-fc8cbf327f935700",
+        "security-ev-403e6a06e0a5dba7"
+      ]
+    },
+    {
+      "snapshot_id": "snapshot-0007",
+      "version": "v0.5.0",
+      "variant": "variant-a",
+      "stage": "EXPORT",
+      "failure_sources": [
+        "UNKNOWN_FAILURE"
+      ],
+      "detection_points": [
+        "UNKNOWN"
+      ],
+      "representations": [
+        "UNKNOWN"
+      ],
+      "propagation": [
+        "UNKNOWN"
+      ],
+      "containment": [
+        "UNKNOWN"
+      ],
+      "recovery": [
+        "UNKNOWN"
+      ],
+      "logging": [
+        "UNKNOWN"
+      ],
+      "provenance": [
+        "UNKNOWN"
+      ],
+      "evidence": [
+        "security-ev-03439f167f52dab5"
+      ]
+    },
+    {
+      "snapshot_id": "snapshot-0007",
+      "version": "v0.5.0",
+      "variant": "variant-a",
+      "stage": "UI",
+      "failure_sources": [
+        "UI_FAILURE"
+      ],
+      "detection_points": [
+        "CATCH"
+      ],
+      "representations": [
+        "EXCEPTION_VARIABLE"
+      ],
+      "propagation": [
+        "SUPPRESSED_OR_LOCAL_UNKNOWN"
+      ],
+      "containment": [
+        "OPERATION_LOCAL"
+      ],
+      "recovery": [
+        "NONE_EVIDENCED"
+      ],
+      "logging": [
+        "LOG_WRAPPER",
+        "UI"
+      ],
+      "provenance": [
+        "FAILURE_CONTEXT_NOT_EVIDENCED_IN_HANDLER"
+      ],
+      "evidence": [
+        "security-ev-9055b34f5f52dd69",
+        "security-ev-eef78ec4f3d37cf9"
+      ]
+    },
+    {
+      "snapshot_id": "snapshot-0007",
+      "version": "v0.5.0",
+      "variant": "variant-a",
+      "stage": "CROSS_CUTTING",
+      "failure_sources": [
+        "NETWORK_FAILURE"
+      ],
+      "detection_points": [
+        "CATCH"
+      ],
+      "representations": [
+        "EXCEPTION_VARIABLE",
+        "UNBOUND_EXCEPTION"
+      ],
+      "propagation": [
+        "SUPPRESSED_OR_LOCAL_UNKNOWN"
+      ],
+      "containment": [
+        "OPERATION_LOCAL"
+      ],
+      "recovery": [
+        "NONE_EVIDENCED"
+      ],
+      "logging": [
+        "LOG_WRAPPER",
+        "NOT_EVIDENCED"
+      ],
+      "provenance": [
+        "FAILURE_CONTEXT_NOT_EVIDENCED_IN_HANDLER"
+      ],
+      "evidence": [
+        "security-ev-56fdecb1b838f3dc",
+        "security-ev-2f6ac9e1df570cda"
+      ]
+    },
+    {
+      "snapshot_id": "snapshot-0009",
+      "version": "v0.5.0",
+      "variant": "variant-b",
+      "stage": "INPUT",
+      "failure_sources": [
+        "UNKNOWN_FAILURE"
+      ],
+      "detection_points": [
+        "UNKNOWN"
+      ],
+      "representations": [
+        "UNKNOWN"
+      ],
+      "propagation": [
+        "UNKNOWN"
+      ],
+      "containment": [
+        "UNKNOWN"
+      ],
+      "recovery": [
+        "UNKNOWN"
+      ],
+      "logging": [
+        "UNKNOWN"
+      ],
+      "provenance": [
+        "UNKNOWN"
+      ],
+      "evidence": [
+        "security-ev-bb6f78040aae07b8"
+      ]
+    },
+    {
+      "snapshot_id": "snapshot-0009",
+      "version": "v0.5.0",
+      "variant": "variant-b",
+      "stage": "VALIDATION",
+      "failure_sources": [
+        "VALIDATION_FAILURE"
+      ],
+      "detection_points": [
+        "CATCH"
+      ],
+      "representations": [
+        "UNBOUND_EXCEPTION"
+      ],
+      "propagation": [
+        "FALLBACK_RETURN"
+      ],
+      "containment": [
+        "OPERATION_LOCAL"
+      ],
+      "recovery": [
+        "FALLBACK_VALUE"
+      ],
+      "logging": [
+        "NOT_EVIDENCED"
+      ],
+      "provenance": [
+        "FAILURE_CONTEXT_NOT_EVIDENCED_IN_HANDLER"
+      ],
+      "evidence": [
+        "security-ev-a84dba91536be4c1",
+        "security-ev-c21fa3d6808e31d7"
+      ]
+    },
+    {
+      "snapshot_id": "snapshot-0009",
+      "version": "v0.5.0",
+      "variant": "variant-b",
+      "stage": "ACQUISITION",
+      "failure_sources": [
+        "NETWORK_FAILURE",
+        "TIMEOUT"
+      ],
+      "detection_points": [
+        "CATCH",
+        "ERROR_CALLBACK",
+        "TIMEOUT_CALLBACK"
+      ],
+      "representations": [
+        "EXCEPTION_VARIABLE",
+        "FAILED_OBSERVATION_OR_STATE"
+      ],
+      "propagation": [
+        "RECORDED_OR_RETURNED_ON_LOCAL_PATH",
+        "STATE_OR_DIAGNOSTIC_RECORD"
+      ],
+      "containment": [
+        "OPERATION_LOCAL",
+        "STOP_BOUNDARY_NOT_PROVED"
+      ],
+      "recovery": [
+        "LOCAL_FAILURE_PATH",
+        "RECORD_AND_RETURN_OR_CONTINUE"
+      ],
+      "logging": [
+        "NOT_EVIDENCED_AT_CALLBACK",
+        "OBSERVATION"
+      ],
+      "provenance": [
+        "CANDIDATE_OR_REQUEST_LINKAGE_UNKNOWN_AT_CALLBACK",
+        "FAILURE_CONTEXT_NOT_EVIDENCED_IN_HANDLER"
+      ],
+      "evidence": [
+        "security-ev-3fa8659b10445a46",
+        "security-ev-d9f1a8fcba553210",
+        "security-ev-370e17c00bcfd2e8"
+      ]
+    },
+    {
+      "snapshot_id": "snapshot-0009",
+      "version": "v0.5.0",
+      "variant": "variant-b",
+      "stage": "OBSERVATION",
+      "failure_sources": [
+        "UNKNOWN_FAILURE"
+      ],
+      "detection_points": [
+        "UNKNOWN"
+      ],
+      "representations": [
+        "UNKNOWN"
+      ],
+      "propagation": [
+        "UNKNOWN"
+      ],
+      "containment": [
+        "UNKNOWN"
+      ],
+      "recovery": [
+        "UNKNOWN"
+      ],
+      "logging": [
+        "UNKNOWN"
+      ],
+      "provenance": [
+        "UNKNOWN"
+      ],
+      "evidence": [
+        "security-ev-1a837eb17478c353"
+      ]
+    },
+    {
+      "snapshot_id": "snapshot-0009",
+      "version": "v0.5.0",
+      "variant": "variant-b",
+      "stage": "RECOGNITION",
+      "failure_sources": [
+        "PARSING_FAILURE",
+        "PROVIDER_FAILURE"
+      ],
+      "detection_points": [
+        "CATCH"
+      ],
+      "representations": [
+        "EXCEPTION_VARIABLE",
+        "UNBOUND_EXCEPTION"
+      ],
+      "propagation": [
+        "FALLBACK_RETURN",
+        "SUPPRESSED_OR_LOCAL_UNKNOWN"
+      ],
+      "containment": [
+        "OPERATION_LOCAL",
+        "PROVIDER_WIDE"
+      ],
+      "recovery": [
+        "CONTINUE_PROVIDER_LOOP_OR_METHOD_FALLBACK",
+        "FALLBACK_VALUE",
+        "NONE_EVIDENCED"
+      ],
+      "logging": [
+        "LOG_WRAPPER",
+        "NOT_EVIDENCED"
+      ],
+      "provenance": [
+        "CONTEXT_PARTIALLY_RETAINED",
+        "FAILURE_CONTEXT_NOT_EVIDENCED_IN_HANDLER"
+      ],
+      "evidence": [
+        "security-ev-2db9d4078eccdcdd",
+        "security-ev-b50aa775ef5cebb4",
+        "security-ev-5b145551404d979f"
+      ]
+    },
+    {
+      "snapshot_id": "snapshot-0009",
+      "version": "v0.5.0",
+      "variant": "variant-b",
+      "stage": "DISCOVERY",
+      "failure_sources": [
+        "DISCOVERY_FAILURE",
+        "NETWORK_FAILURE"
+      ],
+      "detection_points": [
+        "CATCH"
+      ],
+      "representations": [
+        "EXCEPTION_VARIABLE",
+        "UNBOUND_EXCEPTION"
+      ],
+      "propagation": [
+        "FALLBACK_RETURN",
+        "SUPPRESSED_OR_LOCAL_UNKNOWN"
+      ],
+      "containment": [
+        "OPERATION_LOCAL",
+        "STOP_BOUNDARY_NOT_PROVED"
+      ],
+      "recovery": [
+        "FALLBACK_VALUE",
+        "NONE_EVIDENCED"
+      ],
+      "logging": [
+        "LOG_WRAPPER",
+        "NOT_EVIDENCED"
+      ],
+      "provenance": [
+        "FAILURE_CONTEXT_NOT_EVIDENCED_IN_HANDLER"
+      ],
+      "evidence": [
+        "security-ev-9d0df95606504131",
+        "security-ev-2342d1624f8df8bd",
+        "security-ev-3777f6c65d4a2d9f",
+        "security-ev-d86dde81c075c2df",
+        "security-ev-ab9373967ec67969"
+      ]
+    },
+    {
+      "snapshot_id": "snapshot-0009",
+      "version": "v0.5.0",
+      "variant": "variant-b",
+      "stage": "EXPANSION",
+      "failure_sources": [
+        "UNKNOWN_FAILURE"
+      ],
+      "detection_points": [
+        "UNKNOWN"
+      ],
+      "representations": [
+        "UNKNOWN"
+      ],
+      "propagation": [
+        "UNKNOWN"
+      ],
+      "containment": [
+        "UNKNOWN"
+      ],
+      "recovery": [
+        "UNKNOWN"
+      ],
+      "logging": [
+        "UNKNOWN"
+      ],
+      "provenance": [
+        "UNKNOWN"
+      ],
+      "evidence": [
+        "security-ev-48c290c5573d6d07"
+      ]
+    },
+    {
+      "snapshot_id": "snapshot-0009",
+      "version": "v0.5.0",
+      "variant": "variant-b",
+      "stage": "SCHEDULING",
+      "failure_sources": [
+        "SCHEDULER_FAILURE"
+      ],
+      "detection_points": [
+        "CATCH"
+      ],
+      "representations": [
+        "EXCEPTION_VARIABLE"
+      ],
+      "propagation": [
+        "SUPPRESSED_OR_LOCAL_UNKNOWN"
+      ],
+      "containment": [
+        "OPERATION_LOCAL"
+      ],
+      "recovery": [
+        "NONE_EVIDENCED"
+      ],
+      "logging": [
+        "LOG_WRAPPER"
+      ],
+      "provenance": [
+        "FAILURE_CONTEXT_NOT_EVIDENCED_IN_HANDLER"
+      ],
+      "evidence": [
+        "security-ev-eee36f69aa9b3c02"
+      ]
+    },
+    {
+      "snapshot_id": "snapshot-0009",
+      "version": "v0.5.0",
+      "variant": "variant-b",
+      "stage": "PERSISTENCE",
+      "failure_sources": [
+        "PERSISTENCE_FAILURE"
+      ],
+      "detection_points": [
+        "CATCH"
+      ],
+      "representations": [
+        "EXCEPTION_VARIABLE"
+      ],
+      "propagation": [
+        "SUPPRESSED_OR_LOCAL_UNKNOWN"
+      ],
+      "containment": [
+        "OPERATION_LOCAL"
+      ],
+      "recovery": [
+        "NONE_EVIDENCED"
+      ],
+      "logging": [
+        "LOG_WRAPPER"
+      ],
+      "provenance": [
+        "FAILURE_CONTEXT_NOT_EVIDENCED_IN_HANDLER"
+      ],
+      "evidence": [
+        "security-ev-76092a05a4b6f32c",
+        "security-ev-10c90284e1eec905"
+      ]
+    },
+    {
+      "snapshot_id": "snapshot-0009",
+      "version": "v0.5.0",
+      "variant": "variant-b",
+      "stage": "EXPORT",
+      "failure_sources": [
+        "UNKNOWN_FAILURE"
+      ],
+      "detection_points": [
+        "UNKNOWN"
+      ],
+      "representations": [
+        "UNKNOWN"
+      ],
+      "propagation": [
+        "UNKNOWN"
+      ],
+      "containment": [
+        "UNKNOWN"
+      ],
+      "recovery": [
+        "UNKNOWN"
+      ],
+      "logging": [
+        "UNKNOWN"
+      ],
+      "provenance": [
+        "UNKNOWN"
+      ],
+      "evidence": [
+        "security-ev-1f11d331b0a3cc68"
+      ]
+    },
+    {
+      "snapshot_id": "snapshot-0009",
+      "version": "v0.5.0",
+      "variant": "variant-b",
+      "stage": "UI",
+      "failure_sources": [
+        "UI_FAILURE"
+      ],
+      "detection_points": [
+        "CATCH"
+      ],
+      "representations": [
+        "EXCEPTION_VARIABLE"
+      ],
+      "propagation": [
+        "SUPPRESSED_OR_LOCAL_UNKNOWN"
+      ],
+      "containment": [
+        "OPERATION_LOCAL"
+      ],
+      "recovery": [
+        "NONE_EVIDENCED"
+      ],
+      "logging": [
+        "LOG_WRAPPER",
+        "UI"
+      ],
+      "provenance": [
+        "FAILURE_CONTEXT_NOT_EVIDENCED_IN_HANDLER"
+      ],
+      "evidence": [
+        "security-ev-65348f69e361196d",
+        "security-ev-a5989b691bdde740"
+      ]
+    },
+    {
+      "snapshot_id": "snapshot-0009",
+      "version": "v0.5.0",
+      "variant": "variant-b",
+      "stage": "CROSS_CUTTING",
+      "failure_sources": [
+        "UNKNOWN_FAILURE"
+      ],
+      "detection_points": [
+        "CATCH"
+      ],
+      "representations": [
+        "UNBOUND_EXCEPTION"
+      ],
+      "propagation": [
+        "SUPPRESSED_OR_LOCAL_UNKNOWN"
+      ],
+      "containment": [
+        "OPERATION_LOCAL"
+      ],
+      "recovery": [
+        "NONE_EVIDENCED"
+      ],
+      "logging": [
+        "NOT_EVIDENCED"
+      ],
+      "provenance": [
+        "FAILURE_CONTEXT_NOT_EVIDENCED_IN_HANDLER"
+      ],
+      "evidence": [
+        "security-ev-c34b150ed06211c0"
+      ]
+    },
+    {
+      "snapshot_id": "snapshot-0011",
+      "version": "v0.5.0",
+      "variant": "variant-c",
+      "stage": "INPUT",
+      "failure_sources": [
+        "UNKNOWN_FAILURE"
+      ],
+      "detection_points": [
+        "UNKNOWN"
+      ],
+      "representations": [
+        "UNKNOWN"
+      ],
+      "propagation": [
+        "UNKNOWN"
+      ],
+      "containment": [
+        "UNKNOWN"
+      ],
+      "recovery": [
+        "UNKNOWN"
+      ],
+      "logging": [
+        "UNKNOWN"
+      ],
+      "provenance": [
+        "UNKNOWN"
+      ],
+      "evidence": [
+        "security-ev-469be527dc26a05c"
+      ]
+    },
+    {
+      "snapshot_id": "snapshot-0011",
+      "version": "v0.5.0",
+      "variant": "variant-c",
+      "stage": "VALIDATION",
+      "failure_sources": [
+        "VALIDATION_FAILURE"
+      ],
+      "detection_points": [
+        "CATCH"
+      ],
+      "representations": [
+        "UNBOUND_EXCEPTION"
+      ],
+      "propagation": [
+        "FALLBACK_RETURN"
+      ],
+      "containment": [
+        "OPERATION_LOCAL"
+      ],
+      "recovery": [
+        "FALLBACK_VALUE"
+      ],
+      "logging": [
+        "NOT_EVIDENCED"
+      ],
+      "provenance": [
+        "FAILURE_CONTEXT_NOT_EVIDENCED_IN_HANDLER"
+      ],
+      "evidence": [
+        "security-ev-a9b11bb8e9ca1eef",
+        "security-ev-cc19b1eb77fe4b1e",
+        "security-ev-979f3b42f84b889b"
+      ]
+    },
+    {
+      "snapshot_id": "snapshot-0011",
+      "version": "v0.5.0",
+      "variant": "variant-c",
+      "stage": "ACQUISITION",
+      "failure_sources": [
+        "NETWORK_FAILURE",
+        "TIMEOUT"
+      ],
+      "detection_points": [
+        "CATCH",
+        "ERROR_CALLBACK",
+        "TIMEOUT_CALLBACK"
+      ],
+      "representations": [
+        "CALLBACK_CONTROL_FLOW",
+        "EXCEPTION_VARIABLE"
+      ],
+      "propagation": [
+        "RECORDED_OR_RETURNED_ON_LOCAL_PATH",
+        "RETHROW",
+        "SUPPRESSED_OR_LOCAL_UNKNOWN"
+      ],
+      "containment": [
+        "STOP_BOUNDARY_NOT_PROVED"
+      ],
+      "recovery": [
+        "LOCAL_FAILURE_PATH",
+        "NONE_EVIDENCED",
+        "RECORD_AND_RETURN_OR_CONTINUE"
+      ],
+      "logging": [
+        "NOT_EVIDENCED",
+        "NOT_EVIDENCED_AT_CALLBACK",
+        "OBSERVATION"
+      ],
+      "provenance": [
+        "CANDIDATE_OR_REQUEST_LINKAGE_UNKNOWN_AT_CALLBACK",
+        "FAILURE_CONTEXT_NOT_EVIDENCED_IN_HANDLER"
+      ],
+      "evidence": [
+        "security-ev-de72a13fe4426945",
+        "security-ev-0fe7e7b44bf232ad",
+        "security-ev-f4471832ce82561e",
+        "security-ev-0d779bea41564305"
+      ]
+    },
+    {
+      "snapshot_id": "snapshot-0011",
+      "version": "v0.5.0",
+      "variant": "variant-c",
+      "stage": "OBSERVATION",
+      "failure_sources": [
+        "PERSISTENCE_FAILURE"
+      ],
+      "detection_points": [
+        "CATCH"
+      ],
+      "representations": [
+        "EXCEPTION_VARIABLE"
+      ],
+      "propagation": [
+        "SUPPRESSED_OR_LOCAL_UNKNOWN"
+      ],
+      "containment": [
+        "OPERATION_LOCAL"
+      ],
+      "recovery": [
+        "NONE_EVIDENCED"
+      ],
+      "logging": [
+        "LOG_WRAPPER"
+      ],
+      "provenance": [
+        "FAILURE_CONTEXT_NOT_EVIDENCED_IN_HANDLER"
+      ],
+      "evidence": [
+        "security-ev-3600667c9ab5b535"
+      ]
+    },
+    {
+      "snapshot_id": "snapshot-0011",
+      "version": "v0.5.0",
+      "variant": "variant-c",
+      "stage": "RECOGNITION",
+      "failure_sources": [
+        "PARSING_FAILURE",
+        "PROVIDER_FAILURE",
+        "RECOGNITION_FAILURE"
+      ],
+      "detection_points": [
+        "CATCH"
+      ],
+      "representations": [
+        "EXCEPTION_VARIABLE",
+        "UNBOUND_EXCEPTION"
+      ],
+      "propagation": [
+        "CONTINUE_LOOP",
+        "FALLBACK_RETURN",
+        "SUPPRESSED_OR_LOCAL_UNKNOWN"
+      ],
+      "containment": [
+        "OPERATION_LOCAL",
+        "PROVIDER_WIDE"
+      ],
+      "recovery": [
+        "CONTINUE_NEXT_ITERATION",
+        "CONTINUE_PROVIDER_LOOP_OR_METHOD_FALLBACK",
+        "FALLBACK_VALUE",
+        "NONE_EVIDENCED"
+      ],
+      "logging": [
+        "LOG_WRAPPER",
+        "NOT_EVIDENCED"
+      ],
+      "provenance": [
+        "CONTEXT_PARTIALLY_RETAINED",
+        "FAILURE_CONTEXT_NOT_EVIDENCED_IN_HANDLER"
+      ],
+      "evidence": [
+        "security-ev-1f48ace5ac7a2ada",
+        "security-ev-2a1d605376e427f7",
+        "security-ev-e95b3dce058b18ac",
+        "security-ev-d18f5b6d3631b252",
+        "security-ev-66971bb9d0ba20ef",
+        "security-ev-53070a6bff14d424"
+      ]
+    },
+    {
+      "snapshot_id": "snapshot-0011",
+      "version": "v0.5.0",
+      "variant": "variant-c",
+      "stage": "DISCOVERY",
+      "failure_sources": [
+        "DISCOVERY_FAILURE",
+        "NETWORK_FAILURE"
+      ],
+      "detection_points": [
+        "CATCH"
+      ],
+      "representations": [
+        "EXCEPTION_VARIABLE",
+        "UNBOUND_EXCEPTION"
+      ],
+      "propagation": [
+        "FALLBACK_RETURN",
+        "STATE_OR_DIAGNOSTIC_RECORD",
+        "SUPPRESSED_OR_LOCAL_UNKNOWN"
+      ],
+      "containment": [
+        "CANDIDATE_WIDE",
+        "OPERATION_LOCAL"
+      ],
+      "recovery": [
+        "FALLBACK_VALUE",
+        "NONE_EVIDENCED",
+        "RECORD_AND_RETURN_OR_CONTINUE"
+      ],
+      "logging": [
+        "KNOWLEDGE_BASE_OR_SCHEDULER_STATE",
+        "LOG_WRAPPER",
+        "NOT_EVIDENCED"
+      ],
+      "provenance": [
+        "FAILURE_CONTEXT_NOT_EVIDENCED_IN_HANDLER"
+      ],
+      "evidence": [
+        "security-ev-82f0ff4d05dc560a",
+        "security-ev-aa8fb61eb0125582",
+        "security-ev-9d20a8e1ad288e55"
+      ]
+    },
+    {
+      "snapshot_id": "snapshot-0011",
+      "version": "v0.5.0",
+      "variant": "variant-c",
+      "stage": "EXPANSION",
+      "failure_sources": [
+        "UNKNOWN_FAILURE"
+      ],
+      "detection_points": [
+        "UNKNOWN"
+      ],
+      "representations": [
+        "UNKNOWN"
+      ],
+      "propagation": [
+        "UNKNOWN"
+      ],
+      "containment": [
+        "UNKNOWN"
+      ],
+      "recovery": [
+        "UNKNOWN"
+      ],
+      "logging": [
+        "UNKNOWN"
+      ],
+      "provenance": [
+        "UNKNOWN"
+      ],
+      "evidence": [
+        "security-ev-2d9eed278c491259"
+      ]
+    },
+    {
+      "snapshot_id": "snapshot-0011",
+      "version": "v0.5.0",
+      "variant": "variant-c",
+      "stage": "SCHEDULING",
+      "failure_sources": [
+        "UNKNOWN_FAILURE"
+      ],
+      "detection_points": [
+        "UNKNOWN"
+      ],
+      "representations": [
+        "UNKNOWN"
+      ],
+      "propagation": [
+        "UNKNOWN"
+      ],
+      "containment": [
+        "UNKNOWN"
+      ],
+      "recovery": [
+        "UNKNOWN"
+      ],
+      "logging": [
+        "UNKNOWN"
+      ],
+      "provenance": [
+        "UNKNOWN"
+      ],
+      "evidence": [
+        "security-ev-777d482e48219355"
+      ]
+    },
+    {
+      "snapshot_id": "snapshot-0011",
+      "version": "v0.5.0",
+      "variant": "variant-c",
+      "stage": "PERSISTENCE",
+      "failure_sources": [
+        "PERSISTENCE_FAILURE"
+      ],
+      "detection_points": [
+        "CATCH"
+      ],
+      "representations": [
+        "EXCEPTION_VARIABLE"
+      ],
+      "propagation": [
+        "SUPPRESSED_OR_LOCAL_UNKNOWN"
+      ],
+      "containment": [
+        "OPERATION_LOCAL"
+      ],
+      "recovery": [
+        "NONE_EVIDENCED"
+      ],
+      "logging": [
+        "LOG_WRAPPER"
+      ],
+      "provenance": [
+        "FAILURE_CONTEXT_NOT_EVIDENCED_IN_HANDLER"
+      ],
+      "evidence": [
+        "security-ev-a187f75c1fdd3656",
+        "security-ev-65b5ceec48a25c81"
+      ]
+    },
+    {
+      "snapshot_id": "snapshot-0011",
+      "version": "v0.5.0",
+      "variant": "variant-c",
+      "stage": "EXPORT",
+      "failure_sources": [
+        "PERSISTENCE_FAILURE"
+      ],
+      "detection_points": [
+        "CATCH"
+      ],
+      "representations": [
+        "EXCEPTION_VARIABLE"
+      ],
+      "propagation": [
+        "SUPPRESSED_OR_LOCAL_UNKNOWN"
+      ],
+      "containment": [
+        "OPERATION_LOCAL"
+      ],
+      "recovery": [
+        "NONE_EVIDENCED"
+      ],
+      "logging": [
+        "LOG_WRAPPER"
+      ],
+      "provenance": [
+        "FAILURE_CONTEXT_NOT_EVIDENCED_IN_HANDLER"
+      ],
+      "evidence": [
+        "security-ev-9e25ec197595c177",
+        "security-ev-19f1c70b815c4b88"
+      ]
+    },
+    {
+      "snapshot_id": "snapshot-0011",
+      "version": "v0.5.0",
+      "variant": "variant-c",
+      "stage": "UI",
+      "failure_sources": [
+        "UNKNOWN_FAILURE"
+      ],
+      "detection_points": [
+        "UNKNOWN"
+      ],
+      "representations": [
+        "UNKNOWN"
+      ],
+      "propagation": [
+        "UNKNOWN"
+      ],
+      "containment": [
+        "UNKNOWN"
+      ],
+      "recovery": [
+        "UNKNOWN"
+      ],
+      "logging": [
+        "UNKNOWN"
+      ],
+      "provenance": [
+        "UNKNOWN"
+      ],
+      "evidence": [
+        "security-ev-13378766d315607a"
+      ]
+    },
+    {
+      "snapshot_id": "snapshot-0011",
+      "version": "v0.5.0",
+      "variant": "variant-c",
+      "stage": "CROSS_CUTTING",
+      "failure_sources": [
+        "NETWORK_FAILURE"
+      ],
+      "detection_points": [
+        "CATCH"
+      ],
+      "representations": [
+        "EXCEPTION_VARIABLE"
+      ],
+      "propagation": [
+        "SUPPRESSED_OR_LOCAL_UNKNOWN"
+      ],
+      "containment": [
+        "OPERATION_LOCAL"
+      ],
+      "recovery": [
+        "NONE_EVIDENCED"
+      ],
+      "logging": [
+        "LOG_WRAPPER"
+      ],
+      "provenance": [
+        "FAILURE_CONTEXT_NOT_EVIDENCED_IN_HANDLER"
+      ],
+      "evidence": [
+        "security-ev-6b777a96e79c3de9",
+        "security-ev-62427229aa9fa8cf"
+      ]
+    },
+    {
+      "snapshot_id": "snapshot-0010",
+      "version": "v0.6.0",
+      "variant": "variant-a",
+      "stage": "INPUT",
+      "failure_sources": [
+        "UNKNOWN_FAILURE"
+      ],
+      "detection_points": [
+        "UNKNOWN"
+      ],
+      "representations": [
+        "UNKNOWN"
+      ],
+      "propagation": [
+        "UNKNOWN"
+      ],
+      "containment": [
+        "UNKNOWN"
+      ],
+      "recovery": [
+        "UNKNOWN"
+      ],
+      "logging": [
+        "UNKNOWN"
+      ],
+      "provenance": [
+        "UNKNOWN"
+      ],
+      "evidence": [
+        "security-ev-f23b150919b7dd96"
+      ]
+    },
+    {
+      "snapshot_id": "snapshot-0010",
+      "version": "v0.6.0",
+      "variant": "variant-a",
+      "stage": "VALIDATION",
+      "failure_sources": [
+        "VALIDATION_FAILURE"
+      ],
+      "detection_points": [
+        "CATCH"
+      ],
+      "representations": [
+        "UNBOUND_EXCEPTION"
+      ],
+      "propagation": [
+        "FALLBACK_RETURN"
+      ],
+      "containment": [
+        "OPERATION_LOCAL"
+      ],
+      "recovery": [
+        "FALLBACK_VALUE"
+      ],
+      "logging": [
+        "NOT_EVIDENCED"
+      ],
+      "provenance": [
+        "FAILURE_CONTEXT_NOT_EVIDENCED_IN_HANDLER"
+      ],
+      "evidence": [
+        "security-ev-2f20919cd31873d9",
+        "security-ev-271b9e4aa6ac5f23"
+      ]
+    },
+    {
+      "snapshot_id": "snapshot-0010",
+      "version": "v0.6.0",
+      "variant": "variant-a",
+      "stage": "ACQUISITION",
+      "failure_sources": [
+        "NETWORK_FAILURE",
+        "TIMEOUT"
+      ],
+      "detection_points": [
+        "ERROR_CALLBACK",
+        "TIMEOUT_CALLBACK"
+      ],
+      "representations": [
+        "FAILED_OBSERVATION_OR_STATE"
+      ],
+      "propagation": [
+        "RECORDED_OR_RETURNED_ON_LOCAL_PATH"
+      ],
+      "containment": [
+        "STOP_BOUNDARY_NOT_PROVED"
+      ],
+      "recovery": [
+        "LOCAL_FAILURE_PATH"
+      ],
+      "logging": [
+        "NOT_EVIDENCED_AT_CALLBACK"
+      ],
+      "provenance": [
+        "CANDIDATE_OR_REQUEST_LINKAGE_UNKNOWN_AT_CALLBACK"
+      ],
+      "evidence": [
+        "security-ev-d00ca17c85ddc7ce",
+        "security-ev-969b4d57cfee4313"
+      ]
+    },
+    {
+      "snapshot_id": "snapshot-0010",
+      "version": "v0.6.0",
+      "variant": "variant-a",
+      "stage": "OBSERVATION",
+      "failure_sources": [
+        "UNKNOWN_FAILURE"
+      ],
+      "detection_points": [
+        "UNKNOWN"
+      ],
+      "representations": [
+        "UNKNOWN"
+      ],
+      "propagation": [
+        "UNKNOWN"
+      ],
+      "containment": [
+        "UNKNOWN"
+      ],
+      "recovery": [
+        "UNKNOWN"
+      ],
+      "logging": [
+        "UNKNOWN"
+      ],
+      "provenance": [
+        "UNKNOWN"
+      ],
+      "evidence": [
+        "security-ev-b8aae5285050f314"
+      ]
+    },
+    {
+      "snapshot_id": "snapshot-0010",
+      "version": "v0.6.0",
+      "variant": "variant-a",
+      "stage": "RECOGNITION",
+      "failure_sources": [
+        "PARSING_FAILURE",
+        "PROVIDER_FAILURE"
+      ],
+      "detection_points": [
+        "CATCH"
+      ],
+      "representations": [
+        "EXCEPTION_VARIABLE",
+        "UNBOUND_EXCEPTION"
+      ],
+      "propagation": [
+        "FALLBACK_RETURN",
+        "SUPPRESSED_OR_LOCAL_UNKNOWN"
+      ],
+      "containment": [
+        "OPERATION_LOCAL",
+        "PROVIDER_WIDE"
+      ],
+      "recovery": [
+        "CONTINUE_PROVIDER_LOOP_OR_METHOD_FALLBACK",
+        "FALLBACK_VALUE"
+      ],
+      "logging": [
+        "LOG_WRAPPER",
+        "NOT_EVIDENCED"
+      ],
+      "provenance": [
+        "CONTEXT_PARTIALLY_RETAINED",
+        "FAILURE_CONTEXT_NOT_EVIDENCED_IN_HANDLER"
+      ],
+      "evidence": [
+        "security-ev-7ca4438712e07786",
+        "security-ev-1d829d3bcbc1e32d"
+      ]
+    },
+    {
+      "snapshot_id": "snapshot-0010",
+      "version": "v0.6.0",
+      "variant": "variant-a",
+      "stage": "DISCOVERY",
+      "failure_sources": [
+        "NETWORK_FAILURE",
+        "UNKNOWN_FAILURE"
+      ],
+      "detection_points": [
+        "CATCH"
+      ],
+      "representations": [
+        "EXCEPTION_VARIABLE",
+        "UNBOUND_EXCEPTION"
+      ],
+      "propagation": [
+        "SUPPRESSED_OR_LOCAL_UNKNOWN"
+      ],
+      "containment": [
+        "OPERATION_LOCAL"
+      ],
+      "recovery": [
+        "NONE_EVIDENCED"
+      ],
+      "logging": [
+        "LOG_WRAPPER",
+        "NOT_EVIDENCED"
+      ],
+      "provenance": [
+        "FAILURE_CONTEXT_NOT_EVIDENCED_IN_HANDLER"
+      ],
+      "evidence": [
+        "security-ev-67a955f801298e24",
+        "security-ev-25684d9ed6322712",
+        "security-ev-5e0d140d0b548186"
+      ]
+    },
+    {
+      "snapshot_id": "snapshot-0010",
+      "version": "v0.6.0",
+      "variant": "variant-a",
+      "stage": "EXPANSION",
+      "failure_sources": [
+        "UNKNOWN_FAILURE"
+      ],
+      "detection_points": [
+        "UNKNOWN"
+      ],
+      "representations": [
+        "UNKNOWN"
+      ],
+      "propagation": [
+        "UNKNOWN"
+      ],
+      "containment": [
+        "UNKNOWN"
+      ],
+      "recovery": [
+        "UNKNOWN"
+      ],
+      "logging": [
+        "UNKNOWN"
+      ],
+      "provenance": [
+        "UNKNOWN"
+      ],
+      "evidence": [
+        "security-ev-4edbba343a975a06"
+      ]
+    },
+    {
+      "snapshot_id": "snapshot-0010",
+      "version": "v0.6.0",
+      "variant": "variant-a",
+      "stage": "SCHEDULING",
+      "failure_sources": [
+        "SCHEDULER_FAILURE"
+      ],
+      "detection_points": [
+        "CATCH"
+      ],
+      "representations": [
+        "EXCEPTION_VARIABLE"
+      ],
+      "propagation": [
+        "SUPPRESSED_OR_LOCAL_UNKNOWN"
+      ],
+      "containment": [
+        "STOP_BOUNDARY_NOT_PROVED"
+      ],
+      "recovery": [
+        "NONE_EVIDENCED"
+      ],
+      "logging": [
+        "NOT_EVIDENCED"
+      ],
+      "provenance": [
+        "FAILURE_CONTEXT_NOT_EVIDENCED_IN_HANDLER"
+      ],
+      "evidence": [
+        "security-ev-fcc81df80fb5470c"
+      ]
+    },
+    {
+      "snapshot_id": "snapshot-0010",
+      "version": "v0.6.0",
+      "variant": "variant-a",
+      "stage": "PERSISTENCE",
+      "failure_sources": [
+        "PERSISTENCE_FAILURE"
+      ],
+      "detection_points": [
+        "CATCH"
+      ],
+      "representations": [
+        "EXCEPTION_VARIABLE"
+      ],
+      "propagation": [
+        "SUPPRESSED_OR_LOCAL_UNKNOWN"
+      ],
+      "containment": [
+        "OPERATION_LOCAL"
+      ],
+      "recovery": [
+        "NONE_EVIDENCED"
+      ],
+      "logging": [
+        "LOG_WRAPPER"
+      ],
+      "provenance": [
+        "FAILURE_CONTEXT_NOT_EVIDENCED_IN_HANDLER"
+      ],
+      "evidence": [
+        "security-ev-a602df7600ee69a3",
+        "security-ev-ba42bba450ba90ac"
+      ]
+    },
+    {
+      "snapshot_id": "snapshot-0010",
+      "version": "v0.6.0",
+      "variant": "variant-a",
+      "stage": "EXPORT",
+      "failure_sources": [
+        "UNKNOWN_FAILURE"
+      ],
+      "detection_points": [
+        "UNKNOWN"
+      ],
+      "representations": [
+        "UNKNOWN"
+      ],
+      "propagation": [
+        "UNKNOWN"
+      ],
+      "containment": [
+        "UNKNOWN"
+      ],
+      "recovery": [
+        "UNKNOWN"
+      ],
+      "logging": [
+        "UNKNOWN"
+      ],
+      "provenance": [
+        "UNKNOWN"
+      ],
+      "evidence": [
+        "security-ev-0b0c8d5ade220617"
+      ]
+    },
+    {
+      "snapshot_id": "snapshot-0010",
+      "version": "v0.6.0",
+      "variant": "variant-a",
+      "stage": "UI",
+      "failure_sources": [
+        "UI_FAILURE"
+      ],
+      "detection_points": [
+        "CATCH"
+      ],
+      "representations": [
+        "EXCEPTION_VARIABLE"
+      ],
+      "propagation": [
+        "SUPPRESSED_OR_LOCAL_UNKNOWN"
+      ],
+      "containment": [
+        "OPERATION_LOCAL"
+      ],
+      "recovery": [
+        "NONE_EVIDENCED"
+      ],
+      "logging": [
+        "LOG_WRAPPER",
+        "UI"
+      ],
+      "provenance": [
+        "FAILURE_CONTEXT_NOT_EVIDENCED_IN_HANDLER"
+      ],
+      "evidence": [
+        "security-ev-ebeeb7ea763e30e3",
+        "security-ev-99887e645fb57713"
+      ]
+    },
+    {
+      "snapshot_id": "snapshot-0010",
+      "version": "v0.6.0",
+      "variant": "variant-a",
+      "stage": "CROSS_CUTTING",
+      "failure_sources": [
+        "UNKNOWN_FAILURE"
+      ],
+      "detection_points": [
+        "CATCH"
+      ],
+      "representations": [
+        "UNBOUND_EXCEPTION"
+      ],
+      "propagation": [
+        "SUPPRESSED_OR_LOCAL_UNKNOWN"
+      ],
+      "containment": [
+        "OPERATION_LOCAL"
+      ],
+      "recovery": [
+        "NONE_EVIDENCED"
+      ],
+      "logging": [
+        "NOT_EVIDENCED"
+      ],
+      "provenance": [
+        "FAILURE_CONTEXT_NOT_EVIDENCED_IN_HANDLER"
+      ],
+      "evidence": [
+        "security-ev-ada91e361358b57e"
+      ]
+    },
+    {
+      "snapshot_id": "snapshot-0012",
+      "version": "v0.6.0",
+      "variant": "variant-b",
+      "stage": "INPUT",
+      "failure_sources": [
+        "UNKNOWN_FAILURE"
+      ],
+      "detection_points": [
+        "UNKNOWN"
+      ],
+      "representations": [
+        "UNKNOWN"
+      ],
+      "propagation": [
+        "UNKNOWN"
+      ],
+      "containment": [
+        "UNKNOWN"
+      ],
+      "recovery": [
+        "UNKNOWN"
+      ],
+      "logging": [
+        "UNKNOWN"
+      ],
+      "provenance": [
+        "UNKNOWN"
+      ],
+      "evidence": [
+        "security-ev-4afc1408e55c57a8"
+      ]
+    },
+    {
+      "snapshot_id": "snapshot-0012",
+      "version": "v0.6.0",
+      "variant": "variant-b",
+      "stage": "VALIDATION",
+      "failure_sources": [
+        "VALIDATION_FAILURE"
+      ],
+      "detection_points": [
+        "CATCH"
+      ],
+      "representations": [
+        "UNBOUND_EXCEPTION"
+      ],
+      "propagation": [
+        "FALLBACK_RETURN"
+      ],
+      "containment": [
+        "OPERATION_LOCAL"
+      ],
+      "recovery": [
+        "FALLBACK_VALUE"
+      ],
+      "logging": [
+        "NOT_EVIDENCED"
+      ],
+      "provenance": [
+        "FAILURE_CONTEXT_NOT_EVIDENCED_IN_HANDLER"
+      ],
+      "evidence": [
+        "security-ev-708c1b5fc3086240",
+        "security-ev-566c3db11479f466",
+        "security-ev-24575052747f41f2"
+      ]
+    },
+    {
+      "snapshot_id": "snapshot-0012",
+      "version": "v0.6.0",
+      "variant": "variant-b",
+      "stage": "ACQUISITION",
+      "failure_sources": [
+        "NETWORK_FAILURE",
+        "TIMEOUT"
+      ],
+      "detection_points": [
+        "CATCH",
+        "ERROR_CALLBACK",
+        "TIMEOUT_CALLBACK"
+      ],
+      "representations": [
+        "CALLBACK_CONTROL_FLOW",
+        "EXCEPTION_VARIABLE"
+      ],
+      "propagation": [
+        "RECORDED_OR_RETURNED_ON_LOCAL_PATH",
+        "RETHROW",
+        "SUPPRESSED_OR_LOCAL_UNKNOWN"
+      ],
+      "containment": [
+        "STOP_BOUNDARY_NOT_PROVED"
+      ],
+      "recovery": [
+        "LOCAL_FAILURE_PATH",
+        "NONE_EVIDENCED",
+        "RECORD_AND_RETURN_OR_CONTINUE"
+      ],
+      "logging": [
+        "NOT_EVIDENCED",
+        "NOT_EVIDENCED_AT_CALLBACK",
+        "OBSERVATION"
+      ],
+      "provenance": [
+        "CANDIDATE_OR_REQUEST_LINKAGE_UNKNOWN_AT_CALLBACK",
+        "FAILURE_CONTEXT_NOT_EVIDENCED_IN_HANDLER"
+      ],
+      "evidence": [
+        "security-ev-913eb3775eca79c1",
+        "security-ev-b08c4412bf587ec8",
+        "security-ev-e313eca352c1c9bc",
+        "security-ev-2fbf659cea67412c"
+      ]
+    },
+    {
+      "snapshot_id": "snapshot-0012",
+      "version": "v0.6.0",
+      "variant": "variant-b",
+      "stage": "OBSERVATION",
+      "failure_sources": [
+        "PERSISTENCE_FAILURE"
+      ],
+      "detection_points": [
+        "CATCH"
+      ],
+      "representations": [
+        "EXCEPTION_VARIABLE"
+      ],
+      "propagation": [
+        "SUPPRESSED_OR_LOCAL_UNKNOWN"
+      ],
+      "containment": [
+        "OPERATION_LOCAL"
+      ],
+      "recovery": [
+        "NONE_EVIDENCED"
+      ],
+      "logging": [
+        "LOG_WRAPPER"
+      ],
+      "provenance": [
+        "FAILURE_CONTEXT_NOT_EVIDENCED_IN_HANDLER"
+      ],
+      "evidence": [
+        "security-ev-f28f50c537a86404"
+      ]
+    },
+    {
+      "snapshot_id": "snapshot-0012",
+      "version": "v0.6.0",
+      "variant": "variant-b",
+      "stage": "RECOGNITION",
+      "failure_sources": [
+        "PARSING_FAILURE",
+        "PROVIDER_FAILURE",
+        "RECOGNITION_FAILURE"
+      ],
+      "detection_points": [
+        "CATCH"
+      ],
+      "representations": [
+        "EXCEPTION_VARIABLE",
+        "UNBOUND_EXCEPTION"
+      ],
+      "propagation": [
+        "CONTINUE_LOOP",
+        "FALLBACK_RETURN",
+        "SUPPRESSED_OR_LOCAL_UNKNOWN"
+      ],
+      "containment": [
+        "OPERATION_LOCAL",
+        "PROVIDER_WIDE"
+      ],
+      "recovery": [
+        "CONTINUE_NEXT_ITERATION",
+        "CONTINUE_PROVIDER_LOOP_OR_METHOD_FALLBACK",
+        "FALLBACK_VALUE",
+        "NONE_EVIDENCED"
+      ],
+      "logging": [
+        "LOG_WRAPPER",
+        "NOT_EVIDENCED"
+      ],
+      "provenance": [
+        "CONTEXT_PARTIALLY_RETAINED",
+        "FAILURE_CONTEXT_NOT_EVIDENCED_IN_HANDLER"
+      ],
+      "evidence": [
+        "security-ev-0b7d996f5b8d55c1",
+        "security-ev-f168646fec075ff0",
+        "security-ev-f254e663b5062707",
+        "security-ev-46758ad69378490d",
+        "security-ev-861ff3b621877a87",
+        "security-ev-7cf385dfde3a7caf"
+      ]
+    },
+    {
+      "snapshot_id": "snapshot-0012",
+      "version": "v0.6.0",
+      "variant": "variant-b",
+      "stage": "DISCOVERY",
+      "failure_sources": [
+        "DISCOVERY_FAILURE",
+        "NETWORK_FAILURE"
+      ],
+      "detection_points": [
+        "CATCH"
+      ],
+      "representations": [
+        "EXCEPTION_VARIABLE",
+        "UNBOUND_EXCEPTION"
+      ],
+      "propagation": [
+        "FALLBACK_RETURN",
+        "STATE_OR_DIAGNOSTIC_RECORD",
+        "SUPPRESSED_OR_LOCAL_UNKNOWN"
+      ],
+      "containment": [
+        "CANDIDATE_WIDE",
+        "OPERATION_LOCAL"
+      ],
+      "recovery": [
+        "FALLBACK_VALUE",
+        "NONE_EVIDENCED",
+        "RECORD_AND_RETURN_OR_CONTINUE"
+      ],
+      "logging": [
+        "KNOWLEDGE_BASE_OR_SCHEDULER_STATE",
+        "LOG_WRAPPER",
+        "NOT_EVIDENCED",
+        "STRUCTURED_RECORD"
+      ],
+      "provenance": [
+        "FAILURE_CONTEXT_NOT_EVIDENCED_IN_HANDLER"
+      ],
+      "evidence": [
+        "security-ev-8048f31a8f8460b4",
+        "security-ev-4adab4c4d3ae2cc9",
+        "security-ev-8f0a57342f68ac74"
+      ]
+    },
+    {
+      "snapshot_id": "snapshot-0012",
+      "version": "v0.6.0",
+      "variant": "variant-b",
+      "stage": "EXPANSION",
+      "failure_sources": [
+        "UNKNOWN_FAILURE"
+      ],
+      "detection_points": [
+        "UNKNOWN"
+      ],
+      "representations": [
+        "UNKNOWN"
+      ],
+      "propagation": [
+        "UNKNOWN"
+      ],
+      "containment": [
+        "UNKNOWN"
+      ],
+      "recovery": [
+        "UNKNOWN"
+      ],
+      "logging": [
+        "UNKNOWN"
+      ],
+      "provenance": [
+        "UNKNOWN"
+      ],
+      "evidence": [
+        "security-ev-b6605218e923b3a4"
+      ]
+    },
+    {
+      "snapshot_id": "snapshot-0012",
+      "version": "v0.6.0",
+      "variant": "variant-b",
+      "stage": "SCHEDULING",
+      "failure_sources": [
+        "UNKNOWN_FAILURE"
+      ],
+      "detection_points": [
+        "UNKNOWN"
+      ],
+      "representations": [
+        "UNKNOWN"
+      ],
+      "propagation": [
+        "UNKNOWN"
+      ],
+      "containment": [
+        "UNKNOWN"
+      ],
+      "recovery": [
+        "UNKNOWN"
+      ],
+      "logging": [
+        "UNKNOWN"
+      ],
+      "provenance": [
+        "UNKNOWN"
+      ],
+      "evidence": [
+        "security-ev-b21ac6fa6972f0e8"
+      ]
+    },
+    {
+      "snapshot_id": "snapshot-0012",
+      "version": "v0.6.0",
+      "variant": "variant-b",
+      "stage": "PERSISTENCE",
+      "failure_sources": [
+        "PERSISTENCE_FAILURE"
+      ],
+      "detection_points": [
+        "CATCH"
+      ],
+      "representations": [
+        "EXCEPTION_VARIABLE"
+      ],
+      "propagation": [
+        "SUPPRESSED_OR_LOCAL_UNKNOWN"
+      ],
+      "containment": [
+        "OPERATION_LOCAL"
+      ],
+      "recovery": [
+        "NONE_EVIDENCED"
+      ],
+      "logging": [
+        "LOG_WRAPPER"
+      ],
+      "provenance": [
+        "FAILURE_CONTEXT_NOT_EVIDENCED_IN_HANDLER"
+      ],
+      "evidence": [
+        "security-ev-de72aa189484071c",
+        "security-ev-6fe57ae14a4bf257"
+      ]
+    },
+    {
+      "snapshot_id": "snapshot-0012",
+      "version": "v0.6.0",
+      "variant": "variant-b",
+      "stage": "EXPORT",
+      "failure_sources": [
+        "PERSISTENCE_FAILURE"
+      ],
+      "detection_points": [
+        "CATCH"
+      ],
+      "representations": [
+        "EXCEPTION_VARIABLE"
+      ],
+      "propagation": [
+        "SUPPRESSED_OR_LOCAL_UNKNOWN"
+      ],
+      "containment": [
+        "OPERATION_LOCAL"
+      ],
+      "recovery": [
+        "NONE_EVIDENCED"
+      ],
+      "logging": [
+        "LOG_WRAPPER"
+      ],
+      "provenance": [
+        "FAILURE_CONTEXT_NOT_EVIDENCED_IN_HANDLER"
+      ],
+      "evidence": [
+        "security-ev-d6acf7bc386e387a",
+        "security-ev-578fe6abd7101266"
+      ]
+    },
+    {
+      "snapshot_id": "snapshot-0012",
+      "version": "v0.6.0",
+      "variant": "variant-b",
+      "stage": "UI",
+      "failure_sources": [
+        "UNKNOWN_FAILURE"
+      ],
+      "detection_points": [
+        "UNKNOWN"
+      ],
+      "representations": [
+        "UNKNOWN"
+      ],
+      "propagation": [
+        "UNKNOWN"
+      ],
+      "containment": [
+        "UNKNOWN"
+      ],
+      "recovery": [
+        "UNKNOWN"
+      ],
+      "logging": [
+        "UNKNOWN"
+      ],
+      "provenance": [
+        "UNKNOWN"
+      ],
+      "evidence": [
+        "security-ev-571c94015836cba5"
+      ]
+    },
+    {
+      "snapshot_id": "snapshot-0012",
+      "version": "v0.6.0",
+      "variant": "variant-b",
+      "stage": "CROSS_CUTTING",
+      "failure_sources": [
+        "NETWORK_FAILURE",
+        "UNKNOWN_FAILURE"
+      ],
+      "detection_points": [
+        "CATCH"
+      ],
+      "representations": [
+        "EXCEPTION_VARIABLE",
+        "UNBOUND_EXCEPTION"
+      ],
+      "propagation": [
+        "FALLBACK_RETURN",
+        "SUPPRESSED_OR_LOCAL_UNKNOWN"
+      ],
+      "containment": [
+        "OPERATION_LOCAL"
+      ],
+      "recovery": [
+        "FALLBACK_VALUE",
+        "NONE_EVIDENCED"
+      ],
+      "logging": [
+        "LOG_WRAPPER",
+        "NOT_EVIDENCED"
+      ],
+      "provenance": [
+        "FAILURE_CONTEXT_NOT_EVIDENCED_IN_HANDLER"
+      ],
+      "evidence": [
+        "security-ev-888079f700892021",
+        "security-ev-449c9738ecfc8de9",
+        "security-ev-7336fafd6650cfdd"
+      ]
+    },
+    {
+      "snapshot_id": "snapshot-0013",
+      "version": "v0.6.0",
+      "variant": "variant-c",
+      "stage": "INPUT",
+      "failure_sources": [
+        "UNKNOWN_FAILURE"
+      ],
+      "detection_points": [
+        "UNKNOWN"
+      ],
+      "representations": [
+        "UNKNOWN"
+      ],
+      "propagation": [
+        "UNKNOWN"
+      ],
+      "containment": [
+        "UNKNOWN"
+      ],
+      "recovery": [
+        "UNKNOWN"
+      ],
+      "logging": [
+        "UNKNOWN"
+      ],
+      "provenance": [
+        "UNKNOWN"
+      ],
+      "evidence": [
+        "security-ev-cbe9e90254c137bf"
+      ]
+    },
+    {
+      "snapshot_id": "snapshot-0013",
+      "version": "v0.6.0",
+      "variant": "variant-c",
+      "stage": "VALIDATION",
+      "failure_sources": [
+        "VALIDATION_FAILURE"
+      ],
+      "detection_points": [
+        "CATCH"
+      ],
+      "representations": [
+        "UNBOUND_EXCEPTION"
+      ],
+      "propagation": [
+        "FALLBACK_RETURN"
+      ],
+      "containment": [
+        "OPERATION_LOCAL"
+      ],
+      "recovery": [
+        "FALLBACK_VALUE"
+      ],
+      "logging": [
+        "NOT_EVIDENCED"
+      ],
+      "provenance": [
+        "FAILURE_CONTEXT_NOT_EVIDENCED_IN_HANDLER"
+      ],
+      "evidence": [
+        "security-ev-67d410bb66e533fc"
+      ]
+    },
+    {
+      "snapshot_id": "snapshot-0013",
+      "version": "v0.6.0",
+      "variant": "variant-c",
+      "stage": "ACQUISITION",
+      "failure_sources": [
+        "NETWORK_FAILURE",
+        "TIMEOUT"
+      ],
+      "detection_points": [
+        "CATCH",
+        "ERROR_CALLBACK",
+        "TIMEOUT_CALLBACK"
+      ],
+      "representations": [
+        "CALLBACK_CONTROL_FLOW",
+        "EXCEPTION_VARIABLE"
+      ],
+      "propagation": [
+        "RECORDED_OR_RETURNED_ON_LOCAL_PATH",
+        "SUPPRESSED_OR_LOCAL_UNKNOWN"
+      ],
+      "containment": [
+        "STOP_BOUNDARY_NOT_PROVED"
+      ],
+      "recovery": [
+        "LOCAL_FAILURE_PATH",
+        "NONE_EVIDENCED"
+      ],
+      "logging": [
+        "NOT_EVIDENCED",
+        "NOT_EVIDENCED_AT_CALLBACK"
+      ],
+      "provenance": [
+        "CANDIDATE_OR_REQUEST_LINKAGE_UNKNOWN_AT_CALLBACK",
+        "FAILURE_CONTEXT_NOT_EVIDENCED_IN_HANDLER"
+      ],
+      "evidence": [
+        "security-ev-4c6864414081c3fb",
+        "security-ev-c3b3e1fe251bcf28",
+        "security-ev-442bd1bd40a7dd57"
+      ]
+    },
+    {
+      "snapshot_id": "snapshot-0013",
+      "version": "v0.6.0",
+      "variant": "variant-c",
+      "stage": "OBSERVATION",
+      "failure_sources": [
+        "PERSISTENCE_FAILURE"
+      ],
+      "detection_points": [
+        "CATCH"
+      ],
+      "representations": [
+        "UNBOUND_EXCEPTION"
+      ],
+      "propagation": [
+        "SUPPRESSED_OR_LOCAL_UNKNOWN"
+      ],
+      "containment": [
+        "OPERATION_LOCAL"
+      ],
+      "recovery": [
+        "NONE_EVIDENCED"
+      ],
+      "logging": [
+        "NOT_EVIDENCED"
+      ],
+      "provenance": [
+        "FAILURE_CONTEXT_NOT_EVIDENCED_IN_HANDLER"
+      ],
+      "evidence": [
+        "security-ev-4088c2804364a776"
+      ]
+    },
+    {
+      "snapshot_id": "snapshot-0013",
+      "version": "v0.6.0",
+      "variant": "variant-c",
+      "stage": "RECOGNITION",
+      "failure_sources": [
+        "PARSING_FAILURE",
+        "PROVIDER_FAILURE"
+      ],
+      "detection_points": [
+        "CATCH"
+      ],
+      "representations": [
+        "EXCEPTION_VARIABLE",
+        "UNBOUND_EXCEPTION"
+      ],
+      "propagation": [
+        "FALLBACK_RETURN",
+        "SUPPRESSED_OR_LOCAL_UNKNOWN"
+      ],
+      "containment": [
+        "OPERATION_LOCAL",
+        "PROVIDER_WIDE"
+      ],
+      "recovery": [
+        "CONTINUE_PROVIDER_LOOP_OR_METHOD_FALLBACK",
+        "FALLBACK_VALUE"
+      ],
+      "logging": [
+        "LOG_WRAPPER",
+        "NOT_EVIDENCED"
+      ],
+      "provenance": [
+        "CONTEXT_PARTIALLY_RETAINED",
+        "FAILURE_CONTEXT_NOT_EVIDENCED_IN_HANDLER"
+      ],
+      "evidence": [
+        "security-ev-bf8a7dda4bc3fdf3",
+        "security-ev-d09f05e9d84b8ff2"
+      ]
+    },
+    {
+      "snapshot_id": "snapshot-0013",
+      "version": "v0.6.0",
+      "variant": "variant-c",
+      "stage": "DISCOVERY",
+      "failure_sources": [
+        "DISCOVERY_FAILURE"
+      ],
+      "detection_points": [
+        "CATCH"
+      ],
+      "representations": [
+        "EXCEPTION_VARIABLE"
+      ],
+      "propagation": [
+        "SUPPRESSED_OR_LOCAL_UNKNOWN"
+      ],
+      "containment": [
+        "OPERATION_LOCAL"
+      ],
+      "recovery": [
+        "NONE_EVIDENCED"
+      ],
+      "logging": [
+        "KNOWLEDGE_BASE_OR_SCHEDULER_STATE"
+      ],
+      "provenance": [
+        "CONTEXT_PARTIALLY_RETAINED"
+      ],
+      "evidence": [
+        "security-ev-d4c6ec2b97e75606"
+      ]
+    },
+    {
+      "snapshot_id": "snapshot-0013",
+      "version": "v0.6.0",
+      "variant": "variant-c",
+      "stage": "EXPANSION",
+      "failure_sources": [
+        "UNKNOWN_FAILURE"
+      ],
+      "detection_points": [
+        "UNKNOWN"
+      ],
+      "representations": [
+        "UNKNOWN"
+      ],
+      "propagation": [
+        "UNKNOWN"
+      ],
+      "containment": [
+        "UNKNOWN"
+      ],
+      "recovery": [
+        "UNKNOWN"
+      ],
+      "logging": [
+        "UNKNOWN"
+      ],
+      "provenance": [
+        "UNKNOWN"
+      ],
+      "evidence": [
+        "security-absence-91eabca354de13dc"
+      ]
+    },
+    {
+      "snapshot_id": "snapshot-0013",
+      "version": "v0.6.0",
+      "variant": "variant-c",
+      "stage": "SCHEDULING",
+      "failure_sources": [
+        "SCHEDULER_FAILURE"
+      ],
+      "detection_points": [
+        "CATCH"
+      ],
+      "representations": [
+        "EXCEPTION_VARIABLE"
+      ],
+      "propagation": [
+        "STATE_OR_DIAGNOSTIC_RECORD"
+      ],
+      "containment": [
+        "CANDIDATE_WIDE"
+      ],
+      "recovery": [
+        "RECORD_AND_RETURN_OR_CONTINUE"
+      ],
+      "logging": [
+        "KNOWLEDGE_BASE_OR_SCHEDULER_STATE",
+        "STRUCTURED_RECORD"
+      ],
+      "provenance": [
+        "FAILURE_CONTEXT_NOT_EVIDENCED_IN_HANDLER"
+      ],
+      "evidence": [
+        "security-ev-af156f68e5fcbbe9"
+      ]
+    },
+    {
+      "snapshot_id": "snapshot-0013",
+      "version": "v0.6.0",
+      "variant": "variant-c",
+      "stage": "PERSISTENCE",
+      "failure_sources": [
+        "PERSISTENCE_FAILURE"
+      ],
+      "detection_points": [
+        "CATCH"
+      ],
+      "representations": [
+        "EXCEPTION_VARIABLE"
+      ],
+      "propagation": [
+        "SUPPRESSED_OR_LOCAL_UNKNOWN"
+      ],
+      "containment": [
+        "OPERATION_LOCAL"
+      ],
+      "recovery": [
+        "NONE_EVIDENCED"
+      ],
+      "logging": [
+        "LOG_WRAPPER"
+      ],
+      "provenance": [
+        "FAILURE_CONTEXT_NOT_EVIDENCED_IN_HANDLER"
+      ],
+      "evidence": [
+        "security-ev-d93e18e8c1e998c2",
+        "security-ev-1bf8fc7bbb6afbc9"
+      ]
+    },
+    {
+      "snapshot_id": "snapshot-0013",
+      "version": "v0.6.0",
+      "variant": "variant-c",
+      "stage": "EXPORT",
+      "failure_sources": [
+        "UNKNOWN_FAILURE"
+      ],
+      "detection_points": [
+        "UNKNOWN"
+      ],
+      "representations": [
+        "UNKNOWN"
+      ],
+      "propagation": [
+        "UNKNOWN"
+      ],
+      "containment": [
+        "UNKNOWN"
+      ],
+      "recovery": [
+        "UNKNOWN"
+      ],
+      "logging": [
+        "UNKNOWN"
+      ],
+      "provenance": [
+        "UNKNOWN"
+      ],
+      "evidence": [
+        "security-ev-696033ed42a7d56d"
+      ]
+    },
+    {
+      "snapshot_id": "snapshot-0013",
+      "version": "v0.6.0",
+      "variant": "variant-c",
+      "stage": "UI",
+      "failure_sources": [
+        "UNKNOWN_FAILURE"
+      ],
+      "detection_points": [
+        "UNKNOWN"
+      ],
+      "representations": [
+        "UNKNOWN"
+      ],
+      "propagation": [
+        "UNKNOWN"
+      ],
+      "containment": [
+        "UNKNOWN"
+      ],
+      "recovery": [
+        "UNKNOWN"
+      ],
+      "logging": [
+        "UNKNOWN"
+      ],
+      "provenance": [
+        "UNKNOWN"
+      ],
+      "evidence": [
+        "security-ev-8dee0bbff7101f5f"
+      ]
+    },
+    {
+      "snapshot_id": "snapshot-0013",
+      "version": "v0.6.0",
+      "variant": "variant-c",
+      "stage": "CROSS_CUTTING",
+      "failure_sources": [
+        "NETWORK_FAILURE",
+        "UNKNOWN_FAILURE"
+      ],
+      "detection_points": [
+        "CATCH"
+      ],
+      "representations": [
+        "EXCEPTION_VARIABLE",
+        "UNBOUND_EXCEPTION"
+      ],
+      "propagation": [
+        "SUPPRESSED_OR_LOCAL_UNKNOWN"
+      ],
+      "containment": [
+        "OPERATION_LOCAL",
+        "STOP_BOUNDARY_NOT_PROVED"
+      ],
+      "recovery": [
+        "NONE_EVIDENCED"
+      ],
+      "logging": [
+        "LOG_WRAPPER",
+        "NOT_EVIDENCED"
+      ],
+      "provenance": [
+        "FAILURE_CONTEXT_NOT_EVIDENCED_IN_HANDLER"
+      ],
+      "evidence": [
+        "security-ev-62b4a2dfb3d93671",
+        "security-ev-9ae6e046cf5f209d",
+        "security-ev-bc56107008ebaef1"
+      ]
+    },
+    {
+      "snapshot_id": "snapshot-0014",
+      "version": "v0.7.1",
+      "variant": "only-evidenced-complete-occurrence",
+      "stage": "INPUT",
+      "failure_sources": [
+        "UNKNOWN_FAILURE"
+      ],
+      "detection_points": [
+        "UNKNOWN"
+      ],
+      "representations": [
+        "UNKNOWN"
+      ],
+      "propagation": [
+        "UNKNOWN"
+      ],
+      "containment": [
+        "UNKNOWN"
+      ],
+      "recovery": [
+        "UNKNOWN"
+      ],
+      "logging": [
+        "UNKNOWN"
+      ],
+      "provenance": [
+        "UNKNOWN"
+      ],
+      "evidence": [
+        "security-ev-5125f3fa0980b937"
+      ]
+    },
+    {
+      "snapshot_id": "snapshot-0014",
+      "version": "v0.7.1",
+      "variant": "only-evidenced-complete-occurrence",
+      "stage": "VALIDATION",
+      "failure_sources": [
+        "VALIDATION_FAILURE"
+      ],
+      "detection_points": [
+        "CATCH"
+      ],
+      "representations": [
+        "UNBOUND_EXCEPTION"
+      ],
+      "propagation": [
+        "FALLBACK_RETURN"
+      ],
+      "containment": [
+        "OPERATION_LOCAL"
+      ],
+      "recovery": [
+        "FALLBACK_VALUE"
+      ],
+      "logging": [
+        "NOT_EVIDENCED"
+      ],
+      "provenance": [
+        "FAILURE_CONTEXT_NOT_EVIDENCED_IN_HANDLER"
+      ],
+      "evidence": [
+        "security-ev-93399494c7b81238",
+        "security-ev-7813bbecc7244e35",
+        "security-ev-415c4a01be959441"
+      ]
+    },
+    {
+      "snapshot_id": "snapshot-0014",
+      "version": "v0.7.1",
+      "variant": "only-evidenced-complete-occurrence",
+      "stage": "ACQUISITION",
+      "failure_sources": [
+        "NETWORK_FAILURE",
+        "TIMEOUT"
+      ],
+      "detection_points": [
+        "CATCH",
+        "ERROR_CALLBACK",
+        "TIMEOUT_CALLBACK"
+      ],
+      "representations": [
+        "CALLBACK_CONTROL_FLOW",
+        "EXCEPTION_VARIABLE"
+      ],
+      "propagation": [
+        "RECORDED_OR_RETURNED_ON_LOCAL_PATH",
+        "STATE_OR_DIAGNOSTIC_RECORD",
+        "SUPPRESSED_OR_LOCAL_UNKNOWN"
+      ],
+      "containment": [
+        "OPERATION_LOCAL",
+        "STOP_BOUNDARY_NOT_PROVED"
+      ],
+      "recovery": [
+        "LOCAL_FAILURE_PATH",
+        "NONE_EVIDENCED",
+        "RECORD_AND_RETURN_OR_CONTINUE"
+      ],
+      "logging": [
+        "NOT_EVIDENCED",
+        "NOT_EVIDENCED_AT_CALLBACK",
+        "STRUCTURED_RECORD"
+      ],
+      "provenance": [
+        "CANDIDATE_OR_REQUEST_LINKAGE_UNKNOWN_AT_CALLBACK",
+        "CONTEXT_PARTIALLY_RETAINED"
+      ],
+      "evidence": [
+        "security-ev-e3ca6040d1719596",
+        "security-ev-4035436c20beb029",
+        "security-ev-b4979490680146c4",
+        "security-ev-1154e947aa545777"
+      ]
+    },
+    {
+      "snapshot_id": "snapshot-0014",
+      "version": "v0.7.1",
+      "variant": "only-evidenced-complete-occurrence",
+      "stage": "OBSERVATION",
+      "failure_sources": [
+        "UNKNOWN_FAILURE"
+      ],
+      "detection_points": [
+        "UNKNOWN"
+      ],
+      "representations": [
+        "UNKNOWN"
+      ],
+      "propagation": [
+        "UNKNOWN"
+      ],
+      "containment": [
+        "UNKNOWN"
+      ],
+      "recovery": [
+        "UNKNOWN"
+      ],
+      "logging": [
+        "UNKNOWN"
+      ],
+      "provenance": [
+        "UNKNOWN"
+      ],
+      "evidence": [
+        "security-ev-8edd3f593cce92b0"
+      ]
+    },
+    {
+      "snapshot_id": "snapshot-0014",
+      "version": "v0.7.1",
+      "variant": "only-evidenced-complete-occurrence",
+      "stage": "RECOGNITION",
+      "failure_sources": [
+        "PARSING_FAILURE"
+      ],
+      "detection_points": [
+        "CATCH"
+      ],
+      "representations": [
+        "UNBOUND_EXCEPTION"
+      ],
+      "propagation": [
+        "SUPPRESSED_OR_LOCAL_UNKNOWN"
+      ],
+      "containment": [
+        "OPERATION_LOCAL",
+        "STOP_BOUNDARY_NOT_PROVED"
+      ],
+      "recovery": [
+        "NONE_EVIDENCED"
+      ],
+      "logging": [
+        "NOT_EVIDENCED"
+      ],
+      "provenance": [
+        "FAILURE_CONTEXT_NOT_EVIDENCED_IN_HANDLER"
+      ],
+      "evidence": [
+        "security-ev-b48cec225e57a571",
+        "security-ev-611d5ec5488f4c38",
+        "security-ev-decbce3b7e9befab"
+      ]
+    },
+    {
+      "snapshot_id": "snapshot-0014",
+      "version": "v0.7.1",
+      "variant": "only-evidenced-complete-occurrence",
+      "stage": "DISCOVERY",
+      "failure_sources": [
+        "DISCOVERY_FAILURE"
+      ],
+      "detection_points": [
+        "CATCH"
+      ],
+      "representations": [
+        "EXCEPTION_VARIABLE"
+      ],
+      "propagation": [
+        "CONTINUE_LOOP"
+      ],
+      "containment": [
+        "OPERATION_LOCAL"
+      ],
+      "recovery": [
+        "CONTINUE_NEXT_ITERATION"
+      ],
+      "logging": [
+        "STRUCTURED_RECORD"
+      ],
+      "provenance": [
+        "CONTEXT_PARTIALLY_RETAINED"
+      ],
+      "evidence": [
+        "security-ev-87403833796eabe4"
+      ]
+    },
+    {
+      "snapshot_id": "snapshot-0014",
+      "version": "v0.7.1",
+      "variant": "only-evidenced-complete-occurrence",
+      "stage": "EXPANSION",
+      "failure_sources": [
+        "UNKNOWN_FAILURE"
+      ],
+      "detection_points": [
+        "UNKNOWN"
+      ],
+      "representations": [
+        "UNKNOWN"
+      ],
+      "propagation": [
+        "UNKNOWN"
+      ],
+      "containment": [
+        "UNKNOWN"
+      ],
+      "recovery": [
+        "UNKNOWN"
+      ],
+      "logging": [
+        "UNKNOWN"
+      ],
+      "provenance": [
+        "UNKNOWN"
+      ],
+      "evidence": [
+        "security-ev-de1e3f9bb54935e1"
+      ]
+    },
+    {
+      "snapshot_id": "snapshot-0014",
+      "version": "v0.7.1",
+      "variant": "only-evidenced-complete-occurrence",
+      "stage": "SCHEDULING",
+      "failure_sources": [
+        "UNKNOWN_FAILURE"
+      ],
+      "detection_points": [
+        "UNKNOWN"
+      ],
+      "representations": [
+        "UNKNOWN"
+      ],
+      "propagation": [
+        "UNKNOWN"
+      ],
+      "containment": [
+        "UNKNOWN"
+      ],
+      "recovery": [
+        "UNKNOWN"
+      ],
+      "logging": [
+        "UNKNOWN"
+      ],
+      "provenance": [
+        "UNKNOWN"
+      ],
+      "evidence": [
+        "security-ev-4c5fc6ddd833bf1f"
+      ]
+    },
+    {
+      "snapshot_id": "snapshot-0014",
+      "version": "v0.7.1",
+      "variant": "only-evidenced-complete-occurrence",
+      "stage": "PERSISTENCE",
+      "failure_sources": [
+        "PERSISTENCE_FAILURE"
+      ],
+      "detection_points": [
+        "CATCH"
+      ],
+      "representations": [
+        "EXCEPTION_VARIABLE"
+      ],
+      "propagation": [
+        "STATE_OR_DIAGNOSTIC_RECORD",
+        "SUPPRESSED_OR_LOCAL_UNKNOWN"
+      ],
+      "containment": [
+        "OPERATION_LOCAL"
+      ],
+      "recovery": [
+        "NONE_EVIDENCED",
+        "RECORD_AND_RETURN_OR_CONTINUE"
+      ],
+      "logging": [
+        "LOG_WRAPPER",
+        "STRUCTURED_RECORD"
+      ],
+      "provenance": [
+        "FAILURE_CONTEXT_NOT_EVIDENCED_IN_HANDLER"
+      ],
+      "evidence": [
+        "security-ev-bf4fdf005f17eb96",
+        "security-ev-8bc48fa3ff3f2023"
+      ]
+    },
+    {
+      "snapshot_id": "snapshot-0014",
+      "version": "v0.7.1",
+      "variant": "only-evidenced-complete-occurrence",
+      "stage": "EXPORT",
+      "failure_sources": [
+        "UNKNOWN_FAILURE"
+      ],
+      "detection_points": [
+        "UNKNOWN"
+      ],
+      "representations": [
+        "UNKNOWN"
+      ],
+      "propagation": [
+        "UNKNOWN"
+      ],
+      "containment": [
+        "UNKNOWN"
+      ],
+      "recovery": [
+        "UNKNOWN"
+      ],
+      "logging": [
+        "UNKNOWN"
+      ],
+      "provenance": [
+        "UNKNOWN"
+      ],
+      "evidence": [
+        "security-ev-bcc3f5fa615af4ba"
+      ]
+    },
+    {
+      "snapshot_id": "snapshot-0014",
+      "version": "v0.7.1",
+      "variant": "only-evidenced-complete-occurrence",
+      "stage": "UI",
+      "failure_sources": [
+        "UNKNOWN_FAILURE"
+      ],
+      "detection_points": [
+        "UNKNOWN"
+      ],
+      "representations": [
+        "UNKNOWN"
+      ],
+      "propagation": [
+        "UNKNOWN"
+      ],
+      "containment": [
+        "UNKNOWN"
+      ],
+      "recovery": [
+        "UNKNOWN"
+      ],
+      "logging": [
+        "UNKNOWN"
+      ],
+      "provenance": [
+        "UNKNOWN"
+      ],
+      "evidence": [
+        "security-ev-d044d082e102de0c"
+      ]
+    },
+    {
+      "snapshot_id": "snapshot-0014",
+      "version": "v0.7.1",
+      "variant": "only-evidenced-complete-occurrence",
+      "stage": "CROSS_CUTTING",
+      "failure_sources": [
+        "NETWORK_FAILURE",
+        "UNKNOWN_FAILURE"
+      ],
+      "detection_points": [
+        "CATCH"
+      ],
+      "representations": [
+        "EXCEPTION_VARIABLE",
+        "UNBOUND_EXCEPTION"
+      ],
+      "propagation": [
+        "STATE_OR_DIAGNOSTIC_RECORD",
+        "SUPPRESSED_OR_LOCAL_UNKNOWN"
+      ],
+      "containment": [
+        "OPERATION_LOCAL",
+        "STOP_BOUNDARY_NOT_PROVED"
+      ],
+      "recovery": [
+        "NONE_EVIDENCED",
+        "RECORD_AND_RETURN_OR_CONTINUE"
+      ],
+      "logging": [
+        "NOT_EVIDENCED",
+        "STRUCTURED_RECORD"
+      ],
+      "provenance": [
+        "FAILURE_CONTEXT_NOT_EVIDENCED_IN_HANDLER"
+      ],
+      "evidence": [
+        "security-ev-c1e0a7900dd364e7",
+        "security-ev-b9c9b9ade075bdce",
+        "security-ev-559db334b90926b1"
+      ]
+    }
+  ]
+}

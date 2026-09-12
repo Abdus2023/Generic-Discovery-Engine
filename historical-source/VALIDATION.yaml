@@ -1,0 +1,97 @@
+{
+  "schema_version": 1,
+  "overall": "FAIL",
+  "checks": [
+    {
+      "category": "Artifact identifiers",
+      "result": "PASS",
+      "detail": "5646 artifacts; 0 duplicate identifiers"
+    },
+    {
+      "category": "Manifest/index count",
+      "result": "PASS",
+      "detail": "manifest=5646, index=5646"
+    },
+    {
+      "category": "Orphan artifacts",
+      "result": "PASS",
+      "detail": "expected=5646, actual=5646, missing=0, orphan=0, duplicate output references=0"
+    },
+    {
+      "category": "Hash coverage",
+      "result": "PASS",
+      "detail": "5646/5646 files have present, matching SHA-256"
+    },
+    {
+      "category": "Empty artifacts",
+      "result": "PASS",
+      "detail": "0 empty artifact files"
+    },
+    {
+      "category": "Provenance coverage",
+      "result": "PASS",
+      "detail": "5646/5646 artifacts have document, revision, position, and method"
+    },
+    {
+      "category": "Chronology coverage",
+      "result": "PASS",
+      "detail": "5646/5646 artifacts have known/inferred/unknown chronology labels"
+    },
+    {
+      "category": "Raw revision integrity",
+      "result": "FAIL",
+      "detail": "0/4 raw Git-blob copies match recorded SHA-256"
+    },
+    {
+      "category": "Git byte-preservation attributes",
+      "result": "PASS",
+      "detail": "raw, extracted, and reconstructed payload trees are marked -text"
+    },
+    {
+      "category": "Semantic preservation",
+      "result": "FAIL",
+      "detail": "0/5644 original files equal their pinned source byte ranges"
+    },
+    {
+      "category": "Reconstruction labeling",
+      "result": "PASS",
+      "detail": "2/2 reconstructed files are explicit, non-authoritative, and inference-free"
+    },
+    {
+      "category": "Source coverage",
+      "result": "PASS",
+      "detail": "5184/5184 detected fences/outside userscripts/inline regions represented exactly once"
+    },
+    {
+      "category": "Lineage consistency",
+      "result": "PASS",
+      "detail": "nodes=5646, relationships=3488, broken references=0, node delta=0"
+    },
+    {
+      "category": "Duplicate consistency",
+      "result": "PASS",
+      "detail": "expected groups=2782, recorded=2782, bad canonical/hash groups=0"
+    },
+    {
+      "category": "Metadata sidecars",
+      "result": "PASS",
+      "detail": "5646/5646 consolidated sidecar records contain required layers"
+    },
+    {
+      "category": "Source map coverage",
+      "result": "PASS",
+      "detail": "5646/5646 artifact identifiers occur in SOURCE-MAP.md"
+    }
+  ],
+  "counts": {
+    "artifacts": 5646,
+    "manifest_entries": 5646,
+    "index_entries": 5646,
+    "detections": 5184,
+    "raw_revisions": 4,
+    "duplicate_groups": 2782,
+    "lineage_nodes": 5646,
+    "relationships": 3488,
+    "reconstructed": 2
+  }
+}

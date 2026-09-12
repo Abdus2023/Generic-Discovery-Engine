@@ -1,0 +1,198 @@
+{
+  "schema_version": "1.0",
+  "graph_type": "HISTORICAL_OBLIGATION_GRAPH",
+  "nodes": [
+    {
+      "id": "OBL-CANDIDATE-IDENTITY",
+      "kind": "OBLIGATION",
+      "status": "FORMALIZED",
+      "category": "PRESERVATION_OBLIGATION"
+    },
+    {
+      "id": "OBL-CLAIM-EXCLUSIVITY",
+      "kind": "OBLIGATION",
+      "status": "FORMALIZED",
+      "category": "ENGINEERING_REQUIREMENT"
+    },
+    {
+      "id": "OBL-ACQ-BEFORE-INTERP",
+      "kind": "OBLIGATION",
+      "status": "FORMALIZED",
+      "category": "PRESERVATION_OBLIGATION"
+    },
+    {
+      "id": "OBL-OBS-DISTINCT",
+      "kind": "OBLIGATION",
+      "status": "FORMALIZED",
+      "category": "PRESERVATION_OBLIGATION"
+    },
+    {
+      "id": "OBL-OBS-SOURCE",
+      "kind": "OBLIGATION",
+      "status": "FORMALIZED",
+      "category": "PRESERVATION_OBLIGATION"
+    },
+    {
+      "id": "OBL-RECOGNITION-DISTINCT",
+      "kind": "OBLIGATION",
+      "status": "FORMALIZED",
+      "category": "PRESERVATION_OBLIGATION"
+    },
+    {
+      "id": "OBL-DISCOVERY-RECORD",
+      "kind": "OBLIGATION",
+      "status": "FORMALIZED",
+      "category": "PRESERVATION_OBLIGATION"
+    },
+    {
+      "id": "OBL-EXPANSION-RECURSIVE",
+      "kind": "OBLIGATION",
+      "status": "FORMALIZED",
+      "category": "PRESERVATION_OBLIGATION"
+    },
+    {
+      "id": "OBL-CANDIDATE-ADMISSION",
+      "kind": "OBLIGATION",
+      "status": "FORMALIZED",
+      "category": "FUTURE_STRENGTHENING"
+    },
+    {
+      "id": "OBL-KNOWLEDGE",
+      "kind": "OBLIGATION",
+      "status": "FORMALIZED",
+      "category": "PRESERVATION_OBLIGATION"
+    }
+  ],
+  "edges": [
+    {
+      "from": "OBL-ACQ-BEFORE-INTERP",
+      "to": "OBL-CANDIDATE-IDENTITY",
+      "relation": "REQUIRES",
+      "evidence": [
+        "NE-V9-CLAIMS",
+        "NE-V9-INVARIANTS"
+      ]
+    },
+    {
+      "from": "OBL-CANDIDATE-ADMISSION",
+      "to": "OBL-CANDIDATE-IDENTITY",
+      "relation": "REQUIRES",
+      "evidence": [
+        "NE-V8-DUPLICATE",
+        "NE-V9-CLAIMS",
+        "NE-V9-INVARIANTS"
+      ]
+    },
+    {
+      "from": "OBL-CLAIM-EXCLUSIVITY",
+      "to": "OBL-CANDIDATE-IDENTITY",
+      "relation": "REQUIRES",
+      "evidence": [
+        "NE-V8-CLAIM",
+        "NE-V9-CLAIMS",
+        "NE-V9-INVARIANTS"
+      ]
+    },
+    {
+      "from": "OBL-DISCOVERY-RECORD",
+      "to": "OBL-OBS-SOURCE",
+      "relation": "REQUIRES",
+      "evidence": [
+        "NE-V3-DATA",
+        "NE-V8-PROVENANCE",
+        "NE-V9-CLAIMS",
+        "NE-V9-INVARIANTS"
+      ]
+    },
+    {
+      "from": "OBL-DISCOVERY-RECORD",
+      "to": "OBL-RECOGNITION-DISTINCT",
+      "relation": "REQUIRES",
+      "evidence": [
+        "NE-V3-DATA",
+        "NE-V8-PROVENANCE",
+        "NE-V9-CLAIMS",
+        "NE-V9-INVARIANTS"
+      ]
+    },
+    {
+      "from": "OBL-EXPANSION-RECURSIVE",
+      "to": "OBL-CANDIDATE-ADMISSION",
+      "relation": "REQUIRES",
+      "evidence": [
+        "NE-V8-DUPLICATE",
+        "NE-V9-CLAIMS",
+        "NE-V9-INVARIANTS"
+      ]
+    },
+    {
+      "from": "OBL-EXPANSION-RECURSIVE",
+      "to": "OBL-DISCOVERY-RECORD",
+      "relation": "REQUIRES",
+      "evidence": [
+        "NE-V3-DATA",
+        "NE-V8-PROVENANCE",
+        "NE-V9-CLAIMS",
+        "NE-V9-INVARIANTS"
+      ]
+    },
+    {
+      "from": "OBL-KNOWLEDGE",
+      "to": "OBL-CANDIDATE-IDENTITY",
+      "relation": "REQUIRES",
+      "evidence": [
+        "NE-V9-CLAIMS",
+        "NE-V9-INVARIANTS"
+      ]
+    },
+    {
+      "from": "OBL-KNOWLEDGE",
+      "to": "OBL-DISCOVERY-RECORD",
+      "relation": "REQUIRES",
+      "evidence": [
+        "NE-V3-DATA",
+        "NE-V8-PROVENANCE",
+        "NE-V9-CLAIMS",
+        "NE-V9-INVARIANTS"
+      ]
+    },
+    {
+      "from": "OBL-KNOWLEDGE",
+      "to": "OBL-OBS-DISTINCT",
+      "relation": "REQUIRES",
+      "evidence": [
+        "NE-V9-CLAIMS",
+        "NE-V9-INVARIANTS"
+      ]
+    },
+    {
+      "from": "OBL-OBS-DISTINCT",
+      "to": "OBL-ACQ-BEFORE-INTERP",
+      "relation": "REQUIRES",
+      "evidence": [
+        "NE-V9-CLAIMS",
+        "NE-V9-INVARIANTS"
+      ]
+    },
+    {
+      "from": "OBL-OBS-SOURCE",
+      "to": "OBL-CANDIDATE-IDENTITY",
+      "relation": "REQUIRES",
+      "evidence": [
+        "NE-V8-PROVENANCE",
+        "NE-V9-CLAIMS",
+        "NE-V9-INVARIANTS"
+      ]
+    },
+    {
+      "from": "OBL-RECOGNITION-DISTINCT",
+      "to": "OBL-OBS-DISTINCT",
+      "relation": "REQUIRES",
+      "evidence": [
+        "NE-V9-CLAIMS",
+        "NE-V9-INVARIANTS"
+      ]
+    }
+  ],
+  "future_edges_excluded": true
+}

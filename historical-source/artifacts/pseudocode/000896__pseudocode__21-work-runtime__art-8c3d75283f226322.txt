@@ -1,0 +1,20 @@
+                    ScanSession
+                         │
+                         ▼
+                  FrontierRuntime
+                         │
+                         ▼
+                   WorkScheduler
+                         │
+                         ▼
+                      Claim
+                         │
+                         ▼
+                   WorkExecutor
+                    /          \
+                   /            \
+                  ▼              ▼
+          DiscoveryExecutor  AcquisitionExecutor
+                  │              │
+                  ▼              ▼
+        DiscoveryController  AcquisitionRuntime

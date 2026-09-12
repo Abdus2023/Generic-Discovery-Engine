@@ -1,0 +1,927 @@
+{
+  "schema_version": "1.0",
+  "graph_type": "VERIFICATION_GRAPH",
+  "nodes": [
+    {
+      "id": "OBL-CANDIDATE-IDENTITY",
+      "kind": "OBLIGATION",
+      "status": "FORMALIZED",
+      "category": "PRESERVATION_OBLIGATION"
+    },
+    {
+      "id": "OBL-CANDIDATE-EQUIVALENCE",
+      "kind": "OBLIGATION",
+      "status": "FORMALIZED",
+      "category": "FUTURE_STRENGTHENING"
+    },
+    {
+      "id": "OBL-DEDUP-SCOPES",
+      "kind": "OBLIGATION",
+      "status": "FORMALIZED",
+      "category": "ENGINEERING_REQUIREMENT"
+    },
+    {
+      "id": "OBL-CANDIDATE-ORIGIN",
+      "kind": "OBLIGATION",
+      "status": "FORMALIZED",
+      "category": "PRESERVATION_OBLIGATION"
+    },
+    {
+      "id": "OBL-CANDIDATE-PARENT",
+      "kind": "OBLIGATION",
+      "status": "FORMALIZED",
+      "category": "PRESERVATION_OBLIGATION"
+    },
+    {
+      "id": "OBL-CANDIDATE-STATE",
+      "kind": "OBLIGATION",
+      "status": "FORMALIZED",
+      "category": "FUTURE_STRENGTHENING"
+    },
+    {
+      "id": "OBL-CANDIDATE-PRIORITY",
+      "kind": "OBLIGATION",
+      "status": "FORMALIZED",
+      "category": "COMPATIBILITY_OBLIGATION"
+    },
+    {
+      "id": "OBL-CANDIDATE-ATTEMPTS",
+      "kind": "OBLIGATION",
+      "status": "FORMALIZED",
+      "category": "PRESERVATION_OBLIGATION"
+    },
+    {
+      "id": "OBL-CANDIDATE-TIMESTAMPS",
+      "kind": "OBLIGATION",
+      "status": "FORMALIZED",
+      "category": "FUTURE_STRENGTHENING"
+    },
+    {
+      "id": "OBL-CLAIM-EXCLUSIVITY",
+      "kind": "OBLIGATION",
+      "status": "FORMALIZED",
+      "category": "ENGINEERING_REQUIREMENT"
+    },
+    {
+      "id": "OBL-TERMINAL-OWNERSHIP",
+      "kind": "OBLIGATION",
+      "status": "FORMALIZED",
+      "category": "FUTURE_STRENGTHENING"
+    },
+    {
+      "id": "OBL-ACQ-BEFORE-INTERP",
+      "kind": "OBLIGATION",
+      "status": "FORMALIZED",
+      "category": "PRESERVATION_OBLIGATION"
+    },
+    {
+      "id": "OBL-ACQ-OUTCOME",
+      "kind": "OBLIGATION",
+      "status": "FORMALIZED",
+      "category": "ENGINEERING_REQUIREMENT"
+    },
+    {
+      "id": "OBL-ACQ-METADATA",
+      "kind": "OBLIGATION",
+      "status": "FORMALIZED",
+      "category": "PRESERVATION_OBLIGATION"
+    },
+    {
+      "id": "OBL-ACQ-TIMEOUT",
+      "kind": "OBLIGATION",
+      "status": "FORMALIZED",
+      "category": "PRESERVATION_OBLIGATION"
+    },
+    {
+      "id": "OBL-ACQ-SCOPE",
+      "kind": "OBLIGATION",
+      "status": "FORMALIZED",
+      "category": "ENGINEERING_REQUIREMENT"
+    },
+    {
+      "id": "OBL-CANCELLATION",
+      "kind": "OBLIGATION",
+      "status": "FORMALIZED",
+      "category": "FUTURE_STRENGTHENING"
+    },
+    {
+      "id": "OBL-OBS-DISTINCT",
+      "kind": "OBLIGATION",
+      "status": "FORMALIZED",
+      "category": "PRESERVATION_OBLIGATION"
+    },
+    {
+      "id": "OBL-OBS-SOURCE",
+      "kind": "OBLIGATION",
+      "status": "FORMALIZED",
+      "category": "PRESERVATION_OBLIGATION"
+    },
+    {
+      "id": "OBL-OBS-OUTCOMES",
+      "kind": "OBLIGATION",
+      "status": "FORMALIZED",
+      "category": "FUTURE_STRENGTHENING"
+    },
+    {
+      "id": "OBL-RECOGNITION-DISTINCT",
+      "kind": "OBLIGATION",
+      "status": "FORMALIZED",
+      "category": "PRESERVATION_OBLIGATION"
+    },
+    {
+      "id": "OBL-RECOGNITION-OUTCOMES",
+      "kind": "OBLIGATION",
+      "status": "FORMALIZED",
+      "category": "FUTURE_STRENGTHENING"
+    },
+    {
+      "id": "OBL-PROVIDER-CONTRACT",
+      "kind": "OBLIGATION",
+      "status": "FORMALIZED",
+      "category": "FUTURE_STRENGTHENING"
+    },
+    {
+      "id": "OBL-PROVIDER-FAILURE",
+      "kind": "OBLIGATION",
+      "status": "FORMALIZED",
+      "category": "FUTURE_STRENGTHENING"
+    },
+    {
+      "id": "OBL-PROVIDER-ORDER",
+      "kind": "OBLIGATION",
+      "status": "FORMALIZED",
+      "category": "COMPATIBILITY_OBLIGATION"
+    },
+    {
+      "id": "OBL-DISCOVERY-RECORD",
+      "kind": "OBLIGATION",
+      "status": "FORMALIZED",
+      "category": "PRESERVATION_OBLIGATION"
+    },
+    {
+      "id": "OBL-EXPANSION-RECURSIVE",
+      "kind": "OBLIGATION",
+      "status": "FORMALIZED",
+      "category": "PRESERVATION_OBLIGATION"
+    },
+    {
+      "id": "OBL-EXPANSION-VS-RETRY",
+      "kind": "OBLIGATION",
+      "status": "FORMALIZED",
+      "category": "ENGINEERING_REQUIREMENT"
+    },
+    {
+      "id": "OBL-CANDIDATE-ADMISSION",
+      "kind": "OBLIGATION",
+      "status": "FORMALIZED",
+      "category": "FUTURE_STRENGTHENING"
+    },
+    {
+      "id": "OBL-KNOWLEDGE",
+      "kind": "OBLIGATION",
+      "status": "FORMALIZED",
+      "category": "PRESERVATION_OBLIGATION"
+    },
+    {
+      "id": "OBL-BOUNDED-CONCURRENCY",
+      "kind": "OBLIGATION",
+      "status": "FORMALIZED",
+      "category": "PRESERVATION_OBLIGATION"
+    },
+    {
+      "id": "OBL-SCHEDULER-TERMINATION",
+      "kind": "OBLIGATION",
+      "status": "FORMALIZED",
+      "category": "FUTURE_STRENGTHENING"
+    },
+    {
+      "id": "OBL-WORKER-FAILURE",
+      "kind": "OBLIGATION",
+      "status": "FORMALIZED",
+      "category": "FUTURE_STRENGTHENING"
+    },
+    {
+      "id": "OBL-RETRY",
+      "kind": "OBLIGATION",
+      "status": "FORMALIZED",
+      "category": "FUTURE_STRENGTHENING"
+    },
+    {
+      "id": "OBL-PROVENANCE",
+      "kind": "OBLIGATION",
+      "status": "FORMALIZED",
+      "category": "PRESERVATION_OBLIGATION"
+    },
+    {
+      "id": "OBL-PROVENANCE-INTEGRITY",
+      "kind": "OBLIGATION",
+      "status": "FORMALIZED",
+      "category": "FUTURE_STRENGTHENING"
+    },
+    {
+      "id": "OBL-REMOTE-DATA",
+      "kind": "OBLIGATION",
+      "status": "FORMALIZED",
+      "category": "ENGINEERING_REQUIREMENT"
+    },
+    {
+      "id": "OBL-AUTHORITY",
+      "kind": "OBLIGATION",
+      "status": "FORMALIZED",
+      "category": "FUTURE_STRENGTHENING"
+    },
+    {
+      "id": "OBL-PARSER",
+      "kind": "OBLIGATION",
+      "status": "FORMALIZED",
+      "category": "ENGINEERING_REQUIREMENT"
+    },
+    {
+      "id": "OBL-RESOURCE",
+      "kind": "OBLIGATION",
+      "status": "FORMALIZED",
+      "category": "PRESERVATION_OBLIGATION"
+    },
+    {
+      "id": "OBL-UNBOUNDED",
+      "kind": "OBLIGATION",
+      "status": "FORMALIZED",
+      "category": "FUTURE_STRENGTHENING"
+    },
+    {
+      "id": "OBL-LIFECYCLE-OBS",
+      "kind": "OBLIGATION",
+      "status": "FORMALIZED",
+      "category": "FUTURE_STRENGTHENING"
+    },
+    {
+      "id": "OBL-AUDIT",
+      "kind": "OBLIGATION",
+      "status": "FORMALIZED",
+      "category": "FUTURE_STRENGTHENING"
+    },
+    {
+      "id": "OBL-SILENT-FAILURE",
+      "kind": "OBLIGATION",
+      "status": "FORMALIZED",
+      "category": "FUTURE_STRENGTHENING"
+    },
+    {
+      "id": "OBL-PERSIST-COMPAT",
+      "kind": "OBLIGATION",
+      "status": "FORMALIZED",
+      "category": "COMPATIBILITY_OBLIGATION"
+    },
+    {
+      "id": "OBL-PERSIST-CORRUPTION",
+      "kind": "OBLIGATION",
+      "status": "FORMALIZED",
+      "category": "FUTURE_STRENGTHENING"
+    },
+    {
+      "id": "OBL-EXPORT",
+      "kind": "OBLIGATION",
+      "status": "FORMALIZED",
+      "category": "FUTURE_STRENGTHENING"
+    },
+    {
+      "id": "OBL-UI",
+      "kind": "OBLIGATION",
+      "status": "FORMALIZED",
+      "category": "DESIGN_OPTION"
+    },
+    {
+      "id": "OBL-PRIVATE-SHAPE",
+      "kind": "OBLIGATION",
+      "status": "FORMALIZED",
+      "category": "DESIGN_OPTION"
+    },
+    {
+      "id": "OBL-CONTRACT-INPUT",
+      "kind": "OBLIGATION",
+      "status": "FORMALIZED",
+      "category": "ENGINEERING_REQUIREMENT"
+    },
+    {
+      "id": "OBL-ERROR-CONTRACT",
+      "kind": "OBLIGATION",
+      "status": "FORMALIZED",
+      "category": "FUTURE_STRENGTHENING"
+    },
+    {
+      "id": "OBL-REGRESSION",
+      "kind": "OBLIGATION",
+      "status": "FORMALIZED",
+      "category": "ENGINEERING_REQUIREMENT"
+    },
+    {
+      "id": "OBL-PARSE-DEFECT",
+      "kind": "OBLIGATION",
+      "status": "FORMALIZED",
+      "category": "HISTORICAL_DEFECT"
+    },
+    {
+      "id": "OBL-WEB-GENERALIZE",
+      "kind": "OBLIGATION",
+      "status": "FORMALIZED",
+      "category": "FUTURE_STRENGTHENING"
+    },
+    {
+      "id": "TEST-CANDIDATE-IDENTITY",
+      "kind": "TEST_EVIDENCE",
+      "status": "UNVERIFIED"
+    },
+    {
+      "id": "TEST-CANDIDATE-EQUIVALENCE",
+      "kind": "TEST_EVIDENCE",
+      "status": "UNVERIFIED"
+    },
+    {
+      "id": "TEST-DEDUP-SCOPES",
+      "kind": "TEST_EVIDENCE",
+      "status": "UNVERIFIED"
+    },
+    {
+      "id": "TEST-CANDIDATE-ORIGIN",
+      "kind": "TEST_EVIDENCE",
+      "status": "UNVERIFIED"
+    },
+    {
+      "id": "TEST-CANDIDATE-PARENT",
+      "kind": "TEST_EVIDENCE",
+      "status": "UNVERIFIED"
+    },
+    {
+      "id": "TEST-CANDIDATE-STATE",
+      "kind": "TEST_EVIDENCE",
+      "status": "UNVERIFIED"
+    },
+    {
+      "id": "TEST-CANDIDATE-PRIORITY",
+      "kind": "TEST_EVIDENCE",
+      "status": "UNVERIFIED"
+    },
+    {
+      "id": "TEST-CANDIDATE-ATTEMPTS",
+      "kind": "TEST_EVIDENCE",
+      "status": "UNVERIFIED"
+    },
+    {
+      "id": "TEST-CANDIDATE-TIMESTAMPS",
+      "kind": "TEST_EVIDENCE",
+      "status": "UNVERIFIED"
+    },
+    {
+      "id": "TEST-CLAIM-EXCLUSIVITY",
+      "kind": "TEST_EVIDENCE",
+      "status": "UNVERIFIED"
+    },
+    {
+      "id": "TEST-TERMINAL-OWNERSHIP",
+      "kind": "TEST_EVIDENCE",
+      "status": "UNVERIFIED"
+    },
+    {
+      "id": "TEST-ACQ-BEFORE-INTERP",
+      "kind": "TEST_EVIDENCE",
+      "status": "UNVERIFIED"
+    },
+    {
+      "id": "TEST-ACQ-OUTCOME",
+      "kind": "TEST_EVIDENCE",
+      "status": "UNVERIFIED"
+    },
+    {
+      "id": "TEST-ACQ-METADATA",
+      "kind": "TEST_EVIDENCE",
+      "status": "UNVERIFIED"
+    },
+    {
+      "id": "TEST-ACQ-TIMEOUT",
+      "kind": "TEST_EVIDENCE",
+      "status": "UNVERIFIED"
+    },
+    {
+      "id": "TEST-ACQ-SCOPE",
+      "kind": "TEST_EVIDENCE",
+      "status": "UNVERIFIED"
+    },
+    {
+      "id": "TEST-CANCELLATION",
+      "kind": "TEST_EVIDENCE",
+      "status": "UNVERIFIED"
+    },
+    {
+      "id": "TEST-OBS-DISTINCT",
+      "kind": "TEST_EVIDENCE",
+      "status": "UNVERIFIED"
+    },
+    {
+      "id": "TEST-OBS-SOURCE",
+      "kind": "TEST_EVIDENCE",
+      "status": "UNVERIFIED"
+    },
+    {
+      "id": "TEST-OBS-OUTCOMES",
+      "kind": "TEST_EVIDENCE",
+      "status": "UNVERIFIED"
+    },
+    {
+      "id": "TEST-RECOGNITION-DISTINCT",
+      "kind": "TEST_EVIDENCE",
+      "status": "UNVERIFIED"
+    },
+    {
+      "id": "TEST-RECOGNITION-OUTCOMES",
+      "kind": "TEST_EVIDENCE",
+      "status": "UNVERIFIED"
+    },
+    {
+      "id": "TEST-PROVIDER-CONTRACT",
+      "kind": "TEST_EVIDENCE",
+      "status": "UNVERIFIED"
+    },
+    {
+      "id": "TEST-PROVIDER-FAILURE",
+      "kind": "TEST_EVIDENCE",
+      "status": "UNVERIFIED"
+    },
+    {
+      "id": "TEST-PROVIDER-ORDER",
+      "kind": "TEST_EVIDENCE",
+      "status": "UNVERIFIED"
+    },
+    {
+      "id": "TEST-DISCOVERY-RECORD",
+      "kind": "TEST_EVIDENCE",
+      "status": "UNVERIFIED"
+    },
+    {
+      "id": "TEST-EXPANSION-RECURSIVE",
+      "kind": "TEST_EVIDENCE",
+      "status": "UNVERIFIED"
+    },
+    {
+      "id": "TEST-EXPANSION-VS-RETRY",
+      "kind": "TEST_EVIDENCE",
+      "status": "UNVERIFIED"
+    },
+    {
+      "id": "TEST-CANDIDATE-ADMISSION",
+      "kind": "TEST_EVIDENCE",
+      "status": "UNVERIFIED"
+    },
+    {
+      "id": "TEST-KNOWLEDGE",
+      "kind": "TEST_EVIDENCE",
+      "status": "UNVERIFIED"
+    },
+    {
+      "id": "TEST-BOUNDED-CONCURRENCY",
+      "kind": "TEST_EVIDENCE",
+      "status": "UNVERIFIED"
+    },
+    {
+      "id": "TEST-SCHEDULER-TERMINATION",
+      "kind": "TEST_EVIDENCE",
+      "status": "UNVERIFIED"
+    },
+    {
+      "id": "TEST-WORKER-FAILURE",
+      "kind": "TEST_EVIDENCE",
+      "status": "UNVERIFIED"
+    },
+    {
+      "id": "TEST-RETRY",
+      "kind": "TEST_EVIDENCE",
+      "status": "UNVERIFIED"
+    },
+    {
+      "id": "TEST-PROVENANCE",
+      "kind": "TEST_EVIDENCE",
+      "status": "UNVERIFIED"
+    },
+    {
+      "id": "TEST-PROVENANCE-INTEGRITY",
+      "kind": "TEST_EVIDENCE",
+      "status": "UNVERIFIED"
+    },
+    {
+      "id": "TEST-REMOTE-DATA",
+      "kind": "TEST_EVIDENCE",
+      "status": "UNVERIFIED"
+    },
+    {
+      "id": "TEST-AUTHORITY",
+      "kind": "TEST_EVIDENCE",
+      "status": "UNVERIFIED"
+    },
+    {
+      "id": "TEST-PARSER",
+      "kind": "TEST_EVIDENCE",
+      "status": "UNVERIFIED"
+    },
+    {
+      "id": "TEST-RESOURCE",
+      "kind": "TEST_EVIDENCE",
+      "status": "UNVERIFIED"
+    },
+    {
+      "id": "TEST-UNBOUNDED",
+      "kind": "TEST_EVIDENCE",
+      "status": "UNVERIFIED"
+    },
+    {
+      "id": "TEST-LIFECYCLE-OBS",
+      "kind": "TEST_EVIDENCE",
+      "status": "UNVERIFIED"
+    },
+    {
+      "id": "TEST-AUDIT",
+      "kind": "TEST_EVIDENCE",
+      "status": "UNVERIFIED"
+    },
+    {
+      "id": "TEST-SILENT-FAILURE",
+      "kind": "TEST_EVIDENCE",
+      "status": "UNVERIFIED"
+    },
+    {
+      "id": "TEST-PERSIST-COMPAT",
+      "kind": "TEST_EVIDENCE",
+      "status": "UNVERIFIED"
+    },
+    {
+      "id": "TEST-PERSIST-CORRUPTION",
+      "kind": "TEST_EVIDENCE",
+      "status": "UNVERIFIED"
+    },
+    {
+      "id": "TEST-EXPORT",
+      "kind": "TEST_EVIDENCE",
+      "status": "UNVERIFIED"
+    },
+    {
+      "id": "TEST-UI",
+      "kind": "TEST_EVIDENCE",
+      "status": "UNVERIFIED"
+    },
+    {
+      "id": "TEST-PRIVATE-SHAPE",
+      "kind": "TEST_EVIDENCE",
+      "status": "UNVERIFIED"
+    },
+    {
+      "id": "TEST-CONTRACT-INPUT",
+      "kind": "TEST_EVIDENCE",
+      "status": "UNVERIFIED"
+    },
+    {
+      "id": "TEST-ERROR-CONTRACT",
+      "kind": "TEST_EVIDENCE",
+      "status": "UNVERIFIED"
+    },
+    {
+      "id": "TEST-REGRESSION",
+      "kind": "TEST_EVIDENCE",
+      "status": "UNVERIFIED"
+    },
+    {
+      "id": "TEST-PARSE-DEFECT",
+      "kind": "TEST_EVIDENCE",
+      "status": "UNVERIFIED"
+    },
+    {
+      "id": "TEST-WEB-GENERALIZE",
+      "kind": "TEST_EVIDENCE",
+      "status": "UNVERIFIED"
+    }
+  ],
+  "edges": [
+    {
+      "from": "OBL-CANDIDATE-IDENTITY",
+      "to": "TEST-CANDIDATE-IDENTITY",
+      "relation": "VERIFIED_BY",
+      "verification_result": "UNVERIFIED"
+    },
+    {
+      "from": "OBL-CANDIDATE-EQUIVALENCE",
+      "to": "TEST-CANDIDATE-EQUIVALENCE",
+      "relation": "VERIFIED_BY",
+      "verification_result": "UNVERIFIED"
+    },
+    {
+      "from": "OBL-DEDUP-SCOPES",
+      "to": "TEST-DEDUP-SCOPES",
+      "relation": "VERIFIED_BY",
+      "verification_result": "UNVERIFIED"
+    },
+    {
+      "from": "OBL-CANDIDATE-ORIGIN",
+      "to": "TEST-CANDIDATE-ORIGIN",
+      "relation": "VERIFIED_BY",
+      "verification_result": "UNVERIFIED"
+    },
+    {
+      "from": "OBL-CANDIDATE-PARENT",
+      "to": "TEST-CANDIDATE-PARENT",
+      "relation": "VERIFIED_BY",
+      "verification_result": "UNVERIFIED"
+    },
+    {
+      "from": "OBL-CANDIDATE-STATE",
+      "to": "TEST-CANDIDATE-STATE",
+      "relation": "VERIFIED_BY",
+      "verification_result": "UNVERIFIED"
+    },
+    {
+      "from": "OBL-CANDIDATE-PRIORITY",
+      "to": "TEST-CANDIDATE-PRIORITY",
+      "relation": "VERIFIED_BY",
+      "verification_result": "UNVERIFIED"
+    },
+    {
+      "from": "OBL-CANDIDATE-ATTEMPTS",
+      "to": "TEST-CANDIDATE-ATTEMPTS",
+      "relation": "VERIFIED_BY",
+      "verification_result": "UNVERIFIED"
+    },
+    {
+      "from": "OBL-CANDIDATE-TIMESTAMPS",
+      "to": "TEST-CANDIDATE-TIMESTAMPS",
+      "relation": "VERIFIED_BY",
+      "verification_result": "UNVERIFIED"
+    },
+    {
+      "from": "OBL-CLAIM-EXCLUSIVITY",
+      "to": "TEST-CLAIM-EXCLUSIVITY",
+      "relation": "VERIFIED_BY",
+      "verification_result": "UNVERIFIED"
+    },
+    {
+      "from": "OBL-TERMINAL-OWNERSHIP",
+      "to": "TEST-TERMINAL-OWNERSHIP",
+      "relation": "VERIFIED_BY",
+      "verification_result": "UNVERIFIED"
+    },
+    {
+      "from": "OBL-ACQ-BEFORE-INTERP",
+      "to": "TEST-ACQ-BEFORE-INTERP",
+      "relation": "VERIFIED_BY",
+      "verification_result": "UNVERIFIED"
+    },
+    {
+      "from": "OBL-ACQ-OUTCOME",
+      "to": "TEST-ACQ-OUTCOME",
+      "relation": "VERIFIED_BY",
+      "verification_result": "UNVERIFIED"
+    },
+    {
+      "from": "OBL-ACQ-METADATA",
+      "to": "TEST-ACQ-METADATA",
+      "relation": "VERIFIED_BY",
+      "verification_result": "UNVERIFIED"
+    },
+    {
+      "from": "OBL-ACQ-TIMEOUT",
+      "to": "TEST-ACQ-TIMEOUT",
+      "relation": "VERIFIED_BY",
+      "verification_result": "UNVERIFIED"
+    },
+    {
+      "from": "OBL-ACQ-SCOPE",
+      "to": "TEST-ACQ-SCOPE",
+      "relation": "VERIFIED_BY",
+      "verification_result": "UNVERIFIED"
+    },
+    {
+      "from": "OBL-CANCELLATION",
+      "to": "TEST-CANCELLATION",
+      "relation": "VERIFIED_BY",
+      "verification_result": "UNVERIFIED"
+    },
+    {
+      "from": "OBL-OBS-DISTINCT",
+      "to": "TEST-OBS-DISTINCT",
+      "relation": "VERIFIED_BY",
+      "verification_result": "UNVERIFIED"
+    },
+    {
+      "from": "OBL-OBS-SOURCE",
+      "to": "TEST-OBS-SOURCE",
+      "relation": "VERIFIED_BY",
+      "verification_result": "UNVERIFIED"
+    },
+    {
+      "from": "OBL-OBS-OUTCOMES",
+      "to": "TEST-OBS-OUTCOMES",
+      "relation": "VERIFIED_BY",
+      "verification_result": "UNVERIFIED"
+    },
+    {
+      "from": "OBL-RECOGNITION-DISTINCT",
+      "to": "TEST-RECOGNITION-DISTINCT",
+      "relation": "VERIFIED_BY",
+      "verification_result": "UNVERIFIED"
+    },
+    {
+      "from": "OBL-RECOGNITION-OUTCOMES",
+      "to": "TEST-RECOGNITION-OUTCOMES",
+      "relation": "VERIFIED_BY",
+      "verification_result": "UNVERIFIED"
+    },
+    {
+      "from": "OBL-PROVIDER-CONTRACT",
+      "to": "TEST-PROVIDER-CONTRACT",
+      "relation": "VERIFIED_BY",
+      "verification_result": "UNVERIFIED"
+    },
+    {
+      "from": "OBL-PROVIDER-FAILURE",
+      "to": "TEST-PROVIDER-FAILURE",
+      "relation": "VERIFIED_BY",
+      "verification_result": "UNVERIFIED"
+    },
+    {
+      "from": "OBL-PROVIDER-ORDER",
+      "to": "TEST-PROVIDER-ORDER",
+      "relation": "VERIFIED_BY",
+      "verification_result": "UNVERIFIED"
+    },
+    {
+      "from": "OBL-DISCOVERY-RECORD",
+      "to": "TEST-DISCOVERY-RECORD",
+      "relation": "VERIFIED_BY",
+      "verification_result": "UNVERIFIED"
+    },
+    {
+      "from": "OBL-EXPANSION-RECURSIVE",
+      "to": "TEST-EXPANSION-RECURSIVE",
+      "relation": "VERIFIED_BY",
+      "verification_result": "UNVERIFIED"
+    },
+    {
+      "from": "OBL-EXPANSION-VS-RETRY",
+      "to": "TEST-EXPANSION-VS-RETRY",
+      "relation": "VERIFIED_BY",
+      "verification_result": "UNVERIFIED"
+    },
+    {
+      "from": "OBL-CANDIDATE-ADMISSION",
+      "to": "TEST-CANDIDATE-ADMISSION",
+      "relation": "VERIFIED_BY",
+      "verification_result": "UNVERIFIED"
+    },
+    {
+      "from": "OBL-KNOWLEDGE",
+      "to": "TEST-KNOWLEDGE",
+      "relation": "VERIFIED_BY",
+      "verification_result": "UNVERIFIED"
+    },
+    {
+      "from": "OBL-BOUNDED-CONCURRENCY",
+      "to": "TEST-BOUNDED-CONCURRENCY",
+      "relation": "VERIFIED_BY",
+      "verification_result": "UNVERIFIED"
+    },
+    {
+      "from": "OBL-SCHEDULER-TERMINATION",
+      "to": "TEST-SCHEDULER-TERMINATION",
+      "relation": "VERIFIED_BY",
+      "verification_result": "UNVERIFIED"
+    },
+    {
+      "from": "OBL-WORKER-FAILURE",
+      "to": "TEST-WORKER-FAILURE",
+      "relation": "VERIFIED_BY",
+      "verification_result": "UNVERIFIED"
+    },
+    {
+      "from": "OBL-RETRY",
+      "to": "TEST-RETRY",
+      "relation": "VERIFIED_BY",
+      "verification_result": "UNVERIFIED"
+    },
+    {
+      "from": "OBL-PROVENANCE",
+      "to": "TEST-PROVENANCE",
+      "relation": "VERIFIED_BY",
+      "verification_result": "UNVERIFIED"
+    },
+    {
+      "from": "OBL-PROVENANCE-INTEGRITY",
+      "to": "TEST-PROVENANCE-INTEGRITY",
+      "relation": "VERIFIED_BY",
+      "verification_result": "UNVERIFIED"
+    },
+    {
+      "from": "OBL-REMOTE-DATA",
+      "to": "TEST-REMOTE-DATA",
+      "relation": "VERIFIED_BY",
+      "verification_result": "UNVERIFIED"
+    },
+    {
+      "from": "OBL-AUTHORITY",
+      "to": "TEST-AUTHORITY",
+      "relation": "VERIFIED_BY",
+      "verification_result": "UNVERIFIED"
+    },
+    {
+      "from": "OBL-PARSER",
+      "to": "TEST-PARSER",
+      "relation": "VERIFIED_BY",
+      "verification_result": "UNVERIFIED"
+    },
+    {
+      "from": "OBL-RESOURCE",
+      "to": "TEST-RESOURCE",
+      "relation": "VERIFIED_BY",
+      "verification_result": "UNVERIFIED"
+    },
+    {
+      "from": "OBL-UNBOUNDED",
+      "to": "TEST-UNBOUNDED",
+      "relation": "VERIFIED_BY",
+      "verification_result": "UNVERIFIED"
+    },
+    {
+      "from": "OBL-LIFECYCLE-OBS",
+      "to": "TEST-LIFECYCLE-OBS",
+      "relation": "VERIFIED_BY",
+      "verification_result": "UNVERIFIED"
+    },
+    {
+      "from": "OBL-AUDIT",
+      "to": "TEST-AUDIT",
+      "relation": "VERIFIED_BY",
+      "verification_result": "UNVERIFIED"
+    },
+    {
+      "from": "OBL-SILENT-FAILURE",
+      "to": "TEST-SILENT-FAILURE",
+      "relation": "VERIFIED_BY",
+      "verification_result": "UNVERIFIED"
+    },
+    {
+      "from": "OBL-PERSIST-COMPAT",
+      "to": "TEST-PERSIST-COMPAT",
+      "relation": "VERIFIED_BY",
+      "verification_result": "UNVERIFIED"
+    },
+    {
+      "from": "OBL-PERSIST-CORRUPTION",
+      "to": "TEST-PERSIST-CORRUPTION",
+      "relation": "VERIFIED_BY",
+      "verification_result": "UNVERIFIED"
+    },
+    {
+      "from": "OBL-EXPORT",
+      "to": "TEST-EXPORT",
+      "relation": "VERIFIED_BY",
+      "verification_result": "UNVERIFIED"
+    },
+    {
+      "from": "OBL-UI",
+      "to": "TEST-UI",
+      "relation": "VERIFIED_BY",
+      "verification_result": "UNVERIFIED"
+    },
+    {
+      "from": "OBL-PRIVATE-SHAPE",
+      "to": "TEST-PRIVATE-SHAPE",
+      "relation": "VERIFIED_BY",
+      "verification_result": "UNVERIFIED"
+    },
+    {
+      "from": "OBL-CONTRACT-INPUT",
+      "to": "TEST-CONTRACT-INPUT",
+      "relation": "VERIFIED_BY",
+      "verification_result": "UNVERIFIED"
+    },
+    {
+      "from": "OBL-ERROR-CONTRACT",
+      "to": "TEST-ERROR-CONTRACT",
+      "relation": "VERIFIED_BY",
+      "verification_result": "UNVERIFIED"
+    },
+    {
+      "from": "OBL-REGRESSION",
+      "to": "TEST-REGRESSION",
+      "relation": "VERIFIED_BY",
+      "verification_result": "UNVERIFIED"
+    },
+    {
+      "from": "OBL-PARSE-DEFECT",
+      "to": "TEST-PARSE-DEFECT",
+      "relation": "VERIFIED_BY",
+      "verification_result": "UNVERIFIED"
+    },
+    {
+      "from": "OBL-WEB-GENERALIZE",
+      "to": "TEST-WEB-GENERALIZE",
+      "relation": "VERIFIED_BY",
+      "verification_result": "UNVERIFIED"
+    }
+  ],
+  "verified_nodes": []
+}

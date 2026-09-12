@@ -1,0 +1,38 @@
+                     ┌─────────┐
+                     │ BLOCKED │
+                     └────┬────┘
+                          │
+                    dependency ready
+                          │
+                          ▼
+                     ┌─────────┐
+                     │ QUEUED  │
+                     └────┬────┘
+                          │
+                        claim
+                          │
+                          ▼
+                     ┌─────────┐
+                     │ CLAIMED │
+                     └────┬────┘
+                          │
+                        start
+                          │
+                          ▼
+                     ┌─────────┐
+                     │ RUNNING │
+                     └────┬────┘
+                          │
+            ┌─────────────┼──────────────┐
+            │             │              │
+            ▼             ▼              ▼
+       COMPLETED       FAILED         DELAYED
+                            │              │
+                       retryable?         │
+                            │              │
+                            └──────┬───────┘
+                                   ▼
+                                QUEUED
+
+Any active state ───────────────→ CANCELLED
+Expired CLAIMED ────────────────→ QUEUED

@@ -1,0 +1,1087 @@
+{
+  "schema_version": 8,
+  "builder": "security-archaeology-builder-v8",
+  "model_kind": "DERIVED_SECURITY_ARCHAEOLOGY_NOT_SOURCE",
+  "tradeoffs": [
+    {
+      "tradeoff_id": "tradeoff-42dec4844d71bb9a",
+      "snapshot_id": "snapshot-0001",
+      "version": "v0.1.0",
+      "control": "maxCandidates",
+      "security_or_safety_effect": "bounded candidate memory/work",
+      "discovery_effect": "candidate discoveries beyond the cap may be rejected",
+      "measured_effect": "NOT_MEASURED",
+      "superiority_claim": false,
+      "evidence": [
+        "security-ev-948cf470b5888a69",
+        "security-ev-2830473f43bce3b7"
+      ]
+    },
+    {
+      "tradeoff_id": "tradeoff-29e2daef750a601e",
+      "snapshot_id": "snapshot-0001",
+      "version": "v0.1.0",
+      "control": "maxRequests",
+      "security_or_safety_effect": "bounded acquisition work",
+      "discovery_effect": "scan completeness is capped",
+      "measured_effect": "NOT_MEASURED",
+      "superiority_claim": false,
+      "evidence": [
+        "security-ev-c36edd585706ea75",
+        "security-ev-08cc2e4da8ffe70a"
+      ]
+    },
+    {
+      "tradeoff_id": "tradeoff-aa3729b6d6998c4e",
+      "snapshot_id": "snapshot-0001",
+      "version": "v0.1.0",
+      "control": "concurrency",
+      "security_or_safety_effect": "bounded concurrent workers",
+      "discovery_effect": "lower parallelism can increase completion time",
+      "measured_effect": "NOT_MEASURED",
+      "superiority_claim": false,
+      "evidence": [
+        "security-ev-f9d9b3c207c68249",
+        "security-ev-c9932dde2d91acff"
+      ]
+    },
+    {
+      "tradeoff_id": "tradeoff-01d3d73d7af6f2c7",
+      "snapshot_id": "snapshot-0001",
+      "version": "v0.1.0",
+      "control": "requestTimeout",
+      "security_or_safety_effect": "bounded request wait",
+      "discovery_effect": "slow resources may be classified as failure",
+      "measured_effect": "NOT_MEASURED",
+      "superiority_claim": false,
+      "evidence": [
+        "security-ev-530e5c93b3b1af3f",
+        "security-ev-86efdcfaa2888d90"
+      ]
+    },
+    {
+      "tradeoff_id": "tradeoff-6341c9c946463b68",
+      "snapshot_id": "snapshot-0003",
+      "version": "v0.2.0",
+      "control": "maxCandidates",
+      "security_or_safety_effect": "bounded candidate memory/work",
+      "discovery_effect": "candidate discoveries beyond the cap may be rejected",
+      "measured_effect": "NOT_MEASURED",
+      "superiority_claim": false,
+      "evidence": [
+        "security-ev-9cf987ce4e7e19da",
+        "security-ev-1e8b1330a3862cc9"
+      ]
+    },
+    {
+      "tradeoff_id": "tradeoff-079aa1d79bc2ec7f",
+      "snapshot_id": "snapshot-0003",
+      "version": "v0.2.0",
+      "control": "maxRequests",
+      "security_or_safety_effect": "bounded acquisition work",
+      "discovery_effect": "scan completeness is capped",
+      "measured_effect": "NOT_MEASURED",
+      "superiority_claim": false,
+      "evidence": [
+        "security-ev-53a4284c6a3893ed",
+        "security-ev-45fccd3d3a79a5c5"
+      ]
+    },
+    {
+      "tradeoff_id": "tradeoff-a6b348fb9717a5f1",
+      "snapshot_id": "snapshot-0003",
+      "version": "v0.2.0",
+      "control": "concurrency",
+      "security_or_safety_effect": "bounded concurrent workers",
+      "discovery_effect": "lower parallelism can increase completion time",
+      "measured_effect": "NOT_MEASURED",
+      "superiority_claim": false,
+      "evidence": [
+        "security-ev-837e9c017eea2290",
+        "security-ev-724e30e236e3bf61"
+      ]
+    },
+    {
+      "tradeoff_id": "tradeoff-a8237c7cabd07414",
+      "snapshot_id": "snapshot-0003",
+      "version": "v0.2.0",
+      "control": "requestTimeout",
+      "security_or_safety_effect": "bounded request wait",
+      "discovery_effect": "slow resources may be classified as failure",
+      "measured_effect": "NOT_MEASURED",
+      "superiority_claim": false,
+      "evidence": [
+        "security-ev-46855021b9972193",
+        "security-ev-eadabcd3f312505a"
+      ]
+    },
+    {
+      "tradeoff_id": "tradeoff-0ad6ba425061b925",
+      "snapshot_id": "snapshot-0005",
+      "version": "v0.3.0",
+      "control": "maxCandidates",
+      "security_or_safety_effect": "bounded candidate memory/work",
+      "discovery_effect": "candidate discoveries beyond the cap may be rejected",
+      "measured_effect": "NOT_MEASURED",
+      "superiority_claim": false,
+      "evidence": [
+        "security-ev-9358b8015ad588fa",
+        "security-ev-c9b690810046d893"
+      ]
+    },
+    {
+      "tradeoff_id": "tradeoff-0829b6bdddf3d62a",
+      "snapshot_id": "snapshot-0005",
+      "version": "v0.3.0",
+      "control": "maxRequests",
+      "security_or_safety_effect": "bounded acquisition work",
+      "discovery_effect": "scan completeness is capped",
+      "measured_effect": "NOT_MEASURED",
+      "superiority_claim": false,
+      "evidence": [
+        "security-ev-ffe2e0fa86975934",
+        "security-ev-ed399ba64e586455"
+      ]
+    },
+    {
+      "tradeoff_id": "tradeoff-b428375e9c481341",
+      "snapshot_id": "snapshot-0005",
+      "version": "v0.3.0",
+      "control": "concurrency",
+      "security_or_safety_effect": "bounded concurrent workers",
+      "discovery_effect": "lower parallelism can increase completion time",
+      "measured_effect": "NOT_MEASURED",
+      "superiority_claim": false,
+      "evidence": [
+        "security-ev-edeb6f3b342f4d19",
+        "security-ev-b10348eea3420322"
+      ]
+    },
+    {
+      "tradeoff_id": "tradeoff-8f9f7454a4d42433",
+      "snapshot_id": "snapshot-0005",
+      "version": "v0.3.0",
+      "control": "requestTimeout",
+      "security_or_safety_effect": "bounded request wait",
+      "discovery_effect": "slow resources may be classified as failure",
+      "measured_effect": "NOT_MEASURED",
+      "superiority_claim": false,
+      "evidence": [
+        "security-ev-7a754fe41348901a",
+        "security-ev-de6e3e3cca133777"
+      ]
+    },
+    {
+      "tradeoff_id": "tradeoff-81b514c6c39190a3",
+      "snapshot_id": "snapshot-0006",
+      "version": "v0.4.0",
+      "control": "maxCandidates",
+      "security_or_safety_effect": "bounded candidate memory/work",
+      "discovery_effect": "candidate discoveries beyond the cap may be rejected",
+      "measured_effect": "NOT_MEASURED",
+      "superiority_claim": false,
+      "evidence": [
+        "security-ev-bc91f817a57c1e37",
+        "security-ev-ccc97fc4107c422c"
+      ]
+    },
+    {
+      "tradeoff_id": "tradeoff-c916162c18358d54",
+      "snapshot_id": "snapshot-0006",
+      "version": "v0.4.0",
+      "control": "maxRequests",
+      "security_or_safety_effect": "bounded acquisition work",
+      "discovery_effect": "scan completeness is capped",
+      "measured_effect": "NOT_MEASURED",
+      "superiority_claim": false,
+      "evidence": [
+        "security-ev-301da7d397441a37",
+        "security-ev-2d0938bbd81d086f"
+      ]
+    },
+    {
+      "tradeoff_id": "tradeoff-7e4b14eebf124684",
+      "snapshot_id": "snapshot-0006",
+      "version": "v0.4.0",
+      "control": "concurrency",
+      "security_or_safety_effect": "bounded concurrent workers",
+      "discovery_effect": "lower parallelism can increase completion time",
+      "measured_effect": "NOT_MEASURED",
+      "superiority_claim": false,
+      "evidence": [
+        "security-ev-920e7b53532ac55a",
+        "security-ev-bd622b221d7bb465"
+      ]
+    },
+    {
+      "tradeoff_id": "tradeoff-47d78a6df87b29d5",
+      "snapshot_id": "snapshot-0006",
+      "version": "v0.4.0",
+      "control": "requestTimeout",
+      "security_or_safety_effect": "bounded request wait",
+      "discovery_effect": "slow resources may be classified as failure",
+      "measured_effect": "NOT_MEASURED",
+      "superiority_claim": false,
+      "evidence": [
+        "security-ev-4f868a87782c1049",
+        "security-ev-c68d1f83d93569f9"
+      ]
+    },
+    {
+      "tradeoff_id": "tradeoff-b472949f8bde3b88",
+      "snapshot_id": "snapshot-0006",
+      "version": "v0.4.0",
+      "control": "maxDepth",
+      "security_or_safety_effect": "bounded recursive expansion",
+      "discovery_effect": "deeper discoveries can be omitted",
+      "measured_effect": "NOT_MEASURED",
+      "superiority_claim": false,
+      "evidence": [
+        "security-ev-19d91b3a4dc8deb9",
+        "security-ev-8c78d3fcf18912a3"
+      ]
+    },
+    {
+      "tradeoff_id": "tradeoff-3f41a75305b887dd",
+      "snapshot_id": "snapshot-0008",
+      "version": "v0.4.0",
+      "control": "maxCandidates",
+      "security_or_safety_effect": "bounded candidate memory/work",
+      "discovery_effect": "candidate discoveries beyond the cap may be rejected",
+      "measured_effect": "NOT_MEASURED",
+      "superiority_claim": false,
+      "evidence": [
+        "security-ev-e13eb17efc3869cf",
+        "security-ev-2af1aca5ee69031a"
+      ]
+    },
+    {
+      "tradeoff_id": "tradeoff-256bff742e2b6da9",
+      "snapshot_id": "snapshot-0008",
+      "version": "v0.4.0",
+      "control": "maxRequests",
+      "security_or_safety_effect": "bounded acquisition work",
+      "discovery_effect": "scan completeness is capped",
+      "measured_effect": "NOT_MEASURED",
+      "superiority_claim": false,
+      "evidence": [
+        "security-ev-10f1d5e76cc27724",
+        "security-ev-d75d9bd5ee3fb06b"
+      ]
+    },
+    {
+      "tradeoff_id": "tradeoff-a8da5231865ea7f2",
+      "snapshot_id": "snapshot-0008",
+      "version": "v0.4.0",
+      "control": "concurrency",
+      "security_or_safety_effect": "bounded concurrent workers",
+      "discovery_effect": "lower parallelism can increase completion time",
+      "measured_effect": "NOT_MEASURED",
+      "superiority_claim": false,
+      "evidence": [
+        "security-ev-5d0fabe654497739",
+        "security-ev-2b51376e042d9813"
+      ]
+    },
+    {
+      "tradeoff_id": "tradeoff-a6ea36ecaeb1c7b3",
+      "snapshot_id": "snapshot-0008",
+      "version": "v0.4.0",
+      "control": "requestTimeout",
+      "security_or_safety_effect": "bounded request wait",
+      "discovery_effect": "slow resources may be classified as failure",
+      "measured_effect": "NOT_MEASURED",
+      "superiority_claim": false,
+      "evidence": [
+        "security-ev-8a455c9b2af9b9be",
+        "security-ev-acd61fc8765fe6bd"
+      ]
+    },
+    {
+      "tradeoff_id": "tradeoff-6bf64e9ffff01b70",
+      "snapshot_id": "snapshot-0008",
+      "version": "v0.4.0",
+      "control": "maxDepth",
+      "security_or_safety_effect": "bounded recursive expansion",
+      "discovery_effect": "deeper discoveries can be omitted",
+      "measured_effect": "NOT_MEASURED",
+      "superiority_claim": false,
+      "evidence": [
+        "security-ev-5380db781a26a056",
+        "security-ev-2f10605b820e7ed0"
+      ]
+    },
+    {
+      "tradeoff_id": "tradeoff-c3a3a4ba5e03d365",
+      "snapshot_id": "snapshot-0007",
+      "version": "v0.5.0",
+      "control": "maxCandidates",
+      "security_or_safety_effect": "bounded candidate memory/work",
+      "discovery_effect": "candidate discoveries beyond the cap may be rejected",
+      "measured_effect": "NOT_MEASURED",
+      "superiority_claim": false,
+      "evidence": [
+        "security-ev-33f0fc39c06a85a9",
+        "security-ev-27f86b50063e4e51"
+      ]
+    },
+    {
+      "tradeoff_id": "tradeoff-49e4ea6cf9ef85fd",
+      "snapshot_id": "snapshot-0007",
+      "version": "v0.5.0",
+      "control": "maxRequests",
+      "security_or_safety_effect": "bounded acquisition work",
+      "discovery_effect": "scan completeness is capped",
+      "measured_effect": "NOT_MEASURED",
+      "superiority_claim": false,
+      "evidence": [
+        "security-ev-2eacc8239f6c4430",
+        "security-ev-f6d71d762f57db94"
+      ]
+    },
+    {
+      "tradeoff_id": "tradeoff-9a13fb8564d36640",
+      "snapshot_id": "snapshot-0007",
+      "version": "v0.5.0",
+      "control": "concurrency",
+      "security_or_safety_effect": "bounded concurrent workers",
+      "discovery_effect": "lower parallelism can increase completion time",
+      "measured_effect": "NOT_MEASURED",
+      "superiority_claim": false,
+      "evidence": [
+        "security-ev-2174317aa462de1a",
+        "security-ev-f0007c730d63b73a"
+      ]
+    },
+    {
+      "tradeoff_id": "tradeoff-69e245e08dde3d4a",
+      "snapshot_id": "snapshot-0007",
+      "version": "v0.5.0",
+      "control": "requestTimeout",
+      "security_or_safety_effect": "bounded request wait",
+      "discovery_effect": "slow resources may be classified as failure",
+      "measured_effect": "NOT_MEASURED",
+      "superiority_claim": false,
+      "evidence": [
+        "security-ev-40906d859e747688",
+        "security-ev-1d5bce70e3efbe2e"
+      ]
+    },
+    {
+      "tradeoff_id": "tradeoff-d2a37359d371bd19",
+      "snapshot_id": "snapshot-0007",
+      "version": "v0.5.0",
+      "control": "maxResponseBytes",
+      "security_or_safety_effect": "bounded response retention/parsing",
+      "discovery_effect": "truncation can hide late content",
+      "measured_effect": "NOT_MEASURED",
+      "superiority_claim": false,
+      "evidence": [
+        "security-ev-ca827d98c13df14b",
+        "security-ev-f297cf24270fa296"
+      ]
+    },
+    {
+      "tradeoff_id": "tradeoff-e4b69da5508c9bc5",
+      "snapshot_id": "snapshot-0007",
+      "version": "v0.5.0",
+      "control": "maxDepth",
+      "security_or_safety_effect": "bounded recursive expansion",
+      "discovery_effect": "deeper discoveries can be omitted",
+      "measured_effect": "NOT_MEASURED",
+      "superiority_claim": false,
+      "evidence": [
+        "security-ev-2ebe01ddc9b85390",
+        "security-ev-4126b9dd0447a69f"
+      ]
+    },
+    {
+      "tradeoff_id": "tradeoff-52eccf48e0911d52",
+      "snapshot_id": "snapshot-0007",
+      "version": "v0.5.0",
+      "control": "maxUrlsPerDiscovery",
+      "security_or_safety_effect": "bounded per-discovery fanout",
+      "discovery_effect": "additional URLs can be omitted",
+      "measured_effect": "NOT_MEASURED",
+      "superiority_claim": false,
+      "evidence": [
+        "security-ev-2cb3caa83ca6a52f",
+        "security-ev-74da7ffa6187be8e"
+      ]
+    },
+    {
+      "tradeoff_id": "tradeoff-dc2fc2b46f721b29",
+      "snapshot_id": "snapshot-0009",
+      "version": "v0.5.0",
+      "control": "maxCandidates",
+      "security_or_safety_effect": "bounded candidate memory/work",
+      "discovery_effect": "candidate discoveries beyond the cap may be rejected",
+      "measured_effect": "NOT_MEASURED",
+      "superiority_claim": false,
+      "evidence": [
+        "security-ev-4552649e95cee11a",
+        "security-ev-14b57f3f7d6168ac"
+      ]
+    },
+    {
+      "tradeoff_id": "tradeoff-44ec7c2c60c4c7b2",
+      "snapshot_id": "snapshot-0009",
+      "version": "v0.5.0",
+      "control": "maxRequests",
+      "security_or_safety_effect": "bounded acquisition work",
+      "discovery_effect": "scan completeness is capped",
+      "measured_effect": "NOT_MEASURED",
+      "superiority_claim": false,
+      "evidence": [
+        "security-ev-c5e7a26acf0bafec",
+        "security-ev-762fa51d32ed3797"
+      ]
+    },
+    {
+      "tradeoff_id": "tradeoff-e387fd02e73f27d6",
+      "snapshot_id": "snapshot-0009",
+      "version": "v0.5.0",
+      "control": "concurrency",
+      "security_or_safety_effect": "bounded concurrent workers",
+      "discovery_effect": "lower parallelism can increase completion time",
+      "measured_effect": "NOT_MEASURED",
+      "superiority_claim": false,
+      "evidence": [
+        "security-ev-8c32ca5db4664d98",
+        "security-ev-7890e8bd70c41477"
+      ]
+    },
+    {
+      "tradeoff_id": "tradeoff-28670cb0ecc8fbca",
+      "snapshot_id": "snapshot-0009",
+      "version": "v0.5.0",
+      "control": "requestTimeout",
+      "security_or_safety_effect": "bounded request wait",
+      "discovery_effect": "slow resources may be classified as failure",
+      "measured_effect": "NOT_MEASURED",
+      "superiority_claim": false,
+      "evidence": [
+        "security-ev-9afbabc94c9435de",
+        "security-ev-bffbd9156efd6fb7"
+      ]
+    },
+    {
+      "tradeoff_id": "tradeoff-d8f8df113e6058ba",
+      "snapshot_id": "snapshot-0009",
+      "version": "v0.5.0",
+      "control": "maxDepth",
+      "security_or_safety_effect": "bounded recursive expansion",
+      "discovery_effect": "deeper discoveries can be omitted",
+      "measured_effect": "NOT_MEASURED",
+      "superiority_claim": false,
+      "evidence": [
+        "security-ev-3d227196e2ed4d9a",
+        "security-ev-79c8808f661a08a2"
+      ]
+    },
+    {
+      "tradeoff_id": "tradeoff-2a3444c461a07878",
+      "snapshot_id": "snapshot-0011",
+      "version": "v0.5.0",
+      "control": "maxCandidates",
+      "security_or_safety_effect": "bounded candidate memory/work",
+      "discovery_effect": "candidate discoveries beyond the cap may be rejected",
+      "measured_effect": "NOT_MEASURED",
+      "superiority_claim": false,
+      "evidence": [
+        "security-ev-edda96b53a6d0b9f",
+        "security-ev-f526104cdaa6d7a5"
+      ]
+    },
+    {
+      "tradeoff_id": "tradeoff-8b97415407176a59",
+      "snapshot_id": "snapshot-0011",
+      "version": "v0.5.0",
+      "control": "maxRequests",
+      "security_or_safety_effect": "bounded acquisition work",
+      "discovery_effect": "scan completeness is capped",
+      "measured_effect": "NOT_MEASURED",
+      "superiority_claim": false,
+      "evidence": [
+        "security-ev-be5a725b7d1dfe6a",
+        "security-ev-60d8abfdda32d2d2"
+      ]
+    },
+    {
+      "tradeoff_id": "tradeoff-dccc5ae0d29a0ecb",
+      "snapshot_id": "snapshot-0011",
+      "version": "v0.5.0",
+      "control": "concurrency",
+      "security_or_safety_effect": "bounded concurrent workers",
+      "discovery_effect": "lower parallelism can increase completion time",
+      "measured_effect": "NOT_MEASURED",
+      "superiority_claim": false,
+      "evidence": [
+        "security-ev-b3943354d083c663",
+        "security-ev-36b5585afc863e47"
+      ]
+    },
+    {
+      "tradeoff_id": "tradeoff-6442daa57dcb4d9c",
+      "snapshot_id": "snapshot-0011",
+      "version": "v0.5.0",
+      "control": "requestTimeout",
+      "security_or_safety_effect": "bounded request wait",
+      "discovery_effect": "slow resources may be classified as failure",
+      "measured_effect": "NOT_MEASURED",
+      "superiority_claim": false,
+      "evidence": [
+        "security-ev-2772b223730d16c1",
+        "security-ev-98b5ee5ecfb317f9"
+      ]
+    },
+    {
+      "tradeoff_id": "tradeoff-e037faf8b75fc254",
+      "snapshot_id": "snapshot-0011",
+      "version": "v0.5.0",
+      "control": "maxDepth",
+      "security_or_safety_effect": "bounded recursive expansion",
+      "discovery_effect": "deeper discoveries can be omitted",
+      "measured_effect": "NOT_MEASURED",
+      "superiority_claim": false,
+      "evidence": [
+        "security-ev-88ef88905af18ad5",
+        "security-ev-131390c09ceb2cf7"
+      ]
+    },
+    {
+      "tradeoff_id": "tradeoff-d45d004795502789",
+      "snapshot_id": "snapshot-0010",
+      "version": "v0.6.0",
+      "control": "maxCandidates",
+      "security_or_safety_effect": "bounded candidate memory/work",
+      "discovery_effect": "candidate discoveries beyond the cap may be rejected",
+      "measured_effect": "NOT_MEASURED",
+      "superiority_claim": false,
+      "evidence": [
+        "security-ev-bc970a0cd1a19db1",
+        "security-ev-c9d53ed033033d9a"
+      ]
+    },
+    {
+      "tradeoff_id": "tradeoff-7586b329ed8a17e3",
+      "snapshot_id": "snapshot-0010",
+      "version": "v0.6.0",
+      "control": "maxRequests",
+      "security_or_safety_effect": "bounded acquisition work",
+      "discovery_effect": "scan completeness is capped",
+      "measured_effect": "NOT_MEASURED",
+      "superiority_claim": false,
+      "evidence": [
+        "security-ev-7f3d2c807b4d31c8",
+        "security-ev-e2110a108f04ac04"
+      ]
+    },
+    {
+      "tradeoff_id": "tradeoff-be24cf53dee76cbb",
+      "snapshot_id": "snapshot-0010",
+      "version": "v0.6.0",
+      "control": "concurrency",
+      "security_or_safety_effect": "bounded concurrent workers",
+      "discovery_effect": "lower parallelism can increase completion time",
+      "measured_effect": "NOT_MEASURED",
+      "superiority_claim": false,
+      "evidence": [
+        "security-ev-b85752d37da17503",
+        "security-ev-6e74b81d0e1a294c"
+      ]
+    },
+    {
+      "tradeoff_id": "tradeoff-577e518771b8bcd1",
+      "snapshot_id": "snapshot-0010",
+      "version": "v0.6.0",
+      "control": "requestTimeout",
+      "security_or_safety_effect": "bounded request wait",
+      "discovery_effect": "slow resources may be classified as failure",
+      "measured_effect": "NOT_MEASURED",
+      "superiority_claim": false,
+      "evidence": [
+        "security-ev-93a761f3b1805ee9",
+        "security-ev-bb0c686a0900a576"
+      ]
+    },
+    {
+      "tradeoff_id": "tradeoff-980c061198f064fe",
+      "snapshot_id": "snapshot-0010",
+      "version": "v0.6.0",
+      "control": "maxDepth",
+      "security_or_safety_effect": "bounded recursive expansion",
+      "discovery_effect": "deeper discoveries can be omitted",
+      "measured_effect": "NOT_MEASURED",
+      "superiority_claim": false,
+      "evidence": [
+        "security-ev-683b45e5cfcf0088",
+        "security-ev-8016318c0a1384f2"
+      ]
+    },
+    {
+      "tradeoff_id": "tradeoff-1f5243aba18a2577",
+      "snapshot_id": "snapshot-0012",
+      "version": "v0.6.0",
+      "control": "maxCandidates",
+      "security_or_safety_effect": "bounded candidate memory/work",
+      "discovery_effect": "candidate discoveries beyond the cap may be rejected",
+      "measured_effect": "NOT_MEASURED",
+      "superiority_claim": false,
+      "evidence": [
+        "security-ev-33bc6f5c50d1db09",
+        "security-ev-b90d39a8edfe7d98"
+      ]
+    },
+    {
+      "tradeoff_id": "tradeoff-959985d6a12e2917",
+      "snapshot_id": "snapshot-0012",
+      "version": "v0.6.0",
+      "control": "maxRequests",
+      "security_or_safety_effect": "bounded acquisition work",
+      "discovery_effect": "scan completeness is capped",
+      "measured_effect": "NOT_MEASURED",
+      "superiority_claim": false,
+      "evidence": [
+        "security-ev-56a2b1bc44fe5ec6",
+        "security-ev-cc15471933485251"
+      ]
+    },
+    {
+      "tradeoff_id": "tradeoff-4988129cb0b5973a",
+      "snapshot_id": "snapshot-0012",
+      "version": "v0.6.0",
+      "control": "concurrency",
+      "security_or_safety_effect": "bounded concurrent workers",
+      "discovery_effect": "lower parallelism can increase completion time",
+      "measured_effect": "NOT_MEASURED",
+      "superiority_claim": false,
+      "evidence": [
+        "security-ev-e6b335806f397249",
+        "security-ev-7f4035170c1fe553"
+      ]
+    },
+    {
+      "tradeoff_id": "tradeoff-75717883033e123c",
+      "snapshot_id": "snapshot-0012",
+      "version": "v0.6.0",
+      "control": "requestTimeout",
+      "security_or_safety_effect": "bounded request wait",
+      "discovery_effect": "slow resources may be classified as failure",
+      "measured_effect": "NOT_MEASURED",
+      "superiority_claim": false,
+      "evidence": [
+        "security-ev-95ca4c6ba9667eee",
+        "security-ev-b77dac5751d61973"
+      ]
+    },
+    {
+      "tradeoff_id": "tradeoff-0e7df9c9d7276cd7",
+      "snapshot_id": "snapshot-0012",
+      "version": "v0.6.0",
+      "control": "maxDepth",
+      "security_or_safety_effect": "bounded recursive expansion",
+      "discovery_effect": "deeper discoveries can be omitted",
+      "measured_effect": "NOT_MEASURED",
+      "superiority_claim": false,
+      "evidence": [
+        "security-ev-359a7520dfcb9276",
+        "security-ev-7e3639a20e7343eb"
+      ]
+    },
+    {
+      "tradeoff_id": "tradeoff-425d8ae14973c15a",
+      "snapshot_id": "snapshot-0012",
+      "version": "v0.6.0",
+      "control": "maxRequestsPerOrigin",
+      "security_or_safety_effect": "bounded per-origin authority/use",
+      "discovery_effect": "origin coverage can be capped",
+      "measured_effect": "NOT_MEASURED",
+      "superiority_claim": false,
+      "evidence": [
+        "security-ev-980b7e0d9cd91d03",
+        "security-ev-f467e375e016072a"
+      ]
+    },
+    {
+      "tradeoff_id": "tradeoff-13d525f189769141",
+      "snapshot_id": "snapshot-0012",
+      "version": "v0.6.0",
+      "control": "minRequestInterval",
+      "security_or_safety_effect": "reduced request pressure",
+      "discovery_effect": "scan takes longer",
+      "measured_effect": "NOT_MEASURED",
+      "superiority_claim": false,
+      "evidence": [
+        "security-ev-f7d80a053252bb87",
+        "security-ev-6cf33f1b942ab20a"
+      ]
+    },
+    {
+      "tradeoff_id": "tradeoff-e5f6bafd711ba6ed",
+      "snapshot_id": "snapshot-0013",
+      "version": "v0.6.0",
+      "control": "maxCandidates",
+      "security_or_safety_effect": "bounded candidate memory/work",
+      "discovery_effect": "candidate discoveries beyond the cap may be rejected",
+      "measured_effect": "NOT_MEASURED",
+      "superiority_claim": false,
+      "evidence": [
+        "security-ev-def5e14370875997",
+        "security-ev-e30797064b3668bd"
+      ]
+    },
+    {
+      "tradeoff_id": "tradeoff-064bf67af99d6c64",
+      "snapshot_id": "snapshot-0013",
+      "version": "v0.6.0",
+      "control": "maxRequests",
+      "security_or_safety_effect": "bounded acquisition work",
+      "discovery_effect": "scan completeness is capped",
+      "measured_effect": "NOT_MEASURED",
+      "superiority_claim": false,
+      "evidence": [
+        "security-ev-e6cfdcfc2f709a28",
+        "security-ev-89f913d1f88f8c0b"
+      ]
+    },
+    {
+      "tradeoff_id": "tradeoff-f246a9ade3b21408",
+      "snapshot_id": "snapshot-0013",
+      "version": "v0.6.0",
+      "control": "concurrency",
+      "security_or_safety_effect": "bounded concurrent workers",
+      "discovery_effect": "lower parallelism can increase completion time",
+      "measured_effect": "NOT_MEASURED",
+      "superiority_claim": false,
+      "evidence": [
+        "security-ev-708c0c0951543c86",
+        "security-ev-37cac8d5154f3c62"
+      ]
+    },
+    {
+      "tradeoff_id": "tradeoff-013806c3822d8944",
+      "snapshot_id": "snapshot-0013",
+      "version": "v0.6.0",
+      "control": "requestTimeout",
+      "security_or_safety_effect": "bounded request wait",
+      "discovery_effect": "slow resources may be classified as failure",
+      "measured_effect": "NOT_MEASURED",
+      "superiority_claim": false,
+      "evidence": [
+        "security-ev-8a745601c8b99944",
+        "security-ev-d9d37999479cc799"
+      ]
+    },
+    {
+      "tradeoff_id": "tradeoff-061e8fff780dfe20",
+      "snapshot_id": "snapshot-0013",
+      "version": "v0.6.0",
+      "control": "maxDepth",
+      "security_or_safety_effect": "bounded recursive expansion",
+      "discovery_effect": "deeper discoveries can be omitted",
+      "measured_effect": "NOT_MEASURED",
+      "superiority_claim": false,
+      "evidence": [
+        "security-ev-1eea3cc46a8d43fa",
+        "security-ev-77f06bb90660769d"
+      ]
+    },
+    {
+      "tradeoff_id": "tradeoff-8abd56aca497373c",
+      "snapshot_id": "snapshot-0013",
+      "version": "v0.6.0",
+      "control": "maxRequestsPerOrigin",
+      "security_or_safety_effect": "bounded per-origin authority/use",
+      "discovery_effect": "origin coverage can be capped",
+      "measured_effect": "NOT_MEASURED",
+      "superiority_claim": false,
+      "evidence": [
+        "security-ev-b428559800a7c031",
+        "security-ev-e70994a498455418"
+      ]
+    },
+    {
+      "tradeoff_id": "tradeoff-d2401e508b3f9d0a",
+      "snapshot_id": "snapshot-0013",
+      "version": "v0.6.0",
+      "control": "minRequestInterval",
+      "security_or_safety_effect": "reduced request pressure",
+      "discovery_effect": "scan takes longer",
+      "measured_effect": "NOT_MEASURED",
+      "superiority_claim": false,
+      "evidence": [
+        "security-ev-7613ab5cc435811c",
+        "security-ev-6636605d7c1dc58c"
+      ]
+    },
+    {
+      "tradeoff_id": "tradeoff-cd2c7643f4807eb2",
+      "snapshot_id": "snapshot-0014",
+      "version": "v0.7.1",
+      "control": "maxCandidates",
+      "security_or_safety_effect": "bounded candidate memory/work",
+      "discovery_effect": "candidate discoveries beyond the cap may be rejected",
+      "measured_effect": "NOT_MEASURED",
+      "superiority_claim": false,
+      "evidence": [
+        "security-ev-ce891efdbc701626",
+        "security-ev-9585d263181c71b4"
+      ]
+    },
+    {
+      "tradeoff_id": "tradeoff-e24598c8d8f90edc",
+      "snapshot_id": "snapshot-0014",
+      "version": "v0.7.1",
+      "control": "maxRequests",
+      "security_or_safety_effect": "bounded acquisition work",
+      "discovery_effect": "scan completeness is capped",
+      "measured_effect": "NOT_MEASURED",
+      "superiority_claim": false,
+      "evidence": [
+        "security-ev-31b846e9a76c0633",
+        "security-ev-fab4e1d05f5123d9"
+      ]
+    },
+    {
+      "tradeoff_id": "tradeoff-3f5dd24372ced011",
+      "snapshot_id": "snapshot-0014",
+      "version": "v0.7.1",
+      "control": "concurrency",
+      "security_or_safety_effect": "bounded concurrent workers",
+      "discovery_effect": "lower parallelism can increase completion time",
+      "measured_effect": "NOT_MEASURED",
+      "superiority_claim": false,
+      "evidence": [
+        "security-ev-11c827fcf409a99b",
+        "security-ev-1a59f6e095d076b3"
+      ]
+    },
+    {
+      "tradeoff_id": "tradeoff-d267b925ec838753",
+      "snapshot_id": "snapshot-0014",
+      "version": "v0.7.1",
+      "control": "requestTimeout",
+      "security_or_safety_effect": "bounded request wait",
+      "discovery_effect": "slow resources may be classified as failure",
+      "measured_effect": "NOT_MEASURED",
+      "superiority_claim": false,
+      "evidence": [
+        "security-ev-1c4e952c7b476d12",
+        "security-ev-e6e0d7d234ce5979"
+      ]
+    },
+    {
+      "tradeoff_id": "tradeoff-c6fb853735c5d49f",
+      "snapshot_id": "snapshot-0014",
+      "version": "v0.7.1",
+      "control": "maxBodyChars",
+      "security_or_safety_effect": "bounded response retention/parsing",
+      "discovery_effect": "truncation can hide late content",
+      "measured_effect": "NOT_MEASURED",
+      "superiority_claim": false,
+      "evidence": [
+        "security-ev-2d1c83f9a3412b4e",
+        "security-ev-358172e952f4deca"
+      ]
+    },
+    {
+      "tradeoff_id": "tradeoff-d11c283b284d4d0f",
+      "snapshot_id": "snapshot-0014",
+      "version": "v0.7.1",
+      "control": "maxDepth",
+      "security_or_safety_effect": "bounded recursive expansion",
+      "discovery_effect": "deeper discoveries can be omitted",
+      "measured_effect": "NOT_MEASURED",
+      "superiority_claim": false,
+      "evidence": [
+        "security-ev-a69e142e6c5dab3f",
+        "security-ev-03379c2f41de1086"
+      ]
+    },
+    {
+      "tradeoff_id": "tradeoff-aa84eaa88fca255c",
+      "snapshot_id": "snapshot-0014",
+      "version": "v0.7.1",
+      "control": "maxRequestsPerOrigin",
+      "security_or_safety_effect": "bounded per-origin authority/use",
+      "discovery_effect": "origin coverage can be capped",
+      "measured_effect": "NOT_MEASURED",
+      "superiority_claim": false,
+      "evidence": [
+        "security-ev-e56bf9e275c8a16c",
+        "security-ev-e7c16f93b83952d1"
+      ]
+    },
+    {
+      "tradeoff_id": "tradeoff-431e1f7f10ce4a52",
+      "snapshot_id": "snapshot-0014",
+      "version": "v0.7.1",
+      "control": "minRequestInterval",
+      "security_or_safety_effect": "reduced request pressure",
+      "discovery_effect": "scan takes longer",
+      "measured_effect": "NOT_MEASURED",
+      "superiority_claim": false,
+      "evidence": [
+        "security-ev-e4c7e5a3b6503f9e",
+        "security-ev-bf696d8619268a9d"
+      ]
+    },
+    {
+      "tradeoff_id": "tradeoff-4187ed931b0a50ef",
+      "snapshot_id": "snapshot-0001",
+      "version": "v0.1.0",
+      "control": "sameOriginOnly",
+      "security_or_safety_effect": "restricts default cross-origin acquisition scope",
+      "discovery_effect": "cross-origin discoveries may not be acquired",
+      "measured_effect": "NOT_MEASURED",
+      "superiority_claim": false,
+      "evidence": [
+        "security-ev-41dad59f9941cb15"
+      ]
+    },
+    {
+      "tradeoff_id": "tradeoff-cfd8c759042e268b",
+      "snapshot_id": "snapshot-0003",
+      "version": "v0.2.0",
+      "control": "sameOriginOnly",
+      "security_or_safety_effect": "restricts default cross-origin acquisition scope",
+      "discovery_effect": "cross-origin discoveries may not be acquired",
+      "measured_effect": "NOT_MEASURED",
+      "superiority_claim": false,
+      "evidence": [
+        "security-ev-dd115a559a81cb1f"
+      ]
+    },
+    {
+      "tradeoff_id": "tradeoff-023a32f44955af59",
+      "snapshot_id": "snapshot-0005",
+      "version": "v0.3.0",
+      "control": "sameOriginOnly",
+      "security_or_safety_effect": "restricts default cross-origin acquisition scope",
+      "discovery_effect": "cross-origin discoveries may not be acquired",
+      "measured_effect": "NOT_MEASURED",
+      "superiority_claim": false,
+      "evidence": [
+        "security-ev-e80e3c2ecd008797"
+      ]
+    },
+    {
+      "tradeoff_id": "tradeoff-f64c106e7c0c778a",
+      "snapshot_id": "snapshot-0006",
+      "version": "v0.4.0",
+      "control": "sameOriginOnly",
+      "security_or_safety_effect": "restricts default cross-origin acquisition scope",
+      "discovery_effect": "cross-origin discoveries may not be acquired",
+      "measured_effect": "NOT_MEASURED",
+      "superiority_claim": false,
+      "evidence": [
+        "security-ev-4df672f4f290a31c"
+      ]
+    },
+    {
+      "tradeoff_id": "tradeoff-37e7e977a1b7b847",
+      "snapshot_id": "snapshot-0008",
+      "version": "v0.4.0",
+      "control": "sameOriginOnly",
+      "security_or_safety_effect": "restricts default cross-origin acquisition scope",
+      "discovery_effect": "cross-origin discoveries may not be acquired",
+      "measured_effect": "NOT_MEASURED",
+      "superiority_claim": false,
+      "evidence": [
+        "security-ev-538472185df32cab"
+      ]
+    },
+    {
+      "tradeoff_id": "tradeoff-05d38f927fcafdca",
+      "snapshot_id": "snapshot-0007",
+      "version": "v0.5.0",
+      "control": "sameOriginOnly",
+      "security_or_safety_effect": "restricts default cross-origin acquisition scope",
+      "discovery_effect": "cross-origin discoveries may not be acquired",
+      "measured_effect": "NOT_MEASURED",
+      "superiority_claim": false,
+      "evidence": [
+        "security-ev-5401fae1c909e556"
+      ]
+    },
+    {
+      "tradeoff_id": "tradeoff-fe5b80280e2b7882",
+      "snapshot_id": "snapshot-0009",
+      "version": "v0.5.0",
+      "control": "sameOriginOnly",
+      "security_or_safety_effect": "restricts default cross-origin acquisition scope",
+      "discovery_effect": "cross-origin discoveries may not be acquired",
+      "measured_effect": "NOT_MEASURED",
+      "superiority_claim": false,
+      "evidence": [
+        "security-ev-744001e4016f73c6"
+      ]
+    },
+    {
+      "tradeoff_id": "tradeoff-a078143db8c163c9",
+      "snapshot_id": "snapshot-0011",
+      "version": "v0.5.0",
+      "control": "sameOriginOnly",
+      "security_or_safety_effect": "restricts default cross-origin acquisition scope",
+      "discovery_effect": "cross-origin discoveries may not be acquired",
+      "measured_effect": "NOT_MEASURED",
+      "superiority_claim": false,
+      "evidence": [
+        "security-ev-f31c4021a4ddbadb"
+      ]
+    },
+    {
+      "tradeoff_id": "tradeoff-b9a768d1df84cfa1",
+      "snapshot_id": "snapshot-0010",
+      "version": "v0.6.0",
+      "control": "sameOriginOnly",
+      "security_or_safety_effect": "restricts default cross-origin acquisition scope",
+      "discovery_effect": "cross-origin discoveries may not be acquired",
+      "measured_effect": "NOT_MEASURED",
+      "superiority_claim": false,
+      "evidence": [
+        "security-ev-022cd7b7dcdac3ba"
+      ]
+    },
+    {
+      "tradeoff_id": "tradeoff-0c7e3cb77de95494",
+      "snapshot_id": "snapshot-0012",
+      "version": "v0.6.0",
+      "control": "sameOriginOnly",
+      "security_or_safety_effect": "restricts default cross-origin acquisition scope",
+      "discovery_effect": "cross-origin discoveries may not be acquired",
+      "measured_effect": "NOT_MEASURED",
+      "superiority_claim": false,
+      "evidence": [
+        "security-ev-89edb14f46ef5757"
+      ]
+    },
+    {
+      "tradeoff_id": "tradeoff-b32946ced9c75b03",
+      "snapshot_id": "snapshot-0013",
+      "version": "v0.6.0",
+      "control": "sameOriginOnly",
+      "security_or_safety_effect": "restricts default cross-origin acquisition scope",
+      "discovery_effect": "cross-origin discoveries may not be acquired",
+      "measured_effect": "NOT_MEASURED",
+      "superiority_claim": false,
+      "evidence": [
+        "security-ev-6e464e88a4b30e30"
+      ]
+    },
+    {
+      "tradeoff_id": "tradeoff-2a4c81aad773a2d2",
+      "snapshot_id": "snapshot-0014",
+      "version": "v0.7.1",
+      "control": "sameOriginOnly",
+      "security_or_safety_effect": "restricts default cross-origin acquisition scope",
+      "discovery_effect": "cross-origin discoveries may not be acquired",
+      "measured_effect": "NOT_MEASURED",
+      "superiority_claim": false,
+      "evidence": [
+        "security-ev-a0f78828ef1eeb19"
+      ]
+    }
+  ]
+}

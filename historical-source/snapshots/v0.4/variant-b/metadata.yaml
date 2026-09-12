@@ -1,0 +1,865 @@
+{
+  "schema_version": 1,
+  "snapshot_id": "snapshot-0008",
+  "historical_version": "v0.4.0",
+  "variant": "variant-b",
+  "variant_status": "ALTERNATIVE_IMPLEMENTATION",
+  "date": "2026-09-10T20:36:25+01:00",
+  "commit": "cc8df7357c2dbfe9d149747743e2f5e9ac9c0178",
+  "revision": "1c7b52bb1244677ba22bf25285ba199f9e5f722d",
+  "release": null,
+  "extraction_sequence": 203,
+  "source_documents": [
+    "Continue Architecture Planning.md"
+  ],
+  "version_boundary": {
+    "confidence": "STRONG",
+    "evidence": {
+      "metadata_version": "0.4.0",
+      "manifest_version": "0.4.0",
+      "artifact_id": "art-c19ebb3956fba19c"
+    }
+  },
+  "reconstruction": {
+    "status": "EXACT",
+    "source_nature": "ORIGINAL_SOURCE",
+    "authoritative": false,
+    "authoritative_source": "artifacts/userscript/000203__userscript__generic-discovery-v0-4-0__art-c19ebb3956fba19c.js",
+    "completeness": 1.0,
+    "completeness_basis": "A complete contiguous userscript artifact with matching explicit @version exists directly.",
+    "assumption_dependent": false
+  },
+  "base_selection": {
+    "result": "SELECTED_WITHOUT_AMBIGUITY",
+    "rule": "same historical revision and explicit version",
+    "selected": "art-c19ebb3956fba19c",
+    "alternatives_not_merged": true
+  },
+  "compatibility_test": {
+    "same_revision": "PASS",
+    "same_branch": "PASS",
+    "same_version": "PASS",
+    "same_implementation_family": "PASS",
+    "dependency_assumptions": "NO_CROSS_ARTIFACT_DEPENDENCIES_COMPOSED",
+    "compatible_symbol_definitions": "PASS",
+    "decision": "NO_FRAGMENT_COMPOSITION"
+  },
+  "transformation_plan": {
+    "BASE": "art-c19ebb3956fba19c",
+    "ADDITIONS": [],
+    "MODIFICATIONS": [],
+    "DELETIONS": [],
+    "RENAMES": [],
+    "DEPENDENCY_CHANGES": []
+  },
+  "artifacts": [
+    "art-c19ebb3956fba19c"
+  ],
+  "dependencies": {
+    "entries": [
+      {
+        "name": "Scheduler",
+        "status": "PRESENT",
+        "basis": "definition occurs in recovered source"
+      },
+      {
+        "name": "Worker",
+        "status": "HISTORICAL_EXTERNAL",
+        "basis": "browser/userscript/runtime-provided API; historical availability not executed"
+      },
+      {
+        "name": "Observation",
+        "status": "PRESENT",
+        "basis": "definition occurs in recovered source"
+      },
+      {
+        "name": "Discovery",
+        "status": "PRESENT",
+        "basis": "definition occurs in recovered source"
+      },
+      {
+        "name": "KnowledgeBase",
+        "status": "PRESENT",
+        "basis": "definition occurs in recovered source"
+      },
+      {
+        "name": "Provider",
+        "status": "UNKNOWN",
+        "basis": "extraction dependency inventory mentions the name, but implementation/reference semantics are not mechanically resolvable"
+      },
+      {
+        "name": "ProviderRegistry",
+        "status": "PRESENT",
+        "basis": "definition occurs in recovered source"
+      },
+      {
+        "name": "ResponseProvider",
+        "status": "PRESENT",
+        "basis": "definition occurs in recovered source"
+      },
+      {
+        "name": "DiscoveryEngine",
+        "status": "PRESENT",
+        "basis": "definition occurs in recovered source"
+      },
+      {
+        "name": "NetworkObserver",
+        "status": "PRESENT",
+        "basis": "definition occurs in recovered source"
+      },
+      {
+        "name": "GM_xmlhttpRequest",
+        "status": "HISTORICAL_EXTERNAL",
+        "basis": "browser/userscript/runtime-provided API; historical availability not executed"
+      },
+      {
+        "name": "GM_getValue",
+        "status": "HISTORICAL_EXTERNAL",
+        "basis": "browser/userscript/runtime-provided API; historical availability not executed"
+      },
+      {
+        "name": "GM_setValue",
+        "status": "HISTORICAL_EXTERNAL",
+        "basis": "browser/userscript/runtime-provided API; historical availability not executed"
+      },
+      {
+        "name": "fetch",
+        "status": "HISTORICAL_EXTERNAL",
+        "basis": "browser/userscript/runtime-provided API; historical availability not executed"
+      },
+      {
+        "name": "XMLHttpRequest",
+        "status": "HISTORICAL_EXTERNAL",
+        "basis": "browser/userscript/runtime-provided API; historical availability not executed"
+      },
+      {
+        "name": "DOMParser",
+        "status": "HISTORICAL_EXTERNAL",
+        "basis": "browser/userscript/runtime-provided API; historical availability not executed"
+      },
+      {
+        "name": "PerformanceObserver",
+        "status": "HISTORICAL_EXTERNAL",
+        "basis": "browser/userscript/runtime-provided API; historical availability not executed"
+      },
+      {
+        "name": "AbortController",
+        "status": "HISTORICAL_EXTERNAL",
+        "basis": "browser/userscript/runtime-provided API; historical availability not executed"
+      },
+      {
+        "name": "URL",
+        "status": "HISTORICAL_EXTERNAL",
+        "basis": "browser/userscript/runtime-provided API; historical availability not executed"
+      },
+      {
+        "name": "Map",
+        "status": "HISTORICAL_EXTERNAL",
+        "basis": "browser/userscript/runtime-provided API; historical availability not executed"
+      },
+      {
+        "name": "Set",
+        "status": "HISTORICAL_EXTERNAL",
+        "basis": "browser/userscript/runtime-provided API; historical availability not executed"
+      },
+      {
+        "name": "Promise",
+        "status": "HISTORICAL_EXTERNAL",
+        "basis": "browser/userscript/runtime-provided API; historical availability not executed"
+      },
+      {
+        "name": "document",
+        "status": "HISTORICAL_EXTERNAL",
+        "basis": "browser/userscript/runtime-provided API; historical availability not executed"
+      },
+      {
+        "name": "window",
+        "status": "HISTORICAL_EXTERNAL",
+        "basis": "browser/userscript/runtime-provided API; historical availability not executed"
+      },
+      {
+        "name": "localStorage",
+        "status": "HISTORICAL_EXTERNAL",
+        "basis": "browser/userscript/runtime-provided API; historical availability not executed"
+      }
+    ],
+    "status_registry": [
+      "HISTORICAL_EXTERNAL",
+      "INFERRED",
+      "MISSING",
+      "PRESENT",
+      "UNKNOWN"
+    ],
+    "self_contained": {
+      "status": "UNKNOWN",
+      "missing_dependencies": [],
+      "unknown_dependencies": [
+        "Provider"
+      ],
+      "historical_external_dependencies": [
+        "Worker",
+        "GM_xmlhttpRequest",
+        "GM_getValue",
+        "GM_setValue",
+        "fetch",
+        "XMLHttpRequest",
+        "DOMParser",
+        "PerformanceObserver",
+        "AbortController",
+        "URL",
+        "Map",
+        "Set",
+        "Promise",
+        "document",
+        "window",
+        "localStorage"
+      ],
+      "note": "PARTIAL means bundled internal definitions appear closed but historical platform APIs were not executed; UNKNOWN preserves unresolved dependency semantics."
+    }
+  },
+  "symbols": {
+    "definitions": {
+      "classes": [
+        "Candidate",
+        "Observation",
+        "Discovery",
+        "KnowledgeBase",
+        "HttpAcquisitionAdapter",
+        "ResponseProvider",
+        "HtmlProvider",
+        "JsonProvider",
+        "XmlProvider",
+        "CssProvider",
+        "JavaScriptProvider",
+        "RobotsProvider",
+        "TextProvider",
+        "ProviderRegistry",
+        "Scheduler",
+        "NetworkObserver",
+        "DiscoveryEngine"
+      ],
+      "functions": [
+        "makeId",
+        "unique",
+        "isAllowedUrl",
+        "normalizeContentType",
+        "isHtmlContentType",
+        "isJsonContentType",
+        "isXmlContentType",
+        "isCssContentType",
+        "isJavaScriptContentType",
+        "isTextContentType",
+        "looksLikeHtml",
+        "looksLikeJson",
+        "createPanel",
+        "initializeUi",
+        "updateUi",
+        "startUiTimer",
+        "stopUiTimer"
+      ],
+      "constants": [
+        "CHANNEL",
+        "CONFIG",
+        "NETWORK_CHANNEL",
+        "NETWORK_SOURCE",
+        "SOURCE",
+        "STATE_KEY",
+        "XHR",
+        "absoluteMatches",
+        "added",
+        "anchor",
+        "baseUrl",
+        "blob",
+        "body",
+        "bounded",
+        "candidate",
+        "canonical",
+        "cleaned",
+        "content",
+        "contentLength",
+        "contentType",
+        "controller",
+        "current",
+        "data",
+        "delay",
+        "depth",
+        "direct",
+        "discoveries",
+        "discovery",
+        "doc",
+        "documentBase",
+        "edges",
+        "embeddedUrls",
+        "emit",
+        "engine",
+        "entries",
+        "existing",
+        "explicitBase",
+        "exponent",
+        "fallback",
+        "finish",
+        "forms",
+        "httpEquiv",
+        "imports",
+        "inFlight",
+        "key",
+        "links",
+        "log",
+        "manifest",
+        "match",
+        "metadata",
+        "network",
+        "normalize",
+        "now",
+        "observation",
+        "origin",
+        "originalFetch",
+        "originalOpen",
+        "originalSend",
+        "panel",
+        "parent",
+        "parserError",
+        "priorityDifference",
+        "process",
+        "progress",
+        "queue",
+        "queueSize",
+        "quotedRelativeMatches",
+        "raw",
+        "ready",
+        "regex",
+        "requestUrl",
+        "resources",
+        "response",
+        "result",
+        "retryable",
+        "script",
+        "selector",
+        "sitemaps",
+        "sleep",
+        "sourceMapUrls",
+        "stats",
+        "status",
+        "target",
+        "text",
+        "title",
+        "trimmed",
+        "type",
+        "url",
+        "urls",
+        "value",
+        "visit",
+        "warn",
+        "wellKnown",
+        "workers",
+        "xhr"
+      ]
+    },
+    "api_signatures": {
+      "recognize": [
+        "recognize()"
+      ],
+      "acquire": [
+        "acquire(candidate)"
+      ],
+      "claimNextCandidate": [
+        "claimNextCandidate()"
+      ],
+      "run": [
+        "run()"
+      ],
+      "addCandidate": [
+        "addCandidate(candidate)"
+      ],
+      "addDiscovery": [
+        "addDiscovery(discovery)"
+      ],
+      "persist": [
+        "persist()"
+      ]
+    },
+    "class_content_sha256": {
+      "Candidate": "670b9e7b9a0cb957b674535df0efc25b5ecb20fe9228ec8f88c27da3eb32e1d8",
+      "Observation": "36105c926564d4e015e442cd44d5fe62868899c4c3286993dddaefec41b1cdc2",
+      "Discovery": "9c9516d1ec740fa325547e1ef9940794045365a0129cc2e4138dd1fde96f167e",
+      "KnowledgeBase": "9092970649bb9faa6385413ccbd5ea883e270eac1cb4dc1dfdffed1fbf3b16c7",
+      "HttpAcquisitionAdapter": "4c5b82048a12e5857a28535718780c22b6473f20977bb99a7ab38f337434b26b",
+      "ResponseProvider": "7cdfb7723e0998c3db667a7ed5f8eba1574de5c43b0d4334676c15b16c6dcd57",
+      "HtmlProvider": "c7b793ecdc75b3b6d967ec18d2984a3a93aaa6b2bbdff316ff9f932588b00f29",
+      "JsonProvider": "5ecbfd825fcb668f071c4f4814cc8c3133b9b6d0077fd76ae913b8f8263ca667",
+      "XmlProvider": "f2a3b6128ec36370d6b6aca5d40a36ac7581c807e5ee202c88da8d084e7403fe",
+      "CssProvider": "b65a5245b1bae1298133140d5d66896ad15bdd7157fc33d7ff8da1d6ca4d84ef",
+      "JavaScriptProvider": "f0e81ca3a3d06a04e19bee561656eb9d0aa86548a17bc30d482807388b681aff",
+      "RobotsProvider": "7015789b1ac8f9e42e5ae3cfc26e9dc50f999a320c2927f561ca6acf0d3a650e",
+      "TextProvider": "be6c1623165cc1301d5dd4b4d0d8af8a809c250159e703bd072ef2bc09048245",
+      "ProviderRegistry": "5acebb215669c1ec3b103ba446a5dc84176f17364cbf6cb0e622684caf9263ed",
+      "Scheduler": "38016bed09ef735b3b030d85c5a2287e03ff08bda86cb7ae7811e82c8ef7b6c8",
+      "NetworkObserver": "71b1aba82778eb8e47c867ab48672f59152aedb0d4d0fcd83d1cfa1692543929",
+      "DiscoveryEngine": "ea8eddab2f2ba6ac5376357a2cac7f557e4cdcec7d681583e78c6ab320cac5b1"
+    },
+    "model_fields": {
+      "Candidate": [
+        "attempts",
+        "createdAt",
+        "depth",
+        "hints",
+        "id",
+        "nextAttemptAt",
+        "origin",
+        "parent",
+        "priority",
+        "status",
+        "target",
+        "type"
+      ],
+      "Observation": [
+        "body",
+        "candidateId",
+        "completedAt",
+        "errors",
+        "http",
+        "id",
+        "network",
+        "signalPresent",
+        "startedAt",
+        "status",
+        "target"
+      ],
+      "Discovery": [
+        "candidateId",
+        "confidence",
+        "createdAt",
+        "data",
+        "id",
+        "kind",
+        "observationId",
+        "provenance"
+      ],
+      "KnowledgeBase": [
+        "candidates",
+        "claimed",
+        "discoveries",
+        "observations",
+        "visited"
+      ],
+      "Scheduler": [
+        "database"
+      ]
+    },
+    "conflicts": [],
+    "analysis_method": "read-only lexical regular expressions; no AST rewrite"
+  },
+  "changes_from_previous": {
+    "previous_snapshot": "snapshot-0005",
+    "lineage_evidence": "preceding prose says this v0.4.0 also continues from v0.3.0",
+    "source_diff": "snapshots/v0.4/variant-b/analysis/source-diff-from-previous.diff",
+    "source_diff_sha256": "ff02694284a315837e8ffcf5d2f69f41845dc67f0297adcc94a3bae084889d5f",
+    "symbol_diff": {
+      "added": [
+        "CHANNEL",
+        "CssProvider",
+        "JavaScriptProvider",
+        "NETWORK_CHANNEL",
+        "NETWORK_SOURCE",
+        "NetworkObserver",
+        "RobotsProvider",
+        "SOURCE",
+        "STATE_KEY",
+        "XHR",
+        "XmlProvider",
+        "cleaned",
+        "contentLength",
+        "createPanel",
+        "delay",
+        "depth",
+        "documentBase",
+        "edges",
+        "emit",
+        "entries",
+        "existing",
+        "explicitBase",
+        "exponent",
+        "fallback",
+        "imports",
+        "initializeUi",
+        "isCssContentType",
+        "isJavaScriptContentType",
+        "isXmlContentType",
+        "looksLikeJson",
+        "manifest",
+        "network",
+        "normalize",
+        "origin",
+        "originalFetch",
+        "originalOpen",
+        "originalSend",
+        "parent",
+        "parserError",
+        "priorityDifference",
+        "process",
+        "queueSize",
+        "quotedRelativeMatches",
+        "ready",
+        "regex",
+        "requestUrl",
+        "retryable",
+        "script",
+        "sitemaps",
+        "sleep",
+        "sourceMapUrls",
+        "target",
+        "value",
+        "wellKnown",
+        "xhr"
+      ],
+      "removed": [
+        "candidates",
+        "canonicalizeUrl",
+        "elements",
+        "embedded",
+        "existingPanel",
+        "extractUrlsFromText",
+        "newCandidates",
+        "relativeMatches"
+      ]
+    },
+    "api_diff": {
+      "added": [
+        {
+          "symbol": "recognize",
+          "signature": "recognize()"
+        }
+      ],
+      "removed": [
+        {
+          "symbol": "addObservation",
+          "signature": "addObservation(observation)"
+        },
+        {
+          "symbol": "recognize",
+          "signature": "recognize(/* candidate, observation */)"
+        },
+        {
+          "symbol": "recognize",
+          "signature": "recognize(candidate, observation)"
+        }
+      ]
+    },
+    "data_model_diff": {
+      "Candidate": {
+        "added_fields": [
+          "depth",
+          "nextAttemptAt"
+        ],
+        "removed_fields": [],
+        "retained_fields": [
+          "attempts",
+          "createdAt",
+          "hints",
+          "id",
+          "origin",
+          "parent",
+          "priority",
+          "status",
+          "target",
+          "type"
+        ]
+      },
+      "Observation": {
+        "added_fields": [
+          "network"
+        ],
+        "removed_fields": [],
+        "retained_fields": [
+          "body",
+          "candidateId",
+          "completedAt",
+          "errors",
+          "http",
+          "id",
+          "signalPresent",
+          "startedAt",
+          "status",
+          "target"
+        ]
+      },
+      "Discovery": {
+        "added_fields": [],
+        "removed_fields": [],
+        "retained_fields": [
+          "candidateId",
+          "confidence",
+          "createdAt",
+          "data",
+          "id",
+          "kind",
+          "observationId",
+          "provenance"
+        ]
+      },
+      "KnowledgeBase": {
+        "added_fields": [],
+        "removed_fields": [],
+        "retained_fields": [
+          "candidates",
+          "claimed",
+          "discoveries",
+          "observations",
+          "visited"
+        ]
+      },
+      "Scheduler": {
+        "added_fields": [],
+        "removed_fields": [],
+        "retained_fields": [
+          "database"
+        ]
+      }
+    },
+    "behavioral_observation": "Textual source differences only; behavior was not executed or proved.",
+    "architectural_difference": {
+      "XML provider": {
+        "from": "ABSENT",
+        "to": "IMPLEMENTED"
+      }
+    }
+  },
+  "capabilities": {
+    "Candidate model": {
+      "status": "IMPLEMENTED",
+      "evidence": {
+        "artifact_id": "art-c19ebb3956fba19c",
+        "line": 605,
+        "matched_source": "\r\n    class Candidate"
+      }
+    },
+    "Observation model": {
+      "status": "IMPLEMENTED",
+      "evidence": {
+        "artifact_id": "art-c19ebb3956fba19c",
+        "line": 670,
+        "matched_source": "\r\n    class Observation"
+      }
+    },
+    "Discovery model": {
+      "status": "IMPLEMENTED",
+      "evidence": {
+        "artifact_id": "art-c19ebb3956fba19c",
+        "line": 729,
+        "matched_source": "\r\n    class Discovery"
+      }
+    },
+    "KnowledgeBase": {
+      "status": "IMPLEMENTED",
+      "evidence": {
+        "artifact_id": "art-c19ebb3956fba19c",
+        "line": 780,
+        "matched_source": "\r\n    class KnowledgeBase"
+      }
+    },
+    "HTML provider": {
+      "status": "IMPLEMENTED",
+      "evidence": {
+        "artifact_id": "art-c19ebb3956fba19c",
+        "line": 1552,
+        "matched_source": "\r\n    class HtmlProvider"
+      }
+    },
+    "JSON provider": {
+      "status": "IMPLEMENTED",
+      "evidence": {
+        "artifact_id": "art-c19ebb3956fba19c",
+        "line": 2069,
+        "matched_source": "\r\n    class JsonProvider"
+      }
+    },
+    "Text provider": {
+      "status": "IMPLEMENTED",
+      "evidence": {
+        "artifact_id": "art-c19ebb3956fba19c",
+        "line": 2775,
+        "matched_source": "\r\n    class TextProvider"
+      }
+    },
+    "XML provider": {
+      "status": "IMPLEMENTED",
+      "evidence": {
+        "artifact_id": "art-c19ebb3956fba19c",
+        "line": 2283,
+        "matched_source": "\r\n    class XmlProvider"
+      }
+    },
+    "Provider registry": {
+      "status": "IMPLEMENTED",
+      "evidence": {
+        "artifact_id": "art-c19ebb3956fba19c",
+        "line": 2899,
+        "matched_source": "\r\n    class ProviderRegistry"
+      }
+    },
+    "Scheduler": {
+      "status": "IMPLEMENTED",
+      "evidence": {
+        "artifact_id": "art-c19ebb3956fba19c",
+        "line": 2961,
+        "matched_source": "\r\n    class Scheduler"
+      }
+    },
+    "Concurrent workers": {
+      "status": "IMPLEMENTED",
+      "evidence": {
+        "artifact_id": "art-c19ebb3956fba19c",
+        "line": 3949,
+        "matched_source": "Promise.all("
+      }
+    },
+    "Synchronous claim operation": {
+      "status": "IMPLEMENTED",
+      "evidence": {
+        "artifact_id": "art-c19ebb3956fba19c",
+        "line": 850,
+        "matched_source": "claimNextCandidate("
+      }
+    },
+    "Provenance records": {
+      "status": "IMPLEMENTED",
+      "evidence": {
+        "artifact_id": "art-c19ebb3956fba19c",
+        "line": 757,
+        "matched_source": "this.provenance"
+      }
+    },
+    "GM acquisition": {
+      "status": "IMPLEMENTED",
+      "evidence": {
+        "artifact_id": "art-c19ebb3956fba19c",
+        "line": 1329,
+        "matched_source": "GM_xmlhttpRequest("
+      }
+    },
+    "Fetch acquisition": {
+      "status": "IMPLEMENTED",
+      "evidence": {
+        "artifact_id": "art-c19ebb3956fba19c",
+        "line": 1428,
+        "matched_source": "fetch("
+      }
+    }
+  },
+  "conflicts": [],
+  "uncertainties": [],
+  "assumptions": [],
+  "executability": "LIKELY_EXECUTABLE",
+  "static_validation": {
+    "syntax_and_ast_parse": {
+      "attempted": true,
+      "result": "PASS",
+      "tool": "node --check -",
+      "exit_code": 0,
+      "diagnostic": "",
+      "source_modified": false,
+      "runtime_executed": false
+    },
+    "userscript_metadata": {
+      "result": "PASS",
+      "status": "PARSED",
+      "version": "0.4.0",
+      "directives": {
+        "connect": [
+          "*"
+        ],
+        "description": [
+          "Generic web-resource discovery engine inspired by the architecture of DVB blind scanning."
+        ],
+        "grant": [
+          "GM_getValue",
+          "GM_setValue",
+          "GM_xmlhttpRequest",
+          "unsafeWindow"
+        ],
+        "match": [
+          "*://*/*"
+        ],
+        "name": [
+          "Generic Discovery Engine"
+        ],
+        "namespace": [
+          "generic-discovery"
+        ],
+        "run-at": [
+          "document-start"
+        ],
+        "version": [
+          "0.4.0"
+        ]
+      },
+      "raw_header_present": true
+    },
+    "dependency_resolution": "UNKNOWN",
+    "source_was_modified_to_validate": false
+  },
+  "runtime_validation": {
+    "executed": false,
+    "result": "NOT_EXECUTED"
+  },
+  "historical_execution": "UNKNOWN",
+  "historical_environment": {
+    "browser": "UNKNOWN",
+    "userscript_manager": "Tampermonkey/Greasemonkey-compatible (document claim; exact version UNKNOWN)",
+    "permissions": [
+      "GM_getValue",
+      "GM_setValue",
+      "GM_xmlhttpRequest",
+      "unsafeWindow"
+    ],
+    "external_dependencies": [
+      "Worker",
+      "GM_xmlhttpRequest",
+      "GM_getValue",
+      "GM_setValue",
+      "fetch",
+      "XMLHttpRequest",
+      "DOMParser",
+      "PerformanceObserver",
+      "AbortController",
+      "URL",
+      "Map",
+      "Set",
+      "Promise",
+      "document",
+      "window",
+      "localStorage"
+    ],
+    "runtime_assumptions": "NOT_TESTED"
+  },
+  "evidence": [
+    {
+      "source_artifact": "art-c19ebb3956fba19c",
+      "source_anchor": "lines 13487-18264; bytes 416148-545647",
+      "reconstruction_operation": "direct_copy",
+      "confidence": "HIGH",
+      "assumptions": []
+    }
+  ],
+  "integrity": {
+    "reconstructed_sha256": "c60c3278d160ed1ba6e8b4254d26cab291a3df64a4e986234cfc1fa7f897b783",
+    "size_bytes": 129500,
+    "source_map_sha256": "a00a9f0a949dfbe3a9b2bbebd84b009854a0cda1fa8a84c66f9cf2dce64fd73c"
+  },
+  "temporal_tests": {
+    "artifact_not_later_than_snapshot": "PASS",
+    "dependency_temporal_consistency": "PASS_NO_LATER_ARTIFACT_COMPOSED",
+    "backward_contamination": "PASS",
+    "forward_contamination": "PASS_NO_CROSS_VERSION_SOURCE_INSERTION"
+  },
+  "generated": {
+    "timestamp": "2026-09-11T13:21:04+00:00",
+    "extractor_version": "mechanical-reconstruction-v1",
+    "metadata_is_historical": false
+  },
+  "paths": {
+    "source": "snapshots/v0.4/variant-b/source/generic-discovery.user.js",
+    "source_map": "snapshots/v0.4/variant-b/source-map.yaml",
+    "report": "snapshots/v0.4/variant-b/reconstruction-report.md"
+  }
+}

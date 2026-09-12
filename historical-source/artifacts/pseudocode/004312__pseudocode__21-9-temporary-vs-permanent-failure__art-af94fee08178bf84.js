@@ -1,0 +1,3 @@
+{
+    failureClass: "structural"
+}

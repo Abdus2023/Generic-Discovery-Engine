@@ -1,0 +1,36 @@
+blind_scan(start_frequency, end_frequency):
+
+    discoveries = {}
+
+    for frequency in frequency_grid(start_frequency, end_frequency):
+
+        tune(frequency)
+
+        if !signal_detected():
+            continue
+
+        for parameters in candidate_parameters():
+
+            if !demodulator_lock(parameters):
+                continue
+
+            ts = acquire_transport_stream()
+
+            if !valid_transport_stream(ts):
+                continue
+
+            metadata = parse_si_tables(ts)
+
+            discovery = {
+                frequency,
+                parameters,
+                network_id: metadata.network_id,
+                transport_stream_id: metadata.transport_stream_id,
+                services: metadata.services
+            }
+
+            discoveries.add_or_merge(discovery)
+
+            break
+
+    return discoveries

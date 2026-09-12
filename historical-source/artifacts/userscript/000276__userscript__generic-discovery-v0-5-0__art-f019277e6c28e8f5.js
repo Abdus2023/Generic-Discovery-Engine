@@ -1,0 +1,5265 @@
+// ==UserScript==
+// @name         Generic Discovery Engine
+// @namespace    generic-discovery
+// @version      0.5.0
+// @description  Generic web-resource discovery engine inspired by the architecture of DVB blind scanning.
+// @match        *://*/*
+// @run-at       document-start
+// @noframes
+// @grant        GM_getValue
+// @grant        GM_setValue
+// @grant        GM_xmlhttpRequest
+// @connect      *
+// ==/UserScript==
+
+(function () {
+    'use strict';
+
+    /*
+     * Generic Discovery Engine v0.5.0
+     *
+     * Architectural model:
+     *
+     *   candidate
+     *       ↓
+     *   acquisition / observation
+     *       ↓
+     *   recognition
+     *       ↓
+     *   discovery
+     *       ↓
+     *   new candidates
+     *       ↓
+     *   scheduler
+     *
+     * v0.5 adds:
+     *
+     * - URL/resource-level deduplication
+     * - first-class resource registry
+     * - first-class network events
+     * - request/response correlation
+     * - content-aware scheduling
+     * - provider confidence
+     * - multi-discovery provider API
+     * - resource fingerprints
+     * - redirect relationships
+     * - explicit candidate lifecycle
+     * - graph edges independent of acquisition
+     * - bounded persistence
+     * - richer export
+     *
+     * This is NOT RF/DVB scanning.
+     * It does not access RF hardware, tune frequencies, synchronize carriers,
+     * perform FEC, demodulate DVB signals, or interact with broadcast hardware.
+     */
+
+    // -------------------------------------------------------------------------
+    // Configuration
+    // -------------------------------------------------------------------------
+
+    const CONFIG = {
+        maxCandidates: 750,
+        maxRequests: 150,
+        concurrency: 4,
+
+        requestTimeout: 8000,
+
+        sameOriginOnly: true,
+
+        discoverLinks: true,
+        discoverResources: true,
+        discoverForms: true,
+        discoverMetadata: true,
+        discoverFromText: true,
+        discoverNetwork: true,
+        discoverPerformance: true,
+        discoverWellKnown: true,
+
+        maxRetries: 2,
+        retryBaseDelay: 500,
+        retryMaxDelay: 8000,
+
+        maxDepth: 5,
+        priorityDepthPenalty: 0.045,
+        confidencePriorityBoost: 0.08,
+        retryPriorityPenalty: 0.05,
+
+        typePriority: {
+            api: 0.95,
+            manifest: 0.92,
+            sitemap: 0.90,
+            robots: 0.88,
+            url: 0.84,
+            feed: 0.82,
+            metadata: 0.76,
+            network: 0.80,
+            frame: 0.62,
+            script: 0.56,
+            stylesheet: 0.54,
+            resource: 0.48,
+            form: 0.42,
+            media: 0.25,
+            embedded: 0.40,
+            xml: 0.70,
+            text: 0.30
+        },
+
+        fingerprintMaxChars: 1000000,
+
+        maxNetworkEvents: 1000,
+        maxGraphEdges: 5000,
+
+        persistState: true,
+        persistDebounceMs: 400,
+        maxPersistedDiscoveries: 1200,
+        maxPersistedResources: 1500,
+        maxPersistedEdges: 3000,
+
+        maxStoredTextPreview: 300,
+
+        networkBridge: true,
+
+        debug: true
+    };
+
+    // -------------------------------------------------------------------------
+    // Utilities
+    // -------------------------------------------------------------------------
+
+    function log(...args) {
+        if (CONFIG.debug) {
+            console.log('[GenericDiscovery]', ...args);
+        }
+    }
+
+    function warn(...args) {
+        console.warn('[GenericDiscovery]', ...args);
+    }
+
+    function now() {
+        return Date.now();
+    }
+
+    function sleep(ms) {
+        return new Promise(resolve => setTimeout(resolve, ms));
+    }
+
+    function makeId(prefix = 'id') {
+        return `${prefix}-${Date.now().toString(36)}-${Math.random().toString(36).slice(2, 9)}`;
+    }
+
+    function clamp(value, min, max) {
+        return Math.max(min, Math.min(max, value));
+    }
+
+    function unique(values) {
+        return [...new Set(values.filter(Boolean))];
+    }
+
+    function safeArray(value) {
+        return Array.isArray(value) ? value : [];
+    }
+
+    function canonicalizeUrl(value, base = location.href) {
+        if (!value || typeof value !== 'string') {
+            return null;
+        }
+
+        try {
+            const url = new URL(value.trim(), base);
+
+            if (!/^https?:$/i.test(url.protocol)) {
+                return null;
+            }
+
+            url.hash = '';
+
+            return url.href;
+        } catch {
+            return null;
+        }
+    }
+
+    function isAllowedUrl(target) {
+        if (!target) {
+            return false;
+        }
+
+        try {
+            const url = new URL(target);
+
+            if (!/^https?:$/i.test(url.protocol)) {
+                return false;
+            }
+
+            if (!CONFIG.sameOriginOnly) {
+                return true;
+            }
+
+            return url.origin === location.origin;
+        } catch {
+            return false;
+        }
+    }
+
+    function normalizeContentType(value) {
+        if (!value) {
+            return '';
+        }
+
+        return String(value)
+            .split(';')[0]
+            .trim()
+            .toLowerCase();
+    }
+
+    function isHtmlContentType(type) {
+        type = normalizeContentType(type);
+        return type === 'text/html' ||
+               type === 'application/xhtml+xml';
+    }
+
+    function isJsonContentType(type) {
+        type = normalizeContentType(type);
+
+        return type === 'application/json' ||
+               type === 'application/manifest+json' ||
+               type.endsWith('+json');
+    }
+
+    function isXmlContentType(type) {
+        type = normalizeContentType(type);
+
+        return type === 'application/xml' ||
+               type === 'text/xml' ||
+               type.endsWith('+xml');
+    }
+
+    function isCssContentType(type) {
+        return normalizeContentType(type) === 'text/css';
+    }
+
+    function isJavaScriptContentType(type) {
+        type = normalizeContentType(type);
+
+        return type === 'application/javascript' ||
+               type === 'text/javascript' ||
+               type === 'application/x-javascript' ||
+               type === 'text/ecmascript' ||
+               type === 'application/ecmascript';
+    }
+
+    function isTextContentType(type) {
+        type = normalizeContentType(type);
+
+        return type.startsWith('text/') ||
+               type === 'application/ld+json' ||
+               type === 'application/graphql' ||
+               type === 'application/x-www-form-urlencoded';
+    }
+
+    function looksLikeHtml(body) {
+        return /<!doctype\s+html|<html[\s>]|<head[\s>]|<body[\s>]/i.test(body || '');
+    }
+
+    function looksLikeJson(body) {
+        const text = String(body || '').trim();
+
+        if (!text) {
+            return false;
+        }
+
+        return (
+            (text.startsWith('{') && text.endsWith('}')) ||
+            (text.startsWith('[') && text.endsWith(']'))
+        );
+    }
+
+    function looksLikeXml(body) {
+        return /<\?xml\b|<(?:urlset|sitemapindex|rss|feed|sitemap)\b/i.test(body || '');
+    }
+
+    function looksLikeApiUrl(target) {
+        try {
+            const url = new URL(target);
+            const path = url.pathname.toLowerCase();
+
+            return (
+                path.includes('/api/') ||
+                path.endsWith('/api') ||
+                path.includes('/graphql') ||
+                path.includes('/rpc/') ||
+                path.includes('/rest/') ||
+                path.includes('/ajax/') ||
+                path.endsWith('.json') ||
+                path.endsWith('.graphql') ||
+                path.endsWith('.gql')
+            );
+        } catch {
+            return false;
+        }
+    }
+
+    function extractUrlsFromText(text, base = location.href) {
+        const result = [];
+        const source = String(text || '');
+
+        const absolutePattern = /\bhttps?:\/\/[^\s"'<>()[\]{}]+/gi;
+
+        for (const match of source.matchAll(absolutePattern)) {
+            const url = canonicalizeUrl(match[0], base);
+
+            if (url && isAllowedUrl(url)) {
+                result.push(url);
+            }
+        }
+
+        const relativePattern =
+            /(?:^|["'(\s=])((?:\/|\.\.?\/)[A-Za-z0-9_~:/?#\[\]@!$&'()*+,;=%.\-]+)/g;
+
+        for (const match of source.matchAll(relativePattern)) {
+            const url = canonicalizeUrl(match[1], base);
+
+            if (url && isAllowedUrl(url)) {
+                result.push(url);
+            }
+        }
+
+        return unique(result);
+    }
+
+    function extractCssUrls(css, base) {
+        const result = [];
+
+        const urlPattern = /url\s*\(\s*(['"]?)(.*?)\1\s*\)/gi;
+
+        for (const match of css.matchAll(urlPattern)) {
+            const raw = String(match[2] || '').trim();
+
+            if (!raw || raw.startsWith('data:')) {
+                continue;
+            }
+
+            const url = canonicalizeUrl(raw, base);
+
+            if (url && isAllowedUrl(url)) {
+                result.push(url);
+            }
+        }
+
+        const importPattern = /@import\s+(?:url\s*\(\s*)?(['"])(.*?)\1/gi;
+
+        for (const match of css.matchAll(importPattern)) {
+            const url = canonicalizeUrl(match[2], base);
+
+            if (url && isAllowedUrl(url)) {
+                result.push(url);
+            }
+        }
+
+        return unique(result);
+    }
+
+    function extractXmlLocs(xml, base) {
+        const result = [];
+
+        const locPattern = /<loc\b[^>]*>\s*([^<]+?)\s*<\/loc>/gi;
+
+        for (const match of xml.matchAll(locPattern)) {
+            const url = canonicalizeUrl(
+                String(match[1]).trim(),
+                base
+            );
+
+            if (url && isAllowedUrl(url)) {
+                result.push(url);
+            }
+        }
+
+        const linkPattern = /<link\b[^>]*\bhref\s*=\s*(['"])(.*?)\1/gi;
+
+        for (const match of xml.matchAll(linkPattern)) {
+            const url = canonicalizeUrl(match[2], base);
+
+            if (url && isAllowedUrl(url)) {
+                result.push(url);
+            }
+        }
+
+        return unique(result);
+    }
+
+    function stableId(prefix, value) {
+        return `${prefix}:${fnv1a32(String(value || ''))}`;
+    }
+
+    // -------------------------------------------------------------------------
+    // Lightweight fingerprinting
+    // -------------------------------------------------------------------------
+
+    function fnv1a32(value) {
+        const text = String(value || '');
+        const limit = Math.min(text.length, CONFIG.fingerprintMaxChars);
+
+        let hash = 0x811c9dc5;
+
+        for (let i = 0; i < limit; i++) {
+            hash ^= text.charCodeAt(i);
+            hash = Math.imul(hash, 0x01000193);
+        }
+
+        return (`00000000${(hash >>> 0).toString(16)}`).slice(-8);
+    }
+
+    function makeFingerprint(observation) {
+        const contentType = normalizeContentType(
+            observation.http?.contentType || ''
+        );
+
+        const textLike =
+            isTextContentType(contentType) ||
+            isHtmlContentType(contentType) ||
+            isJsonContentType(contentType) ||
+            isXmlContentType(contentType) ||
+            isCssContentType(contentType) ||
+            isJavaScriptContentType(contentType) ||
+            !contentType;
+
+        return {
+            status: observation.http?.status ?? null,
+            contentType,
+            contentLength: observation.http?.contentLength ?? null,
+            finalUrl: observation.http?.finalUrl || observation.target || null,
+            bodyHash: textLike && observation.body
+                ? fnv1a32(observation.body)
+                : null,
+            bodyHashAlgorithm: textLike && observation.body
+                ? 'fnv1a32-32'
+                : null,
+            sampledCharacters: textLike && observation.body
+                ? Math.min(
+                    String(observation.body).length,
+                    CONFIG.fingerprintMaxChars
+                )
+                : 0
+        };
+    }
+
+    // -------------------------------------------------------------------------
+    // Candidate
+    // -------------------------------------------------------------------------
+
+    class Candidate {
+        constructor({
+            target,
+            type = 'url',
+            origin = 'unknown',
+            parent = null,
+            priority = 0.5,
+            hints = {},
+            depth = 0
+        }) {
+            this.id = makeId('candidate');
+            this.target = target;
+            this.type = type;
+            this.origin = origin;
+            this.parent = parent;
+            this.priority = clamp(Number(priority) || 0, 0, 1);
+            this.hints = { ...hints };
+            this.depth = Math.max(0, Number(depth) || 0);
+
+            this.createdAt = now();
+            this.attempts = 0;
+
+            this.status = 'discovered';
+
+            this.queuedAt = null;
+            this.claimedAt = null;
+            this.acquiringAt = null;
+            this.observedAt = null;
+            this.recognizedAt = null;
+            this.expandedAt = null;
+            this.completedAt = null;
+            this.failedAt = null;
+
+            this.nextAttemptAt = 0;
+
+            this.alternateTypes = [];
+            this.alternateOrigins = [];
+            this.parents = parent ? [parent] : [];
+        }
+
+        key() {
+            return `${this.type}:${this.target}`;
+        }
+
+        effectivePriority() {
+            const typeBoost =
+                CONFIG.typePriority[this.type] ??
+                CONFIG.typePriority.resource;
+
+            const confidence =
+                Number(this.hints.confidence || 0);
+
+            const retryPenalty =
+                this.attempts * CONFIG.retryPriorityPenalty;
+
+            return clamp(
+                this.priority +
+                typeBoost * 0.20 +
+                confidence * CONFIG.confidencePriorityBoost -
+                this.depth * CONFIG.priorityDepthPenalty -
+                retryPenalty,
+                0,
+                1
+            );
+        }
+
+        transition(status) {
+            this.status = status;
+
+            const timestamp = now();
+
+            switch (status) {
+                case 'queued':
+                    this.queuedAt = timestamp;
+                    break;
+                case 'claimed':
+                    this.claimedAt = timestamp;
+                    break;
+                case 'acquiring':
+                    this.acquiringAt = timestamp;
+                    break;
+                case 'observed':
+                    this.observedAt = timestamp;
+                    break;
+                case 'recognized':
+                    this.recognizedAt = timestamp;
+                    break;
+                case 'expanded':
+                    this.expandedAt = timestamp;
+                    break;
+                case 'completed':
+                    this.completedAt = timestamp;
+                    break;
+                case 'failed':
+                    this.failedAt = timestamp;
+                    break;
+            }
+        }
+
+        merge(other) {
+            if (!other) {
+                return;
+            }
+
+            this.alternateTypes = unique([
+                ...this.alternateTypes,
+                other.type,
+                ...(other.alternateTypes || [])
+            ]);
+
+            this.alternateOrigins = unique([
+                ...this.alternateOrigins,
+                other.origin,
+                ...(other.alternateOrigins || [])
+            ]);
+
+            this.parents = unique([
+                ...this.parents,
+                other.parent,
+                ...(other.parents || [])
+            ]);
+
+            this.priority = Math.max(
+                this.priority,
+                Number(other.priority) || 0
+            );
+
+            this.depth = Math.min(
+                this.depth,
+                Number(other.depth) || 0
+            );
+
+            this.hints = {
+                ...this.hints,
+                ...other.hints
+            };
+        }
+    }
+
+    // -------------------------------------------------------------------------
+    // Observation
+    // -------------------------------------------------------------------------
+
+    class Observation {
+        constructor({
+            candidateId,
+            target,
+            status = 'acquired'
+        }) {
+            this.id = makeId('observation');
+            this.candidateId = candidateId;
+            this.target = target;
+
+            this.startedAt = now();
+            this.completedAt = null;
+
+            this.status = status;
+            this.signalPresent = false;
+
+            this.http = {
+                status: null,
+                contentType: '',
+                contentLength: null,
+                finalUrl: null
+            };
+
+            this.body = '';
+            this.errors = [];
+
+            this.network = null;
+            this.fingerprint = null;
+        }
+    }
+
+    // -------------------------------------------------------------------------
+    // Network event
+    // -------------------------------------------------------------------------
+
+    class NetworkEvent {
+        constructor(data = {}) {
+            this.id = makeId('network');
+
+            this.requestId = data.requestId || null;
+            this.api = data.api || 'unknown';
+
+            this.method = data.method
+                ? String(data.method).toUpperCase()
+                : null;
+
+            this.url = data.url || null;
+            this.finalUrl = data.finalUrl || null;
+
+            this.status = data.status ?? null;
+            this.contentType = normalizeContentType(
+                data.contentType || ''
+            );
+
+            this.initiatorType = data.initiatorType || null;
+
+            this.requestAt = data.requestAt || now();
+            this.responseAt = data.responseAt || null;
+
+            this.duration = data.duration ?? null;
+
+            this.phase = data.phase || 'unknown';
+            this.error = data.error || null;
+        }
+    }
+
+    // -------------------------------------------------------------------------
+    // Discovery
+    // -------------------------------------------------------------------------
+
+    class Discovery {
+        constructor({
+            candidateId,
+            observationId,
+            kind,
+            confidence = 0.5,
+            mechanism = 'unknown',
+            data = {},
+            provenance = {}
+        }) {
+            this.id = makeId('discovery');
+
+            this.candidateId = candidateId;
+            this.observationId = observationId;
+
+            this.kind = kind;
+            this.confidence = clamp(
+                Number(confidence) || 0,
+                0,
+                1
+            );
+
+            this.mechanism = mechanism;
+            this.data = data;
+
+            this.provenance = {
+                origin: provenance.origin || null,
+                parent: provenance.parent || null,
+                candidateTarget: provenance.candidateTarget || null,
+                candidateType: provenance.candidateType || null,
+                mechanism,
+                depth: Number(provenance.depth || 0)
+            };
+
+            this.createdAt = now();
+        }
+
+        targetUrl() {
+            const possible = [
+                this.data?.url,
+                this.data?.finalUrl,
+                this.data?.target,
+                this.provenance?.candidateTarget
+            ];
+
+            for (const value of possible) {
+                const url = canonicalizeUrl(value);
+
+                if (url) {
+                    return url;
+                }
+            }
+
+            return null;
+        }
+    }
+
+    // -------------------------------------------------------------------------
+    // Resource record
+    // -------------------------------------------------------------------------
+
+    class ResourceRecord {
+        constructor(url) {
+            this.id = stableId('resource', url);
+            this.url = url;
+
+            this.types = new Set();
+            this.mechanisms = new Set();
+            this.parents = new Set();
+
+            this.candidateIds = new Set();
+            this.observationIds = new Set();
+            this.discoveryIds = new Set();
+
+            this.firstSeenAt = now();
+            this.lastSeenAt = now();
+
+            this.status = 'known';
+
+            this.fingerprint = null;
+
+            this.finalUrl = null;
+        }
+
+        mergeCandidate(candidate) {
+            this.types.add(candidate.type);
+            this.mechanisms.add(candidate.origin);
+
+            if (candidate.parent) {
+                this.parents.add(candidate.parent);
+            }
+
+            this.candidateIds.add(candidate.id);
+
+            this.lastSeenAt = now();
+        }
+
+        mergeObservation(observation) {
+            this.observationIds.add(observation.id);
+
+            this.status = observation.status === 'failed'
+                ? 'failed'
+                : 'acquired';
+
+            if (observation.fingerprint) {
+                this.fingerprint = observation.fingerprint;
+            }
+
+            if (observation.http?.finalUrl) {
+                this.finalUrl = observation.http.finalUrl;
+            }
+
+            this.lastSeenAt = now();
+        }
+
+        mergeDiscovery(discovery) {
+            this.discoveryIds.add(discovery.id);
+            this.lastSeenAt = now();
+        }
+
+        toJSON() {
+            return {
+                id: this.id,
+                url: this.url,
+                types: [...this.types],
+                mechanisms: [...this.mechanisms],
+                parents: [...this.parents],
+                candidateIds: [...this.candidateIds],
+                observationIds: [...this.observationIds],
+                discoveryIds: [...this.discoveryIds],
+                firstSeenAt: this.firstSeenAt,
+                lastSeenAt: this.lastSeenAt,
+                status: this.status,
+                fingerprint: this.fingerprint,
+                finalUrl: this.finalUrl
+            };
+        }
+
+        static fromJSON(value) {
+            const record = new ResourceRecord(value.url);
+
+            record.id = value.id || record.id;
+
+            record.types = new Set(safeArray(value.types));
+            record.mechanisms = new Set(safeArray(value.mechanisms));
+            record.parents = new Set(safeArray(value.parents));
+
+            record.candidateIds = new Set(
+                safeArray(value.candidateIds)
+            );
+
+            record.observationIds = new Set(
+                safeArray(value.observationIds)
+            );
+
+            record.discoveryIds = new Set(
+                safeArray(value.discoveryIds)
+            );
+
+            record.firstSeenAt =
+                value.firstSeenAt || record.firstSeenAt;
+
+            record.lastSeenAt =
+                value.lastSeenAt || record.lastSeenAt;
+
+            record.status = value.status || 'known';
+            record.fingerprint = value.fingerprint || null;
+            record.finalUrl = value.finalUrl || null;
+
+            return record;
+        }
+    }
+
+    // -------------------------------------------------------------------------
+    // Knowledge base
+    // -------------------------------------------------------------------------
+
+    class KnowledgeBase {
+        constructor() {
+            this.queue = [];
+
+            this.candidates = new Map();
+            this.observations = new Map();
+            this.discoveries = new Map();
+            this.resources = new Map();
+
+            this.visited = new Set();
+            this.claimed = new Set();
+
+            this.edgeRecords = [];
+
+            this.persistTimer = null;
+
+            this.statistics = {
+                candidatesCreated: 0,
+                candidatesMerged: 0,
+                candidatesRejected: 0,
+                maxDepthReached: 0,
+
+                requests: 0,
+                observations: 0,
+                discoveries: 0,
+
+                retries: 0,
+                failures: 0,
+
+                cacheSkips: 0,
+
+                networkEvents: 0,
+                networkCandidates: 0,
+                performanceCandidates: 0,
+
+                providerMatches: 0
+            };
+
+            this.load();
+        }
+
+        getResource(target) {
+            return this.resources.get(target) || null;
+        }
+
+        ensureResource(target) {
+            if (!target) {
+                return null;
+            }
+
+            let record = this.resources.get(target);
+
+            if (!record) {
+                record = new ResourceRecord(target);
+                this.resources.set(target, record);
+            }
+
+            return record;
+        }
+
+        resourceAlreadyAcquired(target) {
+            const record = this.getResource(target);
+
+            return !!(
+                record &&
+                record.status === 'acquired' &&
+                record.fingerprint
+            );
+        }
+
+        addCandidate(candidate) {
+            if (!(candidate instanceof Candidate)) {
+                return false;
+            }
+
+            const canonical = canonicalizeUrl(candidate.target);
+
+            if (!canonical || !isAllowedUrl(canonical)) {
+                this.statistics.candidatesRejected++;
+                return false;
+            }
+
+            candidate.target = canonical;
+
+            if (candidate.depth > CONFIG.maxDepth) {
+                this.statistics.maxDepthReached++;
+                this.statistics.candidatesRejected++;
+                return false;
+            }
+
+            const resource = this.ensureResource(candidate.target);
+
+            resource.mergeCandidate(candidate);
+
+            this.recordCandidateEdge(candidate);
+
+            const key = candidate.key();
+
+            const existing =
+                this.candidates.get(key);
+
+            if (existing) {
+                existing.merge(candidate);
+                this.statistics.candidatesMerged++;
+                return false;
+            }
+
+            if (this.visited.has(key)) {
+                this.statistics.candidatesMerged++;
+                return false;
+            }
+
+            if (this.claimed.has(key)) {
+                this.statistics.candidatesMerged++;
+                return false;
+            }
+
+            if (this.resourceAlreadyAcquired(candidate.target)) {
+                this.visited.add(key);
+                this.statistics.cacheSkips++;
+                return false;
+            }
+
+            if (this.queue.length >= CONFIG.maxCandidates) {
+                this.statistics.candidatesRejected++;
+                return false;
+            }
+
+            candidate.transition('queued');
+
+            this.candidates.set(key, candidate);
+            this.queue.push(candidate);
+
+            this.statistics.candidatesCreated++;
+
+            this.schedulePersist();
+
+            return true;
+        }
+
+        recordCandidateEdge(candidate) {
+            if (this.edgeRecords.length >= CONFIG.maxGraphEdges) {
+                return;
+            }
+
+            const source =
+                candidate.parent || 'root';
+
+            const duplicate = this.edgeRecords.some(edge =>
+                edge.fromDiscoveryId === source &&
+                edge.target === candidate.target &&
+                edge.mechanism === candidate.origin &&
+                edge.candidateType === candidate.type
+            );
+
+            if (duplicate) {
+                return;
+            }
+
+            this.edgeRecords.push({
+                id: makeId('edge'),
+                fromDiscoveryId:
+                    candidate.parent || null,
+                target: candidate.target,
+                mechanism: candidate.origin,
+                candidateType: candidate.type,
+                confidence:
+                    Number(candidate.hints.confidence || 0.5),
+                priority: candidate.priority,
+                depth: candidate.depth,
+                createdAt: now()
+            });
+        }
+
+        claimNextCandidate() {
+            const timestamp = now();
+
+            const ready = this.queue.filter(
+                candidate =>
+                    candidate.nextAttemptAt <= timestamp
+            );
+
+            if (!ready.length) {
+                return null;
+            }
+
+            ready.sort((a, b) => {
+                const priorityDiff =
+                    b.effectivePriority() -
+                    a.effectivePriority();
+
+                if (priorityDiff !== 0) {
+                    return priorityDiff;
+                }
+
+                return a.createdAt - b.createdAt;
+            });
+
+            const candidate = ready[0];
+
+            const index = this.queue.indexOf(candidate);
+
+            if (index >= 0) {
+                this.queue.splice(index, 1);
+            }
+
+            const key = candidate.key();
+
+            this.candidates.delete(key);
+            this.claimed.add(key);
+
+            candidate.transition('claimed');
+
+            return candidate;
+        }
+
+        nextReadyDelay() {
+            if (!this.queue.length) {
+                return null;
+            }
+
+            const timestamp = now();
+
+            let earliest = Infinity;
+
+            for (const candidate of this.queue) {
+                earliest = Math.min(
+                    earliest,
+                    candidate.nextAttemptAt || timestamp
+                );
+            }
+
+            return Math.max(
+                0,
+                earliest - timestamp
+            );
+        }
+
+        addObservation(observation) {
+            this.observations.set(
+                observation.id,
+                observation
+            );
+
+            const resource =
+                this.ensureResource(observation.target);
+
+            resource.mergeObservation(observation);
+
+            this.statistics.observations++;
+
+            this.schedulePersist();
+        }
+
+        addDiscovery(discovery) {
+            this.discoveries.set(
+                discovery.id,
+                discovery
+            );
+
+            const target =
+                discovery.targetUrl();
+
+            if (target) {
+                const resource =
+                    this.ensureResource(target);
+
+                resource.mergeDiscovery(discovery);
+            }
+
+            this.statistics.discoveries++;
+            this.statistics.providerMatches++;
+
+            this.schedulePersist();
+        }
+
+        addNetworkEvent(event) {
+            this.schedulePersist();
+        }
+
+        completeCandidate(candidate) {
+            candidate.transition('completed');
+
+            this.claimed.delete(candidate.key());
+            this.visited.add(candidate.key());
+
+            this.schedulePersist();
+        }
+
+        failCandidate(candidate, error) {
+            candidate.attempts++;
+
+            candidate.hints.lastError =
+                String(error?.message || error || 'unknown error');
+
+            if (candidate.attempts <= CONFIG.maxRetries) {
+                const delay = Math.min(
+                    CONFIG.retryMaxDelay,
+                    CONFIG.retryBaseDelay *
+                    Math.pow(2, candidate.attempts - 1)
+                );
+
+                candidate.nextAttemptAt =
+                    now() + delay;
+
+                candidate.transition('queued');
+
+                this.queue.push(candidate);
+
+                this.claimed.delete(candidate.key());
+
+                this.statistics.retries++;
+
+                this.schedulePersist();
+
+                return 'retry';
+            }
+
+            candidate.transition('failed');
+
+            this.claimed.delete(candidate.key());
+            this.visited.add(candidate.key());
+
+            const resource =
+                this.ensureResource(candidate.target);
+
+            resource.status = 'failed';
+
+            this.statistics.failures++;
+
+            this.schedulePersist();
+
+            return 'failed';
+        }
+
+        schedulePersist() {
+            if (!CONFIG.persistState) {
+                return;
+            }
+
+            clearTimeout(this.persistTimer);
+
+            this.persistTimer = setTimeout(() => {
+                this.persistNow();
+            }, CONFIG.persistDebounceMs);
+        }
+
+        persistNow() {
+            if (!CONFIG.persistState) {
+                return;
+            }
+
+            try {
+                const discoveries = [
+                    ...this.discoveries.values()
+                ].slice(-CONFIG.maxPersistedDiscoveries);
+
+                const resources = [
+                    ...this.resources.values()
+                ].slice(-CONFIG.maxPersistedResources);
+
+                const edges = this.edgeRecords
+                    .slice(-CONFIG.maxPersistedEdges);
+
+                GM_setValue(
+                    'genericDiscoveryState',
+                    {
+                        version: 5,
+
+                        savedAt: now(),
+
+                        visited: [
+                            ...this.visited
+                        ].slice(-2000),
+
+                        discoveries,
+
+                        resources: resources.map(
+                            resource => resource.toJSON()
+                        ),
+
+                        edges
+                    }
+                );
+            } catch (error) {
+                warn('Persistence failed:', error);
+            }
+        }
+
+        load() {
+            if (!CONFIG.persistState) {
+                return;
+            }
+
+            try {
+                const state =
+                    GM_getValue(
+                        'genericDiscoveryState',
+                        null
+                    );
+
+                if (!state) {
+                    return;
+                }
+
+                this.visited = new Set(
+                    safeArray(state.visited)
+                );
+
+                for (const discovery of safeArray(state.discoveries)) {
+                    this.discoveries.set(
+                        discovery.id,
+                        discovery
+                    );
+                }
+
+                for (const raw of safeArray(state.resources)) {
+                    if (!raw?.url) {
+                        continue;
+                    }
+
+                    this.resources.set(
+                        raw.url,
+                        ResourceRecord.fromJSON(raw)
+                    );
+                }
+
+                this.edgeRecords =
+                    safeArray(state.edges).slice(
+                        -CONFIG.maxPersistedEdges
+                    );
+
+                /*
+                 * v0.4 stored discoveries but not resource records.
+                 * Reconstruct resource knowledge from old discoveries.
+                 */
+                for (const discovery of this.discoveries.values()) {
+                    const target =
+                        discovery?.provenance?.candidateTarget ||
+                        discovery?.data?.url ||
+                        null;
+
+                    const canonical =
+                        canonicalizeUrl(target);
+
+                    if (!canonical) {
+                        continue;
+                    }
+
+                    const resource =
+                        this.ensureResource(canonical);
+
+                    resource.discoveryIds.add(
+                        discovery.id
+                    );
+                }
+
+                log(
+                    'Restored state:',
+                    this.resources.size,
+                    'resources,',
+                    this.discoveries.size,
+                    'discoveries'
+                );
+            } catch (error) {
+                warn('State restore failed:', error);
+            }
+        }
+
+        clear() {
+            clearTimeout(this.persistTimer);
+
+            this.queue.length = 0;
+
+            this.candidates.clear();
+            this.observations.clear();
+            this.discoveries.clear();
+            this.resources.clear();
+
+            this.visited.clear();
+            this.claimed.clear();
+
+            this.edgeRecords.length = 0;
+
+            this.statistics = {
+                candidatesCreated: 0,
+                candidatesMerged: 0,
+                candidatesRejected: 0,
+                maxDepthReached: 0,
+
+                requests: 0,
+                observations: 0,
+                discoveries: 0,
+
+                retries: 0,
+                failures: 0,
+
+                cacheSkips: 0,
+
+                networkEvents: 0,
+                networkCandidates: 0,
+                performanceCandidates: 0,
+
+                providerMatches: 0
+            };
+
+            try {
+                if (CONFIG.persistState) {
+                    GM_setValue(
+                        'genericDiscoveryState',
+                        null
+                    );
+                }
+            } catch (error) {
+                warn('Could not clear persisted state:', error);
+            }
+        }
+    }
+
+    // -------------------------------------------------------------------------
+    // HTTP acquisition adapter
+    // -------------------------------------------------------------------------
+
+    class HttpAcquisitionAdapter {
+        async acquire(candidate) {
+            const started = now();
+
+            const observation =
+                new Observation({
+                    candidateId: candidate.id,
+                    target: candidate.target
+                });
+
+            observation.startedAt = started;
+
+            try {
+                const result =
+                    typeof GM_xmlhttpRequest === 'function'
+                        ? await this.acquireGM(candidate.target)
+                        : await this.acquireFetch(candidate.target);
+
+                observation.completedAt = now();
+
+                observation.http.status =
+                    result.status ?? null;
+
+                observation.http.contentType =
+                    normalizeContentType(
+                        result.contentType || ''
+                    );
+
+                observation.http.contentLength =
+                    result.contentLength ?? null;
+
+                observation.http.finalUrl =
+                    result.finalUrl ||
+                    candidate.target;
+
+                observation.body =
+                    typeof result.body === 'string'
+                        ? result.body
+                        : '';
+
+                observation.signalPresent = true;
+
+                observation.status = 'acquired';
+
+                observation.fingerprint =
+                    makeFingerprint(observation);
+
+                return observation;
+            } catch (error) {
+                observation.completedAt = now();
+
+                observation.status = 'failed';
+
+                observation.errors.push(
+                    String(error?.message || error)
+                );
+
+                throw error;
+            }
+        }
+
+        acquireGM(target) {
+            return new Promise((resolve, reject) => {
+                let settled = false;
+
+                const finish = callback => value => {
+                    if (settled) {
+                        return;
+                    }
+
+                    settled = true;
+                    callback(value);
+                };
+
+                const resolveOnce =
+                    finish(resolve);
+
+                const rejectOnce =
+                    finish(reject);
+
+                let timeoutId = null;
+
+                try {
+                    timeoutId = setTimeout(() => {
+                        rejectOnce(
+                            new Error('Request timeout')
+                        );
+                    }, CONFIG.requestTimeout);
+
+                    GM_xmlhttpRequest({
+                        method: 'GET',
+                        url: target,
+
+                        timeout: CONFIG.requestTimeout,
+
+                        responseType: 'text',
+
+                        onload: response => {
+                            clearTimeout(timeoutId);
+
+                            resolveOnce({
+                                status: response.status,
+                                contentType:
+                                    response.responseHeaders
+                                        ? this.header(
+                                            response.responseHeaders,
+                                            'content-type'
+                                        )
+                                        : '',
+
+                                contentLength:
+                                    response.responseHeaders
+                                        ? this.header(
+                                            response.responseHeaders,
+                                            'content-length'
+                                        )
+                                        : null,
+
+                                finalUrl:
+                                    response.finalUrl ||
+                                    target,
+
+                                body:
+                                    typeof response.responseText === 'string'
+                                        ? response.responseText
+                                        : ''
+                            });
+                        },
+
+                        onerror: () => {
+                            clearTimeout(timeoutId);
+                            rejectOnce(
+                                new Error('Network error')
+                            );
+                        },
+
+                        ontimeout: () => {
+                            clearTimeout(timeoutId);
+                            rejectOnce(
+                                new Error('Request timeout')
+                            );
+                        },
+
+                        onabort: () => {
+                            clearTimeout(timeoutId);
+                            rejectOnce(
+                                new Error('Request aborted')
+                            );
+                        }
+                    });
+                } catch (error) {
+                    clearTimeout(timeoutId);
+                    rejectOnce(error);
+                }
+            });
+        }
+
+        header(headers, name) {
+            const wanted = name.toLowerCase();
+
+            const lines =
+                String(headers || '').split(/\r?\n/);
+
+            for (const line of lines) {
+                const index = line.indexOf(':');
+
+                if (index < 0) {
+                    continue;
+                }
+
+                const key =
+                    line.slice(0, index)
+                        .trim()
+                        .toLowerCase();
+
+                if (key === wanted) {
+                    return line
+                        .slice(index + 1)
+                        .trim();
+                }
+            }
+
+            return '';
+        }
+
+        async acquireFetch(target) {
+            const controller =
+                new AbortController();
+
+            const timeout =
+                setTimeout(
+                    () => controller.abort(),
+                    CONFIG.requestTimeout
+                );
+
+            try {
+                const response =
+                    await fetch(target, {
+                        method: 'GET',
+                        credentials: 'same-origin',
+                        redirect: 'follow',
+                        signal: controller.signal
+                    });
+
+                const body =
+                    await response.text();
+
+                return {
+                    status: response.status,
+
+                    contentType:
+                        response.headers.get(
+                            'content-type'
+                        ) || '',
+
+                    contentLength:
+                        response.headers.get(
+                            'content-length'
+                        ),
+
+                    finalUrl:
+                        response.url || target,
+
+                    body
+                };
+            } finally {
+                clearTimeout(timeout);
+            }
+        }
+    }
+
+    // -------------------------------------------------------------------------
+    // Provider base
+    // -------------------------------------------------------------------------
+
+    class Provider {
+        constructor(name, exclusive = true) {
+            this.name = name;
+            this.exclusive = exclusive;
+        }
+
+        matches() {
+            return false;
+        }
+
+        recognize() {
+            return [];
+        }
+
+        candidates() {
+            return [];
+        }
+    }
+
+    // -------------------------------------------------------------------------
+    // Response provider
+    // -------------------------------------------------------------------------
+
+    class ResponseProvider extends Provider {
+        constructor() {
+            super('response', false);
+        }
+
+        matches(candidate, observation) {
+            return (
+                !!candidate &&
+                !!observation &&
+                !!observation.http
+            );
+        }
+
+        recognize(candidate, observation) {
+            return [
+                new Discovery({
+                    candidateId: candidate.id,
+                    observationId: observation.id,
+                    kind: 'http-response',
+                    confidence: 0.45,
+                    mechanism: 'http-response',
+                    data: {
+                        url: candidate.target,
+                        finalUrl:
+                            observation.http.finalUrl,
+                        status:
+                            observation.http.status,
+                        contentType:
+                            observation.http.contentType,
+                        contentLength:
+                            observation.http.contentLength,
+                        fingerprint:
+                            observation.fingerprint
+                    },
+                    provenance: {
+                        origin: candidate.origin,
+                        parent: candidate.parent,
+                        candidateTarget: candidate.target,
+                        candidateType: candidate.type,
+                        depth: candidate.depth
+                    }
+                })
+            ];
+        }
+    }
+
+    // -------------------------------------------------------------------------
+    // HTML provider
+    // -------------------------------------------------------------------------
+
+    class HtmlProvider extends Provider {
+        constructor() {
+            super('html', true);
+        }
+
+        matches(candidate, observation) {
+            const type =
+                observation.http.contentType;
+
+            return (
+                isHtmlContentType(type) ||
+                (
+                    !type &&
+                    looksLikeHtml(observation.body)
+                ) ||
+                (
+                    candidate.type === 'url' &&
+                    looksLikeHtml(observation.body)
+                )
+            );
+        }
+
+        classifyLink(element) {
+            const rel =
+                String(
+                    element.getAttribute('rel') || ''
+                )
+                .toLowerCase()
+                .split(/\s+/)
+                .filter(Boolean);
+
+            const href =
+                element.getAttribute('href');
+
+            const type =
+                String(
+                    element.getAttribute('type') || ''
+                ).toLowerCase();
+
+            if (rel.includes('stylesheet')) {
+                return 'stylesheet';
+            }
+
+            if (rel.includes('manifest')) {
+                return 'manifest';
+            }
+
+            if (rel.includes('sitemap')) {
+                return 'sitemap';
+            }
+
+            if (
+                type.includes('rss') ||
+                type.includes('atom') ||
+                rel.includes('alternate')
+            ) {
+                return 'feed';
+            }
+
+            if (
+                rel.includes('canonical') ||
+                rel.includes('shortlink') ||
+                rel.includes('author')
+            ) {
+                return 'metadata';
+            }
+
+            if (
+                rel.includes('preload') ||
+                rel.includes('prefetch') ||
+                rel.includes('modulepreload')
+            ) {
+                return 'resource';
+            }
+
+            return 'url';
+        }
+
+        addReference(references, url, type, meta = {}) {
+            if (!url || !isAllowedUrl(url)) {
+                return;
+            }
+
+            references.push({
+                url,
+                type,
+                ...meta
+            });
+        }
+
+        recognize(candidate, observation) {
+            const parser =
+                new DOMParser();
+
+            const baseFetched =
+                observation.http.finalUrl ||
+                candidate.target;
+
+            const doc =
+                parser.parseFromString(
+                    observation.body,
+                    'text/html'
+                );
+
+            const baseElement =
+                doc.querySelector('base[href]');
+
+            const baseUrl =
+                baseElement
+                    ? canonicalizeUrl(
+                        baseElement.getAttribute('href'),
+                        baseFetched
+                    ) || baseFetched
+                    : baseFetched;
+
+            const references = [];
+
+            if (CONFIG.discoverLinks) {
+                for (const element of doc.querySelectorAll(
+                    'a[href], area[href]'
+                )) {
+                    const raw =
+                        element.getAttribute('href');
+
+                    const url =
+                        canonicalizeUrl(
+                            raw,
+                            baseUrl
+                        );
+
+                    this.addReference(
+                        references,
+                        url,
+                        'url',
+                        {
+                            relation:
+                                element.getAttribute('rel') || '',
+                            tag:
+                                element.tagName.toLowerCase(),
+                            attribute: 'href'
+                        }
+                    );
+                }
+            }
+
+            if (CONFIG.discoverResources) {
+                const selectors = [
+                    {
+                        selector: 'script[src]',
+                        attribute: 'src',
+                        type: 'script'
+                    },
+                    {
+                        selector: 'link[href]',
+                        attribute: 'href',
+                        type: 'resource'
+                    },
+                    {
+                        selector: 'img[src]',
+                        attribute: 'src',
+                        type: 'media'
+                    },
+                    {
+                        selector: 'iframe[src], frame[src]',
+                        attribute: 'src',
+                        type: 'frame'
+                    },
+                    {
+                        selector:
+                            'video[src], audio[src], source[src], track[src]',
+                        attribute: 'src',
+                        type: 'media'
+                    },
+                    {
+                        selector:
+                            'object[data]',
+                        attribute: 'data',
+                        type: 'resource'
+                    },
+                    {
+                        selector:
+                            'embed[src]',
+                        attribute: 'src',
+                        type: 'resource'
+                    }
+                ];
+
+                for (const group of selectors) {
+                    for (const element of doc.querySelectorAll(
+                        group.selector
+                    )) {
+                        const raw =
+                            element.getAttribute(
+                                group.attribute
+                            );
+
+                        const url =
+                            canonicalizeUrl(
+                                raw,
+                                baseUrl
+                            );
+
+                        let type =
+                            group.type;
+
+                        if (
+                            group.selector === 'link[href]'
+                        ) {
+                            type =
+                                this.classifyLink(element);
+                        }
+
+                        this.addReference(
+                            references,
+                            url,
+                            type,
+                            {
+                                relation:
+                                    element.getAttribute(
+                                        'rel'
+                                    ) || '',
+                                tag:
+                                    element.tagName.toLowerCase(),
+                                attribute:
+                                    group.attribute
+                            }
+                        );
+                    }
+                }
+
+                for (const element of doc.querySelectorAll(
+                    'img[srcset], source[srcset]'
+                )) {
+                    const srcset =
+                        element.getAttribute('srcset');
+
+                    for (const part of String(
+                        srcset || ''
+                    ).split(',')) {
+                        const raw =
+                            part.trim().split(/\s+/)[0];
+
+                        const url =
+                            canonicalizeUrl(
+                                raw,
+                                baseUrl
+                            );
+
+                        this.addReference(
+                            references,
+                            url,
+                            'media',
+                            {
+                                tag:
+                                    element.tagName.toLowerCase(),
+                                attribute: 'srcset'
+                            }
+                        );
+                    }
+                }
+            }
+
+            if (CONFIG.discoverForms) {
+                for (const form of doc.querySelectorAll(
+                    'form[action]'
+                )) {
+                    const url =
+                        canonicalizeUrl(
+                            form.getAttribute('action'),
+                            baseUrl
+                        );
+
+                    this.addReference(
+                        references,
+                        url,
+                        'form',
+                        {
+                            tag: 'form',
+                            attribute: 'action',
+                            method:
+                                (
+                                    form.getAttribute(
+                                        'method'
+                                    ) || 'GET'
+                                ).toUpperCase()
+                        }
+                    );
+                }
+            }
+
+            if (CONFIG.discoverMetadata) {
+                for (const element of doc.querySelectorAll(
+                    'meta[content]'
+                )) {
+                    const property =
+                        element.getAttribute('property') ||
+                        element.getAttribute('name') ||
+                        element.getAttribute('itemprop') ||
+                        '';
+
+                    const content =
+                        element.getAttribute('content') ||
+                        '';
+
+                    const url =
+                        canonicalizeUrl(
+                            content,
+                            baseUrl
+                        );
+
+                    if (
+                        url &&
+                        (
+                            /url|image|video|audio|icon|manifest|canonical/i
+                        ).test(property)
+                    ) {
+                        this.addReference(
+                            references,
+                            url,
+                            'metadata',
+                            {
+                                property
+                            }
+                        );
+                    }
+                }
+
+                for (const element of doc.querySelectorAll(
+                    'link[rel][href]'
+                )) {
+                    const rel =
+                        String(
+                            element.getAttribute('rel') || ''
+                        ).toLowerCase();
+
+                    if (
+                        rel.includes('canonical') ||
+                        rel.includes('alternate') ||
+                        rel.includes('manifest') ||
+                        rel.includes('sitemap')
+                    ) {
+                        const url =
+                            canonicalizeUrl(
+                                element.getAttribute('href'),
+                                baseUrl
+                            );
+
+                        this.addReference(
+                            references,
+                            url,
+                            this.classifyLink(element),
+                            {
+                                relation: rel
+                            }
+                        );
+                    }
+                }
+            }
+
+            const embedded =
+                CONFIG.discoverFromText
+                    ? extractUrlsFromText(
+                        observation.body,
+                        baseUrl
+                    )
+                    : [];
+
+            for (const url of embedded) {
+                this.addReference(
+                    references,
+                    url,
+                    'embedded'
+                );
+            }
+
+            if (CONFIG.discoverWellKnown) {
+                const manifest =
+                    doc.querySelector(
+                        'link[rel~="manifest"][href]'
+                    );
+
+                if (manifest) {
+                    const url =
+                        canonicalizeUrl(
+                            manifest.getAttribute('href'),
+                            baseUrl
+                        );
+
+                    this.addReference(
+                        references,
+                        url,
+                        'manifest',
+                        {
+                            relation: 'manifest'
+                        }
+                    );
+                }
+
+                const refresh =
+                    doc.querySelector(
+                        'meta[http-equiv="refresh"][content]'
+                    );
+
+                if (refresh) {
+                    const match =
+                        refresh.getAttribute('content')
+                            ?.match(
+                                /url\s*=\s*(.+)$/i
+                            );
+
+                    if (match) {
+                        const url =
+                            canonicalizeUrl(
+                                match[1].trim()
+                                    .replace(/^['"]|['"]$/g, ''),
+                                baseUrl
+                            );
+
+                        this.addReference(
+                            references,
+                            url,
+                            'url',
+                            {
+                                relation: 'meta-refresh'
+                            }
+                        );
+                    }
+                }
+            }
+
+            const deduped = [];
+
+            const seen = new Set();
+
+            for (const reference of references) {
+                const key =
+                    `${reference.type}:${reference.url}:${reference.relation || ''}`;
+
+                if (seen.has(key)) {
+                    continue;
+                }
+
+                seen.add(key);
+                deduped.push(reference);
+            }
+
+            return [
+                new Discovery({
+                    candidateId: candidate.id,
+                    observationId: observation.id,
+                    kind: 'html-document',
+                    confidence: 0.96,
+                    mechanism: 'html-parser',
+                    data: {
+                        url: candidate.target,
+                        finalUrl: baseFetched,
+                        baseUrl,
+                        title:
+                            doc.querySelector('title')
+                                ?.textContent
+                                ?.trim()
+                                ?.slice(
+                                    0,
+                                    CONFIG.maxStoredTextPreview
+                                ) || '',
+
+                        references: deduped,
+
+                        referenceCount:
+                            deduped.length
+                    },
+                    provenance: {
+                        origin: candidate.origin,
+                        parent: candidate.parent,
+                        candidateTarget: candidate.target,
+                        candidateType: candidate.type,
+                        depth: candidate.depth
+                    }
+                })
+            ];
+        }
+
+        candidates(discovery) {
+            const result = [];
+
+            for (const reference of safeArray(
+                discovery.data.references
+            )) {
+                if (!reference?.url) {
+                    continue;
+                }
+
+                const basePriority =
+                    CONFIG.typePriority[
+                        reference.type
+                    ] ??
+                    CONFIG.typePriority.resource;
+
+                result.push(
+                    new Candidate({
+                        target: reference.url,
+                        type: reference.type,
+                        origin:
+                            `html:${reference.tag || 'document'}:${reference.attribute || 'unknown'}`,
+                        parent: discovery.id,
+                        priority: basePriority,
+                        hints: {
+                            confidence:
+                                discovery.confidence,
+
+                            relation:
+                                reference.relation || '',
+
+                            tag:
+                                reference.tag || '',
+
+                            attribute:
+                                reference.attribute || ''
+                        },
+                        depth:
+                            discovery.provenance.depth + 1
+                    })
+                );
+            }
+
+            return result;
+        }
+    }
+
+    // -------------------------------------------------------------------------
+    // JSON provider
+    // -------------------------------------------------------------------------
+
+    class JsonProvider extends Provider {
+        constructor() {
+            super('json', true);
+        }
+
+        matches(candidate, observation) {
+            return (
+                isJsonContentType(
+                    observation.http.contentType
+                ) ||
+                (
+                    (
+                        candidate.type === 'api' ||
+                        candidate.type === 'manifest'
+                    ) &&
+                    looksLikeJson(observation.body)
+                )
+            );
+        }
+
+        recognize(candidate, observation) {
+            let value = null;
+
+            try {
+                value =
+                    JSON.parse(
+                        observation.body
+                    );
+            } catch {
+                return [];
+            }
+
+            const urls = [];
+
+            const visit = node => {
+                if (node === null || node === undefined) {
+                    return;
+                }
+
+                if (typeof node === 'string') {
+                    const url =
+                        canonicalizeUrl(
+                            node,
+                            observation.http.finalUrl ||
+                            candidate.target
+                        );
+
+                    if (
+                        url &&
+                        isAllowedUrl(url)
+                    ) {
+                        urls.push(url);
+                    }
+
+                    return;
+                }
+
+                if (Array.isArray(node)) {
+                    for (const item of node) {
+                        visit(item);
+                    }
+
+                    return;
+                }
+
+                if (typeof node === 'object') {
+                    for (const key of Object.keys(node)) {
+                        visit(node[key]);
+                    }
+                }
+            };
+
+            visit(value);
+
+            const rootType =
+                Array.isArray(value)
+                    ? 'array'
+                    : typeof value;
+
+            const summary = {
+                url: candidate.target,
+
+                finalUrl:
+                    observation.http.finalUrl,
+
+                valueType: rootType,
+
+                arrayLength:
+                    Array.isArray(value)
+                        ? value.length
+                        : undefined,
+
+                keys:
+                    value &&
+                    typeof value === 'object' &&
+                    !Array.isArray(value)
+                        ? Object.keys(value).slice(0, 100)
+                        : undefined,
+
+                urls: unique(urls)
+            };
+
+            return [
+                new Discovery({
+                    candidateId: candidate.id,
+                    observationId: observation.id,
+                    kind:
+                        candidate.type === 'manifest'
+                            ? 'web-manifest'
+                            : 'json-document',
+
+                    confidence:
+                        candidate.type === 'manifest'
+                            ? 0.98
+                            : 0.93,
+
+                    mechanism: 'json-parser',
+
+                    data: summary,
+
+                    provenance: {
+                        origin: candidate.origin,
+                        parent: candidate.parent,
+                        candidateTarget: candidate.target,
+                        candidateType: candidate.type,
+                        depth: candidate.depth
+                    }
+                })
+            ];
+        }
+
+        candidates(discovery) {
+            return safeArray(
+                discovery.data.urls
+            ).map(url =>
+                new Candidate({
+                    target: url,
+                    type: looksLikeApiUrl(url)
+                        ? 'api'
+                        : 'url',
+                    origin: 'json-url',
+                    parent: discovery.id,
+                    priority:
+                        looksLikeApiUrl(url)
+                            ? 0.94
+                            : 0.78,
+                    hints: {
+                        confidence:
+                            discovery.confidence
+                    },
+                    depth:
+                        discovery.provenance.depth + 1
+                })
+            );
+        }
+    }
+
+    // -------------------------------------------------------------------------
+    // XML provider
+    // -------------------------------------------------------------------------
+
+    class XmlProvider extends Provider {
+        constructor() {
+            super('xml', true);
+        }
+
+        matches(candidate, observation) {
+            return (
+                isXmlContentType(
+                    observation.http.contentType
+                ) ||
+                (
+                    candidate.type === 'sitemap' &&
+                    looksLikeXml(observation.body)
+                ) ||
+                looksLikeXml(observation.body)
+            );
+        }
+
+        recognize(candidate, observation) {
+            const base =
+                observation.http.finalUrl ||
+                candidate.target;
+
+            const urls =
+                extractXmlLocs(
+                    observation.body,
+                    base
+                );
+
+            const body =
+                observation.body || '';
+
+            let kind = 'xml-document';
+
+            if (
+                /<urlset\b|<sitemapindex\b/i.test(body)
+            ) {
+                kind = 'sitemap';
+            } else if (
+                /<rss\b/i.test(body)
+            ) {
+                kind = 'rss-feed';
+            } else if (
+                /<feed\b/i.test(body)
+            ) {
+                kind = 'atom-feed';
+            }
+
+            return [
+                new Discovery({
+                    candidateId: candidate.id,
+                    observationId: observation.id,
+                    kind,
+                    confidence:
+                        kind === 'sitemap'
+                            ? 0.98
+                            : 0.87,
+                    mechanism: 'xml-parser',
+                    data: {
+                        url: candidate.target,
+                        finalUrl:
+                            observation.http.finalUrl,
+                        urls,
+                        count: urls.length
+                    },
+                    provenance: {
+                        origin: candidate.origin,
+                        parent: candidate.parent,
+                        candidateTarget: candidate.target,
+                        candidateType: candidate.type,
+                        depth: candidate.depth
+                    }
+                })
+            ];
+        }
+
+        candidates(discovery) {
+            return safeArray(
+                discovery.data.urls
+            ).map(url =>
+                new Candidate({
+                    target: url,
+                    type: looksLikeApiUrl(url)
+                        ? 'api'
+                        : 'url',
+                    origin: 'xml-loc',
+                    parent: discovery.id,
+                    priority:
+                        discovery.kind === 'sitemap'
+                            ? 0.86
+                            : 0.72,
+                    hints: {
+                        confidence:
+                            discovery.confidence
+                    },
+                    depth:
+                        discovery.provenance.depth + 1
+                })
+            );
+        }
+    }
+
+    // -------------------------------------------------------------------------
+    // CSS provider
+    // -------------------------------------------------------------------------
+
+    class CssProvider extends Provider {
+        constructor() {
+            super('css', true);
+        }
+
+        matches(candidate, observation) {
+            return (
+                isCssContentType(
+                    observation.http.contentType
+                ) ||
+                (
+                    candidate.type === 'stylesheet' &&
+                    !looksLikeHtml(observation.body)
+                ) ||
+                /\.css(?:[?#]|$)/i.test(
+                    candidate.target
+                )
+            );
+        }
+
+        recognize(candidate, observation) {
+            const base =
+                observation.http.finalUrl ||
+                candidate.target;
+
+            const urls =
+                extractCssUrls(
+                    observation.body,
+                    base
+                );
+
+            return [
+                new Discovery({
+                    candidateId: candidate.id,
+                    observationId: observation.id,
+                    kind: 'css-document',
+                    confidence: 0.90,
+                    mechanism: 'css-parser',
+                    data: {
+                        url: candidate.target,
+                        finalUrl:
+                            observation.http.finalUrl,
+                        urls,
+                        count: urls.length
+                    },
+                    provenance: {
+                        origin: candidate.origin,
+                        parent: candidate.parent,
+                        candidateTarget: candidate.target,
+                        candidateType: candidate.type,
+                        depth: candidate.depth
+                    }
+                })
+            ];
+        }
+
+        candidates(discovery) {
+            return safeArray(
+                discovery.data.urls
+            ).map(url =>
+                new Candidate({
+                    target: url,
+                    type: /\.css(?:[?#]|$)/i.test(url)
+                        ? 'stylesheet'
+                        : 'media',
+                    origin: 'css-url',
+                    parent: discovery.id,
+                    priority:
+                        /\.css(?:[?#]|$)/i.test(url)
+                            ? 0.52
+                            : 0.25,
+                    hints: {
+                        confidence:
+                            discovery.confidence
+                    },
+                    depth:
+                        discovery.provenance.depth + 1
+                })
+            );
+        }
+    }
+
+    // -------------------------------------------------------------------------
+    // JavaScript provider
+    // -------------------------------------------------------------------------
+
+    class JavaScriptProvider extends Provider {
+        constructor() {
+            super('javascript', true);
+        }
+
+        matches(candidate, observation) {
+            return (
+                isJavaScriptContentType(
+                    observation.http.contentType
+                ) ||
+                candidate.type === 'script' ||
+                /\.(?:js|mjs|cjs)(?:[?#]|$)/i.test(
+                    candidate.target
+                )
+            );
+        }
+
+        recognize(candidate, observation) {
+            const base =
+                observation.http.finalUrl ||
+                candidate.target;
+
+            const urls =
+                extractUrlsFromText(
+                    observation.body,
+                    base
+                );
+
+            const sourceMap =
+                observation.body
+                    ?.match(
+                        /\/\/[#@]\s*sourceMappingURL\s*=\s*(\S+)/i
+                    )?.[1] || null;
+
+            if (sourceMap) {
+                const sourceMapUrl =
+                    canonicalizeUrl(
+                        sourceMap,
+                        base
+                    );
+
+                if (
+                    sourceMapUrl &&
+                    isAllowedUrl(sourceMapUrl)
+                ) {
+                    urls.push(sourceMapUrl);
+                }
+            }
+
+            return [
+                new Discovery({
+                    candidateId: candidate.id,
+                    observationId: observation.id,
+                    kind: 'javascript-document',
+                    confidence: 0.82,
+                    mechanism: 'javascript-text-parser',
+                    data: {
+                        url: candidate.target,
+                        finalUrl:
+                            observation.http.finalUrl,
+                        urls: unique(urls),
+                        sourceMap:
+                            sourceMap || null
+                    },
+                    provenance: {
+                        origin: candidate.origin,
+                        parent: candidate.parent,
+                        candidateTarget: candidate.target,
+                        candidateType: candidate.type,
+                        depth: candidate.depth
+                    }
+                })
+            ];
+        }
+
+        candidates(discovery) {
+            return safeArray(
+                discovery.data.urls
+            ).map(url =>
+                new Candidate({
+                    target: url,
+                    type: looksLikeApiUrl(url)
+                        ? 'api'
+                        : /\.js(?:[?#]|$)/i.test(url)
+                            ? 'script'
+                            : 'url',
+                    origin: 'javascript-url',
+                    parent: discovery.id,
+                    priority:
+                        looksLikeApiUrl(url)
+                            ? 0.93
+                            : 0.62,
+                    hints: {
+                        confidence:
+                            discovery.confidence
+                    },
+                    depth:
+                        discovery.provenance.depth + 1
+                })
+            );
+        }
+    }
+
+    // -------------------------------------------------------------------------
+    // Robots provider
+    // -------------------------------------------------------------------------
+
+    class RobotsProvider extends Provider {
+        constructor() {
+            super('robots', true);
+        }
+
+        matches(candidate) {
+            try {
+                const path =
+                    new URL(
+                        candidate.target
+                    ).pathname.toLowerCase();
+
+                return (
+                    candidate.type === 'robots' ||
+                    path.endsWith('/robots.txt')
+                );
+            } catch {
+                return false;
+            }
+        }
+
+        recognize(candidate, observation) {
+            const urls = [];
+
+            for (const line of String(
+                observation.body || ''
+            ).split(/\r?\n/)) {
+                const match =
+                    line.match(
+                        /^\s*sitemap\s*:\s*(\S+)/i
+                    );
+
+                if (!match) {
+                    continue;
+                }
+
+                const url =
+                    canonicalizeUrl(
+                        match[1],
+                        observation.http.finalUrl ||
+                        candidate.target
+                    );
+
+                if (
+                    url &&
+                    isAllowedUrl(url)
+                ) {
+                    urls.push(url);
+                }
+            }
+
+            return [
+                new Discovery({
+                    candidateId: candidate.id,
+                    observationId: observation.id,
+                    kind: 'robots-document',
+                    confidence: 0.99,
+                    mechanism: 'robots-parser',
+                    data: {
+                        url: candidate.target,
+                        finalUrl:
+                            observation.http.finalUrl,
+                        sitemaps: unique(urls)
+                    },
+                    provenance: {
+                        origin: candidate.origin,
+                        parent: candidate.parent,
+                        candidateTarget: candidate.target,
+                        candidateType: candidate.type,
+                        depth: candidate.depth
+                    }
+                })
+            ];
+        }
+
+        candidates(discovery) {
+            return safeArray(
+                discovery.data.sitemaps
+            ).map(url =>
+                new Candidate({
+                    target: url,
+                    type: 'sitemap',
+                    origin: 'robots-sitemap',
+                    parent: discovery.id,
+                    priority: 0.90,
+                    hints: {
+                        confidence:
+                            discovery.confidence
+                    },
+                    depth:
+                        discovery.provenance.depth + 1
+                })
+            );
+        }
+    }
+
+    // -------------------------------------------------------------------------
+    // Text provider
+    // -------------------------------------------------------------------------
+
+    class TextProvider extends Provider {
+        constructor() {
+            super('text', true);
+        }
+
+        matches(candidate, observation) {
+            if (
+                isHtmlContentType(
+                    observation.http.contentType
+                ) ||
+                isJsonContentType(
+                    observation.http.contentType
+                ) ||
+                isXmlContentType(
+                    observation.http.contentType
+                ) ||
+                isCssContentType(
+                    observation.http.contentType
+                ) ||
+                isJavaScriptContentType(
+                    observation.http.contentType
+                )
+            ) {
+                return false;
+            }
+
+            try {
+                const path =
+                    new URL(
+                        candidate.target
+                    ).pathname.toLowerCase();
+
+                if (path.endsWith('/robots.txt')) {
+                    return false;
+                }
+            } catch {
+                // Ignore malformed target here.
+            }
+
+            return (
+                isTextContentType(
+                    observation.http.contentType
+                ) ||
+                !!observation.body
+            );
+        }
+
+        recognize(candidate, observation) {
+            const urls =
+                extractUrlsFromText(
+                    observation.body,
+                    observation.http.finalUrl ||
+                    candidate.target
+                );
+
+            return [
+                new Discovery({
+                    candidateId: candidate.id,
+                    observationId: observation.id,
+                    kind: 'text-document',
+                    confidence: 0.55,
+                    mechanism: 'text-url-parser',
+                    data: {
+                        url: candidate.target,
+                        finalUrl:
+                            observation.http.finalUrl,
+                        urls
+                    },
+                    provenance: {
+                        origin: candidate.origin,
+                        parent: candidate.parent,
+                        candidateTarget: candidate.target,
+                        candidateType: candidate.type,
+                        depth: candidate.depth
+                    }
+                })
+            ];
+        }
+
+        candidates(discovery) {
+            return safeArray(
+                discovery.data.urls
+            ).map(url =>
+                new Candidate({
+                    target: url,
+                    type: looksLikeApiUrl(url)
+                        ? 'api'
+                        : 'url',
+                    origin: 'text-url',
+                    parent: discovery.id,
+                    priority:
+                        looksLikeApiUrl(url)
+                            ? 0.90
+                            : 0.65,
+                    hints: {
+                        confidence:
+                            discovery.confidence
+                    },
+                    depth:
+                        discovery.provenance.depth + 1
+                })
+            );
+        }
+    }
+
+    // -------------------------------------------------------------------------
+    // Binary/resource provider
+    // -------------------------------------------------------------------------
+
+    class BinaryProvider extends Provider {
+        constructor() {
+            super('binary', true);
+        }
+
+        matches(candidate, observation) {
+            const type =
+                normalizeContentType(
+                    observation.http.contentType
+                );
+
+            if (!type) {
+                return false;
+            }
+
+            return !(
+                isHtmlContentType(type) ||
+                isJsonContentType(type) ||
+                isXmlContentType(type) ||
+                isCssContentType(type) ||
+                isJavaScriptContentType(type) ||
+                isTextContentType(type)
+            );
+        }
+
+        recognize(candidate, observation) {
+            return [
+                new Discovery({
+                    candidateId: candidate.id,
+                    observationId: observation.id,
+                    kind: 'binary-resource',
+                    confidence: 0.80,
+                    mechanism: 'content-type-recognition',
+                    data: {
+                        url: candidate.target,
+                        finalUrl:
+                            observation.http.finalUrl,
+                        contentType:
+                            observation.http.contentType,
+                        contentLength:
+                            observation.http.contentLength,
+                        fingerprint:
+                            observation.fingerprint
+                    },
+                    provenance: {
+                        origin: candidate.origin,
+                        parent: candidate.parent,
+                        candidateTarget: candidate.target,
+                        candidateType: candidate.type,
+                        depth: candidate.depth
+                    }
+                })
+            ];
+        }
+    }
+
+    // -------------------------------------------------------------------------
+    // Provider registry
+    // -------------------------------------------------------------------------
+
+    class ProviderRegistry {
+        constructor() {
+            this.providers = [
+                new RobotsProvider(),
+                new HtmlProvider(),
+                new JsonProvider(),
+                new XmlProvider(),
+                new CssProvider(),
+                new JavaScriptProvider(),
+                new BinaryProvider(),
+                new TextProvider(),
+                new ResponseProvider()
+            ];
+        }
+
+        recognizeAll(candidate, observation) {
+            const discoveries = [];
+
+            for (const provider of this.providers) {
+                let matches = false;
+
+                try {
+                    matches =
+                        provider.matches(
+                            candidate,
+                            observation
+                        );
+                } catch (error) {
+                    warn(
+                        `Provider ${provider.name} match failed:`,
+                        error
+                    );
+
+                    continue;
+                }
+
+                if (!matches) {
+                    continue;
+                }
+
+                try {
+                    const result =
+                        provider.recognize(
+                            candidate,
+                            observation
+                        );
+
+                    if (Array.isArray(result)) {
+                        discoveries.push(
+                            ...result
+                        );
+                    } else if (result) {
+                        discoveries.push(result);
+                    }
+                } catch (error) {
+                    warn(
+                        `Provider ${provider.name} recognition failed:`,
+                        error
+                    );
+                }
+
+                if (provider.exclusive) {
+                    break;
+                }
+            }
+
+            return discoveries;
+        }
+
+        candidatesFor(discovery) {
+            const provider =
+                this.providers.find(
+                    item =>
+                        discovery.mechanism ===
+                        item.name ||
+                        discovery.kind
+                            ?.startsWith(item.name)
+                );
+
+            if (provider) {
+                try {
+                    return provider.candidates(
+                        discovery
+                    );
+                } catch (error) {
+                    warn(
+                        'Candidate expansion failed:',
+                        error
+                    );
+
+                    return [];
+                }
+            }
+
+            /*
+             * Fallback expansion based on discovery data.
+             */
+            return [];
+        }
+    }
+
+    // -------------------------------------------------------------------------
+    // Scheduler
+    // -------------------------------------------------------------------------
+
+    class Scheduler {
+        constructor(database) {
+            this.database = database;
+        }
+
+        add(candidate) {
+            return this.database.addCandidate(
+                candidate
+            );
+        }
+
+        next() {
+            return this.database.claimNextCandidate();
+        }
+
+        delay() {
+            return this.database.nextReadyDelay();
+        }
+    }
+
+    // -------------------------------------------------------------------------
+    // Network observer
+    // -------------------------------------------------------------------------
+
+    const NETWORK_CHANNEL =
+        `generic-discovery-${Math.random()
+            .toString(36)
+            .slice(2)}`;
+
+    class NetworkObserver {
+        constructor(onEvent) {
+            this.onEvent = onEvent;
+
+            this.requestCounter = 0;
+
+            this.performanceObserver = null;
+
+            this.installed = false;
+        }
+
+        install() {
+            if (this.installed) {
+                return;
+            }
+
+            this.installed = true;
+
+            if (CONFIG.networkBridge) {
+                this.installPageBridge();
+            }
+
+            if (CONFIG.discoverPerformance) {
+                this.installPerformanceObserver();
+            }
+
+            window.addEventListener(
+                'message',
+                event => {
+                    if (
+                        event.source !== window ||
+                        !event.data ||
+                        event.data.channel !==
+                            NETWORK_CHANNEL
+                    ) {
+                        return;
+                    }
+
+                    this.onEvent({
+                        ...event.data,
+                        receivedAt: now()
+                    });
+                }
+            );
+        }
+
+        nextRequestId(prefix) {
+            this.requestCounter++;
+
+            return `${prefix}-${Date.now().toString(36)}-${this.requestCounter}`;
+        }
+
+        installPageBridge() {
+            if (
+                window.__genericDiscoveryBridgeInstalled
+            ) {
+                return;
+            }
+
+            window.__genericDiscoveryBridgeInstalled =
+                true;
+
+            const channel =
+                NETWORK_CHANNEL;
+
+            const bridge = `
+                (() => {
+                    'use strict';
+
+                    if (
+                        window.__genericDiscoveryBridgeActive
+                    ) {
+                        return;
+                    }
+
+                    window.__genericDiscoveryBridgeActive = true;
+
+                    const CHANNEL =
+                        ${JSON.stringify(channel)};
+
+                    let counter = 0;
+
+                    function nextId(prefix) {
+                        counter++;
+
+                        return (
+                            prefix +
+                            '-' +
+                            Date.now().toString(36) +
+                            '-' +
+                            counter
+                        );
+                    }
+
+                    function emit(data) {
+                        try {
+                            window.postMessage({
+                                channel: CHANNEL,
+                                source: 'GenericDiscoveryNetworkBridge',
+                                ...data
+                            }, '*');
+                        } catch (_) {}
+                    }
+
+                    function requestInfo(input, init) {
+                        let url = '';
+
+                        try {
+                            if (
+                                typeof input === 'string'
+                            ) {
+                                url = input;
+                            } else if (
+                                input &&
+                                typeof input.url === 'string'
+                            ) {
+                                url = input.url;
+                            }
+                        } catch (_) {}
+
+                        let method = '';
+
+                        try {
+                            if (
+                                init &&
+                                init.method
+                            ) {
+                                method = init.method;
+                            } else if (
+                                input &&
+                                input.method
+                            ) {
+                                method = input.method;
+                            }
+                        } catch (_) {}
+
+                        return {
+                            url,
+                            method:
+                                String(
+                                    method || 'GET'
+                                ).toUpperCase()
+                        };
+                    }
+
+                    if (
+                        typeof window.fetch === 'function'
+                    ) {
+                        const originalFetch =
+                            window.fetch;
+
+                        window.fetch =
+                            function(input, init) {
+                                const info =
+                                    requestInfo(
+                                        input,
+                                        init
+                                    );
+
+                                const requestId =
+                                    nextId('fetch');
+
+                                const startedAt =
+                                    Date.now();
+
+                                emit({
+                                    event: 'request',
+                                    api: 'fetch',
+                                    requestId,
+                                    method: info.method,
+                                    url: info.url,
+                                    requestAt: startedAt
+                                });
+
+                                let result;
+
+                                try {
+                                    result =
+                                        originalFetch.apply(
+                                            this,
+                                            arguments
+                                        );
+                                } catch (error) {
+                                    emit({
+                                        event: 'error',
+                                        api: 'fetch',
+                                        requestId,
+                                        method: info.method,
+                                        url: info.url,
+                                        error:
+                                            String(
+                                                error?.message ||
+                                                error
+                                            ),
+                                        responseAt:
+                                            Date.now(),
+                                        duration:
+                                            Date.now() -
+                                            startedAt
+                                    });
+
+                                    throw error;
+                                }
+
+                                return Promise.resolve(
+                                    result
+                                ).then(response => {
+                                    let contentType = '';
+
+                                    try {
+                                        contentType =
+                                            response.headers.get(
+                                                'content-type'
+                                            ) || '';
+                                    } catch (_) {}
+
+                                    emit({
+                                        event: 'response',
+                                        api: 'fetch',
+                                        requestId,
+                                        method: info.method,
+                                        url: info.url,
+                                        finalUrl:
+                                            response.url ||
+                                            info.url,
+                                        status:
+                                            response.status,
+                                        contentType,
+                                        responseAt:
+                                            Date.now(),
+                                        duration:
+                                            Date.now() -
+                                            startedAt
+                                    });
+
+                                    return response;
+                                }).catch(error => {
+                                    emit({
+                                        event: 'error',
+                                        api: 'fetch',
+                                        requestId,
+                                        method: info.method,
+                                        url: info.url,
+                                        error:
+                                            String(
+                                                error?.message ||
+                                                error
+                                            ),
+                                        responseAt:
+                                            Date.now(),
+                                        duration:
+                                            Date.now() -
+                                            startedAt
+                                    });
+
+                                    throw error;
+                                });
+                            };
+                    }
+
+                    try {
+                        const XHR =
+                            window.XMLHttpRequest;
+
+                        const originalOpen =
+                            XHR.prototype.open;
+
+                        const originalSend =
+                            XHR.prototype.send;
+
+                        XHR.prototype.open =
+                            function(
+                                method,
+                                url
+                            ) {
+                                this.__gdeMethod =
+                                    String(
+                                        method || 'GET'
+                                    ).toUpperCase();
+
+                                try {
+                                    this.__gdeUrl =
+                                        new URL(
+                                            String(url),
+                                            location.href
+                                        ).href;
+                                } catch (_) {
+                                    this.__gdeUrl =
+                                        String(url);
+                                }
+
+                                return originalOpen.apply(
+                                    this,
+                                    arguments
+                                );
+                            };
+
+                        XHR.prototype.send =
+                            function() {
+                                const xhr = this;
+
+                                const requestId =
+                                    nextId('xhr');
+
+                                const startedAt =
+                                    Date.now();
+
+                                xhr.__gdeRequestId =
+                                    requestId;
+
+                                emit({
+                                    event: 'request',
+                                    api: 'xhr',
+                                    requestId,
+                                    method:
+                                        xhr.__gdeMethod ||
+                                        'GET',
+                                    url:
+                                        xhr.__gdeUrl ||
+                                        '',
+                                    requestAt:
+                                        startedAt
+                                });
+
+                                const finish =
+                                    () => {
+                                        let contentType = '';
+
+                                        try {
+                                            contentType =
+                                                xhr.getResponseHeader(
+                                                    'content-type'
+                                                ) || '';
+                                        } catch (_) {}
+
+                                        emit({
+                                            event: 'response',
+                                            api: 'xhr',
+                                            requestId,
+                                            method:
+                                                xhr.__gdeMethod ||
+                                                'GET',
+                                            url:
+                                                xhr.__gdeUrl ||
+                                                '',
+                                            finalUrl:
+                                                xhr.responseURL ||
+                                                xhr.__gdeUrl ||
+                                                '',
+                                            status:
+                                                xhr.status,
+                                            contentType,
+                                            responseAt:
+                                                Date.now(),
+                                            duration:
+                                                Date.now() -
+                                                startedAt
+                                        });
+                                    };
+
+                                try {
+                                    xhr.addEventListener(
+                                        'loadend',
+                                        finish,
+                                        {
+                                            once: true
+                                        }
+                                    );
+                                } catch (_) {
+                                    try {
+                                        xhr.addEventListener(
+                                            'loadend',
+                                            finish
+                                        );
+                                    } catch (_) {}
+                                }
+
+                                return originalSend.apply(
+                                    this,
+                                    arguments
+                                );
+                            };
+                    } catch (_) {}
+
+                })();
+            `;
+
+            try {
+                const script =
+                    document.createElement(
+                        'script'
+                    );
+
+                script.textContent =
+                    bridge;
+
+                (
+                    document.documentElement ||
+                    document.head ||
+                    document.body
+                )?.appendChild(script);
+
+                script.remove();
+
+                log(
+                    'Network bridge installed'
+                );
+            } catch (error) {
+                warn(
+                    'Network bridge installation failed:',
+                    error
+                );
+            }
+        }
+
+        installPerformanceObserver() {
+            if (
+                typeof PerformanceObserver !==
+                'function'
+            ) {
+                return;
+            }
+
+            try {
+                this.performanceObserver =
+                    new PerformanceObserver(
+                        list => {
+                            for (
+                                const entry of
+                                list.getEntries()
+                            ) {
+                                this.emitPerformance(
+                                    entry
+                                );
+                            }
+                        }
+                    );
+
+                this.performanceObserver.observe({
+                    type: 'resource',
+                    buffered: true
+                });
+            } catch (error) {
+                warn(
+                    'PerformanceObserver failed:',
+                    error
+                );
+            }
+
+            try {
+                const entries =
+                    performance.getEntriesByType(
+                        'resource'
+                    );
+
+                for (const entry of entries) {
+                    this.emitPerformance(
+                        entry
+                    );
+                }
+            } catch (error) {
+                warn(
+                    'Existing performance entries failed:',
+                    error
+                );
+            }
+        }
+
+        emitPerformance(entry) {
+            if (!entry?.name) {
+                return;
+            }
+
+            this.onEvent({
+                event: 'performance',
+                api: 'performance',
+                requestId: null,
+                method: null,
+                url: entry.name,
+                finalUrl: entry.name,
+                status: null,
+                contentType: '',
+                initiatorType:
+                    entry.initiatorType || null,
+                duration:
+                    entry.duration ?? null,
+                responseAt: now(),
+                receivedAt: now()
+            });
+        }
+    }
+
+    // -------------------------------------------------------------------------
+    // Engine
+    // -------------------------------------------------------------------------
+
+    class DiscoveryEngine {
+        constructor() {
+            this.database =
+                new KnowledgeBase();
+
+            this.scheduler =
+                new Scheduler(
+                    this.database
+                );
+
+            this.acquisition =
+                new HttpAcquisitionAdapter();
+
+            this.providers =
+                new ProviderRegistry();
+
+            this.networkEvents = new Map();
+
+            this.networkRequestIndex =
+                new Map();
+
+            this.running = false;
+
+            this.inFlight = 0;
+
+            this.seeded = false;
+
+            this.networkObserver =
+                new NetworkObserver(
+                    event =>
+                        this.observeNetwork(
+                            event
+                        )
+                );
+
+            if (CONFIG.discoverNetwork) {
+                this.networkObserver.install();
+            }
+        }
+
+        seed() {
+            if (this.seeded) {
+                return;
+            }
+
+            this.seeded = true;
+
+            const current =
+                canonicalizeUrl(
+                    location.href
+                );
+
+            if (current) {
+                this.addCandidate(
+                    new Candidate({
+                        target: current,
+                        type: 'url',
+                        origin: 'document',
+                        priority: 1.0,
+                        hints: {
+                            confidence: 1
+                        },
+                        depth: 0
+                    })
+                );
+            }
+
+            if (
+                CONFIG.discoverLinks ||
+                CONFIG.discoverResources
+            ) {
+                this.seedFromCurrentDom();
+            }
+
+            if (CONFIG.discoverWellKnown) {
+                this.seedWellKnown();
+            }
+        }
+
+        seedFromCurrentDom() {
+            if (!document) {
+                return;
+            }
+
+            const base =
+                location.href;
+
+            if (CONFIG.discoverLinks) {
+                for (const element of document.querySelectorAll(
+                    'a[href], area[href]'
+                )) {
+                    const url =
+                        canonicalizeUrl(
+                            element.getAttribute(
+                                'href'
+                            ),
+                            base
+                        );
+
+                    if (!url || !isAllowedUrl(url)) {
+                        continue;
+                    }
+
+                    this.addCandidate(
+                        new Candidate({
+                            target: url,
+                            type: 'url',
+                            origin:
+                                `dom:${element.tagName.toLowerCase()}`,
+                            priority: 0.80,
+                            hints: {
+                                confidence: 0.82
+                            },
+                            depth: 1
+                        })
+                    );
+                }
+            }
+
+            if (CONFIG.discoverResources) {
+                const resourceSelectors = [
+                    [
+                        'script[src]',
+                        'src',
+                        'script'
+                    ],
+                    [
+                        'link[href]',
+                        'href',
+                        'resource'
+                    ],
+                    [
+                        'img[src]',
+                        'src',
+                        'media'
+                    ],
+                    [
+                        'iframe[src], frame[src]',
+                        'src',
+                        'frame'
+                    ],
+                    [
+                        'video[src], audio[src], source[src]',
+                        'src',
+                        'media'
+                    ]
+                ];
+
+                for (const [
+                    selector,
+                    attribute,
+                    type
+                ] of resourceSelectors) {
+                    for (const element of document.querySelectorAll(
+                        selector
+                    )) {
+                        const url =
+                            canonicalizeUrl(
+                                element.getAttribute(
+                                    attribute
+                                ),
+                                base
+                            );
+
+                        if (
+                            !url ||
+                            !isAllowedUrl(url)
+                        ) {
+                            continue;
+                        }
+
+                        let candidateType =
+                            type;
+
+                        if (
+                            selector ===
+                            'link[href]'
+                        ) {
+                            const rel =
+                                String(
+                                    element.getAttribute(
+                                        'rel'
+                                    ) || ''
+                                ).toLowerCase();
+
+                            if (
+                                rel.includes(
+                                    'stylesheet'
+                                )
+                            ) {
+                                candidateType =
+                                    'stylesheet';
+                            } else if (
+                                rel.includes(
+                                    'manifest'
+                                )
+                            ) {
+                                candidateType =
+                                    'manifest';
+                            } else if (
+                                rel.includes(
+                                    'sitemap'
+                                )
+                            ) {
+                                candidateType =
+                                    'sitemap';
+                            }
+                        }
+
+                        this.addCandidate(
+                            new Candidate({
+                                target: url,
+                                type:
+                                    candidateType,
+                                origin:
+                                    `dom:${element.tagName.toLowerCase()}`,
+                                priority:
+                                    CONFIG.typePriority[
+                                        candidateType
+                                    ] ??
+                                    0.5,
+                                hints: {
+                                    confidence: 0.82
+                                },
+                                depth: 1
+                            })
+                        );
+                    }
+                }
+            }
+
+            if (
+                CONFIG.discoverForms
+            ) {
+                for (const form of document.querySelectorAll(
+                    'form[action]'
+                )) {
+                    const url =
+                        canonicalizeUrl(
+                            form.getAttribute(
+                                'action'
+                            ),
+                            base
+                        );
+
+                    if (
+                        !url ||
+                        !isAllowedUrl(url)
+                    ) {
+                        continue;
+                    }
+
+                    this.addCandidate(
+                        new Candidate({
+                            target: url,
+                            type: 'form',
+                            origin: 'dom:form',
+                            priority: 0.35,
+                            hints: {
+                                confidence: 0.75,
+                                method:
+                                    (
+                                        form.getAttribute(
+                                            'method'
+                                        ) || 'GET'
+                                    ).toUpperCase()
+                            },
+                            depth: 1
+                        })
+                    );
+                }
+            }
+        }
+
+        seedWellKnown() {
+            let origin;
+
+            try {
+                origin =
+                    new URL(
+                        location.href
+                    ).origin;
+            } catch {
+                return;
+            }
+
+            const candidates = [
+                {
+                    path: '/robots.txt',
+                    type: 'robots',
+                    priority: 0.88
+                },
+                {
+                    path: '/sitemap.xml',
+                    type: 'sitemap',
+                    priority: 0.90
+                }
+            ];
+
+            for (const item of candidates) {
+                const url =
+                    canonicalizeUrl(
+                        origin + item.path
+                    );
+
+                if (!url || !isAllowedUrl(url)) {
+                    continue;
+                }
+
+                this.addCandidate(
+                    new Candidate({
+                        target: url,
+                        type: item.type,
+                        origin: 'well-known',
+                        priority: item.priority,
+                        hints: {
+                            confidence: 0.70
+                        },
+                        depth: 1
+                    })
+                );
+            }
+        }
+
+        addCandidate(candidate) {
+            return this.scheduler.add(
+                candidate
+            );
+        }
+
+        observeNetwork(data) {
+            if (!data?.url) {
+                return;
+            }
+
+            const requestId =
+                data.requestId || null;
+
+            let networkEvent =
+                requestId
+                    ? this.networkRequestIndex.get(
+                        requestId
+                    )
+                    : null;
+
+            if (
+                data.event === 'request'
+            ) {
+                networkEvent =
+                    new NetworkEvent({
+                        requestId,
+                        api: data.api,
+                        method: data.method,
+                        url:
+                            canonicalizeUrl(
+                                data.url
+                            ) || data.url,
+                        requestAt:
+                            data.requestAt ||
+                            now(),
+                        phase: 'request'
+                    });
+
+                this.storeNetworkEvent(
+                    networkEvent
+                );
+
+                if (requestId) {
+                    this.networkRequestIndex.set(
+                        requestId,
+                        networkEvent.id
+                    );
+                }
+
+                return;
+            }
+
+            if (
+                data.event === 'response' ||
+                data.event === 'error'
+            ) {
+                if (requestId) {
+                    const eventId =
+                        this.networkRequestIndex.get(
+                            requestId
+                        );
+
+                    if (eventId) {
+                        networkEvent =
+                            this.networkEvents.get(
+                                eventId
+                            );
+                    }
+                }
+
+                if (!networkEvent) {
+                    networkEvent =
+                        new NetworkEvent({
+                            requestId,
+                            api: data.api,
+                            method: data.method,
+                            url:
+                                canonicalizeUrl(
+                                    data.url
+                                ) || data.url,
+                            requestAt:
+                                data.requestAt ||
+                                now()
+                        });
+
+                    this.storeNetworkEvent(
+                        networkEvent
+                    );
+                }
+
+                networkEvent.phase =
+                    data.event === 'error'
+                        ? 'error'
+                        : 'response';
+
+                networkEvent.finalUrl =
+                    canonicalizeUrl(
+                        data.finalUrl
+                    ) ||
+                    networkEvent.url;
+
+                networkEvent.status =
+                    data.status ?? null;
+
+                networkEvent.contentType =
+                    normalizeContentType(
+                        data.contentType || ''
+                    );
+
+                networkEvent.responseAt =
+                    data.responseAt ||
+                    now();
+
+                networkEvent.duration =
+                    data.duration ?? (
+                        networkEvent.requestAt
+                            ? networkEvent.responseAt -
+                              networkEvent.requestAt
+                            : null
+                    );
+
+                networkEvent.error =
+                    data.error || null;
+
+                this.storeNetworkEvent(
+                    networkEvent
+                );
+
+                /*
+                 * Do not replay unsafe methods.
+                 * Only observed GET requests become acquisition candidates.
+                 */
+                if (
+                    data.event === 'response' &&
+                    (
+                        !networkEvent.method ||
+                        networkEvent.method === 'GET'
+                    )
+                ) {
+                    const type =
+                        looksLikeApiUrl(
+                            networkEvent.url
+                        )
+                            ? 'api'
+                            : 'network';
+
+                    const priority =
+                        type === 'api'
+                            ? 0.96
+                            : 0.80;
+
+                    const candidate =
+                        new Candidate({
+                            target:
+                                networkEvent.url,
+                            type,
+                            origin:
+                                `network:${networkEvent.api}`,
+                            priority,
+                            hints: {
+                                confidence: 0.94,
+                                networkRequestId:
+                                    requestId,
+                                observedStatus:
+                                    networkEvent.status,
+                                observedContentType:
+                                    networkEvent.contentType,
+                                observedFinalUrl:
+                                    networkEvent.finalUrl
+                            },
+                            depth: 0
+                        });
+
+                    if (
+                        this.addCandidate(
+                            candidate
+                        )
+                    ) {
+                        this.database.statistics
+                            .networkCandidates++;
+                    }
+                }
+
+                return;
+            }
+
+            if (
+                data.event === 'performance'
+            ) {
+                const target =
+                    canonicalizeUrl(
+                        data.url
+                    );
+
+                if (
+                    !target ||
+                    !isAllowedUrl(target)
+                ) {
+                    return;
+                }
+
+                const type =
+                    this.classifyPerformanceResource(
+                        data
+                    );
+
+                const candidate =
+                    new Candidate({
+                        target,
+                        type,
+                        origin:
+                            `performance:${data.initiatorType || 'resource'}`,
+                        priority:
+                            CONFIG.typePriority[
+                                type
+                            ] ?? 0.45,
+                        hints: {
+                            confidence: 0.88,
+                            initiatorType:
+                                data.initiatorType ||
+                                null,
+                            performanceDuration:
+                                data.duration ??
+                                null
+                        },
+                        depth: 0
+                    });
+
+                if (
+                    this.addCandidate(
+                        candidate
+                    )
+                ) {
+                    this.database.statistics
+                        .performanceCandidates++;
+                }
+            }
+        }
+
+        classifyPerformanceResource(data) {
+            const initiator =
+                String(
+                    data.initiatorType || ''
+                ).toLowerCase();
+
+            const url =
+                String(
+                    data.url || ''
+                ).toLowerCase();
+
+            if (
+                initiator === 'fetch' ||
+                initiator === 'xmlhttprequest'
+            ) {
+                return looksLikeApiUrl(url)
+                    ? 'api'
+                    : 'network';
+            }
+
+            if (
+                initiator === 'script' ||
+                /\.(?:js|mjs|cjs)(?:[?#]|$)/i.test(url)
+            ) {
+                return 'script';
+            }
+
+            if (
+                initiator === 'css' ||
+                initiator === 'link' ||
+                /\.(?:css)(?:[?#]|$)/i.test(url)
+            ) {
+                return 'stylesheet';
+            }
+
+            if (
+                initiator === 'img' ||
+                /\.(?:png|jpe?g|gif|webp|svg|avif|ico)(?:[?#]|$)/i.test(url)
+            ) {
+                return 'media';
+            }
+
+            if (
+                initiator === 'iframe' ||
+                initiator === 'frame'
+            ) {
+                return 'frame';
+            }
+
+            return 'resource';
+        }
+
+        storeNetworkEvent(event) {
+            if (!event?.id) {
+                return;
+            }
+
+            if (
+                !this.networkEvents.has(
+                    event.id
+                )
+            ) {
+                while (
+                    this.networkEvents.size >=
+                    CONFIG.maxNetworkEvents
+                ) {
+                    const oldest =
+                        this.networkEvents.keys()
+                            .next()
+                            .value;
+
+                    if (!oldest) {
+                        break;
+                    }
+
+                    this.networkEvents.delete(
+                        oldest
+                    );
+                }
+
+                this.networkEvents.set(
+                    event.id,
+                    event
+                );
+
+                this.database.statistics
+                    .networkEvents++;
+            }
+        }
+
+        async run() {
+            if (this.running) {
+                return;
+            }
+
+            this.running = true;
+
+            const workers = [];
+
+            for (
+                let i = 0;
+                i < CONFIG.concurrency;
+                i++
+            ) {
+                workers.push(
+                    this.worker(i)
+                );
+            }
+
+            await Promise.all(
+                workers
+            );
+
+            this.running = false;
+
+            this.database.persistNow();
+
+            log(
+                'Scan complete',
+                this.report()
+            );
+        }
+
+        async worker(workerId) {
+            while (this.running) {
+                if (
+                    this.database.statistics.requests >=
+                    CONFIG.maxRequests
+                ) {
+                    break;
+                }
+
+                const candidate =
+                    this.scheduler.next();
+
+                if (!candidate) {
+                    if (
+                        this.inFlight > 0
+                    ) {
+                        await sleep(50);
+                        continue;
+                    }
+
+                    const delay =
+                        this.scheduler.delay();
+
+                    if (
+                        delay === null
+                    ) {
+                        break;
+                    }
+
+                    await sleep(
+                        Math.min(
+                            Math.max(delay, 25),
+                            250
+                        )
+                    );
+
+                    continue;
+                }
+
+                await this.processCandidate(
+                    candidate,
+                    workerId
+                );
+            }
+        }
+
+        async processCandidate(
+            candidate,
+            workerId
+        ) {
+            candidate.transition(
+                'acquiring'
+            );
+
+            /*
+             * Resource-level deduplication:
+             *
+             * Multiple mechanisms may discover the same URL,
+             * but only one actual acquisition is necessary.
+             */
+            if (
+                this.database.resourceAlreadyAcquired(
+                    candidate.target
+                )
+            ) {
+                const observation =
+                    new Observation({
+                        candidateId:
+                            candidate.id,
+                        target:
+                            candidate.target,
+                        status: 'reused'
+                    });
+
+                observation.completedAt =
+                    now();
+
+                const resource =
+                    this.database.getResource(
+                        candidate.target
+                    );
+
+                observation.http = {
+                    status:
+                        resource?.fingerprint
+                            ?.status ?? null,
+
+                    contentType:
+                        resource?.fingerprint
+                            ?.contentType || '',
+
+                    contentLength:
+                        resource?.fingerprint
+                            ?.contentLength ?? null,
+
+                    finalUrl:
+                        resource?.fingerprint
+                            ?.finalUrl ||
+                        candidate.target
+                };
+
+                observation.fingerprint =
+                    resource?.fingerprint ||
+                    null;
+
+                candidate.transition(
+                    'observed'
+                );
+
+                this.database.addObservation(
+                    observation
+                );
+
+                candidate.transition(
+                    'recognized'
+                );
+
+                candidate.transition(
+                    'expanded'
+                );
+
+                candidate.transition(
+                    'completed'
+                );
+
+                this.database.completeCandidate(
+                    candidate
+                );
+
+                return;
+            }
+
+            this.inFlight++;
+
+            this.database.statistics.requests++;
+
+            try {
+                const observation =
+                    await this.acquisition.acquire(
+                        candidate
+                    );
+
+                candidate.transition(
+                    'observed'
+                );
+
+                this.database.addObservation(
+                    observation
+                );
+
+                const resource =
+                    this.database.ensureResource(
+                        candidate.target
+                    );
+
+                resource.status =
+                    'acquired';
+
+                resource.fingerprint =
+                    observation.fingerprint;
+
+                resource.finalUrl =
+                    observation.http.finalUrl;
+
+                /*
+                 * Redirects create a first-class resource relationship.
+                 */
+                if (
+                    observation.http.finalUrl &&
+                    observation.http.finalUrl !==
+                        candidate.target
+                ) {
+                    this.database.ensureResource(
+                        observation.http.finalUrl
+                    );
+                }
+
+                const discoveries =
+                    this.providers.recognizeAll(
+                        candidate,
+                        observation
+                    );
+
+                candidate.transition(
+                    'recognized'
+                );
+
+                for (
+                    const discovery of
+                    discoveries
+                ) {
+                    this.database.addDiscovery(
+                        discovery
+                    );
+
+                    const expanded =
+                        this.providers
+                            .candidatesFor(
+                                discovery
+                            );
+
+                    for (
+                        const nextCandidate of
+                        expanded
+                    ) {
+                        this.addCandidate(
+                            nextCandidate
+                        );
+                    }
+                }
+
+                candidate.transition(
+                    'expanded'
+                );
+
+                candidate.transition(
+                    'completed'
+                );
+
+                this.database.completeCandidate(
+                    candidate
+                );
+
+                log(
+                    `Worker ${workerId} completed`,
+                    candidate.target,
+                    discoveries.length,
+                    'discoveries'
+                );
+            } catch (error) {
+                this.database.failCandidate(
+                    candidate,
+                    error
+                );
+
+                warn(
+                    `Worker ${workerId} failed`,
+                    candidate.target,
+                    error
+                );
+            } finally {
+                this.inFlight--;
+            }
+        }
+
+        report() {
+            const stats =
+                this.database.statistics;
+
+            return {
+                running:
+                    this.running,
+
+                queue:
+                    this.database.queue.length,
+
+                claimed:
+                    this.database.claimed.size,
+
+                inFlight:
+                    this.inFlight,
+
+                candidates:
+                    this.database.resources.size,
+
+                resources:
+                    this.database.resources.size,
+
+                observations:
+                    this.database.observations.size,
+
+                discoveries:
+                    this.database.discoveries.size,
+
+                networkEvents:
+                    this.networkEvents.size,
+
+                requests:
+                    stats.requests,
+
+                maxRequests:
+                    CONFIG.maxRequests,
+
+                retries:
+                    stats.retries,
+
+                failures:
+                    stats.failures,
+
+                cacheSkips:
+                    stats.cacheSkips,
+
+                candidatesCreated:
+                    stats.candidatesCreated,
+
+                candidatesMerged:
+                    stats.candidatesMerged,
+
+                candidatesRejected:
+                    stats.candidatesRejected,
+
+                maxDepthReached:
+                    stats.maxDepthReached
+            };
+        }
+
+        export() {
+            const resources = [
+                ...this.database.resources.values()
+            ];
+
+            const observations = [
+                ...this.database.observations.values()
+            ];
+
+            const discoveries = [
+                ...this.database.discoveries.values()
+            ];
+
+            const networkEvents = [
+                ...this.networkEvents.values()
+            ];
+
+            const graphNodes = [
+                {
+                    id: 'root',
+                    kind: 'root',
+                    url:
+                        canonicalizeUrl(
+                            location.href
+                        ),
+                    label: 'scan-root'
+                }
+            ];
+
+            for (const resource of resources) {
+                graphNodes.push({
+                    id: resource.id,
+                    kind: 'resource',
+                    url: resource.url,
+                    types: [
+                        ...resource.types
+                    ],
+                    mechanisms: [
+                        ...resource.mechanisms
+                    ],
+                    status:
+                        resource.status,
+
+                    firstSeenAt:
+                        resource.firstSeenAt,
+
+                    lastSeenAt:
+                        resource.lastSeenAt,
+
+                    fingerprint:
+                        resource.fingerprint,
+
+                    finalUrl:
+                        resource.finalUrl,
+
+                    candidateIds:
+                        [...resource.candidateIds],
+
+                    observationIds:
+                        [...resource.observationIds],
+
+                    discoveryIds:
+                        [...resource.discoveryIds]
+                });
+            }
+
+            const graphEdges = [];
+
+            /*
+             * Candidate/discovery edges.
+             */
+            for (
+                const edge of
+                this.database.edgeRecords
+            ) {
+                let sourceId =
+                    'root';
+
+                if (
+                    edge.fromDiscoveryId
+                ) {
+                    const parentDiscovery =
+                        this.database
+                            .discoveries
+                            .get(
+                                edge.fromDiscoveryId
+                            );
+
+                    const parentTarget =
+                        parentDiscovery?.targetUrl();
+
+                    if (parentTarget) {
+                        const parentResource =
+                            this.database
+                                .resources
+                                .get(
+                                    parentTarget
+                                );
+
+                        if (parentResource) {
+                            sourceId =
+                                parentResource.id;
+                        }
+                    }
+                }
+
+                const targetResource =
+                    this.database.resources.get(
+                        edge.target
+                    );
+
+                if (!targetResource) {
+                    continue;
+                }
+
+                /*
+                 * Self-references are usually HTML canonical/self links
+                 * and add little graph value.
+                 */
+                if (
+                    sourceId ===
+                    targetResource.id
+                ) {
+                    continue;
+                }
+
+                graphEdges.push({
+                    id: edge.id,
+                    source: sourceId,
+                    target:
+                        targetResource.id,
+                    kind: 'discovery',
+                    mechanism:
+                        edge.mechanism,
+                    candidateType:
+                        edge.candidateType,
+                    confidence:
+                        edge.confidence,
+                    priority:
+                        edge.priority,
+                    depth:
+                        edge.depth,
+                    createdAt:
+                        edge.createdAt,
+                    discoveryId:
+                        edge.fromDiscoveryId
+                });
+            }
+
+            /*
+             * Redirect edges.
+             */
+            for (const resource of resources) {
+                if (
+                    !resource.finalUrl ||
+                    resource.finalUrl ===
+                        resource.url
+                ) {
+                    continue;
+                }
+
+                const target =
+                    this.database.resources.get(
+                        resource.finalUrl
+                    );
+
+                if (!target) {
+                    continue;
+                }
+
+                graphEdges.push({
+                    id:
+                        stableId(
+                            'redirect',
+                            `${resource.url}->${resource.finalUrl}`
+                        ),
+                    source:
+                        resource.id,
+                    target:
+                        target.id,
+                    kind: 'redirect',
+                    mechanism:
+                        'http-redirect'
+                });
+            }
+
+            /*
+             * Network-observation edges.
+             *
+             * Network events do not always expose their semantic parent,
+             * so their default source is the scan root.
+             */
+            for (const event of networkEvents) {
+                const target =
+                    event.url &&
+                    this.database.resources.get(
+                        event.url
+                    );
+
+                if (!target) {
+                    continue;
+                }
+
+                graphEdges.push({
+                    id:
+                        stableId(
+                            'network-edge',
+                            event.id
+                        ),
+                    source: 'root',
+                    target: target.id,
+                    kind:
+                        event.phase === 'performance'
+                            ? 'performance-observation'
+                            : 'network-observation',
+                    mechanism:
+                        event.api,
+                    requestId:
+                        event.requestId,
+                    method:
+                        event.method,
+                    status:
+                        event.status,
+                    contentType:
+                        event.contentType
+                });
+            }
+
+            const graph = {
+                nodes: graphNodes,
+
+                edges: graphEdges.slice(
+                    -CONFIG.maxGraphEdges
+                )
+            };
+
+            return {
+                version: 5,
+
+                scope: {
+                    type:
+                        'web-resource-discovery',
+
+                    architecture:
+                        'candidate -> observation -> recognition -> discovery -> candidate',
+
+                    inspiredBy:
+                        'DVB blind-scan architecture',
+
+                    rfScanning: false
+                },
+
+                timestamp:
+                    new Date().toISOString(),
+
+                page: {
+                    url:
+                        location.href,
+
+                    origin:
+                        location.origin,
+
+                    title:
+                        document.title || '',
+
+                    userAgent:
+                        navigator.userAgent
+                },
+
+                statistics:
+                    this.report(),
+
+                configuration:
+                    CONFIG,
+
+                queue: [
+                    ...this.database.queue
+                ].map(candidate => ({
+                    id: candidate.id,
+                    target: candidate.target,
+                    type: candidate.type,
+                    origin: candidate.origin,
+                    parent: candidate.parent,
+                    priority: candidate.priority,
+                    effectivePriority:
+                        candidate.effectivePriority(),
+                    depth: candidate.depth,
+                    status: candidate.status,
+                    attempts: candidate.attempts,
+                    nextAttemptAt:
+                        candidate.nextAttemptAt
+                })),
+
+                lifecycle: {
+                    statuses: [
+                        'discovered',
+                        'queued',
+                        'claimed',
+                        'acquiring',
+                        'observed',
+                        'recognized',
+                        'expanded',
+                        'completed',
+                        'failed'
+                    ]
+                },
+
+                resources:
+                    resources.map(
+                        resource =>
+                            resource.toJSON()
+                    ),
+
+                observations:
+                    observations.map(
+                        observation => ({
+                            id:
+                                observation.id,
+
+                            candidateId:
+                                observation.candidateId,
+
+                            target:
+                                observation.target,
+
+                            startedAt:
+                                observation.startedAt,
+
+                            completedAt:
+                                observation.completedAt,
+
+                            status:
+                                observation.status,
+
+                            signalPresent:
+                                observation.signalPresent,
+
+                            http:
+                                observation.http,
+
+                            errors:
+                                observation.errors,
+
+                            network:
+                                observation.network,
+
+                            fingerprint:
+                                observation.fingerprint
+                        })
+                    ),
+
+                networkEvents,
+
+                discoveries,
+
+                graph
+            };
+        }
+
+        exportJson() {
+            return JSON.stringify(
+                this.export(),
+                null,
+                2
+            );
+        }
+
+        clear() {
+            this.database.clear();
+
+            this.networkEvents.clear();
+            this.networkRequestIndex.clear();
+
+            this.seeded = false;
+        }
+    }
+
+    // -------------------------------------------------------------------------
+    // UI
+    // -------------------------------------------------------------------------
+
+    class EngineUI {
+        constructor(engine) {
+            this.engine = engine;
+
+            this.panel = null;
+            this.status = null;
+
+            this.scanButton = null;
+            this.clearButton = null;
+            this.exportButton = null;
+
+            this.timer = null;
+        }
+
+        install() {
+            const create =
+                () => this.create();
+
+            if (document.body) {
+                create();
+            } else {
+                document.addEventListener(
+                    'DOMContentLoaded',
+                    create,
+                    {
+                        once: true
+                    }
+                );
+            }
+        }
+
+        create() {
+            if (this.panel) {
+                return;
+            }
+
+            const panel =
+                document.createElement(
+                    'div'
+                );
+
+            panel.id =
+                'generic-discovery-engine';
+
+            panel.style.cssText = [
+                'position:fixed',
+                'right:12px',
+                'bottom:12px',
+                'z-index:2147483647',
+                'width:310px',
+                'padding:12px',
+                'background:#111',
+                'color:#eee',
+                'font:12px/1.4 monospace',
+                'border:1px solid #555',
+                'border-radius:8px',
+                'box-shadow:0 4px 20px rgba(0,0,0,.45)'
+            ].join(';');
+
+            const title =
+                document.createElement(
+                    'div'
+                );
+
+            title.textContent =
+                'Generic Discovery Engine v0.5';
+
+            title.style.cssText =
+                'font-weight:bold;margin-bottom:8px';
+
+            const status =
+                document.createElement(
+                    'pre'
+                );
+
+            status.style.cssText =
+                'margin:0 0 8px;white-space:pre-wrap';
+
+            const controls =
+                document.createElement(
+                    'div'
+                );
+
+            controls.style.cssText =
+                'display:flex;gap:6px';
+
+            const buttonStyle = [
+                'flex:1',
+                'padding:5px',
+                'background:#222',
+                'color:#eee',
+                'border:1px solid #555',
+                'border-radius:4px',
+                'cursor:pointer'
+            ].join(';');
+
+            const scan =
+                document.createElement(
+                    'button'
+                );
+
+            scan.textContent = 'Scan';
+            scan.style.cssText =
+                buttonStyle;
+
+            const clear =
+                document.createElement(
+                    'button'
+                );
+
+            clear.textContent = 'Clear';
+            clear.style.cssText =
+                buttonStyle;
+
+            const exportButton =
+                document.createElement(
+                    'button'
+                );
+
+            exportButton.textContent =
+                'Export';
+
+            exportButton.style.cssText =
+                buttonStyle;
+
+            scan.addEventListener(
+                'click',
+                async () => {
+                    if (
+                        this.engine.running
+                    ) {
+                        return;
+                    }
+
+                    this.engine.seed();
+
+                    await this.engine.run();
+
+                    this.update();
+                }
+            );
+
+            clear.addEventListener(
+                'click',
+                () => {
+                    this.engine.clear();
+                    this.update();
+                }
+            );
+
+            exportButton.addEventListener(
+                'click',
+                () => {
+                    this.downloadExport();
+                }
+            );
+
+            controls.append(
+                scan,
+                clear,
+                exportButton
+            );
+
+            panel.append(
+                title,
+                status,
+                controls
+            );
+
+            document.body.appendChild(
+                panel
+            );
+
+            this.panel = panel;
+            this.status = status;
+
+            this.scanButton = scan;
+            this.clearButton = clear;
+            this.exportButton =
+                exportButton;
+
+            this.update();
+
+            this.timer =
+                setInterval(
+                    () => this.update(),
+                    500
+                );
+        }
+
+        update() {
+            if (!this.status) {
+                return;
+            }
+
+            const report =
+                this.engine.report();
+
+            const nextDelay =
+                this.engine.scheduler.delay();
+
+            this.status.textContent = [
+                `state: ${report.running ? 'scanning' : 'idle'}`,
+                `queue: ${report.queue}`,
+                `claimed: ${report.claimed}`,
+                `in-flight: ${report.inFlight}`,
+                `resources: ${report.resources}`,
+                `observations: ${report.observations}`,
+                `discoveries: ${report.discoveries}`,
+                `network: ${report.networkEvents}`,
+                `requests: ${report.requests}/${report.maxRequests}`,
+                `retries: ${report.retries}`,
+                `failures: ${report.failures}`,
+                `cache skips: ${report.cacheSkips}`,
+                `created: ${report.candidatesCreated}`,
+                `merged: ${report.candidatesMerged}`,
+                `rejected: ${report.candidatesRejected}`,
+                `depth-limit: ${report.maxDepthReached}`,
+                `next delay: ${
+                    nextDelay === null
+                        ? '-'
+                        : `${nextDelay}ms`
+                }`
+            ].join('\n');
+
+            this.scanButton.disabled =
+                report.running;
+        }
+
+        downloadExport() {
+            try {
+                const json =
+                    this.engine.exportJson();
+
+                const blob =
+                    new Blob(
+                        [json],
+                        {
+                            type:
+                                'application/json'
+                        }
+                    );
+
+                const url =
+                    URL.createObjectURL(
+                        blob
+                    );
+
+                const anchor =
+                    document.createElement(
+                        'a'
+                    );
+
+                anchor.href = url;
+
+                anchor.download =
+                    `generic-discovery-${Date.now()}.json`;
+
+                document.body.appendChild(
+                    anchor
+                );
+
+                anchor.click();
+                anchor.remove();
+
+                setTimeout(
+                    () =>
+                        URL.revokeObjectURL(
+                            url
+                        ),
+                    1000
+                );
+            } catch (error) {
+                warn(
+                    'Export failed:',
+                    error
+                );
+            }
+        }
+    }
+
+    // -------------------------------------------------------------------------
+    // Initialization
+    // -------------------------------------------------------------------------
+
+    const engine =
+        new DiscoveryEngine();
+
+    window.GenericDiscoveryEngine =
+        engine;
+
+    const ui =
+        new EngineUI(engine);
+
+    ui.install();
+
+    /*
+     * Seed after the DOM has enough information to expose initial resources.
+     * Network observation starts immediately at document-start.
+     */
+    const initialSeed = () => {
+        try {
+            engine.seed();
+        } catch (error) {
+            warn(
+                'Initial seed failed:',
+                error
+            );
+        }
+    };
+
+    if (
+        document.readyState ===
+        'loading'
+    ) {
+        document.addEventListener(
+            'DOMContentLoaded',
+            initialSeed,
+            {
+                once: true
+            }
+        );
+    } else {
+        initialSeed();
+    }
+
+})();

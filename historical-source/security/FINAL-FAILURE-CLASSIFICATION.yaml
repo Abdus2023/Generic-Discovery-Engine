@@ -1,0 +1,793 @@
+{
+  "schema_version": 8,
+  "builder": "security-archaeology-builder-v8",
+  "model_kind": "DERIVED_SECURITY_ARCHAEOLOGY_NOT_SOURCE",
+  "classification": {
+    "OBSERVED_FAILURES": {
+      "items": [
+        "DISCOVERY_FAILURE",
+        "HTTP_FAILURE",
+        "NETWORK_FAILURE",
+        "PARSING_FAILURE",
+        "PERSISTENCE_FAILURE",
+        "PROVIDER_FAILURE",
+        "RECOGNITION_FAILURE",
+        "SCHEDULER_FAILURE",
+        "TIMEOUT",
+        "UI_FAILURE",
+        "UNKNOWN_FAILURE",
+        "VALIDATION_FAILURE"
+      ],
+      "meaning": "Static failure detection/representation paths observed; runtime occurrence is not proved."
+    },
+    "HANDLED_FAILURES": [
+      "DISCOVERY_FAILURE",
+      "NETWORK_FAILURE",
+      "PARSING_FAILURE",
+      "PERSISTENCE_FAILURE",
+      "PROVIDER_FAILURE",
+      "RECOGNITION_FAILURE",
+      "SCHEDULER_FAILURE",
+      "TIMEOUT",
+      "UI_FAILURE",
+      "UNKNOWN_FAILURE",
+      "VALIDATION_FAILURE"
+    ],
+    "CONTAINED_FAILURES": [
+      "DISCOVERY_FAILURE",
+      "NETWORK_FAILURE",
+      "PARSING_FAILURE",
+      "PERSISTENCE_FAILURE",
+      "PROVIDER_FAILURE",
+      "RECOGNITION_FAILURE",
+      "SCHEDULER_FAILURE",
+      "TIMEOUT",
+      "UI_FAILURE",
+      "UNKNOWN_FAILURE",
+      "VALIDATION_FAILURE"
+    ],
+    "RECOVERABLE_FAILURES": [
+      "DISCOVERY_FAILURE",
+      "NETWORK_FAILURE",
+      "PARSING_FAILURE",
+      "PERSISTENCE_FAILURE",
+      "PROVIDER_FAILURE",
+      "RECOGNITION_FAILURE",
+      "SCHEDULER_FAILURE",
+      "TIMEOUT",
+      "UNKNOWN_FAILURE",
+      "VALIDATION_FAILURE"
+    ],
+    "SILENT_FAILURES": [
+      {
+        "operation": "Acquisition.request",
+        "classification": "ERROR_SUPPRESSION",
+        "occurrences": [
+          "snapshot-0014"
+        ],
+        "evidence": [
+          "security-ev-b4979490680146c4"
+        ]
+      },
+      {
+        "operation": "ApiDescriptionProvider.recognize",
+        "classification": "ERROR_SUPPRESSION",
+        "occurrences": [
+          "snapshot-0007"
+        ],
+        "evidence": [
+          "security-ev-898e0989c9374523"
+        ]
+      },
+      {
+        "operation": "DiscoveryEngine.clear",
+        "classification": "ERROR_SUPPRESSION",
+        "occurrences": [
+          "snapshot-0005",
+          "snapshot-0006"
+        ],
+        "evidence": [
+          "security-ev-f875723dd7182e84",
+          "security-ev-d43a32c192003104"
+        ]
+      },
+      {
+        "operation": "DiscoveryEngine.expand",
+        "classification": "ERROR_SUPPRESSION",
+        "occurrences": [
+          "snapshot-0009"
+        ],
+        "evidence": [
+          "security-ev-ab9373967ec67969"
+        ]
+      },
+      {
+        "operation": "DiscoveryEngine.inspectDomNode",
+        "classification": "ERROR_SUPPRESSION",
+        "occurrences": [
+          "snapshot-0007"
+        ],
+        "evidence": [
+          "security-ev-9bdc5f2a324fb459"
+        ]
+      },
+      {
+        "operation": "DiscoveryEngine.recordNetwork",
+        "classification": "ERROR_SUPPRESSION",
+        "occurrences": [
+          "snapshot-0009"
+        ],
+        "evidence": [
+          "security-ev-d86dde81c075c2df"
+        ]
+      },
+      {
+        "operation": "DiscoveryEngine.seed",
+        "classification": "UNEXPLAINED_SILENCE",
+        "occurrences": [
+          "snapshot-0007"
+        ],
+        "evidence": [
+          "security-ev-b8afc4cefd17803c"
+        ]
+      },
+      {
+        "operation": "DiscoveryEngine.seedWellKnown",
+        "classification": "ERROR_SUPPRESSION",
+        "occurrences": [
+          "snapshot-0011",
+          "snapshot-0012"
+        ],
+        "evidence": [
+          "security-ev-aa8fb61eb0125582",
+          "security-ev-4adab4c4d3ae2cc9"
+        ]
+      },
+      {
+        "operation": "DiscoveryEngine.worker",
+        "classification": "ERROR_SUPPRESSION",
+        "occurrences": [
+          "snapshot-0007",
+          "snapshot-0007",
+          "snapshot-0008",
+          "snapshot-0009",
+          "snapshot-0010"
+        ],
+        "evidence": [
+          "security-ev-d2c836579249cf42",
+          "security-ev-32ec9479f8f1f5ee",
+          "security-ev-9bcfaf7e04e86dd5",
+          "security-ev-eee36f69aa9b3c02",
+          "security-ev-fcc81df80fb5470c"
+        ]
+      },
+      {
+        "operation": "EngineUI.downloadExport",
+        "classification": "ERROR_SUPPRESSION",
+        "occurrences": [
+          "snapshot-0011",
+          "snapshot-0011",
+          "snapshot-0012",
+          "snapshot-0012"
+        ],
+        "evidence": [
+          "security-ev-9e25ec197595c177",
+          "security-ev-19f1c70b815c4b88",
+          "security-ev-d6acf7bc386e387a",
+          "security-ev-578fe6abd7101266"
+        ]
+      },
+      {
+        "operation": "GenericDiscoveryEngine.processCandidate",
+        "classification": "ERROR_SUPPRESSION",
+        "occurrences": [
+          "snapshot-0013"
+        ],
+        "evidence": [
+          "security-ev-d4c6ec2b97e75606"
+        ]
+      },
+      {
+        "operation": "GenericDiscoveryEngine.restore",
+        "classification": "ERROR_SUPPRESSION",
+        "occurrences": [
+          "snapshot-0014"
+        ],
+        "evidence": [
+          "security-ev-8bc48fa3ff3f2023"
+        ]
+      },
+      {
+        "operation": "HtmlProvider.recognize",
+        "classification": "ERROR_SUPPRESSION",
+        "occurrences": [
+          "snapshot-0014"
+        ],
+        "evidence": [
+          "security-ev-611d5ec5488f4c38"
+        ]
+      },
+      {
+        "operation": "HttpAcquisitionAdapter.acquireGM",
+        "classification": "ERROR_SUPPRESSION",
+        "occurrences": [
+          "snapshot-0011",
+          "snapshot-0012"
+        ],
+        "evidence": [
+          "security-ev-0d779bea41564305",
+          "security-ev-2fbf659cea67412c"
+        ]
+      },
+      {
+        "operation": "JsonProvider.discover",
+        "classification": "ERROR_SUPPRESSION",
+        "occurrences": [
+          "snapshot-0013"
+        ],
+        "evidence": [
+          "security-ev-bf8a7dda4bc3fdf3"
+        ]
+      },
+      {
+        "operation": "JsonProvider.recognize",
+        "classification": "ERROR_SUPPRESSION",
+        "occurrences": [
+          "snapshot-0003",
+          "snapshot-0005",
+          "snapshot-0006",
+          "snapshot-0007",
+          "snapshot-0008",
+          "snapshot-0009",
+          "snapshot-0010",
+          "snapshot-0011",
+          "snapshot-0012",
+          "snapshot-0014"
+        ],
+        "evidence": [
+          "security-ev-02b567c67da4c8b5",
+          "security-ev-47c3b73e9986039d",
+          "security-ev-6ddd02322352c69c",
+          "security-ev-e0879af9eee908b5",
+          "security-ev-22b2aacf73799079",
+          "security-ev-b50aa775ef5cebb4",
+          "security-ev-7ca4438712e07786",
+          "security-ev-1f48ace5ac7a2ada",
+          "security-ev-0b7d996f5b8d55c1",
+          "security-ev-decbce3b7e9befab"
+        ]
+      },
+      {
+        "operation": "KnowledgeBase.clear",
+        "classification": "ERROR_SUPPRESSION",
+        "occurrences": [
+          "snapshot-0011",
+          "snapshot-0012"
+        ],
+        "evidence": [
+          "security-ev-3600667c9ab5b535",
+          "security-ev-f28f50c537a86404"
+        ]
+      },
+      {
+        "operation": "KnowledgeBase.clear",
+        "classification": "INTENTIONAL_SILENCE",
+        "occurrences": [
+          "snapshot-0013"
+        ],
+        "evidence": [
+          "security-ev-4088c2804364a776"
+        ]
+      },
+      {
+        "operation": "KnowledgeBase.load",
+        "classification": "ERROR_SUPPRESSION",
+        "occurrences": [
+          "snapshot-0001",
+          "snapshot-0003",
+          "snapshot-0005",
+          "snapshot-0006",
+          "snapshot-0007",
+          "snapshot-0008",
+          "snapshot-0009",
+          "snapshot-0010",
+          "snapshot-0011",
+          "snapshot-0012",
+          "snapshot-0013"
+        ],
+        "evidence": [
+          "security-ev-5f02dc3748547b35",
+          "security-ev-1d21f8fcd42ea7c6",
+          "security-ev-70b3e3144ce034e6",
+          "security-ev-9423be634285ec26",
+          "security-ev-403e6a06e0a5dba7",
+          "security-ev-bd419689d6722640",
+          "security-ev-10c90284e1eec905",
+          "security-ev-ba42bba450ba90ac",
+          "security-ev-65b5ceec48a25c81",
+          "security-ev-6fe57ae14a4bf257",
+          "security-ev-1bf8fc7bbb6afbc9"
+        ]
+      },
+      {
+        "operation": "KnowledgeBase.persist",
+        "classification": "ERROR_SUPPRESSION",
+        "occurrences": [
+          "snapshot-0001",
+          "snapshot-0003",
+          "snapshot-0005",
+          "snapshot-0006",
+          "snapshot-0007",
+          "snapshot-0008",
+          "snapshot-0009",
+          "snapshot-0010"
+        ],
+        "evidence": [
+          "security-ev-b1fbd072c5e527b7",
+          "security-ev-835a71ba17d2d8a9",
+          "security-ev-ee29dd239ff45ec6",
+          "security-ev-fba0d372e9b84529",
+          "security-ev-fc8cbf327f935700",
+          "security-ev-61961c48a02bed55",
+          "security-ev-76092a05a4b6f32c",
+          "security-ev-a602df7600ee69a3"
+        ]
+      },
+      {
+        "operation": "KnowledgeBase.persistNow",
+        "classification": "ERROR_SUPPRESSION",
+        "occurrences": [
+          "snapshot-0011",
+          "snapshot-0012"
+        ],
+        "evidence": [
+          "security-ev-a187f75c1fdd3656",
+          "security-ev-de72aa189484071c"
+        ]
+      },
+      {
+        "operation": "KnowledgeBase.persistSoon",
+        "classification": "ERROR_SUPPRESSION",
+        "occurrences": [
+          "snapshot-0013"
+        ],
+        "evidence": [
+          "security-ev-d93e18e8c1e998c2"
+        ]
+      },
+      {
+        "operation": "ManifestProvider.recognize",
+        "classification": "ERROR_SUPPRESSION",
+        "occurrences": [
+          "snapshot-0006",
+          "snapshot-0007"
+        ],
+        "evidence": [
+          "security-ev-8fb08357ee4eef73",
+          "security-ev-fb78d1b84e770f3b"
+        ]
+      },
+      {
+        "operation": "NetworkBridge.install",
+        "classification": "ERROR_SUPPRESSION",
+        "occurrences": [
+          "snapshot-0009",
+          "snapshot-0010"
+        ],
+        "evidence": [
+          "security-ev-9d0df95606504131",
+          "security-ev-67a955f801298e24"
+        ]
+      },
+      {
+        "operation": "NetworkObserver.dispose",
+        "classification": "UNEXPLAINED_SILENCE",
+        "occurrences": [
+          "snapshot-0007"
+        ],
+        "evidence": [
+          "security-ev-2f6ac9e1df570cda"
+        ]
+      },
+      {
+        "operation": "NetworkObserver.installFetchObserver",
+        "classification": "ERROR_SUPPRESSION",
+        "occurrences": [
+          "snapshot-0006"
+        ],
+        "evidence": [
+          "security-ev-0c08681555390146"
+        ]
+      },
+      {
+        "operation": "NetworkObserver.installPageBridge",
+        "classification": "ERROR_SUPPRESSION",
+        "occurrences": [
+          "snapshot-0007",
+          "snapshot-0008",
+          "snapshot-0011",
+          "snapshot-0012"
+        ],
+        "evidence": [
+          "security-ev-5aa800cf06305328",
+          "security-ev-a0674bbdc33ebc3a",
+          "security-ev-82f0ff4d05dc560a",
+          "security-ev-8048f31a8f8460b4"
+        ]
+      },
+      {
+        "operation": "NetworkObserver.installPerformanceObserver",
+        "classification": "ERROR_SUPPRESSION",
+        "occurrences": [
+          "snapshot-0007",
+          "snapshot-0008",
+          "snapshot-0011",
+          "snapshot-0011",
+          "snapshot-0012",
+          "snapshot-0012",
+          "snapshot-0013"
+        ],
+        "evidence": [
+          "security-ev-56fdecb1b838f3dc",
+          "security-ev-ee982601a1b9a02f",
+          "security-ev-6b777a96e79c3de9",
+          "security-ev-62427229aa9fa8cf",
+          "security-ev-449c9738ecfc8de9",
+          "security-ev-7336fafd6650cfdd",
+          "security-ev-bc56107008ebaef1"
+        ]
+      },
+      {
+        "operation": "NetworkObserver.installPerformanceObserver",
+        "classification": "INTENTIONAL_SILENCE",
+        "occurrences": [
+          "snapshot-0008"
+        ],
+        "evidence": [
+          "security-ev-b0320bf41d9659cf"
+        ]
+      },
+      {
+        "operation": "NetworkObserver.installXhrObserver",
+        "classification": "ERROR_SUPPRESSION",
+        "occurrences": [
+          "snapshot-0006"
+        ],
+        "evidence": [
+          "security-ev-2494dffb56b1338c"
+        ]
+      },
+      {
+        "operation": "PerformanceNetworkObserver.install",
+        "classification": "INTENTIONAL_SILENCE",
+        "occurrences": [
+          "snapshot-0009",
+          "snapshot-0009"
+        ],
+        "evidence": [
+          "security-ev-2342d1624f8df8bd",
+          "security-ev-3777f6c65d4a2d9f"
+        ]
+      },
+      {
+        "operation": "PerformanceObserverAdapter.install",
+        "classification": "INTENTIONAL_SILENCE",
+        "occurrences": [
+          "snapshot-0010",
+          "snapshot-0010"
+        ],
+        "evidence": [
+          "security-ev-25684d9ed6322712",
+          "security-ev-5e0d140d0b548186"
+        ]
+      },
+      {
+        "operation": "ProviderRegistry.candidatesFor",
+        "classification": "ERROR_SUPPRESSION",
+        "occurrences": [
+          "snapshot-0011",
+          "snapshot-0012"
+        ],
+        "evidence": [
+          "security-ev-53070a6bff14d424",
+          "security-ev-7cf385dfde3a7caf"
+        ]
+      },
+      {
+        "operation": "ProviderRegistry.discover",
+        "classification": "ERROR_SUPPRESSION",
+        "occurrences": [
+          "snapshot-0013"
+        ],
+        "evidence": [
+          "security-ev-d09f05e9d84b8ff2"
+        ]
+      },
+      {
+        "operation": "ProviderRegistry.recognize",
+        "classification": "ERROR_SUPPRESSION",
+        "occurrences": [
+          "snapshot-0007",
+          "snapshot-0007",
+          "snapshot-0008",
+          "snapshot-0009",
+          "snapshot-0010"
+        ],
+        "evidence": [
+          "security-ev-3fc932de00813d14",
+          "security-ev-009da1367f7fdaab",
+          "security-ev-aaa9560381e948a1",
+          "security-ev-5b145551404d979f",
+          "security-ev-1d829d3bcbc1e32d"
+        ]
+      },
+      {
+        "operation": "ProviderRegistry.recognizeAll",
+        "classification": "ERROR_SUPPRESSION",
+        "occurrences": [
+          "snapshot-0011",
+          "snapshot-0011",
+          "snapshot-0012",
+          "snapshot-0012"
+        ],
+        "evidence": [
+          "security-ev-d18f5b6d3631b252",
+          "security-ev-66971bb9d0ba20ef",
+          "security-ev-46758ad69378490d",
+          "security-ev-861ff3b621877a87"
+        ]
+      },
+      {
+        "operation": "RobotsProvider.matches",
+        "classification": "ERROR_SUPPRESSION",
+        "occurrences": [
+          "snapshot-0011",
+          "snapshot-0012"
+        ],
+        "evidence": [
+          "security-ev-2a1d605376e427f7",
+          "security-ev-f168646fec075ff0"
+        ]
+      },
+      {
+        "operation": "TOP_LEVEL.allowed",
+        "classification": "ERROR_SUPPRESSION",
+        "occurrences": [
+          "snapshot-0009",
+          "snapshot-0010"
+        ],
+        "evidence": [
+          "security-ev-c21fa3d6808e31d7",
+          "security-ev-271b9e4aa6ac5f23"
+        ]
+      },
+      {
+        "operation": "TOP_LEVEL.canonicalizeUrl",
+        "classification": "ERROR_SUPPRESSION",
+        "occurrences": [
+          "snapshot-0001",
+          "snapshot-0003",
+          "snapshot-0005",
+          "snapshot-0006",
+          "snapshot-0007",
+          "snapshot-0008",
+          "snapshot-0009",
+          "snapshot-0010",
+          "snapshot-0011",
+          "snapshot-0012",
+          "snapshot-0013",
+          "snapshot-0014"
+        ],
+        "evidence": [
+          "security-ev-8812129cadb6f280",
+          "security-ev-6b1bd6d142794968",
+          "security-ev-1ba1749f7bb08635",
+          "security-ev-50d55f3a25cc1fe2",
+          "security-ev-04b6f9cc28fb1db5",
+          "security-ev-b759cadcdbf70f45",
+          "security-ev-a84dba91536be4c1",
+          "security-ev-2f20919cd31873d9",
+          "security-ev-a9b11bb8e9ca1eef",
+          "security-ev-708c1b5fc3086240",
+          "security-ev-67d410bb66e533fc",
+          "security-ev-93399494c7b81238"
+        ]
+      },
+      {
+        "operation": "TOP_LEVEL.contentTypeForTarget",
+        "classification": "ERROR_SUPPRESSION",
+        "occurrences": [
+          "snapshot-0013"
+        ],
+        "evidence": [
+          "security-ev-9ae6e046cf5f209d"
+        ]
+      },
+      {
+        "operation": "TOP_LEVEL.extractXmlLocs",
+        "classification": "UNEXPLAINED_SILENCE",
+        "occurrences": [
+          "snapshot-0008",
+          "snapshot-0009",
+          "snapshot-0014"
+        ],
+        "evidence": [
+          "security-ev-d39b7991d4a43cf7",
+          "security-ev-2db9d4078eccdcdd",
+          "security-ev-b48cec225e57a571"
+        ]
+      },
+      {
+        "operation": "TOP_LEVEL.getOrigin",
+        "classification": "ERROR_SUPPRESSION",
+        "occurrences": [
+          "snapshot-0012"
+        ],
+        "evidence": [
+          "security-ev-888079f700892021"
+        ]
+      },
+      {
+        "operation": "TOP_LEVEL.gmRequest",
+        "classification": "ERROR_SUPPRESSION",
+        "occurrences": [
+          "snapshot-0013"
+        ],
+        "evidence": [
+          "security-ev-442bd1bd40a7dd57"
+        ]
+      },
+      {
+        "operation": "TOP_LEVEL.hashText",
+        "classification": "UNEXPLAINED_SILENCE",
+        "occurrences": [
+          "snapshot-0009"
+        ],
+        "evidence": [
+          "security-ev-c34b150ed06211c0"
+        ]
+      },
+      {
+        "operation": "TOP_LEVEL.initializeUi",
+        "classification": "ERROR_SUPPRESSION",
+        "occurrences": [
+          "snapshot-0007",
+          "snapshot-0007",
+          "snapshot-0008",
+          "snapshot-0008"
+        ],
+        "evidence": [
+          "security-ev-9055b34f5f52dd69",
+          "security-ev-eef78ec4f3d37cf9",
+          "security-ev-bbb568635e0b932f",
+          "security-ev-9285156f407a342b"
+        ]
+      },
+      {
+        "operation": "TOP_LEVEL.installUi",
+        "classification": "ERROR_SUPPRESSION",
+        "occurrences": [
+          "snapshot-0009",
+          "snapshot-0009",
+          "snapshot-0010",
+          "snapshot-0010"
+        ],
+        "evidence": [
+          "security-ev-65348f69e361196d",
+          "security-ev-a5989b691bdde740",
+          "security-ev-ebeeb7ea763e30e3",
+          "security-ev-99887e645fb57713"
+        ]
+      },
+      {
+        "operation": "TOP_LEVEL.isAllowedUrl",
+        "classification": "ERROR_SUPPRESSION",
+        "occurrences": [
+          "snapshot-0001",
+          "snapshot-0003",
+          "snapshot-0005",
+          "snapshot-0006",
+          "snapshot-0007",
+          "snapshot-0008",
+          "snapshot-0011",
+          "snapshot-0012",
+          "snapshot-0014"
+        ],
+        "evidence": [
+          "security-ev-cd52827ef732e7d4",
+          "security-ev-abd184135de8a5dc",
+          "security-ev-7b42b4c75a35c40b",
+          "security-ev-ad2979326b8e91bb",
+          "security-ev-b3525ca60c92ca0a",
+          "security-ev-7d40670f2145698b",
+          "security-ev-cc19b1eb77fe4b1e",
+          "security-ev-566c3db11479f466",
+          "security-ev-7813bbecc7244e35"
+        ]
+      },
+      {
+        "operation": "TOP_LEVEL.looksLikeApiUrl",
+        "classification": "ERROR_SUPPRESSION",
+        "occurrences": [
+          "snapshot-0011",
+          "snapshot-0012",
+          "snapshot-0014"
+        ],
+        "evidence": [
+          "security-ev-979f3b42f84b889b",
+          "security-ev-24575052747f41f2",
+          "security-ev-415c4a01be959441"
+        ]
+      },
+      {
+        "operation": "TOP_LEVEL.originOf",
+        "classification": "ERROR_SUPPRESSION",
+        "occurrences": [
+          "snapshot-0013",
+          "snapshot-0014"
+        ],
+        "evidence": [
+          "security-ev-62b4a2dfb3d93671",
+          "security-ev-c1e0a7900dd364e7"
+        ]
+      },
+      {
+        "operation": "TOP_LEVEL.sha256",
+        "classification": "UNEXPLAINED_SILENCE",
+        "occurrences": [
+          "snapshot-0010"
+        ],
+        "evidence": [
+          "security-ev-ada91e361358b57e"
+        ]
+      },
+      {
+        "operation": "TextProvider.matches",
+        "classification": "INTENTIONAL_SILENCE",
+        "occurrences": [
+          "snapshot-0011",
+          "snapshot-0012"
+        ],
+        "evidence": [
+          "security-ev-e95b3dce058b18ac",
+          "security-ev-f254e663b5062707"
+        ]
+      }
+    ],
+    "POTENTIAL_FAILURE_MODES": [
+      "inconsistent status",
+      "large DOM or JSON parse",
+      "lost provenance",
+      "orphaned discoveries",
+      "orphaned observations",
+      "partial records",
+      "recursive/unbounded expansion",
+      "stale claims",
+      "unbounded response body"
+    ],
+    "UNVERIFIED_FAILURE_MODES": [
+      "INPUT_FAILURE",
+      "VALIDATION_FAILURE",
+      "CONFIGURATION_FAILURE",
+      "ACQUISITION_FAILURE",
+      "NETWORK_FAILURE",
+      "TIMEOUT",
+      "HTTP_FAILURE",
+      "PARSING_FAILURE",
+      "RECOGNITION_FAILURE",
+      "PROVIDER_FAILURE",
+      "DISCOVERY_FAILURE",
+      "EXPANSION_FAILURE",
+      "DEDUPLICATION_FAILURE",
+      "SCHEDULER_FAILURE",
+      "CONCURRENCY_FAILURE",
+      "STATE_FAILURE",
+      "PERSISTENCE_FAILURE",
+      "EXPORT_FAILURE",
+      "UI_FAILURE",
+      "RESOURCE_EXHAUSTION",
+      "CANCELLATION",
+      "UNKNOWN_FAILURE"
+    ]
+  }
+}

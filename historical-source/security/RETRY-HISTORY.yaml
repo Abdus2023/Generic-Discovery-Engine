@@ -1,0 +1,239 @@
+{
+  "schema_version": 8,
+  "builder": "security-archaeology-builder-v8",
+  "model_kind": "DERIVED_SECURITY_ARCHAEOLOGY_NOT_SOURCE",
+  "snapshots": [
+    {
+      "snapshot_id": "snapshot-0001",
+      "version": "v0.1.0",
+      "variant": "mechanically-composed",
+      "retry": "NOT_EVIDENCED",
+      "trigger": "UNKNOWN",
+      "count": "UNKNOWN",
+      "backoff": "NONE_EVIDENCED",
+      "same_candidate": "UNKNOWN",
+      "same_provider": "UNKNOWN",
+      "new_acquisition": "UNKNOWN",
+      "terminal_failure": "UNKNOWN",
+      "recursion_is_retry": false,
+      "evidence": [
+        "security-ev-11e5b89a4f7ce66c"
+      ]
+    },
+    {
+      "snapshot_id": "snapshot-0003",
+      "version": "v0.2.0",
+      "variant": "mechanically-composed",
+      "retry": "NOT_EVIDENCED",
+      "trigger": "UNKNOWN",
+      "count": "UNKNOWN",
+      "backoff": "NONE_EVIDENCED",
+      "same_candidate": "UNKNOWN",
+      "same_provider": "UNKNOWN",
+      "new_acquisition": "UNKNOWN",
+      "terminal_failure": "UNKNOWN",
+      "recursion_is_retry": false,
+      "evidence": [
+        "security-ev-6baf90ecf72a72f3"
+      ]
+    },
+    {
+      "snapshot_id": "snapshot-0005",
+      "version": "v0.3.0",
+      "variant": "only-evidenced-complete-occurrence",
+      "retry": "IMPLEMENTED",
+      "trigger": "HANDLED_CANDIDATE_OR_ACQUISITION_FAILURE",
+      "count": "1",
+      "backoff": "NONE_EVIDENCED",
+      "same_candidate": "SUPPORTED",
+      "same_provider": "UNKNOWN",
+      "new_acquisition": "SUPPORTED_BY_REQUEUED_PROCESSING_PATH",
+      "terminal_failure": "SUPPORTED",
+      "recursion_is_retry": false,
+      "evidence": [
+        "security-ev-c984040edce91058",
+        "security-ev-b0995f95c3feefc3",
+        "security-ev-1132fa88f610b64a"
+      ]
+    },
+    {
+      "snapshot_id": "snapshot-0006",
+      "version": "v0.4.0",
+      "variant": "variant-a",
+      "retry": "IMPLEMENTED",
+      "trigger": "HANDLED_CANDIDATE_OR_ACQUISITION_FAILURE",
+      "count": "2",
+      "backoff": "EXPONENTIAL",
+      "same_candidate": "SUPPORTED",
+      "same_provider": "UNKNOWN",
+      "new_acquisition": "SUPPORTED_BY_REQUEUED_PROCESSING_PATH",
+      "terminal_failure": "SUPPORTED",
+      "recursion_is_retry": false,
+      "evidence": [
+        "security-ev-e1e83171af3c031b",
+        "security-ev-e0efe9c036af7dd8",
+        "security-ev-f3da2cc5bd9811d4",
+        "security-ev-9c4be16723bab5ac"
+      ]
+    },
+    {
+      "snapshot_id": "snapshot-0008",
+      "version": "v0.4.0",
+      "variant": "variant-b",
+      "retry": "IMPLEMENTED",
+      "trigger": "HANDLED_CANDIDATE_OR_ACQUISITION_FAILURE",
+      "count": "2",
+      "backoff": "EXPONENTIAL",
+      "same_candidate": "SUPPORTED",
+      "same_provider": "UNKNOWN",
+      "new_acquisition": "SUPPORTED_BY_REQUEUED_PROCESSING_PATH",
+      "terminal_failure": "SUPPORTED",
+      "recursion_is_retry": false,
+      "evidence": [
+        "security-ev-6472cab0e0d1fced",
+        "security-ev-f507c3dff150e7e5",
+        "security-ev-3687e5ef6b65d266",
+        "security-ev-46778bd2d10272aa"
+      ]
+    },
+    {
+      "snapshot_id": "snapshot-0007",
+      "version": "v0.5.0",
+      "variant": "variant-a",
+      "retry": "IMPLEMENTED",
+      "trigger": "HANDLED_CANDIDATE_OR_ACQUISITION_FAILURE",
+      "count": "2",
+      "backoff": "EXPONENTIAL",
+      "same_candidate": "SUPPORTED",
+      "same_provider": "UNKNOWN",
+      "new_acquisition": "SUPPORTED_BY_REQUEUED_PROCESSING_PATH",
+      "terminal_failure": "UNKNOWN",
+      "recursion_is_retry": false,
+      "evidence": [
+        "security-ev-da25693a65a4fd19",
+        "security-ev-b371f7ef925373bb",
+        "security-ev-58494a358d950898",
+        "security-ev-01b83eec91f03407"
+      ]
+    },
+    {
+      "snapshot_id": "snapshot-0009",
+      "version": "v0.5.0",
+      "variant": "variant-b",
+      "retry": "IMPLEMENTED",
+      "trigger": "HANDLED_CANDIDATE_OR_ACQUISITION_FAILURE",
+      "count": "2",
+      "backoff": "EXPONENTIAL",
+      "same_candidate": "SUPPORTED",
+      "same_provider": "UNKNOWN",
+      "new_acquisition": "SUPPORTED_BY_REQUEUED_PROCESSING_PATH",
+      "terminal_failure": "SUPPORTED",
+      "recursion_is_retry": false,
+      "evidence": [
+        "security-ev-24bdf50644a00e88",
+        "security-ev-223a231fc5150fc0",
+        "security-ev-f97c923dc9ad8025",
+        "security-ev-8fb443637bf27c4d"
+      ]
+    },
+    {
+      "snapshot_id": "snapshot-0011",
+      "version": "v0.5.0",
+      "variant": "variant-c",
+      "retry": "IMPLEMENTED",
+      "trigger": "HANDLED_CANDIDATE_OR_ACQUISITION_FAILURE",
+      "count": "2",
+      "backoff": "EXPONENTIAL",
+      "same_candidate": "SUPPORTED",
+      "same_provider": "UNKNOWN",
+      "new_acquisition": "SUPPORTED_BY_REQUEUED_PROCESSING_PATH",
+      "terminal_failure": "SUPPORTED",
+      "recursion_is_retry": false,
+      "evidence": [
+        "security-ev-7b7771d8b30eca12",
+        "security-ev-fa80ebcf7a99e0ee",
+        "security-ev-b6dce39a5be313e6",
+        "security-ev-97008ab3131cfb12"
+      ]
+    },
+    {
+      "snapshot_id": "snapshot-0010",
+      "version": "v0.6.0",
+      "variant": "variant-a",
+      "retry": "IMPLEMENTED",
+      "trigger": "HANDLED_CANDIDATE_OR_ACQUISITION_FAILURE",
+      "count": "2",
+      "backoff": "EXPONENTIAL",
+      "same_candidate": "SUPPORTED",
+      "same_provider": "UNKNOWN",
+      "new_acquisition": "SUPPORTED_BY_REQUEUED_PROCESSING_PATH",
+      "terminal_failure": "SUPPORTED",
+      "recursion_is_retry": false,
+      "evidence": [
+        "security-ev-b629e44795d6b562",
+        "security-ev-68e13b2de724f6d7",
+        "security-ev-eb64bcfc9cd005b8",
+        "security-ev-58dc628653e40956"
+      ]
+    },
+    {
+      "snapshot_id": "snapshot-0012",
+      "version": "v0.6.0",
+      "variant": "variant-b",
+      "retry": "IMPLEMENTED",
+      "trigger": "HANDLED_CANDIDATE_OR_ACQUISITION_FAILURE",
+      "count": "2",
+      "backoff": "EXPONENTIAL",
+      "same_candidate": "SUPPORTED",
+      "same_provider": "UNKNOWN",
+      "new_acquisition": "SUPPORTED_BY_REQUEUED_PROCESSING_PATH",
+      "terminal_failure": "SUPPORTED",
+      "recursion_is_retry": false,
+      "evidence": [
+        "security-ev-21ad968c7e1fbe9c",
+        "security-ev-9a51e9fd153e1cee",
+        "security-ev-802bc1b7f80341ab",
+        "security-ev-9cf9c7c851d651d2"
+      ]
+    },
+    {
+      "snapshot_id": "snapshot-0013",
+      "version": "v0.6.0",
+      "variant": "variant-c",
+      "retry": "IMPLEMENTED",
+      "trigger": "HANDLED_CANDIDATE_OR_ACQUISITION_FAILURE",
+      "count": "2",
+      "backoff": "EXPONENTIAL",
+      "same_candidate": "SUPPORTED",
+      "same_provider": "UNKNOWN",
+      "new_acquisition": "SUPPORTED_BY_REQUEUED_PROCESSING_PATH",
+      "terminal_failure": "SUPPORTED",
+      "recursion_is_retry": false,
+      "evidence": [
+        "security-ev-9eb10e57952cf890",
+        "security-ev-7b38fa6f1268300d",
+        "security-ev-6139459e3b725242",
+        "security-ev-456108249a2d13a9"
+      ]
+    },
+    {
+      "snapshot_id": "snapshot-0014",
+      "version": "v0.7.1",
+      "variant": "only-evidenced-complete-occurrence",
+      "retry": "CONFIGURED_WITHOUT_COMPLETE_PATH_PROOF",
+      "trigger": "UNKNOWN",
+      "count": "2",
+      "backoff": "EXPONENTIAL",
+      "same_candidate": "UNKNOWN",
+      "same_provider": "UNKNOWN",
+      "new_acquisition": "UNKNOWN",
+      "terminal_failure": "UNKNOWN",
+      "recursion_is_retry": false,
+      "evidence": [
+        "security-ev-5d61d46289727c9c",
+        "security-ev-81763e6077e06c71",
+        "security-ev-8db8274907d35dde"
+      ]
+    }
+  ]
+}

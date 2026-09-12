@@ -1,0 +1,36 @@
+                ┌──────────────┐
+                │ Search Space │
+                └──────┬───────┘
+                       │
+                       ▼
+                ┌──────────────┐
+                │   Scheduler  │
+                └──────┬───────┘
+                       │
+                       ▼
+                ┌──────────────┐
+                │   Candidate  │
+                └──────┬───────┘
+                       │
+                       ▼
+                ┌──────────────┐
+                │  Observation │
+                └──────┬───────┘
+                       │
+             ┌─────────┴─────────┐
+             ▼                   ▼
+       Not confirmed          Confirmed
+             │                   │
+             ▼                   ▼
+      Refine hypotheses      Parse metadata
+             │                   │
+             │                   ▼
+             │             Create discovery
+             │                   │
+             └──────────┬────────┘
+                        ▼
+                 Generate new
+                  candidates
+                        │
+                        ▼
+                   Scheduler

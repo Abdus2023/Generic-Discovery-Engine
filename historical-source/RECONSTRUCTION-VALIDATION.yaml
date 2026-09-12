@@ -1,0 +1,163 @@
+{
+  "schema_version": 1,
+  "protocol": "Mechanical Historical Version Reconstruction Protocol sections 92-155",
+  "overall": "PASS",
+  "checks": [
+    {
+      "category": "Required reconstruction outputs",
+      "result": "PASS",
+      "detail": "missing=[]"
+    },
+    {
+      "category": "Snapshot identity",
+      "result": "PASS",
+      "detail": "snapshots=14, unique=14"
+    },
+    {
+      "category": "Reconstruction class accounting",
+      "result": "PASS",
+      "detail": "counts={'MECHANICALLY_COMPOSED': 2, 'PARTIAL': 2, 'EXACT': 10, 'UNKNOWN': 29}"
+    },
+    {
+      "category": "Snapshot metadata/report coverage",
+      "result": "PASS",
+      "detail": "bad=0"
+    },
+    {
+      "category": "Snapshot/source-map/metadata hashes",
+      "result": "PASS",
+      "detail": "bad=0"
+    },
+    {
+      "category": "Range-level historical integrity",
+      "result": "PASS",
+      "detail": "coverage_failures=0, copied_range_failures=0"
+    },
+    {
+      "category": "Exact snapshot identity",
+      "result": "PASS",
+      "detail": "bad=0/10"
+    },
+    {
+      "category": "Mechanical composition identity",
+      "result": "PASS",
+      "detail": "bad=0/2"
+    },
+    {
+      "category": "Partial snapshot gap markers",
+      "result": "PASS",
+      "detail": "bad=0/2"
+    },
+    {
+      "category": "Temporal consistency",
+      "result": "PASS",
+      "detail": "conflicts=0"
+    },
+    {
+      "category": "No backward/forward architecture contamination",
+      "result": "PASS",
+      "detail": "failures=0"
+    },
+    {
+      "category": "Dependency closure labeling",
+      "result": "PASS",
+      "detail": "bad=0"
+    },
+    {
+      "category": "Read-only static validation reproducibility",
+      "result": "PASS",
+      "detail": "mismatches=0"
+    },
+    {
+      "category": "Runtime/historical execution separation",
+      "result": "PASS",
+      "detail": "bad=0"
+    },
+    {
+      "category": "Historical source diff integrity",
+      "result": "PASS",
+      "detail": "bad=0"
+    },
+    {
+      "category": "Extraction artifact input integrity",
+      "result": "PASS",
+      "detail": "matching=5646/5646"
+    },
+    {
+      "category": "Bound reconstruction inputs",
+      "result": "PASS",
+      "detail": "manifest, revision inventory, and lineage hashes match"
+    },
+    {
+      "category": "No unsupported version directories",
+      "result": "PASS",
+      "detail": "unsupported=29, improper_dirs=[]"
+    },
+    {
+      "category": "Assumption registry",
+      "result": "PASS",
+      "detail": "unresolved=0; executable assumption-dependent snapshots=0"
+    },
+    {
+      "category": "Alternative/conflict preservation",
+      "result": "PASS",
+      "detail": "conflict_groups=5"
+    },
+    {
+      "category": "Missing-source accounting",
+      "result": "PASS",
+      "detail": "gaps=31"
+    },
+    {
+      "category": "Symbol conflict check",
+      "result": "PASS",
+      "detail": "within-snapshot unresolved conflicts=0"
+    },
+    {
+      "category": "Evidence-backed version matrix",
+      "result": "PASS",
+      "detail": "cells contain artifact/line or absence evidence"
+    },
+    {
+      "category": "Proposed/design boundary",
+      "result": "PASS",
+      "detail": "future architecture was not promoted to implementation"
+    },
+    {
+      "category": "Provider evolution labeling",
+      "result": "PASS",
+      "detail": "snapshot records=12; event vocabulary valid=True"
+    },
+    {
+      "category": "Required final report status",
+      "result": "PASS",
+      "detail": "all required status fields and declarations present"
+    },
+    {
+      "category": "Reconstruction determinism",
+      "result": "PASS",
+      "detail": "run_a_files=84, run_b_files=84, differing=0"
+    },
+    {
+      "category": "Historical source documents unchanged",
+      "result": "PASS",
+      "detail": "Userscript Discovery Prototype.md=MATCH; Continue Architecture Planning.md=MATCH"
+    }
+  ],
+  "counts": {
+    "snapshots": 14,
+    "EXACT": 10,
+    "MECHANICALLY_COMPOSED": 2,
+    "PATCH_RECONSTRUCTED": 0,
+    "PARTIAL": 2,
+    "INFERRED": 0,
+    "UNKNOWN": 29,
+    "temporal_conflicts": 0,
+    "reconstruction_conflicts": 5,
+    "missing_source_regions": 31,
+    "unresolved_assumptions": 0,
+    "likely_executable": 11,
+    "non_executable": 3,
+    "historically_executed_proved": 0
+  }
+}

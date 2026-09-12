@@ -1,0 +1,37 @@
+                     DISCOVERY DOMAIN
+                            │
+                            ▼
+                       SEARCH SPACE
+                            │
+                    ┌───────┴───────┐
+                    ▼               ▼
+               PARTITION A      PARTITION B
+                    │               │
+                    └───────┬───────┘
+                            ▼
+                    STRATEGY CONTROLLER
+                            │
+                            ▼
+                    EXPLORATION PLAN
+                            │
+                            ▼
+                     FRONTIER RUNTIME
+                            │
+             ┌──────────────┼──────────────┐
+             ▼              ▼              ▼
+        Discovery       Acquisition    Classification
+          Work             Work            Work
+             │              │              │
+             ▼              ▼              ▼
+        Candidates      Observations     Assertions
+             │              │              │
+             └──────────────┼──────────────┘
+                            ▼
+                       KNOWLEDGE GRAPH
+                            │
+                 ┌──────────┼──────────┐
+                 ▼          ▼          ▼
+             Resource    Artifact    Evidence
+                 │
+                 ▼
+            Revision History

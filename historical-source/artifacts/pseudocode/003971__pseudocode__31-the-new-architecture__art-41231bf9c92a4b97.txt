@@ -1,0 +1,50 @@
+                         DISCOVERY DOMAIN
+                                │
+                                ▼
+                          SCAN SESSION
+                                │
+                                ▼
+                        FRONTIER RUNTIME
+                                │
+                                ▼
+                             WORK
+                                │
+                ┌───────────────┴───────────────┐
+                ▼                               ▼
+          DISCOVERY WORK                  ACQUISITION WORK
+                │                               │
+                ▼                               ▼
+       DISCOVERY CONTROLLER            ACQUISITION RUNTIME
+                │                               │
+                ▼                               ▼
+       CANDIDATE SOURCE                 ACQUISITION PROVIDER
+                │                               │
+                ▼                               ▼
+             PROPOSAL                     OBSERVATION
+                │                               │
+                ▼                               ▼
+           NORMALIZATION                RECOGNITION RUNTIME
+                │                               │
+                ▼                               ▼
+           CANDIDATE                       EVIDENCE
+                │                               │
+                └──────────────┬────────────────┘
+                               ▼
+                             CLAIM
+                               │
+                               ▼
+                         IDENTITY RESOLUTION
+                               │
+                               ▼
+                         RESOURCE GRAPH
+                               │
+                ┌──────────────┼───────────────┐
+                ▼              ▼               ▼
+             Locators      Relations       Revisions
+                               │
+                               ▼
+                         KNOWLEDGE BASE
+
+                 EVENT LEDGER
+                      │
+                      └── records every transition

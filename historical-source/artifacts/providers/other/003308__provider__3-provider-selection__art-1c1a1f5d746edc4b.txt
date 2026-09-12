@@ -1,0 +1,16 @@
+AcquisitionPlan
+       │
+       ▼
+required capabilities
+       │
+       ▼
+provider registry
+       │
+       ├── provider A ── missing capability
+       │
+       ├── provider B ── can execute
+       │
+       └── provider C ── policy incompatible
+                         │
+                         ▼
+                   select provider

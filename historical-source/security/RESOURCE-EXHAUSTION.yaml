@@ -1,0 +1,1191 @@
+{
+  "schema_version": 8,
+  "builder": "security-archaeology-builder-v8",
+  "model_kind": "DERIVED_SECURITY_ARCHAEOLOGY_NOT_SOURCE",
+  "risks": [
+    {
+      "risk_id": "resource-risk-6121d2b536122bdb",
+      "snapshot_id": "snapshot-0001",
+      "version": "v0.1.0",
+      "variant": "mechanically-composed",
+      "risk": "unbounded candidate growth",
+      "classification": "MITIGATED",
+      "risk_basis": "STATIC_GROWTH_OR_INPUT_PATH_PRESENT",
+      "actual_exhaustion_or_exploit": "NOT_EVIDENCED",
+      "mitigation": "maxCandidates",
+      "mitigation_limit": "PATH_LOCAL_NOT_SYSTEM_WIDE_GUARANTEE",
+      "evidence": [
+        "security-ev-5471b3e7aa6a76cb",
+        "security-ev-948cf470b5888a69",
+        "security-ev-2830473f43bce3b7"
+      ]
+    },
+    {
+      "risk_id": "resource-risk-a530c402361b5ae1",
+      "snapshot_id": "snapshot-0001",
+      "version": "v0.1.0",
+      "variant": "mechanically-composed",
+      "risk": "unbounded response body",
+      "classification": "UNMITIGATED",
+      "risk_basis": "STATIC_GROWTH_OR_INPUT_PATH_PRESENT",
+      "actual_exhaustion_or_exploit": "NOT_EVIDENCED",
+      "mitigation": "NONE_EVIDENCED_FOR_SCOPE",
+      "mitigation_limit": "UNKNOWN",
+      "evidence": [
+        "security-ev-2a7ac0b8a04a756b"
+      ]
+    },
+    {
+      "risk_id": "resource-risk-eeb4ebc4f2794c06",
+      "snapshot_id": "snapshot-0001",
+      "version": "v0.1.0",
+      "variant": "mechanically-composed",
+      "risk": "unbounded concurrency",
+      "classification": "MITIGATED",
+      "risk_basis": "STATIC_GROWTH_OR_INPUT_PATH_PRESENT",
+      "actual_exhaustion_or_exploit": "NOT_EVIDENCED",
+      "mitigation": "concurrency",
+      "mitigation_limit": "PATH_LOCAL_NOT_SYSTEM_WIDE_GUARANTEE",
+      "evidence": [
+        "security-ev-f600017308845c43",
+        "security-ev-f9d9b3c207c68249",
+        "security-ev-c9932dde2d91acff"
+      ]
+    },
+    {
+      "risk_id": "resource-risk-48c718e51bdc196f",
+      "snapshot_id": "snapshot-0001",
+      "version": "v0.1.0",
+      "variant": "mechanically-composed",
+      "risk": "recursive/unbounded expansion",
+      "classification": "UNMITIGATED",
+      "risk_basis": "STATIC_GROWTH_OR_INPUT_PATH_PRESENT",
+      "actual_exhaustion_or_exploit": "NOT_EVIDENCED",
+      "mitigation": "NONE_EVIDENCED_FOR_SCOPE",
+      "mitigation_limit": "UNKNOWN",
+      "evidence": [
+        "security-ev-4d4cfb2910e97f77"
+      ]
+    },
+    {
+      "risk_id": "resource-risk-950bdf6663d80adb",
+      "snapshot_id": "snapshot-0001",
+      "version": "v0.1.0",
+      "variant": "mechanically-composed",
+      "risk": "memory-retained observations",
+      "classification": "MITIGATED",
+      "risk_basis": "STATIC_GROWTH_OR_INPUT_PATH_PRESENT",
+      "actual_exhaustion_or_exploit": "NOT_EVIDENCED",
+      "mitigation": "maxRequests",
+      "mitigation_limit": "PATH_LOCAL_NOT_SYSTEM_WIDE_GUARANTEE",
+      "evidence": [
+        "security-ev-3d15429e3fbc5c56",
+        "security-ev-c36edd585706ea75",
+        "security-ev-08cc2e4da8ffe70a"
+      ]
+    },
+    {
+      "risk_id": "resource-risk-e45ea0f37eddbae8",
+      "snapshot_id": "snapshot-0001",
+      "version": "v0.1.0",
+      "variant": "mechanically-composed",
+      "risk": "large DOM or JSON parse",
+      "classification": "UNMITIGATED",
+      "risk_basis": "STATIC_GROWTH_OR_INPUT_PATH_PRESENT",
+      "actual_exhaustion_or_exploit": "NOT_EVIDENCED",
+      "mitigation": "NONE_EVIDENCED_FOR_SCOPE",
+      "mitigation_limit": "UNKNOWN",
+      "evidence": [
+        "security-ev-37217a1c7e9ed079"
+      ]
+    },
+    {
+      "risk_id": "resource-risk-db62294ef4e94633",
+      "snapshot_id": "snapshot-0003",
+      "version": "v0.2.0",
+      "variant": "mechanically-composed",
+      "risk": "unbounded candidate growth",
+      "classification": "MITIGATED",
+      "risk_basis": "STATIC_GROWTH_OR_INPUT_PATH_PRESENT",
+      "actual_exhaustion_or_exploit": "NOT_EVIDENCED",
+      "mitigation": "maxCandidates",
+      "mitigation_limit": "PATH_LOCAL_NOT_SYSTEM_WIDE_GUARANTEE",
+      "evidence": [
+        "security-ev-66f925bd762068a0",
+        "security-ev-9cf987ce4e7e19da",
+        "security-ev-1e8b1330a3862cc9"
+      ]
+    },
+    {
+      "risk_id": "resource-risk-4dda4cb2423b160e",
+      "snapshot_id": "snapshot-0003",
+      "version": "v0.2.0",
+      "variant": "mechanically-composed",
+      "risk": "unbounded response body",
+      "classification": "UNMITIGATED",
+      "risk_basis": "STATIC_GROWTH_OR_INPUT_PATH_PRESENT",
+      "actual_exhaustion_or_exploit": "NOT_EVIDENCED",
+      "mitigation": "NONE_EVIDENCED_FOR_SCOPE",
+      "mitigation_limit": "UNKNOWN",
+      "evidence": [
+        "security-ev-9d54761c3fc6dca5"
+      ]
+    },
+    {
+      "risk_id": "resource-risk-630d79aba1cc4a24",
+      "snapshot_id": "snapshot-0003",
+      "version": "v0.2.0",
+      "variant": "mechanically-composed",
+      "risk": "unbounded concurrency",
+      "classification": "MITIGATED",
+      "risk_basis": "STATIC_GROWTH_OR_INPUT_PATH_PRESENT",
+      "actual_exhaustion_or_exploit": "NOT_EVIDENCED",
+      "mitigation": "concurrency",
+      "mitigation_limit": "PATH_LOCAL_NOT_SYSTEM_WIDE_GUARANTEE",
+      "evidence": [
+        "security-ev-3d07dccff0945275",
+        "security-ev-837e9c017eea2290",
+        "security-ev-724e30e236e3bf61"
+      ]
+    },
+    {
+      "risk_id": "resource-risk-7786dfc67ae4bb27",
+      "snapshot_id": "snapshot-0003",
+      "version": "v0.2.0",
+      "variant": "mechanically-composed",
+      "risk": "recursive/unbounded expansion",
+      "classification": "UNMITIGATED",
+      "risk_basis": "STATIC_GROWTH_OR_INPUT_PATH_PRESENT",
+      "actual_exhaustion_or_exploit": "NOT_EVIDENCED",
+      "mitigation": "NONE_EVIDENCED_FOR_SCOPE",
+      "mitigation_limit": "UNKNOWN",
+      "evidence": [
+        "security-ev-168e3cdc387a9c01"
+      ]
+    },
+    {
+      "risk_id": "resource-risk-877198993e21f755",
+      "snapshot_id": "snapshot-0003",
+      "version": "v0.2.0",
+      "variant": "mechanically-composed",
+      "risk": "memory-retained observations",
+      "classification": "MITIGATED",
+      "risk_basis": "STATIC_GROWTH_OR_INPUT_PATH_PRESENT",
+      "actual_exhaustion_or_exploit": "NOT_EVIDENCED",
+      "mitigation": "maxRequests",
+      "mitigation_limit": "PATH_LOCAL_NOT_SYSTEM_WIDE_GUARANTEE",
+      "evidence": [
+        "security-ev-23f5e3c1f8846c3b",
+        "security-ev-53a4284c6a3893ed",
+        "security-ev-45fccd3d3a79a5c5"
+      ]
+    },
+    {
+      "risk_id": "resource-risk-b6366a54fa6c08b9",
+      "snapshot_id": "snapshot-0003",
+      "version": "v0.2.0",
+      "variant": "mechanically-composed",
+      "risk": "large DOM or JSON parse",
+      "classification": "UNMITIGATED",
+      "risk_basis": "STATIC_GROWTH_OR_INPUT_PATH_PRESENT",
+      "actual_exhaustion_or_exploit": "NOT_EVIDENCED",
+      "mitigation": "NONE_EVIDENCED_FOR_SCOPE",
+      "mitigation_limit": "UNKNOWN",
+      "evidence": [
+        "security-ev-17f2cf497b46adc5"
+      ]
+    },
+    {
+      "risk_id": "resource-risk-bd15759ce58debc9",
+      "snapshot_id": "snapshot-0005",
+      "version": "v0.3.0",
+      "variant": "only-evidenced-complete-occurrence",
+      "risk": "unbounded candidate growth",
+      "classification": "MITIGATED",
+      "risk_basis": "STATIC_GROWTH_OR_INPUT_PATH_PRESENT",
+      "actual_exhaustion_or_exploit": "NOT_EVIDENCED",
+      "mitigation": "maxCandidates",
+      "mitigation_limit": "PATH_LOCAL_NOT_SYSTEM_WIDE_GUARANTEE",
+      "evidence": [
+        "security-ev-cd59031bdcaafd8e",
+        "security-ev-9358b8015ad588fa",
+        "security-ev-c9b690810046d893"
+      ]
+    },
+    {
+      "risk_id": "resource-risk-88b14fb32a4fdd59",
+      "snapshot_id": "snapshot-0005",
+      "version": "v0.3.0",
+      "variant": "only-evidenced-complete-occurrence",
+      "risk": "unbounded response body",
+      "classification": "UNMITIGATED",
+      "risk_basis": "STATIC_GROWTH_OR_INPUT_PATH_PRESENT",
+      "actual_exhaustion_or_exploit": "NOT_EVIDENCED",
+      "mitigation": "NONE_EVIDENCED_FOR_SCOPE",
+      "mitigation_limit": "UNKNOWN",
+      "evidence": [
+        "security-ev-c43499f7af4b094a"
+      ]
+    },
+    {
+      "risk_id": "resource-risk-e9a99704a7f9a636",
+      "snapshot_id": "snapshot-0005",
+      "version": "v0.3.0",
+      "variant": "only-evidenced-complete-occurrence",
+      "risk": "unbounded concurrency",
+      "classification": "MITIGATED",
+      "risk_basis": "STATIC_GROWTH_OR_INPUT_PATH_PRESENT",
+      "actual_exhaustion_or_exploit": "NOT_EVIDENCED",
+      "mitigation": "concurrency",
+      "mitigation_limit": "PATH_LOCAL_NOT_SYSTEM_WIDE_GUARANTEE",
+      "evidence": [
+        "security-ev-0ad4ba03e74ac24f",
+        "security-ev-edeb6f3b342f4d19",
+        "security-ev-b10348eea3420322"
+      ]
+    },
+    {
+      "risk_id": "resource-risk-1f98e802451dc094",
+      "snapshot_id": "snapshot-0005",
+      "version": "v0.3.0",
+      "variant": "only-evidenced-complete-occurrence",
+      "risk": "recursive/unbounded expansion",
+      "classification": "UNMITIGATED",
+      "risk_basis": "STATIC_GROWTH_OR_INPUT_PATH_PRESENT",
+      "actual_exhaustion_or_exploit": "NOT_EVIDENCED",
+      "mitigation": "NONE_EVIDENCED_FOR_SCOPE",
+      "mitigation_limit": "UNKNOWN",
+      "evidence": [
+        "security-ev-f26f5509263d2762"
+      ]
+    },
+    {
+      "risk_id": "resource-risk-0b71dc443c9d4fc2",
+      "snapshot_id": "snapshot-0005",
+      "version": "v0.3.0",
+      "variant": "only-evidenced-complete-occurrence",
+      "risk": "memory-retained observations",
+      "classification": "MITIGATED",
+      "risk_basis": "STATIC_GROWTH_OR_INPUT_PATH_PRESENT",
+      "actual_exhaustion_or_exploit": "NOT_EVIDENCED",
+      "mitigation": "maxRequests",
+      "mitigation_limit": "PATH_LOCAL_NOT_SYSTEM_WIDE_GUARANTEE",
+      "evidence": [
+        "security-ev-fd05bc39689c1f3a",
+        "security-ev-ffe2e0fa86975934",
+        "security-ev-ed399ba64e586455"
+      ]
+    },
+    {
+      "risk_id": "resource-risk-23601d343d46b9df",
+      "snapshot_id": "snapshot-0005",
+      "version": "v0.3.0",
+      "variant": "only-evidenced-complete-occurrence",
+      "risk": "large DOM or JSON parse",
+      "classification": "UNMITIGATED",
+      "risk_basis": "STATIC_GROWTH_OR_INPUT_PATH_PRESENT",
+      "actual_exhaustion_or_exploit": "NOT_EVIDENCED",
+      "mitigation": "NONE_EVIDENCED_FOR_SCOPE",
+      "mitigation_limit": "UNKNOWN",
+      "evidence": [
+        "security-ev-963d723e1124f2d5"
+      ]
+    },
+    {
+      "risk_id": "resource-risk-963837daf9ddca19",
+      "snapshot_id": "snapshot-0006",
+      "version": "v0.4.0",
+      "variant": "variant-a",
+      "risk": "unbounded candidate growth",
+      "classification": "MITIGATED",
+      "risk_basis": "STATIC_GROWTH_OR_INPUT_PATH_PRESENT",
+      "actual_exhaustion_or_exploit": "NOT_EVIDENCED",
+      "mitigation": "maxCandidates",
+      "mitigation_limit": "PATH_LOCAL_NOT_SYSTEM_WIDE_GUARANTEE",
+      "evidence": [
+        "security-ev-737c05ad57b31878",
+        "security-ev-bc91f817a57c1e37",
+        "security-ev-ccc97fc4107c422c"
+      ]
+    },
+    {
+      "risk_id": "resource-risk-656d382077f4db50",
+      "snapshot_id": "snapshot-0006",
+      "version": "v0.4.0",
+      "variant": "variant-a",
+      "risk": "unbounded response body",
+      "classification": "UNMITIGATED",
+      "risk_basis": "STATIC_GROWTH_OR_INPUT_PATH_PRESENT",
+      "actual_exhaustion_or_exploit": "NOT_EVIDENCED",
+      "mitigation": "NONE_EVIDENCED_FOR_SCOPE",
+      "mitigation_limit": "UNKNOWN",
+      "evidence": [
+        "security-ev-ad707ff8a5ac7dea"
+      ]
+    },
+    {
+      "risk_id": "resource-risk-9d3b0f8bf437b2f8",
+      "snapshot_id": "snapshot-0006",
+      "version": "v0.4.0",
+      "variant": "variant-a",
+      "risk": "unbounded concurrency",
+      "classification": "MITIGATED",
+      "risk_basis": "STATIC_GROWTH_OR_INPUT_PATH_PRESENT",
+      "actual_exhaustion_or_exploit": "NOT_EVIDENCED",
+      "mitigation": "concurrency",
+      "mitigation_limit": "PATH_LOCAL_NOT_SYSTEM_WIDE_GUARANTEE",
+      "evidence": [
+        "security-ev-a5688d6df8fea50b",
+        "security-ev-920e7b53532ac55a",
+        "security-ev-bd622b221d7bb465"
+      ]
+    },
+    {
+      "risk_id": "resource-risk-143e2b7c5a194945",
+      "snapshot_id": "snapshot-0006",
+      "version": "v0.4.0",
+      "variant": "variant-a",
+      "risk": "recursive/unbounded expansion",
+      "classification": "MITIGATED",
+      "risk_basis": "STATIC_GROWTH_OR_INPUT_PATH_PRESENT",
+      "actual_exhaustion_or_exploit": "NOT_EVIDENCED",
+      "mitigation": "maxDepth",
+      "mitigation_limit": "PATH_LOCAL_NOT_SYSTEM_WIDE_GUARANTEE",
+      "evidence": [
+        "security-ev-28f23eb61c45633e",
+        "security-ev-19d91b3a4dc8deb9",
+        "security-ev-8c78d3fcf18912a3"
+      ]
+    },
+    {
+      "risk_id": "resource-risk-b7f81f2c90e71f7f",
+      "snapshot_id": "snapshot-0006",
+      "version": "v0.4.0",
+      "variant": "variant-a",
+      "risk": "memory-retained observations",
+      "classification": "MITIGATED",
+      "risk_basis": "STATIC_GROWTH_OR_INPUT_PATH_PRESENT",
+      "actual_exhaustion_or_exploit": "NOT_EVIDENCED",
+      "mitigation": "maxRequests",
+      "mitigation_limit": "PATH_LOCAL_NOT_SYSTEM_WIDE_GUARANTEE",
+      "evidence": [
+        "security-ev-ae5cbd643bbe2426",
+        "security-ev-301da7d397441a37",
+        "security-ev-2d0938bbd81d086f"
+      ]
+    },
+    {
+      "risk_id": "resource-risk-bc98770d554871aa",
+      "snapshot_id": "snapshot-0006",
+      "version": "v0.4.0",
+      "variant": "variant-a",
+      "risk": "large DOM or JSON parse",
+      "classification": "UNMITIGATED",
+      "risk_basis": "STATIC_GROWTH_OR_INPUT_PATH_PRESENT",
+      "actual_exhaustion_or_exploit": "NOT_EVIDENCED",
+      "mitigation": "NONE_EVIDENCED_FOR_SCOPE",
+      "mitigation_limit": "UNKNOWN",
+      "evidence": [
+        "security-ev-2ea8e88a9bbe3618"
+      ]
+    },
+    {
+      "risk_id": "resource-risk-bff70e8e1d3fdef5",
+      "snapshot_id": "snapshot-0008",
+      "version": "v0.4.0",
+      "variant": "variant-b",
+      "risk": "unbounded candidate growth",
+      "classification": "MITIGATED",
+      "risk_basis": "STATIC_GROWTH_OR_INPUT_PATH_PRESENT",
+      "actual_exhaustion_or_exploit": "NOT_EVIDENCED",
+      "mitigation": "maxCandidates",
+      "mitigation_limit": "PATH_LOCAL_NOT_SYSTEM_WIDE_GUARANTEE",
+      "evidence": [
+        "security-ev-bee191c14d0d9fcc",
+        "security-ev-e13eb17efc3869cf",
+        "security-ev-2af1aca5ee69031a"
+      ]
+    },
+    {
+      "risk_id": "resource-risk-8aa30911240e3fd6",
+      "snapshot_id": "snapshot-0008",
+      "version": "v0.4.0",
+      "variant": "variant-b",
+      "risk": "unbounded response body",
+      "classification": "UNMITIGATED",
+      "risk_basis": "STATIC_GROWTH_OR_INPUT_PATH_PRESENT",
+      "actual_exhaustion_or_exploit": "NOT_EVIDENCED",
+      "mitigation": "NONE_EVIDENCED_FOR_SCOPE",
+      "mitigation_limit": "UNKNOWN",
+      "evidence": [
+        "security-ev-9bf945ea0028f176"
+      ]
+    },
+    {
+      "risk_id": "resource-risk-5c3a1bd1a20be825",
+      "snapshot_id": "snapshot-0008",
+      "version": "v0.4.0",
+      "variant": "variant-b",
+      "risk": "unbounded concurrency",
+      "classification": "MITIGATED",
+      "risk_basis": "STATIC_GROWTH_OR_INPUT_PATH_PRESENT",
+      "actual_exhaustion_or_exploit": "NOT_EVIDENCED",
+      "mitigation": "concurrency",
+      "mitigation_limit": "PATH_LOCAL_NOT_SYSTEM_WIDE_GUARANTEE",
+      "evidence": [
+        "security-ev-81c3f2f34b934039",
+        "security-ev-5d0fabe654497739",
+        "security-ev-2b51376e042d9813"
+      ]
+    },
+    {
+      "risk_id": "resource-risk-7b5f5c929f679f21",
+      "snapshot_id": "snapshot-0008",
+      "version": "v0.4.0",
+      "variant": "variant-b",
+      "risk": "recursive/unbounded expansion",
+      "classification": "MITIGATED",
+      "risk_basis": "STATIC_GROWTH_OR_INPUT_PATH_PRESENT",
+      "actual_exhaustion_or_exploit": "NOT_EVIDENCED",
+      "mitigation": "maxDepth",
+      "mitigation_limit": "PATH_LOCAL_NOT_SYSTEM_WIDE_GUARANTEE",
+      "evidence": [
+        "security-ev-f3313d4bdc75a237",
+        "security-ev-5380db781a26a056",
+        "security-ev-2f10605b820e7ed0"
+      ]
+    },
+    {
+      "risk_id": "resource-risk-81ee9b8af71461c4",
+      "snapshot_id": "snapshot-0008",
+      "version": "v0.4.0",
+      "variant": "variant-b",
+      "risk": "memory-retained observations",
+      "classification": "MITIGATED",
+      "risk_basis": "STATIC_GROWTH_OR_INPUT_PATH_PRESENT",
+      "actual_exhaustion_or_exploit": "NOT_EVIDENCED",
+      "mitigation": "maxRequests",
+      "mitigation_limit": "PATH_LOCAL_NOT_SYSTEM_WIDE_GUARANTEE",
+      "evidence": [
+        "security-ev-f59a9345a36ec696",
+        "security-ev-10f1d5e76cc27724",
+        "security-ev-d75d9bd5ee3fb06b"
+      ]
+    },
+    {
+      "risk_id": "resource-risk-bae1edaaf4daad92",
+      "snapshot_id": "snapshot-0008",
+      "version": "v0.4.0",
+      "variant": "variant-b",
+      "risk": "large DOM or JSON parse",
+      "classification": "UNMITIGATED",
+      "risk_basis": "STATIC_GROWTH_OR_INPUT_PATH_PRESENT",
+      "actual_exhaustion_or_exploit": "NOT_EVIDENCED",
+      "mitigation": "NONE_EVIDENCED_FOR_SCOPE",
+      "mitigation_limit": "UNKNOWN",
+      "evidence": [
+        "security-ev-a39045acfc80da01"
+      ]
+    },
+    {
+      "risk_id": "resource-risk-3aabe73b818263dd",
+      "snapshot_id": "snapshot-0007",
+      "version": "v0.5.0",
+      "variant": "variant-a",
+      "risk": "unbounded candidate growth",
+      "classification": "MITIGATED",
+      "risk_basis": "STATIC_GROWTH_OR_INPUT_PATH_PRESENT",
+      "actual_exhaustion_or_exploit": "NOT_EVIDENCED",
+      "mitigation": "maxCandidates",
+      "mitigation_limit": "PATH_LOCAL_NOT_SYSTEM_WIDE_GUARANTEE",
+      "evidence": [
+        "security-ev-439e7c4e9b098dc2",
+        "security-ev-33f0fc39c06a85a9",
+        "security-ev-27f86b50063e4e51"
+      ]
+    },
+    {
+      "risk_id": "resource-risk-773444fa4e1a1944",
+      "snapshot_id": "snapshot-0007",
+      "version": "v0.5.0",
+      "variant": "variant-a",
+      "risk": "unbounded response body",
+      "classification": "MITIGATED",
+      "risk_basis": "STATIC_GROWTH_OR_INPUT_PATH_PRESENT",
+      "actual_exhaustion_or_exploit": "NOT_EVIDENCED",
+      "mitigation": "maxResponseBytes",
+      "mitigation_limit": "PATH_LOCAL_NOT_SYSTEM_WIDE_GUARANTEE",
+      "evidence": [
+        "security-ev-f805ea60ebd82831",
+        "security-ev-ca827d98c13df14b",
+        "security-ev-f297cf24270fa296"
+      ]
+    },
+    {
+      "risk_id": "resource-risk-b9fa867241ce27a4",
+      "snapshot_id": "snapshot-0007",
+      "version": "v0.5.0",
+      "variant": "variant-a",
+      "risk": "unbounded concurrency",
+      "classification": "MITIGATED",
+      "risk_basis": "STATIC_GROWTH_OR_INPUT_PATH_PRESENT",
+      "actual_exhaustion_or_exploit": "NOT_EVIDENCED",
+      "mitigation": "concurrency",
+      "mitigation_limit": "PATH_LOCAL_NOT_SYSTEM_WIDE_GUARANTEE",
+      "evidence": [
+        "security-ev-fac5da863d98f27e",
+        "security-ev-2174317aa462de1a",
+        "security-ev-f0007c730d63b73a"
+      ]
+    },
+    {
+      "risk_id": "resource-risk-6be9ee07ea88d420",
+      "snapshot_id": "snapshot-0007",
+      "version": "v0.5.0",
+      "variant": "variant-a",
+      "risk": "recursive/unbounded expansion",
+      "classification": "MITIGATED",
+      "risk_basis": "STATIC_GROWTH_OR_INPUT_PATH_PRESENT",
+      "actual_exhaustion_or_exploit": "NOT_EVIDENCED",
+      "mitigation": "maxDepth",
+      "mitigation_limit": "PATH_LOCAL_NOT_SYSTEM_WIDE_GUARANTEE",
+      "evidence": [
+        "security-ev-96259d5cdc412335",
+        "security-ev-2ebe01ddc9b85390",
+        "security-ev-4126b9dd0447a69f"
+      ]
+    },
+    {
+      "risk_id": "resource-risk-f0e4619bf13e7143",
+      "snapshot_id": "snapshot-0007",
+      "version": "v0.5.0",
+      "variant": "variant-a",
+      "risk": "memory-retained observations",
+      "classification": "MITIGATED",
+      "risk_basis": "STATIC_GROWTH_OR_INPUT_PATH_PRESENT",
+      "actual_exhaustion_or_exploit": "NOT_EVIDENCED",
+      "mitigation": "maxRequests",
+      "mitigation_limit": "PATH_LOCAL_NOT_SYSTEM_WIDE_GUARANTEE",
+      "evidence": [
+        "security-ev-31a306cd634da42e",
+        "security-ev-2eacc8239f6c4430",
+        "security-ev-f6d71d762f57db94"
+      ]
+    },
+    {
+      "risk_id": "resource-risk-fa4308b47a92fbed",
+      "snapshot_id": "snapshot-0007",
+      "version": "v0.5.0",
+      "variant": "variant-a",
+      "risk": "large DOM or JSON parse",
+      "classification": "MITIGATED",
+      "risk_basis": "STATIC_GROWTH_OR_INPUT_PATH_PRESENT",
+      "actual_exhaustion_or_exploit": "NOT_EVIDENCED",
+      "mitigation": "maxResponseBytes",
+      "mitigation_limit": "PATH_LOCAL_NOT_SYSTEM_WIDE_GUARANTEE",
+      "evidence": [
+        "security-ev-1ef349750e5b1c3c",
+        "security-ev-ca827d98c13df14b",
+        "security-ev-f297cf24270fa296"
+      ]
+    },
+    {
+      "risk_id": "resource-risk-7a506e58cf3b78d8",
+      "snapshot_id": "snapshot-0009",
+      "version": "v0.5.0",
+      "variant": "variant-b",
+      "risk": "unbounded candidate growth",
+      "classification": "MITIGATED",
+      "risk_basis": "STATIC_GROWTH_OR_INPUT_PATH_PRESENT",
+      "actual_exhaustion_or_exploit": "NOT_EVIDENCED",
+      "mitigation": "maxCandidates",
+      "mitigation_limit": "PATH_LOCAL_NOT_SYSTEM_WIDE_GUARANTEE",
+      "evidence": [
+        "security-ev-b3d2029ed4e1c243",
+        "security-ev-4552649e95cee11a",
+        "security-ev-14b57f3f7d6168ac"
+      ]
+    },
+    {
+      "risk_id": "resource-risk-5ecbe39db0f66f2a",
+      "snapshot_id": "snapshot-0009",
+      "version": "v0.5.0",
+      "variant": "variant-b",
+      "risk": "unbounded response body",
+      "classification": "UNMITIGATED",
+      "risk_basis": "STATIC_GROWTH_OR_INPUT_PATH_PRESENT",
+      "actual_exhaustion_or_exploit": "NOT_EVIDENCED",
+      "mitigation": "NONE_EVIDENCED_FOR_SCOPE",
+      "mitigation_limit": "UNKNOWN",
+      "evidence": [
+        "security-ev-ddda33c8acc98dba"
+      ]
+    },
+    {
+      "risk_id": "resource-risk-4e85649a76eb1d1a",
+      "snapshot_id": "snapshot-0009",
+      "version": "v0.5.0",
+      "variant": "variant-b",
+      "risk": "unbounded concurrency",
+      "classification": "MITIGATED",
+      "risk_basis": "STATIC_GROWTH_OR_INPUT_PATH_PRESENT",
+      "actual_exhaustion_or_exploit": "NOT_EVIDENCED",
+      "mitigation": "concurrency",
+      "mitigation_limit": "PATH_LOCAL_NOT_SYSTEM_WIDE_GUARANTEE",
+      "evidence": [
+        "security-ev-b977d90bebf8eeb3",
+        "security-ev-8c32ca5db4664d98",
+        "security-ev-7890e8bd70c41477"
+      ]
+    },
+    {
+      "risk_id": "resource-risk-8d7cfd3b7e862950",
+      "snapshot_id": "snapshot-0009",
+      "version": "v0.5.0",
+      "variant": "variant-b",
+      "risk": "recursive/unbounded expansion",
+      "classification": "MITIGATED",
+      "risk_basis": "STATIC_GROWTH_OR_INPUT_PATH_PRESENT",
+      "actual_exhaustion_or_exploit": "NOT_EVIDENCED",
+      "mitigation": "maxDepth",
+      "mitigation_limit": "PATH_LOCAL_NOT_SYSTEM_WIDE_GUARANTEE",
+      "evidence": [
+        "security-ev-6217c7db27b6058a",
+        "security-ev-3d227196e2ed4d9a",
+        "security-ev-79c8808f661a08a2"
+      ]
+    },
+    {
+      "risk_id": "resource-risk-d14b83d564e4b223",
+      "snapshot_id": "snapshot-0009",
+      "version": "v0.5.0",
+      "variant": "variant-b",
+      "risk": "memory-retained observations",
+      "classification": "MITIGATED",
+      "risk_basis": "STATIC_GROWTH_OR_INPUT_PATH_PRESENT",
+      "actual_exhaustion_or_exploit": "NOT_EVIDENCED",
+      "mitigation": "maxRequests",
+      "mitigation_limit": "PATH_LOCAL_NOT_SYSTEM_WIDE_GUARANTEE",
+      "evidence": [
+        "security-ev-ffac94d5f3fe6583",
+        "security-ev-c5e7a26acf0bafec",
+        "security-ev-762fa51d32ed3797"
+      ]
+    },
+    {
+      "risk_id": "resource-risk-718dadab4febff08",
+      "snapshot_id": "snapshot-0009",
+      "version": "v0.5.0",
+      "variant": "variant-b",
+      "risk": "large DOM or JSON parse",
+      "classification": "UNMITIGATED",
+      "risk_basis": "STATIC_GROWTH_OR_INPUT_PATH_PRESENT",
+      "actual_exhaustion_or_exploit": "NOT_EVIDENCED",
+      "mitigation": "NONE_EVIDENCED_FOR_SCOPE",
+      "mitigation_limit": "UNKNOWN",
+      "evidence": [
+        "security-ev-1b3fb6a02829dd87"
+      ]
+    },
+    {
+      "risk_id": "resource-risk-bb077e12091acf63",
+      "snapshot_id": "snapshot-0011",
+      "version": "v0.5.0",
+      "variant": "variant-c",
+      "risk": "unbounded candidate growth",
+      "classification": "MITIGATED",
+      "risk_basis": "STATIC_GROWTH_OR_INPUT_PATH_PRESENT",
+      "actual_exhaustion_or_exploit": "NOT_EVIDENCED",
+      "mitigation": "maxCandidates",
+      "mitigation_limit": "PATH_LOCAL_NOT_SYSTEM_WIDE_GUARANTEE",
+      "evidence": [
+        "security-ev-40ac23444330755e",
+        "security-ev-edda96b53a6d0b9f",
+        "security-ev-f526104cdaa6d7a5"
+      ]
+    },
+    {
+      "risk_id": "resource-risk-7635bb75fcb7f8e1",
+      "snapshot_id": "snapshot-0011",
+      "version": "v0.5.0",
+      "variant": "variant-c",
+      "risk": "unbounded response body",
+      "classification": "UNMITIGATED",
+      "risk_basis": "STATIC_GROWTH_OR_INPUT_PATH_PRESENT",
+      "actual_exhaustion_or_exploit": "NOT_EVIDENCED",
+      "mitigation": "NONE_EVIDENCED_FOR_SCOPE",
+      "mitigation_limit": "UNKNOWN",
+      "evidence": [
+        "security-ev-31106e1dba461f75"
+      ]
+    },
+    {
+      "risk_id": "resource-risk-405707086dc62ecf",
+      "snapshot_id": "snapshot-0011",
+      "version": "v0.5.0",
+      "variant": "variant-c",
+      "risk": "unbounded concurrency",
+      "classification": "MITIGATED",
+      "risk_basis": "STATIC_GROWTH_OR_INPUT_PATH_PRESENT",
+      "actual_exhaustion_or_exploit": "NOT_EVIDENCED",
+      "mitigation": "concurrency",
+      "mitigation_limit": "PATH_LOCAL_NOT_SYSTEM_WIDE_GUARANTEE",
+      "evidence": [
+        "security-ev-4b9ca11df560d0db",
+        "security-ev-b3943354d083c663",
+        "security-ev-36b5585afc863e47"
+      ]
+    },
+    {
+      "risk_id": "resource-risk-3c3af9d532107bd9",
+      "snapshot_id": "snapshot-0011",
+      "version": "v0.5.0",
+      "variant": "variant-c",
+      "risk": "recursive/unbounded expansion",
+      "classification": "MITIGATED",
+      "risk_basis": "STATIC_GROWTH_OR_INPUT_PATH_PRESENT",
+      "actual_exhaustion_or_exploit": "NOT_EVIDENCED",
+      "mitigation": "maxDepth",
+      "mitigation_limit": "PATH_LOCAL_NOT_SYSTEM_WIDE_GUARANTEE",
+      "evidence": [
+        "security-ev-fb45d85b7c0e2d9d",
+        "security-ev-88ef88905af18ad5",
+        "security-ev-131390c09ceb2cf7"
+      ]
+    },
+    {
+      "risk_id": "resource-risk-9a70fb89d49bc29b",
+      "snapshot_id": "snapshot-0011",
+      "version": "v0.5.0",
+      "variant": "variant-c",
+      "risk": "memory-retained observations",
+      "classification": "MITIGATED",
+      "risk_basis": "STATIC_GROWTH_OR_INPUT_PATH_PRESENT",
+      "actual_exhaustion_or_exploit": "NOT_EVIDENCED",
+      "mitigation": "maxRequests",
+      "mitigation_limit": "PATH_LOCAL_NOT_SYSTEM_WIDE_GUARANTEE",
+      "evidence": [
+        "security-ev-e7f4b921fb197ae2",
+        "security-ev-be5a725b7d1dfe6a",
+        "security-ev-60d8abfdda32d2d2"
+      ]
+    },
+    {
+      "risk_id": "resource-risk-8ce0d5a10b6ef97e",
+      "snapshot_id": "snapshot-0011",
+      "version": "v0.5.0",
+      "variant": "variant-c",
+      "risk": "large DOM or JSON parse",
+      "classification": "UNMITIGATED",
+      "risk_basis": "STATIC_GROWTH_OR_INPUT_PATH_PRESENT",
+      "actual_exhaustion_or_exploit": "NOT_EVIDENCED",
+      "mitigation": "NONE_EVIDENCED_FOR_SCOPE",
+      "mitigation_limit": "UNKNOWN",
+      "evidence": [
+        "security-ev-4ea037cee0b7e9a4"
+      ]
+    },
+    {
+      "risk_id": "resource-risk-275cf9f4ec9abc28",
+      "snapshot_id": "snapshot-0010",
+      "version": "v0.6.0",
+      "variant": "variant-a",
+      "risk": "unbounded candidate growth",
+      "classification": "MITIGATED",
+      "risk_basis": "STATIC_GROWTH_OR_INPUT_PATH_PRESENT",
+      "actual_exhaustion_or_exploit": "NOT_EVIDENCED",
+      "mitigation": "maxCandidates",
+      "mitigation_limit": "PATH_LOCAL_NOT_SYSTEM_WIDE_GUARANTEE",
+      "evidence": [
+        "security-ev-43726da84b85b3e4",
+        "security-ev-bc970a0cd1a19db1",
+        "security-ev-c9d53ed033033d9a"
+      ]
+    },
+    {
+      "risk_id": "resource-risk-cecefe4066083183",
+      "snapshot_id": "snapshot-0010",
+      "version": "v0.6.0",
+      "variant": "variant-a",
+      "risk": "unbounded response body",
+      "classification": "UNMITIGATED",
+      "risk_basis": "STATIC_GROWTH_OR_INPUT_PATH_PRESENT",
+      "actual_exhaustion_or_exploit": "NOT_EVIDENCED",
+      "mitigation": "NONE_EVIDENCED_FOR_SCOPE",
+      "mitigation_limit": "UNKNOWN",
+      "evidence": [
+        "security-ev-d3983a3116a91fa2"
+      ]
+    },
+    {
+      "risk_id": "resource-risk-958bcef375b5b122",
+      "snapshot_id": "snapshot-0010",
+      "version": "v0.6.0",
+      "variant": "variant-a",
+      "risk": "unbounded concurrency",
+      "classification": "MITIGATED",
+      "risk_basis": "STATIC_GROWTH_OR_INPUT_PATH_PRESENT",
+      "actual_exhaustion_or_exploit": "NOT_EVIDENCED",
+      "mitigation": "concurrency",
+      "mitigation_limit": "PATH_LOCAL_NOT_SYSTEM_WIDE_GUARANTEE",
+      "evidence": [
+        "security-ev-5342c8ed327c886e",
+        "security-ev-b85752d37da17503",
+        "security-ev-6e74b81d0e1a294c"
+      ]
+    },
+    {
+      "risk_id": "resource-risk-083d77f51b55a6de",
+      "snapshot_id": "snapshot-0010",
+      "version": "v0.6.0",
+      "variant": "variant-a",
+      "risk": "recursive/unbounded expansion",
+      "classification": "MITIGATED",
+      "risk_basis": "STATIC_GROWTH_OR_INPUT_PATH_PRESENT",
+      "actual_exhaustion_or_exploit": "NOT_EVIDENCED",
+      "mitigation": "maxDepth",
+      "mitigation_limit": "PATH_LOCAL_NOT_SYSTEM_WIDE_GUARANTEE",
+      "evidence": [
+        "security-ev-4ed5689f7c206433",
+        "security-ev-683b45e5cfcf0088",
+        "security-ev-8016318c0a1384f2"
+      ]
+    },
+    {
+      "risk_id": "resource-risk-3bbde8e0663257bc",
+      "snapshot_id": "snapshot-0010",
+      "version": "v0.6.0",
+      "variant": "variant-a",
+      "risk": "memory-retained observations",
+      "classification": "MITIGATED",
+      "risk_basis": "STATIC_GROWTH_OR_INPUT_PATH_PRESENT",
+      "actual_exhaustion_or_exploit": "NOT_EVIDENCED",
+      "mitigation": "maxRequests",
+      "mitigation_limit": "PATH_LOCAL_NOT_SYSTEM_WIDE_GUARANTEE",
+      "evidence": [
+        "security-ev-ed7b03d29379398a",
+        "security-ev-7f3d2c807b4d31c8",
+        "security-ev-e2110a108f04ac04"
+      ]
+    },
+    {
+      "risk_id": "resource-risk-7f0d2b2fb4b2bb1e",
+      "snapshot_id": "snapshot-0010",
+      "version": "v0.6.0",
+      "variant": "variant-a",
+      "risk": "large DOM or JSON parse",
+      "classification": "UNMITIGATED",
+      "risk_basis": "STATIC_GROWTH_OR_INPUT_PATH_PRESENT",
+      "actual_exhaustion_or_exploit": "NOT_EVIDENCED",
+      "mitigation": "NONE_EVIDENCED_FOR_SCOPE",
+      "mitigation_limit": "UNKNOWN",
+      "evidence": [
+        "security-ev-1fc04db54432549f"
+      ]
+    },
+    {
+      "risk_id": "resource-risk-363e5073a391cf4c",
+      "snapshot_id": "snapshot-0012",
+      "version": "v0.6.0",
+      "variant": "variant-b",
+      "risk": "unbounded candidate growth",
+      "classification": "MITIGATED",
+      "risk_basis": "STATIC_GROWTH_OR_INPUT_PATH_PRESENT",
+      "actual_exhaustion_or_exploit": "NOT_EVIDENCED",
+      "mitigation": "maxCandidates",
+      "mitigation_limit": "PATH_LOCAL_NOT_SYSTEM_WIDE_GUARANTEE",
+      "evidence": [
+        "security-ev-b9da4db383d05526",
+        "security-ev-33bc6f5c50d1db09",
+        "security-ev-b90d39a8edfe7d98"
+      ]
+    },
+    {
+      "risk_id": "resource-risk-f06ddfe212843b4a",
+      "snapshot_id": "snapshot-0012",
+      "version": "v0.6.0",
+      "variant": "variant-b",
+      "risk": "unbounded response body",
+      "classification": "UNMITIGATED",
+      "risk_basis": "STATIC_GROWTH_OR_INPUT_PATH_PRESENT",
+      "actual_exhaustion_or_exploit": "NOT_EVIDENCED",
+      "mitigation": "NONE_EVIDENCED_FOR_SCOPE",
+      "mitigation_limit": "UNKNOWN",
+      "evidence": [
+        "security-ev-e9dafed0b615ab2d"
+      ]
+    },
+    {
+      "risk_id": "resource-risk-4e0cde6293df21ed",
+      "snapshot_id": "snapshot-0012",
+      "version": "v0.6.0",
+      "variant": "variant-b",
+      "risk": "unbounded concurrency",
+      "classification": "MITIGATED",
+      "risk_basis": "STATIC_GROWTH_OR_INPUT_PATH_PRESENT",
+      "actual_exhaustion_or_exploit": "NOT_EVIDENCED",
+      "mitigation": "concurrency",
+      "mitigation_limit": "PATH_LOCAL_NOT_SYSTEM_WIDE_GUARANTEE",
+      "evidence": [
+        "security-ev-46f695fd272b4ed5",
+        "security-ev-e6b335806f397249",
+        "security-ev-7f4035170c1fe553"
+      ]
+    },
+    {
+      "risk_id": "resource-risk-5b49e8f153960101",
+      "snapshot_id": "snapshot-0012",
+      "version": "v0.6.0",
+      "variant": "variant-b",
+      "risk": "recursive/unbounded expansion",
+      "classification": "MITIGATED",
+      "risk_basis": "STATIC_GROWTH_OR_INPUT_PATH_PRESENT",
+      "actual_exhaustion_or_exploit": "NOT_EVIDENCED",
+      "mitigation": "maxDepth",
+      "mitigation_limit": "PATH_LOCAL_NOT_SYSTEM_WIDE_GUARANTEE",
+      "evidence": [
+        "security-ev-99540fb17abfd037",
+        "security-ev-359a7520dfcb9276",
+        "security-ev-7e3639a20e7343eb"
+      ]
+    },
+    {
+      "risk_id": "resource-risk-59b892210123c854",
+      "snapshot_id": "snapshot-0012",
+      "version": "v0.6.0",
+      "variant": "variant-b",
+      "risk": "memory-retained observations",
+      "classification": "MITIGATED",
+      "risk_basis": "STATIC_GROWTH_OR_INPUT_PATH_PRESENT",
+      "actual_exhaustion_or_exploit": "NOT_EVIDENCED",
+      "mitigation": "maxRequests",
+      "mitigation_limit": "PATH_LOCAL_NOT_SYSTEM_WIDE_GUARANTEE",
+      "evidence": [
+        "security-ev-df1f63bcd9bb6579",
+        "security-ev-56a2b1bc44fe5ec6",
+        "security-ev-cc15471933485251"
+      ]
+    },
+    {
+      "risk_id": "resource-risk-47ae694c8051aa3f",
+      "snapshot_id": "snapshot-0012",
+      "version": "v0.6.0",
+      "variant": "variant-b",
+      "risk": "large DOM or JSON parse",
+      "classification": "UNMITIGATED",
+      "risk_basis": "STATIC_GROWTH_OR_INPUT_PATH_PRESENT",
+      "actual_exhaustion_or_exploit": "NOT_EVIDENCED",
+      "mitigation": "NONE_EVIDENCED_FOR_SCOPE",
+      "mitigation_limit": "UNKNOWN",
+      "evidence": [
+        "security-ev-c9ceb53382d1bf71"
+      ]
+    },
+    {
+      "risk_id": "resource-risk-607ecb2b33c4d296",
+      "snapshot_id": "snapshot-0013",
+      "version": "v0.6.0",
+      "variant": "variant-c",
+      "risk": "unbounded candidate growth",
+      "classification": "MITIGATED",
+      "risk_basis": "STATIC_GROWTH_OR_INPUT_PATH_PRESENT",
+      "actual_exhaustion_or_exploit": "NOT_EVIDENCED",
+      "mitigation": "maxCandidates",
+      "mitigation_limit": "PATH_LOCAL_NOT_SYSTEM_WIDE_GUARANTEE",
+      "evidence": [
+        "security-ev-259e7ce4c252ff0c",
+        "security-ev-def5e14370875997",
+        "security-ev-e30797064b3668bd"
+      ]
+    },
+    {
+      "risk_id": "resource-risk-00b0d7f121b2c3b1",
+      "snapshot_id": "snapshot-0013",
+      "version": "v0.6.0",
+      "variant": "variant-c",
+      "risk": "unbounded response body",
+      "classification": "UNMITIGATED",
+      "risk_basis": "STATIC_GROWTH_OR_INPUT_PATH_PRESENT",
+      "actual_exhaustion_or_exploit": "NOT_EVIDENCED",
+      "mitigation": "NONE_EVIDENCED_FOR_SCOPE",
+      "mitigation_limit": "UNKNOWN",
+      "evidence": [
+        "security-ev-d48b07678bdf6f80"
+      ]
+    },
+    {
+      "risk_id": "resource-risk-40be7163b71467bc",
+      "snapshot_id": "snapshot-0013",
+      "version": "v0.6.0",
+      "variant": "variant-c",
+      "risk": "unbounded concurrency",
+      "classification": "MITIGATED",
+      "risk_basis": "STATIC_GROWTH_OR_INPUT_PATH_PRESENT",
+      "actual_exhaustion_or_exploit": "NOT_EVIDENCED",
+      "mitigation": "concurrency",
+      "mitigation_limit": "PATH_LOCAL_NOT_SYSTEM_WIDE_GUARANTEE",
+      "evidence": [
+        "security-ev-a36448635f9ef4c1",
+        "security-ev-708c0c0951543c86",
+        "security-ev-37cac8d5154f3c62"
+      ]
+    },
+    {
+      "risk_id": "resource-risk-dd2d9119c3080d9b",
+      "snapshot_id": "snapshot-0013",
+      "version": "v0.6.0",
+      "variant": "variant-c",
+      "risk": "recursive/unbounded expansion",
+      "classification": "MITIGATED",
+      "risk_basis": "STATIC_GROWTH_OR_INPUT_PATH_PRESENT",
+      "actual_exhaustion_or_exploit": "NOT_EVIDENCED",
+      "mitigation": "maxDepth",
+      "mitigation_limit": "PATH_LOCAL_NOT_SYSTEM_WIDE_GUARANTEE",
+      "evidence": [
+        "security-ev-d7f7de9e403a8130",
+        "security-ev-1eea3cc46a8d43fa",
+        "security-ev-77f06bb90660769d"
+      ]
+    },
+    {
+      "risk_id": "resource-risk-d60a92c4c40b9592",
+      "snapshot_id": "snapshot-0013",
+      "version": "v0.6.0",
+      "variant": "variant-c",
+      "risk": "memory-retained observations",
+      "classification": "MITIGATED",
+      "risk_basis": "STATIC_GROWTH_OR_INPUT_PATH_PRESENT",
+      "actual_exhaustion_or_exploit": "NOT_EVIDENCED",
+      "mitigation": "maxRequests",
+      "mitigation_limit": "PATH_LOCAL_NOT_SYSTEM_WIDE_GUARANTEE",
+      "evidence": [
+        "security-ev-64cb69d1fb3e0004",
+        "security-ev-e6cfdcfc2f709a28",
+        "security-ev-89f913d1f88f8c0b"
+      ]
+    },
+    {
+      "risk_id": "resource-risk-43045bc90ff9976b",
+      "snapshot_id": "snapshot-0013",
+      "version": "v0.6.0",
+      "variant": "variant-c",
+      "risk": "large DOM or JSON parse",
+      "classification": "UNMITIGATED",
+      "risk_basis": "STATIC_GROWTH_OR_INPUT_PATH_PRESENT",
+      "actual_exhaustion_or_exploit": "NOT_EVIDENCED",
+      "mitigation": "NONE_EVIDENCED_FOR_SCOPE",
+      "mitigation_limit": "UNKNOWN",
+      "evidence": [
+        "security-ev-2cad9c9934e82a88"
+      ]
+    },
+    {
+      "risk_id": "resource-risk-fe7caec173f3c880",
+      "snapshot_id": "snapshot-0014",
+      "version": "v0.7.1",
+      "variant": "only-evidenced-complete-occurrence",
+      "risk": "unbounded candidate growth",
+      "classification": "MITIGATED",
+      "risk_basis": "STATIC_GROWTH_OR_INPUT_PATH_PRESENT",
+      "actual_exhaustion_or_exploit": "NOT_EVIDENCED",
+      "mitigation": "maxCandidates",
+      "mitigation_limit": "PATH_LOCAL_NOT_SYSTEM_WIDE_GUARANTEE",
+      "evidence": [
+        "security-ev-fa9958f176db926f",
+        "security-ev-ce891efdbc701626",
+        "security-ev-9585d263181c71b4"
+      ]
+    },
+    {
+      "risk_id": "resource-risk-bf43fa60f5bee16f",
+      "snapshot_id": "snapshot-0014",
+      "version": "v0.7.1",
+      "variant": "only-evidenced-complete-occurrence",
+      "risk": "unbounded response body",
+      "classification": "MITIGATED",
+      "risk_basis": "STATIC_GROWTH_OR_INPUT_PATH_PRESENT",
+      "actual_exhaustion_or_exploit": "NOT_EVIDENCED",
+      "mitigation": "maxBodyChars",
+      "mitigation_limit": "PATH_LOCAL_NOT_SYSTEM_WIDE_GUARANTEE",
+      "evidence": [
+        "security-ev-e55b651a882f0844",
+        "security-ev-2d1c83f9a3412b4e",
+        "security-ev-358172e952f4deca"
+      ]
+    },
+    {
+      "risk_id": "resource-risk-4da97d3f8a9a1f49",
+      "snapshot_id": "snapshot-0014",
+      "version": "v0.7.1",
+      "variant": "only-evidenced-complete-occurrence",
+      "risk": "unbounded concurrency",
+      "classification": "MITIGATED",
+      "risk_basis": "STATIC_GROWTH_OR_INPUT_PATH_PRESENT",
+      "actual_exhaustion_or_exploit": "NOT_EVIDENCED",
+      "mitigation": "concurrency",
+      "mitigation_limit": "PATH_LOCAL_NOT_SYSTEM_WIDE_GUARANTEE",
+      "evidence": [
+        "security-ev-c93ada972196c819",
+        "security-ev-11c827fcf409a99b",
+        "security-ev-1a59f6e095d076b3"
+      ]
+    },
+    {
+      "risk_id": "resource-risk-0a1a552bb0c77a96",
+      "snapshot_id": "snapshot-0014",
+      "version": "v0.7.1",
+      "variant": "only-evidenced-complete-occurrence",
+      "risk": "recursive/unbounded expansion",
+      "classification": "MITIGATED",
+      "risk_basis": "STATIC_GROWTH_OR_INPUT_PATH_PRESENT",
+      "actual_exhaustion_or_exploit": "NOT_EVIDENCED",
+      "mitigation": "maxDepth",
+      "mitigation_limit": "PATH_LOCAL_NOT_SYSTEM_WIDE_GUARANTEE",
+      "evidence": [
+        "security-ev-28584ce1ade1e505",
+        "security-ev-a69e142e6c5dab3f",
+        "security-ev-03379c2f41de1086"
+      ]
+    },
+    {
+      "risk_id": "resource-risk-d64dfc03435b965f",
+      "snapshot_id": "snapshot-0014",
+      "version": "v0.7.1",
+      "variant": "only-evidenced-complete-occurrence",
+      "risk": "memory-retained observations",
+      "classification": "MITIGATED",
+      "risk_basis": "STATIC_GROWTH_OR_INPUT_PATH_PRESENT",
+      "actual_exhaustion_or_exploit": "NOT_EVIDENCED",
+      "mitigation": "maxRequests",
+      "mitigation_limit": "PATH_LOCAL_NOT_SYSTEM_WIDE_GUARANTEE",
+      "evidence": [
+        "security-ev-a93a13f6048df04c",
+        "security-ev-31b846e9a76c0633",
+        "security-ev-fab4e1d05f5123d9"
+      ]
+    },
+    {
+      "risk_id": "resource-risk-ebb8e3317dd87abd",
+      "snapshot_id": "snapshot-0014",
+      "version": "v0.7.1",
+      "variant": "only-evidenced-complete-occurrence",
+      "risk": "large DOM or JSON parse",
+      "classification": "MITIGATED",
+      "risk_basis": "STATIC_GROWTH_OR_INPUT_PATH_PRESENT",
+      "actual_exhaustion_or_exploit": "NOT_EVIDENCED",
+      "mitigation": "maxBodyChars",
+      "mitigation_limit": "PATH_LOCAL_NOT_SYSTEM_WIDE_GUARANTEE",
+      "evidence": [
+        "security-ev-0e0fa5448b4f622a",
+        "security-ev-2d1c83f9a3412b4e",
+        "security-ev-358172e952f4deca"
+      ]
+    }
+  ],
+  "classification_registry": [
+    "MITIGATED",
+    "OBSERVED_RISK",
+    "UNKNOWN",
+    "UNMITIGATED"
+  ]
+}

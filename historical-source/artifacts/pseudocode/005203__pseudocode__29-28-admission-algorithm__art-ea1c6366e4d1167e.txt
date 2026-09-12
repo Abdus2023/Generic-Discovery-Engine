@@ -1,0 +1,39 @@
+PartitionProposal
+       │
+       ▼
+Is domain valid?
+       │
+    no ─────→ OUTSIDE_DOMAIN
+       │
+      yes
+       ▼
+Evidence sufficient?
+       │
+    no ─────→ DEFER / REJECT
+       │
+      yes
+       ▼
+Already represented?
+       │
+    yes ─────→ DUPLICATE / RELATION
+       │
+      no
+       ▼
+Overlap known?
+       │
+       ├── yes → record relation
+       │
+       ▼
+Budget available?
+       │
+    no ─────→ BUDGET_BLOCKED
+       │
+      yes
+       ▼
+ADMIT
+       │
+       ▼
+CREATE PARTITION
+       │
+       ▼
+CREATE FRONTIER WORK

@@ -1,0 +1,46 @@
+                         GOAL
+                           │
+                           ▼
+                    QUERY PLANNER
+                           │
+                           ▼
+                       QUERY PLAN
+                           │
+                           ▼
+                     TACTIC RUNTIME
+                           │
+                           ▼
+                  ENUMERATION / STRATEGY
+                           │
+                           ▼
+                       FRONTIER
+                           │
+             ┌─────────────┴─────────────┐
+             ▼                           ▼
+      Search-Space Graph           Work Graph
+             │                           │
+             │                    dedup / lease
+             │                           │
+             └─────────────┬─────────────┘
+                           ▼
+                     OBSERVATION
+                           │
+                           ▼
+                        EVIDENCE
+                           │
+                           ▼
+                  CANDIDATE PROPOSAL
+                           │
+                           ▼
+                 CANDIDATE NORMALIZER
+                           │
+                           ▼
+                   IDENTITY RESOLUTION
+                           │
+                    ┌──────┴──────┐
+                    ▼             ▼
+              Candidate        Resource
+                    │             │
+                    └──────┬──────┘
+                           ▼
+                     Artifact Graph

@@ -1,0 +1,6 @@
+Mutate(W, Worker, Claim)
+    ⇒
+    Valid(Claim)
+    ∧ Owner(Claim) = Worker
+    ∧ Epoch(Claim) = CurrentEpoch(W)
+    ∧ LeaseNotExpired(Claim)

@@ -1,0 +1,621 @@
+{
+  "schema_version": "protocol-v9",
+  "atomic_events": [
+    {
+      "event_id": "event-0001",
+      "from_version": "v0.1.0",
+      "to_version": "v0.2.0",
+      "adjacent": true,
+      "event_type": "ADDITION_OR_GENERALIZATION",
+      "dimension": "cross_cutting",
+      "subject": "provider_abstraction",
+      "before": "ABSENT_IN_SCAN",
+      "after": "ALL_VARIANTS",
+      "summary": "Scanned provider_abstraction presence changes from ABSENT_IN_SCAN to ALL_VARIANTS; identity and motivation are not inferred.",
+      "status": "SUPPORTED",
+      "evidence_refs": [
+        "syn-ev-00021"
+      ],
+      "causal_claim_ref": "causal-0001"
+    },
+    {
+      "event_id": "event-0002",
+      "from_version": "v0.1.0",
+      "to_version": "v0.2.0",
+      "adjacent": true,
+      "event_type": "ADDITION_OR_GENERALIZATION",
+      "dimension": "cross_cutting",
+      "subject": "claim",
+      "before": "ABSENT_IN_SCAN",
+      "after": "ALL_VARIANTS",
+      "summary": "Scanned claim presence changes from ABSENT_IN_SCAN to ALL_VARIANTS; identity and motivation are not inferred.",
+      "status": "SUPPORTED",
+      "evidence_refs": [
+        "syn-ev-00025"
+      ],
+      "causal_claim_ref": "causal-0002"
+    },
+    {
+      "event_id": "event-0003",
+      "from_version": "v0.1.0",
+      "to_version": "v0.2.0",
+      "adjacent": true,
+      "event_type": "ADDITION_OR_GENERALIZATION",
+      "dimension": "cross_cutting",
+      "subject": "recognition_error_containment",
+      "before": "ABSENT_IN_SCAN",
+      "after": "ALL_VARIANTS",
+      "summary": "Scanned recognition_error_containment presence changes from ABSENT_IN_SCAN to ALL_VARIANTS; identity and motivation are not inferred.",
+      "status": "SUPPORTED",
+      "evidence_refs": [
+        "syn-ev-00026"
+      ],
+      "causal_claim_ref": "causal-0003"
+    },
+    {
+      "event_id": "event-0004",
+      "from_version": "v0.1.0",
+      "to_version": "v0.2.0",
+      "adjacent": true,
+      "event_type": "ADDITION",
+      "dimension": "providers",
+      "subject": "HtmlProvider",
+      "before": "NOT_OBSERVED",
+      "after": "OBSERVED",
+      "summary": "Provider/recognizer name HtmlProvider first occurs in the recovered adjacent-version sequence; lineage is not proved.",
+      "status": "SUPPORTED",
+      "evidence_refs": [
+        "syn-ev-00016"
+      ],
+      "causal_claim_ref": "causal-0004"
+    },
+    {
+      "event_id": "event-0005",
+      "from_version": "v0.1.0",
+      "to_version": "v0.2.0",
+      "adjacent": true,
+      "event_type": "ADDITION",
+      "dimension": "providers",
+      "subject": "JsonProvider",
+      "before": "NOT_OBSERVED",
+      "after": "OBSERVED",
+      "summary": "Provider/recognizer name JsonProvider first occurs in the recovered adjacent-version sequence; lineage is not proved.",
+      "status": "SUPPORTED",
+      "evidence_refs": [
+        "syn-ev-00016"
+      ],
+      "causal_claim_ref": "causal-0005"
+    },
+    {
+      "event_id": "event-0006",
+      "from_version": "v0.1.0",
+      "to_version": "v0.2.0",
+      "adjacent": true,
+      "event_type": "ADDITION",
+      "dimension": "providers",
+      "subject": "ResponseProvider",
+      "before": "NOT_OBSERVED",
+      "after": "OBSERVED",
+      "summary": "Provider/recognizer name ResponseProvider first occurs in the recovered adjacent-version sequence; lineage is not proved.",
+      "status": "SUPPORTED",
+      "evidence_refs": [
+        "syn-ev-00016"
+      ],
+      "causal_claim_ref": "causal-0006"
+    },
+    {
+      "event_id": "event-0007",
+      "from_version": "v0.1.0",
+      "to_version": "v0.2.0",
+      "adjacent": true,
+      "event_type": "ADDITION",
+      "dimension": "providers",
+      "subject": "TextProvider",
+      "before": "NOT_OBSERVED",
+      "after": "OBSERVED",
+      "summary": "Provider/recognizer name TextProvider first occurs in the recovered adjacent-version sequence; lineage is not proved.",
+      "status": "SUPPORTED",
+      "evidence_refs": [
+        "syn-ev-00016"
+      ],
+      "causal_claim_ref": "causal-0007"
+    },
+    {
+      "event_id": "event-0008",
+      "from_version": "v0.1.0",
+      "to_version": "v0.2.0",
+      "adjacent": true,
+      "event_type": "DISAPPEARANCE",
+      "dimension": "providers",
+      "subject": "HtmlRecognizer",
+      "before": "OBSERVED",
+      "after": "NOT_OBSERVED",
+      "summary": "Provider/recognizer name HtmlRecognizer is not observed at the next version; deletion and abandonment remain UNKNOWN.",
+      "status": "SUPPORTED",
+      "evidence_refs": [
+        "syn-ev-00004"
+      ],
+      "causal_claim_ref": "causal-0008"
+    },
+    {
+      "event_id": "event-0009",
+      "from_version": "v0.3.0",
+      "to_version": "v0.4.0",
+      "adjacent": true,
+      "event_type": "ADDITION_OR_GENERALIZATION",
+      "dimension": "cross_cutting",
+      "subject": "network_observation",
+      "before": "ABSENT_IN_SCAN",
+      "after": "SOME_VARIANTS",
+      "summary": "Scanned network_observation presence changes from ABSENT_IN_SCAN to SOME_VARIANTS; identity and motivation are not inferred.",
+      "status": "SUPPORTED",
+      "evidence_refs": [
+        "syn-ev-00072"
+      ],
+      "causal_claim_ref": "causal-0009"
+    },
+    {
+      "event_id": "event-0010",
+      "from_version": "v0.3.0",
+      "to_version": "v0.4.0",
+      "adjacent": true,
+      "event_type": "ADDITION",
+      "dimension": "providers",
+      "subject": "CssProvider",
+      "before": "NOT_OBSERVED",
+      "after": "OBSERVED",
+      "summary": "Provider/recognizer name CssProvider first occurs in the recovered adjacent-version sequence; lineage is not proved.",
+      "status": "SUPPORTED",
+      "evidence_refs": [
+        "syn-ev-00046",
+        "syn-ev-00061"
+      ],
+      "causal_claim_ref": "causal-0010"
+    },
+    {
+      "event_id": "event-0011",
+      "from_version": "v0.3.0",
+      "to_version": "v0.4.0",
+      "adjacent": true,
+      "event_type": "ADDITION",
+      "dimension": "providers",
+      "subject": "JavaScriptProvider",
+      "before": "NOT_OBSERVED",
+      "after": "OBSERVED",
+      "summary": "Provider/recognizer name JavaScriptProvider first occurs in the recovered adjacent-version sequence; lineage is not proved.",
+      "status": "SUPPORTED",
+      "evidence_refs": [
+        "syn-ev-00046",
+        "syn-ev-00061"
+      ],
+      "causal_claim_ref": "causal-0011"
+    },
+    {
+      "event_id": "event-0012",
+      "from_version": "v0.3.0",
+      "to_version": "v0.4.0",
+      "adjacent": true,
+      "event_type": "ADDITION",
+      "dimension": "providers",
+      "subject": "ManifestProvider",
+      "before": "NOT_OBSERVED",
+      "after": "OBSERVED",
+      "summary": "Provider/recognizer name ManifestProvider first occurs in the recovered adjacent-version sequence; lineage is not proved.",
+      "status": "SUPPORTED",
+      "evidence_refs": [
+        "syn-ev-00046",
+        "syn-ev-00061"
+      ],
+      "causal_claim_ref": "causal-0012"
+    },
+    {
+      "event_id": "event-0013",
+      "from_version": "v0.3.0",
+      "to_version": "v0.4.0",
+      "adjacent": true,
+      "event_type": "ADDITION",
+      "dimension": "providers",
+      "subject": "RobotsProvider",
+      "before": "NOT_OBSERVED",
+      "after": "OBSERVED",
+      "summary": "Provider/recognizer name RobotsProvider first occurs in the recovered adjacent-version sequence; lineage is not proved.",
+      "status": "SUPPORTED",
+      "evidence_refs": [
+        "syn-ev-00046",
+        "syn-ev-00061"
+      ],
+      "causal_claim_ref": "causal-0013"
+    },
+    {
+      "event_id": "event-0014",
+      "from_version": "v0.3.0",
+      "to_version": "v0.4.0",
+      "adjacent": true,
+      "event_type": "ADDITION",
+      "dimension": "providers",
+      "subject": "XmlProvider",
+      "before": "NOT_OBSERVED",
+      "after": "OBSERVED",
+      "summary": "Provider/recognizer name XmlProvider first occurs in the recovered adjacent-version sequence; lineage is not proved.",
+      "status": "SUPPORTED",
+      "evidence_refs": [
+        "syn-ev-00046",
+        "syn-ev-00061"
+      ],
+      "causal_claim_ref": "causal-0014"
+    },
+    {
+      "event_id": "event-0015",
+      "from_version": "v0.4.0",
+      "to_version": "v0.5.0",
+      "adjacent": true,
+      "event_type": "BRANCH_DIVERGENCE",
+      "dimension": "cross_cutting",
+      "subject": "scheduler",
+      "before": "ALL_VARIANTS",
+      "after": "SOME_VARIANTS",
+      "summary": "Scanned scheduler presence changes from ALL_VARIANTS to SOME_VARIANTS; identity and motivation are not inferred.",
+      "status": "SUPPORTED",
+      "evidence_refs": [
+        "syn-ev-00047",
+        "syn-ev-00062",
+        "syn-ev-00078",
+        "syn-ev-00108"
+      ],
+      "causal_claim_ref": "causal-0015"
+    },
+    {
+      "event_id": "event-0016",
+      "from_version": "v0.4.0",
+      "to_version": "v0.5.0",
+      "adjacent": true,
+      "event_type": "BRANCH_DIVERGENCE",
+      "dimension": "cross_cutting",
+      "subject": "claim",
+      "before": "ALL_VARIANTS",
+      "after": "SOME_VARIANTS",
+      "summary": "Scanned claim presence changes from ALL_VARIANTS to SOME_VARIANTS; identity and motivation are not inferred.",
+      "status": "SUPPORTED",
+      "evidence_refs": [
+        "syn-ev-00055",
+        "syn-ev-00070",
+        "syn-ev-00086",
+        "syn-ev-00116"
+      ],
+      "causal_claim_ref": "causal-0016"
+    },
+    {
+      "event_id": "event-0017",
+      "from_version": "v0.4.0",
+      "to_version": "v0.5.0",
+      "adjacent": true,
+      "event_type": "BRANCH_CONVERGENCE_IN_RECOVERED_OCCURRENCES",
+      "dimension": "cross_cutting",
+      "subject": "network_observation",
+      "before": "SOME_VARIANTS",
+      "after": "ALL_VARIANTS",
+      "summary": "Scanned network_observation presence changes from SOME_VARIANTS to ALL_VARIANTS; identity and motivation are not inferred.",
+      "status": "SUPPORTED",
+      "evidence_refs": [
+        "syn-ev-00072",
+        "syn-ev-00088",
+        "syn-ev-00102",
+        "syn-ev-00118"
+      ],
+      "causal_claim_ref": "causal-0017"
+    },
+    {
+      "event_id": "event-0018",
+      "from_version": "v0.4.0",
+      "to_version": "v0.5.0",
+      "adjacent": true,
+      "event_type": "ADDITION",
+      "dimension": "providers",
+      "subject": "ApiDescriptionProvider",
+      "before": "NOT_OBSERVED",
+      "after": "OBSERVED",
+      "summary": "Provider/recognizer name ApiDescriptionProvider first occurs in the recovered adjacent-version sequence; lineage is not proved.",
+      "status": "SUPPORTED",
+      "evidence_refs": [
+        "syn-ev-00077",
+        "syn-ev-00093",
+        "syn-ev-00107"
+      ],
+      "causal_claim_ref": "causal-0018"
+    },
+    {
+      "event_id": "event-0019",
+      "from_version": "v0.4.0",
+      "to_version": "v0.5.0",
+      "adjacent": true,
+      "event_type": "ADDITION",
+      "dimension": "providers",
+      "subject": "BinaryProvider",
+      "before": "NOT_OBSERVED",
+      "after": "OBSERVED",
+      "summary": "Provider/recognizer name BinaryProvider first occurs in the recovered adjacent-version sequence; lineage is not proved.",
+      "status": "SUPPORTED",
+      "evidence_refs": [
+        "syn-ev-00077",
+        "syn-ev-00093",
+        "syn-ev-00107"
+      ],
+      "causal_claim_ref": "causal-0019"
+    },
+    {
+      "event_id": "event-0020",
+      "from_version": "v0.4.0",
+      "to_version": "v0.5.0",
+      "adjacent": true,
+      "event_type": "ADDITION",
+      "dimension": "providers",
+      "subject": "Provider",
+      "before": "NOT_OBSERVED",
+      "after": "OBSERVED",
+      "summary": "Provider/recognizer name Provider first occurs in the recovered adjacent-version sequence; lineage is not proved.",
+      "status": "SUPPORTED",
+      "evidence_refs": [
+        "syn-ev-00077",
+        "syn-ev-00093",
+        "syn-ev-00107"
+      ],
+      "causal_claim_ref": "causal-0020"
+    },
+    {
+      "event_id": "event-0021",
+      "from_version": "v0.5.0",
+      "to_version": "v0.6.0",
+      "adjacent": true,
+      "event_type": "ADDITION_OR_GENERALIZATION",
+      "dimension": "cross_cutting",
+      "subject": "acquisition_policy",
+      "before": "ABSENT_IN_SCAN",
+      "after": "SOME_VARIANTS",
+      "summary": "Scanned acquisition_policy presence changes from ABSENT_IN_SCAN to SOME_VARIANTS; identity and motivation are not inferred.",
+      "status": "SUPPORTED",
+      "evidence_refs": [
+        "syn-ev-00146",
+        "syn-ev-00164"
+      ],
+      "causal_claim_ref": "causal-0021"
+    },
+    {
+      "event_id": "event-0022",
+      "from_version": "v0.5.0",
+      "to_version": "v0.6.0",
+      "adjacent": true,
+      "event_type": "ADDITION_OR_GENERALIZATION",
+      "dimension": "cross_cutting",
+      "subject": "structured_diagnostics",
+      "before": "ABSENT_IN_SCAN",
+      "after": "SOME_VARIANTS",
+      "summary": "Scanned structured_diagnostics presence changes from ABSENT_IN_SCAN to SOME_VARIANTS; identity and motivation are not inferred.",
+      "status": "SUPPORTED",
+      "evidence_refs": [
+        "syn-ev-00150",
+        "syn-ev-00168"
+      ],
+      "causal_claim_ref": "causal-0022"
+    },
+    {
+      "event_id": "event-0023",
+      "from_version": "v0.5.0",
+      "to_version": "v0.6.0",
+      "adjacent": true,
+      "event_type": "DISAPPEARANCE",
+      "dimension": "providers",
+      "subject": "ApiDescriptionProvider",
+      "before": "OBSERVED",
+      "after": "NOT_OBSERVED",
+      "summary": "Provider/recognizer name ApiDescriptionProvider is not observed at the next version; deletion and abandonment remain UNKNOWN.",
+      "status": "SUPPORTED",
+      "evidence_refs": [
+        "syn-ev-00077",
+        "syn-ev-00093",
+        "syn-ev-00107"
+      ],
+      "causal_claim_ref": "causal-0023"
+    },
+    {
+      "event_id": "event-0024",
+      "from_version": "v0.5.0",
+      "to_version": "v0.6.0",
+      "adjacent": true,
+      "event_type": "DISAPPEARANCE",
+      "dimension": "providers",
+      "subject": "ManifestProvider",
+      "before": "OBSERVED",
+      "after": "NOT_OBSERVED",
+      "summary": "Provider/recognizer name ManifestProvider is not observed at the next version; deletion and abandonment remain UNKNOWN.",
+      "status": "SUPPORTED",
+      "evidence_refs": [
+        "syn-ev-00077",
+        "syn-ev-00093",
+        "syn-ev-00107"
+      ],
+      "causal_claim_ref": "causal-0024"
+    },
+    {
+      "event_id": "event-0025",
+      "from_version": "v0.6.0",
+      "to_version": "v0.7.1",
+      "adjacent": true,
+      "event_type": "BRANCH_CONVERGENCE_IN_RECOVERED_OCCURRENCES",
+      "dimension": "cross_cutting",
+      "subject": "scheduler",
+      "before": "SOME_VARIANTS",
+      "after": "ALL_VARIANTS",
+      "summary": "Scanned scheduler presence changes from SOME_VARIANTS to ALL_VARIANTS; identity and motivation are not inferred.",
+      "status": "SUPPORTED",
+      "evidence_refs": [
+        "syn-ev-00138",
+        "syn-ev-00156",
+        "syn-ev-00174"
+      ],
+      "causal_claim_ref": "causal-0025"
+    },
+    {
+      "event_id": "event-0026",
+      "from_version": "v0.6.0",
+      "to_version": "v0.7.1",
+      "adjacent": true,
+      "event_type": "BRANCH_CONVERGENCE_IN_RECOVERED_OCCURRENCES",
+      "dimension": "cross_cutting",
+      "subject": "acquisition_policy",
+      "before": "SOME_VARIANTS",
+      "after": "ALL_VARIANTS",
+      "summary": "Scanned acquisition_policy presence changes from SOME_VARIANTS to ALL_VARIANTS; identity and motivation are not inferred.",
+      "status": "SUPPORTED",
+      "evidence_refs": [
+        "syn-ev-00146",
+        "syn-ev-00164",
+        "syn-ev-00182"
+      ],
+      "causal_claim_ref": "causal-0026"
+    },
+    {
+      "event_id": "event-0027",
+      "from_version": "v0.6.0",
+      "to_version": "v0.7.1",
+      "adjacent": true,
+      "event_type": "ADDITION_OR_GENERALIZATION",
+      "dimension": "cross_cutting",
+      "subject": "acquisition_plan",
+      "before": "ABSENT_IN_SCAN",
+      "after": "ALL_VARIANTS",
+      "summary": "Scanned acquisition_plan presence changes from ABSENT_IN_SCAN to ALL_VARIANTS; identity and motivation are not inferred.",
+      "status": "SUPPORTED",
+      "evidence_refs": [
+        "syn-ev-00183"
+      ],
+      "causal_claim_ref": "causal-0027"
+    },
+    {
+      "event_id": "event-0028",
+      "from_version": "v0.6.0",
+      "to_version": "v0.7.1",
+      "adjacent": true,
+      "event_type": "ADDITION_OR_GENERALIZATION",
+      "dimension": "cross_cutting",
+      "subject": "decision_ledger",
+      "before": "ABSENT_IN_SCAN",
+      "after": "ALL_VARIANTS",
+      "summary": "Scanned decision_ledger presence changes from ABSENT_IN_SCAN to ALL_VARIANTS; identity and motivation are not inferred.",
+      "status": "SUPPORTED",
+      "evidence_refs": [
+        "syn-ev-00184"
+      ],
+      "causal_claim_ref": "causal-0028"
+    },
+    {
+      "event_id": "event-0029",
+      "from_version": "v0.6.0",
+      "to_version": "v0.7.1",
+      "adjacent": true,
+      "event_type": "BRANCH_CONVERGENCE_IN_RECOVERED_OCCURRENCES",
+      "dimension": "cross_cutting",
+      "subject": "claim",
+      "before": "SOME_VARIANTS",
+      "after": "ALL_VARIANTS",
+      "summary": "Scanned claim presence changes from SOME_VARIANTS to ALL_VARIANTS; identity and motivation are not inferred.",
+      "status": "SUPPORTED",
+      "evidence_refs": [
+        "syn-ev-00147",
+        "syn-ev-00165",
+        "syn-ev-00185"
+      ],
+      "causal_claim_ref": "causal-0029"
+    },
+    {
+      "event_id": "event-0030",
+      "from_version": "v0.6.0",
+      "to_version": "v0.7.1",
+      "adjacent": true,
+      "event_type": "BRANCH_CONVERGENCE_IN_RECOVERED_OCCURRENCES",
+      "dimension": "cross_cutting",
+      "subject": "structured_diagnostics",
+      "before": "SOME_VARIANTS",
+      "after": "ALL_VARIANTS",
+      "summary": "Scanned structured_diagnostics presence changes from SOME_VARIANTS to ALL_VARIANTS; identity and motivation are not inferred.",
+      "status": "SUPPORTED",
+      "evidence_refs": [
+        "syn-ev-00150",
+        "syn-ev-00168",
+        "syn-ev-00188"
+      ],
+      "causal_claim_ref": "causal-0030"
+    },
+    {
+      "event_id": "event-0031",
+      "from_version": "v0.6.0",
+      "to_version": "v0.7.1",
+      "adjacent": true,
+      "event_type": "DISAPPEARANCE",
+      "dimension": "providers",
+      "subject": "ResponseProvider",
+      "before": "OBSERVED",
+      "after": "NOT_OBSERVED",
+      "summary": "Provider/recognizer name ResponseProvider is not observed at the next version; deletion and abandonment remain UNKNOWN.",
+      "status": "SUPPORTED",
+      "evidence_refs": [
+        "syn-ev-00123",
+        "syn-ev-00137",
+        "syn-ev-00155"
+      ],
+      "causal_claim_ref": "causal-0031"
+    },
+    {
+      "event_id": "event-0032",
+      "from_version": "v0.6.0",
+      "to_version": "v0.7.1",
+      "adjacent": true,
+      "event_type": "DISAPPEARANCE",
+      "dimension": "providers",
+      "subject": "RobotsProvider",
+      "before": "OBSERVED",
+      "after": "NOT_OBSERVED",
+      "summary": "Provider/recognizer name RobotsProvider is not observed at the next version; deletion and abandonment remain UNKNOWN.",
+      "status": "SUPPORTED",
+      "evidence_refs": [
+        "syn-ev-00123",
+        "syn-ev-00137",
+        "syn-ev-00155"
+      ],
+      "causal_claim_ref": "causal-0032"
+    },
+    {
+      "event_id": "event-0033",
+      "from_version": "v0.1.0",
+      "to_version": "v0.2.0",
+      "adjacent": true,
+      "event_type": "EXPLICIT_MECHANISM_CHANGE",
+      "dimension": "architecture",
+      "subject": "atomic_candidate_claim",
+      "before": "EARLIER_FORM",
+      "after": "EXPLICIT_FORM",
+      "summary": "The explicit claim operation addresses duplicate worker selection by atomically moving a pending candidate to running.",
+      "status": "SUPPORTED",
+      "evidence_refs": [
+        "syn-ev-00190"
+      ],
+      "causal_claim_ref": "causal-0033"
+    },
+    {
+      "event_id": "event-0034",
+      "from_version": "v0.2.0",
+      "to_version": "v0.3.0",
+      "adjacent": true,
+      "event_type": "EXPLICIT_MECHANISM_CHANGE",
+      "dimension": "architecture",
+      "subject": "bounded_retry",
+      "before": "EARLIER_FORM",
+      "after": "EXPLICIT_FORM",
+      "summary": "Attempt and requeue state implements bounded retry pressure rather than silent one-shot loss.",
+      "status": "SUPPORTED",
+      "evidence_refs": [
+        "syn-ev-00191"
+      ],
+      "causal_claim_ref": "causal-0034"
+    }
+  ]
+}

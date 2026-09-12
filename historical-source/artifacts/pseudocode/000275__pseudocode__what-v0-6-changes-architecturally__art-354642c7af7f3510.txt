@@ -1,0 +1,14 @@
+fetch request
+    │
+    │ requestId = fetch-123
+    ▼
+network event
+    │
+    │ requestId = fetch-123
+    ▼
+fetch response
+    │
+    ├── status
+    ├── content-type
+    ├── final URL
+    └── duration

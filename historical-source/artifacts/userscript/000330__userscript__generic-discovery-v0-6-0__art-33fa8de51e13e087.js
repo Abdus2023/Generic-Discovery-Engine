@@ -1,0 +1,5164 @@
+// ==UserScript==
+// @name         Generic Discovery Engine
+// @namespace    generic-discovery
+// @version      0.6.0
+// @description  Generic web-resource discovery engine inspired by the architecture of DVB blind scanning.
+// @match        *://*/*
+// @run-at       document-start
+// @noframes
+// @grant        GM_getValue
+// @grant        GM_setValue
+// @grant        GM_xmlhttpRequest
+// @connect      *
+// ==/UserScript==
+
+(() => {
+    'use strict';
+
+    // ============================================================
+    // Configuration
+    // ============================================================
+
+    const CONFIG = {
+        maxCandidates: 750,
+        maxRequests: 150,
+        concurrency: 4,
+        requestTimeout: 8000,
+
+        sameOriginOnly: true,
+
+        stripTrackingParams: true,
+
+        discovery: {
+            links: true,
+            resources: true,
+            forms: true,
+            metadata: true,
+            text: true,
+            network: true,
+            performance: true,
+            wellKnown: true
+        },
+
+        policy: {
+            acquireForms: false,
+            acquireMedia: false,
+            acquireBinaryResources: false,
+            acquireFrames: true,
+            acquireStylesheets: true,
+            acquireScripts: true,
+            acquireNetworkGet: true
+        },
+
+        origin: {
+            maxRequestsPerOrigin: 50,
+            minRequestInterval: 150,
+            maxConcurrentPerOrigin: 2
+        },
+
+        adaptive: {
+            enabled: true,
+            minimumConcurrency: 1,
+            failureThreshold: 2,
+            successThreshold: 4
+        },
+
+        retry: {
+            maxRetries: 2,
+            baseDelay: 500,
+            maxDelay: 8000
+        },
+
+        maxDepth: 5,
+
+        priorityDepthPenalty: 0.045,
+        confidencePriorityBoost: 0.08,
+        retryPriorityPenalty: 0.05,
+
+        typePriority: {
+            api: 1.00,
+            manifest: 0.96,
+            sitemap: 0.95,
+            robots: 0.94,
+            url: 0.80,
+            feed: 0.82,
+            metadata: 0.78,
+            network: 0.76,
+            frame: 0.72,
+            script: 0.62,
+            stylesheet: 0.58,
+            resource: 0.45,
+            form: 0.35,
+            media: 0.28,
+            embedded: 0.25,
+            xml: 0.55,
+            text: 0.40
+        },
+
+        fingerprintMaxChars: 1_000_000,
+
+        maxNetworkEvents: 1000,
+        maxGraphEdges: 5000,
+
+        observeDomMutations: true,
+        mutationDebounce: 250,
+
+        persistence: true,
+        persistenceDebounce: 400,
+        persistedDiscoveries: 1200,
+        persistedResources: 1500,
+        persistedEdges: 3000,
+
+        maxStoredTextPreview: 300,
+        maxDiagnostics: 500,
+
+        networkBridge: true,
+        debug: true
+    };
+
+    // ============================================================
+    // Utilities
+    // ============================================================
+
+    const PREFIX = '[GDE]';
+
+    function log(...args) {
+        if (CONFIG.debug) {
+            console.log(PREFIX, ...args);
+        }
+    }
+
+    function warn(...args) {
+        console.warn(PREFIX, ...args);
+    }
+
+    function now() {
+        return Date.now();
+    }
+
+    function sleep(ms) {
+        return new Promise(resolve => setTimeout(resolve, ms));
+    }
+
+    function makeId(prefix = 'id') {
+        return `${prefix}-${Date.now().toString(36)}-${Math.random().toString(36).slice(2, 9)}`;
+    }
+
+    function clamp(value, min, max) {
+        return Math.max(min, Math.min(max, value));
+    }
+
+    function unique(values) {
+        return [...new Set(values.filter(Boolean))];
+    }
+
+    function safeArray(value) {
+        return Array.isArray(value) ? value : [];
+    }
+
+    function originOf(url) {
+        try {
+            return new URL(url).origin;
+        } catch {
+            return '';
+        }
+    }
+
+    function canonicalizeUrl(input, base = location.href) {
+        if (!input || typeof input !== 'string') {
+            return null;
+        }
+
+        let url;
+
+        try {
+            url = new URL(input.trim(), base);
+        } catch {
+            return null;
+        }
+
+        if (!/^https?:$/i.test(url.protocol)) {
+            return null;
+        }
+
+        url.hash = '';
+
+        if (
+            (url.protocol === 'http:' && url.port === '80') ||
+            (url.protocol === 'https:' && url.port === '443')
+        ) {
+            url.port = '';
+        }
+
+        if (CONFIG.stripTrackingParams) {
+            const remove = [
+                /^utm_/i,
+                /^fbclid$/i,
+                /^gclid$/i,
+                /^dclid$/i,
+                /^msclkid$/i,
+                /^mc_cid$/i,
+                /^mc_eid$/i,
+                /^ref$/i
+            ];
+
+            for (const key of [...url.searchParams.keys()]) {
+                if (remove.some(rx => rx.test(key))) {
+                    url.searchParams.delete(key);
+                }
+            }
+        }
+
+        return url.href;
+    }
+
+    function isAllowedUrl(url) {
+        const canonical = canonicalizeUrl(url);
+
+        if (!canonical) {
+            return false;
+        }
+
+        if (!CONFIG.sameOriginOnly) {
+            return true;
+        }
+
+        return originOf(canonical) === location.origin;
+    }
+
+    function getContentType(headers = '') {
+        const match = String(headers).match(/content-type\s*:\s*([^\r\n;]+)/i);
+        return match ? match[1].trim().toLowerCase() : '';
+    }
+
+    function isJsonContentType(type) {
+        return /json|javascript/.test(type || '');
+    }
+
+    function isXmlContentType(type) {
+        return /xml|rss|atom/.test(type || '');
+    }
+
+    function isHtmlContentType(type) {
+        return /html/.test(type || '');
+    }
+
+    function isCssContentType(type) {
+        return /css/.test(type || '');
+    }
+
+    function isBinaryContentType(type) {
+        if (!type) return false;
+
+        return /^(image|audio|video|font)\//i.test(type) ||
+            /application\/(octet-stream|pdf|zip|gzip|wasm)/i.test(type);
+    }
+
+    function looksLikeHtml(body) {
+        return /<html[\s>]|<!doctype\s+html|<head[\s>]|<body[\s>]/i.test(body || '');
+    }
+
+    function looksLikeJson(body) {
+        const text = String(body || '').trim();
+        return (
+            (text.startsWith('{') && text.endsWith('}')) ||
+            (text.startsWith('[') && text.endsWith(']'))
+        );
+    }
+
+    function looksLikeXml(body) {
+        return /^\s*(<\?xml\b|<[\w:-]+[\s>])/i.test(body || '');
+    }
+
+    function looksLikeApiUrl(url) {
+        return /\/(api|ajax|graphql|rest|rpc)(\/|[?#]|$)/i.test(url) ||
+            /\.(json|graphql)([?#]|$)/i.test(url);
+    }
+
+    function extractUrlsFromText(text, baseUrl) {
+        if (!text) return [];
+
+        const results = [];
+
+        const absolute = text.match(
+            /\bhttps?:\/\/[^\s"'<>\\]+/gi
+        ) || [];
+
+        results.push(...absolute);
+
+        const protocolRelative = text.match(
+            /\/\/[A-Za-z0-9.-]+(?::\d+)?\/[^\s"'<>\\]*/g
+        ) || [];
+
+        results.push(...protocolRelative.map(x => `${location.protocol}${x}`));
+
+        const relative = text.match(
+            /(?:^|["'(\s=])((?:\/|\.\/|\.\.\/)[A-Za-z0-9_./?&=%:#@+~;,()\-]+)(?=["')\s<>]|$)/g
+        ) || [];
+
+        for (const value of relative) {
+            const cleaned = value.replace(/^[^/]+/, '');
+            if (cleaned) results.push(cleaned);
+        }
+
+        return unique(
+            results
+                .map(x => canonicalizeUrl(x, baseUrl))
+                .filter(Boolean)
+        );
+    }
+
+    function extractCssUrls(css, baseUrl) {
+        const results = [];
+
+        const rx = /url\(\s*(['"]?)(.*?)\1\s*\)/gi;
+
+        let match;
+
+        while ((match = rx.exec(css || ''))) {
+            const value = match[2].trim();
+
+            if (!value || value.startsWith('data:')) {
+                continue;
+            }
+
+            const url = canonicalizeUrl(value, baseUrl);
+
+            if (url) {
+                results.push(url);
+            }
+        }
+
+        const imports = css.match(/@import\s+(?:url\()?['"]([^'"]+)['"]/gi) || [];
+
+        for (const item of imports) {
+            const matchImport = item.match(/['"]([^'"]+)['"]/);
+
+            if (matchImport) {
+                const url = canonicalizeUrl(matchImport[1], baseUrl);
+
+                if (url) {
+                    results.push(url);
+                }
+            }
+        }
+
+        return unique(results);
+    }
+
+    function extractXmlLocs(xml, baseUrl) {
+        const results = [];
+
+        const rx = /<(?:loc|link|url|href)[^>]*>([\s\S]*?)<\/(?:loc|link|url|href)>/gi;
+
+        let match;
+
+        while ((match = rx.exec(xml || ''))) {
+            const value = match[1].replace(/<!\[CDATA\[|\]\]>/g, '').trim();
+            const url = canonicalizeUrl(value, baseUrl);
+
+            if (url) {
+                results.push(url);
+            }
+        }
+
+        return unique(results);
+    }
+
+    function fnv1a32(text) {
+        let hash = 0x811c9dc5;
+
+        for (let i = 0; i < text.length; i++) {
+            hash ^= text.charCodeAt(i);
+            hash = Math.imul(hash, 0x01000193);
+        }
+
+        return (hash >>> 0).toString(16).padStart(8, '0');
+    }
+
+    function makeFingerprint(body, contentType = '') {
+        if (!body) return null;
+
+        const text = String(body);
+
+        if (!text.length) {
+            return null;
+        }
+
+        const sample = text.length > CONFIG.fingerprintMaxChars
+            ? text.slice(0, CONFIG.fingerprintMaxChars)
+            : text;
+
+        return `${contentType || 'unknown'}:${sample.length}:${fnv1a32(sample)}`;
+    }
+
+    function stableId(prefix, value) {
+        return `${prefix}-${fnv1a32(String(value))}`;
+    }
+
+    function contentTypeForTarget(url) {
+        const path = (() => {
+            try {
+                return new URL(url).pathname.toLowerCase();
+            } catch {
+                return '';
+            }
+        })();
+
+        if (/\.json$/.test(path)) return 'application/json';
+        if (/\.xml$/.test(path)) return 'application/xml';
+        if (/\.rss$/.test(path)) return 'application/rss+xml';
+        if (/\.atom$/.test(path)) return 'application/atom+xml';
+        if (/\.css$/.test(path)) return 'text/css';
+        if (/\.js$/.test(path)) return 'text/javascript';
+        if (/\.html?$/.test(path)) return 'text/html';
+
+        return '';
+    }
+
+    // ============================================================
+    // Candidate
+    // ============================================================
+
+    class Candidate {
+        constructor(data = {}) {
+            this.id = data.id || makeId('cand');
+            this.target = canonicalizeUrl(data.target) || data.target;
+            this.type = data.type || 'url';
+
+            this.origin = data.origin || location.href;
+            this.parent = data.parent || null;
+
+            this.priority = Number.isFinite(data.priority)
+                ? data.priority
+                : 0.5;
+
+            this.hints = {
+                ...(data.hints || {})
+            };
+
+            this.depth = Number.isFinite(data.depth)
+                ? data.depth
+                : 0;
+
+            this.createdAt = data.createdAt || now();
+
+            this.attempts = data.attempts || 0;
+            this.status = data.status || 'discovered';
+            this.nextAttemptAt = data.nextAttemptAt || 0;
+
+            this.discoveredAt = data.discoveredAt || this.createdAt;
+            this.queuedAt = data.queuedAt || null;
+            this.claimedAt = data.claimedAt || null;
+            this.acquiringAt = data.acquiringAt || null;
+            this.observedAt = data.observedAt || null;
+            this.recognizedAt = data.recognizedAt || null;
+            this.expandedAt = data.expandedAt || null;
+            this.completedAt = data.completedAt || null;
+            this.failedAt = data.failedAt || null;
+
+            this.alternateTypes = new Set(
+                safeArray(data.alternateTypes)
+            );
+
+            this.alternateOrigins = new Set(
+                safeArray(data.alternateOrigins)
+            );
+
+            this.alternateParents = new Set(
+                safeArray(data.alternateParents)
+            );
+        }
+
+        key() {
+            return `${this.type}:${this.target}`;
+        }
+
+        effectivePriority() {
+            const typeBoost = CONFIG.typePriority[this.type] || 0;
+
+            const confidence = Number(this.hints.confidence || 0);
+
+            const retryPenalty =
+                this.attempts * CONFIG.retry.retryBaseDelay *
+                CONFIG.retryPriorityPenalty;
+
+            return (
+                this.priority +
+                typeBoost * 0.20 +
+                confidence * CONFIG.confidencePriorityBoost -
+                this.depth * CONFIG.priorityDepthPenalty -
+                retryPenalty
+            );
+        }
+
+        mark(status) {
+            this.status = status;
+
+            const timestamp = now();
+
+            switch (status) {
+                case 'queued':
+                    this.queuedAt = timestamp;
+                    break;
+                case 'claimed':
+                    this.claimedAt = timestamp;
+                    break;
+                case 'acquiring':
+                    this.acquiringAt = timestamp;
+                    break;
+                case 'observed':
+                    this.observedAt = timestamp;
+                    break;
+                case 'recognized':
+                    this.recognizedAt = timestamp;
+                    break;
+                case 'expanded':
+                    this.expandedAt = timestamp;
+                    break;
+                case 'completed':
+                    this.completedAt = timestamp;
+                    break;
+                case 'failed':
+                    this.failedAt = timestamp;
+                    break;
+            }
+        }
+
+        serialize() {
+            return {
+                id: this.id,
+                target: this.target,
+                type: this.type,
+                origin: this.origin,
+                parent: this.parent,
+                priority: this.priority,
+                hints: this.hints,
+                depth: this.depth,
+                createdAt: this.createdAt,
+                attempts: this.attempts,
+                status: this.status,
+                nextAttemptAt: this.nextAttemptAt,
+                discoveredAt: this.discoveredAt,
+                queuedAt: this.queuedAt,
+                claimedAt: this.claimedAt,
+                acquiringAt: this.acquiringAt,
+                observedAt: this.observedAt,
+                recognizedAt: this.recognizedAt,
+                expandedAt: this.expandedAt,
+                completedAt: this.completedAt,
+                failedAt: this.failedAt,
+                alternateTypes: [...this.alternateTypes],
+                alternateOrigins: [...this.alternateOrigins],
+                alternateParents: [...this.alternateParents]
+            };
+        }
+    }
+
+    // ============================================================
+    // Observation
+    // ============================================================
+
+    class Observation {
+        constructor(data = {}) {
+            this.id = data.id || makeId('obs');
+            this.candidateId = data.candidateId || null;
+
+            this.target = data.target || '';
+            this.requestedUrl = data.requestedUrl || this.target;
+
+            this.startedAt = data.startedAt || now();
+            this.completedAt = data.completedAt || null;
+
+            this.status = data.status || 'pending';
+            this.reason = data.reason || null;
+
+            this.signalPresent = Boolean(data.signalPresent);
+
+            this.http = {
+                status: data.http?.status ?? null,
+                contentType: data.http?.contentType || '',
+                contentLength: data.http?.contentLength ?? null,
+                finalUrl: data.http?.finalUrl || this.target
+            };
+
+            this.body = data.body || '';
+
+            this.errors = safeArray(data.errors);
+
+            this.network = safeArray(data.network);
+
+            this.fingerprint = data.fingerprint || null;
+        }
+
+        serialize(includeBody = false) {
+            const result = {
+                id: this.id,
+                candidateId: this.candidateId,
+                target: this.target,
+                requestedUrl: this.requestedUrl,
+                startedAt: this.startedAt,
+                completedAt: this.completedAt,
+                status: this.status,
+                reason: this.reason,
+                signalPresent: this.signalPresent,
+                http: this.http,
+                errors: this.errors,
+                network: this.network,
+                fingerprint: this.fingerprint
+            };
+
+            if (includeBody) {
+                result.body = this.body;
+            }
+
+            return result;
+        }
+    }
+
+    // ============================================================
+    // Network Event
+    // ============================================================
+
+    class NetworkEvent {
+        constructor(data = {}) {
+            Object.assign(this, {
+                id: data.id || makeId('net'),
+                requestId: data.requestId || null,
+                api: data.api || 'unknown',
+                method: data.method || 'GET',
+                url: data.url || '',
+                finalUrl: data.finalUrl || data.url || '',
+                status: data.status ?? null,
+                contentType: data.contentType || '',
+                initiatorType: data.initiatorType || '',
+                requestAt: data.requestAt || now(),
+                responseAt: data.responseAt || null,
+                duration: data.duration ?? null,
+                phase: data.phase || 'request',
+                error: data.error || null
+            });
+        }
+
+        serialize() {
+            return { ...this };
+        }
+    }
+
+    // ============================================================
+    // Discovery
+    // ============================================================
+
+    class Discovery {
+        constructor(data = {}) {
+            this.id = data.id || makeId('disc');
+
+            this.candidateId = data.candidateId || null;
+            this.observationId = data.observationId || null;
+
+            this.kind = data.kind || 'url';
+
+            this.confidence = Number.isFinite(data.confidence)
+                ? data.confidence
+                : 0.5;
+
+            this.mechanism = data.mechanism || 'unknown';
+
+            this.data = data.data || {};
+
+            this.provenance = {
+                origin: data.provenance?.origin || null,
+                parent: data.provenance?.parent || null,
+                candidateTarget: data.provenance?.candidateTarget || null,
+                candidateType: data.provenance?.candidateType || null,
+                mechanism: data.provenance?.mechanism || this.mechanism,
+                depth: data.provenance?.depth ?? 0
+            };
+
+            this.createdAt = data.createdAt || now();
+        }
+
+        targetUrl() {
+            if (this.data.url) {
+                return canonicalizeUrl(
+                    this.data.url,
+                    this.provenance.parent || location.href
+                );
+            }
+
+            if (this.data.target) {
+                return canonicalizeUrl(
+                    this.data.target,
+                    this.provenance.parent || location.href
+                );
+            }
+
+            return this.provenance.candidateTarget || null;
+        }
+
+        serialize() {
+            return { ...this };
+        }
+    }
+
+    // ============================================================
+    // Resource Record
+    // ============================================================
+
+    class ResourceRecord {
+        constructor(data = {}) {
+            this.id = data.id || stableId('res', data.url || makeId());
+
+            this.url = canonicalizeUrl(data.url) || data.url;
+
+            this.types = new Set(safeArray(data.types));
+            this.mechanisms = new Set(safeArray(data.mechanisms));
+            this.parents = new Set(safeArray(data.parents));
+
+            this.candidateIds = new Set(safeArray(data.candidateIds));
+            this.observationIds = new Set(safeArray(data.observationIds));
+            this.discoveryIds = new Set(safeArray(data.discoveryIds));
+            this.networkEventIds = new Set(safeArray(data.networkEventIds));
+
+            this.firstSeenAt = data.firstSeenAt || now();
+            this.lastSeenAt = data.lastSeenAt || this.firstSeenAt;
+
+            this.status = data.status || 'known';
+
+            this.fingerprint = data.fingerprint || null;
+            this.finalUrl = data.finalUrl || null;
+
+            this.skipReason = data.skipReason || null;
+        }
+
+        addType(type) {
+            if (type) this.types.add(type);
+        }
+
+        addMechanism(mechanism) {
+            if (mechanism) this.mechanisms.add(mechanism);
+        }
+
+        serialize() {
+            return {
+                id: this.id,
+                url: this.url,
+                types: [...this.types],
+                mechanisms: [...this.mechanisms],
+                parents: [...this.parents],
+                candidateIds: [...this.candidateIds],
+                observationIds: [...this.observationIds],
+                discoveryIds: [...this.discoveryIds],
+                networkEventIds: [...this.networkEventIds],
+                firstSeenAt: this.firstSeenAt,
+                lastSeenAt: this.lastSeenAt,
+                status: this.status,
+                fingerprint: this.fingerprint,
+                finalUrl: this.finalUrl,
+                skipReason: this.skipReason
+            };
+        }
+    }
+
+    // ============================================================
+    // Knowledge Base
+    // ============================================================
+
+    class KnowledgeBase {
+        constructor() {
+            this.candidates = new Map();
+            this.observations = new Map();
+            this.discoveries = new Map();
+            this.resources = new Map();
+
+            this.visited = new Set();
+            this.claimed = new Set();
+
+            this.edges = [];
+
+            this.networkEvents = new Map();
+
+            this.fingerprintIndex = new Map();
+
+            this.diagnostics = [];
+
+            this.stats = {
+                candidatesDiscovered: 0,
+                candidatesQueued: 0,
+                candidatesCompleted: 0,
+                candidatesFailed: 0,
+
+                requestsStarted: 0,
+                requestsSucceeded: 0,
+                requestsFailed: 0,
+
+                policySkips: 0,
+                originBudgetSkips: 0,
+
+                discoveries: 0,
+                resources: 0,
+
+                duplicateContent: 0,
+
+                networkEvents: 0,
+                graphEdges: 0
+            };
+
+            this.persistenceTimer = null;
+
+            this.load();
+        }
+
+        recordDiagnostic(type, data = {}) {
+            this.diagnostics.push({
+                id: makeId('diag'),
+                type,
+                data,
+                timestamp: now()
+            });
+
+            while (this.diagnostics.length > CONFIG.maxDiagnostics) {
+                this.diagnostics.shift();
+            }
+        }
+
+        ensureResource(url, type = null, mechanism = null) {
+            const canonical = canonicalizeUrl(url);
+
+            if (!canonical) {
+                return null;
+            }
+
+            let resource = this.resources.get(canonical);
+
+            if (!resource) {
+                resource = new ResourceRecord({
+                    url: canonical
+                });
+
+                this.resources.set(canonical, resource);
+                this.stats.resources++;
+            }
+
+            if (type) resource.addType(type);
+            if (mechanism) resource.addMechanism(mechanism);
+
+            resource.lastSeenAt = now();
+
+            return resource;
+        }
+
+        addCandidate(input) {
+            const candidate = input instanceof Candidate
+                ? input
+                : new Candidate(input);
+
+            candidate.target = canonicalizeUrl(candidate.target);
+
+            if (!candidate.target || !isAllowedUrl(candidate.target)) {
+                return null;
+            }
+
+            if (candidate.depth > CONFIG.maxDepth) {
+                this.recordDiagnostic('candidate-depth-limit', {
+                    target: candidate.target,
+                    depth: candidate.depth
+                });
+
+                return null;
+            }
+
+            const resource = this.ensureResource(
+                candidate.target,
+                candidate.type,
+                candidate.hints.mechanism || 'candidate'
+            );
+
+            if (!resource) {
+                return null;
+            }
+
+            resource.candidateIds.add(candidate.id);
+
+            if (candidate.parent) {
+                resource.parents.add(candidate.parent);
+            }
+
+            this.recordCandidateEdge(candidate);
+
+            const existing = this.candidates.get(candidate.key());
+
+            if (existing) {
+                existing.priority = Math.max(
+                    existing.priority,
+                    candidate.priority
+                );
+
+                existing.hints = {
+                    ...existing.hints,
+                    ...candidate.hints
+                };
+
+                existing.alternateOrigins.add(candidate.origin);
+
+                if (candidate.parent) {
+                    existing.alternateParents.add(candidate.parent);
+                }
+
+                if (candidate.type !== existing.type) {
+                    existing.alternateTypes.add(candidate.type);
+                }
+
+                return existing;
+            }
+
+            if (this.candidates.size >= CONFIG.maxCandidates) {
+                this.recordDiagnostic('candidate-limit', {
+                    target: candidate.target
+                });
+
+                return null;
+            }
+
+            candidate.mark('queued');
+
+            this.candidates.set(candidate.key(), candidate);
+
+            this.stats.candidatesDiscovered++;
+            this.stats.candidatesQueued++;
+
+            this.persistSoon();
+
+            return candidate;
+        }
+
+        recordCandidateEdge(candidate) {
+            if (this.edges.length >= CONFIG.maxGraphEdges) {
+                return;
+            }
+
+            this.edges.push({
+                id: makeId('edge'),
+                from: candidate.parent || location.href,
+                to: candidate.target,
+                kind: 'candidate',
+                mechanism: candidate.hints.mechanism || 'candidate',
+                candidateType: candidate.type,
+                confidence: candidate.hints.confidence ?? null,
+                priority: candidate.priority,
+                depth: candidate.depth,
+                createdAt: now()
+            });
+
+            this.stats.graphEdges = this.edges.length;
+        }
+
+        claimNextCandidate() {
+            const timestamp = now();
+
+            const candidates = [...this.candidates.values()]
+                .filter(candidate =>
+                    candidate.status === 'queued' &&
+                    candidate.nextAttemptAt <= timestamp
+                )
+                .sort((a, b) =>
+                    b.effectivePriority() - a.effectivePriority()
+                );
+
+            for (const candidate of candidates) {
+                candidate.mark('claimed');
+                this.claimed.add(candidate.id);
+
+                return candidate;
+            }
+
+            return null;
+        }
+
+        requeue(candidate) {
+            if (!candidate) return;
+
+            candidate.mark('queued');
+            candidate.nextAttemptAt = 0;
+
+            this.claimed.delete(candidate.id);
+        }
+
+        addObservation(observation) {
+            this.observations.set(
+                observation.id,
+                observation
+            );
+
+            const resource = this.ensureResource(
+                observation.requestedUrl || observation.target
+            );
+
+            if (resource) {
+                resource.observationIds.add(observation.id);
+
+                if (observation.http.finalUrl) {
+                    resource.finalUrl = observation.http.finalUrl;
+                }
+
+                if (observation.fingerprint) {
+                    this.indexFingerprint(
+                        resource,
+                        observation.fingerprint
+                    );
+                }
+
+                resource.status =
+                    observation.status === 'skipped'
+                        ? 'skipped'
+                        : observation.status === 'error'
+                            ? 'failed'
+                            : 'acquired';
+            }
+
+            this.persistSoon();
+        }
+
+        indexFingerprint(resource, fingerprint) {
+            if (!resource || !fingerprint) {
+                return;
+            }
+
+            resource.fingerprint = fingerprint;
+
+            let urls = this.fingerprintIndex.get(fingerprint);
+
+            if (!urls) {
+                urls = new Set();
+                this.fingerprintIndex.set(fingerprint, urls);
+            }
+
+            if (!urls.has(resource.url)) {
+                if (urls.size > 0) {
+                    this.stats.duplicateContent++;
+
+                    this.recordDiagnostic(
+                        'duplicate-content',
+                        {
+                            fingerprint,
+                            url: resource.url,
+                            existingUrls: [...urls]
+                        }
+                    );
+                }
+
+                urls.add(resource.url);
+            }
+        }
+
+        addDiscovery(discovery) {
+            this.discoveries.set(
+                discovery.id,
+                discovery
+            );
+
+            this.stats.discoveries++;
+
+            if (discovery.candidateId) {
+                const candidate =
+                    [...this.candidates.values()]
+                        .find(c => c.id === discovery.candidateId);
+
+                if (candidate) {
+                    const resource = this.ensureResource(
+                        candidate.target,
+                        candidate.type,
+                        discovery.mechanism
+                    );
+
+                    if (resource) {
+                        resource.discoveryIds.add(discovery.id);
+                    }
+                }
+            }
+
+            this.persistSoon();
+        }
+
+        addNetworkEvent(event) {
+            this.networkEvents.set(event.id, event);
+
+            while (
+                this.networkEvents.size >
+                CONFIG.maxNetworkEvents
+            ) {
+                const first = this.networkEvents.keys().next().value;
+                this.networkEvents.delete(first);
+            }
+
+            this.stats.networkEvents = this.networkEvents.size;
+
+            if (event.url) {
+                const type = classifyNetworkType(event);
+
+                const resource = this.ensureResource(
+                    event.url,
+                    type,
+                    `network:${event.api}`
+                );
+
+                if (resource) {
+                    resource.networkEventIds.add(event.id);
+
+                    if (event.finalUrl) {
+                        resource.finalUrl = event.finalUrl;
+                    }
+
+                    if (event.status >= 200 && event.status < 400) {
+                        resource.status =
+                            resource.status === 'acquired'
+                                ? 'acquired'
+                                : 'observed';
+                    }
+                }
+            }
+
+            this.persistSoon();
+        }
+
+        completeCandidate(candidate) {
+            candidate.mark('completed');
+
+            this.claimed.delete(candidate.id);
+            this.visited.add(candidate.target);
+
+            this.stats.candidatesCompleted++;
+
+            this.persistSoon();
+        }
+
+        failCandidate(candidate, error) {
+            candidate.attempts++;
+            candidate.failedAt = now();
+
+            if (
+                candidate.attempts <= CONFIG.retry.maxRetries &&
+                !engine.stopRequested
+            ) {
+                const delay = Math.min(
+                    CONFIG.retry.maxDelay,
+                    CONFIG.retry.baseDelay *
+                    Math.pow(2, candidate.attempts - 1)
+                );
+
+                candidate.nextAttemptAt = now() + delay;
+                candidate.status = 'queued';
+
+                this.recordDiagnostic('candidate-retry', {
+                    candidateId: candidate.id,
+                    target: candidate.target,
+                    attempt: candidate.attempts,
+                    delay,
+                    error: String(error || '')
+                });
+            } else {
+                candidate.status = 'failed';
+                this.stats.candidatesFailed++;
+
+                this.recordDiagnostic('candidate-failed', {
+                    candidateId: candidate.id,
+                    target: candidate.target,
+                    attempts: candidate.attempts,
+                    error: String(error || '')
+                });
+            }
+
+            this.claimed.delete(candidate.id);
+
+            this.persistSoon();
+        }
+
+        markSkipped(candidate, reason) {
+            candidate.mark('completed');
+
+            this.claimed.delete(candidate.id);
+            this.visited.add(candidate.target);
+
+            const resource = this.ensureResource(
+                candidate.target,
+                candidate.type,
+                'policy'
+            );
+
+            if (resource) {
+                resource.status = 'skipped';
+                resource.skipReason = reason;
+            }
+
+            this.stats.policySkips++;
+
+            if (reason === 'origin-budget') {
+                this.stats.originBudgetSkips++;
+            }
+
+            const observation = new Observation({
+                candidateId: candidate.id,
+                target: candidate.target,
+                requestedUrl: candidate.target,
+                startedAt: now(),
+                completedAt: now(),
+                status: 'skipped',
+                reason
+            });
+
+            this.addObservation(observation);
+
+            this.recordDiagnostic('candidate-skipped', {
+                candidateId: candidate.id,
+                target: candidate.target,
+                reason
+            });
+
+            this.persistSoon();
+        }
+
+        recordRedirect(from, to) {
+            if (!from || !to || from === to) {
+                return;
+            }
+
+            if (this.edges.length >= CONFIG.maxGraphEdges) {
+                return;
+            }
+
+            this.edges.push({
+                id: makeId('edge'),
+                from,
+                to,
+                kind: 'redirect',
+                createdAt: now()
+            });
+
+            this.stats.graphEdges = this.edges.length;
+        }
+
+        serializePersistence() {
+            return {
+                version: 6,
+                visited: [...this.visited],
+
+                resources: [...this.resources.values()]
+                    .slice(-CONFIG.persistedResources)
+                    .map(resource => resource.serialize()),
+
+                discoveries: [...this.discoveries.values()]
+                    .slice(-CONFIG.persistedDiscoveries)
+                    .map(discovery => discovery.serialize()),
+
+                edges: this.edges
+                    .slice(-CONFIG.persistedEdges)
+            };
+        }
+
+        persistSoon() {
+            if (!CONFIG.persistence) {
+                return;
+            }
+
+            clearTimeout(this.persistenceTimer);
+
+            this.persistenceTimer = setTimeout(() => {
+                try {
+                    GM_setValue(
+                        'gde-state',
+                        JSON.stringify(this.serializePersistence())
+                    );
+                } catch (error) {
+                    warn('Persistence failed', error);
+                }
+            }, CONFIG.persistenceDebounce);
+        }
+
+        load() {
+            if (!CONFIG.persistence) {
+                return;
+            }
+
+            try {
+                const raw = GM_getValue('gde-state', '');
+
+                if (!raw) {
+                    return;
+                }
+
+                const data = JSON.parse(raw);
+
+                if (
+                    !data ||
+                    ![5, 6].includes(data.version)
+                ) {
+                    return;
+                }
+
+                for (const target of safeArray(data.visited)) {
+                    this.visited.add(target);
+                }
+
+                for (const item of safeArray(data.resources)) {
+                    const resource =
+                        new ResourceRecord(item);
+
+                    this.resources.set(
+                        resource.url,
+                        resource
+                    );
+
+                    if (resource.fingerprint) {
+                        let group =
+                            this.fingerprintIndex.get(
+                                resource.fingerprint
+                            );
+
+                        if (!group) {
+                            group = new Set();
+                            this.fingerprintIndex.set(
+                                resource.fingerprint,
+                                group
+                            );
+                        }
+
+                        group.add(resource.url);
+                    }
+                }
+
+                for (const item of safeArray(data.discoveries)) {
+                    const discovery =
+                        new Discovery(item);
+
+                    this.discoveries.set(
+                        discovery.id,
+                        discovery
+                    );
+                }
+
+                this.edges = safeArray(data.edges)
+                    .slice(-CONFIG.persistedEdges);
+
+                this.stats.resources =
+                    this.resources.size;
+
+                this.stats.discoveries =
+                    this.discoveries.size;
+
+                this.stats.graphEdges =
+                    this.edges.length;
+
+                log(
+                    'Loaded persistent state',
+                    data.version
+                );
+            } catch (error) {
+                warn('State load failed', error);
+            }
+        }
+
+        clear() {
+            this.candidates.clear();
+            this.observations.clear();
+            this.discoveries.clear();
+            this.resources.clear();
+            this.visited.clear();
+            this.claimed.clear();
+            this.edges = [];
+            this.networkEvents.clear();
+            this.fingerprintIndex.clear();
+            this.diagnostics = [];
+
+            for (const key of Object.keys(this.stats)) {
+                this.stats[key] = 0;
+            }
+
+            if (CONFIG.persistence) {
+                try {
+                    GM_setValue(
+                        'gde-state',
+                        ''
+                    );
+                } catch {
+                    // Ignore persistence errors during clear.
+                }
+            }
+        }
+    }
+
+    // ============================================================
+    // Network classification
+    // ============================================================
+
+    function classifyNetworkType(event) {
+        const type = event.contentType || '';
+        const url = event.url || '';
+
+        if (isJsonContentType(type) || looksLikeApiUrl(url)) {
+            return 'api';
+        }
+
+        if (/manifest\.json([?#]|$)/i.test(url)) {
+            return 'manifest';
+        }
+
+        if (/sitemap.*\.xml([?#]|$)/i.test(url)) {
+            return 'sitemap';
+        }
+
+        if (/robots\.txt([?#]|$)/i.test(url)) {
+            return 'robots';
+        }
+
+        if (/javascript|ecmascript/i.test(type)) {
+            return 'script';
+        }
+
+        if (isCssContentType(type)) {
+            return 'stylesheet';
+        }
+
+        if (/html/i.test(type)) {
+            return 'url';
+        }
+
+        if (/image|audio|video/i.test(type)) {
+            return 'media';
+        }
+
+        return 'network';
+    }
+
+    // ============================================================
+    // Acquisition Policy
+    // ============================================================
+
+    class AcquisitionPolicy {
+        shouldAcquire(candidate) {
+            if (!candidate) {
+                return {
+                    acquire: false,
+                    reason: 'invalid-candidate'
+                };
+            }
+
+            switch (candidate.type) {
+                case 'form':
+                    if (!CONFIG.policy.acquireForms) {
+                        return {
+                            acquire: false,
+                            reason: 'forms-disabled'
+                        };
+                    }
+                    break;
+
+                case 'media':
+                    if (!CONFIG.policy.acquireMedia) {
+                        return {
+                            acquire: false,
+                            reason: 'media-disabled'
+                        };
+                    }
+                    break;
+
+                case 'frame':
+                    if (!CONFIG.policy.acquireFrames) {
+                        return {
+                            acquire: false,
+                            reason: 'frames-disabled'
+                        };
+                    }
+                    break;
+
+                case 'stylesheet':
+                    if (!CONFIG.policy.acquireStylesheets) {
+                        return {
+                            acquire: false,
+                            reason: 'stylesheets-disabled'
+                        };
+                    }
+                    break;
+
+                case 'script':
+                    if (!CONFIG.policy.acquireScripts) {
+                        return {
+                            acquire: false,
+                            reason: 'scripts-disabled'
+                        };
+                    }
+                    break;
+
+                case 'network':
+                case 'api':
+                    if (!CONFIG.policy.acquireNetworkGet) {
+                        return {
+                            acquire: false,
+                            reason: 'network-get-disabled'
+                        };
+                    }
+                    break;
+            }
+
+            const hintedType =
+                candidate.hints.contentType ||
+                contentTypeForTarget(candidate.target);
+
+            if (
+                isBinaryContentType(hintedType) &&
+                !CONFIG.policy.acquireBinaryResources
+            ) {
+                return {
+                    acquire: false,
+                    reason: 'binary-disabled'
+                };
+            }
+
+            return {
+                acquire: true,
+                reason: null
+            };
+        }
+    }
+
+    // ============================================================
+    // Origin Budget / Politeness
+    // ============================================================
+
+    class OriginController {
+        constructor() {
+            this.origins = new Map();
+        }
+
+        getState(url) {
+            const origin = originOf(url);
+
+            let state = this.origins.get(origin);
+
+            if (!state) {
+                state = {
+                    origin,
+                    requests: 0,
+                    active: 0,
+                    lastRequestAt: 0,
+                    successes: 0,
+                    failures: 0
+                };
+
+                this.origins.set(origin, state);
+            }
+
+            return state;
+        }
+
+        async acquire(url) {
+            const state = this.getState(url);
+
+            while (true) {
+                if (
+                    state.requests >=
+                    CONFIG.origin.maxRequestsPerOrigin
+                ) {
+                    return false;
+                }
+
+                const elapsed =
+                    now() - state.lastRequestAt;
+
+                const waitForInterval =
+                    Math.max(
+                        0,
+                        CONFIG.origin.minRequestInterval -
+                        elapsed
+                    );
+
+                const available =
+                    state.active <
+                    CONFIG.origin.maxConcurrentPerOrigin;
+
+                if (available && waitForInterval <= 0) {
+                    state.active++;
+                    state.requests++;
+                    state.lastRequestAt = now();
+
+                    return true;
+                }
+
+                await sleep(
+                    Math.max(
+                        25,
+                        Math.min(
+                            250,
+                            waitForInterval || 50
+                        )
+                    )
+                );
+
+                if (engine.stopRequested) {
+                    return false;
+                }
+            }
+        }
+
+        release(url, success) {
+            const state = this.getState(url);
+
+            state.active = Math.max(
+                0,
+                state.active - 1
+            );
+
+            if (success) {
+                state.successes++;
+            } else {
+                state.failures++;
+            }
+        }
+
+        snapshot() {
+            return [...this.origins.values()]
+                .map(state => ({ ...state }));
+        }
+    }
+
+    // ============================================================
+    // Adaptive Scheduler
+    // ============================================================
+
+    class AdaptiveScheduler {
+        constructor() {
+            this.configuredConcurrency =
+                CONFIG.concurrency;
+
+            this.currentConcurrency =
+                CONFIG.concurrency;
+
+            this.consecutiveFailures = 0;
+            this.consecutiveSuccesses = 0;
+        }
+
+        async waitForGlobalSlot() {
+            while (
+                engine.inFlight >=
+                this.currentConcurrency
+            ) {
+                if (engine.stopRequested) {
+                    return false;
+                }
+
+                await sleep(50);
+            }
+
+            return !engine.stopRequested;
+        }
+
+        recordSuccess() {
+            if (!CONFIG.adaptive.enabled) {
+                return;
+            }
+
+            this.consecutiveFailures = 0;
+            this.consecutiveSuccesses++;
+
+            if (
+                this.consecutiveSuccesses >=
+                CONFIG.adaptive.successThreshold
+            ) {
+                this.consecutiveSuccesses = 0;
+
+                if (
+                    this.currentConcurrency <
+                    this.configuredConcurrency
+                ) {
+                    this.currentConcurrency++;
+
+                    engine.db.recordDiagnostic(
+                        'concurrency-restore',
+                        {
+                            concurrency:
+                                this.currentConcurrency
+                        }
+                    );
+                }
+            }
+        }
+
+        recordFailure() {
+            if (!CONFIG.adaptive.enabled) {
+                return;
+            }
+
+            this.consecutiveSuccesses = 0;
+            this.consecutiveFailures++;
+
+            if (
+                this.consecutiveFailures >=
+                CONFIG.adaptive.failureThreshold
+            ) {
+                this.consecutiveFailures = 0;
+
+                if (
+                    this.currentConcurrency >
+                    CONFIG.adaptive.minimumConcurrency
+                ) {
+                    this.currentConcurrency--;
+
+                    engine.db.recordDiagnostic(
+                        'concurrency-reduce',
+                        {
+                            concurrency:
+                                this.currentConcurrency
+                        }
+                    );
+                }
+            }
+        }
+
+        snapshot() {
+            return {
+                configuredConcurrency:
+                    this.configuredConcurrency,
+
+                currentConcurrency:
+                    this.currentConcurrency,
+
+                consecutiveFailures:
+                    this.consecutiveFailures,
+
+                consecutiveSuccesses:
+                    this.consecutiveSuccesses
+            };
+        }
+    }
+
+    // ============================================================
+    // Providers
+    // ============================================================
+
+    class Provider {
+        constructor(name) {
+            this.name = name;
+            this.exclusive = false;
+        }
+
+        recognize(observation) {
+            return {
+                recognized: false,
+                confidence: 0
+            };
+        }
+
+        discover() {
+            return [];
+        }
+    }
+
+    class ResponseProvider extends Provider {
+        constructor() {
+            super('response');
+            this.exclusive = false;
+        }
+
+        recognize(observation) {
+            if (
+                observation.status === 'success' ||
+                observation.status === 'http-error'
+            ) {
+                return {
+                    recognized: true,
+                    confidence: 0.30
+                };
+            }
+
+            return {
+                recognized: false,
+                confidence: 0
+            };
+        }
+
+        discover(observation) {
+            return [];
+        }
+    }
+
+    class HtmlProvider extends Provider {
+        constructor() {
+            super('html');
+            this.exclusive = true;
+        }
+
+        recognize(observation) {
+            const type =
+                observation.http.contentType || '';
+
+            if (
+                isHtmlContentType(type) ||
+                looksLikeHtml(observation.body)
+            ) {
+                return {
+                    recognized: true,
+                    confidence: 0.98
+                };
+            }
+
+            return {
+                recognized: false,
+                confidence: 0
+            };
+        }
+
+        discover(observation) {
+            const html = observation.body || '';
+
+            if (!html) return [];
+
+            const parser =
+                new DOMParser();
+
+            const doc =
+                parser.parseFromString(
+                    html,
+                    'text/html'
+                );
+
+            const baseHref =
+                doc.querySelector('base[href]')?.href ||
+                observation.http.finalUrl ||
+                observation.target;
+
+            const discoveries = [];
+
+            const add = (
+                url,
+                kind,
+                mechanism,
+                confidence,
+                data = {}
+            ) => {
+                const canonical =
+                    canonicalizeUrl(
+                        url,
+                        baseHref
+                    );
+
+                if (!canonical || !isAllowedUrl(canonical)) {
+                    return;
+                }
+
+                discoveries.push(
+                    new Discovery({
+                        candidateId:
+                            observation.candidateId,
+
+                        observationId:
+                            observation.id,
+
+                        kind,
+                        mechanism,
+                        confidence,
+
+                        data: {
+                            ...data,
+                            url: canonical
+                        },
+
+                        provenance: {
+                            parent:
+                                observation.http.finalUrl ||
+                                observation.target,
+
+                            candidateTarget:
+                                observation.target,
+
+                            candidateType:
+                                'url',
+
+                            mechanism,
+                            depth: 0
+                        }
+                    })
+                );
+            };
+
+            if (CONFIG.discovery.links) {
+                for (
+                    const element of
+                    doc.querySelectorAll(
+                        'a[href], area[href]'
+                    )
+                ) {
+                    add(
+                        element.getAttribute('href'),
+                        'url',
+                        'html-link',
+                        0.85
+                    );
+                }
+            }
+
+            if (CONFIG.discovery.resources) {
+                const selectors = [
+                    ['script[src]', 'script', 'html-script'],
+                    ['link[href]', 'resource', 'html-link'],
+                    ['img[src]', 'media', 'html-image'],
+                    ['audio[src]', 'media', 'html-audio'],
+                    ['video[src]', 'media', 'html-video'],
+                    ['source[src]', 'media', 'html-source'],
+                    ['iframe[src]', 'frame', 'html-frame'],
+                    ['frame[src]', 'frame', 'html-frame'],
+                    ['object[data]', 'embedded', 'html-object'],
+                    ['embed[src]', 'embedded', 'html-embed']
+                ];
+
+                for (
+                    const [
+                        selector,
+                        type,
+                        mechanism
+                    ] of selectors
+                ) {
+                    for (
+                        const element of
+                        doc.querySelectorAll(selector)
+                    ) {
+                        const attribute =
+                            element.hasAttribute('src')
+                                ? 'src'
+                                : element.hasAttribute('href')
+                                    ? 'href'
+                                    : 'data';
+
+                        add(
+                            element.getAttribute(attribute),
+                            type,
+                            mechanism,
+                            0.78
+                        );
+                    }
+                }
+
+                for (
+                    const element of
+                    doc.querySelectorAll(
+                        'link[rel]'
+                    )
+                ) {
+                    const rel =
+                        (element.getAttribute('rel') || '')
+                            .toLowerCase();
+
+                    const href =
+                        element.getAttribute('href');
+
+                    if (!href) continue;
+
+                    if (
+                        rel.includes('manifest')
+                    ) {
+                        add(
+                            href,
+                            'manifest',
+                            'html-manifest',
+                            0.96
+                        );
+                    }
+
+                    if (
+                        rel.includes('alternate') ||
+                        rel.includes('feed')
+                    ) {
+                        add(
+                            href,
+                            'feed',
+                            'html-feed',
+                            0.88
+                        );
+                    }
+
+                    if (
+                        rel.includes('sitemap')
+                    ) {
+                        add(
+                            href,
+                            'sitemap',
+                            'html-sitemap',
+                            0.95
+                        );
+                    }
+
+                    if (
+                        rel.includes('preload') ||
+                        rel.includes('prefetch') ||
+                        rel.includes('modulepreload')
+                    ) {
+                        add(
+                            href,
+                            'resource',
+                            `html-${rel.split(/\s+/)[0]}`,
+                            0.62
+                        );
+                    }
+                }
+            }
+
+            if (CONFIG.discovery.forms) {
+                for (
+                    const form of
+                    doc.querySelectorAll('form[action]')
+                ) {
+                    add(
+                        form.getAttribute('action'),
+                        'form',
+                        'html-form',
+                        0.70,
+                        {
+                            method:
+                                (
+                                    form.getAttribute('method') ||
+                                    'get'
+                                ).toUpperCase()
+                        }
+                    );
+                }
+            }
+
+            if (CONFIG.discovery.metadata) {
+                for (
+                    const element of
+                    doc.querySelectorAll(
+                        'link[rel="canonical"], meta[content]'
+                    )
+                ) {
+                    const property =
+                        element.getAttribute('property') ||
+                        element.getAttribute('name') ||
+                        element.getAttribute('rel') ||
+                        '';
+
+                    const value =
+                        element.getAttribute('href') ||
+                        element.getAttribute('content');
+
+                    if (!value) continue;
+
+                    if (
+                        /url|canonical|og:url|twitter:url/i
+                            .test(property)
+                    ) {
+                        add(
+                            value,
+                            'metadata',
+                            'html-metadata',
+                            0.82,
+                            { property }
+                        );
+                    }
+                }
+
+                for (
+                    const meta of
+                    doc.querySelectorAll(
+                        'meta[http-equiv="refresh"]'
+                    )
+                ) {
+                    const content =
+                        meta.getAttribute('content') || '';
+
+                    const match =
+                        content.match(
+                            /url\s*=\s*(.+)$/i
+                        );
+
+                    if (match) {
+                        add(
+                            match[1].trim(),
+                            'url',
+                            'meta-refresh',
+                            0.80
+                        );
+                    }
+                }
+            }
+
+            const embeddedText =
+                html.slice(
+                    0,
+                    CONFIG.fingerprintMaxChars
+                );
+
+            for (
+                const url of
+                extractUrlsFromText(
+                    embeddedText,
+                    baseHref
+                )
+            ) {
+                add(
+                    url,
+                    'url',
+                    'html-embedded-url',
+                    0.52
+                );
+            }
+
+            discoveries.push(
+                new Discovery({
+                    candidateId:
+                        observation.candidateId,
+
+                    observationId:
+                        observation.id,
+
+                    kind: 'html-document',
+                    mechanism: 'html-parser',
+                    confidence: 0.98,
+
+                    data: {
+                        references:
+                            discoveries.map(
+                                discovery =>
+                                    discovery.data.url
+                            )
+                    },
+
+                    provenance: {
+                        parent:
+                            observation.http.finalUrl ||
+                            observation.target,
+
+                        candidateTarget:
+                            observation.target,
+
+                        candidateType: 'url',
+                        mechanism: 'html-parser',
+                        depth: 0
+                    }
+                })
+            );
+
+            return discoveries;
+        }
+    }
+
+    class JsonProvider extends Provider {
+        constructor() {
+            super('json');
+            this.exclusive = true;
+        }
+
+        recognize(observation) {
+            const type =
+                observation.http.contentType || '';
+
+            if (
+                isJsonContentType(type) ||
+                looksLikeJson(observation.body)
+            ) {
+                return {
+                    recognized: true,
+                    confidence: 0.97
+                };
+            }
+
+            return {
+                recognized: false,
+                confidence: 0
+            };
+        }
+
+        discover(observation) {
+            let value;
+
+            try {
+                value =
+                    JSON.parse(observation.body);
+            } catch {
+                return [];
+            }
+
+            const text =
+                JSON.stringify(value);
+
+            const urls =
+                extractUrlsFromText(
+                    text,
+                    observation.http.finalUrl ||
+                    observation.target
+                );
+
+            const discoveries =
+                urls.map(url =>
+                    new Discovery({
+                        candidateId:
+                            observation.candidateId,
+
+                        observationId:
+                            observation.id,
+
+                        kind:
+                            /manifest\.json/i.test(
+                                observation.target
+                            )
+                                ? 'manifest'
+                                : 'url',
+
+                        mechanism:
+                            'json-url-extraction',
+
+                        confidence:
+                            looksLikeApiUrl(
+                                observation.target
+                            )
+                                ? 0.86
+                                : 0.72,
+
+                        data: {
+                            url
+                        },
+
+                        provenance: {
+                            parent:
+                                observation.http.finalUrl ||
+                                observation.target,
+
+                            candidateTarget:
+                                observation.target,
+
+                            candidateType:
+                                'api',
+
+                            mechanism:
+                                'json-url-extraction',
+
+                            depth: 0
+                        }
+                    })
+                );
+
+            return discoveries;
+        }
+    }
+
+    class XmlProvider extends Provider {
+        constructor() {
+            super('xml');
+            this.exclusive = true;
+        }
+
+        recognize(observation) {
+            const type =
+                observation.http.contentType || '';
+
+            if (
+                isXmlContentType(type) ||
+                looksLikeXml(observation.body)
+            ) {
+                return {
+                    recognized: true,
+                    confidence: 0.94
+                };
+            }
+
+            return {
+                recognized: false,
+                confidence: 0
+            };
+        }
+
+        discover(observation) {
+            const urls =
+                extractXmlLocs(
+                    observation.body,
+                    observation.http.finalUrl ||
+                    observation.target
+                );
+
+            let kind = 'xml';
+
+            if (
+                /sitemap/i.test(
+                    observation.target
+                )
+            ) {
+                kind = 'sitemap';
+            } else if (
+                /rss|atom|feed/i.test(
+                    observation.http.contentType ||
+                    observation.target
+                )
+            ) {
+                kind = 'feed';
+            }
+
+            return urls.map(url =>
+                new Discovery({
+                    candidateId:
+                        observation.candidateId,
+
+                    observationId:
+                        observation.id,
+
+                    kind,
+                    mechanism: 'xml-location',
+                    confidence:
+                        kind === 'sitemap'
+                            ? 0.95
+                            : 0.78,
+
+                    data: { url },
+
+                    provenance: {
+                        parent:
+                            observation.http.finalUrl ||
+                            observation.target,
+
+                        candidateTarget:
+                            observation.target,
+
+                        candidateType: kind,
+
+                        mechanism: 'xml-location',
+                        depth: 0
+                    }
+                })
+            );
+        }
+    }
+
+    class CssProvider extends Provider {
+        constructor() {
+            super('css');
+            this.exclusive = true;
+        }
+
+        recognize(observation) {
+            const type =
+                observation.http.contentType || '';
+
+            if (
+                isCssContentType(type) ||
+                /\.css([?#]|$)/i.test(
+                    observation.target
+                )
+            ) {
+                return {
+                    recognized: true,
+                    confidence: 0.96
+                };
+            }
+
+            return {
+                recognized: false,
+                confidence: 0
+            };
+        }
+
+        discover(observation) {
+            return extractCssUrls(
+                observation.body,
+                observation.http.finalUrl ||
+                observation.target
+            ).map(url =>
+                new Discovery({
+                    candidateId:
+                        observation.candidateId,
+
+                    observationId:
+                        observation.id,
+
+                    kind: 'resource',
+                    mechanism: 'css-url',
+                    confidence: 0.68,
+
+                    data: { url },
+
+                    provenance: {
+                        parent:
+                            observation.http.finalUrl ||
+                            observation.target,
+
+                        candidateTarget:
+                            observation.target,
+
+                        candidateType:
+                            'stylesheet',
+
+                        mechanism: 'css-url',
+                        depth: 0
+                    }
+                })
+            );
+        }
+    }
+
+    class JavaScriptProvider extends Provider {
+        constructor() {
+            super('javascript');
+            this.exclusive = true;
+        }
+
+        recognize(observation) {
+            const type =
+                observation.http.contentType || '';
+
+            if (
+                /javascript|ecmascript/i.test(type) ||
+                /\.(?:js|mjs|cjs)([?#]|$)/i.test(
+                    observation.target
+                )
+            ) {
+                return {
+                    recognized: true,
+                    confidence: 0.93
+                };
+            }
+
+            return {
+                recognized: false,
+                confidence: 0
+            };
+        }
+
+        discover(observation) {
+            const base =
+                observation.http.finalUrl ||
+                observation.target;
+
+            const urls =
+                extractUrlsFromText(
+                    observation.body,
+                    base
+                );
+
+            const discoveries =
+                urls.map(url =>
+                    new Discovery({
+                        candidateId:
+                            observation.candidateId,
+
+                        observationId:
+                            observation.id,
+
+                        kind:
+                            looksLikeApiUrl(url)
+                                ? 'api'
+                                : 'url',
+
+                        mechanism:
+                            'javascript-url-extraction',
+
+                        confidence:
+                            looksLikeApiUrl(url)
+                                ? 0.82
+                                : 0.50,
+
+                        data: { url },
+
+                        provenance: {
+                            parent: base,
+                            candidateTarget:
+                                observation.target,
+
+                            candidateType:
+                                'script',
+
+                            mechanism:
+                                'javascript-url-extraction',
+
+                            depth: 0
+                        }
+                    })
+                );
+
+            const sourceMap =
+                observation.body.match(
+                    /[#@]\s*sourceMappingURL\s*=\s*(\S+)/i
+                );
+
+            if (sourceMap) {
+                const url =
+                    canonicalizeUrl(
+                        sourceMap[1],
+                        base
+                    );
+
+                if (url) {
+                    discoveries.push(
+                        new Discovery({
+                            candidateId:
+                                observation.candidateId,
+
+                            observationId:
+                                observation.id,
+
+                            kind: 'resource',
+                            mechanism:
+                                'javascript-sourcemap',
+
+                            confidence: 0.74,
+
+                            data: { url },
+
+                            provenance: {
+                                parent: base,
+                                candidateTarget:
+                                    observation.target,
+
+                                candidateType:
+                                    'script',
+
+                                mechanism:
+                                    'javascript-sourcemap',
+
+                                depth: 0
+                            }
+                        })
+                    );
+                }
+            }
+
+            return discoveries;
+        }
+    }
+
+    class RobotsProvider extends Provider {
+        constructor() {
+            super('robots');
+            this.exclusive = true;
+        }
+
+        recognize(observation) {
+            if (
+                /robots\.txt([?#]|$)/i.test(
+                    observation.target
+                )
+            ) {
+                return {
+                    recognized: true,
+                    confidence: 0.99
+                };
+            }
+
+            return {
+                recognized: false,
+                confidence: 0
+            };
+        }
+
+        discover(observation) {
+            const discoveries = [];
+
+            const lines =
+                String(observation.body || '')
+                    .split(/\r?\n/);
+
+            for (const line of lines) {
+                const match =
+                    line.match(
+                        /^\s*Sitemap\s*:\s*(\S+)/i
+                    );
+
+                if (!match) continue;
+
+                const url =
+                    canonicalizeUrl(
+                        match[1],
+                        observation.target
+                    );
+
+                if (!url) continue;
+
+                discoveries.push(
+                    new Discovery({
+                        candidateId:
+                            observation.candidateId,
+
+                        observationId:
+                            observation.id,
+
+                        kind: 'sitemap',
+                        mechanism:
+                            'robots-sitemap',
+
+                        confidence: 0.99,
+
+                        data: { url },
+
+                        provenance: {
+                            parent:
+                                observation.target,
+
+                            candidateTarget:
+                                observation.target,
+
+                            candidateType:
+                                'robots',
+
+                            mechanism:
+                                'robots-sitemap',
+
+                            depth: 0
+                        }
+                    })
+                );
+            }
+
+            return discoveries;
+        }
+    }
+
+    class TextProvider extends Provider {
+        constructor() {
+            super('text');
+            this.exclusive = false;
+        }
+
+        recognize(observation) {
+            if (
+                observation.body &&
+                observation.body.length
+            ) {
+                return {
+                    recognized: true,
+                    confidence: 0.20
+                };
+            }
+
+            return {
+                recognized: false,
+                confidence: 0
+            };
+        }
+
+        discover(observation) {
+            return extractUrlsFromText(
+                observation.body,
+                observation.http.finalUrl ||
+                observation.target
+            ).map(url =>
+                new Discovery({
+                    candidateId:
+                        observation.candidateId,
+
+                    observationId:
+                        observation.id,
+
+                    kind:
+                        looksLikeApiUrl(url)
+                            ? 'api'
+                            : 'url',
+
+                    mechanism:
+                        'text-url-extraction',
+
+                    confidence: 0.42,
+
+                    data: { url },
+
+                    provenance: {
+                        parent:
+                            observation.http.finalUrl ||
+                            observation.target,
+
+                        candidateTarget:
+                            observation.target,
+
+                        candidateType: 'text',
+
+                        mechanism:
+                            'text-url-extraction',
+
+                        depth: 0
+                    }
+                })
+            );
+        }
+    }
+
+    class BinaryProvider extends Provider {
+        constructor() {
+            super('binary');
+            this.exclusive = true;
+        }
+
+        recognize(observation) {
+            if (
+                isBinaryContentType(
+                    observation.http.contentType
+                )
+            ) {
+                return {
+                    recognized: true,
+                    confidence: 0.90
+                };
+            }
+
+            return {
+                recognized: false,
+                confidence: 0
+            };
+        }
+
+        discover() {
+            return [];
+        }
+    }
+
+    // ============================================================
+    // Provider Registry
+    // ============================================================
+
+    class ProviderRegistry {
+        constructor() {
+            this.providers = [
+                new RobotsProvider(),
+                new HtmlProvider(),
+                new JsonProvider(),
+                new XmlProvider(),
+                new CssProvider(),
+                new JavaScriptProvider(),
+                new BinaryProvider(),
+                new TextProvider(),
+                new ResponseProvider()
+            ];
+        }
+
+        recognize(observation) {
+            const matches = [];
+
+            for (const provider of this.providers) {
+                const result =
+                    provider.recognize(
+                        observation
+                    );
+
+                if (result.recognized) {
+                    matches.push({
+                        provider,
+                        confidence:
+                            result.confidence
+                    });
+
+                    if (provider.exclusive) {
+                        break;
+                    }
+                }
+            }
+
+            return matches.sort(
+                (a, b) =>
+                    b.confidence -
+                    a.confidence
+            );
+        }
+
+        discover(observation) {
+            const matches =
+                this.recognize(observation);
+
+            const discoveries = [];
+
+            for (const match of matches) {
+                try {
+                    discoveries.push(
+                        ...match.provider.discover(
+                            observation
+                        )
+                    );
+                } catch (error) {
+                    warn(
+                        'Provider discovery failed',
+                        match.provider.name,
+                        error
+                    );
+                }
+
+                if (match.provider.exclusive) {
+                    break;
+                }
+            }
+
+            return discoveries;
+        }
+
+        candidatesFor(discovery) {
+            let type = 'url';
+
+            switch (discovery.kind) {
+                case 'api':
+                    type = 'api';
+                    break;
+                case 'manifest':
+                    type = 'manifest';
+                    break;
+                case 'sitemap':
+                    type = 'sitemap';
+                    break;
+                case 'robots':
+                    type = 'robots';
+                    break;
+                case 'feed':
+                    type = 'feed';
+                    break;
+                case 'frame':
+                    type = 'frame';
+                    break;
+                case 'script':
+                    type = 'script';
+                    break;
+                case 'stylesheet':
+                    type = 'stylesheet';
+                    break;
+                case 'media':
+                    type = 'media';
+                    break;
+                case 'form':
+                    type = 'form';
+                    break;
+                case 'resource':
+                    type = 'resource';
+                    break;
+                case 'embedded':
+                    type = 'embedded';
+                    break;
+                case 'xml':
+                    type = 'xml';
+                    break;
+                case 'text':
+                    type = 'text';
+                    break;
+            }
+
+            const target =
+                discovery.targetUrl();
+
+            if (!target) {
+                return [];
+            }
+
+            return [{
+                target,
+                type,
+                priority:
+                    0.45 +
+                    discovery.confidence * 0.45,
+
+                hints: {
+                    confidence:
+                        discovery.confidence,
+
+                    mechanism:
+                        discovery.mechanism,
+
+                    contentType:
+                        discovery.data.contentType ||
+                        ''
+                }
+            }];
+        }
+    }
+
+    // ============================================================
+    // HTTP Acquisition
+    // ============================================================
+
+    function gmRequest(url) {
+        return new Promise((resolve, reject) => {
+            let settled = false;
+
+            const finish = (
+                callback,
+                value
+            ) => {
+                if (settled) return;
+
+                settled = true;
+                callback(value);
+            };
+
+            try {
+                GM_xmlhttpRequest({
+                    method: 'GET',
+                    url,
+                    timeout:
+                        CONFIG.requestTimeout,
+
+                    onload: response => {
+                        finish(resolve, {
+                            status: 'success',
+                            httpStatus:
+                                response.status,
+
+                            headers:
+                                response.responseHeaders ||
+                                '',
+
+                            body:
+                                typeof response.responseText ===
+                                'string'
+                                    ? response.responseText
+                                    : '',
+
+                            finalUrl:
+                                response.finalUrl ||
+                                url
+                        });
+                    },
+
+                    onerror: error => {
+                        finish(
+                            reject,
+                            new Error(
+                                'GM request error'
+                            )
+                        );
+                    },
+
+                    ontimeout: () => {
+                        finish(
+                            reject,
+                            new Error(
+                                'GM request timeout'
+                            )
+                        );
+                    },
+
+                    onabort: () => {
+                        finish(
+                            reject,
+                            new Error(
+                                'GM request aborted'
+                            )
+                        );
+                    }
+                });
+            } catch (error) {
+                finish(reject, error);
+            }
+        });
+    }
+
+    async function fetchRequest(url) {
+        const controller =
+            typeof AbortController !== 'undefined'
+                ? new AbortController()
+                : null;
+
+        let timer = null;
+
+        if (controller) {
+            timer = setTimeout(
+                () => controller.abort(),
+                CONFIG.requestTimeout
+            );
+        }
+
+        try {
+            const response =
+                await fetch(url, {
+                    method: 'GET',
+                    credentials: 'same-origin',
+                    redirect: 'follow',
+                    signal:
+                        controller?.signal
+                });
+
+            const body =
+                await response.text();
+
+            const headers = [];
+
+            response.headers.forEach(
+                (value, key) => {
+                    headers.push(
+                        `${key}: ${value}`
+                    );
+                }
+            );
+
+            return {
+                status: 'success',
+                httpStatus:
+                    response.status,
+
+                headers:
+                    headers.join('\r\n'),
+
+                body,
+
+                finalUrl:
+                    response.url || url
+            };
+        } finally {
+            if (timer) {
+                clearTimeout(timer);
+            }
+        }
+    }
+
+    async function acquireHttp(url) {
+        if (
+            typeof GM_xmlhttpRequest ===
+            'function'
+        ) {
+            return gmRequest(url);
+        }
+
+        return fetchRequest(url);
+    }
+
+    // ============================================================
+    // Network Observer
+    // ============================================================
+
+    class NetworkObserver {
+        constructor() {
+            this.started = false;
+            this.requests = new Map();
+            this.performanceObserver = null;
+            this.messageHandler = null;
+        }
+
+        start() {
+            if (this.started) {
+                return;
+            }
+
+            this.started = true;
+
+            this.installMessageListener();
+            this.installPerformanceObserver();
+
+            if (CONFIG.networkBridge) {
+                this.installPageBridge();
+            }
+        }
+
+        installMessageListener() {
+            this.messageHandler =
+                event => {
+                    const data =
+                        event.data;
+
+                    if (
+                        !data ||
+                        data.channel !==
+                        'gde-network'
+                    ) {
+                        return;
+                    }
+
+                    this.handleBridgeEvent(
+                        data.payload
+                    );
+                };
+
+            window.addEventListener(
+                'message',
+                this.messageHandler
+            );
+        }
+
+        installPageBridge() {
+            const code = `
+                (() => {
+                    if (window.__GDE_NETWORK_BRIDGE__) return;
+                    window.__GDE_NETWORK_BRIDGE__ = true;
+
+                    const channel = 'gde-network';
+
+                    const emit = payload => {
+                        try {
+                            window.postMessage({
+                                channel,
+                                payload
+                            }, '*');
+                        } catch (_) {}
+                    };
+
+                    let sequence = 0;
+
+                    const originalFetch = window.fetch;
+
+                    if (originalFetch) {
+                        window.fetch = function(input, init) {
+                            const requestId =
+                                'fetch-' + Date.now() + '-' + (++sequence);
+
+                            let url = '';
+                            let method = 'GET';
+
+                            try {
+                                if (typeof input === 'string') {
+                                    url = input;
+                                } else if (input && input.url) {
+                                    url = input.url;
+                                    method = input.method || method;
+                                }
+
+                                method =
+                                    (init && init.method) ||
+                                    method ||
+                                    'GET';
+                            } catch (_) {}
+
+                            emit({
+                                phase: 'request',
+                                api: 'fetch',
+                                requestId,
+                                method: String(method).toUpperCase(),
+                                url,
+                                requestAt: Date.now()
+                            });
+
+                            return originalFetch.apply(this, arguments)
+                                .then(response => {
+                                    try {
+                                        emit({
+                                            phase: 'response',
+                                            api: 'fetch',
+                                            requestId,
+                                            method: String(method).toUpperCase(),
+                                            url,
+                                            finalUrl: response.url || url,
+                                            status: response.status,
+                                            contentType:
+                                                response.headers.get('content-type') || '',
+                                            responseAt: Date.now()
+                                        });
+                                    } catch (_) {}
+
+                                    return response;
+                                })
+                                .catch(error => {
+                                    emit({
+                                        phase: 'error',
+                                        api: 'fetch',
+                                        requestId,
+                                        method: String(method).toUpperCase(),
+                                        url,
+                                        error: String(error),
+                                        responseAt: Date.now()
+                                    });
+
+                                    throw error;
+                                });
+                        };
+                    }
+
+                    const OriginalXHR = XMLHttpRequest;
+
+                    if (OriginalXHR && OriginalXHR.prototype) {
+                        const originalOpen =
+                            OriginalXHR.prototype.open;
+
+                        const originalSend =
+                            OriginalXHR.prototype.send;
+
+                        OriginalXHR.prototype.open =
+                            function(method, url) {
+                                this.__GDE_METHOD__ =
+                                    String(method || 'GET').toUpperCase();
+
+                                this.__GDE_URL__ =
+                                    String(url || '');
+
+                                return originalOpen.apply(
+                                    this,
+                                    arguments
+                                );
+                            };
+
+                        OriginalXHR.prototype.send =
+                            function() {
+                                const xhr = this;
+
+                                const requestId =
+                                    'xhr-' +
+                                    Date.now() +
+                                    '-' +
+                                    (++sequence);
+
+                                xhr.__GDE_REQUEST_ID__ =
+                                    requestId;
+
+                                emit({
+                                    phase: 'request',
+                                    api: 'xhr',
+                                    requestId,
+                                    method:
+                                        xhr.__GDE_METHOD__ ||
+                                        'GET',
+                                    url:
+                                        xhr.__GDE_URL__ ||
+                                        '',
+                                    requestAt: Date.now()
+                                });
+
+                                xhr.addEventListener(
+                                    'loadend',
+                                    function() {
+                                        let contentType = '';
+
+                                        try {
+                                            contentType =
+                                                xhr.getResponseHeader(
+                                                    'content-type'
+                                                ) || '';
+                                        } catch (_) {}
+
+                                        emit({
+                                            phase: 'response',
+                                            api: 'xhr',
+                                            requestId,
+                                            method:
+                                                xhr.__GDE_METHOD__ ||
+                                                'GET',
+                                            url:
+                                                xhr.__GDE_URL__ ||
+                                                '',
+                                            finalUrl:
+                                                xhr.responseURL ||
+                                                xhr.__GDE_URL__ ||
+                                                '',
+                                            status:
+                                                xhr.status,
+                                            contentType,
+                                            responseAt:
+                                                Date.now()
+                                        });
+                                    }
+                                );
+
+                                return originalSend.apply(
+                                    this,
+                                    arguments
+                                );
+                            };
+                    }
+                })();
+            `;
+
+            const script =
+                document.createElement(
+                    'script'
+                );
+
+            script.textContent = code;
+
+            (
+                document.documentElement ||
+                document.head ||
+                document.body
+            )?.appendChild(script);
+
+            script.remove();
+        }
+
+        handleBridgeEvent(payload) {
+            if (!payload || !payload.url) {
+                return;
+            }
+
+            const requestId =
+                payload.requestId ||
+                makeId('network');
+
+            let event =
+                this.requests.get(requestId);
+
+            if (!event) {
+                event =
+                    new NetworkEvent({
+                        ...payload,
+                        id:
+                            stableId(
+                                'net',
+                                requestId
+                            )
+                    });
+
+                this.requests.set(
+                    requestId,
+                    event
+                );
+            } else {
+                Object.assign(
+                    event,
+                    payload
+                );
+            }
+
+            event.responseAt =
+                payload.responseAt ||
+                event.responseAt;
+
+            if (
+                event.responseAt &&
+                event.requestAt
+            ) {
+                event.duration =
+                    event.responseAt -
+                    event.requestAt;
+            }
+
+            engine.db.addNetworkEvent(
+                event
+            );
+
+            if (
+                payload.phase ===
+                    'response' &&
+                String(
+                    payload.method || 'GET'
+                ).toUpperCase() === 'GET'
+            ) {
+                if (
+                    CONFIG.policy.acquireNetworkGet
+                ) {
+                    engine.enqueue(
+                        payload.url,
+                        classifyNetworkType(
+                            event
+                        ),
+                        {
+                            mechanism:
+                                `network:${payload.api}`,
+
+                            confidence: 0.82,
+                            contentType:
+                                payload.contentType ||
+                                ''
+                        },
+                        location.href,
+                        1
+                    );
+                }
+
+                if (
+                    payload.finalUrl &&
+                    payload.finalUrl !==
+                    payload.url
+                ) {
+                    engine.db.recordRedirect(
+                        canonicalizeUrl(
+                            payload.url
+                        ),
+                        canonicalizeUrl(
+                            payload.finalUrl
+                        )
+                    );
+                }
+            }
+        }
+
+        installPerformanceObserver() {
+            if (
+                typeof PerformanceObserver ===
+                'undefined'
+            ) {
+                return;
+            }
+
+            try {
+                this.performanceObserver =
+                    new PerformanceObserver(
+                        list => {
+                            for (
+                                const entry of
+                                list.getEntries()
+                            ) {
+                                this.handlePerformanceEntry(
+                                    entry
+                                );
+                            }
+                        }
+                    );
+
+                this.performanceObserver.observe({
+                    entryTypes: ['resource']
+                });
+
+                for (
+                    const entry of
+                    performance.getEntriesByType(
+                        'resource'
+                    )
+                ) {
+                    this.handlePerformanceEntry(
+                        entry
+                    );
+                }
+            } catch (error) {
+                warn(
+                    'Performance observer unavailable',
+                    error
+                );
+            }
+        }
+
+        handlePerformanceEntry(entry) {
+            const url =
+                canonicalizeUrl(
+                    entry.name
+                );
+
+            if (!url || !isAllowedUrl(url)) {
+                return;
+            }
+
+            const initiator =
+                entry.initiatorType ||
+                'resource';
+
+            let type = 'resource';
+
+            if (initiator === 'script') {
+                type = 'script';
+            } else if (
+                initiator === 'link' ||
+                initiator === 'css'
+            ) {
+                type = 'stylesheet';
+            } else if (
+                /img|image|video|audio/.test(
+                    initiator
+                )
+            ) {
+                type = 'media';
+            } else if (
+                /fetch|xmlhttprequest/.test(
+                    initiator
+                )
+            ) {
+                type = 'network';
+            } else if (
+                /iframe|frame/.test(
+                    initiator
+                )
+            ) {
+                type = 'frame';
+            }
+
+            const event =
+                new NetworkEvent({
+                    api: 'performance',
+                    method: 'GET',
+                    url,
+                    finalUrl: url,
+                    initiatorType: initiator,
+                    requestAt:
+                        now() -
+                        Math.round(
+                            entry.duration || 0
+                        ),
+                    responseAt: now(),
+                    duration:
+                        entry.duration || 0,
+                    phase: 'response'
+                });
+
+            engine.db.addNetworkEvent(
+                event
+            );
+
+            if (
+                type === 'network' &&
+                CONFIG.policy.acquireNetworkGet
+            ) {
+                engine.enqueue(
+                    url,
+                    type,
+                    {
+                        mechanism:
+                            'performance-resource',
+
+                        confidence: 0.68
+                    },
+                    location.href,
+                    1
+                );
+            }
+        }
+    }
+
+    // ============================================================
+    // Generic Discovery Engine
+    // ============================================================
+
+    class GenericDiscoveryEngine {
+        constructor() {
+            this.db =
+                new KnowledgeBase();
+
+            this.policy =
+                new AcquisitionPolicy();
+
+            this.origins =
+                new OriginController();
+
+            this.scheduler =
+                new AdaptiveScheduler();
+
+            this.providers =
+                new ProviderRegistry();
+
+            this.networkObserver =
+                new NetworkObserver();
+
+            this.running = false;
+            this.paused = false;
+            this.stopRequested = false;
+
+            this.inFlight = 0;
+            this.requestsStarted = 0;
+
+            this.workerPromises = [];
+
+            this.domObserver = null;
+            this.mutationTimer = null;
+
+            this.ui = null;
+        }
+
+        start() {
+            if (this.running) {
+                this.resume();
+                return;
+            }
+
+            this.running = true;
+            this.paused = false;
+            this.stopRequested = false;
+
+            this.networkObserver.start();
+
+            this.seed();
+
+            if (
+                CONFIG.observeDomMutations
+            ) {
+                this.installDomObserver();
+            }
+
+            this.updateUI();
+
+            this.workerPromises =
+                Array.from(
+                    {
+                        length:
+                            CONFIG.concurrency
+                    },
+                    (_, index) =>
+                        this.worker(index)
+                );
+
+            Promise.allSettled(
+                this.workerPromises
+            ).then(() => {
+                if (
+                    this.running &&
+                    !this.stopRequested
+                ) {
+                    this.running = false;
+                }
+
+                this.updateUI();
+            });
+        }
+
+        pause() {
+            if (!this.running) {
+                return;
+            }
+
+            this.paused = true;
+
+            this.db.recordDiagnostic(
+                'pause',
+                {}
+            );
+
+            this.updateUI();
+        }
+
+        resume() {
+            if (!this.running) {
+                this.start();
+                return;
+            }
+
+            this.paused = false;
+
+            this.db.recordDiagnostic(
+                'resume',
+                {}
+            );
+
+            this.updateUI();
+        }
+
+        stop() {
+            this.stopRequested = true;
+            this.paused = false;
+
+            this.db.recordDiagnostic(
+                'stop',
+                {}
+            );
+
+            this.updateUI();
+        }
+
+        async waitUntilRunnable() {
+            while (this.paused) {
+                if (this.stopRequested) {
+                    return false;
+                }
+
+                await sleep(100);
+            }
+
+            return !this.stopRequested;
+        }
+
+        reserveRequestSlot() {
+            if (
+                this.requestsStarted >=
+                CONFIG.maxRequests
+            ) {
+                return false;
+            }
+
+            this.requestsStarted++;
+            this.db.stats.requestsStarted++;
+
+            return true;
+        }
+
+        enqueue(
+            target,
+            type = 'url',
+            hints = {},
+            parent = location.href,
+            depth = 0
+        ) {
+            const canonical =
+                canonicalizeUrl(
+                    target,
+                    parent
+                );
+
+            if (!canonical) {
+                return null;
+            }
+
+            const candidate =
+                new Candidate({
+                    target: canonical,
+                    type,
+                    hints,
+                    origin: location.href,
+                    parent,
+                    depth,
+                    priority:
+                        hints.priority ??
+                        (
+                            0.40 +
+                            (
+                                hints.confidence ||
+                                0
+                            ) * 0.50
+                        )
+                });
+
+            return this.db.addCandidate(
+                candidate
+            );
+        }
+
+        seed() {
+            const current =
+                canonicalizeUrl(
+                    location.href
+                );
+
+            this.enqueue(
+                current,
+                'url',
+                {
+                    mechanism: 'page-root',
+                    confidence: 1,
+                    priority: 1
+                },
+                null,
+                0
+            );
+
+            if (
+                CONFIG.discovery.wellKnown
+            ) {
+                this.enqueue(
+                    new URL(
+                        '/robots.txt',
+                        location.origin
+                    ).href,
+                    'robots',
+                    {
+                        mechanism:
+                            'well-known-robots',
+                        confidence: 0.99,
+                        priority: 0.96
+                    },
+                    current,
+                    1
+                );
+
+                this.enqueue(
+                    new URL(
+                        '/sitemap.xml',
+                        location.origin
+                    ).href,
+                    'sitemap',
+                    {
+                        mechanism:
+                            'well-known-sitemap',
+                        confidence: 0.92,
+                        priority: 0.90
+                    },
+                    current,
+                    1
+                );
+            }
+
+            this.scanDocument(
+                document,
+                location.href,
+                1,
+                'initial-dom'
+            );
+        }
+
+        scanDocument(
+            doc,
+            baseUrl,
+            depth,
+            mechanismPrefix
+        ) {
+            if (!doc) return;
+
+            const enqueueElement =
+                (
+                    element,
+                    attribute,
+                    type,
+                    mechanism,
+                    confidence
+                ) => {
+                    const value =
+                        element.getAttribute(
+                            attribute
+                        );
+
+                    if (!value) return;
+
+                    this.enqueue(
+                        value,
+                        type,
+                        {
+                            mechanism,
+                            confidence
+                        },
+                        baseUrl,
+                        depth
+                    );
+                };
+
+            if (CONFIG.discovery.links) {
+                for (
+                    const element of
+                    doc.querySelectorAll(
+                        'a[href],area[href]'
+                    )
+                ) {
+                    enqueueElement(
+                        element,
+                        'href',
+                        'url',
+                        `${mechanismPrefix}:link`,
+                        0.82
+                    );
+                }
+            }
+
+            if (CONFIG.discovery.resources) {
+                const resourceSelectors = [
+                    [
+                        'script[src]',
+                        'src',
+                        'script',
+                        'script'
+                    ],
+                    [
+                        'link[href]',
+                        'href',
+                        'stylesheet',
+                        'stylesheet'
+                    ],
+                    [
+                        'img[src]',
+                        'src',
+                        'media',
+                        'image'
+                    ],
+                    [
+                        'audio[src]',
+                        'src',
+                        'media',
+                        'audio'
+                    ],
+                    [
+                        'video[src]',
+                        'src',
+                        'media',
+                        'video'
+                    ],
+                    [
+                        'iframe[src]',
+                        'src',
+                        'frame',
+                        'frame'
+                    ],
+                    [
+                        'frame[src]',
+                        'src',
+                        'frame',
+                        'frame'
+                    ],
+                    [
+                        'object[data]',
+                        'data',
+                        'embedded',
+                        'object'
+                    ],
+                    [
+                        'embed[src]',
+                        'src',
+                        'embedded',
+                        'embed'
+                    ]
+                ];
+
+                for (
+                    const [
+                        selector,
+                        attribute,
+                        type,
+                        name
+                    ] of resourceSelectors
+                ) {
+                    for (
+                        const element of
+                        doc.querySelectorAll(
+                            selector
+                        )
+                    ) {
+                        enqueueElement(
+                            element,
+                            attribute,
+                            type,
+                            `${mechanismPrefix}:${name}`,
+                            0.72
+                        );
+                    }
+                }
+
+                for (
+                    const element of
+                    doc.querySelectorAll(
+                        'link[rel][href]'
+                    )
+                ) {
+                    const rel =
+                        (
+                            element.getAttribute(
+                                'rel'
+                            ) || ''
+                        ).toLowerCase();
+
+                    let type =
+                        'resource';
+
+                    if (
+                        rel.includes(
+                            'manifest'
+                        )
+                    ) {
+                        type = 'manifest';
+                    } else if (
+                        rel.includes(
+                            'sitemap'
+                        )
+                    ) {
+                        type = 'sitemap';
+                    } else if (
+                        rel.includes(
+                            'feed'
+                        ) ||
+                        rel.includes(
+                            'alternate'
+                        )
+                    ) {
+                        type = 'feed';
+                    }
+
+                    enqueueElement(
+                        element,
+                        'href',
+                        type,
+                        `${mechanismPrefix}:link-rel:${rel}`,
+                        0.82
+                    );
+                }
+            }
+
+            if (CONFIG.discovery.forms) {
+                for (
+                    const form of
+                    doc.querySelectorAll(
+                        'form[action]'
+                    )
+                ) {
+                    enqueueElement(
+                        form,
+                        'action',
+                        'form',
+                        `${mechanismPrefix}:form`,
+                        0.68
+                    );
+                }
+            }
+        }
+
+        installDomObserver() {
+            if (
+                this.domObserver ||
+                typeof MutationObserver ===
+                'undefined'
+            ) {
+                return;
+            }
+
+            const install = () => {
+                if (!document.body) {
+                    setTimeout(
+                        install,
+                        250
+                    );
+                    return;
+                }
+
+                this.domObserver =
+                    new MutationObserver(
+                        mutations => {
+                            const added =
+                                [];
+
+                            for (
+                                const mutation of
+                                mutations
+                            ) {
+                                for (
+                                    const node of
+                                    mutation.addedNodes
+                                ) {
+                                    if (
+                                        node.nodeType ===
+                                        Node.ELEMENT_NODE
+                                    ) {
+                                        added.push(
+                                            node
+                                        );
+                                    }
+                                }
+                            }
+
+                            if (!added.length) {
+                                return;
+                            }
+
+                            clearTimeout(
+                                this.mutationTimer
+                            );
+
+                            this.mutationTimer =
+                                setTimeout(() => {
+                                    for (
+                                        const node of
+                                        added
+                                    ) {
+                                        this.scanMutationNode(
+                                            node
+                                        );
+                                    }
+                                },
+                                CONFIG.mutationDebounce
+                            );
+                        }
+                    );
+
+                this.domObserver.observe(
+                    document.body,
+                    {
+                        childList: true,
+                        subtree: true
+                    }
+                );
+            };
+
+            install();
+        }
+
+        scanMutationNode(node) {
+            const base =
+                location.href;
+
+            const selectors = [
+                [
+                    'a[href]',
+                    'href',
+                    'url',
+                    'mutation-link'
+                ],
+                [
+                    'script[src]',
+                    'src',
+                    'script',
+                    'mutation-script'
+                ],
+                [
+                    'link[href]',
+                    'href',
+                    'stylesheet',
+                    'mutation-stylesheet'
+                ],
+                [
+                    'img[src]',
+                    'src',
+                    'media',
+                    'mutation-image'
+                ],
+                [
+                    'iframe[src]',
+                    'src',
+                    'frame',
+                    'mutation-frame'
+                ],
+                [
+                    'form[action]',
+                    'action',
+                    'form',
+                    'mutation-form'
+                ]
+            ];
+
+            for (
+                const [
+                    selector,
+                    attribute,
+                    type,
+                    mechanism
+                ] of selectors
+            ) {
+                if (
+                    node.matches?.(selector)
+                ) {
+                    const value =
+                        node.getAttribute(
+                            attribute
+                        );
+
+                    if (value) {
+                        this.enqueue(
+                            value,
+                            type,
+                            {
+                                mechanism,
+                                confidence: 0.76
+                            },
+                            base,
+                            1
+                        );
+                    }
+                }
+
+                for (
+                    const child of
+                    node.querySelectorAll?.(
+                        selector
+                    ) || []
+                ) {
+                    const value =
+                        child.getAttribute(
+                            attribute
+                        );
+
+                    if (value) {
+                        this.enqueue(
+                            value,
+                            type,
+                            {
+                                mechanism,
+                                confidence: 0.76
+                            },
+                            base,
+                            1
+                        );
+                    }
+                }
+            }
+        }
+
+        async worker(index) {
+            log(
+                'Worker started',
+                index
+            );
+
+            while (!this.stopRequested) {
+                const runnable =
+                    await this.waitUntilRunnable();
+
+                if (!runnable) {
+                    break;
+                }
+
+                const candidate =
+                    this.db.claimNextCandidate();
+
+                if (!candidate) {
+                    if (
+                        this.inFlight === 0
+                    ) {
+                        break;
+                    }
+
+                    await sleep(100);
+                    continue;
+                }
+
+                const policy =
+                    this.policy.shouldAcquire(
+                        candidate
+                    );
+
+                if (!policy.acquire) {
+                    this.db.markSkipped(
+                        candidate,
+                        policy.reason
+                    );
+
+                    this.updateUI();
+
+                    continue;
+                }
+
+                const resource =
+                    this.db.resources.get(
+                        candidate.target
+                    );
+
+                if (
+                    resource &&
+                    resource.status ===
+                    'acquired'
+                ) {
+                    const observation =
+                        new Observation({
+                            candidateId:
+                                candidate.id,
+
+                            target:
+                                candidate.target,
+
+                            requestedUrl:
+                                candidate.target,
+
+                            startedAt: now(),
+                            completedAt: now(),
+
+                            status: 'success',
+
+                            signalPresent: true,
+
+                            http: {
+                                status: null,
+                                contentType:
+                                    resource.fingerprint
+                                        ?.split(':')[0] ||
+                                    '',
+                                finalUrl:
+                                    resource.finalUrl ||
+                                    candidate.target
+                            },
+
+                            reason:
+                                'resource-already-acquired'
+                        });
+
+                    this.db.addObservation(
+                        observation
+                    );
+
+                    candidate.mark(
+                        'observed'
+                    );
+
+                    candidate.mark(
+                        'recognized'
+                    );
+
+                    candidate.mark(
+                        'expanded'
+                    );
+
+                    this.db.completeCandidate(
+                        candidate
+                    );
+
+                    this.updateUI();
+
+                    continue;
+                }
+
+                if (
+                    !await this.scheduler
+                        .waitForGlobalSlot()
+                ) {
+                    this.db.requeue(
+                        candidate
+                    );
+
+                    break;
+                }
+
+                const originSlot =
+                    await this.origins.acquire(
+                        candidate.target
+                    );
+
+                if (!originSlot) {
+                    this.db.markSkipped(
+                        candidate,
+                        'origin-budget'
+                    );
+
+                    this.updateUI();
+
+                    continue;
+                }
+
+                const requestSlot =
+                    this.reserveRequestSlot();
+
+                if (!requestSlot) {
+                    this.origins.release(
+                        candidate.target,
+                        true
+                    );
+
+                    this.db.requeue(
+                        candidate
+                    );
+
+                    break;
+                }
+
+                this.inFlight++;
+
+                let success = false;
+
+                try {
+                    candidate.mark(
+                        'acquiring'
+                    );
+
+                    const observation =
+                        await this.processCandidate(
+                            candidate
+                        );
+
+                    success =
+                        observation.status ===
+                        'success' ||
+                        observation.status ===
+                        'http-error';
+
+                    if (success) {
+                        this.scheduler
+                            .recordSuccess();
+
+                        this.db.stats
+                            .requestsSucceeded++;
+
+                        this.db.completeCandidate(
+                            candidate
+                        );
+                    } else {
+                        this.scheduler
+                            .recordFailure();
+
+                        this.db.stats
+                            .requestsFailed++;
+
+                        this.db.failCandidate(
+                            candidate,
+                            observation.errors?.join(
+                                '; '
+                            ) || 'request failed'
+                        );
+                    }
+                } catch (error) {
+                    this.scheduler
+                        .recordFailure();
+
+                    this.db.stats
+                        .requestsFailed++;
+
+                    this.db.failCandidate(
+                        candidate,
+                        error
+                    );
+                } finally {
+                    this.origins.release(
+                        candidate.target,
+                        success
+                    );
+
+                    this.inFlight--;
+
+                    this.updateUI();
+                }
+            }
+
+            log(
+                'Worker stopped',
+                index
+            );
+        }
+
+        async processCandidate(
+            candidate
+        ) {
+            const startedAt =
+                now();
+
+            let response;
+
+            try {
+                response =
+                    await acquireHttp(
+                        candidate.target
+                    );
+            } catch (error) {
+                const observation =
+                    new Observation({
+                        candidateId:
+                            candidate.id,
+
+                        target:
+                            candidate.target,
+
+                        requestedUrl:
+                            candidate.target,
+
+                        startedAt,
+
+                        completedAt: now(),
+
+                        status: 'error',
+
+                        signalPresent: false,
+
+                        errors: [
+                            String(
+                                error?.message ||
+                                error
+                            )
+                        ],
+
+                        http: {
+                            finalUrl:
+                                candidate.target
+                        }
+                    });
+
+                this.db.addObservation(
+                    observation
+                );
+
+                return observation;
+            }
+
+            const contentType =
+                getContentType(
+                    response.headers
+                );
+
+            const status =
+                response.httpStatus >= 200 &&
+                response.httpStatus < 400
+                    ? 'success'
+                    : 'http-error';
+
+            const fingerprint =
+                makeFingerprint(
+                    response.body,
+                    contentType
+                );
+
+            const observation =
+                new Observation({
+                    candidateId:
+                        candidate.id,
+
+                    target:
+                        candidate.target,
+
+                    requestedUrl:
+                        candidate.target,
+
+                    startedAt,
+
+                    completedAt: now(),
+
+                    status,
+
+                    signalPresent:
+                        Boolean(
+                            response.body ||
+                            response.httpStatus
+                        ),
+
+                    http: {
+                        status:
+                            response.httpStatus,
+
+                        contentType,
+
+                        contentLength:
+                            response.body?.length ||
+                            null,
+
+                        finalUrl:
+                            response.finalUrl ||
+                            candidate.target
+                    },
+
+                    body:
+                        response.body || '',
+
+                    fingerprint
+                });
+
+            this.db.addObservation(
+                observation
+            );
+
+            if (
+                observation.http.finalUrl &&
+                observation.http.finalUrl !==
+                candidate.target
+            ) {
+                this.db.recordRedirect(
+                    candidate.target,
+                    observation.http.finalUrl
+                );
+            }
+
+            candidate.hints.contentType =
+                contentType;
+
+            candidate.mark(
+                'observed'
+            );
+
+            const recognition =
+                this.providers.recognize(
+                    observation
+                );
+
+            candidate.mark(
+                'recognized'
+            );
+
+            if (recognition.length) {
+                candidate.hints.provider =
+                    recognition[0]
+                        .provider.name;
+
+                candidate.hints.confidence =
+                    Math.max(
+                        Number(
+                            candidate.hints
+                                .confidence || 0
+                        ),
+                        recognition[0]
+                            .confidence
+                    );
+            }
+
+            const discoveries =
+                this.providers.discover(
+                    observation
+                );
+
+            for (
+                const discovery of
+                discoveries
+            ) {
+                discovery.provenance.depth =
+                    candidate.depth + 1;
+
+                this.db.addDiscovery(
+                    discovery
+                );
+
+                const candidateSpecs =
+                    this.providers
+                        .candidatesFor(
+                            discovery
+                        );
+
+                for (
+                    const spec of
+                    candidateSpecs
+                ) {
+                    if (
+                        candidate.depth + 1 >
+                        CONFIG.maxDepth
+                    ) {
+                        continue;
+                    }
+
+                    this.enqueue(
+                        spec.target,
+                        spec.type,
+                        {
+                            ...spec.hints,
+                            confidence:
+                                Math.max(
+                                    discovery.confidence,
+                                    spec.hints
+                                        ?.confidence ||
+                                    0
+                                )
+                        },
+                        candidate.target,
+                        candidate.depth + 1
+                    );
+                }
+            }
+
+            candidate.mark(
+                'expanded'
+            );
+
+            return observation;
+        }
+
+        clear() {
+            this.stop();
+
+            this.db.clear();
+
+            this.running = false;
+            this.paused = false;
+            this.stopRequested = false;
+            this.inFlight = 0;
+            this.requestsStarted = 0;
+
+            this.scheduler =
+                new AdaptiveScheduler();
+
+            this.origins =
+                new OriginController();
+
+            this.updateUI();
+        }
+
+        exportData() {
+            const graphNodes = [
+                {
+                    id: 'root',
+                    type: 'root',
+                    url: location.href
+                }
+            ];
+
+            for (
+                const resource of
+                this.db.resources.values()
+            ) {
+                graphNodes.push({
+                    id:
+                        resource.id,
+
+                    type:
+                        'resource',
+
+                    url:
+                        resource.url,
+
+                    resourceTypes:
+                        [...resource.types],
+
+                    mechanisms:
+                        [...resource.mechanisms],
+
+                    status:
+                        resource.status,
+
+                    fingerprint:
+                        resource.fingerprint,
+
+                    finalUrl:
+                        resource.finalUrl
+                });
+            }
+
+            const graphEdges = [
+                ...this.db.edges
+            ];
+
+            for (
+                const resource of
+                this.db.resources.values()
+            ) {
+                for (
+                    const parent of
+                    resource.parents
+                ) {
+                    const parentResource =
+                        this.db.resources.get(
+                            parent
+                        );
+
+                    graphEdges.push({
+                        id:
+                            makeId('edge'),
+
+                        from:
+                            parentResource?.id ||
+                            'root',
+
+                        to:
+                            resource.id,
+
+                        kind:
+                            'resource-provenance',
+
+                        createdAt:
+                            resource.firstSeenAt
+                    });
+                }
+            }
+
+            for (
+                const [
+                    fingerprint,
+                    urls
+                ] of
+                this.db.fingerprintIndex
+            ) {
+                const list =
+                    [...urls];
+
+                if (list.length < 2) {
+                    continue;
+                }
+
+                const primary =
+                    this.db.resources.get(
+                        list[0]
+                    );
+
+                for (
+                    const duplicateUrl of
+                    list.slice(1)
+                ) {
+                    const duplicate =
+                        this.db.resources.get(
+                            duplicateUrl
+                        );
+
+                    if (
+                        primary &&
+                        duplicate
+                    ) {
+                        graphEdges.push({
+                            id:
+                                makeId('edge'),
+
+                            from:
+                                primary.id,
+
+                            to:
+                                duplicate.id,
+
+                            kind:
+                                'duplicate-content',
+
+                            fingerprint
+                        });
+                    }
+                }
+            }
+
+            return {
+                version: 6,
+
+                scope:
+                    'web-resource-discovery',
+
+                architecture:
+                    'candidate → acquisition/observation → recognition/provider → discovery → new candidates → scheduler',
+
+                inspiredBy:
+                    'DVB blind scanning architecture',
+
+                rfScanning: false,
+
+                timestamp: new Date().toISOString(),
+
+                page: {
+                    url:
+                        location.href,
+
+                    title:
+                        document.title,
+
+                    origin:
+                        location.origin
+                },
+
+                statistics: {
+                    ...this.db.stats,
+
+                    queue:
+                        [...this.db.candidates.values()]
+                            .filter(
+                                candidate =>
+                                    candidate.status ===
+                                    'queued'
+                            ).length,
+
+                    inFlight:
+                        this.inFlight,
+
+                    requestsRemaining:
+                        Math.max(
+                            0,
+                            CONFIG.maxRequests -
+                            this.requestsStarted
+                        ),
+
+                    resources:
+                        this.db.resources.size,
+
+                    candidates:
+                        this.db.candidates.size
+                },
+
+                configuration:
+                    CONFIG,
+
+                policy:
+                    CONFIG.policy,
+
+                scheduler: {
+                    ...this.scheduler.snapshot(),
+
+                    paused:
+                        this.paused,
+
+                    running:
+                        this.running,
+
+                    stopRequested:
+                        this.stopRequested
+                },
+
+                origins:
+                    this.origins.snapshot(),
+
+                queue:
+                    [...this.db.candidates.values()]
+                        .map(candidate =>
+                            candidate.serialize()
+                        ),
+
+                lifecycle:
+                    [...this.db.candidates.values()]
+                        .map(candidate => ({
+                            id:
+                                candidate.id,
+
+                            target:
+                                candidate.target,
+
+                            type:
+                                candidate.type,
+
+                            status:
+                                candidate.status,
+
+                            attempts:
+                                candidate.attempts,
+
+                            discoveredAt:
+                                candidate.discoveredAt,
+
+                            queuedAt:
+                                candidate.queuedAt,
+
+                            claimedAt:
+                                candidate.claimedAt,
+
+                            acquiringAt:
+                                candidate.acquiringAt,
+
+                            observedAt:
+                                candidate.observedAt,
+
+                            recognizedAt:
+                                candidate.recognizedAt,
+
+                            expandedAt:
+                                candidate.expandedAt,
+
+                            completedAt:
+                                candidate.completedAt,
+
+                            failedAt:
+                                candidate.failedAt
+                        })),
+
+                resources:
+                    [...this.db.resources.values()]
+                        .map(resource =>
+                            resource.serialize()
+                        ),
+
+                observations:
+                    [...this.db.observations.values()]
+                        .map(observation =>
+                            observation.serialize(
+                                false
+                            )
+                        ),
+
+                networkEvents:
+                    [...this.db.networkEvents.values()]
+                        .map(event =>
+                            event.serialize()
+                        ),
+
+                discoveries:
+                    [...this.db.discoveries.values()]
+                        .map(discovery =>
+                            discovery.serialize()
+                        ),
+
+                fingerprints:
+                    [...this.db.fingerprintIndex]
+                        .map(
+                            ([
+                                fingerprint,
+                                urls
+                            ]) => ({
+                                fingerprint,
+                                urls:
+                                    [...urls]
+                            })
+                        ),
+
+                graph: {
+                    nodes:
+                        graphNodes,
+
+                    edges:
+                        graphEdges.slice(
+                            0,
+                            CONFIG.maxGraphEdges
+                        )
+                },
+
+                diagnostics:
+                    this.db.diagnostics
+            };
+        }
+
+        downloadExport() {
+            const data =
+                this.exportData();
+
+            const blob =
+                new Blob(
+                    [
+                        JSON.stringify(
+                            data,
+                            null,
+                            2
+                        )
+                    ],
+                    {
+                        type:
+                            'application/json'
+                    }
+                );
+
+            const url =
+                URL.createObjectURL(
+                    blob
+                );
+
+            const anchor =
+                document.createElement(
+                    'a'
+                );
+
+            anchor.href = url;
+            anchor.download =
+                `gde-${Date.now()}.json`;
+
+            document.body.appendChild(
+                anchor
+            );
+
+            anchor.click();
+            anchor.remove();
+
+            setTimeout(
+                () =>
+                    URL.revokeObjectURL(
+                        url
+                    ),
+                1000
+            );
+        }
+
+        buildUI() {
+            if (this.ui) {
+                return;
+            }
+
+            const panel =
+                document.createElement(
+                    'div'
+                );
+
+            panel.style.cssText = `
+                position: fixed;
+                right: 12px;
+                bottom: 12px;
+                z-index: 2147483647;
+                width: 330px;
+                padding: 10px;
+                background: rgba(20,20,20,.96);
+                color: #eee;
+                font: 12px/1.4 sans-serif;
+                border: 1px solid #555;
+                border-radius: 8px;
+                box-shadow: 0 4px 18px rgba(0,0,0,.45);
+            `;
+
+            panel.innerHTML = `
+                <div style="
+                    font-weight:bold;
+                    font-size:14px;
+                    margin-bottom:7px;
+                ">
+                    Generic Discovery Engine 0.6
+                </div>
+
+                <div
+                    data-gde-status
+                    style="margin-bottom:7px;"
+                ></div>
+
+                <div style="
+                    display:flex;
+                    flex-wrap:wrap;
+                    gap:5px;
+                    margin-bottom:7px;
+                ">
+                    <button data-gde-scan>Scan</button>
+                    <button data-gde-pause>Pause</button>
+                    <button data-gde-stop>Stop</button>
+                    <button data-gde-clear>Clear</button>
+                    <button data-gde-export>Export</button>
+                </div>
+
+                <div
+                    data-gde-stats
+                    style="
+                        white-space:pre-wrap;
+                        opacity:.85;
+                    "
+                ></div>
+            `;
+
+            document.documentElement.appendChild(
+                panel
+            );
+
+            this.ui = panel;
+
+            panel.querySelector(
+                '[data-gde-scan]'
+            ).addEventListener(
+                'click',
+                () => this.start()
+            );
+
+            panel.querySelector(
+                '[data-gde-pause]'
+            ).addEventListener(
+                'click',
+                event => {
+                    this.paused
+                        ? this.resume()
+                        : this.pause();
+
+                    event.currentTarget
+                        .textContent =
+                        this.paused
+                            ? 'Resume'
+                            : 'Pause';
+                }
+            );
+
+            panel.querySelector(
+                '[data-gde-stop]'
+            ).addEventListener(
+                'click',
+                () => this.stop()
+            );
+
+            panel.querySelector(
+                '[data-gde-clear]'
+            ).addEventListener(
+                'click',
+                () => this.clear()
+            );
+
+            panel.querySelector(
+                '[data-gde-export]'
+            ).addEventListener(
+                'click',
+                () => this.downloadExport()
+            );
+
+            this.updateUI();
+        }
+
+        updateUI() {
+            if (!this.ui) {
+                return;
+            }
+
+            const status =
+                this.ui.querySelector(
+                    '[data-gde-status]'
+                );
+
+            const stats =
+                this.ui.querySelector(
+                    '[data-gde-stats]'
+                );
+
+            const queued =
+                [...this.db.candidates.values()]
+                    .filter(
+                        candidate =>
+                            candidate.status ===
+                            'queued'
+                    ).length;
+
+            const scheduler =
+                this.scheduler.snapshot();
+
+            status.textContent =
+                this.stopRequested
+                    ? 'Stopped'
+                    : this.paused
+                        ? 'Paused'
+                        : this.running
+                            ? 'Running'
+                            : 'Idle';
+
+            stats.textContent =
+                [
+                    `Candidates: ${this.db.candidates.size}`,
+                    `Queued: ${queued}`,
+                    `Resources: ${this.db.resources.size}`,
+                    `Discoveries: ${this.db.stats.discoveries}`,
+                    `Requests: ${this.requestsStarted}/${CONFIG.maxRequests}`,
+                    `In-flight: ${this.inFlight}`,
+                    `Concurrency: ${scheduler.currentConcurrency}/${scheduler.configuredConcurrency}`,
+                    `Succeeded: ${this.db.stats.requestsSucceeded}`,
+                    `Failed: ${this.db.stats.requestsFailed}`,
+                    `Policy skips: ${this.db.stats.policySkips}`,
+                    `Origin skips: ${this.db.stats.originBudgetSkips}`,
+                    `Duplicates: ${this.db.stats.duplicateContent}`,
+                    `Network events: ${this.db.stats.networkEvents}`,
+                    `Graph edges: ${this.db.stats.graphEdges}`
+                ].join('\n');
+        }
+    }
+
+    // ============================================================
+    // Engine bootstrap
+    // ============================================================
+
+    const engine =
+        new GenericDiscoveryEngine();
+
+    window.GenericDiscoveryEngine =
+        engine;
+
+    function initializeUI() {
+        if (
+            document.documentElement
+        ) {
+            engine.buildUI();
+        } else {
+            setTimeout(
+                initializeUI,
+                50
+            );
+        }
+    }
+
+    initializeUI();
+
+    // Start automatically after the page's
+    // initial DOM becomes available.
+    if (
+        document.readyState ===
+        'loading'
+    ) {
+        document.addEventListener(
+            'DOMContentLoaded',
+            () => {
+                engine.start();
+            },
+            {
+                once: true
+            }
+        );
+    } else {
+        engine.start();
+    }
+
+})();

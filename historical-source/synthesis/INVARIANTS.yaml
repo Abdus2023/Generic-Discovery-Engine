@@ -1,0 +1,243 @@
+{
+  "schema_version": "protocol-v9",
+  "invariants": [
+    {
+      "invariant_id": "inv-001",
+      "statement": "Candidate is the scheduled work identity",
+      "scope": "all complete recovered occurrences",
+      "status": "SUPPORTED",
+      "supporting_snapshots": [
+        "snapshot-0001",
+        "snapshot-0003",
+        "snapshot-0005",
+        "snapshot-0006",
+        "snapshot-0008",
+        "snapshot-0007",
+        "snapshot-0009",
+        "snapshot-0011",
+        "snapshot-0010",
+        "snapshot-0012",
+        "snapshot-0013",
+        "snapshot-0014"
+      ],
+      "exceptions": [],
+      "evidence_refs": [
+        "syn-ev-00001",
+        "syn-ev-00013",
+        "syn-ev-00028",
+        "syn-ev-00043",
+        "syn-ev-00058",
+        "syn-ev-00074",
+        "syn-ev-00090",
+        "syn-ev-00104",
+        "syn-ev-00120",
+        "syn-ev-00134",
+        "syn-ev-00152",
+        "syn-ev-00170"
+      ]
+    },
+    {
+      "invariant_id": "inv-002",
+      "statement": "Acquisition precedes recognition/interpretation in the workflow",
+      "scope": "all complete recovered occurrences",
+      "status": "SUPPORTED",
+      "supporting_snapshots": [
+        "snapshot-0001",
+        "snapshot-0003",
+        "snapshot-0005",
+        "snapshot-0006",
+        "snapshot-0008",
+        "snapshot-0007",
+        "snapshot-0009",
+        "snapshot-0011",
+        "snapshot-0010",
+        "snapshot-0012",
+        "snapshot-0013",
+        "snapshot-0014"
+      ],
+      "exceptions": [],
+      "evidence_refs": [
+        "syn-ev-00006",
+        "syn-ev-00018",
+        "syn-ev-00033",
+        "syn-ev-00048",
+        "syn-ev-00063",
+        "syn-ev-00079",
+        "syn-ev-00094",
+        "syn-ev-00109",
+        "syn-ev-00124",
+        "syn-ev-00139",
+        "syn-ev-00157",
+        "syn-ev-00175"
+      ]
+    },
+    {
+      "invariant_id": "inv-003",
+      "statement": "Observations preserve acquisition results separately from discoveries",
+      "scope": "all complete recovered occurrences",
+      "status": "SUPPORTED",
+      "supporting_snapshots": [
+        "snapshot-0001",
+        "snapshot-0003",
+        "snapshot-0005",
+        "snapshot-0006",
+        "snapshot-0008",
+        "snapshot-0007",
+        "snapshot-0009",
+        "snapshot-0011",
+        "snapshot-0010",
+        "snapshot-0012",
+        "snapshot-0013",
+        "snapshot-0014"
+      ],
+      "exceptions": [],
+      "evidence_refs": [
+        "syn-ev-00002",
+        "syn-ev-00014",
+        "syn-ev-00029",
+        "syn-ev-00044",
+        "syn-ev-00059",
+        "syn-ev-00075",
+        "syn-ev-00091",
+        "syn-ev-00105",
+        "syn-ev-00121",
+        "syn-ev-00135",
+        "syn-ev-00153",
+        "syn-ev-00171"
+      ]
+    },
+    {
+      "invariant_id": "inv-004",
+      "statement": "Discoveries can feed further candidate work",
+      "scope": "all complete recovered occurrences",
+      "status": "SUPPORTED",
+      "supporting_snapshots": [
+        "snapshot-0001",
+        "snapshot-0003",
+        "snapshot-0005",
+        "snapshot-0006",
+        "snapshot-0008",
+        "snapshot-0007",
+        "snapshot-0009",
+        "snapshot-0011",
+        "snapshot-0010",
+        "snapshot-0012",
+        "snapshot-0013",
+        "snapshot-0014"
+      ],
+      "exceptions": [],
+      "evidence_refs": [
+        "syn-ev-00007",
+        "syn-ev-00019",
+        "syn-ev-00034",
+        "syn-ev-00049",
+        "syn-ev-00064",
+        "syn-ev-00080",
+        "syn-ev-00095",
+        "syn-ev-00110",
+        "syn-ev-00125",
+        "syn-ev-00140",
+        "syn-ev-00158",
+        "syn-ev-00176"
+      ]
+    },
+    {
+      "invariant_id": "inv-005",
+      "statement": "The engine repeats over scheduled work",
+      "scope": "all complete recovered occurrences",
+      "status": "SUPPORTED",
+      "supporting_snapshots": [
+        "snapshot-0001",
+        "snapshot-0003",
+        "snapshot-0005",
+        "snapshot-0006",
+        "snapshot-0008",
+        "snapshot-0007",
+        "snapshot-0009",
+        "snapshot-0011",
+        "snapshot-0010",
+        "snapshot-0012",
+        "snapshot-0013",
+        "snapshot-0014"
+      ],
+      "exceptions": [],
+      "evidence_refs": [
+        "syn-ev-00008",
+        "syn-ev-00020",
+        "syn-ev-00035",
+        "syn-ev-00050",
+        "syn-ev-00065",
+        "syn-ev-00081",
+        "syn-ev-00096",
+        "syn-ev-00111",
+        "syn-ev-00126",
+        "syn-ev-00141",
+        "syn-ev-00159",
+        "syn-ev-00177"
+      ]
+    },
+    {
+      "invariant_id": "inv-006",
+      "statement": "Recovered acquisition is web-protocol coupled",
+      "scope": "all complete recovered occurrences",
+      "status": "SUPPORTED",
+      "supporting_snapshots": [
+        "snapshot-0001",
+        "snapshot-0003",
+        "snapshot-0005",
+        "snapshot-0006",
+        "snapshot-0008",
+        "snapshot-0007",
+        "snapshot-0009",
+        "snapshot-0011",
+        "snapshot-0010",
+        "snapshot-0012",
+        "snapshot-0013",
+        "snapshot-0014"
+      ],
+      "exceptions": [
+        "Current protocol-generic proposals are retrospective/current, not recovered historical implementation"
+      ],
+      "evidence_refs": [
+        "syn-ev-00006",
+        "syn-ev-00018",
+        "syn-ev-00033",
+        "syn-ev-00048",
+        "syn-ev-00063",
+        "syn-ev-00079",
+        "syn-ev-00094",
+        "syn-ev-00109",
+        "syn-ev-00124",
+        "syn-ev-00139",
+        "syn-ev-00157",
+        "syn-ev-00175"
+      ]
+    },
+    {
+      "invariant_id": "inv-007",
+      "statement": "Provider abstraction and ownership remain unchanged",
+      "scope": "v0.1-v0.7.1",
+      "status": "CONTRADICTED",
+      "supporting_snapshots": [],
+      "exceptions": [
+        "v0.1 uses HtmlRecognizer",
+        "provider sets and signatures vary",
+        "v0.7.1 centralizes policy/ledger and changes provider interaction"
+      ],
+      "evidence_refs": [
+        "syn-ev-00004",
+        "syn-ev-00016",
+        "syn-ev-00031",
+        "syn-ev-00046",
+        "syn-ev-00061",
+        "syn-ev-00077",
+        "syn-ev-00093",
+        "syn-ev-00107",
+        "syn-ev-00123",
+        "syn-ev-00137",
+        "syn-ev-00155",
+        "syn-ev-00173"
+      ]
+    }
+  ]
+}

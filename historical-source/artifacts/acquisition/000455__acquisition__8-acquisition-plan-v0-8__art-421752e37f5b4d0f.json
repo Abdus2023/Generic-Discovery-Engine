@@ -1,0 +1,31 @@
+{
+  "id": "plan-42",
+  "candidateId": "candidate-19",
+  "target": "https://example.com/api/catalog",
+  "method": "GET",
+
+  "requiredCapabilities": [
+    "network.http",
+    "network.get",
+    "same-origin",
+    "text-response"
+  ],
+
+  "grantedCapabilities": [
+    "network.http",
+    "network.get",
+    "same-origin",
+    "text-response"
+  ],
+
+  "missingCapabilities": [],
+
+  "allowed": true,
+  "reason": null,
+
+  "expectedType": "api",
+  "priority": 0.91,
+  "origin": "https://example.com",
+
+  "policyVersion": 8
+}

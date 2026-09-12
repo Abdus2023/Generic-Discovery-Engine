@@ -1,0 +1,3981 @@
+{
+  "schema_version": "1.0",
+  "graph_type": "OBLIGATION_DEPENDENCY_GRAPH",
+  "input_contract_status": "INPUT_CONTRACT_FAILED",
+  "nodes": [
+    "OBL-CANDIDATE-IDENTITY",
+    "OBL-CANDIDATE-EQUIVALENCE",
+    "OBL-DEDUP-SCOPES",
+    "OBL-CANDIDATE-ORIGIN",
+    "OBL-CANDIDATE-PARENT",
+    "OBL-CANDIDATE-STATE",
+    "OBL-CANDIDATE-PRIORITY",
+    "OBL-CANDIDATE-ATTEMPTS",
+    "OBL-CANDIDATE-TIMESTAMPS",
+    "OBL-CLAIM-EXCLUSIVITY",
+    "OBL-TERMINAL-OWNERSHIP",
+    "OBL-ACQ-BEFORE-INTERP",
+    "OBL-ACQ-OUTCOME",
+    "OBL-ACQ-METADATA",
+    "OBL-ACQ-TIMEOUT",
+    "OBL-ACQ-SCOPE",
+    "OBL-CANCELLATION",
+    "OBL-OBS-DISTINCT",
+    "OBL-OBS-SOURCE",
+    "OBL-OBS-OUTCOMES",
+    "OBL-RECOGNITION-DISTINCT",
+    "OBL-RECOGNITION-OUTCOMES",
+    "OBL-PROVIDER-CONTRACT",
+    "OBL-PROVIDER-FAILURE",
+    "OBL-PROVIDER-ORDER",
+    "OBL-DISCOVERY-RECORD",
+    "OBL-EXPANSION-RECURSIVE",
+    "OBL-EXPANSION-VS-RETRY",
+    "OBL-CANDIDATE-ADMISSION",
+    "OBL-KNOWLEDGE",
+    "OBL-BOUNDED-CONCURRENCY",
+    "OBL-SCHEDULER-TERMINATION",
+    "OBL-WORKER-FAILURE",
+    "OBL-RETRY",
+    "OBL-PROVENANCE",
+    "OBL-PROVENANCE-INTEGRITY",
+    "OBL-REMOTE-DATA",
+    "OBL-AUTHORITY",
+    "OBL-PARSER",
+    "OBL-RESOURCE",
+    "OBL-UNBOUNDED",
+    "OBL-LIFECYCLE-OBS",
+    "OBL-AUDIT",
+    "OBL-SILENT-FAILURE",
+    "OBL-PERSIST-COMPAT",
+    "OBL-PERSIST-CORRUPTION",
+    "OBL-EXPORT",
+    "OBL-UI",
+    "OBL-PRIVATE-SHAPE",
+    "OBL-CONTRACT-INPUT",
+    "OBL-ERROR-CONTRACT",
+    "OBL-REGRESSION",
+    "OBL-PARSE-DEFECT",
+    "OBL-WEB-GENERALIZE"
+  ],
+  "edges": [
+    {
+      "from": "OBL-ACQ-BEFORE-INTERP",
+      "to": "OBL-CANDIDATE-IDENTITY",
+      "relation": "REQUIRES",
+      "dependency_id": "DEP-001"
+    },
+    {
+      "from": "OBL-ACQ-METADATA",
+      "to": "OBL-OBS-DISTINCT",
+      "relation": "REQUIRES",
+      "dependency_id": "DEP-002"
+    },
+    {
+      "from": "OBL-ACQ-METADATA",
+      "to": "OBL-OBS-SOURCE",
+      "relation": "REQUIRES",
+      "dependency_id": "DEP-003"
+    },
+    {
+      "from": "OBL-ACQ-OUTCOME",
+      "to": "OBL-ACQ-BEFORE-INTERP",
+      "relation": "REQUIRES",
+      "dependency_id": "DEP-004"
+    },
+    {
+      "from": "OBL-ACQ-OUTCOME",
+      "to": "OBL-CANDIDATE-IDENTITY",
+      "relation": "REQUIRES",
+      "dependency_id": "DEP-005"
+    },
+    {
+      "from": "OBL-ACQ-SCOPE",
+      "to": "OBL-ACQ-BEFORE-INTERP",
+      "relation": "REQUIRES",
+      "dependency_id": "DEP-006"
+    },
+    {
+      "from": "OBL-ACQ-SCOPE",
+      "to": "OBL-AUTHORITY",
+      "relation": "REQUIRES",
+      "dependency_id": "DEP-007"
+    },
+    {
+      "from": "OBL-ACQ-TIMEOUT",
+      "to": "OBL-ACQ-BEFORE-INTERP",
+      "relation": "REQUIRES",
+      "dependency_id": "DEP-008"
+    },
+    {
+      "from": "OBL-AUDIT",
+      "to": "OBL-LIFECYCLE-OBS",
+      "relation": "REQUIRES",
+      "dependency_id": "DEP-009"
+    },
+    {
+      "from": "OBL-AUDIT",
+      "to": "OBL-PROVENANCE",
+      "relation": "REQUIRES",
+      "dependency_id": "DEP-010"
+    },
+    {
+      "from": "OBL-AUDIT",
+      "to": "OBL-PROVENANCE-INTEGRITY",
+      "relation": "REQUIRES",
+      "dependency_id": "DEP-011"
+    },
+    {
+      "from": "OBL-CANCELLATION",
+      "to": "OBL-ACQ-TIMEOUT",
+      "relation": "REQUIRES",
+      "dependency_id": "DEP-012"
+    },
+    {
+      "from": "OBL-CANCELLATION",
+      "to": "OBL-CANDIDATE-STATE",
+      "relation": "REQUIRES",
+      "dependency_id": "DEP-013"
+    },
+    {
+      "from": "OBL-CANCELLATION",
+      "to": "OBL-SCHEDULER-TERMINATION",
+      "relation": "REQUIRES",
+      "dependency_id": "DEP-014"
+    },
+    {
+      "from": "OBL-CANCELLATION",
+      "to": "OBL-TERMINAL-OWNERSHIP",
+      "relation": "REQUIRES",
+      "dependency_id": "DEP-015"
+    },
+    {
+      "from": "OBL-CANDIDATE-ADMISSION",
+      "to": "OBL-CANDIDATE-IDENTITY",
+      "relation": "REQUIRES",
+      "dependency_id": "DEP-016"
+    },
+    {
+      "from": "OBL-CANDIDATE-ADMISSION",
+      "to": "OBL-CANDIDATE-PARENT",
+      "relation": "REQUIRES",
+      "dependency_id": "DEP-017"
+    },
+    {
+      "from": "OBL-CANDIDATE-ADMISSION",
+      "to": "OBL-CANDIDATE-STATE",
+      "relation": "REQUIRES",
+      "dependency_id": "DEP-018"
+    },
+    {
+      "from": "OBL-CANDIDATE-ADMISSION",
+      "to": "OBL-DEDUP-SCOPES",
+      "relation": "REQUIRES",
+      "dependency_id": "DEP-019"
+    },
+    {
+      "from": "OBL-CANDIDATE-ATTEMPTS",
+      "to": "OBL-CANDIDATE-STATE",
+      "relation": "REQUIRES",
+      "dependency_id": "DEP-020"
+    },
+    {
+      "from": "OBL-CANDIDATE-EQUIVALENCE",
+      "to": "OBL-CANDIDATE-IDENTITY",
+      "relation": "REQUIRES",
+      "dependency_id": "DEP-021"
+    },
+    {
+      "from": "OBL-CANDIDATE-ORIGIN",
+      "to": "OBL-CANDIDATE-IDENTITY",
+      "relation": "REQUIRES",
+      "dependency_id": "DEP-022"
+    },
+    {
+      "from": "OBL-CANDIDATE-PARENT",
+      "to": "OBL-CANDIDATE-IDENTITY",
+      "relation": "REQUIRES",
+      "dependency_id": "DEP-023"
+    },
+    {
+      "from": "OBL-CANDIDATE-PRIORITY",
+      "to": "OBL-CANDIDATE-IDENTITY",
+      "relation": "REQUIRES",
+      "dependency_id": "DEP-024"
+    },
+    {
+      "from": "OBL-CANDIDATE-STATE",
+      "to": "OBL-CANDIDATE-IDENTITY",
+      "relation": "REQUIRES",
+      "dependency_id": "DEP-025"
+    },
+    {
+      "from": "OBL-CANDIDATE-TIMESTAMPS",
+      "to": "OBL-CANDIDATE-STATE",
+      "relation": "REQUIRES",
+      "dependency_id": "DEP-026"
+    },
+    {
+      "from": "OBL-CLAIM-EXCLUSIVITY",
+      "to": "OBL-CANDIDATE-IDENTITY",
+      "relation": "REQUIRES",
+      "dependency_id": "DEP-027"
+    },
+    {
+      "from": "OBL-CLAIM-EXCLUSIVITY",
+      "to": "OBL-CANDIDATE-STATE",
+      "relation": "REQUIRES",
+      "dependency_id": "DEP-028"
+    },
+    {
+      "from": "OBL-DEDUP-SCOPES",
+      "to": "OBL-CANDIDATE-IDENTITY",
+      "relation": "REQUIRES",
+      "dependency_id": "DEP-029"
+    },
+    {
+      "from": "OBL-DISCOVERY-RECORD",
+      "to": "OBL-OBS-SOURCE",
+      "relation": "REQUIRES",
+      "dependency_id": "DEP-030"
+    },
+    {
+      "from": "OBL-DISCOVERY-RECORD",
+      "to": "OBL-RECOGNITION-DISTINCT",
+      "relation": "REQUIRES",
+      "dependency_id": "DEP-031"
+    },
+    {
+      "from": "OBL-ERROR-CONTRACT",
+      "to": "OBL-OBS-OUTCOMES",
+      "relation": "REQUIRES",
+      "dependency_id": "DEP-032"
+    },
+    {
+      "from": "OBL-ERROR-CONTRACT",
+      "to": "OBL-RECOGNITION-OUTCOMES",
+      "relation": "REQUIRES",
+      "dependency_id": "DEP-033"
+    },
+    {
+      "from": "OBL-EXPANSION-RECURSIVE",
+      "to": "OBL-CANDIDATE-ADMISSION",
+      "relation": "REQUIRES",
+      "dependency_id": "DEP-034"
+    },
+    {
+      "from": "OBL-EXPANSION-RECURSIVE",
+      "to": "OBL-DISCOVERY-RECORD",
+      "relation": "REQUIRES",
+      "dependency_id": "DEP-035"
+    },
+    {
+      "from": "OBL-EXPANSION-RECURSIVE",
+      "to": "OBL-RESOURCE",
+      "relation": "REQUIRES",
+      "dependency_id": "DEP-036"
+    },
+    {
+      "from": "OBL-EXPANSION-RECURSIVE",
+      "to": "OBL-SCHEDULER-TERMINATION",
+      "relation": "REQUIRES",
+      "dependency_id": "DEP-037"
+    },
+    {
+      "from": "OBL-EXPANSION-VS-RETRY",
+      "to": "OBL-EXPANSION-RECURSIVE",
+      "relation": "REQUIRES",
+      "dependency_id": "DEP-038"
+    },
+    {
+      "from": "OBL-EXPANSION-VS-RETRY",
+      "to": "OBL-RETRY",
+      "relation": "REQUIRES",
+      "dependency_id": "DEP-039"
+    },
+    {
+      "from": "OBL-EXPORT",
+      "to": "OBL-ERROR-CONTRACT",
+      "relation": "REQUIRES",
+      "dependency_id": "DEP-040"
+    },
+    {
+      "from": "OBL-EXPORT",
+      "to": "OBL-KNOWLEDGE",
+      "relation": "REQUIRES",
+      "dependency_id": "DEP-041"
+    },
+    {
+      "from": "OBL-EXPORT",
+      "to": "OBL-PROVENANCE",
+      "relation": "REQUIRES",
+      "dependency_id": "DEP-042"
+    },
+    {
+      "from": "OBL-KNOWLEDGE",
+      "to": "OBL-CANDIDATE-IDENTITY",
+      "relation": "REQUIRES",
+      "dependency_id": "DEP-043"
+    },
+    {
+      "from": "OBL-KNOWLEDGE",
+      "to": "OBL-DISCOVERY-RECORD",
+      "relation": "REQUIRES",
+      "dependency_id": "DEP-044"
+    },
+    {
+      "from": "OBL-KNOWLEDGE",
+      "to": "OBL-OBS-DISTINCT",
+      "relation": "REQUIRES",
+      "dependency_id": "DEP-045"
+    },
+    {
+      "from": "OBL-LIFECYCLE-OBS",
+      "to": "OBL-ACQ-OUTCOME",
+      "relation": "REQUIRES",
+      "dependency_id": "DEP-046"
+    },
+    {
+      "from": "OBL-LIFECYCLE-OBS",
+      "to": "OBL-CANDIDATE-STATE",
+      "relation": "REQUIRES",
+      "dependency_id": "DEP-047"
+    },
+    {
+      "from": "OBL-LIFECYCLE-OBS",
+      "to": "OBL-DISCOVERY-RECORD",
+      "relation": "REQUIRES",
+      "dependency_id": "DEP-048"
+    },
+    {
+      "from": "OBL-LIFECYCLE-OBS",
+      "to": "OBL-RECOGNITION-OUTCOMES",
+      "relation": "REQUIRES",
+      "dependency_id": "DEP-049"
+    },
+    {
+      "from": "OBL-OBS-DISTINCT",
+      "to": "OBL-ACQ-BEFORE-INTERP",
+      "relation": "REQUIRES",
+      "dependency_id": "DEP-050"
+    },
+    {
+      "from": "OBL-OBS-OUTCOMES",
+      "to": "OBL-ACQ-OUTCOME",
+      "relation": "REQUIRES",
+      "dependency_id": "DEP-051"
+    },
+    {
+      "from": "OBL-OBS-OUTCOMES",
+      "to": "OBL-OBS-DISTINCT",
+      "relation": "REQUIRES",
+      "dependency_id": "DEP-052"
+    },
+    {
+      "from": "OBL-OBS-SOURCE",
+      "to": "OBL-CANDIDATE-IDENTITY",
+      "relation": "REQUIRES",
+      "dependency_id": "DEP-053"
+    },
+    {
+      "from": "OBL-OBS-SOURCE",
+      "to": "OBL-OBS-DISTINCT",
+      "relation": "REQUIRES",
+      "dependency_id": "DEP-054"
+    },
+    {
+      "from": "OBL-PARSE-DEFECT",
+      "to": "OBL-REGRESSION",
+      "relation": "REQUIRES",
+      "dependency_id": "DEP-055"
+    },
+    {
+      "from": "OBL-PARSER",
+      "to": "OBL-RECOGNITION-DISTINCT",
+      "relation": "REQUIRES",
+      "dependency_id": "DEP-056"
+    },
+    {
+      "from": "OBL-PARSER",
+      "to": "OBL-REMOTE-DATA",
+      "relation": "REQUIRES",
+      "dependency_id": "DEP-057"
+    },
+    {
+      "from": "OBL-PERSIST-COMPAT",
+      "to": "OBL-ERROR-CONTRACT",
+      "relation": "REQUIRES",
+      "dependency_id": "DEP-058"
+    },
+    {
+      "from": "OBL-PERSIST-COMPAT",
+      "to": "OBL-KNOWLEDGE",
+      "relation": "REQUIRES",
+      "dependency_id": "DEP-059"
+    },
+    {
+      "from": "OBL-PERSIST-COMPAT",
+      "to": "OBL-PROVENANCE",
+      "relation": "REQUIRES",
+      "dependency_id": "DEP-060"
+    },
+    {
+      "from": "OBL-PERSIST-CORRUPTION",
+      "to": "OBL-PERSIST-COMPAT",
+      "relation": "REQUIRES",
+      "dependency_id": "DEP-061"
+    },
+    {
+      "from": "OBL-PERSIST-CORRUPTION",
+      "to": "OBL-SILENT-FAILURE",
+      "relation": "REQUIRES",
+      "dependency_id": "DEP-062"
+    },
+    {
+      "from": "OBL-PROVENANCE",
+      "to": "OBL-CANDIDATE-ORIGIN",
+      "relation": "REQUIRES",
+      "dependency_id": "DEP-063"
+    },
+    {
+      "from": "OBL-PROVENANCE",
+      "to": "OBL-CANDIDATE-PARENT",
+      "relation": "REQUIRES",
+      "dependency_id": "DEP-064"
+    },
+    {
+      "from": "OBL-PROVENANCE",
+      "to": "OBL-DISCOVERY-RECORD",
+      "relation": "REQUIRES",
+      "dependency_id": "DEP-065"
+    },
+    {
+      "from": "OBL-PROVENANCE",
+      "to": "OBL-OBS-SOURCE",
+      "relation": "REQUIRES",
+      "dependency_id": "DEP-066"
+    },
+    {
+      "from": "OBL-PROVENANCE-INTEGRITY",
+      "to": "OBL-PROVENANCE",
+      "relation": "REQUIRES",
+      "dependency_id": "DEP-067"
+    },
+    {
+      "from": "OBL-PROVIDER-CONTRACT",
+      "to": "OBL-RECOGNITION-DISTINCT",
+      "relation": "REQUIRES",
+      "dependency_id": "DEP-068"
+    },
+    {
+      "from": "OBL-PROVIDER-CONTRACT",
+      "to": "OBL-RECOGNITION-OUTCOMES",
+      "relation": "REQUIRES",
+      "dependency_id": "DEP-069"
+    },
+    {
+      "from": "OBL-PROVIDER-FAILURE",
+      "to": "OBL-PROVIDER-CONTRACT",
+      "relation": "REQUIRES",
+      "dependency_id": "DEP-070"
+    },
+    {
+      "from": "OBL-PROVIDER-FAILURE",
+      "to": "OBL-SILENT-FAILURE",
+      "relation": "REQUIRES",
+      "dependency_id": "DEP-071"
+    },
+    {
+      "from": "OBL-RECOGNITION-DISTINCT",
+      "to": "OBL-ACQ-BEFORE-INTERP",
+      "relation": "REQUIRES",
+      "dependency_id": "DEP-072"
+    },
+    {
+      "from": "OBL-RECOGNITION-DISTINCT",
+      "to": "OBL-OBS-DISTINCT",
+      "relation": "REQUIRES",
+      "dependency_id": "DEP-073"
+    },
+    {
+      "from": "OBL-RECOGNITION-OUTCOMES",
+      "to": "OBL-OBS-OUTCOMES",
+      "relation": "REQUIRES",
+      "dependency_id": "DEP-074"
+    },
+    {
+      "from": "OBL-RECOGNITION-OUTCOMES",
+      "to": "OBL-RECOGNITION-DISTINCT",
+      "relation": "REQUIRES",
+      "dependency_id": "DEP-075"
+    },
+    {
+      "from": "OBL-REMOTE-DATA",
+      "to": "OBL-ACQ-SCOPE",
+      "relation": "REQUIRES",
+      "dependency_id": "DEP-076"
+    },
+    {
+      "from": "OBL-REMOTE-DATA",
+      "to": "OBL-RECOGNITION-DISTINCT",
+      "relation": "REQUIRES",
+      "dependency_id": "DEP-077"
+    },
+    {
+      "from": "OBL-RETRY",
+      "to": "OBL-ACQ-TIMEOUT",
+      "relation": "REQUIRES",
+      "dependency_id": "DEP-078"
+    },
+    {
+      "from": "OBL-RETRY",
+      "to": "OBL-CANDIDATE-ATTEMPTS",
+      "relation": "REQUIRES",
+      "dependency_id": "DEP-079"
+    },
+    {
+      "from": "OBL-RETRY",
+      "to": "OBL-TERMINAL-OWNERSHIP",
+      "relation": "REQUIRES",
+      "dependency_id": "DEP-080"
+    },
+    {
+      "from": "OBL-SCHEDULER-TERMINATION",
+      "to": "OBL-BOUNDED-CONCURRENCY",
+      "relation": "REQUIRES",
+      "dependency_id": "DEP-081"
+    },
+    {
+      "from": "OBL-SCHEDULER-TERMINATION",
+      "to": "OBL-CANDIDATE-ADMISSION",
+      "relation": "REQUIRES",
+      "dependency_id": "DEP-082"
+    },
+    {
+      "from": "OBL-SCHEDULER-TERMINATION",
+      "to": "OBL-LIFECYCLE-OBS",
+      "relation": "REQUIRES",
+      "dependency_id": "DEP-083"
+    },
+    {
+      "from": "OBL-SCHEDULER-TERMINATION",
+      "to": "OBL-TERMINAL-OWNERSHIP",
+      "relation": "REQUIRES",
+      "dependency_id": "DEP-084"
+    },
+    {
+      "from": "OBL-SILENT-FAILURE",
+      "to": "OBL-OBS-OUTCOMES",
+      "relation": "REQUIRES",
+      "dependency_id": "DEP-085"
+    },
+    {
+      "from": "OBL-SILENT-FAILURE",
+      "to": "OBL-RECOGNITION-OUTCOMES",
+      "relation": "REQUIRES",
+      "dependency_id": "DEP-086"
+    },
+    {
+      "from": "OBL-TERMINAL-OWNERSHIP",
+      "to": "OBL-CANDIDATE-STATE",
+      "relation": "REQUIRES",
+      "dependency_id": "DEP-087"
+    },
+    {
+      "from": "OBL-TERMINAL-OWNERSHIP",
+      "to": "OBL-CLAIM-EXCLUSIVITY",
+      "relation": "REQUIRES",
+      "dependency_id": "DEP-088"
+    },
+    {
+      "from": "OBL-UNBOUNDED",
+      "to": "OBL-RESOURCE",
+      "relation": "REQUIRES",
+      "dependency_id": "DEP-089"
+    },
+    {
+      "from": "OBL-WEB-GENERALIZE",
+      "to": "OBL-ACQ-BEFORE-INTERP",
+      "relation": "REQUIRES",
+      "dependency_id": "DEP-090"
+    },
+    {
+      "from": "OBL-WEB-GENERALIZE",
+      "to": "OBL-ACQ-SCOPE",
+      "relation": "REQUIRES",
+      "dependency_id": "DEP-091"
+    },
+    {
+      "from": "OBL-WORKER-FAILURE",
+      "to": "OBL-CLAIM-EXCLUSIVITY",
+      "relation": "REQUIRES",
+      "dependency_id": "DEP-092"
+    },
+    {
+      "from": "OBL-WORKER-FAILURE",
+      "to": "OBL-SILENT-FAILURE",
+      "relation": "REQUIRES",
+      "dependency_id": "DEP-093"
+    },
+    {
+      "from": "OBL-WORKER-FAILURE",
+      "to": "OBL-TERMINAL-OWNERSHIP",
+      "relation": "REQUIRES",
+      "dependency_id": "DEP-094"
+    },
+    {
+      "from": "OBL-CANDIDATE-STATE",
+      "to": "OBL-CANDIDATE-IDENTITY",
+      "relation": "REFINES",
+      "dependency_id": "DEP-095"
+    },
+    {
+      "from": "OBL-CLAIM-EXCLUSIVITY",
+      "to": "OBL-CANDIDATE-STATE",
+      "relation": "REFINES",
+      "dependency_id": "DEP-096"
+    },
+    {
+      "from": "OBL-RESOURCE",
+      "to": "OBL-EXPANSION-RECURSIVE",
+      "relation": "CONSTRAINS",
+      "dependency_id": "DEP-097"
+    },
+    {
+      "from": "OBL-LIFECYCLE-OBS",
+      "to": "OBL-AUDIT",
+      "relation": "SUPPORTS",
+      "dependency_id": "DEP-098"
+    },
+    {
+      "from": "OBL-PROVENANCE-INTEGRITY",
+      "to": "OBL-PROVENANCE",
+      "relation": "STRENGTHENS",
+      "dependency_id": "DEP-099"
+    },
+    {
+      "from": "OBL-PROVIDER-FAILURE",
+      "to": "OBL-PROVIDER-CONTRACT",
+      "relation": "STRENGTHENS",
+      "dependency_id": "DEP-100"
+    }
+  ],
+  "relation_registry": [
+    "REQUIRES",
+    "SUPPORTS",
+    "ENABLES",
+    "REFINES",
+    "STRENGTHENS",
+    "CONSTRAINS",
+    "CONFLICTS_WITH",
+    "SUPERSEDES",
+    "DERIVED_FROM",
+    "VERIFIED_BY"
+  ],
+  "dependencies": [
+    {
+      "dependency_id": "DEP-001",
+      "from_obligation": "OBL-ACQ-BEFORE-INTERP",
+      "to_obligation": "OBL-CANDIDATE-IDENTITY",
+      "relation": "REQUIRES",
+      "condition": "APPLICABLE_WHEN_DEPENDENT_OBLIGATION_IS_IN_SCOPE",
+      "reason": "The dependent behavior must correlate the same candidate across lifecycle operations.",
+      "evidence": [
+        "NE-V9-CLAIMS",
+        "NE-V9-INVARIANTS"
+      ],
+      "dependency_type": "HISTORICAL_DEPENDENCY",
+      "scope": {
+        "historical": "TRUE",
+        "current": "UNKNOWN",
+        "future": "TRUE"
+      },
+      "valid_from": "v0.1.0",
+      "valid_until": "UNKNOWN",
+      "status": "SUPPORTED"
+    },
+    {
+      "dependency_id": "DEP-002",
+      "from_obligation": "OBL-ACQ-METADATA",
+      "to_obligation": "OBL-OBS-DISTINCT",
+      "relation": "REQUIRES",
+      "condition": "APPLICABLE_WHEN_DEPENDENT_OBLIGATION_IS_IN_SCOPE",
+      "reason": "The dependent behavior needs acquisition evidence distinct from interpretation.",
+      "evidence": [
+        "NE-V3-DATA",
+        "NE-V8-PROVENANCE",
+        "NE-V9-CLAIMS",
+        "NE-V9-INVARIANTS"
+      ],
+      "dependency_type": "FUTURE_ENGINEERING_DEPENDENCY",
+      "scope": {
+        "historical": "FALSE",
+        "current": "UNKNOWN",
+        "future": "TRUE"
+      },
+      "valid_from": "v0.1.0",
+      "valid_until": "UNKNOWN",
+      "status": "FORMALIZED_ENGINEERING"
+    },
+    {
+      "dependency_id": "DEP-003",
+      "from_obligation": "OBL-ACQ-METADATA",
+      "to_obligation": "OBL-OBS-SOURCE",
+      "relation": "REQUIRES",
+      "condition": "APPLICABLE_WHEN_DEPENDENT_OBLIGATION_IS_IN_SCOPE",
+      "reason": "The dependent behavior needs an attributable source candidate for observation/discovery correlation.",
+      "evidence": [
+        "NE-V3-DATA",
+        "NE-V8-PROVENANCE",
+        "NE-V9-INVARIANTS"
+      ],
+      "dependency_type": "FUTURE_ENGINEERING_DEPENDENCY",
+      "scope": {
+        "historical": "FALSE",
+        "current": "UNKNOWN",
+        "future": "TRUE"
+      },
+      "valid_from": "v0.1.0",
+      "valid_until": "UNKNOWN",
+      "status": "FORMALIZED_ENGINEERING"
+    },
+    {
+      "dependency_id": "DEP-004",
+      "from_obligation": "OBL-ACQ-OUTCOME",
+      "to_obligation": "OBL-ACQ-BEFORE-INTERP",
+      "relation": "REQUIRES",
+      "condition": "APPLICABLE_WHEN_DEPENDENT_OBLIGATION_IS_IN_SCOPE",
+      "reason": "Acquisition outcome recording consumes or semantically assumes the property guaranteed by Acquisition precedes interpretation; satisfying the dependent without that prerequisite would leave its stated invariant undefined.",
+      "evidence": [
+        "NE-V8-FAILURE-MATRIX",
+        "NE-V9-CLAIMS",
+        "NE-V9-INVARIANTS"
+      ],
+      "dependency_type": "FUTURE_ENGINEERING_DEPENDENCY",
+      "scope": {
+        "historical": "FALSE",
+        "current": "UNKNOWN",
+        "future": "TRUE"
+      },
+      "valid_from": "v0.1.0",
+      "valid_until": "UNKNOWN",
+      "status": "FORMALIZED_ENGINEERING"
+    },
+    {
+      "dependency_id": "DEP-005",
+      "from_obligation": "OBL-ACQ-OUTCOME",
+      "to_obligation": "OBL-CANDIDATE-IDENTITY",
+      "relation": "REQUIRES",
+      "condition": "APPLICABLE_WHEN_DEPENDENT_OBLIGATION_IS_IN_SCOPE",
+      "reason": "The dependent behavior must correlate the same candidate across lifecycle operations.",
+      "evidence": [
+        "NE-V8-FAILURE-MATRIX",
+        "NE-V9-CLAIMS",
+        "NE-V9-INVARIANTS"
+      ],
+      "dependency_type": "FUTURE_ENGINEERING_DEPENDENCY",
+      "scope": {
+        "historical": "FALSE",
+        "current": "UNKNOWN",
+        "future": "TRUE"
+      },
+      "valid_from": "v0.1.0",
+      "valid_until": "UNKNOWN",
+      "status": "FORMALIZED_ENGINEERING"
+    },
+    {
+      "dependency_id": "DEP-006",
+      "from_obligation": "OBL-ACQ-SCOPE",
+      "to_obligation": "OBL-ACQ-BEFORE-INTERP",
+      "relation": "REQUIRES",
+      "condition": "APPLICABLE_WHEN_DEPENDENT_OBLIGATION_IS_IN_SCOPE",
+      "reason": "Acquisition scope enforcement consumes or semantically assumes the property guaranteed by Acquisition precedes interpretation; satisfying the dependent without that prerequisite would leave its stated invariant undefined.",
+      "evidence": [
+        "NE-V8-BOUNDARIES",
+        "NE-V9-CLAIMS",
+        "NE-V9-INVARIANTS"
+      ],
+      "dependency_type": "FUTURE_ENGINEERING_DEPENDENCY",
+      "scope": {
+        "historical": "FALSE",
+        "current": "UNKNOWN",
+        "future": "TRUE"
+      },
+      "valid_from": "v0.1.0",
+      "valid_until": "UNKNOWN",
+      "status": "FORMALIZED_ENGINEERING"
+    },
+    {
+      "dependency_id": "DEP-007",
+      "from_obligation": "OBL-ACQ-SCOPE",
+      "to_obligation": "OBL-AUTHORITY",
+      "relation": "REQUIRES",
+      "condition": "APPLICABLE_WHEN_DEPENDENT_OBLIGATION_IS_IN_SCOPE",
+      "reason": "Acquisition scope enforcement consumes or semantically assumes the property guaranteed by Explicit authority scope; satisfying the dependent without that prerequisite would leave its stated invariant undefined.",
+      "evidence": [
+        "NE-V8-AUTHORITY",
+        "NE-V8-BOUNDARIES",
+        "NE-V9-INVARIANTS"
+      ],
+      "dependency_type": "FUTURE_ENGINEERING_DEPENDENCY",
+      "scope": {
+        "historical": "FALSE",
+        "current": "UNKNOWN",
+        "future": "TRUE"
+      },
+      "valid_from": "v0.1.0",
+      "valid_until": "UNKNOWN",
+      "status": "FORMALIZED_ENGINEERING"
+    },
+    {
+      "dependency_id": "DEP-008",
+      "from_obligation": "OBL-ACQ-TIMEOUT",
+      "to_obligation": "OBL-ACQ-BEFORE-INTERP",
+      "relation": "REQUIRES",
+      "condition": "APPLICABLE_WHEN_DEPENDENT_OBLIGATION_IS_IN_SCOPE",
+      "reason": "Finite acquisition timeout consumes or semantically assumes the property guaranteed by Acquisition precedes interpretation; satisfying the dependent without that prerequisite would leave its stated invariant undefined.",
+      "evidence": [
+        "NE-V8-BOUNDS",
+        "NE-V9-CLAIMS",
+        "NE-V9-INVARIANTS"
+      ],
+      "dependency_type": "FUTURE_ENGINEERING_DEPENDENCY",
+      "scope": {
+        "historical": "FALSE",
+        "current": "UNKNOWN",
+        "future": "TRUE"
+      },
+      "valid_from": "v0.1.0",
+      "valid_until": "UNKNOWN",
+      "status": "FORMALIZED_ENGINEERING"
+    },
+    {
+      "dependency_id": "DEP-009",
+      "from_obligation": "OBL-AUDIT",
+      "to_obligation": "OBL-LIFECYCLE-OBS",
+      "relation": "REQUIRES",
+      "condition": "APPLICABLE_WHEN_DEPENDENT_OBLIGATION_IS_IN_SCOPE",
+      "reason": "The dependent behavior needs observable lifecycle evidence to diagnose or verify satisfaction.",
+      "evidence": [
+        "NE-V8-FAILURE-MATRIX",
+        "NE-V8-OBSERVE",
+        "NE-V9-CLAIMS"
+      ],
+      "dependency_type": "FUTURE_ENGINEERING_DEPENDENCY",
+      "scope": {
+        "historical": "FALSE",
+        "current": "UNKNOWN",
+        "future": "TRUE"
+      },
+      "valid_from": "v0.6.0",
+      "valid_until": "UNKNOWN",
+      "status": "FORMALIZED_ENGINEERING"
+    },
+    {
+      "dependency_id": "DEP-010",
+      "from_obligation": "OBL-AUDIT",
+      "to_obligation": "OBL-PROVENANCE",
+      "relation": "REQUIRES",
+      "condition": "APPLICABLE_WHEN_DEPENDENT_OBLIGATION_IS_IN_SCOPE",
+      "reason": "The dependent behavior assumes visible derivation associations.",
+      "evidence": [
+        "NE-V8-OBSERVE",
+        "NE-V8-PROVENANCE",
+        "NE-V9-CLAIMS",
+        "NE-V9-INVARIANTS"
+      ],
+      "dependency_type": "FUTURE_ENGINEERING_DEPENDENCY",
+      "scope": {
+        "historical": "FALSE",
+        "current": "UNKNOWN",
+        "future": "TRUE"
+      },
+      "valid_from": "v0.6.0",
+      "valid_until": "UNKNOWN",
+      "status": "FORMALIZED_ENGINEERING"
+    },
+    {
+      "dependency_id": "DEP-011",
+      "from_obligation": "OBL-AUDIT",
+      "to_obligation": "OBL-PROVENANCE-INTEGRITY",
+      "relation": "REQUIRES",
+      "condition": "APPLICABLE_WHEN_DEPENDENT_OBLIGATION_IS_IN_SCOPE",
+      "reason": "The dependent audit/integrity behavior cannot be claimed while provenance mutation remains unverified.",
+      "evidence": [
+        "NE-V8-OBSERVE",
+        "NE-V8-PROVENANCE",
+        "NE-V9-CLAIMS",
+        "NE-V9-UNKNOWNS"
+      ],
+      "dependency_type": "FUTURE_ENGINEERING_DEPENDENCY",
+      "scope": {
+        "historical": "FALSE",
+        "current": "UNKNOWN",
+        "future": "TRUE"
+      },
+      "valid_from": "v0.6.0",
+      "valid_until": "UNKNOWN",
+      "status": "FORMALIZED_ENGINEERING"
+    },
+    {
+      "dependency_id": "DEP-012",
+      "from_obligation": "OBL-CANCELLATION",
+      "to_obligation": "OBL-ACQ-TIMEOUT",
+      "relation": "REQUIRES",
+      "condition": "APPLICABLE_WHEN_DEPENDENT_OBLIGATION_IS_IN_SCOPE",
+      "reason": "Cancellation verification consumes or semantically assumes the property guaranteed by Finite acquisition timeout; satisfying the dependent without that prerequisite would leave its stated invariant undefined.",
+      "evidence": [
+        "NE-V8-BOUNDS",
+        "NE-V8-CANCEL",
+        "NE-V9-CLAIMS"
+      ],
+      "dependency_type": "FUTURE_ENGINEERING_DEPENDENCY",
+      "scope": {
+        "historical": "FALSE",
+        "current": "UNKNOWN",
+        "future": "TRUE"
+      },
+      "valid_from": "v0.3.0",
+      "valid_until": "UNKNOWN",
+      "status": "FORMALIZED_ENGINEERING"
+    },
+    {
+      "dependency_id": "DEP-013",
+      "from_obligation": "OBL-CANCELLATION",
+      "to_obligation": "OBL-CANDIDATE-STATE",
+      "relation": "REQUIRES",
+      "condition": "APPLICABLE_WHEN_DEPENDENT_OBLIGATION_IS_IN_SCOPE",
+      "reason": "The dependent behavior reads or mutates candidate lifecycle state and needs legal transitions.",
+      "evidence": [
+        "NE-V8-CANCEL",
+        "NE-V8-CLAIM",
+        "NE-V8-RETRY",
+        "NE-V9-CLAIMS"
+      ],
+      "dependency_type": "FUTURE_ENGINEERING_DEPENDENCY",
+      "scope": {
+        "historical": "FALSE",
+        "current": "UNKNOWN",
+        "future": "TRUE"
+      },
+      "valid_from": "v0.3.0",
+      "valid_until": "UNKNOWN",
+      "status": "FORMALIZED_ENGINEERING"
+    },
+    {
+      "dependency_id": "DEP-014",
+      "from_obligation": "OBL-CANCELLATION",
+      "to_obligation": "OBL-SCHEDULER-TERMINATION",
+      "relation": "REQUIRES",
+      "condition": "APPLICABLE_WHEN_DEPENDENT_OBLIGATION_IS_IN_SCOPE",
+      "reason": "Cancellation verification consumes or semantically assumes the property guaranteed by In-flight-aware termination; satisfying the dependent without that prerequisite would leave its stated invariant undefined.",
+      "evidence": [
+        "NE-V8-CANCEL",
+        "NE-V8-CLAIM",
+        "NE-V9-INVARIANTS"
+      ],
+      "dependency_type": "FUTURE_ENGINEERING_DEPENDENCY",
+      "scope": {
+        "historical": "FALSE",
+        "current": "UNKNOWN",
+        "future": "TRUE"
+      },
+      "valid_from": "v0.3.0",
+      "valid_until": "UNKNOWN",
+      "status": "FORMALIZED_ENGINEERING"
+    },
+    {
+      "dependency_id": "DEP-015",
+      "from_obligation": "OBL-CANCELLATION",
+      "to_obligation": "OBL-TERMINAL-OWNERSHIP",
+      "relation": "REQUIRES",
+      "condition": "APPLICABLE_WHEN_DEPENDENT_OBLIGATION_IS_IN_SCOPE",
+      "reason": "The dependent behavior cannot close safely while owned work lacks terminal accountability.",
+      "evidence": [
+        "NE-V8-CANCEL",
+        "NE-V8-CLAIM"
+      ],
+      "dependency_type": "FUTURE_ENGINEERING_DEPENDENCY",
+      "scope": {
+        "historical": "FALSE",
+        "current": "UNKNOWN",
+        "future": "TRUE"
+      },
+      "valid_from": "v0.3.0",
+      "valid_until": "UNKNOWN",
+      "status": "FORMALIZED_ENGINEERING"
+    },
+    {
+      "dependency_id": "DEP-016",
+      "from_obligation": "OBL-CANDIDATE-ADMISSION",
+      "to_obligation": "OBL-CANDIDATE-IDENTITY",
+      "relation": "REQUIRES",
+      "condition": "APPLICABLE_WHEN_DEPENDENT_OBLIGATION_IS_IN_SCOPE",
+      "reason": "The dependent behavior must correlate the same candidate across lifecycle operations.",
+      "evidence": [
+        "NE-V8-DUPLICATE",
+        "NE-V9-CLAIMS",
+        "NE-V9-INVARIANTS"
+      ],
+      "dependency_type": "HISTORICAL_DEPENDENCY",
+      "scope": {
+        "historical": "TRUE",
+        "current": "UNKNOWN",
+        "future": "TRUE"
+      },
+      "valid_from": "v0.1.0",
+      "valid_until": "UNKNOWN",
+      "status": "SUPPORTED"
+    },
+    {
+      "dependency_id": "DEP-017",
+      "from_obligation": "OBL-CANDIDATE-ADMISSION",
+      "to_obligation": "OBL-CANDIDATE-PARENT",
+      "relation": "REQUIRES",
+      "condition": "APPLICABLE_WHEN_DEPENDENT_OBLIGATION_IS_IN_SCOPE",
+      "reason": "Candidate admission transaction consumes or semantically assumes the property guaranteed by Candidate parentage preservation; satisfying the dependent without that prerequisite would leave its stated invariant undefined.",
+      "evidence": [
+        "NE-V8-DUPLICATE",
+        "NE-V8-PROVENANCE",
+        "NE-V9-CLAIMS"
+      ],
+      "dependency_type": "FUTURE_ENGINEERING_DEPENDENCY",
+      "scope": {
+        "historical": "FALSE",
+        "current": "UNKNOWN",
+        "future": "TRUE"
+      },
+      "valid_from": "v0.1.0",
+      "valid_until": "UNKNOWN",
+      "status": "FORMALIZED_ENGINEERING"
+    },
+    {
+      "dependency_id": "DEP-018",
+      "from_obligation": "OBL-CANDIDATE-ADMISSION",
+      "to_obligation": "OBL-CANDIDATE-STATE",
+      "relation": "REQUIRES",
+      "condition": "APPLICABLE_WHEN_DEPENDENT_OBLIGATION_IS_IN_SCOPE",
+      "reason": "The dependent behavior reads or mutates candidate lifecycle state and needs legal transitions.",
+      "evidence": [
+        "NE-V8-CLAIM",
+        "NE-V8-DUPLICATE",
+        "NE-V8-RETRY",
+        "NE-V9-CLAIMS"
+      ],
+      "dependency_type": "FUTURE_ENGINEERING_DEPENDENCY",
+      "scope": {
+        "historical": "FALSE",
+        "current": "UNKNOWN",
+        "future": "TRUE"
+      },
+      "valid_from": "v0.1.0",
+      "valid_until": "UNKNOWN",
+      "status": "FORMALIZED_ENGINEERING"
+    },
+    {
+      "dependency_id": "DEP-019",
+      "from_obligation": "OBL-CANDIDATE-ADMISSION",
+      "to_obligation": "OBL-DEDUP-SCOPES",
+      "relation": "REQUIRES",
+      "condition": "APPLICABLE_WHEN_DEPENDENT_OBLIGATION_IS_IN_SCOPE",
+      "reason": "Candidate admission transaction consumes or semantically assumes the property guaranteed by Independent deduplication scopes; satisfying the dependent without that prerequisite would leave its stated invariant undefined.",
+      "evidence": [
+        "NE-V8-DUPLICATE",
+        "NE-V9-CLAIMS"
+      ],
+      "dependency_type": "FUTURE_ENGINEERING_DEPENDENCY",
+      "scope": {
+        "historical": "FALSE",
+        "current": "UNKNOWN",
+        "future": "TRUE"
+      },
+      "valid_from": "v0.1.0",
+      "valid_until": "UNKNOWN",
+      "status": "FORMALIZED_ENGINEERING"
+    },
+    {
+      "dependency_id": "DEP-020",
+      "from_obligation": "OBL-CANDIDATE-ATTEMPTS",
+      "to_obligation": "OBL-CANDIDATE-STATE",
+      "relation": "REQUIRES",
+      "condition": "APPLICABLE_WHEN_DEPENDENT_OBLIGATION_IS_IN_SCOPE",
+      "reason": "The dependent behavior reads or mutates candidate lifecycle state and needs legal transitions.",
+      "evidence": [
+        "NE-V8-CLAIM",
+        "NE-V8-RETRY",
+        "NE-V9-CLAIMS"
+      ],
+      "dependency_type": "FUTURE_ENGINEERING_DEPENDENCY",
+      "scope": {
+        "historical": "FALSE",
+        "current": "UNKNOWN",
+        "future": "TRUE"
+      },
+      "valid_from": "v0.3.0",
+      "valid_until": "UNKNOWN",
+      "status": "FORMALIZED_ENGINEERING"
+    },
+    {
+      "dependency_id": "DEP-021",
+      "from_obligation": "OBL-CANDIDATE-EQUIVALENCE",
+      "to_obligation": "OBL-CANDIDATE-IDENTITY",
+      "relation": "REQUIRES",
+      "condition": "APPLICABLE_WHEN_DEPENDENT_OBLIGATION_IS_IN_SCOPE",
+      "reason": "The dependent behavior must correlate the same candidate across lifecycle operations.",
+      "evidence": [
+        "NE-V9-CLAIMS",
+        "NE-V9-INVARIANTS",
+        "NE-V9-UNKNOWNS"
+      ],
+      "dependency_type": "FUTURE_ENGINEERING_DEPENDENCY",
+      "scope": {
+        "historical": "FALSE",
+        "current": "UNKNOWN",
+        "future": "TRUE"
+      },
+      "valid_from": "v0.1.0",
+      "valid_until": "UNKNOWN",
+      "status": "FORMALIZED_ENGINEERING"
+    },
+    {
+      "dependency_id": "DEP-022",
+      "from_obligation": "OBL-CANDIDATE-ORIGIN",
+      "to_obligation": "OBL-CANDIDATE-IDENTITY",
+      "relation": "REQUIRES",
+      "condition": "APPLICABLE_WHEN_DEPENDENT_OBLIGATION_IS_IN_SCOPE",
+      "reason": "The dependent behavior must correlate the same candidate across lifecycle operations.",
+      "evidence": [
+        "NE-V8-PROVENANCE",
+        "NE-V9-CLAIMS",
+        "NE-V9-INVARIANTS"
+      ],
+      "dependency_type": "FUTURE_ENGINEERING_DEPENDENCY",
+      "scope": {
+        "historical": "FALSE",
+        "current": "UNKNOWN",
+        "future": "TRUE"
+      },
+      "valid_from": "v0.1.0",
+      "valid_until": "UNKNOWN",
+      "status": "FORMALIZED_ENGINEERING"
+    },
+    {
+      "dependency_id": "DEP-023",
+      "from_obligation": "OBL-CANDIDATE-PARENT",
+      "to_obligation": "OBL-CANDIDATE-IDENTITY",
+      "relation": "REQUIRES",
+      "condition": "APPLICABLE_WHEN_DEPENDENT_OBLIGATION_IS_IN_SCOPE",
+      "reason": "The dependent behavior must correlate the same candidate across lifecycle operations.",
+      "evidence": [
+        "NE-V8-PROVENANCE",
+        "NE-V9-CLAIMS",
+        "NE-V9-INVARIANTS"
+      ],
+      "dependency_type": "FUTURE_ENGINEERING_DEPENDENCY",
+      "scope": {
+        "historical": "FALSE",
+        "current": "UNKNOWN",
+        "future": "TRUE"
+      },
+      "valid_from": "v0.1.0",
+      "valid_until": "UNKNOWN",
+      "status": "FORMALIZED_ENGINEERING"
+    },
+    {
+      "dependency_id": "DEP-024",
+      "from_obligation": "OBL-CANDIDATE-PRIORITY",
+      "to_obligation": "OBL-CANDIDATE-IDENTITY",
+      "relation": "REQUIRES",
+      "condition": "APPLICABLE_WHEN_DEPENDENT_OBLIGATION_IS_IN_SCOPE",
+      "reason": "The dependent behavior must correlate the same candidate across lifecycle operations.",
+      "evidence": [
+        "NE-V3-DATA",
+        "NE-V9-CLAIMS",
+        "NE-V9-INVARIANTS"
+      ],
+      "dependency_type": "FUTURE_ENGINEERING_DEPENDENCY",
+      "scope": {
+        "historical": "FALSE",
+        "current": "UNKNOWN",
+        "future": "TRUE"
+      },
+      "valid_from": "v0.1.0",
+      "valid_until": "UNKNOWN",
+      "status": "FORMALIZED_ENGINEERING"
+    },
+    {
+      "dependency_id": "DEP-025",
+      "from_obligation": "OBL-CANDIDATE-STATE",
+      "to_obligation": "OBL-CANDIDATE-IDENTITY",
+      "relation": "REQUIRES",
+      "condition": "APPLICABLE_WHEN_DEPENDENT_OBLIGATION_IS_IN_SCOPE",
+      "reason": "The dependent behavior must correlate the same candidate across lifecycle operations.",
+      "evidence": [
+        "NE-V8-CLAIM",
+        "NE-V8-RETRY",
+        "NE-V9-CLAIMS",
+        "NE-V9-INVARIANTS"
+      ],
+      "dependency_type": "FUTURE_ENGINEERING_DEPENDENCY",
+      "scope": {
+        "historical": "FALSE",
+        "current": "UNKNOWN",
+        "future": "TRUE"
+      },
+      "valid_from": "v0.1.0",
+      "valid_until": "UNKNOWN",
+      "status": "FORMALIZED_ENGINEERING"
+    },
+    {
+      "dependency_id": "DEP-026",
+      "from_obligation": "OBL-CANDIDATE-TIMESTAMPS",
+      "to_obligation": "OBL-CANDIDATE-STATE",
+      "relation": "REQUIRES",
+      "condition": "APPLICABLE_WHEN_DEPENDENT_OBLIGATION_IS_IN_SCOPE",
+      "reason": "The dependent behavior reads or mutates candidate lifecycle state and needs legal transitions.",
+      "evidence": [
+        "NE-V3-DATA",
+        "NE-V8-CLAIM",
+        "NE-V8-OBSERVE",
+        "NE-V8-RETRY",
+        "NE-V9-CLAIMS"
+      ],
+      "dependency_type": "FUTURE_ENGINEERING_DEPENDENCY",
+      "scope": {
+        "historical": "FALSE",
+        "current": "UNKNOWN",
+        "future": "TRUE"
+      },
+      "valid_from": "v0.1.0",
+      "valid_until": "UNKNOWN",
+      "status": "FORMALIZED_ENGINEERING"
+    },
+    {
+      "dependency_id": "DEP-027",
+      "from_obligation": "OBL-CLAIM-EXCLUSIVITY",
+      "to_obligation": "OBL-CANDIDATE-IDENTITY",
+      "relation": "REQUIRES",
+      "condition": "APPLICABLE_WHEN_DEPENDENT_OBLIGATION_IS_IN_SCOPE",
+      "reason": "The dependent behavior must correlate the same candidate across lifecycle operations.",
+      "evidence": [
+        "NE-V8-CLAIM",
+        "NE-V9-CLAIMS",
+        "NE-V9-INVARIANTS"
+      ],
+      "dependency_type": "HISTORICAL_DEPENDENCY",
+      "scope": {
+        "historical": "TRUE",
+        "current": "UNKNOWN",
+        "future": "TRUE"
+      },
+      "valid_from": "v0.2.0",
+      "valid_until": "UNKNOWN",
+      "status": "SUPPORTED"
+    },
+    {
+      "dependency_id": "DEP-028",
+      "from_obligation": "OBL-CLAIM-EXCLUSIVITY",
+      "to_obligation": "OBL-CANDIDATE-STATE",
+      "relation": "REQUIRES",
+      "condition": "APPLICABLE_WHEN_DEPENDENT_OBLIGATION_IS_IN_SCOPE",
+      "reason": "The dependent behavior reads or mutates candidate lifecycle state and needs legal transitions.",
+      "evidence": [
+        "NE-V8-CLAIM",
+        "NE-V8-RETRY",
+        "NE-V9-CLAIMS"
+      ],
+      "dependency_type": "FUTURE_ENGINEERING_DEPENDENCY",
+      "scope": {
+        "historical": "FALSE",
+        "current": "UNKNOWN",
+        "future": "TRUE"
+      },
+      "valid_from": "v0.2.0",
+      "valid_until": "UNKNOWN",
+      "status": "FORMALIZED_ENGINEERING"
+    },
+    {
+      "dependency_id": "DEP-029",
+      "from_obligation": "OBL-DEDUP-SCOPES",
+      "to_obligation": "OBL-CANDIDATE-IDENTITY",
+      "relation": "REQUIRES",
+      "condition": "APPLICABLE_WHEN_DEPENDENT_OBLIGATION_IS_IN_SCOPE",
+      "reason": "The dependent behavior must correlate the same candidate across lifecycle operations.",
+      "evidence": [
+        "NE-V8-DUPLICATE",
+        "NE-V9-CLAIMS",
+        "NE-V9-INVARIANTS"
+      ],
+      "dependency_type": "FUTURE_ENGINEERING_DEPENDENCY",
+      "scope": {
+        "historical": "FALSE",
+        "current": "UNKNOWN",
+        "future": "TRUE"
+      },
+      "valid_from": "v0.1.0",
+      "valid_until": "UNKNOWN",
+      "status": "FORMALIZED_ENGINEERING"
+    },
+    {
+      "dependency_id": "DEP-030",
+      "from_obligation": "OBL-DISCOVERY-RECORD",
+      "to_obligation": "OBL-OBS-SOURCE",
+      "relation": "REQUIRES",
+      "condition": "APPLICABLE_WHEN_DEPENDENT_OBLIGATION_IS_IN_SCOPE",
+      "reason": "The dependent behavior needs an attributable source candidate for observation/discovery correlation.",
+      "evidence": [
+        "NE-V3-DATA",
+        "NE-V8-PROVENANCE",
+        "NE-V9-CLAIMS",
+        "NE-V9-INVARIANTS"
+      ],
+      "dependency_type": "HISTORICAL_DEPENDENCY",
+      "scope": {
+        "historical": "TRUE",
+        "current": "UNKNOWN",
+        "future": "TRUE"
+      },
+      "valid_from": "v0.1.0",
+      "valid_until": "UNKNOWN",
+      "status": "SUPPORTED"
+    },
+    {
+      "dependency_id": "DEP-031",
+      "from_obligation": "OBL-DISCOVERY-RECORD",
+      "to_obligation": "OBL-RECOGNITION-DISTINCT",
+      "relation": "REQUIRES",
+      "condition": "APPLICABLE_WHEN_DEPENDENT_OBLIGATION_IS_IN_SCOPE",
+      "reason": "The dependent behavior assumes recognition remains separable from acquisition.",
+      "evidence": [
+        "NE-V3-DATA",
+        "NE-V8-PROVENANCE",
+        "NE-V9-CLAIMS",
+        "NE-V9-INVARIANTS"
+      ],
+      "dependency_type": "HISTORICAL_DEPENDENCY",
+      "scope": {
+        "historical": "TRUE",
+        "current": "UNKNOWN",
+        "future": "TRUE"
+      },
+      "valid_from": "v0.1.0",
+      "valid_until": "UNKNOWN",
+      "status": "SUPPORTED"
+    },
+    {
+      "dependency_id": "DEP-032",
+      "from_obligation": "OBL-ERROR-CONTRACT",
+      "to_obligation": "OBL-OBS-OUTCOMES",
+      "relation": "REQUIRES",
+      "condition": "APPLICABLE_WHEN_DEPENDENT_OBLIGATION_IS_IN_SCOPE",
+      "reason": "Error compatibility contract consumes or semantically assumes the property guaranteed by Observation outcome semantics; satisfying the dependent without that prerequisite would leave its stated invariant undefined.",
+      "evidence": [
+        "NE-V3-API",
+        "NE-V3-DATA",
+        "NE-V8-FAILURE-MATRIX",
+        "NE-V9-CLAIMS"
+      ],
+      "dependency_type": "FUTURE_ENGINEERING_DEPENDENCY",
+      "scope": {
+        "historical": "FALSE",
+        "current": "UNKNOWN",
+        "future": "TRUE"
+      },
+      "valid_from": "v0.1.0",
+      "valid_until": "UNKNOWN",
+      "status": "FORMALIZED_ENGINEERING"
+    },
+    {
+      "dependency_id": "DEP-033",
+      "from_obligation": "OBL-ERROR-CONTRACT",
+      "to_obligation": "OBL-RECOGNITION-OUTCOMES",
+      "relation": "REQUIRES",
+      "condition": "APPLICABLE_WHEN_DEPENDENT_OBLIGATION_IS_IN_SCOPE",
+      "reason": "The dependent behavior needs no-match, failure, partial, and success to remain distinct.",
+      "evidence": [
+        "NE-V3-API",
+        "NE-V8-FAILURE-MATRIX",
+        "NE-V9-CLAIMS"
+      ],
+      "dependency_type": "FUTURE_ENGINEERING_DEPENDENCY",
+      "scope": {
+        "historical": "FALSE",
+        "current": "UNKNOWN",
+        "future": "TRUE"
+      },
+      "valid_from": "v0.1.0",
+      "valid_until": "UNKNOWN",
+      "status": "FORMALIZED_ENGINEERING"
+    },
+    {
+      "dependency_id": "DEP-034",
+      "from_obligation": "OBL-EXPANSION-RECURSIVE",
+      "to_obligation": "OBL-CANDIDATE-ADMISSION",
+      "relation": "REQUIRES",
+      "condition": "APPLICABLE_WHEN_DEPENDENT_OBLIGATION_IS_IN_SCOPE",
+      "reason": "The dependent behavior creates work and therefore needs defined admission and duplicate handling.",
+      "evidence": [
+        "NE-V8-DUPLICATE",
+        "NE-V9-CLAIMS",
+        "NE-V9-INVARIANTS"
+      ],
+      "dependency_type": "HISTORICAL_DEPENDENCY",
+      "scope": {
+        "historical": "TRUE",
+        "current": "UNKNOWN",
+        "future": "TRUE"
+      },
+      "valid_from": "v0.1.0",
+      "valid_until": "UNKNOWN",
+      "status": "SUPPORTED"
+    },
+    {
+      "dependency_id": "DEP-035",
+      "from_obligation": "OBL-EXPANSION-RECURSIVE",
+      "to_obligation": "OBL-DISCOVERY-RECORD",
+      "relation": "REQUIRES",
+      "condition": "APPLICABLE_WHEN_DEPENDENT_OBLIGATION_IS_IN_SCOPE",
+      "reason": "Recursive expansion capability consumes or semantically assumes the property guaranteed by Discovery semantic record; satisfying the dependent without that prerequisite would leave its stated invariant undefined.",
+      "evidence": [
+        "NE-V3-DATA",
+        "NE-V8-PROVENANCE",
+        "NE-V9-CLAIMS",
+        "NE-V9-INVARIANTS"
+      ],
+      "dependency_type": "HISTORICAL_DEPENDENCY",
+      "scope": {
+        "historical": "TRUE",
+        "current": "UNKNOWN",
+        "future": "TRUE"
+      },
+      "valid_from": "v0.1.0",
+      "valid_until": "UNKNOWN",
+      "status": "SUPPORTED"
+    },
+    {
+      "dependency_id": "DEP-036",
+      "from_obligation": "OBL-EXPANSION-RECURSIVE",
+      "to_obligation": "OBL-RESOURCE",
+      "relation": "REQUIRES",
+      "condition": "APPLICABLE_WHEN_DEPENDENT_OBLIGATION_IS_IN_SCOPE",
+      "reason": "The dependent recursive/resource behavior needs explicit bounds to avoid unbounded execution.",
+      "evidence": [
+        "NE-V8-BOUNDS",
+        "NE-V9-CLAIMS",
+        "NE-V9-INVARIANTS"
+      ],
+      "dependency_type": "FUTURE_ENGINEERING_DEPENDENCY",
+      "scope": {
+        "historical": "FALSE",
+        "current": "UNKNOWN",
+        "future": "TRUE"
+      },
+      "valid_from": "v0.1.0",
+      "valid_until": "UNKNOWN",
+      "status": "FORMALIZED_ENGINEERING"
+    },
+    {
+      "dependency_id": "DEP-037",
+      "from_obligation": "OBL-EXPANSION-RECURSIVE",
+      "to_obligation": "OBL-SCHEDULER-TERMINATION",
+      "relation": "REQUIRES",
+      "condition": "APPLICABLE_WHEN_DEPENDENT_OBLIGATION_IS_IN_SCOPE",
+      "reason": "Recursive expansion capability consumes or semantically assumes the property guaranteed by In-flight-aware termination; satisfying the dependent without that prerequisite would leave its stated invariant undefined.",
+      "evidence": [
+        "NE-V8-CLAIM",
+        "NE-V9-CLAIMS",
+        "NE-V9-INVARIANTS"
+      ],
+      "dependency_type": "FUTURE_ENGINEERING_DEPENDENCY",
+      "scope": {
+        "historical": "FALSE",
+        "current": "UNKNOWN",
+        "future": "TRUE"
+      },
+      "valid_from": "v0.1.0",
+      "valid_until": "UNKNOWN",
+      "status": "FORMALIZED_ENGINEERING"
+    },
+    {
+      "dependency_id": "DEP-038",
+      "from_obligation": "OBL-EXPANSION-VS-RETRY",
+      "to_obligation": "OBL-EXPANSION-RECURSIVE",
+      "relation": "REQUIRES",
+      "condition": "APPLICABLE_WHEN_DEPENDENT_OBLIGATION_IS_IN_SCOPE",
+      "reason": "Expansion is not retry consumes or semantically assumes the property guaranteed by Recursive expansion capability; satisfying the dependent without that prerequisite would leave its stated invariant undefined.",
+      "evidence": [
+        "NE-V8-RETRY",
+        "NE-V9-CLAIMS",
+        "NE-V9-INVARIANTS"
+      ],
+      "dependency_type": "FUTURE_ENGINEERING_DEPENDENCY",
+      "scope": {
+        "historical": "FALSE",
+        "current": "UNKNOWN",
+        "future": "TRUE"
+      },
+      "valid_from": "v0.1.0",
+      "valid_until": "UNKNOWN",
+      "status": "FORMALIZED_ENGINEERING"
+    },
+    {
+      "dependency_id": "DEP-039",
+      "from_obligation": "OBL-EXPANSION-VS-RETRY",
+      "to_obligation": "OBL-RETRY",
+      "relation": "REQUIRES",
+      "condition": "APPLICABLE_WHEN_DEPENDENT_OBLIGATION_IS_IN_SCOPE",
+      "reason": "Expansion is not retry consumes or semantically assumes the property guaranteed by Bounded explicit retry; satisfying the dependent without that prerequisite would leave its stated invariant undefined.",
+      "evidence": [
+        "NE-V8-BOUNDS",
+        "NE-V8-RETRY",
+        "NE-V9-CLAIMS"
+      ],
+      "dependency_type": "FUTURE_ENGINEERING_DEPENDENCY",
+      "scope": {
+        "historical": "FALSE",
+        "current": "UNKNOWN",
+        "future": "TRUE"
+      },
+      "valid_from": "v0.3.0",
+      "valid_until": "UNKNOWN",
+      "status": "FORMALIZED_ENGINEERING"
+    },
+    {
+      "dependency_id": "DEP-040",
+      "from_obligation": "OBL-EXPORT",
+      "to_obligation": "OBL-ERROR-CONTRACT",
+      "relation": "REQUIRES",
+      "condition": "APPLICABLE_WHEN_DEPENDENT_OBLIGATION_IS_IN_SCOPE",
+      "reason": "The dependent serialized/API behavior needs explicit error and null-like value semantics.",
+      "evidence": [
+        "NE-V3-API",
+        "NE-V8-EXPORT",
+        "NE-V8-FAILURE-MATRIX",
+        "NE-V9-CLAIMS"
+      ],
+      "dependency_type": "FUTURE_ENGINEERING_DEPENDENCY",
+      "scope": {
+        "historical": "FALSE",
+        "current": "UNKNOWN",
+        "future": "TRUE"
+      },
+      "valid_from": "v0.1.0",
+      "valid_until": "UNKNOWN",
+      "status": "FORMALIZED_ENGINEERING"
+    },
+    {
+      "dependency_id": "DEP-041",
+      "from_obligation": "OBL-EXPORT",
+      "to_obligation": "OBL-KNOWLEDGE",
+      "relation": "REQUIRES",
+      "condition": "APPLICABLE_WHEN_DEPENDENT_OBLIGATION_IS_IN_SCOPE",
+      "reason": "Export role and schema consumes or semantically assumes the property guaranteed by Knowledge accumulation; satisfying the dependent without that prerequisite would leave its stated invariant undefined.",
+      "evidence": [
+        "NE-V8-EXPORT",
+        "NE-V9-CLAIMS",
+        "NE-V9-INVARIANTS"
+      ],
+      "dependency_type": "FUTURE_ENGINEERING_DEPENDENCY",
+      "scope": {
+        "historical": "FALSE",
+        "current": "UNKNOWN",
+        "future": "TRUE"
+      },
+      "valid_from": "v0.1.0",
+      "valid_until": "UNKNOWN",
+      "status": "FORMALIZED_ENGINEERING"
+    },
+    {
+      "dependency_id": "DEP-042",
+      "from_obligation": "OBL-EXPORT",
+      "to_obligation": "OBL-PROVENANCE",
+      "relation": "REQUIRES",
+      "condition": "APPLICABLE_WHEN_DEPENDENT_OBLIGATION_IS_IN_SCOPE",
+      "reason": "The dependent behavior assumes visible derivation associations.",
+      "evidence": [
+        "NE-V8-EXPORT",
+        "NE-V8-PROVENANCE",
+        "NE-V9-INVARIANTS"
+      ],
+      "dependency_type": "FUTURE_ENGINEERING_DEPENDENCY",
+      "scope": {
+        "historical": "FALSE",
+        "current": "UNKNOWN",
+        "future": "TRUE"
+      },
+      "valid_from": "v0.1.0",
+      "valid_until": "UNKNOWN",
+      "status": "FORMALIZED_ENGINEERING"
+    },
+    {
+      "dependency_id": "DEP-043",
+      "from_obligation": "OBL-KNOWLEDGE",
+      "to_obligation": "OBL-CANDIDATE-IDENTITY",
+      "relation": "REQUIRES",
+      "condition": "APPLICABLE_WHEN_DEPENDENT_OBLIGATION_IS_IN_SCOPE",
+      "reason": "The dependent behavior must correlate the same candidate across lifecycle operations.",
+      "evidence": [
+        "NE-V9-CLAIMS",
+        "NE-V9-INVARIANTS"
+      ],
+      "dependency_type": "HISTORICAL_DEPENDENCY",
+      "scope": {
+        "historical": "TRUE",
+        "current": "UNKNOWN",
+        "future": "TRUE"
+      },
+      "valid_from": "v0.1.0",
+      "valid_until": "UNKNOWN",
+      "status": "SUPPORTED"
+    },
+    {
+      "dependency_id": "DEP-044",
+      "from_obligation": "OBL-KNOWLEDGE",
+      "to_obligation": "OBL-DISCOVERY-RECORD",
+      "relation": "REQUIRES",
+      "condition": "APPLICABLE_WHEN_DEPENDENT_OBLIGATION_IS_IN_SCOPE",
+      "reason": "Knowledge accumulation consumes or semantically assumes the property guaranteed by Discovery semantic record; satisfying the dependent without that prerequisite would leave its stated invariant undefined.",
+      "evidence": [
+        "NE-V3-DATA",
+        "NE-V8-PROVENANCE",
+        "NE-V9-CLAIMS",
+        "NE-V9-INVARIANTS"
+      ],
+      "dependency_type": "HISTORICAL_DEPENDENCY",
+      "scope": {
+        "historical": "TRUE",
+        "current": "UNKNOWN",
+        "future": "TRUE"
+      },
+      "valid_from": "v0.1.0",
+      "valid_until": "UNKNOWN",
+      "status": "SUPPORTED"
+    },
+    {
+      "dependency_id": "DEP-045",
+      "from_obligation": "OBL-KNOWLEDGE",
+      "to_obligation": "OBL-OBS-DISTINCT",
+      "relation": "REQUIRES",
+      "condition": "APPLICABLE_WHEN_DEPENDENT_OBLIGATION_IS_IN_SCOPE",
+      "reason": "The dependent behavior needs acquisition evidence distinct from interpretation.",
+      "evidence": [
+        "NE-V9-CLAIMS",
+        "NE-V9-INVARIANTS"
+      ],
+      "dependency_type": "HISTORICAL_DEPENDENCY",
+      "scope": {
+        "historical": "TRUE",
+        "current": "UNKNOWN",
+        "future": "TRUE"
+      },
+      "valid_from": "v0.1.0",
+      "valid_until": "UNKNOWN",
+      "status": "SUPPORTED"
+    },
+    {
+      "dependency_id": "DEP-046",
+      "from_obligation": "OBL-LIFECYCLE-OBS",
+      "to_obligation": "OBL-ACQ-OUTCOME",
+      "relation": "REQUIRES",
+      "condition": "APPLICABLE_WHEN_DEPENDENT_OBLIGATION_IS_IN_SCOPE",
+      "reason": "Lifecycle observability consumes or semantically assumes the property guaranteed by Acquisition outcome recording; satisfying the dependent without that prerequisite would leave its stated invariant undefined.",
+      "evidence": [
+        "NE-V8-FAILURE-MATRIX",
+        "NE-V8-OBSERVE",
+        "NE-V9-INVARIANTS"
+      ],
+      "dependency_type": "FUTURE_ENGINEERING_DEPENDENCY",
+      "scope": {
+        "historical": "FALSE",
+        "current": "UNKNOWN",
+        "future": "TRUE"
+      },
+      "valid_from": "v0.1.0",
+      "valid_until": "UNKNOWN",
+      "status": "FORMALIZED_ENGINEERING"
+    },
+    {
+      "dependency_id": "DEP-047",
+      "from_obligation": "OBL-LIFECYCLE-OBS",
+      "to_obligation": "OBL-CANDIDATE-STATE",
+      "relation": "REQUIRES",
+      "condition": "APPLICABLE_WHEN_DEPENDENT_OBLIGATION_IS_IN_SCOPE",
+      "reason": "The dependent behavior reads or mutates candidate lifecycle state and needs legal transitions.",
+      "evidence": [
+        "NE-V8-CLAIM",
+        "NE-V8-FAILURE-MATRIX",
+        "NE-V8-OBSERVE",
+        "NE-V8-RETRY",
+        "NE-V9-CLAIMS"
+      ],
+      "dependency_type": "FUTURE_ENGINEERING_DEPENDENCY",
+      "scope": {
+        "historical": "FALSE",
+        "current": "UNKNOWN",
+        "future": "TRUE"
+      },
+      "valid_from": "v0.1.0",
+      "valid_until": "UNKNOWN",
+      "status": "FORMALIZED_ENGINEERING"
+    },
+    {
+      "dependency_id": "DEP-048",
+      "from_obligation": "OBL-LIFECYCLE-OBS",
+      "to_obligation": "OBL-DISCOVERY-RECORD",
+      "relation": "REQUIRES",
+      "condition": "APPLICABLE_WHEN_DEPENDENT_OBLIGATION_IS_IN_SCOPE",
+      "reason": "Lifecycle observability consumes or semantically assumes the property guaranteed by Discovery semantic record; satisfying the dependent without that prerequisite would leave its stated invariant undefined.",
+      "evidence": [
+        "NE-V3-DATA",
+        "NE-V8-FAILURE-MATRIX",
+        "NE-V8-OBSERVE",
+        "NE-V8-PROVENANCE",
+        "NE-V9-CLAIMS"
+      ],
+      "dependency_type": "FUTURE_ENGINEERING_DEPENDENCY",
+      "scope": {
+        "historical": "FALSE",
+        "current": "UNKNOWN",
+        "future": "TRUE"
+      },
+      "valid_from": "v0.1.0",
+      "valid_until": "UNKNOWN",
+      "status": "FORMALIZED_ENGINEERING"
+    },
+    {
+      "dependency_id": "DEP-049",
+      "from_obligation": "OBL-LIFECYCLE-OBS",
+      "to_obligation": "OBL-RECOGNITION-OUTCOMES",
+      "relation": "REQUIRES",
+      "condition": "APPLICABLE_WHEN_DEPENDENT_OBLIGATION_IS_IN_SCOPE",
+      "reason": "The dependent behavior needs no-match, failure, partial, and success to remain distinct.",
+      "evidence": [
+        "NE-V3-API",
+        "NE-V8-FAILURE-MATRIX",
+        "NE-V8-OBSERVE"
+      ],
+      "dependency_type": "FUTURE_ENGINEERING_DEPENDENCY",
+      "scope": {
+        "historical": "FALSE",
+        "current": "UNKNOWN",
+        "future": "TRUE"
+      },
+      "valid_from": "v0.1.0",
+      "valid_until": "UNKNOWN",
+      "status": "FORMALIZED_ENGINEERING"
+    },
+    {
+      "dependency_id": "DEP-050",
+      "from_obligation": "OBL-OBS-DISTINCT",
+      "to_obligation": "OBL-ACQ-BEFORE-INTERP",
+      "relation": "REQUIRES",
+      "condition": "APPLICABLE_WHEN_DEPENDENT_OBLIGATION_IS_IN_SCOPE",
+      "reason": "Observation remains distinct consumes or semantically assumes the property guaranteed by Acquisition precedes interpretation; satisfying the dependent without that prerequisite would leave its stated invariant undefined.",
+      "evidence": [
+        "NE-V9-CLAIMS",
+        "NE-V9-INVARIANTS"
+      ],
+      "dependency_type": "HISTORICAL_DEPENDENCY",
+      "scope": {
+        "historical": "TRUE",
+        "current": "UNKNOWN",
+        "future": "TRUE"
+      },
+      "valid_from": "v0.1.0",
+      "valid_until": "UNKNOWN",
+      "status": "SUPPORTED"
+    },
+    {
+      "dependency_id": "DEP-051",
+      "from_obligation": "OBL-OBS-OUTCOMES",
+      "to_obligation": "OBL-ACQ-OUTCOME",
+      "relation": "REQUIRES",
+      "condition": "APPLICABLE_WHEN_DEPENDENT_OBLIGATION_IS_IN_SCOPE",
+      "reason": "Observation outcome semantics consumes or semantically assumes the property guaranteed by Acquisition outcome recording; satisfying the dependent without that prerequisite would leave its stated invariant undefined.",
+      "evidence": [
+        "NE-V3-DATA",
+        "NE-V8-FAILURE-MATRIX",
+        "NE-V9-INVARIANTS"
+      ],
+      "dependency_type": "FUTURE_ENGINEERING_DEPENDENCY",
+      "scope": {
+        "historical": "FALSE",
+        "current": "UNKNOWN",
+        "future": "TRUE"
+      },
+      "valid_from": "v0.1.0",
+      "valid_until": "UNKNOWN",
+      "status": "FORMALIZED_ENGINEERING"
+    },
+    {
+      "dependency_id": "DEP-052",
+      "from_obligation": "OBL-OBS-OUTCOMES",
+      "to_obligation": "OBL-OBS-DISTINCT",
+      "relation": "REQUIRES",
+      "condition": "APPLICABLE_WHEN_DEPENDENT_OBLIGATION_IS_IN_SCOPE",
+      "reason": "The dependent behavior needs acquisition evidence distinct from interpretation.",
+      "evidence": [
+        "NE-V3-DATA",
+        "NE-V8-FAILURE-MATRIX",
+        "NE-V9-CLAIMS",
+        "NE-V9-INVARIANTS"
+      ],
+      "dependency_type": "FUTURE_ENGINEERING_DEPENDENCY",
+      "scope": {
+        "historical": "FALSE",
+        "current": "UNKNOWN",
+        "future": "TRUE"
+      },
+      "valid_from": "v0.1.0",
+      "valid_until": "UNKNOWN",
+      "status": "FORMALIZED_ENGINEERING"
+    },
+    {
+      "dependency_id": "DEP-053",
+      "from_obligation": "OBL-OBS-SOURCE",
+      "to_obligation": "OBL-CANDIDATE-IDENTITY",
+      "relation": "REQUIRES",
+      "condition": "APPLICABLE_WHEN_DEPENDENT_OBLIGATION_IS_IN_SCOPE",
+      "reason": "The dependent behavior must correlate the same candidate across lifecycle operations.",
+      "evidence": [
+        "NE-V8-PROVENANCE",
+        "NE-V9-CLAIMS",
+        "NE-V9-INVARIANTS"
+      ],
+      "dependency_type": "HISTORICAL_DEPENDENCY",
+      "scope": {
+        "historical": "TRUE",
+        "current": "UNKNOWN",
+        "future": "TRUE"
+      },
+      "valid_from": "v0.1.0",
+      "valid_until": "UNKNOWN",
+      "status": "SUPPORTED"
+    },
+    {
+      "dependency_id": "DEP-054",
+      "from_obligation": "OBL-OBS-SOURCE",
+      "to_obligation": "OBL-OBS-DISTINCT",
+      "relation": "REQUIRES",
+      "condition": "APPLICABLE_WHEN_DEPENDENT_OBLIGATION_IS_IN_SCOPE",
+      "reason": "The dependent behavior needs acquisition evidence distinct from interpretation.",
+      "evidence": [
+        "NE-V8-PROVENANCE",
+        "NE-V9-CLAIMS",
+        "NE-V9-INVARIANTS"
+      ],
+      "dependency_type": "FUTURE_ENGINEERING_DEPENDENCY",
+      "scope": {
+        "historical": "FALSE",
+        "current": "UNKNOWN",
+        "future": "TRUE"
+      },
+      "valid_from": "v0.1.0",
+      "valid_until": "UNKNOWN",
+      "status": "FORMALIZED_ENGINEERING"
+    },
+    {
+      "dependency_id": "DEP-055",
+      "from_obligation": "OBL-PARSE-DEFECT",
+      "to_obligation": "OBL-REGRESSION",
+      "relation": "REQUIRES",
+      "condition": "APPLICABLE_WHEN_DEPENDENT_OBLIGATION_IS_IN_SCOPE",
+      "reason": "The known-defect rejection needs an executable build/parse regression test.",
+      "evidence": [
+        "NE-V9-CLAIMS",
+        "NE-V9-CONTRADICTIONS",
+        "NE-V9-UNKNOWNS"
+      ],
+      "dependency_type": "FUTURE_ENGINEERING_DEPENDENCY",
+      "scope": {
+        "historical": "FALSE",
+        "current": "UNKNOWN",
+        "future": "TRUE"
+      },
+      "valid_from": "v0.5.0",
+      "valid_until": "UNKNOWN",
+      "status": "FORMALIZED_ENGINEERING"
+    },
+    {
+      "dependency_id": "DEP-056",
+      "from_obligation": "OBL-PARSER",
+      "to_obligation": "OBL-RECOGNITION-DISTINCT",
+      "relation": "REQUIRES",
+      "condition": "APPLICABLE_WHEN_DEPENDENT_OBLIGATION_IS_IN_SCOPE",
+      "reason": "The dependent behavior assumes recognition remains separable from acquisition.",
+      "evidence": [
+        "NE-V8-FAILURE-MATRIX",
+        "NE-V8-PARSERS",
+        "NE-V9-CLAIMS",
+        "NE-V9-INVARIANTS"
+      ],
+      "dependency_type": "FUTURE_ENGINEERING_DEPENDENCY",
+      "scope": {
+        "historical": "FALSE",
+        "current": "UNKNOWN",
+        "future": "TRUE"
+      },
+      "valid_from": "v0.1.0",
+      "valid_until": "UNKNOWN",
+      "status": "FORMALIZED_ENGINEERING"
+    },
+    {
+      "dependency_id": "DEP-057",
+      "from_obligation": "OBL-PARSER",
+      "to_obligation": "OBL-REMOTE-DATA",
+      "relation": "REQUIRES",
+      "condition": "APPLICABLE_WHEN_DEPENDENT_OBLIGATION_IS_IN_SCOPE",
+      "reason": "Malformed-input containment consumes or semantically assumes the property guaranteed by Remote content remains untrusted data; satisfying the dependent without that prerequisite would leave its stated invariant undefined.",
+      "evidence": [
+        "NE-V8-CODE-DATA",
+        "NE-V8-FAILURE-MATRIX",
+        "NE-V8-PARSERS"
+      ],
+      "dependency_type": "FUTURE_ENGINEERING_DEPENDENCY",
+      "scope": {
+        "historical": "FALSE",
+        "current": "UNKNOWN",
+        "future": "TRUE"
+      },
+      "valid_from": "v0.1.0",
+      "valid_until": "UNKNOWN",
+      "status": "FORMALIZED_ENGINEERING"
+    },
+    {
+      "dependency_id": "DEP-058",
+      "from_obligation": "OBL-PERSIST-COMPAT",
+      "to_obligation": "OBL-ERROR-CONTRACT",
+      "relation": "REQUIRES",
+      "condition": "APPLICABLE_WHEN_DEPENDENT_OBLIGATION_IS_IN_SCOPE",
+      "reason": "The dependent serialized/API behavior needs explicit error and null-like value semantics.",
+      "evidence": [
+        "NE-V3-API",
+        "NE-V8-FAILURE-MATRIX",
+        "NE-V8-PERSIST",
+        "NE-V9-CLAIMS"
+      ],
+      "dependency_type": "FUTURE_ENGINEERING_DEPENDENCY",
+      "scope": {
+        "historical": "FALSE",
+        "current": "UNKNOWN",
+        "future": "TRUE"
+      },
+      "valid_from": "v0.1.0",
+      "valid_until": "UNKNOWN",
+      "status": "FORMALIZED_ENGINEERING"
+    },
+    {
+      "dependency_id": "DEP-059",
+      "from_obligation": "OBL-PERSIST-COMPAT",
+      "to_obligation": "OBL-KNOWLEDGE",
+      "relation": "REQUIRES",
+      "condition": "APPLICABLE_WHEN_DEPENDENT_OBLIGATION_IS_IN_SCOPE",
+      "reason": "Persistence schema compatibility consumes or semantically assumes the property guaranteed by Knowledge accumulation; satisfying the dependent without that prerequisite would leave its stated invariant undefined.",
+      "evidence": [
+        "NE-V8-PERSIST",
+        "NE-V9-CLAIMS",
+        "NE-V9-INVARIANTS"
+      ],
+      "dependency_type": "FUTURE_ENGINEERING_DEPENDENCY",
+      "scope": {
+        "historical": "FALSE",
+        "current": "UNKNOWN",
+        "future": "TRUE"
+      },
+      "valid_from": "v0.1.0",
+      "valid_until": "UNKNOWN",
+      "status": "FORMALIZED_ENGINEERING"
+    },
+    {
+      "dependency_id": "DEP-060",
+      "from_obligation": "OBL-PERSIST-COMPAT",
+      "to_obligation": "OBL-PROVENANCE",
+      "relation": "REQUIRES",
+      "condition": "APPLICABLE_WHEN_DEPENDENT_OBLIGATION_IS_IN_SCOPE",
+      "reason": "The dependent behavior assumes visible derivation associations.",
+      "evidence": [
+        "NE-V8-PERSIST",
+        "NE-V8-PROVENANCE",
+        "NE-V9-INVARIANTS"
+      ],
+      "dependency_type": "FUTURE_ENGINEERING_DEPENDENCY",
+      "scope": {
+        "historical": "FALSE",
+        "current": "UNKNOWN",
+        "future": "TRUE"
+      },
+      "valid_from": "v0.1.0",
+      "valid_until": "UNKNOWN",
+      "status": "FORMALIZED_ENGINEERING"
+    },
+    {
+      "dependency_id": "DEP-061",
+      "from_obligation": "OBL-PERSIST-CORRUPTION",
+      "to_obligation": "OBL-PERSIST-COMPAT",
+      "relation": "REQUIRES",
+      "condition": "APPLICABLE_WHEN_DEPENDENT_OBLIGATION_IS_IN_SCOPE",
+      "reason": "Persistence corruption containment consumes or semantically assumes the property guaranteed by Persistence schema compatibility; satisfying the dependent without that prerequisite would leave its stated invariant undefined.",
+      "evidence": [
+        "NE-V8-PERSIST"
+      ],
+      "dependency_type": "FUTURE_ENGINEERING_DEPENDENCY",
+      "scope": {
+        "historical": "FALSE",
+        "current": "UNKNOWN",
+        "future": "TRUE"
+      },
+      "valid_from": "v0.1.0",
+      "valid_until": "UNKNOWN",
+      "status": "FORMALIZED_ENGINEERING"
+    },
+    {
+      "dependency_id": "DEP-062",
+      "from_obligation": "OBL-PERSIST-CORRUPTION",
+      "to_obligation": "OBL-SILENT-FAILURE",
+      "relation": "REQUIRES",
+      "condition": "APPLICABLE_WHEN_DEPENDENT_OBLIGATION_IS_IN_SCOPE",
+      "reason": "Persistence corruption containment consumes or semantically assumes the property guaranteed by Reject silent semantic failure; satisfying the dependent without that prerequisite would leave its stated invariant undefined.",
+      "evidence": [
+        "NE-V8-FAILURE-MATRIX",
+        "NE-V8-PERSIST"
+      ],
+      "dependency_type": "FUTURE_ENGINEERING_DEPENDENCY",
+      "scope": {
+        "historical": "FALSE",
+        "current": "UNKNOWN",
+        "future": "TRUE"
+      },
+      "valid_from": "v0.1.0",
+      "valid_until": "UNKNOWN",
+      "status": "FORMALIZED_ENGINEERING"
+    },
+    {
+      "dependency_id": "DEP-063",
+      "from_obligation": "OBL-PROVENANCE",
+      "to_obligation": "OBL-CANDIDATE-ORIGIN",
+      "relation": "REQUIRES",
+      "condition": "APPLICABLE_WHEN_DEPENDENT_OBLIGATION_IS_IN_SCOPE",
+      "reason": "End-to-end provenance associations consumes or semantically assumes the property guaranteed by Candidate origin preservation; satisfying the dependent without that prerequisite would leave its stated invariant undefined.",
+      "evidence": [
+        "NE-V8-PROVENANCE",
+        "NE-V9-INVARIANTS"
+      ],
+      "dependency_type": "FUTURE_ENGINEERING_DEPENDENCY",
+      "scope": {
+        "historical": "FALSE",
+        "current": "UNKNOWN",
+        "future": "TRUE"
+      },
+      "valid_from": "v0.1.0",
+      "valid_until": "UNKNOWN",
+      "status": "FORMALIZED_ENGINEERING"
+    },
+    {
+      "dependency_id": "DEP-064",
+      "from_obligation": "OBL-PROVENANCE",
+      "to_obligation": "OBL-CANDIDATE-PARENT",
+      "relation": "REQUIRES",
+      "condition": "APPLICABLE_WHEN_DEPENDENT_OBLIGATION_IS_IN_SCOPE",
+      "reason": "End-to-end provenance associations consumes or semantically assumes the property guaranteed by Candidate parentage preservation; satisfying the dependent without that prerequisite would leave its stated invariant undefined.",
+      "evidence": [
+        "NE-V8-PROVENANCE",
+        "NE-V9-CLAIMS",
+        "NE-V9-INVARIANTS"
+      ],
+      "dependency_type": "FUTURE_ENGINEERING_DEPENDENCY",
+      "scope": {
+        "historical": "FALSE",
+        "current": "UNKNOWN",
+        "future": "TRUE"
+      },
+      "valid_from": "v0.1.0",
+      "valid_until": "UNKNOWN",
+      "status": "FORMALIZED_ENGINEERING"
+    },
+    {
+      "dependency_id": "DEP-065",
+      "from_obligation": "OBL-PROVENANCE",
+      "to_obligation": "OBL-DISCOVERY-RECORD",
+      "relation": "REQUIRES",
+      "condition": "APPLICABLE_WHEN_DEPENDENT_OBLIGATION_IS_IN_SCOPE",
+      "reason": "End-to-end provenance associations consumes or semantically assumes the property guaranteed by Discovery semantic record; satisfying the dependent without that prerequisite would leave its stated invariant undefined.",
+      "evidence": [
+        "NE-V3-DATA",
+        "NE-V8-PROVENANCE",
+        "NE-V9-CLAIMS",
+        "NE-V9-INVARIANTS"
+      ],
+      "dependency_type": "FUTURE_ENGINEERING_DEPENDENCY",
+      "scope": {
+        "historical": "FALSE",
+        "current": "UNKNOWN",
+        "future": "TRUE"
+      },
+      "valid_from": "v0.1.0",
+      "valid_until": "UNKNOWN",
+      "status": "FORMALIZED_ENGINEERING"
+    },
+    {
+      "dependency_id": "DEP-066",
+      "from_obligation": "OBL-PROVENANCE",
+      "to_obligation": "OBL-OBS-SOURCE",
+      "relation": "REQUIRES",
+      "condition": "APPLICABLE_WHEN_DEPENDENT_OBLIGATION_IS_IN_SCOPE",
+      "reason": "The dependent behavior needs an attributable source candidate for observation/discovery correlation.",
+      "evidence": [
+        "NE-V8-PROVENANCE",
+        "NE-V9-INVARIANTS"
+      ],
+      "dependency_type": "FUTURE_ENGINEERING_DEPENDENCY",
+      "scope": {
+        "historical": "FALSE",
+        "current": "UNKNOWN",
+        "future": "TRUE"
+      },
+      "valid_from": "v0.1.0",
+      "valid_until": "UNKNOWN",
+      "status": "FORMALIZED_ENGINEERING"
+    },
+    {
+      "dependency_id": "DEP-067",
+      "from_obligation": "OBL-PROVENANCE-INTEGRITY",
+      "to_obligation": "OBL-PROVENANCE",
+      "relation": "REQUIRES",
+      "condition": "APPLICABLE_WHEN_DEPENDENT_OBLIGATION_IS_IN_SCOPE",
+      "reason": "The dependent behavior assumes visible derivation associations.",
+      "evidence": [
+        "NE-V8-PROVENANCE",
+        "NE-V9-INVARIANTS",
+        "NE-V9-UNKNOWNS"
+      ],
+      "dependency_type": "FUTURE_ENGINEERING_DEPENDENCY",
+      "scope": {
+        "historical": "FALSE",
+        "current": "UNKNOWN",
+        "future": "TRUE"
+      },
+      "valid_from": "v0.1.0",
+      "valid_until": "UNKNOWN",
+      "status": "FORMALIZED_ENGINEERING"
+    },
+    {
+      "dependency_id": "DEP-068",
+      "from_obligation": "OBL-PROVIDER-CONTRACT",
+      "to_obligation": "OBL-RECOGNITION-DISTINCT",
+      "relation": "REQUIRES",
+      "condition": "APPLICABLE_WHEN_DEPENDENT_OBLIGATION_IS_IN_SCOPE",
+      "reason": "The dependent behavior assumes recognition remains separable from acquisition.",
+      "evidence": [
+        "NE-V3-PROVIDERS",
+        "NE-V9-CLAIMS",
+        "NE-V9-INVARIANTS"
+      ],
+      "dependency_type": "FUTURE_ENGINEERING_DEPENDENCY",
+      "scope": {
+        "historical": "FALSE",
+        "current": "UNKNOWN",
+        "future": "TRUE"
+      },
+      "valid_from": "v0.2.0",
+      "valid_until": "UNKNOWN",
+      "status": "FORMALIZED_ENGINEERING"
+    },
+    {
+      "dependency_id": "DEP-069",
+      "from_obligation": "OBL-PROVIDER-CONTRACT",
+      "to_obligation": "OBL-RECOGNITION-OUTCOMES",
+      "relation": "REQUIRES",
+      "condition": "APPLICABLE_WHEN_DEPENDENT_OBLIGATION_IS_IN_SCOPE",
+      "reason": "The dependent behavior needs no-match, failure, partial, and success to remain distinct.",
+      "evidence": [
+        "NE-V3-API",
+        "NE-V3-PROVIDERS",
+        "NE-V8-FAILURE-MATRIX",
+        "NE-V9-CLAIMS"
+      ],
+      "dependency_type": "FUTURE_ENGINEERING_DEPENDENCY",
+      "scope": {
+        "historical": "FALSE",
+        "current": "UNKNOWN",
+        "future": "TRUE"
+      },
+      "valid_from": "v0.2.0",
+      "valid_until": "UNKNOWN",
+      "status": "FORMALIZED_ENGINEERING"
+    },
+    {
+      "dependency_id": "DEP-070",
+      "from_obligation": "OBL-PROVIDER-FAILURE",
+      "to_obligation": "OBL-PROVIDER-CONTRACT",
+      "relation": "REQUIRES",
+      "condition": "APPLICABLE_WHEN_DEPENDENT_OBLIGATION_IS_IN_SCOPE",
+      "reason": "Provider failure containment consumes or semantically assumes the property guaranteed by Provider semantic contract; satisfying the dependent without that prerequisite would leave its stated invariant undefined.",
+      "evidence": [
+        "NE-V3-PROVIDERS",
+        "NE-V8-FAILURE-MATRIX",
+        "NE-V9-CLAIMS"
+      ],
+      "dependency_type": "FUTURE_ENGINEERING_DEPENDENCY",
+      "scope": {
+        "historical": "FALSE",
+        "current": "UNKNOWN",
+        "future": "TRUE"
+      },
+      "valid_from": "v0.2.0",
+      "valid_until": "UNKNOWN",
+      "status": "FORMALIZED_ENGINEERING"
+    },
+    {
+      "dependency_id": "DEP-071",
+      "from_obligation": "OBL-PROVIDER-FAILURE",
+      "to_obligation": "OBL-SILENT-FAILURE",
+      "relation": "REQUIRES",
+      "condition": "APPLICABLE_WHEN_DEPENDENT_OBLIGATION_IS_IN_SCOPE",
+      "reason": "Provider failure containment consumes or semantically assumes the property guaranteed by Reject silent semantic failure; satisfying the dependent without that prerequisite would leave its stated invariant undefined.",
+      "evidence": [
+        "NE-V8-FAILURE-MATRIX"
+      ],
+      "dependency_type": "FUTURE_ENGINEERING_DEPENDENCY",
+      "scope": {
+        "historical": "FALSE",
+        "current": "UNKNOWN",
+        "future": "TRUE"
+      },
+      "valid_from": "v0.2.0",
+      "valid_until": "UNKNOWN",
+      "status": "FORMALIZED_ENGINEERING"
+    },
+    {
+      "dependency_id": "DEP-072",
+      "from_obligation": "OBL-RECOGNITION-DISTINCT",
+      "to_obligation": "OBL-ACQ-BEFORE-INTERP",
+      "relation": "REQUIRES",
+      "condition": "APPLICABLE_WHEN_DEPENDENT_OBLIGATION_IS_IN_SCOPE",
+      "reason": "Recognition stage separation consumes or semantically assumes the property guaranteed by Acquisition precedes interpretation; satisfying the dependent without that prerequisite would leave its stated invariant undefined.",
+      "evidence": [
+        "NE-V9-CLAIMS",
+        "NE-V9-INVARIANTS"
+      ],
+      "dependency_type": "FUTURE_ENGINEERING_DEPENDENCY",
+      "scope": {
+        "historical": "FALSE",
+        "current": "UNKNOWN",
+        "future": "TRUE"
+      },
+      "valid_from": "v0.1.0",
+      "valid_until": "UNKNOWN",
+      "status": "FORMALIZED_ENGINEERING"
+    },
+    {
+      "dependency_id": "DEP-073",
+      "from_obligation": "OBL-RECOGNITION-DISTINCT",
+      "to_obligation": "OBL-OBS-DISTINCT",
+      "relation": "REQUIRES",
+      "condition": "APPLICABLE_WHEN_DEPENDENT_OBLIGATION_IS_IN_SCOPE",
+      "reason": "The dependent behavior needs acquisition evidence distinct from interpretation.",
+      "evidence": [
+        "NE-V9-CLAIMS",
+        "NE-V9-INVARIANTS"
+      ],
+      "dependency_type": "HISTORICAL_DEPENDENCY",
+      "scope": {
+        "historical": "TRUE",
+        "current": "UNKNOWN",
+        "future": "TRUE"
+      },
+      "valid_from": "v0.1.0",
+      "valid_until": "UNKNOWN",
+      "status": "SUPPORTED"
+    },
+    {
+      "dependency_id": "DEP-074",
+      "from_obligation": "OBL-RECOGNITION-OUTCOMES",
+      "to_obligation": "OBL-OBS-OUTCOMES",
+      "relation": "REQUIRES",
+      "condition": "APPLICABLE_WHEN_DEPENDENT_OBLIGATION_IS_IN_SCOPE",
+      "reason": "Recognition outcome contract consumes or semantically assumes the property guaranteed by Observation outcome semantics; satisfying the dependent without that prerequisite would leave its stated invariant undefined.",
+      "evidence": [
+        "NE-V3-API",
+        "NE-V3-DATA",
+        "NE-V8-FAILURE-MATRIX"
+      ],
+      "dependency_type": "FUTURE_ENGINEERING_DEPENDENCY",
+      "scope": {
+        "historical": "FALSE",
+        "current": "UNKNOWN",
+        "future": "TRUE"
+      },
+      "valid_from": "v0.1.0",
+      "valid_until": "UNKNOWN",
+      "status": "FORMALIZED_ENGINEERING"
+    },
+    {
+      "dependency_id": "DEP-075",
+      "from_obligation": "OBL-RECOGNITION-OUTCOMES",
+      "to_obligation": "OBL-RECOGNITION-DISTINCT",
+      "relation": "REQUIRES",
+      "condition": "APPLICABLE_WHEN_DEPENDENT_OBLIGATION_IS_IN_SCOPE",
+      "reason": "The dependent behavior assumes recognition remains separable from acquisition.",
+      "evidence": [
+        "NE-V3-API",
+        "NE-V8-FAILURE-MATRIX",
+        "NE-V9-CLAIMS",
+        "NE-V9-INVARIANTS"
+      ],
+      "dependency_type": "FUTURE_ENGINEERING_DEPENDENCY",
+      "scope": {
+        "historical": "FALSE",
+        "current": "UNKNOWN",
+        "future": "TRUE"
+      },
+      "valid_from": "v0.1.0",
+      "valid_until": "UNKNOWN",
+      "status": "FORMALIZED_ENGINEERING"
+    },
+    {
+      "dependency_id": "DEP-076",
+      "from_obligation": "OBL-REMOTE-DATA",
+      "to_obligation": "OBL-ACQ-SCOPE",
+      "relation": "REQUIRES",
+      "condition": "APPLICABLE_WHEN_DEPENDENT_OBLIGATION_IS_IN_SCOPE",
+      "reason": "Remote content remains untrusted data consumes or semantically assumes the property guaranteed by Acquisition scope enforcement; satisfying the dependent without that prerequisite would leave its stated invariant undefined.",
+      "evidence": [
+        "NE-V8-BOUNDARIES",
+        "NE-V8-CODE-DATA",
+        "NE-V8-PARSERS",
+        "NE-V9-INVARIANTS"
+      ],
+      "dependency_type": "FUTURE_ENGINEERING_DEPENDENCY",
+      "scope": {
+        "historical": "FALSE",
+        "current": "UNKNOWN",
+        "future": "TRUE"
+      },
+      "valid_from": "v0.1.0",
+      "valid_until": "UNKNOWN",
+      "status": "FORMALIZED_ENGINEERING"
+    },
+    {
+      "dependency_id": "DEP-077",
+      "from_obligation": "OBL-REMOTE-DATA",
+      "to_obligation": "OBL-RECOGNITION-DISTINCT",
+      "relation": "REQUIRES",
+      "condition": "APPLICABLE_WHEN_DEPENDENT_OBLIGATION_IS_IN_SCOPE",
+      "reason": "The dependent behavior assumes recognition remains separable from acquisition.",
+      "evidence": [
+        "NE-V8-CODE-DATA",
+        "NE-V8-PARSERS",
+        "NE-V9-CLAIMS",
+        "NE-V9-INVARIANTS"
+      ],
+      "dependency_type": "FUTURE_ENGINEERING_DEPENDENCY",
+      "scope": {
+        "historical": "FALSE",
+        "current": "UNKNOWN",
+        "future": "TRUE"
+      },
+      "valid_from": "v0.1.0",
+      "valid_until": "UNKNOWN",
+      "status": "FORMALIZED_ENGINEERING"
+    },
+    {
+      "dependency_id": "DEP-078",
+      "from_obligation": "OBL-RETRY",
+      "to_obligation": "OBL-ACQ-TIMEOUT",
+      "relation": "REQUIRES",
+      "condition": "APPLICABLE_WHEN_DEPENDENT_OBLIGATION_IS_IN_SCOPE",
+      "reason": "Bounded explicit retry consumes or semantically assumes the property guaranteed by Finite acquisition timeout; satisfying the dependent without that prerequisite would leave its stated invariant undefined.",
+      "evidence": [
+        "NE-V8-BOUNDS",
+        "NE-V8-RETRY",
+        "NE-V9-CLAIMS"
+      ],
+      "dependency_type": "FUTURE_ENGINEERING_DEPENDENCY",
+      "scope": {
+        "historical": "FALSE",
+        "current": "UNKNOWN",
+        "future": "TRUE"
+      },
+      "valid_from": "v0.3.0",
+      "valid_until": "UNKNOWN",
+      "status": "FORMALIZED_ENGINEERING"
+    },
+    {
+      "dependency_id": "DEP-079",
+      "from_obligation": "OBL-RETRY",
+      "to_obligation": "OBL-CANDIDATE-ATTEMPTS",
+      "relation": "REQUIRES",
+      "condition": "APPLICABLE_WHEN_DEPENDENT_OBLIGATION_IS_IN_SCOPE",
+      "reason": "Bounded explicit retry consumes or semantically assumes the property guaranteed by Attempt accounting; satisfying the dependent without that prerequisite would leave its stated invariant undefined.",
+      "evidence": [
+        "NE-V8-BOUNDS",
+        "NE-V8-RETRY"
+      ],
+      "dependency_type": "FUTURE_ENGINEERING_DEPENDENCY",
+      "scope": {
+        "historical": "FALSE",
+        "current": "UNKNOWN",
+        "future": "TRUE"
+      },
+      "valid_from": "v0.3.0",
+      "valid_until": "UNKNOWN",
+      "status": "FORMALIZED_ENGINEERING"
+    },
+    {
+      "dependency_id": "DEP-080",
+      "from_obligation": "OBL-RETRY",
+      "to_obligation": "OBL-TERMINAL-OWNERSHIP",
+      "relation": "REQUIRES",
+      "condition": "APPLICABLE_WHEN_DEPENDENT_OBLIGATION_IS_IN_SCOPE",
+      "reason": "The dependent behavior cannot close safely while owned work lacks terminal accountability.",
+      "evidence": [
+        "NE-V8-BOUNDS",
+        "NE-V8-CLAIM",
+        "NE-V8-RETRY"
+      ],
+      "dependency_type": "FUTURE_ENGINEERING_DEPENDENCY",
+      "scope": {
+        "historical": "FALSE",
+        "current": "UNKNOWN",
+        "future": "TRUE"
+      },
+      "valid_from": "v0.3.0",
+      "valid_until": "UNKNOWN",
+      "status": "FORMALIZED_ENGINEERING"
+    },
+    {
+      "dependency_id": "DEP-081",
+      "from_obligation": "OBL-SCHEDULER-TERMINATION",
+      "to_obligation": "OBL-BOUNDED-CONCURRENCY",
+      "relation": "REQUIRES",
+      "condition": "APPLICABLE_WHEN_DEPENDENT_OBLIGATION_IS_IN_SCOPE",
+      "reason": "The dependent behavior cannot reason about in-flight completion without a finite worker scope.",
+      "evidence": [
+        "NE-V8-BOUNDS",
+        "NE-V8-CLAIM",
+        "NE-V9-CLAIMS",
+        "NE-V9-INVARIANTS"
+      ],
+      "dependency_type": "FUTURE_ENGINEERING_DEPENDENCY",
+      "scope": {
+        "historical": "FALSE",
+        "current": "UNKNOWN",
+        "future": "TRUE"
+      },
+      "valid_from": "v0.1.0",
+      "valid_until": "UNKNOWN",
+      "status": "FORMALIZED_ENGINEERING"
+    },
+    {
+      "dependency_id": "DEP-082",
+      "from_obligation": "OBL-SCHEDULER-TERMINATION",
+      "to_obligation": "OBL-CANDIDATE-ADMISSION",
+      "relation": "REQUIRES",
+      "condition": "APPLICABLE_WHEN_DEPENDENT_OBLIGATION_IS_IN_SCOPE",
+      "reason": "The dependent behavior creates work and therefore needs defined admission and duplicate handling.",
+      "evidence": [
+        "NE-V8-CLAIM",
+        "NE-V8-DUPLICATE",
+        "NE-V9-CLAIMS",
+        "NE-V9-INVARIANTS"
+      ],
+      "dependency_type": "FUTURE_ENGINEERING_DEPENDENCY",
+      "scope": {
+        "historical": "FALSE",
+        "current": "UNKNOWN",
+        "future": "TRUE"
+      },
+      "valid_from": "v0.1.0",
+      "valid_until": "UNKNOWN",
+      "status": "FORMALIZED_ENGINEERING"
+    },
+    {
+      "dependency_id": "DEP-083",
+      "from_obligation": "OBL-SCHEDULER-TERMINATION",
+      "to_obligation": "OBL-LIFECYCLE-OBS",
+      "relation": "REQUIRES",
+      "condition": "APPLICABLE_WHEN_DEPENDENT_OBLIGATION_IS_IN_SCOPE",
+      "reason": "The dependent behavior needs observable lifecycle evidence to diagnose or verify satisfaction.",
+      "evidence": [
+        "NE-V8-CLAIM",
+        "NE-V8-FAILURE-MATRIX",
+        "NE-V8-OBSERVE",
+        "NE-V9-INVARIANTS"
+      ],
+      "dependency_type": "FUTURE_ENGINEERING_DEPENDENCY",
+      "scope": {
+        "historical": "FALSE",
+        "current": "UNKNOWN",
+        "future": "TRUE"
+      },
+      "valid_from": "v0.1.0",
+      "valid_until": "UNKNOWN",
+      "status": "FORMALIZED_ENGINEERING"
+    },
+    {
+      "dependency_id": "DEP-084",
+      "from_obligation": "OBL-SCHEDULER-TERMINATION",
+      "to_obligation": "OBL-TERMINAL-OWNERSHIP",
+      "relation": "REQUIRES",
+      "condition": "APPLICABLE_WHEN_DEPENDENT_OBLIGATION_IS_IN_SCOPE",
+      "reason": "The dependent behavior cannot close safely while owned work lacks terminal accountability.",
+      "evidence": [
+        "NE-V8-CLAIM",
+        "NE-V9-INVARIANTS"
+      ],
+      "dependency_type": "FUTURE_ENGINEERING_DEPENDENCY",
+      "scope": {
+        "historical": "FALSE",
+        "current": "UNKNOWN",
+        "future": "TRUE"
+      },
+      "valid_from": "v0.2.0",
+      "valid_until": "UNKNOWN",
+      "status": "FORMALIZED_ENGINEERING"
+    },
+    {
+      "dependency_id": "DEP-085",
+      "from_obligation": "OBL-SILENT-FAILURE",
+      "to_obligation": "OBL-OBS-OUTCOMES",
+      "relation": "REQUIRES",
+      "condition": "APPLICABLE_WHEN_DEPENDENT_OBLIGATION_IS_IN_SCOPE",
+      "reason": "Reject silent semantic failure consumes or semantically assumes the property guaranteed by Observation outcome semantics; satisfying the dependent without that prerequisite would leave its stated invariant undefined.",
+      "evidence": [
+        "NE-V3-DATA",
+        "NE-V8-FAILURE-MATRIX"
+      ],
+      "dependency_type": "FUTURE_ENGINEERING_DEPENDENCY",
+      "scope": {
+        "historical": "FALSE",
+        "current": "UNKNOWN",
+        "future": "TRUE"
+      },
+      "valid_from": "v0.1.0",
+      "valid_until": "UNKNOWN",
+      "status": "FORMALIZED_ENGINEERING"
+    },
+    {
+      "dependency_id": "DEP-086",
+      "from_obligation": "OBL-SILENT-FAILURE",
+      "to_obligation": "OBL-RECOGNITION-OUTCOMES",
+      "relation": "REQUIRES",
+      "condition": "APPLICABLE_WHEN_DEPENDENT_OBLIGATION_IS_IN_SCOPE",
+      "reason": "The dependent behavior needs no-match, failure, partial, and success to remain distinct.",
+      "evidence": [
+        "NE-V3-API",
+        "NE-V8-FAILURE-MATRIX"
+      ],
+      "dependency_type": "FUTURE_ENGINEERING_DEPENDENCY",
+      "scope": {
+        "historical": "FALSE",
+        "current": "UNKNOWN",
+        "future": "TRUE"
+      },
+      "valid_from": "v0.1.0",
+      "valid_until": "UNKNOWN",
+      "status": "FORMALIZED_ENGINEERING"
+    },
+    {
+      "dependency_id": "DEP-087",
+      "from_obligation": "OBL-TERMINAL-OWNERSHIP",
+      "to_obligation": "OBL-CANDIDATE-STATE",
+      "relation": "REQUIRES",
+      "condition": "APPLICABLE_WHEN_DEPENDENT_OBLIGATION_IS_IN_SCOPE",
+      "reason": "The dependent behavior reads or mutates candidate lifecycle state and needs legal transitions.",
+      "evidence": [
+        "NE-V8-CLAIM",
+        "NE-V8-RETRY",
+        "NE-V9-CLAIMS"
+      ],
+      "dependency_type": "FUTURE_ENGINEERING_DEPENDENCY",
+      "scope": {
+        "historical": "FALSE",
+        "current": "UNKNOWN",
+        "future": "TRUE"
+      },
+      "valid_from": "v0.2.0",
+      "valid_until": "UNKNOWN",
+      "status": "FORMALIZED_ENGINEERING"
+    },
+    {
+      "dependency_id": "DEP-088",
+      "from_obligation": "OBL-TERMINAL-OWNERSHIP",
+      "to_obligation": "OBL-CLAIM-EXCLUSIVITY",
+      "relation": "REQUIRES",
+      "condition": "APPLICABLE_WHEN_DEPENDENT_OBLIGATION_IS_IN_SCOPE",
+      "reason": "The dependent behavior needs an attributable exclusive owner before terminal mutation.",
+      "evidence": [
+        "NE-V8-CLAIM",
+        "NE-V9-CLAIMS"
+      ],
+      "dependency_type": "FUTURE_ENGINEERING_DEPENDENCY",
+      "scope": {
+        "historical": "FALSE",
+        "current": "UNKNOWN",
+        "future": "TRUE"
+      },
+      "valid_from": "v0.2.0",
+      "valid_until": "UNKNOWN",
+      "status": "FORMALIZED_ENGINEERING"
+    },
+    {
+      "dependency_id": "DEP-089",
+      "from_obligation": "OBL-UNBOUNDED",
+      "to_obligation": "OBL-RESOURCE",
+      "relation": "REQUIRES",
+      "condition": "APPLICABLE_WHEN_DEPENDENT_OBLIGATION_IS_IN_SCOPE",
+      "reason": "The dependent recursive/resource behavior needs explicit bounds to avoid unbounded execution.",
+      "evidence": [
+        "NE-V8-BOUNDS",
+        "NE-V8-RISKS",
+        "NE-V9-CLAIMS"
+      ],
+      "dependency_type": "FUTURE_ENGINEERING_DEPENDENCY",
+      "scope": {
+        "historical": "FALSE",
+        "current": "UNKNOWN",
+        "future": "TRUE"
+      },
+      "valid_from": "v0.1.0",
+      "valid_until": "UNKNOWN",
+      "status": "FORMALIZED_ENGINEERING"
+    },
+    {
+      "dependency_id": "DEP-090",
+      "from_obligation": "OBL-WEB-GENERALIZE",
+      "to_obligation": "OBL-ACQ-BEFORE-INTERP",
+      "relation": "REQUIRES",
+      "condition": "APPLICABLE_WHEN_DEPENDENT_OBLIGATION_IS_IN_SCOPE",
+      "reason": "Generalize beyond web without losing web semantics consumes or semantically assumes the property guaranteed by Acquisition precedes interpretation; satisfying the dependent without that prerequisite would leave its stated invariant undefined.",
+      "evidence": [
+        "NE-V9-CLAIMS",
+        "NE-V9-INVARIANTS"
+      ],
+      "dependency_type": "FUTURE_ENGINEERING_DEPENDENCY",
+      "scope": {
+        "historical": "FALSE",
+        "current": "UNKNOWN",
+        "future": "TRUE"
+      },
+      "valid_from": "v0.1.0",
+      "valid_until": "UNKNOWN",
+      "status": "FORMALIZED_ENGINEERING"
+    },
+    {
+      "dependency_id": "DEP-091",
+      "from_obligation": "OBL-WEB-GENERALIZE",
+      "to_obligation": "OBL-ACQ-SCOPE",
+      "relation": "REQUIRES",
+      "condition": "APPLICABLE_WHEN_DEPENDENT_OBLIGATION_IS_IN_SCOPE",
+      "reason": "Generalize beyond web without losing web semantics consumes or semantically assumes the property guaranteed by Acquisition scope enforcement; satisfying the dependent without that prerequisite would leave its stated invariant undefined.",
+      "evidence": [
+        "NE-V8-BOUNDARIES",
+        "NE-V9-CLAIMS",
+        "NE-V9-INVARIANTS"
+      ],
+      "dependency_type": "FUTURE_ENGINEERING_DEPENDENCY",
+      "scope": {
+        "historical": "FALSE",
+        "current": "UNKNOWN",
+        "future": "TRUE"
+      },
+      "valid_from": "v0.1.0",
+      "valid_until": "UNKNOWN",
+      "status": "FORMALIZED_ENGINEERING"
+    },
+    {
+      "dependency_id": "DEP-092",
+      "from_obligation": "OBL-WORKER-FAILURE",
+      "to_obligation": "OBL-CLAIM-EXCLUSIVITY",
+      "relation": "REQUIRES",
+      "condition": "APPLICABLE_WHEN_DEPENDENT_OBLIGATION_IS_IN_SCOPE",
+      "reason": "The dependent behavior needs an attributable exclusive owner before terminal mutation.",
+      "evidence": [
+        "NE-V8-CLAIM",
+        "NE-V8-FAILURE-MATRIX",
+        "NE-V9-CLAIMS"
+      ],
+      "dependency_type": "FUTURE_ENGINEERING_DEPENDENCY",
+      "scope": {
+        "historical": "FALSE",
+        "current": "UNKNOWN",
+        "future": "TRUE"
+      },
+      "valid_from": "v0.2.0",
+      "valid_until": "UNKNOWN",
+      "status": "FORMALIZED_ENGINEERING"
+    },
+    {
+      "dependency_id": "DEP-093",
+      "from_obligation": "OBL-WORKER-FAILURE",
+      "to_obligation": "OBL-SILENT-FAILURE",
+      "relation": "REQUIRES",
+      "condition": "APPLICABLE_WHEN_DEPENDENT_OBLIGATION_IS_IN_SCOPE",
+      "reason": "Worker failure state consistency consumes or semantically assumes the property guaranteed by Reject silent semantic failure; satisfying the dependent without that prerequisite would leave its stated invariant undefined.",
+      "evidence": [
+        "NE-V8-CLAIM",
+        "NE-V8-FAILURE-MATRIX"
+      ],
+      "dependency_type": "FUTURE_ENGINEERING_DEPENDENCY",
+      "scope": {
+        "historical": "FALSE",
+        "current": "UNKNOWN",
+        "future": "TRUE"
+      },
+      "valid_from": "v0.1.0",
+      "valid_until": "UNKNOWN",
+      "status": "FORMALIZED_ENGINEERING"
+    },
+    {
+      "dependency_id": "DEP-094",
+      "from_obligation": "OBL-WORKER-FAILURE",
+      "to_obligation": "OBL-TERMINAL-OWNERSHIP",
+      "relation": "REQUIRES",
+      "condition": "APPLICABLE_WHEN_DEPENDENT_OBLIGATION_IS_IN_SCOPE",
+      "reason": "The dependent behavior cannot close safely while owned work lacks terminal accountability.",
+      "evidence": [
+        "NE-V8-CLAIM",
+        "NE-V8-FAILURE-MATRIX"
+      ],
+      "dependency_type": "FUTURE_ENGINEERING_DEPENDENCY",
+      "scope": {
+        "historical": "FALSE",
+        "current": "UNKNOWN",
+        "future": "TRUE"
+      },
+      "valid_from": "v0.2.0",
+      "valid_until": "UNKNOWN",
+      "status": "FORMALIZED_ENGINEERING"
+    },
+    {
+      "dependency_id": "DEP-095",
+      "from_obligation": "OBL-CANDIDATE-STATE",
+      "to_obligation": "OBL-CANDIDATE-IDENTITY",
+      "relation": "REFINES",
+      "condition": "ANALYTICAL_RELATION_NOT_A_REQUIRES_EDGE",
+      "reason": "The dependent behavior must correlate the same candidate across lifecycle operations.",
+      "evidence": [
+        "NE-V8-CLAIM",
+        "NE-V8-RETRY",
+        "NE-V9-CLAIMS",
+        "NE-V9-INVARIANTS"
+      ],
+      "dependency_type": "FUTURE_ENGINEERING_DEPENDENCY",
+      "scope": {
+        "historical": "UNKNOWN",
+        "current": "UNKNOWN",
+        "future": "TRUE"
+      },
+      "valid_from": "v0.1.0",
+      "valid_until": "UNKNOWN",
+      "status": "FORMALIZED_ENGINEERING"
+    },
+    {
+      "dependency_id": "DEP-096",
+      "from_obligation": "OBL-CLAIM-EXCLUSIVITY",
+      "to_obligation": "OBL-CANDIDATE-STATE",
+      "relation": "REFINES",
+      "condition": "ANALYTICAL_RELATION_NOT_A_REQUIRES_EDGE",
+      "reason": "The dependent behavior reads or mutates candidate lifecycle state and needs legal transitions.",
+      "evidence": [
+        "NE-V8-CLAIM",
+        "NE-V8-RETRY",
+        "NE-V9-CLAIMS"
+      ],
+      "dependency_type": "FUTURE_ENGINEERING_DEPENDENCY",
+      "scope": {
+        "historical": "UNKNOWN",
+        "current": "UNKNOWN",
+        "future": "TRUE"
+      },
+      "valid_from": "v0.2.0",
+      "valid_until": "UNKNOWN",
+      "status": "FORMALIZED_ENGINEERING"
+    },
+    {
+      "dependency_id": "DEP-097",
+      "from_obligation": "OBL-RESOURCE",
+      "to_obligation": "OBL-EXPANSION-RECURSIVE",
+      "relation": "CONSTRAINS",
+      "condition": "ANALYTICAL_RELATION_NOT_A_REQUIRES_EDGE",
+      "reason": "Explicit resource bounds consumes or semantically assumes the property guaranteed by Recursive expansion capability; satisfying the dependent without that prerequisite would leave its stated invariant undefined.",
+      "evidence": [
+        "NE-V8-BOUNDS",
+        "NE-V9-CLAIMS",
+        "NE-V9-INVARIANTS"
+      ],
+      "dependency_type": "FUTURE_ENGINEERING_DEPENDENCY",
+      "scope": {
+        "historical": "UNKNOWN",
+        "current": "UNKNOWN",
+        "future": "TRUE"
+      },
+      "valid_from": "v0.1.0",
+      "valid_until": "UNKNOWN",
+      "status": "FORMALIZED_ENGINEERING"
+    },
+    {
+      "dependency_id": "DEP-098",
+      "from_obligation": "OBL-LIFECYCLE-OBS",
+      "to_obligation": "OBL-AUDIT",
+      "relation": "SUPPORTS",
+      "condition": "ANALYTICAL_RELATION_NOT_A_REQUIRES_EDGE",
+      "reason": "Lifecycle observability consumes or semantically assumes the property guaranteed by Auditability verification; satisfying the dependent without that prerequisite would leave its stated invariant undefined.",
+      "evidence": [
+        "NE-V8-FAILURE-MATRIX",
+        "NE-V8-OBSERVE",
+        "NE-V9-CLAIMS"
+      ],
+      "dependency_type": "FUTURE_ENGINEERING_DEPENDENCY",
+      "scope": {
+        "historical": "UNKNOWN",
+        "current": "UNKNOWN",
+        "future": "TRUE"
+      },
+      "valid_from": "v0.6.0",
+      "valid_until": "UNKNOWN",
+      "status": "FORMALIZED_ENGINEERING"
+    },
+    {
+      "dependency_id": "DEP-099",
+      "from_obligation": "OBL-PROVENANCE-INTEGRITY",
+      "to_obligation": "OBL-PROVENANCE",
+      "relation": "STRENGTHENS",
+      "condition": "ANALYTICAL_RELATION_NOT_A_REQUIRES_EDGE",
+      "reason": "The dependent behavior assumes visible derivation associations.",
+      "evidence": [
+        "NE-V8-PROVENANCE",
+        "NE-V9-INVARIANTS",
+        "NE-V9-UNKNOWNS"
+      ],
+      "dependency_type": "FUTURE_ENGINEERING_DEPENDENCY",
+      "scope": {
+        "historical": "UNKNOWN",
+        "current": "UNKNOWN",
+        "future": "TRUE"
+      },
+      "valid_from": "v0.1.0",
+      "valid_until": "UNKNOWN",
+      "status": "FORMALIZED_ENGINEERING"
+    },
+    {
+      "dependency_id": "DEP-100",
+      "from_obligation": "OBL-PROVIDER-FAILURE",
+      "to_obligation": "OBL-PROVIDER-CONTRACT",
+      "relation": "STRENGTHENS",
+      "condition": "ANALYTICAL_RELATION_NOT_A_REQUIRES_EDGE",
+      "reason": "Provider failure containment consumes or semantically assumes the property guaranteed by Provider semantic contract; satisfying the dependent without that prerequisite would leave its stated invariant undefined.",
+      "evidence": [
+        "NE-V3-PROVIDERS",
+        "NE-V8-FAILURE-MATRIX",
+        "NE-V9-CLAIMS"
+      ],
+      "dependency_type": "FUTURE_ENGINEERING_DEPENDENCY",
+      "scope": {
+        "historical": "UNKNOWN",
+        "current": "UNKNOWN",
+        "future": "TRUE"
+      },
+      "valid_from": "v0.2.0",
+      "valid_until": "UNKNOWN",
+      "status": "FORMALIZED_ENGINEERING"
+    }
+  ],
+  "requires_cycles": [],
+  "cycle_status": "ACYCLIC",
+  "verification_order": [
+    "OBL-AUTHORITY",
+    "OBL-BOUNDED-CONCURRENCY",
+    "OBL-CANDIDATE-IDENTITY",
+    "OBL-CONTRACT-INPUT",
+    "OBL-PRIVATE-SHAPE",
+    "OBL-PROVIDER-ORDER",
+    "OBL-REGRESSION",
+    "OBL-RESOURCE",
+    "OBL-UI",
+    "OBL-ACQ-BEFORE-INTERP",
+    "OBL-CANDIDATE-EQUIVALENCE",
+    "OBL-CANDIDATE-ORIGIN",
+    "OBL-CANDIDATE-PARENT",
+    "OBL-CANDIDATE-PRIORITY",
+    "OBL-CANDIDATE-STATE",
+    "OBL-DEDUP-SCOPES",
+    "OBL-PARSE-DEFECT",
+    "OBL-UNBOUNDED",
+    "OBL-ACQ-OUTCOME",
+    "OBL-ACQ-SCOPE",
+    "OBL-ACQ-TIMEOUT",
+    "OBL-OBS-DISTINCT",
+    "OBL-CANDIDATE-ATTEMPTS",
+    "OBL-CANDIDATE-TIMESTAMPS",
+    "OBL-CLAIM-EXCLUSIVITY",
+    "OBL-CANDIDATE-ADMISSION",
+    "OBL-WEB-GENERALIZE",
+    "OBL-OBS-OUTCOMES",
+    "OBL-OBS-SOURCE",
+    "OBL-RECOGNITION-DISTINCT",
+    "OBL-TERMINAL-OWNERSHIP",
+    "OBL-ACQ-METADATA",
+    "OBL-DISCOVERY-RECORD",
+    "OBL-RECOGNITION-OUTCOMES",
+    "OBL-REMOTE-DATA",
+    "OBL-RETRY",
+    "OBL-KNOWLEDGE",
+    "OBL-PROVENANCE",
+    "OBL-ERROR-CONTRACT",
+    "OBL-LIFECYCLE-OBS",
+    "OBL-PROVIDER-CONTRACT",
+    "OBL-SILENT-FAILURE",
+    "OBL-PARSER",
+    "OBL-PROVENANCE-INTEGRITY",
+    "OBL-EXPORT",
+    "OBL-PERSIST-COMPAT",
+    "OBL-SCHEDULER-TERMINATION",
+    "OBL-PROVIDER-FAILURE",
+    "OBL-WORKER-FAILURE",
+    "OBL-AUDIT",
+    "OBL-PERSIST-CORRUPTION",
+    "OBL-CANCELLATION",
+    "OBL-EXPANSION-RECURSIVE",
+    "OBL-EXPANSION-VS-RETRY"
+  ],
+  "dependency_layers": [
+    {
+      "layer": "L1 — Core state",
+      "obligations": [
+        "OBL-AUTHORITY",
+        "OBL-BOUNDED-CONCURRENCY",
+        "OBL-CANDIDATE-IDENTITY",
+        "OBL-CONTRACT-INPUT",
+        "OBL-PRIVATE-SHAPE",
+        "OBL-PROVIDER-ORDER",
+        "OBL-REGRESSION",
+        "OBL-RESOURCE",
+        "OBL-UI"
+      ],
+      "analytical_only": true,
+      "assignment_rule": "one plus maximum REQUIRES prerequisite layer, capped at L6"
+    },
+    {
+      "layer": "L2 — Component behavior",
+      "obligations": [
+        "OBL-ACQ-BEFORE-INTERP",
+        "OBL-CANDIDATE-EQUIVALENCE",
+        "OBL-CANDIDATE-ORIGIN",
+        "OBL-CANDIDATE-PARENT",
+        "OBL-CANDIDATE-PRIORITY",
+        "OBL-CANDIDATE-STATE",
+        "OBL-DEDUP-SCOPES",
+        "OBL-PARSE-DEFECT",
+        "OBL-UNBOUNDED"
+      ],
+      "analytical_only": true,
+      "assignment_rule": "one plus maximum REQUIRES prerequisite layer, capped at L6"
+    },
+    {
+      "layer": "L3 — Scheduler semantics",
+      "obligations": [
+        "OBL-ACQ-OUTCOME",
+        "OBL-ACQ-SCOPE",
+        "OBL-ACQ-TIMEOUT",
+        "OBL-OBS-DISTINCT",
+        "OBL-CANDIDATE-ATTEMPTS",
+        "OBL-CANDIDATE-TIMESTAMPS",
+        "OBL-CLAIM-EXCLUSIVITY",
+        "OBL-CANDIDATE-ADMISSION"
+      ],
+      "analytical_only": true,
+      "assignment_rule": "one plus maximum REQUIRES prerequisite layer, capped at L6"
+    },
+    {
+      "layer": "L4 — Recursive behavior",
+      "obligations": [
+        "OBL-WEB-GENERALIZE",
+        "OBL-OBS-OUTCOMES",
+        "OBL-OBS-SOURCE",
+        "OBL-RECOGNITION-DISTINCT",
+        "OBL-TERMINAL-OWNERSHIP"
+      ],
+      "analytical_only": true,
+      "assignment_rule": "one plus maximum REQUIRES prerequisite layer, capped at L6"
+    },
+    {
+      "layer": "L5 — Reliability / containment",
+      "obligations": [
+        "OBL-ACQ-METADATA",
+        "OBL-DISCOVERY-RECORD",
+        "OBL-RECOGNITION-OUTCOMES",
+        "OBL-REMOTE-DATA",
+        "OBL-RETRY"
+      ],
+      "analytical_only": true,
+      "assignment_rule": "one plus maximum REQUIRES prerequisite layer, capped at L6"
+    },
+    {
+      "layer": "L6 — System-level guarantees",
+      "obligations": [
+        "OBL-KNOWLEDGE",
+        "OBL-PROVENANCE",
+        "OBL-ERROR-CONTRACT",
+        "OBL-LIFECYCLE-OBS",
+        "OBL-PROVIDER-CONTRACT",
+        "OBL-SILENT-FAILURE",
+        "OBL-PARSER",
+        "OBL-PROVENANCE-INTEGRITY",
+        "OBL-EXPORT",
+        "OBL-PERSIST-COMPAT",
+        "OBL-SCHEDULER-TERMINATION",
+        "OBL-PROVIDER-FAILURE",
+        "OBL-WORKER-FAILURE",
+        "OBL-AUDIT",
+        "OBL-PERSIST-CORRUPTION",
+        "OBL-CANCELLATION",
+        "OBL-EXPANSION-RECURSIVE",
+        "OBL-EXPANSION-VS-RETRY"
+      ],
+      "analytical_only": true,
+      "assignment_rule": "one plus maximum REQUIRES prerequisite layer, capped at L6"
+    }
+  ],
+  "required_closure": [
+    {
+      "obligation_id": "OBL-CANDIDATE-IDENTITY",
+      "direct_prerequisites": [],
+      "transitive_prerequisites": [],
+      "verification_prerequisites": [],
+      "unresolved_dependencies": [],
+      "closure_status": "OBLIGATION_BLOCKED"
+    },
+    {
+      "obligation_id": "OBL-DEDUP-SCOPES",
+      "direct_prerequisites": [
+        "OBL-CANDIDATE-IDENTITY"
+      ],
+      "transitive_prerequisites": [
+        "OBL-CANDIDATE-IDENTITY"
+      ],
+      "verification_prerequisites": [
+        "TEST-CANDIDATE-IDENTITY"
+      ],
+      "unresolved_dependencies": [
+        "OBL-CANDIDATE-IDENTITY"
+      ],
+      "closure_status": "OBLIGATION_BLOCKED"
+    },
+    {
+      "obligation_id": "OBL-CANDIDATE-STATE",
+      "direct_prerequisites": [
+        "OBL-CANDIDATE-IDENTITY"
+      ],
+      "transitive_prerequisites": [
+        "OBL-CANDIDATE-IDENTITY"
+      ],
+      "verification_prerequisites": [
+        "TEST-CANDIDATE-IDENTITY"
+      ],
+      "unresolved_dependencies": [
+        "OBL-CANDIDATE-IDENTITY"
+      ],
+      "closure_status": "OBLIGATION_BLOCKED"
+    },
+    {
+      "obligation_id": "OBL-TERMINAL-OWNERSHIP",
+      "direct_prerequisites": [
+        "OBL-CANDIDATE-STATE",
+        "OBL-CLAIM-EXCLUSIVITY"
+      ],
+      "transitive_prerequisites": [
+        "OBL-CANDIDATE-IDENTITY",
+        "OBL-CANDIDATE-STATE",
+        "OBL-CLAIM-EXCLUSIVITY"
+      ],
+      "verification_prerequisites": [
+        "TEST-CANDIDATE-IDENTITY",
+        "TEST-CANDIDATE-STATE",
+        "TEST-CLAIM-EXCLUSIVITY"
+      ],
+      "unresolved_dependencies": [
+        "OBL-CANDIDATE-IDENTITY",
+        "OBL-CANDIDATE-STATE",
+        "OBL-CLAIM-EXCLUSIVITY"
+      ],
+      "closure_status": "OBLIGATION_BLOCKED"
+    },
+    {
+      "obligation_id": "OBL-ACQ-BEFORE-INTERP",
+      "direct_prerequisites": [
+        "OBL-CANDIDATE-IDENTITY"
+      ],
+      "transitive_prerequisites": [
+        "OBL-CANDIDATE-IDENTITY"
+      ],
+      "verification_prerequisites": [
+        "TEST-CANDIDATE-IDENTITY"
+      ],
+      "unresolved_dependencies": [
+        "OBL-CANDIDATE-IDENTITY"
+      ],
+      "closure_status": "OBLIGATION_BLOCKED"
+    },
+    {
+      "obligation_id": "OBL-ACQ-OUTCOME",
+      "direct_prerequisites": [
+        "OBL-ACQ-BEFORE-INTERP",
+        "OBL-CANDIDATE-IDENTITY"
+      ],
+      "transitive_prerequisites": [
+        "OBL-ACQ-BEFORE-INTERP",
+        "OBL-CANDIDATE-IDENTITY"
+      ],
+      "verification_prerequisites": [
+        "TEST-ACQ-BEFORE-INTERP",
+        "TEST-CANDIDATE-IDENTITY"
+      ],
+      "unresolved_dependencies": [
+        "OBL-ACQ-BEFORE-INTERP",
+        "OBL-CANDIDATE-IDENTITY"
+      ],
+      "closure_status": "OBLIGATION_BLOCKED"
+    },
+    {
+      "obligation_id": "OBL-ACQ-TIMEOUT",
+      "direct_prerequisites": [
+        "OBL-ACQ-BEFORE-INTERP"
+      ],
+      "transitive_prerequisites": [
+        "OBL-ACQ-BEFORE-INTERP",
+        "OBL-CANDIDATE-IDENTITY"
+      ],
+      "verification_prerequisites": [
+        "TEST-ACQ-BEFORE-INTERP",
+        "TEST-CANDIDATE-IDENTITY"
+      ],
+      "unresolved_dependencies": [
+        "OBL-ACQ-BEFORE-INTERP",
+        "OBL-CANDIDATE-IDENTITY"
+      ],
+      "closure_status": "OBLIGATION_BLOCKED"
+    },
+    {
+      "obligation_id": "OBL-ACQ-SCOPE",
+      "direct_prerequisites": [
+        "OBL-ACQ-BEFORE-INTERP",
+        "OBL-AUTHORITY"
+      ],
+      "transitive_prerequisites": [
+        "OBL-ACQ-BEFORE-INTERP",
+        "OBL-AUTHORITY",
+        "OBL-CANDIDATE-IDENTITY"
+      ],
+      "verification_prerequisites": [
+        "TEST-ACQ-BEFORE-INTERP",
+        "TEST-AUTHORITY",
+        "TEST-CANDIDATE-IDENTITY"
+      ],
+      "unresolved_dependencies": [
+        "OBL-ACQ-BEFORE-INTERP",
+        "OBL-AUTHORITY",
+        "OBL-CANDIDATE-IDENTITY"
+      ],
+      "closure_status": "OBLIGATION_BLOCKED"
+    },
+    {
+      "obligation_id": "OBL-OBS-DISTINCT",
+      "direct_prerequisites": [
+        "OBL-ACQ-BEFORE-INTERP"
+      ],
+      "transitive_prerequisites": [
+        "OBL-ACQ-BEFORE-INTERP",
+        "OBL-CANDIDATE-IDENTITY"
+      ],
+      "verification_prerequisites": [
+        "TEST-ACQ-BEFORE-INTERP",
+        "TEST-CANDIDATE-IDENTITY"
+      ],
+      "unresolved_dependencies": [
+        "OBL-ACQ-BEFORE-INTERP",
+        "OBL-CANDIDATE-IDENTITY"
+      ],
+      "closure_status": "OBLIGATION_BLOCKED"
+    },
+    {
+      "obligation_id": "OBL-OBS-SOURCE",
+      "direct_prerequisites": [
+        "OBL-CANDIDATE-IDENTITY",
+        "OBL-OBS-DISTINCT"
+      ],
+      "transitive_prerequisites": [
+        "OBL-ACQ-BEFORE-INTERP",
+        "OBL-CANDIDATE-IDENTITY",
+        "OBL-OBS-DISTINCT"
+      ],
+      "verification_prerequisites": [
+        "TEST-ACQ-BEFORE-INTERP",
+        "TEST-CANDIDATE-IDENTITY",
+        "TEST-OBS-DISTINCT"
+      ],
+      "unresolved_dependencies": [
+        "OBL-ACQ-BEFORE-INTERP",
+        "OBL-CANDIDATE-IDENTITY",
+        "OBL-OBS-DISTINCT"
+      ],
+      "closure_status": "OBLIGATION_BLOCKED"
+    },
+    {
+      "obligation_id": "OBL-OBS-OUTCOMES",
+      "direct_prerequisites": [
+        "OBL-ACQ-OUTCOME",
+        "OBL-OBS-DISTINCT"
+      ],
+      "transitive_prerequisites": [
+        "OBL-ACQ-BEFORE-INTERP",
+        "OBL-ACQ-OUTCOME",
+        "OBL-CANDIDATE-IDENTITY",
+        "OBL-OBS-DISTINCT"
+      ],
+      "verification_prerequisites": [
+        "TEST-ACQ-BEFORE-INTERP",
+        "TEST-ACQ-OUTCOME",
+        "TEST-CANDIDATE-IDENTITY",
+        "TEST-OBS-DISTINCT"
+      ],
+      "unresolved_dependencies": [
+        "OBL-ACQ-BEFORE-INTERP",
+        "OBL-ACQ-OUTCOME",
+        "OBL-CANDIDATE-IDENTITY",
+        "OBL-OBS-DISTINCT"
+      ],
+      "closure_status": "OBLIGATION_BLOCKED"
+    },
+    {
+      "obligation_id": "OBL-RECOGNITION-DISTINCT",
+      "direct_prerequisites": [
+        "OBL-ACQ-BEFORE-INTERP",
+        "OBL-OBS-DISTINCT"
+      ],
+      "transitive_prerequisites": [
+        "OBL-ACQ-BEFORE-INTERP",
+        "OBL-CANDIDATE-IDENTITY",
+        "OBL-OBS-DISTINCT"
+      ],
+      "verification_prerequisites": [
+        "TEST-ACQ-BEFORE-INTERP",
+        "TEST-CANDIDATE-IDENTITY",
+        "TEST-OBS-DISTINCT"
+      ],
+      "unresolved_dependencies": [
+        "OBL-ACQ-BEFORE-INTERP",
+        "OBL-CANDIDATE-IDENTITY",
+        "OBL-OBS-DISTINCT"
+      ],
+      "closure_status": "OBLIGATION_BLOCKED"
+    },
+    {
+      "obligation_id": "OBL-RECOGNITION-OUTCOMES",
+      "direct_prerequisites": [
+        "OBL-OBS-OUTCOMES",
+        "OBL-RECOGNITION-DISTINCT"
+      ],
+      "transitive_prerequisites": [
+        "OBL-ACQ-BEFORE-INTERP",
+        "OBL-ACQ-OUTCOME",
+        "OBL-CANDIDATE-IDENTITY",
+        "OBL-OBS-DISTINCT",
+        "OBL-OBS-OUTCOMES",
+        "OBL-RECOGNITION-DISTINCT"
+      ],
+      "verification_prerequisites": [
+        "TEST-ACQ-BEFORE-INTERP",
+        "TEST-ACQ-OUTCOME",
+        "TEST-CANDIDATE-IDENTITY",
+        "TEST-OBS-DISTINCT",
+        "TEST-OBS-OUTCOMES",
+        "TEST-RECOGNITION-DISTINCT"
+      ],
+      "unresolved_dependencies": [
+        "OBL-ACQ-BEFORE-INTERP",
+        "OBL-ACQ-OUTCOME",
+        "OBL-CANDIDATE-IDENTITY",
+        "OBL-OBS-DISTINCT",
+        "OBL-OBS-OUTCOMES",
+        "OBL-RECOGNITION-DISTINCT"
+      ],
+      "closure_status": "OBLIGATION_BLOCKED"
+    },
+    {
+      "obligation_id": "OBL-DISCOVERY-RECORD",
+      "direct_prerequisites": [
+        "OBL-OBS-SOURCE",
+        "OBL-RECOGNITION-DISTINCT"
+      ],
+      "transitive_prerequisites": [
+        "OBL-ACQ-BEFORE-INTERP",
+        "OBL-CANDIDATE-IDENTITY",
+        "OBL-OBS-DISTINCT",
+        "OBL-OBS-SOURCE",
+        "OBL-RECOGNITION-DISTINCT"
+      ],
+      "verification_prerequisites": [
+        "TEST-ACQ-BEFORE-INTERP",
+        "TEST-CANDIDATE-IDENTITY",
+        "TEST-OBS-DISTINCT",
+        "TEST-OBS-SOURCE",
+        "TEST-RECOGNITION-DISTINCT"
+      ],
+      "unresolved_dependencies": [
+        "OBL-ACQ-BEFORE-INTERP",
+        "OBL-CANDIDATE-IDENTITY",
+        "OBL-OBS-DISTINCT",
+        "OBL-OBS-SOURCE",
+        "OBL-RECOGNITION-DISTINCT"
+      ],
+      "closure_status": "OBLIGATION_BLOCKED"
+    },
+    {
+      "obligation_id": "OBL-EXPANSION-RECURSIVE",
+      "direct_prerequisites": [
+        "OBL-CANDIDATE-ADMISSION",
+        "OBL-DISCOVERY-RECORD",
+        "OBL-RESOURCE",
+        "OBL-SCHEDULER-TERMINATION"
+      ],
+      "transitive_prerequisites": [
+        "OBL-ACQ-BEFORE-INTERP",
+        "OBL-ACQ-OUTCOME",
+        "OBL-BOUNDED-CONCURRENCY",
+        "OBL-CANDIDATE-ADMISSION",
+        "OBL-CANDIDATE-IDENTITY",
+        "OBL-CANDIDATE-PARENT",
+        "OBL-CANDIDATE-STATE",
+        "OBL-CLAIM-EXCLUSIVITY",
+        "OBL-DEDUP-SCOPES",
+        "OBL-DISCOVERY-RECORD",
+        "OBL-LIFECYCLE-OBS",
+        "OBL-OBS-DISTINCT",
+        "OBL-OBS-OUTCOMES",
+        "OBL-OBS-SOURCE",
+        "OBL-RECOGNITION-DISTINCT",
+        "OBL-RECOGNITION-OUTCOMES",
+        "OBL-RESOURCE",
+        "OBL-SCHEDULER-TERMINATION",
+        "OBL-TERMINAL-OWNERSHIP"
+      ],
+      "verification_prerequisites": [
+        "TEST-ACQ-BEFORE-INTERP",
+        "TEST-ACQ-OUTCOME",
+        "TEST-BOUNDED-CONCURRENCY",
+        "TEST-CANDIDATE-ADMISSION",
+        "TEST-CANDIDATE-IDENTITY",
+        "TEST-CANDIDATE-PARENT",
+        "TEST-CANDIDATE-STATE",
+        "TEST-CLAIM-EXCLUSIVITY",
+        "TEST-DEDUP-SCOPES",
+        "TEST-DISCOVERY-RECORD",
+        "TEST-LIFECYCLE-OBS",
+        "TEST-OBS-DISTINCT",
+        "TEST-OBS-OUTCOMES",
+        "TEST-OBS-SOURCE",
+        "TEST-RECOGNITION-DISTINCT",
+        "TEST-RECOGNITION-OUTCOMES",
+        "TEST-RESOURCE",
+        "TEST-SCHEDULER-TERMINATION",
+        "TEST-TERMINAL-OWNERSHIP"
+      ],
+      "unresolved_dependencies": [
+        "OBL-ACQ-BEFORE-INTERP",
+        "OBL-ACQ-OUTCOME",
+        "OBL-BOUNDED-CONCURRENCY",
+        "OBL-CANDIDATE-ADMISSION",
+        "OBL-CANDIDATE-IDENTITY",
+        "OBL-CANDIDATE-PARENT",
+        "OBL-CANDIDATE-STATE",
+        "OBL-CLAIM-EXCLUSIVITY",
+        "OBL-DEDUP-SCOPES",
+        "OBL-DISCOVERY-RECORD",
+        "OBL-LIFECYCLE-OBS",
+        "OBL-OBS-DISTINCT",
+        "OBL-OBS-OUTCOMES",
+        "OBL-OBS-SOURCE",
+        "OBL-RECOGNITION-DISTINCT",
+        "OBL-RECOGNITION-OUTCOMES",
+        "OBL-RESOURCE",
+        "OBL-SCHEDULER-TERMINATION",
+        "OBL-TERMINAL-OWNERSHIP"
+      ],
+      "closure_status": "OBLIGATION_BLOCKED"
+    },
+    {
+      "obligation_id": "OBL-EXPANSION-VS-RETRY",
+      "direct_prerequisites": [
+        "OBL-EXPANSION-RECURSIVE",
+        "OBL-RETRY"
+      ],
+      "transitive_prerequisites": [
+        "OBL-ACQ-BEFORE-INTERP",
+        "OBL-ACQ-OUTCOME",
+        "OBL-ACQ-TIMEOUT",
+        "OBL-BOUNDED-CONCURRENCY",
+        "OBL-CANDIDATE-ADMISSION",
+        "OBL-CANDIDATE-ATTEMPTS",
+        "OBL-CANDIDATE-IDENTITY",
+        "OBL-CANDIDATE-PARENT",
+        "OBL-CANDIDATE-STATE",
+        "OBL-CLAIM-EXCLUSIVITY",
+        "OBL-DEDUP-SCOPES",
+        "OBL-DISCOVERY-RECORD",
+        "OBL-EXPANSION-RECURSIVE",
+        "OBL-LIFECYCLE-OBS",
+        "OBL-OBS-DISTINCT",
+        "OBL-OBS-OUTCOMES",
+        "OBL-OBS-SOURCE",
+        "OBL-RECOGNITION-DISTINCT",
+        "OBL-RECOGNITION-OUTCOMES",
+        "OBL-RESOURCE",
+        "OBL-RETRY",
+        "OBL-SCHEDULER-TERMINATION",
+        "OBL-TERMINAL-OWNERSHIP"
+      ],
+      "verification_prerequisites": [
+        "TEST-ACQ-BEFORE-INTERP",
+        "TEST-ACQ-OUTCOME",
+        "TEST-ACQ-TIMEOUT",
+        "TEST-BOUNDED-CONCURRENCY",
+        "TEST-CANDIDATE-ADMISSION",
+        "TEST-CANDIDATE-ATTEMPTS",
+        "TEST-CANDIDATE-IDENTITY",
+        "TEST-CANDIDATE-PARENT",
+        "TEST-CANDIDATE-STATE",
+        "TEST-CLAIM-EXCLUSIVITY",
+        "TEST-DEDUP-SCOPES",
+        "TEST-DISCOVERY-RECORD",
+        "TEST-EXPANSION-RECURSIVE",
+        "TEST-LIFECYCLE-OBS",
+        "TEST-OBS-DISTINCT",
+        "TEST-OBS-OUTCOMES",
+        "TEST-OBS-SOURCE",
+        "TEST-RECOGNITION-DISTINCT",
+        "TEST-RECOGNITION-OUTCOMES",
+        "TEST-RESOURCE",
+        "TEST-RETRY",
+        "TEST-SCHEDULER-TERMINATION",
+        "TEST-TERMINAL-OWNERSHIP"
+      ],
+      "unresolved_dependencies": [
+        "OBL-ACQ-BEFORE-INTERP",
+        "OBL-ACQ-OUTCOME",
+        "OBL-ACQ-TIMEOUT",
+        "OBL-BOUNDED-CONCURRENCY",
+        "OBL-CANDIDATE-ADMISSION",
+        "OBL-CANDIDATE-ATTEMPTS",
+        "OBL-CANDIDATE-IDENTITY",
+        "OBL-CANDIDATE-PARENT",
+        "OBL-CANDIDATE-STATE",
+        "OBL-CLAIM-EXCLUSIVITY",
+        "OBL-DEDUP-SCOPES",
+        "OBL-DISCOVERY-RECORD",
+        "OBL-EXPANSION-RECURSIVE",
+        "OBL-LIFECYCLE-OBS",
+        "OBL-OBS-DISTINCT",
+        "OBL-OBS-OUTCOMES",
+        "OBL-OBS-SOURCE",
+        "OBL-RECOGNITION-DISTINCT",
+        "OBL-RECOGNITION-OUTCOMES",
+        "OBL-RESOURCE",
+        "OBL-RETRY",
+        "OBL-SCHEDULER-TERMINATION",
+        "OBL-TERMINAL-OWNERSHIP"
+      ],
+      "closure_status": "OBLIGATION_BLOCKED"
+    },
+    {
+      "obligation_id": "OBL-CANDIDATE-ADMISSION",
+      "direct_prerequisites": [
+        "OBL-CANDIDATE-IDENTITY",
+        "OBL-CANDIDATE-PARENT",
+        "OBL-CANDIDATE-STATE",
+        "OBL-DEDUP-SCOPES"
+      ],
+      "transitive_prerequisites": [
+        "OBL-CANDIDATE-IDENTITY",
+        "OBL-CANDIDATE-PARENT",
+        "OBL-CANDIDATE-STATE",
+        "OBL-DEDUP-SCOPES"
+      ],
+      "verification_prerequisites": [
+        "TEST-CANDIDATE-IDENTITY",
+        "TEST-CANDIDATE-PARENT",
+        "TEST-CANDIDATE-STATE",
+        "TEST-DEDUP-SCOPES"
+      ],
+      "unresolved_dependencies": [
+        "OBL-CANDIDATE-IDENTITY",
+        "OBL-CANDIDATE-PARENT",
+        "OBL-CANDIDATE-STATE",
+        "OBL-DEDUP-SCOPES"
+      ],
+      "closure_status": "OBLIGATION_BLOCKED"
+    },
+    {
+      "obligation_id": "OBL-KNOWLEDGE",
+      "direct_prerequisites": [
+        "OBL-CANDIDATE-IDENTITY",
+        "OBL-DISCOVERY-RECORD",
+        "OBL-OBS-DISTINCT"
+      ],
+      "transitive_prerequisites": [
+        "OBL-ACQ-BEFORE-INTERP",
+        "OBL-CANDIDATE-IDENTITY",
+        "OBL-DISCOVERY-RECORD",
+        "OBL-OBS-DISTINCT",
+        "OBL-OBS-SOURCE",
+        "OBL-RECOGNITION-DISTINCT"
+      ],
+      "verification_prerequisites": [
+        "TEST-ACQ-BEFORE-INTERP",
+        "TEST-CANDIDATE-IDENTITY",
+        "TEST-DISCOVERY-RECORD",
+        "TEST-OBS-DISTINCT",
+        "TEST-OBS-SOURCE",
+        "TEST-RECOGNITION-DISTINCT"
+      ],
+      "unresolved_dependencies": [
+        "OBL-ACQ-BEFORE-INTERP",
+        "OBL-CANDIDATE-IDENTITY",
+        "OBL-DISCOVERY-RECORD",
+        "OBL-OBS-DISTINCT",
+        "OBL-OBS-SOURCE",
+        "OBL-RECOGNITION-DISTINCT"
+      ],
+      "closure_status": "OBLIGATION_BLOCKED"
+    },
+    {
+      "obligation_id": "OBL-BOUNDED-CONCURRENCY",
+      "direct_prerequisites": [],
+      "transitive_prerequisites": [],
+      "verification_prerequisites": [],
+      "unresolved_dependencies": [],
+      "closure_status": "OBLIGATION_BLOCKED"
+    },
+    {
+      "obligation_id": "OBL-SCHEDULER-TERMINATION",
+      "direct_prerequisites": [
+        "OBL-BOUNDED-CONCURRENCY",
+        "OBL-CANDIDATE-ADMISSION",
+        "OBL-LIFECYCLE-OBS",
+        "OBL-TERMINAL-OWNERSHIP"
+      ],
+      "transitive_prerequisites": [
+        "OBL-ACQ-BEFORE-INTERP",
+        "OBL-ACQ-OUTCOME",
+        "OBL-BOUNDED-CONCURRENCY",
+        "OBL-CANDIDATE-ADMISSION",
+        "OBL-CANDIDATE-IDENTITY",
+        "OBL-CANDIDATE-PARENT",
+        "OBL-CANDIDATE-STATE",
+        "OBL-CLAIM-EXCLUSIVITY",
+        "OBL-DEDUP-SCOPES",
+        "OBL-DISCOVERY-RECORD",
+        "OBL-LIFECYCLE-OBS",
+        "OBL-OBS-DISTINCT",
+        "OBL-OBS-OUTCOMES",
+        "OBL-OBS-SOURCE",
+        "OBL-RECOGNITION-DISTINCT",
+        "OBL-RECOGNITION-OUTCOMES",
+        "OBL-TERMINAL-OWNERSHIP"
+      ],
+      "verification_prerequisites": [
+        "TEST-ACQ-BEFORE-INTERP",
+        "TEST-ACQ-OUTCOME",
+        "TEST-BOUNDED-CONCURRENCY",
+        "TEST-CANDIDATE-ADMISSION",
+        "TEST-CANDIDATE-IDENTITY",
+        "TEST-CANDIDATE-PARENT",
+        "TEST-CANDIDATE-STATE",
+        "TEST-CLAIM-EXCLUSIVITY",
+        "TEST-DEDUP-SCOPES",
+        "TEST-DISCOVERY-RECORD",
+        "TEST-LIFECYCLE-OBS",
+        "TEST-OBS-DISTINCT",
+        "TEST-OBS-OUTCOMES",
+        "TEST-OBS-SOURCE",
+        "TEST-RECOGNITION-DISTINCT",
+        "TEST-RECOGNITION-OUTCOMES",
+        "TEST-TERMINAL-OWNERSHIP"
+      ],
+      "unresolved_dependencies": [
+        "OBL-ACQ-BEFORE-INTERP",
+        "OBL-ACQ-OUTCOME",
+        "OBL-BOUNDED-CONCURRENCY",
+        "OBL-CANDIDATE-ADMISSION",
+        "OBL-CANDIDATE-IDENTITY",
+        "OBL-CANDIDATE-PARENT",
+        "OBL-CANDIDATE-STATE",
+        "OBL-CLAIM-EXCLUSIVITY",
+        "OBL-DEDUP-SCOPES",
+        "OBL-DISCOVERY-RECORD",
+        "OBL-LIFECYCLE-OBS",
+        "OBL-OBS-DISTINCT",
+        "OBL-OBS-OUTCOMES",
+        "OBL-OBS-SOURCE",
+        "OBL-RECOGNITION-DISTINCT",
+        "OBL-RECOGNITION-OUTCOMES",
+        "OBL-TERMINAL-OWNERSHIP"
+      ],
+      "closure_status": "OBLIGATION_BLOCKED"
+    },
+    {
+      "obligation_id": "OBL-WORKER-FAILURE",
+      "direct_prerequisites": [
+        "OBL-CLAIM-EXCLUSIVITY",
+        "OBL-SILENT-FAILURE",
+        "OBL-TERMINAL-OWNERSHIP"
+      ],
+      "transitive_prerequisites": [
+        "OBL-ACQ-BEFORE-INTERP",
+        "OBL-ACQ-OUTCOME",
+        "OBL-CANDIDATE-IDENTITY",
+        "OBL-CANDIDATE-STATE",
+        "OBL-CLAIM-EXCLUSIVITY",
+        "OBL-OBS-DISTINCT",
+        "OBL-OBS-OUTCOMES",
+        "OBL-RECOGNITION-DISTINCT",
+        "OBL-RECOGNITION-OUTCOMES",
+        "OBL-SILENT-FAILURE",
+        "OBL-TERMINAL-OWNERSHIP"
+      ],
+      "verification_prerequisites": [
+        "TEST-ACQ-BEFORE-INTERP",
+        "TEST-ACQ-OUTCOME",
+        "TEST-CANDIDATE-IDENTITY",
+        "TEST-CANDIDATE-STATE",
+        "TEST-CLAIM-EXCLUSIVITY",
+        "TEST-OBS-DISTINCT",
+        "TEST-OBS-OUTCOMES",
+        "TEST-RECOGNITION-DISTINCT",
+        "TEST-RECOGNITION-OUTCOMES",
+        "TEST-SILENT-FAILURE",
+        "TEST-TERMINAL-OWNERSHIP"
+      ],
+      "unresolved_dependencies": [
+        "OBL-ACQ-BEFORE-INTERP",
+        "OBL-ACQ-OUTCOME",
+        "OBL-CANDIDATE-IDENTITY",
+        "OBL-CANDIDATE-STATE",
+        "OBL-CLAIM-EXCLUSIVITY",
+        "OBL-OBS-DISTINCT",
+        "OBL-OBS-OUTCOMES",
+        "OBL-RECOGNITION-DISTINCT",
+        "OBL-RECOGNITION-OUTCOMES",
+        "OBL-SILENT-FAILURE",
+        "OBL-TERMINAL-OWNERSHIP"
+      ],
+      "closure_status": "OBLIGATION_BLOCKED"
+    },
+    {
+      "obligation_id": "OBL-RETRY",
+      "direct_prerequisites": [
+        "OBL-ACQ-TIMEOUT",
+        "OBL-CANDIDATE-ATTEMPTS",
+        "OBL-TERMINAL-OWNERSHIP"
+      ],
+      "transitive_prerequisites": [
+        "OBL-ACQ-BEFORE-INTERP",
+        "OBL-ACQ-TIMEOUT",
+        "OBL-CANDIDATE-ATTEMPTS",
+        "OBL-CANDIDATE-IDENTITY",
+        "OBL-CANDIDATE-STATE",
+        "OBL-CLAIM-EXCLUSIVITY",
+        "OBL-TERMINAL-OWNERSHIP"
+      ],
+      "verification_prerequisites": [
+        "TEST-ACQ-BEFORE-INTERP",
+        "TEST-ACQ-TIMEOUT",
+        "TEST-CANDIDATE-ATTEMPTS",
+        "TEST-CANDIDATE-IDENTITY",
+        "TEST-CANDIDATE-STATE",
+        "TEST-CLAIM-EXCLUSIVITY",
+        "TEST-TERMINAL-OWNERSHIP"
+      ],
+      "unresolved_dependencies": [
+        "OBL-ACQ-BEFORE-INTERP",
+        "OBL-ACQ-TIMEOUT",
+        "OBL-CANDIDATE-ATTEMPTS",
+        "OBL-CANDIDATE-IDENTITY",
+        "OBL-CANDIDATE-STATE",
+        "OBL-CLAIM-EXCLUSIVITY",
+        "OBL-TERMINAL-OWNERSHIP"
+      ],
+      "closure_status": "OBLIGATION_BLOCKED"
+    },
+    {
+      "obligation_id": "OBL-PROVENANCE",
+      "direct_prerequisites": [
+        "OBL-CANDIDATE-ORIGIN",
+        "OBL-CANDIDATE-PARENT",
+        "OBL-DISCOVERY-RECORD",
+        "OBL-OBS-SOURCE"
+      ],
+      "transitive_prerequisites": [
+        "OBL-ACQ-BEFORE-INTERP",
+        "OBL-CANDIDATE-IDENTITY",
+        "OBL-CANDIDATE-ORIGIN",
+        "OBL-CANDIDATE-PARENT",
+        "OBL-DISCOVERY-RECORD",
+        "OBL-OBS-DISTINCT",
+        "OBL-OBS-SOURCE",
+        "OBL-RECOGNITION-DISTINCT"
+      ],
+      "verification_prerequisites": [
+        "TEST-ACQ-BEFORE-INTERP",
+        "TEST-CANDIDATE-IDENTITY",
+        "TEST-CANDIDATE-ORIGIN",
+        "TEST-CANDIDATE-PARENT",
+        "TEST-DISCOVERY-RECORD",
+        "TEST-OBS-DISTINCT",
+        "TEST-OBS-SOURCE",
+        "TEST-RECOGNITION-DISTINCT"
+      ],
+      "unresolved_dependencies": [
+        "OBL-ACQ-BEFORE-INTERP",
+        "OBL-CANDIDATE-IDENTITY",
+        "OBL-CANDIDATE-ORIGIN",
+        "OBL-CANDIDATE-PARENT",
+        "OBL-DISCOVERY-RECORD",
+        "OBL-OBS-DISTINCT",
+        "OBL-OBS-SOURCE",
+        "OBL-RECOGNITION-DISTINCT"
+      ],
+      "closure_status": "OBLIGATION_BLOCKED"
+    },
+    {
+      "obligation_id": "OBL-REMOTE-DATA",
+      "direct_prerequisites": [
+        "OBL-ACQ-SCOPE",
+        "OBL-RECOGNITION-DISTINCT"
+      ],
+      "transitive_prerequisites": [
+        "OBL-ACQ-BEFORE-INTERP",
+        "OBL-ACQ-SCOPE",
+        "OBL-AUTHORITY",
+        "OBL-CANDIDATE-IDENTITY",
+        "OBL-OBS-DISTINCT",
+        "OBL-RECOGNITION-DISTINCT"
+      ],
+      "verification_prerequisites": [
+        "TEST-ACQ-BEFORE-INTERP",
+        "TEST-ACQ-SCOPE",
+        "TEST-AUTHORITY",
+        "TEST-CANDIDATE-IDENTITY",
+        "TEST-OBS-DISTINCT",
+        "TEST-RECOGNITION-DISTINCT"
+      ],
+      "unresolved_dependencies": [
+        "OBL-ACQ-BEFORE-INTERP",
+        "OBL-ACQ-SCOPE",
+        "OBL-AUTHORITY",
+        "OBL-CANDIDATE-IDENTITY",
+        "OBL-OBS-DISTINCT",
+        "OBL-RECOGNITION-DISTINCT"
+      ],
+      "closure_status": "OBLIGATION_BLOCKED"
+    },
+    {
+      "obligation_id": "OBL-AUTHORITY",
+      "direct_prerequisites": [],
+      "transitive_prerequisites": [],
+      "verification_prerequisites": [],
+      "unresolved_dependencies": [],
+      "closure_status": "OBLIGATION_BLOCKED"
+    },
+    {
+      "obligation_id": "OBL-PARSER",
+      "direct_prerequisites": [
+        "OBL-RECOGNITION-DISTINCT",
+        "OBL-REMOTE-DATA"
+      ],
+      "transitive_prerequisites": [
+        "OBL-ACQ-BEFORE-INTERP",
+        "OBL-ACQ-SCOPE",
+        "OBL-AUTHORITY",
+        "OBL-CANDIDATE-IDENTITY",
+        "OBL-OBS-DISTINCT",
+        "OBL-RECOGNITION-DISTINCT",
+        "OBL-REMOTE-DATA"
+      ],
+      "verification_prerequisites": [
+        "TEST-ACQ-BEFORE-INTERP",
+        "TEST-ACQ-SCOPE",
+        "TEST-AUTHORITY",
+        "TEST-CANDIDATE-IDENTITY",
+        "TEST-OBS-DISTINCT",
+        "TEST-RECOGNITION-DISTINCT",
+        "TEST-REMOTE-DATA"
+      ],
+      "unresolved_dependencies": [
+        "OBL-ACQ-BEFORE-INTERP",
+        "OBL-ACQ-SCOPE",
+        "OBL-AUTHORITY",
+        "OBL-CANDIDATE-IDENTITY",
+        "OBL-OBS-DISTINCT",
+        "OBL-RECOGNITION-DISTINCT",
+        "OBL-REMOTE-DATA"
+      ],
+      "closure_status": "OBLIGATION_BLOCKED"
+    },
+    {
+      "obligation_id": "OBL-RESOURCE",
+      "direct_prerequisites": [],
+      "transitive_prerequisites": [],
+      "verification_prerequisites": [],
+      "unresolved_dependencies": [],
+      "closure_status": "OBLIGATION_BLOCKED"
+    },
+    {
+      "obligation_id": "OBL-UNBOUNDED",
+      "direct_prerequisites": [
+        "OBL-RESOURCE"
+      ],
+      "transitive_prerequisites": [
+        "OBL-RESOURCE"
+      ],
+      "verification_prerequisites": [
+        "TEST-RESOURCE"
+      ],
+      "unresolved_dependencies": [
+        "OBL-RESOURCE"
+      ],
+      "closure_status": "OBLIGATION_BLOCKED"
+    },
+    {
+      "obligation_id": "OBL-LIFECYCLE-OBS",
+      "direct_prerequisites": [
+        "OBL-ACQ-OUTCOME",
+        "OBL-CANDIDATE-STATE",
+        "OBL-DISCOVERY-RECORD",
+        "OBL-RECOGNITION-OUTCOMES"
+      ],
+      "transitive_prerequisites": [
+        "OBL-ACQ-BEFORE-INTERP",
+        "OBL-ACQ-OUTCOME",
+        "OBL-CANDIDATE-IDENTITY",
+        "OBL-CANDIDATE-STATE",
+        "OBL-DISCOVERY-RECORD",
+        "OBL-OBS-DISTINCT",
+        "OBL-OBS-OUTCOMES",
+        "OBL-OBS-SOURCE",
+        "OBL-RECOGNITION-DISTINCT",
+        "OBL-RECOGNITION-OUTCOMES"
+      ],
+      "verification_prerequisites": [
+        "TEST-ACQ-BEFORE-INTERP",
+        "TEST-ACQ-OUTCOME",
+        "TEST-CANDIDATE-IDENTITY",
+        "TEST-CANDIDATE-STATE",
+        "TEST-DISCOVERY-RECORD",
+        "TEST-OBS-DISTINCT",
+        "TEST-OBS-OUTCOMES",
+        "TEST-OBS-SOURCE",
+        "TEST-RECOGNITION-DISTINCT",
+        "TEST-RECOGNITION-OUTCOMES"
+      ],
+      "unresolved_dependencies": [
+        "OBL-ACQ-BEFORE-INTERP",
+        "OBL-ACQ-OUTCOME",
+        "OBL-CANDIDATE-IDENTITY",
+        "OBL-CANDIDATE-STATE",
+        "OBL-DISCOVERY-RECORD",
+        "OBL-OBS-DISTINCT",
+        "OBL-OBS-OUTCOMES",
+        "OBL-OBS-SOURCE",
+        "OBL-RECOGNITION-DISTINCT",
+        "OBL-RECOGNITION-OUTCOMES"
+      ],
+      "closure_status": "OBLIGATION_BLOCKED"
+    },
+    {
+      "obligation_id": "OBL-SILENT-FAILURE",
+      "direct_prerequisites": [
+        "OBL-OBS-OUTCOMES",
+        "OBL-RECOGNITION-OUTCOMES"
+      ],
+      "transitive_prerequisites": [
+        "OBL-ACQ-BEFORE-INTERP",
+        "OBL-ACQ-OUTCOME",
+        "OBL-CANDIDATE-IDENTITY",
+        "OBL-OBS-DISTINCT",
+        "OBL-OBS-OUTCOMES",
+        "OBL-RECOGNITION-DISTINCT",
+        "OBL-RECOGNITION-OUTCOMES"
+      ],
+      "verification_prerequisites": [
+        "TEST-ACQ-BEFORE-INTERP",
+        "TEST-ACQ-OUTCOME",
+        "TEST-CANDIDATE-IDENTITY",
+        "TEST-OBS-DISTINCT",
+        "TEST-OBS-OUTCOMES",
+        "TEST-RECOGNITION-DISTINCT",
+        "TEST-RECOGNITION-OUTCOMES"
+      ],
+      "unresolved_dependencies": [
+        "OBL-ACQ-BEFORE-INTERP",
+        "OBL-ACQ-OUTCOME",
+        "OBL-CANDIDATE-IDENTITY",
+        "OBL-OBS-DISTINCT",
+        "OBL-OBS-OUTCOMES",
+        "OBL-RECOGNITION-DISTINCT",
+        "OBL-RECOGNITION-OUTCOMES"
+      ],
+      "closure_status": "OBLIGATION_BLOCKED"
+    },
+    {
+      "obligation_id": "OBL-CONTRACT-INPUT",
+      "direct_prerequisites": [],
+      "transitive_prerequisites": [],
+      "verification_prerequisites": [],
+      "unresolved_dependencies": [],
+      "closure_status": "OBLIGATION_BLOCKED"
+    },
+    {
+      "obligation_id": "OBL-REGRESSION",
+      "direct_prerequisites": [],
+      "transitive_prerequisites": [],
+      "verification_prerequisites": [],
+      "unresolved_dependencies": [],
+      "closure_status": "OBLIGATION_BLOCKED"
+    },
+    {
+      "obligation_id": "OBL-PARSE-DEFECT",
+      "direct_prerequisites": [
+        "OBL-REGRESSION"
+      ],
+      "transitive_prerequisites": [
+        "OBL-REGRESSION"
+      ],
+      "verification_prerequisites": [
+        "TEST-REGRESSION"
+      ],
+      "unresolved_dependencies": [
+        "OBL-REGRESSION"
+      ],
+      "closure_status": "OBLIGATION_BLOCKED"
+    }
+  ],
+  "failure_propagation_rules": [
+    {
+      "when": "REQUIRED prerequisite test is UNVERIFIED or BLOCKED",
+      "dependent_result": "OBLIGATION_BLOCKED",
+      "may_pass": false
+    },
+    {
+      "when": "REQUIRED prerequisite test fails",
+      "dependent_result": "OBLIGATION_DEPENDENCY_FAILURE",
+      "may_pass": false
+    },
+    {
+      "when": "obligation own invariant fails",
+      "dependent_result": "OBLIGATION_VIOLATED",
+      "propagate_to_dependents": "OBLIGATION_DEPENDENCY_FAILURE"
+    }
+  ],
+  "rule": "from_obligation depends_on to_obligation; conflict, lineage, and verification graphs remain separate."
+}

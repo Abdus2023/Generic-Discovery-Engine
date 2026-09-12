@@ -1,0 +1,25 @@
+LOAD DURABLE STATE
+        │
+        ▼
+VALIDATE SCHEMA
+        │
+        ▼
+CHECK TRANSACTION LOG
+        │
+        ▼
+CHECK WORK LEASES
+        │
+        ▼
+CHECK RESERVATIONS
+        │
+        ▼
+CHECK CHECKPOINTS
+        │
+        ▼
+RECONCILE STATE
+        │
+        ▼
+RECOVERY COMPLETE
+        │
+        ▼
+START FRONTIER

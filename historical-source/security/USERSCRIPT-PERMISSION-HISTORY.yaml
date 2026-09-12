@@ -1,0 +1,297 @@
+{
+  "schema_version": 8,
+  "builder": "security-archaeology-builder-v8",
+  "model_kind": "DERIVED_SECURITY_ARCHAEOLOGY_NOT_SOURCE",
+  "snapshots": [
+    {
+      "snapshot_id": "snapshot-0001",
+      "version": "v0.1.0",
+      "variant": "mechanically-composed",
+      "include": [],
+      "match": [
+        "_://_/*"
+      ],
+      "grant": [
+        "GM_getValue",
+        "GM_setValue",
+        "GM_xmlhttpRequest"
+      ],
+      "connect": [
+        "*"
+      ],
+      "require": [],
+      "resource": [],
+      "metadata_scope_interpretation": "LITERAL_DIRECTIVES_ONLY",
+      "malformed_or_markdown_affected": true,
+      "evidence": [
+        "security-ev-7baafdf429d732ce"
+      ]
+    },
+    {
+      "snapshot_id": "snapshot-0003",
+      "version": "v0.2.0",
+      "variant": "mechanically-composed",
+      "include": [],
+      "match": [
+        "_://_/*"
+      ],
+      "grant": [
+        "GM_getValue",
+        "GM_setValue",
+        "GM_xmlhttpRequest"
+      ],
+      "connect": [
+        "*"
+      ],
+      "require": [],
+      "resource": [],
+      "metadata_scope_interpretation": "LITERAL_DIRECTIVES_ONLY",
+      "malformed_or_markdown_affected": true,
+      "evidence": [
+        "security-ev-e43b79edd1d1250b"
+      ]
+    },
+    {
+      "snapshot_id": "snapshot-0005",
+      "version": "v0.3.0",
+      "variant": "only-evidenced-complete-occurrence",
+      "include": [],
+      "match": [
+        "*://*/*"
+      ],
+      "grant": [
+        "GM_getValue",
+        "GM_setValue",
+        "GM_xmlhttpRequest"
+      ],
+      "connect": [
+        "*"
+      ],
+      "require": [],
+      "resource": [],
+      "metadata_scope_interpretation": "LITERAL_DIRECTIVES_ONLY",
+      "malformed_or_markdown_affected": false,
+      "evidence": [
+        "security-ev-9d3c8f0fdf922089"
+      ]
+    },
+    {
+      "snapshot_id": "snapshot-0006",
+      "version": "v0.4.0",
+      "variant": "variant-a",
+      "include": [],
+      "match": [
+        "*://*/*"
+      ],
+      "grant": [
+        "GM_getValue",
+        "GM_setValue",
+        "GM_xmlhttpRequest"
+      ],
+      "connect": [
+        "*"
+      ],
+      "require": [],
+      "resource": [],
+      "metadata_scope_interpretation": "LITERAL_DIRECTIVES_ONLY",
+      "malformed_or_markdown_affected": false,
+      "evidence": [
+        "security-ev-69f43687c3d760ee"
+      ]
+    },
+    {
+      "snapshot_id": "snapshot-0008",
+      "version": "v0.4.0",
+      "variant": "variant-b",
+      "include": [],
+      "match": [
+        "*://*/*"
+      ],
+      "grant": [
+        "GM_getValue",
+        "GM_setValue",
+        "GM_xmlhttpRequest",
+        "unsafeWindow"
+      ],
+      "connect": [
+        "*"
+      ],
+      "require": [],
+      "resource": [],
+      "metadata_scope_interpretation": "LITERAL_DIRECTIVES_ONLY",
+      "malformed_or_markdown_affected": false,
+      "evidence": [
+        "security-ev-9966c57b646332f7"
+      ]
+    },
+    {
+      "snapshot_id": "snapshot-0007",
+      "version": "v0.5.0",
+      "variant": "variant-a",
+      "include": [],
+      "match": [
+        "*://*/*"
+      ],
+      "grant": [
+        "GM_getValue",
+        "GM_setValue",
+        "GM_xmlhttpRequest"
+      ],
+      "connect": [
+        "*"
+      ],
+      "require": [],
+      "resource": [],
+      "metadata_scope_interpretation": "LITERAL_DIRECTIVES_ONLY",
+      "malformed_or_markdown_affected": false,
+      "evidence": [
+        "security-ev-dc21477849eb1956"
+      ]
+    },
+    {
+      "snapshot_id": "snapshot-0009",
+      "version": "v0.5.0",
+      "variant": "variant-b",
+      "include": [],
+      "match": [
+        "*://*/*"
+      ],
+      "grant": [
+        "GM_getValue",
+        "GM_setValue",
+        "GM_xmlhttpRequest"
+      ],
+      "connect": [
+        "*"
+      ],
+      "require": [],
+      "resource": [],
+      "metadata_scope_interpretation": "LITERAL_DIRECTIVES_ONLY",
+      "malformed_or_markdown_affected": false,
+      "evidence": [
+        "security-ev-69ef0e06a748c9e1"
+      ]
+    },
+    {
+      "snapshot_id": "snapshot-0011",
+      "version": "v0.5.0",
+      "variant": "variant-c",
+      "include": [],
+      "match": [
+        "*://*/*"
+      ],
+      "grant": [
+        "GM_getValue",
+        "GM_setValue",
+        "GM_xmlhttpRequest"
+      ],
+      "connect": [
+        "*"
+      ],
+      "require": [],
+      "resource": [],
+      "metadata_scope_interpretation": "LITERAL_DIRECTIVES_ONLY",
+      "malformed_or_markdown_affected": false,
+      "evidence": [
+        "security-ev-379285dc0f6243fd"
+      ]
+    },
+    {
+      "snapshot_id": "snapshot-0010",
+      "version": "v0.6.0",
+      "variant": "variant-a",
+      "include": [],
+      "match": [
+        "*://*/*"
+      ],
+      "grant": [
+        "GM_getValue",
+        "GM_setValue",
+        "GM_xmlhttpRequest"
+      ],
+      "connect": [
+        "*"
+      ],
+      "require": [],
+      "resource": [],
+      "metadata_scope_interpretation": "LITERAL_DIRECTIVES_ONLY",
+      "malformed_or_markdown_affected": false,
+      "evidence": [
+        "security-ev-463009a06d8c22f2"
+      ]
+    },
+    {
+      "snapshot_id": "snapshot-0012",
+      "version": "v0.6.0",
+      "variant": "variant-b",
+      "include": [],
+      "match": [
+        "*://*/*"
+      ],
+      "grant": [
+        "GM_getValue",
+        "GM_setValue",
+        "GM_xmlhttpRequest",
+        "unsafeWindow"
+      ],
+      "connect": [
+        "*"
+      ],
+      "require": [],
+      "resource": [],
+      "metadata_scope_interpretation": "LITERAL_DIRECTIVES_ONLY",
+      "malformed_or_markdown_affected": false,
+      "evidence": [
+        "security-ev-bde0c6ca0373c3f8"
+      ]
+    },
+    {
+      "snapshot_id": "snapshot-0013",
+      "version": "v0.6.0",
+      "variant": "variant-c",
+      "include": [],
+      "match": [
+        "*://*/*"
+      ],
+      "grant": [
+        "GM_getValue",
+        "GM_setValue",
+        "GM_xmlhttpRequest"
+      ],
+      "connect": [
+        "*"
+      ],
+      "require": [],
+      "resource": [],
+      "metadata_scope_interpretation": "LITERAL_DIRECTIVES_ONLY",
+      "malformed_or_markdown_affected": false,
+      "evidence": [
+        "security-ev-fa7a473223364f23"
+      ]
+    },
+    {
+      "snapshot_id": "snapshot-0014",
+      "version": "v0.7.1",
+      "variant": "only-evidenced-complete-occurrence",
+      "include": [],
+      "match": [
+        "*://*/*"
+      ],
+      "grant": [
+        "GM_getValue",
+        "GM_setValue",
+        "GM_xmlhttpRequest"
+      ],
+      "connect": [
+        "*"
+      ],
+      "require": [],
+      "resource": [],
+      "metadata_scope_interpretation": "LITERAL_DIRECTIVES_ONLY",
+      "malformed_or_markdown_affected": false,
+      "evidence": [
+        "security-ev-a6476302592a94ed"
+      ]
+    }
+  ]
+}

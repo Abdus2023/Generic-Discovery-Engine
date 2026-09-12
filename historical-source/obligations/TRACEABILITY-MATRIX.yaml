@@ -1,0 +1,1299 @@
+{
+  "schema_version": "1.0",
+  "input_contract_status": "INPUT_CONTRACT_FAILED",
+  "columns": [
+    "source",
+    "artifact",
+    "historical_claim",
+    "historical_property",
+    "obligation",
+    "obligation_class",
+    "strength",
+    "final_category",
+    "epistemic_status",
+    "lifecycle_status",
+    "dependency",
+    "contract",
+    "invariant",
+    "test",
+    "verification_result"
+  ],
+  "rows": [
+    {
+      "source": "historical-source/synthesis/CLAIMS.yaml",
+      "artifact": "historical-source/synthesis/CLAIMS.yaml",
+      "historical_claim": [
+        "inv-001",
+        "claim-generic-a"
+      ],
+      "historical_property": "PROP-CANDIDATE-IDENTITY",
+      "obligation": "OBL-CANDIDATE-IDENTITY",
+      "obligation_class": "PRESERVE",
+      "strength": "REQUIRED",
+      "final_category": "PRESERVATION_OBLIGATION",
+      "epistemic_status": "SUPPORTED",
+      "lifecycle_status": "FORMALIZED",
+      "dependency": [],
+      "contract": "NOT_SEPARATELY_VERIFIED",
+      "invariant": "INV-CANDIDATE-IDENTITY",
+      "test": "TEST-CANDIDATE-IDENTITY",
+      "verification_result": "UNVERIFIED",
+      "derivation_acceptance": "BLOCKED_BY_INPUT_CONTRACT_FAILED"
+    },
+    {
+      "source": "historical-source/synthesis/CLAIMS.yaml",
+      "artifact": "historical-source/synthesis/CLAIMS.yaml",
+      "historical_claim": [
+        "claim-generic-a",
+        "unc-012"
+      ],
+      "historical_property": "PROP-CANDIDATE-EQUIVALENCE",
+      "obligation": "OBL-CANDIDATE-EQUIVALENCE",
+      "obligation_class": "FORMALIZE",
+      "strength": "CONDITIONAL",
+      "final_category": "FUTURE_STRENGTHENING",
+      "epistemic_status": "UNKNOWN",
+      "lifecycle_status": "FORMALIZED",
+      "dependency": [
+        "DEP-021"
+      ],
+      "contract": "NOT_SEPARATELY_VERIFIED",
+      "invariant": "INV-CANDIDATE-EQUIVALENCE",
+      "test": "TEST-CANDIDATE-EQUIVALENCE",
+      "verification_result": "UNVERIFIED",
+      "derivation_acceptance": "BLOCKED_BY_INPUT_CONTRACT_FAILED"
+    },
+    {
+      "source": "historical-source/security/DUPLICATE-PROCESSING.yaml",
+      "artifact": "historical-source/security/DUPLICATE-PROCESSING.yaml",
+      "historical_claim": [
+        "claim-generic-g",
+        "v8:DUPLICATE"
+      ],
+      "historical_property": "PROP-DEDUP-SCOPES",
+      "obligation": "OBL-DEDUP-SCOPES",
+      "obligation_class": "FORMALIZE",
+      "strength": "REQUIRED",
+      "final_category": "ENGINEERING_REQUIREMENT",
+      "epistemic_status": "SUPPORTED",
+      "lifecycle_status": "FORMALIZED",
+      "dependency": [
+        "DEP-029"
+      ],
+      "contract": "NOT_SEPARATELY_VERIFIED",
+      "invariant": "INV-DEDUP-SCOPES",
+      "test": "TEST-DEDUP-SCOPES",
+      "verification_result": "UNVERIFIED",
+      "derivation_acceptance": "BLOCKED_BY_INPUT_CONTRACT_FAILED"
+    },
+    {
+      "source": "historical-source/security/PROVENANCE-INTEGRITY.yaml",
+      "artifact": "historical-source/security/PROVENANCE-INTEGRITY.yaml",
+      "historical_claim": [
+        "v8:PROVENANCE"
+      ],
+      "historical_property": "PROP-CANDIDATE-ORIGIN",
+      "obligation": "OBL-CANDIDATE-ORIGIN",
+      "obligation_class": "PRESERVE",
+      "strength": "CONDITIONAL",
+      "final_category": "PRESERVATION_OBLIGATION",
+      "epistemic_status": "SUPPORTED",
+      "lifecycle_status": "FORMALIZED",
+      "dependency": [
+        "DEP-022"
+      ],
+      "contract": "NOT_SEPARATELY_VERIFIED",
+      "invariant": "INV-CANDIDATE-ORIGIN",
+      "test": "TEST-CANDIDATE-ORIGIN",
+      "verification_result": "UNVERIFIED",
+      "derivation_acceptance": "BLOCKED_BY_INPUT_CONTRACT_FAILED"
+    },
+    {
+      "source": "historical-source/security/PROVENANCE-INTEGRITY.yaml",
+      "artifact": "historical-source/security/PROVENANCE-INTEGRITY.yaml",
+      "historical_claim": [
+        "v8:PROVENANCE",
+        "claim-closure"
+      ],
+      "historical_property": "PROP-CANDIDATE-PARENT",
+      "obligation": "OBL-CANDIDATE-PARENT",
+      "obligation_class": "PRESERVE",
+      "strength": "CONDITIONAL",
+      "final_category": "PRESERVATION_OBLIGATION",
+      "epistemic_status": "SUPPORTED",
+      "lifecycle_status": "FORMALIZED",
+      "dependency": [
+        "DEP-023"
+      ],
+      "contract": "NOT_SEPARATELY_VERIFIED",
+      "invariant": "INV-CANDIDATE-PARENT",
+      "test": "TEST-CANDIDATE-PARENT",
+      "verification_result": "UNVERIFIED",
+      "derivation_acceptance": "BLOCKED_BY_INPUT_CONTRACT_FAILED"
+    },
+    {
+      "source": "historical-source/security/CLAIM-SAFETY.yaml",
+      "artifact": "historical-source/security/CLAIM-SAFETY.yaml",
+      "historical_claim": [
+        "claim-version-v020",
+        "v8:CLAIM",
+        "v8:RETRY"
+      ],
+      "historical_property": "PROP-CANDIDATE-STATE",
+      "obligation": "OBL-CANDIDATE-STATE",
+      "obligation_class": "FORMALIZE",
+      "strength": "REQUIRED",
+      "final_category": "FUTURE_STRENGTHENING",
+      "epistemic_status": "SUPPORTED",
+      "lifecycle_status": "FORMALIZED",
+      "dependency": [
+        "DEP-025",
+        "DEP-095"
+      ],
+      "contract": "NOT_SEPARATELY_VERIFIED",
+      "invariant": "INV-CANDIDATE-STATE",
+      "test": "TEST-CANDIDATE-STATE",
+      "verification_result": "UNVERIFIED",
+      "derivation_acceptance": "BLOCKED_BY_INPUT_CONTRACT_FAILED"
+    },
+    {
+      "source": "historical-source/analysis/DATA-MODEL-EVOLUTION.yaml",
+      "artifact": "historical-source/analysis/DATA-MODEL-EVOLUTION.yaml",
+      "historical_claim": [
+        "v3:"
+      ],
+      "historical_property": "PROP-CANDIDATE-PRIORITY",
+      "obligation": "OBL-CANDIDATE-PRIORITY",
+      "obligation_class": "COMPATIBILITY",
+      "strength": "CONDITIONAL",
+      "final_category": "COMPATIBILITY_OBLIGATION",
+      "epistemic_status": "INFERRED",
+      "lifecycle_status": "FORMALIZED",
+      "dependency": [
+        "DEP-024"
+      ],
+      "contract": "NOT_SEPARATELY_VERIFIED",
+      "invariant": "INV-CANDIDATE-PRIORITY",
+      "test": "TEST-CANDIDATE-PRIORITY",
+      "verification_result": "UNVERIFIED",
+      "derivation_acceptance": "BLOCKED_BY_INPUT_CONTRACT_FAILED"
+    },
+    {
+      "source": "historical-source/security/RETRY-HISTORY.yaml",
+      "artifact": "historical-source/security/RETRY-HISTORY.yaml",
+      "historical_claim": [
+        "v8:RETRY"
+      ],
+      "historical_property": "PROP-CANDIDATE-ATTEMPTS",
+      "obligation": "OBL-CANDIDATE-ATTEMPTS",
+      "obligation_class": "PRESERVE",
+      "strength": "CONDITIONAL",
+      "final_category": "PRESERVATION_OBLIGATION",
+      "epistemic_status": "SUPPORTED",
+      "lifecycle_status": "FORMALIZED",
+      "dependency": [
+        "DEP-020"
+      ],
+      "contract": "NOT_SEPARATELY_VERIFIED",
+      "invariant": "INV-CANDIDATE-ATTEMPTS",
+      "test": "TEST-CANDIDATE-ATTEMPTS",
+      "verification_result": "UNVERIFIED",
+      "derivation_acceptance": "BLOCKED_BY_INPUT_CONTRACT_FAILED"
+    },
+    {
+      "source": "historical-source/analysis/DATA-MODEL-EVOLUTION.yaml",
+      "artifact": "historical-source/analysis/DATA-MODEL-EVOLUTION.yaml",
+      "historical_claim": [
+        "v3:",
+        "v8:OBSERVABILITY"
+      ],
+      "historical_property": "PROP-CANDIDATE-TIMESTAMPS",
+      "obligation": "OBL-CANDIDATE-TIMESTAMPS",
+      "obligation_class": "OBSERVE",
+      "strength": "CONDITIONAL",
+      "final_category": "FUTURE_STRENGTHENING",
+      "epistemic_status": "SUPPORTED",
+      "lifecycle_status": "FORMALIZED",
+      "dependency": [
+        "DEP-026"
+      ],
+      "contract": "NOT_SEPARATELY_VERIFIED",
+      "invariant": "INV-CANDIDATE-TIMESTAMPS",
+      "test": "TEST-CANDIDATE-TIMESTAMPS",
+      "verification_result": "UNVERIFIED",
+      "derivation_acceptance": "BLOCKED_BY_INPUT_CONTRACT_FAILED"
+    },
+    {
+      "source": "historical-source/security/CLAIM-SAFETY.yaml",
+      "artifact": "historical-source/security/CLAIM-SAFETY.yaml",
+      "historical_claim": [
+        "claim-version-v020",
+        "v8:CLAIM"
+      ],
+      "historical_property": "PROP-CLAIM-EXCLUSIVITY",
+      "obligation": "OBL-CLAIM-EXCLUSIVITY",
+      "obligation_class": "PRESERVE",
+      "strength": "CONDITIONAL",
+      "final_category": "ENGINEERING_REQUIREMENT",
+      "epistemic_status": "SUPPORTED",
+      "lifecycle_status": "FORMALIZED",
+      "dependency": [
+        "DEP-027",
+        "DEP-028",
+        "DEP-096"
+      ],
+      "contract": "NOT_SEPARATELY_VERIFIED",
+      "invariant": "INV-CLAIM-EXCLUSIVITY",
+      "test": "TEST-CLAIM-EXCLUSIVITY",
+      "verification_result": "UNVERIFIED",
+      "derivation_acceptance": "BLOCKED_BY_INPUT_CONTRACT_FAILED"
+    },
+    {
+      "source": "historical-source/security/CLAIM-SAFETY.yaml",
+      "artifact": "historical-source/security/CLAIM-SAFETY.yaml",
+      "historical_claim": [
+        "v8:CLAIM"
+      ],
+      "historical_property": "PROP-TERMINAL-OWNERSHIP",
+      "obligation": "OBL-TERMINAL-OWNERSHIP",
+      "obligation_class": "FORMALIZE",
+      "strength": "REQUIRED",
+      "final_category": "FUTURE_STRENGTHENING",
+      "epistemic_status": "SUPPORTED",
+      "lifecycle_status": "FORMALIZED",
+      "dependency": [
+        "DEP-087",
+        "DEP-088"
+      ],
+      "contract": "NOT_SEPARATELY_VERIFIED",
+      "invariant": "INV-TERMINAL-OWNERSHIP",
+      "test": "TEST-TERMINAL-OWNERSHIP",
+      "verification_result": "UNVERIFIED",
+      "derivation_acceptance": "BLOCKED_BY_INPUT_CONTRACT_FAILED"
+    },
+    {
+      "source": "historical-source/synthesis/CLAIMS.yaml",
+      "artifact": "historical-source/synthesis/CLAIMS.yaml",
+      "historical_claim": [
+        "inv-002",
+        "claim-generic-b",
+        "claim-generic-d"
+      ],
+      "historical_property": "PROP-ACQ-BEFORE-INTERP",
+      "obligation": "OBL-ACQ-BEFORE-INTERP",
+      "obligation_class": "PRESERVE",
+      "strength": "REQUIRED",
+      "final_category": "PRESERVATION_OBLIGATION",
+      "epistemic_status": "SUPPORTED",
+      "lifecycle_status": "FORMALIZED",
+      "dependency": [
+        "DEP-001"
+      ],
+      "contract": "NOT_SEPARATELY_VERIFIED",
+      "invariant": "INV-ACQ-BEFORE-INTERP",
+      "test": "TEST-ACQ-BEFORE-INTERP",
+      "verification_result": "UNVERIFIED",
+      "derivation_acceptance": "BLOCKED_BY_INPUT_CONTRACT_FAILED"
+    },
+    {
+      "source": "historical-source/security/FAILURE-MATRIX.yaml",
+      "artifact": "historical-source/security/FAILURE-MATRIX.yaml",
+      "historical_claim": [
+        "inv-003",
+        "v8:FAILURE"
+      ],
+      "historical_property": "PROP-ACQ-OUTCOME",
+      "obligation": "OBL-ACQ-OUTCOME",
+      "obligation_class": "STABILIZE",
+      "strength": "REQUIRED",
+      "final_category": "ENGINEERING_REQUIREMENT",
+      "epistemic_status": "SUPPORTED",
+      "lifecycle_status": "FORMALIZED",
+      "dependency": [
+        "DEP-004",
+        "DEP-005"
+      ],
+      "contract": "NOT_SEPARATELY_VERIFIED",
+      "invariant": "INV-ACQ-OUTCOME",
+      "test": "TEST-ACQ-OUTCOME",
+      "verification_result": "UNVERIFIED",
+      "derivation_acceptance": "BLOCKED_BY_INPUT_CONTRACT_FAILED"
+    },
+    {
+      "source": "historical-source/analysis/DATA-MODEL-EVOLUTION.yaml",
+      "artifact": "historical-source/analysis/DATA-MODEL-EVOLUTION.yaml",
+      "historical_claim": [
+        "v3:",
+        "v8:PROVENANCE"
+      ],
+      "historical_property": "PROP-ACQ-METADATA",
+      "obligation": "OBL-ACQ-METADATA",
+      "obligation_class": "PRESERVE",
+      "strength": "CONDITIONAL",
+      "final_category": "PRESERVATION_OBLIGATION",
+      "epistemic_status": "SUPPORTED",
+      "lifecycle_status": "FORMALIZED",
+      "dependency": [
+        "DEP-002",
+        "DEP-003"
+      ],
+      "contract": "NOT_SEPARATELY_VERIFIED",
+      "invariant": "INV-ACQ-METADATA",
+      "test": "TEST-ACQ-METADATA",
+      "verification_result": "UNVERIFIED",
+      "derivation_acceptance": "BLOCKED_BY_INPUT_CONTRACT_FAILED"
+    },
+    {
+      "source": "historical-source/security/RESOURCE-BOUNDS.yaml",
+      "artifact": "historical-source/security/RESOURCE-BOUNDS.yaml",
+      "historical_claim": [
+        "v8:RESOURCE-BOUNDS",
+        "claim-version-v030"
+      ],
+      "historical_property": "PROP-ACQ-TIMEOUT",
+      "obligation": "OBL-ACQ-TIMEOUT",
+      "obligation_class": "PRESERVE",
+      "strength": "REQUIRED",
+      "final_category": "PRESERVATION_OBLIGATION",
+      "epistemic_status": "SUPPORTED",
+      "lifecycle_status": "FORMALIZED",
+      "dependency": [
+        "DEP-008"
+      ],
+      "contract": "NOT_SEPARATELY_VERIFIED",
+      "invariant": "INV-ACQ-TIMEOUT",
+      "test": "TEST-ACQ-TIMEOUT",
+      "verification_result": "UNVERIFIED",
+      "derivation_acceptance": "BLOCKED_BY_INPUT_CONTRACT_FAILED"
+    },
+    {
+      "source": "historical-source/security/TRUST-BOUNDARIES.yaml",
+      "artifact": "historical-source/security/TRUST-BOUNDARIES.yaml",
+      "historical_claim": [
+        "v8:TRUST",
+        "inv-006"
+      ],
+      "historical_property": "PROP-ACQ-SCOPE",
+      "obligation": "OBL-ACQ-SCOPE",
+      "obligation_class": "CONTAIN",
+      "strength": "REQUIRED",
+      "final_category": "ENGINEERING_REQUIREMENT",
+      "epistemic_status": "SUPPORTED",
+      "lifecycle_status": "FORMALIZED",
+      "dependency": [
+        "DEP-006",
+        "DEP-007"
+      ],
+      "contract": "NOT_SEPARATELY_VERIFIED",
+      "invariant": "INV-ACQ-SCOPE",
+      "test": "TEST-ACQ-SCOPE",
+      "verification_result": "UNVERIFIED",
+      "derivation_acceptance": "BLOCKED_BY_INPUT_CONTRACT_FAILED"
+    },
+    {
+      "source": "historical-source/security/CANCELLATION-HISTORY.yaml",
+      "artifact": "historical-source/security/CANCELLATION-HISTORY.yaml",
+      "historical_claim": [
+        "v8:CANCELLATION"
+      ],
+      "historical_property": "PROP-CANCELLATION",
+      "obligation": "OBL-CANCELLATION",
+      "obligation_class": "VERIFY",
+      "strength": "CONDITIONAL",
+      "final_category": "FUTURE_STRENGTHENING",
+      "epistemic_status": "SUPPORTED",
+      "lifecycle_status": "FORMALIZED",
+      "dependency": [
+        "DEP-012",
+        "DEP-013",
+        "DEP-014",
+        "DEP-015"
+      ],
+      "contract": "NOT_SEPARATELY_VERIFIED",
+      "invariant": "INV-CANCELLATION",
+      "test": "TEST-CANCELLATION",
+      "verification_result": "UNVERIFIED",
+      "derivation_acceptance": "BLOCKED_BY_INPUT_CONTRACT_FAILED"
+    },
+    {
+      "source": "historical-source/synthesis/CLAIMS.yaml",
+      "artifact": "historical-source/synthesis/CLAIMS.yaml",
+      "historical_claim": [
+        "inv-003",
+        "claim-generic-c"
+      ],
+      "historical_property": "PROP-OBS-DISTINCT",
+      "obligation": "OBL-OBS-DISTINCT",
+      "obligation_class": "PRESERVE",
+      "strength": "REQUIRED",
+      "final_category": "PRESERVATION_OBLIGATION",
+      "epistemic_status": "SUPPORTED",
+      "lifecycle_status": "FORMALIZED",
+      "dependency": [
+        "DEP-050"
+      ],
+      "contract": "NOT_SEPARATELY_VERIFIED",
+      "invariant": "INV-OBS-DISTINCT",
+      "test": "TEST-OBS-DISTINCT",
+      "verification_result": "UNVERIFIED",
+      "derivation_acceptance": "BLOCKED_BY_INPUT_CONTRACT_FAILED"
+    },
+    {
+      "source": "historical-source/security/PROVENANCE-INTEGRITY.yaml",
+      "artifact": "historical-source/security/PROVENANCE-INTEGRITY.yaml",
+      "historical_claim": [
+        "v8:PROVENANCE",
+        "inv-003"
+      ],
+      "historical_property": "PROP-OBS-SOURCE",
+      "obligation": "OBL-OBS-SOURCE",
+      "obligation_class": "PRESERVE",
+      "strength": "REQUIRED",
+      "final_category": "PRESERVATION_OBLIGATION",
+      "epistemic_status": "SUPPORTED",
+      "lifecycle_status": "FORMALIZED",
+      "dependency": [
+        "DEP-053",
+        "DEP-054"
+      ],
+      "contract": "NOT_SEPARATELY_VERIFIED",
+      "invariant": "INV-OBS-SOURCE",
+      "test": "TEST-OBS-SOURCE",
+      "verification_result": "UNVERIFIED",
+      "derivation_acceptance": "BLOCKED_BY_INPUT_CONTRACT_FAILED"
+    },
+    {
+      "source": "historical-source/analysis/DATA-MODEL-EVOLUTION.yaml",
+      "artifact": "historical-source/analysis/DATA-MODEL-EVOLUTION.yaml",
+      "historical_claim": [
+        "v3:",
+        "v8:FAILURE"
+      ],
+      "historical_property": "PROP-OBS-OUTCOMES",
+      "obligation": "OBL-OBS-OUTCOMES",
+      "obligation_class": "STABILIZE",
+      "strength": "REQUIRED",
+      "final_category": "FUTURE_STRENGTHENING",
+      "epistemic_status": "SUPPORTED",
+      "lifecycle_status": "FORMALIZED",
+      "dependency": [
+        "DEP-051",
+        "DEP-052"
+      ],
+      "contract": "NOT_SEPARATELY_VERIFIED",
+      "invariant": "INV-OBS-OUTCOMES",
+      "test": "TEST-OBS-OUTCOMES",
+      "verification_result": "UNVERIFIED",
+      "derivation_acceptance": "BLOCKED_BY_INPUT_CONTRACT_FAILED"
+    },
+    {
+      "source": "historical-source/synthesis/CLAIMS.yaml",
+      "artifact": "historical-source/synthesis/CLAIMS.yaml",
+      "historical_claim": [
+        "claim-generic-d",
+        "inv-002"
+      ],
+      "historical_property": "PROP-RECOGNITION-DISTINCT",
+      "obligation": "OBL-RECOGNITION-DISTINCT",
+      "obligation_class": "PRESERVE",
+      "strength": "REQUIRED",
+      "final_category": "PRESERVATION_OBLIGATION",
+      "epistemic_status": "SUPPORTED",
+      "lifecycle_status": "FORMALIZED",
+      "dependency": [
+        "DEP-072",
+        "DEP-073"
+      ],
+      "contract": "NOT_SEPARATELY_VERIFIED",
+      "invariant": "INV-RECOGNITION-DISTINCT",
+      "test": "TEST-RECOGNITION-DISTINCT",
+      "verification_result": "UNVERIFIED",
+      "derivation_acceptance": "BLOCKED_BY_INPUT_CONTRACT_FAILED"
+    },
+    {
+      "source": "historical-source/analysis/API-EVOLUTION.yaml",
+      "artifact": "historical-source/analysis/API-EVOLUTION.yaml",
+      "historical_claim": [
+        "v3:API",
+        "v8:FAILURE"
+      ],
+      "historical_property": "PROP-RECOGNITION-OUTCOMES",
+      "obligation": "OBL-RECOGNITION-OUTCOMES",
+      "obligation_class": "FORMALIZE",
+      "strength": "REQUIRED",
+      "final_category": "FUTURE_STRENGTHENING",
+      "epistemic_status": "SUPPORTED",
+      "lifecycle_status": "FORMALIZED",
+      "dependency": [
+        "DEP-074",
+        "DEP-075"
+      ],
+      "contract": "NOT_SEPARATELY_VERIFIED",
+      "invariant": "INV-RECOGNITION-OUTCOMES",
+      "test": "TEST-RECOGNITION-OUTCOMES",
+      "verification_result": "UNVERIFIED",
+      "derivation_acceptance": "BLOCKED_BY_INPUT_CONTRACT_FAILED"
+    },
+    {
+      "source": "historical-source/analysis/PROVIDER-HISTORY.yaml",
+      "artifact": "historical-source/analysis/PROVIDER-HISTORY.yaml",
+      "historical_claim": [
+        "claim-version-v020",
+        "v3:PROVIDER",
+        "claim-earliest-contract"
+      ],
+      "historical_property": "PROP-PROVIDER-CONTRACT",
+      "obligation": "OBL-PROVIDER-CONTRACT",
+      "obligation_class": "FORMALIZE",
+      "strength": "CONDITIONAL",
+      "final_category": "FUTURE_STRENGTHENING",
+      "epistemic_status": "SUPPORTED",
+      "lifecycle_status": "FORMALIZED",
+      "dependency": [
+        "DEP-068",
+        "DEP-069"
+      ],
+      "contract": "NOT_SEPARATELY_VERIFIED",
+      "invariant": "INV-PROVIDER-CONTRACT",
+      "test": "TEST-PROVIDER-CONTRACT",
+      "verification_result": "UNVERIFIED",
+      "derivation_acceptance": "BLOCKED_BY_INPUT_CONTRACT_FAILED"
+    },
+    {
+      "source": "historical-source/security/FAILURE-MATRIX.yaml",
+      "artifact": "historical-source/security/FAILURE-MATRIX.yaml",
+      "historical_claim": [
+        "v8:FAILURE"
+      ],
+      "historical_property": "PROP-PROVIDER-FAILURE",
+      "obligation": "OBL-PROVIDER-FAILURE",
+      "obligation_class": "CONTAIN",
+      "strength": "CONDITIONAL",
+      "final_category": "FUTURE_STRENGTHENING",
+      "epistemic_status": "SUPPORTED",
+      "lifecycle_status": "FORMALIZED",
+      "dependency": [
+        "DEP-070",
+        "DEP-071",
+        "DEP-100"
+      ],
+      "contract": "NOT_SEPARATELY_VERIFIED",
+      "invariant": "INV-PROVIDER-FAILURE",
+      "test": "TEST-PROVIDER-FAILURE",
+      "verification_result": "UNVERIFIED",
+      "derivation_acceptance": "BLOCKED_BY_INPUT_CONTRACT_FAILED"
+    },
+    {
+      "source": "historical-source/analysis/PROVIDER-HISTORY.yaml",
+      "artifact": "historical-source/analysis/PROVIDER-HISTORY.yaml",
+      "historical_claim": [
+        "v3:PROVIDER",
+        "unc-012"
+      ],
+      "historical_property": "PROP-PROVIDER-ORDER",
+      "obligation": "OBL-PROVIDER-ORDER",
+      "obligation_class": "COMPATIBILITY",
+      "strength": "CONDITIONAL",
+      "final_category": "COMPATIBILITY_OBLIGATION",
+      "epistemic_status": "UNKNOWN",
+      "lifecycle_status": "FORMALIZED",
+      "dependency": [],
+      "contract": "NOT_SEPARATELY_VERIFIED",
+      "invariant": "INV-PROVIDER-ORDER",
+      "test": "TEST-PROVIDER-ORDER",
+      "verification_result": "UNVERIFIED",
+      "derivation_acceptance": "BLOCKED_BY_INPUT_CONTRACT_FAILED"
+    },
+    {
+      "source": "historical-source/analysis/DATA-MODEL-EVOLUTION.yaml",
+      "artifact": "historical-source/analysis/DATA-MODEL-EVOLUTION.yaml",
+      "historical_claim": [
+        "claim-generic-h",
+        "v3:",
+        "v8:PROVENANCE"
+      ],
+      "historical_property": "PROP-DISCOVERY-RECORD",
+      "obligation": "OBL-DISCOVERY-RECORD",
+      "obligation_class": "PRESERVE",
+      "strength": "REQUIRED",
+      "final_category": "PRESERVATION_OBLIGATION",
+      "epistemic_status": "SUPPORTED",
+      "lifecycle_status": "FORMALIZED",
+      "dependency": [
+        "DEP-030",
+        "DEP-031"
+      ],
+      "contract": "NOT_SEPARATELY_VERIFIED",
+      "invariant": "INV-DISCOVERY-RECORD",
+      "test": "TEST-DISCOVERY-RECORD",
+      "verification_result": "UNVERIFIED",
+      "derivation_acceptance": "BLOCKED_BY_INPUT_CONTRACT_FAILED"
+    },
+    {
+      "source": "historical-source/synthesis/CLAIMS.yaml",
+      "artifact": "historical-source/synthesis/CLAIMS.yaml",
+      "historical_claim": [
+        "inv-004",
+        "inv-005",
+        "claim-closure"
+      ],
+      "historical_property": "PROP-EXPANSION-RECURSIVE",
+      "obligation": "OBL-EXPANSION-RECURSIVE",
+      "obligation_class": "PRESERVE",
+      "strength": "REQUIRED",
+      "final_category": "PRESERVATION_OBLIGATION",
+      "epistemic_status": "SUPPORTED",
+      "lifecycle_status": "FORMALIZED",
+      "dependency": [
+        "DEP-034",
+        "DEP-035",
+        "DEP-036",
+        "DEP-037"
+      ],
+      "contract": "NOT_SEPARATELY_VERIFIED",
+      "invariant": "INV-EXPANSION-RECURSIVE",
+      "test": "TEST-EXPANSION-RECURSIVE",
+      "verification_result": "UNVERIFIED",
+      "derivation_acceptance": "BLOCKED_BY_INPUT_CONTRACT_FAILED"
+    },
+    {
+      "source": "historical-source/security/RETRY-HISTORY.yaml",
+      "artifact": "historical-source/security/RETRY-HISTORY.yaml",
+      "historical_claim": [
+        "claim-closure",
+        "v8:RETRY"
+      ],
+      "historical_property": "PROP-EXPANSION-VS-RETRY",
+      "obligation": "OBL-EXPANSION-VS-RETRY",
+      "obligation_class": "STABILIZE",
+      "strength": "REQUIRED",
+      "final_category": "ENGINEERING_REQUIREMENT",
+      "epistemic_status": "SUPPORTED",
+      "lifecycle_status": "FORMALIZED",
+      "dependency": [
+        "DEP-038",
+        "DEP-039"
+      ],
+      "contract": "NOT_SEPARATELY_VERIFIED",
+      "invariant": "INV-EXPANSION-VS-RETRY",
+      "test": "TEST-EXPANSION-VS-RETRY",
+      "verification_result": "UNVERIFIED",
+      "derivation_acceptance": "BLOCKED_BY_INPUT_CONTRACT_FAILED"
+    },
+    {
+      "source": "historical-source/security/DUPLICATE-PROCESSING.yaml",
+      "artifact": "historical-source/security/DUPLICATE-PROCESSING.yaml",
+      "historical_claim": [
+        "claim-generic-e",
+        "claim-generic-g",
+        "v8:DUPLICATE"
+      ],
+      "historical_property": "PROP-CANDIDATE-ADMISSION",
+      "obligation": "OBL-CANDIDATE-ADMISSION",
+      "obligation_class": "FORMALIZE",
+      "strength": "REQUIRED",
+      "final_category": "FUTURE_STRENGTHENING",
+      "epistemic_status": "SUPPORTED",
+      "lifecycle_status": "FORMALIZED",
+      "dependency": [
+        "DEP-016",
+        "DEP-017",
+        "DEP-018",
+        "DEP-019"
+      ],
+      "contract": "NOT_SEPARATELY_VERIFIED",
+      "invariant": "INV-CANDIDATE-ADMISSION",
+      "test": "TEST-CANDIDATE-ADMISSION",
+      "verification_result": "UNVERIFIED",
+      "derivation_acceptance": "BLOCKED_BY_INPUT_CONTRACT_FAILED"
+    },
+    {
+      "source": "historical-source/synthesis/CLAIMS.yaml",
+      "artifact": "historical-source/synthesis/CLAIMS.yaml",
+      "historical_claim": [
+        "claim-version-v010",
+        "inv-003",
+        "inv-004"
+      ],
+      "historical_property": "PROP-KNOWLEDGE",
+      "obligation": "OBL-KNOWLEDGE",
+      "obligation_class": "PRESERVE",
+      "strength": "REQUIRED",
+      "final_category": "PRESERVATION_OBLIGATION",
+      "epistemic_status": "SUPPORTED",
+      "lifecycle_status": "FORMALIZED",
+      "dependency": [
+        "DEP-043",
+        "DEP-044",
+        "DEP-045"
+      ],
+      "contract": "NOT_SEPARATELY_VERIFIED",
+      "invariant": "INV-KNOWLEDGE",
+      "test": "TEST-KNOWLEDGE",
+      "verification_result": "UNVERIFIED",
+      "derivation_acceptance": "BLOCKED_BY_INPUT_CONTRACT_FAILED"
+    },
+    {
+      "source": "historical-source/security/RESOURCE-BOUNDS.yaml",
+      "artifact": "historical-source/security/RESOURCE-BOUNDS.yaml",
+      "historical_claim": [
+        "v8:RESOURCE-BOUNDS",
+        "claim-version-v010"
+      ],
+      "historical_property": "PROP-BOUNDED-CONCURRENCY",
+      "obligation": "OBL-BOUNDED-CONCURRENCY",
+      "obligation_class": "PRESERVE",
+      "strength": "REQUIRED",
+      "final_category": "PRESERVATION_OBLIGATION",
+      "epistemic_status": "SUPPORTED",
+      "lifecycle_status": "FORMALIZED",
+      "dependency": [],
+      "contract": "NOT_SEPARATELY_VERIFIED",
+      "invariant": "INV-BOUNDED-CONCURRENCY",
+      "test": "TEST-BOUNDED-CONCURRENCY",
+      "verification_result": "UNVERIFIED",
+      "derivation_acceptance": "BLOCKED_BY_INPUT_CONTRACT_FAILED"
+    },
+    {
+      "source": "historical-source/security/CLAIM-SAFETY.yaml",
+      "artifact": "historical-source/security/CLAIM-SAFETY.yaml",
+      "historical_claim": [
+        "inv-005",
+        "v8:CLAIM"
+      ],
+      "historical_property": "PROP-SCHEDULER-TERMINATION",
+      "obligation": "OBL-SCHEDULER-TERMINATION",
+      "obligation_class": "FORMALIZE",
+      "strength": "REQUIRED",
+      "final_category": "FUTURE_STRENGTHENING",
+      "epistemic_status": "SUPPORTED",
+      "lifecycle_status": "FORMALIZED",
+      "dependency": [
+        "DEP-081",
+        "DEP-082",
+        "DEP-083",
+        "DEP-084"
+      ],
+      "contract": "NOT_SEPARATELY_VERIFIED",
+      "invariant": "INV-SCHEDULER-TERMINATION",
+      "test": "TEST-SCHEDULER-TERMINATION",
+      "verification_result": "UNVERIFIED",
+      "derivation_acceptance": "BLOCKED_BY_INPUT_CONTRACT_FAILED"
+    },
+    {
+      "source": "historical-source/security/CLAIM-SAFETY.yaml",
+      "artifact": "historical-source/security/CLAIM-SAFETY.yaml",
+      "historical_claim": [
+        "v8:CLAIM",
+        "v8:FAILURE"
+      ],
+      "historical_property": "PROP-WORKER-FAILURE",
+      "obligation": "OBL-WORKER-FAILURE",
+      "obligation_class": "CONTAIN",
+      "strength": "REQUIRED",
+      "final_category": "FUTURE_STRENGTHENING",
+      "epistemic_status": "SUPPORTED",
+      "lifecycle_status": "FORMALIZED",
+      "dependency": [
+        "DEP-092",
+        "DEP-093",
+        "DEP-094"
+      ],
+      "contract": "NOT_SEPARATELY_VERIFIED",
+      "invariant": "INV-WORKER-FAILURE",
+      "test": "TEST-WORKER-FAILURE",
+      "verification_result": "UNVERIFIED",
+      "derivation_acceptance": "BLOCKED_BY_INPUT_CONTRACT_FAILED"
+    },
+    {
+      "source": "historical-source/security/RESOURCE-BOUNDS.yaml",
+      "artifact": "historical-source/security/RESOURCE-BOUNDS.yaml",
+      "historical_claim": [
+        "v8:RETRY",
+        "v8:RESOURCE-BOUNDS"
+      ],
+      "historical_property": "PROP-RETRY",
+      "obligation": "OBL-RETRY",
+      "obligation_class": "FORMALIZE",
+      "strength": "REQUIRED",
+      "final_category": "FUTURE_STRENGTHENING",
+      "epistemic_status": "SUPPORTED",
+      "lifecycle_status": "FORMALIZED",
+      "dependency": [
+        "DEP-078",
+        "DEP-079",
+        "DEP-080"
+      ],
+      "contract": "NOT_SEPARATELY_VERIFIED",
+      "invariant": "INV-RETRY",
+      "test": "TEST-RETRY",
+      "verification_result": "UNVERIFIED",
+      "derivation_acceptance": "BLOCKED_BY_INPUT_CONTRACT_FAILED"
+    },
+    {
+      "source": "historical-source/security/PROVENANCE-INTEGRITY.yaml",
+      "artifact": "historical-source/security/PROVENANCE-INTEGRITY.yaml",
+      "historical_claim": [
+        "v8:PROVENANCE",
+        "inv-003",
+        "inv-004"
+      ],
+      "historical_property": "PROP-PROVENANCE",
+      "obligation": "OBL-PROVENANCE",
+      "obligation_class": "PRESERVE",
+      "strength": "REQUIRED",
+      "final_category": "PRESERVATION_OBLIGATION",
+      "epistemic_status": "SUPPORTED",
+      "lifecycle_status": "FORMALIZED",
+      "dependency": [
+        "DEP-063",
+        "DEP-064",
+        "DEP-065",
+        "DEP-066"
+      ],
+      "contract": "NOT_SEPARATELY_VERIFIED",
+      "invariant": "INV-PROVENANCE",
+      "test": "TEST-PROVENANCE",
+      "verification_result": "UNVERIFIED",
+      "derivation_acceptance": "BLOCKED_BY_INPUT_CONTRACT_FAILED"
+    },
+    {
+      "source": "historical-source/security/PROVENANCE-INTEGRITY.yaml",
+      "artifact": "historical-source/security/PROVENANCE-INTEGRITY.yaml",
+      "historical_claim": [
+        "v8:PROVENANCE",
+        "unc-013"
+      ],
+      "historical_property": "PROP-PROVENANCE-INTEGRITY",
+      "obligation": "OBL-PROVENANCE-INTEGRITY",
+      "obligation_class": "VERIFY",
+      "strength": "CONDITIONAL",
+      "final_category": "FUTURE_STRENGTHENING",
+      "epistemic_status": "SUPPORTED",
+      "lifecycle_status": "FORMALIZED",
+      "dependency": [
+        "DEP-067",
+        "DEP-099"
+      ],
+      "contract": "NOT_SEPARATELY_VERIFIED",
+      "invariant": "INV-PROVENANCE-INTEGRITY",
+      "test": "TEST-PROVENANCE-INTEGRITY",
+      "verification_result": "UNVERIFIED",
+      "derivation_acceptance": "BLOCKED_BY_INPUT_CONTRACT_FAILED"
+    },
+    {
+      "source": "historical-source/security/CODE-DATA-BOUNDARY-HISTORY.yaml",
+      "artifact": "historical-source/security/CODE-DATA-BOUNDARY-HISTORY.yaml",
+      "historical_claim": [
+        "v8:CODE-DATA",
+        "v8:PARSER"
+      ],
+      "historical_property": "PROP-REMOTE-DATA",
+      "obligation": "OBL-REMOTE-DATA",
+      "obligation_class": "CONTAIN",
+      "strength": "REQUIRED",
+      "final_category": "ENGINEERING_REQUIREMENT",
+      "epistemic_status": "SUPPORTED",
+      "lifecycle_status": "FORMALIZED",
+      "dependency": [
+        "DEP-076",
+        "DEP-077"
+      ],
+      "contract": "NOT_SEPARATELY_VERIFIED",
+      "invariant": "INV-REMOTE-DATA",
+      "test": "TEST-REMOTE-DATA",
+      "verification_result": "UNVERIFIED",
+      "derivation_acceptance": "BLOCKED_BY_INPUT_CONTRACT_FAILED"
+    },
+    {
+      "source": "historical-source/security/AUTHORITY-HISTORY.yaml",
+      "artifact": "historical-source/security/AUTHORITY-HISTORY.yaml",
+      "historical_claim": [
+        "v8:AUTHORITY"
+      ],
+      "historical_property": "PROP-AUTHORITY",
+      "obligation": "OBL-AUTHORITY",
+      "obligation_class": "FORMALIZE",
+      "strength": "REQUIRED",
+      "final_category": "FUTURE_STRENGTHENING",
+      "epistemic_status": "SUPPORTED",
+      "lifecycle_status": "FORMALIZED",
+      "dependency": [],
+      "contract": "NOT_SEPARATELY_VERIFIED",
+      "invariant": "INV-AUTHORITY",
+      "test": "TEST-AUTHORITY",
+      "verification_result": "UNVERIFIED",
+      "derivation_acceptance": "BLOCKED_BY_INPUT_CONTRACT_FAILED"
+    },
+    {
+      "source": "historical-source/security/FAILURE-MATRIX.yaml",
+      "artifact": "historical-source/security/FAILURE-MATRIX.yaml",
+      "historical_claim": [
+        "v8:PARSER",
+        "v8:FAILURE"
+      ],
+      "historical_property": "PROP-PARSER",
+      "obligation": "OBL-PARSER",
+      "obligation_class": "CONTAIN",
+      "strength": "REQUIRED",
+      "final_category": "ENGINEERING_REQUIREMENT",
+      "epistemic_status": "SUPPORTED",
+      "lifecycle_status": "FORMALIZED",
+      "dependency": [
+        "DEP-056",
+        "DEP-057"
+      ],
+      "contract": "NOT_SEPARATELY_VERIFIED",
+      "invariant": "INV-PARSER",
+      "test": "TEST-PARSER",
+      "verification_result": "UNVERIFIED",
+      "derivation_acceptance": "BLOCKED_BY_INPUT_CONTRACT_FAILED"
+    },
+    {
+      "source": "historical-source/security/RESOURCE-BOUNDS.yaml",
+      "artifact": "historical-source/security/RESOURCE-BOUNDS.yaml",
+      "historical_claim": [
+        "v8:RESOURCE-BOUNDS",
+        "claim-exhaustive-closure"
+      ],
+      "historical_property": "PROP-RESOURCE",
+      "obligation": "OBL-RESOURCE",
+      "obligation_class": "PRESERVE",
+      "strength": "REQUIRED",
+      "final_category": "PRESERVATION_OBLIGATION",
+      "epistemic_status": "SUPPORTED",
+      "lifecycle_status": "FORMALIZED",
+      "dependency": [
+        "DEP-097"
+      ],
+      "contract": "NOT_SEPARATELY_VERIFIED",
+      "invariant": "INV-RESOURCE",
+      "test": "TEST-RESOURCE",
+      "verification_result": "UNVERIFIED",
+      "derivation_acceptance": "BLOCKED_BY_INPUT_CONTRACT_FAILED"
+    },
+    {
+      "source": "historical-source/security/RESOURCE-EXHAUSTION.yaml",
+      "artifact": "historical-source/security/RESOURCE-EXHAUSTION.yaml",
+      "historical_claim": [
+        "v8:RESOURCE-EXHAUSTION"
+      ],
+      "historical_property": "PROP-UNBOUNDED",
+      "obligation": "OBL-UNBOUNDED",
+      "obligation_class": "REJECT",
+      "strength": "REQUIRED",
+      "final_category": "FUTURE_STRENGTHENING",
+      "epistemic_status": "SUPPORTED",
+      "lifecycle_status": "FORMALIZED",
+      "dependency": [
+        "DEP-089"
+      ],
+      "contract": "NOT_SEPARATELY_VERIFIED",
+      "invariant": "INV-UNBOUNDED",
+      "test": "TEST-UNBOUNDED",
+      "verification_result": "UNVERIFIED",
+      "derivation_acceptance": "BLOCKED_BY_INPUT_CONTRACT_FAILED"
+    },
+    {
+      "source": "historical-source/security/FAILURE-MATRIX.yaml",
+      "artifact": "historical-source/security/FAILURE-MATRIX.yaml",
+      "historical_claim": [
+        "v8:OBSERVABILITY",
+        "v8:FAILURE"
+      ],
+      "historical_property": "PROP-LIFECYCLE-OBS",
+      "obligation": "OBL-LIFECYCLE-OBS",
+      "obligation_class": "OBSERVE",
+      "strength": "REQUIRED",
+      "final_category": "FUTURE_STRENGTHENING",
+      "epistemic_status": "SUPPORTED",
+      "lifecycle_status": "FORMALIZED",
+      "dependency": [
+        "DEP-046",
+        "DEP-047",
+        "DEP-048",
+        "DEP-049",
+        "DEP-098"
+      ],
+      "contract": "NOT_SEPARATELY_VERIFIED",
+      "invariant": "INV-LIFECYCLE-OBS",
+      "test": "TEST-LIFECYCLE-OBS",
+      "verification_result": "UNVERIFIED",
+      "derivation_acceptance": "BLOCKED_BY_INPUT_CONTRACT_FAILED"
+    },
+    {
+      "source": "historical-source/security/OBSERVABILITY-HISTORY.yaml",
+      "artifact": "historical-source/security/OBSERVABILITY-HISTORY.yaml",
+      "historical_claim": [
+        "v8:OBSERVABILITY",
+        "claim-version-v071"
+      ],
+      "historical_property": "PROP-AUDIT",
+      "obligation": "OBL-AUDIT",
+      "obligation_class": "VERIFY",
+      "strength": "RECOMMENDED",
+      "final_category": "FUTURE_STRENGTHENING",
+      "epistemic_status": "SUPPORTED",
+      "lifecycle_status": "FORMALIZED",
+      "dependency": [
+        "DEP-009",
+        "DEP-010",
+        "DEP-011"
+      ],
+      "contract": "NOT_SEPARATELY_VERIFIED",
+      "invariant": "INV-AUDIT",
+      "test": "TEST-AUDIT",
+      "verification_result": "UNVERIFIED",
+      "derivation_acceptance": "BLOCKED_BY_INPUT_CONTRACT_FAILED"
+    },
+    {
+      "source": "historical-source/security/FAILURE-MATRIX.yaml",
+      "artifact": "historical-source/security/FAILURE-MATRIX.yaml",
+      "historical_claim": [
+        "v8:FAILURE"
+      ],
+      "historical_property": "PROP-SILENT-FAILURE",
+      "obligation": "OBL-SILENT-FAILURE",
+      "obligation_class": "REJECT",
+      "strength": "REQUIRED",
+      "final_category": "FUTURE_STRENGTHENING",
+      "epistemic_status": "SUPPORTED",
+      "lifecycle_status": "FORMALIZED",
+      "dependency": [
+        "DEP-085",
+        "DEP-086"
+      ],
+      "contract": "NOT_SEPARATELY_VERIFIED",
+      "invariant": "INV-SILENT-FAILURE",
+      "test": "TEST-SILENT-FAILURE",
+      "verification_result": "UNVERIFIED",
+      "derivation_acceptance": "BLOCKED_BY_INPUT_CONTRACT_FAILED"
+    },
+    {
+      "source": "historical-source/security/PERSISTENCE-INTEGRITY.yaml",
+      "artifact": "historical-source/security/PERSISTENCE-INTEGRITY.yaml",
+      "historical_claim": [
+        "v8:PERSISTENCE"
+      ],
+      "historical_property": "PROP-PERSIST-COMPAT",
+      "obligation": "OBL-PERSIST-COMPAT",
+      "obligation_class": "COMPATIBILITY",
+      "strength": "CONDITIONAL",
+      "final_category": "COMPATIBILITY_OBLIGATION",
+      "epistemic_status": "SUPPORTED",
+      "lifecycle_status": "FORMALIZED",
+      "dependency": [
+        "DEP-058",
+        "DEP-059",
+        "DEP-060"
+      ],
+      "contract": "NOT_SEPARATELY_VERIFIED",
+      "invariant": "INV-PERSIST-COMPAT",
+      "test": "TEST-PERSIST-COMPAT",
+      "verification_result": "UNVERIFIED",
+      "derivation_acceptance": "BLOCKED_BY_INPUT_CONTRACT_FAILED"
+    },
+    {
+      "source": "historical-source/security/PERSISTENCE-INTEGRITY.yaml",
+      "artifact": "historical-source/security/PERSISTENCE-INTEGRITY.yaml",
+      "historical_claim": [
+        "v8:PERSISTENCE"
+      ],
+      "historical_property": "PROP-PERSIST-CORRUPTION",
+      "obligation": "OBL-PERSIST-CORRUPTION",
+      "obligation_class": "CONTAIN",
+      "strength": "RECOMMENDED",
+      "final_category": "FUTURE_STRENGTHENING",
+      "epistemic_status": "SUPPORTED",
+      "lifecycle_status": "FORMALIZED",
+      "dependency": [
+        "DEP-061",
+        "DEP-062"
+      ],
+      "contract": "NOT_SEPARATELY_VERIFIED",
+      "invariant": "INV-PERSIST-CORRUPTION",
+      "test": "TEST-PERSIST-CORRUPTION",
+      "verification_result": "UNVERIFIED",
+      "derivation_acceptance": "BLOCKED_BY_INPUT_CONTRACT_FAILED"
+    },
+    {
+      "source": "historical-source/security/EXPORT-INTEGRITY.yaml",
+      "artifact": "historical-source/security/EXPORT-INTEGRITY.yaml",
+      "historical_claim": [
+        "v8:EXPORT"
+      ],
+      "historical_property": "PROP-EXPORT",
+      "obligation": "OBL-EXPORT",
+      "obligation_class": "FORMALIZE",
+      "strength": "CONDITIONAL",
+      "final_category": "FUTURE_STRENGTHENING",
+      "epistemic_status": "SUPPORTED",
+      "lifecycle_status": "FORMALIZED",
+      "dependency": [
+        "DEP-040",
+        "DEP-041",
+        "DEP-042"
+      ],
+      "contract": "NOT_SEPARATELY_VERIFIED",
+      "invariant": "INV-EXPORT",
+      "test": "TEST-EXPORT",
+      "verification_result": "UNVERIFIED",
+      "derivation_acceptance": "BLOCKED_BY_INPUT_CONTRACT_FAILED"
+    },
+    {
+      "source": "historical-source/security/OBSERVABILITY-HISTORY.yaml",
+      "artifact": "historical-source/security/OBSERVABILITY-HISTORY.yaml",
+      "historical_claim": [
+        "v8:OBSERVABILITY"
+      ],
+      "historical_property": "PROP-UI",
+      "obligation": "OBL-UI",
+      "obligation_class": "OPTIONAL",
+      "strength": "OPTIONAL",
+      "final_category": "DESIGN_OPTION",
+      "epistemic_status": "SUPPORTED",
+      "lifecycle_status": "FORMALIZED",
+      "dependency": [],
+      "contract": "NOT_SEPARATELY_VERIFIED",
+      "invariant": "INV-UI",
+      "test": "TEST-UI",
+      "verification_result": "UNVERIFIED",
+      "derivation_acceptance": "BLOCKED_BY_INPUT_CONTRACT_FAILED"
+    },
+    {
+      "source": "historical-source/analysis/API-EVOLUTION.yaml",
+      "artifact": "historical-source/analysis/API-EVOLUTION.yaml",
+      "historical_claim": [
+        "v3:API",
+        "v3:"
+      ],
+      "historical_property": "PROP-PRIVATE-SHAPE",
+      "obligation": "OBL-PRIVATE-SHAPE",
+      "obligation_class": "DEPRECATE",
+      "strength": "RECOMMENDED",
+      "final_category": "DESIGN_OPTION",
+      "epistemic_status": "INFERRED",
+      "lifecycle_status": "FORMALIZED",
+      "dependency": [],
+      "contract": "NOT_SEPARATELY_VERIFIED",
+      "invariant": "INV-PRIVATE-SHAPE",
+      "test": "TEST-PRIVATE-SHAPE",
+      "verification_result": "UNVERIFIED",
+      "derivation_acceptance": "BLOCKED_BY_INPUT_CONTRACT_FAILED"
+    },
+    {
+      "source": "historical-source/synthesis/CLAIMS.yaml",
+      "artifact": "historical-source/synthesis/CLAIMS.yaml",
+      "historical_claim": [
+        "claim-earliest-contract",
+        "unc-005"
+      ],
+      "historical_property": "PROP-CONTRACT-INPUT",
+      "obligation": "OBL-CONTRACT-INPUT",
+      "obligation_class": "VERIFY",
+      "strength": "REQUIRED",
+      "final_category": "ENGINEERING_REQUIREMENT",
+      "epistemic_status": "PROVED",
+      "lifecycle_status": "FORMALIZED",
+      "dependency": [],
+      "contract": "INPUT_MISSING_V7",
+      "invariant": "INV-CONTRACT-INPUT",
+      "test": "TEST-CONTRACT-INPUT",
+      "verification_result": "UNVERIFIED",
+      "derivation_acceptance": "BLOCKED_BY_INPUT_CONTRACT_FAILED"
+    },
+    {
+      "source": "historical-source/analysis/API-EVOLUTION.yaml",
+      "artifact": "historical-source/analysis/API-EVOLUTION.yaml",
+      "historical_claim": [
+        "v3:API",
+        "v8:FAILURE",
+        "claim-earliest-contract"
+      ],
+      "historical_property": "PROP-ERROR-CONTRACT",
+      "obligation": "OBL-ERROR-CONTRACT",
+      "obligation_class": "FORMALIZE",
+      "strength": "CONDITIONAL",
+      "final_category": "FUTURE_STRENGTHENING",
+      "epistemic_status": "SUPPORTED",
+      "lifecycle_status": "FORMALIZED",
+      "dependency": [
+        "DEP-032",
+        "DEP-033"
+      ],
+      "contract": "INPUT_MISSING_V7",
+      "invariant": "INV-ERROR-CONTRACT",
+      "test": "TEST-ERROR-CONTRACT",
+      "verification_result": "UNVERIFIED",
+      "derivation_acceptance": "BLOCKED_BY_INPUT_CONTRACT_FAILED"
+    },
+    {
+      "source": "historical-source/synthesis/CLAIMS.yaml",
+      "artifact": "historical-source/synthesis/CLAIMS.yaml",
+      "historical_claim": [
+        "unc-007",
+        "claim-earliest-runnable"
+      ],
+      "historical_property": "PROP-REGRESSION",
+      "obligation": "OBL-REGRESSION",
+      "obligation_class": "VERIFY",
+      "strength": "REQUIRED",
+      "final_category": "ENGINEERING_REQUIREMENT",
+      "epistemic_status": "SUPPORTED",
+      "lifecycle_status": "FORMALIZED",
+      "dependency": [],
+      "contract": "NOT_SEPARATELY_VERIFIED",
+      "invariant": "INV-REGRESSION",
+      "test": "TEST-REGRESSION",
+      "verification_result": "UNVERIFIED",
+      "derivation_acceptance": "BLOCKED_BY_INPUT_CONTRACT_FAILED"
+    },
+    {
+      "source": "historical-source/synthesis/CLAIMS.yaml",
+      "artifact": "historical-source/synthesis/CLAIMS.yaml",
+      "historical_claim": [
+        "contra-003",
+        "claim-version-v050"
+      ],
+      "historical_property": "PROP-PARSE-DEFECT",
+      "obligation": "OBL-PARSE-DEFECT",
+      "obligation_class": "REJECT",
+      "strength": "REQUIRED",
+      "final_category": "HISTORICAL_DEFECT",
+      "epistemic_status": "PROVED",
+      "lifecycle_status": "FORMALIZED",
+      "dependency": [
+        "DEP-055"
+      ],
+      "contract": "NOT_SEPARATELY_VERIFIED",
+      "invariant": "INV-PARSE-DEFECT",
+      "test": "TEST-PARSE-DEFECT",
+      "verification_result": "UNVERIFIED",
+      "derivation_acceptance": "BLOCKED_BY_INPUT_CONTRACT_FAILED"
+    },
+    {
+      "source": "historical-source/synthesis/CLAIMS.yaml",
+      "artifact": "historical-source/synthesis/CLAIMS.yaml",
+      "historical_claim": [
+        "inv-006",
+        "claim-protocol"
+      ],
+      "historical_property": "PROP-WEB-GENERALIZE",
+      "obligation": "OBL-WEB-GENERALIZE",
+      "obligation_class": "GENERALIZE",
+      "strength": "RECOMMENDED",
+      "final_category": "FUTURE_STRENGTHENING",
+      "epistemic_status": "SUPPORTED",
+      "lifecycle_status": "FORMALIZED",
+      "dependency": [
+        "DEP-090",
+        "DEP-091"
+      ],
+      "contract": "NOT_SEPARATELY_VERIFIED",
+      "invariant": "INV-WEB-GENERALIZE",
+      "test": "TEST-WEB-GENERALIZE",
+      "verification_result": "UNVERIFIED",
+      "derivation_acceptance": "BLOCKED_BY_INPUT_CONTRACT_FAILED"
+    }
+  ]
+}

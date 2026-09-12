@@ -1,0 +1,26 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "schema_version": "1.0",
+  "additionalProperties": true,
+  "title": "Obligation lineage",
+  "type": "object",
+  "required": [
+    "lineage_id",
+    "from_obligation",
+    "to_obligation",
+    "relation",
+    "epistemic_status"
+  ],
+  "properties": {
+    "epistemic_status": {
+      "enum": [
+        "PROVED",
+        "SUPPORTED",
+        "INFERRED",
+        "CONJECTURED",
+        "CONTRADICTED",
+        "UNKNOWN"
+      ]
+    }
+  }
+}

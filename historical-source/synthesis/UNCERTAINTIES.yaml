@@ -1,0 +1,125 @@
+{
+  "schema_version": "protocol-v9",
+  "uncertainties": [
+    {
+      "uncertainty_id": "unc-001",
+      "subject": "Protocol-v1 pinned-byte integrity",
+      "basis": "Raw/range mismatch",
+      "impact": "Blocks verified chain",
+      "disposition": "Do not repair or normalize source",
+      "status": "UNKNOWN"
+    },
+    {
+      "uncertainty_id": "unc-002",
+      "subject": "Protocol-v4 verified facts",
+      "basis": "Directory absent",
+      "impact": "Runtime facts unavailable",
+      "disposition": "UNKNOWN",
+      "status": "UNKNOWN"
+    },
+    {
+      "uncertainty_id": "unc-003",
+      "subject": "Protocol-v5 algorithm model",
+      "basis": "Directory absent",
+      "impact": "Algorithm guarantees unavailable",
+      "disposition": "UNKNOWN",
+      "status": "UNKNOWN"
+    },
+    {
+      "uncertainty_id": "unc-004",
+      "subject": "Protocol-v6 architecture model",
+      "basis": "Directory absent",
+      "impact": "Architecture conformance unavailable",
+      "disposition": "UNKNOWN",
+      "status": "UNKNOWN"
+    },
+    {
+      "uncertainty_id": "unc-005",
+      "subject": "Protocol-v7 contract model",
+      "basis": "Directory absent",
+      "impact": "Contract-driven threshold unavailable",
+      "disposition": "UNKNOWN",
+      "status": "UNKNOWN"
+    },
+    {
+      "uncertainty_id": "unc-006",
+      "subject": "Historical runtime",
+      "basis": "Manifest says UNKNOWN for every occurrence",
+      "impact": "Runnable means static likelihood only",
+      "disposition": "UNKNOWN",
+      "status": "UNKNOWN"
+    },
+    {
+      "uncertainty_id": "unc-007",
+      "subject": "Historical tests",
+      "basis": "No verified tests tied to versions",
+      "impact": "First-tested/stabilized unknown",
+      "disposition": "UNKNOWN",
+      "status": "UNKNOWN"
+    },
+    {
+      "uncertainty_id": "unc-008",
+      "subject": "Branch lineage",
+      "basis": "v0.4-v0.6 have parallel alternatives",
+      "impact": "No unique linear predecessor",
+      "disposition": "UNKNOWN",
+      "status": "UNKNOWN"
+    },
+    {
+      "uncertainty_id": "unc-009",
+      "subject": "Partial flattened alternatives",
+      "basis": "snapshot-0002 and snapshot-0004 are partial",
+      "impact": "Excluded from complete state vectors",
+      "disposition": "Preserved, not promoted",
+      "status": "UNKNOWN"
+    },
+    {
+      "uncertainty_id": "unc-010",
+      "subject": "Causal intent",
+      "basis": "Most deltas lack explicit rationale",
+      "impact": "Chronology only",
+      "disposition": "UNKNOWN with alternatives",
+      "status": "UNKNOWN"
+    },
+    {
+      "uncertainty_id": "unc-011",
+      "subject": "Current prose temporal scope",
+      "basis": "Current proposals are not historical implementations",
+      "impact": "No backward proof",
+      "disposition": "Separated",
+      "status": "UNKNOWN"
+    },
+    {
+      "uncertainty_id": "unc-012",
+      "subject": "Provider identity",
+      "basis": "Names and code similarity do not prove lineage",
+      "impact": "Renames/deletions/reintroductions unknown",
+      "disposition": "Occurrence-level only",
+      "status": "UNKNOWN"
+    },
+    {
+      "uncertainty_id": "unc-013",
+      "subject": "Security guarantees",
+      "basis": "Mechanisms do not prove guarantees",
+      "impact": "Boundary/integrity claims limited",
+      "disposition": "SUPPORTED mechanisms only",
+      "status": "UNKNOWN"
+    },
+    {
+      "uncertainty_id": "unc-014",
+      "subject": "Protocol independence",
+      "basis": "Current design discusses generic protocols; snapshots are web-coupled",
+      "impact": "Historical protocol-generic capability unproved",
+      "disposition": "UNKNOWN",
+      "status": "UNKNOWN"
+    },
+    {
+      "uncertainty_id": "unc-015",
+      "subject": "Exhaustive closure",
+      "basis": "Finite bounds and scheduling do not prove complete search",
+      "impact": "No completeness claim",
+      "disposition": "CONTRADICTED if asserted",
+      "status": "UNKNOWN"
+    }
+  ]
+}

@@ -1,0 +1,20 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "schema_version": "1.0",
+  "additionalProperties": true,
+  "title": "Requirement traceability row",
+  "type": "object",
+  "required": [
+    "source",
+    "artifact",
+    "historical_claim",
+    "historical_property",
+    "obligation",
+    "obligation_class",
+    "final_category",
+    "dependency",
+    "invariant",
+    "test",
+    "verification_result"
+  ]
+}

@@ -1,0 +1,94 @@
+# Protocol-v8 Independent Validation
+
+**Overall: PASS**
+**Acceptance: PROVISIONAL_ONLY_UPSTREAM_BLOCKED**
+
+Passed: 87/87
+
+- `PASS` — security output directory exists: /home/user/Generic-Discovery-Engine/historical-source/security
+- `PASS` — manifest exists and parses: /home/user/Generic-Discovery-Engine/historical-source/security/SECURITY-MANIFEST.yaml
+- `PASS` — all required Protocol-v8 deliverables exist: missing=[]
+- `PASS` — all seven per-version reports exist: v0.1.0 through v0.7.1
+- `PASS` — generator and validator are bound: {'generator': '6d343ae3de13edde0f468d4e4fdfa23b83b0eff8bacba7661afe55f9f4f76ad4', 'validator': '9a5fedf93c866116c28a58240a1648541cfc357f479db6e59e99aebce13fbad3'}
+- `PASS` — every bound input hash matches: bad=[]
+- `PASS` — every generator output hash matches: bad=[]
+- `PASS` — manifest output count is exact: declared=81 hashed=80
+- `PASS` — scope has 12 complete semantic snapshots: ['snapshot-0001', 'snapshot-0003', 'snapshot-0005', 'snapshot-0006', 'snapshot-0007', 'snapshot-0008', 'snapshot-0009', 'snapshot-0010', 'snapshot-0011', 'snapshot-0012', 'snapshot-0013', 'snapshot-0014']
+- `PASS` — two partial variants remain uncertainty-only: ['snapshot-0002', 'snapshot-0004']
+- `PASS` — upstream availability and prerequisite acceptance are reported truthfully: {'v1_v3_present': True, 'v1_validation': 'FAIL', 'v3_validation': 'PASS', 'v4_present': False, 'v5_present': False, 'v6_present': False, 'v7_present': False, 'all_required_verified_inputs_available': False}
+- `PASS` — evidence IDs are unique: rows=2305 unique=2305
+- `PASS` — all evidence byte ranges and bounded absences independently verify: bad=[] total=0
+- `PASS` — all historical evidence flows source-to-derived: rows=2305
+- `PASS` — no partial snapshot is used as semantic evidence: partial evidence count=0
+- `PASS` — all machine-ledger evidence references resolve: references=4685 unresolved=[]
+- `PASS` — stable failure taxonomy is exact: ['ACQUISITION_FAILURE', 'CANCELLATION', 'CONCURRENCY_FAILURE', 'CONFIGURATION_FAILURE', 'DEDUPLICATION_FAILURE', 'DISCOVERY_FAILURE', 'EXPANSION_FAILURE', 'EXPORT_FAILURE', 'HTTP_FAILURE', 'INPUT_FAILURE', 'NETWORK_FAILURE', 'PARSING_FAILURE', 'PERSISTENCE_FAILURE', 'PROVIDER_FAILURE', 'RECOGNITION_FAILURE', 'RESOURCE_EXHAUSTION', 'SCHEDULER_FAILURE', 'STATE_FAILURE', 'TIMEOUT', 'UI_FAILURE', 'UNKNOWN_FAILURE', 'VALIDATION_FAILURE']
+- `PASS` — failure stages and containment vocabularies are exact: stages=['INPUT', 'VALIDATION', 'ACQUISITION', 'OBSERVATION', 'RECOGNITION', 'DISCOVERY', 'EXPANSION', 'SCHEDULING', 'PERSISTENCE', 'EXPORT', 'UI', 'CROSS_CUTTING'] levels=dict_keys(['F0', 'F1', 'F2', 'F3', 'F4', 'F5', 'F6', 'UNKNOWN'])
+- `PASS` — failure event schema is complete: events=211
+- `PASS` — failure events use valid taxonomies: events=211
+- `PASS` — failure event count matches manifest: 211
+- `PASS` — static failure events never claim runtime occurrence: events=211
+- `PASS` — containment claims are evidence-backed: events=211
+- `PASS` — unknown failure remains available and no category is forced: unknown events=8
+- `PASS` — failure matrix covers every category in every snapshot: rows=264
+- `PASS` — failure model covers all eight pipeline stages plus cross-cutting stages in every snapshot: rows=144
+- `PASS` — failure semantics use four-way evidence labels: rows=264
+- `PASS` — failure propagation edges resolve and carry evidence: edges=533
+- `PASS` — silent failure candidates use exact conservative classes: rows=143
+- `PASS` — error information preservation covers required fields: handlers=168
+- `PASS` — retry history covers snapshots and rejects recursion inference: rows=12
+- `PASS` — implemented retry requires count/action evidence: implemented=9
+- `PASS` — timeout scopes remain independently tracked: rows=12
+- `PASS` — cancellation does not promote stop controls to operation cancellation: rows=12
+- `PASS` — resource bound count and schemas match: bounds=128
+- `PASS` — resource risks distinguish static risk from incidents: risks=72
+- `PASS` — shared state records writers readers await and ordering: rows=72
+- `PASS` — claim analysis separates six ownership/safety dimensions: rows=12
+- `PASS` — claim analysis rejects thread/distributed generalization: rows=12
+- `PASS` — duplicate processing factors remain separate: rows=12
+- `PASS` — race candidates are theoretical rather than demonstrated: rows=18
+- `PASS` — data integrity distinguishes possible observed prevented unknown: conditions=84
+- `PASS` — tampering surfaces are only integrity weaknesses: weaknesses=24
+- `PASS` — provenance tracks all four edges independently: rows=12
+- `PASS` — trust-boundary inventory covers twelve potential boundaries per snapshot: rows=144
+- `PASS` — internal scheduler boundaries are not auto-promoted to trust boundaries: scheduler rows checked
+- `PASS` — no trust boundary claims a security guarantee: rows=144
+- `PASS` — trust matrix covers five named boundaries per snapshot: rows=60
+- `PASS` — authority required/granted/used/exposure remain distinct: rows=82
+- `PASS` — capability-like patterns are not formal capability systems: rows=82
+- `PASS` — authority migrations preserve unknown lineage and consequences: rows=35
+- `PASS` — security-boundary migrations remain comparative with unknown consequences: rows=29
+- `PASS` — privileged API rows track permission and both data/error crossings: rows=54
+- `PASS` — security/function tradeoffs avoid measured or superiority claims: rows=78
+- `PASS` — HTML JSON and text provider safety separates extraction from execution: rows=34
+- `PASS` — JavaScript memory surfaces and cleanup avoid memory-safety guarantee: rows=12
+- `PASS` — userscript permissions exactly preserve parsed metadata: rows=12 bad=[]
+- `PASS` — origin scope separates metadata authority, policy, and use: rows=12
+- `PASS` — URL trust covers scheme origin redirect credentials and local addresses: rows=12
+- `PASS` — code/data history distinguishes absence evidence from security: rows=12
+- `PASS` — no acquired-content execution path is invented: {'NO_EVIDENCE_OF_CODE_EXECUTION'}
+- `PASS` — parser rows constrain security claims: parsers=41
+- `PASS` — regex risks use theoretical/supported/demonstrated/unknown vocabulary: regexes=7
+- `PASS` — persistence integrity does not invent atomicity or crash recovery: rows=12
+- `PASS` — export integrity distinguishes interpretation from compatibility: rows=12
+- `PASS` — observability separates detection from visibility: rows=12
+- `PASS` — auditability is never called verified without execution: rows=12
+- `PASS` — security claim types are exact and invariants cover seven per snapshot: rows=84
+- `PASS` — threat model preserves explicit implicit retrospective unknown: rows=12
+- `PASS` — branch-preserving security comparisons include adjacent and same-version variants: rows=29 relationships=['ADJACENT_RECOVERED_VERSION_COMPARISON_NOT_LINEAGE', 'SAME_VERSION_VARIANT_COMPARISON_NOT_LINEAGE']
+- `PASS` — control disappearance is not auto-labelled regression: rows=29
+- `PASS` — security/architecture mapping rejects chronology as causality: rows=5
+- `PASS` — every failure-contract mapping remains test-unverified: rows=12
+- `PASS` — all 23 final questions are answered and evidenced: rows=23
+- `PASS` — final failure classification has all seven sections: ['CONTAINED_FAILURES', 'HANDLED_FAILURES', 'OBSERVED_FAILURES', 'POTENTIAL_FAILURE_MODES', 'RECOVERABLE_FAILURES', 'SILENT_FAILURES', 'UNVERIFIED_FAILURE_MODES']
+- `PASS` — final security classification has all six sections: ['CURRENT_PROPOSED_SECURITY_ARCHITECTURE', 'HISTORICALLY_VERIFIED_SECURITY_MECHANISMS', 'HISTORICALLY_VERIFIED_SECURITY_PROPERTIES', 'RETROSPECTIVE_SECURITY_INTERPRETATIONS', 'SECURITY_GOALS_WITHOUT_ENFORCEMENT', 'UNKNOWN']
+- `PASS` — historically verified properties are path-scoped: properties=2
+- `PASS` — final report contains governing distinctions: distinctions
+- `PASS` — final report contains questions 1 through 23: 23 headings
+- `PASS` — final report contains all failure classification headings: failure headings
+- `PASS` — final report contains all security classification headings: security headings
+- `PASS` — report expressly rejects mechanism-to-guarantee promotions: guarantee rule
+- `PASS` — temporal contamination is expressly prohibited: current concepts isolated
+- `PASS` — all eight acceptance constraints hold: {'mechanism_is_not_guarantee': True, 'failure_event_is_not_runtime_incident': True, 'no_thread_safe_generalization': True, 'no_vulnerability_without_execution_path': True, 'no_security_score': True, 'no_chronology_as_causality': True, 'same_version_variants_preserved': True, 'temporal_backfill_forbidden': True}
+- `PASS` — authoritative source documents remain unchanged: git-diff-exit=0
+- `PASS` — no Python cache artifacts exist: bad=[]
+- `PASS` — no unexpected validator-owned files enter generator manifest: validator outputs excluded
