@@ -1,0 +1,29 @@
+{
+  "schema_version": "14.3",
+  "release_identity_ne_version": true,
+  "certificate_binding_fields": [
+    "RELEASE_ID",
+    "ARTIFACT_ID",
+    "ARTIFACT_HASH",
+    "IMPLEMENTATION_ID",
+    "SPECIFICATION_HASH",
+    "AUDIT_SNAPSHOT_HASH",
+    "CERTIFICATE_SNAPSHOT_HASH",
+    "ENVIRONMENT_ID"
+  ],
+  "decision_binding_fields": [
+    "RELEASE_HASH",
+    "ARTIFACT_HASH",
+    "GATE_HASH",
+    "POLICY_HASH",
+    "CERTIFICATE_HASH",
+    "AUDIT_SNAPSHOT_HASH",
+    "ENVIRONMENT_HASH",
+    "EVIDENCE_SNAPSHOT_HASH"
+  ],
+  "execution_binding_fields": [
+    "RELEASE_HASH",
+    "ARTIFACT_HASH",
+    "DECISION_HASH"
+  ]
+}

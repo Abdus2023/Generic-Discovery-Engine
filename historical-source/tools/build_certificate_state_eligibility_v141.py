@@ -185,6 +185,7 @@ def protected_files() -> list[Path]: return sorted((path for path in OUT.rglob("
 def main() -> None:
     required = [V14 / "VALIDATION.yaml", V14 / "CURRENT-CERTIFICATION-STATUS.yaml", V133 / "CURRENT-AUDIT-STATUS.yaml"]
     if not all(path.is_file() for path in required): raise RuntimeError("validated Protocol-v14 package is required")
+    if (OUT / "certification" / "v14.3").exists(): raise RuntimeError("refusing to erase predecessor artifacts after append-only v14.3 extension")
     if DEST.exists():
         for filename in ["CERTIFICATES-V141.yaml", "CERTIFICATE-HISTORIES.yaml", "CURRENT-ELIGIBILITY-DECISIONS.yaml", "ELIGIBILITY-HISTORIES.yaml", "ISSUANCE-ACTIONS.yaml"]:
             path = DEST / filename

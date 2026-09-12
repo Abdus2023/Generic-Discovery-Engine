@@ -1,0 +1,118 @@
+{
+  "schema_version": "14.3",
+  "gate_id": "RELEASE-GATE-V143-STRICT-001",
+  "predicates": [
+    {
+      "predicate_id": "CERTIFICATE_VALID",
+      "domain": "CERTIFICATE",
+      "mandatory": true,
+      "semantics": "Required certificate derives VALID and binds exact release",
+      "evidence_requirements": [
+        "CERTIFICATE_VALID_EVIDENCE"
+      ],
+      "freshness_policy_id": "FRESHNESS-POLICY-V143-001"
+    },
+    {
+      "predicate_id": "AGGREGATE_ALLOWED",
+      "domain": "CONFORMANCE",
+      "mandatory": true,
+      "semantics": "Aggregate satisfies release policy without mutation",
+      "evidence_requirements": [
+        "AGGREGATE_ALLOWED_EVIDENCE"
+      ],
+      "freshness_policy_id": null
+    },
+    {
+      "predicate_id": "SECURITY_GATE_PASS",
+      "domain": "SECURITY",
+      "mandatory": true,
+      "semantics": "Required security gate establishes pass",
+      "evidence_requirements": [
+        "SECURITY_GATE_PASS_EVIDENCE"
+      ],
+      "freshness_policy_id": "FRESHNESS-POLICY-V143-001"
+    },
+    {
+      "predicate_id": "COMPATIBILITY_PASS",
+      "domain": "COMPATIBILITY",
+      "mandatory": true,
+      "semantics": "Compatibility is established for exact environment",
+      "evidence_requirements": [
+        "COMPATIBILITY_PASS_EVIDENCE"
+      ],
+      "freshness_policy_id": null
+    },
+    {
+      "predicate_id": "ENVIRONMENT_MATCH",
+      "domain": "ENVIRONMENT",
+      "mandatory": true,
+      "semantics": "Release environment matches evaluated environment",
+      "evidence_requirements": [
+        "ENVIRONMENT_MATCH_EVIDENCE"
+      ],
+      "freshness_policy_id": null
+    },
+    {
+      "predicate_id": "AUTHORITY_AVAILABLE",
+      "domain": "AUTHORITY",
+      "mandatory": true,
+      "semantics": "Required authorization authority can act",
+      "evidence_requirements": [
+        "AUTHORITY_AVAILABLE_EVIDENCE"
+      ],
+      "freshness_policy_id": null
+    },
+    {
+      "predicate_id": "EVIDENCE_FRESH",
+      "domain": "FRESHNESS",
+      "mandatory": true,
+      "semantics": "Mandatory evidence satisfies freshness policy",
+      "evidence_requirements": [
+        "EVIDENCE_FRESH_EVIDENCE"
+      ],
+      "freshness_policy_id": null
+    },
+    {
+      "predicate_id": "RESOURCE_AVAILABLE",
+      "domain": "RESOURCE",
+      "mandatory": false,
+      "semantics": "Operational resources are available",
+      "evidence_requirements": [
+        "RESOURCE_AVAILABLE_EVIDENCE"
+      ],
+      "freshness_policy_id": null
+    },
+    {
+      "predicate_id": "REGRESSION_PASS",
+      "domain": "REGRESSION",
+      "mandatory": true,
+      "semantics": "Required regression suite passes",
+      "evidence_requirements": [
+        "REGRESSION_PASS_EVIDENCE"
+      ],
+      "freshness_policy_id": "FRESHNESS-POLICY-V143-001"
+    },
+    {
+      "predicate_id": "WAIVER_VALID",
+      "domain": "WAIVER",
+      "mandatory": true,
+      "semantics": "Any relied-upon waiver is valid, scoped, effective, and authorized",
+      "evidence_requirements": [
+        "WAIVER_VALID_EVIDENCE"
+      ],
+      "freshness_policy_id": null
+    }
+  ],
+  "domains_covered": [
+    "AUTHORITY",
+    "CERTIFICATE",
+    "COMPATIBILITY",
+    "CONFORMANCE",
+    "ENVIRONMENT",
+    "FRESHNESS",
+    "REGRESSION",
+    "RESOURCE",
+    "SECURITY",
+    "WAIVER"
+  ]
+}

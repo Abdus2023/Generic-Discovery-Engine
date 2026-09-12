@@ -1,0 +1,42 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "TemporalIntervalV143",
+  "type": "object",
+  "required": [
+    "not_before",
+    "not_after",
+    "clock_source",
+    "clock_uncertainty_ms"
+  ],
+  "properties": {
+    "not_before": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "not_after": {
+      "oneOf": [
+        {
+          "type": "string",
+          "format": "date-time"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "clock_source": {
+      "type": "string",
+      "pattern": "^[A-Za-z0-9][A-Za-z0-9._:/-]*$"
+    },
+    "clock_uncertainty_ms": {
+      "type": "integer",
+      "minimum": 0
+    }
+  },
+  "additionalProperties": false,
+  "x-v14.3-rules": [
+    "half-open interval [not_before, not_after)",
+    "timestamps normalized to UTC"
+  ],
+  "$id": "https://generic-discovery-engine.invalid/compliance/v14.3/temporal-interval.schema.yaml"
+}

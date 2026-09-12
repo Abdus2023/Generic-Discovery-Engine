@@ -1,0 +1,14 @@
+{
+  "schema_version": "14.3",
+  "interval": "[not_before, not_after)",
+  "not_before_equality": "ACTIVE",
+  "not_after_equality": "INACTIVE",
+  "normalization": "UTC_Z",
+  "clock_source": "EXPLICIT_POLICY_APPROVED_INPUT",
+  "clock_uncertainty": "EXPLICIT_MILLISECONDS_CONSERVATIVE_BOUNDARY_RESULT_UNKNOWN",
+  "future_timestamp": "TEMPORAL_DEFECT",
+  "clock_rollback": "TEMPORAL_DEFECT",
+  "history_order": "NONDECREASING_OCCURRED_AT_AND_EXACT_PREDECESSOR",
+  "historical_replay": "USE_AS_OF_SNAPSHOTS_AND_POLICIES_EFFECTIVE_AT_AS_OF_TIME",
+  "current_policy_for_historical_replay": "FORBIDDEN"
+}

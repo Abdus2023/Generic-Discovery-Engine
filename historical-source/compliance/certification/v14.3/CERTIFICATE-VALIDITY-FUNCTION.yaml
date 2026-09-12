@@ -1,0 +1,31 @@
+{
+  "schema_version": "14.3",
+  "outcomes": [
+    "VALID",
+    "INVALID",
+    "NOT_YET_VALID",
+    "UNKNOWN"
+  ],
+  "ordered_predicates": [
+    "SCHEMA",
+    "HASH",
+    "SIGNATURE",
+    "AUTHORITY",
+    "BINDING",
+    "SCOPE",
+    "NOT_BEFORE",
+    "NOT_AFTER",
+    "LIFECYCLE_TERMINAL_STATE",
+    "EVIDENCE_FRESHNESS",
+    "POLICY_VALIDITY"
+  ],
+  "terminal_lifecycle_to_validity": {
+    "REVOKED": "INVALID",
+    "SUPERSEDED": "INVALID",
+    "EXPIRED": "INVALID",
+    "CANCELLED": "INVALID"
+  },
+  "DRAFT": "UNKNOWN",
+  "invalid_does_not_imply_revoked": true,
+  "evaluated_at_is_explicit": true
+}

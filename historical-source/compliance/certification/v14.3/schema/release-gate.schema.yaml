@@ -1,0 +1,86 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "ReleaseGateV143",
+  "type": "object",
+  "required": [
+    "gate_id",
+    "policy_id",
+    "release_scope",
+    "predicate_registry",
+    "certificate_requirements",
+    "conditional_release_policy",
+    "waiver_policy_id",
+    "unknown_policy",
+    "blocker_policy",
+    "authority_policy_id",
+    "schema_version",
+    "gate_hash"
+  ],
+  "properties": {
+    "gate_id": {
+      "type": "string",
+      "pattern": "^[A-Za-z0-9][A-Za-z0-9._:/-]*$"
+    },
+    "policy_id": {
+      "type": "string",
+      "pattern": "^[A-Za-z0-9][A-Za-z0-9._:/-]*$"
+    },
+    "release_scope": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "string",
+        "minLength": 1
+      },
+      "uniqueItems": true
+    },
+    "predicate_registry": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "$ref": "release-gate-predicate.schema.yaml"
+      }
+    },
+    "certificate_requirements": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "string",
+        "minLength": 1
+      },
+      "uniqueItems": true
+    },
+    "conditional_release_policy": {
+      "type": "string",
+      "minLength": 1
+    },
+    "waiver_policy_id": {
+      "type": "string",
+      "pattern": "^[A-Za-z0-9][A-Za-z0-9._:/-]*$"
+    },
+    "unknown_policy": {
+      "type": "string",
+      "minLength": 1
+    },
+    "blocker_policy": {
+      "type": "string",
+      "minLength": 1
+    },
+    "authority_policy_id": {
+      "type": "string",
+      "pattern": "^[A-Za-z0-9][A-Za-z0-9._:/-]*$"
+    },
+    "schema_version": {
+      "const": "14.3"
+    },
+    "gate_hash": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$"
+    }
+  },
+  "additionalProperties": false,
+  "x-v14.3-rules": [
+    "gate contains policy only and no evaluation result"
+  ],
+  "$id": "https://generic-discovery-engine.invalid/compliance/v14.3/release-gate.schema.yaml"
+}

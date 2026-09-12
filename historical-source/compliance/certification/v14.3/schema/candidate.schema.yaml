@@ -1,0 +1,121 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "DiscoveryCandidateV143",
+  "type": "object",
+  "required": [
+    "candidate_id",
+    "target",
+    "origin",
+    "priority",
+    "hints",
+    "lifecycle",
+    "attempts",
+    "created_at",
+    "updated_at"
+  ],
+  "properties": {
+    "candidate_id": {
+      "type": "string",
+      "pattern": "^[A-Za-z0-9][A-Za-z0-9._:/-]*$"
+    },
+    "target": {
+      "type": "object",
+      "required": [
+        "value",
+        "type"
+      ],
+      "properties": {
+        "value": {
+          "type": "string",
+          "minLength": 1
+        },
+        "type": {
+          "type": "string",
+          "enum": [
+            "URL",
+            "DOCUMENT",
+            "RESOURCE",
+            "ENDPOINT",
+            "OTHER"
+          ]
+        }
+      },
+      "additionalProperties": false
+    },
+    "origin": {
+      "type": "object",
+      "required": [
+        "type",
+        "parent_candidate_id"
+      ],
+      "properties": {
+        "type": {
+          "type": "string",
+          "enum": [
+            "SEED",
+            "DISCOVERY",
+            "EXPANSION",
+            "USER",
+            "RECOVERY"
+          ]
+        },
+        "parent_candidate_id": {
+          "oneOf": [
+            {
+              "type": "string",
+              "pattern": "^[A-Za-z0-9][A-Za-z0-9._:/-]*$"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        }
+      },
+      "additionalProperties": false
+    },
+    "priority": {
+      "type": "integer"
+    },
+    "hints": {
+      "type": "object"
+    },
+    "lifecycle": {
+      "type": "object",
+      "required": [
+        "state"
+      ],
+      "properties": {
+        "state": {
+          "type": "string",
+          "enum": [
+            "DISCOVERED",
+            "QUEUED",
+            "CLAIMED",
+            "PROCESSING",
+            "COMPLETED",
+            "FAILED",
+            "CANCELLED"
+          ]
+        }
+      },
+      "additionalProperties": false
+    },
+    "attempts": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "created_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "updated_at": {
+      "type": "string",
+      "format": "date-time"
+    }
+  },
+  "additionalProperties": false,
+  "x-v14.3-rules": [
+    "certificate and release fields forbidden"
+  ],
+  "$id": "https://generic-discovery-engine.invalid/compliance/v14.3/candidate.schema.yaml"
+}

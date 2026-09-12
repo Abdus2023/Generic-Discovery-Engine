@@ -1,0 +1,45 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "PredicateEvaluationV143",
+  "type": "object",
+  "required": [
+    "predicate_id",
+    "mandatory",
+    "result",
+    "reason",
+    "evidence_refs"
+  ],
+  "properties": {
+    "predicate_id": {
+      "type": "string",
+      "pattern": "^[A-Za-z0-9][A-Za-z0-9._:/-]*$"
+    },
+    "mandatory": {
+      "type": "boolean"
+    },
+    "result": {
+      "type": "string",
+      "enum": [
+        "TRUE",
+        "FALSE",
+        "BLOCKED",
+        "UNKNOWN"
+      ]
+    },
+    "reason": {
+      "type": "string",
+      "minLength": 1
+    },
+    "evidence_refs": {
+      "type": "array",
+      "minItems": 0,
+      "items": {
+        "type": "string",
+        "minLength": 1
+      },
+      "uniqueItems": true
+    }
+  },
+  "additionalProperties": false,
+  "$id": "https://generic-discovery-engine.invalid/compliance/v14.3/predicate-evaluation.schema.yaml"
+}

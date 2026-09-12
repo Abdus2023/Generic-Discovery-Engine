@@ -1,0 +1,26 @@
+{
+  "schema_version": "14.3",
+  "decision_relevant_inputs": [
+    "RELEASE_ARTIFACT",
+    "IMPLEMENTATION",
+    "SPECIFICATION",
+    "POLICY",
+    "GATE",
+    "CERTIFICATE",
+    "AUDIT_SNAPSHOT",
+    "ENVIRONMENT",
+    "MANDATORY_EVIDENCE",
+    "AUTHORITY",
+    "WAIVER",
+    "SECURITY_STATE",
+    "COMPATIBILITY_STATE"
+  ],
+  "reusable_iff": [
+    "ALL_RELEVANT_INPUT_HASHES_IDENTICAL",
+    "DECISION_INTERVAL_ACTIVE",
+    "POLICY_PERMITS_REUSE",
+    "NO_INVALIDATING_EVENT"
+  ],
+  "any_unknown_equivalence": "NOT_REUSABLE",
+  "historical_decision_mutated": false
+}

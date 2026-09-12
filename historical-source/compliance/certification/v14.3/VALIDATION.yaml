@@ -1,0 +1,604 @@
+{
+  "schema_version": "14.3",
+  "validator": "Protocol-v14.3 independent release execution validator",
+  "overall_status": "STRUCTURAL_PASS_CURRENT_RELEASE_NOT_APPLICABLE",
+  "acceptance": "BLOCKED",
+  "summary": {
+    "total": 83,
+    "passed": 82,
+    "failed": 0,
+    "blocked": 1
+  },
+  "object_counts": {
+    "schemas": 28,
+    "required_vectors": 30,
+    "invariants": 25,
+    "current_releases": 0,
+    "current_decisions": 0,
+    "current_executions": 0,
+    "current_verifications": 0
+  },
+  "checks": [
+    {
+      "check_id": "I01",
+      "category": "inventory",
+      "result": "PASS",
+      "description": "all 82 generator-owned v14.3 deliverables exist",
+      "detail": ""
+    },
+    {
+      "check_id": "I02",
+      "category": "syntax",
+      "result": "PASS",
+      "description": "all YAML is JSON-compatible and parseable",
+      "detail": "[]"
+    },
+    {
+      "check_id": "S01",
+      "category": "schemas",
+      "result": "PASS",
+      "description": "all 28 required schemas have unique stable IDs",
+      "detail": ""
+    },
+    {
+      "check_id": "S02",
+      "category": "schemas",
+      "result": "PASS",
+      "description": "all normative object schemas reject undeclared top-level fields",
+      "detail": ""
+    },
+    {
+      "check_id": "S03",
+      "category": "schemas",
+      "result": "PASS",
+      "description": "schema registry resolves every schema with exact hash",
+      "detail": "[]"
+    },
+    {
+      "check_id": "S04",
+      "category": "schemas",
+      "result": "PASS",
+      "description": "gate, release, binding, events, and current projections satisfy schemas",
+      "detail": "[]"
+    },
+    {
+      "check_id": "M01",
+      "category": "separation",
+      "result": "PASS",
+      "description": "all ten operational domains remain independent",
+      "detail": ""
+    },
+    {
+      "check_id": "M02",
+      "category": "pipeline",
+      "result": "PASS",
+      "description": "release pipeline is complete from audit snapshot through post-release verification",
+      "detail": ""
+    },
+    {
+      "check_id": "M03",
+      "category": "append-only",
+      "result": "PASS",
+      "description": "semantic corrections do not mutate earlier artifacts",
+      "detail": ""
+    },
+    {
+      "check_id": "M04",
+      "category": "candidate",
+      "result": "PASS",
+      "description": "certificate candidate, certificate, and discovery candidate remain distinct",
+      "detail": ""
+    },
+    {
+      "check_id": "M05",
+      "category": "certificate",
+      "result": "PASS",
+      "description": "certificate lifecycle and four-state derived validity do not duplicate terminal states",
+      "detail": ""
+    },
+    {
+      "check_id": "M06",
+      "category": "certificate",
+      "result": "PASS",
+      "description": "certificate terminal states have no outgoing transition",
+      "detail": ""
+    },
+    {
+      "check_id": "B01",
+      "category": "identity",
+      "result": "PASS",
+      "description": "release identity has twelve components and version label is insufficient",
+      "detail": ""
+    },
+    {
+      "check_id": "B02",
+      "category": "binding",
+      "result": "PASS",
+      "description": "certificate binds all eight mandatory release identities and mismatch is ineligible",
+      "detail": ""
+    },
+    {
+      "check_id": "B03",
+      "category": "binding",
+      "result": "PASS",
+      "description": "exact binding match and artifact mismatch reproduce",
+      "detail": ""
+    },
+    {
+      "check_id": "B04",
+      "category": "hashes",
+      "result": "PASS",
+      "description": "release and gate canonical hashes validate",
+      "detail": ""
+    },
+    {
+      "check_id": "G01",
+      "category": "gate",
+      "result": "PASS",
+      "description": "release gate is policy without embedded evaluation results",
+      "detail": ""
+    },
+    {
+      "check_id": "G02",
+      "category": "gate",
+      "result": "PASS",
+      "description": "gate covers all ten required predicate domains",
+      "detail": ""
+    },
+    {
+      "check_id": "E01",
+      "category": "eligibility",
+      "result": "PASS",
+      "description": "mandatory precedence is FALSE > BLOCKED > UNKNOWN > TRUE",
+      "detail": ""
+    },
+    {
+      "check_id": "E02",
+      "category": "eligibility",
+      "result": "PASS",
+      "description": "empty mandatory set blocks and optional failure only warns",
+      "detail": ""
+    },
+    {
+      "check_id": "E03",
+      "category": "eligibility",
+      "result": "PASS",
+      "description": "eligibility evaluator independently reproduces all four outcomes",
+      "detail": ""
+    },
+    {
+      "check_id": "E04",
+      "category": "eligibility",
+      "result": "PASS",
+      "description": "missing, malformed, and no-mandatory behavior is explicit",
+      "detail": ""
+    },
+    {
+      "check_id": "D01",
+      "category": "decision",
+      "result": "PASS",
+      "description": "decision has exact approved/rejected/blocked/deferred semantics",
+      "detail": ""
+    },
+    {
+      "check_id": "D02",
+      "category": "decision",
+      "result": "PASS",
+      "description": "eligibility neither implies approval nor execution",
+      "detail": ""
+    },
+    {
+      "check_id": "D03",
+      "category": "authority",
+      "result": "PASS",
+      "description": "automated release authority is policy-defined rather than assumed",
+      "detail": ""
+    },
+    {
+      "check_id": "X01",
+      "category": "execution",
+      "result": "PASS",
+      "description": "execution state machine supports guarded failure, retry, cancellation, and rollback",
+      "detail": ""
+    },
+    {
+      "check_id": "X02",
+      "category": "execution",
+      "result": "PASS",
+      "description": "execution start requires six independent guards",
+      "detail": ""
+    },
+    {
+      "check_id": "X03",
+      "category": "execution",
+      "result": "PASS",
+      "description": "expired decision and revoked certificate cannot start execution",
+      "detail": ""
+    },
+    {
+      "check_id": "X04",
+      "category": "post-release",
+      "result": "PASS",
+      "description": "post-release result neither mutates decision nor follows from execution success",
+      "detail": ""
+    },
+    {
+      "check_id": "T01",
+      "category": "temporal",
+      "result": "PASS",
+      "description": "half-open UTC interval boundaries are exact",
+      "detail": ""
+    },
+    {
+      "check_id": "T02",
+      "category": "temporal",
+      "result": "PASS",
+      "description": "future, rollback, uncertainty, and historical replay rules are explicit",
+      "detail": ""
+    },
+    {
+      "check_id": "T03",
+      "category": "reuse",
+      "result": "PASS",
+      "description": "all thirteen decision-relevant dimensions participate in exact reuse",
+      "detail": ""
+    },
+    {
+      "check_id": "A01",
+      "category": "validation",
+      "result": "PASS",
+      "description": "eleven-stage validation pipeline is exact",
+      "detail": ""
+    },
+    {
+      "check_id": "A02",
+      "category": "attribution",
+      "result": "PASS",
+      "description": "ten failure layers are distinguished from implementation failure",
+      "detail": ""
+    },
+    {
+      "check_id": "H01",
+      "category": "history",
+      "result": "PASS",
+      "description": "events are append-only and remain domain-specific",
+      "detail": ""
+    },
+    {
+      "check_id": "H02",
+      "category": "projection",
+      "result": "PASS",
+      "description": "current state is reconstructible from valid immutable history",
+      "detail": ""
+    },
+    {
+      "check_id": "V01",
+      "category": "test-vectors",
+      "result": "PASS",
+      "description": "all thirty required end-to-end vectors reproduce independently",
+      "detail": "[]"
+    },
+    {
+      "check_id": "V02",
+      "category": "test-vectors",
+      "result": "PASS",
+      "description": "every vector exposes predicates, state, event, projection, and reason",
+      "detail": ""
+    },
+    {
+      "check_id": "V03",
+      "category": "precedence",
+      "result": "PASS",
+      "description": "proven mandatory failure is not hidden by blocker",
+      "detail": ""
+    },
+    {
+      "check_id": "V04",
+      "category": "history",
+      "result": "PASS",
+      "description": "post-release failure leaves prior approval unchanged",
+      "detail": ""
+    },
+    {
+      "check_id": "V05",
+      "category": "replay",
+      "result": "PASS",
+      "description": "historical replay uses policy at as-of time rather than current policy",
+      "detail": ""
+    },
+    {
+      "check_id": "K01",
+      "category": "epistemic",
+      "result": "PASS",
+      "description": "all required epistemic labels are used with explicit basis",
+      "detail": ""
+    },
+    {
+      "check_id": "K02",
+      "category": "traceability",
+      "result": "PASS",
+      "description": "baseline requirements trace directionally to v14.3 artifacts",
+      "detail": ""
+    },
+    {
+      "check_id": "N00",
+      "category": "invariants",
+      "result": "PASS",
+      "description": "25 stable invariants have 25 mechanical predicates",
+      "detail": ""
+    },
+    {
+      "check_id": "V143-INV-001",
+      "category": "invariant",
+      "result": "PASS",
+      "description": "certificate_id is immutable",
+      "detail": ""
+    },
+    {
+      "check_id": "V143-INV-002",
+      "category": "invariant",
+      "result": "PASS",
+      "description": "release_id is immutable",
+      "detail": ""
+    },
+    {
+      "check_id": "V143-INV-003",
+      "category": "invariant",
+      "result": "PASS",
+      "description": "decision_id is immutable",
+      "detail": ""
+    },
+    {
+      "check_id": "V143-INV-004",
+      "category": "invariant",
+      "result": "PASS",
+      "description": "execution_id is immutable",
+      "detail": ""
+    },
+    {
+      "check_id": "V143-INV-005",
+      "category": "invariant",
+      "result": "PASS",
+      "description": "DRAFT may transition to ISSUED only under issuance guards",
+      "detail": ""
+    },
+    {
+      "check_id": "V143-INV-006",
+      "category": "invariant",
+      "result": "PASS",
+      "description": "ISSUED may transition to REVOKED, SUPERSEDED, EXPIRED, or CANCELLED only under domain guards",
+      "detail": ""
+    },
+    {
+      "check_id": "V143-INV-007",
+      "category": "invariant",
+      "result": "PASS",
+      "description": "No terminal certificate state may return to ISSUED",
+      "detail": ""
+    },
+    {
+      "check_id": "V143-INV-008",
+      "category": "invariant",
+      "result": "PASS",
+      "description": "VALID is derived",
+      "detail": ""
+    },
+    {
+      "check_id": "V143-INV-009",
+      "category": "invariant",
+      "result": "PASS",
+      "description": "INVALID does not imply REVOKED",
+      "detail": ""
+    },
+    {
+      "check_id": "V143-INV-010",
+      "category": "invariant",
+      "result": "PASS",
+      "description": "ELIGIBLE does not imply APPROVED",
+      "detail": ""
+    },
+    {
+      "check_id": "V143-INV-011",
+      "category": "invariant",
+      "result": "PASS",
+      "description": "APPROVED does not imply RELEASED",
+      "detail": ""
+    },
+    {
+      "check_id": "V143-INV-012",
+      "category": "invariant",
+      "result": "PASS",
+      "description": "RELEASED does not imply POST_RELEASE_VERIFIED",
+      "detail": ""
+    },
+    {
+      "check_id": "V143-INV-013",
+      "category": "invariant",
+      "result": "PASS",
+      "description": "History is append-only",
+      "detail": ""
+    },
+    {
+      "check_id": "V143-INV-014",
+      "category": "invariant",
+      "result": "PASS",
+      "description": "Current state is reconstructible",
+      "detail": ""
+    },
+    {
+      "check_id": "V143-INV-015",
+      "category": "invariant",
+      "result": "PASS",
+      "description": "Old decisions are never mutated",
+      "detail": ""
+    },
+    {
+      "check_id": "V143-INV-016",
+      "category": "invariant",
+      "result": "PASS",
+      "description": "Certificate artifact binding must match release artifact",
+      "detail": ""
+    },
+    {
+      "check_id": "V143-INV-017",
+      "category": "invariant",
+      "result": "PASS",
+      "description": "Decision artifact binding must match execution artifact",
+      "detail": ""
+    },
+    {
+      "check_id": "V143-INV-018",
+      "category": "invariant",
+      "result": "PASS",
+      "description": "Future evidence cannot satisfy historical scope",
+      "detail": ""
+    },
+    {
+      "check_id": "V143-INV-019",
+      "category": "invariant",
+      "result": "PASS",
+      "description": "Expired authorization cannot authorize new execution",
+      "detail": ""
+    },
+    {
+      "check_id": "V143-INV-020",
+      "category": "invariant",
+      "result": "PASS",
+      "description": "Proven failure cannot be hidden by BLOCKED",
+      "detail": ""
+    },
+    {
+      "check_id": "V143-INV-021",
+      "category": "invariant",
+      "result": "PASS",
+      "description": "BLOCKED cannot be treated as APPROVED",
+      "detail": ""
+    },
+    {
+      "check_id": "V143-INV-022",
+      "category": "invariant",
+      "result": "PASS",
+      "description": "UNKNOWN cannot be treated as TRUE",
+      "detail": ""
+    },
+    {
+      "check_id": "V143-INV-023",
+      "category": "invariant",
+      "result": "PASS",
+      "description": "Version labels do not establish release identity",
+      "detail": ""
+    },
+    {
+      "check_id": "V143-INV-024",
+      "category": "invariant",
+      "result": "PASS",
+      "description": "Validity failure does not fabricate revocation",
+      "detail": ""
+    },
+    {
+      "check_id": "V143-INV-025",
+      "category": "invariant",
+      "result": "PASS",
+      "description": "Post-release verification cannot retroactively change a release decision",
+      "detail": ""
+    },
+    {
+      "check_id": "C01",
+      "category": "non-invention",
+      "result": "PASS",
+      "description": "current package invents no candidate, certificate, release, decision, execution, or verification",
+      "detail": ""
+    },
+    {
+      "check_id": "C02",
+      "category": "current",
+      "result": "PASS",
+      "description": "five empty-domain current projections contain no fabricated entity",
+      "detail": ""
+    },
+    {
+      "check_id": "C03",
+      "category": "current",
+      "result": "PASS",
+      "description": "current historical status is proved blocked upstream with zero operational objects",
+      "detail": ""
+    },
+    {
+      "check_id": "O01",
+      "category": "registry",
+      "result": "PASS",
+      "description": "six v14.3 normative object identities are unique",
+      "detail": ""
+    },
+    {
+      "check_id": "O02",
+      "category": "registry",
+      "result": "PASS",
+      "description": "v14.3 IDs are unique from predecessor registries",
+      "detail": ""
+    },
+    {
+      "check_id": "O03",
+      "category": "references",
+      "result": "PASS",
+      "description": "predecessor registries resolve with exact hashes",
+      "detail": ""
+    },
+    {
+      "check_id": "P01",
+      "category": "append-only",
+      "result": "PASS",
+      "description": "all 440 predecessor compliance artifacts remain byte-identical",
+      "detail": "[]"
+    },
+    {
+      "check_id": "P02",
+      "category": "append-only",
+      "result": "PASS",
+      "description": "v14.1 builder refuses to erase v14.3",
+      "detail": ""
+    },
+    {
+      "check_id": "Q01",
+      "category": "determinism",
+      "result": "PASS",
+      "description": "all 82 generator outputs reproduce byte-for-byte",
+      "detail": ""
+    },
+    {
+      "check_id": "Q02",
+      "category": "regression",
+      "result": "PASS",
+      "description": "v10.1 through v14.1 regressions and append guards pass",
+      "detail": ""
+    },
+    {
+      "check_id": "Q03",
+      "category": "hygiene",
+      "result": "PASS",
+      "description": "no Python cache artifacts exist",
+      "detail": ""
+    },
+    {
+      "check_id": "Q04",
+      "category": "tools",
+      "result": "PASS",
+      "description": "generic and pinned v14.3 tools exist",
+      "detail": ""
+    },
+    {
+      "check_id": "R01",
+      "category": "reports",
+      "result": "PASS",
+      "description": "four reports preserve semantic, binding, execution, and current truth",
+      "detail": ""
+    },
+    {
+      "check_id": "GATE-V143",
+      "category": "acceptance",
+      "result": "BLOCKED",
+      "description": "current release pipeline",
+      "detail": "The v14.3 specification validates structurally, but the current audit remains blocked at specification validation and no release, decision, execution, or post-release verification object exists."
+    }
+  ]
+}

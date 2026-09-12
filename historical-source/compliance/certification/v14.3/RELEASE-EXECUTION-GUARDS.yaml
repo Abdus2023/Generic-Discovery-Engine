@@ -1,0 +1,19 @@
+{
+  "schema_version": "14.3",
+  "start_all_of": [
+    "DECISION_APPROVED",
+    "DECISION_INTERVAL_ACTIVE",
+    "RELEASE_IDENTITY_MATCH",
+    "ARTIFACT_IDENTITY_MATCH",
+    "DECISION_REUSABLE",
+    "REQUIRED_CERTIFICATE_STILL_VALID"
+  ],
+  "decision_expiration": "NOT_STARTED_DECISION_EXPIRED",
+  "certificate_revocation": "NOT_STARTED_CERTIFICATE_NO_LONGER_VALID",
+  "artifact_mutation": "NOT_STARTED_ARTIFACT_IDENTITY_MISMATCH",
+  "partial_execution": "FAILED_WITH_RESULT_EVIDENCE",
+  "cancellation": "APPEND_CANCELLED_EVENT",
+  "failure": "APPEND_FAILED_EVENT",
+  "retry": "NEW_ATTEMPT",
+  "rollback": "APPEND_ROLLED_BACK_EVENT"
+}

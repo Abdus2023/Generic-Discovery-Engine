@@ -1,0 +1,46 @@
+{
+  "schema_version": "14.3",
+  "objects": [
+    {
+      "object_type": "RELEASE_GATE",
+      "object_id": "RELEASE-GATE-V143-STRICT-001",
+      "source": "RELEASE-GATE-DEFINITION.yaml"
+    },
+    {
+      "object_type": "CURRENT_PROJECTION",
+      "object_id": "CURRENT-CERTIFICATE-V143-001",
+      "source": "CURRENT-STATES.yaml"
+    },
+    {
+      "object_type": "CURRENT_PROJECTION",
+      "object_id": "CURRENT-RELEASE-ELIGIBILITY-V143-001",
+      "source": "CURRENT-STATES.yaml"
+    },
+    {
+      "object_type": "CURRENT_PROJECTION",
+      "object_id": "CURRENT-RELEASE-DECISION-V143-001",
+      "source": "CURRENT-STATES.yaml"
+    },
+    {
+      "object_type": "CURRENT_PROJECTION",
+      "object_id": "CURRENT-RELEASE-EXECUTION-V143-001",
+      "source": "CURRENT-STATES.yaml"
+    },
+    {
+      "object_type": "CURRENT_PROJECTION",
+      "object_id": "CURRENT-POST-RELEASE-VERIFICATION-V143-001",
+      "source": "CURRENT-STATES.yaml"
+    }
+  ],
+  "external_registries": [
+    {
+      "path": "../v14.1/OBJECT-REGISTRY.yaml",
+      "sha256": "bf1db60af1ddf3c50142f8ce4f5e9a2e1de73f5ec0e1c0546a27039f87666830"
+    },
+    {
+      "path": "../v14/OBJECT-REGISTRY.yaml",
+      "sha256": "3494f4f7836f2d7558483cef7e2c8b2fbd720607c34edfab6daf64224eeb6624"
+    }
+  ],
+  "global_uniqueness_checked": true
+}

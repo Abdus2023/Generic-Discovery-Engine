@@ -1,0 +1,18 @@
+{
+  "schema_version": "14.3",
+  "outcomes": [
+    "APPROVED",
+    "REJECTED",
+    "BLOCKED",
+    "DEFERRED"
+  ],
+  "semantics": {
+    "REJECTED": "PROVEN_POLICY_FAILURE_OR_AUTHORIZED_REJECTION",
+    "BLOCKED": "REQUIRED_EVALUATION_OR_AUTHORIZATION_CANNOT_PROCEED",
+    "DEFERRED": "AUTHORIZED_POLICY_PERMITTED_POSTPONEMENT",
+    "APPROVED": "ALL_AUTHORIZATION_PREDICATES_SATISFIED"
+  },
+  "eligible_implies_approved": false,
+  "approved_implies_executed": false,
+  "unknown_maps_to_deferred": false
+}

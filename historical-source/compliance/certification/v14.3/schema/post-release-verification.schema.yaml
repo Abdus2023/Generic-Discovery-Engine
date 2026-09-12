@@ -1,0 +1,78 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "PostReleaseVerificationV143",
+  "type": "object",
+  "required": [
+    "verification_id",
+    "release_id",
+    "execution_id",
+    "decision_id",
+    "status",
+    "predicates",
+    "evidence_refs",
+    "evaluated_at",
+    "snapshot_hash",
+    "schema_version",
+    "verification_hash"
+  ],
+  "properties": {
+    "verification_id": {
+      "type": "string",
+      "pattern": "^[A-Za-z0-9][A-Za-z0-9._:/-]*$"
+    },
+    "release_id": {
+      "type": "string",
+      "pattern": "^[A-Za-z0-9][A-Za-z0-9._:/-]*$"
+    },
+    "execution_id": {
+      "type": "string",
+      "pattern": "^[A-Za-z0-9][A-Za-z0-9._:/-]*$"
+    },
+    "decision_id": {
+      "type": "string",
+      "pattern": "^[A-Za-z0-9][A-Za-z0-9._:/-]*$"
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "VERIFIED",
+        "FAILED",
+        "INCONCLUSIVE",
+        "BLOCKED",
+        "UNKNOWN"
+      ]
+    },
+    "predicates": {
+      "type": "array",
+      "items": {
+        "$ref": "predicate-evaluation.schema.yaml"
+      }
+    },
+    "evidence_refs": {
+      "type": "array",
+      "minItems": 0,
+      "items": {
+        "type": "string",
+        "minLength": 1
+      },
+      "uniqueItems": true
+    },
+    "evaluated_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "snapshot_hash": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$"
+    },
+    "schema_version": {
+      "const": "14.3"
+    },
+    "verification_hash": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$"
+    }
+  },
+  "additionalProperties": false,
+  "$id": "https://generic-discovery-engine.invalid/compliance/v14.3/post-release-verification.schema.yaml"
+}

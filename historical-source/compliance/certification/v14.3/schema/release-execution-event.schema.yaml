@@ -1,0 +1,120 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "ReleaseExecutionEventV143",
+  "type": "object",
+  "required": [
+    "event_id",
+    "entity_id",
+    "occurred_at",
+    "actor_or_authority",
+    "snapshot_hash",
+    "previous_event_id",
+    "evidence_refs",
+    "schema_version",
+    "content_hash",
+    "event_type",
+    "execution_id",
+    "from_state",
+    "to_state",
+    "sequence"
+  ],
+  "properties": {
+    "event_id": {
+      "type": "string",
+      "pattern": "^[A-Za-z0-9][A-Za-z0-9._:/-]*$"
+    },
+    "entity_id": {
+      "type": "string",
+      "pattern": "^[A-Za-z0-9][A-Za-z0-9._:/-]*$"
+    },
+    "occurred_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "actor_or_authority": {
+      "oneOf": [
+        {
+          "type": "string",
+          "pattern": "^[A-Za-z0-9][A-Za-z0-9._:/-]*$"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "snapshot_hash": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$"
+    },
+    "previous_event_id": {
+      "oneOf": [
+        {
+          "type": "string",
+          "pattern": "^[A-Za-z0-9][A-Za-z0-9._:/-]*$"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "evidence_refs": {
+      "type": "array",
+      "minItems": 0,
+      "items": {
+        "type": "string",
+        "minLength": 1
+      },
+      "uniqueItems": true
+    },
+    "schema_version": {
+      "const": "14.3"
+    },
+    "content_hash": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$"
+    },
+    "event_type": {
+      "type": "string",
+      "enum": [
+        "STARTED",
+        "SUCCEEDED",
+        "FAILED",
+        "CANCELLED",
+        "ROLLED_BACK",
+        "RETRY_STARTED"
+      ]
+    },
+    "execution_id": {
+      "type": "string",
+      "pattern": "^[A-Za-z0-9][A-Za-z0-9._:/-]*$"
+    },
+    "from_state": {
+      "type": "string",
+      "enum": [
+        "NOT_STARTED",
+        "STARTED",
+        "SUCCEEDED",
+        "FAILED",
+        "CANCELLED",
+        "ROLLED_BACK"
+      ]
+    },
+    "to_state": {
+      "type": "string",
+      "enum": [
+        "NOT_STARTED",
+        "STARTED",
+        "SUCCEEDED",
+        "FAILED",
+        "CANCELLED",
+        "ROLLED_BACK"
+      ]
+    },
+    "sequence": {
+      "type": "integer",
+      "minimum": 0
+    }
+  },
+  "additionalProperties": false,
+  "$id": "https://generic-discovery-engine.invalid/compliance/v14.3/release-execution-event.schema.yaml"
+}

@@ -1,0 +1,21 @@
+{
+  "schema_version": "14.3",
+  "mandatory": [
+    "RELEASE_ID",
+    "ARTIFACT_ID",
+    "ARTIFACT_HASH",
+    "IMPLEMENTATION_ID",
+    "SPECIFICATION_HASH",
+    "AUDIT_SNAPSHOT_HASH",
+    "CERTIFICATE_SNAPSHOT_HASH",
+    "ENVIRONMENT_ID"
+  ],
+  "optional": [
+    "SOURCE_COMMIT_HASH",
+    "BUILD_HASH",
+    "CONFIGURATION_HASH"
+  ],
+  "mismatch_result": "RELEASE_INELIGIBLE",
+  "silent_cross_release_authorization": false,
+  "replacement_requires_new_certificate_or_explicit_compatibility_certificate": true
+}

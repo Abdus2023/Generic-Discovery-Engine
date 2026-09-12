@@ -1,0 +1,24 @@
+{
+  "schema_version": "14.3",
+  "common_envelope": [
+    "EVENT_ID",
+    "ENTITY_ID",
+    "EVENT_TYPE",
+    "OCCURRED_AT",
+    "ACTOR_OR_AUTHORITY",
+    "SNAPSHOT_HASH",
+    "PREVIOUS_EVENT_ID",
+    "CONTENT_HASH"
+  ],
+  "domain_specific_schemas": [
+    "CERTIFICATE_ISSUANCE",
+    "CERTIFICATE_REVOCATION",
+    "CERTIFICATE_SUPERSESSION",
+    "CERTIFICATE_CANDIDATE",
+    "RELEASE_DECISION",
+    "RELEASE_EXECUTION",
+    "POST_RELEASE_VERIFICATION"
+  ],
+  "universal_lifecycle_enum": false,
+  "append_only": true
+}

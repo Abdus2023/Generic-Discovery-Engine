@@ -1,0 +1,42 @@
+{
+  "schema_version": "14.3",
+  "allowed": [
+    {
+      "from": "DRAFT",
+      "to": "ISSUED",
+      "guard": "VALID_ELIGIBILITY_AUTHORITY_PAYLOAD_BINDING"
+    },
+    {
+      "from": "DRAFT",
+      "to": "CANCELLED",
+      "guard": "AUTHORIZED_CANCELLATION"
+    },
+    {
+      "from": "ISSUED",
+      "to": "REVOKED",
+      "guard": "AUTHORIZED_REVOCATION_EVENT"
+    },
+    {
+      "from": "ISSUED",
+      "to": "SUPERSEDED",
+      "guard": "AUTHORIZED_REPLACEMENT_WITH_NEW_ID"
+    },
+    {
+      "from": "ISSUED",
+      "to": "EXPIRED",
+      "guard": "VALIDITY_INTERVAL_END_REACHED"
+    },
+    {
+      "from": "ISSUED",
+      "to": "CANCELLED",
+      "guard": "AUTHORIZED_PRE_ACTIVATION_CANCELLATION"
+    }
+  ],
+  "terminal": [
+    "REVOKED",
+    "SUPERSEDED",
+    "EXPIRED",
+    "CANCELLED"
+  ],
+  "terminal_outgoing": []
+}

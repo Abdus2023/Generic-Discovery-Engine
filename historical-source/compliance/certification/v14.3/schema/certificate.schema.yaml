@@ -1,0 +1,86 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "CertificateV143",
+  "type": "object",
+  "required": [
+    "certificate_id",
+    "candidate_id",
+    "certificate_type",
+    "lifecycle_state",
+    "binding",
+    "authority",
+    "interval",
+    "issued_at",
+    "schema_version",
+    "certificate_hash",
+    "signature_hash"
+  ],
+  "properties": {
+    "certificate_id": {
+      "type": "string",
+      "pattern": "^[A-Za-z0-9][A-Za-z0-9._:/-]*$"
+    },
+    "candidate_id": {
+      "type": "string",
+      "pattern": "^[A-Za-z0-9][A-Za-z0-9._:/-]*$"
+    },
+    "certificate_type": {
+      "type": "string",
+      "minLength": 1
+    },
+    "lifecycle_state": {
+      "type": "string",
+      "enum": [
+        "DRAFT",
+        "ISSUED",
+        "REVOKED",
+        "SUPERSEDED",
+        "EXPIRED",
+        "CANCELLED"
+      ]
+    },
+    "binding": {
+      "$ref": "certificate-release-binding.schema.yaml"
+    },
+    "authority": {
+      "$ref": "authority.schema.yaml"
+    },
+    "interval": {
+      "$ref": "temporal-interval.schema.yaml"
+    },
+    "issued_at": {
+      "oneOf": [
+        {
+          "type": "string",
+          "format": "date-time"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "schema_version": {
+      "const": "14.3"
+    },
+    "certificate_hash": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$"
+    },
+    "signature_hash": {
+      "oneOf": [
+        {
+          "type": "string",
+          "pattern": "^[a-f0-9]{64}$"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    }
+  },
+  "additionalProperties": false,
+  "x-v14.3-rules": [
+    "validity is not stored as lifecycle state"
+  ],
+  "$id": "https://generic-discovery-engine.invalid/compliance/v14.3/certificate.schema.yaml"
+}

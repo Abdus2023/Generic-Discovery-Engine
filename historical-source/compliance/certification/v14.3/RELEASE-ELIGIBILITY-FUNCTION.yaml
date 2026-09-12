@@ -1,0 +1,24 @@
+{
+  "schema_version": "14.3",
+  "outcomes": [
+    "ELIGIBLE",
+    "INELIGIBLE",
+    "BLOCKED",
+    "UNKNOWN"
+  ],
+  "inputs": [
+    "VALID_GATE",
+    "EXACT_RELEASE",
+    "PREDICATE_EVALUATIONS",
+    "EXPLICIT_TIME"
+  ],
+  "algorithm": [
+    "MALFORMED_TO_INELIGIBLE",
+    "MANDATORY_FALSE_TO_INELIGIBLE",
+    "MANDATORY_BLOCKED_TO_BLOCKED",
+    "MANDATORY_UNKNOWN_TO_UNKNOWN",
+    "ALL_MANDATORY_TRUE_TO_ELIGIBLE"
+  ],
+  "vacuous_truth_allowed": false,
+  "deterministic": true
+}

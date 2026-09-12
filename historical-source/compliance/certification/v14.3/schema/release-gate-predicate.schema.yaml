@@ -1,0 +1,63 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "ReleaseGatePredicateV143",
+  "type": "object",
+  "required": [
+    "predicate_id",
+    "domain",
+    "mandatory",
+    "semantics",
+    "evidence_requirements",
+    "freshness_policy_id"
+  ],
+  "properties": {
+    "predicate_id": {
+      "type": "string",
+      "pattern": "^[A-Za-z0-9][A-Za-z0-9._:/-]*$"
+    },
+    "domain": {
+      "type": "string",
+      "enum": [
+        "CERTIFICATE",
+        "CONFORMANCE",
+        "SECURITY",
+        "COMPATIBILITY",
+        "ENVIRONMENT",
+        "AUTHORITY",
+        "FRESHNESS",
+        "RESOURCE",
+        "REGRESSION",
+        "WAIVER"
+      ]
+    },
+    "mandatory": {
+      "type": "boolean"
+    },
+    "semantics": {
+      "type": "string",
+      "minLength": 1
+    },
+    "evidence_requirements": {
+      "type": "array",
+      "minItems": 0,
+      "items": {
+        "type": "string",
+        "minLength": 1
+      },
+      "uniqueItems": true
+    },
+    "freshness_policy_id": {
+      "oneOf": [
+        {
+          "type": "string",
+          "pattern": "^[A-Za-z0-9][A-Za-z0-9._:/-]*$"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    }
+  },
+  "additionalProperties": false,
+  "$id": "https://generic-discovery-engine.invalid/compliance/v14.3/release-gate-predicate.schema.yaml"
+}

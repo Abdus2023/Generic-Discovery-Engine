@@ -1,0 +1,67 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "CertificateEligibilityV143",
+  "type": "object",
+  "required": [
+    "eligibility_id",
+    "candidate_id",
+    "status",
+    "predicates",
+    "reasons",
+    "evaluated_at",
+    "snapshot_hash",
+    "schema_version",
+    "eligibility_hash"
+  ],
+  "properties": {
+    "eligibility_id": {
+      "type": "string",
+      "pattern": "^[A-Za-z0-9][A-Za-z0-9._:/-]*$"
+    },
+    "candidate_id": {
+      "type": "string",
+      "pattern": "^[A-Za-z0-9][A-Za-z0-9._:/-]*$"
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "ELIGIBLE",
+        "INELIGIBLE",
+        "BLOCKED",
+        "UNKNOWN"
+      ]
+    },
+    "predicates": {
+      "type": "array",
+      "items": {
+        "$ref": "predicate-evaluation.schema.yaml"
+      }
+    },
+    "reasons": {
+      "type": "array",
+      "minItems": 0,
+      "items": {
+        "type": "string",
+        "minLength": 1
+      },
+      "uniqueItems": true
+    },
+    "evaluated_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "snapshot_hash": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$"
+    },
+    "schema_version": {
+      "const": "14.3"
+    },
+    "eligibility_hash": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$"
+    }
+  },
+  "additionalProperties": false,
+  "$id": "https://generic-discovery-engine.invalid/compliance/v14.3/certificate-eligibility.schema.yaml"
+}

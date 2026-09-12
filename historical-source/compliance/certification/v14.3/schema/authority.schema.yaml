@@ -1,0 +1,45 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "AuthorityV143",
+  "type": "object",
+  "required": [
+    "authority_id",
+    "authority_class",
+    "policy_id",
+    "evidence_refs",
+    "valid"
+  ],
+  "properties": {
+    "authority_id": {
+      "type": "string",
+      "pattern": "^[A-Za-z0-9][A-Za-z0-9._:/-]*$"
+    },
+    "authority_class": {
+      "type": "string",
+      "enum": [
+        "AUTOMATED_POLICY",
+        "HUMAN",
+        "DELEGATED",
+        "MULTI_PARTY"
+      ]
+    },
+    "policy_id": {
+      "type": "string",
+      "pattern": "^[A-Za-z0-9][A-Za-z0-9._:/-]*$"
+    },
+    "evidence_refs": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "string",
+        "minLength": 1
+      },
+      "uniqueItems": true
+    },
+    "valid": {
+      "type": "boolean"
+    }
+  },
+  "additionalProperties": false,
+  "$id": "https://generic-discovery-engine.invalid/compliance/v14.3/authority.schema.yaml"
+}

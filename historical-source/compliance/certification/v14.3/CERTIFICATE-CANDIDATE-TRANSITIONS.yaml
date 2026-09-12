@@ -1,0 +1,45 @@
+{
+  "schema_version": "14.3",
+  "allowed": [
+    {
+      "from": "CREATED",
+      "to": "ACTIVE",
+      "guard": "DOMAIN_SPECIFIC_GUARD_REQUIRED"
+    },
+    {
+      "from": "CREATED",
+      "to": "CANCELLED",
+      "guard": "DOMAIN_SPECIFIC_GUARD_REQUIRED"
+    },
+    {
+      "from": "ACTIVE",
+      "to": "CONSUMED",
+      "guard": "DOMAIN_SPECIFIC_GUARD_REQUIRED"
+    },
+    {
+      "from": "ACTIVE",
+      "to": "CANCELLED",
+      "guard": "DOMAIN_SPECIFIC_GUARD_REQUIRED"
+    },
+    {
+      "from": "ACTIVE",
+      "to": "EXPIRED",
+      "guard": "DOMAIN_SPECIFIC_GUARD_REQUIRED"
+    },
+    {
+      "from": "CONSUMED",
+      "to": "RETAINED",
+      "guard": "DOMAIN_SPECIFIC_GUARD_REQUIRED"
+    },
+    {
+      "from": "EXPIRED",
+      "to": "RETAINED",
+      "guard": "DOMAIN_SPECIFIC_GUARD_REQUIRED"
+    }
+  ],
+  "terminal": [
+    "CANCELLED",
+    "RETAINED"
+  ],
+  "eligibility_transition_forbidden": true
+}

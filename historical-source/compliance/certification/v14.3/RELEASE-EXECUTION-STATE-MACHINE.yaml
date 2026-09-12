@@ -1,0 +1,44 @@
+{
+  "schema_version": "14.3",
+  "states": [
+    "NOT_STARTED",
+    "STARTED",
+    "SUCCEEDED",
+    "FAILED",
+    "CANCELLED",
+    "ROLLED_BACK"
+  ],
+  "allowed": [
+    {
+      "from": "NOT_STARTED",
+      "to": "STARTED"
+    },
+    {
+      "from": "STARTED",
+      "to": "SUCCEEDED"
+    },
+    {
+      "from": "STARTED",
+      "to": "FAILED"
+    },
+    {
+      "from": "STARTED",
+      "to": "CANCELLED"
+    },
+    {
+      "from": "FAILED",
+      "to": "STARTED"
+    },
+    {
+      "from": "SUCCEEDED",
+      "to": "ROLLED_BACK"
+    },
+    {
+      "from": "FAILED",
+      "to": "ROLLED_BACK"
+    }
+  ],
+  "retry": "FAILED_TO_STARTED_REQUIRES_EXPLICIT_NEW_ATTEMPT_AND_EFFECTIVE_APPROVAL",
+  "rollback": "NEW_EVENT_PRESERVES_EXECUTION_AND_DECISION_HISTORY",
+  "authorization_history_mutated": false
+}

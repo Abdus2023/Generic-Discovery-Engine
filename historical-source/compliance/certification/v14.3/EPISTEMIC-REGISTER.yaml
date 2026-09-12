@@ -1,0 +1,44 @@
+{
+  "schema_version": "14.3",
+  "allowed_labels": [
+    "PROVED",
+    "SUPPORTED",
+    "INFERRED",
+    "CONJECTURED",
+    "CONTRADICTED",
+    "UNKNOWN"
+  ],
+  "claims": [
+    {
+      "claim": "V14_2_IS_CURRENT_PROMPT_BASELINE",
+      "status": "SUPPORTED",
+      "basis": "USER_SUPPLIED_NORMATIVE_TEXT"
+    },
+    {
+      "claim": "CURRENT_V13_3_AUDIT_IS_BLOCKED",
+      "status": "PROVED",
+      "basis": "V13_3_CURRENT_AUDIT_STATUS"
+    },
+    {
+      "claim": "CURRENT_RELEASE_EXISTS",
+      "status": "CONTRADICTED",
+      "basis": "NO_RELEASE_OBJECT_IN_PREDECESSOR_CURRENT_COLLECTIONS"
+    },
+    {
+      "claim": "AUTOMATED_AUTHORITY_MAY_APPROVE",
+      "status": "INFERRED",
+      "basis": "ONLY_WHEN_EXPLICIT_POLICY_PERMITS"
+    },
+    {
+      "claim": "PRODUCTION_AUTHORITY_CONFIGURATION",
+      "status": "UNKNOWN",
+      "basis": "NO_AUTHORITY_INSTANCE_SUPPLIED"
+    },
+    {
+      "claim": "POST_RELEASE_FAILURE_SHOULD_OPEN_FINDING_OR_RISK",
+      "status": "CONJECTURED",
+      "basis": "DOMAIN_ROUTING_REQUIRES_FUTURE_POLICY"
+    }
+  ],
+  "future_rules_label": "ENGINEERING_REQUIREMENT_V14_3"
+}

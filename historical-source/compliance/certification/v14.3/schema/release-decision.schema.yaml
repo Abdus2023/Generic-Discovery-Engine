@@ -1,0 +1,106 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "ReleaseDecisionV143",
+  "type": "object",
+  "required": [
+    "decision_id",
+    "release_id",
+    "gate_id",
+    "eligibility_id",
+    "authority",
+    "policy_id",
+    "evidence_snapshot_hash",
+    "decision_predicates",
+    "status",
+    "reasons",
+    "interval",
+    "decided_at",
+    "predecessor_decision_id",
+    "decision_relevant_hashes",
+    "schema_version",
+    "decision_hash"
+  ],
+  "properties": {
+    "decision_id": {
+      "type": "string",
+      "pattern": "^[A-Za-z0-9][A-Za-z0-9._:/-]*$"
+    },
+    "release_id": {
+      "type": "string",
+      "pattern": "^[A-Za-z0-9][A-Za-z0-9._:/-]*$"
+    },
+    "gate_id": {
+      "type": "string",
+      "pattern": "^[A-Za-z0-9][A-Za-z0-9._:/-]*$"
+    },
+    "eligibility_id": {
+      "type": "string",
+      "pattern": "^[A-Za-z0-9][A-Za-z0-9._:/-]*$"
+    },
+    "authority": {
+      "$ref": "authority.schema.yaml"
+    },
+    "policy_id": {
+      "type": "string",
+      "pattern": "^[A-Za-z0-9][A-Za-z0-9._:/-]*$"
+    },
+    "evidence_snapshot_hash": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$"
+    },
+    "decision_predicates": {
+      "type": "array",
+      "items": {
+        "$ref": "predicate-evaluation.schema.yaml"
+      }
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "APPROVED",
+        "REJECTED",
+        "BLOCKED",
+        "DEFERRED"
+      ]
+    },
+    "reasons": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "string",
+        "minLength": 1
+      },
+      "uniqueItems": true
+    },
+    "interval": {
+      "$ref": "temporal-interval.schema.yaml"
+    },
+    "decided_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "predecessor_decision_id": {
+      "oneOf": [
+        {
+          "type": "string",
+          "pattern": "^[A-Za-z0-9][A-Za-z0-9._:/-]*$"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "decision_relevant_hashes": {
+      "type": "object"
+    },
+    "schema_version": {
+      "const": "14.3"
+    },
+    "decision_hash": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$"
+    }
+  },
+  "additionalProperties": false,
+  "$id": "https://generic-discovery-engine.invalid/compliance/v14.3/release-decision.schema.yaml"
+}

@@ -1,0 +1,978 @@
+{
+  "schema_version": "14.3",
+  "vectors": [
+    {
+      "number": 1,
+      "vector_id": "V01-VALID-CERTIFICATE",
+      "operation": "CERT_VALIDITY",
+      "input": {
+        "lifecycle": "ISSUED",
+        "schema": true,
+        "hash": true,
+        "signature": true,
+        "authority": true,
+        "binding": true,
+        "scope": true,
+        "interval": "ACTIVE",
+        "evidence": true,
+        "policy": true
+      },
+      "expected_predicates": [
+        "ALL_TRUE"
+      ],
+      "expected_state": "VALID",
+      "expected_event": null,
+      "expected_current_projection": "VALID",
+      "expected_reason": "ALL_VALIDITY_PREDICATES_TRUE"
+    },
+    {
+      "number": 2,
+      "vector_id": "V02-CORRUPTED-SIGNATURE",
+      "operation": "CERT_VALIDITY",
+      "input": {
+        "lifecycle": "ISSUED",
+        "schema": true,
+        "hash": true,
+        "signature": false
+      },
+      "expected_predicates": [
+        "SIGNATURE_FALSE"
+      ],
+      "expected_state": "INVALID",
+      "expected_event": null,
+      "expected_current_projection": "INVALID",
+      "expected_reason": "SIGNATURE_INVALID"
+    },
+    {
+      "number": 3,
+      "vector_id": "V03-REVOKED-CERTIFICATE",
+      "operation": "CERT_VALIDITY",
+      "input": {
+        "lifecycle": "REVOKED",
+        "schema": true,
+        "hash": true,
+        "signature": true
+      },
+      "expected_predicates": [
+        "LIFECYCLE_TERMINAL"
+      ],
+      "expected_state": "INVALID",
+      "expected_event": null,
+      "expected_current_projection": "INVALID",
+      "expected_reason": "LIFECYCLE_REVOKED"
+    },
+    {
+      "number": 4,
+      "vector_id": "V04-SUPERSEDED-CERTIFICATE",
+      "operation": "CERT_VALIDITY",
+      "input": {
+        "lifecycle": "SUPERSEDED",
+        "schema": true,
+        "hash": true,
+        "signature": true
+      },
+      "expected_predicates": [
+        "LIFECYCLE_TERMINAL"
+      ],
+      "expected_state": "INVALID",
+      "expected_event": null,
+      "expected_current_projection": "INVALID",
+      "expected_reason": "LIFECYCLE_SUPERSEDED"
+    },
+    {
+      "number": 5,
+      "vector_id": "V05-EXPIRED-CERTIFICATE",
+      "operation": "CERT_VALIDITY",
+      "input": {
+        "lifecycle": "EXPIRED",
+        "schema": true,
+        "hash": true,
+        "signature": true
+      },
+      "expected_predicates": [
+        "LIFECYCLE_TERMINAL"
+      ],
+      "expected_state": "INVALID",
+      "expected_event": null,
+      "expected_current_projection": "INVALID",
+      "expected_reason": "LIFECYCLE_EXPIRED"
+    },
+    {
+      "number": 6,
+      "vector_id": "V06-DRAFT-CERTIFICATE",
+      "operation": "CERT_VALIDITY",
+      "input": {
+        "lifecycle": "DRAFT",
+        "schema": true,
+        "hash": true
+      },
+      "expected_predicates": [
+        "NOT_ISSUED"
+      ],
+      "expected_state": "UNKNOWN",
+      "expected_event": null,
+      "expected_current_projection": "UNKNOWN",
+      "expected_reason": "CERTIFICATE_NOT_ISSUED"
+    },
+    {
+      "number": 7,
+      "vector_id": "V07-CANCELLED-CANDIDATE",
+      "operation": "CANDIDATE_STATE",
+      "input": {
+        "from": "ACTIVE",
+        "to": "CANCELLED",
+        "authorized": true
+      },
+      "expected_predicates": [
+        "AUTHORIZED_CANCELLATION"
+      ],
+      "expected_state": "CANCELLED",
+      "expected_event": "CANCELLED",
+      "expected_current_projection": "CANCELLED",
+      "expected_reason": "CANDIDATE_CANCELLED"
+    },
+    {
+      "number": 8,
+      "vector_id": "V08-CERTIFICATE-RELEASE-MISMATCH",
+      "operation": "BINDING",
+      "input": {
+        "binding": {
+          "release_id": "TEST-RELEASE",
+          "artifact_id": "TEST-ARTIFACT",
+          "artifact_hash": "0000000000000000000000000000000000000000000000000000000000000000",
+          "implementation_id": "TEST-IMPLEMENTATION",
+          "specification_hash": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+          "audit_snapshot_hash": "1111111111111111111111111111111111111111111111111111111111111111",
+          "certificate_snapshot_hash": "2222222222222222222222222222222222222222222222222222222222222222",
+          "environment_id": "TEST-ENV"
+        },
+        "release": {
+          "release_id": "TEST-RELEASE",
+          "implementation_id": "TEST-IMPLEMENTATION",
+          "artifact": {
+            "artifact_id": "TEST-ARTIFACT",
+            "content_hash": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+          },
+          "version": {
+            "value": "1.0.0-test"
+          },
+          "specification": {
+            "specification_id": "TEST-SPEC",
+            "specification_hash": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb"
+          },
+          "environment": {
+            "environment_id": "TEST-ENV",
+            "environment_hash": "cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc"
+          },
+          "source": {
+            "repository_id": "TEST-REPOSITORY",
+            "commit_hash": "dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd"
+          },
+          "build_hash": "eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee",
+          "configuration_hash": "ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff",
+          "created_at": "2026-09-12T23:03:00Z",
+          "schema_version": "14.3",
+          "release_hash": "c6e9ab7312b7919f3a053ebddae76d13a02b4ea9d8cfbf3689c0857a681b5765"
+        }
+      },
+      "expected_predicates": [
+        "ARTIFACT_HASH_MATCH_FALSE"
+      ],
+      "expected_state": "INELIGIBLE",
+      "expected_event": "EVALUATED",
+      "expected_current_projection": "INELIGIBLE",
+      "expected_reason": "ARTIFACT_HASH_MISMATCH"
+    },
+    {
+      "number": 9,
+      "vector_id": "V09-ELIGIBLE-RELEASE",
+      "operation": "RELEASE_ELIGIBILITY",
+      "input": {
+        "predicates": [
+          {
+            "predicate_id": "P1",
+            "mandatory": true,
+            "result": "TRUE",
+            "reason": "P1_TRUE",
+            "evidence_refs": [
+              "E1"
+            ]
+          },
+          {
+            "predicate_id": "P2",
+            "mandatory": true,
+            "result": "TRUE",
+            "reason": "P2_TRUE",
+            "evidence_refs": [
+              "E2"
+            ]
+          },
+          {
+            "predicate_id": "O1",
+            "mandatory": false,
+            "result": "TRUE",
+            "reason": "O1_TRUE",
+            "evidence_refs": [
+              "E3"
+            ]
+          }
+        ],
+        "registry": [
+          {
+            "predicate_id": "P1",
+            "mandatory": true
+          },
+          {
+            "predicate_id": "P2",
+            "mandatory": true
+          },
+          {
+            "predicate_id": "O1",
+            "mandatory": false
+          }
+        ]
+      },
+      "expected_predicates": [
+        "MANDATORY_TRUE"
+      ],
+      "expected_state": "ELIGIBLE",
+      "expected_event": "EVALUATED",
+      "expected_current_projection": "ELIGIBLE",
+      "expected_reason": "ALL_MANDATORY_TRUE"
+    },
+    {
+      "number": 10,
+      "vector_id": "V10-MANDATORY-FAILURE",
+      "operation": "RELEASE_ELIGIBILITY",
+      "input": {
+        "predicates": [
+          {
+            "predicate_id": "P1",
+            "mandatory": true,
+            "result": "FALSE",
+            "reason": "P1_FALSE",
+            "evidence_refs": [
+              "E1"
+            ]
+          },
+          {
+            "predicate_id": "P2",
+            "mandatory": true,
+            "result": "BLOCKED",
+            "reason": "P2_BLOCKED",
+            "evidence_refs": [
+              "E2"
+            ]
+          },
+          {
+            "predicate_id": "O1",
+            "mandatory": false,
+            "result": "TRUE",
+            "reason": "O1_TRUE",
+            "evidence_refs": [
+              "E3"
+            ]
+          }
+        ],
+        "registry": [
+          {
+            "predicate_id": "P1",
+            "mandatory": true
+          },
+          {
+            "predicate_id": "P2",
+            "mandatory": true
+          },
+          {
+            "predicate_id": "O1",
+            "mandatory": false
+          }
+        ]
+      },
+      "expected_predicates": [
+        "P1_FALSE",
+        "P2_BLOCKED"
+      ],
+      "expected_state": "INELIGIBLE",
+      "expected_event": "EVALUATED",
+      "expected_current_projection": "INELIGIBLE",
+      "expected_reason": "P1_FALSE"
+    },
+    {
+      "number": 11,
+      "vector_id": "V11-MANDATORY-BLOCKER",
+      "operation": "RELEASE_ELIGIBILITY",
+      "input": {
+        "predicates": [
+          {
+            "predicate_id": "P1",
+            "mandatory": true,
+            "result": "TRUE",
+            "reason": "P1_TRUE",
+            "evidence_refs": [
+              "E1"
+            ]
+          },
+          {
+            "predicate_id": "P2",
+            "mandatory": true,
+            "result": "BLOCKED",
+            "reason": "P2_BLOCKED",
+            "evidence_refs": [
+              "E2"
+            ]
+          },
+          {
+            "predicate_id": "O1",
+            "mandatory": false,
+            "result": "TRUE",
+            "reason": "O1_TRUE",
+            "evidence_refs": [
+              "E3"
+            ]
+          }
+        ],
+        "registry": [
+          {
+            "predicate_id": "P1",
+            "mandatory": true
+          },
+          {
+            "predicate_id": "P2",
+            "mandatory": true
+          },
+          {
+            "predicate_id": "O1",
+            "mandatory": false
+          }
+        ]
+      },
+      "expected_predicates": [
+        "P2_BLOCKED"
+      ],
+      "expected_state": "BLOCKED",
+      "expected_event": "EVALUATED",
+      "expected_current_projection": "BLOCKED",
+      "expected_reason": "P2_BLOCKED"
+    },
+    {
+      "number": 12,
+      "vector_id": "V12-MANDATORY-UNKNOWN",
+      "operation": "RELEASE_ELIGIBILITY",
+      "input": {
+        "predicates": [
+          {
+            "predicate_id": "P1",
+            "mandatory": true,
+            "result": "TRUE",
+            "reason": "P1_TRUE",
+            "evidence_refs": [
+              "E1"
+            ]
+          },
+          {
+            "predicate_id": "P2",
+            "mandatory": true,
+            "result": "UNKNOWN",
+            "reason": "P2_UNKNOWN",
+            "evidence_refs": [
+              "E2"
+            ]
+          },
+          {
+            "predicate_id": "O1",
+            "mandatory": false,
+            "result": "TRUE",
+            "reason": "O1_TRUE",
+            "evidence_refs": [
+              "E3"
+            ]
+          }
+        ],
+        "registry": [
+          {
+            "predicate_id": "P1",
+            "mandatory": true
+          },
+          {
+            "predicate_id": "P2",
+            "mandatory": true
+          },
+          {
+            "predicate_id": "O1",
+            "mandatory": false
+          }
+        ]
+      },
+      "expected_predicates": [
+        "P2_UNKNOWN"
+      ],
+      "expected_state": "UNKNOWN",
+      "expected_event": "EVALUATED",
+      "expected_current_projection": "UNKNOWN",
+      "expected_reason": "P2_UNKNOWN"
+    },
+    {
+      "number": 13,
+      "vector_id": "V13-OPTIONAL-FAILURE",
+      "operation": "RELEASE_ELIGIBILITY",
+      "input": {
+        "predicates": [
+          {
+            "predicate_id": "P1",
+            "mandatory": true,
+            "result": "TRUE",
+            "reason": "P1_TRUE",
+            "evidence_refs": [
+              "E1"
+            ]
+          },
+          {
+            "predicate_id": "P2",
+            "mandatory": true,
+            "result": "TRUE",
+            "reason": "P2_TRUE",
+            "evidence_refs": [
+              "E2"
+            ]
+          },
+          {
+            "predicate_id": "O1",
+            "mandatory": false,
+            "result": "FALSE",
+            "reason": "O1_FALSE",
+            "evidence_refs": [
+              "E3"
+            ]
+          }
+        ],
+        "registry": [
+          {
+            "predicate_id": "P1",
+            "mandatory": true
+          },
+          {
+            "predicate_id": "P2",
+            "mandatory": true
+          },
+          {
+            "predicate_id": "O1",
+            "mandatory": false
+          }
+        ]
+      },
+      "expected_predicates": [
+        "O1_FALSE_OPTIONAL"
+      ],
+      "expected_state": "ELIGIBLE",
+      "expected_event": "EVALUATED",
+      "expected_current_projection": "ELIGIBLE",
+      "expected_reason": "OPTIONAL_WARNING_ONLY"
+    },
+    {
+      "number": 14,
+      "vector_id": "V14-NO-MANDATORY-PREDICATES",
+      "operation": "RELEASE_ELIGIBILITY",
+      "input": {
+        "predicates": [
+          {
+            "predicate_id": "O1",
+            "mandatory": false,
+            "result": "TRUE",
+            "reason": "O1_TRUE",
+            "evidence_refs": []
+          }
+        ],
+        "registry": [
+          {
+            "predicate_id": "O1",
+            "mandatory": false
+          }
+        ]
+      },
+      "expected_predicates": [
+        "MANDATORY_SET_EMPTY"
+      ],
+      "expected_state": "BLOCKED",
+      "expected_event": "EVALUATED",
+      "expected_current_projection": "BLOCKED",
+      "expected_reason": "NO_MANDATORY_PREDICATES"
+    },
+    {
+      "number": 15,
+      "vector_id": "V15-INVALID-CERT-OTHERWISE-ELIGIBLE",
+      "operation": "RELEASE_ELIGIBILITY",
+      "input": {
+        "predicates": [
+          {
+            "predicate_id": "P1",
+            "mandatory": true,
+            "result": "FALSE",
+            "reason": "P1_FALSE",
+            "evidence_refs": [
+              "E1"
+            ]
+          },
+          {
+            "predicate_id": "P2",
+            "mandatory": true,
+            "result": "TRUE",
+            "reason": "P2_TRUE",
+            "evidence_refs": [
+              "E2"
+            ]
+          },
+          {
+            "predicate_id": "O1",
+            "mandatory": false,
+            "result": "TRUE",
+            "reason": "O1_TRUE",
+            "evidence_refs": [
+              "E3"
+            ]
+          }
+        ],
+        "registry": [
+          {
+            "predicate_id": "P1",
+            "mandatory": true
+          },
+          {
+            "predicate_id": "P2",
+            "mandatory": true
+          },
+          {
+            "predicate_id": "O1",
+            "mandatory": false
+          }
+        ]
+      },
+      "expected_predicates": [
+        "CERTIFICATE_VALID_FALSE"
+      ],
+      "expected_state": "INELIGIBLE",
+      "expected_event": "EVALUATED",
+      "expected_current_projection": "INELIGIBLE",
+      "expected_reason": "P1_FALSE"
+    },
+    {
+      "number": 16,
+      "vector_id": "V16-SECURITY-FAILURE",
+      "operation": "RELEASE_ELIGIBILITY",
+      "input": {
+        "predicates": [
+          {
+            "predicate_id": "P1",
+            "mandatory": true,
+            "result": "FALSE",
+            "reason": "P1_FALSE",
+            "evidence_refs": [
+              "E1"
+            ]
+          },
+          {
+            "predicate_id": "P2",
+            "mandatory": true,
+            "result": "TRUE",
+            "reason": "P2_TRUE",
+            "evidence_refs": [
+              "E2"
+            ]
+          },
+          {
+            "predicate_id": "O1",
+            "mandatory": false,
+            "result": "TRUE",
+            "reason": "O1_TRUE",
+            "evidence_refs": [
+              "E3"
+            ]
+          }
+        ],
+        "registry": [
+          {
+            "predicate_id": "P1",
+            "mandatory": true
+          },
+          {
+            "predicate_id": "P2",
+            "mandatory": true
+          },
+          {
+            "predicate_id": "O1",
+            "mandatory": false
+          }
+        ]
+      },
+      "expected_predicates": [
+        "SECURITY_FALSE"
+      ],
+      "expected_state": "INELIGIBLE",
+      "expected_event": "EVALUATED",
+      "expected_current_projection": "INELIGIBLE",
+      "expected_reason": "P1_FALSE"
+    },
+    {
+      "number": 17,
+      "vector_id": "V17-COMPATIBILITY-BLOCKER",
+      "operation": "RELEASE_ELIGIBILITY",
+      "input": {
+        "predicates": [
+          {
+            "predicate_id": "P1",
+            "mandatory": true,
+            "result": "TRUE",
+            "reason": "P1_TRUE",
+            "evidence_refs": [
+              "E1"
+            ]
+          },
+          {
+            "predicate_id": "P2",
+            "mandatory": true,
+            "result": "BLOCKED",
+            "reason": "P2_BLOCKED",
+            "evidence_refs": [
+              "E2"
+            ]
+          },
+          {
+            "predicate_id": "O1",
+            "mandatory": false,
+            "result": "TRUE",
+            "reason": "O1_TRUE",
+            "evidence_refs": [
+              "E3"
+            ]
+          }
+        ],
+        "registry": [
+          {
+            "predicate_id": "P1",
+            "mandatory": true
+          },
+          {
+            "predicate_id": "P2",
+            "mandatory": true
+          },
+          {
+            "predicate_id": "O1",
+            "mandatory": false
+          }
+        ]
+      },
+      "expected_predicates": [
+        "COMPATIBILITY_BLOCKED"
+      ],
+      "expected_state": "BLOCKED",
+      "expected_event": "EVALUATED",
+      "expected_current_projection": "BLOCKED",
+      "expected_reason": "P2_BLOCKED"
+    },
+    {
+      "number": 18,
+      "vector_id": "V18-AUTHORIZATION-REJECTION",
+      "operation": "RELEASE_DECISION",
+      "input": {
+        "eligibility": "ELIGIBLE",
+        "authority_outcome": "REJECT",
+        "defer_requested": false,
+        "defer_allowed": false
+      },
+      "expected_predicates": [
+        "ELIGIBLE",
+        "AUTHORITY_REJECTS"
+      ],
+      "expected_state": "REJECTED",
+      "expected_event": "REJECTED",
+      "expected_current_projection": "REJECTED",
+      "expected_reason": "AUTHORIZED_REJECTION"
+    },
+    {
+      "number": 19,
+      "vector_id": "V19-AUTHORIZATION-DEFERRED",
+      "operation": "RELEASE_DECISION",
+      "input": {
+        "eligibility": "ELIGIBLE",
+        "authority_outcome": "APPROVE",
+        "defer_requested": true,
+        "defer_allowed": true
+      },
+      "expected_predicates": [
+        "ELIGIBLE",
+        "DEFER_PERMITTED"
+      ],
+      "expected_state": "DEFERRED",
+      "expected_event": "DEFERRED",
+      "expected_current_projection": "DEFERRED",
+      "expected_reason": "AUTHORIZED_POSTPONEMENT"
+    },
+    {
+      "number": 20,
+      "vector_id": "V20-EXECUTION-FAILURE",
+      "operation": "EXECUTION_RESULT",
+      "input": {
+        "start": [
+          "APPROVED",
+          true,
+          true,
+          true,
+          true,
+          true
+        ],
+        "result": "FAILED"
+      },
+      "expected_predicates": [
+        "START_GUARDS_TRUE",
+        "EXECUTION_FAILED"
+      ],
+      "expected_state": "FAILED",
+      "expected_event": "FAILED",
+      "expected_current_projection": "FAILED",
+      "expected_reason": "EXECUTION_FAILED"
+    },
+    {
+      "number": 21,
+      "vector_id": "V21-EXECUTION-SUCCESS",
+      "operation": "EXECUTION_RESULT",
+      "input": {
+        "start": [
+          "APPROVED",
+          true,
+          true,
+          true,
+          true,
+          true
+        ],
+        "result": "SUCCEEDED"
+      },
+      "expected_predicates": [
+        "START_GUARDS_TRUE",
+        "EXECUTION_SUCCEEDED"
+      ],
+      "expected_state": "SUCCEEDED",
+      "expected_event": "SUCCEEDED",
+      "expected_current_projection": "SUCCEEDED",
+      "expected_reason": "EXECUTION_SUCCEEDED"
+    },
+    {
+      "number": 22,
+      "vector_id": "V22-POST-RELEASE-FAILURE",
+      "operation": "POST_VERIFY",
+      "input": {
+        "execution": "SUCCEEDED",
+        "verification": "FAILED",
+        "decision_before": "APPROVED"
+      },
+      "expected_predicates": [
+        "OBSERVED_STATE_FALSE"
+      ],
+      "expected_state": "FAILED",
+      "expected_event": "FAILED",
+      "expected_current_projection": "FAILED",
+      "expected_reason": "POST_RELEASE_FAILED_DECISION_UNCHANGED"
+    },
+    {
+      "number": 23,
+      "vector_id": "V23-DECISION-EXPIRED",
+      "operation": "EXECUTION_START",
+      "input": {
+        "decision": "APPROVED",
+        "active": false,
+        "release_match": true,
+        "artifact_match": true,
+        "certificate_valid": true,
+        "policy_reusable": true
+      },
+      "expected_predicates": [
+        "DECISION_ACTIVE_FALSE"
+      ],
+      "expected_state": "NOT_STARTED",
+      "expected_event": null,
+      "expected_current_projection": "NOT_STARTED",
+      "expected_reason": "DECISION_EXPIRED"
+    },
+    {
+      "number": 24,
+      "vector_id": "V24-ARTIFACT-MUTATED",
+      "operation": "EXECUTION_START",
+      "input": {
+        "decision": "APPROVED",
+        "active": true,
+        "release_match": true,
+        "artifact_match": false,
+        "certificate_valid": true,
+        "policy_reusable": true
+      },
+      "expected_predicates": [
+        "ARTIFACT_MATCH_FALSE"
+      ],
+      "expected_state": "NOT_STARTED",
+      "expected_event": null,
+      "expected_current_projection": "NOT_STARTED",
+      "expected_reason": "ARTIFACT_IDENTITY_MISMATCH"
+    },
+    {
+      "number": 25,
+      "vector_id": "V25-POLICY-CHANGED",
+      "operation": "EXECUTION_START",
+      "input": {
+        "decision": "APPROVED",
+        "active": true,
+        "release_match": true,
+        "artifact_match": true,
+        "certificate_valid": true,
+        "policy_reusable": false
+      },
+      "expected_predicates": [
+        "POLICY_EQUIVALENCE_FALSE"
+      ],
+      "expected_state": "NOT_STARTED",
+      "expected_event": null,
+      "expected_current_projection": "NOT_STARTED",
+      "expected_reason": "DECISION_INPUT_CHANGED"
+    },
+    {
+      "number": 26,
+      "vector_id": "V26-HISTORICAL-REPLAY",
+      "operation": "HISTORICAL_REPLAY",
+      "input": {
+        "as_of": "2026-01-01T00:00:00Z",
+        "policy_at_as_of": "OLD-POLICY",
+        "current_policy": "NEW-POLICY",
+        "recorded": "APPROVED"
+      },
+      "expected_predicates": [
+        "AS_OF_POLICY_USED"
+      ],
+      "expected_state": "APPROVED",
+      "expected_event": null,
+      "expected_current_projection": "APPROVED",
+      "expected_reason": "HISTORICAL_POLICY_ISOLATION"
+    },
+    {
+      "number": 27,
+      "vector_id": "V27-DECISION-SUPERSESSION",
+      "operation": "DECISION_PROJECTION",
+      "input": {
+        "events": [
+          "APPROVED:D1",
+          "SUPERSEDED:D1",
+          "APPROVED:D2"
+        ]
+      },
+      "expected_predicates": [
+        "EXACT_PREDECESSORS"
+      ],
+      "expected_state": "APPROVED",
+      "expected_event": "APPROVED",
+      "expected_current_projection": "D2",
+      "expected_reason": "LATEST_VALID_DECISION"
+    },
+    {
+      "number": 28,
+      "vector_id": "V28-CERTIFICATE-REVOKED-AFTER-APPROVAL",
+      "operation": "EXECUTION_START",
+      "input": {
+        "decision": "APPROVED",
+        "active": true,
+        "release_match": true,
+        "artifact_match": true,
+        "certificate_valid": false,
+        "policy_reusable": true
+      },
+      "expected_predicates": [
+        "CERTIFICATE_VALID_FALSE"
+      ],
+      "expected_state": "NOT_STARTED",
+      "expected_event": null,
+      "expected_current_projection": "NOT_STARTED",
+      "expected_reason": "CERTIFICATE_NO_LONGER_VALID"
+    },
+    {
+      "number": 29,
+      "vector_id": "V29-RELEASE-ROLLBACK",
+      "operation": "EXECUTION_RESULT",
+      "input": {
+        "start": [
+          "APPROVED",
+          true,
+          true,
+          true,
+          true,
+          true
+        ],
+        "result": "ROLLED_BACK"
+      },
+      "expected_predicates": [
+        "PRIOR_EXECUTION_SUCCEEDED",
+        "ROLLBACK_AUTHORIZED"
+      ],
+      "expected_state": "ROLLED_BACK",
+      "expected_event": "ROLLED_BACK",
+      "expected_current_projection": "ROLLED_BACK",
+      "expected_reason": "ROLLBACK_RECORDED"
+    },
+    {
+      "number": 30,
+      "vector_id": "V30-CURRENT-RECONSTRUCTION",
+      "operation": "EVENT_PROJECTION",
+      "input": {
+        "events": [
+          {
+            "event_id": "TEST-EVENT-START",
+            "entity_id": "TEST-EXECUTION",
+            "event_type": "STARTED",
+            "occurred_at": "2026-09-12T23:03:00Z",
+            "actor_or_authority": "TEST-AUTHORITY",
+            "snapshot_hash": "1111111111111111111111111111111111111111111111111111111111111111",
+            "previous_event_id": null,
+            "evidence_refs": [
+              "TEST-EVIDENCE"
+            ],
+            "schema_version": "14.3",
+            "execution_id": "TEST-EXECUTION",
+            "from_state": "NOT_STARTED",
+            "to_state": "STARTED",
+            "sequence": 0,
+            "content_hash": "1d46b3a940fa07ddb3db52c74b42c917e367ae8b86ffba270b363dab761b02b2"
+          },
+          {
+            "event_id": "TEST-EVENT-SUCCESS",
+            "entity_id": "TEST-EXECUTION",
+            "event_type": "SUCCEEDED",
+            "occurred_at": "2026-09-12T23:03:00Z",
+            "actor_or_authority": "TEST-AUTHORITY",
+            "snapshot_hash": "2222222222222222222222222222222222222222222222222222222222222222",
+            "previous_event_id": "TEST-EVENT-START",
+            "evidence_refs": [
+              "TEST-EVIDENCE"
+            ],
+            "schema_version": "14.3",
+            "execution_id": "TEST-EXECUTION",
+            "from_state": "STARTED",
+            "to_state": "SUCCEEDED",
+            "sequence": 1,
+            "content_hash": "c87a9256492ea1e779afc198582119d50e04408b4ed9a473f94c8f2bd0c839af"
+          }
+        ],
+        "initial": "NOT_STARTED"
+      },
+      "expected_predicates": [
+        "EVENT_HASHES_VALID",
+        "PREDECESSORS_VALID",
+        "TRANSITIONS_VALID"
+      ],
+      "expected_state": "SUCCEEDED",
+      "expected_event": "SUCCEEDED",
+      "expected_current_projection": "SUCCEEDED",
+      "expected_reason": "PROJECTED_FROM_IMMUTABLE_EVENTS"
+    }
+  ],
+  "summary": {
+    "total": 30,
+    "passed": 30,
+    "failed": 0
+  },
+  "synthetic_non_normative": true
+}

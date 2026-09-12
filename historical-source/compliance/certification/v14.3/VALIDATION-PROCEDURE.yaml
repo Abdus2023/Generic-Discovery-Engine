@@ -1,0 +1,51 @@
+{
+  "schema_version": "14.3",
+  "stages": [
+    {
+      "number": 1,
+      "stage": "LOAD"
+    },
+    {
+      "number": 2,
+      "stage": "SCHEMA_VALIDATION"
+    },
+    {
+      "number": 3,
+      "stage": "REFERENCE_RESOLUTION"
+    },
+    {
+      "number": 4,
+      "stage": "HASH_VALIDATION"
+    },
+    {
+      "number": 5,
+      "stage": "TEMPORAL_VALIDATION"
+    },
+    {
+      "number": 6,
+      "stage": "SCOPE_VALIDATION"
+    },
+    {
+      "number": 7,
+      "stage": "POLICY_VALIDATION"
+    },
+    {
+      "number": 8,
+      "stage": "STATE_TRANSITION_VALIDATION"
+    },
+    {
+      "number": 9,
+      "stage": "PREDICATE_EVALUATION"
+    },
+    {
+      "number": 10,
+      "stage": "AGGREGATION"
+    },
+    {
+      "number": 11,
+      "stage": "CURRENT_PROJECTION"
+    }
+  ],
+  "stop_dependent_claims_on_failure": true,
+  "failure_attribution_required": true
+}
