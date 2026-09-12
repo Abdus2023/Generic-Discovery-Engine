@@ -1,0 +1,80 @@
+{
+  "schema_version": "13.3",
+  "invariants": [
+    {
+      "id": "AGG-001",
+      "rule": "Any unwaived mandatory NON_CONFORMANT forces NON_COMPLIANT.",
+      "machine_checked": true
+    },
+    {
+      "id": "AGG-002",
+      "rule": "BLOCKED cannot conceal a proven mandatory violation.",
+      "machine_checked": true
+    },
+    {
+      "id": "AGG-003",
+      "rule": "BLOCKED dominates unresolved uncertainty when no proven violation exists.",
+      "machine_checked": true
+    },
+    {
+      "id": "AGG-004",
+      "rule": "UNVERIFIED is not NON_COMPLIANT.",
+      "machine_checked": true
+    },
+    {
+      "id": "AGG-005",
+      "rule": "A waiver does not modify the underlying NON_CONFORMANT decision.",
+      "machine_checked": true
+    },
+    {
+      "id": "AGG-006",
+      "rule": "Optional failures cannot independently produce NON_COMPLIANT.",
+      "machine_checked": true
+    },
+    {
+      "id": "AGG-007",
+      "rule": "Empty applicable mandatory scope is not COMPLIANT.",
+      "machine_checked": true
+    },
+    {
+      "id": "AGG-008",
+      "rule": "Program completion cannot establish requirement conformance.",
+      "machine_checked": true
+    },
+    {
+      "id": "AGG-009",
+      "rule": "Finding closure cannot establish requirement conformance.",
+      "machine_checked": true
+    },
+    {
+      "id": "AGG-010",
+      "rule": "Remediation completion cannot establish requirement conformance.",
+      "machine_checked": true
+    },
+    {
+      "id": "AGG-011",
+      "rule": "Historical decisions remain immutable.",
+      "machine_checked": true
+    },
+    {
+      "id": "AGG-012",
+      "rule": "Current decisions are projections of valid decision history.",
+      "machine_checked": true
+    },
+    {
+      "id": "AGG-013",
+      "rule": "Identical snapshots produce identical aggregate results.",
+      "machine_checked": true
+    },
+    {
+      "id": "AGG-014",
+      "rule": "Invalid state history cannot silently produce a valid current state.",
+      "machine_checked": true
+    },
+    {
+      "id": "AGG-015",
+      "rule": "A decision from another implementation snapshot cannot establish current conformance.",
+      "machine_checked": true
+    }
+  ]
+}

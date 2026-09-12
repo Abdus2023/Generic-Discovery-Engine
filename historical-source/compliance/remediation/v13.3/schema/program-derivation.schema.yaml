@@ -1,0 +1,132 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "ProgramDerivation",
+  "type": "object",
+  "required": [
+    "derivation_id",
+    "program_id",
+    "history_current_state",
+    "member_remediation_ids",
+    "member_remediation_states",
+    "predicates",
+    "derived_state",
+    "derived_at",
+    "schema_version",
+    "derivation_hash"
+  ],
+  "properties": {
+    "derivation_id": {
+      "type": "string",
+      "pattern": "^[A-Za-z0-9][A-Za-z0-9._:/-]*$"
+    },
+    "program_id": {
+      "type": "string",
+      "pattern": "^[A-Za-z0-9][A-Za-z0-9._:/-]*$"
+    },
+    "history_current_state": {
+      "type": "string",
+      "enum": [
+        "CREATED",
+        "TRIAGED",
+        "PLANNED",
+        "ACTIVE",
+        "EVALUATING",
+        "COMPLETED",
+        "BLOCKED",
+        "FAILED",
+        "CANCELLED",
+        "SUPERSEDED"
+      ]
+    },
+    "member_remediation_ids": {
+      "type": "array",
+      "minItems": 0,
+      "items": {
+        "type": "string"
+      },
+      "uniqueItems": true
+    },
+    "member_remediation_states": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "enum": [
+          "PROPOSED",
+          "ASSESSED",
+          "APPROVED",
+          "IN_PROGRESS",
+          "READY_FOR_VERIFICATION",
+          "REVERIFICATION",
+          "REGRESSION",
+          "COMPLETE",
+          "FAILED",
+          "BLOCKED",
+          "REJECTED",
+          "SUPERSEDED",
+          "CANCELLED"
+        ]
+      }
+    },
+    "predicates": {
+      "type": "object",
+      "properties": {
+        "superseded": {
+          "type": "boolean"
+        },
+        "cancelled": {
+          "type": "boolean"
+        },
+        "failed": {
+          "type": "boolean"
+        },
+        "blocking_condition": {
+          "type": "boolean"
+        },
+        "completion_predicate": {
+          "type": "boolean"
+        },
+        "evaluation_predicate": {
+          "type": "boolean"
+        },
+        "active_predicate": {
+          "type": "boolean"
+        },
+        "planning_predicate": {
+          "type": "boolean"
+        },
+        "triage_predicate": {
+          "type": "boolean"
+        }
+      },
+      "additionalProperties": false
+    },
+    "derived_state": {
+      "type": "string",
+      "enum": [
+        "CREATED",
+        "TRIAGED",
+        "PLANNED",
+        "ACTIVE",
+        "EVALUATING",
+        "COMPLETED",
+        "BLOCKED",
+        "FAILED",
+        "CANCELLED",
+        "SUPERSEDED"
+      ]
+    },
+    "derived_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "schema_version": {
+      "const": "13.3"
+    },
+    "derivation_hash": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$"
+    }
+  },
+  "additionalProperties": false,
+  "$id": "https://generic-discovery-engine.invalid/compliance/v13.3/program-derivation.schema.yaml"
+}

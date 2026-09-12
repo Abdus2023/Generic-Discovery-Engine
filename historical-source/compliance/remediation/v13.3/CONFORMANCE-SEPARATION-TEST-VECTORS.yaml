@@ -1,0 +1,47 @@
+{
+  "schema_version": "13.3",
+  "vectors": [
+    {
+      "vector_id": "LIFECYCLE-INDEPENDENCE",
+      "finding_state": "CLOSED",
+      "remediation_state": "COMPLETE",
+      "program_state": "COMPLETED",
+      "requirement_decision": "NON_CONFORMANT",
+      "expected_aggregate": "NON_COMPLIANT",
+      "actual_aggregate": "NON_COMPLIANT",
+      "pass": true
+    },
+    {
+      "vector_id": "REMEDIATION-ALONE-NO-CHANGE",
+      "old_decision": "NON_CONFORMANT",
+      "remediation_state": "COMPLETE",
+      "new_decision": null,
+      "expected_aggregate": "NON_COMPLIANT",
+      "actual_aggregate": "NON_COMPLIANT",
+      "pass": true
+    },
+    {
+      "vector_id": "REVERIFICATION-NEW-DECISION",
+      "old_decision": "NON_CONFORMANT",
+      "verification": "PASS",
+      "new_decision": "CONFORMANT",
+      "expected_aggregate": "COMPLIANT",
+      "actual_aggregate": "COMPLIANT",
+      "pass": true
+    },
+    {
+      "vector_id": "HISTORICAL-QUERY",
+      "decision_before": "NON_CONFORMANT",
+      "decision_after": "CONFORMANT",
+      "predecessor_retained": true,
+      "expected": "BOTH_QUERYABLE",
+      "actual": "BOTH_QUERYABLE",
+      "pass": true
+    }
+  ],
+  "summary": {
+    "total": 4,
+    "passed": 4,
+    "failed": 0
+  }
+}

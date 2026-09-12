@@ -1,0 +1,340 @@
+{
+  "schema_version": "13.3",
+  "synthetic_non_normative": true,
+  "vectors": [
+    {
+      "vector_id": "SINGLE_VALID",
+      "records": [
+        {
+          "decision_id": "TEST-D1",
+          "requirement_id": "TEST-REQ",
+          "audit_id": "TEST-AUDIT",
+          "decision": "NON_CONFORMANT",
+          "basis": {
+            "acceptance_criteria": [
+              "TEST-AC"
+            ],
+            "evidence_refs": [
+              "TEST-EVIDENCE"
+            ],
+            "verification_refs": [
+              "TEST-VERIFY"
+            ],
+            "rule_refs": [
+              "TEST-RULE"
+            ]
+          },
+          "decided_at": "2026-09-12T10:00:00Z",
+          "implementation_snapshot": "1111111111111111111111111111111111111111111111111111111111111111",
+          "specification_snapshot": "2222222222222222222222222222222222222222222222222222222222222222",
+          "audit_run_id": "TEST-RUN",
+          "supersedes": null,
+          "schema_version": "13.3",
+          "decision_hash": "37f8d82f218ccdc72c82c63f337c8e92a0b1daed67f82ef3d6f7643cc9aec482"
+        }
+      ],
+      "arguments": {},
+      "expected": "VALID",
+      "actual": "VALID",
+      "expected_decision_id": "TEST-D1",
+      "actual_decision_id": "TEST-D1",
+      "current_projection": {
+        "current_decision_id": "CURRENT-TEST-D1",
+        "audit_id": "TEST-AUDIT",
+        "requirement_id": "TEST-REQ",
+        "decision_id": "TEST-D1",
+        "decision": "NON_CONFORMANT",
+        "as_of": "2026-09-12T10:00:00Z",
+        "implementation_snapshot": "1111111111111111111111111111111111111111111111111111111111111111",
+        "specification_snapshot": "2222222222222222222222222222222222222222222222222222222222222222",
+        "decision_history_valid": true,
+        "schema_version": "13.3",
+        "projection_hash": "72f58bac89a261d8b1c822ce270b83d2f8e5e65fde2d8fc2f5be09c2656ecc98"
+      },
+      "pass": true
+    },
+    {
+      "vector_id": "SUPERSESSION_CURRENT",
+      "records": [
+        {
+          "decision_id": "TEST-D1",
+          "requirement_id": "TEST-REQ",
+          "audit_id": "TEST-AUDIT",
+          "decision": "NON_CONFORMANT",
+          "basis": {
+            "acceptance_criteria": [
+              "TEST-AC"
+            ],
+            "evidence_refs": [
+              "TEST-EVIDENCE"
+            ],
+            "verification_refs": [
+              "TEST-VERIFY"
+            ],
+            "rule_refs": [
+              "TEST-RULE"
+            ]
+          },
+          "decided_at": "2026-09-12T10:00:00Z",
+          "implementation_snapshot": "1111111111111111111111111111111111111111111111111111111111111111",
+          "specification_snapshot": "2222222222222222222222222222222222222222222222222222222222222222",
+          "audit_run_id": "TEST-RUN",
+          "supersedes": null,
+          "schema_version": "13.3",
+          "decision_hash": "37f8d82f218ccdc72c82c63f337c8e92a0b1daed67f82ef3d6f7643cc9aec482"
+        },
+        {
+          "decision_id": "TEST-D2",
+          "requirement_id": "TEST-REQ",
+          "audit_id": "TEST-AUDIT",
+          "decision": "CONFORMANT",
+          "basis": {
+            "acceptance_criteria": [
+              "TEST-AC"
+            ],
+            "evidence_refs": [
+              "TEST-EVIDENCE"
+            ],
+            "verification_refs": [
+              "TEST-VERIFY"
+            ],
+            "rule_refs": [
+              "TEST-RULE"
+            ]
+          },
+          "decided_at": "2026-09-12T11:00:00Z",
+          "implementation_snapshot": "1111111111111111111111111111111111111111111111111111111111111111",
+          "specification_snapshot": "2222222222222222222222222222222222222222222222222222222222222222",
+          "audit_run_id": "TEST-RUN",
+          "supersedes": "TEST-D1",
+          "schema_version": "13.3",
+          "decision_hash": "a65b7323c9030168d1b6581e7debf89df88abd234df9c36b37ac4a68c72020a7"
+        }
+      ],
+      "arguments": {},
+      "expected": "VALID",
+      "actual": "VALID",
+      "expected_decision_id": "TEST-D2",
+      "actual_decision_id": "TEST-D2",
+      "current_projection": {
+        "current_decision_id": "CURRENT-TEST-D2",
+        "audit_id": "TEST-AUDIT",
+        "requirement_id": "TEST-REQ",
+        "decision_id": "TEST-D2",
+        "decision": "CONFORMANT",
+        "as_of": "2026-09-12T11:00:00Z",
+        "implementation_snapshot": "1111111111111111111111111111111111111111111111111111111111111111",
+        "specification_snapshot": "2222222222222222222222222222222222222222222222222222222222222222",
+        "decision_history_valid": true,
+        "schema_version": "13.3",
+        "projection_hash": "eb5607a294164fbe15fd0db2bed1d040435993c38bab0b6ac8618b5fa2afc833"
+      },
+      "pass": true
+    },
+    {
+      "vector_id": "TEMPORAL_CONTAMINATION",
+      "records": [
+        {
+          "decision_id": "TEST-D1",
+          "requirement_id": "TEST-REQ",
+          "audit_id": "TEST-AUDIT",
+          "decision": "NON_CONFORMANT",
+          "basis": {
+            "acceptance_criteria": [
+              "TEST-AC"
+            ],
+            "evidence_refs": [
+              "TEST-EVIDENCE"
+            ],
+            "verification_refs": [
+              "TEST-VERIFY"
+            ],
+            "rule_refs": [
+              "TEST-RULE"
+            ]
+          },
+          "decided_at": "2026-09-12T10:00:00Z",
+          "implementation_snapshot": "1111111111111111111111111111111111111111111111111111111111111111",
+          "specification_snapshot": "2222222222222222222222222222222222222222222222222222222222222222",
+          "audit_run_id": "TEST-RUN",
+          "supersedes": null,
+          "schema_version": "13.3",
+          "decision_hash": "37f8d82f218ccdc72c82c63f337c8e92a0b1daed67f82ef3d6f7643cc9aec482"
+        }
+      ],
+      "arguments": {
+        "implementation": "3333333333333333333333333333333333333333333333333333333333333333"
+      },
+      "expected": "DECISION_SNAPSHOT_MISMATCH",
+      "actual": "DECISION_SNAPSHOT_MISMATCH",
+      "expected_decision_id": null,
+      "actual_decision_id": null,
+      "current_projection": null,
+      "pass": true
+    },
+    {
+      "vector_id": "SPECIFICATION_MISMATCH",
+      "records": [
+        {
+          "decision_id": "TEST-D1",
+          "requirement_id": "TEST-REQ",
+          "audit_id": "TEST-AUDIT",
+          "decision": "NON_CONFORMANT",
+          "basis": {
+            "acceptance_criteria": [
+              "TEST-AC"
+            ],
+            "evidence_refs": [
+              "TEST-EVIDENCE"
+            ],
+            "verification_refs": [
+              "TEST-VERIFY"
+            ],
+            "rule_refs": [
+              "TEST-RULE"
+            ]
+          },
+          "decided_at": "2026-09-12T10:00:00Z",
+          "implementation_snapshot": "1111111111111111111111111111111111111111111111111111111111111111",
+          "specification_snapshot": "2222222222222222222222222222222222222222222222222222222222222222",
+          "audit_run_id": "TEST-RUN",
+          "supersedes": null,
+          "schema_version": "13.3",
+          "decision_hash": "37f8d82f218ccdc72c82c63f337c8e92a0b1daed67f82ef3d6f7643cc9aec482"
+        }
+      ],
+      "arguments": {
+        "specification": "4444444444444444444444444444444444444444444444444444444444444444"
+      },
+      "expected": "DECISION_SNAPSHOT_MISMATCH",
+      "actual": "DECISION_SNAPSHOT_MISMATCH",
+      "expected_decision_id": null,
+      "actual_decision_id": null,
+      "current_projection": null,
+      "pass": true
+    },
+    {
+      "vector_id": "OUT_OF_SCOPE",
+      "records": [
+        {
+          "decision_id": "TEST-D1",
+          "requirement_id": "TEST-REQ",
+          "audit_id": "TEST-AUDIT",
+          "decision": "NON_CONFORMANT",
+          "basis": {
+            "acceptance_criteria": [
+              "TEST-AC"
+            ],
+            "evidence_refs": [
+              "TEST-EVIDENCE"
+            ],
+            "verification_refs": [
+              "TEST-VERIFY"
+            ],
+            "rule_refs": [
+              "TEST-RULE"
+            ]
+          },
+          "decided_at": "2026-09-12T10:00:00Z",
+          "implementation_snapshot": "1111111111111111111111111111111111111111111111111111111111111111",
+          "specification_snapshot": "2222222222222222222222222222222222222222222222222222222222222222",
+          "audit_run_id": "TEST-RUN",
+          "supersedes": null,
+          "schema_version": "13.3",
+          "decision_hash": "37f8d82f218ccdc72c82c63f337c8e92a0b1daed67f82ef3d6f7643cc9aec482"
+        }
+      ],
+      "arguments": {
+        "scope": []
+      },
+      "expected": "DECISION_SNAPSHOT_MISMATCH",
+      "actual": "DECISION_SNAPSHOT_MISMATCH",
+      "expected_decision_id": null,
+      "actual_decision_id": null,
+      "current_projection": null,
+      "pass": true
+    },
+    {
+      "vector_id": "LATEST_INVALID_NO_FALLBACK",
+      "records": [
+        {
+          "decision_id": "TEST-D1",
+          "requirement_id": "TEST-REQ",
+          "audit_id": "TEST-AUDIT",
+          "decision": "NON_CONFORMANT",
+          "basis": {
+            "acceptance_criteria": [
+              "TEST-AC"
+            ],
+            "evidence_refs": [
+              "TEST-EVIDENCE"
+            ],
+            "verification_refs": [
+              "TEST-VERIFY"
+            ],
+            "rule_refs": [
+              "TEST-RULE"
+            ]
+          },
+          "decided_at": "2026-09-12T10:00:00Z",
+          "implementation_snapshot": "1111111111111111111111111111111111111111111111111111111111111111",
+          "specification_snapshot": "2222222222222222222222222222222222222222222222222222222222222222",
+          "audit_run_id": "TEST-RUN",
+          "supersedes": null,
+          "schema_version": "13.3",
+          "decision_hash": "37f8d82f218ccdc72c82c63f337c8e92a0b1daed67f82ef3d6f7643cc9aec482"
+        },
+        {
+          "decision_id": "TEST-D2",
+          "requirement_id": "TEST-REQ",
+          "audit_id": "TEST-AUDIT",
+          "decision": "CONFORMANT",
+          "basis": {
+            "acceptance_criteria": [
+              "TEST-AC"
+            ],
+            "evidence_refs": [
+              "TEST-EVIDENCE"
+            ],
+            "verification_refs": [
+              "TEST-VERIFY"
+            ],
+            "rule_refs": [
+              "TEST-RULE"
+            ]
+          },
+          "decided_at": "2026-09-12T11:00:00Z",
+          "implementation_snapshot": "1111111111111111111111111111111111111111111111111111111111111111",
+          "specification_snapshot": "2222222222222222222222222222222222222222222222222222222222222222",
+          "audit_run_id": "TEST-RUN",
+          "supersedes": "TEST-D1",
+          "schema_version": "13.3",
+          "decision_hash": "0000000000000000000000000000000000000000000000000000000000000000"
+        }
+      ],
+      "arguments": {},
+      "expected": "DECISION_HISTORY_INVALID",
+      "actual": "DECISION_HISTORY_INVALID",
+      "expected_decision_id": null,
+      "actual_decision_id": null,
+      "current_projection": null,
+      "pass": true
+    },
+    {
+      "vector_id": "NO_DECISION",
+      "records": [],
+      "arguments": {},
+      "expected": "NO_DECISION",
+      "actual": "NO_DECISION",
+      "expected_decision_id": null,
+      "actual_decision_id": null,
+      "current_projection": null,
+      "pass": true
+    }
+  ],
+  "summary": {
+    "total": 7,
+    "passed": 7,
+    "failed": 0
+  }
+}

@@ -1,0 +1,238 @@
+{
+  "schema_version": "13.3",
+  "vectors": [
+    {
+      "vector_id": "ALL-PREDICATES-TRUE",
+      "predicates": {
+        "object_exists": true,
+        "object_type_valid": true,
+        "state_names_valid": true,
+        "sequence_valid": true,
+        "predecessor_valid": true,
+        "from_state_matches": true,
+        "transition_is_legal": true,
+        "guard_satisfied": true,
+        "evidence_valid": true,
+        "timestamp_valid": true,
+        "hash_valid": true
+      },
+      "expected": "VALID_TRANSITION",
+      "actual": "VALID_TRANSITION",
+      "pass": true
+    },
+    {
+      "vector_id": "PREDICATE-OBJECT_EXISTS-FALSE",
+      "predicates": {
+        "object_exists": false,
+        "object_type_valid": true,
+        "state_names_valid": true,
+        "sequence_valid": true,
+        "predecessor_valid": true,
+        "from_state_matches": true,
+        "transition_is_legal": true,
+        "guard_satisfied": true,
+        "evidence_valid": true,
+        "timestamp_valid": true,
+        "hash_valid": true
+      },
+      "expected": "TRANSITION_INVALID",
+      "actual": "TRANSITION_INVALID",
+      "pass": true
+    },
+    {
+      "vector_id": "PREDICATE-OBJECT_TYPE_VALID-FALSE",
+      "predicates": {
+        "object_exists": true,
+        "object_type_valid": false,
+        "state_names_valid": true,
+        "sequence_valid": true,
+        "predecessor_valid": true,
+        "from_state_matches": true,
+        "transition_is_legal": true,
+        "guard_satisfied": true,
+        "evidence_valid": true,
+        "timestamp_valid": true,
+        "hash_valid": true
+      },
+      "expected": "TRANSITION_INVALID",
+      "actual": "TRANSITION_INVALID",
+      "pass": true
+    },
+    {
+      "vector_id": "PREDICATE-STATE_NAMES_VALID-FALSE",
+      "predicates": {
+        "object_exists": true,
+        "object_type_valid": true,
+        "state_names_valid": false,
+        "sequence_valid": true,
+        "predecessor_valid": true,
+        "from_state_matches": true,
+        "transition_is_legal": true,
+        "guard_satisfied": true,
+        "evidence_valid": true,
+        "timestamp_valid": true,
+        "hash_valid": true
+      },
+      "expected": "TRANSITION_INVALID",
+      "actual": "TRANSITION_INVALID",
+      "pass": true
+    },
+    {
+      "vector_id": "PREDICATE-SEQUENCE_VALID-FALSE",
+      "predicates": {
+        "object_exists": true,
+        "object_type_valid": true,
+        "state_names_valid": true,
+        "sequence_valid": false,
+        "predecessor_valid": true,
+        "from_state_matches": true,
+        "transition_is_legal": true,
+        "guard_satisfied": true,
+        "evidence_valid": true,
+        "timestamp_valid": true,
+        "hash_valid": true
+      },
+      "expected": "TRANSITION_INVALID",
+      "actual": "TRANSITION_INVALID",
+      "pass": true
+    },
+    {
+      "vector_id": "PREDICATE-PREDECESSOR_VALID-FALSE",
+      "predicates": {
+        "object_exists": true,
+        "object_type_valid": true,
+        "state_names_valid": true,
+        "sequence_valid": true,
+        "predecessor_valid": false,
+        "from_state_matches": true,
+        "transition_is_legal": true,
+        "guard_satisfied": true,
+        "evidence_valid": true,
+        "timestamp_valid": true,
+        "hash_valid": true
+      },
+      "expected": "TRANSITION_INVALID",
+      "actual": "TRANSITION_INVALID",
+      "pass": true
+    },
+    {
+      "vector_id": "PREDICATE-FROM_STATE_MATCHES-FALSE",
+      "predicates": {
+        "object_exists": true,
+        "object_type_valid": true,
+        "state_names_valid": true,
+        "sequence_valid": true,
+        "predecessor_valid": true,
+        "from_state_matches": false,
+        "transition_is_legal": true,
+        "guard_satisfied": true,
+        "evidence_valid": true,
+        "timestamp_valid": true,
+        "hash_valid": true
+      },
+      "expected": "TRANSITION_INVALID",
+      "actual": "TRANSITION_INVALID",
+      "pass": true
+    },
+    {
+      "vector_id": "PREDICATE-TRANSITION_IS_LEGAL-FALSE",
+      "predicates": {
+        "object_exists": true,
+        "object_type_valid": true,
+        "state_names_valid": true,
+        "sequence_valid": true,
+        "predecessor_valid": true,
+        "from_state_matches": true,
+        "transition_is_legal": false,
+        "guard_satisfied": true,
+        "evidence_valid": true,
+        "timestamp_valid": true,
+        "hash_valid": true
+      },
+      "expected": "TRANSITION_INVALID",
+      "actual": "TRANSITION_INVALID",
+      "pass": true
+    },
+    {
+      "vector_id": "PREDICATE-GUARD_SATISFIED-FALSE",
+      "predicates": {
+        "object_exists": true,
+        "object_type_valid": true,
+        "state_names_valid": true,
+        "sequence_valid": true,
+        "predecessor_valid": true,
+        "from_state_matches": true,
+        "transition_is_legal": true,
+        "guard_satisfied": false,
+        "evidence_valid": true,
+        "timestamp_valid": true,
+        "hash_valid": true
+      },
+      "expected": "TRANSITION_INVALID",
+      "actual": "TRANSITION_INVALID",
+      "pass": true
+    },
+    {
+      "vector_id": "PREDICATE-EVIDENCE_VALID-FALSE",
+      "predicates": {
+        "object_exists": true,
+        "object_type_valid": true,
+        "state_names_valid": true,
+        "sequence_valid": true,
+        "predecessor_valid": true,
+        "from_state_matches": true,
+        "transition_is_legal": true,
+        "guard_satisfied": true,
+        "evidence_valid": false,
+        "timestamp_valid": true,
+        "hash_valid": true
+      },
+      "expected": "TRANSITION_INVALID",
+      "actual": "TRANSITION_INVALID",
+      "pass": true
+    },
+    {
+      "vector_id": "PREDICATE-TIMESTAMP_VALID-FALSE",
+      "predicates": {
+        "object_exists": true,
+        "object_type_valid": true,
+        "state_names_valid": true,
+        "sequence_valid": true,
+        "predecessor_valid": true,
+        "from_state_matches": true,
+        "transition_is_legal": true,
+        "guard_satisfied": true,
+        "evidence_valid": true,
+        "timestamp_valid": false,
+        "hash_valid": true
+      },
+      "expected": "TRANSITION_INVALID",
+      "actual": "TRANSITION_INVALID",
+      "pass": true
+    },
+    {
+      "vector_id": "PREDICATE-HASH_VALID-FALSE",
+      "predicates": {
+        "object_exists": true,
+        "object_type_valid": true,
+        "state_names_valid": true,
+        "sequence_valid": true,
+        "predecessor_valid": true,
+        "from_state_matches": true,
+        "transition_is_legal": true,
+        "guard_satisfied": true,
+        "evidence_valid": true,
+        "timestamp_valid": true,
+        "hash_valid": false
+      },
+      "expected": "TRANSITION_INVALID",
+      "actual": "TRANSITION_INVALID",
+      "pass": true
+    }
+  ],
+  "summary": {
+    "total": 12,
+    "passed": 12,
+    "failed": 0
+  }
+}

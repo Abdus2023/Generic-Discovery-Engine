@@ -1,0 +1,68 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "AuditStatus",
+  "type": "object",
+  "required": [
+    "audit_status_id",
+    "snapshot_id",
+    "aggregate_id",
+    "status",
+    "reason",
+    "certification_eligible",
+    "derived_at",
+    "schema_version",
+    "status_hash"
+  ],
+  "properties": {
+    "audit_status_id": {
+      "type": "string",
+      "pattern": "^[A-Za-z0-9][A-Za-z0-9._:/-]*$"
+    },
+    "snapshot_id": {
+      "type": "string",
+      "pattern": "^[A-Za-z0-9][A-Za-z0-9._:/-]*$"
+    },
+    "aggregate_id": {
+      "oneOf": [
+        {
+          "type": "string",
+          "pattern": "^[A-Za-z0-9][A-Za-z0-9._:/-]*$"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "NON_COMPLIANT",
+        "BLOCKED",
+        "UNVERIFIED",
+        "CONDITIONALLY_COMPLIANT",
+        "COMPLIANT",
+        "NO_MANDATORY_REQUIREMENTS"
+      ]
+    },
+    "reason": {
+      "type": "string",
+      "minLength": 1
+    },
+    "certification_eligible": {
+      "type": "boolean"
+    },
+    "derived_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "schema_version": {
+      "const": "13.3"
+    },
+    "status_hash": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$"
+    }
+  },
+  "additionalProperties": false,
+  "$id": "https://generic-discovery-engine.invalid/compliance/v13.3/audit-status.schema.yaml"
+}

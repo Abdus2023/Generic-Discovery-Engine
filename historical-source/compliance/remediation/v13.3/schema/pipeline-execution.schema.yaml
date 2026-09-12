@@ -1,0 +1,76 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "PipelineExecution",
+  "type": "object",
+  "required": [
+    "pipeline_execution_id",
+    "snapshot_id",
+    "stages",
+    "result",
+    "stopped_at",
+    "executed_at",
+    "schema_version",
+    "execution_hash"
+  ],
+  "properties": {
+    "pipeline_execution_id": {
+      "type": "string",
+      "pattern": "^[A-Za-z0-9][A-Za-z0-9._:/-]*$"
+    },
+    "snapshot_id": {
+      "type": "string",
+      "pattern": "^[A-Za-z0-9][A-Za-z0-9._:/-]*$"
+    },
+    "stages": {
+      "type": "array",
+      "minItems": 17,
+      "items": {
+        "type": "object",
+        "required": [
+          "number",
+          "stage",
+          "status"
+        ],
+        "properties": {
+          "number": {
+            "type": "integer",
+            "minimum": 1
+          },
+          "stage": {
+            "type": "string",
+            "minLength": 1
+          },
+          "status": {
+            "type": "string",
+            "minLength": 1
+          },
+          "failure": {
+            "type": "string",
+            "minLength": 1
+          }
+        }
+      }
+    },
+    "result": {
+      "type": "string",
+      "minLength": 1
+    },
+    "stopped_at": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "executed_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "schema_version": {
+      "const": "13.3"
+    },
+    "execution_hash": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$"
+    }
+  },
+  "additionalProperties": false,
+  "$id": "https://generic-discovery-engine.invalid/compliance/v13.3/pipeline-execution.schema.yaml"
+}

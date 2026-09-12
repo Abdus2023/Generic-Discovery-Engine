@@ -1,0 +1,34 @@
+{
+  "schema_version": "13.3",
+  "boundaries": [
+    {
+      "failure": "SPEC_INVALID",
+      "result": "AUDIT_BLOCKED"
+    },
+    {
+      "failure": "SCOPE_INVALID",
+      "result": "AUDIT_BLOCKED"
+    },
+    {
+      "failure": "HISTORY_INVALID",
+      "result": "AFFECTED_EVALUATION_BLOCKED"
+    },
+    {
+      "failure": "DECISION_INVALID",
+      "result": "AFFECTED_REQUIREMENT_BLOCKED"
+    },
+    {
+      "failure": "ORACLE_INVALID",
+      "result": "AFFECTED_VERIFICATION_BLOCKED"
+    },
+    {
+      "failure": "VERIFICATION_INVALID",
+      "result": "AFFECTED_REQUIREMENT_UNVERIFIED_OR_BLOCKED"
+    },
+    {
+      "failure": "VALID_PROVEN_FAILURE",
+      "result": "NON_COMPLIANT"
+    }
+  ],
+  "infrastructure_failure_is_implementation_failure": false
+}

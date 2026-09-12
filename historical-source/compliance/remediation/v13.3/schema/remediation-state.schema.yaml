@@ -1,0 +1,21 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "remediation-state",
+  "type": "string",
+  "enum": [
+    "PROPOSED",
+    "ASSESSED",
+    "APPROVED",
+    "IN_PROGRESS",
+    "READY_FOR_VERIFICATION",
+    "REVERIFICATION",
+    "REGRESSION",
+    "COMPLETE",
+    "FAILED",
+    "BLOCKED",
+    "REJECTED",
+    "SUPERSEDED",
+    "CANCELLED"
+  ],
+  "$id": "https://generic-discovery-engine.invalid/compliance/v13.3/remediation-state.schema.yaml"
+}

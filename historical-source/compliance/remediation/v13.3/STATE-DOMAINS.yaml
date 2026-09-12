@@ -1,0 +1,63 @@
+{
+  "schema_version": "13.3",
+  "domains": {
+    "finding": [
+      "DETECTED",
+      "VALIDATED",
+      "CLASSIFIED",
+      "OPEN",
+      "UNDER_REMEDIATION",
+      "RESOLVED",
+      "CLOSED",
+      "REJECTED",
+      "WAIVED",
+      "SUPERSEDED",
+      "BLOCKED"
+    ],
+    "remediation": [
+      "PROPOSED",
+      "ASSESSED",
+      "APPROVED",
+      "IN_PROGRESS",
+      "READY_FOR_VERIFICATION",
+      "REVERIFICATION",
+      "REGRESSION",
+      "COMPLETE",
+      "FAILED",
+      "BLOCKED",
+      "REJECTED",
+      "SUPERSEDED",
+      "CANCELLED"
+    ],
+    "program": [
+      "CREATED",
+      "TRIAGED",
+      "PLANNED",
+      "ACTIVE",
+      "EVALUATING",
+      "COMPLETED",
+      "BLOCKED",
+      "FAILED",
+      "CANCELLED",
+      "SUPERSEDED"
+    ],
+    "conformance": [
+      "UNASSESSED",
+      "MAPPED",
+      "VERIFIED",
+      "CONFORMANT",
+      "PARTIALLY_CONFORMANT",
+      "NON_CONFORMANT",
+      "UNVERIFIED",
+      "BLOCKED",
+      "UNKNOWN",
+      "NOT_APPLICABLE"
+    ]
+  },
+  "substitution": "MUST_NOT",
+  "axes": [
+    "TRUTH",
+    "PROCESS",
+    "TIME"
+  ]
+}

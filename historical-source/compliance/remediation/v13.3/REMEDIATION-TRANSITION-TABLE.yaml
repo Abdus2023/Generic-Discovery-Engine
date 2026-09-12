@@ -1,0 +1,179 @@
+{
+  "schema_version": "13.3",
+  "domain": "REMEDIATION",
+  "transitions": [
+    {
+      "from": "PROPOSED",
+      "to": "ASSESSED",
+      "guard_id": "REMEDIATION_PROPOSED_TO_ASSESSED"
+    },
+    {
+      "from": "PROPOSED",
+      "to": "REJECTED",
+      "guard_id": "REMEDIATION_PROPOSED_TO_REJECTED"
+    },
+    {
+      "from": "PROPOSED",
+      "to": "CANCELLED",
+      "guard_id": "CANCELLATION_AUTHORIZED"
+    },
+    {
+      "from": "ASSESSED",
+      "to": "APPROVED",
+      "guard_id": "REMEDIATION_ASSESSED_TO_APPROVED"
+    },
+    {
+      "from": "ASSESSED",
+      "to": "REJECTED",
+      "guard_id": "REMEDIATION_ASSESSED_TO_REJECTED"
+    },
+    {
+      "from": "ASSESSED",
+      "to": "CANCELLED",
+      "guard_id": "CANCELLATION_AUTHORIZED"
+    },
+    {
+      "from": "APPROVED",
+      "to": "IN_PROGRESS",
+      "guard_id": "REMEDIATION_APPROVED_TO_IN_PROGRESS"
+    },
+    {
+      "from": "APPROVED",
+      "to": "CANCELLED",
+      "guard_id": "CANCELLATION_AUTHORIZED"
+    },
+    {
+      "from": "IN_PROGRESS",
+      "to": "READY_FOR_VERIFICATION",
+      "guard_id": "REMEDIATION_IN_PROGRESS_TO_READY_FOR_VERIFICATION"
+    },
+    {
+      "from": "IN_PROGRESS",
+      "to": "BLOCKED",
+      "guard_id": "BLOCKING_CONDITION_PRESENT"
+    },
+    {
+      "from": "IN_PROGRESS",
+      "to": "FAILED",
+      "guard_id": "FAILURE_ESTABLISHED"
+    },
+    {
+      "from": "IN_PROGRESS",
+      "to": "CANCELLED",
+      "guard_id": "CANCELLATION_AUTHORIZED"
+    },
+    {
+      "from": "READY_FOR_VERIFICATION",
+      "to": "REVERIFICATION",
+      "guard_id": "REMEDIATION_READY_FOR_VERIFICATION_TO_REVERIFICATION"
+    },
+    {
+      "from": "READY_FOR_VERIFICATION",
+      "to": "BLOCKED",
+      "guard_id": "BLOCKING_CONDITION_PRESENT"
+    },
+    {
+      "from": "READY_FOR_VERIFICATION",
+      "to": "FAILED",
+      "guard_id": "FAILURE_ESTABLISHED"
+    },
+    {
+      "from": "REVERIFICATION",
+      "to": "REGRESSION",
+      "guard_id": "REMEDIATION_REVERIFICATION_TO_REGRESSION"
+    },
+    {
+      "from": "REVERIFICATION",
+      "to": "COMPLETE",
+      "guard_id": "REMEDIATION_REVERIFICATION_TO_COMPLETE"
+    },
+    {
+      "from": "REVERIFICATION",
+      "to": "IN_PROGRESS",
+      "guard_id": "REMEDIATION_REVERIFICATION_TO_IN_PROGRESS"
+    },
+    {
+      "from": "REVERIFICATION",
+      "to": "BLOCKED",
+      "guard_id": "BLOCKING_CONDITION_PRESENT"
+    },
+    {
+      "from": "REVERIFICATION",
+      "to": "FAILED",
+      "guard_id": "FAILURE_ESTABLISHED"
+    },
+    {
+      "from": "REGRESSION",
+      "to": "COMPLETE",
+      "guard_id": "REMEDIATION_REGRESSION_TO_COMPLETE"
+    },
+    {
+      "from": "REGRESSION",
+      "to": "REVERIFICATION",
+      "guard_id": "REMEDIATION_REGRESSION_TO_REVERIFICATION"
+    },
+    {
+      "from": "REGRESSION",
+      "to": "IN_PROGRESS",
+      "guard_id": "REMEDIATION_REGRESSION_TO_IN_PROGRESS"
+    },
+    {
+      "from": "REGRESSION",
+      "to": "BLOCKED",
+      "guard_id": "BLOCKING_CONDITION_PRESENT"
+    },
+    {
+      "from": "REGRESSION",
+      "to": "FAILED",
+      "guard_id": "FAILURE_ESTABLISHED"
+    },
+    {
+      "from": "COMPLETE",
+      "to": "SUPERSEDED",
+      "guard_id": "AUTHORIZED_SUCCESSOR_EXISTS"
+    },
+    {
+      "from": "FAILED",
+      "to": "PROPOSED",
+      "guard_id": "REMEDIATION_FAILED_TO_PROPOSED"
+    },
+    {
+      "from": "FAILED",
+      "to": "SUPERSEDED",
+      "guard_id": "AUTHORIZED_SUCCESSOR_EXISTS"
+    },
+    {
+      "from": "BLOCKED",
+      "to": "$PREVIOUS_OPERATIONAL_STATE",
+      "guard_id": "BLOCK_REMOVED_PREVIOUS_STATE_REVALIDATED"
+    },
+    {
+      "from": "BLOCKED",
+      "to": "FAILED",
+      "guard_id": "FAILURE_ESTABLISHED"
+    },
+    {
+      "from": "BLOCKED",
+      "to": "CANCELLED",
+      "guard_id": "CANCELLATION_AUTHORIZED"
+    },
+    {
+      "from": "BLOCKED",
+      "to": "SUPERSEDED",
+      "guard_id": "AUTHORIZED_SUCCESSOR_EXISTS"
+    },
+    {
+      "from": "REJECTED",
+      "to": "SUPERSEDED",
+      "guard_id": "AUTHORIZED_SUCCESSOR_EXISTS"
+    },
+    {
+      "from": "CANCELLED",
+      "to": "SUPERSEDED",
+      "guard_id": "AUTHORIZED_SUCCESSOR_EXISTS"
+    }
+  ],
+  "terminal_states": [
+    "SUPERSEDED"
+  ]
+}

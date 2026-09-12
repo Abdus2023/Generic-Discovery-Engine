@@ -1,0 +1,18 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "conformance-state",
+  "type": "string",
+  "enum": [
+    "UNASSESSED",
+    "MAPPED",
+    "VERIFIED",
+    "CONFORMANT",
+    "PARTIALLY_CONFORMANT",
+    "NON_CONFORMANT",
+    "UNVERIFIED",
+    "BLOCKED",
+    "UNKNOWN",
+    "NOT_APPLICABLE"
+  ],
+  "$id": "https://generic-discovery-engine.invalid/compliance/v13.3/conformance-state.schema.yaml"
+}

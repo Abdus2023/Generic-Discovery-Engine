@@ -1,0 +1,62 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "HistoryIntegrityFailure",
+  "type": "object",
+  "required": [
+    "history_failure_id",
+    "object_id",
+    "failure_code",
+    "transition_id",
+    "detected_at",
+    "schema_version",
+    "failure_hash"
+  ],
+  "properties": {
+    "history_failure_id": {
+      "type": "string",
+      "pattern": "^[A-Za-z0-9][A-Za-z0-9._:/-]*$"
+    },
+    "object_id": {
+      "type": "string",
+      "pattern": "^[A-Za-z0-9][A-Za-z0-9._:/-]*$"
+    },
+    "failure_code": {
+      "type": "string",
+      "enum": [
+        "SEQUENCE_GAP",
+        "DUPLICATE_SEQUENCE",
+        "PREDECESSOR_MISMATCH",
+        "STATE_MISMATCH",
+        "ILLEGAL_TRANSITION",
+        "MISSING_EVIDENCE",
+        "INVALID_HASH",
+        "TIMESTAMP_VIOLATION",
+        "UNKNOWN"
+      ]
+    },
+    "transition_id": {
+      "oneOf": [
+        {
+          "type": "string",
+          "pattern": "^[A-Za-z0-9][A-Za-z0-9._:/-]*$"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "detected_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "schema_version": {
+      "const": "13.3"
+    },
+    "failure_hash": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$"
+    }
+  },
+  "additionalProperties": false,
+  "$id": "https://generic-discovery-engine.invalid/compliance/v13.3/history-integrity-failure.schema.yaml"
+}

@@ -1,0 +1,92 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "TransitionValidation",
+  "type": "object",
+  "required": [
+    "transition_validation_id",
+    "transition_id",
+    "predicates",
+    "result",
+    "validated_at",
+    "validation_hash"
+  ],
+  "properties": {
+    "transition_validation_id": {
+      "type": "string",
+      "pattern": "^[A-Za-z0-9][A-Za-z0-9._:/-]*$"
+    },
+    "transition_id": {
+      "type": "string",
+      "pattern": "^[A-Za-z0-9][A-Za-z0-9._:/-]*$"
+    },
+    "predicates": {
+      "type": "object",
+      "required": [
+        "object_exists",
+        "object_type_valid",
+        "state_names_valid",
+        "sequence_valid",
+        "predecessor_valid",
+        "from_state_matches",
+        "transition_is_legal",
+        "guard_satisfied",
+        "evidence_valid",
+        "timestamp_valid",
+        "hash_valid"
+      ],
+      "properties": {
+        "object_exists": {
+          "type": "boolean"
+        },
+        "object_type_valid": {
+          "type": "boolean"
+        },
+        "state_names_valid": {
+          "type": "boolean"
+        },
+        "sequence_valid": {
+          "type": "boolean"
+        },
+        "predecessor_valid": {
+          "type": "boolean"
+        },
+        "from_state_matches": {
+          "type": "boolean"
+        },
+        "transition_is_legal": {
+          "type": "boolean"
+        },
+        "guard_satisfied": {
+          "type": "boolean"
+        },
+        "evidence_valid": {
+          "type": "boolean"
+        },
+        "timestamp_valid": {
+          "type": "boolean"
+        },
+        "hash_valid": {
+          "type": "boolean"
+        }
+      },
+      "additionalProperties": false
+    },
+    "result": {
+      "type": "string",
+      "enum": [
+        "VALID_TRANSITION",
+        "TRANSITION_INVALID"
+      ]
+    },
+    "validated_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "validation_hash": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$"
+    }
+  },
+  "additionalProperties": false,
+  "$id": "https://generic-discovery-engine.invalid/compliance/v13.3/transition-validation.schema.yaml"
+}

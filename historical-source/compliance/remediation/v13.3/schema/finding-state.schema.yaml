@@ -1,0 +1,19 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "finding-state",
+  "type": "string",
+  "enum": [
+    "DETECTED",
+    "VALIDATED",
+    "CLASSIFIED",
+    "OPEN",
+    "UNDER_REMEDIATION",
+    "RESOLVED",
+    "CLOSED",
+    "REJECTED",
+    "WAIVED",
+    "SUPERSEDED",
+    "BLOCKED"
+  ],
+  "$id": "https://generic-discovery-engine.invalid/compliance/v13.3/finding-state.schema.yaml"
+}

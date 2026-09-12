@@ -1,0 +1,129 @@
+{
+  "schema_version": "13.3",
+  "domain": "FINDING",
+  "transitions": [
+    {
+      "from": "DETECTED",
+      "to": "VALIDATED",
+      "guard_id": "FINDING_DETECTED_TO_VALIDATED"
+    },
+    {
+      "from": "DETECTED",
+      "to": "REJECTED",
+      "guard_id": "FINDING_DETECTED_TO_REJECTED"
+    },
+    {
+      "from": "DETECTED",
+      "to": "BLOCKED",
+      "guard_id": "BLOCKING_CONDITION_PRESENT"
+    },
+    {
+      "from": "VALIDATED",
+      "to": "CLASSIFIED",
+      "guard_id": "FINDING_VALIDATED_TO_CLASSIFIED"
+    },
+    {
+      "from": "VALIDATED",
+      "to": "REJECTED",
+      "guard_id": "FINDING_VALIDATED_TO_REJECTED"
+    },
+    {
+      "from": "VALIDATED",
+      "to": "BLOCKED",
+      "guard_id": "BLOCKING_CONDITION_PRESENT"
+    },
+    {
+      "from": "CLASSIFIED",
+      "to": "OPEN",
+      "guard_id": "FINDING_CLASSIFIED_TO_OPEN"
+    },
+    {
+      "from": "CLASSIFIED",
+      "to": "REJECTED",
+      "guard_id": "FINDING_CLASSIFIED_TO_REJECTED"
+    },
+    {
+      "from": "CLASSIFIED",
+      "to": "BLOCKED",
+      "guard_id": "BLOCKING_CONDITION_PRESENT"
+    },
+    {
+      "from": "OPEN",
+      "to": "UNDER_REMEDIATION",
+      "guard_id": "FINDING_OPEN_TO_UNDER_REMEDIATION"
+    },
+    {
+      "from": "OPEN",
+      "to": "WAIVED",
+      "guard_id": "FINDING_OPEN_TO_WAIVED"
+    },
+    {
+      "from": "OPEN",
+      "to": "SUPERSEDED",
+      "guard_id": "AUTHORIZED_SUCCESSOR_EXISTS"
+    },
+    {
+      "from": "OPEN",
+      "to": "BLOCKED",
+      "guard_id": "BLOCKING_CONDITION_PRESENT"
+    },
+    {
+      "from": "UNDER_REMEDIATION",
+      "to": "RESOLVED",
+      "guard_id": "FINDING_UNDER_REMEDIATION_TO_RESOLVED"
+    },
+    {
+      "from": "UNDER_REMEDIATION",
+      "to": "OPEN",
+      "guard_id": "FINDING_UNDER_REMEDIATION_TO_OPEN"
+    },
+    {
+      "from": "UNDER_REMEDIATION",
+      "to": "BLOCKED",
+      "guard_id": "BLOCKING_CONDITION_PRESENT"
+    },
+    {
+      "from": "RESOLVED",
+      "to": "CLOSED",
+      "guard_id": "FINDING_RESOLVED_TO_CLOSED"
+    },
+    {
+      "from": "RESOLVED",
+      "to": "OPEN",
+      "guard_id": "FINDING_RESOLVED_TO_OPEN"
+    },
+    {
+      "from": "CLOSED",
+      "to": "SUPERSEDED",
+      "guard_id": "AUTHORIZED_SUCCESSOR_EXISTS"
+    },
+    {
+      "from": "BLOCKED",
+      "to": "$PREVIOUS_OPERATIONAL_STATE",
+      "guard_id": "BLOCK_REMOVED_PREVIOUS_STATE_REVALIDATED"
+    },
+    {
+      "from": "BLOCKED",
+      "to": "REJECTED",
+      "guard_id": "FINDING_BLOCKED_TO_REJECTED"
+    },
+    {
+      "from": "BLOCKED",
+      "to": "SUPERSEDED",
+      "guard_id": "AUTHORIZED_SUCCESSOR_EXISTS"
+    },
+    {
+      "from": "WAIVED",
+      "to": "SUPERSEDED",
+      "guard_id": "AUTHORIZED_SUCCESSOR_EXISTS"
+    },
+    {
+      "from": "REJECTED",
+      "to": "SUPERSEDED",
+      "guard_id": "AUTHORIZED_SUCCESSOR_EXISTS"
+    }
+  ],
+  "terminal_states": [
+    "SUPERSEDED"
+  ]
+}

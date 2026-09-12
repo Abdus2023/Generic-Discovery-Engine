@@ -1,0 +1,181 @@
+{
+  "schema_version": "13.3",
+  "synthetic_non_normative": true,
+  "vectors": [
+    {
+      "vector_id": "EFFECTIVE_MATCH",
+      "waiver": {
+        "waiver_id": "TEST-W1",
+        "audit_id": "TEST-AUDIT",
+        "requirement_id": "TEST-REQ",
+        "status": "EFFECTIVE",
+        "specification_snapshot": "2222222222222222222222222222222222222222222222222222222222222222",
+        "implementation_snapshot": "1111111111111111111111111111111111111111111111111111111111111111",
+        "effective_from": "2026-09-12T00:00:00Z",
+        "effective_until": "2026-09-13T00:00:00Z",
+        "scope": [
+          "TEST-REQ"
+        ],
+        "schema_version": "13.3",
+        "waiver_hash": "382cbdf3c666f5dc1258aace8e63ef7f57af90359f651d54280fc8483609a251"
+      },
+      "resolution": {
+        "waiver_resolution_id": "RESOLUTION-TEST-W1",
+        "waiver_id": "TEST-W1",
+        "requirement_id": "TEST-REQ",
+        "result": "EFFECTIVE",
+        "effective": true,
+        "as_of": "2026-09-12T18:11:09Z",
+        "schema_version": "13.3",
+        "resolution_hash": "883219b5375596d9aeeb85869093ac2e023f28ffc55c353af7a1c9afbf0176e4"
+      },
+      "expected": "EFFECTIVE",
+      "actual": "EFFECTIVE",
+      "expected_effective": true,
+      "actual_effective": true,
+      "underlying_decision_mutated": false,
+      "pass": true
+    },
+    {
+      "vector_id": "REVOKED",
+      "waiver": {
+        "waiver_id": "TEST-W2",
+        "audit_id": "TEST-AUDIT",
+        "requirement_id": "TEST-REQ",
+        "status": "REVOKED",
+        "specification_snapshot": "2222222222222222222222222222222222222222222222222222222222222222",
+        "implementation_snapshot": "1111111111111111111111111111111111111111111111111111111111111111",
+        "effective_from": "2026-09-12T00:00:00Z",
+        "effective_until": "2026-09-13T00:00:00Z",
+        "scope": [
+          "TEST-REQ"
+        ],
+        "schema_version": "13.3",
+        "waiver_hash": "9f52fec78ac32e596bfef6e418e8af46d7bde672e117e6a122e946065ca70643"
+      },
+      "resolution": {
+        "waiver_resolution_id": "RESOLUTION-TEST-W2",
+        "waiver_id": "TEST-W2",
+        "requirement_id": "TEST-REQ",
+        "result": "WAIVER_NOT_EFFECTIVE",
+        "effective": false,
+        "as_of": "2026-09-12T18:11:09Z",
+        "schema_version": "13.3",
+        "resolution_hash": "3e727045f5566470b51e8dfe5c6693eb301653741e30c6dbaf40adc5695cf51d"
+      },
+      "expected": "WAIVER_NOT_EFFECTIVE",
+      "actual": "WAIVER_NOT_EFFECTIVE",
+      "expected_effective": false,
+      "actual_effective": false,
+      "underlying_decision_mutated": false,
+      "pass": true
+    },
+    {
+      "vector_id": "WRONG_IMPLEMENTATION",
+      "waiver": {
+        "waiver_id": "TEST-W3",
+        "audit_id": "TEST-AUDIT",
+        "requirement_id": "TEST-REQ",
+        "status": "EFFECTIVE",
+        "specification_snapshot": "2222222222222222222222222222222222222222222222222222222222222222",
+        "implementation_snapshot": "3333333333333333333333333333333333333333333333333333333333333333",
+        "effective_from": "2026-09-12T00:00:00Z",
+        "effective_until": "2026-09-13T00:00:00Z",
+        "scope": [
+          "TEST-REQ"
+        ],
+        "schema_version": "13.3",
+        "waiver_hash": "a87a7a352aed20247a59a1a01475f1c44a7bba3dce62dfd972c2ae8decc3f12d"
+      },
+      "resolution": {
+        "waiver_resolution_id": "RESOLUTION-TEST-W3",
+        "waiver_id": "TEST-W3",
+        "requirement_id": "TEST-REQ",
+        "result": "WAIVER_SCOPE_MISMATCH",
+        "effective": false,
+        "as_of": "2026-09-12T18:11:09Z",
+        "schema_version": "13.3",
+        "resolution_hash": "a5c0766b3eac1104cb15b1aaf91c0d8d51b91e233d446d2e4c3fb54145618fa5"
+      },
+      "expected": "WAIVER_SCOPE_MISMATCH",
+      "actual": "WAIVER_SCOPE_MISMATCH",
+      "expected_effective": false,
+      "actual_effective": false,
+      "underlying_decision_mutated": false,
+      "pass": true
+    },
+    {
+      "vector_id": "WRONG_REQUIREMENT",
+      "waiver": {
+        "waiver_id": "TEST-W4",
+        "audit_id": "TEST-AUDIT",
+        "requirement_id": "OTHER",
+        "status": "EFFECTIVE",
+        "specification_snapshot": "2222222222222222222222222222222222222222222222222222222222222222",
+        "implementation_snapshot": "1111111111111111111111111111111111111111111111111111111111111111",
+        "effective_from": "2026-09-12T00:00:00Z",
+        "effective_until": "2026-09-13T00:00:00Z",
+        "scope": [
+          "OTHER"
+        ],
+        "schema_version": "13.3",
+        "waiver_hash": "5f1b9739dbde0559734ff12b40ddf2b9554a30971ecaf38ebbd157b6400ab07d"
+      },
+      "resolution": {
+        "waiver_resolution_id": "RESOLUTION-TEST-W4",
+        "waiver_id": "TEST-W4",
+        "requirement_id": "OTHER",
+        "result": "WAIVER_SCOPE_MISMATCH",
+        "effective": false,
+        "as_of": "2026-09-12T18:11:09Z",
+        "schema_version": "13.3",
+        "resolution_hash": "2d3127d4705af293ffbced5ff16edb1a5391c61c98b79ea66afaebf23f4b6d8e"
+      },
+      "expected": "WAIVER_SCOPE_MISMATCH",
+      "actual": "WAIVER_SCOPE_MISMATCH",
+      "expected_effective": false,
+      "actual_effective": false,
+      "underlying_decision_mutated": false,
+      "pass": true
+    },
+    {
+      "vector_id": "EXPIRED",
+      "waiver": {
+        "waiver_id": "TEST-W5",
+        "audit_id": "TEST-AUDIT",
+        "requirement_id": "TEST-REQ",
+        "status": "EFFECTIVE",
+        "specification_snapshot": "2222222222222222222222222222222222222222222222222222222222222222",
+        "implementation_snapshot": "1111111111111111111111111111111111111111111111111111111111111111",
+        "effective_from": "2026-09-12T00:00:00Z",
+        "effective_until": "2026-09-12T01:00:00Z",
+        "scope": [
+          "TEST-REQ"
+        ],
+        "schema_version": "13.3",
+        "waiver_hash": "a2f4dc8c7d39222ef18985629a0ca4b78a84e6760ea77ab7ab2f6655c1952b1e"
+      },
+      "resolution": {
+        "waiver_resolution_id": "RESOLUTION-TEST-W5",
+        "waiver_id": "TEST-W5",
+        "requirement_id": "TEST-REQ",
+        "result": "WAIVER_OUTSIDE_EFFECTIVE_PERIOD",
+        "effective": false,
+        "as_of": "2026-09-12T18:11:09Z",
+        "schema_version": "13.3",
+        "resolution_hash": "ce6474b342032000689103d64a40ad0fdb37fd137c503b807f262febbdac40b7"
+      },
+      "expected": "WAIVER_OUTSIDE_EFFECTIVE_PERIOD",
+      "actual": "WAIVER_OUTSIDE_EFFECTIVE_PERIOD",
+      "expected_effective": false,
+      "actual_effective": false,
+      "underlying_decision_mutated": false,
+      "pass": true
+    }
+  ],
+  "summary": {
+    "total": 5,
+    "passed": 5,
+    "failed": 0
+  }
+}

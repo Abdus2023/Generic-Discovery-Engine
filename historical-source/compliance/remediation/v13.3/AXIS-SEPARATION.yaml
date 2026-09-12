@@ -1,0 +1,27 @@
+{
+  "schema_version": "13.3",
+  "axes": {
+    "TRUTH": [
+      "EVIDENCE",
+      "VERIFICATION",
+      "DECISION",
+      "AGGREGATE"
+    ],
+    "PROCESS": [
+      "FINDING",
+      "REMEDIATION",
+      "PROGRAM"
+    ],
+    "TIME": [
+      "EVENTS",
+      "HISTORY",
+      "CURRENT_PROJECTION"
+    ]
+  },
+  "strongest_invariants": [
+    "NO_LIFECYCLE_STATE_IS_CONFORMANCE_EVIDENCE",
+    "NO_HISTORICAL_DECISION_IS_REWRITTEN",
+    "NO_AGGREGATE_IS_MANUALLY_ASSIGNED",
+    "NO_CERTIFICATE_WITHOUT_REPRODUCIBLE_SNAPSHOT_AGGREGATE"
+  ]
+}

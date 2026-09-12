@@ -1,0 +1,55 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "WaiverResolution",
+  "type": "object",
+  "required": [
+    "waiver_resolution_id",
+    "waiver_id",
+    "requirement_id",
+    "result",
+    "effective",
+    "as_of",
+    "schema_version",
+    "resolution_hash"
+  ],
+  "properties": {
+    "waiver_resolution_id": {
+      "type": "string",
+      "pattern": "^[A-Za-z0-9][A-Za-z0-9._:/-]*$"
+    },
+    "waiver_id": {
+      "type": "string",
+      "pattern": "^[A-Za-z0-9][A-Za-z0-9._:/-]*$"
+    },
+    "requirement_id": {
+      "type": "string",
+      "pattern": "^[A-Za-z0-9][A-Za-z0-9._:/-]*$"
+    },
+    "result": {
+      "type": "string",
+      "enum": [
+        "EFFECTIVE",
+        "WAIVER_INVALID",
+        "WAIVER_SCOPE_MISMATCH",
+        "WAIVER_NOT_EFFECTIVE",
+        "WAIVER_OUTSIDE_EFFECTIVE_PERIOD"
+      ]
+    },
+    "effective": {
+      "type": "boolean"
+    },
+    "as_of": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "schema_version": {
+      "const": "13.3"
+    },
+    "resolution_hash": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$"
+    }
+  },
+  "additionalProperties": false,
+  "$id": "https://generic-discovery-engine.invalid/compliance/v13.3/waiver-resolution.schema.yaml"
+}

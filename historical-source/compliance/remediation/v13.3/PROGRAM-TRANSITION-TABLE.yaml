@@ -1,0 +1,117 @@
+{
+  "schema_version": "13.3",
+  "domain": "PROGRAM",
+  "transitions": [
+    {
+      "from": "CREATED",
+      "to": "TRIAGED",
+      "guard_id": "PROGRAM_TRIAGE_READY"
+    },
+    {
+      "from": "CREATED",
+      "to": "CANCELLED",
+      "guard_id": "CANCELLATION_AUTHORIZED"
+    },
+    {
+      "from": "TRIAGED",
+      "to": "PLANNED",
+      "guard_id": "PROGRAM_PLAN_READY"
+    },
+    {
+      "from": "TRIAGED",
+      "to": "CANCELLED",
+      "guard_id": "CANCELLATION_AUTHORIZED"
+    },
+    {
+      "from": "TRIAGED",
+      "to": "SUPERSEDED",
+      "guard_id": "AUTHORIZED_SUCCESSOR_EXISTS"
+    },
+    {
+      "from": "PLANNED",
+      "to": "ACTIVE",
+      "guard_id": "PROGRAM_EXECUTION_READY"
+    },
+    {
+      "from": "PLANNED",
+      "to": "CANCELLED",
+      "guard_id": "CANCELLATION_AUTHORIZED"
+    },
+    {
+      "from": "PLANNED",
+      "to": "SUPERSEDED",
+      "guard_id": "AUTHORIZED_SUCCESSOR_EXISTS"
+    },
+    {
+      "from": "ACTIVE",
+      "to": "EVALUATING",
+      "guard_id": "PROGRAM_EVALUATION_READY"
+    },
+    {
+      "from": "ACTIVE",
+      "to": "BLOCKED",
+      "guard_id": "BLOCKING_CONDITION_PRESENT"
+    },
+    {
+      "from": "ACTIVE",
+      "to": "SUPERSEDED",
+      "guard_id": "AUTHORIZED_SUCCESSOR_EXISTS"
+    },
+    {
+      "from": "ACTIVE",
+      "to": "FAILED",
+      "guard_id": "FAILURE_ESTABLISHED"
+    },
+    {
+      "from": "EVALUATING",
+      "to": "COMPLETED",
+      "guard_id": "PROGRAM_COMPLETION_READY"
+    },
+    {
+      "from": "EVALUATING",
+      "to": "BLOCKED",
+      "guard_id": "BLOCKING_CONDITION_PRESENT"
+    },
+    {
+      "from": "EVALUATING",
+      "to": "SUPERSEDED",
+      "guard_id": "AUTHORIZED_SUCCESSOR_EXISTS"
+    },
+    {
+      "from": "EVALUATING",
+      "to": "FAILED",
+      "guard_id": "FAILURE_ESTABLISHED"
+    },
+    {
+      "from": "BLOCKED",
+      "to": "ACTIVE",
+      "guard_id": "PROGRAM_BLOCKED_TO_ACTIVE"
+    },
+    {
+      "from": "BLOCKED",
+      "to": "EVALUATING",
+      "guard_id": "PROGRAM_BLOCKED_TO_EVALUATING"
+    },
+    {
+      "from": "BLOCKED",
+      "to": "FAILED",
+      "guard_id": "FAILURE_ESTABLISHED"
+    },
+    {
+      "from": "BLOCKED",
+      "to": "CANCELLED",
+      "guard_id": "CANCELLATION_AUTHORIZED"
+    },
+    {
+      "from": "BLOCKED",
+      "to": "SUPERSEDED",
+      "guard_id": "AUTHORIZED_SUCCESSOR_EXISTS"
+    }
+  ],
+  "terminal_states": [
+    "COMPLETED",
+    "FAILED",
+    "CANCELLED",
+    "SUPERSEDED"
+  ]
+}

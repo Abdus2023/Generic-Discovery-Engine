@@ -1,0 +1,18 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "program-state",
+  "type": "string",
+  "enum": [
+    "CREATED",
+    "TRIAGED",
+    "PLANNED",
+    "ACTIVE",
+    "EVALUATING",
+    "COMPLETED",
+    "BLOCKED",
+    "FAILED",
+    "CANCELLED",
+    "SUPERSEDED"
+  ],
+  "$id": "https://generic-discovery-engine.invalid/compliance/v13.3/program-state.schema.yaml"
+}

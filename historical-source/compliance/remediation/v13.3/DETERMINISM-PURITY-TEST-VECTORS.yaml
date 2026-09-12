@@ -1,0 +1,64 @@
+{
+  "schema_version": "13.3",
+  "declared_inputs_only": true,
+  "forbidden_inputs": [
+    "WALL_CLOCK",
+    "RANDOMNESS",
+    "UI_STATE",
+    "DATABASE_INSERTION_ORDER",
+    "CACHE_CONTENTS",
+    "THREAD_SCHEDULING",
+    "UNSTATED_ENVIRONMENT"
+  ],
+  "vectors": [
+    {
+      "seed": 1,
+      "input_order": [
+        "R2",
+        "R1"
+      ],
+      "expected_status": "NON_COMPLIANT",
+      "actual_status": "NON_COMPLIANT",
+      "counts_identical": true,
+      "pass": true
+    },
+    {
+      "seed": 2,
+      "input_order": [
+        "R2",
+        "R1"
+      ],
+      "expected_status": "NON_COMPLIANT",
+      "actual_status": "NON_COMPLIANT",
+      "counts_identical": true,
+      "pass": true
+    },
+    {
+      "seed": 3,
+      "input_order": [
+        "R2",
+        "R1"
+      ],
+      "expected_status": "NON_COMPLIANT",
+      "actual_status": "NON_COMPLIANT",
+      "counts_identical": true,
+      "pass": true
+    },
+    {
+      "seed": 577215,
+      "input_order": [
+        "R1",
+        "R2"
+      ],
+      "expected_status": "NON_COMPLIANT",
+      "actual_status": "NON_COMPLIANT",
+      "counts_identical": true,
+      "pass": true
+    }
+  ],
+  "summary": {
+    "total": 4,
+    "passed": 4,
+    "failed": 0
+  }
+}

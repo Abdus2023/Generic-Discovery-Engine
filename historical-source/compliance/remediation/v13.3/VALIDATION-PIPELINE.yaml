@@ -1,0 +1,74 @@
+{
+  "schema_version": "13.3",
+  "stages": [
+    {
+      "number": 1,
+      "stage": "LOAD_SPECIFICATION"
+    },
+    {
+      "number": 2,
+      "stage": "VALIDATE_SPECIFICATION"
+    },
+    {
+      "number": 3,
+      "stage": "LOAD_AUDIT_SCOPE"
+    },
+    {
+      "number": 4,
+      "stage": "VALIDATE_SCOPE"
+    },
+    {
+      "number": 5,
+      "stage": "LOAD_STATE_HISTORIES"
+    },
+    {
+      "number": 6,
+      "stage": "VALIDATE_HISTORIES"
+    },
+    {
+      "number": 7,
+      "stage": "PROJECT_CURRENT_LIFECYCLE_STATES"
+    },
+    {
+      "number": 8,
+      "stage": "LOAD_DECISION_HISTORIES"
+    },
+    {
+      "number": 9,
+      "stage": "VALIDATE_DECISIONS"
+    },
+    {
+      "number": 10,
+      "stage": "PROJECT_CURRENT_DECISIONS"
+    },
+    {
+      "number": 11,
+      "stage": "RESOLVE_APPLICABILITY"
+    },
+    {
+      "number": 12,
+      "stage": "RESOLVE_WAIVERS"
+    },
+    {
+      "number": 13,
+      "stage": "CLASSIFY_REQUIREMENT_CONTRIBUTIONS"
+    },
+    {
+      "number": 14,
+      "stage": "APPLY_AGGREGATE_FUNCTION"
+    },
+    {
+      "number": 15,
+      "stage": "VALIDATE_AGGREGATE_INVARIANTS"
+    },
+    {
+      "number": 16,
+      "stage": "PRODUCE_AUDIT_RESULT"
+    },
+    {
+      "number": 17,
+      "stage": "OPTIONALLY_PRODUCE_CERTIFICATE"
+    }
+  ],
+  "upstream_failure_behavior": "STOP_DEPENDENT_DOWNSTREAM_CLAIMS"
+}

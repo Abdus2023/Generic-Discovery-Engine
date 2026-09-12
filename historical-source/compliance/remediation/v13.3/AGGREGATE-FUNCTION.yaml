@@ -1,0 +1,28 @@
+{
+  "schema_version": "13.3",
+  "inputs": [
+    "CURRENT_DECISIONS",
+    "APPLICABILITY",
+    "MANDATORY_CLASSIFICATION",
+    "EFFECTIVE_WAIVERS"
+  ],
+  "classification": {
+    "CONFORMANT": "PASS",
+    "NON_CONFORMANT_UNWAIVED": "PROVEN_FAILURE",
+    "BLOCKED": "BLOCKED",
+    "PARTIALLY_CONFORMANT_UNVERIFIED_UNKNOWN": "UNRESOLVED",
+    "NON_CONFORMANT_WAIVED": "WAIVED_FAILURE",
+    "NOT_APPLICABLE": "EXCLUDED"
+  },
+  "ordered_result": [
+    "PROVEN_FAILURE=>NON_COMPLIANT",
+    "BLOCKED=>BLOCKED",
+    "UNRESOLVED=>UNVERIFIED",
+    "WAIVED_FAILURE=>CONDITIONALLY_COMPLIANT",
+    "EMPTY=>NO_MANDATORY_REQUIREMENTS",
+    "OTHERWISE=>COMPLIANT"
+  ],
+  "single_normative_function": true,
+  "pure": true,
+  "hidden_mutable_inputs": []
+}

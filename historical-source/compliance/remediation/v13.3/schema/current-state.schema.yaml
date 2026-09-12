@@ -1,0 +1,97 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "CurrentState",
+  "type": "object",
+  "required": [
+    "current_state_id",
+    "object_type",
+    "object_id",
+    "state",
+    "state_as_of",
+    "last_transition_id",
+    "transition_sequence",
+    "schema_version",
+    "projection_hash"
+  ],
+  "properties": {
+    "current_state_id": {
+      "type": "string",
+      "pattern": "^[A-Za-z0-9][A-Za-z0-9._:/-]*$"
+    },
+    "object_type": {
+      "type": "string",
+      "enum": [
+        "FINDING",
+        "REMEDIATION",
+        "PROGRAM",
+        "COMPLIANCE_DECISION"
+      ]
+    },
+    "object_id": {
+      "type": "string",
+      "pattern": "^[A-Za-z0-9][A-Za-z0-9._:/-]*$"
+    },
+    "state": {
+      "type": "string",
+      "enum": [
+        "ACTIVE",
+        "APPROVED",
+        "ASSESSED",
+        "BLOCKED",
+        "CANCELLED",
+        "CLASSIFIED",
+        "CLOSED",
+        "COMPLETE",
+        "COMPLETED",
+        "CONFORMANT",
+        "CREATED",
+        "DETECTED",
+        "EVALUATING",
+        "FAILED",
+        "IN_PROGRESS",
+        "MAPPED",
+        "NON_CONFORMANT",
+        "NOT_APPLICABLE",
+        "OPEN",
+        "PARTIALLY_CONFORMANT",
+        "PLANNED",
+        "PROPOSED",
+        "READY_FOR_VERIFICATION",
+        "REGRESSION",
+        "REJECTED",
+        "RESOLVED",
+        "REVERIFICATION",
+        "SUPERSEDED",
+        "TRIAGED",
+        "UNASSESSED",
+        "UNDER_REMEDIATION",
+        "UNKNOWN",
+        "UNVERIFIED",
+        "VALIDATED",
+        "VERIFIED",
+        "WAIVED"
+      ]
+    },
+    "state_as_of": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "last_transition_id": {
+      "type": "string",
+      "pattern": "^[A-Za-z0-9][A-Za-z0-9._:/-]*$"
+    },
+    "transition_sequence": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "schema_version": {
+      "const": "13.3"
+    },
+    "projection_hash": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$"
+    }
+  },
+  "additionalProperties": false,
+  "$id": "https://generic-discovery-engine.invalid/compliance/v13.3/current-state.schema.yaml"
+}

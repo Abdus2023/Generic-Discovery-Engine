@@ -1,0 +1,14 @@
+{
+  "schema_version": "13.3",
+  "validation_order": [
+    "VALIDATE_RECORDS",
+    "RESOLVE_SUPERSESSION",
+    "RESOLVE_APPLICABILITY",
+    "MATCH_SPECIFICATION_SNAPSHOT",
+    "MATCH_IMPLEMENTATION_SNAPSHOT",
+    "SELECT_CURRENT"
+  ],
+  "snapshot_mismatch": "DECISION_SNAPSHOT_MISMATCH",
+  "latest_invalid": "DECISION_HISTORY_INVALID_NO_FALLBACK",
+  "immutability": true
+}

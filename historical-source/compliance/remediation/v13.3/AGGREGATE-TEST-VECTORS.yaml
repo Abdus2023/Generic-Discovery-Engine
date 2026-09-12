@@ -1,0 +1,720 @@
+{
+  "schema_version": "13.3",
+  "vectors": [
+    {
+      "vector_id": "TEST-01-EVERYTHING-PASSES",
+      "requirements": [
+        {
+          "requirement_id": "R1",
+          "mandatory": true,
+          "decision": "CONFORMANT",
+          "waiver_effective": false,
+          "applicable": true
+        },
+        {
+          "requirement_id": "R2",
+          "mandatory": true,
+          "decision": "CONFORMANT",
+          "waiver_effective": false,
+          "applicable": true
+        }
+      ],
+      "expected": "COMPLIANT",
+      "actual": "COMPLIANT",
+      "mandatory_counts": {
+        "pass": 2,
+        "proven_failure": 0,
+        "blocked": 0,
+        "unresolved": 0,
+        "waived_failure": 0,
+        "excluded": 0
+      },
+      "optional_counts": {
+        "pass": 0,
+        "proven_failure": 0,
+        "blocked": 0,
+        "unresolved": 0,
+        "waived_failure": 0,
+        "excluded": 0
+      },
+      "aggregate_result": {
+        "aggregate_id": "AGGREGATE-TEST-01-EVERYTHING-PASSES",
+        "snapshot_id": "TEST-SNAPSHOT",
+        "status": "COMPLIANT",
+        "mandatory_counts": {
+          "pass": 2,
+          "proven_failure": 0,
+          "blocked": 0,
+          "unresolved": 0,
+          "waived_failure": 0,
+          "excluded": 0
+        },
+        "optional_counts": {
+          "pass": 0,
+          "proven_failure": 0,
+          "blocked": 0,
+          "unresolved": 0,
+          "waived_failure": 0,
+          "excluded": 0
+        },
+        "schema_version": "13.3",
+        "aggregate_hash": "e33c474e747c2a888f64c2e9ce693e5477195ce69c40c1e3e81138a5f0462898"
+      },
+      "pass": true
+    },
+    {
+      "vector_id": "TEST-02-PROVEN-FAILURE",
+      "requirements": [
+        {
+          "requirement_id": "R1",
+          "mandatory": true,
+          "decision": "CONFORMANT",
+          "waiver_effective": false,
+          "applicable": true
+        },
+        {
+          "requirement_id": "R2",
+          "mandatory": true,
+          "decision": "NON_CONFORMANT",
+          "waiver_effective": false,
+          "applicable": true
+        }
+      ],
+      "expected": "NON_COMPLIANT",
+      "actual": "NON_COMPLIANT",
+      "mandatory_counts": {
+        "pass": 1,
+        "proven_failure": 1,
+        "blocked": 0,
+        "unresolved": 0,
+        "waived_failure": 0,
+        "excluded": 0
+      },
+      "optional_counts": {
+        "pass": 0,
+        "proven_failure": 0,
+        "blocked": 0,
+        "unresolved": 0,
+        "waived_failure": 0,
+        "excluded": 0
+      },
+      "aggregate_result": {
+        "aggregate_id": "AGGREGATE-TEST-02-PROVEN-FAILURE",
+        "snapshot_id": "TEST-SNAPSHOT",
+        "status": "NON_COMPLIANT",
+        "mandatory_counts": {
+          "pass": 1,
+          "proven_failure": 1,
+          "blocked": 0,
+          "unresolved": 0,
+          "waived_failure": 0,
+          "excluded": 0
+        },
+        "optional_counts": {
+          "pass": 0,
+          "proven_failure": 0,
+          "blocked": 0,
+          "unresolved": 0,
+          "waived_failure": 0,
+          "excluded": 0
+        },
+        "schema_version": "13.3",
+        "aggregate_hash": "27e3d66d0be261b3154abb20298af8429943826f0c9d16901181c3eb42ca9ec4"
+      },
+      "pass": true
+    },
+    {
+      "vector_id": "TEST-03-BLOCKED-ONLY",
+      "requirements": [
+        {
+          "requirement_id": "R1",
+          "mandatory": true,
+          "decision": "CONFORMANT",
+          "waiver_effective": false,
+          "applicable": true
+        },
+        {
+          "requirement_id": "R2",
+          "mandatory": true,
+          "decision": "BLOCKED",
+          "waiver_effective": false,
+          "applicable": true
+        }
+      ],
+      "expected": "BLOCKED",
+      "actual": "BLOCKED",
+      "mandatory_counts": {
+        "pass": 1,
+        "proven_failure": 0,
+        "blocked": 1,
+        "unresolved": 0,
+        "waived_failure": 0,
+        "excluded": 0
+      },
+      "optional_counts": {
+        "pass": 0,
+        "proven_failure": 0,
+        "blocked": 0,
+        "unresolved": 0,
+        "waived_failure": 0,
+        "excluded": 0
+      },
+      "aggregate_result": {
+        "aggregate_id": "AGGREGATE-TEST-03-BLOCKED-ONLY",
+        "snapshot_id": "TEST-SNAPSHOT",
+        "status": "BLOCKED",
+        "mandatory_counts": {
+          "pass": 1,
+          "proven_failure": 0,
+          "blocked": 1,
+          "unresolved": 0,
+          "waived_failure": 0,
+          "excluded": 0
+        },
+        "optional_counts": {
+          "pass": 0,
+          "proven_failure": 0,
+          "blocked": 0,
+          "unresolved": 0,
+          "waived_failure": 0,
+          "excluded": 0
+        },
+        "schema_version": "13.3",
+        "aggregate_hash": "8368b9129ce82b28a74753d98b6ead2dc4e0556acd11078926edadae292b3864"
+      },
+      "pass": true
+    },
+    {
+      "vector_id": "TEST-04-UNVERIFIED-ONLY",
+      "requirements": [
+        {
+          "requirement_id": "R1",
+          "mandatory": true,
+          "decision": "CONFORMANT",
+          "waiver_effective": false,
+          "applicable": true
+        },
+        {
+          "requirement_id": "R2",
+          "mandatory": true,
+          "decision": "UNVERIFIED",
+          "waiver_effective": false,
+          "applicable": true
+        }
+      ],
+      "expected": "UNVERIFIED",
+      "actual": "UNVERIFIED",
+      "mandatory_counts": {
+        "pass": 1,
+        "proven_failure": 0,
+        "blocked": 0,
+        "unresolved": 1,
+        "waived_failure": 0,
+        "excluded": 0
+      },
+      "optional_counts": {
+        "pass": 0,
+        "proven_failure": 0,
+        "blocked": 0,
+        "unresolved": 0,
+        "waived_failure": 0,
+        "excluded": 0
+      },
+      "aggregate_result": {
+        "aggregate_id": "AGGREGATE-TEST-04-UNVERIFIED-ONLY",
+        "snapshot_id": "TEST-SNAPSHOT",
+        "status": "UNVERIFIED",
+        "mandatory_counts": {
+          "pass": 1,
+          "proven_failure": 0,
+          "blocked": 0,
+          "unresolved": 1,
+          "waived_failure": 0,
+          "excluded": 0
+        },
+        "optional_counts": {
+          "pass": 0,
+          "proven_failure": 0,
+          "blocked": 0,
+          "unresolved": 0,
+          "waived_failure": 0,
+          "excluded": 0
+        },
+        "schema_version": "13.3",
+        "aggregate_hash": "3e971a7fd0525dcebb90624272931179680a13f3c19829f498c33b4379ca21f6"
+      },
+      "pass": true
+    },
+    {
+      "vector_id": "TEST-05-WAIVED-FAILURE-ONLY",
+      "requirements": [
+        {
+          "requirement_id": "R1",
+          "mandatory": true,
+          "decision": "CONFORMANT",
+          "waiver_effective": false,
+          "applicable": true
+        },
+        {
+          "requirement_id": "R2",
+          "mandatory": true,
+          "decision": "NON_CONFORMANT",
+          "waiver_effective": true,
+          "applicable": true
+        }
+      ],
+      "expected": "CONDITIONALLY_COMPLIANT",
+      "actual": "CONDITIONALLY_COMPLIANT",
+      "mandatory_counts": {
+        "pass": 1,
+        "proven_failure": 0,
+        "blocked": 0,
+        "unresolved": 0,
+        "waived_failure": 1,
+        "excluded": 0
+      },
+      "optional_counts": {
+        "pass": 0,
+        "proven_failure": 0,
+        "blocked": 0,
+        "unresolved": 0,
+        "waived_failure": 0,
+        "excluded": 0
+      },
+      "aggregate_result": {
+        "aggregate_id": "AGGREGATE-TEST-05-WAIVED-FAILURE-ONLY",
+        "snapshot_id": "TEST-SNAPSHOT",
+        "status": "CONDITIONALLY_COMPLIANT",
+        "mandatory_counts": {
+          "pass": 1,
+          "proven_failure": 0,
+          "blocked": 0,
+          "unresolved": 0,
+          "waived_failure": 1,
+          "excluded": 0
+        },
+        "optional_counts": {
+          "pass": 0,
+          "proven_failure": 0,
+          "blocked": 0,
+          "unresolved": 0,
+          "waived_failure": 0,
+          "excluded": 0
+        },
+        "schema_version": "13.3",
+        "aggregate_hash": "1f24ff3671ddb71a296ca219618b77c5e888478ef4296ca6ef3f4301ce63e65b"
+      },
+      "pass": true
+    },
+    {
+      "vector_id": "TEST-06-FAILURE-PLUS-BLOCKER",
+      "requirements": [
+        {
+          "requirement_id": "R1",
+          "mandatory": true,
+          "decision": "NON_CONFORMANT",
+          "waiver_effective": false,
+          "applicable": true
+        },
+        {
+          "requirement_id": "R2",
+          "mandatory": true,
+          "decision": "BLOCKED",
+          "waiver_effective": false,
+          "applicable": true
+        }
+      ],
+      "expected": "NON_COMPLIANT",
+      "actual": "NON_COMPLIANT",
+      "mandatory_counts": {
+        "pass": 0,
+        "proven_failure": 1,
+        "blocked": 1,
+        "unresolved": 0,
+        "waived_failure": 0,
+        "excluded": 0
+      },
+      "optional_counts": {
+        "pass": 0,
+        "proven_failure": 0,
+        "blocked": 0,
+        "unresolved": 0,
+        "waived_failure": 0,
+        "excluded": 0
+      },
+      "aggregate_result": {
+        "aggregate_id": "AGGREGATE-TEST-06-FAILURE-PLUS-BLOCKER",
+        "snapshot_id": "TEST-SNAPSHOT",
+        "status": "NON_COMPLIANT",
+        "mandatory_counts": {
+          "pass": 0,
+          "proven_failure": 1,
+          "blocked": 1,
+          "unresolved": 0,
+          "waived_failure": 0,
+          "excluded": 0
+        },
+        "optional_counts": {
+          "pass": 0,
+          "proven_failure": 0,
+          "blocked": 0,
+          "unresolved": 0,
+          "waived_failure": 0,
+          "excluded": 0
+        },
+        "schema_version": "13.3",
+        "aggregate_hash": "e9400fc0b3dc3cf4d7c2eccb4034fbec46a888b9a35c1cdd0d75c0998b721ce5"
+      },
+      "pass": true
+    },
+    {
+      "vector_id": "TEST-07-WAIVER-PLUS-BLOCKER",
+      "requirements": [
+        {
+          "requirement_id": "R1",
+          "mandatory": true,
+          "decision": "NON_CONFORMANT",
+          "waiver_effective": true,
+          "applicable": true
+        },
+        {
+          "requirement_id": "R2",
+          "mandatory": true,
+          "decision": "BLOCKED",
+          "waiver_effective": false,
+          "applicable": true
+        }
+      ],
+      "expected": "BLOCKED",
+      "actual": "BLOCKED",
+      "mandatory_counts": {
+        "pass": 0,
+        "proven_failure": 0,
+        "blocked": 1,
+        "unresolved": 0,
+        "waived_failure": 1,
+        "excluded": 0
+      },
+      "optional_counts": {
+        "pass": 0,
+        "proven_failure": 0,
+        "blocked": 0,
+        "unresolved": 0,
+        "waived_failure": 0,
+        "excluded": 0
+      },
+      "aggregate_result": {
+        "aggregate_id": "AGGREGATE-TEST-07-WAIVER-PLUS-BLOCKER",
+        "snapshot_id": "TEST-SNAPSHOT",
+        "status": "BLOCKED",
+        "mandatory_counts": {
+          "pass": 0,
+          "proven_failure": 0,
+          "blocked": 1,
+          "unresolved": 0,
+          "waived_failure": 1,
+          "excluded": 0
+        },
+        "optional_counts": {
+          "pass": 0,
+          "proven_failure": 0,
+          "blocked": 0,
+          "unresolved": 0,
+          "waived_failure": 0,
+          "excluded": 0
+        },
+        "schema_version": "13.3",
+        "aggregate_hash": "972f32da09f5214071fa6d9e4708fd779770421be314b67cc07603a365844879"
+      },
+      "pass": true
+    },
+    {
+      "vector_id": "TEST-08-WAIVER-PLUS-UNRESOLVED",
+      "requirements": [
+        {
+          "requirement_id": "R1",
+          "mandatory": true,
+          "decision": "NON_CONFORMANT",
+          "waiver_effective": true,
+          "applicable": true
+        },
+        {
+          "requirement_id": "R2",
+          "mandatory": true,
+          "decision": "UNVERIFIED",
+          "waiver_effective": false,
+          "applicable": true
+        }
+      ],
+      "expected": "UNVERIFIED",
+      "actual": "UNVERIFIED",
+      "mandatory_counts": {
+        "pass": 0,
+        "proven_failure": 0,
+        "blocked": 0,
+        "unresolved": 1,
+        "waived_failure": 1,
+        "excluded": 0
+      },
+      "optional_counts": {
+        "pass": 0,
+        "proven_failure": 0,
+        "blocked": 0,
+        "unresolved": 0,
+        "waived_failure": 0,
+        "excluded": 0
+      },
+      "aggregate_result": {
+        "aggregate_id": "AGGREGATE-TEST-08-WAIVER-PLUS-UNRESOLVED",
+        "snapshot_id": "TEST-SNAPSHOT",
+        "status": "UNVERIFIED",
+        "mandatory_counts": {
+          "pass": 0,
+          "proven_failure": 0,
+          "blocked": 0,
+          "unresolved": 1,
+          "waived_failure": 1,
+          "excluded": 0
+        },
+        "optional_counts": {
+          "pass": 0,
+          "proven_failure": 0,
+          "blocked": 0,
+          "unresolved": 0,
+          "waived_failure": 0,
+          "excluded": 0
+        },
+        "schema_version": "13.3",
+        "aggregate_hash": "403e4aa28e8d224e73564d53717256e025ed2e6c67bdc1100eced685ce529810"
+      },
+      "pass": true
+    },
+    {
+      "vector_id": "TEST-09-OPTIONAL-FAILURE",
+      "requirements": [
+        {
+          "requirement_id": "R1",
+          "mandatory": true,
+          "decision": "CONFORMANT",
+          "waiver_effective": false,
+          "applicable": true
+        },
+        {
+          "requirement_id": "O1",
+          "mandatory": false,
+          "decision": "NON_CONFORMANT",
+          "waiver_effective": false,
+          "applicable": true
+        }
+      ],
+      "expected": "COMPLIANT",
+      "actual": "COMPLIANT",
+      "mandatory_counts": {
+        "pass": 1,
+        "proven_failure": 0,
+        "blocked": 0,
+        "unresolved": 0,
+        "waived_failure": 0,
+        "excluded": 0
+      },
+      "optional_counts": {
+        "pass": 0,
+        "proven_failure": 1,
+        "blocked": 0,
+        "unresolved": 0,
+        "waived_failure": 0,
+        "excluded": 0
+      },
+      "aggregate_result": {
+        "aggregate_id": "AGGREGATE-TEST-09-OPTIONAL-FAILURE",
+        "snapshot_id": "TEST-SNAPSHOT",
+        "status": "COMPLIANT",
+        "mandatory_counts": {
+          "pass": 1,
+          "proven_failure": 0,
+          "blocked": 0,
+          "unresolved": 0,
+          "waived_failure": 0,
+          "excluded": 0
+        },
+        "optional_counts": {
+          "pass": 0,
+          "proven_failure": 1,
+          "blocked": 0,
+          "unresolved": 0,
+          "waived_failure": 0,
+          "excluded": 0
+        },
+        "schema_version": "13.3",
+        "aggregate_hash": "1ad6467250c5018b0c06db28ed9725e50ec9c1e42272d3cde73f1739090e829e"
+      },
+      "pass": true
+    },
+    {
+      "vector_id": "TEST-10-ALL-NA",
+      "requirements": [
+        {
+          "requirement_id": "R1",
+          "mandatory": true,
+          "decision": "NOT_APPLICABLE",
+          "waiver_effective": false,
+          "applicable": false
+        },
+        {
+          "requirement_id": "R2",
+          "mandatory": true,
+          "decision": "NOT_APPLICABLE",
+          "waiver_effective": false,
+          "applicable": false
+        }
+      ],
+      "expected": "NO_MANDATORY_REQUIREMENTS",
+      "actual": "NO_MANDATORY_REQUIREMENTS",
+      "mandatory_counts": {
+        "pass": 0,
+        "proven_failure": 0,
+        "blocked": 0,
+        "unresolved": 0,
+        "waived_failure": 0,
+        "excluded": 2
+      },
+      "optional_counts": {
+        "pass": 0,
+        "proven_failure": 0,
+        "blocked": 0,
+        "unresolved": 0,
+        "waived_failure": 0,
+        "excluded": 0
+      },
+      "aggregate_result": {
+        "aggregate_id": "AGGREGATE-TEST-10-ALL-NA",
+        "snapshot_id": "TEST-SNAPSHOT",
+        "status": "NO_MANDATORY_REQUIREMENTS",
+        "mandatory_counts": {
+          "pass": 0,
+          "proven_failure": 0,
+          "blocked": 0,
+          "unresolved": 0,
+          "waived_failure": 0,
+          "excluded": 2
+        },
+        "optional_counts": {
+          "pass": 0,
+          "proven_failure": 0,
+          "blocked": 0,
+          "unresolved": 0,
+          "waived_failure": 0,
+          "excluded": 0
+        },
+        "schema_version": "13.3",
+        "aggregate_hash": "a0ea3192a145783045e86f944c9bfbffbba0c4b5ac74d964c3900f874c9a1887"
+      },
+      "pass": true
+    },
+    {
+      "vector_id": "TEST-11-EMPTY-SCOPE",
+      "requirements": [],
+      "expected": "NO_MANDATORY_REQUIREMENTS",
+      "actual": "NO_MANDATORY_REQUIREMENTS",
+      "mandatory_counts": {
+        "pass": 0,
+        "proven_failure": 0,
+        "blocked": 0,
+        "unresolved": 0,
+        "waived_failure": 0,
+        "excluded": 0
+      },
+      "optional_counts": {
+        "pass": 0,
+        "proven_failure": 0,
+        "blocked": 0,
+        "unresolved": 0,
+        "waived_failure": 0,
+        "excluded": 0
+      },
+      "aggregate_result": {
+        "aggregate_id": "AGGREGATE-TEST-11-EMPTY-SCOPE",
+        "snapshot_id": "TEST-SNAPSHOT",
+        "status": "NO_MANDATORY_REQUIREMENTS",
+        "mandatory_counts": {
+          "pass": 0,
+          "proven_failure": 0,
+          "blocked": 0,
+          "unresolved": 0,
+          "waived_failure": 0,
+          "excluded": 0
+        },
+        "optional_counts": {
+          "pass": 0,
+          "proven_failure": 0,
+          "blocked": 0,
+          "unresolved": 0,
+          "waived_failure": 0,
+          "excluded": 0
+        },
+        "schema_version": "13.3",
+        "aggregate_hash": "81ec79d6daa428bdfbbf85caf221ee75a522503ecbca876b124de18501692d68"
+      },
+      "pass": true
+    },
+    {
+      "vector_id": "TEST-12-PARTIAL",
+      "requirements": [
+        {
+          "requirement_id": "R1",
+          "mandatory": true,
+          "decision": "PARTIALLY_CONFORMANT",
+          "waiver_effective": false,
+          "applicable": true
+        }
+      ],
+      "expected": "UNVERIFIED",
+      "actual": "UNVERIFIED",
+      "mandatory_counts": {
+        "pass": 0,
+        "proven_failure": 0,
+        "blocked": 0,
+        "unresolved": 1,
+        "waived_failure": 0,
+        "excluded": 0
+      },
+      "optional_counts": {
+        "pass": 0,
+        "proven_failure": 0,
+        "blocked": 0,
+        "unresolved": 0,
+        "waived_failure": 0,
+        "excluded": 0
+      },
+      "aggregate_result": {
+        "aggregate_id": "AGGREGATE-TEST-12-PARTIAL",
+        "snapshot_id": "TEST-SNAPSHOT",
+        "status": "UNVERIFIED",
+        "mandatory_counts": {
+          "pass": 0,
+          "proven_failure": 0,
+          "blocked": 0,
+          "unresolved": 1,
+          "waived_failure": 0,
+          "excluded": 0
+        },
+        "optional_counts": {
+          "pass": 0,
+          "proven_failure": 0,
+          "blocked": 0,
+          "unresolved": 0,
+          "waived_failure": 0,
+          "excluded": 0
+        },
+        "schema_version": "13.3",
+        "aggregate_hash": "7c0a5d7922d86c5f0d79d6cb35d114ee1fcd6eededbb2143c39451efb59a51e0"
+      },
+      "pass": true
+    }
+  ],
+  "summary": {
+    "total": 12,
+    "passed": 12,
+    "failed": 0
+  }
+}

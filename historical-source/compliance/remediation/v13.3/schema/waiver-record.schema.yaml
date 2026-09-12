@@ -1,0 +1,74 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "WaiverRecord",
+  "type": "object",
+  "required": [
+    "waiver_id",
+    "audit_id",
+    "requirement_id",
+    "status",
+    "specification_snapshot",
+    "implementation_snapshot",
+    "effective_from",
+    "effective_until",
+    "scope",
+    "schema_version",
+    "waiver_hash"
+  ],
+  "properties": {
+    "waiver_id": {
+      "type": "string",
+      "pattern": "^[A-Za-z0-9][A-Za-z0-9._:/-]*$"
+    },
+    "audit_id": {
+      "type": "string",
+      "pattern": "^[A-Za-z0-9][A-Za-z0-9._:/-]*$"
+    },
+    "requirement_id": {
+      "type": "string",
+      "pattern": "^[A-Za-z0-9][A-Za-z0-9._:/-]*$"
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "EFFECTIVE",
+        "REVOKED",
+        "EXPIRED",
+        "SUPERSEDED"
+      ]
+    },
+    "specification_snapshot": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$"
+    },
+    "implementation_snapshot": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$"
+    },
+    "effective_from": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "effective_until": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "scope": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "string"
+      },
+      "uniqueItems": true
+    },
+    "schema_version": {
+      "const": "13.3"
+    },
+    "waiver_hash": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$"
+    }
+  },
+  "additionalProperties": false,
+  "$id": "https://generic-discovery-engine.invalid/compliance/v13.3/waiver-record.schema.yaml"
+}

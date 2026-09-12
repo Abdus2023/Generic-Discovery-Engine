@@ -1,0 +1,759 @@
+{
+  "schema_version": "13.3",
+  "synthetic_non_normative": true,
+  "vectors": [
+    {
+      "vector_id": "VALID_HISTORY",
+      "events": [
+        {
+          "transition_id": "TEST-T0",
+          "object_type": "FINDING",
+          "object_id": "TEST-FINDING",
+          "from_state": null,
+          "to_state": "OPEN",
+          "reason": "BASELINE_IMPORT: establish v13.3 executable lineage without reconstructing earlier transition chronology",
+          "evidence_refs": [
+            "TEST-EVIDENCE"
+          ],
+          "actor": "PROTOCOL_V13_3_EXECUTABLE_IMPORT",
+          "occurred_at": "2026-09-12T18:11:09Z",
+          "sequence": 0,
+          "previous_transition": null,
+          "schema_version": "13.3",
+          "event_hash": "6187f09178aec035bcd407148ad1dd8111f56d0342ce87ae940f2b7a69873ded"
+        },
+        {
+          "transition_id": "TEST-T1",
+          "object_type": "FINDING",
+          "object_id": "TEST-FINDING",
+          "from_state": "OPEN",
+          "to_state": "UNDER_REMEDIATION",
+          "reason": "TEST_NORMAL",
+          "evidence_refs": [
+            "TEST-EVIDENCE"
+          ],
+          "actor": "PROTOCOL_V13_3_EXECUTABLE_IMPORT",
+          "occurred_at": "2026-09-12T18:11:09Z",
+          "sequence": 1,
+          "previous_transition": "TEST-T0",
+          "schema_version": "13.3",
+          "event_hash": "b887b9d9a4a3f3fecc6d30c3c1986901f7c3702ab0bd403b15aa936bc19108c0"
+        }
+      ],
+      "guard_contexts": [
+        {
+          "guard_context_id": "TEST-G0",
+          "transition_id": "TEST-T0",
+          "guard_id": "BASELINE_IMPORT_GUARD",
+          "facts": {
+            "source_object_exists": true,
+            "source_state_matches": true,
+            "no_historical_reconstruction_claim": true
+          },
+          "evaluated_at": "2026-09-12T18:11:09Z",
+          "context_hash": "985fcb5d6fc843bd32c24336d54a5d01326af22985e8c4553e5bf6dbbc3d4f24"
+        },
+        {
+          "guard_context_id": "TEST-G1",
+          "transition_id": "TEST-T1",
+          "guard_id": "FINDING_OPEN_TO_UNDER_REMEDIATION",
+          "facts": {
+            "transition_basis_valid": true,
+            "required_evidence_resolves": true
+          },
+          "evaluated_at": "2026-09-12T18:11:09Z",
+          "context_hash": "9e466792ab04b6b6976a89541bc163781ebfefb1a91cf880a9969897f83affdd"
+        }
+      ],
+      "expected_result": "VALID",
+      "actual_result": "VALID",
+      "expected_failure_code": null,
+      "actual_failure_code": null,
+      "failure": null,
+      "pass": true
+    },
+    {
+      "vector_id": "SEQUENCE_GAP",
+      "events": [
+        {
+          "transition_id": "TEST-T0",
+          "object_type": "FINDING",
+          "object_id": "TEST-FINDING",
+          "from_state": null,
+          "to_state": "OPEN",
+          "reason": "BASELINE_IMPORT: establish v13.3 executable lineage without reconstructing earlier transition chronology",
+          "evidence_refs": [
+            "TEST-EVIDENCE"
+          ],
+          "actor": "PROTOCOL_V13_3_EXECUTABLE_IMPORT",
+          "occurred_at": "2026-09-12T18:11:09Z",
+          "sequence": 0,
+          "previous_transition": null,
+          "schema_version": "13.3",
+          "event_hash": "6187f09178aec035bcd407148ad1dd8111f56d0342ce87ae940f2b7a69873ded"
+        },
+        {
+          "transition_id": "TEST-T1",
+          "object_type": "FINDING",
+          "object_id": "TEST-FINDING",
+          "from_state": "OPEN",
+          "to_state": "UNDER_REMEDIATION",
+          "reason": "TEST_NORMAL",
+          "evidence_refs": [
+            "TEST-EVIDENCE"
+          ],
+          "actor": "PROTOCOL_V13_3_EXECUTABLE_IMPORT",
+          "occurred_at": "2026-09-12T18:11:09Z",
+          "sequence": 2,
+          "previous_transition": "TEST-T0",
+          "schema_version": "13.3",
+          "event_hash": "74a92b4ab0f047f067724104b93507d653943108c170f37a26b51baf591691f4"
+        }
+      ],
+      "guard_contexts": [
+        {
+          "guard_context_id": "TEST-G0",
+          "transition_id": "TEST-T0",
+          "guard_id": "BASELINE_IMPORT_GUARD",
+          "facts": {
+            "source_object_exists": true,
+            "source_state_matches": true,
+            "no_historical_reconstruction_claim": true
+          },
+          "evaluated_at": "2026-09-12T18:11:09Z",
+          "context_hash": "985fcb5d6fc843bd32c24336d54a5d01326af22985e8c4553e5bf6dbbc3d4f24"
+        },
+        {
+          "guard_context_id": "TEST-G1",
+          "transition_id": "TEST-T1",
+          "guard_id": "FINDING_OPEN_TO_UNDER_REMEDIATION",
+          "facts": {
+            "transition_basis_valid": true,
+            "required_evidence_resolves": true
+          },
+          "evaluated_at": "2026-09-12T18:11:09Z",
+          "context_hash": "9e466792ab04b6b6976a89541bc163781ebfefb1a91cf880a9969897f83affdd"
+        }
+      ],
+      "expected_result": "HISTORY_INVALID",
+      "actual_result": "HISTORY_INVALID",
+      "expected_failure_code": "SEQUENCE_GAP",
+      "actual_failure_code": "SEQUENCE_GAP",
+      "failure": {
+        "history_failure_id": "HISTORY-FAILURE-TEST-FINDING-SEQUENCE_GAP",
+        "object_id": "TEST-FINDING",
+        "failure_code": "SEQUENCE_GAP",
+        "transition_id": null,
+        "detected_at": "2026-09-12T18:11:09Z",
+        "schema_version": "13.3",
+        "failure_hash": "d5d78de967a2cec767d36538f7599676c8ba6ace144c84f4c3ecdd4e64b0808f"
+      },
+      "pass": true
+    },
+    {
+      "vector_id": "DUPLICATE_SEQUENCE",
+      "events": [
+        {
+          "transition_id": "TEST-T0",
+          "object_type": "FINDING",
+          "object_id": "TEST-FINDING",
+          "from_state": null,
+          "to_state": "OPEN",
+          "reason": "BASELINE_IMPORT: establish v13.3 executable lineage without reconstructing earlier transition chronology",
+          "evidence_refs": [
+            "TEST-EVIDENCE"
+          ],
+          "actor": "PROTOCOL_V13_3_EXECUTABLE_IMPORT",
+          "occurred_at": "2026-09-12T18:11:09Z",
+          "sequence": 0,
+          "previous_transition": null,
+          "schema_version": "13.3",
+          "event_hash": "6187f09178aec035bcd407148ad1dd8111f56d0342ce87ae940f2b7a69873ded"
+        },
+        {
+          "transition_id": "TEST-T0",
+          "object_type": "FINDING",
+          "object_id": "TEST-FINDING",
+          "from_state": null,
+          "to_state": "OPEN",
+          "reason": "BASELINE_IMPORT: establish v13.3 executable lineage without reconstructing earlier transition chronology",
+          "evidence_refs": [
+            "TEST-EVIDENCE"
+          ],
+          "actor": "PROTOCOL_V13_3_EXECUTABLE_IMPORT",
+          "occurred_at": "2026-09-12T18:11:09Z",
+          "sequence": 0,
+          "previous_transition": null,
+          "schema_version": "13.3",
+          "event_hash": "6187f09178aec035bcd407148ad1dd8111f56d0342ce87ae940f2b7a69873ded"
+        }
+      ],
+      "guard_contexts": [
+        {
+          "guard_context_id": "TEST-G0",
+          "transition_id": "TEST-T0",
+          "guard_id": "BASELINE_IMPORT_GUARD",
+          "facts": {
+            "source_object_exists": true,
+            "source_state_matches": true,
+            "no_historical_reconstruction_claim": true
+          },
+          "evaluated_at": "2026-09-12T18:11:09Z",
+          "context_hash": "985fcb5d6fc843bd32c24336d54a5d01326af22985e8c4553e5bf6dbbc3d4f24"
+        }
+      ],
+      "expected_result": "HISTORY_INVALID",
+      "actual_result": "HISTORY_INVALID",
+      "expected_failure_code": "DUPLICATE_SEQUENCE",
+      "actual_failure_code": "DUPLICATE_SEQUENCE",
+      "failure": {
+        "history_failure_id": "HISTORY-FAILURE-TEST-FINDING-DUPLICATE_SEQUENCE",
+        "object_id": "TEST-FINDING",
+        "failure_code": "DUPLICATE_SEQUENCE",
+        "transition_id": null,
+        "detected_at": "2026-09-12T18:11:09Z",
+        "schema_version": "13.3",
+        "failure_hash": "170b2bc12a570663855479c556a03b499c3f1d606e3b653f7e0acfa2f2aa0f15"
+      },
+      "pass": true
+    },
+    {
+      "vector_id": "PREDECESSOR_MISMATCH",
+      "events": [
+        {
+          "transition_id": "TEST-T0",
+          "object_type": "FINDING",
+          "object_id": "TEST-FINDING",
+          "from_state": null,
+          "to_state": "OPEN",
+          "reason": "BASELINE_IMPORT: establish v13.3 executable lineage without reconstructing earlier transition chronology",
+          "evidence_refs": [
+            "TEST-EVIDENCE"
+          ],
+          "actor": "PROTOCOL_V13_3_EXECUTABLE_IMPORT",
+          "occurred_at": "2026-09-12T18:11:09Z",
+          "sequence": 0,
+          "previous_transition": null,
+          "schema_version": "13.3",
+          "event_hash": "6187f09178aec035bcd407148ad1dd8111f56d0342ce87ae940f2b7a69873ded"
+        },
+        {
+          "transition_id": "TEST-T1",
+          "object_type": "FINDING",
+          "object_id": "TEST-FINDING",
+          "from_state": "OPEN",
+          "to_state": "UNDER_REMEDIATION",
+          "reason": "TEST_NORMAL",
+          "evidence_refs": [
+            "TEST-EVIDENCE"
+          ],
+          "actor": "PROTOCOL_V13_3_EXECUTABLE_IMPORT",
+          "occurred_at": "2026-09-12T18:11:09Z",
+          "sequence": 1,
+          "previous_transition": "WRONG",
+          "schema_version": "13.3",
+          "event_hash": "5b492d42a6259428a23403d56b8d4ad75d6d1f6874b058b85b512db0a04960ab"
+        }
+      ],
+      "guard_contexts": [
+        {
+          "guard_context_id": "TEST-G0",
+          "transition_id": "TEST-T0",
+          "guard_id": "BASELINE_IMPORT_GUARD",
+          "facts": {
+            "source_object_exists": true,
+            "source_state_matches": true,
+            "no_historical_reconstruction_claim": true
+          },
+          "evaluated_at": "2026-09-12T18:11:09Z",
+          "context_hash": "985fcb5d6fc843bd32c24336d54a5d01326af22985e8c4553e5bf6dbbc3d4f24"
+        },
+        {
+          "guard_context_id": "TEST-G1",
+          "transition_id": "TEST-T1",
+          "guard_id": "FINDING_OPEN_TO_UNDER_REMEDIATION",
+          "facts": {
+            "transition_basis_valid": true,
+            "required_evidence_resolves": true
+          },
+          "evaluated_at": "2026-09-12T18:11:09Z",
+          "context_hash": "9e466792ab04b6b6976a89541bc163781ebfefb1a91cf880a9969897f83affdd"
+        }
+      ],
+      "expected_result": "HISTORY_INVALID",
+      "actual_result": "HISTORY_INVALID",
+      "expected_failure_code": "PREDECESSOR_MISMATCH",
+      "actual_failure_code": "PREDECESSOR_MISMATCH",
+      "failure": {
+        "history_failure_id": "HISTORY-FAILURE-TEST-FINDING-PREDECESSOR_MISMATCH",
+        "object_id": "TEST-FINDING",
+        "failure_code": "PREDECESSOR_MISMATCH",
+        "transition_id": "TEST-T1",
+        "detected_at": "2026-09-12T18:11:09Z",
+        "schema_version": "13.3",
+        "failure_hash": "829c26712e97fb8262be75ea439d9a5b2df03dda346cb53eafb864dd9732894e"
+      },
+      "pass": true
+    },
+    {
+      "vector_id": "STATE_MISMATCH",
+      "events": [
+        {
+          "transition_id": "TEST-T0",
+          "object_type": "FINDING",
+          "object_id": "TEST-FINDING",
+          "from_state": null,
+          "to_state": "OPEN",
+          "reason": "BASELINE_IMPORT: establish v13.3 executable lineage without reconstructing earlier transition chronology",
+          "evidence_refs": [
+            "TEST-EVIDENCE"
+          ],
+          "actor": "PROTOCOL_V13_3_EXECUTABLE_IMPORT",
+          "occurred_at": "2026-09-12T18:11:09Z",
+          "sequence": 0,
+          "previous_transition": null,
+          "schema_version": "13.3",
+          "event_hash": "6187f09178aec035bcd407148ad1dd8111f56d0342ce87ae940f2b7a69873ded"
+        },
+        {
+          "transition_id": "TEST-T1",
+          "object_type": "FINDING",
+          "object_id": "TEST-FINDING",
+          "from_state": "DETECTED",
+          "to_state": "VALIDATED",
+          "reason": "TEST_NORMAL",
+          "evidence_refs": [
+            "TEST-EVIDENCE"
+          ],
+          "actor": "PROTOCOL_V13_3_EXECUTABLE_IMPORT",
+          "occurred_at": "2026-09-12T18:11:09Z",
+          "sequence": 1,
+          "previous_transition": "TEST-T0",
+          "schema_version": "13.3",
+          "event_hash": "02541eb02714d042f289a6909586a23a718254506ecbfdd8125ad219b9032735"
+        }
+      ],
+      "guard_contexts": [
+        {
+          "guard_context_id": "TEST-G0",
+          "transition_id": "TEST-T0",
+          "guard_id": "BASELINE_IMPORT_GUARD",
+          "facts": {
+            "source_object_exists": true,
+            "source_state_matches": true,
+            "no_historical_reconstruction_claim": true
+          },
+          "evaluated_at": "2026-09-12T18:11:09Z",
+          "context_hash": "985fcb5d6fc843bd32c24336d54a5d01326af22985e8c4553e5bf6dbbc3d4f24"
+        },
+        {
+          "guard_context_id": "TEST-G1",
+          "transition_id": "TEST-T1",
+          "guard_id": "FINDING_DETECTED_TO_VALIDATED",
+          "facts": {
+            "transition_basis_valid": true,
+            "required_evidence_resolves": true
+          },
+          "evaluated_at": "2026-09-12T18:11:09Z",
+          "context_hash": "99041a6e057be6ef9c5b663088a905c2938865ff711ce8312c36736d40f4f983"
+        }
+      ],
+      "expected_result": "HISTORY_INVALID",
+      "actual_result": "HISTORY_INVALID",
+      "expected_failure_code": "STATE_MISMATCH",
+      "actual_failure_code": "STATE_MISMATCH",
+      "failure": {
+        "history_failure_id": "HISTORY-FAILURE-TEST-FINDING-STATE_MISMATCH",
+        "object_id": "TEST-FINDING",
+        "failure_code": "STATE_MISMATCH",
+        "transition_id": "TEST-T1",
+        "detected_at": "2026-09-12T18:11:09Z",
+        "schema_version": "13.3",
+        "failure_hash": "d7b06f41d57cd14d2875b3e6e53af9ad73596416e3ef92c64410436f8d1fc5cc"
+      },
+      "pass": true
+    },
+    {
+      "vector_id": "ILLEGAL_TRANSITION",
+      "events": [
+        {
+          "transition_id": "TEST-T0",
+          "object_type": "FINDING",
+          "object_id": "TEST-FINDING",
+          "from_state": null,
+          "to_state": "OPEN",
+          "reason": "BASELINE_IMPORT: establish v13.3 executable lineage without reconstructing earlier transition chronology",
+          "evidence_refs": [
+            "TEST-EVIDENCE"
+          ],
+          "actor": "PROTOCOL_V13_3_EXECUTABLE_IMPORT",
+          "occurred_at": "2026-09-12T18:11:09Z",
+          "sequence": 0,
+          "previous_transition": null,
+          "schema_version": "13.3",
+          "event_hash": "6187f09178aec035bcd407148ad1dd8111f56d0342ce87ae940f2b7a69873ded"
+        },
+        {
+          "transition_id": "TEST-T1",
+          "object_type": "FINDING",
+          "object_id": "TEST-FINDING",
+          "from_state": "OPEN",
+          "to_state": "CLOSED",
+          "reason": "TEST_NORMAL",
+          "evidence_refs": [
+            "TEST-EVIDENCE"
+          ],
+          "actor": "PROTOCOL_V13_3_EXECUTABLE_IMPORT",
+          "occurred_at": "2026-09-12T18:11:09Z",
+          "sequence": 1,
+          "previous_transition": "TEST-T0",
+          "schema_version": "13.3",
+          "event_hash": "a4227baa890374ebf0e2565b3f64581681cbb7dd013229ff139d6f94c314a49a"
+        }
+      ],
+      "guard_contexts": [
+        {
+          "guard_context_id": "TEST-G0",
+          "transition_id": "TEST-T0",
+          "guard_id": "BASELINE_IMPORT_GUARD",
+          "facts": {
+            "source_object_exists": true,
+            "source_state_matches": true,
+            "no_historical_reconstruction_claim": true
+          },
+          "evaluated_at": "2026-09-12T18:11:09Z",
+          "context_hash": "985fcb5d6fc843bd32c24336d54a5d01326af22985e8c4553e5bf6dbbc3d4f24"
+        }
+      ],
+      "expected_result": "HISTORY_INVALID",
+      "actual_result": "HISTORY_INVALID",
+      "expected_failure_code": "ILLEGAL_TRANSITION",
+      "actual_failure_code": "ILLEGAL_TRANSITION",
+      "failure": {
+        "history_failure_id": "HISTORY-FAILURE-TEST-FINDING-ILLEGAL_TRANSITION",
+        "object_id": "TEST-FINDING",
+        "failure_code": "ILLEGAL_TRANSITION",
+        "transition_id": "TEST-T1",
+        "detected_at": "2026-09-12T18:11:09Z",
+        "schema_version": "13.3",
+        "failure_hash": "17434d8f788e13c30f30462ea949b94f8a3fd56a07422ae5c392a77042429adf"
+      },
+      "pass": true
+    },
+    {
+      "vector_id": "MISSING_EVIDENCE",
+      "events": [
+        {
+          "transition_id": "TEST-T0",
+          "object_type": "FINDING",
+          "object_id": "TEST-FINDING",
+          "from_state": null,
+          "to_state": "OPEN",
+          "reason": "BASELINE_IMPORT: establish v13.3 executable lineage without reconstructing earlier transition chronology",
+          "evidence_refs": [
+            "TEST-EVIDENCE"
+          ],
+          "actor": "PROTOCOL_V13_3_EXECUTABLE_IMPORT",
+          "occurred_at": "2026-09-12T18:11:09Z",
+          "sequence": 0,
+          "previous_transition": null,
+          "schema_version": "13.3",
+          "event_hash": "6187f09178aec035bcd407148ad1dd8111f56d0342ce87ae940f2b7a69873ded"
+        },
+        {
+          "transition_id": "TEST-T1",
+          "object_type": "FINDING",
+          "object_id": "TEST-FINDING",
+          "from_state": "OPEN",
+          "to_state": "UNDER_REMEDIATION",
+          "reason": "TEST_NORMAL",
+          "evidence_refs": [],
+          "actor": "PROTOCOL_V13_3_EXECUTABLE_IMPORT",
+          "occurred_at": "2026-09-12T18:11:09Z",
+          "sequence": 1,
+          "previous_transition": "TEST-T0",
+          "schema_version": "13.3",
+          "event_hash": "21be34191b2e4b922c37593f51921f7ad41c0aad3c4f4a0783e53f46ad95cdd3"
+        }
+      ],
+      "guard_contexts": [
+        {
+          "guard_context_id": "TEST-G0",
+          "transition_id": "TEST-T0",
+          "guard_id": "BASELINE_IMPORT_GUARD",
+          "facts": {
+            "source_object_exists": true,
+            "source_state_matches": true,
+            "no_historical_reconstruction_claim": true
+          },
+          "evaluated_at": "2026-09-12T18:11:09Z",
+          "context_hash": "985fcb5d6fc843bd32c24336d54a5d01326af22985e8c4553e5bf6dbbc3d4f24"
+        },
+        {
+          "guard_context_id": "TEST-G1",
+          "transition_id": "TEST-T1",
+          "guard_id": "FINDING_OPEN_TO_UNDER_REMEDIATION",
+          "facts": {
+            "transition_basis_valid": true,
+            "required_evidence_resolves": true
+          },
+          "evaluated_at": "2026-09-12T18:11:09Z",
+          "context_hash": "9e466792ab04b6b6976a89541bc163781ebfefb1a91cf880a9969897f83affdd"
+        }
+      ],
+      "expected_result": "HISTORY_INVALID",
+      "actual_result": "HISTORY_INVALID",
+      "expected_failure_code": "MISSING_EVIDENCE",
+      "actual_failure_code": "MISSING_EVIDENCE",
+      "failure": {
+        "history_failure_id": "HISTORY-FAILURE-TEST-FINDING-MISSING_EVIDENCE",
+        "object_id": "TEST-FINDING",
+        "failure_code": "MISSING_EVIDENCE",
+        "transition_id": "TEST-T1",
+        "detected_at": "2026-09-12T18:11:09Z",
+        "schema_version": "13.3",
+        "failure_hash": "d13332d67b990dc085031b889f0798b71ed15cb9a0937adfdba2d97df22632aa"
+      },
+      "pass": true
+    },
+    {
+      "vector_id": "INVALID_HASH",
+      "events": [
+        {
+          "transition_id": "TEST-T0",
+          "object_type": "FINDING",
+          "object_id": "TEST-FINDING",
+          "from_state": null,
+          "to_state": "OPEN",
+          "reason": "BASELINE_IMPORT: establish v13.3 executable lineage without reconstructing earlier transition chronology",
+          "evidence_refs": [
+            "TEST-EVIDENCE"
+          ],
+          "actor": "PROTOCOL_V13_3_EXECUTABLE_IMPORT",
+          "occurred_at": "2026-09-12T18:11:09Z",
+          "sequence": 0,
+          "previous_transition": null,
+          "schema_version": "13.3",
+          "event_hash": "6187f09178aec035bcd407148ad1dd8111f56d0342ce87ae940f2b7a69873ded"
+        },
+        {
+          "transition_id": "TEST-T1",
+          "object_type": "FINDING",
+          "object_id": "TEST-FINDING",
+          "from_state": "OPEN",
+          "to_state": "UNDER_REMEDIATION",
+          "reason": "TEST_NORMAL",
+          "evidence_refs": [
+            "TEST-EVIDENCE"
+          ],
+          "actor": "PROTOCOL_V13_3_EXECUTABLE_IMPORT",
+          "occurred_at": "2026-09-12T18:11:09Z",
+          "sequence": 1,
+          "previous_transition": "TEST-T0",
+          "schema_version": "13.3",
+          "event_hash": "0000000000000000000000000000000000000000000000000000000000000000"
+        }
+      ],
+      "guard_contexts": [
+        {
+          "guard_context_id": "TEST-G0",
+          "transition_id": "TEST-T0",
+          "guard_id": "BASELINE_IMPORT_GUARD",
+          "facts": {
+            "source_object_exists": true,
+            "source_state_matches": true,
+            "no_historical_reconstruction_claim": true
+          },
+          "evaluated_at": "2026-09-12T18:11:09Z",
+          "context_hash": "985fcb5d6fc843bd32c24336d54a5d01326af22985e8c4553e5bf6dbbc3d4f24"
+        },
+        {
+          "guard_context_id": "TEST-G1",
+          "transition_id": "TEST-T1",
+          "guard_id": "FINDING_OPEN_TO_UNDER_REMEDIATION",
+          "facts": {
+            "transition_basis_valid": true,
+            "required_evidence_resolves": true
+          },
+          "evaluated_at": "2026-09-12T18:11:09Z",
+          "context_hash": "9e466792ab04b6b6976a89541bc163781ebfefb1a91cf880a9969897f83affdd"
+        }
+      ],
+      "expected_result": "HISTORY_INVALID",
+      "actual_result": "HISTORY_INVALID",
+      "expected_failure_code": "INVALID_HASH",
+      "actual_failure_code": "INVALID_HASH",
+      "failure": {
+        "history_failure_id": "HISTORY-FAILURE-TEST-FINDING-INVALID_HASH",
+        "object_id": "TEST-FINDING",
+        "failure_code": "INVALID_HASH",
+        "transition_id": "TEST-T1",
+        "detected_at": "2026-09-12T18:11:09Z",
+        "schema_version": "13.3",
+        "failure_hash": "43c382b9afb5c96c98fc6789a1d0e931b52e5af5292fa54f6201c8ba162a66f7"
+      },
+      "pass": true
+    },
+    {
+      "vector_id": "TIMESTAMP_VIOLATION",
+      "events": [
+        {
+          "transition_id": "TEST-T0",
+          "object_type": "FINDING",
+          "object_id": "TEST-FINDING",
+          "from_state": null,
+          "to_state": "OPEN",
+          "reason": "BASELINE_IMPORT: establish v13.3 executable lineage without reconstructing earlier transition chronology",
+          "evidence_refs": [
+            "TEST-EVIDENCE"
+          ],
+          "actor": "PROTOCOL_V13_3_EXECUTABLE_IMPORT",
+          "occurred_at": "2026-09-12T18:11:09Z",
+          "sequence": 0,
+          "previous_transition": null,
+          "schema_version": "13.3",
+          "event_hash": "6187f09178aec035bcd407148ad1dd8111f56d0342ce87ae940f2b7a69873ded"
+        },
+        {
+          "transition_id": "TEST-T1",
+          "object_type": "FINDING",
+          "object_id": "TEST-FINDING",
+          "from_state": "OPEN",
+          "to_state": "UNDER_REMEDIATION",
+          "reason": "TEST_NORMAL",
+          "evidence_refs": [
+            "TEST-EVIDENCE"
+          ],
+          "actor": "PROTOCOL_V13_3_EXECUTABLE_IMPORT",
+          "occurred_at": "invalid",
+          "sequence": 1,
+          "previous_transition": "TEST-T0",
+          "schema_version": "13.3",
+          "event_hash": "25287ad9d922b8747f4170bb97ccc2e3a731d2aa227ad588ece9b967e8b1e219"
+        }
+      ],
+      "guard_contexts": [
+        {
+          "guard_context_id": "TEST-G0",
+          "transition_id": "TEST-T0",
+          "guard_id": "BASELINE_IMPORT_GUARD",
+          "facts": {
+            "source_object_exists": true,
+            "source_state_matches": true,
+            "no_historical_reconstruction_claim": true
+          },
+          "evaluated_at": "2026-09-12T18:11:09Z",
+          "context_hash": "985fcb5d6fc843bd32c24336d54a5d01326af22985e8c4553e5bf6dbbc3d4f24"
+        },
+        {
+          "guard_context_id": "TEST-G1",
+          "transition_id": "TEST-T1",
+          "guard_id": "FINDING_OPEN_TO_UNDER_REMEDIATION",
+          "facts": {
+            "transition_basis_valid": true,
+            "required_evidence_resolves": true
+          },
+          "evaluated_at": "2026-09-12T18:11:09Z",
+          "context_hash": "9e466792ab04b6b6976a89541bc163781ebfefb1a91cf880a9969897f83affdd"
+        }
+      ],
+      "expected_result": "HISTORY_INVALID",
+      "actual_result": "HISTORY_INVALID",
+      "expected_failure_code": "TIMESTAMP_VIOLATION",
+      "actual_failure_code": "TIMESTAMP_VIOLATION",
+      "failure": {
+        "history_failure_id": "HISTORY-FAILURE-TEST-FINDING-TIMESTAMP_VIOLATION",
+        "object_id": "TEST-FINDING",
+        "failure_code": "TIMESTAMP_VIOLATION",
+        "transition_id": "TEST-T1",
+        "detected_at": "2026-09-12T18:11:09Z",
+        "schema_version": "13.3",
+        "failure_hash": "4fa039cb964654a82f1c351d5a153433bd3e13d9020ecff20793b73c3f30e00c"
+      },
+      "pass": true
+    },
+    {
+      "vector_id": "GUARD_UNSATISFIED",
+      "events": [
+        {
+          "transition_id": "TEST-T0",
+          "object_type": "FINDING",
+          "object_id": "TEST-FINDING",
+          "from_state": null,
+          "to_state": "OPEN",
+          "reason": "BASELINE_IMPORT: establish v13.3 executable lineage without reconstructing earlier transition chronology",
+          "evidence_refs": [
+            "TEST-EVIDENCE"
+          ],
+          "actor": "PROTOCOL_V13_3_EXECUTABLE_IMPORT",
+          "occurred_at": "2026-09-12T18:11:09Z",
+          "sequence": 0,
+          "previous_transition": null,
+          "schema_version": "13.3",
+          "event_hash": "6187f09178aec035bcd407148ad1dd8111f56d0342ce87ae940f2b7a69873ded"
+        },
+        {
+          "transition_id": "TEST-T1",
+          "object_type": "FINDING",
+          "object_id": "TEST-FINDING",
+          "from_state": "OPEN",
+          "to_state": "UNDER_REMEDIATION",
+          "reason": "TEST_NORMAL",
+          "evidence_refs": [
+            "TEST-EVIDENCE"
+          ],
+          "actor": "PROTOCOL_V13_3_EXECUTABLE_IMPORT",
+          "occurred_at": "2026-09-12T18:11:09Z",
+          "sequence": 1,
+          "previous_transition": "TEST-T0",
+          "schema_version": "13.3",
+          "event_hash": "b887b9d9a4a3f3fecc6d30c3c1986901f7c3702ab0bd403b15aa936bc19108c0"
+        }
+      ],
+      "guard_contexts": [
+        {
+          "guard_context_id": "TEST-G0",
+          "transition_id": "TEST-T0",
+          "guard_id": "BASELINE_IMPORT_GUARD",
+          "facts": {
+            "source_object_exists": true,
+            "source_state_matches": true,
+            "no_historical_reconstruction_claim": true
+          },
+          "evaluated_at": "2026-09-12T18:11:09Z",
+          "context_hash": "985fcb5d6fc843bd32c24336d54a5d01326af22985e8c4553e5bf6dbbc3d4f24"
+        },
+        {
+          "guard_context_id": "TEST-G1",
+          "transition_id": "TEST-T1",
+          "guard_id": "FINDING_OPEN_TO_UNDER_REMEDIATION",
+          "facts": {
+            "transition_basis_valid": false,
+            "required_evidence_resolves": true
+          },
+          "evaluated_at": "2026-09-12T18:11:09Z",
+          "context_hash": "94ffed6131af7ed4c6b405577786f41ae0644963cf5567ca9eddddea79e8eed7"
+        }
+      ],
+      "expected_result": "HISTORY_INVALID",
+      "actual_result": "HISTORY_INVALID",
+      "expected_failure_code": "ILLEGAL_TRANSITION",
+      "actual_failure_code": "ILLEGAL_TRANSITION",
+      "failure": {
+        "history_failure_id": "HISTORY-FAILURE-TEST-FINDING-ILLEGAL_TRANSITION",
+        "object_id": "TEST-FINDING",
+        "failure_code": "ILLEGAL_TRANSITION",
+        "transition_id": "TEST-T1",
+        "detected_at": "2026-09-12T18:11:09Z",
+        "schema_version": "13.3",
+        "failure_hash": "17434d8f788e13c30f30462ea949b94f8a3fd56a07422ae5c392a77042429adf"
+      },
+      "pass": true
+    }
+  ],
+  "summary": {
+    "total": 10,
+    "passed": 10,
+    "failed": 0
+  }
+}

@@ -1,0 +1,19 @@
+{
+  "schema_version": "13.3",
+  "conjunction": [
+    "object_exists",
+    "object_type_valid",
+    "state_names_valid",
+    "sequence_valid",
+    "predecessor_valid",
+    "from_state_matches",
+    "transition_is_legal",
+    "guard_satisfied",
+    "evidence_valid",
+    "timestamp_valid",
+    "hash_valid"
+  ],
+  "valid_result": "VALID_TRANSITION",
+  "invalid_result": "TRANSITION_INVALID",
+  "skip_invalid": false
+}

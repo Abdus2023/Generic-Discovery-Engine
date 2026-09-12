@@ -1,0 +1,120 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "AggregateResult",
+  "type": "object",
+  "required": [
+    "aggregate_id",
+    "snapshot_id",
+    "status",
+    "mandatory_counts",
+    "optional_counts",
+    "schema_version",
+    "aggregate_hash"
+  ],
+  "properties": {
+    "aggregate_id": {
+      "type": "string",
+      "pattern": "^[A-Za-z0-9][A-Za-z0-9._:/-]*$"
+    },
+    "snapshot_id": {
+      "type": "string",
+      "pattern": "^[A-Za-z0-9][A-Za-z0-9._:/-]*$"
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "NON_COMPLIANT",
+        "BLOCKED",
+        "UNVERIFIED",
+        "CONDITIONALLY_COMPLIANT",
+        "COMPLIANT",
+        "NO_MANDATORY_REQUIREMENTS"
+      ]
+    },
+    "mandatory_counts": {
+      "type": "object",
+      "required": [
+        "pass",
+        "proven_failure",
+        "blocked",
+        "unresolved",
+        "waived_failure",
+        "excluded"
+      ],
+      "properties": {
+        "pass": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "proven_failure": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "blocked": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "unresolved": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "waived_failure": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "excluded": {
+          "type": "integer",
+          "minimum": 0
+        }
+      },
+      "additionalProperties": false
+    },
+    "optional_counts": {
+      "type": "object",
+      "required": [
+        "pass",
+        "proven_failure",
+        "blocked",
+        "unresolved",
+        "waived_failure",
+        "excluded"
+      ],
+      "properties": {
+        "pass": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "proven_failure": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "blocked": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "unresolved": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "waived_failure": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "excluded": {
+          "type": "integer",
+          "minimum": 0
+        }
+      },
+      "additionalProperties": false
+    },
+    "schema_version": {
+      "const": "13.3"
+    },
+    "aggregate_hash": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$"
+    }
+  },
+  "additionalProperties": false,
+  "$id": "https://generic-discovery-engine.invalid/compliance/v13.3/aggregate-result.schema.yaml"
+}

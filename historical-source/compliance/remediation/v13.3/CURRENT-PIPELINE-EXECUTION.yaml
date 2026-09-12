@@ -1,0 +1,102 @@
+{
+  "schema_version": "13.3",
+  "objects": [
+    {
+      "pipeline_execution_id": "PIPELINE-EXECUTION-V133-001",
+      "snapshot_id": "AUDIT-SNAPSHOT-V133-001",
+      "stages": [
+        {
+          "number": 1,
+          "stage": "LOAD_SPECIFICATION",
+          "status": "PASS"
+        },
+        {
+          "number": 2,
+          "stage": "VALIDATE_SPECIFICATION",
+          "status": "BLOCKED_STOP",
+          "failure": "SPEC_INVALID"
+        },
+        {
+          "number": 3,
+          "stage": "LOAD_AUDIT_SCOPE",
+          "status": "NOT_EXECUTED_UPSTREAM_STOP"
+        },
+        {
+          "number": 4,
+          "stage": "VALIDATE_SCOPE",
+          "status": "NOT_EXECUTED_UPSTREAM_STOP"
+        },
+        {
+          "number": 5,
+          "stage": "LOAD_STATE_HISTORIES",
+          "status": "NOT_EXECUTED_UPSTREAM_STOP"
+        },
+        {
+          "number": 6,
+          "stage": "VALIDATE_HISTORIES",
+          "status": "NOT_EXECUTED_UPSTREAM_STOP"
+        },
+        {
+          "number": 7,
+          "stage": "PROJECT_CURRENT_LIFECYCLE_STATES",
+          "status": "NOT_EXECUTED_UPSTREAM_STOP"
+        },
+        {
+          "number": 8,
+          "stage": "LOAD_DECISION_HISTORIES",
+          "status": "NOT_EXECUTED_UPSTREAM_STOP"
+        },
+        {
+          "number": 9,
+          "stage": "VALIDATE_DECISIONS",
+          "status": "NOT_EXECUTED_UPSTREAM_STOP"
+        },
+        {
+          "number": 10,
+          "stage": "PROJECT_CURRENT_DECISIONS",
+          "status": "NOT_EXECUTED_UPSTREAM_STOP"
+        },
+        {
+          "number": 11,
+          "stage": "RESOLVE_APPLICABILITY",
+          "status": "NOT_EXECUTED_UPSTREAM_STOP"
+        },
+        {
+          "number": 12,
+          "stage": "RESOLVE_WAIVERS",
+          "status": "NOT_EXECUTED_UPSTREAM_STOP"
+        },
+        {
+          "number": 13,
+          "stage": "CLASSIFY_REQUIREMENT_CONTRIBUTIONS",
+          "status": "NOT_EXECUTED_UPSTREAM_STOP"
+        },
+        {
+          "number": 14,
+          "stage": "APPLY_AGGREGATE_FUNCTION",
+          "status": "NOT_EXECUTED_UPSTREAM_STOP"
+        },
+        {
+          "number": 15,
+          "stage": "VALIDATE_AGGREGATE_INVARIANTS",
+          "status": "NOT_EXECUTED_UPSTREAM_STOP"
+        },
+        {
+          "number": 16,
+          "stage": "PRODUCE_AUDIT_RESULT",
+          "status": "NOT_EXECUTED_UPSTREAM_STOP"
+        },
+        {
+          "number": 17,
+          "stage": "OPTIONALLY_PRODUCE_CERTIFICATE",
+          "status": "NOT_EXECUTED_UPSTREAM_STOP"
+        }
+      ],
+      "result": "AUDIT_BLOCKED",
+      "stopped_at": 2,
+      "executed_at": "2026-09-12T18:11:09Z",
+      "schema_version": "13.3",
+      "execution_hash": "cf329559b6b374bdc095c38ff7e90b13abf89839b04adcdb6dfd896e51c82025"
+    }
+  ]
+}
