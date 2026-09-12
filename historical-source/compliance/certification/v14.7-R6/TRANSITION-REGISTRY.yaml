@@ -1,0 +1,77 @@
+{
+  "realization_version": "14.7-R6",
+  "semantic_version": "v14.7",
+  "epistemic_status": "SUPPORTED",
+  "objects": [
+    {
+      "transition_id": "CERT-01",
+      "domain": "CertificateLifecycle",
+      "source": "DRAFT",
+      "target": "CANCELLED"
+    },
+    {
+      "transition_id": "CERT-02",
+      "domain": "CertificateLifecycle",
+      "source": "DRAFT",
+      "target": "ISSUED"
+    },
+    {
+      "transition_id": "CERT-03",
+      "domain": "CertificateLifecycle",
+      "source": "ISSUED",
+      "target": "EXPIRED"
+    },
+    {
+      "transition_id": "CERT-04",
+      "domain": "CertificateLifecycle",
+      "source": "ISSUED",
+      "target": "REVOKED"
+    },
+    {
+      "transition_id": "CERT-05",
+      "domain": "CertificateLifecycle",
+      "source": "ISSUED",
+      "target": "SUPERSEDED"
+    },
+    {
+      "transition_id": "EXEC-01",
+      "domain": "ReleaseExecutionStatus",
+      "source": "FAILED",
+      "target": "ROLLED_BACK"
+    },
+    {
+      "transition_id": "EXEC-02",
+      "domain": "ReleaseExecutionStatus",
+      "source": "NOT_STARTED",
+      "target": "STARTED"
+    },
+    {
+      "transition_id": "EXEC-03",
+      "domain": "ReleaseExecutionStatus",
+      "source": "STARTED",
+      "target": "CANCELLED"
+    },
+    {
+      "transition_id": "EXEC-04",
+      "domain": "ReleaseExecutionStatus",
+      "source": "STARTED",
+      "target": "FAILED"
+    },
+    {
+      "transition_id": "EXEC-05",
+      "domain": "ReleaseExecutionStatus",
+      "source": "STARTED",
+      "target": "SUCCEEDED"
+    },
+    {
+      "transition_id": "EXEC-06",
+      "domain": "ReleaseExecutionStatus",
+      "source": "SUCCEEDED",
+      "target": "ROLLED_BACK"
+    }
+  ],
+  "count": 11,
+  "unlisted_transition": "ILLEGAL",
+  "remediation_transition_binding": "PROFILE_RULE_REQUIRED",
+  "finding_transition_binding": "PROFILE_RULE_REQUIRED"
+}

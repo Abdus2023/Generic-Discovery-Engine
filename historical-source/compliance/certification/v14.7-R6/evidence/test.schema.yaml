@@ -1,0 +1,72 @@
+{
+  "schema_language": "GDE-ABSTRACT-SCHEMA-1",
+  "schema_id": "TestDefinition",
+  "plane": "EVIDENCE",
+  "object_type": "TestDefinition",
+  "closed": true,
+  "required": [
+    "test_id",
+    "target_requirement_refs",
+    "operation",
+    "expected",
+    "profile_ref",
+    "content_hash"
+  ],
+  "optional": [
+    "setup"
+  ],
+  "fields": {
+    "test_id": {
+      "type": "string",
+      "nullable": false,
+      "identifier_domain": "TestId"
+    },
+    "target_requirement_refs": {
+      "type": "array",
+      "nullable": false,
+      "reference_domain": "RequirementId",
+      "unique": true
+    },
+    "operation": {
+      "type": "object",
+      "nullable": false
+    },
+    "expected": {
+      "type": "object",
+      "nullable": false
+    },
+    "profile_ref": {
+      "type": "string",
+      "nullable": false,
+      "reference_domain": "ProfileId"
+    },
+    "setup": {
+      "type": "object",
+      "nullable": true
+    },
+    "content_hash": {
+      "type": "string",
+      "nullable": false
+    }
+  },
+  "additional_fields": "FORBIDDEN",
+  "identifier_policy": "DISTINCT_SEMANTIC_DOMAINS",
+  "reference_policy": "TYPE_AND_INTEGRITY_CHECK_REQUIRED",
+  "cardinality_policy": "DECLARED_ARRAYS_ARE_ORDERED_AND_UNIQUE_UNLESS_EXPLICITLY_OVERRIDDEN",
+  "canonicalization_ref": "../v14.7-R5/CANONICAL-SERIALIZATION.yaml",
+  "hash": {
+    "domain": "r6-TestDefinition:v1",
+    "inputs": [
+      "test_id",
+      "target_requirement_refs",
+      "operation",
+      "expected",
+      "profile_ref"
+    ],
+    "excluded": [
+      "content_hash"
+    ]
+  },
+  "temporal_policy": "EXPLICIT_TRUSTED_TIME_AND_SCOPE",
+  "integrity_policy": "CONTENT_HASH_REQUIRED_SIGNATURE_WHEN_PROFILE_REQUIRES"
+}

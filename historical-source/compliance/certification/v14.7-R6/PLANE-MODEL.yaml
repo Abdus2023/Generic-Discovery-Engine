@@ -1,0 +1,49 @@
+{
+  "realization_version": "14.7-R6",
+  "semantic_version": "v14.7",
+  "epistemic_status": "SUPPORTED",
+  "objects": [
+    {
+      "plane": "NORMATIVE",
+      "contains": [
+        "Specification",
+        "NormativeRequirement",
+        "AcceptanceCriterion"
+      ]
+    },
+    {
+      "plane": "PROFILE",
+      "contains": [
+        "SerializationBinding",
+        "HashBinding",
+        "PolicyBinding"
+      ]
+    },
+    {
+      "plane": "IMPLEMENTATION",
+      "contains": [
+        "RustType",
+        "Validator",
+        "Evaluator"
+      ]
+    },
+    {
+      "plane": "EVIDENCE",
+      "contains": [
+        "Test",
+        "Observation",
+        "Evidence"
+      ]
+    },
+    {
+      "plane": "DECISION",
+      "contains": [
+        "Conformance",
+        "Authorization",
+        "Release"
+      ]
+    }
+  ],
+  "implicit_authority_inheritance": "FORBIDDEN",
+  "governing_rule": "NO_PLANE_MAY_ESTABLISH_A_STRONGER_CLAIM_THAN_ITS_AUTHORITY_AND_VALIDATED_INPUTS"
+}

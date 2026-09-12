@@ -1,0 +1,19 @@
+{
+  "rule_id": "R6-CONV-002",
+  "source_type": "EvaluationValue",
+  "target_type": "ConformanceInput",
+  "legal": {
+    "TRUE": "POTENTIALLY_CONFORMANT",
+    "FALSE": "POTENTIALLY_NON_CONFORMANT",
+    "UNKNOWN": "UNKNOWN",
+    "BLOCKED": "BLOCKED"
+  },
+  "forbidden": [
+    "INVALID"
+  ],
+  "evidence_required": true,
+  "policy_required": false,
+  "failure": "REJECTED",
+  "generic_convert": false,
+  "content_hash": "5ae71f3bffacfff05be3e2cae151f4384c2978c88b772b3bc48eff9b5af436be"
+}

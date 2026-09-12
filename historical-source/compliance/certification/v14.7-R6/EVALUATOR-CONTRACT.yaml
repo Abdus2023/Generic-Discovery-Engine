@@ -1,0 +1,17 @@
+{
+  "realization_version": "14.7-R6",
+  "semantic_version": "v14.7",
+  "epistemic_status": "SUPPORTED",
+  "interface": "evaluate(Predicate, ValidatedSubject, EvaluationContext) -> Result<EvaluationResult, EvaluationError>",
+  "ok_postcondition": "VALID_EVALUATION_RESULT",
+  "error_postcondition": "NO_VALID_EVALUATION_RESULT_PRODUCED",
+  "forbidden_operations": [
+    "ISSUE_CERTIFICATE",
+    "AUTHORIZE_OPERATION",
+    "APPROVE_RELEASE",
+    "MODIFY_POLICY",
+    "MODIFY_AUTHORITY",
+    "MUTATE_HISTORY",
+    "EXECUTE_RELEASE"
+  ]
+}

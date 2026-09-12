@@ -1,0 +1,67 @@
+{
+  "schema_language": "GDE-ABSTRACT-SCHEMA-1",
+  "schema_id": "AcceptanceCriterion",
+  "plane": "NORMATIVE",
+  "object_type": "AcceptanceCriterion",
+  "closed": true,
+  "required": [
+    "criterion_id",
+    "requirement_ref",
+    "predicate_ref",
+    "expected_result",
+    "content_hash"
+  ],
+  "optional": [
+    "evidence_requirements"
+  ],
+  "fields": {
+    "criterion_id": {
+      "type": "string",
+      "nullable": false,
+      "identifier_domain": "AcceptanceCriterionId"
+    },
+    "requirement_ref": {
+      "type": "string",
+      "nullable": false,
+      "reference_domain": "RequirementId"
+    },
+    "predicate_ref": {
+      "type": "string",
+      "nullable": false,
+      "reference_domain": "PredicateId"
+    },
+    "expected_result": {
+      "type": "string",
+      "nullable": false,
+      "enum_domain": "EvaluationValue"
+    },
+    "evidence_requirements": {
+      "type": "array",
+      "nullable": false,
+      "unique": true
+    },
+    "content_hash": {
+      "type": "string",
+      "nullable": false
+    }
+  },
+  "additional_fields": "FORBIDDEN",
+  "identifier_policy": "DISTINCT_SEMANTIC_DOMAINS",
+  "reference_policy": "TYPE_AND_INTEGRITY_CHECK_REQUIRED",
+  "cardinality_policy": "DECLARED_ARRAYS_ARE_ORDERED_AND_UNIQUE_UNLESS_EXPLICITLY_OVERRIDDEN",
+  "canonicalization_ref": "../v14.7-R5/CANONICAL-SERIALIZATION.yaml",
+  "hash": {
+    "domain": "r6-AcceptanceCriterion:v1",
+    "inputs": [
+      "criterion_id",
+      "requirement_ref",
+      "predicate_ref",
+      "expected_result"
+    ],
+    "excluded": [
+      "content_hash"
+    ]
+  },
+  "temporal_policy": "EXPLICIT_TRUSTED_TIME_AND_SCOPE",
+  "integrity_policy": "CONTENT_HASH_REQUIRED_SIGNATURE_WHEN_PROFILE_REQUIRES"
+}

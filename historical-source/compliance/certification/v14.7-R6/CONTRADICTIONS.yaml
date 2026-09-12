@@ -1,0 +1,33 @@
+{
+  "realization_version": "14.7-R6",
+  "semantic_version": "v14.7",
+  "epistemic_status": "SUPPORTED",
+  "objects": [
+    {
+      "id": "R6-C-001",
+      "kind": "REPRESENTATION_OMISSION",
+      "issue": "Supplied R6 abbreviated enum list omits EventValidation, EventCommit, and Projection frozen in R5.",
+      "resolution": "Retain as inherited machine types.",
+      "semantic_state_change": false,
+      "status": "RESOLVED"
+    },
+    {
+      "id": "R6-C-002",
+      "kind": "REPRESENTATION_OMISSION",
+      "issue": "NormativeStrength is referenced but omitted from the supplied enum block.",
+      "resolution": "Retain inherited closed domain.",
+      "semantic_state_change": false,
+      "status": "RESOLVED"
+    },
+    {
+      "id": "R6-C-003",
+      "kind": "ERROR_TAXONOMY_OMISSION",
+      "issue": "Supplied R6 error list omits inherited dependency-unavailable coverage.",
+      "resolution": "Retain EVALUATOR_DEPENDENCY_UNAVAILABLE.",
+      "semantic_state_change": false,
+      "status": "RESOLVED"
+    }
+  ],
+  "unresolved_semantic_contradictions": 0,
+  "conclusion": "NO NEW SEMANTIC STATE REQUIRED"
+}

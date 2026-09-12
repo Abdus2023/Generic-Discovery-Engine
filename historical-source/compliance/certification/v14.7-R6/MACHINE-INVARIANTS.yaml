@@ -1,0 +1,134 @@
+{
+  "realization_version": "14.7-R6",
+  "semantic_version": "v14.7",
+  "epistemic_status": "SUPPORTED",
+  "objects": [
+    {
+      "invariant_id": "R6-I01",
+      "statement": "All normative states belong to closed enums.",
+      "test_ref": "R6-T-0532",
+      "status": "SATISFIED",
+      "content_hash": "fbb9a48cbef7e4553ff172bc0a0249beef4dd398549151712365c8db8547e887"
+    },
+    {
+      "invariant_id": "R6-I02",
+      "statement": "Unknown enum values cannot acquire semantic meaning.",
+      "test_ref": "R6-T-0533",
+      "status": "SATISFIED",
+      "content_hash": "dd4d7f7307f65b7bf0bed7589778bcdc73f64637486170bd6a00fd4039e6ef31"
+    },
+    {
+      "invariant_id": "R6-I03",
+      "statement": "Validation does not establish conformance.",
+      "test_ref": "R6-T-0534",
+      "status": "SATISFIED",
+      "content_hash": "529f01aeed9daf2cc8a16f5e3b7aed678e5a1faeffa0f4ea3d3b09f6a86cac06"
+    },
+    {
+      "invariant_id": "R6-I04",
+      "statement": "Evaluation does not establish authorization.",
+      "test_ref": "R6-T-0535",
+      "status": "SATISFIED",
+      "content_hash": "b4865f20828515afc1cff19f34705334b54148c03ba7b06cb6164aba32406acb"
+    },
+    {
+      "invariant_id": "R6-I05",
+      "statement": "Authorization does not establish execution.",
+      "test_ref": "R6-T-0536",
+      "status": "SATISFIED",
+      "content_hash": "e9d316dabc02e2aacfba418dcb914df39288179f3066f62f2dcfe67c659c0d7b"
+    },
+    {
+      "invariant_id": "R6-I06",
+      "statement": "Execution does not establish verification.",
+      "test_ref": "R6-T-0537",
+      "status": "SATISFIED",
+      "content_hash": "a19d03f1bbfc7a1c737138452291f831ed4921068de1f215dbee6f2307c40661"
+    },
+    {
+      "invariant_id": "R6-I07",
+      "statement": "Evaluator errors do not become semantic results without explicit policy.",
+      "test_ref": "R6-T-0538",
+      "status": "SATISFIED",
+      "content_hash": "b99b40d2df20140537ba22a880de764f1c84f5028ea67145f28e52ea031b381e"
+    },
+    {
+      "invariant_id": "R6-I08",
+      "statement": "Evaluator failure cannot become FALSE.",
+      "test_ref": "R6-T-0539",
+      "status": "SATISFIED",
+      "content_hash": "b9c9607b3d5fedc59aa9dde4c1a838f4a02eb95b2b3b5680c343675886f9fb58"
+    },
+    {
+      "invariant_id": "R6-I09",
+      "statement": "Implementation instructions cannot create normative requirements.",
+      "test_ref": "R6-T-0540",
+      "status": "SATISFIED",
+      "content_hash": "1bc2536fbed18b06caaddf420ead17a2dd95a37969bf4aac54b6159da4f52c6d"
+    },
+    {
+      "invariant_id": "R6-I10",
+      "statement": "Profile bindings cannot alter normative semantics.",
+      "test_ref": "R6-T-0541",
+      "status": "SATISFIED",
+      "content_hash": "6806576be1f4b91a09cfd92ba298f4751a029c7d4d968ef0d0c9ba46770b56f8"
+    },
+    {
+      "invariant_id": "R6-I11",
+      "statement": "ISSUED does not imply VALID.",
+      "test_ref": "R6-T-0542",
+      "status": "SATISFIED",
+      "content_hash": "ddf8762d00cd9c9cd515323a17299a34ebb638141f5b64a0a1f5de2244e60679"
+    },
+    {
+      "invariant_id": "R6-I12",
+      "statement": "APPROVED does not imply SUCCEEDED.",
+      "test_ref": "R6-T-0543",
+      "status": "SATISFIED",
+      "content_hash": "d1f8e043005a8fb1428228f41698b1a3e6b915b8d960c161e6a63449cf7ede9e"
+    },
+    {
+      "invariant_id": "R6-I13",
+      "statement": "Invalid events cannot enter committed history.",
+      "test_ref": "R6-T-0544",
+      "status": "SATISFIED",
+      "content_hash": "14c444ca983e8ae86c95a1f4cd83052285c7b77b4f82d5ec249c166872c56618"
+    },
+    {
+      "invariant_id": "R6-I14",
+      "statement": "Projection cannot mutate history.",
+      "test_ref": "R6-T-0545",
+      "status": "SATISFIED",
+      "content_hash": "507433ee549ce98a9f858ee1438b4be23a0165d29cd40e33eb9f57c19f32d191"
+    },
+    {
+      "invariant_id": "R6-I15",
+      "statement": "Decision-basis changes invalidate unconditional reuse.",
+      "test_ref": "R6-T-0546",
+      "status": "SATISFIED",
+      "content_hash": "331ceed7787246ec23c02fe82d10773838cf7e16e3a24ca5e7d4b0a55c375e8c"
+    },
+    {
+      "invariant_id": "R6-I16",
+      "statement": "Every semantic transition has explicit source and target domains.",
+      "test_ref": "R6-T-0547",
+      "status": "SATISFIED",
+      "content_hash": "30b6230375dee0e5394f5af472056c72414aedb5623bcb0be535f3c4a14d536f"
+    },
+    {
+      "invariant_id": "R6-I17",
+      "statement": "Every mandatory requirement receives deterministic conformance disposition.",
+      "test_ref": "R6-T-0548",
+      "status": "SATISFIED",
+      "content_hash": "e0bfb0358438bc82eb3a7d37f292ce4442bfd36aba02bb616512f08a80c566a6"
+    },
+    {
+      "invariant_id": "R6-I18",
+      "statement": "No stronger semantic state may be produced from weaker or invalid evidence.",
+      "test_ref": "R6-T-0549",
+      "status": "SATISFIED",
+      "content_hash": "8d9e4f90e3a1bd658d0c1eee5fcbaec27e012797bd67e38f5b290bd67a2a901e"
+    }
+  ],
+  "count": 18
+}

@@ -1,0 +1,98 @@
+{
+  "objects": [
+    {
+      "rule_id": "R6-CONV-001",
+      "source_type": "ValidationStatus",
+      "target_type": "EvaluationPermission",
+      "legal": {
+        "VALID": "PERMITTED",
+        "INVALID": "PROHIBITED",
+        "BLOCKED": "BLOCKED",
+        "UNKNOWN": "POLICY_REQUIRED"
+      },
+      "forbidden": [],
+      "evidence_required": true,
+      "policy_required": false,
+      "failure": "REJECTED",
+      "generic_convert": false,
+      "content_hash": "64a1e2132ed746a74fbaa3f5a2031e8f796b916133490c218ad9fe8f4d39f749"
+    },
+    {
+      "rule_id": "R6-CONV-002",
+      "source_type": "EvaluationValue",
+      "target_type": "ConformanceInput",
+      "legal": {
+        "TRUE": "POTENTIALLY_CONFORMANT",
+        "FALSE": "POTENTIALLY_NON_CONFORMANT",
+        "UNKNOWN": "UNKNOWN",
+        "BLOCKED": "BLOCKED"
+      },
+      "forbidden": [
+        "INVALID"
+      ],
+      "evidence_required": true,
+      "policy_required": false,
+      "failure": "REJECTED",
+      "generic_convert": false,
+      "content_hash": "5ae71f3bffacfff05be3e2cae151f4384c2978c88b772b3bc48eff9b5af436be"
+    },
+    {
+      "rule_id": "R6-CONV-003",
+      "source_type": "ConformanceStatus",
+      "target_type": "EligibilityInput",
+      "legal": {
+        "CONFORMANT": "PREDICATE_REQUIRED",
+        "PARTIALLY_CONFORMANT": "PREDICATE_REQUIRED",
+        "NON_CONFORMANT": "INELIGIBLE",
+        "UNVERIFIED": "UNKNOWN",
+        "BLOCKED": "BLOCKED",
+        "NOT_APPLICABLE": "UNKNOWN",
+        "UNKNOWN": "UNKNOWN"
+      },
+      "forbidden": [],
+      "evidence_required": true,
+      "policy_required": false,
+      "failure": "REJECTED",
+      "generic_convert": false,
+      "content_hash": "04f2bd68f8736db56d8907c4ccb1ab3fd3ef366d5fd6ccd43cf5182c4fca731a"
+    },
+    {
+      "rule_id": "R6-CONV-004",
+      "source_type": "ReleaseEligibility",
+      "target_type": "AuthorizationInput",
+      "legal": {
+        "ELIGIBLE": "PERMITTED",
+        "INELIGIBLE": "PROHIBITED",
+        "BLOCKED": "BLOCKED",
+        "UNKNOWN": "POLICY_REQUIRED"
+      },
+      "forbidden": [],
+      "evidence_required": true,
+      "policy_required": false,
+      "failure": "REJECTED",
+      "generic_convert": false,
+      "content_hash": "5c62df640898dc766740d0fb3460b02dc71ffc6d1563bf4b9583b3b693ed61a3"
+    },
+    {
+      "rule_id": "R6-CONV-005",
+      "source_type": "AuthorizationStatus",
+      "target_type": "DecisionInput",
+      "legal": {
+        "AUTHORIZED": "APPROVAL_PERMITTED",
+        "REFUSED": "REJECTED",
+        "BLOCKED": "BLOCKED",
+        "UNKNOWN": "POLICY_REQUIRED"
+      },
+      "forbidden": [
+        "INVALID"
+      ],
+      "evidence_required": true,
+      "policy_required": false,
+      "failure": "REJECTED",
+      "generic_convert": false,
+      "content_hash": "d3a708157e34b1f1f23a1cd19cd9cf95aa221b597f9fde9aa97b0a189a1c2a8e"
+    }
+  ],
+  "count": 5,
+  "generic_convert": "FORBIDDEN"
+}

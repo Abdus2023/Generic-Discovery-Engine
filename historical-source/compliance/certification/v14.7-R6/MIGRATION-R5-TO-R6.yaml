@@ -1,0 +1,39 @@
+{
+  "realization_version": "14.7-R6",
+  "semantic_version": "v14.7",
+  "epistemic_status": "SUPPORTED",
+  "source": "v14.7-R5",
+  "target": "14.7-R6",
+  "classification": "REPRESENTATION_REFINEMENT",
+  "machine_type_aliases": {
+    "Validation": "ValidationStatus",
+    "Evaluation": "EvaluationValue",
+    "Conformance": "ConformanceStatus",
+    "Authorization": "AuthorizationStatus",
+    "ReleaseDecision": "ReleaseDecisionStatus",
+    "ReleaseExecution": "ReleaseExecutionStatus",
+    "PostReleaseVerification": "PostReleaseVerificationStatus",
+    "Reuse": "ReuseStatus",
+    "Authority": "AuthorityStatus",
+    "AuthorityQualification": "AuthorityQualificationStatus",
+    "FindingLifecycle": "FindingStatus",
+    "Remediation": "RemediationStatus",
+    "EventValidation": "EventValidationStatus",
+    "EventCommit": "EventCommitStatus",
+    "Projection": "ProjectionStatus",
+    "CertificateLifecycle": "CertificateLifecycle",
+    "CertificateValidity": "CertificateValidity",
+    "ReleaseEligibility": "ReleaseEligibility",
+    "RequirementLifecycle": "RequirementLifecycle",
+    "NormativeStrength": "NormativeStrength"
+  },
+  "requires": [
+    "REVALIDATE_SCHEMA",
+    "REBIND_MACHINE_TYPE_NAMES",
+    "PRESERVE_R5_ERROR_COVERAGE",
+    "RETEST_TRANSITIONS",
+    "REHASH_R6_OBJECTS"
+  ],
+  "source_validity_transfers": false,
+  "new_semantic_states": false
+}

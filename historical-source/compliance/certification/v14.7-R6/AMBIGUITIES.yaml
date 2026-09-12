@@ -1,0 +1,31 @@
+{
+  "realization_version": "14.7-R6",
+  "semantic_version": "v14.7",
+  "epistemic_status": "SUPPORTED",
+  "resolved": [
+    {
+      "id": "R6-A-001",
+      "topic": "STATE_REPRESENTATION",
+      "resolution": "CLOSED_ENUM_REGISTRY"
+    },
+    {
+      "id": "R6-A-002",
+      "topic": "AUTHORITY_LEAKAGE",
+      "resolution": "FIVE_PLANES_AND_DISTINCT_OBJECTS"
+    },
+    {
+      "id": "R6-A-003",
+      "topic": "EVALUATOR_FAILURE",
+      "resolution": "RESULT_ERROR_SEPARATION"
+    }
+  ],
+  "remaining_implementation_only": [
+    "JSON_SCHEMA_DIALECT_BINDING",
+    "PRODUCTION_RUST_CRATE",
+    "PREDICATE_LANGUAGE",
+    "EVENT_STORE_BACKEND",
+    "CONCURRENCY",
+    "PROPERTY_TEST_FRAMEWORK",
+    "CI_TARGET_BINDING"
+  ]
+}

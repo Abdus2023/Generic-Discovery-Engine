@@ -1,0 +1,118 @@
+{
+  "schema_language": "GDE-ABSTRACT-SCHEMA-1",
+  "schema_id": "ValidationResult",
+  "plane": "IMPLEMENTATION",
+  "object_type": "ValidationResult",
+  "closed": true,
+  "required": [
+    "validation_id",
+    "subject_ref",
+    "status",
+    "validator_id",
+    "validator_version",
+    "validator_hash",
+    "input_hash",
+    "validated_at",
+    "scope",
+    "content_hash"
+  ],
+  "optional": [
+    "failure_codes",
+    "evidence_refs"
+  ],
+  "fields": {
+    "validation_id": {
+      "type": "string",
+      "nullable": false,
+      "identifier_domain": "ValidationId"
+    },
+    "subject_ref": {
+      "type": "string",
+      "nullable": false
+    },
+    "status": {
+      "type": "string",
+      "nullable": false,
+      "enum_domain": "ValidationStatus"
+    },
+    "failure_codes": {
+      "type": "array",
+      "nullable": false,
+      "unique": true
+    },
+    "evidence_refs": {
+      "type": "array",
+      "nullable": false,
+      "reference_domain": "EvidenceId",
+      "unique": true
+    },
+    "validator_id": {
+      "type": "string",
+      "nullable": false
+    },
+    "validator_version": {
+      "type": "string",
+      "nullable": false
+    },
+    "validator_hash": {
+      "type": "string",
+      "nullable": false
+    },
+    "input_hash": {
+      "type": "string",
+      "nullable": false
+    },
+    "validated_at": {
+      "type": "string",
+      "nullable": false
+    },
+    "scope": {
+      "type": "object",
+      "nullable": false,
+      "shape": {
+        "required": [
+          "scope_id",
+          "scope_expression"
+        ],
+        "fields": {
+          "scope_id": {
+            "type": "string"
+          },
+          "scope_expression": {
+            "type": "string"
+          }
+        },
+        "additional_fields": "FORBIDDEN"
+      },
+      "object_type": "Scope"
+    },
+    "content_hash": {
+      "type": "string",
+      "nullable": false
+    }
+  },
+  "additional_fields": "FORBIDDEN",
+  "identifier_policy": "DISTINCT_SEMANTIC_DOMAINS",
+  "reference_policy": "TYPE_AND_INTEGRITY_CHECK_REQUIRED",
+  "cardinality_policy": "DECLARED_ARRAYS_ARE_ORDERED_AND_UNIQUE_UNLESS_EXPLICITLY_OVERRIDDEN",
+  "canonicalization_ref": "../v14.7-R5/CANONICAL-SERIALIZATION.yaml",
+  "hash": {
+    "domain": "r6-ValidationResult:v1",
+    "inputs": [
+      "validation_id",
+      "subject_ref",
+      "status",
+      "validator_id",
+      "validator_version",
+      "validator_hash",
+      "input_hash",
+      "validated_at",
+      "scope"
+    ],
+    "excluded": [
+      "content_hash"
+    ]
+  },
+  "temporal_policy": "EXPLICIT_TRUSTED_TIME_AND_SCOPE",
+  "integrity_policy": "CONTENT_HASH_REQUIRED_SIGNATURE_WHEN_PROFILE_REQUIRES"
+}

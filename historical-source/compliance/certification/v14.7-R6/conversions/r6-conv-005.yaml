@@ -1,0 +1,19 @@
+{
+  "rule_id": "R6-CONV-005",
+  "source_type": "AuthorizationStatus",
+  "target_type": "DecisionInput",
+  "legal": {
+    "AUTHORIZED": "APPROVAL_PERMITTED",
+    "REFUSED": "REJECTED",
+    "BLOCKED": "BLOCKED",
+    "UNKNOWN": "POLICY_REQUIRED"
+  },
+  "forbidden": [
+    "INVALID"
+  ],
+  "evidence_required": true,
+  "policy_required": false,
+  "failure": "REJECTED",
+  "generic_convert": false,
+  "content_hash": "d3a708157e34b1f1f23a1cd19cd9cf95aa221b597f9fde9aa97b0a189a1c2a8e"
+}

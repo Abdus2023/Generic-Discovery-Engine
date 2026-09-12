@@ -1,0 +1,20 @@
+{
+  "rule_id": "R6-CONV-003",
+  "source_type": "ConformanceStatus",
+  "target_type": "EligibilityInput",
+  "legal": {
+    "CONFORMANT": "PREDICATE_REQUIRED",
+    "PARTIALLY_CONFORMANT": "PREDICATE_REQUIRED",
+    "NON_CONFORMANT": "INELIGIBLE",
+    "UNVERIFIED": "UNKNOWN",
+    "BLOCKED": "BLOCKED",
+    "NOT_APPLICABLE": "UNKNOWN",
+    "UNKNOWN": "UNKNOWN"
+  },
+  "forbidden": [],
+  "evidence_required": true,
+  "policy_required": false,
+  "failure": "REJECTED",
+  "generic_convert": false,
+  "content_hash": "04f2bd68f8736db56d8907c4ccb1ab3fd3ef366d5fd6ccd43cf5182c4fca731a"
+}

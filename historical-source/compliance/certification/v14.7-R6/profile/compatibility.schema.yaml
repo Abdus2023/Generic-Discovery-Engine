@@ -1,0 +1,66 @@
+{
+  "schema_language": "GDE-ABSTRACT-SCHEMA-1",
+  "schema_id": "Compatibility",
+  "plane": "PROFILE",
+  "object_type": "Compatibility",
+  "closed": true,
+  "required": [
+    "compatibility_id",
+    "source_profile_ref",
+    "target_profile_ref",
+    "compatible_fields",
+    "content_hash"
+  ],
+  "optional": [
+    "incompatible_fields"
+  ],
+  "fields": {
+    "compatibility_id": {
+      "type": "string",
+      "nullable": false
+    },
+    "source_profile_ref": {
+      "type": "string",
+      "nullable": false,
+      "reference_domain": "ProfileId"
+    },
+    "target_profile_ref": {
+      "type": "string",
+      "nullable": false,
+      "reference_domain": "ProfileId"
+    },
+    "compatible_fields": {
+      "type": "array",
+      "nullable": false,
+      "unique": true
+    },
+    "incompatible_fields": {
+      "type": "array",
+      "nullable": false,
+      "unique": true
+    },
+    "content_hash": {
+      "type": "string",
+      "nullable": false
+    }
+  },
+  "additional_fields": "FORBIDDEN",
+  "identifier_policy": "DISTINCT_SEMANTIC_DOMAINS",
+  "reference_policy": "TYPE_AND_INTEGRITY_CHECK_REQUIRED",
+  "cardinality_policy": "DECLARED_ARRAYS_ARE_ORDERED_AND_UNIQUE_UNLESS_EXPLICITLY_OVERRIDDEN",
+  "canonicalization_ref": "../v14.7-R5/CANONICAL-SERIALIZATION.yaml",
+  "hash": {
+    "domain": "r6-Compatibility:v1",
+    "inputs": [
+      "compatibility_id",
+      "source_profile_ref",
+      "target_profile_ref",
+      "compatible_fields"
+    ],
+    "excluded": [
+      "content_hash"
+    ]
+  },
+  "temporal_policy": "EXPLICIT_TRUSTED_TIME_AND_SCOPE",
+  "integrity_policy": "CONTENT_HASH_REQUIRED_SIGNATURE_WHEN_PROFILE_REQUIRES"
+}

@@ -1,0 +1,148 @@
+{
+  "schema_language": "GDE-ABSTRACT-SCHEMA-1",
+  "schema_id": "EvaluationResult",
+  "plane": "IMPLEMENTATION",
+  "object_type": "EvaluationResult",
+  "closed": true,
+  "required": [
+    "evaluation_id",
+    "subject_ref",
+    "evaluator_id",
+    "evaluator_version",
+    "result",
+    "reason_codes",
+    "input_refs",
+    "evaluated_at",
+    "sequence_no",
+    "scope",
+    "integrity",
+    "content_hash"
+  ],
+  "optional": [
+    "evidence_refs",
+    "predicate_ref",
+    "policy_ref",
+    "environment_ref",
+    "freshness"
+  ],
+  "fields": {
+    "evaluation_id": {
+      "type": "string",
+      "nullable": false,
+      "identifier_domain": "EvaluationId"
+    },
+    "subject_ref": {
+      "type": "string",
+      "nullable": false
+    },
+    "evaluator_id": {
+      "type": "string",
+      "nullable": false
+    },
+    "evaluator_version": {
+      "type": "string",
+      "nullable": false
+    },
+    "result": {
+      "type": "string",
+      "nullable": false,
+      "enum_domain": "EvaluationValue"
+    },
+    "reason_codes": {
+      "type": "array",
+      "nullable": false,
+      "unique": true
+    },
+    "evidence_refs": {
+      "type": "array",
+      "nullable": false,
+      "reference_domain": "EvidenceId",
+      "unique": true
+    },
+    "input_refs": {
+      "type": "array",
+      "nullable": false,
+      "unique": true
+    },
+    "predicate_ref": {
+      "type": "string",
+      "nullable": true,
+      "reference_domain": "PredicateId"
+    },
+    "evaluated_at": {
+      "type": "string",
+      "nullable": false
+    },
+    "sequence_no": {
+      "type": "integer",
+      "nullable": false,
+      "minimum": 0
+    },
+    "scope": {
+      "type": "object",
+      "nullable": false,
+      "shape": {
+        "required": [
+          "scope_id",
+          "scope_expression"
+        ],
+        "fields": {
+          "scope_id": {
+            "type": "string"
+          },
+          "scope_expression": {
+            "type": "string"
+          }
+        },
+        "additional_fields": "FORBIDDEN"
+      },
+      "object_type": "Scope"
+    },
+    "policy_ref": {
+      "type": "string",
+      "nullable": true
+    },
+    "environment_ref": {
+      "type": "string",
+      "nullable": true
+    },
+    "freshness": {
+      "type": "object",
+      "nullable": true
+    },
+    "integrity": {
+      "type": "object",
+      "nullable": false
+    },
+    "content_hash": {
+      "type": "string",
+      "nullable": false
+    }
+  },
+  "additional_fields": "FORBIDDEN",
+  "identifier_policy": "DISTINCT_SEMANTIC_DOMAINS",
+  "reference_policy": "TYPE_AND_INTEGRITY_CHECK_REQUIRED",
+  "cardinality_policy": "DECLARED_ARRAYS_ARE_ORDERED_AND_UNIQUE_UNLESS_EXPLICITLY_OVERRIDDEN",
+  "canonicalization_ref": "../v14.7-R5/CANONICAL-SERIALIZATION.yaml",
+  "hash": {
+    "domain": "r6-EvaluationResult:v1",
+    "inputs": [
+      "evaluation_id",
+      "subject_ref",
+      "evaluator_id",
+      "evaluator_version",
+      "result",
+      "reason_codes",
+      "input_refs",
+      "evaluated_at",
+      "sequence_no",
+      "scope",
+      "integrity"
+    ],
+    "excluded": [
+      "content_hash"
+    ]
+  },
+  "temporal_policy": "EXPLICIT_TRUSTED_TIME_AND_SCOPE",
+  "integrity_policy": "CONTENT_HASH_REQUIRED_SIGNATURE_WHEN_PROFILE_REQUIRES"
+}

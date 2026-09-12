@@ -1,0 +1,2 @@
+macro_rules! id { ($name:ident) => { #[derive(Clone,Debug,Eq,Hash,Ord,PartialEq,PartialOrd)] pub struct $name(pub String); }; }
+id!(SpecificationId); id!(RequirementId); id!(ProfileId); id!(PredicateId); id!(EvaluationId); id!(ValidationId); id!(EvidenceId); id!(ImplementationId); id!(AuthorityId); id!(CertificateId); id!(ReleaseId); id!(DecisionId); id!(EventId); id!(FindingId); id!(RemediationId); id!(TestId); id!(ObservationId);

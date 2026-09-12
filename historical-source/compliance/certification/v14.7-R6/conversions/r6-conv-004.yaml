@@ -1,0 +1,17 @@
+{
+  "rule_id": "R6-CONV-004",
+  "source_type": "ReleaseEligibility",
+  "target_type": "AuthorizationInput",
+  "legal": {
+    "ELIGIBLE": "PERMITTED",
+    "INELIGIBLE": "PROHIBITED",
+    "BLOCKED": "BLOCKED",
+    "UNKNOWN": "POLICY_REQUIRED"
+  },
+  "forbidden": [],
+  "evidence_required": true,
+  "policy_required": false,
+  "failure": "REJECTED",
+  "generic_convert": false,
+  "content_hash": "5c62df640898dc766740d0fb3460b02dc71ffc6d1563bf4b9583b3b693ed61a3"
+}

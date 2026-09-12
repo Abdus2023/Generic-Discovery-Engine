@@ -1,0 +1,29 @@
+{
+  "domain": "ReleaseExecutionStatus",
+  "legal": [
+    {
+      "source": "FAILED",
+      "target": "ROLLED_BACK"
+    },
+    {
+      "source": "NOT_STARTED",
+      "target": "STARTED"
+    },
+    {
+      "source": "STARTED",
+      "target": "CANCELLED"
+    },
+    {
+      "source": "STARTED",
+      "target": "FAILED"
+    },
+    {
+      "source": "STARTED",
+      "target": "SUCCEEDED"
+    },
+    {
+      "source": "SUCCEEDED",
+      "target": "ROLLED_BACK"
+    }
+  ]
+}

@@ -1,0 +1,66 @@
+{
+  "schema_language": "GDE-ABSTRACT-SCHEMA-1",
+  "schema_id": "Evidence",
+  "plane": "EVIDENCE",
+  "object_type": "Evidence",
+  "closed": true,
+  "required": [
+    "evidence_id",
+    "subject_ref",
+    "observation_refs",
+    "integrity",
+    "content_hash"
+  ],
+  "optional": [
+    "scope"
+  ],
+  "fields": {
+    "evidence_id": {
+      "type": "string",
+      "nullable": false,
+      "identifier_domain": "EvidenceId"
+    },
+    "subject_ref": {
+      "type": "string",
+      "nullable": false
+    },
+    "observation_refs": {
+      "type": "array",
+      "nullable": false,
+      "reference_domain": "ObservationId",
+      "unique": true
+    },
+    "integrity": {
+      "type": "object",
+      "nullable": false
+    },
+    "scope": {
+      "type": "object",
+      "nullable": true,
+      "object_type": "Scope"
+    },
+    "content_hash": {
+      "type": "string",
+      "nullable": false
+    }
+  },
+  "additional_fields": "FORBIDDEN",
+  "identifier_policy": "DISTINCT_SEMANTIC_DOMAINS",
+  "reference_policy": "TYPE_AND_INTEGRITY_CHECK_REQUIRED",
+  "cardinality_policy": "DECLARED_ARRAYS_ARE_ORDERED_AND_UNIQUE_UNLESS_EXPLICITLY_OVERRIDDEN",
+  "canonicalization_ref": "../v14.7-R5/CANONICAL-SERIALIZATION.yaml",
+  "hash": {
+    "domain": "r6-Evidence:v1",
+    "inputs": [
+      "evidence_id",
+      "subject_ref",
+      "observation_refs",
+      "integrity"
+    ],
+    "excluded": [
+      "content_hash"
+    ]
+  },
+  "temporal_policy": "EXPLICIT_TRUSTED_TIME_AND_SCOPE",
+  "integrity_policy": "CONTENT_HASH_REQUIRED_SIGNATURE_WHEN_PROFILE_REQUIRES"
+}

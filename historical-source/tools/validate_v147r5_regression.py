@@ -32,7 +32,7 @@ def main():
     rows.append(("R4_INDEPENDENT_VALIDATION",isolated("validate_reference_domain_model_v147r4.py")[0]))
     ok,out=command(TOOLS/"run_v147r5_normative.py");rows.append(("R5_MACHINE_EXECUTION",ok and '"passed": 312' in out))
     r3=(TOOLS/"validate_executable_boundary_contracts_v147r3.py").read_text();rows.append(("R3_SUCCESSOR_RUST_EXCLUSION",'"v14.7-R5"' in r3))
-    r4=(TOOLS/"build_reference_domain_model_v147r4.py").read_text();rows.append(("R4_SUCCESSOR_GUARD",'certification/v14.7-R5' in r4))
+    r4=(TOOLS/"build_reference_domain_model_v147r4.py").read_text();rows.append(("R4_SUCCESSOR_GUARD",all(successor in r4 for successor in ['"R5"', '"R6"'])))
     rows.append(("NO_V14_8",not (COMP/"certification/v14.8").exists()))
     for name,ok in rows:print(f"{name}: {'PASS' if ok else 'FAIL'}")
     print(f"regression: {sum(ok for _,ok in rows)}/{len(rows)} PASS")

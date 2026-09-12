@@ -1,0 +1,390 @@
+{
+  "realization_version": "14.7-R6",
+  "validator": "validate_machine_domain_realization_v147r6.py",
+  "objects": [
+    {
+      "check_id": "R6-V-001",
+      "description": "All machine documents parse",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "check_id": "R6-V-002",
+      "description": "Manifest count and uniqueness are exact",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "check_id": "R6-V-003",
+      "description": "Manifest declares every R6 artifact",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "check_id": "R6-V-004",
+      "description": "R6 protects all 1,249 predecessor files",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "check_id": "R6-V-005",
+      "description": "Every predecessor byte count and hash remains exact",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "check_id": "R6-V-006",
+      "description": "Twenty machine enum domains are closed",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "check_id": "R6-V-007",
+      "description": "All 111 inherited and supplied values are exact",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "check_id": "R6-V-008",
+      "description": "Unknown values are rejected",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "check_id": "R6-V-009",
+      "description": "Sixteen supplied and four inherited domains are distinguished",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "check_id": "R6-V-010",
+      "description": "R5 semantic domains map explicitly to R6 machine names",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "check_id": "R6-V-011",
+      "description": "Semantic identifier domains are distinct",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "check_id": "R6-V-012",
+      "description": "Generic semantic-boundary identifiers are prohibited",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "check_id": "R6-V-013",
+      "description": "Exactly five planes are defined",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "check_id": "R6-V-014",
+      "description": "Implicit authority inheritance is forbidden",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "check_id": "R6-V-015",
+      "description": "Twenty machine schemas are registered",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "check_id": "R6-V-016",
+      "description": "Abstract schema language leaves concrete dialect implementation-only",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "check_id": "R6-V-017",
+      "description": "Every schema is closed",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "check_id": "R6-V-018",
+      "description": "Required and optional fields form complete disjoint sets",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "check_id": "R6-V-019",
+      "description": "Every schema declares identifier, reference, cardinality, temporal, and integrity policies",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "check_id": "R6-V-020",
+      "description": "Every schema binds canonicalization and a distinct hash domain",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "check_id": "R6-V-021",
+      "description": "NormativeRequirement has the supplied required fields",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "check_id": "R6-V-022",
+      "description": "NormativeRequirement remains technology-neutral",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "check_id": "R6-V-023",
+      "description": "ImplementationRequirement traces requirement and profile",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "check_id": "R6-V-024",
+      "description": "ImplementationInstruction is a distinct implementation object",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "check_id": "R6-V-025",
+      "description": "Validation uses only ValidationStatus",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "check_id": "R6-V-026",
+      "description": "Evaluation uses only EvaluationValue",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "check_id": "R6-V-027",
+      "description": "Conformance is requirement-bound",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "check_id": "R6-V-063",
+      "description": "Tests, observations, and evidence are distinct Evidence-plane schemas",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "check_id": "R6-V-028",
+      "description": "Twelve deterministic error categories preserve dependency coverage",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "check_id": "R6-V-029",
+      "description": "Eleven supplied errors and one inherited error are labeled",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "check_id": "R6-V-030",
+      "description": "Every evaluator error defaults to evaluation failure",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "check_id": "R6-V-031",
+      "description": "No evaluator error can map to FALSE",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "check_id": "R6-V-032",
+      "description": "Error mapping requires explicit profile policy",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "check_id": "R6-V-033",
+      "description": "Evaluator result and error boundary is explicit",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "check_id": "R6-V-034",
+      "description": "Evaluator has no decision or mutation authority",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "check_id": "R6-V-035",
+      "description": "Five named conversion rules exist",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "check_id": "R6-V-036",
+      "description": "Generic conversion is forbidden",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "check_id": "R6-V-037",
+      "description": "Every conversion defines source, target, legal, forbidden, evidence, policy, and failure",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "check_id": "R6-V-038",
+      "description": "Exactly eleven supplied certificate and execution edges exist",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "check_id": "R6-V-039",
+      "description": "Unlisted transitions are illegal",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "check_id": "R6-V-040",
+      "description": "Finding and remediation edges are not invented",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "check_id": "R6-V-041",
+      "description": "Typed pipeline keeps semantic and error types separate",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "check_id": "R6-V-042",
+      "description": "Typestate remains an implementation technique",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "check_id": "R6-V-043",
+      "description": "All seven mandatory test families exist",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "check_id": "R6-V-044",
+      "description": "Minimum negative N-001 through N-018 is exact",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "check_id": "R6-V-045",
+      "description": "All enum values and unknown values are tested",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "check_id": "R6-V-046",
+      "description": "Every schema required field has a missing-field test",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "check_id": "R6-V-047",
+      "description": "Every evaluator error and disposition boundary is tested",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "check_id": "R6-V-048",
+      "description": "Every certificate and release state pair is tested",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "check_id": "R6-V-049",
+      "description": "R6-I01 through R6-I18 are complete and tested",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "check_id": "R6-V-050",
+      "description": "All 549 machine vectors pass",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "check_id": "R6-V-051",
+      "description": "Persisted vector summary is exact",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "check_id": "R6-V-052",
+      "description": "Rust forbids unsafe and generic boxed errors",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "check_id": "R6-V-053",
+      "description": "Rust defines all twenty machine enums",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "check_id": "R6-V-054",
+      "description": "Rust defines all supplied identifier newtypes",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "check_id": "R6-V-055",
+      "description": "Rust Evaluator has the canonical typed signature",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "check_id": "R6-V-056",
+      "description": "Rust transition guards encode supplied edges",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "check_id": "R6-V-057",
+      "description": "Three representation omissions are explicitly reconciled",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "check_id": "R6-V-058",
+      "description": "No unresolved semantic contradiction requires a new state",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "check_id": "R6-V-059",
+      "description": "R5 to R6 migration preserves semantics",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "check_id": "R6-V-060",
+      "description": "Specification contains thirty numbered sections",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "check_id": "R6-V-061",
+      "description": "Neither v14.8 nor R7 was created",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "check_id": "R6-V-062",
+      "description": "Rust blueprint compiles and tests",
+      "status": "BLOCKED",
+      "detail": "RUST_TOOLCHAIN_UNAVAILABLE"
+    }
+  ],
+  "summary": {
+    "pass": 62,
+    "fail": 0,
+    "blocked": 1
+  },
+  "result": "PASS_WITH_BLOCKED_TOOLCHAIN"
+}

@@ -1,0 +1,342 @@
+{
+  "objects": [
+    {
+      "machine_type": "ValidationStatus",
+      "values": [
+        "VALID",
+        "INVALID",
+        "BLOCKED",
+        "UNKNOWN"
+      ],
+      "closed": true,
+      "unknown_value": "REJECT",
+      "r5_domain": "Validation",
+      "origin": "SUPPLIED_R6",
+      "content_hash": "3f90b0ea332f33157da696326e6f275864e0242bd65dfe61169436743fe0efb9"
+    },
+    {
+      "machine_type": "EvaluationValue",
+      "values": [
+        "TRUE",
+        "FALSE",
+        "UNKNOWN",
+        "BLOCKED",
+        "INVALID"
+      ],
+      "closed": true,
+      "unknown_value": "REJECT",
+      "r5_domain": "Evaluation",
+      "origin": "SUPPLIED_R6",
+      "content_hash": "21474e4552d289dc583393d8b02570fbdf8cf875e2591b35e6abf4f700dee03a"
+    },
+    {
+      "machine_type": "ConformanceStatus",
+      "values": [
+        "CONFORMANT",
+        "PARTIALLY_CONFORMANT",
+        "NON_CONFORMANT",
+        "UNVERIFIED",
+        "BLOCKED",
+        "NOT_APPLICABLE",
+        "UNKNOWN"
+      ],
+      "closed": true,
+      "unknown_value": "REJECT",
+      "r5_domain": "Conformance",
+      "origin": "SUPPLIED_R6",
+      "content_hash": "681a5c189af8a06da9412cc5e6f9fb00c8b8e04f9b3264295711dc6c3fb88bcd"
+    },
+    {
+      "machine_type": "CertificateLifecycle",
+      "values": [
+        "DRAFT",
+        "ISSUED",
+        "REVOKED",
+        "SUPERSEDED",
+        "EXPIRED",
+        "CANCELLED"
+      ],
+      "closed": true,
+      "unknown_value": "REJECT",
+      "r5_domain": "CertificateLifecycle",
+      "origin": "SUPPLIED_R6",
+      "content_hash": "c41bb119164aec69b29feb9beb4f8815aa686cb065c0af0e66e1198fcf2231f1"
+    },
+    {
+      "machine_type": "CertificateValidity",
+      "values": [
+        "VALID",
+        "INVALID",
+        "NOT_YET_VALID",
+        "UNKNOWN"
+      ],
+      "closed": true,
+      "unknown_value": "REJECT",
+      "r5_domain": "CertificateValidity",
+      "origin": "SUPPLIED_R6",
+      "content_hash": "4f9d63f5bbdda1d3f4e5c116dfe77f435d524ed24b8189944fd6c32a16e61973"
+    },
+    {
+      "machine_type": "ReleaseEligibility",
+      "values": [
+        "ELIGIBLE",
+        "INELIGIBLE",
+        "BLOCKED",
+        "UNKNOWN"
+      ],
+      "closed": true,
+      "unknown_value": "REJECT",
+      "r5_domain": "ReleaseEligibility",
+      "origin": "SUPPLIED_R6",
+      "content_hash": "334acddbfe6944c7ce32045a486649293a2293332d33bf7b8834aef4878c816c"
+    },
+    {
+      "machine_type": "AuthorizationStatus",
+      "values": [
+        "AUTHORIZED",
+        "REFUSED",
+        "BLOCKED",
+        "UNKNOWN",
+        "INVALID"
+      ],
+      "closed": true,
+      "unknown_value": "REJECT",
+      "r5_domain": "Authorization",
+      "origin": "SUPPLIED_R6",
+      "content_hash": "2d3919da9c52f8b39fcad3bd386ee3717de6d9de35dbe8b647355037909beee0"
+    },
+    {
+      "machine_type": "ReleaseDecisionStatus",
+      "values": [
+        "APPROVED",
+        "REJECTED",
+        "BLOCKED",
+        "DEFERRED"
+      ],
+      "closed": true,
+      "unknown_value": "REJECT",
+      "r5_domain": "ReleaseDecision",
+      "origin": "SUPPLIED_R6",
+      "content_hash": "c045c6062863731d71eb354edecf8286d99eb652ddf1913bd0651bda1b6c38b0"
+    },
+    {
+      "machine_type": "ReleaseExecutionStatus",
+      "values": [
+        "NOT_STARTED",
+        "STARTED",
+        "SUCCEEDED",
+        "FAILED",
+        "CANCELLED",
+        "ROLLED_BACK"
+      ],
+      "closed": true,
+      "unknown_value": "REJECT",
+      "r5_domain": "ReleaseExecution",
+      "origin": "SUPPLIED_R6",
+      "content_hash": "39f9a8cb234f3ee8641f283a5f491044c76cb73abdeb162b60b791d493e4b921"
+    },
+    {
+      "machine_type": "PostReleaseVerificationStatus",
+      "values": [
+        "NOT_STARTED",
+        "IN_PROGRESS",
+        "PASSED",
+        "FAILED",
+        "INCONCLUSIVE",
+        "BLOCKED",
+        "INVALID"
+      ],
+      "closed": true,
+      "unknown_value": "REJECT",
+      "r5_domain": "PostReleaseVerification",
+      "origin": "SUPPLIED_R6",
+      "content_hash": "110386504770dc0e58238c0f538de517dcbd7219f144f3f7615ee2e0d74af625"
+    },
+    {
+      "machine_type": "ReuseStatus",
+      "values": [
+        "REUSABLE",
+        "NOT_REUSABLE",
+        "BLOCKED",
+        "UNKNOWN",
+        "INVALID"
+      ],
+      "closed": true,
+      "unknown_value": "REJECT",
+      "r5_domain": "Reuse",
+      "origin": "SUPPLIED_R6",
+      "content_hash": "6f8e9b68c955ec5834330cb0ba304c64858105269cc61b8260461f89ccbfee1d"
+    },
+    {
+      "machine_type": "AuthorityStatus",
+      "values": [
+        "ACTIVE",
+        "SUSPENDED",
+        "REVOKED",
+        "EXPIRED",
+        "UNKNOWN"
+      ],
+      "closed": true,
+      "unknown_value": "REJECT",
+      "r5_domain": "Authority",
+      "origin": "SUPPLIED_R6",
+      "content_hash": "df9784b610eb4cb0084d0ba5084cb3c50202d7a2734c6c28b34b4c914edb1374"
+    },
+    {
+      "machine_type": "AuthorityQualificationStatus",
+      "values": [
+        "QUALIFIED",
+        "NOT_QUALIFIED",
+        "BLOCKED",
+        "UNKNOWN",
+        "INVALID"
+      ],
+      "closed": true,
+      "unknown_value": "REJECT",
+      "r5_domain": "AuthorityQualification",
+      "origin": "SUPPLIED_R6",
+      "content_hash": "5888c9abc1f15574fc636e9bee264eaf2550fb73a00fb275a2853d828503628a"
+    },
+    {
+      "machine_type": "RequirementLifecycle",
+      "values": [
+        "PROPOSED",
+        "DRAFT",
+        "ACTIVE",
+        "DEPRECATED",
+        "SUPERSEDED",
+        "RETIRED"
+      ],
+      "closed": true,
+      "unknown_value": "REJECT",
+      "r5_domain": "RequirementLifecycle",
+      "origin": "SUPPLIED_R6",
+      "content_hash": "f824323822387bcc699a8195034d969985fc5a5811f407160caa5d0318649bb7"
+    },
+    {
+      "machine_type": "FindingStatus",
+      "values": [
+        "OPEN",
+        "TRIAGED",
+        "ROOT_CAUSE_IDENTIFIED",
+        "REMEDIATION_PLANNED",
+        "REMEDIATION_IN_PROGRESS",
+        "READY_FOR_REVERIFICATION",
+        "REVERIFICATION_IN_PROGRESS",
+        "RESOLVED",
+        "WAIVED",
+        "REJECTED",
+        "CLOSED"
+      ],
+      "closed": true,
+      "unknown_value": "REJECT",
+      "r5_domain": "FindingLifecycle",
+      "origin": "SUPPLIED_R6",
+      "content_hash": "c52ac6345d8152ad0d9c0ceaa416119dde70a26bb6c466a013451f53eab5afbc"
+    },
+    {
+      "machine_type": "RemediationStatus",
+      "values": [
+        "PLANNED",
+        "APPROVED",
+        "IN_PROGRESS",
+        "BLOCKED",
+        "READY_FOR_VERIFICATION",
+        "VERIFIED",
+        "FAILED",
+        "CANCELLED",
+        "SUPERSEDED"
+      ],
+      "closed": true,
+      "unknown_value": "REJECT",
+      "r5_domain": "Remediation",
+      "origin": "SUPPLIED_R6",
+      "content_hash": "a2a4d85e801a369e56636870ae3e31298aaa1f66033bce44c3a8b115c7b4581b"
+    },
+    {
+      "machine_type": "EventValidationStatus",
+      "values": [
+        "VALID",
+        "INVALID",
+        "BLOCKED",
+        "UNKNOWN"
+      ],
+      "closed": true,
+      "unknown_value": "REJECT",
+      "r5_domain": "EventValidation",
+      "origin": "INHERITED_R5",
+      "content_hash": "094cb912831be6fe91d3149d3adb73b3c1121a189cc03b51164bcb182fd54438"
+    },
+    {
+      "machine_type": "EventCommitStatus",
+      "values": [
+        "PENDING",
+        "COMMITTED",
+        "REJECTED"
+      ],
+      "closed": true,
+      "unknown_value": "REJECT",
+      "r5_domain": "EventCommit",
+      "origin": "INHERITED_R5",
+      "content_hash": "c120d46fb9e658dffb9a6f453551d768cd2bfd943ec53300c2a8137d5da71cec"
+    },
+    {
+      "machine_type": "ProjectionStatus",
+      "values": [
+        "CURRENT",
+        "REPLAYING",
+        "STALE",
+        "INVALID",
+        "BLOCKED",
+        "UNKNOWN"
+      ],
+      "closed": true,
+      "unknown_value": "REJECT",
+      "r5_domain": "Projection",
+      "origin": "INHERITED_R5",
+      "content_hash": "8141fb497a1757d968998f72f0a170060b5f87e925b7aa5ab0055a7936588378"
+    },
+    {
+      "machine_type": "NormativeStrength",
+      "values": [
+        "MUST",
+        "MUST_NOT",
+        "SHOULD",
+        "SHOULD_NOT",
+        "MAY"
+      ],
+      "closed": true,
+      "unknown_value": "REJECT",
+      "r5_domain": "NormativeStrength",
+      "origin": "INHERITED_R5",
+      "content_hash": "89e86a7ece478b7d5143bd27cfc52c1930e74e7bef7e190d59485ec1926d163b"
+    }
+  ],
+  "domain_count": 20,
+  "supplied_r6_domains": 16,
+  "inherited_r5_domains": 4,
+  "value_count": 111,
+  "aliases": {
+    "Validation": "ValidationStatus",
+    "Evaluation": "EvaluationValue",
+    "Conformance": "ConformanceStatus",
+    "Authorization": "AuthorizationStatus",
+    "ReleaseDecision": "ReleaseDecisionStatus",
+    "ReleaseExecution": "ReleaseExecutionStatus",
+    "PostReleaseVerification": "PostReleaseVerificationStatus",
+    "Reuse": "ReuseStatus",
+    "Authority": "AuthorityStatus",
+    "AuthorityQualification": "AuthorityQualificationStatus",
+    "FindingLifecycle": "FindingStatus",
+    "Remediation": "RemediationStatus",
+    "EventValidation": "EventValidationStatus",
+    "EventCommit": "EventCommitStatus",
+    "Projection": "ProjectionStatus",
+    "CertificateLifecycle": "CertificateLifecycle",
+    "CertificateValidity": "CertificateValidity",
+    "ReleaseEligibility": "ReleaseEligibility",
+    "RequirementLifecycle": "RequirementLifecycle",
+    "NormativeStrength": "NormativeStrength"
+  },
+  "content_hash": "41eb95340c314bc89c98aa357b56f8c56ac6f0db55f694feea460d515d5eadd8"
+}

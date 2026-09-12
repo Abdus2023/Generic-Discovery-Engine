@@ -1,0 +1,17 @@
+{
+  "rule_id": "R6-CONV-001",
+  "source_type": "ValidationStatus",
+  "target_type": "EvaluationPermission",
+  "legal": {
+    "VALID": "PERMITTED",
+    "INVALID": "PROHIBITED",
+    "BLOCKED": "BLOCKED",
+    "UNKNOWN": "POLICY_REQUIRED"
+  },
+  "forbidden": [],
+  "evidence_required": true,
+  "policy_required": false,
+  "failure": "REJECTED",
+  "generic_convert": false,
+  "content_hash": "64a1e2132ed746a74fbaa3f5a2031e8f796b916133490c218ad9fe8f4d39f749"
+}

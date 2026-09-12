@@ -12,12 +12,12 @@ def main():
     r4=invoke(TOOLS/"build_reference_domain_model_v147r4.py",ROOT)
     r5=invoke(TOOLS/"build_normative_realization_v147r5.py",ROOT)
     rows=[("R4_REFUSES_AFTER_R5",r4.returncode!=0 and "v14.7-R5" in r4.stderr),
-          ("R5_REFUSES_REGENERATION",r5.returncode!=0 and "immutable v14.7-R5" in r5.stderr)]
+          ("R5_REFUSES_REGENERATION_OR_SUCCESSOR_REWRITE",r5.returncode!=0 and ("immutable v14.7-R5" in r5.stderr or "successor realization" in r5.stderr))]
     with tempfile.TemporaryDirectory(prefix="v147r5-successor-") as temporary:
         target=Path(temporary)/"repo/historical-source"
         def ignore(src,names):
             omitted={"__pycache__"}
-            if Path(src).name=="certification":omitted.add("v14.7-R5")
+            if Path(src).name=="certification":omitted.update({"v14.7-R5", "v14.7-R6"})
             return omitted & set(names)
         shutil.copytree(HIST,target,ignore=ignore)
         successor=target/"compliance/certification/v14.7-R6";successor.mkdir();(successor/"MARKER").write_text("append-only successor\n")

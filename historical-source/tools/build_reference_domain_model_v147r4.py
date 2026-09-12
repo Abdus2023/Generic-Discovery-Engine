@@ -324,8 +324,8 @@ def build_vectors():
 
 
 def main():
-    if (COMPLIANCE / "certification/v14.7-R5").exists():
-        raise RuntimeError("refusing to rewrite predecessor after append-only v14.7-R5 realization")
+    if any((COMPLIANCE / f"certification/v14.7-{successor}").exists() for successor in ("R5", "R6")):
+        raise RuntimeError("refusing to rewrite predecessor after append-only v14.7-R5/R6 realization")
     if not (PREDECESSOR / "VALIDATION.yaml").is_file():
         raise RuntimeError("validated v14.7-R3 predecessor required")
     if DESTINATION.exists():

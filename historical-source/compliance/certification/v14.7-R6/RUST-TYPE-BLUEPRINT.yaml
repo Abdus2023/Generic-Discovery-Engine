@@ -1,0 +1,84 @@
+{
+  "realization_version": "14.7-R6",
+  "semantic_version": "v14.7",
+  "epistemic_status": "SUPPORTED",
+  "path": "rust/gde-v147-r6-machine",
+  "files": 17,
+  "manifest": [
+    {
+      "path": "Cargo.lock",
+      "sha256": "fde29b319b52c9c5f2a1628faa1f183f312bfa782ac8095b80f377bcdccd57b4"
+    },
+    {
+      "path": "Cargo.toml",
+      "sha256": "3b195d2fd911989a264814db2da6bbca1daff5b537bfa86d9323e6b0796cb0d2"
+    },
+    {
+      "path": "src/authorization/mod.rs",
+      "sha256": "3b996850e8a136e94d034a8a215fb8c311beed1d458309454a7f530f6f3a0b03"
+    },
+    {
+      "path": "src/conformance/mod.rs",
+      "sha256": "dd823365c29048115e5acc5d229a162a8ad860c18213dc657a8998b750931186"
+    },
+    {
+      "path": "src/domain/enums.rs",
+      "sha256": "5d6f7b33286e35b6ae89976719b459acc9fb29c0c99e03245c393f0ff0bf1cb5"
+    },
+    {
+      "path": "src/domain/ids.rs",
+      "sha256": "b9c0de9719ef314f0696050f48d3c870c985ea984631537052f2572a338592ce"
+    },
+    {
+      "path": "src/domain/mod.rs",
+      "sha256": "1b5aa10b3def984b3086811fccb38e809202c709615caccf13a74e6f930b8452"
+    },
+    {
+      "path": "src/domain/objects.rs",
+      "sha256": "382d1a10fe69c631e539a6dac8a435126e27366a55f73f3204c000cec3a9fdf6"
+    },
+    {
+      "path": "src/domain/typestate.rs",
+      "sha256": "1261b4e4a752786af8688245f16d00147e073125415b519fbc4e03896a828bf6"
+    },
+    {
+      "path": "src/evaluation/mod.rs",
+      "sha256": "d5b8d609777782e1fd11722d2c2430bca8718b282a73219b144e605988368336"
+    },
+    {
+      "path": "src/events/mod.rs",
+      "sha256": "56da71dc8120550eae6251161019b75e59efed4df2d19bfa636e1c43d87b126c"
+    },
+    {
+      "path": "src/lib.rs",
+      "sha256": "ebe3ce5ceaa8ac31abbdb355fd16348297f74dfd8e8a04c92e6210fbf17cce04"
+    },
+    {
+      "path": "src/projection/mod.rs",
+      "sha256": "d79eaa492f8b6e6f0eb43912d67e5b5c52915d726907fa0a5736dffc829c3981"
+    },
+    {
+      "path": "src/validation/mod.rs",
+      "sha256": "3424d444c317349e31c05cedfec73fcaa293050f58346057ef1b3e79323ac614"
+    },
+    {
+      "path": "tests/error_boundary.rs",
+      "sha256": "7f8c1d04d869add7185c160ea2fcc1cf87548149172b04381034376f38ef0e1b"
+    },
+    {
+      "path": "tests/transitions.rs",
+      "sha256": "114024aa66d07aacfd020c66bd75047876db1160b802113479932f10649c93c3"
+    },
+    {
+      "path": "tests/type_domains.rs",
+      "sha256": "c92a66a744bdb36b1077d8dfcb47cf1ab4243b1dbda9156d256074cb89fd5024"
+    }
+  ],
+  "build": {
+    "status": "BLOCKED",
+    "toolchain": false,
+    "reason": "RUST_TOOLCHAIN_UNAVAILABLE"
+  },
+  "unsafe": false,
+  "boxed_generic_errors": false
+}

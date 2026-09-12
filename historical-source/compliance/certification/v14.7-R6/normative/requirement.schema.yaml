@@ -1,0 +1,140 @@
+{
+  "schema_language": "GDE-ABSTRACT-SCHEMA-1",
+  "schema_id": "NormativeRequirement",
+  "plane": "NORMATIVE",
+  "object_type": "NormativeRequirement",
+  "closed": true,
+  "required": [
+    "requirement_id",
+    "specification_id",
+    "specification_version",
+    "lifecycle",
+    "statement",
+    "normative_strength",
+    "scope",
+    "content_hash"
+  ],
+  "optional": [
+    "preconditions",
+    "postconditions",
+    "invariants",
+    "acceptance_criteria",
+    "negative_conditions",
+    "dependencies",
+    "conflicts"
+  ],
+  "fields": {
+    "requirement_id": {
+      "type": "string",
+      "nullable": false,
+      "identifier_domain": "RequirementId"
+    },
+    "specification_id": {
+      "type": "string",
+      "nullable": false,
+      "reference_domain": "SpecificationId"
+    },
+    "specification_version": {
+      "type": "string",
+      "nullable": false
+    },
+    "lifecycle": {
+      "type": "string",
+      "nullable": false,
+      "enum_domain": "RequirementLifecycle"
+    },
+    "statement": {
+      "type": "string",
+      "nullable": false
+    },
+    "normative_strength": {
+      "type": "string",
+      "nullable": false,
+      "enum_domain": "NormativeStrength"
+    },
+    "scope": {
+      "type": "object",
+      "nullable": false,
+      "shape": {
+        "required": [
+          "scope_id",
+          "scope_expression"
+        ],
+        "fields": {
+          "scope_id": {
+            "type": "string"
+          },
+          "scope_expression": {
+            "type": "string"
+          }
+        },
+        "additional_fields": "FORBIDDEN"
+      },
+      "object_type": "Scope"
+    },
+    "preconditions": {
+      "type": "array",
+      "nullable": false,
+      "unique": true
+    },
+    "postconditions": {
+      "type": "array",
+      "nullable": false,
+      "unique": true
+    },
+    "invariants": {
+      "type": "array",
+      "nullable": false,
+      "unique": true
+    },
+    "acceptance_criteria": {
+      "type": "array",
+      "nullable": false,
+      "reference_domain": "AcceptanceCriterionId",
+      "unique": true
+    },
+    "negative_conditions": {
+      "type": "array",
+      "nullable": false,
+      "unique": true
+    },
+    "dependencies": {
+      "type": "array",
+      "nullable": false,
+      "reference_domain": "RequirementId",
+      "unique": true
+    },
+    "conflicts": {
+      "type": "array",
+      "nullable": false,
+      "reference_domain": "RequirementId",
+      "unique": true
+    },
+    "content_hash": {
+      "type": "string",
+      "nullable": false
+    }
+  },
+  "additional_fields": "FORBIDDEN",
+  "identifier_policy": "DISTINCT_SEMANTIC_DOMAINS",
+  "reference_policy": "TYPE_AND_INTEGRITY_CHECK_REQUIRED",
+  "cardinality_policy": "DECLARED_ARRAYS_ARE_ORDERED_AND_UNIQUE_UNLESS_EXPLICITLY_OVERRIDDEN",
+  "canonicalization_ref": "../v14.7-R5/CANONICAL-SERIALIZATION.yaml",
+  "hash": {
+    "domain": "r6-NormativeRequirement:v1",
+    "inputs": [
+      "requirement_id",
+      "specification_id",
+      "specification_version",
+      "lifecycle",
+      "statement",
+      "normative_strength",
+      "scope"
+    ],
+    "excluded": [
+      "content_hash"
+    ]
+  },
+  "temporal_policy": "EXPLICIT_TRUSTED_TIME_AND_SCOPE",
+  "integrity_policy": "CONTENT_HASH_REQUIRED_SIGNATURE_WHEN_PROFILE_REQUIRES"
+}

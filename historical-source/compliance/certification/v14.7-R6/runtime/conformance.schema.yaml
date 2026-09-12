@@ -1,0 +1,80 @@
+{
+  "schema_language": "GDE-ABSTRACT-SCHEMA-1",
+  "schema_id": "ConformanceResult",
+  "plane": "DECISION",
+  "object_type": "ConformanceResult",
+  "closed": true,
+  "required": [
+    "conformance_id",
+    "requirement_ref",
+    "status",
+    "evaluation_refs",
+    "evidence_refs",
+    "evaluated_at",
+    "content_hash"
+  ],
+  "optional": [
+    "rationale"
+  ],
+  "fields": {
+    "conformance_id": {
+      "type": "string",
+      "nullable": false
+    },
+    "requirement_ref": {
+      "type": "string",
+      "nullable": false,
+      "reference_domain": "RequirementId"
+    },
+    "status": {
+      "type": "string",
+      "nullable": false,
+      "enum_domain": "ConformanceStatus"
+    },
+    "evaluation_refs": {
+      "type": "array",
+      "nullable": false,
+      "reference_domain": "EvaluationId",
+      "unique": true
+    },
+    "evidence_refs": {
+      "type": "array",
+      "nullable": false,
+      "reference_domain": "EvidenceId",
+      "unique": true
+    },
+    "rationale": {
+      "type": "string",
+      "nullable": false
+    },
+    "evaluated_at": {
+      "type": "string",
+      "nullable": false
+    },
+    "content_hash": {
+      "type": "string",
+      "nullable": false
+    }
+  },
+  "additional_fields": "FORBIDDEN",
+  "identifier_policy": "DISTINCT_SEMANTIC_DOMAINS",
+  "reference_policy": "TYPE_AND_INTEGRITY_CHECK_REQUIRED",
+  "cardinality_policy": "DECLARED_ARRAYS_ARE_ORDERED_AND_UNIQUE_UNLESS_EXPLICITLY_OVERRIDDEN",
+  "canonicalization_ref": "../v14.7-R5/CANONICAL-SERIALIZATION.yaml",
+  "hash": {
+    "domain": "r6-ConformanceResult:v1",
+    "inputs": [
+      "conformance_id",
+      "requirement_ref",
+      "status",
+      "evaluation_refs",
+      "evidence_refs",
+      "evaluated_at"
+    ],
+    "excluded": [
+      "content_hash"
+    ]
+  },
+  "temporal_policy": "EXPLICIT_TRUSTED_TIME_AND_SCOPE",
+  "integrity_policy": "CONTENT_HASH_REQUIRED_SIGNATURE_WHEN_PROFILE_REQUIRES"
+}

@@ -1,0 +1,128 @@
+{
+  "schema_language": "GDE-ABSTRACT-SCHEMA-1",
+  "schema_id": "StateTransitionEvent",
+  "plane": "EVIDENCE",
+  "object_type": "StateTransitionEvent",
+  "closed": true,
+  "required": [
+    "event_id",
+    "aggregate_ref",
+    "event_type",
+    "previous_state",
+    "resulting_state",
+    "sequence_no",
+    "occurred_at",
+    "actor_ref",
+    "scope",
+    "payload",
+    "event_hash"
+  ],
+  "optional": [
+    "committed_at",
+    "authority_ref",
+    "previous_event_hash"
+  ],
+  "fields": {
+    "event_id": {
+      "type": "string",
+      "nullable": false,
+      "identifier_domain": "EventId"
+    },
+    "aggregate_ref": {
+      "type": "string",
+      "nullable": false
+    },
+    "event_type": {
+      "type": "string",
+      "nullable": false
+    },
+    "previous_state": {
+      "type": "string",
+      "nullable": false
+    },
+    "resulting_state": {
+      "type": "string",
+      "nullable": false
+    },
+    "sequence_no": {
+      "type": "integer",
+      "nullable": false,
+      "minimum": 0
+    },
+    "occurred_at": {
+      "type": "string",
+      "nullable": false
+    },
+    "committed_at": {
+      "type": "string",
+      "nullable": true
+    },
+    "actor_ref": {
+      "type": "string",
+      "nullable": false
+    },
+    "authority_ref": {
+      "type": "string",
+      "nullable": true,
+      "reference_domain": "AuthorityId"
+    },
+    "scope": {
+      "type": "object",
+      "nullable": false,
+      "shape": {
+        "required": [
+          "scope_id",
+          "scope_expression"
+        ],
+        "fields": {
+          "scope_id": {
+            "type": "string"
+          },
+          "scope_expression": {
+            "type": "string"
+          }
+        },
+        "additional_fields": "FORBIDDEN"
+      },
+      "object_type": "Scope"
+    },
+    "payload": {
+      "type": "object",
+      "nullable": false
+    },
+    "previous_event_hash": {
+      "type": "string",
+      "nullable": true
+    },
+    "event_hash": {
+      "type": "string",
+      "nullable": false
+    }
+  },
+  "additional_fields": "FORBIDDEN",
+  "identifier_policy": "DISTINCT_SEMANTIC_DOMAINS",
+  "reference_policy": "TYPE_AND_INTEGRITY_CHECK_REQUIRED",
+  "cardinality_policy": "DECLARED_ARRAYS_ARE_ORDERED_AND_UNIQUE_UNLESS_EXPLICITLY_OVERRIDDEN",
+  "canonicalization_ref": "../v14.7-R5/CANONICAL-SERIALIZATION.yaml",
+  "hash": {
+    "domain": "r6-StateTransitionEvent:v1",
+    "inputs": [
+      "event_id",
+      "aggregate_ref",
+      "event_type",
+      "previous_state",
+      "resulting_state",
+      "sequence_no",
+      "occurred_at",
+      "actor_ref",
+      "scope",
+      "payload",
+      "event_hash"
+    ],
+    "excluded": [
+      "content_hash"
+    ]
+  },
+  "temporal_policy": "EXPLICIT_TRUSTED_TIME_AND_SCOPE",
+  "integrity_policy": "CONTENT_HASH_REQUIRED_SIGNATURE_WHEN_PROFILE_REQUIRES"
+}

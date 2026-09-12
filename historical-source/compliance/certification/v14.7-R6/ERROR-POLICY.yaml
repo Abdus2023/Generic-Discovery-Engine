@@ -1,0 +1,213 @@
+{
+  "realization_version": "14.7-R6",
+  "semantic_version": "v14.7",
+  "epistemic_status": "SUPPORTED",
+  "default": "EVALUATION_FAILURE",
+  "automatic_semantic_mapping": false,
+  "explicit_profile_policy_required": true,
+  "false_mapping": false,
+  "objects": [
+    {
+      "code": "INVALID_PREDICATE",
+      "origin": "SUPPLIED_R6",
+      "severity": [
+        "RECOVERABLE",
+        "TERMINAL"
+      ],
+      "retry": "EXPLICIT_BOOLEAN",
+      "default": "EVALUATION_FAILURE",
+      "allowed_explicit_mappings": [
+        "INVALID"
+      ],
+      "false_mapping": false,
+      "mandatory_conformance": "BLOCKED_UNTIL_DISPOSITION",
+      "evidence_metadata": "REQUIRED_WHEN_ERROR_OBSERVED",
+      "content_hash": "95f9565216c91d3b697eea96e747dfda8c33d789dfeda30273025d2c33a68da1"
+    },
+    {
+      "code": "INVALID_SUBJECT",
+      "origin": "SUPPLIED_R6",
+      "severity": [
+        "RECOVERABLE",
+        "TERMINAL"
+      ],
+      "retry": "EXPLICIT_BOOLEAN",
+      "default": "EVALUATION_FAILURE",
+      "allowed_explicit_mappings": [
+        "INVALID"
+      ],
+      "false_mapping": false,
+      "mandatory_conformance": "BLOCKED_UNTIL_DISPOSITION",
+      "evidence_metadata": "REQUIRED_WHEN_ERROR_OBSERVED",
+      "content_hash": "ce48c56990e53839d2842ff6cfbdf3fbdebd6faf3fc300ddb1dca2e6cfc407b2"
+    },
+    {
+      "code": "INVALID_CONTEXT",
+      "origin": "SUPPLIED_R6",
+      "severity": [
+        "RECOVERABLE",
+        "TERMINAL"
+      ],
+      "retry": "EXPLICIT_BOOLEAN",
+      "default": "EVALUATION_FAILURE",
+      "allowed_explicit_mappings": [
+        "INVALID"
+      ],
+      "false_mapping": false,
+      "mandatory_conformance": "BLOCKED_UNTIL_DISPOSITION",
+      "evidence_metadata": "REQUIRED_WHEN_ERROR_OBSERVED",
+      "content_hash": "cff465dd90de4dde46a616c6c8adc9c60ea16a652238452f0a18855b8bd1cb85"
+    },
+    {
+      "code": "VALIDATION_REQUIRED",
+      "origin": "SUPPLIED_R6",
+      "severity": [
+        "RECOVERABLE",
+        "TERMINAL"
+      ],
+      "retry": "EXPLICIT_BOOLEAN",
+      "default": "EVALUATION_FAILURE",
+      "allowed_explicit_mappings": [
+        "INVALID"
+      ],
+      "false_mapping": false,
+      "mandatory_conformance": "BLOCKED_UNTIL_DISPOSITION",
+      "evidence_metadata": "REQUIRED_WHEN_ERROR_OBSERVED",
+      "content_hash": "93d5c052e8f02eaf3eb4a067657c9e07414684d6dd704c30d62c1a8ae6c321e0"
+    },
+    {
+      "code": "VALIDATION_FAILED",
+      "origin": "SUPPLIED_R6",
+      "severity": [
+        "RECOVERABLE",
+        "TERMINAL"
+      ],
+      "retry": "EXPLICIT_BOOLEAN",
+      "default": "EVALUATION_FAILURE",
+      "allowed_explicit_mappings": [
+        "INVALID"
+      ],
+      "false_mapping": false,
+      "mandatory_conformance": "BLOCKED_UNTIL_DISPOSITION",
+      "evidence_metadata": "REQUIRED_WHEN_ERROR_OBSERVED",
+      "content_hash": "013f3ccced336ded208dfdff0d704031f14e9a996bc41a32bce08e3c2e668218"
+    },
+    {
+      "code": "UNSUPPORTED_PREDICATE",
+      "origin": "SUPPLIED_R6",
+      "severity": [
+        "RECOVERABLE",
+        "TERMINAL"
+      ],
+      "retry": "EXPLICIT_BOOLEAN",
+      "default": "EVALUATION_FAILURE",
+      "allowed_explicit_mappings": [
+        "BLOCKED"
+      ],
+      "false_mapping": false,
+      "mandatory_conformance": "BLOCKED_UNTIL_DISPOSITION",
+      "evidence_metadata": "REQUIRED_WHEN_ERROR_OBSERVED",
+      "content_hash": "698ed4c0cf029e3d31e3e0fa4e974d54811dcb585d9ccb76126b0c51c3bcfb46"
+    },
+    {
+      "code": "EVALUATOR_FAILURE",
+      "origin": "SUPPLIED_R6",
+      "severity": [
+        "RECOVERABLE",
+        "TERMINAL"
+      ],
+      "retry": "EXPLICIT_BOOLEAN",
+      "default": "EVALUATION_FAILURE",
+      "allowed_explicit_mappings": [],
+      "false_mapping": false,
+      "mandatory_conformance": "BLOCKED_UNTIL_DISPOSITION",
+      "evidence_metadata": "REQUIRED_WHEN_ERROR_OBSERVED",
+      "content_hash": "3271f06f3ee9bd80cb04293ee367d37b04136cdacca875d210f8e0ae3630f766"
+    },
+    {
+      "code": "EVALUATOR_TIMEOUT",
+      "origin": "SUPPLIED_R6",
+      "severity": [
+        "RECOVERABLE",
+        "TERMINAL"
+      ],
+      "retry": "EXPLICIT_BOOLEAN",
+      "default": "EVALUATION_FAILURE",
+      "allowed_explicit_mappings": [
+        "BLOCKED",
+        "UNKNOWN"
+      ],
+      "false_mapping": false,
+      "mandatory_conformance": "BLOCKED_UNTIL_DISPOSITION",
+      "evidence_metadata": "REQUIRED_WHEN_ERROR_OBSERVED",
+      "content_hash": "56c3be718cb01319fa05a5db675f294907978194643f2db9af73a281d3965746"
+    },
+    {
+      "code": "EVALUATOR_RESOURCE_FAILURE",
+      "origin": "SUPPLIED_R6",
+      "severity": [
+        "RECOVERABLE",
+        "TERMINAL"
+      ],
+      "retry": "EXPLICIT_BOOLEAN",
+      "default": "EVALUATION_FAILURE",
+      "allowed_explicit_mappings": [
+        "BLOCKED"
+      ],
+      "false_mapping": false,
+      "mandatory_conformance": "BLOCKED_UNTIL_DISPOSITION",
+      "evidence_metadata": "REQUIRED_WHEN_ERROR_OBSERVED",
+      "content_hash": "12b64675b8a775f0e8b081f5f8cb4eb85fa695b621d44c46f800f9fc031d9c3a"
+    },
+    {
+      "code": "EVALUATOR_INTERNAL_FAILURE",
+      "origin": "SUPPLIED_R6",
+      "severity": [
+        "RECOVERABLE",
+        "TERMINAL"
+      ],
+      "retry": "EXPLICIT_BOOLEAN",
+      "default": "EVALUATION_FAILURE",
+      "allowed_explicit_mappings": [],
+      "false_mapping": false,
+      "mandatory_conformance": "BLOCKED_UNTIL_DISPOSITION",
+      "evidence_metadata": "REQUIRED_WHEN_ERROR_OBSERVED",
+      "content_hash": "0ccc7207edd1aa2c2aa4de0d8baf47cee1b8176c78addbd35842763d86eb7248"
+    },
+    {
+      "code": "OUTPUT_INVALID",
+      "origin": "SUPPLIED_R6",
+      "severity": [
+        "RECOVERABLE",
+        "TERMINAL"
+      ],
+      "retry": "EXPLICIT_BOOLEAN",
+      "default": "EVALUATION_FAILURE",
+      "allowed_explicit_mappings": [
+        "INVALID"
+      ],
+      "false_mapping": false,
+      "mandatory_conformance": "BLOCKED_UNTIL_DISPOSITION",
+      "evidence_metadata": "REQUIRED_WHEN_ERROR_OBSERVED",
+      "content_hash": "a4017df57efca8a1468ed7706f0ad4fdf1698e073c1f833a7c494404d8c8cae8"
+    },
+    {
+      "code": "EVALUATOR_DEPENDENCY_UNAVAILABLE",
+      "origin": "INHERITED_R5",
+      "severity": [
+        "RECOVERABLE",
+        "TERMINAL"
+      ],
+      "retry": "EXPLICIT_BOOLEAN",
+      "default": "EVALUATION_FAILURE",
+      "allowed_explicit_mappings": [
+        "BLOCKED",
+        "UNKNOWN"
+      ],
+      "false_mapping": false,
+      "mandatory_conformance": "BLOCKED_UNTIL_DISPOSITION",
+      "evidence_metadata": "REQUIRED_WHEN_ERROR_OBSERVED",
+      "content_hash": "0e7c22eeb7d1404dc84bace85f9f989f15eb8825aa73968130b5a581e5a5143f"
+    }
+  ]
+}

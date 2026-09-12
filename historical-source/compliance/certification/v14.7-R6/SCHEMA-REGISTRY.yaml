@@ -1,0 +1,128 @@
+{
+  "objects": [
+    {
+      "schema_id": "Specification",
+      "path": "normative/specification.schema.yaml",
+      "plane": "NORMATIVE",
+      "sha256": "909f4697bfa0f923bc753e82e7d4072518afb8cb141d4cd86fd3b3acae531718"
+    },
+    {
+      "schema_id": "NormativeRequirement",
+      "path": "normative/requirement.schema.yaml",
+      "plane": "NORMATIVE",
+      "sha256": "090390f60e9895b4b1fd074cbbbd336756e1c8d34ebd88fa6a0cf8daba2cf0e4"
+    },
+    {
+      "schema_id": "Predicate",
+      "path": "normative/predicate.schema.yaml",
+      "plane": "NORMATIVE",
+      "sha256": "884138df42bd271c99993ab9dd7d9f846b2347a7db490b0b369e5a8d3d2e44db"
+    },
+    {
+      "schema_id": "AcceptanceCriterion",
+      "path": "normative/acceptance-criterion.schema.yaml",
+      "plane": "NORMATIVE",
+      "sha256": "8098962d71caf8996698a4897f0bac02dfc1e3bc0fda114fa8b36c69e359f5db"
+    },
+    {
+      "schema_id": "Profile",
+      "path": "profile/profile.schema.yaml",
+      "plane": "PROFILE",
+      "sha256": "3354923610d637143f71f83cf5fc38c18ca4c43dfd48763eca0094fa0ad2d998"
+    },
+    {
+      "schema_id": "ProfileRequirement",
+      "path": "profile/profile-requirement.schema.yaml",
+      "plane": "PROFILE",
+      "sha256": "c9c4b446266f935bfd6842e8ca0454d37d0507583d4c0f43ee9e362d2b245250"
+    },
+    {
+      "schema_id": "Compatibility",
+      "path": "profile/compatibility.schema.yaml",
+      "plane": "PROFILE",
+      "sha256": "0d016e6d286f9881744c1f2366508ca8092353c483acac9ad396a231b326abd5"
+    },
+    {
+      "schema_id": "ImplementationRequirement",
+      "path": "implementation/implementation-requirement.schema.yaml",
+      "plane": "IMPLEMENTATION",
+      "sha256": "d9f210f2ee290f79d709dd110c001737e5cc52c94e416894cec1473b68f5d693"
+    },
+    {
+      "schema_id": "ImplementationInstruction",
+      "path": "implementation/implementation-instruction.schema.yaml",
+      "plane": "IMPLEMENTATION",
+      "sha256": "cd54401a8ae55fec66f9225db6722ee96b7b257c3820fdb72e44f2d5fc91accb"
+    },
+    {
+      "schema_id": "TestDefinition",
+      "path": "evidence/test.schema.yaml",
+      "plane": "EVIDENCE",
+      "sha256": "f7071601aed24d968821f2d24e0bc6ab4bd3e09b7cff4ff2eeef2456df905d41"
+    },
+    {
+      "schema_id": "Observation",
+      "path": "evidence/observation.schema.yaml",
+      "plane": "EVIDENCE",
+      "sha256": "b874d5948049eaf0d4d7e5abde08f7e04f5e7e0bd82519089ecb41a42b1ad765"
+    },
+    {
+      "schema_id": "Evidence",
+      "path": "evidence/evidence.schema.yaml",
+      "plane": "EVIDENCE",
+      "sha256": "37e2795e7f3ffd6998712246e3739e1f531fe6c49a81a9e4e1061d19e28288d8"
+    },
+    {
+      "schema_id": "ValidationResult",
+      "path": "runtime/validation.schema.yaml",
+      "plane": "IMPLEMENTATION",
+      "sha256": "732e52a7c7c19c5ec7668826837f1f6e4f66035fa69cd314a421172027166530"
+    },
+    {
+      "schema_id": "EvaluationResult",
+      "path": "runtime/evaluation.schema.yaml",
+      "plane": "IMPLEMENTATION",
+      "sha256": "1add286bc877f3b50b8b529abbdc925a5990c8dfc112bb7af59c5020922bf16d"
+    },
+    {
+      "schema_id": "ConformanceResult",
+      "path": "runtime/conformance.schema.yaml",
+      "plane": "DECISION",
+      "sha256": "5a81ef07c46aad62a9916595d9405c04074f9e975aae4b77b62b2956072ac933"
+    },
+    {
+      "schema_id": "Authority",
+      "path": "runtime/authority.schema.yaml",
+      "plane": "DECISION",
+      "sha256": "dd62ec18e258ca3324a80c67d8307904b8c8da2408330cb246ceb197035ab6e8"
+    },
+    {
+      "schema_id": "Certificate",
+      "path": "runtime/certificate.schema.yaml",
+      "plane": "DECISION",
+      "sha256": "ff1d8d09bf81aee61ddab8421ff49b4ec7434743ba9e5624a46af6ea27d49937"
+    },
+    {
+      "schema_id": "Release",
+      "path": "runtime/release.schema.yaml",
+      "plane": "DECISION",
+      "sha256": "2b5877f2d57b67741dbc7279977525bc6998b0ec435ca78426bbc9b1878e60a6"
+    },
+    {
+      "schema_id": "StateTransitionEvent",
+      "path": "runtime/event.schema.yaml",
+      "plane": "EVIDENCE",
+      "sha256": "bbeeb2a78c2224fb4a70f456b4dd5dce9a13112fe3e6e667479560526a1fd34c"
+    },
+    {
+      "schema_id": "Projection",
+      "path": "runtime/projection.schema.yaml",
+      "plane": "IMPLEMENTATION",
+      "sha256": "94daa0d4c8f0faf23b7cd2b60e97e39b8711942b89be18bbfa8cc7aab637206c"
+    }
+  ],
+  "count": 20,
+  "language": "GDE-ABSTRACT-SCHEMA-1",
+  "dialect_binding": "IMPLEMENTATION_TASK",
+  "strict": true
+}

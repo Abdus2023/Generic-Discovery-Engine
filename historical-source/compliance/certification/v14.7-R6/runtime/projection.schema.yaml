@@ -1,0 +1,70 @@
+{
+  "schema_language": "GDE-ABSTRACT-SCHEMA-1",
+  "schema_id": "Projection",
+  "plane": "IMPLEMENTATION",
+  "object_type": "Projection",
+  "closed": true,
+  "required": [
+    "projection_id",
+    "history_ref",
+    "profile_ref",
+    "algorithm_version",
+    "status",
+    "state_hash",
+    "content_hash"
+  ],
+  "optional": [],
+  "fields": {
+    "projection_id": {
+      "type": "string",
+      "nullable": false
+    },
+    "history_ref": {
+      "type": "string",
+      "nullable": false
+    },
+    "profile_ref": {
+      "type": "string",
+      "nullable": false,
+      "reference_domain": "ProfileId"
+    },
+    "algorithm_version": {
+      "type": "string",
+      "nullable": false
+    },
+    "status": {
+      "type": "string",
+      "nullable": false,
+      "enum_domain": "ProjectionStatus"
+    },
+    "state_hash": {
+      "type": "string",
+      "nullable": false
+    },
+    "content_hash": {
+      "type": "string",
+      "nullable": false
+    }
+  },
+  "additional_fields": "FORBIDDEN",
+  "identifier_policy": "DISTINCT_SEMANTIC_DOMAINS",
+  "reference_policy": "TYPE_AND_INTEGRITY_CHECK_REQUIRED",
+  "cardinality_policy": "DECLARED_ARRAYS_ARE_ORDERED_AND_UNIQUE_UNLESS_EXPLICITLY_OVERRIDDEN",
+  "canonicalization_ref": "../v14.7-R5/CANONICAL-SERIALIZATION.yaml",
+  "hash": {
+    "domain": "r6-Projection:v1",
+    "inputs": [
+      "projection_id",
+      "history_ref",
+      "profile_ref",
+      "algorithm_version",
+      "status",
+      "state_hash"
+    ],
+    "excluded": [
+      "content_hash"
+    ]
+  },
+  "temporal_policy": "EXPLICIT_TRUSTED_TIME_AND_SCOPE",
+  "integrity_policy": "CONTENT_HASH_REQUIRED_SIGNATURE_WHEN_PROFILE_REQUIRES"
+}

@@ -1,0 +1,74 @@
+{
+  "schema_language": "GDE-ABSTRACT-SCHEMA-1",
+  "schema_id": "Release",
+  "plane": "DECISION",
+  "object_type": "Release",
+  "closed": true,
+  "required": [
+    "release_id",
+    "eligibility",
+    "authorization",
+    "decision",
+    "execution",
+    "verification",
+    "content_hash"
+  ],
+  "optional": [],
+  "fields": {
+    "release_id": {
+      "type": "string",
+      "nullable": false,
+      "identifier_domain": "ReleaseId"
+    },
+    "eligibility": {
+      "type": "string",
+      "nullable": false,
+      "enum_domain": "ReleaseEligibility"
+    },
+    "authorization": {
+      "type": "string",
+      "nullable": false,
+      "enum_domain": "AuthorizationStatus"
+    },
+    "decision": {
+      "type": "string",
+      "nullable": false,
+      "enum_domain": "ReleaseDecisionStatus"
+    },
+    "execution": {
+      "type": "string",
+      "nullable": false,
+      "enum_domain": "ReleaseExecutionStatus"
+    },
+    "verification": {
+      "type": "string",
+      "nullable": false,
+      "enum_domain": "PostReleaseVerificationStatus"
+    },
+    "content_hash": {
+      "type": "string",
+      "nullable": false
+    }
+  },
+  "additional_fields": "FORBIDDEN",
+  "identifier_policy": "DISTINCT_SEMANTIC_DOMAINS",
+  "reference_policy": "TYPE_AND_INTEGRITY_CHECK_REQUIRED",
+  "cardinality_policy": "DECLARED_ARRAYS_ARE_ORDERED_AND_UNIQUE_UNLESS_EXPLICITLY_OVERRIDDEN",
+  "canonicalization_ref": "../v14.7-R5/CANONICAL-SERIALIZATION.yaml",
+  "hash": {
+    "domain": "r6-Release:v1",
+    "inputs": [
+      "release_id",
+      "eligibility",
+      "authorization",
+      "decision",
+      "execution",
+      "verification"
+    ],
+    "excluded": [
+      "content_hash"
+    ]
+  },
+  "temporal_policy": "EXPLICIT_TRUSTED_TIME_AND_SCOPE",
+  "integrity_policy": "CONTENT_HASH_REQUIRED_SIGNATURE_WHEN_PROFILE_REQUIRES"
+}

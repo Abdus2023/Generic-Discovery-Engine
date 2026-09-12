@@ -18,7 +18,7 @@ def main():
         target=Path(temporary)/"repo/historical-source"
         def ignore(src,names):
             omitted={"__pycache__"}
-            if Path(src).name=="certification": omitted.add("v14.7-R5")
+            if Path(src).name=="certification": omitted.update({"v14.7-R5", "v14.7-R6"})
             return omitted & set(names)
         shutil.copytree(HIST,target,ignore=ignore)
         builder=target/"tools/build_normative_realization_v147r5.py"

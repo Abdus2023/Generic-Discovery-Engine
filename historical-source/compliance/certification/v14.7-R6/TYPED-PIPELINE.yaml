@@ -1,0 +1,26 @@
+{
+  "realization_version": "14.7-R6",
+  "semantic_version": "v14.7",
+  "epistemic_status": "SUPPORTED",
+  "success": [
+    "RawSubject",
+    "ValidatedSubject",
+    "EvaluationResult",
+    "ConformanceResult",
+    "ReleaseEligibility",
+    "AuthorizationResult",
+    "ReleaseDecision",
+    "ReleaseExecution",
+    "PostReleaseVerification"
+  ],
+  "errors": [
+    "ValidationError",
+    "EvaluationError",
+    "ConformanceError",
+    "AuthorizationError",
+    "TransitionError",
+    "ProjectionError"
+  ],
+  "error_as_semantic_result": "FORBIDDEN",
+  "typestate_normativity": "IMPLEMENTATION_TECHNIQUE"
+}
