@@ -97,4 +97,20 @@ if (!content.includes('clusterMetrics')) {
   console.error('verify-build: missing clusterMetrics');
   process.exit(1);
 }
+if (!content.includes('revisitChanged')) {
+  console.error('verify-build: missing revisitChanged (v0.9.1)');
+  process.exit(1);
+}
+if (!content.includes('patternGuided')) {
+  console.error('verify-build: missing patternGuided');
+  process.exit(1);
+}
+if (!content.includes('suggestPatternCandidates')) {
+  console.error('verify-build: missing suggestPatternCandidates');
+  process.exit(1);
+}
+if (!content.includes('getChangedResources')) {
+  console.error('verify-build: missing getChangedResources');
+  process.exit(1);
+}
 console.log('verify-build: OK — deterministic');

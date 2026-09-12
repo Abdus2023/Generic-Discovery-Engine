@@ -7,7 +7,7 @@
 - The transcript remains the provenance; ADRs are the normative summary.
 - New decisions get a new `docs/adr/NNN-title.md` and are linked here.
 
-## Decisions extracted (v0.9.0 — 21 ADRs)
+## Decisions extracted (v0.9.1 — 22 ADRs)
 
 | ADR | Title | Status | Transcript range | Code |
 |-----|-------|--------|------------------|------|
@@ -38,6 +38,7 @@
 | [019](adr/019-modular-prelude.md) | Modular prelude + export hardening (src/ mirror) | ✅ accepted | Phase 4 → v0.8.1 | `src/config.js`, `src/utils.js`, 7-file mirror, `verify:build` src check |
 | [020](adr/020-export-hardening.md) | Export hardening + inference metrics (coverage/export deterministic) | ✅ accepted | Phase 4 → v0.8.2 | `getCoverageMetrics` sorted, `exportData().inference`, verify:build inference gate |
 | [021](adr/021-framework-bundler.md) | Framework bundler (src/ → dist/ deterministic) | ✅ accepted | Phase 4 → v0.9.0 | `src/header.txt` + 7 modules, `scripts/build.js` bundler, `dist` generated |
+| [022](adr/022-pattern-guided-revisit.md) | Pattern-guided + revisitChanged (adaptive re-queue) | ✅ accepted | Phase 4 → v0.9.1 | `suggestPatternCandidates`, `getChangedResources`, `revisitChanged`/`patternGuided` |
 
 ## Decisions still in transcript (not yet ADR-ified)
 
@@ -49,8 +50,8 @@
 ## Process
 1. ChatGPT proposes; user selects v0.2.0 as base.
 2. Each iteration adds one control-plane concern (claim-before-await, policy-before-acquisition, ledger-for-explainability).
-3. Verification (v0.7.1 audit) files P0/P1; patches landed v0.7.2/v0.7.3/v0.7.4/v0.7.5/v0.7.6/v0.7.7/v0.7.8/v0.7.9/v0.8.0/v0.8.1/v0.8.2/v0.9.0.
+3. Verification (v0.7.1 audit) files P0/P1; patches landed v0.7.2/v0.7.3/v0.7.4/v0.7.5/v0.7.6/v0.7.7/v0.7.8/v0.7.9/v0.8.0/v0.8.1/v0.8.2/v0.9.0/v0.9.1.
 
 ## Further splits
-- The 2.2 MB file also contains 12 full code fences. The runnable artifact is now `dist/generic-discovery-engine.user.js` (v0.9.0, 5,875 lines, built from `src/` 7 modules) (was v0.8.2 5,864 / v0.8.1 5,784). The fences are retained for diff archaeology but are no longer the source of truth.
-- With 21 ADRs + rAF + coverage + TTL + gates + lifecycle + concurrency + pattern/cluster + build determinism + robots/headers + change detection + modular prelude + export hardening + framework bundler the control-plane is **feature-complete** for v0.9.0; `docs/analysis/DEEP_DVB_AUDIT_v0.8.2.md` remains valid (121/121) and `src/` is now source of truth.
+- The 2.2 MB file also contains 12 full code fences. The runnable artifact is now `dist/generic-discovery-engine.user.js` (v0.9.1, 5,969 lines, built from `src/` 7 modules) (was v0.9.0 5,875 / v0.8.2 5,864). The fences are retained for diff archaeology but are no longer the source of truth.
+- With 22 ADRs + rAF + coverage + TTL + gates + lifecycle + concurrency + pattern/cluster + build determinism + robots/headers + change detection + modular prelude + export hardening + framework bundler + pattern-guided/revisit the control-plane is **feature-complete** for v0.9.1; `docs/analysis/DEEP_DVB_AUDIT_v0.8.2.md` remains valid (126/126) and `src/` is source of truth with adaptive re-queue.

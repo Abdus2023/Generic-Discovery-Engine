@@ -2,6 +2,15 @@
 
 All notable changes to the Generic Discovery Engine.
 
+## [0.9.1] — 2026-09-12 — Pattern-Guided + RevisitChanged (adaptive re-queue)
+
+- **Knowledge:** `KnowledgeBase.suggestPatternCandidates(limit=5)` (top patterns ≥`minPatternFreq` with `{int}/{hash}/{uuid}` → `0`/`0*32`/`uuid0`, `isAllowedUrl` + `visited`/`candidateKeys` dedup, deterministic) + `getChangedResources()` (`status==='changed'`); `CONFIG.patternGuided {enabled:false, maxSuggestions:5}` + `CONFIG.revisitChanged:false` (opt-in, `v8` storage compatible). `src/knowledge.js` +30 lines.
+- **Engine:** `executePlan` after `recordObservation`+`markObserved` if `revisitChanged` && `resource.status==='changed'` clears `visited`/`candidateKeys` and `discover(revisit-changed, priority 0.6, diagnostic revisit-queued)`; after `markCompleted` if `patternGuided.enabled` calls `suggestPatternCandidates()` → `discover(pattern-guided, priority 0.55, depth+1, diagnostic pattern-guided-queued)` bounded 5. `src/engine.js` +50 lines, header `v0.9.1 — Pattern-Guided + RevisitChanged` + patch notes.
+- **Build:** `src/header.txt` 0.9.1 banner + notes, `dist` `5875→5969` (+94) `sha 44500a…` `176112B`; `scripts/verify-build.js` now asserts `revisitChanged`/`patternGuided`/`suggestPatternCandidates`/`getChangedResources` + `header.txt` version sync.
+- **Tests:** `tests/pattern-guided-revisit.test.js` 5 cases (static keys, disabled empty, pattern collapse ≥3, revisit re-queue via patched `revisitChanged:true`, fingerprintUnique still correct) + `verify-p0-fixes` now allows `0.9.[0-9]`; `npm test` **126/126 PASS** (33 suites: 121 existing + 5 pattern/revisit) vs 121/121 in 0.9.0.
+- **ADRs:** `docs/adr/022-pattern-guided-revisit.md` + `docs/adr/README.md` → 22 ADRs (21→22). `docs/DECISIONS.md`/`docs/architecture/OVERVIEW.md` bumped to `5,969` lines.
+- **Docs:** `VERIFICATION_SUPPLEMENT_v0.9.1.md` (§pattern-guided §revisit) + `README.md` current `v0.9.1` 126/126, `src/README.md` pattern-guided.
+
 ## [0.9.0] — 2026-09-12 — Framework Bundler (src/ → dist/ deterministic)
 
 - **Framework:** `src/` split into 7 modules (5699 code + 165 header = 5875) — `header.txt` 165 + `config` 160 + `utils` 356 + `ledger` 271 + `models` 376 + `knowledge` 701 + `providers` 984 + `engine` 2863 (AcquisitionPlan/Policy/Origin/Acquisition/NetworkObserver/Engine); `scripts/build.js` now deterministic bundler (reads `package.json` version → replaces `// @version` + banner, strips `// src/...` comments, concatenates `config→utils→ledger→models→knowledge→providers→engine`, writes `dist` 5875 lines `170699B` `sha256 8c734c…`). `dist` hash changes vs 0.8.2 (`a46d37…→8c734c…`) due to reordering but semantics preserved (dependency-safe, `node --check` PASS). `src/` is now source of truth, `dist` generated.

@@ -559,6 +559,34 @@
             return { size: this.clusterIndex.size, top: sorted, total: [...this.clusterIndex.values()].reduce((a, b) => a + b, 0) };
         }
 
+        suggestPatternCandidates(limit = CONFIG.patternGuided?.maxSuggestions || 5) {
+            if (!CONFIG.patternGuided?.enabled || !CONFIG.inference?.patternInference) return [];
+            const metrics = this.getPatternMetrics();
+            const suggestions = [];
+            for (const [pattern, count] of metrics.top) {
+                if (count < (CONFIG.inference.minPatternFreq || 3)) continue;
+                if (!pattern.includes('{int}') && !pattern.includes('{hash}') && !pattern.includes('{uuid}')) continue;
+                let suggestion = pattern;
+                // deterministic replacements
+                suggestion = suggestion.replace('{int}', '0');
+                suggestion = suggestion.replace('{hash}', '0'.repeat(32));
+                suggestion = suggestion.replace('{uuid}', '00000000-0000-4000-a000-000000000000');
+                // handle query patterns like ?id={int}
+                suggestion = suggestion.replace('={int}', '=0').replace('={hash}', '='+'0'.repeat(32)).replace('={uuid}', '=00000000-0000-4000-a000-000000000000');
+                const key = `url:${suggestion}`;
+                if (this.visited.has(key) || this.candidateKeys.has(key)) continue;
+                // also need isAllowedUrl check (sameOriginOnly)
+                try { if (!isAllowedUrl(suggestion)) continue; } catch { continue; }
+                suggestions.push({ pattern, count, suggestion });
+                if (suggestions.length >= limit) break;
+            }
+            return suggestions;
+        }
+
+        getChangedResources() {
+            return [...this.resources.values()].filter(r => r.status === 'changed');
+        }
+
         shouldAcquireResource(url) {
             const resource =
                 this.resources.get(

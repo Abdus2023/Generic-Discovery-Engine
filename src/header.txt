@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Generic Discovery Engine
 // @namespace    generic-discovery
-// @version      0.8.2
+// @version      0.9.1
 // @description  Generic web-resource discovery engine inspired by the architecture of DVB blind scanning.
 // @match        *://*/*
 // @run-at       document-start
@@ -19,6 +19,27 @@
     /*
      * ============================================================
      * Generic Discovery Engine
+     * v0.9.1 — Pattern-Guided + RevisitChanged (adaptive re-queue)
+     * Patch notes vs v0.9.0:
+     * - Knowledge: KnowledgeBase.suggestPatternCandidates() (top patterns ≥minPatternFreq,
+     *           {int}/{hash}/{uuid} → 0/0…/uuid0, bounded 5, isAllowedUrl, visited-dedup)
+     *           + getChangedResources() (status='changed'); CONFIG.patternGuided.enabled
+     *           + CONFIG.revisitChanged (opt-in, clears visited+ candidateKeys)
+     *         + Engine: after recordObservation if changed && revisitChanged → discover
+     *           revisit-changed (priority 0.6, depth, confidence 0.7, diagnostic revisit-queued)
+     *           + after markCompleted if patternGuided.enabled → suggestPatternCandidates()
+     *           → discover pattern-guided (priority 0.55, depth+1, diagnostic pattern-guided-queued)
+     *         + Tests: revisit + pattern-guided 5 cases + e2e pattern suggestion
+     *         + Build: verify-build asserts revisitChanged/patternGuided present
+
+     * v0.9.0 — Framework Bundler (src/ → dist/ deterministic)
+     * Patch notes vs v0.8.2:
+     * - Framework: src/ split 7 modules (5699 code + 165 header = 5875) via scripts/build.js
+     *           bundler (header.txt + config→utils→ledger→models→knowledge→providers→engine)
+     *           deterministic sha 8c734c…; dist now generated, src source of truth
+     *         + Build: dist 5864→5875 lines, verify-build src 7 gate retained
+     *         + Tests: verify-p0 allow 0.9.0; 121/121 still
+
      * v0.8.2 — Export Hardening + Inference Metrics (coverage+export now include pattern/cluster/fingerprint + deterministic ledger)
 
      * Patch notes vs v0.8.1:

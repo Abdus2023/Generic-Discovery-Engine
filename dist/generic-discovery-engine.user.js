@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Generic Discovery Engine
 // @namespace    generic-discovery
-// @version      0.9.0
+// @version      0.9.1
 // @description  Generic web-resource discovery engine inspired by the architecture of DVB blind scanning.
 // @match        *://*/*
 // @run-at       document-start
@@ -19,7 +19,28 @@
     /*
      * ============================================================
      * Generic Discovery Engine
-     * v0.9.0 — Export Hardening + Inference Metrics (coverage+export now include pattern/cluster/fingerprint + deterministic ledger)
+     * v0.9.1 — Pattern-Guided + RevisitChanged (adaptive re-queue)
+     * Patch notes vs v0.9.0:
+     * - Knowledge: KnowledgeBase.suggestPatternCandidates() (top patterns ≥minPatternFreq,
+     *           {int}/{hash}/{uuid} → 0/0…/uuid0, bounded 5, isAllowedUrl, visited-dedup)
+     *           + getChangedResources() (status='changed'); CONFIG.patternGuided.enabled
+     *           + CONFIG.revisitChanged (opt-in, clears visited+ candidateKeys)
+     *         + Engine: after recordObservation if changed && revisitChanged → discover
+     *           revisit-changed (priority 0.6, depth, confidence 0.7, diagnostic revisit-queued)
+     *           + after markCompleted if patternGuided.enabled → suggestPatternCandidates()
+     *           → discover pattern-guided (priority 0.55, depth+1, diagnostic pattern-guided-queued)
+     *         + Tests: revisit + pattern-guided 5 cases + e2e pattern suggestion
+     *         + Build: verify-build asserts revisitChanged/patternGuided present
+
+     * v0.9.0 — Framework Bundler (src/ → dist/ deterministic)
+     * Patch notes vs v0.8.2:
+     * - Framework: src/ split 7 modules (5699 code + 165 header = 5875) via scripts/build.js
+     *           bundler (header.txt + config→utils→ledger→models→knowledge→providers→engine)
+     *           deterministic sha 8c734c…; dist now generated, src source of truth
+     *         + Build: dist 5864→5875 lines, verify-build src 7 gate retained
+     *         + Tests: verify-p0 allow 0.9.0; 121/121 still
+
+     * v0.8.2 — Export Hardening + Inference Metrics (coverage+export now include pattern/cluster/fingerprint + deterministic ledger)
 
      * Patch notes vs v0.8.1:
      * - Export: getCoverageMetrics() now returns inference metrics
@@ -174,6 +195,11 @@
             minPatternFreq: 3
         },
         changeDetection: true,
+        revisitChanged: false,
+        patternGuided: {
+            enabled: false,
+            maxSuggestions: 5
+        },
         lifecycle: {
             strict: false // true → illegal transitions throw; false → diagnostic + allow
         },
@@ -1884,6 +1910,34 @@
         getClusterMetrics() {
             const sorted = [...this.clusterIndex.entries()].sort((a, b) => b[1] - a[1]).slice(0, 20);
             return { size: this.clusterIndex.size, top: sorted, total: [...this.clusterIndex.values()].reduce((a, b) => a + b, 0) };
+        }
+
+        suggestPatternCandidates(limit = CONFIG.patternGuided?.maxSuggestions || 5) {
+            if (!CONFIG.patternGuided?.enabled || !CONFIG.inference?.patternInference) return [];
+            const metrics = this.getPatternMetrics();
+            const suggestions = [];
+            for (const [pattern, count] of metrics.top) {
+                if (count < (CONFIG.inference.minPatternFreq || 3)) continue;
+                if (!pattern.includes('{int}') && !pattern.includes('{hash}') && !pattern.includes('{uuid}')) continue;
+                let suggestion = pattern;
+                // deterministic replacements
+                suggestion = suggestion.replace('{int}', '0');
+                suggestion = suggestion.replace('{hash}', '0'.repeat(32));
+                suggestion = suggestion.replace('{uuid}', '00000000-0000-4000-a000-000000000000');
+                // handle query patterns like ?id={int}
+                suggestion = suggestion.replace('={int}', '=0').replace('={hash}', '='+'0'.repeat(32)).replace('={uuid}', '=00000000-0000-4000-a000-000000000000');
+                const key = `url:${suggestion}`;
+                if (this.visited.has(key) || this.candidateKeys.has(key)) continue;
+                // also need isAllowedUrl check (sameOriginOnly)
+                try { if (!isAllowedUrl(suggestion)) continue; } catch { continue; }
+                suggestions.push({ pattern, count, suggestion });
+                if (suggestions.length >= limit) break;
+            }
+            return suggestions;
+        }
+
+        getChangedResources() {
+            return [...this.resources.values()].filter(r => r.status === 'changed');
         }
 
         shouldAcquireResource(url) {
@@ -4708,6 +4762,28 @@
                 candidate
             );
 
+            // v0.9.1: revisitChanged — re-queue changed resource (opt-in, clears visited)
+            if (CONFIG.revisitChanged) {
+                try {
+                    const revisitUrl = canonicalizeUrl(observation.requestedUrl) || observation.requestedUrl;
+                    const res = this.db.resources.get(revisitUrl);
+                    if (res && res.status === 'changed') {
+                        const revisitKey = `url:${revisitUrl}`;
+                        this.db.visited.delete(revisitKey);
+                        this.db.candidateKeys.delete(revisitKey);
+                        const revisit = this.discover(observation.requestedUrl, 'url', {
+                            priority: 0.6,
+                            depth: candidate.depth,
+                            hints: { confidence: 0.7, revisit: true },
+                            mechanism: 'revisit-changed'
+                        });
+                        if (revisit) {
+                            this.ledger.recordDiagnostic('revisit-queued', { target: observation.requestedUrl, candidateId: revisit.id });
+                        }
+                    }
+                } catch {}
+            }
+
             if (
                 observation.status !==
                 'success'
@@ -4838,6 +4914,24 @@
                 .recordCandidateCompleted(
                     candidate
                 );
+
+            // v0.9.1: pattern-guided exploration (opt-in, bounded)
+            if (CONFIG.patternGuided?.enabled) {
+                try {
+                    const suggestions = this.db.suggestPatternCandidates();
+                    for (const { suggestion, pattern, count } of suggestions) {
+                        const pc = this.discover(suggestion, 'url', {
+                            priority: 0.55,
+                            depth: candidate.depth + 1,
+                            hints: { confidence: 0.6, patternGuided: true, pattern },
+                            mechanism: 'pattern-guided'
+                        });
+                        if (pc) {
+                            this.ledger.recordDiagnostic('pattern-guided-queued', { pattern, suggestion, count, candidateId: pc.id });
+                        }
+                    }
+                } catch {}
+            }
 
             this.schedulePersistence();
         }

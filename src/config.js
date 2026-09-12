@@ -10,6 +10,11 @@
             minPatternFreq: 3
         },
         changeDetection: true,
+        revisitChanged: false,
+        patternGuided: {
+            enabled: false,
+            maxSuggestions: 5
+        },
         lifecycle: {
             strict: false // true → illegal transitions throw; false → diagnostic + allow
         },

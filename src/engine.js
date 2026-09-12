@@ -1697,6 +1697,28 @@
                 candidate
             );
 
+            // v0.9.1: revisitChanged — re-queue changed resource (opt-in, clears visited)
+            if (CONFIG.revisitChanged) {
+                try {
+                    const revisitUrl = canonicalizeUrl(observation.requestedUrl) || observation.requestedUrl;
+                    const res = this.db.resources.get(revisitUrl);
+                    if (res && res.status === 'changed') {
+                        const revisitKey = `url:${revisitUrl}`;
+                        this.db.visited.delete(revisitKey);
+                        this.db.candidateKeys.delete(revisitKey);
+                        const revisit = this.discover(observation.requestedUrl, 'url', {
+                            priority: 0.6,
+                            depth: candidate.depth,
+                            hints: { confidence: 0.7, revisit: true },
+                            mechanism: 'revisit-changed'
+                        });
+                        if (revisit) {
+                            this.ledger.recordDiagnostic('revisit-queued', { target: observation.requestedUrl, candidateId: revisit.id });
+                        }
+                    }
+                } catch {}
+            }
+
             if (
                 observation.status !==
                 'success'
@@ -1827,6 +1849,24 @@
                 .recordCandidateCompleted(
                     candidate
                 );
+
+            // v0.9.1: pattern-guided exploration (opt-in, bounded)
+            if (CONFIG.patternGuided?.enabled) {
+                try {
+                    const suggestions = this.db.suggestPatternCandidates();
+                    for (const { suggestion, pattern, count } of suggestions) {
+                        const pc = this.discover(suggestion, 'url', {
+                            priority: 0.55,
+                            depth: candidate.depth + 1,
+                            hints: { confidence: 0.6, patternGuided: true, pattern },
+                            mechanism: 'pattern-guided'
+                        });
+                        if (pc) {
+                            this.ledger.recordDiagnostic('pattern-guided-queued', { pattern, suggestion, count, candidateId: pc.id });
+                        }
+                    }
+                } catch {}
+            }
 
             this.schedulePersistence();
         }
