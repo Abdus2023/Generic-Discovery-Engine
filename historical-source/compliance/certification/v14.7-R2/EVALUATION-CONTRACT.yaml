@@ -1,0 +1,18 @@
+{
+  "profile_version": "14.7-R2",
+  "profile_id": "gde-cjson-1",
+  "epistemic_status": "SUPPORTED",
+  "claim_class": "REALIZATION_PROFILE",
+  "function": "Evaluate(subject,predicate,context,evaluator,profile)",
+  "equal_inputs_equal_result": true,
+  "bound": [
+    "SUBJECT",
+    "PREDICATE",
+    "SEALED_CONTEXT",
+    "EVALUATOR_ID",
+    "EVALUATOR_VERSION",
+    "EVALUATOR_HASH",
+    "PROFILE"
+  ],
+  "external_nondeterminism": "MUST_BECOME_EVIDENCE_OR_CONTEXT"
+}

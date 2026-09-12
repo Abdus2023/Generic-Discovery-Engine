@@ -1,0 +1,63 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://generic-discovery-engine.invalid/compliance/v14.7-R2/hash-domain.schema.yaml",
+  "title": "hash-domain",
+  "type": "object",
+  "required": [
+    "hash_domain_id",
+    "field_name",
+    "input_domain",
+    "canonicalization",
+    "algorithm",
+    "encoding",
+    "scope",
+    "purpose",
+    "content_hash"
+  ],
+  "properties": {
+    "hash_domain_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "field_name": {
+      "type": "string",
+      "minLength": 1
+    },
+    "input_domain": {
+      "type": "string",
+      "minLength": 1
+    },
+    "canonicalization": {
+      "type": "string",
+      "minLength": 1
+    },
+    "algorithm": {
+      "const": "SHA-256"
+    },
+    "encoding": {
+      "const": "LOWERCASE_HEX_64"
+    },
+    "scope": {
+      "type": "string",
+      "minLength": 1
+    },
+    "purpose": {
+      "type": "string",
+      "minLength": 1
+    },
+    "content_hash": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$"
+    }
+  },
+  "additionalProperties": false,
+  "x-identity-fields": [
+    "hash_domain_id"
+  ],
+  "x-immutable": true,
+  "x-self-excluding-hash-field": "content_hash",
+  "x-canonical-profile": "gde-cjson-1",
+  "x-normative-rules": [
+    "typed prefix prevents substitution"
+  ]
+}

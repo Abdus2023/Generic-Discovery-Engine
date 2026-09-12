@@ -1,0 +1,1076 @@
+{
+  "profile_version": "14.7-R2",
+  "profile_id": "gde-cjson-1",
+  "epistemic_status": "SUPPORTED",
+  "claim_class": "REALIZATION_PROFILE",
+  "objects": [
+    {
+      "fixture_id": "schema-valid",
+      "input": {
+        "object": {
+          "x": "ok"
+        },
+        "schema": {
+          "type": "object",
+          "required": [
+            "x"
+          ],
+          "properties": {
+            "x": {
+              "type": "string"
+            }
+          },
+          "additionalProperties": false
+        }
+      }
+    },
+    {
+      "fixture_id": "schema-missing",
+      "input": {
+        "object": {},
+        "schema": {
+          "type": "object",
+          "required": [
+            "x"
+          ],
+          "properties": {
+            "x": {
+              "type": "string"
+            }
+          },
+          "additionalProperties": false
+        }
+      }
+    },
+    {
+      "fixture_id": "integrity-valid",
+      "input": {
+        "domain": "OBJECT",
+        "object": {
+          "x": 1,
+          "content_hash": "cacc143faf824370a1595efe05fa31594a13d4f5ba8620d95f5e3033614deb28"
+        }
+      }
+    },
+    {
+      "fixture_id": "integrity-broken",
+      "input": {
+        "domain": "OBJECT",
+        "object": {
+          "x": 2,
+          "content_hash": "cacc143faf824370a1595efe05fa31594a13d4f5ba8620d95f5e3033614deb28"
+        }
+      }
+    },
+    {
+      "fixture_id": "canonical-map",
+      "input": {
+        "a": {
+          "b": 2,
+          "a": 1
+        },
+        "b": {
+          "a": 1,
+          "b": 2
+        }
+      }
+    },
+    {
+      "fixture_id": "canonical-nfc",
+      "input": {
+        "a": "\u00e9",
+        "b": "e\u0301"
+      }
+    },
+    {
+      "fixture_id": "reject-float",
+      "input": {}
+    },
+    {
+      "fixture_id": "hash-domains",
+      "input": {
+        "x": 1
+      }
+    },
+    {
+      "fixture_id": "all-true",
+      "input": {
+        "results": [
+          "TRUE",
+          "TRUE"
+        ]
+      }
+    },
+    {
+      "fixture_id": "false-blocked",
+      "input": {
+        "results": [
+          "BLOCKED",
+          "FALSE"
+        ]
+      }
+    },
+    {
+      "fixture_id": "blocked-unknown",
+      "input": {
+        "results": [
+          "UNKNOWN",
+          "BLOCKED"
+        ]
+      }
+    },
+    {
+      "fixture_id": "unknown-true",
+      "input": {
+        "results": [
+          "TRUE",
+          "UNKNOWN"
+        ]
+      }
+    },
+    {
+      "fixture_id": "invalid-false",
+      "input": {
+        "results": [
+          "FALSE",
+          "INVALID"
+        ]
+      }
+    },
+    {
+      "fixture_id": "empty-deny",
+      "input": {
+        "results": [],
+        "empty_action": "DENY"
+      }
+    },
+    {
+      "fixture_id": "empty-missing",
+      "input": {
+        "results": []
+      }
+    },
+    {
+      "fixture_id": "eval-true",
+      "input": {
+        "subject": {
+          "x": 1
+        },
+        "predicate": {
+          "op": "equals",
+          "field": "x",
+          "value": 1
+        },
+        "context": {
+          "sealed": true
+        },
+        "evaluator": {
+          "evaluator_id": "e",
+          "version": "1",
+          "hash": "h"
+        }
+      }
+    },
+    {
+      "fixture_id": "eval-false",
+      "input": {
+        "subject": {
+          "x": 1
+        },
+        "predicate": {
+          "op": "equals",
+          "field": "x",
+          "value": 2
+        },
+        "context": {
+          "sealed": true
+        },
+        "evaluator": {
+          "evaluator_id": "e",
+          "version": "1",
+          "hash": "h"
+        }
+      }
+    },
+    {
+      "fixture_id": "eval-unknown",
+      "input": {
+        "subject": {
+          "x": 1
+        },
+        "predicate": {
+          "op": "unknown"
+        },
+        "context": {
+          "sealed": true
+        },
+        "evaluator": {
+          "evaluator_id": "e",
+          "version": "1",
+          "hash": "h"
+        }
+      }
+    },
+    {
+      "fixture_id": "eval-blocked",
+      "input": {
+        "subject": {
+          "x": 1
+        },
+        "predicate": {
+          "op": "blocked"
+        },
+        "context": {
+          "sealed": true
+        },
+        "evaluator": {
+          "evaluator_id": "e",
+          "version": "1",
+          "hash": "h"
+        }
+      }
+    },
+    {
+      "fixture_id": "eval-invalid",
+      "input": {
+        "subject": {
+          "x": 1
+        },
+        "predicate": {
+          "op": "equals",
+          "field": "x",
+          "value": 1
+        },
+        "context": {
+          "sealed": false
+        },
+        "evaluator": {
+          "evaluator_id": "e",
+          "version": "1",
+          "hash": "h"
+        }
+      }
+    },
+    {
+      "fixture_id": "scope-ok",
+      "input": {
+        "requested": [
+          "a"
+        ],
+        "granted": [
+          "a",
+          "b"
+        ]
+      }
+    },
+    {
+      "fixture_id": "scope-wrong",
+      "input": {
+        "requested": [
+          "x"
+        ],
+        "granted": [
+          "a"
+        ]
+      }
+    },
+    {
+      "fixture_id": "evidence-missing",
+      "input": {}
+    },
+    {
+      "fixture_id": "evidence-stale",
+      "input": {
+        "evidence": {
+          "freshness": "STALE"
+        }
+      }
+    },
+    {
+      "fixture_id": "evidence-blocked",
+      "input": {
+        "evidence": {
+          "freshness": "UNAVAILABLE"
+        }
+      }
+    },
+    {
+      "fixture_id": "time-start",
+      "input": {
+        "instant": "2026-01-01T00:00:00Z",
+        "not_before": "2026-01-01T00:00:00Z",
+        "not_after": "2026-02-01T00:00:00Z"
+      }
+    },
+    {
+      "fixture_id": "time-end",
+      "input": {
+        "instant": "2026-02-01T00:00:00Z",
+        "not_before": "2026-01-01T00:00:00Z",
+        "not_after": "2026-02-01T00:00:00Z"
+      }
+    },
+    {
+      "fixture_id": "policy-complete",
+      "input": {
+        "empty_mandatory_action": "DENY",
+        "decision_mappings": {
+          "ELIGIBLE": "ELIGIBLE",
+          "INELIGIBLE": "INELIGIBLE",
+          "BLOCKED": "BLOCKED",
+          "UNKNOWN": "UNKNOWN"
+        }
+      }
+    },
+    {
+      "fixture_id": "policy-incomplete",
+      "input": {
+        "empty_mandatory_action": "DENY",
+        "decision_mappings": {}
+      }
+    },
+    {
+      "fixture_id": "authority-ok",
+      "input": {
+        "authority": {
+          "status": "ACTIVE",
+          "operations": [
+            "ISSUE_CERTIFICATE"
+          ],
+          "scope": [
+            "x"
+          ],
+          "not_before": "2026-01-01T00:00:00Z",
+          "not_after": "2027-01-01T00:00:00Z",
+          "type": "HUMAN"
+        },
+        "credential": {
+          "valid": true
+        },
+        "operation": "ISSUE_CERTIFICATE",
+        "scope": [
+          "x"
+        ],
+        "policy": {
+          "threshold": 1,
+          "basis_hash": "b"
+        },
+        "instant": "2026-06-01T00:00:00Z"
+      }
+    },
+    {
+      "fixture_id": "authority-expired",
+      "input": {
+        "authority": {
+          "status": "ACTIVE",
+          "operations": [
+            "ISSUE_CERTIFICATE"
+          ],
+          "scope": [
+            "x"
+          ],
+          "not_before": "2026-01-01T00:00:00Z",
+          "not_after": "2027-01-01T00:00:00Z",
+          "type": "HUMAN"
+        },
+        "credential": {
+          "valid": true
+        },
+        "operation": "ISSUE_CERTIFICATE",
+        "scope": [
+          "x"
+        ],
+        "policy": {
+          "threshold": 1,
+          "basis_hash": "b"
+        },
+        "instant": "2028-01-01T00:00:00Z"
+      }
+    },
+    {
+      "fixture_id": "authority-scope",
+      "input": {
+        "authority": {
+          "status": "ACTIVE",
+          "operations": [
+            "ISSUE_CERTIFICATE"
+          ],
+          "scope": [
+            "x"
+          ],
+          "not_before": "2026-01-01T00:00:00Z",
+          "not_after": "2027-01-01T00:00:00Z",
+          "type": "HUMAN"
+        },
+        "credential": {
+          "valid": true
+        },
+        "operation": "ISSUE_CERTIFICATE",
+        "scope": [
+          "y"
+        ],
+        "policy": {
+          "threshold": 1,
+          "basis_hash": "b"
+        },
+        "instant": "2026-06-01T00:00:00Z"
+      }
+    },
+    {
+      "fixture_id": "authority-zero",
+      "input": {
+        "authority": {
+          "status": "ACTIVE",
+          "operations": [
+            "ISSUE_CERTIFICATE"
+          ],
+          "scope": [
+            "x"
+          ],
+          "not_before": "2026-01-01T00:00:00Z",
+          "not_after": "2027-01-01T00:00:00Z",
+          "type": "HUMAN"
+        },
+        "credential": {
+          "valid": true
+        },
+        "operation": "ISSUE_CERTIFICATE",
+        "scope": [
+          "x"
+        ],
+        "policy": {
+          "threshold": 0
+        },
+        "instant": "2026-06-01T00:00:00Z"
+      }
+    },
+    {
+      "fixture_id": "authority-n-of-m-short",
+      "input": {
+        "authority": {
+          "status": "ACTIVE",
+          "operations": [
+            "ISSUE_CERTIFICATE"
+          ],
+          "scope": [
+            "x"
+          ],
+          "not_before": "2026-01-01T00:00:00Z",
+          "not_after": "2027-01-01T00:00:00Z",
+          "type": "MULTI_PARTY"
+        },
+        "credential": {
+          "valid": true
+        },
+        "operation": "ISSUE_CERTIFICATE",
+        "scope": [
+          "x"
+        ],
+        "policy": {
+          "threshold": 2,
+          "basis_hash": "b"
+        },
+        "instant": "2026-06-01T00:00:00Z",
+        "approvals": [
+          {
+            "authority_id": "a",
+            "valid": true,
+            "basis_hash": "b"
+          },
+          {
+            "authority_id": "a",
+            "valid": true,
+            "basis_hash": "b"
+          }
+        ]
+      }
+    },
+    {
+      "fixture_id": "authority-n-of-m",
+      "input": {
+        "authority": {
+          "status": "ACTIVE",
+          "operations": [
+            "ISSUE_CERTIFICATE"
+          ],
+          "scope": [
+            "x"
+          ],
+          "not_before": "2026-01-01T00:00:00Z",
+          "not_after": "2027-01-01T00:00:00Z",
+          "type": "MULTI_PARTY"
+        },
+        "credential": {
+          "valid": true
+        },
+        "operation": "ISSUE_CERTIFICATE",
+        "scope": [
+          "x"
+        ],
+        "policy": {
+          "threshold": 2,
+          "basis_hash": "b"
+        },
+        "instant": "2026-06-01T00:00:00Z",
+        "approvals": [
+          {
+            "authority_id": "a",
+            "valid": true,
+            "basis_hash": "b"
+          },
+          {
+            "authority_id": "b",
+            "valid": true,
+            "basis_hash": "b"
+          }
+        ]
+      }
+    },
+    {
+      "fixture_id": "reference-ok",
+      "input": {
+        "objects": [
+          {
+            "object_type": "Thing",
+            "object_id": "t",
+            "scope_hash": "s",
+            "content_hash": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+            "schema_id": "v1"
+          }
+        ],
+        "references": [
+          {
+            "target_type": "Thing",
+            "target_id": "t",
+            "target_hash": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+            "schema_id": "v1"
+          }
+        ],
+        "scope": "s"
+      }
+    },
+    {
+      "fixture_id": "reference-missing",
+      "input": {
+        "objects": [
+          {
+            "object_type": "Thing",
+            "object_id": "t",
+            "scope_hash": "s",
+            "content_hash": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+            "schema_id": "v1"
+          }
+        ],
+        "references": [
+          {
+            "target_type": "Thing",
+            "target_id": "x"
+          }
+        ],
+        "scope": "s"
+      }
+    },
+    {
+      "fixture_id": "reference-scope",
+      "input": {
+        "objects": [
+          {
+            "object_type": "Thing",
+            "object_id": "t",
+            "scope_hash": "s",
+            "content_hash": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+            "schema_id": "v1"
+          }
+        ],
+        "references": [
+          {
+            "target_type": "Thing",
+            "target_id": "t"
+          }
+        ],
+        "scope": "wrong"
+      }
+    },
+    {
+      "fixture_id": "reference-version",
+      "input": {
+        "objects": [
+          {
+            "object_type": "Thing",
+            "object_id": "t",
+            "scope_hash": "s",
+            "content_hash": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+            "schema_id": "v1"
+          }
+        ],
+        "references": [
+          {
+            "target_type": "Thing",
+            "target_id": "t",
+            "schema_id": "v2"
+          }
+        ],
+        "scope": "s"
+      }
+    },
+    {
+      "fixture_id": "reference-duplicate",
+      "input": {
+        "objects": [
+          {
+            "object_type": "Thing",
+            "object_id": "t",
+            "scope_hash": "s",
+            "content_hash": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+            "schema_id": "v1"
+          },
+          {
+            "object_type": "Thing",
+            "object_id": "t",
+            "scope_hash": "s",
+            "content_hash": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+            "schema_id": "v1"
+          }
+        ],
+        "references": [],
+        "scope": "s"
+      }
+    },
+    {
+      "fixture_id": "reference-wrong-type",
+      "input": {
+        "objects": [
+          {
+            "object_type": "Thing",
+            "object_id": "t",
+            "scope_hash": "s",
+            "content_hash": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+            "schema_id": "v1"
+          }
+        ],
+        "references": [
+          {
+            "target_type": "Other",
+            "target_id": "t"
+          }
+        ],
+        "scope": "s"
+      }
+    },
+    {
+      "fixture_id": "reference-cycle",
+      "input": {
+        "objects": [
+          {
+            "object_type": "Thing",
+            "object_id": "t",
+            "scope_hash": "s",
+            "content_hash": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+            "schema_id": "v1"
+          },
+          {
+            "object_type": "Thing",
+            "object_id": "u",
+            "scope_hash": "s",
+            "content_hash": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+            "schema_id": "v1"
+          }
+        ],
+        "references": [
+          {
+            "source_id": "t",
+            "target_type": "Thing",
+            "target_id": "u"
+          },
+          {
+            "source_id": "u",
+            "target_type": "Thing",
+            "target_id": "t"
+          }
+        ],
+        "scope": "s"
+      }
+    },
+    {
+      "fixture_id": "reference-superseded-resolves",
+      "input": {
+        "objects": [
+          {
+            "object_type": "Thing",
+            "object_id": "t",
+            "scope_hash": "s",
+            "content_hash": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+            "schema_id": "v1",
+            "status": "SUPERSEDED"
+          }
+        ],
+        "references": [
+          {
+            "target_type": "Thing",
+            "target_id": "t"
+          }
+        ],
+        "scope": "s"
+      }
+    },
+    {
+      "fixture_id": "reference-revoked-resolves",
+      "input": {
+        "objects": [
+          {
+            "object_type": "Thing",
+            "object_id": "t",
+            "scope_hash": "s",
+            "content_hash": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+            "schema_id": "v1",
+            "status": "REVOKED"
+          }
+        ],
+        "references": [
+          {
+            "target_type": "Thing",
+            "target_id": "t"
+          }
+        ],
+        "scope": "s"
+      }
+    },
+    {
+      "fixture_id": "transition-ok",
+      "input": {
+        "current": "DRAFT",
+        "event": {
+          "event_type": "ISSUE",
+          "authority_valid": true,
+          "evidence_refs": [
+            "auth"
+          ],
+          "scope_valid": true
+        },
+        "rule": {
+          "from_state": "DRAFT",
+          "event_type": "ISSUE",
+          "authority_required": true,
+          "required_evidence": [
+            "auth"
+          ],
+          "to_state": "ISSUED"
+        }
+      }
+    },
+    {
+      "fixture_id": "transition-illegal",
+      "input": {
+        "current": "ISSUED",
+        "event": {
+          "event_type": "ISSUE",
+          "authority_valid": true,
+          "evidence_refs": [
+            "auth"
+          ],
+          "scope_valid": true
+        },
+        "rule": {
+          "from_state": "DRAFT",
+          "event_type": "ISSUE",
+          "authority_required": true,
+          "required_evidence": [
+            "auth"
+          ],
+          "to_state": "ISSUED"
+        }
+      }
+    },
+    {
+      "fixture_id": "transition-no-auth",
+      "input": {
+        "current": "DRAFT",
+        "event": {
+          "event_type": "ISSUE",
+          "authority_valid": false,
+          "evidence_refs": [
+            "auth"
+          ],
+          "scope_valid": true
+        },
+        "rule": {
+          "from_state": "DRAFT",
+          "event_type": "ISSUE",
+          "authority_required": true,
+          "required_evidence": [
+            "auth"
+          ],
+          "to_state": "ISSUED"
+        }
+      }
+    },
+    {
+      "fixture_id": "event-commit",
+      "input": {
+        "mode": "COMMIT"
+      }
+    },
+    {
+      "fixture_id": "event-idempotent",
+      "input": {
+        "mode": "IDEMPOTENT"
+      }
+    },
+    {
+      "fixture_id": "event-conflict",
+      "input": {
+        "mode": "CONFLICT"
+      }
+    },
+    {
+      "fixture_id": "project-valid",
+      "input": {
+        "history": [
+          {
+            "event_id": "e0",
+            "sequence_no": 0,
+            "previous_event_id": null,
+            "to_state": "A"
+          },
+          {
+            "event_id": "e1",
+            "sequence_no": 1,
+            "previous_event_id": "e0",
+            "to_state": "B"
+          }
+        ]
+      }
+    },
+    {
+      "fixture_id": "project-duplicate",
+      "input": {
+        "history": [
+          {
+            "event_id": "e0",
+            "sequence_no": 0,
+            "previous_event_id": null,
+            "to_state": "A"
+          },
+          {
+            "event_id": "e0",
+            "sequence_no": 0,
+            "previous_event_id": null,
+            "to_state": "A"
+          }
+        ]
+      }
+    },
+    {
+      "fixture_id": "project-gap",
+      "input": {
+        "history": [
+          {
+            "event_id": "e0",
+            "sequence_no": 0,
+            "previous_event_id": null,
+            "to_state": "A"
+          },
+          {
+            "event_id": "e1",
+            "sequence_no": 2,
+            "previous_event_id": "e0",
+            "to_state": "B"
+          }
+        ]
+      }
+    },
+    {
+      "fixture_id": "project-corrupt",
+      "input": {
+        "history": [
+          {
+            "event_id": "e0",
+            "sequence_no": 0,
+            "previous_event_id": null,
+            "to_state": "A"
+          },
+          {
+            "event_id": "e1",
+            "sequence_no": 1,
+            "previous_event_id": "e0",
+            "to_state": "B",
+            "valid": false
+          }
+        ]
+      }
+    },
+    {
+      "fixture_id": "project-reordered",
+      "input": {
+        "history": [
+          {
+            "event_id": "e1",
+            "sequence_no": 1,
+            "previous_event_id": "e0",
+            "to_state": "B"
+          },
+          {
+            "event_id": "e0",
+            "sequence_no": 0,
+            "previous_event_id": null,
+            "to_state": "A"
+          }
+        ]
+      }
+    },
+    {
+      "fixture_id": "projection-match",
+      "input": {
+        "history": [
+          {
+            "event_id": "e0",
+            "sequence_no": 0,
+            "previous_event_id": null,
+            "to_state": "A"
+          },
+          {
+            "event_id": "e1",
+            "sequence_no": 1,
+            "previous_event_id": "e0",
+            "to_state": "B"
+          }
+        ],
+        "mode": "MATCH"
+      }
+    },
+    {
+      "fixture_id": "projection-mismatch",
+      "input": {
+        "history": [
+          {
+            "event_id": "e0",
+            "sequence_no": 0,
+            "previous_event_id": null,
+            "to_state": "A"
+          },
+          {
+            "event_id": "e1",
+            "sequence_no": 1,
+            "previous_event_id": "e0",
+            "to_state": "B"
+          }
+        ],
+        "mode": "MISMATCH"
+      }
+    },
+    {
+      "fixture_id": "reuse-same",
+      "input": {
+        "old": {
+          "a": 1
+        },
+        "new": {
+          "a": 1
+        },
+        "fields": [
+          "a"
+        ],
+        "conditions": [
+          true
+        ]
+      }
+    },
+    {
+      "fixture_id": "reuse-change",
+      "input": {
+        "old": {
+          "a": 1
+        },
+        "new": {
+          "a": 2
+        },
+        "fields": [
+          "a"
+        ],
+        "conditions": [
+          true
+        ]
+      }
+    },
+    {
+      "fixture_id": "reuse-missing",
+      "input": {
+        "old": {},
+        "new": {},
+        "fields": [
+          "a"
+        ],
+        "conditions": [
+          true
+        ]
+      }
+    },
+    {
+      "fixture_id": "negative-unknown_to_approved",
+      "input": {
+        "attempt": "UNKNOWN_TO_APPROVED"
+      }
+    },
+    {
+      "fixture_id": "negative-invalid_to_false",
+      "input": {
+        "attempt": "INVALID_TO_FALSE"
+      }
+    },
+    {
+      "fixture_id": "negative-blocked_to_true",
+      "input": {
+        "attempt": "BLOCKED_TO_TRUE"
+      }
+    },
+    {
+      "fixture_id": "negative-draft_to_valid",
+      "input": {
+        "attempt": "DRAFT_TO_VALID"
+      }
+    },
+    {
+      "fixture_id": "negative-valid_to_issued",
+      "input": {
+        "attempt": "VALID_TO_ISSUED"
+      }
+    },
+    {
+      "fixture_id": "negative-eligible_to_approved_no_auth",
+      "input": {
+        "attempt": "ELIGIBLE_TO_APPROVED_NO_AUTH"
+      }
+    },
+    {
+      "fixture_id": "negative-approved_to_executed_no_auth",
+      "input": {
+        "attempt": "APPROVED_TO_EXECUTED_NO_AUTH"
+      }
+    },
+    {
+      "fixture_id": "negative-executed_to_verified_no_test",
+      "input": {
+        "attempt": "EXECUTED_TO_VERIFIED_NO_TEST"
+      }
+    },
+    {
+      "fixture_id": "negative-projection_mutates_history",
+      "input": {
+        "attempt": "PROJECTION_MUTATES_HISTORY"
+      }
+    },
+    {
+      "fixture_id": "negative-changed_artifact_reuse",
+      "input": {
+        "attempt": "CHANGED_ARTIFACT_REUSE"
+      }
+    },
+    {
+      "fixture_id": "negative-duplicate_approval_counts",
+      "input": {
+        "attempt": "DUPLICATE_APPROVAL_COUNTS"
+      }
+    }
+  ],
+  "count": 71
+}

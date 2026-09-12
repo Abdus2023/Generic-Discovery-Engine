@@ -1,0 +1,87 @@
+{
+  "profile_version": "14.7-R2",
+  "profile_id": "gde-cjson-1",
+  "epistemic_status": "SUPPORTED",
+  "claim_class": "REALIZATION_PROFILE",
+  "prefix": "GDE-HASH-1\\n<DOMAIN>\\n<PROFILE_ID>\\n",
+  "rows": [
+    {
+      "hash_domain_id": "hash:artifact_hash",
+      "field_name": "artifact_hash",
+      "input_domain": "RAW_ARTIFACT_BYTES_PLUS_MEDIA_TYPE",
+      "canonicalization": "RAW_BYTES_NO_REENCODING",
+      "algorithm": "SHA-256",
+      "encoding": "LOWERCASE_HEX_64",
+      "scope": "DOMAIN_PREFIX_ARTIFACT_PLUS_PROFILE_ID",
+      "purpose": "artifact content",
+      "content_hash": "ec85641f205bd09f1c02121287999b718c7cc2cf76468e818732b54d93eaf195"
+    },
+    {
+      "hash_domain_id": "hash:object_hash",
+      "field_name": "object_hash",
+      "input_domain": "CANONICAL_OBJECT_EXCLUDING_OBJECT_HASH",
+      "canonicalization": "gde-cjson-1",
+      "algorithm": "SHA-256",
+      "encoding": "LOWERCASE_HEX_64",
+      "scope": "DOMAIN_PREFIX_OBJECT_PLUS_PROFILE_ID",
+      "purpose": "object content",
+      "content_hash": "13aabbf3bd8f4e8649c72673ecc47b1c1b8aa19c3f3f65c50b01028e50592996"
+    },
+    {
+      "hash_domain_id": "hash:snapshot_hash",
+      "field_name": "snapshot_hash",
+      "input_domain": "CANONICAL_SORTED_TYPED_REFERENCE_SET",
+      "canonicalization": "gde-cjson-1",
+      "algorithm": "SHA-256",
+      "encoding": "LOWERCASE_HEX_64",
+      "scope": "DOMAIN_PREFIX_SNAPSHOT_PLUS_PROFILE_ID",
+      "purpose": "sealed input set",
+      "content_hash": "e5fa7d013faa5a73076237ce0b627d845eabb61b12bd6746b863ca558dfbb06c"
+    },
+    {
+      "hash_domain_id": "hash:evaluation_hash",
+      "field_name": "evaluation_hash",
+      "input_domain": "CANONICAL_SUBJECT_PREDICATE_CONTEXT_EVALUATOR_RESULT",
+      "canonicalization": "gde-cjson-1",
+      "algorithm": "SHA-256",
+      "encoding": "LOWERCASE_HEX_64",
+      "scope": "DOMAIN_PREFIX_EVALUATION_PLUS_PROFILE_ID",
+      "purpose": "evaluation identity",
+      "content_hash": "ebab6ff69d0053bf5f10c7064c1a15cdd62a0522cafd4961198a8502204d97e9"
+    },
+    {
+      "hash_domain_id": "hash:decision_basis_hash",
+      "field_name": "decision_basis_hash",
+      "input_domain": "CANONICAL_ALL_DECISION_RELEVANT_TYPED_FIELDS",
+      "canonicalization": "gde-cjson-1",
+      "algorithm": "SHA-256",
+      "encoding": "LOWERCASE_HEX_64",
+      "scope": "DOMAIN_PREFIX_DECISION_BASIS_PLUS_PROFILE_ID",
+      "purpose": "authorization basis",
+      "content_hash": "b1499d92e9416136d08780407943acb06b28a4dcdaf3265f6426fce054c66980"
+    },
+    {
+      "hash_domain_id": "hash:event_hash",
+      "field_name": "event_hash",
+      "input_domain": "CANONICAL_EVENT_EXCLUDING_EVENT_HASH_AND_SIGNATURE",
+      "canonicalization": "gde-cjson-1",
+      "algorithm": "SHA-256",
+      "encoding": "LOWERCASE_HEX_64",
+      "scope": "DOMAIN_PREFIX_EVENT_PLUS_PROFILE_ID",
+      "purpose": "event integrity",
+      "content_hash": "a3dfcd9f3364abf0b7da3b957ee36e39f549e2c43703806ef9e322f3dd27e105"
+    },
+    {
+      "hash_domain_id": "hash:certificate_hash",
+      "field_name": "certificate_hash",
+      "input_domain": "CANONICAL_CERTIFICATE_EXCLUDING_CERTIFICATE_HASH_AND_SIGNATURE",
+      "canonicalization": "gde-cjson-1",
+      "algorithm": "SHA-256",
+      "encoding": "LOWERCASE_HEX_64",
+      "scope": "DOMAIN_PREFIX_CERTIFICATE_PLUS_PROFILE_ID",
+      "purpose": "certificate content",
+      "content_hash": "3605e8326411fe0927caff060b953beba4bab9d9882338cb07a54e1eaaa28f78"
+    }
+  ],
+  "double_hash_substitution": "FORBIDDEN"
+}

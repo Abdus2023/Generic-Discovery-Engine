@@ -1,0 +1,17 @@
+{
+  "profile_id": "gde-cjson-1",
+  "version": "1",
+  "format": "CONSTRAINED_JSON",
+  "encoding": "UTF-8",
+  "field_order": "SCHEMA_DOES_NOT_CONTROL_BYTES",
+  "map_order": "NFC_KEYS_SORTED_BY_UNICODE_SCALAR_SEQUENCE",
+  "array_order": "PRESERVE_DECLARED_ORDER;SET_ARRAYS_MUST_BE_PRE_SORTED_BY_SCHEMA_RULE",
+  "number_rule": "ARBITRARY_PRECISION_BASE10_INTEGERS_ONLY_NO_FLOATS",
+  "timestamp_rule": "RFC3339_UTC_Z_MINIMAL_FRACTION_NO_TRAILING_ZERO",
+  "unicode_normalization": "NFC_KEYS_AND_VALUES_REJECT_NORMALIZED_KEY_COLLISION",
+  "null_rule": "JSON_LITERAL_null",
+  "canonical_byte_rule": "NO_BOM_NO_WHITESPACE_UTF8",
+  "function": "CanonicalBytes(object)",
+  "same_semantics_invariant": true,
+  "content_hash": "039e6f20eadf36df4c0cf1d69a04ad6c93b5efd6b95f32c2b67587eef65bcb34"
+}

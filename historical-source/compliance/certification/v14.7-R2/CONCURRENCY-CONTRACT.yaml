@@ -1,0 +1,22 @@
+{
+  "profile_version": "14.7-R2",
+  "profile_id": "gde-cjson-1",
+  "epistemic_status": "SUPPORTED",
+  "claim_class": "REALIZATION_PROFILE",
+  "races": [
+    "TWO_CERTIFICATE_ISSUERS",
+    "TWO_RELEASE_APPROVERS",
+    "TWO_EXECUTION_WORKERS",
+    "TWO_ROLLBACK_WORKERS",
+    "DUPLICATE_EVENT_WRITERS",
+    "SIMULTANEOUS_RETRIES",
+    "PROJECTION_WRITERS"
+  ],
+  "uniqueness": "SCOPED_IDEMPOTENCY_AND_EVENT_ID",
+  "serialization": "ATOMIC_COMPARE_AND_APPEND",
+  "conflict": "CONCURRENCY_FAILURE",
+  "winner": "FIRST_DURABLE_COMMIT_INDEX",
+  "retry": "SAME_KEY_REPLAY_OR_NEW_KEY_FULL_REVALIDATION",
+  "history": "ONE_EVENT_OR_IDEMPOTENT_NONE",
+  "process_mutex_sufficient": false
+}

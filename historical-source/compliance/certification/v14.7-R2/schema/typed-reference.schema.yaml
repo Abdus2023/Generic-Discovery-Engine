@@ -1,0 +1,77 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://generic-discovery-engine.invalid/compliance/v14.7-R2/typed-reference.schema.yaml",
+  "title": "typed-reference",
+  "type": "object",
+  "required": [
+    "reference_id",
+    "reference_type",
+    "target_type",
+    "target_id",
+    "target_hash",
+    "scope_hash",
+    "schema_id",
+    "version_constraint",
+    "required",
+    "content_hash"
+  ],
+  "properties": {
+    "reference_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "reference_type": {
+      "type": "string",
+      "minLength": 1
+    },
+    "target_type": {
+      "type": "string",
+      "minLength": 1
+    },
+    "target_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "target_hash": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$"
+    },
+    "scope_hash": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$"
+    },
+    "schema_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "version_constraint": {
+      "oneOf": [
+        {
+          "type": "string",
+          "minLength": 1
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "required": {
+      "type": "boolean"
+    },
+    "content_hash": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$"
+    }
+  },
+  "additionalProperties": false,
+  "x-identity-fields": [
+    "reference_id"
+  ],
+  "x-immutable": true,
+  "x-self-excluding-hash-field": "content_hash",
+  "x-canonical-profile": "gde-cjson-1",
+  "x-normative-rules": [
+    "exactly one typed target",
+    "reference failure is not FALSE"
+  ]
+}

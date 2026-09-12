@@ -1,0 +1,582 @@
+{
+  "profile_version": "14.7-R2",
+  "profile_id": "gde-cjson-1",
+  "epistemic_status": "SUPPORTED",
+  "claim_class": "REALIZATION_PROFILE",
+  "objects": [
+    {
+      "oracle_id": "oracle:schema-valid",
+      "status": "PASSED",
+      "actual": "VALID",
+      "expected": "VALID",
+      "failure_origin": null,
+      "detail": ""
+    },
+    {
+      "oracle_id": "oracle:schema-missing",
+      "status": "PASSED",
+      "actual": "INVALID",
+      "expected": "INVALID",
+      "failure_origin": null,
+      "detail": ""
+    },
+    {
+      "oracle_id": "oracle:integrity-valid",
+      "status": "PASSED",
+      "actual": "VALID",
+      "expected": "VALID",
+      "failure_origin": null,
+      "detail": ""
+    },
+    {
+      "oracle_id": "oracle:integrity-broken",
+      "status": "PASSED",
+      "actual": "INVALID",
+      "expected": "INVALID",
+      "failure_origin": null,
+      "detail": ""
+    },
+    {
+      "oracle_id": "oracle:canonical-map",
+      "status": "PASSED",
+      "actual": "PASS",
+      "expected": "PASS",
+      "failure_origin": null,
+      "detail": ""
+    },
+    {
+      "oracle_id": "oracle:canonical-nfc",
+      "status": "PASSED",
+      "actual": "PASS",
+      "expected": "PASS",
+      "failure_origin": null,
+      "detail": ""
+    },
+    {
+      "oracle_id": "oracle:reject-float",
+      "status": "PASSED",
+      "actual": "PASS",
+      "expected": "PASS",
+      "failure_origin": null,
+      "detail": ""
+    },
+    {
+      "oracle_id": "oracle:hash-domains",
+      "status": "PASSED",
+      "actual": "PASS",
+      "expected": "PASS",
+      "failure_origin": null,
+      "detail": ""
+    },
+    {
+      "oracle_id": "oracle:all-true",
+      "status": "PASSED",
+      "actual": "ELIGIBLE",
+      "expected": "ELIGIBLE",
+      "failure_origin": null,
+      "detail": ""
+    },
+    {
+      "oracle_id": "oracle:false-blocked",
+      "status": "PASSED",
+      "actual": "INELIGIBLE",
+      "expected": "INELIGIBLE",
+      "failure_origin": null,
+      "detail": ""
+    },
+    {
+      "oracle_id": "oracle:blocked-unknown",
+      "status": "PASSED",
+      "actual": "BLOCKED",
+      "expected": "BLOCKED",
+      "failure_origin": null,
+      "detail": ""
+    },
+    {
+      "oracle_id": "oracle:unknown-true",
+      "status": "PASSED",
+      "actual": "UNKNOWN",
+      "expected": "UNKNOWN",
+      "failure_origin": null,
+      "detail": ""
+    },
+    {
+      "oracle_id": "oracle:invalid-false",
+      "status": "PASSED",
+      "actual": "INVALID",
+      "expected": "INVALID",
+      "failure_origin": null,
+      "detail": ""
+    },
+    {
+      "oracle_id": "oracle:empty-deny",
+      "status": "PASSED",
+      "actual": "INELIGIBLE",
+      "expected": "INELIGIBLE",
+      "failure_origin": null,
+      "detail": ""
+    },
+    {
+      "oracle_id": "oracle:empty-missing",
+      "status": "PASSED",
+      "actual": "INVALID",
+      "expected": "INVALID",
+      "failure_origin": null,
+      "detail": ""
+    },
+    {
+      "oracle_id": "oracle:eval-true",
+      "status": "PASSED",
+      "actual": "TRUE",
+      "expected": "TRUE",
+      "failure_origin": null,
+      "detail": ""
+    },
+    {
+      "oracle_id": "oracle:eval-false",
+      "status": "PASSED",
+      "actual": "FALSE",
+      "expected": "FALSE",
+      "failure_origin": null,
+      "detail": ""
+    },
+    {
+      "oracle_id": "oracle:eval-unknown",
+      "status": "PASSED",
+      "actual": "UNKNOWN",
+      "expected": "UNKNOWN",
+      "failure_origin": null,
+      "detail": ""
+    },
+    {
+      "oracle_id": "oracle:eval-blocked",
+      "status": "PASSED",
+      "actual": "BLOCKED",
+      "expected": "BLOCKED",
+      "failure_origin": null,
+      "detail": ""
+    },
+    {
+      "oracle_id": "oracle:eval-invalid",
+      "status": "PASSED",
+      "actual": "INVALID",
+      "expected": "INVALID",
+      "failure_origin": null,
+      "detail": ""
+    },
+    {
+      "oracle_id": "oracle:scope-ok",
+      "status": "PASSED",
+      "actual": "TRUE",
+      "expected": "TRUE",
+      "failure_origin": null,
+      "detail": ""
+    },
+    {
+      "oracle_id": "oracle:scope-wrong",
+      "status": "PASSED",
+      "actual": "FALSE",
+      "expected": "FALSE",
+      "failure_origin": null,
+      "detail": ""
+    },
+    {
+      "oracle_id": "oracle:evidence-missing",
+      "status": "PASSED",
+      "actual": "INVALID",
+      "expected": "INVALID",
+      "failure_origin": null,
+      "detail": ""
+    },
+    {
+      "oracle_id": "oracle:evidence-stale",
+      "status": "PASSED",
+      "actual": "UNKNOWN",
+      "expected": "UNKNOWN",
+      "failure_origin": null,
+      "detail": ""
+    },
+    {
+      "oracle_id": "oracle:evidence-blocked",
+      "status": "PASSED",
+      "actual": "BLOCKED",
+      "expected": "BLOCKED",
+      "failure_origin": null,
+      "detail": ""
+    },
+    {
+      "oracle_id": "oracle:time-start",
+      "status": "PASSED",
+      "actual": "ACTIVE",
+      "expected": "ACTIVE",
+      "failure_origin": null,
+      "detail": ""
+    },
+    {
+      "oracle_id": "oracle:time-end",
+      "status": "PASSED",
+      "actual": "EXPIRED",
+      "expected": "EXPIRED",
+      "failure_origin": null,
+      "detail": ""
+    },
+    {
+      "oracle_id": "oracle:policy-complete",
+      "status": "PASSED",
+      "actual": "VALID",
+      "expected": "VALID",
+      "failure_origin": null,
+      "detail": ""
+    },
+    {
+      "oracle_id": "oracle:policy-incomplete",
+      "status": "PASSED",
+      "actual": "INVALID",
+      "expected": "INVALID",
+      "failure_origin": null,
+      "detail": ""
+    },
+    {
+      "oracle_id": "oracle:authority-ok",
+      "status": "PASSED",
+      "actual": "QUALIFIED",
+      "expected": "QUALIFIED",
+      "failure_origin": null,
+      "detail": ""
+    },
+    {
+      "oracle_id": "oracle:authority-expired",
+      "status": "PASSED",
+      "actual": "UNQUALIFIED",
+      "expected": "UNQUALIFIED",
+      "failure_origin": null,
+      "detail": ""
+    },
+    {
+      "oracle_id": "oracle:authority-scope",
+      "status": "PASSED",
+      "actual": "UNQUALIFIED",
+      "expected": "UNQUALIFIED",
+      "failure_origin": null,
+      "detail": ""
+    },
+    {
+      "oracle_id": "oracle:authority-zero",
+      "status": "PASSED",
+      "actual": "INVALID",
+      "expected": "INVALID",
+      "failure_origin": null,
+      "detail": ""
+    },
+    {
+      "oracle_id": "oracle:authority-n-of-m-short",
+      "status": "PASSED",
+      "actual": "BLOCKED",
+      "expected": "BLOCKED",
+      "failure_origin": null,
+      "detail": ""
+    },
+    {
+      "oracle_id": "oracle:authority-n-of-m",
+      "status": "PASSED",
+      "actual": "QUALIFIED",
+      "expected": "QUALIFIED",
+      "failure_origin": null,
+      "detail": ""
+    },
+    {
+      "oracle_id": "oracle:reference-ok",
+      "status": "PASSED",
+      "actual": "VALID",
+      "expected": "VALID",
+      "failure_origin": null,
+      "detail": ""
+    },
+    {
+      "oracle_id": "oracle:reference-missing",
+      "status": "PASSED",
+      "actual": "INVALID",
+      "expected": "INVALID",
+      "failure_origin": null,
+      "detail": ""
+    },
+    {
+      "oracle_id": "oracle:reference-scope",
+      "status": "PASSED",
+      "actual": "INVALID",
+      "expected": "INVALID",
+      "failure_origin": null,
+      "detail": ""
+    },
+    {
+      "oracle_id": "oracle:reference-version",
+      "status": "PASSED",
+      "actual": "INVALID",
+      "expected": "INVALID",
+      "failure_origin": null,
+      "detail": ""
+    },
+    {
+      "oracle_id": "oracle:reference-duplicate",
+      "status": "PASSED",
+      "actual": "INVALID",
+      "expected": "INVALID",
+      "failure_origin": null,
+      "detail": ""
+    },
+    {
+      "oracle_id": "oracle:reference-wrong-type",
+      "status": "PASSED",
+      "actual": "INVALID",
+      "expected": "INVALID",
+      "failure_origin": null,
+      "detail": ""
+    },
+    {
+      "oracle_id": "oracle:reference-cycle",
+      "status": "PASSED",
+      "actual": "INVALID",
+      "expected": "INVALID",
+      "failure_origin": null,
+      "detail": ""
+    },
+    {
+      "oracle_id": "oracle:reference-superseded-resolves",
+      "status": "PASSED",
+      "actual": "VALID",
+      "expected": "VALID",
+      "failure_origin": null,
+      "detail": ""
+    },
+    {
+      "oracle_id": "oracle:reference-revoked-resolves",
+      "status": "PASSED",
+      "actual": "VALID",
+      "expected": "VALID",
+      "failure_origin": null,
+      "detail": ""
+    },
+    {
+      "oracle_id": "oracle:transition-ok",
+      "status": "PASSED",
+      "actual": "VALID",
+      "expected": "VALID",
+      "failure_origin": null,
+      "detail": ""
+    },
+    {
+      "oracle_id": "oracle:transition-illegal",
+      "status": "PASSED",
+      "actual": "INVALID",
+      "expected": "INVALID",
+      "failure_origin": null,
+      "detail": ""
+    },
+    {
+      "oracle_id": "oracle:transition-no-auth",
+      "status": "PASSED",
+      "actual": "INVALID",
+      "expected": "INVALID",
+      "failure_origin": null,
+      "detail": ""
+    },
+    {
+      "oracle_id": "oracle:event-commit",
+      "status": "PASSED",
+      "actual": "COMMITTED",
+      "expected": "COMMITTED",
+      "failure_origin": null,
+      "detail": ""
+    },
+    {
+      "oracle_id": "oracle:event-idempotent",
+      "status": "PASSED",
+      "actual": "IDEMPOTENT_REPLAY",
+      "expected": "IDEMPOTENT_REPLAY",
+      "failure_origin": null,
+      "detail": ""
+    },
+    {
+      "oracle_id": "oracle:event-conflict",
+      "status": "PASSED",
+      "actual": "CONFLICT",
+      "expected": "CONFLICT",
+      "failure_origin": null,
+      "detail": ""
+    },
+    {
+      "oracle_id": "oracle:project-valid",
+      "status": "PASSED",
+      "actual": "VALID",
+      "expected": "VALID",
+      "failure_origin": null,
+      "detail": ""
+    },
+    {
+      "oracle_id": "oracle:project-duplicate",
+      "status": "PASSED",
+      "actual": "INVALID",
+      "expected": "INVALID",
+      "failure_origin": null,
+      "detail": ""
+    },
+    {
+      "oracle_id": "oracle:project-gap",
+      "status": "PASSED",
+      "actual": "INVALID",
+      "expected": "INVALID",
+      "failure_origin": null,
+      "detail": ""
+    },
+    {
+      "oracle_id": "oracle:project-corrupt",
+      "status": "PASSED",
+      "actual": "INVALID",
+      "expected": "INVALID",
+      "failure_origin": null,
+      "detail": ""
+    },
+    {
+      "oracle_id": "oracle:project-reordered",
+      "status": "PASSED",
+      "actual": "INVALID",
+      "expected": "INVALID",
+      "failure_origin": null,
+      "detail": ""
+    },
+    {
+      "oracle_id": "oracle:projection-match",
+      "status": "PASSED",
+      "actual": "VALID",
+      "expected": "VALID",
+      "failure_origin": null,
+      "detail": ""
+    },
+    {
+      "oracle_id": "oracle:projection-mismatch",
+      "status": "PASSED",
+      "actual": "INVALID",
+      "expected": "INVALID",
+      "failure_origin": null,
+      "detail": ""
+    },
+    {
+      "oracle_id": "oracle:reuse-same",
+      "status": "PASSED",
+      "actual": "REUSABLE",
+      "expected": "REUSABLE",
+      "failure_origin": null,
+      "detail": ""
+    },
+    {
+      "oracle_id": "oracle:reuse-change",
+      "status": "PASSED",
+      "actual": "NOT_REUSABLE",
+      "expected": "NOT_REUSABLE",
+      "failure_origin": null,
+      "detail": ""
+    },
+    {
+      "oracle_id": "oracle:reuse-missing",
+      "status": "PASSED",
+      "actual": "INVALID",
+      "expected": "INVALID",
+      "failure_origin": null,
+      "detail": ""
+    },
+    {
+      "oracle_id": "oracle:negative-unknown_to_approved",
+      "status": "PASSED",
+      "actual": "REJECTED",
+      "expected": "REJECTED",
+      "failure_origin": null,
+      "detail": ""
+    },
+    {
+      "oracle_id": "oracle:negative-invalid_to_false",
+      "status": "PASSED",
+      "actual": "REJECTED",
+      "expected": "REJECTED",
+      "failure_origin": null,
+      "detail": ""
+    },
+    {
+      "oracle_id": "oracle:negative-blocked_to_true",
+      "status": "PASSED",
+      "actual": "REJECTED",
+      "expected": "REJECTED",
+      "failure_origin": null,
+      "detail": ""
+    },
+    {
+      "oracle_id": "oracle:negative-draft_to_valid",
+      "status": "PASSED",
+      "actual": "REJECTED",
+      "expected": "REJECTED",
+      "failure_origin": null,
+      "detail": ""
+    },
+    {
+      "oracle_id": "oracle:negative-valid_to_issued",
+      "status": "PASSED",
+      "actual": "REJECTED",
+      "expected": "REJECTED",
+      "failure_origin": null,
+      "detail": ""
+    },
+    {
+      "oracle_id": "oracle:negative-eligible_to_approved_no_auth",
+      "status": "PASSED",
+      "actual": "REJECTED",
+      "expected": "REJECTED",
+      "failure_origin": null,
+      "detail": ""
+    },
+    {
+      "oracle_id": "oracle:negative-approved_to_executed_no_auth",
+      "status": "PASSED",
+      "actual": "REJECTED",
+      "expected": "REJECTED",
+      "failure_origin": null,
+      "detail": ""
+    },
+    {
+      "oracle_id": "oracle:negative-executed_to_verified_no_test",
+      "status": "PASSED",
+      "actual": "REJECTED",
+      "expected": "REJECTED",
+      "failure_origin": null,
+      "detail": ""
+    },
+    {
+      "oracle_id": "oracle:negative-projection_mutates_history",
+      "status": "PASSED",
+      "actual": "REJECTED",
+      "expected": "REJECTED",
+      "failure_origin": null,
+      "detail": ""
+    },
+    {
+      "oracle_id": "oracle:negative-changed_artifact_reuse",
+      "status": "PASSED",
+      "actual": "REJECTED",
+      "expected": "REJECTED",
+      "failure_origin": null,
+      "detail": ""
+    },
+    {
+      "oracle_id": "oracle:negative-duplicate_approval_counts",
+      "status": "PASSED",
+      "actual": "REJECTED",
+      "expected": "REJECTED",
+      "failure_origin": null,
+      "detail": ""
+    }
+  ],
+  "summary": {
+    "total": 71,
+    "passed": 71,
+    "failed": 0,
+    "invalid": 0
+  }
+}

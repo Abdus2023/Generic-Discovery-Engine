@@ -1,0 +1,327 @@
+{
+  "profile_version": "14.7-R2",
+  "overall_status": "REFERENCE_HARNESS_TESTS_PASS_DURABILITY_AND_TARGET_ENGINE_UNVERIFIED",
+  "summary": {
+    "total": 45,
+    "passed": 44,
+    "failed": 0,
+    "blocked": 1
+  },
+  "checks": [
+    {
+      "check_id": "I01",
+      "category": "inventory",
+      "result": "PASS",
+      "description": "45 generator-owned artifacts",
+      "detail": ""
+    },
+    {
+      "check_id": "I02",
+      "category": "parse",
+      "result": "PASS",
+      "description": "all YAML parses",
+      "detail": ""
+    },
+    {
+      "check_id": "I03",
+      "category": "inventory",
+      "result": "PASS",
+      "description": "no undeclared generator artifact",
+      "detail": "[]"
+    },
+    {
+      "check_id": "B01",
+      "category": "scope",
+      "result": "PASS",
+      "description": "R2 is realization profile not v14.8 semantic revision",
+      "detail": ""
+    },
+    {
+      "check_id": "B02",
+      "category": "scope",
+      "result": "PASS",
+      "description": "audit found no semantic contradiction",
+      "detail": ""
+    },
+    {
+      "check_id": "S01",
+      "category": "schema",
+      "result": "PASS",
+      "description": "8 profile schemas extend hash-bound effective 49 predecessor schemas",
+      "detail": ""
+    },
+    {
+      "check_id": "S02",
+      "category": "schema",
+      "result": "PASS",
+      "description": "all profile schemas complete, immutable and hash-bound",
+      "detail": ""
+    },
+    {
+      "check_id": "S03",
+      "category": "schema",
+      "result": "PASS",
+      "description": "all 13 mandatory normative objects resolve without gaps",
+      "detail": ""
+    },
+    {
+      "check_id": "C01",
+      "category": "serialization",
+      "result": "PASS",
+      "description": "profile object matches exact schema vocabulary",
+      "detail": ""
+    },
+    {
+      "check_id": "C02",
+      "category": "serialization",
+      "result": "PASS",
+      "description": "canonical profile identity and own typed hash valid",
+      "detail": ""
+    },
+    {
+      "check_id": "C03",
+      "category": "serialization",
+      "result": "PASS",
+      "description": "map order and NFC produce identical bytes",
+      "detail": ""
+    },
+    {
+      "check_id": "C04",
+      "category": "serialization",
+      "result": "PASS",
+      "description": "floating point rejected by constrained number profile",
+      "detail": ""
+    },
+    {
+      "check_id": "H01",
+      "category": "hash",
+      "result": "PASS",
+      "description": "seven exact typed hash domains",
+      "detail": ""
+    },
+    {
+      "check_id": "H02",
+      "category": "hash",
+      "result": "PASS",
+      "description": "every hash fixes input canonicalization algorithm encoding scope purpose",
+      "detail": ""
+    },
+    {
+      "check_id": "H03",
+      "category": "hash",
+      "result": "PASS",
+      "description": "domain prefixes prevent cross-domain substitution",
+      "detail": ""
+    },
+    {
+      "check_id": "R01",
+      "category": "reference",
+      "result": "PASS",
+      "description": "typed reference contract has eight fields and exact-one resolution",
+      "detail": ""
+    },
+    {
+      "check_id": "R02",
+      "category": "reference",
+      "result": "PASS",
+      "description": "all eight reference failure/semantic cases explicit",
+      "detail": ""
+    },
+    {
+      "check_id": "V01",
+      "category": "interfaces",
+      "result": "PASS",
+      "description": "all 16 required harness interfaces complete",
+      "detail": ""
+    },
+    {
+      "check_id": "V02",
+      "category": "interfaces",
+      "result": "PASS",
+      "description": "validators side-effect-free except atomic event commit",
+      "detail": ""
+    },
+    {
+      "check_id": "V03",
+      "category": "interfaces",
+      "result": "PASS",
+      "description": "interface names exact",
+      "detail": ""
+    },
+    {
+      "check_id": "E01",
+      "category": "evaluation",
+      "result": "PASS",
+      "description": "Evaluate binds seven deterministic inputs",
+      "detail": ""
+    },
+    {
+      "check_id": "A01",
+      "category": "authority",
+      "result": "PASS",
+      "description": "qualification signature, set containment and duplicate rejection explicit",
+      "detail": ""
+    },
+    {
+      "check_id": "T01",
+      "category": "transitions",
+      "result": "PASS",
+      "description": "all 53 frozen transitions have executable tuple definitions",
+      "detail": ""
+    },
+    {
+      "check_id": "T02",
+      "category": "transitions",
+      "result": "PASS",
+      "description": "every transition complete, guarded, immutable and correction-bound",
+      "detail": ""
+    },
+    {
+      "check_id": "ES01",
+      "category": "event_store",
+      "result": "PASS",
+      "description": "five interfaces and four mandatory guarantees",
+      "detail": ""
+    },
+    {
+      "check_id": "P01",
+      "category": "projection",
+      "result": "PASS",
+      "description": "Project deterministic and fail-closed for eight history faults",
+      "detail": ""
+    },
+    {
+      "check_id": "U01",
+      "category": "reuse",
+      "result": "PASS",
+      "description": "three canonical predicates with invalid missing and changed handling",
+      "detail": ""
+    },
+    {
+      "check_id": "CC01",
+      "category": "concurrency",
+      "result": "PASS",
+      "description": "all seven races and six required behaviors defined",
+      "detail": ""
+    },
+    {
+      "check_id": "CH01",
+      "category": "harness",
+      "result": "PASS",
+      "description": "all 16 components executable without human interpretation",
+      "detail": ""
+    },
+    {
+      "check_id": "O01",
+      "category": "oracles",
+      "result": "PASS",
+      "description": "71 machine oracles execute and match stored results",
+      "detail": ""
+    },
+    {
+      "check_id": "O02",
+      "category": "oracles",
+      "result": "PASS",
+      "description": "every oracle fulfills immutable oracle contract and typed hash",
+      "detail": ""
+    },
+    {
+      "check_id": "O03",
+      "category": "oracles",
+      "result": "PASS",
+      "description": "failure origin vocabulary separates implementation oracle harness environment specification",
+      "detail": ""
+    },
+    {
+      "check_id": "PB01",
+      "category": "properties",
+      "result": "PASS",
+      "description": "170 generated properties rerun identically with one explicitly unknown durability claim",
+      "detail": ""
+    },
+    {
+      "check_id": "PB02",
+      "category": "properties",
+      "result": "PASS",
+      "description": "finite proof scope and universal correctness limitation explicit",
+      "detail": ""
+    },
+    {
+      "check_id": "N01",
+      "category": "negative_space",
+      "result": "PASS",
+      "description": "all 11 forbidden transitions rejected",
+      "detail": ""
+    },
+    {
+      "check_id": "CR01",
+      "category": "report",
+      "result": "PASS",
+      "description": "immutable report counts exact and durability remains explicitly unverified",
+      "detail": ""
+    },
+    {
+      "check_id": "CR02",
+      "category": "report",
+      "result": "PASS",
+      "description": "report content hash valid and claim scoped to reference harness",
+      "detail": ""
+    },
+    {
+      "check_id": "B03",
+      "category": "boundary",
+      "result": "PASS",
+      "description": "normative profile and implementation choices separate",
+      "detail": ""
+    },
+    {
+      "check_id": "NI01",
+      "category": "non_invention",
+      "result": "PASS",
+      "description": "target engine remains unverified and no current object invented",
+      "detail": ""
+    },
+    {
+      "check_id": "PR01",
+      "category": "integrity",
+      "result": "PASS",
+      "description": "all 803 predecessor artifacts preserved",
+      "detail": "[]"
+    },
+    {
+      "check_id": "DOC01",
+      "category": "documentation",
+      "result": "PASS",
+      "description": "all 26 required deliverable sections",
+      "detail": ""
+    },
+    {
+      "check_id": "Q01",
+      "category": "determinism",
+      "result": "PASS",
+      "description": "45 generator artifacts deterministic",
+      "detail": ""
+    },
+    {
+      "check_id": "Q02",
+      "category": "regression",
+      "result": "PASS",
+      "description": "profile predecessor and append guards pass",
+      "detail": ""
+    },
+    {
+      "check_id": "Q03",
+      "category": "hygiene",
+      "result": "PASS",
+      "description": "no Python cache files",
+      "detail": ""
+    },
+    {
+      "check_id": "GATE-R2",
+      "category": "acceptance",
+      "result": "BLOCKED",
+      "description": "target engine conformance",
+      "detail": "Reference harness conforms; target engine remains UNVERIFIED and inherited audit remains SPEC_INVALID_AT_PIPELINE_STAGE_2."
+    }
+  ]
+}

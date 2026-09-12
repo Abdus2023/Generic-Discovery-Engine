@@ -1,0 +1,28 @@
+{
+  "profile_version": "14.7-R2",
+  "profile_id": "gde-cjson-1",
+  "epistemic_status": "SUPPORTED",
+  "claim_class": "REALIZATION_PROFILE",
+  "fields": [
+    "REFERENCE_TYPE",
+    "TARGET_TYPE",
+    "TARGET_ID",
+    "TARGET_HASH",
+    "SCOPE_HASH",
+    "SCHEMA_ID",
+    "VERSION_CONSTRAINT",
+    "REQUIRED"
+  ],
+  "rule": "EXACTLY_ONE_MATCHING_TARGET",
+  "tests": [
+    "MISSING",
+    "WRONG_TYPE",
+    "WRONG_SCOPE",
+    "WRONG_VERSION",
+    "SUPERSEDED_RESOLVES_THEN_SEMANTIC_CHECK",
+    "REVOKED_RESOLVES_THEN_SEMANTIC_CHECK",
+    "CIRCULAR_DEFAULT_REJECT",
+    "DUPLICATE_ID_REJECT"
+  ],
+  "failure_not_false": true
+}

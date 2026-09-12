@@ -1,0 +1,1229 @@
+{
+  "profile_version": "14.7-R2",
+  "profile_id": "gde-cjson-1",
+  "epistemic_status": "SUPPORTED",
+  "claim_class": "REALIZATION_PROFILE",
+  "objects": [
+    {
+      "transition_id": "V147-TR-001",
+      "object_type": "CertificateCandidate",
+      "from_state": "NONE",
+      "event_type": "CANDIDATE_CREATED",
+      "guard_expression": "IDENTITY_UNIQUE AND PROPOSAL_HASH_VALID",
+      "required_evidence": [
+        "PROPOSAL",
+        "AUDIT_SNAPSHOT"
+      ],
+      "required_authority_operation": "NONE",
+      "required_authority_type": "NONE",
+      "to_state": "CREATED",
+      "side_effects": [
+        "APPEND_EVENT"
+      ],
+      "forbidden_side_effects": [
+        "CREATE_CERTIFICATE",
+        "AUTHORIZE"
+      ],
+      "semantic_override_profile": "v14.7.1/TRANSITION-CORRECTIONS.yaml",
+      "content_hash": "a2252f041051fb33059c6d93f02dce431e0209d0d27c1243c2e1123211011f87"
+    },
+    {
+      "transition_id": "V147-TR-002",
+      "object_type": "CertificateCandidate",
+      "from_state": "CREATED",
+      "event_type": "CANDIDATE_ACTIVATED",
+      "guard_expression": "L0_L2_VALID AND POLICIES_RESOLVE",
+      "required_evidence": [
+        "VALIDATION_RESULTS"
+      ],
+      "required_authority_operation": "NONE",
+      "required_authority_type": "NONE",
+      "to_state": "ACTIVE",
+      "side_effects": [
+        "APPEND_EVENT"
+      ],
+      "forbidden_side_effects": [
+        "ISSUE_CERTIFICATE"
+      ],
+      "semantic_override_profile": "v14.7.1/TRANSITION-CORRECTIONS.yaml",
+      "content_hash": "f569ce28e88a9a7dac04261b2faec58a661c8b5fe04fa053c95b4542bc6eaa2f"
+    },
+    {
+      "transition_id": "V147-TR-003",
+      "object_type": "CertificateCandidate",
+      "from_state": "CREATED",
+      "event_type": "CANDIDATE_CANCELLED",
+      "guard_expression": "CANCELLATION_POLICY_TRUE",
+      "required_evidence": [
+        "CANCELLATION_REASON"
+      ],
+      "required_authority_operation": "CANDIDATE_CANCEL_AUTHORITY",
+      "required_authority_type": "QUALIFIED_MATCHING_OPERATION",
+      "to_state": "CANCELLED",
+      "side_effects": [
+        "APPEND_EVENT"
+      ],
+      "forbidden_side_effects": [
+        "DELETE_HISTORY"
+      ],
+      "semantic_override_profile": "v14.7.1/TRANSITION-CORRECTIONS.yaml",
+      "content_hash": "b7231866446a63bc316be47e800185bb89e4628eb5f228a0e88d09022d84b378"
+    },
+    {
+      "transition_id": "V147-TR-004",
+      "object_type": "CertificateCandidate",
+      "from_state": "CREATED",
+      "event_type": "CANDIDATE_EXPIRED",
+      "guard_expression": "NOT_AFTER_REACHED",
+      "required_evidence": [
+        "SIGNED_INTERVAL"
+      ],
+      "required_authority_operation": "NONE",
+      "required_authority_type": "NONE",
+      "to_state": "EXPIRED",
+      "side_effects": [
+        "APPEND_OR_DERIVE_EXPIRY"
+      ],
+      "forbidden_side_effects": [
+        "FABRICATE_VALIDITY"
+      ],
+      "semantic_override_profile": "v14.7.1/TRANSITION-CORRECTIONS.yaml",
+      "content_hash": "7fcae035c76328f1a7bf3dfd8df153ec425e70b2e7e6940b405d0c5701716fd9"
+    },
+    {
+      "transition_id": "V147-TR-005",
+      "object_type": "CertificateCandidate",
+      "from_state": "ACTIVE",
+      "event_type": "CANDIDATE_CANCELLED",
+      "guard_expression": "CANCELLATION_POLICY_TRUE",
+      "required_evidence": [
+        "CANCELLATION_REASON"
+      ],
+      "required_authority_operation": "CANDIDATE_CANCEL_AUTHORITY",
+      "required_authority_type": "QUALIFIED_MATCHING_OPERATION",
+      "to_state": "CANCELLED",
+      "side_effects": [
+        "APPEND_EVENT"
+      ],
+      "forbidden_side_effects": [
+        "DELETE_HISTORY"
+      ],
+      "semantic_override_profile": "v14.7.1/TRANSITION-CORRECTIONS.yaml",
+      "content_hash": "89359cf50be425d0568170d2197638c6942fe8c5eb8f76784045269448cd4c00"
+    },
+    {
+      "transition_id": "V147-TR-006",
+      "object_type": "CertificateCandidate",
+      "from_state": "ACTIVE",
+      "event_type": "CANDIDATE_EXPIRED",
+      "guard_expression": "NOT_AFTER_REACHED",
+      "required_evidence": [
+        "SIGNED_INTERVAL"
+      ],
+      "required_authority_operation": "NONE",
+      "required_authority_type": "NONE",
+      "to_state": "EXPIRED",
+      "side_effects": [
+        "APPEND_OR_DERIVE_EXPIRY"
+      ],
+      "forbidden_side_effects": [
+        "FABRICATE_VALIDITY"
+      ],
+      "semantic_override_profile": "v14.7.1/TRANSITION-CORRECTIONS.yaml",
+      "content_hash": "d37755506c356e4f501c22de98b3926175dee3aa151eb2dbf74f8fbb5a8110c8"
+    },
+    {
+      "transition_id": "V147-TR-007",
+      "object_type": "CertificateCandidate",
+      "from_state": "ACTIVE",
+      "event_type": "CERTIFICATE_CREATED",
+      "guard_expression": "ISSUANCE_AUTHORIZATION_AUTHORIZED AND DRAFT_ID_UNIQUE",
+      "required_evidence": [
+        "ISSUANCE_AUTHORIZATION"
+      ],
+      "required_authority_operation": "CERTIFICATE_CONSTRUCTION_AUTHORITY",
+      "required_authority_type": "QUALIFIED_MATCHING_OPERATION",
+      "to_state": "CONSUMED",
+      "side_effects": [
+        "APPEND_EVENT",
+        "CREATE_DRAFT_OBJECT"
+      ],
+      "forbidden_side_effects": [
+        "ISSUE_CERTIFICATE"
+      ],
+      "semantic_override_profile": "v14.7.1/TRANSITION-CORRECTIONS.yaml",
+      "content_hash": "c3a63bb842528128593cf1b07ba54174d6c8e516294c6fe92db9fe81aff045d2"
+    },
+    {
+      "transition_id": "V147-TR-008",
+      "object_type": "Certificate",
+      "from_state": "NONE",
+      "event_type": "CERTIFICATE_CREATED",
+      "guard_expression": "CANDIDATE_ACTIVE AND CONSTRUCTION_GUARDS_TRUE",
+      "required_evidence": [
+        "CANDIDATE",
+        "AUTHORIZATION"
+      ],
+      "required_authority_operation": "CERTIFICATE_CONSTRUCTION_AUTHORITY",
+      "required_authority_type": "QUALIFIED_MATCHING_OPERATION",
+      "to_state": "DRAFT",
+      "side_effects": [
+        "APPEND_EVENT"
+      ],
+      "forbidden_side_effects": [
+        "MARK_ISSUED"
+      ],
+      "semantic_override_profile": "v14.7.1/TRANSITION-CORRECTIONS.yaml",
+      "content_hash": "f2612922cac2bcbba68691c3efabfe057ab1fec3e6bc14ca8e5de0a9248fca79"
+    },
+    {
+      "transition_id": "V147-TR-009",
+      "object_type": "Certificate",
+      "from_state": "DRAFT",
+      "event_type": "CERTIFICATE_ISSUED",
+      "guard_expression": "ALL_ISSUANCE_GUARDS_TRUE",
+      "required_evidence": [
+        "AUTHORIZATION",
+        "SNAPSHOT_SEAL",
+        "PAYLOAD"
+      ],
+      "required_authority_operation": "ISSUANCE_AUTHORITY",
+      "required_authority_type": "QUALIFIED_MATCHING_OPERATION",
+      "to_state": "ISSUED",
+      "side_effects": [
+        "APPEND_EVENT"
+      ],
+      "forbidden_side_effects": [
+        "MARK_VALID"
+      ],
+      "semantic_override_profile": "v14.7.1/TRANSITION-CORRECTIONS.yaml",
+      "content_hash": "0e5820ac7caa975a6cdac3e99acc7a2fd920f109f81a3577cdbaee71d8a910a3"
+    },
+    {
+      "transition_id": "V147-TR-010",
+      "object_type": "Certificate",
+      "from_state": "DRAFT",
+      "event_type": "CERTIFICATE_CANCELLED",
+      "guard_expression": "CANCEL_POLICY_TRUE",
+      "required_evidence": [
+        "CANCEL_REASON"
+      ],
+      "required_authority_operation": "CERTIFICATE_CANCEL_AUTHORITY",
+      "required_authority_type": "QUALIFIED_MATCHING_OPERATION",
+      "to_state": "CANCELLED",
+      "side_effects": [
+        "APPEND_EVENT"
+      ],
+      "forbidden_side_effects": [
+        "DELETE_DRAFT"
+      ],
+      "semantic_override_profile": "v14.7.1/TRANSITION-CORRECTIONS.yaml",
+      "content_hash": "ef2f367d829b95743f0c6f2d32d0cf35ba0a2e5cc10470835229572fc1111e0a"
+    },
+    {
+      "transition_id": "V147-TR-011",
+      "object_type": "Certificate",
+      "from_state": "ISSUED",
+      "event_type": "CERTIFICATE_REVOKED",
+      "guard_expression": "EVENT_GUARD_TRUE",
+      "required_evidence": [
+        "POLICY",
+        "TEMPORAL_OR_CAUSE_EVIDENCE"
+      ],
+      "required_authority_operation": "REVOCATION_AUTHORITY",
+      "required_authority_type": "QUALIFIED_MATCHING_OPERATION",
+      "to_state": "REVOKED",
+      "side_effects": [
+        "APPEND_EVENT"
+      ],
+      "forbidden_side_effects": [
+        "MUTATE_PRIOR_EVENT",
+        "SET_VALIDITY_DIRECTLY"
+      ],
+      "semantic_override_profile": "v14.7.1/TRANSITION-CORRECTIONS.yaml",
+      "content_hash": "9aa6e5f07815e21bf37941a268c867ab31d4e88c4f9236ef40a6c1ae6006f79d"
+    },
+    {
+      "transition_id": "V147-TR-012",
+      "object_type": "Certificate",
+      "from_state": "ISSUED",
+      "event_type": "CERTIFICATE_SUPERSEDED",
+      "guard_expression": "EVENT_GUARD_TRUE",
+      "required_evidence": [
+        "POLICY",
+        "TEMPORAL_OR_CAUSE_EVIDENCE"
+      ],
+      "required_authority_operation": "SUPERSESSION_AUTHORITY",
+      "required_authority_type": "QUALIFIED_MATCHING_OPERATION",
+      "to_state": "SUPERSEDED",
+      "side_effects": [
+        "APPEND_EVENT"
+      ],
+      "forbidden_side_effects": [
+        "MUTATE_PRIOR_EVENT",
+        "SET_VALIDITY_DIRECTLY"
+      ],
+      "semantic_override_profile": "v14.7.1/TRANSITION-CORRECTIONS.yaml",
+      "content_hash": "60493fee79664f246075bd275a15a0f75361feae5cbaf8aa4f9f7e57ebeb32a1"
+    },
+    {
+      "transition_id": "V147-TR-013",
+      "object_type": "Certificate",
+      "from_state": "ISSUED",
+      "event_type": "CERTIFICATE_EXPIRED",
+      "guard_expression": "EVENT_GUARD_TRUE",
+      "required_evidence": [
+        "POLICY",
+        "TEMPORAL_OR_CAUSE_EVIDENCE"
+      ],
+      "required_authority_operation": "NONE",
+      "required_authority_type": "NONE",
+      "to_state": "EXPIRED",
+      "side_effects": [
+        "APPEND_EVENT"
+      ],
+      "forbidden_side_effects": [
+        "MUTATE_PRIOR_EVENT",
+        "SET_VALIDITY_DIRECTLY"
+      ],
+      "semantic_override_profile": "v14.7.1/TRANSITION-CORRECTIONS.yaml",
+      "content_hash": "9693e56d7359c90858a7dff9902d6f8a9327279c216083f689a5d6b94b612c25"
+    },
+    {
+      "transition_id": "V147-TR-014",
+      "object_type": "CertificateValidity",
+      "from_state": "NONE_OR_PRIOR_PROJECTION",
+      "event_type": "VALIDITY_EVALUATED",
+      "guard_expression": "EVALUATION_RESULT_VALID AND CONTEXT_IMMUTABLE",
+      "required_evidence": [
+        "EVALUATION_RESULTS",
+        "CONTEXT"
+      ],
+      "required_authority_operation": "NONE",
+      "required_authority_type": "NONE",
+      "to_state": "VALID",
+      "side_effects": [
+        "CREATE_NEW_IMMUTABLE_RESULT",
+        "ADVANCE_PROJECTION"
+      ],
+      "forbidden_side_effects": [
+        "MUTATE_PRIOR_RESULT",
+        "MUTATE_SOURCE_HISTORY"
+      ],
+      "semantic_override_profile": "v14.7.1/TRANSITION-CORRECTIONS.yaml",
+      "content_hash": "63eed8b1e11cf668b3d0359d19ffae3826781a24d4a11290805a380159dea2d3"
+    },
+    {
+      "transition_id": "V147-TR-015",
+      "object_type": "CertificateValidity",
+      "from_state": "NONE_OR_PRIOR_PROJECTION",
+      "event_type": "VALIDITY_EVALUATED",
+      "guard_expression": "EVALUATION_RESULT_VALID AND CONTEXT_IMMUTABLE",
+      "required_evidence": [
+        "EVALUATION_RESULTS",
+        "CONTEXT"
+      ],
+      "required_authority_operation": "NONE",
+      "required_authority_type": "NONE",
+      "to_state": "INVALID",
+      "side_effects": [
+        "CREATE_NEW_IMMUTABLE_RESULT",
+        "ADVANCE_PROJECTION"
+      ],
+      "forbidden_side_effects": [
+        "MUTATE_PRIOR_RESULT",
+        "MUTATE_SOURCE_HISTORY"
+      ],
+      "semantic_override_profile": "v14.7.1/TRANSITION-CORRECTIONS.yaml",
+      "content_hash": "351756c73a3b5c26fc509aced2a41a584a6103beedda322917e8a931e7782b40"
+    },
+    {
+      "transition_id": "V147-TR-016",
+      "object_type": "CertificateValidity",
+      "from_state": "NONE_OR_PRIOR_PROJECTION",
+      "event_type": "VALIDITY_EVALUATED",
+      "guard_expression": "EVALUATION_RESULT_VALID AND CONTEXT_IMMUTABLE",
+      "required_evidence": [
+        "EVALUATION_RESULTS",
+        "CONTEXT"
+      ],
+      "required_authority_operation": "NONE",
+      "required_authority_type": "NONE",
+      "to_state": "NOT_YET_VALID",
+      "side_effects": [
+        "CREATE_NEW_IMMUTABLE_RESULT",
+        "ADVANCE_PROJECTION"
+      ],
+      "forbidden_side_effects": [
+        "MUTATE_PRIOR_RESULT",
+        "MUTATE_SOURCE_HISTORY"
+      ],
+      "semantic_override_profile": "v14.7.1/TRANSITION-CORRECTIONS.yaml",
+      "content_hash": "b8a86e31ff5dd592c69443657a21866e0c7822a1c721054cedf654436fd3843f"
+    },
+    {
+      "transition_id": "V147-TR-017",
+      "object_type": "CertificateValidity",
+      "from_state": "NONE_OR_PRIOR_PROJECTION",
+      "event_type": "VALIDITY_EVALUATED",
+      "guard_expression": "EVALUATION_RESULT_VALID AND CONTEXT_IMMUTABLE",
+      "required_evidence": [
+        "EVALUATION_RESULTS",
+        "CONTEXT"
+      ],
+      "required_authority_operation": "NONE",
+      "required_authority_type": "NONE",
+      "to_state": "UNKNOWN",
+      "side_effects": [
+        "CREATE_NEW_IMMUTABLE_RESULT",
+        "ADVANCE_PROJECTION"
+      ],
+      "forbidden_side_effects": [
+        "MUTATE_PRIOR_RESULT",
+        "MUTATE_SOURCE_HISTORY"
+      ],
+      "semantic_override_profile": "v14.7.1/TRANSITION-CORRECTIONS.yaml",
+      "content_hash": "5f15ae86d1954b261fe4fc148327e7b3264a8e422558766ddf47e07fdbbc63d9"
+    },
+    {
+      "transition_id": "V147-TR-018",
+      "object_type": "CertificateEligibility",
+      "from_state": "NONE_OR_PRIOR_PROJECTION",
+      "event_type": "CERTIFICATE_ELIGIBILITY_EVALUATED",
+      "guard_expression": "EVALUATION_RESULT_VALID AND CONTEXT_IMMUTABLE",
+      "required_evidence": [
+        "EVALUATION_RESULTS",
+        "CONTEXT"
+      ],
+      "required_authority_operation": "NONE",
+      "required_authority_type": "NONE",
+      "to_state": "ELIGIBLE",
+      "side_effects": [
+        "CREATE_NEW_IMMUTABLE_RESULT",
+        "ADVANCE_PROJECTION"
+      ],
+      "forbidden_side_effects": [
+        "MUTATE_PRIOR_RESULT",
+        "MUTATE_SOURCE_HISTORY"
+      ],
+      "semantic_override_profile": "v14.7.1/TRANSITION-CORRECTIONS.yaml",
+      "content_hash": "311e13f48e42fc8818b9cabbf7062733cd8ffa41c44525969e32310179ced0b5"
+    },
+    {
+      "transition_id": "V147-TR-019",
+      "object_type": "CertificateEligibility",
+      "from_state": "NONE_OR_PRIOR_PROJECTION",
+      "event_type": "CERTIFICATE_ELIGIBILITY_EVALUATED",
+      "guard_expression": "EVALUATION_RESULT_VALID AND CONTEXT_IMMUTABLE",
+      "required_evidence": [
+        "EVALUATION_RESULTS",
+        "CONTEXT"
+      ],
+      "required_authority_operation": "NONE",
+      "required_authority_type": "NONE",
+      "to_state": "INELIGIBLE",
+      "side_effects": [
+        "CREATE_NEW_IMMUTABLE_RESULT",
+        "ADVANCE_PROJECTION"
+      ],
+      "forbidden_side_effects": [
+        "MUTATE_PRIOR_RESULT",
+        "MUTATE_SOURCE_HISTORY"
+      ],
+      "semantic_override_profile": "v14.7.1/TRANSITION-CORRECTIONS.yaml",
+      "content_hash": "a97876154486fdadf56adcf26e4d54177ae07a34fd7c32a0fb251b1dc8584b1b"
+    },
+    {
+      "transition_id": "V147-TR-020",
+      "object_type": "CertificateEligibility",
+      "from_state": "NONE_OR_PRIOR_PROJECTION",
+      "event_type": "CERTIFICATE_ELIGIBILITY_EVALUATED",
+      "guard_expression": "EVALUATION_RESULT_VALID AND CONTEXT_IMMUTABLE",
+      "required_evidence": [
+        "EVALUATION_RESULTS",
+        "CONTEXT"
+      ],
+      "required_authority_operation": "NONE",
+      "required_authority_type": "NONE",
+      "to_state": "BLOCKED",
+      "side_effects": [
+        "CREATE_NEW_IMMUTABLE_RESULT",
+        "ADVANCE_PROJECTION"
+      ],
+      "forbidden_side_effects": [
+        "MUTATE_PRIOR_RESULT",
+        "MUTATE_SOURCE_HISTORY"
+      ],
+      "semantic_override_profile": "v14.7.1/TRANSITION-CORRECTIONS.yaml",
+      "content_hash": "c27f25edc7ae0fee11c1a374a672b09ba4c9960464db06de32ea9ca7cab4ffd7"
+    },
+    {
+      "transition_id": "V147-TR-021",
+      "object_type": "CertificateEligibility",
+      "from_state": "NONE_OR_PRIOR_PROJECTION",
+      "event_type": "CERTIFICATE_ELIGIBILITY_EVALUATED",
+      "guard_expression": "EVALUATION_RESULT_VALID AND CONTEXT_IMMUTABLE",
+      "required_evidence": [
+        "EVALUATION_RESULTS",
+        "CONTEXT"
+      ],
+      "required_authority_operation": "NONE",
+      "required_authority_type": "NONE",
+      "to_state": "UNKNOWN",
+      "side_effects": [
+        "CREATE_NEW_IMMUTABLE_RESULT",
+        "ADVANCE_PROJECTION"
+      ],
+      "forbidden_side_effects": [
+        "MUTATE_PRIOR_RESULT",
+        "MUTATE_SOURCE_HISTORY"
+      ],
+      "semantic_override_profile": "v14.7.1/TRANSITION-CORRECTIONS.yaml",
+      "content_hash": "42be96aad64c8c5d9ca5fe3346c68249c75f820f86179fa021f5a10afd27f1d5"
+    },
+    {
+      "transition_id": "V147-TR-022",
+      "object_type": "ReleaseEligibility",
+      "from_state": "NONE_OR_PRIOR_PROJECTION",
+      "event_type": "RELEASE_ELIGIBILITY_EVALUATED",
+      "guard_expression": "EVALUATION_RESULT_VALID AND CONTEXT_IMMUTABLE",
+      "required_evidence": [
+        "EVALUATION_RESULTS",
+        "CONTEXT"
+      ],
+      "required_authority_operation": "NONE",
+      "required_authority_type": "NONE",
+      "to_state": "ELIGIBLE",
+      "side_effects": [
+        "CREATE_NEW_IMMUTABLE_RESULT",
+        "ADVANCE_PROJECTION"
+      ],
+      "forbidden_side_effects": [
+        "MUTATE_PRIOR_RESULT",
+        "MUTATE_SOURCE_HISTORY"
+      ],
+      "semantic_override_profile": "v14.7.1/TRANSITION-CORRECTIONS.yaml",
+      "content_hash": "1fb3a71ed99fa6ac36a783ffad1da5fc1ac4e62673d61590db939a9000b8e70b"
+    },
+    {
+      "transition_id": "V147-TR-023",
+      "object_type": "ReleaseEligibility",
+      "from_state": "NONE_OR_PRIOR_PROJECTION",
+      "event_type": "RELEASE_ELIGIBILITY_EVALUATED",
+      "guard_expression": "EVALUATION_RESULT_VALID AND CONTEXT_IMMUTABLE",
+      "required_evidence": [
+        "EVALUATION_RESULTS",
+        "CONTEXT"
+      ],
+      "required_authority_operation": "NONE",
+      "required_authority_type": "NONE",
+      "to_state": "INELIGIBLE",
+      "side_effects": [
+        "CREATE_NEW_IMMUTABLE_RESULT",
+        "ADVANCE_PROJECTION"
+      ],
+      "forbidden_side_effects": [
+        "MUTATE_PRIOR_RESULT",
+        "MUTATE_SOURCE_HISTORY"
+      ],
+      "semantic_override_profile": "v14.7.1/TRANSITION-CORRECTIONS.yaml",
+      "content_hash": "6f0b24c389b309f27b957f5f9e72512ea93e060b41d0d0094a324a0001efdfbd"
+    },
+    {
+      "transition_id": "V147-TR-024",
+      "object_type": "ReleaseEligibility",
+      "from_state": "NONE_OR_PRIOR_PROJECTION",
+      "event_type": "RELEASE_ELIGIBILITY_EVALUATED",
+      "guard_expression": "EVALUATION_RESULT_VALID AND CONTEXT_IMMUTABLE",
+      "required_evidence": [
+        "EVALUATION_RESULTS",
+        "CONTEXT"
+      ],
+      "required_authority_operation": "NONE",
+      "required_authority_type": "NONE",
+      "to_state": "BLOCKED",
+      "side_effects": [
+        "CREATE_NEW_IMMUTABLE_RESULT",
+        "ADVANCE_PROJECTION"
+      ],
+      "forbidden_side_effects": [
+        "MUTATE_PRIOR_RESULT",
+        "MUTATE_SOURCE_HISTORY"
+      ],
+      "semantic_override_profile": "v14.7.1/TRANSITION-CORRECTIONS.yaml",
+      "content_hash": "ed8b2123698564cd531406182defe55e8576bb9d1837a3246112f7661c4c8dc0"
+    },
+    {
+      "transition_id": "V147-TR-025",
+      "object_type": "ReleaseEligibility",
+      "from_state": "NONE_OR_PRIOR_PROJECTION",
+      "event_type": "RELEASE_ELIGIBILITY_EVALUATED",
+      "guard_expression": "EVALUATION_RESULT_VALID AND CONTEXT_IMMUTABLE",
+      "required_evidence": [
+        "EVALUATION_RESULTS",
+        "CONTEXT"
+      ],
+      "required_authority_operation": "NONE",
+      "required_authority_type": "NONE",
+      "to_state": "UNKNOWN",
+      "side_effects": [
+        "CREATE_NEW_IMMUTABLE_RESULT",
+        "ADVANCE_PROJECTION"
+      ],
+      "forbidden_side_effects": [
+        "MUTATE_PRIOR_RESULT",
+        "MUTATE_SOURCE_HISTORY"
+      ],
+      "semantic_override_profile": "v14.7.1/TRANSITION-CORRECTIONS.yaml",
+      "content_hash": "4eb73d8a14d70bee6df7232f590296ba098440a15d3801b2f638a87b50cb63fe"
+    },
+    {
+      "transition_id": "V147-TR-026",
+      "object_type": "PostReleaseVerification",
+      "from_state": "NONE_OR_PRIOR_PROJECTION",
+      "event_type": "POST_RELEASE_VERIFICATION_COMPLETED",
+      "guard_expression": "EVALUATION_RESULT_VALID AND CONTEXT_IMMUTABLE",
+      "required_evidence": [
+        "EVALUATION_RESULTS",
+        "CONTEXT"
+      ],
+      "required_authority_operation": "NONE",
+      "required_authority_type": "NONE",
+      "to_state": "VERIFIED",
+      "side_effects": [
+        "CREATE_NEW_IMMUTABLE_RESULT",
+        "ADVANCE_PROJECTION"
+      ],
+      "forbidden_side_effects": [
+        "MUTATE_PRIOR_RESULT",
+        "MUTATE_SOURCE_HISTORY"
+      ],
+      "semantic_override_profile": "v14.7.1/TRANSITION-CORRECTIONS.yaml",
+      "content_hash": "9abfb59d8bf127198041db03b9c73bbb216eb38d12ab2d61dde6f9764be7fa97"
+    },
+    {
+      "transition_id": "V147-TR-027",
+      "object_type": "PostReleaseVerification",
+      "from_state": "NONE_OR_PRIOR_PROJECTION",
+      "event_type": "POST_RELEASE_VERIFICATION_COMPLETED",
+      "guard_expression": "EVALUATION_RESULT_VALID AND CONTEXT_IMMUTABLE",
+      "required_evidence": [
+        "EVALUATION_RESULTS",
+        "CONTEXT"
+      ],
+      "required_authority_operation": "NONE",
+      "required_authority_type": "NONE",
+      "to_state": "FAILED",
+      "side_effects": [
+        "CREATE_NEW_IMMUTABLE_RESULT",
+        "ADVANCE_PROJECTION"
+      ],
+      "forbidden_side_effects": [
+        "MUTATE_PRIOR_RESULT",
+        "MUTATE_SOURCE_HISTORY"
+      ],
+      "semantic_override_profile": "v14.7.1/TRANSITION-CORRECTIONS.yaml",
+      "content_hash": "1161050b98756f281c642e916d8efa0a907146e53fefcf3bc38068cc02ddaf30"
+    },
+    {
+      "transition_id": "V147-TR-028",
+      "object_type": "PostReleaseVerification",
+      "from_state": "NONE_OR_PRIOR_PROJECTION",
+      "event_type": "POST_RELEASE_VERIFICATION_COMPLETED",
+      "guard_expression": "EVALUATION_RESULT_VALID AND CONTEXT_IMMUTABLE",
+      "required_evidence": [
+        "EVALUATION_RESULTS",
+        "CONTEXT"
+      ],
+      "required_authority_operation": "NONE",
+      "required_authority_type": "NONE",
+      "to_state": "INCONCLUSIVE",
+      "side_effects": [
+        "CREATE_NEW_IMMUTABLE_RESULT",
+        "ADVANCE_PROJECTION"
+      ],
+      "forbidden_side_effects": [
+        "MUTATE_PRIOR_RESULT",
+        "MUTATE_SOURCE_HISTORY"
+      ],
+      "semantic_override_profile": "v14.7.1/TRANSITION-CORRECTIONS.yaml",
+      "content_hash": "748f5d36190c169706577395c36ad015c0876be0e7da7f6b50223df73dad3f8c"
+    },
+    {
+      "transition_id": "V147-TR-029",
+      "object_type": "PostReleaseVerification",
+      "from_state": "NONE_OR_PRIOR_PROJECTION",
+      "event_type": "POST_RELEASE_VERIFICATION_COMPLETED",
+      "guard_expression": "EVALUATION_RESULT_VALID AND CONTEXT_IMMUTABLE",
+      "required_evidence": [
+        "EVALUATION_RESULTS",
+        "CONTEXT"
+      ],
+      "required_authority_operation": "NONE",
+      "required_authority_type": "NONE",
+      "to_state": "BLOCKED",
+      "side_effects": [
+        "CREATE_NEW_IMMUTABLE_RESULT",
+        "ADVANCE_PROJECTION"
+      ],
+      "forbidden_side_effects": [
+        "MUTATE_PRIOR_RESULT",
+        "MUTATE_SOURCE_HISTORY"
+      ],
+      "semantic_override_profile": "v14.7.1/TRANSITION-CORRECTIONS.yaml",
+      "content_hash": "c01db6402a08264f20cfbaf60e515f5e767e77e83ca4f269c587938b10e1a8c0"
+    },
+    {
+      "transition_id": "V147-TR-030",
+      "object_type": "PostReleaseVerification",
+      "from_state": "NONE_OR_PRIOR_PROJECTION",
+      "event_type": "POST_RELEASE_VERIFICATION_COMPLETED",
+      "guard_expression": "EVALUATION_RESULT_VALID AND CONTEXT_IMMUTABLE",
+      "required_evidence": [
+        "EVALUATION_RESULTS",
+        "CONTEXT"
+      ],
+      "required_authority_operation": "NONE",
+      "required_authority_type": "NONE",
+      "to_state": "UNKNOWN",
+      "side_effects": [
+        "CREATE_NEW_IMMUTABLE_RESULT",
+        "ADVANCE_PROJECTION"
+      ],
+      "forbidden_side_effects": [
+        "MUTATE_PRIOR_RESULT",
+        "MUTATE_SOURCE_HISTORY"
+      ],
+      "semantic_override_profile": "v14.7.1/TRANSITION-CORRECTIONS.yaml",
+      "content_hash": "0aeac1fcb4fa3066a27d2c33043cd33684029a2ca804049ee68fcb282e222545"
+    },
+    {
+      "transition_id": "V147-TR-031",
+      "object_type": "Release",
+      "from_state": "NONE",
+      "event_type": "RELEASE_REGISTERED",
+      "guard_expression": "IDENTITY_UNIQUE AND ALL_BINDINGS_VALID",
+      "required_evidence": [
+        "RELEASE_CONTENT"
+      ],
+      "required_authority_operation": "NONE",
+      "required_authority_type": "NONE",
+      "to_state": "REGISTERED",
+      "side_effects": [
+        "CREATE_IMMUTABLE_RELEASE"
+      ],
+      "forbidden_side_effects": [
+        "MUTATE_RELEASE_IDENTITY"
+      ],
+      "semantic_override_profile": "v14.7.1/TRANSITION-CORRECTIONS.yaml",
+      "content_hash": "7336221ef273ad199aed2265cdf19a8e9336b5020bc6c7ed35eef2dbecc03045"
+    },
+    {
+      "transition_id": "V147-TR-032",
+      "object_type": "ReleaseGate",
+      "from_state": "NONE",
+      "event_type": "RELEASE_GATE_PUBLISHED",
+      "guard_expression": "POLICY_COMPLETE AND EMPTY_ACTION_PRESENT",
+      "required_evidence": [
+        "POLICY",
+        "PREDICATE_DEFINITIONS"
+      ],
+      "required_authority_operation": "GATE_PUBLISH_AUTHORITY",
+      "required_authority_type": "QUALIFIED_MATCHING_OPERATION",
+      "to_state": "PUBLISHED",
+      "side_effects": [
+        "CREATE_IMMUTABLE_GATE"
+      ],
+      "forbidden_side_effects": [
+        "STORE_CURRENT_EVALUATION"
+      ],
+      "semantic_override_profile": "v14.7.1/TRANSITION-CORRECTIONS.yaml",
+      "content_hash": "3da73efb608328c75685e16edad592aa744060b8c013bec790cbfb2e56d9650c"
+    },
+    {
+      "transition_id": "V147-TR-033",
+      "object_type": "ReleaseDecision",
+      "from_state": "NONE_OR_PRIOR_CURRENT",
+      "event_type": "RELEASE_DECISION_RECORDED",
+      "guard_expression": "DECISION_MAPPING_TO_APPROVED_VALID AND AUTHORITY_EFFECTIVE AND BASIS_VALID",
+      "required_evidence": [
+        "ELIGIBILITY",
+        "AUTHORITY",
+        "POLICY",
+        "DECISION_BASIS"
+      ],
+      "required_authority_operation": "RELEASE_DECISION_AUTHORITY",
+      "required_authority_type": "QUALIFIED_MATCHING_OPERATION",
+      "to_state": "APPROVED",
+      "side_effects": [
+        "CREATE_NEW_DECISION",
+        "APPEND_EVENT",
+        "ADVANCE_PROJECTION"
+      ],
+      "forbidden_side_effects": [
+        "MUTATE_PRIOR_DECISION",
+        "EXECUTE_RELEASE"
+      ],
+      "semantic_override_profile": "v14.7.1/TRANSITION-CORRECTIONS.yaml",
+      "content_hash": "b0361ec73733cc0af3259129cea3483feea79b3de0810856f337c50320a103ff"
+    },
+    {
+      "transition_id": "V147-TR-034",
+      "object_type": "ReleaseDecision",
+      "from_state": "NONE_OR_PRIOR_CURRENT",
+      "event_type": "RELEASE_DECISION_RECORDED",
+      "guard_expression": "DECISION_MAPPING_TO_REJECTED_VALID AND AUTHORITY_EFFECTIVE AND BASIS_VALID",
+      "required_evidence": [
+        "ELIGIBILITY",
+        "AUTHORITY",
+        "POLICY",
+        "DECISION_BASIS"
+      ],
+      "required_authority_operation": "RELEASE_DECISION_AUTHORITY",
+      "required_authority_type": "QUALIFIED_MATCHING_OPERATION",
+      "to_state": "REJECTED",
+      "side_effects": [
+        "CREATE_NEW_DECISION",
+        "APPEND_EVENT",
+        "ADVANCE_PROJECTION"
+      ],
+      "forbidden_side_effects": [
+        "MUTATE_PRIOR_DECISION",
+        "EXECUTE_RELEASE"
+      ],
+      "semantic_override_profile": "v14.7.1/TRANSITION-CORRECTIONS.yaml",
+      "content_hash": "7d274c50773ae2f3b005d51770cc61402d5e629de56dbf55b5944e0b919dbd60"
+    },
+    {
+      "transition_id": "V147-TR-035",
+      "object_type": "ReleaseDecision",
+      "from_state": "NONE_OR_PRIOR_CURRENT",
+      "event_type": "RELEASE_DECISION_RECORDED",
+      "guard_expression": "DECISION_MAPPING_TO_BLOCKED_VALID AND AUTHORITY_EFFECTIVE AND BASIS_VALID",
+      "required_evidence": [
+        "ELIGIBILITY",
+        "AUTHORITY",
+        "POLICY",
+        "DECISION_BASIS"
+      ],
+      "required_authority_operation": "RELEASE_DECISION_AUTHORITY",
+      "required_authority_type": "QUALIFIED_MATCHING_OPERATION",
+      "to_state": "BLOCKED",
+      "side_effects": [
+        "CREATE_NEW_DECISION",
+        "APPEND_EVENT",
+        "ADVANCE_PROJECTION"
+      ],
+      "forbidden_side_effects": [
+        "MUTATE_PRIOR_DECISION",
+        "EXECUTE_RELEASE"
+      ],
+      "semantic_override_profile": "v14.7.1/TRANSITION-CORRECTIONS.yaml",
+      "content_hash": "16a59939d4c6a3f81a8e8a313484e9139bc95d138aed015349782b4fdee76460"
+    },
+    {
+      "transition_id": "V147-TR-036",
+      "object_type": "ReleaseDecision",
+      "from_state": "NONE_OR_PRIOR_CURRENT",
+      "event_type": "RELEASE_DECISION_RECORDED",
+      "guard_expression": "DECISION_MAPPING_TO_DEFERRED_VALID AND AUTHORITY_EFFECTIVE AND BASIS_VALID",
+      "required_evidence": [
+        "ELIGIBILITY",
+        "AUTHORITY",
+        "POLICY",
+        "DECISION_BASIS"
+      ],
+      "required_authority_operation": "RELEASE_DECISION_AUTHORITY",
+      "required_authority_type": "QUALIFIED_MATCHING_OPERATION",
+      "to_state": "DEFERRED",
+      "side_effects": [
+        "CREATE_NEW_DECISION",
+        "APPEND_EVENT",
+        "ADVANCE_PROJECTION"
+      ],
+      "forbidden_side_effects": [
+        "MUTATE_PRIOR_DECISION",
+        "EXECUTE_RELEASE"
+      ],
+      "semantic_override_profile": "v14.7.1/TRANSITION-CORRECTIONS.yaml",
+      "content_hash": "30fcd7c779a81cd0e27dc57def7e34887f17a30a942538ea24053ce757e9f931"
+    },
+    {
+      "transition_id": "V147-TR-037",
+      "object_type": "ReleaseExecution",
+      "from_state": "NOT_STARTED",
+      "event_type": "EXECUTION_STARTED",
+      "guard_expression": "APPROVED_EFFECTIVE AND BINDINGS_MATCH AND EXECUTION_AUTHORIZED AND IDEMPOTENCY_UNIQUE",
+      "required_evidence": [
+        "DECISION",
+        "ARTIFACT",
+        "ENVIRONMENT",
+        "EXECUTION_AUTHORIZATION"
+      ],
+      "required_authority_operation": "EXECUTION_AUTHORITY",
+      "required_authority_type": "QUALIFIED_MATCHING_OPERATION",
+      "to_state": "STARTED",
+      "side_effects": [
+        "APPEND_EVENT"
+      ],
+      "forbidden_side_effects": [
+        "MARK_VERIFIED"
+      ],
+      "semantic_override_profile": "v14.7.1/TRANSITION-CORRECTIONS.yaml",
+      "content_hash": "b330116406198063dfbcf8f0aa5990b341ae956ccabb859b5fad3b61dda34288"
+    },
+    {
+      "transition_id": "V147-TR-038",
+      "object_type": "ReleaseExecution",
+      "from_state": "STARTED",
+      "event_type": "EXECUTION_SUCCEEDED",
+      "guard_expression": "ATTEMPT_ACTIVE AND RESULT_EVIDENCE_VALID",
+      "required_evidence": [
+        "EXECUTION_OBSERVATION"
+      ],
+      "required_authority_operation": "EXECUTION_WORKER",
+      "required_authority_type": "QUALIFIED_MATCHING_OPERATION",
+      "to_state": "SUCCEEDED",
+      "side_effects": [
+        "APPEND_EVENT"
+      ],
+      "forbidden_side_effects": [
+        "RETRY_WITHOUT_AUTHORITY",
+        "VERIFY_OUTCOME"
+      ],
+      "semantic_override_profile": "v14.7.1/TRANSITION-CORRECTIONS.yaml",
+      "content_hash": "feea11a3131a41efda68207fbfd55c112c3cb5d25065d2407a180b0bbc01b01a"
+    },
+    {
+      "transition_id": "V147-TR-039",
+      "object_type": "ReleaseExecution",
+      "from_state": "STARTED",
+      "event_type": "EXECUTION_FAILED",
+      "guard_expression": "ATTEMPT_ACTIVE AND RESULT_EVIDENCE_VALID",
+      "required_evidence": [
+        "EXECUTION_OBSERVATION"
+      ],
+      "required_authority_operation": "EXECUTION_WORKER",
+      "required_authority_type": "QUALIFIED_MATCHING_OPERATION",
+      "to_state": "FAILED",
+      "side_effects": [
+        "APPEND_EVENT"
+      ],
+      "forbidden_side_effects": [
+        "RETRY_WITHOUT_AUTHORITY",
+        "VERIFY_OUTCOME"
+      ],
+      "semantic_override_profile": "v14.7.1/TRANSITION-CORRECTIONS.yaml",
+      "content_hash": "68bbbe97d15049bd9ca447e86c74e73e2ed8017ca25b732d938e6ef9953a4a10"
+    },
+    {
+      "transition_id": "V147-TR-040",
+      "object_type": "ReleaseExecution",
+      "from_state": "STARTED",
+      "event_type": "EXECUTION_CANCELLED",
+      "guard_expression": "ATTEMPT_ACTIVE AND RESULT_EVIDENCE_VALID",
+      "required_evidence": [
+        "EXECUTION_OBSERVATION"
+      ],
+      "required_authority_operation": "EXECUTION_WORKER",
+      "required_authority_type": "QUALIFIED_MATCHING_OPERATION",
+      "to_state": "CANCELLED",
+      "side_effects": [
+        "APPEND_EVENT"
+      ],
+      "forbidden_side_effects": [
+        "RETRY_WITHOUT_AUTHORITY",
+        "VERIFY_OUTCOME"
+      ],
+      "semantic_override_profile": "v14.7.1/TRANSITION-CORRECTIONS.yaml",
+      "content_hash": "98073decc0a55f30417385b5eb0b7d32613d6fb38620a8cc74d90709c53cb4bd"
+    },
+    {
+      "transition_id": "V147-TR-041",
+      "object_type": "ReleaseExecution",
+      "from_state": "STARTED",
+      "event_type": "EXECUTION_ROLLED_BACK",
+      "guard_expression": "ROLLBACK_AUTHORIZED AND ROLLBACK_APPLICABLE AND IDEMPOTENCY_UNIQUE",
+      "required_evidence": [
+        "ROLLBACK_AUTHORIZATION",
+        "DEPLOYMENT_EFFECTS"
+      ],
+      "required_authority_operation": "ROLLBACK_AUTHORITY",
+      "required_authority_type": "QUALIFIED_MATCHING_OPERATION",
+      "to_state": "ROLLED_BACK",
+      "side_effects": [
+        "APPEND_EVENT"
+      ],
+      "forbidden_side_effects": [
+        "REWRITE_DECISION",
+        "REUSE_EXPIRED_AUTH"
+      ],
+      "semantic_override_profile": "v14.7.1/TRANSITION-CORRECTIONS.yaml",
+      "content_hash": "05f168ccbf08ea8f4512b9e4360fd810766585686bb3458570b47cc2050e4e80"
+    },
+    {
+      "transition_id": "V147-TR-042",
+      "object_type": "ReleaseExecution",
+      "from_state": "SUCCEEDED",
+      "event_type": "EXECUTION_ROLLED_BACK",
+      "guard_expression": "ROLLBACK_AUTHORIZED AND ROLLBACK_APPLICABLE AND IDEMPOTENCY_UNIQUE",
+      "required_evidence": [
+        "ROLLBACK_AUTHORIZATION",
+        "DEPLOYMENT_EFFECTS"
+      ],
+      "required_authority_operation": "ROLLBACK_AUTHORITY",
+      "required_authority_type": "QUALIFIED_MATCHING_OPERATION",
+      "to_state": "ROLLED_BACK",
+      "side_effects": [
+        "APPEND_EVENT"
+      ],
+      "forbidden_side_effects": [
+        "REWRITE_DECISION",
+        "REUSE_EXPIRED_AUTH"
+      ],
+      "semantic_override_profile": "v14.7.1/TRANSITION-CORRECTIONS.yaml",
+      "content_hash": "6995b39915e53b33b9ebafffb7bc1837a0ed64a694644517350a6ad2eee8d001"
+    },
+    {
+      "transition_id": "V147-TR-043",
+      "object_type": "ReleaseExecution",
+      "from_state": "FAILED",
+      "event_type": "EXECUTION_ROLLED_BACK",
+      "guard_expression": "ROLLBACK_AUTHORIZED AND ROLLBACK_APPLICABLE AND IDEMPOTENCY_UNIQUE",
+      "required_evidence": [
+        "ROLLBACK_AUTHORIZATION",
+        "DEPLOYMENT_EFFECTS"
+      ],
+      "required_authority_operation": "ROLLBACK_AUTHORITY",
+      "required_authority_type": "QUALIFIED_MATCHING_OPERATION",
+      "to_state": "ROLLED_BACK",
+      "side_effects": [
+        "APPEND_EVENT"
+      ],
+      "forbidden_side_effects": [
+        "REWRITE_DECISION",
+        "REUSE_EXPIRED_AUTH"
+      ],
+      "semantic_override_profile": "v14.7.1/TRANSITION-CORRECTIONS.yaml",
+      "content_hash": "24f4194894b908d4927d4ed45be27094d2e726fdbb4f5428998e815a4d7efff6"
+    },
+    {
+      "transition_id": "V147-TR-044",
+      "object_type": "ReleaseExecution",
+      "from_state": "CANCELLED",
+      "event_type": "EXECUTION_ROLLED_BACK",
+      "guard_expression": "ROLLBACK_AUTHORIZED AND ROLLBACK_APPLICABLE AND IDEMPOTENCY_UNIQUE",
+      "required_evidence": [
+        "ROLLBACK_AUTHORIZATION",
+        "DEPLOYMENT_EFFECTS"
+      ],
+      "required_authority_operation": "ROLLBACK_AUTHORITY",
+      "required_authority_type": "QUALIFIED_MATCHING_OPERATION",
+      "to_state": "ROLLED_BACK",
+      "side_effects": [
+        "APPEND_EVENT"
+      ],
+      "forbidden_side_effects": [
+        "REWRITE_DECISION",
+        "REUSE_EXPIRED_AUTH"
+      ],
+      "semantic_override_profile": "v14.7.1/TRANSITION-CORRECTIONS.yaml",
+      "content_hash": "f741da2f6e64f023498ac039ac03babfb0c7cc971c8496e539dd9c38a90ae094"
+    },
+    {
+      "transition_id": "V147-TR-045",
+      "object_type": "IssuanceAuthority",
+      "from_state": "NONE",
+      "event_type": "AUTHORITY_GRANTED",
+      "guard_expression": "GRANT_POLICY_TRUE AND CREDENTIAL_VALID AND SCOPE_VALID",
+      "required_evidence": [
+        "GRANT",
+        "CREDENTIAL"
+      ],
+      "required_authority_operation": "AUTHORITY_GRANTOR",
+      "required_authority_type": "QUALIFIED_MATCHING_OPERATION",
+      "to_state": "ACTIVE",
+      "side_effects": [
+        "APPEND_EVENT"
+      ],
+      "forbidden_side_effects": [
+        "ISSUE_CERTIFICATE"
+      ],
+      "semantic_override_profile": "v14.7.1/TRANSITION-CORRECTIONS.yaml",
+      "content_hash": "41345b026e017c154ac473ea1f8b4ab5d1f6f18f4248892c9790652bb3817e7f"
+    },
+    {
+      "transition_id": "V147-TR-046",
+      "object_type": "IssuanceAuthority",
+      "from_state": "ACTIVE",
+      "event_type": "AUTHORITY_SUSPENDED",
+      "guard_expression": "SUSPEND_POLICY_TRUE",
+      "required_evidence": [
+        "SUSPENSION_REASON"
+      ],
+      "required_authority_operation": "AUTHORITY_ADMIN",
+      "required_authority_type": "QUALIFIED_MATCHING_OPERATION",
+      "to_state": "SUSPENDED",
+      "side_effects": [
+        "APPEND_EVENT"
+      ],
+      "forbidden_side_effects": [
+        "REVOKE_CREDENTIAL_IMPLICITLY"
+      ],
+      "semantic_override_profile": "v14.7.1/TRANSITION-CORRECTIONS.yaml",
+      "content_hash": "a0d4dbd17200b577669cab863a64f67bcadd246dadbfe14094f0bcf0e8e7d1b5"
+    },
+    {
+      "transition_id": "V147-TR-047",
+      "object_type": "IssuanceAuthority",
+      "from_state": "SUSPENDED",
+      "event_type": "AUTHORITY_RESUMED",
+      "guard_expression": "RESUME_POLICY_TRUE AND CREDENTIAL_VALID",
+      "required_evidence": [
+        "RESUME_REASON",
+        "CREDENTIAL"
+      ],
+      "required_authority_operation": "AUTHORITY_ADMIN",
+      "required_authority_type": "QUALIFIED_MATCHING_OPERATION",
+      "to_state": "ACTIVE",
+      "side_effects": [
+        "APPEND_EVENT"
+      ],
+      "forbidden_side_effects": [
+        "BACKDATE_EFFECTIVENESS"
+      ],
+      "semantic_override_profile": "v14.7.1/TRANSITION-CORRECTIONS.yaml",
+      "content_hash": "7dfa95f6afd960aea820b63ea70a4c2fbe5de815e7ce6fa73237852c57678ca0"
+    },
+    {
+      "transition_id": "V147-TR-048",
+      "object_type": "IssuanceAuthority",
+      "from_state": "ACTIVE",
+      "event_type": "AUTHORITY_REVOKED",
+      "guard_expression": "REVOKE_POLICY_TRUE",
+      "required_evidence": [
+        "REVOCATION_REASON"
+      ],
+      "required_authority_operation": "AUTHORITY_ADMIN",
+      "required_authority_type": "QUALIFIED_MATCHING_OPERATION",
+      "to_state": "REVOKED",
+      "side_effects": [
+        "APPEND_EVENT"
+      ],
+      "forbidden_side_effects": [
+        "DELETE_PRIOR_APPROVALS"
+      ],
+      "semantic_override_profile": "v14.7.1/TRANSITION-CORRECTIONS.yaml",
+      "content_hash": "3d18f97d489b6ee5dd9c7f1e76b004cf7ac14c34e05a02ba6c277c89422135f1"
+    },
+    {
+      "transition_id": "V147-TR-049",
+      "object_type": "IssuanceAuthority",
+      "from_state": "SUSPENDED",
+      "event_type": "AUTHORITY_REVOKED",
+      "guard_expression": "REVOKE_POLICY_TRUE",
+      "required_evidence": [
+        "REVOCATION_REASON"
+      ],
+      "required_authority_operation": "AUTHORITY_ADMIN",
+      "required_authority_type": "QUALIFIED_MATCHING_OPERATION",
+      "to_state": "REVOKED",
+      "side_effects": [
+        "APPEND_EVENT"
+      ],
+      "forbidden_side_effects": [
+        "DELETE_PRIOR_APPROVALS"
+      ],
+      "semantic_override_profile": "v14.7.1/TRANSITION-CORRECTIONS.yaml",
+      "content_hash": "efb615abb1a08fc65efffd9572664ce9659c252dee6b33f50caa81833a9a7cd4"
+    },
+    {
+      "transition_id": "V147-TR-050",
+      "object_type": "Evaluation",
+      "from_state": "NONE",
+      "event_type": "EVALUATION_CREATED",
+      "guard_expression": "CONTEXT_SEALED AND EVALUATOR_BOUND",
+      "required_evidence": [
+        "CONTEXT",
+        "EVALUATOR_MANIFEST"
+      ],
+      "required_authority_operation": "NONE",
+      "required_authority_type": "NONE",
+      "to_state": "CREATED",
+      "side_effects": [
+        "APPEND_EVENT"
+      ],
+      "forbidden_side_effects": [
+        "EMIT_SEMANTIC_RESULT"
+      ],
+      "semantic_override_profile": "v14.7.1/TRANSITION-CORRECTIONS.yaml",
+      "content_hash": "628bb40baf48a089cfe1983d96f036c4528c9faac3140bb5c783ba0283c35143"
+    },
+    {
+      "transition_id": "V147-TR-051",
+      "object_type": "Evaluation",
+      "from_state": "CREATED",
+      "event_type": "EVALUATION_COMPLETED",
+      "guard_expression": "L0_L3_COMPLETE AND RESULT_HASH_VALID",
+      "required_evidence": [
+        "EVALUATION_RESULT"
+      ],
+      "required_authority_operation": "NONE",
+      "required_authority_type": "NONE",
+      "to_state": "COMPLETED",
+      "side_effects": [
+        "APPEND_EVENT",
+        "CREATE_RESULT"
+      ],
+      "forbidden_side_effects": [
+        "AUTHORIZE"
+      ],
+      "semantic_override_profile": "v14.7.1/TRANSITION-CORRECTIONS.yaml",
+      "content_hash": "d5df079d9f70b3e54acfd7d26d9f13a7ec35f1533f343540014de4bb74f029d6"
+    },
+    {
+      "transition_id": "V147-TR-052",
+      "object_type": "Evaluation",
+      "from_state": "CREATED",
+      "event_type": "EVALUATION_INVALIDATED",
+      "guard_expression": "INVALIDATION_CAUSE_PROVED",
+      "required_evidence": [
+        "FAILURE_RECORD"
+      ],
+      "required_authority_operation": "NONE",
+      "required_authority_type": "NONE",
+      "to_state": "INVALIDATED",
+      "side_effects": [
+        "APPEND_EVENT"
+      ],
+      "forbidden_side_effects": [
+        "MUTATE_RESULT",
+        "CONVERT_RESULT_TO_FALSE"
+      ],
+      "semantic_override_profile": "v14.7.1/TRANSITION-CORRECTIONS.yaml",
+      "content_hash": "87856875bdedbc0e85577c3c37f4259b5a4f965dadc0f7f6f47edbf5fc62dc73"
+    },
+    {
+      "transition_id": "V147-TR-053",
+      "object_type": "Evaluation",
+      "from_state": "COMPLETED",
+      "event_type": "EVALUATION_INVALIDATED",
+      "guard_expression": "INVALIDATION_CAUSE_PROVED",
+      "required_evidence": [
+        "FAILURE_RECORD"
+      ],
+      "required_authority_operation": "NONE",
+      "required_authority_type": "NONE",
+      "to_state": "INVALIDATED",
+      "side_effects": [
+        "APPEND_EVENT"
+      ],
+      "forbidden_side_effects": [
+        "MUTATE_RESULT",
+        "CONVERT_RESULT_TO_FALSE"
+      ],
+      "semantic_override_profile": "v14.7.1/TRANSITION-CORRECTIONS.yaml",
+      "content_hash": "60e299134f109013669957378ac118d66a078168f6bd9efa36243da91dcf613b"
+    }
+  ]
+}

@@ -1,0 +1,21 @@
+{
+  "profile_version": "14.7-R2",
+  "profile_id": "gde-cjson-1",
+  "epistemic_status": "SUPPORTED",
+  "claim_class": "REALIZATION_PROFILE",
+  "normative": [
+    "DETERMINISTIC_ORDER",
+    "FAIL_CLOSED",
+    "DOMAIN_SEPARATION"
+  ],
+  "profile": [
+    "GDE_CJSON_1",
+    "SHA_256",
+    "SEQUENCE_AND_COMMIT_CONTRACT"
+  ],
+  "implementation": [
+    "PYTHON_REFERENCE_HARNESS",
+    "IN_MEMORY_EVENT_STORE"
+  ],
+  "implementation_choices_not_theorems": true
+}

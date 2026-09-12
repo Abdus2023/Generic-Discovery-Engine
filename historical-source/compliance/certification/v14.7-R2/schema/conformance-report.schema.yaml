@@ -1,0 +1,77 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://generic-discovery-engine.invalid/compliance/v14.7-R2/conformance-report.schema.yaml",
+  "title": "conformance-report",
+  "type": "object",
+  "required": [
+    "report_id",
+    "profile_id",
+    "profile_version",
+    "implementation",
+    "evaluated_at",
+    "tests",
+    "invariants",
+    "result",
+    "evidence_refs",
+    "content_hash"
+  ],
+  "properties": {
+    "report_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "profile_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "profile_version": {
+      "type": "string",
+      "minLength": 1
+    },
+    "implementation": {
+      "type": "object"
+    },
+    "evaluated_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "tests": {
+      "type": "object"
+    },
+    "invariants": {
+      "type": "object"
+    },
+    "result": {
+      "type": "string",
+      "enum": [
+        "CONFORMANT",
+        "NON_CONFORMANT",
+        "UNVERIFIED",
+        "BLOCKED",
+        "INVALID"
+      ]
+    },
+    "evidence_refs": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "content_hash": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$"
+    }
+  },
+  "additionalProperties": false,
+  "x-identity-fields": [
+    "report_id"
+  ],
+  "x-immutable": true,
+  "x-self-excluding-hash-field": "content_hash",
+  "x-canonical-profile": "gde-cjson-1",
+  "x-normative-rules": [
+    "report immutable",
+    "scope is named implementation only"
+  ]
+}

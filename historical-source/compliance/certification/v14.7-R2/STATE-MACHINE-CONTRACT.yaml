@@ -1,0 +1,27 @@
+{
+  "profile_version": "14.7-R2",
+  "profile_id": "gde-cjson-1",
+  "epistemic_status": "SUPPORTED",
+  "claim_class": "REALIZATION_PROFILE",
+  "tuple_fields": [
+    "TRANSITION_ID",
+    "OBJECT_TYPE",
+    "FROM_STATE",
+    "EVENT_TYPE",
+    "GUARD_EXPRESSION",
+    "REQUIRED_EVIDENCE",
+    "REQUIRED_AUTHORITY",
+    "TO_STATE",
+    "SIDE_EFFECTS",
+    "FORBIDDEN_SIDE_EFFECTS"
+  ],
+  "reject": [
+    "ILLEGAL_TRANSITION",
+    "MISSING_AUTHORITY",
+    "MISSING_EVIDENCE",
+    "INVALID_STATE",
+    "WRONG_PREDECESSOR",
+    "WRONG_SCOPE",
+    "DUPLICATE_EVENT"
+  ]
+}

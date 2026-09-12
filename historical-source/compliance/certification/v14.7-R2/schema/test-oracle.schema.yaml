@@ -1,0 +1,67 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://generic-discovery-engine.invalid/compliance/v14.7-R2/test-oracle.schema.yaml",
+  "title": "test-oracle",
+  "type": "object",
+  "required": [
+    "oracle_id",
+    "operation",
+    "input_refs",
+    "expected_result",
+    "expected_state",
+    "expected_event",
+    "forbidden_results",
+    "determinism",
+    "content_hash"
+  ],
+  "properties": {
+    "oracle_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "operation": {
+      "type": "string",
+      "minLength": 1
+    },
+    "input_refs": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "expected_result": {
+      "type": "object"
+    },
+    "expected_state": {
+      "type": "object"
+    },
+    "expected_event": {
+      "type": "object"
+    },
+    "forbidden_results": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "determinism": {
+      "type": "object"
+    },
+    "content_hash": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$"
+    }
+  },
+  "additionalProperties": false,
+  "x-identity-fields": [
+    "oracle_id"
+  ],
+  "x-immutable": true,
+  "x-self-excluding-hash-field": "content_hash",
+  "x-canonical-profile": "gde-cjson-1",
+  "x-normative-rules": [
+    "oracle failure origin classified independently"
+  ]
+}

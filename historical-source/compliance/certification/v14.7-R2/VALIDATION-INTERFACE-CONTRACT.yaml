@@ -1,0 +1,266 @@
+{
+  "profile_version": "14.7-R2",
+  "profile_id": "gde-cjson-1",
+  "epistemic_status": "SUPPORTED",
+  "claim_class": "REALIZATION_PROFILE",
+  "objects": [
+    {
+      "interface_id": "iface:validate_structure",
+      "name": "validate_structure",
+      "input_contract": [
+        "IMMUTABLE_TYPED_INPUT"
+      ],
+      "output_contract": [
+        "TYPED_RESULT"
+      ],
+      "failure_contract": [
+        "CANONICAL_FAILURE_CLASS"
+      ],
+      "side_effect_contract": "NONE",
+      "determinism": true,
+      "content_hash": "370036536d11a2fa60160f0380fdbf3c663d887f7d62abb388202bbf8da349f0"
+    },
+    {
+      "interface_id": "iface:validate_references",
+      "name": "validate_references",
+      "input_contract": [
+        "IMMUTABLE_TYPED_INPUT"
+      ],
+      "output_contract": [
+        "TYPED_RESULT"
+      ],
+      "failure_contract": [
+        "CANONICAL_FAILURE_CLASS"
+      ],
+      "side_effect_contract": "NONE",
+      "determinism": true,
+      "content_hash": "92e77eb87ae870996effca8d6103bef2703aeaca436135d006c836765cd2c637"
+    },
+    {
+      "interface_id": "iface:validate_integrity",
+      "name": "validate_integrity",
+      "input_contract": [
+        "IMMUTABLE_TYPED_INPUT"
+      ],
+      "output_contract": [
+        "TYPED_RESULT"
+      ],
+      "failure_contract": [
+        "CANONICAL_FAILURE_CLASS"
+      ],
+      "side_effect_contract": "NONE",
+      "determinism": true,
+      "content_hash": "d8324e1d0148768cd52aa8f252877ee8f154a569da711efe9069932972df0d00"
+    },
+    {
+      "interface_id": "iface:validate_temporal_scope",
+      "name": "validate_temporal_scope",
+      "input_contract": [
+        "IMMUTABLE_TYPED_INPUT"
+      ],
+      "output_contract": [
+        "TYPED_RESULT"
+      ],
+      "failure_contract": [
+        "CANONICAL_FAILURE_CLASS"
+      ],
+      "side_effect_contract": "NONE",
+      "determinism": true,
+      "content_hash": "19614bbcb054117c89029d7b891d9ce60947adc921b1f4e98051d7cd7e6edbbd"
+    },
+    {
+      "interface_id": "iface:validate_scope",
+      "name": "validate_scope",
+      "input_contract": [
+        "IMMUTABLE_TYPED_INPUT"
+      ],
+      "output_contract": [
+        "TYPED_RESULT"
+      ],
+      "failure_contract": [
+        "CANONICAL_FAILURE_CLASS"
+      ],
+      "side_effect_contract": "NONE",
+      "determinism": true,
+      "content_hash": "700e461a079d7802af9b82a5b76e504712cb364f7a72f08bccaa7dd9a977e497"
+    },
+    {
+      "interface_id": "iface:validate_policy",
+      "name": "validate_policy",
+      "input_contract": [
+        "IMMUTABLE_TYPED_INPUT"
+      ],
+      "output_contract": [
+        "TYPED_RESULT"
+      ],
+      "failure_contract": [
+        "CANONICAL_FAILURE_CLASS"
+      ],
+      "side_effect_contract": "NONE",
+      "determinism": true,
+      "content_hash": "c57f74ab9e6b56c35ac8078cfcba3f28ebaa83c409695c57008a6dcaa407f103"
+    },
+    {
+      "interface_id": "iface:validate_authority",
+      "name": "validate_authority",
+      "input_contract": [
+        "IMMUTABLE_TYPED_INPUT"
+      ],
+      "output_contract": [
+        "TYPED_RESULT"
+      ],
+      "failure_contract": [
+        "CANONICAL_FAILURE_CLASS"
+      ],
+      "side_effect_contract": "NONE",
+      "determinism": true,
+      "content_hash": "7209e71473fa5200840823af9db1aed26b5548c0aba4878b370e12664324d567"
+    },
+    {
+      "interface_id": "iface:validate_evidence",
+      "name": "validate_evidence",
+      "input_contract": [
+        "IMMUTABLE_TYPED_INPUT"
+      ],
+      "output_contract": [
+        "TYPED_RESULT"
+      ],
+      "failure_contract": [
+        "CANONICAL_FAILURE_CLASS"
+      ],
+      "side_effect_contract": "NONE",
+      "determinism": true,
+      "content_hash": "3987f5e919625cd959c8396cdc02096950a754678df8d8d3e437f1a893c6342a"
+    },
+    {
+      "interface_id": "iface:evaluate",
+      "name": "evaluate",
+      "input_contract": [
+        "IMMUTABLE_TYPED_INPUT"
+      ],
+      "output_contract": [
+        "TYPED_RESULT"
+      ],
+      "failure_contract": [
+        "CANONICAL_FAILURE_CLASS"
+      ],
+      "side_effect_contract": "NONE",
+      "determinism": true,
+      "content_hash": "969e1794d685df681b38e4ce4e0b78e11614272d763ffc5d39b9a9fcdf3e2453"
+    },
+    {
+      "interface_id": "iface:aggregate",
+      "name": "aggregate",
+      "input_contract": [
+        "IMMUTABLE_TYPED_INPUT"
+      ],
+      "output_contract": [
+        "TYPED_RESULT"
+      ],
+      "failure_contract": [
+        "CANONICAL_FAILURE_CLASS"
+      ],
+      "side_effect_contract": "NONE",
+      "determinism": true,
+      "content_hash": "476bb4fa09f86958b8c21f760e7588bdbd81b49bf146b880cd032d2a03e7aef5"
+    },
+    {
+      "interface_id": "iface:guard_transition",
+      "name": "guard_transition",
+      "input_contract": [
+        "IMMUTABLE_TYPED_INPUT"
+      ],
+      "output_contract": [
+        "TYPED_RESULT"
+      ],
+      "failure_contract": [
+        "CANONICAL_FAILURE_CLASS"
+      ],
+      "side_effect_contract": "NONE",
+      "determinism": true,
+      "content_hash": "4efa3cd36d853e69cca505a7cd5f46a2b71e3a2f7d95608f92284ae8167af244"
+    },
+    {
+      "interface_id": "iface:commit_event",
+      "name": "commit_event",
+      "input_contract": [
+        "IMMUTABLE_TYPED_INPUT"
+      ],
+      "output_contract": [
+        "TYPED_RESULT"
+      ],
+      "failure_contract": [
+        "CANONICAL_FAILURE_CLASS"
+      ],
+      "side_effect_contract": "ATOMIC_EVENT_APPEND_ONLY",
+      "determinism": true,
+      "content_hash": "226ebf7680086c676e9eeed4d1dd77ab122fdc443a7b18273bd4fec48bd1ed5c"
+    },
+    {
+      "interface_id": "iface:project",
+      "name": "project",
+      "input_contract": [
+        "IMMUTABLE_TYPED_INPUT"
+      ],
+      "output_contract": [
+        "TYPED_RESULT"
+      ],
+      "failure_contract": [
+        "CANONICAL_FAILURE_CLASS"
+      ],
+      "side_effect_contract": "NONE",
+      "determinism": true,
+      "content_hash": "233f0142c58c5b395db8811dd9745ff34d60c44204f4ed678727b7b3d6f86f8b"
+    },
+    {
+      "interface_id": "iface:verify_projection",
+      "name": "verify_projection",
+      "input_contract": [
+        "IMMUTABLE_TYPED_INPUT"
+      ],
+      "output_contract": [
+        "TYPED_RESULT"
+      ],
+      "failure_contract": [
+        "CANONICAL_FAILURE_CLASS"
+      ],
+      "side_effect_contract": "NONE",
+      "determinism": true,
+      "content_hash": "de657ac8d03da97740cb51cde2eccef6fa86b58a8bb24e23f37d529aab2cafbe"
+    },
+    {
+      "interface_id": "iface:check_reuse",
+      "name": "check_reuse",
+      "input_contract": [
+        "IMMUTABLE_TYPED_INPUT"
+      ],
+      "output_contract": [
+        "TYPED_RESULT"
+      ],
+      "failure_contract": [
+        "CANONICAL_FAILURE_CLASS"
+      ],
+      "side_effect_contract": "NONE",
+      "determinism": true,
+      "content_hash": "c7c3f825e3d2e8c0ec607454852674243f5c6599a2c5e00cd566df6a66f7e806"
+    },
+    {
+      "interface_id": "iface:report_conformance",
+      "name": "report_conformance",
+      "input_contract": [
+        "IMMUTABLE_TYPED_INPUT"
+      ],
+      "output_contract": [
+        "TYPED_RESULT"
+      ],
+      "failure_contract": [
+        "CANONICAL_FAILURE_CLASS"
+      ],
+      "side_effect_contract": "NONE",
+      "determinism": true,
+      "content_hash": "9236d8a7a0bf9d1712e10f0c40460f24b488565ef58d5fa8bb9433813b518893"
+    }
+  ],
+  "count": 16,
+  "authoritative_mutation": "FORBIDDEN_EXCEPT_ATOMIC_COMMIT_EVENT"
+}

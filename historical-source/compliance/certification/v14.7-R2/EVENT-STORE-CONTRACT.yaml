@@ -1,0 +1,21 @@
+{
+  "profile_version": "14.7-R2",
+  "profile_id": "gde-cjson-1",
+  "epistemic_status": "SUPPORTED",
+  "claim_class": "REALIZATION_PROFILE",
+  "interfaces": [
+    "append_event",
+    "read_stream",
+    "read_events",
+    "read_checkpoint",
+    "verify_stream"
+  ],
+  "guarantees": [
+    "UNIQUE_EVENT_IDENTITY",
+    "ATOMIC_APPEND",
+    "CANONICAL_SEQUENCE_POSITION",
+    "DURABLE_COMMIT"
+  ],
+  "serialization_point": "ATOMIC_EXPECTED_VERSION_CHECK_AND_COMMIT_INDEX_ALLOCATION",
+  "untrusted_if_missing_guarantee": true
+}

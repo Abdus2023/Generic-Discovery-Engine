@@ -1,0 +1,68 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://generic-discovery-engine.invalid/compliance/v14.7-R2/interface-contract.schema.yaml",
+  "title": "interface-contract",
+  "type": "object",
+  "required": [
+    "interface_id",
+    "name",
+    "input_contract",
+    "output_contract",
+    "failure_contract",
+    "side_effect_contract",
+    "determinism",
+    "content_hash"
+  ],
+  "properties": {
+    "interface_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "name": {
+      "type": "string",
+      "minLength": 1
+    },
+    "input_contract": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "output_contract": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "failure_contract": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "side_effect_contract": {
+      "type": "string",
+      "minLength": 1
+    },
+    "determinism": {
+      "type": "boolean"
+    },
+    "content_hash": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$"
+    }
+  },
+  "additionalProperties": false,
+  "x-identity-fields": [
+    "interface_id"
+  ],
+  "x-immutable": true,
+  "x-self-excluding-hash-field": "content_hash",
+  "x-canonical-profile": "gde-cjson-1",
+  "x-normative-rules": [
+    "validators cannot mutate authoritative state"
+  ]
+}

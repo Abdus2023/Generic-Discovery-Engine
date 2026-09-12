@@ -1,0 +1,19 @@
+{
+  "profile_version": "14.7-R2",
+  "profile_id": "gde-cjson-1",
+  "epistemic_status": "SUPPORTED",
+  "claim_class": "REALIZATION_PROFILE",
+  "function": "Project(history,profile)",
+  "deterministic": true,
+  "fail_closed": [
+    "DUPLICATE",
+    "MISSING",
+    "REORDERED",
+    "CORRUPT",
+    "INVALID_TRANSITION",
+    "SEQUENCE_COLLISION",
+    "UNTRUSTED_LATE_EVENT",
+    "REPLAY_NONDETERMINISM"
+  ],
+  "mutation_of_history": false
+}

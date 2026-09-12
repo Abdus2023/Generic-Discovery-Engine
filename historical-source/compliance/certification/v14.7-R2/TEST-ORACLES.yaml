@@ -1,0 +1,1593 @@
+{
+  "profile_version": "14.7-R2",
+  "profile_id": "gde-cjson-1",
+  "epistemic_status": "SUPPORTED",
+  "claim_class": "REALIZATION_PROFILE",
+  "objects": [
+    {
+      "oracle_id": "oracle:schema-valid",
+      "operation": "SCHEMA",
+      "input_refs": [
+        "schema-valid"
+      ],
+      "expected_result": {
+        "type": "STATUS",
+        "value": "VALID"
+      },
+      "expected_state": {
+        "value": null
+      },
+      "expected_event": {
+        "type": null
+      },
+      "forbidden_results": [],
+      "determinism": {
+        "required": true
+      },
+      "content_hash": "25c109f3def014afe5debd14af3d9bbf7ab47d385600648dfae853064861391d"
+    },
+    {
+      "oracle_id": "oracle:schema-missing",
+      "operation": "SCHEMA",
+      "input_refs": [
+        "schema-missing"
+      ],
+      "expected_result": {
+        "type": "STATUS",
+        "value": "INVALID"
+      },
+      "expected_state": {
+        "value": null
+      },
+      "expected_event": {
+        "type": null
+      },
+      "forbidden_results": [],
+      "determinism": {
+        "required": true
+      },
+      "content_hash": "62d926cd2a52b6150cfa9aeb5e6e2be951ce6baf8acb249e571c99b8284f19c7"
+    },
+    {
+      "oracle_id": "oracle:integrity-valid",
+      "operation": "INTEGRITY",
+      "input_refs": [
+        "integrity-valid"
+      ],
+      "expected_result": {
+        "type": "STATUS",
+        "value": "VALID"
+      },
+      "expected_state": {
+        "value": null
+      },
+      "expected_event": {
+        "type": null
+      },
+      "forbidden_results": [],
+      "determinism": {
+        "required": true
+      },
+      "content_hash": "f379e32486e2421546fbaf352eec4c4333cc4540a7009618f7f30f4ace3a7544"
+    },
+    {
+      "oracle_id": "oracle:integrity-broken",
+      "operation": "INTEGRITY",
+      "input_refs": [
+        "integrity-broken"
+      ],
+      "expected_result": {
+        "type": "STATUS",
+        "value": "INVALID"
+      },
+      "expected_state": {
+        "value": null
+      },
+      "expected_event": {
+        "type": null
+      },
+      "forbidden_results": [],
+      "determinism": {
+        "required": true
+      },
+      "content_hash": "562905adcf038f008f3832f79dfa7b1bd84d9e54bbdea9fb48050e8d1e6d612a"
+    },
+    {
+      "oracle_id": "oracle:canonical-map",
+      "operation": "CANONICAL_EQUAL",
+      "input_refs": [
+        "canonical-map"
+      ],
+      "expected_result": {
+        "type": "STATUS",
+        "value": "PASS"
+      },
+      "expected_state": {
+        "value": null
+      },
+      "expected_event": {
+        "type": null
+      },
+      "forbidden_results": [],
+      "determinism": {
+        "required": true
+      },
+      "content_hash": "dcf61bf9f8320b15cb1a09c4f31b5912bc5352a89ad779741d41751e1156509e"
+    },
+    {
+      "oracle_id": "oracle:canonical-nfc",
+      "operation": "CANONICAL_EQUAL",
+      "input_refs": [
+        "canonical-nfc"
+      ],
+      "expected_result": {
+        "type": "STATUS",
+        "value": "PASS"
+      },
+      "expected_state": {
+        "value": null
+      },
+      "expected_event": {
+        "type": null
+      },
+      "forbidden_results": [],
+      "determinism": {
+        "required": true
+      },
+      "content_hash": "80e70e761b96e378ff1f4a402f8c82dd018ef80f85242c13bafe02f196a593f9"
+    },
+    {
+      "oracle_id": "oracle:reject-float",
+      "operation": "CANONICAL_REJECT_FLOAT",
+      "input_refs": [
+        "reject-float"
+      ],
+      "expected_result": {
+        "type": "STATUS",
+        "value": "PASS"
+      },
+      "expected_state": {
+        "value": null
+      },
+      "expected_event": {
+        "type": null
+      },
+      "forbidden_results": [],
+      "determinism": {
+        "required": true
+      },
+      "content_hash": "1e26757dd134540c65aeb3e2781638a1411dd27ff9fc6610a063d2a1683e5ea2"
+    },
+    {
+      "oracle_id": "oracle:hash-domains",
+      "operation": "HASH_DOMAIN",
+      "input_refs": [
+        "hash-domains"
+      ],
+      "expected_result": {
+        "type": "STATUS",
+        "value": "PASS"
+      },
+      "expected_state": {
+        "value": null
+      },
+      "expected_event": {
+        "type": null
+      },
+      "forbidden_results": [],
+      "determinism": {
+        "required": true
+      },
+      "content_hash": "f470996d562b1ce6c3e5fb476761643f2793f7a33c4adc19a64720965d42d4a0"
+    },
+    {
+      "oracle_id": "oracle:all-true",
+      "operation": "AGGREGATE",
+      "input_refs": [
+        "all-true"
+      ],
+      "expected_result": {
+        "type": "STATUS",
+        "value": "ELIGIBLE"
+      },
+      "expected_state": {
+        "value": null
+      },
+      "expected_event": {
+        "type": null
+      },
+      "forbidden_results": [],
+      "determinism": {
+        "required": true
+      },
+      "content_hash": "cc350a72d5a010efcc0bee50962e491d4c37ba8c73124afeb0bd1b3276233f27"
+    },
+    {
+      "oracle_id": "oracle:false-blocked",
+      "operation": "AGGREGATE",
+      "input_refs": [
+        "false-blocked"
+      ],
+      "expected_result": {
+        "type": "STATUS",
+        "value": "INELIGIBLE"
+      },
+      "expected_state": {
+        "value": null
+      },
+      "expected_event": {
+        "type": null
+      },
+      "forbidden_results": [],
+      "determinism": {
+        "required": true
+      },
+      "content_hash": "1e27cbf22c7bdb5099c91957ebe4940a6c6609c312ae4b8b3b36a82d8644b5e8"
+    },
+    {
+      "oracle_id": "oracle:blocked-unknown",
+      "operation": "AGGREGATE",
+      "input_refs": [
+        "blocked-unknown"
+      ],
+      "expected_result": {
+        "type": "STATUS",
+        "value": "BLOCKED"
+      },
+      "expected_state": {
+        "value": null
+      },
+      "expected_event": {
+        "type": null
+      },
+      "forbidden_results": [],
+      "determinism": {
+        "required": true
+      },
+      "content_hash": "6453ad581f264bfcbf8c29bdad03ac0b7837fd5575c9807769a124d383900ea7"
+    },
+    {
+      "oracle_id": "oracle:unknown-true",
+      "operation": "AGGREGATE",
+      "input_refs": [
+        "unknown-true"
+      ],
+      "expected_result": {
+        "type": "STATUS",
+        "value": "UNKNOWN"
+      },
+      "expected_state": {
+        "value": null
+      },
+      "expected_event": {
+        "type": null
+      },
+      "forbidden_results": [],
+      "determinism": {
+        "required": true
+      },
+      "content_hash": "c931cac2f9410ee64312caee3dedee082bdede99993f22182e158e879d67024e"
+    },
+    {
+      "oracle_id": "oracle:invalid-false",
+      "operation": "AGGREGATE",
+      "input_refs": [
+        "invalid-false"
+      ],
+      "expected_result": {
+        "type": "STATUS",
+        "value": "INVALID"
+      },
+      "expected_state": {
+        "value": null
+      },
+      "expected_event": {
+        "type": null
+      },
+      "forbidden_results": [],
+      "determinism": {
+        "required": true
+      },
+      "content_hash": "bd40b539d42f13399798d4fff1607c87401de3a0f4abced357853d4322cfc300"
+    },
+    {
+      "oracle_id": "oracle:empty-deny",
+      "operation": "AGGREGATE",
+      "input_refs": [
+        "empty-deny"
+      ],
+      "expected_result": {
+        "type": "STATUS",
+        "value": "INELIGIBLE"
+      },
+      "expected_state": {
+        "value": null
+      },
+      "expected_event": {
+        "type": null
+      },
+      "forbidden_results": [],
+      "determinism": {
+        "required": true
+      },
+      "content_hash": "35659ba85cf6f8039f2385c6e7529c19f105d8d26963ecd0d54c2d7ce952aee7"
+    },
+    {
+      "oracle_id": "oracle:empty-missing",
+      "operation": "AGGREGATE",
+      "input_refs": [
+        "empty-missing"
+      ],
+      "expected_result": {
+        "type": "STATUS",
+        "value": "INVALID"
+      },
+      "expected_state": {
+        "value": null
+      },
+      "expected_event": {
+        "type": null
+      },
+      "forbidden_results": [],
+      "determinism": {
+        "required": true
+      },
+      "content_hash": "9226efdecc30c2f629b61bc48b379c532227b99d54976afdb3c30586f574f24b"
+    },
+    {
+      "oracle_id": "oracle:eval-true",
+      "operation": "EVALUATE",
+      "input_refs": [
+        "eval-true"
+      ],
+      "expected_result": {
+        "type": "STATUS",
+        "value": "TRUE"
+      },
+      "expected_state": {
+        "value": null
+      },
+      "expected_event": {
+        "type": null
+      },
+      "forbidden_results": [],
+      "determinism": {
+        "required": true
+      },
+      "content_hash": "ff2292af3adc0c4d9403f80ad63ea8ab992fa6a6d8ca001b5b08e45347b55ce1"
+    },
+    {
+      "oracle_id": "oracle:eval-false",
+      "operation": "EVALUATE",
+      "input_refs": [
+        "eval-false"
+      ],
+      "expected_result": {
+        "type": "STATUS",
+        "value": "FALSE"
+      },
+      "expected_state": {
+        "value": null
+      },
+      "expected_event": {
+        "type": null
+      },
+      "forbidden_results": [],
+      "determinism": {
+        "required": true
+      },
+      "content_hash": "b71563ff60ebddf40da02dd509189f71625757b13164a6c33b9118dab72ea71d"
+    },
+    {
+      "oracle_id": "oracle:eval-unknown",
+      "operation": "EVALUATE",
+      "input_refs": [
+        "eval-unknown"
+      ],
+      "expected_result": {
+        "type": "STATUS",
+        "value": "UNKNOWN"
+      },
+      "expected_state": {
+        "value": null
+      },
+      "expected_event": {
+        "type": null
+      },
+      "forbidden_results": [],
+      "determinism": {
+        "required": true
+      },
+      "content_hash": "634f42e3c010e50eb0aab45bfaaad5504d1f8f23e18dd36ce91b6c8fa237e326"
+    },
+    {
+      "oracle_id": "oracle:eval-blocked",
+      "operation": "EVALUATE",
+      "input_refs": [
+        "eval-blocked"
+      ],
+      "expected_result": {
+        "type": "STATUS",
+        "value": "BLOCKED"
+      },
+      "expected_state": {
+        "value": null
+      },
+      "expected_event": {
+        "type": null
+      },
+      "forbidden_results": [],
+      "determinism": {
+        "required": true
+      },
+      "content_hash": "5e20b15572970262e968105b70b51ab870d4b0d9107eb96e60f71bc5d96069e7"
+    },
+    {
+      "oracle_id": "oracle:eval-invalid",
+      "operation": "EVALUATE",
+      "input_refs": [
+        "eval-invalid"
+      ],
+      "expected_result": {
+        "type": "STATUS",
+        "value": "INVALID"
+      },
+      "expected_state": {
+        "value": null
+      },
+      "expected_event": {
+        "type": null
+      },
+      "forbidden_results": [],
+      "determinism": {
+        "required": true
+      },
+      "content_hash": "645dc94830454bad0d5144facc6216417c4f3a1bd9282329f7e20fcdf9adb8f0"
+    },
+    {
+      "oracle_id": "oracle:scope-ok",
+      "operation": "SCOPE",
+      "input_refs": [
+        "scope-ok"
+      ],
+      "expected_result": {
+        "type": "STATUS",
+        "value": "TRUE"
+      },
+      "expected_state": {
+        "value": null
+      },
+      "expected_event": {
+        "type": null
+      },
+      "forbidden_results": [],
+      "determinism": {
+        "required": true
+      },
+      "content_hash": "fb729edd2c7c0387255c74a343b9be5debd37d250b8df8db7c041bba1c0e417c"
+    },
+    {
+      "oracle_id": "oracle:scope-wrong",
+      "operation": "SCOPE",
+      "input_refs": [
+        "scope-wrong"
+      ],
+      "expected_result": {
+        "type": "STATUS",
+        "value": "FALSE"
+      },
+      "expected_state": {
+        "value": null
+      },
+      "expected_event": {
+        "type": null
+      },
+      "forbidden_results": [],
+      "determinism": {
+        "required": true
+      },
+      "content_hash": "f6fd8b886a9b2cdc7126cf03c8df3f7ff9008b88c7e26601930e8061d0886420"
+    },
+    {
+      "oracle_id": "oracle:evidence-missing",
+      "operation": "EVIDENCE",
+      "input_refs": [
+        "evidence-missing"
+      ],
+      "expected_result": {
+        "type": "STATUS",
+        "value": "INVALID"
+      },
+      "expected_state": {
+        "value": null
+      },
+      "expected_event": {
+        "type": null
+      },
+      "forbidden_results": [],
+      "determinism": {
+        "required": true
+      },
+      "content_hash": "fafe7a460f4fa6af86d40ffa46db7d7cf7aac69a4238f95c33752bfb296caac6"
+    },
+    {
+      "oracle_id": "oracle:evidence-stale",
+      "operation": "EVIDENCE",
+      "input_refs": [
+        "evidence-stale"
+      ],
+      "expected_result": {
+        "type": "STATUS",
+        "value": "UNKNOWN"
+      },
+      "expected_state": {
+        "value": null
+      },
+      "expected_event": {
+        "type": null
+      },
+      "forbidden_results": [],
+      "determinism": {
+        "required": true
+      },
+      "content_hash": "e1fdc317cc8858a9a2aebf490823c6ee24ed2ced5cb75947ff2faef7fbb1f73b"
+    },
+    {
+      "oracle_id": "oracle:evidence-blocked",
+      "operation": "EVIDENCE",
+      "input_refs": [
+        "evidence-blocked"
+      ],
+      "expected_result": {
+        "type": "STATUS",
+        "value": "BLOCKED"
+      },
+      "expected_state": {
+        "value": null
+      },
+      "expected_event": {
+        "type": null
+      },
+      "forbidden_results": [],
+      "determinism": {
+        "required": true
+      },
+      "content_hash": "df11a4868256c6b075d5f6f4218e0de308176beee2c94e2862452e97379a508b"
+    },
+    {
+      "oracle_id": "oracle:time-start",
+      "operation": "TEMPORAL",
+      "input_refs": [
+        "time-start"
+      ],
+      "expected_result": {
+        "type": "STATUS",
+        "value": "ACTIVE"
+      },
+      "expected_state": {
+        "value": null
+      },
+      "expected_event": {
+        "type": null
+      },
+      "forbidden_results": [],
+      "determinism": {
+        "required": true
+      },
+      "content_hash": "e96aef6572f9c641148542625ac0970f3d3e7fd43457247fae2f706b6d09405d"
+    },
+    {
+      "oracle_id": "oracle:time-end",
+      "operation": "TEMPORAL",
+      "input_refs": [
+        "time-end"
+      ],
+      "expected_result": {
+        "type": "STATUS",
+        "value": "EXPIRED"
+      },
+      "expected_state": {
+        "value": null
+      },
+      "expected_event": {
+        "type": null
+      },
+      "forbidden_results": [],
+      "determinism": {
+        "required": true
+      },
+      "content_hash": "5dbfa2b7ee7f373da108c05e6d2cc721ea26b4df3f82d7b6dd7bffb9e9645db7"
+    },
+    {
+      "oracle_id": "oracle:policy-complete",
+      "operation": "POLICY",
+      "input_refs": [
+        "policy-complete"
+      ],
+      "expected_result": {
+        "type": "STATUS",
+        "value": "VALID"
+      },
+      "expected_state": {
+        "value": null
+      },
+      "expected_event": {
+        "type": null
+      },
+      "forbidden_results": [],
+      "determinism": {
+        "required": true
+      },
+      "content_hash": "60e3710832d17990e06341d028d82fd685bac8a57534b319cdb955a684652834"
+    },
+    {
+      "oracle_id": "oracle:policy-incomplete",
+      "operation": "POLICY",
+      "input_refs": [
+        "policy-incomplete"
+      ],
+      "expected_result": {
+        "type": "STATUS",
+        "value": "INVALID"
+      },
+      "expected_state": {
+        "value": null
+      },
+      "expected_event": {
+        "type": null
+      },
+      "forbidden_results": [],
+      "determinism": {
+        "required": true
+      },
+      "content_hash": "0c182a6cfd15ab654ff90dc8ebb136e7316c97b6e11aa1a76ef52c58ff36139d"
+    },
+    {
+      "oracle_id": "oracle:authority-ok",
+      "operation": "AUTHORITY",
+      "input_refs": [
+        "authority-ok"
+      ],
+      "expected_result": {
+        "type": "STATUS",
+        "value": "QUALIFIED"
+      },
+      "expected_state": {
+        "value": null
+      },
+      "expected_event": {
+        "type": null
+      },
+      "forbidden_results": [],
+      "determinism": {
+        "required": true
+      },
+      "content_hash": "984dcce50e4ae893816a724032774e7215649465e1658b5f16c7b5593b073d25"
+    },
+    {
+      "oracle_id": "oracle:authority-expired",
+      "operation": "AUTHORITY",
+      "input_refs": [
+        "authority-expired"
+      ],
+      "expected_result": {
+        "type": "STATUS",
+        "value": "UNQUALIFIED"
+      },
+      "expected_state": {
+        "value": null
+      },
+      "expected_event": {
+        "type": null
+      },
+      "forbidden_results": [],
+      "determinism": {
+        "required": true
+      },
+      "content_hash": "214e87a72cffbe34dad62b0ff4c7fceea314e90cf45961886d2c95e828f28cf1"
+    },
+    {
+      "oracle_id": "oracle:authority-scope",
+      "operation": "AUTHORITY",
+      "input_refs": [
+        "authority-scope"
+      ],
+      "expected_result": {
+        "type": "STATUS",
+        "value": "UNQUALIFIED"
+      },
+      "expected_state": {
+        "value": null
+      },
+      "expected_event": {
+        "type": null
+      },
+      "forbidden_results": [],
+      "determinism": {
+        "required": true
+      },
+      "content_hash": "a283fcc9fcf785ecfe2d13c7d5ee590e3682a50dddcd236cd1fff4f08d0558fc"
+    },
+    {
+      "oracle_id": "oracle:authority-zero",
+      "operation": "AUTHORITY",
+      "input_refs": [
+        "authority-zero"
+      ],
+      "expected_result": {
+        "type": "STATUS",
+        "value": "INVALID"
+      },
+      "expected_state": {
+        "value": null
+      },
+      "expected_event": {
+        "type": null
+      },
+      "forbidden_results": [],
+      "determinism": {
+        "required": true
+      },
+      "content_hash": "f5a2698c576c5b2b8767050e7a0a6c7dd7159d48b65adbf532e6f20e302c8977"
+    },
+    {
+      "oracle_id": "oracle:authority-n-of-m-short",
+      "operation": "AUTHORITY",
+      "input_refs": [
+        "authority-n-of-m-short"
+      ],
+      "expected_result": {
+        "type": "STATUS",
+        "value": "BLOCKED"
+      },
+      "expected_state": {
+        "value": null
+      },
+      "expected_event": {
+        "type": null
+      },
+      "forbidden_results": [],
+      "determinism": {
+        "required": true
+      },
+      "content_hash": "f371e3296089defe6d925c8ed18a9589e98fb9af5b0093603960e0f6fa260486"
+    },
+    {
+      "oracle_id": "oracle:authority-n-of-m",
+      "operation": "AUTHORITY",
+      "input_refs": [
+        "authority-n-of-m"
+      ],
+      "expected_result": {
+        "type": "STATUS",
+        "value": "QUALIFIED"
+      },
+      "expected_state": {
+        "value": null
+      },
+      "expected_event": {
+        "type": null
+      },
+      "forbidden_results": [],
+      "determinism": {
+        "required": true
+      },
+      "content_hash": "f732bb850e06432176980db75327a11731648eae2c05ed9b5060fa11e55ce709"
+    },
+    {
+      "oracle_id": "oracle:reference-ok",
+      "operation": "REFERENCE",
+      "input_refs": [
+        "reference-ok"
+      ],
+      "expected_result": {
+        "type": "STATUS",
+        "value": "VALID"
+      },
+      "expected_state": {
+        "value": null
+      },
+      "expected_event": {
+        "type": null
+      },
+      "forbidden_results": [],
+      "determinism": {
+        "required": true
+      },
+      "content_hash": "246c97eb1604f0d2f4866fe048f186b8bb9bbca1379527cb693fed9c46cd433a"
+    },
+    {
+      "oracle_id": "oracle:reference-missing",
+      "operation": "REFERENCE",
+      "input_refs": [
+        "reference-missing"
+      ],
+      "expected_result": {
+        "type": "STATUS",
+        "value": "INVALID"
+      },
+      "expected_state": {
+        "value": null
+      },
+      "expected_event": {
+        "type": null
+      },
+      "forbidden_results": [],
+      "determinism": {
+        "required": true
+      },
+      "content_hash": "1154d6d63f7304779d1893cc80bda4caf162ad470908d3b68c93dd5466f6fb33"
+    },
+    {
+      "oracle_id": "oracle:reference-scope",
+      "operation": "REFERENCE",
+      "input_refs": [
+        "reference-scope"
+      ],
+      "expected_result": {
+        "type": "STATUS",
+        "value": "INVALID"
+      },
+      "expected_state": {
+        "value": null
+      },
+      "expected_event": {
+        "type": null
+      },
+      "forbidden_results": [],
+      "determinism": {
+        "required": true
+      },
+      "content_hash": "c74615b7ea3169d029ffa49da1c1e58718ffeda639adf3f892aee3ec16e1b8bf"
+    },
+    {
+      "oracle_id": "oracle:reference-version",
+      "operation": "REFERENCE",
+      "input_refs": [
+        "reference-version"
+      ],
+      "expected_result": {
+        "type": "STATUS",
+        "value": "INVALID"
+      },
+      "expected_state": {
+        "value": null
+      },
+      "expected_event": {
+        "type": null
+      },
+      "forbidden_results": [],
+      "determinism": {
+        "required": true
+      },
+      "content_hash": "fb9ca1f29a642a26cc6e8ffafb6cae409044eb27dd8d3544a365f11cc910ce6a"
+    },
+    {
+      "oracle_id": "oracle:reference-duplicate",
+      "operation": "REFERENCE",
+      "input_refs": [
+        "reference-duplicate"
+      ],
+      "expected_result": {
+        "type": "STATUS",
+        "value": "INVALID"
+      },
+      "expected_state": {
+        "value": null
+      },
+      "expected_event": {
+        "type": null
+      },
+      "forbidden_results": [],
+      "determinism": {
+        "required": true
+      },
+      "content_hash": "e2240cb2631cb5f76e44d3fb56516ea6e53cb082a090aac6e77a4d908f1dc3e7"
+    },
+    {
+      "oracle_id": "oracle:reference-wrong-type",
+      "operation": "REFERENCE",
+      "input_refs": [
+        "reference-wrong-type"
+      ],
+      "expected_result": {
+        "type": "STATUS",
+        "value": "INVALID"
+      },
+      "expected_state": {
+        "value": null
+      },
+      "expected_event": {
+        "type": null
+      },
+      "forbidden_results": [],
+      "determinism": {
+        "required": true
+      },
+      "content_hash": "c413e2fc86514a3dfb3be9b0747391a3179def8b3dfc8e5844bdb6fa0e770b41"
+    },
+    {
+      "oracle_id": "oracle:reference-cycle",
+      "operation": "REFERENCE",
+      "input_refs": [
+        "reference-cycle"
+      ],
+      "expected_result": {
+        "type": "STATUS",
+        "value": "INVALID"
+      },
+      "expected_state": {
+        "value": null
+      },
+      "expected_event": {
+        "type": null
+      },
+      "forbidden_results": [],
+      "determinism": {
+        "required": true
+      },
+      "content_hash": "9d43359b93135bb6d0a9dc43e020768c34b099ca762375d17faec1494d1908f4"
+    },
+    {
+      "oracle_id": "oracle:reference-superseded-resolves",
+      "operation": "REFERENCE",
+      "input_refs": [
+        "reference-superseded-resolves"
+      ],
+      "expected_result": {
+        "type": "STATUS",
+        "value": "VALID"
+      },
+      "expected_state": {
+        "value": null
+      },
+      "expected_event": {
+        "type": null
+      },
+      "forbidden_results": [],
+      "determinism": {
+        "required": true
+      },
+      "content_hash": "33198cfe03a9e49d1dfb6e7cf1590371df31f55c3ba0883e24d942c4b3bd4090"
+    },
+    {
+      "oracle_id": "oracle:reference-revoked-resolves",
+      "operation": "REFERENCE",
+      "input_refs": [
+        "reference-revoked-resolves"
+      ],
+      "expected_result": {
+        "type": "STATUS",
+        "value": "VALID"
+      },
+      "expected_state": {
+        "value": null
+      },
+      "expected_event": {
+        "type": null
+      },
+      "forbidden_results": [],
+      "determinism": {
+        "required": true
+      },
+      "content_hash": "73ee30b36d4d39188a67fa59ba6680030c846bc4f56fad95950e90c032fe38fb"
+    },
+    {
+      "oracle_id": "oracle:transition-ok",
+      "operation": "TRANSITION",
+      "input_refs": [
+        "transition-ok"
+      ],
+      "expected_result": {
+        "type": "STATUS",
+        "value": "VALID"
+      },
+      "expected_state": {
+        "value": null
+      },
+      "expected_event": {
+        "type": null
+      },
+      "forbidden_results": [],
+      "determinism": {
+        "required": true
+      },
+      "content_hash": "4132561eebf2d15483d5598b6a9e28573d164bf2078beaa36a5e2b23655e10ea"
+    },
+    {
+      "oracle_id": "oracle:transition-illegal",
+      "operation": "TRANSITION",
+      "input_refs": [
+        "transition-illegal"
+      ],
+      "expected_result": {
+        "type": "STATUS",
+        "value": "INVALID"
+      },
+      "expected_state": {
+        "value": null
+      },
+      "expected_event": {
+        "type": null
+      },
+      "forbidden_results": [],
+      "determinism": {
+        "required": true
+      },
+      "content_hash": "10259849a502107d5220c86f718b7226edea9303bb8c2829e9eb716d86d90ba2"
+    },
+    {
+      "oracle_id": "oracle:transition-no-auth",
+      "operation": "TRANSITION",
+      "input_refs": [
+        "transition-no-auth"
+      ],
+      "expected_result": {
+        "type": "STATUS",
+        "value": "INVALID"
+      },
+      "expected_state": {
+        "value": null
+      },
+      "expected_event": {
+        "type": null
+      },
+      "forbidden_results": [],
+      "determinism": {
+        "required": true
+      },
+      "content_hash": "5d14eadedea4a41d82bc260222dc6e28159ecd39bf65ea9fb5c60f3c864dfd2b"
+    },
+    {
+      "oracle_id": "oracle:event-commit",
+      "operation": "EVENT",
+      "input_refs": [
+        "event-commit"
+      ],
+      "expected_result": {
+        "type": "STATUS",
+        "value": "COMMITTED"
+      },
+      "expected_state": {
+        "value": null
+      },
+      "expected_event": {
+        "type": null
+      },
+      "forbidden_results": [],
+      "determinism": {
+        "required": true
+      },
+      "content_hash": "1e4caa1280cf6ce63ba83cbc83db201b6adcf6df1a91f5a3c20d7053d6f1dba2"
+    },
+    {
+      "oracle_id": "oracle:event-idempotent",
+      "operation": "EVENT",
+      "input_refs": [
+        "event-idempotent"
+      ],
+      "expected_result": {
+        "type": "STATUS",
+        "value": "IDEMPOTENT_REPLAY"
+      },
+      "expected_state": {
+        "value": null
+      },
+      "expected_event": {
+        "type": null
+      },
+      "forbidden_results": [],
+      "determinism": {
+        "required": true
+      },
+      "content_hash": "11153eb37aafa9b07375ce80e70637442a0904c032f08b74baec2d1a7f2d6065"
+    },
+    {
+      "oracle_id": "oracle:event-conflict",
+      "operation": "EVENT",
+      "input_refs": [
+        "event-conflict"
+      ],
+      "expected_result": {
+        "type": "STATUS",
+        "value": "CONFLICT"
+      },
+      "expected_state": {
+        "value": null
+      },
+      "expected_event": {
+        "type": null
+      },
+      "forbidden_results": [],
+      "determinism": {
+        "required": true
+      },
+      "content_hash": "11114b1a70ad6dcbbcdd5d8f7b8bcf8c1d7a3fb518f90d70e306fa9fa5a766e7"
+    },
+    {
+      "oracle_id": "oracle:project-valid",
+      "operation": "PROJECT",
+      "input_refs": [
+        "project-valid"
+      ],
+      "expected_result": {
+        "type": "STATUS",
+        "value": "VALID"
+      },
+      "expected_state": {
+        "value": null
+      },
+      "expected_event": {
+        "type": null
+      },
+      "forbidden_results": [],
+      "determinism": {
+        "required": true
+      },
+      "content_hash": "9ed9a3ba6d71086afbcf66cca3a23965d093d7caca0df8c89fec92812e400006"
+    },
+    {
+      "oracle_id": "oracle:project-duplicate",
+      "operation": "PROJECT",
+      "input_refs": [
+        "project-duplicate"
+      ],
+      "expected_result": {
+        "type": "STATUS",
+        "value": "INVALID"
+      },
+      "expected_state": {
+        "value": null
+      },
+      "expected_event": {
+        "type": null
+      },
+      "forbidden_results": [],
+      "determinism": {
+        "required": true
+      },
+      "content_hash": "09c4a4cbbcef94cc6c9c68c26ff006a89bd547684fccd5e44bbee4311bef4b05"
+    },
+    {
+      "oracle_id": "oracle:project-gap",
+      "operation": "PROJECT",
+      "input_refs": [
+        "project-gap"
+      ],
+      "expected_result": {
+        "type": "STATUS",
+        "value": "INVALID"
+      },
+      "expected_state": {
+        "value": null
+      },
+      "expected_event": {
+        "type": null
+      },
+      "forbidden_results": [],
+      "determinism": {
+        "required": true
+      },
+      "content_hash": "8e5faaa69fd1608c5ae692d680581c17447fcba7b90c0dc44b7b4f9a4592f488"
+    },
+    {
+      "oracle_id": "oracle:project-corrupt",
+      "operation": "PROJECT",
+      "input_refs": [
+        "project-corrupt"
+      ],
+      "expected_result": {
+        "type": "STATUS",
+        "value": "INVALID"
+      },
+      "expected_state": {
+        "value": null
+      },
+      "expected_event": {
+        "type": null
+      },
+      "forbidden_results": [],
+      "determinism": {
+        "required": true
+      },
+      "content_hash": "6a4adae1e16283ebf33c2aedbf41ad8402a1152638d9f968df576a8b14d910f4"
+    },
+    {
+      "oracle_id": "oracle:project-reordered",
+      "operation": "PROJECT",
+      "input_refs": [
+        "project-reordered"
+      ],
+      "expected_result": {
+        "type": "STATUS",
+        "value": "INVALID"
+      },
+      "expected_state": {
+        "value": null
+      },
+      "expected_event": {
+        "type": null
+      },
+      "forbidden_results": [],
+      "determinism": {
+        "required": true
+      },
+      "content_hash": "1e1a7724949c70610cc5110f14ac7b7423dad25dcf501d3d52daaeb920dba9af"
+    },
+    {
+      "oracle_id": "oracle:projection-match",
+      "operation": "VERIFY_PROJECTION",
+      "input_refs": [
+        "projection-match"
+      ],
+      "expected_result": {
+        "type": "STATUS",
+        "value": "VALID"
+      },
+      "expected_state": {
+        "value": null
+      },
+      "expected_event": {
+        "type": null
+      },
+      "forbidden_results": [],
+      "determinism": {
+        "required": true
+      },
+      "content_hash": "2a12317c66c32acb980661e6b1860e51d156cf9c118c3c59178bfb23d36a60d9"
+    },
+    {
+      "oracle_id": "oracle:projection-mismatch",
+      "operation": "VERIFY_PROJECTION",
+      "input_refs": [
+        "projection-mismatch"
+      ],
+      "expected_result": {
+        "type": "STATUS",
+        "value": "INVALID"
+      },
+      "expected_state": {
+        "value": null
+      },
+      "expected_event": {
+        "type": null
+      },
+      "forbidden_results": [],
+      "determinism": {
+        "required": true
+      },
+      "content_hash": "cf89a9b39811c2d20ba36bc345ee327261aca2f76ac02b601b179e20ed9ae5c4"
+    },
+    {
+      "oracle_id": "oracle:reuse-same",
+      "operation": "REUSE",
+      "input_refs": [
+        "reuse-same"
+      ],
+      "expected_result": {
+        "type": "STATUS",
+        "value": "REUSABLE"
+      },
+      "expected_state": {
+        "value": null
+      },
+      "expected_event": {
+        "type": null
+      },
+      "forbidden_results": [],
+      "determinism": {
+        "required": true
+      },
+      "content_hash": "67e141c1e4e3bf4f42c131064bcc25b45d2b098422ca89bbe7b10910f74bae56"
+    },
+    {
+      "oracle_id": "oracle:reuse-change",
+      "operation": "REUSE",
+      "input_refs": [
+        "reuse-change"
+      ],
+      "expected_result": {
+        "type": "STATUS",
+        "value": "NOT_REUSABLE"
+      },
+      "expected_state": {
+        "value": null
+      },
+      "expected_event": {
+        "type": null
+      },
+      "forbidden_results": [],
+      "determinism": {
+        "required": true
+      },
+      "content_hash": "2ed703c8fc479df03cf8ec37870b51ebee194f56b0e7d0eb2a7dc4160b7918e3"
+    },
+    {
+      "oracle_id": "oracle:reuse-missing",
+      "operation": "REUSE",
+      "input_refs": [
+        "reuse-missing"
+      ],
+      "expected_result": {
+        "type": "STATUS",
+        "value": "INVALID"
+      },
+      "expected_state": {
+        "value": null
+      },
+      "expected_event": {
+        "type": null
+      },
+      "forbidden_results": [],
+      "determinism": {
+        "required": true
+      },
+      "content_hash": "a1a6fa9f0464402f2dc600d2c41de740da92b3203947d5d3807e9c81132bcd5e"
+    },
+    {
+      "oracle_id": "oracle:negative-unknown_to_approved",
+      "operation": "NEGATIVE_SPACE",
+      "input_refs": [
+        "negative-unknown_to_approved"
+      ],
+      "expected_result": {
+        "type": "STATUS",
+        "value": "REJECTED"
+      },
+      "expected_state": {
+        "value": null
+      },
+      "expected_event": {
+        "type": null
+      },
+      "forbidden_results": [
+        "APPROVED"
+      ],
+      "determinism": {
+        "required": true
+      },
+      "content_hash": "8d4292c836895e417f6c5cecf0de16f082b2a61b884bcae409bb113bbf532665"
+    },
+    {
+      "oracle_id": "oracle:negative-invalid_to_false",
+      "operation": "NEGATIVE_SPACE",
+      "input_refs": [
+        "negative-invalid_to_false"
+      ],
+      "expected_result": {
+        "type": "STATUS",
+        "value": "REJECTED"
+      },
+      "expected_state": {
+        "value": null
+      },
+      "expected_event": {
+        "type": null
+      },
+      "forbidden_results": [
+        "FALSE"
+      ],
+      "determinism": {
+        "required": true
+      },
+      "content_hash": "72c71a8b2a4b9fc46b765a9709a1ae6fea7c99934007b8c60c2732793b2b3a18"
+    },
+    {
+      "oracle_id": "oracle:negative-blocked_to_true",
+      "operation": "NEGATIVE_SPACE",
+      "input_refs": [
+        "negative-blocked_to_true"
+      ],
+      "expected_result": {
+        "type": "STATUS",
+        "value": "REJECTED"
+      },
+      "expected_state": {
+        "value": null
+      },
+      "expected_event": {
+        "type": null
+      },
+      "forbidden_results": [
+        "TRUE"
+      ],
+      "determinism": {
+        "required": true
+      },
+      "content_hash": "35c0926eaa8d174b11d536389c030958d2c904ce2e78483a453cae5033cc8c82"
+    },
+    {
+      "oracle_id": "oracle:negative-draft_to_valid",
+      "operation": "NEGATIVE_SPACE",
+      "input_refs": [
+        "negative-draft_to_valid"
+      ],
+      "expected_result": {
+        "type": "STATUS",
+        "value": "REJECTED"
+      },
+      "expected_state": {
+        "value": null
+      },
+      "expected_event": {
+        "type": null
+      },
+      "forbidden_results": [
+        "VALID"
+      ],
+      "determinism": {
+        "required": true
+      },
+      "content_hash": "cb1c163fe9c583c7a01b6ea3a0f47e11447029d30174ea5b31e518e123d95a46"
+    },
+    {
+      "oracle_id": "oracle:negative-valid_to_issued",
+      "operation": "NEGATIVE_SPACE",
+      "input_refs": [
+        "negative-valid_to_issued"
+      ],
+      "expected_result": {
+        "type": "STATUS",
+        "value": "REJECTED"
+      },
+      "expected_state": {
+        "value": null
+      },
+      "expected_event": {
+        "type": null
+      },
+      "forbidden_results": [
+        "ISSUED"
+      ],
+      "determinism": {
+        "required": true
+      },
+      "content_hash": "319a360403493bad24ec5cf2acf00a517b507fcccb19e0b78b06f7f929bad54d"
+    },
+    {
+      "oracle_id": "oracle:negative-eligible_to_approved_no_auth",
+      "operation": "NEGATIVE_SPACE",
+      "input_refs": [
+        "negative-eligible_to_approved_no_auth"
+      ],
+      "expected_result": {
+        "type": "STATUS",
+        "value": "REJECTED"
+      },
+      "expected_state": {
+        "value": null
+      },
+      "expected_event": {
+        "type": null
+      },
+      "forbidden_results": [
+        "APPROVED_NO_AUTH"
+      ],
+      "determinism": {
+        "required": true
+      },
+      "content_hash": "b80f6da1a7841c2cf138b9693f8ae6ac214c3061f18852413a00c87605f7d43e"
+    },
+    {
+      "oracle_id": "oracle:negative-approved_to_executed_no_auth",
+      "operation": "NEGATIVE_SPACE",
+      "input_refs": [
+        "negative-approved_to_executed_no_auth"
+      ],
+      "expected_result": {
+        "type": "STATUS",
+        "value": "REJECTED"
+      },
+      "expected_state": {
+        "value": null
+      },
+      "expected_event": {
+        "type": null
+      },
+      "forbidden_results": [
+        "EXECUTED_NO_AUTH"
+      ],
+      "determinism": {
+        "required": true
+      },
+      "content_hash": "5e5f9ad5fbe8fe00aee7e7205a4110ab91b8b94439244094e45f82a8344d87a2"
+    },
+    {
+      "oracle_id": "oracle:negative-executed_to_verified_no_test",
+      "operation": "NEGATIVE_SPACE",
+      "input_refs": [
+        "negative-executed_to_verified_no_test"
+      ],
+      "expected_result": {
+        "type": "STATUS",
+        "value": "REJECTED"
+      },
+      "expected_state": {
+        "value": null
+      },
+      "expected_event": {
+        "type": null
+      },
+      "forbidden_results": [
+        "VERIFIED_NO_TEST"
+      ],
+      "determinism": {
+        "required": true
+      },
+      "content_hash": "34efada5715e5490487f9d3c1b6cdf3d33d34cf76b7c5c33b04aa36a0ead08c5"
+    },
+    {
+      "oracle_id": "oracle:negative-projection_mutates_history",
+      "operation": "NEGATIVE_SPACE",
+      "input_refs": [
+        "negative-projection_mutates_history"
+      ],
+      "expected_result": {
+        "type": "STATUS",
+        "value": "REJECTED"
+      },
+      "expected_state": {
+        "value": null
+      },
+      "expected_event": {
+        "type": null
+      },
+      "forbidden_results": [
+        "PROJECTION_MUTATES_HISTORY"
+      ],
+      "determinism": {
+        "required": true
+      },
+      "content_hash": "b5c97449781b2099471c5761590b590af5d8908321a98461751127972aa99977"
+    },
+    {
+      "oracle_id": "oracle:negative-changed_artifact_reuse",
+      "operation": "NEGATIVE_SPACE",
+      "input_refs": [
+        "negative-changed_artifact_reuse"
+      ],
+      "expected_result": {
+        "type": "STATUS",
+        "value": "REJECTED"
+      },
+      "expected_state": {
+        "value": null
+      },
+      "expected_event": {
+        "type": null
+      },
+      "forbidden_results": [
+        "CHANGED_ARTIFACT_REUSE"
+      ],
+      "determinism": {
+        "required": true
+      },
+      "content_hash": "e215671380bb870d6c2e87df62772cef4e454a41cfa21601e5f62dbef0b01ed7"
+    },
+    {
+      "oracle_id": "oracle:negative-duplicate_approval_counts",
+      "operation": "NEGATIVE_SPACE",
+      "input_refs": [
+        "negative-duplicate_approval_counts"
+      ],
+      "expected_result": {
+        "type": "STATUS",
+        "value": "REJECTED"
+      },
+      "expected_state": {
+        "value": null
+      },
+      "expected_event": {
+        "type": null
+      },
+      "forbidden_results": [
+        "DUPLICATE_APPROVAL_COUNTS"
+      ],
+      "determinism": {
+        "required": true
+      },
+      "content_hash": "0f2d3bc5e8befe9947f422f8954bc3c914c0ca5867b39130e250865530881b4d"
+    }
+  ],
+  "count": 71
+}

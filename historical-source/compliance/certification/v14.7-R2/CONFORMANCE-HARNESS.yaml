@@ -1,0 +1,33 @@
+{
+  "profile_version": "14.7-R2",
+  "profile_id": "gde-cjson-1",
+  "epistemic_status": "SUPPORTED",
+  "claim_class": "REALIZATION_PROFILE",
+  "components": [
+    "SchemaValidator",
+    "ReferenceValidator",
+    "IntegrityValidator",
+    "TemporalValidator",
+    "ScopeValidator",
+    "PolicyValidator",
+    "AuthorityValidator",
+    "EvidenceValidator",
+    "Evaluator",
+    "Aggregator",
+    "TransitionGuard",
+    "EventStore",
+    "Projector",
+    "ProjectionVerifier",
+    "ReuseChecker",
+    "ConformanceReporter"
+  ],
+  "entrypoint": "historical-source/tools/run_v147r2_conformance.py",
+  "human_interpretation_required": false,
+  "failure_origins": [
+    "IMPLEMENTATION_FAILURE",
+    "ORACLE_FAILURE",
+    "TEST_HARNESS_FAILURE",
+    "ENVIRONMENT_FAILURE",
+    "SPECIFICATION_FAILURE"
+  ]
+}
