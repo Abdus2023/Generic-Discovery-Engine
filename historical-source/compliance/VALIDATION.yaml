@@ -1,0 +1,1069 @@
+{
+  "schema_version": "1.0",
+  "audit_version": "12.0",
+  "overall_status": "STRUCTURAL_PASS_AUDIT_BLOCKED",
+  "acceptance": "BLOCKED",
+  "summary": {
+    "total": 149,
+    "passed": 148,
+    "failed": 0,
+    "blocked": 1
+  },
+  "object_counts": {
+    "requirements": 0,
+    "implementation_artifacts": 0,
+    "implementation_evidence": 0,
+    "mappings": 0,
+    "executions": 0,
+    "decisions": 0,
+    "findings": 3,
+    "nonconformances": 0,
+    "waivers": 0,
+    "remediations": 3
+  },
+  "checks": [
+    {
+      "check_id": "A01",
+      "category": "artifacts",
+      "description": "required v12 artifact exists: INPUT-CONTRACT.yaml",
+      "result": "PASS",
+      "detail": ""
+    },
+    {
+      "check_id": "A02",
+      "category": "artifacts",
+      "description": "required v12 artifact exists: AUDIT.yaml",
+      "result": "PASS",
+      "detail": ""
+    },
+    {
+      "check_id": "A03",
+      "category": "artifacts",
+      "description": "required v12 artifact exists: AUDIT-SCOPE.yaml",
+      "result": "PASS",
+      "detail": ""
+    },
+    {
+      "check_id": "A04",
+      "category": "artifacts",
+      "description": "required v12 artifact exists: IMPLEMENTATION-ARTIFACTS.yaml",
+      "result": "PASS",
+      "detail": ""
+    },
+    {
+      "check_id": "A05",
+      "category": "artifacts",
+      "description": "required v12 artifact exists: IMPLEMENTATION-EVIDENCE.yaml",
+      "result": "PASS",
+      "detail": ""
+    },
+    {
+      "check_id": "A06",
+      "category": "artifacts",
+      "description": "required v12 artifact exists: IMPLEMENTATION-CLAIMS.yaml",
+      "result": "PASS",
+      "detail": ""
+    },
+    {
+      "check_id": "A07",
+      "category": "artifacts",
+      "description": "required v12 artifact exists: REQUIREMENT-MAPPINGS.yaml",
+      "result": "PASS",
+      "detail": ""
+    },
+    {
+      "check_id": "A08",
+      "category": "artifacts",
+      "description": "required v12 artifact exists: EVIDENCE-RECORDS.yaml",
+      "result": "PASS",
+      "detail": ""
+    },
+    {
+      "check_id": "A09",
+      "category": "artifacts",
+      "description": "required v12 artifact exists: VERIFICATION-EXECUTIONS.yaml",
+      "result": "PASS",
+      "detail": ""
+    },
+    {
+      "check_id": "A10",
+      "category": "artifacts",
+      "description": "required v12 artifact exists: ENVIRONMENTS.yaml",
+      "result": "PASS",
+      "detail": ""
+    },
+    {
+      "check_id": "A11",
+      "category": "artifacts",
+      "description": "required v12 artifact exists: COMPLIANCE-DECISIONS.yaml",
+      "result": "PASS",
+      "detail": ""
+    },
+    {
+      "check_id": "A12",
+      "category": "artifacts",
+      "description": "required v12 artifact exists: FINDINGS.yaml",
+      "result": "PASS",
+      "detail": ""
+    },
+    {
+      "check_id": "A13",
+      "category": "artifacts",
+      "description": "required v12 artifact exists: NONCONFORMANCES.yaml",
+      "result": "PASS",
+      "detail": ""
+    },
+    {
+      "check_id": "A14",
+      "category": "artifacts",
+      "description": "required v12 artifact exists: WAIVERS.yaml",
+      "result": "PASS",
+      "detail": ""
+    },
+    {
+      "check_id": "A15",
+      "category": "artifacts",
+      "description": "required v12 artifact exists: REMEDIATIONS.yaml",
+      "result": "PASS",
+      "detail": ""
+    },
+    {
+      "check_id": "A16",
+      "category": "artifacts",
+      "description": "required v12 artifact exists: REMEDIATION-ACTIONS.yaml",
+      "result": "PASS",
+      "detail": ""
+    },
+    {
+      "check_id": "A17",
+      "category": "artifacts",
+      "description": "required v12 artifact exists: AUDIT-RUNS.yaml",
+      "result": "PASS",
+      "detail": ""
+    },
+    {
+      "check_id": "A18",
+      "category": "artifacts",
+      "description": "required v12 artifact exists: AUDIT-CERTIFICATE.yaml",
+      "result": "PASS",
+      "detail": ""
+    },
+    {
+      "check_id": "A19",
+      "category": "artifacts",
+      "description": "required v12 artifact exists: IMPLEMENTATION-GRAPH.yaml",
+      "result": "PASS",
+      "detail": ""
+    },
+    {
+      "check_id": "A20",
+      "category": "artifacts",
+      "description": "required v12 artifact exists: CONFORMANCE-GRAPH.yaml",
+      "result": "PASS",
+      "detail": ""
+    },
+    {
+      "check_id": "A21",
+      "category": "artifacts",
+      "description": "required v12 artifact exists: FINDING-GRAPH.yaml",
+      "result": "PASS",
+      "detail": ""
+    },
+    {
+      "check_id": "A22",
+      "category": "artifacts",
+      "description": "required v12 artifact exists: AUDIT-EVIDENCE-GRAPH.yaml",
+      "result": "PASS",
+      "detail": ""
+    },
+    {
+      "check_id": "A23",
+      "category": "artifacts",
+      "description": "required v12 artifact exists: COMPLIANCE-MATRIX.yaml",
+      "result": "PASS",
+      "detail": ""
+    },
+    {
+      "check_id": "A24",
+      "category": "artifacts",
+      "description": "required v12 artifact exists: COMPLIANCE-AGGREGATION.yaml",
+      "result": "PASS",
+      "detail": ""
+    },
+    {
+      "check_id": "A25",
+      "category": "artifacts",
+      "description": "required v12 artifact exists: RELEASE-GATE.yaml",
+      "result": "PASS",
+      "detail": ""
+    },
+    {
+      "check_id": "A26",
+      "category": "artifacts",
+      "description": "required v12 artifact exists: SCHEMA/audit.schema.yaml",
+      "result": "PASS",
+      "detail": ""
+    },
+    {
+      "check_id": "A27",
+      "category": "artifacts",
+      "description": "required v12 artifact exists: SCHEMA/audit-scope.schema.yaml",
+      "result": "PASS",
+      "detail": ""
+    },
+    {
+      "check_id": "A28",
+      "category": "artifacts",
+      "description": "required v12 artifact exists: SCHEMA/implementation-artifact.schema.yaml",
+      "result": "PASS",
+      "detail": ""
+    },
+    {
+      "check_id": "A29",
+      "category": "artifacts",
+      "description": "required v12 artifact exists: SCHEMA/implementation-evidence.schema.yaml",
+      "result": "PASS",
+      "detail": ""
+    },
+    {
+      "check_id": "A30",
+      "category": "artifacts",
+      "description": "required v12 artifact exists: SCHEMA/implementation-claim.schema.yaml",
+      "result": "PASS",
+      "detail": ""
+    },
+    {
+      "check_id": "A31",
+      "category": "artifacts",
+      "description": "required v12 artifact exists: SCHEMA/requirement-mapping.schema.yaml",
+      "result": "PASS",
+      "detail": ""
+    },
+    {
+      "check_id": "A32",
+      "category": "artifacts",
+      "description": "required v12 artifact exists: SCHEMA/evidence-record.schema.yaml",
+      "result": "PASS",
+      "detail": ""
+    },
+    {
+      "check_id": "A33",
+      "category": "artifacts",
+      "description": "required v12 artifact exists: SCHEMA/verification-execution.schema.yaml",
+      "result": "PASS",
+      "detail": ""
+    },
+    {
+      "check_id": "A34",
+      "category": "artifacts",
+      "description": "required v12 artifact exists: SCHEMA/environment.schema.yaml",
+      "result": "PASS",
+      "detail": ""
+    },
+    {
+      "check_id": "A35",
+      "category": "artifacts",
+      "description": "required v12 artifact exists: SCHEMA/compliance-decision.schema.yaml",
+      "result": "PASS",
+      "detail": ""
+    },
+    {
+      "check_id": "A36",
+      "category": "artifacts",
+      "description": "required v12 artifact exists: SCHEMA/finding.schema.yaml",
+      "result": "PASS",
+      "detail": ""
+    },
+    {
+      "check_id": "A37",
+      "category": "artifacts",
+      "description": "required v12 artifact exists: SCHEMA/nonconformance.schema.yaml",
+      "result": "PASS",
+      "detail": ""
+    },
+    {
+      "check_id": "A38",
+      "category": "artifacts",
+      "description": "required v12 artifact exists: SCHEMA/waiver.schema.yaml",
+      "result": "PASS",
+      "detail": ""
+    },
+    {
+      "check_id": "A39",
+      "category": "artifacts",
+      "description": "required v12 artifact exists: SCHEMA/remediation.schema.yaml",
+      "result": "PASS",
+      "detail": ""
+    },
+    {
+      "check_id": "A40",
+      "category": "artifacts",
+      "description": "required v12 artifact exists: SCHEMA/remediation-action.schema.yaml",
+      "result": "PASS",
+      "detail": ""
+    },
+    {
+      "check_id": "A41",
+      "category": "artifacts",
+      "description": "required v12 artifact exists: SCHEMA/audit-run.schema.yaml",
+      "result": "PASS",
+      "detail": ""
+    },
+    {
+      "check_id": "A42",
+      "category": "artifacts",
+      "description": "required v12 artifact exists: SCHEMA/audit-certificate.schema.yaml",
+      "result": "PASS",
+      "detail": ""
+    },
+    {
+      "check_id": "A43",
+      "category": "artifacts",
+      "description": "required v12 artifact exists: REPORTS/COMPLIANCE-MATRIX.md",
+      "result": "PASS",
+      "detail": ""
+    },
+    {
+      "check_id": "A44",
+      "category": "artifacts",
+      "description": "required v12 artifact exists: REPORTS/NONCONFORMANCES.md",
+      "result": "PASS",
+      "detail": ""
+    },
+    {
+      "check_id": "A45",
+      "category": "artifacts",
+      "description": "required v12 artifact exists: REPORTS/FINDINGS.md",
+      "result": "PASS",
+      "detail": ""
+    },
+    {
+      "check_id": "A46",
+      "category": "artifacts",
+      "description": "required v12 artifact exists: REPORTS/REMEDIATION-PLAN.md",
+      "result": "PASS",
+      "detail": ""
+    },
+    {
+      "check_id": "A47",
+      "category": "artifacts",
+      "description": "required v12 artifact exists: REPORTS/REGRESSION-REPORT.md",
+      "result": "PASS",
+      "detail": ""
+    },
+    {
+      "check_id": "A48",
+      "category": "artifacts",
+      "description": "required v12 artifact exists: REPORTS/SECURITY-AUDIT.md",
+      "result": "PASS",
+      "detail": ""
+    },
+    {
+      "check_id": "A49",
+      "category": "artifacts",
+      "description": "required v12 artifact exists: REPORTS/COMPATIBILITY-AUDIT.md",
+      "result": "PASS",
+      "detail": ""
+    },
+    {
+      "check_id": "A50",
+      "category": "artifacts",
+      "description": "required v12 artifact exists: REPORTS/TEMPORAL-AUDIT.md",
+      "result": "PASS",
+      "detail": ""
+    },
+    {
+      "check_id": "A51",
+      "category": "artifacts",
+      "description": "required v12 artifact exists: REPORTS/TRACEABILITY-AUDIT.md",
+      "result": "PASS",
+      "detail": ""
+    },
+    {
+      "check_id": "A52",
+      "category": "artifacts",
+      "description": "required v12 artifact exists: REPORTS/FINAL-COMPLIANCE-REPORT.md",
+      "result": "PASS",
+      "detail": ""
+    },
+    {
+      "check_id": "I01",
+      "category": "input",
+      "description": "all thirteen audit input roles are represented",
+      "result": "PASS",
+      "detail": ""
+    },
+    {
+      "check_id": "I02",
+      "category": "input",
+      "description": "every input records required identity fields",
+      "result": "PASS",
+      "detail": ""
+    },
+    {
+      "check_id": "I03",
+      "category": "input",
+      "description": "all available input hashes match",
+      "result": "PASS",
+      "detail": ""
+    },
+    {
+      "check_id": "I04",
+      "category": "input",
+      "description": "required implementation source is explicitly missing",
+      "result": "PASS",
+      "detail": ""
+    },
+    {
+      "check_id": "I05",
+      "category": "input",
+      "description": "optional test/runtime absence is not promoted to required failure",
+      "result": "PASS",
+      "detail": ""
+    },
+    {
+      "check_id": "I06",
+      "category": "input",
+      "description": "v11.1 specification is validated and rejected",
+      "result": "PASS",
+      "detail": ""
+    },
+    {
+      "check_id": "I07",
+      "category": "input",
+      "description": "zero normative requirements are detected",
+      "result": "PASS",
+      "detail": ""
+    },
+    {
+      "check_id": "I08",
+      "category": "input",
+      "description": "audit gate is closed",
+      "result": "PASS",
+      "detail": ""
+    },
+    {
+      "check_id": "I09",
+      "category": "input",
+      "description": "specification validation remains structurally successful but acceptance-rejected",
+      "result": "PASS",
+      "detail": ""
+    },
+    {
+      "check_id": "I10",
+      "category": "input",
+      "description": "input checks distinguish fail, block, and optional unavailable",
+      "result": "PASS",
+      "detail": ""
+    },
+    {
+      "check_id": "U01",
+      "category": "audit",
+      "description": "one full audit object is present",
+      "result": "PASS",
+      "detail": ""
+    },
+    {
+      "check_id": "U02",
+      "category": "audit",
+      "description": "audit planes remain independent",
+      "result": "PASS",
+      "detail": ""
+    },
+    {
+      "check_id": "U03",
+      "category": "audit",
+      "description": "audit has explicit empty requirement and decision scope",
+      "result": "PASS",
+      "detail": ""
+    },
+    {
+      "check_id": "U04",
+      "category": "audit",
+      "description": "scope is blocked rather than treated as universal",
+      "result": "PASS",
+      "detail": ""
+    },
+    {
+      "check_id": "U05",
+      "category": "audit",
+      "description": "audit references scope, findings, and certificate",
+      "result": "PASS",
+      "detail": ""
+    },
+    {
+      "check_id": "U06",
+      "category": "audit",
+      "description": "failure class registry is exact",
+      "result": "PASS",
+      "detail": ""
+    },
+    {
+      "check_id": "U07",
+      "category": "audit",
+      "description": "failure attribution order validates observation/oracle/spec/environment before blame",
+      "result": "PASS",
+      "detail": ""
+    },
+    {
+      "check_id": "U08",
+      "category": "audit",
+      "description": "all twenty audit invariants pass via explicit gating",
+      "result": "PASS",
+      "detail": ""
+    },
+    {
+      "check_id": "U09",
+      "category": "audit",
+      "description": "audit procedure is ordered and complete",
+      "result": "PASS",
+      "detail": ""
+    },
+    {
+      "check_id": "U10",
+      "category": "environment",
+      "description": "one explicit audit environment exists",
+      "result": "PASS",
+      "detail": ""
+    },
+    {
+      "check_id": "U11",
+      "category": "environment",
+      "description": "environment configuration is hash-bound",
+      "result": "PASS",
+      "detail": ""
+    },
+    {
+      "check_id": "U12",
+      "category": "run",
+      "description": "one blocked reproducible run exists",
+      "result": "PASS",
+      "detail": ""
+    },
+    {
+      "check_id": "U13",
+      "category": "run",
+      "description": "run records required repeatability inputs",
+      "result": "PASS",
+      "detail": ""
+    },
+    {
+      "check_id": "U14",
+      "category": "run",
+      "description": "specification and missing-implementation hashes are deterministic",
+      "result": "PASS",
+      "detail": ""
+    },
+    {
+      "check_id": "U15",
+      "category": "audit",
+      "description": "concurrency/resource/security audit domains are explicit",
+      "result": "PASS",
+      "detail": ""
+    },
+    {
+      "check_id": "U16",
+      "category": "audit",
+      "description": "resource evidence classes remain distinct",
+      "result": "PASS",
+      "detail": ""
+    },
+    {
+      "check_id": "U17",
+      "category": "audit",
+      "description": "temporal contamination classes and retrospective labeling are explicit",
+      "result": "PASS",
+      "detail": ""
+    },
+    {
+      "check_id": "U18",
+      "category": "references",
+      "description": "audit/scope/run/evidence references resolve",
+      "result": "PASS",
+      "detail": ""
+    },
+    {
+      "check_id": "P01",
+      "category": "implementation",
+      "description": "no implementation artifact is fabricated",
+      "result": "PASS",
+      "detail": ""
+    },
+    {
+      "check_id": "P02",
+      "category": "implementation",
+      "description": "historical and planning inputs are explicitly excluded",
+      "result": "PASS",
+      "detail": ""
+    },
+    {
+      "check_id": "P03",
+      "category": "implementation",
+      "description": "artifact type registry is complete",
+      "result": "PASS",
+      "detail": ""
+    },
+    {
+      "check_id": "P04",
+      "category": "implementation",
+      "description": "no implementation evidence or claim is invented",
+      "result": "PASS",
+      "detail": ""
+    },
+    {
+      "check_id": "P05",
+      "category": "implementation",
+      "description": "claims remain distinct from decisions",
+      "result": "PASS",
+      "detail": ""
+    },
+    {
+      "check_id": "P06",
+      "category": "mapping",
+      "description": "no mapping implies conformance",
+      "result": "PASS",
+      "detail": ""
+    },
+    {
+      "check_id": "D01",
+      "category": "decision",
+      "description": "no verification execution is fabricated",
+      "result": "PASS",
+      "detail": ""
+    },
+    {
+      "check_id": "D02",
+      "category": "decision",
+      "description": "no compliance decision exists without requirement",
+      "result": "PASS",
+      "detail": ""
+    },
+    {
+      "check_id": "D03",
+      "category": "decision",
+      "description": "no absence-of-evidence nonconformance is fabricated",
+      "result": "PASS",
+      "detail": ""
+    },
+    {
+      "check_id": "D04",
+      "category": "decision",
+      "description": "UNVERIFIED, UNKNOWN, BLOCKED and NON_CONFORMANT remain distinct",
+      "result": "PASS",
+      "detail": ""
+    },
+    {
+      "check_id": "D05",
+      "category": "decision",
+      "description": "no NOT_APPLICABLE assertion is fabricated",
+      "result": "PASS",
+      "detail": ""
+    },
+    {
+      "check_id": "D06",
+      "category": "decision",
+      "description": "no waiver rewrites requirements",
+      "result": "PASS",
+      "detail": ""
+    },
+    {
+      "check_id": "D07",
+      "category": "decision",
+      "description": "conformance state machine keeps progression and terminal decisions distinct",
+      "result": "PASS",
+      "detail": ""
+    },
+    {
+      "check_id": "D08",
+      "category": "decision",
+      "description": "decision rules require evidence and violated semantics",
+      "result": "PASS",
+      "detail": ""
+    },
+    {
+      "check_id": "D09",
+      "category": "verification",
+      "description": "flaky success cannot establish conformance",
+      "result": "PASS",
+      "detail": ""
+    },
+    {
+      "check_id": "D10",
+      "category": "verification",
+      "description": "deterministic audit input tuple is explicit",
+      "result": "PASS",
+      "detail": ""
+    },
+    {
+      "check_id": "F01",
+      "category": "findings",
+      "description": "three appropriately typed findings exist",
+      "result": "PASS",
+      "detail": ""
+    },
+    {
+      "check_id": "F02",
+      "category": "findings",
+      "description": "every finding has resolving evidence",
+      "result": "PASS",
+      "detail": ""
+    },
+    {
+      "check_id": "F03",
+      "category": "findings",
+      "description": "no finding is mislabeled implementation defect/nonconformance",
+      "result": "PASS",
+      "detail": ""
+    },
+    {
+      "check_id": "F04",
+      "category": "evidence",
+      "description": "three audit evidence records are explicit",
+      "result": "PASS",
+      "detail": ""
+    },
+    {
+      "check_id": "F05",
+      "category": "evidence",
+      "description": "evidence distinguishes specification, implementation, and requirement absence",
+      "result": "PASS",
+      "detail": ""
+    },
+    {
+      "check_id": "F06",
+      "category": "remediation",
+      "description": "every finding has one remediation",
+      "result": "PASS",
+      "detail": ""
+    },
+    {
+      "check_id": "F07",
+      "category": "remediation",
+      "description": "every remediation action resolves and remains blocked",
+      "result": "PASS",
+      "detail": ""
+    },
+    {
+      "check_id": "F08",
+      "category": "remediation",
+      "description": "no remediation is called complete before reverification",
+      "result": "PASS",
+      "detail": ""
+    },
+    {
+      "check_id": "F09",
+      "category": "remediation",
+      "description": "actions do not invent implementation boundaries/oracles",
+      "result": "PASS",
+      "detail": ""
+    },
+    {
+      "check_id": "C01",
+      "category": "compliance",
+      "description": "compliance matrix is generated from empty machine decisions",
+      "result": "PASS",
+      "detail": ""
+    },
+    {
+      "check_id": "C02",
+      "category": "compliance",
+      "description": "all aggregation classes are independently represented",
+      "result": "PASS",
+      "detail": ""
+    },
+    {
+      "check_id": "C03",
+      "category": "compliance",
+      "description": "zero counts are not presented as percentage/compliance",
+      "result": "PASS",
+      "detail": ""
+    },
+    {
+      "check_id": "C04",
+      "category": "release",
+      "description": "release gate remains blocked",
+      "result": "PASS",
+      "detail": ""
+    },
+    {
+      "check_id": "C05",
+      "category": "release",
+      "description": "default compliant rule is retained but not satisfied",
+      "result": "PASS",
+      "detail": ""
+    },
+    {
+      "check_id": "G01",
+      "category": "graphs",
+      "description": "implementation graph is distinct and empty",
+      "result": "PASS",
+      "detail": ""
+    },
+    {
+      "check_id": "G02",
+      "category": "graphs",
+      "description": "conformance graph is distinct and blocked",
+      "result": "PASS",
+      "detail": ""
+    },
+    {
+      "check_id": "G03",
+      "category": "graphs",
+      "description": "finding graph links findings, remediation, actions, and re-audit",
+      "result": "PASS",
+      "detail": ""
+    },
+    {
+      "check_id": "G04",
+      "category": "graphs",
+      "description": "audit evidence graph has no fabricated decision/verification node",
+      "result": "PASS",
+      "detail": ""
+    },
+    {
+      "check_id": "G05",
+      "category": "graphs",
+      "description": "all finding graph references resolve",
+      "result": "PASS",
+      "detail": ""
+    },
+    {
+      "check_id": "G06",
+      "category": "graphs",
+      "description": "all evidence graph references resolve",
+      "result": "PASS",
+      "detail": ""
+    },
+    {
+      "check_id": "K01",
+      "category": "certificate",
+      "description": "certificate hash is valid",
+      "result": "PASS",
+      "detail": ""
+    },
+    {
+      "check_id": "K02",
+      "category": "certificate",
+      "description": "certificate identifies exact audit and scope",
+      "result": "PASS",
+      "detail": ""
+    },
+    {
+      "check_id": "K03",
+      "category": "certificate",
+      "description": "certificate is BLOCKED rather than compliant",
+      "result": "PASS",
+      "detail": ""
+    },
+    {
+      "check_id": "K04",
+      "category": "certificate",
+      "description": "all decision counts are zero without overclaim",
+      "result": "PASS",
+      "detail": ""
+    },
+    {
+      "check_id": "K05",
+      "category": "certificate",
+      "description": "certificate hashes agree with run",
+      "result": "PASS",
+      "detail": ""
+    },
+    {
+      "check_id": "K06",
+      "category": "certificate",
+      "description": "integrity dimensions remain independently blocked/partial",
+      "result": "PASS",
+      "detail": ""
+    },
+    {
+      "check_id": "K07",
+      "category": "certificate",
+      "description": "certificate does not imply universal safety",
+      "result": "PASS",
+      "detail": ""
+    },
+    {
+      "check_id": "K08",
+      "category": "certificate",
+      "description": "generated time is explicit deterministic unknown",
+      "result": "PASS",
+      "detail": ""
+    },
+    {
+      "check_id": "S01",
+      "category": "schemas",
+      "description": "all seventeen dedicated schemas exist",
+      "result": "PASS",
+      "detail": ""
+    },
+    {
+      "check_id": "S02",
+      "category": "schemas",
+      "description": "all schemas declare version 1.0",
+      "result": "PASS",
+      "detail": ""
+    },
+    {
+      "check_id": "S03",
+      "category": "schemas",
+      "description": "every object schema requires type/version/lifecycle/provenance",
+      "result": "PASS",
+      "detail": ""
+    },
+    {
+      "check_id": "S04",
+      "category": "schemas",
+      "description": "audit certificate status enum is exact",
+      "result": "PASS",
+      "detail": ""
+    },
+    {
+      "check_id": "S05",
+      "category": "schemas",
+      "description": "decision status/confidence axes are independent",
+      "result": "PASS",
+      "detail": ""
+    },
+    {
+      "check_id": "S06",
+      "category": "schemas",
+      "description": "all instantiated object identities are globally unique",
+      "result": "PASS",
+      "detail": ""
+    },
+    {
+      "check_id": "S07",
+      "category": "schemas",
+      "description": "all instantiated objects carry common metadata",
+      "result": "PASS",
+      "detail": ""
+    },
+    {
+      "check_id": "S08",
+      "category": "schemas",
+      "description": "every instantiated v12 object validates against its dedicated schema",
+      "result": "PASS",
+      "detail": ""
+    },
+    {
+      "check_id": "S09",
+      "category": "schemas",
+      "description": "all required schema fields have declared definitions",
+      "result": "PASS",
+      "detail": ""
+    },
+    {
+      "check_id": "R01",
+      "category": "reports",
+      "description": "report preserves blocked disposition: REPORTS/COMPLIANCE-MATRIX.md",
+      "result": "PASS",
+      "detail": ""
+    },
+    {
+      "check_id": "R02",
+      "category": "reports",
+      "description": "report preserves blocked disposition: REPORTS/NONCONFORMANCES.md",
+      "result": "PASS",
+      "detail": ""
+    },
+    {
+      "check_id": "R03",
+      "category": "reports",
+      "description": "report preserves blocked disposition: REPORTS/FINDINGS.md",
+      "result": "PASS",
+      "detail": ""
+    },
+    {
+      "check_id": "R04",
+      "category": "reports",
+      "description": "report preserves blocked disposition: REPORTS/REMEDIATION-PLAN.md",
+      "result": "PASS",
+      "detail": ""
+    },
+    {
+      "check_id": "R05",
+      "category": "reports",
+      "description": "report preserves blocked disposition: REPORTS/REGRESSION-REPORT.md",
+      "result": "PASS",
+      "detail": ""
+    },
+    {
+      "check_id": "R06",
+      "category": "reports",
+      "description": "report preserves blocked disposition: REPORTS/SECURITY-AUDIT.md",
+      "result": "PASS",
+      "detail": ""
+    },
+    {
+      "check_id": "R07",
+      "category": "reports",
+      "description": "report preserves blocked disposition: REPORTS/COMPATIBILITY-AUDIT.md",
+      "result": "PASS",
+      "detail": ""
+    },
+    {
+      "check_id": "R08",
+      "category": "reports",
+      "description": "report preserves blocked disposition: REPORTS/TEMPORAL-AUDIT.md",
+      "result": "PASS",
+      "detail": ""
+    },
+    {
+      "check_id": "R09",
+      "category": "reports",
+      "description": "report preserves blocked disposition: REPORTS/TRACEABILITY-AUDIT.md",
+      "result": "PASS",
+      "detail": ""
+    },
+    {
+      "check_id": "R10",
+      "category": "reports",
+      "description": "report preserves blocked disposition: REPORTS/FINAL-COMPLIANCE-REPORT.md",
+      "result": "PASS",
+      "detail": ""
+    },
+    {
+      "check_id": "H01",
+      "category": "hygiene",
+      "description": "all machine/schema YAML is JSON-compatible",
+      "result": "PASS",
+      "detail": ""
+    },
+    {
+      "check_id": "H02",
+      "category": "hygiene",
+      "description": "authoritative documents are not generator outputs",
+      "result": "PASS",
+      "detail": ""
+    },
+    {
+      "check_id": "H03",
+      "category": "hygiene",
+      "description": "no Python cache artifacts exist",
+      "result": "PASS",
+      "detail": ""
+    },
+    {
+      "check_id": "H04",
+      "category": "hygiene",
+      "description": "all generator-owned outputs reproduce byte-for-byte",
+      "result": "PASS",
+      "detail": ""
+    },
+    {
+      "check_id": "H05",
+      "category": "hygiene",
+      "description": "generator and validator exist",
+      "result": "PASS",
+      "detail": ""
+    },
+    {
+      "check_id": "GATE-V12",
+      "category": "acceptance",
+      "description": "v12 compliance/release decision",
+      "result": "BLOCKED",
+      "detail": "No accepted normative specification and no present implementation source are available; audit certificate remains BLOCKED."
+    }
+  ]
+}

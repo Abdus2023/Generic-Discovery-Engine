@@ -1,0 +1,116 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "schema_version": "1.0",
+  "title": "v12 implementation evidence",
+  "type": "object",
+  "required": [
+    "evidence_id",
+    "object_type",
+    "schema_version",
+    "lifecycle_status",
+    "provenance",
+    "artifact_id",
+    "evidence_type",
+    "observation",
+    "claim",
+    "source_location",
+    "content_hash",
+    "confidence"
+  ],
+  "properties": {
+    "object_type": {
+      "type": "string",
+      "minLength": 1
+    },
+    "schema_version": {
+      "const": "1.0"
+    },
+    "lifecycle_status": {
+      "enum": [
+        "DISCOVERED",
+        "PLANNED",
+        "RUNNING",
+        "COMPLETED",
+        "BLOCKED",
+        "FAILED",
+        "VERIFIED",
+        "REJECTED",
+        "UNKNOWN"
+      ]
+    },
+    "provenance": {
+      "type": "object",
+      "required": [
+        "source_artifact",
+        "content_hash",
+        "audit_interpretation"
+      ],
+      "properties": {
+        "source_artifact": {
+          "type": "string",
+          "minLength": 1
+        },
+        "content_hash": {
+          "type": "string",
+          "minLength": 1
+        },
+        "audit_interpretation": {
+          "type": "string",
+          "minLength": 1
+        }
+      },
+      "additionalProperties": false
+    },
+    "evidence_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "artifact_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "evidence_type": {
+      "enum": [
+        "SOURCE",
+        "STATIC_ANALYSIS",
+        "TEST_RESULT",
+        "RUNTIME_TRACE",
+        "LOG",
+        "METRIC",
+        "AUDIT_RECORD",
+        "BINARY_INSPECTION",
+        "CONFIGURATION",
+        "DOCUMENTATION",
+        "MANUAL_INSPECTION"
+      ]
+    },
+    "observation": {
+      "type": "string",
+      "minLength": 1
+    },
+    "claim": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "source_location": {
+      "type": "object"
+    },
+    "content_hash": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "confidence": {
+      "enum": [
+        "HIGH",
+        "MEDIUM",
+        "LOW",
+        "UNKNOWN"
+      ]
+    }
+  },
+  "additionalProperties": true
+}

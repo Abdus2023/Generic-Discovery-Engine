@@ -1,0 +1,115 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "schema_version": "1.0",
+  "title": "v12 audit run",
+  "type": "object",
+  "required": [
+    "audit_run_id",
+    "object_type",
+    "schema_version",
+    "lifecycle_status",
+    "provenance",
+    "audit_id",
+    "run_number",
+    "started_at",
+    "completed_at",
+    "input_hashes",
+    "specification_hash",
+    "implementation_hash",
+    "result",
+    "findings",
+    "reproducibility"
+  ],
+  "properties": {
+    "object_type": {
+      "type": "string",
+      "minLength": 1
+    },
+    "schema_version": {
+      "const": "1.0"
+    },
+    "lifecycle_status": {
+      "enum": [
+        "DISCOVERED",
+        "PLANNED",
+        "RUNNING",
+        "COMPLETED",
+        "BLOCKED",
+        "FAILED",
+        "VERIFIED",
+        "REJECTED",
+        "UNKNOWN"
+      ]
+    },
+    "provenance": {
+      "type": "object",
+      "required": [
+        "source_artifact",
+        "content_hash",
+        "audit_interpretation"
+      ],
+      "properties": {
+        "source_artifact": {
+          "type": "string",
+          "minLength": 1
+        },
+        "content_hash": {
+          "type": "string",
+          "minLength": 1
+        },
+        "audit_interpretation": {
+          "type": "string",
+          "minLength": 1
+        }
+      },
+      "additionalProperties": false
+    },
+    "audit_run_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "audit_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "run_number": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "started_at": {
+      "type": "string",
+      "minLength": 1
+    },
+    "completed_at": {
+      "type": "string",
+      "minLength": 1
+    },
+    "input_hashes": {
+      "type": "array"
+    },
+    "specification_hash": {
+      "type": "string",
+      "minLength": 1
+    },
+    "implementation_hash": {
+      "type": "string",
+      "minLength": 1
+    },
+    "result": {
+      "enum": [
+        "PASS",
+        "FAIL",
+        "PARTIAL",
+        "BLOCKED",
+        "INCONCLUSIVE"
+      ]
+    },
+    "findings": {
+      "type": "array"
+    },
+    "reproducibility": {
+      "type": "object"
+    }
+  },
+  "additionalProperties": true
+}

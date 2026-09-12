@@ -1,0 +1,80 @@
+{
+  "schema_version": "1.0",
+  "audit_version": "12.0",
+  "evidence_records": [
+    {
+      "evidence_record_id": "EVIDREC-V12-SPEC",
+      "object_type": "EVIDENCE_RECORD",
+      "schema_version": "1.0",
+      "lifecycle_status": "COMPLETED",
+      "provenance": {
+        "source_artifact": "historical-source/specification/SPECIFICATION-MANIFEST.yaml",
+        "content_hash": "01457058bdb347f4ce932d61d501682911148a6f6f620ee57c10630dea6cc778",
+        "audit_interpretation": "SPECIFICATION_REJECTED_NO_NORMATIVE_REQUIREMENTS"
+      },
+      "source_type": "SPECIFICATION",
+      "source_ref": "V111-SPECIFICATION-MANIFEST-01457058bdb347f4",
+      "requirement_id": null,
+      "criterion_id": null,
+      "oracle_id": null,
+      "observation": "The v11.1 certificate status is FAIL and its normative derivation gate is closed.",
+      "expected": "An accepted normative specification with at least one auditable requirement.",
+      "result": "INVALID",
+      "timestamp": "UNKNOWN_NOT_RECORDED",
+      "environment": "ENV-AUDIT-001",
+      "content_hash": "1eea233187e33aa70c6ac5185c47c7bff25fd53e16fa761e0ef50ba25a258603"
+    },
+    {
+      "evidence_record_id": "EVIDREC-V12-IMPL",
+      "object_type": "EVIDENCE_RECORD",
+      "schema_version": "1.0",
+      "lifecycle_status": "COMPLETED",
+      "provenance": {
+        "source_artifact": "repository root",
+        "content_hash": "DIRECTORY_NOT_HASHED",
+        "audit_interpretation": "IMPLEMENTATION_DISCOVERY"
+      },
+      "source_type": "INPUT_CONTRACT",
+      "source_ref": "MISSING-IMPLEMENTATION-SOURCE",
+      "requirement_id": null,
+      "criterion_id": null,
+      "oracle_id": null,
+      "observation": "No present implementation source exists outside historical and planning material.",
+      "expected": "A required implementation source artifact.",
+      "result": "UNAVAILABLE",
+      "timestamp": "UNKNOWN_NOT_RECORDED",
+      "environment": "ENV-AUDIT-001",
+      "content_hash": null
+    },
+    {
+      "evidence_record_id": "EVIDREC-V12-REQ",
+      "object_type": "EVIDENCE_RECORD",
+      "schema_version": "1.0",
+      "lifecycle_status": "COMPLETED",
+      "provenance": {
+        "source_artifact": "historical-source/specification/REQUIREMENTS.yaml",
+        "content_hash": "12e46e12df0b0f130c7b84b621589d531ce2df7f63f0b6d5eef77289cc3e0100",
+        "audit_interpretation": "REQUIREMENT_REGISTRY_INSPECTION"
+      },
+      "source_type": "SPECIFICATION",
+      "source_ref": "V111-REQUIREMENTS-12e46e12df0b0f13",
+      "requirement_id": null,
+      "criterion_id": null,
+      "oracle_id": null,
+      "observation": "The requirement registry contains zero requirements.",
+      "expected": "At least one valid requirement for requirement-by-requirement conformance.",
+      "result": "UNAVAILABLE",
+      "timestamp": "UNKNOWN_NOT_RECORDED",
+      "environment": "ENV-AUDIT-001",
+      "content_hash": "12e46e12df0b0f130c7b84b621589d531ce2df7f63f0b6d5eef77289cc3e0100"
+    }
+  ],
+  "result_values": [
+    "PASS",
+    "FAIL",
+    "INCONCLUSIVE",
+    "UNAVAILABLE",
+    "INVALID",
+    "UNKNOWN"
+  ]
+}

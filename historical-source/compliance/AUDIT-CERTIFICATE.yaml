@@ -1,0 +1,38 @@
+{
+  "certificate_id": "AUDIT-CERT-V12-001",
+  "object_type": "AUDIT_CERTIFICATE",
+  "schema_version": "1.0",
+  "lifecycle_status": "BLOCKED",
+  "provenance": {
+    "source_artifact": "historical-source/specification/SPECIFICATION-MANIFEST.yaml",
+    "content_hash": "01457058bdb347f4ce932d61d501682911148a6f6f620ee57c10630dea6cc778",
+    "audit_interpretation": "SPECIFICATION_REJECTED_NO_NORMATIVE_REQUIREMENTS"
+  },
+  "audit_id": "AUDIT-V12-001",
+  "specification_hash": "01457058bdb347f4ce932d61d501682911148a6f6f620ee57c10630dea6cc778",
+  "implementation_hash": "85aa69e2f4a99ba1a70f4855aa564b42bb163bf4b9f7ac292e2ec1bb98307b07",
+  "status": "BLOCKED",
+  "counts": {
+    "conformant": 0,
+    "partial": 0,
+    "non_conformant": 0,
+    "unverified": 0,
+    "blocked": 0,
+    "not_applicable": 0,
+    "unknown": 0
+  },
+  "critical_findings": 0,
+  "waivers": 0,
+  "temporal_integrity": "BLOCKED_NO_IMPLEMENTATION_VERSION",
+  "traceability_integrity": "PARTIAL_TO_OBLIGATION",
+  "verification_integrity": "BLOCKED_NO_REQUIREMENTS_OR_ORACLES",
+  "scope_id": "AUDIT-SCOPE-V12-001",
+  "generated_at": "UNKNOWN_NOT_RECORDED_DETERMINISTIC_BUILD",
+  "limitations": [
+    "No universal safety claim",
+    "Specification completeness is not established",
+    "No implementation execution was audited",
+    "Future versions receive no claim"
+  ],
+  "certificate_hash": "07a1cd3b6f5f81d0ed980bee67e7cf32b938a086708934a57cdfa8e92c077be7"
+}

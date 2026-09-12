@@ -1,0 +1,106 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "schema_version": "1.0",
+  "title": "v12 compliance decision",
+  "type": "object",
+  "required": [
+    "decision_id",
+    "object_type",
+    "schema_version",
+    "lifecycle_status",
+    "provenance",
+    "requirement_id",
+    "status",
+    "basis",
+    "confidence",
+    "limitations",
+    "decided_at"
+  ],
+  "properties": {
+    "object_type": {
+      "type": "string",
+      "minLength": 1
+    },
+    "schema_version": {
+      "const": "1.0"
+    },
+    "lifecycle_status": {
+      "enum": [
+        "DISCOVERED",
+        "PLANNED",
+        "RUNNING",
+        "COMPLETED",
+        "BLOCKED",
+        "FAILED",
+        "VERIFIED",
+        "REJECTED",
+        "UNKNOWN"
+      ]
+    },
+    "provenance": {
+      "type": "object",
+      "required": [
+        "source_artifact",
+        "content_hash",
+        "audit_interpretation"
+      ],
+      "properties": {
+        "source_artifact": {
+          "type": "string",
+          "minLength": 1
+        },
+        "content_hash": {
+          "type": "string",
+          "minLength": 1
+        },
+        "audit_interpretation": {
+          "type": "string",
+          "minLength": 1
+        }
+      },
+      "additionalProperties": false
+    },
+    "decision_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "requirement_id": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "status": {
+      "enum": [
+        "CONFORMANT",
+        "PARTIALLY_CONFORMANT",
+        "NON_CONFORMANT",
+        "UNVERIFIED",
+        "NOT_APPLICABLE",
+        "BLOCKED",
+        "UNKNOWN"
+      ]
+    },
+    "basis": {
+      "type": "object"
+    },
+    "confidence": {
+      "enum": [
+        "HIGH",
+        "MEDIUM",
+        "LOW",
+        "UNKNOWN"
+      ]
+    },
+    "limitations": {
+      "type": "array"
+    },
+    "decided_at": {
+      "type": [
+        "string",
+        "null"
+      ]
+    }
+  },
+  "additionalProperties": true
+}

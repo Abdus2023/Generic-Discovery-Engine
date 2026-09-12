@@ -1,0 +1,58 @@
+{
+  "schema_version": "1.0",
+  "audit_version": "12.0",
+  "status": "BLOCKED",
+  "compliance_decisions": [],
+  "decision_statuses": [
+    "CONFORMANT",
+    "PARTIALLY_CONFORMANT",
+    "NON_CONFORMANT",
+    "UNVERIFIED",
+    "NOT_APPLICABLE",
+    "BLOCKED",
+    "UNKNOWN"
+  ],
+  "confidence_values": [
+    "HIGH",
+    "MEDIUM",
+    "LOW",
+    "UNKNOWN"
+  ],
+  "decision_rules": {
+    "CONFORMANT": [
+      "valid scope",
+      "valid requirement",
+      "satisfied dependencies",
+      "implementation evidence",
+      "satisfied criteria",
+      "valid verification",
+      "no blocking conflict"
+    ],
+    "PARTIALLY_CONFORMANT": "some predicates satisfied and remaining predicates explicitly missing or unsatisfied",
+    "NON_CONFORMANT": "actual violated normative condition required",
+    "UNVERIFIED": "verification has not established satisfaction",
+    "UNKNOWN": "applicable semantic state cannot be determined",
+    "BLOCKED": "upstream condition prevents verification",
+    "NOT_APPLICABLE": "scope predicate proves non-applicability"
+  },
+  "conformance_state_machine": {
+    "initial": "UNASSESSED",
+    "progression": [
+      "UNASSESSED",
+      "MAPPED",
+      "VERIFIED"
+    ],
+    "decision_states": [
+      "CONFORMANT",
+      "PARTIALLY_CONFORMANT",
+      "NON_CONFORMANT"
+    ],
+    "alternative_terminal_states": [
+      "BLOCKED",
+      "UNVERIFIED",
+      "NOT_APPLICABLE",
+      "UNKNOWN"
+    ]
+  },
+  "rule": "No decision without a requirement; unavailable evidence is not nonconformance."
+}

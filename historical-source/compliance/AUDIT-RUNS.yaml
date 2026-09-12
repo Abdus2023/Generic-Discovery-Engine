@@ -1,0 +1,74 @@
+{
+  "schema_version": "1.0",
+  "audit_version": "12.0",
+  "audit_runs": [
+    {
+      "audit_run_id": "RUN-V12-001",
+      "object_type": "AUDIT_RUN",
+      "schema_version": "1.0",
+      "lifecycle_status": "BLOCKED",
+      "provenance": {
+        "source_artifact": "historical-source/specification/SPECIFICATION-MANIFEST.yaml",
+        "content_hash": "01457058bdb347f4ce932d61d501682911148a6f6f620ee57c10630dea6cc778",
+        "audit_interpretation": "SPECIFICATION_REJECTED_NO_NORMATIVE_REQUIREMENTS"
+      },
+      "audit_id": "AUDIT-V12-001",
+      "run_number": 1,
+      "started_at": "UNKNOWN_NOT_RECORDED",
+      "completed_at": "UNKNOWN_NOT_RECORDED",
+      "input_hashes": [
+        "01457058bdb347f4ce932d61d501682911148a6f6f620ee57c10630dea6cc778",
+        "12e46e12df0b0f130c7b84b621589d531ce2df7f63f0b6d5eef77289cc3e0100",
+        "6862fdd5da65adc48eaeeb6b82d06a1738ac2968e21afd6089a9e96ecbaca09f",
+        "fbe1a2788787ec0e7c74358d5ea34e05fb65a052c0740c1f6fa4e6412430bd30",
+        "31ac65fd2b628b2ae8e8880b748a75d69b9bc5ed67ee7595373e4ffc1a87869e",
+        "cbbb584146708a028d5289812781c933ee70ae15506b412417ebf0f70813f87e",
+        "d315fa5c8fedab4bc6537a6574af850c318ebce3ea9accf19297873021e53fbe",
+        "6cfdf6bb1ee57650b54e0fd52082477725f4ed89027eca33b1d29273cbe3e421",
+        "48551e7223f3283912080bccec09c8048faa93a3ad11cc5d551e3e7286e0358f",
+        "a0092f14f4f8ee3cc7aac9cc0cc42c1ce65d71d5690e62111159dd7e370fd45f"
+      ],
+      "specification_hash": "01457058bdb347f4ce932d61d501682911148a6f6f620ee57c10630dea6cc778",
+      "implementation_hash": "85aa69e2f4a99ba1a70f4855aa564b42bb163bf4b9f7ac292e2ec1bb98307b07",
+      "implementation_hash_basis": "MISSING_IMPLEMENTATION_SENTINEL",
+      "result": "BLOCKED",
+      "findings": [
+        "FINDING-V12-001",
+        "FINDING-V12-002",
+        "FINDING-V12-003"
+      ],
+      "reproducibility": {
+        "oracle_versions": [],
+        "environment": "ENV-AUDIT-001",
+        "configuration_hash": "a4d7f7b176b4e95b31ed8e3fd162539d5babacd931bac40c8f56c88c41e7fbde",
+        "input_artifacts": [
+          "V111-SPECIFICATION-MANIFEST-01457058bdb347f4",
+          "V111-REQUIREMENTS-12e46e12df0b0f13",
+          "V111-NORMATIVE-RULES-6862fdd5da65adc4",
+          "V111-ACCEPTANCE-CRITERIA-fbe1a2788787ec0e",
+          "V111-TEST-ORACLES-31ac65fd2b628b2a",
+          "V111-DEPENDENCIES-cbbb584146708a02",
+          "V111-CONFLICTS-d315fa5c8fedab4b",
+          "V111-COMPATIBILITY-6cfdf6bb1ee57650",
+          "V111-IMPLEMENTATION-BOUNDARIES-48551e7223f32839",
+          "V111-VERIFICATION-RECORDS-a0092f14f4f8ee3c",
+          "MISSING-IMPLEMENTATION-SOURCE",
+          "MISSING-TEST-SOURCE",
+          "MISSING-RUNTIME-ARTIFACTS"
+        ],
+        "dependency_versions": [],
+        "execution_parameters": {
+          "mode": "FULL",
+          "derivation_gate": "CLOSED"
+        }
+      }
+    }
+  ],
+  "result_values": [
+    "PASS",
+    "FAIL",
+    "PARTIAL",
+    "BLOCKED",
+    "INCONCLUSIVE"
+  ]
+}

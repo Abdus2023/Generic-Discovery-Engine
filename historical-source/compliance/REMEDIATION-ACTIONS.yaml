@@ -1,0 +1,81 @@
+{
+  "schema_version": "1.0",
+  "audit_version": "12.0",
+  "remediation_actions": [
+    {
+      "action_id": "ACTION-V12-001",
+      "object_type": "REMEDIATION_ACTION",
+      "schema_version": "1.0",
+      "lifecycle_status": "PLANNED",
+      "provenance": {
+        "source_artifact": "historical-source/specification/SPECIFICATION-MANIFEST.yaml",
+        "content_hash": "01457058bdb347f4ce932d61d501682911148a6f6f620ee57c10630dea6cc778",
+        "audit_interpretation": "SPECIFICATION_REJECTED_NO_NORMATIVE_REQUIREMENTS"
+      },
+      "description": "Establish valid v1 through v9 inputs, verify v10.1 obligations, resolve conflicts, and regenerate an accepted v11.1 specification.",
+      "implementation_boundary": [],
+      "affected_artifacts": [
+        "V111-SPECIFICATION-MANIFEST-01457058bdb347f4"
+      ],
+      "expected_effect": {
+        "predicate": {
+          "type": "EQUALITY",
+          "expression": "specification.validation_status == PASS"
+        }
+      },
+      "verification": {
+        "oracle_ids": []
+      }
+    },
+    {
+      "action_id": "ACTION-V12-002",
+      "object_type": "REMEDIATION_ACTION",
+      "schema_version": "1.0",
+      "lifecycle_status": "PLANNED",
+      "provenance": {
+        "source_artifact": "repository root",
+        "content_hash": "DIRECTORY_NOT_HASHED",
+        "audit_interpretation": "IMPLEMENTATION_DISCOVERY"
+      },
+      "description": "Supply and identify present implementation source separately from historical snapshots and planning documents.",
+      "implementation_boundary": [],
+      "affected_artifacts": [
+        "MISSING-IMPLEMENTATION-SOURCE"
+      ],
+      "expected_effect": {
+        "predicate": {
+          "type": "EXISTENCE",
+          "expression": "implementation_source.exists == true"
+        }
+      },
+      "verification": {
+        "oracle_ids": []
+      }
+    },
+    {
+      "action_id": "ACTION-V12-003",
+      "object_type": "REMEDIATION_ACTION",
+      "schema_version": "1.0",
+      "lifecycle_status": "PLANNED",
+      "provenance": {
+        "source_artifact": "historical-source/specification/TRACEABILITY.yaml",
+        "content_hash": "c39ae68aae200e782d8f0405d7cc75f47f2ee4227972c17e6adc28be095e810a",
+        "audit_interpretation": "TRACEABILITY_INSPECTION"
+      },
+      "description": "Regenerate full requirement-to-conformance traceability after the normative and implementation gates open.",
+      "implementation_boundary": [],
+      "affected_artifacts": [
+        "V111-REQUIREMENTS-12e46e12df0b0f13"
+      ],
+      "expected_effect": {
+        "predicate": {
+          "type": "EXISTENCE",
+          "expression": "decision_to_source_reverse_path.exists == true"
+        }
+      },
+      "verification": {
+        "oracle_ids": []
+      }
+    }
+  ]
+}

@@ -1,0 +1,19 @@
+{
+  "schema_version": "1.0",
+  "audit_version": "12.0",
+  "status": "BLOCKED",
+  "verification_executions": [],
+  "flaky_verification_policy": {
+    "classification": "FLAKY_VERIFICATION",
+    "trigger": "repeated identical executions produce inconsistent outcomes without intentional nondeterministic semantics",
+    "intermittent_success_implies_conformance": false
+  },
+  "deterministic_audit_inputs": [
+    "specification",
+    "implementation",
+    "environment",
+    "inputs",
+    "oracle"
+  ],
+  "reason": "No requirement, criterion, or oracle is available."
+}

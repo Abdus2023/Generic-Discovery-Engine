@@ -1,0 +1,112 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "schema_version": "1.0",
+  "title": "v12 verification execution",
+  "type": "object",
+  "required": [
+    "execution_id",
+    "object_type",
+    "schema_version",
+    "lifecycle_status",
+    "provenance",
+    "oracle_id",
+    "requirement_id",
+    "environment_id",
+    "inputs",
+    "started_at",
+    "completed_at",
+    "result",
+    "observations",
+    "failure"
+  ],
+  "properties": {
+    "object_type": {
+      "type": "string",
+      "minLength": 1
+    },
+    "schema_version": {
+      "const": "1.0"
+    },
+    "lifecycle_status": {
+      "enum": [
+        "DISCOVERED",
+        "PLANNED",
+        "RUNNING",
+        "COMPLETED",
+        "BLOCKED",
+        "FAILED",
+        "VERIFIED",
+        "REJECTED",
+        "UNKNOWN"
+      ]
+    },
+    "provenance": {
+      "type": "object",
+      "required": [
+        "source_artifact",
+        "content_hash",
+        "audit_interpretation"
+      ],
+      "properties": {
+        "source_artifact": {
+          "type": "string",
+          "minLength": 1
+        },
+        "content_hash": {
+          "type": "string",
+          "minLength": 1
+        },
+        "audit_interpretation": {
+          "type": "string",
+          "minLength": 1
+        }
+      },
+      "additionalProperties": false
+    },
+    "execution_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "oracle_id": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "requirement_id": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "environment_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "inputs": {
+      "type": "object"
+    },
+    "started_at": {
+      "type": "string",
+      "minLength": 1
+    },
+    "completed_at": {
+      "type": "string",
+      "minLength": 1
+    },
+    "result": {
+      "type": "string",
+      "minLength": 1
+    },
+    "observations": {
+      "type": "array"
+    },
+    "failure": {
+      "type": [
+        "object",
+        "null"
+      ]
+    }
+  },
+  "additionalProperties": true
+}

@@ -1,0 +1,94 @@
+{
+  "schema_version": "1.0",
+  "graph_type": "FINDING_GRAPH",
+  "nodes": [
+    {
+      "node_id": "FINDING-V12-001",
+      "node_type": "FINDING"
+    },
+    {
+      "node_id": "FINDING-V12-002",
+      "node_type": "FINDING"
+    },
+    {
+      "node_id": "FINDING-V12-003",
+      "node_type": "FINDING"
+    },
+    {
+      "node_id": "REM-V12-001",
+      "node_type": "REMEDIATION"
+    },
+    {
+      "node_id": "REM-V12-002",
+      "node_type": "REMEDIATION"
+    },
+    {
+      "node_id": "REM-V12-003",
+      "node_type": "REMEDIATION"
+    },
+    {
+      "node_id": "ACTION-V12-001",
+      "node_type": "REMEDIATION_ACTION"
+    },
+    {
+      "node_id": "ACTION-V12-002",
+      "node_type": "REMEDIATION_ACTION"
+    },
+    {
+      "node_id": "ACTION-V12-003",
+      "node_type": "REMEDIATION_ACTION"
+    },
+    {
+      "node_id": "RUN-V12-001",
+      "node_type": "AUDIT_RUN"
+    }
+  ],
+  "edges": [
+    {
+      "from": "FINDING-V12-001",
+      "to": "REM-V12-001",
+      "relation": "REMEDIATED_BY"
+    },
+    {
+      "from": "REM-V12-001",
+      "to": "ACTION-V12-001",
+      "relation": "HAS_ACTION"
+    },
+    {
+      "from": "REM-V12-001",
+      "to": "RUN-V12-001",
+      "relation": "REQUIRES_REAUDIT"
+    },
+    {
+      "from": "FINDING-V12-002",
+      "to": "REM-V12-002",
+      "relation": "REMEDIATED_BY"
+    },
+    {
+      "from": "REM-V12-002",
+      "to": "ACTION-V12-002",
+      "relation": "HAS_ACTION"
+    },
+    {
+      "from": "REM-V12-002",
+      "to": "RUN-V12-001",
+      "relation": "REQUIRES_REAUDIT"
+    },
+    {
+      "from": "FINDING-V12-003",
+      "to": "REM-V12-003",
+      "relation": "REMEDIATED_BY"
+    },
+    {
+      "from": "REM-V12-003",
+      "to": "ACTION-V12-003",
+      "relation": "HAS_ACTION"
+    },
+    {
+      "from": "REM-V12-003",
+      "to": "RUN-V12-001",
+      "relation": "REQUIRES_REAUDIT"
+    }
+  ],
+  "status": "OPEN_BLOCKED_REMEDIATIONS"
+}

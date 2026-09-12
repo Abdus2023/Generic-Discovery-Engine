@@ -1,0 +1,78 @@
+{
+  "schema_version": "1.0",
+  "graph_type": "AUDIT_EVIDENCE_GRAPH",
+  "nodes": [
+    {
+      "node_id": "FINDING-V12-001",
+      "node_type": "FINDING"
+    },
+    {
+      "node_id": "FINDING-V12-002",
+      "node_type": "FINDING"
+    },
+    {
+      "node_id": "FINDING-V12-003",
+      "node_type": "FINDING"
+    },
+    {
+      "node_id": "EVIDREC-V12-SPEC",
+      "node_type": "EVIDENCE_RECORD"
+    },
+    {
+      "node_id": "EVIDREC-V12-IMPL",
+      "node_type": "EVIDENCE_RECORD"
+    },
+    {
+      "node_id": "EVIDREC-V12-REQ",
+      "node_type": "EVIDENCE_RECORD"
+    },
+    {
+      "node_id": "V111-SPECIFICATION-MANIFEST-01457058bdb347f4",
+      "node_type": "SOURCE"
+    },
+    {
+      "node_id": "MISSING-IMPLEMENTATION-SOURCE",
+      "node_type": "SOURCE"
+    },
+    {
+      "node_id": "V111-REQUIREMENTS-12e46e12df0b0f13",
+      "node_type": "SOURCE"
+    }
+  ],
+  "edges": [
+    {
+      "from": "FINDING-V12-001",
+      "to": "EVIDREC-V12-SPEC",
+      "relation": "SUPPORTED_BY"
+    },
+    {
+      "from": "FINDING-V12-002",
+      "to": "EVIDREC-V12-IMPL",
+      "relation": "SUPPORTED_BY"
+    },
+    {
+      "from": "FINDING-V12-003",
+      "to": "EVIDREC-V12-REQ",
+      "relation": "SUPPORTED_BY"
+    },
+    {
+      "from": "EVIDREC-V12-SPEC",
+      "to": "V111-SPECIFICATION-MANIFEST-01457058bdb347f4",
+      "relation": "OBSERVED_AT"
+    },
+    {
+      "from": "EVIDREC-V12-IMPL",
+      "to": "MISSING-IMPLEMENTATION-SOURCE",
+      "relation": "OBSERVED_AT"
+    },
+    {
+      "from": "EVIDREC-V12-REQ",
+      "to": "V111-REQUIREMENTS-12e46e12df0b0f13",
+      "relation": "OBSERVED_AT"
+    }
+  ],
+  "decision_nodes": [],
+  "verification_nodes": [],
+  "status": "PARTIAL_NO_DECISIONS",
+  "rule": "No decision-to-source chain is fabricated."
+}

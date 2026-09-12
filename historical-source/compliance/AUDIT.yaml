@@ -1,0 +1,317 @@
+{
+  "schema_version": "1.0",
+  "audit_version": "12.0",
+  "audits": [
+    {
+      "audit_id": "AUDIT-V12-001",
+      "object_type": "AUDIT",
+      "schema_version": "1.0",
+      "lifecycle_status": "BLOCKED",
+      "provenance": {
+        "source_artifact": "historical-source/specification/SPECIFICATION-MANIFEST.yaml",
+        "content_hash": "01457058bdb347f4ce932d61d501682911148a6f6f620ee57c10630dea6cc778",
+        "audit_interpretation": "SPECIFICATION_REJECTED_NO_NORMATIVE_REQUIREMENTS"
+      },
+      "audit_version": "12.0",
+      "specification_id": "SPEC-MANIFEST-11.1",
+      "implementation_id": "IMPLEMENTATION-UNAVAILABLE",
+      "scope": {
+        "scope_id": "AUDIT-SCOPE-V12-001"
+      },
+      "mode": "FULL",
+      "started_at": "UNKNOWN_NOT_RECORDED",
+      "completed_at": "UNKNOWN_NOT_RECORDED",
+      "requirements": [],
+      "findings": [
+        "FINDING-V12-001",
+        "FINDING-V12-002",
+        "FINDING-V12-003"
+      ],
+      "decisions": [],
+      "certificate_id": "AUDIT-CERT-V12-001"
+    }
+  ],
+  "audit_modes": [
+    "FULL",
+    "TARGETED",
+    "REGRESSION",
+    "SECURITY",
+    "COMPATIBILITY",
+    "RELEASE",
+    "HISTORICAL",
+    "EXPERIMENTAL"
+  ],
+  "planes": [
+    "NORMATIVE",
+    "IMPLEMENTATION",
+    "VERIFICATION",
+    "DECISION"
+  ],
+  "failure_classes": [
+    "SPECIFICATION_FAILURE",
+    "IMPLEMENTATION_FAILURE",
+    "MAPPING_FAILURE",
+    "ORACLE_FAILURE",
+    "TEST_FAILURE",
+    "HARNESS_FAILURE",
+    "ENVIRONMENT_FAILURE",
+    "DEPENDENCY_FAILURE",
+    "TRACEABILITY_FAILURE",
+    "TEMPORAL_FAILURE",
+    "CONFIGURATION_FAILURE",
+    "NONDETERMINISM",
+    "RESOURCE_FAILURE",
+    "SECURITY_FAILURE",
+    "UNKNOWN_FAILURE"
+  ],
+  "audit_procedure": [
+    {
+      "order": 1,
+      "stage": "INPUT_VALIDATION",
+      "result": "FAIL"
+    },
+    {
+      "order": 2,
+      "stage": "SCHEMA_VALIDATION",
+      "result": "PASS"
+    },
+    {
+      "order": 3,
+      "stage": "REFERENCE_VALIDATION",
+      "result": "PASS"
+    },
+    {
+      "order": 4,
+      "stage": "DERIVATION_VALIDATION",
+      "result": "BLOCKED"
+    },
+    {
+      "order": 5,
+      "stage": "NORMATIVE_GUIDANCE_SEPARATION",
+      "result": "PASS"
+    },
+    {
+      "order": 6,
+      "stage": "DEPENDENCY_VALIDATION",
+      "result": "PASS_EMPTY"
+    },
+    {
+      "order": 7,
+      "stage": "CONFLICT_DETECTION",
+      "result": "BLOCKED_UPSTREAM"
+    },
+    {
+      "order": 8,
+      "stage": "SEMANTIC_NARROWING_WIDENING",
+      "result": "BLOCKED_NO_REQUIREMENTS"
+    },
+    {
+      "order": 9,
+      "stage": "RULE_VALIDATION",
+      "result": "PASS_EMPTY"
+    },
+    {
+      "order": 10,
+      "stage": "ACCEPTANCE_VALIDATION",
+      "result": "PASS_EMPTY"
+    },
+    {
+      "order": 11,
+      "stage": "ORACLE_VALIDATION",
+      "result": "PASS_EMPTY"
+    },
+    {
+      "order": 12,
+      "stage": "BOUNDARY_VALIDATION",
+      "result": "PASS_EMPTY"
+    },
+    {
+      "order": 13,
+      "stage": "TRACEABILITY_VALIDATION",
+      "result": "PARTIAL"
+    },
+    {
+      "order": 14,
+      "stage": "CONFORMANCE_VALIDATION",
+      "result": "PASS_NO_CLAIM"
+    }
+  ],
+  "failure_attribution_order": [
+    "DETERMINE_OBSERVATION",
+    "DETERMINE_EXPECTED_SEMANTICS",
+    "VALIDATE_ORACLE",
+    "VALIDATE_SPECIFICATION",
+    "VALIDATE_ENVIRONMENT",
+    "ATTRIBUTE_FAILURE"
+  ],
+  "audit_invariants": [
+    {
+      "invariant_id": "V12-I01",
+      "statement": "Every mandatory requirement receives a decision.",
+      "status": "PASS",
+      "basis": "CLOSED_GATES_PREVENT_FALSE_CONFORMANCE_OR_ATTRIBUTION"
+    },
+    {
+      "invariant_id": "V12-I02",
+      "statement": "Every conformant decision has verification evidence.",
+      "status": "PASS",
+      "basis": "CLOSED_GATES_PREVENT_FALSE_CONFORMANCE_OR_ATTRIBUTION"
+    },
+    {
+      "invariant_id": "V12-I03",
+      "statement": "Every non-conformant decision identifies violated normative semantics.",
+      "status": "PASS",
+      "basis": "CLOSED_GATES_PREVENT_FALSE_CONFORMANCE_OR_ATTRIBUTION"
+    },
+    {
+      "invariant_id": "V12-I04",
+      "statement": "UNVERIFIED is not NON_CONFORMANT.",
+      "status": "PASS",
+      "basis": "CLOSED_GATES_PREVENT_FALSE_CONFORMANCE_OR_ATTRIBUTION"
+    },
+    {
+      "invariant_id": "V12-I05",
+      "statement": "UNKNOWN is not UNVERIFIED.",
+      "status": "PASS",
+      "basis": "CLOSED_GATES_PREVENT_FALSE_CONFORMANCE_OR_ATTRIBUTION"
+    },
+    {
+      "invariant_id": "V12-I06",
+      "statement": "NOT_APPLICABLE requires scope evidence.",
+      "status": "PASS",
+      "basis": "CLOSED_GATES_PREVENT_FALSE_CONFORMANCE_OR_ATTRIBUTION"
+    },
+    {
+      "invariant_id": "V12-I07",
+      "statement": "Waivers do not modify requirements.",
+      "status": "PASS",
+      "basis": "CLOSED_GATES_PREVENT_FALSE_CONFORMANCE_OR_ATTRIBUTION"
+    },
+    {
+      "invariant_id": "V12-I08",
+      "statement": "Guidance cannot affect mandatory conformance.",
+      "status": "PASS",
+      "basis": "CLOSED_GATES_PREVENT_FALSE_CONFORMANCE_OR_ATTRIBUTION"
+    },
+    {
+      "invariant_id": "V12-I09",
+      "statement": "Historical requirements are evaluated within their applicable version scope.",
+      "status": "PASS",
+      "basis": "CLOSED_GATES_PREVENT_FALSE_CONFORMANCE_OR_ATTRIBUTION"
+    },
+    {
+      "invariant_id": "V12-I10",
+      "statement": "Future requirements cannot contaminate historical audits.",
+      "status": "PASS",
+      "basis": "CLOSED_GATES_PREVENT_FALSE_CONFORMANCE_OR_ATTRIBUTION"
+    },
+    {
+      "invariant_id": "V12-I11",
+      "statement": "Oracle failures cannot be attributed to implementations without validation.",
+      "status": "PASS",
+      "basis": "CLOSED_GATES_PREVENT_FALSE_CONFORMANCE_OR_ATTRIBUTION"
+    },
+    {
+      "invariant_id": "V12-I12",
+      "statement": "Audit decisions are reproducible from recorded inputs.",
+      "status": "PASS",
+      "basis": "CLOSED_GATES_PREVENT_FALSE_CONFORMANCE_OR_ATTRIBUTION"
+    },
+    {
+      "invariant_id": "V12-I13",
+      "statement": "Every finding has evidence.",
+      "status": "PASS",
+      "basis": "CLOSED_GATES_PREVENT_FALSE_CONFORMANCE_OR_ATTRIBUTION"
+    },
+    {
+      "invariant_id": "V12-I14",
+      "statement": "Every remediation targets a finding.",
+      "status": "PASS",
+      "basis": "CLOSED_GATES_PREVENT_FALSE_CONFORMANCE_OR_ATTRIBUTION"
+    },
+    {
+      "invariant_id": "V12-I15",
+      "statement": "A remediation is not complete until re-verification succeeds.",
+      "status": "PASS",
+      "basis": "CLOSED_GATES_PREVENT_FALSE_CONFORMANCE_OR_ATTRIBUTION"
+    },
+    {
+      "invariant_id": "V12-I16",
+      "statement": "Conformance aggregation cannot conceal mandatory failures.",
+      "status": "PASS",
+      "basis": "CLOSED_GATES_PREVENT_FALSE_CONFORMANCE_OR_ATTRIBUTION"
+    },
+    {
+      "invariant_id": "V12-I17",
+      "statement": "Critical unresolved findings prevent unconditional compliance.",
+      "status": "PASS",
+      "basis": "CLOSED_GATES_PREVENT_FALSE_CONFORMANCE_OR_ATTRIBUTION"
+    },
+    {
+      "invariant_id": "V12-I18",
+      "statement": "All audit objects have complete schemas.",
+      "status": "PASS",
+      "basis": "CLOSED_GATES_PREVENT_FALSE_CONFORMANCE_OR_ATTRIBUTION"
+    },
+    {
+      "invariant_id": "V12-I19",
+      "statement": "All object references resolve.",
+      "status": "PASS",
+      "basis": "CLOSED_GATES_PREVENT_FALSE_CONFORMANCE_OR_ATTRIBUTION"
+    },
+    {
+      "invariant_id": "V12-I20",
+      "statement": "Audit certificates describe audit scope rather than universal system truth.",
+      "status": "PASS",
+      "basis": "CLOSED_GATES_PREVENT_FALSE_CONFORMANCE_OR_ATTRIBUTION"
+    }
+  ],
+  "specialized_audit_policies": {
+    "concurrency": [
+      "single worker",
+      "multiple workers",
+      "maximum configured workers",
+      "stress conditions",
+      "cancellation",
+      "failure injection",
+      "duplicate inputs"
+    ],
+    "resource": [
+      "normal bound",
+      "boundary value",
+      "above-bound input",
+      "repeated expansion",
+      "failure under pressure",
+      "cleanup after cancellation"
+    ],
+    "security": [
+      "authorized operation",
+      "unauthorized operation",
+      "malformed authority",
+      "missing capability",
+      "conflicting policy",
+      "boundary crossing",
+      "privilege escalation attempt",
+      "invalid provenance"
+    ],
+    "resource_evidence_classes": [
+      "BOUND_ENFORCED",
+      "BOUND_OBSERVED",
+      "BOUND_DOCUMENTED"
+    ],
+    "compatibility_results": [
+      "PRESERVED",
+      "CHANGED",
+      "BROKEN",
+      "UNKNOWN",
+      "OUT_OF_SCOPE"
+    ],
+    "temporal_failures": [
+      "TEMPORAL_MISMATCH",
+      "FUTURE_REQUIREMENT_APPLIED",
+      "FUTURE_ORACLE_APPLIED",
+      "FUTURE_IMPLEMENTATION_EVIDENCE"
+    ],
+    "historical_mode_rule": "Within allowed HISTORICAL mode, an explicit retrospective_evaluation flag is required before future requirements are evaluated; resulting deviations are labeled RETROSPECTIVE_NONCONFORMANCE."
+  }
+}
