@@ -1,0 +1,130 @@
+{
+  "schema_version": "14.7.1",
+  "epistemic_status": "SUPPORTED",
+  "claim_class": "NORMATIVE_REQUIREMENT",
+  "normative_origin": "USER_SUPPLIED_V14_7_TEXT",
+  "stages": [
+    {
+      "step": 1,
+      "stage": "LOAD",
+      "input": "LOAD_INPUT",
+      "output": "LOAD_OUTPUT",
+      "failure": "LOAD_FAILURE",
+      "continue": "NO_ON_FAILURE"
+    },
+    {
+      "step": 2,
+      "stage": "STRUCTURAL_VALIDATION",
+      "input": "STRUCTURAL_VALIDATION_INPUT",
+      "output": "STRUCTURAL_VALIDATION_OUTPUT",
+      "failure": "STRUCTURAL_VALIDATION_FAILURE",
+      "continue": "NO_ON_FAILURE"
+    },
+    {
+      "step": 3,
+      "stage": "REFERENCE_VALIDATION",
+      "input": "REFERENCE_VALIDATION_INPUT",
+      "output": "REFERENCE_VALIDATION_OUTPUT",
+      "failure": "REFERENCE_VALIDATION_FAILURE",
+      "continue": "NO_ON_FAILURE"
+    },
+    {
+      "step": 4,
+      "stage": "INTEGRITY_VALIDATION",
+      "input": "INTEGRITY_VALIDATION_INPUT",
+      "output": "INTEGRITY_VALIDATION_OUTPUT",
+      "failure": "INTEGRITY_VALIDATION_FAILURE",
+      "continue": "NO_ON_FAILURE"
+    },
+    {
+      "step": 5,
+      "stage": "TEMPORAL_VALIDATION",
+      "input": "TEMPORAL_VALIDATION_INPUT",
+      "output": "TEMPORAL_VALIDATION_OUTPUT",
+      "failure": "TEMPORAL_VALIDATION_FAILURE",
+      "continue": "NO_ON_FAILURE"
+    },
+    {
+      "step": 6,
+      "stage": "SCOPE_VALIDATION",
+      "input": "SCOPE_VALIDATION_INPUT",
+      "output": "SCOPE_VALIDATION_OUTPUT",
+      "failure": "SCOPE_VALIDATION_FAILURE",
+      "continue": "NO_ON_FAILURE"
+    },
+    {
+      "step": 7,
+      "stage": "POLICY_VALIDATION",
+      "input": "POLICY_VALIDATION_INPUT",
+      "output": "POLICY_VALIDATION_OUTPUT",
+      "failure": "POLICY_VALIDATION_FAILURE",
+      "continue": "NO_ON_FAILURE"
+    },
+    {
+      "step": 8,
+      "stage": "AUTHORITY_VALIDATION",
+      "input": "AUTHORITY_VALIDATION_INPUT",
+      "output": "AUTHORITY_VALIDATION_OUTPUT",
+      "failure": "AUTHORITY_VALIDATION_FAILURE",
+      "continue": "NO_ON_FAILURE"
+    },
+    {
+      "step": 9,
+      "stage": "EVIDENCE_FRESHNESS_VALIDATION",
+      "input": "EVIDENCE_FRESHNESS_VALIDATION_INPUT",
+      "output": "EVIDENCE_FRESHNESS_VALIDATION_OUTPUT",
+      "failure": "EVIDENCE_FRESHNESS_VALIDATION_FAILURE",
+      "continue": "NO_ON_FAILURE"
+    },
+    {
+      "step": 10,
+      "stage": "EVALUATION",
+      "input": "EVALUATION_INPUT",
+      "output": "EVALUATION_OUTPUT",
+      "failure": "EVALUATION_FAILURE",
+      "continue": "NO_ON_FAILURE"
+    },
+    {
+      "step": 11,
+      "stage": "AGGREGATION",
+      "input": "AGGREGATION_INPUT",
+      "output": "AGGREGATION_OUTPUT",
+      "failure": "AGGREGATION_FAILURE",
+      "continue": "NO_ON_FAILURE"
+    },
+    {
+      "step": 12,
+      "stage": "TRANSITION_GUARD",
+      "input": "TRANSITION_GUARD_INPUT",
+      "output": "TRANSITION_GUARD_OUTPUT",
+      "failure": "TRANSITION_GUARD_FAILURE",
+      "continue": "NO_ON_FAILURE"
+    },
+    {
+      "step": 13,
+      "stage": "EVENT_COMMIT",
+      "input": "EVENT_COMMIT_INPUT",
+      "output": "EVENT_COMMIT_OUTPUT",
+      "failure": "EVENT_COMMIT_FAILURE",
+      "continue": "NO_ON_FAILURE"
+    },
+    {
+      "step": 14,
+      "stage": "PROJECTION",
+      "input": "PROJECTION_INPUT",
+      "output": "PROJECTION_OUTPUT",
+      "failure": "PROJECTION_FAILURE",
+      "continue": "NO_ON_FAILURE"
+    },
+    {
+      "step": 15,
+      "stage": "PROJECTION_VERIFICATION",
+      "input": "PROJECTION_VERIFICATION_INPUT",
+      "output": "PROJECTION_VERIFICATION_OUTPUT",
+      "failure": "PROJECTION_VERIFICATION_FAILURE",
+      "continue": "NO_ON_FAILURE"
+    }
+  ],
+  "count": 15,
+  "single": true
+}

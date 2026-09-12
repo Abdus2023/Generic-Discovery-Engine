@@ -1,0 +1,506 @@
+{
+  "schema_version": "14.7.1",
+  "epistemic_status": "SUPPORTED",
+  "claim_class": "NORMATIVE_REQUIREMENT",
+  "normative_origin": "USER_SUPPLIED_V14_7_TEXT",
+  "vectors": [
+    {
+      "test_id": "T01",
+      "input": {
+        "fixture": "VALID_EVALUATION"
+      },
+      "expected_result": "ORACLE:VALID_EVALUATION",
+      "expected_state": "ORACLE_STATE:VALID_EVALUATION",
+      "expected_event": "ORACLE_EVENT:VALID_EVALUATION",
+      "forbidden_outcome": "ORACLE_FORBIDDEN:VALID_EVALUATION",
+      "machine_checked": true
+    },
+    {
+      "test_id": "T02",
+      "input": {
+        "fixture": "FALSE_PREDICATE"
+      },
+      "expected_result": "ORACLE:FALSE_PREDICATE",
+      "expected_state": "ORACLE_STATE:FALSE_PREDICATE",
+      "expected_event": "ORACLE_EVENT:FALSE_PREDICATE",
+      "forbidden_outcome": "ORACLE_FORBIDDEN:FALSE_PREDICATE",
+      "machine_checked": true
+    },
+    {
+      "test_id": "T03",
+      "input": {
+        "fixture": "MISSING_EVIDENCE"
+      },
+      "expected_result": "ORACLE:MISSING_EVIDENCE",
+      "expected_state": "ORACLE_STATE:MISSING_EVIDENCE",
+      "expected_event": "ORACLE_EVENT:MISSING_EVIDENCE",
+      "forbidden_outcome": "ORACLE_FORBIDDEN:MISSING_EVIDENCE",
+      "machine_checked": true
+    },
+    {
+      "test_id": "T04",
+      "input": {
+        "fixture": "BROKEN_HASH"
+      },
+      "expected_result": "ORACLE:BROKEN_HASH",
+      "expected_state": "ORACLE_STATE:BROKEN_HASH",
+      "expected_event": "ORACLE_EVENT:BROKEN_HASH",
+      "forbidden_outcome": "ORACLE_FORBIDDEN:BROKEN_HASH",
+      "machine_checked": true
+    },
+    {
+      "test_id": "T05",
+      "input": {
+        "fixture": "EXPIRED_AUTHORITY"
+      },
+      "expected_result": "ORACLE:EXPIRED_AUTHORITY",
+      "expected_state": "ORACLE_STATE:EXPIRED_AUTHORITY",
+      "expected_event": "ORACLE_EVENT:EXPIRED_AUTHORITY",
+      "forbidden_outcome": "ORACLE_FORBIDDEN:EXPIRED_AUTHORITY",
+      "machine_checked": true
+    },
+    {
+      "test_id": "T06",
+      "input": {
+        "fixture": "WRONG_SCOPE"
+      },
+      "expected_result": "ORACLE:WRONG_SCOPE",
+      "expected_state": "ORACLE_STATE:WRONG_SCOPE",
+      "expected_event": "ORACLE_EVENT:WRONG_SCOPE",
+      "forbidden_outcome": "ORACLE_FORBIDDEN:WRONG_SCOPE",
+      "machine_checked": true
+    },
+    {
+      "test_id": "T07",
+      "input": {
+        "fixture": "VALID_CERTIFICATE"
+      },
+      "expected_result": "ORACLE:VALID_CERTIFICATE",
+      "expected_state": "ORACLE_STATE:VALID_CERTIFICATE",
+      "expected_event": "ORACLE_EVENT:VALID_CERTIFICATE",
+      "forbidden_outcome": "ORACLE_FORBIDDEN:VALID_CERTIFICATE",
+      "machine_checked": true
+    },
+    {
+      "test_id": "T08",
+      "input": {
+        "fixture": "BEFORE_NOT_BEFORE"
+      },
+      "expected_result": "ORACLE:BEFORE_NOT_BEFORE",
+      "expected_state": "ORACLE_STATE:BEFORE_NOT_BEFORE",
+      "expected_event": "ORACLE_EVENT:BEFORE_NOT_BEFORE",
+      "forbidden_outcome": "ORACLE_FORBIDDEN:BEFORE_NOT_BEFORE",
+      "machine_checked": true
+    },
+    {
+      "test_id": "T09",
+      "input": {
+        "fixture": "EXPIRED_CERTIFICATE"
+      },
+      "expected_result": "ORACLE:EXPIRED_CERTIFICATE",
+      "expected_state": "ORACLE_STATE:EXPIRED_CERTIFICATE",
+      "expected_event": "ORACLE_EVENT:EXPIRED_CERTIFICATE",
+      "forbidden_outcome": "ORACLE_FORBIDDEN:EXPIRED_CERTIFICATE",
+      "machine_checked": true
+    },
+    {
+      "test_id": "T10",
+      "input": {
+        "fixture": "ALL_TRUE"
+      },
+      "expected_result": "ORACLE:ALL_TRUE",
+      "expected_state": "ORACLE_STATE:ALL_TRUE",
+      "expected_event": "ORACLE_EVENT:ALL_TRUE",
+      "forbidden_outcome": "ORACLE_FORBIDDEN:ALL_TRUE",
+      "machine_checked": true
+    },
+    {
+      "test_id": "T11",
+      "input": {
+        "fixture": "ONE_FALSE"
+      },
+      "expected_result": "ORACLE:ONE_FALSE",
+      "expected_state": "ORACLE_STATE:ONE_FALSE",
+      "expected_event": "ORACLE_EVENT:ONE_FALSE",
+      "forbidden_outcome": "ORACLE_FORBIDDEN:ONE_FALSE",
+      "machine_checked": true
+    },
+    {
+      "test_id": "T12",
+      "input": {
+        "fixture": "FALSE_PLUS_BLOCKED"
+      },
+      "expected_result": "ORACLE:FALSE_PLUS_BLOCKED",
+      "expected_state": "ORACLE_STATE:FALSE_PLUS_BLOCKED",
+      "expected_event": "ORACLE_EVENT:FALSE_PLUS_BLOCKED",
+      "forbidden_outcome": "ORACLE_FORBIDDEN:FALSE_PLUS_BLOCKED",
+      "machine_checked": true
+    },
+    {
+      "test_id": "T13",
+      "input": {
+        "fixture": "UNKNOWN_ONLY"
+      },
+      "expected_result": "ORACLE:UNKNOWN_ONLY",
+      "expected_state": "ORACLE_STATE:UNKNOWN_ONLY",
+      "expected_event": "ORACLE_EVENT:UNKNOWN_ONLY",
+      "forbidden_outcome": "ORACLE_FORBIDDEN:UNKNOWN_ONLY",
+      "machine_checked": true
+    },
+    {
+      "test_id": "T14",
+      "input": {
+        "fixture": "EXPLICIT_DEFER"
+      },
+      "expected_result": "ORACLE:EXPLICIT_DEFER",
+      "expected_state": "ORACLE_STATE:EXPLICIT_DEFER",
+      "expected_event": "ORACLE_EVENT:EXPLICIT_DEFER",
+      "forbidden_outcome": "ORACLE_FORBIDDEN:EXPLICIT_DEFER",
+      "machine_checked": true
+    },
+    {
+      "test_id": "T15",
+      "input": {
+        "fixture": "VALID_ISSUANCE_AUTHORITY"
+      },
+      "expected_result": "ORACLE:VALID_ISSUANCE_AUTHORITY",
+      "expected_state": "ORACLE_STATE:VALID_ISSUANCE_AUTHORITY",
+      "expected_event": "ORACLE_EVENT:VALID_ISSUANCE_AUTHORITY",
+      "forbidden_outcome": "ORACLE_FORBIDDEN:VALID_ISSUANCE_AUTHORITY",
+      "machine_checked": true
+    },
+    {
+      "test_id": "T16",
+      "input": {
+        "fixture": "EVALUATOR_SELF_AUTHORIZATION"
+      },
+      "expected_result": "ORACLE:EVALUATOR_SELF_AUTHORIZATION",
+      "expected_state": "ORACLE_STATE:EVALUATOR_SELF_AUTHORIZATION",
+      "expected_event": "ORACLE_EVENT:EVALUATOR_SELF_AUTHORIZATION",
+      "forbidden_outcome": "ORACLE_FORBIDDEN:EVALUATOR_SELF_AUTHORIZATION",
+      "machine_checked": true
+    },
+    {
+      "test_id": "T17",
+      "input": {
+        "fixture": "EMPTY_SET_DENY"
+      },
+      "expected_result": "ORACLE:EMPTY_SET_DENY",
+      "expected_state": "ORACLE_STATE:EMPTY_SET_DENY",
+      "expected_event": "ORACLE_EVENT:EMPTY_SET_DENY",
+      "forbidden_outcome": "ORACLE_FORBIDDEN:EMPTY_SET_DENY",
+      "machine_checked": true
+    },
+    {
+      "test_id": "T18",
+      "input": {
+        "fixture": "EMPTY_SET_MISSING_ACTION"
+      },
+      "expected_result": "ORACLE:EMPTY_SET_MISSING_ACTION",
+      "expected_state": "ORACLE_STATE:EMPTY_SET_MISSING_ACTION",
+      "expected_event": "ORACLE_EVENT:EMPTY_SET_MISSING_ACTION",
+      "forbidden_outcome": "ORACLE_FORBIDDEN:EMPTY_SET_MISSING_ACTION",
+      "machine_checked": true
+    },
+    {
+      "test_id": "T19",
+      "input": {
+        "fixture": "DUPLICATE_APPROVAL"
+      },
+      "expected_result": "ORACLE:DUPLICATE_APPROVAL",
+      "expected_state": "ORACLE_STATE:DUPLICATE_APPROVAL",
+      "expected_event": "ORACLE_EVENT:DUPLICATE_APPROVAL",
+      "forbidden_outcome": "ORACLE_FORBIDDEN:DUPLICATE_APPROVAL",
+      "machine_checked": true
+    },
+    {
+      "test_id": "T20",
+      "input": {
+        "fixture": "N_OF_M_THRESHOLD"
+      },
+      "expected_result": "ORACLE:N_OF_M_THRESHOLD",
+      "expected_state": "ORACLE_STATE:N_OF_M_THRESHOLD",
+      "expected_event": "ORACLE_EVENT:N_OF_M_THRESHOLD",
+      "forbidden_outcome": "ORACLE_FORBIDDEN:N_OF_M_THRESHOLD",
+      "machine_checked": true
+    },
+    {
+      "test_id": "T21",
+      "input": {
+        "fixture": "ARTIFACT_CHANGED"
+      },
+      "expected_result": "ORACLE:ARTIFACT_CHANGED",
+      "expected_state": "ORACLE_STATE:ARTIFACT_CHANGED",
+      "expected_event": "ORACLE_EVENT:ARTIFACT_CHANGED",
+      "forbidden_outcome": "ORACLE_FORBIDDEN:ARTIFACT_CHANGED",
+      "machine_checked": true
+    },
+    {
+      "test_id": "T22",
+      "input": {
+        "fixture": "POLICY_CHANGED"
+      },
+      "expected_result": "ORACLE:POLICY_CHANGED",
+      "expected_state": "ORACLE_STATE:POLICY_CHANGED",
+      "expected_event": "ORACLE_EVENT:POLICY_CHANGED",
+      "forbidden_outcome": "ORACLE_FORBIDDEN:POLICY_CHANGED",
+      "machine_checked": true
+    },
+    {
+      "test_id": "T23",
+      "input": {
+        "fixture": "ENVIRONMENT_CHANGED"
+      },
+      "expected_result": "ORACLE:ENVIRONMENT_CHANGED",
+      "expected_state": "ORACLE_STATE:ENVIRONMENT_CHANGED",
+      "expected_event": "ORACLE_EVENT:ENVIRONMENT_CHANGED",
+      "forbidden_outcome": "ORACLE_FORBIDDEN:ENVIRONMENT_CHANGED",
+      "machine_checked": true
+    },
+    {
+      "test_id": "T24",
+      "input": {
+        "fixture": "EVIDENCE_CHANGED"
+      },
+      "expected_result": "ORACLE:EVIDENCE_CHANGED",
+      "expected_state": "ORACLE_STATE:EVIDENCE_CHANGED",
+      "expected_event": "ORACLE_EVENT:EVIDENCE_CHANGED",
+      "forbidden_outcome": "ORACLE_FORBIDDEN:EVIDENCE_CHANGED",
+      "machine_checked": true
+    },
+    {
+      "test_id": "T25",
+      "input": {
+        "fixture": "DUPLICATE_EXECUTION"
+      },
+      "expected_result": "ORACLE:DUPLICATE_EXECUTION",
+      "expected_state": "ORACLE_STATE:DUPLICATE_EXECUTION",
+      "expected_event": "ORACLE_EVENT:DUPLICATE_EXECUTION",
+      "forbidden_outcome": "ORACLE_FORBIDDEN:DUPLICATE_EXECUTION",
+      "machine_checked": true
+    },
+    {
+      "test_id": "T26",
+      "input": {
+        "fixture": "CONCURRENT_DECISIONS"
+      },
+      "expected_result": "ORACLE:CONCURRENT_DECISIONS",
+      "expected_state": "ORACLE_STATE:CONCURRENT_DECISIONS",
+      "expected_event": "ORACLE_EVENT:CONCURRENT_DECISIONS",
+      "forbidden_outcome": "ORACLE_FORBIDDEN:CONCURRENT_DECISIONS",
+      "machine_checked": true
+    },
+    {
+      "test_id": "T27",
+      "input": {
+        "fixture": "SEQUENCE_COLLISION"
+      },
+      "expected_result": "ORACLE:SEQUENCE_COLLISION",
+      "expected_state": "ORACLE_STATE:SEQUENCE_COLLISION",
+      "expected_event": "ORACLE_EVENT:SEQUENCE_COLLISION",
+      "forbidden_outcome": "ORACLE_FORBIDDEN:SEQUENCE_COLLISION",
+      "machine_checked": true
+    },
+    {
+      "test_id": "T28",
+      "input": {
+        "fixture": "EVENT_CORRUPTION"
+      },
+      "expected_result": "ORACLE:EVENT_CORRUPTION",
+      "expected_state": "ORACLE_STATE:EVENT_CORRUPTION",
+      "expected_event": "ORACLE_EVENT:EVENT_CORRUPTION",
+      "forbidden_outcome": "ORACLE_FORBIDDEN:EVENT_CORRUPTION",
+      "machine_checked": true
+    },
+    {
+      "test_id": "T29",
+      "input": {
+        "fixture": "LATE_VALID_EVENT"
+      },
+      "expected_result": "ORACLE:LATE_VALID_EVENT",
+      "expected_state": "ORACLE_STATE:LATE_VALID_EVENT",
+      "expected_event": "ORACLE_EVENT:LATE_VALID_EVENT",
+      "forbidden_outcome": "ORACLE_FORBIDDEN:LATE_VALID_EVENT",
+      "machine_checked": true
+    },
+    {
+      "test_id": "T30",
+      "input": {
+        "fixture": "ROLLBACK_AFTER_PARTIAL"
+      },
+      "expected_result": "ORACLE:ROLLBACK_AFTER_PARTIAL",
+      "expected_state": "ORACLE_STATE:ROLLBACK_AFTER_PARTIAL",
+      "expected_event": "ORACLE_EVENT:ROLLBACK_AFTER_PARTIAL",
+      "forbidden_outcome": "ORACLE_FORBIDDEN:ROLLBACK_AFTER_PARTIAL",
+      "machine_checked": true
+    },
+    {
+      "test_id": "T31",
+      "input": {
+        "fixture": "POST_RELEASE_FAIL"
+      },
+      "expected_result": "ORACLE:POST_RELEASE_FAIL",
+      "expected_state": "ORACLE_STATE:POST_RELEASE_FAIL",
+      "expected_event": "ORACLE_EVENT:POST_RELEASE_FAIL",
+      "forbidden_outcome": "ORACLE_FORBIDDEN:POST_RELEASE_FAIL",
+      "machine_checked": true
+    },
+    {
+      "test_id": "T32",
+      "input": {
+        "fixture": "INVALID_VERIFICATION"
+      },
+      "expected_result": "ORACLE:INVALID_VERIFICATION",
+      "expected_state": "ORACLE_STATE:INVALID_VERIFICATION",
+      "expected_event": "ORACLE_EVENT:INVALID_VERIFICATION",
+      "forbidden_outcome": "ORACLE_FORBIDDEN:INVALID_VERIFICATION",
+      "machine_checked": true
+    },
+    {
+      "test_id": "T33",
+      "input": {
+        "fixture": "REVOKED_CERTIFICATE"
+      },
+      "expected_result": "ORACLE:REVOKED_CERTIFICATE",
+      "expected_state": "ORACLE_STATE:REVOKED_CERTIFICATE",
+      "expected_event": "ORACLE_EVENT:REVOKED_CERTIFICATE",
+      "forbidden_outcome": "ORACLE_FORBIDDEN:REVOKED_CERTIFICATE",
+      "machine_checked": true
+    },
+    {
+      "test_id": "T34",
+      "input": {
+        "fixture": "SUPERSEDED_CERTIFICATE"
+      },
+      "expected_result": "ORACLE:SUPERSEDED_CERTIFICATE",
+      "expected_state": "ORACLE_STATE:SUPERSEDED_CERTIFICATE",
+      "expected_event": "ORACLE_EVENT:SUPERSEDED_CERTIFICATE",
+      "forbidden_outcome": "ORACLE_FORBIDDEN:SUPERSEDED_CERTIFICATE",
+      "machine_checked": true
+    },
+    {
+      "test_id": "T35",
+      "input": {
+        "fixture": "EQUAL_TIMESTAMPS"
+      },
+      "expected_result": "ORACLE:EQUAL_TIMESTAMPS",
+      "expected_state": "ORACLE_STATE:EQUAL_TIMESTAMPS",
+      "expected_event": "ORACLE_EVENT:EQUAL_TIMESTAMPS",
+      "forbidden_outcome": "ORACLE_FORBIDDEN:EQUAL_TIMESTAMPS",
+      "machine_checked": true
+    },
+    {
+      "test_id": "T36",
+      "input": {
+        "fixture": "EXACT_NOT_AFTER"
+      },
+      "expected_result": "ORACLE:EXACT_NOT_AFTER",
+      "expected_state": "ORACLE_STATE:EXACT_NOT_AFTER",
+      "expected_event": "ORACLE_EVENT:EXACT_NOT_AFTER",
+      "forbidden_outcome": "ORACLE_FORBIDDEN:EXACT_NOT_AFTER",
+      "machine_checked": true
+    },
+    {
+      "test_id": "T37",
+      "input": {
+        "fixture": "TRUSTED_MISMATCH"
+      },
+      "expected_result": "ORACLE:TRUSTED_MISMATCH",
+      "expected_state": "ORACLE_STATE:TRUSTED_MISMATCH",
+      "expected_event": "ORACLE_EVENT:TRUSTED_MISMATCH",
+      "forbidden_outcome": "ORACLE_FORBIDDEN:TRUSTED_MISMATCH",
+      "machine_checked": true
+    },
+    {
+      "test_id": "T38",
+      "input": {
+        "fixture": "MALFORMED_HASH"
+      },
+      "expected_result": "ORACLE:MALFORMED_HASH",
+      "expected_state": "ORACLE_STATE:MALFORMED_HASH",
+      "expected_event": "ORACLE_EVENT:MALFORMED_HASH",
+      "forbidden_outcome": "ORACLE_FORBIDDEN:MALFORMED_HASH",
+      "machine_checked": true
+    },
+    {
+      "test_id": "T39",
+      "input": {
+        "fixture": "DECISION_REVOCATION"
+      },
+      "expected_result": "ORACLE:DECISION_REVOCATION",
+      "expected_state": "ORACLE_STATE:DECISION_REVOCATION",
+      "expected_event": "ORACLE_EVENT:DECISION_REVOCATION",
+      "forbidden_outcome": "ORACLE_FORBIDDEN:DECISION_REVOCATION",
+      "machine_checked": true
+    },
+    {
+      "test_id": "T40",
+      "input": {
+        "fixture": "AUTHORITY_EXPIRY"
+      },
+      "expected_result": "ORACLE:AUTHORITY_EXPIRY",
+      "expected_state": "ORACLE_STATE:AUTHORITY_EXPIRY",
+      "expected_event": "ORACLE_EVENT:AUTHORITY_EXPIRY",
+      "forbidden_outcome": "ORACLE_FORBIDDEN:AUTHORITY_EXPIRY",
+      "machine_checked": true
+    },
+    {
+      "test_id": "T41",
+      "input": {
+        "fixture": "VERIFICATION_MAPPING"
+      },
+      "expected_result": "ORACLE:VERIFICATION_MAPPING",
+      "expected_state": "ORACLE_STATE:VERIFICATION_MAPPING",
+      "expected_event": "ORACLE_EVENT:VERIFICATION_MAPPING",
+      "forbidden_outcome": "ORACLE_FORBIDDEN:VERIFICATION_MAPPING",
+      "machine_checked": true
+    },
+    {
+      "test_id": "T42",
+      "input": {
+        "fixture": "SEQUENCE_GAP"
+      },
+      "expected_result": "ORACLE:SEQUENCE_GAP",
+      "expected_state": "ORACLE_STATE:SEQUENCE_GAP",
+      "expected_event": "ORACLE_EVENT:SEQUENCE_GAP",
+      "forbidden_outcome": "ORACLE_FORBIDDEN:SEQUENCE_GAP",
+      "machine_checked": true
+    },
+    {
+      "test_id": "T43",
+      "input": {
+        "fixture": "TRUSTED_CHECKPOINT"
+      },
+      "expected_result": "ORACLE:TRUSTED_CHECKPOINT",
+      "expected_state": "ORACLE_STATE:TRUSTED_CHECKPOINT",
+      "expected_event": "ORACLE_EVENT:TRUSTED_CHECKPOINT",
+      "forbidden_outcome": "ORACLE_FORBIDDEN:TRUSTED_CHECKPOINT",
+      "machine_checked": true
+    },
+    {
+      "test_id": "T44",
+      "input": {
+        "fixture": "REQUIRED_REF_ABSENT"
+      },
+      "expected_result": "ORACLE:REQUIRED_REF_ABSENT",
+      "expected_state": "ORACLE_STATE:REQUIRED_REF_ABSENT",
+      "expected_event": "ORACLE_EVENT:REQUIRED_REF_ABSENT",
+      "forbidden_outcome": "ORACLE_FORBIDDEN:REQUIRED_REF_ABSENT",
+      "machine_checked": true
+    },
+    {
+      "test_id": "T45",
+      "input": {
+        "fixture": "HALF_OPEN_INTERVAL"
+      },
+      "expected_result": "ORACLE:HALF_OPEN_INTERVAL",
+      "expected_state": "ORACLE_STATE:HALF_OPEN_INTERVAL",
+      "expected_event": "ORACLE_EVENT:HALF_OPEN_INTERVAL",
+      "forbidden_outcome": "ORACLE_FORBIDDEN:HALF_OPEN_INTERVAL",
+      "machine_checked": true
+    }
+  ],
+  "count": 45,
+  "supplied": 35,
+  "correction": 10
+}

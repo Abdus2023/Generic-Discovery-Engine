@@ -1,0 +1,69 @@
+{
+  "schema_version": "14.7.1",
+  "epistemic_status": "SUPPORTED",
+  "claim_class": "NORMATIVE_REQUIREMENT",
+  "normative_origin": "USER_SUPPLIED_V14_7_TEXT",
+  "objects": [
+    {
+      "ambiguity_id": "A-001",
+      "question": "canonical serialization/hash/signature algorithms",
+      "affected_objects": [
+        "NORMATIVE_PROFILE"
+      ],
+      "why_unresolved": "Deployment or implementation choice",
+      "minimum_safe_rule": "Explicit versioned profile with verifier identity is required",
+      "default_fail_closed_behavior": "INVALID",
+      "classification": "NON_NORMATIVE_IMPLEMENTATION_CHOICE",
+      "scope_id": "protocol-v14.7.1",
+      "scope_hash": "d350c8b45b433629817ae71cef186eec523af7bc08a5bbe8eff990808413d1c8",
+      "created_at": "2026-09-12T00:00:00Z",
+      "content_hash": "9cb76583895d988f7765546a59b72da7bebcca0e8a1c805fbcbaa2b22c9abc20"
+    },
+    {
+      "ambiguity_id": "A-002",
+      "question": "trusted clock and skew bound",
+      "affected_objects": [
+        "NORMATIVE_PROFILE"
+      ],
+      "why_unresolved": "Deployment or implementation choice",
+      "minimum_safe_rule": "Explicit versioned profile with verifier identity is required",
+      "default_fail_closed_behavior": "UNKNOWN_OR_BLOCKED",
+      "classification": "NON_NORMATIVE_IMPLEMENTATION_CHOICE",
+      "scope_id": "protocol-v14.7.1",
+      "scope_hash": "d350c8b45b433629817ae71cef186eec523af7bc08a5bbe8eff990808413d1c8",
+      "created_at": "2026-09-12T00:00:00Z",
+      "content_hash": "c3577e832d4e9835d6247eb7973f525026407524ba00134efb5b39348edf21a2"
+    },
+    {
+      "ambiguity_id": "A-003",
+      "question": "durable atomic commit technology",
+      "affected_objects": [
+        "NORMATIVE_PROFILE"
+      ],
+      "why_unresolved": "Deployment or implementation choice",
+      "minimum_safe_rule": "Explicit versioned profile with verifier identity is required",
+      "default_fail_closed_behavior": "CONCURRENCY_FAILURE",
+      "classification": "NON_NORMATIVE_IMPLEMENTATION_CHOICE",
+      "scope_id": "protocol-v14.7.1",
+      "scope_hash": "d350c8b45b433629817ae71cef186eec523af7bc08a5bbe8eff990808413d1c8",
+      "created_at": "2026-09-12T00:00:00Z",
+      "content_hash": "1b537bdf3a4cbb37fdb6d7db9460448c24acc5d83ddaeb16ddf427ad1a30f2b0"
+    },
+    {
+      "ambiguity_id": "A-004",
+      "question": "predicate expression language",
+      "affected_objects": [
+        "NORMATIVE_PROFILE"
+      ],
+      "why_unresolved": "Deployment or implementation choice",
+      "minimum_safe_rule": "Explicit versioned profile with verifier identity is required",
+      "default_fail_closed_behavior": "INVALID_POLICY",
+      "classification": "NON_NORMATIVE_IMPLEMENTATION_CHOICE",
+      "scope_id": "protocol-v14.7.1",
+      "scope_hash": "d350c8b45b433629817ae71cef186eec523af7bc08a5bbe8eff990808413d1c8",
+      "created_at": "2026-09-12T00:00:00Z",
+      "content_hash": "ac27fb81b43afe388b9eeeff7d31f8aad1288fa616c869b9d1441bd92a86a3f9"
+    }
+  ],
+  "new_layer": false
+}

@@ -1,0 +1,165 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://generic-discovery-engine.invalid/compliance/v14.7.1/authority-qualification.schema.yaml",
+  "title": "authority-qualification",
+  "type": "object",
+  "required": [
+    "qualification_id",
+    "authority_id",
+    "authority_type",
+    "operation",
+    "subject_scope_hash",
+    "policy_ref",
+    "credential_ref",
+    "not_before",
+    "not_after",
+    "observed_status",
+    "parent_authority_id",
+    "delegation_scope_hash",
+    "qualification",
+    "approval_refs",
+    "evaluated_at",
+    "scope_id",
+    "scope_hash",
+    "content_hash"
+  ],
+  "properties": {
+    "qualification_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "authority_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "authority_type": {
+      "type": "string",
+      "enum": [
+        "AUTOMATED_POLICY",
+        "HUMAN",
+        "DELEGATED",
+        "MULTI_PARTY"
+      ]
+    },
+    "operation": {
+      "type": "string",
+      "enum": [
+        "ISSUE_CERTIFICATE",
+        "REVOKE_CERTIFICATE",
+        "SUPERSEDE_CERTIFICATE",
+        "APPROVE_RELEASE",
+        "REJECT_RELEASE",
+        "DEFER_RELEASE",
+        "EXECUTE_RELEASE",
+        "ROLLBACK_RELEASE"
+      ]
+    },
+    "subject_scope_hash": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$"
+    },
+    "policy_ref": {
+      "type": "string",
+      "minLength": 1
+    },
+    "credential_ref": {
+      "type": "string",
+      "minLength": 1
+    },
+    "not_before": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "not_after": {
+      "oneOf": [
+        {
+          "type": "string",
+          "format": "date-time"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "observed_status": {
+      "type": "string",
+      "enum": [
+        "ACTIVE",
+        "SUSPENDED",
+        "REVOKED",
+        "EXPIRED",
+        "UNKNOWN"
+      ]
+    },
+    "parent_authority_id": {
+      "oneOf": [
+        {
+          "type": "string",
+          "minLength": 1
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "delegation_scope_hash": {
+      "oneOf": [
+        {
+          "type": "string",
+          "pattern": "^[a-f0-9]{64}$"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "qualification": {
+      "type": "string",
+      "enum": [
+        "QUALIFIED",
+        "UNQUALIFIED",
+        "BLOCKED",
+        "UNKNOWN",
+        "INVALID"
+      ]
+    },
+    "approval_refs": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "evaluated_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "scope_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "scope_hash": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$"
+    },
+    "content_hash": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$"
+    }
+  },
+  "additionalProperties": false,
+  "x-identity-fields": [
+    "qualification_id"
+  ],
+  "x-immutable": true,
+  "x-self-excluding-hash-field": "content_hash",
+  "x-reference-resolution": "EXACTLY_ONE_TYPED_HASH_MATCHED_TARGET",
+  "x-nullability": "EXPLICIT_ONEOF_NULL_ONLY",
+  "x-timestamp-semantics": "UTC_HALF_OPEN_INTERVALS",
+  "x-scope-validation": "EXPLICIT_SCOPE_HASH",
+  "x-version-relationship": "METADATA_NOT_IDENTITY",
+  "x-normative-rules": [
+    "immutable as-of qualification not authority lifecycle",
+    "credential is not policy"
+  ]
+}

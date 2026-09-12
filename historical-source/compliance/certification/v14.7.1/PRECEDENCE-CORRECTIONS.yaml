@@ -1,0 +1,33 @@
+{
+  "schema_version": "14.7.1",
+  "epistemic_status": "SUPPORTED",
+  "claim_class": "NORMATIVE_REQUIREMENT",
+  "normative_origin": "USER_SUPPLIED_V14_7_TEXT",
+  "domains": [
+    {
+      "domain": "EVALUATION_INTEGRITY",
+      "rule": "INVALID_TERMINATES"
+    },
+    {
+      "domain": "PREDICATE_AGGREGATION",
+      "rule": "FALSE_GT_BLOCKED_GT_UNKNOWN_GT_TRUE"
+    },
+    {
+      "domain": "ELIGIBILITY",
+      "rule": "MAP_VALID_AGGREGATE"
+    },
+    {
+      "domain": "AUTHORIZATION",
+      "rule": "QUALIFICATION_AND_POLICY_AND_SCOPE_AND_TIME"
+    },
+    {
+      "domain": "RELEASE_DECISION",
+      "rule": "NO_UNKNOWN_AUTOMATIC_DECISION"
+    },
+    {
+      "domain": "STATE_TRANSITION",
+      "rule": "STATE_EVENT_GUARD_AUTHORITY_EVIDENCE"
+    }
+  ],
+  "universal": false
+}

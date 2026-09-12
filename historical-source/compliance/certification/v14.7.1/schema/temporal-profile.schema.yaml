@@ -1,0 +1,77 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://generic-discovery-engine.invalid/compliance/v14.7.1/temporal-profile.schema.yaml",
+  "title": "temporal-profile",
+  "type": "object",
+  "required": [
+    "profile_id",
+    "clock_id",
+    "clock_evidence_ref",
+    "maximum_skew_milliseconds",
+    "offline_action",
+    "interval",
+    "scope_id",
+    "scope_hash",
+    "content_hash",
+    "created_at"
+  ],
+  "properties": {
+    "profile_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "clock_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "clock_evidence_ref": {
+      "type": "string",
+      "minLength": 1
+    },
+    "maximum_skew_milliseconds": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "offline_action": {
+      "type": "string",
+      "enum": [
+        "UNKNOWN",
+        "BLOCKED",
+        "INVALID"
+      ]
+    },
+    "interval": {
+      "const": "[not_before,not_after)"
+    },
+    "scope_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "scope_hash": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$"
+    },
+    "content_hash": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$"
+    },
+    "created_at": {
+      "type": "string",
+      "format": "date-time"
+    }
+  },
+  "additionalProperties": false,
+  "x-identity-fields": [
+    "profile_id"
+  ],
+  "x-immutable": true,
+  "x-self-excluding-hash-field": "content_hash",
+  "x-reference-resolution": "EXACTLY_ONE_TYPED_HASH_MATCHED_TARGET",
+  "x-nullability": "EXPLICIT_ONEOF_NULL_ONLY",
+  "x-timestamp-semantics": "UTC_HALF_OPEN_INTERVALS",
+  "x-scope-validation": "EXPLICIT_SCOPE_HASH",
+  "x-version-relationship": "METADATA_NOT_IDENTITY",
+  "x-normative-rules": [
+    "missing profile prevents trusted temporal claims"
+  ]
+}

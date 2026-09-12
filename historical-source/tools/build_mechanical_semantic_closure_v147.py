@@ -165,6 +165,7 @@ def build_spec():
 
 def main():
  if not (V145/'VALIDATION.yaml').is_file():raise RuntimeError('validated Protocol-v14.5 package required')
+ if (COMP/'certification/v14.7.1').exists():raise RuntimeError('refusing to erase predecessor artifacts after append-only v14.7.1 correction')
  if (COMP/'certification/v14.8').exists():raise RuntimeError('refusing to erase predecessor artifacts after append-only v14.8 extension')
  if DEST.exists():
   for n in ['EVENT-HISTORIES.yaml','CURRENT-PROJECTIONS.yaml']:

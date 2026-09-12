@@ -1,0 +1,79 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://generic-discovery-engine.invalid/compliance/v14.7.1/trusted-checkpoint.schema.yaml",
+  "title": "trusted-checkpoint",
+  "type": "object",
+  "required": [
+    "checkpoint_id",
+    "stream_id",
+    "prior_sequence_no",
+    "next_sequence_no",
+    "omitted_range_hash",
+    "authority_id",
+    "signature",
+    "committed_at",
+    "scope_id",
+    "scope_hash",
+    "content_hash"
+  ],
+  "properties": {
+    "checkpoint_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "stream_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "prior_sequence_no": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "next_sequence_no": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "omitted_range_hash": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$"
+    },
+    "authority_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "signature": {
+      "type": "string",
+      "minLength": 1
+    },
+    "committed_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "scope_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "scope_hash": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$"
+    },
+    "content_hash": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$"
+    }
+  },
+  "additionalProperties": false,
+  "x-identity-fields": [
+    "checkpoint_id"
+  ],
+  "x-immutable": true,
+  "x-self-excluding-hash-field": "content_hash",
+  "x-reference-resolution": "EXACTLY_ONE_TYPED_HASH_MATCHED_TARGET",
+  "x-nullability": "EXPLICIT_ONEOF_NULL_ONLY",
+  "x-timestamp-semantics": "UTC_HALF_OPEN_INTERVALS",
+  "x-scope-validation": "EXPLICIT_SCOPE_HASH",
+  "x-version-relationship": "METADATA_NOT_IDENTITY",
+  "x-normative-rules": [
+    "only trusted checkpoint can justify sequence gap"
+  ]
+}

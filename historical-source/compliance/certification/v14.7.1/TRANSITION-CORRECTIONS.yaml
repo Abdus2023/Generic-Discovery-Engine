@@ -1,0 +1,183 @@
+{
+  "schema_version": "14.7.1",
+  "epistemic_status": "SUPPORTED",
+  "claim_class": "NORMATIVE_REQUIREMENT",
+  "normative_origin": "USER_SUPPLIED_V14_7_TEXT",
+  "inherited_complete_table": {
+    "path": "../v14.7/STATE-TRANSITION-TABLES.yaml",
+    "sha256": "e08af336350d7e22f800a51e7d7658a7eabd61a43888b991898f2861e6051a45",
+    "transition_count": 53
+  },
+  "override_semantics": [
+    {
+      "object": "CertificateCandidate",
+      "model": "WORKFLOW_NOT_LIFECYCLE",
+      "tuple_fields": [
+        "FROM",
+        "EVENT",
+        "GUARD",
+        "REQUIRED_EVIDENCE",
+        "AUTHORITY",
+        "TO",
+        "SIDE_EFFECTS",
+        "FORBIDDEN_SIDE_EFFECTS"
+      ]
+    },
+    {
+      "object": "Certificate",
+      "model": "DRAFT_ISSUED_CANCELLED_REVOKED_SUPERSEDED_EXPIRED",
+      "tuple_fields": [
+        "FROM",
+        "EVENT",
+        "GUARD",
+        "REQUIRED_EVIDENCE",
+        "AUTHORITY",
+        "TO",
+        "SIDE_EFFECTS",
+        "FORBIDDEN_SIDE_EFFECTS"
+      ]
+    },
+    {
+      "object": "CertificateValidity",
+      "model": "DERIVED_IMMUTABLE_RESULT",
+      "tuple_fields": [
+        "FROM",
+        "EVENT",
+        "GUARD",
+        "REQUIRED_EVIDENCE",
+        "AUTHORITY",
+        "TO",
+        "SIDE_EFFECTS",
+        "FORBIDDEN_SIDE_EFFECTS"
+      ]
+    },
+    {
+      "object": "CertificateEligibility",
+      "model": "DERIVED_IMMUTABLE_RESULT",
+      "tuple_fields": [
+        "FROM",
+        "EVENT",
+        "GUARD",
+        "REQUIRED_EVIDENCE",
+        "AUTHORITY",
+        "TO",
+        "SIDE_EFFECTS",
+        "FORBIDDEN_SIDE_EFFECTS"
+      ]
+    },
+    {
+      "object": "Release",
+      "model": "IMMUTABLE_REGISTERED",
+      "tuple_fields": [
+        "FROM",
+        "EVENT",
+        "GUARD",
+        "REQUIRED_EVIDENCE",
+        "AUTHORITY",
+        "TO",
+        "SIDE_EFFECTS",
+        "FORBIDDEN_SIDE_EFFECTS"
+      ]
+    },
+    {
+      "object": "ReleaseGate",
+      "model": "CREATED_ACTIVE_SUPERSEDED_RETIRED",
+      "tuple_fields": [
+        "FROM",
+        "EVENT",
+        "GUARD",
+        "REQUIRED_EVIDENCE",
+        "AUTHORITY",
+        "TO",
+        "SIDE_EFFECTS",
+        "FORBIDDEN_SIDE_EFFECTS"
+      ]
+    },
+    {
+      "object": "ReleaseEligibility",
+      "model": "DERIVED_IMMUTABLE_RESULT",
+      "tuple_fields": [
+        "FROM",
+        "EVENT",
+        "GUARD",
+        "REQUIRED_EVIDENCE",
+        "AUTHORITY",
+        "TO",
+        "SIDE_EFFECTS",
+        "FORBIDDEN_SIDE_EFFECTS"
+      ]
+    },
+    {
+      "object": "ReleaseDecision",
+      "model": "IMMUTABLE_STATUS_WITH_SEPARATE_EFFECTIVENESS",
+      "tuple_fields": [
+        "FROM",
+        "EVENT",
+        "GUARD",
+        "REQUIRED_EVIDENCE",
+        "AUTHORITY",
+        "TO",
+        "SIDE_EFFECTS",
+        "FORBIDDEN_SIDE_EFFECTS"
+      ]
+    },
+    {
+      "object": "ReleaseExecution",
+      "model": "NOT_STARTED_STARTED_SUCCEEDED_FAILED_CANCELLED_ROLLED_BACK",
+      "tuple_fields": [
+        "FROM",
+        "EVENT",
+        "GUARD",
+        "REQUIRED_EVIDENCE",
+        "AUTHORITY",
+        "TO",
+        "SIDE_EFFECTS",
+        "FORBIDDEN_SIDE_EFFECTS"
+      ]
+    },
+    {
+      "object": "PostReleaseVerification",
+      "model": "CREATED_RUNNING_COMPLETED_INVALIDATED_WITH_SEPARATE_RESULT",
+      "tuple_fields": [
+        "FROM",
+        "EVENT",
+        "GUARD",
+        "REQUIRED_EVIDENCE",
+        "AUTHORITY",
+        "TO",
+        "SIDE_EFFECTS",
+        "FORBIDDEN_SIDE_EFFECTS"
+      ]
+    },
+    {
+      "object": "IssuanceAuthority",
+      "model": "ACTIVE_SUSPENDED_REVOKED_EXPIRY_DERIVED",
+      "tuple_fields": [
+        "FROM",
+        "EVENT",
+        "GUARD",
+        "REQUIRED_EVIDENCE",
+        "AUTHORITY",
+        "TO",
+        "SIDE_EFFECTS",
+        "FORBIDDEN_SIDE_EFFECTS"
+      ]
+    },
+    {
+      "object": "Evaluation",
+      "model": "CREATED_VALIDATING_READY_EVALUATING_COMPLETED_INVALID_BLOCKED_FAILED",
+      "tuple_fields": [
+        "FROM",
+        "EVENT",
+        "GUARD",
+        "REQUIRED_EVIDENCE",
+        "AUTHORITY",
+        "TO",
+        "SIDE_EFFECTS",
+        "FORBIDDEN_SIDE_EFFECTS"
+      ]
+    }
+  ],
+  "object_count": 12,
+  "effective_rule": "APPLY_OVERRIDE_SEMANTICS_TO_INHERITED_COMPLETE_TUPLES_WITHOUT_MUTATING_PREDECESSOR"
+}

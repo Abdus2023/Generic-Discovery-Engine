@@ -1,0 +1,153 @@
+{
+  "schema_version": "14.7.1",
+  "epistemic_status": "SUPPORTED",
+  "claim_class": "NORMATIVE_REQUIREMENT",
+  "normative_origin": "USER_SUPPLIED_V14_7_TEXT",
+  "rows": [
+    {
+      "condition": "MISSING_SCHEMA",
+      "evaluation": "INVALID",
+      "eligibility": "NO_RESULT",
+      "authorization": "BLOCKED",
+      "continue": "NO",
+      "retry": "AFTER_REPAIR"
+    },
+    {
+      "condition": "MALFORMED_SCHEMA",
+      "evaluation": "INVALID",
+      "eligibility": "NO_RESULT",
+      "authorization": "BLOCKED",
+      "continue": "NO",
+      "retry": "AFTER_REPAIR"
+    },
+    {
+      "condition": "INVALID_REFERENCE",
+      "evaluation": "INVALID",
+      "eligibility": "NO_RESULT",
+      "authorization": "BLOCKED",
+      "continue": "NO",
+      "retry": "AFTER_REPAIR"
+    },
+    {
+      "condition": "BROKEN_HASH",
+      "evaluation": "INVALID",
+      "eligibility": "NO_RESULT",
+      "authorization": "BLOCKED",
+      "continue": "NO",
+      "retry": "AFTER_REPAIR"
+    },
+    {
+      "condition": "STALE_EVIDENCE",
+      "evaluation": "UNKNOWN",
+      "eligibility": "UNKNOWN",
+      "authorization": "POLICY_NO_IMPLICIT_AUTH",
+      "continue": "AGGREGATION_ONLY",
+      "retry": "YES"
+    },
+    {
+      "condition": "EXPIRED_AUTHORITY",
+      "evaluation": "UNQUALIFIED",
+      "eligibility": "UNCHANGED",
+      "authorization": "REFUSED",
+      "continue": "NO",
+      "retry": "AFTER_RENEWAL"
+    },
+    {
+      "condition": "REVOKED_AUTHORITY",
+      "evaluation": "UNQUALIFIED",
+      "eligibility": "UNCHANGED",
+      "authorization": "REFUSED",
+      "continue": "NO",
+      "retry": "NO"
+    },
+    {
+      "condition": "CONTRADICTORY_POLICY",
+      "evaluation": "INVALID",
+      "eligibility": "NO_RESULT",
+      "authorization": "BLOCKED",
+      "continue": "NO",
+      "retry": "AFTER_REPAIR"
+    },
+    {
+      "condition": "MISSING_EVIDENCE_REFERENCE",
+      "evaluation": "INVALID",
+      "eligibility": "NO_RESULT",
+      "authorization": "BLOCKED",
+      "continue": "NO",
+      "retry": "AFTER_REPAIR"
+    },
+    {
+      "condition": "EVIDENCE_UNAVAILABLE",
+      "evaluation": "BLOCKED",
+      "eligibility": "BLOCKED",
+      "authorization": "BLOCKED",
+      "continue": "AGGREGATION_ONLY",
+      "retry": "YES"
+    },
+    {
+      "condition": "UNKNOWN_PREDICATE",
+      "evaluation": "UNKNOWN",
+      "eligibility": "UNKNOWN",
+      "authorization": "NO_AUTOMATIC_AUTH",
+      "continue": "AGGREGATION_ONLY",
+      "retry": "YES"
+    },
+    {
+      "condition": "FALSE_PREDICATE",
+      "evaluation": "FALSE",
+      "eligibility": "INELIGIBLE",
+      "authorization": "REFUSED",
+      "continue": "AGGREGATION_ONLY",
+      "retry": "CHANGED_INPUT"
+    },
+    {
+      "condition": "BLOCKED_PREREQUISITE",
+      "evaluation": "BLOCKED",
+      "eligibility": "BLOCKED",
+      "authorization": "BLOCKED",
+      "continue": "AGGREGATION_ONLY",
+      "retry": "YES"
+    },
+    {
+      "condition": "TRUSTED_SCOPE_MISMATCH",
+      "evaluation": "FALSE",
+      "eligibility": "INELIGIBLE",
+      "authorization": "REFUSED",
+      "continue": "AGGREGATION_ONLY",
+      "retry": "CORRECT_SCOPE"
+    },
+    {
+      "condition": "TRUSTED_ARTIFACT_MISMATCH",
+      "evaluation": "FALSE",
+      "eligibility": "INELIGIBLE",
+      "authorization": "REFUSED",
+      "continue": "AGGREGATION_ONLY",
+      "retry": "NEW_EVALUATION"
+    },
+    {
+      "condition": "TRUSTED_ENVIRONMENT_MISMATCH",
+      "evaluation": "FALSE",
+      "eligibility": "INELIGIBLE_OR_BLOCKED",
+      "authorization": "REFUSED_OR_BLOCKED",
+      "continue": "AGGREGATION_ONLY",
+      "retry": "NEW_EVALUATION"
+    },
+    {
+      "condition": "INVALID_CERTIFICATE_EVALUATION",
+      "evaluation": "INVALID",
+      "eligibility": "NO_RESULT",
+      "authorization": "BLOCKED",
+      "continue": "NO",
+      "retry": "RECERTIFY"
+    },
+    {
+      "condition": "VALID_TRUE",
+      "evaluation": "TRUE",
+      "eligibility": "ELIGIBLE_IF_ALL_TRUE",
+      "authorization": "MAY_AUTHORIZE",
+      "continue": "YES",
+      "retry": "NO"
+    }
+  ],
+  "count": 18
+}

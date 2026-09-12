@@ -1,0 +1,173 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://generic-discovery-engine.invalid/compliance/v14.7.1/state-transition-event.schema.yaml",
+  "title": "state-transition-event",
+  "type": "object",
+  "required": [
+    "event_id",
+    "stream_id",
+    "object_id",
+    "object_type",
+    "event_type",
+    "previous_event_id",
+    "sequence_no",
+    "from_state",
+    "to_state",
+    "authority_id",
+    "evidence_refs",
+    "occurred_at",
+    "committed_at",
+    "reason",
+    "idempotency_key",
+    "expected_version",
+    "committed_version",
+    "commit_index",
+    "signature",
+    "scope_id",
+    "scope_hash",
+    "content_hash"
+  ],
+  "properties": {
+    "event_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "stream_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "object_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "object_type": {
+      "type": "string",
+      "minLength": 1
+    },
+    "event_type": {
+      "type": "string",
+      "minLength": 1
+    },
+    "previous_event_id": {
+      "oneOf": [
+        {
+          "type": "string",
+          "minLength": 1
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "sequence_no": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "from_state": {
+      "oneOf": [
+        {
+          "type": "string",
+          "minLength": 1
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "to_state": {
+      "oneOf": [
+        {
+          "type": "string",
+          "minLength": 1
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "authority_id": {
+      "oneOf": [
+        {
+          "type": "string",
+          "minLength": 1
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "evidence_refs": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "occurred_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "committed_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "reason": {
+      "type": "string",
+      "minLength": 1
+    },
+    "idempotency_key": {
+      "type": "string",
+      "minLength": 1
+    },
+    "expected_version": {
+      "type": "integer",
+      "minimum": -1
+    },
+    "committed_version": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "commit_index": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "signature": {
+      "oneOf": [
+        {
+          "type": "string",
+          "minLength": 1
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "scope_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "scope_hash": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$"
+    },
+    "content_hash": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$"
+    }
+  },
+  "additionalProperties": false,
+  "x-identity-fields": [
+    "event_id"
+  ],
+  "x-immutable": true,
+  "x-self-excluding-hash-field": "content_hash",
+  "x-reference-resolution": "EXACTLY_ONE_TYPED_HASH_MATCHED_TARGET",
+  "x-nullability": "EXPLICIT_ONEOF_NULL_ONLY",
+  "x-timestamp-semantics": "UTC_HALF_OPEN_INTERVALS",
+  "x-scope-validation": "EXPLICIT_SCOPE_HASH",
+  "x-version-relationship": "METADATA_NOT_IDENTITY",
+  "x-normative-rules": [
+    "late event appends and cannot insert",
+    "order signals cohere"
+  ]
+}

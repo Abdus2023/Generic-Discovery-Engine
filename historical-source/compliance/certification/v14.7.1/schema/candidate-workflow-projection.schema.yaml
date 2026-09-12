@@ -1,0 +1,74 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://generic-discovery-engine.invalid/compliance/v14.7.1/candidate-workflow-projection.schema.yaml",
+  "title": "candidate-workflow-projection",
+  "type": "object",
+  "required": [
+    "projection_id",
+    "candidate_id",
+    "milestone",
+    "event_refs",
+    "projected_at",
+    "scope_id",
+    "scope_hash",
+    "content_hash"
+  ],
+  "properties": {
+    "projection_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "candidate_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "milestone": {
+      "type": "string",
+      "enum": [
+        "CREATED",
+        "VALIDATED",
+        "EVALUATED",
+        "AUTHORIZED",
+        "DRAFT_CREATED",
+        "CANCELLED"
+      ]
+    },
+    "event_refs": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "projected_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "scope_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "scope_hash": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$"
+    },
+    "content_hash": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$"
+    }
+  },
+  "additionalProperties": false,
+  "x-identity-fields": [
+    "projection_id"
+  ],
+  "x-immutable": true,
+  "x-self-excluding-hash-field": "content_hash",
+  "x-reference-resolution": "EXACTLY_ONE_TYPED_HASH_MATCHED_TARGET",
+  "x-nullability": "EXPLICIT_ONEOF_NULL_ONLY",
+  "x-timestamp-semantics": "UTC_HALF_OPEN_INTERVALS",
+  "x-scope-validation": "EXPLICIT_SCOPE_HASH",
+  "x-version-relationship": "METADATA_NOT_IDENTITY",
+  "x-normative-rules": [
+    "workflow milestone is not candidate lifecycle evaluation or authorization"
+  ]
+}
