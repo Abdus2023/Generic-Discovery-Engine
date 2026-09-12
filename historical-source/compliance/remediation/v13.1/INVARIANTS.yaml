@@ -1,0 +1,115 @@
+{
+  "schema_version": "13.1",
+  "invariants": [
+    {
+      "invariant_id": "V131-I01",
+      "statement": "Finding state and remediation state are independent.",
+      "enforcement": "MECHANICAL"
+    },
+    {
+      "invariant_id": "V131-I02",
+      "statement": "Program state is derived from its remediation members.",
+      "enforcement": "MECHANICAL"
+    },
+    {
+      "invariant_id": "V131-I03",
+      "statement": "Conformance state is owned exclusively by the compliance decision.",
+      "enforcement": "MECHANICAL"
+    },
+    {
+      "invariant_id": "V131-I04",
+      "statement": "A finding cannot directly establish conformance.",
+      "enforcement": "MECHANICAL"
+    },
+    {
+      "invariant_id": "V131-I05",
+      "statement": "A remediation cannot directly establish conformance.",
+      "enforcement": "MECHANICAL"
+    },
+    {
+      "invariant_id": "V131-I06",
+      "statement": "A program cannot directly establish conformance.",
+      "enforcement": "MECHANICAL"
+    },
+    {
+      "invariant_id": "V131-I07",
+      "statement": "CLOSED finding does not imply CONFORMANT.",
+      "enforcement": "MECHANICAL"
+    },
+    {
+      "invariant_id": "V131-I08",
+      "statement": "COMPLETE remediation does not imply CONFORMANT.",
+      "enforcement": "MECHANICAL"
+    },
+    {
+      "invariant_id": "V131-I09",
+      "statement": "COMPLETED program does not imply COMPLIANT.",
+      "enforcement": "MECHANICAL"
+    },
+    {
+      "invariant_id": "V131-I10",
+      "statement": "A proven mandatory violation produces NON_COMPLIANT unless effectively waived.",
+      "enforcement": "MECHANICAL"
+    },
+    {
+      "invariant_id": "V131-I11",
+      "statement": "A blocker cannot conceal an already-proven unwaived violation.",
+      "enforcement": "MECHANICAL"
+    },
+    {
+      "invariant_id": "V131-I12",
+      "statement": "An unresolved condition cannot be treated as a proven violation.",
+      "enforcement": "MECHANICAL"
+    },
+    {
+      "invariant_id": "V131-I13",
+      "statement": "Optional requirement failure cannot alone produce NON_COMPLIANT.",
+      "enforcement": "MECHANICAL"
+    },
+    {
+      "invariant_id": "V131-I14",
+      "statement": "PARTIALLY_CONFORMANT is not an audit-level release status.",
+      "enforcement": "MECHANICAL"
+    },
+    {
+      "invariant_id": "V131-I15",
+      "statement": "Every aggregate status is reproducible from current requirement decisions and declared predicates.",
+      "enforcement": "MECHANICAL"
+    },
+    {
+      "invariant_id": "V131-I16",
+      "statement": "Historical state transitions remain immutable.",
+      "enforcement": "MECHANICAL"
+    },
+    {
+      "invariant_id": "V131-I17",
+      "statement": "New evidence creates new decisions rather than mutating historical decisions.",
+      "enforcement": "MECHANICAL"
+    },
+    {
+      "invariant_id": "V131-I18",
+      "statement": "A remediation may generate new findings.",
+      "enforcement": "MECHANICAL"
+    },
+    {
+      "invariant_id": "V131-I19",
+      "statement": "New findings do not overwrite original findings.",
+      "enforcement": "MECHANICAL"
+    },
+    {
+      "invariant_id": "V131-I20",
+      "statement": "Certificate revisions preserve certificate lineage.",
+      "enforcement": "MECHANICAL"
+    },
+    {
+      "invariant_id": "V131-I21",
+      "statement": "A state transition without a legal transition rule is invalid.",
+      "enforcement": "MECHANICAL"
+    },
+    {
+      "invariant_id": "V131-I22",
+      "statement": "Derived summaries are reproducible from authoritative records.",
+      "enforcement": "MECHANICAL"
+    }
+  ]
+}

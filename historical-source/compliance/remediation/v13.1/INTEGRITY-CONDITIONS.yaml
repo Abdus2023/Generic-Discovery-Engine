@@ -1,0 +1,34 @@
+{
+  "schema_version": "13.1",
+  "conditions": [
+    {
+      "condition": "MANDATORY_REQUIREMENTS_COMPLETE",
+      "status": "FAIL"
+    },
+    {
+      "condition": "REFERENCES_RESOLVED",
+      "status": "PASS"
+    },
+    {
+      "condition": "SCHEMAS_VALID",
+      "status": "FAIL_AUDIT_SCOPE"
+    },
+    {
+      "condition": "CERTIFICATE_SCOPE_RESOLVED",
+      "status": "PASS"
+    },
+    {
+      "condition": "REQUIRED_EVIDENCE_INTEGRITY",
+      "status": "BLOCKED"
+    },
+    {
+      "condition": "TEMPORAL_INTEGRITY",
+      "status": "BLOCKED"
+    },
+    {
+      "condition": "DECISION_CONFLICTS_RESOLVED",
+      "status": "PASS_EMPTY"
+    }
+  ],
+  "aggregate_effect": "BLOCKED"
+}

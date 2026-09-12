@@ -1,0 +1,131 @@
+{
+  "schema_version": "13.1",
+  "initial_state": "DETECTED",
+  "states": [
+    "DETECTED",
+    "VALIDATED",
+    "CLASSIFIED",
+    "OPEN",
+    "UNDER_REMEDIATION",
+    "RESOLVED",
+    "CLOSED",
+    "WAIVED",
+    "SUPERSEDED",
+    "REJECTED",
+    "BLOCKED"
+  ],
+  "definitions": {
+    "DETECTED": "A candidate condition has been observed.",
+    "VALIDATED": "Evidence establishes that the finding is real and in scope.",
+    "CLASSIFIED": "Finding type and severity have been assigned.",
+    "OPEN": "The validated finding remains active without accepted resolution.",
+    "UNDER_REMEDIATION": "At least one remediation attempt is active.",
+    "RESOLVED": "Evidence indicates the condition is addressed, pending closure predicates.",
+    "CLOSED": "Independent re-verification and closure predicates succeeded; history remains immutable.",
+    "WAIVED": "Disposition is waived without changing the underlying condition or conformance truth.",
+    "SUPERSEDED": "A new authoritative finding replaces this active record without erasing it.",
+    "REJECTED": "Validation proved the candidate was not a valid finding.",
+    "BLOCKED": "Required lifecycle information is unavailable; the previous valid state is retained for return."
+  },
+  "legal_transitions": [
+    {
+      "from": "DETECTED",
+      "to": "VALIDATED",
+      "guard": "VALIDATION_PASSES"
+    },
+    {
+      "from": "DETECTED",
+      "to": "REJECTED",
+      "guard": "FINDING_PROVEN_INVALID"
+    },
+    {
+      "from": "VALIDATED",
+      "to": "CLASSIFIED",
+      "guard": "CLASSIFICATION_ESTABLISHED"
+    },
+    {
+      "from": "CLASSIFIED",
+      "to": "OPEN",
+      "guard": "FINDING_ACCEPTED_ACTIVE"
+    },
+    {
+      "from": "OPEN",
+      "to": "UNDER_REMEDIATION",
+      "guard": "ACTIVE_REMEDIATION_EXISTS"
+    },
+    {
+      "from": "OPEN",
+      "to": "WAIVED",
+      "guard": "EFFECTIVE_WAIVER_EXISTS"
+    },
+    {
+      "from": "OPEN",
+      "to": "SUPERSEDED",
+      "guard": "AUTHORITATIVE_REPLACEMENT_EXISTS"
+    },
+    {
+      "from": "UNDER_REMEDIATION",
+      "to": "RESOLVED",
+      "guard": "REMEDIATION_EVIDENCE_ADDRESSES_CONDITION"
+    },
+    {
+      "from": "UNDER_REMEDIATION",
+      "to": "OPEN",
+      "guard": "REMEDIATION_FAILS_OR_ABANDONED"
+    },
+    {
+      "from": "RESOLVED",
+      "to": "CLOSED",
+      "guard": "CLOSURE_PREDICATES_PASS"
+    },
+    {
+      "from": "RESOLVED",
+      "to": "OPEN",
+      "guard": "CLOSURE_PREDICATES_FAIL"
+    },
+    {
+      "from": "DETECTED",
+      "to": "BLOCKED",
+      "guard": "REQUIRED_DISPOSITION_INFORMATION_UNAVAILABLE"
+    },
+    {
+      "from": "VALIDATED",
+      "to": "BLOCKED",
+      "guard": "REQUIRED_DISPOSITION_INFORMATION_UNAVAILABLE"
+    },
+    {
+      "from": "CLASSIFIED",
+      "to": "BLOCKED",
+      "guard": "REQUIRED_DISPOSITION_INFORMATION_UNAVAILABLE"
+    },
+    {
+      "from": "OPEN",
+      "to": "BLOCKED",
+      "guard": "REQUIRED_DISPOSITION_INFORMATION_UNAVAILABLE"
+    },
+    {
+      "from": "UNDER_REMEDIATION",
+      "to": "BLOCKED",
+      "guard": "REQUIRED_DISPOSITION_INFORMATION_UNAVAILABLE"
+    },
+    {
+      "from": "RESOLVED",
+      "to": "BLOCKED",
+      "guard": "REQUIRED_DISPOSITION_INFORMATION_UNAVAILABLE"
+    },
+    {
+      "from": "BLOCKED",
+      "to": "$PREVIOUS_VALID_STATE",
+      "guard": "BLOCKING_CONDITION_REMOVED"
+    }
+  ],
+  "skip_policy": "FORBIDDEN_UNLESS_EXPLICIT_TRANSITION_EXISTS",
+  "blocker_return_behavior": "RETURN_TO_PREVIOUS_VALID_STATE_WHEN_BLOCK_REMOVED",
+  "terminal_or_exceptional_states": [
+    "CLOSED",
+    "WAIVED",
+    "SUPERSEDED",
+    "REJECTED"
+  ],
+  "closed_history_immutable": true
+}

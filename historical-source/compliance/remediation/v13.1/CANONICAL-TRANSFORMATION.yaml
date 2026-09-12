@@ -1,0 +1,43 @@
+{
+  "schema_version": "13.1",
+  "protocol_versions": [
+    "v10",
+    "v10.1",
+    "v11",
+    "v11.1",
+    "v12",
+    "v12.1",
+    "v13",
+    "v13.1"
+  ],
+  "chain": [
+    "HISTORY",
+    "EVIDENCE",
+    "PROPERTY",
+    "OBLIGATION",
+    "REQUIREMENT",
+    "NORMATIVE_RULE",
+    "ACCEPTANCE_CRITERION",
+    "ORACLE",
+    "IMPLEMENTATION",
+    "VERIFICATION",
+    "COMPLIANCE_DECISION",
+    "FINDING",
+    "REMEDIATION",
+    "CHANGE",
+    "REVERIFICATION",
+    "NEW_COMPLIANCE_DECISION",
+    "AGGREGATE",
+    "CERTIFICATE"
+  ],
+  "orthogonal_state_views": [
+    "FINDING",
+    "REMEDIATION",
+    "PROGRAM",
+    "CONFORMANCE"
+  ],
+  "truth_inputs": [
+    "COMPLIANCE_DECISION",
+    "AUDIT_AGGREGATE"
+  ]
+}

@@ -1,0 +1,110 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://generic-discovery-engine.invalid/compliance/v13.1/audit-finding.schema.yaml",
+  "title": "Protocol-v13.1 AUDIT_FINDING state owner",
+  "type": "object",
+  "required": [
+    "object_type",
+    "schema_version",
+    "object_id",
+    "created_at",
+    "content_hash",
+    "finding_id",
+    "finding_state",
+    "finding_type",
+    "severity",
+    "evidence",
+    "remediation_ids",
+    "closure_verification_ids"
+  ],
+  "properties": {
+    "object_type": {
+      "const": "AUDIT_FINDING"
+    },
+    "schema_version": {
+      "const": "13.1"
+    },
+    "object_id": {
+      "$ref": "../../../schema/common.schema.yaml#/$defs/Identifier"
+    },
+    "created_at": {
+      "$ref": "../../../schema/common.schema.yaml#/$defs/Timestamp"
+    },
+    "content_hash": {
+      "$ref": "../../../schema/common.schema.yaml#/$defs/Hash"
+    },
+    "finding_id": {
+      "$ref": "../../../schema/common.schema.yaml#/$defs/Identifier"
+    },
+    "finding_state": {
+      "type": "string",
+      "enum": [
+        "DETECTED",
+        "VALIDATED",
+        "CLASSIFIED",
+        "OPEN",
+        "UNDER_REMEDIATION",
+        "RESOLVED",
+        "CLOSED",
+        "WAIVED",
+        "SUPERSEDED",
+        "REJECTED",
+        "BLOCKED"
+      ]
+    },
+    "finding_type": {
+      "type": "string"
+    },
+    "severity": {
+      "type": "string"
+    },
+    "evidence": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "$ref": "../../../schema/common.schema.yaml#/$defs/Reference"
+      }
+    },
+    "remediation_ids": {
+      "type": "array",
+      "items": {
+        "$ref": "../../../schema/common.schema.yaml#/$defs/Identifier"
+      },
+      "uniqueItems": true
+    },
+    "closure_verification_ids": {
+      "type": "array",
+      "items": {
+        "$ref": "../../../schema/common.schema.yaml#/$defs/Identifier"
+      },
+      "uniqueItems": true
+    },
+    "historical_source": {
+      "$ref": "../../../schema/common.schema.yaml#/$defs/Reference"
+    }
+  },
+  "additionalProperties": false,
+  "x-v13.1-rules": [
+    "Finding state never substitutes for remediation or conformance state",
+    "CLOSED retains immutable history",
+    "CLOSED requires independent closure verification"
+  ],
+  "allOf": [
+    {
+      "if": {
+        "properties": {
+          "finding_state": {
+            "const": "CLOSED"
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "closure_verification_ids": {
+            "minItems": 1
+          }
+        }
+      }
+    }
+  ]
+}

@@ -1,0 +1,91 @@
+{
+  "schema_version": "13.1",
+  "domains": [
+    {
+      "domain": "CONFORMANCE",
+      "owner": "COMPLIANCE_DECISION",
+      "question": "Does implementation conform?",
+      "states": [
+        "UNASSESSED",
+        "MAPPED",
+        "VERIFIED",
+        "CONFORMANT",
+        "PARTIALLY_CONFORMANT",
+        "NON_CONFORMANT",
+        "UNVERIFIED",
+        "BLOCKED",
+        "UNKNOWN",
+        "NOT_APPLICABLE"
+      ]
+    },
+    {
+      "domain": "FINDING",
+      "owner": "AUDIT_FINDING",
+      "question": "What is the lifecycle of the discovered finding?",
+      "states": [
+        "DETECTED",
+        "VALIDATED",
+        "CLASSIFIED",
+        "OPEN",
+        "UNDER_REMEDIATION",
+        "RESOLVED",
+        "CLOSED",
+        "WAIVED",
+        "SUPERSEDED",
+        "REJECTED",
+        "BLOCKED"
+      ]
+    },
+    {
+      "domain": "REMEDIATION",
+      "owner": "REMEDIATION",
+      "question": "What is the lifecycle of the remediation attempt?",
+      "states": [
+        "PROPOSED",
+        "ASSESSED",
+        "APPROVED",
+        "IN_PROGRESS",
+        "READY_FOR_VERIFICATION",
+        "REVERIFICATION",
+        "FAILED",
+        "REGRESSION",
+        "COMPLETE",
+        "BLOCKED",
+        "REJECTED",
+        "SUPERSEDED",
+        "CANCELLED"
+      ]
+    },
+    {
+      "domain": "PROGRAM",
+      "owner": "REMEDIATION_PROGRAM",
+      "question": "What is the lifecycle of the coordination program?",
+      "states": [
+        "CREATED",
+        "TRIAGED",
+        "PLANNED",
+        "ACTIVE",
+        "BLOCKED",
+        "EVALUATING",
+        "COMPLETED",
+        "CANCELLED",
+        "SUPERSEDED",
+        "FAILED"
+      ]
+    },
+    {
+      "domain": "AUDIT_AGGREGATE",
+      "owner": "AUDIT_AGGREGATE",
+      "question": "What follows from requirement decisions and declared predicates?",
+      "states": [
+        "NON_COMPLIANT",
+        "CONDITIONALLY_COMPLIANT",
+        "BLOCKED",
+        "UNVERIFIED",
+        "COMPLIANT"
+      ]
+    }
+  ],
+  "substitution_forbidden": true,
+  "fundamental_invariant": "PROCESS_STATE_NEVER_SUBSTITUTES_FOR_TRUTH_STATE"
+}

@@ -1,0 +1,49 @@
+{
+  "schema_version": "13.1",
+  "states": [
+    "CREATED",
+    "TRIAGED",
+    "PLANNED",
+    "ACTIVE",
+    "BLOCKED",
+    "EVALUATING",
+    "COMPLETED",
+    "CANCELLED",
+    "SUPERSEDED",
+    "FAILED"
+  ],
+  "definitions": {
+    "CREATED": "No remediation member exists.",
+    "TRIAGED": "Members exist but no more-specific aggregate rule applies.",
+    "PLANNED": "All member attempts remain proposed or assessed.",
+    "ACTIVE": "At least one member is in active change or evaluation work.",
+    "BLOCKED": "At least one member is blocked and no member is active.",
+    "EVALUATING": "Declared coordination phase for evaluation; the canonical member aggregate classifies evaluation members as ACTIVE.",
+    "COMPLETED": "All member remediations are complete.",
+    "CANCELLED": "An explicit cancellation event terminates the program.",
+    "SUPERSEDED": "An explicit supersession event replaces the program.",
+    "FAILED": "All member remediation attempts were rejected."
+  },
+  "normal_lifecycle": [
+    "CREATED",
+    "TRIAGED",
+    "PLANNED",
+    "ACTIVE",
+    "EVALUATING",
+    "COMPLETED"
+  ],
+  "terminal_alternatives": [
+    "CANCELLED",
+    "SUPERSEDED",
+    "FAILED"
+  ],
+  "state_authority": "DERIVED_FROM_MEMBER_REMEDIATIONS",
+  "ordinary_transition_events": "NOT_EMITTED_DERIVED_RECOMPUTATION",
+  "blocker_return_behavior": "RECOMPUTE_FROM_CURRENT_MEMBER_REMEDIATION_STATES",
+  "skip_policy": "NOT_APPLICABLE_TO_DERIVED_RECOMPUTATION",
+  "explicit_event_only": [
+    "CANCELLED",
+    "SUPERSEDED"
+  ],
+  "conformance_effect": "NONE"
+}

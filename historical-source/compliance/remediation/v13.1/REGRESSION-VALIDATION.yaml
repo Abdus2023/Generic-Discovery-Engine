@@ -1,0 +1,53 @@
+{
+  "schema_version": "13.1",
+  "status": "PASS",
+  "method": "independent validators executed against isolated version-correct trees",
+  "regressions": [
+    {
+      "protocol": "13.0",
+      "source": "current tree isolated copy",
+      "passed": 115,
+      "failed": 0,
+      "blocked": 1,
+      "overall_status": "STRUCTURAL_PASS_REMEDIATION_BLOCKED"
+    },
+    {
+      "protocol": "12.1",
+      "source": "current tree isolated copy",
+      "passed": 194,
+      "failed": 0,
+      "blocked": 1,
+      "overall_status": "STRUCTURAL_PASS_AUDIT_BLOCKED"
+    },
+    {
+      "protocol": "12.0",
+      "source_commit": "bc12e37",
+      "passed": 148,
+      "failed": 0,
+      "blocked": 1,
+      "overall_status": "STRUCTURAL_PASS_AUDIT_BLOCKED"
+    },
+    {
+      "protocol": "11.1",
+      "source_commit": "9884d9d",
+      "passed": 177,
+      "failed": 0,
+      "blocked": 1,
+      "overall_status": "STRUCTURAL_PASS_INPUT_REJECTED"
+    },
+    {
+      "protocol": "10.1",
+      "source_commit": "e32457a",
+      "passed": 143,
+      "failed": 0,
+      "blocked": 1,
+      "overall_status": "STRUCTURAL_PASS_INPUT_BLOCKED"
+    }
+  ],
+  "append_only_guard": {
+    "builder": "historical-source/tools/build_remediation_closure_v13.py",
+    "attempt": "regenerate v13 while v13.1 exists",
+    "result": "PASS_REFUSED",
+    "message": "refusing to erase append-only v13.1 extension artifacts"
+  }
+}

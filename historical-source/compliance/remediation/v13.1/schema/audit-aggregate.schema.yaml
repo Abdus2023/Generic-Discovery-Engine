@@ -1,0 +1,174 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://generic-discovery-engine.invalid/compliance/v13.1/audit-aggregate.schema.yaml",
+  "title": "Protocol-v13.1 AUDIT_AGGREGATE",
+  "type": "object",
+  "required": [
+    "object_type",
+    "schema_version",
+    "object_id",
+    "created_at",
+    "content_hash",
+    "audit",
+    "aggregate_status",
+    "mandatory_counts",
+    "optional_counts",
+    "decision_ids",
+    "effective_waiver_ids",
+    "audit_blockers",
+    "integrity_status",
+    "computed_at"
+  ],
+  "properties": {
+    "object_type": {
+      "const": "AUDIT_AGGREGATE"
+    },
+    "schema_version": {
+      "const": "13.1"
+    },
+    "object_id": {
+      "$ref": "../../../schema/common.schema.yaml#/$defs/Identifier"
+    },
+    "created_at": {
+      "$ref": "../../../schema/common.schema.yaml#/$defs/Timestamp"
+    },
+    "content_hash": {
+      "$ref": "../../../schema/common.schema.yaml#/$defs/Hash"
+    },
+    "audit": {
+      "$ref": "../../../schema/common.schema.yaml#/$defs/Reference"
+    },
+    "aggregate_status": {
+      "type": "string",
+      "enum": [
+        "NON_COMPLIANT",
+        "CONDITIONALLY_COMPLIANT",
+        "BLOCKED",
+        "UNVERIFIED",
+        "COMPLIANT"
+      ]
+    },
+    "mandatory_counts": {
+      "type": "object",
+      "required": [
+        "pass",
+        "fail",
+        "waived_failure",
+        "unresolved",
+        "blocked",
+        "excluded",
+        "intermediate"
+      ],
+      "properties": {
+        "pass": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "fail": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "waived_failure": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "unresolved": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "blocked": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "excluded": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "intermediate": {
+          "type": "integer",
+          "minimum": 0
+        }
+      },
+      "additionalProperties": false
+    },
+    "optional_counts": {
+      "type": "object",
+      "required": [
+        "pass",
+        "fail",
+        "waived_failure",
+        "unresolved",
+        "blocked",
+        "excluded",
+        "intermediate"
+      ],
+      "properties": {
+        "pass": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "fail": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "waived_failure": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "unresolved": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "blocked": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "excluded": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "intermediate": {
+          "type": "integer",
+          "minimum": 0
+        }
+      },
+      "additionalProperties": false
+    },
+    "decision_ids": {
+      "type": "array",
+      "items": {
+        "$ref": "../../../schema/common.schema.yaml#/$defs/Identifier"
+      },
+      "uniqueItems": true
+    },
+    "effective_waiver_ids": {
+      "type": "array",
+      "items": {
+        "$ref": "../../../schema/common.schema.yaml#/$defs/Identifier"
+      },
+      "uniqueItems": true
+    },
+    "audit_blockers": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "integrity_status": {
+      "type": "string",
+      "enum": [
+        "PASS",
+        "FAIL",
+        "BLOCKED"
+      ]
+    },
+    "computed_at": {
+      "$ref": "../../../schema/common.schema.yaml#/$defs/Timestamp"
+    }
+  },
+  "additionalProperties": false,
+  "x-v13.1-rules": [
+    "Aggregate derives only from scope, current decisions, effective waivers, blockers, and integrity",
+    "Process states never participate"
+  ]
+}

@@ -1,0 +1,502 @@
+{
+  "schema_version": "13.1",
+  "vectors": [
+    {
+      "vector_id": "ALL_MANDATORY_PASS",
+      "requirements": [
+        {
+          "id": "R1",
+          "mandatory": true,
+          "applicable": true,
+          "decision": "CONFORMANT"
+        }
+      ],
+      "audit_blockers": [],
+      "integrity_pass": true,
+      "expected": "COMPLIANT",
+      "actual": "COMPLIANT",
+      "counts": {
+        "mandatory": {
+          "pass": 1,
+          "fail": 0,
+          "waived_failure": 0,
+          "unresolved": 0,
+          "blocked": 0,
+          "excluded": 0,
+          "intermediate": 0
+        },
+        "optional": {
+          "pass": 0,
+          "fail": 0,
+          "waived_failure": 0,
+          "unresolved": 0,
+          "blocked": 0,
+          "excluded": 0,
+          "intermediate": 0
+        }
+      },
+      "pass": true
+    },
+    {
+      "vector_id": "UNWAIVED_FAIL_CONCEALS_NO_BLOCKER",
+      "requirements": [
+        {
+          "id": "R1",
+          "mandatory": true,
+          "applicable": true,
+          "decision": "NON_CONFORMANT"
+        },
+        {
+          "id": "R2",
+          "mandatory": true,
+          "applicable": true,
+          "decision": "BLOCKED"
+        }
+      ],
+      "audit_blockers": [
+        "ENVIRONMENT"
+      ],
+      "integrity_pass": true,
+      "expected": "NON_COMPLIANT",
+      "actual": "NON_COMPLIANT",
+      "counts": {
+        "mandatory": {
+          "pass": 0,
+          "fail": 1,
+          "waived_failure": 0,
+          "unresolved": 0,
+          "blocked": 1,
+          "excluded": 0,
+          "intermediate": 0
+        },
+        "optional": {
+          "pass": 0,
+          "fail": 0,
+          "waived_failure": 0,
+          "unresolved": 0,
+          "blocked": 0,
+          "excluded": 0,
+          "intermediate": 0
+        }
+      },
+      "pass": true
+    },
+    {
+      "vector_id": "WAIVED_FAIL_WITH_BLOCKER",
+      "requirements": [
+        {
+          "id": "R1",
+          "mandatory": true,
+          "applicable": true,
+          "decision": "NON_CONFORMANT",
+          "waiver_effective": true
+        }
+      ],
+      "audit_blockers": [
+        "ORACLE"
+      ],
+      "integrity_pass": true,
+      "expected": "BLOCKED",
+      "actual": "BLOCKED",
+      "counts": {
+        "mandatory": {
+          "pass": 0,
+          "fail": 0,
+          "waived_failure": 1,
+          "unresolved": 0,
+          "blocked": 0,
+          "excluded": 0,
+          "intermediate": 0
+        },
+        "optional": {
+          "pass": 0,
+          "fail": 0,
+          "waived_failure": 0,
+          "unresolved": 0,
+          "blocked": 0,
+          "excluded": 0,
+          "intermediate": 0
+        }
+      },
+      "pass": true
+    },
+    {
+      "vector_id": "BLOCKED_PRECEDES_UNVERIFIED",
+      "requirements": [
+        {
+          "id": "R1",
+          "mandatory": true,
+          "applicable": true,
+          "decision": "BLOCKED"
+        },
+        {
+          "id": "R2",
+          "mandatory": true,
+          "applicable": true,
+          "decision": "UNVERIFIED"
+        }
+      ],
+      "audit_blockers": [],
+      "integrity_pass": true,
+      "expected": "BLOCKED",
+      "actual": "BLOCKED",
+      "counts": {
+        "mandatory": {
+          "pass": 0,
+          "fail": 0,
+          "waived_failure": 0,
+          "unresolved": 1,
+          "blocked": 1,
+          "excluded": 0,
+          "intermediate": 0
+        },
+        "optional": {
+          "pass": 0,
+          "fail": 0,
+          "waived_failure": 0,
+          "unresolved": 0,
+          "blocked": 0,
+          "excluded": 0,
+          "intermediate": 0
+        }
+      },
+      "pass": true
+    },
+    {
+      "vector_id": "UNVERIFIED_WITHOUT_VIOLATION",
+      "requirements": [
+        {
+          "id": "R1",
+          "mandatory": true,
+          "applicable": true,
+          "decision": "UNVERIFIED"
+        }
+      ],
+      "audit_blockers": [],
+      "integrity_pass": true,
+      "expected": "UNVERIFIED",
+      "actual": "UNVERIFIED",
+      "counts": {
+        "mandatory": {
+          "pass": 0,
+          "fail": 0,
+          "waived_failure": 0,
+          "unresolved": 1,
+          "blocked": 0,
+          "excluded": 0,
+          "intermediate": 0
+        },
+        "optional": {
+          "pass": 0,
+          "fail": 0,
+          "waived_failure": 0,
+          "unresolved": 0,
+          "blocked": 0,
+          "excluded": 0,
+          "intermediate": 0
+        }
+      },
+      "pass": true
+    },
+    {
+      "vector_id": "UNKNOWN_AGGREGATES_UNVERIFIED",
+      "requirements": [
+        {
+          "id": "R1",
+          "mandatory": true,
+          "applicable": true,
+          "decision": "UNKNOWN"
+        }
+      ],
+      "audit_blockers": [],
+      "integrity_pass": true,
+      "expected": "UNVERIFIED",
+      "actual": "UNVERIFIED",
+      "counts": {
+        "mandatory": {
+          "pass": 0,
+          "fail": 0,
+          "waived_failure": 0,
+          "unresolved": 1,
+          "blocked": 0,
+          "excluded": 0,
+          "intermediate": 0
+        },
+        "optional": {
+          "pass": 0,
+          "fail": 0,
+          "waived_failure": 0,
+          "unresolved": 0,
+          "blocked": 0,
+          "excluded": 0,
+          "intermediate": 0
+        }
+      },
+      "pass": true
+    },
+    {
+      "vector_id": "PARTIAL_AGGREGATES_UNVERIFIED",
+      "requirements": [
+        {
+          "id": "R1",
+          "mandatory": true,
+          "applicable": true,
+          "decision": "PARTIALLY_CONFORMANT"
+        }
+      ],
+      "audit_blockers": [],
+      "integrity_pass": true,
+      "expected": "UNVERIFIED",
+      "actual": "UNVERIFIED",
+      "counts": {
+        "mandatory": {
+          "pass": 0,
+          "fail": 0,
+          "waived_failure": 0,
+          "unresolved": 1,
+          "blocked": 0,
+          "excluded": 0,
+          "intermediate": 0
+        },
+        "optional": {
+          "pass": 0,
+          "fail": 0,
+          "waived_failure": 0,
+          "unresolved": 0,
+          "blocked": 0,
+          "excluded": 0,
+          "intermediate": 0
+        }
+      },
+      "pass": true
+    },
+    {
+      "vector_id": "WAIVED_FAILURE_ONLY",
+      "requirements": [
+        {
+          "id": "R1",
+          "mandatory": true,
+          "applicable": true,
+          "decision": "NON_CONFORMANT",
+          "waiver_effective": true
+        }
+      ],
+      "audit_blockers": [],
+      "integrity_pass": true,
+      "expected": "CONDITIONALLY_COMPLIANT",
+      "actual": "CONDITIONALLY_COMPLIANT",
+      "counts": {
+        "mandatory": {
+          "pass": 0,
+          "fail": 0,
+          "waived_failure": 1,
+          "unresolved": 0,
+          "blocked": 0,
+          "excluded": 0,
+          "intermediate": 0
+        },
+        "optional": {
+          "pass": 0,
+          "fail": 0,
+          "waived_failure": 0,
+          "unresolved": 0,
+          "blocked": 0,
+          "excluded": 0,
+          "intermediate": 0
+        }
+      },
+      "pass": true
+    },
+    {
+      "vector_id": "WAIVED_FAILURE_AND_UNRESOLVED",
+      "requirements": [
+        {
+          "id": "R1",
+          "mandatory": true,
+          "applicable": true,
+          "decision": "NON_CONFORMANT",
+          "waiver_effective": true
+        },
+        {
+          "id": "R2",
+          "mandatory": true,
+          "applicable": true,
+          "decision": "UNKNOWN"
+        }
+      ],
+      "audit_blockers": [],
+      "integrity_pass": true,
+      "expected": "UNVERIFIED",
+      "actual": "UNVERIFIED",
+      "counts": {
+        "mandatory": {
+          "pass": 0,
+          "fail": 0,
+          "waived_failure": 1,
+          "unresolved": 1,
+          "blocked": 0,
+          "excluded": 0,
+          "intermediate": 0
+        },
+        "optional": {
+          "pass": 0,
+          "fail": 0,
+          "waived_failure": 0,
+          "unresolved": 0,
+          "blocked": 0,
+          "excluded": 0,
+          "intermediate": 0
+        }
+      },
+      "pass": true
+    },
+    {
+      "vector_id": "OPTIONAL_FAILURE_ONLY",
+      "requirements": [
+        {
+          "id": "R1",
+          "mandatory": true,
+          "applicable": true,
+          "decision": "CONFORMANT"
+        },
+        {
+          "id": "O1",
+          "mandatory": false,
+          "applicable": true,
+          "decision": "NON_CONFORMANT"
+        }
+      ],
+      "audit_blockers": [],
+      "integrity_pass": true,
+      "expected": "COMPLIANT",
+      "actual": "COMPLIANT",
+      "counts": {
+        "mandatory": {
+          "pass": 1,
+          "fail": 0,
+          "waived_failure": 0,
+          "unresolved": 0,
+          "blocked": 0,
+          "excluded": 0,
+          "intermediate": 0
+        },
+        "optional": {
+          "pass": 0,
+          "fail": 1,
+          "waived_failure": 0,
+          "unresolved": 0,
+          "blocked": 0,
+          "excluded": 0,
+          "intermediate": 0
+        }
+      },
+      "pass": true
+    },
+    {
+      "vector_id": "NOT_APPLICABLE_EXCLUDED",
+      "requirements": [
+        {
+          "id": "R1",
+          "mandatory": true,
+          "applicable": false,
+          "decision": "NOT_APPLICABLE"
+        }
+      ],
+      "audit_blockers": [],
+      "integrity_pass": true,
+      "expected": "COMPLIANT",
+      "actual": "COMPLIANT",
+      "counts": {
+        "mandatory": {
+          "pass": 0,
+          "fail": 0,
+          "waived_failure": 0,
+          "unresolved": 0,
+          "blocked": 0,
+          "excluded": 1,
+          "intermediate": 0
+        },
+        "optional": {
+          "pass": 0,
+          "fail": 0,
+          "waived_failure": 0,
+          "unresolved": 0,
+          "blocked": 0,
+          "excluded": 0,
+          "intermediate": 0
+        }
+      },
+      "pass": true
+    },
+    {
+      "vector_id": "INTERMEDIATE_FINAL_STATE",
+      "requirements": [
+        {
+          "id": "R1",
+          "mandatory": true,
+          "applicable": true,
+          "decision": "VERIFIED"
+        }
+      ],
+      "audit_blockers": [],
+      "integrity_pass": true,
+      "expected": "BLOCKED",
+      "actual": "BLOCKED",
+      "counts": {
+        "mandatory": {
+          "pass": 0,
+          "fail": 0,
+          "waived_failure": 0,
+          "unresolved": 0,
+          "blocked": 0,
+          "excluded": 0,
+          "intermediate": 1
+        },
+        "optional": {
+          "pass": 0,
+          "fail": 0,
+          "waived_failure": 0,
+          "unresolved": 0,
+          "blocked": 0,
+          "excluded": 0,
+          "intermediate": 0
+        }
+      },
+      "pass": true
+    },
+    {
+      "vector_id": "AUDIT_LEVEL_INTEGRITY_FAILURE",
+      "requirements": [],
+      "audit_blockers": [],
+      "integrity_pass": false,
+      "expected": "BLOCKED",
+      "actual": "BLOCKED",
+      "counts": {
+        "mandatory": {
+          "pass": 0,
+          "fail": 0,
+          "waived_failure": 0,
+          "unresolved": 0,
+          "blocked": 0,
+          "excluded": 0,
+          "intermediate": 0
+        },
+        "optional": {
+          "pass": 0,
+          "fail": 0,
+          "waived_failure": 0,
+          "unresolved": 0,
+          "blocked": 0,
+          "excluded": 0,
+          "intermediate": 0
+        }
+      },
+      "pass": true
+    }
+  ],
+  "summary": {
+    "total": 13,
+    "passed": 13,
+    "failed": 0
+  }
+}

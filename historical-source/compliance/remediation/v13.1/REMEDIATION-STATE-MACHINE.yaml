@@ -1,0 +1,129 @@
+{
+  "schema_version": "13.1",
+  "initial_state": "PROPOSED",
+  "states": [
+    "PROPOSED",
+    "ASSESSED",
+    "APPROVED",
+    "IN_PROGRESS",
+    "READY_FOR_VERIFICATION",
+    "REVERIFICATION",
+    "FAILED",
+    "REGRESSION",
+    "COMPLETE",
+    "BLOCKED",
+    "REJECTED",
+    "SUPERSEDED",
+    "CANCELLED"
+  ],
+  "definitions": {
+    "PROPOSED": "A possible remediation was recorded but not assessed.",
+    "ASSESSED": "Impact and feasibility were assessed.",
+    "APPROVED": "Authorized remediation may begin.",
+    "IN_PROGRESS": "Authorized changes are being performed.",
+    "READY_FOR_VERIFICATION": "The declared change set is complete and awaiting re-verification.",
+    "REVERIFICATION": "The original condition is being independently re-tested.",
+    "FAILED": "Re-verification or regression did not meet required predicates.",
+    "REGRESSION": "Required broader regression verification is running.",
+    "COMPLETE": "Re-verification and regression predicates succeeded; no conformance implication is created.",
+    "BLOCKED": "A required remediation prerequisite is unavailable.",
+    "REJECTED": "Assessment or authorization rejected the proposed attempt.",
+    "SUPERSEDED": "A replacement attempt became authoritative while this record remains immutable.",
+    "CANCELLED": "An explicit event ended a non-terminal attempt."
+  },
+  "legal_transition_patterns": [
+    {
+      "from": "PROPOSED",
+      "to": "ASSESSED",
+      "guard": "IMPACT_ASSESSMENT_COMPLETE"
+    },
+    {
+      "from": "PROPOSED",
+      "to": "REJECTED",
+      "guard": "PROPOSAL_REJECTED"
+    },
+    {
+      "from": "ASSESSED",
+      "to": "APPROVED",
+      "guard": "AUTHORIZATION_GRANTED"
+    },
+    {
+      "from": "ASSESSED",
+      "to": "REJECTED",
+      "guard": "ASSESSMENT_REJECTS_ACTION"
+    },
+    {
+      "from": "APPROVED",
+      "to": "IN_PROGRESS",
+      "guard": "WORK_BEGINS"
+    },
+    {
+      "from": "IN_PROGRESS",
+      "to": "READY_FOR_VERIFICATION",
+      "guard": "CHANGE_SET_COMPLETE"
+    },
+    {
+      "from": "IN_PROGRESS",
+      "to": "BLOCKED",
+      "guard": "PREREQUISITE_UNAVAILABLE"
+    },
+    {
+      "from": "READY_FOR_VERIFICATION",
+      "to": "REVERIFICATION",
+      "guard": "VERIFICATION_BEGINS"
+    },
+    {
+      "from": "REVERIFICATION",
+      "to": "FAILED",
+      "guard": "VERIFICATION_FAILS"
+    },
+    {
+      "from": "REVERIFICATION",
+      "to": "REGRESSION",
+      "guard": "ORIGINAL_CONDITION_PASSES"
+    },
+    {
+      "from": "REGRESSION",
+      "to": "FAILED",
+      "guard": "REGRESSION_FAILS"
+    },
+    {
+      "from": "REGRESSION",
+      "to": "COMPLETE",
+      "guard": "REGRESSION_SUCCEEDS"
+    },
+    {
+      "from": "FAILED",
+      "to": "IN_PROGRESS",
+      "guard": "RETRY_AUTHORIZED"
+    },
+    {
+      "from": "BLOCKED",
+      "to": "$PREVIOUS_STATE",
+      "guard": "BLOCKING_CONDITION_REMOVED"
+    },
+    {
+      "from": "$ANY_REPLACEABLE",
+      "to": "SUPERSEDED",
+      "guard": "AUTHORITATIVE_REPLACEMENT_EXISTS"
+    },
+    {
+      "from": "$ANY_NON_TERMINAL",
+      "to": "CANCELLED",
+      "guard": "EXPLICIT_CANCELLATION"
+    }
+  ],
+  "skip_policy": "FORBIDDEN_UNLESS_EXPLICIT_TRANSITION_EXISTS",
+  "blocker_return_behavior": "RETURN_TO_PREVIOUS_STATE_WHEN_BLOCK_REMOVED",
+  "terminal_or_exceptional_states": [
+    "COMPLETE",
+    "REJECTED",
+    "SUPERSEDED",
+    "CANCELLED"
+  ],
+  "complete_does_not_imply": [
+    "FINDING_CLOSED",
+    "CONFORMANCE_CONFORMANT",
+    "AUDIT_COMPLIANT"
+  ]
+}

@@ -1,0 +1,128 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://generic-discovery-engine.invalid/compliance/v13.1/remediation.schema.yaml",
+  "title": "Protocol-v13.1 REMEDIATION state owner",
+  "type": "object",
+  "required": [
+    "object_type",
+    "schema_version",
+    "object_id",
+    "created_at",
+    "content_hash",
+    "remediation_id",
+    "finding_ids",
+    "program_ids",
+    "remediation_state",
+    "reverification_execution_ids",
+    "regression_execution_ids"
+  ],
+  "properties": {
+    "object_type": {
+      "const": "REMEDIATION"
+    },
+    "schema_version": {
+      "const": "13.1"
+    },
+    "object_id": {
+      "$ref": "../../../schema/common.schema.yaml#/$defs/Identifier"
+    },
+    "created_at": {
+      "$ref": "../../../schema/common.schema.yaml#/$defs/Timestamp"
+    },
+    "content_hash": {
+      "$ref": "../../../schema/common.schema.yaml#/$defs/Hash"
+    },
+    "remediation_id": {
+      "$ref": "../../../schema/common.schema.yaml#/$defs/Identifier"
+    },
+    "finding_ids": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "$ref": "../../../schema/common.schema.yaml#/$defs/Identifier"
+      },
+      "uniqueItems": true
+    },
+    "program_ids": {
+      "type": "array",
+      "items": {
+        "$ref": "../../../schema/common.schema.yaml#/$defs/Identifier"
+      },
+      "uniqueItems": true
+    },
+    "remediation_state": {
+      "type": "string",
+      "enum": [
+        "PROPOSED",
+        "ASSESSED",
+        "APPROVED",
+        "IN_PROGRESS",
+        "READY_FOR_VERIFICATION",
+        "REVERIFICATION",
+        "FAILED",
+        "REGRESSION",
+        "COMPLETE",
+        "BLOCKED",
+        "REJECTED",
+        "SUPERSEDED",
+        "CANCELLED"
+      ]
+    },
+    "action_ids": {
+      "type": "array",
+      "items": {
+        "$ref": "../../../schema/common.schema.yaml#/$defs/Identifier"
+      },
+      "uniqueItems": true
+    },
+    "change_set_ids": {
+      "type": "array",
+      "items": {
+        "$ref": "../../../schema/common.schema.yaml#/$defs/Identifier"
+      },
+      "uniqueItems": true
+    },
+    "reverification_execution_ids": {
+      "type": "array",
+      "items": {
+        "$ref": "../../../schema/common.schema.yaml#/$defs/Identifier"
+      },
+      "uniqueItems": true
+    },
+    "regression_execution_ids": {
+      "type": "array",
+      "items": {
+        "$ref": "../../../schema/common.schema.yaml#/$defs/Identifier"
+      },
+      "uniqueItems": true
+    }
+  },
+  "additionalProperties": false,
+  "x-v13.1-rules": [
+    "A remediation references at least one finding",
+    "COMPLETE requires re-verification and regression evidence",
+    "COMPLETE never directly establishes CONFORMANT",
+    "Many-to-many finding/remediation relation is explicit"
+  ],
+  "allOf": [
+    {
+      "if": {
+        "properties": {
+          "remediation_state": {
+            "const": "COMPLETE"
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "reverification_execution_ids": {
+            "minItems": 1
+          },
+          "regression_execution_ids": {
+            "minItems": 1
+          }
+        }
+      }
+    }
+  ]
+}

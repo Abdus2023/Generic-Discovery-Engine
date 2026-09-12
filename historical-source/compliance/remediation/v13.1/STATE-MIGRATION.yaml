@@ -1,0 +1,28 @@
+{
+  "schema_version": "13.1",
+  "migrations": [
+    {
+      "v13_program_id": "PROGRAM-V13-001",
+      "v13_status": "BLOCKED",
+      "v13_1_program_id": "PROGRAM-V131-001",
+      "v13_1_derived_state": "CREATED",
+      "reason": "v13 status mixed remediation blocking with program coordination; no member remediation exists, so aggregate is CREATED"
+    },
+    {
+      "v13_program_id": "PROGRAM-V13-002",
+      "v13_status": "BLOCKED",
+      "v13_1_program_id": "PROGRAM-V131-002",
+      "v13_1_derived_state": "CREATED",
+      "reason": "v13 status mixed remediation blocking with program coordination; no member remediation exists, so aggregate is CREATED"
+    },
+    {
+      "v13_program_id": "PROGRAM-V13-003",
+      "v13_status": "BLOCKED",
+      "v13_1_program_id": "PROGRAM-V131-003",
+      "v13_1_derived_state": "CREATED",
+      "reason": "v13 status mixed remediation blocking with program coordination; no member remediation exists, so aggregate is CREATED"
+    }
+  ],
+  "prior_objects_modified": false,
+  "interpretation": "The v13.1 derived view corrects domain conflation without rewriting v13 history."
+}

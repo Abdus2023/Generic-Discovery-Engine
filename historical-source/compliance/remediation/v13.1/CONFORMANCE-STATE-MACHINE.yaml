@@ -1,0 +1,46 @@
+{
+  "schema_version": "13.1",
+  "owner": "COMPLIANCE_DECISION",
+  "states": [
+    "UNASSESSED",
+    "MAPPED",
+    "VERIFIED",
+    "CONFORMANT",
+    "PARTIALLY_CONFORMANT",
+    "NON_CONFORMANT",
+    "UNVERIFIED",
+    "BLOCKED",
+    "UNKNOWN",
+    "NOT_APPLICABLE"
+  ],
+  "definitions": {
+    "UNASSESSED": "No assessment stage has completed.",
+    "MAPPED": "A requirement mapping exists but verification has not completed.",
+    "VERIFIED": "Verification ran, but a final conformance interpretation is not yet recorded.",
+    "CONFORMANT": "Validated evidence proves the applicable requirement is satisfied.",
+    "PARTIALLY_CONFORMANT": "Validated evidence proves only part of the requirement while material semantics remain unresolved.",
+    "NON_CONFORMANT": "Validated evidence proves violation of applicable normative semantics.",
+    "UNVERIFIED": "Required verification evidence is absent or insufficient.",
+    "BLOCKED": "A prerequisite prevents a valid conformance decision.",
+    "UNKNOWN": "Available evidence cannot determine the requirement truth state.",
+    "NOT_APPLICABLE": "Explicit scope evidence excludes the requirement."
+  },
+  "in_place_transitions": [],
+  "new_evidence_behavior": "CREATE_NEW_DECISION_WITH_PREDECESSOR_REFERENCE",
+  "historical_decision_mutation": "FORBIDDEN",
+  "predecision_stages": [
+    "UNASSESSED",
+    "MAPPED",
+    "VERIFIED"
+  ],
+  "completed_audit_final_decisions": [
+    "CONFORMANT",
+    "PARTIALLY_CONFORMANT",
+    "NON_CONFORMANT",
+    "UNVERIFIED",
+    "BLOCKED",
+    "UNKNOWN",
+    "NOT_APPLICABLE"
+  ],
+  "aggregate_substitution": "FORBIDDEN"
+}

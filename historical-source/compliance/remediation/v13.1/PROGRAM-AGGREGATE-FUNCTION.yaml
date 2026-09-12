@@ -1,0 +1,45 @@
+{
+  "schema_version": "13.1",
+  "ordered_rules": [
+    {
+      "order": 1,
+      "if": "NO_REMEDIATIONS",
+      "result": "CREATED"
+    },
+    {
+      "order": 2,
+      "if": "ALL_REJECTED",
+      "result": "FAILED"
+    },
+    {
+      "order": 3,
+      "if": "ALL_COMPLETE",
+      "result": "COMPLETED"
+    },
+    {
+      "order": 4,
+      "if": "ANY_IN_PROGRESS_READY_REVERIFICATION_REGRESSION",
+      "result": "ACTIVE"
+    },
+    {
+      "order": 5,
+      "if": "ANY_BLOCKED_AND_NONE_ACTIVE",
+      "result": "BLOCKED"
+    },
+    {
+      "order": 6,
+      "if": "ALL_REMAINING_PROPOSED_OR_ASSESSED",
+      "result": "PLANNED"
+    },
+    {
+      "order": 7,
+      "if": "OTHERWISE",
+      "result": "TRIAGED"
+    }
+  ],
+  "explicit_program_events": [
+    "CANCELLED",
+    "SUPERSEDED"
+  ],
+  "note": "EVALUATING is a declared coordination phase; the normative member aggregate maps REVERIFICATION/REGRESSION members to ACTIVE as explicitly specified."
+}

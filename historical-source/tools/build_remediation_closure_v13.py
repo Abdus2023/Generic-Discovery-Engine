@@ -198,6 +198,8 @@ def main() -> None:
     if not all(path.is_file() for path in required_prior):
         raise RuntimeError("v12.1 audit package must exist before Protocol-v13 remediation")
     if REMEDIATION.exists():
+        if (REMEDIATION / "v13.1").exists():
+            raise RuntimeError("refusing to erase append-only v13.1 extension artifacts")
         append_only_registries = ["ROOT-CAUSES.yaml", "REMEDIATION-ACTIONS.yaml", "CHANGE-SETS.yaml", "IMPACT-ASSESSMENTS.yaml", "REVERIFICATION-PLANS.yaml", "REVERIFICATION-EXECUTIONS.yaml", "REGRESSION-SCOPES.yaml", "CLOSURE-DECISIONS.yaml", "WAIVER-REVIEWS.yaml", "CERTIFICATE-REVISIONS.yaml"]
         for filename in append_only_registries:
             path = REMEDIATION / filename

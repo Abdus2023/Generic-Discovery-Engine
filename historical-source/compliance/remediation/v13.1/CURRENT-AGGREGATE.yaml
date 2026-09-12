@@ -1,0 +1,51 @@
+{
+  "schema_version": "13.1",
+  "objects": [
+    {
+      "object_type": "AUDIT_AGGREGATE",
+      "schema_version": "13.1",
+      "object_id": "AGGREGATE-V131-001",
+      "created_at": "2026-09-12T15:58:32Z",
+      "audit": {
+        "object_type": "AUDIT",
+        "object_id": "AUDIT-OBJECT-V121-001"
+      },
+      "aggregate_status": "BLOCKED",
+      "mandatory_counts": {
+        "pass": 0,
+        "fail": 0,
+        "waived_failure": 0,
+        "unresolved": 0,
+        "blocked": 0,
+        "excluded": 0,
+        "intermediate": 0
+      },
+      "optional_counts": {
+        "pass": 0,
+        "fail": 0,
+        "waived_failure": 0,
+        "unresolved": 0,
+        "blocked": 0,
+        "excluded": 0,
+        "intermediate": 0
+      },
+      "decision_ids": [],
+      "effective_waiver_ids": [],
+      "audit_blockers": [
+        "INVALID_NORMATIVE_SPECIFICATION",
+        "EMPTY_REQUIREMENT_SCOPE",
+        "MISSING_IMPLEMENTATION_SOURCE",
+        "REMEDIATION_R2_NORMATIVE_BASIS_BLOCKED"
+      ],
+      "integrity_status": "FAIL",
+      "computed_at": "2026-09-12T15:58:32Z",
+      "content_hash": {
+        "algorithm": "SHA-256",
+        "value": "cedc25220b1c657a8d4c04c61983e4a11a63d1f2948f62ef3ade4a1175232a7e"
+      }
+    }
+  ],
+  "finding_states_consumed": false,
+  "remediation_states_consumed": false,
+  "program_states_consumed": false
+}
