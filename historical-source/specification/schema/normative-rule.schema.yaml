@@ -1,0 +1,32 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "schema_version": "1.0",
+  "additionalProperties": true,
+  "title": "Protocol-v11 normative rule",
+  "type": "object",
+  "required": [
+    "rule_id",
+    "requirement_id",
+    "predicate",
+    "operator",
+    "scope",
+    "failure_class"
+  ],
+  "properties": {
+    "operator": {
+      "enum": [
+        "MUST",
+        "MUST_NOT",
+        "SHALL",
+        "SHALL_NOT",
+        "MAY",
+        "MAY_NOT",
+        "IF",
+        "THEN",
+        "ONLY_IF",
+        "UNLESS",
+        "EXCEPT"
+      ]
+    }
+  }
+}

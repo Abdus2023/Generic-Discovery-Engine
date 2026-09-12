@@ -1,0 +1,46 @@
+# Protocol-v11 Determinism Validation
+
+**Status:** `PASS`
+**Result:** 37/37 generator-owned deliverables byte-identical
+
+Regeneration used an isolated temporary copy with `PYTHONHASHSEED=577215`; unknown generation time is retained explicitly rather than replaced by a nondeterministic timestamp.
+
+| Path | Identical | SHA-256 |
+|---|---|---|
+| INPUT-CONTRACT.yaml | true | `ddd3206efbdaa07f5929117381f67de026d94f9b9dbcecd2360f8729d9700057` |
+| REQUIREMENTS.yaml | true | `0ed0671d94066c1588720de82303c529199f7c9be5b18dd02e85e74a23c6bd10` |
+| NORMATIVE-RULES.yaml | true | `036ddded6a649cc6821ffcb9f2d10b5505ee50e5b300752512bf236ebbcee841` |
+| ACCEPTANCE-CRITERIA.yaml | true | `b57f3f5749adf6670837a5d8ce97b60153f3a17bed1433090eb74e6151504e6e` |
+| TEST-ORACLES.yaml | true | `236dd7f32a65a48fbd00bb8e8de9846a951fcec78b6aa68b4d3d049d06927409` |
+| REQUIREMENT-DEPENDENCIES.yaml | true | `5d8fac123488e0c4e5705e50da86d94a09eb0032bc40765e4eb71b7c03f2c8ec` |
+| REQUIREMENT-CONFLICTS.yaml | true | `9b25d2e77d9bcdb6b6632288900186ea7cc5e1303225b8afe3f7c07253fa0d4d` |
+| REQUIREMENT-SUPERSESSION.yaml | true | `776ad0d8405f04421b66eac3cbf512ba0f3fcb633b5e692f3774c20757b3b1e9` |
+| REQUIREMENT-COVERAGE.yaml | true | `a96d78e2c7c5bbaeb2799e05d1a63d0da4d44ed6feae8ea64297e5b737418664` |
+| CONFORMANCE-MATRIX.yaml | true | `d5da48a565da6135e423c197f7f5275e3ba7af37ca26b709d2fd160b22d88df8` |
+| VERIFICATION-MATRIX.yaml | true | `b6a1e782c81052adace02919b603578845e43af7fe9ed03a391d9c43c125129c` |
+| IMPLEMENTATION-BOUNDARIES.yaml | true | `cbe107e672819deddf895af5edc6224c1da4f22667146196d03679bb5538f6d6` |
+| SEMANTIC-DIFFS.yaml | true | `d552f1304aab0019d610b15502ac8c494594b07046249c3452f354117c4963f2` |
+| TRACEABILITY.yaml | true | `96fd68c9bbe5782164f50c551937981e7fcf077150c5ca61c16ce2e5072f9fca` |
+| CONFORMANCE.yaml | true | `580a40b0c1d1b0f538002ace244177b86e2fd277ee63fb53232f65db1f008c3e` |
+| SPECIFICATION-CERTIFICATE.yaml | true | `efa76833856ca287cfd21a9ce1ee7d2f7d926775282d4ac1b581c68ac36b85c3` |
+| REQUIREMENTS.md | true | `a107f78c7c4ec653798dd610aef17f69fcdd41929e3e77dc8a6964878cd2f825` |
+| NORMATIVE-RULES.md | true | `03c07bc9523cb67d8478db729e120c9ad22e8eba361aa31baffcd86f0e9398a2` |
+| ACCEPTANCE-CRITERIA.md | true | `2fc5d82255228fe474e5488fb51398caccbf3f143d1663f5a83d7d6c0d2efcac` |
+| TEST-ORACLES.md | true | `aae5bb827efc855a16cc7a1e39a0df5b765d56584d8350995c3eb09bc29f68db` |
+| REQUIREMENT-COVERAGE.md | true | `797b33c467158e532a73bbc5b48b291d41522beca1040e0f8b7055afe066906e` |
+| REQUIREMENT-DEPENDENCIES.md | true | `98c309d003bbc35b23468c865aace4e273beff7320d98b018b36058f4981aeef` |
+| REQUIREMENT-CONFLICTS.md | true | `8982dfd3f2daa1783aa8499fa123fbcfc4e618e6bf79dc5518d57d58c99566ad` |
+| CONFORMANCE-MATRIX.md | true | `44923cd79681c39952f61bcb731b82652026b8265789b34801fc1d0c69474b6a` |
+| VERIFICATION-MATRIX.md | true | `07b6407a50e7a13be54bd8c56fb3f2a7dcd4c1e5b6f8a23e940a7474f7ba583e` |
+| IMPLEMENTATION-BOUNDARIES.md | true | `0ab7a76c234993e2fc81184995c55743de30895de1743e42c83aa3614b9a7ce6` |
+| SEMANTIC-DIFFS.md | true | `5b04cd429df52e916d342ee2e5f950a1252ce6a38beff94cb930bb852f9b08b0` |
+| TRACEABILITY.md | true | `ae1c41a55849f19909d4a7e6509024fcdc0c00fc6c20063a26cefcac47a98cfe` |
+| SPECIFICATION-AUDIT.md | true | `bd2cf7cb5754ffa9878699468ebcc7b6a4959aeafdc6710ad53ce6bf901f2a0f` |
+| FINAL-SPECIFICATION.md | true | `d68115a1d99fa0bf68a2cee4504495e1277d2e25d864e25c4ca454d08dc8e4b1` |
+| schema/requirement.schema.yaml | true | `1a2f33c77dfde031d40469cc1191fc1985678921a4243f929a5ae6de2ad04481` |
+| schema/normative-rule.schema.yaml | true | `14dd9fb5e711119134b2daecd1332829c688856f1b71c203e9fa67d47357535e` |
+| schema/acceptance-criterion.schema.yaml | true | `a8e2a22b05ed651289dd80072b50719aca09db0536cf85247a87eda953788bda` |
+| schema/test-oracle.schema.yaml | true | `2adea4e0b6c9beeed382899164663bfa6ccb71cbe52a78fe5206d763607a3b69` |
+| schema/requirement-dependency.schema.yaml | true | `8b441d4b231cf1f1038ad803ffe339bed78fd0243c4f34fc367e821b219eb89d` |
+| schema/traceability.schema.yaml | true | `9f0dabeca8b215cd0928f297f9caabb944d8e206843765a928fca402c2904146` |
+| schema/specification-certificate.schema.yaml | true | `0b1c5db1ad6674cebf27df016390084e2b97ce8ee5b71ca07203579f25874675` |

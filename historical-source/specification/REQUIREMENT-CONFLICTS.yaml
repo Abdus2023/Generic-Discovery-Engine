@@ -1,0 +1,34 @@
+{
+  "schema_version": "1.0",
+  "graph_type": "REQUIREMENT_CONFLICT_GRAPH",
+  "status": "DERIVATION_REJECTED",
+  "requirement_conflicts": [],
+  "upstream_obligation_conflict_blockers": [
+    "CONF-001",
+    "CONF-002",
+    "CONF-004",
+    "CONF-005"
+  ],
+  "resolution_values": [
+    "PRESERVE_BOTH",
+    "PRIORITIZE_ONE",
+    "RESTRICT_SCOPE",
+    "SPLIT_SCOPE",
+    "SUPERSEDE",
+    "REJECT",
+    "DEFER",
+    "UNKNOWN"
+  ],
+  "default_precedence": [
+    "SAFETY",
+    "SECURITY",
+    "DATA_INTEGRITY",
+    "AUTHORIZATION",
+    "LIFECYCLE",
+    "BEHAVIOR",
+    "PERFORMANCE",
+    "UI",
+    "CONVENIENCE"
+  ],
+  "automatic_resolution": false
+}

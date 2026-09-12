@@ -1,0 +1,316 @@
+{
+  "specification_version": "11.0",
+  "requirement_input_contract_version": "1.0",
+  "status": "REJECTED_INVALID_OBLIGATION_PACKAGE",
+  "derivation_gate": "CLOSED",
+  "required_inputs": [
+    {
+      "artifact_id": "V101-OBLIGATION-CONTRACT-534193fa11450969",
+      "artifact_type": "obligation_contract",
+      "schema_version": "1.0",
+      "source_path": "historical-source/obligations/INPUT-CONTRACT.yaml",
+      "producer_stage": "v10.1",
+      "generated_at": "UNKNOWN_NOT_RECORDED_UPSTREAM",
+      "content_hash": "534193fa11450969281c94aa81ac46464115dbb470b15798ce24bf3accbbb587",
+      "hash_validation": "MATCH",
+      "schema_validation": "STRUCTURALLY_VALID_JSON_COMPATIBLE_YAML"
+    },
+    {
+      "artifact_id": "V101-OBLIGATION-REGISTRY-edb56ccdb408bfe3",
+      "artifact_type": "obligation_registry",
+      "schema_version": "1.0",
+      "source_path": "historical-source/obligations/OBLIGATIONS.yaml",
+      "producer_stage": "v10.1",
+      "generated_at": "UNKNOWN_NOT_RECORDED_UPSTREAM",
+      "content_hash": "edb56ccdb408bfe3197f05c3a55e7627772d248d8c72c28e5b8c86566d25efa5",
+      "hash_validation": "MATCH",
+      "schema_validation": "STRUCTURALLY_VALID_JSON_COMPATIBLE_YAML"
+    },
+    {
+      "artifact_id": "V101-HISTORICAL-PROPERTIES-edb56ccdb408bfe3",
+      "artifact_type": "historical_properties",
+      "schema_version": "1.0",
+      "source_path": "historical-source/obligations/OBLIGATIONS.yaml",
+      "producer_stage": "v10.1",
+      "generated_at": "UNKNOWN_NOT_RECORDED_UPSTREAM",
+      "content_hash": "edb56ccdb408bfe3197f05c3a55e7627772d248d8c72c28e5b8c86566d25efa5",
+      "hash_validation": "MATCH",
+      "schema_validation": "STRUCTURALLY_VALID_JSON_COMPATIBLE_YAML"
+    },
+    {
+      "artifact_id": "V101-OBLIGATION-DEPENDENCIES-55178c60f0101405",
+      "artifact_type": "obligation_dependencies",
+      "schema_version": "1.0",
+      "source_path": "historical-source/obligations/OBLIGATION-DEPENDENCIES.yaml",
+      "producer_stage": "v10.1",
+      "generated_at": "UNKNOWN_NOT_RECORDED_UPSTREAM",
+      "content_hash": "55178c60f0101405e4fa666b5f0d97ca6851840b3021e3ff125320419dea5807",
+      "hash_validation": "MATCH",
+      "schema_validation": "STRUCTURALLY_VALID_JSON_COMPATIBLE_YAML"
+    },
+    {
+      "artifact_id": "V101-OBLIGATION-LINEAGE-93f69ad0cf2a8a48",
+      "artifact_type": "obligation_lineage",
+      "schema_version": "1.0",
+      "source_path": "historical-source/obligations/OBLIGATION-LINEAGE.yaml",
+      "producer_stage": "v10.1",
+      "generated_at": "UNKNOWN_NOT_RECORDED_UPSTREAM",
+      "content_hash": "93f69ad0cf2a8a48a2580db68b0b8971f9007e1f3716e6a0caaf17c96a97225e",
+      "hash_validation": "MATCH",
+      "schema_validation": "STRUCTURALLY_VALID_JSON_COMPATIBLE_YAML"
+    },
+    {
+      "artifact_id": "V101-OBLIGATION-CONFLICTS-82c2293e173e8a44",
+      "artifact_type": "obligation_conflicts",
+      "schema_version": "1.0",
+      "source_path": "historical-source/obligations/OBLIGATION-CONFLICTS.yaml",
+      "producer_stage": "v10.1",
+      "generated_at": "UNKNOWN_NOT_RECORDED_UPSTREAM",
+      "content_hash": "82c2293e173e8a446b2675627de710d8f0503ad6ef44abd10cdc89764df35b3e",
+      "hash_validation": "MATCH",
+      "schema_validation": "STRUCTURALLY_VALID_JSON_COMPATIBLE_YAML"
+    },
+    {
+      "artifact_id": "V101-TRACEABILITY-9a3d15b6e809b04b",
+      "artifact_type": "traceability",
+      "schema_version": "1.0",
+      "source_path": "historical-source/obligations/TRACEABILITY-MATRIX.yaml",
+      "producer_stage": "v10.1",
+      "generated_at": "UNKNOWN_NOT_RECORDED_UPSTREAM",
+      "content_hash": "9a3d15b6e809b04b45f71ba088b35f20331df473fc0a63ad5f9e6c913e80fca8",
+      "hash_validation": "MATCH",
+      "schema_validation": "STRUCTURALLY_VALID_JSON_COMPATIBLE_YAML"
+    },
+    {
+      "artifact_id": "V101-VERIFICATION-RECORDS-15b74f61c4ca761e",
+      "artifact_type": "verification_records",
+      "schema_version": "1.0",
+      "source_path": "historical-source/obligations/VERIFICATION-GRAPH.yaml",
+      "producer_stage": "v10.1",
+      "generated_at": "UNKNOWN_NOT_RECORDED_UPSTREAM",
+      "content_hash": "15b74f61c4ca761ebc5e207aa7f7f1a11400f3c1a02d9e6faee20a18d339bc0e",
+      "hash_validation": "MATCH",
+      "schema_validation": "STRUCTURALLY_VALID_JSON_COMPATIBLE_YAML"
+    }
+  ],
+  "rejection_registry": [
+    "INPUT_MISSING",
+    "INPUT_SCHEMA_MISMATCH",
+    "INPUT_HASH_MISMATCH",
+    "OBLIGATION_UNKNOWN",
+    "PROPERTY_UNKNOWN",
+    "BROKEN_LINEAGE",
+    "BROKEN_DEPENDENCY",
+    "TEMPORAL_CONTAMINATION",
+    "UNVERIFIED_SOURCE",
+    "CONFLICT_UNRESOLVED"
+  ],
+  "failure_states": [
+    {
+      "failure_id": "RIF-001",
+      "state": "INPUT_MISSING",
+      "affected": [
+        "v4",
+        "v5",
+        "v6",
+        "v7"
+      ],
+      "detail": "The v10.1 source package is missing required Protocol-v4 through Protocol-v7 stages."
+    },
+    {
+      "failure_id": "RIF-002",
+      "state": "INPUT_HASH_MISMATCH",
+      "affected": [
+        "v1 source extraction"
+      ],
+      "detail": "The v10.1 package preserves the Protocol-v1 raw/source-range integrity failure."
+    },
+    {
+      "failure_id": "RIF-003",
+      "state": "UNVERIFIED_SOURCE",
+      "affected": [
+        "OBL-CANDIDATE-IDENTITY",
+        "OBL-CANDIDATE-EQUIVALENCE",
+        "OBL-DEDUP-SCOPES",
+        "OBL-CANDIDATE-ORIGIN",
+        "OBL-CANDIDATE-PARENT",
+        "OBL-CANDIDATE-STATE",
+        "OBL-CANDIDATE-PRIORITY",
+        "OBL-CANDIDATE-ATTEMPTS",
+        "OBL-CANDIDATE-TIMESTAMPS",
+        "OBL-CLAIM-EXCLUSIVITY",
+        "OBL-TERMINAL-OWNERSHIP",
+        "OBL-ACQ-BEFORE-INTERP",
+        "OBL-ACQ-OUTCOME",
+        "OBL-ACQ-METADATA",
+        "OBL-ACQ-TIMEOUT",
+        "OBL-ACQ-SCOPE",
+        "OBL-CANCELLATION",
+        "OBL-OBS-DISTINCT",
+        "OBL-OBS-SOURCE",
+        "OBL-OBS-OUTCOMES",
+        "OBL-RECOGNITION-DISTINCT",
+        "OBL-RECOGNITION-OUTCOMES",
+        "OBL-PROVIDER-CONTRACT",
+        "OBL-PROVIDER-FAILURE",
+        "OBL-PROVIDER-ORDER",
+        "OBL-DISCOVERY-RECORD",
+        "OBL-EXPANSION-RECURSIVE",
+        "OBL-EXPANSION-VS-RETRY",
+        "OBL-CANDIDATE-ADMISSION",
+        "OBL-KNOWLEDGE",
+        "OBL-BOUNDED-CONCURRENCY",
+        "OBL-SCHEDULER-TERMINATION",
+        "OBL-WORKER-FAILURE",
+        "OBL-RETRY",
+        "OBL-PROVENANCE",
+        "OBL-PROVENANCE-INTEGRITY",
+        "OBL-REMOTE-DATA",
+        "OBL-AUTHORITY",
+        "OBL-PARSER",
+        "OBL-RESOURCE",
+        "OBL-UNBOUNDED",
+        "OBL-LIFECYCLE-OBS",
+        "OBL-AUDIT",
+        "OBL-SILENT-FAILURE",
+        "OBL-PERSIST-COMPAT",
+        "OBL-PERSIST-CORRUPTION",
+        "OBL-EXPORT",
+        "OBL-UI",
+        "OBL-PRIVATE-SHAPE",
+        "OBL-CONTRACT-INPUT",
+        "OBL-ERROR-CONTRACT",
+        "OBL-REGRESSION",
+        "OBL-PARSE-DEFECT",
+        "OBL-WEB-GENERALIZE"
+      ],
+      "detail": "54 obligations are not VERIFIED with verification evidence."
+    },
+    {
+      "failure_id": "RIF-004",
+      "state": "OBLIGATION_UNKNOWN",
+      "affected": [
+        "OBL-CANDIDATE-EQUIVALENCE",
+        "OBL-PROVIDER-ORDER"
+      ],
+      "detail": "2 obligations retain UNKNOWN epistemic or lifecycle state."
+    },
+    {
+      "failure_id": "RIF-005",
+      "state": "PROPERTY_UNKNOWN",
+      "affected": [
+        "PROP-snapshot-0001-CONTRACTS",
+        "PROP-snapshot-0003-CONTRACTS",
+        "PROP-snapshot-0005-CONTRACTS",
+        "PROP-snapshot-0006-CONTRACTS",
+        "PROP-snapshot-0008-CONTRACTS",
+        "PROP-snapshot-0007-CONTRACTS",
+        "PROP-snapshot-0009-CONTRACTS",
+        "PROP-snapshot-0011-CONTRACTS",
+        "PROP-snapshot-0010-CONTRACTS",
+        "PROP-snapshot-0012-CONTRACTS",
+        "PROP-snapshot-0013-CONTRACTS",
+        "PROP-snapshot-0014-CONTRACTS",
+        "PROP-CANDIDATE-EQUIVALENCE",
+        "PROP-PROVIDER-ORDER"
+      ],
+      "detail": "14 historical properties retain UNKNOWN epistemic or historical state."
+    },
+    {
+      "failure_id": "RIF-006",
+      "state": "CONFLICT_UNRESOLVED",
+      "affected": [
+        "CONF-001",
+        "CONF-002",
+        "CONF-004",
+        "CONF-005"
+      ],
+      "detail": "4 obligation conflicts remain unresolved."
+    }
+  ],
+  "validation_checks": [
+    {
+      "check_id": "RI01",
+      "check": "all required v10.1 artifacts are present",
+      "result": "PASS",
+      "detail": "8/8 required input roles are bound to existing artifacts"
+    },
+    {
+      "check_id": "RI02",
+      "check": "schemas are structurally compatible",
+      "result": "PASS",
+      "detail": "all selected registries are schema version 1.0"
+    },
+    {
+      "check_id": "RI03",
+      "check": "content hashes match selected artifacts",
+      "result": "PASS",
+      "detail": "8/8 selected artifact hashes match"
+    },
+    {
+      "check_id": "RI04",
+      "check": "upstream obligation contract is accepted",
+      "result": "FAIL",
+      "failure_states": [
+        "INPUT_MISSING",
+        "INPUT_HASH_MISMATCH",
+        "UNVERIFIED_SOURCE"
+      ]
+    },
+    {
+      "check_id": "RI05",
+      "check": "obligation registry contains only verified, known source obligations",
+      "result": "FAIL",
+      "failure_states": [
+        "UNVERIFIED_SOURCE",
+        "OBLIGATION_UNKNOWN"
+      ]
+    },
+    {
+      "check_id": "RI06",
+      "check": "historical properties are resolved",
+      "result": "FAIL",
+      "failure_states": [
+        "PROPERTY_UNKNOWN"
+      ]
+    },
+    {
+      "check_id": "RI07",
+      "check": "obligation dependency graph references resolve and is acyclic",
+      "result": "PASS",
+      "failure_states": []
+    },
+    {
+      "check_id": "RI08",
+      "check": "obligation lineage references resolve",
+      "result": "PASS",
+      "failure_states": []
+    },
+    {
+      "check_id": "RI09",
+      "check": "obligation conflicts are resolved",
+      "result": "FAIL",
+      "failure_states": [
+        "CONFLICT_UNRESOLVED"
+      ]
+    },
+    {
+      "check_id": "RI10",
+      "check": "traceability and verification records establish verified source",
+      "result": "FAIL",
+      "failure_states": [
+        "UNVERIFIED_SOURCE"
+      ]
+    }
+  ],
+  "source_package": {
+    "protocol": "v10.1",
+    "input_contract_status": "INPUT_CONTRACT_FAILED",
+    "obligation_count": 54,
+    "verified_obligation_count": 0,
+    "unknown_obligation_count": 2,
+    "unknown_property_count": 14,
+    "unresolved_conflict_count": 4
+  },
+  "derivation_policy": "No requirement, rule, criterion, oracle, boundary, or conformance claim may be derived while this gate is closed."
+}

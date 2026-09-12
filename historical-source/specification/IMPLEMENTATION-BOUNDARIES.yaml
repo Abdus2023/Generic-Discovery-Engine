@@ -1,0 +1,29 @@
+{
+  "schema_version": "1.0",
+  "status": "BLOCKED",
+  "allowed_boundaries": [
+    "INPUT",
+    "VALIDATION",
+    "ACQUISITION",
+    "RECOGNITION",
+    "PROVIDER",
+    "EXPANSION",
+    "SCHEDULER",
+    "STATE_STORE",
+    "KNOWLEDGE_BASE",
+    "PERSISTENCE",
+    "AUTHORIZATION",
+    "AUDIT",
+    "EXPORT",
+    "UI",
+    "RUNTIME",
+    "TEST_HARNESS"
+  ],
+  "requirement_boundaries": [],
+  "distinctions": [
+    "SEMANTIC_DEFINITION != IMPLEMENTATION_LOCATION",
+    "ENFORCEMENT_BOUNDARY != OBSERVATION_BOUNDARY",
+    "OBSERVATION_BOUNDARY != VERIFICATION_BOUNDARY"
+  ],
+  "reason": "No mandatory requirement exists to assign an enforcement boundary."
+}
