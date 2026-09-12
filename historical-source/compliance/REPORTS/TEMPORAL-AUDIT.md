@@ -1,5 +1,5 @@
-# v12 Temporal Integrity Audit
+# Protocol-v12.1 Temporal Audit
 
-> **Audit status: BLOCKED.** The v11.1 specification certificate is `FAIL`, its normative registry contains zero requirements, and no present implementation source was found. v12 makes no conformance or nonconformance decision. Absence of evidence is classified as blocked/unavailable—not as an implementation defect.
+> **v12.1 validation status: BLOCKED.** The v11.1 normative basis is rejected, contains zero admitted requirements, and no present implementation source exists. Schema validity, requirement validity, evidence validity, verification validity, and conformance remain distinct.
 
-Requirement and implementation versions cannot be compared because neither an admitted requirement nor implementation version exists. Status: `BLOCKED_NO_IMPLEMENTATION_VERSION`. No future requirement is applied retroactively.
+Temporal evaluation is blocked by the unavailable implementation version. No historical audit was silently made retrospective.

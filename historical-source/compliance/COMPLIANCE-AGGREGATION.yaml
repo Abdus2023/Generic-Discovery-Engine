@@ -1,17 +1,21 @@
 {
-  "schema_version": "1.0",
-  "audit_version": "12.0",
-  "status": "BLOCKED_NO_REQUIREMENTS",
+  "schema_version": "12.1",
+  "view_type": "V12_COMPATIBILITY_VIEW",
+  "canonical_source": "AGGREGATION.yaml",
   "counts": {
-    "MANDATORY_CONFORMANT": 0,
-    "MANDATORY_PARTIAL": 0,
-    "MANDATORY_NON_CONFORMANT": 0,
-    "MANDATORY_UNVERIFIED": 0,
-    "MANDATORY_BLOCKED": 0,
-    "OPTIONAL_CONFORMANT": 0,
-    "OPTIONAL_NON_CONFORMANT": 0,
-    "NOT_APPLICABLE": 0,
-    "UNKNOWN": 0
+    "conformant": 0,
+    "partially_conformant": 0,
+    "non_conformant": 0,
+    "unverified": 0,
+    "blocked": 0,
+    "unknown": 0,
+    "not_applicable": 0
   },
-  "percentage_only_summary": "FORBIDDEN"
+  "release_status": "BLOCKED",
+  "percentage_summary": "FORBIDDEN",
+  "blocking_conditions": [
+    "INVALID_NORMATIVE_SPECIFICATION",
+    "EMPTY_REQUIREMENT_SCOPE",
+    "MISSING_IMPLEMENTATION_SOURCE"
+  ]
 }

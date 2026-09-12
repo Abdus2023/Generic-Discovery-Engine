@@ -1,0 +1,73 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://generic-discovery-engine.invalid/compliance/v12.1/implementation-claim.schema.yaml",
+  "title": "Protocol-v12.1 IMPLEMENTATION_CLAIM",
+  "type": "object",
+  "required": [
+    "object_type",
+    "schema_version",
+    "object_id",
+    "created_at",
+    "requirement_id",
+    "claim_type",
+    "evidence"
+  ],
+  "properties": {
+    "object_type": {
+      "const": "IMPLEMENTATION_CLAIM"
+    },
+    "schema_version": {
+      "const": "12.1"
+    },
+    "object_id": {
+      "$ref": "common.schema.yaml#/$defs/Identifier"
+    },
+    "created_at": {
+      "$ref": "common.schema.yaml#/$defs/Timestamp"
+    },
+    "updated_at": {
+      "$ref": "common.schema.yaml#/$defs/Timestamp"
+    },
+    "producer": {
+      "$ref": "common.schema.yaml#/$defs/Identifier"
+    },
+    "content_hash": {
+      "$ref": "common.schema.yaml#/$defs/Hash"
+    },
+    "metadata": {
+      "type": "object"
+    },
+    "requirement_id": {
+      "$ref": "common.schema.yaml#/$defs/Identifier"
+    },
+    "claim_type": {
+      "type": "string",
+      "enum": [
+        "IMPLEMENTED",
+        "PARTIALLY_IMPLEMENTED",
+        "VERIFIED",
+        "NON_CONFORMANT",
+        "NOT_APPLICABLE",
+        "UNKNOWN"
+      ]
+    },
+    "evidence": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "$ref": "common.schema.yaml#/$defs/Reference"
+      }
+    },
+    "statement": {
+      "type": "string"
+    },
+    "claimant": {
+      "type": [
+        "string",
+        "null"
+      ]
+    }
+  },
+  "additionalProperties": false,
+  "x-v12.1-constraint": "An implementation claim never establishes compliance"
+}

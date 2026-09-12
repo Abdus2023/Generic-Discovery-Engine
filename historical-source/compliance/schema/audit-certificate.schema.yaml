@@ -1,0 +1,131 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://generic-discovery-engine.invalid/compliance/v12.1/audit-certificate.schema.yaml",
+  "title": "Protocol-v12.1 AUDIT_CERTIFICATE",
+  "type": "object",
+  "required": [
+    "object_type",
+    "schema_version",
+    "object_id",
+    "created_at",
+    "audit_id",
+    "scope",
+    "release_status",
+    "counts",
+    "issued_at",
+    "certificate_hash",
+    "specification_hash",
+    "implementation_hash"
+  ],
+  "properties": {
+    "object_type": {
+      "const": "AUDIT_CERTIFICATE"
+    },
+    "schema_version": {
+      "const": "12.1"
+    },
+    "object_id": {
+      "$ref": "common.schema.yaml#/$defs/Identifier"
+    },
+    "created_at": {
+      "$ref": "common.schema.yaml#/$defs/Timestamp"
+    },
+    "updated_at": {
+      "$ref": "common.schema.yaml#/$defs/Timestamp"
+    },
+    "producer": {
+      "$ref": "common.schema.yaml#/$defs/Identifier"
+    },
+    "content_hash": {
+      "$ref": "common.schema.yaml#/$defs/Hash"
+    },
+    "metadata": {
+      "type": "object"
+    },
+    "audit_id": {
+      "$ref": "common.schema.yaml#/$defs/Identifier"
+    },
+    "scope": {
+      "$ref": "common.schema.yaml#/$defs/Reference"
+    },
+    "release_status": {
+      "type": "string",
+      "enum": [
+        "COMPLIANT",
+        "CONDITIONALLY_COMPLIANT",
+        "NON_COMPLIANT",
+        "UNVERIFIED",
+        "BLOCKED"
+      ]
+    },
+    "counts": {
+      "type": "object",
+      "required": [
+        "conformant",
+        "partially_conformant",
+        "non_conformant",
+        "unverified",
+        "blocked",
+        "unknown",
+        "not_applicable"
+      ],
+      "properties": {
+        "conformant": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "partially_conformant": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "non_conformant": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "unverified": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "blocked": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "unknown": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "not_applicable": {
+          "type": "integer",
+          "minimum": 0
+        }
+      },
+      "additionalProperties": false
+    },
+    "critical_findings": {
+      "type": "array",
+      "items": {
+        "$ref": "common.schema.yaml#/$defs/Identifier"
+      }
+    },
+    "waivers": {
+      "type": "array",
+      "items": {
+        "$ref": "common.schema.yaml#/$defs/Reference"
+      }
+    },
+    "issued_at": {
+      "$ref": "common.schema.yaml#/$defs/Timestamp"
+    },
+    "certificate_hash": {
+      "$ref": "common.schema.yaml#/$defs/Hash"
+    },
+    "specification_hash": {
+      "$ref": "common.schema.yaml#/$defs/Hash"
+    },
+    "implementation_hash": {
+      "$ref": "common.schema.yaml#/$defs/Hash"
+    }
+  },
+  "additionalProperties": false,
+  "x-v12.1-hash-rule": "certificate_hash covers the canonical certificate excluding certificate_hash"
+}

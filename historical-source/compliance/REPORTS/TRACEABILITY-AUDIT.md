@@ -1,7 +1,5 @@
-# v12 Traceability Audit
+# Protocol-v12.1 Traceability Audit
 
-> **Audit status: BLOCKED.** The v11.1 specification certificate is `FAIL`, its normative registry contains zero requirements, and no present implementation source was found. v12 makes no conformance or nonconformance decision. Absence of evidence is classified as blocked/unavailable—not as an implementation defect.
+> **v12.1 validation status: BLOCKED.** The v11.1 normative basis is rejected, contains zero admitted requirements, and no present implementation source exists. Schema validity, requirement validity, evidence validity, verification validity, and conformance remain distinct.
 
-The v11.1 source trace reaches obligation and then stops. v12 finding-to-evidence-to-source links are complete for process findings, but no decision-to-requirement chain is fabricated.
-
-The implementation, conformance, finding, and audit-evidence graphs remain distinct from v10.1/v11.1 historical graphs.
+Normative traceability terminates before requirement. No requirement-to-decision or decision-to-source chain is fabricated.

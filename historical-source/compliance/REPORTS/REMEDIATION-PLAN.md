@@ -1,11 +1,5 @@
-# v12 Remediation Plan
+# Protocol-v12.1 Remediation Plan
 
-> **Audit status: BLOCKED.** The v11.1 specification certificate is `FAIL`, its normative registry contains zero requirements, and no present implementation source was found. v12 makes no conformance or nonconformance decision. Absence of evidence is classified as blocked/unavailable—not as an implementation defect.
+> **v12.1 validation status: BLOCKED.** The v11.1 normative basis is rejected, contains zero admitted requirements, and no present implementation source exists. Schema validity, requirement validity, evidence validity, verification validity, and conformance remain distinct.
 
-| ID | Finding | Priority | Status | Description | Reverification |
-|---|---|---|---|---|---|
-| REM-V12-001 | FINDING-V12-001 | HIGH | BLOCKED | Establish valid v1 through v9 inputs, verify v10.1 obligations, resolve conflicts, and regenerate an accepted v11.1 specification. | True |
-| REM-V12-002 | FINDING-V12-002 | HIGH | BLOCKED | Supply and identify present implementation source separately from historical snapshots and planning documents. | True |
-| REM-V12-003 | FINDING-V12-003 | MEDIUM | BLOCKED | Regenerate full requirement-to-conformance traceability after the normative and implementation gates open. | True |
-
-No remediation is complete; each remains blocked until re-verification is possible.
+Three blocked remediations target the three evidence-backed findings. None may close before successful re-validation and re-verification.

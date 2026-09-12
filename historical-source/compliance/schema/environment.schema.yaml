@@ -1,0 +1,101 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://generic-discovery-engine.invalid/compliance/v12.1/environment.schema.yaml",
+  "title": "Protocol-v12.1 ENVIRONMENT",
+  "type": "object",
+  "required": [
+    "object_type",
+    "schema_version",
+    "object_id",
+    "created_at",
+    "platform",
+    "reproducibility"
+  ],
+  "properties": {
+    "object_type": {
+      "const": "ENVIRONMENT"
+    },
+    "schema_version": {
+      "const": "12.1"
+    },
+    "object_id": {
+      "$ref": "common.schema.yaml#/$defs/Identifier"
+    },
+    "created_at": {
+      "$ref": "common.schema.yaml#/$defs/Timestamp"
+    },
+    "updated_at": {
+      "$ref": "common.schema.yaml#/$defs/Timestamp"
+    },
+    "producer": {
+      "$ref": "common.schema.yaml#/$defs/Identifier"
+    },
+    "content_hash": {
+      "$ref": "common.schema.yaml#/$defs/Hash"
+    },
+    "metadata": {
+      "type": "object"
+    },
+    "platform": {
+      "type": "object",
+      "required": [
+        "os",
+        "architecture"
+      ],
+      "properties": {
+        "os": {
+          "type": "string"
+        },
+        "architecture": {
+          "type": "string"
+        },
+        "runtime": {
+          "type": "string"
+        },
+        "compiler": {
+          "type": "string"
+        }
+      },
+      "additionalProperties": false
+    },
+    "dependencies": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "name",
+          "version"
+        ],
+        "properties": {
+          "name": {
+            "type": "string"
+          },
+          "version": {
+            "type": "string"
+          }
+        },
+        "additionalProperties": false
+      }
+    },
+    "configuration_hash": {
+      "oneOf": [
+        {
+          "$ref": "common.schema.yaml#/$defs/Hash"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "reproducibility": {
+      "type": "string",
+      "enum": [
+        "REPRODUCIBLE",
+        "PARTIALLY_REPRODUCIBLE",
+        "NON_REPRODUCIBLE",
+        "UNKNOWN"
+      ]
+    }
+  },
+  "additionalProperties": false
+}

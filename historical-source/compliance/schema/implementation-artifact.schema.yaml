@@ -1,0 +1,104 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://generic-discovery-engine.invalid/compliance/v12.1/implementation-artifact.schema.yaml",
+  "title": "Protocol-v12.1 IMPLEMENTATION_ARTIFACT",
+  "type": "object",
+  "required": [
+    "object_type",
+    "schema_version",
+    "object_id",
+    "created_at",
+    "artifact_type",
+    "identity",
+    "version_scope"
+  ],
+  "properties": {
+    "object_type": {
+      "const": "IMPLEMENTATION_ARTIFACT"
+    },
+    "schema_version": {
+      "const": "12.1"
+    },
+    "object_id": {
+      "$ref": "common.schema.yaml#/$defs/Identifier"
+    },
+    "created_at": {
+      "$ref": "common.schema.yaml#/$defs/Timestamp"
+    },
+    "updated_at": {
+      "$ref": "common.schema.yaml#/$defs/Timestamp"
+    },
+    "producer": {
+      "$ref": "common.schema.yaml#/$defs/Identifier"
+    },
+    "content_hash": {
+      "oneOf": [
+        {
+          "$ref": "common.schema.yaml#/$defs/Hash"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "metadata": {
+      "type": "object"
+    },
+    "artifact_type": {
+      "type": "string",
+      "enum": [
+        "SOURCE_FILE",
+        "FUNCTION",
+        "METHOD",
+        "TYPE",
+        "TRAIT",
+        "MODULE",
+        "CONFIGURATION",
+        "SCHEMA",
+        "TEST",
+        "FIXTURE",
+        "DOCUMENTATION",
+        "BUILD_ARTIFACT",
+        "BINARY",
+        "RUNTIME_TRACE",
+        "LOG",
+        "METRIC",
+        "AUDIT_RECORD"
+      ]
+    },
+    "identity": {
+      "type": "object",
+      "required": [
+        "path"
+      ],
+      "properties": {
+        "path": {
+          "type": "string"
+        },
+        "symbol": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "line_start": {
+          "type": [
+            "integer",
+            "null"
+          ]
+        },
+        "line_end": {
+          "type": [
+            "integer",
+            "null"
+          ]
+        }
+      },
+      "additionalProperties": false
+    },
+    "version_scope": {
+      "$ref": "common.schema.yaml#/$defs/VersionScope"
+    }
+  },
+  "additionalProperties": false
+}

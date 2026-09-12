@@ -1,0 +1,29 @@
+{
+  "schema_version": "12.1",
+  "counts": {
+    "conformant": 0,
+    "partially_conformant": 0,
+    "non_conformant": 0,
+    "unverified": 0,
+    "blocked": 0,
+    "unknown": 0,
+    "not_applicable": 0
+  },
+  "release_status": "BLOCKED",
+  "percentage_summary": "FORBIDDEN",
+  "requirement_count": 0,
+  "decision_count": 0,
+  "blocking_conditions": [
+    "INVALID_NORMATIVE_SPECIFICATION",
+    "EMPTY_REQUIREMENT_SCOPE",
+    "MISSING_IMPLEMENTATION_SOURCE"
+  ],
+  "release_rules": {
+    "COMPLIANT": "all mandatory applicable requirements CONFORMANT and no unresolved blocking critical finding",
+    "CONDITIONALLY_COMPLIANT": "mandatory failures covered by valid approved waivers and no unwaived critical violation",
+    "NON_COMPLIANT": "at least one mandatory applicable NON_CONFORMANT requirement without effective waiver",
+    "UNVERIFIED": "no mandatory violation proven but mandatory requirements remain UNVERIFIED or UNKNOWN",
+    "BLOCKED": "mandatory evaluation cannot complete because blocking conditions remain"
+  },
+  "rule": "Zero decisions and zero nonconformances do not establish compliance; PARTIALLY_COMPLIANT is not an audit-level release status."
+}

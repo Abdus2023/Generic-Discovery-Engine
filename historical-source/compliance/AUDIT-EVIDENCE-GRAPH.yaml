@@ -1,78 +1,113 @@
 {
-  "schema_version": "1.0",
+  "schema_version": "12.1",
+  "view_type": "V12_COMPATIBILITY_GRAPH",
   "graph_type": "AUDIT_EVIDENCE_GRAPH",
   "nodes": [
     {
-      "node_id": "FINDING-V12-001",
-      "node_type": "FINDING"
+      "node_id": "FINDING-V121-001",
+      "node_type": "AUDIT_FINDING"
     },
     {
-      "node_id": "FINDING-V12-002",
-      "node_type": "FINDING"
+      "node_id": "FINDING-V121-002",
+      "node_type": "AUDIT_FINDING"
     },
     {
-      "node_id": "FINDING-V12-003",
-      "node_type": "FINDING"
+      "node_id": "FINDING-V121-003",
+      "node_type": "AUDIT_FINDING"
     },
     {
-      "node_id": "EVIDREC-V12-SPEC",
+      "node_id": "EVIDENCE-V121-SPEC",
       "node_type": "EVIDENCE_RECORD"
     },
     {
-      "node_id": "EVIDREC-V12-IMPL",
+      "node_id": "EVIDENCE-V121-IMPLEMENTATION",
       "node_type": "EVIDENCE_RECORD"
     },
     {
-      "node_id": "EVIDREC-V12-REQ",
+      "node_id": "EVIDENCE-V121-REQUIREMENTS",
       "node_type": "EVIDENCE_RECORD"
     },
     {
-      "node_id": "V111-SPECIFICATION-MANIFEST-01457058bdb347f4",
-      "node_type": "SOURCE"
+      "node_id": "INPUT-SPECIFICATION",
+      "node_type": "INPUT_ARTIFACT"
     },
     {
-      "node_id": "MISSING-IMPLEMENTATION-SOURCE",
-      "node_type": "SOURCE"
+      "node_id": "INPUT-REQUIREMENTS",
+      "node_type": "INPUT_ARTIFACT"
     },
     {
-      "node_id": "V111-REQUIREMENTS-12e46e12df0b0f13",
-      "node_type": "SOURCE"
+      "node_id": "INPUT-NORMATIVE-RULES",
+      "node_type": "INPUT_ARTIFACT"
+    },
+    {
+      "node_id": "INPUT-ACCEPTANCE-CRITERIA",
+      "node_type": "INPUT_ARTIFACT"
+    },
+    {
+      "node_id": "INPUT-TEST-ORACLES",
+      "node_type": "INPUT_ARTIFACT"
+    },
+    {
+      "node_id": "INPUT-DEPENDENCIES",
+      "node_type": "INPUT_ARTIFACT"
+    },
+    {
+      "node_id": "INPUT-CONFLICTS",
+      "node_type": "INPUT_ARTIFACT"
+    },
+    {
+      "node_id": "INPUT-COMPATIBILITY",
+      "node_type": "INPUT_ARTIFACT"
+    },
+    {
+      "node_id": "INPUT-BOUNDARIES",
+      "node_type": "INPUT_ARTIFACT"
+    },
+    {
+      "node_id": "INPUT-VERIFICATION-RECORDS",
+      "node_type": "INPUT_ARTIFACT"
+    },
+    {
+      "node_id": "INPUT-SPECIFICATION-CERTIFICATE",
+      "node_type": "INPUT_ARTIFACT"
+    },
+    {
+      "node_id": "INPUT-REPOSITORY-DISCOVERY",
+      "node_type": "INPUT_ARTIFACT"
     }
   ],
   "edges": [
     {
-      "from": "FINDING-V12-001",
-      "to": "EVIDREC-V12-SPEC",
+      "from": "FINDING-V121-001",
+      "to": "EVIDENCE-V121-SPEC",
       "relation": "SUPPORTED_BY"
     },
     {
-      "from": "FINDING-V12-002",
-      "to": "EVIDREC-V12-IMPL",
+      "from": "FINDING-V121-002",
+      "to": "EVIDENCE-V121-IMPLEMENTATION",
       "relation": "SUPPORTED_BY"
     },
     {
-      "from": "FINDING-V12-003",
-      "to": "EVIDREC-V12-REQ",
+      "from": "FINDING-V121-003",
+      "to": "EVIDENCE-V121-REQUIREMENTS",
       "relation": "SUPPORTED_BY"
     },
     {
-      "from": "EVIDREC-V12-SPEC",
-      "to": "V111-SPECIFICATION-MANIFEST-01457058bdb347f4",
-      "relation": "OBSERVED_AT"
+      "from": "EVIDENCE-V121-SPEC",
+      "to": "INPUT-SPECIFICATION-CERTIFICATE",
+      "relation": "CAPTURED_FROM"
     },
     {
-      "from": "EVIDREC-V12-IMPL",
-      "to": "MISSING-IMPLEMENTATION-SOURCE",
-      "relation": "OBSERVED_AT"
+      "from": "EVIDENCE-V121-IMPLEMENTATION",
+      "to": "INPUT-REPOSITORY-DISCOVERY",
+      "relation": "CAPTURED_FROM"
     },
     {
-      "from": "EVIDREC-V12-REQ",
-      "to": "V111-REQUIREMENTS-12e46e12df0b0f13",
-      "relation": "OBSERVED_AT"
+      "from": "EVIDENCE-V121-REQUIREMENTS",
+      "to": "INPUT-REQUIREMENTS",
+      "relation": "CAPTURED_FROM"
     }
   ],
   "decision_nodes": [],
-  "verification_nodes": [],
-  "status": "PARTIAL_NO_DECISIONS",
-  "rule": "No decision-to-source chain is fabricated."
+  "verification_nodes": []
 }

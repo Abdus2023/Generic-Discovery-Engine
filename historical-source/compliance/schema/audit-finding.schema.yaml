@@ -1,0 +1,89 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://generic-discovery-engine.invalid/compliance/v12.1/audit-finding.schema.yaml",
+  "title": "Protocol-v12.1 AUDIT_FINDING",
+  "type": "object",
+  "required": [
+    "object_type",
+    "schema_version",
+    "object_id",
+    "created_at",
+    "finding_type",
+    "severity",
+    "evidence",
+    "status"
+  ],
+  "properties": {
+    "object_type": {
+      "const": "AUDIT_FINDING"
+    },
+    "schema_version": {
+      "const": "12.1"
+    },
+    "object_id": {
+      "$ref": "common.schema.yaml#/$defs/Identifier"
+    },
+    "created_at": {
+      "$ref": "common.schema.yaml#/$defs/Timestamp"
+    },
+    "updated_at": {
+      "$ref": "common.schema.yaml#/$defs/Timestamp"
+    },
+    "producer": {
+      "$ref": "common.schema.yaml#/$defs/Identifier"
+    },
+    "content_hash": {
+      "$ref": "common.schema.yaml#/$defs/Hash"
+    },
+    "metadata": {
+      "type": "object"
+    },
+    "finding_type": {
+      "type": "string",
+      "enum": [
+        "NON_CONFORMANCE",
+        "SPECIFICATION_DEFECT",
+        "VERIFICATION_DEFECT",
+        "ORACLE_DEFECT",
+        "MAPPING_DEFECT",
+        "TRACEABILITY_GAP",
+        "SECURITY_RISK",
+        "COMPATIBILITY_RISK",
+        "RESOURCE_RISK",
+        "PROCESS_FAILURE",
+        "UNKNOWN"
+      ]
+    },
+    "severity": {
+      "type": "string",
+      "enum": [
+        "CRITICAL",
+        "HIGH",
+        "MEDIUM",
+        "LOW",
+        "INFO",
+        "UNKNOWN"
+      ]
+    },
+    "evidence": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "$ref": "common.schema.yaml#/$defs/Reference"
+      }
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "OPEN",
+        "ACCEPTED",
+        "REMEDIATING",
+        "RESOLVED",
+        "WAIVED",
+        "REJECTED",
+        "SUPERSEDED"
+      ]
+    }
+  },
+  "additionalProperties": false
+}

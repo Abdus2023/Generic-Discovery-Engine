@@ -1,90 +1,66 @@
 {
-  "schema_version": "1.0",
-  "audit_version": "12.0",
-  "findings": [
+  "schema_version": "12.1",
+  "objects": [
     {
-      "finding_id": "FINDING-V12-001",
       "object_type": "AUDIT_FINDING",
-      "schema_version": "1.0",
-      "lifecycle_status": "DISCOVERED",
-      "provenance": {
-        "source_artifact": "historical-source/specification/SPECIFICATION-MANIFEST.yaml",
-        "content_hash": "01457058bdb347f4ce932d61d501682911148a6f6f620ee57c10630dea6cc778",
-        "audit_interpretation": "SPECIFICATION_REJECTED_NO_NORMATIVE_REQUIREMENTS"
+      "schema_version": "12.1",
+      "object_id": "FINDING-V121-001",
+      "created_at": "2026-09-12T14:53:12Z",
+      "producer": "historical-source/tools/build_compliance_audit_v121.py",
+      "metadata": {
+        "title": "Normative specification unavailable",
+        "failure_boundary": "SPECIFICATION_DEFECT"
       },
-      "requirement_id": null,
-      "finding_type": "PROCESS_FAILURE",
+      "finding_type": "SPECIFICATION_DEFECT",
       "severity": "HIGH",
-      "title": "Normative specification unavailable",
-      "description": "The v11.1 package is a validated rejection package and cannot serve as a normative compliance basis.",
       "evidence": [
-        "EVIDREC-V12-SPEC"
+        {
+          "object_type": "EVIDENCE_RECORD",
+          "object_id": "EVIDENCE-V121-SPEC"
+        }
       ],
-      "impact": "Requirement-by-requirement compliance cannot begin.",
       "status": "OPEN"
     },
     {
-      "finding_id": "FINDING-V12-002",
       "object_type": "AUDIT_FINDING",
-      "schema_version": "1.0",
-      "lifecycle_status": "DISCOVERED",
-      "provenance": {
-        "source_artifact": "repository root",
-        "content_hash": "DIRECTORY_NOT_HASHED",
-        "audit_interpretation": "IMPLEMENTATION_DISCOVERY"
+      "schema_version": "12.1",
+      "object_id": "FINDING-V121-002",
+      "created_at": "2026-09-12T14:53:12Z",
+      "producer": "historical-source/tools/build_compliance_audit_v121.py",
+      "metadata": {
+        "title": "Required implementation source unavailable",
+        "failure_boundary": "MAPPING_DEFECT",
+        "not_implementation_nonconformance": true
       },
-      "requirement_id": null,
       "finding_type": "MAPPING_DEFECT",
       "severity": "HIGH",
-      "title": "Implementation source unavailable",
-      "description": "No present implementation artifact is available for mapping or verification.",
       "evidence": [
-        "EVIDREC-V12-IMPL"
+        {
+          "object_type": "EVIDENCE_RECORD",
+          "object_id": "EVIDENCE-V121-IMPLEMENTATION"
+        }
       ],
-      "impact": "Implementation evidence and mappings cannot be produced.",
       "status": "OPEN"
     },
     {
-      "finding_id": "FINDING-V12-003",
       "object_type": "AUDIT_FINDING",
-      "schema_version": "1.0",
-      "lifecycle_status": "DISCOVERED",
-      "provenance": {
-        "source_artifact": "historical-source/specification/TRACEABILITY.yaml",
-        "content_hash": "c39ae68aae200e782d8f0405d7cc75f47f2ee4227972c17e6adc28be095e810a",
-        "audit_interpretation": "TRACEABILITY_INSPECTION"
+      "schema_version": "12.1",
+      "object_id": "FINDING-V121-003",
+      "created_at": "2026-09-12T14:53:12Z",
+      "producer": "historical-source/tools/build_compliance_audit_v121.py",
+      "metadata": {
+        "title": "Normative traceability terminates before requirement",
+        "failure_boundary": "TRACEABILITY_GAP"
       },
-      "requirement_id": null,
       "finding_type": "TRACEABILITY_GAP",
       "severity": "MEDIUM",
-      "title": "Normative traceability chain terminates at obligation",
-      "description": "The canonical v11.1 trace has no requirement, criterion, oracle, result, verification, or conformance nodes.",
       "evidence": [
-        "EVIDREC-V12-REQ"
+        {
+          "object_type": "EVIDENCE_RECORD",
+          "object_id": "EVIDENCE-V121-REQUIREMENTS"
+        }
       ],
-      "impact": "No compliance decision can support the required backward chain.",
       "status": "OPEN"
     }
-  ],
-  "finding_types": [
-    "NON_CONFORMANCE",
-    "SPECIFICATION_DEFECT",
-    "VERIFICATION_DEFECT",
-    "ORACLE_DEFECT",
-    "MAPPING_DEFECT",
-    "TRACEABILITY_GAP",
-    "SECURITY_RISK",
-    "COMPATIBILITY_RISK",
-    "RESOURCE_RISK",
-    "PROCESS_FAILURE",
-    "UNKNOWN"
-  ],
-  "severities": [
-    "CRITICAL",
-    "HIGH",
-    "MEDIUM",
-    "LOW",
-    "INFO",
-    "UNKNOWN"
   ]
 }

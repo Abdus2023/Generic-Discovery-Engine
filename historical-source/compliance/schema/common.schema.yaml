@@ -1,0 +1,86 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://generic-discovery-engine.invalid/compliance/v12.1/common.schema.yaml",
+  "schema_version": "12.1",
+  "title": "Protocol-v12.1 common primitive schemas",
+  "$defs": {
+    "Identifier": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 256,
+      "pattern": "^[A-Za-z0-9][A-Za-z0-9._:/-]*$"
+    },
+    "Timestamp": {
+      "type": "string",
+      "format": "date-time",
+      "pattern": "^(?:\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}(?:\\.\\d+)?Z|\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}(?:\\.\\d+)?[+-]\\d{2}:\\d{2})$"
+    },
+    "Hash": {
+      "type": "object",
+      "required": [
+        "algorithm",
+        "value"
+      ],
+      "properties": {
+        "algorithm": {
+          "type": "string",
+          "enum": [
+            "SHA-256",
+            "SHA-384",
+            "SHA-512"
+          ]
+        },
+        "value": {
+          "type": "string",
+          "pattern": "^[A-Fa-f0-9]+$"
+        }
+      },
+      "additionalProperties": false
+    },
+    "VersionScope": {
+      "type": "object",
+      "required": [
+        "specification_version"
+      ],
+      "properties": {
+        "specification_version": {
+          "type": "string"
+        },
+        "implementation_version": {
+          "type": "string"
+        },
+        "valid_from": {
+          "$ref": "common.schema.yaml#/$defs/Timestamp"
+        },
+        "valid_until": {
+          "oneOf": [
+            {
+              "$ref": "common.schema.yaml#/$defs/Timestamp"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        }
+      },
+      "additionalProperties": false,
+      "x-v12.1-constraint": "valid_until MUST NOT precede valid_from"
+    },
+    "Reference": {
+      "type": "object",
+      "required": [
+        "object_type",
+        "object_id"
+      ],
+      "properties": {
+        "object_type": {
+          "type": "string"
+        },
+        "object_id": {
+          "$ref": "common.schema.yaml#/$defs/Identifier"
+        }
+      },
+      "additionalProperties": false
+    }
+  }
+}

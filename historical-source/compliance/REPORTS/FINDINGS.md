@@ -1,9 +1,9 @@
-# v12 Findings
+# Protocol-v12.1 Findings
 
-> **Audit status: BLOCKED.** The v11.1 specification certificate is `FAIL`, its normative registry contains zero requirements, and no present implementation source was found. v12 makes no conformance or nonconformance decision. Absence of evidence is classified as blocked/unavailable—not as an implementation defect.
+> **v12.1 validation status: BLOCKED.** The v11.1 normative basis is rejected, contains zero admitted requirements, and no present implementation source exists. Schema validity, requirement validity, evidence validity, verification validity, and conformance remain distinct.
 
-| ID | Type | Severity | Title | Evidence | Status |
-|---|---|---|---|---|---|
-| FINDING-V12-001 | PROCESS_FAILURE | HIGH | Normative specification unavailable | EVIDREC-V12-SPEC | OPEN |
-| FINDING-V12-002 | MAPPING_DEFECT | HIGH | Implementation source unavailable | EVIDREC-V12-IMPL | OPEN |
-| FINDING-V12-003 | TRACEABILITY_GAP | MEDIUM | Normative traceability chain terminates at obligation | EVIDREC-V12-REQ | OPEN |
+| ID | Type | Severity | Status |
+|---|---|---|---|
+| FINDING-V121-001 | SPECIFICATION_DEFECT | HIGH | OPEN |
+| FINDING-V121-002 | MAPPING_DEFECT | HIGH | OPEN |
+| FINDING-V121-003 | TRACEABILITY_GAP | MEDIUM | OPEN |

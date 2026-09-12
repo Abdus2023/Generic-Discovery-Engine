@@ -1,0 +1,229 @@
+{
+  "schema_version": "12.1",
+  "objects": [
+    {
+      "object_type": "AUDIT",
+      "object_id": "AUDIT-OBJECT-V121-001",
+      "source_file": "AUDIT.yaml",
+      "json_pointer": "/objects/0"
+    },
+    {
+      "object_type": "AUDIT_SCOPE",
+      "object_id": "SCOPE-V121-001",
+      "source_file": "AUDIT.yaml",
+      "json_pointer": "/objects/0/scope"
+    },
+    {
+      "object_type": "INPUT_ARTIFACT",
+      "object_id": "INPUT-SPECIFICATION",
+      "source_file": "INPUT-ARTIFACTS.yaml",
+      "json_pointer": "/objects/0"
+    },
+    {
+      "object_type": "INPUT_ARTIFACT",
+      "object_id": "INPUT-REQUIREMENTS",
+      "source_file": "INPUT-ARTIFACTS.yaml",
+      "json_pointer": "/objects/1"
+    },
+    {
+      "object_type": "INPUT_ARTIFACT",
+      "object_id": "INPUT-NORMATIVE-RULES",
+      "source_file": "INPUT-ARTIFACTS.yaml",
+      "json_pointer": "/objects/2"
+    },
+    {
+      "object_type": "INPUT_ARTIFACT",
+      "object_id": "INPUT-ACCEPTANCE-CRITERIA",
+      "source_file": "INPUT-ARTIFACTS.yaml",
+      "json_pointer": "/objects/3"
+    },
+    {
+      "object_type": "INPUT_ARTIFACT",
+      "object_id": "INPUT-TEST-ORACLES",
+      "source_file": "INPUT-ARTIFACTS.yaml",
+      "json_pointer": "/objects/4"
+    },
+    {
+      "object_type": "INPUT_ARTIFACT",
+      "object_id": "INPUT-DEPENDENCIES",
+      "source_file": "INPUT-ARTIFACTS.yaml",
+      "json_pointer": "/objects/5"
+    },
+    {
+      "object_type": "INPUT_ARTIFACT",
+      "object_id": "INPUT-CONFLICTS",
+      "source_file": "INPUT-ARTIFACTS.yaml",
+      "json_pointer": "/objects/6"
+    },
+    {
+      "object_type": "INPUT_ARTIFACT",
+      "object_id": "INPUT-COMPATIBILITY",
+      "source_file": "INPUT-ARTIFACTS.yaml",
+      "json_pointer": "/objects/7"
+    },
+    {
+      "object_type": "INPUT_ARTIFACT",
+      "object_id": "INPUT-BOUNDARIES",
+      "source_file": "INPUT-ARTIFACTS.yaml",
+      "json_pointer": "/objects/8"
+    },
+    {
+      "object_type": "INPUT_ARTIFACT",
+      "object_id": "INPUT-VERIFICATION-RECORDS",
+      "source_file": "INPUT-ARTIFACTS.yaml",
+      "json_pointer": "/objects/9"
+    },
+    {
+      "object_type": "INPUT_ARTIFACT",
+      "object_id": "INPUT-SPECIFICATION-CERTIFICATE",
+      "source_file": "INPUT-ARTIFACTS.yaml",
+      "json_pointer": "/objects/10"
+    },
+    {
+      "object_type": "INPUT_ARTIFACT",
+      "object_id": "INPUT-REPOSITORY-DISCOVERY",
+      "source_file": "INPUT-ARTIFACTS.yaml",
+      "json_pointer": "/objects/11"
+    },
+    {
+      "object_type": "ENVIRONMENT",
+      "object_id": "ENV-V121-001",
+      "source_file": "ENVIRONMENTS.yaml",
+      "json_pointer": "/objects/0"
+    },
+    {
+      "object_type": "EVIDENCE_RECORD",
+      "object_id": "EVIDENCE-V121-SPEC",
+      "source_file": "EVIDENCE-RECORDS.yaml",
+      "json_pointer": "/objects/0"
+    },
+    {
+      "object_type": "EVIDENCE_RECORD",
+      "object_id": "EVIDENCE-V121-IMPLEMENTATION",
+      "source_file": "EVIDENCE-RECORDS.yaml",
+      "json_pointer": "/objects/1"
+    },
+    {
+      "object_type": "EVIDENCE_RECORD",
+      "object_id": "EVIDENCE-V121-REQUIREMENTS",
+      "source_file": "EVIDENCE-RECORDS.yaml",
+      "json_pointer": "/objects/2"
+    },
+    {
+      "object_type": "AUDIT_FINDING",
+      "object_id": "FINDING-V121-001",
+      "source_file": "FINDINGS.yaml",
+      "json_pointer": "/objects/0"
+    },
+    {
+      "object_type": "AUDIT_FINDING",
+      "object_id": "FINDING-V121-002",
+      "source_file": "FINDINGS.yaml",
+      "json_pointer": "/objects/1"
+    },
+    {
+      "object_type": "AUDIT_FINDING",
+      "object_id": "FINDING-V121-003",
+      "source_file": "FINDINGS.yaml",
+      "json_pointer": "/objects/2"
+    },
+    {
+      "object_type": "REMEDIATION",
+      "object_id": "REMEDIATION-V121-001",
+      "source_file": "REMEDIATIONS.yaml",
+      "json_pointer": "/objects/0"
+    },
+    {
+      "object_type": "REMEDIATION",
+      "object_id": "REMEDIATION-V121-002",
+      "source_file": "REMEDIATIONS.yaml",
+      "json_pointer": "/objects/1"
+    },
+    {
+      "object_type": "REMEDIATION",
+      "object_id": "REMEDIATION-V121-003",
+      "source_file": "REMEDIATIONS.yaml",
+      "json_pointer": "/objects/2"
+    },
+    {
+      "object_type": "AUDIT_RUN",
+      "object_id": "RUN-V121-001",
+      "source_file": "AUDIT-RUNS.yaml",
+      "json_pointer": "/objects/0"
+    },
+    {
+      "object_type": "AUDIT_CERTIFICATE",
+      "object_id": "CERTIFICATE-V121-001",
+      "source_file": "AUDIT-CERTIFICATE.yaml",
+      "json_pointer": "/objects/0"
+    }
+  ],
+  "object_count": 26,
+  "duplicate_object_ids": [],
+  "schema_registry": [
+    {
+      "object_type": "AUDIT",
+      "schema": "schema/audit.schema.yaml"
+    },
+    {
+      "object_type": "AUDIT_SCOPE",
+      "schema": "schema/audit-scope.schema.yaml"
+    },
+    {
+      "object_type": "INPUT_ARTIFACT",
+      "schema": "schema/input-artifact.schema.yaml"
+    },
+    {
+      "object_type": "ENVIRONMENT",
+      "schema": "schema/environment.schema.yaml"
+    },
+    {
+      "object_type": "IMPLEMENTATION_ARTIFACT",
+      "schema": "schema/implementation-artifact.schema.yaml"
+    },
+    {
+      "object_type": "IMPLEMENTATION_CLAIM",
+      "schema": "schema/implementation-claim.schema.yaml"
+    },
+    {
+      "object_type": "REQUIREMENT_MAPPING",
+      "schema": "schema/requirement-mapping.schema.yaml"
+    },
+    {
+      "object_type": "EVIDENCE_RECORD",
+      "schema": "schema/evidence-record.schema.yaml"
+    },
+    {
+      "object_type": "VERIFICATION_EXECUTION",
+      "schema": "schema/verification-execution.schema.yaml"
+    },
+    {
+      "object_type": "COMPLIANCE_DECISION",
+      "schema": "schema/compliance-decision.schema.yaml"
+    },
+    {
+      "object_type": "NONCONFORMANCE",
+      "schema": "schema/nonconformance.schema.yaml"
+    },
+    {
+      "object_type": "WAIVER",
+      "schema": "schema/waiver.schema.yaml"
+    },
+    {
+      "object_type": "REMEDIATION",
+      "schema": "schema/remediation.schema.yaml"
+    },
+    {
+      "object_type": "AUDIT_FINDING",
+      "schema": "schema/audit-finding.schema.yaml"
+    },
+    {
+      "object_type": "AUDIT_RUN",
+      "schema": "schema/audit-run.schema.yaml"
+    },
+    {
+      "object_type": "AUDIT_CERTIFICATE",
+      "schema": "schema/audit-certificate.schema.yaml"
+    }
+  ]
+}

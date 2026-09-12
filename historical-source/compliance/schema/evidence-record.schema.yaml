@@ -1,0 +1,102 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://generic-discovery-engine.invalid/compliance/v12.1/evidence-record.schema.yaml",
+  "title": "Protocol-v12.1 EVIDENCE_RECORD",
+  "type": "object",
+  "required": [
+    "object_type",
+    "schema_version",
+    "object_id",
+    "created_at",
+    "evidence_type",
+    "source",
+    "result",
+    "captured_at"
+  ],
+  "properties": {
+    "object_type": {
+      "const": "EVIDENCE_RECORD"
+    },
+    "schema_version": {
+      "const": "12.1"
+    },
+    "object_id": {
+      "$ref": "common.schema.yaml#/$defs/Identifier"
+    },
+    "created_at": {
+      "$ref": "common.schema.yaml#/$defs/Timestamp"
+    },
+    "updated_at": {
+      "$ref": "common.schema.yaml#/$defs/Timestamp"
+    },
+    "producer": {
+      "$ref": "common.schema.yaml#/$defs/Identifier"
+    },
+    "content_hash": {
+      "oneOf": [
+        {
+          "$ref": "common.schema.yaml#/$defs/Hash"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "metadata": {
+      "type": "object"
+    },
+    "evidence_type": {
+      "type": "string",
+      "enum": [
+        "SOURCE",
+        "STATIC_ANALYSIS",
+        "TEST_RESULT",
+        "RUNTIME_TRACE",
+        "LOG",
+        "METRIC",
+        "AUDIT_RECORD",
+        "BINARY_INSPECTION",
+        "CONFIGURATION",
+        "DOCUMENTATION",
+        "MANUAL_INSPECTION"
+      ]
+    },
+    "source": {
+      "$ref": "common.schema.yaml#/$defs/Reference"
+    },
+    "result": {
+      "type": "string",
+      "enum": [
+        "PASS",
+        "FAIL",
+        "INCONCLUSIVE",
+        "UNAVAILABLE",
+        "INVALID",
+        "UNKNOWN"
+      ]
+    },
+    "captured_at": {
+      "$ref": "common.schema.yaml#/$defs/Timestamp"
+    },
+    "environment": {
+      "oneOf": [
+        {
+          "$ref": "common.schema.yaml#/$defs/Reference"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "reproducibility": {
+      "type": "string",
+      "enum": [
+        "REPRODUCIBLE",
+        "FLAKY",
+        "NON_REPRODUCIBLE",
+        "UNKNOWN"
+      ]
+    }
+  },
+  "additionalProperties": false
+}

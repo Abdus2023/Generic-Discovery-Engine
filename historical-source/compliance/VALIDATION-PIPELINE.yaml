@@ -1,0 +1,110 @@
+{
+  "schema_version": "12.1",
+  "deterministic_order": true,
+  "stages": [
+    {
+      "stage_id": "V0",
+      "stage": "LOAD",
+      "status": "BLOCKED_CONTINUE_STRUCTURAL_DIAGNOSTICS",
+      "detail": "Required implementation source is INPUT_MISSING; conformance evaluation is prohibited."
+    },
+    {
+      "stage_id": "V1",
+      "stage": "STRUCTURAL_VALIDATION",
+      "status": "PASS",
+      "detail": "Available inputs and object boundaries are valid JSON structures."
+    },
+    {
+      "stage_id": "V2",
+      "stage": "SCHEMA_VALIDATION",
+      "status": "FAIL_STOP",
+      "detail": "AUDIT_SCOPE.requirements violates minItems: 1; no synthetic requirement may be inserted."
+    },
+    {
+      "stage_id": "V3",
+      "stage": "REFERENCE_VALIDATION",
+      "status": "NOT_EXECUTED_EARLY_STOP",
+      "detail": "V2 schema failure stops the canonical pipeline."
+    },
+    {
+      "stage_id": "V4",
+      "stage": "VERSION_TEMPORAL_VALIDATION",
+      "status": "NOT_EXECUTED_EARLY_STOP",
+      "detail": "V2 schema failure stops the canonical pipeline."
+    },
+    {
+      "stage_id": "V5",
+      "stage": "HASH_INTEGRITY_VALIDATION",
+      "status": "NOT_EXECUTED_EARLY_STOP",
+      "detail": "V2 schema failure stops the canonical pipeline."
+    },
+    {
+      "stage_id": "V6",
+      "stage": "REQUIREMENT_SEMANTIC_VALIDATION",
+      "status": "NOT_EXECUTED_EARLY_STOP",
+      "detail": "V2 schema failure stops the canonical pipeline."
+    },
+    {
+      "stage_id": "V7",
+      "stage": "DEPENDENCY_VALIDATION",
+      "status": "NOT_EXECUTED_EARLY_STOP",
+      "detail": "V2 schema failure stops the canonical pipeline."
+    },
+    {
+      "stage_id": "V8",
+      "stage": "CONFLICT_PRECEDENCE_VALIDATION",
+      "status": "NOT_EXECUTED_EARLY_STOP",
+      "detail": "V2 schema failure stops the canonical pipeline."
+    },
+    {
+      "stage_id": "V9",
+      "stage": "MAPPING_VALIDATION",
+      "status": "NOT_EXECUTED_EARLY_STOP",
+      "detail": "V2 schema failure stops the canonical pipeline."
+    },
+    {
+      "stage_id": "V10",
+      "stage": "EVIDENCE_VALIDATION",
+      "status": "NOT_EXECUTED_EARLY_STOP",
+      "detail": "V2 schema failure stops the canonical pipeline."
+    },
+    {
+      "stage_id": "V11",
+      "stage": "ORACLE_VALIDATION",
+      "status": "NOT_EXECUTED_EARLY_STOP",
+      "detail": "V2 schema failure stops the canonical pipeline."
+    },
+    {
+      "stage_id": "V12",
+      "stage": "VERIFICATION_VALIDATION",
+      "status": "NOT_EXECUTED_EARLY_STOP",
+      "detail": "V2 schema failure stops the canonical pipeline."
+    },
+    {
+      "stage_id": "V13",
+      "stage": "CONFORMANCE_EVALUATION",
+      "status": "NOT_EXECUTED_EARLY_STOP",
+      "detail": "V2 schema failure stops the canonical pipeline."
+    },
+    {
+      "stage_id": "V14",
+      "stage": "FINDING_GENERATION",
+      "status": "NOT_EXECUTED_EARLY_STOP",
+      "detail": "V2 schema failure stops the canonical pipeline."
+    },
+    {
+      "stage_id": "V15",
+      "stage": "AGGREGATION",
+      "status": "NOT_EXECUTED_EARLY_STOP",
+      "detail": "V2 schema failure stops the canonical pipeline."
+    },
+    {
+      "stage_id": "V16",
+      "stage": "CERTIFICATE_VALIDATION",
+      "status": "NOT_EXECUTED_EARLY_STOP",
+      "detail": "V2 schema failure stops the canonical pipeline."
+    }
+  ],
+  "stop_stage": "V2",
+  "conformance_evaluation_performed": false
+}

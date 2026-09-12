@@ -1,0 +1,91 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://generic-discovery-engine.invalid/compliance/v12.1/remediation.schema.yaml",
+  "title": "Protocol-v12.1 REMEDIATION",
+  "type": "object",
+  "required": [
+    "object_type",
+    "schema_version",
+    "object_id",
+    "created_at",
+    "finding_id",
+    "status",
+    "actions"
+  ],
+  "properties": {
+    "object_type": {
+      "const": "REMEDIATION"
+    },
+    "schema_version": {
+      "const": "12.1"
+    },
+    "object_id": {
+      "$ref": "common.schema.yaml#/$defs/Identifier"
+    },
+    "created_at": {
+      "$ref": "common.schema.yaml#/$defs/Timestamp"
+    },
+    "updated_at": {
+      "$ref": "common.schema.yaml#/$defs/Timestamp"
+    },
+    "producer": {
+      "$ref": "common.schema.yaml#/$defs/Identifier"
+    },
+    "content_hash": {
+      "$ref": "common.schema.yaml#/$defs/Hash"
+    },
+    "metadata": {
+      "type": "object"
+    },
+    "finding_id": {
+      "$ref": "common.schema.yaml#/$defs/Identifier"
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "OPEN",
+        "PLANNED",
+        "IN_PROGRESS",
+        "READY_FOR_VERIFICATION",
+        "VERIFIED",
+        "CLOSED",
+        "BLOCKED",
+        "REJECTED",
+        "SUPERSEDED"
+      ]
+    },
+    "actions": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "required": [
+          "action_id",
+          "description"
+        ],
+        "properties": {
+          "action_id": {
+            "$ref": "common.schema.yaml#/$defs/Identifier"
+          },
+          "description": {
+            "type": "string"
+          },
+          "implementation_artifacts": {
+            "type": "array",
+            "items": {
+              "$ref": "common.schema.yaml#/$defs/Reference"
+            }
+          }
+        },
+        "additionalProperties": false
+      }
+    },
+    "residual_risk": {
+      "type": [
+        "string",
+        "null"
+      ]
+    }
+  },
+  "additionalProperties": false
+}

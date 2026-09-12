@@ -1,0 +1,116 @@
+{
+  "schema_version": "12.1",
+  "schema_registry": [
+    {
+      "schema": "schema/common.schema.yaml",
+      "status": "PASS_MACHINE_PARSEABLE"
+    },
+    {
+      "schema": "schema/audit.schema.yaml",
+      "status": "PASS_MACHINE_PARSEABLE"
+    },
+    {
+      "schema": "schema/audit-scope.schema.yaml",
+      "status": "PASS_MACHINE_PARSEABLE"
+    },
+    {
+      "schema": "schema/input-artifact.schema.yaml",
+      "status": "PASS_MACHINE_PARSEABLE"
+    },
+    {
+      "schema": "schema/environment.schema.yaml",
+      "status": "PASS_MACHINE_PARSEABLE"
+    },
+    {
+      "schema": "schema/implementation-artifact.schema.yaml",
+      "status": "PASS_MACHINE_PARSEABLE"
+    },
+    {
+      "schema": "schema/implementation-claim.schema.yaml",
+      "status": "PASS_MACHINE_PARSEABLE"
+    },
+    {
+      "schema": "schema/requirement-mapping.schema.yaml",
+      "status": "PASS_MACHINE_PARSEABLE"
+    },
+    {
+      "schema": "schema/evidence-record.schema.yaml",
+      "status": "PASS_MACHINE_PARSEABLE"
+    },
+    {
+      "schema": "schema/verification-execution.schema.yaml",
+      "status": "PASS_MACHINE_PARSEABLE"
+    },
+    {
+      "schema": "schema/compliance-decision.schema.yaml",
+      "status": "PASS_MACHINE_PARSEABLE"
+    },
+    {
+      "schema": "schema/nonconformance.schema.yaml",
+      "status": "PASS_MACHINE_PARSEABLE"
+    },
+    {
+      "schema": "schema/waiver.schema.yaml",
+      "status": "PASS_MACHINE_PARSEABLE"
+    },
+    {
+      "schema": "schema/remediation.schema.yaml",
+      "status": "PASS_MACHINE_PARSEABLE"
+    },
+    {
+      "schema": "schema/audit-finding.schema.yaml",
+      "status": "PASS_MACHINE_PARSEABLE"
+    },
+    {
+      "schema": "schema/audit-run.schema.yaml",
+      "status": "PASS_MACHINE_PARSEABLE"
+    },
+    {
+      "schema": "schema/audit-certificate.schema.yaml",
+      "status": "PASS_MACHINE_PARSEABLE"
+    }
+  ],
+  "schema_count": 17,
+  "object_results": [
+    {
+      "object_id": "SCOPE-V121-001",
+      "object_type": "AUDIT_SCOPE",
+      "status": "FAIL",
+      "errors": [
+        "requirements minItems 1; actual 0"
+      ]
+    },
+    {
+      "object_id": "AUDIT-OBJECT-V121-001",
+      "object_type": "AUDIT",
+      "status": "FAIL_NESTED_SCOPE"
+    }
+  ],
+  "objects_not_reached_due_stop": [
+    "INPUT-SPECIFICATION",
+    "INPUT-REQUIREMENTS",
+    "INPUT-NORMATIVE-RULES",
+    "INPUT-ACCEPTANCE-CRITERIA",
+    "INPUT-TEST-ORACLES",
+    "INPUT-DEPENDENCIES",
+    "INPUT-CONFLICTS",
+    "INPUT-COMPATIBILITY",
+    "INPUT-BOUNDARIES",
+    "INPUT-VERIFICATION-RECORDS",
+    "INPUT-SPECIFICATION-CERTIFICATE",
+    "INPUT-REPOSITORY-DISCOVERY",
+    "ENV-V121-001",
+    "EVIDENCE-V121-SPEC",
+    "EVIDENCE-V121-IMPLEMENTATION",
+    "EVIDENCE-V121-REQUIREMENTS",
+    "FINDING-V121-001",
+    "FINDING-V121-002",
+    "FINDING-V121-003",
+    "REMEDIATION-V121-001",
+    "REMEDIATION-V121-002",
+    "REMEDIATION-V121-003",
+    "RUN-V121-001",
+    "CERTIFICATE-V121-001"
+  ],
+  "status": "FAIL_STOP"
+}

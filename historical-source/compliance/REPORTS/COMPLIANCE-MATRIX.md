@@ -1,20 +1,5 @@
-# v12 Compliance Matrix
+# Protocol-v12.1 Compliance Matrix
 
-> **Audit status: BLOCKED.** The v11.1 specification certificate is `FAIL`, its normative registry contains zero requirements, and no present implementation source was found. v12 makes no conformance or nonconformance decision. Absence of evidence is classified as blocked/unavailable—not as an implementation defect.
+> **v12.1 validation status: BLOCKED.** The v11.1 normative basis is rejected, contains zero admitted requirements, and no present implementation source exists. Schema validity, requirement validity, evidence validity, verification validity, and conformance remain distinct.
 
-| Requirement | Mapping | Criterion | Oracle | Verification | Decision | Finding |
-|---|---|---|---|---|---|---|
-
-The empty matrix is generated from empty machine decision records; it is not an all-pass result.
-
-| Aggregation class | Count |
-|---|---|
-| MANDATORY_CONFORMANT | 0 |
-| MANDATORY_PARTIAL | 0 |
-| MANDATORY_NON_CONFORMANT | 0 |
-| MANDATORY_UNVERIFIED | 0 |
-| MANDATORY_BLOCKED | 0 |
-| OPTIONAL_CONFORMANT | 0 |
-| OPTIONAL_NON_CONFORMANT | 0 |
-| NOT_APPLICABLE | 0 |
-| UNKNOWN | 0 |
+The machine matrix contains zero rows because there are zero admitted requirements and zero decisions. An empty matrix is not an all-pass result.

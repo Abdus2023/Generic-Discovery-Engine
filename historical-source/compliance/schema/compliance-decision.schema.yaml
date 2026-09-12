@@ -1,0 +1,98 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://generic-discovery-engine.invalid/compliance/v12.1/compliance-decision.schema.yaml",
+  "title": "Protocol-v12.1 COMPLIANCE_DECISION",
+  "type": "object",
+  "required": [
+    "object_type",
+    "schema_version",
+    "object_id",
+    "created_at",
+    "requirement_id",
+    "status",
+    "confidence",
+    "basis"
+  ],
+  "properties": {
+    "object_type": {
+      "const": "COMPLIANCE_DECISION"
+    },
+    "schema_version": {
+      "const": "12.1"
+    },
+    "object_id": {
+      "$ref": "common.schema.yaml#/$defs/Identifier"
+    },
+    "created_at": {
+      "$ref": "common.schema.yaml#/$defs/Timestamp"
+    },
+    "updated_at": {
+      "$ref": "common.schema.yaml#/$defs/Timestamp"
+    },
+    "producer": {
+      "$ref": "common.schema.yaml#/$defs/Identifier"
+    },
+    "content_hash": {
+      "$ref": "common.schema.yaml#/$defs/Hash"
+    },
+    "metadata": {
+      "type": "object"
+    },
+    "requirement_id": {
+      "$ref": "common.schema.yaml#/$defs/Identifier"
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "UNASSESSED",
+        "MAPPED",
+        "VERIFIED",
+        "CONFORMANT",
+        "PARTIALLY_CONFORMANT",
+        "NON_CONFORMANT",
+        "UNVERIFIED",
+        "NOT_APPLICABLE",
+        "BLOCKED",
+        "UNKNOWN"
+      ]
+    },
+    "confidence": {
+      "type": "string",
+      "enum": [
+        "HIGH",
+        "MEDIUM",
+        "LOW",
+        "UNKNOWN"
+      ]
+    },
+    "basis": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "$ref": "common.schema.yaml#/$defs/Reference"
+      }
+    },
+    "violated_rules": {
+      "type": "array",
+      "items": {
+        "$ref": "common.schema.yaml#/$defs/Identifier"
+      }
+    },
+    "failed_criteria": {
+      "type": "array",
+      "items": {
+        "$ref": "common.schema.yaml#/$defs/Identifier"
+      }
+    },
+    "unresolved_dependencies": {
+      "type": "array",
+      "items": {
+        "$ref": "common.schema.yaml#/$defs/Identifier"
+      }
+    },
+    "decided_at": {
+      "$ref": "common.schema.yaml#/$defs/Timestamp"
+    }
+  },
+  "additionalProperties": false
+}

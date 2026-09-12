@@ -1,29 +1,10 @@
 {
-  "schema_version": "1.0",
-  "audit_version": "12.0",
-  "audit_scopes": [
-    {
-      "scope_id": "AUDIT-SCOPE-V12-001",
-      "object_type": "AUDIT_SCOPE",
-      "schema_version": "1.0",
-      "lifecycle_status": "BLOCKED",
-      "provenance": {
-        "source_artifact": "historical-source/specification/SPECIFICATION-MANIFEST.yaml",
-        "content_hash": "01457058bdb347f4ce932d61d501682911148a6f6f620ee57c10630dea6cc778",
-        "audit_interpretation": "SPECIFICATION_REJECTED_NO_NORMATIVE_REQUIREMENTS"
-      },
-      "requirements": {
-        "include": [],
-        "exclude": []
-      },
-      "exclusions": [],
-      "components": [],
-      "versions": [],
-      "environments": [
-        "ENV-AUDIT-001"
-      ],
-      "constraints": [],
-      "status": "BLOCKED_NO_VALID_REQUIREMENTS_OR_IMPLEMENTATION"
-    }
-  ]
+  "schema_version": "12.1",
+  "view_type": "V12_COMPATIBILITY_VIEW",
+  "scope": {
+    "object_type": "AUDIT_SCOPE",
+    "object_id": "SCOPE-V121-001"
+  },
+  "canonical_location": "AUDIT.yaml#/objects/0/scope",
+  "validation_status": "FAIL_EMPTY_REQUIREMENT_SCOPE"
 }

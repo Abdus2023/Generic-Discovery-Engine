@@ -1,188 +1,91 @@
 {
-  "schema_version": "1.0",
-  "audit_version": "12.0",
-  "status": "AUDIT_BLOCKED",
-  "required_inputs": [
+  "schema_version": "12.1",
+  "required_roles": [
+    "SPECIFICATION",
+    "REQUIREMENT_SET",
+    "NORMATIVE_RULE_SET",
+    "ACCEPTANCE_CRITERIA",
+    "TEST_ORACLES",
+    "DEPENDENCIES",
+    "CONFLICTS",
+    "COMPATIBILITY",
+    "IMPLEMENTATION_SOURCE",
+    "EVIDENCE",
+    "VERIFICATION_EXECUTIONS",
+    "WAIVERS"
+  ],
+  "available_input_artifacts": [
     {
-      "artifact_id": "V111-SPECIFICATION-MANIFEST-01457058bdb347f4",
-      "artifact_type": "specification_manifest",
-      "schema_version": "1.0",
-      "content_hash": "01457058bdb347f4ce932d61d501682911148a6f6f620ee57c10630dea6cc778",
-      "source_path": "historical-source/specification/SPECIFICATION-MANIFEST.yaml",
-      "generated_at": "UNKNOWN_NOT_RECORDED_DETERMINISTIC_BUILD",
-      "required": true,
-      "state": "PRESENT_HASH_MATCH"
+      "object_type": "INPUT_ARTIFACT",
+      "object_id": "INPUT-SPECIFICATION"
     },
     {
-      "artifact_id": "V111-REQUIREMENTS-12e46e12df0b0f13",
-      "artifact_type": "requirements",
-      "schema_version": "1.0",
-      "content_hash": "12e46e12df0b0f130c7b84b621589d531ce2df7f63f0b6d5eef77289cc3e0100",
-      "source_path": "historical-source/specification/REQUIREMENTS.yaml",
-      "generated_at": "UNKNOWN_NOT_RECORDED_UPSTREAM",
-      "required": true,
-      "state": "PRESENT_HASH_MATCH"
+      "object_type": "INPUT_ARTIFACT",
+      "object_id": "INPUT-REQUIREMENTS"
     },
     {
-      "artifact_id": "V111-NORMATIVE-RULES-6862fdd5da65adc4",
-      "artifact_type": "normative_rules",
-      "schema_version": "1.0",
-      "content_hash": "6862fdd5da65adc48eaeeb6b82d06a1738ac2968e21afd6089a9e96ecbaca09f",
-      "source_path": "historical-source/specification/NORMATIVE-RULES.yaml",
-      "generated_at": "UNKNOWN_NOT_RECORDED_UPSTREAM",
-      "required": true,
-      "state": "PRESENT_HASH_MATCH"
+      "object_type": "INPUT_ARTIFACT",
+      "object_id": "INPUT-NORMATIVE-RULES"
     },
     {
-      "artifact_id": "V111-ACCEPTANCE-CRITERIA-fbe1a2788787ec0e",
-      "artifact_type": "acceptance_criteria",
-      "schema_version": "1.0",
-      "content_hash": "fbe1a2788787ec0e7c74358d5ea34e05fb65a052c0740c1f6fa4e6412430bd30",
-      "source_path": "historical-source/specification/ACCEPTANCE-CRITERIA.yaml",
-      "generated_at": "UNKNOWN_NOT_RECORDED_UPSTREAM",
-      "required": true,
-      "state": "PRESENT_HASH_MATCH"
+      "object_type": "INPUT_ARTIFACT",
+      "object_id": "INPUT-ACCEPTANCE-CRITERIA"
     },
     {
-      "artifact_id": "V111-TEST-ORACLES-31ac65fd2b628b2a",
-      "artifact_type": "test_oracles",
-      "schema_version": "1.0",
-      "content_hash": "31ac65fd2b628b2ae8e8880b748a75d69b9bc5ed67ee7595373e4ffc1a87869e",
-      "source_path": "historical-source/specification/TEST-ORACLES.yaml",
-      "generated_at": "UNKNOWN_NOT_RECORDED_UPSTREAM",
-      "required": true,
-      "state": "PRESENT_HASH_MATCH"
+      "object_type": "INPUT_ARTIFACT",
+      "object_id": "INPUT-TEST-ORACLES"
     },
     {
-      "artifact_id": "V111-DEPENDENCIES-cbbb584146708a02",
-      "artifact_type": "dependencies",
-      "schema_version": "1.0",
-      "content_hash": "cbbb584146708a028d5289812781c933ee70ae15506b412417ebf0f70813f87e",
-      "source_path": "historical-source/specification/REQUIREMENT-DEPENDENCIES.yaml",
-      "generated_at": "UNKNOWN_NOT_RECORDED_UPSTREAM",
-      "required": true,
-      "state": "PRESENT_HASH_MATCH"
+      "object_type": "INPUT_ARTIFACT",
+      "object_id": "INPUT-DEPENDENCIES"
     },
     {
-      "artifact_id": "V111-CONFLICTS-d315fa5c8fedab4b",
-      "artifact_type": "conflicts",
-      "schema_version": "1.0",
-      "content_hash": "d315fa5c8fedab4bc6537a6574af850c318ebce3ea9accf19297873021e53fbe",
-      "source_path": "historical-source/specification/REQUIREMENT-CONFLICTS.yaml",
-      "generated_at": "UNKNOWN_NOT_RECORDED_UPSTREAM",
-      "required": true,
-      "state": "PRESENT_HASH_MATCH"
+      "object_type": "INPUT_ARTIFACT",
+      "object_id": "INPUT-CONFLICTS"
     },
     {
-      "artifact_id": "V111-COMPATIBILITY-6cfdf6bb1ee57650",
-      "artifact_type": "compatibility",
-      "schema_version": "1.0",
-      "content_hash": "6cfdf6bb1ee57650b54e0fd52082477725f4ed89027eca33b1d29273cbe3e421",
-      "source_path": "historical-source/specification/COMPATIBILITY.yaml",
-      "generated_at": "UNKNOWN_NOT_RECORDED_UPSTREAM",
-      "required": true,
-      "state": "PRESENT_HASH_MATCH"
+      "object_type": "INPUT_ARTIFACT",
+      "object_id": "INPUT-COMPATIBILITY"
     },
     {
-      "artifact_id": "V111-IMPLEMENTATION-BOUNDARIES-48551e7223f32839",
-      "artifact_type": "implementation_boundaries",
-      "schema_version": "1.0",
-      "content_hash": "48551e7223f3283912080bccec09c8048faa93a3ad11cc5d551e3e7286e0358f",
-      "source_path": "historical-source/specification/IMPLEMENTATION-BOUNDARIES.yaml",
-      "generated_at": "UNKNOWN_NOT_RECORDED_UPSTREAM",
-      "required": true,
-      "state": "PRESENT_HASH_MATCH"
+      "object_type": "INPUT_ARTIFACT",
+      "object_id": "INPUT-BOUNDARIES"
     },
     {
-      "artifact_id": "V111-VERIFICATION-RECORDS-a0092f14f4f8ee3c",
-      "artifact_type": "verification_records",
-      "schema_version": "1.0",
-      "content_hash": "a0092f14f4f8ee3cc7aac9cc0cc42c1ce65d71d5690e62111159dd7e370fd45f",
-      "source_path": "historical-source/specification/VERIFICATION.yaml",
-      "generated_at": "UNKNOWN_NOT_RECORDED_UPSTREAM",
-      "required": false,
-      "state": "PRESENT_HASH_MATCH"
+      "object_type": "INPUT_ARTIFACT",
+      "object_id": "INPUT-VERIFICATION-RECORDS"
     },
     {
-      "artifact_id": "MISSING-IMPLEMENTATION-SOURCE",
-      "artifact_type": "implementation_source",
-      "schema_version": "UNKNOWN",
-      "content_hash": "UNKNOWN",
-      "source_path": "UNKNOWN",
-      "generated_at": "UNKNOWN",
-      "required": true,
-      "state": "INPUT_MISSING"
+      "object_type": "INPUT_ARTIFACT",
+      "object_id": "INPUT-SPECIFICATION-CERTIFICATE"
     },
     {
-      "artifact_id": "MISSING-TEST-SOURCE",
-      "artifact_type": "test_source",
-      "schema_version": "UNKNOWN",
-      "content_hash": "UNKNOWN",
-      "source_path": "UNKNOWN",
-      "generated_at": "UNKNOWN",
-      "required": false,
-      "state": "OPTIONAL_INPUT_UNAVAILABLE"
-    },
-    {
-      "artifact_id": "MISSING-RUNTIME-ARTIFACTS",
-      "artifact_type": "runtime_artifacts",
-      "schema_version": "UNKNOWN",
-      "content_hash": "UNKNOWN",
-      "source_path": "UNKNOWN",
-      "generated_at": "UNKNOWN",
-      "required": false,
-      "state": "OPTIONAL_INPUT_UNAVAILABLE"
+      "object_type": "INPUT_ARTIFACT",
+      "object_id": "INPUT-REPOSITORY-DISCOVERY"
     }
   ],
-  "specification_validation": {
+  "missing_inputs": [
+    {
+      "artifact_type": "IMPLEMENTATION_SOURCE",
+      "required": true,
+      "failure": "INPUT_MISSING"
+    }
+  ],
+  "optional_unavailable_inputs": [
+    "TEST_SOURCE",
+    "RUNTIME_ARTIFACT"
+  ],
+  "audit_registries": {
+    "implementation_artifacts": "IMPLEMENTATION-ARTIFACTS.yaml",
+    "evidence": "EVIDENCE-RECORDS.yaml",
+    "verification_executions": "VERIFICATION-EXECUTIONS.yaml",
+    "waivers": "WAIVERS.yaml"
+  },
+  "v11_1": {
     "manifest_status": "FAIL",
     "certificate_status": "FAIL",
-    "validator_status": "STRUCTURAL_PASS_INPUT_REJECTED",
-    "validator_acceptance": "REJECTED_INVALID_OBLIGATION_PACKAGE",
-    "requirement_count": 0,
-    "normative_specification_valid": false
+    "validation_status": "STRUCTURAL_PASS_INPUT_REJECTED",
+    "requirement_count": 0
   },
-  "implementation_discovery": {
-    "status": "INPUT_MISSING",
-    "search_scope": "repository root excluding historical-source and planning/documentation files",
-    "implementation_source_found": false
-  },
-  "checks": [
-    {
-      "check_id": "AI01",
-      "check": "required specification artifacts present and hash-valid",
-      "result": "PASS"
-    },
-    {
-      "check_id": "AI02",
-      "check": "specification is accepted and normative",
-      "result": "FAIL",
-      "failure_class": "SPECIFICATION_FAILURE"
-    },
-    {
-      "check_id": "AI03",
-      "check": "auditable requirements exist",
-      "result": "BLOCKED",
-      "failure_class": "SPECIFICATION_FAILURE"
-    },
-    {
-      "check_id": "AI04",
-      "check": "required implementation source exists",
-      "result": "FAIL",
-      "failure_class": "MAPPING_FAILURE"
-    },
-    {
-      "check_id": "AI05",
-      "check": "optional test/runtime sources",
-      "result": "UNAVAILABLE",
-      "failure_class": null
-    },
-    {
-      "check_id": "AI06",
-      "check": "v12 schemas available",
-      "result": "PASS"
-    }
-  ],
-  "derivation_gate": "CLOSED",
-  "policy": "No conformance claim without a valid requirement; no nonconformance claim without violated normative semantics."
+  "conformance_gate": "CLOSED"
 }

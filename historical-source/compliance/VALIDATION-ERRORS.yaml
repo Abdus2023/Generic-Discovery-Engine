@@ -1,0 +1,58 @@
+{
+  "schema_version": "12.1",
+  "errors": [
+    {
+      "error_id": "ERROR-V121-001",
+      "code": "INPUT_MISSING",
+      "stage": "V0",
+      "object_id": null,
+      "path": "implementation_source",
+      "boundary": "INPUT",
+      "effect": "BLOCK_CONFORMANCE_EVALUATION",
+      "implementation_blame": false
+    },
+    {
+      "error_id": "ERROR-V121-002",
+      "code": "SCHEMA_VIOLATION",
+      "stage": "V2",
+      "object_id": "SCOPE-V121-001",
+      "path": "$.scope.requirements",
+      "boundary": "SCHEMA",
+      "effect": "STOP",
+      "implementation_blame": false,
+      "detail": "minItems 1, actual 0"
+    },
+    {
+      "error_id": "ERROR-V121-003",
+      "code": "SPECIFICATION_DEFECT",
+      "stage": "V0",
+      "object_id": "INPUT-SPECIFICATION",
+      "path": "v11.1.validation",
+      "boundary": "SPECIFICATION",
+      "effect": "BLOCK_REQUIREMENT_EVALUATION",
+      "implementation_blame": false
+    }
+  ],
+  "failure_codes": [
+    "INPUT_MISSING",
+    "INPUT_MALFORMED",
+    "SCHEMA_VIOLATION",
+    "SCHEMA_MISSING",
+    "SCHEMA_UNSUPPORTED",
+    "SCHEMA_INCOMPATIBLE",
+    "REFERENCE_UNRESOLVED",
+    "REFERENCE_TYPE_MISMATCH",
+    "REFERENCE_DUPLICATE",
+    "HASH_MISMATCH",
+    "INTEGRITY_FAILURE",
+    "TEMPORAL_MISMATCH",
+    "FUTURE_REQUIREMENT_APPLIED",
+    "FUTURE_ORACLE_APPLIED",
+    "FUTURE_IMPLEMENTATION_EVIDENCE",
+    "TRACEABILITY_GAP",
+    "SPECIFICATION_DEFECT",
+    "ORACLE_DEFECT",
+    "DEPENDENCY_DEFECT",
+    "CONFLICT_DEFECT"
+  ]
+}

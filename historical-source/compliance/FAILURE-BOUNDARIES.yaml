@@ -1,0 +1,70 @@
+{
+  "schema_version": "12.1",
+  "earliest_invalid_boundary_rule": true,
+  "boundaries": [
+    {
+      "condition": "MALFORMED_INPUT",
+      "effect": "STOP",
+      "implementation_nonconformance_supported": false
+    },
+    {
+      "condition": "INVALID_SCHEMA",
+      "effect": "STOP",
+      "implementation_nonconformance_supported": false
+    },
+    {
+      "condition": "BROKEN_REFERENCE",
+      "effect": "BLOCK_AFFECTED_OBJECTS",
+      "implementation_nonconformance_supported": false
+    },
+    {
+      "condition": "TEMPORAL_CONTAMINATION",
+      "effect": "BLOCK_AFFECTED_HISTORICAL_DECISIONS",
+      "implementation_nonconformance_supported": false
+    },
+    {
+      "condition": "INVALID_REQUIREMENT",
+      "effect": "BLOCK_CONFORMANCE_DECISION",
+      "implementation_nonconformance_supported": false
+    },
+    {
+      "condition": "INVALID_ORACLE",
+      "effect": "BLOCK_VERIFICATION_DEPENDENT_DECISION",
+      "implementation_nonconformance_supported": false
+    },
+    {
+      "condition": "INVALID_EVIDENCE",
+      "effect": "UNVERIFIED",
+      "implementation_nonconformance_supported": false
+    },
+    {
+      "condition": "PROVEN_NORMATIVE_VIOLATION",
+      "effect": "NON_CONFORMANT",
+      "implementation_nonconformance_supported": true
+    }
+  ],
+  "attribution_classes": {
+    "SPECIFICATION_DEFECT": [
+      "MALFORMED_REQUIREMENT",
+      "CONTRADICTORY_RULE",
+      "UNDEFINED_SEMANTICS"
+    ],
+    "VERIFICATION_DEFECT": [
+      "BROKEN_HARNESS",
+      "INVALID_EXECUTION"
+    ],
+    "ORACLE_DEFECT": [
+      "ORACLE_CANNOT_DECIDE_CRITERION"
+    ],
+    "MAPPING_DEFECT": [
+      "REQUIREMENT_IMPLEMENTATION_RELATION_INVALID"
+    ],
+    "IMPLEMENTATION_DEFECT": [
+      "NORMATIVE_CONDITION_ACTUALLY_VIOLATED"
+    ],
+    "ENVIRONMENT_DEFECT": [
+      "REQUIRED_EXECUTION_ENVIRONMENT_UNAVAILABLE"
+    ]
+  },
+  "implementation_blame_rule": "Only IMPLEMENTATION_DEFECT automatically supports an implementation NON_CONFORMANT conclusion."
+}

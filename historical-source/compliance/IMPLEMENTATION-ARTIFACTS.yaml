@@ -1,53 +1,6 @@
 {
-  "schema_version": "1.0",
-  "audit_version": "12.0",
+  "schema_version": "12.1",
+  "object_type": "IMPLEMENTATION_ARTIFACT",
   "status": "INPUT_MISSING",
-  "implementation_artifacts": [],
-  "discovery": {
-    "roots_examined": [
-      "repository root"
-    ],
-    "excluded": [
-      {
-        "path": "README.md",
-        "reason": "DOCUMENTATION_NOT_IMPLEMENTATION",
-        "content_hash": "9b9cb2c1d2fe615f5f4878fb5f698fe4b411bd6da8d9d93a54ca1b69d929f306"
-      },
-      {
-        "path": "Userscript Discovery Prototype.md",
-        "reason": "AUTHORITATIVE_HISTORICAL_DOCUMENT_NOT_PRESENT_IMPLEMENTATION",
-        "content_hash": "b122598620bad575da82a40a2cfebc28d9980798e814432570f8d372104782a3"
-      },
-      {
-        "path": "Continue Architecture Planning.md",
-        "reason": "FUTURE_PLANNING_NOT_PRESENT_IMPLEMENTATION",
-        "content_hash": "e7cc253cf2f0cba2803cefc92766b823d31df6f4a74e0ae99ab077f22a433681"
-      },
-      {
-        "path": "historical-source/",
-        "reason": "HISTORICAL_AND_DERIVED_EVIDENCE_NOT_PRESENT_IMPLEMENTATION",
-        "content_hash": "DIRECTORY_NOT_HASHED"
-      }
-    ],
-    "finding": "NO_PRESENT_IMPLEMENTATION_SOURCE"
-  },
-  "artifact_types": [
-    "SOURCE_FILE",
-    "FUNCTION",
-    "METHOD",
-    "TYPE",
-    "TRAIT",
-    "MODULE",
-    "CONFIGURATION",
-    "SCHEMA",
-    "TEST",
-    "FIXTURE",
-    "DOCUMENTATION",
-    "BUILD_ARTIFACT",
-    "BINARY",
-    "RUNTIME_TRACE",
-    "LOG",
-    "METRIC",
-    "AUDIT_RECORD"
-  ]
+  "objects": []
 }

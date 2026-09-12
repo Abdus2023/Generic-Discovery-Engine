@@ -1,0 +1,109 @@
+{
+  "schema_version": "12.1",
+  "schema_directory": "historical-source/compliance/schema",
+  "schemas": [
+    {
+      "schema_id": "common",
+      "path": "schema/common.schema.yaml",
+      "sha256": "c39c83d77b3347ff5d1e5da3fb171473553f1089e581efd554eed85fdd26654e"
+    },
+    {
+      "schema_id": "audit",
+      "path": "schema/audit.schema.yaml",
+      "sha256": "a4866239a10bddcab688953c7a753342bf080586e0945b633012e37547b47938"
+    },
+    {
+      "schema_id": "audit-scope",
+      "path": "schema/audit-scope.schema.yaml",
+      "sha256": "c4ce8347ec27578a8cae6eccbbbea270653a8cd053e07d1de3d09e49a59edc12"
+    },
+    {
+      "schema_id": "input-artifact",
+      "path": "schema/input-artifact.schema.yaml",
+      "sha256": "9ce85c25226fd2ac7fbe423388d6ac6474b07b09b52d1d951dc3e479e983e319"
+    },
+    {
+      "schema_id": "environment",
+      "path": "schema/environment.schema.yaml",
+      "sha256": "74ec85109831c2499d3a95f0f528636447f710eaccc4cfb8a49bdcd97e95819a"
+    },
+    {
+      "schema_id": "implementation-artifact",
+      "path": "schema/implementation-artifact.schema.yaml",
+      "sha256": "8d616225b3ae04b8968fca6e57a87dab648a131f1859c31b33bb0784acdb6eca"
+    },
+    {
+      "schema_id": "implementation-claim",
+      "path": "schema/implementation-claim.schema.yaml",
+      "sha256": "64ebb2e40669544b5ff915ba2695a17644bcf3b80ba707e94e06be18650f079a"
+    },
+    {
+      "schema_id": "requirement-mapping",
+      "path": "schema/requirement-mapping.schema.yaml",
+      "sha256": "fdfe091da643d0fd93da0a654936acff7deb12f7a93c7a4116b76c887b0710d3"
+    },
+    {
+      "schema_id": "evidence-record",
+      "path": "schema/evidence-record.schema.yaml",
+      "sha256": "a01940f6b591bac347e5485389966156490c7a39daffc53df8384d8af3830f81"
+    },
+    {
+      "schema_id": "verification-execution",
+      "path": "schema/verification-execution.schema.yaml",
+      "sha256": "fd89bd46b92bc9e00ea509365640174450278cff982fd1b37f3cc59851132606"
+    },
+    {
+      "schema_id": "compliance-decision",
+      "path": "schema/compliance-decision.schema.yaml",
+      "sha256": "96ea01a3464f888d56a090b58f0de5176a30bc1d74ce08b1f676573aacd0009b"
+    },
+    {
+      "schema_id": "nonconformance",
+      "path": "schema/nonconformance.schema.yaml",
+      "sha256": "f81f6dc95f88230753949627cfe1e08d163f63e2ea6d78e3ce27f154e4df8fc1"
+    },
+    {
+      "schema_id": "waiver",
+      "path": "schema/waiver.schema.yaml",
+      "sha256": "1e7021667ce473ec5f9efee4071ca51e812e2a9d2cae727ded1cfebf6cdfa536"
+    },
+    {
+      "schema_id": "remediation",
+      "path": "schema/remediation.schema.yaml",
+      "sha256": "912548bbd4fa35622561ea0d61f41d9441538cb1bbdbfc63a1f633ffb153724d"
+    },
+    {
+      "schema_id": "audit-finding",
+      "path": "schema/audit-finding.schema.yaml",
+      "sha256": "46e58bb1f4bfd78b16e511aadf21ef93ace69664d37eaa85344ad2eba4c65589"
+    },
+    {
+      "schema_id": "audit-run",
+      "path": "schema/audit-run.schema.yaml",
+      "sha256": "eb91215f3f8e2b0311d5b14d5f8326c6b0b4a5ad07ca410d94b700b383b1984e"
+    },
+    {
+      "schema_id": "audit-certificate",
+      "path": "schema/audit-certificate.schema.yaml",
+      "sha256": "780d06918f2e3956a0178f7592f1c2d53e103416fab4fbd10d4f8320199b0f45"
+    }
+  ],
+  "normative_object_types": [
+    "AUDIT",
+    "AUDIT_SCOPE",
+    "INPUT_ARTIFACT",
+    "ENVIRONMENT",
+    "IMPLEMENTATION_ARTIFACT",
+    "IMPLEMENTATION_CLAIM",
+    "REQUIREMENT_MAPPING",
+    "EVIDENCE_RECORD",
+    "VERIFICATION_EXECUTION",
+    "COMPLIANCE_DECISION",
+    "NONCONFORMANCE",
+    "WAIVER",
+    "REMEDIATION",
+    "AUDIT_FINDING",
+    "AUDIT_RUN",
+    "AUDIT_CERTIFICATE"
+  ]
+}

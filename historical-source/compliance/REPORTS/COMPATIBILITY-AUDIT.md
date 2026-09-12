@@ -1,5 +1,5 @@
-# v12 Compatibility Audit
+# Protocol-v12.1 Compatibility Audit
 
-> **Audit status: BLOCKED.** The v11.1 specification certificate is `FAIL`, its normative registry contains zero requirements, and no present implementation source was found. v12 makes no conformance or nonconformance decision. Absence of evidence is classified as blocked/unavailable—not as an implementation defect.
+> **v12.1 validation status: BLOCKED.** The v11.1 normative basis is rejected, contains zero admitted requirements, and no present implementation source exists. Schema validity, requirement validity, evidence validity, verification validity, and conformance remain distinct.
 
-No declared compatibility record or implementation version exists. Result: `UNKNOWN` within no envelope; behavior outside an envelope is not inferred.
+Compatibility cannot be decided without admitted requirement and implementation versions. No compatibility result is promoted to conformance.

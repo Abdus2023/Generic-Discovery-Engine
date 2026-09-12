@@ -1,0 +1,40 @@
+{
+  "schema_version": "12.1",
+  "normative_object_types": [
+    "AUDIT",
+    "AUDIT_SCOPE",
+    "INPUT_ARTIFACT",
+    "ENVIRONMENT",
+    "IMPLEMENTATION_ARTIFACT",
+    "IMPLEMENTATION_CLAIM",
+    "REQUIREMENT_MAPPING",
+    "EVIDENCE_RECORD",
+    "VERIFICATION_EXECUTION",
+    "COMPLIANCE_DECISION",
+    "NONCONFORMANCE",
+    "WAIVER",
+    "REMEDIATION",
+    "AUDIT_FINDING",
+    "AUDIT_RUN",
+    "AUDIT_CERTIFICATE"
+  ],
+  "common_required_fields": [
+    "object_type",
+    "schema_version",
+    "object_id",
+    "created_at"
+  ],
+  "optional_common_fields": [
+    "updated_at",
+    "producer",
+    "content_hash",
+    "metadata"
+  ],
+  "validation_questions": [
+    "CAN_THIS_OBJECT_BE_TRUSTED",
+    "IS_THE_REQUIREMENT_DECIDABLE",
+    "DID_VERIFICATION_ESTABLISH_THE_REQUIRED_PROPERTY",
+    "WHAT_CONFORMANCE_STATE_FOLLOWS"
+  ],
+  "separation_rule": "Schema validity != requirement validity != evidence validity != verification validity != conformance."
+}

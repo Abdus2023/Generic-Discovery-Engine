@@ -1,0 +1,35 @@
+{
+  "schema_version": "12.1",
+  "normalized_input_order": [
+    "requirement",
+    "applicability",
+    "dependencies",
+    "conflicts",
+    "mappings",
+    "acceptance_criteria",
+    "oracles",
+    "evidence",
+    "verification_executions",
+    "normative_predicates"
+  ],
+  "precedence": [
+    "INVALID_INPUT",
+    "NOT_APPLICABLE",
+    "BLOCKED",
+    "PROVEN_VIOLATION",
+    "PROVEN_SATISFACTION",
+    "PARTIAL_SATISFACTION",
+    "UNVERIFIED",
+    "UNKNOWN"
+  ],
+  "function": {
+    "NOT_APPLICABLE": "applicability == false",
+    "BLOCKED": "blocking dependency, environment, or oracle",
+    "NON_CONFORMANT": "proven violation",
+    "CONFORMANT": "all required predicates pass",
+    "PARTIALLY_CONFORMANT": "some pass, none violated, required predicates unresolved",
+    "UNVERIFIED": "neither satisfaction nor violation established",
+    "UNKNOWN": "semantic classification indeterminate"
+  },
+  "deterministic_for_identical_normalized_inputs": true
+}

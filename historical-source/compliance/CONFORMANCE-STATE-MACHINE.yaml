@@ -1,0 +1,264 @@
+{
+  "schema_version": "12.1",
+  "initial_state": "UNASSESSED",
+  "intermediate_states": [
+    "MAPPED",
+    "VERIFIED"
+  ],
+  "decision_states": [
+    "UNASSESSED",
+    "MAPPED",
+    "VERIFIED",
+    "CONFORMANT",
+    "PARTIALLY_CONFORMANT",
+    "NON_CONFORMANT",
+    "UNVERIFIED",
+    "NOT_APPLICABLE",
+    "BLOCKED",
+    "UNKNOWN"
+  ],
+  "terminal_assessment_states": [
+    "CONFORMANT",
+    "PARTIALLY_CONFORMANT",
+    "NON_CONFORMANT",
+    "UNVERIFIED",
+    "NOT_APPLICABLE",
+    "BLOCKED",
+    "UNKNOWN"
+  ],
+  "legal_transitions": [
+    {
+      "from": "UNASSESSED",
+      "to": "MAPPED",
+      "guard": "VALID_MAPPING_EXISTS",
+      "transition_kind": "CONFORMANCE_STATE"
+    },
+    {
+      "from": "UNASSESSED",
+      "to": "NOT_APPLICABLE",
+      "guard": "SCOPE_PREDICATE_PROVES_NA",
+      "transition_kind": "CONFORMANCE_STATE"
+    },
+    {
+      "from": "UNASSESSED",
+      "to": "BLOCKED",
+      "guard": "PREREQUISITE_PREVENTS_EVALUATION",
+      "transition_kind": "CONFORMANCE_STATE"
+    },
+    {
+      "from": "UNASSESSED",
+      "to": "UNKNOWN",
+      "guard": "SEMANTIC_CLASSIFICATION_IMPOSSIBLE",
+      "transition_kind": "CONFORMANCE_STATE"
+    },
+    {
+      "from": "MAPPED",
+      "to": "VERIFIED",
+      "guard": "VALID_VERIFICATION_COMPLETED",
+      "transition_kind": "CONFORMANCE_STATE"
+    },
+    {
+      "from": "MAPPED",
+      "to": "UNVERIFIED",
+      "guard": "VERIFICATION_INSUFFICIENT",
+      "transition_kind": "CONFORMANCE_STATE"
+    },
+    {
+      "from": "MAPPED",
+      "to": "BLOCKED",
+      "guard": "PREREQUISITE_FAILS",
+      "transition_kind": "CONFORMANCE_STATE"
+    },
+    {
+      "from": "MAPPED",
+      "to": "UNKNOWN",
+      "guard": "SEMANTIC_DETERMINATION_IMPOSSIBLE",
+      "transition_kind": "CONFORMANCE_STATE"
+    },
+    {
+      "from": "VERIFIED",
+      "to": "CONFORMANT",
+      "guard": "ALL_NORMATIVE_PREDICATES_PASS",
+      "transition_kind": "CONFORMANCE_STATE"
+    },
+    {
+      "from": "VERIFIED",
+      "to": "PARTIALLY_CONFORMANT",
+      "guard": "SOME_PASS_AND_REQUIRED_PREDICATES_UNRESOLVED",
+      "transition_kind": "CONFORMANCE_STATE"
+    },
+    {
+      "from": "VERIFIED",
+      "to": "NON_CONFORMANT",
+      "guard": "NORMATIVE_VIOLATION_PROVEN",
+      "transition_kind": "CONFORMANCE_STATE"
+    },
+    {
+      "from": "VERIFIED",
+      "to": "UNVERIFIED",
+      "guard": "VERIFICATION_VALIDITY_INSUFFICIENT",
+      "transition_kind": "CONFORMANCE_STATE"
+    },
+    {
+      "from": "VERIFIED",
+      "to": "BLOCKED",
+      "guard": "PREREQUISITE_INVALIDATED",
+      "transition_kind": "CONFORMANCE_STATE"
+    },
+    {
+      "from": "PARTIALLY_CONFORMANT",
+      "to": "CONFORMANT",
+      "guard": "REMAINING_PREDICATES_PASS",
+      "transition_kind": "CONFORMANCE_STATE"
+    },
+    {
+      "from": "PARTIALLY_CONFORMANT",
+      "to": "NON_CONFORMANT",
+      "guard": "VIOLATION_SUBSEQUENTLY_PROVEN",
+      "transition_kind": "CONFORMANCE_STATE"
+    },
+    {
+      "from": "PARTIALLY_CONFORMANT",
+      "to": "UNVERIFIED",
+      "guard": "EVIDENCE_BECOMES_INSUFFICIENT",
+      "transition_kind": "CONFORMANCE_STATE"
+    },
+    {
+      "from": "PARTIALLY_CONFORMANT",
+      "to": "BLOCKED",
+      "guard": "PREREQUISITE_BECOMES_UNAVAILABLE",
+      "transition_kind": "CONFORMANCE_STATE"
+    },
+    {
+      "from": "NON_CONFORMANT",
+      "to": "CONFORMANT",
+      "guard": "REMEDIATION_AND_COMPLETE_REVERIFICATION",
+      "transition_kind": "CONFORMANCE_STATE"
+    },
+    {
+      "from": "NON_CONFORMANT",
+      "to": "PARTIALLY_CONFORMANT",
+      "guard": "REMEDIATION_REMOVES_VIOLATION_BUT_LEAVES_UNRESOLVED_PREDICATES",
+      "transition_kind": "CONFORMANCE_STATE"
+    },
+    {
+      "from": "UNVERIFIED",
+      "to": "MAPPED",
+      "guard": "VALID_MAPPING_ESTABLISHED",
+      "transition_kind": "CONFORMANCE_STATE"
+    },
+    {
+      "from": "UNVERIFIED",
+      "to": "VERIFIED",
+      "guard": "COMPLETE_VERIFICATION_AVAILABLE",
+      "transition_kind": "CONFORMANCE_STATE"
+    },
+    {
+      "from": "UNVERIFIED",
+      "to": "BLOCKED",
+      "guard": "UPSTREAM_PREREQUISITE_BLOCKS",
+      "transition_kind": "CONFORMANCE_STATE"
+    },
+    {
+      "from": "BLOCKED",
+      "to": "UNASSESSED",
+      "guard": "BLOCK_REMOVED_AND_ASSESSMENT_RESET",
+      "transition_kind": "CONFORMANCE_STATE"
+    },
+    {
+      "from": "BLOCKED",
+      "to": "MAPPED",
+      "guard": "MAPPING_BECOMES_EVALUABLE",
+      "transition_kind": "CONFORMANCE_STATE"
+    },
+    {
+      "from": "BLOCKED",
+      "to": "VERIFIED",
+      "guard": "BLOCKED_VERIFICATION_SUCCESSFULLY_EXECUTED",
+      "transition_kind": "CONFORMANCE_STATE"
+    },
+    {
+      "from": "UNKNOWN",
+      "to": "UNASSESSED",
+      "guard": "ASSESSMENT_INVALIDATED_OR_RESET",
+      "transition_kind": "CONFORMANCE_STATE"
+    },
+    {
+      "from": "UNKNOWN",
+      "to": "MAPPED",
+      "guard": "UNCERTAINTY_RESOLVED_AND_MAPPING_EXISTS",
+      "transition_kind": "CONFORMANCE_STATE"
+    },
+    {
+      "from": "UNKNOWN",
+      "to": "VERIFIED",
+      "guard": "VALID_VERIFICATION_RESOLVES_UNCERTAINTY",
+      "transition_kind": "CONFORMANCE_STATE"
+    },
+    {
+      "from": "NOT_APPLICABLE",
+      "to": "UNASSESSED",
+      "guard": "APPLICABILITY_REVOKED",
+      "transition_kind": "CONFORMANCE_STATE"
+    }
+  ],
+  "waiver_disposition": {
+    "source_notation": "NON_CONFORMANT -> WAIVED",
+    "transition_kind": "DISPOSITION_ONLY",
+    "underlying_state_before": "NON_CONFORMANT",
+    "underlying_state_after": "NON_CONFORMANT",
+    "audit_disposition": "CONDITIONALLY_ACCEPTED",
+    "guard": "VALID_APPROVED_UNEXPIRED_UNREVOKED_WAIVER",
+    "rationale": "WAIVED is not a COMPLIANCE_DECISION state; waiver changes disposition, not truth."
+  },
+  "forbidden_transitions": [
+    {
+      "from": "UNVERIFIED",
+      "to": "CONFORMANT",
+      "unless": "NEW_VALIDATED_EVIDENCE_COMPLETES_REQUIRED_INTERMEDIATE_VALIDATION"
+    },
+    {
+      "from": "UNKNOWN",
+      "to": "CONFORMANT",
+      "unless": "NEW_VALIDATED_EVIDENCE_COMPLETES_REQUIRED_INTERMEDIATE_VALIDATION"
+    },
+    {
+      "from": "BLOCKED",
+      "to": "CONFORMANT",
+      "unless": "NEW_VALIDATED_EVIDENCE_COMPLETES_REQUIRED_INTERMEDIATE_VALIDATION"
+    },
+    {
+      "from": "MAPPED",
+      "to": "CONFORMANT",
+      "unless": "NEW_VALIDATED_EVIDENCE_COMPLETES_REQUIRED_INTERMEDIATE_VALIDATION"
+    },
+    {
+      "from": "UNVERIFIED",
+      "to": "NON_CONFORMANT",
+      "unless": "NEW_VALIDATED_EVIDENCE_COMPLETES_REQUIRED_INTERMEDIATE_VALIDATION"
+    },
+    {
+      "from": "UNKNOWN",
+      "to": "NON_CONFORMANT",
+      "unless": "NEW_VALIDATED_EVIDENCE_COMPLETES_REQUIRED_INTERMEDIATE_VALIDATION"
+    },
+    {
+      "from": "BLOCKED",
+      "to": "NON_CONFORMANT",
+      "unless": "NEW_VALIDATED_EVIDENCE_COMPLETES_REQUIRED_INTERMEDIATE_VALIDATION"
+    }
+  ],
+  "forbidden_substitutions": [
+    "IMPLEMENTED_CLAIM_TO_CONFORMANT",
+    "TEST_PASS_TO_CONFORMANT",
+    "DOCUMENTATION_TO_CONFORMANT"
+  ],
+  "reverification_rule": [
+    "IMPLEMENTATION_CHANGE",
+    "IMPACT_ANALYSIS",
+    "INVALIDATE_AFFECTED_DECISIONS",
+    "REMAP",
+    "REVERIFY",
+    "REDECIDE"
+  ]
+}

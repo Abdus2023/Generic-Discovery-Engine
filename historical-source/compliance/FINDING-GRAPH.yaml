@@ -1,94 +1,75 @@
 {
-  "schema_version": "1.0",
+  "schema_version": "12.1",
+  "view_type": "V12_COMPATIBILITY_GRAPH",
   "graph_type": "FINDING_GRAPH",
   "nodes": [
     {
-      "node_id": "FINDING-V12-001",
-      "node_type": "FINDING"
+      "node_id": "FINDING-V121-001",
+      "node_type": "AUDIT_FINDING"
     },
     {
-      "node_id": "FINDING-V12-002",
-      "node_type": "FINDING"
+      "node_id": "FINDING-V121-002",
+      "node_type": "AUDIT_FINDING"
     },
     {
-      "node_id": "FINDING-V12-003",
-      "node_type": "FINDING"
+      "node_id": "FINDING-V121-003",
+      "node_type": "AUDIT_FINDING"
     },
     {
-      "node_id": "REM-V12-001",
+      "node_id": "REMEDIATION-V121-001",
       "node_type": "REMEDIATION"
     },
     {
-      "node_id": "REM-V12-002",
+      "node_id": "REMEDIATION-V121-002",
       "node_type": "REMEDIATION"
     },
     {
-      "node_id": "REM-V12-003",
+      "node_id": "REMEDIATION-V121-003",
       "node_type": "REMEDIATION"
     },
     {
-      "node_id": "ACTION-V12-001",
-      "node_type": "REMEDIATION_ACTION"
+      "node_id": "ACTION-V121-001",
+      "node_type": "EMBEDDED_REMEDIATION_ACTION"
     },
     {
-      "node_id": "ACTION-V12-002",
-      "node_type": "REMEDIATION_ACTION"
+      "node_id": "ACTION-V121-002",
+      "node_type": "EMBEDDED_REMEDIATION_ACTION"
     },
     {
-      "node_id": "ACTION-V12-003",
-      "node_type": "REMEDIATION_ACTION"
-    },
-    {
-      "node_id": "RUN-V12-001",
-      "node_type": "AUDIT_RUN"
+      "node_id": "ACTION-V121-003",
+      "node_type": "EMBEDDED_REMEDIATION_ACTION"
     }
   ],
   "edges": [
     {
-      "from": "FINDING-V12-001",
-      "to": "REM-V12-001",
+      "from": "FINDING-V121-001",
+      "to": "REMEDIATION-V121-001",
       "relation": "REMEDIATED_BY"
     },
     {
-      "from": "REM-V12-001",
-      "to": "ACTION-V12-001",
-      "relation": "HAS_ACTION"
-    },
-    {
-      "from": "REM-V12-001",
-      "to": "RUN-V12-001",
-      "relation": "REQUIRES_REAUDIT"
-    },
-    {
-      "from": "FINDING-V12-002",
-      "to": "REM-V12-002",
+      "from": "FINDING-V121-002",
+      "to": "REMEDIATION-V121-002",
       "relation": "REMEDIATED_BY"
     },
     {
-      "from": "REM-V12-002",
-      "to": "ACTION-V12-002",
-      "relation": "HAS_ACTION"
-    },
-    {
-      "from": "REM-V12-002",
-      "to": "RUN-V12-001",
-      "relation": "REQUIRES_REAUDIT"
-    },
-    {
-      "from": "FINDING-V12-003",
-      "to": "REM-V12-003",
+      "from": "FINDING-V121-003",
+      "to": "REMEDIATION-V121-003",
       "relation": "REMEDIATED_BY"
     },
     {
-      "from": "REM-V12-003",
-      "to": "ACTION-V12-003",
+      "from": "REMEDIATION-V121-001",
+      "to": "ACTION-V121-001",
       "relation": "HAS_ACTION"
     },
     {
-      "from": "REM-V12-003",
-      "to": "RUN-V12-001",
-      "relation": "REQUIRES_REAUDIT"
+      "from": "REMEDIATION-V121-002",
+      "to": "ACTION-V121-002",
+      "relation": "HAS_ACTION"
+    },
+    {
+      "from": "REMEDIATION-V121-003",
+      "to": "ACTION-V121-003",
+      "relation": "HAS_ACTION"
     }
-  ],
-  "status": "OPEN_BLOCKED_REMEDIATIONS"
+  ]
 }

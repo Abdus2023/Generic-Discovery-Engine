@@ -1,0 +1,133 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://generic-discovery-engine.invalid/compliance/v12.1/audit.schema.yaml",
+  "title": "Protocol-v12.1 AUDIT",
+  "type": "object",
+  "required": [
+    "object_type",
+    "schema_version",
+    "object_id",
+    "created_at",
+    "audit_id",
+    "scope",
+    "specification",
+    "mode",
+    "status",
+    "started_at"
+  ],
+  "properties": {
+    "object_type": {
+      "const": "AUDIT"
+    },
+    "schema_version": {
+      "const": "12.1"
+    },
+    "object_id": {
+      "$ref": "common.schema.yaml#/$defs/Identifier"
+    },
+    "created_at": {
+      "$ref": "common.schema.yaml#/$defs/Timestamp"
+    },
+    "updated_at": {
+      "$ref": "common.schema.yaml#/$defs/Timestamp"
+    },
+    "producer": {
+      "$ref": "common.schema.yaml#/$defs/Identifier"
+    },
+    "content_hash": {
+      "$ref": "common.schema.yaml#/$defs/Hash"
+    },
+    "metadata": {
+      "type": "object"
+    },
+    "audit_id": {
+      "$ref": "common.schema.yaml#/$defs/Identifier"
+    },
+    "scope": {
+      "$ref": "audit-scope.schema.yaml"
+    },
+    "specification": {
+      "$ref": "common.schema.yaml#/$defs/Reference"
+    },
+    "mode": {
+      "type": "string",
+      "enum": [
+        "FULL",
+        "TARGETED",
+        "REGRESSION",
+        "SECURITY",
+        "COMPATIBILITY",
+        "RELEASE",
+        "HISTORICAL",
+        "EXPERIMENTAL"
+      ]
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "CREATED",
+        "VALIDATING",
+        "READY",
+        "RUNNING",
+        "COMPLETED",
+        "BLOCKED",
+        "FAILED",
+        "CANCELLED"
+      ]
+    },
+    "started_at": {
+      "$ref": "common.schema.yaml#/$defs/Timestamp"
+    },
+    "completed_at": {
+      "oneOf": [
+        {
+          "$ref": "common.schema.yaml#/$defs/Timestamp"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "input_artifacts": {
+      "type": "array",
+      "items": {
+        "$ref": "common.schema.yaml#/$defs/Reference"
+      },
+      "uniqueItems": true
+    },
+    "implementation_artifacts": {
+      "type": "array",
+      "items": {
+        "$ref": "common.schema.yaml#/$defs/Reference"
+      },
+      "uniqueItems": true
+    }
+  },
+  "additionalProperties": false,
+  "allOf": [
+    {
+      "if": {
+        "properties": {
+          "mode": {
+            "const": "HISTORICAL"
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "scope": {
+            "properties": {
+              "temporal_policy": {
+                "enum": [
+                  "VERSION_BOUND",
+                  "RETROSPECTIVE"
+                ]
+              }
+            }
+          }
+        }
+      }
+    }
+  ],
+  "x-v12.1-temporal-rule": "A HISTORICAL audit is VERSION_BOUND or explicitly RETROSPECTIVE"
+}

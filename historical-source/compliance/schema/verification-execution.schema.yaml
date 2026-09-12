@@ -1,0 +1,104 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://generic-discovery-engine.invalid/compliance/v12.1/verification-execution.schema.yaml",
+  "title": "Protocol-v12.1 VERIFICATION_EXECUTION",
+  "type": "object",
+  "required": [
+    "object_type",
+    "schema_version",
+    "object_id",
+    "created_at",
+    "oracle_id",
+    "execution_status",
+    "result",
+    "evidence"
+  ],
+  "properties": {
+    "object_type": {
+      "const": "VERIFICATION_EXECUTION"
+    },
+    "schema_version": {
+      "const": "12.1"
+    },
+    "object_id": {
+      "$ref": "common.schema.yaml#/$defs/Identifier"
+    },
+    "created_at": {
+      "$ref": "common.schema.yaml#/$defs/Timestamp"
+    },
+    "updated_at": {
+      "$ref": "common.schema.yaml#/$defs/Timestamp"
+    },
+    "producer": {
+      "$ref": "common.schema.yaml#/$defs/Identifier"
+    },
+    "content_hash": {
+      "$ref": "common.schema.yaml#/$defs/Hash"
+    },
+    "metadata": {
+      "type": "object"
+    },
+    "oracle_id": {
+      "$ref": "common.schema.yaml#/$defs/Identifier"
+    },
+    "execution_status": {
+      "type": "string",
+      "enum": [
+        "STARTED",
+        "COMPLETED",
+        "FAILED_TO_EXECUTE",
+        "CANCELLED",
+        "BLOCKED"
+      ]
+    },
+    "result": {
+      "type": "string",
+      "enum": [
+        "PASS",
+        "FAIL",
+        "INCONCLUSIVE",
+        "UNAVAILABLE",
+        "INVALID",
+        "UNKNOWN"
+      ]
+    },
+    "evidence": {
+      "type": "array",
+      "items": {
+        "$ref": "common.schema.yaml#/$defs/Reference"
+      }
+    },
+    "environment": {
+      "$ref": "common.schema.yaml#/$defs/Reference"
+    },
+    "started_at": {
+      "$ref": "common.schema.yaml#/$defs/Timestamp"
+    },
+    "completed_at": {
+      "oneOf": [
+        {
+          "$ref": "common.schema.yaml#/$defs/Timestamp"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "exit_code": {
+      "type": [
+        "integer",
+        "null"
+      ]
+    },
+    "reproducibility": {
+      "type": "string",
+      "enum": [
+        "REPRODUCIBLE",
+        "FLAKY",
+        "NON_REPRODUCIBLE",
+        "UNKNOWN"
+      ]
+    }
+  },
+  "additionalProperties": false
+}

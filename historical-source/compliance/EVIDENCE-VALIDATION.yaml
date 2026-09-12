@@ -1,0 +1,33 @@
+{
+  "schema_version": "12.1",
+  "canonical_stage_status": "NOT_EXECUTED_EARLY_STOP",
+  "construction_integrity": "PASS",
+  "validity_predicates": [
+    "SOURCE_RESOLVES",
+    "INTEGRITY_VALID",
+    "VERSION_SCOPE_COMPATIBLE",
+    "EVIDENCE_TYPE_APPROPRIATE",
+    "CAPTURE_METADATA_SUFFICIENT"
+  ],
+  "records": [
+    {
+      "object_id": "EVIDENCE-V121-SPEC",
+      "source_resolves": true,
+      "result": "INVALID",
+      "supports_conformance": false
+    },
+    {
+      "object_id": "EVIDENCE-V121-IMPLEMENTATION",
+      "source_resolves": true,
+      "result": "UNAVAILABLE",
+      "supports_conformance": false
+    },
+    {
+      "object_id": "EVIDENCE-V121-REQUIREMENTS",
+      "source_resolves": true,
+      "result": "UNAVAILABLE",
+      "supports_conformance": false
+    }
+  ],
+  "rule": "Invalid or unavailable evidence cannot establish conformance."
+}

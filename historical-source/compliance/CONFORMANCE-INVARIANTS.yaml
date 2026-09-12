@@ -1,0 +1,130 @@
+{
+  "schema_version": "12.1",
+  "invariants": [
+    {
+      "invariant_id": "V121-I01",
+      "statement": "Every mandatory requirement receives exactly one current decision.",
+      "enforcement": "MECHANICAL"
+    },
+    {
+      "invariant_id": "V121-I02",
+      "statement": "Every decision references its requirement.",
+      "enforcement": "MECHANICAL"
+    },
+    {
+      "invariant_id": "V121-I03",
+      "statement": "Every CONFORMANT decision has valid verification evidence.",
+      "enforcement": "MECHANICAL"
+    },
+    {
+      "invariant_id": "V121-I04",
+      "statement": "Every NON_CONFORMANT decision identifies a violated normative condition.",
+      "enforcement": "MECHANICAL"
+    },
+    {
+      "invariant_id": "V121-I05",
+      "statement": "UNVERIFIED does not imply NON_CONFORMANT.",
+      "enforcement": "MECHANICAL"
+    },
+    {
+      "invariant_id": "V121-I06",
+      "statement": "UNKNOWN does not imply NON_CONFORMANT.",
+      "enforcement": "MECHANICAL"
+    },
+    {
+      "invariant_id": "V121-I07",
+      "statement": "BLOCKED does not imply NON_CONFORMANT.",
+      "enforcement": "MECHANICAL"
+    },
+    {
+      "invariant_id": "V121-I08",
+      "statement": "NOT_APPLICABLE has explicit scope evidence.",
+      "enforcement": "MECHANICAL"
+    },
+    {
+      "invariant_id": "V121-I09",
+      "statement": "Guidance does not affect mandatory conformance.",
+      "enforcement": "MECHANICAL"
+    },
+    {
+      "invariant_id": "V121-I10",
+      "statement": "Implementation claims do not substitute for compliance decisions.",
+      "enforcement": "MECHANICAL"
+    },
+    {
+      "invariant_id": "V121-I11",
+      "statement": "Test results do not substitute for validated acceptance criteria.",
+      "enforcement": "MECHANICAL"
+    },
+    {
+      "invariant_id": "V121-I12",
+      "statement": "Oracle failure does not automatically imply implementation failure.",
+      "enforcement": "MECHANICAL"
+    },
+    {
+      "invariant_id": "V121-I13",
+      "statement": "Waivers do not modify normative requirements.",
+      "enforcement": "MECHANICAL"
+    },
+    {
+      "invariant_id": "V121-I14",
+      "statement": "Historical audits respect temporal scope.",
+      "enforcement": "MECHANICAL"
+    },
+    {
+      "invariant_id": "V121-I15",
+      "statement": "Future requirements do not contaminate historical conformance.",
+      "enforcement": "MECHANICAL"
+    },
+    {
+      "invariant_id": "V121-I16",
+      "statement": "Invalid evidence does not support conformance.",
+      "enforcement": "MECHANICAL"
+    },
+    {
+      "invariant_id": "V121-I17",
+      "statement": "Every finding has evidence.",
+      "enforcement": "MECHANICAL"
+    },
+    {
+      "invariant_id": "V121-I18",
+      "statement": "Every remediation references a finding.",
+      "enforcement": "MECHANICAL"
+    },
+    {
+      "invariant_id": "V121-I19",
+      "statement": "A remediation does not close a finding without re-verification.",
+      "enforcement": "MECHANICAL"
+    },
+    {
+      "invariant_id": "V121-I20",
+      "statement": "A certificate identifies its audit scope.",
+      "enforcement": "MECHANICAL"
+    },
+    {
+      "invariant_id": "V121-I21",
+      "statement": "A certificate identifies specification and implementation versions or hashes.",
+      "enforcement": "MECHANICAL"
+    },
+    {
+      "invariant_id": "V121-I22",
+      "statement": "Audit aggregation does not conceal mandatory failures.",
+      "enforcement": "MECHANICAL"
+    },
+    {
+      "invariant_id": "V121-I23",
+      "statement": "Identical normalized inputs yield identical decisions.",
+      "enforcement": "MECHANICAL"
+    },
+    {
+      "invariant_id": "V121-I24",
+      "statement": "State transitions obey the defined transition relation.",
+      "enforcement": "MECHANICAL"
+    },
+    {
+      "invariant_id": "V121-I25",
+      "statement": "No terminal conformance state is reached through an undefined transition.",
+      "enforcement": "MECHANICAL"
+    }
+  ]
+}

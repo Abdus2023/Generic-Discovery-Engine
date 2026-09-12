@@ -1,5 +1,5 @@
-# v12 Regression Audit
+# Protocol-v12.1 Regression Audit
 
-> **Audit status: BLOCKED.** The v11.1 specification certificate is `FAIL`, its normative registry contains zero requirements, and no present implementation source was found. v12 makes no conformance or nonconformance decision. Absence of evidence is classified as blocked/unavailable—not as an implementation defect.
+> **v12.1 validation status: BLOCKED.** The v11.1 normative basis is rejected, contains zero admitted requirements, and no present implementation source exists. Schema validity, requirement validity, evidence validity, verification validity, and conformance remain distinct.
 
-No prior conformant requirement decision and no comparable current requirement semantics exist. Regression classification is `BLOCKED`, not `NON_CONFORMANT`.
+No comparable prior/current requirement decision exists. Regression evaluation was not reached and no nonconformance is inferred.

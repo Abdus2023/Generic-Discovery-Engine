@@ -1,15 +1,11 @@
 {
-  "schema_version": "1.0",
-  "audit_version": "12.0",
+  "schema_version": "12.1",
   "status": "BLOCKED",
-  "allowed_statuses": [
-    "COMPLIANT",
-    "CONDITIONALLY_COMPLIANT",
-    "NON_COMPLIANT",
-    "UNVERIFIED",
-    "BLOCKED"
+  "release_status_source": "AGGREGATION.yaml",
+  "blocking_conditions": [
+    "INVALID_NORMATIVE_SPECIFICATION",
+    "EMPTY_REQUIREMENT_SCOPE",
+    "MISSING_IMPLEMENTATION_SOURCE"
   ],
-  "default_compliant_rule": "all mandatory requirements CONFORMANT and no unresolved critical findings",
-  "waiver_count": 0,
-  "reason": "No accepted normative specification or implementation source."
+  "conditional_compliance": false
 }
