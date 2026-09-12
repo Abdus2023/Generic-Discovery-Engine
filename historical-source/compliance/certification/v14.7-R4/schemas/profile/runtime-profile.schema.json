@@ -1,0 +1,80 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://generic-discovery-engine.invalid/v14.7-R4/runtime-profile",
+  "title": "runtime-profile",
+  "type": "object",
+  "required": [
+    "profile_id",
+    "profile_version",
+    "specification_ref",
+    "predecessor_profile_ref",
+    "empty_mandatory_action",
+    "canonicalization",
+    "hash_algorithm",
+    "hash_domains",
+    "event_ordering",
+    "compatibility",
+    "content_hash"
+  ],
+  "properties": {
+    "profile_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "profile_version": {
+      "type": "string",
+      "minLength": 1
+    },
+    "specification_ref": {
+      "type": "string",
+      "minLength": 1
+    },
+    "predecessor_profile_ref": {
+      "type": "string",
+      "minLength": 1
+    },
+    "empty_mandatory_action": {
+      "type": "string",
+      "minLength": 1,
+      "enum": [
+        "ALLOW",
+        "DENY",
+        "BLOCK",
+        "UNKNOWN"
+      ]
+    },
+    "canonicalization": {
+      "type": "string",
+      "minLength": 1
+    },
+    "hash_algorithm": {
+      "type": "string",
+      "minLength": 1
+    },
+    "hash_domains": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "event_ordering": {
+      "type": "string",
+      "minLength": 1
+    },
+    "compatibility": {
+      "type": "string",
+      "minLength": 1
+    },
+    "content_hash": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$"
+    }
+  },
+  "additionalProperties": false,
+  "x-immutable": true,
+  "x-profile": "gde-v14.7-r4-runtime@14.7-R4",
+  "x-normative-rules": [
+    "all runtime choices explicit"
+  ]
+}

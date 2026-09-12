@@ -1,0 +1,79 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://generic-discovery-engine.invalid/v14.7-R4/conformance-report",
+  "title": "conformance-report",
+  "type": "object",
+  "required": [
+    "report_id",
+    "profile_identity",
+    "implementation_identity",
+    "test_vector_identity",
+    "passed",
+    "failed",
+    "blocked",
+    "result",
+    "execution_timestamp",
+    "harness_version",
+    "evidence_refs",
+    "content_hash"
+  ],
+  "properties": {
+    "report_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "profile_identity": {
+      "type": "string",
+      "minLength": 1
+    },
+    "implementation_identity": {
+      "type": "string",
+      "minLength": 1
+    },
+    "test_vector_identity": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$"
+    },
+    "passed": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "failed": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "blocked": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "result": {
+      "type": "string",
+      "minLength": 1
+    },
+    "execution_timestamp": {
+      "type": "string",
+      "minLength": 1
+    },
+    "harness_version": {
+      "type": "string",
+      "minLength": 1
+    },
+    "evidence_refs": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "content_hash": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$"
+    }
+  },
+  "additionalProperties": false,
+  "x-immutable": true,
+  "x-profile": "gde-v14.7-r4-runtime@14.7-R4",
+  "x-normative-rules": [
+    "report immutable evidence"
+  ]
+}

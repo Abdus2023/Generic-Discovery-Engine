@@ -1,0 +1,66 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://generic-discovery-engine.invalid/v14.7-R4/evidence",
+  "title": "evidence",
+  "type": "object",
+  "required": [
+    "evidence_id",
+    "subject_ref",
+    "source_ref",
+    "observation",
+    "collected_at",
+    "collector_id",
+    "integrity_hash",
+    "integrity_status",
+    "content_hash"
+  ],
+  "properties": {
+    "evidence_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "subject_ref": {
+      "type": "string",
+      "minLength": 1
+    },
+    "source_ref": {
+      "type": "string",
+      "minLength": 1
+    },
+    "observation": {
+      "type": "string",
+      "minLength": 1
+    },
+    "collected_at": {
+      "type": "string",
+      "minLength": 1
+    },
+    "collector_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "integrity_hash": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$"
+    },
+    "integrity_status": {
+      "type": "string",
+      "minLength": 1,
+      "enum": [
+        "VALID",
+        "INVALID",
+        "UNKNOWN"
+      ]
+    },
+    "content_hash": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$"
+    }
+  },
+  "additionalProperties": false,
+  "x-immutable": true,
+  "x-profile": "gde-v14.7-r4-runtime@14.7-R4",
+  "x-normative-rules": [
+    "evidence descriptive"
+  ]
+}

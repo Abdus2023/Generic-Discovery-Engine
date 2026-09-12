@@ -1,0 +1,55 @@
+{
+  "test_id": "G-005",
+  "category": "GOLDEN",
+  "profile_ref": "gde-v14.7-r4-runtime@14.7-R4",
+  "requirement_refs": [
+    "R3-REQ-001"
+  ],
+  "input": {
+    "objects": []
+  },
+  "setup": {
+    "events": []
+  },
+  "operation": {
+    "type": "EVALUATE",
+    "parameters": {
+      "subject": {
+        "validation": "VALID"
+      },
+      "predicate": {
+        "mode": "INVALID"
+      }
+    }
+  },
+  "expected": {
+    "validation": {
+      "status": null
+    },
+    "evaluation": {
+      "result": "INVALID"
+    },
+    "conformance": {
+      "status": null
+    },
+    "eligibility": {
+      "status": null
+    },
+    "authorization": {
+      "status": null
+    },
+    "decision": {
+      "status": null
+    },
+    "execution": {
+      "status": null
+    }
+  },
+  "forbidden": [],
+  "evidence": {
+    "expected_refs": [
+      "evidence:G-005"
+    ]
+  },
+  "content_hash": "368b9c7ec6922e871696dd59ed1534c17520a684919092b27b86f53a8f18a826"
+}

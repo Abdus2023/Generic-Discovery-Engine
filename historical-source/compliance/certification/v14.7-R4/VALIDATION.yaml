@@ -1,0 +1,362 @@
+{
+  "realization_version": "14.7-R4",
+  "overall_status": "REFERENCE_ORACLE_CONFORMANT_RUST_AND_TARGET_UNVERIFIED",
+  "summary": {
+    "total": 50,
+    "passed": 49,
+    "failed": 0,
+    "blocked": 1
+  },
+  "checks": [
+    {
+      "check_id": "I01",
+      "category": "inventory",
+      "result": "PASS",
+      "description": "200 generator-owned artifacts exist exactly once",
+      "detail": ""
+    },
+    {
+      "check_id": "I02",
+      "category": "inventory",
+      "result": "PASS",
+      "description": "no undeclared generator artifact",
+      "detail": "[]"
+    },
+    {
+      "check_id": "I03",
+      "category": "inventory",
+      "result": "PASS",
+      "description": "all JSON-compatible YAML and JSON parse",
+      "detail": ""
+    },
+    {
+      "check_id": "V01",
+      "category": "version",
+      "result": "PASS",
+      "description": "R4 realizes R3 without semantic additions, renames, or weakening",
+      "detail": ""
+    },
+    {
+      "check_id": "V02",
+      "category": "version",
+      "result": "PASS",
+      "description": "reference oracle, Rust source, Rust build, and target claims remain distinct",
+      "detail": ""
+    },
+    {
+      "check_id": "B01",
+      "category": "basis",
+      "result": "PASS",
+      "description": "R4 basis is hash-bound to exact R3 specification, R3 basis, and R2.1 profile",
+      "detail": ""
+    },
+    {
+      "check_id": "B02",
+      "category": "profile",
+      "result": "PASS",
+      "description": "R4 runtime profile is immutable, complete, and references exact predecessor semantics",
+      "detail": ""
+    },
+    {
+      "check_id": "B03",
+      "category": "profile",
+      "result": "PASS",
+      "description": "EmptyMandatoryAction is explicit and never an undocumented runtime default",
+      "detail": ""
+    },
+    {
+      "check_id": "S01",
+      "category": "schemas",
+      "result": "PASS",
+      "description": "12 local schemas extend the exact 80-schema predecessor registry",
+      "detail": ""
+    },
+    {
+      "check_id": "S02",
+      "category": "schemas",
+      "result": "PASS",
+      "description": "all local schemas are strict, immutable, complete, and profile-bound",
+      "detail": ""
+    },
+    {
+      "check_id": "S03",
+      "category": "schemas",
+      "result": "PASS",
+      "description": "validation, evaluation, and conformance result domains remain exact and disjoint",
+      "detail": ""
+    },
+    {
+      "check_id": "S04",
+      "category": "schemas",
+      "result": "PASS",
+      "description": "profile empty action and vector category/expected domains are mechanically closed",
+      "detail": ""
+    },
+    {
+      "check_id": "R01",
+      "category": "rust",
+      "result": "PASS",
+      "description": "no-dependency Rust crate has all 55 hash-bound crate artifacts",
+      "detail": ""
+    },
+    {
+      "check_id": "R02",
+      "category": "rust",
+      "result": "PASS",
+      "description": "crate exposes every required module and forbids unsafe code",
+      "detail": ""
+    },
+    {
+      "check_id": "R03",
+      "category": "rust",
+      "result": "PASS",
+      "description": "security-sensitive identities are distinct newtypes without a universal Id alias",
+      "detail": ""
+    },
+    {
+      "check_id": "R04",
+      "category": "rust",
+      "result": "PASS",
+      "description": "three semantic result domains are separate types with exact variants",
+      "detail": ""
+    },
+    {
+      "check_id": "R05",
+      "category": "rust",
+      "result": "PASS",
+      "description": "RawSubject can become ValidatedSubject only through crate validation constructor",
+      "detail": ""
+    },
+    {
+      "check_id": "R06",
+      "category": "rust",
+      "result": "PASS",
+      "description": "validation and evaluation errors preserve separate complete provenance domains",
+      "detail": ""
+    },
+    {
+      "check_id": "R07",
+      "category": "rust",
+      "result": "PASS",
+      "description": "aggregation rejects Invalid then applies False, Blocked, Unknown, True precedence",
+      "detail": ""
+    },
+    {
+      "check_id": "R08",
+      "category": "rust",
+      "result": "PASS",
+      "description": "Evaluator trait requires ValidatedSubject and returns separate EvaluationError",
+      "detail": ""
+    },
+    {
+      "check_id": "R09",
+      "category": "rust",
+      "result": "PASS",
+      "description": "authority qualification and authorization are separate and require all gates",
+      "detail": ""
+    },
+    {
+      "check_id": "R10",
+      "category": "rust",
+      "result": "PASS",
+      "description": "single transition guard seals ValidatedEvent before the atomic sequence-and-append boundary",
+      "detail": ""
+    },
+    {
+      "check_id": "R11",
+      "category": "rust",
+      "result": "PASS",
+      "description": "projection ordering, canonical serialization, and hash-domain preimage are explicit",
+      "detail": ""
+    },
+    {
+      "check_id": "R12",
+      "category": "rust",
+      "result": "PASS",
+      "description": "conformance engine is requirement-bound and requires identified conditions for nonconformance",
+      "detail": ""
+    },
+    {
+      "check_id": "R13",
+      "category": "rust",
+      "result": "PASS",
+      "description": "all Rust sources pass deterministic delimiter and module-file structural checks",
+      "detail": ""
+    },
+    {
+      "check_id": "R14",
+      "category": "rust",
+      "result": "PASS",
+      "description": "Rust compilation is honestly blocked because no toolchain exists in the environment",
+      "detail": ""
+    },
+    {
+      "check_id": "ID01",
+      "category": "identity",
+      "result": "PASS",
+      "description": "canonicalization fixes encoding, key order, and language-independent whitespace",
+      "detail": ""
+    },
+    {
+      "check_id": "ID02",
+      "category": "identity",
+      "result": "PASS",
+      "description": "all seven requested hash domains are explicit and domain-separated",
+      "detail": ""
+    },
+    {
+      "check_id": "ID03",
+      "category": "identity",
+      "result": "PASS",
+      "description": "decision basis binds all 15 decision-relevant components",
+      "detail": ""
+    },
+    {
+      "check_id": "ID04",
+      "category": "identity",
+      "result": "PASS",
+      "description": "Rust reuse checker returns reusable only for equal decision-basis identity under valid constraints",
+      "detail": ""
+    },
+    {
+      "check_id": "T01",
+      "category": "vectors",
+      "result": "PASS",
+      "description": "79 self-contained vectors have exact index hashes and one aggregate identity",
+      "detail": ""
+    },
+    {
+      "check_id": "T02",
+      "category": "vectors",
+      "result": "PASS",
+      "description": "every vector exactly implements the frozen self-contained vector structure and valid hash",
+      "detail": ""
+    },
+    {
+      "check_id": "T03",
+      "category": "vectors",
+      "result": "PASS",
+      "description": "golden G-001..G-036, properties P-001..P-016, boundaries B-001..B-015, and negatives N-001..N-012 are complete",
+      "detail": ""
+    },
+    {
+      "check_id": "T04",
+      "category": "vectors",
+      "result": "PASS",
+      "description": "all 79 vectors independently rerun with exact stored outcomes and pass",
+      "detail": ""
+    },
+    {
+      "check_id": "T05",
+      "category": "vectors",
+      "result": "PASS",
+      "description": "aggregation, empty mandatory action, authority, transition, concurrency, and projection vector ranges all pass",
+      "detail": ""
+    },
+    {
+      "check_id": "T06",
+      "category": "vectors",
+      "result": "PASS",
+      "description": "all sixteen anti-coercion and determinism properties pass",
+      "detail": ""
+    },
+    {
+      "check_id": "T07",
+      "category": "vectors",
+      "result": "PASS",
+      "description": "all fifteen typed boundary tests and twelve negative vectors pass",
+      "detail": ""
+    },
+    {
+      "check_id": "C01",
+      "category": "conformance",
+      "result": "PASS",
+      "description": "immutable report binds profile, implementation, vector identity, outcomes, timestamp, harness, and evidence",
+      "detail": ""
+    },
+    {
+      "check_id": "C02",
+      "category": "conformance",
+      "result": "PASS",
+      "description": "profile, Python oracle, Rust implementation, and target conformance remain separate",
+      "detail": ""
+    },
+    {
+      "check_id": "C03",
+      "category": "conformance",
+      "result": "PASS",
+      "description": "implementation mapping binds exact profile, all R3 requirements, Rust sources, vectors, and evidence",
+      "detail": ""
+    },
+    {
+      "check_id": "C04",
+      "category": "conformance",
+      "result": "PASS",
+      "description": "CI order is complete and mandatory failure cannot establish a stronger claim",
+      "detail": ""
+    },
+    {
+      "check_id": "C05",
+      "category": "conformance",
+      "result": "PASS",
+      "description": "closure records all demonstrated properties but remains blocked on Rust compilation",
+      "detail": ""
+    },
+    {
+      "check_id": "NI01",
+      "category": "non_invention",
+      "result": "PASS",
+      "description": "safe-Rust policy does not manufacture compiled Rust or target evidence",
+      "detail": ""
+    },
+    {
+      "check_id": "TREE01",
+      "category": "organization",
+      "result": "PASS",
+      "description": "revised normative/profile/implementation/report tree is physically realized as hash-bound projections",
+      "detail": ""
+    },
+    {
+      "check_id": "P01",
+      "category": "integrity",
+      "result": "PASS",
+      "description": "all 961 predecessor artifacts remain byte-identical",
+      "detail": "[]"
+    },
+    {
+      "check_id": "D01",
+      "category": "documentation",
+      "result": "PASS",
+      "description": "all 37 R4 sections are represented in order",
+      "detail": ""
+    },
+    {
+      "check_id": "D02",
+      "category": "determinism",
+      "result": "PASS",
+      "description": "all 200 generator artifacts regenerate byte-identically",
+      "detail": ""
+    },
+    {
+      "check_id": "D03",
+      "category": "regression",
+      "result": "PASS",
+      "description": "R3, R2.1, R2, v14.7.1, integrity, and successor guards pass",
+      "detail": ""
+    },
+    {
+      "check_id": "D04",
+      "category": "hygiene",
+      "result": "PASS",
+      "description": "no Python bytecode cache or Rust target directory exists",
+      "detail": ""
+    },
+    {
+      "check_id": "GATE-R4",
+      "category": "acceptance",
+      "result": "BLOCKED",
+      "description": "Rust compilation, full transition/append atomicity, production durability, production cryptography, and target engine",
+      "detail": "79/79 reference vectors pass; no Rust toolchain or production backend is available, so Rust implementation conformance remains UNVERIFIED."
+    }
+  ]
+}

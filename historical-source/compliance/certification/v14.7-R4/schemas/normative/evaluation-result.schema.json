@@ -1,0 +1,107 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://generic-discovery-engine.invalid/v14.7-R4/evaluation-result",
+  "title": "evaluation-result",
+  "type": "object",
+  "required": [
+    "evaluation_id",
+    "subject_ref",
+    "predicate_ref",
+    "result",
+    "reason_codes",
+    "evidence_refs",
+    "input_refs",
+    "evaluator_id",
+    "evaluator_version",
+    "scope_ref",
+    "freshness",
+    "integrity",
+    "evaluated_at",
+    "sequence_no",
+    "content_hash"
+  ],
+  "properties": {
+    "evaluation_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "subject_ref": {
+      "type": "string",
+      "minLength": 1
+    },
+    "predicate_ref": {
+      "type": "string",
+      "minLength": 1
+    },
+    "result": {
+      "type": "string",
+      "minLength": 1,
+      "enum": [
+        "TRUE",
+        "FALSE",
+        "UNKNOWN",
+        "BLOCKED",
+        "INVALID"
+      ]
+    },
+    "reason_codes": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "evidence_refs": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "input_refs": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "evaluator_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "evaluator_version": {
+      "type": "string",
+      "minLength": 1
+    },
+    "scope_ref": {
+      "type": "string",
+      "minLength": 1
+    },
+    "freshness": {
+      "type": "string",
+      "minLength": 1
+    },
+    "integrity": {
+      "type": "string",
+      "minLength": 1
+    },
+    "evaluated_at": {
+      "type": "string",
+      "minLength": 1
+    },
+    "sequence_no": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "content_hash": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$"
+    }
+  },
+  "additionalProperties": false,
+  "x-immutable": true,
+  "x-profile": "gde-v14.7-r4-runtime@14.7-R4",
+  "x-normative-rules": [
+    "no additional semantic variants"
+  ]
+}

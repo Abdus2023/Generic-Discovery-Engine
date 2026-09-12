@@ -1,0 +1,97 @@
+{
+  "test_id": "P-010",
+  "category": "PROPERTY",
+  "profile_ref": "gde-v14.7-r4-runtime@14.7-R4",
+  "requirement_refs": [
+    "R3-REQ-001"
+  ],
+  "input": {
+    "objects": []
+  },
+  "setup": {
+    "events": []
+  },
+  "operation": {
+    "type": "PROJECTION_COMPARE",
+    "parameters": {
+      "left": [
+        {
+          "event_id": "event-0",
+          "stream_id": "stream",
+          "sequence_no": 0,
+          "predecessor": null,
+          "event_type": "ADVANCE",
+          "validated": true,
+          "key": "state",
+          "value": "0",
+          "committed": true
+        },
+        {
+          "event_id": "event-1",
+          "stream_id": "stream",
+          "sequence_no": 1,
+          "predecessor": "event-0",
+          "event_type": "ADVANCE",
+          "validated": true,
+          "key": "state",
+          "value": "1",
+          "committed": true
+        }
+      ],
+      "right": [
+        {
+          "event_id": "event-1",
+          "stream_id": "stream",
+          "sequence_no": 1,
+          "predecessor": "event-0",
+          "event_type": "ADVANCE",
+          "validated": true,
+          "key": "state",
+          "value": "1",
+          "committed": true
+        },
+        {
+          "event_id": "event-0",
+          "stream_id": "stream",
+          "sequence_no": 0,
+          "predecessor": null,
+          "event_type": "ADVANCE",
+          "validated": true,
+          "key": "state",
+          "value": "0",
+          "committed": true
+        }
+      ]
+    }
+  },
+  "expected": {
+    "validation": {
+      "status": null
+    },
+    "evaluation": {
+      "result": null
+    },
+    "conformance": {
+      "status": null
+    },
+    "eligibility": {
+      "status": null
+    },
+    "authorization": {
+      "status": null
+    },
+    "decision": {
+      "status": null
+    },
+    "execution": {
+      "status": "MATCH"
+    }
+  },
+  "forbidden": [],
+  "evidence": {
+    "expected_refs": [
+      "evidence:P-010"
+    ]
+  },
+  "content_hash": "12b137a802b57c5bf000393ba3169a5141cdd2ba9a7fcb071206b7f1f08a9fdf"
+}

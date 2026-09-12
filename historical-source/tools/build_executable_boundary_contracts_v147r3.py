@@ -343,6 +343,8 @@ def build_tests(conversion_rules):
 def main():
     if not (PREDECESSOR / "VALIDATION.yaml").is_file():
         raise RuntimeError("validated v14.7-R2.1 predecessor required")
+    if (COMPLIANCE / "certification/v14.7-R4").exists():
+        raise RuntimeError("refusing to erase predecessor artifacts after append-only v14.7-R4 realization")
     if DESTINATION.exists():
         raise RuntimeError("refusing to regenerate immutable v14.7-R3 package")
     predecessor = [{"path": str(path.relative_to(COMPLIANCE)), "sha256": sha256(path), "bytes": path.stat().st_size}

@@ -1,0 +1,51 @@
+{
+  "test_id": "N-006",
+  "category": "NEGATIVE",
+  "profile_ref": "gde-v14.7-r4-runtime@14.7-R4",
+  "requirement_refs": [
+    "R3-REQ-001"
+  ],
+  "input": {
+    "objects": []
+  },
+  "setup": {
+    "events": []
+  },
+  "operation": {
+    "type": "AUTHORIZE",
+    "parameters": {
+      "eligibility": "ELIGIBLE",
+      "qualification": "UNQUALIFIED"
+    }
+  },
+  "expected": {
+    "validation": {
+      "status": null
+    },
+    "evaluation": {
+      "result": null
+    },
+    "conformance": {
+      "status": null
+    },
+    "eligibility": {
+      "status": null
+    },
+    "authorization": {
+      "status": "BLOCKED"
+    },
+    "decision": {
+      "status": null
+    },
+    "execution": {
+      "status": null
+    }
+  },
+  "forbidden": [],
+  "evidence": {
+    "expected_refs": [
+      "evidence:N-006"
+    ]
+  },
+  "content_hash": "24f24c71a8247447df5887c96d90c3aec26033d19858f02ecf2cd211c6a0ae7a"
+}

@@ -1,0 +1,63 @@
+{
+  "test_id": "G-034",
+  "category": "GOLDEN",
+  "profile_ref": "gde-v14.7-r4-runtime@14.7-R4",
+  "requirement_refs": [
+    "R3-REQ-001"
+  ],
+  "input": {
+    "objects": []
+  },
+  "setup": {
+    "events": []
+  },
+  "operation": {
+    "type": "PROJECT",
+    "parameters": {
+      "history": [
+        {
+          "event_id": "event-0",
+          "stream_id": "stream",
+          "sequence_no": 0,
+          "predecessor": null,
+          "event_type": "ADVANCE",
+          "validated": true,
+          "key": "state",
+          "value": "0",
+          "committed": true,
+          "corrupted": true
+        }
+      ]
+    }
+  },
+  "expected": {
+    "validation": {
+      "status": null
+    },
+    "evaluation": {
+      "result": null
+    },
+    "conformance": {
+      "status": null
+    },
+    "eligibility": {
+      "status": null
+    },
+    "authorization": {
+      "status": null
+    },
+    "decision": {
+      "status": null
+    },
+    "execution": {
+      "status": "CORRUPTED_EVENT"
+    }
+  },
+  "forbidden": [],
+  "evidence": {
+    "expected_refs": [
+      "evidence:G-034"
+    ]
+  },
+  "content_hash": "a25f39de86cfb9b9fe16334d32d9027bd38eefc630dfd959e309e75d1a4e65bc"
+}

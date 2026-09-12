@@ -1,0 +1,64 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://generic-discovery-engine.invalid/v14.7-R4/requirement",
+  "title": "requirement",
+  "type": "object",
+  "required": [
+    "requirement_id",
+    "statement",
+    "strength",
+    "scope_ref",
+    "acceptance_criteria",
+    "dependencies",
+    "content_hash"
+  ],
+  "properties": {
+    "requirement_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "statement": {
+      "type": "string",
+      "minLength": 1
+    },
+    "strength": {
+      "type": "string",
+      "minLength": 1,
+      "enum": [
+        "MUST",
+        "MUST_NOT",
+        "SHOULD",
+        "SHOULD_NOT",
+        "MAY"
+      ]
+    },
+    "scope_ref": {
+      "type": "string",
+      "minLength": 1
+    },
+    "acceptance_criteria": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "dependencies": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "content_hash": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$"
+    }
+  },
+  "additionalProperties": false,
+  "x-immutable": true,
+  "x-profile": "gde-v14.7-r4-runtime@14.7-R4",
+  "x-normative-rules": [
+    "requirement identity is domain-specific"
+  ]
+}

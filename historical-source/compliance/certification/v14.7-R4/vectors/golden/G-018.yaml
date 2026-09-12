@@ -1,0 +1,74 @@
+{
+  "test_id": "G-018",
+  "category": "GOLDEN",
+  "profile_ref": "gde-v14.7-r4-runtime@14.7-R4",
+  "requirement_refs": [
+    "R3-REQ-001"
+  ],
+  "input": {
+    "objects": []
+  },
+  "setup": {
+    "events": []
+  },
+  "operation": {
+    "type": "AUTHORITY",
+    "parameters": {
+      "authority": {
+        "status": "ACTIVE",
+        "operations": [
+          "release"
+        ],
+        "scope": [
+          "prod"
+        ],
+        "not_before": "2026-01-01T00:00:00Z",
+        "not_after": "2027-01-01T00:00:00Z",
+        "threshold": 1,
+        "basis_hash": "basis"
+      },
+      "operation": "release",
+      "scope": [
+        "other"
+      ],
+      "instant": "2026-06-01T00:00:00Z",
+      "approvals": [
+        {
+          "authority_id": "a",
+          "valid": true,
+          "basis_hash": "basis"
+        }
+      ]
+    }
+  },
+  "expected": {
+    "validation": {
+      "status": null
+    },
+    "evaluation": {
+      "result": null
+    },
+    "conformance": {
+      "status": null
+    },
+    "eligibility": {
+      "status": null
+    },
+    "authorization": {
+      "status": "UNQUALIFIED"
+    },
+    "decision": {
+      "status": null
+    },
+    "execution": {
+      "status": null
+    }
+  },
+  "forbidden": [],
+  "evidence": {
+    "expected_refs": [
+      "evidence:G-018"
+    ]
+  },
+  "content_hash": "91ea906198f31d51e5287bfdecb4abc91ba93d772a7934fc80385a2bfaf7ff75"
+}

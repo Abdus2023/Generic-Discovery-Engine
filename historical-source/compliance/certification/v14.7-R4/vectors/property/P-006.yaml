@@ -1,0 +1,50 @@
+{
+  "test_id": "P-006",
+  "category": "PROPERTY",
+  "profile_ref": "gde-v14.7-r4-runtime@14.7-R4",
+  "requirement_refs": [
+    "R3-REQ-001"
+  ],
+  "input": {
+    "objects": []
+  },
+  "setup": {
+    "events": []
+  },
+  "operation": {
+    "type": "PIPELINE_FORBIDDEN",
+    "parameters": {
+      "claim": "EXECUTION_TO_VERIFICATION"
+    }
+  },
+  "expected": {
+    "validation": {
+      "status": null
+    },
+    "evaluation": {
+      "result": null
+    },
+    "conformance": {
+      "status": null
+    },
+    "eligibility": {
+      "status": null
+    },
+    "authorization": {
+      "status": null
+    },
+    "decision": {
+      "status": null
+    },
+    "execution": {
+      "status": "REJECTED"
+    }
+  },
+  "forbidden": [],
+  "evidence": {
+    "expected_refs": [
+      "evidence:P-006"
+    ]
+  },
+  "content_hash": "07fab1da2fdb150eba5d3fd9b5904a7fad52e54e150ae49c29e08c97262d2901"
+}

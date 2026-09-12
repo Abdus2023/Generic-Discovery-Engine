@@ -1,0 +1,60 @@
+{
+  "test_id": "P-014",
+  "category": "PROPERTY",
+  "profile_ref": "gde-v14.7-r4-runtime@14.7-R4",
+  "requirement_refs": [
+    "R3-REQ-001"
+  ],
+  "input": {
+    "objects": []
+  },
+  "setup": {
+    "events": []
+  },
+  "operation": {
+    "type": "APPEND",
+    "parameters": {
+      "event": {
+        "event_id": "event-0",
+        "stream_id": "stream",
+        "sequence_no": 0,
+        "predecessor": null,
+        "event_type": "ADVANCE",
+        "validated": false,
+        "key": "state",
+        "value": "0",
+        "committed": true
+      }
+    }
+  },
+  "expected": {
+    "validation": {
+      "status": null
+    },
+    "evaluation": {
+      "result": null
+    },
+    "conformance": {
+      "status": null
+    },
+    "eligibility": {
+      "status": null
+    },
+    "authorization": {
+      "status": null
+    },
+    "decision": {
+      "status": null
+    },
+    "execution": {
+      "status": "UNVALIDATED_EVENT"
+    }
+  },
+  "forbidden": [],
+  "evidence": {
+    "expected_refs": [
+      "evidence:P-014"
+    ]
+  },
+  "content_hash": "bbff9a129820a0e36cbb17b96a34379fbf264a9f07f65cad937153f6b69da55e"
+}

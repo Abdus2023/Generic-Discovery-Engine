@@ -1,0 +1,74 @@
+{
+  "test_id": "G-019",
+  "category": "GOLDEN",
+  "profile_ref": "gde-v14.7-r4-runtime@14.7-R4",
+  "requirement_refs": [
+    "R3-REQ-001"
+  ],
+  "input": {
+    "objects": []
+  },
+  "setup": {
+    "events": []
+  },
+  "operation": {
+    "type": "AUTHORITY",
+    "parameters": {
+      "authority": {
+        "status": "ACTIVE",
+        "operations": [
+          "release"
+        ],
+        "scope": [
+          "prod"
+        ],
+        "not_before": "2026-01-01T00:00:00Z",
+        "not_after": "2027-01-01T00:00:00Z",
+        "threshold": 2,
+        "basis_hash": "basis"
+      },
+      "operation": "release",
+      "scope": [
+        "prod"
+      ],
+      "instant": "2026-06-01T00:00:00Z",
+      "approvals": [
+        {
+          "authority_id": "a",
+          "valid": true,
+          "basis_hash": "basis"
+        }
+      ]
+    }
+  },
+  "expected": {
+    "validation": {
+      "status": null
+    },
+    "evaluation": {
+      "result": null
+    },
+    "conformance": {
+      "status": null
+    },
+    "eligibility": {
+      "status": null
+    },
+    "authorization": {
+      "status": "BLOCKED"
+    },
+    "decision": {
+      "status": null
+    },
+    "execution": {
+      "status": null
+    }
+  },
+  "forbidden": [],
+  "evidence": {
+    "expected_refs": [
+      "evidence:G-019"
+    ]
+  },
+  "content_hash": "1b741d9481e4dd526b34a0247feb8707b149dc4cc83c0396995fd15ba3352ae0"
+}

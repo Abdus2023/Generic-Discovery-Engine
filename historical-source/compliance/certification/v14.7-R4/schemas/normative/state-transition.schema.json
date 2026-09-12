@@ -1,0 +1,70 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://generic-discovery-engine.invalid/v14.7-R4/state-transition",
+  "title": "state-transition",
+  "type": "object",
+  "required": [
+    "event_id",
+    "event_type",
+    "current_state_ref",
+    "predecessor_ref",
+    "evidence_refs",
+    "authority_ref",
+    "scope_ref",
+    "occurred_at",
+    "validated",
+    "content_hash"
+  ],
+  "properties": {
+    "event_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "event_type": {
+      "type": "string",
+      "minLength": 1
+    },
+    "current_state_ref": {
+      "type": "string",
+      "minLength": 1
+    },
+    "predecessor_ref": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "evidence_refs": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "authority_ref": {
+      "type": "string",
+      "minLength": 1
+    },
+    "scope_ref": {
+      "type": "string",
+      "minLength": 1
+    },
+    "occurred_at": {
+      "type": "string",
+      "minLength": 1
+    },
+    "validated": {
+      "type": "boolean"
+    },
+    "content_hash": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$"
+    }
+  },
+  "additionalProperties": false,
+  "x-immutable": true,
+  "x-profile": "gde-v14.7-r4-runtime@14.7-R4",
+  "x-normative-rules": [
+    "only validated event may commit"
+  ]
+}

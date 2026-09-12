@@ -1,0 +1,51 @@
+{
+  "test_id": "G-027",
+  "category": "GOLDEN",
+  "profile_ref": "gde-v14.7-r4-runtime@14.7-R4",
+  "requirement_refs": [
+    "R3-REQ-001"
+  ],
+  "input": {
+    "objects": []
+  },
+  "setup": {
+    "events": []
+  },
+  "operation": {
+    "type": "REUSE",
+    "parameters": {
+      "old_basis": "old",
+      "new_basis": "new"
+    }
+  },
+  "expected": {
+    "validation": {
+      "status": null
+    },
+    "evaluation": {
+      "result": null
+    },
+    "conformance": {
+      "status": null
+    },
+    "eligibility": {
+      "status": null
+    },
+    "authorization": {
+      "status": null
+    },
+    "decision": {
+      "status": "NOT_REUSABLE"
+    },
+    "execution": {
+      "status": null
+    }
+  },
+  "forbidden": [],
+  "evidence": {
+    "expected_refs": [
+      "evidence:G-027"
+    ]
+  },
+  "content_hash": "24ae816dc88ad19d6e5f527bf877b9760c15465725b834aa1cd9aa571edc1263"
+}

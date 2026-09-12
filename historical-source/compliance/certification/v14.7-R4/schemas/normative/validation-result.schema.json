@@ -1,0 +1,78 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://generic-discovery-engine.invalid/v14.7-R4/validation-result",
+  "title": "validation-result",
+  "type": "object",
+  "required": [
+    "validation_id",
+    "subject_ref",
+    "status",
+    "failure_codes",
+    "evidence_refs",
+    "validator_id",
+    "scope_ref",
+    "input_hash",
+    "validated_at",
+    "content_hash"
+  ],
+  "properties": {
+    "validation_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "subject_ref": {
+      "type": "string",
+      "minLength": 1
+    },
+    "status": {
+      "type": "string",
+      "minLength": 1,
+      "enum": [
+        "VALID",
+        "INVALID",
+        "BLOCKED",
+        "UNKNOWN"
+      ]
+    },
+    "failure_codes": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "evidence_refs": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "validator_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "scope_ref": {
+      "type": "string",
+      "minLength": 1
+    },
+    "input_hash": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$"
+    },
+    "validated_at": {
+      "type": "string",
+      "minLength": 1
+    },
+    "content_hash": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$"
+    }
+  },
+  "additionalProperties": false,
+  "x-immutable": true,
+  "x-profile": "gde-v14.7-r4-runtime@14.7-R4",
+  "x-normative-rules": [
+    "validation status is not evaluation value"
+  ]
+}

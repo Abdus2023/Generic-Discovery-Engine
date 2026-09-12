@@ -1,0 +1,18 @@
+{
+  "realization_version": "14.7-R4",
+  "semantic_version": "v14.7",
+  "profile_id": "gde-v14.7-r4-runtime",
+  "entrypoint": "state::guard::guard_transition",
+  "checks": [
+    "current_state",
+    "event_type",
+    "preconditions",
+    "required_evidence",
+    "authority",
+    "scope",
+    "temporal_validity",
+    "predecessor",
+    "transition_legality"
+  ],
+  "only_validated_transition_may_commit": true
+}

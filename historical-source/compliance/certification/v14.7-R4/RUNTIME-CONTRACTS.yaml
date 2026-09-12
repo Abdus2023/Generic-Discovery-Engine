@@ -1,0 +1,22 @@
+{
+  "realization_version": "14.7-R4",
+  "semantic_version": "v14.7",
+  "profile_id": "gde-v14.7-r4-runtime",
+  "typed_pipeline": [
+    "RawSubject",
+    "ValidatedSubject",
+    "EvaluationResult",
+    "ConformanceResult",
+    "ReleaseEligibility",
+    "AuthorizationResult",
+    "ReleaseDecision",
+    "ReleaseExecution",
+    "PostReleaseVerification"
+  ],
+  "forbidden_shortcuts": [
+    "evaluate(raw)",
+    "authorize(evaluation_true)",
+    "execute(approved_without_authorization_context)"
+  ],
+  "outer_untyped_boundary_requires_conversion": true
+}

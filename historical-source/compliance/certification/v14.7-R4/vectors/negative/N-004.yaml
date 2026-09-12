@@ -1,0 +1,53 @@
+{
+  "test_id": "N-004",
+  "category": "NEGATIVE",
+  "profile_ref": "gde-v14.7-r4-runtime@14.7-R4",
+  "requirement_refs": [
+    "R3-REQ-001"
+  ],
+  "input": {
+    "objects": []
+  },
+  "setup": {
+    "events": []
+  },
+  "operation": {
+    "type": "CONFORMANCE",
+    "parameters": {
+      "requirement_ref": null,
+      "evaluation": {
+        "result": "TRUE"
+      }
+    }
+  },
+  "expected": {
+    "validation": {
+      "status": null
+    },
+    "evaluation": {
+      "result": null
+    },
+    "conformance": {
+      "status": "MISSING_REQUIREMENT"
+    },
+    "eligibility": {
+      "status": null
+    },
+    "authorization": {
+      "status": null
+    },
+    "decision": {
+      "status": null
+    },
+    "execution": {
+      "status": null
+    }
+  },
+  "forbidden": [],
+  "evidence": {
+    "expected_refs": [
+      "evidence:N-004"
+    ]
+  },
+  "content_hash": "246a95561ea2f31643920145afd4a6364de2d472bc136ae410cadca500c6f5cf"
+}

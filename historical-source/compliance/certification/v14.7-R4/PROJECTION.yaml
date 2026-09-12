@@ -1,0 +1,18 @@
+{
+  "realization_version": "14.7-R4",
+  "semantic_version": "v14.7",
+  "profile_id": "gde-v14.7-r4-runtime",
+  "input": "validated committed history",
+  "forbidden": [
+    "repair_events",
+    "invent_missing_events",
+    "rewrite_history",
+    "hidden_mutable_external_state"
+  ],
+  "identity_inputs": [
+    "history",
+    "profile",
+    "algorithm_version"
+  ],
+  "deterministic": true
+}

@@ -1,0 +1,62 @@
+{
+  "test_id": "N-009",
+  "category": "NEGATIVE",
+  "profile_ref": "gde-v14.7-r4-runtime@14.7-R4",
+  "requirement_refs": [
+    "R3-REQ-001"
+  ],
+  "input": {
+    "objects": []
+  },
+  "setup": {
+    "events": []
+  },
+  "operation": {
+    "type": "PROJECT",
+    "parameters": {
+      "history": [
+        {
+          "event_id": "event-0",
+          "stream_id": "stream",
+          "sequence_no": 0,
+          "predecessor": null,
+          "event_type": "ADVANCE",
+          "validated": false,
+          "key": "state",
+          "value": "0",
+          "committed": true
+        }
+      ]
+    }
+  },
+  "expected": {
+    "validation": {
+      "status": null
+    },
+    "evaluation": {
+      "result": null
+    },
+    "conformance": {
+      "status": null
+    },
+    "eligibility": {
+      "status": null
+    },
+    "authorization": {
+      "status": null
+    },
+    "decision": {
+      "status": null
+    },
+    "execution": {
+      "status": "INVALID_HISTORY"
+    }
+  },
+  "forbidden": [],
+  "evidence": {
+    "expected_refs": [
+      "evidence:N-009"
+    ]
+  },
+  "content_hash": "fae22552732fe07d85216840a25ccefd1c82afa7ee4cb6ae1366e2a4daf39d8e"
+}

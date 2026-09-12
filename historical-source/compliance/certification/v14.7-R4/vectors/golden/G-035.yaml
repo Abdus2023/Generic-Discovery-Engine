@@ -1,0 +1,86 @@
+{
+  "test_id": "G-035",
+  "category": "GOLDEN",
+  "profile_ref": "gde-v14.7-r4-runtime@14.7-R4",
+  "requirement_refs": [
+    "R3-REQ-001"
+  ],
+  "input": {
+    "objects": []
+  },
+  "setup": {
+    "events": []
+  },
+  "operation": {
+    "type": "PROJECTION_COMPARE",
+    "parameters": {
+      "left": [
+        {
+          "event_id": "event-0",
+          "stream_id": "stream",
+          "sequence_no": 0,
+          "predecessor": null,
+          "event_type": "ADVANCE",
+          "validated": true,
+          "key": "state",
+          "value": "0",
+          "committed": true
+        },
+        {
+          "event_id": "event-1",
+          "stream_id": "stream",
+          "sequence_no": 1,
+          "predecessor": "event-0",
+          "event_type": "ADVANCE",
+          "validated": true,
+          "key": "state",
+          "value": "1",
+          "committed": true
+        }
+      ],
+      "right": [
+        {
+          "event_id": "event-0",
+          "stream_id": "stream",
+          "sequence_no": 0,
+          "predecessor": null,
+          "event_type": "ADVANCE",
+          "validated": true,
+          "key": "state",
+          "value": "changed",
+          "committed": true
+        }
+      ]
+    }
+  },
+  "expected": {
+    "validation": {
+      "status": null
+    },
+    "evaluation": {
+      "result": null
+    },
+    "conformance": {
+      "status": null
+    },
+    "eligibility": {
+      "status": null
+    },
+    "authorization": {
+      "status": null
+    },
+    "decision": {
+      "status": null
+    },
+    "execution": {
+      "status": "MISMATCH"
+    }
+  },
+  "forbidden": [],
+  "evidence": {
+    "expected_refs": [
+      "evidence:G-035"
+    ]
+  },
+  "content_hash": "746216b6c0aa01e013ce0ea9a0cb0d6b6a071e7ace097be7bd59d4b2ed51ae95"
+}

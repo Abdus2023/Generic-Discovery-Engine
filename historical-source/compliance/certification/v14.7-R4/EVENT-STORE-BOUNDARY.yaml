@@ -1,0 +1,20 @@
+{
+  "realization_version": "14.7-R4",
+  "semantic_version": "v14.7",
+  "profile_id": "gde-v14.7-r4-runtime",
+  "input": "ValidatedEvent",
+  "output": "CommittedEvent",
+  "raw_event_commit": "FORBIDDEN",
+  "required_atomic_operations": [
+    "validate_transition",
+    "reserve_sequence",
+    "append_event"
+  ],
+  "reference_atomic_operations": [
+    "reserve_sequence",
+    "append_event"
+  ],
+  "serialization_point": "InMemoryEventStore.inner Mutex",
+  "full_transition_atomicity": "UNVERIFIED",
+  "durable_production_store": "UNVERIFIED"
+}

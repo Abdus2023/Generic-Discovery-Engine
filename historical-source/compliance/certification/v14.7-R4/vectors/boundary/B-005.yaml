@@ -1,0 +1,51 @@
+{
+  "test_id": "B-005",
+  "category": "BOUNDARY",
+  "profile_ref": "gde-v14.7-r4-runtime@14.7-R4",
+  "requirement_refs": [
+    "R3-REQ-001"
+  ],
+  "input": {
+    "objects": []
+  },
+  "setup": {
+    "events": []
+  },
+  "operation": {
+    "type": "AUTHORIZE",
+    "parameters": {
+      "eligibility": "ELIGIBLE",
+      "qualification": "QUALIFIED"
+    }
+  },
+  "expected": {
+    "validation": {
+      "status": null
+    },
+    "evaluation": {
+      "result": null
+    },
+    "conformance": {
+      "status": null
+    },
+    "eligibility": {
+      "status": null
+    },
+    "authorization": {
+      "status": "AUTHORIZED"
+    },
+    "decision": {
+      "status": null
+    },
+    "execution": {
+      "status": null
+    }
+  },
+  "forbidden": [],
+  "evidence": {
+    "expected_refs": [
+      "evidence:B-005"
+    ]
+  },
+  "content_hash": "c12cdcbca050aa9c9947d686b4610fb30e0ccc99274152b62e2f20b6cab7295b"
+}

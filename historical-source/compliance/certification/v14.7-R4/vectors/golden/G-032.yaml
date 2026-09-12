@@ -1,0 +1,66 @@
+{
+  "test_id": "G-032",
+  "category": "GOLDEN",
+  "profile_ref": "gde-v14.7-r4-runtime@14.7-R4",
+  "requirement_refs": [
+    "R3-REQ-001"
+  ],
+  "input": {
+    "objects": []
+  },
+  "setup": {
+    "events": []
+  },
+  "operation": {
+    "type": "TRANSITION",
+    "parameters": {
+      "current": {
+        "last_event": null,
+        "allowed": [
+          "ADVANCE"
+        ]
+      },
+      "event": {
+        "event_id": "event-0",
+        "stream_id": "stream",
+        "sequence_no": 0,
+        "predecessor": null,
+        "event_type": "ILLEGAL",
+        "validated": true,
+        "key": "state",
+        "value": "0",
+        "committed": true
+      }
+    }
+  },
+  "expected": {
+    "validation": {
+      "status": "ILLEGAL_TRANSITION"
+    },
+    "evaluation": {
+      "result": null
+    },
+    "conformance": {
+      "status": null
+    },
+    "eligibility": {
+      "status": null
+    },
+    "authorization": {
+      "status": null
+    },
+    "decision": {
+      "status": null
+    },
+    "execution": {
+      "status": null
+    }
+  },
+  "forbidden": [],
+  "evidence": {
+    "expected_refs": [
+      "evidence:G-032"
+    ]
+  },
+  "content_hash": "26d0dcb02f5c9b5778017d8f6f733f2b839b3c4bf97d1eb93e4c4c05f8f65df9"
+}

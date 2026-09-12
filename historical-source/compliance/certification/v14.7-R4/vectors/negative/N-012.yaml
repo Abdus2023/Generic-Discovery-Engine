@@ -1,0 +1,50 @@
+{
+  "test_id": "N-012",
+  "category": "NEGATIVE",
+  "profile_ref": "gde-v14.7-r4-runtime@14.7-R4",
+  "requirement_refs": [
+    "R3-REQ-001"
+  ],
+  "input": {
+    "objects": []
+  },
+  "setup": {
+    "events": []
+  },
+  "operation": {
+    "type": "PIPELINE_FORBIDDEN",
+    "parameters": {
+      "claim": "UNIVERSAL_STATUS_SUBSTITUTION"
+    }
+  },
+  "expected": {
+    "validation": {
+      "status": null
+    },
+    "evaluation": {
+      "result": null
+    },
+    "conformance": {
+      "status": null
+    },
+    "eligibility": {
+      "status": null
+    },
+    "authorization": {
+      "status": null
+    },
+    "decision": {
+      "status": null
+    },
+    "execution": {
+      "status": "REJECTED"
+    }
+  },
+  "forbidden": [],
+  "evidence": {
+    "expected_refs": [
+      "evidence:N-012"
+    ]
+  },
+  "content_hash": "17d6aebd50625ed9809c605336444493e7831f08d32cba18a1b0bcfae87cc21a"
+}

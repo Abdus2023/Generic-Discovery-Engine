@@ -1,0 +1,54 @@
+{
+  "test_id": "P-015",
+  "category": "PROPERTY",
+  "profile_ref": "gde-v14.7-r4-runtime@14.7-R4",
+  "requirement_refs": [
+    "R3-REQ-001"
+  ],
+  "input": {
+    "objects": []
+  },
+  "setup": {
+    "events": []
+  },
+  "operation": {
+    "type": "DOMAIN_HASH",
+    "parameters": {
+      "left_domain": "profile:a",
+      "right_domain": "profile:b",
+      "value": {
+        "x": 1
+      }
+    }
+  },
+  "expected": {
+    "validation": {
+      "status": null
+    },
+    "evaluation": {
+      "result": null
+    },
+    "conformance": {
+      "status": null
+    },
+    "eligibility": {
+      "status": null
+    },
+    "authorization": {
+      "status": null
+    },
+    "decision": {
+      "status": null
+    },
+    "execution": {
+      "status": "DIFFERENT"
+    }
+  },
+  "forbidden": [],
+  "evidence": {
+    "expected_refs": [
+      "evidence:P-015"
+    ]
+  },
+  "content_hash": "40b89729530cb577d2193b2586fa3c1a4b76e4caea9bc8f1debf9dcc2bd1314d"
+}

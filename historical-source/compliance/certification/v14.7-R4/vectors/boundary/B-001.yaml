@@ -1,0 +1,68 @@
+{
+  "test_id": "B-001",
+  "category": "BOUNDARY",
+  "profile_ref": "gde-v14.7-r4-runtime@14.7-R4",
+  "requirement_refs": [
+    "R3-REQ-001"
+  ],
+  "input": {
+    "objects": []
+  },
+  "setup": {
+    "events": []
+  },
+  "operation": {
+    "type": "TRANSITION",
+    "parameters": {
+      "current": {
+        "last_event": null,
+        "allowed": [
+          "ADVANCE"
+        ]
+      },
+      "event": {
+        "event_id": "event-0",
+        "stream_id": "stream",
+        "sequence_no": 0,
+        "predecessor": null,
+        "event_type": "ADVANCE",
+        "validated": false,
+        "key": "state",
+        "value": "0",
+        "committed": true
+      }
+    }
+  },
+  "expected": {
+    "validation": {
+      "status": "UNVALIDATED_EVENT"
+    },
+    "evaluation": {
+      "result": null
+    },
+    "conformance": {
+      "status": null
+    },
+    "eligibility": {
+      "status": null
+    },
+    "authorization": {
+      "status": null
+    },
+    "decision": {
+      "status": null
+    },
+    "execution": {
+      "status": null
+    }
+  },
+  "forbidden": [
+    "RAW_TO_HISTORY"
+  ],
+  "evidence": {
+    "expected_refs": [
+      "evidence:B-001"
+    ]
+  },
+  "content_hash": "acf22f2ed3b3363ce252b5ab21c3da717de9ddb8bdfd9f17ece56bd127a67900"
+}

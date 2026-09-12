@@ -1,0 +1,21 @@
+{
+  "profile_id": "gde-v14.7-r4-runtime",
+  "profile_version": "14.7-R4",
+  "specification_ref": "SPECIFICATION.md#3b803faa2658e97523022137666103fb8955808b0cfdb8f9ffc0fe0fc1bf364d",
+  "predecessor_profile_ref": "gde-v14.7-r2-boundary@14.7-R2.1#a08449d6f71a955d58e83ea600ab078142639edf538090fd429511d300557c80",
+  "empty_mandatory_action": "DENY",
+  "canonicalization": "GDE-CJSON-1",
+  "hash_algorithm": "SHA-256",
+  "hash_domains": [
+    "artifact:v1",
+    "object:v1",
+    "snapshot:v1",
+    "evaluation:v1",
+    "decision-basis:v1",
+    "event:v1",
+    "certificate:v1"
+  ],
+  "event_ordering": "STREAM_SEQUENCE_PREDECESSOR_COMMIT",
+  "compatibility": "CONVERTIBLE_REVALIDATE_REHASH_RESIGN",
+  "content_hash": "4d6519f47e0efeb496b3fc71ad0d3e077c64b2d7d94ff062a19aeffe75d3bf10"
+}

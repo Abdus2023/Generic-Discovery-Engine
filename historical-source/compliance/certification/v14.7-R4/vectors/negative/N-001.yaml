@@ -1,0 +1,55 @@
+{
+  "test_id": "N-001",
+  "category": "NEGATIVE",
+  "profile_ref": "gde-v14.7-r4-runtime@14.7-R4",
+  "requirement_refs": [
+    "R3-REQ-001"
+  ],
+  "input": {
+    "objects": []
+  },
+  "setup": {
+    "events": []
+  },
+  "operation": {
+    "type": "EVALUATE",
+    "parameters": {
+      "subject": {
+        "validation": "INVALID"
+      },
+      "predicate": {
+        "mode": "TRUE"
+      }
+    }
+  },
+  "expected": {
+    "validation": {
+      "status": null
+    },
+    "evaluation": {
+      "result": "INVALID"
+    },
+    "conformance": {
+      "status": null
+    },
+    "eligibility": {
+      "status": null
+    },
+    "authorization": {
+      "status": null
+    },
+    "decision": {
+      "status": null
+    },
+    "execution": {
+      "status": null
+    }
+  },
+  "forbidden": [],
+  "evidence": {
+    "expected_refs": [
+      "evidence:N-001"
+    ]
+  },
+  "content_hash": "fb5dc172b763297c07f179615575736f94e2e4b1deb5e323decbc54e45fe315b"
+}

@@ -1,0 +1,238 @@
+{
+  "realization_version": "14.7-R4",
+  "semantic_version": "v14.7",
+  "profile_id": "gde-v14.7-r4-runtime",
+  "path": "runtime/v14.7-runtime",
+  "crate": "v14_7_runtime",
+  "source_files": 55,
+  "source_manifest": [
+    {
+      "path": "Cargo.lock",
+      "sha256": "fa895f04e2a64f2a1a96916bff4992ce6d22d0a3831cd0304e5ddad74797ccee"
+    },
+    {
+      "path": "Cargo.toml",
+      "sha256": "9a740e7bad6dda7925c83a9bbc97dbdc3a31c22196f3f01a3d15de9f8dc5bed5"
+    },
+    {
+      "path": "src/authorization/authorize.rs",
+      "sha256": "ff22c51f1ba6327d850dd43c57aa3a5a1f03ec69add2c3028324e308ea370f28"
+    },
+    {
+      "path": "src/authorization/mod.rs",
+      "sha256": "91b454a1f9cf820b1b384bfbd0bbf70d6620743c40164538e067514c3d346bcf"
+    },
+    {
+      "path": "src/authorization/qualification.rs",
+      "sha256": "be7d35fef57e9f71aa35ff5b0eb0481e03c91659ebf3790f0de2e31b5d089eb2"
+    },
+    {
+      "path": "src/authorization/threshold.rs",
+      "sha256": "a950600c2fd1caedf98e74bc3e247d35cf1dcc4da65f7dc70ac39bdfc6f6d7c4"
+    },
+    {
+      "path": "src/conformance/harness.rs",
+      "sha256": "f72491bbd6e4b4a3e45007de8127d4aad3d858a4ae13b4f685f7cb8bdfa04b69"
+    },
+    {
+      "path": "src/conformance/mod.rs",
+      "sha256": "f8a8a0abf78b4756b47e11213ab76777a1d73832d91d4ac35ccb59e05f366f1c"
+    },
+    {
+      "path": "src/conformance/oracle.rs",
+      "sha256": "e0e98e602de1d72533b05bbf41cde054ef3f5f6eb73c1a9e16420e3cb4abe506"
+    },
+    {
+      "path": "src/conformance/report.rs",
+      "sha256": "7949d1e873ecb5fcfb5f1e08b1c66d3fc42984622ee96e44e3687d1b4ac52def"
+    },
+    {
+      "path": "src/conformance/vectors.rs",
+      "sha256": "61e51e5600fcacd96561bf8a932fddc071980b13d7f12f06880cc519bdfe9d2c"
+    },
+    {
+      "path": "src/domain/authority.rs",
+      "sha256": "4e005902c7e71e7e52e53a8610b2b9714ed89e0abd948a0ce0c1636e2969718e"
+    },
+    {
+      "path": "src/domain/certificate.rs",
+      "sha256": "bc278c748077bcb19387b6d3b5ee66c112f525e747f71950df6f95821d9957ce"
+    },
+    {
+      "path": "src/domain/conformance.rs",
+      "sha256": "0ba86a5eb380bff07018a52017444dd4824ee306f138c6500d7d61bbf786e049"
+    },
+    {
+      "path": "src/domain/decision.rs",
+      "sha256": "954cd7536ba9901ccff1b0b8f23f3b7754efbd7e69727319de2734a9715047bf"
+    },
+    {
+      "path": "src/domain/evaluation.rs",
+      "sha256": "68bb06bc4c6b630e14feef87feb71ee779160c08474e04b7bcc2f55a7cb7a737"
+    },
+    {
+      "path": "src/domain/evidence.rs",
+      "sha256": "09c36d303994bcc61b9592241b1ecf1312005595789c5a3b2411542620040dd0"
+    },
+    {
+      "path": "src/domain/execution.rs",
+      "sha256": "397e68b73c4c08d3eecfa8081e638cef0cff961b76ed560b29f31a0cda228c18"
+    },
+    {
+      "path": "src/domain/mod.rs",
+      "sha256": "c714a527d81cfc2f5f7ee8f13b7df5253f47b4f3614e9287df8a8dc44eccfffe"
+    },
+    {
+      "path": "src/domain/profile.rs",
+      "sha256": "0e2ac37a83d27465ea85ca56be7dc41b267672a8f7fa1111e0938e41a371586e"
+    },
+    {
+      "path": "src/domain/release.rs",
+      "sha256": "0f513c1b88cd97e6540db9e3381802ce130462bc9ee482c12fbf498b4259e0d7"
+    },
+    {
+      "path": "src/domain/requirement.rs",
+      "sha256": "32a459924af44527da39108e0dbeada96312ff5dc15db06aa6e51652f17ff618"
+    },
+    {
+      "path": "src/domain/validation.rs",
+      "sha256": "90db9b9aaece29b8fa776bd60eda12412d0fb6880f1286d6172ff98e3be4dd02"
+    },
+    {
+      "path": "src/domain/verification.rs",
+      "sha256": "82e2c2478ee91805b70a52dab92ce24344e63df6c46de43a6699005c51396587"
+    },
+    {
+      "path": "src/evaluation/aggregate.rs",
+      "sha256": "ee989d88c9e29d2c2378ba4ba4938341c0feb74536e3921e8b52ce9fb2ed63eb"
+    },
+    {
+      "path": "src/evaluation/evaluator.rs",
+      "sha256": "763b14bbc4c165b0f579e626dfc7bdb1beaf3071f38fea642d96f4847ed2c501"
+    },
+    {
+      "path": "src/evaluation/mod.rs",
+      "sha256": "b50d1d43312c7d0b02b061a9a6e09dd54d72a4c92aac7f1cfc0265bc97be1812"
+    },
+    {
+      "path": "src/evaluation/predicate.rs",
+      "sha256": "d75b58cf1d6e2adccc792ab529b66c8d12f5df333b39ccfa450c0aca353c94cb"
+    },
+    {
+      "path": "src/events/event.rs",
+      "sha256": "cf041f00736bce91c36b492a328b0e22b5d63b2dfa861365a660336b451adeef"
+    },
+    {
+      "path": "src/events/mod.rs",
+      "sha256": "e0e9cd6111caf239db4a863e30ce6a09432dd5657838eac1a2c3238f9e442e07"
+    },
+    {
+      "path": "src/events/ordering.rs",
+      "sha256": "7a2a45fb5943d27ca7566c221a681bb2bfaa4f4d5f02e8229925659c54e5e9ad"
+    },
+    {
+      "path": "src/events/store.rs",
+      "sha256": "9b3123b5d502fb63de9f4251aa039fd8ef8d4835e138085abf3a6611e71cac91"
+    },
+    {
+      "path": "src/identity/canonical.rs",
+      "sha256": "b8d0ffa04914626f0bff257822a2588194014ab7ff58e4d08d3e8a9865b45f2e"
+    },
+    {
+      "path": "src/identity/hashing.rs",
+      "sha256": "ac02de423d6bf7eda4116b0dfdfdba11f5d6e5be925a1eef166283bb6589be58"
+    },
+    {
+      "path": "src/identity/mod.rs",
+      "sha256": "521f3ffb993bf20b2878d611265fcceb20774595127de3972491bc3063c81dc1"
+    },
+    {
+      "path": "src/lib.rs",
+      "sha256": "c50d66c7ed75662b217d377588b18eea49aeca6fe142664e6020603577ee835d"
+    },
+    {
+      "path": "src/projection/mod.rs",
+      "sha256": "6a0c36d608c7048fe28773e57276e21035379b441f1e45f99851ee51384dbe5f"
+    },
+    {
+      "path": "src/projection/projector.rs",
+      "sha256": "ec11446ebc5397dc2e9f7b9451f83d64f5779e76ae4214e7ed42e13ae34dc48f"
+    },
+    {
+      "path": "src/projection/verifier.rs",
+      "sha256": "3b4bfd50d592f57fef7f6d455bccc165e7102771161e9dbe3803b2c6779dd673"
+    },
+    {
+      "path": "src/state/guard.rs",
+      "sha256": "ad8f40ea767832f914a40956659c0260d3beb1e95b88df8e12ffcabe0f309c58"
+    },
+    {
+      "path": "src/state/mod.rs",
+      "sha256": "88af2abc23afed7fb49025548c9bc3d4545b10c8a88a98c3a895f4971cad5b7a"
+    },
+    {
+      "path": "src/state/transition.rs",
+      "sha256": "832b4e68ff6f3def3a77b66c08ecb73eb552ede9b54c13f7785e0bc738ca2ff1"
+    },
+    {
+      "path": "src/validation/authority.rs",
+      "sha256": "f0fbbff2cd3cc12a3b45672a17e5b5b3439d3147ad72c3358e08c4ddf833097c"
+    },
+    {
+      "path": "src/validation/freshness.rs",
+      "sha256": "cfeb691f37b6b32694b70e5e37dd32211b91327265ad037f4bfe027933a5a648"
+    },
+    {
+      "path": "src/validation/integrity.rs",
+      "sha256": "6e05f99219f3b614211a642506b61cded5a801a57b0da2e730b83b2fd84559bb"
+    },
+    {
+      "path": "src/validation/mod.rs",
+      "sha256": "2c7eb4c953e4052af0e450e8dc08e9c704f5fc96c70acd68d832061df3bc2e4e"
+    },
+    {
+      "path": "src/validation/policy.rs",
+      "sha256": "df8823070ca3382529734e953095e0cddb0541f5bf8f5cd0aa16a0dcf0776a0c"
+    },
+    {
+      "path": "src/validation/reference.rs",
+      "sha256": "f34511dd336483b9fa96b5c8d2181f50252a54b8ed0128166465429b4e52df97"
+    },
+    {
+      "path": "src/validation/scope.rs",
+      "sha256": "3bb93537290343e59f27ca31a57946fa44fbccfd1c1988bd5ef655dfc5b9c600"
+    },
+    {
+      "path": "src/validation/structural.rs",
+      "sha256": "8d544857890e1231e7d549c55cea40ae1569bb9a171bc9e6116f59d36f338de9"
+    },
+    {
+      "path": "src/validation/temporal.rs",
+      "sha256": "99ca3d112d1a592414b0ec3976787c8bd93a0697a4d2c1df988d70621cfee4a3"
+    },
+    {
+      "path": "tests/boundary.rs",
+      "sha256": "191c2f44e4b1b4ca57c905e31e5f5d41d060b7324616b38de34e3a9f71b94a30"
+    },
+    {
+      "path": "tests/golden.rs",
+      "sha256": "8a2ac703ec057a8ca1cb37baf5d3a67b75c341597303ff52c8f19d9f4d1fb709"
+    },
+    {
+      "path": "tests/negative.rs",
+      "sha256": "870cd97d47ef190f44131c4f02c4f87931c7cb0dc3697de934985d4aa318e827"
+    },
+    {
+      "path": "tests/property.rs",
+      "sha256": "08f81d6c905062ad30eb26a75f88fe6bd36f504116594c404af5633a1a2f6d9f"
+    }
+  ],
+  "build": {
+    "status": "BLOCKED",
+    "toolchain_available": false,
+    "returncode": null,
+    "output_hash": null,
+    "reason": "RUST_TOOLCHAIN_NOT_AVAILABLE_IN_VALIDATION_ENVIRONMENT"
+  },
+  "module_structure_authority": "IMPLEMENTATION"
+}

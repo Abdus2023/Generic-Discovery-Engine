@@ -1,0 +1,56 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://generic-discovery-engine.invalid/v14.7-R4/acceptance-criterion",
+  "title": "acceptance-criterion",
+  "type": "object",
+  "required": [
+    "criterion_id",
+    "requirement_ref",
+    "expression",
+    "expected_result",
+    "evidence_requirements",
+    "content_hash"
+  ],
+  "properties": {
+    "criterion_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "requirement_ref": {
+      "type": "string",
+      "minLength": 1
+    },
+    "expression": {
+      "type": "string",
+      "minLength": 1
+    },
+    "expected_result": {
+      "type": "string",
+      "minLength": 1,
+      "enum": [
+        "TRUE",
+        "FALSE",
+        "UNKNOWN",
+        "BLOCKED",
+        "INVALID"
+      ]
+    },
+    "evidence_requirements": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "content_hash": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$"
+    }
+  },
+  "additionalProperties": false,
+  "x-immutable": true,
+  "x-profile": "gde-v14.7-r4-runtime@14.7-R4",
+  "x-normative-rules": [
+    "criterion cannot change requirement meaning"
+  ]
+}

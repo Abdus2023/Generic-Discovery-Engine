@@ -1,0 +1,71 @@
+{
+  "realization_version": "14.7-R4",
+  "method": "ISOLATED_PREDECESSOR_VALIDATION_AND_SUCCESSOR_GUARDS",
+  "objects": [
+    {
+      "check_id": "REG-01",
+      "script": "validate_executable_boundary_contracts_v147r3.py",
+      "returncode": 0,
+      "expected": 0,
+      "passed": true,
+      "output_tail": "55 PASS / 0 FAIL / 1 BLOCKED (56 checks); BOUNDARY_CONFORMANT_TARGET_IMPLEMENTATION_UNVERIFIED\n"
+    },
+    {
+      "check_id": "REG-02",
+      "script": "validate_frozen_boundary_realization_v147r21.py",
+      "returncode": 0,
+      "expected": 0,
+      "passed": true,
+      "output_tail": "40 PASS / 0 FAIL / 1 BLOCKED (41 checks); PROFILE_CONFORMANT_IMPLEMENTATION_AND_TARGET_UNVERIFIED\n"
+    },
+    {
+      "check_id": "REG-03",
+      "script": "validate_executable_realization_v147r2.py",
+      "returncode": 0,
+      "expected": 0,
+      "passed": true,
+      "output_tail": "44 PASS / 0 FAIL / 1 BLOCKED (45 checks); REFERENCE_HARNESS_TESTS_PASS_DURABILITY_AND_TARGET_ENGINE_UNVERIFIED\n"
+    },
+    {
+      "check_id": "REG-04",
+      "script": "validate_v147_conformance_correction_v1471.py",
+      "returncode": 0,
+      "expected": 0,
+      "passed": true,
+      "output_tail": "92 PASS / 0 FAIL / 1 BLOCKED (93 checks); STRUCTURAL_PASS_CURRENT_CERTIFICATION_NOT_APPLICABLE\n"
+    },
+    {
+      "check_id": "REG-05",
+      "script": "build_executable_boundary_contracts_v147r3.py",
+      "returncode": 1,
+      "expected": "REFUSE",
+      "passed": true,
+      "output_tail": "Traceback (most recent call last):\n  File \"/tmp/gde-r4-reg-3sgmf_hu/historical-source/tools/build_executable_boundary_contracts_v147r3.py\", line 655, in <module>\n    main()\n  File \"/tmp/gde-r4-reg-3sgmf_hu/historical-source/tools/build_executable_boundary_contracts_v147r3.py\", line 347, in main\n    raise RuntimeError(\"refusing to erase predecessor artifacts after append-only v14.7-R4 realization\")\nRuntimeError: refusing to erase predecessor artifacts after append-only v14.7-R4 realization\n"
+    },
+    {
+      "check_id": "REG-06",
+      "script": "build_reference_domain_model_v147r4.py",
+      "returncode": 1,
+      "expected": "REFUSE",
+      "passed": true,
+      "output_tail": "Traceback (most recent call last):\n  File \"/tmp/gde-r4-reg-3sgmf_hu/historical-source/tools/build_reference_domain_model_v147r4.py\", line 460, in <module>\n    main()\n  File \"/tmp/gde-r4-reg-3sgmf_hu/historical-source/tools/build_reference_domain_model_v147r4.py\", line 330, in main\n    raise RuntimeError(\"refusing to regenerate immutable v14.7-R4 package\")\nRuntimeError: refusing to regenerate immutable v14.7-R4 package\n"
+    },
+    {
+      "check_id": "REG-07",
+      "script": "build_frozen_boundary_realization_v147r21.py",
+      "returncode": 1,
+      "expected": "REFUSE",
+      "passed": true,
+      "output_tail": " \"/tmp/gde-r4-reg-3sgmf_hu/historical-source/tools/build_frozen_boundary_realization_v147r21.py\", line 36, in main\n    if (C/'certification/v14.7-R3').exists():raise RuntimeError('refusing to erase predecessor artifacts after append-only v14.7-R3 realization')\n                                             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nRuntimeError: refusing to erase predecessor artifacts after append-only v14.7-R3 realization\n"
+    },
+    {
+      "check_id": "REG-08",
+      "script": "PRIOR-INTEGRITY.yaml",
+      "returncode": 0,
+      "expected": 0,
+      "passed": true,
+      "output_tail": "mismatches=[]"
+    }
+  ],
+  "status": "PASS"
+}

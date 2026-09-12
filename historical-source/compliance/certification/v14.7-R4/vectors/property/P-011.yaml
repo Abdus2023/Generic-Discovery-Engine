@@ -1,0 +1,57 @@
+{
+  "test_id": "P-011",
+  "category": "PROPERTY",
+  "profile_ref": "gde-v14.7-r4-runtime@14.7-R4",
+  "requirement_refs": [
+    "R3-REQ-001"
+  ],
+  "input": {
+    "objects": []
+  },
+  "setup": {
+    "events": []
+  },
+  "operation": {
+    "type": "CANONICAL",
+    "parameters": {
+      "left": {
+        "b": 2,
+        "a": 1
+      },
+      "right": {
+        "a": 1,
+        "b": 2
+      }
+    }
+  },
+  "expected": {
+    "validation": {
+      "status": null
+    },
+    "evaluation": {
+      "result": null
+    },
+    "conformance": {
+      "status": null
+    },
+    "eligibility": {
+      "status": null
+    },
+    "authorization": {
+      "status": null
+    },
+    "decision": {
+      "status": null
+    },
+    "execution": {
+      "status": "SAME"
+    }
+  },
+  "forbidden": [],
+  "evidence": {
+    "expected_refs": [
+      "evidence:P-011"
+    ]
+  },
+  "content_hash": "59728afbccfee223bdb46be98b5236c7d2182e7f37288ccc98dee07dc1b14c98"
+}
