@@ -1,0 +1,74 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://generic-discovery-engine.invalid/compliance/v14.7-R3/conversion-rule.schema.yaml",
+  "title": "conversion-rule",
+  "type": "object",
+  "required": [
+    "rule_id",
+    "source_domain",
+    "source_state",
+    "target_domain",
+    "target_state",
+    "operation",
+    "preconditions",
+    "authority_ref",
+    "content_hash"
+  ],
+  "properties": {
+    "rule_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "source_domain": {
+      "type": "string",
+      "minLength": 1
+    },
+    "source_state": {
+      "type": "string",
+      "minLength": 1
+    },
+    "target_domain": {
+      "type": "string",
+      "minLength": 1
+    },
+    "target_state": {
+      "type": "string",
+      "minLength": 1
+    },
+    "operation": {
+      "type": "string",
+      "minLength": 1
+    },
+    "preconditions": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "authority_ref": {
+      "type": "string",
+      "minLength": 1
+    },
+    "content_hash": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$"
+    }
+  },
+  "additionalProperties": false,
+  "x-identity-fields": [
+    "rule_id"
+  ],
+  "x-immutable": true,
+  "x-self-excluding-hash-field": "content_hash",
+  "x-canonical-profile": "GDE-CJSON-1",
+  "x-authority-precedence": [
+    "SPECIFICATION",
+    "PROFILE",
+    "IMPLEMENTATION",
+    "EVIDENCE"
+  ],
+  "x-normative-rules": [
+    "every conversion identifies source target operation preconditions and authority"
+  ]
+}

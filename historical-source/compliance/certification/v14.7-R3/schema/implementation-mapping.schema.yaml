@@ -1,0 +1,90 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://generic-discovery-engine.invalid/compliance/v14.7-R3/implementation-mapping.schema.yaml",
+  "title": "implementation-mapping",
+  "type": "object",
+  "required": [
+    "mapping_id",
+    "implementation_id",
+    "profile_binding_ref",
+    "artifact_refs",
+    "code_refs",
+    "tests",
+    "evidence_refs",
+    "mapping_type",
+    "content_hash"
+  ],
+  "properties": {
+    "mapping_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "implementation_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "profile_binding_ref": {
+      "type": "string",
+      "minLength": 1
+    },
+    "artifact_refs": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "code_refs": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "tests": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "evidence_refs": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "mapping_type": {
+      "type": "string",
+      "enum": [
+        "DIRECT",
+        "INDIRECT",
+        "DISTRIBUTED",
+        "CONFIGURATION",
+        "RUNTIME",
+        "TEST_ONLY"
+      ]
+    },
+    "content_hash": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$"
+    }
+  },
+  "additionalProperties": false,
+  "x-identity-fields": [
+    "mapping_id"
+  ],
+  "x-immutable": true,
+  "x-self-excluding-hash-field": "content_hash",
+  "x-canonical-profile": "GDE-CJSON-1",
+  "x-authority-precedence": [
+    "SPECIFICATION",
+    "PROFILE",
+    "IMPLEMENTATION",
+    "EVIDENCE"
+  ],
+  "x-normative-rules": [
+    "implementation mapping is not a requirement"
+  ]
+}

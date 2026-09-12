@@ -1,0 +1,25 @@
+{
+  "contract_id": "R3-VALIDATION-CONTRACT",
+  "input": {
+    "subject_ref": "required",
+    "context_ref": "required"
+  },
+  "output": {
+    "type": "ValidationResult",
+    "states": [
+      "VALID",
+      "INVALID",
+      "BLOCKED",
+      "UNKNOWN"
+    ]
+  },
+  "may_modify_authoritative_state": false,
+  "deterministic": true,
+  "forbidden_actions": [
+    "ISSUE_CERTIFICATE",
+    "APPROVE_RELEASE",
+    "MUTATE_AUTHORITATIVE_HISTORY",
+    "EVALUATE_PREDICATE"
+  ],
+  "content_hash": "2e9564eaaf0c1e19b6d0b62fd2a0359a9a03e421fc55147f4ccf31d5d1948c68"
+}

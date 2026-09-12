@@ -1,0 +1,105 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://generic-discovery-engine.invalid/compliance/v14.7-R3/normative-requirement.schema.yaml",
+  "title": "normative-requirement",
+  "type": "object",
+  "required": [
+    "requirement_id",
+    "statement",
+    "strength",
+    "scope_ref",
+    "acceptance_criteria",
+    "dependencies",
+    "authority",
+    "content_hash"
+  ],
+  "properties": {
+    "requirement_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "statement": {
+      "type": "string",
+      "minLength": 1
+    },
+    "strength": {
+      "type": "string",
+      "enum": [
+        "MUST",
+        "MUST_NOT",
+        "SHOULD",
+        "SHOULD_NOT",
+        "MAY"
+      ]
+    },
+    "scope_ref": {
+      "type": "string",
+      "minLength": 1
+    },
+    "acceptance_criteria": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "criterion_id"
+        ],
+        "properties": {
+          "criterion_id": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "additionalProperties": false
+      }
+    },
+    "dependencies": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "authority": {
+      "type": "object",
+      "required": [
+        "layer",
+        "ref"
+      ],
+      "properties": {
+        "layer": {
+          "type": "string",
+          "enum": [
+            "SPECIFICATION",
+            "PROFILE",
+            "IMPLEMENTATION"
+          ]
+        },
+        "ref": {
+          "type": "string",
+          "minLength": 1
+        }
+      },
+      "additionalProperties": false
+    },
+    "content_hash": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$"
+    }
+  },
+  "additionalProperties": false,
+  "x-identity-fields": [
+    "requirement_id"
+  ],
+  "x-immutable": true,
+  "x-self-excluding-hash-field": "content_hash",
+  "x-canonical-profile": "GDE-CJSON-1",
+  "x-authority-precedence": [
+    "SPECIFICATION",
+    "PROFILE",
+    "IMPLEMENTATION",
+    "EVIDENCE"
+  ],
+  "x-normative-rules": [
+    "normative requirement has specification authority and no implementation leakage"
+  ]
+}

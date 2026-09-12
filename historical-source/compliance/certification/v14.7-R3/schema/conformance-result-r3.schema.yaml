@@ -1,0 +1,81 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://generic-discovery-engine.invalid/compliance/v14.7-R3/conformance-result-r3.schema.yaml",
+  "title": "conformance-result-r3",
+  "type": "object",
+  "required": [
+    "requirement_ref",
+    "status",
+    "evaluation_refs",
+    "evidence_refs",
+    "violated_conditions",
+    "rationale_codes",
+    "content_hash"
+  ],
+  "properties": {
+    "requirement_ref": {
+      "type": "string",
+      "minLength": 1
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "CONFORMANT",
+        "PARTIALLY_CONFORMANT",
+        "NON_CONFORMANT",
+        "UNVERIFIED",
+        "BLOCKED",
+        "NOT_APPLICABLE",
+        "UNKNOWN"
+      ]
+    },
+    "evaluation_refs": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "evidence_refs": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "violated_conditions": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "rationale_codes": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "content_hash": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$"
+    }
+  },
+  "additionalProperties": false,
+  "x-identity-fields": [
+    "requirement_ref"
+  ],
+  "x-immutable": true,
+  "x-self-excluding-hash-field": "content_hash",
+  "x-canonical-profile": "GDE-CJSON-1",
+  "x-authority-precedence": [
+    "SPECIFICATION",
+    "PROFILE",
+    "IMPLEMENTATION",
+    "EVIDENCE"
+  ],
+  "x-normative-rules": [
+    "NON_CONFORMANT requires an identified violated condition"
+  ]
+}

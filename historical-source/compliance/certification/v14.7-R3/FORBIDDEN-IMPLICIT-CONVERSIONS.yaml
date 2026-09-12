@@ -1,0 +1,36 @@
+{
+  "realization_id": "gde-v14.7-r3-boundary-contracts",
+  "realization_version": "14.7-R3",
+  "semantic_version": "v14.7",
+  "objects": [
+    {
+      "source": "ValidationResult.VALID",
+      "target": "ConformanceResult.CONFORMANT"
+    },
+    {
+      "source": "EvaluationResult.TRUE",
+      "target": "ReleaseDecision.APPROVED"
+    },
+    {
+      "source": "ConformanceResult.CONFORMANT",
+      "target": "Authorization.GRANTED"
+    },
+    {
+      "source": "ReleaseDecision.APPROVED",
+      "target": "ReleaseExecution.SUCCEEDED"
+    },
+    {
+      "source": "EvaluationResult.UNKNOWN",
+      "target": "EvaluationResult.TRUE"
+    },
+    {
+      "source": "EvaluationResult.BLOCKED",
+      "target": "EvaluationResult.TRUE"
+    },
+    {
+      "source": "EvaluationResult.INVALID",
+      "target": "EvaluationResult.FALSE"
+    }
+  ],
+  "unruled_conversion": "INVALID"
+}

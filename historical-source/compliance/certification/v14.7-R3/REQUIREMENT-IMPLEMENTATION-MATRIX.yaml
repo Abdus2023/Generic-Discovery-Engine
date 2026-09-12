@@ -1,0 +1,44 @@
+{
+  "realization_id": "gde-v14.7-r3-boundary-contracts",
+  "realization_version": "14.7-R3",
+  "semantic_version": "v14.7",
+  "normative_authority": false,
+  "rows": [
+    {
+      "requirement": "deterministic ordering",
+      "profile_binding": "sequence-based ordering",
+      "implementation": "event store sequence constraint",
+      "test": "replay test",
+      "evidence": "replay evidence"
+    },
+    {
+      "requirement": "immutable history",
+      "profile_binding": "append-only event model",
+      "implementation": "transactional append",
+      "test": "mutation rejection",
+      "evidence": "event-store evidence"
+    },
+    {
+      "requirement": "authority scope",
+      "profile_binding": "explicit scope model",
+      "implementation": "scope validator",
+      "test": "scope boundary tests",
+      "evidence": "authorization evidence"
+    },
+    {
+      "requirement": "artifact binding",
+      "profile_binding": "artifact hash identity",
+      "implementation": "hash verifier",
+      "test": "artifact mismatch test",
+      "evidence": "integrity evidence"
+    },
+    {
+      "requirement": "decision reuse safety",
+      "profile_binding": "decision-basis identity",
+      "implementation": "reuse checker",
+      "test": "context-change tests",
+      "evidence": "reuse evidence"
+    }
+  ],
+  "status": "TRACEABILITY_EXAMPLE_NOT_PRODUCTION_CONFORMANCE"
+}

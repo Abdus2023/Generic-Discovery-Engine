@@ -1,0 +1,462 @@
+{
+  "realization_id": "gde-v14.7-r3-boundary-contracts",
+  "realization_version": "14.7-R3",
+  "semantic_version": "v14.7",
+  "objects": [
+    {
+      "requirement_id": "R3-REQ-001",
+      "statement": "Every governed artifact MUST have an identifiable authority layer.",
+      "strength": "MUST",
+      "scope_ref": "scope:v14.7-r3",
+      "acceptance_criteria": [
+        {
+          "criterion_id": "R3-AC-001"
+        }
+      ],
+      "dependencies": [],
+      "authority": {
+        "layer": "SPECIFICATION",
+        "ref": "SPECIFICATION.md"
+      },
+      "content_hash": "5947afb83c3c006ab22354283b2c3a0db15790cb7910ddd57c84981763c4ad5d"
+    },
+    {
+      "requirement_id": "R3-REQ-002",
+      "statement": "An implementation artifact MUST NOT override a profile rule.",
+      "strength": "MUST",
+      "scope_ref": "scope:v14.7-r3",
+      "acceptance_criteria": [
+        {
+          "criterion_id": "R3-AC-002"
+        }
+      ],
+      "dependencies": [
+        "R3-REQ-001"
+      ],
+      "authority": {
+        "layer": "SPECIFICATION",
+        "ref": "SPECIFICATION.md"
+      },
+      "content_hash": "ca9a6bf85767168fea318af7fc558ee3462596ba50b8d7080f3c63646b1a0394"
+    },
+    {
+      "requirement_id": "R3-REQ-003",
+      "statement": "A profile MUST NOT override a specification requirement.",
+      "strength": "MUST",
+      "scope_ref": "scope:v14.7-r3",
+      "acceptance_criteria": [
+        {
+          "criterion_id": "R3-AC-003"
+        }
+      ],
+      "dependencies": [
+        "R3-REQ-001"
+      ],
+      "authority": {
+        "layer": "SPECIFICATION",
+        "ref": "SPECIFICATION.md"
+      },
+      "content_hash": "a8fb156ab8ce66646d187c12d8d3eebac87a0e551865d2829a6904c3d54e5f77"
+    },
+    {
+      "requirement_id": "R3-REQ-004",
+      "statement": "Evidence MUST NOT redefine specification, profile, or implementation obligations.",
+      "strength": "MUST",
+      "scope_ref": "scope:v14.7-r3",
+      "acceptance_criteria": [
+        {
+          "criterion_id": "R3-AC-004"
+        }
+      ],
+      "dependencies": [
+        "R3-REQ-001"
+      ],
+      "authority": {
+        "layer": "SPECIFICATION",
+        "ref": "SPECIFICATION.md"
+      },
+      "content_hash": "281f7c0781905d2bbd732217d38fa2113631a0d77909a7e08499516e03fe9390"
+    },
+    {
+      "requirement_id": "R3-REQ-005",
+      "statement": "Every extracted statement MUST have exactly one permitted classification.",
+      "strength": "MUST",
+      "scope_ref": "scope:v14.7-r3",
+      "acceptance_criteria": [
+        {
+          "criterion_id": "R3-AC-005"
+        }
+      ],
+      "dependencies": [
+        "R3-REQ-001"
+      ],
+      "authority": {
+        "layer": "SPECIFICATION",
+        "ref": "SPECIFICATION.md"
+      },
+      "content_hash": "a2f93141456d208ed900274fa1d66894507c832070a4d99b3992df0d945c5adf"
+    },
+    {
+      "requirement_id": "R3-REQ-006",
+      "statement": "An acceptance criterion MUST operationalize a requirement without changing its meaning.",
+      "strength": "MUST",
+      "scope_ref": "scope:v14.7-r3",
+      "acceptance_criteria": [
+        {
+          "criterion_id": "R3-AC-006"
+        }
+      ],
+      "dependencies": [
+        "R3-REQ-001"
+      ],
+      "authority": {
+        "layer": "SPECIFICATION",
+        "ref": "SPECIFICATION.md"
+      },
+      "content_hash": "5366bfe0618bf12d95f9db134ed7b444ea1e76f11f572774bb69a2de2ade9892"
+    },
+    {
+      "requirement_id": "R3-REQ-007",
+      "statement": "An implementation mapping MUST remain distinct from the requirement it realizes.",
+      "strength": "MUST",
+      "scope_ref": "scope:v14.7-r3",
+      "acceptance_criteria": [
+        {
+          "criterion_id": "R3-AC-007"
+        }
+      ],
+      "dependencies": [
+        "R3-REQ-001"
+      ],
+      "authority": {
+        "layer": "SPECIFICATION",
+        "ref": "SPECIFICATION.md"
+      },
+      "content_hash": "c443a11003ac094579a43a1847e0179c167519c691ec2cd211209069906be809"
+    },
+    {
+      "requirement_id": "R3-REQ-008",
+      "statement": "A validator MUST be deterministic, non-mutating, and unable to certify, authorize, decide, or execute.",
+      "strength": "MUST",
+      "scope_ref": "scope:v14.7-r3",
+      "acceptance_criteria": [
+        {
+          "criterion_id": "R3-AC-008"
+        }
+      ],
+      "dependencies": [
+        "R3-REQ-001"
+      ],
+      "authority": {
+        "layer": "SPECIFICATION",
+        "ref": "SPECIFICATION.md"
+      },
+      "content_hash": "4c605596b134139773fa581d2620cf66700a2c90d26c4e62192381bc7a56f427"
+    },
+    {
+      "requirement_id": "R3-REQ-009",
+      "statement": "An evaluator MUST require applicable VALID validation and identify predicate, subject, inputs, context, evaluator, time, evidence, and scope.",
+      "strength": "MUST",
+      "scope_ref": "scope:v14.7-r3",
+      "acceptance_criteria": [
+        {
+          "criterion_id": "R3-AC-009"
+        }
+      ],
+      "dependencies": [
+        "R3-REQ-001"
+      ],
+      "authority": {
+        "layer": "SPECIFICATION",
+        "ref": "SPECIFICATION.md"
+      },
+      "content_hash": "4d9d22191759126873cfdd84e45f753047718ad9cf241666e4fbb71e46cca0bc"
+    },
+    {
+      "requirement_id": "R3-REQ-010",
+      "statement": "Conformance MUST apply the referenced requirement, scope, acceptance criteria, validated evidence, and evaluation results.",
+      "strength": "MUST",
+      "scope_ref": "scope:v14.7-r3",
+      "acceptance_criteria": [
+        {
+          "criterion_id": "R3-AC-010"
+        }
+      ],
+      "dependencies": [
+        "R3-REQ-001"
+      ],
+      "authority": {
+        "layer": "SPECIFICATION",
+        "ref": "SPECIFICATION.md"
+      },
+      "content_hash": "6543b1e1029782bcd5ec61ad41e7e209e3a4ef24403251f250f5ea3c72f576c1"
+    },
+    {
+      "requirement_id": "R3-REQ-011",
+      "statement": "NON_CONFORMANT MUST identify at least one violated normative condition.",
+      "strength": "MUST",
+      "scope_ref": "scope:v14.7-r3",
+      "acceptance_criteria": [
+        {
+          "criterion_id": "R3-AC-011"
+        }
+      ],
+      "dependencies": [
+        "R3-REQ-001"
+      ],
+      "authority": {
+        "layer": "SPECIFICATION",
+        "ref": "SPECIFICATION.md"
+      },
+      "content_hash": "b6fb7a5ae92815385fbaa258225ae7a13a319c38d6c517226dbd3a85faacc6be"
+    },
+    {
+      "requirement_id": "R3-REQ-012",
+      "statement": "Absence of ordinary evidence MUST yield UNVERIFIED unless mandatory evidence absence is itself a defined violation.",
+      "strength": "MUST",
+      "scope_ref": "scope:v14.7-r3",
+      "acceptance_criteria": [
+        {
+          "criterion_id": "R3-AC-012"
+        }
+      ],
+      "dependencies": [
+        "R3-REQ-001"
+      ],
+      "authority": {
+        "layer": "SPECIFICATION",
+        "ref": "SPECIFICATION.md"
+      },
+      "content_hash": "61d1093928f493e552dd2f76149d1e2df736f716acc73720cf23d60528ff2955"
+    },
+    {
+      "requirement_id": "R3-REQ-013",
+      "statement": "Every cross-domain result conversion MUST identify source, target, operation, preconditions, and rule authority.",
+      "strength": "MUST",
+      "scope_ref": "scope:v14.7-r3",
+      "acceptance_criteria": [
+        {
+          "criterion_id": "R3-AC-013"
+        }
+      ],
+      "dependencies": [
+        "R3-REQ-001"
+      ],
+      "authority": {
+        "layer": "SPECIFICATION",
+        "ref": "SPECIFICATION.md"
+      },
+      "content_hash": "f1a1387838891a5ed9d275267caf33eb26ca86b4708dba0bbdc919f2c358c3ed"
+    },
+    {
+      "requirement_id": "R3-REQ-014",
+      "statement": "VALID, TRUE, CONFORMANT, and APPROVED MUST NOT implicitly establish stronger cross-domain states.",
+      "strength": "MUST",
+      "scope_ref": "scope:v14.7-r3",
+      "acceptance_criteria": [
+        {
+          "criterion_id": "R3-AC-014"
+        }
+      ],
+      "dependencies": [
+        "R3-REQ-001"
+      ],
+      "authority": {
+        "layer": "SPECIFICATION",
+        "ref": "SPECIFICATION.md"
+      },
+      "content_hash": "3cc4d86d4b69e05734e27c0f51432574736c911d9a315be72033f5dff0bdf771"
+    },
+    {
+      "requirement_id": "R3-REQ-015",
+      "statement": "Normative-operation errors MUST preserve their originating domain and structured provenance.",
+      "strength": "MUST",
+      "scope_ref": "scope:v14.7-r3",
+      "acceptance_criteria": [
+        {
+          "criterion_id": "R3-AC-015"
+        }
+      ],
+      "dependencies": [
+        "R3-REQ-001"
+      ],
+      "authority": {
+        "layer": "SPECIFICATION",
+        "ref": "SPECIFICATION.md"
+      },
+      "content_hash": "08620462bdfc7b58876317e6f681fc2753397a8e2936f8f9979fa4b32e16a26e"
+    },
+    {
+      "requirement_id": "R3-REQ-016",
+      "statement": "Recoverability metadata MUST NOT alter the semantic result it diagnoses.",
+      "strength": "MUST",
+      "scope_ref": "scope:v14.7-r3",
+      "acceptance_criteria": [
+        {
+          "criterion_id": "R3-AC-016"
+        }
+      ],
+      "dependencies": [
+        "R3-REQ-001"
+      ],
+      "authority": {
+        "layer": "SPECIFICATION",
+        "ref": "SPECIFICATION.md"
+      },
+      "content_hash": "008391fe58ae4fc95477da8466c1ca078a9c757088c2e8787cd82da9002a0fef"
+    },
+    {
+      "requirement_id": "R3-REQ-017",
+      "statement": "Requirement, profile, implementation, test, evidence, validation, evaluation, and conformance traceability MUST be bidirectional.",
+      "strength": "MUST",
+      "scope_ref": "scope:v14.7-r3",
+      "acceptance_criteria": [
+        {
+          "criterion_id": "R3-AC-017"
+        }
+      ],
+      "dependencies": [
+        "R3-REQ-001"
+      ],
+      "authority": {
+        "layer": "SPECIFICATION",
+        "ref": "SPECIFICATION.md"
+      },
+      "content_hash": "30601e8749fc04c4cc0cbf8c2406a54ce11ae921a0f57627657e46f717c51e24"
+    },
+    {
+      "requirement_id": "R3-REQ-018",
+      "statement": "Profile freeze MUST require complete choice enumeration and prohibit hidden profile defaults in implementation instructions.",
+      "strength": "MUST",
+      "scope_ref": "scope:v14.7-r3",
+      "acceptance_criteria": [
+        {
+          "criterion_id": "R3-AC-018"
+        }
+      ],
+      "dependencies": [
+        "R3-REQ-001"
+      ],
+      "authority": {
+        "layer": "SPECIFICATION",
+        "ref": "SPECIFICATION.md"
+      },
+      "content_hash": "9ba0bdc0c114eb4a96723cf2e0fd813f75a82ffd89e9819d7a62fae6a4473c79"
+    },
+    {
+      "requirement_id": "R3-REQ-019",
+      "statement": "The mechanical boundary validator MUST detect B001 through B012 with validation-domain results.",
+      "strength": "MUST",
+      "scope_ref": "scope:v14.7-r3",
+      "acceptance_criteria": [
+        {
+          "criterion_id": "R3-AC-019"
+        }
+      ],
+      "dependencies": [
+        "R3-REQ-001"
+      ],
+      "authority": {
+        "layer": "SPECIFICATION",
+        "ref": "SPECIFICATION.md"
+      },
+      "content_hash": "087e863b3ce8032dfce88e3ec8850e27a491e33a5f6edf834dc037ee5f5929ec"
+    },
+    {
+      "requirement_id": "R3-REQ-020",
+      "statement": "BOUNDARY-001 through BOUNDARY-010 MUST be mechanically enforceable.",
+      "strength": "MUST",
+      "scope_ref": "scope:v14.7-r3",
+      "acceptance_criteria": [
+        {
+          "criterion_id": "R3-AC-020"
+        }
+      ],
+      "dependencies": [
+        "R3-REQ-001"
+      ],
+      "authority": {
+        "layer": "SPECIFICATION",
+        "ref": "SPECIFICATION.md"
+      },
+      "content_hash": "a5b8eba313f543142b41e1e7965399329e451fa3bbbbe9b2691cc96e29e6783c"
+    },
+    {
+      "requirement_id": "R3-REQ-021",
+      "statement": "All profile-selectable interpretation choices MUST be explicitly enumerated before profile freeze.",
+      "strength": "MUST",
+      "scope_ref": "scope:v14.7-r3",
+      "acceptance_criteria": [
+        {
+          "criterion_id": "R3-AC-021"
+        }
+      ],
+      "dependencies": [
+        "R3-REQ-001"
+      ],
+      "authority": {
+        "layer": "SPECIFICATION",
+        "ref": "SPECIFICATION.md"
+      },
+      "content_hash": "af8fde1f5edc919faa00e454db8f7be57d886215c930f13f2dfee6c938df96a9"
+    },
+    {
+      "requirement_id": "R3-REQ-022",
+      "statement": "Implementation instructions MUST NOT silently act as profile rules or normative requirements.",
+      "strength": "MUST",
+      "scope_ref": "scope:v14.7-r3",
+      "acceptance_criteria": [
+        {
+          "criterion_id": "R3-AC-022"
+        }
+      ],
+      "dependencies": [
+        "R3-REQ-001"
+      ],
+      "authority": {
+        "layer": "SPECIFICATION",
+        "ref": "SPECIFICATION.md"
+      },
+      "content_hash": "4d0079193835b1c9aa7187a8c6d1d96186ac79d786e954e2227bc308e7f17778"
+    },
+    {
+      "requirement_id": "R3-REQ-023",
+      "statement": "Validation MUST NOT contain evaluation or conformance semantics.",
+      "strength": "MUST",
+      "scope_ref": "scope:v14.7-r3",
+      "acceptance_criteria": [
+        {
+          "criterion_id": "R3-AC-023"
+        }
+      ],
+      "dependencies": [
+        "R3-REQ-001"
+      ],
+      "authority": {
+        "layer": "SPECIFICATION",
+        "ref": "SPECIFICATION.md"
+      },
+      "content_hash": "c339e5359f593856672ab743c7afc1b747618558a820961aa0812ab0f14543bf"
+    },
+    {
+      "requirement_id": "R3-REQ-024",
+      "statement": "Authorization, decision, execution, and verification MUST each have an independent contract and authority basis.",
+      "strength": "MUST",
+      "scope_ref": "scope:v14.7-r3",
+      "acceptance_criteria": [
+        {
+          "criterion_id": "R3-AC-024"
+        }
+      ],
+      "dependencies": [
+        "R3-REQ-001"
+      ],
+      "authority": {
+        "layer": "SPECIFICATION",
+        "ref": "SPECIFICATION.md"
+      },
+      "content_hash": "50eee7e39fde856fd0700724c9fcccce4b1df5b773706f6b858cdb2b145507ea"
+    }
+  ],
+  "count": 24
+}

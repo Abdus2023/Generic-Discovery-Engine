@@ -1,0 +1,20 @@
+{
+  "realization_id": "gde-v14.7-r3-boundary-contracts",
+  "realization_version": "14.7-R3",
+  "semantic_version": "v14.7",
+  "question": "DOES_CHANGING_THIS_MECHANISM_CHANGE_PROTOCOL_SEMANTICS",
+  "yes": "PROFILE_OR_SPECIFICATION",
+  "no": "IMPLEMENTATION_DETAIL",
+  "examples": [
+    {
+      "mechanism": "SHA-256_TO_SHA-512_WHEN_PROFILE_FIXED",
+      "classification": "PROFILE_CHANGE",
+      "version_required": true
+    },
+    {
+      "mechanism": "RUST_CRATE_IMPLEMENTING_SHA-256",
+      "classification": "IMPLEMENTATION_DETAIL",
+      "version_required": false
+    }
+  ]
+}

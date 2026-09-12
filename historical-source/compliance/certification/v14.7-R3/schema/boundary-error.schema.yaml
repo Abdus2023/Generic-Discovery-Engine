@@ -1,0 +1,109 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://generic-discovery-engine.invalid/compliance/v14.7-R3/boundary-error.schema.yaml",
+  "title": "boundary-error",
+  "type": "object",
+  "required": [
+    "error_id",
+    "error_type",
+    "error_code",
+    "layer",
+    "subject_ref",
+    "rule_ref",
+    "evidence_refs",
+    "cause",
+    "recoverability",
+    "semantic_result",
+    "content_hash"
+  ],
+  "properties": {
+    "error_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "error_type": {
+      "type": "string",
+      "enum": [
+        "ValidationError",
+        "EvaluationError",
+        "ConformanceError",
+        "AuthorizationError",
+        "TransitionError",
+        "EventStoreError",
+        "ProjectionError",
+        "ExecutionError",
+        "VerificationError"
+      ]
+    },
+    "error_code": {
+      "type": "string",
+      "minLength": 1
+    },
+    "layer": {
+      "type": "string",
+      "minLength": 1
+    },
+    "subject_ref": {
+      "type": "string",
+      "minLength": 1
+    },
+    "rule_ref": {
+      "type": "string",
+      "minLength": 1
+    },
+    "evidence_refs": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "cause": {
+      "oneOf": [
+        {
+          "type": "string",
+          "minLength": 1
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "recoverability": {
+      "type": "string",
+      "enum": [
+        "RETRYABLE",
+        "NON_RETRYABLE",
+        "REQUIRES_NEW_EVIDENCE",
+        "REQUIRES_AUTHORITY",
+        "REQUIRES_PROFILE_CHANGE",
+        "REQUIRES_IMPLEMENTATION_CHANGE",
+        "REQUIRES_SPECIFICATION_REVIEW"
+      ]
+    },
+    "semantic_result": {
+      "type": "string",
+      "minLength": 1
+    },
+    "content_hash": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$"
+    }
+  },
+  "additionalProperties": false,
+  "x-identity-fields": [
+    "error_id"
+  ],
+  "x-immutable": true,
+  "x-self-excluding-hash-field": "content_hash",
+  "x-canonical-profile": "GDE-CJSON-1",
+  "x-authority-precedence": [
+    "SPECIFICATION",
+    "PROFILE",
+    "IMPLEMENTATION",
+    "EVIDENCE"
+  ],
+  "x-normative-rules": [
+    "recoverability metadata never alters semantic result"
+  ]
+}

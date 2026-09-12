@@ -1,0 +1,30 @@
+{
+  "realization_id": "gde-v14.7-r3-boundary-contracts",
+  "realization_version": "14.7-R3",
+  "semantic_version": "v14.7",
+  "classification": "IMPLEMENTATION_GUIDANCE",
+  "language": "Rust",
+  "repository_has_rust_target": false,
+  "preferred_types": [
+    "ValidationResult",
+    "EvaluationResult",
+    "ConformanceResult",
+    "ReleaseEligibility",
+    "AuthorizationResult",
+    "ReleaseDecision",
+    "ReleaseExecution",
+    "PostReleaseVerification"
+  ],
+  "forbidden_universal_type": "Status",
+  "state_carrying_types": [
+    "RawObject",
+    "ValidatedObject",
+    "ConformantSubject",
+    "EligibleRelease",
+    "AuthorizedRelease",
+    "ApprovedRelease",
+    "ExecutedRelease"
+  ],
+  "creates_normative_states": false,
+  "implementation_evidence": "UNAVAILABLE"
+}

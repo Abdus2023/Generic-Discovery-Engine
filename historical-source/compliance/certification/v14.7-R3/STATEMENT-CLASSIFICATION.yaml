@@ -1,0 +1,422 @@
+{
+  "realization_id": "gde-v14.7-r3-boundary-contracts",
+  "realization_version": "14.7-R3",
+  "semantic_version": "v14.7",
+  "allowed": [
+    "NORMATIVE_REQUIREMENT",
+    "ACCEPTANCE_CRITERION",
+    "PROFILE_BINDING",
+    "IMPLEMENTATION_INSTRUCTION",
+    "IMPLEMENTATION_GUIDANCE",
+    "OBSERVATION",
+    "EVIDENCE"
+  ],
+  "objects": [
+    {
+      "statement_id": "R3-STMT-001",
+      "source_ref": "SPECIFICATION.md#1",
+      "statement": "Every artifact has a BoundaryBinding identifying SPECIFICATION, PROFILE, or IMPLEMENTATION authority, claims, satisfied requirements, evidence references, and a content hash.",
+      "classification": "NORMATIVE_REQUIREMENT",
+      "authority": {
+        "layer": "SPECIFICATION",
+        "ref": "SPECIFICATION.md#1"
+      },
+      "object_ref": "section:1",
+      "content_hash": "863db08f5dc2ec41ef1dadd1852c965f069479689192e1ef7cb9da787ced62d4"
+    },
+    {
+      "statement_id": "R3-STMT-002",
+      "source_ref": "SPECIFICATION.md#2",
+      "statement": "Specification defines obligations; profile binds permitted realization choices; implementation realizes the profile; evidence demonstrates observations. Lower layers MUST NOT override higher layers.",
+      "classification": "NORMATIVE_REQUIREMENT",
+      "authority": {
+        "layer": "SPECIFICATION",
+        "ref": "SPECIFICATION.md#2"
+      },
+      "object_ref": "section:2",
+      "content_hash": "98b8a3016a425733cc2fa348f39031ba709e8798f8f090434ccb7241ba7d3879"
+    },
+    {
+      "statement_id": "R3-STMT-003",
+      "source_ref": "SPECIFICATION.md#3",
+      "statement": "Every extracted statement is classified exactly once as NORMATIVE_REQUIREMENT, ACCEPTANCE_CRITERION, PROFILE_BINDING, IMPLEMENTATION_INSTRUCTION, IMPLEMENTATION_GUIDANCE, OBSERVATION, or EVIDENCE.",
+      "classification": "NORMATIVE_REQUIREMENT",
+      "authority": {
+        "layer": "SPECIFICATION",
+        "ref": "SPECIFICATION.md#3"
+      },
+      "object_ref": "section:3",
+      "content_hash": "2b307de303e84087e1e2df10357cf36a29baa60d513a8ec9d6925703c33432e1"
+    },
+    {
+      "statement_id": "R3-STMT-004",
+      "source_ref": "SPECIFICATION.md#4",
+      "statement": "A NormativeRequirement identifies statement, strength, scope, acceptance criteria, dependencies, authority, and content hash without embedding a concrete implementation mechanism.",
+      "classification": "NORMATIVE_REQUIREMENT",
+      "authority": {
+        "layer": "SPECIFICATION",
+        "ref": "SPECIFICATION.md#4"
+      },
+      "object_ref": "section:4",
+      "content_hash": "1e6de695d74ae03ec5a802511dfa5072f77746ad75582af6cf856e154b83d6c2"
+    },
+    {
+      "statement_id": "R3-STMT-005",
+      "source_ref": "SPECIFICATION.md#5",
+      "statement": "An AcceptanceCriterion operationalizes one requirement without changing its meaning and binds an EvaluationResult oracle and evidence requirements.",
+      "classification": "ACCEPTANCE_CRITERION",
+      "authority": {
+        "layer": "SPECIFICATION",
+        "ref": "SPECIFICATION.md#5"
+      },
+      "object_ref": "section:5",
+      "content_hash": "e7cdd790f895215319b5e10fa093c90c401098d7c12e3988f5346f4ca51d3097"
+    },
+    {
+      "statement_id": "R3-STMT-006",
+      "source_ref": "SPECIFICATION.md#6",
+      "statement": "A ProfileBinding selects one permitted realization, records alternatives, and carries a verified semantic-preservation claim. A concrete implementation mechanism is not the requirement.",
+      "classification": "PROFILE_BINDING",
+      "authority": {
+        "layer": "PROFILE",
+        "ref": "PROFILE-REFERENCE.yaml"
+      },
+      "object_ref": "section:6",
+      "content_hash": "bc7ca474466e06e9de55df683c7972ca5ad44af030e2f50dd6b0ba8b7077b198"
+    },
+    {
+      "statement_id": "R3-STMT-007",
+      "source_ref": "SPECIFICATION.md#7",
+      "statement": "An ImplementationMapping connects implementation artifacts, code, tests, and evidence to a profile binding. The mapping is distinct from the requirement.",
+      "classification": "IMPLEMENTATION_INSTRUCTION",
+      "authority": {
+        "layer": "IMPLEMENTATION",
+        "ref": "IMPLEMENTATION-CONFORMANCE.yaml"
+      },
+      "object_ref": "section:7",
+      "content_hash": "5a50a1198665d95b85f484a722d241e7103cebe6bb53d2f4b9db729160a12ead"
+    },
+    {
+      "statement_id": "R3-STMT-008",
+      "source_ref": "SPECIFICATION.md#8",
+      "statement": "Evidence records a subject, source, observation, collection time, collector, integrity, and hash. Evidence is descriptive and cannot become normative by existing.",
+      "classification": "EVIDENCE",
+      "authority": {
+        "layer": "IMPLEMENTATION",
+        "ref": "IMPLEMENTATION-CONFORMANCE.yaml"
+      },
+      "object_ref": "section:8",
+      "content_hash": "1cf3d472f40f6189517c76f737dafc749ada57aaf34d939b6930078642ee200a"
+    },
+    {
+      "statement_id": "R3-STMT-009",
+      "source_ref": "SPECIFICATION.md#9",
+      "statement": "REQ \u2192 acceptance criterion \u2192 profile binding \u2192 implementation mapping \u2192 test or observation \u2192 evidence \u2192 validation \u2192 evaluation \u2192 conformance is bidirectionally indexed.",
+      "classification": "OBSERVATION",
+      "authority": {
+        "layer": "IMPLEMENTATION",
+        "ref": "IMPLEMENTATION-CONFORMANCE.yaml"
+      },
+      "object_ref": "section:9",
+      "content_hash": "e0e6284cb2e29a283e29aa3ff664e4399867eb61e3dfe070911d1c0998b6e8d0"
+    },
+    {
+      "statement_id": "R3-STMT-010",
+      "source_ref": "SPECIFICATION.md#10",
+      "statement": "Validate(subject, context) returns ValidationResult deterministically without modifying authoritative state, issuing certificates, approving releases, or mutating history.",
+      "classification": "NORMATIVE_REQUIREMENT",
+      "authority": {
+        "layer": "SPECIFICATION",
+        "ref": "SPECIFICATION.md#10"
+      },
+      "object_ref": "section:10",
+      "content_hash": "050bff1c0be0301ce1a16f2981a9fa6be851e95a66a674869068d6ca19a97ba7"
+    },
+    {
+      "statement_id": "R3-STMT-011",
+      "source_ref": "SPECIFICATION.md#11",
+      "statement": "Evaluate(predicate, subject, context) requires required validation to be VALID unless an explicit normative path says otherwise and identifies every semantic input binding.",
+      "classification": "NORMATIVE_REQUIREMENT",
+      "authority": {
+        "layer": "SPECIFICATION",
+        "ref": "SPECIFICATION.md#11"
+      },
+      "object_ref": "section:11",
+      "content_hash": "770f714792b26206115321b57050d4f81144d71ee4e19cfb9220e4b953606dcd"
+    },
+    {
+      "statement_id": "R3-STMT-012",
+      "source_ref": "SPECIFICATION.md#12",
+      "statement": "EvaluateRequirement applies scope, acceptance criteria, validated evidence, and evaluation results. VALID and TRUE alone do not imply CONFORMANT.",
+      "classification": "NORMATIVE_REQUIREMENT",
+      "authority": {
+        "layer": "SPECIFICATION",
+        "ref": "SPECIFICATION.md#12"
+      },
+      "object_ref": "section:12",
+      "content_hash": "8955ae4e80c09431eef4b36f4714bae804ea7dcd74415b451c99a53365d999f0"
+    },
+    {
+      "statement_id": "R3-STMT-013",
+      "source_ref": "SPECIFICATION.md#13",
+      "statement": "ConformanceResult uses the frozen seven-state domain. NON_CONFORMANT requires an identified violated condition; ordinary missing evidence yields UNVERIFIED.",
+      "classification": "NORMATIVE_REQUIREMENT",
+      "authority": {
+        "layer": "SPECIFICATION",
+        "ref": "SPECIFICATION.md#13"
+      },
+      "object_ref": "section:13",
+      "content_hash": "ae80a793f147491ed30705797c2803c7b75024407859a2b9e516bd0ff5842b2c"
+    },
+    {
+      "statement_id": "R3-STMT-014",
+      "source_ref": "SPECIFICATION.md#14",
+      "statement": "Cross-domain transitions are named rules identifying source domain/state, target domain/state, operation, preconditions, and authority. No unruled generic conversion is permitted.",
+      "classification": "NORMATIVE_REQUIREMENT",
+      "authority": {
+        "layer": "SPECIFICATION",
+        "ref": "SPECIFICATION.md#14"
+      },
+      "object_ref": "section:14",
+      "content_hash": "6324c6c460a32295a0f3d92b0db63f3e543bebcdff167ad640a804ba6aa022e2"
+    },
+    {
+      "statement_id": "R3-STMT-015",
+      "source_ref": "SPECIFICATION.md#15",
+      "statement": "VALID\u2192CONFORMANT, TRUE\u2192APPROVED, CONFORMANT\u2192GRANTED, and APPROVED\u2192SUCCEEDED are rejected without their independent contractual gates.",
+      "classification": "NORMATIVE_REQUIREMENT",
+      "authority": {
+        "layer": "SPECIFICATION",
+        "ref": "SPECIFICATION.md#15"
+      },
+      "object_ref": "section:15",
+      "content_hash": "083833c9ae325c850a77635195ffef03e4c7140d8c67373acb6645e0a1f7440f"
+    },
+    {
+      "statement_id": "R3-STMT-016",
+      "source_ref": "SPECIFICATION.md#16",
+      "statement": "VALID \u2192 TRUE \u2192 CONFORMANT \u2192 ELIGIBLE \u2192 QUALIFIED \u2192 AUTHORIZED \u2192 APPROVED \u2192 SUCCEEDED \u2192 VERIFIED is a sequence of independent operations.",
+      "classification": "OBSERVATION",
+      "authority": {
+        "layer": "IMPLEMENTATION",
+        "ref": "IMPLEMENTATION-CONFORMANCE.yaml"
+      },
+      "object_ref": "section:16",
+      "content_hash": "c454271c17f716d57df34f39f28b8fdc6e52b74bada1f819fd5f51626915944b"
+    },
+    {
+      "statement_id": "R3-STMT-017",
+      "source_ref": "SPECIFICATION.md#17",
+      "statement": "A Rust implementation SHOULD use distinct semantic result types instead of a universal Status enum. This is implementation guidance, not a new normative state.",
+      "classification": "IMPLEMENTATION_GUIDANCE",
+      "authority": {
+        "layer": "IMPLEMENTATION",
+        "ref": "IMPLEMENTATION-CONFORMANCE.yaml"
+      },
+      "object_ref": "section:17",
+      "content_hash": "3a9640a0e09dd0b65546061aea60e06b07cb4fe5106a04cba683b63de1ccb1e1"
+    },
+    {
+      "statement_id": "R3-STMT-018",
+      "source_ref": "SPECIFICATION.md#18",
+      "statement": "ValidatedInput and EligibleRelease typed inputs are preferred over AnyObject or Status arguments because they encode preconditions.",
+      "classification": "IMPLEMENTATION_GUIDANCE",
+      "authority": {
+        "layer": "IMPLEMENTATION",
+        "ref": "IMPLEMENTATION-CONFORMANCE.yaml"
+      },
+      "object_ref": "section:18",
+      "content_hash": "0a6ecf56b179663f146508fb3471e0ba6814f68078e206f4d6cf8fd481014083"
+    },
+    {
+      "statement_id": "R3-STMT-019",
+      "source_ref": "SPECIFICATION.md#19",
+      "statement": "Raw, validated, eligible, authorized, approved, executed, and verified wrappers are a realization technique and do not add semantic states.",
+      "classification": "IMPLEMENTATION_GUIDANCE",
+      "authority": {
+        "layer": "IMPLEMENTATION",
+        "ref": "IMPLEMENTATION-CONFORMANCE.yaml"
+      },
+      "object_ref": "section:19",
+      "content_hash": "7195220159e4657cc1642bacb15e300ebaabd680d869b2412b09d2f26fa4809c"
+    },
+    {
+      "statement_id": "R3-STMT-020",
+      "source_ref": "SPECIFICATION.md#20",
+      "statement": "Normative operations distinguish validation, evaluation, conformance, authorization, transition, event store, projection, execution, and verification errors with structured provenance.",
+      "classification": "IMPLEMENTATION_INSTRUCTION",
+      "authority": {
+        "layer": "IMPLEMENTATION",
+        "ref": "IMPLEMENTATION-CONFORMANCE.yaml"
+      },
+      "object_ref": "section:20",
+      "content_hash": "217d9639dfded892d21ad261770f5d81c68406bd812538f83f0bbb396f2d4da2"
+    },
+    {
+      "statement_id": "R3-STMT-021",
+      "source_ref": "SPECIFICATION.md#21",
+      "statement": "Recoverability diagnostics are one of seven explicit values and MUST NOT alter the semantic result; UNKNOWN with new-evidence diagnostics remains UNKNOWN.",
+      "classification": "IMPLEMENTATION_GUIDANCE",
+      "authority": {
+        "layer": "IMPLEMENTATION",
+        "ref": "IMPLEMENTATION-CONFORMANCE.yaml"
+      },
+      "object_ref": "section:21",
+      "content_hash": "f224270001387988ce45beb785fe65993e793e66c459f457c6a6897e7e42b7f3"
+    },
+    {
+      "statement_id": "R3-STMT-022",
+      "source_ref": "SPECIFICATION.md#22",
+      "statement": "The realization supports reverse lookup from code through test and evidence to requirement and forward lookup from requirement through profile to code and test.",
+      "classification": "OBSERVATION",
+      "authority": {
+        "layer": "IMPLEMENTATION",
+        "ref": "IMPLEMENTATION-CONFORMANCE.yaml"
+      },
+      "object_ref": "section:22",
+      "content_hash": "b1305de9df8680dfb2230bfab4324415fbef79c0d08fce3bb875990cb465ec46"
+    },
+    {
+      "statement_id": "R3-STMT-023",
+      "source_ref": "SPECIFICATION.md#23",
+      "statement": "The matrix is traceability rather than normative authority; proposed concrete mechanisms remain unverified until backed by implementation evidence.",
+      "classification": "OBSERVATION",
+      "authority": {
+        "layer": "IMPLEMENTATION",
+        "ref": "IMPLEMENTATION-CONFORMANCE.yaml"
+      },
+      "object_ref": "section:23",
+      "content_hash": "45e5864a44d7e1517c1564f6f903429ccb74b126b52893ee4096b583f6c5a46e"
+    },
+    {
+      "statement_id": "R3-STMT-024",
+      "source_ref": "SPECIFICATION.md#24",
+      "statement": "A mechanism affecting protocol interpretation is profile-level or normative; an interchangeable library implementing a fixed algorithm is implementation-level.",
+      "classification": "PROFILE_BINDING",
+      "authority": {
+        "layer": "PROFILE",
+        "ref": "PROFILE-REFERENCE.yaml"
+      },
+      "object_ref": "section:24",
+      "content_hash": "dd4f09f976f557c5330cbe0aa5fa452b26e91fb434826a379dc02d3ed07eb918"
+    },
+    {
+      "statement_id": "R3-STMT-025",
+      "source_ref": "SPECIFICATION.md#25",
+      "statement": "A profile is frozen only when selectable decisions are enumerated, no requirement depends on an unspecified choice, and no instruction silently acts as a profile rule.",
+      "classification": "NORMATIVE_REQUIREMENT",
+      "authority": {
+        "layer": "SPECIFICATION",
+        "ref": "SPECIFICATION.md#25"
+      },
+      "object_ref": "section:25",
+      "content_hash": "b78c27be347d1c478be8e49ed974dfbc8c7afc34201bad0be243187558e93cd1"
+    },
+    {
+      "statement_id": "R3-STMT-026",
+      "source_ref": "SPECIFICATION.md#26",
+      "statement": "validate_boundary_artifact detects B001 through B012 and returns only ValidationResult states with defect provenance.",
+      "classification": "IMPLEMENTATION_INSTRUCTION",
+      "authority": {
+        "layer": "IMPLEMENTATION",
+        "ref": "IMPLEMENTATION-CONFORMANCE.yaml"
+      },
+      "object_ref": "section:26",
+      "content_hash": "94108036c47cc77ae5148842ae5e681371acb595416476c114314759c75a5aed"
+    },
+    {
+      "statement_id": "R3-STMT-027",
+      "source_ref": "SPECIFICATION.md#27",
+      "statement": "BOUNDARY-001 through BOUNDARY-010 enforce authority, references, result-domain separation, semantic preservation, versioning, and evidence non-authority.",
+      "classification": "NORMATIVE_REQUIREMENT",
+      "authority": {
+        "layer": "SPECIFICATION",
+        "ref": "SPECIFICATION.md#27"
+      },
+      "object_ref": "section:27",
+      "content_hash": "d7e2fff679ed38a5de5b4c0a1466b889770cf6ba31164a6896126ee92aa97f5c"
+    },
+    {
+      "statement_id": "R3-STMT-028",
+      "source_ref": "SPECIFICATION.md#28",
+      "statement": "B-T01 through B-T15 execute requirement leakage, missing bindings, conversion, versioning, duplicate approval, and deterministic replay cases.",
+      "classification": "ACCEPTANCE_CRITERION",
+      "authority": {
+        "layer": "SPECIFICATION",
+        "ref": "SPECIFICATION.md#28"
+      },
+      "object_ref": "section:28",
+      "content_hash": "bae21b602cc24de2cd29e191ca5e0531d56f897c98101eef10e41cf15ef3b5fc"
+    },
+    {
+      "statement_id": "R3-STMT-029",
+      "source_ref": "SPECIFICATION.md#29",
+      "statement": "The complete graph flows from specification to requirements, criteria, profile, implementation, evidence, validation, evaluation, conformance, eligibility, authority, authorization, decision, execution, verification, and new evidence.",
+      "classification": "OBSERVATION",
+      "authority": {
+        "layer": "IMPLEMENTATION",
+        "ref": "IMPLEMENTATION-CONFORMANCE.yaml"
+      },
+      "object_ref": "section:29",
+      "content_hash": "0b494c0820face1e5571283885054c5f6bedcfc5004e75dc718d8194ed4e382c"
+    },
+    {
+      "statement_id": "R3-STMT-030",
+      "source_ref": "SPECIFICATION.md#30",
+      "statement": "Closure requires no specification implementation leakage, no unspecified profile binding, no hidden implementation authority, and no semantic borrowing across result layers.",
+      "classification": "ACCEPTANCE_CRITERION",
+      "authority": {
+        "layer": "SPECIFICATION",
+        "ref": "SPECIFICATION.md#30"
+      },
+      "object_ref": "section:30",
+      "content_hash": "1c3c329be8e67e9d3b6dec78fdd18b900fa1486ab4dd094b7e7dc446564750e4"
+    },
+    {
+      "statement_id": "R3-STMT-031",
+      "source_ref": "SPECIFICATION.md#31",
+      "statement": "A requirement defines obligation; profile fixes realization; implementation realizes; evidence observes; validation gates; evaluation establishes propositions; conformance establishes satisfaction; authorization permits; decision chooses; execution performs; verification observes.",
+      "classification": "NORMATIVE_REQUIREMENT",
+      "authority": {
+        "layer": "SPECIFICATION",
+        "ref": "SPECIFICATION.md#31"
+      },
+      "object_ref": "section:31",
+      "content_hash": "ba1fadff43e2baeb5a73a795b39f00bdc927e4c2f5879002a3b8e3587a11bbb4"
+    }
+  ],
+  "source_sections": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11,
+    12,
+    13,
+    14,
+    15,
+    16,
+    17,
+    18,
+    19,
+    20,
+    21,
+    22,
+    23,
+    24,
+    25,
+    26,
+    27,
+    28,
+    29,
+    30,
+    31
+  ],
+  "classification_cardinality": "EXACTLY_ONE"
+}

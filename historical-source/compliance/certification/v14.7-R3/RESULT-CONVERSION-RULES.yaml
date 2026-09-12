@@ -1,0 +1,129 @@
+{
+  "realization_id": "gde-v14.7-r3-boundary-contracts",
+  "realization_version": "14.7-R3",
+  "semantic_version": "v14.7",
+  "generic_convert_operation": "FORBIDDEN",
+  "objects": [
+    {
+      "rule_id": "R3-CONV-001",
+      "source_domain": "ValidationResult",
+      "source_state": "VALID",
+      "target_domain": "EvaluationEligibility",
+      "target_state": "ELIGIBLE",
+      "operation": "establish_evaluation_eligibility",
+      "preconditions": [
+        "required validation applies"
+      ],
+      "authority_ref": "SPECIFICATION.md#14",
+      "content_hash": "e39c5d5e80b56f8df134d6ca0ff60b11c25340e61b72defcf66a879a19d8dade"
+    },
+    {
+      "rule_id": "R3-CONV-002",
+      "source_domain": "EvaluationResult",
+      "source_state": "TRUE",
+      "target_domain": "RequirementEvaluation",
+      "target_state": "SATISFIED",
+      "operation": "apply_acceptance_criterion",
+      "preconditions": [
+        "criterion referenced"
+      ],
+      "authority_ref": "SPECIFICATION.md#14",
+      "content_hash": "38e6ca73622b93b13d1f07b0754b2cba792fcfbd4515fd230e7e2110d232ff40"
+    },
+    {
+      "rule_id": "R3-CONV-003",
+      "source_domain": "RequirementEvaluation",
+      "source_state": "SATISFIED",
+      "target_domain": "ConformanceResult",
+      "target_state": "CONFORMANT",
+      "operation": "aggregate_requirement",
+      "preconditions": [
+        "all mandatory criteria satisfied"
+      ],
+      "authority_ref": "SPECIFICATION.md#14",
+      "content_hash": "ab4304155c53a4ef81437766804446a528a2ca8686aff585a37c16e3dc4a28e2"
+    },
+    {
+      "rule_id": "R3-CONV-004",
+      "source_domain": "ConformanceResult",
+      "source_state": "CONFORMANT",
+      "target_domain": "ReleaseEligibility",
+      "target_state": "ELIGIBLE",
+      "operation": "evaluate_release_policy",
+      "preconditions": [
+        "release policy referenced"
+      ],
+      "authority_ref": "SPECIFICATION.md#14",
+      "content_hash": "1bfe5924ee259b6002f1935ff1c79b3733a7803499ae343fae600f74272c4f29"
+    },
+    {
+      "rule_id": "R3-CONV-005",
+      "source_domain": "ReleaseEligibility",
+      "source_state": "ELIGIBLE",
+      "target_domain": "AuthorizationResult",
+      "target_state": "AUTHORIZED",
+      "operation": "authorize_release",
+      "preconditions": [
+        "qualified authority",
+        "scope",
+        "policy"
+      ],
+      "authority_ref": "SPECIFICATION.md#14",
+      "content_hash": "c4612919a5cc53b61288b486500528abd9b100ffebf88e50aad9de167deb9a6c"
+    },
+    {
+      "rule_id": "R3-CONV-006",
+      "source_domain": "AuthorizationResult",
+      "source_state": "AUTHORIZED",
+      "target_domain": "ReleaseDecision",
+      "target_state": "APPROVED",
+      "operation": "record_release_decision",
+      "preconditions": [
+        "authorization current"
+      ],
+      "authority_ref": "SPECIFICATION.md#14",
+      "content_hash": "fc7dd12bb8e7ddff67c67fbbc62f7ca118d22da81d90dd98a561c9e75714657a"
+    },
+    {
+      "rule_id": "R3-CONV-007",
+      "source_domain": "ReleaseDecision",
+      "source_state": "APPROVED",
+      "target_domain": "ReleaseExecution",
+      "target_state": "SUCCEEDED",
+      "operation": "execute_approved_release",
+      "preconditions": [
+        "decision current",
+        "execution succeeds"
+      ],
+      "authority_ref": "SPECIFICATION.md#14",
+      "content_hash": "dd26b4c828d62b0a6f9d28278985cc2d75ec32a0254b52839be19b84d2312ee5"
+    },
+    {
+      "rule_id": "R3-CONV-008",
+      "source_domain": "ReleaseExecution",
+      "source_state": "SUCCEEDED",
+      "target_domain": "PostReleaseVerification",
+      "target_state": "VERIFIED",
+      "operation": "verify_release_effect",
+      "preconditions": [
+        "verification observation"
+      ],
+      "authority_ref": "SPECIFICATION.md#14",
+      "content_hash": "e79dc28cf71a8b169f495595eb5a94eb6c8b10763b232678665d739811ca028d"
+    },
+    {
+      "rule_id": "R3-CONV-009",
+      "source_domain": "PostReleaseVerification",
+      "source_state": "VERIFIED",
+      "target_domain": "Evidence",
+      "target_state": "RECORDED",
+      "operation": "record_verification_evidence",
+      "preconditions": [
+        "evidence integrity valid"
+      ],
+      "authority_ref": "SPECIFICATION.md#14",
+      "content_hash": "bc0517ea24f2ce3870ec9397e63b38f8c9325f1eb799b518de1798bbcf10de6b"
+    }
+  ],
+  "count": 9
+}

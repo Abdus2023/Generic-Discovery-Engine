@@ -1,0 +1,48 @@
+{
+  "realization_id": "gde-v14.7-r3-boundary-contracts",
+  "realization_version": "14.7-R3",
+  "semantic_version": "v14.7",
+  "objects": [
+    {
+      "id": "BOUNDARY-001",
+      "rule": "Every normative requirement has a specification authority."
+    },
+    {
+      "id": "BOUNDARY-002",
+      "rule": "Every profile binding references exactly one requirement or declares a profile-wide binding."
+    },
+    {
+      "id": "BOUNDARY-003",
+      "rule": "Every implementation mapping references a profile binding or implementation-defined contract."
+    },
+    {
+      "id": "BOUNDARY-004",
+      "rule": "Every evaluation references a predicate."
+    },
+    {
+      "id": "BOUNDARY-005",
+      "rule": "Every conformance result references a requirement."
+    },
+    {
+      "id": "BOUNDARY-006",
+      "rule": "Every authorization references operation, authority, scope, and policy."
+    },
+    {
+      "id": "BOUNDARY-007",
+      "rule": "No cross-domain result conversion occurs without an explicit rule."
+    },
+    {
+      "id": "BOUNDARY-008",
+      "rule": "Implementation instructions cannot weaken normative requirements."
+    },
+    {
+      "id": "BOUNDARY-009",
+      "rule": "Interpretation-changing profile changes require profile version changes."
+    },
+    {
+      "id": "BOUNDARY-010",
+      "rule": "Evidence cannot modify normative meaning."
+    }
+  ],
+  "count": 10
+}

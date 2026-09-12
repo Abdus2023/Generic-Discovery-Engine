@@ -1,0 +1,22 @@
+{
+  "contract_id": "R3-EVALUATION-CONTRACT",
+  "operation": "Evaluate(predicate, subject, context)",
+  "prerequisite": {
+    "required_validation": "VALID",
+    "alternate_path": "EXPLICIT_NORMATIVE_RULE_ONLY"
+  },
+  "required_bindings": [
+    "predicate",
+    "subject",
+    "inputs",
+    "context",
+    "evaluator",
+    "evaluator_version",
+    "evaluation_time",
+    "evidence",
+    "scope"
+  ],
+  "output_type": "EvaluationResult",
+  "may_authorize": false,
+  "content_hash": "9069cfa2c0b67f627c215678714f3138933ca13ba056b4ba955e698a71c7b19c"
+}

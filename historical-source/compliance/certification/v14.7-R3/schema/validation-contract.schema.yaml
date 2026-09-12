@@ -1,0 +1,98 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://generic-discovery-engine.invalid/compliance/v14.7-R3/validation-contract.schema.yaml",
+  "title": "validation-contract",
+  "type": "object",
+  "required": [
+    "contract_id",
+    "input",
+    "output",
+    "may_modify_authoritative_state",
+    "deterministic",
+    "forbidden_actions",
+    "content_hash"
+  ],
+  "properties": {
+    "contract_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "input": {
+      "type": "object",
+      "required": [
+        "subject_ref",
+        "context_ref"
+      ],
+      "properties": {
+        "subject_ref": {
+          "type": "string",
+          "minLength": 1
+        },
+        "context_ref": {
+          "type": "string",
+          "minLength": 1
+        }
+      },
+      "additionalProperties": false
+    },
+    "output": {
+      "type": "object",
+      "required": [
+        "type",
+        "states"
+      ],
+      "properties": {
+        "type": {
+          "type": "string",
+          "const": "ValidationResult"
+        },
+        "states": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "enum": [
+              "VALID",
+              "INVALID",
+              "BLOCKED",
+              "UNKNOWN"
+            ]
+          }
+        }
+      },
+      "additionalProperties": false
+    },
+    "may_modify_authoritative_state": {
+      "type": "boolean"
+    },
+    "deterministic": {
+      "type": "boolean"
+    },
+    "forbidden_actions": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "content_hash": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$"
+    }
+  },
+  "additionalProperties": false,
+  "x-identity-fields": [
+    "contract_id"
+  ],
+  "x-immutable": true,
+  "x-self-excluding-hash-field": "content_hash",
+  "x-canonical-profile": "GDE-CJSON-1",
+  "x-authority-precedence": [
+    "SPECIFICATION",
+    "PROFILE",
+    "IMPLEMENTATION",
+    "EVIDENCE"
+  ],
+  "x-normative-rules": [
+    "validation is a non-mutating processability gate"
+  ]
+}

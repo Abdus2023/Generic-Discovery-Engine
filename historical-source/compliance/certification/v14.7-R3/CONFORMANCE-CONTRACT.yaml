@@ -1,0 +1,19 @@
+{
+  "contract_id": "R3-CONFORMANCE-CONTRACT",
+  "operation": "EvaluateRequirement(requirement, subject, evidence)",
+  "required_inputs": [
+    "requirement",
+    "applicable_scope",
+    "acceptance_criteria",
+    "validated_evidence",
+    "evaluation_results"
+  ],
+  "output_type": "ConformanceResult",
+  "forbidden_inferences": [
+    "VALIDATION_EQUALS_CONFORMANT",
+    "TRUE_EQUALS_CONFORMANT"
+  ],
+  "non_conformant_requires_violation": true,
+  "absence_of_evidence_default": "UNVERIFIED",
+  "content_hash": "e2db3c6e73715c06e49475345b1506b4da582e2fc7b64be1c99c86151dc83c89"
+}

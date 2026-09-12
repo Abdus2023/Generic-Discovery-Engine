@@ -1,0 +1,77 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://generic-discovery-engine.invalid/compliance/v14.7-R3/evaluation-contract.schema.yaml",
+  "title": "evaluation-contract",
+  "type": "object",
+  "required": [
+    "contract_id",
+    "operation",
+    "prerequisite",
+    "required_bindings",
+    "output_type",
+    "may_authorize",
+    "content_hash"
+  ],
+  "properties": {
+    "contract_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "operation": {
+      "type": "string",
+      "minLength": 1
+    },
+    "prerequisite": {
+      "type": "object",
+      "required": [
+        "required_validation",
+        "alternate_path"
+      ],
+      "properties": {
+        "required_validation": {
+          "type": "string",
+          "const": "VALID"
+        },
+        "alternate_path": {
+          "type": "string",
+          "minLength": 1
+        }
+      },
+      "additionalProperties": false
+    },
+    "required_bindings": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "output_type": {
+      "type": "string",
+      "const": "EvaluationResult"
+    },
+    "may_authorize": {
+      "type": "boolean"
+    },
+    "content_hash": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$"
+    }
+  },
+  "additionalProperties": false,
+  "x-identity-fields": [
+    "contract_id"
+  ],
+  "x-immutable": true,
+  "x-self-excluding-hash-field": "content_hash",
+  "x-canonical-profile": "GDE-CJSON-1",
+  "x-authority-precedence": [
+    "SPECIFICATION",
+    "PROFILE",
+    "IMPLEMENTATION",
+    "EVIDENCE"
+  ],
+  "x-normative-rules": [
+    "evaluation requires valid validation and does not authorize"
+  ]
+}

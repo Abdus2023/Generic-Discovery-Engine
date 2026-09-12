@@ -1,0 +1,948 @@
+{
+  "realization_version": "14.7-R3",
+  "objects": [
+    {
+      "test_id": "B-T01",
+      "name": "Requirement without implementation detail",
+      "operation": "BOUNDARY_VALIDATE",
+      "input": {
+        "artifact": {
+          "kind": "normative_requirement",
+          "statement": "The event stream MUST provide deterministic ordering."
+        }
+      },
+      "expected": "VALID"
+    },
+    {
+      "test_id": "B-T02",
+      "name": "Requirement containing hidden mechanism",
+      "operation": "BOUNDARY_VALIDATE",
+      "input": {
+        "artifact": {
+          "kind": "normative_requirement",
+          "statement": "The event stream MUST use SQLite."
+        }
+      },
+      "expected": "INVALID:B001"
+    },
+    {
+      "test_id": "B-T03",
+      "name": "Profile without specification reference",
+      "operation": "BOUNDARY_VALIDATE",
+      "input": {
+        "artifact": {
+          "kind": "profile",
+          "profile_id": "p"
+        }
+      },
+      "expected": "INVALID:B004"
+    },
+    {
+      "test_id": "B-T04",
+      "name": "Implementation without profile reference",
+      "operation": "BOUNDARY_VALIDATE",
+      "input": {
+        "artifact": {
+          "kind": "implementation",
+          "implementation_id": "i"
+        }
+      },
+      "expected": "INVALID:B005"
+    },
+    {
+      "test_id": "B-T05",
+      "name": "Validation VALID to implicit CONFORMANT",
+      "operation": "CONVERSION",
+      "input": {
+        "source_domain": "ValidationResult",
+        "source_state": "VALID",
+        "target_domain": "ConformanceResult",
+        "target_state": "CONFORMANT",
+        "rule": null
+      },
+      "expected": "REJECTED"
+    },
+    {
+      "test_id": "B-T06",
+      "name": "Evaluation TRUE to implicit APPROVED",
+      "operation": "CONVERSION",
+      "input": {
+        "source_domain": "EvaluationResult",
+        "source_state": "TRUE",
+        "target_domain": "ReleaseDecision",
+        "target_state": "APPROVED",
+        "rule": null
+      },
+      "expected": "REJECTED"
+    },
+    {
+      "test_id": "B-T07",
+      "name": "Conformance without requirement reference",
+      "operation": "BOUNDARY_VALIDATE",
+      "input": {
+        "artifact": {
+          "kind": "conformance"
+        }
+      },
+      "expected": "INVALID:B008"
+    },
+    {
+      "test_id": "B-T08",
+      "name": "Profile changes hash algorithm",
+      "operation": "PROFILE_CHANGE",
+      "input": {
+        "old": {
+          "profile_version": "14.7-R2.1",
+          "hash_algorithm": "SHA-256",
+          "serialization": "GDE-CJSON-1",
+          "time_semantics": "RFC3339",
+          "ordering": "SEQUENCE",
+          "predicate_language": "GDE-PREDICATE-1",
+          "wire_format": "JSON"
+        },
+        "new": {
+          "profile_version": "14.7-R2.1",
+          "hash_algorithm": "SHA-512",
+          "serialization": "GDE-CJSON-1",
+          "time_semantics": "RFC3339",
+          "ordering": "SEQUENCE",
+          "predicate_language": "GDE-PREDICATE-1",
+          "wire_format": "JSON"
+        }
+      },
+      "expected": "VERSION_REQUIRED"
+    },
+    {
+      "test_id": "B-T09",
+      "name": "Implementation changes crypto library",
+      "operation": "IMPLEMENTATION_CHANGE",
+      "input": {
+        "old": {
+          "profile_ref": "p",
+          "crypto_library": "ring"
+        },
+        "new": {
+          "profile_ref": "p",
+          "crypto_library": "sha2 crate"
+        }
+      },
+      "expected": "NO_PROFILE_CHANGE"
+    },
+    {
+      "test_id": "B-T10",
+      "name": "UNKNOWN coerced to TRUE",
+      "operation": "CONVERSION",
+      "input": {
+        "source_domain": "EvaluationResult",
+        "source_state": "UNKNOWN",
+        "target_domain": "EvaluationResult",
+        "target_state": "TRUE",
+        "rule": null
+      },
+      "expected": "REJECTED"
+    },
+    {
+      "test_id": "B-T11",
+      "name": "BLOCKED coerced to TRUE",
+      "operation": "CONVERSION",
+      "input": {
+        "source_domain": "EvaluationResult",
+        "source_state": "BLOCKED",
+        "target_domain": "EvaluationResult",
+        "target_state": "TRUE",
+        "rule": null
+      },
+      "expected": "REJECTED"
+    },
+    {
+      "test_id": "B-T12",
+      "name": "INVALID coerced to FALSE",
+      "operation": "CONVERSION",
+      "input": {
+        "source_domain": "EvaluationResult",
+        "source_state": "INVALID",
+        "target_domain": "EvaluationResult",
+        "target_state": "FALSE",
+        "rule": null
+      },
+      "expected": "REJECTED"
+    },
+    {
+      "test_id": "B-T13",
+      "name": "Evidence changes requirement semantics",
+      "operation": "AUTHORITY_PRECEDENCE",
+      "input": {
+        "actor_layer": "EVIDENCE",
+        "target_layer": "SPECIFICATION"
+      },
+      "expected": "REJECTED"
+    },
+    {
+      "test_id": "B-T14",
+      "name": "Duplicate authority approval",
+      "operation": "APPROVAL_COUNT",
+      "input": {
+        "approvals": [
+          {
+            "authority_id": "a",
+            "valid": true,
+            "basis_hash": "h"
+          },
+          {
+            "authority_id": "a",
+            "valid": true,
+            "basis_hash": "h"
+          }
+        ],
+        "basis_hash": "h"
+      },
+      "expected": "1"
+    },
+    {
+      "test_id": "B-T15",
+      "name": "Same valid history replay",
+      "operation": "REPLAY_EQUAL",
+      "input": {
+        "left": [
+          {
+            "stream_id": "s",
+            "sequence_no": 0,
+            "key": "x",
+            "value": 1
+          },
+          {
+            "stream_id": "s",
+            "sequence_no": 1,
+            "key": "x",
+            "value": 2
+          }
+        ],
+        "right": [
+          {
+            "stream_id": "s",
+            "sequence_no": 1,
+            "key": "x",
+            "value": 2
+          },
+          {
+            "stream_id": "s",
+            "sequence_no": 0,
+            "key": "x",
+            "value": 1
+          }
+        ]
+      },
+      "expected": "SAME"
+    },
+    {
+      "test_id": "BV-T01",
+      "name": "Mechanical detector B001",
+      "operation": "BOUNDARY_VALIDATE",
+      "input": {
+        "artifact": {
+          "kind": "normative_requirement",
+          "statement": "The stream MUST use SQLite."
+        }
+      },
+      "expected": "INVALID:B001"
+    },
+    {
+      "test_id": "BV-T02",
+      "name": "Mechanical detector B002",
+      "operation": "BOUNDARY_VALIDATE",
+      "input": {
+        "artifact": {
+          "kind": "implementation_instruction",
+          "authority_ref": null
+        }
+      },
+      "expected": "INVALID:B002"
+    },
+    {
+      "test_id": "BV-T03",
+      "name": "Mechanical detector B003",
+      "operation": "BOUNDARY_VALIDATE",
+      "input": {
+        "artifact": {
+          "kind": "profile_binding"
+        }
+      },
+      "expected": "INVALID:B003"
+    },
+    {
+      "test_id": "BV-T04",
+      "name": "Mechanical detector B004",
+      "operation": "BOUNDARY_VALIDATE",
+      "input": {
+        "artifact": {
+          "kind": "profile"
+        }
+      },
+      "expected": "INVALID:B004"
+    },
+    {
+      "test_id": "BV-T05",
+      "name": "Mechanical detector B005",
+      "operation": "BOUNDARY_VALIDATE",
+      "input": {
+        "artifact": {
+          "kind": "implementation"
+        }
+      },
+      "expected": "INVALID:B005"
+    },
+    {
+      "test_id": "BV-T06",
+      "name": "Mechanical detector B006",
+      "operation": "BOUNDARY_VALIDATE",
+      "input": {
+        "artifact": {
+          "kind": "evidence"
+        }
+      },
+      "expected": "INVALID:B006"
+    },
+    {
+      "test_id": "BV-T07",
+      "name": "Mechanical detector B007",
+      "operation": "BOUNDARY_VALIDATE",
+      "input": {
+        "artifact": {
+          "kind": "evaluation"
+        }
+      },
+      "expected": "INVALID:B007"
+    },
+    {
+      "test_id": "BV-T08",
+      "name": "Mechanical detector B008",
+      "operation": "BOUNDARY_VALIDATE",
+      "input": {
+        "artifact": {
+          "kind": "conformance"
+        }
+      },
+      "expected": "INVALID:B008"
+    },
+    {
+      "test_id": "BV-T09",
+      "name": "Mechanical detector B009",
+      "operation": "BOUNDARY_VALIDATE",
+      "input": {
+        "artifact": {
+          "kind": "conversion"
+        }
+      },
+      "expected": "INVALID:B009"
+    },
+    {
+      "test_id": "BV-T10",
+      "name": "Mechanical detector B010",
+      "operation": "BOUNDARY_VALIDATE",
+      "input": {
+        "artifact": {
+          "kind": "statement_classification",
+          "statement": "The validator MUST_NOT mutate history.",
+          "classification": "IMPLEMENTATION_GUIDANCE"
+        }
+      },
+      "expected": "INVALID:B010"
+    },
+    {
+      "test_id": "BV-T11",
+      "name": "Mechanical detector B011",
+      "operation": "BOUNDARY_VALIDATE",
+      "input": {
+        "artifact": {
+          "kind": "statement_classification",
+          "statement": "Use SQLite for storage.",
+          "classification": "NORMATIVE_REQUIREMENT"
+        }
+      },
+      "expected": "INVALID:B011"
+    },
+    {
+      "test_id": "BV-T12",
+      "name": "Mechanical detector B012",
+      "operation": "BOUNDARY_VALIDATE",
+      "input": {
+        "artifact": {
+          "kind": "profile_change",
+          "profile_version": "1",
+          "semantic_fingerprint": "changed"
+        },
+        "frozen_profile": {
+          "profile_version": "1",
+          "semantic_fingerprint": "frozen"
+        }
+      },
+      "expected": "INVALID:B012"
+    },
+    {
+      "test_id": "BR-T01",
+      "name": "Conformance rule BOUNDARY-001",
+      "operation": "RULE_ASSERT",
+      "input": {
+        "rule_id": "BOUNDARY-001",
+        "artifact": {
+          "kind": "normative_requirement",
+          "authority_layer": "SPECIFICATION"
+        }
+      },
+      "expected": "PASS"
+    },
+    {
+      "test_id": "BR-T02",
+      "name": "Conformance rule BOUNDARY-002",
+      "operation": "RULE_ASSERT",
+      "input": {
+        "rule_id": "BOUNDARY-002",
+        "artifact": {
+          "kind": "profile_binding",
+          "requirement_ref": "REQ"
+        }
+      },
+      "expected": "PASS"
+    },
+    {
+      "test_id": "BR-T03",
+      "name": "Conformance rule BOUNDARY-003",
+      "operation": "RULE_ASSERT",
+      "input": {
+        "rule_id": "BOUNDARY-003",
+        "artifact": {
+          "kind": "implementation_mapping",
+          "profile_binding_ref": "BIND"
+        }
+      },
+      "expected": "PASS"
+    },
+    {
+      "test_id": "BR-T04",
+      "name": "Conformance rule BOUNDARY-004",
+      "operation": "RULE_ASSERT",
+      "input": {
+        "rule_id": "BOUNDARY-004",
+        "artifact": {
+          "kind": "evaluation",
+          "predicate_ref": "PRED"
+        }
+      },
+      "expected": "PASS"
+    },
+    {
+      "test_id": "BR-T05",
+      "name": "Conformance rule BOUNDARY-005",
+      "operation": "RULE_ASSERT",
+      "input": {
+        "rule_id": "BOUNDARY-005",
+        "artifact": {
+          "kind": "conformance",
+          "requirement_ref": "REQ"
+        }
+      },
+      "expected": "PASS"
+    },
+    {
+      "test_id": "BR-T06",
+      "name": "Conformance rule BOUNDARY-006",
+      "operation": "RULE_ASSERT",
+      "input": {
+        "rule_id": "BOUNDARY-006",
+        "artifact": {
+          "kind": "authorization",
+          "operation_ref": "OP",
+          "authority_ref": "AUTH",
+          "scope_ref": "SCOPE",
+          "policy_ref": "POLICY"
+        }
+      },
+      "expected": "PASS"
+    },
+    {
+      "test_id": "BR-T07",
+      "name": "Conformance rule BOUNDARY-007",
+      "operation": "RULE_ASSERT",
+      "input": {
+        "rule_id": "BOUNDARY-007",
+        "artifact": {
+          "kind": "conversion",
+          "rule_ref": "CONV"
+        }
+      },
+      "expected": "PASS"
+    },
+    {
+      "test_id": "BR-T08",
+      "name": "Conformance rule BOUNDARY-008",
+      "operation": "RULE_ASSERT",
+      "input": {
+        "rule_id": "BOUNDARY-008",
+        "artifact": {
+          "kind": "implementation_instruction",
+          "weakens_requirement": false
+        }
+      },
+      "expected": "PASS"
+    },
+    {
+      "test_id": "BR-T09",
+      "name": "Conformance rule BOUNDARY-009",
+      "operation": "RULE_ASSERT",
+      "input": {
+        "rule_id": "BOUNDARY-009",
+        "artifact": {
+          "kind": "profile_change",
+          "interpretation_changed": true,
+          "profile_version_changed": true
+        }
+      },
+      "expected": "PASS"
+    },
+    {
+      "test_id": "BR-T10",
+      "name": "Conformance rule BOUNDARY-010",
+      "operation": "RULE_ASSERT",
+      "input": {
+        "rule_id": "BOUNDARY-010",
+        "artifact": {
+          "kind": "evidence",
+          "evidence_redefines_meaning": false
+        }
+      },
+      "expected": "PASS"
+    },
+    {
+      "test_id": "CV-T01",
+      "name": "Explicit conversion R3-CONV-001",
+      "operation": "CONVERSION",
+      "input": {
+        "source_domain": "ValidationResult",
+        "source_state": "VALID",
+        "target_domain": "EvaluationEligibility",
+        "target_state": "ELIGIBLE",
+        "rule": {
+          "rule_id": "R3-CONV-001",
+          "source_domain": "ValidationResult",
+          "source_state": "VALID",
+          "target_domain": "EvaluationEligibility",
+          "target_state": "ELIGIBLE",
+          "operation": "establish_evaluation_eligibility",
+          "preconditions": [
+            "required validation applies"
+          ],
+          "authority_ref": "SPECIFICATION.md#14",
+          "content_hash": "e39c5d5e80b56f8df134d6ca0ff60b11c25340e61b72defcf66a879a19d8dade"
+        }
+      },
+      "expected": "ALLOWED"
+    },
+    {
+      "test_id": "CV-T02",
+      "name": "Explicit conversion R3-CONV-002",
+      "operation": "CONVERSION",
+      "input": {
+        "source_domain": "EvaluationResult",
+        "source_state": "TRUE",
+        "target_domain": "RequirementEvaluation",
+        "target_state": "SATISFIED",
+        "rule": {
+          "rule_id": "R3-CONV-002",
+          "source_domain": "EvaluationResult",
+          "source_state": "TRUE",
+          "target_domain": "RequirementEvaluation",
+          "target_state": "SATISFIED",
+          "operation": "apply_acceptance_criterion",
+          "preconditions": [
+            "criterion referenced"
+          ],
+          "authority_ref": "SPECIFICATION.md#14",
+          "content_hash": "38e6ca73622b93b13d1f07b0754b2cba792fcfbd4515fd230e7e2110d232ff40"
+        }
+      },
+      "expected": "ALLOWED"
+    },
+    {
+      "test_id": "CV-T03",
+      "name": "Explicit conversion R3-CONV-003",
+      "operation": "CONVERSION",
+      "input": {
+        "source_domain": "RequirementEvaluation",
+        "source_state": "SATISFIED",
+        "target_domain": "ConformanceResult",
+        "target_state": "CONFORMANT",
+        "rule": {
+          "rule_id": "R3-CONV-003",
+          "source_domain": "RequirementEvaluation",
+          "source_state": "SATISFIED",
+          "target_domain": "ConformanceResult",
+          "target_state": "CONFORMANT",
+          "operation": "aggregate_requirement",
+          "preconditions": [
+            "all mandatory criteria satisfied"
+          ],
+          "authority_ref": "SPECIFICATION.md#14",
+          "content_hash": "ab4304155c53a4ef81437766804446a528a2ca8686aff585a37c16e3dc4a28e2"
+        }
+      },
+      "expected": "ALLOWED"
+    },
+    {
+      "test_id": "CV-T04",
+      "name": "Explicit conversion R3-CONV-004",
+      "operation": "CONVERSION",
+      "input": {
+        "source_domain": "ConformanceResult",
+        "source_state": "CONFORMANT",
+        "target_domain": "ReleaseEligibility",
+        "target_state": "ELIGIBLE",
+        "rule": {
+          "rule_id": "R3-CONV-004",
+          "source_domain": "ConformanceResult",
+          "source_state": "CONFORMANT",
+          "target_domain": "ReleaseEligibility",
+          "target_state": "ELIGIBLE",
+          "operation": "evaluate_release_policy",
+          "preconditions": [
+            "release policy referenced"
+          ],
+          "authority_ref": "SPECIFICATION.md#14",
+          "content_hash": "1bfe5924ee259b6002f1935ff1c79b3733a7803499ae343fae600f74272c4f29"
+        }
+      },
+      "expected": "ALLOWED"
+    },
+    {
+      "test_id": "CV-T05",
+      "name": "Explicit conversion R3-CONV-005",
+      "operation": "CONVERSION",
+      "input": {
+        "source_domain": "ReleaseEligibility",
+        "source_state": "ELIGIBLE",
+        "target_domain": "AuthorizationResult",
+        "target_state": "AUTHORIZED",
+        "rule": {
+          "rule_id": "R3-CONV-005",
+          "source_domain": "ReleaseEligibility",
+          "source_state": "ELIGIBLE",
+          "target_domain": "AuthorizationResult",
+          "target_state": "AUTHORIZED",
+          "operation": "authorize_release",
+          "preconditions": [
+            "qualified authority",
+            "scope",
+            "policy"
+          ],
+          "authority_ref": "SPECIFICATION.md#14",
+          "content_hash": "c4612919a5cc53b61288b486500528abd9b100ffebf88e50aad9de167deb9a6c"
+        }
+      },
+      "expected": "ALLOWED"
+    },
+    {
+      "test_id": "CV-T06",
+      "name": "Explicit conversion R3-CONV-006",
+      "operation": "CONVERSION",
+      "input": {
+        "source_domain": "AuthorizationResult",
+        "source_state": "AUTHORIZED",
+        "target_domain": "ReleaseDecision",
+        "target_state": "APPROVED",
+        "rule": {
+          "rule_id": "R3-CONV-006",
+          "source_domain": "AuthorizationResult",
+          "source_state": "AUTHORIZED",
+          "target_domain": "ReleaseDecision",
+          "target_state": "APPROVED",
+          "operation": "record_release_decision",
+          "preconditions": [
+            "authorization current"
+          ],
+          "authority_ref": "SPECIFICATION.md#14",
+          "content_hash": "fc7dd12bb8e7ddff67c67fbbc62f7ca118d22da81d90dd98a561c9e75714657a"
+        }
+      },
+      "expected": "ALLOWED"
+    },
+    {
+      "test_id": "CV-T07",
+      "name": "Explicit conversion R3-CONV-007",
+      "operation": "CONVERSION",
+      "input": {
+        "source_domain": "ReleaseDecision",
+        "source_state": "APPROVED",
+        "target_domain": "ReleaseExecution",
+        "target_state": "SUCCEEDED",
+        "rule": {
+          "rule_id": "R3-CONV-007",
+          "source_domain": "ReleaseDecision",
+          "source_state": "APPROVED",
+          "target_domain": "ReleaseExecution",
+          "target_state": "SUCCEEDED",
+          "operation": "execute_approved_release",
+          "preconditions": [
+            "decision current",
+            "execution succeeds"
+          ],
+          "authority_ref": "SPECIFICATION.md#14",
+          "content_hash": "dd26b4c828d62b0a6f9d28278985cc2d75ec32a0254b52839be19b84d2312ee5"
+        }
+      },
+      "expected": "ALLOWED"
+    },
+    {
+      "test_id": "CV-T08",
+      "name": "Explicit conversion R3-CONV-008",
+      "operation": "CONVERSION",
+      "input": {
+        "source_domain": "ReleaseExecution",
+        "source_state": "SUCCEEDED",
+        "target_domain": "PostReleaseVerification",
+        "target_state": "VERIFIED",
+        "rule": {
+          "rule_id": "R3-CONV-008",
+          "source_domain": "ReleaseExecution",
+          "source_state": "SUCCEEDED",
+          "target_domain": "PostReleaseVerification",
+          "target_state": "VERIFIED",
+          "operation": "verify_release_effect",
+          "preconditions": [
+            "verification observation"
+          ],
+          "authority_ref": "SPECIFICATION.md#14",
+          "content_hash": "e79dc28cf71a8b169f495595eb5a94eb6c8b10763b232678665d739811ca028d"
+        }
+      },
+      "expected": "ALLOWED"
+    },
+    {
+      "test_id": "CV-T09",
+      "name": "Explicit conversion R3-CONV-009",
+      "operation": "CONVERSION",
+      "input": {
+        "source_domain": "PostReleaseVerification",
+        "source_state": "VERIFIED",
+        "target_domain": "Evidence",
+        "target_state": "RECORDED",
+        "rule": {
+          "rule_id": "R3-CONV-009",
+          "source_domain": "PostReleaseVerification",
+          "source_state": "VERIFIED",
+          "target_domain": "Evidence",
+          "target_state": "RECORDED",
+          "operation": "record_verification_evidence",
+          "preconditions": [
+            "evidence integrity valid"
+          ],
+          "authority_ref": "SPECIFICATION.md#14",
+          "content_hash": "bc0517ea24f2ce3870ec9397e63b38f8c9325f1eb799b518de1798bbcf10de6b"
+        }
+      },
+      "expected": "ALLOWED"
+    },
+    {
+      "test_id": "CT-T01",
+      "name": "INVALID validation cannot evaluate",
+      "operation": "EVALUATION_GATE",
+      "input": {
+        "validation": "INVALID",
+        "subject_ref": "s",
+        "context_ref": "c"
+      },
+      "expected": "BLOCKED"
+    },
+    {
+      "test_id": "CT-T02",
+      "name": "VALID validation creates evaluation eligibility",
+      "operation": "EVALUATION_GATE",
+      "input": {
+        "validation": "VALID",
+        "subject_ref": "s",
+        "context_ref": "c"
+      },
+      "expected": "ELIGIBLE"
+    },
+    {
+      "test_id": "CT-T03",
+      "name": "Evaluation requires predicate",
+      "operation": "EVALUATE",
+      "input": {
+        "validated_input": {
+          "subject_ref": "s",
+          "context_ref": "c"
+        },
+        "predicate_ref": null,
+        "inputs_ref": "inputs:i",
+        "evaluator": {
+          "id": "e",
+          "version": "1"
+        },
+        "evaluation_time": "2026-09-12T00:00:00Z",
+        "evidence_refs": [],
+        "scope_ref": "scope:s"
+      },
+      "expected": "INVALID"
+    },
+    {
+      "test_id": "CT-T04",
+      "name": "True criterion with evidence conforms",
+      "operation": "CONFORMANCE",
+      "input": {
+        "requirement_ref": "r",
+        "scope_ref": "scope:s",
+        "acceptance_criteria": [
+          "criterion:c"
+        ],
+        "evidence_validation": "VALID",
+        "evaluations": [
+          {
+            "status": "TRUE",
+            "condition_ref": "c"
+          }
+        ],
+        "evidence_refs": [
+          "e"
+        ]
+      },
+      "expected": "CONFORMANT"
+    },
+    {
+      "test_id": "CT-T05",
+      "name": "Absent evidence is unverified",
+      "operation": "CONFORMANCE",
+      "input": {
+        "requirement_ref": "r",
+        "scope_ref": "scope:s",
+        "acceptance_criteria": [
+          "criterion:c"
+        ],
+        "evidence_validation": "VALID",
+        "evaluations": [
+          {
+            "status": "TRUE",
+            "condition_ref": "c"
+          }
+        ],
+        "evidence_refs": []
+      },
+      "expected": "UNVERIFIED"
+    },
+    {
+      "test_id": "CT-T06",
+      "name": "False without violation identity yields no result",
+      "operation": "CONFORMANCE",
+      "input": {
+        "requirement_ref": "r",
+        "scope_ref": "scope:s",
+        "acceptance_criteria": [
+          "criterion:c"
+        ],
+        "evidence_validation": "VALID",
+        "evaluations": [
+          {
+            "status": "FALSE"
+          }
+        ],
+        "evidence_refs": [
+          "e"
+        ]
+      },
+      "expected": "NO_CONFORMANCE_RESULT"
+    },
+    {
+      "test_id": "CT-T07",
+      "name": "Identified violated condition is nonconformant",
+      "operation": "CONFORMANCE",
+      "input": {
+        "requirement_ref": "r",
+        "scope_ref": "scope:s",
+        "acceptance_criteria": [
+          "criterion:c"
+        ],
+        "evidence_validation": "VALID",
+        "evaluations": [
+          {
+            "status": "FALSE",
+            "condition_ref": "condition:r"
+          }
+        ],
+        "evidence_refs": [
+          "e"
+        ]
+      },
+      "expected": "NON_CONFORMANT"
+    },
+    {
+      "test_id": "CT-T08",
+      "name": "Normatively mandatory evidence absence violates",
+      "operation": "CONFORMANCE",
+      "input": {
+        "requirement_ref": "r",
+        "scope_ref": "scope:s",
+        "acceptance_criteria": [
+          "criterion:c"
+        ],
+        "evidence_validation": "VALID",
+        "evaluations": [],
+        "evidence_refs": [],
+        "evidence_mandatory": true
+      },
+      "expected": "NON_CONFORMANT"
+    },
+    {
+      "test_id": "CT-T09",
+      "name": "Recoverability does not alter UNKNOWN",
+      "operation": "RECOVERABILITY",
+      "input": {
+        "semantic_result": "UNKNOWN",
+        "diagnostic": "REQUIRES_NEW_EVIDENCE"
+      },
+      "expected": "UNKNOWN"
+    },
+    {
+      "test_id": "CT-T10",
+      "name": "Complete validated evaluation input evaluates",
+      "operation": "EVALUATE",
+      "input": {
+        "validated_input": {
+          "subject_ref": "s",
+          "context_ref": "c"
+        },
+        "predicate_ref": "predicate:p",
+        "inputs_ref": "inputs:i",
+        "evaluator": {
+          "id": "e",
+          "version": "1"
+        },
+        "evaluation_time": "2026-09-12T00:00:00Z",
+        "evidence_refs": [],
+        "scope_ref": "scope:s"
+      },
+      "expected": "TRUE"
+    },
+    {
+      "test_id": "CT-T11",
+      "name": "Unvalidated evidence blocks conformance",
+      "operation": "CONFORMANCE",
+      "input": {
+        "requirement_ref": "r",
+        "scope_ref": "scope:s",
+        "acceptance_criteria": [
+          "criterion:c"
+        ],
+        "evidence_validation": "UNKNOWN",
+        "evaluations": [
+          {
+            "status": "TRUE",
+            "condition_ref": "c"
+          }
+        ],
+        "evidence_refs": [
+          "e"
+        ]
+      },
+      "expected": "BLOCKED"
+    }
+  ],
+  "count": 57
+}

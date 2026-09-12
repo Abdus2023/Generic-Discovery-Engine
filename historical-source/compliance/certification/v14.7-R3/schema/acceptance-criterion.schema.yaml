@@ -1,0 +1,83 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://generic-discovery-engine.invalid/compliance/v14.7-R3/acceptance-criterion.schema.yaml",
+  "title": "acceptance-criterion",
+  "type": "object",
+  "required": [
+    "criterion_id",
+    "requirement_ref",
+    "condition",
+    "oracle",
+    "evidence_requirements",
+    "content_hash"
+  ],
+  "properties": {
+    "criterion_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "requirement_ref": {
+      "type": "string",
+      "minLength": 1
+    },
+    "condition": {
+      "type": "object",
+      "required": [
+        "expression"
+      ],
+      "properties": {
+        "expression": {
+          "type": "string",
+          "minLength": 1
+        }
+      },
+      "additionalProperties": false
+    },
+    "oracle": {
+      "type": "object",
+      "required": [
+        "expected_result"
+      ],
+      "properties": {
+        "expected_result": {
+          "type": "string",
+          "enum": [
+            "TRUE",
+            "FALSE",
+            "UNKNOWN",
+            "BLOCKED",
+            "INVALID"
+          ]
+        }
+      },
+      "additionalProperties": false
+    },
+    "evidence_requirements": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "content_hash": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$"
+    }
+  },
+  "additionalProperties": false,
+  "x-identity-fields": [
+    "criterion_id"
+  ],
+  "x-immutable": true,
+  "x-self-excluding-hash-field": "content_hash",
+  "x-canonical-profile": "GDE-CJSON-1",
+  "x-authority-precedence": [
+    "SPECIFICATION",
+    "PROFILE",
+    "IMPLEMENTATION",
+    "EVIDENCE"
+  ],
+  "x-normative-rules": [
+    "criterion operationalizes without changing meaning"
+  ]
+}

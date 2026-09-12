@@ -1,0 +1,96 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://generic-discovery-engine.invalid/compliance/v14.7-R3/profile-binding-r3.schema.yaml",
+  "title": "profile-binding-r3",
+  "type": "object",
+  "required": [
+    "binding_id",
+    "requirement_ref",
+    "selected_realization",
+    "alternatives",
+    "semantic_preservation",
+    "profile_ref",
+    "content_hash"
+  ],
+  "properties": {
+    "binding_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "requirement_ref": {
+      "type": "string",
+      "minLength": 1
+    },
+    "selected_realization": {
+      "type": "object",
+      "required": [
+        "mechanism"
+      ],
+      "properties": {
+        "mechanism": {
+          "type": "string",
+          "minLength": 1
+        }
+      },
+      "additionalProperties": false
+    },
+    "alternatives": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "mechanism"
+        ],
+        "properties": {
+          "mechanism": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "additionalProperties": false
+      }
+    },
+    "semantic_preservation": {
+      "type": "object",
+      "required": [
+        "claim",
+        "verification_ref"
+      ],
+      "properties": {
+        "claim": {
+          "type": "string",
+          "minLength": 1
+        },
+        "verification_ref": {
+          "type": "string",
+          "minLength": 1
+        }
+      },
+      "additionalProperties": false
+    },
+    "profile_ref": {
+      "type": "string",
+      "minLength": 1
+    },
+    "content_hash": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$"
+    }
+  },
+  "additionalProperties": false,
+  "x-identity-fields": [
+    "binding_id"
+  ],
+  "x-immutable": true,
+  "x-self-excluding-hash-field": "content_hash",
+  "x-canonical-profile": "GDE-CJSON-1",
+  "x-authority-precedence": [
+    "SPECIFICATION",
+    "PROFILE",
+    "IMPLEMENTATION",
+    "EVIDENCE"
+  ],
+  "x-normative-rules": [
+    "binding selects a permitted realization and preserves requirement meaning"
+  ]
+}

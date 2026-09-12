@@ -1,0 +1,404 @@
+{
+  "realization_version": "14.7-R3",
+  "overall_status": "BOUNDARY_CONFORMANT_TARGET_IMPLEMENTATION_UNVERIFIED",
+  "summary": {
+    "total": 56,
+    "passed": 55,
+    "failed": 0,
+    "blocked": 1
+  },
+  "checks": [
+    {
+      "check_id": "I01",
+      "category": "inventory",
+      "result": "PASS",
+      "description": "57 generator-owned artifacts exist",
+      "detail": ""
+    },
+    {
+      "check_id": "I02",
+      "category": "inventory",
+      "result": "PASS",
+      "description": "all JSON-compatible YAML parses",
+      "detail": ""
+    },
+    {
+      "check_id": "I03",
+      "category": "inventory",
+      "result": "PASS",
+      "description": "no undeclared generator artifact",
+      "detail": "[]"
+    },
+    {
+      "check_id": "V01",
+      "category": "version",
+      "result": "PASS",
+      "description": "R3 is an implementation-realization refinement, not a semantic revision",
+      "detail": ""
+    },
+    {
+      "check_id": "V02",
+      "category": "version",
+      "result": "PASS",
+      "description": "reference boundary and target implementation claims remain separate",
+      "detail": ""
+    },
+    {
+      "check_id": "B01",
+      "category": "basis",
+      "result": "PASS",
+      "description": "specification basis is self-hashed and binds all exact components",
+      "detail": ""
+    },
+    {
+      "check_id": "B02",
+      "category": "basis",
+      "result": "PASS",
+      "description": "basis explicitly preserves semantic states and requirement strength",
+      "detail": ""
+    },
+    {
+      "check_id": "B03",
+      "category": "basis",
+      "result": "PASS",
+      "description": "R3 binds the immutable R2.1 profile without profile changes",
+      "detail": ""
+    },
+    {
+      "check_id": "S01",
+      "category": "schema",
+      "result": "PASS",
+      "description": "13 local schemas extend the exact 67-schema predecessor registry",
+      "detail": ""
+    },
+    {
+      "check_id": "S02",
+      "category": "schema",
+      "result": "PASS",
+      "description": "all schemas are strict, immutable, authority-aware, and hash-bound",
+      "detail": ""
+    },
+    {
+      "check_id": "S03",
+      "category": "schema",
+      "result": "PASS",
+      "description": "nested claim, oracle, evidence-integrity, and validation domains are closed and exact",
+      "detail": ""
+    },
+    {
+      "check_id": "A01",
+      "category": "authority",
+      "result": "PASS",
+      "description": "every declared artifact has exactly one BoundaryBinding",
+      "detail": ""
+    },
+    {
+      "check_id": "A02",
+      "category": "authority",
+      "result": "PASS",
+      "description": "every BoundaryBinding is exact, hash-valid, and names one authority layer",
+      "detail": ""
+    },
+    {
+      "check_id": "A03",
+      "category": "authority",
+      "result": "PASS",
+      "description": "authority precedence is strict and evidence has no normative authority",
+      "detail": ""
+    },
+    {
+      "check_id": "C01",
+      "category": "classification",
+      "result": "PASS",
+      "description": "all 31 extracted section statements have exactly one permitted classification",
+      "detail": ""
+    },
+    {
+      "check_id": "C02",
+      "category": "classification",
+      "result": "PASS",
+      "description": "classification inventory uses every required category and has valid hashes",
+      "detail": ""
+    },
+    {
+      "check_id": "R01",
+      "category": "requirements",
+      "result": "PASS",
+      "description": "24 exact, hash-bound normative requirements have specification authority",
+      "detail": ""
+    },
+    {
+      "check_id": "R02",
+      "category": "requirements",
+      "result": "PASS",
+      "description": "normative requirement statements contain no concrete implementation mechanism",
+      "detail": ""
+    },
+    {
+      "check_id": "R03",
+      "category": "requirements",
+      "result": "PASS",
+      "description": "every requirement has one exact criterion with a frozen evaluation oracle",
+      "detail": ""
+    },
+    {
+      "check_id": "P01",
+      "category": "profile",
+      "result": "PASS",
+      "description": "every requirement has exactly one semantic-preserving profile binding",
+      "detail": ""
+    },
+    {
+      "check_id": "P02",
+      "category": "profile",
+      "result": "PASS",
+      "description": "freeze audit detects no implicit defaults, leakage, or unstated binding",
+      "detail": ""
+    },
+    {
+      "check_id": "P03",
+      "category": "profile",
+      "result": "PASS",
+      "description": "profile-changing mechanisms and interchangeable libraries are distinguished",
+      "detail": ""
+    },
+    {
+      "check_id": "M01",
+      "category": "mapping",
+      "result": "PASS",
+      "description": "every profile binding has one typed implementation mapping distinct from its requirement",
+      "detail": ""
+    },
+    {
+      "check_id": "M02",
+      "category": "mapping",
+      "result": "PASS",
+      "description": "five-row matrix is explicitly non-normative and not production conformance",
+      "detail": ""
+    },
+    {
+      "check_id": "E01",
+      "category": "evidence",
+      "result": "PASS",
+      "description": "24 descriptive evidence objects bind exact observed test results and valid integrity",
+      "detail": ""
+    },
+    {
+      "check_id": "E02",
+      "category": "evidence",
+      "result": "PASS",
+      "description": "evidence is explicitly descriptive and non-normative",
+      "detail": ""
+    },
+    {
+      "check_id": "E03",
+      "category": "evidence",
+      "result": "PASS",
+      "description": "24 hash-bound ValidationResults use only the validation domain and do not claim semantic truth",
+      "detail": ""
+    },
+    {
+      "check_id": "E04",
+      "category": "evidence",
+      "result": "PASS",
+      "description": "24 hash-bound EvaluationResults reference criteria and do not claim conformance",
+      "detail": ""
+    },
+    {
+      "check_id": "T01",
+      "category": "traceability",
+      "result": "PASS",
+      "description": "complete nine-stage executable chain and extended result flow are explicit",
+      "detail": ""
+    },
+    {
+      "check_id": "T02",
+      "category": "traceability",
+      "result": "PASS",
+      "description": "24 one-to-one rows provide forward and reverse requirement/code/evidence lookup",
+      "detail": ""
+    },
+    {
+      "check_id": "K01",
+      "category": "contracts",
+      "result": "PASS",
+      "description": "validation contract is deterministic, non-mutating, and validation-only",
+      "detail": ""
+    },
+    {
+      "check_id": "K02",
+      "category": "contracts",
+      "result": "PASS",
+      "description": "evaluation contract requires VALID and all nine semantic bindings",
+      "detail": ""
+    },
+    {
+      "check_id": "K03",
+      "category": "contracts",
+      "result": "PASS",
+      "description": "conformance contract applies requirements and forbids VALID/TRUE shortcuts",
+      "detail": ""
+    },
+    {
+      "check_id": "K04",
+      "category": "contracts",
+      "result": "PASS",
+      "description": "conformance result domain is exact and every reference result is hash-bound",
+      "detail": ""
+    },
+    {
+      "check_id": "X01",
+      "category": "conversion",
+      "result": "PASS",
+      "description": "nine explicit, named, hash-bound conversion functions form the complete result flow",
+      "detail": ""
+    },
+    {
+      "check_id": "X02",
+      "category": "conversion",
+      "result": "PASS",
+      "description": "all four supplied implicit conversions and uncertainty coercions are forbidden",
+      "detail": ""
+    },
+    {
+      "check_id": "G01",
+      "category": "guidance",
+      "result": "PASS",
+      "description": "Rust type separation remains implementation guidance, not invented evidence",
+      "detail": ""
+    },
+    {
+      "check_id": "G02",
+      "category": "errors",
+      "result": "PASS",
+      "description": "nine exact structured error domains preserve rule and evidence provenance",
+      "detail": ""
+    },
+    {
+      "check_id": "G03",
+      "category": "errors",
+      "result": "PASS",
+      "description": "seven recoverability values are diagnostic and do not alter UNKNOWN",
+      "detail": ""
+    },
+    {
+      "check_id": "D01",
+      "category": "detector",
+      "result": "PASS",
+      "description": "mechanical validator publishes exactly B001 through B012",
+      "detail": ""
+    },
+    {
+      "check_id": "D02",
+      "category": "detector",
+      "result": "PASS",
+      "description": "BOUNDARY-001 through BOUNDARY-010 are complete and unique",
+      "detail": ""
+    },
+    {
+      "check_id": "Q01",
+      "category": "tests",
+      "result": "PASS",
+      "description": "all 57 executable tests independently rerun byte-for-value and pass",
+      "detail": ""
+    },
+    {
+      "check_id": "Q02",
+      "category": "tests",
+      "result": "PASS",
+      "description": "B-T01 through B-T15 machine matrix is complete",
+      "detail": ""
+    },
+    {
+      "check_id": "Q03",
+      "category": "tests",
+      "result": "PASS",
+      "description": "all B001 through B012 negative fixtures reject with exact provenance",
+      "detail": ""
+    },
+    {
+      "check_id": "Q04",
+      "category": "tests",
+      "result": "PASS",
+      "description": "all ten boundary conformance rules execute successfully",
+      "detail": ""
+    },
+    {
+      "check_id": "Q05",
+      "category": "tests",
+      "result": "PASS",
+      "description": "all nine explicit cross-domain conversions require and accept their exact rules",
+      "detail": ""
+    },
+    {
+      "check_id": "Q06",
+      "category": "tests",
+      "result": "PASS",
+      "description": "contract tests enforce complete bindings and preserve absence, violation, and evidence-validation semantics",
+      "detail": ""
+    },
+    {
+      "check_id": "CL01",
+      "category": "closure",
+      "result": "PASS",
+      "description": "final graph reaches verification and feeds only new evidence",
+      "detail": ""
+    },
+    {
+      "check_id": "CL02",
+      "category": "closure",
+      "result": "PASS",
+      "description": "all eight closure conditions hold without cross-layer borrowing",
+      "detail": ""
+    },
+    {
+      "check_id": "NI01",
+      "category": "non_invention",
+      "result": "PASS",
+      "description": "reference harness conformance does not manufacture target or Rust conformance",
+      "detail": ""
+    },
+    {
+      "check_id": "PR01",
+      "category": "integrity",
+      "result": "PASS",
+      "description": "all 900 predecessor artifacts remain byte-identical",
+      "detail": "[]"
+    },
+    {
+      "check_id": "DOC01",
+      "category": "documentation",
+      "result": "PASS",
+      "description": "all 31 requested R3 sections are represented in order",
+      "detail": ""
+    },
+    {
+      "check_id": "DET01",
+      "category": "determinism",
+      "result": "PASS",
+      "description": "57 generator artifacts regenerate byte-identically",
+      "detail": ""
+    },
+    {
+      "check_id": "REG01",
+      "category": "regression",
+      "result": "PASS",
+      "description": "R2.1, R2, and v14.7.1 regressions plus append-only guards pass",
+      "detail": ""
+    },
+    {
+      "check_id": "HY01",
+      "category": "hygiene",
+      "result": "PASS",
+      "description": "no Python bytecode caches exist",
+      "detail": ""
+    },
+    {
+      "check_id": "GATE-R3",
+      "category": "acceptance",
+      "result": "BLOCKED",
+      "description": "target implementation, Rust domain types, durability, and production crypto",
+      "detail": "Boundary reference contracts conform; no target implementation or production evidence is present."
+    }
+  ]
+}

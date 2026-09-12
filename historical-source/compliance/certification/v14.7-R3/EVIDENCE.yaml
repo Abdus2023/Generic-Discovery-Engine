@@ -1,0 +1,513 @@
+{
+  "realization_id": "gde-v14.7-r3-boundary-contracts",
+  "realization_version": "14.7-R3",
+  "semantic_version": "v14.7",
+  "objects": [
+    {
+      "evidence_id": "R3-EVIDENCE-001",
+      "subject_ref": "R3-MAP-001",
+      "source": {
+        "type": "REFERENCE_HARNESS_RESULT",
+        "ref": "MACHINE-TEST-RESULTS.yaml#B-T01"
+      },
+      "observation": {
+        "statement": "B-T01 produced VALID and PASSED"
+      },
+      "collected_at": "2026-09-12T00:00:00Z",
+      "collector": {
+        "id": "v147r3-boundary-runner",
+        "version": "14.7-R3"
+      },
+      "integrity": {
+        "hash": "a646ca1170311b072269ef9de6a9a161a3618a5ade9205f4093fc7aa77fb8798",
+        "status": "VALID"
+      },
+      "content_hash": "7b5304d8a5d178b3dd1bfbe0c5dd82eb9ef0444600ce6085e6e252a4ee981daf"
+    },
+    {
+      "evidence_id": "R3-EVIDENCE-002",
+      "subject_ref": "R3-MAP-002",
+      "source": {
+        "type": "REFERENCE_HARNESS_RESULT",
+        "ref": "MACHINE-TEST-RESULTS.yaml#B-T02"
+      },
+      "observation": {
+        "statement": "B-T02 produced INVALID:B001 and PASSED"
+      },
+      "collected_at": "2026-09-12T00:00:00Z",
+      "collector": {
+        "id": "v147r3-boundary-runner",
+        "version": "14.7-R3"
+      },
+      "integrity": {
+        "hash": "e1665fd0f969c12b6d17d2f64f06d09d2c6fd559fdd7708c2c439d21489cded5",
+        "status": "VALID"
+      },
+      "content_hash": "260e82de73c1b8b7c7477138676dfe6adcdc92bfc35bb3172a58159d6aa4ea4e"
+    },
+    {
+      "evidence_id": "R3-EVIDENCE-003",
+      "subject_ref": "R3-MAP-003",
+      "source": {
+        "type": "REFERENCE_HARNESS_RESULT",
+        "ref": "MACHINE-TEST-RESULTS.yaml#B-T03"
+      },
+      "observation": {
+        "statement": "B-T03 produced INVALID:B004 and PASSED"
+      },
+      "collected_at": "2026-09-12T00:00:00Z",
+      "collector": {
+        "id": "v147r3-boundary-runner",
+        "version": "14.7-R3"
+      },
+      "integrity": {
+        "hash": "f5e71fc524d4bbd39aa9c2b746c428dd210e5de78b8fbbdf769eb40c4e4cebdb",
+        "status": "VALID"
+      },
+      "content_hash": "f4a112094c7ef10c1e678065c519c2e45752b322cb6232d77ad1c63c68e46b78"
+    },
+    {
+      "evidence_id": "R3-EVIDENCE-004",
+      "subject_ref": "R3-MAP-004",
+      "source": {
+        "type": "REFERENCE_HARNESS_RESULT",
+        "ref": "MACHINE-TEST-RESULTS.yaml#B-T04"
+      },
+      "observation": {
+        "statement": "B-T04 produced INVALID:B005 and PASSED"
+      },
+      "collected_at": "2026-09-12T00:00:00Z",
+      "collector": {
+        "id": "v147r3-boundary-runner",
+        "version": "14.7-R3"
+      },
+      "integrity": {
+        "hash": "09d652ae001f340b0acc487e2c675ebe1c49da0ef121d2f3fea5e6be5be7d2e1",
+        "status": "VALID"
+      },
+      "content_hash": "e13af0eda20e364a85075cdb970070e0a64ccf12dcaaba943589370e8bde67a1"
+    },
+    {
+      "evidence_id": "R3-EVIDENCE-005",
+      "subject_ref": "R3-MAP-005",
+      "source": {
+        "type": "REFERENCE_HARNESS_RESULT",
+        "ref": "MACHINE-TEST-RESULTS.yaml#B-T05"
+      },
+      "observation": {
+        "statement": "B-T05 produced REJECTED and PASSED"
+      },
+      "collected_at": "2026-09-12T00:00:00Z",
+      "collector": {
+        "id": "v147r3-boundary-runner",
+        "version": "14.7-R3"
+      },
+      "integrity": {
+        "hash": "9c4b583a6fbe0654ab05c47315401a8d86e1e642cc13ca534d20d9f2bfe26fa0",
+        "status": "VALID"
+      },
+      "content_hash": "72edba3fe41609ad2d6ce3fa4d09c8a4eaa114412ed314c4f0995d30c61dac4a"
+    },
+    {
+      "evidence_id": "R3-EVIDENCE-006",
+      "subject_ref": "R3-MAP-006",
+      "source": {
+        "type": "REFERENCE_HARNESS_RESULT",
+        "ref": "MACHINE-TEST-RESULTS.yaml#B-T06"
+      },
+      "observation": {
+        "statement": "B-T06 produced REJECTED and PASSED"
+      },
+      "collected_at": "2026-09-12T00:00:00Z",
+      "collector": {
+        "id": "v147r3-boundary-runner",
+        "version": "14.7-R3"
+      },
+      "integrity": {
+        "hash": "ef902f605e68e79370bdb12d84e4f5b29e14ca19e834e9c097555d83f15ff1b3",
+        "status": "VALID"
+      },
+      "content_hash": "a1cb70be50446f38c87c4635deb18ff997bad179c18dbffa57d9831d2706e46d"
+    },
+    {
+      "evidence_id": "R3-EVIDENCE-007",
+      "subject_ref": "R3-MAP-007",
+      "source": {
+        "type": "REFERENCE_HARNESS_RESULT",
+        "ref": "MACHINE-TEST-RESULTS.yaml#B-T07"
+      },
+      "observation": {
+        "statement": "B-T07 produced INVALID:B008 and PASSED"
+      },
+      "collected_at": "2026-09-12T00:00:00Z",
+      "collector": {
+        "id": "v147r3-boundary-runner",
+        "version": "14.7-R3"
+      },
+      "integrity": {
+        "hash": "9bf41bdfef6d825fa1b8de904b6d21d8f9ad97813e8f29b08f5a004b824f5c0d",
+        "status": "VALID"
+      },
+      "content_hash": "51f64abfb74cc8c04294686e1d34603794b8c46a8f26a086f629f06e3608f245"
+    },
+    {
+      "evidence_id": "R3-EVIDENCE-008",
+      "subject_ref": "R3-MAP-008",
+      "source": {
+        "type": "REFERENCE_HARNESS_RESULT",
+        "ref": "MACHINE-TEST-RESULTS.yaml#B-T08"
+      },
+      "observation": {
+        "statement": "B-T08 produced VERSION_REQUIRED and PASSED"
+      },
+      "collected_at": "2026-09-12T00:00:00Z",
+      "collector": {
+        "id": "v147r3-boundary-runner",
+        "version": "14.7-R3"
+      },
+      "integrity": {
+        "hash": "75bd57798e4ebf9bec1bb72adb8df78412ead18f3f3c4eae411fe9e325ab9c11",
+        "status": "VALID"
+      },
+      "content_hash": "506d097ddd2f313fbe149949f97a5a80f2d77cafcfac47ad5c07ebd274622e06"
+    },
+    {
+      "evidence_id": "R3-EVIDENCE-009",
+      "subject_ref": "R3-MAP-009",
+      "source": {
+        "type": "REFERENCE_HARNESS_RESULT",
+        "ref": "MACHINE-TEST-RESULTS.yaml#B-T09"
+      },
+      "observation": {
+        "statement": "B-T09 produced NO_PROFILE_CHANGE and PASSED"
+      },
+      "collected_at": "2026-09-12T00:00:00Z",
+      "collector": {
+        "id": "v147r3-boundary-runner",
+        "version": "14.7-R3"
+      },
+      "integrity": {
+        "hash": "ce0fe76873d54a92e866fefcf17abfe814a01dd06d1b9284e480b34497724e78",
+        "status": "VALID"
+      },
+      "content_hash": "281f27fea3d717365596fb517ddd530bfb488fa9368c64f7b00af2142cd7c233"
+    },
+    {
+      "evidence_id": "R3-EVIDENCE-010",
+      "subject_ref": "R3-MAP-010",
+      "source": {
+        "type": "REFERENCE_HARNESS_RESULT",
+        "ref": "MACHINE-TEST-RESULTS.yaml#B-T10"
+      },
+      "observation": {
+        "statement": "B-T10 produced REJECTED and PASSED"
+      },
+      "collected_at": "2026-09-12T00:00:00Z",
+      "collector": {
+        "id": "v147r3-boundary-runner",
+        "version": "14.7-R3"
+      },
+      "integrity": {
+        "hash": "a3811c82a4f4b39d866b44f881dd29d27d083edfdc9e8158c41e13b8ecabef09",
+        "status": "VALID"
+      },
+      "content_hash": "104ac865f689bb96744219f3415e1d8f069d83d1dff4b631b2cb94cadc0d7e31"
+    },
+    {
+      "evidence_id": "R3-EVIDENCE-011",
+      "subject_ref": "R3-MAP-011",
+      "source": {
+        "type": "REFERENCE_HARNESS_RESULT",
+        "ref": "MACHINE-TEST-RESULTS.yaml#B-T11"
+      },
+      "observation": {
+        "statement": "B-T11 produced REJECTED and PASSED"
+      },
+      "collected_at": "2026-09-12T00:00:00Z",
+      "collector": {
+        "id": "v147r3-boundary-runner",
+        "version": "14.7-R3"
+      },
+      "integrity": {
+        "hash": "af0a7b436f7d89b80786eb604a9666468948bd694bac78e0b0126591e73af9d1",
+        "status": "VALID"
+      },
+      "content_hash": "ecb6229e48d89d8fa19f7c1a4279397da389c691eab500261a1552be8fe4eeb9"
+    },
+    {
+      "evidence_id": "R3-EVIDENCE-012",
+      "subject_ref": "R3-MAP-012",
+      "source": {
+        "type": "REFERENCE_HARNESS_RESULT",
+        "ref": "MACHINE-TEST-RESULTS.yaml#B-T12"
+      },
+      "observation": {
+        "statement": "B-T12 produced REJECTED and PASSED"
+      },
+      "collected_at": "2026-09-12T00:00:00Z",
+      "collector": {
+        "id": "v147r3-boundary-runner",
+        "version": "14.7-R3"
+      },
+      "integrity": {
+        "hash": "f5e3a344392c44cbf9a92a031eb0e6e088b62d72bbcb05b60cdd1837fc2808c5",
+        "status": "VALID"
+      },
+      "content_hash": "1b5889c2d63e7cd24976effa71ee7cf2a5407ccd5fcdf34c274229b29de6a30f"
+    },
+    {
+      "evidence_id": "R3-EVIDENCE-013",
+      "subject_ref": "R3-MAP-013",
+      "source": {
+        "type": "REFERENCE_HARNESS_RESULT",
+        "ref": "MACHINE-TEST-RESULTS.yaml#B-T13"
+      },
+      "observation": {
+        "statement": "B-T13 produced REJECTED and PASSED"
+      },
+      "collected_at": "2026-09-12T00:00:00Z",
+      "collector": {
+        "id": "v147r3-boundary-runner",
+        "version": "14.7-R3"
+      },
+      "integrity": {
+        "hash": "d34e60eab91d3389c6ee754cc366e26544053588e4dbca6ca4b2c8080c7dc70d",
+        "status": "VALID"
+      },
+      "content_hash": "dca9d22224178347cfbb831d11e6ec851f50551a9b698a6388c59cff68755abe"
+    },
+    {
+      "evidence_id": "R3-EVIDENCE-014",
+      "subject_ref": "R3-MAP-014",
+      "source": {
+        "type": "REFERENCE_HARNESS_RESULT",
+        "ref": "MACHINE-TEST-RESULTS.yaml#B-T14"
+      },
+      "observation": {
+        "statement": "B-T14 produced 1 and PASSED"
+      },
+      "collected_at": "2026-09-12T00:00:00Z",
+      "collector": {
+        "id": "v147r3-boundary-runner",
+        "version": "14.7-R3"
+      },
+      "integrity": {
+        "hash": "f0f8322263517527a1fb770932990443f1467e9410c5bb6cf3b54da539cde53a",
+        "status": "VALID"
+      },
+      "content_hash": "a3a5de370129ab49d407c0cae9fe1f0a105c5ec70e16a72581d91a5d8bc119a2"
+    },
+    {
+      "evidence_id": "R3-EVIDENCE-015",
+      "subject_ref": "R3-MAP-015",
+      "source": {
+        "type": "REFERENCE_HARNESS_RESULT",
+        "ref": "MACHINE-TEST-RESULTS.yaml#B-T15"
+      },
+      "observation": {
+        "statement": "B-T15 produced SAME and PASSED"
+      },
+      "collected_at": "2026-09-12T00:00:00Z",
+      "collector": {
+        "id": "v147r3-boundary-runner",
+        "version": "14.7-R3"
+      },
+      "integrity": {
+        "hash": "74c5f1b8565e592c244c43dc267bbd6dc36f0ce9567c5ba3adb131c6aa8244d3",
+        "status": "VALID"
+      },
+      "content_hash": "4be99367eca50d182c7557d0aa3069eb9dcd48cb25d3a88456b40d411d8a60ec"
+    },
+    {
+      "evidence_id": "R3-EVIDENCE-016",
+      "subject_ref": "R3-MAP-016",
+      "source": {
+        "type": "REFERENCE_HARNESS_RESULT",
+        "ref": "MACHINE-TEST-RESULTS.yaml#BV-T01"
+      },
+      "observation": {
+        "statement": "BV-T01 produced INVALID:B001 and PASSED"
+      },
+      "collected_at": "2026-09-12T00:00:00Z",
+      "collector": {
+        "id": "v147r3-boundary-runner",
+        "version": "14.7-R3"
+      },
+      "integrity": {
+        "hash": "3ccc511bc5343e514af2af5b8523763fc87145a081c91d5bcb1912138c7c1d6e",
+        "status": "VALID"
+      },
+      "content_hash": "9677e4e360bd53d3ebf6470a96d68a896c060d37034c2840903d2fb9fc89e976"
+    },
+    {
+      "evidence_id": "R3-EVIDENCE-017",
+      "subject_ref": "R3-MAP-017",
+      "source": {
+        "type": "REFERENCE_HARNESS_RESULT",
+        "ref": "MACHINE-TEST-RESULTS.yaml#BV-T02"
+      },
+      "observation": {
+        "statement": "BV-T02 produced INVALID:B002 and PASSED"
+      },
+      "collected_at": "2026-09-12T00:00:00Z",
+      "collector": {
+        "id": "v147r3-boundary-runner",
+        "version": "14.7-R3"
+      },
+      "integrity": {
+        "hash": "4374f35a63cc5c67c0fa65505c835a62a44d1b35ea3cc1aed9a817a975a2f7dc",
+        "status": "VALID"
+      },
+      "content_hash": "ea11fc9e2db50ea66b47988511a9ad093021429aaf906b22c31f22619a4bc752"
+    },
+    {
+      "evidence_id": "R3-EVIDENCE-018",
+      "subject_ref": "R3-MAP-018",
+      "source": {
+        "type": "REFERENCE_HARNESS_RESULT",
+        "ref": "MACHINE-TEST-RESULTS.yaml#BV-T03"
+      },
+      "observation": {
+        "statement": "BV-T03 produced INVALID:B003 and PASSED"
+      },
+      "collected_at": "2026-09-12T00:00:00Z",
+      "collector": {
+        "id": "v147r3-boundary-runner",
+        "version": "14.7-R3"
+      },
+      "integrity": {
+        "hash": "74511b726cb53db7b5d90259f3c1b90376f4b44e706c07190b2361b45940e31a",
+        "status": "VALID"
+      },
+      "content_hash": "ef00c8b17332e640f3e3066382fc2d07c5c603b80bc7347141220d50dda29127"
+    },
+    {
+      "evidence_id": "R3-EVIDENCE-019",
+      "subject_ref": "R3-MAP-019",
+      "source": {
+        "type": "REFERENCE_HARNESS_RESULT",
+        "ref": "MACHINE-TEST-RESULTS.yaml#BV-T04"
+      },
+      "observation": {
+        "statement": "BV-T04 produced INVALID:B004 and PASSED"
+      },
+      "collected_at": "2026-09-12T00:00:00Z",
+      "collector": {
+        "id": "v147r3-boundary-runner",
+        "version": "14.7-R3"
+      },
+      "integrity": {
+        "hash": "97bf4a3749b3842cc54b46182bd3478ac1e8813322c1dd3de635383a5cf27070",
+        "status": "VALID"
+      },
+      "content_hash": "7da0d93b0d23453732f62f9fd2ac49734e91c816e823977153caa1f041d5af2e"
+    },
+    {
+      "evidence_id": "R3-EVIDENCE-020",
+      "subject_ref": "R3-MAP-020",
+      "source": {
+        "type": "REFERENCE_HARNESS_RESULT",
+        "ref": "MACHINE-TEST-RESULTS.yaml#BV-T05"
+      },
+      "observation": {
+        "statement": "BV-T05 produced INVALID:B005 and PASSED"
+      },
+      "collected_at": "2026-09-12T00:00:00Z",
+      "collector": {
+        "id": "v147r3-boundary-runner",
+        "version": "14.7-R3"
+      },
+      "integrity": {
+        "hash": "9c98ed7184240d0fb6a8f0e3dca06edfe6538ab75ed0aa642d626ef5dbfac348",
+        "status": "VALID"
+      },
+      "content_hash": "e3caaa27e4f5e3770eb13981b5153bca6ce682391dcd29e5fb0f208a20c338ff"
+    },
+    {
+      "evidence_id": "R3-EVIDENCE-021",
+      "subject_ref": "R3-MAP-021",
+      "source": {
+        "type": "REFERENCE_HARNESS_RESULT",
+        "ref": "MACHINE-TEST-RESULTS.yaml#BV-T06"
+      },
+      "observation": {
+        "statement": "BV-T06 produced INVALID:B006 and PASSED"
+      },
+      "collected_at": "2026-09-12T00:00:00Z",
+      "collector": {
+        "id": "v147r3-boundary-runner",
+        "version": "14.7-R3"
+      },
+      "integrity": {
+        "hash": "596a8e0b6c655058f30296bae5457034e55c1f1a9adfad5f07bf80539fad17f2",
+        "status": "VALID"
+      },
+      "content_hash": "5476c3025c91ab9ac10421bf564b1d23a0ca261e2c4f6a8433be838bfa26638b"
+    },
+    {
+      "evidence_id": "R3-EVIDENCE-022",
+      "subject_ref": "R3-MAP-022",
+      "source": {
+        "type": "REFERENCE_HARNESS_RESULT",
+        "ref": "MACHINE-TEST-RESULTS.yaml#BV-T07"
+      },
+      "observation": {
+        "statement": "BV-T07 produced INVALID:B007 and PASSED"
+      },
+      "collected_at": "2026-09-12T00:00:00Z",
+      "collector": {
+        "id": "v147r3-boundary-runner",
+        "version": "14.7-R3"
+      },
+      "integrity": {
+        "hash": "1ee26111b53ed46e0a3f234f818f327145e24578eddc002501158f8dbba7e235",
+        "status": "VALID"
+      },
+      "content_hash": "cbaf427c7ce201263840715cf4fa228f0f87359f203d2c74da718153a81d9c31"
+    },
+    {
+      "evidence_id": "R3-EVIDENCE-023",
+      "subject_ref": "R3-MAP-023",
+      "source": {
+        "type": "REFERENCE_HARNESS_RESULT",
+        "ref": "MACHINE-TEST-RESULTS.yaml#BV-T08"
+      },
+      "observation": {
+        "statement": "BV-T08 produced INVALID:B008 and PASSED"
+      },
+      "collected_at": "2026-09-12T00:00:00Z",
+      "collector": {
+        "id": "v147r3-boundary-runner",
+        "version": "14.7-R3"
+      },
+      "integrity": {
+        "hash": "e37768e351a3fffa5c2874087d2ae5006232396ac3441952d854ae5048f71655",
+        "status": "VALID"
+      },
+      "content_hash": "a87bda2f5155a80f3f1b537f85efaddc1ca88f234435712a4416d6e019f87872"
+    },
+    {
+      "evidence_id": "R3-EVIDENCE-024",
+      "subject_ref": "R3-MAP-024",
+      "source": {
+        "type": "REFERENCE_HARNESS_RESULT",
+        "ref": "MACHINE-TEST-RESULTS.yaml#BV-T09"
+      },
+      "observation": {
+        "statement": "BV-T09 produced INVALID:B009 and PASSED"
+      },
+      "collected_at": "2026-09-12T00:00:00Z",
+      "collector": {
+        "id": "v147r3-boundary-runner",
+        "version": "14.7-R3"
+      },
+      "integrity": {
+        "hash": "f979de755e08b0c29dbc60f5ea718b0c6040703e1454c091bd59f5efb5670eee",
+        "status": "VALID"
+      },
+      "content_hash": "67fbd0119c60c5a93a0a720804e140f515a4219ff19692de3ddf326529aa9c56"
+    }
+  ],
+  "count": 24,
+  "normative_authority": false
+}

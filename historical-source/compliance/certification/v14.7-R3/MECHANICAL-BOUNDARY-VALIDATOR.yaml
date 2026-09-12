@@ -1,0 +1,22 @@
+{
+  "realization_id": "gde-v14.7-r3-boundary-contracts",
+  "realization_version": "14.7-R3",
+  "semantic_version": "v14.7",
+  "entrypoint": "validate_boundary_artifact",
+  "tool": "historical-source/tools/v147r3_boundary_contracts.py",
+  "output_type": "ValidationResult",
+  "defects": {
+    "B001": "REQUIREMENT_CONTAINS_IMPLEMENTATION_MECHANISM",
+    "B002": "INSTRUCTION_LACKS_AUTHORITY",
+    "B003": "PROFILE_BINDING_LACKS_REQUIREMENT",
+    "B004": "PROFILE_LACKS_SPECIFICATION",
+    "B005": "IMPLEMENTATION_LACKS_PROFILE",
+    "B006": "EVIDENCE_LACKS_SUBJECT",
+    "B007": "EVALUATION_LACKS_PREDICATE",
+    "B008": "CONFORMANCE_LACKS_REQUIREMENT",
+    "B009": "CONVERSION_LACKS_RULE",
+    "B010": "NORMATIVE_CLASSIFIED_AS_GUIDANCE",
+    "B011": "IMPLEMENTATION_CLASSIFIED_AS_NORMATIVE",
+    "B012": "PROFILE_CHANGES_FROZEN_SEMANTICS"
+  }
+}
