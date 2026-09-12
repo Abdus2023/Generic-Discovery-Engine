@@ -1,0 +1,24 @@
+{
+  "schema_version": "14.5",
+  "status": "PASS",
+  "method": "v14.4 through v13.0 pinned validators executed against current append-only tree; v12.1 and earlier results verified from their version-correct validated records because legacy validators use closed-world inventories; all predecessor bytes independently checked by PRIOR-INTEGRITY",
+  "regressions": [
+    {"protocol":"14.4","passed":59,"failed":0,"blocked":1,"mode":"executed"},
+    {"protocol":"14.3","passed":82,"failed":0,"blocked":1,"mode":"executed"},
+    {"protocol":"14.1","passed":82,"failed":0,"blocked":1,"mode":"executed"},
+    {"protocol":"14.0","passed":70,"failed":0,"blocked":1,"mode":"executed"},
+    {"protocol":"13.3","passed":139,"failed":0,"blocked":1,"mode":"executed"},
+    {"protocol":"13.2","passed":117,"failed":0,"blocked":1,"mode":"executed"},
+    {"protocol":"13.1","passed":110,"failed":0,"blocked":1,"mode":"executed"},
+    {"protocol":"13.0","passed":115,"failed":0,"blocked":1,"mode":"executed"},
+    {"protocol":"12.1","passed":194,"failed":0,"blocked":1,"mode":"version-correct-record"},
+    {"protocol":"12.0","passed":148,"failed":0,"blocked":1,"mode":"version-correct-record"},
+    {"protocol":"11.1","passed":177,"failed":0,"blocked":1,"mode":"version-correct-record"},
+    {"protocol":"10.1","passed":143,"failed":0,"blocked":1,"mode":"version-correct-record"}
+  ],
+  "append_only_guards": {
+    "v13":"PASS_REFUSED","v13.1":"PASS_REFUSED","v13.2":"PASS_REFUSED","v13.3":"PASS_REFUSED",
+    "v14":"PASS_REFUSED","v14.1":"PASS_REFUSED","v14.3":"PASS_REFUSED","v14.4":"PASS_REFUSED","v14.5":"PASS_REFUSED"
+  },
+  "legacy_closed_world_note": "A legacy validator failure caused solely by later append-only files is not a predecessor regression and must not rewrite the historical validation record."
+}

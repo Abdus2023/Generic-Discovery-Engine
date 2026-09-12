@@ -1,0 +1,19 @@
+{
+  "schema_version": "14.5",
+  "epistemic_status": "SUPPORTED",
+  "claim_class": "NORMATIVE_REQUIREMENT",
+  "normative_origin": "USER_SUPPLIED_V14_5_REFINED_FOR_INTERNAL_CONSISTENCY",
+  "sequence_scope": "ONE_SUBJECT_ONE_DOMAIN_STREAM",
+  "sequence_start": 0,
+  "sequence_increment": 1,
+  "previous_event_id": "EXACT_PREVIOUS_COMMITTED_EVENT_IN_STREAM",
+  "ordering_priority": [
+    "SEQUENCE_NO",
+    "CAUSAL_PREVIOUS_EVENT_ID",
+    "COMMIT_ORDER"
+  ],
+  "all_must_cohere": true,
+  "occurred_at": "DESCRIPTIVE_NOT_SOLE_ORDER",
+  "conflict": "PROJECTION_ORDER_FAILURE",
+  "timestamp_ties": "ALLOWED_WITH_DISTINCT_COHERENT_SEQUENCE"
+}

@@ -1,0 +1,89 @@
+{
+  "schema_version": "14.5",
+  "epistemic_status": "SUPPORTED",
+  "claim_class": "NORMATIVE_REQUIREMENT",
+  "normative_origin": "USER_SUPPLIED_V14_5_REFINED_FOR_INTERNAL_CONSISTENCY",
+  "single_canonical_algorithm": [
+    {
+      "step": 1,
+      "operation": "LOAD_IMMUTABLE_INPUT_SET"
+    },
+    {
+      "step": 2,
+      "operation": "VALIDATE_SCHEMAS"
+    },
+    {
+      "step": 3,
+      "operation": "VALIDATE_REQUIRED_FIELDS_AND_NULLABILITY"
+    },
+    {
+      "step": 4,
+      "operation": "RESOLVE_REFERENCES"
+    },
+    {
+      "step": 5,
+      "operation": "VALIDATE_SCHEMA_COMPATIBILITY"
+    },
+    {
+      "step": 6,
+      "operation": "VALIDATE_HASHES_AND_SIGNATURES"
+    },
+    {
+      "step": 7,
+      "operation": "VALIDATE_EVENT_ORDERING"
+    },
+    {
+      "step": 8,
+      "operation": "VALIDATE_SCOPE"
+    },
+    {
+      "step": 9,
+      "operation": "VALIDATE_TIMESTAMPS_AND_INTERVALS"
+    },
+    {
+      "step": 10,
+      "operation": "VALIDATE_FRESHNESS"
+    },
+    {
+      "step": 11,
+      "operation": "VALIDATE_POLICY_COMPLETENESS"
+    },
+    {
+      "step": 12,
+      "operation": "VALIDATE_AUTHORITY"
+    },
+    {
+      "step": 13,
+      "operation": "VALIDATE_EVALUATION_INTEGRITY"
+    },
+    {
+      "step": 14,
+      "operation": "EVALUATE_PREDICATES"
+    },
+    {
+      "step": 15,
+      "operation": "AGGREGATE_EVALUATION_RESULTS"
+    },
+    {
+      "step": 16,
+      "operation": "PRODUCE_IMMUTABLE_EVALUATION_RECORD"
+    },
+    {
+      "step": 17,
+      "operation": "APPLY_STATE_TRANSITION_GUARDS"
+    },
+    {
+      "step": 18,
+      "operation": "PRODUCE_IMMUTABLE_STATE_OR_DECISION_EVENT"
+    },
+    {
+      "step": 19,
+      "operation": "REBUILD_CURRENT_PROJECTION"
+    },
+    {
+      "step": 20,
+      "operation": "VERIFY_PROJECTION_AGAINST_HISTORY"
+    }
+  ],
+  "failed_step": "PREVENT_DEPENDENT_LATER_STEPS"
+}

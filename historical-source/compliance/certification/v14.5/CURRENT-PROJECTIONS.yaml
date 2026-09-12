@@ -1,0 +1,25 @@
+{
+  "schema_version": "14.5",
+  "epistemic_status": "SUPPORTED",
+  "claim_class": "NORMATIVE_REQUIREMENT",
+  "normative_origin": "USER_SUPPLIED_V14_5_REFINED_FOR_INTERNAL_CONSISTENCY",
+  "objects": [
+    "CURRENT_CERTIFICATE",
+    "CURRENT_CERTIFICATE_VALIDITY",
+    "CURRENT_CERTIFICATE_ELIGIBILITY",
+    "CURRENT_RELEASE_ELIGIBILITY",
+    "CURRENT_RELEASE_DECISION",
+    "CURRENT_RELEASE_EXECUTION",
+    "CURRENT_POST_RELEASE_VERIFICATION"
+  ],
+  "pipeline": [
+    "IMMUTABLE_EVENTS",
+    "VALIDATION",
+    "ORDERING",
+    "PROJECTION",
+    "CURRENT_STATE"
+  ],
+  "reproducible": true,
+  "projection_as_evidence": false,
+  "invalid_history": "NO_TRUSTED_CURRENT_PROJECTION"
+}

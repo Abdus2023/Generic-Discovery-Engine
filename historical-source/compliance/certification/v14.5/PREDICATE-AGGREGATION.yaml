@@ -1,0 +1,18 @@
+{
+  "schema_version": "14.5",
+  "epistemic_status": "SUPPORTED",
+  "claim_class": "NORMATIVE_REQUIREMENT",
+  "normative_origin": "USER_SUPPLIED_V14_5_REFINED_FOR_INTERNAL_CONSISTENCY",
+  "valid_required_precedence": [
+    "FALSE",
+    "BLOCKED",
+    "UNKNOWN",
+    "TRUE"
+  ],
+  "invalid_required": "AGGREGATE_INVALID_BEFORE_ORDINARY_PRECEDENCE",
+  "empty_handled_by_policy": true,
+  "functions": {
+    "aggregate": "tools/build_fail_closed_evaluation_v145.py:aggregate",
+    "authorization": "tools/build_fail_closed_evaluation_v145.py:authorize"
+  }
+}

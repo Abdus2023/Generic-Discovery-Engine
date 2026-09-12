@@ -27,6 +27,7 @@ def build_schemas():
  for k,v in data.items(): dump(SCHEMA/f'{k}.schema.yaml',v)
 def main():
  if not (V143/'VALIDATION.yaml').is_file(): raise RuntimeError('validated v14.3 required')
+ if (OUT/'certification/v14.5').exists(): raise RuntimeError('refusing to erase predecessor artifacts after append-only v14.5 extension')
  if DEST.exists() and any(load(DEST/n).get('objects') for n in ['CURRENT-STATUS.yaml'] if (DEST/n).is_file()): raise RuntimeError('refusing to erase appended v14.4 records')
  before=[{'path':str(p.relative_to(OUT)),'sha256':sha(p),'bytes':p.stat().st_size} for p in sorted(OUT.rglob('*')) if p.is_file() and DEST not in p.parents]
  if DEST.exists(): shutil.rmtree(DEST)

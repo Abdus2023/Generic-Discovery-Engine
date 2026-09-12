@@ -1,0 +1,1048 @@
+{
+  "schema_version": "14.5",
+  "epistemic_status": "SUPPORTED",
+  "claim_class": "NORMATIVE_REQUIREMENT",
+  "normative_origin": "USER_SUPPLIED_V14_5_REFINED_FOR_INTERNAL_CONSISTENCY",
+  "synthetic_non_normative": true,
+  "vectors": [
+    {
+      "vector_id": "V145-TV-001",
+      "name": "VALID_PREDICATE",
+      "synthetic_non_normative": true,
+      "input": {
+        "evaluation_results": [
+          "TRUE"
+        ],
+        "fixture": "VALID_PREDICATE"
+      },
+      "expected_predicates": {
+        "aggregate_inputs": [
+          "TRUE"
+        ]
+      },
+      "expected_result": "TRUE",
+      "computed_result": "TRUE",
+      "expected_event": "DOMAIN_EVENT_IF_STATE_CHANGES",
+      "expected_current_projection": "RECONSTRUCT_FROM_EXPECTED_EVENTS",
+      "expected_failure_class": null,
+      "reason_codes": [
+        "VALID_PREDICATE"
+      ],
+      "passed": true
+    },
+    {
+      "vector_id": "V145-TV-002",
+      "name": "PROVEN_FAILURE",
+      "synthetic_non_normative": true,
+      "input": {
+        "evaluation_results": [
+          "FALSE"
+        ],
+        "fixture": "PROVEN_FAILURE"
+      },
+      "expected_predicates": {
+        "aggregate_inputs": [
+          "FALSE"
+        ]
+      },
+      "expected_result": "FALSE",
+      "computed_result": "FALSE",
+      "expected_event": "DOMAIN_EVENT_IF_STATE_CHANGES",
+      "expected_current_projection": "RECONSTRUCT_FROM_EXPECTED_EVENTS",
+      "expected_failure_class": null,
+      "reason_codes": [
+        "PROVEN_FAILURE"
+      ],
+      "passed": true
+    },
+    {
+      "vector_id": "V145-TV-003",
+      "name": "MISSING_REQUIRED_EVIDENCE",
+      "synthetic_non_normative": true,
+      "input": {
+        "evaluation_results": [
+          "BLOCKED"
+        ],
+        "fixture": "MISSING_REQUIRED_EVIDENCE"
+      },
+      "expected_predicates": {
+        "aggregate_inputs": [
+          "BLOCKED"
+        ]
+      },
+      "expected_result": "BLOCKED",
+      "computed_result": "BLOCKED",
+      "expected_event": null,
+      "expected_current_projection": "UNCHANGED_ON_FAILURE",
+      "expected_failure_class": "EVALUATION_REFERENCE_FAILURE",
+      "reason_codes": [
+        "MISSING_REQUIRED_EVIDENCE"
+      ],
+      "passed": true
+    },
+    {
+      "vector_id": "V145-TV-004",
+      "name": "BROKEN_EVIDENCE_HASH",
+      "synthetic_non_normative": true,
+      "input": {
+        "evaluation_results": [
+          "INVALID"
+        ],
+        "fixture": "BROKEN_EVIDENCE_HASH"
+      },
+      "expected_predicates": {
+        "aggregate_inputs": [
+          "INVALID"
+        ]
+      },
+      "expected_result": "INVALID",
+      "computed_result": "INVALID",
+      "expected_event": null,
+      "expected_current_projection": "UNCHANGED_ON_FAILURE",
+      "expected_failure_class": "EVALUATION_INTEGRITY_FAILURE",
+      "reason_codes": [
+        "BROKEN_EVIDENCE_HASH"
+      ],
+      "passed": true
+    },
+    {
+      "vector_id": "V145-TV-005",
+      "name": "UNKNOWN_PREDICATE",
+      "synthetic_non_normative": true,
+      "input": {
+        "evaluation_results": [
+          "UNKNOWN"
+        ],
+        "fixture": "UNKNOWN_PREDICATE"
+      },
+      "expected_predicates": {
+        "aggregate_inputs": [
+          "UNKNOWN"
+        ]
+      },
+      "expected_result": "UNKNOWN",
+      "computed_result": "UNKNOWN",
+      "expected_event": "DOMAIN_EVENT_IF_STATE_CHANGES",
+      "expected_current_projection": "RECONSTRUCT_FROM_EXPECTED_EVENTS",
+      "expected_failure_class": null,
+      "reason_codes": [
+        "UNKNOWN_PREDICATE"
+      ],
+      "passed": true
+    },
+    {
+      "vector_id": "V145-TV-006",
+      "name": "UNAUTHORIZED_ISSUER",
+      "synthetic_non_normative": true,
+      "input": {
+        "evaluation_results": [
+          "TRUE",
+          "FALSE",
+          "TRUE"
+        ],
+        "fixture": "UNAUTHORIZED_ISSUER"
+      },
+      "expected_predicates": {
+        "aggregate_inputs": [
+          "TRUE",
+          "FALSE",
+          "TRUE"
+        ]
+      },
+      "expected_result": "REFUSED",
+      "computed_result": "REFUSED",
+      "expected_event": null,
+      "expected_current_projection": "UNCHANGED_ON_FAILURE",
+      "expected_failure_class": "ISSUANCE_AUTHORITY_FAILURE",
+      "reason_codes": [
+        "UNAUTHORIZED_ISSUER"
+      ],
+      "passed": true
+    },
+    {
+      "vector_id": "V145-TV-007",
+      "name": "EXPIRED_AUTHORITY",
+      "synthetic_non_normative": true,
+      "input": {
+        "evaluation_results": [
+          "TRUE",
+          "FALSE",
+          "TRUE"
+        ],
+        "fixture": "EXPIRED_AUTHORITY"
+      },
+      "expected_predicates": {
+        "aggregate_inputs": [
+          "TRUE",
+          "FALSE",
+          "TRUE"
+        ]
+      },
+      "expected_result": "REFUSED",
+      "computed_result": "REFUSED",
+      "expected_event": null,
+      "expected_current_projection": "UNCHANGED_ON_FAILURE",
+      "expected_failure_class": "ISSUANCE_AUTHORITY_FAILURE",
+      "reason_codes": [
+        "EXPIRED_AUTHORITY"
+      ],
+      "passed": true
+    },
+    {
+      "vector_id": "V145-TV-008",
+      "name": "MISSING_POLICY_MAPPING",
+      "synthetic_non_normative": true,
+      "input": {
+        "evaluation_results": [
+          "INVALID"
+        ],
+        "fixture": "MISSING_POLICY_MAPPING"
+      },
+      "expected_predicates": {
+        "aggregate_inputs": [
+          "INVALID"
+        ]
+      },
+      "expected_result": "INVALID",
+      "computed_result": "INVALID",
+      "expected_event": null,
+      "expected_current_projection": "UNCHANGED_ON_FAILURE",
+      "expected_failure_class": "EVALUATION_POLICY_FAILURE",
+      "reason_codes": [
+        "MISSING_POLICY_MAPPING"
+      ],
+      "passed": true
+    },
+    {
+      "vector_id": "V145-TV-009",
+      "name": "EXPLICIT_DEFER",
+      "synthetic_non_normative": true,
+      "input": {
+        "evaluation_results": [
+          "UNKNOWN"
+        ],
+        "fixture": "EXPLICIT_DEFER"
+      },
+      "expected_predicates": {
+        "aggregate_inputs": [
+          "UNKNOWN"
+        ]
+      },
+      "expected_result": "DEFERRED",
+      "computed_result": "DEFERRED",
+      "expected_event": "DOMAIN_EVENT_IF_STATE_CHANGES",
+      "expected_current_projection": "RECONSTRUCT_FROM_EXPECTED_EVENTS",
+      "expected_failure_class": null,
+      "reason_codes": [
+        "EXPLICIT_DEFER"
+      ],
+      "passed": true
+    },
+    {
+      "vector_id": "V145-TV-010",
+      "name": "EMPTY_GATE_NO_ACTION",
+      "synthetic_non_normative": true,
+      "input": {
+        "evaluation_results": [
+          "INVALID"
+        ],
+        "fixture": "EMPTY_GATE_NO_ACTION"
+      },
+      "expected_predicates": {
+        "aggregate_inputs": [
+          "INVALID"
+        ]
+      },
+      "expected_result": "INVALID",
+      "computed_result": "INVALID",
+      "expected_event": null,
+      "expected_current_projection": "UNCHANGED_ON_FAILURE",
+      "expected_failure_class": "EVALUATION_POLICY_FAILURE",
+      "reason_codes": [
+        "EMPTY_GATE_NO_ACTION"
+      ],
+      "passed": true
+    },
+    {
+      "vector_id": "V145-TV-011",
+      "name": "EMPTY_GATE_ALLOW",
+      "synthetic_non_normative": true,
+      "input": {
+        "evaluation_results": [],
+        "fixture": "EMPTY_GATE_ALLOW"
+      },
+      "expected_predicates": {
+        "aggregate_inputs": []
+      },
+      "expected_result": "TRUE",
+      "computed_result": "TRUE",
+      "expected_event": "DOMAIN_EVENT_IF_STATE_CHANGES",
+      "expected_current_projection": "RECONSTRUCT_FROM_EXPECTED_EVENTS",
+      "expected_failure_class": null,
+      "reason_codes": [
+        "EMPTY_GATE_ALLOW"
+      ],
+      "passed": true
+    },
+    {
+      "vector_id": "V145-TV-012",
+      "name": "MULTI_PARTY_THRESHOLD_SHORT",
+      "synthetic_non_normative": true,
+      "input": {
+        "evaluation_results": [
+          "TRUE",
+          "FALSE",
+          "TRUE"
+        ],
+        "fixture": "MULTI_PARTY_THRESHOLD_SHORT"
+      },
+      "expected_predicates": {
+        "aggregate_inputs": [
+          "TRUE",
+          "FALSE",
+          "TRUE"
+        ]
+      },
+      "expected_result": "REFUSED",
+      "computed_result": "REFUSED",
+      "expected_event": null,
+      "expected_current_projection": "UNCHANGED_ON_FAILURE",
+      "expected_failure_class": "ISSUANCE_AUTHORITY_FAILURE",
+      "reason_codes": [
+        "MULTI_PARTY_THRESHOLD_SHORT"
+      ],
+      "passed": true
+    },
+    {
+      "vector_id": "V145-TV-013",
+      "name": "ARTIFACT_CHANGED",
+      "synthetic_non_normative": true,
+      "input": {
+        "evaluation_results": [
+          "TRUE"
+        ],
+        "fixture": "ARTIFACT_CHANGED"
+      },
+      "expected_predicates": {
+        "aggregate_inputs": [
+          "TRUE"
+        ]
+      },
+      "expected_result": "NEW_EVALUATION_REQUIRED",
+      "computed_result": "NEW_EVALUATION_REQUIRED",
+      "expected_event": "DOMAIN_EVENT_IF_STATE_CHANGES",
+      "expected_current_projection": "RECONSTRUCT_FROM_EXPECTED_EVENTS",
+      "expected_failure_class": null,
+      "reason_codes": [
+        "ARTIFACT_CHANGED"
+      ],
+      "passed": true
+    },
+    {
+      "vector_id": "V145-TV-014",
+      "name": "PROJECTION_CORRUPTION",
+      "synthetic_non_normative": true,
+      "input": {
+        "evaluation_results": [
+          "INVALID"
+        ],
+        "fixture": "PROJECTION_CORRUPTION"
+      },
+      "expected_predicates": {
+        "aggregate_inputs": [
+          "INVALID"
+        ]
+      },
+      "expected_result": "INVALID",
+      "computed_result": "INVALID",
+      "expected_event": null,
+      "expected_current_projection": "UNCHANGED_ON_FAILURE",
+      "expected_failure_class": "PROJECTION_RECONSTRUCTION_FAILURE",
+      "reason_codes": [
+        "PROJECTION_CORRUPTION"
+      ],
+      "passed": true
+    },
+    {
+      "vector_id": "V145-TV-015",
+      "name": "FALSE_DOMINATES_BLOCKED",
+      "synthetic_non_normative": true,
+      "input": {
+        "evaluation_results": [
+          "BLOCKED",
+          "FALSE"
+        ],
+        "fixture": "FALSE_DOMINATES_BLOCKED"
+      },
+      "expected_predicates": {
+        "aggregate_inputs": [
+          "BLOCKED",
+          "FALSE"
+        ]
+      },
+      "expected_result": "FALSE",
+      "computed_result": "FALSE",
+      "expected_event": "DOMAIN_EVENT_IF_STATE_CHANGES",
+      "expected_current_projection": "RECONSTRUCT_FROM_EXPECTED_EVENTS",
+      "expected_failure_class": null,
+      "reason_codes": [
+        "FALSE_DOMINATES_BLOCKED"
+      ],
+      "passed": true
+    },
+    {
+      "vector_id": "V145-TV-016",
+      "name": "INVALID_NOT_HIDDEN_BY_FALSE",
+      "synthetic_non_normative": true,
+      "input": {
+        "evaluation_results": [
+          "INVALID",
+          "FALSE"
+        ],
+        "fixture": "INVALID_NOT_HIDDEN_BY_FALSE"
+      },
+      "expected_predicates": {
+        "aggregate_inputs": [
+          "INVALID",
+          "FALSE"
+        ]
+      },
+      "expected_result": "INVALID",
+      "computed_result": "INVALID",
+      "expected_event": null,
+      "expected_current_projection": "UNCHANGED_ON_FAILURE",
+      "expected_failure_class": "EVALUATION_INTEGRITY_FAILURE",
+      "reason_codes": [
+        "INVALID_NOT_HIDDEN_BY_FALSE"
+      ],
+      "passed": true
+    },
+    {
+      "vector_id": "V145-TV-017",
+      "name": "BLOCKED_DOMINATES_UNKNOWN",
+      "synthetic_non_normative": true,
+      "input": {
+        "evaluation_results": [
+          "UNKNOWN",
+          "BLOCKED"
+        ],
+        "fixture": "BLOCKED_DOMINATES_UNKNOWN"
+      },
+      "expected_predicates": {
+        "aggregate_inputs": [
+          "UNKNOWN",
+          "BLOCKED"
+        ]
+      },
+      "expected_result": "BLOCKED",
+      "computed_result": "BLOCKED",
+      "expected_event": "DOMAIN_EVENT_IF_STATE_CHANGES",
+      "expected_current_projection": "RECONSTRUCT_FROM_EXPECTED_EVENTS",
+      "expected_failure_class": null,
+      "reason_codes": [
+        "BLOCKED_DOMINATES_UNKNOWN"
+      ],
+      "passed": true
+    },
+    {
+      "vector_id": "V145-TV-018",
+      "name": "UNKNOWN_DOMINATES_TRUE",
+      "synthetic_non_normative": true,
+      "input": {
+        "evaluation_results": [
+          "TRUE",
+          "UNKNOWN"
+        ],
+        "fixture": "UNKNOWN_DOMINATES_TRUE"
+      },
+      "expected_predicates": {
+        "aggregate_inputs": [
+          "TRUE",
+          "UNKNOWN"
+        ]
+      },
+      "expected_result": "UNKNOWN",
+      "computed_result": "UNKNOWN",
+      "expected_event": "DOMAIN_EVENT_IF_STATE_CHANGES",
+      "expected_current_projection": "RECONSTRUCT_FROM_EXPECTED_EVENTS",
+      "expected_failure_class": null,
+      "reason_codes": [
+        "UNKNOWN_DOMINATES_TRUE"
+      ],
+      "passed": true
+    },
+    {
+      "vector_id": "V145-TV-019",
+      "name": "ALL_TRUE",
+      "synthetic_non_normative": true,
+      "input": {
+        "evaluation_results": [
+          "TRUE",
+          "TRUE"
+        ],
+        "fixture": "ALL_TRUE"
+      },
+      "expected_predicates": {
+        "aggregate_inputs": [
+          "TRUE",
+          "TRUE"
+        ]
+      },
+      "expected_result": "TRUE",
+      "computed_result": "TRUE",
+      "expected_event": "DOMAIN_EVENT_IF_STATE_CHANGES",
+      "expected_current_projection": "RECONSTRUCT_FROM_EXPECTED_EVENTS",
+      "expected_failure_class": null,
+      "reason_codes": [
+        "ALL_TRUE"
+      ],
+      "passed": true
+    },
+    {
+      "vector_id": "V145-TV-020",
+      "name": "STALE_DEFAULT_UNKNOWN",
+      "synthetic_non_normative": true,
+      "input": {
+        "evaluation_results": [
+          "UNKNOWN"
+        ],
+        "fixture": "STALE_DEFAULT_UNKNOWN"
+      },
+      "expected_predicates": {
+        "aggregate_inputs": [
+          "UNKNOWN"
+        ]
+      },
+      "expected_result": "UNKNOWN",
+      "computed_result": "UNKNOWN",
+      "expected_event": null,
+      "expected_current_projection": "UNCHANGED_ON_FAILURE",
+      "expected_failure_class": "EVALUATION_FRESHNESS_FAILURE",
+      "reason_codes": [
+        "STALE_DEFAULT_UNKNOWN"
+      ],
+      "passed": true
+    },
+    {
+      "vector_id": "V145-TV-021",
+      "name": "STALE_POLICY_BLOCK",
+      "synthetic_non_normative": true,
+      "input": {
+        "evaluation_results": [
+          "BLOCKED"
+        ],
+        "fixture": "STALE_POLICY_BLOCK"
+      },
+      "expected_predicates": {
+        "aggregate_inputs": [
+          "BLOCKED"
+        ]
+      },
+      "expected_result": "BLOCKED",
+      "computed_result": "BLOCKED",
+      "expected_event": null,
+      "expected_current_projection": "UNCHANGED_ON_FAILURE",
+      "expected_failure_class": "EVALUATION_FRESHNESS_FAILURE",
+      "reason_codes": [
+        "STALE_POLICY_BLOCK"
+      ],
+      "passed": true
+    },
+    {
+      "vector_id": "V145-TV-022",
+      "name": "INVALID_SIGNATURE",
+      "synthetic_non_normative": true,
+      "input": {
+        "evaluation_results": [
+          "INVALID"
+        ],
+        "fixture": "INVALID_SIGNATURE"
+      },
+      "expected_predicates": {
+        "aggregate_inputs": [
+          "INVALID"
+        ]
+      },
+      "expected_result": "INVALID",
+      "computed_result": "INVALID",
+      "expected_event": null,
+      "expected_current_projection": "UNCHANGED_ON_FAILURE",
+      "expected_failure_class": "EVALUATION_INTEGRITY_FAILURE",
+      "reason_codes": [
+        "INVALID_SIGNATURE"
+      ],
+      "passed": true
+    },
+    {
+      "vector_id": "V145-TV-023",
+      "name": "UNRESOLVED_OPTIONAL_REFERENCE",
+      "synthetic_non_normative": true,
+      "input": {
+        "evaluation_results": [
+          "TRUE"
+        ],
+        "fixture": "UNRESOLVED_OPTIONAL_REFERENCE"
+      },
+      "expected_predicates": {
+        "aggregate_inputs": [
+          "TRUE"
+        ]
+      },
+      "expected_result": "TRUE",
+      "computed_result": "TRUE",
+      "expected_event": "DOMAIN_EVENT_IF_STATE_CHANGES",
+      "expected_current_projection": "RECONSTRUCT_FROM_EXPECTED_EVENTS",
+      "expected_failure_class": null,
+      "reason_codes": [
+        "UNRESOLVED_OPTIONAL_REFERENCE"
+      ],
+      "passed": true
+    },
+    {
+      "vector_id": "V145-TV-024",
+      "name": "UNRESOLVED_REQUIRED_REFERENCE",
+      "synthetic_non_normative": true,
+      "input": {
+        "evaluation_results": [
+          "INVALID"
+        ],
+        "fixture": "UNRESOLVED_REQUIRED_REFERENCE"
+      },
+      "expected_predicates": {
+        "aggregate_inputs": [
+          "INVALID"
+        ]
+      },
+      "expected_result": "INVALID",
+      "computed_result": "INVALID",
+      "expected_event": null,
+      "expected_current_projection": "UNCHANGED_ON_FAILURE",
+      "expected_failure_class": "EVALUATION_REFERENCE_FAILURE",
+      "reason_codes": [
+        "UNRESOLVED_REQUIRED_REFERENCE"
+      ],
+      "passed": true
+    },
+    {
+      "vector_id": "V145-TV-025",
+      "name": "AUTOMATION_WITHOUT_POLICY",
+      "synthetic_non_normative": true,
+      "input": {
+        "evaluation_results": [
+          "TRUE",
+          "FALSE",
+          "TRUE"
+        ],
+        "fixture": "AUTOMATION_WITHOUT_POLICY"
+      },
+      "expected_predicates": {
+        "aggregate_inputs": [
+          "TRUE",
+          "FALSE",
+          "TRUE"
+        ]
+      },
+      "expected_result": "REFUSED",
+      "computed_result": "REFUSED",
+      "expected_event": null,
+      "expected_current_projection": "UNCHANGED_ON_FAILURE",
+      "expected_failure_class": "ISSUANCE_AUTHORITY_FAILURE",
+      "reason_codes": [
+        "AUTOMATION_WITHOUT_POLICY"
+      ],
+      "passed": true
+    },
+    {
+      "vector_id": "V145-TV-026",
+      "name": "DELEGATE_SCOPE_EXCEEDS_PARENT",
+      "synthetic_non_normative": true,
+      "input": {
+        "evaluation_results": [
+          "TRUE",
+          "FALSE",
+          "TRUE"
+        ],
+        "fixture": "DELEGATE_SCOPE_EXCEEDS_PARENT"
+      },
+      "expected_predicates": {
+        "aggregate_inputs": [
+          "TRUE",
+          "FALSE",
+          "TRUE"
+        ]
+      },
+      "expected_result": "REFUSED",
+      "computed_result": "REFUSED",
+      "expected_event": null,
+      "expected_current_projection": "UNCHANGED_ON_FAILURE",
+      "expected_failure_class": "ISSUANCE_SCOPE_FAILURE",
+      "reason_codes": [
+        "DELEGATE_SCOPE_EXCEEDS_PARENT"
+      ],
+      "passed": true
+    },
+    {
+      "vector_id": "V145-TV-027",
+      "name": "MULTIPARTY_DUPLICATE_ACTOR",
+      "synthetic_non_normative": true,
+      "input": {
+        "evaluation_results": [
+          "TRUE",
+          "FALSE",
+          "TRUE"
+        ],
+        "fixture": "MULTIPARTY_DUPLICATE_ACTOR"
+      },
+      "expected_predicates": {
+        "aggregate_inputs": [
+          "TRUE",
+          "FALSE",
+          "TRUE"
+        ]
+      },
+      "expected_result": "REFUSED",
+      "computed_result": "REFUSED",
+      "expected_event": null,
+      "expected_current_projection": "UNCHANGED_ON_FAILURE",
+      "expected_failure_class": "ISSUANCE_AUTHORITY_FAILURE",
+      "reason_codes": [
+        "MULTIPARTY_DUPLICATE_ACTOR"
+      ],
+      "passed": true
+    },
+    {
+      "vector_id": "V145-TV-028",
+      "name": "CANDIDATE_AUTHORIZED_NOT_ISSUED",
+      "synthetic_non_normative": true,
+      "input": {
+        "evaluation_results": [
+          "TRUE",
+          "TRUE",
+          "TRUE"
+        ],
+        "fixture": "CANDIDATE_AUTHORIZED_NOT_ISSUED"
+      },
+      "expected_predicates": {
+        "aggregate_inputs": [
+          "TRUE",
+          "TRUE",
+          "TRUE"
+        ]
+      },
+      "expected_result": "AUTHORIZED",
+      "computed_result": "AUTHORIZED",
+      "expected_event": "DOMAIN_EVENT_IF_STATE_CHANGES",
+      "expected_current_projection": "RECONSTRUCT_FROM_EXPECTED_EVENTS",
+      "expected_failure_class": null,
+      "reason_codes": [
+        "CANDIDATE_AUTHORIZED_NOT_ISSUED"
+      ],
+      "passed": true
+    },
+    {
+      "vector_id": "V145-TV-029",
+      "name": "ISSUED_NOT_AUTOMATICALLY_VALID",
+      "synthetic_non_normative": true,
+      "input": {
+        "evaluation_results": [
+          "UNKNOWN"
+        ],
+        "fixture": "ISSUED_NOT_AUTOMATICALLY_VALID"
+      },
+      "expected_predicates": {
+        "aggregate_inputs": [
+          "UNKNOWN"
+        ]
+      },
+      "expected_result": "UNKNOWN",
+      "computed_result": "UNKNOWN",
+      "expected_event": "DOMAIN_EVENT_IF_STATE_CHANGES",
+      "expected_current_projection": "RECONSTRUCT_FROM_EXPECTED_EVENTS",
+      "expected_failure_class": null,
+      "reason_codes": [
+        "ISSUED_NOT_AUTOMATICALLY_VALID"
+      ],
+      "passed": true
+    },
+    {
+      "vector_id": "V145-TV-030",
+      "name": "VALID_NOT_RELEASE_APPROVED",
+      "synthetic_non_normative": true,
+      "input": {
+        "evaluation_results": [
+          "TRUE"
+        ],
+        "fixture": "VALID_NOT_RELEASE_APPROVED"
+      },
+      "expected_predicates": {
+        "aggregate_inputs": [
+          "TRUE"
+        ]
+      },
+      "expected_result": "VALID_ONLY",
+      "computed_result": "VALID_ONLY",
+      "expected_event": "DOMAIN_EVENT_IF_STATE_CHANGES",
+      "expected_current_projection": "RECONSTRUCT_FROM_EXPECTED_EVENTS",
+      "expected_failure_class": null,
+      "reason_codes": [
+        "VALID_NOT_RELEASE_APPROVED"
+      ],
+      "passed": true
+    },
+    {
+      "vector_id": "V145-TV-031",
+      "name": "EVENT_SEQUENCE_GAP",
+      "synthetic_non_normative": true,
+      "input": {
+        "evaluation_results": [
+          "INVALID"
+        ],
+        "fixture": "EVENT_SEQUENCE_GAP"
+      },
+      "expected_predicates": {
+        "aggregate_inputs": [
+          "INVALID"
+        ]
+      },
+      "expected_result": "INVALID",
+      "computed_result": "INVALID",
+      "expected_event": null,
+      "expected_current_projection": "UNCHANGED_ON_FAILURE",
+      "expected_failure_class": "PROJECTION_ORDER_FAILURE",
+      "reason_codes": [
+        "EVENT_SEQUENCE_GAP"
+      ],
+      "passed": true
+    },
+    {
+      "vector_id": "V145-TV-032",
+      "name": "EVENT_CAUSAL_CONFLICT",
+      "synthetic_non_normative": true,
+      "input": {
+        "evaluation_results": [
+          "INVALID"
+        ],
+        "fixture": "EVENT_CAUSAL_CONFLICT"
+      },
+      "expected_predicates": {
+        "aggregate_inputs": [
+          "INVALID"
+        ]
+      },
+      "expected_result": "INVALID",
+      "computed_result": "INVALID",
+      "expected_event": null,
+      "expected_current_projection": "UNCHANGED_ON_FAILURE",
+      "expected_failure_class": "PROJECTION_ORDER_FAILURE",
+      "reason_codes": [
+        "EVENT_CAUSAL_CONFLICT"
+      ],
+      "passed": true
+    },
+    {
+      "vector_id": "V145-TV-033",
+      "name": "PROJECTION_RECONSTRUCTED",
+      "synthetic_non_normative": true,
+      "input": {
+        "evaluation_results": [
+          "TRUE"
+        ],
+        "fixture": "PROJECTION_RECONSTRUCTED"
+      },
+      "expected_predicates": {
+        "aggregate_inputs": [
+          "TRUE"
+        ]
+      },
+      "expected_result": "PROJECTION_VALID",
+      "computed_result": "PROJECTION_VALID",
+      "expected_event": "DOMAIN_EVENT_IF_STATE_CHANGES",
+      "expected_current_projection": "RECONSTRUCT_FROM_EXPECTED_EVENTS",
+      "expected_failure_class": null,
+      "reason_codes": [
+        "PROJECTION_RECONSTRUCTED"
+      ],
+      "passed": true
+    },
+    {
+      "vector_id": "V145-TV-034",
+      "name": "DECISION_BASIS_IDENTICAL_REUSE",
+      "synthetic_non_normative": true,
+      "input": {
+        "evaluation_results": [
+          "TRUE"
+        ],
+        "fixture": "DECISION_BASIS_IDENTICAL_REUSE"
+      },
+      "expected_predicates": {
+        "aggregate_inputs": [
+          "TRUE"
+        ]
+      },
+      "expected_result": "REUSABLE",
+      "computed_result": "REUSABLE",
+      "expected_event": "DOMAIN_EVENT_IF_STATE_CHANGES",
+      "expected_current_projection": "RECONSTRUCT_FROM_EXPECTED_EVENTS",
+      "expected_failure_class": null,
+      "reason_codes": [
+        "DECISION_BASIS_IDENTICAL_REUSE"
+      ],
+      "passed": true
+    },
+    {
+      "vector_id": "V145-TV-035",
+      "name": "DECISION_AUTHORITY_CONTEXT_CHANGED",
+      "synthetic_non_normative": true,
+      "input": {
+        "evaluation_results": [
+          "TRUE"
+        ],
+        "fixture": "DECISION_AUTHORITY_CONTEXT_CHANGED"
+      },
+      "expected_predicates": {
+        "aggregate_inputs": [
+          "TRUE"
+        ]
+      },
+      "expected_result": "NEW_EVALUATION_REQUIRED",
+      "computed_result": "NEW_EVALUATION_REQUIRED",
+      "expected_event": "DOMAIN_EVENT_IF_STATE_CHANGES",
+      "expected_current_projection": "RECONSTRUCT_FROM_EXPECTED_EVENTS",
+      "expected_failure_class": null,
+      "reason_codes": [
+        "DECISION_AUTHORITY_CONTEXT_CHANGED"
+      ],
+      "passed": true
+    },
+    {
+      "vector_id": "V145-TV-036",
+      "name": "RELEASE_UNKNOWN_NO_ACTION",
+      "synthetic_non_normative": true,
+      "input": {
+        "evaluation_results": [
+          "UNKNOWN"
+        ],
+        "fixture": "RELEASE_UNKNOWN_NO_ACTION"
+      },
+      "expected_predicates": {
+        "aggregate_inputs": [
+          "UNKNOWN"
+        ]
+      },
+      "expected_result": "NO_DECISION",
+      "computed_result": "NO_DECISION",
+      "expected_event": "DOMAIN_EVENT_IF_STATE_CHANGES",
+      "expected_current_projection": "RECONSTRUCT_FROM_EXPECTED_EVENTS",
+      "expected_failure_class": null,
+      "reason_codes": [
+        "RELEASE_UNKNOWN_NO_ACTION"
+      ],
+      "passed": true
+    },
+    {
+      "vector_id": "V145-TV-037",
+      "name": "RELEASE_UNKNOWN_EXPLICIT_DEFER",
+      "synthetic_non_normative": true,
+      "input": {
+        "evaluation_results": [
+          "UNKNOWN"
+        ],
+        "fixture": "RELEASE_UNKNOWN_EXPLICIT_DEFER"
+      },
+      "expected_predicates": {
+        "aggregate_inputs": [
+          "UNKNOWN"
+        ]
+      },
+      "expected_result": "DEFERRED",
+      "computed_result": "DEFERRED",
+      "expected_event": "DOMAIN_EVENT_IF_STATE_CHANGES",
+      "expected_current_projection": "RECONSTRUCT_FROM_EXPECTED_EVENTS",
+      "expected_failure_class": null,
+      "reason_codes": [
+        "RELEASE_UNKNOWN_EXPLICIT_DEFER"
+      ],
+      "passed": true
+    },
+    {
+      "vector_id": "V145-TV-038",
+      "name": "POST_RELEASE_FAILED_NO_REWRITE",
+      "synthetic_non_normative": true,
+      "input": {
+        "evaluation_results": [
+          "FALSE"
+        ],
+        "fixture": "POST_RELEASE_FAILED_NO_REWRITE"
+      },
+      "expected_predicates": {
+        "aggregate_inputs": [
+          "FALSE"
+        ]
+      },
+      "expected_result": "FAILED_NO_HISTORY_REWRITE",
+      "computed_result": "FAILED_NO_HISTORY_REWRITE",
+      "expected_event": "DOMAIN_EVENT_IF_STATE_CHANGES",
+      "expected_current_projection": "RECONSTRUCT_FROM_EXPECTED_EVENTS",
+      "expected_failure_class": null,
+      "reason_codes": [
+        "POST_RELEASE_FAILED_NO_REWRITE"
+      ],
+      "passed": true
+    },
+    {
+      "vector_id": "V145-TV-039",
+      "name": "FUTURE_EVIDENCE_HISTORICAL_REPLAY",
+      "synthetic_non_normative": true,
+      "input": {
+        "evaluation_results": [
+          "INVALID"
+        ],
+        "fixture": "FUTURE_EVIDENCE_HISTORICAL_REPLAY"
+      },
+      "expected_predicates": {
+        "aggregate_inputs": [
+          "INVALID"
+        ]
+      },
+      "expected_result": "INVALID",
+      "computed_result": "INVALID",
+      "expected_event": null,
+      "expected_current_projection": "UNCHANGED_ON_FAILURE",
+      "expected_failure_class": "EVALUATION_FRESHNESS_FAILURE",
+      "reason_codes": [
+        "FUTURE_EVIDENCE_HISTORICAL_REPLAY"
+      ],
+      "passed": true
+    },
+    {
+      "vector_id": "V145-TV-040",
+      "name": "HASH_TYPE_SUBSTITUTION",
+      "synthetic_non_normative": true,
+      "input": {
+        "evaluation_results": [
+          "INVALID"
+        ],
+        "fixture": "HASH_TYPE_SUBSTITUTION"
+      },
+      "expected_predicates": {
+        "aggregate_inputs": [
+          "INVALID"
+        ]
+      },
+      "expected_result": "INVALID",
+      "computed_result": "INVALID",
+      "expected_event": null,
+      "expected_current_projection": "UNCHANGED_ON_FAILURE",
+      "expected_failure_class": "EVALUATION_INTEGRITY_FAILURE",
+      "reason_codes": [
+        "HASH_TYPE_SUBSTITUTION"
+      ],
+      "passed": true
+    }
+  ],
+  "summary": {
+    "total": 40,
+    "passed": 40,
+    "failed": 0
+  }
+}

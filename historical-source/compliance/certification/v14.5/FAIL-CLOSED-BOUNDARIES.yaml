@@ -1,0 +1,38 @@
+{
+  "schema_version": "14.5",
+  "epistemic_status": "SUPPORTED",
+  "claim_class": "NORMATIVE_REQUIREMENT",
+  "normative_origin": "USER_SUPPLIED_V14_5_REFINED_FOR_INTERNAL_CONSISTENCY",
+  "levels": [
+    {
+      "level": "L0_STRUCTURAL",
+      "failure": "INVALID",
+      "later": "STOP"
+    },
+    {
+      "level": "L1_REFERENTIAL",
+      "failure": "INVALID_UNLESS_EXPLICIT_OPTIONAL",
+      "later": "STOP"
+    },
+    {
+      "level": "L2_INTEGRITY",
+      "failure": "INVALID",
+      "later": "STOP"
+    },
+    {
+      "level": "L3_SEMANTIC",
+      "outcomes": [
+        "TRUE",
+        "FALSE",
+        "UNKNOWN",
+        "BLOCKED"
+      ]
+    },
+    {
+      "level": "L4_AUTHORIZATION",
+      "failure": "NO_AUTHORIZATION"
+    }
+  ],
+  "universal_rule": "REQUIRED_VALIDATION_FAILURE_PREVENTS_STRONGER_CLAIM",
+  "does_not_imply_nonconformance": true
+}

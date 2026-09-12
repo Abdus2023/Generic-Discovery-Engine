@@ -1,0 +1,26 @@
+{
+  "schema_version": "14.5",
+  "epistemic_status": "SUPPORTED",
+  "claim_class": "NORMATIVE_REQUIREMENT",
+  "normative_origin": "USER_SUPPLIED_V14_5_REFINED_FOR_INTERNAL_CONSISTENCY",
+  "consumes": [
+    "RELEASE_ELIGIBILITY",
+    "CERTIFICATE_VALIDITY",
+    "RELEASE_GATE",
+    "AUTHORITY",
+    "DECISION_POLICY"
+  ],
+  "default": {
+    "ELIGIBLE": "APPROVED_IFF_AUTHORIZED",
+    "INELIGIBLE": "REJECTED",
+    "BLOCKED": "BLOCKED",
+    "UNKNOWN": "NO_DECISION_WITHOUT_EXPLICIT_ACTION"
+  },
+  "deferred_requires": [
+    "ELIGIBILITY_UNKNOWN",
+    "AUTHORIZED_ACTOR",
+    "EXPLICIT_DEFER_ACTION",
+    "DEFERRED_REASON"
+  ],
+  "actor_may_invent_eligibility": false
+}

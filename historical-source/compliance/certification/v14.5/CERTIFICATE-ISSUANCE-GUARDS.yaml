@@ -1,0 +1,25 @@
+{
+  "schema_version": "14.5",
+  "epistemic_status": "SUPPORTED",
+  "claim_class": "NORMATIVE_REQUIREMENT",
+  "normative_origin": "USER_SUPPLIED_V14_5_REFINED_FOR_INTERNAL_CONSISTENCY",
+  "construction": {
+    "from": "CERTIFICATE_CANDIDATE",
+    "to": "CERTIFICATE_DRAFT",
+    "meaning": "NEW_OBJECT_CONSTRUCTION_NOT_ISSUANCE"
+  },
+  "issuance": {
+    "from": "DRAFT",
+    "to": "ISSUED",
+    "guards": [
+      "CANDIDATE_VALID",
+      "AUTHORIZATION_STATUS_AUTHORIZED",
+      "ISSUANCE_AUTHORITY_CURRENTLY_VALID",
+      "PAYLOAD_VALID",
+      "SNAPSHOT_SEAL_VALID",
+      "CERTIFICATE_IDENTITY_UNIQUE",
+      "NO_CONFLICTING_ACTIVE_CERTIFICATE"
+    ]
+  },
+  "event": "CERTIFICATE_ISSUED"
+}

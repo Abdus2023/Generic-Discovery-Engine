@@ -1,0 +1,26 @@
+{
+  "schema_version": "14.5",
+  "epistemic_status": "SUPPORTED",
+  "claim_class": "NORMATIVE_REQUIREMENT",
+  "normative_origin": "USER_SUPPLIED_V14_5_REFINED_FOR_INTERNAL_CONSISTENCY",
+  "questions": [
+    {
+      "id": "OQ-145-1",
+      "topic": "CRYPTOGRAPHIC_AUTHORITY_REPRESENTATION",
+      "status": "UNKNOWN",
+      "minimum_rule": "Deployment profile selects credential system and records credential_ref"
+    },
+    {
+      "id": "OQ-145-2",
+      "topic": "EVIDENCE_FRESHNESS_CLOCK",
+      "status": "UNKNOWN",
+      "minimum_rule": "Evaluation context records selected trusted clock mechanism"
+    },
+    {
+      "id": "OQ-145-3",
+      "topic": "EXTERNAL_TRUST_ROOTS",
+      "status": "UNKNOWN",
+      "minimum_rule": "Deployment security profile declares roots and verification procedure"
+    }
+  ]
+}

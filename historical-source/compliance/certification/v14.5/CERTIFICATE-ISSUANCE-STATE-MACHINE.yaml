@@ -1,0 +1,73 @@
+{
+  "schema_version": "14.5",
+  "epistemic_status": "SUPPORTED",
+  "claim_class": "NORMATIVE_REQUIREMENT",
+  "normative_origin": "USER_SUPPLIED_V14_5_REFINED_FOR_INTERNAL_CONSISTENCY",
+  "separate_domains": [
+    {
+      "domain": "CANDIDATE_LIFECYCLE",
+      "states": [
+        "CREATED",
+        "ACTIVE",
+        "CONSUMED",
+        "CANCELLED",
+        "EXPIRED",
+        "RETAINED"
+      ]
+    },
+    {
+      "domain": "EVALUATION",
+      "results": [
+        "TRUE",
+        "FALSE",
+        "UNKNOWN",
+        "BLOCKED",
+        "INVALID"
+      ]
+    },
+    {
+      "domain": "AUTHORIZATION",
+      "statuses": [
+        "AUTHORIZED",
+        "REFUSED",
+        "BLOCKED",
+        "UNKNOWN",
+        "INVALID"
+      ]
+    },
+    {
+      "domain": "CERTIFICATE_LIFECYCLE",
+      "states": [
+        "DRAFT",
+        "ISSUED",
+        "REVOKED",
+        "SUPERSEDED",
+        "EXPIRED",
+        "CANCELLED"
+      ]
+    }
+  ],
+  "certificate_transitions": [
+    [
+      "DRAFT",
+      "ISSUED"
+    ],
+    [
+      "DRAFT",
+      "CANCELLED"
+    ],
+    [
+      "ISSUED",
+      "REVOKED"
+    ],
+    [
+      "ISSUED",
+      "SUPERSEDED"
+    ],
+    [
+      "ISSUED",
+      "EXPIRED"
+    ]
+  ],
+  "issued_to_cancelled": false
+}

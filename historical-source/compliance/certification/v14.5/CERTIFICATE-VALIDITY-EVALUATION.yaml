@@ -1,0 +1,25 @@
+{
+  "schema_version": "14.5",
+  "epistemic_status": "SUPPORTED",
+  "claim_class": "NORMATIVE_REQUIREMENT",
+  "normative_origin": "USER_SUPPLIED_V14_5_REFINED_FOR_INTERNAL_CONSISTENCY",
+  "required_predicates": [
+    "SCHEMA_VALID",
+    "CERTIFICATE_HASH_VALID",
+    "SNAPSHOT_SEAL_VALID",
+    "SIGNATURE_VALID",
+    "AUTHORITY_AT_ISSUANCE_VALID",
+    "SCOPE_VALID",
+    "CURRENT_TIME_VALID",
+    "NOT_REVOKED",
+    "NOT_SUPERSEDED"
+  ],
+  "mapping": {
+    "ALL_TRUE": "VALID",
+    "TRUSTWORTHY_FALSE": "INVALID",
+    "BEFORE_INTERVAL": "NOT_YET_VALID",
+    "UNKNOWN": "UNKNOWN",
+    "REQUIRED_EVALUATION_INVALID": "NO_AUTHORITATIVE_VALIDITY_PROJECTION"
+  },
+  "lifecycle_mutation": false
+}

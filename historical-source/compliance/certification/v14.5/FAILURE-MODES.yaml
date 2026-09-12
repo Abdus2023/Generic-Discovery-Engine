@@ -1,0 +1,33 @@
+{
+  "schema_version": "14.5",
+  "epistemic_status": "SUPPORTED",
+  "claim_class": "NORMATIVE_REQUIREMENT",
+  "normative_origin": "USER_SUPPLIED_V14_5_REFINED_FOR_INTERNAL_CONSISTENCY",
+  "classes": [
+    "EVALUATION_SCHEMA_FAILURE",
+    "EVALUATION_REFERENCE_FAILURE",
+    "EVALUATION_INTEGRITY_FAILURE",
+    "EVALUATION_SCOPE_FAILURE",
+    "EVALUATION_FRESHNESS_FAILURE",
+    "EVALUATION_POLICY_FAILURE",
+    "EVALUATION_AUTHORITY_FAILURE",
+    "ISSUANCE_AUTHORITY_FAILURE",
+    "ISSUANCE_SCOPE_FAILURE",
+    "ISSUANCE_POLICY_FAILURE",
+    "ISSUANCE_INTEGRITY_FAILURE",
+    "PROJECTION_ORDER_FAILURE",
+    "PROJECTION_RECONSTRUCTION_FAILURE"
+  ],
+  "required_fields": [
+    "OBJECT",
+    "BOUNDARY",
+    "INPUT",
+    "FAILURE_CLASS",
+    "EVIDENCE",
+    "SEVERITY",
+    "RETRY_MEANINGFUL",
+    "AUTHORIZATION_PROHIBITED"
+  ],
+  "does_not_replace_v14_4_layers": true,
+  "evaluator_failure_is_implementation_failure": false
+}

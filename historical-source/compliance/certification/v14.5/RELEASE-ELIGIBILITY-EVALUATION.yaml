@@ -1,0 +1,25 @@
+{
+  "schema_version": "14.5",
+  "epistemic_status": "SUPPORTED",
+  "claim_class": "NORMATIVE_REQUIREMENT",
+  "normative_origin": "USER_SUPPLIED_V14_5_REFINED_FOR_INTERNAL_CONSISTENCY",
+  "consumes": "VALID_EVALUATION_RESULT_OBJECTS",
+  "precedence": [
+    "FALSE",
+    "BLOCKED",
+    "UNKNOWN",
+    "TRUE"
+  ],
+  "mapping": {
+    "FALSE": "INELIGIBLE",
+    "BLOCKED": "BLOCKED",
+    "UNKNOWN": "UNKNOWN",
+    "TRUE": "ELIGIBLE",
+    "INVALID": "NO_AUTHORITATIVE_ELIGIBILITY_RESULT"
+  },
+  "gate_external_invalid_surface": [
+    "BLOCKED",
+    "EVALUATION_INTEGRITY_FAILURE"
+  ],
+  "explicit_policy_required": true
+}

@@ -1,0 +1,26 @@
+{
+  "schema_version": "14.5",
+  "epistemic_status": "SUPPORTED",
+  "claim_class": "NORMATIVE_REQUIREMENT",
+  "normative_origin": "USER_SUPPLIED_V14_5_REFINED_FOR_INTERNAL_CONSISTENCY",
+  "basis_fields": [
+    "RELEASE_ID",
+    "IMPLEMENTATION_ID",
+    "ARTIFACT_HASH",
+    "SPECIFICATION_HASH",
+    "AUDIT_SNAPSHOT_HASH",
+    "CERTIFICATE_ID",
+    "CERTIFICATE_VALIDITY_BASIS",
+    "GATE_HASH",
+    "POLICY_HASH",
+    "ENVIRONMENT_HASH",
+    "EVIDENCE_HASH",
+    "AUTHORITY_CONTEXT_HASH",
+    "WAIVER_HASH",
+    "SECURITY_CONTEXT_HASH",
+    "COMPATIBILITY_CONTEXT_HASH"
+  ],
+  "formula": "SHA256(JCS_LIKE_CANONICAL_JSON_OF_TYPED_BASIS_FIELDS)",
+  "any_change": "NEW_ELIGIBILITY_EVALUATION_AND_DECISION",
+  "active_interval_required": true
+}

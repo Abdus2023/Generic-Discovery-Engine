@@ -1,0 +1,76 @@
+{
+  "schema_version": "14.5",
+  "epistemic_status": "SUPPORTED",
+  "claim_class": "NORMATIVE_REQUIREMENT",
+  "normative_origin": "USER_SUPPLIED_V14_5_REFINED_FOR_INTERNAL_CONSISTENCY",
+  "logical_tree": {
+    "discovery": [
+      "candidates"
+    ],
+    "compliance": [
+      "certificates",
+      "certificate-candidates",
+      "evaluations",
+      "authorities",
+      "validity",
+      "decisions"
+    ],
+    "release": [
+      "releases",
+      "gates",
+      "eligibility",
+      "decisions",
+      "execution",
+      "post-release-verification"
+    ],
+    "history": [
+      "certificate-events",
+      "evaluation-events",
+      "authority-events",
+      "release-events",
+      "decision-events"
+    ],
+    "projections": [
+      "current-certificates",
+      "current-validity",
+      "current-eligibility",
+      "current-decisions",
+      "current-execution",
+      "current-verification"
+    ],
+    "schema": [
+      "evaluation-context",
+      "evaluation-result",
+      "freshness-result",
+      "issuance-authority",
+      "authority-approval",
+      "certificate-candidate",
+      "certificate-issuance-authorization",
+      "certificate-issued-event",
+      "certificate",
+      "certificate-validity",
+      "certificate-eligibility",
+      "release",
+      "release-gate",
+      "release-eligibility",
+      "release-decision",
+      "release-decision-event",
+      "release-execution",
+      "post-release-verification",
+      "current-certificate",
+      "current-certificate-validity",
+      "current-certificate-eligibility",
+      "current-release-eligibility",
+      "current-release-decision",
+      "current-release-execution",
+      "current-post-release-verification",
+      "predicate-definition",
+      "state-transition-event",
+      "evaluation-event",
+      "failure-record",
+      "current-projection"
+    ]
+  },
+  "physical_append_only_package": "historical-source/compliance/certification/v14.5",
+  "logical_tree_does_not_move_history": true
+}

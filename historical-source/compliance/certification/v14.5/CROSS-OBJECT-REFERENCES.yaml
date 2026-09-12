@@ -1,0 +1,82 @@
+{
+  "schema_version": "14.5",
+  "epistemic_status": "SUPPORTED",
+  "claim_class": "NORMATIVE_REQUIREMENT",
+  "normative_origin": "USER_SUPPLIED_V14_5_REFINED_FOR_INTERNAL_CONSISTENCY",
+  "stage_rules": [
+    {
+      "source": "CERTIFICATE_CANDIDATE",
+      "mandatory": [
+        "SPECIFICATION",
+        "IMPLEMENTATION",
+        "RELEASE",
+        "AUDIT_SNAPSHOT",
+        "ELIGIBILITY_POLICY",
+        "AUTHORITY_POLICY"
+      ],
+      "note": "future evaluation results cannot be mandatory at creation"
+    },
+    {
+      "source": "ISSUANCE_AUTHORIZATION",
+      "mandatory": [
+        "CERTIFICATE_CANDIDATE",
+        "CERTIFICATE_ELIGIBILITY_EVALUATION",
+        "AUTHORITY_EVALUATION",
+        "POLICY_EVALUATION",
+        "ISSUANCE_AUTHORITY"
+      ]
+    },
+    {
+      "source": "CERTIFICATE",
+      "mandatory": [
+        "CERTIFICATE_CANDIDATE",
+        "RELEASE",
+        "IMPLEMENTATION",
+        "SPECIFICATION",
+        "AUDIT_SNAPSHOT"
+      ],
+      "issued_additional": [
+        "ISSUANCE_AUTHORIZATION"
+      ]
+    },
+    {
+      "source": "RELEASE_ELIGIBILITY",
+      "mandatory": [
+        "RELEASE",
+        "GATE",
+        "CERTIFICATE",
+        "EVALUATION_CONTEXT"
+      ]
+    },
+    {
+      "source": "RELEASE_DECISION",
+      "mandatory": [
+        "RELEASE",
+        "GATE",
+        "ELIGIBILITY",
+        "AUTHORITY",
+        "SNAPSHOT"
+      ]
+    },
+    {
+      "source": "RELEASE_EXECUTION",
+      "mandatory": [
+        "RELEASE",
+        "DECISION",
+        "ARTIFACT",
+        "ENVIRONMENT"
+      ]
+    },
+    {
+      "source": "POST_RELEASE_VERIFICATION",
+      "mandatory": [
+        "RELEASE",
+        "EXECUTION",
+        "ARTIFACT",
+        "ENVIRONMENT"
+      ]
+    }
+  ],
+  "resolution": "EXACTLY_ONE_TYPED_HASH_MATCHED_TARGET",
+  "version_match_sufficient": false
+}

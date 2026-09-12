@@ -1,0 +1,25 @@
+{
+  "schema_version": "14.5",
+  "epistemic_status": "SUPPORTED",
+  "claim_class": "NORMATIVE_REQUIREMENT",
+  "normative_origin": "USER_SUPPLIED_V14_5_REFINED_FOR_INTERNAL_CONSISTENCY",
+  "types": [
+    "AUTOMATED_POLICY",
+    "HUMAN",
+    "DELEGATED",
+    "MULTI_PARTY"
+  ],
+  "required_checks": [
+    "EXISTS",
+    "STATUS_ACTIVE",
+    "CREDENTIAL_VALID",
+    "INTERVAL_ACTIVE",
+    "CERTIFICATE_TYPE_AUTHORIZED",
+    "SUBJECT_IN_SCOPE",
+    "CAN_ISSUE",
+    "DELEGATION_VALID",
+    "THRESHOLD_VALID"
+  ],
+  "implicit_authority": "FORBIDDEN",
+  "expiry": "DERIVED_FROM_INTERVAL_EVEN_WITHOUT_STATUS_MATERIALIZATION"
+}

@@ -1,0 +1,63 @@
+{
+  "schema_version": "14.5",
+  "epistemic_status": "SUPPORTED",
+  "claim_class": "NORMATIVE_REQUIREMENT",
+  "normative_origin": "USER_SUPPLIED_V14_5_REFINED_FOR_INTERNAL_CONSISTENCY",
+  "rows": [
+    {
+      "boundary": "STRUCTURAL",
+      "may": "STRUCTURAL_VALIDITY",
+      "may_not": "SEMANTIC_TRUTH"
+    },
+    {
+      "boundary": "REFERENCE",
+      "may": "REFERENCE_CORRECTNESS",
+      "may_not": "AUTHORIZATION"
+    },
+    {
+      "boundary": "INTEGRITY",
+      "may": "ARTIFACT_EVIDENCE_INTEGRITY",
+      "may_not": "SEMANTIC_COMPLIANCE"
+    },
+    {
+      "boundary": "SEMANTIC",
+      "may": "PREDICATE_TRUTH_STATE",
+      "may_not": "AUTHORITY"
+    },
+    {
+      "boundary": "ELIGIBILITY",
+      "may": "ELIGIBILITY",
+      "may_not": "AUTHORIZATION"
+    },
+    {
+      "boundary": "AUTHORITY",
+      "may": "AUTHORITY_QUALIFICATION",
+      "may_not": "ELIGIBILITY"
+    },
+    {
+      "boundary": "ISSUANCE_AUTHORIZATION",
+      "may": "PERMISSION_TO_ISSUE",
+      "may_not": "RELEASE_PERMISSION"
+    },
+    {
+      "boundary": "CERTIFICATE_VALIDITY",
+      "may": "CERTIFICATE_TRUST_STATE",
+      "may_not": "RELEASE_APPROVAL"
+    },
+    {
+      "boundary": "RELEASE_DECISION",
+      "may": "AUTHORIZATION_DECISION",
+      "may_not": "EXECUTION_SUCCESS"
+    },
+    {
+      "boundary": "EXECUTION",
+      "may": "EXECUTION_RESULT",
+      "may_not": "POST_RELEASE_HEALTH"
+    },
+    {
+      "boundary": "POST_RELEASE_VERIFICATION",
+      "may": "OBSERVED_OPERATIONAL_STATE",
+      "may_not": "RETROACTIVE_AUTHORIZATION"
+    }
+  ]
+}

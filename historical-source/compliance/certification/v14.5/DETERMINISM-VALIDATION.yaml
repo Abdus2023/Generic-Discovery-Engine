@@ -1,0 +1,527 @@
+{
+  "schema_version": "14.5",
+  "status": "PASS",
+  "method": "isolated regeneration with fixed PYTHONHASHSEED; no wall-clock or random inputs",
+  "environment": {
+    "PYTHONHASHSEED": "271828",
+    "wall_clock_used": false,
+    "randomness_used": false
+  },
+  "summary": {
+    "total": 85,
+    "identical": 85,
+    "different": 0
+  },
+  "files": [
+    {
+      "path": "VERSION.yaml",
+      "sha256": "8e4d3c99aa3c616181cf399f60f8750a052c56cfd0340666b447fd934a59e21f",
+      "regenerated_sha256": "8e4d3c99aa3c616181cf399f60f8750a052c56cfd0340666b447fd934a59e21f",
+      "byte_identical": true
+    },
+    {
+      "path": "SCOPE.yaml",
+      "sha256": "949a1b51f18d19ccb998a905d3706164d4513b45350ea037f2f1562ce7c3145b",
+      "regenerated_sha256": "949a1b51f18d19ccb998a905d3706164d4513b45350ea037f2f1562ce7c3145b",
+      "byte_identical": true
+    },
+    {
+      "path": "RESOLVED-CONTRADICTIONS.yaml",
+      "sha256": "86eb43e727c3b7e963ef359c71d9576b45d5518454400c25db825e34fc9b040d",
+      "regenerated_sha256": "86eb43e727c3b7e963ef359c71d9576b45d5518454400c25db825e34fc9b040d",
+      "byte_identical": true
+    },
+    {
+      "path": "CANONICAL-EVALUATION-MODEL.yaml",
+      "sha256": "228d7e2ff5f18440914969640497d3657bbad044e81a3c6b7a9b1ea9a1e5bfa3",
+      "regenerated_sha256": "228d7e2ff5f18440914969640497d3657bbad044e81a3c6b7a9b1ea9a1e5bfa3",
+      "byte_identical": true
+    },
+    {
+      "path": "DOMAIN-SEPARATION.yaml",
+      "sha256": "71a8de3617caf679c41752a6fe30c7938515de63077ddb20cebde18bc6539629",
+      "regenerated_sha256": "71a8de3617caf679c41752a6fe30c7938515de63077ddb20cebde18bc6539629",
+      "byte_identical": true
+    },
+    {
+      "path": "EVALUATION-RESULT-SEMANTICS.yaml",
+      "sha256": "3bf26dea79addf1037e6cbdaf0108a073c2d1b440765d7ec7f273646e8e27e45",
+      "regenerated_sha256": "3bf26dea79addf1037e6cbdaf0108a073c2d1b440765d7ec7f273646e8e27e45",
+      "byte_identical": true
+    },
+    {
+      "path": "EVALUATION-RESULT-INTEGRITY.yaml",
+      "sha256": "af30dc2a36f267da3e172f788bb577eeca1811d36275fdad839c2aa1079feca5",
+      "regenerated_sha256": "af30dc2a36f267da3e172f788bb577eeca1811d36275fdad839c2aa1079feca5",
+      "byte_identical": true
+    },
+    {
+      "path": "EVALUATION-CONTEXT-MODEL.yaml",
+      "sha256": "9e8bbb44cfc1ff3dddf4235c77545aad51300ef74ff145efdd6b048eead1d8e4",
+      "regenerated_sha256": "9e8bbb44cfc1ff3dddf4235c77545aad51300ef74ff145efdd6b048eead1d8e4",
+      "byte_identical": true
+    },
+    {
+      "path": "FRESHNESS-SEMANTICS.yaml",
+      "sha256": "0879d5f6ff362ec25b301cb085f44847893afdd573be3c967f51ccad98686412",
+      "regenerated_sha256": "0879d5f6ff362ec25b301cb085f44847893afdd573be3c967f51ccad98686412",
+      "byte_identical": true
+    },
+    {
+      "path": "PREDICATE-AGGREGATION.yaml",
+      "sha256": "c150d3cd1a6385a6d23535899fe341dd7d47c972037f426bde07bf73c7070486",
+      "regenerated_sha256": "c150d3cd1a6385a6d23535899fe341dd7d47c972037f426bde07bf73c7070486",
+      "byte_identical": true
+    },
+    {
+      "path": "EMPTY-SET-POLICY.yaml",
+      "sha256": "76e951de5dbc43290878684ad7384d07fd9df9d4e11f08738583656ff9810f34",
+      "regenerated_sha256": "76e951de5dbc43290878684ad7384d07fd9df9d4e11f08738583656ff9810f34",
+      "byte_identical": true
+    },
+    {
+      "path": "FAIL-CLOSED-BOUNDARIES.yaml",
+      "sha256": "95508824e5e4786796dde103754993798eb6a7ec28a2ba83e142a802e781763f",
+      "regenerated_sha256": "95508824e5e4786796dde103754993798eb6a7ec28a2ba83e142a802e781763f",
+      "byte_identical": true
+    },
+    {
+      "path": "FAIL-CLOSED-MATRIX.yaml",
+      "sha256": "9d0830a8b1867cdd3513c20c3440bcecd9392c56db39326e682fdaef86a29758",
+      "regenerated_sha256": "9d0830a8b1867cdd3513c20c3440bcecd9392c56db39326e682fdaef86a29758",
+      "byte_identical": true
+    },
+    {
+      "path": "ISSUANCE-AUTHORITY-MODEL.yaml",
+      "sha256": "46481b0adca71d54d4d810c0d95bd300de409201f8b1ee9e0afb7562761e1839",
+      "regenerated_sha256": "46481b0adca71d54d4d810c0d95bd300de409201f8b1ee9e0afb7562761e1839",
+      "byte_identical": true
+    },
+    {
+      "path": "AUTHORITY-SEMANTICS.yaml",
+      "sha256": "a39c1c15ad7c80ce961e1ae1ae347318ee9cabc2f96d59f8d124d282820fbffc",
+      "regenerated_sha256": "a39c1c15ad7c80ce961e1ae1ae347318ee9cabc2f96d59f8d124d282820fbffc",
+      "byte_identical": true
+    },
+    {
+      "path": "AUTHORIZATION-PRECEDENCE.yaml",
+      "sha256": "ef8065782e5e570690bd3926633e662e397e114553049ce4f04149c05f3c9aa6",
+      "regenerated_sha256": "ef8065782e5e570690bd3926633e662e397e114553049ce4f04149c05f3c9aa6",
+      "byte_identical": true
+    },
+    {
+      "path": "CERTIFICATE-ISSUANCE-AUTHORIZATION.yaml",
+      "sha256": "ef7713e4c2f96d134fab69666c783add1d7ba957a837356b23e81f848b0d19d0",
+      "regenerated_sha256": "ef7713e4c2f96d134fab69666c783add1d7ba957a837356b23e81f848b0d19d0",
+      "byte_identical": true
+    },
+    {
+      "path": "CERTIFICATE-ISSUANCE-GUARDS.yaml",
+      "sha256": "9424ceb2ec09e211a83e7e4ee2f8e7624ca645570731441073c0dd4fb98e2dfb",
+      "regenerated_sha256": "9424ceb2ec09e211a83e7e4ee2f8e7624ca645570731441073c0dd4fb98e2dfb",
+      "byte_identical": true
+    },
+    {
+      "path": "CERTIFICATE-CANDIDATE-BOUNDARY.yaml",
+      "sha256": "1d150ef80b0b609fde19abfd3a5873b4e70fe8d9359966fd1bcd969f86cef800",
+      "regenerated_sha256": "1d150ef80b0b609fde19abfd3a5873b4e70fe8d9359966fd1bcd969f86cef800",
+      "byte_identical": true
+    },
+    {
+      "path": "CERTIFICATE-ISSUANCE-STATE-MACHINE.yaml",
+      "sha256": "cd67bdd6e63d302cd0422453bf964231b51ddeb22350a79b8509aa42574e15ca",
+      "regenerated_sha256": "cd67bdd6e63d302cd0422453bf964231b51ddeb22350a79b8509aa42574e15ca",
+      "byte_identical": true
+    },
+    {
+      "path": "CERTIFICATE-VALIDITY-EVALUATION.yaml",
+      "sha256": "a6c5caa9418b5427575e254973565100b56320eaabb75e2e8483ed277d492305",
+      "regenerated_sha256": "a6c5caa9418b5427575e254973565100b56320eaabb75e2e8483ed277d492305",
+      "byte_identical": true
+    },
+    {
+      "path": "CERTIFICATE-LIFECYCLE-ALIGNMENT.yaml",
+      "sha256": "f8db45402bfcecb095ce5e4e94fb876e485289e35e2bbe0eeab305ffb62f8961",
+      "regenerated_sha256": "f8db45402bfcecb095ce5e4e94fb876e485289e35e2bbe0eeab305ffb62f8961",
+      "byte_identical": true
+    },
+    {
+      "path": "RELEASE-ELIGIBILITY-EVALUATION.yaml",
+      "sha256": "a488f40ecd7e90ecd3dbefc9b590336d0e63abc2f5f73c8e8748b16631c2fbb9",
+      "regenerated_sha256": "a488f40ecd7e90ecd3dbefc9b590336d0e63abc2f5f73c8e8748b16631c2fbb9",
+      "byte_identical": true
+    },
+    {
+      "path": "RELEASE-DECISION-EVALUATION.yaml",
+      "sha256": "3f87f835e51ef438f057c39a45cda0bab063cd73e7fe678d8d27dc5f816dddbe",
+      "regenerated_sha256": "3f87f835e51ef438f057c39a45cda0bab063cd73e7fe678d8d27dc5f816dddbe",
+      "byte_identical": true
+    },
+    {
+      "path": "DECISION-POLICY-COMPLETENESS.yaml",
+      "sha256": "7898692725aaa9793c2f7baa30ffff4a02b40edfacfaf31dfa9e0da0145e7d6a",
+      "regenerated_sha256": "7898692725aaa9793c2f7baa30ffff4a02b40edfacfaf31dfa9e0da0145e7d6a",
+      "byte_identical": true
+    },
+    {
+      "path": "DECISION-REUSE.yaml",
+      "sha256": "9463e0e9386411f834238420b63c44ace119b4519aa7d987244d2e0d026fc169",
+      "regenerated_sha256": "9463e0e9386411f834238420b63c44ace119b4519aa7d987244d2e0d026fc169",
+      "byte_identical": true
+    },
+    {
+      "path": "HASH-TYPE-DISCIPLINE.yaml",
+      "sha256": "578aae5640bb6caa93bab937b4565279e2f5882767eed1d408e4c5ec870f3b79",
+      "regenerated_sha256": "578aae5640bb6caa93bab937b4565279e2f5882767eed1d408e4c5ec870f3b79",
+      "byte_identical": true
+    },
+    {
+      "path": "EVENT-MODEL.yaml",
+      "sha256": "a79b56785b4ec16810664f7ac2a6a2a805c98d8671ec0b3f5d37c165cc70c0cf",
+      "regenerated_sha256": "a79b56785b4ec16810664f7ac2a6a2a805c98d8671ec0b3f5d37c165cc70c0cf",
+      "byte_identical": true
+    },
+    {
+      "path": "EVENT-ORDERING.yaml",
+      "sha256": "7895314d9930b19696813716b661be33d5615243d1d6d49c51383d1ec7190030",
+      "regenerated_sha256": "7895314d9930b19696813716b661be33d5615243d1d6d49c51383d1ec7190030",
+      "byte_identical": true
+    },
+    {
+      "path": "CURRENT-PROJECTIONS.yaml",
+      "sha256": "31f1891a31c2b28553456eaeb8719dfba3182e36b9a29db4d3efc321a3c960dd",
+      "regenerated_sha256": "31f1891a31c2b28553456eaeb8719dfba3182e36b9a29db4d3efc321a3c960dd",
+      "byte_identical": true
+    },
+    {
+      "path": "VALIDATION-PROCEDURE.yaml",
+      "sha256": "f34385712968cda7e8fbeec206049209d3cc40ee6c7ff29aa08f045523022e8e",
+      "regenerated_sha256": "f34385712968cda7e8fbeec206049209d3cc40ee6c7ff29aa08f045523022e8e",
+      "byte_identical": true
+    },
+    {
+      "path": "VALIDATION-BOUNDARY-MATRIX.yaml",
+      "sha256": "9030390c6c3a53c74b42dbb0e07149538253a9cf660c84c5600d324f13fec789",
+      "regenerated_sha256": "9030390c6c3a53c74b42dbb0e07149538253a9cf660c84c5600d324f13fec789",
+      "byte_identical": true
+    },
+    {
+      "path": "CROSS-OBJECT-REFERENCES.yaml",
+      "sha256": "0d4c7941c51fac7028e782a39b4aa2112d6171a07e283aacd6c76285616590db",
+      "regenerated_sha256": "0d4c7941c51fac7028e782a39b4aa2112d6171a07e283aacd6c76285616590db",
+      "byte_identical": true
+    },
+    {
+      "path": "FAILURE-MODES.yaml",
+      "sha256": "d8fa649899a27499e264f23349fabcb1f17f424519534f9d1e049a82f89f7ad8",
+      "regenerated_sha256": "d8fa649899a27499e264f23349fabcb1f17f424519534f9d1e049a82f89f7ad8",
+      "byte_identical": true
+    },
+    {
+      "path": "INVARIANTS.yaml",
+      "sha256": "47b517ed7a84f16260f97c6cd0ea74883484647968cdcec8c9c1ff5152a3e7c8",
+      "regenerated_sha256": "47b517ed7a84f16260f97c6cd0ea74883484647968cdcec8c9c1ff5152a3e7c8",
+      "byte_identical": true
+    },
+    {
+      "path": "TEST-VECTORS.yaml",
+      "sha256": "2603949121e4a54c60073124a4acd638133576aa697f3419808591d9b0a82404",
+      "regenerated_sha256": "2603949121e4a54c60073124a4acd638133576aa697f3419808591d9b0a82404",
+      "byte_identical": true
+    },
+    {
+      "path": "TRACEABILITY.yaml",
+      "sha256": "6a389ab0d9741a4e652205a970664ad7a9b8ebc07aab450d89eef757bf5fa79c",
+      "regenerated_sha256": "6a389ab0d9741a4e652205a970664ad7a9b8ebc07aab450d89eef757bf5fa79c",
+      "byte_identical": true
+    },
+    {
+      "path": "EPISTEMIC-REGISTER.yaml",
+      "sha256": "724a1fafafac060c68506a7eef9a44cf0697333d318638eaba07147cab2ac855",
+      "regenerated_sha256": "724a1fafafac060c68506a7eef9a44cf0697333d318638eaba07147cab2ac855",
+      "byte_identical": true
+    },
+    {
+      "path": "ANTI-REGRESSION.yaml",
+      "sha256": "5f5372e11ea5f55d6258990fe69662f6b2171dd1e0f822a7ad6a850059730f49",
+      "regenerated_sha256": "5f5372e11ea5f55d6258990fe69662f6b2171dd1e0f822a7ad6a850059730f49",
+      "byte_identical": true
+    },
+    {
+      "path": "ARTIFACT-TREE.yaml",
+      "sha256": "72531b71fdcc39a313bf20414d751a856eb4b0aa263b0fdbdd701f190e2fa6b4",
+      "regenerated_sha256": "72531b71fdcc39a313bf20414d751a856eb4b0aa263b0fdbdd701f190e2fa6b4",
+      "byte_identical": true
+    },
+    {
+      "path": "OPEN-QUESTIONS.yaml",
+      "sha256": "5842bd90eba05df0c162164b5184975d3d38555921199f99c6808cf744c7e24e",
+      "regenerated_sha256": "5842bd90eba05df0c162164b5184975d3d38555921199f99c6808cf744c7e24e",
+      "byte_identical": true
+    },
+    {
+      "path": "FINAL-PRINCIPLE.yaml",
+      "sha256": "77080522a9b06ceb417d4b417fe6f79781babf37a84b3835e32d447f05a99997",
+      "regenerated_sha256": "77080522a9b06ceb417d4b417fe6f79781babf37a84b3835e32d447f05a99997",
+      "byte_identical": true
+    },
+    {
+      "path": "CURRENT-STATUS.yaml",
+      "sha256": "6a3a1c134716a42b2edccf409ebe9bdc023c901acc35484cfbfdd316c66dce99",
+      "regenerated_sha256": "6a3a1c134716a42b2edccf409ebe9bdc023c901acc35484cfbfdd316c66dce99",
+      "byte_identical": true
+    },
+    {
+      "path": "EVALUATION-HISTORY.yaml",
+      "sha256": "9e9e5435e4c67650c8cc14e502c2b0a847819477f1b242143be3da311e5635f0",
+      "regenerated_sha256": "9e9e5435e4c67650c8cc14e502c2b0a847819477f1b242143be3da311e5635f0",
+      "byte_identical": true
+    },
+    {
+      "path": "AUTHORITY-HISTORY.yaml",
+      "sha256": "9e9e5435e4c67650c8cc14e502c2b0a847819477f1b242143be3da311e5635f0",
+      "regenerated_sha256": "9e9e5435e4c67650c8cc14e502c2b0a847819477f1b242143be3da311e5635f0",
+      "byte_identical": true
+    },
+    {
+      "path": "CERTIFICATE-HISTORY.yaml",
+      "sha256": "9e9e5435e4c67650c8cc14e502c2b0a847819477f1b242143be3da311e5635f0",
+      "regenerated_sha256": "9e9e5435e4c67650c8cc14e502c2b0a847819477f1b242143be3da311e5635f0",
+      "byte_identical": true
+    },
+    {
+      "path": "RELEASE-HISTORY.yaml",
+      "sha256": "9e9e5435e4c67650c8cc14e502c2b0a847819477f1b242143be3da311e5635f0",
+      "regenerated_sha256": "9e9e5435e4c67650c8cc14e502c2b0a847819477f1b242143be3da311e5635f0",
+      "byte_identical": true
+    },
+    {
+      "path": "CURRENT-PROJECTIONS-DATA.yaml",
+      "sha256": "9e6be45ee259d79066ad4a93cd7a3873b15d2eefd379c0738424154716fa1b39",
+      "regenerated_sha256": "9e6be45ee259d79066ad4a93cd7a3873b15d2eefd379c0738424154716fa1b39",
+      "byte_identical": true
+    },
+    {
+      "path": "SCHEMA-REGISTRY.yaml",
+      "sha256": "926e2a1dc2ff9d79c619ae71fbf55a8ebe22f41fb1f60ced1832dcec5479cfe1",
+      "regenerated_sha256": "926e2a1dc2ff9d79c619ae71fbf55a8ebe22f41fb1f60ced1832dcec5479cfe1",
+      "byte_identical": true
+    },
+    {
+      "path": "PRIOR-INTEGRITY.yaml",
+      "sha256": "735525abf75c2c4f0e78207f397c4b0c6812d565496cf0012a3a67f6ab9dffd9",
+      "regenerated_sha256": "735525abf75c2c4f0e78207f397c4b0c6812d565496cf0012a3a67f6ab9dffd9",
+      "byte_identical": true
+    },
+    {
+      "path": "VALIDATION-REPORT.yaml",
+      "sha256": "e541489aea0627c83949b250857e855b14966384c5139aa3a58e6037eadebf09",
+      "regenerated_sha256": "e541489aea0627c83949b250857e855b14966384c5139aa3a58e6037eadebf09",
+      "byte_identical": true
+    },
+    {
+      "path": "schema/evaluation-context.schema.yaml",
+      "sha256": "808734122f69e051a082c83f401c24b81bb1df21bd07fbec404de3eb25561de1",
+      "regenerated_sha256": "808734122f69e051a082c83f401c24b81bb1df21bd07fbec404de3eb25561de1",
+      "byte_identical": true
+    },
+    {
+      "path": "schema/evaluation-result.schema.yaml",
+      "sha256": "318b6658eb3070563edf0a1a259ae950043446a2ec59dfd8269d70f9e9bb2782",
+      "regenerated_sha256": "318b6658eb3070563edf0a1a259ae950043446a2ec59dfd8269d70f9e9bb2782",
+      "byte_identical": true
+    },
+    {
+      "path": "schema/freshness-result.schema.yaml",
+      "sha256": "5eb9aedced1f11c3c2a55dd789a14f455d5efa4affac9b20c0e524670c04a5d9",
+      "regenerated_sha256": "5eb9aedced1f11c3c2a55dd789a14f455d5efa4affac9b20c0e524670c04a5d9",
+      "byte_identical": true
+    },
+    {
+      "path": "schema/issuance-authority.schema.yaml",
+      "sha256": "5a7712ed1190a34d8ed7ad28ca81aa2e11cc3ad50580c3db17849f514e349657",
+      "regenerated_sha256": "5a7712ed1190a34d8ed7ad28ca81aa2e11cc3ad50580c3db17849f514e349657",
+      "byte_identical": true
+    },
+    {
+      "path": "schema/authority-approval.schema.yaml",
+      "sha256": "1438d965be043acd28da8ef1f9f33fd453aa761e32aeddad448b728916a1d02a",
+      "regenerated_sha256": "1438d965be043acd28da8ef1f9f33fd453aa761e32aeddad448b728916a1d02a",
+      "byte_identical": true
+    },
+    {
+      "path": "schema/certificate-candidate.schema.yaml",
+      "sha256": "88cdf740c1fc935c047220a47a6f93a1aaef600872b2c613ac5c62acae8e196e",
+      "regenerated_sha256": "88cdf740c1fc935c047220a47a6f93a1aaef600872b2c613ac5c62acae8e196e",
+      "byte_identical": true
+    },
+    {
+      "path": "schema/certificate-issuance-authorization.schema.yaml",
+      "sha256": "25fa109302441b7f9f8d0c4bcb49e771b5675684261914c4a5eda990a1d353d2",
+      "regenerated_sha256": "25fa109302441b7f9f8d0c4bcb49e771b5675684261914c4a5eda990a1d353d2",
+      "byte_identical": true
+    },
+    {
+      "path": "schema/certificate-issued-event.schema.yaml",
+      "sha256": "73f6c6a39dbc450a88db1c6013604fee7683e4d328eeb4b704bbc020021fd25e",
+      "regenerated_sha256": "73f6c6a39dbc450a88db1c6013604fee7683e4d328eeb4b704bbc020021fd25e",
+      "byte_identical": true
+    },
+    {
+      "path": "schema/certificate.schema.yaml",
+      "sha256": "7dfe9b629e1c07cd972ed93a456a6839e5c92503364e6ef47cb50b3bf87a1b02",
+      "regenerated_sha256": "7dfe9b629e1c07cd972ed93a456a6839e5c92503364e6ef47cb50b3bf87a1b02",
+      "byte_identical": true
+    },
+    {
+      "path": "schema/certificate-validity.schema.yaml",
+      "sha256": "47a3f103e243189ac2c6d69f672cb60eee388e6d5ff25ecad42713204d544f23",
+      "regenerated_sha256": "47a3f103e243189ac2c6d69f672cb60eee388e6d5ff25ecad42713204d544f23",
+      "byte_identical": true
+    },
+    {
+      "path": "schema/certificate-eligibility.schema.yaml",
+      "sha256": "c468e710371bdaa0cde8a3921892fc66b358c4ea096ce8dcde13559403eaede9",
+      "regenerated_sha256": "c468e710371bdaa0cde8a3921892fc66b358c4ea096ce8dcde13559403eaede9",
+      "byte_identical": true
+    },
+    {
+      "path": "schema/release.schema.yaml",
+      "sha256": "8f4e1f550e738bc063fd2f63584a104b264c673e564748ff09b32fa6c27e0310",
+      "regenerated_sha256": "8f4e1f550e738bc063fd2f63584a104b264c673e564748ff09b32fa6c27e0310",
+      "byte_identical": true
+    },
+    {
+      "path": "schema/release-gate.schema.yaml",
+      "sha256": "de7e3628463f63bcbfc569f82e34ba3d060c41e81c59b01574acbfd039551edd",
+      "regenerated_sha256": "de7e3628463f63bcbfc569f82e34ba3d060c41e81c59b01574acbfd039551edd",
+      "byte_identical": true
+    },
+    {
+      "path": "schema/release-eligibility.schema.yaml",
+      "sha256": "40b91346792c6dcc483c3ddc46e1250a16f0f4137ef0c737fecf2eef49ca7d79",
+      "regenerated_sha256": "40b91346792c6dcc483c3ddc46e1250a16f0f4137ef0c737fecf2eef49ca7d79",
+      "byte_identical": true
+    },
+    {
+      "path": "schema/release-decision.schema.yaml",
+      "sha256": "027da7073d3e0dfe823d8907e26b60234a1dd55a5b837cc1803d77f68b91e2e1",
+      "regenerated_sha256": "027da7073d3e0dfe823d8907e26b60234a1dd55a5b837cc1803d77f68b91e2e1",
+      "byte_identical": true
+    },
+    {
+      "path": "schema/release-decision-event.schema.yaml",
+      "sha256": "8e1399a8f3ee56918bde555e899244204b920fcefce7fe1c63f4307dfaa1903e",
+      "regenerated_sha256": "8e1399a8f3ee56918bde555e899244204b920fcefce7fe1c63f4307dfaa1903e",
+      "byte_identical": true
+    },
+    {
+      "path": "schema/release-execution.schema.yaml",
+      "sha256": "5f30d6b0d2c0646c580c27619cb1f5f95b74d3b87d1123a4473d3f2b93c02aae",
+      "regenerated_sha256": "5f30d6b0d2c0646c580c27619cb1f5f95b74d3b87d1123a4473d3f2b93c02aae",
+      "byte_identical": true
+    },
+    {
+      "path": "schema/post-release-verification.schema.yaml",
+      "sha256": "449f4748df0e6c225f7d2a51c6353ea7fef3e92df3c1c0a88bf32614c0792cf2",
+      "regenerated_sha256": "449f4748df0e6c225f7d2a51c6353ea7fef3e92df3c1c0a88bf32614c0792cf2",
+      "byte_identical": true
+    },
+    {
+      "path": "schema/current-certificate.schema.yaml",
+      "sha256": "f1f5758390e881c59134dd3d2553772371eb38cbc75ee2b95ff6021a63227c00",
+      "regenerated_sha256": "f1f5758390e881c59134dd3d2553772371eb38cbc75ee2b95ff6021a63227c00",
+      "byte_identical": true
+    },
+    {
+      "path": "schema/current-certificate-validity.schema.yaml",
+      "sha256": "a53822751af4c1fd7acb006598403637270a3547dad2bfc479239d278cd2aaeb",
+      "regenerated_sha256": "a53822751af4c1fd7acb006598403637270a3547dad2bfc479239d278cd2aaeb",
+      "byte_identical": true
+    },
+    {
+      "path": "schema/current-certificate-eligibility.schema.yaml",
+      "sha256": "a4c05196edb9217da9f5e013f65a41afac6e7e4e6462f707f6c5e955d12e7f5a",
+      "regenerated_sha256": "a4c05196edb9217da9f5e013f65a41afac6e7e4e6462f707f6c5e955d12e7f5a",
+      "byte_identical": true
+    },
+    {
+      "path": "schema/current-release-eligibility.schema.yaml",
+      "sha256": "03e8b6f1e817d86a8d12ed8e4a77c97c45b29483dc6c5b7a3e0c62d9726e86d4",
+      "regenerated_sha256": "03e8b6f1e817d86a8d12ed8e4a77c97c45b29483dc6c5b7a3e0c62d9726e86d4",
+      "byte_identical": true
+    },
+    {
+      "path": "schema/current-release-decision.schema.yaml",
+      "sha256": "3e1440d8de5c8150a3d410b64153fedcb19793c6c65089e8806902d0be7c6563",
+      "regenerated_sha256": "3e1440d8de5c8150a3d410b64153fedcb19793c6c65089e8806902d0be7c6563",
+      "byte_identical": true
+    },
+    {
+      "path": "schema/current-release-execution.schema.yaml",
+      "sha256": "50ce190fba22a3ef4bf45b76c387ab29931f500e8feb7798fdd7ef0045d105d2",
+      "regenerated_sha256": "50ce190fba22a3ef4bf45b76c387ab29931f500e8feb7798fdd7ef0045d105d2",
+      "byte_identical": true
+    },
+    {
+      "path": "schema/current-post-release-verification.schema.yaml",
+      "sha256": "f692d3c657510208669ade6e8140dea26d173967fa7db7bba4bdaa4e28f7525b",
+      "regenerated_sha256": "f692d3c657510208669ade6e8140dea26d173967fa7db7bba4bdaa4e28f7525b",
+      "byte_identical": true
+    },
+    {
+      "path": "schema/predicate-definition.schema.yaml",
+      "sha256": "ac8ae00ee5f953b1916cbb5eaf037a7db1be9688ddd9aeb969597e28b8d32e93",
+      "regenerated_sha256": "ac8ae00ee5f953b1916cbb5eaf037a7db1be9688ddd9aeb969597e28b8d32e93",
+      "byte_identical": true
+    },
+    {
+      "path": "schema/state-transition-event.schema.yaml",
+      "sha256": "d89d2cc440e05bdbcd9f88dd126ddcb1725225638ecc5b9633401e2e2f0305af",
+      "regenerated_sha256": "d89d2cc440e05bdbcd9f88dd126ddcb1725225638ecc5b9633401e2e2f0305af",
+      "byte_identical": true
+    },
+    {
+      "path": "schema/evaluation-event.schema.yaml",
+      "sha256": "ff075953ff6e2ddb12b3acb4e12821c60cab58656caeb0b99f551577a2c650c9",
+      "regenerated_sha256": "ff075953ff6e2ddb12b3acb4e12821c60cab58656caeb0b99f551577a2c650c9",
+      "byte_identical": true
+    },
+    {
+      "path": "schema/failure-record.schema.yaml",
+      "sha256": "92a0aa9ec8dd00f528d7e569093860c7c081d174051737d734b11d2ea42d7b5e",
+      "regenerated_sha256": "92a0aa9ec8dd00f528d7e569093860c7c081d174051737d734b11d2ea42d7b5e",
+      "byte_identical": true
+    },
+    {
+      "path": "schema/current-projection.schema.yaml",
+      "sha256": "7d8f4f3deea6b604dfbad684613c41f58741dba6dbd674ef078f6550e02d02a2",
+      "regenerated_sha256": "7d8f4f3deea6b604dfbad684613c41f58741dba6dbd674ef078f6550e02d02a2",
+      "byte_identical": true
+    },
+    {
+      "path": "reports/SEMANTIC-CORRECTIONS-REPORT.yaml",
+      "sha256": "21449146c97b127f5f70447f4a56a592e7bc52141e358ac5fdd6e0a39ffb61e1",
+      "regenerated_sha256": "21449146c97b127f5f70447f4a56a592e7bc52141e358ac5fdd6e0a39ffb61e1",
+      "byte_identical": true
+    },
+    {
+      "path": "reports/FAIL-CLOSED-COVERAGE-REPORT.yaml",
+      "sha256": "08f4d06f0e872a6fd10512494a4a84cd2782fec34ab4ddf4d36947410cb0fab9",
+      "regenerated_sha256": "08f4d06f0e872a6fd10512494a4a84cd2782fec34ab4ddf4d36947410cb0fab9",
+      "byte_identical": true
+    },
+    {
+      "path": "reports/CURRENT-HISTORICAL-STATUS.yaml",
+      "sha256": "28f8f47e307b46f2432cf4b7e58e0d589e52bf95536341022208e1305941124f",
+      "regenerated_sha256": "28f8f47e307b46f2432cf4b7e58e0d589e52bf95536341022208e1305941124f",
+      "byte_identical": true
+    },
+    {
+      "path": "SPECIFICATION.md",
+      "sha256": "23fa1056916a30b19f25ceda76c78cde12a776a11f38210a047217b198913817",
+      "regenerated_sha256": "23fa1056916a30b19f25ceda76c78cde12a776a11f38210a047217b198913817",
+      "byte_identical": true
+    }
+  ]
+}

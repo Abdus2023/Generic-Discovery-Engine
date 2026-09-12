@@ -1,0 +1,224 @@
+{
+  "schema_version": "14.5",
+  "epistemic_status": "SUPPORTED",
+  "claim_class": "NORMATIVE_REQUIREMENT",
+  "normative_origin": "USER_SUPPLIED_V14_5_REFINED_FOR_INTERNAL_CONSISTENCY",
+  "invariants": [
+    {
+      "invariant_id": "V145-INV-001",
+      "rule": "EVERY_NORMATIVE_EVALUATOR_RETURNS_EVALUATION_RESULT",
+      "machine_checked": true
+    },
+    {
+      "invariant_id": "V145-INV-002",
+      "rule": "INVALID_DISTINCT_FROM_FALSE",
+      "machine_checked": true
+    },
+    {
+      "invariant_id": "V145-INV-003",
+      "rule": "UNKNOWN_DISTINCT_FROM_BLOCKED",
+      "machine_checked": true
+    },
+    {
+      "invariant_id": "V145-INV-004",
+      "rule": "INVALID_REQUIRED_CANNOT_ESTABLISH_TRUTH",
+      "machine_checked": true
+    },
+    {
+      "invariant_id": "V145-INV-005",
+      "rule": "EVALUATION_CONTEXT_IMMUTABLE",
+      "machine_checked": true
+    },
+    {
+      "invariant_id": "V145-INV-006",
+      "rule": "EVALUATION_RESULT_IMMUTABLE",
+      "machine_checked": true
+    },
+    {
+      "invariant_id": "V145-INV-007",
+      "rule": "EVALUATION_AGGREGATION_DETERMINISTIC",
+      "machine_checked": true
+    },
+    {
+      "invariant_id": "V145-INV-008",
+      "rule": "ELIGIBILITY_NOT_ISSUANCE_AUTHORITY",
+      "machine_checked": true
+    },
+    {
+      "invariant_id": "V145-INV-009",
+      "rule": "AUTHORITY_EXPLICIT",
+      "machine_checked": true
+    },
+    {
+      "invariant_id": "V145-INV-010",
+      "rule": "AUTHORITY_SCOPE_CONTAINS_OPERATION",
+      "machine_checked": true
+    },
+    {
+      "invariant_id": "V145-INV-011",
+      "rule": "DELEGATE_NOT_EXCEED_PARENT",
+      "machine_checked": true
+    },
+    {
+      "invariant_id": "V145-INV-012",
+      "rule": "MULTIPARTY_DISTINCT_APPROVALS",
+      "machine_checked": true
+    },
+    {
+      "invariant_id": "V145-INV-013",
+      "rule": "EXPIRED_OR_REVOKED_AUTHORITY_CANNOT_ISSUE",
+      "machine_checked": true
+    },
+    {
+      "invariant_id": "V145-INV-014",
+      "rule": "AUTOMATION_REQUIRES_POLICY",
+      "machine_checked": true
+    },
+    {
+      "invariant_id": "V145-INV-015",
+      "rule": "CERTIFICATE_CANDIDATE_NOT_LIFECYCLE_STATE",
+      "machine_checked": true
+    },
+    {
+      "invariant_id": "V145-INV-016",
+      "rule": "DRAFT_IS_CERTIFICATE_OBJECT",
+      "machine_checked": true
+    },
+    {
+      "invariant_id": "V145-INV-017",
+      "rule": "AUTHORIZED_NOT_ISSUED",
+      "machine_checked": true
+    },
+    {
+      "invariant_id": "V145-INV-018",
+      "rule": "ISSUED_NOT_VALID",
+      "machine_checked": true
+    },
+    {
+      "invariant_id": "V145-INV-019",
+      "rule": "VALID_NOT_RELEASE_AUTHORIZED",
+      "machine_checked": true
+    },
+    {
+      "invariant_id": "V145-INV-020",
+      "rule": "INVALID_ISSUANCE_INPUT_CANNOT_ISSUE",
+      "machine_checked": true
+    },
+    {
+      "invariant_id": "V145-INV-021",
+      "rule": "STRUCTURAL_FAILURE_PREVENTS_SEMANTIC_EVALUATION",
+      "machine_checked": true
+    },
+    {
+      "invariant_id": "V145-INV-022",
+      "rule": "INTEGRITY_FAILURE_PREVENTS_AUTHORIZATION",
+      "machine_checked": true
+    },
+    {
+      "invariant_id": "V145-INV-023",
+      "rule": "MISSING_EVIDENCE_NOT_TRUE",
+      "machine_checked": true
+    },
+    {
+      "invariant_id": "V145-INV-024",
+      "rule": "UNKNOWN_NOT_TRUE",
+      "machine_checked": true
+    },
+    {
+      "invariant_id": "V145-INV-025",
+      "rule": "BLOCKED_NOT_TRUE",
+      "machine_checked": true
+    },
+    {
+      "invariant_id": "V145-INV-026",
+      "rule": "INVALID_POLICY_CANNOT_AUTHORIZE",
+      "machine_checked": true
+    },
+    {
+      "invariant_id": "V145-INV-027",
+      "rule": "MISSING_AUTHORITY_CANNOT_AUTHORIZE",
+      "machine_checked": true
+    },
+    {
+      "invariant_id": "V145-INV-028",
+      "rule": "EVENTS_IMMUTABLE",
+      "machine_checked": true
+    },
+    {
+      "invariant_id": "V145-INV-029",
+      "rule": "CURRENT_PROJECTIONS_DERIVED",
+      "machine_checked": true
+    },
+    {
+      "invariant_id": "V145-INV-030",
+      "rule": "WALL_CLOCK_NOT_AUTHORITATIVE_ORDER",
+      "machine_checked": true
+    },
+    {
+      "invariant_id": "V145-INV-031",
+      "rule": "PROJECTION_REPRODUCIBLE",
+      "machine_checked": true
+    },
+    {
+      "invariant_id": "V145-INV-032",
+      "rule": "NEW_EVIDENCE_NEW_EVALUATION",
+      "machine_checked": true
+    },
+    {
+      "invariant_id": "V145-INV-033",
+      "rule": "ELIGIBILITY_IS_PREDICATE_EVALUATION",
+      "machine_checked": true
+    },
+    {
+      "invariant_id": "V145-INV-034",
+      "rule": "DECISION_IS_AUTHORIZATION",
+      "machine_checked": true
+    },
+    {
+      "invariant_id": "V145-INV-035",
+      "rule": "APPROVAL_NOT_EXECUTION",
+      "machine_checked": true
+    },
+    {
+      "invariant_id": "V145-INV-036",
+      "rule": "EXECUTION_NOT_VERIFICATION",
+      "machine_checked": true
+    },
+    {
+      "invariant_id": "V145-INV-037",
+      "rule": "POST_RELEASE_FAILURE_NO_DECISION_REWRITE",
+      "machine_checked": true
+    },
+    {
+      "invariant_id": "V145-INV-038",
+      "rule": "ARTIFACT_CHANGE_INVALIDATES_REUSE",
+      "machine_checked": true
+    },
+    {
+      "invariant_id": "V145-INV-039",
+      "rule": "INVALID_NOT_HIDDEN_BY_FALSE",
+      "machine_checked": true
+    },
+    {
+      "invariant_id": "V145-INV-040",
+      "rule": "DECLARED_INTEGRITY_NOT_SELF_PROOF",
+      "machine_checked": true
+    },
+    {
+      "invariant_id": "V145-INV-041",
+      "rule": "WORKFLOW_MILESTONE_NOT_CANDIDATE_LIFECYCLE",
+      "machine_checked": true
+    },
+    {
+      "invariant_id": "V145-INV-042",
+      "rule": "ISSUED_CANNOT_CANCEL",
+      "machine_checked": true
+    },
+    {
+      "invariant_id": "V145-INV-043",
+      "rule": "HASH_TYPES_NOT_SUBSTITUTABLE",
+      "machine_checked": true
+    }
+  ],
+  "count": 43
+}

@@ -1,0 +1,283 @@
+{
+  "schema_version": "14.5",
+  "epistemic_status": "SUPPORTED",
+  "claim_class": "NORMATIVE_REQUIREMENT",
+  "normative_origin": "USER_SUPPLIED_V14_5_REFINED_FOR_INTERNAL_CONSISTENCY",
+  "schemas": [
+    {
+      "name": "evaluation-context",
+      "path": "schema/evaluation-context.schema.yaml",
+      "sha256": "808734122f69e051a082c83f401c24b81bb1df21bd07fbec404de3eb25561de1",
+      "identity_fields": [
+        "context_id"
+      ],
+      "immutable": true
+    },
+    {
+      "name": "evaluation-result",
+      "path": "schema/evaluation-result.schema.yaml",
+      "sha256": "318b6658eb3070563edf0a1a259ae950043446a2ec59dfd8269d70f9e9bb2782",
+      "identity_fields": [
+        "evaluation_id"
+      ],
+      "immutable": true
+    },
+    {
+      "name": "freshness-result",
+      "path": "schema/freshness-result.schema.yaml",
+      "sha256": "5eb9aedced1f11c3c2a55dd789a14f455d5efa4affac9b20c0e524670c04a5d9",
+      "identity_fields": [
+        "freshness_id"
+      ],
+      "immutable": true
+    },
+    {
+      "name": "issuance-authority",
+      "path": "schema/issuance-authority.schema.yaml",
+      "sha256": "5a7712ed1190a34d8ed7ad28ca81aa2e11cc3ad50580c3db17849f514e349657",
+      "identity_fields": [
+        "authority_id"
+      ],
+      "immutable": true
+    },
+    {
+      "name": "authority-approval",
+      "path": "schema/authority-approval.schema.yaml",
+      "sha256": "1438d965be043acd28da8ef1f9f33fd453aa761e32aeddad448b728916a1d02a",
+      "identity_fields": [
+        "approval_id"
+      ],
+      "immutable": true
+    },
+    {
+      "name": "certificate-candidate",
+      "path": "schema/certificate-candidate.schema.yaml",
+      "sha256": "88cdf740c1fc935c047220a47a6f93a1aaef600872b2c613ac5c62acae8e196e",
+      "identity_fields": [
+        "certificate_candidate_id"
+      ],
+      "immutable": true
+    },
+    {
+      "name": "certificate-issuance-authorization",
+      "path": "schema/certificate-issuance-authorization.schema.yaml",
+      "sha256": "25fa109302441b7f9f8d0c4bcb49e771b5675684261914c4a5eda990a1d353d2",
+      "identity_fields": [
+        "authorization_id"
+      ],
+      "immutable": true
+    },
+    {
+      "name": "certificate-issued-event",
+      "path": "schema/certificate-issued-event.schema.yaml",
+      "sha256": "73f6c6a39dbc450a88db1c6013604fee7683e4d328eeb4b704bbc020021fd25e",
+      "identity_fields": [
+        "event_id"
+      ],
+      "immutable": true
+    },
+    {
+      "name": "certificate",
+      "path": "schema/certificate.schema.yaml",
+      "sha256": "7dfe9b629e1c07cd972ed93a456a6839e5c92503364e6ef47cb50b3bf87a1b02",
+      "identity_fields": [
+        "certificate_id"
+      ],
+      "immutable": true
+    },
+    {
+      "name": "certificate-validity",
+      "path": "schema/certificate-validity.schema.yaml",
+      "sha256": "47a3f103e243189ac2c6d69f672cb60eee388e6d5ff25ecad42713204d544f23",
+      "identity_fields": [
+        "validity_id"
+      ],
+      "immutable": true
+    },
+    {
+      "name": "certificate-eligibility",
+      "path": "schema/certificate-eligibility.schema.yaml",
+      "sha256": "c468e710371bdaa0cde8a3921892fc66b358c4ea096ce8dcde13559403eaede9",
+      "identity_fields": [
+        "eligibility_id"
+      ],
+      "immutable": true
+    },
+    {
+      "name": "release",
+      "path": "schema/release.schema.yaml",
+      "sha256": "8f4e1f550e738bc063fd2f63584a104b264c673e564748ff09b32fa6c27e0310",
+      "identity_fields": [
+        "release_id"
+      ],
+      "immutable": true
+    },
+    {
+      "name": "release-gate",
+      "path": "schema/release-gate.schema.yaml",
+      "sha256": "de7e3628463f63bcbfc569f82e34ba3d060c41e81c59b01574acbfd039551edd",
+      "identity_fields": [
+        "gate_id"
+      ],
+      "immutable": true
+    },
+    {
+      "name": "release-eligibility",
+      "path": "schema/release-eligibility.schema.yaml",
+      "sha256": "40b91346792c6dcc483c3ddc46e1250a16f0f4137ef0c737fecf2eef49ca7d79",
+      "identity_fields": [
+        "eligibility_id"
+      ],
+      "immutable": true
+    },
+    {
+      "name": "release-decision",
+      "path": "schema/release-decision.schema.yaml",
+      "sha256": "027da7073d3e0dfe823d8907e26b60234a1dd55a5b837cc1803d77f68b91e2e1",
+      "identity_fields": [
+        "decision_id"
+      ],
+      "immutable": true
+    },
+    {
+      "name": "release-decision-event",
+      "path": "schema/release-decision-event.schema.yaml",
+      "sha256": "8e1399a8f3ee56918bde555e899244204b920fcefce7fe1c63f4307dfaa1903e",
+      "identity_fields": [
+        "event_id"
+      ],
+      "immutable": true
+    },
+    {
+      "name": "release-execution",
+      "path": "schema/release-execution.schema.yaml",
+      "sha256": "5f30d6b0d2c0646c580c27619cb1f5f95b74d3b87d1123a4473d3f2b93c02aae",
+      "identity_fields": [
+        "execution_id"
+      ],
+      "immutable": true
+    },
+    {
+      "name": "post-release-verification",
+      "path": "schema/post-release-verification.schema.yaml",
+      "sha256": "449f4748df0e6c225f7d2a51c6353ea7fef3e92df3c1c0a88bf32614c0792cf2",
+      "identity_fields": [
+        "verification_id"
+      ],
+      "immutable": true
+    },
+    {
+      "name": "current-certificate",
+      "path": "schema/current-certificate.schema.yaml",
+      "sha256": "f1f5758390e881c59134dd3d2553772371eb38cbc75ee2b95ff6021a63227c00",
+      "identity_fields": [
+        "projection_id"
+      ],
+      "immutable": true
+    },
+    {
+      "name": "current-certificate-validity",
+      "path": "schema/current-certificate-validity.schema.yaml",
+      "sha256": "a53822751af4c1fd7acb006598403637270a3547dad2bfc479239d278cd2aaeb",
+      "identity_fields": [
+        "projection_id"
+      ],
+      "immutable": true
+    },
+    {
+      "name": "current-certificate-eligibility",
+      "path": "schema/current-certificate-eligibility.schema.yaml",
+      "sha256": "a4c05196edb9217da9f5e013f65a41afac6e7e4e6462f707f6c5e955d12e7f5a",
+      "identity_fields": [
+        "projection_id"
+      ],
+      "immutable": true
+    },
+    {
+      "name": "current-release-eligibility",
+      "path": "schema/current-release-eligibility.schema.yaml",
+      "sha256": "03e8b6f1e817d86a8d12ed8e4a77c97c45b29483dc6c5b7a3e0c62d9726e86d4",
+      "identity_fields": [
+        "projection_id"
+      ],
+      "immutable": true
+    },
+    {
+      "name": "current-release-decision",
+      "path": "schema/current-release-decision.schema.yaml",
+      "sha256": "3e1440d8de5c8150a3d410b64153fedcb19793c6c65089e8806902d0be7c6563",
+      "identity_fields": [
+        "projection_id"
+      ],
+      "immutable": true
+    },
+    {
+      "name": "current-release-execution",
+      "path": "schema/current-release-execution.schema.yaml",
+      "sha256": "50ce190fba22a3ef4bf45b76c387ab29931f500e8feb7798fdd7ef0045d105d2",
+      "identity_fields": [
+        "projection_id"
+      ],
+      "immutable": true
+    },
+    {
+      "name": "current-post-release-verification",
+      "path": "schema/current-post-release-verification.schema.yaml",
+      "sha256": "f692d3c657510208669ade6e8140dea26d173967fa7db7bba4bdaa4e28f7525b",
+      "identity_fields": [
+        "projection_id"
+      ],
+      "immutable": true
+    },
+    {
+      "name": "predicate-definition",
+      "path": "schema/predicate-definition.schema.yaml",
+      "sha256": "ac8ae00ee5f953b1916cbb5eaf037a7db1be9688ddd9aeb969597e28b8d32e93",
+      "identity_fields": [
+        "predicate_id"
+      ],
+      "immutable": true
+    },
+    {
+      "name": "state-transition-event",
+      "path": "schema/state-transition-event.schema.yaml",
+      "sha256": "d89d2cc440e05bdbcd9f88dd126ddcb1725225638ecc5b9633401e2e2f0305af",
+      "identity_fields": [
+        "event_id"
+      ],
+      "immutable": true
+    },
+    {
+      "name": "evaluation-event",
+      "path": "schema/evaluation-event.schema.yaml",
+      "sha256": "ff075953ff6e2ddb12b3acb4e12821c60cab58656caeb0b99f551577a2c650c9",
+      "identity_fields": [
+        "event_id"
+      ],
+      "immutable": true
+    },
+    {
+      "name": "failure-record",
+      "path": "schema/failure-record.schema.yaml",
+      "sha256": "92a0aa9ec8dd00f528d7e569093860c7c081d174051737d734b11d2ea42d7b5e",
+      "identity_fields": [
+        "failure_id"
+      ],
+      "immutable": true
+    },
+    {
+      "name": "current-projection",
+      "path": "schema/current-projection.schema.yaml",
+      "sha256": "7d8f4f3deea6b604dfbad684613c41f58741dba6dbd674ef078f6550e02d02a2",
+      "identity_fields": [
+        "projection_id"
+      ],
+      "immutable": true
+    }
+  ],
+  "discovery_candidate_schema": {
+    "path": "../v14.3/schema/candidate.schema.yaml",
+    "sha256": "cf238e5de296efcbcaa44873dd0b5b42fd58edbe3ab9a9a2f9f357425e806780",
+    "preserved_exactly": true
+  }
+}
