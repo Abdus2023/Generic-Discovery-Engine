@@ -1,7 +1,47 @@
-// src/utils.js — extracted utils
-import { CONFIG } from './config.js';
+// src/utils.js — helpers
+    function log(...args) {
+        if (CONFIG.debug) {
+            console.log('[GDE]', ...args);
+        }
+    }
 
-function canonicalizeUrl(raw) {
+    function warn(...args) {
+        console.warn('[GDE]', ...args);
+    }
+
+    function now() {
+        return Date.now();
+    }
+
+    function sleep(ms) {
+        return new Promise(resolve => setTimeout(resolve, ms));
+    }
+
+    function makeId(prefix) {
+        return `${prefix}-${now()}-${Math.random().toString(36).slice(2, 10)}`;
+    }
+
+    function clamp(value, min, max) {
+        return Math.max(min, Math.min(max, value));
+    }
+
+    function safeArray(value) {
+        return Array.isArray(value) ? value : [];
+    }
+
+    function unique(values) {
+        return [...new Set(values)];
+    }
+
+    function originOf(url) {
+        try {
+            return new URL(url, location.href).origin;
+        } catch {
+            return location.origin;
+        }
+    }
+
+    function canonicalizeUrl(raw) {
         try {
             const url = new URL(raw, location.href);
 
@@ -254,12 +294,8 @@ function canonicalizeUrl(raw) {
         };
     }
 
-    function originOf(url) {
-        try {
-            return new URL(url, location.href).origin;
-        } catch {
-            return location.origin;
-        }
+    function stableId(prefix, value) {
+        return `${prefix}-${fnv1a32(String(value))}`;
     }
 
     function extractUrlPattern(url) {
@@ -290,8 +326,32 @@ function canonicalizeUrl(raw) {
         }
     }
 
-    function stableId(prefix, value) {
-        return `${prefix}-${fnv1a32(String(value))}`;
+    function contentTypeForTarget(type) {
+        switch (type) {
+            case 'script':
+                return 'application/javascript';
+
+            case 'stylesheet':
+                return 'text/css';
+
+            case 'sitemap':
+            case 'robots':
+            case 'feed':
+            case 'xml':
+                return 'application/xml';
+
+            case 'manifest':
+            case 'api':
+                return 'application/json';
+
+            default:
+                return null;
+        }
     }
 
-export { canonicalizeUrl, fnv1a32, makeFingerprint, extractUrlPattern, clusterKeyForCandidate };
+    /*
+     * ============================================================
+     * ACQUISITION PLAN
+     * ============================================================
+     */
+

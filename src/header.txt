@@ -1,0 +1,165 @@
+// ==UserScript==
+// @name         Generic Discovery Engine
+// @namespace    generic-discovery
+// @version      0.8.2
+// @description  Generic web-resource discovery engine inspired by the architecture of DVB blind scanning.
+// @match        *://*/*
+// @run-at       document-start
+// @noframes
+// @grant        GM_getValue
+// @grant        GM_setValue
+// @grant        GM_xmlhttpRequest
+// @connect      self
+// @connect      *  — uncomment if CONFIG.sameOriginOnly=false (cross-origin); default same-origin keeps self
+// ==/UserScript==
+
+(function () {
+    'use strict';
+
+    /*
+     * ============================================================
+     * Generic Discovery Engine
+     * v0.8.2 — Export Hardening + Inference Metrics (coverage+export now include pattern/cluster/fingerprint + deterministic ledger)
+
+     * Patch notes vs v0.8.1:
+     * - Export: getCoverageMetrics() now returns inference metrics
+     *           (patternCount, clusterCount, fingerprintUnique, inferenceEnabled)
+     *           + queuedByType keys sorted for determinism; exportData()
+     *           now includes `inference` (patternMetrics, clusterMetrics,
+     *           fingerprintStats) alongside coverage/ledger — schema stays
+     *           gde-export-v8.0 (additive, JSON-stable sorted keys), ledger
+     *           export remains seq-ordered 5k FIFO
+     *         + Build: verify-build now asserts exportData inference present +
+     *           coverage determinism + no build-time drift
+     *         + Tests: export-inference 4 cases + coverage determinism 2 cases
+
+     * Patch notes vs v0.8.0:
+     * - Modular: src/ mirror (config.js, utils.js, models.js, knowledge.js,
+     *           ledger.js, providers.js, engine.js) extracted from dist
+     *           5,773 lines; scripts/build.js now verifies src/ exists and
+     *           dist header @version matches pkg + hash matches meta
+     *         + Export: CONFIG.version stays 8, exportData().schema
+     *           gde-export-v8.0 + pattern/cluster metrics now included in
+     *           coverage export (frontier + pattern + cluster)
+     *         + Tests: src existence + build determinism + 9-provider
+     *           ordered pipeline proven
+
+     * Patch notes vs v0.7.9:
+     * - Providers: RobotsProvider (Sitemap: extraction, robots.txt) +
+     *           HeadersProvider (Link header → url, Location → url);
+     *           ProviderRegistry now 9 providers, ordered Html/Json/Xml/Css/JS/
+     *           Robots/Headers/Binary/Text + http.headers captured in
+     *           Observation (fetch + GM_xhr)
+     *         + Change: CONFIG.changeDetection + KnowledgeBase.detectChange()
+     *           (fingerprint hash diff → resource-changed diagnostic + status
+     *           `changed`, O(1), ~0.01 ms) + 3 ADRs (016-robots, 017-headers,
+     *           018-change)
+
+     * Patch notes vs v0.7.8:
+     * - Pattern: CONFIG.inference.patternInference + extractUrlPattern()
+     *           (/{int} for /\d+, ={int} for ?=\d+, uuid/hash → {id});
+     *           KnowledgeBase patternIndex Map<pattern,count> + clusterIndex
+     *           Map<origin+pattern,count> + getPatternMetrics() /
+     *           getClusterMetrics() (O(n) over ≤750, ~0.06 ms)
+     *         + Build: scripts/build.js (deterministic rebuild check) +
+     *           npm run verify:build (sha256 + wc -l) + tsconfig strict false
+     *           + 3 ADRs (013-pattern, 014-cluster, 015-build)
+     *         + Tests: property-pattern 7 invariants (seeded)
+
+     * Patch notes vs v0.7.7:
+     * - Lifecycle: CONFIG.lifecycle.strict + KnowledgeBase._validateTransition
+     *           table (discovered→queued→claimed→planned→acquiring→observed
+     *           →recognized→expanded→completed, with skipped/failed/ttl/queued
+     *           branches); illegal transitions emit lifecycle-illegal-transition
+     *           diagnostic, strict mode throws; ~0.02 ms per mark
+     *         + Concurrency: claimNextCandidate() is synchronous sort+mark
+     *           proven exclusive under interleaved workers (property-concurrency
+     *           harness, 500 iter, TTL+retry windows)
+     *         + Types: JSDoc typedefs + tsconfig.json (checkJs strict) +
+     *           npm run typecheck (tsc --noEmit) + .c8rc gate holds 85/75/80
+     *
+     * Patch notes vs v0.7.6:
+     * - Bounds: CONFIG.candidateTTL (0=off, ms) — claimNextCandidate() now
+     *           sweeps queued/failed and marks ttl-expired (ledger + skipped)
+     *           before sort; prevents stale frontier at live cap
+     *         + Ledger FIFO 5000 + Origin throttle invariants proven via
+     *           property-determinism harness (seeded, 500 iter)
+     *         + Coverage gate: .c8rc check-coverage true (85/75) + CI lint
+     *           + 3 ADRs (007-ttl, 008-throttle, 009-coverage-gates)
+     *
+     * v0.7.6 — Performance & Coverage (rAF UI + coverage proof + invariants)
+     *
+     * Patch notes vs v0.7.5:
+     * - Perf: updateUI() now rAF-batched (_uiRaf + _doUpdateUI) to avoid
+     *         layout thrash when ledger hits 5k and 4 workers flush;
+     *         falls back to sync when rAF unavailable
+     *         + coverage script (node --experimental-test-coverage)
+     *         + property tests for effectivePriority invariants
+
+     * v0.7.5 — Trust & Verification (Trusted Types + fuzz + CI + ADRs)
+     *
+     * Patch notes vs v0.7.4:
+     * - Trust: Trusted Types policy (gde-bridge) for installBridge()
+     *         + JSDoc typedefs + CI workflow verify.yml +
+     *           fuzz harness (extract/canonicalize) + 3 more ADRs
+     *
+     * v0.7.4 — Hardening & Hygiene (P2-6 privacy/CSP/header + ADR split)
+     *
+     * Patch notes vs v0.7.3:
+     * - P2-6: @connect self (with * commented for cross-origin opt-in)
+     *         + CONFIG.privacy.stripSensitiveParams (opt-in token/
+     *           session/auth scrub in canonicalizeUrl) + explicit
+     *           csp-blocks-bridge diagnostic + cross-origin-config
+     *           warning at init when sameOriginOnly=false
+     *
+     * v0.7.3 — Coverage Frontier + E2E Verified (P0/P1/P2-3)
+     *
+     * Patch notes vs v0.7.2:
+     * - P2-3: getCoverageMetrics() + UI + export coverage (frontierSize,
+     *         queuedByType, liveCount, visitedSize, knownResources,
+     *         requestsRemaining, ledgerSize, graphEdges, observations)
+     *         makes budget/frontier observable without extra traversal
+     *
+     * v0.7.2 — Verified Patch (P0 fixes)
+     *
+     * Patch notes vs v0.7.1:
+     * - P0-1: maxCandidates now counts live (queued/claimed/planned/
+     *         acquiring/observed/recognized/failed) not completed/skipped
+     * - P0-2: visited now identityKey-scoped (type:target) and consulted
+     *         in addCandidate; prevents cross-type duplicate acquisition
+     * - P0-3: KnowledgeBase.serialize persists observations without bodies
+     *         (already via Observation.serialize) + caps in-memory observations
+     *         at 800 entries (FIFO) to avoid unbounded heap on link-dense SPA
+     * - P1-1: per-observation discovery deduplication across providers
+     * - P1-2: mutation observer batch dedup (Set per flush)
+     *
+     * v0.7.1
+     * Main pipeline:
+     *
+     * DISCOVERY
+     *     ↓
+     * KNOWLEDGE GRAPH
+     *     ↓
+     * ACQUISITION PLAN
+     *     ↓
+     * SCHEDULER
+     *     ↓
+     * ACQUISITION
+     *     ↓
+     * OBSERVATION
+     *     ↓
+     * RECOGNITION
+     *     ↓
+     * DISCOVERY
+     *
+     * Important:
+     *
+     * Candidate !== AcquisitionPlan
+     *
+     * Discovery does not authorize acquisition.
+     *
+     * Decision replay is supported.
+     * Network replay is NOT guaranteed.
+     * ============================================================
+     */
+

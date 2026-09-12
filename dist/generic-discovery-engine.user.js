@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Generic Discovery Engine
 // @namespace    generic-discovery
-// @version      0.8.2
+// @version      0.9.0
 // @description  Generic web-resource discovery engine inspired by the architecture of DVB blind scanning.
 // @match        *://*/*
 // @run-at       document-start
@@ -19,7 +19,7 @@
     /*
      * ============================================================
      * Generic Discovery Engine
-     * v0.8.2 — Export Hardening + Inference Metrics (coverage+export now include pattern/cluster/fingerprint + deterministic ledger)
+     * v0.9.0 — Export Hardening + Inference Metrics (coverage+export now include pattern/cluster/fingerprint + deterministic ledger)
 
      * Patch notes vs v0.8.1:
      * - Export: getCoverageMetrics() now returns inference metrics
@@ -676,79 +676,6 @@
     /*
      * ============================================================
      * ACQUISITION PLAN
-     * ============================================================
-     */
-
-    class AcquisitionPlan {
-        constructor(data = {}) {
-            this.id = data.id || makeId('plan');
-
-            this.candidateId =
-                data.candidateId || null;
-
-            this.target =
-                data.target || '';
-
-            this.method =
-                String(data.method || 'GET').toUpperCase();
-
-            this.allowed =
-                Boolean(data.allowed);
-
-            this.reason =
-                data.reason || null;
-
-            this.priority =
-                Number.isFinite(data.priority)
-                    ? data.priority
-                    : 0;
-
-            this.origin =
-                data.origin || originOf(this.target);
-
-            this.expectedType =
-                data.expectedType || 'unknown';
-
-            this.requiresOriginSlot =
-                data.requiresOriginSlot !== false;
-
-            this.createdAt =
-                data.createdAt || now();
-
-            this.policyVersion =
-                data.policyVersion || CONFIG.version;
-
-            this.policyInputs =
-                data.policyInputs || {};
-        }
-
-        serialize() {
-            return {
-                id: this.id,
-                candidateId: this.candidateId,
-                target: this.target,
-                method: this.method,
-                allowed: this.allowed,
-                reason: this.reason,
-                priority: this.priority,
-                origin: this.origin,
-                expectedType: this.expectedType,
-                requiresOriginSlot: this.requiresOriginSlot,
-                createdAt: this.createdAt,
-                policyVersion: this.policyVersion,
-                policyInputs: this.policyInputs
-            };
-        }
-    }
-
-    /*
-     * ============================================================
-     * DETERMINISTIC EVENT LEDGER
-     * ============================================================
-     *
-     * The ledger records decisions and transitions.
-     *
-     * It does not claim that network execution is deterministic.
      * ============================================================
      */
 
@@ -2100,690 +2027,6 @@
      * ============================================================
      */
 
-    class AcquisitionPolicy {
-        plan(candidate) {
-            const method =
-                String(
-                    candidate.hints?.method ||
-                    'GET'
-                ).toUpperCase();
-
-            const base = {
-                candidateId: candidate.id,
-                target: candidate.target,
-                method,
-                priority:
-                    candidate.effectivePriority(),
-                origin: candidate.origin,
-                expectedType: candidate.type,
-                policyInputs: {
-                    candidateType: candidate.type,
-                    hints: {
-                        ...candidate.hints
-                    }
-                }
-            };
-
-            if (!isAllowedUrl(candidate.target)) {
-                return new AcquisitionPlan({
-                    ...base,
-                    allowed: false,
-                    reason: 'url-not-allowed'
-                });
-            }
-
-            if (method !== 'GET') {
-                return new AcquisitionPlan({
-                    ...base,
-                    allowed: false,
-                    reason: 'non-get-method'
-                });
-            }
-
-            if (
-                candidate.depth >
-                CONFIG.maxDepth
-            ) {
-                return new AcquisitionPlan({
-                    ...base,
-                    allowed: false,
-                    reason: 'max-depth'
-                });
-            }
-
-            if (
-                candidate.type === 'form' &&
-                !CONFIG.policy.acquireForms
-            ) {
-                return new AcquisitionPlan({
-                    ...base,
-                    allowed: false,
-                    reason: 'forms-disabled'
-                });
-            }
-
-            if (
-                candidate.type === 'media' &&
-                !CONFIG.policy.acquireMedia
-            ) {
-                return new AcquisitionPlan({
-                    ...base,
-                    allowed: false,
-                    reason: 'media-disabled'
-                });
-            }
-
-            if (
-                candidate.type === 'frame' &&
-                !CONFIG.policy.acquireFrames
-            ) {
-                return new AcquisitionPlan({
-                    ...base,
-                    allowed: false,
-                    reason: 'frames-disabled'
-                });
-            }
-
-            if (
-                candidate.type === 'stylesheet' &&
-                !CONFIG.policy.acquireStylesheets
-            ) {
-                return new AcquisitionPlan({
-                    ...base,
-                    allowed: false,
-                    reason: 'stylesheets-disabled'
-                });
-            }
-
-            if (
-                candidate.type === 'script' &&
-                !CONFIG.policy.acquireScripts
-            ) {
-                return new AcquisitionPlan({
-                    ...base,
-                    allowed: false,
-                    reason: 'scripts-disabled'
-                });
-            }
-
-            if (
-                candidate.type === 'network' &&
-                !CONFIG.policy.acquireNetworkGet
-            ) {
-                return new AcquisitionPlan({
-                    ...base,
-                    allowed: false,
-                    reason: 'network-get-disabled'
-                });
-            }
-
-            if (
-                candidate.hints?.binary &&
-                !CONFIG.policy.acquireBinaryResources
-            ) {
-                return new AcquisitionPlan({
-                    ...base,
-                    allowed: false,
-                    reason: 'binary-disabled'
-                });
-            }
-
-            return new AcquisitionPlan({
-                ...base,
-                allowed: true,
-                reason: null
-            });
-        }
-    }
-
-    /*
-     * ============================================================
-     * ORIGIN CONTROL
-     * ============================================================
-     */
-
-    class OriginController {
-        constructor() {
-            this.states = new Map();
-        }
-
-        state(origin) {
-            if (!this.states.has(origin)) {
-                this.states.set(origin, {
-                    active: 0,
-                    requests: 0,
-                    lastRequestAt: 0
-                });
-            }
-
-            return this.states.get(origin);
-        }
-
-        canReserve(origin) {
-            const state =
-                this.state(origin);
-
-            if (
-                state.requests >=
-                CONFIG.origin.maxRequestsPerOrigin
-            ) {
-                return false;
-            }
-
-            if (
-                state.active >=
-                CONFIG.origin.maxConcurrentPerOrigin
-            ) {
-                return false;
-            }
-
-            return true;
-        }
-
-        async acquire(origin) {
-            while (true) {
-                const state =
-                    this.state(origin);
-
-                if (
-                    state.requests >=
-                    CONFIG.origin.maxRequestsPerOrigin
-                ) {
-                    return false;
-                }
-
-                if (
-                    state.active <
-                    CONFIG.origin.maxConcurrentPerOrigin
-                ) {
-                    const elapsed =
-                        now() -
-                        state.lastRequestAt;
-
-                    const wait =
-                        CONFIG.origin.minRequestInterval -
-                        elapsed;
-
-                    if (wait > 0) {
-                        await sleep(wait);
-                        continue;
-                    }
-
-                    state.active++;
-                    state.requests++;
-                    state.lastRequestAt = now();
-
-                    return true;
-                }
-
-                await sleep(50);
-            }
-        }
-
-        release(origin) {
-            const state =
-                this.state(origin);
-
-            state.active =
-                Math.max(0, state.active - 1);
-        }
-    }
-
-    /*
-     * ============================================================
-     * ACQUISITION
-     * ============================================================
-     */
-
-    class Acquisition {
-        constructor(originController) {
-            this.origins =
-                originController;
-        }
-
-        async execute(plan, ledger) {
-            const startedAt = now();
-
-            ledger.recordRequestStarted(plan);
-
-            const originGranted =
-                await this.origins.acquire(
-                    plan.origin
-                );
-
-            if (!originGranted) {
-                const observation =
-                    new Observation({
-                        candidateId:
-                            plan.candidateId,
-                        planId: plan.id,
-                        target: plan.target,
-                        requestedUrl:
-                            plan.target,
-                        startedAt,
-                        completedAt: now(),
-                        status: 'skipped',
-                        reason:
-                            'origin-request-budget'
-                    });
-
-                ledger.recordRequestCompleted(
-                    plan,
-                    observation
-                );
-
-                return observation;
-            }
-
-            try {
-                return await this.request(
-                    plan,
-                    startedAt,
-                    ledger
-                );
-            } finally {
-                this.origins.release(
-                    plan.origin
-                );
-            }
-        }
-
-        async request(plan, startedAt, ledger) {
-            if (
-                typeof GM_xmlhttpRequest ===
-                'function'
-            ) {
-                return new Promise(resolve => {
-                    let finished = false;
-
-                    const finish =
-                        observation => {
-                            if (finished) return;
-
-                            finished = true;
-
-                            ledger.recordRequestCompleted(
-                                plan,
-                                observation
-                            );
-
-                            resolve(observation);
-                        };
-
-                    const timeoutId =
-                        setTimeout(() => {
-                            finish(
-                                new Observation({
-                                    candidateId:
-                                        plan.candidateId,
-                                    planId: plan.id,
-                                    target:
-                                        plan.target,
-                                    requestedUrl:
-                                        plan.target,
-                                    startedAt,
-                                    completedAt:
-                                        now(),
-                                    status: 'timeout',
-                                    reason:
-                                        'request-timeout'
-                                })
-                            );
-                        }, CONFIG.requestTimeout);
-
-                    try {
-                        GM_xmlhttpRequest({
-                            method: plan.method,
-                            url: plan.target,
-                            timeout:
-                                CONFIG.requestTimeout,
-
-                            onload: response => {
-                                clearTimeout(timeoutId);
-
-                                let body =
-                                    String(
-                                        response.responseText ||
-                                        ''
-                                    );
-
-                                let bodyTruncated =
-                                    false;
-
-                                if (
-                                    body.length >
-                                    CONFIG.maxBodyChars
-                                ) {
-                                    body =
-                                        body.slice(
-                                            0,
-                                            CONFIG.maxBodyChars
-                                        );
-
-                                    bodyTruncated = true;
-                                }
-
-                                const observation =
-                                    new Observation({
-                                        candidateId:
-                                            plan.candidateId,
-
-                                        planId:
-                                            plan.id,
-
-                                        target:
-                                            plan.target,
-
-                                        requestedUrl:
-                                            plan.target,
-
-                                        startedAt,
-
-                                        completedAt:
-                                            now(),
-
-                                        status:
-                                            response.status >=
-                                                200 &&
-                                            response.status <
-                                                400
-                                                ? 'success'
-                                                : 'http-error',
-
-                                        http: {
-                                            status:
-                                                response.status,
-
-                                            contentType:
-                                                response.responseHeaders
-                                                    ?.match(
-                                                        /content-type:\s*([^\r\n]+)/i
-                                                    )?.[1]
-                                                    ?.trim() ||
-                                                '',
-
-                                            contentLength:
-                                                response.responseHeaders
-                                                    ?.match(
-                                                        /content-length:\s*(\d+)/i
-                                                    )?.[1] ||
-                                                null,
-
-                                            headers: (() => {
-                                                const h = {};
-                                                for (const line of String(
-                                                    response.responseHeaders || ''
-                                                ).split(/\r?\n/)) {
-                                                    const idx =
-                                                        line.indexOf(':');
-                                                    if (idx > 0) {
-                                                        h[
-                                                            line
-                                                                .slice(
-                                                                    0,
-                                                                    idx
-                                                                )
-                                                                .trim()
-                                                                .toLowerCase()
-                                                        ] =
-                                                            line
-                                                                .slice(
-                                                                    idx + 1
-                                                                )
-                                                                .trim();
-                                                    }
-                                                }
-                                                return h;
-                                            })(),
-
-                                            finalUrl:
-                                                response.finalUrl ||
-                                                plan.target
-                                        },
-
-                                        body,
-                                        bodyTruncated,
-
-                                        fingerprint:
-                                            makeFingerprint(
-                                                body
-                                            )
-                                    });
-
-                                finish(observation);
-                            },
-
-                            ontimeout: () => {
-                                clearTimeout(timeoutId);
-
-                                finish(
-                                    new Observation({
-                                        candidateId:
-                                            plan.candidateId,
-                                        planId: plan.id,
-                                        target: plan.target,
-                                        requestedUrl:
-                                            plan.target,
-                                        startedAt,
-                                        completedAt:
-                                            now(),
-                                        status: 'timeout',
-                                        reason:
-                                            'request-timeout'
-                                    })
-                                );
-                            },
-
-                            onerror: error => {
-                                clearTimeout(timeoutId);
-
-                                finish(
-                                    new Observation({
-                                        candidateId:
-                                            plan.candidateId,
-                                        planId: plan.id,
-                                        target: plan.target,
-                                        requestedUrl:
-                                            plan.target,
-                                        startedAt,
-                                        completedAt:
-                                            now(),
-                                        status: 'error',
-                                        reason:
-                                            'request-error',
-                                        errors: [
-                                            String(
-                                                error?.error ||
-                                                'unknown-error'
-                                            )
-                                        ]
-                                    })
-                                );
-                            }
-                        });
-                    } catch (error) {
-                        clearTimeout(timeoutId);
-
-                        finish(
-                            new Observation({
-                                candidateId:
-                                    plan.candidateId,
-                                planId: plan.id,
-                                target: plan.target,
-                                requestedUrl:
-                                    plan.target,
-                                startedAt,
-                                completedAt:
-                                    now(),
-                                status: 'error',
-                                reason:
-                                    'request-exception',
-                                errors: [
-                                    String(error)
-                                ]
-                            })
-                        );
-                    }
-                });
-            }
-
-            /*
-             * Fetch fallback.
-             *
-             * IMPORTANT:
-             * AbortController is used so a timeout does not leave
-             * an uncontrolled fetch alive.
-             */
-
-            const controller =
-                new AbortController();
-
-            const timeoutId =
-                setTimeout(
-                    () => controller.abort(),
-                    CONFIG.requestTimeout
-                );
-
-            try {
-                const response =
-                    await fetch(
-                        plan.target,
-                        {
-                            method: plan.method,
-                            credentials: 'same-origin',
-                            redirect: 'follow',
-                            signal:
-                                controller.signal
-                        }
-                    );
-
-                let body =
-                    await response.text();
-
-                let bodyTruncated = false;
-
-                if (
-                    body.length >
-                    CONFIG.maxBodyChars
-                ) {
-                    body =
-                        body.slice(
-                            0,
-                            CONFIG.maxBodyChars
-                        );
-
-                    bodyTruncated = true;
-                }
-
-                const observation =
-                    new Observation({
-                        candidateId:
-                            plan.candidateId,
-
-                        planId:
-                            plan.id,
-
-                        target:
-                            plan.target,
-
-                        requestedUrl:
-                            plan.target,
-
-                        startedAt,
-
-                        completedAt:
-                            now(),
-
-                        status:
-                            response.ok
-                                ? 'success'
-                                : 'http-error',
-
-                        http: {
-                            status:
-                                response.status,
-
-                            contentType:
-                                response.headers.get(
-                                    'content-type'
-                                ) || '',
-
-                            contentLength:
-                                response.headers.get(
-                                    'content-length'
-                                ),
-
-                            headers: Object.fromEntries(
-                                [...response.headers.entries()].map(
-                                    ([k, v]) => [
-                                        k.toLowerCase(),
-                                        v
-                                    ]
-                                )
-                            ),
-
-                            finalUrl:
-                                response.url ||
-                                plan.target
-                        },
-
-                        body,
-                        bodyTruncated,
-
-                        fingerprint:
-                            makeFingerprint(body)
-                    });
-
-                ledger.recordRequestCompleted(
-                    plan,
-                    observation
-                );
-
-                return observation;
-            } catch (error) {
-                const observation =
-                    new Observation({
-                        candidateId:
-                            plan.candidateId,
-                        planId: plan.id,
-                        target: plan.target,
-                        requestedUrl:
-                            plan.target,
-                        startedAt,
-                        completedAt: now(),
-                        status:
-                            error?.name ===
-                            'AbortError'
-                                ? 'timeout'
-                                : 'error',
-                        reason:
-                            error?.name ===
-                            'AbortError'
-                                ? 'request-timeout'
-                                : 'request-error',
-                        errors: [
-                            String(error)
-                        ]
-                    });
-
-                ledger.recordRequestCompleted(
-                    plan,
-                    observation
-                );
-
-                return observation;
-            } finally {
-                clearTimeout(timeoutId);
-            }
-        }
-    }
-
-    /*
-     * ============================================================
-     * PROVIDER BASE
-     * ============================================================
-     */
-
     class Provider {
         constructor(name) {
             this.name = name;
@@ -3768,6 +3011,772 @@
      * ============================================================
      */
 
+// --- 681-754 ---
+    class AcquisitionPlan {
+        constructor(data = {}) {
+            this.id = data.id || makeId('plan');
+
+            this.candidateId =
+                data.candidateId || null;
+
+            this.target =
+                data.target || '';
+
+            this.method =
+                String(data.method || 'GET').toUpperCase();
+
+            this.allowed =
+                Boolean(data.allowed);
+
+            this.reason =
+                data.reason || null;
+
+            this.priority =
+                Number.isFinite(data.priority)
+                    ? data.priority
+                    : 0;
+
+            this.origin =
+                data.origin || originOf(this.target);
+
+            this.expectedType =
+                data.expectedType || 'unknown';
+
+            this.requiresOriginSlot =
+                data.requiresOriginSlot !== false;
+
+            this.createdAt =
+                data.createdAt || now();
+
+            this.policyVersion =
+                data.policyVersion || CONFIG.version;
+
+            this.policyInputs =
+                data.policyInputs || {};
+        }
+
+        serialize() {
+            return {
+                id: this.id,
+                candidateId: this.candidateId,
+                target: this.target,
+                method: this.method,
+                allowed: this.allowed,
+                reason: this.reason,
+                priority: this.priority,
+                origin: this.origin,
+                expectedType: this.expectedType,
+                requiresOriginSlot: this.requiresOriginSlot,
+                createdAt: this.createdAt,
+                policyVersion: this.policyVersion,
+                policyInputs: this.policyInputs
+            };
+        }
+    }
+
+    /*
+     * ============================================================
+     * DETERMINISTIC EVENT LEDGER
+     * ============================================================
+     *
+     * The ledger records decisions and transitions.
+     *
+     * It does not claim that network execution is deterministic.
+     * ============================================================
+     */
+
+
+// --- 2102-2244 ---
+    class AcquisitionPolicy {
+        plan(candidate) {
+            const method =
+                String(
+                    candidate.hints?.method ||
+                    'GET'
+                ).toUpperCase();
+
+            const base = {
+                candidateId: candidate.id,
+                target: candidate.target,
+                method,
+                priority:
+                    candidate.effectivePriority(),
+                origin: candidate.origin,
+                expectedType: candidate.type,
+                policyInputs: {
+                    candidateType: candidate.type,
+                    hints: {
+                        ...candidate.hints
+                    }
+                }
+            };
+
+            if (!isAllowedUrl(candidate.target)) {
+                return new AcquisitionPlan({
+                    ...base,
+                    allowed: false,
+                    reason: 'url-not-allowed'
+                });
+            }
+
+            if (method !== 'GET') {
+                return new AcquisitionPlan({
+                    ...base,
+                    allowed: false,
+                    reason: 'non-get-method'
+                });
+            }
+
+            if (
+                candidate.depth >
+                CONFIG.maxDepth
+            ) {
+                return new AcquisitionPlan({
+                    ...base,
+                    allowed: false,
+                    reason: 'max-depth'
+                });
+            }
+
+            if (
+                candidate.type === 'form' &&
+                !CONFIG.policy.acquireForms
+            ) {
+                return new AcquisitionPlan({
+                    ...base,
+                    allowed: false,
+                    reason: 'forms-disabled'
+                });
+            }
+
+            if (
+                candidate.type === 'media' &&
+                !CONFIG.policy.acquireMedia
+            ) {
+                return new AcquisitionPlan({
+                    ...base,
+                    allowed: false,
+                    reason: 'media-disabled'
+                });
+            }
+
+            if (
+                candidate.type === 'frame' &&
+                !CONFIG.policy.acquireFrames
+            ) {
+                return new AcquisitionPlan({
+                    ...base,
+                    allowed: false,
+                    reason: 'frames-disabled'
+                });
+            }
+
+            if (
+                candidate.type === 'stylesheet' &&
+                !CONFIG.policy.acquireStylesheets
+            ) {
+                return new AcquisitionPlan({
+                    ...base,
+                    allowed: false,
+                    reason: 'stylesheets-disabled'
+                });
+            }
+
+            if (
+                candidate.type === 'script' &&
+                !CONFIG.policy.acquireScripts
+            ) {
+                return new AcquisitionPlan({
+                    ...base,
+                    allowed: false,
+                    reason: 'scripts-disabled'
+                });
+            }
+
+            if (
+                candidate.type === 'network' &&
+                !CONFIG.policy.acquireNetworkGet
+            ) {
+                return new AcquisitionPlan({
+                    ...base,
+                    allowed: false,
+                    reason: 'network-get-disabled'
+                });
+            }
+
+            if (
+                candidate.hints?.binary &&
+                !CONFIG.policy.acquireBinaryResources
+            ) {
+                return new AcquisitionPlan({
+                    ...base,
+                    allowed: false,
+                    reason: 'binary-disabled'
+                });
+            }
+
+            return new AcquisitionPlan({
+                ...base,
+                allowed: true,
+                reason: null
+            });
+        }
+    }
+
+    /*
+     * ============================================================
+     * ORIGIN CONTROL
+     * ============================================================
+     */
+
+
+// --- 2244-2337 ---
+    class OriginController {
+        constructor() {
+            this.states = new Map();
+        }
+
+        state(origin) {
+            if (!this.states.has(origin)) {
+                this.states.set(origin, {
+                    active: 0,
+                    requests: 0,
+                    lastRequestAt: 0
+                });
+            }
+
+            return this.states.get(origin);
+        }
+
+        canReserve(origin) {
+            const state =
+                this.state(origin);
+
+            if (
+                state.requests >=
+                CONFIG.origin.maxRequestsPerOrigin
+            ) {
+                return false;
+            }
+
+            if (
+                state.active >=
+                CONFIG.origin.maxConcurrentPerOrigin
+            ) {
+                return false;
+            }
+
+            return true;
+        }
+
+        async acquire(origin) {
+            while (true) {
+                const state =
+                    this.state(origin);
+
+                if (
+                    state.requests >=
+                    CONFIG.origin.maxRequestsPerOrigin
+                ) {
+                    return false;
+                }
+
+                if (
+                    state.active <
+                    CONFIG.origin.maxConcurrentPerOrigin
+                ) {
+                    const elapsed =
+                        now() -
+                        state.lastRequestAt;
+
+                    const wait =
+                        CONFIG.origin.minRequestInterval -
+                        elapsed;
+
+                    if (wait > 0) {
+                        await sleep(wait);
+                        continue;
+                    }
+
+                    state.active++;
+                    state.requests++;
+                    state.lastRequestAt = now();
+
+                    return true;
+                }
+
+                await sleep(50);
+            }
+        }
+
+        release(origin) {
+            const state =
+                this.state(origin);
+
+            state.active =
+                Math.max(0, state.active - 1);
+        }
+    }
+
+    /*
+     * ============================================================
+     * ACQUISITION
+     * ============================================================
+     */
+
+
+// --- 2337-2786 ---
+    class Acquisition {
+        constructor(originController) {
+            this.origins =
+                originController;
+        }
+
+        async execute(plan, ledger) {
+            const startedAt = now();
+
+            ledger.recordRequestStarted(plan);
+
+            const originGranted =
+                await this.origins.acquire(
+                    plan.origin
+                );
+
+            if (!originGranted) {
+                const observation =
+                    new Observation({
+                        candidateId:
+                            plan.candidateId,
+                        planId: plan.id,
+                        target: plan.target,
+                        requestedUrl:
+                            plan.target,
+                        startedAt,
+                        completedAt: now(),
+                        status: 'skipped',
+                        reason:
+                            'origin-request-budget'
+                    });
+
+                ledger.recordRequestCompleted(
+                    plan,
+                    observation
+                );
+
+                return observation;
+            }
+
+            try {
+                return await this.request(
+                    plan,
+                    startedAt,
+                    ledger
+                );
+            } finally {
+                this.origins.release(
+                    plan.origin
+                );
+            }
+        }
+
+        async request(plan, startedAt, ledger) {
+            if (
+                typeof GM_xmlhttpRequest ===
+                'function'
+            ) {
+                return new Promise(resolve => {
+                    let finished = false;
+
+                    const finish =
+                        observation => {
+                            if (finished) return;
+
+                            finished = true;
+
+                            ledger.recordRequestCompleted(
+                                plan,
+                                observation
+                            );
+
+                            resolve(observation);
+                        };
+
+                    const timeoutId =
+                        setTimeout(() => {
+                            finish(
+                                new Observation({
+                                    candidateId:
+                                        plan.candidateId,
+                                    planId: plan.id,
+                                    target:
+                                        plan.target,
+                                    requestedUrl:
+                                        plan.target,
+                                    startedAt,
+                                    completedAt:
+                                        now(),
+                                    status: 'timeout',
+                                    reason:
+                                        'request-timeout'
+                                })
+                            );
+                        }, CONFIG.requestTimeout);
+
+                    try {
+                        GM_xmlhttpRequest({
+                            method: plan.method,
+                            url: plan.target,
+                            timeout:
+                                CONFIG.requestTimeout,
+
+                            onload: response => {
+                                clearTimeout(timeoutId);
+
+                                let body =
+                                    String(
+                                        response.responseText ||
+                                        ''
+                                    );
+
+                                let bodyTruncated =
+                                    false;
+
+                                if (
+                                    body.length >
+                                    CONFIG.maxBodyChars
+                                ) {
+                                    body =
+                                        body.slice(
+                                            0,
+                                            CONFIG.maxBodyChars
+                                        );
+
+                                    bodyTruncated = true;
+                                }
+
+                                const observation =
+                                    new Observation({
+                                        candidateId:
+                                            plan.candidateId,
+
+                                        planId:
+                                            plan.id,
+
+                                        target:
+                                            plan.target,
+
+                                        requestedUrl:
+                                            plan.target,
+
+                                        startedAt,
+
+                                        completedAt:
+                                            now(),
+
+                                        status:
+                                            response.status >=
+                                                200 &&
+                                            response.status <
+                                                400
+                                                ? 'success'
+                                                : 'http-error',
+
+                                        http: {
+                                            status:
+                                                response.status,
+
+                                            contentType:
+                                                response.responseHeaders
+                                                    ?.match(
+                                                        /content-type:\s*([^\r\n]+)/i
+                                                    )?.[1]
+                                                    ?.trim() ||
+                                                '',
+
+                                            contentLength:
+                                                response.responseHeaders
+                                                    ?.match(
+                                                        /content-length:\s*(\d+)/i
+                                                    )?.[1] ||
+                                                null,
+
+                                            headers: (() => {
+                                                const h = {};
+                                                for (const line of String(
+                                                    response.responseHeaders || ''
+                                                ).split(/\r?\n/)) {
+                                                    const idx =
+                                                        line.indexOf(':');
+                                                    if (idx > 0) {
+                                                        h[
+                                                            line
+                                                                .slice(
+                                                                    0,
+                                                                    idx
+                                                                )
+                                                                .trim()
+                                                                .toLowerCase()
+                                                        ] =
+                                                            line
+                                                                .slice(
+                                                                    idx + 1
+                                                                )
+                                                                .trim();
+                                                    }
+                                                }
+                                                return h;
+                                            })(),
+
+                                            finalUrl:
+                                                response.finalUrl ||
+                                                plan.target
+                                        },
+
+                                        body,
+                                        bodyTruncated,
+
+                                        fingerprint:
+                                            makeFingerprint(
+                                                body
+                                            )
+                                    });
+
+                                finish(observation);
+                            },
+
+                            ontimeout: () => {
+                                clearTimeout(timeoutId);
+
+                                finish(
+                                    new Observation({
+                                        candidateId:
+                                            plan.candidateId,
+                                        planId: plan.id,
+                                        target: plan.target,
+                                        requestedUrl:
+                                            plan.target,
+                                        startedAt,
+                                        completedAt:
+                                            now(),
+                                        status: 'timeout',
+                                        reason:
+                                            'request-timeout'
+                                    })
+                                );
+                            },
+
+                            onerror: error => {
+                                clearTimeout(timeoutId);
+
+                                finish(
+                                    new Observation({
+                                        candidateId:
+                                            plan.candidateId,
+                                        planId: plan.id,
+                                        target: plan.target,
+                                        requestedUrl:
+                                            plan.target,
+                                        startedAt,
+                                        completedAt:
+                                            now(),
+                                        status: 'error',
+                                        reason:
+                                            'request-error',
+                                        errors: [
+                                            String(
+                                                error?.error ||
+                                                'unknown-error'
+                                            )
+                                        ]
+                                    })
+                                );
+                            }
+                        });
+                    } catch (error) {
+                        clearTimeout(timeoutId);
+
+                        finish(
+                            new Observation({
+                                candidateId:
+                                    plan.candidateId,
+                                planId: plan.id,
+                                target: plan.target,
+                                requestedUrl:
+                                    plan.target,
+                                startedAt,
+                                completedAt:
+                                    now(),
+                                status: 'error',
+                                reason:
+                                    'request-exception',
+                                errors: [
+                                    String(error)
+                                ]
+                            })
+                        );
+                    }
+                });
+            }
+
+            /*
+             * Fetch fallback.
+             *
+             * IMPORTANT:
+             * AbortController is used so a timeout does not leave
+             * an uncontrolled fetch alive.
+             */
+
+            const controller =
+                new AbortController();
+
+            const timeoutId =
+                setTimeout(
+                    () => controller.abort(),
+                    CONFIG.requestTimeout
+                );
+
+            try {
+                const response =
+                    await fetch(
+                        plan.target,
+                        {
+                            method: plan.method,
+                            credentials: 'same-origin',
+                            redirect: 'follow',
+                            signal:
+                                controller.signal
+                        }
+                    );
+
+                let body =
+                    await response.text();
+
+                let bodyTruncated = false;
+
+                if (
+                    body.length >
+                    CONFIG.maxBodyChars
+                ) {
+                    body =
+                        body.slice(
+                            0,
+                            CONFIG.maxBodyChars
+                        );
+
+                    bodyTruncated = true;
+                }
+
+                const observation =
+                    new Observation({
+                        candidateId:
+                            plan.candidateId,
+
+                        planId:
+                            plan.id,
+
+                        target:
+                            plan.target,
+
+                        requestedUrl:
+                            plan.target,
+
+                        startedAt,
+
+                        completedAt:
+                            now(),
+
+                        status:
+                            response.ok
+                                ? 'success'
+                                : 'http-error',
+
+                        http: {
+                            status:
+                                response.status,
+
+                            contentType:
+                                response.headers.get(
+                                    'content-type'
+                                ) || '',
+
+                            contentLength:
+                                response.headers.get(
+                                    'content-length'
+                                ),
+
+                            headers: Object.fromEntries(
+                                [...response.headers.entries()].map(
+                                    ([k, v]) => [
+                                        k.toLowerCase(),
+                                        v
+                                    ]
+                                )
+                            ),
+
+                            finalUrl:
+                                response.url ||
+                                plan.target
+                        },
+
+                        body,
+                        bodyTruncated,
+
+                        fingerprint:
+                            makeFingerprint(body)
+                    });
+
+                ledger.recordRequestCompleted(
+                    plan,
+                    observation
+                );
+
+                return observation;
+            } catch (error) {
+                const observation =
+                    new Observation({
+                        candidateId:
+                            plan.candidateId,
+                        planId: plan.id,
+                        target: plan.target,
+                        requestedUrl:
+                            plan.target,
+                        startedAt,
+                        completedAt: now(),
+                        status:
+                            error?.name ===
+                            'AbortError'
+                                ? 'timeout'
+                                : 'error',
+                        reason:
+                            error?.name ===
+                            'AbortError'
+                                ? 'request-timeout'
+                                : 'request-error',
+                        errors: [
+                            String(error)
+                        ]
+                    });
+
+                ledger.recordRequestCompleted(
+                    plan,
+                    observation
+                );
+
+                return observation;
+            } finally {
+                clearTimeout(timeoutId);
+            }
+        }
+    }
+
+    /*
+     * ============================================================
+     * PROVIDER BASE
+     * ============================================================
+     */
+
+
+// --- 3770-4266 ---
     class NetworkObserver {
         constructor(engine) {
             this.engine = engine;
@@ -4264,6 +4273,8 @@
      * ============================================================
      */
 
+
+// --- 4266-5864 ---
     class GenericDiscoveryEngine {
         constructor() {
             this.db =

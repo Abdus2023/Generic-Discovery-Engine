@@ -1,7 +1,5 @@
-// src/config.js — extracted from dist v0.8.0
-// This is the modular prelude: CONFIG as ES module
-
-export const CONFIG = {
+// src/config.js — CONFIG v8
+    const CONFIG = {
         version: 8,
 
         maxCandidates: 750,
@@ -128,3 +126,36 @@ export const CONFIG = {
             unknown: 0.25
         }
     };
+
+    /**
+     * @typedef {Object} CandidateData
+     * @property {string} target
+     * @property {string} type
+     * @property {string} origin
+     * @property {string|null} parent
+     * @property {number} priority
+     * @property {Object} hints
+     * @property {number} depth
+     */
+
+    /** @typedef {Object} ObservationData
+     *  @property {string} candidateId
+     *  @property {string} planId
+     *  @property {string} target
+     *  @property {{status:number,contentType:string,contentLength:number|null,finalUrl:string}} http
+     *  @property {string} body
+     *  @property {{algorithm:string,hash:string,length:number,sampledLength:number}|null} fingerprint
+     */
+
+    /** @typedef {Object} DiscoveryData
+     *  @property {string} candidateId
+     *  @property {string} observationId
+     *  @property {string} kind
+     *  @property {number} confidence
+     *  @property {string} mechanism
+     *  @property {Object} data
+     *  @property {Object} provenance
+     */
+
+    const STORAGE_KEY = 'generic-discovery-engine-v8';
+

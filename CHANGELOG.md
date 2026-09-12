@@ -2,6 +2,14 @@
 
 All notable changes to the Generic Discovery Engine.
 
+## [0.9.0] — 2026-09-12 — Framework Bundler (src/ → dist/ deterministic)
+
+- **Framework:** `src/` split into 7 modules (5699 code + 165 header = 5875) — `header.txt` 165 + `config` 160 + `utils` 356 + `ledger` 271 + `models` 376 + `knowledge` 701 + `providers` 984 + `engine` 2863 (AcquisitionPlan/Policy/Origin/Acquisition/NetworkObserver/Engine); `scripts/build.js` now deterministic bundler (reads `package.json` version → replaces `// @version` + banner, strips `// src/...` comments, concatenates `config→utils→ledger→models→knowledge→providers→engine`, writes `dist` 5875 lines `170699B` `sha256 8c734c…`). `dist` hash changes vs 0.8.2 (`a46d37…→8c734c…`) due to reordering but semantics preserved (dependency-safe, `node --check` PASS). `src/` is now source of truth, `dist` generated.
+- **Build:** `dist/.build-meta.json` updated `version 0.9.0` `src:[config,utils,ledger,models,knowledge,providers,engine]`; `scripts/verify-build.js` still asserts `src 7` + inference + provider order + meta hash/version.
+- **Tests:** `tests/verify-p0-fixes.test.js` now allows `0.9.0`; `npm test` **121/121 PASS** (32 suites) unchanged vs 0.8.2 (bundler reordering proven).
+- **ADRs:** `docs/adr/021-framework-bundler.md` + `docs/adr/README.md` → 21 ADRs (20→21). `docs/DECISIONS.md`/`docs/architecture/OVERVIEW.md` bumped to `5,875` lines.
+- **Docs:** `VERIFICATION_SUPPLEMENT_v0.9.0.md` (§framework §bundler) + `README.md` current `v0.9.0` 121/121, `src/README.md` bundler, `docs/analysis/DEEP_DVB_AUDIT_v0.8.2.md` still valid (121/121).
+
 ## [0.8.2] — 2026-09-12 — Export Hardening + Inference Metrics (sorted coverage + inference block + deterministic export)
 
 - **Coverage:** `getCoverageMetrics()` now sorted `queuedByType` (alphabetical) + `patternCount`/`clusterCount`/`fingerprintUnique`/`inferenceEnabled` via `KnowledgeBase.getPatternMetrics()`/`getClusterMetrics()`/`fingerprintIndex.size` (O(n≤750) ~0.06 ms); deterministic JSON for diff tools. Header `0.8.1→0.8.2`, `5,784→5,864` lines (+80), `node --check` PASS.
