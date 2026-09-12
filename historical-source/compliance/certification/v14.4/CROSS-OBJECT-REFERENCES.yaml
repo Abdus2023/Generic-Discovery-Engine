@@ -1,0 +1,32 @@
+{
+  "schema_version": "14.4",
+  "mandatory": [
+    {
+      "source": "Certificate.release_id",
+      "target": "Release.release_id"
+    },
+    {
+      "source": "Certificate.audit_snapshot_hash",
+      "target": "AuditSnapshot.snapshot_hash"
+    },
+    {
+      "source": "ReleaseDecision.release_id",
+      "target": "Release.release_id"
+    },
+    {
+      "source": "ReleaseDecision.eligibility_id",
+      "target": "ReleaseEligibility.eligibility_id"
+    },
+    {
+      "source": "ReleaseExecution.decision_id",
+      "target": "ReleaseDecision.decision_id"
+    },
+    {
+      "source": "PostReleaseVerification.execution_id",
+      "target": "ReleaseExecution.execution_id"
+    }
+  ],
+  "unresolved": "REFERENCE_DEFECT",
+  "unknown_on_missing": false,
+  "type_and_hash_match_required": true
+}

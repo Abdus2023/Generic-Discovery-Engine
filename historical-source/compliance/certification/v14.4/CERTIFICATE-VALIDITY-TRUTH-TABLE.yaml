@@ -1,0 +1,61 @@
+{
+  "schema_version": "14.4",
+  "rows": [
+    {
+      "lifecycle": "DRAFT",
+      "time": "ANY",
+      "integrity": "ANY",
+      "validity": "UNKNOWN"
+    },
+    {
+      "lifecycle": "ISSUED",
+      "time": "BEFORE",
+      "integrity": "VALID",
+      "validity": "NOT_YET_VALID"
+    },
+    {
+      "lifecycle": "ISSUED",
+      "time": "ACTIVE",
+      "integrity": "VALID",
+      "validity": "VALID"
+    },
+    {
+      "lifecycle": "ISSUED",
+      "time": "ACTIVE",
+      "integrity": "INVALID",
+      "validity": "INVALID"
+    },
+    {
+      "lifecycle": "ISSUED",
+      "time": "AFTER",
+      "integrity": "VALID",
+      "validity": "INVALID"
+    },
+    {
+      "lifecycle": "REVOKED",
+      "time": "ANY",
+      "integrity": "VALID",
+      "validity": "INVALID"
+    },
+    {
+      "lifecycle": "SUPERSEDED",
+      "time": "ANY",
+      "integrity": "VALID",
+      "validity": "INVALID"
+    },
+    {
+      "lifecycle": "EXPIRED",
+      "time": "ANY",
+      "integrity": "VALID",
+      "validity": "INVALID"
+    },
+    {
+      "lifecycle": "CANCELLED",
+      "time": "ANY",
+      "integrity": "VALID",
+      "validity": "INVALID"
+    }
+  ],
+  "unknown_predicate": "UNKNOWN",
+  "invalidity_fabricates_event": false
+}

@@ -1,0 +1,36 @@
+{
+  "schema_version": "14.4",
+  "labels": [
+    "PROVED",
+    "SUPPORTED",
+    "INFERRED",
+    "CONJECTURED",
+    "CONTRADICTED",
+    "UNKNOWN"
+  ],
+  "claim_classes": [
+    "HISTORICAL_FACT",
+    "DERIVED_HISTORICAL_MODEL",
+    "ENGINEERING_OBLIGATION",
+    "NORMATIVE_REQUIREMENT",
+    "DESIGN_OPTION",
+    "CURRENT_ENGINEERING_JUDGMENT"
+  ],
+  "claims": [
+    {
+      "claim": "CURRENT_RELEASE_EXISTS",
+      "status": "CONTRADICTED",
+      "class": "HISTORICAL_FACT"
+    },
+    {
+      "claim": "EXPIRATION_PROJECTION_IS_AUTHORITATIVE",
+      "status": "SUPPORTED",
+      "class": "NORMATIVE_REQUIREMENT"
+    },
+    {
+      "claim": "PRODUCTION_AUTHORITY_CONFIGURATION",
+      "status": "UNKNOWN",
+      "class": "DESIGN_OPTION"
+    }
+  ]
+}

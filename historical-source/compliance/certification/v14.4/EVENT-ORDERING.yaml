@@ -1,0 +1,12 @@
+{
+  "schema_version": "14.4",
+  "causal_order": "SEQUENCE_NUMBER_WITHIN_ENTITY_HISTORY",
+  "timestamp_role": "TEMPORAL_VALIDATION_NOT_SOLE_CAUSAL_ORDER",
+  "sequence_start": 0,
+  "sequence_step": 1,
+  "ties": "ALLOWED_ONLY_WITH_DISTINCT_SEQUENCE",
+  "clock_skew": "EXPLICIT_UNCERTAINTY_OR_TEMPORAL_DEFECT",
+  "future": "TEMPORAL_DEFECT",
+  "rollback": "TEMPORAL_DEFECT",
+  "predecessor": "EXACT_PREVIOUS_EVENT_ID"
+}

@@ -1,0 +1,64 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://generic-discovery-engine.invalid/compliance/v14.4/certificate-expiration-projection.schema.yaml",
+  "title": "certificate-expiration-projection",
+  "type": "object",
+  "required": [
+    "projection_id",
+    "certificate_id",
+    "base_lifecycle",
+    "effective_lifecycle",
+    "evaluated_at",
+    "expires_at",
+    "policy_id",
+    "materialization_event_id",
+    "projection_hash"
+  ],
+  "properties": {
+    "projection_id": {
+      "type": "string",
+      "pattern": "^[A-Za-z0-9][A-Za-z0-9._:/-]*$"
+    },
+    "certificate_id": {
+      "type": "string",
+      "pattern": "^[A-Za-z0-9][A-Za-z0-9._:/-]*$"
+    },
+    "base_lifecycle": {
+      "const": "ISSUED"
+    },
+    "effective_lifecycle": {
+      "const": "EXPIRED"
+    },
+    "evaluated_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "expires_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "policy_id": {
+      "type": "string",
+      "pattern": "^[A-Za-z0-9][A-Za-z0-9._:/-]*$"
+    },
+    "materialization_event_id": {
+      "oneOf": [
+        {
+          "type": "string",
+          "pattern": "^[A-Za-z0-9][A-Za-z0-9._:/-]*$"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "projection_hash": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$"
+    }
+  },
+  "additionalProperties": false,
+  "x-v14.4-rules": [
+    "time+signed interval+policy is authoritative; event is optional materialization"
+  ]
+}

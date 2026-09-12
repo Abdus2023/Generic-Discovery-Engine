@@ -1,0 +1,20 @@
+{
+  "schema_version": "14.4",
+  "classes": [
+    "AUTOMATED_POLICY",
+    "HUMAN",
+    "DELEGATED",
+    "MULTI_PARTY"
+  ],
+  "authorization_requires": [
+    "IDENTITY_VALID",
+    "CAPABILITY_INCLUDES_APPROVE",
+    "RELEASE_IN_SCOPE",
+    "INTERVAL_ACTIVE",
+    "DELEGATION_CHAIN_VALID",
+    "THRESHOLD_SATISFIED_IF_MULTI_PARTY",
+    "NOT_REVOKED"
+  ],
+  "exists_implies_authorized": false,
+  "unauthorized_approval": "AUTHORITY_DEFECT_AND_DECISION_INVALID"
+}

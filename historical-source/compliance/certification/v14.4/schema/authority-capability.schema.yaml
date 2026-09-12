@@ -1,0 +1,80 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://generic-discovery-engine.invalid/compliance/v14.4/authority-capability.schema.yaml",
+  "title": "authority-capability",
+  "type": "object",
+  "required": [
+    "authority_id",
+    "class",
+    "capabilities",
+    "scope",
+    "interval",
+    "delegation_chain",
+    "threshold",
+    "revoked",
+    "authority_hash"
+  ],
+  "properties": {
+    "authority_id": {
+      "type": "string",
+      "pattern": "^[A-Za-z0-9][A-Za-z0-9._:/-]*$"
+    },
+    "class": {
+      "type": "string",
+      "enum": [
+        "AUTOMATED_POLICY",
+        "HUMAN",
+        "DELEGATED",
+        "MULTI_PARTY"
+      ]
+    },
+    "capabilities": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "scope": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "string",
+        "pattern": "^[A-Za-z0-9][A-Za-z0-9._:/-]*$"
+      }
+    },
+    "interval": {
+      "type": "object"
+    },
+    "delegation_chain": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "pattern": "^[A-Za-z0-9][A-Za-z0-9._:/-]*$"
+      }
+    },
+    "threshold": {
+      "oneOf": [
+        {
+          "type": "integer",
+          "minimum": 1
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "revoked": {
+      "type": "boolean"
+    },
+    "authority_hash": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$"
+    }
+  },
+  "additionalProperties": false,
+  "x-v14.4-rules": [
+    "existence does not establish authorization for scope"
+  ]
+}

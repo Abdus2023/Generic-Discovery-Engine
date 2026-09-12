@@ -1,0 +1,17 @@
+{
+  "schema_version": "14.4",
+  "chain": [
+    "FACT",
+    "EVALUATION",
+    "ATTESTATION",
+    "AUTHORIZATION",
+    "EXECUTION",
+    "OBSERVATION"
+  ],
+  "history": [
+    "IMMUTABLE_EVENTS",
+    "VALIDATION",
+    "CURRENT_PROJECTION"
+  ],
+  "rule": "NO_STATE_TRANSITION_MAY_ESTABLISH_A_STRONGER_CLAIM_THAN_EVIDENCE_POLICY_AUTHORITY_AND_SCOPE_JUSTIFY"
+}

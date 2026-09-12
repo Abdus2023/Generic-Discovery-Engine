@@ -1,0 +1,24 @@
+{
+  "schema_version": "14.4",
+  "states": [
+    "NOT_STARTED",
+    "STARTED",
+    "SUCCEEDED",
+    "FAILED",
+    "CANCELLED",
+    "ROLLED_BACK"
+  ],
+  "start_guards": [
+    "DECISION_APPROVED",
+    "DECISION_VALIDITY_EFFECTIVE",
+    "RELEASE_MATCH",
+    "ARTIFACT_MATCH",
+    "ENVIRONMENT_POLICY_SATISFIED",
+    "NO_CONCURRENT_ACTIVE_EXECUTION",
+    "DUPLICATE_POLICY_ALLOWS"
+  ],
+  "retry": "NEW_ATTEMPT_EVENT",
+  "partial": "FAILED_WITH_PARTIAL_RESULT_AND_ROLLBACK_ELIGIBILITY",
+  "rollback": "NEW_EVENT",
+  "history_mutated": false
+}

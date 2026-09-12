@@ -1,0 +1,23 @@
+{
+  "schema_version": "14.4",
+  "outcomes": [
+    "ELIGIBLE",
+    "INELIGIBLE",
+    "BLOCKED",
+    "UNKNOWN"
+  ],
+  "precedence": [
+    "FALSE",
+    "BLOCKED",
+    "UNKNOWN",
+    "TRUE"
+  ],
+  "empty_mandatory": "BLOCKED",
+  "optional_only": "BLOCKED",
+  "missing_mandatory": "REFERENCE_DEFECT_THEN_BLOCKED_NO_EVALUATION",
+  "malformed": "SCHEMA_DEFECT_THEN_INELIGIBLE_NO_APPROVAL",
+  "invalid_or_expired_evidence": "FALSE",
+  "stale_evidence": "FALSE_OR_BLOCKED_PER_FRESHNESS_POLICY",
+  "waived_failure": "TRUE_ONLY_IF_WAIVER_SCOPE_AUTHORITY_INTERVAL_CONDITIONS_VALID",
+  "conditional_conformance": "POLICY_EXPLICIT"
+}

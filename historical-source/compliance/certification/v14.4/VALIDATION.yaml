@@ -1,0 +1,312 @@
+{
+  "schema_version": "14.4",
+  "overall_status": "STRUCTURAL_PASS_CURRENT_RELEASE_NOT_APPLICABLE",
+  "summary": {
+    "total": 60,
+    "passed": 59,
+    "failed": 0,
+    "blocked": 1
+  },
+  "checks": [
+    {
+      "check_id": "I1",
+      "result": "PASS",
+      "description": "46 generator artifacts exist"
+    },
+    {
+      "check_id": "I2",
+      "result": "PASS",
+      "description": "all YAML parses"
+    },
+    {
+      "check_id": "S1",
+      "result": "PASS",
+      "description": "8 unique schemas"
+    },
+    {
+      "check_id": "S2",
+      "result": "PASS",
+      "description": "schema hashes"
+    },
+    {
+      "check_id": "M1",
+      "result": "PASS",
+      "description": "domains separate"
+    },
+    {
+      "check_id": "M2",
+      "result": "PASS",
+      "description": "candidate distinct"
+    },
+    {
+      "check_id": "M3",
+      "result": "PASS",
+      "description": "lifecycle exact"
+    },
+    {
+      "check_id": "M4",
+      "result": "PASS",
+      "description": "expiration authority resolved"
+    },
+    {
+      "check_id": "M5",
+      "result": "PASS",
+      "description": "truth table complete"
+    },
+    {
+      "check_id": "B1",
+      "result": "PASS",
+      "description": "identity resolved"
+    },
+    {
+      "check_id": "B2",
+      "result": "PASS",
+      "description": "binding exact"
+    },
+    {
+      "check_id": "G1",
+      "result": "PASS",
+      "description": "gate policy separate"
+    },
+    {
+      "check_id": "E1",
+      "result": "PASS",
+      "description": "eligibility precedence"
+    },
+    {
+      "check_id": "A1",
+      "result": "PASS",
+      "description": "authority capabilities"
+    },
+    {
+      "check_id": "D1",
+      "result": "PASS",
+      "description": "decision semantics"
+    },
+    {
+      "check_id": "D2",
+      "result": "PASS",
+      "description": "decision validity derived"
+    },
+    {
+      "check_id": "D3",
+      "result": "PASS",
+      "description": "supersession immutable"
+    },
+    {
+      "check_id": "X1",
+      "result": "PASS",
+      "description": "execution guards"
+    },
+    {
+      "check_id": "X2",
+      "result": "PASS",
+      "description": "verification no mutation"
+    },
+    {
+      "check_id": "H1",
+      "result": "PASS",
+      "description": "sequence causal"
+    },
+    {
+      "check_id": "H2",
+      "result": "PASS",
+      "description": "invalid history no skip"
+    },
+    {
+      "check_id": "T1",
+      "result": "PASS",
+      "description": "temporal exact"
+    },
+    {
+      "check_id": "R1",
+      "result": "PASS",
+      "description": "references mandatory"
+    },
+    {
+      "check_id": "V1",
+      "result": "PASS",
+      "description": "single 13-step validation"
+    },
+    {
+      "check_id": "F1",
+      "result": "PASS",
+      "description": "14 failure classes"
+    },
+    {
+      "check_id": "N1",
+      "result": "PASS",
+      "description": "25 invariants"
+    },
+    {
+      "check_id": "V144-INV-001",
+      "result": "PASS",
+      "description": "LIFECYCLE_NE_VALIDITY"
+    },
+    {
+      "check_id": "V144-INV-002",
+      "result": "PASS",
+      "description": "VALIDITY_DERIVED"
+    },
+    {
+      "check_id": "V144-INV-003",
+      "result": "PASS",
+      "description": "INVALID_NOT_REVOCATION"
+    },
+    {
+      "check_id": "V144-INV-004",
+      "result": "PASS",
+      "description": "ELIGIBILITY_NE_AUTHORIZATION"
+    },
+    {
+      "check_id": "V144-INV-005",
+      "result": "PASS",
+      "description": "AUTHORIZATION_NE_EXECUTION"
+    },
+    {
+      "check_id": "V144-INV-006",
+      "result": "PASS",
+      "description": "EXECUTION_NE_VERIFICATION"
+    },
+    {
+      "check_id": "V144-INV-007",
+      "result": "PASS",
+      "description": "HISTORICAL_DECISIONS_IMMUTABLE"
+    },
+    {
+      "check_id": "V144-INV-008",
+      "result": "PASS",
+      "description": "CURRENT_RECONSTRUCTIBLE"
+    },
+    {
+      "check_id": "V144-INV-009",
+      "result": "PASS",
+      "description": "FALSE_DOMINATES_BLOCKED"
+    },
+    {
+      "check_id": "V144-INV-010",
+      "result": "PASS",
+      "description": "UNKNOWN_NOT_TRUE"
+    },
+    {
+      "check_id": "V144-INV-011",
+      "result": "PASS",
+      "description": "ELIGIBLE_NOT_APPROVED"
+    },
+    {
+      "check_id": "V144-INV-012",
+      "result": "PASS",
+      "description": "APPROVED_NOT_RELEASED"
+    },
+    {
+      "check_id": "V144-INV-013",
+      "result": "PASS",
+      "description": "ARTIFACT_STRONGER_THAN_VERSION"
+    },
+    {
+      "check_id": "V144-INV-014",
+      "result": "PASS",
+      "description": "CERT_BINDING_MATCH"
+    },
+    {
+      "check_id": "V144-INV-015",
+      "result": "PASS",
+      "description": "DECISION_EXECUTION_BINDING_MATCH"
+    },
+    {
+      "check_id": "V144-INV-016",
+      "result": "PASS",
+      "description": "NO_FUTURE_EVIDENCE"
+    },
+    {
+      "check_id": "V144-INV-017",
+      "result": "PASS",
+      "description": "EXPIRED_AUTH_NO_EXECUTION"
+    },
+    {
+      "check_id": "V144-INV-018",
+      "result": "PASS",
+      "description": "UNAUTHORIZED_NO_VALID_APPROVAL"
+    },
+    {
+      "check_id": "V144-INV-019",
+      "result": "PASS",
+      "description": "CHANGED_INPUT_NEW_DECISION"
+    },
+    {
+      "check_id": "V144-INV-020",
+      "result": "PASS",
+      "description": "TRANSITION_PREDECESSOR_VALID"
+    },
+    {
+      "check_id": "V144-INV-021",
+      "result": "PASS",
+      "description": "TERMINAL_NO_ACTIVE_RETURN"
+    },
+    {
+      "check_id": "V144-INV-022",
+      "result": "PASS",
+      "description": "CURRENT_NO_ABSENT_FACT"
+    },
+    {
+      "check_id": "V144-INV-023",
+      "result": "PASS",
+      "description": "EVENT_NO_MUTATION"
+    },
+    {
+      "check_id": "V144-INV-024",
+      "result": "PASS",
+      "description": "EXECUTION_NO_AUTH_REWRITE"
+    },
+    {
+      "check_id": "V144-INV-025",
+      "result": "PASS",
+      "description": "VERIFICATION_NO_RETROACTIVE_AUTH"
+    },
+    {
+      "check_id": "TV1",
+      "result": "PASS",
+      "description": "required test matrix"
+    },
+    {
+      "check_id": "TR1",
+      "result": "PASS",
+      "description": "bidirectional traceability"
+    },
+    {
+      "check_id": "EP1",
+      "result": "PASS",
+      "description": "epistemic labels"
+    },
+    {
+      "check_id": "C1",
+      "result": "PASS",
+      "description": "no invention"
+    },
+    {
+      "check_id": "P1",
+      "result": "PASS",
+      "description": "526 predecessors preserved"
+    },
+    {
+      "check_id": "Q1",
+      "result": "PASS",
+      "description": "determinism"
+    },
+    {
+      "check_id": "Q2",
+      "result": "PASS",
+      "description": "regression"
+    },
+    {
+      "check_id": "Q3",
+      "result": "PASS",
+      "description": "no cache"
+    },
+    {
+      "check_id": "GATE",
+      "result": "BLOCKED",
+      "description": "current release absent"
+    }
+  ]
+}

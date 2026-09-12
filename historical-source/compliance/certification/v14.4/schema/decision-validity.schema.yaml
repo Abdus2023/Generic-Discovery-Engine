@@ -1,0 +1,54 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://generic-discovery-engine.invalid/compliance/v14.4/decision-validity.schema.yaml",
+  "title": "decision-validity",
+  "type": "object",
+  "required": [
+    "validity_id",
+    "decision_id",
+    "status",
+    "evaluated_at",
+    "reasons",
+    "validity_hash"
+  ],
+  "properties": {
+    "validity_id": {
+      "type": "string",
+      "pattern": "^[A-Za-z0-9][A-Za-z0-9._:/-]*$"
+    },
+    "decision_id": {
+      "type": "string",
+      "pattern": "^[A-Za-z0-9][A-Za-z0-9._:/-]*$"
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "EFFECTIVE",
+        "EXPIRED",
+        "SUPERSEDED",
+        "REVOKED",
+        "INVALID",
+        "UNKNOWN"
+      ]
+    },
+    "evaluated_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "reasons": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "validity_hash": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$"
+    }
+  },
+  "additionalProperties": false,
+  "x-v14.4-rules": [
+    "derived independently from immutable decision status"
+  ]
+}

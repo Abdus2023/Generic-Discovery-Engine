@@ -1,0 +1,64 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://generic-discovery-engine.invalid/compliance/v14.4/current-projection-proof.schema.yaml",
+  "title": "current-projection-proof",
+  "type": "object",
+  "required": [
+    "proof_id",
+    "entity_id",
+    "history_hash",
+    "event_count",
+    "last_event_id",
+    "projected_state_hash",
+    "reconstruction_status",
+    "proof_hash"
+  ],
+  "properties": {
+    "proof_id": {
+      "type": "string",
+      "pattern": "^[A-Za-z0-9][A-Za-z0-9._:/-]*$"
+    },
+    "entity_id": {
+      "type": "string",
+      "pattern": "^[A-Za-z0-9][A-Za-z0-9._:/-]*$"
+    },
+    "history_hash": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$"
+    },
+    "event_count": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "last_event_id": {
+      "oneOf": [
+        {
+          "type": "string",
+          "pattern": "^[A-Za-z0-9][A-Za-z0-9._:/-]*$"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "projected_state_hash": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$"
+    },
+    "reconstruction_status": {
+      "type": "string",
+      "enum": [
+        "VALID",
+        "HISTORY_INVALID"
+      ]
+    },
+    "proof_hash": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$"
+    }
+  },
+  "additionalProperties": false,
+  "x-v14.4-rules": [
+    "current facts cannot exceed valid history"
+  ]
+}

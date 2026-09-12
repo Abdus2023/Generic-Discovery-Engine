@@ -1,0 +1,59 @@
+{
+  "schema_version": "14.4",
+  "single_canonical_pipeline": [
+    {
+      "number": 1,
+      "stage": "LOAD"
+    },
+    {
+      "number": 2,
+      "stage": "SCHEMA_VALIDATION"
+    },
+    {
+      "number": 3,
+      "stage": "REFERENCE_RESOLUTION"
+    },
+    {
+      "number": 4,
+      "stage": "IDENTITY_VALIDATION"
+    },
+    {
+      "number": 5,
+      "stage": "HASH_VALIDATION"
+    },
+    {
+      "number": 6,
+      "stage": "TEMPORAL_VALIDATION"
+    },
+    {
+      "number": 7,
+      "stage": "SCOPE_VALIDATION"
+    },
+    {
+      "number": 8,
+      "stage": "AUTHORITY_VALIDATION"
+    },
+    {
+      "number": 9,
+      "stage": "POLICY_VALIDATION"
+    },
+    {
+      "number": 10,
+      "stage": "STATE_TRANSITION_VALIDATION"
+    },
+    {
+      "number": 11,
+      "stage": "PREDICATE_EVALUATION"
+    },
+    {
+      "number": 12,
+      "stage": "AGGREGATION"
+    },
+    {
+      "number": 13,
+      "stage": "CURRENT_PROJECTION"
+    }
+  ],
+  "other_pipeline_definitions": "FORBIDDEN",
+  "failure_layer_preserved": true
+}

@@ -158,6 +158,7 @@ def make_binding(release: dict[str, Any]) -> dict[str, str]:
 
 def main() -> None:
     if not (V141 / "VALIDATION.yaml").is_file(): raise RuntimeError("validated Protocol-v14.1 package is required")
+    if (OUT / "certification" / "v14.4").exists(): raise RuntimeError("refusing to erase predecessor artifacts after append-only v14.4 extension")
     if DEST.exists():
         for filename in ["CERTIFICATE-CANDIDATES.yaml", "CERTIFICATES.yaml", "RELEASES.yaml", "RELEASE-DECISION-HISTORY.yaml", "RELEASE-EXECUTION-HISTORY.yaml"]:
             path = DEST / filename

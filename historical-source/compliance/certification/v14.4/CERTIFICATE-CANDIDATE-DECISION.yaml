@@ -1,0 +1,17 @@
+{
+  "schema_version": "14.4",
+  "decision": "FORMALLY_DISTINCT",
+  "candidate_semantics": "PROPOSED_ATTESTATION_INPUT_PACKAGE",
+  "draft_certificate_semantics": "MATERIALIZED_CERTIFICATE_PAYLOAD_NOT_YET_ISSUED",
+  "projection_relationship": "NONE",
+  "subsumption": "NONE",
+  "candidate_states": [
+    "CREATED",
+    "ACTIVE",
+    "CONSUMED",
+    "CANCELLED",
+    "EXPIRED",
+    "RETAINED"
+  ],
+  "promotion": "CONSUMED candidate may create new DRAFT certificate identity under payload and reference guards"
+}

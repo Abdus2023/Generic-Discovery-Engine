@@ -1,0 +1,14 @@
+{
+  "schema_version": "14.4",
+  "representation": "IMMUTABLE_SUPERSESSION_EVENT_PLUS_DERIVED_DECISION_VALIDITY",
+  "decision_status_changed": false,
+  "required": [
+    "OLD_DECISION_ID",
+    "NEW_DECISION_ID",
+    "PREVIOUS_DECISION_ID",
+    "SUPERSEDES_DECISION_ID",
+    "EFFECTIVE_AT",
+    "AUTHORITY"
+  ],
+  "current_projection_selects": "LATEST_EFFECTIVE_VALID_DECISION_BY_SEQUENCE"
+}

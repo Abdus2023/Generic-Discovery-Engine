@@ -1,0 +1,26 @@
+{
+  "schema_version": "14.4",
+  "forward": [
+    "RELEASE_DECISION",
+    "RELEASE_ELIGIBILITY",
+    "RELEASE_GATE",
+    "CERTIFICATE_VALIDITY",
+    "CERTIFICATE",
+    "AUDIT_SNAPSHOT",
+    "COMPLIANCE_DECISION",
+    "REQUIREMENT",
+    "OBLIGATION",
+    "HISTORICAL_PROPERTY",
+    "EVIDENCE",
+    "SOURCE"
+  ],
+  "reverse_possible": true,
+  "decision_explanation_requires": [
+    "POLICY",
+    "PREDICATES",
+    "EVIDENCE",
+    "AUTHORITY",
+    "SCOPE"
+  ],
+  "directional_evidence": true
+}

@@ -1,0 +1,63 @@
+{
+  "schema_version": "14.4",
+  "states": [
+    "DRAFT",
+    "ISSUED",
+    "REVOKED",
+    "SUPERSEDED",
+    "EXPIRED",
+    "CANCELLED"
+  ],
+  "transitions": [
+    {
+      "from": "DRAFT",
+      "to": "ISSUED",
+      "guard": [
+        "ELIGIBILITY_ELIGIBLE",
+        "PAYLOAD_VALID",
+        "AUTHORITY_VALID",
+        "BINDING_VALID",
+        "ISSUANCE_EVENT_VALID"
+      ]
+    },
+    {
+      "from": "DRAFT",
+      "to": "CANCELLED",
+      "guard": [
+        "CANCELLATION_AUTHORIZED",
+        "CANCELLATION_EVENT_VALID"
+      ]
+    },
+    {
+      "from": "ISSUED",
+      "to": "REVOKED",
+      "guard": [
+        "REVOCATION_AUTHORIZED",
+        "REASON_EVIDENCE_TIME_VALID"
+      ]
+    },
+    {
+      "from": "ISSUED",
+      "to": "SUPERSEDED",
+      "guard": [
+        "REPLACEMENT_ID_DISTINCT",
+        "SUPERSESSION_AUTHORIZED"
+      ]
+    },
+    {
+      "from": "ISSUED",
+      "to": "EXPIRED",
+      "guard": [
+        "SIGNED_INTERVAL_ENDED",
+        "VALIDITY_POLICY_ACTIVE"
+      ]
+    }
+  ],
+  "terminal": [
+    "REVOKED",
+    "SUPERSEDED",
+    "EXPIRED",
+    "CANCELLED"
+  ],
+  "terminal_outgoing": []
+}

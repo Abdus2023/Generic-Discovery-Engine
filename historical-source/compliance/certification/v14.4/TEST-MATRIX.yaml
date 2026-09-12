@@ -1,0 +1,670 @@
+{
+  "schema_version": "14.4",
+  "vectors": [
+    {
+      "id": "V144-TV-001",
+      "name": "VALID_ISSUED_CERTIFICATE",
+      "input": {
+        "fixture": "VALID_ISSUED_CERTIFICATE"
+      },
+      "expected_predicates": [
+        "EXPLICIT_FIXTURE_PREDICATES"
+      ],
+      "expected_result": "PASS",
+      "expected_event": null,
+      "expected_current_projection": "DERIVED_FROM_EXPECTED_EVENT_HISTORY",
+      "expected_failure_class": null,
+      "machine_checked": true
+    },
+    {
+      "id": "V144-TV-002",
+      "name": "INVALID_SIGNATURE",
+      "input": {
+        "fixture": "INVALID_SIGNATURE"
+      },
+      "expected_predicates": [
+        "EXPLICIT_FIXTURE_PREDICATES"
+      ],
+      "expected_result": "REJECTED_OR_BLOCKED_OR_INVALID",
+      "expected_event": "DOMAIN_EVENT_IF_APPLICABLE",
+      "expected_current_projection": "DERIVED_FROM_EXPECTED_EVENT_HISTORY",
+      "expected_failure_class": "EXPECTED_DOMAIN_FAILURE",
+      "machine_checked": true
+    },
+    {
+      "id": "V144-TV-003",
+      "name": "INVALID_SNAPSHOT_SEAL",
+      "input": {
+        "fixture": "INVALID_SNAPSHOT_SEAL"
+      },
+      "expected_predicates": [
+        "EXPLICIT_FIXTURE_PREDICATES"
+      ],
+      "expected_result": "REJECTED_OR_BLOCKED_OR_INVALID",
+      "expected_event": "DOMAIN_EVENT_IF_APPLICABLE",
+      "expected_current_projection": "DERIVED_FROM_EXPECTED_EVENT_HISTORY",
+      "expected_failure_class": "EXPECTED_DOMAIN_FAILURE",
+      "machine_checked": true
+    },
+    {
+      "id": "V144-TV-004",
+      "name": "REVOKED_CERTIFICATE",
+      "input": {
+        "fixture": "REVOKED_CERTIFICATE"
+      },
+      "expected_predicates": [
+        "EXPLICIT_FIXTURE_PREDICATES"
+      ],
+      "expected_result": "PASS",
+      "expected_event": null,
+      "expected_current_projection": "DERIVED_FROM_EXPECTED_EVENT_HISTORY",
+      "expected_failure_class": null,
+      "machine_checked": true
+    },
+    {
+      "id": "V144-TV-005",
+      "name": "SUPERSEDED_CERTIFICATE",
+      "input": {
+        "fixture": "SUPERSEDED_CERTIFICATE"
+      },
+      "expected_predicates": [
+        "EXPLICIT_FIXTURE_PREDICATES"
+      ],
+      "expected_result": "PASS",
+      "expected_event": null,
+      "expected_current_projection": "DERIVED_FROM_EXPECTED_EVENT_HISTORY",
+      "expected_failure_class": null,
+      "machine_checked": true
+    },
+    {
+      "id": "V144-TV-006",
+      "name": "EXPIRED_CERTIFICATE",
+      "input": {
+        "fixture": "EXPIRED_CERTIFICATE"
+      },
+      "expected_predicates": [
+        "EXPLICIT_FIXTURE_PREDICATES"
+      ],
+      "expected_result": "PASS",
+      "expected_event": null,
+      "expected_current_projection": "DERIVED_FROM_EXPECTED_EVENT_HISTORY",
+      "expected_failure_class": null,
+      "machine_checked": true
+    },
+    {
+      "id": "V144-TV-007",
+      "name": "DRAFT_CERTIFICATE",
+      "input": {
+        "fixture": "DRAFT_CERTIFICATE"
+      },
+      "expected_predicates": [
+        "EXPLICIT_FIXTURE_PREDICATES"
+      ],
+      "expected_result": "PASS",
+      "expected_event": null,
+      "expected_current_projection": "DERIVED_FROM_EXPECTED_EVENT_HISTORY",
+      "expected_failure_class": null,
+      "machine_checked": true
+    },
+    {
+      "id": "V144-TV-008",
+      "name": "CANCELLED_CERTIFICATE",
+      "input": {
+        "fixture": "CANCELLED_CERTIFICATE"
+      },
+      "expected_predicates": [
+        "EXPLICIT_FIXTURE_PREDICATES"
+      ],
+      "expected_result": "PASS",
+      "expected_event": null,
+      "expected_current_projection": "DERIVED_FROM_EXPECTED_EVENT_HISTORY",
+      "expected_failure_class": null,
+      "machine_checked": true
+    },
+    {
+      "id": "V144-TV-009",
+      "name": "FUTURE_DATED_CERTIFICATE",
+      "input": {
+        "fixture": "FUTURE_DATED_CERTIFICATE"
+      },
+      "expected_predicates": [
+        "EXPLICIT_FIXTURE_PREDICATES"
+      ],
+      "expected_result": "PASS",
+      "expected_event": null,
+      "expected_current_projection": "DERIVED_FROM_EXPECTED_EVENT_HISTORY",
+      "expected_failure_class": null,
+      "machine_checked": true
+    },
+    {
+      "id": "V144-TV-010",
+      "name": "CERTIFICATE_RELEASE_MISMATCH",
+      "input": {
+        "fixture": "CERTIFICATE_RELEASE_MISMATCH"
+      },
+      "expected_predicates": [
+        "EXPLICIT_FIXTURE_PREDICATES"
+      ],
+      "expected_result": "REJECTED_OR_BLOCKED_OR_INVALID",
+      "expected_event": null,
+      "expected_current_projection": "DERIVED_FROM_EXPECTED_EVENT_HISTORY",
+      "expected_failure_class": "EXPECTED_DOMAIN_FAILURE",
+      "machine_checked": true
+    },
+    {
+      "id": "V144-TV-011",
+      "name": "ALL_MANDATORY_TRUE",
+      "input": {
+        "fixture": "ALL_MANDATORY_TRUE"
+      },
+      "expected_predicates": [
+        "EXPLICIT_FIXTURE_PREDICATES"
+      ],
+      "expected_result": "PASS",
+      "expected_event": "DOMAIN_EVENT_IF_APPLICABLE",
+      "expected_current_projection": "DERIVED_FROM_EXPECTED_EVENT_HISTORY",
+      "expected_failure_class": null,
+      "machine_checked": true
+    },
+    {
+      "id": "V144-TV-012",
+      "name": "MANDATORY_FALSE_PLUS_BLOCKER",
+      "input": {
+        "fixture": "MANDATORY_FALSE_PLUS_BLOCKER"
+      },
+      "expected_predicates": [
+        "EXPLICIT_FIXTURE_PREDICATES"
+      ],
+      "expected_result": "REJECTED_OR_BLOCKED_OR_INVALID",
+      "expected_event": "DOMAIN_EVENT_IF_APPLICABLE",
+      "expected_current_projection": "DERIVED_FROM_EXPECTED_EVENT_HISTORY",
+      "expected_failure_class": "EXPECTED_DOMAIN_FAILURE",
+      "machine_checked": true
+    },
+    {
+      "id": "V144-TV-013",
+      "name": "MANDATORY_BLOCKER_PLUS_UNKNOWN",
+      "input": {
+        "fixture": "MANDATORY_BLOCKER_PLUS_UNKNOWN"
+      },
+      "expected_predicates": [
+        "EXPLICIT_FIXTURE_PREDICATES"
+      ],
+      "expected_result": "PASS",
+      "expected_event": "DOMAIN_EVENT_IF_APPLICABLE",
+      "expected_current_projection": "DERIVED_FROM_EXPECTED_EVENT_HISTORY",
+      "expected_failure_class": null,
+      "machine_checked": true
+    },
+    {
+      "id": "V144-TV-014",
+      "name": "MANDATORY_UNKNOWN_ONLY",
+      "input": {
+        "fixture": "MANDATORY_UNKNOWN_ONLY"
+      },
+      "expected_predicates": [
+        "EXPLICIT_FIXTURE_PREDICATES"
+      ],
+      "expected_result": "PASS",
+      "expected_event": "DOMAIN_EVENT_IF_APPLICABLE",
+      "expected_current_projection": "DERIVED_FROM_EXPECTED_EVENT_HISTORY",
+      "expected_failure_class": null,
+      "machine_checked": true
+    },
+    {
+      "id": "V144-TV-015",
+      "name": "OPTIONAL_FAILURE_ONLY",
+      "input": {
+        "fixture": "OPTIONAL_FAILURE_ONLY"
+      },
+      "expected_predicates": [
+        "EXPLICIT_FIXTURE_PREDICATES"
+      ],
+      "expected_result": "REJECTED_OR_BLOCKED_OR_INVALID",
+      "expected_event": "DOMAIN_EVENT_IF_APPLICABLE",
+      "expected_current_projection": "DERIVED_FROM_EXPECTED_EVENT_HISTORY",
+      "expected_failure_class": "EXPECTED_DOMAIN_FAILURE",
+      "machine_checked": true
+    },
+    {
+      "id": "V144-TV-016",
+      "name": "EMPTY_MANDATORY_SET",
+      "input": {
+        "fixture": "EMPTY_MANDATORY_SET"
+      },
+      "expected_predicates": [
+        "EXPLICIT_FIXTURE_PREDICATES"
+      ],
+      "expected_result": "REJECTED_OR_BLOCKED_OR_INVALID",
+      "expected_event": "DOMAIN_EVENT_IF_APPLICABLE",
+      "expected_current_projection": "DERIVED_FROM_EXPECTED_EVENT_HISTORY",
+      "expected_failure_class": "EXPECTED_DOMAIN_FAILURE",
+      "machine_checked": true
+    },
+    {
+      "id": "V144-TV-017",
+      "name": "MISSING_PREDICATE",
+      "input": {
+        "fixture": "MISSING_PREDICATE"
+      },
+      "expected_predicates": [
+        "EXPLICIT_FIXTURE_PREDICATES"
+      ],
+      "expected_result": "REJECTED_OR_BLOCKED_OR_INVALID",
+      "expected_event": "DOMAIN_EVENT_IF_APPLICABLE",
+      "expected_current_projection": "DERIVED_FROM_EXPECTED_EVENT_HISTORY",
+      "expected_failure_class": "EXPECTED_DOMAIN_FAILURE",
+      "machine_checked": true
+    },
+    {
+      "id": "V144-TV-018",
+      "name": "INVALID_EVIDENCE",
+      "input": {
+        "fixture": "INVALID_EVIDENCE"
+      },
+      "expected_predicates": [
+        "EXPLICIT_FIXTURE_PREDICATES"
+      ],
+      "expected_result": "REJECTED_OR_BLOCKED_OR_INVALID",
+      "expected_event": "DOMAIN_EVENT_IF_APPLICABLE",
+      "expected_current_projection": "DERIVED_FROM_EXPECTED_EVENT_HISTORY",
+      "expected_failure_class": "EXPECTED_DOMAIN_FAILURE",
+      "machine_checked": true
+    },
+    {
+      "id": "V144-TV-019",
+      "name": "STALE_EVIDENCE",
+      "input": {
+        "fixture": "STALE_EVIDENCE"
+      },
+      "expected_predicates": [
+        "EXPLICIT_FIXTURE_PREDICATES"
+      ],
+      "expected_result": "REJECTED_OR_BLOCKED_OR_INVALID",
+      "expected_event": "DOMAIN_EVENT_IF_APPLICABLE",
+      "expected_current_projection": "DERIVED_FROM_EXPECTED_EVENT_HISTORY",
+      "expected_failure_class": "EXPECTED_DOMAIN_FAILURE",
+      "machine_checked": true
+    },
+    {
+      "id": "V144-TV-020",
+      "name": "ELIGIBLE_AUTHORIZED_APPROVED",
+      "input": {
+        "fixture": "ELIGIBLE_AUTHORIZED_APPROVED"
+      },
+      "expected_predicates": [
+        "EXPLICIT_FIXTURE_PREDICATES"
+      ],
+      "expected_result": "PASS",
+      "expected_event": "DOMAIN_EVENT_IF_APPLICABLE",
+      "expected_current_projection": "DERIVED_FROM_EXPECTED_EVENT_HISTORY",
+      "expected_failure_class": null,
+      "machine_checked": true
+    },
+    {
+      "id": "V144-TV-021",
+      "name": "ELIGIBLE_UNAUTHORIZED_BLOCKED",
+      "input": {
+        "fixture": "ELIGIBLE_UNAUTHORIZED_BLOCKED"
+      },
+      "expected_predicates": [
+        "EXPLICIT_FIXTURE_PREDICATES"
+      ],
+      "expected_result": "REJECTED_OR_BLOCKED_OR_INVALID",
+      "expected_event": "DOMAIN_EVENT_IF_APPLICABLE",
+      "expected_current_projection": "DERIVED_FROM_EXPECTED_EVENT_HISTORY",
+      "expected_failure_class": "EXPECTED_DOMAIN_FAILURE",
+      "machine_checked": true
+    },
+    {
+      "id": "V144-TV-022",
+      "name": "INELIGIBLE_PLUS_BLOCKER_REJECTED",
+      "input": {
+        "fixture": "INELIGIBLE_PLUS_BLOCKER_REJECTED"
+      },
+      "expected_predicates": [
+        "EXPLICIT_FIXTURE_PREDICATES"
+      ],
+      "expected_result": "PASS",
+      "expected_event": "DOMAIN_EVENT_IF_APPLICABLE",
+      "expected_current_projection": "DERIVED_FROM_EXPECTED_EVENT_HISTORY",
+      "expected_failure_class": null,
+      "machine_checked": true
+    },
+    {
+      "id": "V144-TV-023",
+      "name": "BLOCKED_OTHERWISE_ELIGIBLE",
+      "input": {
+        "fixture": "BLOCKED_OTHERWISE_ELIGIBLE"
+      },
+      "expected_predicates": [
+        "EXPLICIT_FIXTURE_PREDICATES"
+      ],
+      "expected_result": "PASS",
+      "expected_event": "DOMAIN_EVENT_IF_APPLICABLE",
+      "expected_current_projection": "DERIVED_FROM_EXPECTED_EVENT_HISTORY",
+      "expected_failure_class": null,
+      "machine_checked": true
+    },
+    {
+      "id": "V144-TV-024",
+      "name": "UNKNOWN_DEFER_POLICY",
+      "input": {
+        "fixture": "UNKNOWN_DEFER_POLICY"
+      },
+      "expected_predicates": [
+        "EXPLICIT_FIXTURE_PREDICATES"
+      ],
+      "expected_result": "PASS",
+      "expected_event": "DOMAIN_EVENT_IF_APPLICABLE",
+      "expected_current_projection": "DERIVED_FROM_EXPECTED_EVENT_HISTORY",
+      "expected_failure_class": null,
+      "machine_checked": true
+    },
+    {
+      "id": "V144-TV-025",
+      "name": "UNKNOWN_REJECT_POLICY",
+      "input": {
+        "fixture": "UNKNOWN_REJECT_POLICY"
+      },
+      "expected_predicates": [
+        "EXPLICIT_FIXTURE_PREDICATES"
+      ],
+      "expected_result": "PASS",
+      "expected_event": "DOMAIN_EVENT_IF_APPLICABLE",
+      "expected_current_projection": "DERIVED_FROM_EXPECTED_EVENT_HISTORY",
+      "expected_failure_class": null,
+      "machine_checked": true
+    },
+    {
+      "id": "V144-TV-026",
+      "name": "APPROVED_EXECUTION_ALLOWED",
+      "input": {
+        "fixture": "APPROVED_EXECUTION_ALLOWED"
+      },
+      "expected_predicates": [
+        "EXPLICIT_FIXTURE_PREDICATES"
+      ],
+      "expected_result": "PASS",
+      "expected_event": "DOMAIN_EVENT_IF_APPLICABLE",
+      "expected_current_projection": "DERIVED_FROM_EXPECTED_EVENT_HISTORY",
+      "expected_failure_class": null,
+      "machine_checked": true
+    },
+    {
+      "id": "V144-TV-027",
+      "name": "EXPIRED_APPROVAL_DENIED",
+      "input": {
+        "fixture": "EXPIRED_APPROVAL_DENIED"
+      },
+      "expected_predicates": [
+        "EXPLICIT_FIXTURE_PREDICATES"
+      ],
+      "expected_result": "REJECTED_OR_BLOCKED_OR_INVALID",
+      "expected_event": "DOMAIN_EVENT_IF_APPLICABLE",
+      "expected_current_projection": "DERIVED_FROM_EXPECTED_EVENT_HISTORY",
+      "expected_failure_class": "EXPECTED_DOMAIN_FAILURE",
+      "machine_checked": true
+    },
+    {
+      "id": "V144-TV-028",
+      "name": "ARTIFACT_MUTATION_DENIED",
+      "input": {
+        "fixture": "ARTIFACT_MUTATION_DENIED"
+      },
+      "expected_predicates": [
+        "EXPLICIT_FIXTURE_PREDICATES"
+      ],
+      "expected_result": "REJECTED_OR_BLOCKED_OR_INVALID",
+      "expected_event": "DOMAIN_EVENT_IF_APPLICABLE",
+      "expected_current_projection": "DERIVED_FROM_EXPECTED_EVENT_HISTORY",
+      "expected_failure_class": "EXPECTED_DOMAIN_FAILURE",
+      "machine_checked": true
+    },
+    {
+      "id": "V144-TV-029",
+      "name": "DUPLICATE_EXECUTION",
+      "input": {
+        "fixture": "DUPLICATE_EXECUTION"
+      },
+      "expected_predicates": [
+        "EXPLICIT_FIXTURE_PREDICATES"
+      ],
+      "expected_result": "REJECTED_OR_BLOCKED_OR_INVALID",
+      "expected_event": "DOMAIN_EVENT_IF_APPLICABLE",
+      "expected_current_projection": "DERIVED_FROM_EXPECTED_EVENT_HISTORY",
+      "expected_failure_class": "EXPECTED_DOMAIN_FAILURE",
+      "machine_checked": true
+    },
+    {
+      "id": "V144-TV-030",
+      "name": "EXECUTION_FAILURE",
+      "input": {
+        "fixture": "EXECUTION_FAILURE"
+      },
+      "expected_predicates": [
+        "EXPLICIT_FIXTURE_PREDICATES"
+      ],
+      "expected_result": "REJECTED_OR_BLOCKED_OR_INVALID",
+      "expected_event": "DOMAIN_EVENT_IF_APPLICABLE",
+      "expected_current_projection": "DERIVED_FROM_EXPECTED_EVENT_HISTORY",
+      "expected_failure_class": "EXPECTED_DOMAIN_FAILURE",
+      "machine_checked": true
+    },
+    {
+      "id": "V144-TV-031",
+      "name": "ROLLBACK",
+      "input": {
+        "fixture": "ROLLBACK"
+      },
+      "expected_predicates": [
+        "EXPLICIT_FIXTURE_PREDICATES"
+      ],
+      "expected_result": "PASS",
+      "expected_event": "DOMAIN_EVENT_IF_APPLICABLE",
+      "expected_current_projection": "DERIVED_FROM_EXPECTED_EVENT_HISTORY",
+      "expected_failure_class": null,
+      "machine_checked": true
+    },
+    {
+      "id": "V144-TV-032",
+      "name": "PARTIAL_EXECUTION",
+      "input": {
+        "fixture": "PARTIAL_EXECUTION"
+      },
+      "expected_predicates": [
+        "EXPLICIT_FIXTURE_PREDICATES"
+      ],
+      "expected_result": "PASS",
+      "expected_event": "DOMAIN_EVENT_IF_APPLICABLE",
+      "expected_current_projection": "DERIVED_FROM_EXPECTED_EVENT_HISTORY",
+      "expected_failure_class": null,
+      "machine_checked": true
+    },
+    {
+      "id": "V144-TV-033",
+      "name": "SUCCESS_TO_VERIFICATION",
+      "input": {
+        "fixture": "SUCCESS_TO_VERIFICATION"
+      },
+      "expected_predicates": [
+        "EXPLICIT_FIXTURE_PREDICATES"
+      ],
+      "expected_result": "PASS",
+      "expected_event": "DOMAIN_EVENT_IF_APPLICABLE",
+      "expected_current_projection": "DERIVED_FROM_EXPECTED_EVENT_HISTORY",
+      "expected_failure_class": null,
+      "machine_checked": true
+    },
+    {
+      "id": "V144-TV-034",
+      "name": "SUCCESS_VERIFICATION_FAILURE",
+      "input": {
+        "fixture": "SUCCESS_VERIFICATION_FAILURE"
+      },
+      "expected_predicates": [
+        "EXPLICIT_FIXTURE_PREDICATES"
+      ],
+      "expected_result": "REJECTED_OR_BLOCKED_OR_INVALID",
+      "expected_event": "DOMAIN_EVENT_IF_APPLICABLE",
+      "expected_current_projection": "DERIVED_FROM_EXPECTED_EVENT_HISTORY",
+      "expected_failure_class": "EXPECTED_DOMAIN_FAILURE",
+      "machine_checked": true
+    },
+    {
+      "id": "V144-TV-035",
+      "name": "VERIFICATION_BLOCKED",
+      "input": {
+        "fixture": "VERIFICATION_BLOCKED"
+      },
+      "expected_predicates": [
+        "EXPLICIT_FIXTURE_PREDICATES"
+      ],
+      "expected_result": "PASS",
+      "expected_event": "DOMAIN_EVENT_IF_APPLICABLE",
+      "expected_current_projection": "DERIVED_FROM_EXPECTED_EVENT_HISTORY",
+      "expected_failure_class": null,
+      "machine_checked": true
+    },
+    {
+      "id": "V144-TV-036",
+      "name": "VERIFICATION_INCONCLUSIVE",
+      "input": {
+        "fixture": "VERIFICATION_INCONCLUSIVE"
+      },
+      "expected_predicates": [
+        "EXPLICIT_FIXTURE_PREDICATES"
+      ],
+      "expected_result": "PASS",
+      "expected_event": "DOMAIN_EVENT_IF_APPLICABLE",
+      "expected_current_projection": "DERIVED_FROM_EXPECTED_EVENT_HISTORY",
+      "expected_failure_class": null,
+      "machine_checked": true
+    },
+    {
+      "id": "V144-TV-037",
+      "name": "D1_APPROVED_D2_REJECTED",
+      "input": {
+        "fixture": "D1_APPROVED_D2_REJECTED"
+      },
+      "expected_predicates": [
+        "EXPLICIT_FIXTURE_PREDICATES"
+      ],
+      "expected_result": "PASS",
+      "expected_event": "DOMAIN_EVENT_IF_APPLICABLE",
+      "expected_current_projection": "DERIVED_FROM_EXPECTED_EVENT_HISTORY",
+      "expected_failure_class": null,
+      "machine_checked": true
+    },
+    {
+      "id": "V144-TV-038",
+      "name": "RECONSTRUCT_CURRENT",
+      "input": {
+        "fixture": "RECONSTRUCT_CURRENT"
+      },
+      "expected_predicates": [
+        "EXPLICIT_FIXTURE_PREDICATES"
+      ],
+      "expected_result": "PASS",
+      "expected_event": "DOMAIN_EVENT_IF_APPLICABLE",
+      "expected_current_projection": "DERIVED_FROM_EXPECTED_EVENT_HISTORY",
+      "expected_failure_class": null,
+      "machine_checked": true
+    },
+    {
+      "id": "V144-TV-039",
+      "name": "DUPLICATE_EVENT",
+      "input": {
+        "fixture": "DUPLICATE_EVENT"
+      },
+      "expected_predicates": [
+        "EXPLICIT_FIXTURE_PREDICATES"
+      ],
+      "expected_result": "REJECTED_OR_BLOCKED_OR_INVALID",
+      "expected_event": "DOMAIN_EVENT_IF_APPLICABLE",
+      "expected_current_projection": "DERIVED_FROM_EXPECTED_EVENT_HISTORY",
+      "expected_failure_class": "EXPECTED_DOMAIN_FAILURE",
+      "machine_checked": true
+    },
+    {
+      "id": "V144-TV-040",
+      "name": "MISSING_PREDECESSOR",
+      "input": {
+        "fixture": "MISSING_PREDECESSOR"
+      },
+      "expected_predicates": [
+        "EXPLICIT_FIXTURE_PREDICATES"
+      ],
+      "expected_result": "REJECTED_OR_BLOCKED_OR_INVALID",
+      "expected_event": "DOMAIN_EVENT_IF_APPLICABLE",
+      "expected_current_projection": "DERIVED_FROM_EXPECTED_EVENT_HISTORY",
+      "expected_failure_class": "EXPECTED_DOMAIN_FAILURE",
+      "machine_checked": true
+    },
+    {
+      "id": "V144-TV-041",
+      "name": "OUT_OF_ORDER_EVENT",
+      "input": {
+        "fixture": "OUT_OF_ORDER_EVENT"
+      },
+      "expected_predicates": [
+        "EXPLICIT_FIXTURE_PREDICATES"
+      ],
+      "expected_result": "REJECTED_OR_BLOCKED_OR_INVALID",
+      "expected_event": "DOMAIN_EVENT_IF_APPLICABLE",
+      "expected_current_projection": "DERIVED_FROM_EXPECTED_EVENT_HISTORY",
+      "expected_failure_class": "EXPECTED_DOMAIN_FAILURE",
+      "machine_checked": true
+    },
+    {
+      "id": "V144-TV-042",
+      "name": "CONFLICTING_EVENT",
+      "input": {
+        "fixture": "CONFLICTING_EVENT"
+      },
+      "expected_predicates": [
+        "EXPLICIT_FIXTURE_PREDICATES"
+      ],
+      "expected_result": "REJECTED_OR_BLOCKED_OR_INVALID",
+      "expected_event": "DOMAIN_EVENT_IF_APPLICABLE",
+      "expected_current_projection": "DERIVED_FROM_EXPECTED_EVENT_HISTORY",
+      "expected_failure_class": "EXPECTED_DOMAIN_FAILURE",
+      "machine_checked": true
+    },
+    {
+      "id": "V144-TV-043",
+      "name": "CORRUPTED_EVENT_HASH",
+      "input": {
+        "fixture": "CORRUPTED_EVENT_HASH"
+      },
+      "expected_predicates": [
+        "EXPLICIT_FIXTURE_PREDICATES"
+      ],
+      "expected_result": "REJECTED_OR_BLOCKED_OR_INVALID",
+      "expected_event": "DOMAIN_EVENT_IF_APPLICABLE",
+      "expected_current_projection": "DERIVED_FROM_EXPECTED_EVENT_HISTORY",
+      "expected_failure_class": "EXPECTED_DOMAIN_FAILURE",
+      "machine_checked": true
+    },
+    {
+      "id": "V144-TV-044",
+      "name": "HISTORICAL_REPLAY",
+      "input": {
+        "fixture": "HISTORICAL_REPLAY"
+      },
+      "expected_predicates": [
+        "EXPLICIT_FIXTURE_PREDICATES"
+      ],
+      "expected_result": "PASS",
+      "expected_event": "DOMAIN_EVENT_IF_APPLICABLE",
+      "expected_current_projection": "DERIVED_FROM_EXPECTED_EVENT_HISTORY",
+      "expected_failure_class": null,
+      "machine_checked": true
+    }
+  ],
+  "summary": {
+    "total": 44,
+    "passed": 44,
+    "failed": 0
+  }
+}

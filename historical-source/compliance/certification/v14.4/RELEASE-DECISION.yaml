@@ -1,0 +1,32 @@
+{
+  "schema_version": "14.4",
+  "statuses": [
+    "APPROVED",
+    "REJECTED",
+    "BLOCKED",
+    "DEFERRED"
+  ],
+  "unknown_policy_options": [
+    "BLOCKED",
+    "REJECTED",
+    "DEFERRED_IF_AUTHORIZED_POLICY_PERMITS"
+  ],
+  "default_unknown": "BLOCKED",
+  "deferred": "DELIBERATE_AUTHORIZED_POSTPONEMENT_ONLY",
+  "immutable": true,
+  "required": [
+    "DECISION_ID",
+    "RELEASE_ID",
+    "GATE_ID",
+    "ELIGIBILITY_ID",
+    "POLICY_ID",
+    "AUTHORITY",
+    "DECISION_BASIS",
+    "PREDICATES",
+    "REASONS",
+    "DECIDED_AT",
+    "VALID_UNTIL",
+    "SNAPSHOT_HASH",
+    "PREVIOUS_DECISION_ID"
+  ]
+}

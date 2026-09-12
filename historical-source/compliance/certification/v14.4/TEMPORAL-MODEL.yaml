@@ -1,0 +1,11 @@
+{
+  "schema_version": "14.4",
+  "interval": "[not_before,not_after)",
+  "utc": true,
+  "not_before_equal": "ACTIVE",
+  "not_after_equal": "INACTIVE",
+  "causal_order": "SEQUENCE_NOT_TIMESTAMP",
+  "historical_replay": "AS_OF_POLICY_EVIDENCE_AUTHORITY_AND_EVENTS_ONLY",
+  "future_evidence": "TEMPORAL_DEFECT",
+  "freshness_independent_from_decision_validity": true
+}
