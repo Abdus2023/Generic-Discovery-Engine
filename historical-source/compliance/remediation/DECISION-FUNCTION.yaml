@@ -1,0 +1,22 @@
+{
+  "schema_version": "13.0",
+  "precedence": [
+    "REJECTED",
+    "SUPERSEDED",
+    "WAIVED",
+    "BLOCKED",
+    "REMAINS_OPEN",
+    "PARTIALLY_RESOLVED",
+    "CLOSED"
+  ],
+  "function": {
+    "CLOSED": "all closure predicates pass",
+    "PARTIALLY_RESOLVED": "original failure reduced but closure predicates incomplete",
+    "REMAINS_OPEN": "normative violation remains proven",
+    "WAIVED": "effective approved waiver applies",
+    "BLOCKED": "closure cannot be evaluated",
+    "SUPERSEDED": "authoritative later finding replaces finding",
+    "REJECTED": "finding proven invalid"
+  },
+  "deterministic_for_identical_normalized_inputs": true
+}

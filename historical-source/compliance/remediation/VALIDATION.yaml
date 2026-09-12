@@ -1,0 +1,840 @@
+{
+  "schema_version": "13.0",
+  "validator": "Protocol-v13 independent validator",
+  "overall_status": "STRUCTURAL_PASS_REMEDIATION_BLOCKED",
+  "acceptance": "BLOCKED",
+  "summary": {
+    "total": 116,
+    "passed": 115,
+    "failed": 0,
+    "blocked": 1
+  },
+  "object_counts": {
+    "schemas": 12,
+    "programs": 3,
+    "residual_risks": 3,
+    "root_causes": 0,
+    "actions": 0,
+    "change_sets": 0,
+    "impact_assessments": 0,
+    "reverification_plans": 0,
+    "reverification_executions": 0,
+    "regression_scopes": 0,
+    "closure_decisions": 0,
+    "certificate_revisions": 0
+  },
+  "checks": [
+    {
+      "check_id": "A01",
+      "category": "artifacts",
+      "description": "v13 artifact exists: remediation/REMEDIATION-PROGRAMS.yaml",
+      "result": "PASS",
+      "detail": ""
+    },
+    {
+      "check_id": "A02",
+      "category": "artifacts",
+      "description": "v13 artifact exists: remediation/ROOT-CAUSES.yaml",
+      "result": "PASS",
+      "detail": ""
+    },
+    {
+      "check_id": "A03",
+      "category": "artifacts",
+      "description": "v13 artifact exists: remediation/REMEDIATION-ACTIONS.yaml",
+      "result": "PASS",
+      "detail": ""
+    },
+    {
+      "check_id": "A04",
+      "category": "artifacts",
+      "description": "v13 artifact exists: remediation/CHANGE-SETS.yaml",
+      "result": "PASS",
+      "detail": ""
+    },
+    {
+      "check_id": "A05",
+      "category": "artifacts",
+      "description": "v13 artifact exists: remediation/IMPACT-ASSESSMENTS.yaml",
+      "result": "PASS",
+      "detail": ""
+    },
+    {
+      "check_id": "A06",
+      "category": "artifacts",
+      "description": "v13 artifact exists: remediation/REVERIFICATION-PLANS.yaml",
+      "result": "PASS",
+      "detail": ""
+    },
+    {
+      "check_id": "A07",
+      "category": "artifacts",
+      "description": "v13 artifact exists: remediation/REVERIFICATION-EXECUTIONS.yaml",
+      "result": "PASS",
+      "detail": ""
+    },
+    {
+      "check_id": "A08",
+      "category": "artifacts",
+      "description": "v13 artifact exists: remediation/REGRESSION-SCOPES.yaml",
+      "result": "PASS",
+      "detail": ""
+    },
+    {
+      "check_id": "A09",
+      "category": "artifacts",
+      "description": "v13 artifact exists: remediation/CLOSURE-DECISIONS.yaml",
+      "result": "PASS",
+      "detail": ""
+    },
+    {
+      "check_id": "A10",
+      "category": "artifacts",
+      "description": "v13 artifact exists: remediation/WAIVER-REVIEWS.yaml",
+      "result": "PASS",
+      "detail": ""
+    },
+    {
+      "check_id": "A11",
+      "category": "artifacts",
+      "description": "v13 artifact exists: remediation/RESIDUAL-RISKS.yaml",
+      "result": "PASS",
+      "detail": ""
+    },
+    {
+      "check_id": "A12",
+      "category": "artifacts",
+      "description": "v13 artifact exists: remediation/CERTIFICATE-REVISIONS.yaml",
+      "result": "PASS",
+      "detail": ""
+    },
+    {
+      "check_id": "A13",
+      "category": "artifacts",
+      "description": "v13 artifact exists: remediation/REMEDIATION-STATE-MACHINE.yaml",
+      "result": "PASS",
+      "detail": ""
+    },
+    {
+      "check_id": "A14",
+      "category": "artifacts",
+      "description": "v13 artifact exists: remediation/VALIDATION-PIPELINE.yaml",
+      "result": "PASS",
+      "detail": ""
+    },
+    {
+      "check_id": "A15",
+      "category": "artifacts",
+      "description": "v13 artifact exists: remediation/VALIDATION-ERRORS.yaml",
+      "result": "PASS",
+      "detail": ""
+    },
+    {
+      "check_id": "A16",
+      "category": "artifacts",
+      "description": "v13 artifact exists: remediation/VALIDATION-REPORT.yaml",
+      "result": "PASS",
+      "detail": ""
+    },
+    {
+      "check_id": "A17",
+      "category": "artifacts",
+      "description": "v13 artifact exists: remediation/DECISION-FUNCTION.yaml",
+      "result": "PASS",
+      "detail": ""
+    },
+    {
+      "check_id": "A18",
+      "category": "artifacts",
+      "description": "v13 artifact exists: remediation/CLOSURE-PREDICATE.yaml",
+      "result": "PASS",
+      "detail": ""
+    },
+    {
+      "check_id": "A19",
+      "category": "artifacts",
+      "description": "v13 artifact exists: remediation/CLOSURE-INVARIANTS.yaml",
+      "result": "PASS",
+      "detail": ""
+    },
+    {
+      "check_id": "A20",
+      "category": "artifacts",
+      "description": "v13 artifact exists: remediation/PRIOR-AUDIT-INTEGRITY.yaml",
+      "result": "PASS",
+      "detail": ""
+    },
+    {
+      "check_id": "A21",
+      "category": "artifacts",
+      "description": "v13 artifact exists: remediation/OBJECT-REGISTRY.yaml",
+      "result": "PASS",
+      "detail": ""
+    },
+    {
+      "check_id": "A22",
+      "category": "artifacts",
+      "description": "v13 artifact exists: remediation/SCHEMA-REGISTRY.yaml",
+      "result": "PASS",
+      "detail": ""
+    },
+    {
+      "check_id": "A23",
+      "category": "artifacts",
+      "description": "v13 artifact exists: remediation/IMPACT-RULES.yaml",
+      "result": "PASS",
+      "detail": ""
+    },
+    {
+      "check_id": "A24",
+      "category": "artifacts",
+      "description": "v13 artifact exists: remediation/REVERIFICATION-RULES.yaml",
+      "result": "PASS",
+      "detail": ""
+    },
+    {
+      "check_id": "A25",
+      "category": "artifacts",
+      "description": "v13 artifact exists: remediation/CERTIFICATE-LINEAGE.yaml",
+      "result": "PASS",
+      "detail": ""
+    },
+    {
+      "check_id": "A26",
+      "category": "artifacts",
+      "description": "v13 artifact exists: remediation/REMEDIATION-DEPENDENCY-GRAPH.yaml",
+      "result": "PASS",
+      "detail": ""
+    },
+    {
+      "check_id": "A27",
+      "category": "artifacts",
+      "description": "v13 artifact exists: remediation/ACCOUNTABILITY-CHAIN.yaml",
+      "result": "PASS",
+      "detail": ""
+    },
+    {
+      "check_id": "A28",
+      "category": "artifacts",
+      "description": "v13 artifact exists: schema/remediation-program.schema.yaml",
+      "result": "PASS",
+      "detail": ""
+    },
+    {
+      "check_id": "A29",
+      "category": "artifacts",
+      "description": "v13 artifact exists: schema/root-cause.schema.yaml",
+      "result": "PASS",
+      "detail": ""
+    },
+    {
+      "check_id": "A30",
+      "category": "artifacts",
+      "description": "v13 artifact exists: schema/remediation-action.schema.yaml",
+      "result": "PASS",
+      "detail": ""
+    },
+    {
+      "check_id": "A31",
+      "category": "artifacts",
+      "description": "v13 artifact exists: schema/change-set.schema.yaml",
+      "result": "PASS",
+      "detail": ""
+    },
+    {
+      "check_id": "A32",
+      "category": "artifacts",
+      "description": "v13 artifact exists: schema/impact-assessment.schema.yaml",
+      "result": "PASS",
+      "detail": ""
+    },
+    {
+      "check_id": "A33",
+      "category": "artifacts",
+      "description": "v13 artifact exists: schema/reverification-plan.schema.yaml",
+      "result": "PASS",
+      "detail": ""
+    },
+    {
+      "check_id": "A34",
+      "category": "artifacts",
+      "description": "v13 artifact exists: schema/reverification-execution.schema.yaml",
+      "result": "PASS",
+      "detail": ""
+    },
+    {
+      "check_id": "A35",
+      "category": "artifacts",
+      "description": "v13 artifact exists: schema/regression-scope.schema.yaml",
+      "result": "PASS",
+      "detail": ""
+    },
+    {
+      "check_id": "A36",
+      "category": "artifacts",
+      "description": "v13 artifact exists: schema/closure-decision.schema.yaml",
+      "result": "PASS",
+      "detail": ""
+    },
+    {
+      "check_id": "A37",
+      "category": "artifacts",
+      "description": "v13 artifact exists: schema/waiver-review.schema.yaml",
+      "result": "PASS",
+      "detail": ""
+    },
+    {
+      "check_id": "A38",
+      "category": "artifacts",
+      "description": "v13 artifact exists: schema/residual-risk.schema.yaml",
+      "result": "PASS",
+      "detail": ""
+    },
+    {
+      "check_id": "A39",
+      "category": "artifacts",
+      "description": "v13 artifact exists: schema/certificate-revision.schema.yaml",
+      "result": "PASS",
+      "detail": ""
+    },
+    {
+      "check_id": "A40",
+      "category": "artifacts",
+      "description": "v13 artifact exists: reports/REMEDIATION-STATUS.yaml",
+      "result": "PASS",
+      "detail": ""
+    },
+    {
+      "check_id": "A41",
+      "category": "artifacts",
+      "description": "v13 artifact exists: reports/REVERIFICATION-REPORT.yaml",
+      "result": "PASS",
+      "detail": ""
+    },
+    {
+      "check_id": "A42",
+      "category": "artifacts",
+      "description": "v13 artifact exists: reports/REGRESSION-REPORT.yaml",
+      "result": "PASS",
+      "detail": ""
+    },
+    {
+      "check_id": "A43",
+      "category": "artifacts",
+      "description": "v13 artifact exists: reports/CLOSURE-REPORT.yaml",
+      "result": "PASS",
+      "detail": ""
+    },
+    {
+      "check_id": "A44",
+      "category": "artifacts",
+      "description": "v13 generator-owned artifact set has 43 unique paths",
+      "result": "PASS",
+      "detail": ""
+    },
+    {
+      "check_id": "A45",
+      "category": "artifacts",
+      "description": "all v13 YAML is JSON-compatible",
+      "result": "PASS",
+      "detail": ""
+    },
+    {
+      "check_id": "A46",
+      "category": "layout",
+      "description": "all twelve normative registries use remediation directory",
+      "result": "PASS",
+      "detail": ""
+    },
+    {
+      "check_id": "A47",
+      "category": "layout",
+      "description": "all four required reports use lowercase reports directory",
+      "result": "PASS",
+      "detail": ""
+    },
+    {
+      "check_id": "S01",
+      "category": "schemas",
+      "description": "all twelve v13 object schemas exist",
+      "result": "PASS",
+      "detail": ""
+    },
+    {
+      "check_id": "S02",
+      "category": "schemas",
+      "description": "every v13 object type has exactly one explicit schema",
+      "result": "PASS",
+      "detail": ""
+    },
+    {
+      "check_id": "S03",
+      "category": "schemas",
+      "description": "every v13 schema requires the common object contract",
+      "result": "PASS",
+      "detail": ""
+    },
+    {
+      "check_id": "S04",
+      "category": "schemas",
+      "description": "every required field has a declared schema",
+      "result": "PASS",
+      "detail": ""
+    },
+    {
+      "check_id": "S05",
+      "category": "schemas",
+      "description": "v13 schemas reject undocumented implicit fields",
+      "result": "PASS",
+      "detail": ""
+    },
+    {
+      "check_id": "S06",
+      "category": "schemas",
+      "description": "all v13 schema references resolve",
+      "result": "PASS",
+      "detail": ""
+    },
+    {
+      "check_id": "S07",
+      "category": "schemas",
+      "description": "v13 schema registry records all twelve exact hashes",
+      "result": "PASS",
+      "detail": ""
+    },
+    {
+      "check_id": "S08",
+      "category": "schemas",
+      "description": "schema registry reuses the hash-bound v12.1 common schema",
+      "result": "PASS",
+      "detail": ""
+    },
+    {
+      "check_id": "S09",
+      "category": "schemas",
+      "description": "reverification plans require nonempty requirements, oracles, and criteria",
+      "result": "PASS",
+      "detail": ""
+    },
+    {
+      "check_id": "S10",
+      "category": "schemas",
+      "description": "closure evidence and root-cause evidence cannot be empty",
+      "result": "PASS",
+      "detail": ""
+    },
+    {
+      "check_id": "S11",
+      "category": "schemas",
+      "description": "specification change is explicitly separated from implementation remediation",
+      "result": "PASS",
+      "detail": ""
+    },
+    {
+      "check_id": "S12",
+      "category": "schemas",
+      "description": "certificate revisions require new evidence, verification, decisions, and aggregate",
+      "result": "PASS",
+      "detail": ""
+    },
+    {
+      "check_id": "S13",
+      "category": "schemas",
+      "description": "root-cause schema requires failure, cause, normative condition, evidence, and epistemic status",
+      "result": "PASS",
+      "detail": ""
+    },
+    {
+      "check_id": "S14",
+      "category": "schemas",
+      "description": "reverification execution must link its plan and change set",
+      "result": "PASS",
+      "detail": ""
+    },
+    {
+      "check_id": "O01",
+      "category": "objects",
+      "description": "all local v13 object IDs are unique and syntactically valid",
+      "result": "PASS",
+      "detail": ""
+    },
+    {
+      "check_id": "O02",
+      "category": "objects",
+      "description": "every local object has v13 common fields and timezone timestamp",
+      "result": "PASS",
+      "detail": ""
+    },
+    {
+      "check_id": "O03",
+      "category": "objects",
+      "description": "every instantiated v13 object validates against its schema",
+      "result": "PASS",
+      "detail": "{}"
+    },
+    {
+      "check_id": "O04",
+      "category": "objects",
+      "description": "local object registry indexes all and only instantiated objects",
+      "result": "PASS",
+      "detail": ""
+    },
+    {
+      "check_id": "O05",
+      "category": "objects",
+      "description": "local IDs are globally unique against v12.1 objects",
+      "result": "PASS",
+      "detail": ""
+    },
+    {
+      "check_id": "O06",
+      "category": "objects",
+      "description": "external object registry reference and hash resolve",
+      "result": "PASS",
+      "detail": ""
+    },
+    {
+      "check_id": "P01",
+      "category": "programs",
+      "description": "one blocked program exists for each finding",
+      "result": "PASS",
+      "detail": ""
+    },
+    {
+      "check_id": "P02",
+      "category": "programs",
+      "description": "blocked programs are not represented as closed",
+      "result": "PASS",
+      "detail": ""
+    },
+    {
+      "check_id": "P03",
+      "category": "risk",
+      "description": "every finding retains one unresolved residual risk",
+      "result": "PASS",
+      "detail": ""
+    },
+    {
+      "check_id": "P04",
+      "category": "gating",
+      "description": "no downstream object is fabricated after R2 stop",
+      "result": "PASS",
+      "detail": ""
+    },
+    {
+      "check_id": "P05",
+      "category": "distinctions",
+      "description": "root cause, action, change, execution, closure, and waiver remain distinct empty registries",
+      "result": "PASS",
+      "detail": ""
+    },
+    {
+      "check_id": "P06",
+      "category": "integrity",
+      "description": "no code/specification/oracle/test change is claimed",
+      "result": "PASS",
+      "detail": ""
+    },
+    {
+      "check_id": "V01",
+      "category": "pipeline",
+      "description": "canonical remediation pipeline is exact R0-R15",
+      "result": "PASS",
+      "detail": ""
+    },
+    {
+      "check_id": "V02",
+      "category": "pipeline",
+      "description": "R0 and R1 pass before R2 blocks/stops",
+      "result": "PASS",
+      "detail": ""
+    },
+    {
+      "check_id": "V03",
+      "category": "pipeline",
+      "description": "R3-R15 are not executed past invalid normative basis",
+      "result": "PASS",
+      "detail": ""
+    },
+    {
+      "check_id": "V04",
+      "category": "pipeline",
+      "description": "validation report counts pipeline outcomes",
+      "result": "PASS",
+      "detail": ""
+    },
+    {
+      "check_id": "V05",
+      "category": "pipeline",
+      "description": "closure and certificate revision are unauthorized",
+      "result": "PASS",
+      "detail": ""
+    },
+    {
+      "check_id": "V06",
+      "category": "failures",
+      "description": "all fifteen remediation validation failures are registered",
+      "result": "PASS",
+      "detail": ""
+    },
+    {
+      "check_id": "V07",
+      "category": "failures",
+      "description": "current process failure is not implementation nonconformance",
+      "result": "PASS",
+      "detail": ""
+    },
+    {
+      "check_id": "V08",
+      "category": "gating",
+      "description": "invalid v11.1 normative basis remains the blocker",
+      "result": "PASS",
+      "detail": ""
+    },
+    {
+      "check_id": "T01",
+      "category": "state-machine",
+      "description": "normal path is exact OPEN through CLOSED",
+      "result": "PASS",
+      "detail": ""
+    },
+    {
+      "check_id": "T02",
+      "category": "state-machine",
+      "description": "seventeen guarded legal transition patterns are unique",
+      "result": "PASS",
+      "detail": ""
+    },
+    {
+      "check_id": "T03",
+      "category": "state-machine",
+      "description": "every active state can block and blocked returns only to previous state",
+      "result": "PASS",
+      "detail": ""
+    },
+    {
+      "check_id": "T04",
+      "category": "state-machine",
+      "description": "all eight direct closure paths are forbidden",
+      "result": "PASS",
+      "detail": ""
+    },
+    {
+      "check_id": "T05",
+      "category": "waiver",
+      "description": "waiver changes disposition without changing normative truth",
+      "result": "PASS",
+      "detail": ""
+    },
+    {
+      "check_id": "T06",
+      "category": "state-machine",
+      "description": "all three actual program histories use legal transitions",
+      "result": "PASS",
+      "detail": ""
+    },
+    {
+      "check_id": "C01",
+      "category": "closure",
+      "description": "closure predicate contains all eleven mandatory conjuncts",
+      "result": "PASS",
+      "detail": ""
+    },
+    {
+      "check_id": "C02",
+      "category": "closure",
+      "description": "current closure predicates are all false and result blocked",
+      "result": "PASS",
+      "detail": ""
+    },
+    {
+      "check_id": "C03",
+      "category": "closure",
+      "description": "decision function distinguishes all seven closure outcomes",
+      "result": "PASS",
+      "detail": ""
+    },
+    {
+      "check_id": "C04",
+      "category": "invariants",
+      "description": "all twenty closure invariants are mechanically registered",
+      "result": "PASS",
+      "detail": ""
+    },
+    {
+      "check_id": "C05",
+      "category": "reverification",
+      "description": "reverification preserves original failure-to-new-evidence chain",
+      "result": "PASS",
+      "detail": ""
+    },
+    {
+      "check_id": "C06",
+      "category": "reverification",
+      "description": "flaky verification is inconclusive and cannot close",
+      "result": "PASS",
+      "detail": ""
+    },
+    {
+      "check_id": "C07",
+      "category": "regression",
+      "description": "regression scope includes original, direct, and transitive requirements",
+      "result": "PASS",
+      "detail": ""
+    },
+    {
+      "check_id": "C07A",
+      "category": "regression",
+      "description": "security, concurrency, persistence, and resource coverage are explicit",
+      "result": "PASS",
+      "detail": ""
+    },
+    {
+      "check_id": "C07B",
+      "category": "reassessment",
+      "description": "post-remediation decisions are invalidated, reevaluated, propagated, and reaggregated",
+      "result": "PASS",
+      "detail": ""
+    },
+    {
+      "check_id": "C08",
+      "category": "impact",
+      "description": "impact analysis has all eleven minimum dimensions",
+      "result": "PASS",
+      "detail": ""
+    },
+    {
+      "check_id": "C09",
+      "category": "impact",
+      "description": "generic discovery pipeline trigger set is complete",
+      "result": "PASS",
+      "detail": ""
+    },
+    {
+      "check_id": "C10",
+      "category": "dependencies",
+      "description": "remediation dependency graph is separate and nothing is ready",
+      "result": "PASS",
+      "detail": ""
+    },
+    {
+      "check_id": "C11",
+      "category": "traceability",
+      "description": "v10-v13 accountability chain terminates honestly at finding",
+      "result": "PASS",
+      "detail": ""
+    },
+    {
+      "check_id": "C12",
+      "category": "history",
+      "description": "historical remediation preserves old decisions and requires new version/decision",
+      "result": "PASS",
+      "detail": ""
+    },
+    {
+      "check_id": "C13",
+      "category": "findings",
+      "description": "remediation-introduced violations require separate findings",
+      "result": "PASS",
+      "detail": ""
+    },
+    {
+      "check_id": "I01",
+      "category": "immutability",
+      "description": "all protected v12/v12.1 artifacts remain byte-identical",
+      "result": "PASS",
+      "detail": "[]"
+    },
+    {
+      "check_id": "I02",
+      "category": "immutability",
+      "description": "prior findings, evidence, decisions, requirements, and certificate are protected",
+      "result": "PASS",
+      "detail": ""
+    },
+    {
+      "check_id": "I03",
+      "category": "certificate",
+      "description": "certificate lineage retains immutable v12.1 predecessor",
+      "result": "PASS",
+      "detail": ""
+    },
+    {
+      "check_id": "I04",
+      "category": "certificate",
+      "description": "no certificate revision exists without changed decisions",
+      "result": "PASS",
+      "detail": ""
+    },
+    {
+      "check_id": "I05",
+      "category": "history",
+      "description": "historical record is append-only while current conformance remains iterative",
+      "result": "PASS",
+      "detail": ""
+    },
+    {
+      "check_id": "P07",
+      "category": "reports",
+      "description": "remediation report is blocked with no fabricated changes",
+      "result": "PASS",
+      "detail": ""
+    },
+    {
+      "check_id": "P08",
+      "category": "reports",
+      "description": "reverification report is not executed and not passed",
+      "result": "PASS",
+      "detail": ""
+    },
+    {
+      "check_id": "P09",
+      "category": "reports",
+      "description": "regression report is not executed and zero is not a pass",
+      "result": "PASS",
+      "detail": ""
+    },
+    {
+      "check_id": "P10",
+      "category": "reports",
+      "description": "closure report closes nothing and preserves prior certificate",
+      "result": "PASS",
+      "detail": ""
+    },
+    {
+      "check_id": "Q01",
+      "category": "determinism",
+      "description": "all 43 v13 generator outputs reproduce byte-for-byte",
+      "result": "PASS",
+      "detail": ""
+    },
+    {
+      "check_id": "Q02",
+      "category": "hygiene",
+      "description": "authoritative historical/planning documents remain outside generator outputs",
+      "result": "PASS",
+      "detail": ""
+    },
+    {
+      "check_id": "Q03",
+      "category": "hygiene",
+      "description": "no Python cache artifacts exist",
+      "result": "PASS",
+      "detail": ""
+    },
+    {
+      "check_id": "Q04",
+      "category": "tools",
+      "description": "generic and version-pinned v13 builders/validators exist",
+      "result": "PASS",
+      "detail": ""
+    },
+    {
+      "check_id": "GATE-V13",
+      "category": "acceptance",
+      "description": "Protocol-v13 remediation closure gate",
+      "result": "BLOCKED",
+      "detail": "R2 blocks because no accepted normative requirements exist. No root cause, change, re-verification, regression, closure, conformance recalculation, or certificate revision is authorized."
+    }
+  ]
+}

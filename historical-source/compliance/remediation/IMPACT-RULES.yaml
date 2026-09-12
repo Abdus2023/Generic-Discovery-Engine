@@ -1,0 +1,27 @@
+{
+  "schema_version": "13.0",
+  "minimum_dimensions": [
+    "DIRECTLY_MODIFIED_REQUIREMENTS",
+    "DEPENDENT_REQUIREMENTS",
+    "AFFECTED_CONTRACTS",
+    "AFFECTED_PROVIDERS",
+    "SCHEDULER_BEHAVIOR",
+    "STATE_TRANSITIONS",
+    "SECURITY_BOUNDARIES",
+    "RESOURCE_CONSTRAINTS",
+    "SERIALIZATION_PERSISTENCE",
+    "OBSERVABILITY",
+    "COMPATIBILITY"
+  ],
+  "discovery_pipeline_triggers": [
+    "Candidate",
+    "Acquisition",
+    "Observation",
+    "Recognition",
+    "Discovery",
+    "Candidate Expansion",
+    "Scheduler"
+  ],
+  "unknown_impact_is_zero": false,
+  "incomplete_dependency_policy": "CONSERVATIVE"
+}

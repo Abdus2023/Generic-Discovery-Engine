@@ -1,0 +1,203 @@
+{
+  "schema_version": "13.0",
+  "initial_state": "OPEN",
+  "normal_path": [
+    "OPEN",
+    "TRIAGED",
+    "ROOT_CAUSED",
+    "PLANNED",
+    "IN_PROGRESS",
+    "READY_FOR_VERIFICATION",
+    "VERIFIED",
+    "CLOSED"
+  ],
+  "legal_transitions": [
+    {
+      "from": "OPEN",
+      "to": "TRIAGED",
+      "guard": "FINDING_CLASSIFIED"
+    },
+    {
+      "from": "TRIAGED",
+      "to": "ROOT_CAUSED",
+      "guard": "ROOT_CAUSE_ESTABLISHED_OR_EXPLICITLY_UNKNOWN"
+    },
+    {
+      "from": "ROOT_CAUSED",
+      "to": "PLANNED",
+      "guard": "REMEDIATION_ACTION_DEFINED"
+    },
+    {
+      "from": "PLANNED",
+      "to": "IN_PROGRESS",
+      "guard": "APPROVED_CHANGE_EXISTS"
+    },
+    {
+      "from": "IN_PROGRESS",
+      "to": "READY_FOR_VERIFICATION",
+      "guard": "CHANGE_SET_COMPLETE"
+    },
+    {
+      "from": "READY_FOR_VERIFICATION",
+      "to": "VERIFIED",
+      "guard": "REVERIFICATION_PASSES"
+    },
+    {
+      "from": "VERIFIED",
+      "to": "CLOSED",
+      "guard": "ALL_CLOSURE_PREDICATES_PASS"
+    },
+    {
+      "from": "OPEN",
+      "to": "BLOCKED",
+      "guard": "REQUIRED_PREREQUISITE_UNAVAILABLE"
+    },
+    {
+      "from": "TRIAGED",
+      "to": "BLOCKED",
+      "guard": "REQUIRED_PREREQUISITE_UNAVAILABLE"
+    },
+    {
+      "from": "ROOT_CAUSED",
+      "to": "BLOCKED",
+      "guard": "REQUIRED_PREREQUISITE_UNAVAILABLE"
+    },
+    {
+      "from": "PLANNED",
+      "to": "BLOCKED",
+      "guard": "REQUIRED_PREREQUISITE_UNAVAILABLE"
+    },
+    {
+      "from": "IN_PROGRESS",
+      "to": "BLOCKED",
+      "guard": "REQUIRED_PREREQUISITE_UNAVAILABLE"
+    },
+    {
+      "from": "READY_FOR_VERIFICATION",
+      "to": "BLOCKED",
+      "guard": "REQUIRED_PREREQUISITE_UNAVAILABLE"
+    },
+    {
+      "from": "VERIFIED",
+      "to": "BLOCKED",
+      "guard": "REQUIRED_PREREQUISITE_UNAVAILABLE"
+    },
+    {
+      "from": "BLOCKED",
+      "to": "$PREVIOUS_ACTIVE_STATE",
+      "guard": "BLOCKING_CONDITION_REMOVED"
+    },
+    {
+      "from": "OPEN",
+      "to": "REJECTED",
+      "guard": "FINDING_INVALIDATED_WITH_EVIDENCE"
+    },
+    {
+      "from": "OPEN",
+      "to": "SUPERSEDED",
+      "guard": "NEWER_AUTHORITATIVE_FINDING_REPLACES"
+    }
+  ],
+  "forbidden_direct_closure": [
+    {
+      "from": "OPEN",
+      "to": "CLOSED"
+    },
+    {
+      "from": "TRIAGED",
+      "to": "CLOSED"
+    },
+    {
+      "from": "ROOT_CAUSED",
+      "to": "CLOSED"
+    },
+    {
+      "from": "PLANNED",
+      "to": "CLOSED"
+    },
+    {
+      "from": "IN_PROGRESS",
+      "to": "CLOSED"
+    },
+    {
+      "from": "READY_FOR_VERIFICATION",
+      "to": "CLOSED"
+    },
+    {
+      "from": "BLOCKED",
+      "to": "CLOSED"
+    },
+    {
+      "from": "WAIVED",
+      "to": "CLOSED"
+    }
+  ],
+  "waiver_disposition": {
+    "source": "NON_CONFORMANT",
+    "disposition": "WAIVED",
+    "underlying_normative_truth_changed": false,
+    "guard": "EFFECTIVE_APPROVED_WAIVER"
+  },
+  "state_histories": [
+    {
+      "program_id": "PROGRAM-V13-001",
+      "transitions": [
+        {
+          "from": "OPEN",
+          "to": "TRIAGED",
+          "guard_evidence": [
+            "FINDING-V121-001"
+          ]
+        },
+        {
+          "from": "TRIAGED",
+          "to": "BLOCKED",
+          "guard_evidence": [
+            "ERROR-V13-001"
+          ]
+        }
+      ],
+      "current": "BLOCKED"
+    },
+    {
+      "program_id": "PROGRAM-V13-002",
+      "transitions": [
+        {
+          "from": "OPEN",
+          "to": "TRIAGED",
+          "guard_evidence": [
+            "FINDING-V121-002"
+          ]
+        },
+        {
+          "from": "TRIAGED",
+          "to": "BLOCKED",
+          "guard_evidence": [
+            "ERROR-V13-001"
+          ]
+        }
+      ],
+      "current": "BLOCKED"
+    },
+    {
+      "program_id": "PROGRAM-V13-003",
+      "transitions": [
+        {
+          "from": "OPEN",
+          "to": "TRIAGED",
+          "guard_evidence": [
+            "FINDING-V121-003"
+          ]
+        },
+        {
+          "from": "TRIAGED",
+          "to": "BLOCKED",
+          "guard_evidence": [
+            "ERROR-V13-001"
+          ]
+        }
+      ],
+      "current": "BLOCKED"
+    }
+  ]
+}

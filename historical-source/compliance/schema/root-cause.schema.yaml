@@ -1,0 +1,108 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://generic-discovery-engine.invalid/compliance/v13/root-cause.schema.yaml",
+  "title": "Protocol-v13 ROOT_CAUSE",
+  "type": "object",
+  "required": [
+    "object_type",
+    "schema_version",
+    "object_id",
+    "created_at",
+    "finding_id",
+    "classification",
+    "statement",
+    "what_failed",
+    "why_failed",
+    "normative_condition",
+    "cause_status",
+    "evidence",
+    "confidence"
+  ],
+  "properties": {
+    "object_type": {
+      "const": "ROOT_CAUSE"
+    },
+    "schema_version": {
+      "const": "13.0"
+    },
+    "object_id": {
+      "$ref": "common.schema.yaml#/$defs/Identifier"
+    },
+    "created_at": {
+      "$ref": "common.schema.yaml#/$defs/Timestamp"
+    },
+    "finding_id": {
+      "$ref": "common.schema.yaml#/$defs/Identifier"
+    },
+    "classification": {
+      "type": "string",
+      "enum": [
+        "IMPLEMENTATION_DEFECT",
+        "DESIGN_DEFECT",
+        "CONTRACT_DEFECT",
+        "SPECIFICATION_DEFECT",
+        "ORACLE_DEFECT",
+        "VERIFICATION_DEFECT",
+        "MAPPING_DEFECT",
+        "CONFIGURATION_DEFECT",
+        "ENVIRONMENT_DEFECT",
+        "PROCESS_DEFECT",
+        "DEPENDENCY_DEFECT",
+        "UNKNOWN"
+      ]
+    },
+    "statement": {
+      "type": "string",
+      "minLength": 1
+    },
+    "what_failed": {
+      "type": "string",
+      "minLength": 1
+    },
+    "why_failed": {
+      "type": "string",
+      "minLength": 1
+    },
+    "normative_condition": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "cause_status": {
+      "type": "string",
+      "enum": [
+        "ESTABLISHED",
+        "HYPOTHETICAL",
+        "UNKNOWN"
+      ]
+    },
+    "evidence": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "$ref": "common.schema.yaml#/$defs/Reference"
+      }
+    },
+    "confidence": {
+      "type": "string",
+      "enum": [
+        "HIGH",
+        "MEDIUM",
+        "LOW",
+        "UNKNOWN"
+      ]
+    },
+    "assumptions": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    }
+  },
+  "additionalProperties": false,
+  "x-v13-constraints": [
+    "A plausible root-cause hypothesis is not established fact without evidence",
+    "UNKNOWN root cause does not block safe deterministic remediation and verification"
+  ]
+}

@@ -1,0 +1,103 @@
+{
+  "schema_version": "13.0",
+  "stages": [
+    {
+      "stage_id": "R0",
+      "stage": "LOAD_FINDING",
+      "status": "PASS",
+      "detail": "Loaded three immutable v12.1 audit findings."
+    },
+    {
+      "stage_id": "R1",
+      "stage": "VALIDATE_FINDING",
+      "status": "PASS",
+      "detail": "Finding objects validate and all evidence references resolve."
+    },
+    {
+      "stage_id": "R2",
+      "stage": "VALIDATE_NORMATIVE_BASIS",
+      "status": "BLOCKED_STOP",
+      "detail": "v11.1 certificate is FAIL and zero admitted requirements exist."
+    },
+    {
+      "stage_id": "R3",
+      "stage": "CLASSIFY_FAILURE_BOUNDARY",
+      "status": "NOT_EXECUTED_EARLY_STOP",
+      "detail": "R2 prerequisite prevents valid downstream processing."
+    },
+    {
+      "stage_id": "R4",
+      "stage": "ESTABLISH_ROOT_CAUSE",
+      "status": "NOT_EXECUTED_EARLY_STOP",
+      "detail": "R2 prerequisite prevents valid downstream processing."
+    },
+    {
+      "stage_id": "R5",
+      "stage": "DEFINE_REMEDIATION",
+      "status": "NOT_EXECUTED_EARLY_STOP",
+      "detail": "R2 prerequisite prevents valid downstream processing."
+    },
+    {
+      "stage_id": "R6",
+      "stage": "RECORD_CHANGE_SET",
+      "status": "NOT_EXECUTED_EARLY_STOP",
+      "detail": "R2 prerequisite prevents valid downstream processing."
+    },
+    {
+      "stage_id": "R7",
+      "stage": "ASSESS_IMPACT",
+      "status": "NOT_EXECUTED_EARLY_STOP",
+      "detail": "R2 prerequisite prevents valid downstream processing."
+    },
+    {
+      "stage_id": "R8",
+      "stage": "DETERMINE_REVERIFICATION_SCOPE",
+      "status": "NOT_EXECUTED_EARLY_STOP",
+      "detail": "R2 prerequisite prevents valid downstream processing."
+    },
+    {
+      "stage_id": "R9",
+      "stage": "VALIDATE_ORACLE",
+      "status": "NOT_EXECUTED_EARLY_STOP",
+      "detail": "R2 prerequisite prevents valid downstream processing."
+    },
+    {
+      "stage_id": "R10",
+      "stage": "EXECUTE_REVERIFICATION",
+      "status": "NOT_EXECUTED_EARLY_STOP",
+      "detail": "R2 prerequisite prevents valid downstream processing."
+    },
+    {
+      "stage_id": "R11",
+      "stage": "EXECUTE_REGRESSION",
+      "status": "NOT_EXECUTED_EARLY_STOP",
+      "detail": "R2 prerequisite prevents valid downstream processing."
+    },
+    {
+      "stage_id": "R12",
+      "stage": "REEVALUATE_CONFORMANCE",
+      "status": "NOT_EXECUTED_EARLY_STOP",
+      "detail": "R2 prerequisite prevents valid downstream processing."
+    },
+    {
+      "stage_id": "R13",
+      "stage": "ASSESS_RESIDUAL_RISK",
+      "status": "NOT_EXECUTED_EARLY_STOP",
+      "detail": "R2 prerequisite prevents valid downstream processing."
+    },
+    {
+      "stage_id": "R14",
+      "stage": "DECIDE_CLOSURE",
+      "status": "NOT_EXECUTED_EARLY_STOP",
+      "detail": "R2 prerequisite prevents valid downstream processing."
+    },
+    {
+      "stage_id": "R15",
+      "stage": "REVISE_CERTIFICATE",
+      "status": "NOT_EXECUTED_EARLY_STOP",
+      "detail": "R2 prerequisite prevents valid downstream processing."
+    }
+  ],
+  "stop_stage": "R2",
+  "deterministic_order": true
+}

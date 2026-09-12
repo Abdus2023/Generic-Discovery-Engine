@@ -1,0 +1,35 @@
+{
+  "schema_version": "13.0",
+  "chain": [
+    "HISTORY",
+    "EVIDENCE",
+    "HISTORICAL_PROPERTY",
+    "OBLIGATION",
+    "REQUIREMENT",
+    "NORMATIVE_RULE",
+    "ACCEPTANCE_CRITERION",
+    "TEST_ORACLE",
+    "IMPLEMENTATION",
+    "VERIFICATION",
+    "CONFORMANCE",
+    "FINDING",
+    "ROOT_CAUSE",
+    "REMEDIATION",
+    "CHANGE",
+    "REVERIFICATION",
+    "REGRESSION",
+    "CLOSURE",
+    "CERTIFICATE"
+  ],
+  "current_terminal_stage": "FINDING",
+  "blocked_next_stage": "ROOT_CAUSE",
+  "append_only_history": true,
+  "iterative_conformance": true,
+  "historical_remediation_policy": {
+    "historical_decision_immutable": true,
+    "later_remediation_requires_new_implementation_version": true,
+    "later_conformance_requires_new_decision": true,
+    "retrospective_audit_must_be_explicit": true
+  },
+  "new_finding_policy": "A violation introduced by remediation receives a separate finding and never overwrites the source finding."
+}

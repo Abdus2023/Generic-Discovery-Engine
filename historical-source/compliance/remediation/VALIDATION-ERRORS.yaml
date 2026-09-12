@@ -1,0 +1,37 @@
+{
+  "schema_version": "13.0",
+  "errors": [
+    {
+      "error_id": "ERROR-V13-001",
+      "code": "TRACEABILITY_BROKEN",
+      "stage": "R2",
+      "boundary": "NORMATIVE_BASIS",
+      "affected_findings": [
+        "FINDING-V121-001",
+        "FINDING-V121-002",
+        "FINDING-V121-003"
+      ],
+      "implementation_nonconformance": false,
+      "effect": "BLOCK_DOWNSTREAM_REMEDIATION",
+      "detail": "No accepted requirement/rule/criterion/oracle basis exists."
+    }
+  ],
+  "failure_codes": [
+    "FINDING_INVALID",
+    "ROOT_CAUSE_INSUFFICIENT",
+    "REMEDIATION_UNDEFINED",
+    "CHANGE_SET_MISSING",
+    "IMPACT_INCOMPLETE",
+    "REVERIFICATION_SCOPE_INCOMPLETE",
+    "ORACLE_INVALID",
+    "REVERIFICATION_BLOCKED",
+    "REVERIFICATION_FAILED",
+    "REGRESSION_FAILED",
+    "REGRESSION_INCOMPLETE",
+    "NEW_NONCONFORMANCE",
+    "TRACEABILITY_BROKEN",
+    "RESIDUAL_RISK_MISSING",
+    "CERTIFICATE_LINEAGE_BROKEN"
+  ],
+  "rule": "Process failures do not automatically become implementation nonconformance."
+}

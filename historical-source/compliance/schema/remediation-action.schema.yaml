@@ -1,0 +1,84 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://generic-discovery-engine.invalid/compliance/v13/remediation-action.schema.yaml",
+  "title": "Protocol-v13 REMEDIATION_ACTION",
+  "type": "object",
+  "required": [
+    "object_type",
+    "schema_version",
+    "object_id",
+    "created_at",
+    "remediation_id",
+    "description",
+    "target_findings",
+    "action_type",
+    "status"
+  ],
+  "properties": {
+    "object_type": {
+      "const": "REMEDIATION_ACTION"
+    },
+    "schema_version": {
+      "const": "13.0"
+    },
+    "object_id": {
+      "$ref": "common.schema.yaml#/$defs/Identifier"
+    },
+    "created_at": {
+      "$ref": "common.schema.yaml#/$defs/Timestamp"
+    },
+    "remediation_id": {
+      "$ref": "common.schema.yaml#/$defs/Identifier"
+    },
+    "description": {
+      "type": "string"
+    },
+    "target_findings": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "$ref": "common.schema.yaml#/$defs/Identifier"
+      },
+      "uniqueItems": true
+    },
+    "action_type": {
+      "type": "string",
+      "enum": [
+        "CODE_CHANGE",
+        "CONFIGURATION_CHANGE",
+        "TEST_CHANGE",
+        "ORACLE_CHANGE",
+        "SPECIFICATION_CHANGE",
+        "DOCUMENTATION_CHANGE",
+        "DEPENDENCY_CHANGE",
+        "ENVIRONMENT_CHANGE",
+        "DATA_MIGRATION",
+        "PROCESS_CHANGE",
+        "NO_CHANGE",
+        "UNKNOWN"
+      ]
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "PROPOSED",
+        "APPROVED",
+        "IN_PROGRESS",
+        "COMPLETE",
+        "REJECTED",
+        "SUPERSEDED"
+      ]
+    },
+    "requirement_ids": {
+      "type": "array",
+      "items": {
+        "$ref": "common.schema.yaml#/$defs/Identifier"
+      },
+      "uniqueItems": true
+    }
+  },
+  "additionalProperties": false,
+  "x-v13-constraints": [
+    "SPECIFICATION_CHANGE is specification evolution and requires a new audit scope"
+  ]
+}

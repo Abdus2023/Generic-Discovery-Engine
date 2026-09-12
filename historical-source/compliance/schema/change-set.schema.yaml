@@ -1,0 +1,95 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://generic-discovery-engine.invalid/compliance/v13/change-set.schema.yaml",
+  "title": "Protocol-v13 CHANGE_SET",
+  "type": "object",
+  "required": [
+    "object_type",
+    "schema_version",
+    "object_id",
+    "created_at",
+    "change_set_id",
+    "artifacts_before",
+    "artifacts_after",
+    "change_type"
+  ],
+  "properties": {
+    "object_type": {
+      "const": "CHANGE_SET"
+    },
+    "schema_version": {
+      "const": "13.0"
+    },
+    "object_id": {
+      "$ref": "common.schema.yaml#/$defs/Identifier"
+    },
+    "created_at": {
+      "$ref": "common.schema.yaml#/$defs/Timestamp"
+    },
+    "change_set_id": {
+      "$ref": "common.schema.yaml#/$defs/Identifier"
+    },
+    "artifacts_before": {
+      "type": "array",
+      "items": {
+        "$ref": "common.schema.yaml#/$defs/Reference"
+      }
+    },
+    "artifacts_after": {
+      "type": "array",
+      "items": {
+        "$ref": "common.schema.yaml#/$defs/Reference"
+      }
+    },
+    "change_type": {
+      "type": "string",
+      "enum": [
+        "ADD",
+        "MODIFY",
+        "DELETE",
+        "MOVE",
+        "RENAME",
+        "REFACTOR",
+        "CONFIGURATION",
+        "DEPENDENCY",
+        "MIXED"
+      ]
+    },
+    "source_revision": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "target_revision": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "content_hash_before": {
+      "oneOf": [
+        {
+          "$ref": "common.schema.yaml#/$defs/Hash"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "content_hash_after": {
+      "oneOf": [
+        {
+          "$ref": "common.schema.yaml#/$defs/Hash"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    }
+  },
+  "additionalProperties": false,
+  "x-v13-constraints": [
+    "The before/after record permits reconstruction of what changed"
+  ]
+}

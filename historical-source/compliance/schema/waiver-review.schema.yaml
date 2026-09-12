@@ -1,0 +1,57 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://generic-discovery-engine.invalid/compliance/v13/waiver-review.schema.yaml",
+  "title": "Protocol-v13 WAIVER_REVIEW",
+  "type": "object",
+  "required": [
+    "object_type",
+    "schema_version",
+    "object_id",
+    "created_at",
+    "waiver_id",
+    "review_result",
+    "reviewed_at"
+  ],
+  "properties": {
+    "object_type": {
+      "const": "WAIVER_REVIEW"
+    },
+    "schema_version": {
+      "const": "13.0"
+    },
+    "object_id": {
+      "$ref": "common.schema.yaml#/$defs/Identifier"
+    },
+    "created_at": {
+      "$ref": "common.schema.yaml#/$defs/Timestamp"
+    },
+    "waiver_id": {
+      "$ref": "common.schema.yaml#/$defs/Identifier"
+    },
+    "review_result": {
+      "type": "string",
+      "enum": [
+        "RETAIN",
+        "REVOKE",
+        "EXPIRE",
+        "REPLACE",
+        "SUPERSEDE",
+        "BLOCKED"
+      ]
+    },
+    "findings": {
+      "type": "array",
+      "items": {
+        "$ref": "common.schema.yaml#/$defs/Identifier"
+      },
+      "uniqueItems": true
+    },
+    "reviewed_at": {
+      "$ref": "common.schema.yaml#/$defs/Timestamp"
+    },
+    "rationale": {
+      "type": "string"
+    }
+  },
+  "additionalProperties": false
+}

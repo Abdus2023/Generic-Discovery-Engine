@@ -1,0 +1,75 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://generic-discovery-engine.invalid/compliance/v13/reverification-execution.schema.yaml",
+  "title": "Protocol-v13 REVERIFICATION_EXECUTION",
+  "type": "object",
+  "required": [
+    "object_type",
+    "schema_version",
+    "object_id",
+    "created_at",
+    "plan_id",
+    "change_set_id",
+    "execution_id",
+    "result",
+    "evidence",
+    "environment",
+    "executed_at"
+  ],
+  "properties": {
+    "object_type": {
+      "const": "REVERIFICATION_EXECUTION"
+    },
+    "schema_version": {
+      "const": "13.0"
+    },
+    "object_id": {
+      "$ref": "common.schema.yaml#/$defs/Identifier"
+    },
+    "created_at": {
+      "$ref": "common.schema.yaml#/$defs/Timestamp"
+    },
+    "plan_id": {
+      "$ref": "common.schema.yaml#/$defs/Identifier"
+    },
+    "change_set_id": {
+      "$ref": "common.schema.yaml#/$defs/Identifier"
+    },
+    "execution_id": {
+      "$ref": "common.schema.yaml#/$defs/Identifier"
+    },
+    "result": {
+      "type": "string",
+      "enum": [
+        "PASS",
+        "FAIL",
+        "INCONCLUSIVE",
+        "BLOCKED",
+        "INVALID"
+      ]
+    },
+    "evidence": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "$ref": "common.schema.yaml#/$defs/Reference"
+      }
+    },
+    "environment": {
+      "$ref": "common.schema.yaml#/$defs/Reference"
+    },
+    "executed_at": {
+      "$ref": "common.schema.yaml#/$defs/Timestamp"
+    },
+    "reproducibility": {
+      "type": "string",
+      "enum": [
+        "REPRODUCIBLE",
+        "FLAKY",
+        "NON_REPRODUCIBLE",
+        "UNKNOWN"
+      ]
+    }
+  },
+  "additionalProperties": false
+}

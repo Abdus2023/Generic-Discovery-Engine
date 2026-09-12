@@ -1,0 +1,86 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://generic-discovery-engine.invalid/compliance/v13/certificate-revision.schema.yaml",
+  "title": "Protocol-v13 CERTIFICATE_REVISION",
+  "type": "object",
+  "required": [
+    "object_type",
+    "schema_version",
+    "object_id",
+    "created_at",
+    "previous_certificate_id",
+    "audit_id",
+    "changed_findings",
+    "new_evidence",
+    "new_verifications",
+    "new_decisions",
+    "new_aggregate_status",
+    "issued_at"
+  ],
+  "properties": {
+    "object_type": {
+      "const": "CERTIFICATE_REVISION"
+    },
+    "schema_version": {
+      "const": "13.0"
+    },
+    "object_id": {
+      "$ref": "common.schema.yaml#/$defs/Identifier"
+    },
+    "created_at": {
+      "$ref": "common.schema.yaml#/$defs/Timestamp"
+    },
+    "previous_certificate_id": {
+      "$ref": "common.schema.yaml#/$defs/Identifier"
+    },
+    "audit_id": {
+      "$ref": "common.schema.yaml#/$defs/Identifier"
+    },
+    "changed_findings": {
+      "type": "array",
+      "items": {
+        "$ref": "common.schema.yaml#/$defs/Identifier"
+      },
+      "uniqueItems": true
+    },
+    "new_evidence": {
+      "type": "array",
+      "items": {
+        "$ref": "common.schema.yaml#/$defs/Reference"
+      }
+    },
+    "new_verifications": {
+      "type": "array",
+      "items": {
+        "$ref": "common.schema.yaml#/$defs/Reference"
+      }
+    },
+    "new_decisions": {
+      "type": "array",
+      "items": {
+        "$ref": "common.schema.yaml#/$defs/Reference"
+      }
+    },
+    "new_aggregate_status": {
+      "type": "string",
+      "enum": [
+        "COMPLIANT",
+        "CONDITIONALLY_COMPLIANT",
+        "NON_COMPLIANT",
+        "UNVERIFIED",
+        "BLOCKED"
+      ]
+    },
+    "issued_at": {
+      "$ref": "common.schema.yaml#/$defs/Timestamp"
+    },
+    "certificate_hash": {
+      "$ref": "common.schema.yaml#/$defs/Hash"
+    }
+  },
+  "additionalProperties": false,
+  "x-v13-constraints": [
+    "Certificate lineage is append-only and immediate-predecessor linked",
+    "A revision includes changed findings, new evidence, new verification, new decisions, and aggregate status"
+  ]
+}

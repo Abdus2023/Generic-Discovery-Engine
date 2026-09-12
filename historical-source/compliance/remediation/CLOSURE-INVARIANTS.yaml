@@ -1,0 +1,105 @@
+{
+  "schema_version": "13.0",
+  "invariants": [
+    {
+      "invariant_id": "V13-I01",
+      "statement": "Every remediation references an existing finding.",
+      "enforcement": "MECHANICAL"
+    },
+    {
+      "invariant_id": "V13-I02",
+      "statement": "Every finding has a normative or explicitly classified non-normative basis.",
+      "enforcement": "MECHANICAL"
+    },
+    {
+      "invariant_id": "V13-I03",
+      "statement": "Every change set identifies before and after artifacts.",
+      "enforcement": "MECHANICAL"
+    },
+    {
+      "invariant_id": "V13-I04",
+      "statement": "Every implementation change receives impact analysis.",
+      "enforcement": "MECHANICAL"
+    },
+    {
+      "invariant_id": "V13-I05",
+      "statement": "Every impacted mandatory requirement is reconsidered.",
+      "enforcement": "MECHANICAL"
+    },
+    {
+      "invariant_id": "V13-I06",
+      "statement": "Every re-verification references a valid oracle.",
+      "enforcement": "MECHANICAL"
+    },
+    {
+      "invariant_id": "V13-I07",
+      "statement": "Every re-verification produces evidence.",
+      "enforcement": "MECHANICAL"
+    },
+    {
+      "invariant_id": "V13-I08",
+      "statement": "Flaky execution cannot establish unconditional closure.",
+      "enforcement": "MECHANICAL"
+    },
+    {
+      "invariant_id": "V13-I09",
+      "statement": "Regression scope cannot be empty when impact analysis requires regression.",
+      "enforcement": "MECHANICAL"
+    },
+    {
+      "invariant_id": "V13-I10",
+      "statement": "A finding cannot close without successful required re-verification.",
+      "enforcement": "MECHANICAL"
+    },
+    {
+      "invariant_id": "V13-I11",
+      "statement": "A finding cannot close while a mandatory regression remains unresolved.",
+      "enforcement": "MECHANICAL"
+    },
+    {
+      "invariant_id": "V13-I12",
+      "statement": "A remediation cannot weaken a requirement without creating a specification revision.",
+      "enforcement": "MECHANICAL"
+    },
+    {
+      "invariant_id": "V13-I13",
+      "statement": "A waiver cannot alter normative truth.",
+      "enforcement": "MECHANICAL"
+    },
+    {
+      "invariant_id": "V13-I14",
+      "statement": "A historical finding cannot be erased by later remediation.",
+      "enforcement": "MECHANICAL"
+    },
+    {
+      "invariant_id": "V13-I15",
+      "statement": "New violations introduced by remediation receive separate findings.",
+      "enforcement": "MECHANICAL"
+    },
+    {
+      "invariant_id": "V13-I16",
+      "statement": "Closed findings remain immutable historical records.",
+      "enforcement": "MECHANICAL"
+    },
+    {
+      "invariant_id": "V13-I17",
+      "statement": "Certificate revisions preserve predecessor lineage.",
+      "enforcement": "MECHANICAL"
+    },
+    {
+      "invariant_id": "V13-I18",
+      "statement": "Residual risk is explicitly represented.",
+      "enforcement": "MECHANICAL"
+    },
+    {
+      "invariant_id": "V13-I19",
+      "statement": "Reused compliance decisions require impact justification.",
+      "enforcement": "MECHANICAL"
+    },
+    {
+      "invariant_id": "V13-I20",
+      "statement": "Closure is deterministic for identical normalized inputs.",
+      "enforcement": "MECHANICAL"
+    }
+  ]
+}

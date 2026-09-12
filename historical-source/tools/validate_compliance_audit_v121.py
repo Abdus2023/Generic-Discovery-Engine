@@ -219,7 +219,9 @@ def main() -> int:
     for index, name in enumerate(DELIVERABLES, 1):
         check(f"A{index:02d}", "artifacts", f"required generator-owned artifact exists: {name}", (OUT / name).is_file())
     if any(x["result"] == "FAIL" for x in checks): return finish(checks, {})
-    check("A80", "artifacts", "generator-owned file set is exact", {str(p.relative_to(OUT)) for p in OUT.rglob("*") if p.is_file() and p.name not in {"VALIDATION.yaml", "VALIDATION.md", "DETERMINISM-VALIDATION.yaml", "DETERMINISM-VALIDATION.md"}} == set(DELIVERABLES))
+    extension_schema_names = {"certificate-revision", "change-set", "closure-decision", "impact-assessment", "regression-scope", "remediation-action", "remediation-program", "residual-risk", "reverification-execution", "reverification-plan", "root-cause", "waiver-review"}
+    visible_files = {str(p.relative_to(OUT)) for p in OUT.rglob("*") if p.is_file() and p.name not in {"VALIDATION.yaml", "VALIDATION.md", "DETERMINISM-VALIDATION.yaml", "DETERMINISM-VALIDATION.md"} and not str(p.relative_to(OUT)).startswith(("remediation/", "reports/")) and str(p.relative_to(OUT)) not in {f"schema/{name}.schema.yaml" for name in extension_schema_names}}
+    check("A80", "artifacts", "generator-owned file set is exact", visible_files == set(DELIVERABLES))
     check("A81", "artifacts", "all YAML files are JSON-compatible", all(parseable(OUT / name) for name in MACHINE + SCHEMAS))
 
     schemas = {name: load(f"schema/{name}.schema.yaml") for name in SCHEMA_NAMES}

@@ -1,0 +1,36 @@
+{
+  "schema_version": "13.0",
+  "required_chain": [
+    "ORIGINAL_VIOLATION",
+    "ORIGINAL_NORMATIVE_CONDITION",
+    "ORIGINAL_ACCEPTANCE_CRITERION",
+    "VALIDATED_ORACLE",
+    "NEW_EXECUTION",
+    "NEW_EVIDENCE"
+  ],
+  "execution_linked_to_change": true,
+  "negative_verification_when_undesirable_behavior": "SHOULD",
+  "flaky_result": "INCONCLUSIVE",
+  "flaky_closure": [
+    "REMAINS_OPEN",
+    "BLOCKED"
+  ],
+  "regression_scope": [
+    "ORIGINAL_FAILING_REQUIREMENT",
+    "DIRECTLY_AFFECTED_REQUIREMENTS",
+    "TRANSITIVE_DEPENDENT_REQUIREMENTS"
+  ],
+  "recommended_explicit_regression_coverage": [
+    "SECURITY",
+    "CONCURRENCY",
+    "PERSISTENCE",
+    "RESOURCE_BOUNDARIES"
+  ],
+  "post_remediation_recalculation": [
+    "INVALIDATE_AFFECTED_DECISION",
+    "REEVALUATE_AFFECTED_REQUIREMENT",
+    "PROPAGATE_DEPENDENCY_GRAPH",
+    "RECALCULATE_AUDIT_AGGREGATE"
+  ],
+  "decision_reuse_policy": "Unaffected decisions may be retained only with impact evidence proving continued validity."
+}

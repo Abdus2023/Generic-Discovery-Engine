@@ -1,0 +1,81 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://generic-discovery-engine.invalid/compliance/v13/impact-assessment.schema.yaml",
+  "title": "Protocol-v13 IMPACT_ASSESSMENT",
+  "type": "object",
+  "required": [
+    "object_type",
+    "schema_version",
+    "object_id",
+    "created_at",
+    "change_set_id",
+    "affected_requirements",
+    "affected_artifacts",
+    "regression_required",
+    "assessment_status"
+  ],
+  "properties": {
+    "object_type": {
+      "const": "IMPACT_ASSESSMENT"
+    },
+    "schema_version": {
+      "const": "13.0"
+    },
+    "object_id": {
+      "$ref": "common.schema.yaml#/$defs/Identifier"
+    },
+    "created_at": {
+      "$ref": "common.schema.yaml#/$defs/Timestamp"
+    },
+    "change_set_id": {
+      "$ref": "common.schema.yaml#/$defs/Identifier"
+    },
+    "affected_requirements": {
+      "type": "array",
+      "items": {
+        "$ref": "common.schema.yaml#/$defs/Identifier"
+      },
+      "uniqueItems": true
+    },
+    "affected_artifacts": {
+      "type": "array",
+      "items": {
+        "$ref": "common.schema.yaml#/$defs/Reference"
+      }
+    },
+    "affected_contracts": {
+      "type": "array",
+      "items": {
+        "$ref": "common.schema.yaml#/$defs/Identifier"
+      },
+      "uniqueItems": true
+    },
+    "affected_dependencies": {
+      "type": "array",
+      "items": {
+        "$ref": "common.schema.yaml#/$defs/Identifier"
+      },
+      "uniqueItems": true
+    },
+    "regression_required": {
+      "type": "boolean"
+    },
+    "assessment_status": {
+      "type": "string",
+      "enum": [
+        "COMPLETE",
+        "INCOMPLETE",
+        "BLOCKED",
+        "UNKNOWN"
+      ]
+    },
+    "rationale": {
+      "type": "string"
+    }
+  },
+  "additionalProperties": false,
+  "x-v13-constraints": [
+    "Unknown impact is never zero impact",
+    "Incomplete dependencies require conservative assessment"
+  ]
+}

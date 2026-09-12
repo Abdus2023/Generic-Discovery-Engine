@@ -1,0 +1,65 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://generic-discovery-engine.invalid/compliance/v13/residual-risk.schema.yaml",
+  "title": "Protocol-v13 RESIDUAL_RISK",
+  "type": "object",
+  "required": [
+    "object_type",
+    "schema_version",
+    "object_id",
+    "created_at",
+    "source_finding_id",
+    "description",
+    "severity",
+    "disposition"
+  ],
+  "properties": {
+    "object_type": {
+      "const": "RESIDUAL_RISK"
+    },
+    "schema_version": {
+      "const": "13.0"
+    },
+    "object_id": {
+      "$ref": "common.schema.yaml#/$defs/Identifier"
+    },
+    "created_at": {
+      "$ref": "common.schema.yaml#/$defs/Timestamp"
+    },
+    "source_finding_id": {
+      "$ref": "common.schema.yaml#/$defs/Identifier"
+    },
+    "description": {
+      "type": "string"
+    },
+    "severity": {
+      "type": "string",
+      "enum": [
+        "CRITICAL",
+        "HIGH",
+        "MEDIUM",
+        "LOW",
+        "INFO",
+        "UNKNOWN"
+      ]
+    },
+    "disposition": {
+      "type": "string",
+      "enum": [
+        "ACCEPTED",
+        "MITIGATED",
+        "TRANSFERRED",
+        "MONITORED",
+        "UNRESOLVED",
+        "UNKNOWN"
+      ]
+    },
+    "justification": {
+      "type": "string"
+    }
+  },
+  "additionalProperties": false,
+  "x-v13-constraints": [
+    "Residual risk is never silently discarded at closure"
+  ]
+}

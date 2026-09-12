@@ -1,0 +1,64 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://generic-discovery-engine.invalid/compliance/v13/regression-scope.schema.yaml",
+  "title": "Protocol-v13 REGRESSION_SCOPE",
+  "type": "object",
+  "required": [
+    "object_type",
+    "schema_version",
+    "object_id",
+    "created_at",
+    "change_set_id",
+    "requirement_ids",
+    "oracle_ids",
+    "rationale"
+  ],
+  "properties": {
+    "object_type": {
+      "const": "REGRESSION_SCOPE"
+    },
+    "schema_version": {
+      "const": "13.0"
+    },
+    "object_id": {
+      "$ref": "common.schema.yaml#/$defs/Identifier"
+    },
+    "created_at": {
+      "$ref": "common.schema.yaml#/$defs/Timestamp"
+    },
+    "change_set_id": {
+      "$ref": "common.schema.yaml#/$defs/Identifier"
+    },
+    "requirement_ids": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "$ref": "common.schema.yaml#/$defs/Identifier"
+      },
+      "uniqueItems": true
+    },
+    "oracle_ids": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "$ref": "common.schema.yaml#/$defs/Identifier"
+      },
+      "uniqueItems": true
+    },
+    "rationale": {
+      "type": "string"
+    },
+    "completeness": {
+      "type": "string",
+      "enum": [
+        "COMPLETE",
+        "PARTIAL",
+        "UNKNOWN"
+      ]
+    }
+  },
+  "additionalProperties": false,
+  "x-v13-constraints": [
+    "UNKNOWN regression scope prevents unconditional closure"
+  ]
+}
