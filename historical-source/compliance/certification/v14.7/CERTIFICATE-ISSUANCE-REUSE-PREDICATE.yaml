@@ -1,0 +1,33 @@
+{
+  "schema_version": "14.7",
+  "epistemic_status": "SUPPORTED",
+  "claim_class": "NORMATIVE_REQUIREMENT",
+  "normative_origin": "USER_SUPPLIED_V14_6_BASELINE_AUDITED_IN_V14_7",
+  "name": "CertificateIssuanceReusable",
+  "all_equal_fields": [
+    "CANDIDATE_ID",
+    "CANDIDATE_CONTENT_HASH",
+    "CERTIFICATE_PAYLOAD_HASH",
+    "ISSUANCE_POLICY_HASH",
+    "ELIGIBILITY_EVALUATION_ID",
+    "ELIGIBILITY_BASIS_HASH",
+    "AUTHORITY_EVALUATION_ID",
+    "AUTHORITY_CONTEXT_HASH",
+    "POLICY_EVALUATION_ID",
+    "SNAPSHOT_HASH",
+    "APPROVAL_SET_HASH",
+    "SCOPE_HASH",
+    "IDEMPOTENCY_KEY"
+  ],
+  "conditions": [
+    "AUTHORIZATION_STATUS_AUTHORIZED",
+    "ALL_REFERENCED_EVALUATIONS_VALID_TRUE_AND_FRESH",
+    "AUTHORITY_EFFECTIVE",
+    "APPROVAL_THRESHOLD_STILL_SATISFIED",
+    "AUTHORIZATION_INTERVAL_ACTIVE",
+    "NO_PRIOR_DIFFERENT_ISSUANCE_CONSUMPTION"
+  ],
+  "already_committed_same_idempotency": "RETURN_EXISTING_RESULT_NOT_NEW_ISSUANCE",
+  "valid_certificate_implies_issuance_reusable": false,
+  "formula": "AND_OF_ALL_EQUALITIES_AND_CONDITIONS"
+}

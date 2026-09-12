@@ -1,0 +1,36 @@
+{
+  "schema_version": "14.7",
+  "epistemic_status": "SUPPORTED",
+  "claim_class": "NORMATIVE_REQUIREMENT",
+  "normative_origin": "USER_SUPPLIED_V14_6_BASELINE_AUDITED_IN_V14_7",
+  "timestamps": {
+    "NOT_BEFORE": "INCLUSIVE_VALIDITY_START",
+    "NOT_AFTER": "EXCLUSIVE_VALIDITY_END",
+    "OCCURRED_AT": "DESCRIPTIVE_SOURCE_TIME",
+    "COMMITTED_AT": "STORE_ACCEPTANCE_TIME",
+    "EVALUATED_AT": "EXPLICIT_EVALUATION_INSTANT",
+    "EFFECTIVE_AT": "POLICY_EFFECT_START",
+    "EXPIRES_AT": "EXCLUSIVE_EFFECT_END",
+    "SEQUENCE_NO": "CAUSAL_STREAM_POSITION"
+  },
+  "utc_required": true,
+  "interval": "[not_before,not_after)",
+  "clock_profile_required": [
+    "CLOCK_ID",
+    "MAX_SKEW_MILLISECONDS",
+    "TRUST_EVIDENCE",
+    "UTC_CONVERSION"
+  ],
+  "equal_timestamps": "ORDER_UNCHANGED_USE_SEQUENCE_AND_COMMIT_INDEX",
+  "future_timestamp": "INVALID_IF_BEYOND_PROFILED_MAX_SKEW",
+  "contradictory_timestamps": "TEMPORAL_FAILURE",
+  "sequence_gap": "EVENT_ORDER_FAILURE",
+  "duplicate_sequence": "EVENT_ORDER_FAILURE",
+  "concurrent_events": "ATOMIC_COMPARE_AND_APPEND",
+  "late_arrival": "APPEND_ONLY_AT_NEXT_SEQUENCE_NO_RETROACTIVE_INSERT",
+  "replay": {
+    "as_known": "COMMITTED_AT_LE_CUTOFF_IN_COMMIT_ORDER",
+    "as_effective": "COMMITTED_AT_LE_KNOWLEDGE_CUTOFF_AND_EFFECTIVE_AT_LE_EFFECTIVE_CUTOFF"
+  },
+  "rollback_time": "NEW_EVENT_NEVER_CLOCK_REWIND"
+}

@@ -1,0 +1,121 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://generic-discovery-engine.invalid/compliance/v14.7/certificate-issuance-authorization.schema.yaml",
+  "title": "certificate-issuance-authorization",
+  "type": "object",
+  "required": [
+    "authorization_id",
+    "certificate_candidate_id",
+    "certificate_type",
+    "eligibility_evaluation_id",
+    "authority_evaluation_id",
+    "policy_evaluation_id",
+    "authorization_status",
+    "authority_ref",
+    "policy_ref",
+    "approval_refs",
+    "snapshot_hash",
+    "evaluated_at",
+    "sequence_no",
+    "scope_id",
+    "scope_hash",
+    "content_hash",
+    "idempotency_key"
+  ],
+  "properties": {
+    "authorization_id": {
+      "type": "string",
+      "pattern": "^[A-Za-z0-9][A-Za-z0-9._:/-]*$"
+    },
+    "certificate_candidate_id": {
+      "type": "string",
+      "pattern": "^[A-Za-z0-9][A-Za-z0-9._:/-]*$"
+    },
+    "certificate_type": {
+      "type": "string",
+      "pattern": "^[A-Za-z0-9][A-Za-z0-9._:/-]*$"
+    },
+    "eligibility_evaluation_id": {
+      "type": "string",
+      "pattern": "^[A-Za-z0-9][A-Za-z0-9._:/-]*$"
+    },
+    "authority_evaluation_id": {
+      "type": "string",
+      "pattern": "^[A-Za-z0-9][A-Za-z0-9._:/-]*$"
+    },
+    "policy_evaluation_id": {
+      "type": "string",
+      "pattern": "^[A-Za-z0-9][A-Za-z0-9._:/-]*$"
+    },
+    "authorization_status": {
+      "type": "string",
+      "enum": [
+        "AUTHORIZED",
+        "REFUSED",
+        "BLOCKED",
+        "UNKNOWN",
+        "INVALID"
+      ]
+    },
+    "authority_ref": {
+      "type": "string",
+      "pattern": "^[A-Za-z0-9][A-Za-z0-9._:/-]*$"
+    },
+    "policy_ref": {
+      "type": "string",
+      "pattern": "^[A-Za-z0-9][A-Za-z0-9._:/-]*$"
+    },
+    "approval_refs": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "pattern": "^[A-Za-z0-9][A-Za-z0-9._:/-]*$"
+      }
+    },
+    "snapshot_hash": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$"
+    },
+    "evaluated_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "sequence_no": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "scope_id": {
+      "type": "string",
+      "pattern": "^[A-Za-z0-9][A-Za-z0-9._:/-]*$"
+    },
+    "scope_hash": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$"
+    },
+    "content_hash": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$"
+    },
+    "idempotency_key": {
+      "type": "string",
+      "minLength": 1
+    }
+  },
+  "additionalProperties": false,
+  "x-identity-fields": [
+    "authorization_id"
+  ],
+  "x-immutable": true,
+  "x-self-excluding-hash-field": "content_hash",
+  "x-reference-resolution": "EXACTLY_ONE_TYPED_TARGET_FOR_EACH_NON_NULL_REFERENCE",
+  "x-timestamp-semantics": "RFC3339_UTC_HALF_OPEN_INTERVALS",
+  "x-scope-validation": "EXPLICIT_SCOPE_HASH_MATCH",
+  "x-normative-rules": [
+    "referenced EvaluationResult values are authoritative; no duplicate embedded result enum",
+    "AUTHORIZED iff all required evaluations TRUE and valid",
+    "v14.7 canonical failure taxonomy and validation procedure apply",
+    "idempotency key is mandatory within operation scope"
+  ],
+  "x-nullability": "ONLY_EXPLICIT_ONEOF_NULL_FIELDS_ARE_NULLABLE",
+  "x-version-relationship": "VERSION_LABEL_IS_METADATA_NOT_IDENTITY"
+}

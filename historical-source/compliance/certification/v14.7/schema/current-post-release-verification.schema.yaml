@@ -1,0 +1,117 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://generic-discovery-engine.invalid/compliance/v14.7/current-post-release-verification.schema.yaml",
+  "title": "current-post-release-verification",
+  "type": "object",
+  "required": [
+    "projection_id",
+    "subject_id",
+    "subject_type",
+    "current_object_ref",
+    "history_hash",
+    "event_count",
+    "last_event_id",
+    "projected_at",
+    "reconstruction_status",
+    "scope_id",
+    "scope_hash",
+    "content_hash",
+    "projection_version",
+    "source_event_hashes"
+  ],
+  "properties": {
+    "projection_id": {
+      "type": "string",
+      "pattern": "^[A-Za-z0-9][A-Za-z0-9._:/-]*$"
+    },
+    "subject_id": {
+      "type": "string",
+      "pattern": "^[A-Za-z0-9][A-Za-z0-9._:/-]*$"
+    },
+    "subject_type": {
+      "const": "PostReleaseVerification"
+    },
+    "current_object_ref": {
+      "oneOf": [
+        {
+          "type": "string",
+          "pattern": "^[A-Za-z0-9][A-Za-z0-9._:/-]*$"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "history_hash": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$"
+    },
+    "event_count": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "last_event_id": {
+      "oneOf": [
+        {
+          "type": "string",
+          "pattern": "^[A-Za-z0-9][A-Za-z0-9._:/-]*$"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "projected_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "reconstruction_status": {
+      "type": "string",
+      "enum": [
+        "VALID",
+        "HISTORY_INVALID",
+        "UNKNOWN"
+      ]
+    },
+    "scope_id": {
+      "type": "string",
+      "pattern": "^[A-Za-z0-9][A-Za-z0-9._:/-]*$"
+    },
+    "scope_hash": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$"
+    },
+    "content_hash": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$"
+    },
+    "projection_version": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "source_event_hashes": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "pattern": "^[a-f0-9]{64}$"
+      }
+    }
+  },
+  "additionalProperties": false,
+  "x-identity-fields": [
+    "projection_id"
+  ],
+  "x-immutable": true,
+  "x-self-excluding-hash-field": "content_hash",
+  "x-reference-resolution": "EXACTLY_ONE_TYPED_TARGET_FOR_EACH_NON_NULL_REFERENCE",
+  "x-timestamp-semantics": "RFC3339_UTC_HALF_OPEN_INTERVALS",
+  "x-scope-validation": "EXPLICIT_SCOPE_HASH_MATCH",
+  "x-normative-rules": [
+    "derived solely from valid ordered immutable events",
+    "projection is not independent evidence",
+    "v14.7 canonical failure taxonomy and validation procedure apply",
+    "publication requires history-head compare-and-swap"
+  ],
+  "x-nullability": "ONLY_EXPLICIT_ONEOF_NULL_FIELDS_ARE_NULLABLE",
+  "x-version-relationship": "VERSION_LABEL_IS_METADATA_NOT_IDENTITY"
+}

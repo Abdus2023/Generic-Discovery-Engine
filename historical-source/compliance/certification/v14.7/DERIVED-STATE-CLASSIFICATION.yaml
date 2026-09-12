@@ -1,0 +1,140 @@
+{
+  "schema_version": "14.7",
+  "epistemic_status": "SUPPORTED",
+  "claim_class": "NORMATIVE_REQUIREMENT",
+  "normative_origin": "USER_SUPPLIED_V14_6_BASELINE_AUDITED_IN_V14_7",
+  "objects": [
+    {
+      "classification_id": "V147-DSC-001",
+      "field": "CERTIFICATE_VALIDITY",
+      "category": "EVALUATED_RESULT",
+      "authoritative_source": "VALID_EVALUATION_RESULTS",
+      "derivation_function": "VALIDITY_FUNCTION",
+      "manual_authority": false,
+      "scope_id": "protocol-v14.7",
+      "scope_hash": "b9b6f7c80a4dcaf44d5f264f7ebb8ba2ae6f67d024e005c998902d8544f72ca9",
+      "created_at": "2026-09-12T00:00:00Z",
+      "content_hash": "3482fd06655061f252cad25fc12fd468d1ff42eaf551ddf64775aebebe9ac6cd"
+    },
+    {
+      "classification_id": "V147-DSC-002",
+      "field": "CERTIFICATE_EXPIRATION",
+      "category": "DERIVED_FACT",
+      "authoritative_source": "SIGNED_NOT_AFTER_POLICY_AND_TIME",
+      "derivation_function": "HALF_OPEN_INTERVAL",
+      "manual_authority": false,
+      "scope_id": "protocol-v14.7",
+      "scope_hash": "b9b6f7c80a4dcaf44d5f264f7ebb8ba2ae6f67d024e005c998902d8544f72ca9",
+      "created_at": "2026-09-12T00:00:00Z",
+      "content_hash": "149315984a6962a3aaa63e53dfdeab92652441951395065d9771f9e91b23edf0"
+    },
+    {
+      "classification_id": "V147-DSC-003",
+      "field": "CURRENT_DECISION",
+      "category": "PROJECTION",
+      "authoritative_source": "VALID_ORDERED_DECISION_EVENTS",
+      "derivation_function": "LATEST_EFFECTIVE_VALID_BY_SEQUENCE",
+      "manual_authority": false,
+      "scope_id": "protocol-v14.7",
+      "scope_hash": "b9b6f7c80a4dcaf44d5f264f7ebb8ba2ae6f67d024e005c998902d8544f72ca9",
+      "created_at": "2026-09-12T00:00:00Z",
+      "content_hash": "bc716d4ee492f9287bb19637e9cbb0ac8b74c49f92c264843d2104e059b1244f"
+    },
+    {
+      "classification_id": "V147-DSC-004",
+      "field": "CURRENT_ELIGIBILITY",
+      "category": "PROJECTION",
+      "authoritative_source": "VALID_ORDERED_ELIGIBILITY_EVENTS",
+      "derivation_function": "LATEST_VALID_SNAPSHOT_BY_SEQUENCE",
+      "manual_authority": false,
+      "scope_id": "protocol-v14.7",
+      "scope_hash": "b9b6f7c80a4dcaf44d5f264f7ebb8ba2ae6f67d024e005c998902d8544f72ca9",
+      "created_at": "2026-09-12T00:00:00Z",
+      "content_hash": "b603f4e819dfb252dc910f0c77e2ce25e2073c2591d6ccc22653ddcf3cf7184e"
+    },
+    {
+      "classification_id": "V147-DSC-005",
+      "field": "CURRENT_EXECUTION_STATE",
+      "category": "PROJECTION",
+      "authoritative_source": "VALID_ORDERED_EXECUTION_EVENTS",
+      "derivation_function": "EXECUTION_REDUCER",
+      "manual_authority": false,
+      "scope_id": "protocol-v14.7",
+      "scope_hash": "b9b6f7c80a4dcaf44d5f264f7ebb8ba2ae6f67d024e005c998902d8544f72ca9",
+      "created_at": "2026-09-12T00:00:00Z",
+      "content_hash": "a185e672cf8d14ae68c2dea42a22344f96e82d0dc4504e0591578a38f9de71db"
+    },
+    {
+      "classification_id": "V147-DSC-006",
+      "field": "CURRENT_VERIFICATION_STATE",
+      "category": "PROJECTION",
+      "authoritative_source": "VALID_ORDERED_VERIFICATION_EVENTS",
+      "derivation_function": "VERIFICATION_REDUCER",
+      "manual_authority": false,
+      "scope_id": "protocol-v14.7",
+      "scope_hash": "b9b6f7c80a4dcaf44d5f264f7ebb8ba2ae6f67d024e005c998902d8544f72ca9",
+      "created_at": "2026-09-12T00:00:00Z",
+      "content_hash": "0f81bf7116e43ca14192815d26e2e7ebc2872f86f7ca944490d86834898d804c"
+    },
+    {
+      "classification_id": "V147-DSC-007",
+      "field": "AUTHORITY_ADMINISTRATIVE_STATE",
+      "category": "STORED_FACT",
+      "authoritative_source": "AUTHORITY_EVENTS",
+      "derivation_function": null,
+      "manual_authority": true,
+      "scope_id": "protocol-v14.7",
+      "scope_hash": "b9b6f7c80a4dcaf44d5f264f7ebb8ba2ae6f67d024e005c998902d8544f72ca9",
+      "created_at": "2026-09-12T00:00:00Z",
+      "content_hash": "b9ef85d7356b5c6039c39a233f15ccfcf57c38ccac8c4d941a5e2e37eaf4e85e"
+    },
+    {
+      "classification_id": "V147-DSC-008",
+      "field": "AUTHORITY_EFFECTIVE_STATUS",
+      "category": "EVALUATED_RESULT",
+      "authoritative_source": "ADMIN_STATE_INTERVAL_CREDENTIAL_SCOPE_TIME",
+      "derivation_function": "AUTHORITY_EFFECTIVENESS_FUNCTION",
+      "manual_authority": false,
+      "scope_id": "protocol-v14.7",
+      "scope_hash": "b9b6f7c80a4dcaf44d5f264f7ebb8ba2ae6f67d024e005c998902d8544f72ca9",
+      "created_at": "2026-09-12T00:00:00Z",
+      "content_hash": "b69b6aa1209947e240692d4c2451f00317d4a9e84142f8b5a5c441064134b66d"
+    },
+    {
+      "classification_id": "V147-DSC-009",
+      "field": "FRESHNESS",
+      "category": "EVALUATED_RESULT",
+      "authoritative_source": "SUBJECT_INTERVAL_CLOCK_PROFILE_AND_TIME",
+      "derivation_function": "FRESHNESS_FUNCTION",
+      "manual_authority": false,
+      "scope_id": "protocol-v14.7",
+      "scope_hash": "b9b6f7c80a4dcaf44d5f264f7ebb8ba2ae6f67d024e005c998902d8544f72ca9",
+      "created_at": "2026-09-12T00:00:00Z",
+      "content_hash": "7f5e167b5747e4f34912cadc43bb1087911b3903c638125d2b39006121738e90"
+    },
+    {
+      "classification_id": "V147-DSC-010",
+      "field": "EVENT",
+      "category": "HISTORICAL_EVENT",
+      "authoritative_source": "COMMITTED_EVENT_STORE",
+      "derivation_function": null,
+      "manual_authority": true,
+      "scope_id": "protocol-v14.7",
+      "scope_hash": "b9b6f7c80a4dcaf44d5f264f7ebb8ba2ae6f67d024e005c998902d8544f72ca9",
+      "created_at": "2026-09-12T00:00:00Z",
+      "content_hash": "f6a693b996825aacb90e9dbe1e769b894310dee2a2c35b83b485188446c801d2"
+    },
+    {
+      "classification_id": "V147-DSC-011",
+      "field": "RELEASE_DECISION",
+      "category": "AUTHORITY_DECISION",
+      "authoritative_source": "IMMUTABLE_DECISION_EVENT",
+      "derivation_function": null,
+      "manual_authority": true,
+      "scope_id": "protocol-v14.7",
+      "scope_hash": "b9b6f7c80a4dcaf44d5f264f7ebb8ba2ae6f67d024e005c998902d8544f72ca9",
+      "created_at": "2026-09-12T00:00:00Z",
+      "content_hash": "fa3ee2dfc05ebbf34a01b75e5e0be50647e6952e175c3ee704d85536aa3da9b1"
+    }
+  ]
+}

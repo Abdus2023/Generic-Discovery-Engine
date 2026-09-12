@@ -1,0 +1,184 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://generic-discovery-engine.invalid/compliance/v14.7/issuance-authority.schema.yaml",
+  "title": "issuance-authority",
+  "type": "object",
+  "required": [
+    "authority_id",
+    "authority_type",
+    "certificate_types",
+    "implementation_scopes",
+    "release_scopes",
+    "can_issue",
+    "can_revoke",
+    "can_supersede",
+    "policy_ref",
+    "credential_ref",
+    "not_before",
+    "not_after",
+    "administrative_state",
+    "parent_authority_id",
+    "delegation_scope_hash",
+    "max_certificate_lifetime",
+    "allowed_certificate_types",
+    "required_approval_count",
+    "scope_id",
+    "scope_hash",
+    "content_hash",
+    "created_at"
+  ],
+  "properties": {
+    "authority_id": {
+      "type": "string",
+      "pattern": "^[A-Za-z0-9][A-Za-z0-9._:/-]*$"
+    },
+    "authority_type": {
+      "type": "string",
+      "enum": [
+        "AUTOMATED_POLICY",
+        "HUMAN",
+        "DELEGATED",
+        "MULTI_PARTY"
+      ]
+    },
+    "certificate_types": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "pattern": "^[A-Za-z0-9][A-Za-z0-9._:/-]*$"
+      }
+    },
+    "implementation_scopes": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "pattern": "^[A-Za-z0-9][A-Za-z0-9._:/-]*$"
+      }
+    },
+    "release_scopes": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "pattern": "^[A-Za-z0-9][A-Za-z0-9._:/-]*$"
+      }
+    },
+    "can_issue": {
+      "type": "boolean"
+    },
+    "can_revoke": {
+      "type": "boolean"
+    },
+    "can_supersede": {
+      "type": "boolean"
+    },
+    "policy_ref": {
+      "type": "string",
+      "pattern": "^[A-Za-z0-9][A-Za-z0-9._:/-]*$"
+    },
+    "credential_ref": {
+      "type": "string",
+      "pattern": "^[A-Za-z0-9][A-Za-z0-9._:/-]*$"
+    },
+    "not_before": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "not_after": {
+      "oneOf": [
+        {
+          "type": "string",
+          "format": "date-time"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "parent_authority_id": {
+      "oneOf": [
+        {
+          "type": "string",
+          "pattern": "^[A-Za-z0-9][A-Za-z0-9._:/-]*$"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "delegation_scope_hash": {
+      "oneOf": [
+        {
+          "type": "string",
+          "pattern": "^[a-f0-9]{64}$"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "max_certificate_lifetime": {
+      "oneOf": [
+        {
+          "type": "string",
+          "minLength": 1
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "allowed_certificate_types": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "pattern": "^[A-Za-z0-9][A-Za-z0-9._:/-]*$"
+      }
+    },
+    "required_approval_count": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "scope_id": {
+      "type": "string",
+      "pattern": "^[A-Za-z0-9][A-Za-z0-9._:/-]*$"
+    },
+    "scope_hash": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$"
+    },
+    "content_hash": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$"
+    },
+    "administrative_state": {
+      "type": "string",
+      "enum": [
+        "ACTIVE",
+        "SUSPENDED",
+        "REVOKED"
+      ]
+    },
+    "created_at": {
+      "type": "string",
+      "format": "date-time"
+    }
+  },
+  "additionalProperties": false,
+  "x-identity-fields": [
+    "authority_id"
+  ],
+  "x-immutable": true,
+  "x-self-excluding-hash-field": "content_hash",
+  "x-reference-resolution": "EXACTLY_ONE_TYPED_TARGET_FOR_EACH_NON_NULL_REFERENCE",
+  "x-timestamp-semantics": "RFC3339_UTC_HALF_OPEN_INTERVALS",
+  "x-scope-validation": "EXPLICIT_SCOPE_HASH_MATCH",
+  "x-normative-rules": [
+    "existence does not establish authorization",
+    "delegate scope subset parent",
+    "time-derived expiry applies without EXPIRED materialization",
+    "v14.7 canonical failure taxonomy and validation procedure apply",
+    "expiration and uncertainty belong to derived AuthorityEffectiveStatus, not administrative lifecycle"
+  ],
+  "x-nullability": "ONLY_EXPLICIT_ONEOF_NULL_FIELDS_ARE_NULLABLE",
+  "x-version-relationship": "VERSION_LABEL_IS_METADATA_NOT_IDENTITY"
+}

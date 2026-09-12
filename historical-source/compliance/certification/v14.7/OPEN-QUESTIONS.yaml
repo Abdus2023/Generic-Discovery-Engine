@@ -1,0 +1,25 @@
+{
+  "schema_version": "14.7",
+  "epistemic_status": "SUPPORTED",
+  "claim_class": "NORMATIVE_REQUIREMENT",
+  "normative_origin": "USER_SUPPLIED_V14_6_BASELINE_AUDITED_IN_V14_7",
+  "normative_layer_needed": false,
+  "questions": [
+    {
+      "ambiguity_id": "V147-AMB-001",
+      "status": "UNKNOWN",
+      "minimum_safe_rule": "Deployment profile binds algorithm, credential_ref, verifier hash and trust roots"
+    },
+    {
+      "ambiguity_id": "V147-AMB-002",
+      "status": "UNKNOWN",
+      "minimum_safe_rule": "Profile binds clock identity, UTC conversion, maximum skew and trusted timestamp evidence"
+    },
+    {
+      "ambiguity_id": "V147-AMB-003",
+      "status": "UNKNOWN",
+      "minimum_safe_rule": "Profile enumerates immutable root identities and validity intervals"
+    }
+  ],
+  "next_revision": "NOT_JUSTIFIED_BY_CURRENT_AUDIT"
+}

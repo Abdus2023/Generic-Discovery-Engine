@@ -1,0 +1,130 @@
+{
+  "schema_version": "14.7",
+  "epistemic_status": "SUPPORTED",
+  "claim_class": "NORMATIVE_REQUIREMENT",
+  "normative_origin": "USER_SUPPLIED_V14_6_BASELINE_AUDITED_IN_V14_7",
+  "rules": [
+    {
+      "precedence_id": "V147-PRE-001",
+      "domain": "EVALUATION_INTEGRITY",
+      "input_states": [
+        "VALID_ARTIFACT",
+        "INVALID_ARTIFACT"
+      ],
+      "ordering": [
+        "INVALID_TERMINATES"
+      ],
+      "output": "ACCEPT_OR_INVALID",
+      "reason": "Trustworthiness is prerequisite to semantics",
+      "scope_id": "protocol-v14.7",
+      "scope_hash": "b9b6f7c80a4dcaf44d5f264f7ebb8ba2ae6f67d024e005c998902d8544f72ca9",
+      "created_at": "2026-09-12T00:00:00Z",
+      "content_hash": "c7b02f01f2d71601542842d1c055ca1deeec4776743b9d3d0cf7e21306d60d8b"
+    },
+    {
+      "precedence_id": "V147-PRE-002",
+      "domain": "PREDICATE_AGGREGATION",
+      "input_states": [
+        "TRUE",
+        "FALSE",
+        "UNKNOWN",
+        "BLOCKED"
+      ],
+      "ordering": [
+        "FALSE",
+        "BLOCKED",
+        "UNKNOWN",
+        "TRUE"
+      ],
+      "output": "AGGREGATE_EVALUATION_RESULT",
+      "reason": "Proven failure dominates inability and uncertainty",
+      "scope_id": "protocol-v14.7",
+      "scope_hash": "b9b6f7c80a4dcaf44d5f264f7ebb8ba2ae6f67d024e005c998902d8544f72ca9",
+      "created_at": "2026-09-12T00:00:00Z",
+      "content_hash": "7739a0ae554efedfd02a545cdf2e39cbb3c3d6da73ae5ca2edfb055640650f80"
+    },
+    {
+      "precedence_id": "V147-PRE-003",
+      "domain": "ELIGIBILITY",
+      "input_states": [
+        "TRUE",
+        "FALSE",
+        "UNKNOWN",
+        "BLOCKED"
+      ],
+      "ordering": [
+        "MAPPING_NOT_ORDER"
+      ],
+      "output": "TRUE=ELIGIBLE;FALSE=INELIGIBLE;BLOCKED=BLOCKED;UNKNOWN=UNKNOWN",
+      "reason": "Eligibility translates a valid aggregate",
+      "scope_id": "protocol-v14.7",
+      "scope_hash": "b9b6f7c80a4dcaf44d5f264f7ebb8ba2ae6f67d024e005c998902d8544f72ca9",
+      "created_at": "2026-09-12T00:00:00Z",
+      "content_hash": "ff13fdbcf5e4cb9928ce07619d980f16a1b71834d5236bcbe8d28ca5bf55f852"
+    },
+    {
+      "precedence_id": "V147-PRE-004",
+      "domain": "AUTHORIZATION",
+      "input_states": [
+        "INVALID",
+        "FALSE",
+        "BLOCKED",
+        "UNKNOWN",
+        "TRUE"
+      ],
+      "ordering": [
+        "INVALID",
+        "FALSE",
+        "BLOCKED",
+        "UNKNOWN",
+        "TRUE"
+      ],
+      "output": "INVALID|REFUSED|BLOCKED|UNKNOWN|AUTHORIZED",
+      "reason": "Integrity first, then proven refusal, inability, uncertainty, success",
+      "scope_id": "protocol-v14.7",
+      "scope_hash": "b9b6f7c80a4dcaf44d5f264f7ebb8ba2ae6f67d024e005c998902d8544f72ca9",
+      "created_at": "2026-09-12T00:00:00Z",
+      "content_hash": "723c147b537420cbdbe3b7dae0f23d5ab71731f0bf7806afbe4141a3e14e7bec"
+    },
+    {
+      "precedence_id": "V147-PRE-005",
+      "domain": "RELEASE_DECISION",
+      "input_states": [
+        "ELIGIBLE",
+        "INELIGIBLE",
+        "BLOCKED",
+        "UNKNOWN"
+      ],
+      "ordering": [
+        "POLICY_MAPPING_NOT_ORDER"
+      ],
+      "output": "APPROVED_IF_AUTHORIZED|REJECTED|BLOCKED|EXPLICIT_DEFER_OR_NO_DECISION",
+      "reason": "Decision is an authority action, not aggregation",
+      "scope_id": "protocol-v14.7",
+      "scope_hash": "b9b6f7c80a4dcaf44d5f264f7ebb8ba2ae6f67d024e005c998902d8544f72ca9",
+      "created_at": "2026-09-12T00:00:00Z",
+      "content_hash": "b35ab3db7a20d8d44a9eb489a42c2bdcb37e32696cafcd9e173f9b9919fd6997"
+    },
+    {
+      "precedence_id": "V147-PRE-006",
+      "domain": "STATE_TRANSITION",
+      "input_states": [
+        "IDEMPOTENT_MATCH",
+        "EXPECTED_VERSION_MATCH",
+        "CONFLICT"
+      ],
+      "ordering": [
+        "IDEMPOTENT_REPLAY",
+        "ATOMIC_COMMIT",
+        "CONCURRENCY_FAILURE"
+      ],
+      "output": "EXISTING_RESULT_OR_NEW_EVENT_OR_CONFLICT",
+      "reason": "Only one authoritative append wins",
+      "scope_id": "protocol-v14.7",
+      "scope_hash": "b9b6f7c80a4dcaf44d5f264f7ebb8ba2ae6f67d024e005c998902d8544f72ca9",
+      "created_at": "2026-09-12T00:00:00Z",
+      "content_hash": "dd5e067dbe21d454c7bc1ed295a50c34cb8d9931dc40177f3b2e12b542f814ad"
+    }
+  ],
+  "universal_precedence": false
+}

@@ -1,0 +1,120 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://generic-discovery-engine.invalid/compliance/v14.7/evaluation-record.schema.yaml",
+  "title": "evaluation-record",
+  "type": "object",
+  "required": [
+    "evaluation_record_id",
+    "context_id",
+    "evaluator_id",
+    "evaluator_version",
+    "evaluator_hash",
+    "lifecycle",
+    "result_id",
+    "created_at",
+    "completed_at",
+    "invalidated_at",
+    "sequence_no",
+    "scope_id",
+    "scope_hash",
+    "content_hash"
+  ],
+  "properties": {
+    "evaluation_record_id": {
+      "type": "string",
+      "pattern": "^[A-Za-z0-9][A-Za-z0-9._:/-]*$"
+    },
+    "context_id": {
+      "type": "string",
+      "pattern": "^[A-Za-z0-9][A-Za-z0-9._:/-]*$"
+    },
+    "evaluator_id": {
+      "type": "string",
+      "pattern": "^[A-Za-z0-9][A-Za-z0-9._:/-]*$"
+    },
+    "evaluator_version": {
+      "type": "string",
+      "minLength": 1
+    },
+    "evaluator_hash": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$"
+    },
+    "lifecycle": {
+      "type": "string",
+      "enum": [
+        "CREATED",
+        "COMPLETED",
+        "INVALIDATED"
+      ]
+    },
+    "result_id": {
+      "oneOf": [
+        {
+          "type": "string",
+          "pattern": "^[A-Za-z0-9][A-Za-z0-9._:/-]*$"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "created_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "completed_at": {
+      "oneOf": [
+        {
+          "type": "string",
+          "format": "date-time"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "invalidated_at": {
+      "oneOf": [
+        {
+          "type": "string",
+          "format": "date-time"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "sequence_no": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "scope_id": {
+      "type": "string",
+      "pattern": "^[A-Za-z0-9][A-Za-z0-9._:/-]*$"
+    },
+    "scope_hash": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$"
+    },
+    "content_hash": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$"
+    }
+  },
+  "additionalProperties": false,
+  "x-identity-fields": [
+    "evaluation_record_id"
+  ],
+  "x-immutable": true,
+  "x-self-excluding-hash-field": "content_hash",
+  "x-reference-resolution": "EXACTLY_ONE_TYPED_HASH_MATCHED_TARGET",
+  "x-nullability": "ONLY_EXPLICIT_ONEOF_NULL_FIELDS_ARE_NULLABLE",
+  "x-timestamp-semantics": "RFC3339_UTC_HALF_OPEN_INTERVALS_WITH_PROFILED_SKEW",
+  "x-scope-validation": "CANONICAL_SCOPE_SET_AND_SCOPE_HASH",
+  "x-version-relationship": "VERSION_LABEL_IS_METADATA_NOT_IDENTITY",
+  "x-normative-rules": [
+    "evaluation lifecycle is separate from EvaluationResult",
+    "COMPLETED requires result_id; invalidation never mutates result"
+  ]
+}

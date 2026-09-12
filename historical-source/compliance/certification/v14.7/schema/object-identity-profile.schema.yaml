@@ -1,0 +1,95 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://generic-discovery-engine.invalid/compliance/v14.7/object-identity-profile.schema.yaml",
+  "title": "object-identity-profile",
+  "type": "object",
+  "required": [
+    "profile_id",
+    "object_type",
+    "logical_identity_fields",
+    "content_hash_field",
+    "snapshot_identity_fields",
+    "scope_fields",
+    "immutability_boundary",
+    "version_relationship",
+    "content_hash",
+    "scope_id",
+    "scope_hash",
+    "created_at"
+  ],
+  "properties": {
+    "profile_id": {
+      "type": "string",
+      "pattern": "^[A-Za-z0-9][A-Za-z0-9._:/-]*$"
+    },
+    "object_type": {
+      "type": "string",
+      "pattern": "^[A-Za-z0-9][A-Za-z0-9._:/-]*$"
+    },
+    "logical_identity_fields": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "pattern": "^[A-Za-z0-9][A-Za-z0-9._:/-]*$"
+      },
+      "minItems": 1
+    },
+    "content_hash_field": {
+      "type": "string",
+      "pattern": "^[A-Za-z0-9][A-Za-z0-9._:/-]*$"
+    },
+    "snapshot_identity_fields": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "pattern": "^[A-Za-z0-9][A-Za-z0-9._:/-]*$"
+      }
+    },
+    "scope_fields": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "pattern": "^[A-Za-z0-9][A-Za-z0-9._:/-]*$"
+      },
+      "minItems": 1
+    },
+    "immutability_boundary": {
+      "type": "string",
+      "minLength": 1
+    },
+    "version_relationship": {
+      "type": "string",
+      "minLength": 1
+    },
+    "content_hash": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$"
+    },
+    "scope_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "scope_hash": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$"
+    },
+    "created_at": {
+      "type": "string",
+      "format": "date-time"
+    }
+  },
+  "additionalProperties": false,
+  "x-identity-fields": [
+    "profile_id"
+  ],
+  "x-immutable": true,
+  "x-self-excluding-hash-field": "content_hash",
+  "x-reference-resolution": "EXACTLY_ONE_TYPED_HASH_MATCHED_TARGET",
+  "x-nullability": "ONLY_EXPLICIT_ONEOF_NULL_FIELDS_ARE_NULLABLE",
+  "x-timestamp-semantics": "RFC3339_UTC_HALF_OPEN_INTERVALS_WITH_PROFILED_SKEW",
+  "x-scope-validation": "CANONICAL_SCOPE_SET_AND_SCOPE_HASH",
+  "x-version-relationship": "VERSION_LABEL_IS_METADATA_NOT_IDENTITY",
+  "x-normative-rules": [
+    "one profile required for every registered schema"
+  ]
+}

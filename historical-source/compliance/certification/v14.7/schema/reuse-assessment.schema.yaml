@@ -1,0 +1,105 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://generic-discovery-engine.invalid/compliance/v14.7/reuse-assessment.schema.yaml",
+  "title": "reuse-assessment",
+  "type": "object",
+  "required": [
+    "assessment_id",
+    "reuse_type",
+    "old_object_ref",
+    "new_context_ref",
+    "field_comparisons",
+    "temporal_conditions",
+    "result",
+    "required_action",
+    "evaluated_at",
+    "scope_id",
+    "scope_hash",
+    "content_hash"
+  ],
+  "properties": {
+    "assessment_id": {
+      "type": "string",
+      "pattern": "^[A-Za-z0-9][A-Za-z0-9._:/-]*$"
+    },
+    "reuse_type": {
+      "type": "string",
+      "enum": [
+        "CERTIFICATE_REUSABLE",
+        "CERTIFICATE_ISSUANCE_REUSABLE",
+        "DECISION_REUSABLE"
+      ]
+    },
+    "old_object_ref": {
+      "type": "string",
+      "pattern": "^[A-Za-z0-9][A-Za-z0-9._:/-]*$"
+    },
+    "new_context_ref": {
+      "type": "string",
+      "pattern": "^[A-Za-z0-9][A-Za-z0-9._:/-]*$"
+    },
+    "field_comparisons": {
+      "type": "array",
+      "items": {
+        "type": "object"
+      },
+      "minItems": 1
+    },
+    "temporal_conditions": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "result": {
+      "type": "string",
+      "enum": [
+        "REUSABLE",
+        "NOT_REUSABLE",
+        "UNKNOWN",
+        "INVALID"
+      ]
+    },
+    "required_action": {
+      "type": "string",
+      "enum": [
+        "NONE",
+        "REEVALUATE",
+        "REAUTHORIZE",
+        "RECERTIFY",
+        "NEW_RELEASE"
+      ]
+    },
+    "evaluated_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "scope_id": {
+      "type": "string",
+      "pattern": "^[A-Za-z0-9][A-Za-z0-9._:/-]*$"
+    },
+    "scope_hash": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$"
+    },
+    "content_hash": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$"
+    }
+  },
+  "additionalProperties": false,
+  "x-identity-fields": [
+    "assessment_id"
+  ],
+  "x-immutable": true,
+  "x-self-excluding-hash-field": "content_hash",
+  "x-reference-resolution": "EXACTLY_ONE_TYPED_HASH_MATCHED_TARGET",
+  "x-nullability": "ONLY_EXPLICIT_ONEOF_NULL_FIELDS_ARE_NULLABLE",
+  "x-timestamp-semantics": "RFC3339_UTC_HALF_OPEN_INTERVALS_WITH_PROFILED_SKEW",
+  "x-scope-validation": "CANONICAL_SCOPE_SET_AND_SCOPE_HASH",
+  "x-version-relationship": "VERSION_LABEL_IS_METADATA_NOT_IDENTITY",
+  "x-normative-rules": [
+    "all comparisons must be TRUE for REUSABLE"
+  ]
+}

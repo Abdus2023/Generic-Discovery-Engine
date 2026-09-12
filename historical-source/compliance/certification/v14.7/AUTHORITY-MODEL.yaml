@@ -1,0 +1,35 @@
+{
+  "schema_version": "14.7",
+  "epistemic_status": "SUPPORTED",
+  "claim_class": "NORMATIVE_REQUIREMENT",
+  "normative_origin": "USER_SUPPLIED_V14_6_BASELINE_AUDITED_IN_V14_7",
+  "axes": {
+    "credential": "PROVES_CONTROL_OF_IDENTITY",
+    "policy": "GRANTS_SCOPED_CAPABILITY",
+    "effective_status": "DERIVED_QUALIFICATION_AT_TIME"
+  },
+  "administrative_states": [
+    "ACTIVE",
+    "SUSPENDED",
+    "REVOKED"
+  ],
+  "effective_statuses": [
+    "EFFECTIVE",
+    "NOT_YET_EFFECTIVE",
+    "EXPIRED",
+    "SUSPENDED",
+    "REVOKED",
+    "UNKNOWN",
+    "INVALID"
+  ],
+  "capabilities": [
+    "CERTIFICATE_ISSUE",
+    "CERTIFICATE_REVOKE",
+    "CERTIFICATE_SUPERSEDE",
+    "RELEASE_DECIDE",
+    "EXECUTION_START",
+    "EXECUTION_CANCEL",
+    "ROLLBACK_AUTHORIZE"
+  ],
+  "self_authorization": "FORBIDDEN_UNLESS_SEPARATE_EXPLICIT_AUTHORITY_GRANT_AND_POLICY_ALLOW"
+}

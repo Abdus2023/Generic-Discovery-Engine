@@ -1,0 +1,949 @@
+{
+  "schema_version": "14.7",
+  "epistemic_status": "SUPPORTED",
+  "claim_class": "NORMATIVE_REQUIREMENT",
+  "normative_origin": "USER_SUPPLIED_V14_6_BASELINE_AUDITED_IN_V14_7",
+  "synthetic_non_normative": true,
+  "vectors": [
+    {
+      "vector_id": "V147-TV-001",
+      "category": "POSITIVE",
+      "synthetic_non_normative": true,
+      "input": {
+        "fixture": "VALID_EVALUATION",
+        "canonical_context": "ctx-001"
+      },
+      "expected_result": "TRUE",
+      "expected_state": "TRUE",
+      "expected_event": "EVALUATION_COMPLETED",
+      "forbidden_outcome": "FALSE_OR_INVALID",
+      "reason_codes": [
+        "VALID_EVALUATION"
+      ],
+      "machine_checked": true
+    },
+    {
+      "vector_id": "V147-TV-002",
+      "category": "POSITIVE",
+      "synthetic_non_normative": true,
+      "input": {
+        "fixture": "VALID_ELIGIBILITY",
+        "canonical_context": "ctx-002"
+      },
+      "expected_result": "ELIGIBLE",
+      "expected_state": "ELIGIBLE",
+      "expected_event": "ELIGIBILITY_EVALUATED",
+      "forbidden_outcome": "APPROVED",
+      "reason_codes": [
+        "VALID_ELIGIBILITY"
+      ],
+      "machine_checked": true
+    },
+    {
+      "vector_id": "V147-TV-003",
+      "category": "POSITIVE",
+      "synthetic_non_normative": true,
+      "input": {
+        "fixture": "VALID_AUTHORITY",
+        "canonical_context": "ctx-003"
+      },
+      "expected_result": "EFFECTIVE",
+      "expected_state": "EFFECTIVE",
+      "expected_event": "AUTHORITY_EVALUATED",
+      "forbidden_outcome": "ISSUED",
+      "reason_codes": [
+        "VALID_AUTHORITY"
+      ],
+      "machine_checked": true
+    },
+    {
+      "vector_id": "V147-TV-004",
+      "category": "POSITIVE",
+      "synthetic_non_normative": true,
+      "input": {
+        "fixture": "VALID_ISSUANCE",
+        "canonical_context": "ctx-004"
+      },
+      "expected_result": "ISSUED",
+      "expected_state": "ISSUED",
+      "expected_event": "CERTIFICATE_ISSUED",
+      "forbidden_outcome": "VALID",
+      "reason_codes": [
+        "VALID_ISSUANCE"
+      ],
+      "machine_checked": true
+    },
+    {
+      "vector_id": "V147-TV-005",
+      "category": "POSITIVE",
+      "synthetic_non_normative": true,
+      "input": {
+        "fixture": "VALID_CERTIFICATE",
+        "canonical_context": "ctx-005"
+      },
+      "expected_result": "VALID",
+      "expected_state": "VALID",
+      "expected_event": "VALIDITY_EVALUATED",
+      "forbidden_outcome": "APPROVED",
+      "reason_codes": [
+        "VALID_CERTIFICATE"
+      ],
+      "machine_checked": true
+    },
+    {
+      "vector_id": "V147-TV-006",
+      "category": "POSITIVE",
+      "synthetic_non_normative": true,
+      "input": {
+        "fixture": "VALID_RELEASE_APPROVAL",
+        "canonical_context": "ctx-006"
+      },
+      "expected_result": "APPROVED",
+      "expected_state": "APPROVED",
+      "expected_event": "RELEASE_DECISION_RECORDED",
+      "forbidden_outcome": "EXECUTED",
+      "reason_codes": [
+        "VALID_RELEASE_APPROVAL"
+      ],
+      "machine_checked": true
+    },
+    {
+      "vector_id": "V147-TV-007",
+      "category": "POSITIVE",
+      "synthetic_non_normative": true,
+      "input": {
+        "fixture": "VALID_EXECUTION",
+        "canonical_context": "ctx-007"
+      },
+      "expected_result": "SUCCEEDED",
+      "expected_state": "SUCCEEDED",
+      "expected_event": "EXECUTION_SUCCEEDED",
+      "forbidden_outcome": "VERIFIED",
+      "reason_codes": [
+        "VALID_EXECUTION"
+      ],
+      "machine_checked": true
+    },
+    {
+      "vector_id": "V147-TV-008",
+      "category": "POSITIVE",
+      "synthetic_non_normative": true,
+      "input": {
+        "fixture": "VALID_VERIFICATION",
+        "canonical_context": "ctx-008"
+      },
+      "expected_result": "VERIFIED",
+      "expected_state": "VERIFIED",
+      "expected_event": "POST_RELEASE_VERIFICATION_COMPLETED",
+      "forbidden_outcome": "REWRITE_HISTORY",
+      "reason_codes": [
+        "VALID_VERIFICATION"
+      ],
+      "machine_checked": true
+    },
+    {
+      "vector_id": "V147-TV-009",
+      "category": "NEGATIVE",
+      "synthetic_non_normative": true,
+      "input": {
+        "fixture": "INVALID_SCHEMA",
+        "canonical_context": "ctx-009"
+      },
+      "expected_result": "INVALID",
+      "expected_state": "INVALID",
+      "expected_event": "FAILURE_RECORDED",
+      "forbidden_outcome": "FALSE",
+      "reason_codes": [
+        "INVALID_SCHEMA"
+      ],
+      "machine_checked": true
+    },
+    {
+      "vector_id": "V147-TV-010",
+      "category": "NEGATIVE",
+      "synthetic_non_normative": true,
+      "input": {
+        "fixture": "MISSING_EVIDENCE",
+        "canonical_context": "ctx-010"
+      },
+      "expected_result": "INVALID",
+      "expected_state": "INVALID",
+      "expected_event": "FAILURE_RECORDED",
+      "forbidden_outcome": "TRUE",
+      "reason_codes": [
+        "MISSING_EVIDENCE"
+      ],
+      "machine_checked": true
+    },
+    {
+      "vector_id": "V147-TV-011",
+      "category": "NEGATIVE",
+      "synthetic_non_normative": true,
+      "input": {
+        "fixture": "BROKEN_HASH",
+        "canonical_context": "ctx-011"
+      },
+      "expected_result": "INVALID",
+      "expected_state": "INVALID",
+      "expected_event": "FAILURE_RECORDED",
+      "forbidden_outcome": "FALSE",
+      "reason_codes": [
+        "BROKEN_HASH"
+      ],
+      "machine_checked": true
+    },
+    {
+      "vector_id": "V147-TV-012",
+      "category": "NEGATIVE",
+      "synthetic_non_normative": true,
+      "input": {
+        "fixture": "EXPIRED_AUTHORITY",
+        "canonical_context": "ctx-012"
+      },
+      "expected_result": "REFUSED",
+      "expected_state": "REFUSED",
+      "expected_event": "ISSUANCE_REFUSED",
+      "forbidden_outcome": "ISSUED",
+      "reason_codes": [
+        "EXPIRED_AUTHORITY"
+      ],
+      "machine_checked": true
+    },
+    {
+      "vector_id": "V147-TV-013",
+      "category": "NEGATIVE",
+      "synthetic_non_normative": true,
+      "input": {
+        "fixture": "WRONG_SCOPE",
+        "canonical_context": "ctx-013"
+      },
+      "expected_result": "INVALID",
+      "expected_state": "INVALID",
+      "expected_event": "FAILURE_RECORDED",
+      "forbidden_outcome": "AUTHORIZED",
+      "reason_codes": [
+        "WRONG_SCOPE"
+      ],
+      "machine_checked": true
+    },
+    {
+      "vector_id": "V147-TV-014",
+      "category": "NEGATIVE",
+      "synthetic_non_normative": true,
+      "input": {
+        "fixture": "WRONG_ARTIFACT",
+        "canonical_context": "ctx-014"
+      },
+      "expected_result": "NOT_REUSABLE",
+      "expected_state": "NOT_REUSABLE",
+      "expected_event": "REUSE_REJECTED",
+      "forbidden_outcome": "EXECUTION_STARTED",
+      "reason_codes": [
+        "WRONG_ARTIFACT"
+      ],
+      "machine_checked": true
+    },
+    {
+      "vector_id": "V147-TV-015",
+      "category": "NEGATIVE",
+      "synthetic_non_normative": true,
+      "input": {
+        "fixture": "WRONG_SPECIFICATION",
+        "canonical_context": "ctx-015"
+      },
+      "expected_result": "NEW_RELEASE",
+      "expected_state": "NEW_RELEASE",
+      "expected_event": "REUSE_REJECTED",
+      "forbidden_outcome": "DECISION_REUSED",
+      "reason_codes": [
+        "WRONG_SPECIFICATION"
+      ],
+      "machine_checked": true
+    },
+    {
+      "vector_id": "V147-TV-016",
+      "category": "NEGATIVE",
+      "synthetic_non_normative": true,
+      "input": {
+        "fixture": "WRONG_ENVIRONMENT",
+        "canonical_context": "ctx-016"
+      },
+      "expected_result": "NOT_REUSABLE",
+      "expected_state": "NOT_REUSABLE",
+      "expected_event": "EXECUTION_DENIED",
+      "forbidden_outcome": "EXECUTION_STARTED",
+      "reason_codes": [
+        "WRONG_ENVIRONMENT"
+      ],
+      "machine_checked": true
+    },
+    {
+      "vector_id": "V147-TV-017",
+      "category": "NEGATIVE",
+      "synthetic_non_normative": true,
+      "input": {
+        "fixture": "UNKNOWN_PREDICATE",
+        "canonical_context": "ctx-017"
+      },
+      "expected_result": "UNKNOWN",
+      "expected_state": "UNKNOWN",
+      "expected_event": "EVALUATION_COMPLETED",
+      "forbidden_outcome": "TRUE",
+      "reason_codes": [
+        "UNKNOWN_PREDICATE"
+      ],
+      "machine_checked": true
+    },
+    {
+      "vector_id": "V147-TV-018",
+      "category": "NEGATIVE",
+      "synthetic_non_normative": true,
+      "input": {
+        "fixture": "BLOCKED_PREREQUISITE",
+        "canonical_context": "ctx-018"
+      },
+      "expected_result": "BLOCKED",
+      "expected_state": "BLOCKED",
+      "expected_event": "EVALUATION_COMPLETED",
+      "forbidden_outcome": "TRUE",
+      "reason_codes": [
+        "BLOCKED_PREREQUISITE"
+      ],
+      "machine_checked": true
+    },
+    {
+      "vector_id": "V147-TV-019",
+      "category": "NEGATIVE",
+      "synthetic_non_normative": true,
+      "input": {
+        "fixture": "POLICY_CONTRADICTION",
+        "canonical_context": "ctx-019"
+      },
+      "expected_result": "INVALID",
+      "expected_state": "INVALID",
+      "expected_event": "FAILURE_RECORDED",
+      "forbidden_outcome": "AUTHORIZED",
+      "reason_codes": [
+        "POLICY_CONTRADICTION"
+      ],
+      "machine_checked": true
+    },
+    {
+      "vector_id": "V147-TV-020",
+      "category": "NEGATIVE",
+      "synthetic_non_normative": true,
+      "input": {
+        "fixture": "DUPLICATE_EXECUTION",
+        "canonical_context": "ctx-020"
+      },
+      "expected_result": "IDEMPOTENT_REPLAY",
+      "expected_state": "IDEMPOTENT_REPLAY",
+      "expected_event": "NO_NEW_EVENT",
+      "forbidden_outcome": "SECOND_EXECUTION",
+      "reason_codes": [
+        "DUPLICATE_EXECUTION"
+      ],
+      "machine_checked": true
+    },
+    {
+      "vector_id": "V147-TV-021",
+      "category": "NEGATIVE",
+      "synthetic_non_normative": true,
+      "input": {
+        "fixture": "DUPLICATE_APPROVAL",
+        "canonical_context": "ctx-021"
+      },
+      "expected_result": "DUPLICATE_REJECTED",
+      "expected_state": "DUPLICATE_REJECTED",
+      "expected_event": "NO_NEW_EVENT",
+      "forbidden_outcome": "THRESHOLD_INCREMENTED",
+      "reason_codes": [
+        "DUPLICATE_APPROVAL"
+      ],
+      "machine_checked": true
+    },
+    {
+      "vector_id": "V147-TV-022",
+      "category": "NEGATIVE",
+      "synthetic_non_normative": true,
+      "input": {
+        "fixture": "STALE_EVIDENCE",
+        "canonical_context": "ctx-022"
+      },
+      "expected_result": "UNKNOWN",
+      "expected_state": "UNKNOWN",
+      "expected_event": "EVALUATION_COMPLETED",
+      "forbidden_outcome": "FALSE",
+      "reason_codes": [
+        "STALE_EVIDENCE"
+      ],
+      "machine_checked": true
+    },
+    {
+      "vector_id": "V147-TV-023",
+      "category": "BOUNDARY",
+      "synthetic_non_normative": true,
+      "input": {
+        "fixture": "EMPTY_PREDICATE_SET",
+        "canonical_context": "ctx-023"
+      },
+      "expected_result": "INVALID",
+      "expected_state": "INVALID",
+      "expected_event": "FAILURE_RECORDED",
+      "forbidden_outcome": "ELIGIBLE",
+      "reason_codes": [
+        "EMPTY_PREDICATE_SET"
+      ],
+      "machine_checked": true
+    },
+    {
+      "vector_id": "V147-TV-024",
+      "category": "BOUNDARY",
+      "synthetic_non_normative": true,
+      "input": {
+        "fixture": "EMPTY_SET_EXPLICIT_ALLOW",
+        "canonical_context": "ctx-024"
+      },
+      "expected_result": "ELIGIBLE",
+      "expected_state": "ELIGIBLE",
+      "expected_event": "ELIGIBILITY_EVALUATED",
+      "forbidden_outcome": "VACUOUS_UNRECORDED_ALLOW",
+      "reason_codes": [
+        "EMPTY_SET_EXPLICIT_ALLOW"
+      ],
+      "machine_checked": true
+    },
+    {
+      "vector_id": "V147-TV-025",
+      "category": "BOUNDARY",
+      "synthetic_non_normative": true,
+      "input": {
+        "fixture": "EXACT_NOT_BEFORE",
+        "canonical_context": "ctx-025"
+      },
+      "expected_result": "ACTIVE",
+      "expected_state": "ACTIVE",
+      "expected_event": "TEMPORAL_EVALUATED",
+      "forbidden_outcome": "NOT_YET_VALID",
+      "reason_codes": [
+        "EXACT_NOT_BEFORE"
+      ],
+      "machine_checked": true
+    },
+    {
+      "vector_id": "V147-TV-026",
+      "category": "BOUNDARY",
+      "synthetic_non_normative": true,
+      "input": {
+        "fixture": "EXACT_NOT_AFTER",
+        "canonical_context": "ctx-026"
+      },
+      "expected_result": "INACTIVE",
+      "expected_state": "INACTIVE",
+      "expected_event": "TEMPORAL_EVALUATED",
+      "forbidden_outcome": "VALID",
+      "reason_codes": [
+        "EXACT_NOT_AFTER"
+      ],
+      "machine_checked": true
+    },
+    {
+      "vector_id": "V147-TV-027",
+      "category": "BOUNDARY",
+      "synthetic_non_normative": true,
+      "input": {
+        "fixture": "EQUAL_TIMESTAMPS",
+        "canonical_context": "ctx-027"
+      },
+      "expected_result": "ORDER_BY_SEQUENCE",
+      "expected_state": "ORDER_BY_SEQUENCE",
+      "expected_event": "EVENTS_COMMITTED",
+      "forbidden_outcome": "NONDETERMINISTIC_ORDER",
+      "reason_codes": [
+        "EQUAL_TIMESTAMPS"
+      ],
+      "machine_checked": true
+    },
+    {
+      "vector_id": "V147-TV-028",
+      "category": "BOUNDARY",
+      "synthetic_non_normative": true,
+      "input": {
+        "fixture": "SEQUENCE_COLLISION",
+        "canonical_context": "ctx-028"
+      },
+      "expected_result": "CONCURRENCY_FAILURE",
+      "expected_state": "CONCURRENCY_FAILURE",
+      "expected_event": "EVENT_REJECTED",
+      "forbidden_outcome": "TWO_CURRENT_STATES",
+      "reason_codes": [
+        "SEQUENCE_COLLISION"
+      ],
+      "machine_checked": true
+    },
+    {
+      "vector_id": "V147-TV-029",
+      "category": "BOUNDARY",
+      "synthetic_non_normative": true,
+      "input": {
+        "fixture": "ZERO_APPROVAL_THRESHOLD",
+        "canonical_context": "ctx-029"
+      },
+      "expected_result": "INVALID",
+      "expected_state": "INVALID",
+      "expected_event": "FAILURE_RECORDED",
+      "forbidden_outcome": "AUTHORIZED",
+      "reason_codes": [
+        "ZERO_APPROVAL_THRESHOLD"
+      ],
+      "machine_checked": true
+    },
+    {
+      "vector_id": "V147-TV-030",
+      "category": "BOUNDARY",
+      "synthetic_non_normative": true,
+      "input": {
+        "fixture": "ONE_OF_N_AUTHORITY",
+        "canonical_context": "ctx-030"
+      },
+      "expected_result": "AUTHORIZED",
+      "expected_state": "AUTHORIZED",
+      "expected_event": "ISSUANCE_AUTHORIZED",
+      "forbidden_outcome": "COUNT_SAME_ACTOR_TWICE",
+      "reason_codes": [
+        "ONE_OF_N_AUTHORITY"
+      ],
+      "machine_checked": true
+    },
+    {
+      "vector_id": "V147-TV-031",
+      "category": "BOUNDARY",
+      "synthetic_non_normative": true,
+      "input": {
+        "fixture": "N_OF_M_AUTHORITY",
+        "canonical_context": "ctx-031"
+      },
+      "expected_result": "AUTHORIZED",
+      "expected_state": "AUTHORIZED",
+      "expected_event": "ISSUANCE_AUTHORIZED",
+      "forbidden_outcome": "MISSING_DISTINCT_APPROVAL",
+      "reason_codes": [
+        "N_OF_M_AUTHORITY"
+      ],
+      "machine_checked": true
+    },
+    {
+      "vector_id": "V147-TV-032",
+      "category": "BOUNDARY",
+      "synthetic_non_normative": true,
+      "input": {
+        "fixture": "N_OF_M_SHORT",
+        "canonical_context": "ctx-032"
+      },
+      "expected_result": "BLOCKED",
+      "expected_state": "BLOCKED",
+      "expected_event": "ISSUANCE_BLOCKED",
+      "forbidden_outcome": "AUTHORIZED",
+      "reason_codes": [
+        "N_OF_M_SHORT"
+      ],
+      "machine_checked": true
+    },
+    {
+      "vector_id": "V147-TV-033",
+      "category": "BOUNDARY",
+      "synthetic_non_normative": true,
+      "input": {
+        "fixture": "CONCURRENT_DECISIONS",
+        "canonical_context": "ctx-033"
+      },
+      "expected_result": "ONE_COMMIT_ONE_CONFLICT",
+      "expected_state": "ONE_COMMIT_ONE_CONFLICT",
+      "expected_event": "DECISION_AND_CONFLICT_RECORDED",
+      "forbidden_outcome": "TWO_AUTHORITATIVE_CURRENT",
+      "reason_codes": [
+        "CONCURRENT_DECISIONS"
+      ],
+      "machine_checked": true
+    },
+    {
+      "vector_id": "V147-TV-034",
+      "category": "BOUNDARY",
+      "synthetic_non_normative": true,
+      "input": {
+        "fixture": "RETRY_AFTER_FAILURE",
+        "canonical_context": "ctx-034"
+      },
+      "expected_result": "NEW_AUTHORIZED_ATTEMPT",
+      "expected_state": "NEW_AUTHORIZED_ATTEMPT",
+      "expected_event": "EXECUTION_STARTED",
+      "forbidden_outcome": "REUSE_OLD_ATTEMPT_EVENT",
+      "reason_codes": [
+        "RETRY_AFTER_FAILURE"
+      ],
+      "machine_checked": true
+    },
+    {
+      "vector_id": "V147-TV-035",
+      "category": "BOUNDARY",
+      "synthetic_non_normative": true,
+      "input": {
+        "fixture": "ROLLBACK_AFTER_PARTIAL",
+        "canonical_context": "ctx-035"
+      },
+      "expected_result": "ROLLED_BACK",
+      "expected_state": "ROLLED_BACK",
+      "expected_event": "EXECUTION_ROLLED_BACK",
+      "forbidden_outcome": "AUTOMATIC_UNAUTHORIZED_ROLLBACK",
+      "reason_codes": [
+        "ROLLBACK_AFTER_PARTIAL"
+      ],
+      "machine_checked": true
+    },
+    {
+      "vector_id": "V147-TV-036",
+      "category": "BOUNDARY",
+      "synthetic_non_normative": true,
+      "input": {
+        "fixture": "INVALID_HIDDEN_BY_FALSE",
+        "canonical_context": "ctx-036"
+      },
+      "expected_result": "INVALID",
+      "expected_state": "INVALID",
+      "expected_event": "FAILURE_RECORDED",
+      "forbidden_outcome": "INELIGIBLE",
+      "reason_codes": [
+        "INVALID_HIDDEN_BY_FALSE"
+      ],
+      "machine_checked": true
+    },
+    {
+      "vector_id": "V147-TV-037",
+      "category": "BOUNDARY",
+      "synthetic_non_normative": true,
+      "input": {
+        "fixture": "EVALUATOR_VERSION_CHANGED",
+        "canonical_context": "ctx-037"
+      },
+      "expected_result": "NOT_REUSABLE",
+      "expected_state": "NOT_REUSABLE",
+      "expected_event": "REUSE_REJECTED",
+      "forbidden_outcome": "RESULT_REUSED",
+      "reason_codes": [
+        "EVALUATOR_VERSION_CHANGED"
+      ],
+      "machine_checked": true
+    },
+    {
+      "vector_id": "V147-TV-038",
+      "category": "BOUNDARY",
+      "synthetic_non_normative": true,
+      "input": {
+        "fixture": "GATE_CHANGED",
+        "canonical_context": "ctx-038"
+      },
+      "expected_result": "REEVALUATE_REAUTHORIZE",
+      "expected_state": "REEVALUATE_REAUTHORIZE",
+      "expected_event": "REUSE_REJECTED",
+      "forbidden_outcome": "DECISION_REUSED",
+      "reason_codes": [
+        "GATE_CHANGED"
+      ],
+      "machine_checked": true
+    },
+    {
+      "vector_id": "V147-TV-039",
+      "category": "BOUNDARY",
+      "synthetic_non_normative": true,
+      "input": {
+        "fixture": "CERTIFICATE_CHANGED",
+        "canonical_context": "ctx-039"
+      },
+      "expected_result": "REEVALUATE_REAUTHORIZE",
+      "expected_state": "REEVALUATE_REAUTHORIZE",
+      "expected_event": "REUSE_REJECTED",
+      "forbidden_outcome": "DECISION_REUSED",
+      "reason_codes": [
+        "CERTIFICATE_CHANGED"
+      ],
+      "machine_checked": true
+    },
+    {
+      "vector_id": "V147-TV-040",
+      "category": "BOUNDARY",
+      "synthetic_non_normative": true,
+      "input": {
+        "fixture": "AUTHORITY_CHANGED",
+        "canonical_context": "ctx-040"
+      },
+      "expected_result": "REAUTHORIZE",
+      "expected_state": "REAUTHORIZE",
+      "expected_event": "REUSE_REJECTED",
+      "forbidden_outcome": "DECISION_REUSED",
+      "reason_codes": [
+        "AUTHORITY_CHANGED"
+      ],
+      "machine_checked": true
+    },
+    {
+      "vector_id": "V147-TV-041",
+      "category": "BOUNDARY",
+      "synthetic_non_normative": true,
+      "input": {
+        "fixture": "LATE_EVENT_VALID_APPEND",
+        "canonical_context": "ctx-041"
+      },
+      "expected_result": "APPENDED_AT_NEXT_SEQUENCE",
+      "expected_state": "APPENDED_AT_NEXT_SEQUENCE",
+      "expected_event": "EVENT_COMMITTED",
+      "forbidden_outcome": "HISTORY_INSERTION",
+      "reason_codes": [
+        "LATE_EVENT_VALID_APPEND"
+      ],
+      "machine_checked": true
+    },
+    {
+      "vector_id": "V147-TV-042",
+      "category": "BOUNDARY",
+      "synthetic_non_normative": true,
+      "input": {
+        "fixture": "LATE_EVENT_BACKDATE_FORBIDDEN",
+        "canonical_context": "ctx-042"
+      },
+      "expected_result": "TEMPORAL_FAILURE",
+      "expected_state": "TEMPORAL_FAILURE",
+      "expected_event": "EVENT_REJECTED",
+      "forbidden_outcome": "PAST_PROJECTION_REWRITE",
+      "reason_codes": [
+        "LATE_EVENT_BACKDATE_FORBIDDEN"
+      ],
+      "machine_checked": true
+    },
+    {
+      "vector_id": "V147-TV-043",
+      "category": "BOUNDARY",
+      "synthetic_non_normative": true,
+      "input": {
+        "fixture": "PROJECTION_RACE",
+        "canonical_context": "ctx-043"
+      },
+      "expected_result": "STALE_PUBLICATION_REJECTED",
+      "expected_state": "STALE_PUBLICATION_REJECTED",
+      "expected_event": "PROJECTION_CONFLICT",
+      "forbidden_outcome": "STALE_CURRENT",
+      "reason_codes": [
+        "PROJECTION_RACE"
+      ],
+      "machine_checked": true
+    },
+    {
+      "vector_id": "V147-TV-044",
+      "category": "BOUNDARY",
+      "synthetic_non_normative": true,
+      "input": {
+        "fixture": "TWO_ISSUERS",
+        "canonical_context": "ctx-044"
+      },
+      "expected_result": "ONE_COMMIT_ONE_CONFLICT",
+      "expected_state": "ONE_COMMIT_ONE_CONFLICT",
+      "expected_event": "CERTIFICATE_ISSUED_AND_CONFLICT",
+      "forbidden_outcome": "TWO_CERTIFICATES_SAME_ID",
+      "reason_codes": [
+        "TWO_ISSUERS"
+      ],
+      "machine_checked": true
+    },
+    {
+      "vector_id": "V147-TV-045",
+      "category": "BOUNDARY",
+      "synthetic_non_normative": true,
+      "input": {
+        "fixture": "TWO_ROLLBACK_WORKERS",
+        "canonical_context": "ctx-045"
+      },
+      "expected_result": "ONE_COMMIT_ONE_IDEMPOTENT_REPLAY",
+      "expected_state": "ONE_COMMIT_ONE_IDEMPOTENT_REPLAY",
+      "expected_event": "EXECUTION_ROLLED_BACK",
+      "forbidden_outcome": "TWO_ROLLBACK_EFFECTS",
+      "reason_codes": [
+        "TWO_ROLLBACK_WORKERS"
+      ],
+      "machine_checked": true
+    },
+    {
+      "vector_id": "V147-TV-046",
+      "category": "BOUNDARY",
+      "synthetic_non_normative": true,
+      "input": {
+        "fixture": "EVENT_MISSING",
+        "canonical_context": "ctx-046"
+      },
+      "expected_result": "PROJECTION_FAILURE",
+      "expected_state": "PROJECTION_FAILURE",
+      "expected_event": "PROJECTION_REJECTED",
+      "forbidden_outcome": "REPAIRED_HISTORY",
+      "reason_codes": [
+        "EVENT_MISSING"
+      ],
+      "machine_checked": true
+    },
+    {
+      "vector_id": "V147-TV-047",
+      "category": "BOUNDARY",
+      "synthetic_non_normative": true,
+      "input": {
+        "fixture": "EVENT_DUPLICATED",
+        "canonical_context": "ctx-047"
+      },
+      "expected_result": "EVENT_ORDER_FAILURE",
+      "expected_state": "EVENT_ORDER_FAILURE",
+      "expected_event": "EVENT_REJECTED",
+      "forbidden_outcome": "DOUBLE_APPLY",
+      "reason_codes": [
+        "EVENT_DUPLICATED"
+      ],
+      "machine_checked": true
+    },
+    {
+      "vector_id": "V147-TV-048",
+      "category": "BOUNDARY",
+      "synthetic_non_normative": true,
+      "input": {
+        "fixture": "EVENT_CORRUPTED",
+        "canonical_context": "ctx-048"
+      },
+      "expected_result": "INTEGRITY_FAILURE",
+      "expected_state": "INTEGRITY_FAILURE",
+      "expected_event": "PROJECTION_REJECTED",
+      "forbidden_outcome": "CURRENT_STATE",
+      "reason_codes": [
+        "EVENT_CORRUPTED"
+      ],
+      "machine_checked": true
+    },
+    {
+      "vector_id": "V147-TV-049",
+      "category": "BOUNDARY",
+      "synthetic_non_normative": true,
+      "input": {
+        "fixture": "EVENT_REFERENCE_MISSING",
+        "canonical_context": "ctx-049"
+      },
+      "expected_result": "REFERENCE_FAILURE",
+      "expected_state": "REFERENCE_FAILURE",
+      "expected_event": "PROJECTION_REJECTED",
+      "forbidden_outcome": "CURRENT_STATE",
+      "reason_codes": [
+        "EVENT_REFERENCE_MISSING"
+      ],
+      "machine_checked": true
+    },
+    {
+      "vector_id": "V147-TV-050",
+      "category": "BOUNDARY",
+      "synthetic_non_normative": true,
+      "input": {
+        "fixture": "EVENT_SIGNATURE_INVALID",
+        "canonical_context": "ctx-050"
+      },
+      "expected_result": "INTEGRITY_FAILURE",
+      "expected_state": "INTEGRITY_FAILURE",
+      "expected_event": "PROJECTION_REJECTED",
+      "forbidden_outcome": "CURRENT_STATE",
+      "reason_codes": [
+        "EVENT_SIGNATURE_INVALID"
+      ],
+      "machine_checked": true
+    },
+    {
+      "vector_id": "V147-TV-051",
+      "category": "BOUNDARY",
+      "synthetic_non_normative": true,
+      "input": {
+        "fixture": "EVENT_SEQUENCE_INVALID",
+        "canonical_context": "ctx-051"
+      },
+      "expected_result": "EVENT_ORDER_FAILURE",
+      "expected_state": "EVENT_ORDER_FAILURE",
+      "expected_event": "PROJECTION_REJECTED",
+      "forbidden_outcome": "CURRENT_STATE",
+      "reason_codes": [
+        "EVENT_SEQUENCE_INVALID"
+      ],
+      "machine_checked": true
+    },
+    {
+      "vector_id": "V147-TV-052",
+      "category": "BOUNDARY",
+      "synthetic_non_normative": true,
+      "input": {
+        "fixture": "HISTORICAL_REPLAY",
+        "canonical_context": "ctx-052"
+      },
+      "expected_result": "REPRODUCED",
+      "expected_state": "REPRODUCED",
+      "expected_event": "PROJECTION_VERIFIED",
+      "forbidden_outcome": "CURRENT_POLICY_BACKFLOW",
+      "reason_codes": [
+        "HISTORICAL_REPLAY"
+      ],
+      "machine_checked": true
+    },
+    {
+      "vector_id": "V147-TV-053",
+      "category": "BOUNDARY",
+      "synthetic_non_normative": true,
+      "input": {
+        "fixture": "CERTIFICATE_VALID_NOT_ISSUANCE_REUSABLE",
+        "canonical_context": "ctx-053"
+      },
+      "expected_result": "NOT_REUSABLE",
+      "expected_state": "NOT_REUSABLE",
+      "expected_event": "REUSE_REJECTED",
+      "forbidden_outcome": "NEW_ISSUANCE",
+      "reason_codes": [
+        "CERTIFICATE_VALID_NOT_ISSUANCE_REUSABLE"
+      ],
+      "machine_checked": true
+    },
+    {
+      "vector_id": "V147-TV-054",
+      "category": "BOUNDARY",
+      "synthetic_non_normative": true,
+      "input": {
+        "fixture": "TIME_STILL_ACTIVE",
+        "canonical_context": "ctx-054"
+      },
+      "expected_result": "REUSABLE",
+      "expected_state": "REUSABLE",
+      "expected_event": "NO_NEW_EVENT",
+      "forbidden_outcome": "FORCED_REEVALUATION",
+      "reason_codes": [
+        "TIME_STILL_ACTIVE"
+      ],
+      "machine_checked": true
+    },
+    {
+      "vector_id": "V147-TV-055",
+      "category": "BOUNDARY",
+      "synthetic_non_normative": true,
+      "input": {
+        "fixture": "TIME_THRESHOLD_CROSSED",
+        "canonical_context": "ctx-055"
+      },
+      "expected_result": "REEVALUATE_REAUTHORIZE",
+      "expected_state": "REEVALUATE_REAUTHORIZE",
+      "expected_event": "REUSE_REJECTED",
+      "forbidden_outcome": "DECISION_REUSED",
+      "reason_codes": [
+        "TIME_THRESHOLD_CROSSED"
+      ],
+      "machine_checked": true
+    }
+  ],
+  "summary": {
+    "total": 55,
+    "machine_checked": 55,
+    "failed": 0
+  }
+}

@@ -307,6 +307,7 @@ FACT → EVALUATION → ATTESTATION → AUTHORIZATION → EXECUTION → OBSERVAT
 
 def main():
  if not (V144/"VALIDATION.yaml").is_file(): raise RuntimeError("validated Protocol-v14.4 package required")
+ if (COMPLIANCE/"certification/v14.7").exists(): raise RuntimeError("refusing to erase predecessor artifacts after append-only v14.7 extension")
  if (COMPLIANCE/"certification/v14.6").exists(): raise RuntimeError("refusing to erase predecessor artifacts after append-only v14.6 extension")
  if DEST.exists():
   for name in ["EVALUATION-HISTORY.yaml","AUTHORITY-HISTORY.yaml","CERTIFICATE-HISTORY.yaml","RELEASE-HISTORY.yaml"]:

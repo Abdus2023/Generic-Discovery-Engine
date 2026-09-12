@@ -1,0 +1,190 @@
+{
+  "schema_version": "14.7",
+  "epistemic_status": "SUPPORTED",
+  "claim_class": "NORMATIVE_REQUIREMENT",
+  "normative_origin": "USER_SUPPLIED_V14_6_BASELINE_AUDITED_IN_V14_7",
+  "single_canonical_procedure": [
+    {
+      "step": 1,
+      "stage": "LOAD",
+      "inputs": [
+        "LOAD_DECLARED_INPUT_SET"
+      ],
+      "outputs": [
+        "LOAD_VALIDATED_OUTPUT"
+      ],
+      "failure_result": "LOAD_FAILURE",
+      "later_processing_permitted": "YES_PER_VALID_OUTPUT_ONLY"
+    },
+    {
+      "step": 2,
+      "stage": "STRUCTURAL_VALIDATION",
+      "inputs": [
+        "STRUCTURAL_VALIDATION_DECLARED_INPUT_SET"
+      ],
+      "outputs": [
+        "STRUCTURAL_VALIDATION_VALIDATED_OUTPUT"
+      ],
+      "failure_result": "TYPED_STRUCTURAL_FAILURE",
+      "later_processing_permitted": "NO_DEPENDENT_PROCESSING"
+    },
+    {
+      "step": 3,
+      "stage": "REFERENCE_VALIDATION",
+      "inputs": [
+        "REFERENCE_VALIDATION_DECLARED_INPUT_SET"
+      ],
+      "outputs": [
+        "REFERENCE_VALIDATION_VALIDATED_OUTPUT"
+      ],
+      "failure_result": "TYPED_REFERENCE_FAILURE",
+      "later_processing_permitted": "NO_DEPENDENT_PROCESSING"
+    },
+    {
+      "step": 4,
+      "stage": "INTEGRITY_VALIDATION",
+      "inputs": [
+        "INTEGRITY_VALIDATION_DECLARED_INPUT_SET"
+      ],
+      "outputs": [
+        "INTEGRITY_VALIDATION_VALIDATED_OUTPUT"
+      ],
+      "failure_result": "TYPED_INTEGRITY_FAILURE",
+      "later_processing_permitted": "NO_DEPENDENT_PROCESSING"
+    },
+    {
+      "step": 5,
+      "stage": "TEMPORAL_VALIDATION",
+      "inputs": [
+        "TEMPORAL_VALIDATION_DECLARED_INPUT_SET"
+      ],
+      "outputs": [
+        "TEMPORAL_VALIDATION_VALIDATED_OUTPUT"
+      ],
+      "failure_result": "TYPED_TEMPORAL_FAILURE",
+      "later_processing_permitted": "NO_DEPENDENT_PROCESSING"
+    },
+    {
+      "step": 6,
+      "stage": "SCOPE_VALIDATION",
+      "inputs": [
+        "SCOPE_VALIDATION_DECLARED_INPUT_SET"
+      ],
+      "outputs": [
+        "SCOPE_VALIDATION_VALIDATED_OUTPUT"
+      ],
+      "failure_result": "TYPED_SCOPE_FAILURE",
+      "later_processing_permitted": "NO_DEPENDENT_PROCESSING"
+    },
+    {
+      "step": 7,
+      "stage": "POLICY_VALIDATION",
+      "inputs": [
+        "POLICY_VALIDATION_DECLARED_INPUT_SET"
+      ],
+      "outputs": [
+        "POLICY_VALIDATION_VALIDATED_OUTPUT"
+      ],
+      "failure_result": "TYPED_POLICY_FAILURE",
+      "later_processing_permitted": "NO_DEPENDENT_PROCESSING"
+    },
+    {
+      "step": 8,
+      "stage": "AUTHORITY_VALIDATION",
+      "inputs": [
+        "AUTHORITY_VALIDATION_DECLARED_INPUT_SET"
+      ],
+      "outputs": [
+        "AUTHORITY_VALIDATION_VALIDATED_OUTPUT"
+      ],
+      "failure_result": "TYPED_EVIDENCE_FAILURE",
+      "later_processing_permitted": "NO_DEPENDENT_PROCESSING"
+    },
+    {
+      "step": 9,
+      "stage": "EVIDENCE_FRESHNESS_VALIDATION",
+      "inputs": [
+        "EVIDENCE_FRESHNESS_VALIDATION_DECLARED_INPUT_SET"
+      ],
+      "outputs": [
+        "EVIDENCE_FRESHNESS_VALIDATION_VALIDATED_OUTPUT"
+      ],
+      "failure_result": "TYPED_FRESHNESS_FAILURE",
+      "later_processing_permitted": "NO_DEPENDENT_PROCESSING"
+    },
+    {
+      "step": 10,
+      "stage": "EVALUATION",
+      "inputs": [
+        "EVALUATION_DECLARED_INPUT_SET"
+      ],
+      "outputs": [
+        "EVALUATION_VALIDATED_OUTPUT"
+      ],
+      "failure_result": "TYPED_EVALUATION_FAILURE",
+      "later_processing_permitted": "YES_PER_VALID_OUTPUT_ONLY"
+    },
+    {
+      "step": 11,
+      "stage": "AGGREGATION",
+      "inputs": [
+        "AGGREGATION_DECLARED_INPUT_SET"
+      ],
+      "outputs": [
+        "AGGREGATION_VALIDATED_OUTPUT"
+      ],
+      "failure_result": "TYPED_AUTHORITY_FAILURE",
+      "later_processing_permitted": "YES_PER_VALID_OUTPUT_ONLY"
+    },
+    {
+      "step": 12,
+      "stage": "TRANSITION_GUARD",
+      "inputs": [
+        "TRANSITION_GUARD_DECLARED_INPUT_SET"
+      ],
+      "outputs": [
+        "TRANSITION_GUARD_VALIDATED_OUTPUT"
+      ],
+      "failure_result": "TYPED_AUTHORIZATION_FAILURE",
+      "later_processing_permitted": "NO_DEPENDENT_PROCESSING"
+    },
+    {
+      "step": 13,
+      "stage": "EVENT_COMMIT",
+      "inputs": [
+        "EVENT_COMMIT_DECLARED_INPUT_SET"
+      ],
+      "outputs": [
+        "EVENT_COMMIT_VALIDATED_OUTPUT"
+      ],
+      "failure_result": "TYPED_STATE_TRANSITION_FAILURE",
+      "later_processing_permitted": "NO_DEPENDENT_PROCESSING"
+    },
+    {
+      "step": 14,
+      "stage": "PROJECTION",
+      "inputs": [
+        "PROJECTION_DECLARED_INPUT_SET"
+      ],
+      "outputs": [
+        "PROJECTION_VALIDATED_OUTPUT"
+      ],
+      "failure_result": "TYPED_EVENT_ORDER_FAILURE",
+      "later_processing_permitted": "YES_PER_VALID_OUTPUT_ONLY"
+    },
+    {
+      "step": 15,
+      "stage": "PROJECTION_VERIFICATION",
+      "inputs": [
+        "PROJECTION_VERIFICATION_DECLARED_INPUT_SET"
+      ],
+      "outputs": [
+        "PROJECTION_VERIFICATION_VALIDATED_OUTPUT"
+      ],
+      "failure_result": "TYPED_PROJECTION_FAILURE",
+      "later_processing_permitted": "NO_DEPENDENT_PROCESSING"
+    }
+  ],
+  "stage_count": 15,
+  "other_normative_procedures": "FORBIDDEN"
+}

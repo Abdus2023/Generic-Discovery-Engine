@@ -1,0 +1,88 @@
+{
+  "schema_version": "14.7",
+  "epistemic_status": "SUPPORTED",
+  "claim_class": "NORMATIVE_REQUIREMENT",
+  "normative_origin": "USER_SUPPLIED_V14_6_BASELINE_AUDITED_IN_V14_7",
+  "capabilities": [
+    {
+      "capability": "CERTIFICATE_ISSUE",
+      "scope_dimensions": [
+        "SUBJECT_TYPE",
+        "SUBJECT_ID_OR_PATTERN",
+        "OPERATION",
+        "ENVIRONMENT",
+        "VALID_INTERVAL"
+      ],
+      "credential_separate": true
+    },
+    {
+      "capability": "CERTIFICATE_REVOKE",
+      "scope_dimensions": [
+        "SUBJECT_TYPE",
+        "SUBJECT_ID_OR_PATTERN",
+        "OPERATION",
+        "ENVIRONMENT",
+        "VALID_INTERVAL"
+      ],
+      "credential_separate": true
+    },
+    {
+      "capability": "CERTIFICATE_SUPERSEDE",
+      "scope_dimensions": [
+        "SUBJECT_TYPE",
+        "SUBJECT_ID_OR_PATTERN",
+        "OPERATION",
+        "ENVIRONMENT",
+        "VALID_INTERVAL"
+      ],
+      "credential_separate": true
+    },
+    {
+      "capability": "RELEASE_DECIDE",
+      "scope_dimensions": [
+        "SUBJECT_TYPE",
+        "SUBJECT_ID_OR_PATTERN",
+        "OPERATION",
+        "ENVIRONMENT",
+        "VALID_INTERVAL"
+      ],
+      "credential_separate": true
+    },
+    {
+      "capability": "EXECUTION_START",
+      "scope_dimensions": [
+        "SUBJECT_TYPE",
+        "SUBJECT_ID_OR_PATTERN",
+        "OPERATION",
+        "ENVIRONMENT",
+        "VALID_INTERVAL"
+      ],
+      "credential_separate": true
+    },
+    {
+      "capability": "EXECUTION_CANCEL",
+      "scope_dimensions": [
+        "SUBJECT_TYPE",
+        "SUBJECT_ID_OR_PATTERN",
+        "OPERATION",
+        "ENVIRONMENT",
+        "VALID_INTERVAL"
+      ],
+      "credential_separate": true
+    },
+    {
+      "capability": "ROLLBACK_AUTHORIZE",
+      "scope_dimensions": [
+        "SUBJECT_TYPE",
+        "SUBJECT_ID_OR_PATTERN",
+        "OPERATION",
+        "ENVIRONMENT",
+        "VALID_INTERVAL"
+      ],
+      "credential_separate": true
+    }
+  ],
+  "delegation": "CHILD_CAPABILITIES_AND_SCOPE_SUBSET_PARENT",
+  "multi_party": "N_DISTINCT_EFFECTIVE_AUTHORITIES_BOUND_TO_IDENTICAL_ACTION_BASIS",
+  "threshold_minimum": 1
+}

@@ -1,0 +1,812 @@
+{
+  "schema_version": "14.7",
+  "epistemic_status": "SUPPORTED",
+  "claim_class": "NORMATIVE_REQUIREMENT",
+  "normative_origin": "USER_SUPPLIED_V14_6_BASELINE_AUDITED_IN_V14_7",
+  "profiles": [
+    {
+      "profile_id": "identity-profile:evaluation-context",
+      "object_type": "evaluation-context",
+      "logical_identity_fields": [
+        "context_id"
+      ],
+      "content_hash_field": "content_hash",
+      "snapshot_identity_fields": [
+        "audit_snapshot_hash"
+      ],
+      "scope_fields": [
+        "scope_id",
+        "scope_hash"
+      ],
+      "immutability_boundary": "OBJECT_COMMIT",
+      "version_relationship": "METADATA_NOT_IDENTITY",
+      "scope_id": "protocol-v14.7",
+      "scope_hash": "b9b6f7c80a4dcaf44d5f264f7ebb8ba2ae6f67d024e005c998902d8544f72ca9",
+      "created_at": "2026-09-12T00:00:00Z",
+      "content_hash": "6f6e8866bf92e5d11db332d180075ebfa1560e6244b6692324937f704ef7fb30"
+    },
+    {
+      "profile_id": "identity-profile:evaluation-result",
+      "object_type": "evaluation-result",
+      "logical_identity_fields": [
+        "evaluation_id"
+      ],
+      "content_hash_field": "content_hash",
+      "snapshot_identity_fields": [],
+      "scope_fields": [
+        "scope_id",
+        "scope_hash"
+      ],
+      "immutability_boundary": "OBJECT_COMMIT",
+      "version_relationship": "METADATA_NOT_IDENTITY",
+      "scope_id": "protocol-v14.7",
+      "scope_hash": "b9b6f7c80a4dcaf44d5f264f7ebb8ba2ae6f67d024e005c998902d8544f72ca9",
+      "created_at": "2026-09-12T00:00:00Z",
+      "content_hash": "e531e10d2099f00b15f0628981dd1c1d42b6d1ac87fcdc8f16a5cc792904178a"
+    },
+    {
+      "profile_id": "identity-profile:freshness-result",
+      "object_type": "freshness-result",
+      "logical_identity_fields": [
+        "freshness_id"
+      ],
+      "content_hash_field": "content_hash",
+      "snapshot_identity_fields": [],
+      "scope_fields": [
+        "scope_id",
+        "scope_hash"
+      ],
+      "immutability_boundary": "OBJECT_COMMIT",
+      "version_relationship": "METADATA_NOT_IDENTITY",
+      "scope_id": "protocol-v14.7",
+      "scope_hash": "b9b6f7c80a4dcaf44d5f264f7ebb8ba2ae6f67d024e005c998902d8544f72ca9",
+      "created_at": "2026-09-12T00:00:00Z",
+      "content_hash": "5ce74528c9d23e363cb97b5c7624940525a896ae2621121145486f80482c51e8"
+    },
+    {
+      "profile_id": "identity-profile:issuance-authority",
+      "object_type": "issuance-authority",
+      "logical_identity_fields": [
+        "authority_id"
+      ],
+      "content_hash_field": "content_hash",
+      "snapshot_identity_fields": [],
+      "scope_fields": [
+        "scope_id",
+        "scope_hash"
+      ],
+      "immutability_boundary": "OBJECT_COMMIT",
+      "version_relationship": "METADATA_NOT_IDENTITY",
+      "scope_id": "protocol-v14.7",
+      "scope_hash": "b9b6f7c80a4dcaf44d5f264f7ebb8ba2ae6f67d024e005c998902d8544f72ca9",
+      "created_at": "2026-09-12T00:00:00Z",
+      "content_hash": "f4a9ded1903086e88af4d2ed9d1fe39d2e90b4bb82e14ce16202bd0ee2fc6f74"
+    },
+    {
+      "profile_id": "identity-profile:authority-approval",
+      "object_type": "authority-approval",
+      "logical_identity_fields": [
+        "approval_id"
+      ],
+      "content_hash_field": "content_hash",
+      "snapshot_identity_fields": [
+        "snapshot_hash"
+      ],
+      "scope_fields": [
+        "scope_id",
+        "scope_hash"
+      ],
+      "immutability_boundary": "OBJECT_COMMIT",
+      "version_relationship": "METADATA_NOT_IDENTITY",
+      "scope_id": "protocol-v14.7",
+      "scope_hash": "b9b6f7c80a4dcaf44d5f264f7ebb8ba2ae6f67d024e005c998902d8544f72ca9",
+      "created_at": "2026-09-12T00:00:00Z",
+      "content_hash": "4121a354c84f71fa65639bc4427947cb9f148472f555ce8f438d0558788e39f6"
+    },
+    {
+      "profile_id": "identity-profile:certificate-candidate",
+      "object_type": "certificate-candidate",
+      "logical_identity_fields": [
+        "certificate_candidate_id"
+      ],
+      "content_hash_field": "content_hash",
+      "snapshot_identity_fields": [
+        "audit_snapshot_id",
+        "audit_snapshot_hash"
+      ],
+      "scope_fields": [
+        "scope_id",
+        "scope_hash"
+      ],
+      "immutability_boundary": "OBJECT_COMMIT",
+      "version_relationship": "METADATA_NOT_IDENTITY",
+      "scope_id": "protocol-v14.7",
+      "scope_hash": "b9b6f7c80a4dcaf44d5f264f7ebb8ba2ae6f67d024e005c998902d8544f72ca9",
+      "created_at": "2026-09-12T00:00:00Z",
+      "content_hash": "c6ff927d06e113cc6bc1beb38aa2481734af1faaaf1b4abcec79a9125f0c5e49"
+    },
+    {
+      "profile_id": "identity-profile:certificate-issuance-authorization",
+      "object_type": "certificate-issuance-authorization",
+      "logical_identity_fields": [
+        "authorization_id"
+      ],
+      "content_hash_field": "content_hash",
+      "snapshot_identity_fields": [
+        "snapshot_hash"
+      ],
+      "scope_fields": [
+        "scope_id",
+        "scope_hash"
+      ],
+      "immutability_boundary": "OBJECT_COMMIT",
+      "version_relationship": "METADATA_NOT_IDENTITY",
+      "scope_id": "protocol-v14.7",
+      "scope_hash": "b9b6f7c80a4dcaf44d5f264f7ebb8ba2ae6f67d024e005c998902d8544f72ca9",
+      "created_at": "2026-09-12T00:00:00Z",
+      "content_hash": "43631340f4801e183866d141c36dbb11fa85b1ca9dd219bc088061bd4052123e"
+    },
+    {
+      "profile_id": "identity-profile:certificate-issued-event",
+      "object_type": "certificate-issued-event",
+      "logical_identity_fields": [
+        "event_id"
+      ],
+      "content_hash_field": "content_hash",
+      "snapshot_identity_fields": [
+        "snapshot_hash"
+      ],
+      "scope_fields": [
+        "scope_id",
+        "scope_hash"
+      ],
+      "immutability_boundary": "OBJECT_COMMIT",
+      "version_relationship": "METADATA_NOT_IDENTITY",
+      "scope_id": "protocol-v14.7",
+      "scope_hash": "b9b6f7c80a4dcaf44d5f264f7ebb8ba2ae6f67d024e005c998902d8544f72ca9",
+      "created_at": "2026-09-12T00:00:00Z",
+      "content_hash": "4146edb3a1ccb261c38822f23e8fe0ef03fcfb68987241a763e33566313c6f67"
+    },
+    {
+      "profile_id": "identity-profile:certificate",
+      "object_type": "certificate",
+      "logical_identity_fields": [
+        "certificate_id"
+      ],
+      "content_hash_field": "content_hash",
+      "snapshot_identity_fields": [
+        "audit_snapshot_id",
+        "audit_snapshot_hash"
+      ],
+      "scope_fields": [
+        "scope_id",
+        "scope_hash"
+      ],
+      "immutability_boundary": "OBJECT_COMMIT",
+      "version_relationship": "METADATA_NOT_IDENTITY",
+      "scope_id": "protocol-v14.7",
+      "scope_hash": "b9b6f7c80a4dcaf44d5f264f7ebb8ba2ae6f67d024e005c998902d8544f72ca9",
+      "created_at": "2026-09-12T00:00:00Z",
+      "content_hash": "29c7284478e5cdf03c9ee1c8b537f1dd82349362a2de894a17c12473c886b9f5"
+    },
+    {
+      "profile_id": "identity-profile:certificate-validity",
+      "object_type": "certificate-validity",
+      "logical_identity_fields": [
+        "validity_id"
+      ],
+      "content_hash_field": "content_hash",
+      "snapshot_identity_fields": [
+        "basis_hash"
+      ],
+      "scope_fields": [
+        "scope_id",
+        "scope_hash"
+      ],
+      "immutability_boundary": "OBJECT_COMMIT",
+      "version_relationship": "METADATA_NOT_IDENTITY",
+      "scope_id": "protocol-v14.7",
+      "scope_hash": "b9b6f7c80a4dcaf44d5f264f7ebb8ba2ae6f67d024e005c998902d8544f72ca9",
+      "created_at": "2026-09-12T00:00:00Z",
+      "content_hash": "f9d76f9f5a89a67ef3ad669c34ed480c473b22a950dddf0ce2c6dbeaa2c728d0"
+    },
+    {
+      "profile_id": "identity-profile:certificate-eligibility",
+      "object_type": "certificate-eligibility",
+      "logical_identity_fields": [
+        "eligibility_id"
+      ],
+      "content_hash_field": "content_hash",
+      "snapshot_identity_fields": [
+        "basis_hash"
+      ],
+      "scope_fields": [
+        "scope_id",
+        "scope_hash"
+      ],
+      "immutability_boundary": "OBJECT_COMMIT",
+      "version_relationship": "METADATA_NOT_IDENTITY",
+      "scope_id": "protocol-v14.7",
+      "scope_hash": "b9b6f7c80a4dcaf44d5f264f7ebb8ba2ae6f67d024e005c998902d8544f72ca9",
+      "created_at": "2026-09-12T00:00:00Z",
+      "content_hash": "990212d611db89a0e5042e13bd81be70e130b92f01b30639276105c68353d5de"
+    },
+    {
+      "profile_id": "identity-profile:release",
+      "object_type": "release",
+      "logical_identity_fields": [
+        "release_id"
+      ],
+      "content_hash_field": "content_hash",
+      "snapshot_identity_fields": [],
+      "scope_fields": [
+        "scope_id",
+        "scope_hash"
+      ],
+      "immutability_boundary": "OBJECT_COMMIT",
+      "version_relationship": "METADATA_NOT_IDENTITY",
+      "scope_id": "protocol-v14.7",
+      "scope_hash": "b9b6f7c80a4dcaf44d5f264f7ebb8ba2ae6f67d024e005c998902d8544f72ca9",
+      "created_at": "2026-09-12T00:00:00Z",
+      "content_hash": "335823336f15477d5309eada31ac7d82d1306003f0337a2545396ace42528b22"
+    },
+    {
+      "profile_id": "identity-profile:release-gate",
+      "object_type": "release-gate",
+      "logical_identity_fields": [
+        "gate_id"
+      ],
+      "content_hash_field": "content_hash",
+      "snapshot_identity_fields": [],
+      "scope_fields": [
+        "scope_id",
+        "scope_hash"
+      ],
+      "immutability_boundary": "OBJECT_COMMIT",
+      "version_relationship": "METADATA_NOT_IDENTITY",
+      "scope_id": "protocol-v14.7",
+      "scope_hash": "b9b6f7c80a4dcaf44d5f264f7ebb8ba2ae6f67d024e005c998902d8544f72ca9",
+      "created_at": "2026-09-12T00:00:00Z",
+      "content_hash": "5c901d06090968e427c4a394f61c575b9554ceae01535f836fa33cd428d6c6f9"
+    },
+    {
+      "profile_id": "identity-profile:release-eligibility",
+      "object_type": "release-eligibility",
+      "logical_identity_fields": [
+        "eligibility_id"
+      ],
+      "content_hash_field": "content_hash",
+      "snapshot_identity_fields": [
+        "basis_hash"
+      ],
+      "scope_fields": [
+        "scope_id",
+        "scope_hash"
+      ],
+      "immutability_boundary": "OBJECT_COMMIT",
+      "version_relationship": "METADATA_NOT_IDENTITY",
+      "scope_id": "protocol-v14.7",
+      "scope_hash": "b9b6f7c80a4dcaf44d5f264f7ebb8ba2ae6f67d024e005c998902d8544f72ca9",
+      "created_at": "2026-09-12T00:00:00Z",
+      "content_hash": "592cd15c7fd4396121eb57b44bc14d724743d37f31d5517ccb4dc8f93dc2821f"
+    },
+    {
+      "profile_id": "identity-profile:release-decision",
+      "object_type": "release-decision",
+      "logical_identity_fields": [
+        "decision_id"
+      ],
+      "content_hash_field": "content_hash",
+      "snapshot_identity_fields": [
+        "snapshot_hash"
+      ],
+      "scope_fields": [
+        "scope_id",
+        "scope_hash"
+      ],
+      "immutability_boundary": "OBJECT_COMMIT",
+      "version_relationship": "METADATA_NOT_IDENTITY",
+      "scope_id": "protocol-v14.7",
+      "scope_hash": "b9b6f7c80a4dcaf44d5f264f7ebb8ba2ae6f67d024e005c998902d8544f72ca9",
+      "created_at": "2026-09-12T00:00:00Z",
+      "content_hash": "0483b60a98c6d46e9619ef366dd2c12913458c9bec410397f8af3692038fff7f"
+    },
+    {
+      "profile_id": "identity-profile:release-decision-event",
+      "object_type": "release-decision-event",
+      "logical_identity_fields": [
+        "event_id"
+      ],
+      "content_hash_field": "content_hash",
+      "snapshot_identity_fields": [],
+      "scope_fields": [
+        "scope_id",
+        "scope_hash"
+      ],
+      "immutability_boundary": "OBJECT_COMMIT",
+      "version_relationship": "METADATA_NOT_IDENTITY",
+      "scope_id": "protocol-v14.7",
+      "scope_hash": "b9b6f7c80a4dcaf44d5f264f7ebb8ba2ae6f67d024e005c998902d8544f72ca9",
+      "created_at": "2026-09-12T00:00:00Z",
+      "content_hash": "5f6efb8020c335ce937f11014685d09b5bc8d9288efe203839a9419cf00bb3de"
+    },
+    {
+      "profile_id": "identity-profile:release-execution",
+      "object_type": "release-execution",
+      "logical_identity_fields": [
+        "execution_id"
+      ],
+      "content_hash_field": "content_hash",
+      "snapshot_identity_fields": [],
+      "scope_fields": [
+        "scope_id",
+        "scope_hash"
+      ],
+      "immutability_boundary": "OBJECT_COMMIT",
+      "version_relationship": "METADATA_NOT_IDENTITY",
+      "scope_id": "protocol-v14.7",
+      "scope_hash": "b9b6f7c80a4dcaf44d5f264f7ebb8ba2ae6f67d024e005c998902d8544f72ca9",
+      "created_at": "2026-09-12T00:00:00Z",
+      "content_hash": "75b824e21fb2b061ead2ba82748334b6c8c3291545de91e20ea3845fafd3adfe"
+    },
+    {
+      "profile_id": "identity-profile:post-release-verification",
+      "object_type": "post-release-verification",
+      "logical_identity_fields": [
+        "verification_id"
+      ],
+      "content_hash_field": "content_hash",
+      "snapshot_identity_fields": [],
+      "scope_fields": [
+        "scope_id",
+        "scope_hash"
+      ],
+      "immutability_boundary": "OBJECT_COMMIT",
+      "version_relationship": "METADATA_NOT_IDENTITY",
+      "scope_id": "protocol-v14.7",
+      "scope_hash": "b9b6f7c80a4dcaf44d5f264f7ebb8ba2ae6f67d024e005c998902d8544f72ca9",
+      "created_at": "2026-09-12T00:00:00Z",
+      "content_hash": "47d63f05e9b74c2a0c920576eb13ee04857b2f828c08a3b084ab5eb148cdaf1a"
+    },
+    {
+      "profile_id": "identity-profile:current-certificate",
+      "object_type": "current-certificate",
+      "logical_identity_fields": [
+        "projection_id"
+      ],
+      "content_hash_field": "content_hash",
+      "snapshot_identity_fields": [
+        "history_hash"
+      ],
+      "scope_fields": [
+        "scope_id",
+        "scope_hash"
+      ],
+      "immutability_boundary": "OBJECT_COMMIT",
+      "version_relationship": "METADATA_NOT_IDENTITY",
+      "scope_id": "protocol-v14.7",
+      "scope_hash": "b9b6f7c80a4dcaf44d5f264f7ebb8ba2ae6f67d024e005c998902d8544f72ca9",
+      "created_at": "2026-09-12T00:00:00Z",
+      "content_hash": "18feef45dec3652ac9392bc78420498bae09fcb805da6e03a1813d9cdf98e11b"
+    },
+    {
+      "profile_id": "identity-profile:current-certificate-validity",
+      "object_type": "current-certificate-validity",
+      "logical_identity_fields": [
+        "projection_id"
+      ],
+      "content_hash_field": "content_hash",
+      "snapshot_identity_fields": [
+        "history_hash"
+      ],
+      "scope_fields": [
+        "scope_id",
+        "scope_hash"
+      ],
+      "immutability_boundary": "OBJECT_COMMIT",
+      "version_relationship": "METADATA_NOT_IDENTITY",
+      "scope_id": "protocol-v14.7",
+      "scope_hash": "b9b6f7c80a4dcaf44d5f264f7ebb8ba2ae6f67d024e005c998902d8544f72ca9",
+      "created_at": "2026-09-12T00:00:00Z",
+      "content_hash": "beb4ed4448654e05fcdf55855460df89fcb198ff67f3f2fbe226b5881a78184a"
+    },
+    {
+      "profile_id": "identity-profile:current-certificate-eligibility",
+      "object_type": "current-certificate-eligibility",
+      "logical_identity_fields": [
+        "projection_id"
+      ],
+      "content_hash_field": "content_hash",
+      "snapshot_identity_fields": [
+        "history_hash"
+      ],
+      "scope_fields": [
+        "scope_id",
+        "scope_hash"
+      ],
+      "immutability_boundary": "OBJECT_COMMIT",
+      "version_relationship": "METADATA_NOT_IDENTITY",
+      "scope_id": "protocol-v14.7",
+      "scope_hash": "b9b6f7c80a4dcaf44d5f264f7ebb8ba2ae6f67d024e005c998902d8544f72ca9",
+      "created_at": "2026-09-12T00:00:00Z",
+      "content_hash": "757e6c43d30280c318d697be00b4049d1dc1cc9b9a7f457e3c0a0fda978560b1"
+    },
+    {
+      "profile_id": "identity-profile:current-release-eligibility",
+      "object_type": "current-release-eligibility",
+      "logical_identity_fields": [
+        "projection_id"
+      ],
+      "content_hash_field": "content_hash",
+      "snapshot_identity_fields": [
+        "history_hash"
+      ],
+      "scope_fields": [
+        "scope_id",
+        "scope_hash"
+      ],
+      "immutability_boundary": "OBJECT_COMMIT",
+      "version_relationship": "METADATA_NOT_IDENTITY",
+      "scope_id": "protocol-v14.7",
+      "scope_hash": "b9b6f7c80a4dcaf44d5f264f7ebb8ba2ae6f67d024e005c998902d8544f72ca9",
+      "created_at": "2026-09-12T00:00:00Z",
+      "content_hash": "40968b81121414b86ca789838a6ae630c858d198f94df0e51572917d5b896417"
+    },
+    {
+      "profile_id": "identity-profile:current-release-decision",
+      "object_type": "current-release-decision",
+      "logical_identity_fields": [
+        "projection_id"
+      ],
+      "content_hash_field": "content_hash",
+      "snapshot_identity_fields": [
+        "history_hash"
+      ],
+      "scope_fields": [
+        "scope_id",
+        "scope_hash"
+      ],
+      "immutability_boundary": "OBJECT_COMMIT",
+      "version_relationship": "METADATA_NOT_IDENTITY",
+      "scope_id": "protocol-v14.7",
+      "scope_hash": "b9b6f7c80a4dcaf44d5f264f7ebb8ba2ae6f67d024e005c998902d8544f72ca9",
+      "created_at": "2026-09-12T00:00:00Z",
+      "content_hash": "0a2d046aa2c8db1538bd2ac7e820fe1cb9c59949172f3a0bcfec477fd47b6ef7"
+    },
+    {
+      "profile_id": "identity-profile:current-release-execution",
+      "object_type": "current-release-execution",
+      "logical_identity_fields": [
+        "projection_id"
+      ],
+      "content_hash_field": "content_hash",
+      "snapshot_identity_fields": [
+        "history_hash"
+      ],
+      "scope_fields": [
+        "scope_id",
+        "scope_hash"
+      ],
+      "immutability_boundary": "OBJECT_COMMIT",
+      "version_relationship": "METADATA_NOT_IDENTITY",
+      "scope_id": "protocol-v14.7",
+      "scope_hash": "b9b6f7c80a4dcaf44d5f264f7ebb8ba2ae6f67d024e005c998902d8544f72ca9",
+      "created_at": "2026-09-12T00:00:00Z",
+      "content_hash": "40fd799fb4d7101b08779bf637c748a8b750a42b9bafdf30bfeb8181f86f8082"
+    },
+    {
+      "profile_id": "identity-profile:current-post-release-verification",
+      "object_type": "current-post-release-verification",
+      "logical_identity_fields": [
+        "projection_id"
+      ],
+      "content_hash_field": "content_hash",
+      "snapshot_identity_fields": [
+        "history_hash"
+      ],
+      "scope_fields": [
+        "scope_id",
+        "scope_hash"
+      ],
+      "immutability_boundary": "OBJECT_COMMIT",
+      "version_relationship": "METADATA_NOT_IDENTITY",
+      "scope_id": "protocol-v14.7",
+      "scope_hash": "b9b6f7c80a4dcaf44d5f264f7ebb8ba2ae6f67d024e005c998902d8544f72ca9",
+      "created_at": "2026-09-12T00:00:00Z",
+      "content_hash": "ff77bee4b53f40149e2aeec9d88b372b2fcad7f2752c941243cf8e8cb975eaa4"
+    },
+    {
+      "profile_id": "identity-profile:predicate-definition",
+      "object_type": "predicate-definition",
+      "logical_identity_fields": [
+        "predicate_id"
+      ],
+      "content_hash_field": "content_hash",
+      "snapshot_identity_fields": [],
+      "scope_fields": [
+        "scope_id",
+        "scope_hash"
+      ],
+      "immutability_boundary": "OBJECT_COMMIT",
+      "version_relationship": "METADATA_NOT_IDENTITY",
+      "scope_id": "protocol-v14.7",
+      "scope_hash": "b9b6f7c80a4dcaf44d5f264f7ebb8ba2ae6f67d024e005c998902d8544f72ca9",
+      "created_at": "2026-09-12T00:00:00Z",
+      "content_hash": "3c7c711f4ca9d2d88236dd01108c32bdf609acd8840990a83b07482f1ed246c6"
+    },
+    {
+      "profile_id": "identity-profile:state-transition-event",
+      "object_type": "state-transition-event",
+      "logical_identity_fields": [
+        "event_id"
+      ],
+      "content_hash_field": "content_hash",
+      "snapshot_identity_fields": [],
+      "scope_fields": [
+        "scope_id",
+        "scope_hash"
+      ],
+      "immutability_boundary": "OBJECT_COMMIT",
+      "version_relationship": "METADATA_NOT_IDENTITY",
+      "scope_id": "protocol-v14.7",
+      "scope_hash": "b9b6f7c80a4dcaf44d5f264f7ebb8ba2ae6f67d024e005c998902d8544f72ca9",
+      "created_at": "2026-09-12T00:00:00Z",
+      "content_hash": "d31976a1df3b4f8faf3417c86ce8ce07d6c6ba1de4bde891e1117ab104f74915"
+    },
+    {
+      "profile_id": "identity-profile:evaluation-event",
+      "object_type": "evaluation-event",
+      "logical_identity_fields": [
+        "event_id"
+      ],
+      "content_hash_field": "content_hash",
+      "snapshot_identity_fields": [],
+      "scope_fields": [
+        "scope_id",
+        "scope_hash"
+      ],
+      "immutability_boundary": "OBJECT_COMMIT",
+      "version_relationship": "METADATA_NOT_IDENTITY",
+      "scope_id": "protocol-v14.7",
+      "scope_hash": "b9b6f7c80a4dcaf44d5f264f7ebb8ba2ae6f67d024e005c998902d8544f72ca9",
+      "created_at": "2026-09-12T00:00:00Z",
+      "content_hash": "38eac93f1f4383e144bc2a36ee99bf37af4fd312c508cb2bd54965739563dd99"
+    },
+    {
+      "profile_id": "identity-profile:failure-record",
+      "object_type": "failure-record",
+      "logical_identity_fields": [
+        "failure_id"
+      ],
+      "content_hash_field": "content_hash",
+      "snapshot_identity_fields": [],
+      "scope_fields": [
+        "scope_id",
+        "scope_hash"
+      ],
+      "immutability_boundary": "OBJECT_COMMIT",
+      "version_relationship": "METADATA_NOT_IDENTITY",
+      "scope_id": "protocol-v14.7",
+      "scope_hash": "b9b6f7c80a4dcaf44d5f264f7ebb8ba2ae6f67d024e005c998902d8544f72ca9",
+      "created_at": "2026-09-12T00:00:00Z",
+      "content_hash": "5f700873d7efbd05c55c2b10728b1414fcfaa16635b0f2e508beab77a925e517"
+    },
+    {
+      "profile_id": "identity-profile:current-projection",
+      "object_type": "current-projection",
+      "logical_identity_fields": [
+        "projection_id"
+      ],
+      "content_hash_field": "content_hash",
+      "snapshot_identity_fields": [
+        "history_hash"
+      ],
+      "scope_fields": [
+        "scope_id",
+        "scope_hash"
+      ],
+      "immutability_boundary": "OBJECT_COMMIT",
+      "version_relationship": "METADATA_NOT_IDENTITY",
+      "scope_id": "protocol-v14.7",
+      "scope_hash": "b9b6f7c80a4dcaf44d5f264f7ebb8ba2ae6f67d024e005c998902d8544f72ca9",
+      "created_at": "2026-09-12T00:00:00Z",
+      "content_hash": "12e86b3815042f87beecf94bb41dbe637fb75178a05d96f794d803377e77e1c8"
+    },
+    {
+      "profile_id": "identity-profile:evaluation-record",
+      "object_type": "evaluation-record",
+      "logical_identity_fields": [
+        "evaluation_record_id"
+      ],
+      "content_hash_field": "content_hash",
+      "snapshot_identity_fields": [],
+      "scope_fields": [
+        "scope_id",
+        "scope_hash"
+      ],
+      "immutability_boundary": "OBJECT_COMMIT",
+      "version_relationship": "METADATA_NOT_IDENTITY",
+      "scope_id": "protocol-v14.7",
+      "scope_hash": "b9b6f7c80a4dcaf44d5f264f7ebb8ba2ae6f67d024e005c998902d8544f72ca9",
+      "created_at": "2026-09-12T00:00:00Z",
+      "content_hash": "e186e503fdda61cc92536551c8a42f71c58a4b143776a21be477deffd4483fd7"
+    },
+    {
+      "profile_id": "identity-profile:authority-effective-status",
+      "object_type": "authority-effective-status",
+      "logical_identity_fields": [
+        "authority_effectiveness_id"
+      ],
+      "content_hash_field": "content_hash",
+      "snapshot_identity_fields": [
+        "basis_hash"
+      ],
+      "scope_fields": [
+        "scope_id",
+        "scope_hash"
+      ],
+      "immutability_boundary": "OBJECT_COMMIT",
+      "version_relationship": "METADATA_NOT_IDENTITY",
+      "scope_id": "protocol-v14.7",
+      "scope_hash": "b9b6f7c80a4dcaf44d5f264f7ebb8ba2ae6f67d024e005c998902d8544f72ca9",
+      "created_at": "2026-09-12T00:00:00Z",
+      "content_hash": "b97a448aee505f0e84e519eb47a8f61f618b6a7e1ea1d566e3cf2c1faac943e9"
+    },
+    {
+      "profile_id": "identity-profile:object-identity-profile",
+      "object_type": "object-identity-profile",
+      "logical_identity_fields": [
+        "profile_id"
+      ],
+      "content_hash_field": "content_hash",
+      "snapshot_identity_fields": [
+        "snapshot_identity_fields"
+      ],
+      "scope_fields": [
+        "scope_id",
+        "scope_hash"
+      ],
+      "immutability_boundary": "OBJECT_COMMIT",
+      "version_relationship": "METADATA_NOT_IDENTITY",
+      "scope_id": "protocol-v14.7",
+      "scope_hash": "b9b6f7c80a4dcaf44d5f264f7ebb8ba2ae6f67d024e005c998902d8544f72ca9",
+      "created_at": "2026-09-12T00:00:00Z",
+      "content_hash": "7cf72d0175fabd5cb32646982d3107e102415a42a75253b747de4be50835d077"
+    },
+    {
+      "profile_id": "identity-profile:reuse-assessment",
+      "object_type": "reuse-assessment",
+      "logical_identity_fields": [
+        "assessment_id"
+      ],
+      "content_hash_field": "content_hash",
+      "snapshot_identity_fields": [],
+      "scope_fields": [
+        "scope_id",
+        "scope_hash"
+      ],
+      "immutability_boundary": "OBJECT_COMMIT",
+      "version_relationship": "METADATA_NOT_IDENTITY",
+      "scope_id": "protocol-v14.7",
+      "scope_hash": "b9b6f7c80a4dcaf44d5f264f7ebb8ba2ae6f67d024e005c998902d8544f72ca9",
+      "created_at": "2026-09-12T00:00:00Z",
+      "content_hash": "f71f196c7e5e97ea180895c16521c346aa23b9a01076e0d64f2d9b8cf740352f"
+    },
+    {
+      "profile_id": "identity-profile:precedence-rule",
+      "object_type": "precedence-rule",
+      "logical_identity_fields": [
+        "precedence_id"
+      ],
+      "content_hash_field": "content_hash",
+      "snapshot_identity_fields": [],
+      "scope_fields": [
+        "scope_id",
+        "scope_hash"
+      ],
+      "immutability_boundary": "OBJECT_COMMIT",
+      "version_relationship": "METADATA_NOT_IDENTITY",
+      "scope_id": "protocol-v14.7",
+      "scope_hash": "b9b6f7c80a4dcaf44d5f264f7ebb8ba2ae6f67d024e005c998902d8544f72ca9",
+      "created_at": "2026-09-12T00:00:00Z",
+      "content_hash": "45d2cd7e19d43d56b1d0d3c5d1ecd76fb553cc25621449ed58ae9dded81951d0"
+    },
+    {
+      "profile_id": "identity-profile:transition-rule",
+      "object_type": "transition-rule",
+      "logical_identity_fields": [
+        "transition_id"
+      ],
+      "content_hash_field": "content_hash",
+      "snapshot_identity_fields": [],
+      "scope_fields": [
+        "scope_id",
+        "scope_hash"
+      ],
+      "immutability_boundary": "OBJECT_COMMIT",
+      "version_relationship": "METADATA_NOT_IDENTITY",
+      "scope_id": "protocol-v14.7",
+      "scope_hash": "b9b6f7c80a4dcaf44d5f264f7ebb8ba2ae6f67d024e005c998902d8544f72ca9",
+      "created_at": "2026-09-12T00:00:00Z",
+      "content_hash": "6ef320aee3d898883ff8be2e51a44bc0adfa6373adc8a5cc3d134728dba2f30c"
+    },
+    {
+      "profile_id": "identity-profile:concurrency-control",
+      "object_type": "concurrency-control",
+      "logical_identity_fields": [
+        "control_id"
+      ],
+      "content_hash_field": "content_hash",
+      "snapshot_identity_fields": [],
+      "scope_fields": [
+        "scope_id",
+        "scope_hash"
+      ],
+      "immutability_boundary": "OBJECT_COMMIT",
+      "version_relationship": "METADATA_NOT_IDENTITY",
+      "scope_id": "protocol-v14.7",
+      "scope_hash": "b9b6f7c80a4dcaf44d5f264f7ebb8ba2ae6f67d024e005c998902d8544f72ca9",
+      "created_at": "2026-09-12T00:00:00Z",
+      "content_hash": "6b7efa1e21f46db382ab6659c9c84b1860797c2df27c313447d47735fc2005f0"
+    },
+    {
+      "profile_id": "identity-profile:ambiguity-entry",
+      "object_type": "ambiguity-entry",
+      "logical_identity_fields": [
+        "ambiguity_id"
+      ],
+      "content_hash_field": "content_hash",
+      "snapshot_identity_fields": [],
+      "scope_fields": [
+        "scope_id",
+        "scope_hash"
+      ],
+      "immutability_boundary": "OBJECT_COMMIT",
+      "version_relationship": "METADATA_NOT_IDENTITY",
+      "scope_id": "protocol-v14.7",
+      "scope_hash": "b9b6f7c80a4dcaf44d5f264f7ebb8ba2ae6f67d024e005c998902d8544f72ca9",
+      "created_at": "2026-09-12T00:00:00Z",
+      "content_hash": "06cbd24a4a2205ec6ba2b2d12514548bd5e4d61ed3ed9b9d8af2958e82fad63f"
+    },
+    {
+      "profile_id": "identity-profile:contradiction-entry",
+      "object_type": "contradiction-entry",
+      "logical_identity_fields": [
+        "contradiction_id"
+      ],
+      "content_hash_field": "content_hash",
+      "snapshot_identity_fields": [],
+      "scope_fields": [
+        "scope_id",
+        "scope_hash"
+      ],
+      "immutability_boundary": "OBJECT_COMMIT",
+      "version_relationship": "METADATA_NOT_IDENTITY",
+      "scope_id": "protocol-v14.7",
+      "scope_hash": "b9b6f7c80a4dcaf44d5f264f7ebb8ba2ae6f67d024e005c998902d8544f72ca9",
+      "created_at": "2026-09-12T00:00:00Z",
+      "content_hash": "cb3a808af442640fc546664fc46d68584815e1a223216b7e66358535b2471e8c"
+    },
+    {
+      "profile_id": "identity-profile:derived-state-classification",
+      "object_type": "derived-state-classification",
+      "logical_identity_fields": [
+        "classification_id"
+      ],
+      "content_hash_field": "content_hash",
+      "snapshot_identity_fields": [],
+      "scope_fields": [
+        "scope_id",
+        "scope_hash"
+      ],
+      "immutability_boundary": "OBJECT_COMMIT",
+      "version_relationship": "METADATA_NOT_IDENTITY",
+      "scope_id": "protocol-v14.7",
+      "scope_hash": "b9b6f7c80a4dcaf44d5f264f7ebb8ba2ae6f67d024e005c998902d8544f72ca9",
+      "created_at": "2026-09-12T00:00:00Z",
+      "content_hash": "ac1c19199d0c1026940a2d57282fcb82d715a6b9b38477554ef36eba845e5cee"
+    }
+  ],
+  "count": 40,
+  "all_registered_objects_covered": true
+}

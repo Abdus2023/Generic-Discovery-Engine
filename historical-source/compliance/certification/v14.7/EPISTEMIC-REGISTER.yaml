@@ -1,0 +1,43 @@
+{
+  "schema_version": "14.7",
+  "epistemic_status": "SUPPORTED",
+  "claim_class": "NORMATIVE_REQUIREMENT",
+  "normative_origin": "USER_SUPPLIED_V14_6_BASELINE_AUDITED_IN_V14_7",
+  "labels": [
+    "PROVED",
+    "SUPPORTED",
+    "INFERRED",
+    "CONJECTURED",
+    "CONTRADICTED",
+    "UNKNOWN"
+  ],
+  "claim_classes": [
+    "SPECIFICATION_FACT",
+    "DERIVED_SEMANTIC_RULE",
+    "ENGINEERING_RECOMMENDATION",
+    "IMPLEMENTATION_CHOICE",
+    "OPEN_QUESTION"
+  ],
+  "claims": [
+    {
+      "claim": "V14_6_IS_LOCAL_HISTORICAL_PACKAGE",
+      "label": "CONTRADICTED",
+      "class": "SPECIFICATION_FACT"
+    },
+    {
+      "claim": "V14_6_USER_TEXT_IS_TASK_BASELINE",
+      "label": "SUPPORTED",
+      "class": "SPECIFICATION_FACT"
+    },
+    {
+      "claim": "LINEARIZABLE_APPEND_REQUIRED",
+      "label": "SUPPORTED",
+      "class": "DERIVED_SEMANTIC_RULE"
+    },
+    {
+      "claim": "OPTIMISTIC_VS_PESSIMISTIC_STORAGE",
+      "label": "UNKNOWN",
+      "class": "IMPLEMENTATION_CHOICE"
+    }
+  ]
+}

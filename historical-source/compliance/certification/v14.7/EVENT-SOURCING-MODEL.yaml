@@ -1,0 +1,98 @@
+{
+  "schema_version": "14.7",
+  "epistemic_status": "SUPPORTED",
+  "claim_class": "NORMATIVE_REQUIREMENT",
+  "normative_origin": "USER_SUPPLIED_V14_6_BASELINE_AUDITED_IN_V14_7",
+  "mutable_looking_objects": [
+    {
+      "object": "CertificateCandidate",
+      "event_source": "CERTIFICATECANDIDATE_EVENT_STREAM",
+      "current_projection": "CURRENT_CERTIFICATECANDIDATE",
+      "projection_algorithm": "CERTIFICATECANDIDATE_REDUCER",
+      "projection_validity": "ALL_EVENTS_VALID_ORDERED_AND_GUARDED",
+      "rebuild": "FROM_GENESIS_VERIFY_EACH_EVENT"
+    },
+    {
+      "object": "Certificate",
+      "event_source": "CERTIFICATE_EVENT_STREAM",
+      "current_projection": "CURRENT_CERTIFICATE",
+      "projection_algorithm": "CERTIFICATE_REDUCER",
+      "projection_validity": "ALL_EVENTS_VALID_ORDERED_AND_GUARDED",
+      "rebuild": "FROM_GENESIS_VERIFY_EACH_EVENT"
+    },
+    {
+      "object": "CertificateValidity",
+      "event_source": "CERTIFICATEVALIDITY_EVENT_STREAM",
+      "current_projection": "CURRENT_CERTIFICATEVALIDITY",
+      "projection_algorithm": "CERTIFICATEVALIDITY_REDUCER",
+      "projection_validity": "ALL_EVENTS_VALID_ORDERED_AND_GUARDED",
+      "rebuild": "FROM_GENESIS_VERIFY_EACH_EVENT"
+    },
+    {
+      "object": "CertificateEligibility",
+      "event_source": "CERTIFICATEELIGIBILITY_EVENT_STREAM",
+      "current_projection": "CURRENT_CERTIFICATEELIGIBILITY",
+      "projection_algorithm": "CERTIFICATEELIGIBILITY_REDUCER",
+      "projection_validity": "ALL_EVENTS_VALID_ORDERED_AND_GUARDED",
+      "rebuild": "FROM_GENESIS_VERIFY_EACH_EVENT"
+    },
+    {
+      "object": "ReleaseEligibility",
+      "event_source": "RELEASEELIGIBILITY_EVENT_STREAM",
+      "current_projection": "CURRENT_RELEASEELIGIBILITY",
+      "projection_algorithm": "RELEASEELIGIBILITY_REDUCER",
+      "projection_validity": "ALL_EVENTS_VALID_ORDERED_AND_GUARDED",
+      "rebuild": "FROM_GENESIS_VERIFY_EACH_EVENT"
+    },
+    {
+      "object": "ReleaseDecision",
+      "event_source": "RELEASEDECISION_EVENT_STREAM",
+      "current_projection": "CURRENT_RELEASEDECISION",
+      "projection_algorithm": "RELEASEDECISION_REDUCER",
+      "projection_validity": "ALL_EVENTS_VALID_ORDERED_AND_GUARDED",
+      "rebuild": "FROM_GENESIS_VERIFY_EACH_EVENT"
+    },
+    {
+      "object": "ReleaseExecution",
+      "event_source": "RELEASEEXECUTION_EVENT_STREAM",
+      "current_projection": "CURRENT_RELEASEEXECUTION",
+      "projection_algorithm": "RELEASEEXECUTION_REDUCER",
+      "projection_validity": "ALL_EVENTS_VALID_ORDERED_AND_GUARDED",
+      "rebuild": "FROM_GENESIS_VERIFY_EACH_EVENT"
+    },
+    {
+      "object": "PostReleaseVerification",
+      "event_source": "POSTRELEASEVERIFICATION_EVENT_STREAM",
+      "current_projection": "CURRENT_POSTRELEASEVERIFICATION",
+      "projection_algorithm": "POSTRELEASEVERIFICATION_REDUCER",
+      "projection_validity": "ALL_EVENTS_VALID_ORDERED_AND_GUARDED",
+      "rebuild": "FROM_GENESIS_VERIFY_EACH_EVENT"
+    },
+    {
+      "object": "IssuanceAuthority",
+      "event_source": "ISSUANCEAUTHORITY_EVENT_STREAM",
+      "current_projection": "CURRENT_ISSUANCEAUTHORITY",
+      "projection_algorithm": "ISSUANCEAUTHORITY_REDUCER",
+      "projection_validity": "ALL_EVENTS_VALID_ORDERED_AND_GUARDED",
+      "rebuild": "FROM_GENESIS_VERIFY_EACH_EVENT"
+    },
+    {
+      "object": "Evaluation",
+      "event_source": "EVALUATION_EVENT_STREAM",
+      "current_projection": "CURRENT_EVALUATION",
+      "projection_algorithm": "EVALUATION_REDUCER",
+      "projection_validity": "ALL_EVENTS_VALID_ORDERED_AND_GUARDED",
+      "rebuild": "FROM_GENESIS_VERIFY_EACH_EVENT"
+    }
+  ],
+  "failures": {
+    "MISSING": "PROJECTION_FAILURE",
+    "DUPLICATED": "EVENT_ORDER_FAILURE",
+    "REORDERED": "EVENT_ORDER_FAILURE",
+    "CORRUPTED": "INTEGRITY_FAILURE",
+    "MISSING_REFERENCE": "REFERENCE_FAILURE",
+    "INVALID_SIGNATURE": "INTEGRITY_FAILURE",
+    "INVALID_SEQUENCE": "EVENT_ORDER_FAILURE"
+  },
+  "repair_history": false
+}

@@ -1,0 +1,140 @@
+{
+  "schema_version": "14.7",
+  "epistemic_status": "SUPPORTED",
+  "claim_class": "NORMATIVE_REQUIREMENT",
+  "normative_origin": "USER_SUPPLIED_V14_6_BASELINE_AUDITED_IN_V14_7",
+  "controls": [
+    {
+      "operation": "TWO_ISSUERS",
+      "aggregate_scope": "CERTIFICATE_ID",
+      "idempotency_scope": "CERTIFICATE_ID",
+      "uniqueness_constraints": [
+        "CERTIFICATE_ID",
+        "ISSUANCE_IDEMPOTENCY_KEY"
+      ],
+      "commit_mode": "LINEARIZABLE_ATOMIC_COMPARE_AND_APPEND",
+      "conflict_result": "CONCURRENCY_FAILURE",
+      "winner_rule": "FIRST_SUCCESSFUL_AUTHORITATIVE_COMMIT_INDEX_ALLOCATION",
+      "retry_rule": "SAME_KEY_RETURNS_SAME_COMMITTED_RESULT;NEW_KEY_REVALIDATES_AND_REAUTHORIZES",
+      "control_id": "V147-CC-001",
+      "scope_id": "protocol-v14.7",
+      "scope_hash": "b9b6f7c80a4dcaf44d5f264f7ebb8ba2ae6f67d024e005c998902d8544f72ca9",
+      "created_at": "2026-09-12T00:00:00Z",
+      "content_hash": "8138b738e3c7fa913417fc86212bc57960af79af4b682d2317ae04ca586aaa06"
+    },
+    {
+      "operation": "TWO_RELEASE_APPROVERS",
+      "aggregate_scope": "RELEASE_DECISION_STREAM",
+      "idempotency_scope": "RELEASE_DECISION_STREAM",
+      "uniqueness_constraints": [
+        "DECISION_ID",
+        "DECISION_IDEMPOTENCY_KEY"
+      ],
+      "commit_mode": "LINEARIZABLE_ATOMIC_COMPARE_AND_APPEND",
+      "conflict_result": "CONCURRENCY_FAILURE",
+      "winner_rule": "FIRST_SUCCESSFUL_AUTHORITATIVE_COMMIT_INDEX_ALLOCATION",
+      "retry_rule": "SAME_KEY_RETURNS_SAME_COMMITTED_RESULT;NEW_KEY_REVALIDATES_AND_REAUTHORIZES",
+      "control_id": "V147-CC-002",
+      "scope_id": "protocol-v14.7",
+      "scope_hash": "b9b6f7c80a4dcaf44d5f264f7ebb8ba2ae6f67d024e005c998902d8544f72ca9",
+      "created_at": "2026-09-12T00:00:00Z",
+      "content_hash": "f52b5e60a75a99f86c1f942a8daed32bcd1a842a0d9012d44e652e2b6f530b38"
+    },
+    {
+      "operation": "TWO_EXECUTION_WORKERS",
+      "aggregate_scope": "EXECUTION_ATTEMPT_STREAM",
+      "idempotency_scope": "EXECUTION_ATTEMPT_STREAM",
+      "uniqueness_constraints": [
+        "EXECUTION_ID",
+        "EXECUTION_IDEMPOTENCY_KEY"
+      ],
+      "commit_mode": "LINEARIZABLE_ATOMIC_COMPARE_AND_APPEND",
+      "conflict_result": "CONCURRENCY_FAILURE",
+      "winner_rule": "FIRST_SUCCESSFUL_AUTHORITATIVE_COMMIT_INDEX_ALLOCATION",
+      "retry_rule": "SAME_KEY_RETURNS_SAME_COMMITTED_RESULT;NEW_KEY_REVALIDATES_AND_REAUTHORIZES",
+      "control_id": "V147-CC-003",
+      "scope_id": "protocol-v14.7",
+      "scope_hash": "b9b6f7c80a4dcaf44d5f264f7ebb8ba2ae6f67d024e005c998902d8544f72ca9",
+      "created_at": "2026-09-12T00:00:00Z",
+      "content_hash": "e5d3b49c9c4a1e99f772f074dca66fb5081dc5542fb55e48fddea5a71988d435"
+    },
+    {
+      "operation": "TWO_ROLLBACK_WORKERS",
+      "aggregate_scope": "ROLLBACK_OPERATION",
+      "idempotency_scope": "ROLLBACK_OPERATION",
+      "uniqueness_constraints": [
+        "ROLLBACK_IDEMPOTENCY_KEY"
+      ],
+      "commit_mode": "LINEARIZABLE_ATOMIC_COMPARE_AND_APPEND",
+      "conflict_result": "CONCURRENCY_FAILURE",
+      "winner_rule": "FIRST_SUCCESSFUL_AUTHORITATIVE_COMMIT_INDEX_ALLOCATION",
+      "retry_rule": "SAME_KEY_RETURNS_SAME_COMMITTED_RESULT;NEW_KEY_REVALIDATES_AND_REAUTHORIZES",
+      "control_id": "V147-CC-004",
+      "scope_id": "protocol-v14.7",
+      "scope_hash": "b9b6f7c80a4dcaf44d5f264f7ebb8ba2ae6f67d024e005c998902d8544f72ca9",
+      "created_at": "2026-09-12T00:00:00Z",
+      "content_hash": "dc97ecdb31ba05d576bdbddd53962617d990bad6b5f5c6ae01ecf27dfebca13a"
+    },
+    {
+      "operation": "DUPLICATE_EVENTS",
+      "aggregate_scope": "AGGREGATE_STREAM",
+      "idempotency_scope": "AGGREGATE_STREAM",
+      "uniqueness_constraints": [
+        "EVENT_ID",
+        "EVENT_HASH",
+        "SEQUENCE_NO"
+      ],
+      "commit_mode": "LINEARIZABLE_ATOMIC_COMPARE_AND_APPEND",
+      "conflict_result": "CONCURRENCY_FAILURE",
+      "winner_rule": "FIRST_SUCCESSFUL_AUTHORITATIVE_COMMIT_INDEX_ALLOCATION",
+      "retry_rule": "SAME_KEY_RETURNS_SAME_COMMITTED_RESULT;NEW_KEY_REVALIDATES_AND_REAUTHORIZES",
+      "control_id": "V147-CC-005",
+      "scope_id": "protocol-v14.7",
+      "scope_hash": "b9b6f7c80a4dcaf44d5f264f7ebb8ba2ae6f67d024e005c998902d8544f72ca9",
+      "created_at": "2026-09-12T00:00:00Z",
+      "content_hash": "3346a484afdfafb36da96a79cd49afc9d79dc26ffacddb088194b89c1b36df6d"
+    },
+    {
+      "operation": "RETRY_RACES",
+      "aggregate_scope": "OPERATION_SCOPE",
+      "idempotency_scope": "OPERATION_SCOPE",
+      "uniqueness_constraints": [
+        "IDEMPOTENCY_KEY"
+      ],
+      "commit_mode": "LINEARIZABLE_ATOMIC_COMPARE_AND_APPEND",
+      "conflict_result": "CONCURRENCY_FAILURE",
+      "winner_rule": "FIRST_SUCCESSFUL_AUTHORITATIVE_COMMIT_INDEX_ALLOCATION",
+      "retry_rule": "SAME_KEY_RETURNS_SAME_COMMITTED_RESULT;NEW_KEY_REVALIDATES_AND_REAUTHORIZES",
+      "control_id": "V147-CC-006",
+      "scope_id": "protocol-v14.7",
+      "scope_hash": "b9b6f7c80a4dcaf44d5f264f7ebb8ba2ae6f67d024e005c998902d8544f72ca9",
+      "created_at": "2026-09-12T00:00:00Z",
+      "content_hash": "d0901869d8d4cbddc88e9ac99f2a0cbe2691ecefd0dec384530cdf12d7fee6f1"
+    },
+    {
+      "operation": "PROJECTION_RACES",
+      "aggregate_scope": "PROJECTION_SUBJECT",
+      "idempotency_scope": "PROJECTION_SUBJECT",
+      "uniqueness_constraints": [
+        "HISTORY_HEAD_HASH",
+        "PROJECTION_VERSION"
+      ],
+      "commit_mode": "LINEARIZABLE_ATOMIC_COMPARE_AND_APPEND",
+      "conflict_result": "CONCURRENCY_FAILURE",
+      "winner_rule": "FIRST_SUCCESSFUL_AUTHORITATIVE_COMMIT_INDEX_ALLOCATION",
+      "retry_rule": "SAME_KEY_RETURNS_SAME_COMMITTED_RESULT;NEW_KEY_REVALIDATES_AND_REAUTHORIZES",
+      "control_id": "V147-CC-007",
+      "scope_id": "protocol-v14.7",
+      "scope_hash": "b9b6f7c80a4dcaf44d5f264f7ebb8ba2ae6f67d024e005c998902d8544f72ca9",
+      "created_at": "2026-09-12T00:00:00Z",
+      "content_hash": "89995bf99925ae2adee15985238b9df9c9da74413964c4d0def2afce962a4c53"
+    }
+  ],
+  "required_semantics": "LINEARIZABLE_ATOMIC_COMPARE_AND_APPEND",
+  "allowed_mechanisms": [
+    "OPTIMISTIC_CAS",
+    "PESSIMISTIC_SERIALIZABLE_LOCK"
+  ],
+  "mechanism_profile_required": true,
+  "timestamp_winner": false
+}

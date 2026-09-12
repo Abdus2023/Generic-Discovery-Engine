@@ -1,0 +1,89 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://generic-discovery-engine.invalid/compliance/v14.7/precedence-rule.schema.yaml",
+  "title": "precedence-rule",
+  "type": "object",
+  "required": [
+    "precedence_id",
+    "domain",
+    "input_states",
+    "ordering",
+    "output",
+    "reason",
+    "content_hash",
+    "scope_id",
+    "scope_hash",
+    "created_at"
+  ],
+  "properties": {
+    "precedence_id": {
+      "type": "string",
+      "pattern": "^[A-Za-z0-9][A-Za-z0-9._:/-]*$"
+    },
+    "domain": {
+      "type": "string",
+      "enum": [
+        "EVALUATION_INTEGRITY",
+        "PREDICATE_AGGREGATION",
+        "ELIGIBILITY",
+        "AUTHORIZATION",
+        "RELEASE_DECISION",
+        "STATE_TRANSITION"
+      ]
+    },
+    "input_states": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      },
+      "minItems": 1
+    },
+    "ordering": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      },
+      "minItems": 1
+    },
+    "output": {
+      "type": "string",
+      "minLength": 1
+    },
+    "reason": {
+      "type": "string",
+      "minLength": 1
+    },
+    "content_hash": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$"
+    },
+    "scope_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "scope_hash": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$"
+    },
+    "created_at": {
+      "type": "string",
+      "format": "date-time"
+    }
+  },
+  "additionalProperties": false,
+  "x-identity-fields": [
+    "precedence_id"
+  ],
+  "x-immutable": true,
+  "x-self-excluding-hash-field": "content_hash",
+  "x-reference-resolution": "EXACTLY_ONE_TYPED_HASH_MATCHED_TARGET",
+  "x-nullability": "ONLY_EXPLICIT_ONEOF_NULL_FIELDS_ARE_NULLABLE",
+  "x-timestamp-semantics": "RFC3339_UTC_HALF_OPEN_INTERVALS_WITH_PROFILED_SKEW",
+  "x-scope-validation": "CANONICAL_SCOPE_SET_AND_SCOPE_HASH",
+  "x-version-relationship": "VERSION_LABEL_IS_METADATA_NOT_IDENTITY",
+  "x-normative-rules": [
+    "rules in different domains cannot be composed as one universal ordering"
+  ]
+}

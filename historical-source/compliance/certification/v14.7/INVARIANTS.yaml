@@ -1,0 +1,309 @@
+{
+  "schema_version": "14.7",
+  "epistemic_status": "SUPPORTED",
+  "claim_class": "NORMATIVE_REQUIREMENT",
+  "normative_origin": "USER_SUPPLIED_V14_6_BASELINE_AUDITED_IN_V14_7",
+  "invariants": [
+    {
+      "invariant_id": "V147-INV-001",
+      "proposition": "INVALID_REQUIRED_INPUT_IMPLIES_NOT_AUTHORIZED",
+      "machine_check": "ASSERT_INVALID_REQUIRED_INPUT_IMPLIES_NOT_AUTHORIZED"
+    },
+    {
+      "invariant_id": "V147-INV-002",
+      "proposition": "ELIGIBLE_DOES_NOT_IMPLY_APPROVED",
+      "machine_check": "ASSERT_ELIGIBLE_DOES_NOT_IMPLY_APPROVED"
+    },
+    {
+      "invariant_id": "V147-INV-003",
+      "proposition": "APPROVED_DOES_NOT_IMPLY_EXECUTED",
+      "machine_check": "ASSERT_APPROVED_DOES_NOT_IMPLY_EXECUTED"
+    },
+    {
+      "invariant_id": "V147-INV-004",
+      "proposition": "EXECUTED_DOES_NOT_IMPLY_VERIFIED",
+      "machine_check": "ASSERT_EXECUTED_DOES_NOT_IMPLY_VERIFIED"
+    },
+    {
+      "invariant_id": "V147-INV-005",
+      "proposition": "VALID_DOES_NOT_IMPLY_RELEASE_AUTHORIZED",
+      "machine_check": "ASSERT_VALID_DOES_NOT_IMPLY_RELEASE_AUTHORIZED"
+    },
+    {
+      "invariant_id": "V147-INV-006",
+      "proposition": "UNKNOWN_DOES_NOT_IMPLY_TRUE",
+      "machine_check": "ASSERT_UNKNOWN_DOES_NOT_IMPLY_TRUE"
+    },
+    {
+      "invariant_id": "V147-INV-007",
+      "proposition": "BLOCKED_DOES_NOT_IMPLY_TRUE",
+      "machine_check": "ASSERT_BLOCKED_DOES_NOT_IMPLY_TRUE"
+    },
+    {
+      "invariant_id": "V147-INV-008",
+      "proposition": "FALSE_NOT_EQUAL_INVALID",
+      "machine_check": "ASSERT_FALSE_NOT_EQUAL_INVALID"
+    },
+    {
+      "invariant_id": "V147-INV-009",
+      "proposition": "UNKNOWN_NOT_EQUAL_BLOCKED",
+      "machine_check": "ASSERT_UNKNOWN_NOT_EQUAL_BLOCKED"
+    },
+    {
+      "invariant_id": "V147-INV-010",
+      "proposition": "LIFECYCLE_NOT_DERIVED_TRUTH",
+      "machine_check": "ASSERT_LIFECYCLE_NOT_DERIVED_TRUTH"
+    },
+    {
+      "invariant_id": "V147-INV-011",
+      "proposition": "EVALUATION_LIFECYCLE_NOT_RESULT",
+      "machine_check": "ASSERT_EVALUATION_LIFECYCLE_NOT_RESULT"
+    },
+    {
+      "invariant_id": "V147-INV-012",
+      "proposition": "AUTHORITY_POLICY_NOT_CREDENTIAL",
+      "machine_check": "ASSERT_AUTHORITY_POLICY_NOT_CREDENTIAL"
+    },
+    {
+      "invariant_id": "V147-INV-013",
+      "proposition": "EVALUATOR_NOT_SELF_AUTHORIZED",
+      "machine_check": "ASSERT_EVALUATOR_NOT_SELF_AUTHORIZED"
+    },
+    {
+      "invariant_id": "V147-INV-014",
+      "proposition": "EVALUATOR_CHANGE_IMPLIES_NOT_REUSABLE",
+      "machine_check": "ASSERT_EVALUATOR_CHANGE_IMPLIES_NOT_REUSABLE"
+    },
+    {
+      "invariant_id": "V147-INV-015",
+      "proposition": "CONTEXT_CHANGE_IMPLIES_NEW_EVALUATION",
+      "machine_check": "ASSERT_CONTEXT_CHANGE_IMPLIES_NEW_EVALUATION"
+    },
+    {
+      "invariant_id": "V147-INV-016",
+      "proposition": "FRESHNESS_REQUIRES_CLOCK_PROFILE",
+      "machine_check": "ASSERT_FRESHNESS_REQUIRES_CLOCK_PROFILE"
+    },
+    {
+      "invariant_id": "V147-INV-017",
+      "proposition": "EMPTY_POLICY_REQUIRES_EXPLICIT_ACTION",
+      "machine_check": "ASSERT_EMPTY_POLICY_REQUIRES_EXPLICIT_ACTION"
+    },
+    {
+      "invariant_id": "V147-INV-018",
+      "proposition": "HISTORY_PROJECTION_EQUALS_CURRENT_PROJECTION",
+      "machine_check": "ASSERT_HISTORY_PROJECTION_EQUALS_CURRENT_PROJECTION"
+    },
+    {
+      "invariant_id": "V147-INV-019",
+      "proposition": "INVALID_HISTORY_IMPLIES_NO_TRUSTED_PROJECTION",
+      "machine_check": "ASSERT_INVALID_HISTORY_IMPLIES_NO_TRUSTED_PROJECTION"
+    },
+    {
+      "invariant_id": "V147-INV-020",
+      "proposition": "DECISION_BASIS_CHANGED_IMPLIES_NOT_REUSABLE",
+      "machine_check": "ASSERT_DECISION_BASIS_CHANGED_IMPLIES_NOT_REUSABLE"
+    },
+    {
+      "invariant_id": "V147-INV-021",
+      "proposition": "CERTIFICATE_VALID_NOT_ISSUANCE_REUSABLE",
+      "machine_check": "ASSERT_CERTIFICATE_VALID_NOT_ISSUANCE_REUSABLE"
+    },
+    {
+      "invariant_id": "V147-INV-022",
+      "proposition": "CERTIFICATE_REUSABLE_REQUIRES_VALIDITY_VALID",
+      "machine_check": "ASSERT_CERTIFICATE_REUSABLE_REQUIRES_VALIDITY_VALID"
+    },
+    {
+      "invariant_id": "V147-INV-023",
+      "proposition": "ISSUANCE_REUSE_REQUIRES_UNUSED_OR_IDEMPOTENT_SAME_OPERATION",
+      "machine_check": "ASSERT_ISSUANCE_REUSE_REQUIRES_UNUSED_OR_IDEMPOTENT_SAME_OPERATION"
+    },
+    {
+      "invariant_id": "V147-INV-024",
+      "proposition": "RELEASE_ID_NOT_ARTIFACT_HASH",
+      "machine_check": "ASSERT_RELEASE_ID_NOT_ARTIFACT_HASH"
+    },
+    {
+      "invariant_id": "V147-INV-025",
+      "proposition": "HASH_TYPES_NOT_SUBSTITUTABLE",
+      "machine_check": "ASSERT_HASH_TYPES_NOT_SUBSTITUTABLE"
+    },
+    {
+      "invariant_id": "V147-INV-026",
+      "proposition": "VERSION_NOT_IDENTITY",
+      "machine_check": "ASSERT_VERSION_NOT_IDENTITY"
+    },
+    {
+      "invariant_id": "V147-INV-027",
+      "proposition": "NOT_BEFORE_EQUAL_ACTIVE",
+      "machine_check": "ASSERT_NOT_BEFORE_EQUAL_ACTIVE"
+    },
+    {
+      "invariant_id": "V147-INV-028",
+      "proposition": "NOT_AFTER_EQUAL_INACTIVE",
+      "machine_check": "ASSERT_NOT_AFTER_EQUAL_INACTIVE"
+    },
+    {
+      "invariant_id": "V147-INV-029",
+      "proposition": "TIMESTAMP_EQUALITY_NOT_ORDER",
+      "machine_check": "ASSERT_TIMESTAMP_EQUALITY_NOT_ORDER"
+    },
+    {
+      "invariant_id": "V147-INV-030",
+      "proposition": "SEQUENCE_UNIQUE_PER_STREAM",
+      "machine_check": "ASSERT_SEQUENCE_UNIQUE_PER_STREAM"
+    },
+    {
+      "invariant_id": "V147-INV-031",
+      "proposition": "SEQUENCE_CONTIGUOUS_PER_STREAM",
+      "machine_check": "ASSERT_SEQUENCE_CONTIGUOUS_PER_STREAM"
+    },
+    {
+      "invariant_id": "V147-INV-032",
+      "proposition": "PREVIOUS_EVENT_EXACT",
+      "machine_check": "ASSERT_PREVIOUS_EVENT_EXACT"
+    },
+    {
+      "invariant_id": "V147-INV-033",
+      "proposition": "ORDER_SIGNALS_COHERE",
+      "machine_check": "ASSERT_ORDER_SIGNALS_COHERE"
+    },
+    {
+      "invariant_id": "V147-INV-034",
+      "proposition": "LATE_EVENT_CANNOT_INSERT_HISTORY",
+      "machine_check": "ASSERT_LATE_EVENT_CANNOT_INSERT_HISTORY"
+    },
+    {
+      "invariant_id": "V147-INV-035",
+      "proposition": "FUTURE_TIMESTAMP_OUTSIDE_SKEW_INVALID",
+      "machine_check": "ASSERT_FUTURE_TIMESTAMP_OUTSIDE_SKEW_INVALID"
+    },
+    {
+      "invariant_id": "V147-INV-036",
+      "proposition": "AUTHORITY_EXPIRY_DERIVED",
+      "machine_check": "ASSERT_AUTHORITY_EXPIRY_DERIVED"
+    },
+    {
+      "invariant_id": "V147-INV-037",
+      "proposition": "REVOKED_AUTHORITY_NOT_EFFECTIVE",
+      "machine_check": "ASSERT_REVOKED_AUTHORITY_NOT_EFFECTIVE"
+    },
+    {
+      "invariant_id": "V147-INV-038",
+      "proposition": "DELEGATE_SCOPE_SUBSET_PARENT",
+      "machine_check": "ASSERT_DELEGATE_SCOPE_SUBSET_PARENT"
+    },
+    {
+      "invariant_id": "V147-INV-039",
+      "proposition": "MULTIPARTY_APPROVALS_DISTINCT",
+      "machine_check": "ASSERT_MULTIPARTY_APPROVALS_DISTINCT"
+    },
+    {
+      "invariant_id": "V147-INV-040",
+      "proposition": "ZERO_THRESHOLD_INVALID",
+      "machine_check": "ASSERT_ZERO_THRESHOLD_INVALID"
+    },
+    {
+      "invariant_id": "V147-INV-041",
+      "proposition": "IDEMPOTENCY_KEY_UNIQUE_PER_OPERATION_SCOPE",
+      "machine_check": "ASSERT_IDEMPOTENCY_KEY_UNIQUE_PER_OPERATION_SCOPE"
+    },
+    {
+      "invariant_id": "V147-INV-042",
+      "proposition": "ATOMIC_COMPARE_APPEND_SINGLE_WINNER",
+      "machine_check": "ASSERT_ATOMIC_COMPARE_APPEND_SINGLE_WINNER"
+    },
+    {
+      "invariant_id": "V147-INV-043",
+      "proposition": "CONFLICT_NOT_RESOLVED_BY_TIMESTAMP",
+      "machine_check": "ASSERT_CONFLICT_NOT_RESOLVED_BY_TIMESTAMP"
+    },
+    {
+      "invariant_id": "V147-INV-044",
+      "proposition": "PROJECTION_PUBLICATION_MATCHES_HISTORY_HEAD",
+      "machine_check": "ASSERT_PROJECTION_PUBLICATION_MATCHES_HISTORY_HEAD"
+    },
+    {
+      "invariant_id": "V147-INV-045",
+      "proposition": "RETRY_DOES_NOT_REUSE_AUTHORIZATION_IMPLICITLY",
+      "machine_check": "ASSERT_RETRY_DOES_NOT_REUSE_AUTHORIZATION_IMPLICITLY"
+    },
+    {
+      "invariant_id": "V147-INV-046",
+      "proposition": "ROLLBACK_REQUIRES_AUTHORIZATION",
+      "machine_check": "ASSERT_ROLLBACK_REQUIRES_AUTHORIZATION"
+    },
+    {
+      "invariant_id": "V147-INV-047",
+      "proposition": "POST_RELEASE_FAILURE_NO_HISTORY_REWRITE",
+      "machine_check": "ASSERT_POST_RELEASE_FAILURE_NO_HISTORY_REWRITE"
+    },
+    {
+      "invariant_id": "V147-INV-048",
+      "proposition": "ISSUED_TO_CANCELLED_FORBIDDEN",
+      "machine_check": "ASSERT_ISSUED_TO_CANCELLED_FORBIDDEN"
+    },
+    {
+      "invariant_id": "V147-INV-049",
+      "proposition": "CANDIDATE_NOT_CERTIFICATE_DRAFT",
+      "machine_check": "ASSERT_CANDIDATE_NOT_CERTIFICATE_DRAFT"
+    },
+    {
+      "invariant_id": "V147-INV-050",
+      "proposition": "CANDIDATE_RETENTION_NOT_LIFECYCLE",
+      "machine_check": "ASSERT_CANDIDATE_RETENTION_NOT_LIFECYCLE"
+    },
+    {
+      "invariant_id": "V147-INV-051",
+      "proposition": "DERIVED_STATE_NOT_MANUALLY_AUTHORITATIVE",
+      "machine_check": "ASSERT_DERIVED_STATE_NOT_MANUALLY_AUTHORITATIVE"
+    },
+    {
+      "invariant_id": "V147-INV-052",
+      "proposition": "FALSE_DOMINATES_BLOCKED_ONLY_IN_PREDICATE_DOMAIN",
+      "machine_check": "ASSERT_FALSE_DOMINATES_BLOCKED_ONLY_IN_PREDICATE_DOMAIN"
+    },
+    {
+      "invariant_id": "V147-INV-053",
+      "proposition": "INVALID_TERMINATES_BEFORE_PREDICATE_AGGREGATION",
+      "machine_check": "ASSERT_INVALID_TERMINATES_BEFORE_PREDICATE_AGGREGATION"
+    },
+    {
+      "invariant_id": "V147-INV-054",
+      "proposition": "DEFERRED_REQUIRES_EXPLICIT_AUTHORIZED_ACTION",
+      "machine_check": "ASSERT_DEFERRED_REQUIRES_EXPLICIT_AUTHORIZED_ACTION"
+    },
+    {
+      "invariant_id": "V147-INV-055",
+      "proposition": "MISSING_REQUIRED_REFERENCE_INVALID",
+      "machine_check": "ASSERT_MISSING_REQUIRED_REFERENCE_INVALID"
+    },
+    {
+      "invariant_id": "V147-INV-056",
+      "proposition": "UNAVAILABLE_PREREQUISITE_BLOCKED",
+      "machine_check": "ASSERT_UNAVAILABLE_PREREQUISITE_BLOCKED"
+    },
+    {
+      "invariant_id": "V147-INV-057",
+      "proposition": "STALE_NOT_FALSE",
+      "machine_check": "ASSERT_STALE_NOT_FALSE"
+    },
+    {
+      "invariant_id": "V147-INV-058",
+      "proposition": "NO_FUTURE_EVIDENCE_BACKFLOW",
+      "machine_check": "ASSERT_NO_FUTURE_EVIDENCE_BACKFLOW"
+    },
+    {
+      "invariant_id": "V147-INV-059",
+      "proposition": "EVENT_IMMUTABLE_AFTER_COMMIT",
+      "machine_check": "ASSERT_EVENT_IMMUTABLE_AFTER_COMMIT"
+    },
+    {
+      "invariant_id": "V147-INV-060",
+      "proposition": "CURRENT_PROJECTION_NOT_EVIDENCE",
+      "machine_check": "ASSERT_CURRENT_PROJECTION_NOT_EVIDENCE"
+    }
+  ],
+  "count": 60
+}

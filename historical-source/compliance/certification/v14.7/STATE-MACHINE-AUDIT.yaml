@@ -1,0 +1,122 @@
+{
+  "schema_version": "14.7",
+  "epistemic_status": "SUPPORTED",
+  "claim_class": "NORMATIVE_REQUIREMENT",
+  "normative_origin": "USER_SUPPLIED_V14_6_BASELINE_AUDITED_IN_V14_7",
+  "objects": [
+    {
+      "object_type": "Certificate",
+      "dead_states": [],
+      "unreachable_states": [],
+      "ambiguous_transitions": [],
+      "implicit_transitions": [],
+      "illegal_transition_policy": "STATE_TRANSITION_FAILURE",
+      "model_kind": "EVENT_SOURCED_LIFECYCLE"
+    },
+    {
+      "object_type": "CertificateCandidate",
+      "dead_states": [],
+      "unreachable_states": [],
+      "ambiguous_transitions": [],
+      "implicit_transitions": [],
+      "illegal_transition_policy": "STATE_TRANSITION_FAILURE",
+      "model_kind": "EVENT_SOURCED_LIFECYCLE"
+    },
+    {
+      "object_type": "CertificateEligibility",
+      "dead_states": [],
+      "unreachable_states": [],
+      "ambiguous_transitions": [],
+      "implicit_transitions": [],
+      "illegal_transition_policy": "STATE_TRANSITION_FAILURE",
+      "model_kind": "DERIVED_IMMUTABLE_SNAPSHOT"
+    },
+    {
+      "object_type": "CertificateValidity",
+      "dead_states": [],
+      "unreachable_states": [],
+      "ambiguous_transitions": [],
+      "implicit_transitions": [],
+      "illegal_transition_policy": "STATE_TRANSITION_FAILURE",
+      "model_kind": "DERIVED_IMMUTABLE_SNAPSHOT"
+    },
+    {
+      "object_type": "Evaluation",
+      "dead_states": [],
+      "unreachable_states": [],
+      "ambiguous_transitions": [],
+      "implicit_transitions": [],
+      "illegal_transition_policy": "STATE_TRANSITION_FAILURE",
+      "model_kind": "EVENT_SOURCED_LIFECYCLE"
+    },
+    {
+      "object_type": "IssuanceAuthority",
+      "dead_states": [],
+      "unreachable_states": [],
+      "ambiguous_transitions": [],
+      "implicit_transitions": [],
+      "illegal_transition_policy": "STATE_TRANSITION_FAILURE",
+      "model_kind": "EVENT_SOURCED_LIFECYCLE"
+    },
+    {
+      "object_type": "PostReleaseVerification",
+      "dead_states": [],
+      "unreachable_states": [],
+      "ambiguous_transitions": [],
+      "implicit_transitions": [],
+      "illegal_transition_policy": "STATE_TRANSITION_FAILURE",
+      "model_kind": "DERIVED_IMMUTABLE_SNAPSHOT"
+    },
+    {
+      "object_type": "Release",
+      "dead_states": [],
+      "unreachable_states": [],
+      "ambiguous_transitions": [],
+      "implicit_transitions": [],
+      "illegal_transition_policy": "STATE_TRANSITION_FAILURE",
+      "model_kind": "IMMUTABLE_DEFINITION_OR_DECISION"
+    },
+    {
+      "object_type": "ReleaseDecision",
+      "dead_states": [],
+      "unreachable_states": [],
+      "ambiguous_transitions": [],
+      "implicit_transitions": [],
+      "illegal_transition_policy": "STATE_TRANSITION_FAILURE",
+      "model_kind": "IMMUTABLE_DEFINITION_OR_DECISION"
+    },
+    {
+      "object_type": "ReleaseEligibility",
+      "dead_states": [],
+      "unreachable_states": [],
+      "ambiguous_transitions": [],
+      "implicit_transitions": [],
+      "illegal_transition_policy": "STATE_TRANSITION_FAILURE",
+      "model_kind": "DERIVED_IMMUTABLE_SNAPSHOT"
+    },
+    {
+      "object_type": "ReleaseExecution",
+      "dead_states": [],
+      "unreachable_states": [],
+      "ambiguous_transitions": [],
+      "implicit_transitions": [],
+      "illegal_transition_policy": "STATE_TRANSITION_FAILURE",
+      "model_kind": "EVENT_SOURCED_LIFECYCLE"
+    },
+    {
+      "object_type": "ReleaseGate",
+      "dead_states": [],
+      "unreachable_states": [],
+      "ambiguous_transitions": [],
+      "implicit_transitions": [],
+      "illegal_transition_policy": "STATE_TRANSITION_FAILURE",
+      "model_kind": "IMMUTABLE_DEFINITION_OR_DECISION"
+    }
+  ],
+  "noted_missing_transition_closed": [
+    "CANDIDATE_RETENTION_SEPARATED",
+    "AUTHORITY_EXPIRY_DERIVED",
+    "ISSUED_CANCEL_FORBIDDEN",
+    "RETRY_CREATES_NEW_ATTEMPT"
+  ]
+}

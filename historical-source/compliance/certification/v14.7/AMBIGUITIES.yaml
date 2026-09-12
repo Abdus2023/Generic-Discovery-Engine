@@ -1,0 +1,77 @@
+{
+  "schema_version": "14.7",
+  "epistemic_status": "SUPPORTED",
+  "claim_class": "NORMATIVE_REQUIREMENT",
+  "normative_origin": "USER_SUPPLIED_V14_6_BASELINE_AUDITED_IN_V14_7",
+  "objects": [
+    {
+      "ambiguity_id": "V147-AMB-001",
+      "question": "Which cryptographic credential mechanism represents authority?",
+      "affected_objects": [
+        "IssuanceAuthority",
+        "ReleaseAuthority",
+        "AuthorityApproval"
+      ],
+      "why_unresolved": "Generic protocol cannot select deployment key infrastructure",
+      "minimum_safe_rule": "Deployment profile binds algorithm, credential_ref, verifier hash and trust roots",
+      "default_fail_closed_behavior": "AUTHORITY_INVALID_AND_NO_AUTHORIZATION",
+      "classification": "SAFETY_RELEVANT_OPEN_QUESTION",
+      "scope_id": "protocol-v14.7",
+      "scope_hash": "b9b6f7c80a4dcaf44d5f264f7ebb8ba2ae6f67d024e005c998902d8544f72ca9",
+      "created_at": "2026-09-12T00:00:00Z",
+      "content_hash": "158283247c4a886878087f5815fbded3b29ac8f8d7da12b135b712f85b391445"
+    },
+    {
+      "ambiguity_id": "V147-AMB-002",
+      "question": "Which trusted clock implementation supplies evaluation and freshness time?",
+      "affected_objects": [
+        "EvaluationContext",
+        "FreshnessResult",
+        "TemporalProfile"
+      ],
+      "why_unresolved": "Clock technology is deployment-specific",
+      "minimum_safe_rule": "Profile binds clock identity, UTC conversion, maximum skew and trusted timestamp evidence",
+      "default_fail_closed_behavior": "TIME_DEPENDENT_EVALUATION_INVALID",
+      "classification": "SAFETY_RELEVANT_OPEN_QUESTION",
+      "scope_id": "protocol-v14.7",
+      "scope_hash": "b9b6f7c80a4dcaf44d5f264f7ebb8ba2ae6f67d024e005c998902d8544f72ca9",
+      "created_at": "2026-09-12T00:00:00Z",
+      "content_hash": "b6e5ee2558437312b05510ea715d3df3e7558c90c2924872cf47de98a3ada51c"
+    },
+    {
+      "ambiguity_id": "V147-AMB-003",
+      "question": "Which external trust roots are accepted?",
+      "affected_objects": [
+        "Credential",
+        "Signature",
+        "SnapshotSeal"
+      ],
+      "why_unresolved": "Trust anchors belong to deployment security policy",
+      "minimum_safe_rule": "Profile enumerates immutable root identities and validity intervals",
+      "default_fail_closed_behavior": "REFERENCE_OR_INTEGRITY_INVALID",
+      "classification": "SAFETY_RELEVANT_OPEN_QUESTION",
+      "scope_id": "protocol-v14.7",
+      "scope_hash": "b9b6f7c80a4dcaf44d5f264f7ebb8ba2ae6f67d024e005c998902d8544f72ca9",
+      "created_at": "2026-09-12T00:00:00Z",
+      "content_hash": "3a0b9a17fc51c76662a07a79e1360b7335ede06746ee143298fe286b7447f970"
+    },
+    {
+      "ambiguity_id": "V147-AMB-004",
+      "question": "Optimistic or pessimistic storage mechanism?",
+      "affected_objects": [
+        "EventStore"
+      ],
+      "why_unresolved": "Both can implement the same required linearizable semantics",
+      "minimum_safe_rule": "Mechanism must pass concurrency vectors and expose atomic compare-and-append",
+      "default_fail_closed_behavior": "CONCURRENCY_FAILURE_IF_ATOMICITY_NOT_PROVED",
+      "classification": "NON_NORMATIVE_IMPLEMENTATION_CHOICE",
+      "scope_id": "protocol-v14.7",
+      "scope_hash": "b9b6f7c80a4dcaf44d5f264f7ebb8ba2ae6f67d024e005c998902d8544f72ca9",
+      "created_at": "2026-09-12T00:00:00Z",
+      "content_hash": "166b9b13ba19ffac7f07f6147306c3857ec41094a6f019f950be443a9b0784e2"
+    }
+  ],
+  "count": 4,
+  "normative_open_count": 3,
+  "implementation_choice_count": 1
+}

@@ -1,0 +1,30 @@
+{
+  "schema_version": "14.7",
+  "epistemic_status": "SUPPORTED",
+  "claim_class": "NORMATIVE_REQUIREMENT",
+  "normative_origin": "USER_SUPPLIED_V14_6_BASELINE_AUDITED_IN_V14_7",
+  "required_equalities": [
+    "CONTEXT_CONTENT_HASH",
+    "EVALUATOR_ID",
+    "EVALUATOR_VERSION",
+    "EVALUATOR_HASH",
+    "PREDICATE_DEFINITION_HASH",
+    "INPUT_SET_HASH",
+    "EVIDENCE_SET_HASH",
+    "POLICY_HASH",
+    "SCOPE_HASH",
+    "ENVIRONMENT_HASH",
+    "TEMPORAL_PROFILE_HASH",
+    "EVALUATED_AT",
+    "ALGORITHM_ID_AND_VERSION"
+  ],
+  "canonicalization": "UTF8_SORTED_KEY_COMPACT_JSON_WITH_EXPLICIT_NULLS",
+  "nondeterministic_sources": [
+    "WALL_CLOCK_NOT_IN_CONTEXT",
+    "RANDOMNESS",
+    "THREAD_ORDER",
+    "CACHE_STATE",
+    "UNSTATED_ENVIRONMENT"
+  ],
+  "any_difference": "NOT_REPRODUCIBLE_AND_NOT_REUSABLE"
+}

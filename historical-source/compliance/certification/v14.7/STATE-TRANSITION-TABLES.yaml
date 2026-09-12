@@ -1,0 +1,1453 @@
+{
+  "schema_version": "14.7",
+  "epistemic_status": "SUPPORTED",
+  "claim_class": "NORMATIVE_REQUIREMENT",
+  "normative_origin": "USER_SUPPLIED_V14_6_BASELINE_AUDITED_IN_V14_7",
+  "objects": [
+    "Certificate",
+    "CertificateCandidate",
+    "CertificateEligibility",
+    "CertificateValidity",
+    "Evaluation",
+    "IssuanceAuthority",
+    "PostReleaseVerification",
+    "Release",
+    "ReleaseDecision",
+    "ReleaseEligibility",
+    "ReleaseExecution",
+    "ReleaseGate"
+  ],
+  "transitions": [
+    {
+      "transition_id": "V147-TR-001",
+      "object_type": "CertificateCandidate",
+      "from_state": "NONE",
+      "event": "CANDIDATE_CREATED",
+      "guards": [
+        "IDENTITY_UNIQUE",
+        "PROPOSAL_HASH_VALID"
+      ],
+      "required_evidence": [
+        "PROPOSAL",
+        "AUDIT_SNAPSHOT"
+      ],
+      "authority": null,
+      "to_state": "CREATED",
+      "side_effects": [
+        "APPEND_EVENT"
+      ],
+      "forbidden_side_effects": [
+        "CREATE_CERTIFICATE",
+        "AUTHORIZE"
+      ],
+      "scope_id": "protocol-v14.7",
+      "scope_hash": "b9b6f7c80a4dcaf44d5f264f7ebb8ba2ae6f67d024e005c998902d8544f72ca9",
+      "created_at": "2026-09-12T00:00:00Z",
+      "content_hash": "2fc23a6d634e397c83ab4ae1309322ed2fef5f00566c91e16fa83d170a30061a"
+    },
+    {
+      "transition_id": "V147-TR-002",
+      "object_type": "CertificateCandidate",
+      "from_state": "CREATED",
+      "event": "CANDIDATE_ACTIVATED",
+      "guards": [
+        "L0_L2_VALID",
+        "POLICIES_RESOLVE"
+      ],
+      "required_evidence": [
+        "VALIDATION_RESULTS"
+      ],
+      "authority": null,
+      "to_state": "ACTIVE",
+      "side_effects": [
+        "APPEND_EVENT"
+      ],
+      "forbidden_side_effects": [
+        "ISSUE_CERTIFICATE"
+      ],
+      "scope_id": "protocol-v14.7",
+      "scope_hash": "b9b6f7c80a4dcaf44d5f264f7ebb8ba2ae6f67d024e005c998902d8544f72ca9",
+      "created_at": "2026-09-12T00:00:00Z",
+      "content_hash": "353922f96cd6110b0e48be27d9130ce945ef4ed5c6e44514b1b1bcc00da07309"
+    },
+    {
+      "transition_id": "V147-TR-003",
+      "object_type": "CertificateCandidate",
+      "from_state": "CREATED",
+      "event": "CANDIDATE_CANCELLED",
+      "guards": [
+        "CANCELLATION_POLICY_TRUE"
+      ],
+      "required_evidence": [
+        "CANCELLATION_REASON"
+      ],
+      "authority": "CANDIDATE_CANCEL_AUTHORITY",
+      "to_state": "CANCELLED",
+      "side_effects": [
+        "APPEND_EVENT"
+      ],
+      "forbidden_side_effects": [
+        "DELETE_HISTORY"
+      ],
+      "scope_id": "protocol-v14.7",
+      "scope_hash": "b9b6f7c80a4dcaf44d5f264f7ebb8ba2ae6f67d024e005c998902d8544f72ca9",
+      "created_at": "2026-09-12T00:00:00Z",
+      "content_hash": "a12fba5ab538faea5f962b9650ee335f1629149f63c5ca38ff48d5c0ede57c01"
+    },
+    {
+      "transition_id": "V147-TR-004",
+      "object_type": "CertificateCandidate",
+      "from_state": "CREATED",
+      "event": "CANDIDATE_EXPIRED",
+      "guards": [
+        "NOT_AFTER_REACHED"
+      ],
+      "required_evidence": [
+        "SIGNED_INTERVAL"
+      ],
+      "authority": null,
+      "to_state": "EXPIRED",
+      "side_effects": [
+        "APPEND_OR_DERIVE_EXPIRY"
+      ],
+      "forbidden_side_effects": [
+        "FABRICATE_VALIDITY"
+      ],
+      "scope_id": "protocol-v14.7",
+      "scope_hash": "b9b6f7c80a4dcaf44d5f264f7ebb8ba2ae6f67d024e005c998902d8544f72ca9",
+      "created_at": "2026-09-12T00:00:00Z",
+      "content_hash": "380d04df8cfd8808494eb2f2cc38af003d79de1c6accda435d366cb2a82ee041"
+    },
+    {
+      "transition_id": "V147-TR-005",
+      "object_type": "CertificateCandidate",
+      "from_state": "ACTIVE",
+      "event": "CANDIDATE_CANCELLED",
+      "guards": [
+        "CANCELLATION_POLICY_TRUE"
+      ],
+      "required_evidence": [
+        "CANCELLATION_REASON"
+      ],
+      "authority": "CANDIDATE_CANCEL_AUTHORITY",
+      "to_state": "CANCELLED",
+      "side_effects": [
+        "APPEND_EVENT"
+      ],
+      "forbidden_side_effects": [
+        "DELETE_HISTORY"
+      ],
+      "scope_id": "protocol-v14.7",
+      "scope_hash": "b9b6f7c80a4dcaf44d5f264f7ebb8ba2ae6f67d024e005c998902d8544f72ca9",
+      "created_at": "2026-09-12T00:00:00Z",
+      "content_hash": "147e7fb1f5a2ddfcd7fbe8428f410f85492d26bf5cc9c6ae2b3e3a73eadda22b"
+    },
+    {
+      "transition_id": "V147-TR-006",
+      "object_type": "CertificateCandidate",
+      "from_state": "ACTIVE",
+      "event": "CANDIDATE_EXPIRED",
+      "guards": [
+        "NOT_AFTER_REACHED"
+      ],
+      "required_evidence": [
+        "SIGNED_INTERVAL"
+      ],
+      "authority": null,
+      "to_state": "EXPIRED",
+      "side_effects": [
+        "APPEND_OR_DERIVE_EXPIRY"
+      ],
+      "forbidden_side_effects": [
+        "FABRICATE_VALIDITY"
+      ],
+      "scope_id": "protocol-v14.7",
+      "scope_hash": "b9b6f7c80a4dcaf44d5f264f7ebb8ba2ae6f67d024e005c998902d8544f72ca9",
+      "created_at": "2026-09-12T00:00:00Z",
+      "content_hash": "ccc1e25ccb7d11bc1a65e557aebe21f99085fc7494f82116f37f44ba9fdee52c"
+    },
+    {
+      "transition_id": "V147-TR-007",
+      "object_type": "CertificateCandidate",
+      "from_state": "ACTIVE",
+      "event": "CERTIFICATE_CREATED",
+      "guards": [
+        "ISSUANCE_AUTHORIZATION_AUTHORIZED",
+        "DRAFT_ID_UNIQUE"
+      ],
+      "required_evidence": [
+        "ISSUANCE_AUTHORIZATION"
+      ],
+      "authority": "CERTIFICATE_CONSTRUCTION_AUTHORITY",
+      "to_state": "CONSUMED",
+      "side_effects": [
+        "APPEND_EVENT",
+        "CREATE_DRAFT_OBJECT"
+      ],
+      "forbidden_side_effects": [
+        "ISSUE_CERTIFICATE"
+      ],
+      "scope_id": "protocol-v14.7",
+      "scope_hash": "b9b6f7c80a4dcaf44d5f264f7ebb8ba2ae6f67d024e005c998902d8544f72ca9",
+      "created_at": "2026-09-12T00:00:00Z",
+      "content_hash": "33552f5b6ecc254fb1661e0a77770b9d1e20fec61466c1da8b41bff0dff0bc11"
+    },
+    {
+      "transition_id": "V147-TR-008",
+      "object_type": "Certificate",
+      "from_state": "NONE",
+      "event": "CERTIFICATE_CREATED",
+      "guards": [
+        "CANDIDATE_ACTIVE",
+        "CONSTRUCTION_GUARDS_TRUE"
+      ],
+      "required_evidence": [
+        "CANDIDATE",
+        "AUTHORIZATION"
+      ],
+      "authority": "CERTIFICATE_CONSTRUCTION_AUTHORITY",
+      "to_state": "DRAFT",
+      "side_effects": [
+        "APPEND_EVENT"
+      ],
+      "forbidden_side_effects": [
+        "MARK_ISSUED"
+      ],
+      "scope_id": "protocol-v14.7",
+      "scope_hash": "b9b6f7c80a4dcaf44d5f264f7ebb8ba2ae6f67d024e005c998902d8544f72ca9",
+      "created_at": "2026-09-12T00:00:00Z",
+      "content_hash": "478671f3d10940bb25d49594e00e0fe5c8622fd37cc0abbc3367192139567b71"
+    },
+    {
+      "transition_id": "V147-TR-009",
+      "object_type": "Certificate",
+      "from_state": "DRAFT",
+      "event": "CERTIFICATE_ISSUED",
+      "guards": [
+        "ALL_ISSUANCE_GUARDS_TRUE"
+      ],
+      "required_evidence": [
+        "AUTHORIZATION",
+        "SNAPSHOT_SEAL",
+        "PAYLOAD"
+      ],
+      "authority": "ISSUANCE_AUTHORITY",
+      "to_state": "ISSUED",
+      "side_effects": [
+        "APPEND_EVENT"
+      ],
+      "forbidden_side_effects": [
+        "MARK_VALID"
+      ],
+      "scope_id": "protocol-v14.7",
+      "scope_hash": "b9b6f7c80a4dcaf44d5f264f7ebb8ba2ae6f67d024e005c998902d8544f72ca9",
+      "created_at": "2026-09-12T00:00:00Z",
+      "content_hash": "c89e870b0ea5fc8d7f1c90502d90d643f453a5f5a10062d9946b9be9ed360d36"
+    },
+    {
+      "transition_id": "V147-TR-010",
+      "object_type": "Certificate",
+      "from_state": "DRAFT",
+      "event": "CERTIFICATE_CANCELLED",
+      "guards": [
+        "CANCEL_POLICY_TRUE"
+      ],
+      "required_evidence": [
+        "CANCEL_REASON"
+      ],
+      "authority": "CERTIFICATE_CANCEL_AUTHORITY",
+      "to_state": "CANCELLED",
+      "side_effects": [
+        "APPEND_EVENT"
+      ],
+      "forbidden_side_effects": [
+        "DELETE_DRAFT"
+      ],
+      "scope_id": "protocol-v14.7",
+      "scope_hash": "b9b6f7c80a4dcaf44d5f264f7ebb8ba2ae6f67d024e005c998902d8544f72ca9",
+      "created_at": "2026-09-12T00:00:00Z",
+      "content_hash": "a6342ac0803ca1840b9b6c61906c198abf118c03a18ed05077ae472140ccfba9"
+    },
+    {
+      "transition_id": "V147-TR-011",
+      "object_type": "Certificate",
+      "from_state": "ISSUED",
+      "event": "CERTIFICATE_REVOKED",
+      "guards": [
+        "EVENT_GUARD_TRUE"
+      ],
+      "required_evidence": [
+        "POLICY",
+        "TEMPORAL_OR_CAUSE_EVIDENCE"
+      ],
+      "authority": "REVOCATION_AUTHORITY",
+      "to_state": "REVOKED",
+      "side_effects": [
+        "APPEND_EVENT"
+      ],
+      "forbidden_side_effects": [
+        "MUTATE_PRIOR_EVENT",
+        "SET_VALIDITY_DIRECTLY"
+      ],
+      "scope_id": "protocol-v14.7",
+      "scope_hash": "b9b6f7c80a4dcaf44d5f264f7ebb8ba2ae6f67d024e005c998902d8544f72ca9",
+      "created_at": "2026-09-12T00:00:00Z",
+      "content_hash": "23636f8c1fa6c4a32f49e4dca7f30aa9d5f51fb481745872475b344dd4f3b068"
+    },
+    {
+      "transition_id": "V147-TR-012",
+      "object_type": "Certificate",
+      "from_state": "ISSUED",
+      "event": "CERTIFICATE_SUPERSEDED",
+      "guards": [
+        "EVENT_GUARD_TRUE"
+      ],
+      "required_evidence": [
+        "POLICY",
+        "TEMPORAL_OR_CAUSE_EVIDENCE"
+      ],
+      "authority": "SUPERSESSION_AUTHORITY",
+      "to_state": "SUPERSEDED",
+      "side_effects": [
+        "APPEND_EVENT"
+      ],
+      "forbidden_side_effects": [
+        "MUTATE_PRIOR_EVENT",
+        "SET_VALIDITY_DIRECTLY"
+      ],
+      "scope_id": "protocol-v14.7",
+      "scope_hash": "b9b6f7c80a4dcaf44d5f264f7ebb8ba2ae6f67d024e005c998902d8544f72ca9",
+      "created_at": "2026-09-12T00:00:00Z",
+      "content_hash": "d9de87d6365fe1c146eddfaf3d37d6adfc913817f587606e35ce0e9ce153d7a7"
+    },
+    {
+      "transition_id": "V147-TR-013",
+      "object_type": "Certificate",
+      "from_state": "ISSUED",
+      "event": "CERTIFICATE_EXPIRED",
+      "guards": [
+        "EVENT_GUARD_TRUE"
+      ],
+      "required_evidence": [
+        "POLICY",
+        "TEMPORAL_OR_CAUSE_EVIDENCE"
+      ],
+      "authority": null,
+      "to_state": "EXPIRED",
+      "side_effects": [
+        "APPEND_EVENT"
+      ],
+      "forbidden_side_effects": [
+        "MUTATE_PRIOR_EVENT",
+        "SET_VALIDITY_DIRECTLY"
+      ],
+      "scope_id": "protocol-v14.7",
+      "scope_hash": "b9b6f7c80a4dcaf44d5f264f7ebb8ba2ae6f67d024e005c998902d8544f72ca9",
+      "created_at": "2026-09-12T00:00:00Z",
+      "content_hash": "3f8ade6e554eac1fdeb5a3238bfd90a6bafee5c9eceb04b8740f66aa313e2674"
+    },
+    {
+      "transition_id": "V147-TR-014",
+      "object_type": "CertificateValidity",
+      "from_state": "NONE_OR_PRIOR_PROJECTION",
+      "event": "VALIDITY_EVALUATED",
+      "guards": [
+        "EVALUATION_RESULT_VALID",
+        "CONTEXT_IMMUTABLE"
+      ],
+      "required_evidence": [
+        "EVALUATION_RESULTS",
+        "CONTEXT"
+      ],
+      "authority": null,
+      "to_state": "VALID",
+      "side_effects": [
+        "CREATE_NEW_IMMUTABLE_RESULT",
+        "ADVANCE_PROJECTION"
+      ],
+      "forbidden_side_effects": [
+        "MUTATE_PRIOR_RESULT",
+        "MUTATE_SOURCE_HISTORY"
+      ],
+      "scope_id": "protocol-v14.7",
+      "scope_hash": "b9b6f7c80a4dcaf44d5f264f7ebb8ba2ae6f67d024e005c998902d8544f72ca9",
+      "created_at": "2026-09-12T00:00:00Z",
+      "content_hash": "ff74e844a7ff48bfaeeec92bc21ad4071100165fdf88e1e646667d84b783c10e"
+    },
+    {
+      "transition_id": "V147-TR-015",
+      "object_type": "CertificateValidity",
+      "from_state": "NONE_OR_PRIOR_PROJECTION",
+      "event": "VALIDITY_EVALUATED",
+      "guards": [
+        "EVALUATION_RESULT_VALID",
+        "CONTEXT_IMMUTABLE"
+      ],
+      "required_evidence": [
+        "EVALUATION_RESULTS",
+        "CONTEXT"
+      ],
+      "authority": null,
+      "to_state": "INVALID",
+      "side_effects": [
+        "CREATE_NEW_IMMUTABLE_RESULT",
+        "ADVANCE_PROJECTION"
+      ],
+      "forbidden_side_effects": [
+        "MUTATE_PRIOR_RESULT",
+        "MUTATE_SOURCE_HISTORY"
+      ],
+      "scope_id": "protocol-v14.7",
+      "scope_hash": "b9b6f7c80a4dcaf44d5f264f7ebb8ba2ae6f67d024e005c998902d8544f72ca9",
+      "created_at": "2026-09-12T00:00:00Z",
+      "content_hash": "44f61f1464faaf3b9c3139cdcadf7af70bb30947f48c3d453f9af6ba578801e6"
+    },
+    {
+      "transition_id": "V147-TR-016",
+      "object_type": "CertificateValidity",
+      "from_state": "NONE_OR_PRIOR_PROJECTION",
+      "event": "VALIDITY_EVALUATED",
+      "guards": [
+        "EVALUATION_RESULT_VALID",
+        "CONTEXT_IMMUTABLE"
+      ],
+      "required_evidence": [
+        "EVALUATION_RESULTS",
+        "CONTEXT"
+      ],
+      "authority": null,
+      "to_state": "NOT_YET_VALID",
+      "side_effects": [
+        "CREATE_NEW_IMMUTABLE_RESULT",
+        "ADVANCE_PROJECTION"
+      ],
+      "forbidden_side_effects": [
+        "MUTATE_PRIOR_RESULT",
+        "MUTATE_SOURCE_HISTORY"
+      ],
+      "scope_id": "protocol-v14.7",
+      "scope_hash": "b9b6f7c80a4dcaf44d5f264f7ebb8ba2ae6f67d024e005c998902d8544f72ca9",
+      "created_at": "2026-09-12T00:00:00Z",
+      "content_hash": "4ae0fff514b1a69b52504619d85b8f8cfe9ec82af400d1e8d00f14a5e673cc63"
+    },
+    {
+      "transition_id": "V147-TR-017",
+      "object_type": "CertificateValidity",
+      "from_state": "NONE_OR_PRIOR_PROJECTION",
+      "event": "VALIDITY_EVALUATED",
+      "guards": [
+        "EVALUATION_RESULT_VALID",
+        "CONTEXT_IMMUTABLE"
+      ],
+      "required_evidence": [
+        "EVALUATION_RESULTS",
+        "CONTEXT"
+      ],
+      "authority": null,
+      "to_state": "UNKNOWN",
+      "side_effects": [
+        "CREATE_NEW_IMMUTABLE_RESULT",
+        "ADVANCE_PROJECTION"
+      ],
+      "forbidden_side_effects": [
+        "MUTATE_PRIOR_RESULT",
+        "MUTATE_SOURCE_HISTORY"
+      ],
+      "scope_id": "protocol-v14.7",
+      "scope_hash": "b9b6f7c80a4dcaf44d5f264f7ebb8ba2ae6f67d024e005c998902d8544f72ca9",
+      "created_at": "2026-09-12T00:00:00Z",
+      "content_hash": "81bad49c6d9dc107ffc2bd00066a88e3fa63d0ac2b9f8bef772c2f82b083bb6b"
+    },
+    {
+      "transition_id": "V147-TR-018",
+      "object_type": "CertificateEligibility",
+      "from_state": "NONE_OR_PRIOR_PROJECTION",
+      "event": "CERTIFICATE_ELIGIBILITY_EVALUATED",
+      "guards": [
+        "EVALUATION_RESULT_VALID",
+        "CONTEXT_IMMUTABLE"
+      ],
+      "required_evidence": [
+        "EVALUATION_RESULTS",
+        "CONTEXT"
+      ],
+      "authority": null,
+      "to_state": "ELIGIBLE",
+      "side_effects": [
+        "CREATE_NEW_IMMUTABLE_RESULT",
+        "ADVANCE_PROJECTION"
+      ],
+      "forbidden_side_effects": [
+        "MUTATE_PRIOR_RESULT",
+        "MUTATE_SOURCE_HISTORY"
+      ],
+      "scope_id": "protocol-v14.7",
+      "scope_hash": "b9b6f7c80a4dcaf44d5f264f7ebb8ba2ae6f67d024e005c998902d8544f72ca9",
+      "created_at": "2026-09-12T00:00:00Z",
+      "content_hash": "32faf60ce58a2b846802c0d8388d9926b76dc3abaece4f4df1631e0b45b2578e"
+    },
+    {
+      "transition_id": "V147-TR-019",
+      "object_type": "CertificateEligibility",
+      "from_state": "NONE_OR_PRIOR_PROJECTION",
+      "event": "CERTIFICATE_ELIGIBILITY_EVALUATED",
+      "guards": [
+        "EVALUATION_RESULT_VALID",
+        "CONTEXT_IMMUTABLE"
+      ],
+      "required_evidence": [
+        "EVALUATION_RESULTS",
+        "CONTEXT"
+      ],
+      "authority": null,
+      "to_state": "INELIGIBLE",
+      "side_effects": [
+        "CREATE_NEW_IMMUTABLE_RESULT",
+        "ADVANCE_PROJECTION"
+      ],
+      "forbidden_side_effects": [
+        "MUTATE_PRIOR_RESULT",
+        "MUTATE_SOURCE_HISTORY"
+      ],
+      "scope_id": "protocol-v14.7",
+      "scope_hash": "b9b6f7c80a4dcaf44d5f264f7ebb8ba2ae6f67d024e005c998902d8544f72ca9",
+      "created_at": "2026-09-12T00:00:00Z",
+      "content_hash": "d73fef8d06ad32d449d79976136eea92a6fac62a92de175168aed1dfc184c869"
+    },
+    {
+      "transition_id": "V147-TR-020",
+      "object_type": "CertificateEligibility",
+      "from_state": "NONE_OR_PRIOR_PROJECTION",
+      "event": "CERTIFICATE_ELIGIBILITY_EVALUATED",
+      "guards": [
+        "EVALUATION_RESULT_VALID",
+        "CONTEXT_IMMUTABLE"
+      ],
+      "required_evidence": [
+        "EVALUATION_RESULTS",
+        "CONTEXT"
+      ],
+      "authority": null,
+      "to_state": "BLOCKED",
+      "side_effects": [
+        "CREATE_NEW_IMMUTABLE_RESULT",
+        "ADVANCE_PROJECTION"
+      ],
+      "forbidden_side_effects": [
+        "MUTATE_PRIOR_RESULT",
+        "MUTATE_SOURCE_HISTORY"
+      ],
+      "scope_id": "protocol-v14.7",
+      "scope_hash": "b9b6f7c80a4dcaf44d5f264f7ebb8ba2ae6f67d024e005c998902d8544f72ca9",
+      "created_at": "2026-09-12T00:00:00Z",
+      "content_hash": "8018c005a4dd864cd9589b5d781c06b02c177c179f39e10351ee487e07ae1929"
+    },
+    {
+      "transition_id": "V147-TR-021",
+      "object_type": "CertificateEligibility",
+      "from_state": "NONE_OR_PRIOR_PROJECTION",
+      "event": "CERTIFICATE_ELIGIBILITY_EVALUATED",
+      "guards": [
+        "EVALUATION_RESULT_VALID",
+        "CONTEXT_IMMUTABLE"
+      ],
+      "required_evidence": [
+        "EVALUATION_RESULTS",
+        "CONTEXT"
+      ],
+      "authority": null,
+      "to_state": "UNKNOWN",
+      "side_effects": [
+        "CREATE_NEW_IMMUTABLE_RESULT",
+        "ADVANCE_PROJECTION"
+      ],
+      "forbidden_side_effects": [
+        "MUTATE_PRIOR_RESULT",
+        "MUTATE_SOURCE_HISTORY"
+      ],
+      "scope_id": "protocol-v14.7",
+      "scope_hash": "b9b6f7c80a4dcaf44d5f264f7ebb8ba2ae6f67d024e005c998902d8544f72ca9",
+      "created_at": "2026-09-12T00:00:00Z",
+      "content_hash": "35a805a88213e86d7eccdac939f5b190085d9dd077366ddd9f5a800d6ebeedf7"
+    },
+    {
+      "transition_id": "V147-TR-022",
+      "object_type": "ReleaseEligibility",
+      "from_state": "NONE_OR_PRIOR_PROJECTION",
+      "event": "RELEASE_ELIGIBILITY_EVALUATED",
+      "guards": [
+        "EVALUATION_RESULT_VALID",
+        "CONTEXT_IMMUTABLE"
+      ],
+      "required_evidence": [
+        "EVALUATION_RESULTS",
+        "CONTEXT"
+      ],
+      "authority": null,
+      "to_state": "ELIGIBLE",
+      "side_effects": [
+        "CREATE_NEW_IMMUTABLE_RESULT",
+        "ADVANCE_PROJECTION"
+      ],
+      "forbidden_side_effects": [
+        "MUTATE_PRIOR_RESULT",
+        "MUTATE_SOURCE_HISTORY"
+      ],
+      "scope_id": "protocol-v14.7",
+      "scope_hash": "b9b6f7c80a4dcaf44d5f264f7ebb8ba2ae6f67d024e005c998902d8544f72ca9",
+      "created_at": "2026-09-12T00:00:00Z",
+      "content_hash": "388df27ddf9f3c687c13a4907ab15504e7e4d7b7815f69c83426513fdc1495e9"
+    },
+    {
+      "transition_id": "V147-TR-023",
+      "object_type": "ReleaseEligibility",
+      "from_state": "NONE_OR_PRIOR_PROJECTION",
+      "event": "RELEASE_ELIGIBILITY_EVALUATED",
+      "guards": [
+        "EVALUATION_RESULT_VALID",
+        "CONTEXT_IMMUTABLE"
+      ],
+      "required_evidence": [
+        "EVALUATION_RESULTS",
+        "CONTEXT"
+      ],
+      "authority": null,
+      "to_state": "INELIGIBLE",
+      "side_effects": [
+        "CREATE_NEW_IMMUTABLE_RESULT",
+        "ADVANCE_PROJECTION"
+      ],
+      "forbidden_side_effects": [
+        "MUTATE_PRIOR_RESULT",
+        "MUTATE_SOURCE_HISTORY"
+      ],
+      "scope_id": "protocol-v14.7",
+      "scope_hash": "b9b6f7c80a4dcaf44d5f264f7ebb8ba2ae6f67d024e005c998902d8544f72ca9",
+      "created_at": "2026-09-12T00:00:00Z",
+      "content_hash": "d68f57ac2410c9eed156f7cfef6ce84f8e13edaa75eb32e338257bcc32135c5b"
+    },
+    {
+      "transition_id": "V147-TR-024",
+      "object_type": "ReleaseEligibility",
+      "from_state": "NONE_OR_PRIOR_PROJECTION",
+      "event": "RELEASE_ELIGIBILITY_EVALUATED",
+      "guards": [
+        "EVALUATION_RESULT_VALID",
+        "CONTEXT_IMMUTABLE"
+      ],
+      "required_evidence": [
+        "EVALUATION_RESULTS",
+        "CONTEXT"
+      ],
+      "authority": null,
+      "to_state": "BLOCKED",
+      "side_effects": [
+        "CREATE_NEW_IMMUTABLE_RESULT",
+        "ADVANCE_PROJECTION"
+      ],
+      "forbidden_side_effects": [
+        "MUTATE_PRIOR_RESULT",
+        "MUTATE_SOURCE_HISTORY"
+      ],
+      "scope_id": "protocol-v14.7",
+      "scope_hash": "b9b6f7c80a4dcaf44d5f264f7ebb8ba2ae6f67d024e005c998902d8544f72ca9",
+      "created_at": "2026-09-12T00:00:00Z",
+      "content_hash": "fb9d499b0becbad85d3b4189a72ccaa1c676ad7809916396f41060eb42de312c"
+    },
+    {
+      "transition_id": "V147-TR-025",
+      "object_type": "ReleaseEligibility",
+      "from_state": "NONE_OR_PRIOR_PROJECTION",
+      "event": "RELEASE_ELIGIBILITY_EVALUATED",
+      "guards": [
+        "EVALUATION_RESULT_VALID",
+        "CONTEXT_IMMUTABLE"
+      ],
+      "required_evidence": [
+        "EVALUATION_RESULTS",
+        "CONTEXT"
+      ],
+      "authority": null,
+      "to_state": "UNKNOWN",
+      "side_effects": [
+        "CREATE_NEW_IMMUTABLE_RESULT",
+        "ADVANCE_PROJECTION"
+      ],
+      "forbidden_side_effects": [
+        "MUTATE_PRIOR_RESULT",
+        "MUTATE_SOURCE_HISTORY"
+      ],
+      "scope_id": "protocol-v14.7",
+      "scope_hash": "b9b6f7c80a4dcaf44d5f264f7ebb8ba2ae6f67d024e005c998902d8544f72ca9",
+      "created_at": "2026-09-12T00:00:00Z",
+      "content_hash": "2e89031bc49d10bfdc9540206b149afbf924b6440e8ad495c07ef719f1050aa7"
+    },
+    {
+      "transition_id": "V147-TR-026",
+      "object_type": "PostReleaseVerification",
+      "from_state": "NONE_OR_PRIOR_PROJECTION",
+      "event": "POST_RELEASE_VERIFICATION_COMPLETED",
+      "guards": [
+        "EVALUATION_RESULT_VALID",
+        "CONTEXT_IMMUTABLE"
+      ],
+      "required_evidence": [
+        "EVALUATION_RESULTS",
+        "CONTEXT"
+      ],
+      "authority": null,
+      "to_state": "VERIFIED",
+      "side_effects": [
+        "CREATE_NEW_IMMUTABLE_RESULT",
+        "ADVANCE_PROJECTION"
+      ],
+      "forbidden_side_effects": [
+        "MUTATE_PRIOR_RESULT",
+        "MUTATE_SOURCE_HISTORY"
+      ],
+      "scope_id": "protocol-v14.7",
+      "scope_hash": "b9b6f7c80a4dcaf44d5f264f7ebb8ba2ae6f67d024e005c998902d8544f72ca9",
+      "created_at": "2026-09-12T00:00:00Z",
+      "content_hash": "ad7a5284bd602ce5a2d303ea09036a3d37f717cb4168f77e949d9617c870cad7"
+    },
+    {
+      "transition_id": "V147-TR-027",
+      "object_type": "PostReleaseVerification",
+      "from_state": "NONE_OR_PRIOR_PROJECTION",
+      "event": "POST_RELEASE_VERIFICATION_COMPLETED",
+      "guards": [
+        "EVALUATION_RESULT_VALID",
+        "CONTEXT_IMMUTABLE"
+      ],
+      "required_evidence": [
+        "EVALUATION_RESULTS",
+        "CONTEXT"
+      ],
+      "authority": null,
+      "to_state": "FAILED",
+      "side_effects": [
+        "CREATE_NEW_IMMUTABLE_RESULT",
+        "ADVANCE_PROJECTION"
+      ],
+      "forbidden_side_effects": [
+        "MUTATE_PRIOR_RESULT",
+        "MUTATE_SOURCE_HISTORY"
+      ],
+      "scope_id": "protocol-v14.7",
+      "scope_hash": "b9b6f7c80a4dcaf44d5f264f7ebb8ba2ae6f67d024e005c998902d8544f72ca9",
+      "created_at": "2026-09-12T00:00:00Z",
+      "content_hash": "cd04fed57498ee368cbcb0445920d96c01ace79fa38ca2bbec9a1f7611531d1f"
+    },
+    {
+      "transition_id": "V147-TR-028",
+      "object_type": "PostReleaseVerification",
+      "from_state": "NONE_OR_PRIOR_PROJECTION",
+      "event": "POST_RELEASE_VERIFICATION_COMPLETED",
+      "guards": [
+        "EVALUATION_RESULT_VALID",
+        "CONTEXT_IMMUTABLE"
+      ],
+      "required_evidence": [
+        "EVALUATION_RESULTS",
+        "CONTEXT"
+      ],
+      "authority": null,
+      "to_state": "INCONCLUSIVE",
+      "side_effects": [
+        "CREATE_NEW_IMMUTABLE_RESULT",
+        "ADVANCE_PROJECTION"
+      ],
+      "forbidden_side_effects": [
+        "MUTATE_PRIOR_RESULT",
+        "MUTATE_SOURCE_HISTORY"
+      ],
+      "scope_id": "protocol-v14.7",
+      "scope_hash": "b9b6f7c80a4dcaf44d5f264f7ebb8ba2ae6f67d024e005c998902d8544f72ca9",
+      "created_at": "2026-09-12T00:00:00Z",
+      "content_hash": "fe97d2fd664314ad8380003197dcf74c8070820e74d2d14369b3b21c067eecc2"
+    },
+    {
+      "transition_id": "V147-TR-029",
+      "object_type": "PostReleaseVerification",
+      "from_state": "NONE_OR_PRIOR_PROJECTION",
+      "event": "POST_RELEASE_VERIFICATION_COMPLETED",
+      "guards": [
+        "EVALUATION_RESULT_VALID",
+        "CONTEXT_IMMUTABLE"
+      ],
+      "required_evidence": [
+        "EVALUATION_RESULTS",
+        "CONTEXT"
+      ],
+      "authority": null,
+      "to_state": "BLOCKED",
+      "side_effects": [
+        "CREATE_NEW_IMMUTABLE_RESULT",
+        "ADVANCE_PROJECTION"
+      ],
+      "forbidden_side_effects": [
+        "MUTATE_PRIOR_RESULT",
+        "MUTATE_SOURCE_HISTORY"
+      ],
+      "scope_id": "protocol-v14.7",
+      "scope_hash": "b9b6f7c80a4dcaf44d5f264f7ebb8ba2ae6f67d024e005c998902d8544f72ca9",
+      "created_at": "2026-09-12T00:00:00Z",
+      "content_hash": "11b385833d130590164240a7d82486dd4ee48441823eecad04fab56dd48e295b"
+    },
+    {
+      "transition_id": "V147-TR-030",
+      "object_type": "PostReleaseVerification",
+      "from_state": "NONE_OR_PRIOR_PROJECTION",
+      "event": "POST_RELEASE_VERIFICATION_COMPLETED",
+      "guards": [
+        "EVALUATION_RESULT_VALID",
+        "CONTEXT_IMMUTABLE"
+      ],
+      "required_evidence": [
+        "EVALUATION_RESULTS",
+        "CONTEXT"
+      ],
+      "authority": null,
+      "to_state": "UNKNOWN",
+      "side_effects": [
+        "CREATE_NEW_IMMUTABLE_RESULT",
+        "ADVANCE_PROJECTION"
+      ],
+      "forbidden_side_effects": [
+        "MUTATE_PRIOR_RESULT",
+        "MUTATE_SOURCE_HISTORY"
+      ],
+      "scope_id": "protocol-v14.7",
+      "scope_hash": "b9b6f7c80a4dcaf44d5f264f7ebb8ba2ae6f67d024e005c998902d8544f72ca9",
+      "created_at": "2026-09-12T00:00:00Z",
+      "content_hash": "62d9741ff1baeaec6bf255271bcce22c0beac597ecf85ea43b54913a7340d309"
+    },
+    {
+      "transition_id": "V147-TR-031",
+      "object_type": "Release",
+      "from_state": "NONE",
+      "event": "RELEASE_REGISTERED",
+      "guards": [
+        "IDENTITY_UNIQUE",
+        "ALL_BINDINGS_VALID"
+      ],
+      "required_evidence": [
+        "RELEASE_CONTENT"
+      ],
+      "authority": null,
+      "to_state": "REGISTERED",
+      "side_effects": [
+        "CREATE_IMMUTABLE_RELEASE"
+      ],
+      "forbidden_side_effects": [
+        "MUTATE_RELEASE_IDENTITY"
+      ],
+      "scope_id": "protocol-v14.7",
+      "scope_hash": "b9b6f7c80a4dcaf44d5f264f7ebb8ba2ae6f67d024e005c998902d8544f72ca9",
+      "created_at": "2026-09-12T00:00:00Z",
+      "content_hash": "a76d843dc11a45b68015251e3a47af16dc9e050b0a827ad694e1d2212777ba3b"
+    },
+    {
+      "transition_id": "V147-TR-032",
+      "object_type": "ReleaseGate",
+      "from_state": "NONE",
+      "event": "RELEASE_GATE_PUBLISHED",
+      "guards": [
+        "POLICY_COMPLETE",
+        "EMPTY_ACTION_PRESENT"
+      ],
+      "required_evidence": [
+        "POLICY",
+        "PREDICATE_DEFINITIONS"
+      ],
+      "authority": "GATE_PUBLISH_AUTHORITY",
+      "to_state": "PUBLISHED",
+      "side_effects": [
+        "CREATE_IMMUTABLE_GATE"
+      ],
+      "forbidden_side_effects": [
+        "STORE_CURRENT_EVALUATION"
+      ],
+      "scope_id": "protocol-v14.7",
+      "scope_hash": "b9b6f7c80a4dcaf44d5f264f7ebb8ba2ae6f67d024e005c998902d8544f72ca9",
+      "created_at": "2026-09-12T00:00:00Z",
+      "content_hash": "1a296ccee8a299ded2b870ef92e8715b568d05f08ffe724a7f193d9785f09def"
+    },
+    {
+      "transition_id": "V147-TR-033",
+      "object_type": "ReleaseDecision",
+      "from_state": "NONE_OR_PRIOR_CURRENT",
+      "event": "RELEASE_DECISION_RECORDED",
+      "guards": [
+        "DECISION_MAPPING_TO_APPROVED_VALID",
+        "AUTHORITY_EFFECTIVE",
+        "BASIS_VALID"
+      ],
+      "required_evidence": [
+        "ELIGIBILITY",
+        "AUTHORITY",
+        "POLICY",
+        "DECISION_BASIS"
+      ],
+      "authority": "RELEASE_DECISION_AUTHORITY",
+      "to_state": "APPROVED",
+      "side_effects": [
+        "CREATE_NEW_DECISION",
+        "APPEND_EVENT",
+        "ADVANCE_PROJECTION"
+      ],
+      "forbidden_side_effects": [
+        "MUTATE_PRIOR_DECISION",
+        "EXECUTE_RELEASE"
+      ],
+      "scope_id": "protocol-v14.7",
+      "scope_hash": "b9b6f7c80a4dcaf44d5f264f7ebb8ba2ae6f67d024e005c998902d8544f72ca9",
+      "created_at": "2026-09-12T00:00:00Z",
+      "content_hash": "a4fde55bf1d10f9ca0b761732202f395a4d7dd9973dbbdd2d179b6880822506f"
+    },
+    {
+      "transition_id": "V147-TR-034",
+      "object_type": "ReleaseDecision",
+      "from_state": "NONE_OR_PRIOR_CURRENT",
+      "event": "RELEASE_DECISION_RECORDED",
+      "guards": [
+        "DECISION_MAPPING_TO_REJECTED_VALID",
+        "AUTHORITY_EFFECTIVE",
+        "BASIS_VALID"
+      ],
+      "required_evidence": [
+        "ELIGIBILITY",
+        "AUTHORITY",
+        "POLICY",
+        "DECISION_BASIS"
+      ],
+      "authority": "RELEASE_DECISION_AUTHORITY",
+      "to_state": "REJECTED",
+      "side_effects": [
+        "CREATE_NEW_DECISION",
+        "APPEND_EVENT",
+        "ADVANCE_PROJECTION"
+      ],
+      "forbidden_side_effects": [
+        "MUTATE_PRIOR_DECISION",
+        "EXECUTE_RELEASE"
+      ],
+      "scope_id": "protocol-v14.7",
+      "scope_hash": "b9b6f7c80a4dcaf44d5f264f7ebb8ba2ae6f67d024e005c998902d8544f72ca9",
+      "created_at": "2026-09-12T00:00:00Z",
+      "content_hash": "5bb52d89c8155043ab7095a5be0c8d35e86cbffed5897db1e42e46a3e77c6220"
+    },
+    {
+      "transition_id": "V147-TR-035",
+      "object_type": "ReleaseDecision",
+      "from_state": "NONE_OR_PRIOR_CURRENT",
+      "event": "RELEASE_DECISION_RECORDED",
+      "guards": [
+        "DECISION_MAPPING_TO_BLOCKED_VALID",
+        "AUTHORITY_EFFECTIVE",
+        "BASIS_VALID"
+      ],
+      "required_evidence": [
+        "ELIGIBILITY",
+        "AUTHORITY",
+        "POLICY",
+        "DECISION_BASIS"
+      ],
+      "authority": "RELEASE_DECISION_AUTHORITY",
+      "to_state": "BLOCKED",
+      "side_effects": [
+        "CREATE_NEW_DECISION",
+        "APPEND_EVENT",
+        "ADVANCE_PROJECTION"
+      ],
+      "forbidden_side_effects": [
+        "MUTATE_PRIOR_DECISION",
+        "EXECUTE_RELEASE"
+      ],
+      "scope_id": "protocol-v14.7",
+      "scope_hash": "b9b6f7c80a4dcaf44d5f264f7ebb8ba2ae6f67d024e005c998902d8544f72ca9",
+      "created_at": "2026-09-12T00:00:00Z",
+      "content_hash": "32459298c57d51cd88fd8d49d93b1eb1a49340d6bce729f92cd3d3ec847bea3c"
+    },
+    {
+      "transition_id": "V147-TR-036",
+      "object_type": "ReleaseDecision",
+      "from_state": "NONE_OR_PRIOR_CURRENT",
+      "event": "RELEASE_DECISION_RECORDED",
+      "guards": [
+        "DECISION_MAPPING_TO_DEFERRED_VALID",
+        "AUTHORITY_EFFECTIVE",
+        "BASIS_VALID"
+      ],
+      "required_evidence": [
+        "ELIGIBILITY",
+        "AUTHORITY",
+        "POLICY",
+        "DECISION_BASIS"
+      ],
+      "authority": "RELEASE_DECISION_AUTHORITY",
+      "to_state": "DEFERRED",
+      "side_effects": [
+        "CREATE_NEW_DECISION",
+        "APPEND_EVENT",
+        "ADVANCE_PROJECTION"
+      ],
+      "forbidden_side_effects": [
+        "MUTATE_PRIOR_DECISION",
+        "EXECUTE_RELEASE"
+      ],
+      "scope_id": "protocol-v14.7",
+      "scope_hash": "b9b6f7c80a4dcaf44d5f264f7ebb8ba2ae6f67d024e005c998902d8544f72ca9",
+      "created_at": "2026-09-12T00:00:00Z",
+      "content_hash": "b7bfacae56a44734fdc0ed4f1bb8906c3e2d67315a1b9e7f3ac8076fdf189854"
+    },
+    {
+      "transition_id": "V147-TR-037",
+      "object_type": "ReleaseExecution",
+      "from_state": "NOT_STARTED",
+      "event": "EXECUTION_STARTED",
+      "guards": [
+        "APPROVED_EFFECTIVE",
+        "BINDINGS_MATCH",
+        "EXECUTION_AUTHORIZED",
+        "IDEMPOTENCY_UNIQUE"
+      ],
+      "required_evidence": [
+        "DECISION",
+        "ARTIFACT",
+        "ENVIRONMENT",
+        "EXECUTION_AUTHORIZATION"
+      ],
+      "authority": "EXECUTION_AUTHORITY",
+      "to_state": "STARTED",
+      "side_effects": [
+        "APPEND_EVENT"
+      ],
+      "forbidden_side_effects": [
+        "MARK_VERIFIED"
+      ],
+      "scope_id": "protocol-v14.7",
+      "scope_hash": "b9b6f7c80a4dcaf44d5f264f7ebb8ba2ae6f67d024e005c998902d8544f72ca9",
+      "created_at": "2026-09-12T00:00:00Z",
+      "content_hash": "53aa96bb94925100cac49327f937a1ad91dfa950080ee9c0383b93423bfbd8db"
+    },
+    {
+      "transition_id": "V147-TR-038",
+      "object_type": "ReleaseExecution",
+      "from_state": "STARTED",
+      "event": "EXECUTION_SUCCEEDED",
+      "guards": [
+        "ATTEMPT_ACTIVE",
+        "RESULT_EVIDENCE_VALID"
+      ],
+      "required_evidence": [
+        "EXECUTION_OBSERVATION"
+      ],
+      "authority": "EXECUTION_WORKER",
+      "to_state": "SUCCEEDED",
+      "side_effects": [
+        "APPEND_EVENT"
+      ],
+      "forbidden_side_effects": [
+        "RETRY_WITHOUT_AUTHORITY",
+        "VERIFY_OUTCOME"
+      ],
+      "scope_id": "protocol-v14.7",
+      "scope_hash": "b9b6f7c80a4dcaf44d5f264f7ebb8ba2ae6f67d024e005c998902d8544f72ca9",
+      "created_at": "2026-09-12T00:00:00Z",
+      "content_hash": "e3da2d0fbe1873b82042b70558eb9697f42c03b5f7df2ae103c823b7c469145e"
+    },
+    {
+      "transition_id": "V147-TR-039",
+      "object_type": "ReleaseExecution",
+      "from_state": "STARTED",
+      "event": "EXECUTION_FAILED",
+      "guards": [
+        "ATTEMPT_ACTIVE",
+        "RESULT_EVIDENCE_VALID"
+      ],
+      "required_evidence": [
+        "EXECUTION_OBSERVATION"
+      ],
+      "authority": "EXECUTION_WORKER",
+      "to_state": "FAILED",
+      "side_effects": [
+        "APPEND_EVENT"
+      ],
+      "forbidden_side_effects": [
+        "RETRY_WITHOUT_AUTHORITY",
+        "VERIFY_OUTCOME"
+      ],
+      "scope_id": "protocol-v14.7",
+      "scope_hash": "b9b6f7c80a4dcaf44d5f264f7ebb8ba2ae6f67d024e005c998902d8544f72ca9",
+      "created_at": "2026-09-12T00:00:00Z",
+      "content_hash": "eebae7e88ecab76c33e2ef04dae4be0c86619dd0e593308b390c80ce521b7666"
+    },
+    {
+      "transition_id": "V147-TR-040",
+      "object_type": "ReleaseExecution",
+      "from_state": "STARTED",
+      "event": "EXECUTION_CANCELLED",
+      "guards": [
+        "ATTEMPT_ACTIVE",
+        "RESULT_EVIDENCE_VALID"
+      ],
+      "required_evidence": [
+        "EXECUTION_OBSERVATION"
+      ],
+      "authority": "EXECUTION_WORKER",
+      "to_state": "CANCELLED",
+      "side_effects": [
+        "APPEND_EVENT"
+      ],
+      "forbidden_side_effects": [
+        "RETRY_WITHOUT_AUTHORITY",
+        "VERIFY_OUTCOME"
+      ],
+      "scope_id": "protocol-v14.7",
+      "scope_hash": "b9b6f7c80a4dcaf44d5f264f7ebb8ba2ae6f67d024e005c998902d8544f72ca9",
+      "created_at": "2026-09-12T00:00:00Z",
+      "content_hash": "da4957189f16a69ee970796107ae2bd1859421e1214ce26c3e2d06c99b1c0208"
+    },
+    {
+      "transition_id": "V147-TR-041",
+      "object_type": "ReleaseExecution",
+      "from_state": "STARTED",
+      "event": "EXECUTION_ROLLED_BACK",
+      "guards": [
+        "ROLLBACK_AUTHORIZED",
+        "ROLLBACK_APPLICABLE",
+        "IDEMPOTENCY_UNIQUE"
+      ],
+      "required_evidence": [
+        "ROLLBACK_AUTHORIZATION",
+        "DEPLOYMENT_EFFECTS"
+      ],
+      "authority": "ROLLBACK_AUTHORITY",
+      "to_state": "ROLLED_BACK",
+      "side_effects": [
+        "APPEND_EVENT"
+      ],
+      "forbidden_side_effects": [
+        "REWRITE_DECISION",
+        "REUSE_EXPIRED_AUTH"
+      ],
+      "scope_id": "protocol-v14.7",
+      "scope_hash": "b9b6f7c80a4dcaf44d5f264f7ebb8ba2ae6f67d024e005c998902d8544f72ca9",
+      "created_at": "2026-09-12T00:00:00Z",
+      "content_hash": "c2d2222cba73501c0fd487641ca1542886b8367f48bc2d0e1baf8ed43e090831"
+    },
+    {
+      "transition_id": "V147-TR-042",
+      "object_type": "ReleaseExecution",
+      "from_state": "SUCCEEDED",
+      "event": "EXECUTION_ROLLED_BACK",
+      "guards": [
+        "ROLLBACK_AUTHORIZED",
+        "ROLLBACK_APPLICABLE",
+        "IDEMPOTENCY_UNIQUE"
+      ],
+      "required_evidence": [
+        "ROLLBACK_AUTHORIZATION",
+        "DEPLOYMENT_EFFECTS"
+      ],
+      "authority": "ROLLBACK_AUTHORITY",
+      "to_state": "ROLLED_BACK",
+      "side_effects": [
+        "APPEND_EVENT"
+      ],
+      "forbidden_side_effects": [
+        "REWRITE_DECISION",
+        "REUSE_EXPIRED_AUTH"
+      ],
+      "scope_id": "protocol-v14.7",
+      "scope_hash": "b9b6f7c80a4dcaf44d5f264f7ebb8ba2ae6f67d024e005c998902d8544f72ca9",
+      "created_at": "2026-09-12T00:00:00Z",
+      "content_hash": "2d88a28e9839f2009ff83f7a24387c7dbac2e66745dc40e0a626771dbe91d283"
+    },
+    {
+      "transition_id": "V147-TR-043",
+      "object_type": "ReleaseExecution",
+      "from_state": "FAILED",
+      "event": "EXECUTION_ROLLED_BACK",
+      "guards": [
+        "ROLLBACK_AUTHORIZED",
+        "ROLLBACK_APPLICABLE",
+        "IDEMPOTENCY_UNIQUE"
+      ],
+      "required_evidence": [
+        "ROLLBACK_AUTHORIZATION",
+        "DEPLOYMENT_EFFECTS"
+      ],
+      "authority": "ROLLBACK_AUTHORITY",
+      "to_state": "ROLLED_BACK",
+      "side_effects": [
+        "APPEND_EVENT"
+      ],
+      "forbidden_side_effects": [
+        "REWRITE_DECISION",
+        "REUSE_EXPIRED_AUTH"
+      ],
+      "scope_id": "protocol-v14.7",
+      "scope_hash": "b9b6f7c80a4dcaf44d5f264f7ebb8ba2ae6f67d024e005c998902d8544f72ca9",
+      "created_at": "2026-09-12T00:00:00Z",
+      "content_hash": "a244d111d22757e84d707996d6f6d32abf93bc9a759da4b2ae407f20e0d8353c"
+    },
+    {
+      "transition_id": "V147-TR-044",
+      "object_type": "ReleaseExecution",
+      "from_state": "CANCELLED",
+      "event": "EXECUTION_ROLLED_BACK",
+      "guards": [
+        "ROLLBACK_AUTHORIZED",
+        "ROLLBACK_APPLICABLE",
+        "IDEMPOTENCY_UNIQUE"
+      ],
+      "required_evidence": [
+        "ROLLBACK_AUTHORIZATION",
+        "DEPLOYMENT_EFFECTS"
+      ],
+      "authority": "ROLLBACK_AUTHORITY",
+      "to_state": "ROLLED_BACK",
+      "side_effects": [
+        "APPEND_EVENT"
+      ],
+      "forbidden_side_effects": [
+        "REWRITE_DECISION",
+        "REUSE_EXPIRED_AUTH"
+      ],
+      "scope_id": "protocol-v14.7",
+      "scope_hash": "b9b6f7c80a4dcaf44d5f264f7ebb8ba2ae6f67d024e005c998902d8544f72ca9",
+      "created_at": "2026-09-12T00:00:00Z",
+      "content_hash": "3e6b1b12f84bc637258b410a8d4d86f80812d0d1617b1991d4dbd7408d025e7e"
+    },
+    {
+      "transition_id": "V147-TR-045",
+      "object_type": "IssuanceAuthority",
+      "from_state": "NONE",
+      "event": "AUTHORITY_GRANTED",
+      "guards": [
+        "GRANT_POLICY_TRUE",
+        "CREDENTIAL_VALID",
+        "SCOPE_VALID"
+      ],
+      "required_evidence": [
+        "GRANT",
+        "CREDENTIAL"
+      ],
+      "authority": "AUTHORITY_GRANTOR",
+      "to_state": "ACTIVE",
+      "side_effects": [
+        "APPEND_EVENT"
+      ],
+      "forbidden_side_effects": [
+        "ISSUE_CERTIFICATE"
+      ],
+      "scope_id": "protocol-v14.7",
+      "scope_hash": "b9b6f7c80a4dcaf44d5f264f7ebb8ba2ae6f67d024e005c998902d8544f72ca9",
+      "created_at": "2026-09-12T00:00:00Z",
+      "content_hash": "81c0b072f498773f006904651676c0a67f337413be84bca30b3bdb2eb7820f15"
+    },
+    {
+      "transition_id": "V147-TR-046",
+      "object_type": "IssuanceAuthority",
+      "from_state": "ACTIVE",
+      "event": "AUTHORITY_SUSPENDED",
+      "guards": [
+        "SUSPEND_POLICY_TRUE"
+      ],
+      "required_evidence": [
+        "SUSPENSION_REASON"
+      ],
+      "authority": "AUTHORITY_ADMIN",
+      "to_state": "SUSPENDED",
+      "side_effects": [
+        "APPEND_EVENT"
+      ],
+      "forbidden_side_effects": [
+        "REVOKE_CREDENTIAL_IMPLICITLY"
+      ],
+      "scope_id": "protocol-v14.7",
+      "scope_hash": "b9b6f7c80a4dcaf44d5f264f7ebb8ba2ae6f67d024e005c998902d8544f72ca9",
+      "created_at": "2026-09-12T00:00:00Z",
+      "content_hash": "37b39b332cc1ed34ee1520307d880ce060d23770b4bd9566aa065bba9b5d1610"
+    },
+    {
+      "transition_id": "V147-TR-047",
+      "object_type": "IssuanceAuthority",
+      "from_state": "SUSPENDED",
+      "event": "AUTHORITY_RESUMED",
+      "guards": [
+        "RESUME_POLICY_TRUE",
+        "CREDENTIAL_VALID"
+      ],
+      "required_evidence": [
+        "RESUME_REASON",
+        "CREDENTIAL"
+      ],
+      "authority": "AUTHORITY_ADMIN",
+      "to_state": "ACTIVE",
+      "side_effects": [
+        "APPEND_EVENT"
+      ],
+      "forbidden_side_effects": [
+        "BACKDATE_EFFECTIVENESS"
+      ],
+      "scope_id": "protocol-v14.7",
+      "scope_hash": "b9b6f7c80a4dcaf44d5f264f7ebb8ba2ae6f67d024e005c998902d8544f72ca9",
+      "created_at": "2026-09-12T00:00:00Z",
+      "content_hash": "5fd2a3521699f9d16a7b2cf8edd09c2bec380930a8a73f468e3869a337d925e1"
+    },
+    {
+      "transition_id": "V147-TR-048",
+      "object_type": "IssuanceAuthority",
+      "from_state": "ACTIVE",
+      "event": "AUTHORITY_REVOKED",
+      "guards": [
+        "REVOKE_POLICY_TRUE"
+      ],
+      "required_evidence": [
+        "REVOCATION_REASON"
+      ],
+      "authority": "AUTHORITY_ADMIN",
+      "to_state": "REVOKED",
+      "side_effects": [
+        "APPEND_EVENT"
+      ],
+      "forbidden_side_effects": [
+        "DELETE_PRIOR_APPROVALS"
+      ],
+      "scope_id": "protocol-v14.7",
+      "scope_hash": "b9b6f7c80a4dcaf44d5f264f7ebb8ba2ae6f67d024e005c998902d8544f72ca9",
+      "created_at": "2026-09-12T00:00:00Z",
+      "content_hash": "9ea37644b81fcb2d9725f15157398a0d5761b902abd6958df6184db5b0597f60"
+    },
+    {
+      "transition_id": "V147-TR-049",
+      "object_type": "IssuanceAuthority",
+      "from_state": "SUSPENDED",
+      "event": "AUTHORITY_REVOKED",
+      "guards": [
+        "REVOKE_POLICY_TRUE"
+      ],
+      "required_evidence": [
+        "REVOCATION_REASON"
+      ],
+      "authority": "AUTHORITY_ADMIN",
+      "to_state": "REVOKED",
+      "side_effects": [
+        "APPEND_EVENT"
+      ],
+      "forbidden_side_effects": [
+        "DELETE_PRIOR_APPROVALS"
+      ],
+      "scope_id": "protocol-v14.7",
+      "scope_hash": "b9b6f7c80a4dcaf44d5f264f7ebb8ba2ae6f67d024e005c998902d8544f72ca9",
+      "created_at": "2026-09-12T00:00:00Z",
+      "content_hash": "54c66370d29425859906d8a6e95c7f43471ee373b3e2b4feb3c79b03eef7b033"
+    },
+    {
+      "transition_id": "V147-TR-050",
+      "object_type": "Evaluation",
+      "from_state": "NONE",
+      "event": "EVALUATION_CREATED",
+      "guards": [
+        "CONTEXT_SEALED",
+        "EVALUATOR_BOUND"
+      ],
+      "required_evidence": [
+        "CONTEXT",
+        "EVALUATOR_MANIFEST"
+      ],
+      "authority": null,
+      "to_state": "CREATED",
+      "side_effects": [
+        "APPEND_EVENT"
+      ],
+      "forbidden_side_effects": [
+        "EMIT_SEMANTIC_RESULT"
+      ],
+      "scope_id": "protocol-v14.7",
+      "scope_hash": "b9b6f7c80a4dcaf44d5f264f7ebb8ba2ae6f67d024e005c998902d8544f72ca9",
+      "created_at": "2026-09-12T00:00:00Z",
+      "content_hash": "3f3c79d3afc0e94bc294ec830103f81b062c546f199ae1aff4c38df30c4cd66e"
+    },
+    {
+      "transition_id": "V147-TR-051",
+      "object_type": "Evaluation",
+      "from_state": "CREATED",
+      "event": "EVALUATION_COMPLETED",
+      "guards": [
+        "L0_L3_COMPLETE",
+        "RESULT_HASH_VALID"
+      ],
+      "required_evidence": [
+        "EVALUATION_RESULT"
+      ],
+      "authority": null,
+      "to_state": "COMPLETED",
+      "side_effects": [
+        "APPEND_EVENT",
+        "CREATE_RESULT"
+      ],
+      "forbidden_side_effects": [
+        "AUTHORIZE"
+      ],
+      "scope_id": "protocol-v14.7",
+      "scope_hash": "b9b6f7c80a4dcaf44d5f264f7ebb8ba2ae6f67d024e005c998902d8544f72ca9",
+      "created_at": "2026-09-12T00:00:00Z",
+      "content_hash": "bfc27f29071fa646ad8d17a458465de72802803fa7b03841baccce7015fbd7c7"
+    },
+    {
+      "transition_id": "V147-TR-052",
+      "object_type": "Evaluation",
+      "from_state": "CREATED",
+      "event": "EVALUATION_INVALIDATED",
+      "guards": [
+        "INVALIDATION_CAUSE_PROVED"
+      ],
+      "required_evidence": [
+        "FAILURE_RECORD"
+      ],
+      "authority": null,
+      "to_state": "INVALIDATED",
+      "side_effects": [
+        "APPEND_EVENT"
+      ],
+      "forbidden_side_effects": [
+        "MUTATE_RESULT",
+        "CONVERT_RESULT_TO_FALSE"
+      ],
+      "scope_id": "protocol-v14.7",
+      "scope_hash": "b9b6f7c80a4dcaf44d5f264f7ebb8ba2ae6f67d024e005c998902d8544f72ca9",
+      "created_at": "2026-09-12T00:00:00Z",
+      "content_hash": "3e415a8811791a3a07cc0324d34e5f5acc17ccd330779dd17e47bb70c992ab61"
+    },
+    {
+      "transition_id": "V147-TR-053",
+      "object_type": "Evaluation",
+      "from_state": "COMPLETED",
+      "event": "EVALUATION_INVALIDATED",
+      "guards": [
+        "INVALIDATION_CAUSE_PROVED"
+      ],
+      "required_evidence": [
+        "FAILURE_RECORD"
+      ],
+      "authority": null,
+      "to_state": "INVALIDATED",
+      "side_effects": [
+        "APPEND_EVENT"
+      ],
+      "forbidden_side_effects": [
+        "MUTATE_RESULT",
+        "CONVERT_RESULT_TO_FALSE"
+      ],
+      "scope_id": "protocol-v14.7",
+      "scope_hash": "b9b6f7c80a4dcaf44d5f264f7ebb8ba2ae6f67d024e005c998902d8544f72ca9",
+      "created_at": "2026-09-12T00:00:00Z",
+      "content_hash": "9e364b0ebcb1f8cd7800bef3ed408abfa804b6daa44a5aa4682c42148b2d80c8"
+    }
+  ],
+  "transition_count": 53
+}

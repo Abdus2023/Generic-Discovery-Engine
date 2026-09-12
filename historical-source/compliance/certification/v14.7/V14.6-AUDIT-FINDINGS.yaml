@@ -1,0 +1,81 @@
+{
+  "schema_version": "14.7",
+  "epistemic_status": "SUPPORTED",
+  "claim_class": "NORMATIVE_REQUIREMENT",
+  "normative_origin": "USER_SUPPLIED_V14_6_BASELINE_AUDITED_IN_V14_7",
+  "findings": [
+    {
+      "finding_id": "V147-AUD-001",
+      "target": "EVALUATION_LIFECYCLE_RESULT",
+      "status": "GAP_CONFIRMED",
+      "resolution_ref": "V147-CON-001"
+    },
+    {
+      "finding_id": "V147-AUD-002",
+      "target": "INVALID_PRECEDENCE",
+      "status": "GAP_CONFIRMED",
+      "resolution_ref": "V147-CON-002"
+    },
+    {
+      "finding_id": "V147-AUD-003",
+      "target": "AUTHORITY_STATUS_MIX",
+      "status": "GAP_CONFIRMED",
+      "resolution_ref": "V147-CON-003"
+    },
+    {
+      "finding_id": "V147-AUD-004",
+      "target": "CANDIDATE_RETENTION_STATE",
+      "status": "GAP_CONFIRMED",
+      "resolution_ref": "V147-CON-004"
+    },
+    {
+      "finding_id": "V147-AUD-005",
+      "target": "EVENT_ORDER_PARTIAL",
+      "status": "GAP_CONFIRMED",
+      "resolution_ref": "V147-CON-005"
+    },
+    {
+      "finding_id": "V147-AUD-006",
+      "target": "FRESHNESS_CLOCK_OPTIONAL",
+      "status": "GAP_CONFIRMED",
+      "resolution_ref": "V147-CON-006"
+    },
+    {
+      "finding_id": "V147-AUD-007",
+      "target": "EVALUATOR_REUSE_BINDING",
+      "status": "GAP_CONFIRMED",
+      "resolution_ref": "V147-CON-007"
+    },
+    {
+      "finding_id": "V147-AUD-008",
+      "target": "DECISION_CONTEXT_VAGUE",
+      "status": "GAP_CONFIRMED",
+      "resolution_ref": "V147-CON-008"
+    },
+    {
+      "finding_id": "V147-AUD-009",
+      "target": "CONCURRENCY_UNDEFINED",
+      "status": "GAP_CONFIRMED",
+      "resolution_ref": "V147-CON-009"
+    },
+    {
+      "finding_id": "V147-AUD-010",
+      "target": "CANDIDATE_FORWARD_REFERENCE",
+      "status": "GAP_CONFIRMED",
+      "resolution_ref": "V147-CON-010"
+    },
+    {
+      "finding_id": "V147-AUD-011",
+      "target": "CERTIFICATE_CANCEL_DIAGRAM",
+      "status": "GAP_CONFIRMED",
+      "resolution_ref": "V147-CON-011"
+    }
+  ],
+  "no_gap_targets": [
+    "UNKNOWN_BLOCKED_SEPARATION",
+    "CERTIFICATE_LIFECYCLE_VALIDITY_SEPARATION",
+    "GATE_POLICY_RESULT_SEPARATION",
+    "APPROVAL_EXECUTION_SEPARATION"
+  ],
+  "baseline_materialization": "USER_SUPPLIED_TEXT_NOT_LOCAL_HISTORICAL_PACKAGE"
+}

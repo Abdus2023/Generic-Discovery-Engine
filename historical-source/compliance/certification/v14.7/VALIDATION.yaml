@@ -1,0 +1,992 @@
+{
+  "schema_version": "14.7",
+  "overall_status": "STRUCTURAL_PASS_CURRENT_CERTIFICATION_NOT_APPLICABLE",
+  "summary": {
+    "total": 140,
+    "passed": 139,
+    "failed": 0,
+    "blocked": 1
+  },
+  "checks": [
+    {
+      "check_id": "I01",
+      "category": "inventory",
+      "result": "PASS",
+      "description": "86 generator-owned deliverables",
+      "detail": ""
+    },
+    {
+      "check_id": "I02",
+      "category": "parseability",
+      "result": "PASS",
+      "description": "all JSON-compatible YAML parses",
+      "detail": ""
+    },
+    {
+      "check_id": "I03",
+      "category": "inventory",
+      "result": "PASS",
+      "description": "no undeclared generated files",
+      "detail": "[]"
+    },
+    {
+      "check_id": "I04",
+      "category": "baseline",
+      "result": "PASS",
+      "description": "user-supplied v14.6 baseline recorded without fabricated local package",
+      "detail": ""
+    },
+    {
+      "check_id": "S01",
+      "category": "schema",
+      "result": "PASS",
+      "description": "40 unique complete schemas",
+      "detail": ""
+    },
+    {
+      "check_id": "S02",
+      "category": "schema",
+      "result": "PASS",
+      "description": "all schemas satisfy complete meta-contract",
+      "detail": ""
+    },
+    {
+      "check_id": "S03",
+      "category": "schema",
+      "result": "PASS",
+      "description": "all schema hashes match registry",
+      "detail": ""
+    },
+    {
+      "check_id": "S04",
+      "category": "schema",
+      "result": "PASS",
+      "description": "every schema has required scope and timestamp",
+      "detail": ""
+    },
+    {
+      "check_id": "S05",
+      "category": "schema",
+      "result": "PASS",
+      "description": "discovery Candidate remains byte-exact v14.3 domain schema",
+      "detail": ""
+    },
+    {
+      "check_id": "S06",
+      "category": "schema",
+      "result": "PASS",
+      "description": "all closure schemas explicitly present",
+      "detail": ""
+    },
+    {
+      "check_id": "S07",
+      "category": "schema",
+      "result": "PASS",
+      "description": "CONTRADICTIONS.yaml instances satisfy contradiction-entry schema and canonical hashes",
+      "detail": ""
+    },
+    {
+      "check_id": "S08",
+      "category": "schema",
+      "result": "PASS",
+      "description": "AMBIGUITIES.yaml instances satisfy ambiguity-entry schema and canonical hashes",
+      "detail": ""
+    },
+    {
+      "check_id": "S09",
+      "category": "schema",
+      "result": "PASS",
+      "description": "PRECEDENCE-MODEL.yaml instances satisfy precedence-rule schema and canonical hashes",
+      "detail": ""
+    },
+    {
+      "check_id": "S10",
+      "category": "schema",
+      "result": "PASS",
+      "description": "DERIVED-STATE-CLASSIFICATION.yaml instances satisfy derived-state-classification schema and canonical hashes",
+      "detail": ""
+    },
+    {
+      "check_id": "S11",
+      "category": "schema",
+      "result": "PASS",
+      "description": "STATE-TRANSITION-TABLES.yaml instances satisfy transition-rule schema and canonical hashes",
+      "detail": ""
+    },
+    {
+      "check_id": "S12",
+      "category": "schema",
+      "result": "PASS",
+      "description": "CONCURRENCY-MODEL.yaml instances satisfy concurrency-control schema and canonical hashes",
+      "detail": ""
+    },
+    {
+      "check_id": "S13",
+      "category": "schema",
+      "result": "PASS",
+      "description": "IDENTITY-PROFILES.yaml instances satisfy object-identity-profile schema and canonical hashes",
+      "detail": ""
+    },
+    {
+      "check_id": "A01",
+      "category": "audit",
+      "result": "PASS",
+      "description": "11 audit gaps each resolve to contradiction ledger",
+      "detail": ""
+    },
+    {
+      "check_id": "A02",
+      "category": "audit",
+      "result": "PASS",
+      "description": "contradiction ledger fields complete and unique",
+      "detail": ""
+    },
+    {
+      "check_id": "A03",
+      "category": "audit",
+      "result": "PASS",
+      "description": "ambiguity ledger retains three safety questions and one implementation choice",
+      "detail": ""
+    },
+    {
+      "check_id": "A04",
+      "category": "audit",
+      "result": "PASS",
+      "description": "all unresolved safety questions specify fail-closed default",
+      "detail": ""
+    },
+    {
+      "check_id": "E01",
+      "category": "evaluation",
+      "result": "PASS",
+      "description": "12 canonical domains and four secondary dimensions separated",
+      "detail": ""
+    },
+    {
+      "check_id": "E02",
+      "category": "evaluation",
+      "result": "PASS",
+      "description": "lifecycle and result exact and separate",
+      "detail": ""
+    },
+    {
+      "check_id": "E03",
+      "category": "evaluation",
+      "result": "PASS",
+      "description": "INVALID cannot leak into semantic aggregation",
+      "detail": ""
+    },
+    {
+      "check_id": "E04",
+      "category": "evaluation",
+      "result": "PASS",
+      "description": "reproduction binds 13 inputs including evaluator hash",
+      "detail": ""
+    },
+    {
+      "check_id": "E05",
+      "category": "evaluation",
+      "result": "PASS",
+      "description": "nondeterministic evaluator inputs forbidden",
+      "detail": ""
+    },
+    {
+      "check_id": "AU01",
+      "category": "authority",
+      "result": "PASS",
+      "description": "credential policy and effective status are independent axes",
+      "detail": ""
+    },
+    {
+      "check_id": "AU02",
+      "category": "authority",
+      "result": "PASS",
+      "description": "administrative lifecycle excludes expiration and uncertainty",
+      "detail": ""
+    },
+    {
+      "check_id": "AU03",
+      "category": "authority",
+      "result": "PASS",
+      "description": "seven non-ambiguous capabilities",
+      "detail": ""
+    },
+    {
+      "check_id": "AU04",
+      "category": "authority",
+      "result": "PASS",
+      "description": "delegation subset and deterministic distinct N-of-M",
+      "detail": ""
+    },
+    {
+      "check_id": "AU05",
+      "category": "authority",
+      "result": "PASS",
+      "description": "evaluator self-authorization forbidden absent explicit grant",
+      "detail": ""
+    },
+    {
+      "check_id": "F01",
+      "category": "fail_closed",
+      "result": "PASS",
+      "description": "complete unique 11x12 matrix",
+      "detail": ""
+    },
+    {
+      "check_id": "F02",
+      "category": "fail_closed",
+      "result": "PASS",
+      "description": "all 132 rows independently reproduce",
+      "detail": ""
+    },
+    {
+      "check_id": "F03",
+      "category": "fail_closed",
+      "result": "PASS",
+      "description": "required malformed invalid contradictory and missing terminate",
+      "detail": ""
+    },
+    {
+      "check_id": "F04",
+      "category": "fail_closed",
+      "result": "PASS",
+      "description": "unavailable and blocked remain BLOCKED",
+      "detail": ""
+    },
+    {
+      "check_id": "F05",
+      "category": "fail_closed",
+      "result": "PASS",
+      "description": "semantic UNKNOWN remains distinct where trust boundary permits",
+      "detail": ""
+    },
+    {
+      "check_id": "P01",
+      "category": "precedence",
+      "result": "PASS",
+      "description": "six unique required precedence domains",
+      "detail": ""
+    },
+    {
+      "check_id": "P02",
+      "category": "precedence",
+      "result": "PASS",
+      "description": "predicate and integrity precedence do not conflict",
+      "detail": ""
+    },
+    {
+      "check_id": "P03",
+      "category": "precedence",
+      "result": "PASS",
+      "description": "each precedence rule has inputs ordering output reason",
+      "detail": ""
+    },
+    {
+      "check_id": "D01",
+      "category": "derived",
+      "result": "PASS",
+      "description": "all 11 required mutable-looking fields classified",
+      "detail": ""
+    },
+    {
+      "check_id": "D02",
+      "category": "derived",
+      "result": "PASS",
+      "description": "no derived/evaluated/projection field manually authoritative",
+      "detail": ""
+    },
+    {
+      "check_id": "T01",
+      "category": "temporal",
+      "result": "PASS",
+      "description": "eight requested temporal terms defined",
+      "detail": ""
+    },
+    {
+      "check_id": "T02",
+      "category": "temporal",
+      "result": "PASS",
+      "description": "half-open exact boundaries and equality deterministic",
+      "detail": ""
+    },
+    {
+      "check_id": "T03",
+      "category": "temporal",
+      "result": "PASS",
+      "description": "clock skew profile mandatory and future bounded",
+      "detail": ""
+    },
+    {
+      "check_id": "T04",
+      "category": "temporal",
+      "result": "PASS",
+      "description": "late events append only and replay is bitemporal",
+      "detail": ""
+    },
+    {
+      "check_id": "ID01",
+      "category": "identity",
+      "result": "PASS",
+      "description": "five identities distinct and version not identity",
+      "detail": ""
+    },
+    {
+      "check_id": "ID02",
+      "category": "identity",
+      "result": "PASS",
+      "description": "identity profile covers every schema exactly",
+      "detail": ""
+    },
+    {
+      "check_id": "RU01",
+      "category": "reuse",
+      "result": "PASS",
+      "description": "CertificateReusable exact 15 equalities and seven conditions",
+      "detail": ""
+    },
+    {
+      "check_id": "RU02",
+      "category": "reuse",
+      "result": "PASS",
+      "description": "issuance reuse distinct with 13 equalities and idempotent replay semantics",
+      "detail": ""
+    },
+    {
+      "check_id": "RU03",
+      "category": "reuse",
+      "result": "PASS",
+      "description": "DecisionReusable exact 18 equalities plus five temporal conditions",
+      "detail": ""
+    },
+    {
+      "check_id": "RU04",
+      "category": "reuse",
+      "result": "PASS",
+      "description": "all required changes have exact action rows",
+      "detail": ""
+    },
+    {
+      "check_id": "RU05",
+      "category": "reuse",
+      "result": "PASS",
+      "description": "identity-defining changes require new release",
+      "detail": ""
+    },
+    {
+      "check_id": "SM01",
+      "category": "state_machine",
+      "result": "PASS",
+      "description": "all 12 requested state models covered",
+      "detail": ""
+    },
+    {
+      "check_id": "SM02",
+      "category": "state_machine",
+      "result": "PASS",
+      "description": "all transitions complete and forbid side effects",
+      "detail": ""
+    },
+    {
+      "check_id": "SM03",
+      "category": "state_machine",
+      "result": "PASS",
+      "description": "ISSUED to CANCELLED remains illegal",
+      "detail": ""
+    },
+    {
+      "check_id": "SM04",
+      "category": "state_machine",
+      "result": "PASS",
+      "description": "evaluation lifecycle separate and complete",
+      "detail": ""
+    },
+    {
+      "check_id": "SM05",
+      "category": "state_machine",
+      "result": "PASS",
+      "description": "no dead unreachable ambiguous or implicit transitions remain",
+      "detail": ""
+    },
+    {
+      "check_id": "H01",
+      "category": "history",
+      "result": "PASS",
+      "description": "ten mutable-looking objects map event source projection reducer validity rebuild",
+      "detail": ""
+    },
+    {
+      "check_id": "H02",
+      "category": "history",
+      "result": "PASS",
+      "description": "all seven corrupt-history modes fail closed",
+      "detail": ""
+    },
+    {
+      "check_id": "H03",
+      "category": "history",
+      "result": "PASS",
+      "description": "canonical ten-step rebuild rejects invalid events",
+      "detail": ""
+    },
+    {
+      "check_id": "CC01",
+      "category": "concurrency",
+      "result": "PASS",
+      "description": "all seven race classes have controls",
+      "detail": ""
+    },
+    {
+      "check_id": "CC02",
+      "category": "concurrency",
+      "result": "PASS",
+      "description": "all commits linearizable with explicit conflict and winner",
+      "detail": ""
+    },
+    {
+      "check_id": "CC03",
+      "category": "concurrency",
+      "result": "PASS",
+      "description": "mechanism choice constrained to equivalent optimistic/pessimistic semantics",
+      "detail": ""
+    },
+    {
+      "check_id": "V01",
+      "category": "validation",
+      "result": "PASS",
+      "description": "one exact ordered 15-stage procedure",
+      "detail": ""
+    },
+    {
+      "check_id": "V02",
+      "category": "validation",
+      "result": "PASS",
+      "description": "every stage declares inputs outputs failure and continuation",
+      "detail": ""
+    },
+    {
+      "check_id": "V03",
+      "category": "validation",
+      "result": "PASS",
+      "description": "18 exact canonical failure classes",
+      "detail": ""
+    },
+    {
+      "check_id": "V04",
+      "category": "validation",
+      "result": "PASS",
+      "description": "predecessor aliases normalize without erasure",
+      "detail": ""
+    },
+    {
+      "check_id": "TV01",
+      "category": "vectors",
+      "result": "PASS",
+      "description": "55 complete machine-oriented vectors",
+      "detail": ""
+    },
+    {
+      "check_id": "TV02",
+      "category": "vectors",
+      "result": "PASS",
+      "description": "all requested positive negative and boundary cases covered",
+      "detail": ""
+    },
+    {
+      "check_id": "TV03",
+      "category": "vectors",
+      "result": "PASS",
+      "description": "all 55 expected results independently reproduced by the validator oracle",
+      "detail": ""
+    },
+    {
+      "check_id": "N01",
+      "category": "invariants",
+      "result": "PASS",
+      "description": "60 unique machine-checkable consolidated invariants",
+      "detail": ""
+    },
+    {
+      "check_id": "V147-INV-001",
+      "category": "invariant",
+      "result": "PASS",
+      "description": "INVALID_REQUIRED_INPUT_IMPLIES_NOT_AUTHORIZED",
+      "detail": ""
+    },
+    {
+      "check_id": "V147-INV-002",
+      "category": "invariant",
+      "result": "PASS",
+      "description": "ELIGIBLE_DOES_NOT_IMPLY_APPROVED",
+      "detail": ""
+    },
+    {
+      "check_id": "V147-INV-003",
+      "category": "invariant",
+      "result": "PASS",
+      "description": "APPROVED_DOES_NOT_IMPLY_EXECUTED",
+      "detail": ""
+    },
+    {
+      "check_id": "V147-INV-004",
+      "category": "invariant",
+      "result": "PASS",
+      "description": "EXECUTED_DOES_NOT_IMPLY_VERIFIED",
+      "detail": ""
+    },
+    {
+      "check_id": "V147-INV-005",
+      "category": "invariant",
+      "result": "PASS",
+      "description": "VALID_DOES_NOT_IMPLY_RELEASE_AUTHORIZED",
+      "detail": ""
+    },
+    {
+      "check_id": "V147-INV-006",
+      "category": "invariant",
+      "result": "PASS",
+      "description": "UNKNOWN_DOES_NOT_IMPLY_TRUE",
+      "detail": ""
+    },
+    {
+      "check_id": "V147-INV-007",
+      "category": "invariant",
+      "result": "PASS",
+      "description": "BLOCKED_DOES_NOT_IMPLY_TRUE",
+      "detail": ""
+    },
+    {
+      "check_id": "V147-INV-008",
+      "category": "invariant",
+      "result": "PASS",
+      "description": "FALSE_NOT_EQUAL_INVALID",
+      "detail": ""
+    },
+    {
+      "check_id": "V147-INV-009",
+      "category": "invariant",
+      "result": "PASS",
+      "description": "UNKNOWN_NOT_EQUAL_BLOCKED",
+      "detail": ""
+    },
+    {
+      "check_id": "V147-INV-010",
+      "category": "invariant",
+      "result": "PASS",
+      "description": "LIFECYCLE_NOT_DERIVED_TRUTH",
+      "detail": ""
+    },
+    {
+      "check_id": "V147-INV-011",
+      "category": "invariant",
+      "result": "PASS",
+      "description": "EVALUATION_LIFECYCLE_NOT_RESULT",
+      "detail": ""
+    },
+    {
+      "check_id": "V147-INV-012",
+      "category": "invariant",
+      "result": "PASS",
+      "description": "AUTHORITY_POLICY_NOT_CREDENTIAL",
+      "detail": ""
+    },
+    {
+      "check_id": "V147-INV-013",
+      "category": "invariant",
+      "result": "PASS",
+      "description": "EVALUATOR_NOT_SELF_AUTHORIZED",
+      "detail": ""
+    },
+    {
+      "check_id": "V147-INV-014",
+      "category": "invariant",
+      "result": "PASS",
+      "description": "EVALUATOR_CHANGE_IMPLIES_NOT_REUSABLE",
+      "detail": ""
+    },
+    {
+      "check_id": "V147-INV-015",
+      "category": "invariant",
+      "result": "PASS",
+      "description": "CONTEXT_CHANGE_IMPLIES_NEW_EVALUATION",
+      "detail": ""
+    },
+    {
+      "check_id": "V147-INV-016",
+      "category": "invariant",
+      "result": "PASS",
+      "description": "FRESHNESS_REQUIRES_CLOCK_PROFILE",
+      "detail": ""
+    },
+    {
+      "check_id": "V147-INV-017",
+      "category": "invariant",
+      "result": "PASS",
+      "description": "EMPTY_POLICY_REQUIRES_EXPLICIT_ACTION",
+      "detail": ""
+    },
+    {
+      "check_id": "V147-INV-018",
+      "category": "invariant",
+      "result": "PASS",
+      "description": "HISTORY_PROJECTION_EQUALS_CURRENT_PROJECTION",
+      "detail": ""
+    },
+    {
+      "check_id": "V147-INV-019",
+      "category": "invariant",
+      "result": "PASS",
+      "description": "INVALID_HISTORY_IMPLIES_NO_TRUSTED_PROJECTION",
+      "detail": ""
+    },
+    {
+      "check_id": "V147-INV-020",
+      "category": "invariant",
+      "result": "PASS",
+      "description": "DECISION_BASIS_CHANGED_IMPLIES_NOT_REUSABLE",
+      "detail": ""
+    },
+    {
+      "check_id": "V147-INV-021",
+      "category": "invariant",
+      "result": "PASS",
+      "description": "CERTIFICATE_VALID_NOT_ISSUANCE_REUSABLE",
+      "detail": ""
+    },
+    {
+      "check_id": "V147-INV-022",
+      "category": "invariant",
+      "result": "PASS",
+      "description": "CERTIFICATE_REUSABLE_REQUIRES_VALIDITY_VALID",
+      "detail": ""
+    },
+    {
+      "check_id": "V147-INV-023",
+      "category": "invariant",
+      "result": "PASS",
+      "description": "ISSUANCE_REUSE_REQUIRES_UNUSED_OR_IDEMPOTENT_SAME_OPERATION",
+      "detail": ""
+    },
+    {
+      "check_id": "V147-INV-024",
+      "category": "invariant",
+      "result": "PASS",
+      "description": "RELEASE_ID_NOT_ARTIFACT_HASH",
+      "detail": ""
+    },
+    {
+      "check_id": "V147-INV-025",
+      "category": "invariant",
+      "result": "PASS",
+      "description": "HASH_TYPES_NOT_SUBSTITUTABLE",
+      "detail": ""
+    },
+    {
+      "check_id": "V147-INV-026",
+      "category": "invariant",
+      "result": "PASS",
+      "description": "VERSION_NOT_IDENTITY",
+      "detail": ""
+    },
+    {
+      "check_id": "V147-INV-027",
+      "category": "invariant",
+      "result": "PASS",
+      "description": "NOT_BEFORE_EQUAL_ACTIVE",
+      "detail": ""
+    },
+    {
+      "check_id": "V147-INV-028",
+      "category": "invariant",
+      "result": "PASS",
+      "description": "NOT_AFTER_EQUAL_INACTIVE",
+      "detail": ""
+    },
+    {
+      "check_id": "V147-INV-029",
+      "category": "invariant",
+      "result": "PASS",
+      "description": "TIMESTAMP_EQUALITY_NOT_ORDER",
+      "detail": ""
+    },
+    {
+      "check_id": "V147-INV-030",
+      "category": "invariant",
+      "result": "PASS",
+      "description": "SEQUENCE_UNIQUE_PER_STREAM",
+      "detail": ""
+    },
+    {
+      "check_id": "V147-INV-031",
+      "category": "invariant",
+      "result": "PASS",
+      "description": "SEQUENCE_CONTIGUOUS_PER_STREAM",
+      "detail": ""
+    },
+    {
+      "check_id": "V147-INV-032",
+      "category": "invariant",
+      "result": "PASS",
+      "description": "PREVIOUS_EVENT_EXACT",
+      "detail": ""
+    },
+    {
+      "check_id": "V147-INV-033",
+      "category": "invariant",
+      "result": "PASS",
+      "description": "ORDER_SIGNALS_COHERE",
+      "detail": ""
+    },
+    {
+      "check_id": "V147-INV-034",
+      "category": "invariant",
+      "result": "PASS",
+      "description": "LATE_EVENT_CANNOT_INSERT_HISTORY",
+      "detail": ""
+    },
+    {
+      "check_id": "V147-INV-035",
+      "category": "invariant",
+      "result": "PASS",
+      "description": "FUTURE_TIMESTAMP_OUTSIDE_SKEW_INVALID",
+      "detail": ""
+    },
+    {
+      "check_id": "V147-INV-036",
+      "category": "invariant",
+      "result": "PASS",
+      "description": "AUTHORITY_EXPIRY_DERIVED",
+      "detail": ""
+    },
+    {
+      "check_id": "V147-INV-037",
+      "category": "invariant",
+      "result": "PASS",
+      "description": "REVOKED_AUTHORITY_NOT_EFFECTIVE",
+      "detail": ""
+    },
+    {
+      "check_id": "V147-INV-038",
+      "category": "invariant",
+      "result": "PASS",
+      "description": "DELEGATE_SCOPE_SUBSET_PARENT",
+      "detail": ""
+    },
+    {
+      "check_id": "V147-INV-039",
+      "category": "invariant",
+      "result": "PASS",
+      "description": "MULTIPARTY_APPROVALS_DISTINCT",
+      "detail": ""
+    },
+    {
+      "check_id": "V147-INV-040",
+      "category": "invariant",
+      "result": "PASS",
+      "description": "ZERO_THRESHOLD_INVALID",
+      "detail": ""
+    },
+    {
+      "check_id": "V147-INV-041",
+      "category": "invariant",
+      "result": "PASS",
+      "description": "IDEMPOTENCY_KEY_UNIQUE_PER_OPERATION_SCOPE",
+      "detail": ""
+    },
+    {
+      "check_id": "V147-INV-042",
+      "category": "invariant",
+      "result": "PASS",
+      "description": "ATOMIC_COMPARE_APPEND_SINGLE_WINNER",
+      "detail": ""
+    },
+    {
+      "check_id": "V147-INV-043",
+      "category": "invariant",
+      "result": "PASS",
+      "description": "CONFLICT_NOT_RESOLVED_BY_TIMESTAMP",
+      "detail": ""
+    },
+    {
+      "check_id": "V147-INV-044",
+      "category": "invariant",
+      "result": "PASS",
+      "description": "PROJECTION_PUBLICATION_MATCHES_HISTORY_HEAD",
+      "detail": ""
+    },
+    {
+      "check_id": "V147-INV-045",
+      "category": "invariant",
+      "result": "PASS",
+      "description": "RETRY_DOES_NOT_REUSE_AUTHORIZATION_IMPLICITLY",
+      "detail": ""
+    },
+    {
+      "check_id": "V147-INV-046",
+      "category": "invariant",
+      "result": "PASS",
+      "description": "ROLLBACK_REQUIRES_AUTHORIZATION",
+      "detail": ""
+    },
+    {
+      "check_id": "V147-INV-047",
+      "category": "invariant",
+      "result": "PASS",
+      "description": "POST_RELEASE_FAILURE_NO_HISTORY_REWRITE",
+      "detail": ""
+    },
+    {
+      "check_id": "V147-INV-048",
+      "category": "invariant",
+      "result": "PASS",
+      "description": "ISSUED_TO_CANCELLED_FORBIDDEN",
+      "detail": ""
+    },
+    {
+      "check_id": "V147-INV-049",
+      "category": "invariant",
+      "result": "PASS",
+      "description": "CANDIDATE_NOT_CERTIFICATE_DRAFT",
+      "detail": ""
+    },
+    {
+      "check_id": "V147-INV-050",
+      "category": "invariant",
+      "result": "PASS",
+      "description": "CANDIDATE_RETENTION_NOT_LIFECYCLE",
+      "detail": ""
+    },
+    {
+      "check_id": "V147-INV-051",
+      "category": "invariant",
+      "result": "PASS",
+      "description": "DERIVED_STATE_NOT_MANUALLY_AUTHORITATIVE",
+      "detail": ""
+    },
+    {
+      "check_id": "V147-INV-052",
+      "category": "invariant",
+      "result": "PASS",
+      "description": "FALSE_DOMINATES_BLOCKED_ONLY_IN_PREDICATE_DOMAIN",
+      "detail": ""
+    },
+    {
+      "check_id": "V147-INV-053",
+      "category": "invariant",
+      "result": "PASS",
+      "description": "INVALID_TERMINATES_BEFORE_PREDICATE_AGGREGATION",
+      "detail": ""
+    },
+    {
+      "check_id": "V147-INV-054",
+      "category": "invariant",
+      "result": "PASS",
+      "description": "DEFERRED_REQUIRES_EXPLICIT_AUTHORIZED_ACTION",
+      "detail": ""
+    },
+    {
+      "check_id": "V147-INV-055",
+      "category": "invariant",
+      "result": "PASS",
+      "description": "MISSING_REQUIRED_REFERENCE_INVALID",
+      "detail": ""
+    },
+    {
+      "check_id": "V147-INV-056",
+      "category": "invariant",
+      "result": "PASS",
+      "description": "UNAVAILABLE_PREREQUISITE_BLOCKED",
+      "detail": ""
+    },
+    {
+      "check_id": "V147-INV-057",
+      "category": "invariant",
+      "result": "PASS",
+      "description": "STALE_NOT_FALSE",
+      "detail": ""
+    },
+    {
+      "check_id": "V147-INV-058",
+      "category": "invariant",
+      "result": "PASS",
+      "description": "NO_FUTURE_EVIDENCE_BACKFLOW",
+      "detail": ""
+    },
+    {
+      "check_id": "V147-INV-059",
+      "category": "invariant",
+      "result": "PASS",
+      "description": "EVENT_IMMUTABLE_AFTER_COMMIT",
+      "detail": ""
+    },
+    {
+      "check_id": "V147-INV-060",
+      "category": "invariant",
+      "result": "PASS",
+      "description": "CURRENT_PROJECTION_NOT_EVIDENCE",
+      "detail": ""
+    },
+    {
+      "check_id": "TR01",
+      "category": "traceability",
+      "result": "PASS",
+      "description": "16-layer bidirectional chain and six-step closure trace",
+      "detail": ""
+    },
+    {
+      "check_id": "EP01",
+      "category": "epistemic",
+      "result": "PASS",
+      "description": "six epistemic labels and five claim classes",
+      "detail": ""
+    },
+    {
+      "check_id": "C01",
+      "category": "non_invention",
+      "result": "PASS",
+      "description": "current histories and projections empty without invention",
+      "detail": ""
+    },
+    {
+      "check_id": "PR01",
+      "category": "integrity",
+      "result": "PASS",
+      "description": "all 665 predecessor artifacts byte-preserved",
+      "detail": "[]"
+    },
+    {
+      "check_id": "DOC01",
+      "category": "documentation",
+      "result": "PASS",
+      "description": "required 26-section final structure exact",
+      "detail": ""
+    },
+    {
+      "check_id": "Q01",
+      "category": "determinism",
+      "result": "PASS",
+      "description": "all 86 generated outputs byte-identical",
+      "detail": ""
+    },
+    {
+      "check_id": "Q02",
+      "category": "regression",
+      "result": "PASS",
+      "description": "predecessor regressions and append guards pass",
+      "detail": ""
+    },
+    {
+      "check_id": "Q03",
+      "category": "hygiene",
+      "result": "PASS",
+      "description": "no Python cache artifacts",
+      "detail": "[]"
+    },
+    {
+      "check_id": "GATE-V147",
+      "category": "acceptance",
+      "result": "BLOCKED",
+      "description": "current certification and release acceptance",
+      "detail": "Protocol is structurally closed, but inherited audit remains SPEC_INVALID_AT_PIPELINE_STAGE_2 and no current operational object exists."
+    }
+  ]
+}

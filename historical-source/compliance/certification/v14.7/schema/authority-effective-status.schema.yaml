@@ -1,0 +1,96 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://generic-discovery-engine.invalid/compliance/v14.7/authority-effective-status.schema.yaml",
+  "title": "authority-effective-status",
+  "type": "object",
+  "required": [
+    "authority_effectiveness_id",
+    "authority_id",
+    "administrative_state",
+    "effective_status",
+    "credential_evaluation_id",
+    "scope_evaluation_id",
+    "evaluated_at",
+    "basis_hash",
+    "sequence_no",
+    "scope_id",
+    "scope_hash",
+    "content_hash"
+  ],
+  "properties": {
+    "authority_effectiveness_id": {
+      "type": "string",
+      "pattern": "^[A-Za-z0-9][A-Za-z0-9._:/-]*$"
+    },
+    "authority_id": {
+      "type": "string",
+      "pattern": "^[A-Za-z0-9][A-Za-z0-9._:/-]*$"
+    },
+    "administrative_state": {
+      "type": "string",
+      "enum": [
+        "ACTIVE",
+        "SUSPENDED",
+        "REVOKED"
+      ]
+    },
+    "effective_status": {
+      "type": "string",
+      "enum": [
+        "EFFECTIVE",
+        "NOT_YET_EFFECTIVE",
+        "EXPIRED",
+        "SUSPENDED",
+        "REVOKED",
+        "UNKNOWN",
+        "INVALID"
+      ]
+    },
+    "credential_evaluation_id": {
+      "type": "string",
+      "pattern": "^[A-Za-z0-9][A-Za-z0-9._:/-]*$"
+    },
+    "scope_evaluation_id": {
+      "type": "string",
+      "pattern": "^[A-Za-z0-9][A-Za-z0-9._:/-]*$"
+    },
+    "evaluated_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "basis_hash": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$"
+    },
+    "sequence_no": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "scope_id": {
+      "type": "string",
+      "pattern": "^[A-Za-z0-9][A-Za-z0-9._:/-]*$"
+    },
+    "scope_hash": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$"
+    },
+    "content_hash": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$"
+    }
+  },
+  "additionalProperties": false,
+  "x-identity-fields": [
+    "authority_effectiveness_id"
+  ],
+  "x-immutable": true,
+  "x-self-excluding-hash-field": "content_hash",
+  "x-reference-resolution": "EXACTLY_ONE_TYPED_HASH_MATCHED_TARGET",
+  "x-nullability": "ONLY_EXPLICIT_ONEOF_NULL_FIELDS_ARE_NULLABLE",
+  "x-timestamp-semantics": "RFC3339_UTC_HALF_OPEN_INTERVALS_WITH_PROFILED_SKEW",
+  "x-scope-validation": "CANONICAL_SCOPE_SET_AND_SCOPE_HASH",
+  "x-version-relationship": "VERSION_LABEL_IS_METADATA_NOT_IDENTITY",
+  "x-normative-rules": [
+    "effective status is derived; administrative state is historical"
+  ]
+}
