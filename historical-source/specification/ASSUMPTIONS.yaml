@@ -1,0 +1,89 @@
+{
+  "schema_version": "1.0",
+  "specification_version": "11.1",
+  "registry_type": "ASSUMPTION",
+  "status": "NON_NORMATIVE_ONLY",
+  "assumptions": [
+    {
+      "assumption_id": "ASSUMP-V111-001",
+      "object_type": "ASSUMPTION",
+      "schema_version": "1.0",
+      "lifecycle_status": "DISCOVERED",
+      "statement": "A future candidate identity requirement would require a deterministic normalization and equivalence domain.",
+      "scope": {
+        "type": "CANDIDATE",
+        "ref": "candidate-identity"
+      },
+      "affected_objects": [
+        "OBL-CANDIDATE-IDENTITY",
+        "OBL-CANDIDATE-EQUIVALENCE"
+      ],
+      "epistemic_status": "UNKNOWN",
+      "validation": {
+        "method": "PROPERTY_TEST",
+        "oracle_id": null,
+        "status": "UNVERIFIED"
+      },
+      "normative": false,
+      "provenance": {
+        "source_artifact": "historical-source/obligations/OBLIGATIONS.yaml",
+        "source_object": "OBL-CANDIDATE-EQUIVALENCE",
+        "content_hash": "edb56ccdb408bfe3197f05c3a55e7627772d248d8c72c28e5b8c86566d25efa5",
+        "transformation": "EXPLICIT_NON_NORMATIVE_ASSUMPTION",
+        "normative": false
+      }
+    },
+    {
+      "assumption_id": "ASSUMP-V111-002",
+      "object_type": "ASSUMPTION",
+      "schema_version": "1.0",
+      "lifecycle_status": "DISCOVERED",
+      "statement": "Any future conformance subject would require an identified implementation artifact and execution environment.",
+      "scope": {
+        "type": "RUNTIME",
+        "ref": null
+      },
+      "affected_objects": [],
+      "epistemic_status": "UNKNOWN",
+      "validation": {
+        "method": "INSPECTION",
+        "oracle_id": null,
+        "status": "UNVERIFIED"
+      },
+      "normative": false,
+      "provenance": {
+        "source_artifact": "historical-source/obligations/VERIFICATION-GRAPH.yaml",
+        "source_object": "VERIFICATION-GRAPH",
+        "content_hash": "15b74f61c4ca761ebc5e207aa7f7f1a11400f3c1a02d9e6faee20a18d339bc0e",
+        "transformation": "EXPLICIT_NON_NORMATIVE_ASSUMPTION",
+        "normative": false
+      }
+    },
+    {
+      "assumption_id": "ASSUMP-V111-003",
+      "object_type": "ASSUMPTION",
+      "schema_version": "1.0",
+      "lifecycle_status": "DISCOVERED",
+      "statement": "Current architecture and roadmap material cannot repair missing historical verification evidence.",
+      "scope": {
+        "type": "GLOBAL",
+        "ref": "historical-evidence-boundary"
+      },
+      "affected_objects": [],
+      "epistemic_status": "SUPPORTED",
+      "validation": {
+        "method": "INSPECTION",
+        "oracle_id": null,
+        "status": "VERIFIED"
+      },
+      "normative": false,
+      "provenance": {
+        "source_artifact": "historical-source/obligations/INPUT-CONTRACT.yaml",
+        "source_object": "INPUT-CONTRACT",
+        "content_hash": "534193fa11450969281c94aa81ac46464115dbb470b15798ce24bf3accbbb587",
+        "transformation": "EXPLICIT_NON_NORMATIVE_ASSUMPTION",
+        "normative": false
+      }
+    }
+  ]
+}

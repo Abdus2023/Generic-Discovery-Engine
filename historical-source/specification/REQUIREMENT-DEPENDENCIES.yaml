@@ -1,7 +1,12 @@
 {
   "schema_version": "1.0",
-  "graph_type": "REQUIREMENT_DEPENDENCY_GRAPH",
+  "specification_version": "11.1",
+  "registry_type": "DEPENDENCY",
   "status": "DERIVATION_REJECTED",
+  "requirement_dependencies": [],
+  "graph_type": "REQUIREMENT_DEPENDENCY_GRAPH",
+  "nodes": [],
+  "edges": [],
   "relations": [
     "REQUIRES",
     "ENABLES",
@@ -14,26 +19,7 @@
     "VERIFIED_BY",
     "DERIVED_FROM"
   ],
-  "nodes": [],
-  "edges": [],
-  "requirement_dependencies": [],
   "requires_cycles": [],
   "mandatory_closure": [],
-  "verification_order": [],
-  "ordering_model": [
-    "FOUNDATION",
-    "SCHEMA",
-    "IDENTITY",
-    "STATE",
-    "AUTHORIZATION",
-    "CORE_BEHAVIOR",
-    "CONCURRENCY",
-    "FAILURE",
-    "PERSISTENCE",
-    "PROVENANCE",
-    "OBSERVABILITY",
-    "EXPORT",
-    "UI"
-  ],
-  "reason": "Obligation dependencies are not silently copied into requirement dependencies."
+  "obligation_dependencies_copied": false
 }

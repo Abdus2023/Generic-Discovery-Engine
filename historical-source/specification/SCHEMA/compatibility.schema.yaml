@@ -1,0 +1,63 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "schema_version": "1.0",
+  "schema_change_class": "MAJOR",
+  "title": "v11.1 compatibility",
+  "type": "object",
+  "required": [
+    "compatibility_id",
+    "object_type",
+    "schema_version",
+    "lifecycle_status",
+    "provenance",
+    "scope",
+    "from_version",
+    "to_version",
+    "compatibility_type",
+    "preserved_properties",
+    "allowed_changes",
+    "forbidden_changes",
+    "migration_required",
+    "migration"
+  ],
+  "properties": {
+    "object_type": {
+      "type": "string"
+    },
+    "schema_version": {
+      "const": "1.0"
+    },
+    "lifecycle_status": {
+      "enum": [
+        "DISCOVERED",
+        "DERIVED",
+        "DRAFTED",
+        "FORMALIZED",
+        "IMPLEMENTED",
+        "PARTIALLY_IMPLEMENTED",
+        "VERIFIED",
+        "FAILED",
+        "SUPERSEDED",
+        "REJECTED",
+        "DEPRECATED",
+        "UNKNOWN"
+      ]
+    },
+    "provenance": {
+      "type": "object"
+    },
+    "compatibility_type": {
+      "enum": [
+        "SOURCE",
+        "BEHAVIORAL",
+        "DATA",
+        "PROTOCOL",
+        "CONFIGURATION",
+        "SERIALIZATION",
+        "UI",
+        "TEST"
+      ]
+    }
+  },
+  "additionalProperties": true
+}

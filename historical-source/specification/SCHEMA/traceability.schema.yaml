@@ -1,0 +1,64 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "schema_version": "1.0",
+  "schema_change_class": "MAJOR",
+  "title": "v11.1 traceability",
+  "type": "object",
+  "required": [
+    "traceability_id",
+    "object_type",
+    "schema_version",
+    "lifecycle_status",
+    "provenance",
+    "from",
+    "to",
+    "relation",
+    "evidence"
+  ],
+  "properties": {
+    "object_type": {
+      "type": "string"
+    },
+    "schema_version": {
+      "const": "1.0"
+    },
+    "lifecycle_status": {
+      "enum": [
+        "DISCOVERED",
+        "DERIVED",
+        "DRAFTED",
+        "FORMALIZED",
+        "IMPLEMENTED",
+        "PARTIALLY_IMPLEMENTED",
+        "VERIFIED",
+        "FAILED",
+        "SUPERSEDED",
+        "REJECTED",
+        "DEPRECATED",
+        "UNKNOWN"
+      ]
+    },
+    "provenance": {
+      "type": "object"
+    },
+    "relation": {
+      "enum": [
+        "DERIVED_FROM",
+        "SUPPORTED_BY",
+        "JUSTIFIED_BY",
+        "FORMALIZED_AS",
+        "TESTED_BY",
+        "VERIFIED_BY",
+        "IMPLEMENTED_AT",
+        "DEPENDS_ON",
+        "CONFLICTS_WITH",
+        "SUPERSEDES",
+        "EXPLAINED_BY",
+        "QUALIFIED_BY",
+        "ILLUSTRATED_BY",
+        "INFORMED_BY"
+      ]
+    }
+  },
+  "additionalProperties": true
+}

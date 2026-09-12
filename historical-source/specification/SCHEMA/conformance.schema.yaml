@@ -1,0 +1,82 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "schema_version": "1.0",
+  "schema_change_class": "MAJOR",
+  "title": "v11.1 conformance",
+  "type": "object",
+  "required": [
+    "conformance_id",
+    "object_type",
+    "schema_version",
+    "lifecycle_status",
+    "provenance",
+    "subject",
+    "requirement_id",
+    "level",
+    "status",
+    "verification_level",
+    "test_results",
+    "known_failures",
+    "evidence"
+  ],
+  "properties": {
+    "object_type": {
+      "type": "string"
+    },
+    "schema_version": {
+      "const": "1.0"
+    },
+    "lifecycle_status": {
+      "enum": [
+        "DISCOVERED",
+        "DERIVED",
+        "DRAFTED",
+        "FORMALIZED",
+        "IMPLEMENTED",
+        "PARTIALLY_IMPLEMENTED",
+        "VERIFIED",
+        "FAILED",
+        "SUPERSEDED",
+        "REJECTED",
+        "DEPRECATED",
+        "UNKNOWN"
+      ]
+    },
+    "provenance": {
+      "type": "object"
+    },
+    "level": {
+      "enum": [
+        "L0_NONE",
+        "L1_STRUCTURAL",
+        "L2_BEHAVIORAL",
+        "L3_SEMANTIC",
+        "L4_SAFETY",
+        "L5_SECURITY",
+        "L6_VERIFIED"
+      ]
+    },
+    "status": {
+      "enum": [
+        "CONFORMANT",
+        "PARTIALLY_CONFORMANT",
+        "NON_CONFORMANT",
+        "UNVERIFIED",
+        "BLOCKED",
+        "UNKNOWN"
+      ]
+    },
+    "verification_level": {
+      "enum": [
+        "V0_UNTESTED",
+        "V1_EXAMPLE_TESTED",
+        "V2_UNIT_VERIFIED",
+        "V3_PROPERTY_VERIFIED",
+        "V4_INTEGRATION_VERIFIED",
+        "V5_ADVERSARIAL_VERIFIED",
+        "V6_FORMALLY_VERIFIED"
+      ]
+    }
+  },
+  "additionalProperties": true
+}

@@ -1,0 +1,48 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "schema_version": "1.0",
+  "schema_change_class": "MAJOR",
+  "title": "v10.1 historical property reference",
+  "type": "object",
+  "required": [
+    "property_id",
+    "object_type",
+    "schema_version",
+    "lifecycle_status",
+    "provenance",
+    "property_type",
+    "statement",
+    "version_scope",
+    "evidence_refs",
+    "epistemic_status",
+    "historical_status"
+  ],
+  "properties": {
+    "object_type": {
+      "type": "string"
+    },
+    "schema_version": {
+      "const": "1.0"
+    },
+    "lifecycle_status": {
+      "enum": [
+        "DISCOVERED",
+        "DERIVED",
+        "DRAFTED",
+        "FORMALIZED",
+        "IMPLEMENTED",
+        "PARTIALLY_IMPLEMENTED",
+        "VERIFIED",
+        "FAILED",
+        "SUPERSEDED",
+        "REJECTED",
+        "DEPRECATED",
+        "UNKNOWN"
+      ]
+    },
+    "provenance": {
+      "type": "object"
+    }
+  },
+  "additionalProperties": true
+}

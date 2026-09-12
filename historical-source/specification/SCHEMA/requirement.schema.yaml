@@ -1,0 +1,172 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "schema_version": "1.0",
+  "schema_change_class": "MAJOR",
+  "title": "v11.1 requirement",
+  "type": "object",
+  "required": [
+    "requirement_id",
+    "object_type",
+    "schema_version",
+    "lifecycle_status",
+    "provenance",
+    "statement",
+    "requirement_type",
+    "disposition",
+    "strength",
+    "epistemic_status",
+    "scope",
+    "source_obligations",
+    "source_properties",
+    "source_evidence",
+    "rationales",
+    "rules",
+    "acceptance_criteria",
+    "invariants",
+    "transitions",
+    "dependencies",
+    "conflicts",
+    "guidance",
+    "implementation_notes",
+    "examples",
+    "assumptions",
+    "implementation_boundaries",
+    "exceptions",
+    "compatibility"
+  ],
+  "properties": {
+    "object_type": {
+      "type": "string"
+    },
+    "schema_version": {
+      "const": "1.0"
+    },
+    "lifecycle_status": {
+      "enum": [
+        "DISCOVERED",
+        "DERIVED",
+        "DRAFTED",
+        "FORMALIZED",
+        "IMPLEMENTED",
+        "PARTIALLY_IMPLEMENTED",
+        "VERIFIED",
+        "FAILED",
+        "SUPERSEDED",
+        "REJECTED",
+        "DEPRECATED",
+        "UNKNOWN"
+      ]
+    },
+    "provenance": {
+      "type": "object"
+    },
+    "requirement_type": {
+      "enum": [
+        "BEHAVIORAL",
+        "STRUCTURAL",
+        "INTERFACE",
+        "SEMANTIC",
+        "STATE",
+        "LIFECYCLE",
+        "ERROR",
+        "SECURITY",
+        "AUTHORIZATION",
+        "CONCURRENCY",
+        "RESOURCE",
+        "PERFORMANCE",
+        "PERSISTENCE",
+        "PROVENANCE",
+        "OBSERVABILITY",
+        "COMPATIBILITY",
+        "CONFIGURATION",
+        "SERIALIZATION",
+        "DISCOVERY",
+        "DEDUPLICATION",
+        "SCHEDULING",
+        "CANCELLATION",
+        "RECOVERY",
+        "AUDIT",
+        "EXPORT",
+        "UI",
+        "TESTABILITY",
+        "VERIFICATION",
+        "NEGATIVE",
+        "INVARIANT",
+        "TRANSITION",
+        "BOUNDARY"
+      ]
+    },
+    "disposition": {
+      "enum": [
+        "PRESERVE",
+        "STABILIZE",
+        "GENERALIZE",
+        "FORMALIZE",
+        "STRENGTHEN",
+        "RESTRICT",
+        "COMPATIBILIZE",
+        "DEPRECATE",
+        "REJECT",
+        "INTRODUCE",
+        "OPTIONALIZE"
+      ]
+    },
+    "strength": {
+      "enum": [
+        "MANDATORY",
+        "CONDITIONAL",
+        "RECOMMENDED",
+        "OPTIONAL",
+        "EXPERIMENTAL",
+        "NON_NORMATIVE",
+        "UNKNOWN"
+      ]
+    },
+    "epistemic_status": {
+      "enum": [
+        "PROVED",
+        "SUPPORTED",
+        "INFERRED",
+        "CONJECTURED",
+        "CONTRADICTED",
+        "UNKNOWN"
+      ]
+    },
+    "scope": {
+      "type": "object",
+      "required": [
+        "type",
+        "ref"
+      ],
+      "properties": {
+        "type": {
+          "enum": [
+            "GLOBAL",
+            "VERSION",
+            "COMPONENT",
+            "INTERFACE",
+            "OPERATION",
+            "STATE",
+            "TRANSITION",
+            "CANDIDATE",
+            "OBSERVATION",
+            "DISCOVERY",
+            "PROVIDER",
+            "SCHEDULER",
+            "WORKER",
+            "KNOWLEDGE_BASE",
+            "PERSISTENCE",
+            "EXPORT",
+            "UI",
+            "TEST",
+            "SECURITY_BOUNDARY",
+            "TRUST_BOUNDARY",
+            "CONFIGURATION",
+            "RUNTIME"
+          ]
+        }
+      }
+    }
+  },
+  "additionalProperties": true
+}

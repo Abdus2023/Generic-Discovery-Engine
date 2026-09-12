@@ -1,0 +1,53 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "schema_version": "1.0",
+  "schema_change_class": "MAJOR",
+  "title": "v10.1 obligation reference",
+  "type": "object",
+  "required": [
+    "obligation_id",
+    "object_type",
+    "schema_version",
+    "lifecycle_status",
+    "provenance",
+    "statement",
+    "class",
+    "strength",
+    "final_category",
+    "epistemic_status",
+    "source_properties",
+    "source_evidence",
+    "verification",
+    "compatibility",
+    "exceptions",
+    "status"
+  ],
+  "properties": {
+    "object_type": {
+      "type": "string"
+    },
+    "schema_version": {
+      "const": "1.0"
+    },
+    "lifecycle_status": {
+      "enum": [
+        "DISCOVERED",
+        "DERIVED",
+        "DRAFTED",
+        "FORMALIZED",
+        "IMPLEMENTED",
+        "PARTIALLY_IMPLEMENTED",
+        "VERIFIED",
+        "FAILED",
+        "SUPERSEDED",
+        "REJECTED",
+        "DEPRECATED",
+        "UNKNOWN"
+      ]
+    },
+    "provenance": {
+      "type": "object"
+    }
+  },
+  "additionalProperties": true
+}

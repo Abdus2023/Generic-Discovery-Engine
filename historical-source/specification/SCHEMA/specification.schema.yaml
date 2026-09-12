@@ -1,0 +1,33 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "schema_version": "1.0",
+  "schema_change_class": "MAJOR",
+  "title": "v11.1 specification manifest",
+  "type": "object",
+  "required": [
+    "specification"
+  ],
+  "properties": {
+    "specification": {
+      "type": "object",
+      "required": [
+        "manifest_id",
+        "object_type",
+        "schema_version",
+        "specification_version",
+        "input_contract_version",
+        "generated_at",
+        "canonical_transformation",
+        "stage_responsibilities",
+        "semantic_planes",
+        "inputs",
+        "objects",
+        "validation",
+        "certificate",
+        "lifecycle_status",
+        "provenance"
+      ]
+    }
+  },
+  "additionalProperties": true
+}

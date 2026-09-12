@@ -1,15 +1,22 @@
 {
   "schema_version": "1.0",
-  "graph_type": "REQUIREMENT_CONFLICT_GRAPH",
+  "specification_version": "11.1",
+  "registry_type": "CONFLICT",
   "status": "DERIVATION_REJECTED",
   "requirement_conflicts": [],
-  "upstream_obligation_conflict_blockers": [
-    "CONF-001",
-    "CONF-002",
-    "CONF-004",
-    "CONF-005"
+  "graph_type": "REQUIREMENT_CONFLICT_GRAPH",
+  "conflict_types": [
+    "DIRECT",
+    "CONDITIONAL",
+    "SCOPE",
+    "TEMPORAL",
+    "COMPATIBILITY",
+    "SECURITY",
+    "RESOURCE",
+    "SEMANTIC",
+    "UNKNOWN"
   ],
-  "resolution_values": [
+  "resolutions": [
     "PRESERVE_BOTH",
     "PRIORITIZE_ONE",
     "RESTRICT_SCOPE",
@@ -19,16 +26,11 @@
     "DEFER",
     "UNKNOWN"
   ],
-  "default_precedence": [
-    "SAFETY",
-    "SECURITY",
-    "DATA_INTEGRITY",
-    "AUTHORIZATION",
-    "LIFECYCLE",
-    "BEHAVIOR",
-    "PERFORMANCE",
-    "UI",
-    "CONVENIENCE"
+  "upstream_obligation_conflict_blockers": [
+    "CONF-001",
+    "CONF-002",
+    "CONF-004",
+    "CONF-005"
   ],
   "automatic_resolution": false
 }

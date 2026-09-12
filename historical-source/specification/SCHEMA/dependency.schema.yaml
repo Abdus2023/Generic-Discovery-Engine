@@ -1,0 +1,62 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "schema_version": "1.0",
+  "schema_change_class": "MAJOR",
+  "title": "v11.1 requirement dependency",
+  "type": "object",
+  "required": [
+    "dependency_id",
+    "object_type",
+    "schema_version",
+    "lifecycle_status",
+    "provenance",
+    "from_requirement",
+    "to_requirement",
+    "relation",
+    "condition",
+    "reason",
+    "evidence"
+  ],
+  "properties": {
+    "object_type": {
+      "type": "string"
+    },
+    "schema_version": {
+      "const": "1.0"
+    },
+    "lifecycle_status": {
+      "enum": [
+        "DISCOVERED",
+        "DERIVED",
+        "DRAFTED",
+        "FORMALIZED",
+        "IMPLEMENTED",
+        "PARTIALLY_IMPLEMENTED",
+        "VERIFIED",
+        "FAILED",
+        "SUPERSEDED",
+        "REJECTED",
+        "DEPRECATED",
+        "UNKNOWN"
+      ]
+    },
+    "provenance": {
+      "type": "object"
+    },
+    "relation": {
+      "enum": [
+        "REQUIRES",
+        "ENABLES",
+        "SUPPORTS",
+        "REFINES",
+        "STRENGTHENS",
+        "CONSTRAINS",
+        "CONFLICTS_WITH",
+        "SUPERSEDES",
+        "VERIFIED_BY",
+        "DERIVED_FROM"
+      ]
+    }
+  },
+  "additionalProperties": true
+}

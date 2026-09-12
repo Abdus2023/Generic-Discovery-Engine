@@ -1,20 +1,10 @@
 {
   "schema_version": "1.0",
+  "specification_version": "11.1",
+  "registry_type": "RULE",
   "status": "DERIVATION_REJECTED",
+  "rules": [],
   "operators": [
-    "MUST",
-    "MUST_NOT",
-    "SHALL",
-    "SHALL_NOT",
-    "MAY",
-    "MAY_NOT",
-    "IF",
-    "THEN",
-    "ONLY_IF",
-    "UNLESS",
-    "EXCEPT"
-  ],
-  "canonical_operators": [
     "MUST",
     "MUST_NOT",
     "MAY"
@@ -47,7 +37,9 @@
     "CONCURRENCY",
     "CANCELLATION",
     "DETERMINISM",
-    "COMPATIBILITY",
+    "COMPATIBILITY"
+  ],
+  "compound_predicate_types": [
     "AND",
     "OR",
     "NOT",
@@ -59,20 +51,5 @@
     "EXACTLY_ONE",
     "AT_LEAST_ONE",
     "AT_MOST_ONE"
-  ],
-  "compound_logic": [
-    "AND",
-    "OR",
-    "NOT",
-    "XOR",
-    "IMPLIES",
-    "IFF",
-    "FOR_ALL",
-    "EXISTS",
-    "EXACTLY_ONE",
-    "AT_LEAST_ONE",
-    "AT_MOST_ONE"
-  ],
-  "rules": [],
-  "reason": "No requirement exists from which a normative rule may be derived."
+  ]
 }

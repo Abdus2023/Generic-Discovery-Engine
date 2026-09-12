@@ -1,0 +1,59 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "schema_version": "1.0",
+  "schema_change_class": "MAJOR",
+  "title": "v11.1 effect",
+  "type": "object",
+  "required": [
+    "effect_id",
+    "object_type",
+    "schema_version",
+    "lifecycle_status",
+    "provenance",
+    "type",
+    "target",
+    "operation",
+    "predicate"
+  ],
+  "properties": {
+    "object_type": {
+      "type": "string"
+    },
+    "schema_version": {
+      "const": "1.0"
+    },
+    "lifecycle_status": {
+      "enum": [
+        "DISCOVERED",
+        "DERIVED",
+        "DRAFTED",
+        "FORMALIZED",
+        "IMPLEMENTED",
+        "PARTIALLY_IMPLEMENTED",
+        "VERIFIED",
+        "FAILED",
+        "SUPERSEDED",
+        "REJECTED",
+        "DEPRECATED",
+        "UNKNOWN"
+      ]
+    },
+    "provenance": {
+      "type": "object"
+    },
+    "type": {
+      "enum": [
+        "STATE_CHANGE",
+        "OWNERSHIP_CHANGE",
+        "DATA_WRITE",
+        "DATA_DELETE",
+        "AUDIT_EVENT",
+        "RESOURCE_RELEASE",
+        "RESOURCE_ALLOCATE",
+        "QUEUE_OPERATION",
+        "EXTERNAL_OPERATION"
+      ]
+    }
+  },
+  "additionalProperties": true
+}

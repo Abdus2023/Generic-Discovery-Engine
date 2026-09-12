@@ -1,0 +1,233 @@
+{
+  "specification": {
+    "manifest_id": "SPEC-MANIFEST-11.1",
+    "object_type": "SPECIFICATION_MANIFEST",
+    "schema_version": "1.0",
+    "specification_version": "11.1",
+    "input_contract_version": "1.0",
+    "generated_at": "UNKNOWN_NOT_RECORDED_DETERMINISTIC_BUILD",
+    "canonical_transformation": [
+      "SOURCE",
+      "EVIDENCE",
+      "PROPERTY",
+      "OBLIGATION",
+      "REQUIREMENT",
+      "RULE",
+      "ACCEPTANCE_CRITERION",
+      "TEST_ORACLE",
+      "TEST_RESULT",
+      "VERIFICATION",
+      "CONFORMANCE"
+    ],
+    "stage_responsibilities": [
+      {
+        "stage": "EVIDENCE",
+        "responsibility": "establish source-supported fact"
+      },
+      {
+        "stage": "PROPERTY",
+        "responsibility": "state what historically held"
+      },
+      {
+        "stage": "OBLIGATION",
+        "responsibility": "derive engineering consequence"
+      },
+      {
+        "stage": "REQUIREMENT",
+        "responsibility": "state required property or behavior"
+      },
+      {
+        "stage": "RULE",
+        "responsibility": "formalize mandatory semantics"
+      },
+      {
+        "stage": "ACCEPTANCE_CRITERION",
+        "responsibility": "define observable satisfaction"
+      },
+      {
+        "stage": "TEST_ORACLE",
+        "responsibility": "mechanically evaluate satisfaction"
+      },
+      {
+        "stage": "TEST_RESULT",
+        "responsibility": "record execution outcome"
+      },
+      {
+        "stage": "VERIFICATION",
+        "responsibility": "assess satisfaction evidence independently of historical justification"
+      },
+      {
+        "stage": "CONFORMANCE",
+        "responsibility": "classify implementation against requirements"
+      }
+    ],
+    "semantic_planes": {
+      "NORMATIVE": [
+        "REQUIREMENT",
+        "RULE",
+        "ACCEPTANCE_CRITERION",
+        "INVARIANT",
+        "TRANSITION",
+        "CONSTRAINT"
+      ],
+      "NON_NORMATIVE": [
+        "GUIDANCE",
+        "RATIONALE",
+        "IMPLEMENTATION_NOTE",
+        "EXAMPLE",
+        "RECOMMENDATION",
+        "ASSUMPTION"
+      ]
+    },
+    "inputs": [
+      {
+        "artifact_id": "V101-OBLIGATION-CONTRACT-534193fa11450969",
+        "content_hash": "534193fa11450969281c94aa81ac46464115dbb470b15798ce24bf3accbbb587"
+      },
+      {
+        "artifact_id": "V101-OBLIGATION-REGISTRY-edb56ccdb408bfe3",
+        "content_hash": "edb56ccdb408bfe3197f05c3a55e7627772d248d8c72c28e5b8c86566d25efa5"
+      },
+      {
+        "artifact_id": "V101-HISTORICAL-PROPERTIES-edb56ccdb408bfe3",
+        "content_hash": "edb56ccdb408bfe3197f05c3a55e7627772d248d8c72c28e5b8c86566d25efa5"
+      },
+      {
+        "artifact_id": "V101-OBLIGATION-DEPENDENCIES-55178c60f0101405",
+        "content_hash": "55178c60f0101405e4fa666b5f0d97ca6851840b3021e3ff125320419dea5807"
+      },
+      {
+        "artifact_id": "V101-OBLIGATION-LINEAGE-93f69ad0cf2a8a48",
+        "content_hash": "93f69ad0cf2a8a48a2580db68b0b8971f9007e1f3716e6a0caaf17c96a97225e"
+      },
+      {
+        "artifact_id": "V101-OBLIGATION-CONFLICTS-82c2293e173e8a44",
+        "content_hash": "82c2293e173e8a446b2675627de710d8f0503ad6ef44abd10cdc89764df35b3e"
+      },
+      {
+        "artifact_id": "V101-TRACEABILITY-9a3d15b6e809b04b",
+        "content_hash": "9a3d15b6e809b04b45f71ba088b35f20331df473fc0a63ad5f9e6c913e80fca8"
+      },
+      {
+        "artifact_id": "V101-VERIFICATION-RECORDS-15b74f61c4ca761e",
+        "content_hash": "15b74f61c4ca761ebc5e207aa7f7f1a11400f3c1a02d9e6faee20a18d339bc0e"
+      }
+    ],
+    "objects": {
+      "evidence": 26,
+      "historical_properties": 198,
+      "source_obligations": 54,
+      "requirements": 0,
+      "rules": 0,
+      "guidance": 3,
+      "rationales": 54,
+      "assumptions": 3,
+      "implementation_notes": 0,
+      "examples": 0,
+      "conditions": 0,
+      "predicates": 0,
+      "constraints": 0,
+      "acceptance_criteria": 0,
+      "oracles": 0,
+      "invariants": 0,
+      "transitions": 0,
+      "effects": 0,
+      "exceptions": 0,
+      "dependencies": 0,
+      "conflicts": 0,
+      "compatibility": 0,
+      "boundaries": 0,
+      "verifications": 0,
+      "test_results": 0,
+      "conformance_records": 0
+    },
+    "validation": {
+      "status": "FAIL",
+      "errors": 7,
+      "warnings": 1
+    },
+    "certificate": {
+      "hash": "976a8ca2280b6b85f33744b130a4915a0c65450c31a44aa255b80d3b8472ce46"
+    },
+    "lifecycle_status": "FAILED",
+    "provenance": {
+      "builder": "historical-source/tools/build_normative_specification_v111.py",
+      "derivation_gate": "CLOSED"
+    },
+    "deliverables": [
+      "INPUT-CONTRACT.yaml",
+      "SPECIFICATION-MANIFEST.yaml",
+      "SPECIFICATION-CERTIFICATE.yaml",
+      "EVIDENCE-REFERENCES.yaml",
+      "PROPERTY-REFERENCES.yaml",
+      "OBLIGATION-REFERENCES.yaml",
+      "REQUIREMENTS.yaml",
+      "NORMATIVE-RULES.yaml",
+      "CONDITIONS.yaml",
+      "PREDICATES.yaml",
+      "CONSTRAINTS.yaml",
+      "GUIDANCE.yaml",
+      "RATIONALES.yaml",
+      "ASSUMPTIONS.yaml",
+      "IMPLEMENTATION-NOTES.yaml",
+      "EXAMPLES.yaml",
+      "ACCEPTANCE-CRITERIA.yaml",
+      "TEST-ORACLES.yaml",
+      "INVARIANTS.yaml",
+      "TRANSITIONS.yaml",
+      "EFFECTS.yaml",
+      "EXCEPTIONS.yaml",
+      "REQUIREMENT-DEPENDENCIES.yaml",
+      "REQUIREMENT-CONFLICTS.yaml",
+      "REQUIREMENT-SUPERSESSION.yaml",
+      "COMPATIBILITY.yaml",
+      "IMPLEMENTATION-BOUNDARIES.yaml",
+      "VERIFICATION.yaml",
+      "TEST-RESULTS.yaml",
+      "CONFORMANCE.yaml",
+      "TRACEABILITY.yaml",
+      "REPORTS/REQUIREMENTS.md",
+      "REPORTS/NORMATIVE-RULES.md",
+      "REPORTS/GUIDANCE.md",
+      "REPORTS/ACCEPTANCE-CRITERIA.md",
+      "REPORTS/TEST-ORACLES.md",
+      "REPORTS/DEPENDENCIES.md",
+      "REPORTS/CONFLICTS.md",
+      "REPORTS/CONFORMANCE.md",
+      "REPORTS/VERIFICATION.md",
+      "REPORTS/TRACEABILITY.md",
+      "REPORTS/SPECIFICATION-AUDIT.md",
+      "REPORTS/FINAL-SPECIFICATION.md",
+      "SCHEMA/specification.schema.yaml",
+      "SCHEMA/requirement.schema.yaml",
+      "SCHEMA/rule.schema.yaml",
+      "SCHEMA/guidance.schema.yaml",
+      "SCHEMA/rationale.schema.yaml",
+      "SCHEMA/assumption.schema.yaml",
+      "SCHEMA/implementation-note.schema.yaml",
+      "SCHEMA/example.schema.yaml",
+      "SCHEMA/condition.schema.yaml",
+      "SCHEMA/predicate.schema.yaml",
+      "SCHEMA/constraint.schema.yaml",
+      "SCHEMA/acceptance-criterion.schema.yaml",
+      "SCHEMA/oracle.schema.yaml",
+      "SCHEMA/invariant.schema.yaml",
+      "SCHEMA/transition.schema.yaml",
+      "SCHEMA/effect.schema.yaml",
+      "SCHEMA/exception.schema.yaml",
+      "SCHEMA/compatibility.schema.yaml",
+      "SCHEMA/dependency.schema.yaml",
+      "SCHEMA/conflict.schema.yaml",
+      "SCHEMA/supersession.schema.yaml",
+      "SCHEMA/boundary.schema.yaml",
+      "SCHEMA/verification.schema.yaml",
+      "SCHEMA/test-result.schema.yaml",
+      "SCHEMA/conformance.schema.yaml",
+      "SCHEMA/traceability.schema.yaml",
+      "SCHEMA/evidence.schema.yaml",
+      "SCHEMA/property.schema.yaml",
+      "SCHEMA/obligation.schema.yaml",
+      "SCHEMA/certificate.schema.yaml"
+    ]
+  }
+}

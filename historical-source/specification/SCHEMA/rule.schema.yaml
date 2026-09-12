@@ -1,0 +1,59 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "schema_version": "1.0",
+  "schema_change_class": "MAJOR",
+  "title": "v11.1 normative rule",
+  "type": "object",
+  "required": [
+    "rule_id",
+    "object_type",
+    "schema_version",
+    "lifecycle_status",
+    "provenance",
+    "requirement_id",
+    "operator",
+    "subject",
+    "predicate",
+    "scope",
+    "preconditions",
+    "exceptions",
+    "failure_class",
+    "priority",
+    "source"
+  ],
+  "properties": {
+    "object_type": {
+      "type": "string"
+    },
+    "schema_version": {
+      "const": "1.0"
+    },
+    "lifecycle_status": {
+      "enum": [
+        "DISCOVERED",
+        "DERIVED",
+        "DRAFTED",
+        "FORMALIZED",
+        "IMPLEMENTED",
+        "PARTIALLY_IMPLEMENTED",
+        "VERIFIED",
+        "FAILED",
+        "SUPERSEDED",
+        "REJECTED",
+        "DEPRECATED",
+        "UNKNOWN"
+      ]
+    },
+    "provenance": {
+      "type": "object"
+    },
+    "operator": {
+      "enum": [
+        "MUST",
+        "MUST_NOT",
+        "MAY"
+      ]
+    }
+  },
+  "additionalProperties": true
+}

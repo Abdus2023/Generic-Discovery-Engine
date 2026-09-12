@@ -1,0 +1,97 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "schema_version": "1.0",
+  "schema_change_class": "MAJOR",
+  "title": "v11.1 predicate",
+  "type": "object",
+  "required": [
+    "predicate_id",
+    "object_type",
+    "schema_version",
+    "lifecycle_status",
+    "provenance",
+    "type",
+    "expression",
+    "field",
+    "value",
+    "parameters",
+    "operands"
+  ],
+  "properties": {
+    "object_type": {
+      "type": "string"
+    },
+    "schema_version": {
+      "const": "1.0"
+    },
+    "lifecycle_status": {
+      "enum": [
+        "DISCOVERED",
+        "DERIVED",
+        "DRAFTED",
+        "FORMALIZED",
+        "IMPLEMENTED",
+        "PARTIALLY_IMPLEMENTED",
+        "VERIFIED",
+        "FAILED",
+        "SUPERSEDED",
+        "REJECTED",
+        "DEPRECATED",
+        "UNKNOWN"
+      ]
+    },
+    "provenance": {
+      "type": "object"
+    },
+    "type": {
+      "enum": [
+        "EQUALITY",
+        "INEQUALITY",
+        "MEMBERSHIP",
+        "EXISTENCE",
+        "NON_EXISTENCE",
+        "TYPE",
+        "SHAPE",
+        "RANGE",
+        "CARDINALITY",
+        "UNIQUENESS",
+        "ORDERING",
+        "TEMPORAL",
+        "STATE",
+        "TRANSITION",
+        "DEPENDENCY",
+        "AUTHORIZATION",
+        "CAPABILITY",
+        "PROVENANCE",
+        "HASH",
+        "SIGNATURE",
+        "REFERENCE",
+        "SCHEMA",
+        "CONTAINMENT",
+        "RESOURCE_BOUND",
+        "CONCURRENCY",
+        "CANCELLATION",
+        "DETERMINISM",
+        "COMPATIBILITY",
+        "AND",
+        "OR",
+        "NOT",
+        "XOR",
+        "IMPLIES",
+        "IFF",
+        "FOR_ALL",
+        "EXISTS",
+        "EXACTLY_ONE",
+        "AT_LEAST_ONE",
+        "AT_MOST_ONE"
+      ]
+    },
+    "operands": {
+      "type": "array",
+      "items": {
+        "$ref": "predicate.schema.yaml"
+      }
+    }
+  },
+  "additionalProperties": true
+}

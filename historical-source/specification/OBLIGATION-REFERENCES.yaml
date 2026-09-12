@@ -1,0 +1,5102 @@
+{
+  "schema_version": "1.0",
+  "specification_version": "11.1",
+  "registry_type": "OBLIGATION",
+  "status": "SOURCE_PACKAGE_REJECTED",
+  "obligations": [
+    {
+      "obligation_id": "OBL-CANDIDATE-IDENTITY",
+      "title": "Stable candidate work identity",
+      "statement": "A candidate must retain stable identity or a lossless identity mapping across its lifecycle.",
+      "class": "PRESERVE",
+      "strength": "REQUIRED",
+      "final_category": "PRESERVATION_OBLIGATION",
+      "epistemic_status": "SUPPORTED",
+      "source_properties": [
+        "PROP-CANDIDATE-IDENTITY"
+      ],
+      "source_evidence": [
+        "NE-V9-CLAIMS",
+        "NE-V9-INVARIANTS"
+      ],
+      "historical_claims": [
+        "inv-001",
+        "claim-generic-a"
+      ],
+      "version_scope": {
+        "versions": [
+          "v0.1.0",
+          "v0.2.0",
+          "v0.3.0",
+          "v0.4.0",
+          "v0.5.0",
+          "v0.6.0",
+          "v0.7.1"
+        ]
+      },
+      "dependencies": [],
+      "dependents": [
+        "DEP-001",
+        "DEP-005",
+        "DEP-016",
+        "DEP-021",
+        "DEP-022",
+        "DEP-023",
+        "DEP-024",
+        "DEP-025",
+        "DEP-027",
+        "DEP-029",
+        "DEP-043",
+        "DEP-053",
+        "DEP-095"
+      ],
+      "prerequisite_obligations": [],
+      "verification": {
+        "test_id": "TEST-CANDIDATE-IDENTITY",
+        "strategy": "Exercise stable candidate work identity in an executable future harness and assert its semantic invariant.",
+        "expected": "The obligation holds or the deviation is explicit and observable.",
+        "result": "UNVERIFIED"
+      },
+      "compatibility": {
+        "scope": "internal and cross-component semantics",
+        "impact_if_changed": "REQUIRES_EQUIVALENCE_ANALYSIS"
+      },
+      "exceptions": [],
+      "status": "FORMALIZED",
+      "rationale": "Lifecycle, deduplication, ownership, and provenance require correlation.",
+      "engineering_rationale": "Lifecycle, deduplication, ownership, and provenance require correlation.",
+      "derivation_status": "JUSTIFIED_SOURCE_LOCAL_INPUT_BLOCKED",
+      "derivation_acceptance": "BLOCKED_BY_INPUT_CONTRACT_FAILED",
+      "strengthening": "HISTORICAL",
+      "allowed_change": [
+        "Any mechanism preserving the declared semantics"
+      ],
+      "forbidden_change": [
+        "Replace candidates with uncorrelated requests"
+      ],
+      "failure_if_violated": "Semantic regression or unversioned compatibility break.",
+      "priority": "HIGH",
+      "priority_basis": {
+        "security_impact": "POSSIBLE_OR_NOT_PRIMARY",
+        "data_loss_impact": "PRIMARY",
+        "concurrency_impact": "POSSIBLE_OR_NOT_PRIMARY",
+        "compatibility_impact": "POSSIBLE_OR_NOT_PRIMARY",
+        "historical_importance_is_not_current_risk": true
+      },
+      "invariant_ref": "INV-CANDIDATE-IDENTITY",
+      "test_ref": "TEST-CANDIDATE-IDENTITY",
+      "dependency_level": "L1",
+      "prerequisite_closure": [],
+      "closure_status": "OBLIGATION_BLOCKED",
+      "object_type": "OBLIGATION",
+      "schema_version": "1.0",
+      "lifecycle_status": "FORMALIZED",
+      "provenance": {
+        "source_artifact": "historical-source/obligations/OBLIGATIONS.yaml",
+        "source_object": "OBL-CANDIDATE-IDENTITY",
+        "content_hash": "edb56ccdb408bfe3197f05c3a55e7627772d248d8c72c28e5b8c86566d25efa5",
+        "transformation": "REFERENCE_WRAPPER_NO_VERIFICATION_ESCALATION"
+      }
+    },
+    {
+      "obligation_id": "OBL-CANDIDATE-EQUIVALENCE",
+      "title": "Candidate equivalence rule",
+      "statement": "Before compatibility is promised, candidate equivalence must explicitly keep target, type, origin, parent, provider, and scope dimensions independent.",
+      "class": "FORMALIZE",
+      "strength": "CONDITIONAL",
+      "final_category": "FUTURE_STRENGTHENING",
+      "epistemic_status": "UNKNOWN",
+      "source_properties": [
+        "PROP-CANDIDATE-EQUIVALENCE"
+      ],
+      "source_evidence": [
+        "NE-V9-CLAIMS",
+        "NE-V9-UNKNOWNS"
+      ],
+      "historical_claims": [
+        "claim-generic-a",
+        "unc-012"
+      ],
+      "version_scope": {
+        "versions": [
+          "v0.1.0",
+          "v0.2.0",
+          "v0.3.0",
+          "v0.4.0",
+          "v0.5.0",
+          "v0.6.0",
+          "v0.7.1"
+        ]
+      },
+      "dependencies": [
+        "DEP-021"
+      ],
+      "dependents": [],
+      "prerequisite_obligations": [
+        "OBL-CANDIDATE-IDENTITY"
+      ],
+      "verification": {
+        "test_id": "TEST-CANDIDATE-EQUIVALENCE",
+        "strategy": "Exercise candidate equivalence rule in an executable future harness and assert its semantic invariant.",
+        "expected": "The obligation holds or the deviation is explicit and observable.",
+        "result": "UNVERIFIED"
+      },
+      "compatibility": {
+        "scope": "internal and cross-component semantics",
+        "impact_if_changed": "REQUIRES_EQUIVALENCE_ANALYSIS"
+      },
+      "exceptions": [],
+      "status": "FORMALIZED",
+      "rationale": "Deduplication and migration require a declared rule; URL equality is insufficient.",
+      "engineering_rationale": "Deduplication and migration require a declared rule; URL equality is insufficient.",
+      "derivation_status": "JUSTIFIED_SOURCE_LOCAL_INPUT_BLOCKED",
+      "derivation_acceptance": "BLOCKED_BY_INPUT_CONTRACT_FAILED",
+      "strengthening": "ENGINEERING_STRENGTHENING",
+      "allowed_change": [
+        "Any mechanism preserving the declared semantics"
+      ],
+      "forbidden_change": [
+        "Silent semantic weakening",
+        "Retroactive attribution of a future mechanism"
+      ],
+      "failure_if_violated": "Semantic regression or unversioned compatibility break.",
+      "priority": "MEDIUM",
+      "priority_basis": {
+        "security_impact": "POSSIBLE_OR_NOT_PRIMARY",
+        "data_loss_impact": "PRIMARY",
+        "concurrency_impact": "POSSIBLE_OR_NOT_PRIMARY",
+        "compatibility_impact": "POSSIBLE_OR_NOT_PRIMARY",
+        "historical_importance_is_not_current_risk": true
+      },
+      "invariant_ref": "INV-CANDIDATE-EQUIVALENCE",
+      "test_ref": "TEST-CANDIDATE-EQUIVALENCE",
+      "dependency_level": "L2",
+      "prerequisite_closure": [
+        "OBL-CANDIDATE-IDENTITY"
+      ],
+      "closure_status": "OBLIGATION_UNVERIFIED",
+      "object_type": "OBLIGATION",
+      "schema_version": "1.0",
+      "lifecycle_status": "FORMALIZED",
+      "provenance": {
+        "source_artifact": "historical-source/obligations/OBLIGATIONS.yaml",
+        "source_object": "OBL-CANDIDATE-EQUIVALENCE",
+        "content_hash": "edb56ccdb408bfe3197f05c3a55e7627772d248d8c72c28e5b8c86566d25efa5",
+        "transformation": "REFERENCE_WRAPPER_NO_VERIFICATION_ESCALATION"
+      }
+    },
+    {
+      "obligation_id": "OBL-DEDUP-SCOPES",
+      "title": "Independent deduplication scopes",
+      "statement": "Queue, claim, processing, discovery, persistence, and export deduplication must be specified and verified independently.",
+      "class": "FORMALIZE",
+      "strength": "REQUIRED",
+      "final_category": "ENGINEERING_REQUIREMENT",
+      "epistemic_status": "SUPPORTED",
+      "source_properties": [
+        "PROP-DEDUP-SCOPES"
+      ],
+      "source_evidence": [
+        "NE-V8-DUPLICATE",
+        "NE-V9-CLAIMS"
+      ],
+      "historical_claims": [
+        "claim-generic-g",
+        "v8:DUPLICATE"
+      ],
+      "version_scope": {
+        "versions": [
+          "v0.1.0",
+          "v0.2.0",
+          "v0.3.0",
+          "v0.4.0",
+          "v0.5.0",
+          "v0.6.0",
+          "v0.7.1"
+        ]
+      },
+      "dependencies": [
+        "DEP-029"
+      ],
+      "dependents": [
+        "DEP-019"
+      ],
+      "prerequisite_obligations": [
+        "OBL-CANDIDATE-IDENTITY"
+      ],
+      "verification": {
+        "test_id": "TEST-DEDUP-SCOPES",
+        "strategy": "Exercise independent deduplication scopes in an executable future harness and assert its semantic invariant.",
+        "expected": "The obligation holds or the deviation is explicit and observable.",
+        "result": "UNVERIFIED"
+      },
+      "compatibility": {
+        "scope": "internal and cross-component semantics",
+        "impact_if_changed": "REQUIRES_EQUIVALENCE_ANALYSIS"
+      },
+      "exceptions": [],
+      "status": "FORMALIZED",
+      "rationale": "One local check cannot establish all lifecycle uniqueness properties.",
+      "engineering_rationale": "One local check cannot establish all lifecycle uniqueness properties.",
+      "derivation_status": "JUSTIFIED_SOURCE_LOCAL_INPUT_BLOCKED",
+      "derivation_acceptance": "BLOCKED_BY_INPUT_CONTRACT_FAILED",
+      "strengthening": "ENGINEERING_STRENGTHENING",
+      "allowed_change": [
+        "Any mechanism preserving the declared semantics"
+      ],
+      "forbidden_change": [
+        "Silent semantic weakening",
+        "Retroactive attribution of a future mechanism"
+      ],
+      "failure_if_violated": "Semantic regression or unversioned compatibility break.",
+      "priority": "HIGH",
+      "priority_basis": {
+        "security_impact": "POSSIBLE_OR_NOT_PRIMARY",
+        "data_loss_impact": "PRIMARY",
+        "concurrency_impact": "POSSIBLE_OR_NOT_PRIMARY",
+        "compatibility_impact": "POSSIBLE_OR_NOT_PRIMARY",
+        "historical_importance_is_not_current_risk": true
+      },
+      "invariant_ref": "INV-DEDUP-SCOPES",
+      "test_ref": "TEST-DEDUP-SCOPES",
+      "dependency_level": "L2",
+      "prerequisite_closure": [
+        "OBL-CANDIDATE-IDENTITY"
+      ],
+      "closure_status": "OBLIGATION_BLOCKED",
+      "object_type": "OBLIGATION",
+      "schema_version": "1.0",
+      "lifecycle_status": "FORMALIZED",
+      "provenance": {
+        "source_artifact": "historical-source/obligations/OBLIGATIONS.yaml",
+        "source_object": "OBL-DEDUP-SCOPES",
+        "content_hash": "edb56ccdb408bfe3197f05c3a55e7627772d248d8c72c28e5b8c86566d25efa5",
+        "transformation": "REFERENCE_WRAPPER_NO_VERIFICATION_ESCALATION"
+      }
+    },
+    {
+      "obligation_id": "OBL-CANDIDATE-ORIGIN",
+      "title": "Candidate origin preservation",
+      "statement": "Populated candidate origin must be retained or migrated to an equivalent provenance reference.",
+      "class": "PRESERVE",
+      "strength": "CONDITIONAL",
+      "final_category": "PRESERVATION_OBLIGATION",
+      "epistemic_status": "SUPPORTED",
+      "source_properties": [
+        "PROP-CANDIDATE-ORIGIN"
+      ],
+      "source_evidence": [
+        "NE-V8-PROVENANCE"
+      ],
+      "historical_claims": [
+        "v8:PROVENANCE"
+      ],
+      "version_scope": {
+        "versions": [
+          "v0.1.0",
+          "v0.2.0",
+          "v0.3.0",
+          "v0.4.0",
+          "v0.5.0",
+          "v0.6.0",
+          "v0.7.1"
+        ]
+      },
+      "dependencies": [
+        "DEP-022"
+      ],
+      "dependents": [
+        "DEP-063"
+      ],
+      "prerequisite_obligations": [
+        "OBL-CANDIDATE-IDENTITY"
+      ],
+      "verification": {
+        "test_id": "TEST-CANDIDATE-ORIGIN",
+        "strategy": "Exercise candidate origin preservation in an executable future harness and assert its semantic invariant.",
+        "expected": "The obligation holds or the deviation is explicit and observable.",
+        "result": "UNVERIFIED"
+      },
+      "compatibility": {
+        "scope": "internal and cross-component semantics",
+        "impact_if_changed": "REQUIRES_EQUIVALENCE_ANALYSIS"
+      },
+      "exceptions": [],
+      "status": "FORMALIZED",
+      "rationale": "Origin supports scope and lineage when present.",
+      "engineering_rationale": "Origin supports scope and lineage when present.",
+      "derivation_status": "JUSTIFIED_SOURCE_LOCAL_INPUT_BLOCKED",
+      "derivation_acceptance": "BLOCKED_BY_INPUT_CONTRACT_FAILED",
+      "strengthening": "HISTORICAL",
+      "allowed_change": [
+        "Any mechanism preserving the declared semantics"
+      ],
+      "forbidden_change": [
+        "Silent semantic weakening",
+        "Retroactive attribution of a future mechanism"
+      ],
+      "failure_if_violated": "Semantic regression or unversioned compatibility break.",
+      "priority": "MEDIUM",
+      "priority_basis": {
+        "security_impact": "POSSIBLE_OR_NOT_PRIMARY",
+        "data_loss_impact": "PRIMARY",
+        "concurrency_impact": "POSSIBLE_OR_NOT_PRIMARY",
+        "compatibility_impact": "POSSIBLE_OR_NOT_PRIMARY",
+        "historical_importance_is_not_current_risk": true
+      },
+      "invariant_ref": "INV-CANDIDATE-ORIGIN",
+      "test_ref": "TEST-CANDIDATE-ORIGIN",
+      "dependency_level": "L2",
+      "prerequisite_closure": [
+        "OBL-CANDIDATE-IDENTITY"
+      ],
+      "closure_status": "OBLIGATION_UNVERIFIED",
+      "object_type": "OBLIGATION",
+      "schema_version": "1.0",
+      "lifecycle_status": "FORMALIZED",
+      "provenance": {
+        "source_artifact": "historical-source/obligations/OBLIGATIONS.yaml",
+        "source_object": "OBL-CANDIDATE-ORIGIN",
+        "content_hash": "edb56ccdb408bfe3197f05c3a55e7627772d248d8c72c28e5b8c86566d25efa5",
+        "transformation": "REFERENCE_WRAPPER_NO_VERIFICATION_ESCALATION"
+      }
+    },
+    {
+      "obligation_id": "OBL-CANDIDATE-PARENT",
+      "title": "Candidate parentage preservation",
+      "statement": "Expanded candidates must retain parentage or an equivalent derivation edge; roots may remain parentless.",
+      "class": "PRESERVE",
+      "strength": "CONDITIONAL",
+      "final_category": "PRESERVATION_OBLIGATION",
+      "epistemic_status": "SUPPORTED",
+      "source_properties": [
+        "PROP-CANDIDATE-PARENT"
+      ],
+      "source_evidence": [
+        "NE-V8-PROVENANCE",
+        "NE-V9-CLAIMS"
+      ],
+      "historical_claims": [
+        "v8:PROVENANCE",
+        "claim-closure"
+      ],
+      "version_scope": {
+        "versions": [
+          "v0.1.0",
+          "v0.2.0",
+          "v0.3.0",
+          "v0.4.0",
+          "v0.5.0",
+          "v0.6.0",
+          "v0.7.1"
+        ]
+      },
+      "dependencies": [
+        "DEP-023"
+      ],
+      "dependents": [
+        "DEP-017",
+        "DEP-064"
+      ],
+      "prerequisite_obligations": [
+        "OBL-CANDIDATE-IDENTITY"
+      ],
+      "verification": {
+        "test_id": "TEST-CANDIDATE-PARENT",
+        "strategy": "Exercise candidate parentage preservation in an executable future harness and assert its semantic invariant.",
+        "expected": "The obligation holds or the deviation is explicit and observable.",
+        "result": "UNVERIFIED"
+      },
+      "compatibility": {
+        "scope": "internal and cross-component semantics",
+        "impact_if_changed": "REQUIRES_EQUIVALENCE_ANALYSIS"
+      },
+      "exceptions": [],
+      "status": "FORMALIZED",
+      "rationale": "Discarding populated parentage loses derivation context.",
+      "engineering_rationale": "Discarding populated parentage loses derivation context.",
+      "derivation_status": "JUSTIFIED_SOURCE_LOCAL_INPUT_BLOCKED",
+      "derivation_acceptance": "BLOCKED_BY_INPUT_CONTRACT_FAILED",
+      "strengthening": "HISTORICAL",
+      "allowed_change": [
+        "Any mechanism preserving the declared semantics"
+      ],
+      "forbidden_change": [
+        "Silent semantic weakening",
+        "Retroactive attribution of a future mechanism"
+      ],
+      "failure_if_violated": "Semantic regression or unversioned compatibility break.",
+      "priority": "MEDIUM",
+      "priority_basis": {
+        "security_impact": "POSSIBLE_OR_NOT_PRIMARY",
+        "data_loss_impact": "PRIMARY",
+        "concurrency_impact": "POSSIBLE_OR_NOT_PRIMARY",
+        "compatibility_impact": "POSSIBLE_OR_NOT_PRIMARY",
+        "historical_importance_is_not_current_risk": true
+      },
+      "invariant_ref": "INV-CANDIDATE-PARENT",
+      "test_ref": "TEST-CANDIDATE-PARENT",
+      "dependency_level": "L2",
+      "prerequisite_closure": [
+        "OBL-CANDIDATE-IDENTITY"
+      ],
+      "closure_status": "OBLIGATION_UNVERIFIED",
+      "object_type": "OBLIGATION",
+      "schema_version": "1.0",
+      "lifecycle_status": "FORMALIZED",
+      "provenance": {
+        "source_artifact": "historical-source/obligations/OBLIGATIONS.yaml",
+        "source_object": "OBL-CANDIDATE-PARENT",
+        "content_hash": "edb56ccdb408bfe3197f05c3a55e7627772d248d8c72c28e5b8c86566d25efa5",
+        "transformation": "REFERENCE_WRAPPER_NO_VERIFICATION_ESCALATION"
+      }
+    },
+    {
+      "obligation_id": "OBL-CANDIDATE-STATE",
+      "title": "Candidate lifecycle state",
+      "statement": "Legal candidate state transitions, owners, postconditions, terminal outcomes, and retry re-entry must be explicit.",
+      "class": "FORMALIZE",
+      "strength": "REQUIRED",
+      "final_category": "FUTURE_STRENGTHENING",
+      "epistemic_status": "SUPPORTED",
+      "source_properties": [
+        "PROP-CANDIDATE-STATE"
+      ],
+      "source_evidence": [
+        "NE-V8-CLAIM",
+        "NE-V8-RETRY",
+        "NE-V9-CLAIMS"
+      ],
+      "historical_claims": [
+        "claim-version-v020",
+        "v8:CLAIM",
+        "v8:RETRY"
+      ],
+      "version_scope": {
+        "versions": [
+          "v0.1.0",
+          "v0.2.0",
+          "v0.3.0",
+          "v0.4.0",
+          "v0.5.0",
+          "v0.6.0",
+          "v0.7.1"
+        ]
+      },
+      "dependencies": [
+        "DEP-025",
+        "DEP-095"
+      ],
+      "dependents": [
+        "DEP-013",
+        "DEP-018",
+        "DEP-020",
+        "DEP-026",
+        "DEP-028",
+        "DEP-047",
+        "DEP-087",
+        "DEP-096"
+      ],
+      "prerequisite_obligations": [
+        "OBL-CANDIDATE-IDENTITY"
+      ],
+      "verification": {
+        "test_id": "TEST-CANDIDATE-STATE",
+        "strategy": "Exercise candidate lifecycle state in an executable future harness and assert its semantic invariant.",
+        "expected": "The obligation holds or the deviation is explicit and observable.",
+        "result": "UNVERIFIED"
+      },
+      "compatibility": {
+        "scope": "internal and cross-component semantics",
+        "impact_if_changed": "REQUIRES_EQUIVALENCE_ANALYSIS"
+      },
+      "exceptions": [],
+      "status": "FORMALIZED",
+      "rationale": "Explicit transitions prevent stranded, duplicated, or falsely completed work.",
+      "engineering_rationale": "Explicit transitions prevent stranded, duplicated, or falsely completed work.",
+      "derivation_status": "JUSTIFIED_SOURCE_LOCAL_INPUT_BLOCKED",
+      "derivation_acceptance": "BLOCKED_BY_INPUT_CONTRACT_FAILED",
+      "strengthening": "ENGINEERING_STRENGTHENING",
+      "allowed_change": [
+        "Any mechanism preserving the declared semantics"
+      ],
+      "forbidden_change": [
+        "Silent semantic weakening",
+        "Retroactive attribution of a future mechanism"
+      ],
+      "failure_if_violated": "Semantic regression or unversioned compatibility break.",
+      "priority": "HIGH",
+      "priority_basis": {
+        "security_impact": "POSSIBLE_OR_NOT_PRIMARY",
+        "data_loss_impact": "POSSIBLE_OR_NOT_PRIMARY",
+        "concurrency_impact": "PRIMARY",
+        "compatibility_impact": "POSSIBLE_OR_NOT_PRIMARY",
+        "historical_importance_is_not_current_risk": true
+      },
+      "invariant_ref": "INV-CANDIDATE-STATE",
+      "test_ref": "TEST-CANDIDATE-STATE",
+      "dependency_level": "L2",
+      "prerequisite_closure": [
+        "OBL-CANDIDATE-IDENTITY"
+      ],
+      "closure_status": "OBLIGATION_BLOCKED",
+      "object_type": "OBLIGATION",
+      "schema_version": "1.0",
+      "lifecycle_status": "FORMALIZED",
+      "provenance": {
+        "source_artifact": "historical-source/obligations/OBLIGATIONS.yaml",
+        "source_object": "OBL-CANDIDATE-STATE",
+        "content_hash": "edb56ccdb408bfe3197f05c3a55e7627772d248d8c72c28e5b8c86566d25efa5",
+        "transformation": "REFERENCE_WRAPPER_NO_VERIFICATION_ESCALATION"
+      }
+    },
+    {
+      "obligation_id": "OBL-CANDIDATE-PRIORITY",
+      "title": "Candidate priority compatibility",
+      "statement": "If priority affects consumers or operations, its ordering semantics must be preserved or versioned; otherwise it must be documented as advisory.",
+      "class": "COMPATIBILITY",
+      "strength": "CONDITIONAL",
+      "final_category": "COMPATIBILITY_OBLIGATION",
+      "epistemic_status": "INFERRED",
+      "source_properties": [
+        "PROP-CANDIDATE-PRIORITY"
+      ],
+      "source_evidence": [
+        "NE-V3-DATA"
+      ],
+      "historical_claims": [
+        "v3:"
+      ],
+      "version_scope": {
+        "versions": [
+          "v0.1.0",
+          "v0.2.0",
+          "v0.3.0",
+          "v0.4.0",
+          "v0.5.0",
+          "v0.6.0",
+          "v0.7.1"
+        ]
+      },
+      "dependencies": [
+        "DEP-024"
+      ],
+      "dependents": [],
+      "prerequisite_obligations": [
+        "OBL-CANDIDATE-IDENTITY"
+      ],
+      "verification": {
+        "test_id": "TEST-CANDIDATE-PRIORITY",
+        "strategy": "Exercise candidate priority compatibility in an executable future harness and assert its semantic invariant.",
+        "expected": "The obligation holds or the deviation is explicit and observable.",
+        "result": "UNVERIFIED"
+      },
+      "compatibility": {
+        "scope": "internal and cross-component semantics",
+        "impact_if_changed": "REQUIRES_EQUIVALENCE_ANALYSIS"
+      },
+      "exceptions": [],
+      "status": "FORMALIZED",
+      "rationale": "Silent ordering reversal can alter operational discovery order.",
+      "engineering_rationale": "Silent ordering reversal can alter operational discovery order.",
+      "derivation_status": "JUSTIFIED_SOURCE_LOCAL_INPUT_BLOCKED",
+      "derivation_acceptance": "BLOCKED_BY_INPUT_CONTRACT_FAILED",
+      "strengthening": "HISTORICAL",
+      "allowed_change": [
+        "Any mechanism preserving the declared semantics"
+      ],
+      "forbidden_change": [
+        "Silent semantic weakening",
+        "Retroactive attribution of a future mechanism"
+      ],
+      "failure_if_violated": "Semantic regression or unversioned compatibility break.",
+      "priority": "MEDIUM",
+      "priority_basis": {
+        "security_impact": "POSSIBLE_OR_NOT_PRIMARY",
+        "data_loss_impact": "POSSIBLE_OR_NOT_PRIMARY",
+        "concurrency_impact": "PRIMARY",
+        "compatibility_impact": "PRIMARY",
+        "historical_importance_is_not_current_risk": true
+      },
+      "invariant_ref": "INV-CANDIDATE-PRIORITY",
+      "test_ref": "TEST-CANDIDATE-PRIORITY",
+      "dependency_level": "L2",
+      "prerequisite_closure": [
+        "OBL-CANDIDATE-IDENTITY"
+      ],
+      "closure_status": "OBLIGATION_UNVERIFIED",
+      "object_type": "OBLIGATION",
+      "schema_version": "1.0",
+      "lifecycle_status": "FORMALIZED",
+      "provenance": {
+        "source_artifact": "historical-source/obligations/OBLIGATIONS.yaml",
+        "source_object": "OBL-CANDIDATE-PRIORITY",
+        "content_hash": "edb56ccdb408bfe3197f05c3a55e7627772d248d8c72c28e5b8c86566d25efa5",
+        "transformation": "REFERENCE_WRAPPER_NO_VERIFICATION_ESCALATION"
+      }
+    },
+    {
+      "obligation_id": "OBL-CANDIDATE-ATTEMPTS",
+      "title": "Attempt accounting",
+      "statement": "Retry-enabled work must advance observable attempt accounting and preserve exhaustion semantics.",
+      "class": "PRESERVE",
+      "strength": "CONDITIONAL",
+      "final_category": "PRESERVATION_OBLIGATION",
+      "epistemic_status": "SUPPORTED",
+      "source_properties": [
+        "PROP-CANDIDATE-ATTEMPTS"
+      ],
+      "source_evidence": [
+        "NE-V8-RETRY"
+      ],
+      "historical_claims": [
+        "v8:RETRY"
+      ],
+      "version_scope": {
+        "versions": [
+          "v0.3.0",
+          "v0.4.0",
+          "v0.5.0",
+          "v0.6.0",
+          "v0.7.1"
+        ]
+      },
+      "dependencies": [
+        "DEP-020"
+      ],
+      "dependents": [
+        "DEP-079"
+      ],
+      "prerequisite_obligations": [
+        "OBL-CANDIDATE-STATE"
+      ],
+      "verification": {
+        "test_id": "TEST-CANDIDATE-ATTEMPTS",
+        "strategy": "Exercise attempt accounting in an executable future harness and assert its semantic invariant.",
+        "expected": "The obligation holds or the deviation is explicit and observable.",
+        "result": "UNVERIFIED"
+      },
+      "compatibility": {
+        "scope": "internal and cross-component semantics",
+        "impact_if_changed": "REQUIRES_EQUIVALENCE_ANALYSIS"
+      },
+      "exceptions": [],
+      "status": "FORMALIZED",
+      "rationale": "Retry without accounting can bypass limits or hide terminal failure.",
+      "engineering_rationale": "Retry without accounting can bypass limits or hide terminal failure.",
+      "derivation_status": "JUSTIFIED_SOURCE_LOCAL_INPUT_BLOCKED",
+      "derivation_acceptance": "BLOCKED_BY_INPUT_CONTRACT_FAILED",
+      "strengthening": "HISTORICAL",
+      "allowed_change": [
+        "Any mechanism preserving the declared semantics"
+      ],
+      "forbidden_change": [
+        "Silent semantic weakening",
+        "Retroactive attribution of a future mechanism"
+      ],
+      "failure_if_violated": "Semantic regression or unversioned compatibility break.",
+      "priority": "MEDIUM",
+      "priority_basis": {
+        "security_impact": "POSSIBLE_OR_NOT_PRIMARY",
+        "data_loss_impact": "PRIMARY",
+        "concurrency_impact": "POSSIBLE_OR_NOT_PRIMARY",
+        "compatibility_impact": "POSSIBLE_OR_NOT_PRIMARY",
+        "historical_importance_is_not_current_risk": true
+      },
+      "invariant_ref": "INV-CANDIDATE-ATTEMPTS",
+      "test_ref": "TEST-CANDIDATE-ATTEMPTS",
+      "dependency_level": "L3",
+      "prerequisite_closure": [
+        "OBL-CANDIDATE-IDENTITY",
+        "OBL-CANDIDATE-STATE"
+      ],
+      "closure_status": "OBLIGATION_UNVERIFIED",
+      "object_type": "OBLIGATION",
+      "schema_version": "1.0",
+      "lifecycle_status": "FORMALIZED",
+      "provenance": {
+        "source_artifact": "historical-source/obligations/OBLIGATIONS.yaml",
+        "source_object": "OBL-CANDIDATE-ATTEMPTS",
+        "content_hash": "edb56ccdb408bfe3197f05c3a55e7627772d248d8c72c28e5b8c86566d25efa5",
+        "transformation": "REFERENCE_WRAPPER_NO_VERIFICATION_ESCALATION"
+      }
+    },
+    {
+      "obligation_id": "OBL-CANDIDATE-TIMESTAMPS",
+      "title": "Lifecycle timestamp semantics",
+      "statement": "Operationally retained timestamps must have explicit clock, ordering, and nullability semantics before contractual use.",
+      "class": "OBSERVE",
+      "strength": "CONDITIONAL",
+      "final_category": "FUTURE_STRENGTHENING",
+      "epistemic_status": "SUPPORTED",
+      "source_properties": [
+        "PROP-CANDIDATE-TIMESTAMPS"
+      ],
+      "source_evidence": [
+        "NE-V3-DATA",
+        "NE-V8-OBSERVE"
+      ],
+      "historical_claims": [
+        "v3:",
+        "v8:OBSERVABILITY"
+      ],
+      "version_scope": {
+        "versions": [
+          "v0.1.0",
+          "v0.2.0",
+          "v0.3.0",
+          "v0.4.0",
+          "v0.5.0",
+          "v0.6.0",
+          "v0.7.1"
+        ]
+      },
+      "dependencies": [
+        "DEP-026"
+      ],
+      "dependents": [],
+      "prerequisite_obligations": [
+        "OBL-CANDIDATE-STATE"
+      ],
+      "verification": {
+        "test_id": "TEST-CANDIDATE-TIMESTAMPS",
+        "strategy": "Exercise lifecycle timestamp semantics in an executable future harness and assert its semantic invariant.",
+        "expected": "The obligation holds or the deviation is explicit and observable.",
+        "result": "UNVERIFIED"
+      },
+      "compatibility": {
+        "scope": "internal and cross-component semantics",
+        "impact_if_changed": "REQUIRES_EQUIVALENCE_ANALYSIS"
+      },
+      "exceptions": [],
+      "status": "FORMALIZED",
+      "rationale": "Timing aids diagnosis but field presence is not trustworthy chronology.",
+      "engineering_rationale": "Timing aids diagnosis but field presence is not trustworthy chronology.",
+      "derivation_status": "JUSTIFIED_SOURCE_LOCAL_INPUT_BLOCKED",
+      "derivation_acceptance": "BLOCKED_BY_INPUT_CONTRACT_FAILED",
+      "strengthening": "ENGINEERING_STRENGTHENING",
+      "allowed_change": [
+        "Any mechanism preserving the declared semantics"
+      ],
+      "forbidden_change": [
+        "Silent semantic weakening",
+        "Retroactive attribution of a future mechanism"
+      ],
+      "failure_if_violated": "Semantic regression or unversioned compatibility break.",
+      "priority": "MEDIUM",
+      "priority_basis": {
+        "security_impact": "POSSIBLE_OR_NOT_PRIMARY",
+        "data_loss_impact": "POSSIBLE_OR_NOT_PRIMARY",
+        "concurrency_impact": "POSSIBLE_OR_NOT_PRIMARY",
+        "compatibility_impact": "POSSIBLE_OR_NOT_PRIMARY",
+        "historical_importance_is_not_current_risk": true
+      },
+      "invariant_ref": "INV-CANDIDATE-TIMESTAMPS",
+      "test_ref": "TEST-CANDIDATE-TIMESTAMPS",
+      "dependency_level": "L3",
+      "prerequisite_closure": [
+        "OBL-CANDIDATE-IDENTITY",
+        "OBL-CANDIDATE-STATE"
+      ],
+      "closure_status": "OBLIGATION_UNVERIFIED",
+      "object_type": "OBLIGATION",
+      "schema_version": "1.0",
+      "lifecycle_status": "FORMALIZED",
+      "provenance": {
+        "source_artifact": "historical-source/obligations/OBLIGATIONS.yaml",
+        "source_object": "OBL-CANDIDATE-TIMESTAMPS",
+        "content_hash": "edb56ccdb408bfe3197f05c3a55e7627772d248d8c72c28e5b8c86566d25efa5",
+        "transformation": "REFERENCE_WRAPPER_NO_VERIFICATION_ESCALATION"
+      }
+    },
+    {
+      "obligation_id": "OBL-CLAIM-EXCLUSIVITY",
+      "title": "Exclusive candidate ownership",
+      "statement": "When workers overlap, exactly one worker may own a candidate within the declared concurrency scope.",
+      "class": "PRESERVE",
+      "strength": "CONDITIONAL",
+      "final_category": "ENGINEERING_REQUIREMENT",
+      "epistemic_status": "SUPPORTED",
+      "source_properties": [
+        "PROP-CLAIM-EXCLUSIVITY"
+      ],
+      "source_evidence": [
+        "NE-V8-CLAIM",
+        "NE-V9-CLAIMS"
+      ],
+      "historical_claims": [
+        "claim-version-v020",
+        "v8:CLAIM"
+      ],
+      "version_scope": {
+        "versions": [
+          "v0.2.0",
+          "v0.3.0",
+          "v0.4.0",
+          "v0.5.0",
+          "v0.6.0",
+          "v0.7.1"
+        ]
+      },
+      "dependencies": [
+        "DEP-027",
+        "DEP-028",
+        "DEP-096"
+      ],
+      "dependents": [
+        "DEP-088",
+        "DEP-092"
+      ],
+      "prerequisite_obligations": [
+        "OBL-CANDIDATE-IDENTITY",
+        "OBL-CANDIDATE-STATE"
+      ],
+      "verification": {
+        "test_id": "TEST-CLAIM-EXCLUSIVITY",
+        "strategy": "Start N overlapping workers with one candidate and assert exactly one claimant and one attributable terminal outcome.",
+        "expected": "The obligation holds or the deviation is explicit and observable.",
+        "result": "UNVERIFIED"
+      },
+      "compatibility": {
+        "scope": "internal and cross-component semantics",
+        "impact_if_changed": "REQUIRES_EQUIVALENCE_ANALYSIS"
+      },
+      "exceptions": [],
+      "status": "FORMALIZED",
+      "rationale": "Exclusive ownership prevents simultaneous duplicate processing.",
+      "engineering_rationale": "Exclusive ownership prevents simultaneous duplicate processing.",
+      "derivation_status": "JUSTIFIED_SOURCE_LOCAL_INPUT_BLOCKED",
+      "derivation_acceptance": "BLOCKED_BY_INPUT_CONTRACT_FAILED",
+      "strengthening": "HISTORICAL",
+      "allowed_change": [
+        "Any mechanism preserving the declared semantics"
+      ],
+      "forbidden_change": [
+        "Silent semantic weakening",
+        "Retroactive attribution of a future mechanism"
+      ],
+      "failure_if_violated": "Semantic regression or unversioned compatibility break.",
+      "priority": "MEDIUM",
+      "priority_basis": {
+        "security_impact": "POSSIBLE_OR_NOT_PRIMARY",
+        "data_loss_impact": "POSSIBLE_OR_NOT_PRIMARY",
+        "concurrency_impact": "PRIMARY",
+        "compatibility_impact": "POSSIBLE_OR_NOT_PRIMARY",
+        "historical_importance_is_not_current_risk": true
+      },
+      "invariant_ref": "INV-CLAIM-EXCLUSIVITY",
+      "test_ref": "TEST-CLAIM-EXCLUSIVITY",
+      "dependency_level": "L3",
+      "prerequisite_closure": [
+        "OBL-CANDIDATE-IDENTITY",
+        "OBL-CANDIDATE-STATE"
+      ],
+      "closure_status": "OBLIGATION_UNVERIFIED",
+      "object_type": "OBLIGATION",
+      "schema_version": "1.0",
+      "lifecycle_status": "FORMALIZED",
+      "provenance": {
+        "source_artifact": "historical-source/obligations/OBLIGATIONS.yaml",
+        "source_object": "OBL-CLAIM-EXCLUSIVITY",
+        "content_hash": "edb56ccdb408bfe3197f05c3a55e7627772d248d8c72c28e5b8c86566d25efa5",
+        "transformation": "REFERENCE_WRAPPER_NO_VERIFICATION_ESCALATION"
+      }
+    },
+    {
+      "obligation_id": "OBL-TERMINAL-OWNERSHIP",
+      "title": "Completion and failure ownership",
+      "statement": "Every claim must receive one attributable completion, failure, expiry, or explicit abandonment outcome.",
+      "class": "FORMALIZE",
+      "strength": "REQUIRED",
+      "final_category": "FUTURE_STRENGTHENING",
+      "epistemic_status": "SUPPORTED",
+      "source_properties": [
+        "PROP-TERMINAL-OWNERSHIP"
+      ],
+      "source_evidence": [
+        "NE-V8-CLAIM"
+      ],
+      "historical_claims": [
+        "v8:CLAIM"
+      ],
+      "version_scope": {
+        "versions": [
+          "v0.2.0",
+          "v0.3.0",
+          "v0.4.0",
+          "v0.5.0",
+          "v0.6.0",
+          "v0.7.1"
+        ]
+      },
+      "dependencies": [
+        "DEP-087",
+        "DEP-088"
+      ],
+      "dependents": [
+        "DEP-015",
+        "DEP-080",
+        "DEP-084",
+        "DEP-094"
+      ],
+      "prerequisite_obligations": [
+        "OBL-CANDIDATE-STATE",
+        "OBL-CLAIM-EXCLUSIVITY"
+      ],
+      "verification": {
+        "test_id": "TEST-TERMINAL-OWNERSHIP",
+        "strategy": "Exercise completion and failure ownership in an executable future harness and assert its semantic invariant.",
+        "expected": "The obligation holds or the deviation is explicit and observable.",
+        "result": "UNVERIFIED"
+      },
+      "compatibility": {
+        "scope": "internal and cross-component semantics",
+        "impact_if_changed": "REQUIRES_EQUIVALENCE_ANALYSIS"
+      },
+      "exceptions": [],
+      "status": "FORMALIZED",
+      "rationale": "A claim without terminal ownership can strand work and invalidate termination.",
+      "engineering_rationale": "A claim without terminal ownership can strand work and invalidate termination.",
+      "derivation_status": "JUSTIFIED_SOURCE_LOCAL_INPUT_BLOCKED",
+      "derivation_acceptance": "BLOCKED_BY_INPUT_CONTRACT_FAILED",
+      "strengthening": "ENGINEERING_STRENGTHENING",
+      "allowed_change": [
+        "Any mechanism preserving the declared semantics"
+      ],
+      "forbidden_change": [
+        "Silent semantic weakening",
+        "Retroactive attribution of a future mechanism"
+      ],
+      "failure_if_violated": "Semantic regression or unversioned compatibility break.",
+      "priority": "HIGH",
+      "priority_basis": {
+        "security_impact": "POSSIBLE_OR_NOT_PRIMARY",
+        "data_loss_impact": "POSSIBLE_OR_NOT_PRIMARY",
+        "concurrency_impact": "PRIMARY",
+        "compatibility_impact": "POSSIBLE_OR_NOT_PRIMARY",
+        "historical_importance_is_not_current_risk": true
+      },
+      "invariant_ref": "INV-TERMINAL-OWNERSHIP",
+      "test_ref": "TEST-TERMINAL-OWNERSHIP",
+      "dependency_level": "L4",
+      "prerequisite_closure": [
+        "OBL-CANDIDATE-IDENTITY",
+        "OBL-CANDIDATE-STATE",
+        "OBL-CLAIM-EXCLUSIVITY"
+      ],
+      "closure_status": "OBLIGATION_BLOCKED",
+      "object_type": "OBLIGATION",
+      "schema_version": "1.0",
+      "lifecycle_status": "FORMALIZED",
+      "provenance": {
+        "source_artifact": "historical-source/obligations/OBLIGATIONS.yaml",
+        "source_object": "OBL-TERMINAL-OWNERSHIP",
+        "content_hash": "edb56ccdb408bfe3197f05c3a55e7627772d248d8c72c28e5b8c86566d25efa5",
+        "transformation": "REFERENCE_WRAPPER_NO_VERIFICATION_ESCALATION"
+      }
+    },
+    {
+      "obligation_id": "OBL-ACQ-BEFORE-INTERP",
+      "title": "Acquisition precedes interpretation",
+      "statement": "Acquisition must remain semantically distinct and produce evidence before recognition.",
+      "class": "PRESERVE",
+      "strength": "REQUIRED",
+      "final_category": "PRESERVATION_OBLIGATION",
+      "epistemic_status": "SUPPORTED",
+      "source_properties": [
+        "PROP-ACQ-BEFORE-INTERP"
+      ],
+      "source_evidence": [
+        "NE-V9-CLAIMS",
+        "NE-V9-INVARIANTS"
+      ],
+      "historical_claims": [
+        "inv-002",
+        "claim-generic-b",
+        "claim-generic-d"
+      ],
+      "version_scope": {
+        "versions": [
+          "v0.1.0",
+          "v0.2.0",
+          "v0.3.0",
+          "v0.4.0",
+          "v0.5.0",
+          "v0.6.0",
+          "v0.7.1"
+        ]
+      },
+      "dependencies": [
+        "DEP-001"
+      ],
+      "dependents": [
+        "DEP-004",
+        "DEP-006",
+        "DEP-008",
+        "DEP-050",
+        "DEP-072",
+        "DEP-090"
+      ],
+      "prerequisite_obligations": [
+        "OBL-CANDIDATE-IDENTITY"
+      ],
+      "verification": {
+        "test_id": "TEST-ACQ-BEFORE-INTERP",
+        "strategy": "Exercise acquisition precedes interpretation in an executable future harness and assert its semantic invariant.",
+        "expected": "The obligation holds or the deviation is explicit and observable.",
+        "result": "UNVERIFIED"
+      },
+      "compatibility": {
+        "scope": "internal and cross-component semantics",
+        "impact_if_changed": "REQUIRES_EQUIVALENCE_ANALYSIS"
+      },
+      "exceptions": [],
+      "status": "FORMALIZED",
+      "rationale": "Stage separation preserves failure attribution and code/data boundaries.",
+      "engineering_rationale": "Stage separation preserves failure attribution and code/data boundaries.",
+      "derivation_status": "JUSTIFIED_SOURCE_LOCAL_INPUT_BLOCKED",
+      "derivation_acceptance": "BLOCKED_BY_INPUT_CONTRACT_FAILED",
+      "strengthening": "HISTORICAL",
+      "allowed_change": [
+        "Any mechanism preserving the declared semantics"
+      ],
+      "forbidden_change": [
+        "Silent semantic weakening",
+        "Retroactive attribution of a future mechanism"
+      ],
+      "failure_if_violated": "Semantic regression or unversioned compatibility break.",
+      "priority": "HIGH",
+      "priority_basis": {
+        "security_impact": "POSSIBLE_OR_NOT_PRIMARY",
+        "data_loss_impact": "POSSIBLE_OR_NOT_PRIMARY",
+        "concurrency_impact": "POSSIBLE_OR_NOT_PRIMARY",
+        "compatibility_impact": "POSSIBLE_OR_NOT_PRIMARY",
+        "historical_importance_is_not_current_risk": true
+      },
+      "invariant_ref": "INV-ACQ-BEFORE-INTERP",
+      "test_ref": "TEST-ACQ-BEFORE-INTERP",
+      "dependency_level": "L2",
+      "prerequisite_closure": [
+        "OBL-CANDIDATE-IDENTITY"
+      ],
+      "closure_status": "OBLIGATION_BLOCKED",
+      "object_type": "OBLIGATION",
+      "schema_version": "1.0",
+      "lifecycle_status": "FORMALIZED",
+      "provenance": {
+        "source_artifact": "historical-source/obligations/OBLIGATIONS.yaml",
+        "source_object": "OBL-ACQ-BEFORE-INTERP",
+        "content_hash": "edb56ccdb408bfe3197f05c3a55e7627772d248d8c72c28e5b8c86566d25efa5",
+        "transformation": "REFERENCE_WRAPPER_NO_VERIFICATION_ESCALATION"
+      }
+    },
+    {
+      "obligation_id": "OBL-ACQ-OUTCOME",
+      "title": "Acquisition outcome recording",
+      "statement": "Every attempted acquisition must yield an observation outcome or an explicit attributable failure outcome.",
+      "class": "STABILIZE",
+      "strength": "REQUIRED",
+      "final_category": "ENGINEERING_REQUIREMENT",
+      "epistemic_status": "SUPPORTED",
+      "source_properties": [
+        "PROP-ACQ-OUTCOME"
+      ],
+      "source_evidence": [
+        "NE-V8-FAILURE-MATRIX",
+        "NE-V9-INVARIANTS"
+      ],
+      "historical_claims": [
+        "inv-003",
+        "v8:FAILURE"
+      ],
+      "version_scope": {
+        "versions": [
+          "v0.1.0",
+          "v0.2.0",
+          "v0.3.0",
+          "v0.4.0",
+          "v0.5.0",
+          "v0.6.0",
+          "v0.7.1"
+        ]
+      },
+      "dependencies": [
+        "DEP-004",
+        "DEP-005"
+      ],
+      "dependents": [
+        "DEP-046",
+        "DEP-051"
+      ],
+      "prerequisite_obligations": [
+        "OBL-ACQ-BEFORE-INTERP",
+        "OBL-CANDIDATE-IDENTITY"
+      ],
+      "verification": {
+        "test_id": "TEST-ACQ-OUTCOME",
+        "strategy": "Exercise acquisition outcome recording in an executable future harness and assert its semantic invariant.",
+        "expected": "The obligation holds or the deviation is explicit and observable.",
+        "result": "UNVERIFIED"
+      },
+      "compatibility": {
+        "scope": "internal and cross-component semantics",
+        "impact_if_changed": "REQUIRES_EQUIVALENCE_ANALYSIS"
+      },
+      "exceptions": [],
+      "status": "FORMALIZED",
+      "rationale": "Unrecorded acquisition erases evidence and can strand work.",
+      "engineering_rationale": "Unrecorded acquisition erases evidence and can strand work.",
+      "derivation_status": "JUSTIFIED_SOURCE_LOCAL_INPUT_BLOCKED",
+      "derivation_acceptance": "BLOCKED_BY_INPUT_CONTRACT_FAILED",
+      "strengthening": "HISTORICAL",
+      "allowed_change": [
+        "Any mechanism preserving the declared semantics"
+      ],
+      "forbidden_change": [
+        "Silent semantic weakening",
+        "Retroactive attribution of a future mechanism"
+      ],
+      "failure_if_violated": "Semantic regression or unversioned compatibility break.",
+      "priority": "HIGH",
+      "priority_basis": {
+        "security_impact": "POSSIBLE_OR_NOT_PRIMARY",
+        "data_loss_impact": "POSSIBLE_OR_NOT_PRIMARY",
+        "concurrency_impact": "POSSIBLE_OR_NOT_PRIMARY",
+        "compatibility_impact": "POSSIBLE_OR_NOT_PRIMARY",
+        "historical_importance_is_not_current_risk": true
+      },
+      "invariant_ref": "INV-ACQ-OUTCOME",
+      "test_ref": "TEST-ACQ-OUTCOME",
+      "dependency_level": "L3",
+      "prerequisite_closure": [
+        "OBL-ACQ-BEFORE-INTERP",
+        "OBL-CANDIDATE-IDENTITY"
+      ],
+      "closure_status": "OBLIGATION_BLOCKED",
+      "object_type": "OBLIGATION",
+      "schema_version": "1.0",
+      "lifecycle_status": "FORMALIZED",
+      "provenance": {
+        "source_artifact": "historical-source/obligations/OBLIGATIONS.yaml",
+        "source_object": "OBL-ACQ-OUTCOME",
+        "content_hash": "edb56ccdb408bfe3197f05c3a55e7627772d248d8c72c28e5b8c86566d25efa5",
+        "transformation": "REFERENCE_WRAPPER_NO_VERIFICATION_ESCALATION"
+      }
+    },
+    {
+      "obligation_id": "OBL-ACQ-METADATA",
+      "title": "Acquisition metadata",
+      "statement": "Observations must retain metadata sufficient for interpretation, attribution, and diagnosis; exact representation may change equivalently.",
+      "class": "PRESERVE",
+      "strength": "CONDITIONAL",
+      "final_category": "PRESERVATION_OBLIGATION",
+      "epistemic_status": "SUPPORTED",
+      "source_properties": [
+        "PROP-ACQ-METADATA"
+      ],
+      "source_evidence": [
+        "NE-V3-DATA",
+        "NE-V8-PROVENANCE"
+      ],
+      "historical_claims": [
+        "v3:",
+        "v8:PROVENANCE"
+      ],
+      "version_scope": {
+        "versions": [
+          "v0.1.0",
+          "v0.2.0",
+          "v0.3.0",
+          "v0.4.0",
+          "v0.5.0",
+          "v0.6.0",
+          "v0.7.1"
+        ]
+      },
+      "dependencies": [
+        "DEP-002",
+        "DEP-003"
+      ],
+      "dependents": [],
+      "prerequisite_obligations": [
+        "OBL-OBS-DISTINCT",
+        "OBL-OBS-SOURCE"
+      ],
+      "verification": {
+        "test_id": "TEST-ACQ-METADATA",
+        "strategy": "Exercise acquisition metadata in an executable future harness and assert its semantic invariant.",
+        "expected": "The obligation holds or the deviation is explicit and observable.",
+        "result": "UNVERIFIED"
+      },
+      "compatibility": {
+        "scope": "internal and cross-component semantics",
+        "impact_if_changed": "REQUIRES_EQUIVALENCE_ANALYSIS"
+      },
+      "exceptions": [],
+      "status": "FORMALIZED",
+      "rationale": "Uncontextualized content weakens recognition and provenance.",
+      "engineering_rationale": "Uncontextualized content weakens recognition and provenance.",
+      "derivation_status": "JUSTIFIED_SOURCE_LOCAL_INPUT_BLOCKED",
+      "derivation_acceptance": "BLOCKED_BY_INPUT_CONTRACT_FAILED",
+      "strengthening": "HISTORICAL",
+      "allowed_change": [
+        "Any mechanism preserving the declared semantics"
+      ],
+      "forbidden_change": [
+        "Silent semantic weakening",
+        "Retroactive attribution of a future mechanism"
+      ],
+      "failure_if_violated": "Semantic regression or unversioned compatibility break.",
+      "priority": "MEDIUM",
+      "priority_basis": {
+        "security_impact": "POSSIBLE_OR_NOT_PRIMARY",
+        "data_loss_impact": "PRIMARY",
+        "concurrency_impact": "POSSIBLE_OR_NOT_PRIMARY",
+        "compatibility_impact": "POSSIBLE_OR_NOT_PRIMARY",
+        "historical_importance_is_not_current_risk": true
+      },
+      "invariant_ref": "INV-ACQ-METADATA",
+      "test_ref": "TEST-ACQ-METADATA",
+      "dependency_level": "L5",
+      "prerequisite_closure": [
+        "OBL-ACQ-BEFORE-INTERP",
+        "OBL-CANDIDATE-IDENTITY",
+        "OBL-OBS-DISTINCT",
+        "OBL-OBS-SOURCE"
+      ],
+      "closure_status": "OBLIGATION_UNVERIFIED",
+      "object_type": "OBLIGATION",
+      "schema_version": "1.0",
+      "lifecycle_status": "FORMALIZED",
+      "provenance": {
+        "source_artifact": "historical-source/obligations/OBLIGATIONS.yaml",
+        "source_object": "OBL-ACQ-METADATA",
+        "content_hash": "edb56ccdb408bfe3197f05c3a55e7627772d248d8c72c28e5b8c86566d25efa5",
+        "transformation": "REFERENCE_WRAPPER_NO_VERIFICATION_ESCALATION"
+      }
+    },
+    {
+      "obligation_id": "OBL-ACQ-TIMEOUT",
+      "title": "Finite acquisition timeout",
+      "statement": "Each acquisition must remain under an explicit finite timeout or stronger encompassing deadline, with timeout exposed distinctly.",
+      "class": "PRESERVE",
+      "strength": "REQUIRED",
+      "final_category": "PRESERVATION_OBLIGATION",
+      "epistemic_status": "SUPPORTED",
+      "source_properties": [
+        "PROP-ACQ-TIMEOUT"
+      ],
+      "source_evidence": [
+        "NE-V8-BOUNDS",
+        "NE-V9-CLAIMS"
+      ],
+      "historical_claims": [
+        "v8:RESOURCE-BOUNDS",
+        "claim-version-v030"
+      ],
+      "version_scope": {
+        "versions": [
+          "v0.1.0",
+          "v0.2.0",
+          "v0.3.0",
+          "v0.4.0",
+          "v0.5.0",
+          "v0.6.0",
+          "v0.7.1"
+        ]
+      },
+      "dependencies": [
+        "DEP-008"
+      ],
+      "dependents": [
+        "DEP-012",
+        "DEP-078"
+      ],
+      "prerequisite_obligations": [
+        "OBL-ACQ-BEFORE-INTERP"
+      ],
+      "verification": {
+        "test_id": "TEST-ACQ-TIMEOUT",
+        "strategy": "Exercise finite acquisition timeout in an executable future harness and assert its semantic invariant.",
+        "expected": "The obligation holds or the deviation is explicit and observable.",
+        "result": "UNVERIFIED"
+      },
+      "compatibility": {
+        "scope": "internal and cross-component semantics",
+        "impact_if_changed": "REQUIRES_EQUIVALENCE_ANALYSIS"
+      },
+      "exceptions": [],
+      "status": "FORMALIZED",
+      "rationale": "Unbounded in-flight acquisition blocks progress and consumes resources.",
+      "engineering_rationale": "Unbounded in-flight acquisition blocks progress and consumes resources.",
+      "derivation_status": "JUSTIFIED_SOURCE_LOCAL_INPUT_BLOCKED",
+      "derivation_acceptance": "BLOCKED_BY_INPUT_CONTRACT_FAILED",
+      "strengthening": "HISTORICAL",
+      "allowed_change": [
+        "Any mechanism preserving the declared semantics"
+      ],
+      "forbidden_change": [
+        "Silent semantic weakening",
+        "Retroactive attribution of a future mechanism"
+      ],
+      "failure_if_violated": "Semantic regression or unversioned compatibility break.",
+      "priority": "HIGH",
+      "priority_basis": {
+        "security_impact": "POSSIBLE_OR_NOT_PRIMARY",
+        "data_loss_impact": "POSSIBLE_OR_NOT_PRIMARY",
+        "concurrency_impact": "POSSIBLE_OR_NOT_PRIMARY",
+        "compatibility_impact": "POSSIBLE_OR_NOT_PRIMARY",
+        "historical_importance_is_not_current_risk": true
+      },
+      "invariant_ref": "INV-ACQ-TIMEOUT",
+      "test_ref": "TEST-ACQ-TIMEOUT",
+      "dependency_level": "L3",
+      "prerequisite_closure": [
+        "OBL-ACQ-BEFORE-INTERP",
+        "OBL-CANDIDATE-IDENTITY"
+      ],
+      "closure_status": "OBLIGATION_BLOCKED",
+      "object_type": "OBLIGATION",
+      "schema_version": "1.0",
+      "lifecycle_status": "FORMALIZED",
+      "provenance": {
+        "source_artifact": "historical-source/obligations/OBLIGATIONS.yaml",
+        "source_object": "OBL-ACQ-TIMEOUT",
+        "content_hash": "edb56ccdb408bfe3197f05c3a55e7627772d248d8c72c28e5b8c86566d25efa5",
+        "transformation": "REFERENCE_WRAPPER_NO_VERIFICATION_ESCALATION"
+      }
+    },
+    {
+      "obligation_id": "OBL-ACQ-SCOPE",
+      "title": "Acquisition scope enforcement",
+      "statement": "Requested and redirected targets must be validated against declared network authority and scope.",
+      "class": "CONTAIN",
+      "strength": "REQUIRED",
+      "final_category": "ENGINEERING_REQUIREMENT",
+      "epistemic_status": "SUPPORTED",
+      "source_properties": [
+        "PROP-ACQ-SCOPE"
+      ],
+      "source_evidence": [
+        "NE-V8-BOUNDARIES",
+        "NE-V9-INVARIANTS"
+      ],
+      "historical_claims": [
+        "v8:TRUST",
+        "inv-006"
+      ],
+      "version_scope": {
+        "versions": [
+          "v0.1.0",
+          "v0.2.0",
+          "v0.3.0",
+          "v0.4.0",
+          "v0.5.0",
+          "v0.6.0",
+          "v0.7.1"
+        ]
+      },
+      "dependencies": [
+        "DEP-006",
+        "DEP-007"
+      ],
+      "dependents": [
+        "DEP-076",
+        "DEP-091"
+      ],
+      "prerequisite_obligations": [
+        "OBL-ACQ-BEFORE-INTERP",
+        "OBL-AUTHORITY"
+      ],
+      "verification": {
+        "test_id": "TEST-ACQ-SCOPE",
+        "strategy": "Exercise acquisition scope enforcement in an executable future harness and assert its semantic invariant.",
+        "expected": "The obligation holds or the deviation is explicit and observable.",
+        "result": "UNVERIFIED"
+      },
+      "compatibility": {
+        "scope": "internal and cross-component semantics",
+        "impact_if_changed": "REQUIRES_EQUIVALENCE_ANALYSIS"
+      },
+      "exceptions": [],
+      "status": "FORMALIZED",
+      "rationale": "Remote targets cross historical trust and authority boundaries.",
+      "engineering_rationale": "Remote targets cross historical trust and authority boundaries.",
+      "derivation_status": "JUSTIFIED_SOURCE_LOCAL_INPUT_BLOCKED",
+      "derivation_acceptance": "BLOCKED_BY_INPUT_CONTRACT_FAILED",
+      "strengthening": "ENGINEERING_STRENGTHENING",
+      "allowed_change": [
+        "Any mechanism preserving the declared semantics"
+      ],
+      "forbidden_change": [
+        "Silent semantic weakening",
+        "Retroactive attribution of a future mechanism"
+      ],
+      "failure_if_violated": "Semantic regression or unversioned compatibility break.",
+      "priority": "HIGH",
+      "priority_basis": {
+        "security_impact": "PRIMARY",
+        "data_loss_impact": "POSSIBLE_OR_NOT_PRIMARY",
+        "concurrency_impact": "POSSIBLE_OR_NOT_PRIMARY",
+        "compatibility_impact": "POSSIBLE_OR_NOT_PRIMARY",
+        "historical_importance_is_not_current_risk": true
+      },
+      "invariant_ref": "INV-ACQ-SCOPE",
+      "test_ref": "TEST-ACQ-SCOPE",
+      "dependency_level": "L3",
+      "prerequisite_closure": [
+        "OBL-ACQ-BEFORE-INTERP",
+        "OBL-AUTHORITY",
+        "OBL-CANDIDATE-IDENTITY"
+      ],
+      "closure_status": "OBLIGATION_BLOCKED",
+      "object_type": "OBLIGATION",
+      "schema_version": "1.0",
+      "lifecycle_status": "FORMALIZED",
+      "provenance": {
+        "source_artifact": "historical-source/obligations/OBLIGATIONS.yaml",
+        "source_object": "OBL-ACQ-SCOPE",
+        "content_hash": "edb56ccdb408bfe3197f05c3a55e7627772d248d8c72c28e5b8c86566d25efa5",
+        "transformation": "REFERENCE_WRAPPER_NO_VERIFICATION_ESCALATION"
+      }
+    },
+    {
+      "obligation_id": "OBL-CANCELLATION",
+      "title": "Cancellation verification",
+      "statement": "If cancellation is exposed, transport stop, candidate outcome, propagation, state preservation, and scheduler termination must be verified separately.",
+      "class": "VERIFY",
+      "strength": "CONDITIONAL",
+      "final_category": "FUTURE_STRENGTHENING",
+      "epistemic_status": "SUPPORTED",
+      "source_properties": [
+        "PROP-CANCELLATION"
+      ],
+      "source_evidence": [
+        "NE-V8-CANCEL"
+      ],
+      "historical_claims": [
+        "v8:CANCELLATION"
+      ],
+      "version_scope": {
+        "versions": [
+          "v0.3.0",
+          "v0.4.0",
+          "v0.5.0",
+          "v0.6.0",
+          "v0.7.1"
+        ]
+      },
+      "dependencies": [
+        "DEP-012",
+        "DEP-013",
+        "DEP-014",
+        "DEP-015"
+      ],
+      "dependents": [],
+      "prerequisite_obligations": [
+        "OBL-ACQ-TIMEOUT",
+        "OBL-CANDIDATE-STATE",
+        "OBL-SCHEDULER-TERMINATION",
+        "OBL-TERMINAL-OWNERSHIP"
+      ],
+      "verification": {
+        "test_id": "TEST-CANCELLATION",
+        "strategy": "Cancel at transport, parsing, recognition, expansion, retry delay, and idle states; assert explicit outcomes and no forbidden later mutation.",
+        "expected": "The obligation holds or the deviation is explicit and observable.",
+        "result": "UNVERIFIED"
+      },
+      "compatibility": {
+        "scope": "internal and cross-component semantics",
+        "impact_if_changed": "REQUIRES_EQUIVALENCE_ANALYSIS"
+      },
+      "exceptions": [],
+      "status": "FORMALIZED",
+      "rationale": "API/control presence does not establish cancellation safety.",
+      "engineering_rationale": "API/control presence does not establish cancellation safety.",
+      "derivation_status": "JUSTIFIED_SOURCE_LOCAL_INPUT_BLOCKED",
+      "derivation_acceptance": "BLOCKED_BY_INPUT_CONTRACT_FAILED",
+      "strengthening": "ENGINEERING_STRENGTHENING",
+      "allowed_change": [
+        "Any mechanism preserving the declared semantics"
+      ],
+      "forbidden_change": [
+        "Silent semantic weakening",
+        "Retroactive attribution of a future mechanism"
+      ],
+      "failure_if_violated": "Semantic regression or unversioned compatibility break.",
+      "priority": "MEDIUM",
+      "priority_basis": {
+        "security_impact": "POSSIBLE_OR_NOT_PRIMARY",
+        "data_loss_impact": "POSSIBLE_OR_NOT_PRIMARY",
+        "concurrency_impact": "PRIMARY",
+        "compatibility_impact": "POSSIBLE_OR_NOT_PRIMARY",
+        "historical_importance_is_not_current_risk": true
+      },
+      "invariant_ref": "INV-CANCELLATION",
+      "test_ref": "TEST-CANCELLATION",
+      "dependency_level": "L6",
+      "prerequisite_closure": [
+        "OBL-ACQ-BEFORE-INTERP",
+        "OBL-ACQ-OUTCOME",
+        "OBL-ACQ-TIMEOUT",
+        "OBL-BOUNDED-CONCURRENCY",
+        "OBL-CANDIDATE-ADMISSION",
+        "OBL-CANDIDATE-IDENTITY",
+        "OBL-CANDIDATE-PARENT",
+        "OBL-CANDIDATE-STATE",
+        "OBL-CLAIM-EXCLUSIVITY",
+        "OBL-DEDUP-SCOPES",
+        "OBL-DISCOVERY-RECORD",
+        "OBL-LIFECYCLE-OBS",
+        "OBL-OBS-DISTINCT",
+        "OBL-OBS-OUTCOMES",
+        "OBL-OBS-SOURCE",
+        "OBL-RECOGNITION-DISTINCT",
+        "OBL-RECOGNITION-OUTCOMES",
+        "OBL-SCHEDULER-TERMINATION",
+        "OBL-TERMINAL-OWNERSHIP"
+      ],
+      "closure_status": "OBLIGATION_UNVERIFIED",
+      "object_type": "OBLIGATION",
+      "schema_version": "1.0",
+      "lifecycle_status": "FORMALIZED",
+      "provenance": {
+        "source_artifact": "historical-source/obligations/OBLIGATIONS.yaml",
+        "source_object": "OBL-CANCELLATION",
+        "content_hash": "edb56ccdb408bfe3197f05c3a55e7627772d248d8c72c28e5b8c86566d25efa5",
+        "transformation": "REFERENCE_WRAPPER_NO_VERIFICATION_ESCALATION"
+      }
+    },
+    {
+      "obligation_id": "OBL-OBS-DISTINCT",
+      "title": "Observation remains distinct",
+      "statement": "Acquisition evidence must remain represented separately from interpreted Discovery records.",
+      "class": "PRESERVE",
+      "strength": "REQUIRED",
+      "final_category": "PRESERVATION_OBLIGATION",
+      "epistemic_status": "SUPPORTED",
+      "source_properties": [
+        "PROP-OBS-DISTINCT"
+      ],
+      "source_evidence": [
+        "NE-V9-CLAIMS",
+        "NE-V9-INVARIANTS"
+      ],
+      "historical_claims": [
+        "inv-003",
+        "claim-generic-c"
+      ],
+      "version_scope": {
+        "versions": [
+          "v0.1.0",
+          "v0.2.0",
+          "v0.3.0",
+          "v0.4.0",
+          "v0.5.0",
+          "v0.6.0",
+          "v0.7.1"
+        ]
+      },
+      "dependencies": [
+        "DEP-050"
+      ],
+      "dependents": [
+        "DEP-002",
+        "DEP-045",
+        "DEP-052",
+        "DEP-054",
+        "DEP-073"
+      ],
+      "prerequisite_obligations": [
+        "OBL-ACQ-BEFORE-INTERP"
+      ],
+      "verification": {
+        "test_id": "TEST-OBS-DISTINCT",
+        "strategy": "Exercise observation remains distinct in an executable future harness and assert its semantic invariant.",
+        "expected": "The obligation holds or the deviation is explicit and observable.",
+        "result": "UNVERIFIED"
+      },
+      "compatibility": {
+        "scope": "internal and cross-component semantics",
+        "impact_if_changed": "REQUIRES_EQUIVALENCE_ANALYSIS"
+      },
+      "exceptions": [],
+      "status": "FORMALIZED",
+      "rationale": "Collapsing evidence into interpretation destroys source evidence.",
+      "engineering_rationale": "Collapsing evidence into interpretation destroys source evidence.",
+      "derivation_status": "JUSTIFIED_SOURCE_LOCAL_INPUT_BLOCKED",
+      "derivation_acceptance": "BLOCKED_BY_INPUT_CONTRACT_FAILED",
+      "strengthening": "HISTORICAL",
+      "allowed_change": [
+        "Any mechanism preserving the declared semantics"
+      ],
+      "forbidden_change": [
+        "Silent semantic weakening",
+        "Retroactive attribution of a future mechanism"
+      ],
+      "failure_if_violated": "Semantic regression or unversioned compatibility break.",
+      "priority": "HIGH",
+      "priority_basis": {
+        "security_impact": "POSSIBLE_OR_NOT_PRIMARY",
+        "data_loss_impact": "PRIMARY",
+        "concurrency_impact": "POSSIBLE_OR_NOT_PRIMARY",
+        "compatibility_impact": "POSSIBLE_OR_NOT_PRIMARY",
+        "historical_importance_is_not_current_risk": true
+      },
+      "invariant_ref": "INV-OBS-DISTINCT",
+      "test_ref": "TEST-OBS-DISTINCT",
+      "dependency_level": "L3",
+      "prerequisite_closure": [
+        "OBL-ACQ-BEFORE-INTERP",
+        "OBL-CANDIDATE-IDENTITY"
+      ],
+      "closure_status": "OBLIGATION_BLOCKED",
+      "object_type": "OBLIGATION",
+      "schema_version": "1.0",
+      "lifecycle_status": "FORMALIZED",
+      "provenance": {
+        "source_artifact": "historical-source/obligations/OBLIGATIONS.yaml",
+        "source_object": "OBL-OBS-DISTINCT",
+        "content_hash": "edb56ccdb408bfe3197f05c3a55e7627772d248d8c72c28e5b8c86566d25efa5",
+        "transformation": "REFERENCE_WRAPPER_NO_VERIFICATION_ESCALATION"
+      }
+    },
+    {
+      "obligation_id": "OBL-OBS-SOURCE",
+      "title": "Observation source linkage",
+      "statement": "Each observation must retain an unambiguous candidate correlation or explicit orphan classification.",
+      "class": "PRESERVE",
+      "strength": "REQUIRED",
+      "final_category": "PRESERVATION_OBLIGATION",
+      "epistemic_status": "SUPPORTED",
+      "source_properties": [
+        "PROP-OBS-SOURCE"
+      ],
+      "source_evidence": [
+        "NE-V8-PROVENANCE",
+        "NE-V9-INVARIANTS"
+      ],
+      "historical_claims": [
+        "v8:PROVENANCE",
+        "inv-003"
+      ],
+      "version_scope": {
+        "versions": [
+          "v0.1.0",
+          "v0.2.0",
+          "v0.3.0",
+          "v0.4.0",
+          "v0.5.0",
+          "v0.6.0",
+          "v0.7.1"
+        ]
+      },
+      "dependencies": [
+        "DEP-053",
+        "DEP-054"
+      ],
+      "dependents": [
+        "DEP-003",
+        "DEP-030",
+        "DEP-066"
+      ],
+      "prerequisite_obligations": [
+        "OBL-CANDIDATE-IDENTITY",
+        "OBL-OBS-DISTINCT"
+      ],
+      "verification": {
+        "test_id": "TEST-OBS-SOURCE",
+        "strategy": "Exercise observation source linkage in an executable future harness and assert its semantic invariant.",
+        "expected": "The obligation holds or the deviation is explicit and observable.",
+        "result": "UNVERIFIED"
+      },
+      "compatibility": {
+        "scope": "internal and cross-component semantics",
+        "impact_if_changed": "REQUIRES_EQUIVALENCE_ANALYSIS"
+      },
+      "exceptions": [],
+      "status": "FORMALIZED",
+      "rationale": "Acquisition evidence must be attributable to work identity.",
+      "engineering_rationale": "Acquisition evidence must be attributable to work identity.",
+      "derivation_status": "JUSTIFIED_SOURCE_LOCAL_INPUT_BLOCKED",
+      "derivation_acceptance": "BLOCKED_BY_INPUT_CONTRACT_FAILED",
+      "strengthening": "HISTORICAL",
+      "allowed_change": [
+        "Any mechanism preserving the declared semantics"
+      ],
+      "forbidden_change": [
+        "Silent semantic weakening",
+        "Retroactive attribution of a future mechanism"
+      ],
+      "failure_if_violated": "Semantic regression or unversioned compatibility break.",
+      "priority": "HIGH",
+      "priority_basis": {
+        "security_impact": "POSSIBLE_OR_NOT_PRIMARY",
+        "data_loss_impact": "PRIMARY",
+        "concurrency_impact": "POSSIBLE_OR_NOT_PRIMARY",
+        "compatibility_impact": "POSSIBLE_OR_NOT_PRIMARY",
+        "historical_importance_is_not_current_risk": true
+      },
+      "invariant_ref": "INV-OBS-SOURCE",
+      "test_ref": "TEST-OBS-SOURCE",
+      "dependency_level": "L4",
+      "prerequisite_closure": [
+        "OBL-ACQ-BEFORE-INTERP",
+        "OBL-CANDIDATE-IDENTITY",
+        "OBL-OBS-DISTINCT"
+      ],
+      "closure_status": "OBLIGATION_BLOCKED",
+      "object_type": "OBLIGATION",
+      "schema_version": "1.0",
+      "lifecycle_status": "FORMALIZED",
+      "provenance": {
+        "source_artifact": "historical-source/obligations/OBLIGATIONS.yaml",
+        "source_object": "OBL-OBS-SOURCE",
+        "content_hash": "edb56ccdb408bfe3197f05c3a55e7627772d248d8c72c28e5b8c86566d25efa5",
+        "transformation": "REFERENCE_WRAPPER_NO_VERIFICATION_ESCALATION"
+      }
+    },
+    {
+      "obligation_id": "OBL-OBS-OUTCOMES",
+      "title": "Observation outcome semantics",
+      "statement": "Success, failure, timeout, cancellation, partial/truncated, and empty outcomes must remain semantically distinct.",
+      "class": "STABILIZE",
+      "strength": "REQUIRED",
+      "final_category": "FUTURE_STRENGTHENING",
+      "epistemic_status": "SUPPORTED",
+      "source_properties": [
+        "PROP-OBS-OUTCOMES"
+      ],
+      "source_evidence": [
+        "NE-V3-DATA",
+        "NE-V8-FAILURE-MATRIX"
+      ],
+      "historical_claims": [
+        "v3:",
+        "v8:FAILURE"
+      ],
+      "version_scope": {
+        "versions": [
+          "v0.1.0",
+          "v0.2.0",
+          "v0.3.0",
+          "v0.4.0",
+          "v0.5.0",
+          "v0.6.0",
+          "v0.7.1"
+        ]
+      },
+      "dependencies": [
+        "DEP-051",
+        "DEP-052"
+      ],
+      "dependents": [
+        "DEP-032",
+        "DEP-074",
+        "DEP-085"
+      ],
+      "prerequisite_obligations": [
+        "OBL-ACQ-OUTCOME",
+        "OBL-OBS-DISTINCT"
+      ],
+      "verification": {
+        "test_id": "TEST-OBS-OUTCOMES",
+        "strategy": "Exercise observation outcome semantics in an executable future harness and assert its semantic invariant.",
+        "expected": "The obligation holds or the deviation is explicit and observable.",
+        "result": "UNVERIFIED"
+      },
+      "compatibility": {
+        "scope": "internal and cross-component semantics",
+        "impact_if_changed": "REQUIRES_EQUIVALENCE_ANALYSIS"
+      },
+      "exceptions": [],
+      "status": "FORMALIZED",
+      "rationale": "Null, empty, status, and partial outcomes are not equivalent.",
+      "engineering_rationale": "Null, empty, status, and partial outcomes are not equivalent.",
+      "derivation_status": "JUSTIFIED_SOURCE_LOCAL_INPUT_BLOCKED",
+      "derivation_acceptance": "BLOCKED_BY_INPUT_CONTRACT_FAILED",
+      "strengthening": "ENGINEERING_STRENGTHENING",
+      "allowed_change": [
+        "Any mechanism preserving the declared semantics"
+      ],
+      "forbidden_change": [
+        "Silent semantic weakening",
+        "Retroactive attribution of a future mechanism"
+      ],
+      "failure_if_violated": "Semantic regression or unversioned compatibility break.",
+      "priority": "HIGH",
+      "priority_basis": {
+        "security_impact": "POSSIBLE_OR_NOT_PRIMARY",
+        "data_loss_impact": "PRIMARY",
+        "concurrency_impact": "POSSIBLE_OR_NOT_PRIMARY",
+        "compatibility_impact": "POSSIBLE_OR_NOT_PRIMARY",
+        "historical_importance_is_not_current_risk": true
+      },
+      "invariant_ref": "INV-OBS-OUTCOMES",
+      "test_ref": "TEST-OBS-OUTCOMES",
+      "dependency_level": "L4",
+      "prerequisite_closure": [
+        "OBL-ACQ-BEFORE-INTERP",
+        "OBL-ACQ-OUTCOME",
+        "OBL-CANDIDATE-IDENTITY",
+        "OBL-OBS-DISTINCT"
+      ],
+      "closure_status": "OBLIGATION_BLOCKED",
+      "object_type": "OBLIGATION",
+      "schema_version": "1.0",
+      "lifecycle_status": "FORMALIZED",
+      "provenance": {
+        "source_artifact": "historical-source/obligations/OBLIGATIONS.yaml",
+        "source_object": "OBL-OBS-OUTCOMES",
+        "content_hash": "edb56ccdb408bfe3197f05c3a55e7627772d248d8c72c28e5b8c86566d25efa5",
+        "transformation": "REFERENCE_WRAPPER_NO_VERIFICATION_ESCALATION"
+      }
+    },
+    {
+      "obligation_id": "OBL-RECOGNITION-DISTINCT",
+      "title": "Recognition stage separation",
+      "statement": "Recognition must remain semantically separable from acquisition and operate on represented observation evidence.",
+      "class": "PRESERVE",
+      "strength": "REQUIRED",
+      "final_category": "PRESERVATION_OBLIGATION",
+      "epistemic_status": "SUPPORTED",
+      "source_properties": [
+        "PROP-RECOGNITION-DISTINCT"
+      ],
+      "source_evidence": [
+        "NE-V9-CLAIMS",
+        "NE-V9-INVARIANTS"
+      ],
+      "historical_claims": [
+        "claim-generic-d",
+        "inv-002"
+      ],
+      "version_scope": {
+        "versions": [
+          "v0.1.0",
+          "v0.2.0",
+          "v0.3.0",
+          "v0.4.0",
+          "v0.5.0",
+          "v0.6.0",
+          "v0.7.1"
+        ]
+      },
+      "dependencies": [
+        "DEP-072",
+        "DEP-073"
+      ],
+      "dependents": [
+        "DEP-031",
+        "DEP-056",
+        "DEP-068",
+        "DEP-075",
+        "DEP-077"
+      ],
+      "prerequisite_obligations": [
+        "OBL-ACQ-BEFORE-INTERP",
+        "OBL-OBS-DISTINCT"
+      ],
+      "verification": {
+        "test_id": "TEST-RECOGNITION-DISTINCT",
+        "strategy": "Exercise recognition stage separation in an executable future harness and assert its semantic invariant.",
+        "expected": "The obligation holds or the deviation is explicit and observable.",
+        "result": "UNVERIFIED"
+      },
+      "compatibility": {
+        "scope": "internal and cross-component semantics",
+        "impact_if_changed": "REQUIRES_EQUIVALENCE_ANALYSIS"
+      },
+      "exceptions": [],
+      "status": "FORMALIZED",
+      "rationale": "Separation allows independent containment and verification.",
+      "engineering_rationale": "Separation allows independent containment and verification.",
+      "derivation_status": "JUSTIFIED_SOURCE_LOCAL_INPUT_BLOCKED",
+      "derivation_acceptance": "BLOCKED_BY_INPUT_CONTRACT_FAILED",
+      "strengthening": "HISTORICAL",
+      "allowed_change": [
+        "Any mechanism preserving the declared semantics"
+      ],
+      "forbidden_change": [
+        "Silent semantic weakening",
+        "Retroactive attribution of a future mechanism"
+      ],
+      "failure_if_violated": "Semantic regression or unversioned compatibility break.",
+      "priority": "HIGH",
+      "priority_basis": {
+        "security_impact": "POSSIBLE_OR_NOT_PRIMARY",
+        "data_loss_impact": "POSSIBLE_OR_NOT_PRIMARY",
+        "concurrency_impact": "POSSIBLE_OR_NOT_PRIMARY",
+        "compatibility_impact": "POSSIBLE_OR_NOT_PRIMARY",
+        "historical_importance_is_not_current_risk": true
+      },
+      "invariant_ref": "INV-RECOGNITION-DISTINCT",
+      "test_ref": "TEST-RECOGNITION-DISTINCT",
+      "dependency_level": "L4",
+      "prerequisite_closure": [
+        "OBL-ACQ-BEFORE-INTERP",
+        "OBL-CANDIDATE-IDENTITY",
+        "OBL-OBS-DISTINCT"
+      ],
+      "closure_status": "OBLIGATION_BLOCKED",
+      "object_type": "OBLIGATION",
+      "schema_version": "1.0",
+      "lifecycle_status": "FORMALIZED",
+      "provenance": {
+        "source_artifact": "historical-source/obligations/OBLIGATIONS.yaml",
+        "source_object": "OBL-RECOGNITION-DISTINCT",
+        "content_hash": "edb56ccdb408bfe3197f05c3a55e7627772d248d8c72c28e5b8c86566d25efa5",
+        "transformation": "REFERENCE_WRAPPER_NO_VERIFICATION_ESCALATION"
+      }
+    },
+    {
+      "obligation_id": "OBL-RECOGNITION-OUTCOMES",
+      "title": "Recognition outcome contract",
+      "statement": "Non-applicability, applicable-with-no-discovery, provider failure, and partial discovery must be distinct outcomes.",
+      "class": "FORMALIZE",
+      "strength": "REQUIRED",
+      "final_category": "FUTURE_STRENGTHENING",
+      "epistemic_status": "SUPPORTED",
+      "source_properties": [
+        "PROP-RECOGNITION-OUTCOMES"
+      ],
+      "source_evidence": [
+        "NE-V3-API",
+        "NE-V8-FAILURE-MATRIX"
+      ],
+      "historical_claims": [
+        "v3:API",
+        "v8:FAILURE"
+      ],
+      "version_scope": {
+        "versions": [
+          "v0.1.0",
+          "v0.2.0",
+          "v0.3.0",
+          "v0.4.0",
+          "v0.5.0",
+          "v0.6.0",
+          "v0.7.1"
+        ]
+      },
+      "dependencies": [
+        "DEP-074",
+        "DEP-075"
+      ],
+      "dependents": [
+        "DEP-033",
+        "DEP-049",
+        "DEP-069",
+        "DEP-086"
+      ],
+      "prerequisite_obligations": [
+        "OBL-OBS-OUTCOMES",
+        "OBL-RECOGNITION-DISTINCT"
+      ],
+      "verification": {
+        "test_id": "TEST-RECOGNITION-OUTCOMES",
+        "strategy": "Exercise recognition outcome contract in an executable future harness and assert its semantic invariant.",
+        "expected": "The obligation holds or the deviation is explicit and observable.",
+        "result": "UNVERIFIED"
+      },
+      "compatibility": {
+        "scope": "internal and cross-component semantics",
+        "impact_if_changed": "REQUIRES_EQUIVALENCE_ANALYSIS"
+      },
+      "exceptions": [],
+      "status": "FORMALIZED",
+      "rationale": "Conflation hides failure or loses partial results.",
+      "engineering_rationale": "Conflation hides failure or loses partial results.",
+      "derivation_status": "JUSTIFIED_SOURCE_LOCAL_INPUT_BLOCKED",
+      "derivation_acceptance": "BLOCKED_BY_INPUT_CONTRACT_FAILED",
+      "strengthening": "ENGINEERING_STRENGTHENING",
+      "allowed_change": [
+        "Any mechanism preserving the declared semantics"
+      ],
+      "forbidden_change": [
+        "Silent semantic weakening",
+        "Retroactive attribution of a future mechanism"
+      ],
+      "failure_if_violated": "Semantic regression or unversioned compatibility break.",
+      "priority": "HIGH",
+      "priority_basis": {
+        "security_impact": "POSSIBLE_OR_NOT_PRIMARY",
+        "data_loss_impact": "POSSIBLE_OR_NOT_PRIMARY",
+        "concurrency_impact": "POSSIBLE_OR_NOT_PRIMARY",
+        "compatibility_impact": "POSSIBLE_OR_NOT_PRIMARY",
+        "historical_importance_is_not_current_risk": true
+      },
+      "invariant_ref": "INV-RECOGNITION-OUTCOMES",
+      "test_ref": "TEST-RECOGNITION-OUTCOMES",
+      "dependency_level": "L5",
+      "prerequisite_closure": [
+        "OBL-ACQ-BEFORE-INTERP",
+        "OBL-ACQ-OUTCOME",
+        "OBL-CANDIDATE-IDENTITY",
+        "OBL-OBS-DISTINCT",
+        "OBL-OBS-OUTCOMES",
+        "OBL-RECOGNITION-DISTINCT"
+      ],
+      "closure_status": "OBLIGATION_BLOCKED",
+      "object_type": "OBLIGATION",
+      "schema_version": "1.0",
+      "lifecycle_status": "FORMALIZED",
+      "provenance": {
+        "source_artifact": "historical-source/obligations/OBLIGATIONS.yaml",
+        "source_object": "OBL-RECOGNITION-OUTCOMES",
+        "content_hash": "edb56ccdb408bfe3197f05c3a55e7627772d248d8c72c28e5b8c86566d25efa5",
+        "transformation": "REFERENCE_WRAPPER_NO_VERIFICATION_ESCALATION"
+      }
+    },
+    {
+      "obligation_id": "OBL-PROVIDER-CONTRACT",
+      "title": "Provider semantic contract",
+      "statement": "Any exposed provider API must define matching, output, expansion ownership, failure, ordering, lifecycle, cancellation, and provenance.",
+      "class": "FORMALIZE",
+      "strength": "CONDITIONAL",
+      "final_category": "FUTURE_STRENGTHENING",
+      "epistemic_status": "SUPPORTED",
+      "source_properties": [
+        "PROP-PROVIDER-CONTRACT"
+      ],
+      "source_evidence": [
+        "NE-V3-PROVIDERS",
+        "NE-V9-CLAIMS"
+      ],
+      "historical_claims": [
+        "claim-version-v020",
+        "v3:PROVIDER",
+        "claim-earliest-contract"
+      ],
+      "version_scope": {
+        "versions": [
+          "v0.2.0",
+          "v0.3.0",
+          "v0.4.0",
+          "v0.5.0",
+          "v0.6.0",
+          "v0.7.1"
+        ]
+      },
+      "dependencies": [
+        "DEP-068",
+        "DEP-069"
+      ],
+      "dependents": [
+        "DEP-070",
+        "DEP-100"
+      ],
+      "prerequisite_obligations": [
+        "OBL-RECOGNITION-DISTINCT",
+        "OBL-RECOGNITION-OUTCOMES"
+      ],
+      "verification": {
+        "test_id": "TEST-PROVIDER-CONTRACT",
+        "strategy": "Exercise provider semantic contract in an executable future harness and assert its semantic invariant.",
+        "expected": "The obligation holds or the deviation is explicit and observable.",
+        "result": "UNVERIFIED"
+      },
+      "compatibility": {
+        "scope": "internal and cross-component semantics",
+        "impact_if_changed": "REQUIRES_EQUIVALENCE_ANALYSIS"
+      },
+      "exceptions": [],
+      "status": "FORMALIZED",
+      "rationale": "Names/signatures do not establish substitutability.",
+      "engineering_rationale": "Names/signatures do not establish substitutability.",
+      "derivation_status": "JUSTIFIED_SOURCE_LOCAL_INPUT_BLOCKED",
+      "derivation_acceptance": "BLOCKED_BY_INPUT_CONTRACT_FAILED",
+      "strengthening": "ENGINEERING_STRENGTHENING",
+      "allowed_change": [
+        "Any mechanism preserving the declared semantics"
+      ],
+      "forbidden_change": [
+        "Silent semantic weakening",
+        "Retroactive attribution of a future mechanism"
+      ],
+      "failure_if_violated": "Semantic regression or unversioned compatibility break.",
+      "priority": "MEDIUM",
+      "priority_basis": {
+        "security_impact": "POSSIBLE_OR_NOT_PRIMARY",
+        "data_loss_impact": "POSSIBLE_OR_NOT_PRIMARY",
+        "concurrency_impact": "POSSIBLE_OR_NOT_PRIMARY",
+        "compatibility_impact": "POSSIBLE_OR_NOT_PRIMARY",
+        "historical_importance_is_not_current_risk": true
+      },
+      "invariant_ref": "INV-PROVIDER-CONTRACT",
+      "test_ref": "TEST-PROVIDER-CONTRACT",
+      "dependency_level": "L6",
+      "prerequisite_closure": [
+        "OBL-ACQ-BEFORE-INTERP",
+        "OBL-ACQ-OUTCOME",
+        "OBL-CANDIDATE-IDENTITY",
+        "OBL-OBS-DISTINCT",
+        "OBL-OBS-OUTCOMES",
+        "OBL-RECOGNITION-DISTINCT",
+        "OBL-RECOGNITION-OUTCOMES"
+      ],
+      "closure_status": "OBLIGATION_UNVERIFIED",
+      "object_type": "OBLIGATION",
+      "schema_version": "1.0",
+      "lifecycle_status": "FORMALIZED",
+      "provenance": {
+        "source_artifact": "historical-source/obligations/OBLIGATIONS.yaml",
+        "source_object": "OBL-PROVIDER-CONTRACT",
+        "content_hash": "edb56ccdb408bfe3197f05c3a55e7627772d248d8c72c28e5b8c86566d25efa5",
+        "transformation": "REFERENCE_WRAPPER_NO_VERIFICATION_ESCALATION"
+      }
+    },
+    {
+      "obligation_id": "OBL-PROVIDER-FAILURE",
+      "title": "Provider failure containment",
+      "statement": "Provider failure must be attributable and must not corrupt global scheduler state; narrower isolation requires explicit verification.",
+      "class": "CONTAIN",
+      "strength": "CONDITIONAL",
+      "final_category": "FUTURE_STRENGTHENING",
+      "epistemic_status": "SUPPORTED",
+      "source_properties": [
+        "PROP-PROVIDER-FAILURE"
+      ],
+      "source_evidence": [
+        "NE-V8-FAILURE-MATRIX"
+      ],
+      "historical_claims": [
+        "v8:FAILURE"
+      ],
+      "version_scope": {
+        "versions": [
+          "v0.2.0",
+          "v0.3.0",
+          "v0.4.0",
+          "v0.5.0",
+          "v0.6.0",
+          "v0.7.1"
+        ]
+      },
+      "dependencies": [
+        "DEP-070",
+        "DEP-071",
+        "DEP-100"
+      ],
+      "dependents": [],
+      "prerequisite_obligations": [
+        "OBL-PROVIDER-CONTRACT",
+        "OBL-SILENT-FAILURE"
+      ],
+      "verification": {
+        "test_id": "TEST-PROVIDER-FAILURE",
+        "strategy": "Exercise provider failure containment in an executable future harness and assert its semantic invariant.",
+        "expected": "The obligation holds or the deviation is explicit and observable.",
+        "result": "UNVERIFIED"
+      },
+      "compatibility": {
+        "scope": "internal and cross-component semantics",
+        "impact_if_changed": "REQUIRES_EQUIVALENCE_ANALYSIS"
+      },
+      "exceptions": [],
+      "status": "FORMALIZED",
+      "rationale": "Partial evidence cannot be upgraded to complete isolation.",
+      "engineering_rationale": "Partial evidence cannot be upgraded to complete isolation.",
+      "derivation_status": "JUSTIFIED_SOURCE_LOCAL_INPUT_BLOCKED",
+      "derivation_acceptance": "BLOCKED_BY_INPUT_CONTRACT_FAILED",
+      "strengthening": "ENGINEERING_STRENGTHENING",
+      "allowed_change": [
+        "Any mechanism preserving the declared semantics"
+      ],
+      "forbidden_change": [
+        "Silent semantic weakening",
+        "Retroactive attribution of a future mechanism"
+      ],
+      "failure_if_violated": "Semantic regression or unversioned compatibility break.",
+      "priority": "MEDIUM",
+      "priority_basis": {
+        "security_impact": "POSSIBLE_OR_NOT_PRIMARY",
+        "data_loss_impact": "PRIMARY",
+        "concurrency_impact": "POSSIBLE_OR_NOT_PRIMARY",
+        "compatibility_impact": "POSSIBLE_OR_NOT_PRIMARY",
+        "historical_importance_is_not_current_risk": true
+      },
+      "invariant_ref": "INV-PROVIDER-FAILURE",
+      "test_ref": "TEST-PROVIDER-FAILURE",
+      "dependency_level": "L6",
+      "prerequisite_closure": [
+        "OBL-ACQ-BEFORE-INTERP",
+        "OBL-ACQ-OUTCOME",
+        "OBL-CANDIDATE-IDENTITY",
+        "OBL-OBS-DISTINCT",
+        "OBL-OBS-OUTCOMES",
+        "OBL-PROVIDER-CONTRACT",
+        "OBL-RECOGNITION-DISTINCT",
+        "OBL-RECOGNITION-OUTCOMES",
+        "OBL-SILENT-FAILURE"
+      ],
+      "closure_status": "OBLIGATION_UNVERIFIED",
+      "object_type": "OBLIGATION",
+      "schema_version": "1.0",
+      "lifecycle_status": "FORMALIZED",
+      "provenance": {
+        "source_artifact": "historical-source/obligations/OBLIGATIONS.yaml",
+        "source_object": "OBL-PROVIDER-FAILURE",
+        "content_hash": "edb56ccdb408bfe3197f05c3a55e7627772d248d8c72c28e5b8c86566d25efa5",
+        "transformation": "REFERENCE_WRAPPER_NO_VERIFICATION_ESCALATION"
+      }
+    },
+    {
+      "obligation_id": "OBL-PROVIDER-ORDER",
+      "title": "Provider ordering compatibility",
+      "statement": "Provider ordering must not be promised stable until external dependence and selection semantics are established; if promised, order changes require versioning or equivalence proof.",
+      "class": "COMPATIBILITY",
+      "strength": "CONDITIONAL",
+      "final_category": "COMPATIBILITY_OBLIGATION",
+      "epistemic_status": "UNKNOWN",
+      "source_properties": [
+        "PROP-PROVIDER-ORDER"
+      ],
+      "source_evidence": [
+        "NE-V3-PROVIDERS",
+        "NE-V9-UNKNOWNS"
+      ],
+      "historical_claims": [
+        "v3:PROVIDER",
+        "unc-012"
+      ],
+      "version_scope": {
+        "versions": [
+          "v0.2.0",
+          "v0.3.0",
+          "v0.4.0",
+          "v0.5.0",
+          "v0.6.0",
+          "v0.7.1"
+        ]
+      },
+      "dependencies": [],
+      "dependents": [],
+      "prerequisite_obligations": [],
+      "verification": {
+        "test_id": "TEST-PROVIDER-ORDER",
+        "strategy": "Exercise provider ordering compatibility in an executable future harness and assert its semantic invariant.",
+        "expected": "The obligation holds or the deviation is explicit and observable.",
+        "result": "UNVERIFIED"
+      },
+      "compatibility": {
+        "scope": "internal and cross-component semantics",
+        "impact_if_changed": "REQUIRES_EQUIVALENCE_ANALYSIS"
+      },
+      "exceptions": [],
+      "status": "FORMALIZED",
+      "rationale": "The conditional obligation preserves uncertainty instead of inventing a stable ordering contract.",
+      "engineering_rationale": "The conditional obligation preserves uncertainty instead of inventing a stable ordering contract.",
+      "derivation_status": "JUSTIFIED_SOURCE_LOCAL_INPUT_BLOCKED",
+      "derivation_acceptance": "BLOCKED_BY_INPUT_CONTRACT_FAILED",
+      "strengthening": "HISTORICAL",
+      "allowed_change": [
+        "Any mechanism preserving the declared semantics"
+      ],
+      "forbidden_change": [
+        "Silent semantic weakening",
+        "Retroactive attribution of a future mechanism"
+      ],
+      "failure_if_violated": "Semantic regression or unversioned compatibility break.",
+      "priority": "MEDIUM",
+      "priority_basis": {
+        "security_impact": "POSSIBLE_OR_NOT_PRIMARY",
+        "data_loss_impact": "POSSIBLE_OR_NOT_PRIMARY",
+        "concurrency_impact": "POSSIBLE_OR_NOT_PRIMARY",
+        "compatibility_impact": "PRIMARY",
+        "historical_importance_is_not_current_risk": true
+      },
+      "invariant_ref": "INV-PROVIDER-ORDER",
+      "test_ref": "TEST-PROVIDER-ORDER",
+      "dependency_level": "L1",
+      "prerequisite_closure": [],
+      "closure_status": "OBLIGATION_UNVERIFIED",
+      "object_type": "OBLIGATION",
+      "schema_version": "1.0",
+      "lifecycle_status": "FORMALIZED",
+      "provenance": {
+        "source_artifact": "historical-source/obligations/OBLIGATIONS.yaml",
+        "source_object": "OBL-PROVIDER-ORDER",
+        "content_hash": "edb56ccdb408bfe3197f05c3a55e7627772d248d8c72c28e5b8c86566d25efa5",
+        "transformation": "REFERENCE_WRAPPER_NO_VERIFICATION_ESCALATION"
+      }
+    },
+    {
+      "obligation_id": "OBL-DISCOVERY-RECORD",
+      "title": "Discovery semantic record",
+      "statement": "Discovery kind/data and candidate/observation correlation must be preserved; populated confidence/timestamps require migration or versioning if removed.",
+      "class": "PRESERVE",
+      "strength": "REQUIRED",
+      "final_category": "PRESERVATION_OBLIGATION",
+      "epistemic_status": "SUPPORTED",
+      "source_properties": [
+        "PROP-DISCOVERY-RECORD"
+      ],
+      "source_evidence": [
+        "NE-V3-DATA",
+        "NE-V8-PROVENANCE",
+        "NE-V9-CLAIMS"
+      ],
+      "historical_claims": [
+        "claim-generic-h",
+        "v3:",
+        "v8:PROVENANCE"
+      ],
+      "version_scope": {
+        "versions": [
+          "v0.1.0",
+          "v0.2.0",
+          "v0.3.0",
+          "v0.4.0",
+          "v0.5.0",
+          "v0.6.0",
+          "v0.7.1"
+        ]
+      },
+      "dependencies": [
+        "DEP-030",
+        "DEP-031"
+      ],
+      "dependents": [
+        "DEP-035",
+        "DEP-044",
+        "DEP-048",
+        "DEP-065"
+      ],
+      "prerequisite_obligations": [
+        "OBL-OBS-SOURCE",
+        "OBL-RECOGNITION-DISTINCT"
+      ],
+      "verification": {
+        "test_id": "TEST-DISCOVERY-RECORD",
+        "strategy": "Exercise discovery semantic record in an executable future harness and assert its semantic invariant.",
+        "expected": "The obligation holds or the deviation is explicit and observable.",
+        "result": "UNVERIFIED"
+      },
+      "compatibility": {
+        "scope": "internal and cross-component semantics",
+        "impact_if_changed": "REQUIRES_EQUIVALENCE_ANALYSIS"
+      },
+      "exceptions": [],
+      "status": "FORMALIZED",
+      "rationale": "The interpreted output must remain meaningful and attributable.",
+      "engineering_rationale": "The interpreted output must remain meaningful and attributable.",
+      "derivation_status": "JUSTIFIED_SOURCE_LOCAL_INPUT_BLOCKED",
+      "derivation_acceptance": "BLOCKED_BY_INPUT_CONTRACT_FAILED",
+      "strengthening": "HISTORICAL",
+      "allowed_change": [
+        "Any mechanism preserving the declared semantics"
+      ],
+      "forbidden_change": [
+        "Silent semantic weakening",
+        "Retroactive attribution of a future mechanism"
+      ],
+      "failure_if_violated": "Semantic regression or unversioned compatibility break.",
+      "priority": "HIGH",
+      "priority_basis": {
+        "security_impact": "POSSIBLE_OR_NOT_PRIMARY",
+        "data_loss_impact": "PRIMARY",
+        "concurrency_impact": "POSSIBLE_OR_NOT_PRIMARY",
+        "compatibility_impact": "POSSIBLE_OR_NOT_PRIMARY",
+        "historical_importance_is_not_current_risk": true
+      },
+      "invariant_ref": "INV-DISCOVERY-RECORD",
+      "test_ref": "TEST-DISCOVERY-RECORD",
+      "dependency_level": "L5",
+      "prerequisite_closure": [
+        "OBL-ACQ-BEFORE-INTERP",
+        "OBL-CANDIDATE-IDENTITY",
+        "OBL-OBS-DISTINCT",
+        "OBL-OBS-SOURCE",
+        "OBL-RECOGNITION-DISTINCT"
+      ],
+      "closure_status": "OBLIGATION_BLOCKED",
+      "object_type": "OBLIGATION",
+      "schema_version": "1.0",
+      "lifecycle_status": "FORMALIZED",
+      "provenance": {
+        "source_artifact": "historical-source/obligations/OBLIGATIONS.yaml",
+        "source_object": "OBL-DISCOVERY-RECORD",
+        "content_hash": "edb56ccdb408bfe3197f05c3a55e7627772d248d8c72c28e5b8c86566d25efa5",
+        "transformation": "REFERENCE_WRAPPER_NO_VERIFICATION_ESCALATION"
+      }
+    },
+    {
+      "obligation_id": "OBL-EXPANSION-RECURSIVE",
+      "title": "Recursive expansion capability",
+      "statement": "Discoveries must remain able to yield candidate work that re-enters scheduling under explicit bounds.",
+      "class": "PRESERVE",
+      "strength": "REQUIRED",
+      "final_category": "PRESERVATION_OBLIGATION",
+      "epistemic_status": "SUPPORTED",
+      "source_properties": [
+        "PROP-EXPANSION-RECURSIVE"
+      ],
+      "source_evidence": [
+        "NE-V9-CLAIMS",
+        "NE-V9-INVARIANTS"
+      ],
+      "historical_claims": [
+        "inv-004",
+        "inv-005",
+        "claim-closure"
+      ],
+      "version_scope": {
+        "versions": [
+          "v0.1.0",
+          "v0.2.0",
+          "v0.3.0",
+          "v0.4.0",
+          "v0.5.0",
+          "v0.6.0",
+          "v0.7.1"
+        ]
+      },
+      "dependencies": [
+        "DEP-034",
+        "DEP-035",
+        "DEP-036",
+        "DEP-037"
+      ],
+      "dependents": [
+        "DEP-038",
+        "DEP-097"
+      ],
+      "prerequisite_obligations": [
+        "OBL-CANDIDATE-ADMISSION",
+        "OBL-DISCOVERY-RECORD",
+        "OBL-RESOURCE",
+        "OBL-SCHEDULER-TERMINATION"
+      ],
+      "verification": {
+        "test_id": "TEST-EXPANSION-RECURSIVE",
+        "strategy": "Exercise recursive expansion capability in an executable future harness and assert its semantic invariant.",
+        "expected": "The obligation holds or the deviation is explicit and observable.",
+        "result": "UNVERIFIED"
+      },
+      "compatibility": {
+        "scope": "internal and cross-component semantics",
+        "impact_if_changed": "REQUIRES_EQUIVALENCE_ANALYSIS"
+      },
+      "exceptions": [],
+      "status": "FORMALIZED",
+      "rationale": "Removing re-entry changes recursive discovery to one-pass extraction.",
+      "engineering_rationale": "Removing re-entry changes recursive discovery to one-pass extraction.",
+      "derivation_status": "JUSTIFIED_SOURCE_LOCAL_INPUT_BLOCKED",
+      "derivation_acceptance": "BLOCKED_BY_INPUT_CONTRACT_FAILED",
+      "strengthening": "HISTORICAL",
+      "allowed_change": [
+        "Any mechanism preserving the declared semantics"
+      ],
+      "forbidden_change": [
+        "Silent semantic weakening",
+        "Retroactive attribution of a future mechanism"
+      ],
+      "failure_if_violated": "Semantic regression or unversioned compatibility break.",
+      "priority": "HIGH",
+      "priority_basis": {
+        "security_impact": "POSSIBLE_OR_NOT_PRIMARY",
+        "data_loss_impact": "POSSIBLE_OR_NOT_PRIMARY",
+        "concurrency_impact": "POSSIBLE_OR_NOT_PRIMARY",
+        "compatibility_impact": "POSSIBLE_OR_NOT_PRIMARY",
+        "historical_importance_is_not_current_risk": true
+      },
+      "invariant_ref": "INV-EXPANSION-RECURSIVE",
+      "test_ref": "TEST-EXPANSION-RECURSIVE",
+      "dependency_level": "L6",
+      "prerequisite_closure": [
+        "OBL-ACQ-BEFORE-INTERP",
+        "OBL-ACQ-OUTCOME",
+        "OBL-BOUNDED-CONCURRENCY",
+        "OBL-CANDIDATE-ADMISSION",
+        "OBL-CANDIDATE-IDENTITY",
+        "OBL-CANDIDATE-PARENT",
+        "OBL-CANDIDATE-STATE",
+        "OBL-CLAIM-EXCLUSIVITY",
+        "OBL-DEDUP-SCOPES",
+        "OBL-DISCOVERY-RECORD",
+        "OBL-LIFECYCLE-OBS",
+        "OBL-OBS-DISTINCT",
+        "OBL-OBS-OUTCOMES",
+        "OBL-OBS-SOURCE",
+        "OBL-RECOGNITION-DISTINCT",
+        "OBL-RECOGNITION-OUTCOMES",
+        "OBL-RESOURCE",
+        "OBL-SCHEDULER-TERMINATION",
+        "OBL-TERMINAL-OWNERSHIP"
+      ],
+      "closure_status": "OBLIGATION_BLOCKED",
+      "object_type": "OBLIGATION",
+      "schema_version": "1.0",
+      "lifecycle_status": "FORMALIZED",
+      "provenance": {
+        "source_artifact": "historical-source/obligations/OBLIGATIONS.yaml",
+        "source_object": "OBL-EXPANSION-RECURSIVE",
+        "content_hash": "edb56ccdb408bfe3197f05c3a55e7627772d248d8c72c28e5b8c86566d25efa5",
+        "transformation": "REFERENCE_WRAPPER_NO_VERIFICATION_ESCALATION"
+      }
+    },
+    {
+      "obligation_id": "OBL-EXPANSION-VS-RETRY",
+      "title": "Expansion is not retry",
+      "statement": "New-child expansion and same-candidate retry must remain separate operations with separate provenance and bounds.",
+      "class": "STABILIZE",
+      "strength": "REQUIRED",
+      "final_category": "ENGINEERING_REQUIREMENT",
+      "epistemic_status": "SUPPORTED",
+      "source_properties": [
+        "PROP-EXPANSION-VS-RETRY"
+      ],
+      "source_evidence": [
+        "NE-V8-RETRY",
+        "NE-V9-CLAIMS"
+      ],
+      "historical_claims": [
+        "claim-closure",
+        "v8:RETRY"
+      ],
+      "version_scope": {
+        "versions": [
+          "v0.1.0",
+          "v0.2.0",
+          "v0.3.0",
+          "v0.4.0",
+          "v0.5.0",
+          "v0.6.0",
+          "v0.7.1"
+        ]
+      },
+      "dependencies": [
+        "DEP-038",
+        "DEP-039"
+      ],
+      "dependents": [],
+      "prerequisite_obligations": [
+        "OBL-EXPANSION-RECURSIVE",
+        "OBL-RETRY"
+      ],
+      "verification": {
+        "test_id": "TEST-EXPANSION-VS-RETRY",
+        "strategy": "Exercise expansion is not retry in an executable future harness and assert its semantic invariant.",
+        "expected": "The obligation holds or the deviation is explicit and observable.",
+        "result": "UNVERIFIED"
+      },
+      "compatibility": {
+        "scope": "internal and cross-component semantics",
+        "impact_if_changed": "REQUIRES_EQUIVALENCE_ANALYSIS"
+      },
+      "exceptions": [],
+      "status": "FORMALIZED",
+      "rationale": "Conflation corrupts parentage, attempts, and termination.",
+      "engineering_rationale": "Conflation corrupts parentage, attempts, and termination.",
+      "derivation_status": "JUSTIFIED_SOURCE_LOCAL_INPUT_BLOCKED",
+      "derivation_acceptance": "BLOCKED_BY_INPUT_CONTRACT_FAILED",
+      "strengthening": "HISTORICAL",
+      "allowed_change": [
+        "Any mechanism preserving the declared semantics"
+      ],
+      "forbidden_change": [
+        "Silent semantic weakening",
+        "Retroactive attribution of a future mechanism"
+      ],
+      "failure_if_violated": "Semantic regression or unversioned compatibility break.",
+      "priority": "HIGH",
+      "priority_basis": {
+        "security_impact": "POSSIBLE_OR_NOT_PRIMARY",
+        "data_loss_impact": "POSSIBLE_OR_NOT_PRIMARY",
+        "concurrency_impact": "POSSIBLE_OR_NOT_PRIMARY",
+        "compatibility_impact": "POSSIBLE_OR_NOT_PRIMARY",
+        "historical_importance_is_not_current_risk": true
+      },
+      "invariant_ref": "INV-EXPANSION-VS-RETRY",
+      "test_ref": "TEST-EXPANSION-VS-RETRY",
+      "dependency_level": "L6",
+      "prerequisite_closure": [
+        "OBL-ACQ-BEFORE-INTERP",
+        "OBL-ACQ-OUTCOME",
+        "OBL-ACQ-TIMEOUT",
+        "OBL-BOUNDED-CONCURRENCY",
+        "OBL-CANDIDATE-ADMISSION",
+        "OBL-CANDIDATE-ATTEMPTS",
+        "OBL-CANDIDATE-IDENTITY",
+        "OBL-CANDIDATE-PARENT",
+        "OBL-CANDIDATE-STATE",
+        "OBL-CLAIM-EXCLUSIVITY",
+        "OBL-DEDUP-SCOPES",
+        "OBL-DISCOVERY-RECORD",
+        "OBL-EXPANSION-RECURSIVE",
+        "OBL-LIFECYCLE-OBS",
+        "OBL-OBS-DISTINCT",
+        "OBL-OBS-OUTCOMES",
+        "OBL-OBS-SOURCE",
+        "OBL-RECOGNITION-DISTINCT",
+        "OBL-RECOGNITION-OUTCOMES",
+        "OBL-RESOURCE",
+        "OBL-RETRY",
+        "OBL-SCHEDULER-TERMINATION",
+        "OBL-TERMINAL-OWNERSHIP"
+      ],
+      "closure_status": "OBLIGATION_BLOCKED",
+      "object_type": "OBLIGATION",
+      "schema_version": "1.0",
+      "lifecycle_status": "FORMALIZED",
+      "provenance": {
+        "source_artifact": "historical-source/obligations/OBLIGATIONS.yaml",
+        "source_object": "OBL-EXPANSION-VS-RETRY",
+        "content_hash": "edb56ccdb408bfe3197f05c3a55e7627772d248d8c72c28e5b8c86566d25efa5",
+        "transformation": "REFERENCE_WRAPPER_NO_VERIFICATION_ESCALATION"
+      }
+    },
+    {
+      "obligation_id": "OBL-CANDIDATE-ADMISSION",
+      "title": "Candidate admission transaction",
+      "statement": "Admission must define identity checking, reject/merge behavior, provenance retention, bounds, and recursive eligibility.",
+      "class": "FORMALIZE",
+      "strength": "REQUIRED",
+      "final_category": "FUTURE_STRENGTHENING",
+      "epistemic_status": "SUPPORTED",
+      "source_properties": [
+        "PROP-CANDIDATE-ADMISSION"
+      ],
+      "source_evidence": [
+        "NE-V8-DUPLICATE",
+        "NE-V9-CLAIMS"
+      ],
+      "historical_claims": [
+        "claim-generic-e",
+        "claim-generic-g",
+        "v8:DUPLICATE"
+      ],
+      "version_scope": {
+        "versions": [
+          "v0.1.0",
+          "v0.2.0",
+          "v0.3.0",
+          "v0.4.0",
+          "v0.5.0",
+          "v0.6.0",
+          "v0.7.1"
+        ]
+      },
+      "dependencies": [
+        "DEP-016",
+        "DEP-017",
+        "DEP-018",
+        "DEP-019"
+      ],
+      "dependents": [
+        "DEP-034",
+        "DEP-082"
+      ],
+      "prerequisite_obligations": [
+        "OBL-CANDIDATE-IDENTITY",
+        "OBL-CANDIDATE-PARENT",
+        "OBL-CANDIDATE-STATE",
+        "OBL-DEDUP-SCOPES"
+      ],
+      "verification": {
+        "test_id": "TEST-CANDIDATE-ADMISSION",
+        "strategy": "Exercise candidate admission transaction in an executable future harness and assert its semantic invariant.",
+        "expected": "The obligation holds or the deviation is explicit and observable.",
+        "result": "UNVERIFIED"
+      },
+      "compatibility": {
+        "scope": "internal and cross-component semantics",
+        "impact_if_changed": "REQUIRES_EQUIVALENCE_ANALYSIS"
+      },
+      "exceptions": [],
+      "status": "FORMALIZED",
+      "rationale": "Silent drops lose provenance; non-atomic admission duplicates work.",
+      "engineering_rationale": "Silent drops lose provenance; non-atomic admission duplicates work.",
+      "derivation_status": "JUSTIFIED_SOURCE_LOCAL_INPUT_BLOCKED",
+      "derivation_acceptance": "BLOCKED_BY_INPUT_CONTRACT_FAILED",
+      "strengthening": "ENGINEERING_STRENGTHENING",
+      "allowed_change": [
+        "Any mechanism preserving the declared semantics"
+      ],
+      "forbidden_change": [
+        "Silent semantic weakening",
+        "Retroactive attribution of a future mechanism"
+      ],
+      "failure_if_violated": "Semantic regression or unversioned compatibility break.",
+      "priority": "HIGH",
+      "priority_basis": {
+        "security_impact": "POSSIBLE_OR_NOT_PRIMARY",
+        "data_loss_impact": "POSSIBLE_OR_NOT_PRIMARY",
+        "concurrency_impact": "PRIMARY",
+        "compatibility_impact": "POSSIBLE_OR_NOT_PRIMARY",
+        "historical_importance_is_not_current_risk": true
+      },
+      "invariant_ref": "INV-CANDIDATE-ADMISSION",
+      "test_ref": "TEST-CANDIDATE-ADMISSION",
+      "dependency_level": "L3",
+      "prerequisite_closure": [
+        "OBL-CANDIDATE-IDENTITY",
+        "OBL-CANDIDATE-PARENT",
+        "OBL-CANDIDATE-STATE",
+        "OBL-DEDUP-SCOPES"
+      ],
+      "closure_status": "OBLIGATION_BLOCKED",
+      "object_type": "OBLIGATION",
+      "schema_version": "1.0",
+      "lifecycle_status": "FORMALIZED",
+      "provenance": {
+        "source_artifact": "historical-source/obligations/OBLIGATIONS.yaml",
+        "source_object": "OBL-CANDIDATE-ADMISSION",
+        "content_hash": "edb56ccdb408bfe3197f05c3a55e7627772d248d8c72c28e5b8c86566d25efa5",
+        "transformation": "REFERENCE_WRAPPER_NO_VERIFICATION_ESCALATION"
+      }
+    },
+    {
+      "obligation_id": "OBL-KNOWLEDGE",
+      "title": "Knowledge accumulation",
+      "statement": "Candidate, observation, and discovery outcomes required by scheduling, provenance, and reporting must remain queryable for the applicable scope.",
+      "class": "PRESERVE",
+      "strength": "REQUIRED",
+      "final_category": "PRESERVATION_OBLIGATION",
+      "epistemic_status": "SUPPORTED",
+      "source_properties": [
+        "PROP-KNOWLEDGE"
+      ],
+      "source_evidence": [
+        "NE-V9-CLAIMS",
+        "NE-V9-INVARIANTS"
+      ],
+      "historical_claims": [
+        "claim-version-v010",
+        "inv-003",
+        "inv-004"
+      ],
+      "version_scope": {
+        "versions": [
+          "v0.1.0",
+          "v0.2.0",
+          "v0.3.0",
+          "v0.4.0",
+          "v0.5.0",
+          "v0.6.0",
+          "v0.7.1"
+        ]
+      },
+      "dependencies": [
+        "DEP-043",
+        "DEP-044",
+        "DEP-045"
+      ],
+      "dependents": [
+        "DEP-041",
+        "DEP-059"
+      ],
+      "prerequisite_obligations": [
+        "OBL-CANDIDATE-IDENTITY",
+        "OBL-DISCOVERY-RECORD",
+        "OBL-OBS-DISTINCT"
+      ],
+      "verification": {
+        "test_id": "TEST-KNOWLEDGE",
+        "strategy": "Exercise knowledge accumulation in an executable future harness and assert its semantic invariant.",
+        "expected": "The obligation holds or the deviation is explicit and observable.",
+        "result": "UNVERIFIED"
+      },
+      "compatibility": {
+        "scope": "internal and cross-component semantics",
+        "impact_if_changed": "REQUIRES_EQUIVALENCE_ANALYSIS"
+      },
+      "exceptions": [],
+      "status": "FORMALIZED",
+      "rationale": "Discarding required state breaks scheduling and reporting.",
+      "engineering_rationale": "Discarding required state breaks scheduling and reporting.",
+      "derivation_status": "JUSTIFIED_SOURCE_LOCAL_INPUT_BLOCKED",
+      "derivation_acceptance": "BLOCKED_BY_INPUT_CONTRACT_FAILED",
+      "strengthening": "HISTORICAL",
+      "allowed_change": [
+        "Any mechanism preserving the declared semantics"
+      ],
+      "forbidden_change": [
+        "Silent semantic weakening",
+        "Retroactive attribution of a future mechanism"
+      ],
+      "failure_if_violated": "Semantic regression or unversioned compatibility break.",
+      "priority": "HIGH",
+      "priority_basis": {
+        "security_impact": "POSSIBLE_OR_NOT_PRIMARY",
+        "data_loss_impact": "POSSIBLE_OR_NOT_PRIMARY",
+        "concurrency_impact": "POSSIBLE_OR_NOT_PRIMARY",
+        "compatibility_impact": "POSSIBLE_OR_NOT_PRIMARY",
+        "historical_importance_is_not_current_risk": true
+      },
+      "invariant_ref": "INV-KNOWLEDGE",
+      "test_ref": "TEST-KNOWLEDGE",
+      "dependency_level": "L6",
+      "prerequisite_closure": [
+        "OBL-ACQ-BEFORE-INTERP",
+        "OBL-CANDIDATE-IDENTITY",
+        "OBL-DISCOVERY-RECORD",
+        "OBL-OBS-DISTINCT",
+        "OBL-OBS-SOURCE",
+        "OBL-RECOGNITION-DISTINCT"
+      ],
+      "closure_status": "OBLIGATION_BLOCKED",
+      "object_type": "OBLIGATION",
+      "schema_version": "1.0",
+      "lifecycle_status": "FORMALIZED",
+      "provenance": {
+        "source_artifact": "historical-source/obligations/OBLIGATIONS.yaml",
+        "source_object": "OBL-KNOWLEDGE",
+        "content_hash": "edb56ccdb408bfe3197f05c3a55e7627772d248d8c72c28e5b8c86566d25efa5",
+        "transformation": "REFERENCE_WRAPPER_NO_VERIFICATION_ESCALATION"
+      }
+    },
+    {
+      "obligation_id": "OBL-BOUNDED-CONCURRENCY",
+      "title": "Bounded worker concurrency",
+      "statement": "Active work concurrency must have an explicit finite bound.",
+      "class": "PRESERVE",
+      "strength": "REQUIRED",
+      "final_category": "PRESERVATION_OBLIGATION",
+      "epistemic_status": "SUPPORTED",
+      "source_properties": [
+        "PROP-BOUNDED-CONCURRENCY"
+      ],
+      "source_evidence": [
+        "NE-V8-BOUNDS",
+        "NE-V9-CLAIMS"
+      ],
+      "historical_claims": [
+        "v8:RESOURCE-BOUNDS",
+        "claim-version-v010"
+      ],
+      "version_scope": {
+        "versions": [
+          "v0.1.0",
+          "v0.2.0",
+          "v0.3.0",
+          "v0.4.0",
+          "v0.5.0",
+          "v0.6.0",
+          "v0.7.1"
+        ]
+      },
+      "dependencies": [],
+      "dependents": [
+        "DEP-081"
+      ],
+      "prerequisite_obligations": [],
+      "verification": {
+        "test_id": "TEST-BOUNDED-CONCURRENCY",
+        "strategy": "Exercise bounded worker concurrency in an executable future harness and assert its semantic invariant.",
+        "expected": "The obligation holds or the deviation is explicit and observable.",
+        "result": "UNVERIFIED"
+      },
+      "compatibility": {
+        "scope": "internal and cross-component semantics",
+        "impact_if_changed": "REQUIRES_EQUIVALENCE_ANALYSIS"
+      },
+      "exceptions": [],
+      "status": "FORMALIZED",
+      "rationale": "Unbounded spawning is a resource and scheduling regression.",
+      "engineering_rationale": "Unbounded spawning is a resource and scheduling regression.",
+      "derivation_status": "JUSTIFIED_SOURCE_LOCAL_INPUT_BLOCKED",
+      "derivation_acceptance": "BLOCKED_BY_INPUT_CONTRACT_FAILED",
+      "strengthening": "HISTORICAL",
+      "allowed_change": [
+        "Any mechanism preserving the declared semantics"
+      ],
+      "forbidden_change": [
+        "Silent semantic weakening",
+        "Retroactive attribution of a future mechanism"
+      ],
+      "failure_if_violated": "Semantic regression or unversioned compatibility break.",
+      "priority": "HIGH",
+      "priority_basis": {
+        "security_impact": "POSSIBLE_OR_NOT_PRIMARY",
+        "data_loss_impact": "POSSIBLE_OR_NOT_PRIMARY",
+        "concurrency_impact": "PRIMARY",
+        "compatibility_impact": "POSSIBLE_OR_NOT_PRIMARY",
+        "historical_importance_is_not_current_risk": true
+      },
+      "invariant_ref": "INV-BOUNDED-CONCURRENCY",
+      "test_ref": "TEST-BOUNDED-CONCURRENCY",
+      "dependency_level": "L1",
+      "prerequisite_closure": [],
+      "closure_status": "OBLIGATION_BLOCKED",
+      "object_type": "OBLIGATION",
+      "schema_version": "1.0",
+      "lifecycle_status": "FORMALIZED",
+      "provenance": {
+        "source_artifact": "historical-source/obligations/OBLIGATIONS.yaml",
+        "source_object": "OBL-BOUNDED-CONCURRENCY",
+        "content_hash": "edb56ccdb408bfe3197f05c3a55e7627772d248d8c72c28e5b8c86566d25efa5",
+        "transformation": "REFERENCE_WRAPPER_NO_VERIFICATION_ESCALATION"
+      }
+    },
+    {
+      "obligation_id": "OBL-SCHEDULER-TERMINATION",
+      "title": "In-flight-aware termination",
+      "statement": "Completion may be reported only when no admissible queued or in-flight work can add candidates, or explicit stop policy accounts for it.",
+      "class": "FORMALIZE",
+      "strength": "REQUIRED",
+      "final_category": "FUTURE_STRENGTHENING",
+      "epistemic_status": "SUPPORTED",
+      "source_properties": [
+        "PROP-SCHEDULER-TERMINATION"
+      ],
+      "source_evidence": [
+        "NE-V8-CLAIM",
+        "NE-V9-INVARIANTS"
+      ],
+      "historical_claims": [
+        "inv-005",
+        "v8:CLAIM"
+      ],
+      "version_scope": {
+        "versions": [
+          "v0.1.0",
+          "v0.2.0",
+          "v0.3.0",
+          "v0.4.0",
+          "v0.5.0",
+          "v0.6.0",
+          "v0.7.1"
+        ]
+      },
+      "dependencies": [
+        "DEP-081",
+        "DEP-082",
+        "DEP-083",
+        "DEP-084"
+      ],
+      "dependents": [
+        "DEP-014",
+        "DEP-037"
+      ],
+      "prerequisite_obligations": [
+        "OBL-BOUNDED-CONCURRENCY",
+        "OBL-CANDIDATE-ADMISSION",
+        "OBL-LIFECYCLE-OBS",
+        "OBL-TERMINAL-OWNERSHIP"
+      ],
+      "verification": {
+        "test_id": "TEST-SCHEDULER-TERMINATION",
+        "strategy": "Hold one worker in flight with an empty queue, let it emit a child, and assert completion waits for child admission or explicit stop.",
+        "expected": "The obligation holds or the deviation is explicit and observable.",
+        "result": "UNVERIFIED"
+      },
+      "compatibility": {
+        "scope": "internal and cross-component semantics",
+        "impact_if_changed": "REQUIRES_EQUIVALENCE_ANALYSIS"
+      },
+      "exceptions": [],
+      "status": "FORMALIZED",
+      "rationale": "Queue emptiness alone can terminate prematurely.",
+      "engineering_rationale": "Queue emptiness alone can terminate prematurely.",
+      "derivation_status": "JUSTIFIED_SOURCE_LOCAL_INPUT_BLOCKED",
+      "derivation_acceptance": "BLOCKED_BY_INPUT_CONTRACT_FAILED",
+      "strengthening": "ENGINEERING_STRENGTHENING",
+      "allowed_change": [
+        "Any mechanism preserving the declared semantics"
+      ],
+      "forbidden_change": [
+        "Silent semantic weakening",
+        "Retroactive attribution of a future mechanism"
+      ],
+      "failure_if_violated": "Semantic regression or unversioned compatibility break.",
+      "priority": "HIGH",
+      "priority_basis": {
+        "security_impact": "POSSIBLE_OR_NOT_PRIMARY",
+        "data_loss_impact": "POSSIBLE_OR_NOT_PRIMARY",
+        "concurrency_impact": "PRIMARY",
+        "compatibility_impact": "POSSIBLE_OR_NOT_PRIMARY",
+        "historical_importance_is_not_current_risk": true
+      },
+      "invariant_ref": "INV-SCHEDULER-TERMINATION",
+      "test_ref": "TEST-SCHEDULER-TERMINATION",
+      "dependency_level": "L6",
+      "prerequisite_closure": [
+        "OBL-ACQ-BEFORE-INTERP",
+        "OBL-ACQ-OUTCOME",
+        "OBL-BOUNDED-CONCURRENCY",
+        "OBL-CANDIDATE-ADMISSION",
+        "OBL-CANDIDATE-IDENTITY",
+        "OBL-CANDIDATE-PARENT",
+        "OBL-CANDIDATE-STATE",
+        "OBL-CLAIM-EXCLUSIVITY",
+        "OBL-DEDUP-SCOPES",
+        "OBL-DISCOVERY-RECORD",
+        "OBL-LIFECYCLE-OBS",
+        "OBL-OBS-DISTINCT",
+        "OBL-OBS-OUTCOMES",
+        "OBL-OBS-SOURCE",
+        "OBL-RECOGNITION-DISTINCT",
+        "OBL-RECOGNITION-OUTCOMES",
+        "OBL-TERMINAL-OWNERSHIP"
+      ],
+      "closure_status": "OBLIGATION_BLOCKED",
+      "object_type": "OBLIGATION",
+      "schema_version": "1.0",
+      "lifecycle_status": "FORMALIZED",
+      "provenance": {
+        "source_artifact": "historical-source/obligations/OBLIGATIONS.yaml",
+        "source_object": "OBL-SCHEDULER-TERMINATION",
+        "content_hash": "edb56ccdb408bfe3197f05c3a55e7627772d248d8c72c28e5b8c86566d25efa5",
+        "transformation": "REFERENCE_WRAPPER_NO_VERIFICATION_ESCALATION"
+      }
+    },
+    {
+      "obligation_id": "OBL-WORKER-FAILURE",
+      "title": "Worker failure state consistency",
+      "statement": "Worker failure must leave owned work in one explicit recoverable or terminal state without corrupting unrelated frontier state.",
+      "class": "CONTAIN",
+      "strength": "REQUIRED",
+      "final_category": "FUTURE_STRENGTHENING",
+      "epistemic_status": "SUPPORTED",
+      "source_properties": [
+        "PROP-WORKER-FAILURE"
+      ],
+      "source_evidence": [
+        "NE-V8-CLAIM",
+        "NE-V8-FAILURE-MATRIX"
+      ],
+      "historical_claims": [
+        "v8:CLAIM",
+        "v8:FAILURE"
+      ],
+      "version_scope": {
+        "versions": [
+          "v0.1.0",
+          "v0.2.0",
+          "v0.3.0",
+          "v0.4.0",
+          "v0.5.0",
+          "v0.6.0",
+          "v0.7.1"
+        ]
+      },
+      "dependencies": [
+        "DEP-092",
+        "DEP-093",
+        "DEP-094"
+      ],
+      "dependents": [],
+      "prerequisite_obligations": [
+        "OBL-CLAIM-EXCLUSIVITY",
+        "OBL-SILENT-FAILURE",
+        "OBL-TERMINAL-OWNERSHIP"
+      ],
+      "verification": {
+        "test_id": "TEST-WORKER-FAILURE",
+        "strategy": "Exercise worker failure state consistency in an executable future harness and assert its semantic invariant.",
+        "expected": "The obligation holds or the deviation is explicit and observable.",
+        "result": "UNVERIFIED"
+      },
+      "compatibility": {
+        "scope": "internal and cross-component semantics",
+        "impact_if_changed": "REQUIRES_EQUIVALENCE_ANALYSIS"
+      },
+      "exceptions": [],
+      "status": "FORMALIZED",
+      "rationale": "Ownership and scheduler state must remain coherent after worker failure.",
+      "engineering_rationale": "Ownership and scheduler state must remain coherent after worker failure.",
+      "derivation_status": "JUSTIFIED_SOURCE_LOCAL_INPUT_BLOCKED",
+      "derivation_acceptance": "BLOCKED_BY_INPUT_CONTRACT_FAILED",
+      "strengthening": "ENGINEERING_STRENGTHENING",
+      "allowed_change": [
+        "Any mechanism preserving the declared semantics"
+      ],
+      "forbidden_change": [
+        "Silent semantic weakening",
+        "Retroactive attribution of a future mechanism"
+      ],
+      "failure_if_violated": "Semantic regression or unversioned compatibility break.",
+      "priority": "HIGH",
+      "priority_basis": {
+        "security_impact": "POSSIBLE_OR_NOT_PRIMARY",
+        "data_loss_impact": "POSSIBLE_OR_NOT_PRIMARY",
+        "concurrency_impact": "PRIMARY",
+        "compatibility_impact": "POSSIBLE_OR_NOT_PRIMARY",
+        "historical_importance_is_not_current_risk": true
+      },
+      "invariant_ref": "INV-WORKER-FAILURE",
+      "test_ref": "TEST-WORKER-FAILURE",
+      "dependency_level": "L6",
+      "prerequisite_closure": [
+        "OBL-ACQ-BEFORE-INTERP",
+        "OBL-ACQ-OUTCOME",
+        "OBL-CANDIDATE-IDENTITY",
+        "OBL-CANDIDATE-STATE",
+        "OBL-CLAIM-EXCLUSIVITY",
+        "OBL-OBS-DISTINCT",
+        "OBL-OBS-OUTCOMES",
+        "OBL-RECOGNITION-DISTINCT",
+        "OBL-RECOGNITION-OUTCOMES",
+        "OBL-SILENT-FAILURE",
+        "OBL-TERMINAL-OWNERSHIP"
+      ],
+      "closure_status": "OBLIGATION_BLOCKED",
+      "object_type": "OBLIGATION",
+      "schema_version": "1.0",
+      "lifecycle_status": "FORMALIZED",
+      "provenance": {
+        "source_artifact": "historical-source/obligations/OBLIGATIONS.yaml",
+        "source_object": "OBL-WORKER-FAILURE",
+        "content_hash": "edb56ccdb408bfe3197f05c3a55e7627772d248d8c72c28e5b8c86566d25efa5",
+        "transformation": "REFERENCE_WRAPPER_NO_VERIFICATION_ESCALATION"
+      }
+    },
+    {
+      "obligation_id": "OBL-RETRY",
+      "title": "Bounded explicit retry",
+      "statement": "Only declared retryable failures may retry; attempts, error provenance, finite bounds, backoff, and terminal exhaustion must be explicit.",
+      "class": "FORMALIZE",
+      "strength": "REQUIRED",
+      "final_category": "FUTURE_STRENGTHENING",
+      "epistemic_status": "SUPPORTED",
+      "source_properties": [
+        "PROP-RETRY"
+      ],
+      "source_evidence": [
+        "NE-V8-BOUNDS",
+        "NE-V8-RETRY"
+      ],
+      "historical_claims": [
+        "v8:RETRY",
+        "v8:RESOURCE-BOUNDS"
+      ],
+      "version_scope": {
+        "versions": [
+          "v0.3.0",
+          "v0.4.0",
+          "v0.5.0",
+          "v0.6.0",
+          "v0.7.1"
+        ]
+      },
+      "dependencies": [
+        "DEP-078",
+        "DEP-079",
+        "DEP-080"
+      ],
+      "dependents": [
+        "DEP-039"
+      ],
+      "prerequisite_obligations": [
+        "OBL-ACQ-TIMEOUT",
+        "OBL-CANDIDATE-ATTEMPTS",
+        "OBL-TERMINAL-OWNERSHIP"
+      ],
+      "verification": {
+        "test_id": "TEST-RETRY",
+        "strategy": "Exercise bounded explicit retry in an executable future harness and assert its semantic invariant.",
+        "expected": "The obligation holds or the deviation is explicit and observable.",
+        "result": "UNVERIFIED"
+      },
+      "compatibility": {
+        "scope": "internal and cross-component semantics",
+        "impact_if_changed": "REQUIRES_EQUIVALENCE_ANALYSIS"
+      },
+      "exceptions": [],
+      "status": "FORMALIZED",
+      "rationale": "Unclassified retry can loop permanent failures or hide exhaustion.",
+      "engineering_rationale": "Unclassified retry can loop permanent failures or hide exhaustion.",
+      "derivation_status": "JUSTIFIED_SOURCE_LOCAL_INPUT_BLOCKED",
+      "derivation_acceptance": "BLOCKED_BY_INPUT_CONTRACT_FAILED",
+      "strengthening": "ENGINEERING_STRENGTHENING",
+      "allowed_change": [
+        "Any mechanism preserving the declared semantics"
+      ],
+      "forbidden_change": [
+        "Silent semantic weakening",
+        "Retroactive attribution of a future mechanism"
+      ],
+      "failure_if_violated": "Semantic regression or unversioned compatibility break.",
+      "priority": "HIGH",
+      "priority_basis": {
+        "security_impact": "POSSIBLE_OR_NOT_PRIMARY",
+        "data_loss_impact": "PRIMARY",
+        "concurrency_impact": "POSSIBLE_OR_NOT_PRIMARY",
+        "compatibility_impact": "POSSIBLE_OR_NOT_PRIMARY",
+        "historical_importance_is_not_current_risk": true
+      },
+      "invariant_ref": "INV-RETRY",
+      "test_ref": "TEST-RETRY",
+      "dependency_level": "L5",
+      "prerequisite_closure": [
+        "OBL-ACQ-BEFORE-INTERP",
+        "OBL-ACQ-TIMEOUT",
+        "OBL-CANDIDATE-ATTEMPTS",
+        "OBL-CANDIDATE-IDENTITY",
+        "OBL-CANDIDATE-STATE",
+        "OBL-CLAIM-EXCLUSIVITY",
+        "OBL-TERMINAL-OWNERSHIP"
+      ],
+      "closure_status": "OBLIGATION_BLOCKED",
+      "object_type": "OBLIGATION",
+      "schema_version": "1.0",
+      "lifecycle_status": "FORMALIZED",
+      "provenance": {
+        "source_artifact": "historical-source/obligations/OBLIGATIONS.yaml",
+        "source_object": "OBL-RETRY",
+        "content_hash": "edb56ccdb408bfe3197f05c3a55e7627772d248d8c72c28e5b8c86566d25efa5",
+        "transformation": "REFERENCE_WRAPPER_NO_VERIFICATION_ESCALATION"
+      }
+    },
+    {
+      "obligation_id": "OBL-PROVENANCE",
+      "title": "End-to-end provenance associations",
+      "statement": "Populated Discovery→Observation→Candidate→Parent→Origin associations must be retained; missing edges must stay explicit.",
+      "class": "PRESERVE",
+      "strength": "REQUIRED",
+      "final_category": "PRESERVATION_OBLIGATION",
+      "epistemic_status": "SUPPORTED",
+      "source_properties": [
+        "PROP-PROVENANCE"
+      ],
+      "source_evidence": [
+        "NE-V8-PROVENANCE",
+        "NE-V9-INVARIANTS"
+      ],
+      "historical_claims": [
+        "v8:PROVENANCE",
+        "inv-003",
+        "inv-004"
+      ],
+      "version_scope": {
+        "versions": [
+          "v0.1.0",
+          "v0.2.0",
+          "v0.3.0",
+          "v0.4.0",
+          "v0.5.0",
+          "v0.6.0",
+          "v0.7.1"
+        ]
+      },
+      "dependencies": [
+        "DEP-063",
+        "DEP-064",
+        "DEP-065",
+        "DEP-066"
+      ],
+      "dependents": [
+        "DEP-010",
+        "DEP-042",
+        "DEP-060",
+        "DEP-067",
+        "DEP-099"
+      ],
+      "prerequisite_obligations": [
+        "OBL-CANDIDATE-ORIGIN",
+        "OBL-CANDIDATE-PARENT",
+        "OBL-DISCOVERY-RECORD",
+        "OBL-OBS-SOURCE"
+      ],
+      "verification": {
+        "test_id": "TEST-PROVENANCE",
+        "strategy": "Exercise end-to-end provenance associations in an executable future harness and assert its semantic invariant.",
+        "expected": "The obligation holds or the deviation is explicit and observable.",
+        "result": "UNVERIFIED"
+      },
+      "compatibility": {
+        "scope": "internal and cross-component semantics",
+        "impact_if_changed": "REQUIRES_EQUIVALENCE_ANALYSIS"
+      },
+      "exceptions": [],
+      "status": "FORMALIZED",
+      "rationale": "Derivation must not be discarded or fabricated.",
+      "engineering_rationale": "Derivation must not be discarded or fabricated.",
+      "derivation_status": "JUSTIFIED_SOURCE_LOCAL_INPUT_BLOCKED",
+      "derivation_acceptance": "BLOCKED_BY_INPUT_CONTRACT_FAILED",
+      "strengthening": "HISTORICAL",
+      "allowed_change": [
+        "Any mechanism preserving the declared semantics"
+      ],
+      "forbidden_change": [
+        "Silent semantic weakening",
+        "Retroactive attribution of a future mechanism"
+      ],
+      "failure_if_violated": "Semantic regression or unversioned compatibility break.",
+      "priority": "HIGH",
+      "priority_basis": {
+        "security_impact": "POSSIBLE_OR_NOT_PRIMARY",
+        "data_loss_impact": "PRIMARY",
+        "concurrency_impact": "POSSIBLE_OR_NOT_PRIMARY",
+        "compatibility_impact": "POSSIBLE_OR_NOT_PRIMARY",
+        "historical_importance_is_not_current_risk": true
+      },
+      "invariant_ref": "INV-PROVENANCE",
+      "test_ref": "TEST-PROVENANCE",
+      "dependency_level": "L6",
+      "prerequisite_closure": [
+        "OBL-ACQ-BEFORE-INTERP",
+        "OBL-CANDIDATE-IDENTITY",
+        "OBL-CANDIDATE-ORIGIN",
+        "OBL-CANDIDATE-PARENT",
+        "OBL-DISCOVERY-RECORD",
+        "OBL-OBS-DISTINCT",
+        "OBL-OBS-SOURCE",
+        "OBL-RECOGNITION-DISTINCT"
+      ],
+      "closure_status": "OBLIGATION_BLOCKED",
+      "object_type": "OBLIGATION",
+      "schema_version": "1.0",
+      "lifecycle_status": "FORMALIZED",
+      "provenance": {
+        "source_artifact": "historical-source/obligations/OBLIGATIONS.yaml",
+        "source_object": "OBL-PROVENANCE",
+        "content_hash": "edb56ccdb408bfe3197f05c3a55e7627772d248d8c72c28e5b8c86566d25efa5",
+        "transformation": "REFERENCE_WRAPPER_NO_VERIFICATION_ESCALATION"
+      }
+    },
+    {
+      "obligation_id": "OBL-PROVENANCE-INTEGRITY",
+      "title": "Provenance integrity verification",
+      "statement": "Integrity claims require verified writers, mutation authorization, persistence, forgery resistance, and cryptographic properties independently.",
+      "class": "VERIFY",
+      "strength": "CONDITIONAL",
+      "final_category": "FUTURE_STRENGTHENING",
+      "epistemic_status": "SUPPORTED",
+      "source_properties": [
+        "PROP-PROVENANCE-INTEGRITY"
+      ],
+      "source_evidence": [
+        "NE-V8-PROVENANCE",
+        "NE-V9-UNKNOWNS"
+      ],
+      "historical_claims": [
+        "v8:PROVENANCE",
+        "unc-013"
+      ],
+      "version_scope": {
+        "versions": [
+          "v0.1.0",
+          "v0.2.0",
+          "v0.3.0",
+          "v0.4.0",
+          "v0.5.0",
+          "v0.6.0",
+          "v0.7.1"
+        ]
+      },
+      "dependencies": [
+        "DEP-067",
+        "DEP-099"
+      ],
+      "dependents": [
+        "DEP-011"
+      ],
+      "prerequisite_obligations": [
+        "OBL-PROVENANCE"
+      ],
+      "verification": {
+        "test_id": "TEST-PROVENANCE-INTEGRITY",
+        "strategy": "Exercise provenance integrity verification in an executable future harness and assert its semantic invariant.",
+        "expected": "The obligation holds or the deviation is explicit and observable.",
+        "result": "UNVERIFIED"
+      },
+      "compatibility": {
+        "scope": "internal and cross-component semantics",
+        "impact_if_changed": "REQUIRES_EQUIVALENCE_ANALYSIS"
+      },
+      "exceptions": [],
+      "status": "FORMALIZED",
+      "rationale": "Visibility is not integrity.",
+      "engineering_rationale": "Visibility is not integrity.",
+      "derivation_status": "JUSTIFIED_SOURCE_LOCAL_INPUT_BLOCKED",
+      "derivation_acceptance": "BLOCKED_BY_INPUT_CONTRACT_FAILED",
+      "strengthening": "ENGINEERING_STRENGTHENING",
+      "allowed_change": [
+        "Any mechanism preserving the declared semantics"
+      ],
+      "forbidden_change": [
+        "Silent semantic weakening",
+        "Retroactive attribution of a future mechanism"
+      ],
+      "failure_if_violated": "Semantic regression or unversioned compatibility break.",
+      "priority": "MEDIUM",
+      "priority_basis": {
+        "security_impact": "POSSIBLE_OR_NOT_PRIMARY",
+        "data_loss_impact": "PRIMARY",
+        "concurrency_impact": "POSSIBLE_OR_NOT_PRIMARY",
+        "compatibility_impact": "POSSIBLE_OR_NOT_PRIMARY",
+        "historical_importance_is_not_current_risk": true
+      },
+      "invariant_ref": "INV-PROVENANCE-INTEGRITY",
+      "test_ref": "TEST-PROVENANCE-INTEGRITY",
+      "dependency_level": "L6",
+      "prerequisite_closure": [
+        "OBL-ACQ-BEFORE-INTERP",
+        "OBL-CANDIDATE-IDENTITY",
+        "OBL-CANDIDATE-ORIGIN",
+        "OBL-CANDIDATE-PARENT",
+        "OBL-DISCOVERY-RECORD",
+        "OBL-OBS-DISTINCT",
+        "OBL-OBS-SOURCE",
+        "OBL-PROVENANCE",
+        "OBL-RECOGNITION-DISTINCT"
+      ],
+      "closure_status": "OBLIGATION_UNVERIFIED",
+      "object_type": "OBLIGATION",
+      "schema_version": "1.0",
+      "lifecycle_status": "FORMALIZED",
+      "provenance": {
+        "source_artifact": "historical-source/obligations/OBLIGATIONS.yaml",
+        "source_object": "OBL-PROVENANCE-INTEGRITY",
+        "content_hash": "edb56ccdb408bfe3197f05c3a55e7627772d248d8c72c28e5b8c86566d25efa5",
+        "transformation": "REFERENCE_WRAPPER_NO_VERIFICATION_ESCALATION"
+      }
+    },
+    {
+      "obligation_id": "OBL-REMOTE-DATA",
+      "title": "Remote content remains untrusted data",
+      "statement": "Acquired content must remain untrusted input data, not trusted executable code, absent a separately authorized contained execution contract.",
+      "class": "CONTAIN",
+      "strength": "REQUIRED",
+      "final_category": "ENGINEERING_REQUIREMENT",
+      "epistemic_status": "SUPPORTED",
+      "source_properties": [
+        "PROP-REMOTE-DATA"
+      ],
+      "source_evidence": [
+        "NE-V8-CODE-DATA",
+        "NE-V8-PARSERS"
+      ],
+      "historical_claims": [
+        "v8:CODE-DATA",
+        "v8:PARSER"
+      ],
+      "version_scope": {
+        "versions": [
+          "v0.1.0",
+          "v0.2.0",
+          "v0.3.0",
+          "v0.4.0",
+          "v0.5.0",
+          "v0.6.0",
+          "v0.7.1"
+        ]
+      },
+      "dependencies": [
+        "DEP-076",
+        "DEP-077"
+      ],
+      "dependents": [
+        "DEP-057"
+      ],
+      "prerequisite_obligations": [
+        "OBL-ACQ-SCOPE",
+        "OBL-RECOGNITION-DISTINCT"
+      ],
+      "verification": {
+        "test_id": "TEST-REMOTE-DATA",
+        "strategy": "Exercise remote content remains untrusted data in an executable future harness and assert its semantic invariant.",
+        "expected": "The obligation holds or the deviation is explicit and observable.",
+        "result": "UNVERIFIED"
+      },
+      "compatibility": {
+        "scope": "internal and cross-component semantics",
+        "impact_if_changed": "REQUIRES_EQUIVALENCE_ANALYSIS"
+      },
+      "exceptions": [],
+      "status": "FORMALIZED",
+      "rationale": "Preserving non-execution avoids a security-semantic regression.",
+      "engineering_rationale": "Preserving non-execution avoids a security-semantic regression.",
+      "derivation_status": "JUSTIFIED_SOURCE_LOCAL_INPUT_BLOCKED",
+      "derivation_acceptance": "BLOCKED_BY_INPUT_CONTRACT_FAILED",
+      "strengthening": "HISTORICAL",
+      "allowed_change": [
+        "Any mechanism preserving the declared semantics"
+      ],
+      "forbidden_change": [
+        "Silent semantic weakening",
+        "Retroactive attribution of a future mechanism"
+      ],
+      "failure_if_violated": "Semantic regression or unversioned compatibility break.",
+      "priority": "HIGH",
+      "priority_basis": {
+        "security_impact": "PRIMARY",
+        "data_loss_impact": "POSSIBLE_OR_NOT_PRIMARY",
+        "concurrency_impact": "POSSIBLE_OR_NOT_PRIMARY",
+        "compatibility_impact": "POSSIBLE_OR_NOT_PRIMARY",
+        "historical_importance_is_not_current_risk": true
+      },
+      "invariant_ref": "INV-REMOTE-DATA",
+      "test_ref": "TEST-REMOTE-DATA",
+      "dependency_level": "L5",
+      "prerequisite_closure": [
+        "OBL-ACQ-BEFORE-INTERP",
+        "OBL-ACQ-SCOPE",
+        "OBL-AUTHORITY",
+        "OBL-CANDIDATE-IDENTITY",
+        "OBL-OBS-DISTINCT",
+        "OBL-RECOGNITION-DISTINCT"
+      ],
+      "closure_status": "OBLIGATION_BLOCKED",
+      "object_type": "OBLIGATION",
+      "schema_version": "1.0",
+      "lifecycle_status": "FORMALIZED",
+      "provenance": {
+        "source_artifact": "historical-source/obligations/OBLIGATIONS.yaml",
+        "source_object": "OBL-REMOTE-DATA",
+        "content_hash": "edb56ccdb408bfe3197f05c3a55e7627772d248d8c72c28e5b8c86566d25efa5",
+        "transformation": "REFERENCE_WRAPPER_NO_VERIFICATION_ESCALATION"
+      }
+    },
+    {
+      "obligation_id": "OBL-AUTHORITY",
+      "title": "Explicit authority scope",
+      "statement": "Required, granted, used, and exposed authority must be declared separately and excess authority explicitly approved or rejected.",
+      "class": "FORMALIZE",
+      "strength": "REQUIRED",
+      "final_category": "FUTURE_STRENGTHENING",
+      "epistemic_status": "SUPPORTED",
+      "source_properties": [
+        "PROP-AUTHORITY"
+      ],
+      "source_evidence": [
+        "NE-V8-AUTHORITY"
+      ],
+      "historical_claims": [
+        "v8:AUTHORITY"
+      ],
+      "version_scope": {
+        "versions": [
+          "v0.1.0",
+          "v0.2.0",
+          "v0.3.0",
+          "v0.4.0",
+          "v0.5.0",
+          "v0.6.0",
+          "v0.7.1"
+        ]
+      },
+      "dependencies": [],
+      "dependents": [
+        "DEP-007"
+      ],
+      "prerequisite_obligations": [],
+      "verification": {
+        "test_id": "TEST-AUTHORITY",
+        "strategy": "Exercise explicit authority scope in an executable future harness and assert its semantic invariant.",
+        "expected": "The obligation holds or the deviation is explicit and observable.",
+        "result": "UNVERIFIED"
+      },
+      "compatibility": {
+        "scope": "internal and cross-component semantics",
+        "impact_if_changed": "REQUIRES_EQUIVALENCE_ANALYSIS"
+      },
+      "exceptions": [],
+      "status": "FORMALIZED",
+      "rationale": "Ambient permission is not required capability or trust.",
+      "engineering_rationale": "Ambient permission is not required capability or trust.",
+      "derivation_status": "JUSTIFIED_SOURCE_LOCAL_INPUT_BLOCKED",
+      "derivation_acceptance": "BLOCKED_BY_INPUT_CONTRACT_FAILED",
+      "strengthening": "ENGINEERING_STRENGTHENING",
+      "allowed_change": [
+        "Any mechanism preserving the declared semantics"
+      ],
+      "forbidden_change": [
+        "Silent semantic weakening",
+        "Retroactive attribution of a future mechanism"
+      ],
+      "failure_if_violated": "Semantic regression or unversioned compatibility break.",
+      "priority": "HIGH",
+      "priority_basis": {
+        "security_impact": "PRIMARY",
+        "data_loss_impact": "POSSIBLE_OR_NOT_PRIMARY",
+        "concurrency_impact": "POSSIBLE_OR_NOT_PRIMARY",
+        "compatibility_impact": "POSSIBLE_OR_NOT_PRIMARY",
+        "historical_importance_is_not_current_risk": true
+      },
+      "invariant_ref": "INV-AUTHORITY",
+      "test_ref": "TEST-AUTHORITY",
+      "dependency_level": "L1",
+      "prerequisite_closure": [],
+      "closure_status": "OBLIGATION_BLOCKED",
+      "object_type": "OBLIGATION",
+      "schema_version": "1.0",
+      "lifecycle_status": "FORMALIZED",
+      "provenance": {
+        "source_artifact": "historical-source/obligations/OBLIGATIONS.yaml",
+        "source_object": "OBL-AUTHORITY",
+        "content_hash": "edb56ccdb408bfe3197f05c3a55e7627772d248d8c72c28e5b8c86566d25efa5",
+        "transformation": "REFERENCE_WRAPPER_NO_VERIFICATION_ESCALATION"
+      }
+    },
+    {
+      "obligation_id": "OBL-PARSER",
+      "title": "Malformed-input containment",
+      "statement": "Malformed remote content must remain inside its parser/provider failure boundary and never become trusted execution or unmarked success.",
+      "class": "CONTAIN",
+      "strength": "REQUIRED",
+      "final_category": "ENGINEERING_REQUIREMENT",
+      "epistemic_status": "SUPPORTED",
+      "source_properties": [
+        "PROP-PARSER"
+      ],
+      "source_evidence": [
+        "NE-V8-FAILURE-MATRIX",
+        "NE-V8-PARSERS"
+      ],
+      "historical_claims": [
+        "v8:PARSER",
+        "v8:FAILURE"
+      ],
+      "version_scope": {
+        "versions": [
+          "v0.1.0",
+          "v0.2.0",
+          "v0.3.0",
+          "v0.4.0",
+          "v0.5.0",
+          "v0.6.0",
+          "v0.7.1"
+        ]
+      },
+      "dependencies": [
+        "DEP-056",
+        "DEP-057"
+      ],
+      "dependents": [],
+      "prerequisite_obligations": [
+        "OBL-RECOGNITION-DISTINCT",
+        "OBL-REMOTE-DATA"
+      ],
+      "verification": {
+        "test_id": "TEST-PARSER",
+        "strategy": "Exercise malformed-input containment in an executable future harness and assert its semantic invariant.",
+        "expected": "The obligation holds or the deviation is explicit and observable.",
+        "result": "UNVERIFIED"
+      },
+      "compatibility": {
+        "scope": "internal and cross-component semantics",
+        "impact_if_changed": "REQUIRES_EQUIVALENCE_ANALYSIS"
+      },
+      "exceptions": [],
+      "status": "FORMALIZED",
+      "rationale": "Malformed one-response input must not corrupt unrelated work.",
+      "engineering_rationale": "Malformed one-response input must not corrupt unrelated work.",
+      "derivation_status": "JUSTIFIED_SOURCE_LOCAL_INPUT_BLOCKED",
+      "derivation_acceptance": "BLOCKED_BY_INPUT_CONTRACT_FAILED",
+      "strengthening": "HISTORICAL",
+      "allowed_change": [
+        "Any mechanism preserving the declared semantics"
+      ],
+      "forbidden_change": [
+        "Silent semantic weakening",
+        "Retroactive attribution of a future mechanism"
+      ],
+      "failure_if_violated": "Semantic regression or unversioned compatibility break.",
+      "priority": "HIGH",
+      "priority_basis": {
+        "security_impact": "PRIMARY",
+        "data_loss_impact": "POSSIBLE_OR_NOT_PRIMARY",
+        "concurrency_impact": "POSSIBLE_OR_NOT_PRIMARY",
+        "compatibility_impact": "POSSIBLE_OR_NOT_PRIMARY",
+        "historical_importance_is_not_current_risk": true
+      },
+      "invariant_ref": "INV-PARSER",
+      "test_ref": "TEST-PARSER",
+      "dependency_level": "L6",
+      "prerequisite_closure": [
+        "OBL-ACQ-BEFORE-INTERP",
+        "OBL-ACQ-SCOPE",
+        "OBL-AUTHORITY",
+        "OBL-CANDIDATE-IDENTITY",
+        "OBL-OBS-DISTINCT",
+        "OBL-RECOGNITION-DISTINCT",
+        "OBL-REMOTE-DATA"
+      ],
+      "closure_status": "OBLIGATION_BLOCKED",
+      "object_type": "OBLIGATION",
+      "schema_version": "1.0",
+      "lifecycle_status": "FORMALIZED",
+      "provenance": {
+        "source_artifact": "historical-source/obligations/OBLIGATIONS.yaml",
+        "source_object": "OBL-PARSER",
+        "content_hash": "edb56ccdb408bfe3197f05c3a55e7627772d248d8c72c28e5b8c86566d25efa5",
+        "transformation": "REFERENCE_WRAPPER_NO_VERIFICATION_ESCALATION"
+      }
+    },
+    {
+      "obligation_id": "OBL-RESOURCE",
+      "title": "Explicit resource bounds",
+      "statement": "Candidate, request, concurrency, timeout, retry, response/body, parser, and retained-state growth must remain finitely bounded or covered by a stronger bound.",
+      "class": "PRESERVE",
+      "strength": "REQUIRED",
+      "final_category": "PRESERVATION_OBLIGATION",
+      "epistemic_status": "SUPPORTED",
+      "source_properties": [
+        "PROP-RESOURCE"
+      ],
+      "source_evidence": [
+        "NE-V8-BOUNDS",
+        "NE-V9-CLAIMS"
+      ],
+      "historical_claims": [
+        "v8:RESOURCE-BOUNDS",
+        "claim-exhaustive-closure"
+      ],
+      "version_scope": {
+        "versions": [
+          "v0.1.0",
+          "v0.2.0",
+          "v0.3.0",
+          "v0.4.0",
+          "v0.5.0",
+          "v0.6.0",
+          "v0.7.1"
+        ]
+      },
+      "dependencies": [
+        "DEP-097"
+      ],
+      "dependents": [
+        "DEP-036",
+        "DEP-089"
+      ],
+      "prerequisite_obligations": [],
+      "verification": {
+        "test_id": "TEST-RESOURCE",
+        "strategy": "Exercise explicit resource bounds in an executable future harness and assert its semantic invariant.",
+        "expected": "The obligation holds or the deviation is explicit and observable.",
+        "result": "UNVERIFIED"
+      },
+      "compatibility": {
+        "scope": "internal and cross-component semantics",
+        "impact_if_changed": "REQUIRES_EQUIVALENCE_ANALYSIS"
+      },
+      "exceptions": [],
+      "status": "FORMALIZED",
+      "rationale": "Removing bounds creates resource regressions; local bounds are not global guarantees.",
+      "engineering_rationale": "Removing bounds creates resource regressions; local bounds are not global guarantees.",
+      "derivation_status": "JUSTIFIED_SOURCE_LOCAL_INPUT_BLOCKED",
+      "derivation_acceptance": "BLOCKED_BY_INPUT_CONTRACT_FAILED",
+      "strengthening": "HISTORICAL",
+      "allowed_change": [
+        "Any mechanism preserving the declared semantics"
+      ],
+      "forbidden_change": [
+        "Silent semantic weakening",
+        "Retroactive attribution of a future mechanism"
+      ],
+      "failure_if_violated": "Semantic regression or unversioned compatibility break.",
+      "priority": "HIGH",
+      "priority_basis": {
+        "security_impact": "POSSIBLE_OR_NOT_PRIMARY",
+        "data_loss_impact": "POSSIBLE_OR_NOT_PRIMARY",
+        "concurrency_impact": "POSSIBLE_OR_NOT_PRIMARY",
+        "compatibility_impact": "POSSIBLE_OR_NOT_PRIMARY",
+        "historical_importance_is_not_current_risk": true
+      },
+      "invariant_ref": "INV-RESOURCE",
+      "test_ref": "TEST-RESOURCE",
+      "dependency_level": "L1",
+      "prerequisite_closure": [],
+      "closure_status": "OBLIGATION_BLOCKED",
+      "object_type": "OBLIGATION",
+      "schema_version": "1.0",
+      "lifecycle_status": "FORMALIZED",
+      "provenance": {
+        "source_artifact": "historical-source/obligations/OBLIGATIONS.yaml",
+        "source_object": "OBL-RESOURCE",
+        "content_hash": "edb56ccdb408bfe3197f05c3a55e7627772d248d8c72c28e5b8c86566d25efa5",
+        "transformation": "REFERENCE_WRAPPER_NO_VERIFICATION_ESCALATION"
+      }
+    },
+    {
+      "obligation_id": "OBL-UNBOUNDED",
+      "title": "Reject unbounded remote-driven work",
+      "statement": "Future designs must reject unbounded remote response retention, task spawning, or memory growth without explicit external bounds.",
+      "class": "REJECT",
+      "strength": "REQUIRED",
+      "final_category": "FUTURE_STRENGTHENING",
+      "epistemic_status": "SUPPORTED",
+      "source_properties": [
+        "PROP-UNBOUNDED"
+      ],
+      "source_evidence": [
+        "NE-V8-RISKS"
+      ],
+      "historical_claims": [
+        "v8:RESOURCE-EXHAUSTION"
+      ],
+      "version_scope": {
+        "versions": [
+          "v0.1.0",
+          "v0.2.0",
+          "v0.3.0",
+          "v0.4.0",
+          "v0.5.0",
+          "v0.6.0",
+          "v0.7.1"
+        ]
+      },
+      "dependencies": [
+        "DEP-089"
+      ],
+      "dependents": [],
+      "prerequisite_obligations": [
+        "OBL-RESOURCE"
+      ],
+      "verification": {
+        "test_id": "TEST-UNBOUNDED",
+        "strategy": "Exercise reject unbounded remote-driven work in an executable future harness and assert its semantic invariant.",
+        "expected": "The obligation holds or the deviation is explicit and observable.",
+        "result": "UNVERIFIED"
+      },
+      "compatibility": {
+        "scope": "internal and cross-component semantics",
+        "impact_if_changed": "REQUIRES_EQUIVALENCE_ANALYSIS"
+      },
+      "exceptions": [],
+      "status": "FORMALIZED",
+      "rationale": "This is resource strengthening, not a vulnerability claim.",
+      "engineering_rationale": "This is resource strengthening, not a vulnerability claim.",
+      "derivation_status": "JUSTIFIED_SOURCE_LOCAL_INPUT_BLOCKED",
+      "derivation_acceptance": "BLOCKED_BY_INPUT_CONTRACT_FAILED",
+      "strengthening": "ENGINEERING_STRENGTHENING",
+      "allowed_change": [
+        "Any mechanism preserving the declared semantics"
+      ],
+      "forbidden_change": [
+        "Silent semantic weakening",
+        "Retroactive attribution of a future mechanism"
+      ],
+      "failure_if_violated": "Semantic regression or unversioned compatibility break.",
+      "priority": "HIGH",
+      "priority_basis": {
+        "security_impact": "POSSIBLE_OR_NOT_PRIMARY",
+        "data_loss_impact": "POSSIBLE_OR_NOT_PRIMARY",
+        "concurrency_impact": "POSSIBLE_OR_NOT_PRIMARY",
+        "compatibility_impact": "POSSIBLE_OR_NOT_PRIMARY",
+        "historical_importance_is_not_current_risk": true
+      },
+      "invariant_ref": "INV-UNBOUNDED",
+      "test_ref": "TEST-UNBOUNDED",
+      "dependency_level": "L2",
+      "prerequisite_closure": [
+        "OBL-RESOURCE"
+      ],
+      "closure_status": "OBLIGATION_BLOCKED",
+      "object_type": "OBLIGATION",
+      "schema_version": "1.0",
+      "lifecycle_status": "FORMALIZED",
+      "provenance": {
+        "source_artifact": "historical-source/obligations/OBLIGATIONS.yaml",
+        "source_object": "OBL-UNBOUNDED",
+        "content_hash": "edb56ccdb408bfe3197f05c3a55e7627772d248d8c72c28e5b8c86566d25efa5",
+        "transformation": "REFERENCE_WRAPPER_NO_VERIFICATION_ESCALATION"
+      }
+    },
+    {
+      "obligation_id": "OBL-LIFECYCLE-OBS",
+      "title": "Lifecycle observability",
+      "statement": "Claim, acquisition start/completion, recognition, discovery, expansion, failure, worker lifecycle, and scan completion must be observable semantically.",
+      "class": "OBSERVE",
+      "strength": "REQUIRED",
+      "final_category": "FUTURE_STRENGTHENING",
+      "epistemic_status": "SUPPORTED",
+      "source_properties": [
+        "PROP-LIFECYCLE-OBS"
+      ],
+      "source_evidence": [
+        "NE-V8-FAILURE-MATRIX",
+        "NE-V8-OBSERVE"
+      ],
+      "historical_claims": [
+        "v8:OBSERVABILITY",
+        "v8:FAILURE"
+      ],
+      "version_scope": {
+        "versions": [
+          "v0.1.0",
+          "v0.2.0",
+          "v0.3.0",
+          "v0.4.0",
+          "v0.5.0",
+          "v0.6.0",
+          "v0.7.1"
+        ]
+      },
+      "dependencies": [
+        "DEP-046",
+        "DEP-047",
+        "DEP-048",
+        "DEP-049",
+        "DEP-098"
+      ],
+      "dependents": [
+        "DEP-009",
+        "DEP-083"
+      ],
+      "prerequisite_obligations": [
+        "OBL-ACQ-OUTCOME",
+        "OBL-CANDIDATE-STATE",
+        "OBL-DISCOVERY-RECORD",
+        "OBL-RECOGNITION-OUTCOMES"
+      ],
+      "verification": {
+        "test_id": "TEST-LIFECYCLE-OBS",
+        "strategy": "Exercise lifecycle observability in an executable future harness and assert its semantic invariant.",
+        "expected": "The obligation holds or the deviation is explicit and observable.",
+        "result": "UNVERIFIED"
+      },
+      "compatibility": {
+        "scope": "internal and cross-component semantics",
+        "impact_if_changed": "REQUIRES_EQUIVALENCE_ANALYSIS"
+      },
+      "exceptions": [],
+      "status": "FORMALIZED",
+      "rationale": "Diagnosis and testing require semantic events, not formatting.",
+      "engineering_rationale": "Diagnosis and testing require semantic events, not formatting.",
+      "derivation_status": "JUSTIFIED_SOURCE_LOCAL_INPUT_BLOCKED",
+      "derivation_acceptance": "BLOCKED_BY_INPUT_CONTRACT_FAILED",
+      "strengthening": "ENGINEERING_STRENGTHENING",
+      "allowed_change": [
+        "Any mechanism preserving the declared semantics"
+      ],
+      "forbidden_change": [
+        "Silent semantic weakening",
+        "Retroactive attribution of a future mechanism"
+      ],
+      "failure_if_violated": "Semantic regression or unversioned compatibility break.",
+      "priority": "HIGH",
+      "priority_basis": {
+        "security_impact": "POSSIBLE_OR_NOT_PRIMARY",
+        "data_loss_impact": "POSSIBLE_OR_NOT_PRIMARY",
+        "concurrency_impact": "POSSIBLE_OR_NOT_PRIMARY",
+        "compatibility_impact": "POSSIBLE_OR_NOT_PRIMARY",
+        "historical_importance_is_not_current_risk": true
+      },
+      "invariant_ref": "INV-LIFECYCLE-OBS",
+      "test_ref": "TEST-LIFECYCLE-OBS",
+      "dependency_level": "L6",
+      "prerequisite_closure": [
+        "OBL-ACQ-BEFORE-INTERP",
+        "OBL-ACQ-OUTCOME",
+        "OBL-CANDIDATE-IDENTITY",
+        "OBL-CANDIDATE-STATE",
+        "OBL-DISCOVERY-RECORD",
+        "OBL-OBS-DISTINCT",
+        "OBL-OBS-OUTCOMES",
+        "OBL-OBS-SOURCE",
+        "OBL-RECOGNITION-DISTINCT",
+        "OBL-RECOGNITION-OUTCOMES"
+      ],
+      "closure_status": "OBLIGATION_BLOCKED",
+      "object_type": "OBLIGATION",
+      "schema_version": "1.0",
+      "lifecycle_status": "FORMALIZED",
+      "provenance": {
+        "source_artifact": "historical-source/obligations/OBLIGATIONS.yaml",
+        "source_object": "OBL-LIFECYCLE-OBS",
+        "content_hash": "edb56ccdb408bfe3197f05c3a55e7627772d248d8c72c28e5b8c86566d25efa5",
+        "transformation": "REFERENCE_WRAPPER_NO_VERIFICATION_ESCALATION"
+      }
+    },
+    {
+      "obligation_id": "OBL-AUDIT",
+      "title": "Auditability verification",
+      "statement": "Any auditability claim must verify completeness, ordering, identity, retention, mutation protection, and forensic reconstruction separately from logging.",
+      "class": "VERIFY",
+      "strength": "RECOMMENDED",
+      "final_category": "FUTURE_STRENGTHENING",
+      "epistemic_status": "SUPPORTED",
+      "source_properties": [
+        "PROP-AUDIT"
+      ],
+      "source_evidence": [
+        "NE-V8-OBSERVE",
+        "NE-V9-CLAIMS"
+      ],
+      "historical_claims": [
+        "v8:OBSERVABILITY",
+        "claim-version-v071"
+      ],
+      "version_scope": {
+        "versions": [
+          "v0.6.0",
+          "v0.7.1"
+        ]
+      },
+      "dependencies": [
+        "DEP-009",
+        "DEP-010",
+        "DEP-011"
+      ],
+      "dependents": [
+        "DEP-098"
+      ],
+      "prerequisite_obligations": [
+        "OBL-LIFECYCLE-OBS",
+        "OBL-PROVENANCE",
+        "OBL-PROVENANCE-INTEGRITY"
+      ],
+      "verification": {
+        "test_id": "TEST-AUDIT",
+        "strategy": "Exercise auditability verification in an executable future harness and assert its semantic invariant.",
+        "expected": "The obligation holds or the deviation is explicit and observable.",
+        "result": "UNVERIFIED"
+      },
+      "compatibility": {
+        "scope": "internal and cross-component semantics",
+        "impact_if_changed": "REQUIRES_EQUIVALENCE_ANALYSIS"
+      },
+      "exceptions": [],
+      "status": "FORMALIZED",
+      "rationale": "A log or ledger-shaped object is not an audit trail.",
+      "engineering_rationale": "A log or ledger-shaped object is not an audit trail.",
+      "derivation_status": "JUSTIFIED_SOURCE_LOCAL_INPUT_BLOCKED",
+      "derivation_acceptance": "BLOCKED_BY_INPUT_CONTRACT_FAILED",
+      "strengthening": "ENGINEERING_STRENGTHENING",
+      "allowed_change": [
+        "Any mechanism preserving the declared semantics"
+      ],
+      "forbidden_change": [
+        "Silent semantic weakening",
+        "Retroactive attribution of a future mechanism"
+      ],
+      "failure_if_violated": "Semantic regression or unversioned compatibility break.",
+      "priority": "MEDIUM",
+      "priority_basis": {
+        "security_impact": "POSSIBLE_OR_NOT_PRIMARY",
+        "data_loss_impact": "POSSIBLE_OR_NOT_PRIMARY",
+        "concurrency_impact": "POSSIBLE_OR_NOT_PRIMARY",
+        "compatibility_impact": "POSSIBLE_OR_NOT_PRIMARY",
+        "historical_importance_is_not_current_risk": true
+      },
+      "invariant_ref": "INV-AUDIT",
+      "test_ref": "TEST-AUDIT",
+      "dependency_level": "L6",
+      "prerequisite_closure": [
+        "OBL-ACQ-BEFORE-INTERP",
+        "OBL-ACQ-OUTCOME",
+        "OBL-CANDIDATE-IDENTITY",
+        "OBL-CANDIDATE-ORIGIN",
+        "OBL-CANDIDATE-PARENT",
+        "OBL-CANDIDATE-STATE",
+        "OBL-DISCOVERY-RECORD",
+        "OBL-LIFECYCLE-OBS",
+        "OBL-OBS-DISTINCT",
+        "OBL-OBS-OUTCOMES",
+        "OBL-OBS-SOURCE",
+        "OBL-PROVENANCE",
+        "OBL-PROVENANCE-INTEGRITY",
+        "OBL-RECOGNITION-DISTINCT",
+        "OBL-RECOGNITION-OUTCOMES"
+      ],
+      "closure_status": "OBLIGATION_UNVERIFIED",
+      "object_type": "OBLIGATION",
+      "schema_version": "1.0",
+      "lifecycle_status": "FORMALIZED",
+      "provenance": {
+        "source_artifact": "historical-source/obligations/OBLIGATIONS.yaml",
+        "source_object": "OBL-AUDIT",
+        "content_hash": "edb56ccdb408bfe3197f05c3a55e7627772d248d8c72c28e5b8c86566d25efa5",
+        "transformation": "REFERENCE_WRAPPER_NO_VERIFICATION_ESCALATION"
+      }
+    },
+    {
+      "obligation_id": "OBL-SILENT-FAILURE",
+      "title": "Reject silent semantic failure",
+      "statement": "Failure affecting completeness, lifecycle, or trust decisions must be explicit failure, partial result, or policy skip—not silent success.",
+      "class": "REJECT",
+      "strength": "REQUIRED",
+      "final_category": "FUTURE_STRENGTHENING",
+      "epistemic_status": "SUPPORTED",
+      "source_properties": [
+        "PROP-SILENT-FAILURE"
+      ],
+      "source_evidence": [
+        "NE-V8-FAILURE-MATRIX"
+      ],
+      "historical_claims": [
+        "v8:FAILURE"
+      ],
+      "version_scope": {
+        "versions": [
+          "v0.1.0",
+          "v0.2.0",
+          "v0.3.0",
+          "v0.4.0",
+          "v0.5.0",
+          "v0.6.0",
+          "v0.7.1"
+        ]
+      },
+      "dependencies": [
+        "DEP-085",
+        "DEP-086"
+      ],
+      "dependents": [
+        "DEP-062",
+        "DEP-071",
+        "DEP-093"
+      ],
+      "prerequisite_obligations": [
+        "OBL-OBS-OUTCOMES",
+        "OBL-RECOGNITION-OUTCOMES"
+      ],
+      "verification": {
+        "test_id": "TEST-SILENT-FAILURE",
+        "strategy": "Exercise reject silent semantic failure in an executable future harness and assert its semantic invariant.",
+        "expected": "The obligation holds or the deviation is explicit and observable.",
+        "result": "UNVERIFIED"
+      },
+      "compatibility": {
+        "scope": "internal and cross-component semantics",
+        "impact_if_changed": "REQUIRES_EQUIVALENCE_ANALYSIS"
+      },
+      "exceptions": [],
+      "status": "FORMALIZED",
+      "rationale": "Silent semantic loss causes false success.",
+      "engineering_rationale": "Silent semantic loss causes false success.",
+      "derivation_status": "JUSTIFIED_SOURCE_LOCAL_INPUT_BLOCKED",
+      "derivation_acceptance": "BLOCKED_BY_INPUT_CONTRACT_FAILED",
+      "strengthening": "ENGINEERING_STRENGTHENING",
+      "allowed_change": [
+        "Any mechanism preserving the declared semantics"
+      ],
+      "forbidden_change": [
+        "Silent semantic weakening",
+        "Retroactive attribution of a future mechanism"
+      ],
+      "failure_if_violated": "Semantic regression or unversioned compatibility break.",
+      "priority": "HIGH",
+      "priority_basis": {
+        "security_impact": "POSSIBLE_OR_NOT_PRIMARY",
+        "data_loss_impact": "PRIMARY",
+        "concurrency_impact": "POSSIBLE_OR_NOT_PRIMARY",
+        "compatibility_impact": "POSSIBLE_OR_NOT_PRIMARY",
+        "historical_importance_is_not_current_risk": true
+      },
+      "invariant_ref": "INV-SILENT-FAILURE",
+      "test_ref": "TEST-SILENT-FAILURE",
+      "dependency_level": "L6",
+      "prerequisite_closure": [
+        "OBL-ACQ-BEFORE-INTERP",
+        "OBL-ACQ-OUTCOME",
+        "OBL-CANDIDATE-IDENTITY",
+        "OBL-OBS-DISTINCT",
+        "OBL-OBS-OUTCOMES",
+        "OBL-RECOGNITION-DISTINCT",
+        "OBL-RECOGNITION-OUTCOMES"
+      ],
+      "closure_status": "OBLIGATION_BLOCKED",
+      "object_type": "OBLIGATION",
+      "schema_version": "1.0",
+      "lifecycle_status": "FORMALIZED",
+      "provenance": {
+        "source_artifact": "historical-source/obligations/OBLIGATIONS.yaml",
+        "source_object": "OBL-SILENT-FAILURE",
+        "content_hash": "edb56ccdb408bfe3197f05c3a55e7627772d248d8c72c28e5b8c86566d25efa5",
+        "transformation": "REFERENCE_WRAPPER_NO_VERIFICATION_ESCALATION"
+      }
+    },
+    {
+      "obligation_id": "OBL-PERSIST-COMPAT",
+      "title": "Persistence schema compatibility",
+      "statement": "If historical state is consumed, schema versions, validation, semantic migration, and explicit rejection of incompatible data are required.",
+      "class": "COMPATIBILITY",
+      "strength": "CONDITIONAL",
+      "final_category": "COMPATIBILITY_OBLIGATION",
+      "epistemic_status": "SUPPORTED",
+      "source_properties": [
+        "PROP-PERSIST-COMPAT"
+      ],
+      "source_evidence": [
+        "NE-V8-PERSIST"
+      ],
+      "historical_claims": [
+        "v8:PERSISTENCE"
+      ],
+      "version_scope": {
+        "versions": [
+          "v0.1.0",
+          "v0.2.0",
+          "v0.3.0",
+          "v0.4.0",
+          "v0.5.0",
+          "v0.6.0",
+          "v0.7.1"
+        ]
+      },
+      "dependencies": [
+        "DEP-058",
+        "DEP-059",
+        "DEP-060"
+      ],
+      "dependents": [
+        "DEP-061"
+      ],
+      "prerequisite_obligations": [
+        "OBL-ERROR-CONTRACT",
+        "OBL-KNOWLEDGE",
+        "OBL-PROVENANCE"
+      ],
+      "verification": {
+        "test_id": "TEST-PERSIST-COMPAT",
+        "strategy": "Exercise persistence schema compatibility in an executable future harness and assert its semantic invariant.",
+        "expected": "The obligation holds or the deviation is explicit and observable.",
+        "result": "UNVERIFIED"
+      },
+      "compatibility": {
+        "scope": "internal and cross-component semantics",
+        "impact_if_changed": "REQUIRES_EQUIVALENCE_ANALYSIS"
+      },
+      "exceptions": [],
+      "status": "FORMALIZED",
+      "rationale": "Compatibility applies only when historical state is consumed.",
+      "engineering_rationale": "Compatibility applies only when historical state is consumed.",
+      "derivation_status": "JUSTIFIED_SOURCE_LOCAL_INPUT_BLOCKED",
+      "derivation_acceptance": "BLOCKED_BY_INPUT_CONTRACT_FAILED",
+      "strengthening": "HISTORICAL",
+      "allowed_change": [
+        "Any mechanism preserving the declared semantics"
+      ],
+      "forbidden_change": [
+        "Silent semantic weakening",
+        "Retroactive attribution of a future mechanism"
+      ],
+      "failure_if_violated": "Semantic regression or unversioned compatibility break.",
+      "priority": "MEDIUM",
+      "priority_basis": {
+        "security_impact": "POSSIBLE_OR_NOT_PRIMARY",
+        "data_loss_impact": "PRIMARY",
+        "concurrency_impact": "POSSIBLE_OR_NOT_PRIMARY",
+        "compatibility_impact": "PRIMARY",
+        "historical_importance_is_not_current_risk": true
+      },
+      "invariant_ref": "INV-PERSIST-COMPAT",
+      "test_ref": "TEST-PERSIST-COMPAT",
+      "dependency_level": "L6",
+      "prerequisite_closure": [
+        "OBL-ACQ-BEFORE-INTERP",
+        "OBL-ACQ-OUTCOME",
+        "OBL-CANDIDATE-IDENTITY",
+        "OBL-CANDIDATE-ORIGIN",
+        "OBL-CANDIDATE-PARENT",
+        "OBL-DISCOVERY-RECORD",
+        "OBL-ERROR-CONTRACT",
+        "OBL-KNOWLEDGE",
+        "OBL-OBS-DISTINCT",
+        "OBL-OBS-OUTCOMES",
+        "OBL-OBS-SOURCE",
+        "OBL-PROVENANCE",
+        "OBL-RECOGNITION-DISTINCT",
+        "OBL-RECOGNITION-OUTCOMES"
+      ],
+      "closure_status": "OBLIGATION_UNVERIFIED",
+      "object_type": "OBLIGATION",
+      "schema_version": "1.0",
+      "lifecycle_status": "FORMALIZED",
+      "provenance": {
+        "source_artifact": "historical-source/obligations/OBLIGATIONS.yaml",
+        "source_object": "OBL-PERSIST-COMPAT",
+        "content_hash": "edb56ccdb408bfe3197f05c3a55e7627772d248d8c72c28e5b8c86566d25efa5",
+        "transformation": "REFERENCE_WRAPPER_NO_VERIFICATION_ESCALATION"
+      }
+    },
+    {
+      "obligation_id": "OBL-PERSIST-CORRUPTION",
+      "title": "Persistence corruption containment",
+      "statement": "Malformed, partial, or incompatible persisted state should be detected and contained without becoming trusted active state.",
+      "class": "CONTAIN",
+      "strength": "RECOMMENDED",
+      "final_category": "FUTURE_STRENGTHENING",
+      "epistemic_status": "SUPPORTED",
+      "source_properties": [
+        "PROP-PERSIST-CORRUPTION"
+      ],
+      "source_evidence": [
+        "NE-V8-PERSIST"
+      ],
+      "historical_claims": [
+        "v8:PERSISTENCE"
+      ],
+      "version_scope": {
+        "versions": [
+          "v0.1.0",
+          "v0.2.0",
+          "v0.3.0",
+          "v0.4.0",
+          "v0.5.0",
+          "v0.6.0",
+          "v0.7.1"
+        ]
+      },
+      "dependencies": [
+        "DEP-061",
+        "DEP-062"
+      ],
+      "dependents": [],
+      "prerequisite_obligations": [
+        "OBL-PERSIST-COMPAT",
+        "OBL-SILENT-FAILURE"
+      ],
+      "verification": {
+        "test_id": "TEST-PERSIST-CORRUPTION",
+        "strategy": "Exercise persistence corruption containment in an executable future harness and assert its semantic invariant.",
+        "expected": "The obligation holds or the deviation is explicit and observable.",
+        "result": "UNVERIFIED"
+      },
+      "compatibility": {
+        "scope": "internal and cross-component semantics",
+        "impact_if_changed": "REQUIRES_EQUIVALENCE_ANALYSIS"
+      },
+      "exceptions": [],
+      "status": "FORMALIZED",
+      "rationale": "This strengthens incomplete handling without backfilling history.",
+      "engineering_rationale": "This strengthens incomplete handling without backfilling history.",
+      "derivation_status": "JUSTIFIED_SOURCE_LOCAL_INPUT_BLOCKED",
+      "derivation_acceptance": "BLOCKED_BY_INPUT_CONTRACT_FAILED",
+      "strengthening": "ENGINEERING_STRENGTHENING",
+      "allowed_change": [
+        "Any mechanism preserving the declared semantics"
+      ],
+      "forbidden_change": [
+        "Silent semantic weakening",
+        "Retroactive attribution of a future mechanism"
+      ],
+      "failure_if_violated": "Semantic regression or unversioned compatibility break.",
+      "priority": "MEDIUM",
+      "priority_basis": {
+        "security_impact": "POSSIBLE_OR_NOT_PRIMARY",
+        "data_loss_impact": "PRIMARY",
+        "concurrency_impact": "POSSIBLE_OR_NOT_PRIMARY",
+        "compatibility_impact": "PRIMARY",
+        "historical_importance_is_not_current_risk": true
+      },
+      "invariant_ref": "INV-PERSIST-CORRUPTION",
+      "test_ref": "TEST-PERSIST-CORRUPTION",
+      "dependency_level": "L6",
+      "prerequisite_closure": [
+        "OBL-ACQ-BEFORE-INTERP",
+        "OBL-ACQ-OUTCOME",
+        "OBL-CANDIDATE-IDENTITY",
+        "OBL-CANDIDATE-ORIGIN",
+        "OBL-CANDIDATE-PARENT",
+        "OBL-DISCOVERY-RECORD",
+        "OBL-ERROR-CONTRACT",
+        "OBL-KNOWLEDGE",
+        "OBL-OBS-DISTINCT",
+        "OBL-OBS-OUTCOMES",
+        "OBL-OBS-SOURCE",
+        "OBL-PERSIST-COMPAT",
+        "OBL-PROVENANCE",
+        "OBL-RECOGNITION-DISTINCT",
+        "OBL-RECOGNITION-OUTCOMES",
+        "OBL-SILENT-FAILURE"
+      ],
+      "closure_status": "OBLIGATION_UNVERIFIED",
+      "object_type": "OBLIGATION",
+      "schema_version": "1.0",
+      "lifecycle_status": "FORMALIZED",
+      "provenance": {
+        "source_artifact": "historical-source/obligations/OBLIGATIONS.yaml",
+        "source_object": "OBL-PERSIST-CORRUPTION",
+        "content_hash": "edb56ccdb408bfe3197f05c3a55e7627772d248d8c72c28e5b8c86566d25efa5",
+        "transformation": "REFERENCE_WRAPPER_NO_VERIFICATION_ESCALATION"
+      }
+    },
+    {
+      "obligation_id": "OBL-EXPORT",
+      "title": "Export role and schema",
+      "statement": "Before export compatibility is promised, purpose, version, optional/null/derived fields, partial-state marker, and relationship integrity must be explicit.",
+      "class": "FORMALIZE",
+      "strength": "CONDITIONAL",
+      "final_category": "FUTURE_STRENGTHENING",
+      "epistemic_status": "SUPPORTED",
+      "source_properties": [
+        "PROP-EXPORT"
+      ],
+      "source_evidence": [
+        "NE-V8-EXPORT"
+      ],
+      "historical_claims": [
+        "v8:EXPORT"
+      ],
+      "version_scope": {
+        "versions": [
+          "v0.1.0",
+          "v0.2.0",
+          "v0.3.0",
+          "v0.4.0",
+          "v0.5.0",
+          "v0.6.0",
+          "v0.7.1"
+        ]
+      },
+      "dependencies": [
+        "DEP-040",
+        "DEP-041",
+        "DEP-042"
+      ],
+      "dependents": [],
+      "prerequisite_obligations": [
+        "OBL-ERROR-CONTRACT",
+        "OBL-KNOWLEDGE",
+        "OBL-PROVENANCE"
+      ],
+      "verification": {
+        "test_id": "TEST-EXPORT",
+        "strategy": "Exercise export role and schema in an executable future harness and assert its semantic invariant.",
+        "expected": "The obligation holds or the deviation is explicit and observable.",
+        "result": "UNVERIFIED"
+      },
+      "compatibility": {
+        "scope": "internal and cross-component semantics",
+        "impact_if_changed": "REQUIRES_EQUIVALENCE_ANALYSIS"
+      },
+      "exceptions": [],
+      "status": "FORMALIZED",
+      "rationale": "Identical JSON can be observability, persistence, interchange, or API.",
+      "engineering_rationale": "Identical JSON can be observability, persistence, interchange, or API.",
+      "derivation_status": "JUSTIFIED_SOURCE_LOCAL_INPUT_BLOCKED",
+      "derivation_acceptance": "BLOCKED_BY_INPUT_CONTRACT_FAILED",
+      "strengthening": "ENGINEERING_STRENGTHENING",
+      "allowed_change": [
+        "Any mechanism preserving the declared semantics"
+      ],
+      "forbidden_change": [
+        "Silent semantic weakening",
+        "Retroactive attribution of a future mechanism"
+      ],
+      "failure_if_violated": "Semantic regression or unversioned compatibility break.",
+      "priority": "MEDIUM",
+      "priority_basis": {
+        "security_impact": "POSSIBLE_OR_NOT_PRIMARY",
+        "data_loss_impact": "PRIMARY",
+        "concurrency_impact": "POSSIBLE_OR_NOT_PRIMARY",
+        "compatibility_impact": "PRIMARY",
+        "historical_importance_is_not_current_risk": true
+      },
+      "invariant_ref": "INV-EXPORT",
+      "test_ref": "TEST-EXPORT",
+      "dependency_level": "L6",
+      "prerequisite_closure": [
+        "OBL-ACQ-BEFORE-INTERP",
+        "OBL-ACQ-OUTCOME",
+        "OBL-CANDIDATE-IDENTITY",
+        "OBL-CANDIDATE-ORIGIN",
+        "OBL-CANDIDATE-PARENT",
+        "OBL-DISCOVERY-RECORD",
+        "OBL-ERROR-CONTRACT",
+        "OBL-KNOWLEDGE",
+        "OBL-OBS-DISTINCT",
+        "OBL-OBS-OUTCOMES",
+        "OBL-OBS-SOURCE",
+        "OBL-PROVENANCE",
+        "OBL-RECOGNITION-DISTINCT",
+        "OBL-RECOGNITION-OUTCOMES"
+      ],
+      "closure_status": "OBLIGATION_UNVERIFIED",
+      "object_type": "OBLIGATION",
+      "schema_version": "1.0",
+      "lifecycle_status": "FORMALIZED",
+      "provenance": {
+        "source_artifact": "historical-source/obligations/OBLIGATIONS.yaml",
+        "source_object": "OBL-EXPORT",
+        "content_hash": "edb56ccdb408bfe3197f05c3a55e7627772d248d8c72c28e5b8c86566d25efa5",
+        "transformation": "REFERENCE_WRAPPER_NO_VERIFICATION_ESCALATION"
+      }
+    },
+    {
+      "obligation_id": "OBL-UI",
+      "title": "UI presentation",
+      "statement": "UI styling, layout, labels, and control arrangement may change; preserve only selected operational semantics.",
+      "class": "OPTIONAL",
+      "strength": "OPTIONAL",
+      "final_category": "DESIGN_OPTION",
+      "epistemic_status": "SUPPORTED",
+      "source_properties": [
+        "PROP-UI"
+      ],
+      "source_evidence": [
+        "NE-V8-OBSERVE"
+      ],
+      "historical_claims": [
+        "v8:OBSERVABILITY"
+      ],
+      "version_scope": {
+        "versions": [
+          "v0.1.0",
+          "v0.2.0",
+          "v0.3.0",
+          "v0.4.0",
+          "v0.5.0",
+          "v0.6.0",
+          "v0.7.1"
+        ]
+      },
+      "dependencies": [],
+      "dependents": [],
+      "prerequisite_obligations": [],
+      "verification": {
+        "test_id": "TEST-UI",
+        "strategy": "Exercise ui presentation in an executable future harness and assert its semantic invariant.",
+        "expected": "The obligation holds or the deviation is explicit and observable.",
+        "result": "UNVERIFIED"
+      },
+      "compatibility": {
+        "scope": "internal and cross-component semantics",
+        "impact_if_changed": "REQUIRES_EQUIVALENCE_ANALYSIS"
+      },
+      "exceptions": [],
+      "status": "FORMALIZED",
+      "rationale": "Presence does not make styling contractual.",
+      "engineering_rationale": "Presence does not make styling contractual.",
+      "derivation_status": "JUSTIFIED_SOURCE_LOCAL_INPUT_BLOCKED",
+      "derivation_acceptance": "BLOCKED_BY_INPUT_CONTRACT_FAILED",
+      "strengthening": "HISTORICAL",
+      "allowed_change": [
+        "Any mechanism preserving the declared semantics"
+      ],
+      "forbidden_change": [
+        "Silent semantic weakening",
+        "Retroactive attribution of a future mechanism"
+      ],
+      "failure_if_violated": "Semantic regression or unversioned compatibility break.",
+      "priority": "MEDIUM",
+      "priority_basis": {
+        "security_impact": "POSSIBLE_OR_NOT_PRIMARY",
+        "data_loss_impact": "POSSIBLE_OR_NOT_PRIMARY",
+        "concurrency_impact": "POSSIBLE_OR_NOT_PRIMARY",
+        "compatibility_impact": "POSSIBLE_OR_NOT_PRIMARY",
+        "historical_importance_is_not_current_risk": true
+      },
+      "invariant_ref": "INV-UI",
+      "test_ref": "TEST-UI",
+      "dependency_level": "L1",
+      "prerequisite_closure": [],
+      "closure_status": "OBLIGATION_UNVERIFIED",
+      "object_type": "OBLIGATION",
+      "schema_version": "1.0",
+      "lifecycle_status": "FORMALIZED",
+      "provenance": {
+        "source_artifact": "historical-source/obligations/OBLIGATIONS.yaml",
+        "source_object": "OBL-UI",
+        "content_hash": "edb56ccdb408bfe3197f05c3a55e7627772d248d8c72c28e5b8c86566d25efa5",
+        "transformation": "REFERENCE_WRAPPER_NO_VERIFICATION_ESCALATION"
+      }
+    },
+    {
+      "obligation_id": "OBL-PRIVATE-SHAPE",
+      "title": "Private names and layouts",
+      "statement": "Private names, class/module grouping, language, and Map/Set layout may be deprecated or refactored with semantic equivalence.",
+      "class": "DEPRECATE",
+      "strength": "RECOMMENDED",
+      "final_category": "DESIGN_OPTION",
+      "epistemic_status": "INFERRED",
+      "source_properties": [
+        "PROP-PRIVATE-SHAPE"
+      ],
+      "source_evidence": [
+        "NE-V3-API",
+        "NE-V3-DATA"
+      ],
+      "historical_claims": [
+        "v3:API",
+        "v3:"
+      ],
+      "version_scope": {
+        "versions": [
+          "v0.1.0",
+          "v0.2.0",
+          "v0.3.0",
+          "v0.4.0",
+          "v0.5.0",
+          "v0.6.0",
+          "v0.7.1"
+        ]
+      },
+      "dependencies": [],
+      "dependents": [],
+      "prerequisite_obligations": [],
+      "verification": {
+        "test_id": "TEST-PRIVATE-SHAPE",
+        "strategy": "Exercise private names and layouts in an executable future harness and assert its semantic invariant.",
+        "expected": "The obligation holds or the deviation is explicit and observable.",
+        "result": "UNVERIFIED"
+      },
+      "compatibility": {
+        "scope": "internal and cross-component semantics",
+        "impact_if_changed": "REQUIRES_EQUIVALENCE_ANALYSIS"
+      },
+      "exceptions": [],
+      "status": "FORMALIZED",
+      "rationale": "Historical faithfulness preserves semantics, not source form.",
+      "engineering_rationale": "Historical faithfulness preserves semantics, not source form.",
+      "derivation_status": "JUSTIFIED_SOURCE_LOCAL_INPUT_BLOCKED",
+      "derivation_acceptance": "BLOCKED_BY_INPUT_CONTRACT_FAILED",
+      "strengthening": "HISTORICAL",
+      "allowed_change": [
+        "Any mechanism preserving the declared semantics"
+      ],
+      "forbidden_change": [
+        "Silent semantic weakening",
+        "Retroactive attribution of a future mechanism"
+      ],
+      "failure_if_violated": "Semantic regression or unversioned compatibility break.",
+      "priority": "MEDIUM",
+      "priority_basis": {
+        "security_impact": "POSSIBLE_OR_NOT_PRIMARY",
+        "data_loss_impact": "POSSIBLE_OR_NOT_PRIMARY",
+        "concurrency_impact": "POSSIBLE_OR_NOT_PRIMARY",
+        "compatibility_impact": "POSSIBLE_OR_NOT_PRIMARY",
+        "historical_importance_is_not_current_risk": true
+      },
+      "invariant_ref": "INV-PRIVATE-SHAPE",
+      "test_ref": "TEST-PRIVATE-SHAPE",
+      "dependency_level": "L1",
+      "prerequisite_closure": [],
+      "closure_status": "OBLIGATION_UNVERIFIED",
+      "object_type": "OBLIGATION",
+      "schema_version": "1.0",
+      "lifecycle_status": "FORMALIZED",
+      "provenance": {
+        "source_artifact": "historical-source/obligations/OBLIGATIONS.yaml",
+        "source_object": "OBL-PRIVATE-SHAPE",
+        "content_hash": "edb56ccdb408bfe3197f05c3a55e7627772d248d8c72c28e5b8c86566d25efa5",
+        "transformation": "REFERENCE_WRAPPER_NO_VERIFICATION_ESCALATION"
+      }
+    },
+    {
+      "obligation_id": "OBL-CONTRACT-INPUT",
+      "title": "Validated contract input",
+      "statement": "Validated Protocol-v7 contract evidence must be available before any contract transition, compatibility, strengthening, weakening, replacement, or retirement conclusion is accepted.",
+      "class": "VERIFY",
+      "strength": "REQUIRED",
+      "final_category": "ENGINEERING_REQUIREMENT",
+      "epistemic_status": "PROVED",
+      "source_properties": [
+        "PROP-CONTRACT-INPUT"
+      ],
+      "source_evidence": [
+        "NE-V9-CLAIMS",
+        "NE-V9-UNKNOWNS"
+      ],
+      "historical_claims": [
+        "claim-earliest-contract",
+        "unc-005"
+      ],
+      "version_scope": {
+        "versions": [
+          "v0.1.0",
+          "v0.2.0",
+          "v0.3.0",
+          "v0.4.0",
+          "v0.5.0",
+          "v0.6.0",
+          "v0.7.1"
+        ]
+      },
+      "dependencies": [],
+      "dependents": [],
+      "prerequisite_obligations": [],
+      "verification": {
+        "test_id": "TEST-CONTRACT-INPUT",
+        "strategy": "Exercise validated contract input in an executable future harness and assert its semantic invariant.",
+        "expected": "The obligation holds or the deviation is explicit and observable.",
+        "result": "UNVERIFIED"
+      },
+      "compatibility": {
+        "scope": "internal and cross-component semantics",
+        "impact_if_changed": "REQUIRES_EQUIVALENCE_ANALYSIS"
+      },
+      "exceptions": [],
+      "status": "FORMALIZED",
+      "rationale": "The missing mandatory input blocks contract conclusions and must not be replaced with signature inference.",
+      "engineering_rationale": "The missing mandatory input blocks contract conclusions and must not be replaced with signature inference.",
+      "derivation_status": "JUSTIFIED_SOURCE_LOCAL_INPUT_BLOCKED",
+      "derivation_acceptance": "BLOCKED_BY_INPUT_CONTRACT_FAILED",
+      "strengthening": "PROTOCOL_REQUIRED_INPUT_GATE",
+      "allowed_change": [
+        "Any mechanism preserving the declared semantics"
+      ],
+      "forbidden_change": [
+        "Silent semantic weakening",
+        "Retroactive attribution of a future mechanism"
+      ],
+      "failure_if_violated": "Semantic regression or unversioned compatibility break.",
+      "priority": "HIGH",
+      "priority_basis": {
+        "security_impact": "POSSIBLE_OR_NOT_PRIMARY",
+        "data_loss_impact": "POSSIBLE_OR_NOT_PRIMARY",
+        "concurrency_impact": "POSSIBLE_OR_NOT_PRIMARY",
+        "compatibility_impact": "PRIMARY",
+        "historical_importance_is_not_current_risk": true
+      },
+      "invariant_ref": "INV-CONTRACT-INPUT",
+      "test_ref": "TEST-CONTRACT-INPUT",
+      "dependency_level": "L1",
+      "prerequisite_closure": [],
+      "closure_status": "OBLIGATION_BLOCKED",
+      "object_type": "OBLIGATION",
+      "schema_version": "1.0",
+      "lifecycle_status": "FORMALIZED",
+      "provenance": {
+        "source_artifact": "historical-source/obligations/OBLIGATIONS.yaml",
+        "source_object": "OBL-CONTRACT-INPUT",
+        "content_hash": "edb56ccdb408bfe3197f05c3a55e7627772d248d8c72c28e5b8c86566d25efa5",
+        "transformation": "REFERENCE_WRAPPER_NO_VERIFICATION_ESCALATION"
+      }
+    },
+    {
+      "obligation_id": "OBL-ERROR-CONTRACT",
+      "title": "Error compatibility contract",
+      "statement": "Each interface must define null, undefined, empty, status, partial, returned-error, and exception semantics before changing them.",
+      "class": "FORMALIZE",
+      "strength": "CONDITIONAL",
+      "final_category": "FUTURE_STRENGTHENING",
+      "epistemic_status": "SUPPORTED",
+      "source_properties": [
+        "PROP-ERROR-CONTRACT"
+      ],
+      "source_evidence": [
+        "NE-V3-API",
+        "NE-V8-FAILURE-MATRIX",
+        "NE-V9-CLAIMS"
+      ],
+      "historical_claims": [
+        "v3:API",
+        "v8:FAILURE",
+        "claim-earliest-contract"
+      ],
+      "version_scope": {
+        "versions": [
+          "v0.1.0",
+          "v0.2.0",
+          "v0.3.0",
+          "v0.4.0",
+          "v0.5.0",
+          "v0.6.0",
+          "v0.7.1"
+        ]
+      },
+      "dependencies": [
+        "DEP-032",
+        "DEP-033"
+      ],
+      "dependents": [
+        "DEP-040",
+        "DEP-058"
+      ],
+      "prerequisite_obligations": [
+        "OBL-OBS-OUTCOMES",
+        "OBL-RECOGNITION-OUTCOMES"
+      ],
+      "verification": {
+        "test_id": "TEST-ERROR-CONTRACT",
+        "strategy": "Exercise error compatibility contract in an executable future harness and assert its semantic invariant.",
+        "expected": "The obligation holds or the deviation is explicit and observable.",
+        "result": "UNVERIFIED"
+      },
+      "compatibility": {
+        "scope": "internal and cross-component semantics",
+        "impact_if_changed": "REQUIRES_EQUIVALENCE_ANALYSIS"
+      },
+      "exceptions": [],
+      "status": "FORMALIZED",
+      "rationale": "These outcomes are semantically distinct despite missing v7.",
+      "engineering_rationale": "These outcomes are semantically distinct despite missing v7.",
+      "derivation_status": "JUSTIFIED_SOURCE_LOCAL_INPUT_BLOCKED",
+      "derivation_acceptance": "BLOCKED_BY_INPUT_CONTRACT_FAILED",
+      "strengthening": "ENGINEERING_STRENGTHENING",
+      "allowed_change": [
+        "Any mechanism preserving the declared semantics"
+      ],
+      "forbidden_change": [
+        "Silent semantic weakening",
+        "Retroactive attribution of a future mechanism"
+      ],
+      "failure_if_violated": "Semantic regression or unversioned compatibility break.",
+      "priority": "MEDIUM",
+      "priority_basis": {
+        "security_impact": "POSSIBLE_OR_NOT_PRIMARY",
+        "data_loss_impact": "POSSIBLE_OR_NOT_PRIMARY",
+        "concurrency_impact": "POSSIBLE_OR_NOT_PRIMARY",
+        "compatibility_impact": "PRIMARY",
+        "historical_importance_is_not_current_risk": true
+      },
+      "invariant_ref": "INV-ERROR-CONTRACT",
+      "test_ref": "TEST-ERROR-CONTRACT",
+      "dependency_level": "L6",
+      "prerequisite_closure": [
+        "OBL-ACQ-BEFORE-INTERP",
+        "OBL-ACQ-OUTCOME",
+        "OBL-CANDIDATE-IDENTITY",
+        "OBL-OBS-DISTINCT",
+        "OBL-OBS-OUTCOMES",
+        "OBL-RECOGNITION-DISTINCT",
+        "OBL-RECOGNITION-OUTCOMES"
+      ],
+      "closure_status": "OBLIGATION_UNVERIFIED",
+      "object_type": "OBLIGATION",
+      "schema_version": "1.0",
+      "lifecycle_status": "FORMALIZED",
+      "provenance": {
+        "source_artifact": "historical-source/obligations/OBLIGATIONS.yaml",
+        "source_object": "OBL-ERROR-CONTRACT",
+        "content_hash": "edb56ccdb408bfe3197f05c3a55e7627772d248d8c72c28e5b8c86566d25efa5",
+        "transformation": "REFERENCE_WRAPPER_NO_VERIFICATION_ESCALATION"
+      }
+    },
+    {
+      "obligation_id": "OBL-REGRESSION",
+      "title": "Executable regression verification",
+      "statement": "Every REQUIRED or dependency-critical obligation must have executable verification before status VERIFIED.",
+      "class": "VERIFY",
+      "strength": "REQUIRED",
+      "final_category": "ENGINEERING_REQUIREMENT",
+      "epistemic_status": "SUPPORTED",
+      "source_properties": [
+        "PROP-REGRESSION"
+      ],
+      "source_evidence": [
+        "NE-V9-CLAIMS",
+        "NE-V9-UNKNOWNS"
+      ],
+      "historical_claims": [
+        "unc-007",
+        "claim-earliest-runnable"
+      ],
+      "version_scope": {
+        "versions": [
+          "v0.1.0",
+          "v0.2.0",
+          "v0.3.0",
+          "v0.4.0",
+          "v0.5.0",
+          "v0.6.0",
+          "v0.7.1"
+        ]
+      },
+      "dependencies": [],
+      "dependents": [
+        "DEP-055"
+      ],
+      "prerequisite_obligations": [],
+      "verification": {
+        "test_id": "TEST-REGRESSION",
+        "strategy": "Exercise executable regression verification in an executable future harness and assert its semantic invariant.",
+        "expected": "The obligation holds or the deviation is explicit and observable.",
+        "result": "UNVERIFIED"
+      },
+      "compatibility": {
+        "scope": "internal and cross-component semantics",
+        "impact_if_changed": "REQUIRES_EQUIVALENCE_ANALYSIS"
+      },
+      "exceptions": [],
+      "status": "FORMALIZED",
+      "rationale": "Static archaeology cannot verify a future implementation.",
+      "engineering_rationale": "Static archaeology cannot verify a future implementation.",
+      "derivation_status": "JUSTIFIED_SOURCE_LOCAL_INPUT_BLOCKED",
+      "derivation_acceptance": "BLOCKED_BY_INPUT_CONTRACT_FAILED",
+      "strengthening": "ENGINEERING_STRENGTHENING",
+      "allowed_change": [
+        "Any mechanism preserving the declared semantics"
+      ],
+      "forbidden_change": [
+        "Silent semantic weakening",
+        "Retroactive attribution of a future mechanism"
+      ],
+      "failure_if_violated": "Semantic regression or unversioned compatibility break.",
+      "priority": "HIGH",
+      "priority_basis": {
+        "security_impact": "POSSIBLE_OR_NOT_PRIMARY",
+        "data_loss_impact": "POSSIBLE_OR_NOT_PRIMARY",
+        "concurrency_impact": "POSSIBLE_OR_NOT_PRIMARY",
+        "compatibility_impact": "POSSIBLE_OR_NOT_PRIMARY",
+        "historical_importance_is_not_current_risk": true
+      },
+      "invariant_ref": "INV-REGRESSION",
+      "test_ref": "TEST-REGRESSION",
+      "dependency_level": "L1",
+      "prerequisite_closure": [],
+      "closure_status": "OBLIGATION_BLOCKED",
+      "object_type": "OBLIGATION",
+      "schema_version": "1.0",
+      "lifecycle_status": "FORMALIZED",
+      "provenance": {
+        "source_artifact": "historical-source/obligations/OBLIGATIONS.yaml",
+        "source_object": "OBL-REGRESSION",
+        "content_hash": "edb56ccdb408bfe3197f05c3a55e7627772d248d8c72c28e5b8c86566d25efa5",
+        "transformation": "REFERENCE_WRAPPER_NO_VERIFICATION_ESCALATION"
+      }
+    },
+    {
+      "obligation_id": "OBL-PARSE-DEFECT",
+      "title": "Reject v0.5 parse defect",
+      "statement": "The snapshot-0009 parse defect must remain historical evidence but must not be reproduced as future required behavior.",
+      "class": "REJECT",
+      "strength": "REQUIRED",
+      "final_category": "HISTORICAL_DEFECT",
+      "epistemic_status": "PROVED",
+      "source_properties": [
+        "PROP-PARSE-DEFECT"
+      ],
+      "source_evidence": [
+        "NE-V9-CLAIMS",
+        "NE-V9-CONTRADICTIONS"
+      ],
+      "historical_claims": [
+        "contra-003",
+        "claim-version-v050"
+      ],
+      "version_scope": {
+        "versions": [
+          "v0.5.0"
+        ]
+      },
+      "dependencies": [
+        "DEP-055"
+      ],
+      "dependents": [],
+      "prerequisite_obligations": [
+        "OBL-REGRESSION"
+      ],
+      "verification": {
+        "test_id": "TEST-PARSE-DEFECT",
+        "strategy": "Exercise reject v0.5 parse defect in an executable future harness and assert its semantic invariant.",
+        "expected": "The obligation holds or the deviation is explicit and observable.",
+        "result": "UNVERIFIED"
+      },
+      "compatibility": {
+        "scope": "internal and cross-component semantics",
+        "impact_if_changed": "REQUIRES_EQUIVALENCE_ANALYSIS"
+      },
+      "exceptions": [],
+      "status": "FORMALIZED",
+      "rationale": "Exactness is not executability; defects are not future requirements.",
+      "engineering_rationale": "Exactness is not executability; defects are not future requirements.",
+      "derivation_status": "JUSTIFIED_SOURCE_LOCAL_INPUT_BLOCKED",
+      "derivation_acceptance": "BLOCKED_BY_INPUT_CONTRACT_FAILED",
+      "strengthening": "ENGINEERING_STRENGTHENING",
+      "allowed_change": [
+        "Any mechanism preserving the declared semantics"
+      ],
+      "forbidden_change": [
+        "Silent semantic weakening",
+        "Retroactive attribution of a future mechanism"
+      ],
+      "failure_if_violated": "Semantic regression or unversioned compatibility break.",
+      "priority": "HIGH",
+      "priority_basis": {
+        "security_impact": "POSSIBLE_OR_NOT_PRIMARY",
+        "data_loss_impact": "POSSIBLE_OR_NOT_PRIMARY",
+        "concurrency_impact": "POSSIBLE_OR_NOT_PRIMARY",
+        "compatibility_impact": "POSSIBLE_OR_NOT_PRIMARY",
+        "historical_importance_is_not_current_risk": true
+      },
+      "invariant_ref": "INV-PARSE-DEFECT",
+      "test_ref": "TEST-PARSE-DEFECT",
+      "dependency_level": "L2",
+      "prerequisite_closure": [
+        "OBL-REGRESSION"
+      ],
+      "closure_status": "OBLIGATION_BLOCKED",
+      "object_type": "OBLIGATION",
+      "schema_version": "1.0",
+      "lifecycle_status": "FORMALIZED",
+      "provenance": {
+        "source_artifact": "historical-source/obligations/OBLIGATIONS.yaml",
+        "source_object": "OBL-PARSE-DEFECT",
+        "content_hash": "edb56ccdb408bfe3197f05c3a55e7627772d248d8c72c28e5b8c86566d25efa5",
+        "transformation": "REFERENCE_WRAPPER_NO_VERIFICATION_ESCALATION"
+      }
+    },
+    {
+      "obligation_id": "OBL-WEB-GENERALIZE",
+      "title": "Generalize beyond web without losing web semantics",
+      "statement": "A generalized acquisition layer may add protocols only while preserving a versioned compatible web behavior envelope.",
+      "class": "GENERALIZE",
+      "strength": "RECOMMENDED",
+      "final_category": "FUTURE_STRENGTHENING",
+      "epistemic_status": "SUPPORTED",
+      "source_properties": [
+        "PROP-WEB-GENERALIZE"
+      ],
+      "source_evidence": [
+        "NE-V9-CLAIMS",
+        "NE-V9-INVARIANTS"
+      ],
+      "historical_claims": [
+        "inv-006",
+        "claim-protocol"
+      ],
+      "version_scope": {
+        "versions": [
+          "v0.1.0",
+          "v0.2.0",
+          "v0.3.0",
+          "v0.4.0",
+          "v0.5.0",
+          "v0.6.0",
+          "v0.7.1"
+        ]
+      },
+      "dependencies": [
+        "DEP-090",
+        "DEP-091"
+      ],
+      "dependents": [],
+      "prerequisite_obligations": [
+        "OBL-ACQ-BEFORE-INTERP",
+        "OBL-ACQ-SCOPE"
+      ],
+      "verification": {
+        "test_id": "TEST-WEB-GENERALIZE",
+        "strategy": "Exercise generalize beyond web without losing web semantics in an executable future harness and assert its semantic invariant.",
+        "expected": "The obligation holds or the deviation is explicit and observable.",
+        "result": "UNVERIFIED"
+      },
+      "compatibility": {
+        "scope": "internal and cross-component semantics",
+        "impact_if_changed": "REQUIRES_EQUIVALENCE_ANALYSIS"
+      },
+      "exceptions": [],
+      "status": "FORMALIZED",
+      "rationale": "Generalization must not rewrite historical scope or discard validated web behavior.",
+      "engineering_rationale": "Generalization must not rewrite historical scope or discard validated web behavior.",
+      "derivation_status": "JUSTIFIED_SOURCE_LOCAL_INPUT_BLOCKED",
+      "derivation_acceptance": "BLOCKED_BY_INPUT_CONTRACT_FAILED",
+      "strengthening": "ENGINEERING_STRENGTHENING",
+      "allowed_change": [
+        "Any mechanism preserving the declared semantics"
+      ],
+      "forbidden_change": [
+        "Silent semantic weakening",
+        "Retroactive attribution of a future mechanism"
+      ],
+      "failure_if_violated": "Semantic regression or unversioned compatibility break.",
+      "priority": "MEDIUM",
+      "priority_basis": {
+        "security_impact": "POSSIBLE_OR_NOT_PRIMARY",
+        "data_loss_impact": "POSSIBLE_OR_NOT_PRIMARY",
+        "concurrency_impact": "POSSIBLE_OR_NOT_PRIMARY",
+        "compatibility_impact": "POSSIBLE_OR_NOT_PRIMARY",
+        "historical_importance_is_not_current_risk": true
+      },
+      "invariant_ref": "INV-WEB-GENERALIZE",
+      "test_ref": "TEST-WEB-GENERALIZE",
+      "dependency_level": "L4",
+      "prerequisite_closure": [
+        "OBL-ACQ-BEFORE-INTERP",
+        "OBL-ACQ-SCOPE",
+        "OBL-AUTHORITY",
+        "OBL-CANDIDATE-IDENTITY"
+      ],
+      "closure_status": "OBLIGATION_UNVERIFIED",
+      "object_type": "OBLIGATION",
+      "schema_version": "1.0",
+      "lifecycle_status": "FORMALIZED",
+      "provenance": {
+        "source_artifact": "historical-source/obligations/OBLIGATIONS.yaml",
+        "source_object": "OBL-WEB-GENERALIZE",
+        "content_hash": "edb56ccdb408bfe3197f05c3a55e7627772d248d8c72c28e5b8c86566d25efa5",
+        "transformation": "REFERENCE_WRAPPER_NO_VERIFICATION_ESCALATION"
+      }
+    }
+  ]
+}

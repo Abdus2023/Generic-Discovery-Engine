@@ -1,0 +1,79 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "schema_version": "1.0",
+  "schema_change_class": "MAJOR",
+  "title": "v11.1 guidance",
+  "type": "object",
+  "required": [
+    "guidance_id",
+    "object_type",
+    "schema_version",
+    "lifecycle_status",
+    "provenance",
+    "title",
+    "statement",
+    "guidance_type",
+    "scope",
+    "related_requirements",
+    "related_obligations",
+    "epistemic_status",
+    "priority",
+    "examples",
+    "normative"
+  ],
+  "properties": {
+    "object_type": {
+      "type": "string"
+    },
+    "schema_version": {
+      "const": "1.0"
+    },
+    "lifecycle_status": {
+      "enum": [
+        "DISCOVERED",
+        "DERIVED",
+        "DRAFTED",
+        "FORMALIZED",
+        "IMPLEMENTED",
+        "PARTIALLY_IMPLEMENTED",
+        "VERIFIED",
+        "FAILED",
+        "SUPERSEDED",
+        "REJECTED",
+        "DEPRECATED",
+        "UNKNOWN"
+      ]
+    },
+    "provenance": {
+      "type": "object"
+    },
+    "guidance_type": {
+      "enum": [
+        "ARCHITECTURAL",
+        "IMPLEMENTATION",
+        "TESTING",
+        "OPERATIONS",
+        "MIGRATION",
+        "COMPATIBILITY",
+        "PERFORMANCE",
+        "SECURITY",
+        "DEBUGGING",
+        "DOCUMENTATION",
+        "MAINTENANCE",
+        "INTERPRETATION",
+        "EXAMPLE"
+      ]
+    },
+    "priority": {
+      "enum": [
+        "RECOMMENDED",
+        "OPTIONAL",
+        "INFORMATIONAL"
+      ]
+    },
+    "normative": {
+      "const": false
+    }
+  },
+  "additionalProperties": true
+}

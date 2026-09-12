@@ -1,1090 +1,1251 @@
 {
   "schema_version": "1.0",
-  "specification_version": "11.0",
+  "specification_version": "11.1",
   "overall_status": "STRUCTURAL_PASS_INPUT_REJECTED",
   "acceptance": "REJECTED_INVALID_OBLIGATION_PACKAGE",
   "summary": {
-    "total": 158,
-    "passed": 157,
+    "total": 178,
+    "passed": 177,
     "failed": 0,
     "blocked": 1
   },
-  "registry_counts": {
+  "object_counts": {
+    "evidence": 26,
+    "historical_properties": 198,
+    "source_obligations": 54,
     "requirements": 0,
     "rules": 0,
-    "criteria": 0,
+    "guidance": 3,
+    "rationales": 54,
+    "assumptions": 3,
+    "implementation_notes": 0,
+    "examples": 0,
+    "conditions": 0,
+    "predicates": 0,
+    "constraints": 0,
+    "acceptance_criteria": 0,
     "oracles": 0,
-    "orphan_obligations": 54
+    "invariants": 0,
+    "transitions": 0,
+    "effects": 0,
+    "exceptions": 0,
+    "dependencies": 0,
+    "conflicts": 0,
+    "compatibility": 0,
+    "boundaries": 0,
+    "verifications": 0,
+    "test_results": 0,
+    "conformance_records": 0
   },
   "checks": [
     {
       "check_id": "A01",
-      "category": "deliverables",
-      "description": "required v11 deliverable exists: INPUT-CONTRACT.yaml",
+      "category": "artifacts",
+      "description": "required v11.1 artifact exists: INPUT-CONTRACT.yaml",
       "result": "PASS",
       "detail": ""
     },
     {
       "check_id": "A02",
-      "category": "deliverables",
-      "description": "required v11 deliverable exists: REQUIREMENTS.yaml",
+      "category": "artifacts",
+      "description": "required v11.1 artifact exists: SPECIFICATION-MANIFEST.yaml",
       "result": "PASS",
       "detail": ""
     },
     {
       "check_id": "A03",
-      "category": "deliverables",
-      "description": "required v11 deliverable exists: NORMATIVE-RULES.yaml",
+      "category": "artifacts",
+      "description": "required v11.1 artifact exists: SPECIFICATION-CERTIFICATE.yaml",
       "result": "PASS",
       "detail": ""
     },
     {
       "check_id": "A04",
-      "category": "deliverables",
-      "description": "required v11 deliverable exists: ACCEPTANCE-CRITERIA.yaml",
+      "category": "artifacts",
+      "description": "required v11.1 artifact exists: EVIDENCE-REFERENCES.yaml",
       "result": "PASS",
       "detail": ""
     },
     {
       "check_id": "A05",
-      "category": "deliverables",
-      "description": "required v11 deliverable exists: TEST-ORACLES.yaml",
+      "category": "artifacts",
+      "description": "required v11.1 artifact exists: PROPERTY-REFERENCES.yaml",
       "result": "PASS",
       "detail": ""
     },
     {
       "check_id": "A06",
-      "category": "deliverables",
-      "description": "required v11 deliverable exists: REQUIREMENT-DEPENDENCIES.yaml",
+      "category": "artifacts",
+      "description": "required v11.1 artifact exists: OBLIGATION-REFERENCES.yaml",
       "result": "PASS",
       "detail": ""
     },
     {
       "check_id": "A07",
-      "category": "deliverables",
-      "description": "required v11 deliverable exists: REQUIREMENT-CONFLICTS.yaml",
+      "category": "artifacts",
+      "description": "required v11.1 artifact exists: REQUIREMENTS.yaml",
       "result": "PASS",
       "detail": ""
     },
     {
       "check_id": "A08",
-      "category": "deliverables",
-      "description": "required v11 deliverable exists: REQUIREMENT-SUPERSESSION.yaml",
+      "category": "artifacts",
+      "description": "required v11.1 artifact exists: NORMATIVE-RULES.yaml",
       "result": "PASS",
       "detail": ""
     },
     {
       "check_id": "A09",
-      "category": "deliverables",
-      "description": "required v11 deliverable exists: REQUIREMENT-COVERAGE.yaml",
+      "category": "artifacts",
+      "description": "required v11.1 artifact exists: CONDITIONS.yaml",
       "result": "PASS",
       "detail": ""
     },
     {
       "check_id": "A10",
-      "category": "deliverables",
-      "description": "required v11 deliverable exists: CONFORMANCE-MATRIX.yaml",
+      "category": "artifacts",
+      "description": "required v11.1 artifact exists: PREDICATES.yaml",
       "result": "PASS",
       "detail": ""
     },
     {
       "check_id": "A11",
-      "category": "deliverables",
-      "description": "required v11 deliverable exists: VERIFICATION-MATRIX.yaml",
+      "category": "artifacts",
+      "description": "required v11.1 artifact exists: CONSTRAINTS.yaml",
       "result": "PASS",
       "detail": ""
     },
     {
       "check_id": "A12",
-      "category": "deliverables",
-      "description": "required v11 deliverable exists: IMPLEMENTATION-BOUNDARIES.yaml",
+      "category": "artifacts",
+      "description": "required v11.1 artifact exists: GUIDANCE.yaml",
       "result": "PASS",
       "detail": ""
     },
     {
       "check_id": "A13",
-      "category": "deliverables",
-      "description": "required v11 deliverable exists: SEMANTIC-DIFFS.yaml",
+      "category": "artifacts",
+      "description": "required v11.1 artifact exists: RATIONALES.yaml",
       "result": "PASS",
       "detail": ""
     },
     {
       "check_id": "A14",
-      "category": "deliverables",
-      "description": "required v11 deliverable exists: TRACEABILITY.yaml",
+      "category": "artifacts",
+      "description": "required v11.1 artifact exists: ASSUMPTIONS.yaml",
       "result": "PASS",
       "detail": ""
     },
     {
       "check_id": "A15",
-      "category": "deliverables",
-      "description": "required v11 deliverable exists: CONFORMANCE.yaml",
+      "category": "artifacts",
+      "description": "required v11.1 artifact exists: IMPLEMENTATION-NOTES.yaml",
       "result": "PASS",
       "detail": ""
     },
     {
       "check_id": "A16",
-      "category": "deliverables",
-      "description": "required v11 deliverable exists: SPECIFICATION-CERTIFICATE.yaml",
+      "category": "artifacts",
+      "description": "required v11.1 artifact exists: EXAMPLES.yaml",
       "result": "PASS",
       "detail": ""
     },
     {
       "check_id": "A17",
-      "category": "deliverables",
-      "description": "required v11 deliverable exists: REQUIREMENTS.md",
+      "category": "artifacts",
+      "description": "required v11.1 artifact exists: ACCEPTANCE-CRITERIA.yaml",
       "result": "PASS",
       "detail": ""
     },
     {
       "check_id": "A18",
-      "category": "deliverables",
-      "description": "required v11 deliverable exists: NORMATIVE-RULES.md",
+      "category": "artifacts",
+      "description": "required v11.1 artifact exists: TEST-ORACLES.yaml",
       "result": "PASS",
       "detail": ""
     },
     {
       "check_id": "A19",
-      "category": "deliverables",
-      "description": "required v11 deliverable exists: ACCEPTANCE-CRITERIA.md",
+      "category": "artifacts",
+      "description": "required v11.1 artifact exists: INVARIANTS.yaml",
       "result": "PASS",
       "detail": ""
     },
     {
       "check_id": "A20",
-      "category": "deliverables",
-      "description": "required v11 deliverable exists: TEST-ORACLES.md",
+      "category": "artifacts",
+      "description": "required v11.1 artifact exists: TRANSITIONS.yaml",
       "result": "PASS",
       "detail": ""
     },
     {
       "check_id": "A21",
-      "category": "deliverables",
-      "description": "required v11 deliverable exists: REQUIREMENT-COVERAGE.md",
+      "category": "artifacts",
+      "description": "required v11.1 artifact exists: EFFECTS.yaml",
       "result": "PASS",
       "detail": ""
     },
     {
       "check_id": "A22",
-      "category": "deliverables",
-      "description": "required v11 deliverable exists: REQUIREMENT-DEPENDENCIES.md",
+      "category": "artifacts",
+      "description": "required v11.1 artifact exists: EXCEPTIONS.yaml",
       "result": "PASS",
       "detail": ""
     },
     {
       "check_id": "A23",
-      "category": "deliverables",
-      "description": "required v11 deliverable exists: REQUIREMENT-CONFLICTS.md",
+      "category": "artifacts",
+      "description": "required v11.1 artifact exists: REQUIREMENT-DEPENDENCIES.yaml",
       "result": "PASS",
       "detail": ""
     },
     {
       "check_id": "A24",
-      "category": "deliverables",
-      "description": "required v11 deliverable exists: CONFORMANCE-MATRIX.md",
+      "category": "artifacts",
+      "description": "required v11.1 artifact exists: REQUIREMENT-CONFLICTS.yaml",
       "result": "PASS",
       "detail": ""
     },
     {
       "check_id": "A25",
-      "category": "deliverables",
-      "description": "required v11 deliverable exists: VERIFICATION-MATRIX.md",
+      "category": "artifacts",
+      "description": "required v11.1 artifact exists: REQUIREMENT-SUPERSESSION.yaml",
       "result": "PASS",
       "detail": ""
     },
     {
       "check_id": "A26",
-      "category": "deliverables",
-      "description": "required v11 deliverable exists: IMPLEMENTATION-BOUNDARIES.md",
+      "category": "artifacts",
+      "description": "required v11.1 artifact exists: COMPATIBILITY.yaml",
       "result": "PASS",
       "detail": ""
     },
     {
       "check_id": "A27",
-      "category": "deliverables",
-      "description": "required v11 deliverable exists: SEMANTIC-DIFFS.md",
+      "category": "artifacts",
+      "description": "required v11.1 artifact exists: IMPLEMENTATION-BOUNDARIES.yaml",
       "result": "PASS",
       "detail": ""
     },
     {
       "check_id": "A28",
-      "category": "deliverables",
-      "description": "required v11 deliverable exists: TRACEABILITY.md",
+      "category": "artifacts",
+      "description": "required v11.1 artifact exists: VERIFICATION.yaml",
       "result": "PASS",
       "detail": ""
     },
     {
       "check_id": "A29",
-      "category": "deliverables",
-      "description": "required v11 deliverable exists: SPECIFICATION-AUDIT.md",
+      "category": "artifacts",
+      "description": "required v11.1 artifact exists: TEST-RESULTS.yaml",
       "result": "PASS",
       "detail": ""
     },
     {
       "check_id": "A30",
-      "category": "deliverables",
-      "description": "required v11 deliverable exists: FINAL-SPECIFICATION.md",
+      "category": "artifacts",
+      "description": "required v11.1 artifact exists: CONFORMANCE.yaml",
       "result": "PASS",
       "detail": ""
     },
     {
       "check_id": "A31",
-      "category": "deliverables",
-      "description": "required v11 deliverable exists: schema/requirement.schema.yaml",
+      "category": "artifacts",
+      "description": "required v11.1 artifact exists: TRACEABILITY.yaml",
       "result": "PASS",
       "detail": ""
     },
     {
       "check_id": "A32",
-      "category": "deliverables",
-      "description": "required v11 deliverable exists: schema/normative-rule.schema.yaml",
+      "category": "artifacts",
+      "description": "required v11.1 artifact exists: REPORTS/REQUIREMENTS.md",
       "result": "PASS",
       "detail": ""
     },
     {
       "check_id": "A33",
-      "category": "deliverables",
-      "description": "required v11 deliverable exists: schema/acceptance-criterion.schema.yaml",
+      "category": "artifacts",
+      "description": "required v11.1 artifact exists: REPORTS/NORMATIVE-RULES.md",
       "result": "PASS",
       "detail": ""
     },
     {
       "check_id": "A34",
-      "category": "deliverables",
-      "description": "required v11 deliverable exists: schema/test-oracle.schema.yaml",
+      "category": "artifacts",
+      "description": "required v11.1 artifact exists: REPORTS/GUIDANCE.md",
       "result": "PASS",
       "detail": ""
     },
     {
       "check_id": "A35",
-      "category": "deliverables",
-      "description": "required v11 deliverable exists: schema/requirement-dependency.schema.yaml",
+      "category": "artifacts",
+      "description": "required v11.1 artifact exists: REPORTS/ACCEPTANCE-CRITERIA.md",
       "result": "PASS",
       "detail": ""
     },
     {
       "check_id": "A36",
-      "category": "deliverables",
-      "description": "required v11 deliverable exists: schema/traceability.schema.yaml",
+      "category": "artifacts",
+      "description": "required v11.1 artifact exists: REPORTS/TEST-ORACLES.md",
       "result": "PASS",
       "detail": ""
     },
     {
       "check_id": "A37",
-      "category": "deliverables",
-      "description": "required v11 deliverable exists: schema/specification-certificate.schema.yaml",
+      "category": "artifacts",
+      "description": "required v11.1 artifact exists: REPORTS/DEPENDENCIES.md",
+      "result": "PASS",
+      "detail": ""
+    },
+    {
+      "check_id": "A38",
+      "category": "artifacts",
+      "description": "required v11.1 artifact exists: REPORTS/CONFLICTS.md",
+      "result": "PASS",
+      "detail": ""
+    },
+    {
+      "check_id": "A39",
+      "category": "artifacts",
+      "description": "required v11.1 artifact exists: REPORTS/CONFORMANCE.md",
+      "result": "PASS",
+      "detail": ""
+    },
+    {
+      "check_id": "A40",
+      "category": "artifacts",
+      "description": "required v11.1 artifact exists: REPORTS/VERIFICATION.md",
+      "result": "PASS",
+      "detail": ""
+    },
+    {
+      "check_id": "A41",
+      "category": "artifacts",
+      "description": "required v11.1 artifact exists: REPORTS/TRACEABILITY.md",
+      "result": "PASS",
+      "detail": ""
+    },
+    {
+      "check_id": "A42",
+      "category": "artifacts",
+      "description": "required v11.1 artifact exists: REPORTS/SPECIFICATION-AUDIT.md",
+      "result": "PASS",
+      "detail": ""
+    },
+    {
+      "check_id": "A43",
+      "category": "artifacts",
+      "description": "required v11.1 artifact exists: REPORTS/FINAL-SPECIFICATION.md",
+      "result": "PASS",
+      "detail": ""
+    },
+    {
+      "check_id": "A44",
+      "category": "artifacts",
+      "description": "required v11.1 artifact exists: SCHEMA/specification.schema.yaml",
+      "result": "PASS",
+      "detail": ""
+    },
+    {
+      "check_id": "A45",
+      "category": "artifacts",
+      "description": "required v11.1 artifact exists: SCHEMA/requirement.schema.yaml",
+      "result": "PASS",
+      "detail": ""
+    },
+    {
+      "check_id": "A46",
+      "category": "artifacts",
+      "description": "required v11.1 artifact exists: SCHEMA/rule.schema.yaml",
+      "result": "PASS",
+      "detail": ""
+    },
+    {
+      "check_id": "A47",
+      "category": "artifacts",
+      "description": "required v11.1 artifact exists: SCHEMA/guidance.schema.yaml",
+      "result": "PASS",
+      "detail": ""
+    },
+    {
+      "check_id": "A48",
+      "category": "artifacts",
+      "description": "required v11.1 artifact exists: SCHEMA/rationale.schema.yaml",
+      "result": "PASS",
+      "detail": ""
+    },
+    {
+      "check_id": "A49",
+      "category": "artifacts",
+      "description": "required v11.1 artifact exists: SCHEMA/assumption.schema.yaml",
+      "result": "PASS",
+      "detail": ""
+    },
+    {
+      "check_id": "A50",
+      "category": "artifacts",
+      "description": "required v11.1 artifact exists: SCHEMA/implementation-note.schema.yaml",
+      "result": "PASS",
+      "detail": ""
+    },
+    {
+      "check_id": "A51",
+      "category": "artifacts",
+      "description": "required v11.1 artifact exists: SCHEMA/example.schema.yaml",
+      "result": "PASS",
+      "detail": ""
+    },
+    {
+      "check_id": "A52",
+      "category": "artifacts",
+      "description": "required v11.1 artifact exists: SCHEMA/condition.schema.yaml",
+      "result": "PASS",
+      "detail": ""
+    },
+    {
+      "check_id": "A53",
+      "category": "artifacts",
+      "description": "required v11.1 artifact exists: SCHEMA/predicate.schema.yaml",
+      "result": "PASS",
+      "detail": ""
+    },
+    {
+      "check_id": "A54",
+      "category": "artifacts",
+      "description": "required v11.1 artifact exists: SCHEMA/constraint.schema.yaml",
+      "result": "PASS",
+      "detail": ""
+    },
+    {
+      "check_id": "A55",
+      "category": "artifacts",
+      "description": "required v11.1 artifact exists: SCHEMA/acceptance-criterion.schema.yaml",
+      "result": "PASS",
+      "detail": ""
+    },
+    {
+      "check_id": "A56",
+      "category": "artifacts",
+      "description": "required v11.1 artifact exists: SCHEMA/oracle.schema.yaml",
+      "result": "PASS",
+      "detail": ""
+    },
+    {
+      "check_id": "A57",
+      "category": "artifacts",
+      "description": "required v11.1 artifact exists: SCHEMA/invariant.schema.yaml",
+      "result": "PASS",
+      "detail": ""
+    },
+    {
+      "check_id": "A58",
+      "category": "artifacts",
+      "description": "required v11.1 artifact exists: SCHEMA/transition.schema.yaml",
+      "result": "PASS",
+      "detail": ""
+    },
+    {
+      "check_id": "A59",
+      "category": "artifacts",
+      "description": "required v11.1 artifact exists: SCHEMA/effect.schema.yaml",
+      "result": "PASS",
+      "detail": ""
+    },
+    {
+      "check_id": "A60",
+      "category": "artifacts",
+      "description": "required v11.1 artifact exists: SCHEMA/exception.schema.yaml",
+      "result": "PASS",
+      "detail": ""
+    },
+    {
+      "check_id": "A61",
+      "category": "artifacts",
+      "description": "required v11.1 artifact exists: SCHEMA/compatibility.schema.yaml",
+      "result": "PASS",
+      "detail": ""
+    },
+    {
+      "check_id": "A62",
+      "category": "artifacts",
+      "description": "required v11.1 artifact exists: SCHEMA/dependency.schema.yaml",
+      "result": "PASS",
+      "detail": ""
+    },
+    {
+      "check_id": "A63",
+      "category": "artifacts",
+      "description": "required v11.1 artifact exists: SCHEMA/conflict.schema.yaml",
+      "result": "PASS",
+      "detail": ""
+    },
+    {
+      "check_id": "A64",
+      "category": "artifacts",
+      "description": "required v11.1 artifact exists: SCHEMA/supersession.schema.yaml",
+      "result": "PASS",
+      "detail": ""
+    },
+    {
+      "check_id": "A65",
+      "category": "artifacts",
+      "description": "required v11.1 artifact exists: SCHEMA/boundary.schema.yaml",
+      "result": "PASS",
+      "detail": ""
+    },
+    {
+      "check_id": "A66",
+      "category": "artifacts",
+      "description": "required v11.1 artifact exists: SCHEMA/verification.schema.yaml",
+      "result": "PASS",
+      "detail": ""
+    },
+    {
+      "check_id": "A67",
+      "category": "artifacts",
+      "description": "required v11.1 artifact exists: SCHEMA/test-result.schema.yaml",
+      "result": "PASS",
+      "detail": ""
+    },
+    {
+      "check_id": "A68",
+      "category": "artifacts",
+      "description": "required v11.1 artifact exists: SCHEMA/conformance.schema.yaml",
+      "result": "PASS",
+      "detail": ""
+    },
+    {
+      "check_id": "A69",
+      "category": "artifacts",
+      "description": "required v11.1 artifact exists: SCHEMA/traceability.schema.yaml",
+      "result": "PASS",
+      "detail": ""
+    },
+    {
+      "check_id": "A70",
+      "category": "artifacts",
+      "description": "required v11.1 artifact exists: SCHEMA/evidence.schema.yaml",
+      "result": "PASS",
+      "detail": ""
+    },
+    {
+      "check_id": "A71",
+      "category": "artifacts",
+      "description": "required v11.1 artifact exists: SCHEMA/property.schema.yaml",
+      "result": "PASS",
+      "detail": ""
+    },
+    {
+      "check_id": "A72",
+      "category": "artifacts",
+      "description": "required v11.1 artifact exists: SCHEMA/obligation.schema.yaml",
+      "result": "PASS",
+      "detail": ""
+    },
+    {
+      "check_id": "A73",
+      "category": "artifacts",
+      "description": "required v11.1 artifact exists: SCHEMA/certificate.schema.yaml",
       "result": "PASS",
       "detail": ""
     },
     {
       "check_id": "I01",
       "category": "input",
-      "description": "all eight v10.1 input roles are present",
+      "description": "complete v10.1 role set is bound",
       "result": "PASS",
       "detail": ""
     },
     {
       "check_id": "I02",
       "category": "input",
-      "description": "every input records required identity and integrity fields",
+      "description": "all input identity/hash fields exist",
       "result": "PASS",
       "detail": ""
     },
     {
       "check_id": "I03",
       "category": "input",
-      "description": "all selected input paths exist",
+      "description": "all selected input hashes match",
       "result": "PASS",
       "detail": ""
     },
     {
       "check_id": "I04",
       "category": "input",
-      "description": "all selected content hashes match",
+      "description": "v10.1 failure is preserved",
       "result": "PASS",
       "detail": ""
     },
     {
       "check_id": "I05",
       "category": "input",
-      "description": "input/schema versions are v11/1.0",
+      "description": "v11.1 gate is explicitly closed",
       "result": "PASS",
       "detail": ""
     },
     {
       "check_id": "I06",
       "category": "input",
-      "description": "v10.1 failed status is propagated, not repaired",
+      "description": "all applicable rejection states are emitted",
       "result": "PASS",
       "detail": ""
     },
     {
       "check_id": "I07",
       "category": "input",
-      "description": "derivation gate is closed",
+      "description": "failure classes are valid and independently classified",
       "result": "PASS",
       "detail": ""
     },
     {
       "check_id": "I08",
       "category": "input",
-      "description": "all normative input rejection states are registered",
+      "description": "all 54 source obligations remain unverified",
       "result": "PASS",
       "detail": ""
     },
     {
       "check_id": "I09",
       "category": "input",
-      "description": "applicable invalid-package states are emitted",
+      "description": "UNKNOWN obligations are not escalated",
       "result": "PASS",
       "detail": ""
     },
     {
       "check_id": "I10",
       "category": "input",
-      "description": "no unregistered rejection state is emitted",
+      "description": "UNKNOWN properties are not escalated",
       "result": "PASS",
       "detail": ""
     },
     {
       "check_id": "I11",
       "category": "input",
-      "description": "all obligations are correctly counted as unverified",
+      "description": "unresolved obligation conflicts remain explicit",
       "result": "PASS",
       "detail": ""
     },
     {
-      "check_id": "I12",
-      "category": "input",
-      "description": "UNKNOWN obligations are surfaced",
+      "check_id": "W01",
+      "category": "wrappers",
+      "description": "all evidence records are wrapped without count loss",
       "result": "PASS",
       "detail": ""
     },
     {
-      "check_id": "I13",
-      "category": "input",
-      "description": "UNKNOWN properties are surfaced",
+      "check_id": "W02",
+      "category": "wrappers",
+      "description": "all properties are wrapped without count loss",
       "result": "PASS",
       "detail": ""
     },
     {
-      "check_id": "I14",
-      "category": "input",
-      "description": "unresolved obligation conflicts are surfaced",
+      "check_id": "W03",
+      "category": "wrappers",
+      "description": "all obligations are wrapped without count loss",
       "result": "PASS",
       "detail": ""
     },
     {
-      "check_id": "I15",
-      "category": "input",
-      "description": "v10.1 dependency graph remains structurally valid",
+      "check_id": "W04",
+      "category": "wrappers",
+      "description": "wrapper object type/schema/lifecycle/provenance fields exist",
       "result": "PASS",
       "detail": ""
     },
     {
-      "check_id": "I16",
-      "category": "input",
-      "description": "v10.1 lineage references remain valid",
+      "check_id": "W05",
+      "category": "wrappers",
+      "description": "wrapper epistemic and verification status is not strengthened",
       "result": "PASS",
       "detail": ""
     },
     {
-      "check_id": "I17",
-      "category": "input",
-      "description": "validation order starts with failed input gate",
+      "check_id": "W06",
+      "category": "wrappers",
+      "description": "property epistemic status is byte-model equivalent",
       "result": "PASS",
       "detail": ""
     },
     {
-      "check_id": "L01",
-      "category": "layers",
-      "description": "no requirement is derived from invalid input",
+      "check_id": "W07",
+      "category": "wrappers",
+      "description": "obligation lifecycle and verification remain unverified",
       "result": "PASS",
       "detail": ""
     },
     {
-      "check_id": "L02",
-      "category": "layers",
-      "description": "no rule substitutes for a requirement",
+      "check_id": "W08",
+      "category": "wrappers",
+      "description": "all wrapper source hashes resolve",
       "result": "PASS",
       "detail": ""
     },
     {
-      "check_id": "L03",
-      "category": "layers",
-      "description": "no criterion substitutes for a rule/requirement",
+      "check_id": "N01",
+      "category": "normative",
+      "description": "all normative/downstream registries are empty under closed gate",
       "result": "PASS",
       "detail": ""
     },
     {
-      "check_id": "L04",
-      "category": "layers",
-      "description": "no oracle substitutes for a criterion",
+      "check_id": "N02",
+      "category": "normative",
+      "description": "no conformance claim is made",
       "result": "PASS",
       "detail": ""
     },
     {
-      "check_id": "L05",
-      "category": "layers",
-      "description": "no implementation boundary is invented",
+      "check_id": "N03",
+      "category": "normative",
+      "description": "requirement type/disposition/strength axes are exact and independent",
       "result": "PASS",
       "detail": ""
     },
     {
-      "check_id": "L06",
-      "category": "layers",
-      "description": "no conformance claim is fabricated",
+      "check_id": "N04",
+      "category": "normative",
+      "description": "DEDUPLICATION canonical spelling is used",
       "result": "PASS",
       "detail": ""
     },
     {
-      "check_id": "L07",
-      "category": "layers",
-      "description": "obligation dependencies are not copied into requirement graph",
+      "check_id": "N05",
+      "category": "normative",
+      "description": "rule operators are canonical",
       "result": "PASS",
       "detail": ""
     },
     {
-      "check_id": "L08",
-      "category": "layers",
-      "description": "obligation conflicts are not relabeled requirement conflicts",
+      "check_id": "N06",
+      "category": "normative",
+      "description": "predicate and compound types remain distinct",
       "result": "PASS",
       "detail": ""
     },
     {
-      "check_id": "L09",
-      "category": "layers",
-      "description": "requirement supersession remains independent and empty",
+      "check_id": "N07",
+      "category": "normative",
+      "description": "REQUIRES graph is empty and acyclic",
       "result": "PASS",
       "detail": ""
     },
     {
-      "check_id": "L10",
-      "category": "layers",
-      "description": "semantic narrowing/widening do not pass vacuously",
+      "check_id": "N08",
+      "category": "normative",
+      "description": "no obligation conflict is relabeled",
       "result": "PASS",
       "detail": ""
     },
     {
-      "check_id": "L11",
-      "category": "layers",
-      "description": "assumptions and exceptions are first-class machine records",
+      "check_id": "N09",
+      "category": "normative",
+      "description": "no compatibility/exact preservation claim is fabricated",
       "result": "PASS",
       "detail": ""
     },
     {
-      "check_id": "L12",
-      "category": "layers",
-      "description": "configuration and environment assumptions are not silently invented",
+      "check_id": "N10",
+      "category": "normative",
+      "description": "no implementation boundary is substituted for requirement",
       "result": "PASS",
       "detail": ""
     },
     {
-      "check_id": "R00",
-      "category": "registry",
-      "description": "DEDU PLICATION is normalized to DEDUPLICATION",
+      "check_id": "G01",
+      "category": "guidance",
+      "description": "three explicit guidance objects are emitted",
       "result": "PASS",
       "detail": ""
     },
     {
-      "check_id": "R01",
-      "category": "registry",
-      "description": "requirement type registry is exact",
+      "check_id": "G02",
+      "category": "guidance",
+      "description": "guidance type and priority values are valid",
       "result": "PASS",
       "detail": ""
     },
     {
-      "check_id": "R02",
-      "category": "registry",
-      "description": "disposition registry is exact",
+      "check_id": "G03",
+      "category": "guidance",
+      "description": "guidance is explicitly non-normative",
       "result": "PASS",
       "detail": ""
     },
     {
-      "check_id": "R03",
-      "category": "registry",
-      "description": "requirement strength registry is exact",
+      "check_id": "G04",
+      "category": "guidance",
+      "description": "guidance contains no normative operator",
       "result": "PASS",
       "detail": ""
     },
     {
-      "check_id": "R04",
-      "category": "registry",
-      "description": "scope registry is exact",
+      "check_id": "G05",
+      "category": "guidance",
+      "description": "one rationale exists per obligation",
       "result": "PASS",
       "detail": ""
     },
     {
-      "check_id": "R05",
-      "category": "registry",
-      "description": "epistemic registry remains independent",
+      "check_id": "G06",
+      "category": "guidance",
+      "description": "rationales retain source property/evidence links",
       "result": "PASS",
       "detail": ""
     },
     {
-      "check_id": "R06",
-      "category": "registry",
-      "description": "lifecycle registry remains independent",
+      "check_id": "G07",
+      "category": "guidance",
+      "description": "rationales remain non-normative",
       "result": "PASS",
       "detail": ""
     },
     {
-      "check_id": "R07",
-      "category": "registry",
-      "description": "requirement dependency relation registry is exact",
+      "check_id": "G08",
+      "category": "guidance",
+      "description": "assumptions are explicit and independently validated",
       "result": "PASS",
       "detail": ""
     },
     {
-      "check_id": "R08",
-      "category": "registry",
-      "description": "criticality remains a separate registry",
+      "check_id": "G09",
+      "category": "guidance",
+      "description": "implementation notes are not used as rules",
       "result": "PASS",
       "detail": ""
     },
     {
-      "check_id": "R09",
-      "category": "registry",
-      "description": "conformance and verification levels remain separate",
+      "check_id": "G10",
+      "category": "guidance",
+      "description": "examples cannot define normative scope",
       "result": "PASS",
       "detail": ""
     },
     {
-      "check_id": "R10",
-      "category": "registry",
-      "description": "forbidden equivalences are explicit",
+      "check_id": "G11",
+      "category": "guidance",
+      "description": "all non-normative provenance hashes resolve",
       "result": "PASS",
       "detail": ""
     },
     {
-      "check_id": "R11",
-      "category": "registry",
-      "description": "all fifteen v11 pipeline invariants are enforced by the rejection gate",
+      "check_id": "G12",
+      "category": "guidance",
+      "description": "harness boundary is separate and non-mutating",
       "result": "PASS",
       "detail": ""
     },
     {
-      "check_id": "R12",
-      "category": "registry",
-      "description": "compatibility and historical preservation modes are explicit",
+      "check_id": "O01",
+      "category": "objects",
+      "description": "all instantiated first-class IDs are globally unique",
       "result": "PASS",
       "detail": ""
     },
     {
-      "check_id": "R13",
-      "category": "registry",
-      "description": "historical preservation matrix is empty rather than fabricated",
+      "check_id": "O02",
+      "category": "objects",
+      "description": "all instantiated objects have type/schema/lifecycle/provenance",
       "result": "PASS",
       "detail": ""
     },
     {
-      "check_id": "REQ-001",
-      "category": "machine_rules",
-      "description": "source obligations are non-empty unless expressly new/future/design",
+      "check_id": "O03",
+      "category": "objects",
+      "description": "all rationale references resolve",
       "result": "PASS",
       "detail": ""
     },
     {
-      "check_id": "REQ-002",
-      "category": "machine_rules",
-      "description": "MANDATORY requirements have acceptance criteria",
+      "check_id": "O04",
+      "category": "objects",
+      "description": "all guidance obligation references resolve",
       "result": "PASS",
       "detail": ""
     },
     {
-      "check_id": "REQ-003",
-      "category": "machine_rules",
-      "description": "MANDATORY behavioral/security requirements have oracles",
+      "check_id": "O05",
+      "category": "objects",
+      "description": "all assumption affected references resolve or are explicitly empty",
       "result": "PASS",
       "detail": ""
     },
     {
-      "check_id": "REQ-004",
-      "category": "machine_rules",
-      "description": "all obligation references resolve",
+      "check_id": "O06",
+      "category": "objects",
+      "description": "no broken final mandatory reference can exist",
       "result": "PASS",
       "detail": ""
     },
     {
-      "check_id": "REQ-005",
-      "category": "machine_rules",
-      "description": "all property references resolve",
+      "check_id": "S01",
+      "category": "schemas",
+      "description": "all 30 dedicated schemas are present",
       "result": "PASS",
       "detail": ""
     },
     {
-      "check_id": "REQ-006",
-      "category": "machine_rules",
-      "description": "all rule references resolve",
+      "check_id": "S02",
+      "category": "schemas",
+      "description": "every schema declares version 1.0",
       "result": "PASS",
       "detail": ""
     },
     {
-      "check_id": "REQ-007",
-      "category": "machine_rules",
-      "description": "all oracle references resolve",
+      "check_id": "S03",
+      "category": "schemas",
+      "description": "required 25-schema tree is complete",
       "result": "PASS",
       "detail": ""
     },
     {
-      "check_id": "REQ-008",
-      "category": "machine_rules",
-      "description": "dependency edges reference existing requirements",
+      "check_id": "S04",
+      "category": "schemas",
+      "description": "constraint/evidence/property/obligation/certificate extension schemas exist",
       "result": "PASS",
       "detail": ""
     },
     {
-      "check_id": "REQ-009",
-      "category": "machine_rules",
-      "description": "REQUIRES self-dependency is forbidden",
+      "check_id": "S05",
+      "category": "schemas",
+      "description": "requirement schema keeps normative and supporting references separate",
       "result": "PASS",
       "detail": ""
     },
     {
-      "check_id": "REQ-010",
-      "category": "machine_rules",
-      "description": "REQUIRES graph is acyclic",
+      "check_id": "S06",
+      "category": "schemas",
+      "description": "guidance and example schemas force non-normative classification",
       "result": "PASS",
       "detail": ""
     },
     {
-      "check_id": "REQ-011",
-      "category": "machine_rules",
-      "description": "CONFLICTS_WITH is symmetric or explicitly directional",
+      "check_id": "S07",
+      "category": "schemas",
+      "description": "predicate schema supports controlled recursion",
       "result": "PASS",
       "detail": ""
     },
     {
-      "check_id": "REQ-012",
-      "category": "machine_rules",
-      "description": "SUPERSEDES identifies effective scope",
+      "check_id": "S08",
+      "category": "schemas",
+      "description": "rule schema allows only canonical operators",
       "result": "PASS",
       "detail": ""
     },
     {
-      "check_id": "REQ-013",
-      "category": "machine_rules",
-      "description": "VERIFIED requirements possess verification evidence",
+      "check_id": "S09",
+      "category": "schemas",
+      "description": "all object schemas require identity/type/schema/lifecycle/provenance",
       "result": "PASS",
       "detail": ""
     },
     {
-      "check_id": "REQ-014",
-      "category": "machine_rules",
-      "description": "PROVED is not inferred solely from implementation",
-      "result": "PASS",
-      "detail": ""
-    },
-    {
-      "check_id": "REQ-015",
-      "category": "machine_rules",
-      "description": "historical requirements trace to source evidence",
-      "result": "PASS",
-      "detail": ""
-    },
-    {
-      "check_id": "C01",
-      "category": "coverage",
-      "description": "every obligation has one coverage record",
-      "result": "PASS",
-      "detail": ""
-    },
-    {
-      "check_id": "C02",
-      "category": "coverage",
-      "description": "all obligation coverage is blocked",
-      "result": "PASS",
-      "detail": ""
-    },
-    {
-      "check_id": "C03",
-      "category": "coverage",
-      "description": "all orphan obligations are reported",
-      "result": "PASS",
-      "detail": ""
-    },
-    {
-      "check_id": "C04",
-      "category": "coverage",
-      "description": "no orphan requirement is hidden",
-      "result": "PASS",
-      "detail": ""
-    },
-    {
-      "check_id": "C05",
-      "category": "coverage",
-      "description": "all six coverage dimensions remain independent",
-      "result": "PASS",
-      "detail": ""
-    },
-    {
-      "check_id": "C06",
-      "category": "coverage",
-      "description": "single aggregate percentage is forbidden",
+      "check_id": "S10",
+      "category": "schemas",
+      "description": "schema changes are classified",
       "result": "PASS",
       "detail": ""
     },
     {
       "check_id": "T01",
       "category": "traceability",
-      "description": "trace graph supports exact reverse traversal",
+      "description": "single canonical chain is exact",
       "result": "PASS",
       "detail": ""
     },
     {
       "check_id": "T02",
       "category": "traceability",
-      "description": "trace graph stops at obligation",
+      "description": "trace terminates at obligation",
       "result": "PASS",
       "detail": ""
     },
     {
       "check_id": "T03",
       "category": "traceability",
-      "description": "all source obligation/property nodes are retained",
+      "description": "all edge endpoints resolve",
       "result": "PASS",
       "detail": ""
     },
     {
       "check_id": "T04",
       "category": "traceability",
-      "description": "source/evidence provenance edges are present",
+      "description": "canonical forward edges use FORMALIZED_AS",
       "result": "PASS",
       "detail": ""
     },
     {
-      "check_id": "V01",
-      "category": "verification",
-      "description": "upstream tests remain unverified",
+      "check_id": "T05",
+      "category": "traceability",
+      "description": "supporting edges use only non-canonical attachment relations",
       "result": "PASS",
       "detail": ""
     },
     {
-      "check_id": "V02",
-      "category": "verification",
-      "description": "no v11 test result is fabricated",
+      "check_id": "T06",
+      "category": "traceability",
+      "description": "exact reverse traversal is available",
       "result": "PASS",
       "detail": ""
     },
     {
-      "check_id": "V03",
-      "category": "verification",
-      "description": "harness/system failure classes remain distinct",
+      "check_id": "T07",
+      "category": "traceability",
+      "description": "all source objects remain represented",
       "result": "PASS",
       "detail": ""
     },
     {
-      "check_id": "V04",
-      "category": "verification",
-      "description": "test existence is not treated as verification",
+      "check_id": "T08",
+      "category": "traceability",
+      "description": "supporting records do not extend canonical normative chain",
       "result": "PASS",
       "detail": ""
     },
     {
-      "check_id": "V05",
-      "category": "verification",
-      "description": "test harness contract defines all required dimensions without altering semantics",
+      "check_id": "T09",
+      "category": "traceability",
+      "description": "traceability objects have complete identity and provenance",
       "result": "PASS",
       "detail": ""
     },
     {
-      "check_id": "V06",
-      "category": "verification",
-      "description": "negative and mutation testing policies remain explicit",
-      "result": "PASS",
-      "detail": ""
-    },
-    {
-      "check_id": "S01",
+      "check_id": "A80",
       "category": "audit",
-      "description": "all protocol failure modes are registered",
+      "description": "audit executes all fourteen stages in order",
       "result": "PASS",
       "detail": ""
     },
     {
-      "check_id": "S02",
+      "check_id": "A81",
       "category": "audit",
-      "description": "detected failures are explicit",
+      "description": "all thirteen completeness dimensions are independent",
       "result": "PASS",
       "detail": ""
     },
     {
-      "check_id": "S03",
+      "check_id": "A82",
       "category": "audit",
-      "description": "validation procedure has all 15 ordered steps",
+      "description": "all twenty final invariants pass by explicit separation/gating",
       "result": "PASS",
       "detail": ""
     },
     {
-      "check_id": "S-TRACE",
+      "check_id": "A83",
       "category": "audit",
-      "description": "completeness dimension is reported: TRACEABILITY_COMPLETENESS",
+      "description": "all specification failure classes are registered",
       "result": "PASS",
       "detail": ""
     },
     {
-      "check_id": "S-SEMAN",
+      "check_id": "A84",
       "category": "audit",
-      "description": "completeness dimension is reported: SEMANTIC_COMPLETENESS",
+      "description": "no aggregate percentage conceals blockers",
       "result": "PASS",
       "detail": ""
     },
     {
-      "check_id": "S-VALID",
-      "category": "audit",
-      "description": "completeness dimension is reported: VALIDATION_COMPLETENESS",
+      "check_id": "M01",
+      "category": "manifest",
+      "description": "manifest identity/version is exact",
       "result": "PASS",
       "detail": ""
     },
     {
-      "check_id": "S-VERIF",
-      "category": "audit",
-      "description": "completeness dimension is reported: VERIFICATION_COMPLETENESS",
+      "check_id": "M02",
+      "category": "manifest",
+      "description": "manifest object counts are exact",
       "result": "PASS",
       "detail": ""
     },
     {
-      "check_id": "S-FAILU",
-      "category": "audit",
-      "description": "completeness dimension is reported: FAILURE_COMPLETENESS",
+      "check_id": "M03",
+      "category": "manifest",
+      "description": "manifest input hashes match contract",
       "result": "PASS",
       "detail": ""
     },
     {
-      "check_id": "S-SECUR",
-      "category": "audit",
-      "description": "completeness dimension is reported: SECURITY_COMPLETENESS",
+      "check_id": "M04",
+      "category": "manifest",
+      "description": "manifest retains deterministic unknown generation time",
       "result": "PASS",
       "detail": ""
     },
     {
-      "check_id": "S-COMPA",
-      "category": "audit",
-      "description": "completeness dimension is reported: COMPATIBILITY_COMPLETENESS",
+      "check_id": "M05",
+      "category": "manifest",
+      "description": "manifest validation fails rather than overclaims",
       "result": "PASS",
       "detail": ""
     },
     {
-      "check_id": "S-IMPLE",
-      "category": "audit",
-      "description": "completeness dimension is reported: IMPLEMENTATION_BOUNDARY_COMPLETENESS",
+      "check_id": "M06",
+      "category": "manifest",
+      "description": "manifest lists exact generator-owned deliverables",
       "result": "PASS",
       "detail": ""
     },
     {
-      "check_id": "S12",
-      "category": "audit",
-      "description": "hidden assumptions are explicit",
+      "check_id": "M07",
+      "category": "manifest",
+      "description": "manifest defines the single canonical transformation",
       "result": "PASS",
       "detail": ""
     },
     {
-      "check_id": "S13",
-      "category": "audit",
-      "description": "future architecture is not used to repair history",
+      "check_id": "M08",
+      "category": "manifest",
+      "description": "each transformation stage has one primary responsibility",
       "result": "PASS",
       "detail": ""
     },
     {
-      "check_id": "CERT-01",
+      "check_id": "M09",
+      "category": "manifest",
+      "description": "normative and non-normative semantic planes are explicit",
+      "result": "PASS",
+      "detail": ""
+    },
+    {
+      "check_id": "C01",
       "category": "certificate",
       "description": "certificate hash is valid",
       "result": "PASS",
       "detail": ""
     },
     {
-      "check_id": "CERT-02",
+      "check_id": "C02",
       "category": "certificate",
-      "description": "certificate identifies v11 and deterministic unknown timestamp",
+      "description": "certificate and manifest hashes agree",
       "result": "PASS",
       "detail": ""
     },
     {
-      "check_id": "CERT-03",
+      "check_id": "C03",
       "category": "certificate",
-      "description": "certificate counts match rejected registries",
+      "description": "certificate version/status are truthful",
       "result": "PASS",
       "detail": ""
     },
     {
-      "check_id": "CERT-04",
+      "check_id": "C04",
       "category": "certificate",
-      "description": "orphan counts are exact",
+      "description": "certificate counts match manifest",
       "result": "PASS",
       "detail": ""
     },
     {
-      "check_id": "CERT-05",
+      "check_id": "C05",
       "category": "certificate",
-      "description": "input hashes match input contract",
+      "description": "all seven coverage dimensions remain blocked",
       "result": "PASS",
       "detail": ""
     },
     {
-      "check_id": "CERT-06",
+      "check_id": "C06",
       "category": "certificate",
-      "description": "certificate fails rather than overclaims",
+      "description": "certificate input hashes match",
       "result": "PASS",
       "detail": ""
     },
     {
-      "check_id": "CERT-07",
+      "check_id": "C07",
       "category": "certificate",
-      "description": "certificate states its limited semantics",
+      "description": "certificate describes limited evidentiary meaning",
       "result": "PASS",
       "detail": ""
     },
     {
-      "check_id": "SC01",
-      "category": "schemas",
-      "description": "seven schemas are machine readable and version 1.0",
-      "result": "PASS",
-      "detail": ""
-    },
-    {
-      "check_id": "SC02",
-      "category": "schemas",
-      "description": "requirement schema defines all independent axes",
-      "result": "PASS",
-      "detail": ""
-    },
-    {
-      "check_id": "SC03",
-      "category": "schemas",
-      "description": "requirement class is not substituted for requirement type",
-      "result": "PASS",
-      "detail": ""
-    },
-    {
-      "check_id": "SC04",
-      "category": "schemas",
-      "description": "dependency schema contains direction and relation",
-      "result": "PASS",
-      "detail": ""
-    },
-    {
-      "check_id": "SC05",
-      "category": "schemas",
-      "description": "certificate status enum is exact",
-      "result": "PASS",
-      "detail": ""
-    },
-    {
-      "check_id": "SC06",
-      "category": "schemas",
-      "description": "requirement schema contains complete independent-axis model",
-      "result": "PASS",
-      "detail": ""
-    },
-    {
-      "check_id": "SC07",
-      "category": "schemas",
-      "description": "conformance criticality and verification level enums are independent",
-      "result": "PASS",
-      "detail": ""
-    },
-    {
-      "check_id": "M01",
+      "check_id": "RPT01",
       "category": "reports",
-      "description": "report carries rejection disposition: REQUIREMENTS.md",
+      "description": "report states rejected input boundary: REPORTS/REQUIREMENTS.md",
       "result": "PASS",
       "detail": ""
     },
     {
-      "check_id": "M02",
+      "check_id": "RPT02",
       "category": "reports",
-      "description": "report carries rejection disposition: NORMATIVE-RULES.md",
+      "description": "report states rejected input boundary: REPORTS/NORMATIVE-RULES.md",
       "result": "PASS",
       "detail": ""
     },
     {
-      "check_id": "M03",
+      "check_id": "RPT03",
       "category": "reports",
-      "description": "report carries rejection disposition: ACCEPTANCE-CRITERIA.md",
+      "description": "report states rejected input boundary: REPORTS/GUIDANCE.md",
       "result": "PASS",
       "detail": ""
     },
     {
-      "check_id": "M04",
+      "check_id": "RPT04",
       "category": "reports",
-      "description": "report carries rejection disposition: TEST-ORACLES.md",
+      "description": "report states rejected input boundary: REPORTS/ACCEPTANCE-CRITERIA.md",
       "result": "PASS",
       "detail": ""
     },
     {
-      "check_id": "M05",
+      "check_id": "RPT05",
       "category": "reports",
-      "description": "report carries rejection disposition: REQUIREMENT-COVERAGE.md",
+      "description": "report states rejected input boundary: REPORTS/TEST-ORACLES.md",
       "result": "PASS",
       "detail": ""
     },
     {
-      "check_id": "M06",
+      "check_id": "RPT06",
       "category": "reports",
-      "description": "report carries rejection disposition: REQUIREMENT-DEPENDENCIES.md",
+      "description": "report states rejected input boundary: REPORTS/DEPENDENCIES.md",
       "result": "PASS",
       "detail": ""
     },
     {
-      "check_id": "M07",
+      "check_id": "RPT07",
       "category": "reports",
-      "description": "report carries rejection disposition: REQUIREMENT-CONFLICTS.md",
+      "description": "report states rejected input boundary: REPORTS/CONFLICTS.md",
       "result": "PASS",
       "detail": ""
     },
     {
-      "check_id": "M08",
+      "check_id": "RPT08",
       "category": "reports",
-      "description": "report carries rejection disposition: CONFORMANCE-MATRIX.md",
+      "description": "report states rejected input boundary: REPORTS/CONFORMANCE.md",
       "result": "PASS",
       "detail": ""
     },
     {
-      "check_id": "M09",
+      "check_id": "RPT09",
       "category": "reports",
-      "description": "report carries rejection disposition: VERIFICATION-MATRIX.md",
+      "description": "report states rejected input boundary: REPORTS/VERIFICATION.md",
       "result": "PASS",
       "detail": ""
     },
     {
-      "check_id": "M10",
+      "check_id": "RPT10",
       "category": "reports",
-      "description": "report carries rejection disposition: IMPLEMENTATION-BOUNDARIES.md",
+      "description": "report states rejected input boundary: REPORTS/TRACEABILITY.md",
       "result": "PASS",
       "detail": ""
     },
     {
-      "check_id": "M11",
+      "check_id": "RPT11",
       "category": "reports",
-      "description": "report carries rejection disposition: SEMANTIC-DIFFS.md",
+      "description": "report states rejected input boundary: REPORTS/SPECIFICATION-AUDIT.md",
       "result": "PASS",
       "detail": ""
     },
     {
-      "check_id": "M12",
+      "check_id": "RPT12",
       "category": "reports",
-      "description": "report carries rejection disposition: TRACEABILITY.md",
-      "result": "PASS",
-      "detail": ""
-    },
-    {
-      "check_id": "M13",
-      "category": "reports",
-      "description": "report carries rejection disposition: SPECIFICATION-AUDIT.md",
-      "result": "PASS",
-      "detail": ""
-    },
-    {
-      "check_id": "M14",
-      "category": "reports",
-      "description": "report carries rejection disposition: FINAL-SPECIFICATION.md",
+      "description": "report states rejected input boundary: REPORTS/FINAL-SPECIFICATION.md",
       "result": "PASS",
       "detail": ""
     },
     {
       "check_id": "H01",
       "category": "hygiene",
-      "description": "all YAML artifacts parse as JSON-compatible YAML",
+      "description": "all machine/schema YAML is JSON-compatible",
       "result": "PASS",
       "detail": ""
     },
@@ -1105,23 +1266,23 @@
     {
       "check_id": "H04",
       "category": "hygiene",
-      "description": "all generator-owned outputs reproduce byte-for-byte",
+      "description": "all generator-owned artifacts reproduce byte-for-byte",
       "result": "PASS",
       "detail": ""
     },
     {
       "check_id": "H05",
       "category": "hygiene",
-      "description": "generator and validator are represented in deterministic source control",
+      "description": "v11.1 generator and validator exist",
       "result": "PASS",
       "detail": ""
     },
     {
-      "check_id": "GATE-V11",
+      "check_id": "GATE-V111",
       "category": "acceptance",
-      "description": "v11 normative specification acceptance",
+      "description": "v11.1 normative specification acceptance",
       "result": "BLOCKED",
-      "detail": "The complete v10.1 input package is rejected: upstream input failed, obligations are unverified, unknowns remain, and conflicts are unresolved."
+      "detail": "The v10.1 package is not a verified source package; normative derivation and conformance remain blocked."
     }
   ]
 }

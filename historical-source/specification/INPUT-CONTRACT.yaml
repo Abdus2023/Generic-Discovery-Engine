@@ -1,6 +1,7 @@
 {
-  "specification_version": "11.0",
-  "requirement_input_contract_version": "1.0",
+  "schema_version": "1.0",
+  "specification_version": "11.1",
+  "input_contract_version": "1.0",
   "status": "REJECTED_INVALID_OBLIGATION_PACKAGE",
   "derivation_gate": "CLOSED",
   "required_inputs": [
@@ -93,21 +94,19 @@
       "schema_validation": "STRUCTURALLY_VALID_JSON_COMPATIBLE_YAML"
     }
   ],
-  "rejection_registry": [
-    "INPUT_MISSING",
-    "INPUT_SCHEMA_MISMATCH",
-    "INPUT_HASH_MISMATCH",
-    "OBLIGATION_UNKNOWN",
-    "PROPERTY_UNKNOWN",
-    "BROKEN_LINEAGE",
-    "BROKEN_DEPENDENCY",
-    "TEMPORAL_CONTAMINATION",
-    "UNVERIFIED_SOURCE",
-    "CONFLICT_UNRESOLVED"
-  ],
-  "failure_states": [
+  "source_package": {
+    "protocol": "v10.1",
+    "status": "INPUT_CONTRACT_FAILED",
+    "obligations": 54,
+    "verified_obligations": 0,
+    "unknown_obligations": 2,
+    "unknown_properties": 14,
+    "unresolved_conflicts": 4
+  },
+  "failures": [
     {
-      "failure_id": "RIF-001",
+      "failure_id": "V111-INPUT-001",
+      "failure_class": "INPUT_FAILURE",
       "state": "INPUT_MISSING",
       "affected": [
         "v4",
@@ -115,18 +114,20 @@
         "v6",
         "v7"
       ],
-      "detail": "The v10.1 source package is missing required Protocol-v4 through Protocol-v7 stages."
+      "detail": "Required Protocol-v4 through Protocol-v7 upstream stages remain absent."
     },
     {
-      "failure_id": "RIF-002",
+      "failure_id": "V111-INPUT-002",
+      "failure_class": "INPUT_FAILURE",
       "state": "INPUT_HASH_MISMATCH",
       "affected": [
         "v1 source extraction"
       ],
-      "detail": "The v10.1 package preserves the Protocol-v1 raw/source-range integrity failure."
+      "detail": "The v10.1 package preserves the Protocol-v1 byte/range integrity failure."
     },
     {
-      "failure_id": "RIF-003",
+      "failure_id": "V111-VERIFY-001",
+      "failure_class": "VERIFICATION_FAILURE",
       "state": "UNVERIFIED_SOURCE",
       "affected": [
         "OBL-CANDIDATE-IDENTITY",
@@ -184,19 +185,21 @@
         "OBL-PARSE-DEFECT",
         "OBL-WEB-GENERALIZE"
       ],
-      "detail": "54 obligations are not VERIFIED with verification evidence."
+      "detail": "No source obligation is VERIFIED with verification evidence."
     },
     {
-      "failure_id": "RIF-004",
+      "failure_id": "V111-SEMANTIC-001",
+      "failure_class": "SEMANTIC_FAILURE",
       "state": "OBLIGATION_UNKNOWN",
       "affected": [
         "OBL-CANDIDATE-EQUIVALENCE",
         "OBL-PROVIDER-ORDER"
       ],
-      "detail": "2 obligations retain UNKNOWN epistemic or lifecycle state."
+      "detail": "Obligation epistemic uncertainty cannot be escalated into normativity."
     },
     {
-      "failure_id": "RIF-005",
+      "failure_id": "V111-SEMANTIC-002",
+      "failure_class": "SEMANTIC_FAILURE",
       "state": "PROPERTY_UNKNOWN",
       "affected": [
         "PROP-snapshot-0001-CONTRACTS",
@@ -214,10 +217,11 @@
         "PROP-CANDIDATE-EQUIVALENCE",
         "PROP-PROVIDER-ORDER"
       ],
-      "detail": "14 historical properties retain UNKNOWN epistemic or historical state."
+      "detail": "Unknown historical properties cannot silently define a normative domain."
     },
     {
-      "failure_id": "RIF-006",
+      "failure_id": "V111-CONFLICT-001",
+      "failure_class": "CONFLICT_FAILURE",
       "state": "CONFLICT_UNRESOLVED",
       "affected": [
         "CONF-001",
@@ -225,92 +229,70 @@
         "CONF-004",
         "CONF-005"
       ],
-      "detail": "4 obligation conflicts remain unresolved."
+      "detail": "Unresolved obligation conflicts block affected normative derivation."
+    },
+    {
+      "failure_id": "V111-DERIVE-001",
+      "failure_class": "DERIVATION_FAILURE",
+      "state": "DERIVATION_GATE_CLOSED",
+      "affected": [
+        "OBL-CANDIDATE-IDENTITY",
+        "OBL-CANDIDATE-EQUIVALENCE",
+        "OBL-DEDUP-SCOPES",
+        "OBL-CANDIDATE-ORIGIN",
+        "OBL-CANDIDATE-PARENT",
+        "OBL-CANDIDATE-STATE",
+        "OBL-CANDIDATE-PRIORITY",
+        "OBL-CANDIDATE-ATTEMPTS",
+        "OBL-CANDIDATE-TIMESTAMPS",
+        "OBL-CLAIM-EXCLUSIVITY",
+        "OBL-TERMINAL-OWNERSHIP",
+        "OBL-ACQ-BEFORE-INTERP",
+        "OBL-ACQ-OUTCOME",
+        "OBL-ACQ-METADATA",
+        "OBL-ACQ-TIMEOUT",
+        "OBL-ACQ-SCOPE",
+        "OBL-CANCELLATION",
+        "OBL-OBS-DISTINCT",
+        "OBL-OBS-SOURCE",
+        "OBL-OBS-OUTCOMES",
+        "OBL-RECOGNITION-DISTINCT",
+        "OBL-RECOGNITION-OUTCOMES",
+        "OBL-PROVIDER-CONTRACT",
+        "OBL-PROVIDER-FAILURE",
+        "OBL-PROVIDER-ORDER",
+        "OBL-DISCOVERY-RECORD",
+        "OBL-EXPANSION-RECURSIVE",
+        "OBL-EXPANSION-VS-RETRY",
+        "OBL-CANDIDATE-ADMISSION",
+        "OBL-KNOWLEDGE",
+        "OBL-BOUNDED-CONCURRENCY",
+        "OBL-SCHEDULER-TERMINATION",
+        "OBL-WORKER-FAILURE",
+        "OBL-RETRY",
+        "OBL-PROVENANCE",
+        "OBL-PROVENANCE-INTEGRITY",
+        "OBL-REMOTE-DATA",
+        "OBL-AUTHORITY",
+        "OBL-PARSER",
+        "OBL-RESOURCE",
+        "OBL-UNBOUNDED",
+        "OBL-LIFECYCLE-OBS",
+        "OBL-AUDIT",
+        "OBL-SILENT-FAILURE",
+        "OBL-PERSIST-COMPAT",
+        "OBL-PERSIST-CORRUPTION",
+        "OBL-EXPORT",
+        "OBL-UI",
+        "OBL-PRIVATE-SHAPE",
+        "OBL-CONTRACT-INPUT",
+        "OBL-ERROR-CONTRACT",
+        "OBL-REGRESSION",
+        "OBL-PARSE-DEFECT",
+        "OBL-WEB-GENERALIZE"
+      ],
+      "detail": "No normative semantic transformation is authorized."
     }
   ],
-  "validation_checks": [
-    {
-      "check_id": "RI01",
-      "check": "all required v10.1 artifacts are present",
-      "result": "PASS",
-      "detail": "8/8 required input roles are bound to existing artifacts"
-    },
-    {
-      "check_id": "RI02",
-      "check": "schemas are structurally compatible",
-      "result": "PASS",
-      "detail": "all selected registries are schema version 1.0"
-    },
-    {
-      "check_id": "RI03",
-      "check": "content hashes match selected artifacts",
-      "result": "PASS",
-      "detail": "8/8 selected artifact hashes match"
-    },
-    {
-      "check_id": "RI04",
-      "check": "upstream obligation contract is accepted",
-      "result": "FAIL",
-      "failure_states": [
-        "INPUT_MISSING",
-        "INPUT_HASH_MISMATCH",
-        "UNVERIFIED_SOURCE"
-      ]
-    },
-    {
-      "check_id": "RI05",
-      "check": "obligation registry contains only verified, known source obligations",
-      "result": "FAIL",
-      "failure_states": [
-        "UNVERIFIED_SOURCE",
-        "OBLIGATION_UNKNOWN"
-      ]
-    },
-    {
-      "check_id": "RI06",
-      "check": "historical properties are resolved",
-      "result": "FAIL",
-      "failure_states": [
-        "PROPERTY_UNKNOWN"
-      ]
-    },
-    {
-      "check_id": "RI07",
-      "check": "obligation dependency graph references resolve and is acyclic",
-      "result": "PASS",
-      "failure_states": []
-    },
-    {
-      "check_id": "RI08",
-      "check": "obligation lineage references resolve",
-      "result": "PASS",
-      "failure_states": []
-    },
-    {
-      "check_id": "RI09",
-      "check": "obligation conflicts are resolved",
-      "result": "FAIL",
-      "failure_states": [
-        "CONFLICT_UNRESOLVED"
-      ]
-    },
-    {
-      "check_id": "RI10",
-      "check": "traceability and verification records establish verified source",
-      "result": "FAIL",
-      "failure_states": [
-        "UNVERIFIED_SOURCE"
-      ]
-    }
-  ],
-  "source_package": {
-    "protocol": "v10.1",
-    "input_contract_status": "INPUT_CONTRACT_FAILED",
-    "obligation_count": 54,
-    "verified_obligation_count": 0,
-    "unknown_obligation_count": 2,
-    "unknown_property_count": 14,
-    "unresolved_conflict_count": 4
-  },
-  "derivation_policy": "No requirement, rule, criterion, oracle, boundary, or conformance claim may be derived while this gate is closed."
+  "policy": "Invalid or unverified obligation input may produce audit and explicitly non-normative context, but no normative object."
 }

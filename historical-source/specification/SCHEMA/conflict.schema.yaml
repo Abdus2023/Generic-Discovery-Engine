@@ -1,0 +1,74 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "schema_version": "1.0",
+  "schema_change_class": "MAJOR",
+  "title": "v11.1 requirement conflict",
+  "type": "object",
+  "required": [
+    "conflict_id",
+    "object_type",
+    "schema_version",
+    "lifecycle_status",
+    "provenance",
+    "requirements",
+    "conflict_type",
+    "scope",
+    "predicate_overlap",
+    "resolution",
+    "rationale",
+    "effective_requirement"
+  ],
+  "properties": {
+    "object_type": {
+      "type": "string"
+    },
+    "schema_version": {
+      "const": "1.0"
+    },
+    "lifecycle_status": {
+      "enum": [
+        "DISCOVERED",
+        "DERIVED",
+        "DRAFTED",
+        "FORMALIZED",
+        "IMPLEMENTED",
+        "PARTIALLY_IMPLEMENTED",
+        "VERIFIED",
+        "FAILED",
+        "SUPERSEDED",
+        "REJECTED",
+        "DEPRECATED",
+        "UNKNOWN"
+      ]
+    },
+    "provenance": {
+      "type": "object"
+    },
+    "conflict_type": {
+      "enum": [
+        "DIRECT",
+        "CONDITIONAL",
+        "SCOPE",
+        "TEMPORAL",
+        "COMPATIBILITY",
+        "SECURITY",
+        "RESOURCE",
+        "SEMANTIC",
+        "UNKNOWN"
+      ]
+    },
+    "resolution": {
+      "enum": [
+        "PRESERVE_BOTH",
+        "PRIORITIZE_ONE",
+        "RESTRICT_SCOPE",
+        "SPLIT_SCOPE",
+        "SUPERSEDE",
+        "REJECT",
+        "DEFER",
+        "UNKNOWN"
+      ]
+    }
+  },
+  "additionalProperties": true
+}

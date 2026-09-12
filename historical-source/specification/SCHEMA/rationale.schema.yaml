@@ -1,0 +1,52 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "schema_version": "1.0",
+  "schema_change_class": "MAJOR",
+  "title": "v11.1 rationale",
+  "type": "object",
+  "required": [
+    "rationale_id",
+    "object_type",
+    "schema_version",
+    "lifecycle_status",
+    "provenance",
+    "statement",
+    "source_obligations",
+    "source_properties",
+    "source_evidence",
+    "epistemic_status",
+    "reasoning_type",
+    "normative"
+  ],
+  "properties": {
+    "object_type": {
+      "type": "string"
+    },
+    "schema_version": {
+      "const": "1.0"
+    },
+    "lifecycle_status": {
+      "enum": [
+        "DISCOVERED",
+        "DERIVED",
+        "DRAFTED",
+        "FORMALIZED",
+        "IMPLEMENTED",
+        "PARTIALLY_IMPLEMENTED",
+        "VERIFIED",
+        "FAILED",
+        "SUPERSEDED",
+        "REJECTED",
+        "DEPRECATED",
+        "UNKNOWN"
+      ]
+    },
+    "provenance": {
+      "type": "object"
+    },
+    "normative": {
+      "const": false
+    }
+  },
+  "additionalProperties": true
+}

@@ -1,0 +1,42 @@
+{
+  "schema_version": "1.0",
+  "specification_version": "11.1",
+  "registry_type": "VERIFICATION",
+  "status": "DERIVATION_REJECTED",
+  "verifications": [],
+  "methods": [
+    "INSPECTION",
+    "UNIT_TEST",
+    "INTEGRATION_TEST",
+    "PROPERTY_TEST",
+    "REFERENCE_MODEL",
+    "DIFFERENTIAL_TEST",
+    "ADVERSARIAL_TEST",
+    "FORMAL_PROOF",
+    "STATIC_ANALYSIS",
+    "RUNTIME_CHECK",
+    "MANUAL_REVIEW"
+  ],
+  "verification_levels": [
+    "V0_UNTESTED",
+    "V1_EXAMPLE_TESTED",
+    "V2_UNIT_VERIFIED",
+    "V3_PROPERTY_VERIFIED",
+    "V4_INTEGRATION_VERIFIED",
+    "V5_ADVERSARIAL_VERIFIED",
+    "V6_FORMALLY_VERIFIED"
+  ],
+  "harness_failure_classes": [
+    "HARNESS_FAILURE",
+    "IMPLEMENTATION_FAILURE",
+    "ORACLE_FAILURE",
+    "ENVIRONMENT_FAILURE",
+    "SPECIFICATION_FAILURE",
+    "UNKNOWN_FAILURE"
+  ],
+  "upstream": {
+    "test_edges": 54,
+    "verified_nodes": 0,
+    "status": "UNVERIFIED_SOURCE"
+  }
+}

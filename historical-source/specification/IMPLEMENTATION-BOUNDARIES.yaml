@@ -1,7 +1,10 @@
 {
   "schema_version": "1.0",
-  "status": "BLOCKED",
-  "allowed_boundaries": [
+  "specification_version": "11.1",
+  "registry_type": "BOUNDARY",
+  "status": "DERIVATION_REJECTED",
+  "boundaries": [],
+  "boundary_types": [
     "INPUT",
     "VALIDATION",
     "ACQUISITION",
@@ -19,11 +22,5 @@
     "RUNTIME",
     "TEST_HARNESS"
   ],
-  "requirement_boundaries": [],
-  "distinctions": [
-    "SEMANTIC_DEFINITION != IMPLEMENTATION_LOCATION",
-    "ENFORCEMENT_BOUNDARY != OBSERVATION_BOUNDARY",
-    "OBSERVATION_BOUNDARY != VERIFICATION_BOUNDARY"
-  ],
-  "reason": "No mandatory requirement exists to assign an enforcement boundary."
+  "rule": "Enforcement, observation, and verification remain independent."
 }

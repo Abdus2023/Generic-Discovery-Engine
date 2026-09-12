@@ -1,6 +1,9 @@
 {
   "schema_version": "1.0",
+  "specification_version": "11.1",
+  "registry_type": "TEST_ORACLE",
   "status": "DERIVATION_REJECTED",
+  "test_oracles": [],
   "oracle_types": [
     "BOOLEAN",
     "EXACT_VALUE",
@@ -21,13 +24,14 @@
     "RESOURCE_BOUND",
     "SECURITY_POLICY"
   ],
-  "test_oracles": [],
-  "reference_models": [],
-  "property_based_requirements": [],
-  "oracle_independence_audit": [],
-  "negative_test_policy": "Security, authorization, lifecycle, failure, and safety requirements require negative-test coverage unless explicitly justified.",
-  "mutation_testing_policy": "Where practical, weakening a mandatory enforced property must cause a relevant independent oracle to fail.",
-  "test_harness_contract": {
+  "independence_levels": [
+    "INDEPENDENT",
+    "PARTIALLY_INDEPENDENT",
+    "IMPLEMENTATION_DERIVED",
+    "UNKNOWN"
+  ],
+  "harness": {
+    "object_type": "TEST_HARNESS_CONTRACT",
     "status": "NOT_INSTANTIATED_INPUT_REJECTED",
     "required_dimensions": [
       "input_generation",
@@ -42,5 +46,5 @@
     ],
     "may_silently_alter_tested_semantics": false
   },
-  "reason": "No criterion exists from which an oracle may be derived."
+  "negative_test_policy": "Safety, security, authorization, lifecycle, resource, and failure requirements receive explicit negative tests when admitted."
 }

@@ -1,0 +1,1464 @@
+{
+  "schema_version": "1.0",
+  "specification_version": "11.1",
+  "registry_type": "RATIONALE",
+  "status": "NON_NORMATIVE_ONLY",
+  "rationales": [
+    {
+      "rationale_id": "RATIONALE-V101-001",
+      "object_type": "RATIONALE",
+      "schema_version": "1.0",
+      "lifecycle_status": "DERIVED",
+      "statement": "Lifecycle, deduplication, ownership, and provenance require correlation.",
+      "source_obligations": [
+        "OBL-CANDIDATE-IDENTITY"
+      ],
+      "source_properties": [
+        "PROP-CANDIDATE-IDENTITY"
+      ],
+      "source_evidence": [
+        "NE-V9-CLAIMS",
+        "NE-V9-INVARIANTS"
+      ],
+      "epistemic_status": "SUPPORTED",
+      "reasoning_type": "HISTORICAL",
+      "normative": false,
+      "provenance": {
+        "source_artifact": "historical-source/obligations/OBLIGATIONS.yaml",
+        "source_object": "OBL-CANDIDATE-IDENTITY",
+        "content_hash": "edb56ccdb408bfe3197f05c3a55e7627772d248d8c72c28e5b8c86566d25efa5",
+        "transformation": "NON_NORMATIVE_RATIONALE_EXTRACTION",
+        "normative": false
+      }
+    },
+    {
+      "rationale_id": "RATIONALE-V101-002",
+      "object_type": "RATIONALE",
+      "schema_version": "1.0",
+      "lifecycle_status": "DERIVED",
+      "statement": "Deduplication and migration require a declared rule; URL equality is insufficient.",
+      "source_obligations": [
+        "OBL-CANDIDATE-EQUIVALENCE"
+      ],
+      "source_properties": [
+        "PROP-CANDIDATE-EQUIVALENCE"
+      ],
+      "source_evidence": [
+        "NE-V9-CLAIMS",
+        "NE-V9-UNKNOWNS"
+      ],
+      "epistemic_status": "UNKNOWN",
+      "reasoning_type": "ENGINEERING",
+      "normative": false,
+      "provenance": {
+        "source_artifact": "historical-source/obligations/OBLIGATIONS.yaml",
+        "source_object": "OBL-CANDIDATE-EQUIVALENCE",
+        "content_hash": "edb56ccdb408bfe3197f05c3a55e7627772d248d8c72c28e5b8c86566d25efa5",
+        "transformation": "NON_NORMATIVE_RATIONALE_EXTRACTION",
+        "normative": false
+      }
+    },
+    {
+      "rationale_id": "RATIONALE-V101-003",
+      "object_type": "RATIONALE",
+      "schema_version": "1.0",
+      "lifecycle_status": "DERIVED",
+      "statement": "One local check cannot establish all lifecycle uniqueness properties.",
+      "source_obligations": [
+        "OBL-DEDUP-SCOPES"
+      ],
+      "source_properties": [
+        "PROP-DEDUP-SCOPES"
+      ],
+      "source_evidence": [
+        "NE-V8-DUPLICATE",
+        "NE-V9-CLAIMS"
+      ],
+      "epistemic_status": "SUPPORTED",
+      "reasoning_type": "ENGINEERING",
+      "normative": false,
+      "provenance": {
+        "source_artifact": "historical-source/obligations/OBLIGATIONS.yaml",
+        "source_object": "OBL-DEDUP-SCOPES",
+        "content_hash": "edb56ccdb408bfe3197f05c3a55e7627772d248d8c72c28e5b8c86566d25efa5",
+        "transformation": "NON_NORMATIVE_RATIONALE_EXTRACTION",
+        "normative": false
+      }
+    },
+    {
+      "rationale_id": "RATIONALE-V101-004",
+      "object_type": "RATIONALE",
+      "schema_version": "1.0",
+      "lifecycle_status": "DERIVED",
+      "statement": "Origin supports scope and lineage when present.",
+      "source_obligations": [
+        "OBL-CANDIDATE-ORIGIN"
+      ],
+      "source_properties": [
+        "PROP-CANDIDATE-ORIGIN"
+      ],
+      "source_evidence": [
+        "NE-V8-PROVENANCE"
+      ],
+      "epistemic_status": "SUPPORTED",
+      "reasoning_type": "HISTORICAL",
+      "normative": false,
+      "provenance": {
+        "source_artifact": "historical-source/obligations/OBLIGATIONS.yaml",
+        "source_object": "OBL-CANDIDATE-ORIGIN",
+        "content_hash": "edb56ccdb408bfe3197f05c3a55e7627772d248d8c72c28e5b8c86566d25efa5",
+        "transformation": "NON_NORMATIVE_RATIONALE_EXTRACTION",
+        "normative": false
+      }
+    },
+    {
+      "rationale_id": "RATIONALE-V101-005",
+      "object_type": "RATIONALE",
+      "schema_version": "1.0",
+      "lifecycle_status": "DERIVED",
+      "statement": "Discarding populated parentage loses derivation context.",
+      "source_obligations": [
+        "OBL-CANDIDATE-PARENT"
+      ],
+      "source_properties": [
+        "PROP-CANDIDATE-PARENT"
+      ],
+      "source_evidence": [
+        "NE-V8-PROVENANCE",
+        "NE-V9-CLAIMS"
+      ],
+      "epistemic_status": "SUPPORTED",
+      "reasoning_type": "HISTORICAL",
+      "normative": false,
+      "provenance": {
+        "source_artifact": "historical-source/obligations/OBLIGATIONS.yaml",
+        "source_object": "OBL-CANDIDATE-PARENT",
+        "content_hash": "edb56ccdb408bfe3197f05c3a55e7627772d248d8c72c28e5b8c86566d25efa5",
+        "transformation": "NON_NORMATIVE_RATIONALE_EXTRACTION",
+        "normative": false
+      }
+    },
+    {
+      "rationale_id": "RATIONALE-V101-006",
+      "object_type": "RATIONALE",
+      "schema_version": "1.0",
+      "lifecycle_status": "DERIVED",
+      "statement": "Explicit transitions prevent stranded, duplicated, or falsely completed work.",
+      "source_obligations": [
+        "OBL-CANDIDATE-STATE"
+      ],
+      "source_properties": [
+        "PROP-CANDIDATE-STATE"
+      ],
+      "source_evidence": [
+        "NE-V8-CLAIM",
+        "NE-V8-RETRY",
+        "NE-V9-CLAIMS"
+      ],
+      "epistemic_status": "SUPPORTED",
+      "reasoning_type": "ENGINEERING",
+      "normative": false,
+      "provenance": {
+        "source_artifact": "historical-source/obligations/OBLIGATIONS.yaml",
+        "source_object": "OBL-CANDIDATE-STATE",
+        "content_hash": "edb56ccdb408bfe3197f05c3a55e7627772d248d8c72c28e5b8c86566d25efa5",
+        "transformation": "NON_NORMATIVE_RATIONALE_EXTRACTION",
+        "normative": false
+      }
+    },
+    {
+      "rationale_id": "RATIONALE-V101-007",
+      "object_type": "RATIONALE",
+      "schema_version": "1.0",
+      "lifecycle_status": "DERIVED",
+      "statement": "Silent ordering reversal can alter operational discovery order.",
+      "source_obligations": [
+        "OBL-CANDIDATE-PRIORITY"
+      ],
+      "source_properties": [
+        "PROP-CANDIDATE-PRIORITY"
+      ],
+      "source_evidence": [
+        "NE-V3-DATA"
+      ],
+      "epistemic_status": "INFERRED",
+      "reasoning_type": "HISTORICAL",
+      "normative": false,
+      "provenance": {
+        "source_artifact": "historical-source/obligations/OBLIGATIONS.yaml",
+        "source_object": "OBL-CANDIDATE-PRIORITY",
+        "content_hash": "edb56ccdb408bfe3197f05c3a55e7627772d248d8c72c28e5b8c86566d25efa5",
+        "transformation": "NON_NORMATIVE_RATIONALE_EXTRACTION",
+        "normative": false
+      }
+    },
+    {
+      "rationale_id": "RATIONALE-V101-008",
+      "object_type": "RATIONALE",
+      "schema_version": "1.0",
+      "lifecycle_status": "DERIVED",
+      "statement": "Retry without accounting can bypass limits or hide terminal failure.",
+      "source_obligations": [
+        "OBL-CANDIDATE-ATTEMPTS"
+      ],
+      "source_properties": [
+        "PROP-CANDIDATE-ATTEMPTS"
+      ],
+      "source_evidence": [
+        "NE-V8-RETRY"
+      ],
+      "epistemic_status": "SUPPORTED",
+      "reasoning_type": "HISTORICAL",
+      "normative": false,
+      "provenance": {
+        "source_artifact": "historical-source/obligations/OBLIGATIONS.yaml",
+        "source_object": "OBL-CANDIDATE-ATTEMPTS",
+        "content_hash": "edb56ccdb408bfe3197f05c3a55e7627772d248d8c72c28e5b8c86566d25efa5",
+        "transformation": "NON_NORMATIVE_RATIONALE_EXTRACTION",
+        "normative": false
+      }
+    },
+    {
+      "rationale_id": "RATIONALE-V101-009",
+      "object_type": "RATIONALE",
+      "schema_version": "1.0",
+      "lifecycle_status": "DERIVED",
+      "statement": "Timing aids diagnosis but field presence is not trustworthy chronology.",
+      "source_obligations": [
+        "OBL-CANDIDATE-TIMESTAMPS"
+      ],
+      "source_properties": [
+        "PROP-CANDIDATE-TIMESTAMPS"
+      ],
+      "source_evidence": [
+        "NE-V3-DATA",
+        "NE-V8-OBSERVE"
+      ],
+      "epistemic_status": "SUPPORTED",
+      "reasoning_type": "ENGINEERING",
+      "normative": false,
+      "provenance": {
+        "source_artifact": "historical-source/obligations/OBLIGATIONS.yaml",
+        "source_object": "OBL-CANDIDATE-TIMESTAMPS",
+        "content_hash": "edb56ccdb408bfe3197f05c3a55e7627772d248d8c72c28e5b8c86566d25efa5",
+        "transformation": "NON_NORMATIVE_RATIONALE_EXTRACTION",
+        "normative": false
+      }
+    },
+    {
+      "rationale_id": "RATIONALE-V101-010",
+      "object_type": "RATIONALE",
+      "schema_version": "1.0",
+      "lifecycle_status": "DERIVED",
+      "statement": "Exclusive ownership prevents simultaneous duplicate processing.",
+      "source_obligations": [
+        "OBL-CLAIM-EXCLUSIVITY"
+      ],
+      "source_properties": [
+        "PROP-CLAIM-EXCLUSIVITY"
+      ],
+      "source_evidence": [
+        "NE-V8-CLAIM",
+        "NE-V9-CLAIMS"
+      ],
+      "epistemic_status": "SUPPORTED",
+      "reasoning_type": "HISTORICAL",
+      "normative": false,
+      "provenance": {
+        "source_artifact": "historical-source/obligations/OBLIGATIONS.yaml",
+        "source_object": "OBL-CLAIM-EXCLUSIVITY",
+        "content_hash": "edb56ccdb408bfe3197f05c3a55e7627772d248d8c72c28e5b8c86566d25efa5",
+        "transformation": "NON_NORMATIVE_RATIONALE_EXTRACTION",
+        "normative": false
+      }
+    },
+    {
+      "rationale_id": "RATIONALE-V101-011",
+      "object_type": "RATIONALE",
+      "schema_version": "1.0",
+      "lifecycle_status": "DERIVED",
+      "statement": "A claim without terminal ownership can strand work and invalidate termination.",
+      "source_obligations": [
+        "OBL-TERMINAL-OWNERSHIP"
+      ],
+      "source_properties": [
+        "PROP-TERMINAL-OWNERSHIP"
+      ],
+      "source_evidence": [
+        "NE-V8-CLAIM"
+      ],
+      "epistemic_status": "SUPPORTED",
+      "reasoning_type": "ENGINEERING",
+      "normative": false,
+      "provenance": {
+        "source_artifact": "historical-source/obligations/OBLIGATIONS.yaml",
+        "source_object": "OBL-TERMINAL-OWNERSHIP",
+        "content_hash": "edb56ccdb408bfe3197f05c3a55e7627772d248d8c72c28e5b8c86566d25efa5",
+        "transformation": "NON_NORMATIVE_RATIONALE_EXTRACTION",
+        "normative": false
+      }
+    },
+    {
+      "rationale_id": "RATIONALE-V101-012",
+      "object_type": "RATIONALE",
+      "schema_version": "1.0",
+      "lifecycle_status": "DERIVED",
+      "statement": "Stage separation preserves failure attribution and code/data boundaries.",
+      "source_obligations": [
+        "OBL-ACQ-BEFORE-INTERP"
+      ],
+      "source_properties": [
+        "PROP-ACQ-BEFORE-INTERP"
+      ],
+      "source_evidence": [
+        "NE-V9-CLAIMS",
+        "NE-V9-INVARIANTS"
+      ],
+      "epistemic_status": "SUPPORTED",
+      "reasoning_type": "HISTORICAL",
+      "normative": false,
+      "provenance": {
+        "source_artifact": "historical-source/obligations/OBLIGATIONS.yaml",
+        "source_object": "OBL-ACQ-BEFORE-INTERP",
+        "content_hash": "edb56ccdb408bfe3197f05c3a55e7627772d248d8c72c28e5b8c86566d25efa5",
+        "transformation": "NON_NORMATIVE_RATIONALE_EXTRACTION",
+        "normative": false
+      }
+    },
+    {
+      "rationale_id": "RATIONALE-V101-013",
+      "object_type": "RATIONALE",
+      "schema_version": "1.0",
+      "lifecycle_status": "DERIVED",
+      "statement": "Unrecorded acquisition erases evidence and can strand work.",
+      "source_obligations": [
+        "OBL-ACQ-OUTCOME"
+      ],
+      "source_properties": [
+        "PROP-ACQ-OUTCOME"
+      ],
+      "source_evidence": [
+        "NE-V8-FAILURE-MATRIX",
+        "NE-V9-INVARIANTS"
+      ],
+      "epistemic_status": "SUPPORTED",
+      "reasoning_type": "HISTORICAL",
+      "normative": false,
+      "provenance": {
+        "source_artifact": "historical-source/obligations/OBLIGATIONS.yaml",
+        "source_object": "OBL-ACQ-OUTCOME",
+        "content_hash": "edb56ccdb408bfe3197f05c3a55e7627772d248d8c72c28e5b8c86566d25efa5",
+        "transformation": "NON_NORMATIVE_RATIONALE_EXTRACTION",
+        "normative": false
+      }
+    },
+    {
+      "rationale_id": "RATIONALE-V101-014",
+      "object_type": "RATIONALE",
+      "schema_version": "1.0",
+      "lifecycle_status": "DERIVED",
+      "statement": "Uncontextualized content weakens recognition and provenance.",
+      "source_obligations": [
+        "OBL-ACQ-METADATA"
+      ],
+      "source_properties": [
+        "PROP-ACQ-METADATA"
+      ],
+      "source_evidence": [
+        "NE-V3-DATA",
+        "NE-V8-PROVENANCE"
+      ],
+      "epistemic_status": "SUPPORTED",
+      "reasoning_type": "HISTORICAL",
+      "normative": false,
+      "provenance": {
+        "source_artifact": "historical-source/obligations/OBLIGATIONS.yaml",
+        "source_object": "OBL-ACQ-METADATA",
+        "content_hash": "edb56ccdb408bfe3197f05c3a55e7627772d248d8c72c28e5b8c86566d25efa5",
+        "transformation": "NON_NORMATIVE_RATIONALE_EXTRACTION",
+        "normative": false
+      }
+    },
+    {
+      "rationale_id": "RATIONALE-V101-015",
+      "object_type": "RATIONALE",
+      "schema_version": "1.0",
+      "lifecycle_status": "DERIVED",
+      "statement": "Unbounded in-flight acquisition blocks progress and consumes resources.",
+      "source_obligations": [
+        "OBL-ACQ-TIMEOUT"
+      ],
+      "source_properties": [
+        "PROP-ACQ-TIMEOUT"
+      ],
+      "source_evidence": [
+        "NE-V8-BOUNDS",
+        "NE-V9-CLAIMS"
+      ],
+      "epistemic_status": "SUPPORTED",
+      "reasoning_type": "HISTORICAL",
+      "normative": false,
+      "provenance": {
+        "source_artifact": "historical-source/obligations/OBLIGATIONS.yaml",
+        "source_object": "OBL-ACQ-TIMEOUT",
+        "content_hash": "edb56ccdb408bfe3197f05c3a55e7627772d248d8c72c28e5b8c86566d25efa5",
+        "transformation": "NON_NORMATIVE_RATIONALE_EXTRACTION",
+        "normative": false
+      }
+    },
+    {
+      "rationale_id": "RATIONALE-V101-016",
+      "object_type": "RATIONALE",
+      "schema_version": "1.0",
+      "lifecycle_status": "DERIVED",
+      "statement": "Remote targets cross historical trust and authority boundaries.",
+      "source_obligations": [
+        "OBL-ACQ-SCOPE"
+      ],
+      "source_properties": [
+        "PROP-ACQ-SCOPE"
+      ],
+      "source_evidence": [
+        "NE-V8-BOUNDARIES",
+        "NE-V9-INVARIANTS"
+      ],
+      "epistemic_status": "SUPPORTED",
+      "reasoning_type": "ENGINEERING",
+      "normative": false,
+      "provenance": {
+        "source_artifact": "historical-source/obligations/OBLIGATIONS.yaml",
+        "source_object": "OBL-ACQ-SCOPE",
+        "content_hash": "edb56ccdb408bfe3197f05c3a55e7627772d248d8c72c28e5b8c86566d25efa5",
+        "transformation": "NON_NORMATIVE_RATIONALE_EXTRACTION",
+        "normative": false
+      }
+    },
+    {
+      "rationale_id": "RATIONALE-V101-017",
+      "object_type": "RATIONALE",
+      "schema_version": "1.0",
+      "lifecycle_status": "DERIVED",
+      "statement": "API/control presence does not establish cancellation safety.",
+      "source_obligations": [
+        "OBL-CANCELLATION"
+      ],
+      "source_properties": [
+        "PROP-CANCELLATION"
+      ],
+      "source_evidence": [
+        "NE-V8-CANCEL"
+      ],
+      "epistemic_status": "SUPPORTED",
+      "reasoning_type": "ENGINEERING",
+      "normative": false,
+      "provenance": {
+        "source_artifact": "historical-source/obligations/OBLIGATIONS.yaml",
+        "source_object": "OBL-CANCELLATION",
+        "content_hash": "edb56ccdb408bfe3197f05c3a55e7627772d248d8c72c28e5b8c86566d25efa5",
+        "transformation": "NON_NORMATIVE_RATIONALE_EXTRACTION",
+        "normative": false
+      }
+    },
+    {
+      "rationale_id": "RATIONALE-V101-018",
+      "object_type": "RATIONALE",
+      "schema_version": "1.0",
+      "lifecycle_status": "DERIVED",
+      "statement": "Collapsing evidence into interpretation destroys source evidence.",
+      "source_obligations": [
+        "OBL-OBS-DISTINCT"
+      ],
+      "source_properties": [
+        "PROP-OBS-DISTINCT"
+      ],
+      "source_evidence": [
+        "NE-V9-CLAIMS",
+        "NE-V9-INVARIANTS"
+      ],
+      "epistemic_status": "SUPPORTED",
+      "reasoning_type": "HISTORICAL",
+      "normative": false,
+      "provenance": {
+        "source_artifact": "historical-source/obligations/OBLIGATIONS.yaml",
+        "source_object": "OBL-OBS-DISTINCT",
+        "content_hash": "edb56ccdb408bfe3197f05c3a55e7627772d248d8c72c28e5b8c86566d25efa5",
+        "transformation": "NON_NORMATIVE_RATIONALE_EXTRACTION",
+        "normative": false
+      }
+    },
+    {
+      "rationale_id": "RATIONALE-V101-019",
+      "object_type": "RATIONALE",
+      "schema_version": "1.0",
+      "lifecycle_status": "DERIVED",
+      "statement": "Acquisition evidence must be attributable to work identity.",
+      "source_obligations": [
+        "OBL-OBS-SOURCE"
+      ],
+      "source_properties": [
+        "PROP-OBS-SOURCE"
+      ],
+      "source_evidence": [
+        "NE-V8-PROVENANCE",
+        "NE-V9-INVARIANTS"
+      ],
+      "epistemic_status": "SUPPORTED",
+      "reasoning_type": "HISTORICAL",
+      "normative": false,
+      "provenance": {
+        "source_artifact": "historical-source/obligations/OBLIGATIONS.yaml",
+        "source_object": "OBL-OBS-SOURCE",
+        "content_hash": "edb56ccdb408bfe3197f05c3a55e7627772d248d8c72c28e5b8c86566d25efa5",
+        "transformation": "NON_NORMATIVE_RATIONALE_EXTRACTION",
+        "normative": false
+      }
+    },
+    {
+      "rationale_id": "RATIONALE-V101-020",
+      "object_type": "RATIONALE",
+      "schema_version": "1.0",
+      "lifecycle_status": "DERIVED",
+      "statement": "Null, empty, status, and partial outcomes are not equivalent.",
+      "source_obligations": [
+        "OBL-OBS-OUTCOMES"
+      ],
+      "source_properties": [
+        "PROP-OBS-OUTCOMES"
+      ],
+      "source_evidence": [
+        "NE-V3-DATA",
+        "NE-V8-FAILURE-MATRIX"
+      ],
+      "epistemic_status": "SUPPORTED",
+      "reasoning_type": "ENGINEERING",
+      "normative": false,
+      "provenance": {
+        "source_artifact": "historical-source/obligations/OBLIGATIONS.yaml",
+        "source_object": "OBL-OBS-OUTCOMES",
+        "content_hash": "edb56ccdb408bfe3197f05c3a55e7627772d248d8c72c28e5b8c86566d25efa5",
+        "transformation": "NON_NORMATIVE_RATIONALE_EXTRACTION",
+        "normative": false
+      }
+    },
+    {
+      "rationale_id": "RATIONALE-V101-021",
+      "object_type": "RATIONALE",
+      "schema_version": "1.0",
+      "lifecycle_status": "DERIVED",
+      "statement": "Separation allows independent containment and verification.",
+      "source_obligations": [
+        "OBL-RECOGNITION-DISTINCT"
+      ],
+      "source_properties": [
+        "PROP-RECOGNITION-DISTINCT"
+      ],
+      "source_evidence": [
+        "NE-V9-CLAIMS",
+        "NE-V9-INVARIANTS"
+      ],
+      "epistemic_status": "SUPPORTED",
+      "reasoning_type": "HISTORICAL",
+      "normative": false,
+      "provenance": {
+        "source_artifact": "historical-source/obligations/OBLIGATIONS.yaml",
+        "source_object": "OBL-RECOGNITION-DISTINCT",
+        "content_hash": "edb56ccdb408bfe3197f05c3a55e7627772d248d8c72c28e5b8c86566d25efa5",
+        "transformation": "NON_NORMATIVE_RATIONALE_EXTRACTION",
+        "normative": false
+      }
+    },
+    {
+      "rationale_id": "RATIONALE-V101-022",
+      "object_type": "RATIONALE",
+      "schema_version": "1.0",
+      "lifecycle_status": "DERIVED",
+      "statement": "Conflation hides failure or loses partial results.",
+      "source_obligations": [
+        "OBL-RECOGNITION-OUTCOMES"
+      ],
+      "source_properties": [
+        "PROP-RECOGNITION-OUTCOMES"
+      ],
+      "source_evidence": [
+        "NE-V3-API",
+        "NE-V8-FAILURE-MATRIX"
+      ],
+      "epistemic_status": "SUPPORTED",
+      "reasoning_type": "ENGINEERING",
+      "normative": false,
+      "provenance": {
+        "source_artifact": "historical-source/obligations/OBLIGATIONS.yaml",
+        "source_object": "OBL-RECOGNITION-OUTCOMES",
+        "content_hash": "edb56ccdb408bfe3197f05c3a55e7627772d248d8c72c28e5b8c86566d25efa5",
+        "transformation": "NON_NORMATIVE_RATIONALE_EXTRACTION",
+        "normative": false
+      }
+    },
+    {
+      "rationale_id": "RATIONALE-V101-023",
+      "object_type": "RATIONALE",
+      "schema_version": "1.0",
+      "lifecycle_status": "DERIVED",
+      "statement": "Names/signatures do not establish substitutability.",
+      "source_obligations": [
+        "OBL-PROVIDER-CONTRACT"
+      ],
+      "source_properties": [
+        "PROP-PROVIDER-CONTRACT"
+      ],
+      "source_evidence": [
+        "NE-V3-PROVIDERS",
+        "NE-V9-CLAIMS"
+      ],
+      "epistemic_status": "SUPPORTED",
+      "reasoning_type": "ENGINEERING",
+      "normative": false,
+      "provenance": {
+        "source_artifact": "historical-source/obligations/OBLIGATIONS.yaml",
+        "source_object": "OBL-PROVIDER-CONTRACT",
+        "content_hash": "edb56ccdb408bfe3197f05c3a55e7627772d248d8c72c28e5b8c86566d25efa5",
+        "transformation": "NON_NORMATIVE_RATIONALE_EXTRACTION",
+        "normative": false
+      }
+    },
+    {
+      "rationale_id": "RATIONALE-V101-024",
+      "object_type": "RATIONALE",
+      "schema_version": "1.0",
+      "lifecycle_status": "DERIVED",
+      "statement": "Partial evidence cannot be upgraded to complete isolation.",
+      "source_obligations": [
+        "OBL-PROVIDER-FAILURE"
+      ],
+      "source_properties": [
+        "PROP-PROVIDER-FAILURE"
+      ],
+      "source_evidence": [
+        "NE-V8-FAILURE-MATRIX"
+      ],
+      "epistemic_status": "SUPPORTED",
+      "reasoning_type": "ENGINEERING",
+      "normative": false,
+      "provenance": {
+        "source_artifact": "historical-source/obligations/OBLIGATIONS.yaml",
+        "source_object": "OBL-PROVIDER-FAILURE",
+        "content_hash": "edb56ccdb408bfe3197f05c3a55e7627772d248d8c72c28e5b8c86566d25efa5",
+        "transformation": "NON_NORMATIVE_RATIONALE_EXTRACTION",
+        "normative": false
+      }
+    },
+    {
+      "rationale_id": "RATIONALE-V101-025",
+      "object_type": "RATIONALE",
+      "schema_version": "1.0",
+      "lifecycle_status": "DERIVED",
+      "statement": "The conditional obligation preserves uncertainty instead of inventing a stable ordering contract.",
+      "source_obligations": [
+        "OBL-PROVIDER-ORDER"
+      ],
+      "source_properties": [
+        "PROP-PROVIDER-ORDER"
+      ],
+      "source_evidence": [
+        "NE-V3-PROVIDERS",
+        "NE-V9-UNKNOWNS"
+      ],
+      "epistemic_status": "UNKNOWN",
+      "reasoning_type": "HISTORICAL",
+      "normative": false,
+      "provenance": {
+        "source_artifact": "historical-source/obligations/OBLIGATIONS.yaml",
+        "source_object": "OBL-PROVIDER-ORDER",
+        "content_hash": "edb56ccdb408bfe3197f05c3a55e7627772d248d8c72c28e5b8c86566d25efa5",
+        "transformation": "NON_NORMATIVE_RATIONALE_EXTRACTION",
+        "normative": false
+      }
+    },
+    {
+      "rationale_id": "RATIONALE-V101-026",
+      "object_type": "RATIONALE",
+      "schema_version": "1.0",
+      "lifecycle_status": "DERIVED",
+      "statement": "The interpreted output must remain meaningful and attributable.",
+      "source_obligations": [
+        "OBL-DISCOVERY-RECORD"
+      ],
+      "source_properties": [
+        "PROP-DISCOVERY-RECORD"
+      ],
+      "source_evidence": [
+        "NE-V3-DATA",
+        "NE-V8-PROVENANCE",
+        "NE-V9-CLAIMS"
+      ],
+      "epistemic_status": "SUPPORTED",
+      "reasoning_type": "HISTORICAL",
+      "normative": false,
+      "provenance": {
+        "source_artifact": "historical-source/obligations/OBLIGATIONS.yaml",
+        "source_object": "OBL-DISCOVERY-RECORD",
+        "content_hash": "edb56ccdb408bfe3197f05c3a55e7627772d248d8c72c28e5b8c86566d25efa5",
+        "transformation": "NON_NORMATIVE_RATIONALE_EXTRACTION",
+        "normative": false
+      }
+    },
+    {
+      "rationale_id": "RATIONALE-V101-027",
+      "object_type": "RATIONALE",
+      "schema_version": "1.0",
+      "lifecycle_status": "DERIVED",
+      "statement": "Removing re-entry changes recursive discovery to one-pass extraction.",
+      "source_obligations": [
+        "OBL-EXPANSION-RECURSIVE"
+      ],
+      "source_properties": [
+        "PROP-EXPANSION-RECURSIVE"
+      ],
+      "source_evidence": [
+        "NE-V9-CLAIMS",
+        "NE-V9-INVARIANTS"
+      ],
+      "epistemic_status": "SUPPORTED",
+      "reasoning_type": "HISTORICAL",
+      "normative": false,
+      "provenance": {
+        "source_artifact": "historical-source/obligations/OBLIGATIONS.yaml",
+        "source_object": "OBL-EXPANSION-RECURSIVE",
+        "content_hash": "edb56ccdb408bfe3197f05c3a55e7627772d248d8c72c28e5b8c86566d25efa5",
+        "transformation": "NON_NORMATIVE_RATIONALE_EXTRACTION",
+        "normative": false
+      }
+    },
+    {
+      "rationale_id": "RATIONALE-V101-028",
+      "object_type": "RATIONALE",
+      "schema_version": "1.0",
+      "lifecycle_status": "DERIVED",
+      "statement": "Conflation corrupts parentage, attempts, and termination.",
+      "source_obligations": [
+        "OBL-EXPANSION-VS-RETRY"
+      ],
+      "source_properties": [
+        "PROP-EXPANSION-VS-RETRY"
+      ],
+      "source_evidence": [
+        "NE-V8-RETRY",
+        "NE-V9-CLAIMS"
+      ],
+      "epistemic_status": "SUPPORTED",
+      "reasoning_type": "HISTORICAL",
+      "normative": false,
+      "provenance": {
+        "source_artifact": "historical-source/obligations/OBLIGATIONS.yaml",
+        "source_object": "OBL-EXPANSION-VS-RETRY",
+        "content_hash": "edb56ccdb408bfe3197f05c3a55e7627772d248d8c72c28e5b8c86566d25efa5",
+        "transformation": "NON_NORMATIVE_RATIONALE_EXTRACTION",
+        "normative": false
+      }
+    },
+    {
+      "rationale_id": "RATIONALE-V101-029",
+      "object_type": "RATIONALE",
+      "schema_version": "1.0",
+      "lifecycle_status": "DERIVED",
+      "statement": "Silent drops lose provenance; non-atomic admission duplicates work.",
+      "source_obligations": [
+        "OBL-CANDIDATE-ADMISSION"
+      ],
+      "source_properties": [
+        "PROP-CANDIDATE-ADMISSION"
+      ],
+      "source_evidence": [
+        "NE-V8-DUPLICATE",
+        "NE-V9-CLAIMS"
+      ],
+      "epistemic_status": "SUPPORTED",
+      "reasoning_type": "ENGINEERING",
+      "normative": false,
+      "provenance": {
+        "source_artifact": "historical-source/obligations/OBLIGATIONS.yaml",
+        "source_object": "OBL-CANDIDATE-ADMISSION",
+        "content_hash": "edb56ccdb408bfe3197f05c3a55e7627772d248d8c72c28e5b8c86566d25efa5",
+        "transformation": "NON_NORMATIVE_RATIONALE_EXTRACTION",
+        "normative": false
+      }
+    },
+    {
+      "rationale_id": "RATIONALE-V101-030",
+      "object_type": "RATIONALE",
+      "schema_version": "1.0",
+      "lifecycle_status": "DERIVED",
+      "statement": "Discarding required state breaks scheduling and reporting.",
+      "source_obligations": [
+        "OBL-KNOWLEDGE"
+      ],
+      "source_properties": [
+        "PROP-KNOWLEDGE"
+      ],
+      "source_evidence": [
+        "NE-V9-CLAIMS",
+        "NE-V9-INVARIANTS"
+      ],
+      "epistemic_status": "SUPPORTED",
+      "reasoning_type": "HISTORICAL",
+      "normative": false,
+      "provenance": {
+        "source_artifact": "historical-source/obligations/OBLIGATIONS.yaml",
+        "source_object": "OBL-KNOWLEDGE",
+        "content_hash": "edb56ccdb408bfe3197f05c3a55e7627772d248d8c72c28e5b8c86566d25efa5",
+        "transformation": "NON_NORMATIVE_RATIONALE_EXTRACTION",
+        "normative": false
+      }
+    },
+    {
+      "rationale_id": "RATIONALE-V101-031",
+      "object_type": "RATIONALE",
+      "schema_version": "1.0",
+      "lifecycle_status": "DERIVED",
+      "statement": "Unbounded spawning is a resource and scheduling regression.",
+      "source_obligations": [
+        "OBL-BOUNDED-CONCURRENCY"
+      ],
+      "source_properties": [
+        "PROP-BOUNDED-CONCURRENCY"
+      ],
+      "source_evidence": [
+        "NE-V8-BOUNDS",
+        "NE-V9-CLAIMS"
+      ],
+      "epistemic_status": "SUPPORTED",
+      "reasoning_type": "HISTORICAL",
+      "normative": false,
+      "provenance": {
+        "source_artifact": "historical-source/obligations/OBLIGATIONS.yaml",
+        "source_object": "OBL-BOUNDED-CONCURRENCY",
+        "content_hash": "edb56ccdb408bfe3197f05c3a55e7627772d248d8c72c28e5b8c86566d25efa5",
+        "transformation": "NON_NORMATIVE_RATIONALE_EXTRACTION",
+        "normative": false
+      }
+    },
+    {
+      "rationale_id": "RATIONALE-V101-032",
+      "object_type": "RATIONALE",
+      "schema_version": "1.0",
+      "lifecycle_status": "DERIVED",
+      "statement": "Queue emptiness alone can terminate prematurely.",
+      "source_obligations": [
+        "OBL-SCHEDULER-TERMINATION"
+      ],
+      "source_properties": [
+        "PROP-SCHEDULER-TERMINATION"
+      ],
+      "source_evidence": [
+        "NE-V8-CLAIM",
+        "NE-V9-INVARIANTS"
+      ],
+      "epistemic_status": "SUPPORTED",
+      "reasoning_type": "ENGINEERING",
+      "normative": false,
+      "provenance": {
+        "source_artifact": "historical-source/obligations/OBLIGATIONS.yaml",
+        "source_object": "OBL-SCHEDULER-TERMINATION",
+        "content_hash": "edb56ccdb408bfe3197f05c3a55e7627772d248d8c72c28e5b8c86566d25efa5",
+        "transformation": "NON_NORMATIVE_RATIONALE_EXTRACTION",
+        "normative": false
+      }
+    },
+    {
+      "rationale_id": "RATIONALE-V101-033",
+      "object_type": "RATIONALE",
+      "schema_version": "1.0",
+      "lifecycle_status": "DERIVED",
+      "statement": "Ownership and scheduler state must remain coherent after worker failure.",
+      "source_obligations": [
+        "OBL-WORKER-FAILURE"
+      ],
+      "source_properties": [
+        "PROP-WORKER-FAILURE"
+      ],
+      "source_evidence": [
+        "NE-V8-CLAIM",
+        "NE-V8-FAILURE-MATRIX"
+      ],
+      "epistemic_status": "SUPPORTED",
+      "reasoning_type": "ENGINEERING",
+      "normative": false,
+      "provenance": {
+        "source_artifact": "historical-source/obligations/OBLIGATIONS.yaml",
+        "source_object": "OBL-WORKER-FAILURE",
+        "content_hash": "edb56ccdb408bfe3197f05c3a55e7627772d248d8c72c28e5b8c86566d25efa5",
+        "transformation": "NON_NORMATIVE_RATIONALE_EXTRACTION",
+        "normative": false
+      }
+    },
+    {
+      "rationale_id": "RATIONALE-V101-034",
+      "object_type": "RATIONALE",
+      "schema_version": "1.0",
+      "lifecycle_status": "DERIVED",
+      "statement": "Unclassified retry can loop permanent failures or hide exhaustion.",
+      "source_obligations": [
+        "OBL-RETRY"
+      ],
+      "source_properties": [
+        "PROP-RETRY"
+      ],
+      "source_evidence": [
+        "NE-V8-BOUNDS",
+        "NE-V8-RETRY"
+      ],
+      "epistemic_status": "SUPPORTED",
+      "reasoning_type": "ENGINEERING",
+      "normative": false,
+      "provenance": {
+        "source_artifact": "historical-source/obligations/OBLIGATIONS.yaml",
+        "source_object": "OBL-RETRY",
+        "content_hash": "edb56ccdb408bfe3197f05c3a55e7627772d248d8c72c28e5b8c86566d25efa5",
+        "transformation": "NON_NORMATIVE_RATIONALE_EXTRACTION",
+        "normative": false
+      }
+    },
+    {
+      "rationale_id": "RATIONALE-V101-035",
+      "object_type": "RATIONALE",
+      "schema_version": "1.0",
+      "lifecycle_status": "DERIVED",
+      "statement": "Derivation must not be discarded or fabricated.",
+      "source_obligations": [
+        "OBL-PROVENANCE"
+      ],
+      "source_properties": [
+        "PROP-PROVENANCE"
+      ],
+      "source_evidence": [
+        "NE-V8-PROVENANCE",
+        "NE-V9-INVARIANTS"
+      ],
+      "epistemic_status": "SUPPORTED",
+      "reasoning_type": "HISTORICAL",
+      "normative": false,
+      "provenance": {
+        "source_artifact": "historical-source/obligations/OBLIGATIONS.yaml",
+        "source_object": "OBL-PROVENANCE",
+        "content_hash": "edb56ccdb408bfe3197f05c3a55e7627772d248d8c72c28e5b8c86566d25efa5",
+        "transformation": "NON_NORMATIVE_RATIONALE_EXTRACTION",
+        "normative": false
+      }
+    },
+    {
+      "rationale_id": "RATIONALE-V101-036",
+      "object_type": "RATIONALE",
+      "schema_version": "1.0",
+      "lifecycle_status": "DERIVED",
+      "statement": "Visibility is not integrity.",
+      "source_obligations": [
+        "OBL-PROVENANCE-INTEGRITY"
+      ],
+      "source_properties": [
+        "PROP-PROVENANCE-INTEGRITY"
+      ],
+      "source_evidence": [
+        "NE-V8-PROVENANCE",
+        "NE-V9-UNKNOWNS"
+      ],
+      "epistemic_status": "SUPPORTED",
+      "reasoning_type": "ENGINEERING",
+      "normative": false,
+      "provenance": {
+        "source_artifact": "historical-source/obligations/OBLIGATIONS.yaml",
+        "source_object": "OBL-PROVENANCE-INTEGRITY",
+        "content_hash": "edb56ccdb408bfe3197f05c3a55e7627772d248d8c72c28e5b8c86566d25efa5",
+        "transformation": "NON_NORMATIVE_RATIONALE_EXTRACTION",
+        "normative": false
+      }
+    },
+    {
+      "rationale_id": "RATIONALE-V101-037",
+      "object_type": "RATIONALE",
+      "schema_version": "1.0",
+      "lifecycle_status": "DERIVED",
+      "statement": "Preserving non-execution avoids a security-semantic regression.",
+      "source_obligations": [
+        "OBL-REMOTE-DATA"
+      ],
+      "source_properties": [
+        "PROP-REMOTE-DATA"
+      ],
+      "source_evidence": [
+        "NE-V8-CODE-DATA",
+        "NE-V8-PARSERS"
+      ],
+      "epistemic_status": "SUPPORTED",
+      "reasoning_type": "HISTORICAL",
+      "normative": false,
+      "provenance": {
+        "source_artifact": "historical-source/obligations/OBLIGATIONS.yaml",
+        "source_object": "OBL-REMOTE-DATA",
+        "content_hash": "edb56ccdb408bfe3197f05c3a55e7627772d248d8c72c28e5b8c86566d25efa5",
+        "transformation": "NON_NORMATIVE_RATIONALE_EXTRACTION",
+        "normative": false
+      }
+    },
+    {
+      "rationale_id": "RATIONALE-V101-038",
+      "object_type": "RATIONALE",
+      "schema_version": "1.0",
+      "lifecycle_status": "DERIVED",
+      "statement": "Ambient permission is not required capability or trust.",
+      "source_obligations": [
+        "OBL-AUTHORITY"
+      ],
+      "source_properties": [
+        "PROP-AUTHORITY"
+      ],
+      "source_evidence": [
+        "NE-V8-AUTHORITY"
+      ],
+      "epistemic_status": "SUPPORTED",
+      "reasoning_type": "ENGINEERING",
+      "normative": false,
+      "provenance": {
+        "source_artifact": "historical-source/obligations/OBLIGATIONS.yaml",
+        "source_object": "OBL-AUTHORITY",
+        "content_hash": "edb56ccdb408bfe3197f05c3a55e7627772d248d8c72c28e5b8c86566d25efa5",
+        "transformation": "NON_NORMATIVE_RATIONALE_EXTRACTION",
+        "normative": false
+      }
+    },
+    {
+      "rationale_id": "RATIONALE-V101-039",
+      "object_type": "RATIONALE",
+      "schema_version": "1.0",
+      "lifecycle_status": "DERIVED",
+      "statement": "Malformed one-response input must not corrupt unrelated work.",
+      "source_obligations": [
+        "OBL-PARSER"
+      ],
+      "source_properties": [
+        "PROP-PARSER"
+      ],
+      "source_evidence": [
+        "NE-V8-FAILURE-MATRIX",
+        "NE-V8-PARSERS"
+      ],
+      "epistemic_status": "SUPPORTED",
+      "reasoning_type": "HISTORICAL",
+      "normative": false,
+      "provenance": {
+        "source_artifact": "historical-source/obligations/OBLIGATIONS.yaml",
+        "source_object": "OBL-PARSER",
+        "content_hash": "edb56ccdb408bfe3197f05c3a55e7627772d248d8c72c28e5b8c86566d25efa5",
+        "transformation": "NON_NORMATIVE_RATIONALE_EXTRACTION",
+        "normative": false
+      }
+    },
+    {
+      "rationale_id": "RATIONALE-V101-040",
+      "object_type": "RATIONALE",
+      "schema_version": "1.0",
+      "lifecycle_status": "DERIVED",
+      "statement": "Removing bounds creates resource regressions; local bounds are not global guarantees.",
+      "source_obligations": [
+        "OBL-RESOURCE"
+      ],
+      "source_properties": [
+        "PROP-RESOURCE"
+      ],
+      "source_evidence": [
+        "NE-V8-BOUNDS",
+        "NE-V9-CLAIMS"
+      ],
+      "epistemic_status": "SUPPORTED",
+      "reasoning_type": "HISTORICAL",
+      "normative": false,
+      "provenance": {
+        "source_artifact": "historical-source/obligations/OBLIGATIONS.yaml",
+        "source_object": "OBL-RESOURCE",
+        "content_hash": "edb56ccdb408bfe3197f05c3a55e7627772d248d8c72c28e5b8c86566d25efa5",
+        "transformation": "NON_NORMATIVE_RATIONALE_EXTRACTION",
+        "normative": false
+      }
+    },
+    {
+      "rationale_id": "RATIONALE-V101-041",
+      "object_type": "RATIONALE",
+      "schema_version": "1.0",
+      "lifecycle_status": "DERIVED",
+      "statement": "This is resource strengthening, not a vulnerability claim.",
+      "source_obligations": [
+        "OBL-UNBOUNDED"
+      ],
+      "source_properties": [
+        "PROP-UNBOUNDED"
+      ],
+      "source_evidence": [
+        "NE-V8-RISKS"
+      ],
+      "epistemic_status": "SUPPORTED",
+      "reasoning_type": "ENGINEERING",
+      "normative": false,
+      "provenance": {
+        "source_artifact": "historical-source/obligations/OBLIGATIONS.yaml",
+        "source_object": "OBL-UNBOUNDED",
+        "content_hash": "edb56ccdb408bfe3197f05c3a55e7627772d248d8c72c28e5b8c86566d25efa5",
+        "transformation": "NON_NORMATIVE_RATIONALE_EXTRACTION",
+        "normative": false
+      }
+    },
+    {
+      "rationale_id": "RATIONALE-V101-042",
+      "object_type": "RATIONALE",
+      "schema_version": "1.0",
+      "lifecycle_status": "DERIVED",
+      "statement": "Diagnosis and testing require semantic events, not formatting.",
+      "source_obligations": [
+        "OBL-LIFECYCLE-OBS"
+      ],
+      "source_properties": [
+        "PROP-LIFECYCLE-OBS"
+      ],
+      "source_evidence": [
+        "NE-V8-FAILURE-MATRIX",
+        "NE-V8-OBSERVE"
+      ],
+      "epistemic_status": "SUPPORTED",
+      "reasoning_type": "ENGINEERING",
+      "normative": false,
+      "provenance": {
+        "source_artifact": "historical-source/obligations/OBLIGATIONS.yaml",
+        "source_object": "OBL-LIFECYCLE-OBS",
+        "content_hash": "edb56ccdb408bfe3197f05c3a55e7627772d248d8c72c28e5b8c86566d25efa5",
+        "transformation": "NON_NORMATIVE_RATIONALE_EXTRACTION",
+        "normative": false
+      }
+    },
+    {
+      "rationale_id": "RATIONALE-V101-043",
+      "object_type": "RATIONALE",
+      "schema_version": "1.0",
+      "lifecycle_status": "DERIVED",
+      "statement": "A log or ledger-shaped object is not an audit trail.",
+      "source_obligations": [
+        "OBL-AUDIT"
+      ],
+      "source_properties": [
+        "PROP-AUDIT"
+      ],
+      "source_evidence": [
+        "NE-V8-OBSERVE",
+        "NE-V9-CLAIMS"
+      ],
+      "epistemic_status": "SUPPORTED",
+      "reasoning_type": "ENGINEERING",
+      "normative": false,
+      "provenance": {
+        "source_artifact": "historical-source/obligations/OBLIGATIONS.yaml",
+        "source_object": "OBL-AUDIT",
+        "content_hash": "edb56ccdb408bfe3197f05c3a55e7627772d248d8c72c28e5b8c86566d25efa5",
+        "transformation": "NON_NORMATIVE_RATIONALE_EXTRACTION",
+        "normative": false
+      }
+    },
+    {
+      "rationale_id": "RATIONALE-V101-044",
+      "object_type": "RATIONALE",
+      "schema_version": "1.0",
+      "lifecycle_status": "DERIVED",
+      "statement": "Silent semantic loss causes false success.",
+      "source_obligations": [
+        "OBL-SILENT-FAILURE"
+      ],
+      "source_properties": [
+        "PROP-SILENT-FAILURE"
+      ],
+      "source_evidence": [
+        "NE-V8-FAILURE-MATRIX"
+      ],
+      "epistemic_status": "SUPPORTED",
+      "reasoning_type": "ENGINEERING",
+      "normative": false,
+      "provenance": {
+        "source_artifact": "historical-source/obligations/OBLIGATIONS.yaml",
+        "source_object": "OBL-SILENT-FAILURE",
+        "content_hash": "edb56ccdb408bfe3197f05c3a55e7627772d248d8c72c28e5b8c86566d25efa5",
+        "transformation": "NON_NORMATIVE_RATIONALE_EXTRACTION",
+        "normative": false
+      }
+    },
+    {
+      "rationale_id": "RATIONALE-V101-045",
+      "object_type": "RATIONALE",
+      "schema_version": "1.0",
+      "lifecycle_status": "DERIVED",
+      "statement": "Compatibility applies only when historical state is consumed.",
+      "source_obligations": [
+        "OBL-PERSIST-COMPAT"
+      ],
+      "source_properties": [
+        "PROP-PERSIST-COMPAT"
+      ],
+      "source_evidence": [
+        "NE-V8-PERSIST"
+      ],
+      "epistemic_status": "SUPPORTED",
+      "reasoning_type": "HISTORICAL",
+      "normative": false,
+      "provenance": {
+        "source_artifact": "historical-source/obligations/OBLIGATIONS.yaml",
+        "source_object": "OBL-PERSIST-COMPAT",
+        "content_hash": "edb56ccdb408bfe3197f05c3a55e7627772d248d8c72c28e5b8c86566d25efa5",
+        "transformation": "NON_NORMATIVE_RATIONALE_EXTRACTION",
+        "normative": false
+      }
+    },
+    {
+      "rationale_id": "RATIONALE-V101-046",
+      "object_type": "RATIONALE",
+      "schema_version": "1.0",
+      "lifecycle_status": "DERIVED",
+      "statement": "This strengthens incomplete handling without backfilling history.",
+      "source_obligations": [
+        "OBL-PERSIST-CORRUPTION"
+      ],
+      "source_properties": [
+        "PROP-PERSIST-CORRUPTION"
+      ],
+      "source_evidence": [
+        "NE-V8-PERSIST"
+      ],
+      "epistemic_status": "SUPPORTED",
+      "reasoning_type": "ENGINEERING",
+      "normative": false,
+      "provenance": {
+        "source_artifact": "historical-source/obligations/OBLIGATIONS.yaml",
+        "source_object": "OBL-PERSIST-CORRUPTION",
+        "content_hash": "edb56ccdb408bfe3197f05c3a55e7627772d248d8c72c28e5b8c86566d25efa5",
+        "transformation": "NON_NORMATIVE_RATIONALE_EXTRACTION",
+        "normative": false
+      }
+    },
+    {
+      "rationale_id": "RATIONALE-V101-047",
+      "object_type": "RATIONALE",
+      "schema_version": "1.0",
+      "lifecycle_status": "DERIVED",
+      "statement": "Identical JSON can be observability, persistence, interchange, or API.",
+      "source_obligations": [
+        "OBL-EXPORT"
+      ],
+      "source_properties": [
+        "PROP-EXPORT"
+      ],
+      "source_evidence": [
+        "NE-V8-EXPORT"
+      ],
+      "epistemic_status": "SUPPORTED",
+      "reasoning_type": "ENGINEERING",
+      "normative": false,
+      "provenance": {
+        "source_artifact": "historical-source/obligations/OBLIGATIONS.yaml",
+        "source_object": "OBL-EXPORT",
+        "content_hash": "edb56ccdb408bfe3197f05c3a55e7627772d248d8c72c28e5b8c86566d25efa5",
+        "transformation": "NON_NORMATIVE_RATIONALE_EXTRACTION",
+        "normative": false
+      }
+    },
+    {
+      "rationale_id": "RATIONALE-V101-048",
+      "object_type": "RATIONALE",
+      "schema_version": "1.0",
+      "lifecycle_status": "DERIVED",
+      "statement": "Presence does not make styling contractual.",
+      "source_obligations": [
+        "OBL-UI"
+      ],
+      "source_properties": [
+        "PROP-UI"
+      ],
+      "source_evidence": [
+        "NE-V8-OBSERVE"
+      ],
+      "epistemic_status": "SUPPORTED",
+      "reasoning_type": "HISTORICAL",
+      "normative": false,
+      "provenance": {
+        "source_artifact": "historical-source/obligations/OBLIGATIONS.yaml",
+        "source_object": "OBL-UI",
+        "content_hash": "edb56ccdb408bfe3197f05c3a55e7627772d248d8c72c28e5b8c86566d25efa5",
+        "transformation": "NON_NORMATIVE_RATIONALE_EXTRACTION",
+        "normative": false
+      }
+    },
+    {
+      "rationale_id": "RATIONALE-V101-049",
+      "object_type": "RATIONALE",
+      "schema_version": "1.0",
+      "lifecycle_status": "DERIVED",
+      "statement": "Historical faithfulness preserves semantics, not source form.",
+      "source_obligations": [
+        "OBL-PRIVATE-SHAPE"
+      ],
+      "source_properties": [
+        "PROP-PRIVATE-SHAPE"
+      ],
+      "source_evidence": [
+        "NE-V3-API",
+        "NE-V3-DATA"
+      ],
+      "epistemic_status": "INFERRED",
+      "reasoning_type": "HISTORICAL",
+      "normative": false,
+      "provenance": {
+        "source_artifact": "historical-source/obligations/OBLIGATIONS.yaml",
+        "source_object": "OBL-PRIVATE-SHAPE",
+        "content_hash": "edb56ccdb408bfe3197f05c3a55e7627772d248d8c72c28e5b8c86566d25efa5",
+        "transformation": "NON_NORMATIVE_RATIONALE_EXTRACTION",
+        "normative": false
+      }
+    },
+    {
+      "rationale_id": "RATIONALE-V101-050",
+      "object_type": "RATIONALE",
+      "schema_version": "1.0",
+      "lifecycle_status": "DERIVED",
+      "statement": "The missing mandatory input blocks contract conclusions and must not be replaced with signature inference.",
+      "source_obligations": [
+        "OBL-CONTRACT-INPUT"
+      ],
+      "source_properties": [
+        "PROP-CONTRACT-INPUT"
+      ],
+      "source_evidence": [
+        "NE-V9-CLAIMS",
+        "NE-V9-UNKNOWNS"
+      ],
+      "epistemic_status": "PROVED",
+      "reasoning_type": "ENGINEERING",
+      "normative": false,
+      "provenance": {
+        "source_artifact": "historical-source/obligations/OBLIGATIONS.yaml",
+        "source_object": "OBL-CONTRACT-INPUT",
+        "content_hash": "edb56ccdb408bfe3197f05c3a55e7627772d248d8c72c28e5b8c86566d25efa5",
+        "transformation": "NON_NORMATIVE_RATIONALE_EXTRACTION",
+        "normative": false
+      }
+    },
+    {
+      "rationale_id": "RATIONALE-V101-051",
+      "object_type": "RATIONALE",
+      "schema_version": "1.0",
+      "lifecycle_status": "DERIVED",
+      "statement": "These outcomes are semantically distinct despite missing v7.",
+      "source_obligations": [
+        "OBL-ERROR-CONTRACT"
+      ],
+      "source_properties": [
+        "PROP-ERROR-CONTRACT"
+      ],
+      "source_evidence": [
+        "NE-V3-API",
+        "NE-V8-FAILURE-MATRIX",
+        "NE-V9-CLAIMS"
+      ],
+      "epistemic_status": "SUPPORTED",
+      "reasoning_type": "ENGINEERING",
+      "normative": false,
+      "provenance": {
+        "source_artifact": "historical-source/obligations/OBLIGATIONS.yaml",
+        "source_object": "OBL-ERROR-CONTRACT",
+        "content_hash": "edb56ccdb408bfe3197f05c3a55e7627772d248d8c72c28e5b8c86566d25efa5",
+        "transformation": "NON_NORMATIVE_RATIONALE_EXTRACTION",
+        "normative": false
+      }
+    },
+    {
+      "rationale_id": "RATIONALE-V101-052",
+      "object_type": "RATIONALE",
+      "schema_version": "1.0",
+      "lifecycle_status": "DERIVED",
+      "statement": "Static archaeology cannot verify a future implementation.",
+      "source_obligations": [
+        "OBL-REGRESSION"
+      ],
+      "source_properties": [
+        "PROP-REGRESSION"
+      ],
+      "source_evidence": [
+        "NE-V9-CLAIMS",
+        "NE-V9-UNKNOWNS"
+      ],
+      "epistemic_status": "SUPPORTED",
+      "reasoning_type": "ENGINEERING",
+      "normative": false,
+      "provenance": {
+        "source_artifact": "historical-source/obligations/OBLIGATIONS.yaml",
+        "source_object": "OBL-REGRESSION",
+        "content_hash": "edb56ccdb408bfe3197f05c3a55e7627772d248d8c72c28e5b8c86566d25efa5",
+        "transformation": "NON_NORMATIVE_RATIONALE_EXTRACTION",
+        "normative": false
+      }
+    },
+    {
+      "rationale_id": "RATIONALE-V101-053",
+      "object_type": "RATIONALE",
+      "schema_version": "1.0",
+      "lifecycle_status": "DERIVED",
+      "statement": "Exactness is not executability; defects are not future requirements.",
+      "source_obligations": [
+        "OBL-PARSE-DEFECT"
+      ],
+      "source_properties": [
+        "PROP-PARSE-DEFECT"
+      ],
+      "source_evidence": [
+        "NE-V9-CLAIMS",
+        "NE-V9-CONTRADICTIONS"
+      ],
+      "epistemic_status": "PROVED",
+      "reasoning_type": "ENGINEERING",
+      "normative": false,
+      "provenance": {
+        "source_artifact": "historical-source/obligations/OBLIGATIONS.yaml",
+        "source_object": "OBL-PARSE-DEFECT",
+        "content_hash": "edb56ccdb408bfe3197f05c3a55e7627772d248d8c72c28e5b8c86566d25efa5",
+        "transformation": "NON_NORMATIVE_RATIONALE_EXTRACTION",
+        "normative": false
+      }
+    },
+    {
+      "rationale_id": "RATIONALE-V101-054",
+      "object_type": "RATIONALE",
+      "schema_version": "1.0",
+      "lifecycle_status": "DERIVED",
+      "statement": "Generalization must not rewrite historical scope or discard validated web behavior.",
+      "source_obligations": [
+        "OBL-WEB-GENERALIZE"
+      ],
+      "source_properties": [
+        "PROP-WEB-GENERALIZE"
+      ],
+      "source_evidence": [
+        "NE-V9-CLAIMS",
+        "NE-V9-INVARIANTS"
+      ],
+      "epistemic_status": "SUPPORTED",
+      "reasoning_type": "ENGINEERING",
+      "normative": false,
+      "provenance": {
+        "source_artifact": "historical-source/obligations/OBLIGATIONS.yaml",
+        "source_object": "OBL-WEB-GENERALIZE",
+        "content_hash": "edb56ccdb408bfe3197f05c3a55e7627772d248d8c72c28e5b8c86566d25efa5",
+        "transformation": "NON_NORMATIVE_RATIONALE_EXTRACTION",
+        "normative": false
+      }
+    }
+  ],
+  "reasoning_types": [
+    "HISTORICAL",
+    "ENGINEERING",
+    "SECURITY",
+    "COMPATIBILITY",
+    "OPERATIONAL",
+    "PERFORMANCE"
+  ]
+}

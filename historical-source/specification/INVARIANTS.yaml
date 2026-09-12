@@ -1,0 +1,129 @@
+{
+  "schema_version": "1.0",
+  "specification_version": "11.1",
+  "registry_type": "INVARIANT",
+  "status": "DERIVATION_REJECTED",
+  "invariants": [],
+  "pipeline_invariant_results": [
+    {
+      "invariant_id": "V111-I01",
+      "statement": "Normative rules are distinct from guidance.",
+      "status": "PASS",
+      "basis": "CLOSED_GATE_PREVENTS_INVALID_NORMATIVE_TRANSFORMATION"
+    },
+    {
+      "invariant_id": "V111-I02",
+      "statement": "Guidance cannot create hidden mandatory behavior.",
+      "status": "PASS",
+      "basis": "CLOSED_GATE_PREVENTS_INVALID_NORMATIVE_TRANSFORMATION"
+    },
+    {
+      "invariant_id": "V111-I03",
+      "statement": "Every mandatory requirement has a normative rule.",
+      "status": "PASS",
+      "basis": "CLOSED_GATE_PREVENTS_INVALID_NORMATIVE_TRANSFORMATION"
+    },
+    {
+      "invariant_id": "V111-I04",
+      "statement": "Every mandatory requirement has an acceptance criterion.",
+      "status": "PASS",
+      "basis": "CLOSED_GATE_PREVENTS_INVALID_NORMATIVE_TRANSFORMATION"
+    },
+    {
+      "invariant_id": "V111-I05",
+      "statement": "Every mandatory requirement has a verification path.",
+      "status": "PASS",
+      "basis": "CLOSED_GATE_PREVENTS_INVALID_NORMATIVE_TRANSFORMATION"
+    },
+    {
+      "invariant_id": "V111-I06",
+      "statement": "Every historical requirement remains traceable to evidence.",
+      "status": "PASS",
+      "basis": "CLOSED_GATE_PREVENTS_INVALID_NORMATIVE_TRANSFORMATION"
+    },
+    {
+      "invariant_id": "V111-I07",
+      "statement": "Future strengthening cannot masquerade as historical fact.",
+      "status": "PASS",
+      "basis": "CLOSED_GATE_PREVENTS_INVALID_NORMATIVE_TRANSFORMATION"
+    },
+    {
+      "invariant_id": "V111-I08",
+      "statement": "Requirement class and obligation class remain independent.",
+      "status": "PASS",
+      "basis": "CLOSED_GATE_PREVENTS_INVALID_NORMATIVE_TRANSFORMATION"
+    },
+    {
+      "invariant_id": "V111-I09",
+      "statement": "Requirement strength and obligation strength remain independent.",
+      "status": "PASS",
+      "basis": "CLOSED_GATE_PREVENTS_INVALID_NORMATIVE_TRANSFORMATION"
+    },
+    {
+      "invariant_id": "V111-I10",
+      "statement": "Epistemic status and verification status remain independent.",
+      "status": "PASS",
+      "basis": "CLOSED_GATE_PREVENTS_INVALID_NORMATIVE_TRANSFORMATION"
+    },
+    {
+      "invariant_id": "V111-I11",
+      "statement": "Dependencies and lineage remain distinct.",
+      "status": "PASS",
+      "basis": "CLOSED_GATE_PREVENTS_INVALID_NORMATIVE_TRANSFORMATION"
+    },
+    {
+      "invariant_id": "V111-I12",
+      "statement": "Conflicts cannot be silently resolved.",
+      "status": "PASS",
+      "basis": "CLOSED_GATE_PREVENTS_INVALID_NORMATIVE_TRANSFORMATION"
+    },
+    {
+      "invariant_id": "V111-I13",
+      "statement": "Implementation notes cannot redefine normative semantics.",
+      "status": "PASS",
+      "basis": "CLOSED_GATE_PREVENTS_INVALID_NORMATIVE_TRANSFORMATION"
+    },
+    {
+      "invariant_id": "V111-I14",
+      "statement": "Examples cannot define normative scope.",
+      "status": "PASS",
+      "basis": "CLOSED_GATE_PREVENTS_INVALID_NORMATIVE_TRANSFORMATION"
+    },
+    {
+      "invariant_id": "V111-I15",
+      "statement": "A test result cannot establish historical truth.",
+      "status": "PASS",
+      "basis": "CLOSED_GATE_PREVENTS_INVALID_NORMATIVE_TRANSFORMATION"
+    },
+    {
+      "invariant_id": "V111-I16",
+      "statement": "Implementation location cannot substitute for a requirement.",
+      "status": "PASS",
+      "basis": "CLOSED_GATE_PREVENTS_INVALID_NORMATIVE_TRANSFORMATION"
+    },
+    {
+      "invariant_id": "V111-I17",
+      "statement": "Every first-class object has a complete schema.",
+      "status": "PASS",
+      "basis": "DEDICATED_SCHEMA_PRESENT"
+    },
+    {
+      "invariant_id": "V111-I18",
+      "statement": "Every cross-object reference is resolvable.",
+      "status": "PASS",
+      "basis": "CLOSED_GATE_PREVENTS_INVALID_NORMATIVE_TRANSFORMATION"
+    },
+    {
+      "invariant_id": "V111-I19",
+      "statement": "Mandatory conformance requires verification evidence.",
+      "status": "PASS",
+      "basis": "CLOSED_GATE_PREVENTS_INVALID_NORMATIVE_TRANSFORMATION"
+    },
+    {
+      "invariant_id": "V111-I20",
+      "statement": "No normative semantic transformation may occur without explicit traceability.",
+      "status": "PASS",
+      "basis": "CLOSED_GATE_PREVENTS_INVALID_NORMATIVE_TRANSFORMATION"
+    }
+  ]
+}
