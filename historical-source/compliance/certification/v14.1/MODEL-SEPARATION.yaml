@@ -1,0 +1,15 @@
+{
+  "schema_version": "14.1",
+  "independent_dimensions": [
+    "CERTIFICATE_LIFECYCLE",
+    "CERTIFICATE_ELIGIBILITY",
+    "CERTIFICATE_VALIDITY",
+    "RELEASE_DECISION"
+  ],
+  "non_equivalence": [
+    "ISSUED_NE_VALID",
+    "ELIGIBLE_NE_ISSUED",
+    "VALID_NE_RELEASE_AUTHORIZED"
+  ],
+  "final_separation": "AGGREGATE != ELIGIBILITY != CERTIFICATE_LIFECYCLE != CERTIFICATE_VALIDITY != RELEASE_AUTHORIZATION"
+}

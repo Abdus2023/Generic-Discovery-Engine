@@ -1,0 +1,104 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "ReleaseCertificateEvaluationV141",
+  "type": "object",
+  "required": [
+    "evaluation_id",
+    "release_id",
+    "certificate_id",
+    "lifecycle_state",
+    "validity",
+    "eligibility_observed_not_consumed",
+    "scope_matches",
+    "aggregate_allowed",
+    "decision",
+    "reasons",
+    "evaluated_at",
+    "schema_version",
+    "evaluation_hash"
+  ],
+  "properties": {
+    "evaluation_id": {
+      "type": "string",
+      "pattern": "^[A-Za-z0-9][A-Za-z0-9._:/-]*$"
+    },
+    "release_id": {
+      "type": "string",
+      "pattern": "^[A-Za-z0-9][A-Za-z0-9._:/-]*$"
+    },
+    "certificate_id": {
+      "type": "string",
+      "pattern": "^[A-Za-z0-9][A-Za-z0-9._:/-]*$"
+    },
+    "lifecycle_state": {
+      "type": "string",
+      "enum": [
+        "DRAFT",
+        "ISSUED",
+        "SUPERSEDED",
+        "REVOKED",
+        "EXPIRED"
+      ]
+    },
+    "validity": {
+      "type": "string",
+      "enum": [
+        "VALID",
+        "INVALID",
+        "NOT_YET_VALID",
+        "EXPIRED",
+        "REVOKED",
+        "SUPERSEDED",
+        "UNKNOWN"
+      ]
+    },
+    "eligibility_observed_not_consumed": {
+      "type": "string",
+      "enum": [
+        "ELIGIBLE",
+        "INELIGIBLE",
+        "BLOCKED",
+        "UNKNOWN"
+      ]
+    },
+    "scope_matches": {
+      "type": "boolean"
+    },
+    "aggregate_allowed": {
+      "type": "boolean"
+    },
+    "decision": {
+      "type": "string",
+      "enum": [
+        "AUTHORIZED",
+        "CONDITIONALLY_AUTHORIZED",
+        "REJECTED",
+        "BLOCKED",
+        "EXPIRED",
+        "UNKNOWN"
+      ]
+    },
+    "reasons": {
+      "type": "array",
+      "minItems": 0,
+      "items": {
+        "type": "string",
+        "minLength": 1
+      },
+      "uniqueItems": true
+    },
+    "evaluated_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "schema_version": {
+      "const": "14.1"
+    },
+    "evaluation_hash": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$"
+    }
+  },
+  "additionalProperties": false,
+  "$id": "https://generic-discovery-engine.invalid/compliance/v14.1/release-certificate-evaluation.schema.yaml"
+}

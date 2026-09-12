@@ -1,0 +1,59 @@
+{
+  "schema_version": "14.1",
+  "predicates": [
+    {
+      "id": "S_SCOPE_VALID",
+      "mandatory": true
+    },
+    {
+      "id": "P_SPECIFICATION_SNAPSHOT_VALID",
+      "mandatory": true
+    },
+    {
+      "id": "I_IMPLEMENTATION_SNAPSHOT_VALID",
+      "mandatory": true
+    },
+    {
+      "id": "D_CURRENT_DECISIONS_VALID",
+      "mandatory": true
+    },
+    {
+      "id": "H_LIFECYCLE_HISTORY_VALID",
+      "mandatory": true
+    },
+    {
+      "id": "E_REQUIRED_EVIDENCE_VALID",
+      "mandatory": true
+    },
+    {
+      "id": "T_TRACEABILITY_VALID",
+      "mandatory": true
+    },
+    {
+      "id": "A_AGGREGATE_VALID",
+      "mandatory": true
+    },
+    {
+      "id": "W_WAIVER_STATE_VALID",
+      "mandatory": true
+    },
+    {
+      "id": "U_CERTIFICATION_AUTHORITY_VALID",
+      "mandatory": true
+    },
+    {
+      "id": "F_EVIDENCE_FRESHNESS_VALID",
+      "mandatory": true
+    },
+    {
+      "id": "G_AGGREGATE_ALLOWED_BY_POLICY",
+      "mandatory": true
+    }
+  ],
+  "predicate_outcomes": [
+    "TRUE",
+    "FALSE",
+    "BLOCKED",
+    "UNKNOWN"
+  ]
+}

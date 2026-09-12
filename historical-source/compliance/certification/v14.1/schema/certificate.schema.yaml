@@ -1,0 +1,188 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "CertificateV141",
+  "type": "object",
+  "required": [
+    "certificate_id",
+    "certificate_type",
+    "lifecycle_state",
+    "aggregate_status",
+    "scope",
+    "snapshot_hashes",
+    "snapshot_seal",
+    "authority",
+    "eligibility_decision_id",
+    "issued_at",
+    "valid_from",
+    "valid_until",
+    "supersedes",
+    "evidence_valid",
+    "aggregate_consistent",
+    "schema_version",
+    "certificate_hash",
+    "signature"
+  ],
+  "properties": {
+    "certificate_id": {
+      "type": "string",
+      "pattern": "^[A-Za-z0-9][A-Za-z0-9._:/-]*$"
+    },
+    "certificate_type": {
+      "type": "string",
+      "enum": [
+        "COMPLIANCE",
+        "CONDITIONAL_COMPLIANCE",
+        "NON_CONFORMANCE",
+        "HISTORICAL"
+      ]
+    },
+    "lifecycle_state": {
+      "type": "string",
+      "enum": [
+        "DRAFT",
+        "ISSUED",
+        "SUPERSEDED",
+        "REVOKED",
+        "EXPIRED"
+      ]
+    },
+    "aggregate_status": {
+      "type": "string",
+      "enum": [
+        "COMPLIANT",
+        "CONDITIONALLY_COMPLIANT",
+        "NON_COMPLIANT",
+        "UNVERIFIED",
+        "BLOCKED",
+        "NO_MANDATORY_REQUIREMENTS"
+      ]
+    },
+    "scope": {
+      "$ref": "certificate-scope.schema.yaml"
+    },
+    "snapshot_hashes": {
+      "type": "object",
+      "required": [
+        "specification_hash",
+        "implementation_hash",
+        "decision_hash",
+        "evidence_hash",
+        "waiver_hash",
+        "state_history_hash",
+        "aggregate_hash",
+        "scope_hash"
+      ],
+      "properties": {
+        "specification_hash": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{64}$"
+        },
+        "implementation_hash": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{64}$"
+        },
+        "decision_hash": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{64}$"
+        },
+        "evidence_hash": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{64}$"
+        },
+        "waiver_hash": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{64}$"
+        },
+        "state_history_hash": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{64}$"
+        },
+        "aggregate_hash": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{64}$"
+        },
+        "scope_hash": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{64}$"
+        }
+      },
+      "additionalProperties": false
+    },
+    "snapshot_seal": {
+      "$ref": "snapshot-seal.schema.yaml"
+    },
+    "authority": {
+      "$ref": "certification-authority.schema.yaml"
+    },
+    "eligibility_decision_id": {
+      "type": "string",
+      "pattern": "^[A-Za-z0-9][A-Za-z0-9._:/-]*$"
+    },
+    "issued_at": {
+      "oneOf": [
+        {
+          "type": "string",
+          "format": "date-time"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "valid_from": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "valid_until": {
+      "oneOf": [
+        {
+          "type": "string",
+          "format": "date-time"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "supersedes": {
+      "oneOf": [
+        {
+          "type": "string",
+          "pattern": "^[A-Za-z0-9][A-Za-z0-9._:/-]*$"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "evidence_valid": {
+      "type": "boolean"
+    },
+    "aggregate_consistent": {
+      "type": "boolean"
+    },
+    "schema_version": {
+      "const": "14.1"
+    },
+    "certificate_hash": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$"
+    },
+    "signature": {
+      "oneOf": [
+        {
+          "$ref": "certificate-signature.schema.yaml"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    }
+  },
+  "additionalProperties": false,
+  "x-v14.1-rules": [
+    "VALID is forbidden as lifecycle_state",
+    "validity is independently derived"
+  ],
+  "$id": "https://generic-discovery-engine.invalid/compliance/v14.1/certificate.schema.yaml"
+}

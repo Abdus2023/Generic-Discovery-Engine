@@ -1,0 +1,105 @@
+{
+  "schema_version": "14.1",
+  "invariants": [
+    {
+      "id": "CERT-021",
+      "rule": "VALID MUST NOT be represented as a certificate lifecycle state.",
+      "machine_checked": true
+    },
+    {
+      "id": "CERT-022",
+      "rule": "Eligibility MUST be represented independently of certificate lifecycle.",
+      "machine_checked": true
+    },
+    {
+      "id": "CERT-023",
+      "rule": "Validity MUST be derived independently of issuance state.",
+      "machine_checked": true
+    },
+    {
+      "id": "CERT-024",
+      "rule": "ELIGIBLE MUST NOT imply ISSUED.",
+      "machine_checked": true
+    },
+    {
+      "id": "CERT-025",
+      "rule": "ISSUED MUST NOT imply currently VALID.",
+      "machine_checked": true
+    },
+    {
+      "id": "CERT-026",
+      "rule": "Certificate eligibility MUST be evaluated before issuance.",
+      "machine_checked": true
+    },
+    {
+      "id": "CERT-027",
+      "rule": "A proven mandatory eligibility failure dominates BLOCKED.",
+      "machine_checked": true
+    },
+    {
+      "id": "CERT-028",
+      "rule": "BLOCKED dominates UNKNOWN when evaluation is concretely blocked.",
+      "machine_checked": true
+    },
+    {
+      "id": "CERT-029",
+      "rule": "UNKNOWN MUST NOT be interpreted as INELIGIBLE.",
+      "machine_checked": true
+    },
+    {
+      "id": "CERT-030",
+      "rule": "Invalid required input produces INELIGIBLE.",
+      "machine_checked": true
+    },
+    {
+      "id": "CERT-031",
+      "rule": "Historical eligibility decisions MUST remain immutable.",
+      "machine_checked": true
+    },
+    {
+      "id": "CERT-032",
+      "rule": "Certificate lifecycle transitions MUST be validated.",
+      "machine_checked": true
+    },
+    {
+      "id": "CERT-033",
+      "rule": "Terminal certificate states MUST NOT return to ISSUED.",
+      "machine_checked": true
+    },
+    {
+      "id": "CERT-034",
+      "rule": "A replacement certificate MUST have a new certificate identity.",
+      "machine_checked": true
+    },
+    {
+      "id": "CERT-035",
+      "rule": "Certificate validity MUST be independently recomputable.",
+      "machine_checked": true
+    },
+    {
+      "id": "CERT-036",
+      "rule": "Release authorization MUST NOT use eligibility as a substitute for validity.",
+      "machine_checked": true
+    },
+    {
+      "id": "CERT-037",
+      "rule": "A valid signature MUST NOT establish aggregate conformance.",
+      "machine_checked": true
+    },
+    {
+      "id": "CERT-038",
+      "rule": "A waiver MUST NOT change the underlying aggregate result.",
+      "machine_checked": true
+    },
+    {
+      "id": "CERT-039",
+      "rule": "Certification policy MUST explicitly define which aggregate results are eligible for each certificate type.",
+      "machine_checked": true
+    },
+    {
+      "id": "CERT-040",
+      "rule": "Certificate eligibility MUST expose the predicates responsible for ELIGIBLE, INELIGIBLE, BLOCKED, or UNKNOWN outcomes.",
+      "machine_checked": true
+    }
+  ]
+}

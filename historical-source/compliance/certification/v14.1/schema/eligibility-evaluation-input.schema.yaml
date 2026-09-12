@@ -1,0 +1,76 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "EligibilityEvaluationInputV141",
+  "type": "object",
+  "required": [
+    "input_id",
+    "candidate_id",
+    "policy_id",
+    "snapshot_id",
+    "snapshot_hash",
+    "aggregate_status",
+    "invalid_required_input",
+    "predicate_results",
+    "schema_version",
+    "input_hash"
+  ],
+  "properties": {
+    "input_id": {
+      "type": "string",
+      "pattern": "^[A-Za-z0-9][A-Za-z0-9._:/-]*$"
+    },
+    "candidate_id": {
+      "type": "string",
+      "pattern": "^[A-Za-z0-9][A-Za-z0-9._:/-]*$"
+    },
+    "policy_id": {
+      "type": "string",
+      "pattern": "^[A-Za-z0-9][A-Za-z0-9._:/-]*$"
+    },
+    "snapshot_id": {
+      "type": "string",
+      "pattern": "^[A-Za-z0-9][A-Za-z0-9._:/-]*$"
+    },
+    "snapshot_hash": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$"
+    },
+    "aggregate_status": {
+      "oneOf": [
+        {
+          "type": "string",
+          "enum": [
+            "COMPLIANT",
+            "CONDITIONALLY_COMPLIANT",
+            "NON_COMPLIANT",
+            "UNVERIFIED",
+            "BLOCKED",
+            "NO_MANDATORY_REQUIREMENTS"
+          ]
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "invalid_required_input": {
+      "type": "boolean"
+    },
+    "predicate_results": {
+      "type": "array",
+      "minItems": 12,
+      "items": {
+        "$ref": "eligibility-predicate-result.schema.yaml"
+      }
+    },
+    "schema_version": {
+      "const": "14.1"
+    },
+    "input_hash": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$"
+    }
+  },
+  "additionalProperties": false,
+  "$id": "https://generic-discovery-engine.invalid/compliance/v14.1/eligibility-evaluation-input.schema.yaml"
+}

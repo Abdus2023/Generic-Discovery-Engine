@@ -1,0 +1,452 @@
+{
+  "schema_version": "14.1",
+  "vectors": [
+    {
+      "vector_id": "WAIVER_VALID_BUT_COMPLIANCE_TYPE_DISALLOWS_CONDITIONAL",
+      "aggregate_before": "CONDITIONALLY_COMPLIANT",
+      "aggregate_after": "CONDITIONALLY_COMPLIANT",
+      "predicate_results": [
+        {
+          "predicate_id": "S_SCOPE_VALID",
+          "result": "TRUE",
+          "evidence_refs": [
+            "TEST-EVIDENCE"
+          ],
+          "reason": "TRUE"
+        },
+        {
+          "predicate_id": "P_SPECIFICATION_SNAPSHOT_VALID",
+          "result": "TRUE",
+          "evidence_refs": [
+            "TEST-EVIDENCE"
+          ],
+          "reason": "TRUE"
+        },
+        {
+          "predicate_id": "I_IMPLEMENTATION_SNAPSHOT_VALID",
+          "result": "TRUE",
+          "evidence_refs": [
+            "TEST-EVIDENCE"
+          ],
+          "reason": "TRUE"
+        },
+        {
+          "predicate_id": "D_CURRENT_DECISIONS_VALID",
+          "result": "TRUE",
+          "evidence_refs": [
+            "TEST-EVIDENCE"
+          ],
+          "reason": "TRUE"
+        },
+        {
+          "predicate_id": "H_LIFECYCLE_HISTORY_VALID",
+          "result": "TRUE",
+          "evidence_refs": [
+            "TEST-EVIDENCE"
+          ],
+          "reason": "TRUE"
+        },
+        {
+          "predicate_id": "E_REQUIRED_EVIDENCE_VALID",
+          "result": "TRUE",
+          "evidence_refs": [
+            "TEST-EVIDENCE"
+          ],
+          "reason": "TRUE"
+        },
+        {
+          "predicate_id": "T_TRACEABILITY_VALID",
+          "result": "TRUE",
+          "evidence_refs": [
+            "TEST-EVIDENCE"
+          ],
+          "reason": "TRUE"
+        },
+        {
+          "predicate_id": "A_AGGREGATE_VALID",
+          "result": "TRUE",
+          "evidence_refs": [
+            "TEST-EVIDENCE"
+          ],
+          "reason": "TRUE"
+        },
+        {
+          "predicate_id": "W_WAIVER_STATE_VALID",
+          "result": "TRUE",
+          "evidence_refs": [
+            "TEST-EVIDENCE"
+          ],
+          "reason": "TRUE"
+        },
+        {
+          "predicate_id": "U_CERTIFICATION_AUTHORITY_VALID",
+          "result": "TRUE",
+          "evidence_refs": [
+            "TEST-EVIDENCE"
+          ],
+          "reason": "TRUE"
+        },
+        {
+          "predicate_id": "F_EVIDENCE_FRESHNESS_VALID",
+          "result": "TRUE",
+          "evidence_refs": [
+            "TEST-EVIDENCE"
+          ],
+          "reason": "TRUE"
+        },
+        {
+          "predicate_id": "G_AGGREGATE_ALLOWED_BY_POLICY",
+          "result": "FALSE",
+          "evidence_refs": [
+            "TEST-EVIDENCE"
+          ],
+          "reason": "FALSE"
+        }
+      ],
+      "failed_predicates": [
+        "G_AGGREGATE_ALLOWED_BY_POLICY"
+      ],
+      "blocking_predicates": [],
+      "unknown_predicates": [],
+      "expected": "INELIGIBLE",
+      "actual": "INELIGIBLE",
+      "pass": true
+    },
+    {
+      "vector_id": "WAIVER_VALID_AND_CONDITIONAL_TYPE_ALLOWS",
+      "aggregate_before": "CONDITIONALLY_COMPLIANT",
+      "aggregate_after": "CONDITIONALLY_COMPLIANT",
+      "predicate_results": [
+        {
+          "predicate_id": "S_SCOPE_VALID",
+          "result": "TRUE",
+          "evidence_refs": [
+            "TEST-EVIDENCE"
+          ],
+          "reason": "TRUE"
+        },
+        {
+          "predicate_id": "P_SPECIFICATION_SNAPSHOT_VALID",
+          "result": "TRUE",
+          "evidence_refs": [
+            "TEST-EVIDENCE"
+          ],
+          "reason": "TRUE"
+        },
+        {
+          "predicate_id": "I_IMPLEMENTATION_SNAPSHOT_VALID",
+          "result": "TRUE",
+          "evidence_refs": [
+            "TEST-EVIDENCE"
+          ],
+          "reason": "TRUE"
+        },
+        {
+          "predicate_id": "D_CURRENT_DECISIONS_VALID",
+          "result": "TRUE",
+          "evidence_refs": [
+            "TEST-EVIDENCE"
+          ],
+          "reason": "TRUE"
+        },
+        {
+          "predicate_id": "H_LIFECYCLE_HISTORY_VALID",
+          "result": "TRUE",
+          "evidence_refs": [
+            "TEST-EVIDENCE"
+          ],
+          "reason": "TRUE"
+        },
+        {
+          "predicate_id": "E_REQUIRED_EVIDENCE_VALID",
+          "result": "TRUE",
+          "evidence_refs": [
+            "TEST-EVIDENCE"
+          ],
+          "reason": "TRUE"
+        },
+        {
+          "predicate_id": "T_TRACEABILITY_VALID",
+          "result": "TRUE",
+          "evidence_refs": [
+            "TEST-EVIDENCE"
+          ],
+          "reason": "TRUE"
+        },
+        {
+          "predicate_id": "A_AGGREGATE_VALID",
+          "result": "TRUE",
+          "evidence_refs": [
+            "TEST-EVIDENCE"
+          ],
+          "reason": "TRUE"
+        },
+        {
+          "predicate_id": "W_WAIVER_STATE_VALID",
+          "result": "TRUE",
+          "evidence_refs": [
+            "TEST-EVIDENCE"
+          ],
+          "reason": "TRUE"
+        },
+        {
+          "predicate_id": "U_CERTIFICATION_AUTHORITY_VALID",
+          "result": "TRUE",
+          "evidence_refs": [
+            "TEST-EVIDENCE"
+          ],
+          "reason": "TRUE"
+        },
+        {
+          "predicate_id": "F_EVIDENCE_FRESHNESS_VALID",
+          "result": "TRUE",
+          "evidence_refs": [
+            "TEST-EVIDENCE"
+          ],
+          "reason": "TRUE"
+        },
+        {
+          "predicate_id": "G_AGGREGATE_ALLOWED_BY_POLICY",
+          "result": "TRUE",
+          "evidence_refs": [
+            "TEST-EVIDENCE"
+          ],
+          "reason": "TRUE"
+        }
+      ],
+      "failed_predicates": [],
+      "blocking_predicates": [],
+      "unknown_predicates": [],
+      "expected": "ELIGIBLE",
+      "actual": "ELIGIBLE",
+      "pass": true
+    },
+    {
+      "vector_id": "WAIVER_INVALID",
+      "aggregate_before": "CONDITIONALLY_COMPLIANT",
+      "aggregate_after": "CONDITIONALLY_COMPLIANT",
+      "predicate_results": [
+        {
+          "predicate_id": "S_SCOPE_VALID",
+          "result": "TRUE",
+          "evidence_refs": [
+            "TEST-EVIDENCE"
+          ],
+          "reason": "TRUE"
+        },
+        {
+          "predicate_id": "P_SPECIFICATION_SNAPSHOT_VALID",
+          "result": "TRUE",
+          "evidence_refs": [
+            "TEST-EVIDENCE"
+          ],
+          "reason": "TRUE"
+        },
+        {
+          "predicate_id": "I_IMPLEMENTATION_SNAPSHOT_VALID",
+          "result": "TRUE",
+          "evidence_refs": [
+            "TEST-EVIDENCE"
+          ],
+          "reason": "TRUE"
+        },
+        {
+          "predicate_id": "D_CURRENT_DECISIONS_VALID",
+          "result": "TRUE",
+          "evidence_refs": [
+            "TEST-EVIDENCE"
+          ],
+          "reason": "TRUE"
+        },
+        {
+          "predicate_id": "H_LIFECYCLE_HISTORY_VALID",
+          "result": "TRUE",
+          "evidence_refs": [
+            "TEST-EVIDENCE"
+          ],
+          "reason": "TRUE"
+        },
+        {
+          "predicate_id": "E_REQUIRED_EVIDENCE_VALID",
+          "result": "TRUE",
+          "evidence_refs": [
+            "TEST-EVIDENCE"
+          ],
+          "reason": "TRUE"
+        },
+        {
+          "predicate_id": "T_TRACEABILITY_VALID",
+          "result": "TRUE",
+          "evidence_refs": [
+            "TEST-EVIDENCE"
+          ],
+          "reason": "TRUE"
+        },
+        {
+          "predicate_id": "A_AGGREGATE_VALID",
+          "result": "TRUE",
+          "evidence_refs": [
+            "TEST-EVIDENCE"
+          ],
+          "reason": "TRUE"
+        },
+        {
+          "predicate_id": "W_WAIVER_STATE_VALID",
+          "result": "FALSE",
+          "evidence_refs": [
+            "TEST-EVIDENCE"
+          ],
+          "reason": "FALSE"
+        },
+        {
+          "predicate_id": "U_CERTIFICATION_AUTHORITY_VALID",
+          "result": "TRUE",
+          "evidence_refs": [
+            "TEST-EVIDENCE"
+          ],
+          "reason": "TRUE"
+        },
+        {
+          "predicate_id": "F_EVIDENCE_FRESHNESS_VALID",
+          "result": "TRUE",
+          "evidence_refs": [
+            "TEST-EVIDENCE"
+          ],
+          "reason": "TRUE"
+        },
+        {
+          "predicate_id": "G_AGGREGATE_ALLOWED_BY_POLICY",
+          "result": "TRUE",
+          "evidence_refs": [
+            "TEST-EVIDENCE"
+          ],
+          "reason": "TRUE"
+        }
+      ],
+      "failed_predicates": [
+        "W_WAIVER_STATE_VALID"
+      ],
+      "blocking_predicates": [],
+      "unknown_predicates": [],
+      "expected": "INELIGIBLE",
+      "actual": "INELIGIBLE",
+      "pass": true
+    },
+    {
+      "vector_id": "WAIVER_EVALUATION_BLOCKED",
+      "aggregate_before": "CONDITIONALLY_COMPLIANT",
+      "aggregate_after": "CONDITIONALLY_COMPLIANT",
+      "predicate_results": [
+        {
+          "predicate_id": "S_SCOPE_VALID",
+          "result": "TRUE",
+          "evidence_refs": [
+            "TEST-EVIDENCE"
+          ],
+          "reason": "TRUE"
+        },
+        {
+          "predicate_id": "P_SPECIFICATION_SNAPSHOT_VALID",
+          "result": "TRUE",
+          "evidence_refs": [
+            "TEST-EVIDENCE"
+          ],
+          "reason": "TRUE"
+        },
+        {
+          "predicate_id": "I_IMPLEMENTATION_SNAPSHOT_VALID",
+          "result": "TRUE",
+          "evidence_refs": [
+            "TEST-EVIDENCE"
+          ],
+          "reason": "TRUE"
+        },
+        {
+          "predicate_id": "D_CURRENT_DECISIONS_VALID",
+          "result": "TRUE",
+          "evidence_refs": [
+            "TEST-EVIDENCE"
+          ],
+          "reason": "TRUE"
+        },
+        {
+          "predicate_id": "H_LIFECYCLE_HISTORY_VALID",
+          "result": "TRUE",
+          "evidence_refs": [
+            "TEST-EVIDENCE"
+          ],
+          "reason": "TRUE"
+        },
+        {
+          "predicate_id": "E_REQUIRED_EVIDENCE_VALID",
+          "result": "TRUE",
+          "evidence_refs": [
+            "TEST-EVIDENCE"
+          ],
+          "reason": "TRUE"
+        },
+        {
+          "predicate_id": "T_TRACEABILITY_VALID",
+          "result": "TRUE",
+          "evidence_refs": [
+            "TEST-EVIDENCE"
+          ],
+          "reason": "TRUE"
+        },
+        {
+          "predicate_id": "A_AGGREGATE_VALID",
+          "result": "TRUE",
+          "evidence_refs": [
+            "TEST-EVIDENCE"
+          ],
+          "reason": "TRUE"
+        },
+        {
+          "predicate_id": "W_WAIVER_STATE_VALID",
+          "result": "BLOCKED",
+          "evidence_refs": [
+            "TEST-EVIDENCE"
+          ],
+          "reason": "BLOCKED"
+        },
+        {
+          "predicate_id": "U_CERTIFICATION_AUTHORITY_VALID",
+          "result": "TRUE",
+          "evidence_refs": [
+            "TEST-EVIDENCE"
+          ],
+          "reason": "TRUE"
+        },
+        {
+          "predicate_id": "F_EVIDENCE_FRESHNESS_VALID",
+          "result": "TRUE",
+          "evidence_refs": [
+            "TEST-EVIDENCE"
+          ],
+          "reason": "TRUE"
+        },
+        {
+          "predicate_id": "G_AGGREGATE_ALLOWED_BY_POLICY",
+          "result": "TRUE",
+          "evidence_refs": [
+            "TEST-EVIDENCE"
+          ],
+          "reason": "TRUE"
+        }
+      ],
+      "failed_predicates": [],
+      "blocking_predicates": [
+        "W_WAIVER_STATE_VALID"
+      ],
+      "unknown_predicates": [],
+      "expected": "BLOCKED",
+      "actual": "BLOCKED",
+      "pass": true
+    }
+  ],
+  "summary": {
+    "total": 4,
+    "passed": 4,
+    "failed": 0
+  }
+}

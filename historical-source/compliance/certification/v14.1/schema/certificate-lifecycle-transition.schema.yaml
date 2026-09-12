@@ -1,0 +1,113 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "CertificateLifecycleTransitionV141",
+  "type": "object",
+  "required": [
+    "transition_id",
+    "certificate_id",
+    "sequence",
+    "from_state",
+    "to_state",
+    "action",
+    "reason",
+    "authority",
+    "evidence_refs",
+    "occurred_at",
+    "schema_version",
+    "transition_hash"
+  ],
+  "properties": {
+    "transition_id": {
+      "type": "string",
+      "pattern": "^[A-Za-z0-9][A-Za-z0-9._:/-]*$"
+    },
+    "certificate_id": {
+      "type": "string",
+      "pattern": "^[A-Za-z0-9][A-Za-z0-9._:/-]*$"
+    },
+    "sequence": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "from_state": {
+      "oneOf": [
+        {
+          "type": "string",
+          "enum": [
+            "DRAFT",
+            "ISSUED",
+            "SUPERSEDED",
+            "REVOKED",
+            "EXPIRED"
+          ]
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "to_state": {
+      "type": "string",
+      "enum": [
+        "DRAFT",
+        "ISSUED",
+        "SUPERSEDED",
+        "REVOKED",
+        "EXPIRED"
+      ]
+    },
+    "action": {
+      "type": "string",
+      "enum": [
+        "CREATE_DRAFT",
+        "ISSUE",
+        "SUPERSEDE",
+        "REVOKE",
+        "EXPIRE"
+      ]
+    },
+    "reason": {
+      "oneOf": [
+        {
+          "type": "string",
+          "minLength": 1
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "authority": {
+      "oneOf": [
+        {
+          "$ref": "certification-authority.schema.yaml"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "evidence_refs": {
+      "type": "array",
+      "minItems": 0,
+      "items": {
+        "type": "string",
+        "minLength": 1
+      },
+      "uniqueItems": true
+    },
+    "occurred_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "schema_version": {
+      "const": "14.1"
+    },
+    "transition_hash": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$"
+    }
+  },
+  "additionalProperties": false,
+  "$id": "https://generic-discovery-engine.invalid/compliance/v14.1/certificate-lifecycle-transition.schema.yaml"
+}

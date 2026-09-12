@@ -1,0 +1,210 @@
+{
+  "schema_version": "14.1",
+  "vectors": [
+    {
+      "vector_id": "DRAFT-TO-DRAFT",
+      "from": "DRAFT",
+      "to": "DRAFT",
+      "expected": false,
+      "actual": false,
+      "pass": true
+    },
+    {
+      "vector_id": "DRAFT-TO-ISSUED",
+      "from": "DRAFT",
+      "to": "ISSUED",
+      "expected": true,
+      "actual": true,
+      "pass": true
+    },
+    {
+      "vector_id": "DRAFT-TO-SUPERSEDED",
+      "from": "DRAFT",
+      "to": "SUPERSEDED",
+      "expected": true,
+      "actual": true,
+      "pass": true
+    },
+    {
+      "vector_id": "DRAFT-TO-REVOKED",
+      "from": "DRAFT",
+      "to": "REVOKED",
+      "expected": true,
+      "actual": true,
+      "pass": true
+    },
+    {
+      "vector_id": "DRAFT-TO-EXPIRED",
+      "from": "DRAFT",
+      "to": "EXPIRED",
+      "expected": false,
+      "actual": false,
+      "pass": true
+    },
+    {
+      "vector_id": "ISSUED-TO-DRAFT",
+      "from": "ISSUED",
+      "to": "DRAFT",
+      "expected": false,
+      "actual": false,
+      "pass": true
+    },
+    {
+      "vector_id": "ISSUED-TO-ISSUED",
+      "from": "ISSUED",
+      "to": "ISSUED",
+      "expected": false,
+      "actual": false,
+      "pass": true
+    },
+    {
+      "vector_id": "ISSUED-TO-SUPERSEDED",
+      "from": "ISSUED",
+      "to": "SUPERSEDED",
+      "expected": true,
+      "actual": true,
+      "pass": true
+    },
+    {
+      "vector_id": "ISSUED-TO-REVOKED",
+      "from": "ISSUED",
+      "to": "REVOKED",
+      "expected": true,
+      "actual": true,
+      "pass": true
+    },
+    {
+      "vector_id": "ISSUED-TO-EXPIRED",
+      "from": "ISSUED",
+      "to": "EXPIRED",
+      "expected": true,
+      "actual": true,
+      "pass": true
+    },
+    {
+      "vector_id": "SUPERSEDED-TO-DRAFT",
+      "from": "SUPERSEDED",
+      "to": "DRAFT",
+      "expected": false,
+      "actual": false,
+      "pass": true
+    },
+    {
+      "vector_id": "SUPERSEDED-TO-ISSUED",
+      "from": "SUPERSEDED",
+      "to": "ISSUED",
+      "expected": false,
+      "actual": false,
+      "pass": true
+    },
+    {
+      "vector_id": "SUPERSEDED-TO-SUPERSEDED",
+      "from": "SUPERSEDED",
+      "to": "SUPERSEDED",
+      "expected": false,
+      "actual": false,
+      "pass": true
+    },
+    {
+      "vector_id": "SUPERSEDED-TO-REVOKED",
+      "from": "SUPERSEDED",
+      "to": "REVOKED",
+      "expected": false,
+      "actual": false,
+      "pass": true
+    },
+    {
+      "vector_id": "SUPERSEDED-TO-EXPIRED",
+      "from": "SUPERSEDED",
+      "to": "EXPIRED",
+      "expected": false,
+      "actual": false,
+      "pass": true
+    },
+    {
+      "vector_id": "REVOKED-TO-DRAFT",
+      "from": "REVOKED",
+      "to": "DRAFT",
+      "expected": false,
+      "actual": false,
+      "pass": true
+    },
+    {
+      "vector_id": "REVOKED-TO-ISSUED",
+      "from": "REVOKED",
+      "to": "ISSUED",
+      "expected": false,
+      "actual": false,
+      "pass": true
+    },
+    {
+      "vector_id": "REVOKED-TO-SUPERSEDED",
+      "from": "REVOKED",
+      "to": "SUPERSEDED",
+      "expected": false,
+      "actual": false,
+      "pass": true
+    },
+    {
+      "vector_id": "REVOKED-TO-REVOKED",
+      "from": "REVOKED",
+      "to": "REVOKED",
+      "expected": false,
+      "actual": false,
+      "pass": true
+    },
+    {
+      "vector_id": "REVOKED-TO-EXPIRED",
+      "from": "REVOKED",
+      "to": "EXPIRED",
+      "expected": false,
+      "actual": false,
+      "pass": true
+    },
+    {
+      "vector_id": "EXPIRED-TO-DRAFT",
+      "from": "EXPIRED",
+      "to": "DRAFT",
+      "expected": false,
+      "actual": false,
+      "pass": true
+    },
+    {
+      "vector_id": "EXPIRED-TO-ISSUED",
+      "from": "EXPIRED",
+      "to": "ISSUED",
+      "expected": false,
+      "actual": false,
+      "pass": true
+    },
+    {
+      "vector_id": "EXPIRED-TO-SUPERSEDED",
+      "from": "EXPIRED",
+      "to": "SUPERSEDED",
+      "expected": false,
+      "actual": false,
+      "pass": true
+    },
+    {
+      "vector_id": "EXPIRED-TO-REVOKED",
+      "from": "EXPIRED",
+      "to": "REVOKED",
+      "expected": false,
+      "actual": false,
+      "pass": true
+    },
+    {
+      "vector_id": "EXPIRED-TO-EXPIRED",
+      "from": "EXPIRED",
+      "to": "EXPIRED",
+      "expected": false,
+      "actual": false,
+      "pass": true
+    }
+  ],
+  "summary": {
+    "total": 25,
+    "passed": 25,
+    "failed": 0
+  }
+}

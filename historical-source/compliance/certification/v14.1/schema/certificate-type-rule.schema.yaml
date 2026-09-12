@@ -1,0 +1,38 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "CertificateTypeRuleV141",
+  "type": "object",
+  "required": [
+    "certificate_type",
+    "allowed_aggregate_results"
+  ],
+  "properties": {
+    "certificate_type": {
+      "type": "string",
+      "enum": [
+        "COMPLIANCE",
+        "CONDITIONAL_COMPLIANCE",
+        "NON_CONFORMANCE",
+        "HISTORICAL"
+      ]
+    },
+    "allowed_aggregate_results": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "string",
+        "enum": [
+          "COMPLIANT",
+          "CONDITIONALLY_COMPLIANT",
+          "NON_COMPLIANT",
+          "UNVERIFIED",
+          "BLOCKED",
+          "NO_MANDATORY_REQUIREMENTS"
+        ]
+      },
+      "uniqueItems": true
+    }
+  },
+  "additionalProperties": false,
+  "$id": "https://generic-discovery-engine.invalid/compliance/v14.1/certificate-type-rule.schema.yaml"
+}

@@ -1,0 +1,45 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "CertificationPolicyV141",
+  "type": "object",
+  "required": [
+    "policy_id",
+    "certificate_types",
+    "invalid_input_outcome",
+    "precedence",
+    "schema_version",
+    "policy_hash"
+  ],
+  "properties": {
+    "policy_id": {
+      "type": "string",
+      "pattern": "^[A-Za-z0-9][A-Za-z0-9._:/-]*$"
+    },
+    "certificate_types": {
+      "type": "array",
+      "minItems": 4,
+      "items": {
+        "$ref": "certificate-type-rule.schema.yaml"
+      }
+    },
+    "invalid_input_outcome": {
+      "const": "INELIGIBLE"
+    },
+    "precedence": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "schema_version": {
+      "const": "14.1"
+    },
+    "policy_hash": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$"
+    }
+  },
+  "additionalProperties": false,
+  "$id": "https://generic-discovery-engine.invalid/compliance/v14.1/certification-policy.schema.yaml"
+}

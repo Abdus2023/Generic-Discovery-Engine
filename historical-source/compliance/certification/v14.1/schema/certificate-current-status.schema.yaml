@@ -1,0 +1,89 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "CertificateCurrentStatusV141",
+  "type": "object",
+  "required": [
+    "status_id",
+    "certificate_id",
+    "lifecycle_state",
+    "eligibility",
+    "validity",
+    "reason",
+    "projected_at",
+    "schema_version",
+    "status_hash"
+  ],
+  "properties": {
+    "status_id": {
+      "type": "string",
+      "pattern": "^[A-Za-z0-9][A-Za-z0-9._:/-]*$"
+    },
+    "certificate_id": {
+      "oneOf": [
+        {
+          "type": "string",
+          "pattern": "^[A-Za-z0-9][A-Za-z0-9._:/-]*$"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "lifecycle_state": {
+      "oneOf": [
+        {
+          "type": "string",
+          "enum": [
+            "DRAFT",
+            "ISSUED",
+            "SUPERSEDED",
+            "REVOKED",
+            "EXPIRED"
+          ]
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "eligibility": {
+      "type": "string",
+      "enum": [
+        "ELIGIBLE",
+        "INELIGIBLE",
+        "BLOCKED",
+        "UNKNOWN",
+        "NOT_APPLICABLE"
+      ]
+    },
+    "validity": {
+      "type": "string",
+      "enum": [
+        "VALID",
+        "INVALID",
+        "NOT_YET_VALID",
+        "EXPIRED",
+        "REVOKED",
+        "SUPERSEDED",
+        "UNKNOWN"
+      ]
+    },
+    "reason": {
+      "type": "string",
+      "minLength": 1
+    },
+    "projected_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "schema_version": {
+      "const": "14.1"
+    },
+    "status_hash": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$"
+    }
+  },
+  "additionalProperties": false,
+  "$id": "https://generic-discovery-engine.invalid/compliance/v14.1/certificate-current-status.schema.yaml"
+}

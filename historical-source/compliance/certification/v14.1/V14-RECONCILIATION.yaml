@@ -1,0 +1,18 @@
+{
+  "schema_version": "14.1",
+  "predecessor": "14.0",
+  "predecessor_artifacts_mutated": false,
+  "corrections": [
+    {
+      "v14_construct": "VALID_AS_CERTIFICATE_STATE",
+      "v14_1_construct": "VALID_AS_DERIVED_VALIDITY_ONLY"
+    },
+    {
+      "v14_construct": "INVALID_AS_CERTIFICATE_STATE",
+      "v14_1_construct": "INVALID_AS_DERIVED_VALIDITY_ONLY"
+    }
+  ],
+  "existing_v14_certificates_to_migrate": 0,
+  "existing_v14_lifecycle_events_to_migrate": 0,
+  "synthetic_v14_vectors_are_not_history": true
+}

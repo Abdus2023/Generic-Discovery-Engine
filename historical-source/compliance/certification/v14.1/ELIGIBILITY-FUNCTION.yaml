@@ -1,0 +1,22 @@
+{
+  "schema_version": "14.1",
+  "inputs": [
+    "VALIDATED_EVALUATION_INPUT",
+    "PREDICATE_RESULTS"
+  ],
+  "total_for_valid_input_policy_pair": true,
+  "algorithm": [
+    "INVALID_INPUT_TO_INELIGIBLE",
+    "FALSE_TO_INELIGIBLE",
+    "BLOCKED_TO_BLOCKED",
+    "UNKNOWN_TO_UNKNOWN",
+    "ALL_TRUE_TO_ELIGIBLE"
+  ],
+  "output_reason_arrays": [
+    "FAILED_PREDICATES",
+    "BLOCKING_PREDICATES",
+    "UNKNOWN_PREDICATES",
+    "WARNINGS"
+  ],
+  "wall_clock_input": false
+}

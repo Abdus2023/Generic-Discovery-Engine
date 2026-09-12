@@ -1,0 +1,79 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "CertificateValidityResultV141",
+  "type": "object",
+  "required": [
+    "validity_id",
+    "certificate_id",
+    "lifecycle_state",
+    "status",
+    "evaluated_at",
+    "reasons",
+    "evidence_refs",
+    "schema_version",
+    "validity_hash"
+  ],
+  "properties": {
+    "validity_id": {
+      "type": "string",
+      "pattern": "^[A-Za-z0-9][A-Za-z0-9._:/-]*$"
+    },
+    "certificate_id": {
+      "type": "string",
+      "pattern": "^[A-Za-z0-9][A-Za-z0-9._:/-]*$"
+    },
+    "lifecycle_state": {
+      "type": "string",
+      "enum": [
+        "DRAFT",
+        "ISSUED",
+        "SUPERSEDED",
+        "REVOKED",
+        "EXPIRED"
+      ]
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "VALID",
+        "INVALID",
+        "NOT_YET_VALID",
+        "EXPIRED",
+        "REVOKED",
+        "SUPERSEDED",
+        "UNKNOWN"
+      ]
+    },
+    "evaluated_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "reasons": {
+      "type": "array",
+      "minItems": 0,
+      "items": {
+        "type": "string",
+        "minLength": 1
+      },
+      "uniqueItems": true
+    },
+    "evidence_refs": {
+      "type": "array",
+      "minItems": 0,
+      "items": {
+        "type": "string",
+        "minLength": 1
+      },
+      "uniqueItems": true
+    },
+    "schema_version": {
+      "const": "14.1"
+    },
+    "validity_hash": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$"
+    }
+  },
+  "additionalProperties": false,
+  "$id": "https://generic-discovery-engine.invalid/compliance/v14.1/certificate-validity-result.schema.yaml"
+}

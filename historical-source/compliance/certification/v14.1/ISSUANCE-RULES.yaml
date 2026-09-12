@@ -1,0 +1,13 @@
+{
+  "schema_version": "14.1",
+  "all_of": [
+    "ELIGIBILITY_ELIGIBLE",
+    "AUTHORIZATION_VALID",
+    "CERTIFICATE_PAYLOAD_VALID",
+    "SNAPSHOT_SEAL_VALID",
+    "EXPLICIT_ISSUANCE_ACTION",
+    "CURRENT_STATE_DRAFT"
+  ],
+  "eligible_automatically_issues": false,
+  "failure_behavior": "REMAIN_DRAFT"
+}

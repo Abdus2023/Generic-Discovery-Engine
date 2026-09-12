@@ -1,0 +1,529 @@
+{
+  "schema_version": "14.1",
+  "synthetic_non_normative": true,
+  "vectors": [
+    {
+      "vector_id": "DRAFT_ONLY",
+      "history": {
+        "history_id": "TEST-LIFECYCLE-HISTORY-DRAFT_ONLY",
+        "certificate_id": "TEST-HISTORY-CERT",
+        "transitions": [
+          {
+            "transition_id": "TEST-T1",
+            "certificate_id": "TEST-HISTORY-CERT",
+            "sequence": 0,
+            "from_state": null,
+            "to_state": "DRAFT",
+            "action": "CREATE_DRAFT",
+            "reason": null,
+            "authority": null,
+            "evidence_refs": [],
+            "occurred_at": "2026-09-12T21:14:01Z",
+            "schema_version": "14.1",
+            "transition_hash": "c2c68ea6417d18a2d2bbd5576ee9ec0cee91d97492ac77b684f70ceb9d49664c"
+          }
+        ],
+        "schema_version": "14.1",
+        "history_hash": "3cae1ff762a1709f1feef2287f70629d7c5120f4a0553d94594249ed7b92774f"
+      },
+      "events": [
+        {
+          "transition_id": "TEST-T1",
+          "certificate_id": "TEST-HISTORY-CERT",
+          "sequence": 0,
+          "from_state": null,
+          "to_state": "DRAFT",
+          "action": "CREATE_DRAFT",
+          "reason": null,
+          "authority": null,
+          "evidence_refs": [],
+          "occurred_at": "2026-09-12T21:14:01Z",
+          "schema_version": "14.1",
+          "transition_hash": "c2c68ea6417d18a2d2bbd5576ee9ec0cee91d97492ac77b684f70ceb9d49664c"
+        }
+      ],
+      "expected": "VALID",
+      "actual": "VALID",
+      "expected_state": "DRAFT",
+      "actual_state": "DRAFT",
+      "pass": true
+    },
+    {
+      "vector_id": "ISSUED",
+      "history": {
+        "history_id": "TEST-LIFECYCLE-HISTORY-ISSUED",
+        "certificate_id": "TEST-HISTORY-CERT",
+        "transitions": [
+          {
+            "transition_id": "TEST-T2A",
+            "certificate_id": "TEST-HISTORY-CERT",
+            "sequence": 0,
+            "from_state": null,
+            "to_state": "DRAFT",
+            "action": "CREATE_DRAFT",
+            "reason": null,
+            "authority": null,
+            "evidence_refs": [],
+            "occurred_at": "2026-09-12T21:14:01Z",
+            "schema_version": "14.1",
+            "transition_hash": "bd7c7abce830d0721ea1231a1748d38e28141d2b84aaeeaf96ce193a16ea212a"
+          },
+          {
+            "transition_id": "TEST-T2B",
+            "certificate_id": "TEST-HISTORY-CERT",
+            "sequence": 1,
+            "from_state": "DRAFT",
+            "to_state": "ISSUED",
+            "action": "ISSUE",
+            "reason": "Synthetic lifecycle action",
+            "authority": {
+              "authority_id": "TEST-T2B-AUTH",
+              "authority_type": "AUTOMATED_POLICY",
+              "authorization_policy": "TEST-CERTIFICATION-AUTHORITY-POLICY",
+              "authorization_evidence": [
+                "TEST-AUTHORIZATION"
+              ],
+              "authorized_at": "2026-09-12T21:14:01Z"
+            },
+            "evidence_refs": [
+              "TEST-EVIDENCE"
+            ],
+            "occurred_at": "2026-09-12T21:14:01Z",
+            "schema_version": "14.1",
+            "transition_hash": "24772eff4001533c6fd1b58d83f786aa4bc3cec23b917636778ca378078791a3"
+          }
+        ],
+        "schema_version": "14.1",
+        "history_hash": "630c5b2552a94581f7e53ab0d0be41d57604782699b064866da7d0c5a0685cc2"
+      },
+      "events": [
+        {
+          "transition_id": "TEST-T2A",
+          "certificate_id": "TEST-HISTORY-CERT",
+          "sequence": 0,
+          "from_state": null,
+          "to_state": "DRAFT",
+          "action": "CREATE_DRAFT",
+          "reason": null,
+          "authority": null,
+          "evidence_refs": [],
+          "occurred_at": "2026-09-12T21:14:01Z",
+          "schema_version": "14.1",
+          "transition_hash": "bd7c7abce830d0721ea1231a1748d38e28141d2b84aaeeaf96ce193a16ea212a"
+        },
+        {
+          "transition_id": "TEST-T2B",
+          "certificate_id": "TEST-HISTORY-CERT",
+          "sequence": 1,
+          "from_state": "DRAFT",
+          "to_state": "ISSUED",
+          "action": "ISSUE",
+          "reason": "Synthetic lifecycle action",
+          "authority": {
+            "authority_id": "TEST-T2B-AUTH",
+            "authority_type": "AUTOMATED_POLICY",
+            "authorization_policy": "TEST-CERTIFICATION-AUTHORITY-POLICY",
+            "authorization_evidence": [
+              "TEST-AUTHORIZATION"
+            ],
+            "authorized_at": "2026-09-12T21:14:01Z"
+          },
+          "evidence_refs": [
+            "TEST-EVIDENCE"
+          ],
+          "occurred_at": "2026-09-12T21:14:01Z",
+          "schema_version": "14.1",
+          "transition_hash": "24772eff4001533c6fd1b58d83f786aa4bc3cec23b917636778ca378078791a3"
+        }
+      ],
+      "expected": "VALID",
+      "actual": "VALID",
+      "expected_state": "ISSUED",
+      "actual_state": "ISSUED",
+      "pass": true
+    },
+    {
+      "vector_id": "REVOKED",
+      "history": {
+        "history_id": "TEST-LIFECYCLE-HISTORY-REVOKED",
+        "certificate_id": "TEST-HISTORY-CERT",
+        "transitions": [
+          {
+            "transition_id": "TEST-T3A",
+            "certificate_id": "TEST-HISTORY-CERT",
+            "sequence": 0,
+            "from_state": null,
+            "to_state": "DRAFT",
+            "action": "CREATE_DRAFT",
+            "reason": null,
+            "authority": null,
+            "evidence_refs": [],
+            "occurred_at": "2026-09-12T21:14:01Z",
+            "schema_version": "14.1",
+            "transition_hash": "49bf3771c49b5140a9eff119f585061848e533ce3f3b1ff7c788e4426f44d878"
+          },
+          {
+            "transition_id": "TEST-T3B",
+            "certificate_id": "TEST-HISTORY-CERT",
+            "sequence": 1,
+            "from_state": "DRAFT",
+            "to_state": "ISSUED",
+            "action": "ISSUE",
+            "reason": "Synthetic lifecycle action",
+            "authority": {
+              "authority_id": "TEST-T3B-AUTH",
+              "authority_type": "AUTOMATED_POLICY",
+              "authorization_policy": "TEST-CERTIFICATION-AUTHORITY-POLICY",
+              "authorization_evidence": [
+                "TEST-AUTHORIZATION"
+              ],
+              "authorized_at": "2026-09-12T21:14:01Z"
+            },
+            "evidence_refs": [
+              "TEST-EVIDENCE"
+            ],
+            "occurred_at": "2026-09-12T21:14:01Z",
+            "schema_version": "14.1",
+            "transition_hash": "487fb98f34815298b3403fe3ac18ba175d77582c7f3fadc5ca4432ab43df74ee"
+          },
+          {
+            "transition_id": "TEST-T3C",
+            "certificate_id": "TEST-HISTORY-CERT",
+            "sequence": 2,
+            "from_state": "ISSUED",
+            "to_state": "REVOKED",
+            "action": "REVOKE",
+            "reason": "Synthetic lifecycle action",
+            "authority": {
+              "authority_id": "TEST-T3C-AUTH",
+              "authority_type": "AUTOMATED_POLICY",
+              "authorization_policy": "TEST-CERTIFICATION-AUTHORITY-POLICY",
+              "authorization_evidence": [
+                "TEST-AUTHORIZATION"
+              ],
+              "authorized_at": "2026-09-12T21:14:01Z"
+            },
+            "evidence_refs": [
+              "TEST-EVIDENCE"
+            ],
+            "occurred_at": "2026-09-12T21:14:01Z",
+            "schema_version": "14.1",
+            "transition_hash": "1da1560cf90b974921c63206549f86cbd3860b165fd9c5ae005f79574c2608fb"
+          }
+        ],
+        "schema_version": "14.1",
+        "history_hash": "49bf6cb6d9bd4bd8d63de2be58236ea29dd11d902c6945c95c44e961d44f0fdb"
+      },
+      "events": [
+        {
+          "transition_id": "TEST-T3A",
+          "certificate_id": "TEST-HISTORY-CERT",
+          "sequence": 0,
+          "from_state": null,
+          "to_state": "DRAFT",
+          "action": "CREATE_DRAFT",
+          "reason": null,
+          "authority": null,
+          "evidence_refs": [],
+          "occurred_at": "2026-09-12T21:14:01Z",
+          "schema_version": "14.1",
+          "transition_hash": "49bf3771c49b5140a9eff119f585061848e533ce3f3b1ff7c788e4426f44d878"
+        },
+        {
+          "transition_id": "TEST-T3B",
+          "certificate_id": "TEST-HISTORY-CERT",
+          "sequence": 1,
+          "from_state": "DRAFT",
+          "to_state": "ISSUED",
+          "action": "ISSUE",
+          "reason": "Synthetic lifecycle action",
+          "authority": {
+            "authority_id": "TEST-T3B-AUTH",
+            "authority_type": "AUTOMATED_POLICY",
+            "authorization_policy": "TEST-CERTIFICATION-AUTHORITY-POLICY",
+            "authorization_evidence": [
+              "TEST-AUTHORIZATION"
+            ],
+            "authorized_at": "2026-09-12T21:14:01Z"
+          },
+          "evidence_refs": [
+            "TEST-EVIDENCE"
+          ],
+          "occurred_at": "2026-09-12T21:14:01Z",
+          "schema_version": "14.1",
+          "transition_hash": "487fb98f34815298b3403fe3ac18ba175d77582c7f3fadc5ca4432ab43df74ee"
+        },
+        {
+          "transition_id": "TEST-T3C",
+          "certificate_id": "TEST-HISTORY-CERT",
+          "sequence": 2,
+          "from_state": "ISSUED",
+          "to_state": "REVOKED",
+          "action": "REVOKE",
+          "reason": "Synthetic lifecycle action",
+          "authority": {
+            "authority_id": "TEST-T3C-AUTH",
+            "authority_type": "AUTOMATED_POLICY",
+            "authorization_policy": "TEST-CERTIFICATION-AUTHORITY-POLICY",
+            "authorization_evidence": [
+              "TEST-AUTHORIZATION"
+            ],
+            "authorized_at": "2026-09-12T21:14:01Z"
+          },
+          "evidence_refs": [
+            "TEST-EVIDENCE"
+          ],
+          "occurred_at": "2026-09-12T21:14:01Z",
+          "schema_version": "14.1",
+          "transition_hash": "1da1560cf90b974921c63206549f86cbd3860b165fd9c5ae005f79574c2608fb"
+        }
+      ],
+      "expected": "VALID",
+      "actual": "VALID",
+      "expected_state": "REVOKED",
+      "actual_state": "REVOKED",
+      "pass": true
+    },
+    {
+      "vector_id": "TERMINAL_ESCAPE",
+      "history": {
+        "history_id": "TEST-LIFECYCLE-HISTORY-TERMINAL_ESCAPE",
+        "certificate_id": "TEST-HISTORY-CERT",
+        "transitions": [
+          {
+            "transition_id": "TEST-T4A",
+            "certificate_id": "TEST-HISTORY-CERT",
+            "sequence": 0,
+            "from_state": null,
+            "to_state": "DRAFT",
+            "action": "CREATE_DRAFT",
+            "reason": null,
+            "authority": null,
+            "evidence_refs": [],
+            "occurred_at": "2026-09-12T21:14:01Z",
+            "schema_version": "14.1",
+            "transition_hash": "bae3b09a83c52ae10f07ecc726e69fd17a454c245767710c51adfdfdd0a2dbe3"
+          },
+          {
+            "transition_id": "TEST-T4B",
+            "certificate_id": "TEST-HISTORY-CERT",
+            "sequence": 1,
+            "from_state": "DRAFT",
+            "to_state": "REVOKED",
+            "action": "REVOKE",
+            "reason": "Synthetic lifecycle action",
+            "authority": {
+              "authority_id": "TEST-T4B-AUTH",
+              "authority_type": "AUTOMATED_POLICY",
+              "authorization_policy": "TEST-CERTIFICATION-AUTHORITY-POLICY",
+              "authorization_evidence": [
+                "TEST-AUTHORIZATION"
+              ],
+              "authorized_at": "2026-09-12T21:14:01Z"
+            },
+            "evidence_refs": [
+              "TEST-EVIDENCE"
+            ],
+            "occurred_at": "2026-09-12T21:14:01Z",
+            "schema_version": "14.1",
+            "transition_hash": "bb2aabaaa0104afca3c5f5c528b7b756aadae1b19891d92bfe80656b269f3cda"
+          },
+          {
+            "transition_id": "TEST-T4C",
+            "certificate_id": "TEST-HISTORY-CERT",
+            "sequence": 2,
+            "from_state": "REVOKED",
+            "to_state": "ISSUED",
+            "action": "ISSUE",
+            "reason": "Synthetic lifecycle action",
+            "authority": {
+              "authority_id": "TEST-T4C-AUTH",
+              "authority_type": "AUTOMATED_POLICY",
+              "authorization_policy": "TEST-CERTIFICATION-AUTHORITY-POLICY",
+              "authorization_evidence": [
+                "TEST-AUTHORIZATION"
+              ],
+              "authorized_at": "2026-09-12T21:14:01Z"
+            },
+            "evidence_refs": [
+              "TEST-EVIDENCE"
+            ],
+            "occurred_at": "2026-09-12T21:14:01Z",
+            "schema_version": "14.1",
+            "transition_hash": "ca7c2a7feb5128aaa19ff7d3c188ce3128881ef3e808e4d720a5a1262a92e2c6"
+          }
+        ],
+        "schema_version": "14.1",
+        "history_hash": "45da7c0ad2f3afb5a5dfdc130be7795b75a6019839a48d9b69161a94850386e9"
+      },
+      "events": [
+        {
+          "transition_id": "TEST-T4A",
+          "certificate_id": "TEST-HISTORY-CERT",
+          "sequence": 0,
+          "from_state": null,
+          "to_state": "DRAFT",
+          "action": "CREATE_DRAFT",
+          "reason": null,
+          "authority": null,
+          "evidence_refs": [],
+          "occurred_at": "2026-09-12T21:14:01Z",
+          "schema_version": "14.1",
+          "transition_hash": "bae3b09a83c52ae10f07ecc726e69fd17a454c245767710c51adfdfdd0a2dbe3"
+        },
+        {
+          "transition_id": "TEST-T4B",
+          "certificate_id": "TEST-HISTORY-CERT",
+          "sequence": 1,
+          "from_state": "DRAFT",
+          "to_state": "REVOKED",
+          "action": "REVOKE",
+          "reason": "Synthetic lifecycle action",
+          "authority": {
+            "authority_id": "TEST-T4B-AUTH",
+            "authority_type": "AUTOMATED_POLICY",
+            "authorization_policy": "TEST-CERTIFICATION-AUTHORITY-POLICY",
+            "authorization_evidence": [
+              "TEST-AUTHORIZATION"
+            ],
+            "authorized_at": "2026-09-12T21:14:01Z"
+          },
+          "evidence_refs": [
+            "TEST-EVIDENCE"
+          ],
+          "occurred_at": "2026-09-12T21:14:01Z",
+          "schema_version": "14.1",
+          "transition_hash": "bb2aabaaa0104afca3c5f5c528b7b756aadae1b19891d92bfe80656b269f3cda"
+        },
+        {
+          "transition_id": "TEST-T4C",
+          "certificate_id": "TEST-HISTORY-CERT",
+          "sequence": 2,
+          "from_state": "REVOKED",
+          "to_state": "ISSUED",
+          "action": "ISSUE",
+          "reason": "Synthetic lifecycle action",
+          "authority": {
+            "authority_id": "TEST-T4C-AUTH",
+            "authority_type": "AUTOMATED_POLICY",
+            "authorization_policy": "TEST-CERTIFICATION-AUTHORITY-POLICY",
+            "authorization_evidence": [
+              "TEST-AUTHORIZATION"
+            ],
+            "authorized_at": "2026-09-12T21:14:01Z"
+          },
+          "evidence_refs": [
+            "TEST-EVIDENCE"
+          ],
+          "occurred_at": "2026-09-12T21:14:01Z",
+          "schema_version": "14.1",
+          "transition_hash": "ca7c2a7feb5128aaa19ff7d3c188ce3128881ef3e808e4d720a5a1262a92e2c6"
+        }
+      ],
+      "expected": "HISTORY_INVALID",
+      "actual": "HISTORY_INVALID",
+      "expected_state": null,
+      "actual_state": null,
+      "pass": true
+    },
+    {
+      "vector_id": "SEQUENCE_GAP",
+      "history": {
+        "history_id": "TEST-LIFECYCLE-HISTORY-SEQUENCE_GAP",
+        "certificate_id": "TEST-HISTORY-CERT",
+        "transitions": [
+          {
+            "transition_id": "TEST-T5A",
+            "certificate_id": "TEST-HISTORY-CERT",
+            "sequence": 0,
+            "from_state": null,
+            "to_state": "DRAFT",
+            "action": "CREATE_DRAFT",
+            "reason": null,
+            "authority": null,
+            "evidence_refs": [],
+            "occurred_at": "2026-09-12T21:14:01Z",
+            "schema_version": "14.1",
+            "transition_hash": "fceb584e67cd6634558561dfcccf2f17f3baa7d5cb089907711bd707ca05da68"
+          },
+          {
+            "transition_id": "TEST-T5B",
+            "certificate_id": "TEST-HISTORY-CERT",
+            "sequence": 2,
+            "from_state": "DRAFT",
+            "to_state": "ISSUED",
+            "action": "ISSUE",
+            "reason": "Synthetic lifecycle action",
+            "authority": {
+              "authority_id": "TEST-T5B-AUTH",
+              "authority_type": "AUTOMATED_POLICY",
+              "authorization_policy": "TEST-CERTIFICATION-AUTHORITY-POLICY",
+              "authorization_evidence": [
+                "TEST-AUTHORIZATION"
+              ],
+              "authorized_at": "2026-09-12T21:14:01Z"
+            },
+            "evidence_refs": [
+              "TEST-EVIDENCE"
+            ],
+            "occurred_at": "2026-09-12T21:14:01Z",
+            "schema_version": "14.1",
+            "transition_hash": "b8435d3c8856fb28feaf2c782aa0d831d3ef99f28663f79dd7fe5dd188e57582"
+          }
+        ],
+        "schema_version": "14.1",
+        "history_hash": "f3e3875901748d007915c0a111dfc9762880e1581a217e07ae3e53c923c8a977"
+      },
+      "events": [
+        {
+          "transition_id": "TEST-T5A",
+          "certificate_id": "TEST-HISTORY-CERT",
+          "sequence": 0,
+          "from_state": null,
+          "to_state": "DRAFT",
+          "action": "CREATE_DRAFT",
+          "reason": null,
+          "authority": null,
+          "evidence_refs": [],
+          "occurred_at": "2026-09-12T21:14:01Z",
+          "schema_version": "14.1",
+          "transition_hash": "fceb584e67cd6634558561dfcccf2f17f3baa7d5cb089907711bd707ca05da68"
+        },
+        {
+          "transition_id": "TEST-T5B",
+          "certificate_id": "TEST-HISTORY-CERT",
+          "sequence": 2,
+          "from_state": "DRAFT",
+          "to_state": "ISSUED",
+          "action": "ISSUE",
+          "reason": "Synthetic lifecycle action",
+          "authority": {
+            "authority_id": "TEST-T5B-AUTH",
+            "authority_type": "AUTOMATED_POLICY",
+            "authorization_policy": "TEST-CERTIFICATION-AUTHORITY-POLICY",
+            "authorization_evidence": [
+              "TEST-AUTHORIZATION"
+            ],
+            "authorized_at": "2026-09-12T21:14:01Z"
+          },
+          "evidence_refs": [
+            "TEST-EVIDENCE"
+          ],
+          "occurred_at": "2026-09-12T21:14:01Z",
+          "schema_version": "14.1",
+          "transition_hash": "b8435d3c8856fb28feaf2c782aa0d831d3ef99f28663f79dd7fe5dd188e57582"
+        }
+      ],
+      "expected": "HISTORY_INVALID",
+      "actual": "HISTORY_INVALID",
+      "expected_state": null,
+      "actual_state": null,
+      "pass": true
+    }
+  ],
+  "summary": {
+    "total": 5,
+    "passed": 5,
+    "failed": 0
+  }
+}

@@ -1,0 +1,26 @@
+{
+  "schema_version": "14.1",
+  "objects": [
+    {
+      "object_type": "CERTIFICATION_POLICY",
+      "object_id": "CERT-POLICY-V141-001",
+      "source": "CERTIFICATION-POLICY.yaml"
+    },
+    {
+      "object_type": "CERTIFICATE_CURRENT_STATUS",
+      "object_id": "CERT-CURRENT-STATUS-V141-001",
+      "source": "CURRENT-CERTIFICATE-STATUS.yaml"
+    }
+  ],
+  "external_registries": [
+    {
+      "path": "../v14/OBJECT-REGISTRY.yaml",
+      "sha256": "3494f4f7836f2d7558483cef7e2c8b2fbd720607c34edfab6daf64224eeb6624"
+    },
+    {
+      "path": "../../remediation/v13.3/OBJECT-REGISTRY.yaml",
+      "sha256": "9009393d3e17b832b94f62e84d29bc7133c4c75d9a28830bdeb6684be8a49ec3"
+    }
+  ],
+  "global_uniqueness_checked": true
+}

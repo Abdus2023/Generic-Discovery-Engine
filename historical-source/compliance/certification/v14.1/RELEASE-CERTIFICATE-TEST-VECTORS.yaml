@@ -1,0 +1,170 @@
+{
+  "schema_version": "14.1",
+  "synthetic_non_normative": true,
+  "vectors": [
+    {
+      "vector_id": "VALID_ISSUED",
+      "evaluation": {
+        "evaluation_id": "RELEASE-CERT-EVALUATION-VALID_ISSUED",
+        "release_id": "TEST-RELEASE-VALID_ISSUED",
+        "certificate_id": "TEST-RELEASE-CERT-VALID_ISSUED",
+        "lifecycle_state": "ISSUED",
+        "validity": "VALID",
+        "eligibility_observed_not_consumed": "ELIGIBLE",
+        "scope_matches": true,
+        "aggregate_allowed": true,
+        "decision": "AUTHORIZED",
+        "reasons": [],
+        "evaluated_at": "2026-09-12T21:14:01Z",
+        "schema_version": "14.1",
+        "evaluation_hash": "00034cc6a5481f742dae399b8ba9f44049fdcfbfef5d51e739201f4eb0499fb8"
+      },
+      "expected": "AUTHORIZED",
+      "actual": "AUTHORIZED",
+      "pass": true
+    },
+    {
+      "vector_id": "ELIGIBILITY_BLOCKED_NOT_CONSUMED",
+      "evaluation": {
+        "evaluation_id": "RELEASE-CERT-EVALUATION-ELIGIBILITY_BLOCKED_NOT_CONSUMED",
+        "release_id": "TEST-RELEASE-ELIGIBILITY_BLOCKED_NOT_CONSUMED",
+        "certificate_id": "TEST-RELEASE-CERT-ELIGIBILITY_BLOCKED_NOT_CONSUMED",
+        "lifecycle_state": "ISSUED",
+        "validity": "VALID",
+        "eligibility_observed_not_consumed": "BLOCKED",
+        "scope_matches": true,
+        "aggregate_allowed": true,
+        "decision": "AUTHORIZED",
+        "reasons": [],
+        "evaluated_at": "2026-09-12T21:14:01Z",
+        "schema_version": "14.1",
+        "evaluation_hash": "01a08b164b46cbd0ea43d338e641820dfa593a60728824866ebbd67d7d066129"
+      },
+      "expected": "AUTHORIZED",
+      "actual": "AUTHORIZED",
+      "pass": true
+    },
+    {
+      "vector_id": "ELIGIBLE_DRAFT",
+      "evaluation": {
+        "evaluation_id": "RELEASE-CERT-EVALUATION-ELIGIBLE_DRAFT",
+        "release_id": "TEST-RELEASE-ELIGIBLE_DRAFT",
+        "certificate_id": "TEST-RELEASE-CERT-ELIGIBLE_DRAFT",
+        "lifecycle_state": "DRAFT",
+        "validity": "UNKNOWN",
+        "eligibility_observed_not_consumed": "ELIGIBLE",
+        "scope_matches": true,
+        "aggregate_allowed": true,
+        "decision": "BLOCKED",
+        "reasons": [
+          "CERTIFICATE_NOT_ISSUED",
+          "CERTIFICATE_NOT_VALID"
+        ],
+        "evaluated_at": "2026-09-12T21:14:01Z",
+        "schema_version": "14.1",
+        "evaluation_hash": "346b02de84a45cf3373aa48a9b3afc4ec2d8cee9d8f48142e7f182e220a16a41"
+      },
+      "expected": "BLOCKED",
+      "actual": "BLOCKED",
+      "pass": true
+    },
+    {
+      "vector_id": "ISSUED_INVALID",
+      "evaluation": {
+        "evaluation_id": "RELEASE-CERT-EVALUATION-ISSUED_INVALID",
+        "release_id": "TEST-RELEASE-ISSUED_INVALID",
+        "certificate_id": "TEST-RELEASE-CERT-ISSUED_INVALID",
+        "lifecycle_state": "ISSUED",
+        "validity": "INVALID",
+        "eligibility_observed_not_consumed": "ELIGIBLE",
+        "scope_matches": true,
+        "aggregate_allowed": true,
+        "decision": "BLOCKED",
+        "reasons": [
+          "CERTIFICATE_NOT_VALID"
+        ],
+        "evaluated_at": "2026-09-12T21:14:01Z",
+        "schema_version": "14.1",
+        "evaluation_hash": "06ee4f772a44beecb582c7d4778b8c3d37d2dba1ac6dcc60b100bc76ba7d11da"
+      },
+      "expected": "BLOCKED",
+      "actual": "BLOCKED",
+      "pass": true
+    },
+    {
+      "vector_id": "REVOKED",
+      "evaluation": {
+        "evaluation_id": "RELEASE-CERT-EVALUATION-REVOKED",
+        "release_id": "TEST-RELEASE-REVOKED",
+        "certificate_id": "TEST-RELEASE-CERT-REVOKED",
+        "lifecycle_state": "REVOKED",
+        "validity": "REVOKED",
+        "eligibility_observed_not_consumed": "ELIGIBLE",
+        "scope_matches": true,
+        "aggregate_allowed": true,
+        "decision": "BLOCKED",
+        "reasons": [
+          "CERTIFICATE_NOT_ISSUED",
+          "CERTIFICATE_NOT_VALID"
+        ],
+        "evaluated_at": "2026-09-12T21:14:01Z",
+        "schema_version": "14.1",
+        "evaluation_hash": "7fef29871a8a94bf87f3bca32fa9a859ba5e35b8e5922124a6d9243d8fbcc867"
+      },
+      "expected": "BLOCKED",
+      "actual": "BLOCKED",
+      "pass": true
+    },
+    {
+      "vector_id": "SCOPE_MISMATCH",
+      "evaluation": {
+        "evaluation_id": "RELEASE-CERT-EVALUATION-SCOPE_MISMATCH",
+        "release_id": "TEST-RELEASE-SCOPE_MISMATCH",
+        "certificate_id": "TEST-RELEASE-CERT-SCOPE_MISMATCH",
+        "lifecycle_state": "ISSUED",
+        "validity": "VALID",
+        "eligibility_observed_not_consumed": "ELIGIBLE",
+        "scope_matches": false,
+        "aggregate_allowed": true,
+        "decision": "REJECTED",
+        "reasons": [
+          "SCOPE_MISMATCH"
+        ],
+        "evaluated_at": "2026-09-12T21:14:01Z",
+        "schema_version": "14.1",
+        "evaluation_hash": "29e0d4a971e84c0a31488d61961cf343d11fd7e138e4cebffc91064c283ec98b"
+      },
+      "expected": "REJECTED",
+      "actual": "REJECTED",
+      "pass": true
+    },
+    {
+      "vector_id": "AGGREGATE_DISALLOWED",
+      "evaluation": {
+        "evaluation_id": "RELEASE-CERT-EVALUATION-AGGREGATE_DISALLOWED",
+        "release_id": "TEST-RELEASE-AGGREGATE_DISALLOWED",
+        "certificate_id": "TEST-RELEASE-CERT-AGGREGATE_DISALLOWED",
+        "lifecycle_state": "ISSUED",
+        "validity": "VALID",
+        "eligibility_observed_not_consumed": "ELIGIBLE",
+        "scope_matches": true,
+        "aggregate_allowed": false,
+        "decision": "REJECTED",
+        "reasons": [
+          "AGGREGATE_DISALLOWED"
+        ],
+        "evaluated_at": "2026-09-12T21:14:01Z",
+        "schema_version": "14.1",
+        "evaluation_hash": "e18ad1cb5f3d93211bf95a28e32d0fa6fea94bdfac387356cd19204078291650"
+      },
+      "expected": "REJECTED",
+      "actual": "REJECTED",
+      "pass": true
+    }
+  ],
+  "summary": {
+    "total": 7,
+    "passed": 7,
+    "failed": 0
+  }
+}

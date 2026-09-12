@@ -1,0 +1,55 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "IssuanceResultV141",
+  "type": "object",
+  "required": [
+    "result_id",
+    "candidate_id",
+    "prior_state",
+    "resulting_state",
+    "predicates",
+    "issued",
+    "evaluated_at",
+    "schema_version",
+    "result_hash"
+  ],
+  "properties": {
+    "result_id": {
+      "type": "string",
+      "pattern": "^[A-Za-z0-9][A-Za-z0-9._:/-]*$"
+    },
+    "candidate_id": {
+      "type": "string",
+      "pattern": "^[A-Za-z0-9][A-Za-z0-9._:/-]*$"
+    },
+    "prior_state": {
+      "const": "DRAFT"
+    },
+    "resulting_state": {
+      "type": "string",
+      "enum": [
+        "DRAFT",
+        "ISSUED"
+      ]
+    },
+    "predicates": {
+      "type": "object"
+    },
+    "issued": {
+      "type": "boolean"
+    },
+    "evaluated_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "schema_version": {
+      "const": "14.1"
+    },
+    "result_hash": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$"
+    }
+  },
+  "additionalProperties": false,
+  "$id": "https://generic-discovery-engine.invalid/compliance/v14.1/issuance-result.schema.yaml"
+}

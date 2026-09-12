@@ -1,0 +1,15 @@
+{
+  "schema_version": "14.1",
+  "precedence": [
+    "INTEGRITY_FAILURE",
+    "AUTHORITY_FAILURE",
+    "SCOPE_FAILURE",
+    "REVOCATION",
+    "SUPERSESSION",
+    "EXPIRATION",
+    "EVIDENCE_FAILURE",
+    "AGGREGATE_MISMATCH"
+  ],
+  "terminal_lifecycle_status_authoritative": true,
+  "report_all_detected_failures": true
+}

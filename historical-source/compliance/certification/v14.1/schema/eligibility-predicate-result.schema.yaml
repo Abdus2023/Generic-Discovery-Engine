@@ -1,0 +1,54 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "EligibilityPredicateResultV141",
+  "type": "object",
+  "required": [
+    "predicate_id",
+    "result",
+    "evidence_refs",
+    "reason"
+  ],
+  "properties": {
+    "predicate_id": {
+      "type": "string",
+      "enum": [
+        "S_SCOPE_VALID",
+        "P_SPECIFICATION_SNAPSHOT_VALID",
+        "I_IMPLEMENTATION_SNAPSHOT_VALID",
+        "D_CURRENT_DECISIONS_VALID",
+        "H_LIFECYCLE_HISTORY_VALID",
+        "E_REQUIRED_EVIDENCE_VALID",
+        "T_TRACEABILITY_VALID",
+        "A_AGGREGATE_VALID",
+        "W_WAIVER_STATE_VALID",
+        "U_CERTIFICATION_AUTHORITY_VALID",
+        "F_EVIDENCE_FRESHNESS_VALID",
+        "G_AGGREGATE_ALLOWED_BY_POLICY"
+      ]
+    },
+    "result": {
+      "type": "string",
+      "enum": [
+        "TRUE",
+        "FALSE",
+        "BLOCKED",
+        "UNKNOWN"
+      ]
+    },
+    "evidence_refs": {
+      "type": "array",
+      "minItems": 0,
+      "items": {
+        "type": "string",
+        "minLength": 1
+      },
+      "uniqueItems": true
+    },
+    "reason": {
+      "type": "string",
+      "minLength": 1
+    }
+  },
+  "additionalProperties": false,
+  "$id": "https://generic-discovery-engine.invalid/compliance/v14.1/eligibility-predicate-result.schema.yaml"
+}

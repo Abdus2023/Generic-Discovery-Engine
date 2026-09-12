@@ -1,0 +1,59 @@
+{
+  "schema_version": "14.1",
+  "ordered_steps": [
+    {
+      "number": 1,
+      "step": "SCHEMA"
+    },
+    {
+      "number": 2,
+      "step": "CERTIFICATE_HASH"
+    },
+    {
+      "number": 3,
+      "step": "SNAPSHOT_SEAL"
+    },
+    {
+      "number": 4,
+      "step": "SIGNATURE"
+    },
+    {
+      "number": 5,
+      "step": "AUTHORITY"
+    },
+    {
+      "number": 6,
+      "step": "SCOPE"
+    },
+    {
+      "number": 7,
+      "step": "VALIDITY_INTERVAL"
+    },
+    {
+      "number": 8,
+      "step": "REVOCATION"
+    },
+    {
+      "number": 9,
+      "step": "SUPERSESSION"
+    },
+    {
+      "number": 10,
+      "step": "EVIDENCE_VALIDITY"
+    },
+    {
+      "number": 11,
+      "step": "AGGREGATE_CONSISTENCY"
+    }
+  ],
+  "inputs": [
+    "CERTIFICATE",
+    "EXPLICIT_EVALUATED_AT",
+    "REVOCATION_HISTORY",
+    "SUPERSESSION_HISTORY",
+    "POLICY"
+  ],
+  "output": "DERIVED_CERTIFICATE_VALIDITY",
+  "reports_all_failures": true,
+  "hidden_wall_clock": false
+}

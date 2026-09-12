@@ -1,0 +1,12 @@
+{
+  "schema_version": "14.1",
+  "inputs": [
+    "VALID_UNTIL",
+    "EXPLICIT_EVALUATED_AT",
+    "APPLICABLE_VALIDITY_POLICY"
+  ],
+  "hidden_wall_clock": false,
+  "deterministic": true,
+  "expired_when": "evaluated_at > valid_until under applicable policy",
+  "historical_aggregate_mutated": false
+}

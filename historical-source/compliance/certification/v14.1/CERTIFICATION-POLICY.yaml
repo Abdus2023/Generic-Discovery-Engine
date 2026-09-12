@@ -1,0 +1,50 @@
+{
+  "schema_version": "14.1",
+  "objects": [
+    {
+      "policy_id": "CERT-POLICY-V141-001",
+      "certificate_types": [
+        {
+          "certificate_type": "COMPLIANCE",
+          "allowed_aggregate_results": [
+            "COMPLIANT"
+          ]
+        },
+        {
+          "certificate_type": "CONDITIONAL_COMPLIANCE",
+          "allowed_aggregate_results": [
+            "CONDITIONALLY_COMPLIANT"
+          ]
+        },
+        {
+          "certificate_type": "NON_CONFORMANCE",
+          "allowed_aggregate_results": [
+            "NON_COMPLIANT"
+          ]
+        },
+        {
+          "certificate_type": "HISTORICAL",
+          "allowed_aggregate_results": [
+            "COMPLIANT",
+            "CONDITIONALLY_COMPLIANT",
+            "NON_COMPLIANT",
+            "UNVERIFIED",
+            "BLOCKED",
+            "NO_MANDATORY_REQUIREMENTS"
+          ]
+        }
+      ],
+      "invalid_input_outcome": "INELIGIBLE",
+      "precedence": [
+        "INVALID_REQUIRED_INPUT",
+        "PROVEN_INELIGIBILITY",
+        "BLOCKED",
+        "UNKNOWN",
+        "ELIGIBLE"
+      ],
+      "schema_version": "14.1",
+      "policy_hash": "3e09be12535f57c4cdde109d394f1d4e89c4d3c37a101d3a8d98bd231087dc03"
+    }
+  ],
+  "aggregate_truth_mutated": false
+}

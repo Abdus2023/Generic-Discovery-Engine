@@ -1,0 +1,604 @@
+{
+  "schema_version": "14.1",
+  "validator": "Protocol-v14.1 independent certificate-state validator",
+  "overall_status": "STRUCTURAL_PASS_CURRENT_CERTIFICATION_NOT_APPLICABLE",
+  "acceptance": "BLOCKED",
+  "summary": {
+    "total": 83,
+    "passed": 82,
+    "failed": 0,
+    "blocked": 1
+  },
+  "object_counts": {
+    "schemas": 21,
+    "lifecycle_states": 5,
+    "eligibility_outcomes": 4,
+    "validity_outcomes": 7,
+    "current_certificates": 0,
+    "current_candidates": 0,
+    "certificate_invariants": 20
+  },
+  "checks": [
+    {
+      "check_id": "I01",
+      "category": "inventory",
+      "result": "PASS",
+      "description": "all 72 generator-owned v14.1 deliverables exist",
+      "detail": ""
+    },
+    {
+      "check_id": "I02",
+      "category": "syntax",
+      "result": "PASS",
+      "description": "all v14.1 YAML is JSON-compatible and parseable",
+      "detail": "[]"
+    },
+    {
+      "check_id": "S01",
+      "category": "schemas",
+      "result": "PASS",
+      "description": "all 21 schemas have unique stable IDs",
+      "detail": ""
+    },
+    {
+      "check_id": "S02",
+      "category": "schemas",
+      "result": "PASS",
+      "description": "all object schemas reject undeclared fields",
+      "detail": ""
+    },
+    {
+      "check_id": "S03",
+      "category": "schemas",
+      "result": "PASS",
+      "description": "schema registry resolves all 21 schemas with exact hashes",
+      "detail": "[]"
+    },
+    {
+      "check_id": "S04",
+      "category": "schemas",
+      "result": "PASS",
+      "description": "all applicable production and synthetic objects satisfy schemas",
+      "detail": "[]"
+    },
+    {
+      "check_id": "M01",
+      "category": "separation",
+      "result": "PASS",
+      "description": "lifecycle, eligibility, validity, and release are independent",
+      "detail": ""
+    },
+    {
+      "check_id": "M02",
+      "category": "reconciliation",
+      "result": "PASS",
+      "description": "v14 is preserved while VALID and INVALID move to derived validity",
+      "detail": ""
+    },
+    {
+      "check_id": "M03",
+      "category": "lifecycle",
+      "result": "PASS",
+      "description": "normative lifecycle contains exactly five states and excludes validity terms",
+      "detail": ""
+    },
+    {
+      "check_id": "T01",
+      "category": "state-machine",
+      "result": "PASS",
+      "description": "six permitted lifecycle transitions are exact",
+      "detail": ""
+    },
+    {
+      "check_id": "T02",
+      "category": "state-machine",
+      "result": "PASS",
+      "description": "all terminal states prohibit outgoing transitions",
+      "detail": ""
+    },
+    {
+      "check_id": "T03",
+      "category": "state-machine",
+      "result": "PASS",
+      "description": "complete 5x5 transition matrix reproduces",
+      "detail": ""
+    },
+    {
+      "check_id": "T04",
+      "category": "test-vectors",
+      "result": "PASS",
+      "description": "all 25 lifecycle transition vectors reproduce",
+      "detail": ""
+    },
+    {
+      "check_id": "T05",
+      "category": "history",
+      "result": "PASS",
+      "description": "all lifecycle history projections reproduce without skipping malformed events",
+      "detail": "[]"
+    },
+    {
+      "check_id": "T06",
+      "category": "revocation",
+      "result": "PASS",
+      "description": "revocation requires reason, authority, evidence, and timestamp",
+      "detail": ""
+    },
+    {
+      "check_id": "T07",
+      "category": "supersession",
+      "result": "PASS",
+      "description": "replacement requires new identity and preserves old certificate",
+      "detail": ""
+    },
+    {
+      "check_id": "T08",
+      "category": "expiration",
+      "result": "PASS",
+      "description": "expiration derives deterministically from valid-until, policy, and explicit evaluation time",
+      "detail": ""
+    },
+    {
+      "check_id": "T09",
+      "category": "terminal-actions",
+      "result": "PASS",
+      "description": "revocation completeness and supersession identity are executable",
+      "detail": ""
+    },
+    {
+      "check_id": "E01",
+      "category": "eligibility",
+      "result": "PASS",
+      "description": "exact four eligibility outcomes retain blocked/unknown distinction",
+      "detail": ""
+    },
+    {
+      "check_id": "E02",
+      "category": "eligibility",
+      "result": "PASS",
+      "description": "all twelve mandatory predicates expose four predicate outcomes",
+      "detail": ""
+    },
+    {
+      "check_id": "E03",
+      "category": "precedence",
+      "result": "PASS",
+      "description": "invalid/false dominates blocked and blocked dominates unknown",
+      "detail": ""
+    },
+    {
+      "check_id": "E04",
+      "category": "test-vectors",
+      "result": "PASS",
+      "description": "all nine deterministic eligibility vectors reproduce",
+      "detail": "[]"
+    },
+    {
+      "check_id": "E05",
+      "category": "hashes",
+      "result": "PASS",
+      "description": "eligibility inputs and immutable decisions have canonical hashes",
+      "detail": "[]"
+    },
+    {
+      "check_id": "E06",
+      "category": "precedence",
+      "result": "PASS",
+      "description": "proven ineligibility dominates blocked mechanically",
+      "detail": ""
+    },
+    {
+      "check_id": "E07",
+      "category": "precedence",
+      "result": "PASS",
+      "description": "blocked dominates semantic unknown mechanically",
+      "detail": ""
+    },
+    {
+      "check_id": "E08",
+      "category": "unknown",
+      "result": "PASS",
+      "description": "unknown remains UNKNOWN rather than INELIGIBLE",
+      "detail": ""
+    },
+    {
+      "check_id": "E09",
+      "category": "history",
+      "result": "PASS",
+      "description": "INELIGIBLE\u2192BLOCKED\u2192ELIGIBLE remains three immutable decisions",
+      "detail": ""
+    },
+    {
+      "check_id": "E10",
+      "category": "policy",
+      "result": "PASS",
+      "description": "certification policy hash and precedence reproduce",
+      "detail": ""
+    },
+    {
+      "check_id": "E11",
+      "category": "policy",
+      "result": "PASS",
+      "description": "certificate type explicitly maps to aggregate without changing aggregate truth",
+      "detail": "[]"
+    },
+    {
+      "check_id": "E12",
+      "category": "waiver",
+      "result": "PASS",
+      "description": "waiver validity influences eligibility without changing aggregate truth",
+      "detail": "[]"
+    },
+    {
+      "check_id": "U01",
+      "category": "issuance",
+      "result": "PASS",
+      "description": "issuance requires eligibility, authority, payload, seal, action, and draft",
+      "detail": ""
+    },
+    {
+      "check_id": "U02",
+      "category": "test-vectors",
+      "result": "PASS",
+      "description": "all six issuance vectors reproduce independently",
+      "detail": "[]"
+    },
+    {
+      "check_id": "U03",
+      "category": "hashes",
+      "result": "PASS",
+      "description": "issuance authority, action, and result records have canonical hashes",
+      "detail": "[]"
+    },
+    {
+      "check_id": "U04",
+      "category": "non-implication",
+      "result": "PASS",
+      "description": "ELIGIBLE without issuance action remains DRAFT",
+      "detail": ""
+    },
+    {
+      "check_id": "V01",
+      "category": "validity",
+      "result": "PASS",
+      "description": "seven validity outcomes are derived outside lifecycle",
+      "detail": ""
+    },
+    {
+      "check_id": "V02",
+      "category": "validity",
+      "result": "PASS",
+      "description": "eleven ordered validity checks are explicit and deterministic",
+      "detail": ""
+    },
+    {
+      "check_id": "V03",
+      "category": "test-vectors",
+      "result": "PASS",
+      "description": "all eighteen derived validity vectors reproduce independently",
+      "detail": "[]"
+    },
+    {
+      "check_id": "V04",
+      "category": "hashes",
+      "result": "PASS",
+      "description": "all validity result hashes reproduce",
+      "detail": "[]"
+    },
+    {
+      "check_id": "V05",
+      "category": "derived-status",
+      "result": "PASS",
+      "description": "issued certificate may derive INVALID without lifecycle transition",
+      "detail": ""
+    },
+    {
+      "check_id": "V06",
+      "category": "terminal-status",
+      "result": "PASS",
+      "description": "terminal lifecycle state remains authoritative while all failures are reported",
+      "detail": ""
+    },
+    {
+      "check_id": "V07",
+      "category": "validity",
+      "result": "PASS",
+      "description": "NOT_YET_VALID and interval expiration derive from explicit evaluated_at",
+      "detail": ""
+    },
+    {
+      "check_id": "V08",
+      "category": "precedence",
+      "result": "PASS",
+      "description": "multiple validity failures report all while integrity selects INVALID",
+      "detail": ""
+    },
+    {
+      "check_id": "R01",
+      "category": "release",
+      "result": "PASS",
+      "description": "release consumes ISSUED plus VALID and never substitutes eligibility",
+      "detail": ""
+    },
+    {
+      "check_id": "R02",
+      "category": "test-vectors",
+      "result": "PASS",
+      "description": "all seven release-certificate vectors reproduce",
+      "detail": "[]"
+    },
+    {
+      "check_id": "R03",
+      "category": "release",
+      "result": "PASS",
+      "description": "current eligibility is not used as substitute for issued certificate validity",
+      "detail": ""
+    },
+    {
+      "check_id": "R04",
+      "category": "hashes",
+      "result": "PASS",
+      "description": "release-certificate evaluation hashes reproduce",
+      "detail": "[]"
+    },
+    {
+      "check_id": "N00",
+      "category": "non-implication",
+      "result": "PASS",
+      "description": "all eight critical non-implications are executable",
+      "detail": ""
+    },
+    {
+      "check_id": "N01",
+      "category": "invariants",
+      "result": "PASS",
+      "description": "CERT-021 through CERT-040 have exact stable IDs and checks",
+      "detail": ""
+    },
+    {
+      "check_id": "CERT-021",
+      "category": "certificate-invariant",
+      "result": "PASS",
+      "description": "VALID MUST NOT be represented as a certificate lifecycle state.",
+      "detail": ""
+    },
+    {
+      "check_id": "CERT-022",
+      "category": "certificate-invariant",
+      "result": "PASS",
+      "description": "Eligibility MUST be represented independently of certificate lifecycle.",
+      "detail": ""
+    },
+    {
+      "check_id": "CERT-023",
+      "category": "certificate-invariant",
+      "result": "PASS",
+      "description": "Validity MUST be derived independently of issuance state.",
+      "detail": ""
+    },
+    {
+      "check_id": "CERT-024",
+      "category": "certificate-invariant",
+      "result": "PASS",
+      "description": "ELIGIBLE MUST NOT imply ISSUED.",
+      "detail": ""
+    },
+    {
+      "check_id": "CERT-025",
+      "category": "certificate-invariant",
+      "result": "PASS",
+      "description": "ISSUED MUST NOT imply currently VALID.",
+      "detail": ""
+    },
+    {
+      "check_id": "CERT-026",
+      "category": "certificate-invariant",
+      "result": "PASS",
+      "description": "Certificate eligibility MUST be evaluated before issuance.",
+      "detail": ""
+    },
+    {
+      "check_id": "CERT-027",
+      "category": "certificate-invariant",
+      "result": "PASS",
+      "description": "A proven mandatory eligibility failure dominates BLOCKED.",
+      "detail": ""
+    },
+    {
+      "check_id": "CERT-028",
+      "category": "certificate-invariant",
+      "result": "PASS",
+      "description": "BLOCKED dominates UNKNOWN when evaluation is concretely blocked.",
+      "detail": ""
+    },
+    {
+      "check_id": "CERT-029",
+      "category": "certificate-invariant",
+      "result": "PASS",
+      "description": "UNKNOWN MUST NOT be interpreted as INELIGIBLE.",
+      "detail": ""
+    },
+    {
+      "check_id": "CERT-030",
+      "category": "certificate-invariant",
+      "result": "PASS",
+      "description": "Invalid required input produces INELIGIBLE.",
+      "detail": ""
+    },
+    {
+      "check_id": "CERT-031",
+      "category": "certificate-invariant",
+      "result": "PASS",
+      "description": "Historical eligibility decisions MUST remain immutable.",
+      "detail": ""
+    },
+    {
+      "check_id": "CERT-032",
+      "category": "certificate-invariant",
+      "result": "PASS",
+      "description": "Certificate lifecycle transitions MUST be validated.",
+      "detail": ""
+    },
+    {
+      "check_id": "CERT-033",
+      "category": "certificate-invariant",
+      "result": "PASS",
+      "description": "Terminal certificate states MUST NOT return to ISSUED.",
+      "detail": ""
+    },
+    {
+      "check_id": "CERT-034",
+      "category": "certificate-invariant",
+      "result": "PASS",
+      "description": "A replacement certificate MUST have a new certificate identity.",
+      "detail": ""
+    },
+    {
+      "check_id": "CERT-035",
+      "category": "certificate-invariant",
+      "result": "PASS",
+      "description": "Certificate validity MUST be independently recomputable.",
+      "detail": ""
+    },
+    {
+      "check_id": "CERT-036",
+      "category": "certificate-invariant",
+      "result": "PASS",
+      "description": "Release authorization MUST NOT use eligibility as a substitute for validity.",
+      "detail": ""
+    },
+    {
+      "check_id": "CERT-037",
+      "category": "certificate-invariant",
+      "result": "PASS",
+      "description": "A valid signature MUST NOT establish aggregate conformance.",
+      "detail": ""
+    },
+    {
+      "check_id": "CERT-038",
+      "category": "certificate-invariant",
+      "result": "PASS",
+      "description": "A waiver MUST NOT change the underlying aggregate result.",
+      "detail": ""
+    },
+    {
+      "check_id": "CERT-039",
+      "category": "certificate-invariant",
+      "result": "PASS",
+      "description": "Certification policy MUST explicitly define which aggregate results are eligible for each certificate type.",
+      "detail": ""
+    },
+    {
+      "check_id": "CERT-040",
+      "category": "certificate-invariant",
+      "result": "PASS",
+      "description": "Certificate eligibility MUST expose the predicates responsible for ELIGIBLE, INELIGIBLE, BLOCKED, or UNKNOWN outcomes.",
+      "detail": ""
+    },
+    {
+      "check_id": "C01",
+      "category": "current",
+      "result": "PASS",
+      "description": "current upstream truth remains blocked at SPEC_INVALID with no aggregate",
+      "detail": ""
+    },
+    {
+      "check_id": "C02",
+      "category": "non-invention",
+      "result": "PASS",
+      "description": "no current candidate, certificate, history, eligibility decision, or issuance action is invented",
+      "detail": ""
+    },
+    {
+      "check_id": "C03",
+      "category": "current",
+      "result": "PASS",
+      "description": "current no-certificate projection preserves independent dimensions",
+      "detail": ""
+    },
+    {
+      "check_id": "C04",
+      "category": "current",
+      "result": "PASS",
+      "description": "release remains not evaluated",
+      "detail": ""
+    },
+    {
+      "check_id": "O01",
+      "category": "registry",
+      "result": "PASS",
+      "description": "two v14.1 current normative object IDs are unique",
+      "detail": ""
+    },
+    {
+      "check_id": "O02",
+      "category": "registry",
+      "result": "PASS",
+      "description": "v14.1 object IDs are globally unique from predecessors",
+      "detail": ""
+    },
+    {
+      "check_id": "O03",
+      "category": "references",
+      "result": "PASS",
+      "description": "predecessor registry references resolve with exact hashes",
+      "detail": ""
+    },
+    {
+      "check_id": "P01",
+      "category": "append-only",
+      "result": "PASS",
+      "description": "all 364 predecessor compliance artifacts remain byte-identical",
+      "detail": "[]"
+    },
+    {
+      "check_id": "P02",
+      "category": "append-only",
+      "result": "PASS",
+      "description": "v14 builder refuses to erase v14.1 extension",
+      "detail": ""
+    },
+    {
+      "check_id": "Q01",
+      "category": "determinism",
+      "result": "PASS",
+      "description": "all 72 generator outputs reproduce byte-for-byte",
+      "detail": ""
+    },
+    {
+      "check_id": "Q02",
+      "category": "regression",
+      "result": "PASS",
+      "description": "v10.1 through v14 regressions and append guards pass",
+      "detail": ""
+    },
+    {
+      "check_id": "Q03",
+      "category": "hygiene",
+      "result": "PASS",
+      "description": "no Python cache artifacts exist",
+      "detail": ""
+    },
+    {
+      "check_id": "Q04",
+      "category": "tools",
+      "result": "PASS",
+      "description": "generic and pinned v14.1 builders and validators exist",
+      "detail": ""
+    },
+    {
+      "check_id": "G01",
+      "category": "reports",
+      "result": "PASS",
+      "description": "four reports preserve lifecycle, eligibility, validity, and release separation",
+      "detail": ""
+    },
+    {
+      "check_id": "GATE-V141",
+      "category": "acceptance",
+      "result": "BLOCKED",
+      "description": "current certification and release",
+      "detail": "The v14.1 protocol validates structurally; current v13.3 specification validation remains blocked, no certificate candidate or certificate exists, eligibility is not applicable, validity is UNKNOWN, and release is not evaluated."
+    }
+  ]
+}

@@ -1,0 +1,51 @@
+{
+  "schema_version": "14.1",
+  "initial_state": "DRAFT",
+  "states": [
+    "DRAFT",
+    "ISSUED",
+    "SUPERSEDED",
+    "REVOKED",
+    "EXPIRED"
+  ],
+  "allowed_transitions": [
+    {
+      "from": "DRAFT",
+      "to": "ISSUED",
+      "action": "ISSUE"
+    },
+    {
+      "from": "DRAFT",
+      "to": "SUPERSEDED",
+      "action": "SUPERSEDE"
+    },
+    {
+      "from": "DRAFT",
+      "to": "REVOKED",
+      "action": "REVOKE"
+    },
+    {
+      "from": "ISSUED",
+      "to": "SUPERSEDED",
+      "action": "SUPERSEDE"
+    },
+    {
+      "from": "ISSUED",
+      "to": "REVOKED",
+      "action": "REVOKE"
+    },
+    {
+      "from": "ISSUED",
+      "to": "EXPIRED",
+      "action": "EXPIRE"
+    }
+  ],
+  "terminal_states": [
+    "SUPERSEDED",
+    "REVOKED",
+    "EXPIRED"
+  ],
+  "terminal_outgoing_transitions": [],
+  "replacement_requires_new_certificate_identity": true,
+  "invalid_is_derived_not_transition": true
+}

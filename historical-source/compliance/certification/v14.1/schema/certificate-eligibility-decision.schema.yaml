@@ -1,0 +1,127 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "CertificateEligibilityDecisionV141",
+  "type": "object",
+  "required": [
+    "eligibility_id",
+    "certificate_candidate_id",
+    "policy_id",
+    "snapshot_id",
+    "snapshot_hash",
+    "aggregate_status",
+    "outcome",
+    "predicate_results",
+    "failed_predicates",
+    "blocking_predicates",
+    "unknown_predicates",
+    "warnings",
+    "evaluated_at",
+    "schema_version",
+    "decision_hash"
+  ],
+  "properties": {
+    "eligibility_id": {
+      "type": "string",
+      "pattern": "^[A-Za-z0-9][A-Za-z0-9._:/-]*$"
+    },
+    "certificate_candidate_id": {
+      "type": "string",
+      "pattern": "^[A-Za-z0-9][A-Za-z0-9._:/-]*$"
+    },
+    "policy_id": {
+      "type": "string",
+      "pattern": "^[A-Za-z0-9][A-Za-z0-9._:/-]*$"
+    },
+    "snapshot_id": {
+      "type": "string",
+      "pattern": "^[A-Za-z0-9][A-Za-z0-9._:/-]*$"
+    },
+    "snapshot_hash": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$"
+    },
+    "aggregate_status": {
+      "oneOf": [
+        {
+          "type": "string",
+          "enum": [
+            "COMPLIANT",
+            "CONDITIONALLY_COMPLIANT",
+            "NON_COMPLIANT",
+            "UNVERIFIED",
+            "BLOCKED",
+            "NO_MANDATORY_REQUIREMENTS"
+          ]
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "outcome": {
+      "type": "string",
+      "enum": [
+        "ELIGIBLE",
+        "INELIGIBLE",
+        "BLOCKED",
+        "UNKNOWN"
+      ]
+    },
+    "predicate_results": {
+      "type": "array",
+      "minItems": 12,
+      "items": {
+        "$ref": "eligibility-predicate-result.schema.yaml"
+      }
+    },
+    "failed_predicates": {
+      "type": "array",
+      "minItems": 0,
+      "items": {
+        "type": "string",
+        "minLength": 1
+      },
+      "uniqueItems": true
+    },
+    "blocking_predicates": {
+      "type": "array",
+      "minItems": 0,
+      "items": {
+        "type": "string",
+        "minLength": 1
+      },
+      "uniqueItems": true
+    },
+    "unknown_predicates": {
+      "type": "array",
+      "minItems": 0,
+      "items": {
+        "type": "string",
+        "minLength": 1
+      },
+      "uniqueItems": true
+    },
+    "warnings": {
+      "type": "array",
+      "minItems": 0,
+      "items": {
+        "type": "string",
+        "minLength": 1
+      },
+      "uniqueItems": true
+    },
+    "evaluated_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "schema_version": {
+      "const": "14.1"
+    },
+    "decision_hash": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$"
+    }
+  },
+  "additionalProperties": false,
+  "$id": "https://generic-discovery-engine.invalid/compliance/v14.1/certificate-eligibility-decision.schema.yaml"
+}

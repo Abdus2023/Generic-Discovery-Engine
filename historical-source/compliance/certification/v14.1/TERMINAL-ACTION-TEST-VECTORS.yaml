@@ -1,0 +1,48 @@
+{
+  "schema_version": "14.1",
+  "synthetic_non_normative": true,
+  "revocation": {
+    "revocation_id": "TEST-REVOCATION-ACTION",
+    "certificate_id": "TEST-TERMINAL-CERT-1",
+    "reason": "Synthetic revocation test",
+    "authority": {
+      "authority_id": "TEST-REVOCATION-AUTHORITY",
+      "authority_type": "AUTOMATED_POLICY",
+      "authorization_policy": "TEST-CERTIFICATION-AUTHORITY-POLICY",
+      "authorization_evidence": [
+        "TEST-AUTHORIZATION"
+      ],
+      "authorized_at": "2026-09-12T21:14:01Z"
+    },
+    "evidence_refs": [
+      "TEST-REVOCATION-EVIDENCE"
+    ],
+    "revoked_at": "2026-09-12T21:14:01Z",
+    "schema_version": "14.1",
+    "revocation_hash": "9b370c9e18e148c1665a44e51ecbc7cbec8a95e595dc66b59da318f9133160d3"
+  },
+  "supersession": {
+    "supersession_id": "TEST-SUPERSESSION-ACTION",
+    "certificate_id": "TEST-TERMINAL-CERT-2",
+    "replacement_certificate_id": "TEST-TERMINAL-CERT-3",
+    "authority": {
+      "authority_id": "TEST-SUPERSESSION-AUTHORITY",
+      "authority_type": "AUTOMATED_POLICY",
+      "authorization_policy": "TEST-CERTIFICATION-AUTHORITY-POLICY",
+      "authorization_evidence": [
+        "TEST-AUTHORIZATION"
+      ],
+      "authorized_at": "2026-09-12T21:14:01Z"
+    },
+    "evidence_refs": [
+      "TEST-SUPERSESSION-EVIDENCE"
+    ],
+    "superseded_at": "2026-09-12T21:14:01Z",
+    "schema_version": "14.1",
+    "supersession_hash": "8dde203f8ef60fb1cb41d04813f714e6fcc00cfa3d1c914e528c91f59cebe3cc"
+  },
+  "revocation_complete": true,
+  "replacement_identity_distinct": true,
+  "hashes_valid": true,
+  "pass": true
+}

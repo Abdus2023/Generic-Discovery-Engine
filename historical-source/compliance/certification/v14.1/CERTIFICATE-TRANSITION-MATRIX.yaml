@@ -1,0 +1,131 @@
+{
+  "schema_version": "14.1",
+  "matrix": [
+    {
+      "from": "DRAFT",
+      "to": "DRAFT",
+      "allowed": false
+    },
+    {
+      "from": "DRAFT",
+      "to": "ISSUED",
+      "allowed": true
+    },
+    {
+      "from": "DRAFT",
+      "to": "SUPERSEDED",
+      "allowed": true
+    },
+    {
+      "from": "DRAFT",
+      "to": "REVOKED",
+      "allowed": true
+    },
+    {
+      "from": "DRAFT",
+      "to": "EXPIRED",
+      "allowed": false
+    },
+    {
+      "from": "ISSUED",
+      "to": "DRAFT",
+      "allowed": false
+    },
+    {
+      "from": "ISSUED",
+      "to": "ISSUED",
+      "allowed": false
+    },
+    {
+      "from": "ISSUED",
+      "to": "SUPERSEDED",
+      "allowed": true
+    },
+    {
+      "from": "ISSUED",
+      "to": "REVOKED",
+      "allowed": true
+    },
+    {
+      "from": "ISSUED",
+      "to": "EXPIRED",
+      "allowed": true
+    },
+    {
+      "from": "SUPERSEDED",
+      "to": "DRAFT",
+      "allowed": false
+    },
+    {
+      "from": "SUPERSEDED",
+      "to": "ISSUED",
+      "allowed": false
+    },
+    {
+      "from": "SUPERSEDED",
+      "to": "SUPERSEDED",
+      "allowed": false
+    },
+    {
+      "from": "SUPERSEDED",
+      "to": "REVOKED",
+      "allowed": false
+    },
+    {
+      "from": "SUPERSEDED",
+      "to": "EXPIRED",
+      "allowed": false
+    },
+    {
+      "from": "REVOKED",
+      "to": "DRAFT",
+      "allowed": false
+    },
+    {
+      "from": "REVOKED",
+      "to": "ISSUED",
+      "allowed": false
+    },
+    {
+      "from": "REVOKED",
+      "to": "SUPERSEDED",
+      "allowed": false
+    },
+    {
+      "from": "REVOKED",
+      "to": "REVOKED",
+      "allowed": false
+    },
+    {
+      "from": "REVOKED",
+      "to": "EXPIRED",
+      "allowed": false
+    },
+    {
+      "from": "EXPIRED",
+      "to": "DRAFT",
+      "allowed": false
+    },
+    {
+      "from": "EXPIRED",
+      "to": "ISSUED",
+      "allowed": false
+    },
+    {
+      "from": "EXPIRED",
+      "to": "SUPERSEDED",
+      "allowed": false
+    },
+    {
+      "from": "EXPIRED",
+      "to": "REVOKED",
+      "allowed": false
+    },
+    {
+      "from": "EXPIRED",
+      "to": "EXPIRED",
+      "allowed": false
+    }
+  ],
+  "complete_pair_count": 25
+}

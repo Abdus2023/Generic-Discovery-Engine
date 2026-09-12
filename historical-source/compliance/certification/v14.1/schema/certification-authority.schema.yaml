@@ -1,0 +1,46 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "CertificationAuthorityV141",
+  "type": "object",
+  "required": [
+    "authority_id",
+    "authority_type",
+    "authorization_policy",
+    "authorization_evidence",
+    "authorized_at"
+  ],
+  "properties": {
+    "authority_id": {
+      "type": "string",
+      "pattern": "^[A-Za-z0-9][A-Za-z0-9._:/-]*$"
+    },
+    "authority_type": {
+      "type": "string",
+      "enum": [
+        "HUMAN",
+        "ORGANIZATION",
+        "AUTOMATED_POLICY",
+        "TRUSTED_SERVICE"
+      ]
+    },
+    "authorization_policy": {
+      "type": "string",
+      "pattern": "^[A-Za-z0-9][A-Za-z0-9._:/-]*$"
+    },
+    "authorization_evidence": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "string",
+        "minLength": 1
+      },
+      "uniqueItems": true
+    },
+    "authorized_at": {
+      "type": "string",
+      "format": "date-time"
+    }
+  },
+  "additionalProperties": false,
+  "$id": "https://generic-discovery-engine.invalid/compliance/v14.1/certification-authority.schema.yaml"
+}

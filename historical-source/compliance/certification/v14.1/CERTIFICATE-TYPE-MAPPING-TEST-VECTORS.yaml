@@ -1,0 +1,64 @@
+{
+  "schema_version": "14.1",
+  "vectors": [
+    {
+      "vector_id": "COMPLIANCE-COMPLIANT",
+      "certificate_type": "COMPLIANCE",
+      "aggregate_status": "COMPLIANT",
+      "expected_allowed": true,
+      "actual_allowed": true,
+      "aggregate_after_evaluation": "COMPLIANT",
+      "pass": true
+    },
+    {
+      "vector_id": "COMPLIANCE-NONCOMPLIANT",
+      "certificate_type": "COMPLIANCE",
+      "aggregate_status": "NON_COMPLIANT",
+      "expected_allowed": false,
+      "actual_allowed": false,
+      "aggregate_after_evaluation": "NON_COMPLIANT",
+      "pass": true
+    },
+    {
+      "vector_id": "CONDITIONAL-MATCH",
+      "certificate_type": "CONDITIONAL_COMPLIANCE",
+      "aggregate_status": "CONDITIONALLY_COMPLIANT",
+      "expected_allowed": true,
+      "actual_allowed": true,
+      "aggregate_after_evaluation": "CONDITIONALLY_COMPLIANT",
+      "pass": true
+    },
+    {
+      "vector_id": "NONCONFORMANCE-MATCH",
+      "certificate_type": "NON_CONFORMANCE",
+      "aggregate_status": "NON_COMPLIANT",
+      "expected_allowed": true,
+      "actual_allowed": true,
+      "aggregate_after_evaluation": "NON_COMPLIANT",
+      "pass": true
+    },
+    {
+      "vector_id": "HISTORICAL-BLOCKED",
+      "certificate_type": "HISTORICAL",
+      "aggregate_status": "BLOCKED",
+      "expected_allowed": true,
+      "actual_allowed": true,
+      "aggregate_after_evaluation": "BLOCKED",
+      "pass": true
+    },
+    {
+      "vector_id": "NO-MANDATORY-STRICT",
+      "certificate_type": "COMPLIANCE",
+      "aggregate_status": "NO_MANDATORY_REQUIREMENTS",
+      "expected_allowed": false,
+      "actual_allowed": false,
+      "aggregate_after_evaluation": "NO_MANDATORY_REQUIREMENTS",
+      "pass": true
+    }
+  ],
+  "summary": {
+    "total": 6,
+    "passed": 6,
+    "failed": 0
+  }
+}

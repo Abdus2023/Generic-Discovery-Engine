@@ -1,0 +1,107 @@
+{
+  "schema_version": "14.1",
+  "synthetic_non_normative": true,
+  "vectors": [
+    {
+      "vector_id": "A",
+      "status": {
+        "status_id": "TEST-CURRENT-STATUS-A",
+        "certificate_id": "TEST-STATUS-CERT-A",
+        "lifecycle_state": "DRAFT",
+        "eligibility": "ELIGIBLE",
+        "validity": "UNKNOWN",
+        "reason": "Synthetic independent-dimension example",
+        "projected_at": "2026-09-12T21:14:01Z",
+        "schema_version": "14.1",
+        "status_hash": "a76a340d485f7fdb9f2f12c92c1ec29e88f30a090d89157d84ec7cca039eecea"
+      },
+      "dimensions_preserved": true,
+      "pass": true
+    },
+    {
+      "vector_id": "B",
+      "status": {
+        "status_id": "TEST-CURRENT-STATUS-B",
+        "certificate_id": "TEST-STATUS-CERT-B",
+        "lifecycle_state": "ISSUED",
+        "eligibility": "ELIGIBLE",
+        "validity": "VALID",
+        "reason": "Synthetic independent-dimension example",
+        "projected_at": "2026-09-12T21:14:01Z",
+        "schema_version": "14.1",
+        "status_hash": "355407d556c1b0d70816a7e6f58450fc17bcc5182bf018631df011d9897f3ae0"
+      },
+      "dimensions_preserved": true,
+      "pass": true
+    },
+    {
+      "vector_id": "C",
+      "status": {
+        "status_id": "TEST-CURRENT-STATUS-C",
+        "certificate_id": "TEST-STATUS-CERT-C",
+        "lifecycle_state": "ISSUED",
+        "eligibility": "ELIGIBLE",
+        "validity": "EXPIRED",
+        "reason": "Synthetic independent-dimension example",
+        "projected_at": "2026-09-12T21:14:01Z",
+        "schema_version": "14.1",
+        "status_hash": "ab11043f30ebb37d5c90d40be6bf27c81f5dcf2a218f4f03839839a408bd927b"
+      },
+      "dimensions_preserved": true,
+      "pass": true
+    },
+    {
+      "vector_id": "D",
+      "status": {
+        "status_id": "TEST-CURRENT-STATUS-D",
+        "certificate_id": "TEST-STATUS-CERT-D",
+        "lifecycle_state": "DRAFT",
+        "eligibility": "INELIGIBLE",
+        "validity": "UNKNOWN",
+        "reason": "Synthetic independent-dimension example",
+        "projected_at": "2026-09-12T21:14:01Z",
+        "schema_version": "14.1",
+        "status_hash": "515bbf795cd96b09f11cf2a09c2fa94dd54f82fc0d169c6f3d30825d148eb13b"
+      },
+      "dimensions_preserved": true,
+      "pass": true
+    },
+    {
+      "vector_id": "E",
+      "status": {
+        "status_id": "TEST-CURRENT-STATUS-E",
+        "certificate_id": "TEST-STATUS-CERT-E",
+        "lifecycle_state": "DRAFT",
+        "eligibility": "BLOCKED",
+        "validity": "UNKNOWN",
+        "reason": "Synthetic independent-dimension example",
+        "projected_at": "2026-09-12T21:14:01Z",
+        "schema_version": "14.1",
+        "status_hash": "3559d25c09996f81937902a41a1d163e48a406b11176b1a492bc87b805f5d186"
+      },
+      "dimensions_preserved": true,
+      "pass": true
+    },
+    {
+      "vector_id": "F",
+      "status": {
+        "status_id": "TEST-CURRENT-STATUS-F",
+        "certificate_id": "TEST-STATUS-CERT-F",
+        "lifecycle_state": "ISSUED",
+        "eligibility": "ELIGIBLE",
+        "validity": "INVALID",
+        "reason": "Synthetic independent-dimension example",
+        "projected_at": "2026-09-12T21:14:01Z",
+        "schema_version": "14.1",
+        "status_hash": "f0843e08da212d0e61c1e8d1526595518a83b60c94bf47993482aa4d59ae9fde"
+      },
+      "dimensions_preserved": true,
+      "pass": true
+    }
+  ],
+  "summary": {
+    "total": 6,
+    "passed": 6,
+    "failed": 0
+  }
+}

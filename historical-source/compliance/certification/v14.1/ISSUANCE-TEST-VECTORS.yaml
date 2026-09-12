@@ -1,0 +1,707 @@
+{
+  "schema_version": "14.1",
+  "synthetic_non_normative": true,
+  "vectors": [
+    {
+      "vector_id": "ISSUE",
+      "draft": {
+        "certificate_id": "TEST-ISSUANCE-ISSUE",
+        "certificate_type": "COMPLIANCE",
+        "lifecycle_state": "DRAFT",
+        "aggregate_status": "COMPLIANT",
+        "scope": {
+          "audit_scope_id": "TEST-SCOPE",
+          "requirements": [
+            "TEST-REQ"
+          ],
+          "specification_snapshot": "1111111111111111111111111111111111111111111111111111111111111111",
+          "implementation_snapshot": "2222222222222222222222222222222222222222222222222222222222222222",
+          "version_scope": "1.0.0-test",
+          "exclusions": []
+        },
+        "snapshot_hashes": {
+          "specification_hash": "1111111111111111111111111111111111111111111111111111111111111111",
+          "implementation_hash": "2222222222222222222222222222222222222222222222222222222222222222",
+          "decision_hash": "3333333333333333333333333333333333333333333333333333333333333333",
+          "evidence_hash": "4444444444444444444444444444444444444444444444444444444444444444",
+          "waiver_hash": "5555555555555555555555555555555555555555555555555555555555555555",
+          "state_history_hash": "6666666666666666666666666666666666666666666666666666666666666666",
+          "aggregate_hash": "7777777777777777777777777777777777777777777777777777777777777777",
+          "scope_hash": "8888888888888888888888888888888888888888888888888888888888888888"
+        },
+        "snapshot_seal": {
+          "seal_id": "TEST-ISSUANCE-ISSUE-SEAL",
+          "specification_hash": "1111111111111111111111111111111111111111111111111111111111111111",
+          "implementation_hash": "2222222222222222222222222222222222222222222222222222222222222222",
+          "decision_hash": "3333333333333333333333333333333333333333333333333333333333333333",
+          "evidence_hash": "4444444444444444444444444444444444444444444444444444444444444444",
+          "waiver_hash": "5555555555555555555555555555555555555555555555555555555555555555",
+          "state_history_hash": "6666666666666666666666666666666666666666666666666666666666666666",
+          "aggregate_hash": "7777777777777777777777777777777777777777777777777777777777777777",
+          "scope_hash": "8888888888888888888888888888888888888888888888888888888888888888",
+          "sealed_at": "2026-09-12T21:14:01Z",
+          "schema_version": "14.1",
+          "seal_hash": "e64730e4cc1816e4f1546bd8068f49dc8b3f5768d4188aa44a8df495d606d846"
+        },
+        "authority": {
+          "authority_id": "TEST-ISSUANCE-ISSUE-AUTHORITY",
+          "authority_type": "AUTOMATED_POLICY",
+          "authorization_policy": "TEST-CERTIFICATION-AUTHORITY-POLICY",
+          "authorization_evidence": [
+            "TEST-AUTHORIZATION"
+          ],
+          "authorized_at": "2026-09-12T21:14:01Z"
+        },
+        "eligibility_decision_id": "TEST-ISSUANCE-ISSUE-ELIGIBILITY",
+        "issued_at": null,
+        "valid_from": "2026-09-12T20:00:00Z",
+        "valid_until": "2026-09-13T20:00:00Z",
+        "supersedes": null,
+        "evidence_valid": true,
+        "aggregate_consistent": true,
+        "schema_version": "14.1",
+        "certificate_hash": "1128d6e023e4d4ec2aff9c53618edf35f3d63925ac9f0d4b2f3b1598ec0040b0",
+        "signature": null
+      },
+      "eligibility": "ELIGIBLE",
+      "authorization": {
+        "authorization_id": "ISSUANCE-AUTHORIZATION-ISSUE",
+        "candidate_id": "TEST-ISSUANCE-ISSUE",
+        "authority": {
+          "authority_id": "ISSUANCE-AUTHORITY-ISSUE",
+          "authority_type": "AUTOMATED_POLICY",
+          "authorization_policy": "TEST-CERTIFICATION-AUTHORITY-POLICY",
+          "authorization_evidence": [
+            "TEST-AUTHORIZATION"
+          ],
+          "authorized_at": "2026-09-12T21:14:01Z"
+        },
+        "valid": true,
+        "evidence_refs": [
+          "TEST-AUTHORIZATION-EVIDENCE"
+        ],
+        "authorized_at": "2026-09-12T21:14:01Z",
+        "schema_version": "14.1",
+        "authorization_hash": "0947dfbcd6268be4b68cac1eecc007243f86f3963e1402abc452068b2507b481"
+      },
+      "payload_valid": true,
+      "seal_valid": true,
+      "action": {
+        "action_id": "ISSUANCE-ACTION-ISSUE",
+        "candidate_id": "TEST-ISSUANCE-ISSUE",
+        "eligibility_id": "TEST-ISSUANCE-ISSUE-ELIGIBILITY",
+        "authorization_id": "ISSUANCE-AUTHORIZATION-ISSUE",
+        "requested": true,
+        "occurred_at": "2026-09-12T21:14:01Z",
+        "schema_version": "14.1",
+        "action_hash": "0169e8574c99cca1633e46c822e3d55f1e58884d74bf014f555eca1c078676cf"
+      },
+      "result": {
+        "result_id": "ISSUANCE-RESULT-ISSUE",
+        "candidate_id": "TEST-ISSUANCE-ISSUE",
+        "prior_state": "DRAFT",
+        "resulting_state": "ISSUED",
+        "predicates": {
+          "ELIGIBILITY_VALID": true,
+          "AUTHORIZATION_VALID": true,
+          "PAYLOAD_VALID": true,
+          "SNAPSHOT_SEAL_VALID": true,
+          "ACTION_REQUESTED": true,
+          "DRAFT_STATE_VALID": true
+        },
+        "issued": true,
+        "evaluated_at": "2026-09-12T21:14:01Z",
+        "schema_version": "14.1",
+        "result_hash": "fa8bdd7d99863fd28024da253239e292e12b258411752773b7bd26f6fe824632"
+      },
+      "expected": "ISSUED",
+      "actual": "ISSUED",
+      "pass": true
+    },
+    {
+      "vector_id": "NO_ACTION",
+      "draft": {
+        "certificate_id": "TEST-ISSUANCE-NO_ACTION",
+        "certificate_type": "COMPLIANCE",
+        "lifecycle_state": "DRAFT",
+        "aggregate_status": "COMPLIANT",
+        "scope": {
+          "audit_scope_id": "TEST-SCOPE",
+          "requirements": [
+            "TEST-REQ"
+          ],
+          "specification_snapshot": "1111111111111111111111111111111111111111111111111111111111111111",
+          "implementation_snapshot": "2222222222222222222222222222222222222222222222222222222222222222",
+          "version_scope": "1.0.0-test",
+          "exclusions": []
+        },
+        "snapshot_hashes": {
+          "specification_hash": "1111111111111111111111111111111111111111111111111111111111111111",
+          "implementation_hash": "2222222222222222222222222222222222222222222222222222222222222222",
+          "decision_hash": "3333333333333333333333333333333333333333333333333333333333333333",
+          "evidence_hash": "4444444444444444444444444444444444444444444444444444444444444444",
+          "waiver_hash": "5555555555555555555555555555555555555555555555555555555555555555",
+          "state_history_hash": "6666666666666666666666666666666666666666666666666666666666666666",
+          "aggregate_hash": "7777777777777777777777777777777777777777777777777777777777777777",
+          "scope_hash": "8888888888888888888888888888888888888888888888888888888888888888"
+        },
+        "snapshot_seal": {
+          "seal_id": "TEST-ISSUANCE-NO_ACTION-SEAL",
+          "specification_hash": "1111111111111111111111111111111111111111111111111111111111111111",
+          "implementation_hash": "2222222222222222222222222222222222222222222222222222222222222222",
+          "decision_hash": "3333333333333333333333333333333333333333333333333333333333333333",
+          "evidence_hash": "4444444444444444444444444444444444444444444444444444444444444444",
+          "waiver_hash": "5555555555555555555555555555555555555555555555555555555555555555",
+          "state_history_hash": "6666666666666666666666666666666666666666666666666666666666666666",
+          "aggregate_hash": "7777777777777777777777777777777777777777777777777777777777777777",
+          "scope_hash": "8888888888888888888888888888888888888888888888888888888888888888",
+          "sealed_at": "2026-09-12T21:14:01Z",
+          "schema_version": "14.1",
+          "seal_hash": "ebacadce214318a5c1683d9625a010a390b40da7f0ecdc79b0e2fc15ad09c0af"
+        },
+        "authority": {
+          "authority_id": "TEST-ISSUANCE-NO_ACTION-AUTHORITY",
+          "authority_type": "AUTOMATED_POLICY",
+          "authorization_policy": "TEST-CERTIFICATION-AUTHORITY-POLICY",
+          "authorization_evidence": [
+            "TEST-AUTHORIZATION"
+          ],
+          "authorized_at": "2026-09-12T21:14:01Z"
+        },
+        "eligibility_decision_id": "TEST-ISSUANCE-NO_ACTION-ELIGIBILITY",
+        "issued_at": null,
+        "valid_from": "2026-09-12T20:00:00Z",
+        "valid_until": "2026-09-13T20:00:00Z",
+        "supersedes": null,
+        "evidence_valid": true,
+        "aggregate_consistent": true,
+        "schema_version": "14.1",
+        "certificate_hash": "0b1f792edf70b9e736cc96d630f5707ced236088af02a2bfcd25e7649f3b5caa",
+        "signature": null
+      },
+      "eligibility": "ELIGIBLE",
+      "authorization": {
+        "authorization_id": "ISSUANCE-AUTHORIZATION-NO_ACTION",
+        "candidate_id": "TEST-ISSUANCE-NO_ACTION",
+        "authority": {
+          "authority_id": "ISSUANCE-AUTHORITY-NO_ACTION",
+          "authority_type": "AUTOMATED_POLICY",
+          "authorization_policy": "TEST-CERTIFICATION-AUTHORITY-POLICY",
+          "authorization_evidence": [
+            "TEST-AUTHORIZATION"
+          ],
+          "authorized_at": "2026-09-12T21:14:01Z"
+        },
+        "valid": true,
+        "evidence_refs": [
+          "TEST-AUTHORIZATION-EVIDENCE"
+        ],
+        "authorized_at": "2026-09-12T21:14:01Z",
+        "schema_version": "14.1",
+        "authorization_hash": "ea23f161a70e1ef09a9e87fb9860204dae69c745c5eb30c7fbbf0b6a5603caa4"
+      },
+      "payload_valid": true,
+      "seal_valid": true,
+      "action": {
+        "action_id": "ISSUANCE-ACTION-NO_ACTION",
+        "candidate_id": "TEST-ISSUANCE-NO_ACTION",
+        "eligibility_id": "TEST-ISSUANCE-NO_ACTION-ELIGIBILITY",
+        "authorization_id": "ISSUANCE-AUTHORIZATION-NO_ACTION",
+        "requested": false,
+        "occurred_at": "2026-09-12T21:14:01Z",
+        "schema_version": "14.1",
+        "action_hash": "54a4ec9ed2946173e9a8eace55bc79ceb1c4b4f23926b1074a16b94f5f0a9927"
+      },
+      "result": {
+        "result_id": "ISSUANCE-RESULT-NO_ACTION",
+        "candidate_id": "TEST-ISSUANCE-NO_ACTION",
+        "prior_state": "DRAFT",
+        "resulting_state": "DRAFT",
+        "predicates": {
+          "ELIGIBILITY_VALID": true,
+          "AUTHORIZATION_VALID": true,
+          "PAYLOAD_VALID": true,
+          "SNAPSHOT_SEAL_VALID": true,
+          "ACTION_REQUESTED": false,
+          "DRAFT_STATE_VALID": true
+        },
+        "issued": false,
+        "evaluated_at": "2026-09-12T21:14:01Z",
+        "schema_version": "14.1",
+        "result_hash": "70814d63ba0ba53f7ff0b14f2b89cce59448697500edf4aa528b45e5dc7a0e03"
+      },
+      "expected": "DRAFT",
+      "actual": "DRAFT",
+      "pass": true
+    },
+    {
+      "vector_id": "INELIGIBLE",
+      "draft": {
+        "certificate_id": "TEST-ISSUANCE-INELIGIBLE",
+        "certificate_type": "COMPLIANCE",
+        "lifecycle_state": "DRAFT",
+        "aggregate_status": "COMPLIANT",
+        "scope": {
+          "audit_scope_id": "TEST-SCOPE",
+          "requirements": [
+            "TEST-REQ"
+          ],
+          "specification_snapshot": "1111111111111111111111111111111111111111111111111111111111111111",
+          "implementation_snapshot": "2222222222222222222222222222222222222222222222222222222222222222",
+          "version_scope": "1.0.0-test",
+          "exclusions": []
+        },
+        "snapshot_hashes": {
+          "specification_hash": "1111111111111111111111111111111111111111111111111111111111111111",
+          "implementation_hash": "2222222222222222222222222222222222222222222222222222222222222222",
+          "decision_hash": "3333333333333333333333333333333333333333333333333333333333333333",
+          "evidence_hash": "4444444444444444444444444444444444444444444444444444444444444444",
+          "waiver_hash": "5555555555555555555555555555555555555555555555555555555555555555",
+          "state_history_hash": "6666666666666666666666666666666666666666666666666666666666666666",
+          "aggregate_hash": "7777777777777777777777777777777777777777777777777777777777777777",
+          "scope_hash": "8888888888888888888888888888888888888888888888888888888888888888"
+        },
+        "snapshot_seal": {
+          "seal_id": "TEST-ISSUANCE-INELIGIBLE-SEAL",
+          "specification_hash": "1111111111111111111111111111111111111111111111111111111111111111",
+          "implementation_hash": "2222222222222222222222222222222222222222222222222222222222222222",
+          "decision_hash": "3333333333333333333333333333333333333333333333333333333333333333",
+          "evidence_hash": "4444444444444444444444444444444444444444444444444444444444444444",
+          "waiver_hash": "5555555555555555555555555555555555555555555555555555555555555555",
+          "state_history_hash": "6666666666666666666666666666666666666666666666666666666666666666",
+          "aggregate_hash": "7777777777777777777777777777777777777777777777777777777777777777",
+          "scope_hash": "8888888888888888888888888888888888888888888888888888888888888888",
+          "sealed_at": "2026-09-12T21:14:01Z",
+          "schema_version": "14.1",
+          "seal_hash": "a19b4ac711b7b0ab419e510588f3c9f2a15322f6b4ff4543178cb80bd0abc1a4"
+        },
+        "authority": {
+          "authority_id": "TEST-ISSUANCE-INELIGIBLE-AUTHORITY",
+          "authority_type": "AUTOMATED_POLICY",
+          "authorization_policy": "TEST-CERTIFICATION-AUTHORITY-POLICY",
+          "authorization_evidence": [
+            "TEST-AUTHORIZATION"
+          ],
+          "authorized_at": "2026-09-12T21:14:01Z"
+        },
+        "eligibility_decision_id": "TEST-ISSUANCE-INELIGIBLE-ELIGIBILITY",
+        "issued_at": null,
+        "valid_from": "2026-09-12T20:00:00Z",
+        "valid_until": "2026-09-13T20:00:00Z",
+        "supersedes": null,
+        "evidence_valid": true,
+        "aggregate_consistent": true,
+        "schema_version": "14.1",
+        "certificate_hash": "5298a4d39848483cab9374dc3a31874b58344eb126bbd57aeea9a3193e5d0bfe",
+        "signature": null
+      },
+      "eligibility": "INELIGIBLE",
+      "authorization": {
+        "authorization_id": "ISSUANCE-AUTHORIZATION-INELIGIBLE",
+        "candidate_id": "TEST-ISSUANCE-INELIGIBLE",
+        "authority": {
+          "authority_id": "ISSUANCE-AUTHORITY-INELIGIBLE",
+          "authority_type": "AUTOMATED_POLICY",
+          "authorization_policy": "TEST-CERTIFICATION-AUTHORITY-POLICY",
+          "authorization_evidence": [
+            "TEST-AUTHORIZATION"
+          ],
+          "authorized_at": "2026-09-12T21:14:01Z"
+        },
+        "valid": true,
+        "evidence_refs": [
+          "TEST-AUTHORIZATION-EVIDENCE"
+        ],
+        "authorized_at": "2026-09-12T21:14:01Z",
+        "schema_version": "14.1",
+        "authorization_hash": "4a1fc2f7063d34465de692c8703e5e6f437f9b502bf53bd5e376370a9dc56c32"
+      },
+      "payload_valid": true,
+      "seal_valid": true,
+      "action": {
+        "action_id": "ISSUANCE-ACTION-INELIGIBLE",
+        "candidate_id": "TEST-ISSUANCE-INELIGIBLE",
+        "eligibility_id": "TEST-ISSUANCE-INELIGIBLE-ELIGIBILITY",
+        "authorization_id": "ISSUANCE-AUTHORIZATION-INELIGIBLE",
+        "requested": true,
+        "occurred_at": "2026-09-12T21:14:01Z",
+        "schema_version": "14.1",
+        "action_hash": "88a6c301f841139d2843c7ce3f03cbb4ce162d375591390dd60b3c84445250c1"
+      },
+      "result": {
+        "result_id": "ISSUANCE-RESULT-INELIGIBLE",
+        "candidate_id": "TEST-ISSUANCE-INELIGIBLE",
+        "prior_state": "DRAFT",
+        "resulting_state": "DRAFT",
+        "predicates": {
+          "ELIGIBILITY_VALID": false,
+          "AUTHORIZATION_VALID": true,
+          "PAYLOAD_VALID": true,
+          "SNAPSHOT_SEAL_VALID": true,
+          "ACTION_REQUESTED": true,
+          "DRAFT_STATE_VALID": true
+        },
+        "issued": false,
+        "evaluated_at": "2026-09-12T21:14:01Z",
+        "schema_version": "14.1",
+        "result_hash": "3c70b51fd12240921767754f53fab82454d9c1dc77f21ca81544269a7c9b2921"
+      },
+      "expected": "DRAFT",
+      "actual": "DRAFT",
+      "pass": true
+    },
+    {
+      "vector_id": "AUTHORITY_INVALID",
+      "draft": {
+        "certificate_id": "TEST-ISSUANCE-AUTHORITY_INVALID",
+        "certificate_type": "COMPLIANCE",
+        "lifecycle_state": "DRAFT",
+        "aggregate_status": "COMPLIANT",
+        "scope": {
+          "audit_scope_id": "TEST-SCOPE",
+          "requirements": [
+            "TEST-REQ"
+          ],
+          "specification_snapshot": "1111111111111111111111111111111111111111111111111111111111111111",
+          "implementation_snapshot": "2222222222222222222222222222222222222222222222222222222222222222",
+          "version_scope": "1.0.0-test",
+          "exclusions": []
+        },
+        "snapshot_hashes": {
+          "specification_hash": "1111111111111111111111111111111111111111111111111111111111111111",
+          "implementation_hash": "2222222222222222222222222222222222222222222222222222222222222222",
+          "decision_hash": "3333333333333333333333333333333333333333333333333333333333333333",
+          "evidence_hash": "4444444444444444444444444444444444444444444444444444444444444444",
+          "waiver_hash": "5555555555555555555555555555555555555555555555555555555555555555",
+          "state_history_hash": "6666666666666666666666666666666666666666666666666666666666666666",
+          "aggregate_hash": "7777777777777777777777777777777777777777777777777777777777777777",
+          "scope_hash": "8888888888888888888888888888888888888888888888888888888888888888"
+        },
+        "snapshot_seal": {
+          "seal_id": "TEST-ISSUANCE-AUTHORITY_INVALID-SEAL",
+          "specification_hash": "1111111111111111111111111111111111111111111111111111111111111111",
+          "implementation_hash": "2222222222222222222222222222222222222222222222222222222222222222",
+          "decision_hash": "3333333333333333333333333333333333333333333333333333333333333333",
+          "evidence_hash": "4444444444444444444444444444444444444444444444444444444444444444",
+          "waiver_hash": "5555555555555555555555555555555555555555555555555555555555555555",
+          "state_history_hash": "6666666666666666666666666666666666666666666666666666666666666666",
+          "aggregate_hash": "7777777777777777777777777777777777777777777777777777777777777777",
+          "scope_hash": "8888888888888888888888888888888888888888888888888888888888888888",
+          "sealed_at": "2026-09-12T21:14:01Z",
+          "schema_version": "14.1",
+          "seal_hash": "c4ce369cf9ea225f43e834ae4877035fd260ccd79e8956a5528b84cbe7a0fc29"
+        },
+        "authority": {
+          "authority_id": "TEST-ISSUANCE-AUTHORITY_INVALID-AUTHORITY",
+          "authority_type": "AUTOMATED_POLICY",
+          "authorization_policy": "TEST-CERTIFICATION-AUTHORITY-POLICY",
+          "authorization_evidence": [
+            "TEST-AUTHORIZATION"
+          ],
+          "authorized_at": "2026-09-12T21:14:01Z"
+        },
+        "eligibility_decision_id": "TEST-ISSUANCE-AUTHORITY_INVALID-ELIGIBILITY",
+        "issued_at": null,
+        "valid_from": "2026-09-12T20:00:00Z",
+        "valid_until": "2026-09-13T20:00:00Z",
+        "supersedes": null,
+        "evidence_valid": true,
+        "aggregate_consistent": true,
+        "schema_version": "14.1",
+        "certificate_hash": "0a83e7dd89cd3b7747b73fc8c50143d95fda0485dec99be826db06761b702835",
+        "signature": null
+      },
+      "eligibility": "ELIGIBLE",
+      "authorization": {
+        "authorization_id": "ISSUANCE-AUTHORIZATION-AUTHORITY_INVALID",
+        "candidate_id": "TEST-ISSUANCE-AUTHORITY_INVALID",
+        "authority": {
+          "authority_id": "ISSUANCE-AUTHORITY-AUTHORITY_INVALID",
+          "authority_type": "AUTOMATED_POLICY",
+          "authorization_policy": "TEST-CERTIFICATION-AUTHORITY-POLICY",
+          "authorization_evidence": [
+            "TEST-AUTHORIZATION"
+          ],
+          "authorized_at": "2026-09-12T21:14:01Z"
+        },
+        "valid": false,
+        "evidence_refs": [
+          "TEST-AUTHORIZATION-EVIDENCE"
+        ],
+        "authorized_at": "2026-09-12T21:14:01Z",
+        "schema_version": "14.1",
+        "authorization_hash": "6c1f458167f64588d28ce967433354356b37fd633148fb70656d7d6298075c2d"
+      },
+      "payload_valid": true,
+      "seal_valid": true,
+      "action": {
+        "action_id": "ISSUANCE-ACTION-AUTHORITY_INVALID",
+        "candidate_id": "TEST-ISSUANCE-AUTHORITY_INVALID",
+        "eligibility_id": "TEST-ISSUANCE-AUTHORITY_INVALID-ELIGIBILITY",
+        "authorization_id": "ISSUANCE-AUTHORIZATION-AUTHORITY_INVALID",
+        "requested": true,
+        "occurred_at": "2026-09-12T21:14:01Z",
+        "schema_version": "14.1",
+        "action_hash": "f9d4f347529c1f084bfc690a7cf69441e23949c44e4cc90e539fa72460eec9e5"
+      },
+      "result": {
+        "result_id": "ISSUANCE-RESULT-AUTHORITY_INVALID",
+        "candidate_id": "TEST-ISSUANCE-AUTHORITY_INVALID",
+        "prior_state": "DRAFT",
+        "resulting_state": "DRAFT",
+        "predicates": {
+          "ELIGIBILITY_VALID": true,
+          "AUTHORIZATION_VALID": false,
+          "PAYLOAD_VALID": true,
+          "SNAPSHOT_SEAL_VALID": true,
+          "ACTION_REQUESTED": true,
+          "DRAFT_STATE_VALID": true
+        },
+        "issued": false,
+        "evaluated_at": "2026-09-12T21:14:01Z",
+        "schema_version": "14.1",
+        "result_hash": "0f4e7de0f8cedd6910c3ddfa40694eb43ed430530584121537bcdfaaebafbb9d"
+      },
+      "expected": "DRAFT",
+      "actual": "DRAFT",
+      "pass": true
+    },
+    {
+      "vector_id": "PAYLOAD_INVALID",
+      "draft": {
+        "certificate_id": "TEST-ISSUANCE-PAYLOAD_INVALID",
+        "certificate_type": "COMPLIANCE",
+        "lifecycle_state": "DRAFT",
+        "aggregate_status": "COMPLIANT",
+        "scope": {
+          "audit_scope_id": "TEST-SCOPE",
+          "requirements": [
+            "TEST-REQ"
+          ],
+          "specification_snapshot": "1111111111111111111111111111111111111111111111111111111111111111",
+          "implementation_snapshot": "2222222222222222222222222222222222222222222222222222222222222222",
+          "version_scope": "1.0.0-test",
+          "exclusions": []
+        },
+        "snapshot_hashes": {
+          "specification_hash": "1111111111111111111111111111111111111111111111111111111111111111",
+          "implementation_hash": "2222222222222222222222222222222222222222222222222222222222222222",
+          "decision_hash": "3333333333333333333333333333333333333333333333333333333333333333",
+          "evidence_hash": "4444444444444444444444444444444444444444444444444444444444444444",
+          "waiver_hash": "5555555555555555555555555555555555555555555555555555555555555555",
+          "state_history_hash": "6666666666666666666666666666666666666666666666666666666666666666",
+          "aggregate_hash": "7777777777777777777777777777777777777777777777777777777777777777",
+          "scope_hash": "8888888888888888888888888888888888888888888888888888888888888888"
+        },
+        "snapshot_seal": {
+          "seal_id": "TEST-ISSUANCE-PAYLOAD_INVALID-SEAL",
+          "specification_hash": "1111111111111111111111111111111111111111111111111111111111111111",
+          "implementation_hash": "2222222222222222222222222222222222222222222222222222222222222222",
+          "decision_hash": "3333333333333333333333333333333333333333333333333333333333333333",
+          "evidence_hash": "4444444444444444444444444444444444444444444444444444444444444444",
+          "waiver_hash": "5555555555555555555555555555555555555555555555555555555555555555",
+          "state_history_hash": "6666666666666666666666666666666666666666666666666666666666666666",
+          "aggregate_hash": "7777777777777777777777777777777777777777777777777777777777777777",
+          "scope_hash": "8888888888888888888888888888888888888888888888888888888888888888",
+          "sealed_at": "2026-09-12T21:14:01Z",
+          "schema_version": "14.1",
+          "seal_hash": "5c0228438d770c577a384b218a17086006f481d5bb8894cf05c85f8be080ab38"
+        },
+        "authority": {
+          "authority_id": "TEST-ISSUANCE-PAYLOAD_INVALID-AUTHORITY",
+          "authority_type": "AUTOMATED_POLICY",
+          "authorization_policy": "TEST-CERTIFICATION-AUTHORITY-POLICY",
+          "authorization_evidence": [
+            "TEST-AUTHORIZATION"
+          ],
+          "authorized_at": "2026-09-12T21:14:01Z"
+        },
+        "eligibility_decision_id": "TEST-ISSUANCE-PAYLOAD_INVALID-ELIGIBILITY",
+        "issued_at": null,
+        "valid_from": "2026-09-12T20:00:00Z",
+        "valid_until": "2026-09-13T20:00:00Z",
+        "supersedes": null,
+        "evidence_valid": true,
+        "aggregate_consistent": true,
+        "schema_version": "14.1",
+        "certificate_hash": "3dc21bd0911489d3707fb5ab38b4a47a8ab6bd23a89af81c1f4328be33d0902b",
+        "signature": null
+      },
+      "eligibility": "ELIGIBLE",
+      "authorization": {
+        "authorization_id": "ISSUANCE-AUTHORIZATION-PAYLOAD_INVALID",
+        "candidate_id": "TEST-ISSUANCE-PAYLOAD_INVALID",
+        "authority": {
+          "authority_id": "ISSUANCE-AUTHORITY-PAYLOAD_INVALID",
+          "authority_type": "AUTOMATED_POLICY",
+          "authorization_policy": "TEST-CERTIFICATION-AUTHORITY-POLICY",
+          "authorization_evidence": [
+            "TEST-AUTHORIZATION"
+          ],
+          "authorized_at": "2026-09-12T21:14:01Z"
+        },
+        "valid": true,
+        "evidence_refs": [
+          "TEST-AUTHORIZATION-EVIDENCE"
+        ],
+        "authorized_at": "2026-09-12T21:14:01Z",
+        "schema_version": "14.1",
+        "authorization_hash": "2a6a8758b201dc7c09e67a07e75421b62cc1db4889881988e529767d1a61c8c8"
+      },
+      "payload_valid": false,
+      "seal_valid": true,
+      "action": {
+        "action_id": "ISSUANCE-ACTION-PAYLOAD_INVALID",
+        "candidate_id": "TEST-ISSUANCE-PAYLOAD_INVALID",
+        "eligibility_id": "TEST-ISSUANCE-PAYLOAD_INVALID-ELIGIBILITY",
+        "authorization_id": "ISSUANCE-AUTHORIZATION-PAYLOAD_INVALID",
+        "requested": true,
+        "occurred_at": "2026-09-12T21:14:01Z",
+        "schema_version": "14.1",
+        "action_hash": "f9bb32f1b51eac6c02d6a6ed32d6b695279590940921827fcf8468a232262464"
+      },
+      "result": {
+        "result_id": "ISSUANCE-RESULT-PAYLOAD_INVALID",
+        "candidate_id": "TEST-ISSUANCE-PAYLOAD_INVALID",
+        "prior_state": "DRAFT",
+        "resulting_state": "DRAFT",
+        "predicates": {
+          "ELIGIBILITY_VALID": true,
+          "AUTHORIZATION_VALID": true,
+          "PAYLOAD_VALID": false,
+          "SNAPSHOT_SEAL_VALID": true,
+          "ACTION_REQUESTED": true,
+          "DRAFT_STATE_VALID": true
+        },
+        "issued": false,
+        "evaluated_at": "2026-09-12T21:14:01Z",
+        "schema_version": "14.1",
+        "result_hash": "42b735069a04fe64cbdbcb974db3770686dbff6dc29cd2f5c38894ad35c9c00c"
+      },
+      "expected": "DRAFT",
+      "actual": "DRAFT",
+      "pass": true
+    },
+    {
+      "vector_id": "SEAL_INVALID",
+      "draft": {
+        "certificate_id": "TEST-ISSUANCE-SEAL_INVALID",
+        "certificate_type": "COMPLIANCE",
+        "lifecycle_state": "DRAFT",
+        "aggregate_status": "COMPLIANT",
+        "scope": {
+          "audit_scope_id": "TEST-SCOPE",
+          "requirements": [
+            "TEST-REQ"
+          ],
+          "specification_snapshot": "1111111111111111111111111111111111111111111111111111111111111111",
+          "implementation_snapshot": "2222222222222222222222222222222222222222222222222222222222222222",
+          "version_scope": "1.0.0-test",
+          "exclusions": []
+        },
+        "snapshot_hashes": {
+          "specification_hash": "1111111111111111111111111111111111111111111111111111111111111111",
+          "implementation_hash": "2222222222222222222222222222222222222222222222222222222222222222",
+          "decision_hash": "3333333333333333333333333333333333333333333333333333333333333333",
+          "evidence_hash": "4444444444444444444444444444444444444444444444444444444444444444",
+          "waiver_hash": "5555555555555555555555555555555555555555555555555555555555555555",
+          "state_history_hash": "6666666666666666666666666666666666666666666666666666666666666666",
+          "aggregate_hash": "7777777777777777777777777777777777777777777777777777777777777777",
+          "scope_hash": "8888888888888888888888888888888888888888888888888888888888888888"
+        },
+        "snapshot_seal": {
+          "seal_id": "TEST-ISSUANCE-SEAL_INVALID-SEAL",
+          "specification_hash": "1111111111111111111111111111111111111111111111111111111111111111",
+          "implementation_hash": "2222222222222222222222222222222222222222222222222222222222222222",
+          "decision_hash": "3333333333333333333333333333333333333333333333333333333333333333",
+          "evidence_hash": "4444444444444444444444444444444444444444444444444444444444444444",
+          "waiver_hash": "5555555555555555555555555555555555555555555555555555555555555555",
+          "state_history_hash": "6666666666666666666666666666666666666666666666666666666666666666",
+          "aggregate_hash": "7777777777777777777777777777777777777777777777777777777777777777",
+          "scope_hash": "8888888888888888888888888888888888888888888888888888888888888888",
+          "sealed_at": "2026-09-12T21:14:01Z",
+          "schema_version": "14.1",
+          "seal_hash": "c9162ea8c4952e4391ab832d9a8840c6fd3ee7117082416cb7684d0136907e67"
+        },
+        "authority": {
+          "authority_id": "TEST-ISSUANCE-SEAL_INVALID-AUTHORITY",
+          "authority_type": "AUTOMATED_POLICY",
+          "authorization_policy": "TEST-CERTIFICATION-AUTHORITY-POLICY",
+          "authorization_evidence": [
+            "TEST-AUTHORIZATION"
+          ],
+          "authorized_at": "2026-09-12T21:14:01Z"
+        },
+        "eligibility_decision_id": "TEST-ISSUANCE-SEAL_INVALID-ELIGIBILITY",
+        "issued_at": null,
+        "valid_from": "2026-09-12T20:00:00Z",
+        "valid_until": "2026-09-13T20:00:00Z",
+        "supersedes": null,
+        "evidence_valid": true,
+        "aggregate_consistent": true,
+        "schema_version": "14.1",
+        "certificate_hash": "3e02f6e1fa1cea41713302b4f24f018840b93e049ddacfd32e49c7a5e6c0372e",
+        "signature": null
+      },
+      "eligibility": "ELIGIBLE",
+      "authorization": {
+        "authorization_id": "ISSUANCE-AUTHORIZATION-SEAL_INVALID",
+        "candidate_id": "TEST-ISSUANCE-SEAL_INVALID",
+        "authority": {
+          "authority_id": "ISSUANCE-AUTHORITY-SEAL_INVALID",
+          "authority_type": "AUTOMATED_POLICY",
+          "authorization_policy": "TEST-CERTIFICATION-AUTHORITY-POLICY",
+          "authorization_evidence": [
+            "TEST-AUTHORIZATION"
+          ],
+          "authorized_at": "2026-09-12T21:14:01Z"
+        },
+        "valid": true,
+        "evidence_refs": [
+          "TEST-AUTHORIZATION-EVIDENCE"
+        ],
+        "authorized_at": "2026-09-12T21:14:01Z",
+        "schema_version": "14.1",
+        "authorization_hash": "c72a586bac54ebf4cb467473b7f48161a9a947b854c8529f1f54ad02609a60da"
+      },
+      "payload_valid": true,
+      "seal_valid": false,
+      "action": {
+        "action_id": "ISSUANCE-ACTION-SEAL_INVALID",
+        "candidate_id": "TEST-ISSUANCE-SEAL_INVALID",
+        "eligibility_id": "TEST-ISSUANCE-SEAL_INVALID-ELIGIBILITY",
+        "authorization_id": "ISSUANCE-AUTHORIZATION-SEAL_INVALID",
+        "requested": true,
+        "occurred_at": "2026-09-12T21:14:01Z",
+        "schema_version": "14.1",
+        "action_hash": "f51f5b8b71b6815abac044be83c1c6e9c9957b8aa6cbb153ab09583e171a7484"
+      },
+      "result": {
+        "result_id": "ISSUANCE-RESULT-SEAL_INVALID",
+        "candidate_id": "TEST-ISSUANCE-SEAL_INVALID",
+        "prior_state": "DRAFT",
+        "resulting_state": "DRAFT",
+        "predicates": {
+          "ELIGIBILITY_VALID": true,
+          "AUTHORIZATION_VALID": true,
+          "PAYLOAD_VALID": true,
+          "SNAPSHOT_SEAL_VALID": false,
+          "ACTION_REQUESTED": true,
+          "DRAFT_STATE_VALID": true
+        },
+        "issued": false,
+        "evaluated_at": "2026-09-12T21:14:01Z",
+        "schema_version": "14.1",
+        "result_hash": "501239cf625d64a82c3a802b7638d7ce68702b857a78461f9dd0f7d73c02f95b"
+      },
+      "expected": "DRAFT",
+      "actual": "DRAFT",
+      "pass": true
+    }
+  ],
+  "summary": {
+    "total": 6,
+    "passed": 6,
+    "failed": 0
+  }
+}
