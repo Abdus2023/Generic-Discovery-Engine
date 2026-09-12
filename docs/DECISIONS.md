@@ -52,4 +52,4 @@
 
 ## Further splits
 - The 2.2 MB file also contains 12 full code fences. The runnable artifact is now `dist/generic-discovery-engine.user.js` (v0.8.2, 5,864 lines) + `src/` mirror (was v0.8.1 5,784 / v0.8.0 5,773). The fences are retained for diff archaeology but are no longer the source of truth.
-- With 20 ADRs + rAF + coverage + TTL + gates + lifecycle + concurrency + pattern/cluster + build determinism + robots/headers + change detection + modular prelude + export hardening the control-plane is **feature-complete** for v0.8.2; Phase 4’s full bundler (`src/` → `dist/` via esbuild) + DVB-loop audit doc is next for v0.9.0.
+- With 20 ADRs + rAF + coverage + TTL + gates + lifecycle + concurrency + pattern/cluster + build determinism + robots/headers + change detection + modular prelude + export hardening the control-plane is **feature-complete** for v0.8.2; `docs/analysis/DEEP_DVB_AUDIT_v0.8.2.md` (121/121, 20 ADRs, DVB→Generic mapping, invariants, perf/security) now documents completeness. Phase 4’s full bundler (`src/` → `dist/` via esbuild) is next for v0.9.0.
