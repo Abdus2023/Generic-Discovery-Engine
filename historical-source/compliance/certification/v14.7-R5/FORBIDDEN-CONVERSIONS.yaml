@@ -1,0 +1,52 @@
+{
+  "realization_version": "14.7-R5",
+  "semantic_version": "v14.7",
+  "epistemic_status": "SUPPORTED",
+  "objects": [
+    {
+      "rule": "Validation.VALID\u219bConformance.CONFORMANT",
+      "test_ref": "R5-T-253"
+    },
+    {
+      "rule": "Evaluation.TRUE\u219bReleaseDecision.APPROVED",
+      "test_ref": "R5-T-254"
+    },
+    {
+      "rule": "Conformance.CONFORMANT\u219bAuthorization.AUTHORIZED",
+      "test_ref": "R5-T-255"
+    },
+    {
+      "rule": "Authorization.AUTHORIZED\u219bReleaseExecution.SUCCEEDED",
+      "test_ref": "R5-T-256"
+    },
+    {
+      "rule": "ReleaseDecision.APPROVED\u219bReleaseExecution.SUCCEEDED",
+      "test_ref": "R5-T-257"
+    },
+    {
+      "rule": "Certificate.ISSUED\u219bCertificateValidity.VALID",
+      "test_ref": "R5-T-258"
+    },
+    {
+      "rule": "EvaluatorError\u219bFALSE",
+      "test_ref": "R5-T-259"
+    },
+    {
+      "rule": "missing_evidence\u219bTRUE",
+      "test_ref": "R5-T-260"
+    },
+    {
+      "rule": "UNKNOWN\u219bTRUE",
+      "test_ref": "R5-T-261"
+    },
+    {
+      "rule": "BLOCKED\u219bTRUE",
+      "test_ref": "R5-T-262"
+    },
+    {
+      "rule": "ImplementationInstruction\u219bNormativeRequirement",
+      "test_ref": "R5-T-263"
+    }
+  ],
+  "count": 11
+}

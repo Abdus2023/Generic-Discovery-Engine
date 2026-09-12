@@ -290,7 +290,7 @@ def main():
           {(item["source"], item["target"]) for item in forbidden["objects"]})
 
     guidance = load(DESTINATION / "TYPED-BOUNDARY-GUIDANCE.yaml")
-    rust_files = [path for path in ROOT.rglob("*.rs") if "v14.7-R4" not in path.parts]
+    rust_files = [path for path in ROOT.rglob("*.rs") if not any(successor in path.parts for successor in ("v14.7-R4", "v14.7-R5"))]
     check("G01", "guidance", "Rust type separation remains implementation guidance, not invented evidence",
           guidance["classification"] == "IMPLEMENTATION_GUIDANCE" and guidance["language"] == "Rust" and
           guidance["repository_has_rust_target"] is False and guidance["implementation_evidence"] == "UNAVAILABLE" and

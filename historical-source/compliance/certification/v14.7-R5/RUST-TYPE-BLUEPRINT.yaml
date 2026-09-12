@@ -1,0 +1,60 @@
+{
+  "realization_version": "14.7-R5",
+  "semantic_version": "v14.7",
+  "epistemic_status": "SUPPORTED",
+  "path": "implementation/rust-types/gde-v147-r5-types",
+  "files": 11,
+  "manifest": [
+    {
+      "path": "Cargo.lock",
+      "sha256": "c635c27cc0b5708b8474ee704e8608d27eca6cdd75500908d406b2c65ab42661"
+    },
+    {
+      "path": "Cargo.toml",
+      "sha256": "878131244aeec0459d8bc751eef6afa4964405e23300f04a8af66077f7556a57"
+    },
+    {
+      "path": "src/conversions.rs",
+      "sha256": "70f4e1bf57f079209eb6800ccf49bfc46d12551f9ea7e8443af931e9291feab5"
+    },
+    {
+      "path": "src/enums.rs",
+      "sha256": "d4b615959fb88e6cc9dd69dcecbedaa79438e0b03b56c046b27a462f2778153e"
+    },
+    {
+      "path": "src/evaluator.rs",
+      "sha256": "ef245e3760763097260d3dd733acc5f32a23c9ce4302e2fc5a90639adcc9e7ed"
+    },
+    {
+      "path": "src/ids.rs",
+      "sha256": "53460aee845ecf8e461ae878ef5c36edd2c2203e0ae272e325ca58e924a34965"
+    },
+    {
+      "path": "src/lib.rs",
+      "sha256": "e17dfd3122003520115bae59232d87f8a94fedb0058cbae3c3c5fbc893df3f71"
+    },
+    {
+      "path": "src/objects.rs",
+      "sha256": "ac1794e1644145c824549ccb63ebf06731e25c65c2dc8fcf26f5f6d426eb118c"
+    },
+    {
+      "path": "tests/conversions.rs",
+      "sha256": "d932adbbfbe4552826b51cdf6722cdf96267608fd399f124a5a92eac8e143c8c"
+    },
+    {
+      "path": "tests/enum_closure.rs",
+      "sha256": "2dd117c39900c7575c8537feaa29141b9d59ee5fabb80d234122478ec705f4e5"
+    },
+    {
+      "path": "tests/evaluator_error.rs",
+      "sha256": "90ea12229ddeddcd8331d028076b77c21e9f0fc515eb91c7c742811454749562"
+    }
+  ],
+  "build": {
+    "status": "BLOCKED",
+    "toolchain": false,
+    "reason": "RUST_TOOLCHAIN_UNAVAILABLE"
+  },
+  "generic_status": false,
+  "generic_id": false
+}

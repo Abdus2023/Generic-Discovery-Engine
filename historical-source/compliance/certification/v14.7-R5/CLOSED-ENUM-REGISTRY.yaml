@@ -1,0 +1,672 @@
+{
+  "objects": [
+    {
+      "domain": "Evaluation",
+      "wire_type": "UTF8_UPPER_SNAKE_CASE_STRING",
+      "values": [
+        {
+          "wire": "TRUE",
+          "rust": "True"
+        },
+        {
+          "wire": "FALSE",
+          "rust": "False"
+        },
+        {
+          "wire": "UNKNOWN",
+          "rust": "Unknown"
+        },
+        {
+          "wire": "BLOCKED",
+          "rust": "Blocked"
+        },
+        {
+          "wire": "INVALID",
+          "rust": "Invalid"
+        }
+      ],
+      "rust_type": "EvaluationValue",
+      "closed": true,
+      "unknown_value_behavior": "REJECT",
+      "wrong_domain_behavior": "REJECT",
+      "content_hash": "b112c109b85a621b1649d0621b9cccf35e89a315ac4198dd3de6e1ad34f32bf2"
+    },
+    {
+      "domain": "Validation",
+      "wire_type": "UTF8_UPPER_SNAKE_CASE_STRING",
+      "values": [
+        {
+          "wire": "VALID",
+          "rust": "Valid"
+        },
+        {
+          "wire": "INVALID",
+          "rust": "Invalid"
+        },
+        {
+          "wire": "BLOCKED",
+          "rust": "Blocked"
+        },
+        {
+          "wire": "UNKNOWN",
+          "rust": "Unknown"
+        }
+      ],
+      "rust_type": "ValidationStatus",
+      "closed": true,
+      "unknown_value_behavior": "REJECT",
+      "wrong_domain_behavior": "REJECT",
+      "content_hash": "525dca7870ac5cd3881bdb3995811dd3ae7783aa8b91f57d77cd41fa6679f2b1"
+    },
+    {
+      "domain": "Conformance",
+      "wire_type": "UTF8_UPPER_SNAKE_CASE_STRING",
+      "values": [
+        {
+          "wire": "CONFORMANT",
+          "rust": "Conformant"
+        },
+        {
+          "wire": "PARTIALLY_CONFORMANT",
+          "rust": "PartiallyConformant"
+        },
+        {
+          "wire": "NON_CONFORMANT",
+          "rust": "NonConformant"
+        },
+        {
+          "wire": "UNVERIFIED",
+          "rust": "Unverified"
+        },
+        {
+          "wire": "BLOCKED",
+          "rust": "Blocked"
+        },
+        {
+          "wire": "NOT_APPLICABLE",
+          "rust": "NotApplicable"
+        },
+        {
+          "wire": "UNKNOWN",
+          "rust": "Unknown"
+        }
+      ],
+      "rust_type": "ConformanceStatus",
+      "closed": true,
+      "unknown_value_behavior": "REJECT",
+      "wrong_domain_behavior": "REJECT",
+      "content_hash": "e0c5101247e00a2b31f8cc2f660368ab798bcc8effb22ad8fae1c793bad293c8"
+    },
+    {
+      "domain": "CertificateLifecycle",
+      "wire_type": "UTF8_UPPER_SNAKE_CASE_STRING",
+      "values": [
+        {
+          "wire": "DRAFT",
+          "rust": "Draft"
+        },
+        {
+          "wire": "ISSUED",
+          "rust": "Issued"
+        },
+        {
+          "wire": "REVOKED",
+          "rust": "Revoked"
+        },
+        {
+          "wire": "SUPERSEDED",
+          "rust": "Superseded"
+        },
+        {
+          "wire": "EXPIRED",
+          "rust": "Expired"
+        },
+        {
+          "wire": "CANCELLED",
+          "rust": "Cancelled"
+        }
+      ],
+      "rust_type": "CertificateLifecycle",
+      "closed": true,
+      "unknown_value_behavior": "REJECT",
+      "wrong_domain_behavior": "REJECT",
+      "content_hash": "3ef60c4a2622bcc3dec4ca9215b11148587bb318a074b1597aa0570acad70537"
+    },
+    {
+      "domain": "CertificateValidity",
+      "wire_type": "UTF8_UPPER_SNAKE_CASE_STRING",
+      "values": [
+        {
+          "wire": "VALID",
+          "rust": "Valid"
+        },
+        {
+          "wire": "INVALID",
+          "rust": "Invalid"
+        },
+        {
+          "wire": "NOT_YET_VALID",
+          "rust": "NotYetValid"
+        },
+        {
+          "wire": "UNKNOWN",
+          "rust": "Unknown"
+        }
+      ],
+      "rust_type": "CertificateValidity",
+      "closed": true,
+      "unknown_value_behavior": "REJECT",
+      "wrong_domain_behavior": "REJECT",
+      "content_hash": "5d3753c1998f49d154a934018ae4c622fe85f945bc4accce8c3282fd17ab4e71"
+    },
+    {
+      "domain": "ReleaseEligibility",
+      "wire_type": "UTF8_UPPER_SNAKE_CASE_STRING",
+      "values": [
+        {
+          "wire": "ELIGIBLE",
+          "rust": "Eligible"
+        },
+        {
+          "wire": "INELIGIBLE",
+          "rust": "Ineligible"
+        },
+        {
+          "wire": "BLOCKED",
+          "rust": "Blocked"
+        },
+        {
+          "wire": "UNKNOWN",
+          "rust": "Unknown"
+        }
+      ],
+      "rust_type": "ReleaseEligibility",
+      "closed": true,
+      "unknown_value_behavior": "REJECT",
+      "wrong_domain_behavior": "REJECT",
+      "content_hash": "5df7f3c657698b2d7ea0d176e1fba9aa1882ee2ce7fabe1cbff59b24353fc143"
+    },
+    {
+      "domain": "Authorization",
+      "wire_type": "UTF8_UPPER_SNAKE_CASE_STRING",
+      "values": [
+        {
+          "wire": "AUTHORIZED",
+          "rust": "Authorized"
+        },
+        {
+          "wire": "REFUSED",
+          "rust": "Refused"
+        },
+        {
+          "wire": "BLOCKED",
+          "rust": "Blocked"
+        },
+        {
+          "wire": "UNKNOWN",
+          "rust": "Unknown"
+        },
+        {
+          "wire": "INVALID",
+          "rust": "Invalid"
+        }
+      ],
+      "rust_type": "AuthorizationStatus",
+      "closed": true,
+      "unknown_value_behavior": "REJECT",
+      "wrong_domain_behavior": "REJECT",
+      "content_hash": "f64728c9965aec4823654dccbc8bfc7224b8c976c5abb0f5dff482c2d35149ee"
+    },
+    {
+      "domain": "ReleaseDecision",
+      "wire_type": "UTF8_UPPER_SNAKE_CASE_STRING",
+      "values": [
+        {
+          "wire": "APPROVED",
+          "rust": "Approved"
+        },
+        {
+          "wire": "REJECTED",
+          "rust": "Rejected"
+        },
+        {
+          "wire": "BLOCKED",
+          "rust": "Blocked"
+        },
+        {
+          "wire": "DEFERRED",
+          "rust": "Deferred"
+        }
+      ],
+      "rust_type": "ReleaseDecision",
+      "closed": true,
+      "unknown_value_behavior": "REJECT",
+      "wrong_domain_behavior": "REJECT",
+      "content_hash": "5f4b9190dc3be7990e1530b4aa07260852d27e0e7c7db9031fb2a9855349d9b2"
+    },
+    {
+      "domain": "ReleaseExecution",
+      "wire_type": "UTF8_UPPER_SNAKE_CASE_STRING",
+      "values": [
+        {
+          "wire": "NOT_STARTED",
+          "rust": "NotStarted"
+        },
+        {
+          "wire": "STARTED",
+          "rust": "Started"
+        },
+        {
+          "wire": "SUCCEEDED",
+          "rust": "Succeeded"
+        },
+        {
+          "wire": "FAILED",
+          "rust": "Failed"
+        },
+        {
+          "wire": "CANCELLED",
+          "rust": "Cancelled"
+        },
+        {
+          "wire": "ROLLED_BACK",
+          "rust": "RolledBack"
+        }
+      ],
+      "rust_type": "ReleaseExecution",
+      "closed": true,
+      "unknown_value_behavior": "REJECT",
+      "wrong_domain_behavior": "REJECT",
+      "content_hash": "18efe7c2ab633e9277f3f3d1f436866c7b6587f557f0b0bc8de2a5784481c23f"
+    },
+    {
+      "domain": "PostReleaseVerification",
+      "wire_type": "UTF8_UPPER_SNAKE_CASE_STRING",
+      "values": [
+        {
+          "wire": "NOT_STARTED",
+          "rust": "NotStarted"
+        },
+        {
+          "wire": "IN_PROGRESS",
+          "rust": "InProgress"
+        },
+        {
+          "wire": "PASSED",
+          "rust": "Passed"
+        },
+        {
+          "wire": "FAILED",
+          "rust": "Failed"
+        },
+        {
+          "wire": "INCONCLUSIVE",
+          "rust": "Inconclusive"
+        },
+        {
+          "wire": "BLOCKED",
+          "rust": "Blocked"
+        },
+        {
+          "wire": "INVALID",
+          "rust": "Invalid"
+        }
+      ],
+      "rust_type": "PostReleaseVerification",
+      "closed": true,
+      "unknown_value_behavior": "REJECT",
+      "wrong_domain_behavior": "REJECT",
+      "content_hash": "62fcdb12325a796f7c56e2ebe9f3538183eac87112affd666e9dce89b9cd1d8e"
+    },
+    {
+      "domain": "Reuse",
+      "wire_type": "UTF8_UPPER_SNAKE_CASE_STRING",
+      "values": [
+        {
+          "wire": "REUSABLE",
+          "rust": "Reusable"
+        },
+        {
+          "wire": "NOT_REUSABLE",
+          "rust": "NotReusable"
+        },
+        {
+          "wire": "BLOCKED",
+          "rust": "Blocked"
+        },
+        {
+          "wire": "UNKNOWN",
+          "rust": "Unknown"
+        },
+        {
+          "wire": "INVALID",
+          "rust": "Invalid"
+        }
+      ],
+      "rust_type": "ReuseResult",
+      "closed": true,
+      "unknown_value_behavior": "REJECT",
+      "wrong_domain_behavior": "REJECT",
+      "content_hash": "cd433988dd4b9cf3e19c68969d104eb071373d3c2b90601108b84a8bf55f448b"
+    },
+    {
+      "domain": "Authority",
+      "wire_type": "UTF8_UPPER_SNAKE_CASE_STRING",
+      "values": [
+        {
+          "wire": "ACTIVE",
+          "rust": "Active"
+        },
+        {
+          "wire": "SUSPENDED",
+          "rust": "Suspended"
+        },
+        {
+          "wire": "REVOKED",
+          "rust": "Revoked"
+        },
+        {
+          "wire": "EXPIRED",
+          "rust": "Expired"
+        },
+        {
+          "wire": "UNKNOWN",
+          "rust": "Unknown"
+        }
+      ],
+      "rust_type": "AuthorityStatus",
+      "closed": true,
+      "unknown_value_behavior": "REJECT",
+      "wrong_domain_behavior": "REJECT",
+      "content_hash": "3a065a696ea2db9441874be1248a746e6e42289f636099e95f5cf97bd133036d"
+    },
+    {
+      "domain": "AuthorityQualification",
+      "wire_type": "UTF8_UPPER_SNAKE_CASE_STRING",
+      "values": [
+        {
+          "wire": "QUALIFIED",
+          "rust": "Qualified"
+        },
+        {
+          "wire": "NOT_QUALIFIED",
+          "rust": "NotQualified"
+        },
+        {
+          "wire": "BLOCKED",
+          "rust": "Blocked"
+        },
+        {
+          "wire": "UNKNOWN",
+          "rust": "Unknown"
+        },
+        {
+          "wire": "INVALID",
+          "rust": "Invalid"
+        }
+      ],
+      "rust_type": "AuthorityQualification",
+      "closed": true,
+      "unknown_value_behavior": "REJECT",
+      "wrong_domain_behavior": "REJECT",
+      "content_hash": "e173ba025d98f7dae35b829afe3c79081a288c4c85acc20eda6c1071974168bf"
+    },
+    {
+      "domain": "EventValidation",
+      "wire_type": "UTF8_UPPER_SNAKE_CASE_STRING",
+      "values": [
+        {
+          "wire": "VALID",
+          "rust": "Valid"
+        },
+        {
+          "wire": "INVALID",
+          "rust": "Invalid"
+        },
+        {
+          "wire": "BLOCKED",
+          "rust": "Blocked"
+        },
+        {
+          "wire": "UNKNOWN",
+          "rust": "Unknown"
+        }
+      ],
+      "rust_type": "EventValidation",
+      "closed": true,
+      "unknown_value_behavior": "REJECT",
+      "wrong_domain_behavior": "REJECT",
+      "content_hash": "63fc5634fba5ce261c67cbc2f84a7ef792a7b6a2cdd03b8ab78c7d3738bca5ce"
+    },
+    {
+      "domain": "EventCommit",
+      "wire_type": "UTF8_UPPER_SNAKE_CASE_STRING",
+      "values": [
+        {
+          "wire": "PENDING",
+          "rust": "Pending"
+        },
+        {
+          "wire": "COMMITTED",
+          "rust": "Committed"
+        },
+        {
+          "wire": "REJECTED",
+          "rust": "Rejected"
+        }
+      ],
+      "rust_type": "EventCommit",
+      "closed": true,
+      "unknown_value_behavior": "REJECT",
+      "wrong_domain_behavior": "REJECT",
+      "content_hash": "d8cfdd645d4171150831ee2c9559caa3989450ccc5eed9cabd2d8ec3f3d7676f"
+    },
+    {
+      "domain": "Projection",
+      "wire_type": "UTF8_UPPER_SNAKE_CASE_STRING",
+      "values": [
+        {
+          "wire": "CURRENT",
+          "rust": "Current"
+        },
+        {
+          "wire": "REPLAYING",
+          "rust": "Replaying"
+        },
+        {
+          "wire": "STALE",
+          "rust": "Stale"
+        },
+        {
+          "wire": "INVALID",
+          "rust": "Invalid"
+        },
+        {
+          "wire": "BLOCKED",
+          "rust": "Blocked"
+        },
+        {
+          "wire": "UNKNOWN",
+          "rust": "Unknown"
+        }
+      ],
+      "rust_type": "ProjectionStatus",
+      "closed": true,
+      "unknown_value_behavior": "REJECT",
+      "wrong_domain_behavior": "REJECT",
+      "content_hash": "25bab1a1701d5494b8f48f341b71c5c60c3c409db424a5d09417c2af567e3a84"
+    },
+    {
+      "domain": "RequirementLifecycle",
+      "wire_type": "UTF8_UPPER_SNAKE_CASE_STRING",
+      "values": [
+        {
+          "wire": "PROPOSED",
+          "rust": "Proposed"
+        },
+        {
+          "wire": "DRAFT",
+          "rust": "Draft"
+        },
+        {
+          "wire": "ACTIVE",
+          "rust": "Active"
+        },
+        {
+          "wire": "DEPRECATED",
+          "rust": "Deprecated"
+        },
+        {
+          "wire": "SUPERSEDED",
+          "rust": "Superseded"
+        },
+        {
+          "wire": "RETIRED",
+          "rust": "Retired"
+        }
+      ],
+      "rust_type": "RequirementLifecycle",
+      "closed": true,
+      "unknown_value_behavior": "REJECT",
+      "wrong_domain_behavior": "REJECT",
+      "content_hash": "ad7d93144a00f4c6b51e134d8d77ea70499c2b7948d772dd9152ec03a055b169"
+    },
+    {
+      "domain": "FindingLifecycle",
+      "wire_type": "UTF8_UPPER_SNAKE_CASE_STRING",
+      "values": [
+        {
+          "wire": "OPEN",
+          "rust": "Open"
+        },
+        {
+          "wire": "TRIAGED",
+          "rust": "Triaged"
+        },
+        {
+          "wire": "ROOT_CAUSE_IDENTIFIED",
+          "rust": "RootCauseIdentified"
+        },
+        {
+          "wire": "REMEDIATION_PLANNED",
+          "rust": "RemediationPlanned"
+        },
+        {
+          "wire": "REMEDIATION_IN_PROGRESS",
+          "rust": "RemediationInProgress"
+        },
+        {
+          "wire": "READY_FOR_REVERIFICATION",
+          "rust": "ReadyForReverification"
+        },
+        {
+          "wire": "REVERIFICATION_IN_PROGRESS",
+          "rust": "ReverificationInProgress"
+        },
+        {
+          "wire": "RESOLVED",
+          "rust": "Resolved"
+        },
+        {
+          "wire": "WAIVED",
+          "rust": "Waived"
+        },
+        {
+          "wire": "REJECTED",
+          "rust": "Rejected"
+        },
+        {
+          "wire": "CLOSED",
+          "rust": "Closed"
+        }
+      ],
+      "rust_type": "FindingLifecycle",
+      "closed": true,
+      "unknown_value_behavior": "REJECT",
+      "wrong_domain_behavior": "REJECT",
+      "content_hash": "fbd9c9a59c3b8c06aca076321e5447c1b1621231c2ceff1c53635ee87620cc38"
+    },
+    {
+      "domain": "Remediation",
+      "wire_type": "UTF8_UPPER_SNAKE_CASE_STRING",
+      "values": [
+        {
+          "wire": "PLANNED",
+          "rust": "Planned"
+        },
+        {
+          "wire": "APPROVED",
+          "rust": "Approved"
+        },
+        {
+          "wire": "IN_PROGRESS",
+          "rust": "InProgress"
+        },
+        {
+          "wire": "BLOCKED",
+          "rust": "Blocked"
+        },
+        {
+          "wire": "READY_FOR_VERIFICATION",
+          "rust": "ReadyForVerification"
+        },
+        {
+          "wire": "VERIFIED",
+          "rust": "Verified"
+        },
+        {
+          "wire": "FAILED",
+          "rust": "Failed"
+        },
+        {
+          "wire": "CANCELLED",
+          "rust": "Cancelled"
+        },
+        {
+          "wire": "SUPERSEDED",
+          "rust": "Superseded"
+        }
+      ],
+      "rust_type": "RemediationStatus",
+      "closed": true,
+      "unknown_value_behavior": "REJECT",
+      "wrong_domain_behavior": "REJECT",
+      "content_hash": "d3e628aa4da76125b5a05205eb6879a8fb996be3555d28903c77d4c63a1cfa1d"
+    },
+    {
+      "domain": "NormativeStrength",
+      "wire_type": "UTF8_UPPER_SNAKE_CASE_STRING",
+      "values": [
+        {
+          "wire": "MUST",
+          "rust": "Must"
+        },
+        {
+          "wire": "MUST_NOT",
+          "rust": "MustNot"
+        },
+        {
+          "wire": "SHOULD",
+          "rust": "Should"
+        },
+        {
+          "wire": "SHOULD_NOT",
+          "rust": "ShouldNot"
+        },
+        {
+          "wire": "MAY",
+          "rust": "May"
+        }
+      ],
+      "rust_type": "NormativeStrength",
+      "closed": true,
+      "unknown_value_behavior": "REJECT",
+      "wrong_domain_behavior": "REJECT",
+      "content_hash": "a141eb48f584a39224b55205f258d1ee53aafe42ddd0865186dc746da4b2b9db"
+    }
+  ],
+  "domain_count": 20,
+  "value_count": 111,
+  "no_generic_status": true,
+  "content_hash": "6e50087d5813012d6fd1f520ef67d4ebbd6002aeadc4406a7149cddf42e2127d"
+}

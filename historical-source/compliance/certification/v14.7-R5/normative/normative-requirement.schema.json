@@ -1,0 +1,129 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://generic-discovery-engine.invalid/v14.7-R5/normative_specification/normative-requirement.schema.json",
+  "title": "normative-requirement",
+  "type": "object",
+  "required": [
+    "requirement_id",
+    "scope_ref",
+    "effective_at",
+    "evidence_refs",
+    "integrity_refs",
+    "content_hash",
+    "statement",
+    "strength",
+    "lifecycle",
+    "acceptance_criterion_refs",
+    "dependency_refs"
+  ],
+  "properties": {
+    "requirement_id": {
+      "type": "string",
+      "pattern": "^[A-Za-z0-9][A-Za-z0-9._:/@#-]{0,255}$"
+    },
+    "scope_ref": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "pattern": "^[A-Za-z0-9][A-Za-z0-9._:/@#-]{0,511}$"
+    },
+    "effective_at": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "format": "date-time"
+    },
+    "evidence_refs": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "pattern": "^[A-Za-z0-9][A-Za-z0-9._:/@#-]{0,255}$"
+      },
+      "minItems": 0,
+      "uniqueItems": true
+    },
+    "integrity_refs": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "pattern": "^[A-Za-z0-9][A-Za-z0-9._:/@#-]{0,255}$"
+      },
+      "minItems": 0,
+      "uniqueItems": true
+    },
+    "content_hash": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$"
+    },
+    "statement": {
+      "type": "string",
+      "minLength": 1
+    },
+    "strength": {
+      "type": "string",
+      "enum": [
+        "MUST",
+        "MUST_NOT",
+        "SHOULD",
+        "SHOULD_NOT",
+        "MAY"
+      ]
+    },
+    "lifecycle": {
+      "type": "string",
+      "enum": [
+        "PROPOSED",
+        "DRAFT",
+        "ACTIVE",
+        "DEPRECATED",
+        "SUPERSEDED",
+        "RETIRED"
+      ]
+    },
+    "acceptance_criterion_refs": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "pattern": "^[A-Za-z0-9][A-Za-z0-9._:/@#-]{0,255}$"
+      },
+      "minItems": 1,
+      "uniqueItems": true
+    },
+    "dependency_refs": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "pattern": "^[A-Za-z0-9][A-Za-z0-9._:/@#-]{0,255}$"
+      },
+      "minItems": 0,
+      "uniqueItems": true
+    }
+  },
+  "additionalProperties": false,
+  "x-authority-layer": "NORMATIVE_SPECIFICATION",
+  "x-optional-fields": [],
+  "x-identifier-type": "URI_SAFE_ASCII_DISTINCT_DOMAIN_NEWTYPE",
+  "x-reference-integrity": "REFERENCES_MUST_RESOLVE_TO_EXPECTED_TYPE_AND_HASH",
+  "x-cardinality": "ARRAY_BOUNDS_AND_UNIQUENESS_ENFORCED_BY_SCHEMA",
+  "x-hash-input-fields": [
+    "requirement_id",
+    "scope_ref",
+    "effective_at",
+    "evidence_refs",
+    "integrity_refs",
+    "statement",
+    "strength",
+    "lifecycle",
+    "acceptance_criterion_refs",
+    "dependency_refs"
+  ],
+  "x-hash-domain": "normative-requirement:v1",
+  "x-canonicalization": "GDE-CJSON-1",
+  "x-temporal-requirements": "RFC3339_UTC_Z_FIELDS_MUST_BE_VALIDATED_WHEN_PRESENT",
+  "x-scope-requirements": "SCOPE_REFERENCES_MUST_BE_EXPLICIT_WHEN_OPERATION_IS_SCOPED",
+  "x-integrity-requirements": "CONTENT_HASH_REQUIRED_SIGNATURE_WHEN_GOVERNING_PROFILE_REQUIRES",
+  "x-state-domain": null,
+  "x-closed": true
+}

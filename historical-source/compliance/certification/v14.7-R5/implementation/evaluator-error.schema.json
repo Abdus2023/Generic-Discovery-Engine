@@ -1,0 +1,79 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://generic-discovery-engine.invalid/v14.7-R5/implementation/evaluator-error.schema.json",
+  "title": "evaluator-error",
+  "type": "object",
+  "required": [
+    "error_id",
+    "code",
+    "semantic_meaning",
+    "retry_permitted",
+    "default_disposition",
+    "evidence_producing",
+    "content_hash"
+  ],
+  "properties": {
+    "error_id": {
+      "type": "string",
+      "pattern": "^[A-Za-z0-9][A-Za-z0-9._:/@#-]{0,255}$"
+    },
+    "code": {
+      "type": "string",
+      "enum": [
+        "INVALID_PREDICATE",
+        "INVALID_SUBJECT",
+        "INVALID_CONTEXT",
+        "VALIDATION_REQUIRED",
+        "VALIDATION_FAILED",
+        "UNSUPPORTED_PREDICATE",
+        "EVALUATOR_FAILURE",
+        "EVALUATOR_TIMEOUT",
+        "EVALUATOR_RESOURCE_FAILURE",
+        "EVALUATOR_INTERNAL_FAILURE",
+        "OUTPUT_INVALID",
+        "EVALUATOR_DEPENDENCY_UNAVAILABLE"
+      ]
+    },
+    "semantic_meaning": {
+      "type": "string",
+      "minLength": 1
+    },
+    "retry_permitted": {
+      "type": "boolean"
+    },
+    "default_disposition": {
+      "type": "string",
+      "enum": [
+        "EVALUATION_FAILURE"
+      ]
+    },
+    "evidence_producing": {
+      "type": "boolean"
+    },
+    "content_hash": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$"
+    }
+  },
+  "additionalProperties": false,
+  "x-authority-layer": "IMPLEMENTATION",
+  "x-optional-fields": [],
+  "x-identifier-type": "URI_SAFE_ASCII_DISTINCT_DOMAIN_NEWTYPE",
+  "x-reference-integrity": "REFERENCES_MUST_RESOLVE_TO_EXPECTED_TYPE_AND_HASH",
+  "x-cardinality": "ARRAY_BOUNDS_AND_UNIQUENESS_ENFORCED_BY_SCHEMA",
+  "x-hash-input-fields": [
+    "error_id",
+    "code",
+    "semantic_meaning",
+    "retry_permitted",
+    "default_disposition",
+    "evidence_producing"
+  ],
+  "x-hash-domain": "evaluator-error:v1",
+  "x-canonicalization": "GDE-CJSON-1",
+  "x-temporal-requirements": "RFC3339_UTC_Z_FIELDS_MUST_BE_VALIDATED_WHEN_PRESENT",
+  "x-scope-requirements": "SCOPE_REFERENCES_MUST_BE_EXPLICIT_WHEN_OPERATION_IS_SCOPED",
+  "x-integrity-requirements": "CONTENT_HASH_REQUIRED_SIGNATURE_WHEN_GOVERNING_PROFILE_REQUIRES",
+  "x-state-domain": null,
+  "x-closed": true
+}

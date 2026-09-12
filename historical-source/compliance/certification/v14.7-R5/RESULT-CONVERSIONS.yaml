@@ -1,0 +1,194 @@
+{
+  "realization_version": "14.7-R5",
+  "semantic_version": "v14.7",
+  "epistemic_status": "SUPPORTED",
+  "objects": [
+    {
+      "rule_id": "R5-CONV-001",
+      "source_type": "ValidationResult",
+      "source_states": [
+        "VALID",
+        "INVALID",
+        "BLOCKED",
+        "UNKNOWN"
+      ],
+      "target_type": "EvaluationEligibility",
+      "legal_mappings": {
+        "VALID": "ELIGIBLE",
+        "INVALID": "INVALID",
+        "BLOCKED": "BLOCKED",
+        "UNKNOWN": "UNKNOWN"
+      },
+      "forbidden_mappings": [],
+      "required_evidence": [
+        "validation_evidence"
+      ],
+      "applicable_policy": null,
+      "failure_behavior": "REJECT_WITH_TYPED_CONVERSION_ERROR",
+      "content_hash": "ff9d4d607aedebe5a88d8463116bac5ed452ee9314ae7b5ecc79568a4368f966"
+    },
+    {
+      "rule_id": "R5-CONV-002",
+      "source_type": "EvaluationResult",
+      "source_states": [
+        "TRUE",
+        "FALSE",
+        "UNKNOWN",
+        "BLOCKED",
+        "INVALID"
+      ],
+      "target_type": "PredicateOutcome",
+      "legal_mappings": {
+        "TRUE": "TRUE",
+        "FALSE": "FALSE",
+        "UNKNOWN": "UNKNOWN",
+        "BLOCKED": "BLOCKED"
+      },
+      "forbidden_mappings": [
+        "INVALID"
+      ],
+      "required_evidence": [
+        "evaluation_integrity"
+      ],
+      "applicable_policy": null,
+      "failure_behavior": "REJECT_WITH_TYPED_CONVERSION_ERROR",
+      "content_hash": "ff32602a2cdb664e4b8d3a73ddd3d2c8fe333085b951560776f710855d7a47fb"
+    },
+    {
+      "rule_id": "R5-CONV-003",
+      "source_type": "PredicateOutcome",
+      "source_states": [
+        "TRUE",
+        "FALSE",
+        "UNKNOWN",
+        "BLOCKED",
+        "INVALID"
+      ],
+      "target_type": "AggregateEvaluation",
+      "legal_mappings": {
+        "TRUE": "TRUE",
+        "FALSE": "FALSE",
+        "UNKNOWN": "UNKNOWN",
+        "BLOCKED": "BLOCKED"
+      },
+      "forbidden_mappings": [
+        "INVALID"
+      ],
+      "required_evidence": [],
+      "applicable_policy": "profile:r5",
+      "failure_behavior": "REJECT_WITH_TYPED_CONVERSION_ERROR",
+      "content_hash": "25fdab4c9a0edceee3cf3f6ad3fe4eb33ade364ad7919a7bc1a5cb68a1b2d178"
+    },
+    {
+      "rule_id": "R5-CONV-004",
+      "source_type": "AggregateEvaluation",
+      "source_states": [
+        "TRUE",
+        "FALSE",
+        "UNKNOWN",
+        "BLOCKED",
+        "INVALID"
+      ],
+      "target_type": "ReleaseEligibility",
+      "legal_mappings": {
+        "TRUE": "ELIGIBLE",
+        "FALSE": "INELIGIBLE",
+        "UNKNOWN": "UNKNOWN",
+        "BLOCKED": "BLOCKED"
+      },
+      "forbidden_mappings": [
+        "INVALID"
+      ],
+      "required_evidence": [
+        "aggregate_evidence"
+      ],
+      "applicable_policy": "profile:r5",
+      "failure_behavior": "REJECT_WITH_TYPED_CONVERSION_ERROR",
+      "content_hash": "2b092fff361871e04b6d87c4617a4e05d5456dd793fbb6858d1007d86486f26e"
+    },
+    {
+      "rule_id": "R5-CONV-005",
+      "source_type": "ConformanceResult",
+      "source_states": [
+        "CONFORMANT",
+        "PARTIALLY_CONFORMANT",
+        "NON_CONFORMANT",
+        "UNVERIFIED",
+        "BLOCKED",
+        "NOT_APPLICABLE",
+        "UNKNOWN"
+      ],
+      "target_type": "ComplianceAggregate",
+      "legal_mappings": {
+        "CONFORMANT": "CONFORMANT",
+        "PARTIALLY_CONFORMANT": "PARTIALLY_CONFORMANT",
+        "NON_CONFORMANT": "NON_CONFORMANT",
+        "UNVERIFIED": "UNVERIFIED",
+        "BLOCKED": "BLOCKED",
+        "NOT_APPLICABLE": "NOT_APPLICABLE",
+        "UNKNOWN": "UNKNOWN"
+      },
+      "forbidden_mappings": [],
+      "required_evidence": [
+        "conformance_evidence"
+      ],
+      "applicable_policy": null,
+      "failure_behavior": "REJECT_WITH_TYPED_CONVERSION_ERROR",
+      "content_hash": "9f3efdc291cc92e69433d1a974cf63138de71d84a669b61663dd470ba1532269"
+    },
+    {
+      "rule_id": "R5-CONV-006",
+      "source_type": "ReleaseEligibility",
+      "source_states": [
+        "ELIGIBLE",
+        "INELIGIBLE",
+        "BLOCKED",
+        "UNKNOWN"
+      ],
+      "target_type": "AuthorizationInput",
+      "legal_mappings": {
+        "ELIGIBLE": "ELIGIBLE"
+      },
+      "forbidden_mappings": [
+        "INELIGIBLE",
+        "BLOCKED",
+        "UNKNOWN"
+      ],
+      "required_evidence": [
+        "eligibility_evidence"
+      ],
+      "applicable_policy": "authorization-policy:r5",
+      "failure_behavior": "REJECT_WITH_TYPED_CONVERSION_ERROR",
+      "content_hash": "e1adc1cd7462f8448bf6f7e2330838d3f526b10e3d5bf6da8dbeb0ddcfc284fc"
+    },
+    {
+      "rule_id": "R5-CONV-007",
+      "source_type": "AuthorizationResult",
+      "source_states": [
+        "AUTHORIZED",
+        "REFUSED",
+        "BLOCKED",
+        "UNKNOWN",
+        "INVALID"
+      ],
+      "target_type": "ReleaseDecisionInput",
+      "legal_mappings": {
+        "AUTHORIZED": "AUTHORIZED"
+      },
+      "forbidden_mappings": [
+        "REFUSED",
+        "BLOCKED",
+        "UNKNOWN",
+        "INVALID"
+      ],
+      "required_evidence": [
+        "authorization_evidence"
+      ],
+      "applicable_policy": "decision-policy:r5",
+      "failure_behavior": "REJECT_WITH_TYPED_CONVERSION_ERROR",
+      "content_hash": "816661dcd4348eef1f769692510cb0146658d0d477a049eec5d9123c5aa06648"
+    }
+  ],
+  "count": 7,
+  "generic_convert": "FORBIDDEN"
+}

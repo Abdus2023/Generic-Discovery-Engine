@@ -1,0 +1,3788 @@
+{
+  "objects": [
+    {
+      "test_id": "R5-T-001",
+      "category": "ENUM_LEGAL",
+      "operation": "ENUM",
+      "input": {
+        "domain": "Evaluation",
+        "value": "TRUE"
+      },
+      "expected": "VALID"
+    },
+    {
+      "test_id": "R5-T-002",
+      "category": "ENUM_LEGAL",
+      "operation": "ENUM",
+      "input": {
+        "domain": "Evaluation",
+        "value": "FALSE"
+      },
+      "expected": "VALID"
+    },
+    {
+      "test_id": "R5-T-003",
+      "category": "ENUM_LEGAL",
+      "operation": "ENUM",
+      "input": {
+        "domain": "Evaluation",
+        "value": "UNKNOWN"
+      },
+      "expected": "VALID"
+    },
+    {
+      "test_id": "R5-T-004",
+      "category": "ENUM_LEGAL",
+      "operation": "ENUM",
+      "input": {
+        "domain": "Evaluation",
+        "value": "BLOCKED"
+      },
+      "expected": "VALID"
+    },
+    {
+      "test_id": "R5-T-005",
+      "category": "ENUM_LEGAL",
+      "operation": "ENUM",
+      "input": {
+        "domain": "Evaluation",
+        "value": "INVALID"
+      },
+      "expected": "VALID"
+    },
+    {
+      "test_id": "R5-T-006",
+      "category": "ENUM_UNKNOWN",
+      "operation": "ENUM",
+      "input": {
+        "domain": "Evaluation",
+        "value": "__UNKNOWN_VALUE__"
+      },
+      "expected": "INVALID:UNKNOWN_ENUM_VALUE"
+    },
+    {
+      "test_id": "R5-T-007",
+      "category": "ENUM_WRONG_DOMAIN",
+      "operation": "ENUM",
+      "input": {
+        "domain": "Evaluation",
+        "value": "AUTHORIZED"
+      },
+      "expected": "INVALID:WRONG_ENUM_DOMAIN"
+    },
+    {
+      "test_id": "R5-T-008",
+      "category": "ENUM_LEGAL",
+      "operation": "ENUM",
+      "input": {
+        "domain": "Validation",
+        "value": "VALID"
+      },
+      "expected": "VALID"
+    },
+    {
+      "test_id": "R5-T-009",
+      "category": "ENUM_LEGAL",
+      "operation": "ENUM",
+      "input": {
+        "domain": "Validation",
+        "value": "INVALID"
+      },
+      "expected": "VALID"
+    },
+    {
+      "test_id": "R5-T-010",
+      "category": "ENUM_LEGAL",
+      "operation": "ENUM",
+      "input": {
+        "domain": "Validation",
+        "value": "BLOCKED"
+      },
+      "expected": "VALID"
+    },
+    {
+      "test_id": "R5-T-011",
+      "category": "ENUM_LEGAL",
+      "operation": "ENUM",
+      "input": {
+        "domain": "Validation",
+        "value": "UNKNOWN"
+      },
+      "expected": "VALID"
+    },
+    {
+      "test_id": "R5-T-012",
+      "category": "ENUM_UNKNOWN",
+      "operation": "ENUM",
+      "input": {
+        "domain": "Validation",
+        "value": "__UNKNOWN_VALUE__"
+      },
+      "expected": "INVALID:UNKNOWN_ENUM_VALUE"
+    },
+    {
+      "test_id": "R5-T-013",
+      "category": "ENUM_WRONG_DOMAIN",
+      "operation": "ENUM",
+      "input": {
+        "domain": "Validation",
+        "value": "AUTHORIZED"
+      },
+      "expected": "INVALID:WRONG_ENUM_DOMAIN"
+    },
+    {
+      "test_id": "R5-T-014",
+      "category": "ENUM_LEGAL",
+      "operation": "ENUM",
+      "input": {
+        "domain": "Conformance",
+        "value": "CONFORMANT"
+      },
+      "expected": "VALID"
+    },
+    {
+      "test_id": "R5-T-015",
+      "category": "ENUM_LEGAL",
+      "operation": "ENUM",
+      "input": {
+        "domain": "Conformance",
+        "value": "PARTIALLY_CONFORMANT"
+      },
+      "expected": "VALID"
+    },
+    {
+      "test_id": "R5-T-016",
+      "category": "ENUM_LEGAL",
+      "operation": "ENUM",
+      "input": {
+        "domain": "Conformance",
+        "value": "NON_CONFORMANT"
+      },
+      "expected": "VALID"
+    },
+    {
+      "test_id": "R5-T-017",
+      "category": "ENUM_LEGAL",
+      "operation": "ENUM",
+      "input": {
+        "domain": "Conformance",
+        "value": "UNVERIFIED"
+      },
+      "expected": "VALID"
+    },
+    {
+      "test_id": "R5-T-018",
+      "category": "ENUM_LEGAL",
+      "operation": "ENUM",
+      "input": {
+        "domain": "Conformance",
+        "value": "BLOCKED"
+      },
+      "expected": "VALID"
+    },
+    {
+      "test_id": "R5-T-019",
+      "category": "ENUM_LEGAL",
+      "operation": "ENUM",
+      "input": {
+        "domain": "Conformance",
+        "value": "NOT_APPLICABLE"
+      },
+      "expected": "VALID"
+    },
+    {
+      "test_id": "R5-T-020",
+      "category": "ENUM_LEGAL",
+      "operation": "ENUM",
+      "input": {
+        "domain": "Conformance",
+        "value": "UNKNOWN"
+      },
+      "expected": "VALID"
+    },
+    {
+      "test_id": "R5-T-021",
+      "category": "ENUM_UNKNOWN",
+      "operation": "ENUM",
+      "input": {
+        "domain": "Conformance",
+        "value": "__UNKNOWN_VALUE__"
+      },
+      "expected": "INVALID:UNKNOWN_ENUM_VALUE"
+    },
+    {
+      "test_id": "R5-T-022",
+      "category": "ENUM_WRONG_DOMAIN",
+      "operation": "ENUM",
+      "input": {
+        "domain": "Conformance",
+        "value": "AUTHORIZED"
+      },
+      "expected": "INVALID:WRONG_ENUM_DOMAIN"
+    },
+    {
+      "test_id": "R5-T-023",
+      "category": "ENUM_LEGAL",
+      "operation": "ENUM",
+      "input": {
+        "domain": "CertificateLifecycle",
+        "value": "DRAFT"
+      },
+      "expected": "VALID"
+    },
+    {
+      "test_id": "R5-T-024",
+      "category": "ENUM_LEGAL",
+      "operation": "ENUM",
+      "input": {
+        "domain": "CertificateLifecycle",
+        "value": "ISSUED"
+      },
+      "expected": "VALID"
+    },
+    {
+      "test_id": "R5-T-025",
+      "category": "ENUM_LEGAL",
+      "operation": "ENUM",
+      "input": {
+        "domain": "CertificateLifecycle",
+        "value": "REVOKED"
+      },
+      "expected": "VALID"
+    },
+    {
+      "test_id": "R5-T-026",
+      "category": "ENUM_LEGAL",
+      "operation": "ENUM",
+      "input": {
+        "domain": "CertificateLifecycle",
+        "value": "SUPERSEDED"
+      },
+      "expected": "VALID"
+    },
+    {
+      "test_id": "R5-T-027",
+      "category": "ENUM_LEGAL",
+      "operation": "ENUM",
+      "input": {
+        "domain": "CertificateLifecycle",
+        "value": "EXPIRED"
+      },
+      "expected": "VALID"
+    },
+    {
+      "test_id": "R5-T-028",
+      "category": "ENUM_LEGAL",
+      "operation": "ENUM",
+      "input": {
+        "domain": "CertificateLifecycle",
+        "value": "CANCELLED"
+      },
+      "expected": "VALID"
+    },
+    {
+      "test_id": "R5-T-029",
+      "category": "ENUM_UNKNOWN",
+      "operation": "ENUM",
+      "input": {
+        "domain": "CertificateLifecycle",
+        "value": "__UNKNOWN_VALUE__"
+      },
+      "expected": "INVALID:UNKNOWN_ENUM_VALUE"
+    },
+    {
+      "test_id": "R5-T-030",
+      "category": "ENUM_WRONG_DOMAIN",
+      "operation": "ENUM",
+      "input": {
+        "domain": "CertificateLifecycle",
+        "value": "AUTHORIZED"
+      },
+      "expected": "INVALID:WRONG_ENUM_DOMAIN"
+    },
+    {
+      "test_id": "R5-T-031",
+      "category": "ENUM_LEGAL",
+      "operation": "ENUM",
+      "input": {
+        "domain": "CertificateValidity",
+        "value": "VALID"
+      },
+      "expected": "VALID"
+    },
+    {
+      "test_id": "R5-T-032",
+      "category": "ENUM_LEGAL",
+      "operation": "ENUM",
+      "input": {
+        "domain": "CertificateValidity",
+        "value": "INVALID"
+      },
+      "expected": "VALID"
+    },
+    {
+      "test_id": "R5-T-033",
+      "category": "ENUM_LEGAL",
+      "operation": "ENUM",
+      "input": {
+        "domain": "CertificateValidity",
+        "value": "NOT_YET_VALID"
+      },
+      "expected": "VALID"
+    },
+    {
+      "test_id": "R5-T-034",
+      "category": "ENUM_LEGAL",
+      "operation": "ENUM",
+      "input": {
+        "domain": "CertificateValidity",
+        "value": "UNKNOWN"
+      },
+      "expected": "VALID"
+    },
+    {
+      "test_id": "R5-T-035",
+      "category": "ENUM_UNKNOWN",
+      "operation": "ENUM",
+      "input": {
+        "domain": "CertificateValidity",
+        "value": "__UNKNOWN_VALUE__"
+      },
+      "expected": "INVALID:UNKNOWN_ENUM_VALUE"
+    },
+    {
+      "test_id": "R5-T-036",
+      "category": "ENUM_WRONG_DOMAIN",
+      "operation": "ENUM",
+      "input": {
+        "domain": "CertificateValidity",
+        "value": "AUTHORIZED"
+      },
+      "expected": "INVALID:WRONG_ENUM_DOMAIN"
+    },
+    {
+      "test_id": "R5-T-037",
+      "category": "ENUM_LEGAL",
+      "operation": "ENUM",
+      "input": {
+        "domain": "ReleaseEligibility",
+        "value": "ELIGIBLE"
+      },
+      "expected": "VALID"
+    },
+    {
+      "test_id": "R5-T-038",
+      "category": "ENUM_LEGAL",
+      "operation": "ENUM",
+      "input": {
+        "domain": "ReleaseEligibility",
+        "value": "INELIGIBLE"
+      },
+      "expected": "VALID"
+    },
+    {
+      "test_id": "R5-T-039",
+      "category": "ENUM_LEGAL",
+      "operation": "ENUM",
+      "input": {
+        "domain": "ReleaseEligibility",
+        "value": "BLOCKED"
+      },
+      "expected": "VALID"
+    },
+    {
+      "test_id": "R5-T-040",
+      "category": "ENUM_LEGAL",
+      "operation": "ENUM",
+      "input": {
+        "domain": "ReleaseEligibility",
+        "value": "UNKNOWN"
+      },
+      "expected": "VALID"
+    },
+    {
+      "test_id": "R5-T-041",
+      "category": "ENUM_UNKNOWN",
+      "operation": "ENUM",
+      "input": {
+        "domain": "ReleaseEligibility",
+        "value": "__UNKNOWN_VALUE__"
+      },
+      "expected": "INVALID:UNKNOWN_ENUM_VALUE"
+    },
+    {
+      "test_id": "R5-T-042",
+      "category": "ENUM_WRONG_DOMAIN",
+      "operation": "ENUM",
+      "input": {
+        "domain": "ReleaseEligibility",
+        "value": "AUTHORIZED"
+      },
+      "expected": "INVALID:WRONG_ENUM_DOMAIN"
+    },
+    {
+      "test_id": "R5-T-043",
+      "category": "ENUM_LEGAL",
+      "operation": "ENUM",
+      "input": {
+        "domain": "Authorization",
+        "value": "AUTHORIZED"
+      },
+      "expected": "VALID"
+    },
+    {
+      "test_id": "R5-T-044",
+      "category": "ENUM_LEGAL",
+      "operation": "ENUM",
+      "input": {
+        "domain": "Authorization",
+        "value": "REFUSED"
+      },
+      "expected": "VALID"
+    },
+    {
+      "test_id": "R5-T-045",
+      "category": "ENUM_LEGAL",
+      "operation": "ENUM",
+      "input": {
+        "domain": "Authorization",
+        "value": "BLOCKED"
+      },
+      "expected": "VALID"
+    },
+    {
+      "test_id": "R5-T-046",
+      "category": "ENUM_LEGAL",
+      "operation": "ENUM",
+      "input": {
+        "domain": "Authorization",
+        "value": "UNKNOWN"
+      },
+      "expected": "VALID"
+    },
+    {
+      "test_id": "R5-T-047",
+      "category": "ENUM_LEGAL",
+      "operation": "ENUM",
+      "input": {
+        "domain": "Authorization",
+        "value": "INVALID"
+      },
+      "expected": "VALID"
+    },
+    {
+      "test_id": "R5-T-048",
+      "category": "ENUM_UNKNOWN",
+      "operation": "ENUM",
+      "input": {
+        "domain": "Authorization",
+        "value": "__UNKNOWN_VALUE__"
+      },
+      "expected": "INVALID:UNKNOWN_ENUM_VALUE"
+    },
+    {
+      "test_id": "R5-T-049",
+      "category": "ENUM_WRONG_DOMAIN",
+      "operation": "ENUM",
+      "input": {
+        "domain": "Authorization",
+        "value": "ISSUED"
+      },
+      "expected": "INVALID:WRONG_ENUM_DOMAIN"
+    },
+    {
+      "test_id": "R5-T-050",
+      "category": "ENUM_LEGAL",
+      "operation": "ENUM",
+      "input": {
+        "domain": "ReleaseDecision",
+        "value": "APPROVED"
+      },
+      "expected": "VALID"
+    },
+    {
+      "test_id": "R5-T-051",
+      "category": "ENUM_LEGAL",
+      "operation": "ENUM",
+      "input": {
+        "domain": "ReleaseDecision",
+        "value": "REJECTED"
+      },
+      "expected": "VALID"
+    },
+    {
+      "test_id": "R5-T-052",
+      "category": "ENUM_LEGAL",
+      "operation": "ENUM",
+      "input": {
+        "domain": "ReleaseDecision",
+        "value": "BLOCKED"
+      },
+      "expected": "VALID"
+    },
+    {
+      "test_id": "R5-T-053",
+      "category": "ENUM_LEGAL",
+      "operation": "ENUM",
+      "input": {
+        "domain": "ReleaseDecision",
+        "value": "DEFERRED"
+      },
+      "expected": "VALID"
+    },
+    {
+      "test_id": "R5-T-054",
+      "category": "ENUM_UNKNOWN",
+      "operation": "ENUM",
+      "input": {
+        "domain": "ReleaseDecision",
+        "value": "__UNKNOWN_VALUE__"
+      },
+      "expected": "INVALID:UNKNOWN_ENUM_VALUE"
+    },
+    {
+      "test_id": "R5-T-055",
+      "category": "ENUM_WRONG_DOMAIN",
+      "operation": "ENUM",
+      "input": {
+        "domain": "ReleaseDecision",
+        "value": "AUTHORIZED"
+      },
+      "expected": "INVALID:WRONG_ENUM_DOMAIN"
+    },
+    {
+      "test_id": "R5-T-056",
+      "category": "ENUM_LEGAL",
+      "operation": "ENUM",
+      "input": {
+        "domain": "ReleaseExecution",
+        "value": "NOT_STARTED"
+      },
+      "expected": "VALID"
+    },
+    {
+      "test_id": "R5-T-057",
+      "category": "ENUM_LEGAL",
+      "operation": "ENUM",
+      "input": {
+        "domain": "ReleaseExecution",
+        "value": "STARTED"
+      },
+      "expected": "VALID"
+    },
+    {
+      "test_id": "R5-T-058",
+      "category": "ENUM_LEGAL",
+      "operation": "ENUM",
+      "input": {
+        "domain": "ReleaseExecution",
+        "value": "SUCCEEDED"
+      },
+      "expected": "VALID"
+    },
+    {
+      "test_id": "R5-T-059",
+      "category": "ENUM_LEGAL",
+      "operation": "ENUM",
+      "input": {
+        "domain": "ReleaseExecution",
+        "value": "FAILED"
+      },
+      "expected": "VALID"
+    },
+    {
+      "test_id": "R5-T-060",
+      "category": "ENUM_LEGAL",
+      "operation": "ENUM",
+      "input": {
+        "domain": "ReleaseExecution",
+        "value": "CANCELLED"
+      },
+      "expected": "VALID"
+    },
+    {
+      "test_id": "R5-T-061",
+      "category": "ENUM_LEGAL",
+      "operation": "ENUM",
+      "input": {
+        "domain": "ReleaseExecution",
+        "value": "ROLLED_BACK"
+      },
+      "expected": "VALID"
+    },
+    {
+      "test_id": "R5-T-062",
+      "category": "ENUM_UNKNOWN",
+      "operation": "ENUM",
+      "input": {
+        "domain": "ReleaseExecution",
+        "value": "__UNKNOWN_VALUE__"
+      },
+      "expected": "INVALID:UNKNOWN_ENUM_VALUE"
+    },
+    {
+      "test_id": "R5-T-063",
+      "category": "ENUM_WRONG_DOMAIN",
+      "operation": "ENUM",
+      "input": {
+        "domain": "ReleaseExecution",
+        "value": "AUTHORIZED"
+      },
+      "expected": "INVALID:WRONG_ENUM_DOMAIN"
+    },
+    {
+      "test_id": "R5-T-064",
+      "category": "ENUM_LEGAL",
+      "operation": "ENUM",
+      "input": {
+        "domain": "PostReleaseVerification",
+        "value": "NOT_STARTED"
+      },
+      "expected": "VALID"
+    },
+    {
+      "test_id": "R5-T-065",
+      "category": "ENUM_LEGAL",
+      "operation": "ENUM",
+      "input": {
+        "domain": "PostReleaseVerification",
+        "value": "IN_PROGRESS"
+      },
+      "expected": "VALID"
+    },
+    {
+      "test_id": "R5-T-066",
+      "category": "ENUM_LEGAL",
+      "operation": "ENUM",
+      "input": {
+        "domain": "PostReleaseVerification",
+        "value": "PASSED"
+      },
+      "expected": "VALID"
+    },
+    {
+      "test_id": "R5-T-067",
+      "category": "ENUM_LEGAL",
+      "operation": "ENUM",
+      "input": {
+        "domain": "PostReleaseVerification",
+        "value": "FAILED"
+      },
+      "expected": "VALID"
+    },
+    {
+      "test_id": "R5-T-068",
+      "category": "ENUM_LEGAL",
+      "operation": "ENUM",
+      "input": {
+        "domain": "PostReleaseVerification",
+        "value": "INCONCLUSIVE"
+      },
+      "expected": "VALID"
+    },
+    {
+      "test_id": "R5-T-069",
+      "category": "ENUM_LEGAL",
+      "operation": "ENUM",
+      "input": {
+        "domain": "PostReleaseVerification",
+        "value": "BLOCKED"
+      },
+      "expected": "VALID"
+    },
+    {
+      "test_id": "R5-T-070",
+      "category": "ENUM_LEGAL",
+      "operation": "ENUM",
+      "input": {
+        "domain": "PostReleaseVerification",
+        "value": "INVALID"
+      },
+      "expected": "VALID"
+    },
+    {
+      "test_id": "R5-T-071",
+      "category": "ENUM_UNKNOWN",
+      "operation": "ENUM",
+      "input": {
+        "domain": "PostReleaseVerification",
+        "value": "__UNKNOWN_VALUE__"
+      },
+      "expected": "INVALID:UNKNOWN_ENUM_VALUE"
+    },
+    {
+      "test_id": "R5-T-072",
+      "category": "ENUM_WRONG_DOMAIN",
+      "operation": "ENUM",
+      "input": {
+        "domain": "PostReleaseVerification",
+        "value": "AUTHORIZED"
+      },
+      "expected": "INVALID:WRONG_ENUM_DOMAIN"
+    },
+    {
+      "test_id": "R5-T-073",
+      "category": "ENUM_LEGAL",
+      "operation": "ENUM",
+      "input": {
+        "domain": "Reuse",
+        "value": "REUSABLE"
+      },
+      "expected": "VALID"
+    },
+    {
+      "test_id": "R5-T-074",
+      "category": "ENUM_LEGAL",
+      "operation": "ENUM",
+      "input": {
+        "domain": "Reuse",
+        "value": "NOT_REUSABLE"
+      },
+      "expected": "VALID"
+    },
+    {
+      "test_id": "R5-T-075",
+      "category": "ENUM_LEGAL",
+      "operation": "ENUM",
+      "input": {
+        "domain": "Reuse",
+        "value": "BLOCKED"
+      },
+      "expected": "VALID"
+    },
+    {
+      "test_id": "R5-T-076",
+      "category": "ENUM_LEGAL",
+      "operation": "ENUM",
+      "input": {
+        "domain": "Reuse",
+        "value": "UNKNOWN"
+      },
+      "expected": "VALID"
+    },
+    {
+      "test_id": "R5-T-077",
+      "category": "ENUM_LEGAL",
+      "operation": "ENUM",
+      "input": {
+        "domain": "Reuse",
+        "value": "INVALID"
+      },
+      "expected": "VALID"
+    },
+    {
+      "test_id": "R5-T-078",
+      "category": "ENUM_UNKNOWN",
+      "operation": "ENUM",
+      "input": {
+        "domain": "Reuse",
+        "value": "__UNKNOWN_VALUE__"
+      },
+      "expected": "INVALID:UNKNOWN_ENUM_VALUE"
+    },
+    {
+      "test_id": "R5-T-079",
+      "category": "ENUM_WRONG_DOMAIN",
+      "operation": "ENUM",
+      "input": {
+        "domain": "Reuse",
+        "value": "AUTHORIZED"
+      },
+      "expected": "INVALID:WRONG_ENUM_DOMAIN"
+    },
+    {
+      "test_id": "R5-T-080",
+      "category": "ENUM_LEGAL",
+      "operation": "ENUM",
+      "input": {
+        "domain": "Authority",
+        "value": "ACTIVE"
+      },
+      "expected": "VALID"
+    },
+    {
+      "test_id": "R5-T-081",
+      "category": "ENUM_LEGAL",
+      "operation": "ENUM",
+      "input": {
+        "domain": "Authority",
+        "value": "SUSPENDED"
+      },
+      "expected": "VALID"
+    },
+    {
+      "test_id": "R5-T-082",
+      "category": "ENUM_LEGAL",
+      "operation": "ENUM",
+      "input": {
+        "domain": "Authority",
+        "value": "REVOKED"
+      },
+      "expected": "VALID"
+    },
+    {
+      "test_id": "R5-T-083",
+      "category": "ENUM_LEGAL",
+      "operation": "ENUM",
+      "input": {
+        "domain": "Authority",
+        "value": "EXPIRED"
+      },
+      "expected": "VALID"
+    },
+    {
+      "test_id": "R5-T-084",
+      "category": "ENUM_LEGAL",
+      "operation": "ENUM",
+      "input": {
+        "domain": "Authority",
+        "value": "UNKNOWN"
+      },
+      "expected": "VALID"
+    },
+    {
+      "test_id": "R5-T-085",
+      "category": "ENUM_UNKNOWN",
+      "operation": "ENUM",
+      "input": {
+        "domain": "Authority",
+        "value": "__UNKNOWN_VALUE__"
+      },
+      "expected": "INVALID:UNKNOWN_ENUM_VALUE"
+    },
+    {
+      "test_id": "R5-T-086",
+      "category": "ENUM_WRONG_DOMAIN",
+      "operation": "ENUM",
+      "input": {
+        "domain": "Authority",
+        "value": "AUTHORIZED"
+      },
+      "expected": "INVALID:WRONG_ENUM_DOMAIN"
+    },
+    {
+      "test_id": "R5-T-087",
+      "category": "ENUM_LEGAL",
+      "operation": "ENUM",
+      "input": {
+        "domain": "AuthorityQualification",
+        "value": "QUALIFIED"
+      },
+      "expected": "VALID"
+    },
+    {
+      "test_id": "R5-T-088",
+      "category": "ENUM_LEGAL",
+      "operation": "ENUM",
+      "input": {
+        "domain": "AuthorityQualification",
+        "value": "NOT_QUALIFIED"
+      },
+      "expected": "VALID"
+    },
+    {
+      "test_id": "R5-T-089",
+      "category": "ENUM_LEGAL",
+      "operation": "ENUM",
+      "input": {
+        "domain": "AuthorityQualification",
+        "value": "BLOCKED"
+      },
+      "expected": "VALID"
+    },
+    {
+      "test_id": "R5-T-090",
+      "category": "ENUM_LEGAL",
+      "operation": "ENUM",
+      "input": {
+        "domain": "AuthorityQualification",
+        "value": "UNKNOWN"
+      },
+      "expected": "VALID"
+    },
+    {
+      "test_id": "R5-T-091",
+      "category": "ENUM_LEGAL",
+      "operation": "ENUM",
+      "input": {
+        "domain": "AuthorityQualification",
+        "value": "INVALID"
+      },
+      "expected": "VALID"
+    },
+    {
+      "test_id": "R5-T-092",
+      "category": "ENUM_UNKNOWN",
+      "operation": "ENUM",
+      "input": {
+        "domain": "AuthorityQualification",
+        "value": "__UNKNOWN_VALUE__"
+      },
+      "expected": "INVALID:UNKNOWN_ENUM_VALUE"
+    },
+    {
+      "test_id": "R5-T-093",
+      "category": "ENUM_WRONG_DOMAIN",
+      "operation": "ENUM",
+      "input": {
+        "domain": "AuthorityQualification",
+        "value": "AUTHORIZED"
+      },
+      "expected": "INVALID:WRONG_ENUM_DOMAIN"
+    },
+    {
+      "test_id": "R5-T-094",
+      "category": "ENUM_LEGAL",
+      "operation": "ENUM",
+      "input": {
+        "domain": "EventValidation",
+        "value": "VALID"
+      },
+      "expected": "VALID"
+    },
+    {
+      "test_id": "R5-T-095",
+      "category": "ENUM_LEGAL",
+      "operation": "ENUM",
+      "input": {
+        "domain": "EventValidation",
+        "value": "INVALID"
+      },
+      "expected": "VALID"
+    },
+    {
+      "test_id": "R5-T-096",
+      "category": "ENUM_LEGAL",
+      "operation": "ENUM",
+      "input": {
+        "domain": "EventValidation",
+        "value": "BLOCKED"
+      },
+      "expected": "VALID"
+    },
+    {
+      "test_id": "R5-T-097",
+      "category": "ENUM_LEGAL",
+      "operation": "ENUM",
+      "input": {
+        "domain": "EventValidation",
+        "value": "UNKNOWN"
+      },
+      "expected": "VALID"
+    },
+    {
+      "test_id": "R5-T-098",
+      "category": "ENUM_UNKNOWN",
+      "operation": "ENUM",
+      "input": {
+        "domain": "EventValidation",
+        "value": "__UNKNOWN_VALUE__"
+      },
+      "expected": "INVALID:UNKNOWN_ENUM_VALUE"
+    },
+    {
+      "test_id": "R5-T-099",
+      "category": "ENUM_WRONG_DOMAIN",
+      "operation": "ENUM",
+      "input": {
+        "domain": "EventValidation",
+        "value": "AUTHORIZED"
+      },
+      "expected": "INVALID:WRONG_ENUM_DOMAIN"
+    },
+    {
+      "test_id": "R5-T-100",
+      "category": "ENUM_LEGAL",
+      "operation": "ENUM",
+      "input": {
+        "domain": "EventCommit",
+        "value": "PENDING"
+      },
+      "expected": "VALID"
+    },
+    {
+      "test_id": "R5-T-101",
+      "category": "ENUM_LEGAL",
+      "operation": "ENUM",
+      "input": {
+        "domain": "EventCommit",
+        "value": "COMMITTED"
+      },
+      "expected": "VALID"
+    },
+    {
+      "test_id": "R5-T-102",
+      "category": "ENUM_LEGAL",
+      "operation": "ENUM",
+      "input": {
+        "domain": "EventCommit",
+        "value": "REJECTED"
+      },
+      "expected": "VALID"
+    },
+    {
+      "test_id": "R5-T-103",
+      "category": "ENUM_UNKNOWN",
+      "operation": "ENUM",
+      "input": {
+        "domain": "EventCommit",
+        "value": "__UNKNOWN_VALUE__"
+      },
+      "expected": "INVALID:UNKNOWN_ENUM_VALUE"
+    },
+    {
+      "test_id": "R5-T-104",
+      "category": "ENUM_WRONG_DOMAIN",
+      "operation": "ENUM",
+      "input": {
+        "domain": "EventCommit",
+        "value": "AUTHORIZED"
+      },
+      "expected": "INVALID:WRONG_ENUM_DOMAIN"
+    },
+    {
+      "test_id": "R5-T-105",
+      "category": "ENUM_LEGAL",
+      "operation": "ENUM",
+      "input": {
+        "domain": "Projection",
+        "value": "CURRENT"
+      },
+      "expected": "VALID"
+    },
+    {
+      "test_id": "R5-T-106",
+      "category": "ENUM_LEGAL",
+      "operation": "ENUM",
+      "input": {
+        "domain": "Projection",
+        "value": "REPLAYING"
+      },
+      "expected": "VALID"
+    },
+    {
+      "test_id": "R5-T-107",
+      "category": "ENUM_LEGAL",
+      "operation": "ENUM",
+      "input": {
+        "domain": "Projection",
+        "value": "STALE"
+      },
+      "expected": "VALID"
+    },
+    {
+      "test_id": "R5-T-108",
+      "category": "ENUM_LEGAL",
+      "operation": "ENUM",
+      "input": {
+        "domain": "Projection",
+        "value": "INVALID"
+      },
+      "expected": "VALID"
+    },
+    {
+      "test_id": "R5-T-109",
+      "category": "ENUM_LEGAL",
+      "operation": "ENUM",
+      "input": {
+        "domain": "Projection",
+        "value": "BLOCKED"
+      },
+      "expected": "VALID"
+    },
+    {
+      "test_id": "R5-T-110",
+      "category": "ENUM_LEGAL",
+      "operation": "ENUM",
+      "input": {
+        "domain": "Projection",
+        "value": "UNKNOWN"
+      },
+      "expected": "VALID"
+    },
+    {
+      "test_id": "R5-T-111",
+      "category": "ENUM_UNKNOWN",
+      "operation": "ENUM",
+      "input": {
+        "domain": "Projection",
+        "value": "__UNKNOWN_VALUE__"
+      },
+      "expected": "INVALID:UNKNOWN_ENUM_VALUE"
+    },
+    {
+      "test_id": "R5-T-112",
+      "category": "ENUM_WRONG_DOMAIN",
+      "operation": "ENUM",
+      "input": {
+        "domain": "Projection",
+        "value": "AUTHORIZED"
+      },
+      "expected": "INVALID:WRONG_ENUM_DOMAIN"
+    },
+    {
+      "test_id": "R5-T-113",
+      "category": "ENUM_LEGAL",
+      "operation": "ENUM",
+      "input": {
+        "domain": "RequirementLifecycle",
+        "value": "PROPOSED"
+      },
+      "expected": "VALID"
+    },
+    {
+      "test_id": "R5-T-114",
+      "category": "ENUM_LEGAL",
+      "operation": "ENUM",
+      "input": {
+        "domain": "RequirementLifecycle",
+        "value": "DRAFT"
+      },
+      "expected": "VALID"
+    },
+    {
+      "test_id": "R5-T-115",
+      "category": "ENUM_LEGAL",
+      "operation": "ENUM",
+      "input": {
+        "domain": "RequirementLifecycle",
+        "value": "ACTIVE"
+      },
+      "expected": "VALID"
+    },
+    {
+      "test_id": "R5-T-116",
+      "category": "ENUM_LEGAL",
+      "operation": "ENUM",
+      "input": {
+        "domain": "RequirementLifecycle",
+        "value": "DEPRECATED"
+      },
+      "expected": "VALID"
+    },
+    {
+      "test_id": "R5-T-117",
+      "category": "ENUM_LEGAL",
+      "operation": "ENUM",
+      "input": {
+        "domain": "RequirementLifecycle",
+        "value": "SUPERSEDED"
+      },
+      "expected": "VALID"
+    },
+    {
+      "test_id": "R5-T-118",
+      "category": "ENUM_LEGAL",
+      "operation": "ENUM",
+      "input": {
+        "domain": "RequirementLifecycle",
+        "value": "RETIRED"
+      },
+      "expected": "VALID"
+    },
+    {
+      "test_id": "R5-T-119",
+      "category": "ENUM_UNKNOWN",
+      "operation": "ENUM",
+      "input": {
+        "domain": "RequirementLifecycle",
+        "value": "__UNKNOWN_VALUE__"
+      },
+      "expected": "INVALID:UNKNOWN_ENUM_VALUE"
+    },
+    {
+      "test_id": "R5-T-120",
+      "category": "ENUM_WRONG_DOMAIN",
+      "operation": "ENUM",
+      "input": {
+        "domain": "RequirementLifecycle",
+        "value": "AUTHORIZED"
+      },
+      "expected": "INVALID:WRONG_ENUM_DOMAIN"
+    },
+    {
+      "test_id": "R5-T-121",
+      "category": "ENUM_LEGAL",
+      "operation": "ENUM",
+      "input": {
+        "domain": "FindingLifecycle",
+        "value": "OPEN"
+      },
+      "expected": "VALID"
+    },
+    {
+      "test_id": "R5-T-122",
+      "category": "ENUM_LEGAL",
+      "operation": "ENUM",
+      "input": {
+        "domain": "FindingLifecycle",
+        "value": "TRIAGED"
+      },
+      "expected": "VALID"
+    },
+    {
+      "test_id": "R5-T-123",
+      "category": "ENUM_LEGAL",
+      "operation": "ENUM",
+      "input": {
+        "domain": "FindingLifecycle",
+        "value": "ROOT_CAUSE_IDENTIFIED"
+      },
+      "expected": "VALID"
+    },
+    {
+      "test_id": "R5-T-124",
+      "category": "ENUM_LEGAL",
+      "operation": "ENUM",
+      "input": {
+        "domain": "FindingLifecycle",
+        "value": "REMEDIATION_PLANNED"
+      },
+      "expected": "VALID"
+    },
+    {
+      "test_id": "R5-T-125",
+      "category": "ENUM_LEGAL",
+      "operation": "ENUM",
+      "input": {
+        "domain": "FindingLifecycle",
+        "value": "REMEDIATION_IN_PROGRESS"
+      },
+      "expected": "VALID"
+    },
+    {
+      "test_id": "R5-T-126",
+      "category": "ENUM_LEGAL",
+      "operation": "ENUM",
+      "input": {
+        "domain": "FindingLifecycle",
+        "value": "READY_FOR_REVERIFICATION"
+      },
+      "expected": "VALID"
+    },
+    {
+      "test_id": "R5-T-127",
+      "category": "ENUM_LEGAL",
+      "operation": "ENUM",
+      "input": {
+        "domain": "FindingLifecycle",
+        "value": "REVERIFICATION_IN_PROGRESS"
+      },
+      "expected": "VALID"
+    },
+    {
+      "test_id": "R5-T-128",
+      "category": "ENUM_LEGAL",
+      "operation": "ENUM",
+      "input": {
+        "domain": "FindingLifecycle",
+        "value": "RESOLVED"
+      },
+      "expected": "VALID"
+    },
+    {
+      "test_id": "R5-T-129",
+      "category": "ENUM_LEGAL",
+      "operation": "ENUM",
+      "input": {
+        "domain": "FindingLifecycle",
+        "value": "WAIVED"
+      },
+      "expected": "VALID"
+    },
+    {
+      "test_id": "R5-T-130",
+      "category": "ENUM_LEGAL",
+      "operation": "ENUM",
+      "input": {
+        "domain": "FindingLifecycle",
+        "value": "REJECTED"
+      },
+      "expected": "VALID"
+    },
+    {
+      "test_id": "R5-T-131",
+      "category": "ENUM_LEGAL",
+      "operation": "ENUM",
+      "input": {
+        "domain": "FindingLifecycle",
+        "value": "CLOSED"
+      },
+      "expected": "VALID"
+    },
+    {
+      "test_id": "R5-T-132",
+      "category": "ENUM_UNKNOWN",
+      "operation": "ENUM",
+      "input": {
+        "domain": "FindingLifecycle",
+        "value": "__UNKNOWN_VALUE__"
+      },
+      "expected": "INVALID:UNKNOWN_ENUM_VALUE"
+    },
+    {
+      "test_id": "R5-T-133",
+      "category": "ENUM_WRONG_DOMAIN",
+      "operation": "ENUM",
+      "input": {
+        "domain": "FindingLifecycle",
+        "value": "AUTHORIZED"
+      },
+      "expected": "INVALID:WRONG_ENUM_DOMAIN"
+    },
+    {
+      "test_id": "R5-T-134",
+      "category": "ENUM_LEGAL",
+      "operation": "ENUM",
+      "input": {
+        "domain": "Remediation",
+        "value": "PLANNED"
+      },
+      "expected": "VALID"
+    },
+    {
+      "test_id": "R5-T-135",
+      "category": "ENUM_LEGAL",
+      "operation": "ENUM",
+      "input": {
+        "domain": "Remediation",
+        "value": "APPROVED"
+      },
+      "expected": "VALID"
+    },
+    {
+      "test_id": "R5-T-136",
+      "category": "ENUM_LEGAL",
+      "operation": "ENUM",
+      "input": {
+        "domain": "Remediation",
+        "value": "IN_PROGRESS"
+      },
+      "expected": "VALID"
+    },
+    {
+      "test_id": "R5-T-137",
+      "category": "ENUM_LEGAL",
+      "operation": "ENUM",
+      "input": {
+        "domain": "Remediation",
+        "value": "BLOCKED"
+      },
+      "expected": "VALID"
+    },
+    {
+      "test_id": "R5-T-138",
+      "category": "ENUM_LEGAL",
+      "operation": "ENUM",
+      "input": {
+        "domain": "Remediation",
+        "value": "READY_FOR_VERIFICATION"
+      },
+      "expected": "VALID"
+    },
+    {
+      "test_id": "R5-T-139",
+      "category": "ENUM_LEGAL",
+      "operation": "ENUM",
+      "input": {
+        "domain": "Remediation",
+        "value": "VERIFIED"
+      },
+      "expected": "VALID"
+    },
+    {
+      "test_id": "R5-T-140",
+      "category": "ENUM_LEGAL",
+      "operation": "ENUM",
+      "input": {
+        "domain": "Remediation",
+        "value": "FAILED"
+      },
+      "expected": "VALID"
+    },
+    {
+      "test_id": "R5-T-141",
+      "category": "ENUM_LEGAL",
+      "operation": "ENUM",
+      "input": {
+        "domain": "Remediation",
+        "value": "CANCELLED"
+      },
+      "expected": "VALID"
+    },
+    {
+      "test_id": "R5-T-142",
+      "category": "ENUM_LEGAL",
+      "operation": "ENUM",
+      "input": {
+        "domain": "Remediation",
+        "value": "SUPERSEDED"
+      },
+      "expected": "VALID"
+    },
+    {
+      "test_id": "R5-T-143",
+      "category": "ENUM_UNKNOWN",
+      "operation": "ENUM",
+      "input": {
+        "domain": "Remediation",
+        "value": "__UNKNOWN_VALUE__"
+      },
+      "expected": "INVALID:UNKNOWN_ENUM_VALUE"
+    },
+    {
+      "test_id": "R5-T-144",
+      "category": "ENUM_WRONG_DOMAIN",
+      "operation": "ENUM",
+      "input": {
+        "domain": "Remediation",
+        "value": "AUTHORIZED"
+      },
+      "expected": "INVALID:WRONG_ENUM_DOMAIN"
+    },
+    {
+      "test_id": "R5-T-145",
+      "category": "ENUM_LEGAL",
+      "operation": "ENUM",
+      "input": {
+        "domain": "NormativeStrength",
+        "value": "MUST"
+      },
+      "expected": "VALID"
+    },
+    {
+      "test_id": "R5-T-146",
+      "category": "ENUM_LEGAL",
+      "operation": "ENUM",
+      "input": {
+        "domain": "NormativeStrength",
+        "value": "MUST_NOT"
+      },
+      "expected": "VALID"
+    },
+    {
+      "test_id": "R5-T-147",
+      "category": "ENUM_LEGAL",
+      "operation": "ENUM",
+      "input": {
+        "domain": "NormativeStrength",
+        "value": "SHOULD"
+      },
+      "expected": "VALID"
+    },
+    {
+      "test_id": "R5-T-148",
+      "category": "ENUM_LEGAL",
+      "operation": "ENUM",
+      "input": {
+        "domain": "NormativeStrength",
+        "value": "SHOULD_NOT"
+      },
+      "expected": "VALID"
+    },
+    {
+      "test_id": "R5-T-149",
+      "category": "ENUM_LEGAL",
+      "operation": "ENUM",
+      "input": {
+        "domain": "NormativeStrength",
+        "value": "MAY"
+      },
+      "expected": "VALID"
+    },
+    {
+      "test_id": "R5-T-150",
+      "category": "ENUM_UNKNOWN",
+      "operation": "ENUM",
+      "input": {
+        "domain": "NormativeStrength",
+        "value": "__UNKNOWN_VALUE__"
+      },
+      "expected": "INVALID:UNKNOWN_ENUM_VALUE"
+    },
+    {
+      "test_id": "R5-T-151",
+      "category": "ENUM_WRONG_DOMAIN",
+      "operation": "ENUM",
+      "input": {
+        "domain": "NormativeStrength",
+        "value": "AUTHORIZED"
+      },
+      "expected": "INVALID:WRONG_ENUM_DOMAIN"
+    },
+    {
+      "test_id": "R5-T-152",
+      "category": "BOUNDARY",
+      "operation": "BOUNDARY",
+      "input": {
+        "forbidden": true,
+        "claim": "IMPLEMENTATION_INSTRUCTION_TO_NORMATIVE_REQUIREMENT"
+      },
+      "expected": "REJECTED"
+    },
+    {
+      "test_id": "R5-T-153",
+      "category": "BOUNDARY",
+      "operation": "BOUNDARY",
+      "input": {
+        "forbidden": true,
+        "claim": "IMPLEMENTATION_METADATA_WEAKENS_REQUIREMENT"
+      },
+      "expected": "REJECTED"
+    },
+    {
+      "test_id": "R5-T-154",
+      "category": "BOUNDARY",
+      "operation": "BOUNDARY",
+      "input": {
+        "forbidden": true,
+        "claim": "PROFILE_ALTERS_NORMATIVE_MEANING"
+      },
+      "expected": "REJECTED"
+    },
+    {
+      "test_id": "R5-T-155",
+      "category": "EVALUATOR_ERROR_DEFAULT",
+      "operation": "EVALUATOR_ERROR",
+      "input": {
+        "error": "INVALID_PREDICATE"
+      },
+      "expected": "EVALUATION_FAILURE"
+    },
+    {
+      "test_id": "R5-T-156",
+      "category": "EVALUATOR_ERROR_DEFAULT",
+      "operation": "EVALUATOR_ERROR",
+      "input": {
+        "error": "INVALID_SUBJECT"
+      },
+      "expected": "EVALUATION_FAILURE"
+    },
+    {
+      "test_id": "R5-T-157",
+      "category": "EVALUATOR_ERROR_DEFAULT",
+      "operation": "EVALUATOR_ERROR",
+      "input": {
+        "error": "INVALID_CONTEXT"
+      },
+      "expected": "EVALUATION_FAILURE"
+    },
+    {
+      "test_id": "R5-T-158",
+      "category": "EVALUATOR_ERROR_DEFAULT",
+      "operation": "EVALUATOR_ERROR",
+      "input": {
+        "error": "VALIDATION_REQUIRED"
+      },
+      "expected": "EVALUATION_FAILURE"
+    },
+    {
+      "test_id": "R5-T-159",
+      "category": "EVALUATOR_ERROR_DEFAULT",
+      "operation": "EVALUATOR_ERROR",
+      "input": {
+        "error": "VALIDATION_FAILED"
+      },
+      "expected": "EVALUATION_FAILURE"
+    },
+    {
+      "test_id": "R5-T-160",
+      "category": "EVALUATOR_ERROR_DEFAULT",
+      "operation": "EVALUATOR_ERROR",
+      "input": {
+        "error": "UNSUPPORTED_PREDICATE"
+      },
+      "expected": "EVALUATION_FAILURE"
+    },
+    {
+      "test_id": "R5-T-161",
+      "category": "EVALUATOR_ERROR_DEFAULT",
+      "operation": "EVALUATOR_ERROR",
+      "input": {
+        "error": "EVALUATOR_FAILURE"
+      },
+      "expected": "EVALUATION_FAILURE"
+    },
+    {
+      "test_id": "R5-T-162",
+      "category": "EVALUATOR_ERROR_DEFAULT",
+      "operation": "EVALUATOR_ERROR",
+      "input": {
+        "error": "EVALUATOR_TIMEOUT"
+      },
+      "expected": "EVALUATION_FAILURE"
+    },
+    {
+      "test_id": "R5-T-163",
+      "category": "EVALUATOR_ERROR_DEFAULT",
+      "operation": "EVALUATOR_ERROR",
+      "input": {
+        "error": "EVALUATOR_RESOURCE_FAILURE"
+      },
+      "expected": "EVALUATION_FAILURE"
+    },
+    {
+      "test_id": "R5-T-164",
+      "category": "EVALUATOR_ERROR_DEFAULT",
+      "operation": "EVALUATOR_ERROR",
+      "input": {
+        "error": "EVALUATOR_INTERNAL_FAILURE"
+      },
+      "expected": "EVALUATION_FAILURE"
+    },
+    {
+      "test_id": "R5-T-165",
+      "category": "EVALUATOR_ERROR_DEFAULT",
+      "operation": "EVALUATOR_ERROR",
+      "input": {
+        "error": "OUTPUT_INVALID"
+      },
+      "expected": "EVALUATION_FAILURE"
+    },
+    {
+      "test_id": "R5-T-166",
+      "category": "EVALUATOR_ERROR_DEFAULT",
+      "operation": "EVALUATOR_ERROR",
+      "input": {
+        "error": "EVALUATOR_DEPENDENCY_UNAVAILABLE"
+      },
+      "expected": "EVALUATION_FAILURE"
+    },
+    {
+      "test_id": "R5-T-167",
+      "category": "EVALUATOR_ERROR_FORBIDDEN",
+      "operation": "EVALUATOR_ERROR",
+      "input": {
+        "error": "INVALID_PREDICATE",
+        "policy": {
+          "profile_policy_ref": "policy:r5",
+          "deterministic": true,
+          "mappings": {
+            "INVALID_PREDICATE": "UNKNOWN"
+          }
+        }
+      },
+      "expected": "EVALUATION_FAILURE"
+    },
+    {
+      "test_id": "R5-T-168",
+      "category": "EVALUATOR_ERROR_FORBIDDEN",
+      "operation": "EVALUATOR_ERROR",
+      "input": {
+        "error": "INVALID_PREDICATE",
+        "policy": {
+          "profile_policy_ref": "policy:r5",
+          "deterministic": true,
+          "mappings": {
+            "INVALID_PREDICATE": "BLOCKED"
+          }
+        }
+      },
+      "expected": "EVALUATION_FAILURE"
+    },
+    {
+      "test_id": "R5-T-169",
+      "category": "EVALUATOR_ERROR_EXPLICIT",
+      "operation": "EVALUATOR_ERROR",
+      "input": {
+        "error": "INVALID_PREDICATE",
+        "policy": {
+          "profile_policy_ref": "policy:r5",
+          "deterministic": true,
+          "mappings": {
+            "INVALID_PREDICATE": "INVALID"
+          }
+        }
+      },
+      "expected": "INVALID"
+    },
+    {
+      "test_id": "R5-T-170",
+      "category": "EVALUATOR_ERROR_FORBIDDEN",
+      "operation": "EVALUATOR_ERROR",
+      "input": {
+        "error": "INVALID_PREDICATE",
+        "policy": {
+          "profile_policy_ref": "policy:r5",
+          "deterministic": true,
+          "mappings": {
+            "INVALID_PREDICATE": "FALSE"
+          }
+        }
+      },
+      "expected": "EVALUATION_FAILURE"
+    },
+    {
+      "test_id": "R5-T-171",
+      "category": "EVALUATOR_ERROR_FORBIDDEN",
+      "operation": "EVALUATOR_ERROR",
+      "input": {
+        "error": "INVALID_SUBJECT",
+        "policy": {
+          "profile_policy_ref": "policy:r5",
+          "deterministic": true,
+          "mappings": {
+            "INVALID_SUBJECT": "UNKNOWN"
+          }
+        }
+      },
+      "expected": "EVALUATION_FAILURE"
+    },
+    {
+      "test_id": "R5-T-172",
+      "category": "EVALUATOR_ERROR_FORBIDDEN",
+      "operation": "EVALUATOR_ERROR",
+      "input": {
+        "error": "INVALID_SUBJECT",
+        "policy": {
+          "profile_policy_ref": "policy:r5",
+          "deterministic": true,
+          "mappings": {
+            "INVALID_SUBJECT": "BLOCKED"
+          }
+        }
+      },
+      "expected": "EVALUATION_FAILURE"
+    },
+    {
+      "test_id": "R5-T-173",
+      "category": "EVALUATOR_ERROR_EXPLICIT",
+      "operation": "EVALUATOR_ERROR",
+      "input": {
+        "error": "INVALID_SUBJECT",
+        "policy": {
+          "profile_policy_ref": "policy:r5",
+          "deterministic": true,
+          "mappings": {
+            "INVALID_SUBJECT": "INVALID"
+          }
+        }
+      },
+      "expected": "INVALID"
+    },
+    {
+      "test_id": "R5-T-174",
+      "category": "EVALUATOR_ERROR_FORBIDDEN",
+      "operation": "EVALUATOR_ERROR",
+      "input": {
+        "error": "INVALID_SUBJECT",
+        "policy": {
+          "profile_policy_ref": "policy:r5",
+          "deterministic": true,
+          "mappings": {
+            "INVALID_SUBJECT": "FALSE"
+          }
+        }
+      },
+      "expected": "EVALUATION_FAILURE"
+    },
+    {
+      "test_id": "R5-T-175",
+      "category": "EVALUATOR_ERROR_FORBIDDEN",
+      "operation": "EVALUATOR_ERROR",
+      "input": {
+        "error": "INVALID_CONTEXT",
+        "policy": {
+          "profile_policy_ref": "policy:r5",
+          "deterministic": true,
+          "mappings": {
+            "INVALID_CONTEXT": "UNKNOWN"
+          }
+        }
+      },
+      "expected": "EVALUATION_FAILURE"
+    },
+    {
+      "test_id": "R5-T-176",
+      "category": "EVALUATOR_ERROR_FORBIDDEN",
+      "operation": "EVALUATOR_ERROR",
+      "input": {
+        "error": "INVALID_CONTEXT",
+        "policy": {
+          "profile_policy_ref": "policy:r5",
+          "deterministic": true,
+          "mappings": {
+            "INVALID_CONTEXT": "BLOCKED"
+          }
+        }
+      },
+      "expected": "EVALUATION_FAILURE"
+    },
+    {
+      "test_id": "R5-T-177",
+      "category": "EVALUATOR_ERROR_EXPLICIT",
+      "operation": "EVALUATOR_ERROR",
+      "input": {
+        "error": "INVALID_CONTEXT",
+        "policy": {
+          "profile_policy_ref": "policy:r5",
+          "deterministic": true,
+          "mappings": {
+            "INVALID_CONTEXT": "INVALID"
+          }
+        }
+      },
+      "expected": "INVALID"
+    },
+    {
+      "test_id": "R5-T-178",
+      "category": "EVALUATOR_ERROR_FORBIDDEN",
+      "operation": "EVALUATOR_ERROR",
+      "input": {
+        "error": "INVALID_CONTEXT",
+        "policy": {
+          "profile_policy_ref": "policy:r5",
+          "deterministic": true,
+          "mappings": {
+            "INVALID_CONTEXT": "FALSE"
+          }
+        }
+      },
+      "expected": "EVALUATION_FAILURE"
+    },
+    {
+      "test_id": "R5-T-179",
+      "category": "EVALUATOR_ERROR_FORBIDDEN",
+      "operation": "EVALUATOR_ERROR",
+      "input": {
+        "error": "VALIDATION_REQUIRED",
+        "policy": {
+          "profile_policy_ref": "policy:r5",
+          "deterministic": true,
+          "mappings": {
+            "VALIDATION_REQUIRED": "UNKNOWN"
+          }
+        }
+      },
+      "expected": "EVALUATION_FAILURE"
+    },
+    {
+      "test_id": "R5-T-180",
+      "category": "EVALUATOR_ERROR_FORBIDDEN",
+      "operation": "EVALUATOR_ERROR",
+      "input": {
+        "error": "VALIDATION_REQUIRED",
+        "policy": {
+          "profile_policy_ref": "policy:r5",
+          "deterministic": true,
+          "mappings": {
+            "VALIDATION_REQUIRED": "BLOCKED"
+          }
+        }
+      },
+      "expected": "EVALUATION_FAILURE"
+    },
+    {
+      "test_id": "R5-T-181",
+      "category": "EVALUATOR_ERROR_EXPLICIT",
+      "operation": "EVALUATOR_ERROR",
+      "input": {
+        "error": "VALIDATION_REQUIRED",
+        "policy": {
+          "profile_policy_ref": "policy:r5",
+          "deterministic": true,
+          "mappings": {
+            "VALIDATION_REQUIRED": "INVALID"
+          }
+        }
+      },
+      "expected": "INVALID"
+    },
+    {
+      "test_id": "R5-T-182",
+      "category": "EVALUATOR_ERROR_FORBIDDEN",
+      "operation": "EVALUATOR_ERROR",
+      "input": {
+        "error": "VALIDATION_REQUIRED",
+        "policy": {
+          "profile_policy_ref": "policy:r5",
+          "deterministic": true,
+          "mappings": {
+            "VALIDATION_REQUIRED": "FALSE"
+          }
+        }
+      },
+      "expected": "EVALUATION_FAILURE"
+    },
+    {
+      "test_id": "R5-T-183",
+      "category": "EVALUATOR_ERROR_FORBIDDEN",
+      "operation": "EVALUATOR_ERROR",
+      "input": {
+        "error": "VALIDATION_FAILED",
+        "policy": {
+          "profile_policy_ref": "policy:r5",
+          "deterministic": true,
+          "mappings": {
+            "VALIDATION_FAILED": "UNKNOWN"
+          }
+        }
+      },
+      "expected": "EVALUATION_FAILURE"
+    },
+    {
+      "test_id": "R5-T-184",
+      "category": "EVALUATOR_ERROR_FORBIDDEN",
+      "operation": "EVALUATOR_ERROR",
+      "input": {
+        "error": "VALIDATION_FAILED",
+        "policy": {
+          "profile_policy_ref": "policy:r5",
+          "deterministic": true,
+          "mappings": {
+            "VALIDATION_FAILED": "BLOCKED"
+          }
+        }
+      },
+      "expected": "EVALUATION_FAILURE"
+    },
+    {
+      "test_id": "R5-T-185",
+      "category": "EVALUATOR_ERROR_EXPLICIT",
+      "operation": "EVALUATOR_ERROR",
+      "input": {
+        "error": "VALIDATION_FAILED",
+        "policy": {
+          "profile_policy_ref": "policy:r5",
+          "deterministic": true,
+          "mappings": {
+            "VALIDATION_FAILED": "INVALID"
+          }
+        }
+      },
+      "expected": "INVALID"
+    },
+    {
+      "test_id": "R5-T-186",
+      "category": "EVALUATOR_ERROR_FORBIDDEN",
+      "operation": "EVALUATOR_ERROR",
+      "input": {
+        "error": "VALIDATION_FAILED",
+        "policy": {
+          "profile_policy_ref": "policy:r5",
+          "deterministic": true,
+          "mappings": {
+            "VALIDATION_FAILED": "FALSE"
+          }
+        }
+      },
+      "expected": "EVALUATION_FAILURE"
+    },
+    {
+      "test_id": "R5-T-187",
+      "category": "EVALUATOR_ERROR_FORBIDDEN",
+      "operation": "EVALUATOR_ERROR",
+      "input": {
+        "error": "UNSUPPORTED_PREDICATE",
+        "policy": {
+          "profile_policy_ref": "policy:r5",
+          "deterministic": true,
+          "mappings": {
+            "UNSUPPORTED_PREDICATE": "UNKNOWN"
+          }
+        }
+      },
+      "expected": "EVALUATION_FAILURE"
+    },
+    {
+      "test_id": "R5-T-188",
+      "category": "EVALUATOR_ERROR_EXPLICIT",
+      "operation": "EVALUATOR_ERROR",
+      "input": {
+        "error": "UNSUPPORTED_PREDICATE",
+        "policy": {
+          "profile_policy_ref": "policy:r5",
+          "deterministic": true,
+          "mappings": {
+            "UNSUPPORTED_PREDICATE": "BLOCKED"
+          }
+        }
+      },
+      "expected": "BLOCKED"
+    },
+    {
+      "test_id": "R5-T-189",
+      "category": "EVALUATOR_ERROR_FORBIDDEN",
+      "operation": "EVALUATOR_ERROR",
+      "input": {
+        "error": "UNSUPPORTED_PREDICATE",
+        "policy": {
+          "profile_policy_ref": "policy:r5",
+          "deterministic": true,
+          "mappings": {
+            "UNSUPPORTED_PREDICATE": "INVALID"
+          }
+        }
+      },
+      "expected": "EVALUATION_FAILURE"
+    },
+    {
+      "test_id": "R5-T-190",
+      "category": "EVALUATOR_ERROR_FORBIDDEN",
+      "operation": "EVALUATOR_ERROR",
+      "input": {
+        "error": "UNSUPPORTED_PREDICATE",
+        "policy": {
+          "profile_policy_ref": "policy:r5",
+          "deterministic": true,
+          "mappings": {
+            "UNSUPPORTED_PREDICATE": "FALSE"
+          }
+        }
+      },
+      "expected": "EVALUATION_FAILURE"
+    },
+    {
+      "test_id": "R5-T-191",
+      "category": "EVALUATOR_ERROR_FORBIDDEN",
+      "operation": "EVALUATOR_ERROR",
+      "input": {
+        "error": "EVALUATOR_FAILURE",
+        "policy": {
+          "profile_policy_ref": "policy:r5",
+          "deterministic": true,
+          "mappings": {
+            "EVALUATOR_FAILURE": "UNKNOWN"
+          }
+        }
+      },
+      "expected": "EVALUATION_FAILURE"
+    },
+    {
+      "test_id": "R5-T-192",
+      "category": "EVALUATOR_ERROR_FORBIDDEN",
+      "operation": "EVALUATOR_ERROR",
+      "input": {
+        "error": "EVALUATOR_FAILURE",
+        "policy": {
+          "profile_policy_ref": "policy:r5",
+          "deterministic": true,
+          "mappings": {
+            "EVALUATOR_FAILURE": "BLOCKED"
+          }
+        }
+      },
+      "expected": "EVALUATION_FAILURE"
+    },
+    {
+      "test_id": "R5-T-193",
+      "category": "EVALUATOR_ERROR_FORBIDDEN",
+      "operation": "EVALUATOR_ERROR",
+      "input": {
+        "error": "EVALUATOR_FAILURE",
+        "policy": {
+          "profile_policy_ref": "policy:r5",
+          "deterministic": true,
+          "mappings": {
+            "EVALUATOR_FAILURE": "INVALID"
+          }
+        }
+      },
+      "expected": "EVALUATION_FAILURE"
+    },
+    {
+      "test_id": "R5-T-194",
+      "category": "EVALUATOR_ERROR_FORBIDDEN",
+      "operation": "EVALUATOR_ERROR",
+      "input": {
+        "error": "EVALUATOR_FAILURE",
+        "policy": {
+          "profile_policy_ref": "policy:r5",
+          "deterministic": true,
+          "mappings": {
+            "EVALUATOR_FAILURE": "FALSE"
+          }
+        }
+      },
+      "expected": "EVALUATION_FAILURE"
+    },
+    {
+      "test_id": "R5-T-195",
+      "category": "EVALUATOR_ERROR_EXPLICIT",
+      "operation": "EVALUATOR_ERROR",
+      "input": {
+        "error": "EVALUATOR_TIMEOUT",
+        "policy": {
+          "profile_policy_ref": "policy:r5",
+          "deterministic": true,
+          "mappings": {
+            "EVALUATOR_TIMEOUT": "UNKNOWN"
+          }
+        }
+      },
+      "expected": "UNKNOWN"
+    },
+    {
+      "test_id": "R5-T-196",
+      "category": "EVALUATOR_ERROR_EXPLICIT",
+      "operation": "EVALUATOR_ERROR",
+      "input": {
+        "error": "EVALUATOR_TIMEOUT",
+        "policy": {
+          "profile_policy_ref": "policy:r5",
+          "deterministic": true,
+          "mappings": {
+            "EVALUATOR_TIMEOUT": "BLOCKED"
+          }
+        }
+      },
+      "expected": "BLOCKED"
+    },
+    {
+      "test_id": "R5-T-197",
+      "category": "EVALUATOR_ERROR_FORBIDDEN",
+      "operation": "EVALUATOR_ERROR",
+      "input": {
+        "error": "EVALUATOR_TIMEOUT",
+        "policy": {
+          "profile_policy_ref": "policy:r5",
+          "deterministic": true,
+          "mappings": {
+            "EVALUATOR_TIMEOUT": "INVALID"
+          }
+        }
+      },
+      "expected": "EVALUATION_FAILURE"
+    },
+    {
+      "test_id": "R5-T-198",
+      "category": "EVALUATOR_ERROR_FORBIDDEN",
+      "operation": "EVALUATOR_ERROR",
+      "input": {
+        "error": "EVALUATOR_TIMEOUT",
+        "policy": {
+          "profile_policy_ref": "policy:r5",
+          "deterministic": true,
+          "mappings": {
+            "EVALUATOR_TIMEOUT": "FALSE"
+          }
+        }
+      },
+      "expected": "EVALUATION_FAILURE"
+    },
+    {
+      "test_id": "R5-T-199",
+      "category": "EVALUATOR_ERROR_FORBIDDEN",
+      "operation": "EVALUATOR_ERROR",
+      "input": {
+        "error": "EVALUATOR_RESOURCE_FAILURE",
+        "policy": {
+          "profile_policy_ref": "policy:r5",
+          "deterministic": true,
+          "mappings": {
+            "EVALUATOR_RESOURCE_FAILURE": "UNKNOWN"
+          }
+        }
+      },
+      "expected": "EVALUATION_FAILURE"
+    },
+    {
+      "test_id": "R5-T-200",
+      "category": "EVALUATOR_ERROR_EXPLICIT",
+      "operation": "EVALUATOR_ERROR",
+      "input": {
+        "error": "EVALUATOR_RESOURCE_FAILURE",
+        "policy": {
+          "profile_policy_ref": "policy:r5",
+          "deterministic": true,
+          "mappings": {
+            "EVALUATOR_RESOURCE_FAILURE": "BLOCKED"
+          }
+        }
+      },
+      "expected": "BLOCKED"
+    },
+    {
+      "test_id": "R5-T-201",
+      "category": "EVALUATOR_ERROR_FORBIDDEN",
+      "operation": "EVALUATOR_ERROR",
+      "input": {
+        "error": "EVALUATOR_RESOURCE_FAILURE",
+        "policy": {
+          "profile_policy_ref": "policy:r5",
+          "deterministic": true,
+          "mappings": {
+            "EVALUATOR_RESOURCE_FAILURE": "INVALID"
+          }
+        }
+      },
+      "expected": "EVALUATION_FAILURE"
+    },
+    {
+      "test_id": "R5-T-202",
+      "category": "EVALUATOR_ERROR_FORBIDDEN",
+      "operation": "EVALUATOR_ERROR",
+      "input": {
+        "error": "EVALUATOR_RESOURCE_FAILURE",
+        "policy": {
+          "profile_policy_ref": "policy:r5",
+          "deterministic": true,
+          "mappings": {
+            "EVALUATOR_RESOURCE_FAILURE": "FALSE"
+          }
+        }
+      },
+      "expected": "EVALUATION_FAILURE"
+    },
+    {
+      "test_id": "R5-T-203",
+      "category": "EVALUATOR_ERROR_FORBIDDEN",
+      "operation": "EVALUATOR_ERROR",
+      "input": {
+        "error": "EVALUATOR_INTERNAL_FAILURE",
+        "policy": {
+          "profile_policy_ref": "policy:r5",
+          "deterministic": true,
+          "mappings": {
+            "EVALUATOR_INTERNAL_FAILURE": "UNKNOWN"
+          }
+        }
+      },
+      "expected": "EVALUATION_FAILURE"
+    },
+    {
+      "test_id": "R5-T-204",
+      "category": "EVALUATOR_ERROR_FORBIDDEN",
+      "operation": "EVALUATOR_ERROR",
+      "input": {
+        "error": "EVALUATOR_INTERNAL_FAILURE",
+        "policy": {
+          "profile_policy_ref": "policy:r5",
+          "deterministic": true,
+          "mappings": {
+            "EVALUATOR_INTERNAL_FAILURE": "BLOCKED"
+          }
+        }
+      },
+      "expected": "EVALUATION_FAILURE"
+    },
+    {
+      "test_id": "R5-T-205",
+      "category": "EVALUATOR_ERROR_FORBIDDEN",
+      "operation": "EVALUATOR_ERROR",
+      "input": {
+        "error": "EVALUATOR_INTERNAL_FAILURE",
+        "policy": {
+          "profile_policy_ref": "policy:r5",
+          "deterministic": true,
+          "mappings": {
+            "EVALUATOR_INTERNAL_FAILURE": "INVALID"
+          }
+        }
+      },
+      "expected": "EVALUATION_FAILURE"
+    },
+    {
+      "test_id": "R5-T-206",
+      "category": "EVALUATOR_ERROR_FORBIDDEN",
+      "operation": "EVALUATOR_ERROR",
+      "input": {
+        "error": "EVALUATOR_INTERNAL_FAILURE",
+        "policy": {
+          "profile_policy_ref": "policy:r5",
+          "deterministic": true,
+          "mappings": {
+            "EVALUATOR_INTERNAL_FAILURE": "FALSE"
+          }
+        }
+      },
+      "expected": "EVALUATION_FAILURE"
+    },
+    {
+      "test_id": "R5-T-207",
+      "category": "EVALUATOR_ERROR_FORBIDDEN",
+      "operation": "EVALUATOR_ERROR",
+      "input": {
+        "error": "OUTPUT_INVALID",
+        "policy": {
+          "profile_policy_ref": "policy:r5",
+          "deterministic": true,
+          "mappings": {
+            "OUTPUT_INVALID": "UNKNOWN"
+          }
+        }
+      },
+      "expected": "EVALUATION_FAILURE"
+    },
+    {
+      "test_id": "R5-T-208",
+      "category": "EVALUATOR_ERROR_FORBIDDEN",
+      "operation": "EVALUATOR_ERROR",
+      "input": {
+        "error": "OUTPUT_INVALID",
+        "policy": {
+          "profile_policy_ref": "policy:r5",
+          "deterministic": true,
+          "mappings": {
+            "OUTPUT_INVALID": "BLOCKED"
+          }
+        }
+      },
+      "expected": "EVALUATION_FAILURE"
+    },
+    {
+      "test_id": "R5-T-209",
+      "category": "EVALUATOR_ERROR_EXPLICIT",
+      "operation": "EVALUATOR_ERROR",
+      "input": {
+        "error": "OUTPUT_INVALID",
+        "policy": {
+          "profile_policy_ref": "policy:r5",
+          "deterministic": true,
+          "mappings": {
+            "OUTPUT_INVALID": "INVALID"
+          }
+        }
+      },
+      "expected": "INVALID"
+    },
+    {
+      "test_id": "R5-T-210",
+      "category": "EVALUATOR_ERROR_FORBIDDEN",
+      "operation": "EVALUATOR_ERROR",
+      "input": {
+        "error": "OUTPUT_INVALID",
+        "policy": {
+          "profile_policy_ref": "policy:r5",
+          "deterministic": true,
+          "mappings": {
+            "OUTPUT_INVALID": "FALSE"
+          }
+        }
+      },
+      "expected": "EVALUATION_FAILURE"
+    },
+    {
+      "test_id": "R5-T-211",
+      "category": "EVALUATOR_ERROR_EXPLICIT",
+      "operation": "EVALUATOR_ERROR",
+      "input": {
+        "error": "EVALUATOR_DEPENDENCY_UNAVAILABLE",
+        "policy": {
+          "profile_policy_ref": "policy:r5",
+          "deterministic": true,
+          "mappings": {
+            "EVALUATOR_DEPENDENCY_UNAVAILABLE": "UNKNOWN"
+          }
+        }
+      },
+      "expected": "UNKNOWN"
+    },
+    {
+      "test_id": "R5-T-212",
+      "category": "EVALUATOR_ERROR_EXPLICIT",
+      "operation": "EVALUATOR_ERROR",
+      "input": {
+        "error": "EVALUATOR_DEPENDENCY_UNAVAILABLE",
+        "policy": {
+          "profile_policy_ref": "policy:r5",
+          "deterministic": true,
+          "mappings": {
+            "EVALUATOR_DEPENDENCY_UNAVAILABLE": "BLOCKED"
+          }
+        }
+      },
+      "expected": "BLOCKED"
+    },
+    {
+      "test_id": "R5-T-213",
+      "category": "EVALUATOR_ERROR_FORBIDDEN",
+      "operation": "EVALUATOR_ERROR",
+      "input": {
+        "error": "EVALUATOR_DEPENDENCY_UNAVAILABLE",
+        "policy": {
+          "profile_policy_ref": "policy:r5",
+          "deterministic": true,
+          "mappings": {
+            "EVALUATOR_DEPENDENCY_UNAVAILABLE": "INVALID"
+          }
+        }
+      },
+      "expected": "EVALUATION_FAILURE"
+    },
+    {
+      "test_id": "R5-T-214",
+      "category": "EVALUATOR_ERROR_FORBIDDEN",
+      "operation": "EVALUATOR_ERROR",
+      "input": {
+        "error": "EVALUATOR_DEPENDENCY_UNAVAILABLE",
+        "policy": {
+          "profile_policy_ref": "policy:r5",
+          "deterministic": true,
+          "mappings": {
+            "EVALUATOR_DEPENDENCY_UNAVAILABLE": "FALSE"
+          }
+        }
+      },
+      "expected": "EVALUATION_FAILURE"
+    },
+    {
+      "test_id": "R5-T-215",
+      "category": "EVALUATOR_ERROR_POLICY",
+      "operation": "EVALUATOR_ERROR",
+      "input": {
+        "error": "EVALUATOR_TIMEOUT",
+        "policy": {
+          "deterministic": true,
+          "mappings": {
+            "EVALUATOR_TIMEOUT": "UNKNOWN"
+          }
+        }
+      },
+      "expected": "EVALUATION_FAILURE"
+    },
+    {
+      "test_id": "R5-T-216",
+      "category": "EVALUATOR_ERROR_POLICY",
+      "operation": "EVALUATOR_ERROR",
+      "input": {
+        "error": "EVALUATOR_TIMEOUT",
+        "policy": {
+          "profile_policy_ref": "policy:r5",
+          "deterministic": false,
+          "mappings": {
+            "EVALUATOR_TIMEOUT": "UNKNOWN"
+          }
+        }
+      },
+      "expected": "EVALUATION_FAILURE"
+    },
+    {
+      "test_id": "R5-T-217",
+      "category": "EVALUATOR_ERROR_POLICY",
+      "operation": "EVALUATOR_ERROR",
+      "input": {
+        "error": "UNREGISTERED_ERROR"
+      },
+      "expected": "EVALUATION_FAILURE"
+    },
+    {
+      "test_id": "R5-T-218",
+      "category": "CONVERSION_LEGAL",
+      "operation": "CONVERSION",
+      "input": {
+        "rule_ref": "R5-CONV-001",
+        "source_type": "ValidationResult",
+        "source_state": "VALID",
+        "target_type": "EvaluationEligibility",
+        "evidence": [
+          "e"
+        ],
+        "policy_ref": null
+      },
+      "expected": "ELIGIBLE"
+    },
+    {
+      "test_id": "R5-T-219",
+      "category": "CONVERSION_LEGAL",
+      "operation": "CONVERSION",
+      "input": {
+        "rule_ref": "R5-CONV-001",
+        "source_type": "ValidationResult",
+        "source_state": "INVALID",
+        "target_type": "EvaluationEligibility",
+        "evidence": [
+          "e"
+        ],
+        "policy_ref": null
+      },
+      "expected": "INVALID"
+    },
+    {
+      "test_id": "R5-T-220",
+      "category": "CONVERSION_LEGAL",
+      "operation": "CONVERSION",
+      "input": {
+        "rule_ref": "R5-CONV-001",
+        "source_type": "ValidationResult",
+        "source_state": "BLOCKED",
+        "target_type": "EvaluationEligibility",
+        "evidence": [
+          "e"
+        ],
+        "policy_ref": null
+      },
+      "expected": "BLOCKED"
+    },
+    {
+      "test_id": "R5-T-221",
+      "category": "CONVERSION_LEGAL",
+      "operation": "CONVERSION",
+      "input": {
+        "rule_ref": "R5-CONV-001",
+        "source_type": "ValidationResult",
+        "source_state": "UNKNOWN",
+        "target_type": "EvaluationEligibility",
+        "evidence": [
+          "e"
+        ],
+        "policy_ref": null
+      },
+      "expected": "UNKNOWN"
+    },
+    {
+      "test_id": "R5-T-222",
+      "category": "CONVERSION_LEGAL",
+      "operation": "CONVERSION",
+      "input": {
+        "rule_ref": "R5-CONV-002",
+        "source_type": "EvaluationResult",
+        "source_state": "TRUE",
+        "target_type": "PredicateOutcome",
+        "evidence": [
+          "e"
+        ],
+        "policy_ref": null
+      },
+      "expected": "TRUE"
+    },
+    {
+      "test_id": "R5-T-223",
+      "category": "CONVERSION_LEGAL",
+      "operation": "CONVERSION",
+      "input": {
+        "rule_ref": "R5-CONV-002",
+        "source_type": "EvaluationResult",
+        "source_state": "FALSE",
+        "target_type": "PredicateOutcome",
+        "evidence": [
+          "e"
+        ],
+        "policy_ref": null
+      },
+      "expected": "FALSE"
+    },
+    {
+      "test_id": "R5-T-224",
+      "category": "CONVERSION_LEGAL",
+      "operation": "CONVERSION",
+      "input": {
+        "rule_ref": "R5-CONV-002",
+        "source_type": "EvaluationResult",
+        "source_state": "UNKNOWN",
+        "target_type": "PredicateOutcome",
+        "evidence": [
+          "e"
+        ],
+        "policy_ref": null
+      },
+      "expected": "UNKNOWN"
+    },
+    {
+      "test_id": "R5-T-225",
+      "category": "CONVERSION_LEGAL",
+      "operation": "CONVERSION",
+      "input": {
+        "rule_ref": "R5-CONV-002",
+        "source_type": "EvaluationResult",
+        "source_state": "BLOCKED",
+        "target_type": "PredicateOutcome",
+        "evidence": [
+          "e"
+        ],
+        "policy_ref": null
+      },
+      "expected": "BLOCKED"
+    },
+    {
+      "test_id": "R5-T-226",
+      "category": "CONVERSION_FORBIDDEN",
+      "operation": "CONVERSION",
+      "input": {
+        "rule_ref": "R5-CONV-002",
+        "source_type": "EvaluationResult",
+        "source_state": "INVALID",
+        "target_type": "PredicateOutcome",
+        "evidence": [
+          "e"
+        ],
+        "policy_ref": null
+      },
+      "expected": "REJECTED"
+    },
+    {
+      "test_id": "R5-T-227",
+      "category": "CONVERSION_LEGAL",
+      "operation": "CONVERSION",
+      "input": {
+        "rule_ref": "R5-CONV-003",
+        "source_type": "PredicateOutcome",
+        "source_state": "TRUE",
+        "target_type": "AggregateEvaluation",
+        "evidence": null,
+        "policy_ref": "profile:r5"
+      },
+      "expected": "TRUE"
+    },
+    {
+      "test_id": "R5-T-228",
+      "category": "CONVERSION_LEGAL",
+      "operation": "CONVERSION",
+      "input": {
+        "rule_ref": "R5-CONV-003",
+        "source_type": "PredicateOutcome",
+        "source_state": "FALSE",
+        "target_type": "AggregateEvaluation",
+        "evidence": null,
+        "policy_ref": "profile:r5"
+      },
+      "expected": "FALSE"
+    },
+    {
+      "test_id": "R5-T-229",
+      "category": "CONVERSION_LEGAL",
+      "operation": "CONVERSION",
+      "input": {
+        "rule_ref": "R5-CONV-003",
+        "source_type": "PredicateOutcome",
+        "source_state": "UNKNOWN",
+        "target_type": "AggregateEvaluation",
+        "evidence": null,
+        "policy_ref": "profile:r5"
+      },
+      "expected": "UNKNOWN"
+    },
+    {
+      "test_id": "R5-T-230",
+      "category": "CONVERSION_LEGAL",
+      "operation": "CONVERSION",
+      "input": {
+        "rule_ref": "R5-CONV-003",
+        "source_type": "PredicateOutcome",
+        "source_state": "BLOCKED",
+        "target_type": "AggregateEvaluation",
+        "evidence": null,
+        "policy_ref": "profile:r5"
+      },
+      "expected": "BLOCKED"
+    },
+    {
+      "test_id": "R5-T-231",
+      "category": "CONVERSION_FORBIDDEN",
+      "operation": "CONVERSION",
+      "input": {
+        "rule_ref": "R5-CONV-003",
+        "source_type": "PredicateOutcome",
+        "source_state": "INVALID",
+        "target_type": "AggregateEvaluation",
+        "evidence": [
+          "e"
+        ],
+        "policy_ref": "profile:r5"
+      },
+      "expected": "REJECTED"
+    },
+    {
+      "test_id": "R5-T-232",
+      "category": "CONVERSION_LEGAL",
+      "operation": "CONVERSION",
+      "input": {
+        "rule_ref": "R5-CONV-004",
+        "source_type": "AggregateEvaluation",
+        "source_state": "TRUE",
+        "target_type": "ReleaseEligibility",
+        "evidence": [
+          "e"
+        ],
+        "policy_ref": "profile:r5"
+      },
+      "expected": "ELIGIBLE"
+    },
+    {
+      "test_id": "R5-T-233",
+      "category": "CONVERSION_LEGAL",
+      "operation": "CONVERSION",
+      "input": {
+        "rule_ref": "R5-CONV-004",
+        "source_type": "AggregateEvaluation",
+        "source_state": "FALSE",
+        "target_type": "ReleaseEligibility",
+        "evidence": [
+          "e"
+        ],
+        "policy_ref": "profile:r5"
+      },
+      "expected": "INELIGIBLE"
+    },
+    {
+      "test_id": "R5-T-234",
+      "category": "CONVERSION_LEGAL",
+      "operation": "CONVERSION",
+      "input": {
+        "rule_ref": "R5-CONV-004",
+        "source_type": "AggregateEvaluation",
+        "source_state": "UNKNOWN",
+        "target_type": "ReleaseEligibility",
+        "evidence": [
+          "e"
+        ],
+        "policy_ref": "profile:r5"
+      },
+      "expected": "UNKNOWN"
+    },
+    {
+      "test_id": "R5-T-235",
+      "category": "CONVERSION_LEGAL",
+      "operation": "CONVERSION",
+      "input": {
+        "rule_ref": "R5-CONV-004",
+        "source_type": "AggregateEvaluation",
+        "source_state": "BLOCKED",
+        "target_type": "ReleaseEligibility",
+        "evidence": [
+          "e"
+        ],
+        "policy_ref": "profile:r5"
+      },
+      "expected": "BLOCKED"
+    },
+    {
+      "test_id": "R5-T-236",
+      "category": "CONVERSION_FORBIDDEN",
+      "operation": "CONVERSION",
+      "input": {
+        "rule_ref": "R5-CONV-004",
+        "source_type": "AggregateEvaluation",
+        "source_state": "INVALID",
+        "target_type": "ReleaseEligibility",
+        "evidence": [
+          "e"
+        ],
+        "policy_ref": "profile:r5"
+      },
+      "expected": "REJECTED"
+    },
+    {
+      "test_id": "R5-T-237",
+      "category": "CONVERSION_LEGAL",
+      "operation": "CONVERSION",
+      "input": {
+        "rule_ref": "R5-CONV-005",
+        "source_type": "ConformanceResult",
+        "source_state": "CONFORMANT",
+        "target_type": "ComplianceAggregate",
+        "evidence": [
+          "e"
+        ],
+        "policy_ref": null
+      },
+      "expected": "CONFORMANT"
+    },
+    {
+      "test_id": "R5-T-238",
+      "category": "CONVERSION_LEGAL",
+      "operation": "CONVERSION",
+      "input": {
+        "rule_ref": "R5-CONV-005",
+        "source_type": "ConformanceResult",
+        "source_state": "PARTIALLY_CONFORMANT",
+        "target_type": "ComplianceAggregate",
+        "evidence": [
+          "e"
+        ],
+        "policy_ref": null
+      },
+      "expected": "PARTIALLY_CONFORMANT"
+    },
+    {
+      "test_id": "R5-T-239",
+      "category": "CONVERSION_LEGAL",
+      "operation": "CONVERSION",
+      "input": {
+        "rule_ref": "R5-CONV-005",
+        "source_type": "ConformanceResult",
+        "source_state": "NON_CONFORMANT",
+        "target_type": "ComplianceAggregate",
+        "evidence": [
+          "e"
+        ],
+        "policy_ref": null
+      },
+      "expected": "NON_CONFORMANT"
+    },
+    {
+      "test_id": "R5-T-240",
+      "category": "CONVERSION_LEGAL",
+      "operation": "CONVERSION",
+      "input": {
+        "rule_ref": "R5-CONV-005",
+        "source_type": "ConformanceResult",
+        "source_state": "UNVERIFIED",
+        "target_type": "ComplianceAggregate",
+        "evidence": [
+          "e"
+        ],
+        "policy_ref": null
+      },
+      "expected": "UNVERIFIED"
+    },
+    {
+      "test_id": "R5-T-241",
+      "category": "CONVERSION_LEGAL",
+      "operation": "CONVERSION",
+      "input": {
+        "rule_ref": "R5-CONV-005",
+        "source_type": "ConformanceResult",
+        "source_state": "BLOCKED",
+        "target_type": "ComplianceAggregate",
+        "evidence": [
+          "e"
+        ],
+        "policy_ref": null
+      },
+      "expected": "BLOCKED"
+    },
+    {
+      "test_id": "R5-T-242",
+      "category": "CONVERSION_LEGAL",
+      "operation": "CONVERSION",
+      "input": {
+        "rule_ref": "R5-CONV-005",
+        "source_type": "ConformanceResult",
+        "source_state": "NOT_APPLICABLE",
+        "target_type": "ComplianceAggregate",
+        "evidence": [
+          "e"
+        ],
+        "policy_ref": null
+      },
+      "expected": "NOT_APPLICABLE"
+    },
+    {
+      "test_id": "R5-T-243",
+      "category": "CONVERSION_LEGAL",
+      "operation": "CONVERSION",
+      "input": {
+        "rule_ref": "R5-CONV-005",
+        "source_type": "ConformanceResult",
+        "source_state": "UNKNOWN",
+        "target_type": "ComplianceAggregate",
+        "evidence": [
+          "e"
+        ],
+        "policy_ref": null
+      },
+      "expected": "UNKNOWN"
+    },
+    {
+      "test_id": "R5-T-244",
+      "category": "CONVERSION_LEGAL",
+      "operation": "CONVERSION",
+      "input": {
+        "rule_ref": "R5-CONV-006",
+        "source_type": "ReleaseEligibility",
+        "source_state": "ELIGIBLE",
+        "target_type": "AuthorizationInput",
+        "evidence": [
+          "e"
+        ],
+        "policy_ref": "authorization-policy:r5"
+      },
+      "expected": "ELIGIBLE"
+    },
+    {
+      "test_id": "R5-T-245",
+      "category": "CONVERSION_FORBIDDEN",
+      "operation": "CONVERSION",
+      "input": {
+        "rule_ref": "R5-CONV-006",
+        "source_type": "ReleaseEligibility",
+        "source_state": "INELIGIBLE",
+        "target_type": "AuthorizationInput",
+        "evidence": [
+          "e"
+        ],
+        "policy_ref": "authorization-policy:r5"
+      },
+      "expected": "REJECTED"
+    },
+    {
+      "test_id": "R5-T-246",
+      "category": "CONVERSION_FORBIDDEN",
+      "operation": "CONVERSION",
+      "input": {
+        "rule_ref": "R5-CONV-006",
+        "source_type": "ReleaseEligibility",
+        "source_state": "BLOCKED",
+        "target_type": "AuthorizationInput",
+        "evidence": [
+          "e"
+        ],
+        "policy_ref": "authorization-policy:r5"
+      },
+      "expected": "REJECTED"
+    },
+    {
+      "test_id": "R5-T-247",
+      "category": "CONVERSION_FORBIDDEN",
+      "operation": "CONVERSION",
+      "input": {
+        "rule_ref": "R5-CONV-006",
+        "source_type": "ReleaseEligibility",
+        "source_state": "UNKNOWN",
+        "target_type": "AuthorizationInput",
+        "evidence": [
+          "e"
+        ],
+        "policy_ref": "authorization-policy:r5"
+      },
+      "expected": "REJECTED"
+    },
+    {
+      "test_id": "R5-T-248",
+      "category": "CONVERSION_LEGAL",
+      "operation": "CONVERSION",
+      "input": {
+        "rule_ref": "R5-CONV-007",
+        "source_type": "AuthorizationResult",
+        "source_state": "AUTHORIZED",
+        "target_type": "ReleaseDecisionInput",
+        "evidence": [
+          "e"
+        ],
+        "policy_ref": "decision-policy:r5"
+      },
+      "expected": "AUTHORIZED"
+    },
+    {
+      "test_id": "R5-T-249",
+      "category": "CONVERSION_FORBIDDEN",
+      "operation": "CONVERSION",
+      "input": {
+        "rule_ref": "R5-CONV-007",
+        "source_type": "AuthorizationResult",
+        "source_state": "REFUSED",
+        "target_type": "ReleaseDecisionInput",
+        "evidence": [
+          "e"
+        ],
+        "policy_ref": "decision-policy:r5"
+      },
+      "expected": "REJECTED"
+    },
+    {
+      "test_id": "R5-T-250",
+      "category": "CONVERSION_FORBIDDEN",
+      "operation": "CONVERSION",
+      "input": {
+        "rule_ref": "R5-CONV-007",
+        "source_type": "AuthorizationResult",
+        "source_state": "BLOCKED",
+        "target_type": "ReleaseDecisionInput",
+        "evidence": [
+          "e"
+        ],
+        "policy_ref": "decision-policy:r5"
+      },
+      "expected": "REJECTED"
+    },
+    {
+      "test_id": "R5-T-251",
+      "category": "CONVERSION_FORBIDDEN",
+      "operation": "CONVERSION",
+      "input": {
+        "rule_ref": "R5-CONV-007",
+        "source_type": "AuthorizationResult",
+        "source_state": "UNKNOWN",
+        "target_type": "ReleaseDecisionInput",
+        "evidence": [
+          "e"
+        ],
+        "policy_ref": "decision-policy:r5"
+      },
+      "expected": "REJECTED"
+    },
+    {
+      "test_id": "R5-T-252",
+      "category": "CONVERSION_FORBIDDEN",
+      "operation": "CONVERSION",
+      "input": {
+        "rule_ref": "R5-CONV-007",
+        "source_type": "AuthorizationResult",
+        "source_state": "INVALID",
+        "target_type": "ReleaseDecisionInput",
+        "evidence": [
+          "e"
+        ],
+        "policy_ref": "decision-policy:r5"
+      },
+      "expected": "REJECTED"
+    },
+    {
+      "test_id": "R5-T-253",
+      "category": "FORBIDDEN_CONVERSION",
+      "operation": "BOUNDARY",
+      "input": {
+        "forbidden": true,
+        "claim": "VALID_TO_CONFORMANT"
+      },
+      "expected": "REJECTED"
+    },
+    {
+      "test_id": "R5-T-254",
+      "category": "FORBIDDEN_CONVERSION",
+      "operation": "BOUNDARY",
+      "input": {
+        "forbidden": true,
+        "claim": "TRUE_TO_APPROVED"
+      },
+      "expected": "REJECTED"
+    },
+    {
+      "test_id": "R5-T-255",
+      "category": "FORBIDDEN_CONVERSION",
+      "operation": "BOUNDARY",
+      "input": {
+        "forbidden": true,
+        "claim": "CONFORMANT_TO_AUTHORIZED"
+      },
+      "expected": "REJECTED"
+    },
+    {
+      "test_id": "R5-T-256",
+      "category": "FORBIDDEN_CONVERSION",
+      "operation": "BOUNDARY",
+      "input": {
+        "forbidden": true,
+        "claim": "AUTHORIZED_TO_SUCCEEDED"
+      },
+      "expected": "REJECTED"
+    },
+    {
+      "test_id": "R5-T-257",
+      "category": "FORBIDDEN_CONVERSION",
+      "operation": "BOUNDARY",
+      "input": {
+        "forbidden": true,
+        "claim": "APPROVED_TO_SUCCEEDED"
+      },
+      "expected": "REJECTED"
+    },
+    {
+      "test_id": "R5-T-258",
+      "category": "FORBIDDEN_CONVERSION",
+      "operation": "BOUNDARY",
+      "input": {
+        "forbidden": true,
+        "claim": "ISSUED_TO_VALID"
+      },
+      "expected": "REJECTED"
+    },
+    {
+      "test_id": "R5-T-259",
+      "category": "FORBIDDEN_CONVERSION",
+      "operation": "BOUNDARY",
+      "input": {
+        "forbidden": true,
+        "claim": "EVALUATOR_ERROR_TO_FALSE"
+      },
+      "expected": "REJECTED"
+    },
+    {
+      "test_id": "R5-T-260",
+      "category": "FORBIDDEN_CONVERSION",
+      "operation": "BOUNDARY",
+      "input": {
+        "forbidden": true,
+        "claim": "MISSING_EVIDENCE_TO_TRUE"
+      },
+      "expected": "REJECTED"
+    },
+    {
+      "test_id": "R5-T-261",
+      "category": "FORBIDDEN_CONVERSION",
+      "operation": "BOUNDARY",
+      "input": {
+        "forbidden": true,
+        "claim": "UNKNOWN_TO_TRUE"
+      },
+      "expected": "REJECTED"
+    },
+    {
+      "test_id": "R5-T-262",
+      "category": "FORBIDDEN_CONVERSION",
+      "operation": "BOUNDARY",
+      "input": {
+        "forbidden": true,
+        "claim": "BLOCKED_TO_TRUE"
+      },
+      "expected": "REJECTED"
+    },
+    {
+      "test_id": "R5-T-263",
+      "category": "FORBIDDEN_CONVERSION",
+      "operation": "BOUNDARY",
+      "input": {
+        "forbidden": true,
+        "claim": "INSTRUCTION_TO_NORMATIVE"
+      },
+      "expected": "REJECTED"
+    },
+    {
+      "test_id": "R5-T-264",
+      "category": "AGGREGATION",
+      "operation": "AGGREGATE",
+      "input": {
+        "mandatory": [
+          {
+            "predicate_ref": "a",
+            "result": "TRUE"
+          }
+        ],
+        "optional": [
+          {
+            "predicate_ref": "optional",
+            "result": "FALSE"
+          }
+        ],
+        "empty_action": "DENY"
+      },
+      "expected": "TRUE"
+    },
+    {
+      "test_id": "R5-T-265",
+      "category": "AGGREGATION",
+      "operation": "AGGREGATE",
+      "input": {
+        "mandatory": [
+          {
+            "predicate_ref": "a",
+            "result": "FALSE"
+          }
+        ],
+        "optional": [
+          {
+            "predicate_ref": "optional",
+            "result": "FALSE"
+          }
+        ],
+        "empty_action": "DENY"
+      },
+      "expected": "FALSE"
+    },
+    {
+      "test_id": "R5-T-266",
+      "category": "AGGREGATION",
+      "operation": "AGGREGATE",
+      "input": {
+        "mandatory": [
+          {
+            "predicate_ref": "a",
+            "result": "UNKNOWN"
+          }
+        ],
+        "optional": [
+          {
+            "predicate_ref": "optional",
+            "result": "FALSE"
+          }
+        ],
+        "empty_action": "DENY"
+      },
+      "expected": "UNKNOWN"
+    },
+    {
+      "test_id": "R5-T-267",
+      "category": "AGGREGATION",
+      "operation": "AGGREGATE",
+      "input": {
+        "mandatory": [
+          {
+            "predicate_ref": "a",
+            "result": "BLOCKED"
+          }
+        ],
+        "optional": [
+          {
+            "predicate_ref": "optional",
+            "result": "FALSE"
+          }
+        ],
+        "empty_action": "DENY"
+      },
+      "expected": "BLOCKED"
+    },
+    {
+      "test_id": "R5-T-268",
+      "category": "AGGREGATION",
+      "operation": "AGGREGATE",
+      "input": {
+        "mandatory": [
+          {
+            "predicate_ref": "a",
+            "result": "INVALID"
+          }
+        ],
+        "optional": [
+          {
+            "predicate_ref": "optional",
+            "result": "FALSE"
+          }
+        ],
+        "empty_action": "DENY"
+      },
+      "expected": "INVALID_INPUT"
+    },
+    {
+      "test_id": "R5-T-269",
+      "category": "AGGREGATION",
+      "operation": "AGGREGATE",
+      "input": {
+        "mandatory": [],
+        "optional": [
+          {
+            "predicate_ref": "optional",
+            "result": "FALSE"
+          }
+        ],
+        "empty_action": "ALLOW"
+      },
+      "expected": "TRUE"
+    },
+    {
+      "test_id": "R5-T-270",
+      "category": "AGGREGATION",
+      "operation": "AGGREGATE",
+      "input": {
+        "mandatory": [],
+        "optional": [
+          {
+            "predicate_ref": "optional",
+            "result": "FALSE"
+          }
+        ],
+        "empty_action": "DENY"
+      },
+      "expected": "FALSE"
+    },
+    {
+      "test_id": "R5-T-271",
+      "category": "AGGREGATION",
+      "operation": "AGGREGATE",
+      "input": {
+        "mandatory": [],
+        "optional": [
+          {
+            "predicate_ref": "optional",
+            "result": "FALSE"
+          }
+        ],
+        "empty_action": "BLOCK"
+      },
+      "expected": "BLOCKED"
+    },
+    {
+      "test_id": "R5-T-272",
+      "category": "AGGREGATION",
+      "operation": "AGGREGATE",
+      "input": {
+        "mandatory": [],
+        "optional": [
+          {
+            "predicate_ref": "optional",
+            "result": "FALSE"
+          }
+        ],
+        "empty_action": "UNKNOWN"
+      },
+      "expected": "UNKNOWN"
+    },
+    {
+      "test_id": "R5-T-273",
+      "category": "AGGREGATION",
+      "operation": "AGGREGATE",
+      "input": {
+        "mandatory": [
+          {
+            "predicate_ref": "a",
+            "result": "TRUE"
+          }
+        ],
+        "optional": [
+          {
+            "predicate_ref": "optional",
+            "result": "FALSE"
+          }
+        ],
+        "empty_action": null
+      },
+      "expected": "PROFILE_VALIDATION_FAILURE"
+    },
+    {
+      "test_id": "R5-T-274",
+      "category": "AGGREGATION",
+      "operation": "AGGREGATE",
+      "input": {
+        "mandatory": [
+          {
+            "predicate_ref": "a",
+            "result": "TRUE"
+          }
+        ],
+        "optional": [
+          {
+            "predicate_ref": "optional",
+            "result": "FALSE"
+          }
+        ],
+        "empty_action": "DENY"
+      },
+      "expected": "TRUE"
+    },
+    {
+      "test_id": "R5-T-275",
+      "category": "AGGREGATION",
+      "operation": "AGGREGATE",
+      "input": {
+        "mandatory": [
+          {
+            "predicate_ref": "a",
+            "result": "TRUE"
+          },
+          {
+            "predicate_ref": "a",
+            "result": "TRUE"
+          }
+        ],
+        "optional": [
+          {
+            "predicate_ref": "optional",
+            "result": "FALSE"
+          }
+        ],
+        "empty_action": "DENY"
+      },
+      "expected": "TRUE"
+    },
+    {
+      "test_id": "R5-T-276",
+      "category": "AGGREGATION",
+      "operation": "AGGREGATE",
+      "input": {
+        "mandatory": [
+          {
+            "predicate_ref": "a",
+            "result": "TRUE"
+          },
+          {
+            "predicate_ref": "a",
+            "result": "FALSE"
+          }
+        ],
+        "optional": [
+          {
+            "predicate_ref": "optional",
+            "result": "FALSE"
+          }
+        ],
+        "empty_action": "DENY"
+      },
+      "expected": "CONFLICTING_EVALUATIONS"
+    },
+    {
+      "test_id": "R5-T-277",
+      "category": "AGGREGATION",
+      "operation": "AGGREGATE",
+      "input": {
+        "mandatory": [
+          {
+            "predicate_ref": "a",
+            "result": "TRUE"
+          }
+        ],
+        "empty_action": "DENY",
+        "evaluator_errors": [
+          "EVALUATOR_TIMEOUT"
+        ]
+      },
+      "expected": "EVALUATION_FAILURE"
+    },
+    {
+      "test_id": "R5-T-278",
+      "category": "AGGREGATION",
+      "operation": "AGGREGATE",
+      "input": {
+        "mandatory": [
+          {
+            "predicate_ref": "a",
+            "result": "TRUE"
+          }
+        ],
+        "empty_action": "DENY",
+        "stale_evidence": true
+      },
+      "expected": "STALE_EVIDENCE"
+    },
+    {
+      "test_id": "R5-T-279",
+      "category": "AGGREGATION",
+      "operation": "AGGREGATE",
+      "input": {
+        "mandatory": [
+          {
+            "predicate_ref": "a",
+            "result": "TRUE"
+          }
+        ],
+        "empty_action": "DENY",
+        "artifact_valid": false
+      },
+      "expected": "INVALID_INPUT"
+    },
+    {
+      "test_id": "R5-T-280",
+      "category": "TEMPORAL",
+      "operation": "TEMPORAL",
+      "input": {
+        "kind": "EQUAL_TIMESTAMPS",
+        "left": 1,
+        "right": 1
+      },
+      "expected": "VALID"
+    },
+    {
+      "test_id": "R5-T-281",
+      "category": "TEMPORAL",
+      "operation": "TEMPORAL",
+      "input": {
+        "kind": "CLOCK_SKEW",
+        "observed": 105,
+        "trusted": 100,
+        "maximum": 5
+      },
+      "expected": "VALID"
+    },
+    {
+      "test_id": "R5-T-282",
+      "category": "TEMPORAL",
+      "operation": "TEMPORAL",
+      "input": {
+        "kind": "EXPIRED_AUTHORITY",
+        "instant": 20,
+        "not_after": 20
+      },
+      "expected": "EXPIRED"
+    },
+    {
+      "test_id": "R5-T-283",
+      "category": "TEMPORAL",
+      "operation": "TEMPORAL",
+      "input": {
+        "kind": "STALE_EVIDENCE",
+        "age": 11,
+        "maximum_age": 10
+      },
+      "expected": "STALE"
+    },
+    {
+      "test_id": "R5-T-284",
+      "category": "TEMPORAL",
+      "operation": "TEMPORAL",
+      "input": {
+        "kind": "FUTURE_EVIDENCE",
+        "collected_at": 106,
+        "trusted_now": 100,
+        "maximum_skew": 5
+      },
+      "expected": "INVALID"
+    },
+    {
+      "test_id": "R5-T-285",
+      "category": "TEMPORAL",
+      "operation": "TEMPORAL",
+      "input": {
+        "kind": "SEQUENCE_CONFLICT",
+        "sequences": [
+          1,
+          1
+        ]
+      },
+      "expected": "CONFLICT"
+    },
+    {
+      "test_id": "R5-T-286",
+      "category": "INTEGRITY",
+      "operation": "INTEGRITY",
+      "input": {
+        "kind": "HASH",
+        "expected": "a",
+        "actual": "b"
+      },
+      "expected": "INVALID"
+    },
+    {
+      "test_id": "R5-T-287",
+      "category": "INTEGRITY",
+      "operation": "INTEGRITY",
+      "input": {
+        "kind": "SIGNATURE",
+        "expected": "a",
+        "actual": "b"
+      },
+      "expected": "INVALID"
+    },
+    {
+      "test_id": "R5-T-288",
+      "category": "INTEGRITY",
+      "operation": "INTEGRITY",
+      "input": {
+        "kind": "EVALUATOR_HASH",
+        "expected": "a",
+        "actual": "b"
+      },
+      "expected": "INVALID"
+    },
+    {
+      "test_id": "R5-T-289",
+      "category": "INTEGRITY",
+      "operation": "INTEGRITY",
+      "input": {
+        "kind": "PROFILE_HASH",
+        "expected": "a",
+        "actual": "b"
+      },
+      "expected": "INVALID"
+    },
+    {
+      "test_id": "R5-T-290",
+      "category": "INTEGRITY",
+      "operation": "INTEGRITY",
+      "input": {
+        "kind": "DECISION_BASIS_HASH",
+        "expected": "a",
+        "actual": "b"
+      },
+      "expected": "INVALID"
+    },
+    {
+      "test_id": "R5-T-291",
+      "category": "CANONICAL",
+      "operation": "CANONICAL",
+      "input": {
+        "left": {
+          "b": 2,
+          "a": "e\u0301"
+        },
+        "right": {
+          "a": "\u00e9",
+          "b": 2
+        }
+      },
+      "expected": "SAME"
+    },
+    {
+      "test_id": "R5-T-292",
+      "category": "CANONICAL",
+      "operation": "DOMAIN_HASH",
+      "input": {
+        "left_domain": "artifact:v1",
+        "right_domain": "object:v1",
+        "value": {
+          "a": 1
+        }
+      },
+      "expected": "DIFFERENT"
+    },
+    {
+      "test_id": "R5-T-293",
+      "category": "INVARIANT",
+      "operation": "INVARIANT",
+      "input": {
+        "invariant_id": "I-001",
+        "condition": true
+      },
+      "expected": "SATISFIED"
+    },
+    {
+      "test_id": "R5-T-294",
+      "category": "INVARIANT",
+      "operation": "INVARIANT",
+      "input": {
+        "invariant_id": "I-002",
+        "condition": true
+      },
+      "expected": "SATISFIED"
+    },
+    {
+      "test_id": "R5-T-295",
+      "category": "INVARIANT",
+      "operation": "INVARIANT",
+      "input": {
+        "invariant_id": "I-003",
+        "condition": true
+      },
+      "expected": "SATISFIED"
+    },
+    {
+      "test_id": "R5-T-296",
+      "category": "INVARIANT",
+      "operation": "INVARIANT",
+      "input": {
+        "invariant_id": "I-004",
+        "condition": true
+      },
+      "expected": "SATISFIED"
+    },
+    {
+      "test_id": "R5-T-297",
+      "category": "INVARIANT",
+      "operation": "INVARIANT",
+      "input": {
+        "invariant_id": "I-005",
+        "condition": true
+      },
+      "expected": "SATISFIED"
+    },
+    {
+      "test_id": "R5-T-298",
+      "category": "INVARIANT",
+      "operation": "INVARIANT",
+      "input": {
+        "invariant_id": "I-006",
+        "condition": true
+      },
+      "expected": "SATISFIED"
+    },
+    {
+      "test_id": "R5-T-299",
+      "category": "INVARIANT",
+      "operation": "INVARIANT",
+      "input": {
+        "invariant_id": "I-007",
+        "condition": true
+      },
+      "expected": "SATISFIED"
+    },
+    {
+      "test_id": "R5-T-300",
+      "category": "INVARIANT",
+      "operation": "INVARIANT",
+      "input": {
+        "invariant_id": "I-008",
+        "condition": true
+      },
+      "expected": "SATISFIED"
+    },
+    {
+      "test_id": "R5-T-301",
+      "category": "INVARIANT",
+      "operation": "INVARIANT",
+      "input": {
+        "invariant_id": "I-009",
+        "condition": true
+      },
+      "expected": "SATISFIED"
+    },
+    {
+      "test_id": "R5-T-302",
+      "category": "INVARIANT",
+      "operation": "INVARIANT",
+      "input": {
+        "invariant_id": "I-010",
+        "condition": true
+      },
+      "expected": "SATISFIED"
+    },
+    {
+      "test_id": "R5-T-303",
+      "category": "INVARIANT",
+      "operation": "INVARIANT",
+      "input": {
+        "invariant_id": "I-011",
+        "condition": true
+      },
+      "expected": "SATISFIED"
+    },
+    {
+      "test_id": "R5-T-304",
+      "category": "INVARIANT",
+      "operation": "INVARIANT",
+      "input": {
+        "invariant_id": "I-012",
+        "condition": true
+      },
+      "expected": "SATISFIED"
+    },
+    {
+      "test_id": "R5-T-305",
+      "category": "INVARIANT",
+      "operation": "INVARIANT",
+      "input": {
+        "invariant_id": "I-013",
+        "condition": true
+      },
+      "expected": "SATISFIED"
+    },
+    {
+      "test_id": "R5-T-306",
+      "category": "INVARIANT",
+      "operation": "INVARIANT",
+      "input": {
+        "invariant_id": "I-014",
+        "condition": true
+      },
+      "expected": "SATISFIED"
+    },
+    {
+      "test_id": "R5-T-307",
+      "category": "INVARIANT",
+      "operation": "INVARIANT",
+      "input": {
+        "invariant_id": "I-015",
+        "condition": true
+      },
+      "expected": "SATISFIED"
+    },
+    {
+      "test_id": "R5-T-308",
+      "category": "INVARIANT",
+      "operation": "INVARIANT",
+      "input": {
+        "invariant_id": "I-016",
+        "condition": true
+      },
+      "expected": "SATISFIED"
+    },
+    {
+      "test_id": "R5-T-309",
+      "category": "INVARIANT",
+      "operation": "INVARIANT",
+      "input": {
+        "invariant_id": "I-017",
+        "condition": true
+      },
+      "expected": "SATISFIED"
+    },
+    {
+      "test_id": "R5-T-310",
+      "category": "INVARIANT",
+      "operation": "INVARIANT",
+      "input": {
+        "invariant_id": "I-018",
+        "condition": true
+      },
+      "expected": "SATISFIED"
+    },
+    {
+      "test_id": "R5-T-311",
+      "category": "INVARIANT",
+      "operation": "INVARIANT",
+      "input": {
+        "invariant_id": "I-019",
+        "condition": true
+      },
+      "expected": "SATISFIED"
+    },
+    {
+      "test_id": "R5-T-312",
+      "category": "INVARIANT",
+      "operation": "INVARIANT",
+      "input": {
+        "invariant_id": "I-020",
+        "condition": true
+      },
+      "expected": "SATISFIED"
+    }
+  ],
+  "count": 312
+}

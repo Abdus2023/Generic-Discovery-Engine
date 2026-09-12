@@ -1,0 +1,59 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://generic-discovery-engine.invalid/v14.7-R5/implementation/implementation-requirement.schema.json",
+  "title": "implementation-requirement",
+  "type": "object",
+  "required": [
+    "implementation_requirement_id",
+    "profile_requirement_ref",
+    "statement",
+    "mandatory",
+    "authority_ref",
+    "content_hash"
+  ],
+  "properties": {
+    "implementation_requirement_id": {
+      "type": "string",
+      "pattern": "^[A-Za-z0-9][A-Za-z0-9._:/@#-]{0,255}$"
+    },
+    "profile_requirement_ref": {
+      "type": "string",
+      "pattern": "^[A-Za-z0-9][A-Za-z0-9._:/@#-]{0,255}$"
+    },
+    "statement": {
+      "type": "string",
+      "minLength": 1
+    },
+    "mandatory": {
+      "type": "boolean"
+    },
+    "authority_ref": {
+      "type": "string",
+      "pattern": "^[A-Za-z0-9][A-Za-z0-9._:/@#-]{0,255}$"
+    },
+    "content_hash": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$"
+    }
+  },
+  "additionalProperties": false,
+  "x-authority-layer": "IMPLEMENTATION",
+  "x-optional-fields": [],
+  "x-identifier-type": "URI_SAFE_ASCII_DISTINCT_DOMAIN_NEWTYPE",
+  "x-reference-integrity": "REFERENCES_MUST_RESOLVE_TO_EXPECTED_TYPE_AND_HASH",
+  "x-cardinality": "ARRAY_BOUNDS_AND_UNIQUENESS_ENFORCED_BY_SCHEMA",
+  "x-hash-input-fields": [
+    "implementation_requirement_id",
+    "profile_requirement_ref",
+    "statement",
+    "mandatory",
+    "authority_ref"
+  ],
+  "x-hash-domain": "implementation-requirement:v1",
+  "x-canonicalization": "GDE-CJSON-1",
+  "x-temporal-requirements": "RFC3339_UTC_Z_FIELDS_MUST_BE_VALIDATED_WHEN_PRESENT",
+  "x-scope-requirements": "SCOPE_REFERENCES_MUST_BE_EXPLICIT_WHEN_OPERATION_IS_SCOPED",
+  "x-integrity-requirements": "CONTENT_HASH_REQUIRED_SIGNATURE_WHEN_GOVERNING_PROFILE_REQUIRES",
+  "x-state-domain": null,
+  "x-closed": true
+}

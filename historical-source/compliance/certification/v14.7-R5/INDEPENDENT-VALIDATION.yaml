@@ -1,0 +1,386 @@
+{
+  "realization_version": "14.7-R5",
+  "validator": "validate_normative_realization_v147r5.py",
+  "objects": [
+    {
+      "check_id": "R5-V-001",
+      "description": "All JSON-compatible YAML parses",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "check_id": "R5-V-002",
+      "description": "Generator manifest count is exact",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "check_id": "R5-V-003",
+      "description": "Manifest declares every file",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "check_id": "R5-V-004",
+      "description": "Expected generator-owned artifact count",
+      "status": "PASS",
+      "detail": {
+        "actual": 84
+      }
+    },
+    {
+      "check_id": "R5-V-005",
+      "description": "Prior integrity count preserves 1,165 files",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "check_id": "R5-V-006",
+      "description": "Every predecessor hash and byte count remains exact",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "check_id": "R5-V-007",
+      "description": "Exactly 20 closed domains are registered",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "check_id": "R5-V-008",
+      "description": "All 111 supplied wire states are exact",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "check_id": "R5-V-009",
+      "description": "Every enum has explicit Rust representation",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "check_id": "R5-V-010",
+      "description": "Every enum rejects extension and wrong-domain values",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "check_id": "R5-V-011",
+      "description": "Normative strength remains separate",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "check_id": "R5-V-012",
+      "description": "Enum content hashes are valid",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "check_id": "R5-V-013",
+      "description": "Exactly 28 normative object schemas exist",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "check_id": "R5-V-014",
+      "description": "Exactly 6 implementation schemas exist",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "check_id": "R5-V-015",
+      "description": "Schema families are physically separated",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "check_id": "R5-V-016",
+      "description": "Every schema is strict",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "check_id": "R5-V-017",
+      "description": "Every schema explicitly defines nullability and optional fields",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "check_id": "R5-V-018",
+      "description": "Every schema defines typed identity/reference behavior",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "check_id": "R5-V-019",
+      "description": "Every schema defines cardinality and uniqueness behavior",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "check_id": "R5-V-020",
+      "description": "Every schema defines hash inputs and domain",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "check_id": "R5-V-021",
+      "description": "Every schema defines canonical, temporal, scope, integrity rules",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "check_id": "R5-V-022",
+      "description": "Normative schemas carry only normative authority",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "check_id": "R5-V-023",
+      "description": "Implementation schemas carry only implementation authority",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "check_id": "R5-V-024",
+      "description": "Normative schemas are technology-neutral",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "check_id": "R5-V-025",
+      "description": "Evaluator-error taxonomy is exact and complete",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "check_id": "R5-V-026",
+      "description": "Every error defines retry and mapping metadata",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "check_id": "R5-V-027",
+      "description": "Every error defines conformance and evidence metadata",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "check_id": "R5-V-028",
+      "description": "Every evaluator error defaults to EVALUATION_FAILURE",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "check_id": "R5-V-029",
+      "description": "No evaluator error permits FALSE mapping",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "check_id": "R5-V-030",
+      "description": "Error policy forbids silent mapping",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "check_id": "R5-V-031",
+      "description": "Exactly seven named conversion functions exist",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "check_id": "R5-V-032",
+      "description": "Generic convert is forbidden",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "check_id": "R5-V-033",
+      "description": "Conversions name source, target, evidence, policy, and failure",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "check_id": "R5-V-034",
+      "description": "All conversion source states are legal or forbidden",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "check_id": "R5-V-035",
+      "description": "Every legal and forbidden conversion mapping is tested",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "check_id": "R5-V-036",
+      "description": "Eleven authority-strengthening conversions are forbidden and tested",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "check_id": "R5-V-037",
+      "description": "Aggregation precedence remains FALSE > BLOCKED > UNKNOWN > TRUE",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "check_id": "R5-V-038",
+      "description": "Aggregation handles every precondition explicitly",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "check_id": "R5-V-039",
+      "description": "R5 profile has an explicit allowed empty action",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "check_id": "R5-V-040",
+      "description": "Canonicalization freezes all requested dimensions",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "check_id": "R5-V-041",
+      "description": "Independent canonicalization normalizes map order and Unicode",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "check_id": "R5-V-042",
+      "description": "Seven distinct hash identities are defined",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "check_id": "R5-V-043",
+      "description": "Domain separation changes identity",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "check_id": "R5-V-044",
+      "description": "All conformance edges are typed",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "check_id": "R5-V-045",
+      "description": "Untyped implements is forbidden",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "check_id": "R5-V-046",
+      "description": "Invariants I-001 through I-020 are complete and tested",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "check_id": "R5-V-047",
+      "description": "Contradiction inspection covers required distinctions",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "check_id": "R5-V-048",
+      "description": "No-new-state conclusion is tied to zero contradictions",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "check_id": "R5-V-049",
+      "description": "R4 to R5 migration requires revalidation and rehashing",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "check_id": "R5-V-050",
+      "description": "All conclusions use closed epistemic labels",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "check_id": "R5-V-051",
+      "description": "Rust blueprint forbids unsafe and boxed generic errors",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "check_id": "R5-V-052",
+      "description": "Rust defines every frozen semantic domain distinctly",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "check_id": "R5-V-053",
+      "description": "Semantic identifiers are distinct Rust newtypes",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "check_id": "R5-V-054",
+      "description": "Rust evaluator boundary returns result or typed error",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "check_id": "R5-V-055",
+      "description": "Rust exposes only named typed conversions",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "check_id": "R5-V-056",
+      "description": "All 312 self-contained machine tests pass",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "check_id": "R5-V-057",
+      "description": "Test matrix spans all required categories",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "check_id": "R5-V-058",
+      "description": "Every evaluator error and every legal or forbidden disposition is tested",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "check_id": "R5-V-059",
+      "description": "Persisted machine result summary is exact",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "check_id": "R5-V-060",
+      "description": "Authority and semantic object layers remain pairwise distinct",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "check_id": "R5-V-061",
+      "description": "Final principle preserves result/error separation",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "check_id": "R5-V-062",
+      "description": "Rust source compiles and tests",
+      "status": "BLOCKED",
+      "detail": "RUST_TOOLCHAIN_UNAVAILABLE"
+    }
+  ],
+  "summary": {
+    "pass": 61,
+    "fail": 0,
+    "blocked": 1
+  },
+  "result": "PASS_WITH_BLOCKED_TOOLCHAIN"
+}

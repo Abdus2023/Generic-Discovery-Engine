@@ -1,0 +1,129 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://generic-discovery-engine.invalid/v14.7-R5/normative_specification/conformance-result.schema.json",
+  "title": "conformance-result",
+  "type": "object",
+  "required": [
+    "conformance_result_id",
+    "scope_ref",
+    "effective_at",
+    "evidence_refs",
+    "integrity_refs",
+    "status",
+    "content_hash",
+    "requirement_ref",
+    "evaluation_refs",
+    "violated_conditions",
+    "rationale_codes"
+  ],
+  "properties": {
+    "conformance_result_id": {
+      "type": "string",
+      "pattern": "^[A-Za-z0-9][A-Za-z0-9._:/@#-]{0,255}$"
+    },
+    "scope_ref": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "pattern": "^[A-Za-z0-9][A-Za-z0-9._:/@#-]{0,511}$"
+    },
+    "effective_at": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "format": "date-time"
+    },
+    "evidence_refs": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "pattern": "^[A-Za-z0-9][A-Za-z0-9._:/@#-]{0,255}$"
+      },
+      "minItems": 0,
+      "uniqueItems": true
+    },
+    "integrity_refs": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "pattern": "^[A-Za-z0-9][A-Za-z0-9._:/@#-]{0,255}$"
+      },
+      "minItems": 0,
+      "uniqueItems": true
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "CONFORMANT",
+        "PARTIALLY_CONFORMANT",
+        "NON_CONFORMANT",
+        "UNVERIFIED",
+        "BLOCKED",
+        "NOT_APPLICABLE",
+        "UNKNOWN"
+      ]
+    },
+    "content_hash": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$"
+    },
+    "requirement_ref": {
+      "type": "string",
+      "pattern": "^[A-Za-z0-9][A-Za-z0-9._:/@#-]{0,255}$"
+    },
+    "evaluation_refs": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "pattern": "^[A-Za-z0-9][A-Za-z0-9._:/@#-]{0,255}$"
+      },
+      "minItems": 0,
+      "uniqueItems": true
+    },
+    "violated_conditions": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "pattern": "^[A-Za-z0-9][A-Za-z0-9._:/@#-]{0,255}$"
+      },
+      "minItems": 0,
+      "uniqueItems": true
+    },
+    "rationale_codes": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      },
+      "minItems": 0,
+      "uniqueItems": true
+    }
+  },
+  "additionalProperties": false,
+  "x-authority-layer": "NORMATIVE_SPECIFICATION",
+  "x-optional-fields": [],
+  "x-identifier-type": "URI_SAFE_ASCII_DISTINCT_DOMAIN_NEWTYPE",
+  "x-reference-integrity": "REFERENCES_MUST_RESOLVE_TO_EXPECTED_TYPE_AND_HASH",
+  "x-cardinality": "ARRAY_BOUNDS_AND_UNIQUENESS_ENFORCED_BY_SCHEMA",
+  "x-hash-input-fields": [
+    "conformance_result_id",
+    "scope_ref",
+    "effective_at",
+    "evidence_refs",
+    "integrity_refs",
+    "status",
+    "requirement_ref",
+    "evaluation_refs",
+    "violated_conditions",
+    "rationale_codes"
+  ],
+  "x-hash-domain": "conformance-result:v1",
+  "x-canonicalization": "GDE-CJSON-1",
+  "x-temporal-requirements": "RFC3339_UTC_Z_FIELDS_MUST_BE_VALIDATED_WHEN_PRESENT",
+  "x-scope-requirements": "SCOPE_REFERENCES_MUST_BE_EXPLICIT_WHEN_OPERATION_IS_SCOPED",
+  "x-integrity-requirements": "CONTENT_HASH_REQUIRED_SIGNATURE_WHEN_GOVERNING_PROFILE_REQUIRES",
+  "x-state-domain": "Conformance",
+  "x-closed": true
+}

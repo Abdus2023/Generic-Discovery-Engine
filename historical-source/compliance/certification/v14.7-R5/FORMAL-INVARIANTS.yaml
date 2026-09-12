@@ -1,0 +1,148 @@
+{
+  "realization_version": "14.7-R5",
+  "semantic_version": "v14.7",
+  "epistemic_status": "SUPPORTED",
+  "objects": [
+    {
+      "invariant_id": "I-001",
+      "statement": "Every normative state belongs to a closed enum.",
+      "test_ref": "R5-T-293",
+      "status": "SATISFIED",
+      "content_hash": "ecb57e43db23b03a230cdc2cedd049d352d63bdc51d94c6f844f257dbbceec2e"
+    },
+    {
+      "invariant_id": "I-002",
+      "statement": "No implementation artifact can create normative semantics.",
+      "test_ref": "R5-T-294",
+      "status": "SATISFIED",
+      "content_hash": "52f037bc0b6ddaff1d2f72ee67b40a615b81b4149d498777d625d35401aa3a7d"
+    },
+    {
+      "invariant_id": "I-003",
+      "statement": "Profile binding cannot alter normative meaning.",
+      "test_ref": "R5-T-295",
+      "status": "SATISFIED",
+      "content_hash": "1f2aa81e7462aef217cb2778a56af173abdfb3f22483b69255c0ddd23a6a85ec"
+    },
+    {
+      "invariant_id": "I-004",
+      "statement": "Evaluator errors are distinct from EvaluationResult.",
+      "test_ref": "R5-T-296",
+      "status": "SATISFIED",
+      "content_hash": "0a84e47bd5289dd3461c71dc22330edbf19a21a0117eee72458f42fb548d0040"
+    },
+    {
+      "invariant_id": "I-005",
+      "statement": "Evaluator failure cannot silently become FALSE.",
+      "test_ref": "R5-T-297",
+      "status": "SATISFIED",
+      "content_hash": "91027564749748a9ab7eb7a3907737500b969934ef422aedd16e09c354e73104"
+    },
+    {
+      "invariant_id": "I-006",
+      "statement": "UNKNOWN cannot silently become TRUE.",
+      "test_ref": "R5-T-298",
+      "status": "SATISFIED",
+      "content_hash": "16b8f91ad4f0fb8ff9b68a578d17c0d56d01f81a9eddcaf6359f2cf919b1a311"
+    },
+    {
+      "invariant_id": "I-007",
+      "statement": "BLOCKED cannot silently become TRUE.",
+      "test_ref": "R5-T-299",
+      "status": "SATISFIED",
+      "content_hash": "f7eb2a40e80fbb11d99caa489f05dbd9958085fd090fe21216a3aede62f0ddcb"
+    },
+    {
+      "invariant_id": "I-008",
+      "statement": "INVALID cannot silently become FALSE.",
+      "test_ref": "R5-T-300",
+      "status": "SATISFIED",
+      "content_hash": "f1bc022fd49acbb7109799663ce57c8520c5835d47be9d76ca15a8e4df4e87d0"
+    },
+    {
+      "invariant_id": "I-009",
+      "statement": "Validation validity does not establish conformance.",
+      "test_ref": "R5-T-301",
+      "status": "SATISFIED",
+      "content_hash": "57e4370b00d3fdae42c24af16276caff24d7f1b70223d868e646870588d57a91"
+    },
+    {
+      "invariant_id": "I-010",
+      "statement": "Evaluation truth does not establish authorization.",
+      "test_ref": "R5-T-302",
+      "status": "SATISFIED",
+      "content_hash": "af0ea7131c99d72f620c8de25429fa8b5419f9aa6da8eb744c9a0577ab539ef6"
+    },
+    {
+      "invariant_id": "I-011",
+      "statement": "Authorization does not establish execution success.",
+      "test_ref": "R5-T-303",
+      "status": "SATISFIED",
+      "content_hash": "0ad90e15e69e41de4ae1bc656e799eedb3674a485437462b6640b9f5ade7599c"
+    },
+    {
+      "invariant_id": "I-012",
+      "statement": "Approval does not establish execution success.",
+      "test_ref": "R5-T-304",
+      "status": "SATISFIED",
+      "content_hash": "fe0f6a17cdd730704d0b8ac0bd793eb1b4e8161c8e8da5992d68e220986e4701"
+    },
+    {
+      "invariant_id": "I-013",
+      "statement": "Execution does not establish post-release verification success.",
+      "test_ref": "R5-T-305",
+      "status": "SATISFIED",
+      "content_hash": "3da63842c1d0ed635f7ef08b19764809e7b68f8678b0b541bf9933dc6b6d5392"
+    },
+    {
+      "invariant_id": "I-014",
+      "statement": "ISSUED does not imply VALID.",
+      "test_ref": "R5-T-306",
+      "status": "SATISFIED",
+      "content_hash": "cadacad64cf9c08c318ced681136ea95905b2730138466c77514f4f5228cb784"
+    },
+    {
+      "invariant_id": "I-015",
+      "statement": "Every state transition is explicitly typed.",
+      "test_ref": "R5-T-307",
+      "status": "SATISFIED",
+      "content_hash": "6ebff0612ce2365a24c145a6cf0c7f242d6285ec59fb43049bb04ba0d2ff7405"
+    },
+    {
+      "invariant_id": "I-016",
+      "statement": "Every normative conversion has an explicit rule.",
+      "test_ref": "R5-T-308",
+      "status": "SATISFIED",
+      "content_hash": "6e0ab84154a0c91c087a1acafeedfc2d6efeddcaf776e06c75658fd9cefffd16"
+    },
+    {
+      "invariant_id": "I-017",
+      "statement": "Every forbidden conversion is mechanically testable.",
+      "test_ref": "R5-T-309",
+      "status": "SATISFIED",
+      "content_hash": "127412e02344af0a60a1b48da4391e1770ab01edb545a6b77eb1dc1629345a10"
+    },
+    {
+      "invariant_id": "I-018",
+      "statement": "Equivalent validated inputs produce deterministic evaluator outcomes.",
+      "test_ref": "R5-T-310",
+      "status": "SATISFIED",
+      "content_hash": "99480f1ec0f33b3b81fe02371164a29876e4af53589088f3b1e72af016b4ef59"
+    },
+    {
+      "invariant_id": "I-019",
+      "statement": "Projection is deterministic from validated history.",
+      "test_ref": "R5-T-311",
+      "status": "SATISFIED",
+      "content_hash": "8a9d4b0a1e0c3253689ea9675bac71dfad845cb8ec8a7a4b85d6157eebba4e04"
+    },
+    {
+      "invariant_id": "I-020",
+      "statement": "Historical evaluation cannot use future normative requirements.",
+      "test_ref": "R5-T-312",
+      "status": "SATISFIED",
+      "content_hash": "12e0d6eceeb21fe8975db927365572551292bc84938c95e430377a5ed9743848"
+    }
+  ],
+  "count": 20
+}

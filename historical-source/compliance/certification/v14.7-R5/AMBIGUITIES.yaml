@@ -1,0 +1,27 @@
+{
+  "realization_version": "14.7-R5",
+  "semantic_version": "v14.7",
+  "epistemic_status": "SUPPORTED",
+  "resolved": [
+    {
+      "id": "A-R5-001",
+      "resolution": "Evaluator errors default to EVALUATION_FAILURE."
+    },
+    {
+      "id": "A-R5-002",
+      "resolution": "Empty mandatory action is explicit DENY in R5 profile."
+    },
+    {
+      "id": "A-R5-003",
+      "resolution": "Missing evaluator-error mapping is never implicit."
+    }
+  ],
+  "remaining": [
+    {
+      "id": "A-R5-I01",
+      "class": "IMPLEMENTATION",
+      "question": "Production Rust libraries and storage backend."
+    }
+  ],
+  "semantic_ambiguities_open": 0
+}
