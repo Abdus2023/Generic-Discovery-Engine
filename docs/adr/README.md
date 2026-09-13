@@ -7,7 +7,7 @@ New ADRs:
 2. Number sequentially (`004-…` next).
 3. Update `docs/DECISIONS.md` index.
 
-Current ADRs (v0.9.1 — 22 ADRs):
+Current ADRs (v1.0.0 — 23 ADRs):
 
 - `001-provider-pipeline.md` — 7 providers, ordered matching, `ProviderRegistry`.
 - `002-ledger.md` — 12 typed events, 5k FIFO, replayable `DecisionLedger`.
@@ -31,5 +31,6 @@ Current ADRs (v0.9.1 — 22 ADRs):
 - `020-export-hardening.md` — sorted queuedByType, coverage patternCount/clusterCount, export inference block.
 - `021-framework-bundler.md` — src/header.txt + 7 modules → dist bundler, 5875 lines 8c734… deterministic.
 - `022-pattern-guided-revisit.md` — suggestPatternCandidates + getChangedResources, revisitChanged/patternGuided adaptive re-queue.
+- `023-stable-1.0.md` — 1.0 stable, package 1.0.0 header 1.0.0, 22 ADRs 126/126 5977 9b2b68…
 
-Transcript provenance: `Continue Architecture Planning.md` (92,274 lines). Runnable artifact: `dist/generic-discovery-engine.user.js` (v0.9.1, 5,969 lines) built from `src/` 7 modules.
+Transcript provenance: `Continue Architecture Planning.md` (92,274 lines). Runnable artifact: `dist/generic-discovery-engine.user.js` (v1.0.0, 5,977 lines) built from `src/` 7 modules.

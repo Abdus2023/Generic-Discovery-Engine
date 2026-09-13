@@ -2,6 +2,14 @@
 
 All notable changes to the Generic Discovery Engine.
 
+## [1.0.0] — 2026-09-13 — Stable (generic discovery loop feature-complete)
+
+- **Stable:** `package 1.0.0` + `header 1.0.0` (`v1.0.0 — Stable`) + `CONFIG v8` unchanged (storage `v8` additive, ledger 12 types, provider order 9, `export gde-export-v8.0` + `inference` additive). No new runtime code vs `0.9.1` — `dist` `5969→5977` (+8 header patch notes) `sha 9b2b68…` `176645B`, `node --check` PASS, `verify:build` deterministic (header + src 7), `npm test` **126/126 33 suites** unchanged, deep audit `DEEP_DVB_AUDIT_v0.8.2.md` still valid (126/126).
+- **Build:** `src/header.txt` 1.0.0 banner + `v1.0.0` patch notes vs `0.9.1` (no runtime delta, `CONFIG` v8), `dist/.build-meta.json` `1.0.0` `9b2b68…` 5977.
+- **Tests:** `tests/verify-p0-fixes.test.js` now allows `1.0.0`; `npm test` 126/126 unchanged.
+- **ADRs:** `docs/adr/023-stable-1.0.md` + `docs/adr/README.md` → 23 ADRs (22→23). `docs/DECISIONS.md`/`docs/architecture/OVERVIEW.md` bumped to `5,977` lines.
+- **Docs:** `VERIFICATION_SUPPLEMENT_v1.0.0.md` (§stable) + `README.md` current `v1.0.0` 126/126, `src/README.md` 1.0.
+
 ## [0.9.1] — 2026-09-12 — Pattern-Guided + RevisitChanged (adaptive re-queue)
 
 - **Knowledge:** `KnowledgeBase.suggestPatternCandidates(limit=5)` (top patterns ≥`minPatternFreq` with `{int}/{hash}/{uuid}` → `0`/`0*32`/`uuid0`, `isAllowedUrl` + `visited`/`candidateKeys` dedup, deterministic) + `getChangedResources()` (`status==='changed'`); `CONFIG.patternGuided {enabled:false, maxSuggestions:5}` + `CONFIG.revisitChanged:false` (opt-in, `v8` storage compatible). `src/knowledge.js` +30 lines.

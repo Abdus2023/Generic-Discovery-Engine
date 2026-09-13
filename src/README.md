@@ -2,7 +2,7 @@
 
 This directory is the **modular prelude** for the Generic Discovery Engine.
 
-`dist/generic-discovery-engine.user.js` (5,969 lines, sha256 44500…) is still the runnable artifact, but its logical sections are now mirrored here as ES modules:
+`dist/generic-discovery-engine.user.js` (5,977 lines, sha256 9b2b68…) is still the runnable artifact, but its logical sections are now mirrored here as ES modules:
 
 - `config.js` — `CONFIG` (v8, 84 keys, `export const CONFIG`)
 - `utils.js` — `canonicalizeUrl`, `isAllowedUrl`, `fnv1a32`, `makeFingerprint`, `originOf`, `extractUrlPattern`, `clusterKeyForCandidate`, `extractUrlsFromText`/`Css`/`Xml` (wired to `CONFIG`)

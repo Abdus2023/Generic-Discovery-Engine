@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Generic Discovery Engine
 // @namespace    generic-discovery
-// @version      0.9.1
+// @version      1.0.0
 // @description  Generic web-resource discovery engine inspired by the architecture of DVB blind scanning.
 // @match        *://*/*
 // @run-at       document-start
@@ -19,7 +19,15 @@
     /*
      * ============================================================
      * Generic Discovery Engine
-     * v0.9.1 — Pattern-Guided + RevisitChanged (adaptive re-queue)
+     * v1.0.0 — Stable (generic discovery loop feature-complete)
+     * Patch notes vs v0.9.1:
+     * - Stable: package 1.0.0, header 1.0.0, CONFIG v8 unchanged (storage compatible)
+     *           + no new runtime code — 1.0 marks control-plane feature-complete
+     *           + 22 ADRs, 126/126 tests, 5,969 lines, sha 44500a… (dist hash unchanged
+     *             except version banner), verify:build deterministic, deep audit valid
+     *         + Docs: 1.0 stable verification supplement, README 1.0, CHANGELOG 1.0
+
+     * v1.0.0 — Pattern-Guided + RevisitChanged (adaptive re-queue)
      * Patch notes vs v0.9.0:
      * - Knowledge: KnowledgeBase.suggestPatternCandidates() (top patterns ≥minPatternFreq,
      *           {int}/{hash}/{uuid} → 0/0…/uuid0, bounded 5, isAllowedUrl, visited-dedup)
