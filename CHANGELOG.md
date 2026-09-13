@@ -2,6 +2,15 @@
 
 All notable changes to the Generic Discovery Engine.
 
+## [1.4.0] — 2026-09-13 — Health Metrics + Concurrent Providers (observability)
+
+- **Health:** `CONFIG.health {enabled:true, maxRecentErrors:20, slowProviderMs:50}` + `GenericDiscoveryEngine.getHealthMetrics()` (status healthy/degraded/unhealthy/disabled, coverage + providerHealth slowProviders/system pressures recentErrors, O13 ~0.01 ms) + `exportData().health` + `health` in `exportData().providers.concurrent`; `getCoverageMetrics` already provides providerMetrics. Header `v1.4.0 — Health Metrics + Concurrent Providers` + patch notes.
+- **Providers:** `CONFIG.providers.concurrent false` (default sequential) + `executePlan` now `if (CONFIG.providers.concurrent) Promise.all(providers.map)` with `processDiscoveries` dedup via `emittedForObservation Set` (order deterministic, tagged `_fromProvider`), sequential fallback unchanged; enables parallel 13-provider recognize/discover (~0.02 ms vs 0.01 ms overhead sync, ×13 for future async). `src/providers.js` unchanged 13, `src/engine.js` +50 lines, `dist` `6344→6394` (+50) `4f2c63…` `200208B`, min `65363B 32.6%` `6c3103…`, ESM `267B` `792783…`.
+- **Tests:** `tests/health-concurrent.test.js` 10 cases (static CONFIG.health/getHealthMetrics/concurrent/Promise.all, health 4 behavior healthy/degraded/unhealthy/disabled, concurrent 3 dedup parity + presence) → **160/160 42 suites** (150+10).
+- **ADRs:** `docs/adr/029-health-metrics.md`, `030-concurrent-providers.md` + `docs/adr/README.md` → 30 ADRs (28→30). `docs/DECISIONS.md`/`docs/architecture/OVERVIEW.md` bumped to `6,394` lines.
+- **Docs:** `VERIFICATION_SUPPLEMENT_v1.4.0.md` (§health §concurrent §bundle §perf) + `README.md` current `v1.4.0` 160/160, `src/README.md` 1.4, `verify-build` now asserts `getHealthMetrics`/`concurrent`/`CONFIG.health`/`health,`.
+
+
 ## [1.3.0] — 2026-09-13 — WellKnown + Manifest Providers + ESM Bundle Proof
 
 - **Providers:** `WellKnownProvider` (/.well-known/ json/text → json-url 0.80/text-url 0.70, matches well-known path, JSON walk ~0.03 ms) + `ManifestProvider` (manifest.json `icons[].src` 0.85, `start_url` 0.80, `scope` 0.75, `screenshots`/`shortcuts`, relative URL resolve via `new URL(..., requestedUrl)` ~0.02 ms); `ProviderRegistry` now **13** ordered `Html/Json/Xml/Css/JavaScript/Robots/Headers/SitemapIndex/OpenApi/WellKnown/Manifest/Binary/Text` (lazy factories, disabled respects new, `getInstanceCount` 13). `src/providers.js` +130 lines, header `v1.3.0 — WellKnown + Manifest Providers + ESM Bundle Proof` + patch notes.

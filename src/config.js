@@ -20,7 +20,13 @@
         },
         providers: {
             lazy: true, // true → providers instantiated on first match; false → eager (v1.0 behavior)
-            disabled: [] // e.g. ['text','binary'] to disable noisy providers
+            disabled: [], // e.g. ['text','binary'] to disable noisy providers
+            concurrent: false // true → recognize providers via Promise.all (parallel) vs sequential; benchmark ~0.02ms vs ~0.01ms
+        },
+        health: {
+            enabled: true,
+            maxRecentErrors: 20,
+            slowProviderMs: 50 // provider avgMs > slow threshold → health warning
         },
         maxObservationsInMemory: 800,
         maxRequests: 150,

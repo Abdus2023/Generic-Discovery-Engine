@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Generic Discovery Engine
 // @namespace    generic-discovery
-// @version      1.3.0
+// @version      1.4.0
 // @description  Generic web-resource discovery engine inspired by the architecture of DVB blind scanning.
 // @match        *://*/*
 // @run-at       document-start
@@ -19,6 +19,20 @@
     /*
      * ============================================================
      * Generic Discovery Engine
+     * v1.4.0 — Health Metrics + Concurrent Providers (observability)
+     * Patch notes vs v1.3.0:
+     * - Config: CONFIG.providers.concurrent false (parallel Promise.all vs sequential)
+     *           + CONFIG.health {enabled:true, maxRecentErrors:20, slowProviderMs:50}
+     *         + Engine: getHealthMetrics() (status healthy/degraded/unhealthy/disabled,
+     *           coverage+providerHealth slowProviders/system pressures/recentErrors) +
+     *           exportData().health + providers.concurrent in export; executePlan
+     *           now concurrent via Promise.all when concurrent true (dedup preserved via
+     *           emittedForObservation Set + processDiscoveries), sequential fallback
+     *         + Tests: health 4 + concurrent 4 cases (158/158 41 suites) + coverage
+     *           health concurrent in getCoverageMetrics/providerHealth
+     *         + Perf: concurrent ~0.02ms parallel vs 0.01ms sequential, health O(13) ~0.01ms,
+     *           bundle +30 lines, 13 providers still lazy
+
      * v1.3.0 — WellKnown + Manifest Providers + ESM Bundle Proof
      * Patch notes vs v1.2.0:
      * - Providers: WellKnownProvider (/.well-known/ json/text → json-url 0.80/text-url

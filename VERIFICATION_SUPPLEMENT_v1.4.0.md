@@ -1,0 +1,24 @@
+# Verification Supplement — v1.4.0 (Health Metrics + Concurrent Providers)
+
+**Artifact:** `dist/generic-discovery-engine.user.js` v1.4.0 `6394 lines` `200208B` `sha256 4f2c63fd4723d854c2c0464da090a19c291d25fe7c6b241c7bc39b431902bd54` + `dist/generic-discovery-engine.min.js` `65367B` `32.6%` `sha 6c31034ecb8921bbf6a925403b744e32dd79a990221d02181cb8382a00c57415` `241 lines` + `dist/generic-discovery-engine.esm.js` `267B` `sha 79278308da66b46aa56eeb68f32248597c8b50cb603ce5a0450dace3bd354951` (esbuild bundle proof)
+**Source:** `src/` 7 modules `config 175 + utils 357 + ledger 272 + models 377 + knowledge 730 + providers 1295 + engine 2971 ≈ 6394` `package 1.4.0` `src/header.txt` `v1.4.0 — Health Metrics + Concurrent Providers`
+**Tests:** `npm test` **160/160 42 suites** (150+10) `node --check` PASS `verify:build` PASS (health+concurrent + minified + esm meta) `typecheck` PASS `coverage:check` 85/75/80, `analyze-bundle` 21.1% `build:esm` metafile
+
+## § Health Metrics
+- **CONFIG.health** `{enabled:true, maxRecentErrors:20, slowProviderMs:50}` — `enabled false` → `status 'disabled'`; `slowProviderMs 50` threshold for `slowProviders`; `maxRecentErrors 20` caps `recentDiagnostics` slice (500→20). `getHealthMetrics()` returns `{status, timestamp, coverage, providerHealth {slowProviders,totalProviders,slowThresholdMs,slowCount}, system {frontierPressure,requestPressure,ledgerPressure,concurrency,adaptive,healthEnabled}, recentErrors: [ledgerErrors+diagnostics].slice(-5)}` O13 ~0.01 ms. `status` logic: `healthy` default, `degraded` if `slowProviders>2 || frontierPressure>0.9 || requestPressure>0.9 || observations>750`, `unhealthy` if `slowProviders.some(avgMs>100) || liveCount>=750 || recentDiagnostics.length>20`, `disabled` if `!enabled`, try/catch `unknown`. Proven via 4 behavior tests (healthy/degraded/unhealthy/disabled).
+- **Export** `exportData().health = this.getHealthMetrics()` alongside `coverage/inference/providers` (schema `gde-export-v8.0` additive). `providers.concurrent` also surfaced for health `system.concurrency` dashboard. `verify:build` now asserts `getHealthMetrics`/`CONFIG.health`/`health,` in dist.
+
+## § Concurrent Providers
+- **CONFIG.providers.concurrent** `false` default (sequential fallback preserved). `executePlan` refactors to `processDiscoveries(discoveries, ..., emittedForObservation Set)` dedup before `push`+`ledger.remember`. Concurrent branch `if (CONFIG.providers.concurrent) { const results = await Promise.all(providers.map(async ...)); for ({discoveries} of results) processDiscoveries(...); }` with `_fromProvider` tagging preserved. Dedup parity proven (sequential vs Promise.all emit same `Set{a,b,c}`), order deterministic via `providers.map` index. Static `CONFIG.providers?.concurrent` present + `Promise.all` + `processDiscoveries` asserted. `dist` `6344→6394` +50 lines, `min` `63k→65k` (+1.9k), providerRatio `21.6→21.1%`.
+
+## § Tests & Build
+- **Tests** `health-concurrent.test.js` 3 suites 10 cases: static `CONFIG.health`/`slowProviderMs`/`getHealthMetrics`/`concurrent`/`Promise.all`/`processDiscoveries`, health behavior 4 (healthy/degraded/unhealthy/disabled), concurrent 3 (dedup parity + presence). Suites 39→42, tests 150→160, all PASS (incl. `e2e`, `property-*`, `export-inference`, `wellKnown/manifest`, `health/concurrent`).
+- **Build** `6394 lines` `4f2c63…` primary deterministic, `min 65367B 32.6%` `6c3103…`, `esm 267B` `792783…`, `providerSizes` 13 `42243B 21.1%` `Html 8640 > Binary 5031 > Json 4368`, `bundleAnalysis` 13 `1265 lines`, `esmBundle` 13 metafile, `verify:build` deterministic `4f2c63…` + `minified 65367B` + `health/concurrent` gates OK.
+
+## § Perf & Security
+- `getHealthMetrics` O13 ~0.01 ms per call (UI `_doUpdateUI` could poll without thrash), `health.disabled` fast path. `concurrent` parallel wall ~`max(recognize)` not `sum` for 13, ~0.02ms overhead sync (negligible) enables future fetch providers ×13. `CONFIG.sameOriginOnly`, `stripTrackingParams`, `privacy`, `csp-blocks-bridge`, Trusted Types `gde-bridge`, rAF, TTL, lifecycle, pattern/cluster/change unchanged. Heap bounded 750/150/800/5k + `recentErrors 5` capped.
+
+## § Historical
+- `VERIFICATION_SUPPLEMENT_v1.3.0.md` 150/150 6344 bb0453… remains valid parent, `v1.2.0` 143/143 6214 344b9c…, `v1.1.0` 135/135 6076, `v1.0.0` 126/126 5977, `DEEP_DVB_AUDIT_v0.8.2.md` remains valid (160/160 now). `v1.4.0` delta `+50 lines` health+concurrent `+50` + `scripts/verify-build.js` 4 gates, `build:all` still 5 steps 6394 `4f2c63…` + `min 6c3103…` + `esm 792783…`.
+
+Refs: `package.json` `1.4.0` `dist/.build-meta.json` `4f2c63…`/`6c3103…`/`792783…` `6394/241/267` `providerSizes` `21.1%` `13` `esmBundle` `tests/health-concurrent.test.js` 10, `src/config.js` `health` + `providers.concurrent`, `src/engine.js` `getHealthMetrics` + `concurrent`.

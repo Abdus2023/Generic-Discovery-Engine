@@ -165,6 +165,22 @@ if (!content.includes('manifest')) {
   console.error('verify-build: missing manifest in factories');
   process.exit(1);
 }
+if (!content.includes('getHealthMetrics')) {
+  console.error('verify-build: missing getHealthMetrics (v1.4)');
+  process.exit(1);
+}
+if (!content.includes('concurrent')) {
+  console.error('verify-build: missing concurrent in providers');
+  process.exit(1);
+}
+if (!content.includes('CONFIG.health')) {
+  console.error('verify-build: missing CONFIG.health');
+  process.exit(1);
+}
+if (!content.includes('health,')) {
+  console.error('verify-build: missing health in exportData');
+  process.exit(1);
+}
 // Check minified artifact if present (optional, not fatal)
 const minPath = path.join(path.dirname(dist), 'generic-discovery-engine.min.js');
 if (fs.existsSync(minPath)) {
