@@ -7,7 +7,7 @@
 - The transcript remains the provenance; ADRs are the normative summary.
 - New decisions get a new `docs/adr/NNN-title.md` and are linked here.
 
-## Decisions extracted (v1.5.0 — 31 ADRs)
+## Decisions extracted (v1.6.0 — 32 ADRs)
 
 | ADR | Title | Status | Transcript range | Code |
 |-----|-------|--------|------------------|------|
@@ -48,6 +48,7 @@
 | [029](adr/029-health-metrics.md) | Health Metrics (observability + status) | ✅ accepted | 1.4 → health | `getHealthMetrics` `CONFIG.health` `health` 160/160 |
 | [030](adr/030-concurrent-providers.md) | Concurrent Providers (parallel Promise.all) | ✅ accepted | 1.4 → concurrent | `providers.concurrent` `Promise.all` 6394 `4f2c63…` |
 | [031](adr/031-verification-hardening-runtime-bounds.md) | Verification Hardening + Runtime Bounds (P0/P1) | ✅ accepted | 1.5 → verification+runtime | `maxDiscoveries/Resources` `redirect:error` `@connect self` `diagnosticCount` 6453 `508e3e…` |
+| [032](adr/032-bounded-knowledge-kernel.md) | Bounded Knowledge Kernel (B1→B3 retention coherence) | ✅ accepted | 1.6 → retention kernel | `retention` `maxBodyBytes 5M` `maxRelations 100` `gm-redirect-blocked` `referential coherence` 6794 `7efbfd…` |
 
 ## Decisions still in transcript (not yet ADR-ified)
 
@@ -59,8 +60,8 @@
 ## Process
 1. ChatGPT proposes; user selects v0.2.0 as base.
 2. Each iteration adds one control-plane concern (claim-before-await, policy-before-acquisition, ledger-for-explainability).
-3. Verification (v0.7.1 audit) files P0/P1; patches landed v0.7.2/v0.7.3/v0.7.4/v0.7.5/v0.7.6/v0.7.7/v0.7.8/v0.7.9/v0.8.0/v0.8.1/v0.8.2/v0.9.0/v0.9.1/v1.0.0/v1.1.0/v1.2.0/v1.3.0/v1.4.0/v1.5.0.
+3. Verification (v0.7.1 audit) files P0/P1; patches landed v0.7.2/v0.7.3/v0.7.4/v0.7.5/v0.7.6/v0.7.7/v0.7.8/v0.7.9/v0.8.0/v0.8.1/v0.8.2/v0.9.0/v0.9.1/v1.0.0/v1.1.0/v1.2.0/v1.3.0/v1.4.0/v1.5.0/v1.6.0.
 
 ## Further splits
-- The 2.2 MB file also contains 12 full code fences. The runnable artifact is now `dist/generic-discovery-engine.user.js` (v1.5.0, 6,453 lines, `508e3e…` + `dist/generic-discovery-engine.min.js` 66k 32.7%, `dist/generic-discovery-engine.esm.js` 267B, `providerSizes` 42k 20.6%, built from `src/` 7 modules) (was v1.4.0 6,394 / v1.3.0 6,344 / v1.2.0 6,214 / v1.1.0 6,076). The fences are retained for diff archaeology but are no longer the source of truth.
-- With 30 ADRs + rAF + coverage + TTL + gates + lifecycle + concurrency + pattern/cluster + build determinism + robots/headers + change detection + modular prelude + export hardening + framework bundler + pattern-guided/revisit + stable + lazy/sitemap/openapi/bundle/wellKnown/manifest/ESM the control-plane is **stable 1.5** for v1.5.0; `docs/analysis/DEEP_DVB_AUDIT_v0.8.2.md` remains valid (160/160) and `src/` is source of truth — 1.5 adds verification hardening + runtime bounds + security (P0/P1) with `build:all` 5 steps (1.4 had health+concurrent).
+- The 2.2 MB file also contains 12 full code fences. The runnable artifact is now `dist/generic-discovery-engine.user.js` (v1.6.0, 6,794 lines 223914B `7efbfd…` + `dist/generic-discovery-engine.min.js` 74k 33.4% `ba83e9…`, `dist/generic-discovery-engine.esm.js` 267B `792783…`, `providerSizes` 42k 18.9%, built from `src/` 7 modules) (was v1.5.0 6,453 `508e3e…` / v1.4.0 6,394 / v1.3.0 6,344 / v1.2.0 6,214 / v1.1.0 6,076). The fences are retained for diff archaeology but are no longer the source of truth.
+- With 32 ADRs + rAF + coverage + TTL + gates + lifecycle + concurrency + pattern/cluster + build determinism + robots/headers + change detection + modular prelude + export hardening + framework bundler + pattern-guided/revisit + stable + lazy/sitemap/openapi/bundle/wellKnown/manifest/ESM the control-plane is **stable 1.6 Bounded Kernel** for v1.6.0; `docs/analysis/DEEP_DVB_AUDIT_v0.8.2.md` remains valid (160/160) and `src/` is source of truth — 1.6 adds bounded retention B1→B3 + referential coherence + GM redirect blocked + bounded restoration with `build:all` 5 steps (1.5 had verification hardening, 1.4 had health+concurrent).

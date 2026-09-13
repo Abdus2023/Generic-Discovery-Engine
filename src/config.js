@@ -61,11 +61,28 @@
         // Runtime retention bounds (P1 hardening — not just persistence slice)
         maxDiscoveriesInMemory: 2000,
         maxResourcesInMemory: 2000,
-        // Search budget vs runtime budget distinction (v1.5)
+        // Search budget vs runtime budget distinction (v1.5) + Bounded Knowledge Kernel (v1.6)
         runtimeBudget: {
             maxBodiesInMemory: 150, // cap observations bodies retained (mirrors maxRequests)
             maxDiscoveryHistory: 2000,
-            maxResourceHistory: 2000
+            maxResourceHistory: 2000,
+            maxBodyBytes: 5_000_000 // global retained body bytes bound (v1.6 B2)
+        },
+        // RetentionPolicy — explicit bounded retention for every collection (v1.6)
+        // Every Map/Set tracks insertion order → FIFO eviction; relation arrays capped.
+        retention: {
+            visited: { maxEntries: 2000 },
+            candidateKeys: { maxEntries: 2000 },
+            candidateHistory: { maxEntries: 2000 }, // historical candidates beyond live frontier
+            observations: { maxEntries: 800, maxBodyBytes: 5_000_000, maxBodies: 150 },
+            discoveries: { maxEntries: 2000 },
+            resources: { maxEntries: 2000, maxRelationsPerResource: 100 },
+            fingerprint: { maxHashes: 500, maxUrlsPerHash: 100 },
+            patterns: { maxEntries: 500 },
+            clusters: { maxEntries: 500 },
+            networkEvents: { maxEntries: 1000 },
+            graphEdges: { maxEntries: 5000 },
+            diagnostics: { maxEntries: 500 }
         },
 
         observeDomMutations: true,

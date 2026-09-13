@@ -7,7 +7,7 @@ New ADRs:
 2. Number sequentially (`004-…` next).
 3. Update `docs/DECISIONS.md` index.
 
-Current ADRs (v1.5.0 — 31 ADRs):
+Current ADRs (v1.6.0 — 32 ADRs):
 
 - `001-provider-pipeline.md` — 7 providers, ordered matching, `ProviderRegistry`.
 - `002-ledger.md` — 12 typed events, 5k FIFO, replayable `DecisionLedger`.
@@ -40,5 +40,6 @@ Current ADRs (v1.5.0 — 31 ADRs):
 - `029-health-metrics.md` — health ops (getHealthMetrics status/pressures/slowProviders/recentErrors + export health)
 - `030-concurrent-providers.md` — concurrent providers (Promise.all + concurrent flag + dedup processDiscoveries)
 - `031-verification-hardening-runtime-bounds.md` — verification hardening (honest coverage, typecheck, lint) + runtime bounds (discovery/resource eviction, networkEvents FIFO, redirect error, @connect least-privilege, health dead branch, provider metrics, adaptive target)
+- `032-bounded-knowledge-kernel.md` — bounded knowledge kernel (retention policy, body budget 5M/150, relation slice 100, visited/candidate history/fingerprint/pattern coherence, bounded restoration, GM redirect blocked)
 
-Transcript provenance: `Continue Architecture Planning.md` (92,274 lines). Runnable artifact: `dist/generic-discovery-engine.user.js` (v1.5.0, 6,453 lines) + `dist/generic-discovery-engine.min.js` (66k 32.7%) + `dist/generic-discovery-engine.esm.js` (267B) + bundle analyze 20.6% built from `src/` 7 modules.
+Transcript provenance: `Continue Architecture Planning.md` (92,274 lines). Runnable artifact: `dist/generic-discovery-engine.user.js` (v1.6.0, 6,794 lines 223914B sha 7efbfd…) + `dist/generic-discovery-engine.min.js` (74k 33.4% ba83e9…) + `dist/generic-discovery-engine.esm.js` (267B 792783…) + bundle analyze 18.9% built from `src/` 7 modules.

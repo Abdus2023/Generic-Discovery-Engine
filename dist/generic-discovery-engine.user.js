@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Generic Discovery Engine
 // @namespace    generic-discovery
-// @version      1.5.0
+// @version      1.6.0
 // @description  Generic web-resource discovery engine inspired by the architecture of DVB blind scanning.
 // @match        *://*/*
 // @run-at       document-start
@@ -19,6 +19,27 @@
     /*
      * ============================================================
      * Generic Discovery Engine
+     * v1.6.0 — Bounded Knowledge Kernel (v1.5 second-pass audit fixes — B1→B3)
+     * Patch notes vs v1.5.0:
+     * - Retention: CONFIG.retention unified policy (visited 2k, candidateKeys 2k, candidateHistory 2k,
+     *           observations 800+5M/150 bodies, discoveries 2k, resources 2k×100 relations,
+     *           fingerprint 500×100, patterns 500, clusters 500) + runtimeBudget.maxBodyBytes 5M +
+     *           ResourceRecord.merge now slices relation arrays to 100 (vs unbounded unique)
+     *           + KnowledgeBase now Bounded Knowledge Kernel: _enforceVisitedBound/_enforceCandidateKeysBound
+     *           (historical-first, live-preserved) / _enforceCandidateHistoryBound (evicts oldest
+     *           completed/skipped, cleans candidateKeys+claimed+resource refs) / _enforceBodyBudget
+     *           (FIFO clears oldest bodies when >150 bodies or >5M bytes, diagnostic body-evicted)
+     *           + fingerprint/pattern/cluster/graphEdges bounds with FIFO eviction + diagnostics
+     *           + referential coherence: _removeObservationReferences/_removeDiscoveryReferences/
+     *           _removeCandidateReferences + _removeResourceFingerprint + stale candidateKeys
+     *           cleaned on duplicate; restore() now enforces all runtime caps (observations/
+     *           discoveries/resources/fingerprint/edges) after loading persisted state
+     *           + serialize() now caps visited slice to 2k
+     *         + Security: GM_xmlhttpRequest onload now enforces redirect boundary (if sameOriginOnly
+     *           and finalUrl cross-origin → blocked redirect-cross-origin, diagnostic gm-redirect-blocked)
+     *           matching fetch redirect:'error' semantics
+     *         + Build: verify-build now asserts retention + body-evicted + gm-redirect-blocked + merge slice
+
      * v1.5.0 — Verification Hardening + Runtime Bounds (P0/P1 audit fixes)
      * Patch notes vs v1.4.0:
      * - Verification: .c8rc now honest (all:true src tree, exclude tests/scripts/dist, 50/45/50) +
@@ -173,7 +194,7 @@
      *           harness, 500 iter, TTL+retry windows)
      *         + Types: JSDoc typedefs + tsconfig.json (checkJs strict) +
      *           npm run typecheck (tsc --noEmit) + .c8rc gate holds 85/75/80
-     *
+
      * Patch notes vs v0.7.6:
      * - Bounds: CONFIG.candidateTTL (0=off, ms) — claimNextCandidate() now
      *           sweeps queued/failed and marks ttl-expired (ledger + skipped)
@@ -182,9 +203,9 @@
      *           property-determinism harness (seeded, 500 iter)
      *         + Coverage gate: .c8rc check-coverage true (85/75) + CI lint
      *           + 3 ADRs (007-ttl, 008-throttle, 009-coverage-gates)
-     *
+
      * v0.7.6 — Performance & Coverage (rAF UI + coverage proof + invariants)
-     *
+
      * Patch notes vs v0.7.5:
      * - Perf: updateUI() now rAF-batched (_uiRaf + _doUpdateUI) to avoid
      *         layout thrash when ledger hits 5k and 4 workers flush;
@@ -193,31 +214,31 @@
      *         + property tests for effectivePriority invariants
 
      * v0.7.5 — Trust & Verification (Trusted Types + fuzz + CI + ADRs)
-     *
+
      * Patch notes vs v0.7.4:
      * - Trust: Trusted Types policy (gde-bridge) for installBridge()
      *         + JSDoc typedefs + CI workflow verify.yml +
      *           fuzz harness (extract/canonicalize) + 3 more ADRs
-     *
+
      * v0.7.4 — Hardening & Hygiene (P2-6 privacy/CSP/header + ADR split)
-     *
+
      * Patch notes vs v0.7.3:
      * - P2-6: @connect self (with * commented for cross-origin opt-in)
      *         + CONFIG.privacy.stripSensitiveParams (opt-in token/
      *           session/auth scrub in canonicalizeUrl) + explicit
      *           csp-blocks-bridge diagnostic + cross-origin-config
      *           warning at init when sameOriginOnly=false
-     *
+
      * v0.7.3 — Coverage Frontier + E2E Verified (P0/P1/P2-3)
-     *
+
      * Patch notes vs v0.7.2:
      * - P2-3: getCoverageMetrics() + UI + export coverage (frontierSize,
      *         queuedByType, liveCount, visitedSize, knownResources,
      *         requestsRemaining, ledgerSize, graphEdges, observations)
      *         makes budget/frontier observable without extra traversal
-     *
+
      * v0.7.2 — Verified Patch (P0 fixes)
-     *
+
      * Patch notes vs v0.7.1:
      * - P0-1: maxCandidates now counts live (queued/claimed/planned/
      *         acquiring/observed/recognized/failed) not completed/skipped
@@ -228,7 +249,7 @@
      *         at 800 entries (FIFO) to avoid unbounded heap on link-dense SPA
      * - P1-1: per-observation discovery deduplication across providers
      * - P1-2: mutation observer batch dedup (Set per flush)
-     *
+
      * v0.7.1
      * Main pipeline:
      *
@@ -321,11 +342,28 @@
         // Runtime retention bounds (P1 hardening — not just persistence slice)
         maxDiscoveriesInMemory: 2000,
         maxResourcesInMemory: 2000,
-        // Search budget vs runtime budget distinction (v1.5)
+        // Search budget vs runtime budget distinction (v1.5) + Bounded Knowledge Kernel (v1.6)
         runtimeBudget: {
             maxBodiesInMemory: 150, // cap observations bodies retained (mirrors maxRequests)
             maxDiscoveryHistory: 2000,
-            maxResourceHistory: 2000
+            maxResourceHistory: 2000,
+            maxBodyBytes: 5_000_000 // global retained body bytes bound (v1.6 B2)
+        },
+        // RetentionPolicy — explicit bounded retention for every collection (v1.6)
+        // Every Map/Set tracks insertion order → FIFO eviction; relation arrays capped.
+        retention: {
+            visited: { maxEntries: 2000 },
+            candidateKeys: { maxEntries: 2000 },
+            candidateHistory: { maxEntries: 2000 }, // historical candidates beyond live frontier
+            observations: { maxEntries: 800, maxBodyBytes: 5_000_000, maxBodies: 150 },
+            discoveries: { maxEntries: 2000 },
+            resources: { maxEntries: 2000, maxRelationsPerResource: 100 },
+            fingerprint: { maxHashes: 500, maxUrlsPerHash: 100 },
+            patterns: { maxEntries: 500 },
+            clusters: { maxEntries: 500 },
+            networkEvents: { maxEntries: 1000 },
+            graphEdges: { maxEntries: 5000 },
+            diagnostics: { maxEntries: 500 }
         },
 
         observeDomMutations: true,
@@ -1388,16 +1426,19 @@
 
         merge(data = {}) {
             this.updatedAt = now();
+            const maxRel = CONFIG.retention?.resources?.maxRelationsPerResource
+                ?? CONFIG.runtimeBudget?.maxRelationsPerResource
+                ?? 100;
 
             if (data.type) {
                 this.types.push(data.type);
-                this.types = unique(this.types);
+                this.types = unique(this.types).slice(-maxRel);
             }
 
             if (data.mechanism) {
                 this.mechanisms.push(data.mechanism);
                 this.mechanisms =
-                    unique(this.mechanisms);
+                    unique(this.mechanisms).slice(-maxRel);
             }
 
             for (const field of [
@@ -1411,7 +1452,7 @@
                     this[field] = unique([
                         ...this[field],
                         ...data[field]
-                    ]);
+                    ]).slice(-maxRel);
                 }
             }
 
@@ -1484,6 +1525,193 @@
             };
         }
 
+        // ---- Retention helpers ----
+        _retention(path, fallback) {
+            try {
+                const parts = path.split('.');
+                let cur = CONFIG.retention;
+                for (const p of parts) {
+                    if (cur == null || !(p in cur)) return fallback;
+                    cur = cur[p];
+                }
+                return cur ?? fallback;
+            } catch { return fallback; }
+        }
+        _maxVisited() { return this._retention('visited.maxEntries', 2000); }
+        _maxCandidateKeys() { return this._retention('candidateKeys.maxEntries', 2000); }
+        _maxCandidateHistory() { return this._retention('candidateHistory.maxEntries', 2000); }
+        _maxObservations() { return this._retention('observations.maxEntries', CONFIG.maxObservationsInMemory ?? 800); }
+        _maxBodies() { return this._retention('observations.maxBodies', CONFIG.retention?.observations?.maxBodies ?? CONFIG.runtimeBudget?.maxBodiesInMemory ?? 150); }
+        _maxBodyBytes() { return this._retention('observations.maxBodyBytes', CONFIG.retention?.observations?.maxBodyBytes ?? CONFIG.runtimeBudget?.maxBodyBytes ?? 5_000_000); }
+        _maxDiscoveries() { return this._retention('discoveries.maxEntries', CONFIG.maxDiscoveriesInMemory ?? 2000); }
+        _maxResources() { return this._retention('resources.maxEntries', CONFIG.maxResourcesInMemory ?? 2000); }
+        _maxRelations() { return this._retention('resources.maxRelationsPerResource', 100); }
+        _maxHashes() { return this._retention('fingerprint.maxHashes', 500); }
+        _maxUrlsPerHash() { return this._retention('fingerprint.maxUrlsPerHash', 100); }
+        _maxPatterns() { return this._retention('patterns.maxEntries', 500); }
+        _maxClusters() { return this._retention('clusters.maxEntries', 500); }
+
+        _enforceVisitedBound() {
+            const max = this._maxVisited();
+            while (this.visited.size > max) {
+                const first = this.visited.values().next().value;
+                if (first == null) break;
+                this.visited.delete(first);
+                this.recordDiagnostic('visited-evicted', { max, evictedKey: String(first).slice(0, 80) });
+            }
+        }
+        _enforceCandidateKeysBound() {
+            const max = this._maxCandidateKeys();
+            while (this.candidateKeys.size > max) {
+                // Prefer evicting historical (completed/skipped/missing) keys first — preserves live frontier index
+                let evicted = false;
+                for (const [key, id] of this.candidateKeys) {
+                    const cand = this.candidates.get(id);
+                    const isLive = cand && !['completed', 'skipped'].includes(cand.status);
+                    if (!isLive) {
+                        this.candidateKeys.delete(key);
+                        this.recordDiagnostic('candidateKeys-evicted', { max, key: String(key).slice(0, 80), historical: true });
+                        evicted = true;
+                        break;
+                    }
+                }
+                if (evicted) continue;
+                // All remaining are live — do not evict live frontier; emit pressure and break to avoid breaking dedup
+                this.recordDiagnostic('candidateKeys-pressure', { max, liveCount: this.candidateKeys.size, note: 'all keys are live, retention deferred' });
+                break;
+            }
+        }
+        _enforceCandidateHistoryBound() {
+            const max = this._maxCandidateHistory();
+            while (this.candidates.size > max) {
+                // Evict oldest historical candidate (completed/skipped) first, FIFO within historical
+                let victimId = null;
+                for (const [id, cand] of this.candidates) {
+                    if (['completed', 'skipped'].includes(cand.status)) { victimId = id; break; }
+                }
+                if (!victimId) {
+                    // No historical to evict — all live (shouldn't exceed 2000 since live cap 750)
+                    this.recordDiagnostic('candidate-history-pressure', { max, liveSize: this.candidates.size });
+                    break;
+                }
+                const victim = this.candidates.get(victimId);
+                this.candidates.delete(victimId);
+                // clean candidateKeys reverse index for this candidate
+                if (victim) {
+                    const k = victim.identityKey();
+                    if (this.candidateKeys.get(k) === victimId) this.candidateKeys.delete(k);
+                    // also clean claimed set
+                    this.claimed.delete(victimId);
+                }
+                this.recordDiagnostic('candidate-history-evicted', { max, id: victimId });
+                // also clean resource candidateIds references to keep referential coherence
+                this._removeCandidateReferences(victimId);
+            }
+        }
+        _removeCandidateReferences(candidateId) {
+            if (!candidateId) return;
+            for (const res of this.resources.values()) {
+                const idx = res.candidateIds.indexOf(candidateId);
+                if (idx !== -1) {
+                    res.candidateIds.splice(idx, 1);
+                }
+            }
+        }
+        _removeObservationReferences(observationId) {
+            if (!observationId) return;
+            for (const res of this.resources.values()) {
+                const i = res.observationIds.indexOf(observationId);
+                if (i !== -1) res.observationIds.splice(i, 1);
+            }
+        }
+        _removeDiscoveryReferences(discoveryId) {
+            if (!discoveryId) return;
+            for (const res of this.resources.values()) {
+                const i = res.discoveryIds.indexOf(discoveryId);
+                if (i !== -1) res.discoveryIds.splice(i, 1);
+            }
+        }
+        _removeResourceFingerprint(url, fingerprint) {
+            try {
+                const hash = fingerprint?.hash;
+                if (!hash) return;
+                const set = this.fingerprintIndex.get(hash);
+                if (!set) return;
+                set.delete(url);
+                if (set.size === 0) this.fingerprintIndex.delete(hash);
+            } catch {}
+        }
+        _enforceFingerprintBound() {
+            const maxHashes = this._maxHashes();
+            const maxPer = this._maxUrlsPerHash();
+            // per-hash URL cap
+            for (const [hash, set] of this.fingerprintIndex) {
+                while (set.size > maxPer) {
+                    const first = set.values().next().value;
+                    if (first == null) break;
+                    set.delete(first);
+                    this.recordDiagnostic('fingerprint-url-evicted', { hash: String(hash).slice(0,16), maxPer });
+                }
+            }
+            // global hash cap — FIFO by insertion order
+            while (this.fingerprintIndex.size > maxHashes) {
+                const first = this.fingerprintIndex.keys().next().value;
+                if (first == null) break;
+                this.fingerprintIndex.delete(first);
+                this.recordDiagnostic('fingerprint-hash-evicted', { maxHashes });
+            }
+        }
+        _enforcePatternBound() {
+            const maxP = this._maxPatterns();
+            const maxC = this._maxClusters();
+            while (this.patternIndex.size > maxP) {
+                const first = this.patternIndex.keys().next().value;
+                if (first == null) break;
+                this.patternIndex.delete(first);
+                this.recordDiagnostic('pattern-evicted', { max: maxP });
+            }
+            while (this.clusterIndex.size > maxC) {
+                const first = this.clusterIndex.keys().next().value;
+                if (first == null) break;
+                this.clusterIndex.delete(first);
+                this.recordDiagnostic('cluster-evicted', { max: maxC });
+            }
+        }
+        _enforceBodyBudget() {
+            const maxBodies = this._maxBodies();
+            const maxBytes = this._maxBodyBytes();
+            // Collect bodies in insertion order
+            const bodies = [];
+            let total = 0;
+            for (const obs of this.observations.values()) {
+                if (obs.body && obs.body.length > 0) {
+                    bodies.push(obs);
+                    total += obs.body.length;
+                }
+            }
+            let evicted = 0;
+            while ((bodies.length > maxBodies || total > maxBytes) && bodies.length > 0) {
+                const oldest = bodies.shift();
+                if (!oldest || !oldest.body) continue;
+                total -= oldest.body.length;
+                const len = oldest.body.length;
+                oldest.body = '';
+                oldest.bodyTruncated = true;
+                evicted++;
+                this.recordDiagnostic('body-evicted', { observationId: oldest.id, len, maxBodies, maxBytes, totalAfter: total });
+            }
+            if (evicted > 0) {
+                // keep total bounded — no further action
+            }
+        }
+        _enforceGraphEdgesBound() {
+            const max = this._retention('graphEdges.maxEntries', CONFIG.maxGraphEdges ?? 5000);
+            while (this.graphEdges.length > max) {
+                this.graphEdges.shift();
+                this.recordDiagnostic('graphEdge-evicted', { max });
+            }
+        }
+
         addCandidate(candidate, discovery = null) {
             if (!(candidate instanceof Candidate)) {
                 candidate =
@@ -1535,6 +1763,10 @@
                         );
 
                     return existing;
+                } else {
+                    // Referential integrity fix: stale candidateKeys entry points to missing candidate (evicted) — clean it
+                    this.candidateKeys.delete(key);
+                    this.recordDiagnostic('candidateKeys-stale-cleaned', { key: String(key).slice(0,80) });
                 }
             }
 
@@ -1582,6 +1814,9 @@
                 key,
                 candidate.id
             );
+            // Enforce retention: candidateKeys and history
+            this._enforceCandidateKeysBound();
+            this._enforceCandidateHistoryBound();
 
             this.stats.discovered++;
 
@@ -1713,6 +1948,8 @@
             candidate.status = 'completed';
             candidate.completedAt = now();
             this.visited.add(candidate.identityKey());
+            this._enforceVisitedBound();
+            this._enforceCandidateHistoryBound();
             this.stats.completed++;
         }
 
@@ -1721,16 +1958,20 @@
             candidate.status = 'skipped';
             candidate.skippedAt = now();
             this.visited.add(candidate.identityKey());
+            this._enforceVisitedBound();
 
             const resource =
                 this.ensureResource(candidate.target);
 
-            resource.merge({
-                status: 'skipped',
-                skipReason: reason,
-                candidateIds: [candidate.id]
-            });
+            if (resource) {
+                resource.merge({
+                    status: 'skipped',
+                    skipReason: reason,
+                    candidateIds: [candidate.id]
+                });
+            }
 
+            this._enforceCandidateHistoryBound();
             this.stats.skipped++;
         }
 
@@ -1773,16 +2014,21 @@
         }
 
         recordObservation(observation) {
-            // P0-3: cap in-memory observations (FIFO) to avoid unbounded heap
+            // Enforce observations cap with referential cleanup (FIFO)
+            const maxObs = this._maxObservations();
             if (
-                this.observations.size >=
-                CONFIG.maxObservationsInMemory
+                this.observations.size >= maxObs
             ) {
                 const firstKey = this.observations.keys().next().value;
-                if (firstKey) this.observations.delete(firstKey);
-                this.recordDiagnostic('observation-evicted', {
-                    max: CONFIG.maxObservationsInMemory
-                });
+                if (firstKey) {
+                    const evicted = this.observations.get(firstKey);
+                    this.observations.delete(firstKey);
+                    if (evicted) this._removeObservationReferences(evicted.id);
+                    this.recordDiagnostic('observation-evicted', {
+                        max: maxObs,
+                        evictedId: firstKey
+                    });
+                }
             }
 
             this.observations.set(
@@ -1807,23 +2053,25 @@
                     observation.requestedUrl
                 );
 
-            resource.merge({
-                observationIds: [
-                    observation.id
-                ],
-                candidateIds: [
-                    observation.candidateId
-                ],
-                status:
-                    observation.status ===
-                    'success'
-                        ? 'acquired'
-                        : 'observed',
-                fingerprint:
-                    observation.fingerprint,
-                finalUrl:
-                    observation.http?.finalUrl
-            });
+            if (resource) {
+                resource.merge({
+                    observationIds: [
+                        observation.id
+                    ],
+                    candidateIds: [
+                        observation.candidateId
+                    ],
+                    status:
+                        observation.status ===
+                        'success'
+                            ? 'acquired'
+                            : 'observed',
+                    fingerprint:
+                        observation.fingerprint,
+                    finalUrl:
+                        observation.http?.finalUrl
+                });
+            }
 
             if (observation.fingerprint) {
                 const hash =
@@ -1839,6 +2087,8 @@
                 this.fingerprintIndex
                     .get(hash)
                     .add(observation.requestedUrl);
+
+                this._enforceFingerprintBound();
 
                 if (
                     CONFIG.changeDetection &&
@@ -1860,15 +2110,21 @@
                     } catch {}
                 }
             }
+
+            // Body budget enforcement — bounds retained body bytes, not just observation count
+            this._enforceBodyBudget();
         }
 
         addDiscovery(discovery) {
-            // Runtime bound: cap discoveries in memory (P1 hardening)
-            const maxD = CONFIG.maxDiscoveriesInMemory ?? CONFIG.runtimeBudget?.maxDiscoveryHistory ?? 2000;
+            // Runtime bound: cap discoveries in memory (P1 hardening) with resource cleanup
+            const maxD = this._maxDiscoveries();
             if (this.discoveries.size >= maxD) {
                 const first = this.discoveries.keys().next().value;
-                if (first) this.discoveries.delete(first);
-                this.recordDiagnostic('discovery-evicted', { max: maxD });
+                if (first) {
+                    this.discoveries.delete(first);
+                    this._removeDiscoveryReferences(first);
+                    this.recordDiagnostic('discovery-evicted', { max: maxD, evictedId: first });
+                }
             }
             this.discoveries.set(
                 discovery.id,
@@ -1886,14 +2142,16 @@
                     const resource =
                         this.ensureResource(canonical);
 
-                    resource.merge({
-                        mechanisms: [
-                            discovery.mechanism
-                        ],
-                        discoveryIds: [
-                            discovery.id
-                        ]
-                    });
+                    if (resource) {
+                        resource.merge({
+                            mechanisms: [
+                                discovery.mechanism
+                            ],
+                            discoveryIds: [
+                                discovery.id
+                            ]
+                        });
+                    }
                 }
             }
         }
@@ -1910,12 +2168,17 @@
                 this.resources.get(canonical);
 
             if (!resource) {
-                // Runtime bound: cap resources in memory
-                const maxR = CONFIG.maxResourcesInMemory ?? CONFIG.runtimeBudget?.maxResourceHistory ?? 2000;
+                // Runtime bound: cap resources in memory with fingerprint cleanup
+                const maxR = this._maxResources();
                 if (this.resources.size >= maxR) {
                     const first = this.resources.keys().next().value;
-                    if (first) this.resources.delete(first);
-                    this.recordDiagnostic('resource-evicted', { max: maxR });
+                    if (first) {
+                        const evicted = this.resources.get(first);
+                        this.resources.delete(first);
+                        if (evicted) this._removeResourceFingerprint(first, evicted.fingerprint);
+                        // also clean up graph edges referencing this resource? resources are URL-keyed, edges are candidate IDs — no direct link
+                        this.recordDiagnostic('resource-evicted', { max: maxR, evictedUrl: String(first).slice(0,80) });
+                    }
                 }
                 resource =
                     new ResourceRecord({
@@ -1934,11 +2197,13 @@
         addEdge(from, to, relation) {
             if (!from || !to) return;
 
+            const maxEdges = this._retention('graphEdges.maxEntries', CONFIG.maxGraphEdges ?? 5000);
             if (
-                this.graphEdges.length >=
-                CONFIG.maxGraphEdges
+                this.graphEdges.length >= maxEdges
             ) {
-                return;
+                // FIFO shift oldest edge to keep bounded and referentially coherent
+                this.graphEdges.shift();
+                this.recordDiagnostic('graphEdge-evicted', { max: maxEdges });
             }
 
             this.graphEdges.push({
@@ -1958,9 +2223,9 @@
                 data
             });
 
+            const maxDiag = this._retention('diagnostics.maxEntries', CONFIG.maxDiagnostics ?? 500);
             if (
-                this.diagnostics.length >
-                CONFIG.maxDiagnostics
+                this.diagnostics.length > maxDiag
             ) {
                 this.diagnostics.shift();
             }
@@ -2007,6 +2272,7 @@
                     const key = clusterKeyForCandidate(candidate);
                     this.clusterIndex.set(key, (this.clusterIndex.get(key) || 0) + 1);
                 }
+                this._enforcePatternBound();
             } catch {}
         }
 
@@ -2084,7 +2350,7 @@
 
                 visited: [
                     ...this.visited
-                ],
+                ].slice(-CONFIG.retention?.visited?.maxEntries ?? 2000),
 
                 graphEdges:
                     this.graphEdges.slice(
@@ -2180,6 +2446,56 @@
                         .add(resource.url);
                 }
             }
+
+            // --- Bounded restoration: enforce runtime retention after loading persisted state ---
+            // Otherwise persisted 5000 resources could bypass runtime cap of 2000.
+
+            // Trim candidates history (keep live + most recent historical)
+            this._enforceCandidateHistoryBound();
+            // Need second pass for candidateKeys if still over due to stale entries
+            this._enforceCandidateKeysBound();
+            this._enforceVisitedBound();
+
+            // Observations: keep most recent maxObs, also enforce body budget
+            const maxObs = this._maxObservations();
+            while (this.observations.size > maxObs) {
+                const first = this.observations.keys().next().value;
+                if (first == null) break;
+                const ev = this.observations.get(first);
+                this.observations.delete(first);
+                if (ev) this._removeObservationReferences(ev.id);
+                this.recordDiagnostic('observation-evicted-on-restore', { max: maxObs });
+            }
+            this._enforceBodyBudget();
+
+            // Discoveries
+            const maxD = this._maxDiscoveries();
+            while (this.discoveries.size > maxD) {
+                const first = this.discoveries.keys().next().value;
+                if (first == null) break;
+                this.discoveries.delete(first);
+                this._removeDiscoveryReferences(first);
+                this.recordDiagnostic('discovery-evicted-on-restore', { max: maxD });
+            }
+
+            // Resources
+            const maxR = this._maxResources();
+            while (this.resources.size > maxR) {
+                const first = this.resources.keys().next().value;
+                if (first == null) break;
+                const ev = this.resources.get(first);
+                this.resources.delete(first);
+                if (ev) this._removeResourceFingerprint(first, ev.fingerprint);
+                this.recordDiagnostic('resource-evicted-on-restore', { max: maxR });
+            }
+
+            // Fingerprint / pattern / cluster / edges / diagnostics already bounded via helpers
+            this._enforceFingerprintBound();
+            this._enforcePatternBound();
+            this._enforceGraphEdgesBound();
+            // Diagnostics trimmed via retention max
+            const maxDiag = this._retention('diagnostics.maxEntries', CONFIG.maxDiagnostics ?? 500);
+            while (this.diagnostics.length > maxDiag) this.diagnostics.shift();
         }
     }
 
@@ -3895,6 +4211,32 @@
                             onload: response => {
                                 clearTimeout(timeoutId);
 
+                                // GM redirect enforcement: if finalUrl cross-origin and sameOriginOnly, treat as redirect-blocked
+                                const _final = response.finalUrl || plan.target;
+                                if (CONFIG.sameOriginOnly && _final !== plan.target) {
+                                    try {
+                                        const fCan = canonicalizeUrl(_final) || _final;
+                                        if (!isAllowedUrl(fCan)) {
+                                            ledger.recordDiagnostic('gm-redirect-blocked', { target: plan.target, finalUrl: _final });
+                                            finish(new Observation({
+                                                candidateId: plan.candidateId,
+                                                planId: plan.id,
+                                                target: plan.target,
+                                                requestedUrl: plan.target,
+                                                startedAt,
+                                                completedAt: now(),
+                                                status: 'blocked',
+                                                reason: 'redirect-cross-origin',
+                                                http: { status: response.status, contentType: '', contentLength: null, finalUrl: _final },
+                                                body: '',
+                                                bodyTruncated: false,
+                                                errors: [`redirect to cross-origin blocked: ${_final}`]
+                                            }));
+                                            return;
+                                        }
+                                    } catch {}
+                                }
+
                                 let body =
                                     String(
                                         response.responseText ||
@@ -3990,9 +4332,7 @@
                                                 return h;
                                             })(),
 
-                                            finalUrl:
-                                                response.finalUrl ||
-                                                plan.target
+                                            finalUrl: _final
                                         },
 
                                         body,
@@ -5613,17 +5953,18 @@
          */
 
         recordNetworkEvent(event) {
+            // Bounded via CONFIG.retention.networkEvents (v1.6) fallback to legacy maxNetworkEvents
+            const _maxNet = CONFIG.retention?.networkEvents?.maxEntries ?? CONFIG.maxNetworkEvents;
             // Enforce cap only for new keys; updates to existing requestId (bridge request→response) must not be dropped at cap
             if (
                 !this.networkEvents.has(event.id) &&
-                this.networkEvents.size >=
-                CONFIG.maxNetworkEvents
+                this.networkEvents.size >= _maxNet
             ) {
                 // Evict oldest to make room (FIFO) rather than silently drop
                 const first = this.networkEvents.keys().next().value;
                 if (first) this.networkEvents.delete(first);
                 // Also record diagnostic for observability
-                this.ledger?.recordDiagnostic?.('network-events-evicted', { max: CONFIG.maxNetworkEvents });
+                this.ledger?.recordDiagnostic?.('network-events-evicted', { max: _maxNet });
             }
 
             this.networkEvents.set(

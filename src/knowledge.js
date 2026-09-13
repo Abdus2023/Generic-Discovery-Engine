@@ -1,4 +1,4 @@
-// src/knowledge.js — KnowledgeBase
+// src/knowledge.js — KnowledgeBase — Bounded Knowledge Kernel v1.6
     class KnowledgeBase {
         constructor() {
             this.candidates = new Map();
@@ -35,6 +35,193 @@
                 failed: 0,
                 retried: 0
             };
+        }
+
+        // ---- Retention helpers ----
+        _retention(path, fallback) {
+            try {
+                const parts = path.split('.');
+                let cur = CONFIG.retention;
+                for (const p of parts) {
+                    if (cur == null || !(p in cur)) return fallback;
+                    cur = cur[p];
+                }
+                return cur ?? fallback;
+            } catch { return fallback; }
+        }
+        _maxVisited() { return this._retention('visited.maxEntries', 2000); }
+        _maxCandidateKeys() { return this._retention('candidateKeys.maxEntries', 2000); }
+        _maxCandidateHistory() { return this._retention('candidateHistory.maxEntries', 2000); }
+        _maxObservations() { return this._retention('observations.maxEntries', CONFIG.maxObservationsInMemory ?? 800); }
+        _maxBodies() { return this._retention('observations.maxBodies', CONFIG.retention?.observations?.maxBodies ?? CONFIG.runtimeBudget?.maxBodiesInMemory ?? 150); }
+        _maxBodyBytes() { return this._retention('observations.maxBodyBytes', CONFIG.retention?.observations?.maxBodyBytes ?? CONFIG.runtimeBudget?.maxBodyBytes ?? 5_000_000); }
+        _maxDiscoveries() { return this._retention('discoveries.maxEntries', CONFIG.maxDiscoveriesInMemory ?? 2000); }
+        _maxResources() { return this._retention('resources.maxEntries', CONFIG.maxResourcesInMemory ?? 2000); }
+        _maxRelations() { return this._retention('resources.maxRelationsPerResource', 100); }
+        _maxHashes() { return this._retention('fingerprint.maxHashes', 500); }
+        _maxUrlsPerHash() { return this._retention('fingerprint.maxUrlsPerHash', 100); }
+        _maxPatterns() { return this._retention('patterns.maxEntries', 500); }
+        _maxClusters() { return this._retention('clusters.maxEntries', 500); }
+
+        _enforceVisitedBound() {
+            const max = this._maxVisited();
+            while (this.visited.size > max) {
+                const first = this.visited.values().next().value;
+                if (first == null) break;
+                this.visited.delete(first);
+                this.recordDiagnostic('visited-evicted', { max, evictedKey: String(first).slice(0, 80) });
+            }
+        }
+        _enforceCandidateKeysBound() {
+            const max = this._maxCandidateKeys();
+            while (this.candidateKeys.size > max) {
+                // Prefer evicting historical (completed/skipped/missing) keys first — preserves live frontier index
+                let evicted = false;
+                for (const [key, id] of this.candidateKeys) {
+                    const cand = this.candidates.get(id);
+                    const isLive = cand && !['completed', 'skipped'].includes(cand.status);
+                    if (!isLive) {
+                        this.candidateKeys.delete(key);
+                        this.recordDiagnostic('candidateKeys-evicted', { max, key: String(key).slice(0, 80), historical: true });
+                        evicted = true;
+                        break;
+                    }
+                }
+                if (evicted) continue;
+                // All remaining are live — do not evict live frontier; emit pressure and break to avoid breaking dedup
+                this.recordDiagnostic('candidateKeys-pressure', { max, liveCount: this.candidateKeys.size, note: 'all keys are live, retention deferred' });
+                break;
+            }
+        }
+        _enforceCandidateHistoryBound() {
+            const max = this._maxCandidateHistory();
+            while (this.candidates.size > max) {
+                // Evict oldest historical candidate (completed/skipped) first, FIFO within historical
+                let victimId = null;
+                for (const [id, cand] of this.candidates) {
+                    if (['completed', 'skipped'].includes(cand.status)) { victimId = id; break; }
+                }
+                if (!victimId) {
+                    // No historical to evict — all live (shouldn't exceed 2000 since live cap 750)
+                    this.recordDiagnostic('candidate-history-pressure', { max, liveSize: this.candidates.size });
+                    break;
+                }
+                const victim = this.candidates.get(victimId);
+                this.candidates.delete(victimId);
+                // clean candidateKeys reverse index for this candidate
+                if (victim) {
+                    const k = victim.identityKey();
+                    if (this.candidateKeys.get(k) === victimId) this.candidateKeys.delete(k);
+                    // also clean claimed set
+                    this.claimed.delete(victimId);
+                }
+                this.recordDiagnostic('candidate-history-evicted', { max, id: victimId });
+                // also clean resource candidateIds references to keep referential coherence
+                this._removeCandidateReferences(victimId);
+            }
+        }
+        _removeCandidateReferences(candidateId) {
+            if (!candidateId) return;
+            for (const res of this.resources.values()) {
+                const idx = res.candidateIds.indexOf(candidateId);
+                if (idx !== -1) {
+                    res.candidateIds.splice(idx, 1);
+                }
+            }
+        }
+        _removeObservationReferences(observationId) {
+            if (!observationId) return;
+            for (const res of this.resources.values()) {
+                const i = res.observationIds.indexOf(observationId);
+                if (i !== -1) res.observationIds.splice(i, 1);
+            }
+        }
+        _removeDiscoveryReferences(discoveryId) {
+            if (!discoveryId) return;
+            for (const res of this.resources.values()) {
+                const i = res.discoveryIds.indexOf(discoveryId);
+                if (i !== -1) res.discoveryIds.splice(i, 1);
+            }
+        }
+        _removeResourceFingerprint(url, fingerprint) {
+            try {
+                const hash = fingerprint?.hash;
+                if (!hash) return;
+                const set = this.fingerprintIndex.get(hash);
+                if (!set) return;
+                set.delete(url);
+                if (set.size === 0) this.fingerprintIndex.delete(hash);
+            } catch {}
+        }
+        _enforceFingerprintBound() {
+            const maxHashes = this._maxHashes();
+            const maxPer = this._maxUrlsPerHash();
+            // per-hash URL cap
+            for (const [hash, set] of this.fingerprintIndex) {
+                while (set.size > maxPer) {
+                    const first = set.values().next().value;
+                    if (first == null) break;
+                    set.delete(first);
+                    this.recordDiagnostic('fingerprint-url-evicted', { hash: String(hash).slice(0,16), maxPer });
+                }
+            }
+            // global hash cap — FIFO by insertion order
+            while (this.fingerprintIndex.size > maxHashes) {
+                const first = this.fingerprintIndex.keys().next().value;
+                if (first == null) break;
+                this.fingerprintIndex.delete(first);
+                this.recordDiagnostic('fingerprint-hash-evicted', { maxHashes });
+            }
+        }
+        _enforcePatternBound() {
+            const maxP = this._maxPatterns();
+            const maxC = this._maxClusters();
+            while (this.patternIndex.size > maxP) {
+                const first = this.patternIndex.keys().next().value;
+                if (first == null) break;
+                this.patternIndex.delete(first);
+                this.recordDiagnostic('pattern-evicted', { max: maxP });
+            }
+            while (this.clusterIndex.size > maxC) {
+                const first = this.clusterIndex.keys().next().value;
+                if (first == null) break;
+                this.clusterIndex.delete(first);
+                this.recordDiagnostic('cluster-evicted', { max: maxC });
+            }
+        }
+        _enforceBodyBudget() {
+            const maxBodies = this._maxBodies();
+            const maxBytes = this._maxBodyBytes();
+            // Collect bodies in insertion order
+            const bodies = [];
+            let total = 0;
+            for (const obs of this.observations.values()) {
+                if (obs.body && obs.body.length > 0) {
+                    bodies.push(obs);
+                    total += obs.body.length;
+                }
+            }
+            let evicted = 0;
+            while ((bodies.length > maxBodies || total > maxBytes) && bodies.length > 0) {
+                const oldest = bodies.shift();
+                if (!oldest || !oldest.body) continue;
+                total -= oldest.body.length;
+                const len = oldest.body.length;
+                oldest.body = '';
+                oldest.bodyTruncated = true;
+                evicted++;
+                this.recordDiagnostic('body-evicted', { observationId: oldest.id, len, maxBodies, maxBytes, totalAfter: total });
+            }
+            if (evicted > 0) {
+                // keep total bounded — no further action
+            }
+        }
+        _enforceGraphEdgesBound() {
+            const max = this._retention('graphEdges.maxEntries', CONFIG.maxGraphEdges ?? 5000);
+            while (this.graphEdges.length > max) {
+                this.graphEdges.shift();
+                this.recordDiagnostic('graphEdge-evicted', { max });
+            }
         }
 
         addCandidate(candidate, discovery = null) {
@@ -88,6 +275,10 @@
                         );
 
                     return existing;
+                } else {
+                    // Referential integrity fix: stale candidateKeys entry points to missing candidate (evicted) — clean it
+                    this.candidateKeys.delete(key);
+                    this.recordDiagnostic('candidateKeys-stale-cleaned', { key: String(key).slice(0,80) });
                 }
             }
 
@@ -135,6 +326,9 @@
                 key,
                 candidate.id
             );
+            // Enforce retention: candidateKeys and history
+            this._enforceCandidateKeysBound();
+            this._enforceCandidateHistoryBound();
 
             this.stats.discovered++;
 
@@ -266,6 +460,8 @@
             candidate.status = 'completed';
             candidate.completedAt = now();
             this.visited.add(candidate.identityKey());
+            this._enforceVisitedBound();
+            this._enforceCandidateHistoryBound();
             this.stats.completed++;
         }
 
@@ -274,16 +470,20 @@
             candidate.status = 'skipped';
             candidate.skippedAt = now();
             this.visited.add(candidate.identityKey());
+            this._enforceVisitedBound();
 
             const resource =
                 this.ensureResource(candidate.target);
 
-            resource.merge({
-                status: 'skipped',
-                skipReason: reason,
-                candidateIds: [candidate.id]
-            });
+            if (resource) {
+                resource.merge({
+                    status: 'skipped',
+                    skipReason: reason,
+                    candidateIds: [candidate.id]
+                });
+            }
 
+            this._enforceCandidateHistoryBound();
             this.stats.skipped++;
         }
 
@@ -326,16 +526,21 @@
         }
 
         recordObservation(observation) {
-            // P0-3: cap in-memory observations (FIFO) to avoid unbounded heap
+            // Enforce observations cap with referential cleanup (FIFO)
+            const maxObs = this._maxObservations();
             if (
-                this.observations.size >=
-                CONFIG.maxObservationsInMemory
+                this.observations.size >= maxObs
             ) {
                 const firstKey = this.observations.keys().next().value;
-                if (firstKey) this.observations.delete(firstKey);
-                this.recordDiagnostic('observation-evicted', {
-                    max: CONFIG.maxObservationsInMemory
-                });
+                if (firstKey) {
+                    const evicted = this.observations.get(firstKey);
+                    this.observations.delete(firstKey);
+                    if (evicted) this._removeObservationReferences(evicted.id);
+                    this.recordDiagnostic('observation-evicted', {
+                        max: maxObs,
+                        evictedId: firstKey
+                    });
+                }
             }
 
             this.observations.set(
@@ -360,23 +565,25 @@
                     observation.requestedUrl
                 );
 
-            resource.merge({
-                observationIds: [
-                    observation.id
-                ],
-                candidateIds: [
-                    observation.candidateId
-                ],
-                status:
-                    observation.status ===
-                    'success'
-                        ? 'acquired'
-                        : 'observed',
-                fingerprint:
-                    observation.fingerprint,
-                finalUrl:
-                    observation.http?.finalUrl
-            });
+            if (resource) {
+                resource.merge({
+                    observationIds: [
+                        observation.id
+                    ],
+                    candidateIds: [
+                        observation.candidateId
+                    ],
+                    status:
+                        observation.status ===
+                        'success'
+                            ? 'acquired'
+                            : 'observed',
+                    fingerprint:
+                        observation.fingerprint,
+                    finalUrl:
+                        observation.http?.finalUrl
+                });
+            }
 
             if (observation.fingerprint) {
                 const hash =
@@ -392,6 +599,8 @@
                 this.fingerprintIndex
                     .get(hash)
                     .add(observation.requestedUrl);
+
+                this._enforceFingerprintBound();
 
                 if (
                     CONFIG.changeDetection &&
@@ -413,15 +622,21 @@
                     } catch {}
                 }
             }
+
+            // Body budget enforcement — bounds retained body bytes, not just observation count
+            this._enforceBodyBudget();
         }
 
         addDiscovery(discovery) {
-            // Runtime bound: cap discoveries in memory (P1 hardening)
-            const maxD = CONFIG.maxDiscoveriesInMemory ?? CONFIG.runtimeBudget?.maxDiscoveryHistory ?? 2000;
+            // Runtime bound: cap discoveries in memory (P1 hardening) with resource cleanup
+            const maxD = this._maxDiscoveries();
             if (this.discoveries.size >= maxD) {
                 const first = this.discoveries.keys().next().value;
-                if (first) this.discoveries.delete(first);
-                this.recordDiagnostic('discovery-evicted', { max: maxD });
+                if (first) {
+                    this.discoveries.delete(first);
+                    this._removeDiscoveryReferences(first);
+                    this.recordDiagnostic('discovery-evicted', { max: maxD, evictedId: first });
+                }
             }
             this.discoveries.set(
                 discovery.id,
@@ -439,14 +654,16 @@
                     const resource =
                         this.ensureResource(canonical);
 
-                    resource.merge({
-                        mechanisms: [
-                            discovery.mechanism
-                        ],
-                        discoveryIds: [
-                            discovery.id
-                        ]
-                    });
+                    if (resource) {
+                        resource.merge({
+                            mechanisms: [
+                                discovery.mechanism
+                            ],
+                            discoveryIds: [
+                                discovery.id
+                            ]
+                        });
+                    }
                 }
             }
         }
@@ -463,12 +680,17 @@
                 this.resources.get(canonical);
 
             if (!resource) {
-                // Runtime bound: cap resources in memory
-                const maxR = CONFIG.maxResourcesInMemory ?? CONFIG.runtimeBudget?.maxResourceHistory ?? 2000;
+                // Runtime bound: cap resources in memory with fingerprint cleanup
+                const maxR = this._maxResources();
                 if (this.resources.size >= maxR) {
                     const first = this.resources.keys().next().value;
-                    if (first) this.resources.delete(first);
-                    this.recordDiagnostic('resource-evicted', { max: maxR });
+                    if (first) {
+                        const evicted = this.resources.get(first);
+                        this.resources.delete(first);
+                        if (evicted) this._removeResourceFingerprint(first, evicted.fingerprint);
+                        // also clean up graph edges referencing this resource? resources are URL-keyed, edges are candidate IDs — no direct link
+                        this.recordDiagnostic('resource-evicted', { max: maxR, evictedUrl: String(first).slice(0,80) });
+                    }
                 }
                 resource =
                     new ResourceRecord({
@@ -487,11 +709,13 @@
         addEdge(from, to, relation) {
             if (!from || !to) return;
 
+            const maxEdges = this._retention('graphEdges.maxEntries', CONFIG.maxGraphEdges ?? 5000);
             if (
-                this.graphEdges.length >=
-                CONFIG.maxGraphEdges
+                this.graphEdges.length >= maxEdges
             ) {
-                return;
+                // FIFO shift oldest edge to keep bounded and referentially coherent
+                this.graphEdges.shift();
+                this.recordDiagnostic('graphEdge-evicted', { max: maxEdges });
             }
 
             this.graphEdges.push({
@@ -511,9 +735,9 @@
                 data
             });
 
+            const maxDiag = this._retention('diagnostics.maxEntries', CONFIG.maxDiagnostics ?? 500);
             if (
-                this.diagnostics.length >
-                CONFIG.maxDiagnostics
+                this.diagnostics.length > maxDiag
             ) {
                 this.diagnostics.shift();
             }
@@ -560,6 +784,7 @@
                     const key = clusterKeyForCandidate(candidate);
                     this.clusterIndex.set(key, (this.clusterIndex.get(key) || 0) + 1);
                 }
+                this._enforcePatternBound();
             } catch {}
         }
 
@@ -637,7 +862,7 @@
 
                 visited: [
                     ...this.visited
-                ],
+                ].slice(-CONFIG.retention?.visited?.maxEntries ?? 2000),
 
                 graphEdges:
                     this.graphEdges.slice(
@@ -733,6 +958,56 @@
                         .add(resource.url);
                 }
             }
+
+            // --- Bounded restoration: enforce runtime retention after loading persisted state ---
+            // Otherwise persisted 5000 resources could bypass runtime cap of 2000.
+
+            // Trim candidates history (keep live + most recent historical)
+            this._enforceCandidateHistoryBound();
+            // Need second pass for candidateKeys if still over due to stale entries
+            this._enforceCandidateKeysBound();
+            this._enforceVisitedBound();
+
+            // Observations: keep most recent maxObs, also enforce body budget
+            const maxObs = this._maxObservations();
+            while (this.observations.size > maxObs) {
+                const first = this.observations.keys().next().value;
+                if (first == null) break;
+                const ev = this.observations.get(first);
+                this.observations.delete(first);
+                if (ev) this._removeObservationReferences(ev.id);
+                this.recordDiagnostic('observation-evicted-on-restore', { max: maxObs });
+            }
+            this._enforceBodyBudget();
+
+            // Discoveries
+            const maxD = this._maxDiscoveries();
+            while (this.discoveries.size > maxD) {
+                const first = this.discoveries.keys().next().value;
+                if (first == null) break;
+                this.discoveries.delete(first);
+                this._removeDiscoveryReferences(first);
+                this.recordDiagnostic('discovery-evicted-on-restore', { max: maxD });
+            }
+
+            // Resources
+            const maxR = this._maxResources();
+            while (this.resources.size > maxR) {
+                const first = this.resources.keys().next().value;
+                if (first == null) break;
+                const ev = this.resources.get(first);
+                this.resources.delete(first);
+                if (ev) this._removeResourceFingerprint(first, ev.fingerprint);
+                this.recordDiagnostic('resource-evicted-on-restore', { max: maxR });
+            }
+
+            // Fingerprint / pattern / cluster / edges / diagnostics already bounded via helpers
+            this._enforceFingerprintBound();
+            this._enforcePatternBound();
+            this._enforceGraphEdgesBound();
+            // Diagnostics trimmed via retention max
+            const maxDiag = this._retention('diagnostics.maxEntries', CONFIG.maxDiagnostics ?? 500);
+            while (this.diagnostics.length > maxDiag) this.diagnostics.shift();
         }
     }
 

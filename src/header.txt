@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Generic Discovery Engine
 // @namespace    generic-discovery
-// @version      1.5.0
+// @version      1.6.0
 // @description  Generic web-resource discovery engine inspired by the architecture of DVB blind scanning.
 // @match        *://*/*
 // @run-at       document-start
@@ -19,6 +19,27 @@
     /*
      * ============================================================
      * Generic Discovery Engine
+     * v1.6.0 — Bounded Knowledge Kernel (v1.5 second-pass audit fixes — B1→B3)
+     * Patch notes vs v1.5.0:
+     * - Retention: CONFIG.retention unified policy (visited 2k, candidateKeys 2k, candidateHistory 2k,
+     *           observations 800+5M/150 bodies, discoveries 2k, resources 2k×100 relations,
+     *           fingerprint 500×100, patterns 500, clusters 500) + runtimeBudget.maxBodyBytes 5M +
+     *           ResourceRecord.merge now slices relation arrays to 100 (vs unbounded unique)
+     *           + KnowledgeBase now Bounded Knowledge Kernel: _enforceVisitedBound/_enforceCandidateKeysBound
+     *           (historical-first, live-preserved) / _enforceCandidateHistoryBound (evicts oldest
+     *           completed/skipped, cleans candidateKeys+claimed+resource refs) / _enforceBodyBudget
+     *           (FIFO clears oldest bodies when >150 bodies or >5M bytes, diagnostic body-evicted)
+     *           + fingerprint/pattern/cluster/graphEdges bounds with FIFO eviction + diagnostics
+     *           + referential coherence: _removeObservationReferences/_removeDiscoveryReferences/
+     *           _removeCandidateReferences + _removeResourceFingerprint + stale candidateKeys
+     *           cleaned on duplicate; restore() now enforces all runtime caps (observations/
+     *           discoveries/resources/fingerprint/edges) after loading persisted state
+     *           + serialize() now caps visited slice to 2k
+     *         + Security: GM_xmlhttpRequest onload now enforces redirect boundary (if sameOriginOnly
+     *           and finalUrl cross-origin → blocked redirect-cross-origin, diagnostic gm-redirect-blocked)
+     *           matching fetch redirect:'error' semantics
+     *         + Build: verify-build now asserts retention + body-evicted + gm-redirect-blocked + merge slice
+
      * v1.5.0 — Verification Hardening + Runtime Bounds (P0/P1 audit fixes)
      * Patch notes vs v1.4.0:
      * - Verification: .c8rc now honest (all:true src tree, exclude tests/scripts/dist, 50/45/50) +
@@ -173,7 +194,7 @@
      *           harness, 500 iter, TTL+retry windows)
      *         + Types: JSDoc typedefs + tsconfig.json (checkJs strict) +
      *           npm run typecheck (tsc --noEmit) + .c8rc gate holds 85/75/80
-     *
+
      * Patch notes vs v0.7.6:
      * - Bounds: CONFIG.candidateTTL (0=off, ms) — claimNextCandidate() now
      *           sweeps queued/failed and marks ttl-expired (ledger + skipped)
@@ -182,9 +203,9 @@
      *           property-determinism harness (seeded, 500 iter)
      *         + Coverage gate: .c8rc check-coverage true (85/75) + CI lint
      *           + 3 ADRs (007-ttl, 008-throttle, 009-coverage-gates)
-     *
+
      * v0.7.6 — Performance & Coverage (rAF UI + coverage proof + invariants)
-     *
+
      * Patch notes vs v0.7.5:
      * - Perf: updateUI() now rAF-batched (_uiRaf + _doUpdateUI) to avoid
      *         layout thrash when ledger hits 5k and 4 workers flush;
@@ -193,31 +214,31 @@
      *         + property tests for effectivePriority invariants
 
      * v0.7.5 — Trust & Verification (Trusted Types + fuzz + CI + ADRs)
-     *
+
      * Patch notes vs v0.7.4:
      * - Trust: Trusted Types policy (gde-bridge) for installBridge()
      *         + JSDoc typedefs + CI workflow verify.yml +
      *           fuzz harness (extract/canonicalize) + 3 more ADRs
-     *
+
      * v0.7.4 — Hardening & Hygiene (P2-6 privacy/CSP/header + ADR split)
-     *
+
      * Patch notes vs v0.7.3:
      * - P2-6: @connect self (with * commented for cross-origin opt-in)
      *         + CONFIG.privacy.stripSensitiveParams (opt-in token/
      *           session/auth scrub in canonicalizeUrl) + explicit
      *           csp-blocks-bridge diagnostic + cross-origin-config
      *           warning at init when sameOriginOnly=false
-     *
+
      * v0.7.3 — Coverage Frontier + E2E Verified (P0/P1/P2-3)
-     *
+
      * Patch notes vs v0.7.2:
      * - P2-3: getCoverageMetrics() + UI + export coverage (frontierSize,
      *         queuedByType, liveCount, visitedSize, knownResources,
      *         requestsRemaining, ledgerSize, graphEdges, observations)
      *         makes budget/frontier observable without extra traversal
-     *
+
      * v0.7.2 — Verified Patch (P0 fixes)
-     *
+
      * Patch notes vs v0.7.1:
      * - P0-1: maxCandidates now counts live (queued/claimed/planned/
      *         acquiring/observed/recognized/failed) not completed/skipped
@@ -228,7 +249,7 @@
      *         at 800 entries (FIFO) to avoid unbounded heap on link-dense SPA
      * - P1-1: per-observation discovery deduplication across providers
      * - P1-2: mutation observer batch dedup (Set per flush)
-     *
+
      * v0.7.1
      * Main pipeline:
      *

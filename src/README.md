@@ -1,8 +1,8 @@
-# src — Modular Prelude (v1.5.0 — Verification Hardening + Runtime Bounds)
+# src — Modular Prelude (v1.6.0 — Bounded Knowledge Kernel)
 
 This directory is the **modular prelude** for the Generic Discovery Engine.
 
-`dist/generic-discovery-engine.user.js` (6,453 lines, sha256 508e3e… + `dist/generic-discovery-engine.min.js` 66k 32.7% bf049e… + `dist/generic-discovery-engine.esm.js` 267B + bundle 20.6%) is the runnable artifact, logical sections mirrored here as ES modules:
+`dist/generic-discovery-engine.user.js` (6,794 lines 223914B sha 7efbfd… + `dist/generic-discovery-engine.min.js` 74k 33.4% ba83e9… + `dist/generic-discovery-engine.esm.js` 267B + bundle 18.9%) is the runnable artifact, logical sections mirrored here as ES modules:
 
 - `config.js` — `CONFIG` (v8, 84 keys, `export const CONFIG`)
 - `utils.js` — `canonicalizeUrl`, `isAllowedUrl`, `fnv1a32`, `makeFingerprint`, `originOf`, `extractUrlPattern`, `clusterKeyForCandidate`, `extractUrlsFromText`/`Css`/`Xml` (wired to `CONFIG`)
@@ -14,7 +14,9 @@ This directory is the **modular prelude** for the Generic Discovery Engine.
 
 `scripts/build.js` now verifies that all 7 `src/*.js` exist and are non-empty and that `dist` header `@version` matches `package.json` before capturing `sha256`/`lines`/`size` → `dist/.build-meta.json`. `scripts/verify-build.js` additionally checks the 13-provider order and `extractUrlPattern` + `getHealthMetrics` + `redirect:error` + `@connect` + runtime bounds. v0.8.2 export hardening adds `getCoverageMetrics()` inference + `exportData().inference` (see ADR 020). Future `v0.9.0` will make `scripts/build.js` a true bundler (`src/` → `dist/` with header preservation).
 
-Verification: `npm run verify:build` deterministic (src 7 OK, 508e3e… 6453 lines + min bf049e… + esm 792783… + analyze 20.6%); `npm test` 160/160 PASS (incl. `tests/src-build.test.js` 6 cases + `tests/provider-lazy.test.js` 9 cases + `tests/provider-sitemap-openapi.test.js` 8 cases + `tests/provider-wellknown-manifest.test.js` 7 cases + `tests/health-concurrent.test.js` 10 cases); `npm run coverage:check` 0/0/0 (honest, was 85/75/80 measuring tests only).
+Verification: `npm run verify:build` deterministic (src 7 OK, 7efbfd… 6794 lines + min ba83e9… + esm 792783… + analyze 18.9%); `npm test` 160/160 PASS (incl. `tests/src-build.test.js` 6 cases + `tests/provider-lazy.test.js` 9 cases + `tests/provider-sitemap-openapi.test.js` 8 cases + `tests/provider-wellknown-manifest.test.js` 7 cases + `tests/health-concurrent.test.js` 10 cases); `npm run coverage:check` 0/0/0 (honest, was 85/75/80 measuring tests only).
+
+Bounded Knowledge Kernel (v1.6): `CONFIG.retention` + `maxBodyBytes 5M` + `maxRelations 100` + `gm-redirect-blocked` + referential coherence + bounded restoration (see ADR 032). `npm run build:all` 5 steps deterministic.
 
 Verification hardening + runtime bounds (v1.5): `maxDiscoveries/Resources` + `runtimeBudget` + `redirect:error` + `@connect self` + `diagnosticCount` + `configuredProviders` + `concurrencyTarget` + honest coverage/lint/typecheck (see ADR 031). `npm run build:all` 5 steps deterministic.
 

@@ -421,6 +421,32 @@
                             onload: response => {
                                 clearTimeout(timeoutId);
 
+                                // GM redirect enforcement: if finalUrl cross-origin and sameOriginOnly, treat as redirect-blocked
+                                const _final = response.finalUrl || plan.target;
+                                if (CONFIG.sameOriginOnly && _final !== plan.target) {
+                                    try {
+                                        const fCan = canonicalizeUrl(_final) || _final;
+                                        if (!isAllowedUrl(fCan)) {
+                                            ledger.recordDiagnostic('gm-redirect-blocked', { target: plan.target, finalUrl: _final });
+                                            finish(new Observation({
+                                                candidateId: plan.candidateId,
+                                                planId: plan.id,
+                                                target: plan.target,
+                                                requestedUrl: plan.target,
+                                                startedAt,
+                                                completedAt: now(),
+                                                status: 'blocked',
+                                                reason: 'redirect-cross-origin',
+                                                http: { status: response.status, contentType: '', contentLength: null, finalUrl: _final },
+                                                body: '',
+                                                bodyTruncated: false,
+                                                errors: [`redirect to cross-origin blocked: ${_final}`]
+                                            }));
+                                            return;
+                                        }
+                                    } catch {}
+                                }
+
                                 let body =
                                     String(
                                         response.responseText ||
@@ -516,9 +542,7 @@
                                                 return h;
                                             })(),
 
-                                            finalUrl:
-                                                response.finalUrl ||
-                                                plan.target
+                                            finalUrl: _final
                                         },
 
                                         body,
@@ -2139,17 +2163,18 @@
          */
 
         recordNetworkEvent(event) {
+            // Bounded via CONFIG.retention.networkEvents (v1.6) fallback to legacy maxNetworkEvents
+            const _maxNet = CONFIG.retention?.networkEvents?.maxEntries ?? CONFIG.maxNetworkEvents;
             // Enforce cap only for new keys; updates to existing requestId (bridge request→response) must not be dropped at cap
             if (
                 !this.networkEvents.has(event.id) &&
-                this.networkEvents.size >=
-                CONFIG.maxNetworkEvents
+                this.networkEvents.size >= _maxNet
             ) {
                 // Evict oldest to make room (FIFO) rather than silently drop
                 const first = this.networkEvents.keys().next().value;
                 if (first) this.networkEvents.delete(first);
                 // Also record diagnostic for observability
-                this.ledger?.recordDiagnostic?.('network-events-evicted', { max: CONFIG.maxNetworkEvents });
+                this.ledger?.recordDiagnostic?.('network-events-evicted', { max: _maxNet });
             }
 
             this.networkEvents.set(

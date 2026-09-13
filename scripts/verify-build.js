@@ -217,6 +217,38 @@ if (!content.includes('concurrencyTarget')) {
   console.error('verify-build: missing concurrencyTarget getter (v1.5)');
   process.exit(1);
 }
+if (!content.includes('CONFIG.retention')) {
+  console.error('verify-build: missing CONFIG.retention (v1.6 Bounded Knowledge Kernel)');
+  process.exit(1);
+}
+if (!content.includes('maxBodyBytes')) {
+  console.error('verify-build: missing maxBodyBytes (v1.6 body byte bound)');
+  process.exit(1);
+}
+if (!content.includes('maxRelationsPerResource')) {
+  console.error('verify-build: missing maxRelationsPerResource (v1.6 relation bound)');
+  process.exit(1);
+}
+if (!content.includes('body-evicted')) {
+  console.error('verify-build: missing body-evicted diagnostic (v1.6 body budget)');
+  process.exit(1);
+}
+if (!content.includes('gm-redirect-blocked')) {
+  console.error('verify-build: missing gm-redirect-blocked (v1.6 GM redirect enforcement)');
+  process.exit(1);
+}
+if (!content.includes('_enforceVisitedBound')) {
+  console.error('verify-build: missing _enforceVisitedBound (v1.6 visited retention)');
+  process.exit(1);
+}
+if (!content.includes('_removeObservationReferences')) {
+  console.error('verify-build: missing _removeObservationReferences (v1.6 referential coherence)');
+  process.exit(1);
+}
+if (!content.includes('observation-evicted-on-restore')) {
+  console.error('verify-build: missing bounded restoration (v1.6 restore caps)');
+  process.exit(1);
+}
 // Check minified artifact if present (optional, not fatal)
 const minPath = path.join(path.dirname(dist), 'generic-discovery-engine.min.js');
 if (fs.existsSync(minPath)) {

@@ -1,6 +1,6 @@
-# Architecture Overview — Generic Discovery Engine v1.5.0
+# Architecture Overview — Generic Discovery Engine v1.6.0
 
-**Runnable artifact:** `dist/generic-discovery-engine.user.js` (6,453 lines, CONFIG v8, built from `src/` 7 modules, `node --check` PASS) + `dist/generic-discovery-engine.min.js` (66k 32.7% esbuild) + `dist/generic-discovery-engine.esm.js` (267B ESM) + bundle analyze 20.6% + `src/` 7-file mirror (config/utils extracts)  
+**Runnable artifact:** `dist/generic-discovery-engine.user.js` (6,794 lines 223914B sha 7efbfd…, CONFIG v8, built from `src/` 7 modules, `node --check` PASS) + `dist/generic-discovery-engine.min.js` (74k 33.4% ba83e9… esbuild) + `dist/generic-discovery-engine.esm.js` (267B ESM) + bundle analyze 18.9% + `src/` 7-file mirror (config/utils extracts)  
 **Transcript source:** `Continue Architecture Planning.md` (2.2 MB) → split into `docs/DECISIONS.md` + `docs/adr/*` (v0.7.4)  
 **Verification:** `VERIFICATION_REPORT.md` (v0.7.1) + `VERIFICATION_SUPPLEMENT_v0.7.2.md` + `VERIFICATION_SUPPLEMENT_v0.7.6.md` + `VERIFICATION_SUPPLEMENT_v0.7.7.md` + `VERIFICATION_SUPPLEMENT_v0.7.8.md` + `VERIFICATION_SUPPLEMENT_v0.7.9.md` + `VERIFICATION_SUPPLEMENT_v0.8.0.md` + `VERIFICATION_SUPPLEMENT_v0.8.1.md + `VERIFICATION_SUPPLEMENT_v0.8.2.md` + `VERIFICATION_SUPPLEMENT_v0.9.0.md` + `VERIFICATION_SUPPLEMENT_v0.9.1.md` + `VERIFICATION_SUPPLEMENT_v1.0.0.md` + `VERIFICATION_SUPPLEMENT_v1.1.0.md` + `VERIFICATION_SUPPLEMENT_v1.2.0.md` + `VERIFICATION_SUPPLEMENT_v1.3.0.md` + `VERIFICATION_SUPPLEMENT_v1.4.0.md` + `docs/analysis/DEEP_VERIFICATION_v1.4.md` + `docs/SECURITY_AUDIT.md` + `docs/PERFORMANCE_ANALYSIS.md` — `npm test` 160/160 PASS
 
@@ -23,7 +23,7 @@ The loop is `DISCOVERY → KNOWLEDGE GRAPH → ACQUISITION PLAN → SCHEDULER �
 ```
 src/ 7 modules (framework bundler + lazy + providers + ESM + health+concurrent + verification hardening, ADR 021/024/025/027/028/029/030/031) built via `scripts/build.js` (+ `build-esbuild.js` minify + `build-esm.js` ESM + `analyze-bundle.js`):
  ├── header.txt — ==UserScript== + banner 165 lines (version placeholder)
- ├── config.js — CONFIG v8 ~86 keys + `revisitChanged`/`patternGuided` + `providers.concurrent/lazy/disabled` + `health` + `maxDiscoveries/Resources` + `runtimeBudget` (184 lines)
+ ├── config.js — CONFIG v8 ~86 keys + `revisitChanged`/`patternGuided` + `providers.concurrent/lazy/disabled` + `health` + `maxDiscoveries/Resources` + `runtimeBudget` + `retention` (220 lines)
  ├── utils.js — canonicalizeUrl, fnv1a32, makeFingerprint (wired to CONFIG)
  ├── models.js / knowledge.js / ledger.js / providers.js / engine.js — placeholders (plan in src/README.md)
  └── README.md — bundler plan (v0.9.0 esbuild concatenation, header preservation)
@@ -39,7 +39,7 @@ CONFIG (v8, ~84 keys) + privacy stripSensitiveParams + candidateTTL 0/off + life
 ├── DecisionLedger (12 types, 5k FIFO, seq, export/restore)
 ├── NetworkObserver (bridge fetch/XHR + PerformanceObserver, GET-trust rule)
 └── GenericDiscoveryEngine (discover/plan/execute/worker/adaptive/persist/UI + rAF-batched updateUI + TTL-bounded claim + lifecycle-guarded marks + pattern/cluster metrics + getCoverageMetrics + ProviderRegistry 9 providers)
-dist/generic-discovery-engine.user.js (6,344 lines) **generated** from `src/` via `scripts/build.js` `config→utils→ledger→models→knowledge→providers→engine` (204882B, sha 508e3e…); `dist/generic-discovery-engine.min.js` (66k, 32.7%, 241 lines, sha bf049e…), `dist/generic-discovery-engine.esm.js` (267B, sha 792783…), `providerSizes` 42k 20.6% (analyze-bundle) generated via `scripts/build-esbuild.js` esbuild transform; `src/` is source of truth (1.1 lazy), `scripts/build.js` checks src 7 exist before hashing.
+dist/generic-discovery-engine.user.js (6,794 lines 223914B sha 7efbfd…) **generated** from `src/` via `scripts/build.js` `config→utils→ledger→models→knowledge→providers→engine` (223914B, sha 7efbfd…); `dist/generic-discovery-engine.min.js` (74k, 33.4%, 241 lines, sha ba83e9…), `dist/generic-discovery-engine.esm.js` (267B, sha 792783…), `providerSizes` 42k 18.9% (analyze-bundle) generated via `scripts/build-esbuild.js` esbuild transform; `src/` is source of truth (1.1 lazy), `scripts/build.js` checks src 7 exist before hashing.
 ```
 
 ## 3. Data-Flow & Invariants

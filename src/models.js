@@ -317,16 +317,19 @@
 
         merge(data = {}) {
             this.updatedAt = now();
+            const maxRel = CONFIG.retention?.resources?.maxRelationsPerResource
+                ?? CONFIG.runtimeBudget?.maxRelationsPerResource
+                ?? 100;
 
             if (data.type) {
                 this.types.push(data.type);
-                this.types = unique(this.types);
+                this.types = unique(this.types).slice(-maxRel);
             }
 
             if (data.mechanism) {
                 this.mechanisms.push(data.mechanism);
                 this.mechanisms =
-                    unique(this.mechanisms);
+                    unique(this.mechanisms).slice(-maxRel);
             }
 
             for (const field of [
@@ -340,7 +343,7 @@
                     this[field] = unique([
                         ...this[field],
                         ...data[field]
-                    ]);
+                    ]).slice(-maxRel);
                 }
             }
 
