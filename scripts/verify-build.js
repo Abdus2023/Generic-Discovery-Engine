@@ -149,6 +149,22 @@ if (!content.includes('openapi')) {
   console.error('verify-build: missing openapi in factories');
   process.exit(1);
 }
+if (!content.includes('WellKnownProvider')) {
+  console.error('verify-build: missing WellKnownProvider (v1.3)');
+  process.exit(1);
+}
+if (!content.includes('ManifestProvider')) {
+  console.error('verify-build: missing ManifestProvider (v1.3)');
+  process.exit(1);
+}
+if (!content.includes('wellKnown')) {
+  console.error('verify-build: missing wellKnown in factories');
+  process.exit(1);
+}
+if (!content.includes('manifest')) {
+  console.error('verify-build: missing manifest in factories');
+  process.exit(1);
+}
 // Check minified artifact if present (optional, not fatal)
 const minPath = path.join(path.dirname(dist), 'generic-discovery-engine.min.js');
 if (fs.existsSync(minPath)) {

@@ -1039,6 +1039,120 @@
         }
     }
 
+    class WellKnownProvider extends Provider {
+        constructor() {
+            super('wellKnown');
+        }
+
+        matches(observation) {
+            const url = String(observation.requestedUrl || observation.target || '');
+            if (/\/\.well-known\//i.test(url)) return true;
+            const ct = contentTypeBase(observation.http?.contentType || '');
+            const body = String(observation.body || '');
+            if (ct === 'text/plain' && /Contact:|Encryption:|Acknowledgments:/i.test(body) && /\/\.well-known\//i.test(url)) return true;
+            if (looksLikeJson(ct, body) && /\/\.well-known\//i.test(url)) return true;
+            return false;
+        }
+
+        async recognize(candidate, observation) {
+            const discoveries = [];
+            const body = String(observation.body || '');
+            const ct = contentTypeBase(observation.http?.contentType || '');
+            // JSON well-known (assetlinks.json, openid-configuration)
+            if (looksLikeJson(ct, body)) {
+                try {
+                    const parsed = JSON.parse(body);
+                    const walk = (value) => {
+                        if (typeof value === 'string') {
+                            const canonical = canonicalizeUrl(value);
+                            if (canonical && isAllowedUrl(canonical)) {
+                                discoveries.push(new Discovery({
+                                    candidateId: candidate.id,
+                                    observationId: observation.id,
+                                    kind: looksLikeApiUrl(canonical) ? 'api' : 'url',
+                                    confidence: 0.80,
+                                    mechanism: 'wellknown-json-url',
+                                    data: { url: canonical },
+                                    provenance: { origin: candidate.origin, parent: candidate.target, candidateTarget: candidate.target, candidateType: candidate.type, mechanism: 'wellknown-json-url', depth: candidate.depth }
+                                }));
+                            }
+                            return;
+                        }
+                        if (Array.isArray(value)) { value.forEach(walk); return; }
+                        if (value && typeof value === 'object') { Object.values(value).forEach(walk); }
+                    };
+                    walk(parsed);
+                    return discoveries;
+                } catch {}
+            }
+            // text well-known (security.txt)
+            for (const raw of extractUrlsFromText(body)) {
+                const url = canonicalizeUrl(raw);
+                if (!url) continue;
+                discoveries.push(new Discovery({
+                    candidateId: candidate.id,
+                    observationId: observation.id,
+                    kind: looksLikeApiUrl(url) ? 'api' : 'url',
+                    confidence: 0.70,
+                    mechanism: 'wellknown-text-url',
+                    data: { url },
+                    provenance: { origin: candidate.origin, parent: candidate.target, candidateTarget: candidate.target, candidateType: candidate.type, mechanism: 'wellknown-text-url', depth: candidate.depth }
+                }));
+            }
+            return discoveries;
+        }
+    }
+
+    class ManifestProvider extends Provider {
+        constructor() {
+            super('manifest');
+        }
+
+        matches(observation) {
+            const url = String(observation.requestedUrl || observation.target || '');
+            const ct = contentTypeBase(observation.http?.contentType || '');
+            if (/manifest\.json$/i.test(url)) return true;
+            if (ct === 'application/manifest+json' || ct === 'application/json' && /manifest/i.test(url)) return true;
+            if (looksLikeJson(ct, observation.body)) {
+                try {
+                    const p = JSON.parse(String(observation.body||''));
+                    if (p && typeof p === 'object' && (p.icons || p.start_url || p.scope || p.name) && (Array.isArray(p.icons) || p.start_url)) return true;
+                } catch {}
+            }
+            return false;
+        }
+
+        async recognize(candidate, observation) {
+            const discoveries = [];
+            let parsed;
+            try { parsed = JSON.parse(String(observation.body||'')); } catch { return discoveries; }
+            const emit = (url, type, mech, conf) => {
+                const canonical = canonicalizeUrl(url);
+                if (!canonical || !isAllowedUrl(canonical)) return;
+                // resolve relative to observation URL
+                let resolved = canonical;
+                try { resolved = new URL(canonical, observation.requestedUrl).href; resolved = canonicalizeUrl(resolved) || resolved; } catch {}
+                discoveries.push(new Discovery({
+                    candidateId: candidate.id,
+                    observationId: observation.id,
+                    kind: type,
+                    confidence: conf,
+                    mechanism: mech,
+                    data: { url: resolved },
+                    provenance: { origin: candidate.origin, parent: candidate.target, candidateTarget: candidate.target, candidateType: candidate.type, mechanism: mech, depth: candidate.depth }
+                }));
+            };
+            if (Array.isArray(parsed.icons)) {
+                for (const icon of parsed.icons) if (icon?.src) emit(icon.src, 'resource', 'manifest-icon', 0.85);
+            }
+            if (parsed.start_url) emit(String(parsed.start_url), 'url', 'manifest-start_url', 0.80);
+            if (parsed.scope) emit(String(parsed.scope), 'url', 'manifest-scope', 0.75);
+            if (Array.isArray(parsed.screenshots)) for (const s of parsed.screenshots) if (s?.src) emit(s.src, 'resource', 'manifest-screenshot', 0.80);
+            if (Array.isArray(parsed.shortcuts)) for (const sc of parsed.shortcuts) if (sc?.url) emit(String(sc.url), 'url', 'manifest-shortcut', 0.78);
+            return discoveries;
+        }
+    }
+
     class BinaryProvider extends Provider {
         constructor() {
             super('binary');
@@ -1081,10 +1195,12 @@
                 headers: () => new HeadersProvider(),
                 sitemapIndex: () => new SitemapIndexProvider(),
                 openapi: () => new OpenApiProvider(),
+                wellKnown: () => new WellKnownProvider(),
+                manifest: () => new ManifestProvider(),
                 binary: () => new BinaryProvider(),
                 text: () => new TextProvider()
             };
-            this.order = ['html','json','xml','css','javascript','robots','headers','sitemapIndex','openapi','binary','text'];
+            this.order = ['html','json','xml','css','javascript','robots','headers','sitemapIndex','openapi','wellKnown','manifest','binary','text'];
             this.instances = new Map();
             this.metrics = new Map();
             // Eager fallback when CONFIG.providers.lazy === false (v1.0 compatibility)

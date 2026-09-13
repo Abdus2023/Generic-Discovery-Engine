@@ -19,7 +19,7 @@ const content = fs.readFileSync(dist, 'utf8');
 const srcContent = fs.readFileSync(srcProviders, 'utf8');
 
 // Heuristic: split providers by class definitions
-const providerNames = ['HtmlProvider','JsonProvider','XmlProvider','CssProvider','JavaScriptProvider','RobotsProvider','HeadersProvider','SitemapIndexProvider','OpenApiProvider','BinaryProvider','TextProvider'];
+const providerNames = ['HtmlProvider','JsonProvider','XmlProvider','CssProvider','JavaScriptProvider','RobotsProvider','HeadersProvider','SitemapIndexProvider','OpenApiProvider','WellKnownProvider','ManifestProvider','BinaryProvider','TextProvider'];
 const sizes = {};
 for (const name of providerNames) {
   const rx = new RegExp(`class ${name}[\\s\\S]*?^    \\\\}`, 'm');

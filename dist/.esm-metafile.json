@@ -1,0 +1,111 @@
+{
+  "inputs": {
+    "<define:CONFIG.providers.disabled>": {
+      "bytes": 2,
+      "imports": []
+    },
+    "src/providers.js": {
+      "bytes": 42693,
+      "imports": [
+        {
+          "path": "<define:CONFIG.providers.disabled>",
+          "kind": "import-statement",
+          "external": true
+        }
+      ],
+      "format": "esm"
+    },
+    ".tmp-esm/entry.js": {
+      "bytes": 1472,
+      "imports": [
+        {
+          "path": "src/providers.js",
+          "kind": "import-statement",
+          "original": "../src/providers.js"
+        },
+        {
+          "path": "src/providers.js",
+          "kind": "import-statement",
+          "original": "../src/providers.js"
+        },
+        {
+          "path": "src/providers.js",
+          "kind": "import-statement",
+          "original": "../src/providers.js"
+        },
+        {
+          "path": "src/providers.js",
+          "kind": "import-statement",
+          "original": "../src/providers.js"
+        },
+        {
+          "path": "src/providers.js",
+          "kind": "import-statement",
+          "original": "../src/providers.js"
+        },
+        {
+          "path": "src/providers.js",
+          "kind": "import-statement",
+          "original": "../src/providers.js"
+        },
+        {
+          "path": "src/providers.js",
+          "kind": "import-statement",
+          "original": "../src/providers.js"
+        },
+        {
+          "path": "src/providers.js",
+          "kind": "import-statement",
+          "original": "../src/providers.js"
+        },
+        {
+          "path": "src/providers.js",
+          "kind": "import-statement",
+          "original": "../src/providers.js"
+        },
+        {
+          "path": "src/providers.js",
+          "kind": "import-statement",
+          "original": "../src/providers.js"
+        },
+        {
+          "path": "src/providers.js",
+          "kind": "import-statement",
+          "original": "../src/providers.js"
+        },
+        {
+          "path": "src/providers.js",
+          "kind": "import-statement",
+          "original": "../src/providers.js"
+        },
+        {
+          "path": "src/providers.js",
+          "kind": "import-statement",
+          "original": "../src/providers.js"
+        },
+        {
+          "path": "<define:CONFIG.providers.disabled>",
+          "kind": "import-statement",
+          "external": true
+        }
+      ],
+      "format": "esm"
+    }
+  },
+  "outputs": {
+    "entry.js": {
+      "imports": [],
+      "exports": [
+        "PROVIDERS",
+        "PROVIDER_COUNT"
+      ],
+      "entryPoint": ".tmp-esm/entry.js",
+      "inputs": {
+        ".tmp-esm/entry.js": {
+          "bytesInOutput": 204
+        }
+      },
+      "bytes": 267
+    }
+  }
+}

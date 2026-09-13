@@ -7,7 +7,7 @@ New ADRs:
 2. Number sequentially (`004-…` next).
 3. Update `docs/DECISIONS.md` index.
 
-Current ADRs (v1.2.0 — 26 ADRs):
+Current ADRs (v1.3.0 — 28 ADRs):
 
 - `001-provider-pipeline.md` — 7 providers, ordered matching, `ProviderRegistry`.
 - `002-ledger.md` — 12 typed events, 5k FIFO, replayable `DecisionLedger`.
@@ -35,5 +35,7 @@ Current ADRs (v1.2.0 — 26 ADRs):
 - `024-lazy-providers-esbuild.md` — lazy ProviderRegistry + esbuild minify + provider metrics, 6076 lines 6dcfa8… 135/135
 - `025-sitemap-openapi-providers.md` — SitemapIndex + OpenAPI providers, 11-provider pipeline, 6214 lines 344b9c… 143/143
 - `026-bundle-analyze.md` — bundle analyze (provider size breakdown + esbuild metafile), 19.1% provider ratio
+- `027-wellknown-manifest-providers.md` — WellKnown + Manifest providers, 13-provider pipeline, 6344 lines bb0453… 150/150
+- `028-esm-bundle-proof.md` — ESM bundle proof (esbuild bundle+metafile, tree-shaking pipeline)
 
-Transcript provenance: `Continue Architecture Planning.md` (92,274 lines). Runnable artifact: `dist/generic-discovery-engine.user.js` (v1.2.0, 6,214 lines) + `dist/generic-discovery-engine.min.js` (60k 32.3%) + bundle analyze 19.1% built from `src/` 7 modules.
+Transcript provenance: `Continue Architecture Planning.md` (92,274 lines). Runnable artifact: `dist/generic-discovery-engine.user.js` (v1.3.0, 6,344 lines) + `dist/generic-discovery-engine.min.js` (63k 32.5%) + `dist/generic-discovery-engine.esm.js` (267B) + bundle analyze 21.6% built from `src/` 7 modules.

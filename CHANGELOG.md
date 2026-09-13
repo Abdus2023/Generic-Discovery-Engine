@@ -2,6 +2,14 @@
 
 All notable changes to the Generic Discovery Engine.
 
+## [1.3.0] — 2026-09-13 — WellKnown + Manifest Providers + ESM Bundle Proof
+
+- **Providers:** `WellKnownProvider` (/.well-known/ json/text → json-url 0.80/text-url 0.70, matches well-known path, JSON walk ~0.03 ms) + `ManifestProvider` (manifest.json `icons[].src` 0.85, `start_url` 0.80, `scope` 0.75, `screenshots`/`shortcuts`, relative URL resolve via `new URL(..., requestedUrl)` ~0.02 ms); `ProviderRegistry` now **13** ordered `Html/Json/Xml/Css/JavaScript/Robots/Headers/SitemapIndex/OpenApi/WellKnown/Manifest/Binary/Text` (lazy factories, disabled respects new, `getInstanceCount` 13). `src/providers.js` +130 lines, header `v1.3.0 — WellKnown + Manifest Providers + ESM Bundle Proof` + patch notes.
+- **Build:** `scripts/build-esm.js` (esbuild `bundle:true` `format:'esm'` `treeShaking:true` `metafile:true` synthetic entry `PROVIDER_COUNT 13` → `dist/generic-discovery-engine.esm.js` `267B` `792783…` `dist/.esm-metafile.json` fallback `transform` ESM `267B` note pending true ESM src migration) + `dist/.build-meta.json` `esmBundle{file,sha256,size,providers,metafile}`; `package.json` adds `build:esm` + `build:all` now 5 steps `build && build-esbuild && build-esm && analyze-bundle && verify:build`. `scripts/verify-build.js` now asserts `WellKnownProvider`/`ManifestProvider`/`wellKnown`/`manifest`. `dist` `6214→6344` (+130) `bb0453…` `195565B`, min `63463B 32.5%` `d4de85…`, ESM `267B`.
+- **Tests:** `tests/provider-wellknown-manifest.test.js` 7 cases (static 13 order + WellKnown matches `/.well-known` + json `jwks_uri` + Manifest matches `manifest.json` + icons `2` + start_url/scope `4` + lazy disabled strings) → **150/150 39 suites** (143+7).
+- **ADRs:** `docs/adr/027-wellknown-manifest-providers.md`, `028-esm-bundle-proof.md` + `docs/adr/README.md` → 28 ADRs (26→28). `docs/DECISIONS.md`/`docs/architecture/OVERVIEW.md` bumped to `6,344` lines.
+- **Docs:** `VERIFICATION_SUPPLEMENT_v1.3.0.md` (§providers §esm §bundle §perf) + `README.md` current `v1.3.0` 150/150, `src/README.md` 1.3.
+
 ## [1.2.0] — 2026-09-13 — SitemapIndex + OpenAPI Providers + Bundle Analyze
 
 - **Providers:** `SitemapIndexProvider` (sitemapindex `<loc>` → sitemap 0.90, XML sitemapindex root, `extractXmlLocs` ~0.02 ms) + `OpenApiProvider` (openapi/swagger json → `servers[].url` 0.95, host+basePath 0.90, walk api-url 0.85, matches `openapi`/`swagger`/`info+paths`, JSON parse+walk ~0.05 ms); `ProviderRegistry` now **11** ordered `Html/Json/Xml/Css/JavaScript/Robots/Headers/SitemapIndex/OpenApi/Binary/Text` (lazy factories, disabled respects new names, `getInstanceCount` 11). `src/providers.js` +120 lines, header `v1.2.0 — SitemapIndex + OpenAPI Providers + Bundle Analyze` + patch notes.
