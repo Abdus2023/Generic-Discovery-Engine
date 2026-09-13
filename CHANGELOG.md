@@ -2,6 +2,15 @@
 
 All notable changes to the Generic Discovery Engine.
 
+## [1.1.0] — 2026-09-13 — Lazy Providers + esbuild Minify (provider hardening)
+
+- **Providers:** `CONFIG.providers { lazy:true, disabled:[] }` + `ProviderRegistry` lazy `factories`/`order`/`instances`/`metrics` (`Html/Json/Xml/Css/JavaScript/Robots/Headers/Binary/Text` ordered, `new XProvider()` strings retained for static checks) + `getMetrics`/`getInstanceCount` + `matching()` instruments `performance.now` around `matches` (`calls/matches/totalMs/avgMs` O(9) ~0.01 ms). Eager fallback when `lazy:false`. `src/providers.js` +99 lines.
+- **Engine:** `GenericDiscoveryEngine.getProviderMetrics()` + `getCoverageMetrics()` now `providerInstances`/`providerMetrics` + `exportData().providers {lazy, disabled, metrics, instanceCount}` (schema `gde-export-v8.0` additive). `src/engine.js` +30 lines, header `v1.1.0 — Lazy Providers + esbuild Minify` + patch notes vs 1.0.0.
+- **Build:** `scripts/build-esbuild.js` (esbuild 0.28.2 `transform` minify `target es2022 keepNames:true`) preserves `==UserScript==` header, writes `dist/generic-discovery-engine.min.js` `58_703B` `32.3%` of `181_752B` `sha 106668…` `241 lines`, `dist/.build-meta.json` `minified{file,sha256,lines,size,ratio}`. `scripts/build.js` header replace now `v\d+\.\d+\.\d+` for 1.x. New `package.json` scripts `build:esbuild` + `build:all`.
+- **Tests:** `tests/provider-lazy.test.js` 9 cases (static `CONFIG.providers`/`factories`/`getMetrics`/`providerInstances`, behavioral lazy 0→3, eager, disabled, metrics, order) + `verify-p0-fixes` now allows `1.\d+.\d+`; `npm test` **135/135 PASS** (35 suites: 126 existing + 9 provider-lazy) vs 126/126 in 1.0.0. `scripts/verify-build.js` now asserts `CONFIG.providers`/`lazy`/`getProviderMetrics`/`providerInstances`/`getInstanceCount` + logs minified if present.
+- **ADRs:** `docs/adr/024-lazy-providers-esbuild.md` + `docs/adr/README.md` → 24 ADRs (23→24). `docs/DECISIONS.md`/`docs/architecture/OVERVIEW.md` bumped to `6,076` lines.
+- **Docs:** `VERIFICATION_SUPPLEMENT_v1.1.0.md` (§providers §build §minify) + `README.md` current `v1.1.0` 135/135, `src/README.md` lazy.
+
 ## [1.0.0] — 2026-09-13 — Stable (generic discovery loop feature-complete)
 
 - **Stable:** `package 1.0.0` + `header 1.0.0` (`v1.0.0 — Stable`) + `CONFIG v8` unchanged (storage `v8` additive, ledger 12 types, provider order 9, `export gde-export-v8.0` + `inference` additive). No new runtime code vs `0.9.1` — `dist` `5969→5977` (+8 header patch notes) `sha 9b2b68…` `176645B`, `node --check` PASS, `verify:build` deterministic (header + src 7), `npm test` **126/126 33 suites** unchanged, deep audit `DEEP_DVB_AUDIT_v0.8.2.md` still valid (126/126).

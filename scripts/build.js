@@ -32,8 +32,8 @@ for (const f of requiredSrc) {
 let header = fs.readFileSync(headerPath, 'utf8');
 // Replace @version line
 header = header.replace(/\/\/ @version\s+.*/, `// @version      ${pkg.version}`);
-// Replace banner vX.Y.Z — line inside patch notes header block
-header = header.replace(/v0\.\d+\.\d+ —/, `v${pkg.version} —`);
+// Replace banner vX.Y.Z — line inside patch notes header block (v1.x compatible)
+header = header.replace(/v\d+\.\d+\.\d+ —/, `v${pkg.version} —`);
 // Ensure header ends with newline
 if (!header.endsWith('\n')) header += '\n';
 

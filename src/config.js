@@ -18,6 +18,10 @@
         lifecycle: {
             strict: false // true → illegal transitions throw; false → diagnostic + allow
         },
+        providers: {
+            lazy: true, // true → providers instantiated on first match; false → eager (v1.0 behavior)
+            disabled: [] // e.g. ['text','binary'] to disable noisy providers
+        },
         maxObservationsInMemory: 800,
         maxRequests: 150,
         concurrency: 4,

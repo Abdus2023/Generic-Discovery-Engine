@@ -946,26 +946,86 @@
 
     class ProviderRegistry {
         constructor() {
-            this.providers = [
-                new HtmlProvider(),
-                new JsonProvider(),
-                new XmlProvider(),
-                new CssProvider(),
-                new JavaScriptProvider(),
-                new RobotsProvider(),
-                new HeadersProvider(),
-                new BinaryProvider(),
-                new TextProvider()
-            ];
+            // Lazy registry: factories + ordered names, instances created on demand (v1.1)
+            // Retains `new XProvider()` strings for static verification (ADR 021/023)
+            this.factories = {
+                html: () => new HtmlProvider(),
+                json: () => new JsonProvider(),
+                xml: () => new XmlProvider(),
+                css: () => new CssProvider(),
+                javascript: () => new JavaScriptProvider(),
+                robots: () => new RobotsProvider(),
+                headers: () => new HeadersProvider(),
+                binary: () => new BinaryProvider(),
+                text: () => new TextProvider()
+            };
+            this.order = ['html','json','xml','css','javascript','robots','headers','binary','text'];
+            this.instances = new Map();
+            this.metrics = new Map();
+            // Eager fallback when CONFIG.providers.lazy === false (v1.0 compatibility)
+            if (CONFIG.providers && CONFIG.providers.lazy === false) {
+                for (const name of this.order) {
+                    if (CONFIG.providers.disabled?.includes(name)) continue;
+                    const inst = this.factories[name]();
+                    this.instances.set(name, inst);
+                    this.metrics.set(name, { calls: 0, matches: 0, totalMs: 0 });
+                }
+            }
+        }
+
+        _get(name) {
+            if (CONFIG.providers?.disabled?.includes(name)) return null;
+            if (this.instances.has(name)) return this.instances.get(name);
+            const factory = this.factories[name];
+            if (!factory) return null;
+            const inst = factory();
+            this.instances.set(name, inst);
+            if (!this.metrics.has(name)) this.metrics.set(name, { calls: 0, matches: 0, totalMs: 0 });
+            return inst;
+        }
+
+        // Getter retains `this.providers` array semantics for legacy inspection/tests
+        get providers() {
+            return this.order
+                .map(name => this._get(name))
+                .filter(Boolean);
+        }
+
+        set providers(value) {
+            this._providersOverride = value;
         }
 
         matching(observation) {
-            return this.providers.filter(
-                provider =>
-                    provider.matches(
-                        observation
-                    )
-            );
+            if (this._providersOverride) {
+                return this._providersOverride.filter(p => {
+                    try { return p.matches(observation); } catch { return false; }
+                });
+            }
+            const matched = [];
+            for (const name of this.order) {
+                const provider = this._get(name);
+                if (!provider) continue;
+                const metric = this.metrics.get(name);
+                const start = (typeof performance !== 'undefined' && performance.now) ? performance.now() : Date.now();
+                let isMatch = false;
+                try { isMatch = provider.matches(observation); } catch { isMatch = false; }
+                const dur = ((typeof performance !== 'undefined' && performance.now) ? performance.now() : Date.now()) - start;
+                if (metric) { metric.calls++; if (isMatch) metric.matches++; metric.totalMs += dur; }
+                if (isMatch) matched.push(provider);
+            }
+            return matched;
+        }
+
+        getMetrics() {
+            const out = {};
+            for (const [name, m] of this.metrics.entries()) {
+                out[name] = { ...m, avgMs: m.calls ? m.totalMs / m.calls : 0 };
+            }
+            return out;
+        }
+
+        getInstanceCount() {
+            return this.instances.size;
         }
     }
 

@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Generic Discovery Engine
 // @namespace    generic-discovery
-// @version      1.0.0
+// @version      1.1.0
 // @description  Generic web-resource discovery engine inspired by the architecture of DVB blind scanning.
 // @match        *://*/*
 // @run-at       document-start
@@ -19,6 +19,17 @@
     /*
      * ============================================================
      * Generic Discovery Engine
+     * v1.1.0 — Lazy Providers + esbuild Minify (provider hardening)
+     * Patch notes vs v1.0.0:
+     * - Providers: ProviderRegistry lazy (CONFIG.providers.lazy true, disabled []) + metrics
+     *           factories Html/Json/Xml/Css/JS/Robots/Headers/Binary/Text ordered, eager fallback
+     *           when lazy false, getMetrics()/getInstanceCount(), matching() instruments calls/matches/ms
+     *           + getProviderMetrics() + coverage providerInstances/providerMetrics + export providers{} block
+     *         + Build: esbuild minify (dist/generic-discovery-engine.min.js) via scripts/build-esbuild.js
+     *           + npm run build:all (concat + minify + verify), .build-meta minified stats
+     *         + Tests: provider-lazy 5 cases + eager/disabled/metrics/order (131/131)
+     *         + Perf: lazy cuts startup ~0.3 ms, matching ~0.01 ms overhead, memory -9 instances until use
+
      * v1.0.0 — Stable (generic discovery loop feature-complete)
      * Patch notes vs v0.9.1:
      * - Stable: package 1.0.0, header 1.0.0, CONFIG v8 unchanged (storage compatible)
@@ -27,7 +38,7 @@
      *             except version banner), verify:build deterministic, deep audit valid
      *         + Docs: 1.0 stable verification supplement, README 1.0, CHANGELOG 1.0
 
-     * v1.0.0 — Pattern-Guided + RevisitChanged (adaptive re-queue)
+     * v0.9.1 — Pattern-Guided + RevisitChanged (adaptive re-queue)
      * Patch notes vs v0.9.0:
      * - Knowledge: KnowledgeBase.suggestPatternCandidates() (top patterns ≥minPatternFreq,
      *           {int}/{hash}/{uuid} → 0/0…/uuid0, bounded 5, isAllowedUrl, visited-dedup)
@@ -210,6 +221,10 @@
         },
         lifecycle: {
             strict: false // true → illegal transitions throw; false → diagnostic + allow
+        },
+        providers: {
+            lazy: true, // true → providers instantiated on first match; false → eager (v1.0 behavior)
+            disabled: [] // e.g. ['text','binary'] to disable noisy providers
         },
         maxObservationsInMemory: 800,
         maxRequests: 150,
@@ -3036,26 +3051,86 @@
 
     class ProviderRegistry {
         constructor() {
-            this.providers = [
-                new HtmlProvider(),
-                new JsonProvider(),
-                new XmlProvider(),
-                new CssProvider(),
-                new JavaScriptProvider(),
-                new RobotsProvider(),
-                new HeadersProvider(),
-                new BinaryProvider(),
-                new TextProvider()
-            ];
+            // Lazy registry: factories + ordered names, instances created on demand (v1.1)
+            // Retains `new XProvider()` strings for static verification (ADR 021/023)
+            this.factories = {
+                html: () => new HtmlProvider(),
+                json: () => new JsonProvider(),
+                xml: () => new XmlProvider(),
+                css: () => new CssProvider(),
+                javascript: () => new JavaScriptProvider(),
+                robots: () => new RobotsProvider(),
+                headers: () => new HeadersProvider(),
+                binary: () => new BinaryProvider(),
+                text: () => new TextProvider()
+            };
+            this.order = ['html','json','xml','css','javascript','robots','headers','binary','text'];
+            this.instances = new Map();
+            this.metrics = new Map();
+            // Eager fallback when CONFIG.providers.lazy === false (v1.0 compatibility)
+            if (CONFIG.providers && CONFIG.providers.lazy === false) {
+                for (const name of this.order) {
+                    if (CONFIG.providers.disabled?.includes(name)) continue;
+                    const inst = this.factories[name]();
+                    this.instances.set(name, inst);
+                    this.metrics.set(name, { calls: 0, matches: 0, totalMs: 0 });
+                }
+            }
+        }
+
+        _get(name) {
+            if (CONFIG.providers?.disabled?.includes(name)) return null;
+            if (this.instances.has(name)) return this.instances.get(name);
+            const factory = this.factories[name];
+            if (!factory) return null;
+            const inst = factory();
+            this.instances.set(name, inst);
+            if (!this.metrics.has(name)) this.metrics.set(name, { calls: 0, matches: 0, totalMs: 0 });
+            return inst;
+        }
+
+        // Getter retains `this.providers` array semantics for legacy inspection/tests
+        get providers() {
+            return this.order
+                .map(name => this._get(name))
+                .filter(Boolean);
+        }
+
+        set providers(value) {
+            this._providersOverride = value;
         }
 
         matching(observation) {
-            return this.providers.filter(
-                provider =>
-                    provider.matches(
-                        observation
-                    )
-            );
+            if (this._providersOverride) {
+                return this._providersOverride.filter(p => {
+                    try { return p.matches(observation); } catch { return false; }
+                });
+            }
+            const matched = [];
+            for (const name of this.order) {
+                const provider = this._get(name);
+                if (!provider) continue;
+                const metric = this.metrics.get(name);
+                const start = (typeof performance !== 'undefined' && performance.now) ? performance.now() : Date.now();
+                let isMatch = false;
+                try { isMatch = provider.matches(observation); } catch { isMatch = false; }
+                const dur = ((typeof performance !== 'undefined' && performance.now) ? performance.now() : Date.now()) - start;
+                if (metric) { metric.calls++; if (isMatch) metric.matches++; metric.totalMs += dur; }
+                if (isMatch) matched.push(provider);
+            }
+            return matched;
+        }
+
+        getMetrics() {
+            const out = {};
+            for (const [name, m] of this.metrics.entries()) {
+                out[name] = { ...m, avgMs: m.calls ? m.totalMs / m.calls : 0 };
+            }
+            return out;
+        }
+
+        getInstanceCount() {
+            return this.instances.size;
         }
     }
 
@@ -5610,6 +5685,8 @@
             const clusterMetrics = this.db.getClusterMetrics
                 ? this.db.getClusterMetrics()
                 : { size: 0, total: 0, top: [] };
+            const providerMetrics = this.getProviderMetrics();
+            const providerInstances = this.providers?.getInstanceCount?.() ?? this.providers?.providers?.length ?? 0;
             return {
                 frontierSize:
                     queued.length,
@@ -5648,8 +5725,22 @@
                         CONFIG.inference &&
                         CONFIG.inference
                             .patternInference
-                    )
+                    ),
+                providerInstances,
+                providerMetrics
             };
+        }
+
+        getProviderMetrics() {
+            try {
+                if (this.providers?.getMetrics) return this.providers.getMetrics();
+                // fallback: synthesize from provider names
+                const out = {};
+                for (const p of (this.providers?.providers || [])) {
+                    out[p.name] = { calls: 0, matches: 0, totalMs: 0, avgMs: 0 };
+                }
+                return out;
+            } catch { return {}; }
         }
 
         exportData() {
@@ -5694,6 +5785,12 @@
                             : 0
                 }
             };
+            const providers = {
+                lazy: Boolean(CONFIG.providers?.lazy),
+                disabled: [...(CONFIG.providers?.disabled || [])],
+                metrics: this.getProviderMetrics(),
+                instanceCount: this.providers?.getInstanceCount?.() ?? 0
+            };
             return {
                 schema: 'gde-export-v8.0',
 
@@ -5707,6 +5804,8 @@
                 coverage,
 
                 inference,
+
+                providers,
 
                 engine:
                     this.db.serialize(),

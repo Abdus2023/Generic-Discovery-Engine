@@ -113,4 +113,35 @@ if (!content.includes('getChangedResources')) {
   console.error('verify-build: missing getChangedResources');
   process.exit(1);
 }
+if (!content.includes('CONFIG.providers')) {
+  console.error('verify-build: missing CONFIG.providers (v1.1 lazy)');
+  process.exit(1);
+}
+if (!content.includes('lazy')) {
+  console.error('verify-build: missing lazy in providers');
+  process.exit(1);
+}
+if (!content.includes('getProviderMetrics')) {
+  console.error('verify-build: missing getProviderMetrics');
+  process.exit(1);
+}
+if (!content.includes('providerInstances')) {
+  console.error('verify-build: missing providerInstances in coverage');
+  process.exit(1);
+}
+if (!content.includes('getInstanceCount')) {
+  console.error('verify-build: missing getInstanceCount');
+  process.exit(1);
+}
+// Check minified artifact if present (optional, not fatal)
+const minPath = path.join(path.dirname(dist), 'generic-discovery-engine.min.js');
+if (fs.existsSync(minPath)) {
+  const minContent = fs.readFileSync(minPath, 'utf8');
+  if (!minContent.includes('@version')) {
+    console.warn('verify-build: minified missing header');
+  } else {
+    const minHash = crypto.createHash('sha256').update(minContent, 'utf8').digest('hex');
+    console.log(`verify-build: minified ${minContent.length} bytes sha ${minHash.slice(0,12)}...`);
+  }
+}
 console.log('verify-build: OK — deterministic');

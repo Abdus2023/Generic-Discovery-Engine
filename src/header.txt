@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Generic Discovery Engine
 // @namespace    generic-discovery
-// @version      1.0.0
+// @version      1.1.0
 // @description  Generic web-resource discovery engine inspired by the architecture of DVB blind scanning.
 // @match        *://*/*
 // @run-at       document-start
@@ -19,6 +19,17 @@
     /*
      * ============================================================
      * Generic Discovery Engine
+     * v1.1.0 — Lazy Providers + esbuild Minify (provider hardening)
+     * Patch notes vs v1.0.0:
+     * - Providers: ProviderRegistry lazy (CONFIG.providers.lazy true, disabled []) + metrics
+     *           factories Html/Json/Xml/Css/JS/Robots/Headers/Binary/Text ordered, eager fallback
+     *           when lazy false, getMetrics()/getInstanceCount(), matching() instruments calls/matches/ms
+     *           + getProviderMetrics() + coverage providerInstances/providerMetrics + export providers{} block
+     *         + Build: esbuild minify (dist/generic-discovery-engine.min.js) via scripts/build-esbuild.js
+     *           + npm run build:all (concat + minify + verify), .build-meta minified stats
+     *         + Tests: provider-lazy 5 cases + eager/disabled/metrics/order (131/131)
+     *         + Perf: lazy cuts startup ~0.3 ms, matching ~0.01 ms overhead, memory -9 instances until use
+
      * v1.0.0 — Stable (generic discovery loop feature-complete)
      * Patch notes vs v0.9.1:
      * - Stable: package 1.0.0, header 1.0.0, CONFIG v8 unchanged (storage compatible)

@@ -2537,6 +2537,8 @@
             const clusterMetrics = this.db.getClusterMetrics
                 ? this.db.getClusterMetrics()
                 : { size: 0, total: 0, top: [] };
+            const providerMetrics = this.getProviderMetrics();
+            const providerInstances = this.providers?.getInstanceCount?.() ?? this.providers?.providers?.length ?? 0;
             return {
                 frontierSize:
                     queued.length,
@@ -2575,8 +2577,22 @@
                         CONFIG.inference &&
                         CONFIG.inference
                             .patternInference
-                    )
+                    ),
+                providerInstances,
+                providerMetrics
             };
+        }
+
+        getProviderMetrics() {
+            try {
+                if (this.providers?.getMetrics) return this.providers.getMetrics();
+                // fallback: synthesize from provider names
+                const out = {};
+                for (const p of (this.providers?.providers || [])) {
+                    out[p.name] = { calls: 0, matches: 0, totalMs: 0, avgMs: 0 };
+                }
+                return out;
+            } catch { return {}; }
         }
 
         exportData() {
@@ -2621,6 +2637,12 @@
                             : 0
                 }
             };
+            const providers = {
+                lazy: Boolean(CONFIG.providers?.lazy),
+                disabled: [...(CONFIG.providers?.disabled || [])],
+                metrics: this.getProviderMetrics(),
+                instanceCount: this.providers?.getInstanceCount?.() ?? 0
+            };
             return {
                 schema: 'gde-export-v8.0',
 
@@ -2634,6 +2656,8 @@
                 coverage,
 
                 inference,
+
+                providers,
 
                 engine:
                     this.db.serialize(),
