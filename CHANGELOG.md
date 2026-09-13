@@ -2,6 +2,14 @@
 
 All notable changes to the Generic Discovery Engine.
 
+## [1.2.0] — 2026-09-13 — SitemapIndex + OpenAPI Providers + Bundle Analyze
+
+- **Providers:** `SitemapIndexProvider` (sitemapindex `<loc>` → sitemap 0.90, XML sitemapindex root, `extractXmlLocs` ~0.02 ms) + `OpenApiProvider` (openapi/swagger json → `servers[].url` 0.95, host+basePath 0.90, walk api-url 0.85, matches `openapi`/`swagger`/`info+paths`, JSON parse+walk ~0.05 ms); `ProviderRegistry` now **11** ordered `Html/Json/Xml/Css/JavaScript/Robots/Headers/SitemapIndex/OpenApi/Binary/Text` (lazy factories, disabled respects new names, `getInstanceCount` 11). `src/providers.js` +120 lines, header `v1.2.0 — SitemapIndex + OpenAPI Providers + Bundle Analyze` + patch notes.
+- **Build:** `scripts/analyze-bundle.js` (provider line/size breakdown 36k 19.1% + esbuild note, heuristic `class XProvider` slicing, sorted table, writes `dist/.build-meta.json` `providerSizes`+`bundleAnalysis`); `package.json` adds `analyze` + `build:all` now 4 steps `build && build-esbuild && analyze-bundle && verify:build`. `scripts/verify-build.js` now asserts `SitemapIndexProvider`/`OpenApiProvider`/`sitemapIndex`/`openapi`. `dist` `6076→6214` (+138) `344b9c…` `188338B`, min `60743B 32.3%` `ca3fc9…`.
+- **Tests:** `tests/provider-sitemap-openapi.test.js` 8 cases (static 11 order + SitemapIndex matches/extract 2 `loc`s + OpenApi matches openapi/swagger + extracts servers 2 + host+basePath) + existing 135 → **143/143 37 suites** (11 providers, lazy disabled respects new, metrics track new).
+- **ADRs:** `docs/adr/025-sitemap-openapi-providers.md`, `026-bundle-analyze.md` + `docs/adr/README.md` → 26 ADRs (24→26). `docs/DECISIONS.md`/`docs/architecture/OVERVIEW.md` bumped to `6,214` lines.
+- **Docs:** `VERIFICATION_SUPPLEMENT_v1.2.0.md` (§providers §bundle §perf) + `README.md` current `v1.2.0` 143/143, `src/README.md` 1.2.
+
 ## [1.1.0] — 2026-09-13 — Lazy Providers + esbuild Minify (provider hardening)
 
 - **Providers:** `CONFIG.providers { lazy:true, disabled:[] }` + `ProviderRegistry` lazy `factories`/`order`/`instances`/`metrics` (`Html/Json/Xml/Css/JavaScript/Robots/Headers/Binary/Text` ordered, `new XProvider()` strings retained for static checks) + `getMetrics`/`getInstanceCount` + `matching()` instruments `performance.now` around `matches` (`calls/matches/totalMs/avgMs` O(9) ~0.01 ms). Eager fallback when `lazy:false`. `src/providers.js` +99 lines.

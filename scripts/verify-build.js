@@ -133,6 +133,22 @@ if (!content.includes('getInstanceCount')) {
   console.error('verify-build: missing getInstanceCount');
   process.exit(1);
 }
+if (!content.includes('SitemapIndexProvider')) {
+  console.error('verify-build: missing SitemapIndexProvider (v1.2)');
+  process.exit(1);
+}
+if (!content.includes('OpenApiProvider')) {
+  console.error('verify-build: missing OpenApiProvider (v1.2)');
+  process.exit(1);
+}
+if (!content.includes('sitemapIndex')) {
+  console.error('verify-build: missing sitemapIndex in factories');
+  process.exit(1);
+}
+if (!content.includes('openapi')) {
+  console.error('verify-build: missing openapi in factories');
+  process.exit(1);
+}
 // Check minified artifact if present (optional, not fatal)
 const minPath = path.join(path.dirname(dist), 'generic-discovery-engine.min.js');
 if (fs.existsSync(minPath)) {

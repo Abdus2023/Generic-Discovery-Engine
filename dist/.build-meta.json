@@ -1,9 +1,9 @@
 {
-  "version": "1.1.0",
+  "version": "1.2.0",
   "file": "dist/generic-discovery-engine.user.js",
-  "sha256": "6dcfa8cb6e18e443976d5f8368a74c6b976e92f395a42bdebd3ae10d866c9093",
-  "lines": 6076,
-  "size": 181752,
+  "sha256": "344b9c71fbdccf6381be105bf2262b7e9178bba448ce0da29d05f3efb9884906",
+  "lines": 6214,
+  "size": 188338,
   "src": [
     "config",
     "utils",
@@ -13,13 +13,117 @@
     "providers",
     "engine"
   ],
-  "builtAt": "2026-09-13T10:13:32.826Z",
+  "builtAt": "2026-09-13T10:18:40.695Z",
   "node": "v22.22.3",
   "minified": {
     "file": "dist/generic-discovery-engine.min.js",
-    "sha256": "10666821df555e64fed77d1dd942f17f8b5fad9e2ccf333c030c24f80865db52",
+    "sha256": "ca3fc94fec601c2c922e70c035f2aa1bc71e8928715c84eb28473d8ff83e9c95",
     "lines": 241,
-    "size": 58703,
+    "size": 60743,
     "ratio": 32.3
+  },
+  "providerSizes": {
+    "HtmlProvider": {
+      "lines": 326,
+      "bytes": 8640
+    },
+    "JsonProvider": {
+      "lines": 135,
+      "bytes": 4368
+    },
+    "XmlProvider": {
+      "lines": 88,
+      "bytes": 2334
+    },
+    "CssProvider": {
+      "lines": 82,
+      "bytes": 2115
+    },
+    "JavaScriptProvider": {
+      "lines": 85,
+      "bytes": 2267
+    },
+    "RobotsProvider": {
+      "lines": 41,
+      "bytes": 1633
+    },
+    "HeadersProvider": {
+      "lines": 53,
+      "bytes": 2153
+    },
+    "SitemapIndexProvider": {
+      "lines": 45,
+      "bytes": 1861
+    },
+    "OpenApiProvider": {
+      "lines": 78,
+      "bytes": 3546
+    },
+    "BinaryProvider": {
+      "lines": 129,
+      "bytes": 4894
+    },
+    "TextProvider": {
+      "lines": 87,
+      "bytes": 2237
+    }
+  },
+  "bundleAnalysis": {
+    "totalProviders": 11,
+    "totalProviderBytes": 36048,
+    "totalProviderLines": 1149,
+    "distBytes": 188338,
+    "distLines": 6214,
+    "providerRatio": 19.1,
+    "providers": {
+      "HtmlProvider": {
+        "lines": 326,
+        "bytes": 8640
+      },
+      "JsonProvider": {
+        "lines": 135,
+        "bytes": 4368
+      },
+      "XmlProvider": {
+        "lines": 88,
+        "bytes": 2334
+      },
+      "CssProvider": {
+        "lines": 82,
+        "bytes": 2115
+      },
+      "JavaScriptProvider": {
+        "lines": 85,
+        "bytes": 2267
+      },
+      "RobotsProvider": {
+        "lines": 41,
+        "bytes": 1633
+      },
+      "HeadersProvider": {
+        "lines": 53,
+        "bytes": 2153
+      },
+      "SitemapIndexProvider": {
+        "lines": 45,
+        "bytes": 1861
+      },
+      "OpenApiProvider": {
+        "lines": 78,
+        "bytes": 3546
+      },
+      "BinaryProvider": {
+        "lines": 129,
+        "bytes": 4894
+      },
+      "TextProvider": {
+        "lines": 87,
+        "bytes": 2237
+      }
+    },
+    "esbuild": {
+      "note": "esbuild 0.28.2 available, metafile not needed for IIFE concat; transform minifies 32-33% (see build-esbuild)"
+    },
+    "timestamp": "2026-09-13T10:19:47.867Z"
   }
 }

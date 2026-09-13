@@ -1,8 +1,8 @@
-# Architecture Overview — Generic Discovery Engine v1.1.0
+# Architecture Overview — Generic Discovery Engine v1.2.0
 
-**Runnable artifact:** `dist/generic-discovery-engine.user.js` (6,076 lines, CONFIG v8, built from `src/` 7 modules, `node --check` PASS) + `dist/generic-discovery-engine.min.js` (58k 32.3% esbuild) + `src/` 7-file mirror (config/utils extracts)  
+**Runnable artifact:** `dist/generic-discovery-engine.user.js` (6,214 lines, CONFIG v8, built from `src/` 7 modules, `node --check` PASS) + `dist/generic-discovery-engine.min.js` (60k 32.3% esbuild) + bundle analyze 19.1% + `src/` 7-file mirror (config/utils extracts)  
 **Transcript source:** `Continue Architecture Planning.md` (2.2 MB) → split into `docs/DECISIONS.md` + `docs/adr/*` (v0.7.4)  
-**Verification:** `VERIFICATION_REPORT.md` (v0.7.1) + `VERIFICATION_SUPPLEMENT_v0.7.2.md` + `VERIFICATION_SUPPLEMENT_v0.7.6.md` + `VERIFICATION_SUPPLEMENT_v0.7.7.md` + `VERIFICATION_SUPPLEMENT_v0.7.8.md` + `VERIFICATION_SUPPLEMENT_v0.7.9.md` + `VERIFICATION_SUPPLEMENT_v0.8.0.md` + `VERIFICATION_SUPPLEMENT_v0.8.1.md + `VERIFICATION_SUPPLEMENT_v0.8.2.md`` + `docs/SECURITY_AUDIT.md` + `docs/PERFORMANCE_ANALYSIS.md` — `npm test` 135/135 PASS
+**Verification:** `VERIFICATION_REPORT.md` (v0.7.1) + `VERIFICATION_SUPPLEMENT_v0.7.2.md` + `VERIFICATION_SUPPLEMENT_v0.7.6.md` + `VERIFICATION_SUPPLEMENT_v0.7.7.md` + `VERIFICATION_SUPPLEMENT_v0.7.8.md` + `VERIFICATION_SUPPLEMENT_v0.7.9.md` + `VERIFICATION_SUPPLEMENT_v0.8.0.md` + `VERIFICATION_SUPPLEMENT_v0.8.1.md + `VERIFICATION_SUPPLEMENT_v0.8.2.md`` + `docs/SECURITY_AUDIT.md` + `docs/PERFORMANCE_ANALYSIS.md` — `npm test` 143/143 PASS
 
 ## 1. Control Architecture (DVB-inspired, not DVB-compatible)
 
@@ -18,12 +18,12 @@ NIT / new mux                   expansion (new candidates with provenance)
 
 The loop is `DISCOVERY → KNOWLEDGE GRAPH → ACQUISITION PLAN → SCHEDULER → ACQUISITION → OBSERVATION → RECOGNITION → DISCOVERY` (README diagram). Exhaustive DVB spectrum is replaced by **budgeted open-world search**: `maxCandidates 750 live`, `maxRequests 150 global`, `maxDepth 5`.
 
-## 2. Module Map (v1.1.0)
+## 2. Module Map (v1.2.0)
 
 ```
-src/ 7 modules (framework bundler + lazy, ADR 021/024) built via `scripts/build.js` (+ `build-esbuild.js` minify):
+src/ 7 modules (framework bundler + lazy + providers, ADR 021/024/025) built via `scripts/build.js` (+ `build-esbuild.js` minify + `analyze-bundle.js`):
  ├── header.txt — ==UserScript== + banner 165 lines (version placeholder)
- ├── config.js — CONFIG v8 ~86 keys + `revisitChanged`/`patternGuided` + `providers.lazy/disabled` (185 lines)
+ ├── config.js — CONFIG v8 ~86 keys + `revisitChanged`/`patternGuided` + `providers.lazy/disabled` (170 lines)
  ├── utils.js — canonicalizeUrl, fnv1a32, makeFingerprint (wired to CONFIG)
  ├── models.js / knowledge.js / ledger.js / providers.js / engine.js — placeholders (plan in src/README.md)
  └── README.md — bundler plan (v0.9.0 esbuild concatenation, header preservation)
@@ -33,13 +33,13 @@ CONFIG (v8, ~84 keys) + privacy stripSensitiveParams + candidateTTL 0/off + life
 ├── AcquisitionPlan / AcquisitionPolicy → AcquisitionPlan{allowed,reason}
 ├── OriginController (per-origin 2 concurrent, 150 ms, 50/origin)
 ├── Acquisition (GM_xhr + fetch fallback, 2M truncate, 8s timeout)
-├── ProviderRegistry [Html, Json, Xml, Css, JavaScript, Robots, Headers, Binary, Text] — ordered 9 (ADR 016/017)
+├── ProviderRegistry [Html, Json, Xml, Css, JavaScript, Robots, Headers, SitemapIndex, OpenApi, Binary, Text] — ordered 11 (ADR 016/017/025)
 ├── KnowledgeBase (candidates Map, candidateKeys, visited identityKey, candidateTTL sweep, lifecycle guard _validateTransition, patternIndex/clusterIndex, change detection _oldHash, observations 800 FIFO,
 │                  discoveries, resources, graphEdges 5k, fingerprintIndex, diagnostics 500)
 ├── DecisionLedger (12 types, 5k FIFO, seq, export/restore)
 ├── NetworkObserver (bridge fetch/XHR + PerformanceObserver, GET-trust rule)
 └── GenericDiscoveryEngine (discover/plan/execute/worker/adaptive/persist/UI + rAF-batched updateUI + TTL-bounded claim + lifecycle-guarded marks + pattern/cluster metrics + getCoverageMetrics + ProviderRegistry 9 providers)
-dist/generic-discovery-engine.user.js (6,076 lines) **generated** from `src/` via `scripts/build.js` `config→utils→ledger→models→knowledge→providers→engine` (181752B, sha 6dcfa8…); `dist/generic-discovery-engine.min.js` (58k, 32.3%, 241 lines, sha 106668…) generated via `scripts/build-esbuild.js` esbuild transform; `src/` is source of truth (1.1 lazy), `scripts/build.js` checks src 7 exist before hashing.
+dist/generic-discovery-engine.user.js (6,214 lines) **generated** from `src/` via `scripts/build.js` `config→utils→ledger→models→knowledge→providers→engine` (188338B, sha 344b9c…); `dist/generic-discovery-engine.min.js` (60k, 32.3%, 241 lines, sha ca3fc9…), `providerSizes` 36k 19.1% (analyze-bundle) generated via `scripts/build-esbuild.js` esbuild transform; `src/` is source of truth (1.1 lazy), `scripts/build.js` checks src 7 exist before hashing.
 ```
 
 ## 3. Data-Flow & Invariants
@@ -58,6 +58,7 @@ dist/generic-discovery-engine.user.js (6,076 lines) **generated** from `src/` vi
 - **Coverage determinism:** `getCoverageMetrics()` now sorted `queuedByType` + `patternCount`/`clusterCount`/`fingerprintUnique`/`inferenceEnabled` via `getPatternMetrics()`, O(n≤750) ~0.06 ms; `exportData().inference` adds bounded pattern/cluster/fingerprint stats (ADR 020).
 - **Stable 1.0:** `package 1.0.0` + `header 1.0.0` + `CONFIG v8` unchanged — no runtime delta, 22 ADRs 126/126 5977 `9b2b68…` marks stable control-plane (ADR 023).
 - **Lazy + esbuild 1.1:** `CONFIG.providers` lazy true + `ProviderRegistry` factories/metrics + `getProviderMetrics` + `export.providers` + `dist/*.min.js` 58k 32.3% esbuild 106668… + `build:all` (ADR 024, 135/135, 6076 `6dcfa8…`).
+- **Sitemap/OpenAPI + analyze 1.2:** `SitemapIndexProvider` sitemapindex 0.90 + `OpenApiProvider` openapi 0.95 + `Registry` 11 ordered (Html→Text) + `analyze-bundle.js` 36k 19.1% provider breakdown + `build:all` 4-steps (ADR 025/026, 143/143, 6214 `344b9c…`).
 - **Pattern-guided & revisit:** `KnowledgeBase.suggestPatternCandidates()` top patterns ≥minPatternFreq → `0`/`uuid0` suggestions (5 bounded, visited dedup) and `getChangedResources()` + `Engine` revisit (`revisit-queued`) + pattern-guided (`pattern-guided-queued`) when `CONFIG.revisitChanged`/`patternGuided.enabled` (ADR 022, opt-in, ~0.02 ms).
 - **Framework bundler:** `scripts/build.js` concatenates `src/header.txt` + 7 modules in dependency order `config→utils→ledger→models→knowledge→providers→engine`, replacing `// @version` + banner from `package.json`, deterministic `sha256`/`wc -l` → `dist/.build-meta.json` (ADR 021).
 - **Build determinism:** `scripts/build.js` captures `sha256`/`lines`/`size` → `dist/.build-meta.json`; `scripts/verify-build.js` asserts no `builtAt` in dist, header version matches `package.json`, hash matches meta, `extractUrlPattern` present, 9-provider order, src 7 present (ADR 015 → 019). `npm run build` now atomic `build && verify:build`.
@@ -93,4 +94,4 @@ dist/generic-discovery-engine.user.js (6,076 lines) **generated** from `src/` vi
 ## 7. Open Iterations (from DECISIONS.md)
 
 - Narrow `@connect` shipped v0.7.4; Trusted Types `gde-bridge` + fuzz + priority invariants shipped v0.7.5/v0.7.6; TTL + FIFO + throttle + gates shipped v0.7.7; lifecycle + concurrency + typecheck shipped v0.7.8; pattern/cluster + build determinism shipped v0.7.9; robots/headers + change detection shipped v0.8.0; modular prelude shipped v0.8.1; export hardening shipped v0.8.2; framework bundler shipped v0.9.0; pattern-guided/revisit shipped v0.9.1; stable shipped v1.0.0.
-- Planning doc fully split is incremental; this overview + 19 ADRs + coverage gates + TTL + lifecycle + concurrency + pattern/cluster + build determinism + robots/headers + change detection + modular prelude completes the v0.8.1 feature pass; `npm run coverage:check` 85/75/80 gate, `npm run coverage` 99% line, `npm run typecheck` informational, `npm run verify:build` deterministic (sha256 6dcfa8… lines 6076, src 7 + header, inference + bundler + revisit/pattern + lazy/provider gate, 1.1 lazy).
+- Planning doc fully split is incremental; this overview + 19 ADRs + coverage gates + TTL + lifecycle + concurrency + pattern/cluster + build determinism + robots/headers + change detection + modular prelude completes the v0.8.1 feature pass; `npm run coverage:check` 85/75/80 gate, `npm run coverage` 99% line, `npm run typecheck` informational, `npm run verify:build` deterministic (sha256 344b9c… lines 6214, src 7 + header, inference + bundler + revisit/pattern + lazy/provider + sitemap/openapi gate, 1.2 providers).

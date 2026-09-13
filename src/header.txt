@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Generic Discovery Engine
 // @namespace    generic-discovery
-// @version      1.1.0
+// @version      1.2.0
 // @description  Generic web-resource discovery engine inspired by the architecture of DVB blind scanning.
 // @match        *://*/*
 // @run-at       document-start
@@ -19,6 +19,19 @@
     /*
      * ============================================================
      * Generic Discovery Engine
+     * v1.2.0 — SitemapIndex + OpenAPI Providers + Bundle Analyze
+     * Patch notes vs v1.1.0:
+     * - Providers: SitemapIndexProvider (sitemapindex <loc> → sitemap 0.90, XML sitemapindex root)
+     *           + OpenApiProvider (openapi/swagger json → servers[].url 0.95, host+basePath 0.90,
+     *             walk api-url 0.85, matches openapi/swagger/info+paths); Registry now 11
+     *             ordered Html/Json/Xml/Css/JS/Robots/Headers/SitemapIndex/OpenApi/Binary/Text
+     *             (lazy factories, disabled respects new names, getInstanceCount 11)
+     *         + Build: analyze-bundle.js (esbuild metafile + provider line/size table, .build-meta
+     *           providerSizes + bundleAnalysis), npm run analyze + build:all includes analyze
+     *         + Tests: sitemapIndex 4 + openapi 4 cases (143/143 37 suites)
+     *         + Perf: sitemapIndex O(n) extractXmlLocs ~0.02ms, openapi JSON parse+walk ~0.05ms,
+     *           bundle +80 lines, min 60k 33% (11 providers), lazy still 0→11 on demand
+
      * v1.1.0 — Lazy Providers + esbuild Minify (provider hardening)
      * Patch notes vs v1.0.0:
      * - Providers: ProviderRegistry lazy (CONFIG.providers.lazy true, disabled []) + metrics

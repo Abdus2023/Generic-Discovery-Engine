@@ -916,6 +916,129 @@
         }
     }
 
+    class SitemapIndexProvider extends Provider {
+        constructor() {
+            super('sitemapIndex');
+        }
+
+        matches(observation) {
+            const ct = contentTypeBase(observation.http?.contentType || '');
+            const body = String(observation.body || '');
+            // sitemap index is XML with <sitemapindex> root
+            if (/sitemapindex/i.test(body)) return true;
+            if (ct.includes('xml') && /<sitemap/i.test(body)) return looksLikeXml(observation.http?.contentType, body);
+            const url = String(observation.requestedUrl || observation.target || '');
+            if (/sitemap.*\.xml$/i.test(url) && /<loc>/i.test(body)) return true;
+            return false;
+        }
+
+        async recognize(candidate, observation) {
+            const discoveries = [];
+            const locs = extractXmlLocs(observation.body);
+            for (const loc of locs) {
+                const url = canonicalizeUrl(loc);
+                if (!url) continue;
+                discoveries.push(
+                    new Discovery({
+                        candidateId: candidate.id,
+                        observationId: observation.id,
+                        kind: 'sitemap',
+                        confidence: 0.90,
+                        mechanism: 'sitemap-index-loc',
+                        data: { url },
+                        provenance: {
+                            origin: candidate.origin,
+                            parent: candidate.target,
+                            candidateTarget: candidate.target,
+                            candidateType: candidate.type,
+                            mechanism: 'sitemap-index-loc',
+                            depth: candidate.depth
+                        }
+                    })
+                );
+            }
+            return discoveries;
+        }
+    }
+
+    class OpenApiProvider extends Provider {
+        constructor() {
+            super('openapi');
+        }
+
+        matches(observation) {
+            if (!looksLikeJson(observation.http?.contentType, observation.body)) return false;
+            try {
+                const parsed = JSON.parse(String(observation.body||''));
+                if (parsed && typeof parsed === 'object') {
+                    if (parsed.openapi || parsed.swagger) return true;
+                    if (parsed.info && parsed.paths && typeof parsed.paths === 'object') return true;
+                }
+            } catch {}
+            return false;
+        }
+
+        async recognize(candidate, observation) {
+            const discoveries = [];
+            let parsed;
+            try { parsed = JSON.parse(String(observation.body||'')); } catch { return discoveries; }
+            const emit = (url, confidence, mechanism) => {
+                const canonical = canonicalizeUrl(url);
+                if (!canonical || !isAllowedUrl(canonical)) return;
+                discoveries.push(
+                    new Discovery({
+                        candidateId: candidate.id,
+                        observationId: observation.id,
+                        kind: looksLikeApiUrl(canonical) ? 'api' : 'url',
+                        confidence,
+                        mechanism,
+                        data: { url: canonical },
+                        provenance: {
+                            origin: candidate.origin,
+                            parent: candidate.target,
+                            candidateTarget: candidate.target,
+                            candidateType: candidate.type,
+                            mechanism,
+                            depth: candidate.depth
+                        }
+                    })
+                );
+            };
+            // servers[].url (OpenAPI 3)
+            if (Array.isArray(parsed.servers)) {
+                for (const srv of parsed.servers) {
+                    if (srv && typeof srv.url === 'string') emit(srv.url, 0.95, 'openapi-server');
+                }
+            }
+            // swagger basePath + host → approximate server url
+            if (parsed.swagger && parsed.host) {
+                const host = String(parsed.host || '').trim();
+                const base = String(parsed.basePath || '');
+                if (host) {
+                    const scheme = Array.isArray(parsed.schemes) && parsed.schemes[0] ? String(parsed.schemes[0]) : 'https';
+                    emit(`${scheme}://${host}${base}`, 0.90, 'openapi-host');
+                }
+            }
+            // also walk for any URL-like strings (reuse JsonProvider walk but with higher confidence for api)
+            const walk = (value) => {
+                if (typeof value === 'string') {
+                    const canonical = canonicalizeUrl(value);
+                    if (canonical && isAllowedUrl(canonical) && looksLikeApiUrl(canonical)) {
+                        // avoid double-emitting servers already emitted
+                        if (!discoveries.some(d => d.data.url === canonical)) {
+                            emit(canonical, 0.85, 'openapi-url');
+                        }
+                    }
+                    return;
+                }
+                if (Array.isArray(value)) { value.forEach(walk); return; }
+                if (value && typeof value === 'object') { Object.values(value).forEach(walk); }
+            };
+            walk(parsed);
+            return discoveries;
+        }
+    }
+
     class BinaryProvider extends Provider {
         constructor() {
             super('binary');
@@ -956,10 +1079,12 @@
                 javascript: () => new JavaScriptProvider(),
                 robots: () => new RobotsProvider(),
                 headers: () => new HeadersProvider(),
+                sitemapIndex: () => new SitemapIndexProvider(),
+                openapi: () => new OpenApiProvider(),
                 binary: () => new BinaryProvider(),
                 text: () => new TextProvider()
             };
-            this.order = ['html','json','xml','css','javascript','robots','headers','binary','text'];
+            this.order = ['html','json','xml','css','javascript','robots','headers','sitemapIndex','openapi','binary','text'];
             this.instances = new Map();
             this.metrics = new Map();
             // Eager fallback when CONFIG.providers.lazy === false (v1.0 compatibility)
