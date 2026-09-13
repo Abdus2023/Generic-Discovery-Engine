@@ -58,6 +58,15 @@
         maxNetworkEvents: 1000,
         maxGraphEdges: 5000,
         maxDiagnostics: 500,
+        // Runtime retention bounds (P1 hardening — not just persistence slice)
+        maxDiscoveriesInMemory: 2000,
+        maxResourcesInMemory: 2000,
+        // Search budget vs runtime budget distinction (v1.5)
+        runtimeBudget: {
+            maxBodiesInMemory: 150, // cap observations bodies retained (mirrors maxRequests)
+            maxDiscoveryHistory: 2000,
+            maxResourceHistory: 2000
+        },
 
         observeDomMutations: true,
         mutationDebounce: 250,

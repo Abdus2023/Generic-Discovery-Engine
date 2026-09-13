@@ -631,7 +631,7 @@
                         {
                             method: plan.method,
                             credentials: 'same-origin',
-                            redirect: 'follow',
+                            redirect: CONFIG.sameOriginOnly ? 'error' : 'follow',
                             signal:
                                 controller.signal
                         }
@@ -1090,9 +1090,8 @@
 
             if (!key) return;
 
-            this.engine.networkEvents.set(
-                key,
-                {
+            // Centralize through recordNetworkEvent to enforce maxNetworkEvents cap (P1 hardening)
+            const ev = {
                     id:
                         key,
                     requestId:
@@ -1123,13 +1122,13 @@
                     error:
                         event.error ||
                         null
-                }
-            );
+                };
+            this.engine.recordNetworkEvent(ev);
 
             const networkEvent =
                 this.engine.networkEvents.get(
                     key
-                );
+                ) || ev;
 
             if (
                 networkEvent.phase ===
@@ -2033,6 +2032,11 @@
          * --------------------------------------------------------
          */
 
+        // Adaptive concurrency is a *target* for the next scan's worker pool (not active workers mid-scan)
+        // Workers are fixed at scan start; currentConcurrency is clamped and applied on next start()
+        get concurrencyTarget() { return this.currentConcurrency; }
+        set concurrencyTarget(v) { this.currentConcurrency = clamp(v, CONFIG.adaptive.minConcurrency, CONFIG.concurrency); }
+
         onSuccess() {
             this.consecutiveSuccesses++;
             this.consecutiveFailures = 0;
@@ -2066,13 +2070,17 @@
                 ) {
                     this.ledger
                         .recordDiagnostic(
-                            'adaptive-increase',
+                            'adaptive-target-increase',
                             {
                                 from: old,
                                 to:
-                                    this.currentConcurrency
+                                    this.currentConcurrency,
+                                activeWorkers: this.activeWorkers,
+                                note: 'target for next scan; active workers unchanged mid-scan'
                             }
                         );
+                    // keep legacy name for compat
+                    this.ledger.recordDiagnostic('adaptive-increase', { from: old, to: this.currentConcurrency });
                 }
             }
         }
@@ -2110,13 +2118,16 @@
                 ) {
                     this.ledger
                         .recordDiagnostic(
-                            'adaptive-decrease',
+                            'adaptive-target-decrease',
                             {
                                 from: old,
                                 to:
-                                    this.currentConcurrency
+                                    this.currentConcurrency,
+                                activeWorkers: this.activeWorkers,
+                                note: 'target for next scan; active workers unchanged mid-scan'
                             }
                         );
+                    this.ledger.recordDiagnostic('adaptive-decrease', { from: old, to: this.currentConcurrency });
                 }
             }
         }
@@ -2128,11 +2139,17 @@
          */
 
         recordNetworkEvent(event) {
+            // Enforce cap only for new keys; updates to existing requestId (bridge request→response) must not be dropped at cap
             if (
+                !this.networkEvents.has(event.id) &&
                 this.networkEvents.size >=
                 CONFIG.maxNetworkEvents
             ) {
-                return;
+                // Evict oldest to make room (FIFO) rather than silently drop
+                const first = this.networkEvents.keys().next().value;
+                if (first) this.networkEvents.delete(first);
+                // Also record diagnostic for observability
+                this.ledger?.recordDiagnostic?.('network-events-evicted', { max: CONFIG.maxNetworkEvents });
             }
 
             this.networkEvents.set(
@@ -2599,20 +2616,24 @@
                     .filter(([_, m]) => (m.avgMs ?? 0) > slowThreshold)
                     .map(([name, m]) => ({ name, avgMs: Number(m.avgMs.toFixed(2)), calls: m.calls, matches: m.matches }))
                     .sort((a,b)=>b.avgMs-a.avgMs);
-                const recentDiagnostics = (this.db.diagnostics || []).slice(- (CONFIG.health?.maxRecentErrors ?? 20));
+                const maxErr = CONFIG.health?.maxRecentErrors ?? 20;
+                const diagnosticCount = (this.db.diagnostics || []).length;
+                const recentDiagnostics = (this.db.diagnostics || []).slice(-maxErr);
                 const recentLedgerErrors = (this.ledger.events || []).filter(e => /error|illegal|failed|bridge/i.test(String(e.type||''))).slice(-5);
                 const frontierPressure = cov.frontierSize / Math.max(1, CONFIG.maxCandidates);
                 const requestPressure = cov.requestsUsed / Math.max(1, CONFIG.maxRequests);
                 const ledgerPressure = cov.ledgerSize / 5000;
                 let status = 'healthy';
                 if (slowProviders.length > 2 || frontierPressure > 0.9 || requestPressure > 0.9 || cov.observations > 750) status = 'degraded';
-                if (slowProviders.some(p=>p.avgMs>100) || cov.liveCount >= CONFIG.maxCandidates || recentDiagnostics.length > (CONFIG.health?.maxRecentErrors ?? 20)) status = 'unhealthy';
+                if (slowProviders.some(p=>p.avgMs>100) || cov.liveCount >= CONFIG.maxCandidates || diagnosticCount > maxErr) status = 'unhealthy';
                 if (!CONFIG.health?.enabled) status = 'disabled';
+                const configuredProviders = this.providers?.factories ? Object.keys(this.providers.factories).length : (this.providers?.order?.length ?? Object.keys(providerMetrics).length);
+                const instantiatedProviders = Object.keys(providerMetrics).length;
                 return {
                     status,
                     timestamp: new Date().toISOString(),
                     coverage: cov,
-                    providerHealth: { slowProviders, totalProviders: Object.keys(providerMetrics).length, slowThresholdMs: slowThreshold, slowCount: slowProviders.length },
+                    providerHealth: { slowProviders, totalProviders: configuredProviders, configuredProviders, instantiatedProviders, slowThresholdMs: slowThreshold, slowCount: slowProviders.length },
                     system: { frontierPressure: Number(frontierPressure.toFixed(3)), requestPressure: Number(requestPressure.toFixed(3)), ledgerPressure: Number(ledgerPressure.toFixed(3)), concurrency: this.currentConcurrency, adaptive: !!CONFIG.adaptive.enabled, healthEnabled: !!CONFIG.health?.enabled },
                     recentErrors: [...recentLedgerErrors, ...recentDiagnostics.slice(-5)].slice(-5)
                 };

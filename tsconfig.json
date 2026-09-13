@@ -11,6 +11,6 @@
     "lib": ["ES2022", "DOM"],
     "types": []
   },
-  "include": ["dist/**/*.js", "tests/**/*.js"],
-  "exclude": ["node_modules", "coverage"]
+  "include": ["src/**/*.js", "dist/**/*.js", "tests/**/*.js"],
+  "exclude": ["node_modules", "coverage", "dist/*.v*.user.js"]
 }

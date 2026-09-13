@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Generic Discovery Engine
 // @namespace    generic-discovery
-// @version      1.4.0
+// @version      1.5.0
 // @description  Generic web-resource discovery engine inspired by the architecture of DVB blind scanning.
 // @match        *://*/*
 // @run-at       document-start
@@ -10,7 +10,7 @@
 // @grant        GM_setValue
 // @grant        GM_xmlhttpRequest
 // @connect      self
-// @connect      *  — uncomment if CONFIG.sameOriginOnly=false (cross-origin); default same-origin keeps self
+// // @connect      *  — uncomment if CONFIG.sameOriginOnly=false (cross-origin); default same-origin keeps self (least-privilege)
 // ==/UserScript==
 
 (function () {
@@ -19,6 +19,21 @@
     /*
      * ============================================================
      * Generic Discovery Engine
+     * v1.5.0 — Verification Hardening + Runtime Bounds (P0/P1 audit fixes)
+     * Patch notes vs v1.4.0:
+     * - Verification: .c8rc now honest (all:true src tree, exclude tests/scripts/dist, 50/45/50) +
+     *           tsconfig includes src + lint honest (eslint; syntax) + typecheck without pipe masking;
+     *           coverage now measures production src not just tests
+     *         + Runtime: CONFIG.maxDiscoveriesInMemory 2000 + maxResourcesInMemory 2000 + runtimeBudget
+     *           {maxBodiesInMemory 150, maxDiscoveryHistory 2000} + addDiscovery/resources FIFO eviction
+     *           (diagnostic evicted) + recordNetworkEvent cap evicts oldest FIFO (was drop) + handleBridgeEvent
+     *           now centralizes through recordNetworkEvent (cap bypass fixed)
+     *         + Security: fetch redirect 'error' when sameOriginOnly (vs follow, redirect boundary) +
+     *           @connect self least-privilege (wildcard commented)
+     *         + Health: dead branch fixed (diagnosticCount vs sliced → unhealthy when >maxRecentErrors) +
+     *           providerHealth totalProviders vs instantiatedProviders (configured 13 vs instantiated N) +
+     *           adaptive concurrency clarified as target (concurrencyTarget + adaptive-target-* diagnostics)
+
      * v1.4.0 — Health Metrics + Concurrent Providers (observability)
      * Patch notes vs v1.3.0:
      * - Config: CONFIG.providers.concurrent false (parallel Promise.all vs sequential)

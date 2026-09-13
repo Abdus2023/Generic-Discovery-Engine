@@ -181,6 +181,42 @@ if (!content.includes('health,')) {
   console.error('verify-build: missing health in exportData');
   process.exit(1);
 }
+if (!content.includes("redirect: CONFIG.sameOriginOnly ? 'error'")) {
+  console.error('verify-build: missing redirect error when sameOriginOnly (v1.5 security)');
+  process.exit(1);
+}
+if (!content.includes('// // @connect')) {
+  console.error('verify-build: missing least-privilege @connect (v1.5 wildcard commented)');
+  process.exit(1);
+}
+if (content.includes('\n// @connect      *  — uncomment')) {
+  console.error('verify-build: wildcard @connect still active (must be commented)');
+  process.exit(1);
+}
+if (!content.includes('maxDiscoveriesInMemory')) {
+  console.error('verify-build: missing maxDiscoveriesInMemory (v1.5 runtime bound)');
+  process.exit(1);
+}
+if (!content.includes('maxResourcesInMemory')) {
+  console.error('verify-build: missing maxResourcesInMemory (v1.5 runtime bound)');
+  process.exit(1);
+}
+if (!content.includes('diagnosticCount')) {
+  console.error('verify-build: missing diagnosticCount in health (v1.5 dead branch fix)');
+  process.exit(1);
+}
+if (!content.includes('configuredProviders')) {
+  console.error('verify-build: missing configuredProviders in health (v1.5 provider metrics)');
+  process.exit(1);
+}
+if (!content.includes('adaptive-target')) {
+  console.error('verify-build: missing adaptive-target diagnostic (v1.5 concurrency clarification)');
+  process.exit(1);
+}
+if (!content.includes('concurrencyTarget')) {
+  console.error('verify-build: missing concurrencyTarget getter (v1.5)');
+  process.exit(1);
+}
 // Check minified artifact if present (optional, not fatal)
 const minPath = path.join(path.dirname(dist), 'generic-discovery-engine.min.js');
 if (fs.existsSync(minPath)) {

@@ -416,6 +416,13 @@
         }
 
         addDiscovery(discovery) {
+            // Runtime bound: cap discoveries in memory (P1 hardening)
+            const maxD = CONFIG.maxDiscoveriesInMemory ?? CONFIG.runtimeBudget?.maxDiscoveryHistory ?? 2000;
+            if (this.discoveries.size >= maxD) {
+                const first = this.discoveries.keys().next().value;
+                if (first) this.discoveries.delete(first);
+                this.recordDiagnostic('discovery-evicted', { max: maxD });
+            }
             this.discoveries.set(
                 discovery.id,
                 discovery
@@ -456,6 +463,13 @@
                 this.resources.get(canonical);
 
             if (!resource) {
+                // Runtime bound: cap resources in memory
+                const maxR = CONFIG.maxResourcesInMemory ?? CONFIG.runtimeBudget?.maxResourceHistory ?? 2000;
+                if (this.resources.size >= maxR) {
+                    const first = this.resources.keys().next().value;
+                    if (first) this.resources.delete(first);
+                    this.recordDiagnostic('resource-evicted', { max: maxR });
+                }
                 resource =
                     new ResourceRecord({
                         url: canonical
